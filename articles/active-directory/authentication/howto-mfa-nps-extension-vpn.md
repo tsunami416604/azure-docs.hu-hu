@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507178"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717871"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -41,7 +41,7 @@ A hálózati házirend-és elérési szolgáltatások lehetővé teszi a szervez
 * A hálózatvédelmi (NAP-) ügyfelek állapot-házirendjeinek létrehozása és kényszerítése, amelyek meghatározzák, hogy az eszközök nem korlátozott vagy korlátozott hozzáférést kapnak-e a hálózati erőforrásokhoz.
 
 * Adja meg a 802.1 x-kompatibilis vezeték nélküli hozzáférési pontokhoz és Ethernet-kapcsolókhoz való hozzáférés hitelesítésének és engedélyezésének módját.
-  További információ: [hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top).
+  További információ: [hálózati házirend-kiszolgáló](/windows-server/networking/technologies/nps/nps-top).
 
 A biztonság növelése és a magas szintű megfelelőség biztosítása érdekében a szervezetek az NPS-t az Azure Multi-Factor Authenticationba integrálva biztosítják, hogy a felhasználók kétlépéses ellenőrzéssel csatlakozzanak a VPN-kiszolgáló virtuális portjához. Ahhoz, hogy a felhasználók hozzáférjenek a hozzáféréshez, meg kell adniuk a felhasználónevet és a jelszót, valamint az általuk vezérelt egyéb információkat. Ennek az információnak megbízhatónak kell lennie, és nem lehet könnyen duplikált. Tartalmazhat egy mobiltelefon-számot, egy vezetékes számot vagy egy mobileszközön lévő alkalmazást is.
 
@@ -94,7 +94,7 @@ Ha nem rendelkezik működő VPN-infrastruktúrával, gyorsan létrehozhat egyet
 
 A hálózati házirend-és elérési szolgáltatások biztosítják a RADIUS-kiszolgáló és az ügyfél működését. Ez a cikk azt feltételezi, hogy telepítette a hálózati házirend-és elérési szolgáltatások szerepkört egy tagkiszolgálón vagy tartományvezérlőn a környezetben. Ebben az útmutatóban egy VPN-konfigurációhoz konfigurálja a RADIUS-t. Telepítse a hálózati házirend-és elérési szolgáltatások szerepkört egy olyan kiszolgálóra, amely *nem* a VPN-kiszolgáló.
 
-A hálózati házirend-és elérési szolgáltatások szerepkör-szolgáltatás Windows Server 2012-es vagy újabb verziójának telepítésével kapcsolatos információkért lásd: HÁLÓZATVÉDELMI állapotházirend- [kiszolgáló telepítése](https://technet.microsoft.com/library/dd296890.aspx). A NAP elavult a Windows Server 2016 rendszerben. A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](https://technet.microsoft.com/library/cc771746).
+A hálózati házirend-és elérési szolgáltatások szerepkör-szolgáltatás Windows Server 2012-es vagy újabb verziójának telepítésével kapcsolatos információkért lásd: HÁLÓZATVÉDELMI állapotházirend- [kiszolgáló telepítése](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). A NAP elavult a Windows Server 2016 rendszerben. A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-mfa-license"></a>Azure MFA-licenc
 
@@ -249,7 +249,7 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
 
     ![RADIUS-kiszolgáló ablakának hozzáadása az időtúllépés konfigurálásához](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 ### <a name="test-vpn-connectivity"></a>VPN-kapcsolat tesztelése
 
@@ -446,13 +446,13 @@ Az Azure Multi-Factor Authentication log-ből kapcsolódó esemény látható it
 
 ![Azure Multi-Factor Authentication-naplók](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-A speciális hibaelhárításhoz forduljon a hálózati házirend-kiszolgáló adatbázis-formátumának naplófájljaihoz, ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. A naplófájlok a _%systemroot%\System32\Logs_ mappában, vesszővel tagolt szövegfájlként jönnek létre. A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](https://technet.microsoft.com/library/cc771748.aspx).
+A speciális hibaelhárításhoz forduljon a hálózati házirend-kiszolgáló adatbázis-formátumának naplófájljaihoz, ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. A naplófájlok a _%systemroot%\System32\Logs_ mappában, vesszővel tagolt szövegfájlként jönnek létre. A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)).
 
 A naplófájlokban szereplő bejegyzéseket nehéz értelmezni, hacsak nem exportálja őket egy táblázatba vagy adatbázisba. A naplófájlok értelmezéséhez számos internetes hitelesítési szolgáltatás (IAS) elemzési eszköz található az interneten. Itt látható egy ilyen letölthető [shareware alkalmazás](https://www.deepsoftware.com/iasviewer) kimenete:
 
 ![Példa a shareware alkalmazás IAS-elemzője](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-A további hibaelhárításhoz használhat egy protokoll-elemzőt, például a Wireshark vagy a [Microsoft Message Analyzert](https://technet.microsoft.com/library/jj649776.aspx). A Wireshark következő képe a VPN-kiszolgáló és a hálózati házirend-kiszolgáló közötti RADIUS-üzeneteket jeleníti meg.
+A további hibaelhárításhoz használhat egy protokoll-elemzőt, például a Wireshark vagy a [Microsoft Message Analyzert](/message-analyzer/microsoft-message-analyzer-operating-guide). A Wireshark következő képe a VPN-kiszolgáló és a hálózati házirend-kiszolgáló közötti RADIUS-üzeneteket jeleníti meg.
 
 ![Szűrt forgalmat bemutató Microsoft Message Analyzer](./media/howto-mfa-nps-extension-vpn/image50.png)
 

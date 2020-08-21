@@ -4,15 +4,15 @@ description: Azure Analysis Services-kiszolgálók replikálása felskálázáss
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247992"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716928"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
@@ -50,7 +50,7 @@ Ha egy későbbi kibővített műveletet hajt végre, például a két és öt k
 
 ### <a name="synchronization-mode"></a>Szinkronizálási mód
 
-Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradnak, nem pedig Növekményesen. A rehidratálás fázisokban történik. Ezek leválasztása és csatolása egyszerre két alkalommal történik (feltéve, hogy legalább három replika van) annak biztosításához, hogy legalább egy replikát online állapotba lehessen tartani a lekérdezésekhez adott időben. Bizonyos esetekben előfordulhat, hogy az ügyfeleknek újra kell csatlakozniuk az egyik online replikához, amíg ez a folyamat zajlik. A (előzetes verzió) **ReplicaSyncMode** beállítással a lekérdezési replika szinkronizálása párhuzamosan is megadható. A párhuzamos szinkronizálás a következő előnyöket biztosítja: 
+Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradnak, nem pedig Növekményesen. A rehidratálás fázisokban történik. Ezek leválasztása és csatolása egyszerre két alkalommal történik (feltéve, hogy legalább három replika van) annak biztosításához, hogy legalább egy replikát online állapotba lehessen tartani a lekérdezésekhez adott időben. Bizonyos esetekben előfordulhat, hogy az ügyfeleknek újra kell csatlakozniuk az egyik online replikához, amíg ez a folyamat zajlik. A **ReplicaSyncMode** beállítás használatával a lekérdezési replika szinkronizálása párhuzamosan is megadható. A párhuzamos szinkronizálás a következő előnyöket biztosítja: 
 
 - A szinkronizálási idő jelentős csökkentése. 
 - A replikák közötti adatcsere nagyobb valószínűséggel konzisztens lesz a szinkronizálási folyamat során. 
@@ -61,7 +61,7 @@ Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradn
 
 A SSMS használatával állítsa be a ReplicaSyncMode a speciális tulajdonságok között. Lehetséges értékek: 
 
-- `1`(alapértelmezett): teljes replika adatbázis-újrahidratáló a fázisokban (növekményes). 
+- `1` (alapértelmezett): teljes replika adatbázis-újrahidratáló a fázisokban (növekményes). 
 - `2`: Párhuzamosan optimalizált szinkronizálás. 
 
 ![RelicaSyncMode-beállítás](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
@@ -131,7 +131,7 @@ Használja a **szinkronizálási** műveletet.
 Visszatérési állapotkódok:
 
 
-|Code  |Description  |
+|Kód  |Leírás  |
 |---------|---------|
 |-1     |  Érvénytelen       |
 |0     | Replikáló        |

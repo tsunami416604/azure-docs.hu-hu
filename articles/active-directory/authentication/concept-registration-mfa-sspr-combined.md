@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512975"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718917"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
@@ -32,7 +32,7 @@ Ez a cikk a kombinált biztonsági regisztrációt ismerteti. A kombinált bizto
 
 ![Saját profil, amely egy felhasználó regisztrált biztonsági adatait jeleníti meg](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Az új felület engedélyezése előtt tekintse át ezt a rendszergazda által irányított dokumentációt és a felhasználó által irányított dokumentációt, hogy megértse a funkció funkcióit és hatását. A [felhasználói dokumentáció](../user-help/user-help-security-info-overview.md) alapján felkészítheti a felhasználókat az új élményre, és segítheti a sikeres bevezetést.
+Az új felület engedélyezése előtt tekintse át ezt a rendszergazda által irányított dokumentációt és a felhasználó által irányított dokumentációt, hogy megértse a funkció funkcióit és hatását. A [felhasználói dokumentáció](../user-help/security-info-setup-signin.md) alapján felkészítheti a felhasználókat az új élményre, és segítheti a sikeres bevezetést.
 
 Az Azure AD kombinált biztonsági információinak regisztrációja jelenleg nem érhető el olyan nemzeti felhők számára, mint az Azure US government, az Azure Germany vagy az Azure China 21Vianet.
 

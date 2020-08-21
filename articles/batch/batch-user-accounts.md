@@ -2,14 +2,14 @@
 title: Feladatok futtatása a felhasználói fiókokban
 description: Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142687"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719359"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
 
@@ -49,18 +49,13 @@ A felhasználói fiók jogosultságszint-emelési szintje azt jelzi, hogy egy fe
 
 ## <a name="auto-user-accounts"></a>Automatikus felhasználói fiókok
 
-Alapértelmezés szerint a tevékenységek a Batch szolgáltatásban egy automatikus felhasználói fiók alatt futnak, a normál felhasználó emelt szintű hozzáférés nélkül, a feladat hatókörével együtt. Ha az automatikus felhasználó specifikációja feladat hatókörre van konfigurálva, a Batch szolgáltatás csak automatikusan felhasználói fiókot hoz létre ehhez a feladathoz.
+Alapértelmezés szerint a tevékenységek a Batch szolgáltatásban egy automatikus felhasználói fiók alatt futnak, a normál felhasználó emelt szintű hozzáférés nélkül, a készlet hatókörével együtt. A készlet hatóköre azt jelenti, hogy a feladat egy automatikus felhasználói fiók alatt fut, amely a készlet bármely tevékenysége számára elérhető. A készlet hatókörével kapcsolatos további információkért lásd: [feladat futtatása automatikus felhasználóként készlet hatókörével](#run-a-task-as-an-auto-user-with-pool-scope).
 
-A feladat hatókörének alternatívája a készlet hatóköre. Ha egy feladat automatikus felhasználó-specifikációja konfigurálva van a készlet hatókörére, a feladat egy automatikus felhasználói fiókban fut, amely a készlet bármely feladatához elérhető. A készlet hatókörével kapcsolatos további információkért lásd: [feladat futtatása automatikus felhasználóként készlet hatókörével](#run-a-task-as-an-auto-user-with-pool-scope).
-
-Az alapértelmezett hatókör eltér a Windows-és Linux-csomópontokon:
-
-- Windows-csomópontokon a feladatok alapértelmezés szerint a feladat hatókörében futnak.
-- A Linux-csomópontok mindig a készlet hatóköre alatt futnak.
+A készlet hatókörének alternatívája a feladat hatóköre. Ha az automatikus felhasználó specifikációja feladat hatókörre van konfigurálva, a Batch szolgáltatás csak automatikusan felhasználói fiókot hoz létre ehhez a feladathoz.
 
 Az automatikus felhasználó specifikációnak négy lehetséges konfigurációja van, amelyek mindegyike egy egyedi automatikus felhasználói fióknak felel meg:
 
-- Nem rendszergazdai hozzáférés a feladat hatókörével (az alapértelmezett automatikus felhasználó specifikációja)
+- Nem rendszergazdai hozzáférés a feladat hatókörével
 - Rendszergazdai (emelt szintű) hozzáférés a feladat hatókörével
 - Nem rendszergazdai hozzáférés a készlet hatókörével
 - Rendszergazdai hozzáférés a készlet hatókörével
@@ -75,7 +70,7 @@ Ha emelt szintű hozzáféréssel rendelkező feladatot szeretne futtatni, konfi
 > [!NOTE]
 > Emelt szintű hozzáférés használata csak akkor, ha szükséges. Az ajánlott eljárások a kívánt eredmény eléréséhez szükséges minimális jogosultság megadását ajánlják. Ha például egy indítási tevékenység az aktuális felhasználóhoz tartozó szoftvereket telepít, az összes felhasználó helyett előfordulhat, hogy el tudja kerülni az emelt szintű hozzáférés megadását a feladatokhoz. Konfigurálhatja a készlet hatókörének és a nem rendszergazdai hozzáférésnek az automatikus felhasználó-specifikációt minden olyan feladathoz, amelynek ugyanazon a fiókon kell futnia, beleértve az indítási tevékenységet is.
 
-Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint-emelési szintet `Admin` és a hatókört határozzák meg `Task` . A feladat hatóköre az alapértelmezett beállítás, de a példa kedvéért itt is szerepel.
+Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint-emelési szintet `Admin` és a hatókört határozzák meg `Task` .
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>Batch Python
@@ -113,7 +108,7 @@ Csomópontok kiosztásakor a készlet minden egyes csomópontján két teljes k�
 
 Ha a készlet hatókörét adja meg az automatikus felhasználó számára, akkor a rendszergazdai hozzáféréssel futtatott összes feladat ugyanazon a teljes alkalmazáskészletre kiterjedő automatikus felhasználói fiók alatt fut. Hasonlóképpen, a rendszergazdai jogosultságok nélküli futtatású feladatok egyetlen, készletre kiterjedő automatikus felhasználói fiókkal is futnak.
 
-> [!NOTE] 
+> [!NOTE]
 > A két teljes készletre kiterjedő automatikus felhasználói fiókok külön fiókok. A készletre kiterjedő rendszergazdai fiókban futó feladatok nem oszthatják meg az adatmegosztást a standard fiókban futó feladatokkal, és fordítva.
 
 Az azonos automatikus felhasználói fiókkal való futtatás előnye, hogy a feladatok képesek megosztani az adatokkal az ugyanazon a csomóponton futó egyéb feladatokkal.
@@ -291,7 +286,7 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`nincs megadva | Nincs szükség frissítésre                                                                                               |
+| `CloudTask.RunElevated` nincs megadva | Nincs szükség frissítésre                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -299,7 +294,7 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`nincs megadva | Nincs szükség frissítésre                                                                                                                     |
+| `CloudTask.withRunElevated` nincs megadva | Nincs szükség frissítésre                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -307,7 +302,7 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, hol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
 | `run_elevated=False`                      | `user_identity=user`, hol <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
-| `run_elevated`nincs megadva | Nincs szükség frissítésre                                                                                                                                  |
+| `run_elevated` nincs megadva | Nincs szükség frissítésre                                                                                                                                  |
 
 ## <a name="next-steps"></a>További lépések
 

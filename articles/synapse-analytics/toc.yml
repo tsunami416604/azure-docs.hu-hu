@@ -204,6 +204,8 @@
               href: ./spark/apache-spark-concepts.md
             - name: Mi az a Delta Lake?
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: A Delta Lake működésének áttekintése
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Az Apache Spark teljesítménye
               href: ./spark/apache-spark-performance.md
             - name: Az Apache Spark automatikus skálázási viselkedése
@@ -454,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Cosmos DB elemzési tár lekérdezése az Azure Synapse Analyticshez készült Apache Sparkkal
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Adatok másolása Synapse Linkből SQL-készletbe Apache Spark használatával
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: Adatok lekérdezése a tárterületen

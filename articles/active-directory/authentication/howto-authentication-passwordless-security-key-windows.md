@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550612"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717965"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
 Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek a Windows 10-es eszközökön való engedélyezését összpontosítja. Ennek a cikknek a végén be tud jelentkezni az Azure ad-be és a hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre az Azure AD-fiókkal egy FIDO2 biztonsági kulcs használatával.
 
 > [!NOTE]
-> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A FIDO2 biztonsági kulcsai a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Követelmények
 
@@ -37,7 +37,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 | A [hibrid Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join-hybrid.md) a Windows 10 2004-es vagy újabb verziója szükséges |   | X |
 | Teljes mértékben kijavítottuk a Windows Server 2016/2019 rendszerű tartományvezérlőket. |   | X |
 | [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 vagy újabb verzió |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (nem kötelező) | X | X |
+| [Microsoft Intune](/intune/fundamentals/what-is-intune) (nem kötelező) | X | X |
 | Kiépítési csomag (nem kötelező) | X | X |
 | Csoportházirend (nem kötelező) |   | X |
 
@@ -100,7 +100,7 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Adattípus: egész szám
       - Érték: 1
-1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információ: [felhasználói és eszköz profilok társítása Microsoft Intuneban](https://docs.microsoft.com/intune/device-profile-assign).
+1. Ezt a házirendet meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz lehet hozzárendelni. További információ: [felhasználói és eszköz profilok társítása Microsoft Intuneban](/intune/device-profile-assign).
 
 ![Egyéni Intune-eszköz konfigurációs szabályzatának létrehozása](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
@@ -113,7 +113,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. Adjon nevet a projektnek, és jegyezze fel a projekt létrehozási útját, majd kattintson a **tovább**gombra.
 1. Hagyja kiválasztva a *kiépítési csomagot* a **kiválasztott projekt-munkafolyamatként** , és válassza a **tovább**lehetőséget.
 1. Válassza ki az *összes Windows asztali kiadás* elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat**, majd kattintson a **tovább**gombra.
-1. Válassza a **Befejezés** gombot.
+1. Válassza a **Befejezés** lehetőséget.
 1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
 1. Állítsa be a **UseSecurityKeyForSignIn** beállítást *engedélyezve*értékre.
 1. Válassza **Export**ki a  >  **kiépítési csomag** exportálása lehetőséget
@@ -122,10 +122,10 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább**lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget a kiépítési **csomag összeállítása** lapon.
 1. Mentse a létrehozott két fájlt (*ppkg* és *Cat*) egy olyan helyre, ahol később is alkalmazhatja a gépeket.
-1. A létrehozott kiépítési csomag alkalmazásához tekintse meg a [kiépítési csomag alkalmazása](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package)című témakört.
+1. A létrehozott kiépítési csomag alkalmazásához tekintse meg a [kiépítési csomag alkalmazása](/windows/configuration/provisioning-packages/provisioning-apply-package)című témakört.
 
 > [!NOTE]
-> A Windows 10 1809-es verzióját futtató eszközökön a megosztott számítógépes üzemmódot (*EnableSharedPCMode*) is engedélyeznie kell. A funkció engedélyezésével kapcsolatos további információkért lásd: [megosztott vagy vendég számítógép beállítása Windows 10 rendszeren](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
+> A Windows 10 1809-es verzióját futtató eszközökön a megosztott számítógépes üzemmódot (*EnableSharedPCMode*) is engedélyeznie kell. A funkció engedélyezésével kapcsolatos további információkért lásd: [megosztott vagy vendég számítógép beállítása Windows 10 rendszeren](/windows/configuration/set-up-shared-or-guest-pc).
 
 ### <a name="enable-with-group-policy"></a>Engedélyezés Csoportházirend
 

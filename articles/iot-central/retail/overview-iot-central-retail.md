@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032289"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719220"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
@@ -152,7 +152,7 @@ Az alábbi képernyőfelvételen a beépített irányítópult látható az alka
 
 További információért lásd: [üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonjának](./tutorial-micro-fulfillment-center.md) oktatóanyaga.
 
-## <a name="video-analytics---object-and-motion-detection"></a>Videó-elemzés – objektumok és mozgásészlelések észlelése
+## <a name="video-analytics---object-and-motion-detection"></a>Videóelemzés – objektum- és mozgásérzékelés
 
 A *IoT Central video Analytics – Object és Motion Detection* alkalmazás sablon segítségével gyorsan megtudhatja, hogyan helyezheti üzembe, kezelheti és figyelheti az intelligens peremhálózati kamerákat használó megoldásokat az objektumok és a mozgások észlelésére.
 
@@ -160,20 +160,20 @@ A video Analytics-alkalmazás a IoT Edge futó [Live Video Analytics (LVA)](#liv
 
 Az alkalmazás sablonja négy alkalmazás-irányítópultot tartalmaz:
 
-* A **telepítő** információt nyújt az alkalmazás kialakításáról, és lehetővé teszi a fényképezőgépek hozzáadását és törlését.
-* A **kezelés** lehetővé teszi a kamerák kezelését. Megadhatja például a kamerákat, megtekintheti az állapotadatokat, és elindíthatja a futó kamerákat.
-* A **valódi kamerák** segítségével megtekintheti a valódi kamerákból származó információkat, például az észlelési és a kamerás eseményeket.
-* A **figyelővel** részletes információk jeleníthetők meg az összes kameráról.
+* **Első lépések** az erőforrásokra mutató hivatkozásokat tartalmaz, amelyek segítenek az alkalmazás-sablon használatának megkezdésében.
+* A **bemutató irányítópulton** látható, hogy milyen típusú információkat lehet megjeleníteni a csatlakoztatott kamerákból.
+* **(Minta) a Real cames Management** szimulált kamerák használatával mutatja be, hogyan kezelheti a kamerákat az alkalmazásból.
+* **(Minta) a valódi kamera-figyelő** szimulált kamerákat használ annak bemutatására, hogyan figyelheti meg a kamerákat az alkalmazásból.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videó-elemzés – objektumok és mozgásészlelések észlelése":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videóelemzés – objektum- és mozgásérzékelés":::
 
 A megoldás architektúrájának megismeréséhez tekintse meg a [video Analytics alkalmazás architektúráját](architecture-video-analytics.md)ismertető témakört.
 
-A megoldás üzembe helyezésének megismeréséhez tekintse meg a [video Analytics-alkalmazás létrehozása az Azure-ban IoT Central](tutorial-video-analytics-create-app.md) oktatóanyagot.
+A megoldás üzembe helyezésének megismeréséhez tekintse meg a [video Analytics-alkalmazás létrehozása az Azure-ban IoT Central](tutorial-video-analytics-deploy.md) oktatóanyagot.
 
 ### <a name="live-video-analytics"></a>Élő videó-elemzés
 
-Az élő videó Analytics platformot biztosít a peremhálózat és a felhőre kiterjedő intelligens video-alkalmazások létrehozásához. A platform lehetővé teszi az élő videók rögzítését, rögzítését, elemzését, valamint az eredmények közzétételét az Azure-szolgáltatások számára videó-vagy videó-elemzéssel. Az Azure-szolgáltatások a felhőben vagy az Edge-ben is futhatnak. A platform segítségével növelheti a IoT-megoldásokat a video Analytics segítségével.
+Az [élő videó Analytics](https://github.com/Azure/live-video-analytics) platformot biztosít a peremhálózat és a felhőre kiterjedő intelligens video-alkalmazások létrehozásához. A platform lehetővé teszi az élő videók rögzítését, rögzítését, elemzését, valamint az eredmények közzétételét az Azure-szolgáltatások számára videó-vagy videó-elemzéssel. Az Azure-szolgáltatások a felhőben vagy az Edge-ben is futhatnak. A platform segítségével növelheti a IoT-megoldásokat a video Analytics segítségével.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -184,4 +184,5 @@ A kereskedelmi megoldások létrehozásának megkezdéséhez:
 * [A Digital Distribution Center alkalmazás sablonjának üzembe helyezése és átjárása](./tutorial-iot-central-digital-distribution-center.md).
 * [Helyezzen üzembe és járjon el egy intelligens leltár-kezelési alkalmazás sablonján](./tutorial-iot-central-smart-inventory-management.md).
 * [Üzembe helyezheti és végigvezeti a Micro-teljesítési központ alkalmazás sablonján](./tutorial-micro-fulfillment-center.md).
+* [A video Analytics-alkalmazás sablonjának üzembe helyezése és átjárása](./tutorial-video-analytics-deploy.md).
 * További információ a IoT Centralről a [IoT Central áttekintésében](../preview/overview-iot-central.md).

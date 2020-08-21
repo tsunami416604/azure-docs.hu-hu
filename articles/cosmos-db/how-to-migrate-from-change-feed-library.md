@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b610748e425b9497e12c389cca4d797d6da54087
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261409"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719002"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
 
@@ -46,10 +46,6 @@ A Restore Processor Library-hez hasonlóan a .NET v3 SDK-ban a hírcsatorna mód
 Az SDK v3 változási hírcsatorna-feldolgozó processzora észlelni fogja a régi függvénytár-állapotot, és automatikusan áttelepíti az új sémára az áttelepített alkalmazás kódjának első végrehajtásakor. 
 
 A régi kóddal biztonságosan leállíthatja az alkalmazást, áttelepítheti a kódot az új verzióra, elindíthatja az áttelepített alkalmazást, és az alkalmazás leállításakor bekövetkezett változásokat az új verzió fogja felvenni és feldolgozni.
-
-> [!NOTE]
-> A kódtárat a .NET v3 SDK-val használó alkalmazásokból való Migrálás egyirányú, mivel az állapot (bérletek) át lesz telepítve az új sémába. Az áttelepítés visszafelé nem kompatibilis.
-
 
 ## <a name="additional-resources"></a>További források
 

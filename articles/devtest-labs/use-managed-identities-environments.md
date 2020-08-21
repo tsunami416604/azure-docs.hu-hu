@@ -3,43 +3,46 @@ title: Környezetek létrehozása az Azure által felügyelt identitásokkal a D
 description: Megtudhatja, hogyan használhatja a felügyelt identitásokat az Azure-ban környezetek üzembe helyezéséhez egy Azure DevTest Labsban található laborban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478875"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718976"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Környezetek üzembe helyezése az Azure által felügyelt identitások használatával tesztkörnyezetben 
+
 A tesztkörnyezet tulajdonosaként felügyelt identitást használhat a környezetek tesztkörnyezetben való üzembe helyezéséhez. Ez a funkció olyan esetekben hasznos, amikor a környezet olyan Azure-erőforrásokra hivatkozik, mint a kulcstartók, a megosztott képtárak és a környezet erőforráscsoporthoz tartozó hálózatok. Lehetővé teszi olyan homokozó környezetek létrehozását, amelyek nem korlátozódnak az adott környezet erőforráscsoporthoz.
 
 > [!NOTE]
 > Jelenleg egyetlen felhasználó által hozzárendelt identitás támogatott egy laborban. 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 - [Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
+    
+    Győződjön meg arról, hogy a felügyelt identitás ugyanabban a régióban és előfizetésben lett létrehozva, mint a labor. A felügyelt identitásnak nem kell ugyanabban az erőforráscsoporthoz lennie.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
+
 Ebben a szakaszban a tesztkörnyezet tulajdonosaként a Azure Portal használatával adhat hozzá felhasználót felügyelt identitást a laborhoz. 
 
-1. A labor lapon válassza a **konfiguráció és szabályzatok**lehetőséget. 
-1. Válassza az **identitás** lehetőséget a **Beállítások** szakaszban.
-1. Felhasználóhoz rendelt identitás hozzáadásához válassza a **Hozzáadás** lehetőséget az eszköztáron. 
-1. Válasszon ki egy **identitást** egy előre feltöltött legördülő listából.
-1. Válassza az **OK** lehetőséget.
-
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keressen rá a **DevTest Labs**kifejezésre.
+1. A Labs listából válassza ki a kívánt labort.
+1. Válassza **a konfiguráció és szabályzatok**  ->  **identitás (előzetes verzió)** lehetőséget. 
+1. Felhasználóhoz rendelt identitás hozzáadásához válassza a **felhasználó által hozzárendelt** lapot.
+1. Kattintson a **Hozzáadás** gombra.
+1. Válasszon ki egy már létrehozott és/vagy hozzáféréssel rendelkező felhasználót a legördülő menüből.
+ 
     ![Felhasználó által felügyelt identitás hozzáadása](./media/use-managed-identities-environments/add-user-managed-identity.png)
-2. A felhasználó által felügyelt identitás megjelenik a listában. 
+1. A lap tetején kattintson a **Mentés** gombra.
 
-    ![Felhasználó által felügyelt identitás a listában](./media/use-managed-identities-environments/identity-in-list.png)
-
-A mentés után a labor ezt az identitást fogja használni az összes tesztkörnyezet környezetének telepítésekor. Az identitás erőforrását az Azure-ban is elérheti, ha kijelöli az identitást a listából. 
+    A mentés után a labor ezt az identitást fogja használni az összes tesztkörnyezet környezetének telepítésekor. Az identitás erőforrását az Azure-ban is elérheti, ha kijelöli az identitást a listából. 
 
 A labor tulajdonosának semmilyen különleges teendőt nem kell tennie a környezet üzembe helyezésekor, ha a laborhoz hozzáadott identitás rendelkezik a környezethez hozzáférő külső erőforrásokhoz szükséges engedélyekkel. 
 
 Ha módosítani szeretné a laborhoz rendelt felhasználó által felügyelt identitást, először távolítsa el a laborhoz csatolt identitást, majd adjon hozzá egy másikat a laborhoz. A laborhoz csatolt identitás eltávolításához válassza a **... lehetőséget. (három pont)**, majd kattintson az **Eltávolítás**gombra. 
-
-![Felhasználó által felügyelt identitás a listában](./media/use-managed-identities-environments/replace-identity.png)  
 
 ## <a name="use-api"></a>API használata
 
@@ -66,7 +69,7 @@ Ha módosítani szeretné a laborhoz rendelt felhasználó által felügyelt ide
     }
     ```
  
-    Íme egy példa: 
+    Bemutatunk egy példát: 
 
     ```json
     PUT https://management.azure.com/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.Devtestlab/labs/mylab/serviceRunners/sampleuseridentity

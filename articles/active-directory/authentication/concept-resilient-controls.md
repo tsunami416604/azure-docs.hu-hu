@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027614"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716299"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -30,7 +30,7 @@ Ez a dokumentum útmutatást nyújt azon stratégiákról, amelyeket a szervezet
 
  1. A szervezetek növelhetik rugalmasságát, hogy a kockázatcsökkentő stratégiák vagy a készenléti tervek bevezetése **előtt** csökkentse a zárolás kockázatát.
  2. A szervezetek továbbra is hozzáférhetnek **a megszakadáskor** kiválasztott alkalmazásokhoz és erőforrásokhoz azáltal, hogy kockázatcsökkentő stratégiákat és vészhelyzeti terveket alkalmaznak.
- 3. A szervezeteknek meg kell győződniük arról, hogy az adatok megmaradnak, például a naplók, **megszakítás után** , és az általuk megvalósított szükséghelyzetek visszaállítása előtt.
+ 3. A szervezeteknek meg kell győződniük arról, hogy az adatok megmaradnak, például a naplók,  **megszakítás után** , és az általuk megvalósított szükséghelyzetek visszaállítása előtt.
  4. Azok a szervezetek, amelyek még nem hajtották végre a megelőzési stratégiákat vagy az alternatív terveket, képesek lehetnek a fennakadások kezelésére szolgáló **vészhelyzeti lehetőségek** megvalósítására.
 
 ## <a name="key-guidance"></a>Legfontosabb útmutató
@@ -55,7 +55,7 @@ A tényleges fennakadások enyhítése csak a szervezet elsődleges fókusza leh
 
 ### <a name="administrator-lockout-contingency"></a>Rendszergazdai zárolás készenléti
 
-A bérlőhöz való rendszergazdai hozzáférés zárolásának feloldásához hozzon létre vészhelyzeti hozzáférési fiókokat. Ezek a vészhelyzeti hozzáférési fiókok – más néven a *break Glass* -fiókok – lehetővé teszik az Azure ad-konfiguráció felügyeletét, amikor a normál jogosultsági szintű fiók hozzáférési eljárásai nem érhetők el. Legalább két vészhelyzeti hozzáférési fiókot kell létrehozni a [segélyhívó fiókra vonatkozó javaslatok]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)követésével.
+A bérlőhöz való rendszergazdai hozzáférés zárolásának feloldásához hozzon létre vészhelyzeti hozzáférési fiókokat. Ezek a vészhelyzeti hozzáférési fiókok – más néven a *break Glass* -fiókok – lehetővé teszik az Azure ad-konfiguráció felügyeletét, amikor a normál jogosultsági szintű fiók hozzáférési eljárásai nem érhetők el. Legalább két vészhelyzeti hozzáférési fiókot kell létrehozni a [segélyhívó fiókra vonatkozó javaslatok]( ../users-groups-roles/directory-emergency-access.md)követésével.
 
 ### <a name="mitigating-user-lockout"></a>Felhasználói zárolás csökkentése
 
@@ -65,11 +65,11 @@ A bérlőhöz való rendszergazdai hozzáférés zárolásának feloldásához h
 
 A következő hozzáférés-vezérlést a szervezet meglévő feltételes hozzáférési házirendjeiben foglalja bele:
 
-1. Több hitelesítési módszer is kiépíthető minden olyan felhasználó számára, aki különböző kommunikációs csatornákra támaszkodik, például az Microsoft Authenticator alkalmazás (internetalapú), az eskü token (az eszközön generált) és az SMS (telefonos kapcsolat). A következő PowerShell-szkript segít előre azonosítani a felhasználókat, hogy mely további módszerekkel regisztrálhat: [parancsfájl az Azure MFA hitelesítési módszerének elemzéséhez](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
+1. Több hitelesítési módszer is kiépíthető minden olyan felhasználó számára, aki különböző kommunikációs csatornákra támaszkodik, például az Microsoft Authenticator alkalmazás (internetalapú), az eskü token (az eszközön generált) és az SMS (telefonos kapcsolat). A következő PowerShell-szkript segít előre azonosítani a felhasználókat, hogy mely további módszerekkel regisztrálhat: [parancsfájl az Azure MFA hitelesítési módszerének elemzéséhez](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 2. A Windows Hello for Business üzembe helyezése Windows 10-es eszközökön az MFA-követelmények közvetlenül az eszköz-bejelentkezésből való kielégítéséhez.
-3. Megbízható eszközöket használhat az [Azure ad Hybrid JOIN](https://docs.microsoft.com/azure/active-directory/devices/overview) vagy [Microsoft Intune felügyelt eszközökön](https://docs.microsoft.com/intune/planning-guide)keresztül. A megbízható eszközök növelik a felhasználói élményt, mivel maga a megbízható eszköz is kielégítheti a házirend erős hitelesítési követelményeit, ha a felhasználó nem rendelkezik MFA-kihívással. Az MFA ezt követően új eszköz beléptetéséhez és a nem megbízható eszközökről származó alkalmazások vagy erőforrások eléréséhez szükséges.
+3. Megbízható eszközöket használhat az [Azure ad Hybrid JOIN](../devices/overview.md) vagy [Microsoft Intune felügyelt eszközökön](/intune/planning-guide)keresztül. A megbízható eszközök növelik a felhasználói élményt, mivel maga a megbízható eszköz is kielégítheti a házirend erős hitelesítési követelményeit, ha a felhasználó nem rendelkezik MFA-kihívással. Az MFA ezt követően új eszköz beléptetéséhez és a nem megbízható eszközökről származó alkalmazások vagy erőforrások eléréséhez szükséges.
 4. Az Azure AD Identity Protection kockázatkezelési házirendjeinek használatával megakadályozhatja a hozzáférést, ha a felhasználó vagy a bejelentkezés veszélyben van a rögzített MFA-szabályzatok helyett.
-5. Ha az Azure MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
+5. Ha az Azure MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](../manage-apps/view-applications-portal.md) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
 
 >[!NOTE]
 > A kockázatalapú házirendekhez [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) licencek szükségesek.
@@ -92,7 +92,7 @@ Ez a példa a kiválasztott felhasználók számára biztosítja a **AppUsers**,
 
 ### <a name="contingencies-for-user-lockout"></a>Felhasználói zárolási szükséghelyzetek
 
-Másik lehetőségként a szervezet is létrehozhat készenléti házirendeket. A készenléti szabályzatok létrehozásához meg kell határoznia a kompromisszumok feltételeit az üzletmenet folytonossága, az üzemeltetési költségeket, a pénzügyi költségeket és a biztonsági kockázatokat illetően. Előfordulhat például, hogy a készenléti szabályzatot csak a felhasználók egy részhalmazára, az alkalmazások egy részhalmazára, az ügyfelek egy részhalmazára vagy a helyszínek egy részhalmazára aktiválja. A készenléti szabályzatok a rendszergazdák és a végfelhasználók számára hozzáférést biztosítanak az alkalmazásokhoz és az erőforrásokhoz, a fennakadás során, amikor nincs implementálva a megoldás. A Microsoft azt javasolja, hogy ha nincs használatban, a [csak jelentési módban](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only) engedélyezze a készenléti szabályzatokat, így a rendszergazdáknak be kell kapcsolniuk a házirendek lehetséges hatásait.
+Másik lehetőségként a szervezet is létrehozhat készenléti házirendeket. A készenléti szabályzatok létrehozásához meg kell határoznia a kompromisszumok feltételeit az üzletmenet folytonossága, az üzemeltetési költségeket, a pénzügyi költségeket és a biztonsági kockázatokat illetően. Előfordulhat például, hogy a készenléti szabályzatot csak a felhasználók egy részhalmazára, az alkalmazások egy részhalmazára, az ügyfelek egy részhalmazára vagy a helyszínek egy részhalmazára aktiválja. A készenléti szabályzatok a rendszergazdák és a végfelhasználók számára hozzáférést biztosítanak az alkalmazásokhoz és az erőforrásokhoz, a fennakadás során, amikor nincs implementálva a megoldás. A Microsoft azt javasolja, hogy ha nincs használatban, a [csak jelentési módban](../conditional-access/howto-conditional-access-report-only.md) engedélyezze a készenléti szabályzatokat, így a rendszergazdáknak be kell kapcsolniuk a házirendek lehetséges hatásait.
 
  A megszakadás során felmerülő expozíció révén csökkentheti a kockázatát, és a tervezési folyamat kritikus részét képezi. A készenléti terv létrehozásához először határozza meg a szervezet alábbi üzleti követelményeit:
 
@@ -119,7 +119,7 @@ A készenléti feltételes hozzáférési szabályzat olyan **biztonsági menté
 
 * Állítsa be a tartalék szabályzatok készletét, ha az egyik hitelesítőadat-típus vagy egy hozzáférés-vezérlési mechanizmus megszakad az alkalmazásokhoz való hozzáférés. Olyan házirendet állítson be a csak jelentési állapotba, amely megköveteli a tartományhoz való csatlakozást vezérlőként, egy olyan aktív házirend biztonsági másolatának létrehozásakor, amely harmadik féltől származó MFA-szolgáltatót igényel.
 * A [jelszóval kapcsolatos útmutatóban](https://aka.ms/passwordguidance) ismertetett eljárások követésével csökkentheti a nem kötelezően megjelenő jelszavak kialakulásának kockázatát, ha az MFA nem szükséges.
-* Az [Azure ad önkiszolgáló jelszó-visszaállítás (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) és az [Azure ad jelszavas védelem](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) üzembe helyezésével gondoskodhat arról, hogy a felhasználók ne használják a közös jelszót és a megtiltani kívánt kifejezéseket.
+* Az [Azure ad önkiszolgáló jelszó-visszaállítás (SSPR)](./tutorial-enable-sspr.md) és az [Azure ad jelszavas védelem](./howto-password-ban-bad-on-premises-deploy.md) üzembe helyezésével gondoskodhat arról, hogy a felhasználók ne használják a közös jelszót és a megtiltani kívánt kifejezéseket.
 * Használjon olyan házirendeket, amelyek korlátozzák a hozzáférést az alkalmazásokon belül, ha egy bizonyos hitelesítési szint nem érhető el ahelyett, hogy egyszerűen vissza kellene térnie a teljes hozzáféréshez. Például:
   * Olyan biztonsági mentési szabályzatot konfigurálhat, amely a korlátozott munkamenet-jogcímet az Exchange és a SharePoint szolgáltatásba küldi
   * Ha a szervezet Microsoft Cloud App Security használ, érdemes lehet visszaesnie egy olyan házirendnek, amely a MCAS-t, majd a MCAS lehetővé teszi a csak olvasási hozzáférést, de a feltöltéseket nem.
@@ -208,7 +208,7 @@ Aktiválási sorrend:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Felhasználói zárolási szolgáltatások helyszíni erőforrásokból (NPS-bővítmény)
 
-Ha az Azure MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
+Ha az Azure MFA NPS-bővítmény használatával védi a VPN-hozzáférést, érdemes lehet egyesítő a VPN-megoldást [SAML-alkalmazásként](../manage-apps/view-applications-portal.md) , és az alább javasolt módon meghatározni az alkalmazás kategóriáját. 
 
 Ha telepítette az Azure AD MFA NPS-bővítményt a helyszíni erőforrások, például a VPN és a Távoli asztali átjáró az MFA-vel való ellátásához, akkor érdemes előre megfontolnia, hogy vészhelyzet esetén ki kell-e kapcsolni az MFA-t.
 
@@ -233,7 +233,7 @@ A felhasználói zárolás akkor is történhet, ha a következő feltételek te
 - A szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással.
 - A helyszíni identitás-rendszerek (például Active Directory, AD FS vagy egy függő összetevő) nem érhetők el. 
  
-Ahhoz, hogy rugalmasabb legyen, a szervezetnek engedélyeznie kell a [jelszó-kivonatolási szinkronizálást](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), mivel lehetővé teszi a [jelszó-kivonatoló szinkronizálás használatát](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) , ha a helyszíni identitási rendszerek le vannak állítva.
+Ahhoz, hogy rugalmasabb legyen, a szervezetnek engedélyeznie kell a [jelszó-kivonatolási szinkronizálást](../hybrid/choose-ad-authn.md), mivel lehetővé teszi a [jelszó-kivonatoló szinkronizálás használatát](../hybrid/plan-connect-user-signin.md) , ha a helyszíni identitási rendszerek le vannak állítva.
 
 #### <a name="microsoft-recommendations"></a>Microsoft-javaslatok
  Engedélyezze a jelszó-kivonatok szinkronizálását a Azure AD Connect varázslóval, függetlenül attól, hogy a szervezete összevonási vagy átmenő hitelesítést használ-e.
@@ -255,7 +255,7 @@ Attól függően, hogy a rendszer milyen enyhítéseket vagy feltételeket haszn
 1. A változás-ellenőrzési stratégia részeként dokumentálja az összes módosítást és az előző állapotot, hogy vissza tudja állítani az összes olyan előfizetési lehetőséget, amelyet azonnal végrehajtott, amint a hozzáférés-vezérlés teljesen működőképes.
 2. Tegyük fel, hogy a rosszindulatú szereplők jelszó-vagy adathalászat-támadásokkal próbálnak begyűjteni jelszavakat az MFA letiltásakor. Emellett előfordulhat, hogy a rossz színészek már rendelkeznek olyan jelszavakkal, amelyek korábban nem adtak hozzáférést minden olyan erőforráshoz, amely ebben az ablakban próbálkozhat. Az olyan kritikus fontosságú felhasználók számára, mint a vezetők, részlegesen csökkenthetik ezt a kockázatot azáltal, hogy visszaállítják a jelszavukat az MFA letiltása előtt.
 3. Az összes bejelentkezési tevékenység archiválása annak azonosításához, hogy ki férhet hozzá az MFA idejének letiltásához.
-4. Az ebben az ablakban [jelentett összes kockázati észlelés osztályozása](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
+4. Az ebben az ablakban [jelentett összes kockázati észlelés osztályozása](../reports-monitoring/concept-sign-ins.md) .
 
 ## <a name="after-a-disruption"></a>Megszakítás után
 
@@ -265,8 +265,8 @@ Vonja vissza az aktivált készenléti terv részeként elvégzett módosításo
 2. A készenléti szabályzatok visszaállítása a csak jelentés módba. 
 3. Visszaállíthatja a megszakítás során elvégzett és dokumentált egyéb módosításokat.
 4. Ha vészhelyzeti hozzáférési fiókot használt, ne felejtse el újragenerált hitelesítő adatokat, és fizikailag biztonságossá tenni az új hitelesítő adatok részleteit a vészhelyzeti hozzáférési fiók eljárásainak részeként.
-5. Folytassa a gyanús tevékenységek megszakítása után [jelentett összes kockázati észlelés osztályozását](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
-6. Vonja vissza a [PowerShell használatával](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) kiadott összes frissítési jogkivonatot a felhasználók egy csoportjának célzásához. Az összes frissítési token visszavonása fontos a megszakadáskor használt privilegizált fiókok esetében, és ezzel kényszeríti őket a visszaállított szabályzatok ismételt hitelesítésére és ellenőrzésére.
+5. Folytassa a gyanús tevékenységek megszakítása után [jelentett összes kockázati észlelés osztályozását](../reports-monitoring/concept-sign-ins.md) .
+6. Vonja vissza a [PowerShell használatával](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) kiadott összes frissítési jogkivonatot a felhasználók egy csoportjának célzásához. Az összes frissítési token visszavonása fontos a megszakadáskor használt privilegizált fiókok esetében, és ezzel kényszeríti őket a visszaállított szabályzatok ismételt hitelesítésére és ellenőrzésére.
 
 ## <a name="emergency-options"></a>Vészhelyzeti beállítások
 
@@ -280,17 +280,17 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
  > Ha kibővíti a megbízható IP-címeket a hozzáférés feloldásához, az IP-címekhez (például lehetetlen utazáshoz vagy ismeretlen helyszínekhez) kapcsolódó kockázati észleléseket nem generálja a rendszer.
 
 >[!NOTE]
- > Az Azure MFA [megbízható IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)lehetséges.
+ > Az Azure MFA [megbízható IP](./howto-mfa-mfasettings.md) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](./concept-mfa-licensing.md)lehetséges.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 
-* [Az Azure AD-hitelesítés dokumentációja](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Elnevezett helyszínek konfigurálása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
-  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Vállalati Windows Hello – Üzembehelyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Az Azure AD-hitelesítés dokumentációja](./howto-mfaserver-iis.md)
+* [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
+* [Elnevezett helyszínek konfigurálása Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+* [Hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](../devices/hybrid-azuread-join-plan.md)
+* [Vállalati Windows Hello – Üzembehelyezési útmutató](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Jelszó-útmutató – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Mik a feltételek a feltételes hozzáférés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Mik azok a hozzáférés-vezérlések Azure Active Directory feltételes hozzáféréshez?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
-* [Mi a csak feltételes hozzáférés jelentési módja?](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)
+* [Mik a feltételek a feltételes hozzáférés Azure Active Directory?](../conditional-access/concept-conditional-access-conditions.md)
+* [Mik azok a hozzáférés-vezérlések Azure Active Directory feltételes hozzáféréshez?](../conditional-access/controls.md)
+* [Mi a csak feltételes hozzáférés jelentési módja?](../conditional-access/concept-conditional-access-report-only.md)

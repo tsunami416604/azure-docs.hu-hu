@@ -40,6 +40,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: A Key Vault összekapcsolása egy Azure Spring Cloud-alkalmazással felügyelt identitás segítségével
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: Az Azure Spring Cloud üzembe helyezése virtuális hálózaton
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: Példák
   items:
     - name: Az Azure Policy beépített elemei

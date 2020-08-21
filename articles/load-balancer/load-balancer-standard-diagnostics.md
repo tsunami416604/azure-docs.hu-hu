@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090450"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717336"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -25,7 +25,7 @@ Az Azure standard Load Balancer a következő diagnosztikai képességeket teszi
 
 * **Többdimenziós mérőszámok és riasztások**: többdimenziós diagnosztikai képességeket biztosít a standard Load Balancer-konfigurációk [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview) keresztül. A standard Load Balancer-erőforrások figyelésére, kezelésére és hibakeresésére van lehetőség.
 
-* **Erőforrás állapota**: a Azure Portal Load Balancer lapja és a Resource Health lap (a figyelő alatt) tegye elérhetővé a standard Load Balancer Resource Health szakaszát. 
+* **Erőforrás állapota**: a Load Balancer Resource Health állapota a Figyelés területen található Resource Health oldalon érhető el. Ez az automatikus vizsgálat tájékoztatja a Load Balancer erőforrás aktuális rendelkezésre állásáról.
 
 Ez a cikk gyors áttekintést nyújt ezekről a képességekről, és lehetőséget nyújt a standard Load Balancer használatára. 
 
@@ -35,7 +35,7 @@ Azure Load Balancer többdimenziós metrikákat biztosít az Azure-metrikák has
 
 A különböző standard Load Balancer konfigurációk a következő metrikákat biztosítják:
 
-| Metrika | Erőforrás típusa | Description | Ajánlott aggregáció |
+| Metrika | Erőforrás típusa | Leírás | Ajánlott aggregáció |
 | --- | --- | --- | --- |
 | Adatútvonalak rendelkezésre állása | Nyilvános és belső Load Balancer | A standard szintű Load Balancer folyamatosan kihasználja a régió és a terheléselosztó elülső rétege közötti adatútvonalat egészen a virtuális gépet támogató SDN-veremig. Amíg a kifogástalan állapotú példányok megmaradnak, a mérés ugyanazt az útvonalat követi, mint az alkalmazás elosztott terhelésű forgalma. Az ügyfelek által használt adatútvonal szintén érvényesítve lesz. A mérés nem látható az alkalmazás számára, és nincs hatással más műveletekre.| Átlag |
 | Állapotadat-mintavétel állapota | Nyilvános és belső Load Balancer | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő példányok összesített vagy végponti szűrt nézetét biztosítja. Láthatja, hogyan tekinti meg a Load Balancer az alkalmazás állapotát az állapotminta konfigurációja alapján. |  Átlag |
@@ -91,7 +91,7 @@ A riasztások konfigurálása:
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Az adatelérési út fel van és érhető el az Load Balancer előtéri felületén?
 <details><summary>Kibontás</summary>
 
-Az adatelérési út rendelkezésre állási rendelkezésre állási metrikája a régión belüli adatelérési út állapotát mutatja a virtuális gépek helyéül szolgáló számítási gazdagépen. A metrika az Azure-infrastruktúra állapotának áttekintése. A metrika a következőre használható:
+Az adatelérési út rendelkezésre állási metrikája a régión belüli adatelérési út állapotát mutatja a virtuális gépek helyéül szolgáló számítási gazdagépen. A metrika az Azure-infrastruktúra állapotának áttekintése. A metrika a következőre használható:
 - A szolgáltatás külső rendelkezésre állásának monitorozása
 - Mélyebbre ássa, hogy az a platform, amelyen a szolgáltatás telepítve van, kifogástalan állapotú-e, illetve hogy a vendég operációs rendszer vagy alkalmazás példánya kifogástalan állapotú-e.
 - Elkülöníti, hogy egy esemény kapcsolódik-e a szolgáltatáshoz vagy az alapul szolgáló adatsíkon. Ne tévesszük össze ezt a metrikát az állapot mintavételi állapotával ("háttér-példány rendelkezésre állása").
@@ -110,7 +110,7 @@ A metrikát egy aktív, sávon belüli mérés hozza létre. A régión belüli 
 
 A rendszer rendszeres időközönként létrehoz egy csomagot, amely megfelel az üzembe helyezéshez tartozó előtérnek és szabálynak. A rendszer áthelyezi a régiót a forrásból a gazdagépre, ahol a háttérbeli készletben lévő virtuális gép található. A terheléselosztó infrastruktúra ugyanazt a terheléselosztási és fordítási műveletet hajtja végre, mint az összes többi forgalom esetében. Ez a mintavétel sávon kívül esik a terheléselosztási végponton. Miután a mintavétel megérkezik a (z) rendszerre, ahol egy kifogástalan virtuális gép található a háttér-készletben, a számítási gazdagép választ küld a szondázás szolgáltatásnak. A virtuális gép nem látja ezt a forgalmat.
 
-A DataPath rendelkezésre állásának elérhetősége a következő okok miatt sikertelen:
+A DataPath elérhetősége a következő okok miatt meghiúsul:
 - Az üzemelő példány nem rendelkezik kifogástalan állapotú virtuális gépekkel a háttér-készletben. 
 - Infrastruktúra-kimaradás történt.
 
@@ -155,14 +155,14 @@ A SNAT-kapcsolatok statisztikáinak beolvasása:
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Hogyan a SNAT-portok használatának és foglalásának ellenőrzése?
 <details>
   <summary>Kibontás</summary>
-A SNAT-használati metrika azt jelzi, hogy hány egyedi folyamat jön létre egy internetes forrás és egy olyan háttérbeli virtuális gép vagy virtuálisgép-méretezési csoport között, amely egy terheléselosztó mögött található, és nem rendelkezik nyilvános IP-címmel. A SNAT foglalási metrikájának összehasonlításával meghatározhatja, hogy a szolgáltatás tapasztalt-e, vagy a SNAT kimerülése és a létrejövő kimenő folyamat meghibásodása esetén is. 
+A használt SNAT-portok mérőszáma nyomon követi, hogy hány SNAT-portot használ a rendszer a kimenő folyamatok fenntartásához. Ez azt jelzi, hogy hány egyedi folyamat jön létre egy internetes forrás és egy olyan háttérbeli virtuális gép vagy virtuálisgép-méretezési csoport között, amely egy terheléselosztó mögött található, és nem rendelkezik nyilvános IP-címmel. A lefoglalt SNAT-portok metrikával használt SNAT-portok számának összehasonlításával megállapíthatja, hogy a szolgáltatás tapasztalható-e, vagy a SNAT kimerülése és az eredményül kapott kimenő folyamat meghibásodása esetén is fennáll-e. 
 
 Ha a mérőszámok a [kimenő folyamat](https://aka.ms/lboutbound) meghibásodásának kockázatát jelzik, hivatkozzon a cikkre, és végezze el a szükséges lépéseket a szolgáltatás állapotának biztosításához.
 
 SNAT-portok használatának és foglalásának megtekintése:
 1. Állítsa be a gráf időösszesítését 1 percre a kívánt adatértékek megjelenítéséhez.
-1. Válassza ki a **SNAT használatát** és/vagy a **SNAT kiosztását** metrikai típusként és **átlagként** az összesítéshez
-    * Alapértelmezés szerint ez az egyes háttérbeli virtuális gépek vagy VMSSes számára lefoglalt vagy felhasznált SNAT-portok átlagos száma, amely az összes, a Load Balancer leképezett, a TCP és az UDP protokollal összevont nyilvános IP-cím számára megfelelő.
+1. Válassza ki a **használt SNAT-portok** és/vagy a **lefoglalt SNAT-portok** mérőszám típusát és **átlagát** az összesítéshez.
+    * Alapértelmezés szerint ezek a metrikák az egyes háttérbeli virtuális gépek vagy VMSS által lefoglalt vagy felhasznált SNAT-portok átlagos száma, amelyek az összes, a Load Balancer leképezett, a TCP és az UDP protokollal összevont nyilvános IP-cím számára elérhetők.
     * A terheléselosztó által használt vagy lefoglalt teljes SNAT-portok megjelenítéséhez használja a metrika összesítésének **összegét**
 1. Szűrés egy adott **protokolltípus**, a **háttérbeli IP**-címek és/vagy a **felületi IP**-címek készlete alapján.
 1. A háttér-vagy frontend-példány állapotának figyeléséhez alkalmazza a felosztást. 
@@ -252,13 +252,14 @@ A nyilvános standard Load Balancer erőforrások állapotának megtekintése:
 
    *Ábra: Load Balancer erőforrás-állapot nézet*
  
-A különböző erőforrás-állapotokat és azok leírását az alábbi táblázat tartalmazza: 
+Az általános erőforrás állapotának leírása a [RHC dokumentációjában](https://docs.microsoft.com/azure/service-health/resource-health-overview)érhető el. A Azure Load Balancer meghatározott állapotait az alábbi táblázat tartalmazza: 
 
-| Erőforrás állapotának állapota | Description |
+| Erőforrás állapotának állapota | Leírás |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
-| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. **Azure monitor**  >  **metrikák**kiválasztásával diagnosztizálhatja az állapotot.<br>(A nem*elérhető* állapot azt is jelenti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.) |
-| Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült.<br>(Az*ismeretlen* állapot azt is jelentheti, hogy az erőforrás nem kapcsolódik a standard Load Balancerhez.)  |
+| Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. A DataPath rendelkezésre állási metrikája 90%-nál kevesebb, de 25%-nál nagyobb állapotot jelentett legalább két percen belül. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. [Kövesse az adatelérési út hibaelhárítási útmutatóját] annak megállapításához, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek hatással vannak a rendelkezésre állásra.
+| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. [Kövesse az adatelérési út hibaelhárítási útmutatóját] annak megállapításához, hogy vannak-e olyan felhasználó által kezdeményezett események, amelyek befolyásolják a rendelkezésre állást. |
+| Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült, vagy nem kapott adatelérési utat az elmúlt 10 percben. Ennek az állapotnak átmenetinek kell lennie, és a megfelelő állapotot fogja tükrözni, amint az adatok beérkeznek. |
 
 ## <a name="next-steps"></a>További lépések
 

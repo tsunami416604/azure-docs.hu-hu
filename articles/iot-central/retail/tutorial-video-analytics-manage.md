@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038379"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719070"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás figyelése és kezelése
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-Navigáljon a **monitor** irányítópultra az alkalmazásban. Ezután kattintson az egyik rögzített objektum-észlelési hiperhivatkozásra a **következtetési esemény videó** csempén. A videó a helyi videolejátszó által megjelenített oldalon jelenik meg:
+Navigáljon a **kamera-003** eszközhöz, és válassza az **irányítópult** fület. Ezután kattintson az egyik rögzített objektum-észlelési hiperhivatkozásra a **következtetési esemény videó** csempén. A videó a helyi videolejátszó által megjelenített oldalon jelenik meg:
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videó kódrészlet":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>Szimulált eszközök módosítása az alkalmazás irányítópultján
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>Szimulált eszközök módosítása alkalmazás-irányítópultokon
 
 Az alkalmazás-irányítópultok eredetileg a IoT Central szimulált eszközökről generált telemetria és tulajdonságokkal vannak feltöltve. Az alábbi lépéseket követve konfigurálhatja a csempéket a valódi kamerákból vagy a Live555-szimulátorból származó telemetria:
 
-1. Navigáljon a **valódi kamera-figyelő** irányítópultra.
+1. Navigáljon a **(minta) valódi kamera-figyelő** alkalmazás irányítópultra.
 1. Válassza a **Szerkesztés** elemet.
+1. Válassza ki a **jegyzet** csempét, és törölje azt.
+1. Módosítsa az irányítópult címét *valódi kamera-figyelőre*.
 1. A **következtetések száma** csempén válassza a konfigurálás ikont.
 1. A **diagram konfigurálása** szakaszban válasszon ki egy vagy több valódi kamerát az **LVA Edge Object detektor** eszköz csoportjában.
 1. Válassza ki a `AI Inference Interface/Inference Count` telemetria mezőt.
 1. Válassza a **Frissítés** lehetőséget.
-
-   
 
 1. Ismételje meg a lépéseket a következő csempék esetében:
     1. Az **észlelési** tortadiagram a `AI Inference Interface/Inference/entity/tag/value` telemetria típust használja.

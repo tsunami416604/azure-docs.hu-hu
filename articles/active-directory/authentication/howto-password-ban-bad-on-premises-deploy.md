@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82143224"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718951"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -42,9 +42,9 @@ A naplózási szakaszban számos szervezet úgy találja, hogy a következő hel
 * A felhasználók gyakran nem biztonságos jelszavakat használnak.
 * Tájékoztatniuk kell a felhasználókat a biztonsági kényszerítés közelgő változásáról, a lehetséges hatásokról, valamint a biztonságosabb jelszavak kiválasztásáról.
 
-Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálásának befolyásolására is használható. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre a probléma elhárítása érdekében. További információért tekintse át a következő cikkeket:
+Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active Directory tartományvezérlő üzembe helyezési automatizálásának befolyásolására is használható. Javasoljuk, hogy a naplózási időszak kiértékelése során legalább egy DC-előléptetést és egy tartományvezérlő-lefokozást hajtson végre a probléma elhárítása érdekében. További információkért tekintse át a következő cikkeket:
 
-* [ANtdsutil.exe nem tudja beállítani a Címtárszolgáltatások helyreállító módjának jelszavát.](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [ ANtdsutil.exe nem tudja beállítani a Címtárszolgáltatások helyreállító módjának jelszavát.](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [A tartományvezérlő replikájának előléptetése sikertelen a Címtárszolgáltatások helyreállító módjának jelszava miatt](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [A tartományvezérlő lefokozása nem sikerült, mert gyenge a helyi rendszergazda jelszava](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
@@ -88,7 +88,7 @@ A következő alapvető követelmények érvényesek:
     * Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:
 
-    |**Végpont**|**Szerep**|
+    |**Végpont**|**Rendeltetés**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
     |`https://enterpriseregistration.windows.net`|Azure AD jelszavas védelem funkció|
@@ -101,7 +101,7 @@ Az Azure AD Password Protection DC-ügynökre az alábbi követelmények vonatko
     * A Active Directory tartományhoz vagy erdőhöz nem szükséges a Windows Server 2012 tartomány működési szintjének (DFL) vagy az erdő működési szintje (FFL). A [tervezési alapelvekben](concept-password-ban-bad-on-premises.md#design-principles)említettek szerint a DC-ügynök vagy a proxy szoftver futtatásához nincs szükség minimális DFL vagy FFL.
 * Az Azure AD jelszavas védelem DC-ügynökét futtató összes gépnek telepítve kell lennie a .NET 4,5-nek.
 * Az Azure AD jelszavas védelem DC Agent szolgáltatást futtató Active Directory tartományoknak elosztott fájlrendszer replikációt (DFSR) kell használniuk a SYSVOL-replikációhoz.
-   * Ha a tartomány még nem használja a DFSR-t, az Azure AD jelszavas védelem telepítése előtt át kell telepítenie. További információ [: SYSVOL-replikáció áttelepítési útmutatója: FRS – elosztott fájlrendszer replikációs szolgáltatása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+   * Ha a tartomány még nem használja a DFSR-t, az Azure AD jelszavas védelem telepítése előtt át kell telepítenie. További információ [: SYSVOL-replikáció áttelepítési útmutatója: FRS – elosztott fájlrendszer replikációs szolgáltatása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
     > [!WARNING]
     > Az Azure AD jelszavas védelem TARTOMÁNYVEZÉRLŐi ügynöke jelenleg a SYSVOL-replikációhoz használt FRS (a megelőző technológia DFSR) használatával működő tartományvezérlőkön települ, de a szoftver nem fog megfelelően működni ebben a környezetben.
@@ -124,14 +124,14 @@ Az Azure AD jelszavas védelem proxy szolgáltatására az alábbi követelmény
 * Az Azure AD jelszavas védelmi proxy szolgáltatást futtató összes gépet úgy kell konfigurálni, hogy a tartományvezérlők számára engedélyezze a proxy szolgáltatásba való bejelentkezést. Ezt a képességet a "számítógép elérése a hálózatról" jogosultság-hozzárendelésen keresztül vezérelheti.
 * Az Azure AD jelszavas védelmi proxy szolgáltatást futtató gépeket úgy kell konfigurálni, hogy engedélyezzék a kimenő TLS 1,2 HTTP-forgalmat.
 * *Globális rendszergazdai* fiók az Azure ad jelszavas védelmi proxy szolgáltatás és az erdő Azure ad-vel való regisztrálásához.
-* A hálózati hozzáférés engedélyezéséhez engedélyezni kell az [alkalmazásproxy-környezet telepítési eljárásaiban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)megadott portok és URL-címek készletét.
+* A hálózati hozzáférés engedélyezéséhez engedélyezni kell az [alkalmazásproxy-környezet telepítési eljárásaiban](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)megadott portok és URL-címek készletét.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD összekapcsolási ügynök frissítési előfeltételei
 
 Az Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását az Azure AD jelszavas védelem proxy szolgáltatásával párhuzamosan telepíti a rendszer. További konfigurálásra van szükség ahhoz, hogy a Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatása képes legyen működni:
 
-* Ha a környezet HTTP-proxykiszolgálót használ, kövesse a [meglévő helyszíni proxykiszolgálók használata](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)című témakörben megadott útmutatást.
-* A Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatásához a [TLS-követelményekben](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements)megadott TLS 1,2-lépéseket is meg kell adni.
+* Ha a környezet HTTP-proxykiszolgálót használ, kövesse a [meglévő helyszíni proxykiszolgálók használata](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)című témakörben megadott útmutatást.
+* A Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatásához a [TLS-követelményekben](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements)megadott TLS 1,2-lépéseket is meg kell adni.
 
 > [!WARNING]
 > Az Azure AD jelszavas védelem proxyja és az Azure AD Application Proxy a Microsoft Azure AD csatlakozás Agent Updater szolgáltatás különböző verzióit telepíti, ezért az utasítások az alkalmazásproxy tartalmára vonatkoznak. Ezek a különböző verziók nem kompatibilisek egymás mellett, és ennek köszönhetően az ügynök frissítési szolgáltatása nem fog tudni kapcsolatba lépni az Azure-nal a szoftverfrissítések számára, ezért soha ne telepítse az Azure AD jelszavas védelmi proxyt és az alkalmazásproxy-t ugyanarra a gépre.

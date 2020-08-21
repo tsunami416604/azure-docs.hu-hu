@@ -36,10 +36,6 @@
           href: virtual-wan-locations-partners.md
         - name: Automation-irányelvek partnerek számára
           href: virtual-wan-configure-automation-providers.md
-    - name: A díjszabás alapelvei
-      href: pricing-concepts.md
-    - name: NVA egy virtuális központban
-      href: about-nva-hub.md
     - name: Útválasztás
       items:
         - name: Információ a virtuális központ útválasztásáról
@@ -56,13 +52,13 @@
               href: scenario-shared-services-vnet.md
             - name: Útvonal NVA-n keresztül
               href: scenario-route-through-nva.md
-            - name: Útvonal NVA-n keresztül – egyéni (előzetes verzió)
+            - name: Útvonal NVA-n keresztül – egyéni
               href: scenario-route-through-nvas-custom.md
             - name: Azure Firewall – egyéni
               href: scenario-route-between-vnets-firewall.md
     - name: Figyelés
       items:
-        - name: Azure Monitor Insights virtuális WAN-hoz (előzetes verzió)
+        - name: Azure Monitor Insights virtuális WAN-hoz
           href: azure-monitor-insights.md
     - name: Helyek közötti kapcsolat
       items:
@@ -70,11 +66,15 @@
           href: virtual-wan-ipsec.md
         - name: Több ISP-hivatkozás – Azure-beli elérési út kiválasztása
           href: path-selection-multiple-links.md
+    - name: A díjszabás alapelvei
+      href: pricing-concepts.md
+    - name: NVA egy virtuális központban
+      href: about-nva-hub.md
 - name: Útmutatók
   items:
     - name: Virtuális WAN SKU-jának frissítése
       href: upgrade-virtual-wan.md
-    - name: NVA létrehozása egy virtuális központban (előzetes verzió)
+    - name: NVA létrehozása virtuális központban
       href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
@@ -154,14 +154,18 @@
   items:
     - name: GYIK
       href: virtual-wan-faq.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Előfizetés- és szolgáltatáskorlátok
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Közlemények frissítése
+      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Előfizetés- és szolgáltatáskorlátok
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Hálózatkezelési ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Hálózatkezelési blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Hálózatkezelési frissítések közleménye
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

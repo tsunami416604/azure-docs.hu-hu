@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22037468c47de45513351e1d6126d3f3e5fccadc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035383"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717795"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Felhasználói hitelesítési kapcsolattartási adatok előzetes feltöltése Azure Active Directory önkiszolgáló jelszó-visszaállításhoz (SSPR)
 
@@ -88,7 +88,7 @@ A következő mezők állíthatók be a PowerShell használatával:
 
 ### <a name="use-powershell-version-1"></a>A PowerShell 1-es verziójának használata
 
-Első lépésként [töltse le és telepítse az Azure ad PowerShell-modult](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). A telepítése után a következő lépésekkel konfigurálhatja az egyes mezőket.
+Első lépésként [töltse le és telepítse az Azure ad PowerShell-modult](/previous-versions/azure/jj151815(v=azure.100)#bkmk_installmodule). A telepítése után a következő lépésekkel konfigurálhatja az egyes mezőket.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>A hitelesítési adatértékek beállítása a PowerShell 1-es verziójával
 
@@ -126,7 +126,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>A PowerShell 2-es verziójának használata
 
-Első lépésként [töltse le és telepítse az Azure ad 2-es verziójú PowerShell-modulját](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0).
+Első lépésként [töltse le és telepítse az Azure ad 2-es verziójú PowerShell-modulját](/powershell/module/azuread/?view=azureadps-2.0).
 
 Az alábbi parancsok futtatásával gyorsan telepítheti a PowerShell legújabb verzióit `Install-Module` . Az első sor ellenőrzi, hogy a modul már telepítve van-e:
 

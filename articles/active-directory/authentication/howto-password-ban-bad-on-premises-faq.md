@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24db7981557cf76f9108a1dca37ea4c4c9f51951
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283078"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717778"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD jelszavas védelem a helyszínen – gyakori kérdések
 
@@ -46,7 +46,7 @@ A jelszó módosítása akkor történik meg, amikor egy felhasználó új jelsz
 
 A jelszó beállítása (más néven jelszó-visszaállítás) az, amikor egy rendszergazda új jelszóval helyettesíti egy fiók jelszavát, például a Active Directory felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez magas szintű jogosultság szükséges (általában tartományi rendszergazda), és a műveletet végző személy általában nem ismeri a régi jelszót. Az ügyfélszolgálati forgatókönyvek gyakran jelszavas készleteket végeznek, például olyan felhasználók számára, akik elfelejtették a jelszavukat. A jelszó-megadási eseményeket is látni fogja, ha új felhasználói fiókot hoz létre első alkalommal egy jelszóval.
 
-A jelszó-ellenőrzési házirend ugyanúgy viselkedik, függetlenül attól, hogy megtörtént-e a jelszó módosítása vagy beállítása. Az Azure AD Password Protection DC Agent szolgáltatás különböző eseményeket naplóz, hogy megtudja, van-e jelszó-módosítási vagy-beállítási művelet.  Lásd: [Az Azure ad jelszavas védelem figyelése és naplózása](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+A jelszó-ellenőrzési házirend ugyanúgy viselkedik, függetlenül attól, hogy megtörtént-e a jelszó módosítása vagy beállítása. Az Azure AD Password Protection DC Agent szolgáltatás különböző eseményeket naplóz, hogy megtudja, van-e jelszó-módosítási vagy-beállítási művelet.  Lásd: [Az Azure ad jelszavas védelem figyelése és naplózása](./howto-password-ban-bad-on-premises-monitor.md).
 
 **K: miért történik a duplikált jelszó-elutasítási események naplózása, amikor gyenge jelszót próbál beállítani a Active Directory felhasználók és számítógépek kezelése beépülő modullal?**
 
@@ -54,7 +54,7 @@ A Active Directory felhasználók és számítógépek kezelése beépülő modu
 
 **K: miért történik az Azure AD jelszavas védelem jelszavas védelmének ellenőrzése egy üres felhasználónévvel?**
 
-A Active Directory támogatja a jelszavak tesztelését, így ellenőrizheti, hogy a tartomány aktuális jelszó-összetettségi követelményeit adja-e át, például a [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API használatával. Ha a rendszer ily módon érvényesíti a jelszót, a tesztelés a jelszó-szűrő-DLL-alapú termékek (például az Azure AD jelszavas védelem) érvényesítését is magában foglalja, de a jelszó-szűrési dll-hez átadott felhasználónevek üresek lesznek. Ebben az esetben az Azure AD jelszavas védelme a jelenleg érvényben lévő jelszóházirend használatával továbbra is érvényesíti a jelszót, és egy eseménynapló-üzenetet ad ki az eredmény rögzítéséhez, azonban az Eseménynapló-üzenetben üres lesz a Felhasználónév mező.
+A Active Directory támogatja a jelszavak tesztelését, így ellenőrizheti, hogy a tartomány aktuális jelszó-összetettségi követelményeit adja-e át, például a [NetValidatePasswordPolicy](/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API használatával. Ha a rendszer ily módon érvényesíti a jelszót, a tesztelés a jelszó-szűrő-DLL-alapú termékek (például az Azure AD jelszavas védelem) érvényesítését is magában foglalja, de a jelszó-szűrési dll-hez átadott felhasználónevek üresek lesznek. Ebben az esetben az Azure AD jelszavas védelme a jelenleg érvényben lévő jelszóházirend használatával továbbra is érvényesíti a jelszót, és egy eseménynapló-üzenetet ad ki az eredmény rögzítéséhez, azonban az Eseménynapló-üzenetben üres lesz a Felhasználónév mező.
 
 **K: támogatott az Azure AD jelszavas védelem az egyéb jelszó-szűrő alapú termékekkel való párhuzamos telepítésére?**
 
@@ -74,13 +74,13 @@ A fájlreplikációs szolgáltatás (a DFSR megelőző technológia) számos ism
 
 További információt a következő cikkekben talál:
 
-[A SYSVOL-replikáció DFSR való áttelepítésének esete](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[A SYSVOL-replikáció DFSR való áttelepítésének esete](/archive/blogs/askds/the-case-for-migrating-sysvol-to-dfsr)
 
 [A Befejezés közel van a fájlreplikációs szolgáltatáshoz](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
 Ha a tartomány még nem használja a DFSR-t, akkor az Azure AD jelszavas védelem telepítése előtt át kell telepítenie a DFSR használatára. További információt a következő hivatkozásra kattintva talál:
 
-[SYSVOL-replikáció áttelepítési útmutatója: FRS – Elosztott fájlrendszer replikációs szolgáltatása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[SYSVOL-replikáció áttelepítési útmutatója: FRS – Elosztott fájlrendszer replikációs szolgáltatása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
 > Az Azure AD jelszavas védelem TARTOMÁNYVEZÉRLŐi ügynöke jelenleg a SYSVOL-replikációhoz használt FRS-t használó tartományok tartományvezérlőjén települ, de a szoftver nem fog megfelelően működni ebben a környezetben. További negatív mellékhatások például az egyes fájlok replikálásának meghiúsulása, a SYSVOL visszaállítási eljárásai pedig sikeresek, de az összes fájl replikálásának csendes sikertelensége esetén sikertelenek lesznek. A tartományt a lehető leghamarabb telepítse át a DFSR használatára, mind a DFSR rejlő előnyeit, mind pedig az Azure AD jelszavas védelem üzembe helyezésének feloldását is. A szoftver jövőbeli verziói automatikusan le lesznek tiltva, ha olyan tartományban fut, amely továbbra is FÁJLREPLIKÁCIÓS szolgáltatást használ.
@@ -101,7 +101,7 @@ Nem. Mivel a proxykiszolgáló állapota nem megfelelő, nem fontos, hogy a rend
 
 Igen. Az Azure AD jelszavas védelmi proxy szolgáltatás és Azure AD Connect soha nem ütköznek közvetlenül egymással.
 
-Sajnos inkompatibilitás található az Azure AD jelszavas védelmi proxy szoftverrel és a [Azure Active Directory Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) szoftver által telepített szolgáltatás által telepített Microsoft Azure ad összekapcsoló ügynök-frissítési szolgáltatás verziójával. Ez a kompatibilitási megoldás azt eredményezheti, hogy az ügynök-frissítési szolgáltatás nem tud kapcsolódni az Azure-hoz a szoftverfrissítésekért. Az Azure AD jelszavas védelmi proxy és a Azure Active Directory Application Proxy ugyanarra a gépre való telepítése nem ajánlott.
+Sajnos inkompatibilitás található az Azure AD jelszavas védelmi proxy szoftverrel és a [Azure Active Directory Application proxy](../manage-apps/application-proxy.md) szoftver által telepített szolgáltatás által telepített Microsoft Azure ad összekapcsoló ügynök-frissítési szolgáltatás verziójával. Ez a kompatibilitási megoldás azt eredményezheti, hogy az ügynök-frissítési szolgáltatás nem tud kapcsolódni az Azure-hoz a szoftverfrissítésekért. Az Azure AD jelszavas védelmi proxy és a Azure Active Directory Application Proxy ugyanarra a gépre való telepítése nem ajánlott.
 
 **K: milyen sorrendben kell telepíteni és regisztrálni a DC-ügynököket és-proxykat?**
 

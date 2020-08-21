@@ -61,6 +61,12 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: Az ARMClient használata
           href: connection-monitor-preview-create-using-arm-client.md
+    - name: Migrálás a kapcsolatfigyelőbe (előzetes verzió)
+      items:
+        - name: A hálózati teljesítményfigyelőből
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: A kapcsolatfigyelőből
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: A virtuális gép hálózati problémáinak diagnosztizálása
       items:
         - name: Virtuálisgép-bővítmény telepítése
