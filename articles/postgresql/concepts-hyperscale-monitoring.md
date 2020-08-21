@@ -7,18 +7,18 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580654"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690408"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL figyelése és finomhangolása – nagy kapacitású (Citus)
 
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A nagy kapacitású (Citus) különböző figyelési lehetőségeket biztosít, amelyek betekintést nyújtanak a kiszolgálói csoportok csomópontjainak viselkedésére.
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 A nagy kapacitású (Citus) metrikákat biztosít a kiszolgálócsoport egyes csomópontjaihoz. A metrikák betekintést nyújtanak a támogatási erőforrások viselkedésére. Minden metrika egy egyperces gyakorisággal van kibocsátva, és akár 30 napig is eltarthat.
 
@@ -28,11 +28,11 @@ A metrikák diagramjainak megtekintése mellett beállíthatja a riasztásokat i
 
 Ezek a metrikák a nagy kapacitású-(Citus-) csomópontokhoz érhetők el:
 
-|Metric|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
 |---|---|---|---|
 |active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
-|IOPS|IOPS|Darabszám|Lásd a [IOPS-definíciót](../virtual-machines/linux/premium-storage-performance.md#iops) és a [nagy kapacitású átviteli sebességét](concepts-hyperscale-configuration-options.md)|
+|IOPS|IOPS|Darabszám|Lásd a [IOPS-definíciót](../virtual-machines/premium-storage-performance.md#iops) és a [nagy kapacitású átviteli sebességét](concepts-hyperscale-configuration-options.md)|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
 |network_bytes_egress|Kimenő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|

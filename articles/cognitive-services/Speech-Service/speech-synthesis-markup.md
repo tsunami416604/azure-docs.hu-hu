@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ae98f74092c3955a54c0817082e8f29c1b251237
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3394882574f94e4a1af3aa942f3b0bd87be55368
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533393"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690085"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -46,7 +46,7 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 ## <a name="create-an-ssml-document"></a>SSML-dokumentum létrehozása
 
-`speak`a gyökérelem, és minden SSML-dokumentum esetében **kötelező** . Az `speak` elem fontos információkat tartalmaz, például a verziót, a nyelvet és a Markup szókincs definícióját.
+`speak` a gyökérelem, és minden SSML-dokumentum esetében **kötelező** . Az `speak` elem fontos információkat tartalmaz, például a verziót, a nyelvet és a Markup szókincs definícióját.
 
 **Syntax**
 
@@ -192,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > A beszélő stílusok beállítása csak neurális hangokat fog működni.
 
-Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurális hangok semleges beszéd stílusa alapján szintetizálja a szöveget. Az neurális hangokkal úgy állíthatja be a beszélő stílust, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy a hangvételt optimalizálja a különböző forgatókönyvekhez, például az egyéni szolgáltatáshoz, a bemondáshoz és a hangsegédhez, a <mstts: Express-as> elem használatával. Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
+Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurális hangok semleges beszéd stílusa alapján szintetizálja a szöveget. Az neurális hangok segítségével úgy állíthatja be a beszéd stílusát, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy optimalizálja a hangját a különböző forgatókönyvekhez, például az egyéni szolgáltatáshoz, a beolvasás és a hangsegédekhez  `mstts:express-as`   . Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
 
 A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
 * `en-US-AriaNeural`
@@ -263,7 +263,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
-| `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben. Példák érvényes értékekre, `2s` és`500` | Választható |
+| `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben. Példák érvényes értékekre, `2s` és `500` | Választható |
 
 | Erősségét                      | Leírás |
 |-------------------------------|-------------|
@@ -286,7 +286,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 
 ## <a name="specify-paragraphs-and-sentences"></a>Bekezdések és mondatok meghatározása
 
-`p`és `s` az elemek a bekezdések és a mondatok jelölésére használatosak. Ezen elemek hiányában a szöveg-beszéd szolgáltatás automatikusan meghatározza a SSML-dokumentum szerkezetét.
+`p` és `s` az elemek a bekezdések és a mondatok jelölésére használatosak. Ezen elemek hiányában a szöveg-beszéd szolgáltatás automatikusan meghatározza a SSML-dokumentum szerkezetét.
 
 Az `p` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `break` `phoneme` `prosody` `say-as` `sub` `mstts:express-as` és `s` .
 
@@ -564,7 +564,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 ```
 ## <a name="say-as-element"></a>Say-as elem
 
-`say-as`egy opcionális elem, amely megadja az elem szövegének típusát (például szám vagy dátum). Ez útmutatást nyújt a beszédfelismerési motornak a szöveg kiejtéséről.
+`say-as` egy opcionális elem, amely megadja az elem szövegének típusát (például szám vagy dátum). Ez útmutatást nyújt a beszédfelismerési motornak a szöveg kiejtéséről.
 
 **Syntax**
 
@@ -617,7 +617,7 @@ A Speech szintézis motor a következő példát szemlélteti: "az első kérés
 
 ## <a name="add-recorded-audio"></a>Rögzített hang hozzáadása
 
-`audio`egy opcionális elem, amely lehetővé teszi, hogy MP3-hangfelvételt helyezzen be egy SSML-dokumentumba. A hangelem törzse tartalmazhat egyszerű szöveges vagy SSML jelölést, amely akkor beszél, ha a hangfájl nem érhető el, vagy nem játszható le. Emellett az `audio` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `break` `p` `s` `phoneme` `prosody` `say-as` és `sub` .
+`audio` egy opcionális elem, amely lehetővé teszi, hogy MP3-hangfelvételt helyezzen be egy SSML-dokumentumba. A hangelem törzse tartalmazhat egyszerű szöveges vagy SSML jelölést, amely akkor beszél, ha a hangfájl nem érhető el, vagy nem játszható le. Emellett az `audio` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `break` `p` `s` `phoneme` `prosody` `say-as` és `sub` .
 
 A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő követelményeknek:
 

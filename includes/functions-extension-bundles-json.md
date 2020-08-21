@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
-ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b67e2bf2ae5af2feb334e898ce69fd5b959c7cf0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80878245"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689555"
 ---
 ```json
 {
@@ -27,7 +27,3 @@ A következő tulajdonságok érhetők el a ben `extensionBundle` :
 | -------- | ----------- |
 | id | Microsoft Azure functions bővítmények névterei. |
 | version | A telepítendő csomag verziószáma. A functions Runtime mindig kiválasztja a verziószám vagy az intervallum által meghatározott maximálisan megengedett verziót. A fenti verzió értéke lehetővé teszi, hogy az összes köteg verziója a 1.0.0-ból, de nem tartalmazza a 2.0.0. További információ: a [verziók tartományának megadására szolgáló intervallum jelölése](/nuget/reference/package-versioning#version-ranges). |
-
-A csomag verziójának növekménye csomagokként a köteg változása. A főverzió módosításai akkor fordulnak elő, ha a csomagban lévő csomagok nagyobb verziójúak. A köteg főverziójának változásai általában egybeesnek a functions futtatókörnyezet főverziójának változásával.  
-
-Az alapértelmezett csomag által telepített bővítmények jelenleg a [extensions.jsfájlban](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)vannak felsorolva.

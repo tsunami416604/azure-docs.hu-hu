@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660874"
+ms.locfileid: "88689745"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -174,7 +174,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 
 ### <a name="storage"></a>Storage
 
-A Batch-átírás egy internetes URI-n keresztül képes olvasni a hangot, és az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)használatával olvasási vagy írási átírásokat tud olvasni.
+A Batch-átírás képes a nyilvánosan látható internetes URI-n keresztül olvasni a hanganyagot, és az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)-t használó sas URI-val képes hang-és írási átírásokat olvasni.
 
 ## <a name="batch-transcription-result"></a>Köteg átírásának eredménye
 
@@ -243,7 +243,7 @@ Az átírási eredmények fájljának formátuma a következő:
 }
 ```
 
-Az eredmény a következő formákat tartalmazza:
+Az eredmény a következő mezőket tartalmazza:
 
 :::row:::
    :::column span="1":::
@@ -309,7 +309,8 @@ A Word-szintű időbélyegeket engedélyezni kell, ha a fenti kérelemben szerep
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-A Batch transzkripciós szolgáltatás nagy számú beküldött átírást képes kezelni. Az átiratok állapotát lekérdezheti a `GET` [Get átiratok](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)használatával. Az eredmények lekérése után rendszeresen hívja meg a [delete átiratot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) a szolgáltatásból. Másik lehetőségként állítsa be a `timeToLive` tulajdonságot egy ésszerű értékre az eredmények végleges törlésének biztosítása érdekében.
+A Batch transzkripciós szolgáltatás nagy számú beküldött átírást képes kezelni. Lekérdezheti az átiratok állapotát a [Get transzkripciós](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)használatával.
+Az eredmények lekérése után rendszeresen hívja meg a [delete átiratot](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) a szolgáltatásból. Másik lehetőségként állítsa be `timeToLive` a tulajdonságot az eredmények végleges törlésének biztosítására.
 
 ## <a name="sample-code"></a>Mintakód
 

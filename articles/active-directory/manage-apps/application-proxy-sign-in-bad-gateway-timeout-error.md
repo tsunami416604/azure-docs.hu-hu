@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367750"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690272"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem lehet hozzáférni a vállalati alkalmazáshoz" hibaüzenet alkalmazásproxy-alkalmazás használatakor
 
@@ -50,7 +50,7 @@ Az átjáró időtúllépése akkor történik meg, amikor a szolgáltatás megp
 A hibás átjáró hibája azt jelzi, hogy az összekötő nem tudja elérni a háttérbeli alkalmazást. Győződjön meg arról, hogy a megfelelő alkalmazást tette közzé. A hibát okozó gyakori hibák a következők:
 
 - A belső URL-cím elírása vagy hibája
-- Nem teszi közzé az alkalmazás gyökerét. Például közzététel, <http://expenses/reimbursement> de a hozzáférés kipróbálása<http://expenses>
+- Nem teszi közzé az alkalmazás gyökerét. Például közzététel, `http://expenses/reimbursement` de a hozzáférés kipróbálása `http://expenses`
 - Problémák a Kerberos által korlátozott delegálás (KCD) konfigurációjával
 - Problémák a háttérbeli alkalmazással
 

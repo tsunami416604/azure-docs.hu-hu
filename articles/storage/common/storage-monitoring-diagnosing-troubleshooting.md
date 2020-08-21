@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076048"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688555"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -31,7 +31,7 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
 * [A tárolási szolgáltatás figyelése]
   * [Figyelési szolgáltatás állapota]
   * [Kapacitás figyelése]
-  * [Rendelkezésre állás figyelése]
+  * [A rendelkezésre állás monitorozása]
   * [Teljesítmény figyelése]
 * [Tárolási problémák diagnosztizálása]
   * [A szolgáltatás állapotával kapcsolatos problémák]
@@ -136,7 +136,7 @@ A tárolási metrikák csak a blob szolgáltatás kapacitás-metrikáit tárolj�
 
 A különböző tárolási objektumok, például a Blobok méretének becsléséhez tekintse meg az [Azure Storage számlázási szolgáltatás – sávszélesség, tranzakciók és kapacitás – ismertetését](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)ismertető blogbejegyzést.
 
-### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Rendelkezésre állás figyelése
+### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>A rendelkezésre állás monitorozása
 Figyelje meg a Storage-fiók tárolási szolgáltatásainak rendelkezésre állását úgy, hogy a **rendelkezésre állási** oszlopban lévő értéket figyeli az óránkénti vagy perc mérőszámok táblázatában: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. A **rendelkezésre állási** oszlop olyan százalékos értéket tartalmaz, amely jelzi a szolgáltatás rendelkezésre állását vagy a sor által jelzett API-műveletet (a **RowKey** azt jelzi, hogy a sor tartalmaz-e metrikákat a szolgáltatás egészére vagy egy adott API-műveletre vonatkozóan).
 
 A 100%-nál kisebb érték azt jelzi, hogy egyes tárolási kérelmek meghiúsulnak. Azt is megtudhatja, hogy miért nem sikerül, ha megvizsgálja a metrikák más oszlopait, amelyek a különböző típusú (például **ServerTimeoutError**) kérelmek számát jelenítik meg. A **rendelkezésre állást** úgy kell megtekinteni, hogy az átmeneti kiszolgáló időtúllépése miatt átmenetileg a 100% alá esik, amíg a szolgáltatás a partíciókat áthelyezi a terheléselosztási kérelmek jobb terhelése érdekében. az ügyfélalkalmazás újrapróbálkozási logikájának képesnek kell lennie az ilyen időszakos feltételek kezelésére. A [naplózott műveletek és állapotüzenetek Storage Analytics](https://msdn.microsoft.com/library/azure/hh343260.aspx) cikk felsorolja a tárolási metrikák által a **rendelkezésre állási** számításban foglalt tranzakciótípusok listáját.
@@ -468,7 +468,7 @@ Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valósz
 | Forrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | Művelet szövege |
 | --- | --- | --- | --- | --- |
 | Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
-| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Szinkron kérelem indítása<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Szinkron kérelem indítása <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> |
 | Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Várakozás a válaszra. |
 | Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. |
 | Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
@@ -516,7 +516,7 @@ Naplóbejegyzések:
 | 07b26a5d-... |Szinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: kedd, 03 jún 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
 | 07b26a5d-... |Várakozás a válaszra. |
-| 07b26a5d-... |Válasz érkezett. Állapotkód = 200, kérelem azonosítója = eeead849-... Content-MD5 =, ETag = &quot; 0x8D14D2DC63D059B &quot; . |
+| 07b26a5d-... |Válasz érkezett. Állapotkód = 200, kérelem azonosítója = eeead849-... Content-MD5 =, ETag =    &quot; 0x8D14D2DC63D059B &quot; . |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
 | 07b26a5d-... |A művelet sikeresen befejeződött. |
@@ -559,7 +559,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Name | Érték |
+| Név | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |
@@ -824,7 +824,7 @@ Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekints
 [A tárolási szolgáltatás figyelése]: #monitoring-your-storage-service
 [Figyelési szolgáltatás állapota]: #monitoring-service-health
 [Kapacitás figyelése]: #monitoring-capacity
-[Rendelkezésre állás figyelése]: #monitoring-availability
+[A rendelkezésre állás monitorozása]: #monitoring-availability
 [Teljesítmény figyelése]: #monitoring-performance
 
 [Tárolási problémák diagnosztizálása]: #diagnosing-storage-issues

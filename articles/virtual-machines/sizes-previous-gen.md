@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831294"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683895"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -59,7 +59,7 @@ Premium Storage gyorsítótárazás: támogatott
 
 MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
-<sup>1</sup> az FS SOROZATú virtuális gépek maximális átviteli sebessége (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható.  Részletekért lásd: a [Windows](windows/premium-storage-performance.md) vagy [Linux](linux/premium-storage-performance.md)nagy teljesítményének tervezése.  
+<sup>1</sup> az FS SOROZATú virtuális gépek maximális átviteli sebessége (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható.  Részletekért lásd: [Design for nagy teljesítmény (./Premium-Storage-Performance.MD).
 
 
 ## <a name="nvv2-series"></a>NVv2 sorozat
@@ -267,7 +267,7 @@ Premium Storage gyorsítótárazás: támogatott
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288) | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576) | 51200/512 | 8/8000 |
 
-<sup>1</sup> a DS-SOROZATú virtuális gépek maximális átviteli sebessége (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható.  Részletekért lásd: a [Windows](windows/premium-storage-performance.md) vagy [Linux](linux/premium-storage-performance.md)nagy teljesítményének tervezése.
+<sup>1</sup> a DS-SOROZATú virtuális gépek maximális átviteli sebessége (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható.  Részletekért lásd: [Design for nagy teljesítmény (./Premium-Storage-Performance.MD).
 <sup>2</sup> a VM-család a következő CPU-k egyikén futhat: 2,2 GHz-es intel Xeon® E5-2660 v2, 2,4 GHz-es intel Xeon® E5-2673 v3 (Haswell) vagy 2,3 GHz-es intel Xeon® E5-2673 v4 (Broadwell)  
 
 <br>
@@ -293,7 +293,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-Az ls-sorozatú virtuális gépek maximális átviteli sebessége az összes csatlakoztatott lemez számával, méretétől és csíkozásával korlátozható. Részletekért lásd: a [Windows](windows/premium-storage-performance.md) vagy [Linux](linux/premium-storage-performance.md)nagy teljesítményének tervezése.
+Az ls-sorozatú virtuális gépek maximális átviteli sebessége az összes csatlakoztatott lemez számával, méretétől és csíkozásával korlátozható. Részletekért lásd: [Design for nagy teljesítmény (./Premium-Storage-Performance.MD).
 
 <sup>1</sup> példány az egyetlen ügyfél számára dedikált hardveren van elkülönítve.
 
@@ -315,7 +315,7 @@ Premium Storage gyorsítótárazás: támogatott
 | Standard_GS4 &nbsp; <sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112) | 40000/1000 | 8/16000 |
 | Standard_GS5 &nbsp; <sup>2, &nbsp; 3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224) | 80000/2000 | 8/20000 |
 
-<sup>1</sup> a GS SOROZATú virtuális gépek maximális átviteli sebessége (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható. Részletekért lásd: a [Windows](windows/premium-storage-performance.md) vagy [Linux](linux/premium-storage-performance.md)nagy teljesítményének tervezése.
+<sup>1</sup> a GS SOROZATú virtuális gépek maximális átviteli sebessége (IOPS vagy Mbps) a csatlakoztatott lemez (ek) számával, méretétől és csíkozásával korlátozható. Részletekért lásd: [Design for nagy teljesítmény (./Premium-Storage-Performance.MD).
 
 <sup>2</sup> a példány egyetlen ügyfél számára dedikált hardveren van elkülönítve.
 

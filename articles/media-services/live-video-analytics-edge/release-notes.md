@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 28260728532d9db52b8d36488c2e456bd11803ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c18977807d8cdca264a27d7fcff37aec7a61eb55
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091779"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690651"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -21,12 +21,34 @@ Ez a cikk a következő információkat tartalmazza:
 * Hibajavítások
 * Elavult funkciók
 
+## <a name="august-19-2020"></a>Augusztus 19., 2020
+
+Ez a kiadási címke a modul augusztus 2020 frissítéséhez:
+
+```
+mcr.microsoft.com/media/live-video-analytics:1.0.3
+```
+
+> [!NOTE]
+> A rövid útmutatók és oktatóanyagokban az üzembe helyezési jegyzékek 1. címkét használnak (Live-Video-Analytics: 1). Ezért az ilyen jegyzékfájlok újbóli üzembe helyezéséhez frissítenie kell a modult a peremhálózati > eszközökön.
+
+## <a name="new-features"></a>Új funkciók 
+
+* Mostantól nagy adatátviteli teljesítményt érhet el az élő videók elemzése IoT Edge és egyéni bővítménye között a gRPC Framework használatával. A kezdéshez tekintse meg [ezt](analyze-live-video-use-your-grpc-model-quickstart.md) a témakört.
+* Az élő videó-elemzések szélesebb regionális telepítése, és csak a Cloud Service frissült.  
+* Az élő videó Analytics immár 25 további régióban érhető el világszerte. Itt látható az összes elérhető régió [listája](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) .  
+* A gyors indítás [beállítása](https://aka.ms/lva-edge/setup-resources-for-samples) is frissült. 
+
+## <a name="bug-fixes"></a>Hibajavítások 
+
+Nincsenek 
+
 ## <a name="july-13-2020"></a>Július 13., 2020
 
 Ez a kiadási címke a modul júliusi 2020-es frissítéséhez a következő:
 
 ```
-     mcr.microsoft.com/media/live-video-analytics:1.0.2
+mcr.microsoft.com/media/live-video-analytics:1.0.2
 ```
 
 > [!NOTE]

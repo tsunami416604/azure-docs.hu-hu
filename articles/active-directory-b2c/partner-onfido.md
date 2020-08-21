@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 580d3cea94e3c550954fc0fa1aa6f2c3a73e9386
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554792"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683861"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Oktatóanyag a Onfido konfigurálásához a Azure Active Directory B2C
 
@@ -136,7 +136,7 @@ A megadott egyéni szabályzatokban keresse meg a következő helyőrzőket, és
 | {your_tenant_extensions_app_objectid}                  | A bérlő Storage-alkalmazásának objektum-azonosítója                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | Az alkalmazás-bepillantási példány kialakítási kulcsa *| 01234567-89ab-cdef-0123-456789abcdef|
 |{your_ui_file_base_url}| Annak a helynek az URL-címe, ahol a felhasználói felület **ocean_blue**, a **dist**és az **eszközök** mappája található | https://yourstorage.blob.core.windows.net/UI/|
-| {your_app_service_URL}                                 | A beállított app Service URL-címe                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | A beállított app Service URL-címe                                             | `https://yourapp.azurewebsites.net`          |
 
 * Az alkalmazás-felismerések egy másik bérlőn is lehetnek. Ez a lépés nem kötelező. Ha nincs rá szükség, távolítsa el a megfelelő TechnicalProfiles és OrchestrationSteps.
 
@@ -165,7 +165,7 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 5. A Onfido szolgáltatás a folyamat során lesz meghívva, a felhasználói attribútum létrehozása után. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következő cikkeket:
 

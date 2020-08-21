@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2a69bc40090e74ad5885c2576c040693f90d5d03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096707"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683878"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Oktatóanyag a Experian konfigurálásához a Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Ebben a mintában a Experian integrált digitális identitás-és adathamisítá
 - Középső név
 - vezetéknév;
 - Utca, házszám
-- Település
+- City
 - Állam/megye
 - Irányítószám
 - Ország/régió
@@ -58,7 +58,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![képernyőkép a Experian-Architecture-diagramról](media/partner-experian/experian-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználó új fiók létrehozásához és az oldalba való belépéshez kiválasztja a regisztrációt. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -129,7 +129,7 @@ A megadott egyéni szabályzatokban keresse meg a következő helyőrzőket, és
 | {your_tenant_extensions_app_objectid}                  | A bérlő Storage-alkalmazásának objektum-azonosítója                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_api_username_key_name}                           | Az [itt](#part-4---create-api-policy-keys) létrehozott Felhasználónév-kulcs neve             | B2C \_ 1a \_ RestApiUsername                     |
 | {your_api_password_key_name}                           | Az [itt](#part-4---create-api-policy-keys) létrehozott jelszó-kulcs neve             | B2C \_ 1a \_ RestApiPassword                     |
-| {your_app_service_URL}                                 | A beállított app Service URL-címe                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | A beállított app Service URL-címe                                             | `https://yourapp.azurewebsites.net`          |
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>6. rész – a Azure AD B2C házirend konfigurálása
 

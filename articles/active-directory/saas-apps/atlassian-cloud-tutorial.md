@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517648"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686071"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Oktatóanyag: a Atlassian-felhő integrálása Azure Active Directory
 
@@ -179,7 +179,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
       
    1. Attribútum-hozzárendelés egy Office 365-licenccel nem rendelkező Azure AD-bérlőhöz 
 
-      a. Kattintson a **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** jogcímre.
+      a. Kattintson a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` jogcímre.
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          

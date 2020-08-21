@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092387"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684456"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
@@ -61,7 +61,7 @@ Ha az új virtuális kapcsoló létrehozásakor hibák jelennek meg, győződjö
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Töltse le a virtuális géphez használni kívánt lemezképfájlt, és mentse helyileg. Például: [ubuntu server 18,04](http://releases.ubuntu.com/18.04.4/). További információ a IoT Edge eszközök támogatott operációs rendszereiről: [Azure IoT Edge támogatott rendszerek](support.md).
+1. Töltse le a virtuális géphez használni kívánt lemezképfájlt, és mentse helyileg. Például: [ubuntu server 18,04](http://releases.ubuntu.com/18.04/). További információ a IoT Edge eszközök támogatott operációs rendszereiről: [Azure IoT Edge támogatott rendszerek](support.md).
 
 2. A Hyper-V kezelőjében **Action**  >  **New**  >  a **műveletek** menüben válassza az új**virtuális gép** művelet lehetőséget.
 
@@ -170,7 +170,7 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
    6. Ha szeretné, adjon hozzá egy címke értéket a **kezdeti eszköz iker állapotához** . A címkék használatával megcélozhatja az eszközök csoportjait a modulok üzembe helyezéséhez. További információ: IoT Edge- [modulok üzembe helyezése nagy léptékben](how-to-deploy-at-scale.md).
 
-   7. Válassza a **Mentés** lehetőséget.
+   7. Kattintson a **Mentés** gombra.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során.
 

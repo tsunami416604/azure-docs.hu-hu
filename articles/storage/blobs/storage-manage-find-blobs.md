@@ -3,17 +3,17 @@ title: Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előze
 description: Megtudhatja, hogyan használhatja a blob-indexelési címkéket a blob-objektumok felderítéséhez, kezeléséhez és lekérdezéséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 08/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ed70a05e0a6213ce00a6e0514f0741e8abbaeef9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499874"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690374"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előzetes verzió)
 
@@ -100,12 +100,12 @@ Az alábbi táblázatban a FindBlobsByTags összes érvényes operátora láthat
 |  Operátor  |  Leírás  | Példa |
 |------------|---------------|---------|
 |     =      |     Egyenlő     | "Status" = "folyamatban" | 
-|     >      |  Nagyobb |  "Date" > "2018-06-18" |
+|     >      |  Nagyobb, mint |  "Date" > "2018-06-18" |
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" | 
-|     <      |  Kisebb    | "Age" < "32" |
+|     <      |  Kisebb, mint    | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
-| @container |  Hatókör egy adott tárolóra   | @container= "videofiles" és "status" = "kész" |
+| @container |  Hatókör egy adott tárolóra   | @container = "videofiles" és "status" = "kész" |
 
 > [!NOTE]
 > A címkék beállításakor és lekérdezése során Ismerje meg a lexicographical megrendelését.
@@ -125,9 +125,9 @@ Az alábbi táblázatban a feltételes műveletek összes érvényes operátora 
 |------------|---------------|---------|
 |     =      |     Egyenlő     | "Status" = "folyamatban" |
 |     <>     |   Nem egyenlő   | "Állapot"  <>  "kész"  | 
-|     >      |  Nagyobb |  "Date" > "2018-06-18" |
+|     >      |  Nagyobb, mint |  "Date" > "2018-06-18" |
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" | 
-|     <      |  Kisebb    | "Age" < "32" |
+|     <      |  Kisebb, mint    | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 |     VAGY     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |

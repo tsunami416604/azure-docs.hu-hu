@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252351"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690442"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Gyors útmutató: Azure szerepkör-hozzárendelés hozzáadása ARM-sablonnal
 
@@ -23,7 +23,7 @@ Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) a
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
@@ -31,15 +31,15 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok 
 
 A szerepkör-hozzárendelések hozzáadásához a következőket kell tennie:
 
-- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-- `Microsoft.Authorization/roleAssignments/write`és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
 - Szerepkör-hozzárendelés hozzáadásához három elemet kell megadnia: rendszerbiztonsági tag, szerepkör-definíció és hatókör. Ebben a rövid útmutatóban a rendszerbiztonsági tag Ön vagy egy másik felhasználó a címtárban, a szerepkör-definíció a [virtuális gép közreműködője](built-in-roles.md#virtual-machine-contributor), a hatókör pedig egy Ön által megadott erőforráscsoport.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)származik. A sablon három paramétert és egy erőforrás szakaszt tartalmaz. A Resources (erőforrások) szakaszban figyelje meg, hogy a szerepkör-hozzárendelés három eleme van: rendszerbiztonsági tag, szerepkör-definíció és hatókör.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/) közül származik. A sablon három paramétert és egy erőforrás szakaszt tartalmaz. A Resources (erőforrások) szakaszban figyelje meg, hogy a szerepkör-hozzárendelés három eleme van: rendszerbiztonsági tag, szerepkör-definíció és hatókör.
 
-:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
 A sablonban definiált erőforrás:
 
@@ -140,7 +140,7 @@ A létrehozott szerepkör-hozzárendelés és erőforráscsoport eltávolítás�
 
 1. Az **Y** érték megadásával erősítse meg, hogy el kívánja távolítani az erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)

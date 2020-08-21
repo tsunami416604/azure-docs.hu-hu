@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585457"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688640"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -25,7 +25,7 @@ Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a 
 A szolgáltatás skálázásának megkezdése után a Key vaultba küldött kérések száma növekedni fog. Ez potenciálisan növelheti a kérések késését, és szélsőséges esetekben a kérések szabályozása is lehetséges, ami hatással lehet a szolgáltatás teljesítményére. Nyomon követheti a Key Vault teljesítmény-metrikáit, és riasztást kaphat a meghatározott küszöbértékekről, a figyelés konfigurálásának lépésenkénti útmutatójában bővebben [olvashat](https://docs.microsoft.com/azure/key-vault/general/alert).
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Hogyan lehet hozzáférés-vezérlést rendelni Key Vault-objektumhoz? 
-A titkos/kulcs/tanúsítvány hozzáférés-vezérlési funkciójának elérhetősége itt jelenik meg, [További információ](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)
+A titkos/kulcs/tanúsítvány hozzáférés-vezérlési funkciójának elérhetősége itt jelenik meg, [További információ](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>Hogyan biztosíthatom a Key Vault hitelesítését a hozzáférés-vezérlési házirenddel?
 A felhőalapú alkalmazások Key Vaulthoz való hitelesítésének legegyszerűbb módja felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez]( https://docs.microsoft.com/azure/key-vault/general/managed-identity) című témakört.
@@ -50,6 +50,6 @@ Jelenleg Key Vault ARM-redopleyment törli az összes hozzáférési házirendet
 ### <a name="what-are-the-best-practices-i-should-implement-when-key-vault-is-getting-throttled"></a>Milyen bevált eljárásokat kell megvalósítani a Key Vault szabályozásakor?
 Kövesse az [itt](https://docs.microsoft.com/azure/key-vault/general/overview-throttling#how-to-throttle-your-app-in-response-to-service-limits) dokumentált ajánlott eljárásokat
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan lehet elhárítani a Key Vault hitelesítési hibáit. [Key Vault hibaelhárítási útmutató](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660969"
+ms.locfileid: "88688351"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -28,6 +28,9 @@ Az új verzióban megjelenő legfontosabb különbségek a következők:
 + Új csomag neve: `Azure.Search.Documents` helyett `Microsoft.Azure.Search` .
 + Három ügyfél a kettő helyett: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Különböző API-k és kisebb szerkezeti különbségek elnevezése az egyes feladatok egyszerűsítése érdekében
+
+> [!NOTE]
+> Tekintse át a .NET SDK 11-es verziójának változásainak részletezett listáját a [**módosítási naplóban**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) .
 
 ## <a name="package-and-library-consolidation"></a>Csomag-és könyvtár-konszolidáció
 
@@ -114,19 +117,23 @@ Az Azure Cognitive Search ügyféloldali kódtár minden verziója a REST API me
 
 A 11-es verzió a [2020-06-30 keresési szolgáltatást](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)célozza meg. Mivel a 11-es verzió egy új, az alapoktól kiépített ügyféloldali kódtár is, a fejlesztési erőfeszítések többsége a 10-es verzióra koncentrál, és néhány REST API funkció támogatása továbbra is függőben van.
 
-A 11-es verzió teljes mértékben támogatja a következő objektumokat és műveleteket:
+Az 11,0-es verzió teljes mértékben támogatja a következő objektumokat és műveleteket:
 
 + Index létrehozása és kezelése
 + Szinonimák leképezésének létrehozása és kezelése
 + Minden lekérdezés típusa és szintaxisa (kivéve a Geo-térbeli szűrőket)
 + Indexelő objektumok és műveletek az Azure-adatforrások indexeléséhez, beleértve az adatforrásokat és a szakértelmével
 
+Az 11,1-es verzió a következőt adja meg:
+
++ [FieldBuilder](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.fieldbuilder) (hozzáadva a 11,1-es verzióban)
++ A [szerializáló tulajdonság](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclientoptions.serializer) (a 11,1-ben hozzáadva) az egyéni szerializálás támogatásához
+
 ### <a name="pending-features"></a>Függőben lévő funkciók
 
-A következő 10-es verziójú funkciók még nem érhetők el a 11. verzióban. Ha ezeket a szolgáltatásokat használja, az áttelepítés után tartsa lenyomva a szolgáltatást, amíg azok nem támogatottak.
+A következő 10-es verziójú funkciók még nem érhetők el a 11. verzióban. Ha szüksége van ezekre a funkciókra, tartsa lenyomva az áttelepítést, amíg azok nem támogatottak.
 
 + térinformatikai típusok
-+ [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (bár [ezt a megoldást](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)használhatja).
 + [Tudástár](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
@@ -176,7 +183,7 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
 
 A könyvtárak és API-k elsöprő változásai miatt a 11-ös verzióra való frissítés nem triviális, és olyan változást jelent, amely abban az értelemben, hogy a kód már nem lesz kompatibilis a 10-es és a korábbi verziókkal. A különbségek alapos áttekintéséhez tekintse meg a [változási naplót](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) `Azure.Search.Documents` .
 
-A szolgáltatási verziók esetében a 10 – 11 értékre való áttérés a következő viselkedési változásokat mutatja be: 
+A szolgáltatási verziók frissítései esetében, ahol a Code Changes in 11-es verzió a meglévő funkciókhoz kapcsolódik (és nem csak az API-k újrabontása), a következő viselkedési változásokat fogja találni:
 
 + A [BM25 ranking algoritmus](index-ranking-similarity.md) újabb technológiával helyettesíti az előző rangsorolási algoritmust. Az új szolgáltatások ezt az algoritmust automatikusan használják majd. Meglévő szolgáltatások esetén a paramétereket az új algoritmus használatára kell beállítani.
 

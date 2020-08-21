@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654616"
+ms.locfileid: "88690323"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -357,7 +357,7 @@ Csak az NTFS fájlrendszerű lemezeket használó egypéldányos Oracle támogat
 
 Erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md)használata. Javasoljuk továbbá a [prémium SSD](../../disks-types.md) -k használatát a Oracle Database üzemelő példányokhoz.
 
-A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információ:
+A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkért lásd:
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -444,7 +444,7 @@ Ebben az esetben javasoljuk, hogy az Oracle Home, a Stage, a saptrace, a saparch
 
 Az ext4, a xfs vagy az Oracle ASM fájlrendszerei az Azure-ban Oracle Database-fájlok esetén támogatottak. Az összes adatbázisfájlt a VHD-k vagy Managed Disks-k alapján kell tárolni ezeken a fájlrendszereken. Ezek a lemezek az Azure-beli virtuális géphez vannak csatlakoztatva, és az [Azure-oldal blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) vagy az [Azure Managed Diskson](../../managed-disks-overview.md)alapulnak.
 
-Oracle Linux UEK kernelek esetében az [Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
+Oracle Linux UEK kernelek esetében az [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)-k támogatásához legalább 4 UEK 4-es verzió szükséges.
 
 Erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md)használata. Azt is javasoljuk, hogy az [Azure Premium SSD](../../disks-types.md) -ket a Oracle Database üzemelő példányokhoz is használja.
 

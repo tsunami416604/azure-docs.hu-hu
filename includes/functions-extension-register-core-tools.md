@@ -4,17 +4,26 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: glenga
-ms.openlocfilehash: 2936d22eacef73daef4433b3fd296dd4757fa410
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a4f03223b5067d18f5d6e747b3bb630a86031b8f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031123"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689556"
 ---
-Ha nem tudja használni a bővítményeket, a Azure Functions Core Tools helyileg is telepítheti a projekthez szükséges adott kiterjesztési csomagokat. 
+Ha nem tudja használni a bővítményeket, a Azure Functions Core Tools helyileg is telepítheti a projekthez szükséges adott kiterjesztési csomagokat.
+
+> [!IMPORTANT]
+> Bővítményeket nem telepíthet explicit módon olyan Function alkalmazásban, amely bővítő csomagokat használ. A `extensionBundle` bővítmények explicit telepítése előtt távolítsa el a *host.js* szakaszát.
+
+A következő elemek bizonyos okokat ismertetnek, amelyekkel manuálisan lehet telepíteni a bővítményeket:
+
+* Hozzá kell férnie egy bővítmény egy adott verziójához, amely nem érhető el egy csomagban.
+* Egy csomagban nem elérhető egyéni bővítménynek kell hozzáférnie.
+* Hozzá kell férnie a bővítmények egy adott kombinációjában, amely egyetlen csomagban nem érhető el.
 
 > [!NOTE]
-> A bővítmények a Core Tools használatával történő manuális telepítéséhez telepíteni kell a .NET Core 2. x SDK-t.
+> A bővítmények a Core Tools használatával történő manuális telepítéséhez telepíteni kell a [.net Core 2. x SDK](https://dotnet.microsoft.com/download) -t. A Azure Functions Core Tools a bővítmények NuGet-ból való telepítésére használja a .NET Core SDK. A .NET-et nem kell tudnia Azure Functions-bővítmények használatára.
 
 Ha explicit módon telepíti a bővítményeket, a rendszer hozzáad egy Extensions. csproj nevű .NET-projektfájlt a projekt gyökeréhez. Ez a fájl határozza meg a függvények által igényelt NuGet-csomagok készletét. Habár a fájlban található NuGet- [csomagokra mutató hivatkozásokat](/nuget/consume-packages/package-references-in-project-files) is használhatja, a Core Tools lehetővé teszi a bővítmények telepítését anélkül, hogy manuálisan kellene szerkesztenie a fájlt.
 
@@ -28,6 +37,8 @@ A következő parancs használatával automatikusan hozzáadhatja a helyi projek
 func extensions install
 ```
 A parancs beolvassa a *function.jsa* fájlon, hogy megtekintse a szükséges csomagokat, telepíti őket, és újraépíti a bővítmények projektet (Extensions. csproj). Az új kötéseket a jelenlegi verzióban adja hozzá, de nem frissíti a meglévő kötéseket. `--force`Új telepítések esetén a meglévő kötések frissítése a legújabb verzióra lehetőség használatával.
+
+Ha a Function alkalmazás olyan kötéseket használ, amelyeket az alapvető eszközök nem ismernek fel, manuálisan kell telepítenie az adott bővítményt.
 
 #### <a name="install-a-specific-extension"></a>Egy adott bővítmény telepítése
 

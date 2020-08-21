@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433239"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691275"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
 
@@ -39,12 +39,12 @@ Ha Machine Learning Studio (klasszikus) munkaterületet szeretne megnyitni, be k
 
 4. Adja meg a munkaterület adatait:
 
-   - A *munkaterület neve* legfeljebb 260 karakter hosszú lehet. A név nem tartalmazhatja a következő karaktereket:`< > * % & : \ ? + /`
+   - A *munkaterület neve* legfeljebb 260 karakter hosszú lehet. A név nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
    - A *webszolgáltatások* ezen a munkaterületen való üzembe helyezéséhez a kiválasztott (vagy létrehozás) webszolgáltatás-csomagot, valamint a társított *díjszabási szintet* kell használni.
 
      ![Új Studio (klasszikus) munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
-5. Kattintson a **Létrehozás** lehetőségre.
+5. Kattintson a **Create** (Létrehozás) gombra.
 
    Machine Learning jelenleg korlátozott számú régióban érhető el. Ha az előfizetése nem tartalmaz ilyen régiókat, a következő hibaüzenet jelenhet meg: "nincsenek előfizetések az engedélyezett régiókban."  Ha egy régiót szeretne felvenni az előfizetésbe, hozzon létre egy új Microsoft-támogatási kérelmet a Azure Portal, válassza a **számlázás** lehetőséget a probléma típusaként, és kövesse az utasításokat a kérelem elküldéséhez.
 
@@ -70,7 +70,7 @@ Ha probléma merül fel a munkaterület létrehozásakor, olvassa el a [hibaelh�
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület megosztása
-Miután létrehozta a Machine Learning Studio (klasszikus) munkaterületet, meghívhatja a felhasználókat a munkaterületre, hogy megosszák a hozzáférést a munkaterülethez, valamint az összes kísérletet, adatkészletet, jegyzetfüzetet stb. A felhasználókat a két szerepkör egyikében adhatja hozzá:
+Miután létrehozta a Machine Learning Studio (klasszikus) munkaterületet, meghívhatja a felhasználókat a munkaterületre, hogy megosszák a hozzáférést a munkaterülethez és annak összes kísérletéhez, adatkészletéhez stb. A felhasználókat a két szerepkör egyikében adhatja hozzá:
 
 * **Felhasználó** – a munkaterület felhasználója létrehozhat, megnyithat, módosíthat és törölhet kísérleteket, adatkészleteket stb. a munkaterületen.
 * **Tulajdonos** – a felhasználók meghívhatják és eltávolíthatják a munkaterületen lévő felhasználókat, a felhasználó által elvégezhető műveletek mellett.
@@ -82,7 +82,7 @@ Miután létrehozta a Machine Learning Studio (klasszikus) munkaterületet, megh
 
 ### <a name="to-share-a-studio-classic-workspace"></a>Studio (klasszikus) munkaterület megosztása
 
-1. Jelentkezzen be Machine Learning Studio (klasszikus)[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Jelentkezzen be Machine Learning Studio (klasszikus) [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
 2. A bal oldali panelen kattintson a **Beállítások** elemre.
 
@@ -129,6 +129,6 @@ Miután létrehozta az új Machine Learning Studio (klasszikus) munkaterületet,
 A cookie-k törlése után indítsa újra a böngészőt, majd lépjen a [Microsoft Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) lapra. Ha a rendszer a Felhasználónév és a jelszó megadását kéri, adja meg ugyanazt a Microsoft-fiók, amelyet a munkaterület létrehozásához használt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A munkaterületek kezelésével kapcsolatos további információkért lásd: [Azure Machine learning Studio (klasszikus) munkaterületek kezelése](manage-workspace.md).

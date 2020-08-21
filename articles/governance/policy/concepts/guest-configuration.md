@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544672"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685765"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -36,7 +36,7 @@ A beállítások számítógépeken belüli naplózásához a virtuálisgép- [b
 > [!IMPORTANT]
 > Az Azure-beli virtuális gépek naplózásához a vendég konfiguráció kiterjesztése és a felügyelt identitás szükséges. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő házirend-kezdeményezést:
 > 
-> - [A vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezéséhez szükséges előfeltételek üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> `Deploy prerequisites to enable Guest Configuration policies on virtual machines`
 
 ### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
@@ -62,7 +62,7 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 A vendég-konfigurációs házirendek tartalmazzák az új verziókat. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis.
 Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Name|Verziók|
+|Publisher|Név|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 és újabb verziók|
 |Credativ|Debian|8 és újabb verziók|

@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 40a915531aa58567b17a774a15504dc92770479f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854258"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690221"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift-alkalmazás biztonsági másolatának létrehozása
 
@@ -29,7 +29,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ### <a name="install-velero"></a>A Velero telepítése
 
-A Velero a rendszerre való [telepítéséhez](https://velero.io/docs/master/basic-install/) kövesse az operációs rendszerének javasolt folyamatát.
+A Velero a rendszerre való [telepítéséhez](https://velero.io/docs/main/basic-install/) kövesse az operációs rendszerének javasolt folyamatát.
 
 ### <a name="set-up-azure-storage-account-and-blob-container"></a>Az Azure Storage-fiók és a blob-tároló beállítása
 
@@ -120,7 +120,7 @@ oc get backups -n velero <name of backup> -o yaml
 
 A sikeres biztonsági mentés kimenetet fog eredményezni `phase:Completed` , és az objektumok a Storage-fiókban lesznek élő tárolóban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy, a Red Hat OpenShift 4 fürtözött alkalmazásról készített biztonsági mentést. Megtanulta végrehajtani az alábbi műveleteket:
 

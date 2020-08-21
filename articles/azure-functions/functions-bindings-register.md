@@ -3,55 +3,63 @@ title: Azure Functions kötési bővítmények regisztrálása
 description: Megtudhatja, hogyan regisztrálhat egy Azure Functions-kötési bővítményt a környezete alapján.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/08/2019
+ms.date: 08/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224781"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689557"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
 
-A Azure Functions 2. x verziótól kezdődően a [kötések](./functions-triggers-bindings.md) külön csomagokként érhetők el a functions futtatókörnyezetből. Míg a .NET függvények NuGet-csomagokon keresztül érik el a kötéseket, a bővítmények lehetővé teszik más függvények számára, hogy a konfigurációs beállításokon keresztül hozzáférjenek az összes kötéshez.
+A Azure Functions 2. x verziótól kezdődően a függvények futtatókörnyezete alapértelmezés szerint csak HTTP-és időzítő-eseményindítókat tartalmaz. Más [Eseményindítók és kötések](./functions-triggers-bindings.md) külön csomagokként érhetők el.
 
-Vegye figyelembe a kötési bővítményekkel kapcsolatos következő elemeket:
-
-- A kötési kiterjesztések nincsenek explicit módon regisztrálva az 1. x függvényekben, kivéve, ha [C# szintű kódtárat hoz létre a Visual Studióval](#local-csharp).
-
-- A HTTP-és időzítő-eseményindítók alapértelmezés szerint támogatottak, és nincs szükség bővítményre.
+A .NET Class Library functions-alkalmazások a projektben NuGet-csomagként telepített kötéseket használnak. A bővítményi csomagok lehetővé teszik, hogy a non-.NET functions alkalmazások ugyanazt a kötést használják, anélkül, hogy a .NET-infrastruktúrával kellene foglalkoznia.
 
 A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a kötéseket.
 
 | Fejlesztőkörnyezet |Regisztráció<br/> a functions 1. x  |Regisztráció<br/> a functions 3. x/2. x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatikus|Automatikus<sup>*</sup>|
-|Non-.NET-nyelvek vagy helyi Azure Core-eszközök fejlesztése|Automatikus|[Azure Functions Core Tools-és bővítmény-csomagok használata](#extension-bundles)|
+|Non-.NET nyelvek|Automatikus|[Bővítmények](#extension-bundles) használata (ajánlott) vagy [explicit módon telepítse a bővítményeket](#explicitly-install-extensions)|
 |C# Class Library a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
-|C# Class Library a Visual Studio Code használatával|N/A|[A .NET Core parancssori felülete használata](#vs-code)|
+|C# Class Library a Visual Studio Code használatával|n.a.|[A .NET Core parancssori felülete használata](#vs-code)|
 
 <sup>*</sup> A portál bővítmény-csomagokat használ.
 
-## <a name="extension-bundles"></a><a name="extension-bundles"></a>Kiterjesztési csomagok
+## <a name="access-extensions-in-non-net-languages"></a>Hozzáférési bővítmények a non-.NET-nyelveken
 
-A bővítményi csomagok lehetővé teszik, hogy a Function alkalmazáshoz a függvények egy kompatibilis készletét adja hozzá. A csomagok használatakor a bővítmények előre meghatározott készlete lesz hozzáadva az alkalmazás létrehozásakor. A csomagban definiált kiterjesztési csomagokat a rendszer ellenőrzi, hogy kompatibilis-e egymással, ami segít elkerülni a csomagok közötti ütközéseket. A bővítményi csomagok lehetővé teszik a .NET-projekt kódjának közzétételét egy non-.NET functions projekttel. A kiterjesztési csomagokat az alkalmazás host.jsfájljában engedélyezheti.  
+A Java, a JavaScript, a PowerShell, a Python és az egyéni kezelő függvények alkalmazásai esetében ajánlott a bővítmények használata a kötések eléréséhez. Azokban az esetekben, amelyekben nem használhatók bővítmények, explicit módon telepítheti a kötési bővítményeket.
 
-A bővítmények a functions futtatókörnyezet 2. x vagy újabb verzióival is használhatók. 
+### <a name="extension-bundles"></a><a name="extension-bundles"></a>Kiterjesztési csomagok
 
-A Azure Functions Core Tools, a Visual Studio Code és a távoli buildek használatával a bővítmények helyi fejlesztéshez használhatók. Helyi fejlesztés esetén győződjön meg arról, hogy a [Azure functions Core Tools](functions-run-local.md#v2)legújabb verzióját használja. A bővítmények a Azure Portalban lévő függvények fejlesztésekor is használatosak. 
+A bővítményi csomagok lehetővé teszik a kötési bővítmények kompatibilis készletének hozzáadását a Function alkalmazáshoz. A kiterjesztési csomagokat az alkalmazás *host.js* fájljában engedélyezheti.
 
-Ha nem használ bővítmény-csomagokat, akkor a [kötési bővítmények explicit telepítése](#explicitly-install-extensions)előtt telepítenie kell a .net Core 2. x SDK-t a helyi számítógépen. A rendszer hozzáadja a projekthez egy Extensions. csproj fájlt, amely explicit módon meghatározza a szükséges bővítményeket. A kiterjesztési csomagok ezeket a követelményeket a helyi fejlesztéshez távolítják el. 
+A bővítmények a functions futtatókörnyezet 2. x vagy újabb verzióival is használhatók.
 
-A bővítmények használatához frissítse a fájl *host.jsét* , hogy tartalmazza a következő bejegyzést `extensionBundle` :
- 
+A kiterjesztési csomagok verziószáma. Az egyes verziók a kötési bővítmények egy adott készletét tartalmazzák, amelyeket a rendszer a közös munkához ellenőriz. Válasszon egy köteg-verziót az alkalmazásban szükséges bővítmények alapján.
+
+Ha bővítményt szeretne hozzáadni a Function alkalmazáshoz, adja hozzá a `extensionBundle` szakaszt *host.jsa*következőhöz:. Sok esetben a Visual Studio Code és a Azure Functions Core Tools automatikusan hozzáadja az Ön számára.
+
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="explicitly-install-extensions"></a>Bővítmények explicit telepítése
+A következő táblázat az alapértelmezett *Microsoft. Azure. functions. ExtensionBundle* csomag jelenleg elérhető verzióit sorolja fel, és a hozzájuk tartozó bővítményekre mutató hivatkozásokat tartalmaz.
+
+| Csomag verziója | host.jsverziójának verziója | Mellékelt bővítmények |
+| --- | --- | --- |
+| 1. x | `[1.*, 2.0.0)` | Lásd a köteg létrehozásához használt [extensions.js](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) . |
+| 2. x | `[2.*, 3.0.0)` | Lásd a köteg létrehozásához használt [extensions.js](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) . |
+
+> [!NOTE]
+> Ha a host.json egyéni verziót is megadhat, akkor azt javasoljuk, hogy a megfelelő verziót használja a táblázatból.
+
+### <a name="explicitly-install-extensions"></a><a name="explicitly-install-extensions"></a>Bővítmények explicit telepítése
 
 [!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
-## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet-csomagok
+## <a name="install-extensions-from-nuget-in-net-languages"></a><a name="local-csharp"></a>Bővítmények telepítése a NuGet .NET-nyelveken
 
 A C# szintű függvénytár-alapú függvények projekthez közvetlenül kell telepíteni a bővítményeket. A bővítmény-csomagokat kifejezetten olyan projektekhez tervezték, amelyek nem rendelkeznek C# szintű függvénytár-alapú.
 
@@ -69,7 +77,7 @@ Cserélje le a `<TARGET_VERSION>` példát a csomag egy adott verziójára, pél
 
 Ha `Install-Package` egy kötésre mutató hivatkozást használ, nem kell használni a [bővítmény-csomagokat](#extension-bundles). Ez a megközelítés kifejezetten a Visual Studióban létrehozott osztályok könyvtáraira vonatkozik.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C# szintű függvénytár a Visual Studio Code-ban
+### <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C# szintű függvénytár a Visual Studio Code-ban
 
 A **Visual Studio Code**-ban telepítsen egy C# Class Library-projekthez tartozó csomagokat a parancssorból a a .net Core parancssori felülete a [csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancs használatával. Az alábbi példa bemutatja, hogyan adhat hozzá kötéseket:
 

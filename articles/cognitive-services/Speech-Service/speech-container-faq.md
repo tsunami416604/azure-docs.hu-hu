@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10a75d19b7fb134b8e7498c422742e00f6475da5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289028"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690204"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Speech Service-tárolók – gyakori kérdések (GYIK)
 
@@ -291,7 +291,7 @@ Segíthet az alábbi tesztelési mérőszámok kitöltésében, beleértve a tes
 
 | Végpont                                                | Funkcionális teszt                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Igen      |
+| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Yes      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-Prem diktálás v1 WebSocket-végpont        | Igen | Nem       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | A Cognitive Services on-Prem Interactive v1 WebSocket-végpont  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | A kognitív szolgáltatások on-Prem beszélgetés v1 WebSocket-végpont |     |          |
@@ -305,7 +305,7 @@ Segíthet az alábbi tesztelési mérőszámok kitöltésében, beleértve a tes
 - A kibocsátás a kiállítók által kiváltott kiadásokat (a folyamat leölését) állítja be.
 
 A megkerülő megoldás vagy váltás a kód folyamatos felismerésének használatára, vagy (gyorsabb) kapcsolódás a tárolóban lévő interaktív vagy folyamatos végpontokhoz.
-A kód beállításnál állítsa a végpontot <gazdagépre: Port>/Speech/Recognition/Interactive/cognitiveservices/v1
+A kód esetében állítsa a végpontot/Speech/Recognition/Interactive/cognitiveservices/v1 értékre. `host:port`
 
 A különböző módokon lásd a beszédfelismerési módokat – lásd alább:
 
@@ -396,25 +396,25 @@ Hány egyidejű kérelem fog egy 4 magos, 4 GB RAM-ot kezelni? Ha például az 5
 
 # <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
-| Tároló      | Minimális             | Ajánlott         |
+| Tároló      | Minimum             | Ajánlott         |
 |----------------|---------------------|---------------------|
 | Diktálás | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech – szöveg](#tab/cstt)
 
-| Tároló             | Minimális             | Ajánlott         |
+| Tároló             | Minimum             | Ajánlott         |
 |-----------------------|---------------------|---------------------|
 | Custom Speech – szöveg | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
 
 # <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
-| Tároló      | Minimális             | Ajánlott         |
+| Tároló      | Minimum             | Ajánlott         |
 |----------------|---------------------|---------------------|
 | Szövegfelolvasás | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
 # <a name="custom-text-to-speech"></a>[Egyéni szöveg – beszéd](#tab/ctts)
 
-| Tároló             | Minimális             | Ajánlott         |
+| Tároló             | Minimum             | Ajánlott         |
 |-----------------------|---------------------|---------------------|
 | Egyéni szöveg – beszéd | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
@@ -559,7 +559,7 @@ Python- [minták](https://github.com/Azure-Samples/cognitive-services-speech-sdk
 
 A C#-ban a diktálás engedélyezéséhez hívja meg a `SpeechConfig.EnableDictation()` függvényt.
 
-### <a name="fromendpoint-apis"></a>`FromEndpoint`API
+### <a name="fromendpoint-apis"></a>`FromEndpoint` API
 | Nyelv | API-részletek |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -579,7 +579,7 @@ A C#-ban a diktálás engedélyezéséhez hívja meg a `SpeechConfig.EnableDicta
 
 **Válasz:** Új `FromHost` API van. Ez nem helyettesíti vagy nem módosítja a meglévő API-kat. Ez csak egy alternatív módszert tesz lehetővé egy beszédfelismerési konfiguráció egyéni gazdagép használatával történő létrehozásához.
 
-### <a name="fromhost-apis"></a>`FromHost`API
+### <a name="fromhost-apis"></a>`FromHost` API
 
 | Nyelv | API-részletek |
 |--|:-|
@@ -597,8 +597,8 @@ A gazdagép formátuma `protocol://hostname:port` nem `:port` kötelező (lásd 
 - Ha a tároló távoli kiszolgálón fut, használja az adott kiszolgáló állomásnevét vagy IPv4-címeit.
 
 Host paraméter példák a beszédfelismerési szövegre:
-- `ws://localhost:5000`-nem biztonságos csatlakozás egy helyi tárolóhoz a 5000-es port használatával
-- `ws://some.host.com:5000`-nem biztonságos kapcsolódás távoli kiszolgálón futó tárolóhoz
+- `ws://localhost:5000` -nem biztonságos csatlakozás egy helyi tárolóhoz a 5000-es port használatával
+- `ws://some.host.com:5000` -nem biztonságos kapcsolódás távoli kiszolgálón futó tárolóhoz
 
 Python-minták a fentiek közül, de `host` a paraméter helyett használja a következőt `endpoint` :
 

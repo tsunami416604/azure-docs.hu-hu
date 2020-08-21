@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 3d01b2c2098dcbe896ecaa7f854d91477eba2cab
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648768"
+ms.locfileid: "88683606"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -40,7 +40,7 @@ Mindegyik AK-fürt négy előre létrehozott tárolási osztályt tartalmaz, ame
     
 Ha az alapértelmezett tárolási osztályok egyikét használja, a kötet mérete nem frissíthető a tárolási osztály létrehozása után. Ahhoz, hogy a tárolási osztály létrehozása után frissíteni lehessen a kötet méretét, adja hozzá a sort az `allowVolumeExpansion: true` egyik alapértelmezett tárolási osztályhoz, vagy létrehozhat saját egyéni tárolási osztályt is. Vegye figyelembe, hogy a PVC méretének csökkentése nem támogatott (az adatvesztés elkerülése érdekében). A meglévő tárolási osztályokat a parancs használatával szerkesztheti `kubectl edit sc` . 
 
-Ha például 4 TiB méretű lemezt szeretne használni, létre kell hoznia egy tárolási osztályt, amely meghatározza, hogy a `cachingmode: None` [lemezes gyorsítótárazás nem támogatott a 4 TIB és nagyobb lemezek esetén](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+Ha például 4 TiB méretű lemezt szeretne használni, létre kell hoznia egy tárolási osztályt, amely meghatározza, hogy a `cachingmode: None` [lemezes gyorsítótárazás nem támogatott a 4 TIB és nagyobb lemezek esetén](../virtual-machines/premium-storage-performance.md#disk-caching).
 
 További információ a tárolási osztályokról és a saját tárolási osztály létrehozásáról: az [AK-beli alkalmazások tárolási beállításai][storage-class-concepts].
 

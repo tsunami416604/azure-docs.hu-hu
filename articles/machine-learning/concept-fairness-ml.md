@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829373"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689677"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>A gépi tanulási modellek tisztaságának enyhítése (előzetes verzió)
 
@@ -51,7 +51,7 @@ Ezek az összetevők együtt lehetővé teszik az adatszakértők és az üzleti
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>A tisztességesség értékelése a gépi tanulási modellekben
 
-A Fairlearn nyílt forráskódú csomagjában a méltányosság fogalma a **csoport méltányosság**néven ismert megközelítése, amely megkérdezi, hogy mely személyeknek van kockázata az ártalmak felderítésére? A kapcsolódó csoportok, más néven alpopulációk, **bizalmas szolgáltatásokkal** vagy bizalmas attribútumokkal vannak meghatározva. Az érzékeny funkciók a Fairlearn nyílt forráskódú csomagjában, vektorként vagy nevű mátrixként lesznek átadva `sensitive_features` . A kifejezés azt sugallja, hogy a rendszertervezőnek érzékenynek kell lennie ezekre a funkciókra a csoport tisztességének értékelésekor. 
+A Fairlearn nyílt forráskódú csomagjában a méltányosság fogalma a **csoport méltányosság**néven ismert megközelítése, amely megkérdezi, hogy mely személyeknek van kockázata az ártalmak felderítésére? A kapcsolódó csoportok, más néven alpopulációk, **bizalmas szolgáltatásokkal** vagy bizalmas attribútumokkal vannak meghatározva. Az érzékeny funkciók a Fairlearn nyílt forráskódú csomagjában, vektorként vagy nevű mátrixként lesznek átadva  `sensitive_features` . A kifejezés azt sugallja, hogy a rendszertervezőnek érzékenynek kell lennie ezekre a funkciókra a csoport tisztességének értékelésekor. 
 
 Egy dolog, ami szem előtt tartja, hogy ezek a funkciók tartalmaznak-e adatvédelmi következményeket a magánjellegű adatok miatt. A "bizalmas" szó azonban nem jelenti azt, hogy ezek a funkciók nem használhatók előrejelzések készítésére.
 
@@ -83,7 +83,7 @@ A Fairlearn nyílt forráskódú csomag számos, a méltánytalanság enyhítés
 
 A Fairlearn nyílt forráskódú csomagja a következő típusú paritásos korlátozásokat támogatja: 
 
-|Paritásos megkötés  | Cél  |Gépi tanulási feladat  |
+|Paritásos megkötés  | Rendeltetés  |Gépi tanulási feladat  |
 |---------|---------|---------|
 |Demográfiai paritás     |  A foglalási károsodások enyhítése | Bináris besorolás, regresszió |
 |Equaled odds  | Kiosztási és szolgáltatásminőség-károsodások diagnosztizálása | Bináris besorolás        |
@@ -108,6 +108,6 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/user_guide/index.html), [példák](https://fairlearn.github.io/auto_examples/notebooks/index.html)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
+- Megtudhatja, hogyan használhatja a különböző összetevőket a Fairlearn [GitHub](https://github.com/fairlearn/fairlearn/), [felhasználói útmutató](https://fairlearn.github.io/user_guide/index.html), [példák](https://fairlearn.github.io/auto_examples/)és [minta jegyzetfüzetek](https://github.com/fairlearn/fairlearn/tree/master/notebooks)használatával történő ellenőrzésével.
 - Megtudhatja, [Hogyan](how-to-machine-learning-fairness-aml.md) engedélyezheti Azure Machine learning gépi tanulási modelljeinek méltányos értékelését.
 - Tekintse meg a [minta-jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) a Azure Machine learning a tisztesség értékelésére szolgáló forgatókönyvekben. 

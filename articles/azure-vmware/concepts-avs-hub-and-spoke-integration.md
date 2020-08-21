@@ -2,13 +2,13 @@
 title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálása egy sugaras architektúrával
 description: Ismerje meg az Azure VMware-megoldások üzembe helyezését egy meglévő vagy egy új, az Azure-ban, az Azure-ban.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: a1ba75369a1d6f19ca7ae1f36107170f219f72d0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/20/2020
+ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649584"
+ms.locfileid: "88684508"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
@@ -28,10 +28,7 @@ A helyszíni adatközpont, az Azure VMware Solution Private Cloud és a hub köz
 
 Az ábrán egy példa látható az Azure-beli és a ExpressRoute-on keresztül a helyszíni és az Azure VMware-megoldáshoz kapcsolódó sugaras üzembe helyezésre.
 
-:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés":::
-
-
-
+:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware Solution hub és küllős integrációs üzembe helyezés" border="false":::
 
 Az architektúra a következő fő összetevőkből áll:
 
@@ -64,12 +61,12 @@ A helyszíni kapcsolat ExpressRoute Global Reach is használhat, de nem kötelez
 
 * **Helyszíni Azure-beli VMware-megoldás forgalmának folyamata**
 
-  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Helyszíni Azure-beli VMware-megoldás forgalmának folyamata":::
+  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Helyszíni Azure-beli VMware-megoldás forgalmának folyamata" border="false":::
 
 
 * **Azure VMware-megoldás a VNET hub-forgalomhoz**
 
-  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware-megoldás a hub virtuális hálózati forgalmához":::
+  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware-megoldás a hub virtuális hálózati forgalmához" border="false":::
 
 
 Az Azure VMware megoldás hálózatkezeléséről és az összekapcsolási fogalmakról az [Azure VMware megoldás termékdokumentációjában](./concepts-networking.md)talál további információt.
@@ -97,7 +94,7 @@ Egy második szintű forgalmi szegmentálás a küllők és a hub hálózati biz
 
 Az Azure Application Gateway v1-es és v2-es verziója olyan webalkalmazásokkal lett tesztelve, amelyek az Azure VMware megoldás virtuális gépein futnak háttér-készletként. A Application Gateway jelenleg az egyetlen támogatott módszer az Azure VMware-alapú virtuális gépeken futó webalkalmazások interneten keresztüli elérhetővé tétele érdekében. A belső felhasználók számára is biztonságosan teheti elérhetővé az alkalmazásokat.
 
-:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="A forgalom szegmentálásának második szintje a hálózati biztonsági csoportok használatával":::
+:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="A forgalom szegmentálásának második szintje a hálózati biztonsági csoportok használatával" border="false":::
 
 
 ### <a name="jumpbox-and-azure-bastion"></a>Jumpbox és az Azure Bastion
@@ -110,7 +107,7 @@ Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül �
 > Ne adjon meg nyilvános IP-címet a Jumpbox virtuális géphez, vagy tegye elérhetővé a 3389/TCP portot a nyilvános internethez. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure Bastion hub virtuális hálózat":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure Bastion hub virtuális hálózat" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS megoldási megfontolások

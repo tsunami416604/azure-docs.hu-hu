@@ -3,17 +3,17 @@ title: A Creator használata beltéri térképek létrehozásához
 description: Beltéri térképek létrehozásához használja a Azure Maps Creatort.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075410"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688086"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
 
@@ -109,16 +109,25 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
     > Előfordulhat, hogy a dokumentumban szereplő API URL-címeket a létrehozó erőforrás helye alapján kell módosítani. További részletekért lásd: [hozzáférés a Creator Serviceshez](how-to-manage-creator.md#access-to-creator-services).
 
-3. Kattintson a **Küldés** gombra, és várjon, amíg a rendszer feldolgozza a kérést. A kérés befejeződése után lépjen a válasz **fejlécek** lapjára, és keresse meg a **hely** kulcsát. Másolja ki a **hely** kulcsának értékét, amely a `status URL` konverziós kérelemhez tartozó érték.
+3. Kattintson a **Küldés** gombra, és várjon, amíg a rendszer feldolgozza a kérést. A kérés befejeződése után lépjen a válasz **fejlécek** lapjára, és keresse meg a **hely** kulcsát. Másolja ki a **hely** kulcsának értékét, amely a `status URL` konverziós kérelemhez tartozó érték. Ezt a következő lépésben fogja használni.
 
-4. Indítson el **egy új http** -metódust a Building (szerkesztő) lapon. fűzze hozzá a Azure Maps elsődleges előfizetési kulcsot a következőhöz: `status URL` . Hozzon igénybe egy **Get** -kérést az előző lépésben leírtak szerint `status URL` . Ha az átalakítási folyamat még nem fejeződött be, a következő JSON-válaszhoz hasonlóan láthatja:
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="A helykód értékének másolása":::
+
+4. Indítson el **egy új http** -metódust a Building (szerkesztő) lapon. fűzze hozzá a Azure Maps elsődleges előfizetési kulcsot a következőhöz: `status URL` . Hozzon igénybe egy **Get** -kérést a `status URL` 3. lépésben átmásolt helyen. A a `status URL` következő URL-címhez hasonlít:
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    Ha az átalakítási folyamat még nem fejeződött be, a következő JSON-válaszhoz hasonlóan láthatja:
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ A minta rajzolási csomagot hibák vagy figyelmeztetések nélkül kell konvert�
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -157,7 +166,7 @@ A minta rajzolási csomagot hibák vagy figyelmeztetések nélkül kell konvert�
 
 Az adatkészlet térképi funkciók, például épületek, szintek és szobák gyűjteménye. Adatkészlet létrehozásához használja az [adatkészlet létrehozása API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview)-t. Az adatkészlet létrehozása API veszi át a `conversionId` konvertált rajzfájl értékét, és visszaadja a `datasetId` létrehozott adatkészlet egy részét. Az alábbi lépések bemutatják, hogyan hozhat létre adatkészletet.
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
+1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Hozzon létre **post** -kérést az [adatkészlet Create API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) -hoz egy új adatkészlet létrehozásához. A kérelem elküldése előtt fűzze hozzá az előfizetési kulcsot és a `conversionId` -t az `conversionId` 5. lépésben az átalakítási folyamat során kapott értékhez.  A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
@@ -177,7 +186,7 @@ Az adatkészlet térképi funkciók, például épületek, szintek és szobák g
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -188,7 +197,7 @@ Az adatkészlet térképi funkciók, például épületek, szintek és szobák g
 
 A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a meglévő adatkészletekből jönnek létre. Egy tileset azonban független attól a DataSet adatkészlettől, amelyről forrásból származik. Ha törli az adatkészletet, a tileset továbbra is fennáll. Tileset létrehozásához kövesse az alábbi lépéseket:
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
+1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Tegye a **post** kérést a Builder (szerkesztő) lapon. A kérelem URL-címének a következő URL-címhez hasonlóan kell kinéznie:
 
@@ -206,7 +215,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"
@@ -215,9 +224,9 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 ## <a name="query-datasets-with-wfs-api"></a>Adatkészletek lekérdezése a WFS API-val
 
- Az adatkészleteket a [WFS API](https://docs.microsoft.com/rest/api/maps/wfs)használatával kérdezheti le. A WFS API-val lekérdezheti a szolgáltatások gyűjteményeit, egy adott gyűjteményt vagy egy szolgáltatás **azonosítóját**tartalmazó adott szolgáltatást. A szolgáltatás **azonosítója** egyedileg azonosítja a szolgáltatást az adatkészleten belül. A rendszer például annak azonosítására szolgál, hogy melyik szolgáltatási állapotot kell frissíteni egy adott stateset.
+ Az adatkészleteket a  [WFS API](https://docs.microsoft.com/rest/api/maps/wfs)használatával kérdezheti le. A WFS API-val lekérdezheti a szolgáltatások gyűjteményeit, egy adott gyűjteményt vagy egy szolgáltatás **azonosítóját**tartalmazó adott szolgáltatást. A szolgáltatás **azonosítója** egyedileg azonosítja a szolgáltatást az adatkészleten belül. A rendszer például annak azonosítására szolgál, hogy melyik szolgáltatási állapotot kell frissíteni egy adott stateset.
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
+1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. **Get** kéréssel megtekintheti az adatkészletben található gyűjtemények listáját. Cserélje le `<dataset-id>` a helyére a t `datasetId` . A helyőrző helyett használja a Azure Maps elsődleges kulcsát. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
@@ -293,7 +302,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 ## <a name="create-a-feature-stateset"></a>Szolgáltatás stateset létrehozása
 
-1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
+1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Hozzon létre **post** -kérelmet a [create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview)-hoz. Használja a `datasetId` módosítani kívánt állapotot tartalmazó adatkészletet. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
@@ -391,7 +400,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
     >[!NOTE]
     > A frissítés csak akkor lesz mentve, ha az idő feladási bélyegzője az előző kérelem időbélyegzője után van. Bármilyen, a létrehozás során korábban konfigurált kulcsnév átadható.
 
-7. A sikeres frissítés után HTTP-állapotkódot fog kapni `200 OK` . Ha egy beltéri térképhez [dinamikus stílus van megvalósítva](indoor-map-dynamic-styling.md) , a frissítés a megadott időbélyegzőn jelenik meg a megjelenített térképen.
+7. A sikeres frissítés után HTTP-állapotkódot fog kapni `200 OK` . Ha egy beltéri térképhez  [dinamikus stílus van megvalósítva](indoor-map-dynamic-styling.md) , a frissítés a megadott időbélyegzőn jelenik meg a megjelenített térképen.
 
 A szolgáltatások [beolvasása API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) lehetővé teszi egy szolgáltatás állapotának lekérését a funkciójának használatával `ID` . A stateset és erőforrásait a [szolgáltatás állapota törlés API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview)használatával is törölheti.
 

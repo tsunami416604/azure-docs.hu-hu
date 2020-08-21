@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 297c2354e8a56b681230bfe2cedd0d49ddbb5b82
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165719"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691292"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -28,7 +28,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
-> 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblát.
+> 1. Nyissa meg az új  [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblát.
 > 1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
@@ -77,7 +77,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Nyissa meg a megoldást (AppModelv2-WebApp-OpenIDConnect-DotNet.sln) a Visual Studióban.
 1. A Visual Studio verziójától függően előfordulhat, hogy a jobb gombbal a projektre kell kattintania, `AppModelv2-WebApp-OpenIDConnect-DotNet` és **vissza kell állítania a NuGet-csomagokat**
-1. Nyissa meg a Package Manager konzolját (View-> egyéb Windows-> csomagkezelő konzol), és futtassa a következőt:`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. Nyissa meg a Package Manager konzolját (View-> egyéb Windows-> csomagkezelő konzol), és futtassa a következőt: `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 
 > [!div renderon="docs"]
 > 5. Szerkessze a **Web.config** fájlt, és cserélje le a `ClientId` és `Tenant` paramétereket az alábbiakkal:
@@ -159,7 +159,7 @@ public void Configuration(IAppBuilder app)
 > |Ahol  | Leírás |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
-> | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában <https://login.microsoftonline.com/{tenant}/v2.0> a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
+> | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
 > | `RedirectUri`  | URL-cím, amelyben a felhasználók a Microsoft Identity platform végpontjának hitelesítése után továbbítódnak |
 > | `PostLogoutRedirectUri`     | Az URL-cím, ahová a rendszer átirányítja a felhasználókat kijelentkezés után |
 > | `Scope`     | A kért hatókörök felsorolása, szóközökkel elválasztva |

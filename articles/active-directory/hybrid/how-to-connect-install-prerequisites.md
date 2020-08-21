@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210911"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688130"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -73,6 +73,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 - A Azure AD Connect-kiszolgálóhoz való rendszergazdai hozzáférés korlátozása csak tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok számára.
 - Hozzon létre egy [dedikált fiókot az összes, emelt szintű hozzáféréssel rendelkező személy számára](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). A rendszergazdáknak nem szabad megkeresni a webet, ellenőrizniük az e-mailjeit, és a magas jogosultsági szintű fiókokkal a napi hatékonyságnövelő feladatokat kell megadniuk.
 - Kövesse az emelt [szintű hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)című témakör útmutatását. 
+- Az NTLM-hitelesítés használatának megtagadása a AADConnect-kiszolgálóval. A következőképpen teheti meg ezt: [az NTLM korlátozása a AADConnect-kiszolgálón és az](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) [NTLM korlátozása egy tartományon](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. További információ: [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) az egyes munkaállomásokon egyedi véletlenszerű jelszavakat konfigurálhat, és a kiszolgálókat ACL-védelemmel ellátott Active Directory tárolhatja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)kérheti le a kört. További útmutatást a környezet és az emelt szintű hozzáférési munkaállomások (mancsok) üzemeltetéséhez az [üzemeltetési szabványokban találhat a tiszta forrás elve alapján](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Dedikált emelt [szintű hozzáférésű munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) implementálása minden munkatárs számára, a szervezet információs rendszereihez emelt szintű hozzáféréssel. 
 - A Active Directory-környezet támadási felületének csökkentése érdekében kövesse ezeket a [további irányelveket](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) .
@@ -90,7 +91,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 * Ha az [expressz beállításokat](reference-connect-accounts-permissions.md#express-settings-installation) használja, vagy a verzióról a frissítésre van szüksége, vállalati rendszergazdai fiókkal kell rendelkeznie a helyszíni Active Directoryhoz.
 * Ha az egyéni beállítások telepítési útvonalát használja, több lehetőség is rendelkezésre áll. További információ: [egyéni telepítési beállítások](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Hálózati kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .
 * Ha a proxy vagy a tűzfal korlátozza, hogy mely URL-címek érhetők el, meg kell nyitni az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) által dokumentált URL-címeket.
@@ -220,5 +221,5 @@ AD FS-vagy webalkalmazás-proxykiszolgálót futtató számítógépekre vonatko
 * Memória: 2 GB vagy magasabb
 * Azure-beli virtuális gép: a2 vagy újabb konfiguráció
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

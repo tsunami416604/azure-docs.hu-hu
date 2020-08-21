@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431210"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691258"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
 
 **a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 A **[Azure AI Gallery](https://gallery.azure.ai)** az Azure AI-vel létrehozott megoldások felderítésére és megosztására szolgáló, Közösség által vezérelt webhely.
 A katalógus számos olyan erőforrással rendelkezik, amelyek segítségével saját elemzési megoldásait fejlesztheti.
@@ -34,7 +34,6 @@ A Azure AI Gallery számos különböző erőforrást tartalmaz, amelyeket a Mic
 * **Oktatóanyagok** – számos oktatóanyag elérhető a gépi tanulási technológiák és fogalmak megismerésére, illetve a különböző gépi tanulási problémák megoldására szolgáló speciális módszerek leírására.
 * **Gyűjtemények** – a gyűjtemény lehetővé teszi az olyan kísérletek, API-k és más katalógus-erőforrások csoportosítását, amelyek egy adott megoldást vagy fogalmat próbálnak ki.
 * **Egyéni modulok** – egyéni modulokat tölthet le a Studio (klasszikus) munkaterületre a saját kísérletekben való használatra.
-* **Jupyter-jegyzetfüzetek** – a Jupyter-jegyzetfüzetek egyetlen, interaktív vászonban tartalmazzák a kódot, az adatvizualizációkat és a dokumentációt. A katalógusban található jegyzetfüzetek a fejlett gépi tanulási technikák és megoldások oktatóanyagait és részletes leírását tartalmazzák.
 
 ## <a name="discover-and-contribute"></a>Felderítés és közreműködés
 
@@ -49,12 +48,12 @@ A LinkedIn vagy a Twitter megosztási képességeivel, vagy egy hivatkozás e-ma
 
 Bejelentkezéskor a katalógus közösség tagjává válik. Ez lehetővé teszi az erőforrások letöltését vagy a saját katalógusbeli elemek beadását, így mások is kihasználhatják a felderített megoldások előnyeit.
 
-A saját elemzési megoldások fejlesztéséhez használhat **kísérleteket**, **Egyéni modulokat**és **Jupyter jegyzetfüzeteket** .
+A saját elemzési megoldások fejlesztéséhez használható **kísérleteket**, **Egyéni modulokat** is letöltheti.
 A katalógusban **kísérletek**, **oktatóanyagok**és **gyűjtemények** is hozzájárulhatnak.
 
-## <a name="download-experiments-modules-notebooks"></a>Kísérletek, modulok, jegyzetfüzetek letöltése
+## <a name="download-experiments-modules"></a>Kísérletek letöltése, modulok
 
-A **kísérleteket**, az **Egyéni modulokat**és a **Jupyter notebookokat** saját Machine learning Studio (klasszikus) munkaterületére is letöltheti saját megoldásai fejlesztéséhez.
+A **kísérleteket**, az **Egyéni modulokat** saját Machine learning Studio (klasszikus) munkaterületre is letöltheti saját megoldásai fejlesztéséhez.
 
 Erőforrás letöltése az AI-galériából:
 
@@ -162,7 +161,7 @@ Segíthet másoknak egy olyan **oktatóanyag** megírásában, amely ismerteti a
    > [!TIP]
    > Ha azt szeretné, hogy a dokumentációja még a nyilvánosan elérhetővé tétel előtt is megfelelő legyen, először közzéteheti a kísérletet a **listán**. Később módosíthatja a láthatósági beállítást **nyilvánosra** a kísérlet részletei oldalon. Vegye figyelembe, hogy miután megtörtént egy kísérlet **nyilvánosra** állítása, később nem módosítható a **listára**.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Az Ön hozzájárulása már Azure AI Galleryban van. Az Ön hozzájárulásai az **elemek** lap fiók lapján jelennek meg.
 

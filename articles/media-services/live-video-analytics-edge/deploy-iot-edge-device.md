@@ -3,17 +3,16 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652457"
+ms.locfileid: "88684099"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
 Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,6 +22,7 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az �
 * [IoT Edge eszköz regisztrálása](../../iot-edge/how-to-register-device.md)
 * [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
+
     * Használja az alábbi régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA 2. nyugati régiója, Nyugat-Európa, Kelet-Kanada, Egyesült Királyság déli régiója, Franciaország középső régiója, Dél-Franciaország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
     * Az általános célú v2-(GPv2-) Storage-fiókok használata javasolt
 
@@ -190,6 +190,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > Az **allowUnsecuredEndpoints** Twin tulajdonsága igaz értékre van állítva az oktatóanyagok és a rövid útmutatók esetében.   
    Éles környezetben való futtatáskor ezt a tulajdonságot **false** értékre kell állítani. Ez biztosítja, hogy az alkalmazás letiltja az összes nem biztonságos végpontot, és a Graph-topológiák futtatásához érvényes hitelesítő adatokra lesz szükség.  
@@ -210,8 +211,8 @@ Tekintse át az üzembe helyezési adatokat, majd kattintson a Létrehozás gomb
 
 A központi telepítés létrehozása után térjen vissza az IoT hub IoT Edge lapjára.
 
-1.  Válassza ki azt a IoT Edge eszközt, amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
-2.  Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a **telepítésben és az eszköz által jelentett**módon van-e felsorolva.
+1. Válassza ki azt a IoT Edge eszközt, amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
+2. Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a **telepítésben és az eszköz által jelentett**módon van-e felsorolva.
 
 Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 Állapotkód: 200 – az OK érték azt jelenti, hogy [az IoT Edge futtatókörnyezet](../../iot-edge/iot-edge-runtime.md) kifogástalan, és működik.
@@ -247,6 +248,7 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
     ![Az 200-es állapotú üzenet](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>További lépések
+
 Próbálja ki a rövid útmutató [: első lépések – élő videó Analytics IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300807"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690680"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -80,6 +80,10 @@ A frame rate szűrő processzor csomópontja lehetővé teszi, hogy a beérkező
 #### <a name="http-extension-processor"></a>HTTP-bővítmény processzora
 
 A HTTP-bővítmény processzor-csomópontja lehetővé teszi saját IoT Edge moduljának összekapcsolását egy adathordozó-gráfhoz. Ez a csomópont dekódolja a képkockákat bemenetként, és az ilyen képkockákat a modul által elérhető HTTP REST-végpontra továbbítja. Ez a csomópont szükség esetén képes a REST-végpont hitelesítésére. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a REST-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot.
+
+#### <a name="grpc-extension-processor"></a>gRPC-bővítmény processzora
+
+A gRPC-bővítmény processzor-csomópontja dekódolja a képkockákat bemenetként, és továbbítja ezeket a képkockákat a modul által elérhető gRPC-végpontnak. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a gRPC-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot.
 
 #### <a name="signal-gate-processor"></a>Signal Gate processzor  
 

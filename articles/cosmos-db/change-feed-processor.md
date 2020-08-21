@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236471"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688045"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 
@@ -100,8 +100,8 @@ A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adat
 A módosítási hírcsatorna processzora bármely olyan platformon üzemeltethető, amely támogatja a hosszú ideig futó folyamatokat vagy feladatokat:
 
 * Folyamatos futtatású [Azure-webjobs](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
-* Egy folyamat egy Azure-beli [virtuális gépen](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines).
-* A háttérben futó feladatok az [Azure Kubernetes szolgáltatásban](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service).
+* Egy folyamat egy Azure-beli [virtuális gépen](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
+* A háttérben futó feladatok az [Azure Kubernetes szolgáltatásban](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
 * Egy [ASP.net által üzemeltetett szolgáltatás](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
 
 Míg a változási csatorna processzora rövid életű környezetekben futtatható, mivel a címbérleti tároló fenntartja az állapotot, a környezetek indítási és leállítási ciklusa késlelteti az értesítések fogadását (a processzor a környezet indításakor fellépő terhelés miatt).

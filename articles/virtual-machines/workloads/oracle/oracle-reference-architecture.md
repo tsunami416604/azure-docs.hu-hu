@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448766"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690357"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -79,7 +79,7 @@ A következő ábra egy ajánlott architektúra az Oracle-adatvédelem az Azure-
 
 ![Oracle Database a rendelkezésre állási zónák használatával a adatőr-közvetítővel – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-Az előző ábrán az ügyfélrendszer az Oracle-háttérrel rendelkező egyéni alkalmazást a weben keresztül éri el. A webes felület egy terheléselosztó-ben van konfigurálva. A webes frontend kezdeményezi a megfelelő alkalmazáskiszolgáló számára a munka kezelését. Az alkalmazáskiszolgáló lekérdezi az elsődleges Oracle-adatbázist. Az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amelynek [korlátozott alapszintű vCPU](../../../virtual-machines/windows/constrained-vcpu.md) a licencelési költségek mentése és a teljesítmény maximalizálása. A teljesítmény és a magas rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
+Az előző ábrán az ügyfélrendszer az Oracle-háttérrel rendelkező egyéni alkalmazást a weben keresztül éri el. A webes felület egy terheléselosztó-ben van konfigurálva. A webes frontend kezdeményezi a megfelelő alkalmazáskiszolgáló számára a munka kezelését. Az alkalmazáskiszolgáló lekérdezi az elsődleges Oracle-adatbázist. Az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amelynek [korlátozott alapszintű vCPU](../../../virtual-machines/constrained-vcpu.md) a licencelési költségek mentése és a teljesítmény maximalizálása. A teljesítmény és a magas rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
 
 Az Oracle-adatbázisok több rendelkezésre állási zónába kerülnek a magas rendelkezésre állás érdekében. Minden zóna egy vagy több független energiaellátással, hűtéssel és hálózatkezeléssel ellátott adatközpontból áll. A rugalmasság biztosítása érdekében a rendszer legalább három különálló zónát állít be az összes engedélyezett régióban. A rendelkezésre állási zónák a régión belüli fizikai elkülönítése védi az adatközpont hibáiból származó adatok védelmét. Emellett két FSFO megfigyelő is be van állítva két rendelkezésre állási zónában, hogy az adatbázis a másodlagos állapotba kerüljön és feladatátvételt hajtson végre, ha áramkimaradás történik. 
 
@@ -113,7 +113,7 @@ A következő ábra egy olyan architektúra, amely az Oracle-adatkezelő FSFO é
 
 A GoldenGate lehetővé teszi, hogy a tranzakciós szinten lévő adatcsere és-manipuláció több, heterogén platformon legyen a vállalaton belül. Tranzakciós integritással és minimális terheléssel helyezi el a véglegesített tranzakciókat a meglévő infrastruktúrán. A moduláris architektúrája rugalmasságot biztosít a kiválasztott adatrekordok, tranzakciós változások és DDL (adatdefiníciós nyelv) változásainak különböző topológiák közötti kinyeréséhez és replikálásához.
 
-Az Oracle GoldenGate kétirányú replikálás biztosításával lehetővé teszi az adatbázis magas rendelkezésre állású konfigurálását. Ez lehetővé teszi, hogy beállítson egy **több főkiszolgálós** vagy **aktív-aktív konfigurációt**. A következő ábra egy ajánlott architektúra az Azure-beli GoldenGate Active-Active Setup-hoz. A következő architektúrában az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amely [korlátozott alapszintű vCPU](../../../virtual-machines/windows/constrained-vcpu.md) rendelkezik a licencelési költségek mentéséhez és a teljesítmény maximalizálásához. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
+Az Oracle GoldenGate kétirányú replikálás biztosításával lehetővé teszi az adatbázis magas rendelkezésre állású konfigurálását. Ez lehetővé teszi, hogy beállítson egy **több főkiszolgálós** vagy **aktív-aktív konfigurációt**. A következő ábra egy ajánlott architektúra az Azure-beli GoldenGate Active-Active Setup-hoz. A következő architektúrában az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amely [korlátozott alapszintű vCPU](../../../virtual-machines/constrained-vcpu.md) rendelkezik a licencelési költségek mentéséhez és a teljesítmény maximalizálásához. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
 
 ![Oracle Database a rendelkezésre állási zónák használatával a adatőr-közvetítővel – FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ A virtuális gépi operációs rendszer javítása [Azure Automation Update Mana
 
 ## <a name="architecture-and-design-considerations"></a>Architektúra és kialakítási szempontok
 
-- Vegye fontolóra a hiperszálas [memória-optimalizált virtuális gép](../../sizes-memory.md) [korlátozott alapszintű Oracle Database vCPU](../../../virtual-machines/windows/constrained-vcpu.md) való használatát a licencelési költségek megtakarítása és a teljesítmény maximalizálása érdekében. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatát használhatja.
+- Vegye fontolóra a hiperszálas [memória-optimalizált virtuális gép](../../sizes-memory.md) [korlátozott alapszintű Oracle Database vCPU](../../../virtual-machines/constrained-vcpu.md) való használatát a licencelési költségek megtakarítása és a teljesítmény maximalizálása érdekében. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatát használhatja.
 - A felügyelt lemezek használatakor a lemez/eszköz neve változhat az újraindítások során. Javasoljuk, hogy a név helyett az eszköz UUID-t használja, hogy a csatlakoztatások megmaradjanak az újraindítások között. További információt [itt](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)találhat.
 - A rendelkezésre állási zónák használatával magas rendelkezésre állást érhet el a régióban.
 - Érdemes lehet Ultra Disks (ha elérhető) vagy prémium szintű lemezeket használni az Oracle-adatbázishoz.

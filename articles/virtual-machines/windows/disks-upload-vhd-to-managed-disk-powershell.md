@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009612"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689609"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD feltöltése az Azure-ba vagy egy felügyelt lemez másolása egy másik régióba – Azure PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "87009612"
 
 ## <a name="getting-started"></a>Első lépések
 
-Ha egy grafikus felhasználói felületen szeretné feltölteni a lemezeket, ezt Azure Storage Explorer használatával teheti meg. Részletekért lásd: [Azure Storage Explorer használata az Azure Managed Disks kezeléséhez](disks-use-storage-explorer-managed-disks.md)
+Ha egy grafikus felhasználói felületen szeretné feltölteni a lemezeket, ezt Azure Storage Explorer használatával teheti meg. Részletekért lásd: [Azure Storage Explorer használata az Azure Managed Disks kezeléséhez](../disks-use-storage-explorer-managed-disks.md)
 
 A virtuális merevlemez Azure-ba való feltöltéséhez létre kell hoznia egy üres felügyelt lemezt, amely ehhez a feltöltési folyamathoz van konfigurálva. Mielőtt létrehoz egyet, néhány további információra van szüksége a lemezekről.
 

@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424375"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685714"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hibakódok
  
@@ -89,7 +89,7 @@ A tokenek Base64 kódolással vannak kódolva, és az értékek dekódolva leszn
 
 Ebben a tokenben számos fontos rész látható:
 
-- AUD (hallgatóság): a token erőforrása. Figyelje meg, hogy ez a következő: <https://vault.azure.net> . Ez a jogkivonat nem fog működni minden olyan erőforrás esetében, amely nem felel meg explicit módon az értéknek, például gráfnak.
+- AUD (hallgatóság): a token erőforrása. Figyelje meg, hogy ez a következő: `https://vault.azure.net` . Ez a jogkivonat nem fog működni minden olyan erőforrás esetében, amely nem felel meg explicit módon az értéknek, például gráfnak.
 - IAT (kiadás időpontja): az időpontok száma a jogkivonat kiállítása óta.
 - NBF (nem korábban): az időpontok száma az időszak kezdete óta, amikor a token érvényes lesz.
 - exp (lejárat): az időpontok száma a token lejárata óta.

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b2677e7b83c1d86fd12f8c89c51e95460e8694f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054475"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690663"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Gyors útmutató: virtuális gép biztonsági mentése az Azure-ban ARM-sablonnal
 
@@ -28,7 +28,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)származik. Ez a sablon lehetővé teszi, hogy egyszerű Windows-alapú virtuális gépet és Recovery Services-tárolót helyezzen üzembe, amely a DefaultPolicy-védelemmel van konfigurálva.
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
+:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json":::
 
 A sablonban definiált erőforrások a következők:
 
@@ -71,7 +71,7 @@ A sablon létrehoz egy virtuális gépet, és lehetővé teszi a virtuális gép
 
 A biztonsági mentési feladatok figyeléséhez tekintse meg [a biztonsági mentési feladatok figyelése](./quick-backup-vm-powershell.md#monitor-the-backup-job)című témakört.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a virtuális gép biztonsági mentésére, törölheti azt.
 
