@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051296"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716333"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Gyakori kérdések az önkiszolgáló jelszó-visszaállítással kapcsolatban
 
 A következő gyakori kérdések (GYIK) az önkiszolgáló jelszó-visszaállítással kapcsolatos összes dologra vonatkoznak.
 
-Ha az Azure Active Directory (Azure AD) és az önkiszolgáló jelszó-visszaállítási (SSPR) szolgáltatással kapcsolatos általános kérdéssel rendelkezik, akkor a Közösségtől kérhet segítséget a [Microsoft Q&a Azure Active Directory kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-active-directory.html). A Közösség tagjai közé tartoznak a mérnökök, a termékmenedzsment, a MVP és az informatikai szakemberek.
+Ha az Azure Active Directory (Azure AD) és az önkiszolgáló jelszó-visszaállítási (SSPR) szolgáltatással kapcsolatos általános kérdéssel rendelkezik, akkor a Közösségtől kérhet segítséget a [Microsoft Q&a Azure Active Directory kérdéseit tartalmazó oldalon](/answers/topics/azure-active-directory.html). A Közösség tagjai közé tartoznak a mérnökök, a termékmenedzsment, a MVP és az informatikai szakemberek.
 
 Ez a GYIK a következő szakaszokra oszlik:
 
@@ -197,7 +197,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
 * **K: a felhasználók értesítést kaphatnak az Office-portálról, ha a helyszíni jelszavuk lejár?**
 
-  > **A:** Igen, ez ma is lehetséges, ha Active Directory összevonási szolgáltatások (AD FS)t (AD FS) használ. Ha AD FS használ, kövesse a [jelszó-házirend jogcímeinek küldése a AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) cikk utasításait. Ha jelszó-kivonatoló szinkronizálást használ, ez jelenleg nem lehetséges. A helyi címtárakból nem szinkronizáljuk a jelszóházirendek, így nem lehet lejárati értesítéseket közzétenni a Felhőbeli élmények között. Mindkét esetben lehetősége van arra is, hogy [értesítse azokat a felhasználókat, akiknek a jelszava hamarosan lejár a powershellen keresztül](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **A:** Igen, ez ma is lehetséges, ha Active Directory összevonási szolgáltatások (AD FS)t (AD FS) használ. Ha AD FS használ, kövesse a [jelszó-házirend jogcímeinek küldése a AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) cikk utasításait. Ha jelszó-kivonatoló szinkronizálást használ, ez jelenleg nem lehetséges. A helyi címtárakból nem szinkronizáljuk a jelszóházirendek, így nem lehet lejárati értesítéseket közzétenni a Felhőbeli élmények között. Mindkét esetben lehetősége van arra is, hogy [értesítse azokat a felhasználókat, akiknek a jelszava hamarosan lejár a powershellen keresztül](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 * **K: Letilthatom a felhasználókat a jelszavuk módosítására?**
@@ -243,7 +243,7 @@ Ez a GYIK a következő szakaszokra oszlik:
 
 * **K: Hogyan működik a jelszó visszaírási a jelenetek mögött?**
 
-  > **A:** Tekintse meg a [jelszó-visszaírási működését](howto-sspr-writeback.md) ismertető cikket, amelyből megtudhatja, mi történik a jelszó-visszaírási engedélyezésekor, valamint az, hogy az adatforgalom Hogyan zajlik vissza a rendszeren a helyszíni környezetbe.
+  > **A:** Tekintse meg a [jelszó-visszaírási működését](./tutorial-enable-sspr-writeback.md) ismertető cikket, amelyből megtudhatja, mi történik a jelszó-visszaírási engedélyezésekor, valamint az, hogy az adatforgalom Hogyan zajlik vissza a rendszeren a helyszíni környezetbe.
   >
   >
 * **K: mennyi ideig tart a jelszó visszaírási? Van olyan szinkronizálási késés, mint a jelszó-kivonattal való szinkronizálás?**
@@ -273,7 +273,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
 * **K: biztonságos a jelszó visszaírási?  Hogyan lehet biztos benne, hogy nem lesz feltörve?**
 
-  > **A:** Igen, a jelszó visszaírási biztonságos. Ha többet szeretne megtudni a Password visszaírási szolgáltatás által megvalósított több biztonsági rétegről, tekintse meg a jelszó- [visszaírási biztonsági](concept-sspr-writeback.md#password-writeback-security) szakaszt a [jelszó-visszaírási áttekintése](howto-sspr-writeback.md) című cikkben.
+  > **A:** Igen, a jelszó visszaírási biztonságos. Ha többet szeretne megtudni a Password visszaírási szolgáltatás által megvalósított több biztonsági rétegről, tekintse meg a jelszó- [visszaírási biztonsági](concept-sspr-writeback.md#password-writeback-security) szakaszt a [jelszó-visszaírási áttekintése](./tutorial-enable-sspr-writeback.md) című cikkben.
   >
   >
 
@@ -286,7 +286,7 @@ Ez a GYIK a következő szakaszokra oszlik:
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](./tutorial-enable-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
 * [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)

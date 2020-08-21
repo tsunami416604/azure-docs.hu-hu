@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608818"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718696"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -59,7 +59,7 @@ Az Azure-ba replikálni próbált összetevő vagy nem válaszol. A lehetséges 
 
    2.  Nyissa meg a Microsoft Services MMC beépülő modult (futtassa > Services. msc fájlt), és ellenőrizze, hogy fut-e a "Microsoft Azure Gateway Service". Ha a szolgáltatás leáll vagy nem fut, indítsa el a szolgáltatást. Azt is megteheti, hogy megnyithatja a parancssort vagy a PowerShellt, és megteheti: "net start asrgwy"
 
-3. Kapcsolódási problémák keresése Azure Migrate készülék és a gyorsítótár Storage-fiók között: 
+3. Kapcsolódási problémák keresése Azure Migrate készülék és a berendezés Storage-fiókja között: 
 
     Futtassa a következő parancsot a azcopy letöltése után a Azure Migrate berendezésben:
     
@@ -149,7 +149,7 @@ A lehetséges okok a következők:
     
       1. Azcopy [letöltése](https://go.microsoft.com/fwlink/?linkid=2138966)
         
-      2. Keresse meg a készülék Storage-fiókját az erőforráscsoport csoportban. A Storage-fiók neve hasonlít a migrategwsa \* \* \* \* \* \* \* \* \* \* . A (z) [account] paraméter értéke a fenti parancsban.
+      2. Keresse meg a készülék Storage-fiókját az erőforráscsoport csoportban. A Storage-fiók neve hasonlít a migratelsa \* \* \* \* \* \* \* \* \* \* . A (z) [account] paraméter értéke a fenti parancsban.
         
       3. Keresse meg a Storage-fiókját a Azure Portalban. Győződjön meg arról, hogy a kereséshez használt előfizetés ugyanaz az előfizetés (célként megadott előfizetés), amelyben a Storage-fiókot létrehozták. Nyissa meg a tárolókat a blob szolgáltatás szakaszban. Kattintson a + tároló elemre, és hozzon létre egy tárolót. Hagyja a nyilvános hozzáférési szintet az alapértelmezett kijelölt értékre.
         
@@ -226,7 +226,7 @@ Például: hibaüzenet: belső hiba történt. [A rendszer érvénytelen pillana
 
 A következő szakasz a gyakran előforduló VMware-hibákat és azok enyhítését ismerteti.
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Hibaüzenet: belső hiba történt. [A kiszolgáló elutasította a kapcsolatokat]
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Hibaüzenet: belső hiba történt. [A kiszolgáló elutasította a kapcsolatokat]
 
 A probléma egy ismert VMware-probléma, amely a VDDK 6,7-es verziójában fordul elő. Le kell állítania az átjáró szolgáltatást a Azure Migrate készüléken, le kell [töltenie egy frissítést a VMware kb-ból](https://go.microsoft.com/fwlink/?linkid=2138889), majd újra kell indítania az átjáró szolgáltatást.
 
@@ -240,36 +240,36 @@ Az átjáró szolgáltatás elindításának lépései:
 1. Nyomja le a Windows + R, majd az Open Services. msc parancsot. Kattintson a jobb gombbal a "Microsoft Azure Gateway Service" elemre, és indítsa el.
 2. Másik lehetőségként megnyithatja a parancssort vagy a PowerShellt, és a következőket teheti: net start asrgwy.
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Hibaüzenet: belső hiba történt. [' A rendszer érvénytelen pillanatkép-konfigurációt észlelt. ']
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Hibaüzenet: belső hiba történt. [' A rendszer érvénytelen pillanatkép-konfigurációt észlelt. ']
 
 Ha több lemezzel rendelkező virtuális géppel rendelkezik, akkor ez a hiba akkor jelentkezhet, ha eltávolít egy lemezt a virtuális gépről. A probléma megoldásához tekintse meg a [VMware-cikkben](https://go.microsoft.com/fwlink/?linkid=2138890)található lépéseket.
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Hibaüzenet: belső hiba történt. [Pillanatkép előállítása felfüggesztve]
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Hibaüzenet: belső hiba történt. [Pillanatkép előállítása felfüggesztve]
 
 Ez a probléma akkor fordul elő, ha a pillanatkép-létrehozás lefagyott. Ha ez a probléma bekövetkezik, a pillanatkép létrehozása feladat leáll a 95%-os vagy a 99%-nál. A probléma megoldása érdekében tekintse meg ezt a [VMware kb-ot](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_]
 
 Ha a replikálási ciklus végén összesíti a lemezeket, a művelet sikertelen lesz. Kövesse a [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138970) utasításait a probléma megoldásához szükséges _OK_ kiválasztásával.
 
 A következő hibák történnek, amikor a VMware pillanatképekkel kapcsolatos műveletek – a lemezek létrehozása, törlése vagy konszolidálása meghiúsul. A hibák elhárításához kövesse a következő szakaszban található útmutatást:
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Hibaüzenet: belső hiba történt. [Egy másik feladat már folyamatban van]
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Hibaüzenet: belső hiba történt. [Egy másik feladat már folyamatban van]
 
 Ez a probléma akkor fordul elő, ha ütköző virtuálisgép-feladatok futnak a háttérben, vagy ha a vCenter Serveron belül egy feladat túllépi az időkorlátot. Kövesse a következő [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138891)-ban megadott megoldást.
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Hibaüzenet: belső hiba történt. [A művelet a jelenlegi állapotban nem engedélyezett]
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Hibaüzenet: belső hiba történt. [A művelet a jelenlegi állapotban nem engedélyezett]
 
 Ez a probléma akkor fordul elő, ha vCenter Server felügyeleti ügynökök nem működnek. A probléma megoldásához tekintse meg a következő [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138971)-ban található megoldást.
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Hibaüzenet: belső hiba történt. [A pillanatkép lemezének mérete érvénytelen]
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Hibaüzenet: belső hiba történt. [A pillanatkép lemezének mérete érvénytelen]
 
 Ez egy ismert VMware-probléma, amelyben a pillanatkép által jelzett lemez mérete nulla lesz. Kövesse a [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138972)-ban megadott felbontást.
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hibaüzenet: belső hiba történt. [A memória kiosztása nem sikerült. Nincs elég memória.]
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hibaüzenet: belső hiba történt. [A memória kiosztása nem sikerült. Nincs elég memória.]
 
 Ez akkor fordul elő, ha az NFC-gazdagép puffere nem elegendő a memóriához. A probléma megoldásához át kell helyeznie a virtuális gépet (számítási vMotion) egy másik gazdagépre, amely ingyenes erőforrásokkal rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a virtuális gép replikálását, és végezzen [tesztelési áttelepítést](https://go.microsoft.com/fwlink/?linkid=2139333).

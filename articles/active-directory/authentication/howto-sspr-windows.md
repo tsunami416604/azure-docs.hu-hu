@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebcb79088ebac761632e882e98e00f165cc4bd05
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035231"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717353"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjén
 
@@ -35,7 +35,7 @@ A következő korlátozások vonatkoznak a SSPR használatára a Windows bejelen
 
 - A jelszó alaphelyzetbe állítása jelenleg nem támogatott Távoli asztal vagy Hyper-V bővített munkamenetekben.
 - Néhány külső hitelesítő adat szolgáltatója ismert, hogy problémákat okozhat a szolgáltatással kapcsolatban.
-- Ha a [EnableLUA beállításkulcs](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) módosításával tiltja le az UAC-t, a probléma problémákat okozhat.
+- Ha a [EnableLUA beállításkulcs](/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) módosításával tiltja le az UAC-t, a probléma problémákat okozhat.
 - Ez a funkció nem működik a 802.1 x hálózati hitelesítéssel rendelkező hálózatok esetében, és a "azonnali végrehajtás a felhasználó bejelentkezése előtt" beállítást. A 802.1 x hálózati hitelesítéssel telepített hálózatok esetében ajánlott a számítógép-hitelesítés használata a funkció engedélyezéséhez.
 - A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz. Ez azt jelenti, hogy az eszközöknek a szervezet belső hálózatán vagy egy helyszíni tartományvezérlőhöz való hálózati hozzáféréssel rendelkező VPN-en kell lenniük.
 - Ha rendszerképet használ, a Sysprep futtatása előtt győződjön meg arról, hogy a webes gyorsítótár törlődik a beépített rendszergazda számára a profilmásolási lépés végrehajtása előtt. A lépéssel kapcsolatos további információkért tekintse meg az [Egyéni alapértelmezett felhasználói profil használata esetén](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)a terméktámogatási cikkben.
@@ -59,10 +59,10 @@ Ha Windows 10-es eszközt szeretne konfigurálni a SSPR a bejelentkezési képer
 ### <a name="windows-10-prerequisites"></a>Windows 10 előfeltételek
 
 - A rendszergazdának [engedélyeznie kell az Azure ad önkiszolgáló jelszó-visszaállítást a Azure Portal](tutorial-enable-sspr.md).
-- A felhasználónak regisztrálnia kell a SSPR a funkció használata előtt[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- A felhasználónak regisztrálnia kell a SSPR a funkció használata előtt [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Nem egyedi, ha a Windows bejelentkezési képernyőjén SSPR használ, minden felhasználónak meg kell adnia a hitelesítési kapcsolattartási adatokat, mielőtt alaphelyzetbe állíthatja a jelszavát.
 - Hálózati proxyra vonatkozó követelmények:
-    - A 443- `passwordreset.microsoftonline.com` es port a és a`ajax.aspnetcdn.com`
+    - A 443- `passwordreset.microsoftonline.com` es port a és a `ajax.aspnetcdn.com`
     - A Windows 10-es eszközök csak a gépi szintű proxyk konfigurációját támogatják.
 - Futtassa legalább a Windows 10 2018-es verzióját (v1803), és az eszközöknek a következőknek kell lenniük:
     - Azure AD-hez csatlakoztatva
@@ -126,10 +126,10 @@ Windows 7, 8 vagy 8,1 rendszerű eszköz SSPR való konfigurálásához a bejele
 ### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 és 8,1 előfeltételek
 
 - A rendszergazdának [engedélyeznie kell az Azure ad önkiszolgáló jelszó-visszaállítást a Azure Portal](tutorial-enable-sspr.md).
-- A felhasználónak regisztrálnia kell a SSPR a funkció használata előtt[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- A felhasználónak regisztrálnia kell a SSPR a funkció használata előtt [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Nem egyedi, ha a Windows bejelentkezési képernyőjén SSPR használ, minden felhasználónak meg kell adnia a hitelesítési kapcsolattartási adatokat, mielőtt alaphelyzetbe állíthatja a jelszavát.
 - Hálózati proxyra vonatkozó követelmények:
-    - 443-es port`passwordreset.microsoftonline.com`
+    - 443-es port `passwordreset.microsoftonline.com`
 - Javított Windows 7 vagy Windows 8,1 operációs rendszer.
 - TLS 1,2 engedélyezve a [Transport Layer Security (TLS) beállításjegyzék-beállításokban](/windows-server/security/tls/tls-registry-settings#tls-12)található útmutatás használatával.
 - Ha a gépen több külső hitelesítő adat-szolgáltató van engedélyezve, a felhasználók több felhasználói profilt látnak a bejelentkezési képernyőn.
@@ -143,7 +143,7 @@ A Windows 7, 8 és 8,1 esetében egy kis összetevőt kell telepíteni a gépre,
 
 1. Töltse le a megfelelő telepítőt az engedélyezni kívánt Windows-verzióhoz.
 
-    A szoftver telepítőjének a Microsoft letöltőközpontban érhető el[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+    A szoftver telepítőjének a Microsoft letöltőközpontban érhető el [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Jelentkezzen be arra a gépre, amelyre telepíteni szeretné, majd futtassa a telepítőt.
 1. A telepítés után az újraindítás kifejezetten ajánlott.
 1. Az újraindítás után a bejelentkezési képernyőn válasszon ki egy felhasználót, és válassza az "Elfelejtett jelszó?" lehetőséget. a jelszó-visszaállítási munkafolyamat elindításához.

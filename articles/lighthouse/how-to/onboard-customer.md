@@ -1,14 +1,14 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 08/12/2020
+ms.date: 08/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: db6a819c72f1ef46f542ed47cad6caae23c0d191
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167317"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719053"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe 
 
 A bevezetési folyamat több ügyfél számára is megismételhető. Ha a megfelelő engedélyekkel rendelkező felhasználó bejelentkezik a kezelő bérlőbe, a felhasználó az ügyfél-kihelyezés hatókörén belül jogosult a felügyeleti műveletek végrehajtására, anélkül, hogy be kellene jelentkeznie minden egyes ügyfél-bérlőre.
 
-Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, és hogy az olvasó hozzáférést biztosítson az összes felhasználóhoz. További információ: [partner-azonosító csatolása az Azure-fiókokhoz](../../cost-management-billing/manage/link-partner-id.md).
+Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, és hogy az olvasó hozzáférést biztosítson az összes felhasználóhoz. További információ:  [partner-azonosító csatolása az Azure-fiókokhoz](../../cost-management-billing/manage/link-partner-id.md).
 
 > [!NOTE]
 > Az ügyfelek az Azure világítótoronyba is bejelentkezhetnek, ha az [Azure Marketplace](publish-managed-services-offers.md)-en közzétett felügyelt szolgáltatási ajánlatot (nyilvános vagy privát) vásárolnak. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlatok mellett is használhatja.
@@ -121,7 +121,7 @@ Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](..
 
 |Mező  |Meghatározás  |
 |---------|---------|
-|**mspOfferName**     |A definíciót leíró név. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként.         |
+|**mspOfferName**     |A definíciót leíró név. Ez az érték jelenik meg az ügyfél számára az ajánlat címének, és egyedi értéknek kell lennie.        |
 |**mspOfferDescription**     |Az ajánlat rövid leírása (például "contoso VM Management ajánlat").      |
 |**managedByTenantId**     |A bérlő azonosítója.          |
 |**engedélyek**     |A bérlőből származó felhasználók/csoportok/SPN- **principalId** értékei **, amelyek segítségével** az ügyfelek megismerhetik az engedélyezés célját, és egy beépített **roleDefinitionId** értékre vannak leképezve, hogy megadják a hozzáférési szintet.      |
@@ -138,7 +138,7 @@ A választott sablon attól függ, hogy teljes előfizetést, erőforráscsoport
 |Előfizetés (az Azure Marketplace-en közzétett ajánlat használata esetén)   |[marketplaceDelegatedResourceManagement.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Az itt ismertetett folyamat külön előfizetési szintű üzembe helyezést igényel minden előfizetéshez, még akkor is, ha az előfizetések ugyanabban az ügyfél-bérlőben vannak bevezetésben. A különálló központi telepítések akkor is szükségesek, ha több erőforráscsoportot is előkészít ugyanazon ügyfél bérlője különböző előfizetéseken belül. Egy előfizetésen belül több erőforráscsoport bevezetését azonban egyetlen előfizetési szintű telepítésben is elvégezheti.
+> Az itt leírt folyamat külön üzembe helyezést igényel minden előfizetéshez, még akkor is, ha az előfizetések ugyanabban az ügyfél-bérlőben vannak bevezetésben. A különálló központi telepítések akkor is szükségesek, ha több erőforráscsoportot is előkészít ugyanazon ügyfél bérlője különböző előfizetéseken belül. Egy adott előfizetésen belül több erőforráscsoport bevezetését azonban egyetlen központi telepítésben is elvégezheti.
 >
 > Külön központi telepítések is szükségesek ahhoz, hogy több ajánlat is alkalmazható legyen ugyanarra az előfizetésre (vagy az előfizetésen belüli erőforráscsoportok). Minden egyes alkalmazásnak eltérő **mspOfferName**kell használnia.
 
@@ -199,12 +199,22 @@ A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a 
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>A Azure Resource Manager-sablonok üzembe helyezése
 
-A paramétert tartalmazó fájl frissítése után az ügyfél bérlője a Azure Resource Manager sablont a bérlőn belül, előfizetési szintű telepítésként kell telepítenie. Külön üzembe helyezésre van szükség minden olyan előfizetéshez, amelyet be szeretne készíteni a bevezetéshez (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz). A központi telepítés a PowerShell vagy az Azure CLI használatával végezhető el, az alább látható módon.
+A paramétert tartalmazó fájl frissítése után az ügyfél bérlője a Azure Resource Manager sablont a bérlőn belül kell telepítenie. Külön üzembe helyezésre van szükség minden olyan előfizetéshez, amelyet be szeretne készíteni a bevezetéshez (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz).
 
 > [!IMPORTANT]
-> Ezt az előfizetési szintű üzembe helyezést egy nem vendég fióknak kell végrehajtania az ügyfél bérlője számára, aki az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Ezt az üzembe helyezést olyan nem vendég fiókkal kell végrehajtani az ügyfél bérlője számára, aki az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
 >
 > Ha az előfizetés a [Cloud Solution Provider (CSP) programon](../concepts/cloud-solution-provider.md)keresztül lett létrehozva, akkor minden olyan felhasználó, aki rendelkezik [rendszergazdai ügynök](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) szerepkörrel a szolgáltatói bérlőben, végrehajthatja a telepítést.
+
+Az üzembe helyezés a Azure Portal a PowerShell vagy az Azure CLI használatával végezhető el, az alább látható módon.
+
+### <a name="azure-portal"></a>Azure Portal
+
+1. A [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)-tárházban válassza az **üzembe helyezés az Azure** -ban gombot, amely a használni kívánt sablon mellett látható. A sablon az Azure Portalon fog megnyílni.
+1. Adja meg az **MSP-ajánlat neve**, az **MSP-ajánlat leírása**, a **bérlői azonosító**és a **jogosultságok**által kezelt értékeket. Ha szeretné, a **Paraméterek szerkesztése** lehetőség kiválasztásával megadhatja a,,, `mspOfferName` `mspOfferDescription` `managedbyTenantId` és `authorizations` közvetlenül a paraméter fájljának értékét. Ne felejtse el frissíteni ezeket az értékeket a sablon alapértelmezett értékeinek használata helyett.
+1. Válassza a **felülvizsgálat és létrehozás**, majd a **Létrehozás**lehetőséget.
+
+Néhány perc elteltével megjelenik egy értesítés arról, hogy a telepítés befejeződött.
 
 ### <a name="powershell"></a>PowerShell
 

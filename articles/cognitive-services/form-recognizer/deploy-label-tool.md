@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212445"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717897"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -35,7 +35,7 @@ Az adatfelirat megkezdésének leggyorsabb módja a minta feliratozási eszköz 
 Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe helyezni a minta-címkézési eszközt az Azure Container instance (ACI) szolgáltatásban. Mindkét lehetőség a minta feliratozási eszközének az ACI-val való futtatására szolgál. 
 
 * [Az Azure Portal használata](#azure-portal)
-* [Az Azure CLI-vel](#azure-cli)
+* [Az Azure CLI használata](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -70,14 +70,27 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
 
 6. Most konfigurálja a Docker-tárolót. Az összes mező megadása kötelező, kivéve, ha másként jelezzük:
 
+    # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
    * Beállítások – **egyetlen tároló** kijelölése
    * Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
-   * Kiszolgáló URL-címe – Itt adhatja meg a következőt:`https://mcr.microsoft.com`
+   * Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
    * Username (nem kötelező) – hozzon létre egy felhasználónevet. 
    * Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
-   * Rendszerkép és címke – ezt állítsa be a következőre:`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
    * Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
-   * Indítási parancs – ezt állítsa be a következőre:`./run.sh eula=accept`
+   * Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
+
+    # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1) 
+   * Beállítások – **egyetlen tároló** kijelölése
+   * Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
+   * Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
+   * Username (nem kötelező) – hozzon létre egy felhasználónevet. 
+   * Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
+   * Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
+   * Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
+    
+    ---
 
    > [!div class="mx-imgBorder"]
    > ![A Docker konfigurálása](./media/quickstarts/formre-configure-docker.png)
@@ -93,13 +106,15 @@ A Azure Portal használatának alternatívájaként az Azure CLI használatával
 
 Itt van néhány dolog, amit tudnia kell a paranccsal kapcsolatban:
 
-* `DNS_NAME_LABEL=aci-demo-$RANDOM`létrehoz egy véletlenszerű DNS-nevet. 
+* `DNS_NAME_LABEL=aci-demo-$RANDOM` létrehoz egy véletlenszerű DNS-nevet. 
 * Ez a példa azt feltételezi, hogy rendelkezik egy olyan erőforráscsoporthoz, amelyet az erőforrások létrehozásához használhat. Helyettesítse be `<resource_group_name>` az előfizetéséhez tartozó érvényes erőforráscsoportot. 
 * Meg kell adnia, hogy hová szeretné létrehozni az erőforrást. Cserélje le a `<region name>` alkalmazást a kívánt régióra a webalkalmazáshoz. 
 * Ez a parancs automatikusan elfogadja a végfelhasználói licencszerződést.
 
 Az Azure CLI-ből futtassa ezt a parancsot egy webalkalmazás-erőforrás létrehozásához a minta feliratozási eszközhöz: 
 
+
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -113,7 +128,24 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
+``` 
+# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
 ```
+
+---
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Kapcsolódás az Azure AD-hez az engedélyezéshez
 

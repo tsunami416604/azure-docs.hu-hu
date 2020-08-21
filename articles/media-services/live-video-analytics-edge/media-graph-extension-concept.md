@@ -3,12 +3,12 @@ title: Mi az a Media Graph Extension – Azure
 description: A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy gráf kiterjesztésű csomóponton keresztül.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 09fc2b71a6188caf1bdd9b7a2ef4da287f022845
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691857"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716078"
 ---
 # <a name="media-graph-extension"></a>Media Graph-bővítmény
 
@@ -52,9 +52,9 @@ Az alábbi ábra a magas szintű adatfolyamot ábrázolja:
  
 ![Adatfolyam](./media/media-graph-extension/data-flow.png)
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 
-Az élő videó elemzéséhez [Jupyter-jegyzetfüzet](https://jupyter.org/) -mintákat is megadunk. Ezek a jegyzetfüzetek részletes útmutatást nyújtanak a következő műveletekhez:
+Az élő videó elemzéséhez [Jupyter-jegyzetfüzet](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) -mintákat is megadunk. Ezek a jegyzetfüzetek részletes útmutatást nyújtanak a következő műveletekhez:
 
 * A Docker-tároló rendszerképének létrehozása bővítmény-szolgáltatásból
 * A bővítmény szolgáltatás tárolóként való üzembe helyezése az élő video Analytics-tárolóval együtt

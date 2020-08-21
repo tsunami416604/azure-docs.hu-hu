@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691428"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719308"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió)
 
@@ -22,15 +22,16 @@ A módosítási hírcsatorna tranzakciós naplókat biztosít a blobok és a blo
 További információ a változási csatornáról: a [hírcsatorna módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md).
 
 > [!NOTE]
-> A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és a **westcentralus** és **westus2** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg a [hírcsatorna-támogatás módosítása az Azure Blob Storageban](storage-blob-change-feed.md)című témakört. A módosítási hírcsatorna-feldolgozó függvénytárának változása mostantól változhat, és a tár általánosan elérhetővé válik.
+> A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és korlátozott régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg a [hírcsatorna-támogatás módosítása az Azure Blob Storageban](storage-blob-change-feed.md)című témakört. A módosítási hírcsatorna-feldolgozó függvénytárának változása mostantól változhat, és a tár általánosan elérhetővé válik.
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>A blob Change feed Processor Library letöltése
 
 1. Nyisson meg egy parancssori ablakot (például: Windows PowerShell).
-2. A projekt könyvtárából telepítse az **Azure. Storage. Blobs. Changefeed** NuGet csomagot.
+2. A projekt könyvtárából telepítse az [ **Azure. Storage. Blobs. Changefeed** NuGet csomagot](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/).
 
 ```console
-dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
 ## <a name="read-records"></a>Rekordok beolvasása
 
@@ -117,7 +118,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 ## <a name="stream-processing-of-records"></a>Rekordok adatfolyam-feldolgozása
 
-Megadhatja, hogy a megérkezéskor feldolgozza-e a változási adatcsatornákat. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications). Javasoljuk, hogy óránkénti lekérdezéssel kérdezze le a módosításokat.
+Dönthet úgy is, hogy feldolgozza a módosítási adatcsatornákat, mivel azok véglegesítve vannak a változási hírcsatornában. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications). A változási eseményeket átlagosan 60 másodpercen belül közzétesszük a változási csatornán. Javasoljuk, hogy a lekérdezési időköz megadásakor vegye figyelembe az új módosításokat az adott időszakra vonatkozóan.
 
 Ez a példa rendszeres időközönként lekérdezi a módosításokat.  Ha módosulnak a rekordok, ez a kód feldolgozza ezeket a rekordokat, és menti a változási hírcsatorna kurzorát. Így ha a folyamat leáll, majd újra elindítják, az alkalmazás a kurzor használatával folytathatja a rekordok feldolgozását, ahol az utolsó abbahagyta a műveletet. Ez a példa menti a kurzort egy helyi alkalmazás konfigurációs fájljába, de az alkalmazás bármely olyan formában mentheti azt, amelyik a legmegfelelőbb a forgatókönyvhöz. 
 
@@ -181,7 +182,7 @@ public void SaveCursor(string cursor)
 
 ## <a name="reading-records-within-a-time-range"></a>Rekordok beolvasása egy időtartományon belül
 
-Egy adott időtartományon belüli rekordokat is elolvashatja. Ez a példa a változási hírcsatorna minden olyan rekordját megismétli, amely a 3:00. március 2 2017-kor és a 2:00-as számú, a 7 2019-es verzióban található, a listára kerül, majd visszaadja ezt a listát a hívónak.
+Egy adott időtartományon belüli rekordokat is elolvashatja. Ez a példa a változási hírcsatorna minden olyan rekordját megismétli, amely a 3:00. március 2 2020-kor és a 2:00-i augusztus 7 2020-ig tart, és hozzáadja őket egy listához, majd visszaküldi a listát a hívónak.
 
 ### <a name="selecting-segments-for-a-time-range"></a>Szegmensek kiválasztása időtartományhoz
 
@@ -198,8 +199,8 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
     // Create the start and end time.  The change feed client will round start time down to
     // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
     // with minutes and seconds.
-    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
-    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
 
     // You can also provide just a start or end time.
     await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(

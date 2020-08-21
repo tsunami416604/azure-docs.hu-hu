@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685765"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717576"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -70,7 +70,7 @@ Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7,3 és újabb verziók|
 |Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
-|SUSE|SLES|12 SP3 és újabb verziók|
+|SUSE|SLES|12 SP3 – SP5|
 
 Az egyéni virtuálisgép-lemezképeket a vendég-konfigurációs házirendek támogatják, feltéve, hogy a fenti táblázatban szereplő operációs rendszerek egyike.
 
@@ -95,6 +95,11 @@ A forgalmat az Azure [virtuális nyilvános IP-címével](../../../virtual-netwo
 Az Azure arc-on kívül található csomópontok a vendég konfigurációs szolgáltatáshoz való kapcsolódást igénylik. Az [Azure arc dokumentációjában](../../../azure-arc/servers/overview.md)megadott hálózati és proxy-követelmények részletei.
 
 Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontok **443**-es portján Ha egy Azure-beli hálózat nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket a [hálózati biztonsági csoportokra](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) vonatkozó szabályokkal. A "GuestAndHybridManagement" [szolgáltatási címke](../../../virtual-network/service-tags-overview.md) használható a vendég konfigurációs szolgáltatásra való hivatkozáshoz.
+
+A privát adatközpontokban lévő arc csatlakozó kiszolgálók esetében engedélyezze a forgalmat a következő minták használatával:
+
+- Port: csak TCP 443 szükséges a kimenő internet-hozzáféréshez
+- Globális URL-cím: `*.guestconfiguration.azure.com`
 
 ## <a name="managed-identity-requirements"></a>Felügyelt identitásokra vonatkozó követelmények
 
@@ -139,9 +144,12 @@ Ha a szabályzatot egy Azure Resource Manager sablon (ARM-sablon) használatáva
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása a vendég konfiguráció használatával
 
-A Azure Policy legújabb funkciója a számítógépeken belüli beállítások konfigurálását végzi. A definíció a _Windows rendszerű gépeken beállított időzónát konfigurálja_ úgy, hogy az időzóna konfigurálásával megváltoztatja a gépet.
+Csak a _Windows rendszerű gépeken beállított időzónát_ definiáló definíció állítja be a gépet az időzóna konfigurálásával. A számítógépeken belüli beállítások konfigurálásának egyéni szabályzat-definíciói nem támogatottak.
 
 Ha a _konfigurálással_kezdődő definíciókat rendeli hozzá, akkor a definíciók _központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés_ Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
+
+> [!NOTE]
+> A beépített időzóna-házirend az egyetlen olyan definíció, amely támogatja a gépeken belüli beállítások konfigurálását, és a gépeken belüli beállításokat konfiguráló egyéni házirendek nem támogatottak.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Szabályzatok kiosztása az Azure-on kívüli gépekhez
 

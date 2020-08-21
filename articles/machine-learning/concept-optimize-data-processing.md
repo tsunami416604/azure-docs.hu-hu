@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500963"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719274"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
 
@@ -33,9 +33,9 @@ A CSV-fájlokat általában az adatimportáláshoz és-exportáláshoz használj
 
 ## <a name="pandas-dataframe"></a>Panda dataframe
 
-A [pandák dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) általában adatkezeléshez és elemzéshez használják. `Pandas`az 1 GB-nál kisebb adatméretek esetében is jól működik, de a dataframes feldolgozási ideje `pandas` lelassul, ha a fájlméretek körülbelül 1 GB-ot érnek el. Ez a lassulás azért van, mert a tárolóban tárolt adatai mérete nem egyezik meg a dataframe lévő adatmérettel. Például a CSV-fájlokban lévő adat akár 10 alkalommal is kiterjeszthető egy dataframe, így egy 1 GB-os CSV-fájl 10 GB-nyi lehet dataframe.
+A [pandák dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) általában adatkezeléshez és elemzéshez használják. `Pandas` az 1 GB-nál kisebb adatméretek esetében is jól működik, de a dataframes feldolgozási ideje `pandas` lelassul, ha a fájlméretek körülbelül 1 GB-ot érnek el. Ez a lassulás azért van, mert a tárolóban tárolt adatai mérete nem egyezik meg a dataframe lévő adatmérettel. Például a CSV-fájlokban lévő adat akár 10 alkalommal is kiterjeszthető egy dataframe, így egy 1 GB-os CSV-fájl 10 GB-nyi lehet dataframe.
 
-`Pandas`egyszálas, ami azt jelenti, hogy a műveleteket egyetlen PROCESSZORon, egyszerre hajtják végre. Egyszerűen integrálással a számítási feladatokat több virtuális processzorra egyetlen Azure Machine Learning számítási példányon olyan csomagokkal, mint például [Modin](https://modin.readthedocs.io/en/latest/) az `Pandas` elosztott háttérrendszer használatával burkolt Modin.
+`Pandas` egyszálas, ami azt jelenti, hogy a műveleteket egyetlen PROCESSZORon, egyszerre hajtják végre. Egyszerűen integrálással a számítási feladatokat több virtuális processzorra egyetlen Azure Machine Learning számítási példányon olyan csomagokkal, mint például [Modin](https://modin.readthedocs.io/en/latest/) az `Pandas` elosztott háttérrendszer használatával burkolt Modin.
 
 Ahhoz, hogy integrálással a feladatait `Modin` és [Dask](https://dask.org), egyszerűen módosítsa a kód ezen sorát a következőre: `import pandas as pd` `import modin.pandas as pd` .
 
@@ -46,6 +46,16 @@ Ahhoz, hogy integrálással a feladatait `Modin` és [Dask](https://dask.org), e
 Az egyik megoldás az, hogy növelje a RAM-ot a memóriában lévő dataframe. Javasoljuk, hogy a számítási méret és a feldolgozási teljesítmény a RAM méretének kétszeresét tartalmazzon. Tehát ha a dataframe 10 GB, használjon legalább 20 GB RAM-mal rendelkező számítási célt, hogy a dataframe kényelmesen illeszkedjen a memóriához, és feldolgozza azokat. 
 
 Több virtuális processzor esetében ne feledje, hogy egy partíciónak kényelmesen el kell férnie az egyes vCPU vCPU a gépen. Azaz ha 16 GB RAM 4 vCPU van, akkor minden egyes vCPU 2 GB-dataframes szeretne.
+
+### <a name="local-vs-remote"></a>Helyi és távoli
+
+Előfordulhat, hogy bizonyos Panda dataframe-parancsok gyorsabban működnek, amikor a helyi számítógépen dolgozik, és egy Azure Machine Learning-vel kiépített távoli virtuális gépet. A helyi számítógép általában engedélyezve van egy lapozófájl, amely lehetővé teszi, hogy a fizikai memóriához képest nagyobb terhelést biztosítson, ami a merevlemez kiterjesztéseként használható. Jelenleg Azure Machine Learning a virtuális gépek lapozófájl nélkül futnak, ezért csak annyi adatmennyiséget tud betölteni, amennyit a fizikai RAM elérhetővé vált. 
+
+A számítási feladatokhoz ajánlott nagyobb virtuális gépet választani a feldolgozási sebesség javítása érdekében.
+
+További információ a Azure Machine Learning [elérhető virtuálisgép-sorozatáról és méretéről](concept-compute-target.md#supported-vm-series-and-sizes) . 
+
+A RAM-specifikációk esetében tekintse meg a megfelelő virtuálisgép-adatsorozat-lapokat, például:, [Dv2-Dsv2 sorozat](../virtual-machines/dv2-dsv2-series-memory.md) vagy [NC sorozat](../virtual-machines/nc-series.md).
 
 ### <a name="minimize-cpu-workloads"></a>CPU-munkaterhelések csökkentése
 
@@ -69,12 +79,12 @@ Ha az előző javaslatok nem elégek, és nem tud beolvasni egy olyan virtuális
 
 Az alábbi táblázat a kód-preferencia vagy az adatméret alapján Azure Machine Learningba integrált elosztott keretrendszerek használatát javasolja.
 
-Élmény vagy adatméret | Ajánlás
+Élmény vagy adatméret | Javaslat
 ------|------
-Ha már ismeri a`Pandas`| `Modin`vagy `Dask` dataframe
-Ha szeretné`Spark` | `PySpark`
-1 GB-nál kisebb adatmennyiség esetén | `Pandas`helyi **vagy** távoli Azure Machine learning számítási példány
-10 GB-nál nagyobb adatmennyiség esetén| Áthelyezés fürtre a `Ray` , `Dask` , vagy rendszer használatával`Spark`
+Ha már ismeri a `Pandas`| `Modin` vagy `Dask` dataframe
+Ha szeretné `Spark` | `PySpark`
+1 GB-nál kisebb adatmennyiség esetén | `Pandas` helyi **vagy** távoli Azure Machine learning számítási példány
+10 GB-nál nagyobb adatmennyiség esetén| Áthelyezés fürtre a `Ray` , `Dask` , vagy rendszer használatával `Spark`
 
 Létrehozhat `Dask` fürtöket az Azure ml számítási fürtön a [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) csomaggal. Vagy helyileg is futtatható `Dask` számítási példányon.
 

@@ -3,12 +3,12 @@ title: Felügyelt identitások engedélyezése a tesztkörnyezet virtuális gép
 description: Ez a cikk bemutatja, hogyan engedélyezhető a tesztkörnyezet tulajdonosa a felhasználó által hozzárendelt, felügyelt identitások számára a tesztkörnyezet virtuális gépei esetében.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476002"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717632"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>A felhasználó által hozzárendelt felügyelt identitások engedélyezése a tesztkörnyezet virtuális gépei Azure DevTest Labs
 A labor tulajdonosaként engedélyezheti a felhasználó által hozzárendelt felügyelt identitásokat a tesztkörnyezet virtuális gépei (VM) Azure DevTest Labs.
@@ -25,14 +25,16 @@ Az alábbi lépéseket követve adhat hozzá egy felhasználóhoz rendelt felüg
 
 1. [Felhasználóhoz rendelt felügyelt identitás létrehozása az előfizetésben](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 1. Navigáljon a laborhoz tartozó **konfiguráció és szabályzatok** lapra.
-2. A bal oldali menüben válassza az **identitás (előzetes verzió)** lehetőséget.
-3. Válassza a **virtuális gép** fület.
-4. Válassza a **Hozzáadás** lehetőséget, ha egy meglévő identitást szeretne kijelölni egy előre feltöltött legördülő listából. 
+1. A bal oldali menüben válassza az **identitás (előzetes verzió)** lehetőséget.
+1. Válassza a **virtuális gép** fület.
+1. Válassza a **Hozzáadás** lehetőséget, ha egy meglévő identitást szeretne kijelölni egy előre feltöltött legördülő listából. 
 
-    ![Identity gomb hozzáadása](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. Válasszon ki egy meglévő **felhasználó által felügyelt identitást** a legördülő listából, majd kattintson **az OK gombra**. 
+    > [!div class="mx-imgBorder"]
+    > ![Identity gomb hozzáadása](./media/enable-managed-identities-lab-vms/add-identity-button.png)
+1. Válasszon ki egy meglévő **felhasználó által felügyelt identitást** a legördülő listából, majd kattintson **az OK gombra**. 
 
-    ![Identitás hozzáadása](./media/enable-managed-identities-lab-vms/add-identity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Identitás hozzáadása](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>API használata
 

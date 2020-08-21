@@ -3,14 +3,14 @@ title: Frissítési központi telepítések létrehozása Azure Automation Updat
 description: Ez a cikk a frissítések központi telepítésének ütemezett és állapotának áttekintését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a81376b284e0d1df84a69b969335c0e63999a00
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4336ba272dd83ad2a35060c1c7524a564b928484
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450261"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717693"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -41,8 +41,10 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
 
 6. A **frissítési** besorolások régió használatával adhatja meg a termékek [frissítési besorolását](update-mgmt-view-update-assessments.md#work-with-update-classifications) . Minden termék esetében törölje az összes támogatott frissítési besorolást, de azokat is, amelyeket bele szeretne foglalni a frissítés telepítésére.
 
-7. A **frissítések belefoglalása/kizárása** régió használatával válassza ki a központi telepítés adott frissítéseit. A belefoglalási/kizárási oldal megjeleníti a frissítéseket a TUDÁSBÁZISCIKK által belefoglalni vagy kizárni kívánt AZONOSÍTÓk száma alapján.
-    
+    Ha a központi telepítés célja csak a frissítések kiválasztása, akkor a következő lépésben leírtak szerint ki kell választania a frissítések **belefoglalása/kizárása** beállítás konfigurálásakor az összes előre kiválasztott frissítési besorolást. Ez biztosítja, hogy csak azok a frissítések legyenek telepítve a célszámítógépen, amelyeket az adott központi telepítésbe való *felvételhez* megadott.
+
+7. A **frissítések belefoglalása/kizárása** régió használatával vegye fel vagy zárja ki a kiválasztott frissítéseket a központi telepítésből. A **Belefoglalás/kizárás** lapon adja meg a tudásbáziscikk azonosítójának sorszámait, amelyeket bele szeretne foglalni vagy ki kell zárni.
+
    > [!IMPORTANT]
    > Ne feledje, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*` , Update Management kizárja az összes javítást vagy csomagot a telepítésből. A kizárt javítások továbbra is hiányzóként jelennek meg a gépeken. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
 

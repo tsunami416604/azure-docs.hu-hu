@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e2f7424464860b647883be2441e903900cb266
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ebe6671e0a5f4821d06e93e3da4e37bd09a2fa7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652885"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716945"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 
-A Távoli asztal (RD) átjáró gyakran a helyi [hálózati házirend-szolgáltatást (NPS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) használja a felhasználók hitelesítéséhez. Ez a cikk azt ismerteti, hogyan továbbíthatóak a távoli asztali átjáró RADIUS-kérései (a helyi NPS-en keresztül) a Multi-Factor Authentication-kiszolgáló számára. Az Azure MFA és a távoli asztali átjáró kombinációja azt jelenti, hogy a felhasználói bárhonnan elérhetik a munkahelyi környezeteiket, erős hitelesítés mellett.
+A Távoli asztal (RD) átjáró gyakran a helyi [hálózati házirend-szolgáltatást (NPS)](/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) használja a felhasználók hitelesítéséhez. Ez a cikk azt ismerteti, hogyan továbbíthatóak a távoli asztali átjáró RADIUS-kérései (a helyi NPS-en keresztül) a Multi-Factor Authentication-kiszolgáló számára. Az Azure MFA és a távoli asztali átjáró kombinációja azt jelenti, hogy a felhasználói bárhonnan elérhetik a munkahelyi környezeteiket, erős hitelesítés mellett.
 
 Mivel a terminálszolgáltatások Windows-hitelesítése nem támogatott Server 2012 R2 esetén, a távoli asztali átjáró és a RADIUS használatával érheti el az MFA-kiszolgálóval való integrációt.
 

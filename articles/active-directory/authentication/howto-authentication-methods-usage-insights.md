@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680188"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717166"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati &i adatok (előzetes verzió)
 
@@ -65,7 +65,7 @@ Ha a **regisztrált felhasználók**, a **felhasználók**vagy a **felhasználó
 
 A regisztráció részletei jelentés az alábbi információkat jeleníti meg az egyes felhasználókra vonatkozóan:
 
-- Name
+- Név
 - Felhasználónév
 - Regisztrációs állapot (összes, regisztrált, nincs regisztrálva)
 - Engedélyezett állapot (mind, engedélyezve, nincs engedélyezve)
@@ -80,7 +80,7 @@ Ha a regisztrációra kattint, vagy alaphelyzetbe állítja a diagramokat, a ren
 
 A részletek visszaállítása jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, beleértve a következőket:
 
-- Name
+- Név
 - Felhasználónév
 - Szolgáltatás (összes, regisztráció, alaphelyzetbe állítás)
 - Hitelesítési módszer (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, Office-hívás, SMS, E-mail, biztonsági kérdések)
@@ -98,6 +98,6 @@ A jelentés jelenleg nem szűrhető úgy, hogy kizárja a külső felhasználók
 
 ## <a name="next-steps"></a>További lépések
 
-- [A hitelesítési módszerek használati jelentésének API használata](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [A hitelesítési módszerek használati jelentésének API használata](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [A szervezet hitelesítési módszereinek kiválasztása](concept-authentication-methods.md)
 - [Kombinált regisztrációs élmény](concept-registration-mfa-sspr-combined.md)

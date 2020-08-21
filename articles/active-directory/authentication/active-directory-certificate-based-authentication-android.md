@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dd4c95c3c02f4b4a807b5238aa61e76ecb56e3e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680214"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716418"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Tanúsítványalapú hitelesítés Azure Active Directory az Androidon
 
@@ -54,8 +54,8 @@ Konfigurálni kell egy összevonási kiszolgálót.
 
 Az ügyféltanúsítványok visszavonásához az ADFS-tokennek a következő jogcímeket kell tartalmaznia Azure Active Directory:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(Az ügyféltanúsítvány sorozatszáma)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(Az ügyféltanúsítvány kiállítójának karakterlánca)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (Az ügyféltanúsítvány sorozatszáma)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (Az ügyféltanúsítvány kiállítójának karakterlánca)
 
 Azure Active Directory hozzáadja ezeket a jogcímeket a frissítési jogkivonathoz, ha az ADFS-tokenben (vagy bármely más SAML-jogkivonatban) elérhetők. Ha a frissítési tokent ellenőrizni kell, a rendszer ezt az információt használja a visszavonás ellenőrzéséhez.
 
@@ -64,7 +64,7 @@ Ajánlott eljárásként frissítenie kell a szervezet ADFS-hibájának lapjait 
 * A Microsoft Authenticator telepítésének követelménye Android rendszeren.
 * Útmutató felhasználói tanúsítvány beszerzéséhez.
 
-További információ: [AD FS bejelentkezési lapok testreszabása](https://technet.microsoft.com/library/dn280950.aspx).
+További információ: [AD FS bejelentkezési lapok testreszabása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 Egyes Office-alkalmazások (amelyeken engedélyezve van a modern hitelesítés) a kérésben a "*prompt = login*" üzenetet küldik az Azure ad-nek. Alapértelmezés szerint az Azure AD az ADFS-kérelemben*az "**wauth = usernamepassworduri*" (az U/P hitelesítésének megkövetelése) és a "*wfresh = 0*" (az ADFS-t az SSO-állapot mellőzése és a friss hitelesítés elvégzése érdekében kéri). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítania kell az Azure AD alapértelmezett viselkedését. Állítsa a "*PromptLoginBehavior*" beállítást az összevont tartomány beállításai között a "*Letiltva*" értékre.
 A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmagot használhatja:

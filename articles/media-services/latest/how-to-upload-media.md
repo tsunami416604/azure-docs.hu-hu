@@ -12,14 +12,15 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3da313803aa546c2399e3c8c18858bee5cfa2ea1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684371"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719257"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Média feltöltése adatfolyamként vagy kódolásra
+
 Media Services a digitális fájlokat (adathordozókat) feltölti egy eszközhöz társított blob-tárolóba. Az [eszköz](/rest/api/media/operations/asset) entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is). A fájlok az objektum tárolóba való feltöltése után a tartalom biztonságosan tárolódik a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 
 Mielőtt megkezdené a kezdést, össze kell gyűjtenie vagy gondolnia kell néhány értéket.
@@ -37,10 +38,6 @@ Mielőtt megkezdené a kezdést, össze kell gyűjtenie vagy gondolnia kell néh
 ## <a name="cli"></a>[Parancssori felület](#tab/cli/)
 
 [!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli.md)]
-
-## <a name="cli-shell"></a>[CLI-rendszerhéj](#tab/clishell/)
-
-[!INCLUDE [Upload files with the portal](./includes/task-upload-file-to-asset-cli-shell.md)]
 
 ## <a name="rest"></a>[REST](#tab/rest/)
 

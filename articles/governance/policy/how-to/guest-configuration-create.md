@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 36e71f00a4613e1723645f48d9e57aed9e1e9a8a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547664"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719393"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -26,8 +26,7 @@ A következő műveletek végrehajtásával hozhatja létre saját konfiguráci�
 > A vendég-konfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
 >
 > A naplózás Azure-beli virtuális gépeken történő végrehajtásához szükség van a Vendégkonfiguráció bővítményre.
-> Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat:
->   - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> Ha a bővítményt az összes Windows rendszerű gépen szeretné üzembe helyezni, rendelje hozzá a következő szabályzat-definíciókat: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 

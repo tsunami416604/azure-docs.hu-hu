@@ -141,7 +141,7 @@
           href: uptime-sla.md
         - name: Közelségi elhelyezési csoportok használata (előzetes verzió)
           href: reduce-latency-ppg.md
-        - name: Csomópont rendszerképének frissítése (előzetes verzió)
+        - name: Csomópont rendszerképének frissítése
           href: node-image-upgrade.md
         - name: Folyamatcsomópont operációsrendszer-frissítései
           href: node-updates-kured.md

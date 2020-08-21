@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117022"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717846"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
 Ez a cikk részletesen ismerteti a Távoli asztali átjáró infrastruktúra Azure Multi-Factor Authentication (MFA) szolgáltatással való integrálásának részleteit az Microsoft Azure hálózati házirend-kiszolgáló (NPS) bővítményének használatával.
 
-Az Azure-hoz készült hálózati házirend-kiszolgáló (NPS) bővítmény lehetővé teszi, hogy az ügyfelek az Azure felhőalapú [multi-Factor Authentication (MFA)](multi-factor-authentication.md)használatával megóvják Remote Authentication Dial-In User Service (RADIUS) ügyfél-hitelesítést. Ez a megoldás kétlépéses ellenőrzést biztosít a felhasználói bejelentkezésekhez és tranzakciókra való második biztonsági réteg hozzáadásához.
+Az Azure-hoz készült hálózati házirend-kiszolgáló (NPS) bővítmény lehetővé teszi, hogy az ügyfelek az Azure felhőalapú [multi-Factor Authentication (MFA)](./concept-mfa-howitworks.md)használatával megóvják Remote Authentication Dial-In User Service (RADIUS) ügyfél-hitelesítést. Ez a megoldás kétlépéses ellenőrzést biztosít a felhasználói bejelentkezésekhez és tranzakciókra való második biztonsági réteg hozzáadásához.
 
 Ez a cikk lépésről lépésre bemutatja, hogyan integrálhatja az NPS-infrastruktúrát az Azure MFA-val az Azure NPS-bővítményének használatával. Ez lehetővé teszi, hogy a felhasználók biztonságosan ellenőrizhessék a Távoli asztali átjáróba való bejelentkezést.
 
@@ -75,7 +75,7 @@ Ez a szakasz részletesen ismerteti az Azure MFA és a Távoli asztali átjáró
 A helyén működő Távoli asztali szolgáltatások (RDS) infrastruktúra szükséges. Ha nem, akkor gyorsan létrehozhatja ezt az infrastruktúrát az Azure-ban a következő rövid útmutató sablon használatával: [Távoli asztal munkamenet-gyűjtemény központi telepítésének létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
 Ha manuálisan kívánja létrehozni a helyszíni RDS-infrastruktúrát tesztelési célokra, kövesse az üzembe helyezés lépéseit.
-**További információ**: [az RDS üzembe helyezése az Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) rövid útmutatóval és az [alapszintű RDS infrastruktúra üzembe helyezésével](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+**További információ**: [az RDS üzembe helyezése az Azure](/windows-server/remote/remote-desktop-services/rds-in-azure) rövid útmutatóval és az [alapszintű RDS infrastruktúra üzembe helyezésével](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 ### <a name="azure-mfa-license"></a>Azure MFA-licenc
 
@@ -89,7 +89,7 @@ A hálózati házirend-kiszolgáló bővítményéhez telepíteni kell a Windows
 
 A hálózati házirend-kiszolgáló szerepkör-szolgáltatás biztosítja a RADIUS-kiszolgálót és az ügyfelek funkcióit, valamint a hálózati hozzáférési házirend állapotfigyelő szolgáltatását. Ezt a szerepkört az infrastruktúra legalább két számítógépén kell telepíteni: a Távoli asztali átjáró és egy másik tagkiszolgáló vagy tartományvezérlő. Alapértelmezés szerint a szerepkör már szerepel a Távoli asztali átjáró konfigurált számítógépen.  A hálózati házirend-kiszolgáló szerepkört legalább egy másik számítógépen, például tartományvezérlőn vagy tagkiszolgálón is telepítenie kell.
 
-A hálózati házirend-kiszolgáló szerepkör-szolgáltatás Windows Server 2012-es vagy régebbi verziójának telepítésével kapcsolatos információkért lásd: NAP állapotházirend- [kiszolgáló telepítése](https://technet.microsoft.com/library/dd296890.aspx). A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](https://technet.microsoft.com/library/cc771746).
+A hálózati házirend-kiszolgáló szerepkör-szolgáltatás Windows Server 2012-es vagy régebbi verziójának telepítésével kapcsolatos információkért lásd: NAP állapotházirend- [kiszolgáló telepítése](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)). A hálózati házirend-kiszolgálóval kapcsolatos ajánlott eljárások leírását, beleértve a hálózati házirend-kiszolgáló tartományvezérlőre történő telepítésének javaslatát, lásd: [ajánlott eljárások az NPS-hez](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory szinkronizálva a helyszíni Active Directory
 
@@ -109,7 +109,7 @@ Kövesse az [azure multi-Factor Authentication használatának első lépései a
 
 Miután engedélyezte a fiók engedélyezését az MFA-ban, nem tud bejelentkezni az MFA-szabályzat hatálya alá tartozó erőforrásokra egészen addig, amíg sikeresen konfigurálta a megbízható eszközt a második hitelesítési tényezőhöz, és a hitelesítés a kétlépéses ellenőrzés használatával történt.
 
-Kövesse a [Mit jelent az Azure multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) című témakörben ismertetett lépéseket a felhasználói fiókkal kapcsolatos MFA-eszközök megismeréséhez és megfelelő konfigurálásához.
+Kövesse a [Mit jelent az Azure multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-first-time.md) című témakörben ismertetett lépéseket a felhasználói fiókkal kapcsolatos MFA-eszközök megismeréséhez és megfelelő konfigurálásához.
 
 > [!IMPORTANT]
 > Távoli asztali átjáró bejelentkezési viselkedése nem teszi lehetővé, hogy az Azure Multi-Factor Authentication használatával ellenőrző kódot adjon meg. A felhasználói fiókot a telefonos ellenőrzéshez vagy a Microsoft Authenticator alkalmazáshoz kell konfigurálni leküldéses értesítésekkel.
@@ -250,7 +250,7 @@ Alapértelmezés szerint, amikor a RD-átjáró egy központi házirend-tároló
 1. Kattintson a **Mégse**gombra.
 
 >[!NOTE]
-> A kapcsolatkérelem-házirend létrehozásával kapcsolatos további információkért tekintse meg a [Kapcsolatkérelem-házirendek](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) dokumentációjának konfigurálása című cikket. 
+> A kapcsolatkérelem-házirend létrehozásával kapcsolatos további információkért tekintse meg a [Kapcsolatkérelem-házirendek](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) dokumentációjának konfigurálása című cikket. 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurálja a hálózati házirend-kiszolgálót azon a kiszolgálón, amelyen a hálózati házirend-bővítmény telepítve van
 
@@ -378,13 +378,13 @@ Alább látható egy kapcsolódó esemény a AzureMFA-naplókból:
 
 A speciális hibakeresési beállítások végrehajtásához tekintse meg az NPS-adatbázis formátumú naplófájlokat, ahol a hálózati házirend-kiszolgáló szolgáltatás telepítve van. Ezek a naplófájlok a _%systemroot%\System32\Logs_ mappában, vesszővel tagolt szövegfájlként jönnek létre.
 
-A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](https://technet.microsoft.com/library/cc771748.aspx). Az ezekben a naplófájlokban található bejegyzéseket nehéz lehet értelmezni anélkül, hogy azokat importálni kellene egy táblázatba vagy egy adatbázisba. A naplófájlok értelmezéséhez több IAS-elemzőt is találhat online.
+A naplófájlok leírását lásd: a [hálózati házirend-kiszolgáló adatbázis-formátumú naplófájljainak értelmezése](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)). Az ezekben a naplófájlokban található bejegyzéseket nehéz lehet értelmezni anélkül, hogy azokat importálni kellene egy táblázatba vagy egy adatbázisba. A naplófájlok értelmezéséhez több IAS-elemzőt is találhat online.
 
 Az alábbi képen egy ilyen letölthető [shareware-alkalmazás](https://www.deepsoftware.com/iasviewer)kimenete látható.
 
 ![Példa a shareware alkalmazás IAS-elemzője](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Végül a további hibakeresési lehetőségekhez használhatja a Protocol Analyzert, például a [Microsoft Message Analyzert](https://technet.microsoft.com/library/jj649776.aspx)is.
+Végül a további hibakeresési lehetőségekhez használhatja a Protocol Analyzert, például a [Microsoft Message Analyzert](/message-analyzer/microsoft-message-analyzer-operating-guide)is.
 
 Az alábbi képen a Microsoft Message Analyzer a **CONTOSO\AliceC**felhasználónevet tartalmazó RADIUS protokollon szűrt hálózati forgalmat jeleníti meg.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641075"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717030"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication üzemelő példány megtervezése
 
@@ -74,7 +74,7 @@ A többtényezős hitelesítés bevezetési [anyagaiban](https://www.microsoft.c
 
 A feltételes hozzáférési szabályzatok betartják a regisztrációt, így a regisztrációt nem igénylő felhasználókat az első bejelentkezéskor, fontos biztonsági megfontolásokból kell végrehajtani.
 
-A [Azure ad Identity Protection](../identity-protection/howto-configure-risk-policies.md) a regisztrációs házirendet és az automatizált kockázatkezelési és szervizelési szabályzatokat is hozzájárul az Azure multi-Factor Authentication Story-hoz. A szabályzatok úgy hozhatók létre, hogy kényszerítsék a jelszó megváltoztatását, ha fennáll a veszélye a sérült identitásnak, vagy ha a bejelentkezés a következő [események](../reports-monitoring/concept-risk-events.md)kockázatának minősül:
+A [Azure ad Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) a regisztrációs házirendet és az automatizált kockázatkezelési és szervizelési szabályzatokat is hozzájárul az Azure multi-Factor Authentication Story-hoz. A szabályzatok úgy hozhatók létre, hogy kényszerítsék a jelszó megváltoztatását, ha fennáll a veszélye a sérült identitásnak, vagy ha a bejelentkezés a következő [események](../identity-protection/overview-identity-protection.md)kockázatának minősül:
 
 * Kiszivárgott hitelesítő adatok
 * Bejelentkezések névtelen IP-címről
@@ -151,7 +151,7 @@ A rendszergazdáknak meg kell határozniuk, hogy a felhasználók hogyan regiszt
 
 ### <a name="registration-with-identity-protection"></a>Regisztrálás az Identity Protection szolgáltatással
 
-Ha a szervezete Azure Active Directory Identity Protectiont használ, [konfigurálja az MFA regisztrációs házirendjét](../identity-protection/howto-mfa-policy.md) , hogy a felhasználók a következő bejelentkezés alkalmával interaktívan regisztráljanak.
+Ha a szervezete Azure Active Directory Identity Protectiont használ, [konfigurálja az MFA regisztrációs házirendjét](../identity-protection/howto-identity-protection-configure-mfa-policy.md) , hogy a felhasználók a következő bejelentkezés alkalmával interaktívan regisztráljanak.
 
 ### <a name="registration-without-identity-protection"></a>Regisztráció Identity Protection nélkül
 
@@ -165,7 +165,7 @@ A következő lépések végrehajtásával kényszerítheti a felhasználókat, 
 2. A feltételes hozzáférés használatával kikényszerítheti a többtényezős hitelesítést a csoport számára az összes erőforráshoz való hozzáféréshez.
 3. Rendszeresen ellenőrizze a csoporttagság újraértékelését, és távolítsa el a csoportból regisztrált felhasználókat.
 
-Azonosíthatja a regisztrált és nem regisztrált Azure MFA-felhasználókat olyan PowerShell-parancsokkal, amelyek a [MSOnline PowerShell-modulra](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)támaszkodnak.
+Azonosíthatja a regisztrált és nem regisztrált Azure MFA-felhasználókat olyan PowerShell-parancsokkal, amelyek a [MSOnline PowerShell-modulra](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)támaszkodnak.
 
 #### <a name="identify-registered-users"></a>Regisztrált felhasználók azonosítása
 
@@ -281,7 +281,7 @@ A hálózati házirend-kiszolgáló bővítmény adapterként működik a RADIUS
 
 #### <a name="implementing-your-nps-server"></a>A hálózati házirend-kiszolgáló implementálása
 
-Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már használatban van, hivatkozzon [a meglévő NPS-infrastruktúra integrálására az Azure multi-Factor Authentication](howto-mfa-nps-extension.md)használatával. Ha első alkalommal állítja be a hálózati házirend-kiszolgálót, akkor útmutatásért tekintse meg a [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) című témakört. A hibaelhárítási útmutató az [Azure multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben található.
+Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már használatban van, hivatkozzon [a meglévő NPS-infrastruktúra integrálására az Azure multi-Factor Authentication](howto-mfa-nps-extension.md)használatával. Ha első alkalommal állítja be a hálózati házirend-kiszolgálót, akkor útmutatásért tekintse meg a [hálózati házirend-kiszolgáló (NPS)](/windows-server/networking/technologies/nps/nps-top) című témakört. A hibaelhárítási útmutató az [Azure multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben található.
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>A hálózati házirend-kiszolgáló előkészítése az MFA-ban nem regisztrált felhasználók számára
 
@@ -325,7 +325,7 @@ A standard AD FS 2016 és a 2019 naplózási szolgáltatás a Windows biztonság
 
 Az egyes AD FS-kiszolgálókon a helyi számítógép saját tárolójában egy önaláírt Azure MFA-tanúsítvány szerepel a OU = Microsoft AD FS Azure MFA-ban, amely tartalmazza a tanúsítvány lejárati dátumát. A lejárati dátum megállapításához ellenőrizze a tanúsítvány érvényességi időtartamát az egyes AD FS-kiszolgálókon.
 
-Ha a tanúsítványok érvényességi ideje közeledik a lejárathoz, [állítson elő és ellenőrizzen egy új MFA-tanúsítványt az egyes AD FS-kiszolgálókon](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Ha a tanúsítványok érvényességi ideje közeledik a lejárathoz, [állítson elő és ellenőrizzen egy új MFA-tanúsítványt az egyes AD FS-kiszolgálókon](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
 Az alábbi útmutató ismerteti, hogyan kezelheti az Azure MFA-tanúsítványokat a AD FS-kiszolgálókon. Ha AD FS az Azure MFA-val konfigurálja, a PowerShell-parancsmag használatával generált tanúsítványok `New-AdfsAzureMfaTenantCertificate` két évig érvényesek. Megújíthatja és telepítheti a megújított tanúsítványokat, mielőtt lejár az MFA-szolgáltatásban előforduló tojások megszakadásának.
 
@@ -336,7 +336,7 @@ Most, hogy megtervezte a megoldást, az alábbi lépésekkel végezheti el a meg
 1. Teljesítse a szükséges előfeltételeket
    1. [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) üzembe helyezése bármilyen hibrid forgatókönyv esetén
    1. [Azure-ad Application proxy](../manage-apps/application-proxy.md) üzembe helyezése a Felhőbeli hozzáféréshez közzétett helyszíni alkalmazásokhoz
-   1. [Hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) üzembe helyezése bármely RADIUS-hitelesítéshez
+   1. [Hálózati házirend-kiszolgáló](/windows-server/networking/technologies/nps/nps-top) üzembe helyezése bármely RADIUS-hitelesítéshez
    1. Győződjön meg arról, hogy a felhasználók a modern hitelesítéssel rendelkező Microsoft Office támogatott verzióira frissítettek
 1. Kiválasztott [hitelesítési módszerek](#choose-verification-options) konfigurálása
 1. Megnevezett [hálózati telephelyek](../conditional-access/location-condition.md#named-locations) definiálása
@@ -344,7 +344,7 @@ Most, hogy megtervezte a megoldást, az alábbi lépésekkel végezheti el a meg
 1. [Feltételes hozzáférési szabályzatok](#create-conditional-access-policy) konfigurálása
 1. Az MFA regisztrációs szabályzatának konfigurálása
    1. [Kombinált MFA és SSPR](howto-registration-mfa-sspr-combined.md)
-   1. [Identitás-védelemmel](../identity-protection/howto-mfa-policy.md)
+   1. [Identitás-védelemmel](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
 1. Felhasználói kommunikáció küldése és a felhasználók beléptetése [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [A regisztrált felhasználók nyomon követése](#identify-non-registered-users)
 
@@ -365,7 +365,7 @@ Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon ke
 
 Az Azure MFA-val kapcsolatos gyakori problémák megoldásait az [azure multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Multi-Factor Authentication működés közbeni megtekintéséhez hajtsa végre a következő oktatóanyagot:
 

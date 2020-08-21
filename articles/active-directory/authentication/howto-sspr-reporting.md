@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035298"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717727"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -53,7 +53,7 @@ A Azure Portal-élményben továbbfejlesztettük a jelszavak alaphelyzetbe áll�
 
 ### <a name="combined-registration"></a>Kombinált regisztráció
 
-Ha engedélyezte a [kombinált regisztrációt](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined), a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek**alatt találhatók.
+Ha engedélyezte a [kombinált regisztrációt](./concept-registration-mfa-sspr-combined.md), a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek**alatt találhatók.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>A jelentés oszlopainak leírása a Azure Portalban
 
@@ -179,7 +179,7 @@ A következő lista részletesen ismerteti ezt a tevékenységet:
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](./tutorial-enable-sspr-writeback.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
 * [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)

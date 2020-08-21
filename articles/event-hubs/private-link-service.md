@@ -3,12 +3,12 @@ title: Az Azure Event Hubs integrálása az Azure Private link Service szolgált
 description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185468"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716791"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Azure Event Hubs-névterek hozzáférésének engedélyezése privát végpontokon keresztül 
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -202,7 +202,7 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
 | Nincsenek | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
@@ -211,7 +211,7 @@ Négy kiépítési állapot létezik:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
 3. Válassza ki a kezelni kívánt **névteret** .
 4. Válassza a **hálózatkezelés** lapot.
@@ -222,7 +222,7 @@ Négy kiépítési állapot létezik:
 2. Válassza ki a jóváhagyni kívánt **privát végpontot**
 3. Kattintson a **jóváhagyás** gombra.
 
-    ![Kép](./media/private-link-service/approve-private-endpoint.png)
+    ![Privát végpont jóváhagyása](./media/private-link-service/approve-private-endpoint.png)
 4. A **kapcsolatok jóváhagyása** lapon adjon hozzá egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. Ha a **nem**lehetőséget választja, semmi nem történik. 
 5. A privát végponti kapcsolatok állapota a listában a **jóváhagyott**értékre módosult. 
 
@@ -230,7 +230,7 @@ Négy kiépítési állapot létezik:
 
 1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy létező kapcsolat, válassza ki a kapcsolatot, és kattintson az **elutasítás** gombra.
 
-    ![Kép](./media/private-link-service/private-endpoint-reject-button.png)
+    ![Privát végpont elutasítása](./media/private-link-service/private-endpoint-reject-button.png)
 2. A **kapcsolatok elutasítása** lapon írjon be egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. Ha a **nem**lehetőséget választja, semmi nem történik. 
 3. A privát végponti kapcsolatok állapota a listában **visszautasította**értékre módosult. 
 
@@ -242,7 +242,7 @@ Négy kiépítési állapot létezik:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a magánhálózati kapcsolat működik-e
 
-Győződjön meg arról, hogy a magánhálózati végpont erőforrásának ugyanazon alhálózatán belüli erőforrásai csatlakoznak a Event Hubs névtérhez egy magánhálózati IP-címen keresztül, valamint a saját DNS-zónák megfelelő integrálását.
+Győződjön meg arról, hogy a magánhálózati végpont virtuális hálózatán lévő erőforrások a magánhálózati IP-címeken keresztül csatlakoznak a Event Hubs névtérhez, és a saját DNS-zóna megfelelő integrációja van.
 
 Először hozzon létre egy virtuális gépet a [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md) című témakör lépéseit követve.
 
@@ -278,7 +278,7 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
 - További információ az [Azure Event Hubs](event-hubs-about.md)

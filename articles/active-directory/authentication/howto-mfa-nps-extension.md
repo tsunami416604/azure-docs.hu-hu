@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 35842520b26d3a98342660244295e26e934e7d3c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848469"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717370"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -50,7 +50,7 @@ A hálózati házirend-kiszolgáló bővítmény célja, hogy működjön a megl
 
 ### <a name="licenses"></a>Licencek
 
-Az Azure MFA NPS-bővítménye az [azure multi-Factor Authentication-licenccel](multi-factor-authentication.md) rendelkező ügyfelek számára érhető el (prémium szintű Azure ad, EMS vagy egy MFA önálló licenccel). Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. 
+Az Azure MFA NPS-bővítménye az [azure multi-Factor Authentication-licenccel](./concept-mfa-howitworks.md) rendelkező ügyfelek számára érhető el (prémium szintű Azure ad, EMS vagy egy MFA önálló licenccel). Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. 
 
 ### <a name="software"></a>Szoftverek
 
@@ -106,7 +106,7 @@ Az NPS-kiszolgáló csatlakozik Azure Active Directoryhoz, és hitelesíti az MF
 1. A kiszolgálón nyissa meg a **szerepkörök és szolgáltatások hozzáadása varázslót** a Kiszolgálókezelő Gyorsindítás menüjéből.
 2. Válassza a **szerepkör-alapú vagy a szolgáltatáson alapuló telepítést** a telepítési típushoz.
 3. Válassza ki a **hálózati házirend-és elérési szolgáltatások** kiszolgálói szerepkört. Előfordulhat, hogy egy ablak felugró ablakban értesíti a szükséges szolgáltatásokat a szerepkör futtatásához.
-4. Folytassa a varázslót a megerősítési oldalig. Válassza a **Telepítés** gombot.
+4. Folytassa a varázslót a megerősítési oldalig. Válassza a **Telepítés** lehetőséget.
 
 Most, hogy már rendelkezik egy kiszolgálóval a hálózati házirend-kiszolgáló számára, konfigurálnia kell a kiszolgálót a bejövő RADIUS-kérések kezelésére is a VPN-megoldásból.
 
@@ -290,7 +290,7 @@ Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre áll�
 
 A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lépéseket a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor.
 
-[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -365,7 +365,7 @@ Annak ellenőrzéséhez, hogy érvényes tanúsítvánnyal rendelkezik-e, ellen�
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
-Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, vagy távolítsa el, ha a szervezet nem igényli. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
+Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, vagy távolítsa el, ha a szervezet nem igényli. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
 
 ### <a name="additional-troubleshooting"></a>További hibaelhárítás
 
@@ -373,7 +373,7 @@ További hibaelhárítási útmutató és lehetséges megoldások találhatók a
 
 ## <a name="next-steps"></a>További lépések
 
-- [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](/windows-server/networking/technologies/nps/nps-top)
 
 - Konfiguráljon alternatív azonosítókat a bejelentkezéshez, vagy állítson be olyan IP-címekre vonatkozó kivételeket, amelyek nem hajtják végre a kétlépéses ellenőrzést a [hálózati házirend-kiszolgáló bővítményének speciális konfigurációs beállításaiban multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)
 

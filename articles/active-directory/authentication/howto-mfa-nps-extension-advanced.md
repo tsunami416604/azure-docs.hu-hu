@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaed8a3e23cba90b2afe476b1e993ed1f99dae7
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c7dab1d9e46aec64cc3c0fda9e8e6ba503f696b0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445512"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716758"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Speciális konfigurációs beállítások a Multi-Factor Authentication NPS-bővítményéhez
 
@@ -32,7 +32,7 @@ Az alternatív bejelentkezési azonosítók konfigurálásához lépjen a (z) el
 
 | Név | Típus | Alapértelmezett érték | Leírás |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | sztring | Üres | Jelölje ki az egyszerű felhasználónév helyett használni kívánt Active Directory attribútum nevét. Ez az attribútum a AlternateLoginId attribútumként szolgál. Ha a beállításazonosító [érvényes Active Directory attribútumra](https://msdn.microsoft.com/library/ms675090.aspx) van beállítva (például E-mail vagy DisplayName), akkor a rendszer az attribútum értékét használja a felhasználó egyszerű felhasználóneve helyett a hitelesítéshez. Ha a beállításazonosító üres vagy nincs konfigurálva, akkor a AlternateLoginId le van tiltva, és a rendszer a felhasználó UPN-azonosítóját használja a hitelesítéshez. |
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | sztring | Üres | Jelölje ki az egyszerű felhasználónév helyett használni kívánt Active Directory attribútum nevét. Ez az attribútum a AlternateLoginId attribútumként szolgál. Ha a beállításazonosító [érvényes Active Directory attribútumra](/windows/win32/adschema/attributes-all) van beállítva (például E-mail vagy DisplayName), akkor a rendszer az attribútum értékét használja a felhasználó egyszerű felhasználóneve helyett a hitelesítéshez. Ha a beállításazonosító üres vagy nincs konfigurálva, akkor a AlternateLoginId le van tiltva, és a rendszer a felhasználó UPN-azonosítóját használja a hitelesítéshez. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | Hamis | Ezzel a jelzővel kényszerítheti a globális katalógus használatát az LDAP-keresésekhez, amikor megkeresi a AlternateLoginId. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógushoz, majd engedélyezze ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS konfigurálva van (nem üres), **Ez a jelző igaz értékre van kényszerítve**, a beállításjegyzék-beállítás értékétől függetlenül. Ebben az esetben a hálózati házirend-kiszolgáló bővítménye megköveteli, hogy a globális katalógus minden erdő AlternateLoginId attribútumával legyen konfigurálva. |
 | LDAP_LOOKUP_FORESTS | sztring | Üres | Adja meg a keresendő erdők pontosvesszővel tagolt listáját. Például: *contoso. com; foobar. com*. Ha a beállításazonosító konfigurálva van, a hálózati házirend-kiszolgáló bővítmény a iteratív megkeresi az összes erdőt a felsorolt sorrendben, és visszaadja az első sikeres AlternateLoginId értéket. Ha a beállításazonosító nincs konfigurálva, a AlternateLoginId-keresés az aktuális tartományra korlátozódik.|
 

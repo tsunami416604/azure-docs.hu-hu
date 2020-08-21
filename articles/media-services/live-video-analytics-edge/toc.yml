@@ -17,11 +17,27 @@
     - name: 'Mozgás észlelése, videó rögzítése a Media Servicesbe'
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: Mozgás észlelése és események kibocsátása
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: Közvetlen metódushívások használata
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: 'Mozgás észlelése, videó rögzítése a peremeszközökön'
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: Live Video Analytics futtatása saját modellel
-      href: use-your-model-quickstart.md
+      items:
+        - name: Közvetlen metódushívások használata
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Élő videó elemzése saját modellel
+      items:
+        - name: HTTP-bővítménnyel
+          items:
+            - name: Közvetlen metódushívások használata
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: gRPC-bővítménnyel
+          items:
+            - name: Közvetlen metódushívások használata
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: Oktatóanyagok
   items:
     - name: Folyamatos videófelvétel
@@ -37,12 +53,16 @@
           href: use-intel-openvino-tutorial.md
 - name: Példák
   items:
-    - name: Az IoT Edge-en futó Live Video Analytics C#-mintái
+    - name: Közvetlenmetódus-példák – C#
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Közvetlenmetódus-példák – Python
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
 - name: Alapelvek
   items:
     - name: Médiagrafikon
       href: media-graph-concept.md
+    - name: Médiagrafikon bővítmény
+      href: media-graph-extension-concept.md
     - name: Videófelvétel
       href: video-recording-concept.md
     - name: Videó lejátszása
@@ -67,14 +87,18 @@
       href: playback-recordings-how-to.md
     - name: Felvételkészítési szabályzat kezelése
       href: manage-recording-policy-how-to.md
-    - name: Élő videó elemzése tetszőleges mesterséges intelligenciával
-      href: analyze-with-ai-your-choice-how-to.md
     - name: Közvetlen metódusok meghívása a portállal
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Hibaelhárítás
       href: troubleshoot-how-to.md
 - name: Referencia
   items:
+    - name: HTTP-adategyezmény
+      href: http-data-contract.md
+    - name: gRPC-adategyezmény
+      href: grpc-data-contract.md
+    - name: Következtetéses metaadatok sémája
+      href: inference-metadata-schema.md
     - name: Közvetlen metódusok
       href: direct-methods.md
     - name: Ikermodul konfigurációs sémája

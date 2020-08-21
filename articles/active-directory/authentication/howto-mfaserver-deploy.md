@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 763c02cca954f7bcd3f9763bfe45f3954dacf0a7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054051"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719444"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -209,7 +209,7 @@ Az új kiszolgáló ezzel használatra kész az eredeti biztonsági másolatban 
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
-Miután az MFA Server 8.x vagy újabb változatára frissített, érdemes eltávolítani minden régebbi vagy gyengébb titkosítócsomagot, hacsak vállalata nem követeli meg azok használatát. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
+Miután az MFA Server 8.x vagy újabb változatára frissített, érdemes eltávolítani minden régebbi vagy gyengébb titkosítócsomagot, hacsak vállalata nem követeli meg azok használatát. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 

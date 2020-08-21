@@ -5,12 +5,12 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423422"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716622"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Azure Service Bus névtér elérésének engedélyezése privát végpontokon keresztül
 
@@ -180,9 +180,9 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Nincsenek | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
@@ -234,7 +234,7 @@ Négy kiépítési állapot létezik:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a magánhálózati kapcsolat működik-e
 
-Győződjön meg arról, hogy a magánhálózati végpont erőforrásának ugyanazon alhálózatán belüli erőforrásai csatlakoznak a Service Bus névtérhez egy magánhálózati IP-címen keresztül, valamint a saját DNS-zónák megfelelő integrálását.
+Győződjön meg arról, hogy a magánhálózati végpont virtuális hálózatán lévő erőforrások a magánhálózati IP-címeken keresztül csatlakoznak a Service Bus névtérhez, és a saját DNS-zóna megfelelő integrációja van.
 
 Először hozzon létre egy virtuális gépet a [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md) című témakör lépéseit követve.
 
@@ -270,7 +270,7 @@ Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
 - További információ a [Azure Service Bus](service-bus-messaging-overview.md)

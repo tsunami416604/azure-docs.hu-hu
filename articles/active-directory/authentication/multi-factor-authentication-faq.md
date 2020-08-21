@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035077"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718866"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication – gyakran ismételt kérdések
 
@@ -259,6 +259,6 @@ Ennek a hibának a megkerülő megoldás, ha külön felhasználói fiókkal ren
 Ha a kérdés itt nem válaszol, a következő támogatási lehetőségek érhetők el:
 
 * A gyakori technikai problémák megoldásához keressen a [Microsoft ügyfélszolgálata Tudásbázisban](https://support.microsoft.com) .
-* Megkeresheti és böngészheti a Közösség technikai kérdéseit és válaszait, vagy megteheti a saját kérdéseit az [Azure Active Directory Q&a](https://docs.microsoft.com/answers/topics/azure-active-directory.html)-ben.
+* Megkeresheti és böngészheti a Közösség technikai kérdéseit és válaszait, vagy megteheti a saját kérdéseit az [Azure Active Directory Q&a](/answers/topics/azure-active-directory.html)-ben.
 * Forduljon a Microsoft Professional szolgáltatáshoz az [Azure multi-Factor Authentication-kiszolgáló támogatásával](https://support.microsoft.com/oas/default.aspx?prid=14947). Amikor kapcsolatba lép velünk, hasznos lehet, ha a lehető legtöbb információt felveheti a probléma megoldására. A megadható információk közé tartozik az a lap, ahol a hiba, a megadott hibakód, a megadott munkamenet-azonosító és a hibát megtekintő felhasználó azonosítója szerepel.
 * Ha Ön örökölt PhoneFactor-ügyfél, és kérdései vannak, vagy segítségre van szüksége a jelszó alaphelyzetbe állításához, akkor az [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) e-mail-cím használatával nyisson meg egy támogatási esetet.

@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: c510d6f1cc2aa4a7e71f64e0c296e14a9896614e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642044"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717982"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -408,15 +408,15 @@ A beépített PHP-telepítések a leggyakrabban használt bővítményeket tarta
 
 További bővítmények engedélyezéséhez kövesse az alábbi lépéseket:
 
-Adjon hozzá egy `bin` könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze a `.so` bővítmény fájljait (például *mongodb.so*). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, és VC9 és nem szálon (Zem) kompatibilisek.
+Adjon hozzá egy `bin` könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze a `.dll` bővítmény fájljait (például *mongodb.dll*). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, és VC9 és nem szálon (Zem) kompatibilisek.
 
 Telepítse a módosításokat.
 
 Kövesse az [PHP_INI_SYSTEM irányelvek testreszabása](#customize-php_ini_system-directives)című szakasz lépéseit, adja hozzá a bővítményeket az egyéni *. ini* -fájlhoz a [kiterjesztéssel](https://www.php.net/manual/ini.core.php#ini.extension) vagy [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) irányelvekkel.
 
 ```
-extension=d:\home\site\wwwroot\bin\mongodb.so
-zend_extension=d:\home\site\wwwroot\bin\xdebug.so
+extension=d:\home\site\wwwroot\bin\mongodb.dll
+zend_extension=d:\home\site\wwwroot\bin\xdebug.dll
 ```
 
 A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
@@ -481,7 +481,7 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: PHP-alkalmazás és MySQL](tutorial-php-mysql-app.md)

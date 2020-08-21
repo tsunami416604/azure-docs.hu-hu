@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: a53ac9387664aafc218f13834e0499fde417d87d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/20/2020
+ms.openlocfilehash: 883eede5296f3f280bf30c9a459c02a9243f9081
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566080"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719529"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -57,7 +57,7 @@ A logikai alkalmazás minden kérelem végpontja [közös hozzáférési aláír
 
 Minden URL-cím tartalmazza a `sp` , a `sv` és a `sig` lekérdezési paramétert a következő táblázatban leírtak szerint:
 
-| Lekérdezési paraméter | Description |
+| Lekérdezési paraméter | Leírás |
 |-----------------|-------------|
 | `sp` | Megadja az engedélyezett HTTP-metódusok használatának engedélyeit. |
 | `sv` | Megadja az aláírás generálásához használandó SAS-verziót. |
@@ -592,7 +592,7 @@ További információ az alábbi `parameters` fejezetekről:
 
 Ez a példa több, a típust használó biztonságos paraméter-definícióval rendelkező sablont tartalmaz `securestring` :
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |----------------|-------------|
 | `TemplatePasswordParam` | A munkafolyamat-definíció paraméterének átadott jelszót fogadó sablon-paraméter `basicAuthPasswordParam` |
 | `TemplateUsernameParam` | A munkafolyamat-definíció paraméterének átadandó felhasználónevet megadó sablon-paraméter `basicAuthUserNameParam` |
@@ -725,7 +725,7 @@ Ez a példa több, a típust használó biztonságos paraméter-definícióval r
 
 * Hitelesítés hozzáadása a kimenő kérelmekhez.
 
-  Ha olyan HTTP-alapú triggerrel vagy művelettel dolgozik, amely kimenő hívásokat végez, például HTTP, HTTP + henceg vagy webhook, akkor a logikai alkalmazás által küldött kérelemhez is hozzáadhat hitelesítést. Kiválaszthatja például a következő hitelesítési típusokat:
+  Ha HTTP-alapú triggert vagy műveletet használ, amely kimenő hívásokat végez (például HTTP), akkor a logikai alkalmazás által küldött kérelemhez hozzáadhat hitelesítést. Kiválaszthatja például a következő hitelesítési típusokat:
 
   * [Alapszintű hitelesítés](#basic-authentication)
 
@@ -792,7 +792,7 @@ Ez a táblázat az eseményindítók és műveletek által elérhető hitelesít
 | [Ügyféltanúsítvány](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + hencegés, HTTP webhook |
 | [Nyers](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + hencegés, HTTP webhook |
-| [Kezelt identitás](#managed-identity-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + hencegés, HTTP webhook |
+| [Kezelt identitás](#managed-identity-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP |
 |||
 
 <a name="basic-authentication"></a>

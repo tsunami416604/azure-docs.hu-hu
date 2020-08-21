@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/21/2020
 ms.author: jingwang
-ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044398"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718203"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-formátum Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | típus             | Az adatkészlet Type tulajdonságát az **Excel**értékre kell beállítani.   | Yes      |
 | location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . | Yes      |
 | SheetName tulajdonságbeállító        | Az Excel-munkalap neve az adatolvasáshoz.                       | Yes      |
-| tartomány            | Az adott munkalapon lévő cellatartomány a szelektív adatok (például az a3 és a H5 közötti tábla) megkereséséhez (egy, az `A3:H5` `A3` a3 cellától kezdődő tábla), `A3:A3` (egyetlen cella). Ha nincs megadva, az ADF a teljes munkalapról táblázatként olvas. | No       |
+| tartomány            | Az adott munkalapon lévő cellatartomány a szelektív adat megtalálásához, például:<br>-Nincs megadva: beolvassa a teljes munkalapot táblaként az első nem üres sorból és oszlopból.<br>- `A3`: az adott cellától kezdődő táblázat beolvasása, amely dinamikusan észleli az alábbi sorokat és az összes oszlopot a jobb oldalon.<br>- `A3:H5`: a rögzített tartomány beolvasása táblázatként<br>- `A3:A3`: az egyetlen cella beolvasása | No       |
 | firstRowAsHeader | Meghatározza, hogy az adott munkalap vagy tartomány első sorát fejlécként kell-e kezelni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | No       |
 | nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc**. | No       |
 | tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | No |
@@ -112,7 +112,7 @@ Az alábbi táblázatban az Excel-források által támogatott tulajdonságok sz
 | Partíció gyökerének elérési útja       | A particionált fájlok esetében megadhatja a partíció gyökerének elérési útját, hogy a particionált mappák oszlopként legyenek olvashatók. | nem       | Sztring                                                    | partitionRootPath                 |
 | Fájlok listája             | Azt jelzi, hogy a forrás egy szövegfájlra mutat-e, amely a feldolgozandó fájlokat listázza | nem       | `true` vagy `false`                                         | fileList                          |
 | A fájl nevét tároló oszlop | Új oszlop létrehozása a forrásfájl nevével és elérési útjával       | nem       | Sztring                                                    | rowUrlColumn                      |
-| Befejezés után          | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem       | Törlés: `true` vagy`false` <br> Áthelyezése`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
+| Befejezés után          | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem       | Törlés: `true` vagy `false` <br> Áthelyezése `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | Szűrés utoljára módosítva   | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>Forrás példa

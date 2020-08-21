@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69d346d554ee6f30e4ef578bacf358aaba722b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 528fe5dea533faf9447e03dd901568d783891ce9
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825174"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718934"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 
@@ -52,10 +52,11 @@ Az Azure két lemeztípust kínál.
 
 **Standard lemezek** – a merevlemez-meghajtókra épülő lemezek költséghatékony tárolási megoldást, ugyanakkor jó teljesítményt nyújtanak. A standard lemezek ideális megoldást jelentenek költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
 
-**Prémium lemezek** – SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. A Premium Storage támogatja a DS, a DSv2, a GS és az FS sorozatú virtuális gépeket. A prémium lemezeknek öt típusa van (P10, P20, P30, P40, P50), és a lemez mérete határozza meg a lemez típusát. Lemezméret kiválasztásakor az értéket felfelé kerekíti a rendszer a következő típusra. Ha például a lemez mérete kisebb 128 GB-nál, a lemez típusa P10. 129 GB és 512 GB között a lemez típusa P20 lesz.
-
-### <a name="premium-disk-performance"></a>Prémium szintű lemezek teljesítménye
+**Prémium szintű lemezek** – SSD-alapú, nagy teljesítményű, kis késleltetésű lemez. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. A virtuális gépek [mérete a méret nevével](../vm-naming-conventions.md), általában **támogatja a Premium Storage** . A DS-sorozat, a DSv2-sorozat, a GS-sorozat és az FS sorozatú virtuális gépek például támogatják a Premium Storage szolgáltatást. Lemezméret kiválasztásakor az értéket felfelé kerekíti a rendszer a következő típusra. Ha például a lemez mérete meghaladja a 64 GB-ot, de kevesebb, mint 128 GB, a lemez típusa P10. 
+<br>
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
+
+Ha Premium Storage-lemezt épít ki, a standard szintű tárterülettől eltérően, akkor garantált a lemez kapacitása, IOPS és átviteli sebessége. Ha például létrehoz egy P50 lemezt, az Azure 4 095 GB tárolókapacitást, 7 500 IOPS és 250 MB/s adatátviteli sebességet biztosít a lemez számára. Az alkalmazás a kapacitás és a teljesítmény egészét vagy egy részét használhatja. A prémium SSD lemezek úgy lettek kialakítva, hogy alacsony egyszámjegyű ezredmásodperces késéseket és célként megadott IOPS és átviteli sebességet biztosítson az idő 99,9%-ában.
 
 Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, nagyobb teljesítmény is elérhető több adatlemez összevonásával. Például a Standard_GS5 virtuális géphez 64 adatlemez csatolható. Ha ezen lemezek mindegyike P30-ra van méretezve, maximum 80 000-es IOPS-érték érhető el. A virtuális gépenkénti maximális IOPS-értékről szóló részletes információkért lásd a [virtuális gépek típusait és méreteit](../sizes.md) ismertető cikket.
 
@@ -157,7 +158,7 @@ VirtualHardDisk :
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a virtuálisgép-lemezekkel kapcsolatos témakörökkel ismerkedett meg, például:
 

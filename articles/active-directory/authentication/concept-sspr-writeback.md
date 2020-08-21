@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027597"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717438"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hogyan működik az önkiszolgáló jelszó-visszaállítási visszaírási az Azure Active Directory?
 
@@ -47,7 +47,7 @@ A jelszó visszaírási a következő funkciókat biztosítja:
 A SSPR-visszaírási első lépéseihez hajtsa végre a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](tutorial-enable-writeback.md)
+> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>A jelszóvisszaíró működése
 
@@ -140,7 +140,7 @@ A jelszavakat a következő helyzetekben kell visszaírni:
    * Minden rendszergazda önkiszolgáló kényszerített jelszó-módosítási művelet, például a jelszó lejárata.
    * A jelszó- [visszaállítási portálról](https://passwordreset.microsoftonline.com)származó rendszergazdai önkiszolgáló jelszó-visszaállítás.
    * Minden rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Azure Portal](https://portal.azure.com).
-   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http)-ból.
+   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft Graph API Beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)-ból.
 
 ## <a name="unsupported-writeback-operations"></a>Nem támogatott visszaírási-műveletek
 
@@ -149,7 +149,7 @@ A jelszavakat a következő helyzetekben nem írja vissza a rendszer:
 * **Nem támogatott végfelhasználói műveletek**
    * Bármely végfelhasználó alaphelyzetbe állítja a saját jelszavukat a PowerShell 1-es vagy 2-es verziójának használatával, vagy a Microsoft Graph API-val.
 * **Nem támogatott rendszergazdai műveletek**
-   * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es verziójáról, a 2-es verzióról vagy a Microsoft Graph API-ról (a [Microsoft Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) támogatott).
+   * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es verziójáról, a 2-es verzióról vagy a Microsoft Graph API-ról (a [Microsoft Graph API Beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) támogatott).
    * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft 365 felügyeleti központból](https://admin.microsoft.com).
    * Bármely rendszergazda nem használhatja a jelszó-visszaállítási eszközt a jelszó-visszaírási vonatkozó saját jelszó visszaállításához.
 
@@ -161,4 +161,4 @@ A jelszavakat a következő helyzetekben nem írja vissza a rendszer:
 A SSPR-visszaírási első lépéseihez hajtsa végre a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](tutorial-enable-writeback.md)
+> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](./tutorial-enable-sspr-writeback.md)

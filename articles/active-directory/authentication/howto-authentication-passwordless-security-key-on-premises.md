@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550640"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716996"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
 
@@ -48,10 +48,10 @@ A szervezeteknek a következő szoftverekre vonatkozó követelményeket is meg 
 
 - Az eszközökön a Windows 10 belső Build 18945-es vagy újabb verziójának kell futnia.
 - A [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)1.4.32.0 vagy újabb verziójának kell lennie.
-  - További információ az elérhető Azure AD hibrid hitelesítési lehetőségekről: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../../security/fundamentals/choose-ad-authn.md) , és [válassza ki, hogy melyik telepítési típust szeretné használni a Azure ad Connecthoz](../hybrid/how-to-connect-install-select-installation.md).
+  - További információ az elérhető Azure AD hibrid hitelesítési lehetőségekről: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../hybrid/choose-ad-authn.md) , és [válassza ki, hogy melyik telepítési típust szeretné használni a Azure ad Connecthoz](../hybrid/how-to-connect-install-select-installation.md).
 - A Windows Server-tartományvezérlőkhöz a következő javításokat kell telepíteni:
-    - Windows Server 2016 –https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Windows Server 2019 –https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - Windows Server 2016 – https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Windows Server 2019 – https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -75,7 +75,7 @@ A következő forgatókönyvek nem támogatottak:
 A rendszergazdák a Azure AD Connect kiszolgáló PowerShell-eszközeivel hozhatnak létre egy Azure AD Kerberos-kiszolgálói objektumot a helyszíni címtárban. Futtassa az alábbi lépéseket a szervezet minden olyan tartományában és erdőben, amely Azure AD-felhasználókat tartalmaz:
 
 1. Frissítsen a Azure AD Connect legújabb verziójára. Az utasítások feltételezik, hogy már konfigurálta Azure AD Connect a hibrid környezet támogatásához.
-1. Nyisson meg egy rendszergazda jogú PowerShell-parancssort a Azure AD Connect-kiszolgálón, és nyissa meg a következőt`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Nyisson meg egy rendszergazda jogú PowerShell-parancssort a Azure AD Connect-kiszolgálón, és nyissa meg a következőt `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
 1. A következő PowerShell-parancsok futtatásával hozzon létre egy új Azure AD Kerberos-kiszolgálói objektumot a helyszíni Active Directory tartományban és Azure Active Directory bérlőben.
 
 > [!NOTE]
@@ -114,7 +114,7 @@ Ez a parancs kiírja az Azure AD Kerberos-kiszolgáló tulajdonságait. A tulajd
 | ID | Az AD DS tartományvezérlő objektum egyedi azonosítója. Ezt az azonosítót más néven "slot"-nak vagy "ág-AZONOSÍTÓnak" is nevezzük. |
 | DomainDnsName | A Active Directory-tartomány DNS-tartományneve. |
 | ComputerAccount | Az Azure AD Kerberos-kiszolgáló objektum számítógépfiók-objektuma (a tartományvezérlő). |
-| Felhasználóifiók | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| Felhasználóifiók | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
 | Verziószám | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának verziószáma. A verzió a kulcs létrehozásakor lesz hozzárendelve. Ekkor a rendszer a kulcs elforgatásakor minden alkalommal megnöveli a verziót. A növekmények a replikálási metaadatokon alapulnak, és valószínűleg nagyobbak. A kezdeti *verzió* például *192272*lehet. A kulcs első elforgatásakor a verzió a *212621*-as értékre léphet. A legfontosabb, hogy ellenőrizze, hogy a helyszíni objektum és a *CloudKeyVersion* a Felhőbeli objektumhoz tartozó *verziószáma* azonos-e. |
 | KeyUpdatedOn | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának dátuma és időpontja. |
 | KeyUpdatedFrom | Az a tartományvezérlő, ahol az Azure AD Kerberos-kiszolgáló TGT-titkosítási kulcsa utoljára frissült. |

@@ -2,19 +2,18 @@
 title: Előrejelzések üzembe helyezése és elkészítése a ONNX
 description: Ismerje meg, hogyan alakíthatja át a modelleket, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) vagy az Azure SQL felügyelt példányain (előzetes verzió), majd a feltöltött ONNX-modell használatával natív ELŐREJELZÉSt futtathat az adatairól.
 keywords: SQL Edge üzembe helyezése
-services: sql-edge
-ms.service: sql-edge
-ms.subservice: machine-learning
+ms.prod: sql
+ms.technology: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085013"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718781"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel
 
@@ -34,7 +33,7 @@ Ez a rövid útmutató a **scikit-tanuláson** alapul, és a [bostoni lakhatási
   1. Kattintson a **csomagok kezelése** elemre.
   1. A **telepítés** lapon keresse meg a következő Python-csomagokat a telepített csomagok listájában. Ha a csomagok bármelyike nincs telepítve, válassza az **új hozzáadása** fület, keresse meg a csomagot, majd kattintson a **telepítés**gombra.
      - **scikit-learn**
-     - **numpy**
+     - **NumPy**
      - **onnxmltools**
      - **onnxruntime**
      - **pyodbc**
@@ -395,7 +394,7 @@ SELECT predict_input.id
 FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1 FLOAT) AS p;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Machine Learning és AI a ONNX az SQL Edge-ben](onnx-overview.md)
 * [Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md)

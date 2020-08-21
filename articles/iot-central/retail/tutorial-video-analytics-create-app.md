@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 897262dcdb8cbacd512f19823da375e2c603b97e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 23f9da34a123343bc4f2f5b175adc60ce80d7c42
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038340"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719172"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -98,7 +98,7 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 
 Új video Analytics-alkalmazás létrehozása:
 
-1. Válassza ki a **videó-elemzés-objektum és a mozgásérzékelő** alkalmazás sablonját. Ez a sablon tartalmazza az oktatóanyagban használt eszközökhöz tartozó eszközök sablonjait. A sablon egy operátori irányítópultot is biztosít a videó figyeléséhez.
+1. Válassza ki a **videó-elemzés-objektum és a mozgásérzékelő** alkalmazás sablonját. Ez a sablon tartalmazza az oktatóanyagban használt eszközökhöz tartozó eszközök sablonjait. A sablon olyan minta-irányítópultokat tartalmaz, amelyeket az operátorok olyan feladatok végrehajtására használhatnak, mint például a kamerák figyelése és kezelése.
 
 1. Igény szerint válasszon egy felhasználóbarát **nevet**. Ez az alkalmazás a Northwind Traders nevű kitalált kereskedelmi áruházon alapul. Az oktatóanyag a *Northwind Traders video Analytics* **alkalmazás nevét** használja.
 
@@ -245,12 +245,12 @@ Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deploym
 
 Az **LVA Edge Gateway** -eszköz sablonjában, a **modulok/LVA Edge-átjáró modul**alatt válassza a **kapcsolatok**lehetőséget. Válassza a **+ kapcsolat hozzáadása** lehetőséget, és adja hozzá a következő két kapcsolatot:
 
-|Megjelenítendő név               |Name (Név)          |Cél |
+|Megjelenítendő név               |Név          |Cél |
 |-------------------------- |------------- |------ |
 |LVA Edge mozgásérzékelő   |Alapértelmezett használata   |LVA Edge mozgásérzékelő eszköz |
 |LVA Edge-objektum detektora   |Alapértelmezett használata   |LVA Edge Object detektor eszköz |
 
-Ez után válassza a **Mentés** lehetőséget.
+Kattintson a **Mentés** gombra.
 
 :::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="Kapcsolatok hozzáadása":::
 

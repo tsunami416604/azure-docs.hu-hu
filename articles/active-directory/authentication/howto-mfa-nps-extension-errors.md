@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848673"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716724"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből
 
@@ -30,8 +30,8 @@ Ha az Azure Multi-Factor Authentication hálózati házirend-bővítményével k
 | **CONTACT_SUPPORT** | [Forduljon az ügyfélszolgálathoz](#contact-microsoft-support), és nevezze el a naplók összegyűjtéséhez szükséges lépések listáját. Annyi információt adjon meg, amely a hiba előtt történt, beleértve a bérlői azonosítót és az egyszerű felhasználónevet (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Előfordulhat, hogy az ügyféltanúsítvány telepítésének vagy a bérlőhöz való hozzárendelésének problémája lehet. Az ügyfél-tanúsítványokkal kapcsolatos problémák kivizsgálásához kövesse az [MFA NPS-bővítmény hibáinak elhárítása című](howto-mfa-nps-extension.md#troubleshooting) témakör utasításait. |
 | **ESTS_TOKEN_ERROR** | Az ügyfél-tanúsítvány és az ADAL token problémáinak vizsgálatához kövesse az [MFA NPS-bővítmény hibáinak elhárítása](howto-mfa-nps-extension.md#troubleshooting) című témakör utasításait. |
-| **HTTPS_COMMUNICATION_ERROR** | Az NPS-kiszolgáló nem tud válaszokat kapni az Azure MFA-ból. Győződjön meg arról, hogy a tűzfalak a és a rendszer felé irányuló forgalom kétirányú megnyitásahttps://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | A hálózati házirend-kiszolgálót futtató kiszolgálón ellenőrizze, hogy elérhető-e a `https://adnotifications.windowsazure.com` és a `https://login.microsoftonline.com/` . Ha ezek a helyek nem töltődnek be, akkor hárítsa el a kapcsolódást az adott kiszolgálón. |
+| **HTTPS_COMMUNICATION_ERROR** | Az NPS-kiszolgáló nem tud válaszokat kapni az Azure MFA-ból. Győződjön meg arról, hogy a tűzfalak a és a rendszer felé irányuló forgalom kétirányú megnyitása https://adnotifications.windowsazure.com |
+| **HTTP_CONNECT_ERROR** | A hálózati házirend-kiszolgálót futtató kiszolgálón ellenőrizze, hogy elérhető-e a  `https://adnotifications.windowsazure.com` és a `https://login.microsoftonline.com/` . Ha ezek a helyek nem töltődnek be, akkor hárítsa el a kapcsolódást az adott kiszolgálón. |
 | **NPS-bővítmény az Azure MFA-hoz:** <br> A hálózati házirend-kiszolgáló bővítménye az Azure MFA esetében csak a AccessAccept állapotban lévő RADIUS-kérelmek másodlagos hitelesítését hajtja végre. A válasz állapot AccessReject rendelkező felhasználói felhasználónévre vonatkozó kérelem érkezett, figyelmen kívül hagyva a kérést. | Ez a hiba általában egy hitelesítési hibát jelez az AD-ben, illetve azt, hogy az NPS-kiszolgáló nem tud válaszokat kapni az Azure AD-től. Győződjön meg arról, hogy a tűzfalak a `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` 80-es és a 443-es porton keresztüli és onnan érkező, illetve onnan érkező és onnan érkező forgalom számára vannak Azt is fontos ellenőrizni, hogy a hálózati hozzáférési engedélyek Betárcsázás lapján a beállítás "hozzáférés vezérlése az NPS-hálózati házirend alapján" értékre van-e állítva. Ez a hiba akkor is aktiválható, ha a felhasználóhoz nincs hozzárendelve licenc. |
 | **REGISTRY_CONFIG_ERROR** | Hiányzik egy kulcs az alkalmazás beállításjegyzékében, ennek oka az lehet, hogy a [PowerShell-parancsfájlt](howto-mfa-nps-extension.md#install-the-nps-extension) a telepítés után nem futtatták. A hibaüzenetnek tartalmaznia kell a hiányzó kulcsot. Győződjön meg arról, hogy rendelkezik a kulcs HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> A RADIUS-kérelemből hiányzik a kötelező RADIUS-userName\Identifier attribútum. A hálózati házirend-kiszolgáló RADIUS-kérelmek fogadásának ellenőrzése | Ez a hiba általában egy telepítési problémát tükröz. A hálózati házirend-kiszolgáló bővítményét telepíteni kell a RADIUS-kérelmeket fogadó NPS-kiszolgálókon. Azok a hálózati házirend-kiszolgálók, amelyek függőségként vannak telepítve a RDG és az RRAS szolgáltatáshoz, nem kapják meg a RADIUS-kéréseket. A hálózati házirend-kiszolgáló bővítmény nem működik, ha az ilyen telepítések és hibák miatt nem tudja olvasni a hitelesítési kérelem részleteit. |
@@ -43,7 +43,7 @@ Ha az Azure Multi-Factor Authentication hálózati házirend-bővítményével k
 | Hibakód | Hibaüzenet | Hibaelhárítási lépések |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hiba: a userObjectSid keresése nem sikerült | Ellenőrizze, hogy a felhasználó létezik-e a helyszíni Active Directory-példányban. Ha erdők közötti megbízhatósági kapcsolatot használ, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
-| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: nem sikerült a másodlagos LoginId keresése | Ellenőrizze, hogy a LDAP_ALTERNATE_LOGINID_ATTRIBUTE [érvényes Active Directory-attribútumra](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)van-e beállítva. <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG értéke TRUE (igaz), vagy a LDAP_LOOKUP_FORESTS nem üres értékkel van konfigurálva, ellenőrizze, hogy a globális katalógust konfigurálta-e, és hogy a AlternateLoginId attribútum hozzá van-e adva. <br><br> Ha LDAP_LOOKUP_FORESTS nem üres értékre van konfigurálva, ellenőrizze, hogy helyes-e az érték. Ha egynél több erdő neve van, a neveket pontosvesszővel kell elválasztani, nem szóközöket. <br><br> Ha ezek a lépések nem javítják a problémát, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
+| **ALTERNATE_LOGIN_ID_ERROR** | Hiba: nem sikerült a másodlagos LoginId keresése | Ellenőrizze, hogy a LDAP_ALTERNATE_LOGINID_ATTRIBUTE [érvényes Active Directory-attribútumra](/windows/win32/adschema/attributes-all)van-e beállítva. <br><br> Ha LDAP_FORCE_GLOBAL_CATALOG értéke TRUE (igaz), vagy a LDAP_LOOKUP_FORESTS nem üres értékkel van konfigurálva, ellenőrizze, hogy a globális katalógust konfigurálta-e, és hogy a AlternateLoginId attribútum hozzá van-e adva. <br><br> Ha LDAP_LOOKUP_FORESTS nem üres értékre van konfigurálva, ellenőrizze, hogy helyes-e az érték. Ha egynél több erdő neve van, a neveket pontosvesszővel kell elválasztani, nem szóközöket. <br><br> Ha ezek a lépések nem javítják a problémát, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
 | **ALTERNATE_LOGIN_ID_ERROR** | Hiba: a másodlagos LoginId értéke üres | Ellenőrizze, hogy a AlternateLoginId attribútum konfigurálva van-e a felhasználó számára. |
 
 ## <a name="errors-your-users-may-encounter"></a>A felhasználók által észlelt hibák
@@ -81,7 +81,7 @@ Ha ezen hibák valamelyikével találkozik, javasoljuk, hogy forduljon az [ügyf
 | ---------- | ------------- |
 | **InvalidParameter** | A kérelem nem lehet null értékű. |
 | **InvalidParameter** | A ObjectId nem lehet null értékű vagy üres a ReplicationScope:{0} |
-| **InvalidParameter** | A cégnév \{ 0} \ hossza hosszabb a megengedett maximális hossznál{1} |
+| **InvalidParameter** | A cégnév \{ 0} \ hossza hosszabb a megengedett maximális hossznál {1} |
 | **InvalidParameter** | A UserPrincipalName nem lehet null értékű vagy üres. |
 | **InvalidParameter** | A megadott TenantId formátuma nem megfelelő. |
 | **InvalidParameter** | A munkamenet-azonosító nem lehet null értékű vagy üres. |
@@ -99,7 +99,7 @@ Ha a felhasználók a [kétlépéses ellenőrzés során problémákba ütközne
 
 ### <a name="health-check-script"></a>Állapot-ellenőrzési parancsfájl
 
-Az [Azure MFA NPS-bővítmény állapot-ellenőrzési szkriptje](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) alapszintű állapot-ellenőrzést hajt végre a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor. Futtassa a szkriptet, és válassza a 3. lehetőséget.
+Az [Azure MFA NPS-bővítmény állapot-ellenőrzési szkriptje](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) alapszintű állapot-ellenőrzést hajt végre a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor. Futtassa a szkriptet, és válassza a 3. lehetőséget.
 
 ### <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419546"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718900"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure Multi-Factor Authentication
 
@@ -101,7 +101,7 @@ A feltételes hozzáférési szabályzatok csak akkor állíthatók be *jelenté
 
 Lássuk a feltételes hozzáférési szabályzatot és az Azure Multi-Factor Authentication működés közben. Először jelentkezzen be egy olyan erőforrásba, amely nem igényel MFA-t az alábbiak szerint:
 
-1. Nyisson meg egy új böngészőablakot InPrivate-vagy inkognitóban-módban, és keresse meg a következőt:[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
+1. Nyisson meg egy új böngészőablakot InPrivate-vagy inkognitóban-módban, és keresse meg a következőt: [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 1. Jelentkezzen be a nem rendszergazda felhasználóval, például *tesztfelhasználó*. Nincs rákérdezés az MFA betöltésére.
 1. Zárja be a böngészőablakot.
 
@@ -123,7 +123,7 @@ Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze
 1. Válassza a **feltételes hozzáférés**lehetőséget, majd válassza ki a létrehozott szabályzatot, például *MFA Pilot*
 1. Válassza a **Törlés**lehetőséget, majd erősítse meg, hogy törölni kívánja a szabályzatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure Multi-Factor Authentication használatát a kiválasztott felhasználói csoportok feltételes hozzáférési házirendjeivel. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -133,4 +133,4 @@ Ebben az oktatóanyagban engedélyezte az Azure Multi-Factor Authentication hasz
 > * Az MFA-folyamat tesztelése felhasználóként
 
 > [!div class="nextstepaction"]
-> [Jelszó visszaírási engedélyezése önkiszolgáló jelszó-visszaállításhoz (SSPR)](tutorial-enable-writeback.md)
+> [Jelszó visszaírási engedélyezése önkiszolgáló jelszó-visszaállításhoz (SSPR)](./tutorial-enable-sspr-writeback.md)

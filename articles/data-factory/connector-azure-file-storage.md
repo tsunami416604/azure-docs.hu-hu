@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: be12393591d534b4141594439f0409d0db331bd0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 08/21/2020
+ms.openlocfilehash: 135993a39a3b06bdabfff4a219df92d41c736a51
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522674"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718254"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure File Storage-ba vagy onnan máshová az Azure Data Factoryvel
 
@@ -33,7 +33,12 @@ Ez az Azure File Storage-összekötő a következő tevékenységek esetén tám
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)
 
-Ez az Azure File Storage-összekötő támogatja a fájlok másolását, illetve a [támogatott fájlformátumokat és tömörítési kodekeket](supported-file-formats-and-compression-codecs.md)tartalmazó fájlok elemzését vagy generálását.
+Az Azure File Storageból bármely támogatott fogadó adattárba másolhatja az adatait, vagy átmásolhatja az összes támogatott forrásból származó adattárat az Azure File Storageba. A másolási tevékenység által a forrásként és a fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
+
+Ez az Azure File Storage-összekötő a következőket támogatja:
+
+- Fájlok másolása a fiók kulcsa vagy a szolgáltatás megosztott hozzáférési aláírása (SAS) hitelesítése használatával.
+- Fájlok másolása a-ként vagy a fájlok elemzése/létrehozása a [támogatott fájlformátumokkal és tömörítési kodekekkel](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -43,7 +48,139 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az Azure File Storage társított szolgáltatás a következő tulajdonságokat támogatja:
+Ez az Azure File Storage-összekötő a következő hitelesítési típusokat támogatja. A részletekért tekintse meg a megfelelő szakaszt.
+
+- [Fiók kulcsának hitelesítése](#account-key-authentication)
+- [Közös hozzáférésű aláírások hitelesítése](#shared-access-signature-authentication)
+
+>[!NOTE]
+> Ha az Azure File Storage a társított szolgáltatást [örökölt modellel](#legacy-model)használta, ahol az "alapszintű hitelesítés" értékkel rendelkező ADF authoring UI-t használja, akkor a rendszer továbbra is támogatja a szolgáltatást, míg az új modellt a jövőben is használni fogja. Az örökölt modell a kiszolgáló-üzenetblokk (SMB) protokollon keresztül továbbítja az adatátvitelt és a tárterületet, míg az új modell a Storage SDK-t használja, amely jobb teljesítményt nyújt. A frissítéshez szerkesztheti a társított szolgáltatást, hogy átváltsa a hitelesítési módszert "fiók kulcs" vagy "SAS URI" értékre. az adatkészlet vagy a másolási tevékenység esetében nincs szükség módosításra.
+
+### <a name="account-key-authentication"></a>Fiók kulcsának hitelesítése
+
+A Data Factory a következő tulajdonságokat támogatja az Azure File Storage-fiók kulcsos hitelesítéséhez:
+
+| Tulajdonság | Leírás | Kötelező |
+|:--- |:--- |:--- |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureFileStorage**. | Yes |
+| connectionString | Itt adhatja meg az Azure File Storagehoz való kapcsolódáshoz szükséges adatokat. <br/> Azt is megteheti, hogy Azure Key Vault a fiók kulcsát, és lekéri a `accountKey` konfigurációt a kapcsolatok sztringből. További információkért tekintse meg a következő mintákat és az [áruház hitelesítő adatait Azure Key Vault](store-credentials-in-key-vault.md) cikkben. |Yes |
+| Fájlmegosztás | Adja meg a fájlmegosztást. | Yes |
+| pillanatkép | Adja meg a [fájlmegosztás pillanatképének](../storage/files/storage-snapshots-files.md) dátumát, ha pillanatképből szeretne másolni. | No |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
+
+**Példa**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net;",
+            "fileShare": "<file share name>"
+        },
+        "connectVia": {
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Példa: a fiók kulcsának tárolása Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
+            "fileShare": "<file share name>",
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }            
+    }
+}
+```
+
+### <a name="shared-access-signature-authentication"></a>Közös hozzáférésű aláírások hitelesítése
+
+A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A megosztott elérési aláírás használatával a megadott időpontra korlátozhatja az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó engedélyek megadását. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: közös hozzáférésű aláírások [: a közös hozzáférésű aláírás modelljének megismerése](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+A Data Factory a következő tulajdonságokat támogatja a közös hozzáférésű aláírás-hitelesítés használatához:
+
+| Tulajdonság | Leírás | Kötelező |
+|:--- |:--- |:--- |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureFileStorage**. | Yes |
+| sasUri | A megosztott hozzáférési aláírás URI azonosítójának megadása az erőforrásokhoz. <br/>A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Data Factoryban. A SAS-tokent Azure Key Vault is elhelyezheti az automatikus elforgatás és a jogkivonat-rész eltávolításához. További információkért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vaultban](store-credentials-in-key-vault.md). | Yes |
+| Fájlmegosztás | Adja meg a fájlmegosztást. | Yes |
+| pillanatkép | Adja meg a [fájlmegosztás pillanatképének](../storage/files/storage-snapshots-files.md) dátumát, ha pillanatképből szeretne másolni. | No |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
+
+**Példa**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the resource e.g. https://<accountname>.file.core.windows.net/?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
+            },
+            "fileShare": "<file share name>",
+            "snapshot": "<snapshot version>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Példa: a fiók kulcsának tárolása Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.file.core.windows.net/>"
+            },
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="legacy-model"></a>Örökölt modell
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -52,13 +189,6 @@ Az Azure File Storage társított szolgáltatás a következő tulajdonságokat 
 | userid | Az Azure File Storage eléréséhez a következőt kell megadnia: <br/>– Felhasználói felület használata: megadása `AZURE\<storage name>`<br/>-JSON használata: `"userid": "AZURE\\<storage name>"` . | Yes |
 | jelszó | A tárolási hozzáférési kulcs meghatározása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem, forrás, igen, fogadó |
-
->[!IMPORTANT]
-> - Az Azure File Storageba Azure Integration Runtime használatával történő adatmásoláshoz explicit módon [hozzon létre egy Azure IRt](create-azure-integration-runtime.md#create-azure-ir) a file Storage helyével, és társítsa a társított szolgáltatáshoz a következő példaként.
-> - Ha az Azure Integration Runtime-on kívülről az Azure-File Storage szeretné másolni az adatait az Azure-on kívülről, ne feledje, hogy a helyi hálózaton a 445-as kimenő TCP-portot nyitja meg.
-
->[!TIP]
->A szerzői műveletek ADF felhasználói felületének használatakor megkeresheti az "Azure File Storage" adott bejegyzését a társított szolgáltatás létrehozásához, amely a Type objektum létrehozása alatt van `FileServer` .
 
 **Példa**
 
@@ -138,9 +268,10 @@ Az Azure File Storage a következő tulajdonságokat támogatja a `storeSettings
 | típus                     | A Type tulajdonságot a `storeSettings` **FileServerReadSettings**értékre kell állítani. | Yes                                           |
 | ***Keresse meg a másolandó fájlokat:*** |  |  |
 | 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott mappa vagy fájl elérési útját. Ha az összes fájlt egy mappából szeretné másolni, azt is meg kell adnia `wildcardFileName` `*` . |  |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^` <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | No                                            |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`  További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Yes |
-| 3. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |No |
+| 2. lehetőség: fájl előtagja<br>-előtag | Az adatkészletben a forrásfájlok szűréséhez konfigurált megadott fájlmegosztás alatt található fájlnév előtagja. A-től kezdődő nevű fájlok `fileshare_in_linked_service/this_prefix` ki vannak választva. Az Azure File Storage szolgáltatás-oldalsó szűrőjét használja, amely jobb teljesítményt nyújt, mint a helyettesítő karakteres szűrő. Ez a funkció [örökölt társított szolgáltatási modell](#legacy-model)használata esetén nem támogatott. | No                                                          |
+| 3. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^` <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | No                                            |
+| 3. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`  További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Yes |
+| 4. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |No |
 | ***További beállítások:*** |  | |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
 | deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris másolási helyzetekben érvényes, ahol az adatforrás a blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, file, Azure file, SFTP vagy FTP. Az alapértelmezett érték: false. |No |

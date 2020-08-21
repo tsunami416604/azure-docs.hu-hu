@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2055730505b360ef8d5bf50cd83532627fb8e08
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245417"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718084"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -52,7 +52,7 @@ A következő lépések bemutatják, hogyan működik a bejelentkezési folyamat
 1. A Felhőbeli AP-szolgáltató fogadja a titkosított PRT-t a munkamenet-kulccsal. Az eszköz privát átviteli kulcsa segítségével a Cloud AP Provider visszafejti a munkamenetkulcsot, és a platformmegbízhatósági modul (TPM) használatával védi a munkamenetkulcsot.
 1. A Felhőbeli AP-szolgáltató sikeres hitelesítési választ ad vissza a Windowsnak. A felhasználó ezután hozzáférhet a Windowshoz, valamint a Felhőbeli és a helyszíni alkalmazásokhoz anélkül, hogy újra kellene hitelesítenie magát (SSO).
 
-A vállalati Windows Hello [tervezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) segítségével döntéseket hozhat a vállalati Windows Hello üzembe helyezésének típusáról és a szükséges lehetőségekről.
+A vállalati Windows Hello [tervezési útmutató](/windows/security/identity-protection/hello-for-business/hello-planning-guide) segítségével döntéseket hozhat a vállalati Windows Hello üzembe helyezésének típusáról és a szükséges lehetőségekről.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
 
@@ -60,7 +60,7 @@ Azt is lehetővé teheti, hogy az alkalmazott telefonja jelszavas hitelesítési
 
 ![Bejelentkezés a Microsoft Edge-be a Microsoft Authenticator alkalmazással](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik. A telepítés részleteiért tekintse meg [a Microsoft Authenticator alkalmazás letöltése és telepítése](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) című témakört.
+A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik. A telepítés részleteiért tekintse meg [a Microsoft Authenticator alkalmazás letöltése és telepítése](../user-help/user-help-auth-app-download-install.md) című témakört.
 
 A hitelesítő alkalmazással való jelszóval nem rendelkező hitelesítés a vállalati Windows Hello szolgáltatással megegyező alapszintű mintát követi. Ez egy kicsit bonyolultabb, mivel a felhasználó azonosítására van szükség, hogy az Azure AD megtalálja a használt Microsoft Authenticator alkalmazás verzióját:
 

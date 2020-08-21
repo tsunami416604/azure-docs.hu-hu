@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446973"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718543"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
 Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
@@ -37,9 +37,11 @@ A következő táblázat felsorolja a szerepköröket és az operációs rendsze
 
 |Szerepkör| Operációs rendszer/verzió|
 |--|--|
-|Active Directory összevonási szolgáltatások (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory összevonási szolgáltatások (AD FS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
 |Azure AD Connect | 1.0.9125 vagy újabb verzió|
-|Active Directory tartományi szolgáltatások (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory tartományi szolgáltatások (AD DS)| <ul><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> <li> Windows Server 2019  </li> </ul>|
+
+A Windows Server Core telepítések nem támogatottak.
 
 Vegye figyelembe, hogy a szolgáltatás által biztosított szolgáltatások a szerepkörtől és az operációs rendszertől függően eltérőek lehetnek. Más szóval az összes funkció nem érhető el az operációs rendszer összes verziójához. A részletekért tekintse meg a szolgáltatás leírását.
 
@@ -68,10 +70,10 @@ A Azure AD Connect Health a németországi felhőben nem támogatott, kivéve a 
 
 | Szerepkörök | Szolgáltatások | Támogatott a német felhőben |
 | ------ | --------------- | --- |
-| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | Nem |
-|  | Szinkronizálási hibajelentés | Igen |
-| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | Nem |
-| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | Nem |
+| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | No |
+|  | Szinkronizálási hibajelentés | Yes |
+| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | No |
+| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | No |
 
 Annak érdekében, hogy az ügynök kapcsolatba lépjen a csatlakozás állapota szinkronizáláshoz, a [telepítési követelményt](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően konfigurálja.
 

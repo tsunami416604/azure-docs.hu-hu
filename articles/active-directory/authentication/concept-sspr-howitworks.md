@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d9d06433e2b915b8a96375bb39157adbce6ef2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027655"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716316"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -130,7 +130,7 @@ Ha mobil alkalmazást használ a jelszó-visszaállítási módszerként, péld�
 
 | Az alaphelyzetbe állításhoz szükséges módszerek száma | Eggyel | Kettővel |
 | :---: | :---: | :---: |
-| Elérhető a Mobile App szolgáltatásai | Code | Kód vagy értesítés |
+| Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
 
 A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az önkiszolgáló jelszó-visszaállításhoz való regisztráció során [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . A felhasználók a következő címen regisztrálhatják a mobil alkalmazást: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a kombinált biztonsági adatok regisztrációjában [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
@@ -139,7 +139,7 @@ A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az ön
 >
 > A hitelesítő alkalmazást metódusként tartalmazó SSPR házirendek konfigurálásakor legalább egy további metódust ki kell választani, ha egy metódusra van szükség, és a két módszer konfigurálásakor legalább két további módszert kell kiválasztani.
 >
-> Ennek a követelménynek az az oka, hogy a jelenlegi SSPR-regisztrációs felület nem tartalmazza a hitelesítő alkalmazás regisztrálásának lehetőségét. A hitelesítő alkalmazás regisztrálásának lehetősége az új, [kombinált regisztrálási élmény](concept-registration-mfa-sspr-converged.md)részét képezi.
+> Ennek a követelménynek az az oka, hogy a jelenlegi SSPR-regisztrációs felület nem tartalmazza a hitelesítő alkalmazás regisztrálásának lehetőségét. A hitelesítő alkalmazás regisztrálásának lehetősége az új, [kombinált regisztrálási élmény](./concept-registration-mfa-sspr-combined.md)részét képezi.
 >
 > Olyan házirendek engedélyezése, amelyek csak a hitelesítő alkalmazást használják (ha az egyik módszert kötelező megadni), vagy a hitelesítő alkalmazást, és csak egy további metódust (ha két módszerre van szükség) a felhasználók számára blokkolhatja a SSPR való regisztrációt, amíg az új, összevont regisztrációs élmény használatára nem lettek konfigurálva.
 
@@ -191,13 +191,13 @@ Az Azure AD ellenőrzi a jelenlegi hibrid kapcsolatát, és az alábbi üzenetek
 * Az Azure AD online állapotban van, és kapcsolódik a helyszíni visszaírási-ügyfélhez. Azonban a Azure AD Connect telepített verziójához hasonlóan elavult. Vegye fontolóra [Azure ad Connect frissítését](../hybrid/how-to-upgrade-previous-version.md) , és győződjön meg arról, hogy rendelkezik a legújabb csatlakozási funkciókkal és fontos hibajavításokkal.
 * Sajnos a helyszíni visszaírási-ügyfél állapota nem ellenőrizhető, mert a Azure AD Connect telepített verziója elavult. [Frissítse Azure ad Connect](../hybrid/how-to-upgrade-previous-version.md) a kapcsolódási állapotának ellenőrzését.
 * Sajnos úgy tűnik, hogy jelenleg nem tudunk csatlakozni a helyszíni visszaírási-ügyfélhez. A kapcsolatok visszaállításával [kapcsolatos Azure ad Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
-* Sajnos nem lehet csatlakozni a helyszíni visszaírási-ügyfélhez, mert a jelszó visszaírási nincs megfelelően konfigurálva. [Konfigurálja a jelszó visszaírási](howto-sspr-writeback.md) a kapcsolódás visszaállításához.
+* Sajnos nem lehet csatlakozni a helyszíni visszaírási-ügyfélhez, mert a jelszó visszaírási nincs megfelelően konfigurálva. [Konfigurálja a jelszó visszaírási](./tutorial-enable-sspr-writeback.md) a kapcsolódás visszaállításához.
 * Sajnos úgy tűnik, hogy jelenleg nem tudunk csatlakozni a helyszíni visszaírási-ügyfélhez. Ennek oka az lehet, hogy a végén átmenetileg problémák léptek fel. Ha a probléma továbbra is fennáll, hárítsa el a [Azure ad Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) a kapcsolódás visszaállításához.
 
 A SSPR-visszaírási első lépéseihez hajtsa végre a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](tutorial-enable-writeback.md)
+> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Jelszavak visszaírása a helyszíni címtárba
 
@@ -223,7 +223,7 @@ A jelszó alaphelyzetbe állítása és módosítása teljes mértékben támoga
 
 * **Meglévő Azure ad-Bérlővel rendelkező partnerszervezet felhasználói**: Ha az a szervezet, amelyen a partner, rendelkezik egy meglévő Azure ad-Bérlővel, a jelszó-visszaállítási házirendeket a bérlőn is be kell tartani. A jelszó-visszaállítás működéséhez a partner szervezetnek csak meg kell győződnie arról, hogy az Azure AD SSPR engedélyezve van. Az Office 365-ügyfelek esetében nem számítunk fel további díjat.
 * Önkiszolgáló regisztráción **keresztül regisztrációt végző felhasználók** : Ha a szervezet, amellyel az önkiszolgáló [bejelentkezési](../users-groups-roles/directory-self-service-signup.md) funkciót használta a bérlőhöz való belépéshez, a jelszó alaphelyzetbe állításával visszaállíthatja a regisztrált e-mail-címet.
-* **B2B-felhasználók**: az új [Azure ad B2B-funkciók](../b2b/what-is-b2b.md) használatával létrehozott összes új B2B-felhasználó is visszaállíthatja a jelszavukat a Meghívási folyamat során regisztrált e-mail-címre.
+* **B2B-felhasználók**: az új [Azure ad B2B-funkciók](../external-identities/what-is-b2b.md) használatával létrehozott összes új B2B-felhasználó is visszaállíthatja a jelszavukat a Meghívási folyamat során regisztrált e-mail-címre.
 
 A forgatókönyv teszteléséhez lépjen a https://passwordreset.microsoftonline.com következő partner-felhasználók egyikével. Ha egy másodlagos e-mail-vagy hitelesítési e-mail-cím van megadva, a jelszó-visszaállítás a várt módon működik.
 

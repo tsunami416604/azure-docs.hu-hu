@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428030"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717047"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -54,7 +54,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás felhasználói regisztrációja és kezelése
 
-1. Tallózással keresse meg a[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Tallózással keresse meg a [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. Ha még nem tette meg, jelentkezzen be
 1. Adjon hozzá egy hitelesítő alkalmazást a **metódus hozzáadása**, a **hitelesítő alkalmazás**kiválasztása, majd a **Hozzáadás** elemre kattintva.
 1. Kövesse a Microsoft Authenticator alkalmazás telepítésére és konfigurálására vonatkozó utasításokat az eszközön
@@ -62,7 +62,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 1. A **Microsoft Authenticator**válassza a **telefonos bejelentkezés engedélyezése** lehetőséget a fiók legördülő menüből.
 1. A jelszó nélküli telefonos bejelentkezéshez való regisztráció befejezéséhez kövesse az alkalmazás utasításait. 
 
-A szervezetek arra is rámutatnak a felhasználóknak [, hogy bejelentkeznek a telefonnal, nem](../user-help/microsoft-authenticator-app-phone-signin-faq.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava. A beállítások alkalmazásához ki kell jelentkeznie, majd újra be kell jelentkeznie a bérlőbe. 
+A szervezetek arra is rámutatnak a felhasználóknak [, hogy bejelentkeznek a telefonnal, nem](../user-help/user-help-auth-app-sign-in.md) pedig az Microsoft Authenticator alkalmazásban és a telefonos bejelentkezés engedélyezésével kapcsolatos további segítséghez szükséges jelszava. A beállítások alkalmazásához ki kell jelentkeznie, majd újra be kell jelentkeznie a bérlőbe. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Bejelentkezés jelszó nélküli hitelesítő adatokkal
 
@@ -101,7 +101,7 @@ A Mobile Application Management (MAM)-t igénylő szabályzat hatálya alá eső
 > [!NOTE]
 > Az eszköz regisztrálása nem ugyanaz, mint az Eszközkezelő vagy a "MDM". A szolgáltatás csak az eszköz AZONOSÍTÓját és egy felhasználói azonosítót társít az Azure AD-címtárban.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ismerje meg, hogyan működik a jelszavas hitelesítés](concept-authentication-passwordless.md)
 

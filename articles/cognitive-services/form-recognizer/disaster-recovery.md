@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903340"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718815"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
@@ -39,6 +39,9 @@ Az egyéni modellek másolásának folyamata a következő lépésekből áll:
 1. Először egy másolási engedélyezési kérelmet kell kiadnia a célként megadott erőforráshoz &mdash; , amely a másolt modellt fogadó erőforrás. A rendszer visszaküldi az újonnan létrehozott cél modell URL-címét, amely megkapja a másolt adattípust.
 1. Ezután elküldi a másolási kérést a forrás erőforrásnak &mdash; , amely a másolandó modellt tartalmazó erőforrást tartalmazza. Egy URL-címet fog visszakapni, amelyet a művelet előrehaladásának nyomon követéséhez tud lekérdezni.
 1. Ha a művelet sikeres, a forrás-erőforrás hitelesítő adataival kérdezheti le a folyamatjelző URL-címet. Az új modell állapotának lekéréséhez az új modell AZONOSÍTÓját is lekérdezheti a cél erőforrásban.
+
+> [!CAUTION]
+> A copy API jelenleg nem támogatja a [komponált egyéni modellekhez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)tartozó modell-azonosítókat. A Model levélírás egy előzetes verziójú funkció a v 2.1-ben – előzetes verzió. 1. 
 
 ## <a name="generate-copy-authorization-request"></a>Másolási engedélyezési kérelem előállítása
 
@@ -90,7 +93,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |Hiba|Feloldás|
 |:--|:--|
-| 400/hibás kérelem a`"code:" "1002"` | Ellenőrzési hibát vagy helytelen formátumú másolási kérelmet jelez. Gyakori problémák a következők: a) érvénytelen vagy módosított `copyAuthorization` adattartalom. b) a token lejárt értéke `expirationDateTimeTicks` (a `copyAuhtorization` hasznos adatok 24 órára érvényesek). c) érvénytelen vagy nem támogatott `targetResourceRegion` . d) érvénytelen vagy helytelenül formázott `targetResourceId` karakterlánc.
+| 400/hibás kérelem a `"code:" "1002"` | Ellenőrzési hibát vagy helytelen formátumú másolási kérelmet jelez. Gyakori problémák a következők: a) érvénytelen vagy módosított `copyAuthorization` adattartalom. b) a token lejárt értéke `expirationDateTimeTicks` (a `copyAuhtorization` hasznos adatok 24 órára érvényesek). c) érvénytelen vagy nem támogatott `targetResourceRegion` . d) érvénytelen vagy helytelenül formázott `targetResourceId` karakterlánc.
 |
 
 ## <a name="track-copy-progress"></a>A másolási folyamat nyomon követése
@@ -159,7 +162,7 @@ curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecogniz
 curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a copy API-t az egyéni modellek másodlagos űrlap-felismerő erőforrásra történő biztonsági mentésére. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet az űrlap-felismerővel.
 * [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

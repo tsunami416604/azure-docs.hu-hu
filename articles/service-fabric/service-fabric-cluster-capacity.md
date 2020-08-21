@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904819"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718101"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 
@@ -56,7 +56,7 @@ A kezdeti csomópontok típusának száma a fürt, valamint a rajta futó alkalm
 
     Service Fabric támogatja a különböző [Availability Zonesokra](../availability-zones/az-overview.md) kiterjedő fürtöket, ha olyan csomópont-típusokat telepít, amelyek meghatározott zónákra vannak rögzítve, így biztosítva az alkalmazások magas rendelkezésre állását. Availability Zones további típusú csomópont-tervezési és minimális követelményeket kell megkövetelni. Részletekért lásd: [ajánlott topológia a Availability Zones-ra kiterjedő Service Fabric fürtök elsődleges csomópont-típusaihoz](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
-A fürt kezdeti létrehozásához szükséges csomópontok számának és tulajdonságainak meghatározásakor vegye figyelembe, hogy a fürt üzembe helyezésekor bármikor hozzáadhat, módosíthat vagy eltávolíthat (nem elsődleges) csomópont-típusokat. Az [elsődleges csomópontok típusa](service-fabric-scale-up-node-type.md) a futó fürtökben is módosítható (bár az ilyen műveletek nagy mennyiségű tervezést és óvatosságot igényelnek az éles környezetekben).
+A fürt kezdeti létrehozásához szükséges csomópontok számának és tulajdonságainak meghatározásakor vegye figyelembe, hogy a fürt üzembe helyezésekor bármikor hozzáadhat, módosíthat vagy eltávolíthat (nem elsődleges) csomópont-típusokat. Az [elsődleges csomópontok típusa](service-fabric-scale-up-primary-node-type.md) a futó fürtökben is módosítható (bár az ilyen műveletek nagy mennyiségű tervezést és óvatosságot igényelnek az éles környezetekben).
 
 A csomópont típusú tulajdonságok további megfontolása tartóssági szint, amely meghatározza, hogy a csomópont típusú virtuális gépek milyen jogosultságokat biztosítanak az Azure-infrastruktúrán belül. Használja a fürthöz választott virtuális gépek méretét, valamint az egyes csomópontokhoz hozzárendelt példányok számát, hogy az egyes csomópont-típusok megfelelő tartóssági szintjét a következő módon határozza meg.
 
@@ -105,7 +105,7 @@ A gyakran használt állapot-nyilvántartó szolgáltatásokat futtató összes 
 Kövesse ezeket a javaslatokat a csomópont-típusok ezüst vagy arany tartóssággal való kezeléséhez:
 
 * Mindig kifogástalan állapotban tarthatja a fürtjét és az alkalmazásait, és gondoskodhat arról, hogy az alkalmazások az összes [szolgáltatás-replika életciklus-eseményre](service-fabric-reliable-services-lifecycle.md) válaszoljanak (például a buildben található replika beragadva).
-* A virtuális gépek méretének megváltoztatásához (vertikális felskálázás/lefelé) való biztonságos módszerek bevezetése. A virtuálisgép-méretezési csoport VM-méretének megváltoztatásához körültekintő tervezésre és óvatosságra van szükség. Részletekért lásd: [Service Fabric csomópont-típus Felskálázása](service-fabric-scale-up-node-type.md)
+* A virtuális gépek méretének megváltoztatásához (vertikális felskálázás/lefelé) való biztonságos módszerek bevezetése. A virtuálisgép-méretezési csoport VM-méretének megváltoztatásához körültekintő tervezésre és óvatosságra van szükség. Részletekért lásd: [Service Fabric csomópont-típus Felskálázása](service-fabric-scale-up-primary-node-type.md)
 * Legalább öt csomópontot kell fenntartania minden olyan virtuálisgép-méretezési csoportnál, amelynél a tartóssági szint (arany vagy ezüst) engedélyezve van. Ha a küszöbérték alatt méretezi a korlátot, a fürt hibás állapotba kerül, és manuálisan kell törölnie a () állapotot `Remove-ServiceFabricNodeState` az eltávolított csomópontokhoz.
 * Az ezüst vagy arany tartóssági szinttel rendelkező virtuálisgép-méretezési csoportoknak a Service Fabric fürtben lévő saját csomópont-típusra kell leképezniük. Több virtuálisgép-méretezési csoport egyetlen csomópontos típusra való leképezése megakadályozza a Service Fabric-fürt és az Azure-infrastruktúra megfelelő működésének összehangolását.
 * Ne törölje a véletlenszerű virtuálisgép-példányokat, mindig használja a virtuálisgép-méretezési csoport méretezését a szolgáltatásban. A véletlenszerűen kiválasztott VM-példányok törlése lehetséges, hogy a virtuálisgép-példányok a [frissítési tartományok](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) és a tartalék [tartományok](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)között oszlanak meg. Ez az egyensúlyhiány hátrányosan befolyásolhatja, hogy a rendszer képes legyen a szolgáltatás példányainak vagy a szolgáltatás replikáinak megfelelő terheléselosztásra.
@@ -182,7 +182,7 @@ Service Fabric [megbízható gyűjtemények vagy megbízható szereplők](servic
 
 Az állapot nélküli éles számítási feladatokhoz a minimálisan támogatott nem elsődleges csomópont típusának háromnak kell lennie a kvórum megőrzése érdekében, azonban a csomópont típusának mérete öt ajánlott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fürt konfigurálása előtt tekintse át a `Not Allowed` [fürt frissítési szabályzatait](service-fabric-cluster-fabric-settings.md) , hogy csökkentse a fürt ismételt létrehozását, mert a rendszer nem módosítható a rendszerkonfigurációs beállítások miatt.
 

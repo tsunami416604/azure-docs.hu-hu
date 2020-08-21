@@ -638,10 +638,12 @@
     - name: Független felhők
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Díjszabás és korlátok
+    - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
+    - name: Kvóták és korlátok
+      href: speech-services-quotas-and-limits.md
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás

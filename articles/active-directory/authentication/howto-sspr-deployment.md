@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338566"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717744"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
@@ -30,7 +30,7 @@ Az [önkiszolgáló jelszó-visszaállítás (SSPR)](https://www.youtube.com/wat
 A SSPR a következő főbb képességekkel rendelkezik:
 
 * Az önkiszolgáló szolgáltatás lehetővé teszi a végfelhasználók számára, hogy a lejárt vagy nem lejárt jelszavakat anélkül állítsanak vissza, hogy a rendszergazdával vagy a támogatási szolgálattal kapcsolatba lépjenek.
-* A [jelszó visszaírási](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) lehetővé teszi a helyszíni jelszavak kezelését és a fiókzárolás feloldását, bár a felhőben.
+* A [jelszó visszaírási](./concept-sspr-writeback.md) lehetővé teszi a helyszíni jelszavak kezelését és a fiókzárolás feloldását, bár a felhőben.
 * A jelszóházirend-jelentések segítségével a rendszergazdák betekintést nyerhetnek a szervezetében bekövetkezett jelszó-visszaállítási és regisztrációs tevékenységekbe.
 
 Ez a telepítési útmutató bemutatja, hogyan tervezheti meg és tesztelheti a SSPR.
@@ -42,7 +42,7 @@ A SSPR gyors megjelenítéséhez, majd térjen vissza a további üzembe helyez�
 
 ## <a name="learn-about-sspr"></a>Tudnivalók a SSPR
 
-További információ a SSPR. Ismerje [meg, hogyan működik: Azure ad](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)önkiszolgáló jelszó-visszaállítás.
+További információ a SSPR. Ismerje [meg, hogyan működik: Azure ad](./concept-sspr-howitworks.md)önkiszolgáló jelszó-visszaállítás.
 
 ### <a name="key-benefits"></a>Főbb előnyök
 
@@ -60,7 +60,7 @@ A SSPR engedélyezésének fő előnyei a következők:
 
 A Azure Active Directory felhasználónkénti licenccel rendelkezik, azaz minden felhasználónak megfelelő licencre van szüksége az általuk használt funkciókhoz. A SSPR csoportos licencelését javasoljuk. 
 
-A kiadások és szolgáltatások összehasonlításához, valamint a csoport-vagy felhasználói licencek engedélyezéséhez tekintse meg [Az Azure ad önkiszolgáló jelszó-visszaállítás licencelési követelményeit](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing)ismertető témakört.
+A kiadások és szolgáltatások összehasonlításához, valamint a csoport-vagy felhasználói licencek engedélyezéséhez tekintse meg [Az Azure ad önkiszolgáló jelszó-visszaállítás licencelési követelményeit](./concept-sspr-licensing.md)ismertető témakört.
 
 További információ a díjszabásról: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -73,7 +73,7 @@ További információ a díjszabásról: [Azure Active Directory díjszabása](h
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| Erőforrások| Hivatkozás és leírás |
+| További források| Hivatkozás és leírás |
 | - | - |
 | Videók| [Hatékonyabb informatikai skálázhatóság a felhasználók számára](https://youtu.be/g9RpRnylxS8) 
 | |[Mit jelent az önkiszolgáló jelszóátállítás?](https://youtu.be/hc97Yx5PJiM)|
@@ -83,10 +83,10 @@ További információ a díjszabásról: [Azure Active Directory díjszabása](h
 | Online tanfolyamok|[Identitások kezelése a Microsoft Azure Active Directoryban](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) A SSPR használatával modern és védett felhasználói élményt biztosíthat a felhasználóknak. Lásd különösen a "[Azure Active Directory felhasználók és csoportok kezelése](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)" modult. |
 |Pluralsight fizetős tanfolyamok |[Az identitás-és hozzáférés-kezelés problémái](https://www.pluralsight.com/courses/identity-access-management-issues) Ismerje meg, hogy milyen biztonsági problémákat kell figyelembe vennie a szervezetében. Lásd különösen a "más hitelesítési módszerek" modult.|
 | |[Első lépések a Microsoft nagyvállalati mobilitási csomaggal](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Ismerje meg az ajánlott eljárásokat a helyszíni eszközök felhőbe való kiterjesztéséhez olyan módon, amely lehetővé teszi a hitelesítést, az engedélyezést, a titkosítást és a biztonságos mobil élményt. Tekintse meg különösen a "Prémium szintű Microsoft Azure Active Directory speciális funkcióinak konfigurálása" modult.
-|Oktatóanyagok |[Azure AD önkiszolgáló jelszó-visszaállítási próba befejezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |[Jelszó visszaírási engedélyezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
-| |[Azure AD-jelszó alaphelyzetbe állítása a Windows 10 bejelentkezési képernyőjéről](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| GYIK|[Jelszavas kezelés – gyakori kérdések](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+|Oktatóanyagok |[Azure AD önkiszolgáló jelszó-visszaállítási próba befejezése](./tutorial-enable-sspr.md) |
+| |[Jelszó visszaírási engedélyezése](./tutorial-enable-sspr-writeback.md) |
+| |[Azure AD-jelszó alaphelyzetbe állítása a Windows 10 bejelentkezési képernyőjéről](./howto-sspr-windows.md) |
+| GYIK|[Jelszavas kezelés – gyakori kérdések](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Megoldásarchitektúra
@@ -103,7 +103,7 @@ A jelszó alaphelyzetbe állításához a felhasználók a [jelszó-visszaállí
 
 * A hibrid felhasználók esetében a SSPR a Azure AD Connect szolgáltatáson keresztül írja vissza a jelszót a helyszíni Active Directoryba. 
 
-Megjegyzés: a [jelszó-kivonat szinkronizálásával (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) rendelkező felhasználók számára a SSPR csak a helyszíni Active Directory tárolja a jelszavakat.
+Megjegyzés: a [jelszó-kivonat szinkronizálásával (PHS)](../hybrid/whatis-phs.md) rendelkező felhasználók számára a SSPR csak a helyszíni Active Directory tárolja a jelszavakat.
 
 ### <a name="best-practices"></a>Ajánlott eljárások
 
@@ -141,9 +141,9 @@ A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus
 
 ### <a name="plan-a-pilot"></a>Pilóta megtervezése
 
-Javasoljuk, hogy a SSPR kezdeti konfigurációját tesztkörnyezetben tesztelje. Kezdje egy kísérleti csoporttal, ha engedélyezi a SSPR a szervezeten belüli felhasználók egy részhalmaza számára. Tekintse [meg a próbaüzem ajánlott eljárásait](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)ismertető témakört.
+Javasoljuk, hogy a SSPR kezdeti konfigurációját tesztkörnyezetben tesztelje. Kezdje egy kísérleti csoporttal, ha engedélyezi a SSPR a szervezeten belüli felhasználók egy részhalmaza számára. Tekintse [meg a próbaüzem ajánlott eljárásait](../fundamentals/active-directory-deployment-plans.md)ismertető témakört.
 
-Csoport létrehozásához tekintse meg [a csoport létrehozása és Tagok hozzáadása a Azure Active Directory-ban](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)című témakört. 
+Csoport létrehozásához tekintse meg [a csoport létrehozása és Tagok hozzáadása a Azure Active Directory-ban](../fundamentals/active-directory-groups-create-azure-portal.md)című témakört. 
 
 ## <a name="plan-configuration"></a>Séma konfigurálása
 
@@ -172,7 +172,7 @@ A SSPR engedélyezésekor válasszon ki egy megfelelő biztonsági csoportot a k
 
 ### <a name="authentication-methods"></a>Hitelesítési módszerek
 
-Ha a SSPR engedélyezve van, a felhasználók csak akkor állíthatják vissza a jelszavukat, ha a rendszergazda által engedélyezett hitelesítési módszerekben találhatók. A módszerek közé tartozik például a telefon, a hitelesítő alkalmazás értesítése, a biztonsági kérdések stb. További információ: [Mi a hitelesítési módszer?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods).
+Ha a SSPR engedélyezve van, a felhasználók csak akkor állíthatják vissza a jelszavukat, ha a rendszergazda által engedélyezett hitelesítési módszerekben találhatók. A módszerek közé tartozik például a telefon, a hitelesítő alkalmazás értesítése, a biztonsági kérdések stb. További információ: [Mi a hitelesítési módszer?](./concept-authentication-methods.md).
 
 A következő hitelesítési módszer beállításait javasoljuk:
 
@@ -180,7 +180,7 @@ A következő hitelesítési módszer beállításait javasoljuk:
 
 * Állítsa be a szervezete számára megfelelő szintre való **visszaállításhoz szükséges metódusok számát** . Az egyik a legkevesebb súrlódást igényli, míg a kettő növelheti a biztonsági testhelyzetet. 
 
-Megjegyzés: a felhasználónak rendelkeznie kell a [jelszóházirend és a korlátozások Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)konfigurált hitelesítési módszerekkel.
+Megjegyzés: a felhasználónak rendelkeznie kell a [jelszóházirend és a korlátozások Azure Active Directoryban](./concept-sspr-policy.md)konfigurált hitelesítési módszerekkel.
 
 ### <a name="registration-settings"></a>Regisztrációs beállítások
 
@@ -196,11 +196,11 @@ Konfigurálja mind a **felhasználók értesítése jelszó** **alaphelyzetbe á
 
 Az ügyfélszolgálati e-mail vagy URL-cím személyre szabása kritikus fontosságú, hogy a problémákkal rendelkező felhasználók azonnal segítséget kapjanak. Ezt a beállítást olyan általános ügyfélszolgálati e-mail-címre vagy weblapra állíthatja be, amelyet a felhasználók ismernek. 
 
-További információ: [Az Azure ad funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization).
+További információ: [Az Azure ad funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz](./howto-sspr-customization.md).
 
 ### <a name="password-writeback"></a>Jelszó visszaírási
 
-A **jelszó visszaírási** engedélyezve van a [Azure ad Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) , és valós időben írja vissza a jelszó-visszaállítást a felhőben egy meglévő helyszíni könyvtárba. További információ: [Mi a Password visszaírási?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+A **jelszó visszaírási** engedélyezve van a [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) , és valós időben írja vissza a jelszó-visszaállítást a felhőben egy meglévő helyszíni könyvtárba. További információ: [Mi a Password visszaírási?](./concept-sspr-writeback.md)
 
 A következő beállításokat javasoljuk:
 
@@ -220,7 +220,7 @@ Javasoljuk, hogy ne szinkronizálja helyszíni Active Directory rendszergazdai f
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Környezetek több Identitáskezelés-felügyeleti rendszerrel
 
-Egyes környezetekben több Identity Management rendszer van. A helyszíni Identity managerek, például az Oracle AM és a SiteMinder, az AD-vel való szinkronizálást igényelnek a jelszavakhoz. Ezt olyan eszközzel teheti meg, mint például a jelszó-módosítási értesítési szolgáltatás (a (z) Microsoft Identity Manager (webalkalmazás). Ha további információt szeretne megtudni erről az összetettebb forgatókönyvről, tekintse meg a következő cikket: a rendszerszintű [jelszó-módosítási értesítési szolgáltatás központi telepítése tartományvezérlőn](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
+Egyes környezetekben több Identity Management rendszer van. A helyszíni Identity managerek, például az Oracle AM és a SiteMinder, az AD-vel való szinkronizálást igényelnek a jelszavakhoz. Ezt olyan eszközzel teheti meg, mint például a jelszó-módosítási értesítési szolgáltatás (a (z) Microsoft Identity Manager (webalkalmazás). Ha további információt szeretne megtudni erről az összetettebb forgatókönyvről, tekintse meg a következő cikket: a rendszerszintű [jelszó-módosítási értesítési szolgáltatás központi telepítése tartományvezérlőn](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
 
 ## <a name="plan-testing-and-support"></a>Tesztelés és támogatás tervezése
 
@@ -228,7 +228,7 @@ Az üzembe helyezés minden egyes fázisában, a kezdeti kísérleti csoportokt�
 
 ### <a name="plan-testing"></a>Tesztelési terv
 
-Annak ellenőrzéséhez, hogy az üzemelő példány a várt módon működik-e, tervezze meg a tesztelési esetek készletét a megvalósítás ellenőrzése érdekében. A tesztelési esetek felméréséhez jelszóval rendelkező, nem rendszergazdai jogosultsággal rendelkező felhasználóra van szükség. Ha létre kell hoznia egy felhasználót, tekintse meg [az új felhasználók hozzáadása a Azure Active Directoryhoz](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)című témakört.
+Annak ellenőrzéséhez, hogy az üzemelő példány a várt módon működik-e, tervezze meg a tesztelési esetek készletét a megvalósítás ellenőrzése érdekében. A tesztelési esetek felméréséhez jelszóval rendelkező, nem rendszergazdai jogosultsággal rendelkező felhasználóra van szükség. Ha létre kell hoznia egy felhasználót, tekintse meg [az új felhasználók hozzáadása a Azure Active Directoryhoz](../fundamentals/add-users-azure-active-directory.md)című témakört.
 
 A következő táblázat olyan hasznos tesztelési forgatókönyveket tartalmaz, amelyekkel dokumentálhatja a szervezete által várt eredményeket a szabályzatok alapján.
 <br>
@@ -246,7 +246,7 @@ A következő táblázat olyan hasznos tesztelési forgatókönyveket tartalmaz,
 | Felhasználói jelszó alaphelyzetbe állítása Windows 10 Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott eszköz zárolási képernyőjén| A felhasználó alaphelyzetbe állíthatja a jelszót |
 | A SSPR regisztrációs és használati adatok közel valós időben érhetők el a rendszergazdák számára| Naplózási naplókon keresztül érhető el |
 
-Az Azure AD önkiszolgáló [jelszó-visszaállítási próbaverziójának kitöltését](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)is megtekintheti. Ebben az oktatóanyagban lehetővé teszi, hogy a SSPR a szervezetében, és egy nem rendszergazdai fiók használatával tesztelje.
+Az Azure AD önkiszolgáló [jelszó-visszaállítási próbaverziójának kitöltését](./tutorial-enable-sspr.md)is megtekintheti. Ebben az oktatóanyagban lehetővé teszi, hogy a SSPR a szervezetében, és egy nem rendszergazdai fiók használatával tesztelje.
 
 ### <a name="plan-support"></a>Támogatás tervezése
 
@@ -254,7 +254,7 @@ Habár a SSPR általában nem hoz létre felhasználói problémákat, fontos, h
 
 A támogatási csapat sikerességének engedélyezéséhez a felhasználóktól kapott kérdések alapján hozhat létre GYIK-et. Íme, néhány példa:
 
-| Forgatókönyvek| Description |
+| Forgatókönyvek| Leírás |
 | - | - |
 | A felhasználónak nincs elérhető regisztrált hitelesítési módszere.| A felhasználó megpróbálja alaphelyzetbe állítani a jelszavát, de nem rendelkezik az általuk regisztrált hitelesítési módszerekkel (például a mobil telefonját otthon hagyta, és nem fér hozzá az e-mailekhez) |
 | A felhasználó nem kap szöveget vagy hívást az irodában vagy a mobiltelefonján| A felhasználó szöveges vagy hívási identitást próbál meg ellenőrizni, de nem kap szöveget vagy hívást. |
@@ -289,20 +289,20 @@ A telepítése előtt győződjön meg arról, hogy végrehajtotta a következő
 
 **Most már készen áll a SSPR üzembe helyezésére!**
 
-A következő területek konfigurálásának lépésenkénti lépéseiért lásd: az [önkiszolgáló jelszó-visszaállítás engedélyezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset) .
+A következő területek konfigurálásának lépésenkénti lépéseiért lásd: az [önkiszolgáló jelszó-visszaállítás engedélyezése](./tutorial-enable-sspr.md#enable-self-service-password-reset) .
 
-1. [Hitelesítési módszerek](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [Hitelesítési módszerek](./concept-authentication-methods.md)
 
-1. [Regisztrációs beállítások](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
+1. [Regisztrációs beállítások](./concept-registration-mfa-sspr-combined.md)
 
 1. [Értesítések beállításai](#notifications-settings)
 
-1. [Testreszabási beállítások](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+1. [Testreszabási beállítások](./howto-sspr-customization.md)
 
-1. [Helyszíni integráció](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [Helyszíni integráció](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>SSPR engedélyezése a Windowsban
-A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében [engedélyezheti a felhasználók számára, hogy a Windows bejelentkezési képernyőjén visszaállítsa a jelszavukat](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
+A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében [engedélyezheti a felhasználók számára, hogy a Windows bejelentkezési képernyőjén visszaállítsa a jelszavukat](./howto-sspr-windows.md)
 
 ## <a name="manage-sspr"></a>SSPR kezelése
 
@@ -310,41 +310,41 @@ Az Azure AD további információkat biztosít a SSPR teljesítményéről a nap
 
 ### <a name="password-management-activity-reports"></a>Jelszavas kezelési tevékenységgel kapcsolatos jelentések 
 
-A SSPR teljesítményének méréséhez a Azure Portalon előre elkészített jelentéseket is használhat. Ha megfelelő licenccel rendelkezik, egyéni lekérdezéseket is létrehozhat. További információ: [jelentéskészítési beállítások az Azure ad jelszavas kezeléséhez](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)
+A SSPR teljesítményének méréséhez a Azure Portalon előre elkészített jelentéseket is használhat. Ha megfelelő licenccel rendelkezik, egyéni lekérdezéseket is létrehozhat. További információ: [jelentéskészítési beállítások az Azure ad jelszavas kezeléséhez](./howto-sspr-reporting.md)
 
 > [!NOTE]
->  [Globális rendszergazdának](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)kell lennie, és be kell jelentkeznie a szervezete számára az adatok gyűjtéséhez. A bekapcsolásához legalább egyszer fel kell keresnie a jelentéskészítés lapot vagy a naplókat az Azure Portalon. Addig nem történik meg az adatok gyűjtése a szervezet számára.
+>  [Globális rendszergazdának](../users-groups-roles/directory-assign-admin-roles.md)kell lennie, és be kell jelentkeznie a szervezete számára az adatok gyűjtéséhez. A bekapcsolásához legalább egyszer fel kell keresnie a jelentéskészítés lapot vagy a naplókat az Azure Portalon. Addig nem történik meg az adatok gyűjtése a szervezet számára.
 
-A regisztrációs és a jelszó-visszaállítási naplók 30 napig érhetők el. Ha a vállalaton belüli biztonsági naplózás nagyobb adatmegőrzést igényel, a naplókat olyan SIEM-eszközbe kell exportálni és felvenni, mint például az [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory), a splunk vagy a ArcSight.
+A regisztrációs és a jelszó-visszaállítási naplók 30 napig érhetők el. Ha a vállalaton belüli biztonsági naplózás nagyobb adatmegőrzést igényel, a naplókat olyan SIEM-eszközbe kell exportálni és felvenni, mint például az [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), a splunk vagy a ArcSight.
 
 ![SSPR jelentés képernyőképe](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>Hitelesítési módszerek – használat és bepillantást
 
-A [használat és](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) az adatok segítségével megismerheti, hogy az Azure MFA és a SSPR különböző funkciói milyen hitelesítési módszereket dolgoznak a szervezetben. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megtudja, milyen módszerekkel regisztrálhat, és hogyan használhatja őket.
+A [használat és](./howto-authentication-methods-usage-insights.md) az adatok segítségével megismerheti, hogy az Azure MFA és a SSPR különböző funkciói milyen hitelesítési módszereket dolgoznak a szervezetben. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megtudja, milyen módszerekkel regisztrálhat, és hogyan használhatja őket.
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-* Lásd: önkiszolgáló [jelszó-visszaállítási hibák megoldása](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) 
+* Lásd: önkiszolgáló [jelszó-visszaállítási hibák megoldása](./active-directory-passwords-troubleshoot.md) 
 
-* A [jelszó-kezeléssel kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) követése 
+* A [jelszó-kezeléssel kapcsolatos gyakori kérdések](./active-directory-passwords-faq.md) követése 
 
 ### <a name="helpful-documentation"></a>Hasznos dokumentáció
 
-* [Mik a hitelesítési módszerek?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [Mik a hitelesítési módszerek?](./concept-authentication-methods.md)
 
-* [Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítási szolgáltatása?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)
+* [Hogyan működik: az Azure AD önkiszolgáló jelszó-visszaállítási szolgáltatása?](./concept-sspr-howitworks.md)
 
-* [Az Azure AD funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+* [Az Azure AD funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz](./howto-sspr-customization.md)
 
-* [Jelszószabályzatok és -korlátozások az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Jelszószabályzatok és -korlátozások az Azure Active Directoryban](./concept-sspr-policy.md)
 
-* [Mi a jelszó visszaírási?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [Mi a jelszó visszaírási?](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>További lépések
 
 * Az SSPR üzembe helyezésének megkezdéséhez lásd: az [Azure ad önkiszolgáló jelszó-visszaállításának engedélyezése](tutorial-enable-sspr.md)
 
-* [Az Azure AD jelszavas védelem megvalósításának megfontolása](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
+* [Az Azure AD jelszavas védelem megvalósításának megfontolása](./concept-password-ban-bad.md)
 
-* [Vegye fontolóra az Azure AD Smart zárolás megvalósítását](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)
+* [Vegye fontolóra az Azure AD Smart zárolás megvalósítását](./howto-password-smart-lockout.md)

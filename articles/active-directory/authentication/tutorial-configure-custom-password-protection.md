@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419665"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718883"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Oktatóanyag: egyéni tiltott jelszavak konfigurálása Azure Active Directory jelszavas védelemhez
 
@@ -114,7 +114,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyén
 1. Állítsa be az **Egyéni lista érvényesítésének** lehetőségét a *nem*értékre.
 1. Az egyéni tiltott jelszó konfigurációjának frissítéséhez válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas védelem listáját az Azure AD-hez. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -124,4 +124,4 @@ Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas v�
 > * Jelszó-módosítások tesztelése tiltott jelszóval
 
 > [!div class="nextstepaction"]
-> [A kockázatalapú Azure Multi-Factor Authentication engedélyezése](tutorial-mfa-applications.md)
+> [A kockázatalapú Azure Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)

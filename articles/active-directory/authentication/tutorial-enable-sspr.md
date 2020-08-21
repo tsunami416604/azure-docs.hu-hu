@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419478"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718849"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -107,7 +107,7 @@ Ha szeretné, hogy a felhasználók tájékoztassanak a fiók tevékenységérő
 Ha a felhasználóknak további segítségre van szüksége a SSPR folyamathoz, testreszabhatja a "Kapcsolatfelvétel a rendszergazdával" hivatkozást. Ez a hivatkozás a SSPR regisztrációs folyamatában használatos, és amikor a felhasználó feloldja a fiókját, vagy visszaállítja a jelszavát. Annak biztosításához, hogy a felhasználók megkapják a szükséges támogatást, kifejezetten ajánlott egyéni segélyszolgálat-e-mailt vagy URL-címet megadni.
 
 1. A **Testreszabás** lapon a bal oldali menüben válassza az *ügyfélszolgálati kapcsolat testreszabása* **Igen**lehetőséget.
-1. Az **Egyéni segélyszolgálat e-mail-címe vagy URL-** címe mezőben adjon meg egy e-mail-címet vagy egy weblap URL-címét, ahol a felhasználók további segítséget kérhetnek a szervezettől, például:*`https://support.contoso.com/`*
+1. Az **Egyéni segélyszolgálat e-mail-címe vagy URL-** címe mezőben adjon meg egy e-mail-címet vagy egy weblap URL-címét, ahol a felhasználók további segítséget kérhetnek a szervezettől, például: *`https://support.contoso.com/`*
 1. Az egyéni hivatkozás alkalmazásához válassza a **Mentés**lehetőséget.
 
 ## <a name="test-self-service-password-reset"></a>Önkiszolgáló jelszó-visszaállítás tesztelése
@@ -138,7 +138,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **nincs**lehetőséget.
 1. A SSPR módosításának alkalmazásához válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -148,4 +148,4 @@ Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-vissz
 > * A SSPR folyamat tesztelése felhasználóként
 
 > [!div class="nextstepaction"]
-> [Az Azure Multi-Factor Authentication engedélyezése](tutorial-mfa-applications.md)
+> [Az Azure Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)

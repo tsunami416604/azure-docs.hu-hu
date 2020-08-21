@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043879"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716112"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault támogatja a kulcstartóban tetszőleges hitelesítésszolgálta
 
 A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](/azure/key-vault/certificates/about-certificates).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Nem megbízható HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vault tanúsítvány hozzáadása
 
@@ -69,7 +69,7 @@ A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltató
     - **Tanúsítvány neve:** ContosoManualCSRCertificate.
     - **A hitelesítésszolgáltató típusa (CA):** Nem integrált HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítvány
     - **Tárgy:**`"CN=www.contosoHRApp.com"`
-    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Létrehozás** lehetőségre.
+    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Tanúsítvány tulajdonságai](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Látni fogja, hogy a tanúsítvány már hozzá lett adva a tanúsítványok listájában. Válassza ki az imént létrehozott új tanúsítványt. A tanúsítvány aktuális állapota "Letiltva" lesz, mivel még nem állította ki a HITELESÍTÉSSZOLGÁLTATÓ.
@@ -100,7 +100,9 @@ Példa
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, folytassa a **tanúsítvány művelet** megtekintésével, hogy áttekintse a tanúsítványhoz tartozó hibaüzenetet.
+- **Hiba típusa: "a megadott X. 509 tanúsítvány tartalmában található végfelhasználói tanúsítvány nyilvános kulcsa nem egyezik a megadott titkos kulcs nyilvános részével. Ellenőrizze, hogy érvényes** -e a tanúsítvány. Ez a hiba akkor fordulhat elő, ha nem egyesíti a CSR-t ugyanazzal a CSR-kéréssel. A CSR minden egyes létrehozásakor létrehoz egy titkos kulcsot, amelyet az aláírt kérelem összevonásakor meg kell egyeznie.
+    
+- Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, folytassa a **tanúsítvány művelet** megtekintésével, hogy áttekintse a tanúsítványhoz tartozó hibaüzenetet.
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 

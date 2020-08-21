@@ -3,12 +3,12 @@ title: Azure Relay integrálása az Azure Private link Service szolgáltatással
 description: Ismerje meg, hogyan integrálható Azure Relay az Azure Private link Service használatával
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317308"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719427"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integrálása az Azure Private Linktel (előzetes verzió)
 Az Azure **Private link Service** lehetővé teszi az Azure-szolgáltatások (például a Azure Relay, a Azure Service Bus, az Azure Event Hubs, az Azure Storage és a Azure Cosmos db) és az Azure által üzemeltetett ügyfél-partner szolgáltatások elérését a virtuális hálózat privát végpontján keresztül. További információ: [Mi az az Azure Private link (előzetes verzió)?](../private-link/private-link-overview.md)
@@ -65,7 +65,7 @@ Az új Azure Relay névterek és entitások létrehozásával kapcsolatos részl
         
             ![Privát végpont létrehozása – Erőforrás lap](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Ha a **Kapcsolódás Azure-erőforráshoz erőforrás-azonosító vagy alias** alapján lehetőséget választja, mert a névtér nem ugyanabban a könyvtárban található, mint a privát végpont, kövesse az alábbi lépéseket:
-        1. Adja meg az **erőforrás-azonosítót** vagy az **aliast**. Ez lehet az az erőforrás-azonosító vagy alias, amelyet valaki megosztott Önnel. Az erőforrás-azonosító beszerzésének legegyszerűbb módja, ha a Azure Portal Azure Relay névterére navigál, és az URI részét másolja a-től kezdődően `/subscriptions/` . Íme egy példa:`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
+        1. Adja meg az **erőforrás-azonosítót** vagy az **aliast**. Ez lehet az az erőforrás-azonosító vagy alias, amelyet valaki megosztott Önnel. Az erőforrás-azonosító beszerzésének legegyszerűbb módja, ha a Azure Portal Azure Relay névterére navigál, és az URI részét másolja a-től kezdődően `/subscriptions/` . Íme egy példa: `/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
         2. A **cél alerőforrásnál**adja meg a **névteret**. Ez a saját végpont által elérhető alerőforrás típusa.
         3. választható Adja meg a **kérelem üzenetét**. Az erőforrás tulajdonosa látja ezt az üzenetet a privát végponti kapcsolatok kezelése során.
         4. Ezután válassza a **Tovább: konfigurációs >** gombot az oldal alján.
@@ -158,16 +158,16 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| None | Függőben | A kapcsolatok létrehozása manuálisan történik, és a Azure Relay névtér tulajdonosának jóváhagyása függőben van. |
+| Nincsenek | Függőben | A kapcsolatok létrehozása manuálisan történik, és a Azure Relay névtér tulajdonosának jóváhagyása függőben van. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A Azure Relay névtér tulajdonosa elutasította a kapcsolatokat. |
 | Eltávolítás | Leválasztott | A Azure Relay névtér tulajdonosa törölte a kapcsolatokat, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. A keresősáv mezőbe írja be a következőt: **Relay**.
 1. Válassza ki a kezelni kívánt **névteret** .
 1. Válassza a **hálózatkezelés** lapot.
@@ -207,7 +207,7 @@ Négy kiépítési állapot létezik:
 3. A **kapcsolat megszakadt**állapotra módosult. Ezután megjelenik a végpont a listából. 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a magánhálózati kapcsolat működik-e
-Győződjön meg arról, hogy a privát végpont ugyanazon alhálózatán belüli erőforrások a magánhálózati IP-címén keresztül csatlakoznak a Azure Relay névtérhez.
+Győződjön meg arról, hogy a magánhálózati végpont virtuális hálózatán lévő erőforrások a magánhálózati IP-címén keresztül csatlakoznak a Azure Relay névteréhez.
 
 Ebben a tesztben hozzon létre egy virtuális gépet a [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md) című témakör lépéseit követve.
 
@@ -244,7 +244,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 - Az előfizetéshez tartozó privát végpontokkal rendelkező Azure Relay névterek maximális száma: 64.
 - A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontokra. További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Private linkről (előzetes verzió)](../private-link/private-link-service-overview.md)
 - További információ a [Azure Relay](relay-what-is-it.md)

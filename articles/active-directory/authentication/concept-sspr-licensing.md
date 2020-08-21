@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c24698736d611604c39b6fa91aef97f73576c6c6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84321682"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716205"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licencelési követelmények Azure Active Directory önkiszolgáló jelszó-visszaállításhoz
 
@@ -30,7 +30,7 @@ A SSPR felhasználónként licenccel rendelkezik. A megfelelőség fenntartása 
 
 Az alábbi táblázat a jelszó módosítására, alaphelyzetbe állítására vagy helyszíni visszaírási vonatkozó különböző SSPR-forgatókönyveket ismerteti, amelyek a szolgáltatást biztosítják.
 
-| Szolgáltatás | Azure AD Free | Microsoft 365 Vállalati verzió standard | Prémium Microsoft 365 Vállalati verzió | prémium szintű Azure AD P1 vagy P2 |
+| Funkció | Azure AD Free | Microsoft 365 Vállalati verzió standard | Prémium Microsoft 365 Vállalati verzió | prémium szintű Azure AD P1 vagy P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Csak felhőalapú felhasználói jelszó módosítása**<br />Ha a felhasználó az Azure AD-ban ismeri a jelszavát, és módosítani szeretné azt valami újat. | ● | ● | ● | ● |
 | **Csak felhőalapú felhasználói jelszó alaphelyzetbe állítása**<br />Ha egy Azure AD-felhasználó elfelejtette a jelszavát, és vissza kell állítania azt. | | ● | ● | ● |
@@ -45,7 +45,7 @@ További licencelési információkért, beleértve a költségeket, tekintse me
 * [Szolgáltatások és képességek Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Nagyvállalati verzió](https://www.microsoft.com/microsoft-365/enterprise)
-* [Microsoft 365 Vállalati verzió](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [Microsoft 365 Vállalati verzió](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Csoport-vagy felhasználó-alapú licencelés engedélyezése
 

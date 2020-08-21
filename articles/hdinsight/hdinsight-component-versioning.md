@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/28/2020
-ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/13/2020
+ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736203"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717251"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -43,9 +43,9 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.4.4         | 2.3.2, 2.2.0, 2.1.0         |
-| Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 2.1.1         | 1.1                        |
+| Apache Spark           | 2.4.4         | 2.3.2.                      |
+| Apache Livy            | 0,5           | 0,4.                        |
+| Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -78,9 +78,22 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |Igen |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4. | December 31., 2020 |December 31., 2020 |Igen |Igen |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 31., 2021 |Június 31., 2021 |Igen |Igen |
 
-A Spark 2,1, 2,2 és Kafka 1,0-fürt támogatása a 2020. június 30-án jár le.
+* Kiterjesztjük bizonyos HDInsight 3,6-fürtök támogatási időkeretét
+
+| Fürt típusa                    | Keretrendszer verziója | Jelenlegi támogatás lejárata        | Új támogatás lejárati dátuma |
+|---------------------------------|-------------------|-----------------------------------|-----------------------------|
+| HDInsight 3,6 Hadoop            | 2.7.3             | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Spark             | 2.3               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Spark             | 2,2               | Kivonulás június 30-ig, 2020          |                             |
+| HDInsight 3,6 Spark             | 2.1               | Kivonulás június 30-ig, 2020          |                             |
+| HDInsight 3,6 Kafka             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Kafka             | 1,0               | 2020. június 30-án megszűnt.         |                             |
+| HDInsight 3,6 HBase             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 interaktív lekérdezés | 2.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Storm             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 ML-szolgáltatások      | 9,3               | Dec. 31.2020                      | Dec. 31.2020                |
 
 > [!NOTE]
 > Ha a fürt verziójának támogatása lejár, előfordulhat, hogy a Azure Portal nem érhető el. Bizonyos esetekben a fürtcsomópontok továbbra is elérhetők a Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban lévő **Version** paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
@@ -91,14 +104,14 @@ Ez a táblázat felsorolja azokat a HDInsight-verziókat, amelyek nem érhetők 
 
 | HDInsight verziója | HDP verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |Június 28., 2018 |Yes |No |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |Március 29., 2016 |December 29., 2016 |2018. január 9. |Yes |No |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Yes |No |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Yes |No |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS vagy Windows Server 2012 R2 |Február 18., 2015 |2016. március 1. |2017. április 1. |Yes |No |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |Június 24., 2014 |2015. május 18. |Június 30., 2016 |Yes |No |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |Február 11., 2014 |Szeptember 17., 2014 |2015. június 30. |Yes |No |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |Október 28., 2013 |2014. május 12. |2015. május 31. |Yes |No |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |Június 28., 2018 |Igen |Nem |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |Március 29., 2016 |December 29., 2016 |2018. január 9. |Igen |Nem |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31. |Igen |Nem |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS vagy Windows Server 2012 R2 |Február 18., 2015 |2016. március 1. |2017. április 1. |Igen |Nem |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |Június 24., 2014 |2015. május 18. |Június 30., 2016 |Igen |Nem |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |Február 11., 2014 |Szeptember 17., 2014 |2015. június 30. |Igen |Nem |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |Október 28., 2013 |2014. május 12. |2015. május 31. |Igen |Nem |
 | HDInsight 1,6 |HDP 1,1 | |Október 28., 2013 |Április 26., 2014 |2015. május 31. |Nem |Nem |
 
 > [!NOTE]

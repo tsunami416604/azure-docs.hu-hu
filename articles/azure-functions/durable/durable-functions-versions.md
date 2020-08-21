@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705792"
+ms.locfileid: "88719410"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
 
@@ -46,7 +46,7 @@ Ez a szakasz azt ismerteti, hogyan telepítheti át a meglévő 1. x verziójú 
 
 Telepítse a projektben a Durable Functions kötések bővítményének legújabb 2. x verzióját.
 
-#### <a name="javascript-and-python"></a>JavaScript és Python
+#### <a name="javascript-python-and-powershell"></a>JavaScript, Python és PowerShell
 
 Durable Functions 2. x a [Azure functions Extension Bundle](../functions-bindings-register.md#extension-bundles)2. x verziójában érhető el.
 

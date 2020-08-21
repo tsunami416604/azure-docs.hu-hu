@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535025"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719342"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -71,7 +71,7 @@ A következő lépésekben olyan modellt fejlesztünk ki, amely azt jelzi, hogy 
 
 Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közvetlenül is lehívhatja a fájlt a memóriába dataframe. Míg az alábbi kód az alapértelmezett beállításokat használja, az adattípusok és egyéb sémák attribútumainak leképezése is kényszeríthető, ha szükséges.
 
-1. A következő sorok futtatásával hozzon létre egy Spark-dataframe a kód egy új cellába való beillesztésével. Ezzel lekéri az adatokat a megnyitott adatkészletek API-n keresztül. Az összes ilyen adatmennyiség körülbelül 1 500 000 000 sort hoz létre. A Spark-készlet (előzetes verzió) méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezt az adatmennyiséget lejjebb is szűrheti. Start_date és end_date használata olyan szűrőt alkalmaz, amely egy hónapot ad vissza.
+1. A következő sorok futtatásával hozzon létre egy Spark-dataframe a kód egy új cellába való beillesztésével. Ezzel lekéri az adatokat a megnyitott adatkészletek API-n keresztül. Az összes ilyen adatmennyiség körülbelül 1 500 000 000 sort hoz létre. A Spark-készlet (előzetes verzió) méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezt az adatmennyiséget lejjebb is szűrheti. A következő kódrészlet a start_date és a end_date használatával alkalmaz egy olyan szűrőt, amely egyetlen hónapot ad vissza.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -96,7 +96,7 @@ Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közv
     display(sampled_taxi_df)
     ```
 
-4. A generált adatkészlet méretétől és a jegyzetfüzet többszöri kipróbálásának vagy futtatásának szükségessége alapján célszerű lehet az adatkészlet helyi gyorsítótárazása a munkaterületen. Az explicit gyorsítótárazás három módon végezhető el:
+4. A generált adatkészlet méretétől és a jegyzetfüzet többszöri kipróbálásának vagy futtatásának szükségessége alapján célszerű lehet az adatkészlet helyi gyorsítótárazása a munkaterületen. Az explicit gyorsítótárazás három módon hajtható végre:
 
    - A dataframe helyi mentése fájlként
    - A dataframe mentése ideiglenes táblába vagy nézetbe
@@ -126,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -157,7 +157,7 @@ A négy műveleti osztályt a következő kódban hajtja végre:
 - Kiugró/helytelen értékek eltávolítása szűréssel.
 - Az oszlopok eltávolítása nem szükséges.
 - A nyers adatokból származtatott új oszlopok létrehozása, hogy a modell hatékonyabban működjön, más néven featurization.
-- A címkézéssel, ahogy a bináris besorolást (ha lesz tipp, vagy nem egy adott útvonalon), a tip összegét 0 vagy 1 értékre kell konvertálni.
+- Címkézés – mivel a rendszer bináris besorolást végez (ez lesz a tipp, vagy nem egy adott útvonalon), a tipp összegét 0 vagy 1 értékre kell konvertálnia.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -196,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár*készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. Az `trafficTimeBins` és az `weekdayString` oszlopokat egész szám típusú ábrázolásra kell átalakítani. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Most, hogy két DataFrames van, a következő feladat a modell képletének létrehozása és futtatása a betanítási DataFrame, majd a tesztelési DataFrame érvényesítve. A különböző kombinációk hatásának megtekintéséhez a modell képletének különböző verzióival kell kísérletezni.
 
 > [!Note]
-> A modell mentéséhez szüksége lesz a Storage blob adatközreműködői Azure-szerepkörre. A Storage-fiók területen navigáljon a Access Control (IAM) elemre, és válassza a szerepkör-hozzárendelés hozzáadása elemet. Rendeljen Storage blob-adatközreműködő Azure-szerepkört a SQL Database-kiszolgálóhoz. Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> A modell mentéséhez szüksége lesz a Storage blob adatközreműködői Azure-szerepkörre. A Storage-fiók területen navigáljon a Access Control (IAM) elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen Storage blob-adatközreműködő Azure-szerepkört a SQL Database-kiszolgálóhoz. Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model
@@ -250,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-A cella kimenete
+A cella kimenete:
 
 ```shell
 Area under ROC = 0.9779470729751403
@@ -278,7 +278,7 @@ plt.show()
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. ehhez zárja be a fület, vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot panelen.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 

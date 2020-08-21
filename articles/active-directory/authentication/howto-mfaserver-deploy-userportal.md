@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c88a54661e8fee2dd7c3b4dc34336d44a6803090
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680913"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719461"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
 
@@ -45,7 +45,7 @@ Mindkét forgatókönyvre érvényes, hogy ha az Azure Multi-Factor Authenticati
 3. Végezze el a telepítést az alapértelmezett értékekkel, hacsak nem kell valamilyen okból módosítania őket.
 4. Kösse a TLS/SSL-tanúsítványt a webhelyhez az IIS-ben.
 
-Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
+Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
 
 A Web Service SDK-t TLS/SSL-tanúsítvánnyal kell védeni. Erre a célra megfelel egy önaláírt tanúsítvány. Importálja a tanúsítványt a felhasználói portál webkiszolgálóján lévő helyi számítógépfiók "megbízható legfelső szintű hitelesítésszolgáltatók" tárolójába, hogy az megbízhatónak minősítse ezt a tanúsítványt a TLS-kapcsolat indításakor.
 
@@ -73,7 +73,7 @@ A felhasználói portál üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 ![MFA-kiszolgáló felhasználói portáljának telepítése](./media/howto-mfaserver-deploy-userportal/install.png)
 
-Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
+Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>A felhasználói portál telepítése különálló kiszolgálón
 
@@ -110,7 +110,7 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
 
 6. Nyisson meg egy webböngészőt bármilyen számítógépről, és navigáljon arra az URL-címre, ahol a felhasználói portál telepítve van (például: `https://mfa.contoso.com/MultiFactorAuth` ). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
-Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
+Ha kérdése van a TLS/SSL-tanúsítvány IIS-kiszolgálón való konfigurálásával kapcsolatban, tekintse meg az [SSL beállítása az IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)-ben című cikket.
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>A felhasználói portál beállításainak konfigurálása az Azure Multi-Factor Authentication-kiszolgálón
 
@@ -130,7 +130,7 @@ Választható konfiguráció:
 
 Az Azure Multi-Factor Authentication-kiszolgáló több lehetőséget nyújt a felhasználói portálhoz. A következő táblázat tartalmazza ezen lehetőségek listáját és annak magyarázatát, hogy mire szolgálnak.
 
-| Felhasználói portál beállításai | Description |
+| Felhasználói portál beállításai | Leírás |
 |:--- |:--- |
 | Felhasználói portál URL-címe | Adja meg a portál üzemeltetési helyének URL-címét. |
 | Elsődleges hitelesítés | Adja meg a portálra való bejelentkezéskor használandó hitelesítési típust. Ez Windows-, Radius- vagy LDAP-hitelesítés lehet. |

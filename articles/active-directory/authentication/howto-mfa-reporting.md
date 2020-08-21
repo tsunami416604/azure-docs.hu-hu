@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418236"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719512"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
 
@@ -90,7 +90,7 @@ A következő részleteket a *hitelesítő adatok* ablakban tekintheti meg, amel
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-jelentéskészítés az MFA-hoz regisztrált felhasználókkal
 
-Először győződjön meg arról, hogy telepítve van a [MSOnline v1 PowerShell-modulja](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) .
+Először győződjön meg arról, hogy telepítve van a [MSOnline v1 PowerShell-modulja](/powershell/azure/active-directory/overview?view=azureadps-1.0) .
 
 Azonosítsa az MFA-val regisztrált felhasználókat az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t:
 
@@ -118,7 +118,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Az alábbi táblázat segítséget nyújt az események hibaelhárításához az előző portál lépéseiből vagy a PowerShell-parancsokból származó tevékenységi jelentés letöltött verziójának használatával. Ezek az eredmények nem jelennek meg közvetlenül a Azure Portal.
 
-| Hívás eredménye | Description | Széles Leírás |
+| Hívás eredménye | Leírás | Széles Leírás |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PIN-kód megadva | A felhasználó PIN-kódot adott meg. Ha a hitelesítés sikeres volt, akkor a megfelelő PIN-kódot adtak meg. Ha a hitelesítés megtagadva, akkor helytelen PIN-kódot adtak meg, vagy a felhasználó normál módra van beállítva. |
 | SUCCESS_NO_PIN | Csak # megadott | Ha a felhasználó PIN módra van beállítva, és a hitelesítés megtagadva, ez azt jelenti, hogy a felhasználó nem adta meg a PIN-kódját, és csak a # értéket adta meg.  Ha a felhasználó szabványos módra van beállítva, és a hitelesítés sikeres, akkor a felhasználó csak a # paramétert adta meg, ami a helyes dolog a standard módban. |
@@ -170,13 +170,13 @@ Az alábbi táblázat segítséget nyújt az események hibaelhárításához az
 
 A következő további információk és jelentések érhetők el az MFA-eseményekhez, beleértve az MFA-kiszolgálókat:
 
-| Jelentés | Hely | Description |
+| Jelentés | Hely | Leírás |
 |:--- |:--- |:--- |
 | Letiltott felhasználói előzmények | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
 | Helyszíni összetevők használata | Azure AD > Security > MFA > tevékenység jelentés | Információt nyújt az MFA-kiszolgáló általános használatáról az NPS-bővítmény, az ADFS és az MFA-kiszolgáló használatával. |
 | Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | Az MFA-kiszolgálói kérelmek előzményeit jeleníti meg a felhasználók számára az MFA megkerülése érdekében. |
 | Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | Megjeleníti a fiókjához társított MFA-kiszolgálók állapotát. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk áttekintést nyújt a bejelentkezési tevékenységek jelentéséről. További információ arról, hogy a jelentés mit tartalmaz és hogyan értelmezi az adatokat, lásd: [bejelentkezési tevékenységek jelentései az Azure ad-ben](../reports-monitoring/concept-sign-ins.md).
