@@ -12,10 +12,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181536"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
@@ -48,7 +48,7 @@ A MSAL kezeli a gyorsítótárazást és a hozzáférési jogkivonatok frissít�
 
 Ez az útmutató a következő NuGet-csomagokat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -64,13 +64,13 @@ Az ezzel az útmutatóval létrehozott alkalmazás egy olyan gombot jelenít meg
 
 Az alkalmazás létrehozásához tegye a következőket:
 
-1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 2. A **sablonok**területen válassza a **Visual C#** elemet.
 3. A használt Visual Studio-verziótól függően válassza a **WPF-alkalmazás (.NET-keretrendszer)** lehetőséget.
 
 ## <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
 
-1. A Visual Studióban válassza az **eszközök** > **NuGet Package**> Manager**csomagkezelő konzolt**.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager >  **csomagkezelő konzolt**.
 2. A csomagkezelő konzol ablakban illessze be a következő Azure PowerShell parancsot:
 
     ```powershell
@@ -81,7 +81,7 @@ Az alkalmazás létrehozásához tegye a következőket:
     > Ez a parancs telepíti a Microsoft hitelesítési tárat. A MSAL kezeli a Azure Active Directory v 2.0 által védett API-k eléréséhez használt felhasználói jogkivonatok beszerzését, gyorsítótárazását és frissítését.
     >
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 Az alkalmazást kétféleképpen is regisztrálhatja.
 
@@ -105,9 +105,9 @@ Az alkalmazása regisztrálásához és az alkalmazás regisztrációs informác
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
    1. Az **átirányítási URI** -k szakasz átirányítási URI-k listájában:
    1. A **típus** oszlopban válassza a **nyilvános ügyfél/natív (mobil & asztali)** lehetőséget.
-   1. Az **átirányítási URI** oszlopban adja meg a`https://login.microsoftonline.com/common/oauth2/nativeclient`
-1. Kattintson a **Register** (Regisztrálás) elemre.
-1. Nyissa meg a Visual studiót *App.xaml.cs* , nyissa meg a app.XAML.cs `Enter_the_Application_Id_here` fájlt, majd cserélje le az alábbi kódrészletet az imént regisztrált és MÁSOLt alkalmazás-azonosítóra.
+   1. Az **átirányítási URI** oszlopban adja meg a `https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. Válassza a **Regisztráció** lehetőséget.
+1. Nyissa meg a Visual studiót, nyissa meg a *app.XAML.cs* fájlt, majd cserélje le az `Enter_the_Application_Id_here` alábbi kódrészletet az imént regisztrált és másolt alkalmazás-azonosítóra.
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -158,7 +158,7 @@ Ebben a lépésben egy olyan osztályt hoz létre, amely kezeli a MSAL való int
 
 Ez a szakasz azt mutatja be, hogyan lehet egy alkalmazás lekérdezni egy védett háttér-kiszolgálót, például Microsoft Graph.
 
-A *MainWindow. XAML* fájlt automatikusan létre kell hozni a projekt sablonjának részeként. Nyissa meg ezt a fájlt, majd cserélje le az alkalmazás * \<Grid>* csomópontját a következő kódra:
+A *MainWindow. XAML* fájlt automatikusan létre kell hozni a projekt sablonjának részeként. Nyissa meg ezt a fájlt, majd cserélje le az alkalmazás *\<Grid>* csomópontját a következő kódra:
 
 ```xml
 <Grid>
@@ -185,7 +185,7 @@ Ebben a szakaszban a MSAL használatával kap tokent a Microsoft Graph API-hoz.
     using Microsoft.Identity.Client;
     ```
 
-2. Cserélje le `MainWindow` az osztály kódját a következőre:
+2. Cserélje le az `MainWindow` osztály kódját a következőre:
 
     ```csharp
     public partial class MainWindow : Window
@@ -257,25 +257,25 @@ Ebben a szakaszban a MSAL használatával kap tokent a Microsoft Graph API-hoz.
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A `AcquireTokenInteractive` metódus meghívásával egy olyan ablak jelenik meg, amely felszólítja a felhasználókat, hogy jelentkezzenek be. Az alkalmazások általában megkövetelik, hogy a felhasználóknak interaktívan kell bejelentkezniük a védett erőforrásokhoz való első bejelentkezéshez. Előfordulhat, hogy be kell jelentkezniük, amikor egy jogkivonat beszerzésére irányuló csendes művelet meghiúsul (például ha a felhasználó jelszava lejárt).
+A metódus meghívásával `AcquireTokenInteractive` egy olyan ablak jelenik meg, amely felszólítja a felhasználókat, hogy jelentkezzenek be. Az alkalmazások általában megkövetelik, hogy a felhasználóknak interaktívan kell bejelentkezniük a védett erőforrásokhoz való első bejelentkezéshez. Előfordulhat, hogy be kell jelentkezniük, amikor egy jogkivonat beszerzésére irányuló csendes művelet meghiúsul (például ha a felhasználó jelszava lejárt).
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `AcquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. Az `AcquireTokenInteractive` első futtatása után az a szokásos módszer `AcquireTokenSilent` , amellyel a rendszer lekéri a védett erőforrásokhoz hozzáférő jogkivonatokat a további hívásokhoz, mert a kérések vagy a megújítási tokenek csendesen történnek.
+A `AcquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. Az `AcquireTokenInteractive` első futtatása után `AcquireTokenSilent` az a szokásos módszer, amellyel a rendszer lekéri a védett erőforrásokhoz hozzáférő jogkivonatokat a további hívásokhoz, mert a kérések vagy a megújítási tokenek csendesen történnek.
 
 Végül a `AcquireTokenSilent` metódus sikertelen lesz. A hiba oka az lehet, hogy a felhasználó vagy más eszközön kijelentkezett vagy módosította a jelszavát. Ha a MSAL észleli, hogy a probléma megoldásához interaktív műveletre van szükség, `MsalUiRequiredException` kivételt okoz. Az alkalmazás két módon tudja kezelni ezt a kivételt:
 
-* A hívás `AcquireTokenInteractive` azonnal elvégezhető. Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be. Ezt a mintát általában olyan online alkalmazásokban használják, ahol nincs elérhető offline tartalom a felhasználó számára. Az irányított telepítő által generált minta követi ezt a mintát, amelyet a művelet első futtatásakor láthat.
+* A hívás azonnal elvégezhető `AcquireTokenInteractive` . Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be. Ezt a mintát általában olyan online alkalmazásokban használják, ahol nincs elérhető offline tartalom a felhasználó számára. Az irányított telepítő által generált minta követi ezt a mintát, amelyet a művelet első futtatásakor láthat.
 
-* Mivel egyetlen felhasználó sem használta az alkalmazást, `PublicClientApp.Users.FirstOrDefault()` null értéket tartalmaz, és `MsalUiRequiredException` kivétel keletkezik.
+* Mivel egyetlen felhasználó sem használta az alkalmazást, `PublicClientApp.Users.FirstOrDefault()` Null értéket tartalmaz, és kivétel keletkezik `MsalUiRequiredException` .
 
-* A mintában szereplő kód a kivételt a hívásával `AcquireTokenInteractive`kezeli, ami azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be.
+* A mintában szereplő kód a kivételt a hívásával kezeli `AcquireTokenInteractive` , ami azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be.
 
-* Ehelyett olyan vizuális jelzést jelenthet a felhasználóknak, akik interaktív bejelentkezést igényelnek, így kiválaszthatják a megfelelő időt a bejelentkezéshez. Vagy az alkalmazás később is `AcquireTokenSilent` újrapróbálkozhat. Ezt a mintát gyakran használják, ha a felhasználók más alkalmazás-funkciókat is használhatnak megszakítás nélkül – például ha offline tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználók dönthetnek arról, hogy mikor szeretnének bejelentkezni a védett erőforrás eléréséhez vagy az elavult információk frissítéséhez. Másik lehetőségként az alkalmazás is dönthet úgy `AcquireTokenSilent` , hogy újrapróbálkozik, ha a hálózat helyreáll, miután átmenetileg nem érhető el.
+* Ehelyett olyan vizuális jelzést jelenthet a felhasználóknak, akik interaktív bejelentkezést igényelnek, így kiválaszthatják a megfelelő időt a bejelentkezéshez. Vagy az alkalmazás később is újrapróbálkozhat `AcquireTokenSilent` . Ezt a mintát gyakran használják, ha a felhasználók más alkalmazás-funkciókat is használhatnak megszakítás nélkül – például ha offline tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználók dönthetnek arról, hogy mikor szeretnének bejelentkezni a védett erőforrás eléréséhez vagy az elavult információk frissítéséhez. Másik lehetőségként az alkalmazás is dönthet úgy, hogy újrapróbálkozik, `AcquireTokenSilent` Ha a hálózat helyreáll, miután átmenetileg nem érhető el.
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>A Microsoft Graph API meghívása az imént beszerzett token használatával
 
-Adja hozzá a következő új metódust `MainWindow.xaml.cs`a alkalmazáshoz. A metódus a Graph APIre `GET` irányuló kérések engedélyezésére szolgál az engedélyezési fejléc használatával:
+Adja hozzá a következő új metódust a alkalmazáshoz `MainWindow.xaml.cs` . A metódus a `GET` Graph APIre irányuló kérések engedélyezésére szolgál az engedélyezési fejléc használatával:
 
 ```csharp
 /// <summary>
@@ -306,7 +306,7 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
 
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>További információ a védett API-k REST-hívásáról
 
-Ebben a példában a `GetHttpContentWithToken` METÓDUS használatával http `GET` -kérést hajthat végre egy olyan védett erőforráson, amely egy jogkivonatot igényel, majd visszaküldi a tartalmat a hívónak. Ez a metódus hozzáadja a beszerzett jogkivonatot a HTTP-engedélyezési fejlécben. Ebben a példában az erőforrás a Microsoft Graph API *Me* -végpontja, amely megjeleníti a felhasználó profiljának adatait.
+Ebben a példában a metódus használatával HTTP- `GetHttpContentWithToken` kérést hajthat végre `GET` egy olyan védett erőforráson, amely egy jogkivonatot igényel, majd visszaküldi a tartalmat a hívónak. Ez a metódus hozzáadja a beszerzett jogkivonatot a HTTP-engedélyezési fejlécben. Ebben a példában az erőforrás a Microsoft Graph API *Me* -végpontja, amely megjeleníti a felhasználó profiljának adatait.
 
 ## <a name="add-a-method-to-sign-out-a-user"></a>Metódus hozzáadása egy felhasználó kijelentkezéséhez
 

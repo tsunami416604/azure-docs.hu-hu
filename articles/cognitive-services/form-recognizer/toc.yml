@@ -34,6 +34,10 @@
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+        - name: Előre összeállított névjegykártyamodell használata
+          items:
+            - name: Python
+              href: quickstarts/python-business-cards.md
         - name: Szöveg elrendezési adatainak lekérése
           items:
             - name: Python
@@ -44,6 +48,12 @@
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
     - name: A Form Recognizer használata AI Builderrel
       href: tutorial-ai-builder.md
+- name: Alapelvek
+  items:
+    - name: Nyugták
+      href: concept-receipts.md
+    - name: Névjegykártyák
+      href: concept-business-cards.md
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása
@@ -64,6 +74,8 @@
       href: disaster-recovery.md
 - name: Referencia
   items:
+    - name: 'Form Recognizer API 2.1, előzetes verzió'
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
     - name: Form Recognizer API 2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK-k

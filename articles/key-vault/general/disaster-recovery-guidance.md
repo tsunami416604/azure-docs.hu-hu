@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: sudbalas
 ms.openlocfilehash: 4796e6c555ca67794409fb1476f3c4fd0d760719
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82780453"
 ---
-# <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault rendelkezésre állás és redundancia
+# <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állása és redundanciája
 
 Azure Key Vault több réteget is tartalmaz, így biztosíthatja, hogy a kulcsok és a titkos kódok továbbra is elérhetők legyenek az alkalmazás számára, még akkor is, ha a szolgáltatás egyes összetevői meghibásodnak.
 

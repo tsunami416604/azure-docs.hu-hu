@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,10 +11,10 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.author: diberry
 ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77279501"
 ---
 Az ügyfélalkalmazásnak tudnia kell, hogy a Kimondás nem értelmezhető vagy nem megfelelő-e az alkalmazáshoz. A rendszer a létrehozási folyamat részeként hozzáadja az egyes alkalmazásokhoz a **nincs** szándékot annak megállapításához, hogy az ügyfélalkalmazás nem válaszol-e.
@@ -27,9 +27,9 @@ Ha üresen hagyja a **none** leképezést, a rendszer a tulajdonos tartományon 
 
 1. Válassza ki a **None** szándékot. Vegyen fel három hosszúságú kimondott szöveg, amelyet a felhasználó megadhat, de nem vonatkozik a pizza-rendezési alkalmazásra:
 
-    |`None`Példa hosszúságú kimondott szöveg|
+    |`None` Példa hosszúságú kimondott szöveg|
     |--|
     |`Barking dogs are annoying`|
     |`Penguins in the ocean`|
 
-    Ezek a példák nem használnak olyan szavakat, amelyeket elvár a tulajdonos tartományában `cheese`, `crust`például `pickup` `deliver` `pizza`:,,.
+    Ezek a példák nem használnak olyan szavakat, amelyeket elvár a tulajdonos tartományában, például:,, `pizza` `cheese` `crust` `pickup` `deliver` .

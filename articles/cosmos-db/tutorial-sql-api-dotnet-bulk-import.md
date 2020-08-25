@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77587566"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
@@ -31,11 +31,11 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Net Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). A futtatásával `dotnet --version`ellenőrizheti, hogy melyik verzió érhető el a környezetben.
+* [Net Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). A futtatásával ellenőrizheti, hogy melyik verzió érhető el a környezetben `dotnet --version` .
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
 
@@ -89,7 +89,7 @@ Ha a Azure Cosmos DB emulátort használja, szerezze be az [emulátor hitelesít
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>5. lépés: a CosmosClient objektum inicializálása tömeges végrehajtással támogatással
 
-Nyissa meg `Program.cs` a generált fájlt egy Kódszerkesztőben. A CosmosClient egy új példányát kell létrehoznia, amely lehetővé teszi, hogy a tömeges végrehajtás engedélyezve legyen, és a Azure Cosmos DBon végzett műveletek végrehajtásához használja azt. 
+Nyissa meg a generált `Program.cs` fájlt egy Kódszerkesztőben. A CosmosClient egy új példányát kell létrehoznia, amely lehetővé teszi, hogy a tömeges végrehajtás engedélyezve legyen, és a Azure Cosmos DBon végzett műveletek végrehajtásához használja azt. 
 
 Kezdjük azzal, hogy felülírja az alapértelmezett `Main` metódust, és definiálja a globális változókat. Ezek a globális változók tartalmazzák a végponti és az engedélyezési kulcsokat, az adatbázis nevét, a létrehozandó tárolót, valamint a tömegesen beszúrni kívánt elemek számát. Ügyeljen rá, hogy a környezete alapján cserélje le a endpointURL és az engedélyezési kulcs értékeit. 
 
@@ -124,7 +124,7 @@ A `Main` metóduson belül adja hozzá a következő kódot a CosmosClient objek
 
 A tömeges végrehajtás engedélyezése után a CosmosClient belsőleg csoportosítja egyidejű műveleteket egyetlen szolgáltatási hívásban. Így optimalizálja az átviteli sebesség kihasználtságát a szolgáltatási hívások partíciók közötti elosztásával, végül pedig az eredeti hívókhoz rendeli az eredményeket.
 
-Ezután létrehozhat egy tárolót az összes elem tárolásához.  Adja `/pk` meg a partíciós kulcsot, a 50000 ru/s-t kiépített átviteli sebességként, valamint egy egyéni indexelési házirendet, amely kizárja az összes mezőt az írási sebesség optimalizálása érdekében. Adja hozzá a következő kódot a CosmosClient inicializálási utasítása után:
+Ezután létrehozhat egy tárolót az összes elem tárolásához.  Adja meg `/pk` a partíciós kulcsot, a 50000 ru/s-t kiépített átviteli sebességként, valamint egy egyéni indexelési házirendet, amely kizárja az összes mezőt az írási sebesség optimalizálása érdekében. Adja hozzá a következő kódot a CosmosClient inicializálási utasítása után:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
 
@@ -143,11 +143,11 @@ Adja meg a menteni kívánt elemek definícióját. Meg kell határoznia az `Ite
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
 
-Ezután hozzon létre egy segítő függvényt `Program` az osztályban. Ez a segítő funkció beolvassa a véletlenszerű adatok beszúrásához és létrehozásához megadott elemek számát:
+Ezután hozzon létre egy segítő függvényt az `Program` osztályban. Ez a segítő funkció beolvassa a véletlenszerű adatok beszúrásához és létrehozásához megadott elemek számát:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Olvassa el az elemeket, és szerializálja őket adatfolyam-példányokra `System.Text.Json` a osztály használatával. Az automatikusan létrehozott adathalmazok jellegéből adódóan adatfolyamként kell szerializálni az adathalmazokat. Közvetlenül is használhatja az item-példányt, de a streamekre konvertálva kihasználhatja a stream API-k teljesítményét a CosmosClient. Az adattípust általában közvetlenül is használhatja, ha ismeri a partíciós kulcsot. 
+Olvassa el az elemeket, és szerializálja őket adatfolyam-példányokra a `System.Text.Json` osztály használatával. Az automatikusan létrehozott adathalmazok jellegéből adódóan adatfolyamként kell szerializálni az adathalmazokat. Közvetlenül is használhatja az item-példányt, de a streamekre konvertálva kihasználhatja a stream API-k teljesítményét a CosmosClient. Az adattípust általában közvetlenül is használhatja, ha ismeri a partíciós kulcsot. 
 
 
 Az adatfolyam-példányokra történő átalakításhoz a `Main` metóduson belül adja hozzá a következő kódot közvetlenül a tároló létrehozása után:
@@ -162,7 +162,7 @@ A rendszer az összes ilyen egyidejű műveletet együtt hajtja végre (ömleszt
 
 ## <a name="step-7-run-the-sample"></a>7. lépés: a minta futtatása
 
-A minta futtatásához egyszerűen a `dotnet` következő paranccsal teheti meg:
+A minta futtatásához egyszerűen a következő paranccsal teheti meg `dotnet` :
 
    ```bash
    dotnet run
@@ -174,14 +174,14 @@ Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretn
 
 A projekt klónozása után frissítse a szükséges hitelesítő adatokat a [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25)-on belül.
 
-A minta futtatásához váltson az adattár könyvtárába, és használja `dotnet`a következőt:
+A minta futtatásához váltson az adattár könyvtárába, és használja a következőt `dotnet` :
 
    ```bash
    cd cosmos-dotnet-bulk-import-throughput-optimizer
    dotnet run
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket hajtotta végre:
 

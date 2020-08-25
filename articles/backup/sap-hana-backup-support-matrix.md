@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és k
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 674bbf968b42f66a4c421aec6653881c8fd52a8b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: f254b50f196b4087080162755eee4397da5a9940
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439570"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761780"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
@@ -42,11 +42,10 @@ A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-
 >
 >Szükség szerint módosítsa manuálisan a szabályzatot.
 
-
 > [!NOTE]
 > Mostantól nyomon követheti a Azure Portal a HANA natív ügyfelektől (SAP HANA Studio/cockpit/DBA pilótafülke) indított [biztonsági mentési és visszaállítási](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) feladatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést SAP HANA Azure-beli virtuális gépeken futó adatbázisokról](./backup-azure-sap-hana-database.md)
 * Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](./sap-hana-db-restore.md)

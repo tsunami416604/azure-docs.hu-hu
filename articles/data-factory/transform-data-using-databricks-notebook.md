@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81418983"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
@@ -34,7 +34,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
   - A folyamat futásának monitorozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -44,7 +44,7 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
   - **Azure Databricks-munkaterület**. [Hozzon létre egy Databricks-munkaterületet](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal), vagy használjon egy már meglévőt. Hozzon létre egy Python-jegyzetfüzetet az Azure Databricks-munkaterületen. Ezután hajtsa végre a jegyzetfüzetet, és továbbítson neki paramétereket az Azure Data Factory segítségével.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1.  Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 
@@ -54,7 +54,7 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
 1.  Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
-    Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például használja ** \<a sajátneve\>ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](https://docs.microsoft.com/azure/data-factory/naming-rules) ismertető cikkben találja.
+    Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például a ** \<yourname\> ADFTutorialDataFactory**használata). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](https://docs.microsoft.com/azure/data-factory/naming-rules) ismertető cikkben találja.
 
     ![Az új adat-előállító elnevezése](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -100,7 +100,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
 1.  Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
     
-    1.  A **név**mezőbe írja be a következőt: ***AzureDatabricks\_LinkedService***
+    1.  A **név**mezőbe írja be a következőt: ***AzureDatabricks \_ LinkedService***
     
     1.  Válassza ki a megfelelő **Databricks-munkaterületet**, amelyen a jegyzetfüzetet futtatni fogja
 
@@ -179,9 +179,9 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
        ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Adjon nevet a paraméternek **bemenetként** , és adja meg az értéket kifejezés ** \@-feldolgozási (). Parameters. name**néven.
+    b.  Adjon nevet a paraméternek **bemenetként** , és adja meg az értéket kifejezés-feldolgozási ** \@ (). Parameters. name**néven.
 
-1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a ** \> ** (jobbra mutató nyíl) gombra.
+1.  A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **\>\>** (jobbra mutató nyíl) gombra.
 
     ![A folyamat érvényesítése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
@@ -223,9 +223,9 @@ A **Feladat nevére** kattintva megtekintheti a további részleteket. Ha a fut�
 
 ![A futtatás részleteinek és kimenetének megtekintése](media/transform-data-using-databricks-notebook/databricks-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A mintában szereplő folyamat elindít egy Databricks-jegyzetfüzet tevékenységet, és átad neki egy paramétert. Megismerte, hogyan végezheti el az alábbi műveleteket:
+A mintában szereplő folyamat elindít egy Databricks-jegyzetfüzet tevékenységet, és átad neki egy paramétert. Megtanulta végrehajtani az alábbi műveleteket:
 
   - Adat-előállító létrehozása
 

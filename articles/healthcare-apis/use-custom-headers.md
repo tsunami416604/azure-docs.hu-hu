@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86081843"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Az egyéni HTTP-fejlécek használatával adhat hozzá adatnaplókat a naplókhoz
@@ -75,7 +75,7 @@ client.OnBeforeRequest += (object sender, BeforeRequestEventArgs e) =>
 };
 client.Get("Patient");
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a cikkből megtudhatta, hogyan adhat hozzá adatnaplókat egyéni fejlécek használatával a FHIR készült Azure API-ban. Következő lépésként megismerheti a FHIR készült Azure API-ban konfigurálható további beállításokat is.
  
 >[!div class="nextstepaction"]

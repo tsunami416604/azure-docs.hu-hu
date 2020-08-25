@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82233329"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>ASP.NET Core alkalmazások üzembe helyezése az Azure Kubernetes Service-ben az Azure DevOps Starter használatával
@@ -35,7 +35,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -144,7 +144,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti az ebben az oktatóanyagban létrehozott AK-fürtöt és a kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -155,7 +155,7 @@ Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforráso
 1. A jobb felső sarokban válassza a **Törlés**lehetőséget. 
 1. A parancssorban válassza az **Igen** lehetőséget az erőforrások *végleges törléséhez* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -166,7 +166,7 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 A Kubernetes-irányítópult használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 

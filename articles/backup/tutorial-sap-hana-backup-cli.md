@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztons�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489503"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762402"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -19,7 +19,7 @@ Ez a dokumentum azt feltételezi, hogy már rendelkezik egy Azure-beli virtuáli
 
 > [!div class="checklist"]
 >
-> * Helyreállítási tár létrehozása
+> * Recovery Services-tároló létrehozása
 > * Regisztrálja SAP HANA példányát, és keresse meg az adatbázis (oka) t
 > * Biztonsági mentés engedélyezése SAP HANA adatbázison
 > * Igény szerinti biztonsági mentés indítása
@@ -30,7 +30,7 @@ Tekintse át a SAP HANA [jelenleg támogatott forgatókönyveket](./sap-hana-bac
 
 A parancssori felület helyi telepítéséhez és használatához az Azure CLI XX. xxx. x vagy újabb verzióját kell futtatnia. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A Recovery Services tároló egy logikai tároló, amely az egyes védett erőforrások, például Azure-beli virtuális gépek vagy Azure-beli virtuális gépeken futó munkaterhelések (például SQL vagy HANA-adatbázisok) biztonsági mentési adatait tárolja. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
@@ -150,7 +150,7 @@ Az az [Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-jo
 
 ## <a name="trigger-an-on-demand-backup"></a>Igény szerinti biztonsági mentés indítása
 
-A fenti szakasz részletesen ismerteti, hogyan konfigurálhat ütemezett biztonsági mentést, ez a szakasz az igény szerinti biztonsági mentés aktiválását tárgyalja. Ehhez használja az az [Backup Protection Backup-Now](/cli/azure/backup/protection#az-backup-protection-backup-now) parancsmagot.
+A fenti szakasz részletesen ismerteti az ütemezett biztonsági mentést, ez a szakasz az igény szerinti biztonsági mentés aktiválását mutatja be. Ehhez használja az az [Backup Protection Backup-Now](/cli/azure/backup/protection#az-backup-protection-backup-now) parancsmagot.
 
 >[!NOTE]
 > Az igény szerinti biztonsági mentés megőrzési házirendjét az adatbázis alapjául szolgáló adatmegőrzési házirend határozza meg.

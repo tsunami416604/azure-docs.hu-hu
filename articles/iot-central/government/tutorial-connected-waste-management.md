@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77426360"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
@@ -146,7 +146,7 @@ Az eszköz sablonjának megtekintése:
 Próbálja testre szabni a következőket:
 1. Navigáljon a **Testreszabás** elemre az eszköz sablon menüjében
 2. A `Odor meter` telemetria típusának megkeresése
-3. A **megjelenítendő nevének** `Odor meter` frissítése a következőre`Odor level`
+3. A **megjelenítendő nevének** `Odor meter` frissítése a következőre `Odor level`
 4. Megpróbálkozhat a mérték frissítése lehetőséggel, vagy megadhatja a *minimális* és a *maximális értéket* is
 5. Módosítások **mentése** 
 
@@ -185,7 +185,7 @@ A **csatlakoztatott hulladékkezelési** alkalmazáshoz két szimulált eszköz 
 
      ![1. eszköz](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. Navigáljon a **felhő tulajdonságai** lapra `95` , és `100`próbálja `Bin full alert threshold` meg frissíteni az értéket a verzióról a verzióra. 
+3. Navigáljon a **felhő tulajdonságai** lapra, és próbálja meg frissíteni az értéket a verzióról a verzióra `Bin full alert threshold` `95` `100` . 
 * Fedezze fel az **eszköz tulajdonságai** lapot és az **eszköz irányítópultját** . 
 
 > [!NOTE]
@@ -210,9 +210,9 @@ A **csatlakoztatott hulladékkezelési** alkalmazásnak négy minta szabálya va
 
      ![Raktárhely teljes riasztása](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. A `Bin full alert` **feltétel** `Fill level is greater than or equal to Bin full alert threshold`ellenőrzése.
+ 3. A `Bin full alert` Feltétel ellenőrzése **Condition** `Fill level is greater than or equal to Bin full alert threshold` .
 
-    A `Bin full alert threshold` az `Connected waste bin` eszköz sablonjában definiált *Felhőbeli tulajdonság* . 
+    A az `Bin full alert threshold` eszköz sablonjában definiált *Felhőbeli tulajdonság* `Connected waste bin` . 
 
 Most hozzon létre egy e-mail-műveletet.
 
@@ -267,6 +267,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [csatlakoztatott hulladékgazdálkodási fogalmakról](./concepts-connectedwastemanagement-architecture.md)

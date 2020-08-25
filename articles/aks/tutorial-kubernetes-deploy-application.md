@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593274"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service-ben (AKS)
@@ -43,7 +43,7 @@ Kérje le az ACR bejelentkezési kiszolgáló nevét az [az acr list][az-acr-lis
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Az első oktatóanyagban klónozott, Git-adattárból származó mintajegyzékfájl a *microsoft* bejelentkezési kiszolgálónevet használja. Győződjön meg arról, hogy a klónozott *Azure-szavazó-app-Redis* könyvtárban van, majd nyissa meg a jegyzékfájlt egy szövegszerkesztővel, például `vi`:
+Az első oktatóanyagban klónozott, Git-adattárból származó mintajegyzékfájl a *microsoft* bejelentkezési kiszolgálónevet használja. Győződjön meg arról, hogy a klónozott *Azure-szavazó-app-Redis* könyvtárban van, majd nyissa meg a jegyzékfájlt egy szövegszerkesztővel, például `vi` :
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
@@ -65,9 +65,9 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Mentse és zárja be a fájlt. A `vi`alkalmazásban `:wq`használja a t.
+Mentse és zárja be a fájlt. A `vi` alkalmazásban használja a t `:wq` .
 
-## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
+## <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 
 Az alkalmazást a [kubectl apply][kubectl-apply] paranccsal helyezheti üzembe. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat. Adja meg a mintajegyzékfájlt a következő példa szerint:
 
@@ -102,7 +102,7 @@ Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az *alábbi
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` . A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
@@ -114,9 +114,9 @@ Az alkalmazás működés közbeni megtekintéséhez nyisson meg egy webböngés
 
 Ha az alkalmazás nem töltődött be, lehetséges, hogy az a rendszerkép-beállításjegyzékkel kapcsolatos hitelesítési probléma oka. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha a tároló lemezképeit nem lehet kihúzni, tekintse meg a [hitelesítés a Azure Container Registry az Azure Kubernetes szolgáltatással](cluster-container-registry-integration.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy Azure vote-alkalmazást telepítettünk egy AK-beli Kubernetes-fürtre. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy Azure vote-alkalmazást telepítettünk egy AK-beli Kubernetes-fürtre. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Kubernetes-jegyzékfájlok frissítése

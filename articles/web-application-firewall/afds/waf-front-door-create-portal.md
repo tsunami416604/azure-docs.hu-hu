@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "79475841"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Oktatóanyag: webalkalmazási tűzfal szabályzatának létrehozása az Azure-beli előtérben a Azure Portal használatával
@@ -76,8 +76,8 @@ Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés sz
 
  ![WAF-szabálykészlet módosítása](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure-webalkalmazási tűzfal](../overview.md)
-> megismerése további információ[Az Azure bejárati ajtóról](../../frontdoor/front-door-overview.md)
+> [További tudnivalók az Azure webalkalmazási tűzfalról](../overview.md) 
+>  [További információ az Azure bejáratáról](../../frontdoor/front-door-overview.md)

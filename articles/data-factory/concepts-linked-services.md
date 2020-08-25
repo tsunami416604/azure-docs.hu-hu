@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338056"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796408"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások az Azure Data Factoryben
 
@@ -69,19 +69,19 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
 name | A társított szolgáltatás neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
-típus | A társított szolgáltatás típusa. Például: Azure Storage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Yes |
-typeProperties | A típus tulajdonságai különbözőek az egyes adattárokhoz vagy számításokhoz. <br/><br/> A támogatott adattár-típusok és a típusuk tulajdonságai a jelen cikk [adatkészlet típusa](concepts-datasets-linked-services.md#dataset-type) táblázatában találhatók. Navigáljon az adattár-összekötő cikkhez, és ismerkedjen meg az adattárra jellemző típusok tulajdonságaival. <br/><br/> A támogatott számítási típusok és a hozzájuk tartozó típusok tulajdonságai a következő témakörben találhatók: [számítási társított szolgáltatások](compute-linked-services.md). | Yes |
+típus | A társított szolgáltatás típusa. Például: AzureBlobStorage (adattár) vagy AzureBatch (számítás). Tekintse meg a typeProperties leírását. | Yes |
+typeProperties | A típus tulajdonságai különbözőek az egyes adattárokhoz vagy számításokhoz. <br/><br/> A támogatott adattár-típusok és a típusuk tulajdonságai az [Összekötők áttekintése](copy-activity-overview.md#supported-data-stores-and-formats) című cikkben találhatók. Navigáljon az adattár-összekötő cikkhez, és ismerkedjen meg az adattárra jellemző típusok tulajdonságaival. <br/><br/> A támogatott számítási típusok és a hozzájuk tartozó típusok tulajdonságai a következő témakörben találhatók: [számítási társított szolgáltatások](compute-linked-services.md). | Yes |
 Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No
 
 ## <a name="linked-service-example"></a>Társított szolgáltatás – példa
 
-A következő társított szolgáltatás egy Azure Storage-beli társított szolgáltatás. Figyelje meg, hogy a típus az Azure Storage-ra van beállítva. Az Azure Storage társított szolgáltatás típusának tulajdonságai között szerepel egy kapcsolati sztring. A Data Factory szolgáltatás ezt a kapcsolati karakterláncot használja az adattárhoz való kapcsolódáshoz futásidőben.
+A következő társított szolgáltatás egy Azure Blob Storage-beli társított szolgáltatás. Figyelje meg, hogy a típus az Azure Blob Storage-ra van beállítva. Az Azure Blob Storage társított szolgáltatás típusának tulajdonságai között szerepel egy kapcsolati sztring. A Data Factory szolgáltatás ezt a kapcsolati karakterláncot használja az adattárhoz való kapcsolódáshoz futásidőben.
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
@@ -108,7 +108,7 @@ A Data Factory által támogatott adattárak listáját az [Összekötők áttek
 
 A [számítási környezetek](compute-linked-services.md) ismertetése a különböző számítási környezetekről nyújt segítséget, amelyekkel kapcsolódhat az adat-előállítóhoz, valamint a különböző konfigurációkhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyag részletes útmutatást nyújt a folyamatok és adatkészletek létrehozásához ezen eszközök vagy SDK-k egyikének használatával.
 

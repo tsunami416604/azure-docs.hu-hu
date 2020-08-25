@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82233720"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Oktatóanyag: ASP.NET Core-alkalmazás üzembe helyezése az Azure-Service Fabric az Azure DevOps Starter használatával
@@ -33,7 +33,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * A Git módosításainak véglegesítése és automatikus üzembe helyezés az Azure-ban
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -132,7 +132,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rá szükség, törölheti az Azure Service Fabric-fürtöt és az ebben az oktatóanyagban létrehozott kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -143,7 +143,7 @@ Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforráso
 1. A jobb felső sarokban válassza a **Törlés**lehetőséget. 
 1. A parancssorban válassza az **Igen** lehetőséget az erőforrások *végleges törléséhez* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja az Azure CI-/CD-folyamatot. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -153,7 +153,7 @@ A csapat igényeihez igazodva módosíthatja az Azure CI-/CD-folyamatot. Ezt a C
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 A Service Fabric és a szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

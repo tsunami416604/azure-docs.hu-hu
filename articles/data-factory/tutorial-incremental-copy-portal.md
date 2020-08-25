@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86082658"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure SQL Database adatok növekményes betöltése az Azure Blob Storage-ba a Azure Portal használatával
@@ -34,7 +34,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * Folyamat létrehozása.
 > * A folyamat futtatása.
 > * A folyamat futásának monitorozása.
-> * Eredmények áttekintése
+> * Az eredmények áttekintése
 > * További adatok hozzáadása a forráshoz.
 > * A folyamat újbóli futtatása.
 > * A folyamat második futtatásának monitorozása.
@@ -62,7 +62,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
     * Egy StoredProcedure tevékenység létrehozása, amely frissíti a küszöbértékeket a folyamat következő futtatásához.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Databaseben](../azure-sql/database/single-database-create-quickstart.md) a létrehozásához szükséges lépések.
@@ -150,7 +150,7 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
@@ -171,7 +171,7 @@ END
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. A HDInsight adattárak (Azure Storage, Azure SQL Database, Azure SQL felügyelt példány stb.) és a (z) és a (z) és a (z) adatfeldolgozó által használt számítási erőforrások (stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás** lehetőségre.      
+8. Kattintson a **Create** (Létrehozás) gombra.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -205,7 +205,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     7. Ellenőrizze, hogy a **AzureSqlDatabaseLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**.
 
         ![Új társított szolgáltatás ablak](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-    8. Válassza a **Befejezés** gombot.
+    8. Válassza a **Befejezés** lehetőséget.
 9. A **kapcsolatok** lapon válassza a **[dbo] lehetőséget. [ watermarktable]** a **táblához**. A táblában található adatok előnézetének megtekintéséhez kattintson az **Adatok előnézete** elemre.
 
     ![Küszöbérték-adatkészlet – kapcsolat beállításai](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
@@ -218,7 +218,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 13. Az **új adatkészlet** ablakban válassza a **Azure SQL Database**lehetőséget, majd kattintson a **Folytatás**gombra.
 14. A **készlet tulajdonságai** ablakban adja meg a **SourceDataset** **nevet**. A **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
 15. Válassza a **[dbo] lehetőséget. [ data_source_table]** a táblához. Az oktatóanyag során később megadunk egy olyan lekérdezést, amely az adatkészletre vonatkozik. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblával szemben.
-16. Válassza a **Befejezés** gombot.
+16. Válassza a **Befejezés** lehetőséget.
 17. A folyamatszerkesztőt úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint. A **keresési** tevékenység tulajdonságainak lapján ellenőrizze, hogy a **SourceDataset** lehetőség van-e kiválasztva a **Forrásadatkészlet** mezőnél.
 18. A **Lekérdezés használata** mezőben válassza a **Lekérdezés** lehetőséget, majd írja be a következő lekérdezést: Ön csak a **LastModifyTime** érték maximális értékét választja ki a **data_source_table** táblából. Győződjön meg arról, hogy csak az **első sort**jelölte be.
 
@@ -273,7 +273,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     1. A **tárolt eljárás neve**mezőben válassza a **usp_write_watermark**lehetőséget.
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez:
 
-        | Name | Típus | Érték |
+        | Név | Típus | Érték |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Sztring | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -382,7 +382,7 @@ PersonID | Name | LastModifytime
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]
@@ -393,7 +393,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * Folyamat létrehozása.
 > * A folyamat futtatása.
 > * A folyamat futásának monitorozása.
-> * Eredmények áttekintése
+> * Az eredmények áttekintése
 > * További adatok hozzáadása a forráshoz.
 > * A folyamat újbóli futtatása.
 > * A folyamat második futtatásának monitorozása.

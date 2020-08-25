@@ -5,17 +5,17 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
 ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86109575"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz
 
 Ez a cikk segít felkészülni a helyszíni VMware virtuális gépek felmérésére és áttelepítésére az Azure-ban [Azure Migrate](migrate-services-overview.md)használatával.
 
-Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket. Az oktatóanyag a következőket ismerteti:
+Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmérni és áttelepíteni a VMware virtuális gépeket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
@@ -25,7 +25,7 @@ Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan lehet felmé
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Hasznosnak bizonyulnak a gyors próba-koncepció. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
@@ -160,7 +160,7 @@ Azure Migrate készülék csatlakoztatja a vCenter Servert a virtuális gépek �
 Azt is megteheti, hogy létrehoz egy fiókot. Ezután hozzon létre egy szerepkört, és rendelje hozzá a fiókhoz az alábbiak szerint:
 
 1. Jelentkezzen be a gömb webes ügyfelére vCenter Server rendszergazdaként
-2. Válassza ki a vCenter Server példányt > **hozzon létre szerepkört**.
+2. Válassza ki a vCenter Server példányt >  **hozzon létre szerepkört**.
 3. Adja meg a szerepkör nevét, például <em>Azure_Migrate</em>, és rendelje hozzá a [szükséges engedélyeket](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless) a szerepkörhöz.
 
     ![vCenter Server fiók jogosultságai](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
@@ -188,7 +188,7 @@ A VMware virtuális gépeket [ügynök nélküli vagy ügynök alapú áttelepí
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

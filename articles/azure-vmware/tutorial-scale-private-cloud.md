@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: privát felhő méretezése'
-description: Ebben az oktatóanyagban a Azure Portal használatával méretezheti az Azure VMware-megoldás (AVS) előzetes verziójának privát felhőjét.
+description: Ebben az oktatóanyagban a Azure Portal használatával méretezheti az Azure VMware-megoldás előzetes privát felhőjét.
 ms.topic: tutorial
-ms.date: 05/04/2020
-ms.openlocfilehash: 70d8c1c555badd6102f4b2547492bdea54e55783
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.date: 08/21/2020
+ms.openlocfilehash: dddfbddd57f3ad6b541d11c360aeadea4383044a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740289"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750434"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-avs-preview-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás (AVS) – előzetes verziójú privát felhő méretezése
+# <a name="tutorial-scale-an-azure-vmware-solution-preview-private-cloud"></a>Oktatóanyag: Azure-beli VMware-megoldás előnézetének saját felhőbe méretezése
 
-Annak érdekében, hogy a lehető legtöbbet hozza ki a saját AVS előzetes verziójához, a fürtöket és a gazdagépeket úgy méretezheti, hogy megfeleljenek a tervezett munkaterhelésekhez szükséges igényeknek. Mivel az AVS nem támogatja a helyszíni vCenter az előzetes verzióban, a már létrehozott Azure Portal használatával kell használnia.
+Annak érdekében, hogy a lehető legtöbbet hozza ki az Azure VMware-megoldás előzetes verziójával, a fürtöket és a gazdagépeket úgy méretezheti, hogy azok tükrözzék a tervezett munkaterhelésekhez szükséges igényeket. Mivel az Azure VMware-megoldás nem támogatja a helyszíni vCenter az előzetes verzióban, a Azure Portalon keresztül már létrehozott módon kell használnia.
 
-Az alkalmazás számítási feladataihoz szükség szerint méretezheti a fürtök számát és a privát felhőben lévő gazdagépek számát. Az adott szolgáltatások teljesítmény-és rendelkezésre állási korlátozásait eseti alapon kell kezelni az AVS előzetes felhőalapú környezetében. A privát felhőben a fürt és a gazdagép korlátai a [Private Cloud Concept című cikkben](concepts-private-clouds-clusters.md)találhatók.
+Az alkalmazás számítási feladataihoz szükség szerint méretezheti a fürtök számát és a privát felhőben lévő gazdagépek számát. Az egyes szolgáltatások teljesítmény-és rendelkezésre állási korlátozásait eseti alapon kell kezelni az Azure VMware-megoldás előzetes felhőalapú környezetében. A privát felhőben a fürt és a gazdagép korlátai a [Private Cloud Concept című cikkben](concepts-private-clouds-clusters.md)találhatók.
 
 Ebben az oktatóanyagban a Azure Portal a következőket használja:
 
@@ -28,31 +28,31 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy privát felhőre. Ha még ne
 
 ## <a name="add-a-new-cluster"></a>Új fürt hozzáadása
 
-Egy meglévő privát felhő áttekintés lapján kattintson a **kezelés**alatt a **saját felhő méretezése**lehetőségre. Ezután válassza **a + fürt hozzáadása**elemet.
+1. Egy meglévő privát felhő áttekintés lapján kattintson a **kezelés**alatt a **saját felhő méretezése**lehetőségre. Ezután válassza **a + fürt hozzáadása**elemet.
 
-:::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="Válassza a fürt hozzáadása lehetőséget" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="Válassza a fürt hozzáadása lehetőséget" border="true":::
 
-A **fürt hozzáadása** lapon a csúszka segítségével válassza ki a gazdagépek számát. Kattintson a **Mentés** gombra.
+1. A **fürt hozzáadása** lapon a csúszka segítségével válassza ki a gazdagépek számát. Kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Új privát felhőalapú fürt konfigurálása" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="A fürt hozzáadása lapon a csúszka segítségével válassza ki a gazdagépek számát. Válassza a mentés lehetőséget." border="true":::
 
-Ekkor megkezdődik az új fürt üzembe helyezése.
+   Ekkor megkezdődik az új fürt üzembe helyezése.
 
 ## <a name="scale-a-cluster"></a>Fürt skálázása 
 
-Egy meglévő privát felhő áttekintés lapján válassza a **privát felhő méretezése** lehetőséget, és a ceruza ikont választva szerkessze a fürtöt.
+1. Egy meglévő privát felhő áttekintés lapján válassza a **privát felhő méretezése** lehetőséget, és a ceruza ikont választva szerkessze a fürtöt.
 
-:::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="A privát felhő méretezése az Áttekintés lapon" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="A privát felhő méretezése az Áttekintés lapon" border="true":::
 
-A **fürt szerkesztése** lapon a csúszka segítségével válassza ki a gazdagépek számát. Kattintson a **Mentés** gombra.
+1. A **fürt szerkesztése** lapon a csúszka segítségével válassza ki a gazdagépek számát. Kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="Új privát felhőalapú fürt konfigurálása" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="A fürt szerkesztése lapon a csúszka segítségével válassza ki a gazdagépek számát. Válassza a mentés lehetőséget." border="true":::
 
-Elindul a gazdagépek hozzáadása a fürthöz.
+   Elindul a gazdagépek hozzáadása a fürthöz.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha egy másik AVS Private-felhőre van szüksége, [hozzon létre egy másik privát felhőt](tutorial-create-private-cloud.md), amely a hálózat előfeltételeit, a fürt és a gazdagép korlátait követi...
+Ha szüksége van egy másik Azure VMware-megoldás saját felhőre, [hozzon létre egy másik privát felhőt](tutorial-create-private-cloud.md), amely a hálózat előfeltételeit, a fürt és a gazdagép korlátait követi.
 
 <!-- LINKS - external-->
 

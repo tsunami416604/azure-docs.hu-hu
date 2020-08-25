@@ -16,10 +16,10 @@ ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81254002"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
@@ -128,7 +128,7 @@ Adjon engedélyt az Azure CDN számára, hogy hozzáférhessen az Azure Key Vaul
 
     ![Új hozzáférési szabályzat létrehozása](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. A **Rendszerbiztonsági tag kijelölése** alatt keressen rá a **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** azonosítóra és jelölje ki a **Microsoft.Azure.Cdn** elemet. Kattintson a **Kiválasztás** gombra.
+2. A **Rendszerbiztonsági tag kijelölése** alatt keressen rá a **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** azonosítóra és jelölje ki a **Microsoft.Azure.Cdn** elemet. Kattintson a **Kiválasztás** elemre.
 
     ![Hozzáférési szabályzat beállításai](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
@@ -178,7 +178,7 @@ Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a CDN-végpont gazdaneve:
 
-| Name (Név)            | Típus  | Érték                 |
+| Név            | Típus  | Érték                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -194,7 +194,7 @@ Az automatikus érvényesítés általában néhány órát vesz igénybe. Ha ne
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Az egyéni tartomány nincs leképezve a CDN-végpontra
 
 >[!NOTE]
->Ha **Azure CDNt**használ a Akamai-ból, a következő CNAME-t be kell állítani az automatikus tartomány-ellenőrzés engedélyezéséhez. "_acme-Challenge. &lt;egyéni tartomány hostname&gt; -> CNAME-> &lt;egyéni tartomány hostname&gt;. AK-Acme-Challenge.azureedge.net "
+>Ha **Azure CDNt**használ a Akamai-ból, a következő CNAME-t be kell állítani az automatikus tartomány-ellenőrzés engedélyezéséhez. "_acme-Challenge. &lt; egyéni tartomány hostname &gt; -> CNAME-> &lt; egyéni tartomány hostname &gt; . AK-Acme-Challenge.azureedge.net "
 
 Ha a CNAME rekord bejegyzése tartalmazza a cdnverify altartományt, kövesse az ebben a lépésben szereplő további utasításokat.
 
@@ -206,7 +206,7 @@ webmaster@&lt;az-ön-tartományneve.com&gt;
 hostmaster@&lt;az-ön-tartományneve.com&gt;  
 postmaster@&lt;az-ön-tartományneve.com&gt;  
 
-Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemét-szűrőt használ, adja hozzá verification@digicert.com az engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemét-szűrőt használ, adja hozzá az verification@digicert.com engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
     
 ![Tartományérvényesítési e-mail](./media/cdn-custom-ssl/domain-validation-email.png)
 

@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja vissza 
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 282f0ee61ffae455d6d3e49ea445d5ddc2fe56ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500827"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762283"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -290,7 +290,7 @@ Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra,
     chown -R <SID>adm:sapsys <directory>
     ```
 
-1. Futtassa a következő parancsokat`<SID>adm`
+1. Futtassa a következő parancsokat `<SID>adm`
 
     ```bash
     su - <sid>adm
@@ -304,9 +304,9 @@ Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra,
 
     A fenti parancsban:
 
-    * `<DataFileDir>`– a teljes biztonsági mentést tartalmazó mappa
-    * `<LogFilesDir>`– a napló biztonsági másolatait tartalmazó mappa
-    * `<PathToPlaceCatalogFile>`– az a mappa, ahová a katalógust létre kell hozni
+    * `<DataFileDir>` – a teljes biztonsági mentést tartalmazó mappa
+    * `<LogFilesDir>` – a napló biztonsági másolatait tartalmazó mappa
+    * `<PathToPlaceCatalogFile>` – az a mappa, ahová a katalógust létre kell hozni
 
 1. Állítsa vissza az újonnan létrehozott katalógusfájlt a HANA studión keresztül, vagy futtassa a HDBSQL-visszaállítási lekérdezést ezzel az újonnan létrehozott katalógussal. Az HDBSQL-lekérdezések az alábbi listában láthatók:
 
@@ -320,12 +320,12 @@ Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra,
         RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
         ```
 
-        * `<DatabaseName>`– A visszaállítani kívánt új adatbázis vagy meglévő adatbázis neve
-        * `<Timestamp>`– Az időponthoz tartozó visszaállítás pontos időbélyege
-        * `<DatabaseName@HostName>`– Annak az adatbázisnak a neve, amelynek biztonsági másolatát a rendszer a visszaállításhoz használja, valamint a **gazdagép** -vagy SAP HANA-kiszolgáló nevét, amelyen az adatbázis található. A `USING SOURCE <DatabaseName@HostName>` beállítással megadhatja, hogy az adatbiztonsági másolat (visszaállításra használt) egy másik SID vagy nevű adatbázis, mint a cél SAP HANA gép. Így nem kell megadnia a visszatároláshoz ugyanazt a HANA-kiszolgálót, amelyről a biztonsági mentés készült.
+        * `<DatabaseName>` – A visszaállítani kívánt új adatbázis vagy meglévő adatbázis neve
+        * `<Timestamp>` – Az időponthoz tartozó visszaállítás pontos időbélyege
+        * `<DatabaseName@HostName>` – Annak az adatbázisnak a neve, amelynek biztonsági másolatát a rendszer a visszaállításhoz használja, valamint a **gazdagép** -vagy SAP HANA-kiszolgáló nevét, amelyen az adatbázis található. A `USING SOURCE <DatabaseName@HostName>` beállítással megadhatja, hogy az adatbiztonsági másolat (visszaállításra használt) egy másik SID vagy nevű adatbázis, mint a cél SAP HANA gép. Így nem kell megadnia a visszatároláshoz ugyanazt a HANA-kiszolgálót, amelyről a biztonsági mentés készült.
         * `<PathToGeneratedCatalogInStep3>`– A **3. lépésben** létrehozott katalógusfájl elérési útja
-        * `<DataFileDir>`– a teljes biztonsági mentést tartalmazó mappa
-        * `<LogFilesDir>`– a napló biztonsági másolatait tartalmazó mappa
+        * `<DataFileDir>` – a teljes biztonsági mentést tartalmazó mappa
+        * `<LogFilesDir>` – a napló biztonsági másolatait tartalmazó mappa
         * `<BackupIdFromJsonFile>`– a **3. lépésben** kinyert **biztonsági másolat azonosítója**
 
     * Visszaállítás egy adott teljes vagy különbözeti biztonsági másolatra:
@@ -336,12 +336,12 @@ Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra,
         RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
         ```
 
-        * `<DatabaseName>`– a visszaállítani kívánt új adatbázis vagy meglévő adatbázis neve
-        * `<Timestamp>`– az időponthoz tartozó visszaállítás pontos időbélyege
-        * `<DatabaseName@HostName>`– annak az adatbázisnak a neve, amelynek biztonsági másolatát a rendszer a visszaállításhoz használja, valamint a **gazdagép** -vagy SAP HANA-kiszolgáló nevét, amelyen az adatbázis található. A `USING SOURCE <DatabaseName@HostName>` beállítással megadhatja, hogy az adatbiztonsági másolat (visszaállításra használt) egy másik SID vagy nevű adatbázis, mint a cél SAP HANA gép. Ezért nem kell megadnia a visszaállításokat azon a HANA-kiszolgálón, amelyről a biztonsági mentés készült.
+        * `<DatabaseName>` – a visszaállítani kívánt új adatbázis vagy meglévő adatbázis neve
+        * `<Timestamp>` – az időponthoz tartozó visszaállítás pontos időbélyege
+        * `<DatabaseName@HostName>` – annak az adatbázisnak a neve, amelynek biztonsági másolatát a rendszer a visszaállításhoz használja, valamint a **gazdagép** -vagy SAP HANA-kiszolgáló nevét, amelyen az adatbázis található. A `USING SOURCE <DatabaseName@HostName>`  beállítással megadhatja, hogy az adatbiztonsági másolat (visszaállításra használt) egy másik SID vagy nevű adatbázis, mint a cél SAP HANA gép. Ezért nem kell megadnia a visszaállításokat azon a HANA-kiszolgálón, amelyről a biztonsági mentés készült.
         * `<PathToGeneratedCatalogInStep3>`– a **3. lépésben** létrehozott katalógusfájl elérési útja
-        * `<DataFileDir>`– a teljes biztonsági mentést tartalmazó mappa
-        * `<LogFilesDir>`– a napló biztonsági másolatait tartalmazó mappa
+        * `<DataFileDir>` – a teljes biztonsági mentést tartalmazó mappa
+        * `<LogFilesDir>` – a napló biztonsági másolatait tartalmazó mappa
         * `<BackupIdFromJsonFile>`– a **3. lépésben** kinyert **biztonsági másolat azonosítója**
 
 ## <a name="next-steps"></a>További lépések

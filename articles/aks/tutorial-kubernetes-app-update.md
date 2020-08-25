@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77593376"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások frissítése az Azure Kubernetes Service-ben (AKS)
@@ -50,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Mentse és zárja be a fájlt. A `vi`alkalmazásban `:wq`használja a t.
+Mentse és zárja be a fájlt. A `vi` alkalmazásban használja a t `:wq` .
 
 ## <a name="update-the-container-image"></a>A tárolórendszerkép frissítése
 
@@ -147,9 +147,9 @@ Most nyisson meg egy helyi webböngészőt a szolgáltatás IP-címére:
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban frissített egy alkalmazást, és felvetítette ezt a frissítést az AK-fürtbe. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban frissített egy alkalmazást, és felvetítette ezt a frissítést az AK-fürtbe. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az előtér-alkalmazás kódjának frissítése

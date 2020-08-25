@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181158"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
@@ -46,7 +46,7 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 
 | Sample | Leírás |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Webes API-t meghívó egyoldalas alkalmazás (single-page application, SPA). A hitelesítés Azure AD B2C a MSAL. js használatával történik. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Webes API-t meghívó egyoldalas alkalmazás (single-page application, SPA). A hitelesítés Azure AD B2C MSAL.js használatával történik. |
 
 ## <a name="saml-test-application"></a>SAML-teszt alkalmazás
 

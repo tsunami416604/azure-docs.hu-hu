@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77565468"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Oktatóanyag: Riasztás kiváltó okainak elemzése
@@ -30,7 +30,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A kiváltó okok elemzése
 > * Új szabály létrehozása az eredmények alapján
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -52,7 +52,7 @@ A teherautók hőmérsékleti telemetriájának megtekintéséhez kattintson **T
 
 [![RM-irányítópult alacsony Temp riasztással](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
 
-## <a name="explore-the-data"></a>Az adatok vizsgálata
+## <a name="explore-the-data"></a>Az adatok feltárása
 
 Az alacsony hőmérsékleti riasztás okának megállapításához nyissa meg a teherautó telemetriai adatait a Time Series Insights Explorerben. Kattintson az irányítópulton lévő **Vizsgálat a Time Series Insightsban** hivatkozások bármelyikére:
 
@@ -96,7 +96,7 @@ A szabályok létrehozását és módosítását az [Eszközökkel kapcsolatos p
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt mutatta be, hogyan használható a Time Series Insights Explorer a távoli monitorozási megoldásgyorsítóval riasztások kiváltó okainak elemzésére. A következő oktatóanyagból azt tudhatja meg, hogyan használhatja a megoldásgyorsítót a csatlakoztatott eszközök problémáinak azonosítására és javítására.
 

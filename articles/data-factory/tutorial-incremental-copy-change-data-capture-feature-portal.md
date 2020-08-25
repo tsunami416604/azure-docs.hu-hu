@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
 ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86085718"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Adatok növekményes betöltése az Azure SQL felügyelt példányairól az Azure Storage-ba az adatváltozások rögzítése (CDC) használatával
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban létrehoz egy folyamatot, amely a következő művelete
    2. Hozzon létre egy **IF feltételt** , és ellenőrizze, hogy módosult-e a rekordok, és ha igen, hívja meg a másolási tevékenységet.
    3. Hozzon létre egy **másolási tevékenységet** a CDC tábla beszúrt/frissített/törölt értékének az Azure Blob Storageba való másolásához.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure SQL Database felügyelt példány**. Ezt az adatbázist használjuk **forrásadattárként**. Ha nem rendelkezik Azure SQL Database felügyelt példánnyal, tekintse meg az egy [Azure SQL Database felügyelt példány létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) című cikket a létrehozás lépéseihez.
@@ -100,7 +100,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     > [!NOTE]
     > Az adatváltozások rögzítése előtt a rendszer nem rögzíti a tábla korábbi módosításait.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
@@ -124,7 +124,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza ki a **git engedélyezése**lehetőséget.     
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Create** (Létrehozás) gombra.
 8. Miután az üzembe helyezés befejeződött, kattintson az **Ugrás erőforrásra** elemre.
 
    ![Data factory kezdőlap](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
@@ -152,7 +152,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
    1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
    2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
-   3. Kattintson a **Save** (Mentés) gombra.
+   3. Kattintson a **Mentés** gombra.
 
    ![Azure Storage-fiók beállításai](./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -193,7 +193,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadatokat jelöl
 3. A **készlet tulajdonságai** lapon állítsa be az adatkészlet nevét és a kapcsolatok adatait:
  
    1. Válassza a **AzureSqlMI1** elemet a **társított szolgáltatáshoz**.
-   2. Válassza a **[dbo] lehetőséget. [ **a **tábla neve**dbo_customers_CT].  Megjegyzés: Ez a tábla automatikusan jött létre, amikor a CDC engedélyezve lett az ügyfelek táblában. A módosított adatok soha nem jelennek meg közvetlenül ebből a táblából, hanem a [CDC funkcióival](https://docs.microsoft.com/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15)kinyerve.
+   2. Válassza a **[dbo] lehetőséget. [ ** a **tábla neve**dbo_customers_CT].  Megjegyzés: Ez a tábla automatikusan jött létre, amikor a CDC engedélyezve lett az ügyfelek táblában. A módosított adatok soha nem jelennek meg közvetlenül ebből a táblából, hanem a [CDC funkcióival](https://docs.microsoft.com/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15)kinyerve.
 
    ![Forráskapcsolat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
 
@@ -409,7 +409,7 @@ A második fájl az `raw` nevű tároló `customers/incremental/YYYY/MM/DD` mapp
 ![Kimeneti fájl növekményes másolásból](media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-run.png)
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]

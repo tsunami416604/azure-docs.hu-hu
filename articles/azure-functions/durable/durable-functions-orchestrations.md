@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033642"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750190"
 ---
 # <a name="durable-orchestrations"></a>Tartós összeszerelések
 
@@ -51,7 +51,7 @@ Ha egy összehangoló függvény több munkát tesz elérhetővé (például vá
 > Ahhoz, hogy az újrajátszás mintája megfelelően működjön és megbízható legyen, a Orchestrator függvény kódjának *determinisztikus*kell lennie. A Orchestrator függvények kódjainak korlátozásával kapcsolatos további információkért lásd a [Orchestrator-függvényekre](durable-functions-code-constraints.md) vonatkozó korlátozásokkal foglalkozó témakört.
 
 > [!NOTE]
-> Ha egy Orchestrator-függvény naplófájlokat bocsát ki, a visszajátszás viselkedése duplikált üzeneteket eredményezhet. Tekintse meg a [naplózási](durable-functions-diagnostics.md#logging) témakört, amelyből megtudhatja, miért fordul elő ez a viselkedés, és hogyan lehet megkerülni.
+> Ha egy Orchestrator-függvény naplófájlokat bocsát ki, a visszajátszás viselkedése duplikált üzeneteket eredményezhet. Tekintse meg a [naplózási](durable-functions-diagnostics.md#app-logging) témakört, ahol további információt talál a működésével és megoldásával kapcsolatban.
 
 ## <a name="orchestration-history"></a>Előkészítési előzmények
 
@@ -124,7 +124,7 @@ Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon e
 
 Befejezésekor a korábban bemutatott függvény előzményei a következő táblázathoz hasonlóan jelennek meg az Azure Table Storage (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Bevitel | Name             | Eredmény                                                    | status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Bevitel | Név             | Eredmény                                                    | status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -348,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="getweather-activity"></a>`GetWeather`Tevékenység
+#### <a name="getweather-activity"></a>`GetWeather` Tevékenység
 
 ```javascript
 module.exports = async function (context, location) {
@@ -376,7 +376,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     # ...
 
 ```
-#### <a name="getweather-activity"></a>`GetWeather`Tevékenység
+#### <a name="getweather-activity"></a>`GetWeather` Tevékenység
 
 ```python
 from collections import namedtuple
