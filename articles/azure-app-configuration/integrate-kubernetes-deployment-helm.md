@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
 ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83725669"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzembe helyezésével a Helm használatával
@@ -23,7 +23,7 @@ A kiadási folyamat során a Helm a megfelelő konfigurációval egyesíti a dia
 
 A *Values. YAML* tárolt értékek felülbírálása érdekében további YAML konfigurációs fájlok is megadhatók a parancssorban a Helm futtatásakor. Az Azure app Configuration támogatja a konfigurációs értékek exportálását a YAML-fájlokba. Az exportálási funkció integrálása az üzembe helyezésbe lehetővé teszi, hogy a Kubernetes-alkalmazások kihasználják az alkalmazás konfigurációjában tárolt konfigurációs értékeket.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Alkalmazások konfigurációjának használata az alkalmazás Kubernetes való telepítésekor a Helm használatával.
 > * Hozzon létre egy Kubernetes titkot egy Key Vault hivatkozás alapján az alkalmazás konfigurációjában.
@@ -233,11 +233,11 @@ Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jel
 
 ![Gyorsindítás alkalmazás elindítása helyi](./media/kubernetes-dashboard-secrets.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure-alkalmazás konfigurációs beállításait exportálta egy Kubernetes-telepítésben a Helm használatával. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 

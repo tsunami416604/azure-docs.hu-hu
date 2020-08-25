@@ -3,18 +3,18 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware szoftver által meghatározott adatközpontok és vSphere-fürtök főbb lehetőségeit az Azure-beli VMware-megoldásokban.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906989"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752290"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás (AVS) előzetes verzió – privát felhő és fürt – fogalmak
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – előzetes verzió – saját felhő és fürt – fogalmak
 
-Az Azure VMware-megoldás (AVS) VMware-alapú privát felhőket biztosít az Azure-ban. A privát felhők dedikált operációs rendszer nélküli gazdagépekről épülnek, és a Azure Portalon keresztül telepítik és felügyelik azokat. A privát felhőkben lévő fürtök VMware vSphere, vCenter, vSAN és NSX szoftverrel vannak kiépítve. Az AVS Private Cloud hardver-és szoftver-üzembe helyezése teljes mértékben integrált és automatizált az Azure-ban.
+Az Azure VMware-megoldás VMware-alapú privát felhőket biztosít az Azure-ban. A privát felhők dedikált operációs rendszer nélküli gazdagépekről épülnek, és a Azure Portalon keresztül telepítik és felügyelik azokat. A privát felhőkben lévő fürtök VMware vSphere, vCenter, vSAN és NSX szoftverrel vannak kiépítve. Az Azure VMware megoldás saját Felhőbeli hardveres és szoftveres üzembe helyezése teljesen integrált és automatizált az Azure-ban.
 
-Logikai kapcsolat áll fenn az Azure-előfizetések, az AVS-beli privát felhők, a vSAN-fürtök és a gazdagépek között. A diagramon két privát felhők jelennek meg egyetlen Azure-előfizetésben. A privát felhők fejlesztést és éles környezetet jelentenek, amelyek mindegyike saját privát felhővel rendelkezik. Ezekben a privát felhőkben két fürt található. A fejlesztési környezet alacsonyabb lehetséges igényeinek megjelenítéséhez az alacsonyabb kapacitású gazdagépekkel rendelkező kisebb fürtöket használja a rendszer. A fogalmakat az alábbi szakasz ismerteti.
+Logikai kapcsolat áll fenn az Azure-előfizetések, az Azure VMware megoldás privát felhők, a vSAN-fürtök és a gazdagépek között. A diagramon két privát felhők jelennek meg egyetlen Azure-előfizetésben. A privát felhők fejlesztést és éles környezetet jelentenek, amelyek mindegyike saját privát felhővel rendelkezik. Ezekben a privát felhőkben két fürt található. A fejlesztési környezet alacsonyabb lehetséges igényeinek megjelenítéséhez az alacsonyabb kapacitású gazdagépekkel rendelkező kisebb fürtöket használja a rendszer. A fogalmakat az alábbi szakasz ismerteti.
 
 ![Az ügyfél-előfizetés két privát felhők képe](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,7 +34,7 @@ A fürtöket a portálon vagy az API-n keresztül hozhatja létre, törölheti �
 
 ## <a name="hosts"></a>Hosts
 
-A Hyper-konvergens, operációs rendszer nélküli infrastruktúra-csomópontok az AVS Private Cloud fürtökben használatosak. A gazdagép RAM-, CPU-és lemezterület-kapacitása az alábbi táblázatban található. 
+A Hyper-konvergens, operációs rendszer nélküli infrastruktúra-csomópontok az Azure VMware megoldás saját felhőalapú fürtjében használatosak. A gazdagép RAM-, CPU-és lemezterület-kapacitása az alábbi táblázatban található. 
 
 | Állomás típusa              |             CPU             |   Memória (GB)   |  vSAN NVMe gyorsítótárazási szintje (TB, nyers)  |  vSAN SSD kapacitási szintje (TB, nyers)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -44,27 +44,27 @@ A fürtök létrehozásához vagy méretezéséhez használt gazdagépek a gazda
 
 ## <a name="vmware-software-versions"></a>VMware-szoftverek verziói
 
-Az AVS Private Cloud Clusters-ben használt VMware-szoftver jelenlegi verziói a következők:
+Az Azure VMware-megoldás saját felhőalapú fürtjében használt VMware-szoftver aktuális szoftververzió a következők:
 
 | Szoftverek              |    Verzió   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6,7 U2    | 
 | ESXi                  |    6,7 U2    | 
 | vSAN                  |    6,7 U2    |
-| NSX – T                 |      2.5     |
+| NSX – T                 |      2,5     |
 
 A privát felhőben lévő összes új fürt esetében a szoftver verziója egyezik a privát felhőben jelenleg futókkal. Az ügyfél-előfizetésben lévő összes új privát felhő esetén a szoftveres verem legújabb verziója van telepítve.
 
-Az AVS platform szoftverre vonatkozó általános frissítési szabályzatokat és folyamatokat a frissítési fogalmakat ismertető dokumentum ismerteti.
+Az Azure VMware Solution platform szoftverre vonatkozó általános frissítési szabályzatokat és folyamatokat a frissítési fogalmakat ismertető dokumentum ismerteti.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Gazdagép-karbantartás és életciklus-kezelés
 
 A gazdagép-karbantartási és életciklus-felügyelet a privát felhőalapú fürtök kapacitására vagy teljesítményére gyakorolt hatás nélkül történik. Az automatizált gazdagépek karbantartására például a belső vezérlőprogram frissítése és a hardver javítása vagy cseréje tartozik.
 
-A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Az AVS Private Cloud rendszergazdája a NSX-T SDN-konfigurációért felelős, például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
+A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Rendszergazdaként az Azure VMware-megoldás saját felhője számára a NSX-T SDN-konfiguráció, például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó felelősek.
 
 > [!IMPORTANT]
-> Az AVS-rendszergazdák nem változtathatják meg a NSX-T Edge vagy a 0. rétegbeli átjáró konfigurációját. Ez a szolgáltatás elvesztését eredményezheti.
+> Az Azure VMware-megoldás rendszergazdája nem módosíthatja az NSX-T Edge vagy a 0. rétegbeli átjáró konfigurációját. Ez a szolgáltatás elvesztését eredményezheti.
 
 ## <a name="backup-and-restoration"></a>Biztonsági mentés és helyreállítás
 

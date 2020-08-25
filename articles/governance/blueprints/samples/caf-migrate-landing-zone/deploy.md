@@ -4,10 +4,10 @@ description: Üzembe helyezési lépések a CAF Migration Landing Zone tervhez �
 ms.date: 05/06/2020
 ms.topic: sample
 ms.openlocfilehash: 109c9a2c4c5670d6f5a676498ae1010a4ab0e418
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82871180"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
@@ -22,7 +22,7 @@ Az Azure-tervezetek a CAF migrációs bevezetési zóna tervezetének üzembe he
 > - A minta másolatának megjelölése **közzétettként**
 > - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
 
 ## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 

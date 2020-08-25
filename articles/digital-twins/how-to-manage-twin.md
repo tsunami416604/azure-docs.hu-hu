@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587599"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796952"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 Ez a hívás a Twin-adatok JSON-karakterláncként való visszaadása. 
 
-> [!TIP]
-> Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor lekéri a két értéket `GetDigitalTwin` .
+Csak a legalább egyszer beállított tulajdonságokat adja vissza a rendszer, amikor lekéri a két értéket `GetDigitalTwin` .
+
+>[!TIP]
+>A `displayName` for a Twin a modell metaadatai részét képezi, így nem fog megjelenni, amikor a Twin példányhoz adatokat kap. Ha meg szeretné tekinteni ezt az értéket, [a modellből](how-to-manage-model.md#retrieve-models)kérheti le.
 
 Ha több Twins egyetlen API-hívással szeretne beolvasni, tekintse meg a következő témakörben található lekérdezési API-példákat [*: a Twin Graph lekérdezése*](how-to-query-graph.md).
 
@@ -380,7 +382,7 @@ Az összes ikrek egyszerre történő törléséről például töltse le az okt
 
 Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
 * [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

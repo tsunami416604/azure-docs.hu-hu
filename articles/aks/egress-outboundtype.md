@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214226"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796969"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan szabhatja testre a fürt kimenő útvonalát az egy�
 
 ## <a name="overview-of-outbound-types-in-aks"></a>A kimenő típusok áttekintése az AK-ban
 
-Az AK-fürtök testreszabhatók egyedi típusú `outboundType` Load Balancer vagy felhasználó által definiált útválasztás használatával.
+Az AK-fürtök testreszabhatók egyedi `outboundType` típussal `loadBalancer` vagy `userDefinedRouting` .
 
 > [!IMPORTANT]
 > A kimenő típus csak a fürt kimenő forgalmára van hatással. További információ: a [beáramló vezérlők beállítása](ingress-basic.md).
@@ -62,7 +62,11 @@ Ha `userDefinedRouting` be van állítva, az AK nem konfigurálja automatikusan 
 
 Az AK-fürtöt egy korábban konfigurált alhálózattal rendelkező meglévő virtuális hálózatba kell telepíteni, mert ha nem használ standard Load Balancer (SLB) architektúrát, explicit kimenő forgalmat kell létrehoznia. Ebben az architektúrában explicit módon kell elküldeni a kimenő forgalmat egy olyan készülékre, mint például a tűzfal, az átjáró, a proxy vagy a hálózati címfordítás (NAT) a standard Load Balancerhez vagy berendezéshez rendelt nyilvános IP-cím használatával.
 
-Az AK erőforrás-szolgáltató telepíti a standard Load balancert (SLB). A terheléselosztó nincs konfigurálva semmilyen szabállyal, és [nem számítunk fel díjat a szabály elhelyezése előtt](https://azure.microsoft.com/pricing/details/load-balancer/). Az AK **nem** épít ki automatikusan nyilvános IP-címet a SLB-előtérbeli felülethez, és nem konfigurálja automatikusan a terheléselosztó-háttérrendszer-készletet.
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>Terheléselosztó létrehozása a userDefinedRouting
+
+A kimenő UDR rendelkező AK-fürtök csak akkor kapnak standard Load balancert (SLB), ha az első, "terheléselosztó" típusú Kubernetes szolgáltatás telepítve van. A terheléselosztó nyilvános IP-címmel van konfigurálva a *bejövő* kérelmekhez, valamint egy háttérbeli készlet a *bejövő* kérésekhez. A bejövő szabályokat az Azure Cloud Provider konfigurálja, de a kimenő **nyilvános IP-címek és a kimenő szabályok nem** konfigurálhatók a kimenő UDR. A UDR továbbra is az egyetlen forrása a kimenő forgalomnak.
+
+Az Azure Load Balancer [nem számít fel díjat, amíg meg nem kerül egy szabály](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Fürt üzembe helyezése kimenő UDR-típussal és Azure Firewall
 
@@ -70,9 +74,7 @@ Egy felhasználó által megadott útvonal használatával a kimenő típusú f�
 
 > [!IMPORTANT]
 > A UDR kimenő típusa megköveteli, hogy az útválasztási táblázatban a 0.0.0.0/0 és a következő ugrási cél NVA (hálózati virtuális berendezés) legyen.
-> Az útválasztási táblázathoz már tartozik egy alapértelmezett 0.0.0.0/0 az internetre, anélkül, hogy a nyilvános IP-cím SNAT csak ezt az útvonalat adja hozzá, a kimenő forgalom nem fog megjelenni. Az AK ellenőrzi, hogy nem hoz létre 0.0.0.0/0 útvonalat az interneten, hanem NVA vagy átjáróként, stb.
-> 
-> A UDR kimenő típusának használatakor a terheléselosztó nyilvános IP-címe nem jön létre, kivéve, ha *terheléselosztó* típusú szolgáltatás van konfigurálva.
+> Az útválasztási táblázathoz már tartozik egy alapértelmezett 0.0.0.0/0 az internetre, anélkül, hogy a nyilvános IP-cím SNAT csak ezt az útvonalat adja hozzá, a kimenő forgalom nem fog megjelenni. Az AK ellenőrzi, hogy nem hoz létre 0.0.0.0/0 útvonalat az interneten, hanem NVA vagy átjáróként, stb. A UDR kimenő típusának használatakor a rendszer nem hoz létre terheléselosztó nyilvános IP-címet a **bejövő kérelmekhez** , kivéve, ha a *terheléselosztó* típusú szolgáltatások konfigurálva vannak. A **kimenő kérésekhez** tartozó nyilvános IP-címet soha nem hozza létre a rendszer, ha a UDR kimenő típusa van beállítva.
 
 ## <a name="next-steps"></a>Következő lépések
 

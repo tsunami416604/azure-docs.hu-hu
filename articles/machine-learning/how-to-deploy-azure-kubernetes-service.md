@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 03477fa46aaec04c0563ed38b085605dce5b87a1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120830"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751740"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,9 @@ Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként az Azur
 - __Hardveres gyorsítási__ lehetőségek, például GPU és mező – programozható Gate-tömbök (FPGA).
 
 > [!IMPORTANT]
-> A fürt skálázása nincs megadva a Azure Machine Learning SDK-n keresztül. Az AK-fürtök csomópontjainak méretezésével kapcsolatos további információkért lásd: [a csomópontok számának skálázása egy AK-fürtben](../aks/scale-cluster.md).
+> A fürt skálázása nincs megadva a Azure Machine Learning SDK-n keresztül. Az AK-fürtök csomópontjainak méretezésével kapcsolatos további információkért lásd: 
+- [Csomópontok számának manuális skálázása egy AK-fürtben](../aks/scale-cluster.md)
+- [Fürt autoskálázásának beállítása az AK-ban](../aks/cluster-autoscaler.md)
 
 Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterülethez csatlakoztatott__AK-fürtbe helyezi üzembe a szolgáltatást. Az AK-fürtök kétféleképpen csatlakoztathatók a munkaterülethez:
 
@@ -43,7 +45,7 @@ Az AK-fürt és a pénzmosás-munkaterület különböző erőforráscsoport leh
 > [!IMPORTANT]
 > Javasoljuk, hogy a webszolgáltatásba való üzembe helyezés előtt helyileg végezzen hibakeresést. További információ: [helyi hibakeresés](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
-> Azure Machine Learning- [központi telepítés helyi jegyzetfüzetre című témakört](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) is használhatja.
+> További információ: Azure Machine Learning – [Üzembe helyezés helyi notebookba](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,9 +57,9 @@ Az AK-fürt és a pénzmosás-munkaterület különböző erőforráscsoport leh
 
 - A cikkben szereplő __Python__ -kódrészletek azt feltételezik, hogy a következő változók vannak beállítva:
 
-    * `ws`– Állítsa be a munkaterületre.
-    * `model`– Állítsa be a regisztrált modellt.
-    * `inference_config`– Állítsa be a modellre vonatkozó következtetési konfigurációt.
+    * `ws` – Állítsa be a munkaterületre.
+    * `model` – Állítsa be a regisztrált modellt.
+    * `inference_config` – Állítsa be a modellre vonatkozó következtetési konfigurációt.
 
     A változók beállításával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
 
@@ -65,9 +67,16 @@ Az AK-fürt és a pénzmosás-munkaterület különböző erőforráscsoport leh
 
 - Ha egy alapszintű Load Balancer (BLB) helyett a fürtben telepített standard Load Balancerra (SLB) van szüksége, hozzon létre egy fürtöt az AK-portálon/CLI/SDK-ban, majd csatolja a pénzmosás-munkaterülethez.
 
-- Ha egy AK-fürtöt csatlakoztat, amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), engedélyezze a pénzmosás-vezérlési sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és az AK-fürtön üzembe helyezett hüvelyeket helyez üzembe. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetést nem lehet központilag telepíteni. A [párosított régiók]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) [IP-tartományait](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
+- Ha olyan Azure Policy rendelkezik, amely korlátozza a nyilvános IP-címek létrehozását, akkor az AK-fürt létrehozása sikertelen lesz. Az ak-nak nyilvános IP-címet kell megadnia a [kimenő forgalomhoz](https://docs.microsoft.com/azure/aks/limit-egress-traffic). Ez a cikk útmutatást nyújt a kimenő forgalomnak a fürtről a nyilvános IP-címekről történő lekéréséhez, kivéve a teljes tartománynevet. A nyilvános IP-címek engedélyezésének két módja van:
+  - A fürt a BLB vagy a SLB által alapértelmezés szerint létrehozott nyilvános IP-címet is használhatja, vagy
+  - A fürtöt nyilvános IP-cím nélkül is létre lehet hozni, majd a nyilvános IP-cím a felhasználó által megadott útvonallal rendelkező tűzfallal van konfigurálva az [itt](https://docs.microsoft.com/azure/aks/egress-outboundtype) dokumentált módon. 
+  
+  A pénzmosás-vezérlési sík nem kommunikál ehhez a nyilvános IP-címhez. A központi telepítések esetében az AK-vezérlési síkon beszél. 
 
-__A Authroized IP-címtartományok csak standard Load Balancer használhatók.__
+- Ha egy AK-fürtöt csatlakoztat, amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), engedélyezze a pénzmosás Contol sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és az AK-fürtön üzembe helyezett hüvelyeket helyez üzembe. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetést nem lehet központilag telepíteni. A [párosított régiók]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) [IP-tartományait](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
+
+
+  A Authroized IP-címtartományok csak standard Load Balancer használhatók.
  
  - A számítási névnek egyedinek kell lennie a munkaterületen belül
    - A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.
@@ -76,10 +85,6 @@ __A Authroized IP-címtartományok csak standard Load Balancer használhatók.__
    - A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.
    
  - Ha a modelleket GPU-csomópontokra vagy FPGA-csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy fürtöt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
- 
- 
-
-
 
 ## <a name="create-a-new-aks-cluster"></a>Új AK-fürt létrehozása
 
@@ -290,7 +295,7 @@ Azure Machine Learning az "üzembe helyezés" a projekt erőforrásainak elérhe
     1. Ha nem található, a rendszer létrehoz egy új rendszerképet (amely gyorsítótárazza és regisztrálva lesz a munkaterület ACR-ben)
 1. A tömörített projektfájl letöltése a számítási csomóponton lévő ideiglenes tárhelyre
 1. Projektfájl kicsomagolása
-1. A számítási csomópont végrehajtása`python <entry script> <arguments>`
+1. A számítási csomópont végrehajtása `python <entry script> <arguments>`
 1. A `./outputs` munkaterülethez társított Storage-fiókba írt naplók, modellező fájlok és egyéb fájlok mentése
 1. A számítási felskálázás, beleértve az ideiglenes tárolók eltávolítását (a Kubernetes-re vonatkozik)
 
@@ -409,7 +414,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha újra kell létrehoznia egy kulcsot, használja a következőt[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Ha újra kell létrehoznia egy kulcsot, használja a következőt [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
 
@@ -439,7 +444,7 @@ print(token)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

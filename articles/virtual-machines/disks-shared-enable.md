@@ -4,16 +4,16 @@ description: Egy megosztott lemezzel rendelkező Azure felügyelt lemez konfigur
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f6b34cd93dcfabee2974bea5cf57258527df94d7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701506"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752043"
 ---
 # <a name="enable-shared-disk"></a>Megosztott lemez engedélyezése
 
@@ -21,21 +21,21 @@ Ez a cikk ismerteti, hogyan engedélyezheti a megosztott lemezek funkciót az Az
 
 Ha olyan felügyelt lemezeken keres elméleti információkat, amelyeken engedélyezve vannak a megosztott lemezek, tekintse meg a következőt:
 
-* Linux esetén: [Azure megosztott lemezek](./linux/disks-shared.md)
+* Linux esetén: [Azure megosztott lemezek](linux/disks-shared.md)
 
-* Windows esetén: [Azure megosztott lemezek](./windows/disks-shared.md)
+* Windows esetén: [Azure megosztott lemezek](windows/disks-shared.md)
 
 ## <a name="limitations"></a>Korlátozások
 
-[!INCLUDE [virtual-machines-disks-shared-limitations](~/includes/virtual-machines-disks-shared-limitations.md)]
+[!INCLUDE [virtual-machines-disks-shared-limitations](../../includes/virtual-machines-disks-shared-limitations.md)]
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A megosztott lemezek több operációs rendszert támogatnak. Tekintse meg a támogatott operációs rendszerekkel kapcsolatos fogalmi cikk [Windows](~/articles/virtual-machines/windows/disks-shared.md#windows) -és [Linux](~/articles/virtual-machines/linux/disks-shared.md#linux) -részeit.
+A megosztott lemezek több operációs rendszert támogatnak. Tekintse meg a támogatott operációs rendszerekkel kapcsolatos fogalmi cikk [Windows](windows/disks-shared.md#windows) -és [Linux](linux/disks-shared.md#linux) -részeit.
 
 ## <a name="disk-sizes"></a>Lemezek mérete
 
-[!INCLUDE [virtual-machines-disks-shared-sizes](~/includes/virtual-machines-disks-shared-sizes.md)]
+[!INCLUDE [virtual-machines-disks-shared-sizes](../../includes/virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>Megosztott lemezek telepítése
 
@@ -147,7 +147,7 @@ A következő sablon használata előtt cserélje le a,,,,,, `[parameters('dataD
 Miután telepített egy megosztott lemezt a `maxShares>1` használatával, csatlakoztathatja a lemezt egy vagy több virtuális géphez.
 
 > [!NOTE]
-> Ha Ultra-lemezt telepít, győződjön meg arról, hogy az megfelel a szükséges követelményeknek. A részletekért tekintse meg az ultra Disk cikk [PowerShell](~/articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) vagy [CLI](~/articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) szakaszát.
+> Ha Ultra-lemezt telepít, győződjön meg arról, hogy az megfelel a szükséges követelményeknek. A részletekért tekintse meg az ultra Disk cikk [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) vagy [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) szakaszát.
 
 ```azurepowershell-interactive
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2020
-ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/21/2020
+ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036589"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751474"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -72,3 +72,7 @@ Az alábbi JIRAs a HBase-re vannak portolva:
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)találja.
+
+## <a name="known-issues"></a>Ismert problémák
+
+Amikor Azure HDInsight-fürtöt kísérel meg létrehozni a Azure Portalból, és egy nyilvános kulcsú SSH-hitelesítési típust használ, a felhasználók hibát tapasztalnak, amikor a **felülvizsgálat + létrehozás**gombra kattintanak. A portálon található hiba "nem tartalmazhat három egymást követő karaktert az SSH-felhasználónévből." A probléma megoldása folyamatban van; Ha azonban ezt a hibát tapasztalja, a megkerülő megoldás létrehoz egy ARM-sablonnal rendelkező fürtöt. 

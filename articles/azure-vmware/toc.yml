@@ -1,14 +1,14 @@
-- name: Azure VMware Solution (AVS)
+- name: Azure VMware Solution
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Azure VMware Solution (AVS) ismertetése
+    - name: Az Azure VMware Solution ismertetése
       href: introduction.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Hálózattervezés
       href: tutorial-network-checklist.md
-    - name: 2 – AVS-magánfelhő létrehozása
+    - name: 2 – Magánfelhő létrehozása
       href: tutorial-create-private-cloud.md
     - name: 3 – Hálózatkezelés konfigurálása
       href: tutorial-configure-networking.md
@@ -38,7 +38,7 @@
       href: concepts-upgrades.md
 - name: Útmutatók
   items:
-    - name: AVS-migrálás értékelése
+    - name: Migrálás kiértékelése
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: HCX beállítása
       href: hybrid-cloud-extension-installation.md
@@ -52,19 +52,19 @@
           href: concepts-api-management.md
         - name: Küllős modell
           href: concepts-avs-hub-and-spoke-integration.md
-        - name: Azure Backup Server AVS-hez
+        - name: Azure Backup Server
           items:
-            - name: A Backup Server beállítása az AVS-hez
+            - name: A Backup Server beállítása
               href: set-up-mabs-for-avs.md
-            - name: AVS-alapú virtuális gépek biztonsági mentése a Backup Serverrel
+            - name: Magánfelhős virtuális gépek biztonsági mentése a Backup Serverrel
               href: backup-avs-vms-with-mabs.md
-        - name: Application Gateway AVS-sel
+        - name: Application Gateway
           href: protect-avs-web-apps-with-app-gateway.md
         - name: Traffic Manager AVS-sel
           href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware-megoldások
       items:
-        - name: A vRealize Operations beállítása az AVS-hez
+        - name: A vRealize Operations beállítása
           href: vrealize-operations-for-avs.md
 - name: Referencia
   items: null
@@ -72,7 +72,7 @@
   items:
     - name: Hibaelhárítás
       items:
-        - name: Segítségkérés az AVS üzembehelyezési vagy kiépítési hibáival kapcsolatban
+        - name: Segítségkérés üzembehelyezési vagy kiépítési hibákhoz
           href: fix-deployment-provisioning-failures.md
     - name: GYIK
       href: faq.md

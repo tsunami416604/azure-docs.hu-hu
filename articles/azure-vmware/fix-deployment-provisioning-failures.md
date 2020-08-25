@@ -1,18 +1,18 @@
 ---
 title: Segítség kérése az Azure VMware-megoldás üzembe helyezésével vagy a kiépítési hibákkal kapcsolatban
-description: A szükséges információk lekérése az Azure VMware-megoldás (AVS) privát felhőből az AVS-telepítésre vagy-létesítési hibákra vonatkozó szolgáltatási kérelem beszerzéséhez.
+description: Hogyan kérheti le a szükséges információkat az Azure VMware-megoldás privát felhőből az Azure VMware-megoldás üzembe helyezésére vagy kiépítésére vonatkozó szolgáltatási kérelem beszerzéséhez.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514577"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752232"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Segítség kérése az Azure VMware-megoldás üzembe helyezésével vagy a kiépítési hibákkal kapcsolatban
 
-Ebből a cikkből megtudhatja, hogyan kérhet segítséget az Azure VMware-megoldás (AVS) üzembe helyezéséhez vagy a meghibásodások kiépítéséhez a privát felhőben, ha megnyit egy szolgáltatási kérelmet (SR) a Azure Portal. Először is össze kell gyűjtenie néhány kulcsfontosságú információt a Azure Portal. A legtöbb esetben a következőkre lesz szüksége:
+Ebből a cikkből megtudhatja, hogyan kérhet segítséget az Azure VMware-megoldás üzembe helyezéséhez vagy a hibák kiépítéséhez a privát felhőben, ha megnyit egy szolgáltatásfiókot (SR) a Azure Portal. Először is össze kell gyűjtenie néhány kulcsfontosságú információt a Azure Portal. A legtöbb esetben a következőkre lesz szüksége:
 
 - Korrelációs azonosító (sikertelen központi telepítés)
 - ExpressRoute Circuit ID (ha egy meglévő privát felhőt szeretne méretezni a saját Felhőbeli ExpressRoute áramkörrel, és nem sikerül)
@@ -27,7 +27,7 @@ Itt látható egy példa arra, hogy egy sikertelen belső Felhőbeli üzemelő p
 
 Másolja és mentse ezt a korrelációs azonosítót a szolgáltatási kérelembe való felvételhez. További részletekért lásd a [támogatási kérelem létrehozásáról](#create-your-support-request) szóló cikket a cikk végén.
 
-Ha a hiba az előzetes ellenőrzési fázisokban történik, a privát felhő üzembe helyezése előtt nem jön létre korrelációs azonosító. Ebben az esetben egyszerűen megadhatja az AVS Private Cloud létrehozásakor használt adatokat, beleértve a következőket:
+Ha a hiba az előzetes ellenőrzési fázisokban történik, a privát felhő üzembe helyezése előtt nem jön létre korrelációs azonosító. Ebben az esetben egyszerűen megadhatja az Azure VMware-megoldás saját felhő létrehozásakor használt adatokat, beleértve a következőket:
 
 - Hely
 - Erőforráscsoport
@@ -53,7 +53,7 @@ Az értesítések területen válassza **a tevékenység naplójának további e
 
 Ezután keressen rá az erőforrás nevére, vagy egy másik, az erőforrás létrehozásakor használt információra, hogy megkeresse a sikertelen üzembe helyezést és a korrelációs AZONOSÍTÓját. Az alábbi példa egy privát felhőalapú erőforrás (pc03) keresési eredményeit jeleníti meg.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Korábbi sikertelen AVS-telepítések keresése.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="A korábbi sikertelen Azure VMware megoldás-telepítések keresése.":::
  
 Ha kiválasztja a sikertelen telepítés műveletének nevét, megnyílik egy ablak, amely részleteket tartalmaz. Válassza a JSON fület, és keresse meg a correlationId. Másolás és Belefoglalás az SR-ben. 
  
@@ -63,7 +63,7 @@ Lehet, hogy már rendelkezik saját felhővel, és hiba lép fel, amikor a sajá
 
 Ha privát felhőt tekint meg a portálon, válassza a **kapcsolat > ExpressRoute** elemet, és másolja a **ExpressRoute-azonosítót** a vágólapra.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute-azonosító gyűjtése."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Másolja a ExpressRoute-azonosítót a vágólapra."::: 
  
 Illessze be a ExpressRoute-azonosítót az új támogatási kérelem megfelelő mezőjébe. További információkért tekintse [meg a támogatási kérést](#create-your-support-request)a következő szakaszban:.
  
@@ -74,11 +74,11 @@ Illessze be a ExpressRoute-azonosítót az új támogatási kérelem megfelelő 
 
 A támogatási kérelem létrehozásával kapcsolatos általános útmutatásért lásd: [Azure-támogatási kérelem létrehozása](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
-Az alábbiakban további útmutatást talál az SR az AVS üzembe helyezéséhez vagy a kiépítési hibákhoz való létrehozásához.
+Az alábbiakban további útmutatást talál az SR Azure-beli VMware-megoldás üzembe helyezéséhez vagy kiépítési hibákhoz való létrehozásához.
 
 1. Válassza a **Súgó** ikont, majd az **+ új támogatási kérelmet**.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="ExpressRoute-azonosító gyűjtése.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="ExpressRoute-azonosító gyűjtése az SR-hez.":::
 
 2. Töltse ki az összes kötelező mezőt, majd az **alapok** lapon:
 

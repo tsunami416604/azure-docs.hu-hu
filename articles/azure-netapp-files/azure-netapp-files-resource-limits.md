@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006672"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752300"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -33,7 +33,7 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 |----------------|---------------------|--------------------------------------|
 |  A NetApp-fiókok száma Azure-régiónként   |  10    |  Igen   |
 |  Kapacitási készletek száma NetApp-fiókban   |    25     |   Igen   |
-|  Kötetek száma NetApp-fiókban   |    500     |   Igen   |
+|  Kötetek száma előfizetéskor   |    500     |   Igen   |
 |  Kötetek száma kapacitási készlet szerint     |    500   |    Igen     |
 |  Pillanatképek másodpercenkénti száma       |    255     |    Nem        |
 |  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    Nem    |
@@ -48,7 +48,7 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 
 További információ: a [kapacitások kezelésével kapcsolatos gyakori kérdések](azure-netapp-files-faqs.md#capacity-management-faqs).
 
-## <a name="maxfiles-limits"></a>Maxfiles korlátok<a name="maxfiles"></a> 
+## <a name="maxfiles-limits"></a>Maxfiles korlátok <a name="maxfiles"></a> 
 
 Azure NetApp Files kötetek *maxfiles*nevű korláttal rendelkeznek. A maxfiles korlátja a kötet által tartalmazott fájlok száma. Egy Azure NetApp Files kötethez tartozó maxfiles-korlát indexelése a kötet mérete (kvóta) alapján történik. A kötetek maxfiles korlátja növekszik vagy csökken a kiosztott kötet méretének 20 000 000-os fájlja alapján. 
 
@@ -64,7 +64,7 @@ A szolgáltatás dinamikusan módosítja a kötet maxfiles korlátját a kioszto
 
 Ha már lefoglalta a kötethez legalább 4 TiB-kvótát, akkor a 100 000 000-nál nagyobb maxfiles-korlát növelésére [támogatási kérést](#limit_increase) kezdeményezhet.
 
-## <a name="request-limit-increase"></a>Kérelmek korlátjának növekedése<a name="limit_increase"></a> 
+## <a name="request-limit-increase"></a>Kérelmek korlátjának növekedése <a name="limit_increase"></a> 
 
 Létrehozhat egy Azure-támogatási kérelmet, amellyel növelheti az állítható korlátokat a fenti táblázatból. 
 
@@ -80,7 +80,7 @@ Azure Portal navigációs síkon:
 4. A Részletek lapon:
     1. A Leírás mezőben adja meg a következő információkat a megfelelő erőforrástípus számára:
 
-        |  Erőforrás  |    Szülő erőforrások      |    Kért új korlátok     |    A kvóta növelésének oka       |
+        |  Erőforrás  |    Szülő erőforrások      |    Kért új korlátok     |    Kvótanövelés oka       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Fiók |  *Előfizetés azonosítója*   |  *Kért új maximális **fiók** száma*    |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |
         |  Készlet    |  *Előfizetés azonosítója, fiók URI azonosítója*  |  *Kért új **készlet** maximális száma*   |  *Milyen forgatókönyv vagy használati eset kéri a kérést?*  |

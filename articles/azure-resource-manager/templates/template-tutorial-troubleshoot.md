@@ -6,10 +6,10 @@ ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86119344"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Oktatóanyag: ARM-sablonok üzembe helyezésének hibakeresése
@@ -29,9 +29,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > - Problémás sablon létrehozása
 > - Érvényesítési hibák elhárítása
 > - Üzembehelyezési hibák elhárítása
-> - Erőforrások felszabadítása
+> - Az erőforrások eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,7 +117,7 @@ Javítsa ki a problémát a Visual Studio Code használatával, majd telepítse 
 
 A gyakori hibák listáját lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managersal](common-deployment-errors.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -126,6 +126,6 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan lehet elhárítani az ARM-sablonok telepítési hibáit.  További információ: [Az Azure központi telepítési hibáinak elhárítása Azure Resource Managersal](common-deployment-errors.md).

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 45e091fe1ed77a4efc90d426b1d9a2842ae00175
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: aa16952d2b2dff6f69abfc37090a9e00b7d48a27
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88725446"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751131"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: névjegykártya-adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -89,7 +89,7 @@ A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card AP
 Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amely segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában szereplő sztring a `operations/` művelet azonosítója.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults{operationID}
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>A névjegykártya eredményeinek beolvasása
@@ -127,12 +127,124 @@ while n_try < n_tries:
 1. Ismét a `python` paranccsal futtassa a mintát. Például: `python form-recognizer-businesscards.py`.
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
-
-A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződik a **névjegykártya elemzése** művelet. Ezután JSON formátumban fogja kinyomtatni a kinyert szöveges adatfájlokat. A `"recognitionResults"` mező a névjegykártyából kinyert szöveg minden sorát tartalmazza, a mező pedig a `"understandingResults"` névjegykártyához tartozó legfontosabb részekre vonatkozó kulcs/érték információkat tartalmazza.
-
 ![A contoso vállalat üzleti kártyája](../media/business-card-english.jpg)
 
-A `"recognitionResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"understandingResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, mint például az adó, a teljes, a kereskedelmi címek és így tovább.
+Ez a példa az űrlap-felismerő által visszaadott JSON-kimenetet mutatja be. Ez a minta a példa olvashatóságára lett csonkítva.
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-06-04T08:19:29Z",
+    "lastUpdatedDateTime": "2020-06-04T08:19:35Z",
+    "analyzeResult": {
+        "version": "2.1.1",
+        "readResults": [
+            {
+                "page": 1,
+                "angle": -17.0956,
+                "width": 4032,
+                "height": 3024,
+                "unit": "pixel"
+            }
+        ],
+        "documentResults": [
+            {
+                "docType": "prebuilt:businesscard",
+                "pageRange": [
+                    1,
+                    1
+                ],
+                "fields": {
+                    "ContactNames": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "object",
+                                "valueObject": {
+                                    "FirstName": {
+                                        "type": "string",
+                                        "valueString": "Avery",
+                                        "text": "Avery",
+                                        "boundingBox": [
+                                            703,
+                                            1096,
+                                            1134,
+                                            989,
+                                            1165,
+                                            1109,
+                                            733,
+                                            1206
+                                        ],
+                                        "page": 1
+                                },
+                                "text": "Dr. Avery Smith",
+                                "boundingBox": [
+                                    419.3,
+                                    1154.6,
+                                    1589.6,
+                                    877.9,
+                                    1618.9,
+                                    1001.7,
+                                    448.6,
+                                    1278.4
+                                ],
+                                "confidence": 0.993
+                            }
+                        ]
+                    },
+                    "Emails": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "string",
+                                "valueString": "avery.smith@contoso.com",
+                                "text": "avery.smith@contoso.com",
+                                "boundingBox": [
+                                    2107,
+                                    934,
+                                    2917,
+                                    696,
+                                    2935,
+                                    764,
+                                    2126,
+                                    995
+                                ],
+                                "page": 1,
+                                "confidence": 0.99
+                            }
+                        ]
+                    },
+                    "Websites": {
+                        "type": "array",
+                        "valueArray": [
+                            {
+                                "type": "string",
+                                "valueString": "https://www.contoso.com/",
+                                "text": "https://www.contoso.com/",
+                                "boundingBox": [
+                                    2121,
+                                    1002,
+                                    2992,
+                                    755,
+                                    3014,
+                                    826,
+                                    2143,
+                                    1077
+                                ],
+                                "page": 1,
+                                "confidence": 0.995
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződik a **névjegykártya elemzése** művelet. A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, például a vállalat nevét, utónevét, vezetéknevét, telefonszámát és így tovább.
+
 
 ## <a name="next-steps"></a>További lépések
 

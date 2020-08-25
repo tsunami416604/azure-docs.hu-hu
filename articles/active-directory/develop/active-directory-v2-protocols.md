@@ -13,12 +13,12 @@ ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2be68a858773dd4e76126ba6cd04ad98a2fd6a06
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 12edbcda7354d9d6d4b03ebe32304d988b2eb579
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313438"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751460"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
 
@@ -30,7 +30,7 @@ Csaknem minden OAuth 2,0 és OpenID Connect-folyamaton belül négy fél vesz r�
 
 ![A OAuth 2,0 szerepköröket bemutató diagram](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* Az **engedélyezési kiszolgáló** a Microsoft Identity platform végpontja, amely a felhasználó személyazonosságának biztosítására, az erőforrásokhoz való hozzáférés megadására és visszavonására, valamint a jogkivonatok kiadására szolgál. Az engedélyezési kiszolgáló más néven az identitás-szolgáltató – biztonságosan kezeli a felhasználó információit, hozzáférését, valamint a folyamat résztvevői közötti megbízhatósági kapcsolatait.
+* Az **engedélyezési kiszolgáló** a Microsoft Identity platform végpontja, amely a felhasználó személyazonosságának biztosítására, az erőforrásokhoz való hozzáférés megadására és visszavonására, valamint a jogkivonatok kiadására szolgál. Az engedélyezési kiszolgálót más néven identitás-szolgáltatónak is nevezzük – biztonságos módon kezeli a felhasználó adatait, hozzáférését, valamint a folyamat résztvevői közötti megbízhatósági kapcsolatait.
 * Az **erőforrás tulajdonosa** általában a végfelhasználó. Ez az a fél, amely az adattulajdonost birtokolja, és lehetővé teszi, hogy az ügyfelek hozzáférjenek ehhez az adatforráshoz vagy erőforráshoz.
 * Az **OAuth-ügyfél** az alkalmazás azonosítója alapján azonosított alkalmazás. A OAuth-ügyfél általában az a fél, akit a végfelhasználó kommunikál, és az engedélyezési kiszolgálótól kér jogkivonatokat. Az ügyfélnek engedélyt kell adni az erőforrás tulajdonos általi eléréséhez.
 * Az **erőforrás-kiszolgáló** , ahol az erőforrás vagy az adat található. Megbízik az engedélyezési kiszolgálón, hogy biztonságosan hitelesítse és engedélyezze az OAuth-ügyfelet, és a tulajdonos hozzáférési jogkivonatait használja annak biztosítására, hogy az erőforrásokhoz való hozzáférés megadható legyen.

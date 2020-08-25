@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81758124"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáró típusú eszköz definiálása az Azure IoT Central-alkalmazásban
@@ -42,7 +42,7 @@ Ez az oktatóanyag egy **S1 szenzoros** eszközhöz és egy **RS40-befoglalási 
 
 Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
-1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza **+** a lehetőséget a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
 1. Görgessen lefelé, amíg meg nem jelenik az **S1 érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
@@ -50,7 +50,7 @@ Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
 Eszköz sablonjának létrehozása ***RS40 foglaltság érzékelő** eszközhöz:
 
-1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza **+** a lehetőséget a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
 1. Görgessen lefelé, amíg meg nem jelenik a ***RS40 foglaltság érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
@@ -67,7 +67,7 @@ Ebben az oktatóanyagban egy eszköz sablonját hozza létre az átjáró-eszkö
 
 Új Gateway-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
-1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza **+** a lehetőséget a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
 1. A **sablon típusának kiválasztása** lapon válassza ki a **IoT-eszköz** csempéjét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
@@ -95,7 +95,7 @@ Következő lépésként vegyen fel kapcsolatokat az alsóbb rétegbeli eszköz�
 
 ![Smart Building Gateway-eszköz sablon, kapcsolatok megjelenítése](./media/tutorial-define-gateway-device-type/relationships.png)
 
-### <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
+### <a name="add-cloud-properties"></a>Felhőtulajdonságok hozzáadása
 
 Az átjáró-eszköz sablonja tartalmazhat Felhőbeli tulajdonságokat. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt.
 
@@ -107,8 +107,8 @@ Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró e
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Ügyfél neve     | None          | Sztring |
+    | Utolsó szervizelés dátuma | Nincsenek          | Date   |
+    | Ügyfél neve     | Nincsenek          | Sztring |
 
 2. Kattintson a **Mentés** gombra.
 
@@ -127,7 +127,7 @@ Az **intelligens építési átjáró eszköz** sablonjának alapértelmezett n�
 
 1. Válassza az **alapértelmezett irányítópult-nézet (ek) előállítása**lehetőséget.
 
-## <a name="publish-the-device-template"></a>Az eszköz közzétételének közzététele
+## <a name="publish-the-device-template"></a>Az eszközsablon közzététele
 
 Szimulált átjáró létrehozása előtt vagy valódi átjáró-eszköz csatlakoztatása előtt közzé kell tennie az eszköz sablonját.
 
@@ -139,7 +139,7 @@ Az átjáró-eszköz sablonjának közzététele:
 
 3. Az **eszköz sablonjának közzététele** párbeszédpanelen válassza a **Közzététel**lehetőséget.
 
-Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszköz sablonjában azonban frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. Ezek a frissítések nem okozzák új verzió létrehozását. A módosítások elvégzése után válassza a **Közzététel** lehetőséget a módosítások elküldéséhez az operátornak.
+Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszköz sablonjában azonban frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. Ezek a frissítések nem okozzák új verzió létrehozását. A módosítások elvégzése után válassza a **Közzététel**  lehetőséget a módosítások elküldéséhez az operátornak.
 
 ## <a name="create-the-simulated-devices"></a>Szimulált eszközök létrehozása
 
@@ -149,7 +149,7 @@ Szimulált átjáró eszköz létrehozása:
 
 1. Az **eszközök** lapon válassza az **intelligens felépítési átjáró eszköz** elemet az eszközök listájában.
 
-1. Új **+** eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
+1. **+** Új eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
 1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
 
@@ -157,13 +157,13 @@ Szimulált alsóbb szintű eszközök létrehozása:
 
 1. Az **eszközök** lapon válassza a **RS40-kihasználtsági érzékelő** elemet az eszközök listájában.
 
-1. Új **+** eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
+1. **+** Új eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
 1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
 
 1. Az **eszközök** lapon válassza az **S1 Sensor** elemet az eszközök listájában.
 
-1. Új **+** eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
+1. **+** Új eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
 1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
 

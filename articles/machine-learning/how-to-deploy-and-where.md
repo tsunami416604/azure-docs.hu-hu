@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d7502414f6476cafcc85bbefd28a4ec463f62099
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185417"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751687"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,7 +76,7 @@ Az SDK munkaterülethez való kapcsolódásával kapcsolatos további informáci
 ---
 
 
-## <a name="register-your-model"></a><a id="registermodel"></a>A modell regisztrálása
+## <a name="register-your-model"></a><a id="registermodel"></a> A modell regisztrálása
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -218,12 +218,12 @@ A következtetések konfigurálásával Azure Machine Learning környezetek hat�
 
 name: project_environment
 dependencies:
-    - python=3.6.2
-    - scikit-learn=0.20.0
-    - pip:
-        # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
+- python=3.6.2
+- scikit-learn=0.22.1
+- pip:
+ # You must list azureml-defaults as a pip dependency
+ - azureml-defaults>=1.0.45
+ - inference-schema[numpy-support]
 ```
 
 > [!IMPORTANT]
@@ -348,7 +348,7 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Description | Végső állapot?
+| Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
 | Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
 | Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
@@ -357,12 +357,12 @@ Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 | Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
 
 
-### <a name="batch-inference"></a><a id="azuremlcompute"></a>Batch-következtetés
+### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-következtetés
 A Azure Machine Learning számítási célokat Azure Machine Learning hozza létre és kezeli. A kötegelt előrejelzésekhez Azure Machine Learning folyamatokból is felhasználhatók.
 
 A Batch-következtetések Azure Machine Learning számítási feladatokkal való áttekintését lásd: [a Batch-előrejelzések futtatása](tutorial-pipeline-batch-scoring-classification.md).
 
-### <a name="iot-edge-inference"></a><a id="iotedge"></a>IoT Edge következtetés
+### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge következtetés
 A peremhálózati üzembe helyezésének támogatása előzetes verzióban érhető el. További információ: [Azure Machine learning telepítése IoT Edge modulként](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="delete-resources"></a>Erőforrások törlése
@@ -371,7 +371,7 @@ A peremhálózati üzembe helyezésének támogatása előzetes verzióban érhe
 
 Telepített webszolgáltatás törléséhez használja a következőt: `az ml service <name of webservice>` .
 
-Ha törölni szeretne egy regisztrált modellt a munkaterületről, használja a következőt:`az ml model delete <model id>`
+Ha törölni szeretne egy regisztrált modellt a munkaterületről, használja a következőt: `az ml model delete <model id>`
 
 További információ a [webszolgáltatások törléséről](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) és [a modellek törléséről](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete).
 
@@ -385,14 +385,14 @@ További információ: a [webszolgáltatások dokumentációja. Delete ()](https
 ---
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 * [Esemény-riasztások és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)

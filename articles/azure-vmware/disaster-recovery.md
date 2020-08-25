@@ -1,14 +1,14 @@
 ---
 title: A virtuális gépek vész-helyreállításának befejezése
-description: Ez a cikk bemutatja, hogyan végezheti el a virtuális gépek vész-helyreállítását az AVS használatával
+description: Ez a cikk bemutatja, hogyan végezheti el a virtuális gépek vész-helyreállítását az Azure VMware-megoldás használatával
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749954"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752268"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése az Azure VMware-megoldás használatával
 
@@ -46,7 +46,7 @@ Adja meg a vész- **helyreállítási** területeket, és kattintson a **virtuá
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="a virtuális gépek védelemének kiválasztása" border="true":::
 
-A megnyíló ablakban válassza ki a forrás-és a távoli helyeket, a távoli helynek ebben az esetben az AVS Private Cloud-nak kell lennie.
+A megnyíló ablakban válassza ki a forrás-és a távoli helyeket, a távoli hely ebben az esetben az Azure VMware-megoldás saját felhő.
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="Virtuális gépek elleni védelem ablak" border="true":::
 
@@ -56,7 +56,7 @@ Ha szükséges, válassza ki az alapértelmezett replikációs beállításokat:
 
 - **Quiescence engedélyezése:** Szünetelteti a virtuális gépet annak biztosítására, hogy a konzisztens másolat szinkronizálva legyen a távoli hellyel.
 
-- **Cél tárterülete:** Válassza ki a védett virtuális gép (ek) távoli adattárát. Az AVS privát felhőben ez a választás a vSAN adattár lehet.
+- **Cél tárterülete:** Válassza ki a védett virtuális gép (ek) távoli adattárát. Egy Azure VMware-megoldás saját felhőben ez a választás a vSAN adattár lehet.
 
 - **Számítási tároló:** A távoli vSphere-fürt vagy-erőforráskészlet.
 
@@ -95,7 +95,7 @@ Ha a virtuális gép be van kapcsolva, a rendszer elindítja a szinkronizálási
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>Virtuális gépek teszt-helyreállításának befejezése
 
-Jelentkezzen be a **vSphere-ügyfélbe** a távoli helyen, amely az AVS Private Cloud. A **HCX beépülő modulban**, a vész-helyreállítási területen válassza ki a függőleges ellipsziseket bármelyik virtuális gépen az operatív menü megjelenítéséhez. Válassza a **teszt virtuális gép helyreállítása**lehetőséget.
+Jelentkezzen be a **vSphere-ügyfélbe** a távoli helyen, amely az Azure VMware megoldás privát felhője. A **HCX beépülő modulban**, a vész-helyreállítási területen válassza ki a függőleges ellipsziseket bármelyik virtuális gépen az operatív menü megjelenítéséhez. Válassza a **teszt virtuális gép helyreállítása**lehetőséget.
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="Válassza ki a virtuális gép helyreállítása" border="true":::
 
@@ -105,7 +105,7 @@ Az új ablakban válassza ki a teszt beállításait. Válassza ki a virtuális 
 
 A **tesztelésre**való kattintás után elindul a helyreállítási művelet.
 
-A teszt-helyreállítási művelet befejezésekor az új virtuális gép bejelölhető az AVS Private Cloud vCenter.
+A teszt-helyreállítási művelet befejezésekor az új virtuális gép bejelölhető az Azure VMware-megoldás saját Felhőbeli vCenter.
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="helyreállítási művelet keresése" border="true":::
 
@@ -115,7 +115,7 @@ Végül, miután végzett a teszteléssel a virtuális gépen vagy bármely, a r
 
 ## <a name="recover-virtual-machines"></a>Virtuális gépek helyreállítása
 
-Jelentkezzen be a **vSphere-ügyfélbe** a távoli helyen, amely az AVS Private Cloud, és hozzáfér a **HCX beépülő modulhoz**.
+Jelentkezzen be a **vSphere-ügyfélre** a távoli helyen, amely az Azure VMware megoldás privát felhője, és hozzáfér a **HCX beépülő modulhoz**.
 
 A helyreállítási forgatókönyvhöz az ebben a példában használt virtuális gépek egy csoportja.
 
@@ -131,7 +131,7 @@ A helyreállítási művelet befejezése után az új virtuális gépek megjelen
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>Visszirányú replikálás végrehajtása a virtuális gépeken
 
-Jelentkezzen be a **vSphere-ügyfélre** az AVS Private-felhőben, és nyissa meg a **HCX beépülő modult**.
+Jelentkezzen be a **vSphere-ügyfélre** az Azure VMware-megoldás saját felhőbe, és nyissa meg a **HCX beépülő modult**.
 Szükség van arra, hogy a forrás helyén lévő eredeti virtuális gépek ki legyenek kapcsolva a visszirányú replikálás megkezdése előtt. A művelet meghiúsul, ha a virtuális gépek nincsenek kikapcsolva.
 
 Válassza ki azokat a virtuális gépeket, amelyeket vissza szeretne állítani a forrás helyén a listából, nyissa meg a **műveletek** menüt, és válassza a **fordított**lehetőséget. Az előugró ablakban kattintson a **vissza** gombra a replikálás elindításához.

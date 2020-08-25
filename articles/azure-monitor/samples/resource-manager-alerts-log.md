@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
 ms.openlocfilehash: 0da8698026e897adb72792970e8d0565e9ec73f0
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83854443"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor naplózási riasztási szabályaihoz
@@ -23,7 +23,7 @@ Ez a cikk példákat [Azure Resource Manager sablonokat](../../azure-resource-ma
 ## <a name="number-of-results-alert-rule"></a>Eredmények riasztási szabályának száma
 Az alábbi minta [számos találati riasztási szabályt](../platform/alerts-unified-log.md#metric-measurement-alert-rules)hoz létre.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 - Ez a minta egy [webhook-adattartalmat](../platform/alerts-log-webhook.md)tartalmaz. Ha a riasztási szabály nem indít el webhookot, távolítsa el a **customWebhookPayload** elemet.
 

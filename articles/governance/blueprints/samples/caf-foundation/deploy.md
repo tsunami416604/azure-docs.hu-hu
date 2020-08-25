@@ -4,10 +4,10 @@ description: A CAF Foundation Blueprint-minta üzembe helyezésének lépései, 
 ms.date: 05/06/2020
 ms.topic: sample
 ms.openlocfilehash: a2d3090e5e9fe265683c077d7056ebf2b108352d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82871640"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure Foundation Blueprint minta Microsoft Cloud bevezetési keretrendszerének üzembe helyezése
@@ -19,7 +19,7 @@ Az Azure (CAF) Foundation tervhez készült Microsoft Cloud bevezetési keretren
 > - A minta másolatának megjelölése **közzétettként**
 > - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
 
 ## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
@@ -106,7 +106,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Engedélyezett virtuális gépek SKU-i|Szabályzat-hozzárendelés|Policy_Allowed – VM-SKU|Engedélyezett virtuális gépek SKU-i|
 |CostCenter-címke hozzáfűzése erőforráscsoporthoz|Szabályzat-hozzárendelés|Policy_CostCenter_Tag|CostCenter címke és a hozzá tartozó érték hozzáfűzése az erőforráscsoporthoz|
 |A környezetében engedélyezni nem kívánt erőforrástípusok|Szabályzat-hozzárendelés|Házirend _Allowed – erőforrás-típusok|Mely Azure-erőforrásokat szeretné engedélyezni a környezetben|
-|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolva** – az Azure ad- <Object ID> csoport vagy a felhasználó engedélyt ad a Key Vault|
+|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolva** – az Azure ad-csoport vagy a felhasználó engedélyt ad a <Object ID> Key Vault|
 |Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
 |Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
 

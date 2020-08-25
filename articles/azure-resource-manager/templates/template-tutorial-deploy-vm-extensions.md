@@ -6,10 +6,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: fb99babfd53b26874bed62183871d13ae0ae4baf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86120126"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal
@@ -24,7 +24,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -152,7 +152,7 @@ Illessze be az IP-címet egy webböngészőbe. Megnyílik az alapértelmezett In
 
 ![A Internet Information Services kezdőlapja](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az üzembe helyezett Azure-erőforrásokra, törölje azokat az erőforráscsoport törlésével.
 
@@ -162,7 +162,7 @@ Ha már nincs szüksége az üzembe helyezett Azure-erőforrásokra, törölje a
     Az erőforráscsoporthoz hat erőforrás jelenik meg.
 4. A felső menüben válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy virtuális gépet és egy virtuális gépi bővítményt. A bővítmény telepítette az IIS-webkiszolgálót a virtuális gépen. A következő témakörből megtudhatja, hogyan használhatja a Azure SQL Database bővítményt egy BACPAC-fájl importálásához:
 

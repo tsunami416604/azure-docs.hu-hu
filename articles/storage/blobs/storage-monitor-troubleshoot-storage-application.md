@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83652161"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
@@ -107,7 +107,7 @@ Miután a naplót megnyitotta, megtekintheti a Storage-eseményeket. Ahogy az al
 
 A [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) szintén egy olyan eszköz, amelyet a tárfiókkal való kommunikációhoz használhat, beleértve a **$logs** tárolót és az abban található naplókat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat negyedik, utolsó részében megismerkedett a tárfiókok monitorozásával és hibaelhárításával, például a következőkkel:
 

@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81409089"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban az Azure PowerShell segítségével hozhat létre egy D
 > * Folyamat futásának indítása
 > * A folyamat futásának monitorozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,7 +66,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     if __name__ == "__main__":
         main()
     ```
-2. Cserélje ** &lt;le&gt; az storageAccountName** az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
+2. Cserélje le az ** &lt; StorageAccountName &gt; ** az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
 3. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik. 
 4. Hozzon létre egy **spark** mappát.
 5. Hozzon létre egy **szkript** almappát a **spark** mappában. 
@@ -181,7 +181,7 @@ Vegye figyelembe a következő szempontokat:
 - Az entryFilePath a spark mappa szkript almappájában található WordCount_Spark.py fájlra mutat. 
 
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása 
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása 
 Már létrehozta a társított szolgáltatást és a folyamat definícióját JSON-fájlokban. Most hozzunk létre egy adat-előállítót, és helyezzük üzembe a társított szolgáltatás és a folyamat JSON-fájljait PowerShell-parancsmagok segítségével. Futtassa egyesével az alábbi PowerShell-parancsokat: 
 
 1. Adja meg egyesével a változókat.
@@ -331,8 +331,8 @@ Már létrehozta a társított szolgáltatást és a folyamat definícióját JS
 4. Ellenőrizze, hogy az `outputfiles` nevű mappa létrejött-e az adftutorial tároló `spark` mappájában a Spark program kimenetével. 
 
 
-## <a name="next-steps"></a>További lépések
-A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket: 
+## <a name="next-steps"></a>Következő lépések
+A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket: 
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása 

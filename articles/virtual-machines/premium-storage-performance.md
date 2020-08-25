@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0e0f6df04eda45af04659edc2010e8d68b013892
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701488"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751504"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -31,16 +31,16 @@ Ez a cikk segítséget nyújt az alkalmazások teljesítményének az Azure Prem
 Ezeket az irányelveket kifejezetten a Premium Storagehoz, mert a Premium Storage futó munkaterhelések nagy teljesítményű. Szükség esetén példákat is biztosítottunk. Ezen irányelvek némelyikét a standard szintű IaaS virtuális gépeken futó alkalmazásokra is alkalmazhatja.
 
 > [!NOTE]
-> Időnként előfordulhat, hogy a lemez teljesítményével kapcsolatos probléma valójában a hálózat szűk keresztmetszete. Ilyen helyzetekben érdemes optimalizálni a [hálózati teljesítményt](~/articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> Időnként előfordulhat, hogy a lemez teljesítményével kapcsolatos probléma valójában a hálózat szűk keresztmetszete. Ilyen helyzetekben érdemes optimalizálni a [hálózati teljesítményt](../virtual-network/virtual-network-optimize-network-bandwidth.md).
 >
 > Ha a lemez teljesítménytesztét szeretné használni, tekintse meg a következő cikkeket: a lemez teljesítményértékelése:
 >
-> * Linux esetén: [az alkalmazás teljesítményteszte Azure Disk Storage](./linux/disks-benchmarks.md)
-> * Windows esetén: [egy lemez teljesítményértékelése](./windows/disks-benchmarks.md).
+> * Linux esetén: [az alkalmazás teljesítményteszte Azure Disk Storage](linux/disks-benchmarks.md)
+> * Windows esetén: [egy lemez teljesítményértékelése](windows/disks-benchmarks.md).
 >
-> Ha a virtuális gép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, a már telepített virtuális gépeken is engedélyezheti a Windows és [Linux](~/articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) [rendszereken](~/articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) .
+> Ha a virtuális gép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy engedélyezve van. Ha nincs engedélyezve, a már telepített virtuális gépeken is engedélyezheti a Windows és [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) [rendszereken](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) .
 
-Mielőtt elkezdené, ha a Premium Storage új, először olvassa el az [Azure-lemez kiválasztása a IaaS virtuális gépekhez](./linux/disks-types.md) és [méretezhetőségi célokat a prémium szintű blob Storage-fiókokhoz](~/articles/storage/blobs/scalability-targets-premium-page-blobs.md).
+Mielőtt elkezdené, ha a Premium Storage új, először olvassa el az [Azure-lemez kiválasztása a IaaS virtuális gépekhez](disks-types.md) és [méretezhetőségi célokat a prémium szintű blob Storage-fiókokhoz](../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -62,7 +62,7 @@ Ha egy prémium szintű Storage-lemezt nagy léptékű virtuális géphez csatol
 
 Az átviteli sebesség és a IOPS közötti kapcsolat az alábbi képletben látható.
 
-![A IOPS és az átviteli sebesség aránya](~/articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+![A IOPS és az átviteli sebesség aránya](linux/media/premium-storage-performance/image1.png)
 
 Ezért fontos megállapítani az alkalmazás által igényelt optimális átviteli sebességet és IOPS értékeket. Ahogy az egyiket próbálja optimalizálni, a másik is hatással lesz rá. Az *alkalmazások teljesítményének optimalizálása*egy későbbi szakaszban a IOPS és az átviteli sebesség optimalizálásával kapcsolatos további részleteket tárgyaljuk.
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a létrehozott alkalmazás-követelmények ellenőrzőlistáj
 
 Az alábbi táblázat összefoglalja a teljesítménnyel kapcsolatos tényezőket és a IOPS, az átviteli sebesség és a késés optimalizálásához szükséges lépéseket. Az összegzést követő szakaszok részletes leírást kapnak az egyes tényezőkről.
 
-A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a késésről az egyes virtuálisgép-típusok esetében a [Linux VM-méretek](~/articles/virtual-machines/linux/sizes.md) vagy a [Windowsos virtuális gépek méretei](~/articles/virtual-machines/windows/sizes.md)című témakörben talál további információt.
+A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és az egyes virtuális gépekhez rendelkezésre álló késésről további információt az [Azure-beli virtuális gépek méretei](sizes.md)című témakörben talál.
 
 | | **IOPS** | **Átviteli sebesség** | **Késés** |
 | --- | --- | --- | --- |
@@ -206,7 +206,7 @@ A nagy léptékű virtuális gépek különböző méretekben érhetők el, kül
 | Standard_DS14 |16 |112 GB |OPERÁCIÓS RENDSZER = 1023 GB <br> Helyi SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB/másodperc |4 000 IOPS és 33 MB/másodperc |
 | Standard_GS5 |32 |448 GB |OPERÁCIÓS RENDSZER = 1023 GB <br> Helyi SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB/másodperc |5 000 IOPS és 50 MB/másodperc |
 
-Az összes elérhető Azure-beli virtuálisgép-méret teljes listájának megtekintéséhez tekintse meg a [Windows rendszerű virtuális gépek méreteit](~/articles/virtual-machines/windows/sizes.md) vagy a [linuxos virtuális gépek méretét](~/articles/virtual-machines/linux/sizes.md). Válasszon olyan virtuálisgép-méretet, amely képes megfelelni és méretezni a kívánt alkalmazás teljesítményére vonatkozó követelményeket. Emellett a virtuális gépek méretének kiválasztásakor figyelembe kell vennie a következő fontos szempontokat is.
+Az összes elérhető Azure-beli virtuálisgép-méret teljes listájának megtekintéséhez tekintse meg a [virtuális gépek méretei az Azure-ban](sizes.md) vagy a-ben című témakört. Válasszon olyan virtuálisgép-méretet, amely képes megfelelni és méretezni a kívánt alkalmazás teljesítményére vonatkozó követelményeket. Emellett a virtuális gépek méretének kiválasztásakor figyelembe kell vennie a következő fontos szempontokat is.
 
 *Skálázási korlátok*  
 A maximális IOPS korlátja virtuális gépenként és lemezenként eltérő, egymástól független. Győződjön meg arról, hogy az alkalmazás a virtuális gép korlátain belül IOPS, valamint a hozzá csatolt prémium lemezeken. Ellenkező esetben az alkalmazás teljesítménye a szabályozást fogja tapasztalni.
@@ -238,7 +238,7 @@ A Linux és a Premium Storage használatával a nagy teljesítmény biztosítás
 
 Az Azure Premium Storage különböző méreteket kínál, így kiválaszthatja az igényeinek leginkább megfelelőt. Az egyes lemezek mérete eltérő a IOPS, a sávszélességet és a tárterületet illetően. Az alkalmazás követelményeitől és a nagy méretű virtuális gép méretétől függően válassza ki a megfelelő Premium Storage a lemez méretét. Az alábbi táblázat a lemezek méretét és azok képességeit mutatja be. A P4, a P6, a P15, a P60, a P70 és a P80 méretek jelenleg csak Managed Disks támogatottak.
 
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 A választott lemezek számától függ, hogy hány lemez van kiválasztva. Az alkalmazási követelményeknek való megfelelés érdekében egyetlen P50-lemezt vagy több P10-lemezt is használhat. A választás során vegye figyelembe az alább felsorolt szempontokat.
 
@@ -353,14 +353,14 @@ Windows rendszeren a tárolóhelyek együtt használhatók a lemezek szalagos t�
 
 Fontos: a Kiszolgálókezelő felhasználói felületének használatával beállíthatja, hogy az oszlopok száma összesen legfeljebb 8 legyen a csíkozott kötetnél. Nyolcnál több lemez csatolásakor a PowerShell használatával hozza létre a kötetet. A PowerShell használatával megadhatja az oszlopok számát a lemezek számával megegyezően. Ha például 16 lemez van egyetlen szalagos készletben, a *New-VirtualDisk PowerShell-* parancsmag *NumberOfColumns* paraméterében 16 oszlopot kell megadnia.
 
-Linux rendszeren a lemezek együttes kiépítéséhez használja a MDADM segédprogramot. A Linux rendszerű lemezek csíkozásával kapcsolatos részletes lépéseket a [szoftveres RAID konfigurálása Linuxon](~/articles/virtual-machines/linux/configure-raid.md)című témakörben talál.
+Linux rendszeren a lemezek együttes kiépítéséhez használja a MDADM segédprogramot. A Linux rendszerű lemezek csíkozásával kapcsolatos részletes lépéseket a [szoftveres RAID konfigurálása Linuxon](linux/configure-raid.md)című témakörben talál.
 
 *Sáv mérete*  
 A lemezes csíkozás fontos konfigurációja a sáv mérete. A sáv mérete vagy a blokk mérete az alkalmazás által a csíkozott köteten címezhető legkisebb adatmennyiség. A konfigurált sáv mérete az alkalmazás típusától és a kérelem mintától függ. Ha rossz szalagos méretet választ, az IO-hibákhoz vezethet, ami az alkalmazás csökkentett teljesítményéhez vezet.
 
 Ha például az alkalmazás által generált i/o-kérelem nagyobb, mint a lemezes szalag mérete, akkor a tárolási rendszer több lemezen írja azt át a csíkozott egység határai közé. Amikor a rendszer elvégzi az adatelérést, több csíkozott egységen kell keresnie a kérelem teljesítéséhez. Az ilyen viselkedés kumulatív hatása jelentős teljesítménybeli romláshoz vezethet. Ha azonban az IO-kérelmek mérete kisebb, mint a szalag mérete, és ha véletlenszerű jellegű, az i/o-kérések hozzáadhatnak ugyanazon a lemezen, ami torlódást okoz, és végső soron az i/o-teljesítmény csökkenését eredményezi.
 
-Az alkalmazás által futtatott számítási feladat típusától függően válasszon egy megfelelő szalagos méretet. Véletlenszerű kisméretű i/o-kérelmek esetén használjon kisebb szalagos méretet. Míg a nagy sorszámú IO-kérelmeknél nagyobb szalagos méret van használatban. Ismerje meg a Premium Storageon futó alkalmazáshoz tartozó Stripe-méretre vonatkozó javaslatokat. SQL Server esetében konfigurálja a 64 KB-ot a OLTP számítási feladatokhoz és a 256 KB-ban az adatraktározási munkaterhelésekhez. További információért tekintse meg [Az Azure-beli virtuális gépek SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
+Az alkalmazás által futtatott számítási feladat típusától függően válasszon egy megfelelő szalagos méretet. Véletlenszerű kisméretű i/o-kérelmek esetén használjon kisebb szalagos méretet. Míg a nagy sorszámú IO-kérelmeknél nagyobb szalagos méret van használatban. Ismerje meg a Premium Storageon futó alkalmazáshoz tartozó Stripe-méretre vonatkozó javaslatokat. SQL Server esetében konfigurálja a 64 KB-ot a OLTP számítási feladatokhoz és a 256 KB-ban az adatraktározási munkaterhelésekhez. További információért tekintse meg [Az Azure-beli virtuális gépek SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > A DS-sorozatú virtuális gépeken és a 64 Premium Storage-lemezeken legfeljebb 32 Premium Storage-lemez használható a GS sorozatú virtuális gépeken.
@@ -414,15 +414,15 @@ Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a válasz
 
 Ha a lemez teljesítménytesztét szeretné használni, tekintse meg a következő cikkeket: a lemez teljesítményértékelése:
 
-* Linux esetén: [az alkalmazás teljesítményteszte Azure Disk Storage](./linux/disks-benchmarks.md)
-* Windows esetén: [egy lemez teljesítményértékelése](./windows/disks-benchmarks.md).
+* Linux esetén: [az alkalmazás teljesítményteszte Azure Disk Storage](linux/disks-benchmarks.md)
+* Windows esetén: [egy lemez teljesítményértékelése](windows/disks-benchmarks.md).
 
 További információ a rendelkezésre álló lemezek típusairól:
 
-* Linux esetén: [válassza ki a lemez típusát](./linux/disks-types.md)
-* Windows esetén: [válassza ki a lemez típusát](./windows//disks-types.md)
+* Linux esetén: [válassza ki a lemez típusát](disks-types.md)
+* Windows esetén: [válassza ki a lemez típusát](disks-types.md)
 
 SQL Server felhasználók esetében olvassa el a SQL Server teljesítményére vonatkozó ajánlott eljárásokat ismertető cikket:
 
-* [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Az Azure Premium Storage a legmagasabb teljesítményt nyújtja az Azure-beli virtuális gépek SQL Server számára](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

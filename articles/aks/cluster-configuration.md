@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008797"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752099"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -81,17 +81,17 @@ Ha a Node-készleteket az AK Ubuntu 16,04-lemezképpel szeretné létrehozni, ez
 
 A Container Runtime olyan szoftver, amely tárolókat hajt végre, és a tároló lemezképeit kezeli egy csomóponton. A futtatókörnyezet segíti az absztrakt el-hívásokat vagy az operációs rendszer (OS) specifikus funkcióit a tárolók Linux vagy Windows rendszeren való futtatásához. A mai AK jelenleg a [Moby](https://mobyproject.org/) (upstream Docker) szolgáltatást használja tároló-futtatókörnyezetként. 
     
-![Docker ICC](media/cluster-configuration/docker-cri.png)
+![Docker ICC 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/)a egy [OCI](https://opencontainers.org/) (Open Container Initiative) szabványnak megfelelő alapszintű tároló-futtatókörnyezet, amely a szükséges funkciók minimális készletét biztosítja a tárolók végrehajtásához és a lemezképek egy csomóponton való kezeléséhez. A Felhőbeli natív számítási alaprendszer (CNCF) a 2017 márciusában lett [adományozva](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . A jelenlegi Moby-verzió, amelyet az AK jelenleg használ, és amely a `containerd` fent látható módon épül fel. 
+[`Containerd`](https://containerd.io/) a egy [OCI](https://opencontainers.org/) (Open Container Initiative) szabványnak megfelelő alapszintű tároló-futtatókörnyezet, amely a szükséges funkciók minimális készletét biztosítja a tárolók végrehajtásához és a lemezképek egy csomóponton való kezeléséhez. A Felhőbeli natív számítási alaprendszer (CNCF) a 2017 márciusában lett [adományozva](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) . A jelenlegi Moby-verzió, amelyet az AK jelenleg használ, és amely a `containerd` fent látható módon épül fel. 
 
 A tárolón alapuló csomópont-és Node-készletek használata helyett a `dockershim` kubelet közvetlenül az `containerd` ICC (Container Runtime Interface) beépülő modulon keresztül fog kommunikálni, és a DOCKer ICC-implementációhoz képest eltávolítja a folyamat további ugrásait. Így jobb lesz a pod indítási késés és kevesebb erőforrás (CPU és memória) használata.
 
 Az `containerd` AK-csomópontok használata esetén a pod indítási késése növeli a tároló futtatókörnyezetét, és csökkenti a csomópontok erőforrás-felhasználását. Ezek a Újdonságok olyan új architektúrán keresztül érhetők el, ahol `containerd` a kubelet közvetlenül az ICC beépülő modulon keresztül beszél a Moby/Docker architektúrán kubelet `dockershim` `containerd` , így a folyamat további ugrásokkal is rendelkezik.
 
-![Docker ICC](media/cluster-configuration/containerd-cri.png)
+![Docker ICC 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd`a kubernetes minden egyes, az AK-ban található verziójában működik, és minden, a v 1.10-es kubernetes-verzióban, és támogatja az összes kubernetes-és AK-funkciót.
+`Containerd` a kubernetes minden egyes, az AK-ban található verziójában működik, és minden, a v 1.10-es kubernetes-verzióban, és támogatja az összes kubernetes-és AK-funkciót.
 
 > [!IMPORTANT]
 > Miután `containerd` általánosan elérhetővé válik az AK-on, az alapértelmezett és csak az új fürtökön elérhető tároló-futtatókörnyezethez választható lehetőség lesz. A korábbi támogatott verziókon továbbra is használhatja a Moby nodepools és a fürtöket, amíg azok nem támogatják a támogatást. 
@@ -159,14 +159,14 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 Ha a Moby (Docker) futtatókörnyezettel rendelkező csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` .
 
 
-### <a name="containerd-limitationsdifferences"></a>`Containerd`korlátozások/különbségek
+### <a name="containerd-limitationsdifferences"></a>`Containerd` korlátozások/különbségek
 
 * `containerd`A tároló-futtatókörnyezet használatához a Base os Ubuntu 18,04-et kell használnia az alap operációsrendszer-rendszerképként.
 * Amíg a Docker eszközkészlet továbbra is megtalálható a csomópontokon, a Kubernetes `containerd` a tároló futtatókörnyezetét használja. Ezért mivel a Moby/Docker nem kezeli a Kubernetes által létrehozott tárolókat a csomópontokon, nem tudja megtekinteni és használni a tárolókat a Docker-parancsokkal (például `docker ps` ) vagy a Docker API-val.
 * A `containerd` (z) esetében javasoljuk, hogy [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) a DOCKer parancssori felület helyett a helyettesítő CLI-t használja a hüvelyek, tárolók és a Kubernetes-csomópontokon lévő tároló-lemezképek (például:) **hibaelhárításához** `crictl ps` . 
    * Nem biztosítja a Docker parancssori felületének teljes funkcionalitását. Csak hibaelhárításra szolgál.
-   * `crictl`a a tárolók kubernetes, például a hüvelyek, például a hüvelyek és a hasonló fogalmak megjelenítését kínálja.
-* `Containerd`beállítja a naplózást a szabványosított `cri` naplózási formátum használatával (amely eltér a Docker JSON-illesztőprogramtól származó aktuálisan lekérdezett adatoktól). A naplózási megoldásnak támogatnia kell a `cri` naplózási formátumot (például [a tárolók Azure monitor](../azure-monitor/insights/container-insights-enable-new-cluster.md))
+   * `crictl` a a tárolók kubernetes, például a hüvelyek, például a hüvelyek és a hasonló fogalmak megjelenítését kínálja.
+* `Containerd` beállítja a naplózást a szabványosított `cri` naplózási formátum használatával (amely eltér a Docker JSON-illesztőprogramtól származó aktuálisan lekérdezett adatoktól). A naplózási megoldásnak támogatnia kell a `cri` naplózási formátumot (például [a tárolók Azure monitor](../azure-monitor/insights/container-insights-enable-new-cluster.md))
 * Már nem fér hozzá a Docker-motorhoz, `/var/run/docker.sock` vagy használhatja a Docker-in-Docker-t (DinD).
   * Ha jelenleg az alkalmazás naplófájljait kinyeri vagy a Docker-motorból figyeli az adatait, akkor használjon hasonló [Azure monitor a tárolók](../azure-monitor/insights/container-insights-enable-new-cluster.md) helyett. Emellett az AK nem támogatja a sávon kívüli parancsok futtatását az ügynök csomópontjain, amelyek instabilitást okozhatnak.
   * A fenti módszerekkel még a Moby/Docker használatakor is felhasználhatja a lemezképek kiépítését, és közvetlenül kihasználhatja a Docker-motort a fenti módszerek segítségével. A Kubernetes nem teljesen [tisztában van a](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) felhasznált erőforrásokkal, és ezek a módszerek számos olyan problémát [jelentenek, mint](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)például a.
@@ -236,7 +236,7 @@ Ha normál Gen1-csomópont-készleteket szeretne létrehozni, ezt az egyéni cí
 
 ## <a name="ephemeral-os-preview"></a>Ideiglenes operációs rendszer (előzetes verzió)
 
-Alapértelmezés szerint az Azure-beli virtuális gépek operációsrendszer-lemezét a rendszer automatikusan replikálja az Azure Storage-ba, így elkerülhető, hogy a virtuális gépnek másik gazdagépre kell áthelyeznie az adatvesztést. Mivel azonban a tárolók nem rendelkeznek helyi állapottal, ez a viselkedés korlátozott értéket kínál, miközben némi hátrányt biztosít, beleértve a csomópontok kiosztását és az olvasási/írási késleltetést.
+Alapértelmezés szerint az Azure-beli virtuális gépek operációsrendszer-lemezét a rendszer automatikusan replikálja az Azure Storage-ba, így elkerülhető, hogy a virtuális gépnek másik gazdagépre kell áthelyeznie az adatvesztést. Mivel azonban a tárolók nem rendelkeznek helyi állapottal, ez a viselkedés korlátozott értéket kínál, miközben némi hátrányt biztosít, beleértve a csomópontok kiosztását és a magasabb olvasási/írási késést.
 
 Ezzel szemben az elmúló operációsrendszer-lemezeket csak a gazdagép tárolja, ugyanúgy, mint egy ideiglenes lemezzel. Ez alacsonyabb olvasási/írási késést biztosít, valamint a csomópontok gyorsabb skálázását és a fürtök frissítését.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d831d40733f9fa1d0db4c53d72de22898e493639
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037099"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795864"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 
@@ -123,7 +123,7 @@ Az analitikai tárolási rendszer az analitikai számítási rendszerből való 
 > [!NOTE]
 > Az analitikai áruházból csak a szinapszis Analytics futtatási idején lehet olvasni. A tranzakciós tárolóba visszaírhatja az adatait a kiszolgálóként szolgáló rétegként.
 
-## <a name="pricing"></a><a id="analytical-store-pricing"></a>Árképzési
+## <a name="pricing"></a><a id="analytical-store-pricing"></a> Árképzési
 
 Az analitikus tároló egy fogyasztáson alapuló díjszabási modellt követ, amelyben a következőkért kell fizetnie:
 
@@ -134,17 +134,17 @@ Az analitikus tároló egy fogyasztáson alapuló díjszabási modellt követ, a
 * Analitikai olvasási műveletek: az analitikai tárolón végrehajtott olvasási műveletek a szinapszis Analytics Spark és az SQL Server nélküli futtatási időpontokban.
 
 > [!NOTE]
-> A Azure Cosmos DB Analytical Store ingyenesen elérhető nyilvános előzetes kiadásban, 2020. augusztus 30-ig díjmentes.
+> A Azure Cosmos DB Analytical Store jelenleg díjmentes nyilvános előzetes kiadásban érhető el.
 
 Az analitikus tároló díjszabása nem azonos a tranzakciós áruház díjszabási modelljével. Az analitikai tár nem rendelkezik kiépített RUs-koncepcióval. Tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/), amely részletesen ismerteti az analitikus tároló díjszabási modelljét.
 
 Ahhoz, hogy egy Azure Cosmos DB-tárolón az analitikai tárolót engedélyező magas szintű költségbecslés legyen elérhető, használhatja a [Azure Cosmos db Capacity Plannert](https://cosmos.azure.com/capacitycalculator/) , és megbecsülheti az analitikai tárolási és írási műveletek költségeit. Az analitikus olvasási műveletek költségei az elemzési számítási feladatok jellemzőitől függenek, de magas szintű becslésként az analitikai tárolóban található 1 TB-os adatok vizsgálata általában 130 000 analitikai olvasási műveletet eredményez, és $0,065-os költséget eredményez.
 
-## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analitikus élettartam (TTL)
+## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analitikus élettartam (TTL)
 
 Az elemzési élettartam jelzi, hogy mennyi ideig kell megőrizni az adott tároló adatait az elemzési tárban. 
 
-A rendszer automatikusan szinkronizálja az operatív adatok beszúrását, frissítését és törlését a tranzakciós tárolóból az analitikai tárolóba, a tranzakciós TTL-konfigurációtól függetlenül. A működési adatoknak az analitikai tárolóban való megőrzését a tároló szintjén található analitikai TTL-érték szabályozhatja az alább megadott módon:
+Ha az analitikai tároló engedélyezve van, a beszúrja, frissíti, törli az operatív adatokba automatikusan szinkronizálja a tranzakciós tárolóból az analitikai tárolóba, a tranzakciós TTL-konfigurációtól függetlenül. A működési adatoknak az analitikai tárolóban való megőrzését a tároló szintjén található analitikai TTL-érték szabályozhatja az alább megadott módon:
 
 A tárolók analitikai ÉLETTARTAMa a következő `AnalyticalStoreTimeToLiveInSeconds` tulajdonsággal van beállítva:
 
@@ -152,7 +152,7 @@ A tárolók analitikai ÉLETTARTAMa a következő `AnalyticalStoreTimeToLiveInSe
 
 * Ha van, és az érték "-1" értékű: az analitikai tároló megőrzi az összes korábbi adatát, függetlenül a tranzakciós tárolóban lévő adatok megőrzésének. Ez a beállítás azt jelzi, hogy az analitikai tároló a működési adatok végtelen megőrzésével rendelkezik
 
-* Ha van, és az érték egy "n" pozitív számra van beállítva: az elemek a tranzakciós tároló utolsó módosításának időpontját követően lejárnak az "n" analitikai tárolóban. Ez a beállítás akkor lehet kihasználható, ha az analitikus tárolóban korlátozott ideig szeretné megőrizni az operatív adatait, függetlenül a tranzakciós tárolóban lévő adatok megőrzésének.
+* Ha van, és az érték egy "n" pozitív számra van beállítva: az elemek a tranzakciós tároló utolsó módosításának időpontját követően lejárnak az "n" analitikai tárolóban. Ez a beállítás kihasználható, ha az elemzési tárolóban korlátozott ideig szeretné megőrizni az operatív adatait, függetlenül a tranzakciós tárolóban lévő adatok megőrzésének.
 
 Néhány megfontolandó szempont:
 *   Miután az analitikai tár engedélyezve lett egy analitikai TTL-értékkel, később más érvényes értékre is frissítheti. 
@@ -162,7 +162,7 @@ Néhány megfontolandó szempont:
 
 További információ: [az analitikai élettartam konfigurálása egy tárolón](configure-synapse-link.md#create-analytical-ttl).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192329"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751709"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -165,158 +165,50 @@ További információ: [titkosítás a REST](concept-enterprise-security.md#encr
 
 > [!IMPORTANT]
 > A sablon használata előtt néhány speciális követelménynek meg kell felelnie az előfizetésnek:
->
-> * Az __Azure Machine learning__ alkalmazásnak az Azure-előfizetéséhez __közreműködőnek__ kell lennie.
 > * A titkosítási kulcsot tartalmazó meglévő Azure Key Vaultnak kell lennie.
-> * Olyan hozzáférési szabályzattal kell rendelkeznie a Azure Key Vaultban, amely a __Azure Cosmos db__ alkalmazáshoz való hozzáférés __megszerzését__, __becsomagolását__és __kicsomagolását__ engedélyezi.
 > * A Azure Key Vaultnak ugyanabban a régióban kell lennie, ahol létre kívánja hozni a Azure Machine Learning munkaterületet.
+> * Meg kell adnia a Azure Key Vault AZONOSÍTÓját és a titkosítási kulcs URI-JÁT.
 
-__A Azure Machine learning alkalmazás közreműködőként való hozzáadásához__használja a következő parancsokat:
+__To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `resource_cmk_uri` (kulcs URI) paraméterek értékeinek lekéréséhez kövesse az alábbi lépéseket:    
 
-1. Jelentkezzen be az Azure-fiókjába, és szerezze be az előfizetés-AZONOSÍTÓját. Ennek az előfizetésnek azonosnak kell lennie, amely tartalmazza a Azure Machine Learning munkaterületet.  
+1. A Key Vault-azonosító beszerzéséhez használja a következő parancsot:  
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az account list --query '[].[name,id]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv   
+    ``` 
 
-    > [!TIP]
-    > Egy másik előfizetés kiválasztásához használja a `az account set -s <subscription name or ID>` parancsot, és adja meg az előfizetés nevét vagy azonosítóját a váltáshoz. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzSubscription
-    ```
-
-    > [!TIP]
-    > Egy másik előfizetés kiválasztásához használja a `Az-SetContext -SubscriptionId <subscription ID>` parancsot, és adja meg az előfizetés nevét vagy azonosítóját a váltáshoz. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
-
-    ---
-
-1. A Azure Machine Learning alkalmazás objektum-AZONOSÍTÓjának lekéréséhez használja a következő parancsot. Az egyes Azure-előfizetések esetében az érték különbözhet:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
-    ```
-
-    ---
-    Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító.
-
-1. Az objektum-azonosító közreműködőként való hozzáadásához használja az alábbi parancsot. Cserélje le az értékét az `<object-ID>` egyszerű szolgáltatásnév objektum-azonosítójával. A helyére írja `<subscription-ID>` be az Azure-előfizetés nevét vagy azonosítóját:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
-    ```
-
-    ---
-
-1. Egy meglévő Azure Key Vaultban lévő kulcs létrehozásához használja a következő parancsok egyikét. Cserélje le a helyére a `<keyvault-name>` Key Vault nevét. Cserélje le a `<key-name>` nevet a kulcshoz használandó névre:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
-    ```
+    ```azurepowershell  
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'    
+    ``` 
     --- 
 
-__Ha hozzáférési szabályzatot szeretne hozzáadni a Key vaulthoz, használja a következő parancsokat__:
+    A parancs a következőhöz hasonló értéket ad vissza: `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .  
 
-1. A Azure Cosmos DB alkalmazás objektum-AZONOSÍTÓjának lekéréséhez használja a következő parancsot. Az egyes Azure-előfizetések esetében az érték különbözhet:
+1. Az ügyfél által felügyelt kulcs URI azonosítójának megszerzéséhez használja a következő parancsot:    
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)   
 
-    ```azurecli
-    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
+    ``` 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
-    ```
-    ---
+    ```azurepowershell  
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>' 
+    ``` 
+    --- 
 
-    Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító. Mentés később
+    A parancs a következőhöz hasonló értéket ad vissza: `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` . 
 
-1. A házirend beállításához használja a következő parancsot. Cserélje le a helyére a `<keyvault-name>` meglévő Azure Key Vault nevét. Cserélje le `<object-ID>` az elemet az előző lépésben szereplő GUID azonosítóra:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-    
-    ```azurepowershell
-    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
-    ```
-    ---    
-
-__To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `resource_cmk_uri` (kulcs URI) paraméterek értékeinek lekéréséhez kövesse az alábbi lépéseket:
-
-1. A Key Vault-azonosító beszerzéséhez használja a következő parancsot:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault show --name <keyvault-name> --query 'id' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
-    ```
-    ---
-
-    A parancs a következőhöz hasonló értéket ad vissza: `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
-
-1. Az ügyfél által felügyelt kulcs URI azonosítójának megszerzéséhez használja a következő parancsot:
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
-    ```
-    ---
-
-    A parancs a következőhöz hasonló értéket ad vissza: `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
-Ha sikeresen elvégezte a fenti lépéseket, akkor a szokásos módon végezze el a sablon üzembe helyezését. Az ügyfél által felügyelt kulcsok használatának engedélyezéséhez állítsa be a következő paramétereket:
+Az ügyfél által felügyelt kulcsok használatának engedélyezéséhez állítsa be a következő paramétereket a sablon telepítésekor:
 
 * **Encryption_status** **engedélyezett**.
 * **cmk_keyvault** az `cmk_keyvault` előző lépések során beszerzett értékre.
@@ -648,7 +540,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza a __Felülvizsgálat + létrehozás__ lehetőséget.
+1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -778,7 +670,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

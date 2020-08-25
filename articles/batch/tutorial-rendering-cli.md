@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc
 ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82117131"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
@@ -312,7 +312,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-A feladatok a *dragon0002. jpg* - *dragon0007. jpg* nevű kimeneti fájlokat hoznak a számítási csomópontokon, és feltöltik őket a Storage-fiókban lévő *myrenderjob-* tárolóba. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Például:
+A feladatok a *dragon0002.jpg*dragon0007.jpgnevű kimeneti fájlokat hoznak  -  *dragon0007.jpg* a számítási csomópontokon, és feltöltik őket a Storage *-fiók myrenderjob-* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Például:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -333,7 +333,7 @@ Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-d
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket sajátította el:
 

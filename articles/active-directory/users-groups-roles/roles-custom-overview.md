@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828659"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795592"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Egyéni rendszergazdai szerepkörök a Azure Active Directoryban (előzetes verzió)
 
@@ -46,7 +46,7 @@ Az Azure AD az alábbi magas szintű lépésekkel határozza meg, hogy van-e hoz
 
 1. A körülményektől függően az Azure AD a következő műveletek egyikét veszi igénybe:
 
-    - Kiértékeli a felhasználó szerepkör-tagságát a felhasználó hozzáférési jogkivonatában lévő [wids jogcím](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) alapján.
+    - Kiértékeli a felhasználó szerepkör-tagságát a felhasználó hozzáférési jogkivonatában lévő [wids jogcím](../develop/access-tokens.md) alapján.
     - Az összes olyan szerepkör-hozzárendelés beolvasása, amely közvetlenül vagy csoporttagság útján a felhasználóra vonatkozik, a művelet végrehajtásához szükséges erőforrásra.
 
 1. Az Azure AD meghatározza, hogy az API-hívásban szereplő művelet tartalmazza-e a felhasználó által ehhez az erőforráshoz tartozó szerepköröket.
@@ -70,7 +70,7 @@ Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a p�
 
 A rendszerbiztonsági tag az Azure AD-erőforrásokhoz való hozzáférést biztosító felhasználót jelöli. A *felhasználó* olyan személy, aki Azure Active Directory felhasználói profillal rendelkezik.
 
-### <a name="role"></a>Role
+### <a name="role"></a>Szerepkör
 
 A szerepkör-definíció vagy szerepkör az engedélyek gyűjteménye. A szerepkör-definíció felsorolja az Azure AD-erőforrásokon végrehajtható műveleteket, például a létrehozás, olvasás, frissítés és törlés lehetőségeit. Az Azure AD két típusú szerepkörrel rendelkezik:
 
