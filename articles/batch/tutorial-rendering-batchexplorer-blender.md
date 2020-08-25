@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85964804"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Oktatóanyag: Blender-jelenet renderelése a Batch Explorerrel
@@ -127,7 +127,7 @@ A feladatsablon azt is meghatározza, hogy a kimeneti képkockát és a naplóf�
 
 Ha minden tevékenység befejeződött, a feladat befejezettként lesz megjelölve: ![Befejezett feladat és tevékenységek](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 > [!WARNING]
 > Törölni kell a készletet (vagy át kell méreteznie nulla csomópontra), hogy a virtuális gépek díjai ne terheljék Azure-előfizetését.

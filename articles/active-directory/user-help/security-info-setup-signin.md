@@ -11,18 +11,18 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747275"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798499"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Biztonsági adatok beállítása bejelentkezési kérésből
 
 Ha a munkahelyi vagy iskolai fiókjába való bejelentkezés után azonnal kéri a biztonsági adatok beállítását, kövesse az alábbi lépéseket.
 
-Ez a kérdés csak akkor jelenik meg, ha nem állította be a szervezete által megkövetelt biztonsági adatokat. Ha korábban már beállította a biztonsági adatokat, de módosítani szeretné a módosításokat, kövesse a különböző metódus-alapú útmutató cikkeiben ismertetett lépéseket. További információ: [a biztonsági adatok hozzáadásának vagy frissítésének áttekintése](security-info-add-update-methods-overview.md).
+Ez a kérdés csak akkor jelenik meg, ha nem állította be a szervezete által megkövetelt biztonsági adatokat. Ha korábban már beállította a biztonsági adatokat, de módosítani szeretné a módosításokat, kövesse a különböző metódus-alapú útmutató cikkeiben ismertetett lépéseket. További információ: [a biztonsági adatok hozzáadásának vagy frissítésének áttekintése](./security-info-setup-auth-app.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
@@ -148,7 +148,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
     ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A biztonsági adatok alapértelmezett módszereinek módosításához, törléséhez vagy frissítéséhez lásd:
 

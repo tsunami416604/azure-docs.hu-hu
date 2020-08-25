@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208190"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798295"
 ---
-# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Felhőalapú csoportokhoz rendelt szerepkörök hibaelhárítása
+# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása
 
 Íme néhány gyakori kérdés és hibaelhárítási tipp a szerepkörök csoportokhoz való hozzárendeléséhez Azure Active Directory (Azure AD).
 
@@ -40,8 +40,8 @@ ms.locfileid: "88208190"
 
 **A:** A felhasználó a szerepkörhöz hozzárendelhető csoport tulajdonosa lehet. A jogosultság megemelésének elkerülése érdekében a szerepkörhöz hozzárendelhető csoportok tulajdonosait védik. Ilyen eset lehet például, ha egy csoport Contoso_Security_Admins van hozzárendelve a biztonsági rendszergazdai szerepkörhöz, ahol Bob a csoport tulajdonosa, és Alice a szervezet jelszavas rendszergazdája. Ha ez a védelem nem volt jelen, Alice visszaállíthatja a Bob hitelesítő adatait, és átveszi a személyazonosságát. Ezt követően Alice felveheti magát vagy bárkit a csoportba Contoso_Security_Admins csoportba, hogy a szervezet biztonsági rendszergazdája legyen. Annak megállapításához, hogy a felhasználó tagja-e a csoportnak, kérje le az adott felhasználó tulajdonában lévő objektumok listáját, és ellenőrizze, hogy a csoportok isAssignableToRole értéke TRUE (igaz) értékre van-e állítva. Ha igen, akkor a felhasználó védelme megtörténik, és a viselkedés a tervezés szerint történik. Tekintse meg ezeket a dokumentációkat a tulajdonosi objektumok beszerzéséhez:
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [OwnedObjects listázása](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [OwnedObjects listázása](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **K:** Létrehozhatok hozzáférési felülvizsgálatot az Azure AD-szerepkörökhöz hozzárendelhető csoportokban (pontosabban a isAssignableToRole tulajdonsággal rendelkező csoportok értéke true)?  
 

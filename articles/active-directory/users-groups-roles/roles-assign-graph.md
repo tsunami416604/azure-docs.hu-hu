@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057932"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798516"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása a Microsoft Graph API használatával Azure Active Directory 
 
@@ -136,7 +136,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-A felügyeleti egység hatóköre csak a beépített szerepkörök egy részhalmazát engedélyezi. A felügyeleti egységekben támogatott beépített szerepkörök listáját [ebben a dokumentációban](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles) találja.
+A felügyeleti egység hatóköre csak a beépített szerepkörök egy részhalmazát engedélyezi. A felügyeleti egységekben támogatott beépített szerepkörök listáját [ebben a dokumentációban](./roles-admin-units-assign-roles.md) találja.
 
 ## <a name="get-operations-on-roleassignment"></a>Műveletek beolvasása a RoleAssignment
 
@@ -302,7 +302,7 @@ HTTP/1.1 400 Bad Request
 
 Megakadályozhatja, hogy a felhasználók töröljék a saját globális rendszergazdai szerepkörét, hogy elkerülje azt a helyzetet, amelyben a bérlőnek nulla globális rendszergazdája van. Az önmagukhoz rendelt egyéb szerepkörök eltávolítása engedélyezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).

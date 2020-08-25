@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408941"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749855"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Felügyelt identitások az Azure HDInsight
 
@@ -25,7 +25,9 @@ A felügyelt identitások két típusa létezik: felhasználó által hozzárend
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight felügyelt identitás implementálása
 
-Az Azure HDInsight-ben a felügyelt identitások kiosztása a fürt minden egyes csomópontján történik. Ezek az identitás-összetevők azonban csak a HDInsight szolgáltatás által használhatók. A HDInsight telepített felügyelt identitások használatával jelenleg nincs támogatott módszer a hozzáférési tokenek létrehozásához. Egyes Azure-szolgáltatások esetében a felügyelt identitások egy olyan végponttal valósulnak meg, amelyet hozzáférési tokenek beszerzésére használhat. A jogkivonatok használata más Azure-szolgáltatásokkal való interakcióhoz.
+Az Azure HDInsight a felügyelt identitások csak a belső összetevőkhöz használhatók a HDInsight szolgáltatásban. A külső szolgáltatások eléréséhez a HDInsight telepített felügyelt identitások használatával jelenleg nincs támogatott módszer a hozzáférési tokenek létrehozásához. Bizonyos Azure-szolgáltatások, például a számítási virtuális gépek esetében a felügyelt identitások olyan végponttal valósulnak meg, amelyet hozzáférési jogkivonatok beszerzésére használhat. Ez a végpont jelenleg nem érhető el a HDInsight-csomópontokban.
+
+Ha el kell érnie az alkalmazásait, hogy elkerülje a titkokat/jelszavakat az elemzési feladatok (például a SCALA-feladatok) esetében, distrubte saját tanúsítványait a fürtcsomópontok számára a parancsfájlok használatával, majd a tanúsítvány használatával megszerezheti a hozzáférési jogkivonatot (például az Azure kulcstartó eléréséhez).
 
 ## <a name="create-a-managed-identity"></a>Felügyelt identitás létrehozása
 

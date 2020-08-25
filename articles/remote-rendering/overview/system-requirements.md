@@ -1,18 +1,18 @@
 ---
-title: System requirements (Rendszerkövetelmények)
+title: Rendszerkövetelmények
 description: Az Azure távoli renderelés rendszerkövetelményeit sorolja fel
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300606"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798465"
 ---
-# <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+# <a name="system-requirements"></a>Rendszerkövetelmények
 
 > [!IMPORTANT]
 > Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
@@ -24,7 +24,7 @@ Ez a fejezet az *Azure Remote rendering* (ARR) használatával való együttműk
 
 * Windows 10 1903-es vagy újabb verzió.
 * Naprakész grafikus illesztőprogramok.
-* Nem kötelező: H265 hardveres videó-dekóder, ha a távolról megjelenített tartalom helyi előnézetét szeretné használni (például Unity).
+* Nem kötelező: [H265 hardveres videó-dekóder](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7), ha a távolról megjelenített tartalom helyi előnézetét szeretné használni (például Unity).
 
 > [!IMPORTANT]
 > A Windows Update nem mindig biztosítja a legújabb GPU-illesztőprogramokat, és a GPU gyártójának webhelyén találja a legújabb illesztőprogramokat:
@@ -52,7 +52,7 @@ Fontos, hogy a legújabb HEVC-kodeket használja, mivel az újabb verziók jelen
 1. Indítsa el a **Microsoft Store**.
 1. Kattintson a jobb felső sarokban található **"..."** gombra.
 1. Válassza **a letöltések és frissítések**lehetőséget.
-1. Keresse meg az **eszköz gyártójától származó HEVC-videók**listáját.
+1. Keresse meg az **eszköz gyártójától származó HEVC-videók**listáját. Ha ez az elem nem szerepel a frissítések területen, a legújabb verzió már telepítve van.
 1. Győződjön meg arról, hogy a felsorolt kodek legalább verziójú **1.0.21821.0**rendelkezik.
 1. Kattintson a **frissítések beolvasása** gombra, és várjon, amíg a telepítés megtörténik.
 
@@ -74,7 +74,7 @@ A következő szoftvereket kell telepíteni:
   * **Univerzális Windows-platform (UWP) fejlesztése**
 * **Windows SDK 10.0.18362.0** [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(letöltés)](https://git-scm.com/downloads)
-* Nem kötelező: Ha a videó streamet szeretné megtekinteni egy asztali számítógépen lévő kiszolgálóról, szüksége lesz a **HEVC** [(Microsoft Store hivatkozás)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7).
+* Nem kötelező: Ha a videó streamet szeretné megtekinteni egy asztali számítógépen lévő kiszolgálóról, szüksége lesz a **HEVC** [(Microsoft Store hivatkozás)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7). Győződjön meg arról, hogy a legújabb verzió van telepítve a frissítések keresése az áruházban.
 
 ## <a name="unity"></a>Unity
 
@@ -85,6 +85,6 @@ Az egységgel való fejlesztéshez telepítse a következőt:
   * **UWP** – univerzális Windows-platform-Build támogatása
   * **IL2CPP** – Windows Build-támogatás (IL2CPP)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

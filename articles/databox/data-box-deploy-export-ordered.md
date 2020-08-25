@@ -2,18 +2,18 @@
 title: Oktatóanyag az adatok Azure Data Boxból való exportálásához | Microsoft Docs
 description: Ismerje meg az üzembe helyezés előfeltételeit és az adatok exportálását Azure Data Box
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.author: v-grpr
-ms.openlocfilehash: 5b17488ebab8dc29221723fabf8efe0c00467509
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.author: twooley
+ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209457"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783620"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -60,7 +60,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    ![Erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
    ![Azure Data Box létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
 
@@ -76,7 +76,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    ![Válassza ki a Data Box beállításait](media/data-box-deploy-export-ordered/azure-data-box-export-01.png)
 
-5. Válassza a **Data Box**lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
+5. Válassza a **Data Box** lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
    ![Data Box kapacitás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-02b.png)
 
@@ -157,7 +157,7 @@ Ha **az XML-fájl használata**lehetőséget választja, megadhatja az exportál
 
    ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
    ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
@@ -245,7 +245,7 @@ Néhány fontos pont az XML-fájlokra vonatkozóan:
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |A Storage-fiókban lévő összes blob exportálása |
    | Ezzel kezdődik |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

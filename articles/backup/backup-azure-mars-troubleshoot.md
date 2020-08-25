@@ -3,12 +3,12 @@ title: A Azure Backup ügynök hibáinak megoldása
 description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Backup ügynök telepítését és regisztrálását.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564112"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763507"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibáinak megoldása
 
@@ -204,7 +204,7 @@ Előfordulhat, hogy a Azure Backup néhány perc elteltével sem sikerült csatl
 
 5. Kattintson a jobb gombbal az **ismeretlen eszköz** elemre, és válassza az **illesztőprogram-szoftver frissítése**lehetőséget.
 
-6. Frissítse az illesztőprogramot úgy, hogy kijelöli a **frissített illesztőprogram-szoftver automatikus keresésének**lehetőségét. A frissítésnek **ismeretlen eszközt** kell megváltoztatnia a **Microsoft iSCSI-kezdeményezőnek**:
+6. Frissítse az illesztőprogramot úgy, hogy kijelöli a  **frissített illesztőprogram-szoftver automatikus keresésének**lehetőségét. A frissítésnek **ismeretlen eszközt** kell megváltoztatnia a **Microsoft iSCSI-kezdeményezőnek**:
 
     ![Képernyőkép a Azure Backup Eszközkezelőról, a Storage-vezérlők kiemelésével](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
@@ -238,15 +238,15 @@ A biztonsági mentési műveletek sikertelenek lehetnek, ha nincs elegendő árn
 
 - A rendszergazda jogú parancssorban keresse meg az aktuális árnyékmásolat-tárolóhelyet:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- Növelje az árnyék tárolóhelyét az alábbi parancs használatával:<br/>
+- Növelje az árnyék tárolóhelyét a következő parancs használatával:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Egy másik folyamat vagy víruskereső szoftver blokkolja a gyorsítótár mappához való hozzáférést
 
 Ha a kiszolgálón telepítve van víruskereső szoftver, adja hozzá a szükséges kizárási szabályokat a következő fájlokhoz és mappákhoz tartozó víruskereső vizsgálathoz:  
 
-- A Scratch mappa. Az alapértelmezett helye a`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-- A bin mappája a következő helyen:`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
+- A Scratch mappa. Az alapértelmezett helye a `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- A bin mappája a következő helyen: `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -258,27 +258,27 @@ Ez a szakasz a MARS-ügynök használata során felmerülő gyakori hibákat ism
 
 Hibaüzenet | Javasolt művelet
 --|--
-A Microsoft Azure Recovery Services-ügynök nem tudta elérni a biztonsági mentés ideiglenes helyen tárolt ellenőrzőösszegét | A probléma megoldásához hajtsa végre az alábbi műveleteket, majd indítsa újra a kiszolgálót <br/> - [Ellenőrizze, hogy van-e olyan víruskereső vagy más folyamat, amely zárolja a fájlok a kaparós helyét](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Ellenőrizze, hogy a kiinduló hely érvényes-e, és elérhető-e a MARS-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+A Microsoft Azure Recovery Services-ügynök nem tudta elérni a biztonsági mentés ideiglenes helyen tárolt ellenőrzőösszegét | A probléma megoldásához hajtsa végre a következő lépéseket, és indítsa újra a kiszolgálót <br/> - [Ellenőrizze, hogy van-e olyan víruskereső vagy más folyamat, amely zárolja a fájlok a kaparós helyét](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Ellenőrizze, hogy a kiinduló hely érvényes-e, és elérhető-e a MARS-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Hibaüzenet | Javasolt művelet
 --|--
-A Microsoft Azure Recovery Services-ügynök nem tudta elérni az ideiglenes helyet virtuális merevlemez inicializálásához | A probléma megoldásához hajtsa végre az alábbi műveleteket, majd indítsa újra a kiszolgálót <br/> - [Ellenőrizze, hogy a víruskereső vagy más folyamatok zárolják-e a fájlok a kaparós hely fájljait](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Ellenőrizze, hogy a kiinduló hely érvényes-e, és elérhető-e a MARS-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+A Microsoft Azure Recovery Services-ügynök nem tudta elérni az ideiglenes helyet virtuális merevlemez inicializálásához | A probléma megoldásához hajtsa végre a következő lépéseket, és indítsa újra a kiszolgálót <br/> - [Ellenőrizze, hogy a víruskereső vagy más folyamatok zárolják-e a fájlok a kaparós hely fájljait](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Ellenőrizze, hogy a kiinduló hely érvényes-e, és elérhető-e a MARS-ügynök számára.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 Hibaüzenet | Javasolt művelet
 --|--
-A biztonsági mentés nem sikerült, mert nincs elég hely a kötetben, ahol a kaparós mappa található. | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálja megismételni a műveletet:<br/>- [Győződjön meg arról, hogy a MARS-ügynök legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [A biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
+A biztonsági mentés nem sikerült, mert nincs elég hely a kötetben, ahol a kaparós mappa található. | A probléma megoldásához ellenőrizze a következő lépéseket, majd próbálja megismételni a műveletet:<br/>- [Győződjön meg arról, hogy a MARS-ügynök legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [A biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Hibaüzenet | Javasolt művelet
 --|--
-Nem találhatók módosítások a fájlban. Ennek több oka lehet. Próbálkozzon újra a művelettel | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálja megismételni a műveletet:<br/> - [Győződjön meg arról, hogy a MARS-ügynök legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [A biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
+Nem találhatók módosítások a fájlban. Ennek több oka lehet. Próbálkozzon újra a művelettel | A probléma megoldásához ellenőrizze a következő lépéseket, majd próbálja megismételni a műveletet:<br/> - [Győződjön meg arról, hogy a MARS-ügynök legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [A biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Windows Server biztonsági mentéséről a Azure Backup ügynökkel](tutorial-backup-windows-server-to-azure.md).
 - Ha vissza kell állítania egy biztonsági mentést, olvassa el a [fájlok visszaállítása Windows rendszerű gépre](backup-azure-restore-windows-server.md)című témakört.

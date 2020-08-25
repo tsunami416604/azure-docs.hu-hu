@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: 23f9da34a123343bc4f2f5b175adc60ce80d7c42
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719172"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762777"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -24,7 +24,7 @@ A minta alkalmazás két szimulált eszközt és egy IoT Edge átjárót tartalm
 * Hozza létre az IoT Edge átjárót egy Azure-beli virtuális gépen, és csatlakoztasson egy szimulált kamerát.
 * Hozza létre az IoT Edge-átjárót egy valódi eszközön, például egy Intel-NUC, és csatlakoztasson egy valódi kamerát.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central video Analytics alkalmazás sablon használatával
 > * Az Alkalmazásbeállítások testreszabása
@@ -40,7 +40,7 @@ Az oktatóanyag-Sorozat elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="initial-setup"></a>Kezdeti beállítás
 
-Ezekben az oktatóanyagokban számos konfigurációs fájl frissítésére és használatára van lehetőség. Ezeknek a fájloknak a kezdeti verziói a [LVA-Gateway GitHub-](https://github.com/Azure/live-video-analytics) tárházban érhetők el. A tárház tartalmaz egy firkatömb szövegfájlt is, amellyel letöltheti és felhasználhatja a konfigurációs értékek rögzítését a telepített szolgáltatásokból.
+Ezekben az oktatóanyagokban számos konfigurációs fájl frissítésére és használatára van lehetőség. Ezeknek a fájloknak a kezdeti verziói a [LVA-Gateway GitHub-](https://github.com/Azure/live-video-analytics/tree/master/ref-apps/lva-edge-iot-central-gateway) tárházban érhetők el. A tárház tartalmaz egy firkatömb szövegfájlt is, amellyel letöltheti és felhasználhatja a konfigurációs értékek rögzítését a telepített szolgáltatásokból.
 
 Hozzon létre egy *LVA-Configuration* nevű mappát a helyi gépen a fájlok másolatainak mentéséhez. Ezután kattintson a jobb gombbal az alábbi hivatkozásokra, és válassza a **Mentés másként** lehetőséget a fájl mentéséhez a *LVA* mappába:
 

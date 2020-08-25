@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75639020"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Oktatóanyag: Az önálló fürt törlése
@@ -36,7 +36,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Ha `Y` a rendszer kéri, adja meg, hogy sikeres volt-e a kimenet, a saját IP-címei pedig az alábbi módon lesznek helyettesítve:
+5. `Y`Ha a rendszer kéri, adja meg, hogy sikeres volt-e a kimenet, a saját IP-címei pedig az alábbi módon lesznek helyettesítve:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -54,16 +54,16 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 1. Jelentkezzen be az AWS-fiókjába.
 2. Lépjen az EC2 konzolra.
 3. Válassza ki az oktatóanyag első részében létrehozott csomópontokat.
-4. Kattintson a **műveletek** > **példány állapotának** > **megszakítása**elemre.
+4. Kattintson a **műveletek**  >  **példány állapotának**  >  **megszakítása**elemre.
 
 ## <a name="clean-up-azure-resources"></a>Azure-erőforrások karbantartása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Lépjen a **Virtual Machines** szakaszra.
 3. Jelölje be az oktatóanyag első részében létrehozott három csomópont jelölőnégyzeteit.
 4. Kattintson a **Törlés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat negyedik részében megismerte, hogyan törölheti az előző lépésekben létrehozott erőforrásokat.
 

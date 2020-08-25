@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
 ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391893"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
@@ -83,7 +83,7 @@ További információ a szűrőkifejezések felépítéséről különböző ada
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
-A DateTime tulajdonságok lekérdezései nem adnak vissza semmilyen értéket, ha Azure Cosmos DB Table API hajtja végre. Míg az Azure Table Storage a határidők időbeli részletességével tárolja a dátum értékeket, a Azure Cosmos DB Table API a `_ts` tulajdonságot használja. A `_ts` tulajdonság második részletességi szinten van, amely nem OData-szűrő. Így az időbélyeg-tulajdonságok lekérdezéseit a Azure Cosmos DB blokkolja. Megkerülő megoldásként meghatározhat egy egyéni datetime vagy hosszú adattípus-tulajdonságot, és beállíthatja a Date értéket az ügyfélről.
+A DateTime tulajdonságok lekérdezései nem adnak vissza semmilyen értéket, ha Azure Cosmos DB Table API hajtja végre. Míg az Azure Table Storage a határidők időbeli részletességével tárolja a dátum értékeket, a Azure Cosmos DB Table API a  `_ts` tulajdonságot használja. A `_ts` tulajdonság második részletességi szinten van, amely nem OData-szűrő. Így az időbélyeg-tulajdonságok lekérdezéseit a Azure Cosmos DB blokkolja. Megkerülő megoldásként meghatározhat egy egyéni datetime vagy hosszú adattípus-tulajdonságot, és beállíthatja a Date értéket az ügyfélről.
 
 ## <a name="query-by-using-linq"></a>Lekérdezés a LINQ használatával 
 A LINQ használatával is végezhet lekérdezést, amelyet a rendszer a megfelelő OData-lekérdezési kifejezésekre fordít. A következő példa bemutatja, hogyan építhetők fel lekérdezések a .NET SDK-val:
@@ -94,7 +94,7 @@ IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
             .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

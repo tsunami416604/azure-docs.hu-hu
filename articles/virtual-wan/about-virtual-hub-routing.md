@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513723"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762317"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
 
@@ -25,10 +25,6 @@ Az Útválasztás konfigurálásával kapcsolatban lásd: [a virtuális központ
 ## <a name="routing-concepts"></a><a name="concepts"></a>Útválasztási fogalmak
 
 A következő szakaszok ismertetik a virtuális központ útválasztásának legfontosabb fogalmait.
-
-> [!NOTE]
-> A központi útválasztási táblázat, a társítás, a terjesztési és a statikus útvonalak egy virtuális hálózati kapcsolaton belüli új fogalmai továbbra is elhelyezhetők, és a várhatóan augusztus 17-i héten belül elkészül.
->
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Hub-útválasztási táblázat
 
@@ -77,9 +73,9 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 * **Szabványos virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**:
 
-Az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez szükséges idő a hét Augusztusjának végéig befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd újra létre kell hoznia az új útválasztási táblákat (az útválasztási táblák szakaszban érhető el Azure Portal)
+Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd újra létre kell hoznia az új útválasztási táblákat (az útválasztási táblák szakaszban érhető el Azure Portal)
 
-* **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg a hét augusztus 17-én befejeződik az Azure-ban. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
+* **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**: ha a Azure Portalben lévő központ útválasztási szakasza már meglévő útvonalakat tartalmaz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard Virtual WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>A virtuális WAN útválasztási szempontjai
 
@@ -89,6 +85,8 @@ Virtuális WAN-útválasztás konfigurálásakor vegye figyelembe a következők
 * Az összes ág-kapcsolatnak az útvonalakat ugyanabba az útválasztási táblákba kell terjesztenie. Ha például úgy dönt, hogy az ágaknak az alapértelmezett útválasztási táblázatba kell terjeszteniük, akkor ennek a konfigurációnak konzisztensnek kell lennie az összes ág között. Ennek eredményeképpen az alapértelmezett útválasztási táblázathoz társított összes kapcsolat elérheti az összes ágát.
 * Azure Firewall jelenleg nem támogatott ág – ág.
 * Ha több régióban Azure Firewall használ, az összes küllős virtuális hálózatot ugyanahhoz az útválasztási táblához kell társítani. Ha például a virtuális hálózatok egy részhalmaza lesz a Azure Firewallon, míg más virtuális hálózatok megkerüli a Azure Firewall ugyanabban a virtuális központban nem lehetséges.
+* VNet-kapcsolaton keresztül egyetlen következő ugrási IP-cím is konfigurálható.
+* A virtuális központ nem támogatja a statikus útvonalat a 0.0.0.0/0 és a következő ugrás Virtual Network kapcsolathoz (vagy egy berendezés IP-címéhez a VNet-kapcsolaton)
 
 ## <a name="next-steps"></a>További lépések
 

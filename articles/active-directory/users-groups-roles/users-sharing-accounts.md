@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164223"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798397"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure AD-vel
 
@@ -59,7 +59,7 @@ A fiókok megosztását engedélyező Azure AD-funkciók a következők:
 * Egyszeri bejelentkezési ügynök jelszava
 * [Csoport-hozzárendelés](groups-self-service-management.md)
 * Egyéni jelszavas alkalmazások
-* [Alkalmazás-használati irányítópult/jelentések](../active-directory-passwords-get-insights.md)
+* [Alkalmazás-használati irányítópult/jelentések](../authentication/howto-sspr-reporting.md)
 * Végfelhasználói hozzáférési portálok
 * [Alkalmazásproxy](../manage-apps/application-proxy.md)
 * [Active Directory piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Ha az Azure AD-t egy fiók megosztására szeretné használni, a következőket
 * Az alkalmazás konfigurálása a jelszó-egyszeri bejelentkezéshez (SSO)
 * Használjon [csoportos hozzárendelést](groups-saasapps.md) , és válassza a megosztott hitelesítő adatok megadására szolgáló lehetőséget.
 
-A megosztott fiókot Multi-Factor Authentication (MFA) biztonságosabbá teheti (További információ az [alkalmazások az Azure ad-vel való biztonságossá](../authentication/concept-mfa-whichversion.md)tételéről), és delegálhatja azt a képességet, hogy az [Azure ad](groups-self-service-management.md) önkiszolgáló csoport kezelésével Hogyan férhet hozzá az alkalmazáshoz.
+A megosztott fiókot Multi-Factor Authentication (MFA) biztonságosabbá teheti (További információ az [alkalmazások az Azure ad-vel való biztonságossá](../authentication/concept-mfa-howitworks.md)tételéről), és delegálhatja azt a képességet, hogy az [Azure ad](groups-self-service-management.md) önkiszolgáló csoport kezelésével Hogyan férhet hozzá az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazáskezelés az Azure Active Directory használatával](../manage-apps/what-is-application-management.md)
-* [Alkalmazások védelme feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)
+* [Alkalmazások védelme feltételes hozzáféréssel](../conditional-access/overview.md)
 * [Önkiszolgáló csoport kezelése/SSAA](groups-self-service-management.md)

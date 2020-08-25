@@ -2,18 +2,18 @@
 title: Azure Stack Edge & Azure Data Box Gateway 2007 kibocsátási megjegyzések | Microsoft Docs
 description: Az Azure Stack Edge és a Data Box Gateway 2007-es verziójának futtatásával kapcsolatos kritikus nyitott problémákat és megoldásokat ismerteti.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 07/14/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4964454a5636120840fbdb5f3fbdd3aee30d8e74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: twooley
+ms.openlocfilehash: f9a08cda1466dbe284a0ac3c0e34b109be236883
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531748"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783926"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Azure Stack Edge és Azure Data Box Gateway 2007 kibocsátási megjegyzései
 

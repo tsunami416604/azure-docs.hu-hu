@@ -12,17 +12,17 @@ ms.topic: end-user-help
 ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266219"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798975"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti Azure Active Directory (Azure AD) környezetét a [Azure Active Directory felügyeleti dokumentációjában](https://docs.microsoft.com/azure/active-directory).
+>Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti Azure Active Directory (Azure AD) környezetét a [Azure Active Directory felügyeleti dokumentációjában](../index.yml).
 >
 > Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni a Microsoft-fiókba](https://support.microsoft.com/help/12429) .  Emellett további információkat is megtudhat arról, hogy mi a teendő, ha a ["Ez a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
 
@@ -49,7 +49,7 @@ Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operá
 >[!Important]
 >Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/en-us/account/authenticator).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazás letöltése és telepítése után további információért tekintse meg a [hitelesítő alkalmazás áttekintését](user-help-auth-app-overview.md) . További beállítási lehetőségeket a következő témakörben talál:
 

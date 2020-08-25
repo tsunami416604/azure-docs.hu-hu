@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 1e66774d4239bdad6c8af426a28af6081bb0da3c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137654"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782175"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Kétosztályos növelt döntési fa modul
 
@@ -22,9 +22,11 @@ Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismert
 
 Ezzel a modullal létrehozhat egy gépi tanulási modellt, amely a megnövelt döntési fák algoritmusán alapul. 
 
-A megnövelt döntési fa egy olyan együttes tanulási módszer, amelyben a második fa kijavítja az első fa hibáit, a harmadik fa kijavítja az első és a második fa hibáit, és így tovább.  Az előrejelzések a fák teljes egészére épülnek, amely az előrejelzést végzi.
+A megnövelt döntési fa egy olyan együttes tanulási módszer, amelyben a második fa kijavítja az első fa hibáit, a harmadik fa kijavítja az első és a második fa hibáit, és így tovább. Az előrejelzések a fák teljes egészére épülnek, amely az előrejelzést végzi.
   
 Általában, ha megfelelően van konfigurálva, a megnövelt döntési fák a legkönnyebben használható módszerek, amelyekkel a gépi tanulási feladatok széles skáláját érhetik el. Ugyanakkor a memória-igényes tanulók egyike is, és a jelenlegi implementáció mindent megtart a memóriában. Ezért előfordulhat, hogy a megnövelt döntési famodell nem tudja feldolgozni a lineáris tanulók által kezelhető nagyméretű adatkészleteket.
+
+Ez a modul a LightGBM algoritmuson alapul.
 
 ## <a name="how-to-configure"></a>Konfigurálás
 
@@ -83,6 +85,6 @@ A betanítás befejezése után:
 
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

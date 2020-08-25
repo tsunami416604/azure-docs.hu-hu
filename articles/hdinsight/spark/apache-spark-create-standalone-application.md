@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: eaee58cf0a1a2e3497b0e09b7c26852f0699af59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85848437"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: Scala Maven-alkalmazás létrehozása a HDInsight-hez Apache Spark a IntelliJ használatával
@@ -71,7 +71,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
    ![IntelliJ az új projekt párbeszédpanel](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
-5. Válassza a **Tovább** lehetőséget.
+5. Kattintson a **Tovább** gombra.
 
 6. Az **új projekt** ablakban adja meg a következő információkat:  
 
@@ -84,7 +84,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
     ![IntelliJ ÖTLETE a Spark SDK kiválasztásához](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
-7. Válassza a **Befejezés** gombot.
+7. Válassza a **Befejezés** lehetőséget.
 
 ## <a name="create-a-standalone-scala-project"></a>Önálló Scala-projekt létrehozása
 
@@ -100,7 +100,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
     !["IntelliJ-ötlet létrehozása Maven-projekt"](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
-6. Válassza a **Tovább** lehetőséget.
+6. Kattintson a **Tovább** gombra.
 
 7. Bontsa ki az összetevők **koordinátáit**. Adja meg a megfelelő értékeket a **GroupID**és a **ArtifactId**. A **név**és a **hely** automatikusan kitöltődik. Ebben az oktatóanyagban a következő értékeket használjuk:
 
@@ -109,7 +109,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
     !["IntelliJ-ötlet létrehozása Maven-projekt"](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
-8. Válassza a **Tovább** lehetőséget.
+8. Kattintson a **Tovább** gombra.
 
 9. Ellenőrizze a beállításokat, majd válassza a **Next** (Tovább) lehetőséget.
 
@@ -215,7 +215,7 @@ Az alkalmazás fürtön történő futtatásához a következő módszereket has
 
 * Az **Apache Livy használatával távolról is elküldhet egy alkalmazás-feladatot** a Spark-fürtön. A HDInsight-alapú Spark-fürtök tartalmazzák a Livyt, amely elvégzi a REST-végpontok közzétételét, így lehetővé teszi a Spark-feladatok távoli elküldését. További információ: [Apache Spark feladatok távoli elküldése az Apache Livy és a Spark-fürtök használatával a HDInsight-on](apache-spark-livy-rest-interface.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 

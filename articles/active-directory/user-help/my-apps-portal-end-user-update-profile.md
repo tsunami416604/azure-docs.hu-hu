@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: edbe76145c83e000c549f7e0dd89cc500e6f05f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b442d5dfae6596b3aea9301d86e9a7cb6d2cbb9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741780"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799213"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
 
@@ -33,7 +33,7 @@ Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
 
 ## <a name="view-your-organization-related-profile-information"></a>A szervezettel kapcsolatos profil adatainak megtekintése
 
@@ -138,7 +138,7 @@ Dönthet úgy is, hogy kijelentkezik a saját munkahelyi vagy iskolai fiókjáva
 
 2. A **kijelentkezés bárhová** megerősítő mezőben válassza az **Igen** lehetőséget annak megerősítéséhez, hogy ki szeretné jelentkezni az összes munkamenetből és eszközről. Ha meggondolja magát, válassza a **nem** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután befejezte a frissítéseket a **profil** lapon, a következőket teheti:
 

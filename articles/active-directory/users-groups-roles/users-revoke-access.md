@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb2ad8e6d37190d0473f3f9f4af7738edd3b27f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475209"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798414"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Felhasználói hozzáférés visszavonása Azure Active Directory
 
@@ -38,7 +38,7 @@ A hozzáférési jogkivonatok és a frissítési tokenek gyakran használatosak 
 
 Az Azure AD ezután újraértékeli az engedélyezési házirendeket. Ha a felhasználó továbbra is engedélyezve van, az Azure AD új hozzáférési jogkivonatot és frissítési jogkivonatot bocsát ki.
 
-A hozzáférési tokenek biztonsági szempontból fontosak lehetnek, ha a hozzáférést a jogkivonat élettartama alatt rövidebb idő alatt kell visszavonni, ami általában egy óra körüli. Ezért a Microsoft aktívan dolgozik az Office 365-alkalmazások [folyamatos hozzáférésének kiértékelésében](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation) , így biztosítva, hogy a hozzáférési tokenek közel valós időben legyenek érvényben.  
+A hozzáférési tokenek biztonsági szempontból fontosak lehetnek, ha a hozzáférést a jogkivonat élettartama alatt rövidebb idő alatt kell visszavonni, ami általában egy óra körüli. Ezért a Microsoft aktívan dolgozik az Office 365-alkalmazások [folyamatos hozzáférésének kiértékelésében](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) , így biztosítva, hogy a hozzáférési tokenek közel valós időben legyenek érvényben.  
 
 ## <a name="session-tokens-cookies"></a>Munkamenet-tokenek (cookie-k)
 
@@ -60,13 +60,13 @@ A helyszíni Active Directoryokkal Azure Active Directory szinkronizált hibrid 
 
 Rendszergazdaként a Active Directoryban kapcsolódjon a helyszíni hálózathoz, nyissa meg a PowerShellt, és végezze el a következő műveleteket:
 
-1. Tiltsa le a felhasználót a Active Directoryban. Tekintse meg a [disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
+1. Tiltsa le a felhasználót a Active Directoryban. Tekintse meg a [disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. A felhasználó jelszavának visszaállítása kétszer a Active Directory. Tekintse [meg a set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
+1. A felhasználó jelszavának visszaállítása kétszer a Active Directory. Tekintse [meg a set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
 
     > [!NOTE]
     > A felhasználó jelszavának kétszeres módosításának oka az, hogy enyhítse a pass-The-hash kockázatát, különösen akkor, ha késés van a helyszíni jelszó-replikálásban. Ha nyugodtan feltételezi, hogy ez a fiók nem sérült, akkor csak egyszer állíthatja alaphelyzetbe a jelszót.
@@ -83,18 +83,18 @@ Rendszergazdaként a Active Directoryban kapcsolódjon a helyszíni hálózathoz
 
 Azure Active Directory rendszergazdaként nyissa meg a PowerShellt, futtassa ``Connect-AzureAD`` a parancsot, és hajtsa végre a következő műveleteket:
 
-1. Tiltsa le a felhasználót az Azure AD-ben. Tekintse [meg a set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
+1. Tiltsa le a felhasználót az Azure AD-ben. Tekintse [meg a set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. A felhasználó Azure AD frissítési jogkivonatának visszavonása. Lásd: [Visszavonás – AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
+1. A felhasználó Azure AD frissítési jogkivonatának visszavonása. Lásd: [Visszavonás – AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Tiltsa le a felhasználó eszközeit. Lásd: [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
+1. Tiltsa le a felhasználó eszközeit. Lásd: [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -102,9 +102,9 @@ Azure Active Directory rendszergazdaként nyissa meg a PowerShellt, futtassa ``C
 
 ## <a name="optional-steps"></a>Nem kötelező lépések
 
-- [Vállalati adatok törlése az Intune által felügyelt alkalmazásokból](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe).
+- [Vállalati adatok törlése az Intune által felügyelt alkalmazásokból](/mem/intune/apps/apps-selective-wipe).
 
-- [A vállalati tulajdonban lévő eszközök törlésével alaphelyzetbe állíthatja az eszköz gyári beállításait](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe).
+- [A vállalati tulajdonban lévő eszközök törlésével alaphelyzetbe állíthatja az eszköz gyári beállításait](/mem/intune/remote-actions/devices-wipe).
 
 > [!NOTE]
 > Az eszközön lévő adatok törlés után nem állíthatók vissza.
@@ -117,7 +117,7 @@ Miután a rendszergazdák elvégezték a fenti lépéseket, a felhasználó nem 
 
 - A **munkamenet-jogkivonatokat használó alkalmazások**esetében a meglévő munkamenetek a jogkivonat lejárta után azonnal véget tartanak. Ha a felhasználó letiltott állapota szinkronizálva van az alkalmazással, akkor az alkalmazás automatikusan visszavonhatja a felhasználó meglévő munkameneteit, ha erre van konfigurálva.  A szükséges idő az alkalmazás és az Azure AD közötti szinkronizálás gyakoriságának függvénye.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Biztonságos hozzáférési eljárások az Azure AD-rendszergazdák számára](directory-admin-roles-secure.md)
 - [Felhasználói profil adatainak hozzáadása vagy frissítése](../fundamentals/active-directory-users-profile-azure-portal.md)

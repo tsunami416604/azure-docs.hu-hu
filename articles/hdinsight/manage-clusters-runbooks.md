@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75553512"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Oktatóanyag: Azure HDInsight-fürtök létrehozása Azure Automation
@@ -167,7 +167,7 @@ Törölje a fürtöt a létrehozott runbook kiválasztásával `hdinsight-cluste
 
 Ha már nincs rá szükség, törölje a létrehozott Azure Automation fiókot a nem kívánt költségek elkerülése érdekében. Ehhez navigáljon a Azure Portalhoz, válassza ki azt az erőforráscsoportot, amelyben létrehozta a Azure Automation fiókot, válassza ki az Automation-fiókot, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell használatával](hdinsight-administer-use-powershell.md)

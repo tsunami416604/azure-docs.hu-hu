@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6869abb3040feb6431d60799536c9986c6ccb954
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302491"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798244"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
  A megadott numerikus kifejezés 10-es alapú logaritmusát adja vissza.  
@@ -34,7 +34,7 @@ LOG10 (<numeric_expr>)
   
 ## <a name="remarks"></a>Megjegyzések
   
-  A LOG10 és a POWER függvények fordítottan kapcsolódnak egymáshoz. Például: 10 ^ LOG10 (n) = n.  
+  A LOG10 és a POWER függvények fordítottan kapcsolódnak egymáshoz. Például: 10 ^ LOG10 (n) = n. Ez a rendszerfüggvény nem fogja használni az indexet.
   
 ## <a name="examples"></a>Példák
   
@@ -50,11 +50,7 @@ SELECT LOG10(100) AS log10
 [{log10: 2}]  
 ```  
 
-## <a name="remarks"></a>Megjegyzések
-
-Ez a rendszerfüggvény nem fogja használni az indexet.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

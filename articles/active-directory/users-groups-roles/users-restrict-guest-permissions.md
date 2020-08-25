@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8cba89abd65844d238120726572481457f27cb
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706156"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798431"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -54,7 +54,7 @@ Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal ve
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Frissítés a Microsoft Graph API-val
 
-Új Microsoft Graph API-t adtunk hozzá a vendég engedélyeinek konfigurálásához az Azure AD-szervezetben. A következő API-hívások bármelyik jogosultsági szint hozzárendelésére használhatók. Az itt használt guestUserRoleId értéke a legtöbb korlátozott vendég felhasználói beállítás szemléltetése. További információ a Microsoft Graph használatáról a vendég engedélyeinek beállításához: [authorizationPolicy erőforrástípus](https://docs.microsoft.com/graph/api/resources/authorizationpolicy).
+Új Microsoft Graph API-t adtunk hozzá a vendég engedélyeinek konfigurálásához az Azure AD-szervezetben. A következő API-hívások bármelyik jogosultsági szint hozzárendelésére használhatók. Az itt használt guestUserRoleId értéke a legtöbb korlátozott vendég felhasználói beállítás szemléltetése. További információ a Microsoft Graph használatáról a vendég engedélyeinek beállításához: [authorizationPolicy erőforrástípus](/graph/api/resources/authorizationpolicy).
 
 ### <a name="configuring-for-the-first-time"></a>Konfigurálás első alkalommal
 
@@ -165,8 +165,8 @@ Módosulnak a meglévő vendég engedélyei a bérlőn? | Nem történt változ�
 A rendszer alapértelmezés szerint beállítja ezeket az engedélyeket? | Nem. A meglévő alapértelmezett engedélyek változatlanok maradnak. Igény szerint beállíthatja, hogy az engedélyek szigorúbbak legyenek.
 Vannak a szolgáltatásra vonatkozó licencfeltételek? | Nem, a szolgáltatáshoz nem tartozik új licencelési követelmény.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni a meglévő vendég engedélyekről az Azure AD-ben, tekintse meg [a mi az alapértelmezett felhasználói engedélyek a Azure Active Directory?](../fundamentals/users-default-permissions.md)című témakört.
-- A vendég hozzáférésének korlátozására szolgáló Microsoft Graph API-módszerek megtekintéséhez lásd: [authorizationPolicy erőforrástípus](https://docs.microsoft.com/graph/api/resources/authorizationpolicy).
+- A vendég hozzáférésének korlátozására szolgáló Microsoft Graph API-módszerek megtekintéséhez lásd: [authorizationPolicy erőforrástípus](/graph/api/resources/authorizationpolicy).
 - A felhasználók összes hozzáférésének visszavonásához lásd: [felhasználói hozzáférés visszavonása az Azure ad-ben](users-revoke-access.md).

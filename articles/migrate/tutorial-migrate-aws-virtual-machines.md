@@ -4,12 +4,12 @@ description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepít�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611432"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762419"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -355,8 +355,8 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
@@ -379,7 +379,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 **Válasz:** Jelenleg nem támogatott az értékelés importálása ehhez a munkafolyamathoz. Megkerülő megoldásként exportálhatja az értékelést, majd manuálisan is kiválaszthatja a virtuális gép ajánlását a replikálás engedélyezése lépésben.
   
 **Kérdés:** A következő hibaüzenet jelenik meg: "nem sikerült beolvasni a BIOS GUID azonosítóját" az AWS-es virtuális gépek felderítésére tett kísérlet során   
-**Válasz:** Tekintse át az AWS virtuális gépek támogatott operációs rendszereit.  
+**Válasz:** A hitelesítéshez mindig használja a root logint, és ne használjon pszeudo-felhasználót. Tekintse át az AWS virtuális gépek támogatott operációs rendszereit is.  
 
 **Kérdés:** A saját replikáció állapota nem halad előre    
 **Válasz:** Ellenőrizze, hogy a replikációs berendezés megfelel-e a követelményeknek. Győződjön meg arról, hogy engedélyezte a szükséges portokat a 9443-es és HTTPS 443-es TCP-porton az adatátvitelhez. Győződjön meg arról, hogy az ugyanahhoz a projekthez kapcsolódó replikációs berendezésnek nincs elavult duplikált verziója.   
@@ -387,6 +387,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 **Kérdés:** Nem tudom felderíteni az AWS-példányokat az Azure Migrate használatával a távoli Windows Management szolgáltatásból származó 504 HTTP-állapotkód miatt    
 **Válasz:** Győződjön meg arról, hogy az Azure migráló készülékre vonatkozó követelmények és URL-hozzáférési igényeket tekinti át. Győződjön meg arról, hogy nincs proxy-beállítás a készülék regisztrációjának blokkolására.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

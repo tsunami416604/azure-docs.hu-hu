@@ -366,6 +366,8 @@
           href: ssh.md
         - name: Linux-teljesítménynövelő eszközök
           href: troubleshoot-linux.md
+        - name: Erőforrások állapoteseményeinek keresése (előzetes verzió)
+          href: aks-resource-health.md
 - name: Referencia
   items:
     - name: Azure CLI

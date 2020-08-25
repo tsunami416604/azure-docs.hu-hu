@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798783"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783637"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -67,7 +67,7 @@ Az alábbi lépésekkel hozhat létre új hozzáférési csomagot.
    
     ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Alapbeállítások
+## <a name="basics"></a>Alapvető beállítások
 
 Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot a alkalmazásban.
 
@@ -135,13 +135,13 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
 Microsoft Graph használatával is létrehozhat hozzáférési csomagokat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a következőre:
 
-1. [Sorolja fel a katalógusban szereplő accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) , és [hozzon létre egy accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
-1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.
-1. [Hozzon létre egy accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
-1. [Hozzon létre egy accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
-1. [Hozzon létre egy accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) minden, a hozzáférési csomagban szükséges erőforrás-szerepkörhöz.
+1. [Sorolja fel a katalógusban szereplő accessPackageResources](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) , és [hozzon létre egy accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
+1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.
+1. [Hozzon létre egy accessPackage](/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Hozzon létre egy accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. [Hozzon létre egy accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) minden, a hozzáférési csomagban szükséges erőforrás-szerepkörhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag igénylésére szolgáló hivatkozás megosztása](entitlement-management-access-package-settings.md)
 - [Hozzáférési csomag erőforrás-szerepköreinek módosítása](entitlement-management-access-package-resources.md)

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75430729"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalai stílusának testreszabása
@@ -55,11 +55,11 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre az elemek stílusát az �
     A **Stílusok** panellel testre szabható összes elem megjelenik az oldalon.
 5. Írja be a „headings-color” (fejléc színe) kifejezést a **Változó értékeinek módosítása a fejlesztői portál megjelenésének testreszabásához:** mezőbe.
 
-    A ** \@fejlécek – szín** elem jelenik meg az oldalon. Ez a változó szabályozza a szöveg színét.
+    A ** \@ fejlécek – szín** elem jelenik meg az oldalon. Ez a változó szabályozza a szöveg színét.
 
     ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Kattintson a ** \@fejlécek-Color** változó mezőre. 
+6. Kattintson a ** \@ fejlécek-Color** változó mezőre. 
     
     Megjelenik a színválasztó legördülő menü.
 7. A színválasztó legördülő menüben válassza ki az új színt.
@@ -75,6 +75,6 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre az elemek stílusát az �
 1. Navigáljon a fejlesztői portálra.
 2. Itt megtekintheti a végrehajtott módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További érdekes tudnivalók [az Azure API Management fejlesztői portál sablonok használatával történő testreszabásáról](api-management-developer-portal-templates.md).

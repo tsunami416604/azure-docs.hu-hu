@@ -3,12 +3,12 @@ title: Virtuális gépek automatikus leállításának konfigurálása a Azure L
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális gépek automatikus leállítása a labor-fiókban.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 8647aed0e66993b8a7b8e5c0a42c8ceabbb1fb9e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603890"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798448"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Virtuális gépek automatikus leállításának beállítása labor-fiókhoz
 
@@ -18,7 +18,7 @@ Több automatikus leállítási költség-vezérlési funkciót is engedélyezhe
 - Virtuális gépek automatikus leállítása a felhasználók leválasztásakor (Windows & Linux).
 - Automatikusan leállítja az elindított virtuális gépeket, de a felhasználók nem csatlakoznak.
 
-Tekintse át az automatikus leállítási funkciókról szóló további részleteket a [Cost Control és az automatikus leállítás beállításai](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) szakaszban.
+Tekintse át az automatikus leállítási funkciókról szóló további részleteket a [Cost Control és az automatikus leállítás beállításai](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) szakaszban.
 
 ## <a name="enable-automatic-shutdown"></a>Automatikus leállítás engedélyezése
 

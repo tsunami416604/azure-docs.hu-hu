@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 55f2ab7008644ac084782e448e8e761cd19ea37e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225784"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762334"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Törlési tevékenység az Azure Data Factoryben
 
@@ -53,7 +53,7 @@ A Azure Data Factory törlés tevékenységgel törölheti a fájlokat vagy mapp
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,8 +64,11 @@ A Azure Data Factory törlés tevékenységgel törölheti a fájlokat vagy mapp
             "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
-        "recursive": true/false,
-        "maxConcurrentConnections": <number>,
+        "storeSettings": {
+            "type": "<source type>",
+            "recursive": true/false,
+            "maxConcurrentConnections": <number>
+        },
         "enableLogging": true/false,
         "logStorageSettings": {
             "linkedServiceName": {
@@ -116,7 +119,7 @@ A törlési tevékenység eredményét két helyen tekintheti meg és figyelheti
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>A törlési tevékenység minta naplófájlja
 
-| Name | Kategória | Állapot | Hiba |
+| Név | Kategória | Állapot | Hiba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.jsbekapcsolva | Fájl | Törölve |  |
 | teszt2/hello789.txt | Fájl | Törölve |  |
@@ -133,7 +136,7 @@ Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;
 
 Most a DELETE tevékenységgel törli a mappát vagy a fájlokat az adatkészletből és a törlési tevékenységből származó eltérő tulajdonságértékek kombinációjával:
 
-| folderPath (adatkészletből) | Fájlnév (az adatkészletből) | rekurzív (a törlési tevékenységből) | Kimenet |
+| folderPath | fileName | rekurzív | Kimenet |
 |:--- |:--- |:--- |:--- |
 | Gyökér/Folder_A_2 | NULL | Hamis | Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Gyökér/Folder_A_2 | NULL | Igaz | Legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
@@ -761,7 +764,7 @@ Azt is megteheti, hogy a sablon segítségével áthelyezi [a fájlokat innen.](
 
 -   A törlési tevékenység nem támogatja a helyettesítő karakterrel leírt mappák listájának törlését.
 
--   Ha a file Attribute Filter: modifiedDatetimeStart és a modifiedDatetimeEnd paramétert használja a törlendő fájlok kiválasztásához, ügyeljen arra, hogy az adatkészlet "fájlnév": "*" beállítását adja meg.
+-   Ha a DELETE tevékenységben a file Attribute szűrőt használja: modifiedDatetimeStart és modifiedDatetimeEnd a törlendő fájlok kiválasztásához, akkor ügyeljen arra, hogy a törlési tevékenységben a "wildcardFileName": "*" beállítást is állítsa be.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -2,17 +2,19 @@
 title: Tároló csoport manuális leállítása vagy elindítása
 description: Megtudhatja, hogyan állíthatja be manuálisan a tárolók csoportját a Azure Container Instancesban.
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/11/2020
+ms.openlocfilehash: f697f18459959cf40e71d3ca90cd8b42aaa74239
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74533430"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799077"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Tárolók manuális leállítása vagy indítása az Azure Container Instancesben
 
 A tároló-csoport [Újraindítási házirend](container-instances-restart-policy.md) beállítása határozza meg, hogy a tároló példányai alapértelmezés szerint hogyan kezdődnek vagy álljanak le. Az alapértelmezett beállítás felülbírálható egy tároló csoport manuális leállításával vagy indításával.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="stop"></a>Leállítás
 
@@ -44,7 +46,7 @@ Ez a művelet újraindítja a tárolók csoportjának összes tárolóját. A cs
 
 A tároló csoport manuális újraindítása után a tároló csoport a beállított újraindítási szabályzatnak megfelelően fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Container Instances [Újraindítási házirend-beállításairól](container-instances-restart-policy.md) .
 

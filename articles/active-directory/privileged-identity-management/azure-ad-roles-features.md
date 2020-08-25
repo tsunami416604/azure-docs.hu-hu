@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256628"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784011"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Az Azure AD-szerepkörök felügyeleti képességei Privileged Identity Management
 
@@ -56,7 +56,7 @@ A felhasználó által kezdeményezett műveletekhez a globális rendszergazda v
 
 ## <a name="api-changes"></a>API-változások
 
-Ha az ügyfelek a frissített verziót az Azure AD-szervezetbe építették, a meglévő Graph API működése leáll. Át kell térnie az [Azure-erőforrás szerepköreinek Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)használatára. Az adott API használatával felügyelheti az Azure AD-szerepköröket `/azureResources` `/aadroles` az aláírással, és a CÍMTÁR-azonosítóját használhatja `resourceId` .
+Ha az ügyfelek a frissített verziót az Azure AD-szervezetbe építették, a meglévő Graph API működése leáll. Át kell térnie az [Azure-erőforrás szerepköreinek Graph API](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)használatára. Az adott API használatával felügyelheti az Azure AD-szerepköröket `/azureResources` `/aadroles` az aláírással, és a CÍMTÁR-azonosítóját használhatja `resourceId` .
 
 Mindent megtettünk, hogy megismerjük a korábbi API-t használó ügyfeleket, hogy tájékoztassák őket erről a változásról az idő előtt. Ha az Azure AD-szervezet át lett helyezve az új verzióra, és továbbra is függ a régi API-tól, forduljon a csapathoz pim_preview@microsoft.com .
 

@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559136"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794442"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Adatok összekapcsolásának Azure Information Protection
 
@@ -57,19 +57,21 @@ Ha azonban a Azure Information Protection naplózási adatai egy másik Log Anal
 
 Ha nem konfigurált Log Analytics munkaterületet Azure Information Protectionhoz, akkor kövesse az alábbi utasításokat, vagy módosítania kell az Azure Information Protection naplózási adatait tároló munkaterületet.
 
-1. Az Azure Sentinelben válassza az **adatösszekötők**, majd a **Azure Information Protection (előzetes verzió)** lehetőséget.
+1. Az Azure sentinelben válassza az **adatösszekötők**  >  **Azure Information Protection (előzetes verzió)** lehetőséget.
 
 2. Válassza az **összekötő megnyitása lapot**.
 
-3. Az **Analytics konfigurálása (előzetes verzió) panelen** válassza ki azt a munkaterületet, amelyet jelenleg az Azure sentinelhez használ. Ha másik munkaterületet választ, a Azure Information Protection jelentési adatok nem lesznek elérhetők az Azure Sentinel számára.
+3. A **konfiguráció**területen válassza a **kapcsolat Azure Information Protection naplók**lehetőséget.
 
-4. Ha kiválasztott egy munkaterületet, kattintson az **OK gombra** , és az összekötő **állapota** most a **Connected**értékre vált.
+4. Az **Analytics konfigurálása (előzetes verzió) panelen** válassza ki azt a munkaterületet, amelyet az Azure sentinelhez jelenleg használ. Ha másik munkaterületet választ, a Azure Information Protection jelentési adatok nem érhetők el az Azure Sentinelben.
 
-5. A Azure Information Protection jelentési adatait a rendszer a kiválasztott munkaterületen található **InformationProtectionLogs_CL** táblában tárolja. 
+5. Miután kiválasztott egy munkaterületet, kattintson **az OK gombra**. Az összekötő **állapota** a **csatlakoztatott**értékre változik.
+
+6. A Azure Information Protection jelentési adatait a rendszer a kiválasztott munkaterület **InformationProtectionLogs_CL** táblájában tárolja. 
     
     A jelentéskészítési adatokat Azure Monitor vonatkozó sémájának használatához keresse meg a **InformationProtectionEvents**. Az Event functions szolgáltatással kapcsolatos további információkért tekintse meg a Azure Information Protection dokumentációjának az [Event functions-hez készült rövid séma-referenciája](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) című szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Information Protection az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

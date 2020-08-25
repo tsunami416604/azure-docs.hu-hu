@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314220"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794303"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -20,7 +20,7 @@ Azure Stream Analytics lehetővé teszi, hogy kihasználhassa az egyik vezető �
 
 Ez a cikk a Stream Analytics [valós idejű csalások észlelését](stream-analytics-real-time-fraud-detection.md) ismertető oktatóanyagban folytatódik. Ez az oktatóanyagban létrehozott munkafolyamatra épül, és hozzáadja a Power BI kimenetet, hogy megjelenítse a streaming Analytics-feladatok által észlelt csalárd telefonhívásokat. 
 
-Megtekintheti [a](https://www.youtube.com/watch?v=SGUpT-a99MA) forgatókönyvet bemutató videót.
+Megtekintheti [a](https://www.youtube.com/watch?v=SGUpT-a99MA)  forgatókönyvet bemutató videót.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -39,7 +39,10 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 2. A bal oldali menüben válassza a **kimenetek** lehetőséget a **feladatok topológiája**alatt. Ezután válassza a **+ Hozzáadás** lehetőséget, majd a legördülő menüből válassza a **Power bi** lehetőséget.
 
-3. Válassza a **+**  >  **Power bi**hozzáadása elemet. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
+3. Válassza a **+**  >  **Power bi**hozzáadása elemet. Ezután töltse ki az űrlapot a következő adatokkal, és válassza az **Engedélyezés** lehetőséget a saját felhasználói identitásának használatára a Power BIhoz való kapcsolódáshoz (a jogkivonat 90 napig érvényes). 
+
+>[!NOTE]
+>Üzemi feladatokhoz javasoljuk, hogy a [felügyelt identitás használatára való kapcsolódással hitelesítse Azure stream Analytics-feladatát Power bi](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
@@ -56,7 +59,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-8. Kattintson a **Létrehozás** lehetőségre.
+8. Kattintson a **Create** (Létrehozás) gombra.
 
 Az adatkészlet a következő beállításokkal jön létre:
 
@@ -110,7 +113,7 @@ Ez a szakasz nem kötelező, de ajánlott.
 
     * Nyisson meg egy parancssort.
     * Lépjen arra a mappára, ahol a telcogenerator.exe és a módosított telcodatagen.exe.config fájlok találhatók.
-    * Futtassa az alábbi parancsot:
+    * Futtassa a következő parancsot:
 
        `telcodatagen.exe 1000 .2 2`
 
@@ -224,9 +227,10 @@ Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba 
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Stream Analytics kimenetek](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

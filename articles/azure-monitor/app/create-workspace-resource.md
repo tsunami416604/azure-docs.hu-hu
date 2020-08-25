@@ -4,13 +4,13 @@ description: Ismerkedjen meg az új Azure Monitor Application Insights munkater�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824987"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783841"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Munkaterület-alapú Application Insights erőforrások (előzetes verzió)
 
@@ -27,7 +27,7 @@ Az új felület teszteléséhez jelentkezzen be a [Azure Portalba](https://porta
 
 Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../learn/quick-create-workspace.md).
 
-A nyilvános előzetes verzió **munkaterület-alapú erőforrásai jelenleg csak az USA 2. nyugati régiójában, az USA keleti** régiójában és az USA déli középső régiójában vannak.
+**A munkaterület-alapú erőforrások jelenleg minden kereskedelmi régióban elérhetők és Azure Government**
 
 Miután létrehozta az erőforrást, megjelenik a megfelelő munkaterület-információ az **Áttekintés** ablaktáblán:
 
@@ -53,10 +53,10 @@ A kód alapú alkalmazások figyeléséhez csak telepítse a megfelelő Applicat
 A Application Insights SDK kód alapú figyeléshez való beállításával kapcsolatos részletes dokumentációért forduljon a nyelvhez vagy a keretrendszerhez kapcsolódó dokumentációhoz:
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core](./asp-net-core.md)
+- [ASP.NET Core ](./asp-net-core.md)
 - [Háttér-feladatok & modern konzolon futó alkalmazások (.NET/.NET Core)](./worker-service.md)
 - [Klasszikus konzolos alkalmazások (.NET)](./console.md) 
-- [Java](./java-get-started.md?tabs=maven)
+- [Java ](./java-get-started.md?tabs=maven)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -79,7 +79,7 @@ Az előzetes verzió Application Insights Azure CLI-parancsokhoz való hozzáfé
  az extension add -n application-insights
 ```
 
-Ha nem futtatja a `az extension add` parancsot, a következő hibaüzenet jelenik meg:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Ha nem futtatja a `az extension add` parancsot, a következő hibaüzenet jelenik meg: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Most futtathatja a következőt a Application Insights erőforrás létrehozásához:
 
@@ -184,6 +184,14 @@ A `New-AzApplicationInsights` PowerShell-parancs jelenleg nem támogatja a munka
 }
 
 ```
+
+## <a name="new-capabilities"></a>Új képességek
+
+A munkaterület-alapú Application Insights lehetővé teszi a Azure Monitor legújabb képességeinek kihasználását, beleértve a következőket:
+
+* Az [ügyfél által felügyelt kulcsok (CMK)](../platform/customer-managed-keys.md) lehetővé teszi az adatok titkosítását olyan titkosítási kulcsokkal, amelyekhez csak Ön férhet hozzá.
+* Az [Azure Private link](../platform/private-link-security.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal.
+* A [Profiler és a Snapshot Debugger saját tárterületének (BYOS)](./profiler-bring-your-own-storage.md) teljes körű vezérlést biztosít a titkosítást a REST-alapú házirend, az élettartam-kezelési házirend és a Application Insights Profiler és Snapshot Debuggerhoz kapcsolódó összes adat hálózati hozzáférése felett. 
 
 ## <a name="modifying-the-associated-workspace"></a>A társított munkaterület módosítása
 
