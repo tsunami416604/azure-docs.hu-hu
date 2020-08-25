@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 42364e791711258e42883bdfcd658ba2c45ecd28
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723146"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749651"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Domain Services üzembe helyezés és felügyelet az Azure Cloud Solution Providers szolgáltatásban
 
 Az Azure Cloud Solution Providers (CSP) egy Microsoft-partneri program, amely a különböző Microsoft Cloud Services-szolgáltatásokhoz biztosít licenc-csatornát. Az Azure CSP lehetővé teszi a partnerek számára az értékesítések kezelését, a számlázási kapcsolat megadását, a technikai és számlázási támogatás biztosítását, valamint az ügyfél egyetlen kapcsolattartási pontját. Emellett az Azure CSP teljes körű eszközkészletet biztosít, beleértve az önkiszolgáló portált és a kísérő API-kat. Ezek az eszközök lehetővé teszik a CSP-partnerek számára az Azure-erőforrások egyszerű üzembe helyezését és kezelését, valamint az ügyfelek és előfizetésük számlázását.
 
-A [partner Center portál](/azure/cloud-solution-provider/overview/partner-center-overview) az összes Azure CSP-partner belépési pontja, és sokoldalú ügyfél-felügyeleti képességeket, automatizált feldolgozást és egyebeket biztosít. Az Azure CSP-partnerek webalapú felhasználói felületen vagy a PowerShell és különféle API-hívások használatával használhatják a partner Center-képességeket.
+A [partner Center portál](/partner-center/azure-plan-lp) az összes Azure CSP-partner belépési pontja, és sokoldalú ügyfél-felügyeleti képességeket, automatizált feldolgozást és egyebeket biztosít. Az Azure CSP-partnerek webalapú felhasználói felületen vagy a PowerShell és különféle API-hívások használatával használhatják a partner Center-képességeket.
 
 A következő ábra azt szemlélteti, hogy a CSP-modell hogyan működik magas szinten. Itt a contoso Azure Active Directory (Azure AD) Bérlővel rendelkezik. Rendelkeznek egy olyan CSP-vel, amely az Azure CSP-előfizetésében üzembe helyezi és kezeli az erőforrásokat. A contoso rendszeres (közvetlen) Azure-előfizetésekkel is rendelkezhet, amelyek számlázása közvetlenül a contoso számára történik.
 
@@ -33,7 +33,7 @@ A *felügyeleti* ügynökök csoport a contoso Azure ad-bérlőben a bérlői re
 
 Ha a CSP-partner kiépíti az Azure CSP-előfizetést a contoso számára, akkor az adott előfizetéshez tartozó tulajdonosi szerepkörhöz hozzá van rendelve a rendszergazdai ügynökök csoport. Ennek eredményeképpen a CSP-partner rendszergazdai ügynökei rendelkeznek a szükséges jogosultságokkal az Azure-erőforrások, például virtuális gépek, virtuális hálózatok és Azure AD Domain Services a contoso nevében történő kiépítéséhez.
 
-További információ: [Azure CSP – áttekintés](/azure/cloud-solution-provider/overview/azure-csp-overview)
+További információ: [Azure CSP – áttekintés](/partner-center/azure-plan-lp)
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Az Azure AD DS Azure CSP-előfizetéssel való használatának előnyei
 

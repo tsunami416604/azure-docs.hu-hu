@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19bf54e6289472fe36dbf6b029f959545a65d1c8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: e83560caa6f4147252fd4c55767888e7c0ad632b
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796608"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783399"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Gyakori forgatókönyvek az Azure AD-jogosultságok kezelésében
 
@@ -154,7 +154,7 @@ Több módon is konfigurálhatja a jogosultságok kezelését a szervezet szám�
 
 ## <a name="programmatic-administration"></a>Programozott felügyelet
 
-Microsoft Graph használatával is kezelheti a hozzáférési csomagokat, a katalógusokat, a szabályzatokat, a kérelmeket és a hozzárendeléseket.  Egy megfelelő szerepkörrel rendelkező felhasználó, aki a delegált engedéllyel rendelkező alkalmazással rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja a [jogosultsági felügyeleti API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)-t.
+Microsoft Graph használatával is kezelheti a hozzáférési csomagokat, a katalógusokat, a szabályzatokat, a kérelmeket és a hozzárendeléseket.  Egy megfelelő szerepkörrel rendelkező felhasználó, aki a delegált engedéllyel rendelkező alkalmazással rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja a [jogosultsági felügyeleti API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)-t.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,17 +16,17 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f8020ec2561bf06716db0720a7ec4292f36eb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034122"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783195"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
 
-A Azure Active Directory (Azure AD) segítségével könnyedén engedélyezheti a szervezeti határokon átívelő együttműködést az [Azure ad B2B szolgáltatásával](../b2b/what-is-b2b.md). A más bérlők vendégeit a rendszergazdák vagy [más felhasználók](../b2b/what-is-b2b.md)is [meghívhatják](../b2b/add-users-administrator.md) . Ez a képesség a közösségi identitásokra, például a Microsoft-fiókokra is vonatkozik.
+A Azure Active Directory (Azure AD) segítségével könnyedén engedélyezheti a szervezeti határokon átívelő együttműködést az [Azure ad B2B szolgáltatásával](../external-identities/what-is-b2b.md). A más bérlők vendégeit a rendszergazdák vagy [más felhasználók](../external-identities/what-is-b2b.md)is [meghívhatják](../external-identities/add-users-administrator.md) . Ez a képesség a közösségi identitásokra, például a Microsoft-fiókokra is vonatkozik.
 
 Azt is megteheti, hogy a vendég felhasználói megfelelő hozzáféréssel rendelkeznek. Megkérheti a vendégek saját maguk vagy döntéshozóik számára, hogy részt vegyenek a hozzáférési felülvizsgálatban, és hitelesítsék (vagy tanúsítják) a vendégek hozzáférését. A felülvizsgálatot végzők az Azure AD-ből származó javaslatok alapján dönthetnek arról, hogy az egyes felhasználóknak szükségük van-e folyamatos hozzáférésre. Ha egy hozzáférési felülvizsgálat elkészült, akkor módosításokat végezhet, és eltávolíthatja a hozzáférést azon vendégek számára, akiknek már nincs rá szükségük.
 
@@ -117,13 +117,6 @@ Egyes szervezeteknél előfordulhat, hogy a vendégek nem ismerik a csoport tags
 
 5. Távolítsa el a vendég hozzáférést a megtagadott vendégek számára, nem fejezte be a felülvizsgálatot, vagy korábban nem fogadta el a meghívót. Ha a vendégek némelyike olyan kapcsolattartó, aki kiválasztotta a felülvizsgálatban való részvételt, vagy korábban nem fogadtak el meghívót, letilthatja a fiókjaikat a Azure Portal vagy a PowerShell használatával. Ha a vendégnek már nincs szüksége a hozzáférésre, és nem egy partner, akkor a Azure Portal vagy a PowerShell használatával törölheti a felhasználói objektumot a címtárból a vendég felhasználói objektum törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
-
-
-
-
-
-
-

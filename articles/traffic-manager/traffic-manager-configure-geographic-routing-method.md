@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76938791"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Oktatóanyag: a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával
@@ -25,9 +25,9 @@ A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/).
-2. Kattintson **az erőforrás** > **hálózatkezelés** > **Traffic Manager profil** > **létrehozása**elemre.
+2. Kattintson **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása**elemre.
 4. A **Traffic Manager létrehozása profilban**:
-    1. Adja meg a profil nevét. Ennek a névnek egyedinek kell lennie az trafficmanager.net zónán belül. A Traffic Manager-profil eléréséhez használja a DNS-nevet `<profilename>.trafficmanager.net`.
+    1. Adja meg a profil nevét. Ennek a névnek egyedinek kell lennie az trafficmanager.net zónán belül. A Traffic Manager-profil eléréséhez használja a DNS-nevet `<profilename>.trafficmanager.net` .
     2. Válassza ki a **földrajzi** útválasztási módszert.
     3. Válassza ki azt az előfizetést, amelyhez a profilt létre kívánja hozni.
     4. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot, amelybe a profilt be kívánja helyezni. Ha úgy dönt, hogy létrehoz egy új erőforráscsoportot, az **erőforráscsoport helye** legördülő menüben adja meg az erőforráscsoport helyét. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan telepített Traffic Manager-profilra.
@@ -38,7 +38,7 @@ A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott 
 ## <a name="add-endpoints"></a>Végpontok hozzáadása
 
 1. Keresse meg a portál keresési sávjában létrehozott Traffic Manager profil nevét, és kattintson az eredményre, amikor megjelenik.
-2. Navigáljon a Traffic Manager **Beállítások** -> **végpontokhoz** .
+2. Navigáljon a Traffic Manager **Beállítások**  ->  **végpontokhoz** .
 3. A Hozzáadás **végpont**megjelenítéséhez kattintson a **Hozzáadás** gombra.
 3. Kattintson a **Hozzáadás** gombra, és a megjelenő **végpont hozzáadása** lapon fejezze be a következőt:
 4. Válassza a **típus** lehetőséget a hozzáadni kívánt végpont típusától függően. Az éles környezetben használt földrajzi útválasztási profilok esetében javasoljuk, hogy használjon olyan beágyazott végpontokat, amelyek egynél több végponttal rendelkező alárendelt profilt tartalmaznak. További részletekért tekintse meg a [földrajzi forgalom útválasztási módszereivel kapcsolatos gyakori kérdések](traffic-manager-FAQs.md)című témakört.
@@ -57,7 +57,7 @@ A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott 
 2. Kattintson az **Áttekintés** elemre.
 3. A **Traffic Manager-profil** mezőben megjelenik az újonnan létrehozott Traffic Manager-profil DNS-neve. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján.  Földrajzi útválasztás esetén Traffic Manager a bejövő kérelem forrás IP-címét vizsgálja, és meghatározza azt a régiót, ahonnan származik. Ha az adott régió egy végpontra van leképezve, a rendszer átirányítja a forgalmat oda. Ha ez a régió nincs leképezve végpontra, akkor Traffic Manager egy Adatlekérdezési választ ad vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [földrajzi forgalom útválasztási módszeréről](traffic-manager-routing-methods.md#geographic).
 - Ismerje meg, hogyan [tesztelheti Traffic Manager beállításait](traffic-manager-testing-settings.md).

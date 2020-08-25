@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74975040"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: az eszköz kiépítése egy IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
@@ -42,7 +42,7 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
       [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509-alapú eszközökhöz a következőkre van szükség:
-    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)*.pem* vagy *.cer* fájlformátumban. Egyéni regisztráció esetén az X. 509 rendszer eszközönként *aláírt tanúsítványát* kell használnia, a regisztrációs csoportok esetében azonban a *főtanúsítványt*kell használnia. 
+    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)*.pem* vagy *.cer* fájlformátumban. Egyéni regisztráció esetén az X. 509 rendszer eszközönként  *aláírt tanúsítványát* kell használnia, a regisztrációs csoportok esetében azonban a *főtanúsítványt*kell használnia. 
 
       [![Egyéni regisztráció hozzáadása X. 509 tanúsítványhoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -58,7 +58,7 @@ Most regisztrálja az eszközt a Device Provisioning Service-példánnyal az esz
 
 1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t.
 
-2. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** vagy a **Regisztrációs csoportok** fület az eszköz beállításának megfelelően. Kattintson a felül lévő **Hozzáadás** gombra. Válassza a **TPM** vagy az **X.509** lehetőséget igazolási *mechanizmusként*, és írja be a korábban említett megfelelő biztonsági összetevőket. Beírhat egy új **IoT Hub-eszközazonosítót**. Ha végzett, kattintson a **Mentés** gombra. 
+2. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** vagy a **Regisztrációs csoportok** fület az eszköz beállításának megfelelően. Kattintson a felül található **Hozzáadás** gombra. Válassza a **TPM** vagy az **X.509** lehetőséget igazolási *mechanizmusként*, és írja be a korábban említett megfelelő biztonsági összetevőket. Beírhat egy új **IoT Hub-eszközazonosítót**. Ha végzett, kattintson a **Mentés** gombra. 
 
 3. Az eszköz sikeres regisztrációja után annak a következőképpen kell megjelennie a portálon:
 

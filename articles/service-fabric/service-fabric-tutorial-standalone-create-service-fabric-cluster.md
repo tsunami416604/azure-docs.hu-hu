@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75613941"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
@@ -30,7 +30,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte a példányt a virtuális gépre irányuló RDP-kapcsolaton keresztül, és beilleszti az asztalra.
 
-Válassza ki a zip-fájlt, és nyissa meg a helyi menüt, és válassza az **összes** > **kibontása**lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
+Válassza ki a zip-fájlt, és nyissa meg a helyi menüt, és válassza az **összes**  >  **kibontása**lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
 
 További információ a [telepítőcsomag tartalmáról](service-fabric-cluster-standalone-package-contents.md).
 
@@ -120,13 +120,13 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>A Service Fabric Explorer megnyitása
 
-Most már\/csatlakozhat a fürthöz Service Fabric Explorer vagy közvetlenül az egyik olyan gépen, amelyen http:/localhost:19080/Explorer/index.html vagy távolról http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html.
+Most már csatlakozhat a fürthöz Service Fabric Explorer vagy közvetlenül az egyik számítógépről a http: \/ /localhost: 19080/Explorer/index.html vagy távolról a http: \/ /< *IPAddressofaMachine*>:19080/Explorer/index.html használatával.
 
 ## <a name="add-and-remove-nodes"></a>Csomópontok hozzáadása és eltávolítása
 
 Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontokat az önálló Service Fabric-fürtről. A lépések részletes leírása: [Csomópontok hozzáadása vagy eltávolítása egy önálló Service Fabric-fürtről](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
 

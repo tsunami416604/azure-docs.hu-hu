@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604063"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783603"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -180,7 +180,7 @@ Az ellenőrzéshez használt tipikus célok a következők:
 
 * Az [Azure ad-vel integrált alkalmazások egyszeri bejelentkezéshez](../manage-apps/what-is-application-management.md) (például SaaS, üzletági).
 
-* Csoporttagság [(](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) szinkronizálva az Azure ad-vel, vagy az Azure ad-ben vagy Office 365-ben létrehozott, beleértve a Microsoft Teams-t).
+* Csoporttagság [(](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) szinkronizálva az Azure ad-vel, vagy az Azure ad-ben vagy Office 365-ben létrehozott, beleértve a Microsoft Teams-t).
 
 * Olyan [hozzáférési csomag](/entitlement-management-overview.md) , amely az erőforrásokat (csoportokat, alkalmazásokat és helyeket) egyetlen csomagba csoportosítja a hozzáférés kezeléséhez.
 
@@ -246,7 +246,7 @@ Hozzáférési felülvizsgálati szabályzat létrehozásához a következő inf
 | **Áttekinthető erőforrások**| Hozzáférés a Microsoft Dynamicshoz |
 | **Felülvizsgálati gyakoriság**| havonta |
 | **A felülvizsgálatot végző személy**| Dynamics Business Group program-kezelők |
-| **Értesítési**| E-mail 24 órával az alias Dynamics – PMS áttekintése előtt<p>Bemutatjuk, hogy a megvásárolt egyéni üzenetet a felülvizsgálók számára is ösztönözzék |
+| **Értesítés**| E-mail 24 órával az alias Dynamics – PMS áttekintése előtt<p>Bemutatjuk, hogy a megvásárolt egyéni üzenetet a felülvizsgálók számára is ösztönözzék |
 | **Idővonal**| 48 óra az értesítésből |
 |**Automatikus műveletek**| Távolítsa el a hozzáférést bármely olyan fiókból, amely 90 napon belül nem rendelkezik interaktív bejelentkezéssel, ha eltávolítja a felhasználót a biztonsági csoport Dynamics-Access szolgáltatásból. <p>*Műveleteket hajthat végre, ha nem tekinti át az időkeretet.* |
 | **Manuális műveletek**| A felülvizsgálók elvégezhetik az Eltávolítás jóváhagyását az automatizált művelet előtt, ha szükséges. |
@@ -389,7 +389,7 @@ A hozzáférési felülvizsgálatok lehetnek egy csoport tagjai vagy egy alkalma
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Az Azure AD-és Azure-erőforrás-szerepkörök felülvizsgálatának megtervezése
 
-A [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure ad-beli erőforrásokhoz való jogosultságú hozzáférést. Így az [Azure ad](../users-groups-roles/directory-assign-admin-roles.md) -ben és az [Azure-erőforrásokban](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) egyaránt sokkal kisebb a Kiemelt szerepkörök listája, és növeli a címtár általános biztonságát.
+A [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure ad-beli erőforrásokhoz való jogosultságú hozzáférést. Így az [Azure ad](../users-groups-roles/directory-assign-admin-roles.md) -ben és az [Azure-erőforrásokban](../../role-based-access-control/built-in-roles.md) egyaránt sokkal kisebb a Kiemelt szerepkörök listája, és növeli a címtár általános biztonságát.
 
 A hozzáférési felülvizsgálatok lehetővé teszik a felülvizsgálók számára annak igazolását, hogy a felhasználóknak továbbra is szükségük van-e a szerepkörre. A hozzáférési csomagok hozzáférési felülvizsgálatához hasonlóan az Azure AD-szerepkörökkel és az Azure-erőforrásokkal kapcsolatos felülvizsgálatok is integrálva vannak a PIM rendszergazdai felhasználói felületéhez. Javasoljuk, hogy rendszeresen tekintse át a következő szerepkör-hozzárendeléseket:
 
@@ -419,7 +419,7 @@ Miután előkészített egy stratégiát és egy tervet az Azure AD-vel integrá
 
 Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazdák a hozzáférési csomag aktív hozzárendeléseivel rendelkező felhasználók rendszeres felülvizsgálatát is lehetővé teszik. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Leírás |
+| Útmutatók| Description |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](entitlement-management-access-reviews-create.md)| Hozzáférési csomag felülvizsgálatának engedélyezése. |
 | [Hozzáférési felülvizsgálatok végrehajtása](/entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
@@ -433,7 +433,7 @@ Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazd
 
 Az alkalmazottak és a vendégek számára az idő múlásával valószínűleg változnak a csoportok és az alkalmazások hozzáférése. Az elavult hozzáférési hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében a rendszergazdák hozzáférési felülvizsgálatokat hozhatnak létre a csoporttagok vagy az alkalmazások eléréséhez. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Leírás |
+| Útmutatók| Description |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](create-access-review.md)| Hozzon létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások eléréséhez. |
 | [Hozzáférési felülvizsgálatok végrehajtása](perform-access-review.md)| Hozzáférési felülvizsgálat végrehajtása egy csoport vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára. |
@@ -450,11 +450,11 @@ Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentés
 
 Kövesse az alábbi hivatkozások utasításait:
 
-| Útmutatók | Leírás |
+| Útmutatók | Description |
 | - | - |
- [Hozzáférési felülvizsgálatok létrehozása](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure AD-szerepkörökhöz a PIM-ben |
-| [Saját hozzáférés ellenőrzése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
-| [Hozzáférési felülvizsgálat végrehajtása](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
+ [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure AD-szerepkörökhöz a PIM-ben |
+| [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
+| [Hozzáférési felülvizsgálat végrehajtása](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
 
 
 ### <a name="review-azure-resource-roles"></a>Azure-erőforrás szerepköreinek áttekintése
@@ -465,16 +465,16 @@ Az elavult szerepkör-hozzárendelések kockázatának csökkentése érdekében
 
 Kövesse az alábbi hivatkozások utasításait:
 
-| Útmutatók| Leírás |
+| Útmutatók| Description |
 | - | -|
-| [Hozzáférési felülvizsgálatok létrehozása](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure-beli erőforrás-szerepkörökhöz a PIM-ben |
-| [Saját hozzáférés ellenőrzése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
-| [Hozzáférési felülvizsgálat végrehajtása](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
+| [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure-beli erőforrás-szerepkörökhöz a PIM-ben |
+| [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
+| [Hozzáférési felülvizsgálat végrehajtása](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálat megtekintése és az eredmények alkalmazása |
 
 
 ## <a name="use-the-access-reviews-api"></a>A hozzáférési felülvizsgálatok API használata
 
-Tekintse meg a [Graph API-metódusok](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) és a [szerepkör-és alkalmazás-engedély engedélyezési ellenőrzéseit](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) , és kezelje a felülvizsgálható erőforrásokat. A Microsoft Graph API hozzáférési felülvizsgálati módszerei az alkalmazás-és a felhasználói környezetekben egyaránt elérhetők. Ha parancsfájlokat futtat az alkalmazási környezetben, az API futtatásához használt fióknak (a szolgáltatási elv) meg kell adni az "AccessReview. Read. all" engedélyt a hozzáférési felülvizsgálatok adatainak lekérdezéséhez.
+Tekintse meg a [Graph API-metódusok](/graph/api/resources/accessreviews-root?view=graph-rest-beta) és a [szerepkör-és alkalmazás-engedély engedélyezési ellenőrzéseit](/graph/api/resources/accessreviews-root?view=graph-rest-beta) , és kezelje a felülvizsgálható erőforrásokat. A Microsoft Graph API hozzáférési felülvizsgálati módszerei az alkalmazás-és a felhasználói környezetekben egyaránt elérhetők. Ha parancsfájlokat futtat az alkalmazási környezetben, az API futtatásához használt fióknak (a szolgáltatási elv) meg kell adni az "AccessReview. Read. all" engedélyt a hozzáférési felülvizsgálatok adatainak lekérdezéséhez.
 
 A népszerű hozzáférés-felülvizsgálati feladatok automatizálják az Graph API a hozzáférési felülvizsgálatok használatával:
 
@@ -519,4 +519,3 @@ Ismerje meg az alábbi kapcsolódó technológiákat.
 
 * [Mi az az Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 
- 

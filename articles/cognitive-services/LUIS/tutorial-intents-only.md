@@ -4,10 +4,10 @@ description: Hozzon létre egy egyéni alkalmazást, amely előrejelzést kész�
 ms.topic: tutorial
 ms.date: 05/05/2020
 ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85959859"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
@@ -32,7 +32,7 @@ Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékána
 
 Ezek különféle **szándékokként** vannak csoportosítva.
 
-|Szándék|Szerep|
+|Szándék|Rendeltetés|
 |--|--|
 |`ModifyOrder`|Határozza meg a felhasználó pizzájának sorrendjét.|
 |`Greeting`|Kezdje el a bot-beszélgetést.|
@@ -55,7 +55,7 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
 
 1. Vegyen fel több példát a hosszúságú kimondott szöveg erre a célra, ha a felhasználó a következőt kéri:
 
-    |`OrderPizza`Példa hosszúságú kimondott szöveg|
+    |`OrderPizza` Példa hosszúságú kimondott szöveg|
     |--|
     |`can i get a pepperoni pizza and a can of coke please`|
     |`can i get a small pizza with onions peppers and olives`|
@@ -75,7 +75,7 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
 
 1. Hozza létre a `Greeting` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a cél annak megállapítása, hogy egy felhasználó elkezd-e új pizza Order beszélgetést.
 
-    |`Greeting`Példa hosszúságú kimondott szöveg|
+    |`Greeting` Példa hosszúságú kimondott szöveg|
     |--|
     |`Hi`|
     |`Hello`|
@@ -85,7 +85,7 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
 
 1. Hozza létre a `Confirm` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a szándék annak megállapítására, hogy a felhasználó megrendelése megtörtént-e, és elfogadja-e a rendelés részleteit.
 
-    |`Confirm`Példa hosszúságú kimondott szöveg|
+    |`Confirm` Példa hosszúságú kimondott szöveg|
     |--|
     |`Go ahead`|
     |`ok`|

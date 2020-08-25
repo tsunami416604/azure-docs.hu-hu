@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75614009"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Azure VM-infrastruktúra létrehozása Service Fabric-fürt üzemeltetéséhez
@@ -51,10 +51,10 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre.  Ha m�
 
    ![SF – bejövő][sf-inbound]
 
-   * Port `3389`, RDP és ICMP esetén (alapszintű kapcsolat).
-   * Portok `19000-19003`Service Fabric.
-   * Portok `19080-19081`Service Fabric.
-   * Port `8080`, webböngésző-kérelmek esetén.
+   * Port `3389` , RDP és ICMP esetén (alapszintű kapcsolat).
+   * Portok `19000-19003` Service Fabric.
+   * Portok `19080-19081` Service Fabric.
+   * Port `8080` , webböngésző-kérelmek esetén.
 
    > [!TIP]
    > A Service Fabricben a virtuális gépek összekapcsolásához az infrastruktúrát futtató virtuális gépeknek ugyanazokkal a hitelesítő adatokkal kell rendelkezniük.  Két gyakori módja van a konzisztens hitelesítő adatok elérésének: csatlakoztassa mindet ugyanahhoz a tartományhoz, vagy állítsa be ugyanazt a rendszergazdai jelszót az összes virtuális gépen. Szerencsére az Azure lehetővé teszi, hogy az ugyanazon a **virtuális hálózaton** lévő összes virtuális gép könnyedén kapcsolódjon, így minden példányunk ugyanazon a hálózaton lesz.
@@ -118,7 +118,7 @@ Indítsa el a két további **Virtual Machines**, és ügyeljen rá, hogy az el�
 
    A példányok most már készen állnak a Service Fabricra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat első részében megtanulta, hogyan indíthat el három Azure-beli virtuálisgép-példányt, és hogyan konfigurálhatja őket a Service Fabric telepítéséhez:
 

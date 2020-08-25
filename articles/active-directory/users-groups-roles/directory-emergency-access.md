@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421722"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795391"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
@@ -44,7 +44,7 @@ Hozzon létre két vagy több vészhelyzeti hozzáférési fiókot. Ezeknek a fi
 A fiókok konfigurálásakor a következő követelményeknek kell teljesülniük:
 
 - A segélyhívó fiókok nem társíthatók a szervezet egyetlen felhasználójának sem. Győződjön meg arról, hogy a fiókok nincsenek csatlakoztatva az alkalmazottak által biztosított mobil telefonokhoz, az egyes alkalmazottakkal vagy más, az alkalmazottakra vonatkozó hitelesítő adatokkal rendelkező hardveres jogkivonatokhoz. Ez az elővigyázatosság olyan példányokra vonatkozik, amelyekben az egyes alkalmazottak nem érhetők el, ha a hitelesítő adatok szükségesek. Fontos annak biztosítása, hogy a regisztrált eszközök egy ismert, biztonságos helyen legyenek tárolva, amely több módon kommunikál az Azure AD-vel.
-- A vészhelyzeti hozzáférési fiókhoz használt hitelesítési mechanizmusnak eltérőnek kell lennie a többi rendszergazdai fiók által használttól, beleértve az egyéb vészhelyzeti hozzáférési fiókokat is.  Ha például a normál rendszergazdai bejelentkezés a helyszíni MFA-n keresztül történik, akkor az Azure MFA más mechanizmus lenne.  Ha azonban az Azure MFA a rendszergazdai fiókok hitelesítésének elsődleges része, akkor érdemes lehet más megközelítést használni, például ha feltételes hozzáférést használ egy harmadik féltől származó MFA-szolgáltatóhoz [Egyéni vezérlőkön](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)keresztül.
+- A vészhelyzeti hozzáférési fiókhoz használt hitelesítési mechanizmusnak eltérőnek kell lennie a többi rendszergazdai fiók által használttól, beleértve az egyéb vészhelyzeti hozzáférési fiókokat is.  Ha például a normál rendszergazdai bejelentkezés a helyszíni MFA-n keresztül történik, akkor az Azure MFA más mechanizmus lenne.  Ha azonban az Azure MFA a rendszergazdai fiókok hitelesítésének elsődleges része, akkor érdemes lehet más megközelítést használni, például ha feltételes hozzáférést használ egy harmadik féltől származó MFA-szolgáltatóhoz [Egyéni vezérlőkön](../conditional-access/controls.md)keresztül.
 - A használat hiánya miatt az eszköznek vagy a hitelesítő adatnak nem szabad lejárnia, illetve nem lehet az automatikus karbantartás hatóköre.  
 - A vészhelyzeti hozzáférési fiókok esetében a globális rendszergazdai szerepkör-hozzárendelést véglegesen el kell végezni. 
 
@@ -74,7 +74,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. [Azure ad bejelentkezési naplók küldése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) Azure monitorra.
+1. [Azure ad bejelentkezési naplók küldése](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) Azure monitorra.
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>A break Glass-fiókok objektumazonosítók beszerzése
 
@@ -131,7 +131,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 1. Válassza ki a **műveletet** **e-mail/SMS/leküldés/hangként**.
 1. Válassza a **részletek szerkesztése** lehetőséget a konfigurálni kívánt értesítési módszerek kiválasztásához, majd adja meg a szükséges kapcsolattartási adatokat, majd a részletek mentéséhez kattintson **az OK gombra** .
 1. Adja meg az aktiválni kívánt további műveleteket.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="validate-accounts-regularly"></a>Fiókok rendszeres ellenőrzése
 
@@ -156,5 +156,5 @@ Ezeket a lépéseket rendszeres időközönként és a legfontosabb változások
 - [Felhasználók hozzáadása az Azure ad használatával](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó társítása a globális rendszergazdai szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Regisztráljon a prémium szintű Azure ADra](../fundamentals/active-directory-get-started-premium.md), ha még nem regisztrált már
 - [Egy felhasználó kétlépéses ellenőrzésének megkövetelése](../authentication/howto-mfa-userstates.md)
-- A [Microsoft 365 globális rendszergazdáinak további védelmét is konfigurálhatja](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), ha Microsoft 365
+- A [Microsoft 365 globális rendszergazdáinak további védelmét is konfigurálhatja](/office365/enterprise/protect-your-global-administrator-accounts), ha Microsoft 365
 - A [globális rendszergazdák hozzáférési felülvizsgálatának elindítása](../privileged-identity-management/pim-how-to-start-security-review.md) és [a meglévő globális rendszergazdák átváltása a rendszergazda szerepköreire](directory-assign-admin-roles.md)

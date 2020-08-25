@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74184271"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Internet Analyzer-teszt létrehozása a parancssori felület használatával (előzetes verzió)
@@ -44,13 +44,13 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     ```
 
     Ha a parancssori felület megnyithatja az alapértelmezett böngészőt, akkor az egy Azure-beli bejelentkezési oldal betöltésével végezhető el.
-    Ellenkező esetben nyisson meg egy böngészőt https://aka.ms/devicelogin , és adja meg a terminálon megjelenő engedélyezési kódot.
+    Ellenkező esetben nyisson meg egy böngészőt, https://aka.ms/devicelogin és adja meg a terminálon megjelenő engedélyezési kódot.
 
 4. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
 5. Válassza ki az előfizetési azonosítót, amely hozzáférést kapott az Internet Analyzer nyilvános előzetes verziójához.
 
-    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ `isDefault: true` az a jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ az a `isDefault: true` jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Nem interaktív módok is rendelkezésre állnak a bejelentkezéshez, amelyekről részletesen [az Azure CLI-vel történő bejelentkezést](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ismertető részben olvashat.
 
@@ -79,7 +79,7 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    A fenti parancs feltételezi, hogy `www.contoso.com` mindkettő `www.microsoft.com` és az egy képpontos ([Trans. gif](https://fpc.msedge.net/apc/trans.gif)) rendszerképet futtat az egyéni elérési utak alatt. Ha az objektum elérési útja nincs explicit módon megadva, az Internet `/apc/trans.gif` Analyzer alapértelmezés szerint az objektum elérési útjaként fog megjelenni, ami azt eredményezi, hogy az előre konfigurált végpontok az egy képpontos képet használják. Azt is vegye figyelembe, hogy a sémát (https/http) nem kell megadni; Az Internet Analyzer csak HTTPS-végpontokat támogat, ezért a rendszer a HTTPS használatát feltételezi.
+    A fenti parancs feltételezi, hogy mindkettő `www.contoso.com` és `www.microsoft.com` az egyéni elérési utakon található egypixeles rendszerképet ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) üzemelteti. Ha az objektum elérési útja nincs explicit módon megadva, az Internet Analyzer `/apc/trans.gif` alapértelmezés szerint az objektum elérési útjaként fog megjelenni, ami azt eredményezi, hogy az előre konfigurált végpontok az egy képpontos képet használják. Azt is vegye figyelembe, hogy a sémát (https/http) nem kell megadni; Az Internet Analyzer csak HTTPS-végpontokat támogat, ezért a rendszer a HTTPS használatát feltételezi.
 
 11. Az új tesztnek az Internet Analyzer-profil alatt kell megjelennie:
     ```azurecli-interactive
@@ -130,7 +130,7 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
     ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) .
 * Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt.

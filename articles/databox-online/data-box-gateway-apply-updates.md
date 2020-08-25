@@ -2,17 +2,17 @@
 title: Frissítés telepítése Azure Data Box Gateway Series-eszközön | Microsoft Docs
 description: Ismerteti, hogyan alkalmazhatók a frissítések a Azure Portal és a helyi webes KEZELŐFELÜLET használatával Azure Data Box Gateway Series-eszközhöz
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4c17488a875484b2d3dc0e7e8e1045ce8ea75cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 3972aecf70a664980e8279152eb001915ae1bb53
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85802131"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783875"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>A Azure Data Box Gateway frissítése
 
@@ -63,7 +63,7 @@ Javasoljuk, hogy telepítse a frissítéseket a Azure Portalon keresztül. Az es
 
     ![Szoftverfrissítés utáni szoftververzió](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** gombot.
+    Ha úgy döntött, hogy csak a frissítések letöltését választotta, válassza ki az értesítést az **eszköz frissítései** panel megnyitásához. Válassza a **Telepítés** lehetőséget.
   
     ![Szoftverfrissítés utáni szoftververzió](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -116,7 +116,7 @@ Az alábbi lépések végrehajtásával töltse le a frissítést a Microsoft Up
 
    ![Keresés a katalógusban](./media/data-box-gateway-apply-updates/download-update-2.png)
 
-3. Válassza a **Download** (Letöltés) lehetőséget. Egyetlen fájl tölthető le, amely megfelel az eszköz szoftverfrissítés-frissítésének *SoftwareUpdatePackage.exe* . Töltse le a fájlt a helyi rendszer egyik mappájába. A mappát átmásolhatja egy olyan hálózati megosztásra is, amely elérhető az eszközről.
+3. Válassza a **Letöltés** lehetőséget. Egyetlen fájl tölthető le, amely megfelel az eszköz szoftverfrissítés-frissítésének *SoftwareUpdatePackage.exe* . Töltse le a fájlt a helyi rendszer egyik mappájába. A mappát átmásolhatja egy olyan hálózati megosztásra is, amely elérhető az eszközről.
 
    ![Keresés a katalógusban](./media/data-box-gateway-apply-updates/download-update-3.png)
 
@@ -139,7 +139,7 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 
    ![eszköz frissítése](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
-3. Kattintson az **Alkalmaz** gombra.
+3. Kattintson az **Alkalmaz** elemre.
 
    ![eszköz frissítése](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 
@@ -152,6 +152,6 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 
    ![eszköz frissítése](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a Azure Data Box Gateway felügyeletéről](data-box-gateway-manage-users.md).

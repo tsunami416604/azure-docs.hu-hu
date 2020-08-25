@@ -10,12 +10,12 @@ ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533376"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755908"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
 
@@ -338,6 +338,10 @@ Miután létrehozta a szabályzatot a megtagadási hatállyal, és hozzárendeli
 Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage-fiókot próbál létrehozni, amely a TLS 1,0-as minimális TLS-verzióra van beállítva (ez az alapértelmezett érték egy új fiók esetében), ha egy megtagadási hatással rendelkező szabályzat megköveteli, hogy a TLS 1,2-es minimális TLS-verzió legyen beállítva.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
+
+## <a name="network-considerations"></a>Hálózati szempontok
+
+Amikor egy ügyfél kérelmet küld a Storage-fióknak, az ügyfél először a Storage-fiók nyilvános végpontját hozza létre a kérések feldolgozása előtt. A TLS-verzió minimális beállítása a kapcsolatok létrehozása után van bejelölve. Ha a kérelem a TLS egy korábbi verzióját használja, mint amit a beállítás meghatároz, a kapcsolódás továbbra is sikeres lesz, de a kérelem végül sikertelen lesz. Az Azure Storage nyilvános végpontokkal kapcsolatos további információkért lásd: [erőforrás URI-szintaxisa](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax).
 
 ## <a name="next-steps"></a>További lépések
 

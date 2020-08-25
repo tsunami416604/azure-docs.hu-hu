@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586571"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783943"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -43,8 +43,8 @@ Ebben az esetben két csatlakoztatott szervezetet is beállíthat. Létre kell h
 Az Azure AD-címtár vagy-tartomány hitelesítésének felhasználói a hitelesítési típustól függenek. A csatlakoztatott szervezetek hitelesítési típusai a következők:
 
 - Azure AD
-- [Közvetlen összevonás](../b2b/direct-federation.md)
-- [Egyszeri jelszó](../b2b/one-time-passcode.md) (tartomány)
+- [Közvetlen összevonás](../external-identities/direct-federation.md)
+- [Egyszeri jelszó](../external-identities/one-time-passcode.md) (tartomány)
 
 A csatlakoztatott szervezetek hozzáadásával kapcsolatos bemutatóért tekintse meg a következő videót:
 
@@ -79,7 +79,7 @@ Külső Azure AD-címtár vagy-tartomány csatlakoztatott szervezetként való h
 1. Az Azure AD-címtár vagy-tartomány hozzáadásához válassza a **Hozzáadás** lehetőséget. Jelenleg csak egy Azure AD-címtár vagy-tartomány adható hozzá csatlakoztatott szervezeten belül.
 
     > [!NOTE]
-    > Az Azure AD-címtár vagy-tartomány összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a címtárhoz társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure AD Business to Business (B2B) engedélyezési vagy letiltási listája letiltja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../b2b/allow-deny-list.md).
+    > Az Azure AD-címtár vagy-tartomány összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a címtárhoz társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure AD Business to Business (B2B) engedélyezési vagy letiltási listája letiltja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../external-identities/allow-deny-list.md).
 
 1. Az Azure AD-címtár vagy-tartomány hozzáadása után válassza a **kiválasztás**lehetőséget.
 
@@ -89,7 +89,7 @@ Külső Azure AD-címtár vagy-tartomány csatlakoztatott szervezetként való h
 
 1. Válassza a **szponzorok** fület, majd adja hozzá az opcionális szponzorokat ehhez a csatlakoztatott szervezethez.
 
-    A szponzorok olyan belső vagy külső felhasználók, akik már szerepelnek a címtárban, amely az ezzel a csatlakoztatott szervezettel való kapcsolat kapcsolódási pontként szolgál. A belső szponzorok a címtárban tag felhasználók. A külső szponzorok a csatlakoztatott szervezet azon felhasználói, akik korábban meghívást kaptak, és már szerepelnek a címtárban. A szponzorokat jóváhagyóként lehet használni, ha a csatlakoztatott szervezet felhasználói hozzáférést igényelnek ehhez a hozzáférési csomaghoz. További információ a vendég felhasználó címtárban való meghívásáról: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../b2b/add-users-administrator.md).
+    A szponzorok olyan belső vagy külső felhasználók, akik már szerepelnek a címtárban, amely az ezzel a csatlakoztatott szervezettel való kapcsolat kapcsolódási pontként szolgál. A belső szponzorok a címtárban tag felhasználók. A külső szponzorok a csatlakoztatott szervezet azon felhasználói, akik korábban meghívást kaptak, és már szerepelnek a címtárban. A szponzorokat jóváhagyóként lehet használni, ha a csatlakoztatott szervezet felhasználói hozzáférést igényelnek ehhez a hozzáférési csomaghoz. További információ a vendég felhasználó címtárban való meghívásáról: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../external-identities/add-users-administrator.md).
 
     Ha a **Hozzáadás/Eltávolítás**lehetőséget választja, megnyílik egy ablaktábla, ahol belső vagy külső támogatókat is választhat. A panelen megjelenik a címtárban található felhasználók és csoportok szűretlen listája.
 
@@ -134,9 +134,9 @@ Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, ak
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Csatlakoztatott szervezet programozott kezelése
 
-A csatlakoztatott szervezeteket Microsoft Graph használatával is létrehozhatja, listázhatja, frissítheti és törölheti. Egy megfelelő szerepkörrel rendelkező felhasználó, aki delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) -objektumok kezelésére, és azokhoz is beállíthatja a szponzorokat.
+A csatlakoztatott szervezeteket Microsoft Graph használatával is létrehozhatja, listázhatja, frissítheti és törölheti. Egy megfelelő szerepkörrel rendelkező felhasználó, aki delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) -objektumok kezelésére, és azokhoz is beállíthatja a szponzorokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Külső felhasználók hozzáférésének szabályozása](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [Külső felhasználók hozzáférésének szabályozása](./entitlement-management-external-users.md)
 - [A címtárban nem szereplő felhasználók hozzáférésének szabályozása](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

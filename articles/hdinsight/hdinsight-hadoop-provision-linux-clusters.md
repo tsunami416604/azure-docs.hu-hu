@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873602"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749865"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
 
@@ -43,7 +43,7 @@ A következő táblázat a HDInsight-fürtök beállításához használható k�
 
 Ez a cikk végigvezeti a telepítőn a [Azure Portalon](https://portal.azure.com), ahol HDInsight-fürtöt hozhat létre.
 
-## <a name="basics"></a>Alapbeállítások
+## <a name="basics"></a>Alapvető beállítások
 
 ![hdinsight-létrehozási beállítások egyéni gyors](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -63,7 +63,7 @@ A HDInsight-fürtök neve a következő korlátozásokkal rendelkezhet:
 * A fürt elnevezési hatóköre az összes Azure-ra kiterjed az összes előfizetésben. Így a fürt nevének egyedinek kell lennie világszerte.
 * Az első hat karakternek egyedinek kell lennie a virtuális hálózaton belül
 
-#### <a name="region"></a>Régió
+#### <a name="region"></a>Region
 
 Nem kell explicit módon megadnia a fürt helyét: a fürt az alapértelmezett tárolóval megegyező helyen található. A támogatott régiók listájának megtekintéséhez válassza a [HDInsight díjszabása](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409) **régió** legördülő listát.
 
@@ -97,13 +97,13 @@ A HDInsight-fürtök esetében két felhasználói fiókot is beállíthat a fü
 
 A HTTP-Felhasználónév a következő korlátozásokkal rendelkezik:
 
-* Engedélyezett speciális karakterek: `_` és`@`
+* Engedélyezett speciális karakterek: `_` és `@`
 * Nem engedélyezett karakterek: #;. "", \/ : "! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximális hossz: 20
 
 Az SSH-Felhasználónév a következő korlátozásokkal rendelkezik:
 
-* Engedélyezett speciális karakterek: `_` és`@`
+* Engedélyezett speciális karakterek: `_` és `@`
 * Nem engedélyezett karakterek: #;. "", \/ : "! *? $ () {} [] <>|&--= +% ~ ^ Space
 * Maximális hossz: 64
 * Fenntartott nevek: Hadoop, felhasználók, oozie, struktúra, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, fonal, hcat, AMS, hbase, Storm, Administrator, admin, felhasználó, Felhasználó1, test, Felhasználó2, test1, user3, Rendszergazda1, 1, 123, a, actuser, adm, admin2, ASPNET, Backup, konzol, David, vendég, János, tulajdonos, gyökér, kiszolgáló, SQL, támogatás, support_388945a0, sys, teszt2, test3, user4, user5, Spark
@@ -116,8 +116,8 @@ Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) ha
 
 A HDInsight-fürtök a következő tárolási lehetőségeket használhatják:
 
-* 2\. generációs Azure Data Lake Storage
-* Azure Data Lake Storage Gen1
+* 2. generációs Azure Data Lake Storage
+* 1. generációs Azure Data Lake Storage
 * Azure Storage általános célú v2
 * Azure Storage általános célú v1
 * Azure Storage Block-blob (**csak másodlagos tárolóként támogatott**)
@@ -133,6 +133,9 @@ A konfiguráció során az alapértelmezett tárolási végponthoz meg kell adni
 
 > [!IMPORTANT]
 > A Biztonságos tár átvitelének engedélyezése a fürt létrehozása után hibákat eredményezhet a Storage-fiókkal, és nem ajánlott. Jobb megoldás, ha olyan Storage-fiókkal szeretne új fürtöt létrehozni, amelyen már engedélyezve van a biztonságos átvitel.
+
+> [!Note]  
+> Az Azure HDInsight nem továbbítja automatikusan az Azure Storage-ban tárolt adatait az egyik régióból a másikba.
 
 ### <a name="metastore-settings"></a>Metaadattár-beállítások
 
@@ -287,7 +290,7 @@ Időnként a következő konfigurációs fájlokat szeretné konfigurálni a lé
 
 További információ: HDInsight- [fürtök testreszabása a bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 * [Mik azok a HDInsight, a Apache Hadoop ökoszisztémák és a Hadoop-fürtök?](hadoop/apache-hadoop-introduction.md)

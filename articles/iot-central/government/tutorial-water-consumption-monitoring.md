@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77122074"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Oktatóanyag: vízfogyasztást figyelő alkalmazás létrehozása az Azure IoT Central
@@ -136,8 +136,8 @@ Az eszköz sablonjának megtekintése:
 Az eszköz sablonjának testreszabása:
 
 1. Kattintson a **Testreszabás** elemre az **eszközök sablonok** menüjében.
-1. Keresse meg `Temperature` a telemetria típusát.
-1. Frissítse a **megjelenítendő nevét** `Temperature` a következőre: `Reported temperature`.
+1. Keresse meg a `Temperature` telemetria típusát.
+1. Frissítse a **megjelenítendő nevét** a következőre: `Temperature` `Reported temperature` .
 1. Frissítse a mértékegységet, vagy állítsa be a **minimális értéket** és a **maximális értéket**.
 1. A módosítások mentéséhez kattintson a **Mentés** gombra.
 
@@ -169,7 +169,7 @@ Az Azure IoT Central segítségével szimulált eszközöket hozhat létre az es
 
 ### <a name="view-the-devices"></a>Az eszközök megtekintése
 
-1. Válassza az **eszközök** > **minden eszköz** lehetőséget a bal oldali ablaktáblán.
+1. Válassza az **eszközök**  >  **minden eszköz** lehetőséget a bal oldali ablaktáblán.
 
    ![Minden eszköz panel](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
@@ -204,7 +204,7 @@ A létrehozott víz-felhasználási figyelő alkalmazás három előre konfigur�
 
      ![Magas pH-riasztás](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    A `High flow alert` szabály úgy van konfigurálva, hogy a `Acidity (pH)` feltételnek `Max flow threshold` `greater than` való vizsgálatra van beállítva. A maximális forgalom küszöbértéke az **intelligens Valve** -eszköz sablonjában definiált Felhőbeli tulajdonság. A értéke eszközönkénti `Max flow threshold` példányként van beállítva.
+    A `High flow alert` szabály úgy van konfigurálva, hogy a feltételnek való vizsgálatra van beállítva `Acidity (pH)` `greater than` `Max flow threshold` . A maximális forgalom küszöbértéke az **intelligens Valve** -eszköz sablonjában definiált Felhőbeli tulajdonság. A értéke eszközönkénti `Max flow threshold` példányként van beállítva.
 
 Most hozzon létre egy e-mail-műveletet.
 
@@ -237,14 +237,14 @@ Az Azure IoT Centralban a feladatok lehetővé teszik, hogy az eszköz vagy a Fe
 
 Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához.
 
-1. Válassza az **Adminisztráció** > **testre szabása alkalmazást**.
+1. Válassza **Administration**  >  **az adminisztráció testre szabása alkalmazást**.
 1. Ha ki szeretne választani egy képet, amelyet az **alkalmazás emblémája**szeretne feltölteni, kattintson a **módosítás** gombra.
 1. A böngésző lapjain megjelenő **böngésző ikonjának** kiválasztásához kattintson a **módosítás** gombra.
 1. Az alapértelmezett **böngésző színeit** HTML hexadecimális színkódok hozzáadásával is lecserélheti.
 
    ![Az alkalmazás emblémájának, a böngésző ikonjának és a böngésző színének kiválasztása](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1. Az alkalmazás lemezképeit az **adminisztrációs** > **alkalmazás beállításai**lehetőség kiválasztásával is módosíthatja. Ha ki szeretne választani egy képet, amelyet az alkalmazás képként szeretne feltölteni, válassza a **rendszerkép kiválasztása** gombot.
+1. Az alkalmazás lemezképeit az **adminisztrációs**  >  **alkalmazás beállításai**lehetőség kiválasztásával is módosíthatja. Ha ki szeretne választani egy képet, amelyet az alkalmazás képként szeretne feltölteni, válassza a **rendszerkép kiválasztása** gombot.
 1. Végül az alkalmazás jobb felső sarkában található **Beállítások** ikonra kattintva módosíthatja a **témát** is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -254,6 +254,6 @@ Ha nem folytatja az alkalmazás használatát, törölje azt.
 1. Az Azure IoT Central-alkalmazás bal oldali paneljén válassza az **Adminisztráció** lehetőséget.
 1. Válassza az **Alkalmazásbeállítások**lehetőséget, majd a lap alján kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [víz felhasználásának monitorozásával kapcsolatos fogalmakról](./concepts-waterconsumptionmonitoring-architecture.md).

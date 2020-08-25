@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/02/2020
 ms.author: sbowles
 ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85918744"
 ---
 # <a name="example-identify-faces-in-images"></a>Példa: arcok felismerése képeken
@@ -99,7 +99,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>2,2. lépés: az arcok észlelése és a megfelelő személyhez való regisztrálása
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a> 2,2. lépés: az arcok észlelése és a megfelelő személyhez való regisztrálása
 Az észleléshez „POST” webkérést küldünk a [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-nak, a képfájlt a HTTP-kérés törzsébe tesszük. Az ügyféloldali kódtár használatakor az Arcfelismerés az észlelés egyikén keresztül történik. A FaceClient osztály aszinkron metódusai.
 
 Minden észlelt arc esetében hívja a [PersonGroup személyt – adjon hozzá egy arcot](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a megfelelő személyhez való hozzáadásához.

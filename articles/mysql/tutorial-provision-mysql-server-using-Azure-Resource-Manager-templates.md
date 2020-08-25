@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74771088"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Azure Database for MySQL-kiszolgáló kiépítése Azure Resource Manager sablon használatával
@@ -76,27 +76,27 @@ A Azure Database for MySQL-kiszolgáló JSON-sablonjának hivatkozását a [Micr
 }
 ```
 Ebben a kérésben a testre szabható értékek a következők:
-+   `name`-Adja meg a MySQL-kiszolgáló nevét (tartománynév nélkül).
-+   `location`-Adja meg a MySQL-kiszolgáló érvényes Azure-beli adatközpont-régióját. Például: westus2.
-+   `properties/version`-A telepítendő MySQL-kiszolgáló verziószámának meghatározása. Például 5,6 vagy 5,7.
-+   `properties/administratorLogin`-A kiszolgáló MySQL-rendszergazdai bejelentkezési azonosítójának megadása. A rendszergazdai bejelentkezési név nem lehet azure_superuser, admin, administrator, root, guest vagy public.
-+   `properties/administratorLoginPassword`-Adja meg a fent megadott MySQL-rendszergazda felhasználó jelszavát.
-+   `properties/sslEnforcement`-Engedélyezett/letiltott érték megadása a sslEnforcement engedélyezéséhez vagy letiltásához.
-+   `storageProfile/storageMB`-A kiszolgáló megabájtban kifejezett maximális kiépített tárolási méretének megadása. Például 5120.
-+   `storageProfile/backupRetentionDays`-A biztonsági másolat megőrzési idejének megadásának napja napokban. Például: 7. 
-+   `storageProfile/geoRedundantBackup`-A Geo-DR követelményektől függően engedélyezhető/letiltva adható meg.
-+   `sku/tier`-Az alapszintű, a GeneralPurpose vagy a MemoryOptimized szint megadása az üzembe helyezéshez.
-+   `sku/capacity`-A virtuális mag kapacitásának meghatározása. A lehetséges értékek a következők: 2, 4, 8, 16, 32 vagy 64.
-+   `sku/family`-Adja meg a Gen5 a kiszolgáló üzembe helyezéséhez.
-+   `sku/name`-TierPrefix_family_capacity megadására. Például B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [díjszabási szintek](./concepts-pricing-tiers.md) dokumentációját, hogy megértse az érvényes értékeket régiónként és szintenként.
-+   `resources/properties/virtualNetworkSubnetId`-Itt adhatja meg annak az alhálózatnak az Azure-azonosítóját a VNet, ahol az Azure MySQL-kiszolgálót el kell helyezni. 
-+   `tags(optional)`– A választható címkék megadása olyan kulcs-érték párok, amelyeket a számlázási erőforrások kategorizálásához kíván használni.
++   `name` -Adja meg a MySQL-kiszolgáló nevét (tartománynév nélkül).
++   `location` -Adja meg a MySQL-kiszolgáló érvényes Azure-beli adatközpont-régióját. Például: westus2.
++   `properties/version` -A telepítendő MySQL-kiszolgáló verziószámának meghatározása. Például 5,6 vagy 5,7.
++   `properties/administratorLogin` -A kiszolgáló MySQL-rendszergazdai bejelentkezési azonosítójának megadása. A rendszergazdai bejelentkezési név nem lehet azure_superuser, admin, administrator, root, guest vagy public.
++   `properties/administratorLoginPassword` -Adja meg a fent megadott MySQL-rendszergazda felhasználó jelszavát.
++   `properties/sslEnforcement` -Engedélyezett/letiltott érték megadása a sslEnforcement engedélyezéséhez vagy letiltásához.
++   `storageProfile/storageMB` -A kiszolgáló megabájtban kifejezett maximális kiépített tárolási méretének megadása. Például 5120.
++   `storageProfile/backupRetentionDays` -A biztonsági másolat megőrzési idejének megadásának napja napokban. Például: 7. 
++   `storageProfile/geoRedundantBackup` -A Geo-DR követelményektől függően engedélyezhető/letiltva adható meg.
++   `sku/tier` -Az alapszintű, a GeneralPurpose vagy a MemoryOptimized szint megadása az üzembe helyezéshez.
++   `sku/capacity` -A virtuális mag kapacitásának meghatározása. A lehetséges értékek a következők: 2, 4, 8, 16, 32 vagy 64.
++   `sku/family` -Adja meg a Gen5 a kiszolgáló üzembe helyezéséhez.
++   `sku/name` -TierPrefix_family_capacity megadására. Például B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [díjszabási szintek](./concepts-pricing-tiers.md) dokumentációját, hogy megértse az érvényes értékeket régiónként és szintenként.
++   `resources/properties/virtualNetworkSubnetId` -Itt adhatja meg annak az alhálózatnak az Azure-azonosítóját a VNet, ahol az Azure MySQL-kiszolgálót el kell helyezni. 
++   `tags(optional)` – A választható címkék megadása olyan kulcs-érték párok, amelyeket a számlázási erőforrások kategorizálásához kíván használni.
 
 Ha olyan Azure Resource Manager sablont szeretne létrehozni, amely automatizálja Azure Database for MySQL üzemelő példányait a szervezete számára, akkor a javaslat az Azure rövid útmutatójában a GitHub-katalógus mintájának [Azure Resource Manager sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) elsőként fog megjelenni, és fel kell építenie rá. 
 
 Ha új Azure Resource Manager sablonokat, és szeretné kipróbálni, az alábbi lépéseket követve kezdheti el:
 +   A minta [Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) klónozása vagy letöltése az Azure Gyorsindítás galériából.  
-+   Módosítsa a azuredeploy. Parameters. JSON fájlt a paraméterek értékének a preferencia alapján történő frissítéséhez, és mentse a fájlt. 
++   Módosítsa a azuredeploy.parameters.jsa értékre, hogy frissítse a paraméterek értékét a preferencia alapján, és mentse a fájlt. 
 +   Az Azure MySQL-kiszolgáló létrehozása az Azure CLI használatával az alábbi parancsokkal
 
 Egy böngészőben az Azure Cloud Shell használatával vagy a számítógépen az Azure CLI telepítésével futtathatja az oktatóanyag kódblokkjait.
@@ -199,7 +199,7 @@ A sor az adatok lekérésekor megfelelően frissül.
 SELECT * FROM inventory;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure Database for MySQL kiszolgáló létrehozása a VNet szolgáltatás-végponttal Azure Resource Manager sablon használatával

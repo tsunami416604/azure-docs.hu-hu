@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 45f18727b53b802ba746da41b47fe955543ed9d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75649896"
 ---
 # <a name="create-custom-actions-and-resources-in-azure"></a>Egyéni műveletek és erőforrások létrehozása az Azure-ban
@@ -38,7 +38,7 @@ Az oktatóanyag harmadik része azt ismerteti, hogyan hozhat létre egyéni szol
 
 - [Egyéni szolgáltató létrehozása és használata](./tutorial-custom-providers-create.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az egyéni szolgáltatókat, és hogyan hozhat létre egyet. A következő oktatóanyag folytatásához tekintse meg az [oktatóanyag: Azure functions beállítása az Azure egyéni szolgáltatók számára](./tutorial-custom-providers-function-setup.md)című témakört.
 

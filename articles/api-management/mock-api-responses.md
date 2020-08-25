@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "70067941"
 ---
 # <a name="mock-api-responses"></a>API-válaszok utánzása
@@ -67,7 +67,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Megjelenített név**    | *Teszthívás*                       | A **fejlesztői portálon** megjelenített név.                                                                                                                                       |
     | **URL** (HTTP-művelet) | GET                               | Az előre meghatározott HTTP-műveletek közül választhat.                                                                                                                                         |
-    | **URL**             | */test*                           | Az API URL-címe.                                                                                                                                                                       |
+    | **URL-cím**             | */test*                           | Az API URL-címe.                                                                                                                                                                       |
     | **Leírás**     |                                   | Adja meg a művelet leírását, amely dokumentációként szolgál majd a **fejlesztői portálon** az API-t használó fejlesztők számára.                                                    |
     | **Lekérdezés** lap       |                                   | Hozzáadhat lekérdezési paramétereket. A név és a leírás megadása mellett megadhatja az ehhez a paraméterhez rendelhető értékeket is. Az értékek egyike megjelölhető alapértelmezettként (választható). |
     | **Kérés** lap     |                                   | Definiálhatja a kéréshez tartozó tartalomtípusokat, példákat és sémákat.                                                                                                                                  |
@@ -97,7 +97,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 
     ![Válaszutánzás engedélyezése](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-mocked-api"></a>Az utánzott API tesztelése
 

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078187"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783821"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentéskészítés az Azure AD-jogosultságok kezelésében Azure Monitor
 
@@ -59,7 +59,7 @@ Az Azure AD-naplók archiválásához a Azure Monitor Azure-előfizetésben kell
 
 ## <a name="view-events-for-an-access-package"></a>Hozzáférési csomag eseményeinek megtekintése  
 
-Egy hozzáférési csomag eseményeinek megtekintéséhez hozzá kell férnie az alapul szolgáló Azure monitor-munkaterülethez (lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) az információkhoz) és a következő szerepkörök egyikében: 
+Egy hozzáférési csomag eseményeinek megtekintéséhez hozzá kell férnie az alapul szolgáló Azure monitor-munkaterülethez (lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez a Azure monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) az információkhoz) és a következő szerepkörök egyikében: 
 
 - Globális rendszergazda  
 - Biztonsági rendszergazda  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>A lekérdezés elküldése a Log Analytics munkaterületre
 Végül, ha már azonosított egy munkaterületet, akkor az [AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) használatával küldhet Kusto-lekérdezést az adott munkaterületre. Ezek a lekérdezések [Kusto lekérdezési nyelven](https://docs.microsoft.com/azure/kusto/query/)íródnak.
+) használatával küldhet Kusto-lekérdezést az adott munkaterületre. Ezek a lekérdezések [Kusto lekérdezési nyelven](/azure/kusto/query/)íródnak.
  
 Például lekérheti a naplózási események rekordjainak időtartományát a Log Analytics munkaterületről, a PowerShell-parancsmagokkal pedig egy lekérdezés küldéséhez, például:
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Következő lépések:
-- [Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel](../../azure-monitor/platform/workbooks-overview.md)

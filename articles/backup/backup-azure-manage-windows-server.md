@@ -3,18 +3,18 @@ title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654208"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756061"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
 Ez a cikk azt ismerteti, hogyan használható a Recovery Services-tároló **áttekintése** irányítópult a Recovery Services-tárolók monitorozásához és kezeléséhez. Amikor megnyit egy Recovery Services tárolót a listából, megnyílik a kiválasztott tárolóhoz tartozó **áttekintő** irányítópult. Az irányítópult a tár különböző részleteit tartalmazza. A következő *csempék* láthatók: a kritikus és figyelmeztető riasztások állapota, a folyamatban lévő és a sikertelen biztonsági mentési feladatok, valamint a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mennyisége. Ha Azure-beli virtuális gépekről készít biztonsági mentést a [ **tárolóba, a biztonsági mentés előzetes ellenőrzési állapota** csempe megjeleníti a kritikus vagy figyelmeztető elemeket](#backup-pre-check-status). Az alábbi képen a **contoso-Vault** **Áttekintés** irányítópultja látható. A **biztonsági mentési elemek** csempén látható, hogy a tárolóban kilenc elem van regisztrálva.
 
-![Recovery Services-tároló irányítópultja](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+![Recovery Services tároló irányítópultja](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
 A cikk előfeltételei: Azure-előfizetések, Recovery Services-tárolók, és hogy van legalább egy biztonsági mentési elem konfigurálva a tárolóhoz.
 
@@ -32,11 +32,11 @@ A riasztások figyeléséhez vagy Recovery Services-tároló felügyeleti adatai
 
 3. A **minden szolgáltatás** párbeszédpanelen írja be a következőt: **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Amikor megjelenik a **Recovery Services** -tárolók lehetőség, válassza ki azt az előfizetésben található Recovery Services-tárolók listájának megnyitásához.
 
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
+    ![Hozzon létre Recovery Services Vault 1. lépését](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
 4. A tárolók listájából válassza ki a tárolót az **áttekintő** irányítópult megnyitásához.
 
-    ![Recovery Services-tároló irányítópultja](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
+    ![Recovery Services tároló irányítópultja](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
     Az áttekintési irányítópult csempéket használ a riasztások és a biztonsági mentési feladatok adatok biztosításához.
 

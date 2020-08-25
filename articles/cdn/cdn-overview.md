@@ -3,7 +3,7 @@ title: Mi az a tartalomkézbesítési hálózat (CDN)? - Azure | Microsoft Docs
 description: Megtudhatja, mi az az Azure tartalomkézbesítési hálózat (CDN), valamint hogyan használható a tartalmak nagy sávszélességű kézbesítéséhez.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260443"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783810"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Mit takar a tartalomkézbesítési hálózat az Azure-on?
-Egy tartalomkézbesítési hálózat (CDN) kiszolgálók olyan elosztott hálózata, amely hatékonyan kézbesíti a webes tartalmakat a felhasználóknak. A CDN-ek a késés minimalizálása érdekében gyorsítótárazott tartalmat tárolnak a végfelhasználók közelében lévő jelenléti pontok (POP) peremhálózati kiszolgálóin. 
+Egy tartalomkézbesítési hálózat (CDN) kiszolgálók olyan elosztott hálózata, amely hatékonyan kézbesíti a webes tartalmakat a felhasználóknak. A CDNs a késések csökkentése érdekében tárolja a gyorsítótárazott tartalmakat a végfelhasználók számára közel álló (POP) helyszíneken található peremhálózati kiszolgálókon. 
 
 Az Azure tartalomkézbesítési hálózat CDN a tartalmakat világszerte, stratégiai alapon elhelyezett fizikai csomópontokon gyorsítótárazva globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű gyors kézbesítéséhez a felhasználók felé. Az Azure CDN a különféle hálózati optimalizációk CDN POP-k segítségével történő kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is. Például irányíthatja az optimalizációt a Border Gateway Protocol (BGP) megkerülésével.
 
@@ -38,7 +38,7 @@ A jelenlegi CDN-csomópontok helyének listájáért tekintse meg az [Azure CDN 
 ## <a name="how-it-works"></a>Működés
 ![A CDN áttekintése](./media/cdn-overview/cdn-overview.png)
 
-1. Egy felhasználó (Alice) egy fájlt (más néven eszközt) kér egy speciális tartománynevet (például _ &lt;végpont neve&gt;_. azureedge.net) használó URL-címmel. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
+1. Egy felhasználó (Alice) egy fájlt (más néven eszközt) kér egy speciális tartománynevet (például _ &lt; végpont neve &gt; _. azureedge.net) használó URL-címmel. Ez a név lehet egy végpont gazdaneve vagy egy egyéni tartomány. A DNS a kérelmet a legjobb teljesítményt nyújtó jelenléti pontra (POP) irányítja. Ez általában a felhasználóhoz földrajzilag legközelebb elhelyezkedő jelenléti pont.
     
 2. Ha a jelenléti pont peremhálózati kiszolgálóinak gyorsítótárában nem található meg a fájl, akkor a jelenléti pont lekéri a fájlt a forráskiszolgálóról. A forráskiszolgáló lehet egy Azure-webalkalmazás, az Azure Cloud Service, egy Azure Storage-fiók vagy bármilyen nyilvánosan elérhető webkiszolgáló.
    
@@ -64,16 +64,16 @@ A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlá
 ## <a name="azure-cdn-features"></a>Az Azure CDN szolgáltatásai
 Az Azure CDN az alábbi főbb szolgáltatásokat kínálja:
 
-- [Dinamikus hely gyorsulása](cdn-dynamic-site-acceleration.md)
+- [Dinamikus helygyorsítás](cdn-dynamic-site-acceleration.md)
 - [CDN-gyorsítótárazási szabályok](cdn-caching-rules.md)
 - [HTTPS használata egyéni tartományban](cdn-custom-ssl.md)
-- [Azure Diagnostics-naplók](cdn-azure-diagnostic-logs.md)
+- [Azure-beli diagnosztikai naplók](cdn-azure-diagnostic-logs.md)
 - [Fájltömörítés](cdn-improve-performance.md)
 - [Geoszűrés](cdn-restrict-access-by-country.md)
 
 Az egyes Azure CDN termékek által támogatott szolgáltatások teljes listájáért tekintse meg az [Azure CDN termékek szolgáltatásait összehasonlító](cdn-features.md) részt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A CDN használatának első lépései: [Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md).
 - A CDN-végpontjait a [Microsoft Azure Portal](https://portal.azure.com) vagy a [PowerShell](cdn-manage-powershell.md) használatával kezelheti.
 - Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](cdn-app-dev-net.md) vagy a [Node.js](cdn-app-dev-node.md) segítségével.
