@@ -3,14 +3,14 @@ title: Diagnosztika a Durable Functions-ben – Azure
 description: Ismerje meg, hogyan diagnosztizálhatja a problémákat a Azure Functions Durable Functions bővítménnyel.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081814"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750708"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>A Durable Functions diagnosztikája az Azure-ban
 
@@ -28,7 +28,7 @@ Egy összehangoló példány minden életciklus-eseménye egy követési esemén
 
 * **hubName**: annak a feladatnak a neve, amelyben a rendszer fut.
 * **appName**: a Function alkalmazás neve. Ez a mező akkor hasznos, ha több Function-alkalmazással is rendelkezik, amelyek ugyanazt a Application Insights példányt osztják meg.
-* **slotName**: az [üzembe helyezési](../functions-deployment-slots.md) pont, amelyben az aktuális Function alkalmazás fut. Ez a mező akkor lehet hasznos, ha az üzembe helyezési pontokat kihasználva használja fel a folyamatokat.
+* **slotName**: az [üzembe helyezési](../functions-deployment-slots.md) pont, amelyben az aktuális Function alkalmazás fut. Ez a mező akkor lehet hasznos, ha üzembe helyezési pontokat használ a felépítések verziójának megadásához.
 * **függvénynév**: a Orchestrator vagy a tevékenység függvény neve.
 * **functionType**: a függvény típusa, például **Orchestrator** vagy **tevékenység**.
 * **instanceId**: a koordináló példány egyedi azonosítója.
@@ -88,7 +88,7 @@ Ha engedélyezni szeretné a részletes előkészítési események kiosztását
 
 #### <a name="functions-20"></a>Függvények 2,0
 
-```javascript
+```json
 {
     "extensions": {
         "durableTask": {
@@ -103,9 +103,9 @@ Ha engedélyezni szeretné a részletes előkészítési események kiosztását
 
 ### <a name="single-instance-query"></a>Egypéldányos lekérdezés
 
-A következő lekérdezés a [Hello Sequence](durable-functions-sequence.md) függvény összehangolása egyetlen példányának korábbi követési adatait jeleníti meg. A [Application Insights lekérdezési nyelv (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)használatával van írva. Kiszűri az ismétlések végrehajtását, így csak a *logikai* végrehajtási útvonal látható. Az események rendezési sorrendje `timestamp` `sequenceNumber` az alábbi lekérdezés szerint rendezhető:
+A következő lekérdezés a [Hello Sequence](durable-functions-sequence.md) függvény összehangolása egyetlen példányának korábbi követési adatait jeleníti meg. A [Kusto lekérdezési nyelv](/azure/data-explorer/kusto/query/)használatával van írva. Kiszűri az ismétlések végrehajtását, így csak a *logikai* végrehajtási útvonal látható. Az események rendezési sorrendje `timestamp` `sequenceNumber` az alábbi lekérdezés szerint rendezhető:
 
-```AIQL
+```kusto
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
 let start = datetime(2018-03-25T09:20:00);
 traces
@@ -124,13 +124,13 @@ traces
 
 Az eredmény azon követési események listája, amelyek a koordinálás végrehajtási útvonalát mutatják, beleértve a tevékenységek függvényeit is, amelyek sorrendje a végrehajtás időpontja.
 
-![Application Insights lekérdezés](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+![Application Insights egy példányban rendezett lekérdezés](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
 ### <a name="instance-summary-query"></a>Példány összegző lekérdezése
 
 A következő lekérdezés az adott időtartományban futó összes összehangoló példány állapotát megjeleníti.
 
-```AIQL
+```kusto
 let start = datetime(2017-09-30T04:30:00);
 traces
 | where timestamp > start and timestamp < start + 1h
@@ -148,13 +148,61 @@ traces
 
 Ennek eredménye a példány-azonosítók és az aktuális futtatókörnyezeti állapot listája.
 
-![Application Insights lekérdezés](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
+![Egypéldányos lekérdezés Application Insights](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>Naplózás
+## <a name="durable-task-framework-logging"></a>Tartós feladat-keretrendszer naplózása
+
+A tartós kiterjesztésű naplók hasznosak az előkészítési logika működésének megismeréséhez. Ezek a naplók azonban nem mindig tartalmaznak elegendő információt a keretrendszer-szintű teljesítmény és a megbízhatósági problémák hibakereséséhez. A tartós bővítmény **v 2.3.0** kezdődően az alapul szolgáló tartós feladatok keretrendszere (DTFx) által kibocsátott naplók is elérhetők gyűjteményhez.
+
+A DTFx által kibocsátott naplók megtekintésekor fontos tisztában lennie azzal, hogy a DTFx motor két összetevőből áll: az alapszintű küldő motorból ( `DurableTask.Core` ) és számos támogatott tárolási szolgáltatóból (Durable functions `DurableTask.AzureStorage` alapértelmezés szerint használja).
+
+* **DurableTask. Core**: a előkészítési végrehajtással és az alacsony szintű ütemezéssel kapcsolatos információkat tartalmaz.
+* **DurableTask. AzureStorage**: az Azure Storage-összetevőkkel folytatott interakciókkal kapcsolatos információkat tartalmaz, beleértve a belső adatelőkészítési állapot tárolására és beolvasására használt belső várólistákat, blobokat és tárolási táblákat.
+
+Ezeket a naplókat úgy engedélyezheti, ha a `logging/logLevel` Function app **host.js** fájljának a szakaszát frissíti. Az alábbi példa bemutatja, hogyan engedélyezheti a figyelmeztetési és a hibanapló mindkét `DurableTask.Core` és `DurableTask.AzureStorage` :
+
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "logLevel": {
+      "DurableTask.AzureStorage": "Warning",
+      "DurableTask.Core": "Warning"
+    }
+  }
+}
+```
+
+Ha Application Insights engedélyezve van, a rendszer automatikusan hozzáadja ezeket a naplókat a `trace` gyűjteményhez. A Kusto-lekérdezések használatával ugyanúgy kereshet, ahogyan más `trace` naplókat keres.
+
+> [!NOTE]
+> Éles alkalmazások esetében ajánlott engedélyezni `DurableTask.Core` `DurableTask.AzureStorage` a és a naplókat a `"Warning"` szűrő használatával. A nagyobb részletességi szűrők, például a `"Information"` teljesítménnyel kapcsolatos problémák hibakereséséhez nagyon hasznosak. Ezek a naplózási események azonban nagy mennyiségű, és jelentősen növelhetik az adattárolási költségek Application Insights.
+
+A következő Kusto-lekérdezés bemutatja, hogyan lehet lekérdezni a DTFx-naplókat. A lekérdezés legfontosabb része az, hogy az `where customerDimensions.Category startswith "DurableTask"` eredményeket a `DurableTask.Core` és kategóriákba tartozó naplókra szűri `DurableTask.AzureStorage` .
+
+```kusto
+traces
+| where customDimensions.Category startswith "DurableTask"
+| project
+    timestamp,
+    severityLevel,
+    Category = customDimensions.Category,
+    EventId = customDimensions.EventId,
+    message,
+    customDimensions
+| order by timestamp asc 
+```
+Az eredmény az állandó feladat-keretrendszer naplófájljai által írt naplók halmaza.
+
+![Application Insights DTFx lekérdezési eredményei](./media/durable-functions-diagnostics/app-insights-dtfx.png)
+
+További információ arról, hogy milyen naplózási események érhetők el: a [tartós feladatok keretrendszerének strukturált naplózási dokumentációja a githubon](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Core/Logging#durabletaskcore-logging).
+
+## <a name="app-logging"></a>Alkalmazás naplózása
 
 Fontos, hogy a Orchestrator-újrajátszás viselkedését ne feledje, amikor közvetlenül egy Orchestrator-függvényből ír naplókat. Vegyük például a következő Orchestrator függvényt:
 
-### <a name="precompiled-c"></a>Előre lefordított C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -172,24 +220,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="c-script"></a>C#-parancsfájl
-
-```csharp
-public static async Task Run(
-    IDurableOrchestrationContext context,
-    ILogger log)
-{
-    log.LogInformation("Calling F1.");
-    await context.CallActivityAsync("F1");
-    log.LogInformation("Calling F2.");
-    await context.CallActivityAsync("F2");
-    log.LogInformation("Calling F3");
-    await context.CallActivityAsync("F3");
-    log.LogInformation("Done!");
-}
-```
-
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -204,6 +235,26 @@ module.exports = df.orchestrator(function*(context){
     context.log("Done!");
 });
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    logging.info("Calling F1.")
+    yield context.call_activity("F1")
+    logging.info("Calling F2.")
+    yield context.call_activity("F2")
+    logging.info("Calling F3.")
+    yield context.call_activity("F3")
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
 
 Az eredményül kapott naplózási adatokat a következő példában szereplő kimenethez hasonlóan fogjuk kinézni:
 
@@ -223,9 +274,9 @@ Done!
 > [!NOTE]
 > Ne feledje, hogy míg a naplók az F1, az F2 és az F3 meghívását kérik, ezeket a függvényeket *csak az* első alkalommal nevezik. A rendszer kihagyja az újrajátszás során megjelenő további hívásokat, és a kimeneteket visszajátssza a Orchestrator logikába.
 
-Ha csak a nem újrajátszható végrehajtást szeretné bejelentkezni, írhat egy feltételes kifejezést úgy, hogy csak akkor jelentkezzen be, ha `IsReplaying` a `false` . Vegye figyelembe a fenti példát, de ezúttal újrajátszás-ellenőrzésekkel.
+Ha csak a naplókat szeretné írni a nem újrajátszható végrehajtáshoz, írhat feltételes kifejezést úgy, hogy csak akkor legyen naplózva, ha az "újrajátszás" jelző `false` . Vegye figyelembe a fenti példát, de ezúttal újrajátszás-ellenőrzésekkel.
 
-#### <a name="precompiled-c"></a>Előre lefordított C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -243,40 +294,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="c"></a>C#
-
-```cs
-public static async Task Run(
-    IDurableOrchestrationContext context,
-    ILogger log)
-{
-    if (!context.IsReplaying) log.LogInformation("Calling F1.");
-    await context.CallActivityAsync("F1");
-    if (!context.IsReplaying) log.LogInformation("Calling F2.");
-    await context.CallActivityAsync("F2");
-    if (!context.IsReplaying) log.LogInformation("Calling F3");
-    await context.CallActivityAsync("F3");
-    log.LogInformation("Done!");
-}
-```
-
-#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
-
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.orchestrator(function*(context){
-    if (!context.df.isReplaying) context.log("Calling F1.");
-    yield context.df.callActivity("F1");
-    if (!context.df.isReplaying) context.log("Calling F2.");
-    yield context.df.callActivity("F2");
-    if (!context.df.isReplaying) context.log("Calling F3.");
-    yield context.df.callActivity("F3");
-    context.log("Done!");
-});
-```
-
-A Durable Functions 2,0-es verziótól kezdődően a .NET Orchestrator functions olyan lehetőséget is `ILogger` biztosít, amely automatikusan kiszűri a naplók utasításait a visszajátszás során. Ezt az automatikus szűrést az API használatával végezheti el `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` .
+A Durable Functions 2,0-es verziótól kezdődően a .NET Orchestrator functions olyan lehetőséget is `ILogger` biztosít, amely automatikusan kiszűri a naplók utasításait a visszajátszás során. Ez az automatikus szűrés a [IDurableOrchestrationContext. CreateReplaySafeLogger (ILogger)](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.durablecontextextensions.createreplaysafelogger) API használatával végezhető el.
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,6 +313,49 @@ public static async Task Run(
 }
 ```
 
+> [!NOTE]
+> Az előző C#-példák a Durable Functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    if (!context.df.isReplaying) context.log("Calling F1.");
+    yield context.df.callActivity("F1");
+    if (!context.df.isReplaying) context.log("Calling F2.");
+    yield context.df.callActivity("F2");
+    if (!context.df.isReplaying) context.log("Calling F3.");
+    yield context.df.callActivity("F3");
+    context.log("Done!");
+});
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    if not context.is_replaying:
+        logging.info("Calling F1.")
+    yield context.call_activity("F1")
+    if not context.is_replaying:
+        logging.info("Calling F2.")
+    yield context.call_activity("F2")
+    if not context.is_replaying:
+        logging.info("Calling F3.")
+    yield context.call_activity("F3")
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 A korábban említett módosításokat követően a napló kimenete a következő:
 
 ```txt
@@ -304,14 +365,11 @@ Calling F3.
 Done!
 ```
 
-> [!NOTE]
-> Az előző C#-példák a Durable Functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
-
 ## <a name="custom-status"></a>Egyéni állapot
 
-Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a HTTP-állapot lekérdezési API-jával vagy az API-n keresztül biztosítjuk `IDurableOrchestrationClient.GetStatusAsync` . Az egyéni előkészítési állapot lehetővé teszi a Orchestrator függvények szélesebb körű figyelését. A Orchestrator függvény kódja például tartalmazhat `IDurableOrchestrationContext.SetCustomStatus` hívásokat a hosszan futó művelet előrehaladásának frissítéséhez. Az ügyfél, például egy weblap vagy más külső rendszer, rendszeres időközönként lekérdezheti a HTTP-állapot lekérdezési API-jait a részletes végrehajtási információkhoz. Az alábbi minta használatával `IDurableOrchestrationContext.SetCustomStatus` kell megadnia a mintát:
+Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az egyéni állapotot a rendszer a külső ügyfelek számára a [http-állapot lekérdezési API](durable-functions-http-api.md#get-instance-status) -n keresztül, vagy nyelvspecifikus API-hívásokkal látja el. Az egyéni előkészítési állapot lehetővé teszi a Orchestrator függvények szélesebb körű figyelését. A Orchestrator függvény kódja például meghívja az "egyéni állapot beállítása" API-t, hogy frissítse a hosszan futó művelet állapotát. Az ügyfél, például egy weblap vagy más külső rendszer, rendszeres időközönként lekérdezheti a HTTP-állapot lekérdezési API-jait a részletes végrehajtási információkhoz. A Orchestrator függvényben az egyéni állapot értékének beállítására szolgáló mintakód az alábbi táblázatban látható:
 
-### <a name="precompiled-c"></a>Előre lefordított C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SetStatusTest")]
@@ -330,7 +388,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 > [!NOTE]
 > Az előző C# példa a Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -346,10 +404,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    # ...do work...
+
+    # update the status of the orchestration with some arbitrary data
+    custom_status = {'completionPercentage': 90.0, 'status': 'Updating database records'}
+    context.set_custom_status(custom_status)
+    # ...do more work...
+
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 A folyamat futása közben a külső ügyfelek behívhatják ezt az egyéni állapotot:
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/instance123
+GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 ```
 
@@ -379,9 +459,9 @@ Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen
 * **Leállítás és indítás**: a tartós függvények üzenetei megmaradnak a hibakeresési munkamenetek között. Ha leállítja a hibakeresést, és leállítja a helyi gazdagép folyamatát egy tartós függvény végrehajtása közben, akkor a függvény automatikusan újrafuthat egy jövőbeli hibakeresési munkamenetben. Ez a viselkedés zavaró lehet, ha nem várt. A [belső tárolási várólistákról](durable-functions-perf-and-scale.md#internal-queue-triggers) érkező összes üzenet törlése a hibakeresési munkamenetek között egy olyan módszer, amellyel elkerülhető a működés.
 
 > [!TIP]
-> Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszakítani, beállíthat egy feltételes töréspontot, amely csak akkor szakad meg, ha `IsReplaying` a értéke `false` .
+> Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszüntetni, beállíthat egy feltételes töréspontot, amely csak akkor szakad meg, ha az "újrajátszás" érték `false` .
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 Alapértelmezés szerint a Durable Functions az Azure Storage-ban tárolja az állapotot. Ez azt jelenti, hogy a munkafolyamatok állapotát a [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)eszközzel ellenőrizheti.
 

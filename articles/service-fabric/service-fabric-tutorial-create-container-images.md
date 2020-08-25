@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252789"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
@@ -98,7 +98,7 @@ Hozzon létre egy erőforráscsoportot az **az group create** paranccsal. Ebben 
 az group create --name <myResourceGroup> --location westus
 ```
 
-Hozzon létre egy Azure tárolóregisztrációs adatbázist az **az acr create** paranccsal. Cserélje le az \<acrName> kifejezést az előfizetésben létrehozni kívánt tárolóregisztrációs adatbázis nevére. Ennek a névnek alfanumerikusnak és egyedinek kell lennie.
+Hozzon létre egy Azure tárolóregisztrációs adatbázist az **az acr create** paranccsal. A helyére írja be annak a \<acrName> tároló-beállításjegyzéknek a nevét, amelyet az előfizetése alatt létre szeretne hozni. Ennek a névnek alfanumerikusnak és egyedinek kell lennie.
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
@@ -196,7 +196,7 @@ azure-vote-front
 
 Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Service Fabric-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy alkalmazást hoztak létre a GitHubról, és a tároló lemezképeit létrehozták, és elküldték a beállításjegyzékbe. A következő lépéseket hajtotta végre:
 

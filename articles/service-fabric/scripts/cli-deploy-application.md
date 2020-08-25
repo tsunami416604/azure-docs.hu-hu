@@ -15,10 +15,10 @@ ms.date: 04/16/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: ff40dc62b4dcd622156a78518bbdcb6b9b430644
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75526600"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster-using-the-service-fabric-cli"></a>Alkalmazás üzembe helyezése egy Service Fabric-fürtön a Service Fabric parancssori felület használatával
@@ -35,7 +35,7 @@ Amennyiben szükséges, telepítse a [Service Fabric parancssori felületet](../
 
 Ha ezzel elkészült, a [remove](cli-remove-application.md) szkripttel eltávolíthatja az alkalmazást. A remove szkript eltávolítja az alkalmazáspéldányt, törli az alkalmazástípus regisztrációját, és eltávolítja az alkalmazáscsomagot a lemezképtárolóból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [A Service Fabric parancssori felületének dokumentációja](../service-fabric-cli.md).
 

@@ -2,13 +2,13 @@
 title: Alkalmazás sémájának definíciója
 description: A LUIS-alkalmazás a vagy a vagy a, `.json` `.lu` és tartalmazza az összes szándékot, az entitásokat, például a hosszúságú kimondott szöveg, a funkciókat és a beállításokat.
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/22/2020
+ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684361"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756788"
 ---
 # <a name="app-schema-definition"></a>Alkalmazás sémájának definíciója
 
@@ -18,7 +18,7 @@ A LUIS-alkalmazás a vagy a vagy a, `.json` `.lu` és tartalmazza az összes sz�
 
 Az alkalmazás importálásakor és exportálásakor válassza a vagy a lehetőséget `.json` `.lu` .
 
-|Formátum|Információ|
+|Formátum|Tájékoztatás|
 |--|--|
 |`.json`| Szabványos programozási formátum|
 |`.lu`|A bot Framework [bot Builder eszközei](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md)támogatják.|
@@ -55,12 +55,30 @@ Az alkalmazás importálásakor és exportálásakor válassza a vagy a lehetős
   "tokenizerVersion": "1.0.0",
   "patternAnyEntities": [],
   "regex_entities": [],
-  "phraselists": [],
+  "phraselists": [
+  ],
   "regex_features": [],
   "patterns": [],
   "settings": []
 }
 ```
+
+| elem                  | Megjegyzés                              |
+|--------------------------|--------------------------------------|
+| "hierarchikusak": [],     | Elavult, [gépi tanulási entitások](luis-concept-entity-types.md)használata.   |
+| "kompozitok": [],        | Elavult, [gépi tanulási entitások](luis-concept-entity-types.md)használata. [Összetett entitás](reference-entity-composite.md) referenciája. |
+| "closedLists": [],       | [Sorolja fel az entitások](reference-entity-list.md) hivatkozását, amelyet elsősorban az entitások szolgáltatásként használ.    |
+| "versionId": "0,1",      | A LUIS-alkalmazás verziója.|
+| "név": "example-app",   | A LUIS-alkalmazás neve. |
+| "desc": "",              | A LUIS-alkalmazás opcionális leírása.  |
+| "kulturális környezet": "en-us",      | Az alkalmazás [nyelve](luis-language-support.md) a mögöttes funkciók, például az előre elkészített entitások, a gépi tanulás és a tokenizer hatása.  |
+| "tokenizerVersion": "1.0.0", | [Tokenizer](luis-language-support.md#tokenization)  |
+| "patternAnyEntities": [],   | [Pattern.any entitás](reference-entity-pattern-any.md)    |
+| "regex_entities": [],    |  [Reguláriskifejezés-entitás](reference-entity-regular-expression.md)   |
+| "phraselists": [],       |  [Kifejezések listája (funkció)](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
+| "regex_features": [],    |  Elavult, [gépi tanulási entitások](luis-concept-entity-types.md)használata. |
+| "minták": [],          |  Minták [szintaxisa](reference-pattern-syntax.md) [javítja az előrejelzés pontosságát](luis-concept-patterns.md)   |
+| "beállítások": []           | [Alkalmazásbeállítások](luis-reference-application-settings.md)|
 
 ## <a name="version-6x"></a>6-os verzió. x
 

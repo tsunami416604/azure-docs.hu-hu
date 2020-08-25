@@ -3,12 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: d0ae5165fc13193737ec75cf06060123ca4a13d4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564027"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756996"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan használható a PowerShell a Azure Backup Windows Se
 
 Első lépésként [telepítse a PowerShell legújabb verzióját](/powershell/azure/install-az-ps).
 
-## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A következő lépések végigvezetik a Recovery Services-tároló létrehozásának lépésein. Egy Recovery Services-tár nem azonos a Backup-tárolóval.
 
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 Az elérhető lehetőségek a következők:
 
-| Lehetőség | Részletek | Alapértelmezett |
+| Beállítás | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
 | /p: "location" |A Azure Backup ügynök telepítési mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services ügynök |
@@ -740,7 +740,7 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Windows Server/Client Azure Backupról:
 

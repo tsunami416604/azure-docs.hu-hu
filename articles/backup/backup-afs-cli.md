@@ -3,20 +3,20 @@ title: Azure-fájlmegosztás biztonsági mentése az Azure CLI-vel
 description: Ismerje meg, hogyan használhatja az Azure-fájlmegosztás biztonsági mentését az Azure CLI-vel az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 273c8fadc25ed60ba9fb57ec69bda0b59f155f87
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514441"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763252"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Azure-fájlmegosztás biztonsági mentése a CLI-vel
 
 Az Azure parancssori felülete (CLI) parancssori felületet biztosít az Azure-erőforrások kezeléséhez. Ez nagyszerű eszköz az Azure-erőforrások használatára szolgáló egyéni automatizálás kialakításához. Ez a cikk az Azure-fájlmegosztás Azure CLI-vel történő biztonsági mentésének részleteit ismerteti. Az [Azure PowerShell](./backup-azure-afs-automation.md) vagy az [Azure Portal](backup-afs.md) használatával is elvégezheti ezeket a lépéseket.
 
-Az oktatóanyag végén megtudhatja, hogyan hajthatja végre az alábbi műveleteket az Azure CLI használatával:
+Az oktatóanyag végén megtudhatja, hogyan hajthatja végre az alábbi műveleteket az Azure CLI-vel:
 
-* Helyreállítási tár létrehozása
+* Recovery Services-tároló létrehozása
 * Azure-fájlmegosztás biztonsági mentésének engedélyezése
 * Igény szerinti biztonsági mentés indítása fájlmegosztás esetén
 
@@ -26,9 +26,9 @@ A parancssori felület helyi telepítéséhez és használatához az Azure CLI 2
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-A Recovery Service-tároló egy olyan entitás, amely összevont nézetet és felügyeleti képességet biztosít az összes biztonsági mentési elemhez. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
+A Recovery Services-tároló egy olyan entitás, amely összevont nézetet és felügyeleti képességet biztosít az összes biztonsági mentési elemhez. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
-A Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
+Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
 
 1. Egy tároló egy erőforráscsoporthoz kerül. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy újat az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal. Ebben az oktatóanyagban az új erőforráscsoport- *azurefiles* hozunk létre az USA keleti régiójában.
 
@@ -44,7 +44,7 @@ A Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
 
 1. A tároló létrehozásához használja az az [Backup Vault Create](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) parancsmagot. Azonos helyet kell megadnia a tárolóhoz az erőforráscsoport esetében.
 
-    A következő példa egy *azurefilesvault* nevű Recovery Services-tárolót hoz létre az USA keleti régiójában.
+    Az alábbi példa egy *azurefilesvault* nevű Recovery Services-tárolót hoz létre az USA keleti régiójában.
 
     ```azurecli-interactive
     az backup vault create --resource-group azurefiles --name azurefilesvault --location eastus --output table
@@ -100,7 +100,7 @@ Name                                  ResourceGroup
 
 A kimenet **Name** attribútuma a Backup szolgáltatás által a "igény szerinti biztonsági mentés" művelethez létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [állíthatja vissza az Azure-FÁJLMEGOSZTÁS parancssori](restore-afs-cli.md) felületét
 * Ismerje meg, hogyan [kezelheti az Azure-fájlmegosztás biztonsági másolatait a CLI-vel](manage-afs-backup-cli.md)

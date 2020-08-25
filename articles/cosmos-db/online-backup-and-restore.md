@@ -1,18 +1,18 @@
 ---
 title: Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
-description: Ez a cikk bemutatja, hogyan működik az automatikus, az online biztonsági mentés és az igény szerinti adatvisszaállítás a Azure Cosmos DBban.
+description: Ez a cikk azt ismerteti, hogyan működik az automatikus biztonsági mentés, az igény szerinti adatok visszaállítása, hogyan konfigurálható a biztonsági mentési intervallum és a megőrzés a Azure Cosmos DBban.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112922"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799516"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
 
@@ -22,19 +22,17 @@ A Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másolat
 
 A Azure Cosmos DB, nem csupán az adatai, hanem az adatbiztonsági másolatok is nagyon redundánsak, és a regionális katasztrófák miatt rugalmasak. A következő lépések bemutatják, hogyan végzi el a Azure Cosmos DB az adatok biztonsági mentését:
 
-* Az Azure Cosmos DB 4 óránként vagy egy adott időpontban automatikusan biztonsági másolatot készít az adatbázisáról, és csak a két legutóbbi biztonsági másolatot őrzi meg. Tároló vagy adatbázis törlése esetén azonban az Azure Cosmos DB 30 napig megőrzi az adott tároló vagy adatbázis meglévő pillanatképeit.
+* Azure Cosmos DB automatikusan biztonsági másolatot készít az adatbázisról 4 óránként és bármikor, csak a legújabb két biztonsági mentést tárolja alapértelmezés szerint. Ha az alapértelmezett intervallumok nem elégségesek a számítási feladatokhoz, módosíthatja a biztonsági mentési időközt és a megőrzési időszakot a Azure Portal. A biztonsági mentési konfigurációt az Azure Cosmos-fiók létrehozásakor vagy azt követően is módosíthatja. Ha törli a tárolót vagy az adatbázist, a Azure Cosmos DB 30 napig megőrzi egy adott tároló vagy adatbázis meglévő pillanatképeit.
 
 * Azure Cosmos DB tárolja ezeket a biztonsági másolatokat az Azure Blob Storage-ban, míg a tényleges adatok helyileg, Azure Cosmos DB belül találhatók.
 
-*  Az alacsony késés garantálása érdekében a biztonsági mentés pillanatképét az Azure Blob Storage tárolja ugyanabban a régióban, mint az aktuális írási régiót (vagy az írási régiók egyikét), ha az Azure Cosmos Database-fiókja több főkiszolgálós konfigurációval rendelkezik. A regionális katasztrófák elleni rugalmasság érdekében az Azure Blob Storage-ban tárolt biztonsági mentési adatok minden pillanatképét újra replikálja egy másik régióba a Geo-redundáns tárolás (GRS) használatával. Az a régió, amelybe a biztonsági mentés replikálódik, a forrás-és a forrásoldali régióhoz társított regionális pár alapján történik. További információért tekintse meg a [geo-redundáns párok listáját az Azure-régiókról](../best-practices-availability-paired-regions.md) szóló cikkben. Ez a biztonsági másolat nem érhető el közvetlenül. Azure Cosmos DB ezt a biztonsági mentést csak akkor fogja használni, ha a biztonsági másolat visszaállítása megkezdődött.
+*  A kis késleltetés garantálása érdekében a biztonsági mentés pillanatképét az Azure Blob Storage tárolja ugyanabban a régióban, mint az aktuális írási régió (vagy **egy** írási régió, ha több főkiszolgálós konfiguráció van). A regionális katasztrófák elleni rugalmasság érdekében az Azure Blob Storage-ban tárolt biztonsági mentési adatok minden pillanatképét újra replikálja egy másik régióba a Geo-redundáns tárolás (GRS) használatával. Az a régió, amelybe a biztonsági mentés replikálódik, a forrás-és a forrásoldali régióhoz társított regionális pár alapján történik. További információért tekintse meg a [geo-redundáns párok listáját az Azure-régiókról](../best-practices-availability-paired-regions.md) szóló cikkben. Ez a biztonsági másolat nem érhető el közvetlenül. A Azure Cosmos DB csapat a támogatási kérések során visszaállítja a biztonsági mentést.
+
+   Az alábbi képen látható, hogy az USA nyugati régiójában lévő három elsődleges fizikai partícióval rendelkező Azure Cosmos-tároló hogyan készül biztonsági mentésben egy távoli Azure Blob Storage-fiókban az USA nyugati régiójában, majd replikálva az USA keleti régiójába:
+
+  :::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="false":::
 
 * A biztonsági mentéseket az alkalmazás teljesítményének vagy rendelkezésre állásának befolyásolása nélkül kell elvégezni. Azure Cosmos DB végrehajtja az adatok biztonsági mentését a háttérben anélkül, hogy további kiosztott átviteli sebességet (RUs) kellene használnia, és nem befolyásolja az adatbázis teljesítményét és rendelkezésre állását.
-
-* Ha véletlenül törölte vagy megsérült az adatai, akkor 8 órán belül kapcsolatba kell lépnie az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , hogy a Azure Cosmos db csapat segítséget nyújtson a biztonsági másolatokból származó adatok visszaállításához.
-
-Az alábbi képen látható, hogy az USA nyugati régiójában lévő három elsődleges fizikai partícióval rendelkező Azure Cosmos-tároló hogyan készül biztonsági mentésben egy távoli Azure Blob Storage-fiókban az USA nyugati régiójában, majd replikálva az USA keleti régiójába:
-
-:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>A saját biztonsági mentések kezelésére szolgáló beállítások
 
@@ -42,50 +40,71 @@ Azure Cosmos DB SQL API-fiókokkal a következő módszerek egyikével is megőr
 
 * A [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) használatával időnként áthelyezheti az adatátvitelt az Ön által választott tárhelyre.
 
-* A teljes biztonsági mentéshez, valamint a növekményes változtatásokhoz és a saját tárolóban történő tárolásához használja a Azure Cosmos DB [módosítási csatornát](change-feed.md) .
+* A teljes biztonsági mentéshez, illetve a növekményes változtatásokhoz és a saját tárolóban történő tárolásához használja a Azure Cosmos DB [változási hírcsatorna](change-feed.md) használatát az adat rendszeres olvasásához.
 
-## <a name="backup-retention-period"></a>Biztonsági másolat megőrzési ideje
+## <a name="backup-interval-and-retention-period"></a>Biztonsági mentési időköz és megőrzési idő
 
-A Azure Cosmos DB négy óránként pillanatképeket küld az adatairól. Egy adott időpontban csak az utolsó két pillanatképet őrzi meg a rendszer. Tároló vagy adatbázis törlése esetén azonban az Azure Cosmos DB 30 napig megőrzi az adott tároló vagy adatbázis meglévő pillanatképeit.
+Azure Cosmos DB automatikusan biztonsági másolatot készít az adatairól 4 óránként, a legújabb két biztonsági mentést pedig tárolja. Ez a konfiguráció az alapértelmezett beállítás, és további díj nélkül elérhető. Ha olyan munkaterhelésekkel rendelkezik, amelyekben az alapértelmezett biztonsági mentési időköz és a megőrzési időszak nem elegendő, megváltoztathatja őket. Ezeket az értékeket az Azure Cosmos-fiók létrehozásakor vagy a fiók létrehozása után módosíthatja. A biztonsági mentési konfiguráció az Azure Cosmos-fiók szintjén van beállítva, és minden fiókon konfigurálnia kell. Miután konfigurálta egy fiók biztonsági mentési beállításait, a rendszer az adott fiókban lévő összes tárolóra alkalmazza. A biztonsági mentési beállításokat jelenleg csak Azure Portal lehet módosítani.
 
-## <a name="restoring-data-from-online-backups"></a>Adatok visszaállítása online biztonsági mentésből
+Ha véletlenül törölte vagy megsérült az adatai, az **adatok visszaállítására vonatkozó támogatási kérelem létrehozása előtt győződjön meg arról, hogy a fiók biztonsági mentése legalább hét napig megnövekszik. Az eseménytől számított 8 órán belül növelheti az adatmegőrzést.** Így a Azure Cosmos DB csapatnak elég ideje visszaállítani a fiókját.
 
-A véletlen törlés vagy az adatok módosítása a következő esetekben fordulhat elő:  
+A következő lépésekkel módosíthatja egy meglévő Azure Cosmos-fiók alapértelmezett biztonsági mentési beállításait:
 
-* A teljes Azure Cosmos-fiók törölve
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
+1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **biztonsági mentés & visszaállítás** panelt. Frissítse a biztonsági mentési időközt és a biztonsági mentés megőrzési időtartamát igény szerint.
 
-* Egy vagy több Azure Cosmos-adatbázis törölve
+   * **Biztonsági mentés időköze** – ez az az időtartam, amikor a Azure Cosmos db megkísérel biztonsági másolatot készíteni az adatairól. A biztonsági mentés nem nulla időt vesz igénybe, és bizonyos esetekben előfordulhat, hogy az alsóbb rétegbeli függőségek miatt sikertelen lesz. Azure Cosmos DB megpróbálja a legjobb biztonsági mentést készíteni a beállított időközönként, azonban nem garantálja, hogy a biztonsági mentés az adott időintervallumon belül befejeződik. Ezt az értéket órában vagy percben is konfigurálhatja. A biztonsági mentési időköz nem lehet kevesebb, mint 1 óra, és 24 óránál hosszabb. Ha megváltoztatja ezt az időközt, az új intervallum az utolsó biztonsági mentés időpontjától kezdve lép érvénybe.
 
-* Egy vagy több Azure Cosmos-tároló törölve
+   * **Biztonsági mentés megőrzése** – azt a pontot jelöli, amelyben az egyes biztonsági másolatok megmaradnak. Azt órákban vagy napokban is konfigurálhatja. A minimális megőrzési időtartam nem lehet kevesebb, mint a biztonsági mentési időköz (órában), és nem lehet nagyobb, mint 720 óra.
 
-* A tárolóban lévő Azure Cosmos-elemek (például dokumentumok) törlődnek vagy módosulnak. Ezt a konkrét esetet általában adatsérülésnek nevezzük.
+   * **Megőrzött Adatmásolatok** – alapértelmezés szerint a rendszer díjmentesen két biztonsági másolatot készít az adatairól. Ha további másolatokra van szüksége, hozzon létre egy támogatási kérést a Azure Portalon keresztül, és a további másolatok díját is meg kell fizetni. A további másolatok pontos árának megismeréséhez tekintse meg a [díjszabási oldal](https://azure.microsoft.com/pricing/details/cosmos-db/) felhasznált tároló szakaszát.
 
-* Egy megosztott ajánlat-adatbázis vagy-tároló egy megosztott ajánlati adatbázisban törölve vagy sérült
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="A biztonsági mentés intervallumának és megőrzésének konfigurálása egy meglévő Azure Cosmos-fiókhoz" border="true":::
 
-A Azure Cosmos DB az összes fenti helyzetben képes visszaállítani az adatok visszaállítását. A visszaállítási folyamat mindig új Azure Cosmos-fiókot hoz létre a visszaállított adatok tárolásához. Ha nincs megadva az új fiók neve, a formátuma lesz `<Azure_Cosmos_account_original_name>-restored1` . Az utolsó számjegy megnő, ha több visszaállítást próbálnak meg. Egy előre létrehozott Azure Cosmos-fiókba nem állíthatók vissza az adathalmazok.
+Ha a fiók létrehozása során konfigurálja a biztonsági mentési beállításokat, beállíthatja a **biztonsági mentési szabályzatot**, amely akár **rendszeres** , akár **folyamatos**. Az időszakos házirend lehetővé teszi a biztonsági mentés intervallumának és a biztonsági másolatok megőrzésének konfigurálását. A folyamatos házirend jelenleg csak a regisztráláskor érhető el. A Azure Cosmos DB csapat felméri a munkaterhelést, és jóváhagyja a kérést.
 
-Ha töröl egy Azure Cosmos-fiókot, visszaállíthatja az adathalmazt egy azonos nevű fiókba, ha a fiók neve nincs használatban. Ilyen esetekben azt javasoljuk, hogy a törlés után ne hozza újra létre a fiókot, mert a visszaállított adatok nem csupán ugyanazt a nevet használják, hanem a megfelelő fiók felfedését is lehetővé teszi a nehezebb helyreállításhoz. 
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Rendszeres vagy folyamatos biztonsági mentési szabályzat konfigurálása az új Azure Cosmos-fiókokhoz" border="true":::
 
-Ha töröl egy Azure Cosmos-adatbázist, a teljes adatbázist vagy a tárolók egy részhalmazát is visszaállíthatja az adott adatbázison belül. A tárolókat az adatbázisok között is kiválaszthatja, és visszaállíthatja őket, és az összes visszaállított adattal egy új Azure Cosmos-fiókba kerül.
+## <a name="restore-data-from-an-online-backup"></a>Adatok visszaállítása online biztonsági mentésből
 
-Ha a tárolóban lévő egy vagy több elem véletlenül törölve vagy módosítva van (az adatsérülési eset), akkor meg kell adnia a visszaállításhoz szükséges időt. Ebben az esetben az idő lényege. Mivel a tároló él, a biztonsági mentés továbbra is fut, így ha a megőrzési időszakon túl várakozik (az alapértelmezett érték nyolc óra), a rendszer felülírja a biztonsági mentéseket. Törlés esetén az adatai már nem tárolódnak, mert a biztonsági mentési ciklus nem írja felül őket. A törölt adatbázisok vagy tárolók biztonsági másolatait 30 napig menti a rendszer.
+Az alábbi helyzetekben véletlenül törölheti vagy módosíthatja az adatait:  
 
-Ha az átviteli sebességet az adatbázis szintjén adja meg (azaz a tárolók egy készlete osztozik a kiosztott átviteli sebességen), a biztonsági mentési és visszaállítási folyamat ebben az esetben a teljes adatbázis szintjén történik, és nem az egyes tárolók szintjén. Ilyen esetekben a visszaállítandó tárolók egy részhalmazának kiválasztása nem választható.
+* Törölje a teljes Azure Cosmos-fiókot.
 
-## <a name="migrating-data-to-the-original-account"></a>Az adatbázis áttelepítése az eredeti fiókba
+* Töröljön egy vagy több Azure Cosmos-adatbázist.
 
-Az adatok visszaállításának elsődleges célja, hogy lehetővé teszi a véletlenül törölt vagy módosított adatok helyreállítását. Ezért javasoljuk, hogy először vizsgálja meg a helyreállított adatok tartalmát, hogy biztosan tartalmazza a várt adatokat. Ezután végezze el az adatáttelepítést az elsődleges fiókba. Habár a visszaállított fiókot élő fiókként is használhatja, ez nem ajánlott megoldás, ha éles számítási feladatokkal rendelkezik.  
+* Töröljön egy vagy több Azure Cosmos-tárolót.
+
+* Az Azure Cosmos-elemek (például dokumentumok) törlése vagy módosítása egy tárolón belül. Ezt a konkrét esetet általában adatsérülésnek nevezzük.
+
+* A megosztott ajánlati adatbázisban lévő megosztott ajánlat-adatbázis vagy-tárolók törlődnek vagy sérültek.
+
+A Azure Cosmos DB az összes fenti helyzetben képes visszaállítani az adatok visszaállítását. Visszaállításkor új Azure Cosmos-fiók jön létre a visszaállított adattároláshoz. Ha nincs megadva az új fiók neve, a formátuma lesz `<Azure_Cosmos_account_original_name>-restored1` . Az utolsó számjegy akkor nő, amikor több visszaállítást próbálnak meg. Egy előre létrehozott Azure Cosmos-fiókba nem állíthatók vissza az adathalmazok.
+
+Ha véletlenül töröl egy Azure Cosmos-fiókot, visszaállíthatja az adathalmazt egy azonos nevű új fiókba, ha a fiók neve nincs használatban. Ezért azt javasoljuk, hogy a törlés után ne hozza újra létre a fiókot. Mivel ez nem csak azt akadályozza meg, hogy a visszaállított adatok ugyanazt a nevet használják, de a megfelelő fiókot is felhasználja a nehéz helyreállításhoz.
+
+Ha véletlenül töröl egy Azure Cosmos-adatbázist, visszaállíthatja a teljes adatbázist vagy a tárolók egy részhalmazát az adatbázisban. Az adatbázisokban is kiválaszthat meghatározott tárolókat, és visszaállíthatja őket egy új Azure Cosmos-fiókba.
+
+Ha véletlenül töröl vagy módosít egy vagy több elemet egy tárolón belül (az adatsérülési eset), meg kell adnia a visszaállításhoz szükséges időt. Az idő fontos, ha adatsérülés van. Mivel a tároló él, a biztonsági mentés továbbra is fut, így ha a megőrzési időszakon túl várakozik (az alapértelmezett érték nyolc óra), a rendszer felülírja a biztonsági mentéseket. **Ha meg szeretné akadályozni, hogy a biztonsági mentés felül legyen írva, növelje a fiók biztonsági mentését legalább hét napig. A legjobb, ha az adatsérüléstől számított 8 órán belül növelje az adatmegőrzést.**
+
+Ha véletlenül törölte vagy megsérült az adatai, akkor 8 órán belül kapcsolatba kell lépnie az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , hogy a Azure Cosmos db csapat segítséget nyújtson a biztonsági másolatokból származó adatok visszaállításához. Így a Azure Cosmos DB támogatási csapatnak elég ideje lesz a fiókja visszaállítására.
+
+Ha az átviteli sebességet az adatbázis szintjén adja meg, a biztonsági mentési és visszaállítási folyamat ebben az esetben a teljes adatbázis szintjén történik, és nem az egyes tárolók szintjén. Ilyen esetekben nem választhatja ki a visszaállítani kívánt tárolók részhalmazát.
+
+## <a name="migrate-data-to-the-original-account"></a>Az adatáttelepítés az eredeti fiókba
+
+Az adatok visszaállításának elsődleges célja a véletlenül törölt vagy módosított adatok helyreállítása. Ezért javasoljuk, hogy először vizsgálja meg a helyreállított adatok tartalmát, hogy biztosan tartalmazza a várt adatokat. Később áttelepítheti az adatátvitelt az elsődleges fiókba. Habár lehetséges, hogy a visszaállított fiókot új aktív fiókként használja, ez nem ajánlott megoldás, ha éles számítási feladatokkal rendelkezik.  
 
 Az alábbi módokon térhet vissza az eredeti Azure Cosmos-fiókba:
 
-* Az [Cosmos db adatáttelepítési eszköz](import-data.md) használata
-* [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md) használata
-* [Módosítási hírcsatorna](change-feed.md) használata Azure Cosmos db 
-* Egyéni kód írása
+* Használja a [Azure Cosmos db adatáttelepítési eszközt](import-data.md).
+* Használja a [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+* Használja a [változási csatornát](change-feed.md) Azure Cosmos db.
+* Írhat saját egyéni kódot is.
 
-Ha befejezte az áttelepítést, törölje a visszaállított fiókokat, mivel ezek után folyamatos költségek merülnek fel.
+Győződjön meg arról, hogy az adatok migrálása után azonnal törli a visszaállított fiókokat, mivel ezek után folyamatos költségek merülnek fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő témakörből megtudhatja, hogyan állíthatja vissza az Azure Cosmos-fiók adatait, vagy megismerheti az adatok áttelepítését egy Azure Cosmos-fiókba
 

@@ -1,16 +1,16 @@
 ---
-title: 'Oktatóanyag: a virtuális gépek Azure VMware-megoldásban (AVS) való üzembe helyezéséhez szükséges függvénytár létrehozása'
-description: Ebben az Azure VMware-megoldással (AVS) foglalkozó oktatóanyagban létre kell hoznia egy, a virtuális gép egy AVS Private-felhőben való üzembe helyezéséhez szükséges könyvtárat.
+title: 'Oktatóanyag: a virtuális gépek Azure VMware-megoldásban való üzembe helyezéséhez szükséges függvénytár létrehozása'
+description: Ebben az Azure VMware-megoldás oktatóanyagában létre kell hoznia egy, a virtuális gép üzembe helyezéséhez egy Azure VMware-megoldás saját felhőben.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612792"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750556"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Oktatóanyag: a virtuális gépek Azure VMware-megoldásban (AVS) való üzembe helyezéséhez szükséges függvénytár létrehozása
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Oktatóanyag: a virtuális gépek Azure VMware-megoldásban való üzembe helyezéséhez szükséges függvénytár létrehozása
 
 A dokumentumtárakban a tartalmakat tár elemek formájában tárolja és kezeli. Egyetlen függvénytár-elem a virtuális gépek (VM-EK) üzembe helyezéséhez használt egy vagy több fájlból áll. 
  
@@ -22,7 +22,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy felügyelt DHCP szolgáltatás szükséges.  A részletekért tekintse meg a [DHCP kezelése az Azure VMware megoldással (AVS) előzetes](manage-dhcp.md) verziójában.
+Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy felügyelt DHCP szolgáltatás szükséges.  A részletekért tekintse meg a [DHCP kezelése az Azure VMware-megoldás előzetesében](manage-dhcp.md) című témakört.
 
 ## <a name="create-a-content-library"></a>Tartalom könyvtárának létrehozása
 
@@ -94,7 +94,7 @@ Most, hogy létrehozta a kódtárat, hozzáadhat egy ISO-rendszerképet, amellye
 1. Ellenőrizze a beállításokat, majd kattintson a **Befejezés gombra**.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha hibrid felhőalapú bővítményt (HCX) kíván használni a virtuális gépek számítási feladatainak saját felhőbe való áttelepítéséhez, használja az [Azure VMware megoldás telepítése HCX](hybrid-cloud-extension-installation.md) .
 

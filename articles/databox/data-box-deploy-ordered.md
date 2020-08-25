@@ -2,18 +2,18 @@
 title: Oktatóanyag a Azure Data Box rendeléséhez | Microsoft Docs
 description: Ebben az oktatóanyagban megismerheti a Azure Data Box, egy hibrid megoldást, amely lehetővé teszi a helyszíni információk importálását az Azure-ba, valamint a Azure Data Box sorrendjét.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.author: v-grpr
-ms.openlocfilehash: 9f742af1a3c9ede4857e329697eb959a5a51dc95
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: twooley
+ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926365"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783569"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -217,7 +217,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
    ![Azure Data Box kiválasztása](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
    ![Azure Data Box kiválasztása](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
@@ -301,7 +301,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
 
 1. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor a CLI-parancs futtatásával hozza létre a Data Box sorrendet. A következő táblázat a paraméterek beállításait tartalmazza `az databox job create` :
 
-   | Beállítás (paraméter) | Leírás |  Mintaérték |
+   | Beállítás (paraméter) | Description |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |name| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -322,7 +322,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
    |kimenet – o| Beállítja a kimeneti formátumot.  Megengedett értékek: JSON, jsonc, none, Table, TSV, YAML, yamlc. Az alapértelmezett érték a JSON. | --output "JSON" |
-   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés<string>|
+   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
 2. A választott vagy terminálos parancssorban használja az az [adatmező-feladatsort](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) a Azure Data Box rendelés létrehozásához.
@@ -420,7 +420,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
 
 2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
 
-    | Beállítás (paraméter) | Leírás |  Mintaérték |
+    | Beállítás (paraméter) | Description |  Mintaérték |
     |---|---|---|
     |ResourceGroupName [kötelező]| Meglévő erőforráscsoport használata. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
     |Név [kötelező]| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -509,7 +509,7 @@ Egy meglévő Azure Data Boxi rendelés nyomkövetési információinak lekéré
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
    |kimenet – o| Beállítja a kimeneti formátumot.  Megengedett értékek: JSON, jsonc, none, Table, TSV, YAML, yamlc. Az alapértelmezett érték a JSON. | --output "JSON" |
-   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés<string>|
+   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
    Íme egy példa a parancsra, amelynek kimeneti formátuma a "Table" (táblázat) értékre van állítva:
@@ -550,7 +550,7 @@ A következő táblázat a paraméterekkel kapcsolatos információkat tartalmaz
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
    |kimenet – o| Beállítja a kimeneti formátumot.  Megengedett értékek: JSON, jsonc, none, Table, TSV, YAML, yamlc. Az alapértelmezett érték a JSON. | --output "JSON" |
-   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés<string>|
+   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
    Íme egy példa a parancsra, amelynek kimeneti formátuma a "Table" (táblázat) értékre van állítva:
@@ -580,7 +580,7 @@ A következő táblázat a paraméterekkel kapcsolatos információkat tartalmaz
 Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekéréséhez futtassa a [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob)parancsot. A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
 
 > [!NOTE]
-> `Get-AzDataBoxJob`egy és több megrendelés megjelenítésére szolgál. A különbség az, hogy megadja a rendelés nevét az egyes rendelésekhez.
+> `Get-AzDataBoxJob` egy és több megrendelés megjelenítésére szolgál. A különbség az, hogy megadja a rendelés nevét az egyes rendelésekhez.
 
    ```azurepowershell
     Get-AzDataBoxJob -ResourceGroupName <String> -Name <String>
@@ -671,7 +671,7 @@ Azure Data Box rendelés megszakításához futtassa [az az databox Job Cancel](
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
    |kimenet – o| Beállítja a kimeneti formátumot.  Megengedett értékek: JSON, jsonc, none, Table, TSV, YAML, yamlc. Az alapértelmezett érték a JSON. | --output "JSON" |
-   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés<string>|
+   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
    Íme egy példa a kimenettel rendelkező parancsra:
@@ -708,7 +708,7 @@ Ha megszakította Azure Data Box rendelést, az az [databox Job delete](https://
    |segítség| Súgó megjelenítése ehhez a parancshoz. | --Help-h |
    |csak a-show-hibák| Csak a hibák megjelenítése, a figyelmeztetések letiltása. | – csak megjelenítés – hibák |
    |kimenet – o| Beállítja a kimeneti formátumot.  Megengedett értékek: JSON, jsonc, none, Table, TSV, YAML, yamlc. Az alapértelmezett érték a JSON. | --output "JSON" |
-   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés<string>|
+   |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
 Íme egy példa a kimenettel rendelkező parancsra:
@@ -795,7 +795,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

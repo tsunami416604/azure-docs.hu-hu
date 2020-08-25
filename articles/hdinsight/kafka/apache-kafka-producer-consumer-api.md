@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681815"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
@@ -21,7 +21,7 @@ Ismerkedjen meg az Apache Kafka Producer és Consumer API-k a Kafka on HDInsight
 
 A Kafka Producer API segítségével az alkalmazások adatstreameket küldhetnek a Kafka-fürtnek. A Kafka Consumer API segítségével az alkalmazások adatstreameket olvashatnak be a fürtből.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek
@@ -135,7 +135,7 @@ Ha ki szeretné hagyni ezt a lépést, az előre összeépített tégelyek az `P
     mvn clean package
     ```
 
-    A parancs létrehozza a `target` nevű könyvtárat, amely a `kafka-producer-consumer-1.0-SNAPSHOT.jar` nevű fájlt tartalmazza. Az ESP-fürtök esetén a fájl a következő lesz:`kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
+    A parancs létrehozza a `target` nevű könyvtárat, amely a `kafka-producer-consumer-1.0-SNAPSHOT.jar` nevű fájlt tartalmazza. Az ESP-fürtök esetén a fájl a következő lesz: `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
 3. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. A következő parancs beírásával másolja a `kafka-producer-consumer-1.0-SNAPSHOT.jar` fájlt a HDInsight-fürtre. Ha a rendszer kéri, adja meg az SSH-felhasználó jelszavát.
 
@@ -221,7 +221,7 @@ A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben t
 
 2. **Az ESP-kompatibilis fürtökkel kapcsolatos** problémák Ha a termelés és a felhasználás művelet meghiúsul, és egy ESP-kompatibilis fürtöt használ, ellenőrizze, hogy a felhasználó szerepel `kafka` -e az összes Ranger-szabályzatban. Ha nincs jelen, adja hozzá az összes Ranger-szabályzathoz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
@@ -231,7 +231,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtanulta, hogyan használhatja a Apache Kafka producer és fogyasztói API-t a Kafka on HDInsight. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 

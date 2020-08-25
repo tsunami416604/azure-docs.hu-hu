@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kvóták – Azure
 description: Ez a cikk az élő videók elemzését ismerteti IoT Edge kvóták és korlátozások alapján.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091810"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750231"
 ---
 # <a name="quotas-and-limitations"></a>Kvóták és korlátozások
 
@@ -36,21 +36,23 @@ Az előzetes kiadásban a különböző csomópontokra vonatkozó korlátozások
    * Graph-topológia esetében csak egy RTSP-forrás engedélyezett.
 * Frame rate Filter processzor
    * Közvetlenül az RTSP forrás-vagy mozgásészlelési processzorról kell, hogy legyen.
-   * HTTP-bővítmény processzorának alsóbb rétegében nem használható.
+   * HTTP-vagy gRPC-bővítményi processzor esetén nem használható.
    * Mozgásészlelési processzorról nem lehet upstream.
 * HTTP-bővítmény processzora
+   * Graph-topológiában legfeljebb egy ilyen processzor lehet.
+* gRPC-bővítmény processzora
    * Graph-topológiában legfeljebb egy ilyen processzor lehet.
 * Mozgásészlelési processzor
    * Közvetlenül az RTSP-forrástól kell, hogy legyen.
    * Graph-topológiában legfeljebb egy ilyen processzor lehet.
-   * HTTP-bővítmény processzorának alsóbb rétegében nem használható.
+   * HTTP-vagy gRPC-bővítményi processzor esetén nem használható.
 * Signal Gate processzor
    * Közvetlenül az RTSP-forrástól kell, hogy legyen.
 * Eszköz fogadója 
    * Közvetlenül az RTSP-forrás vagy a Signal Gate-processzor között kell lennie.
 * File mosogató
    * Közvetlenül a Signal Gate-processzorról kell, hogy legyen.
-   * Nem lehet közvetlenül a HTTP-bővítmény processzora vagy a mozgásérzékelő processzora
+   * Nem lehet közvetlenül a HTTP-vagy gRPC-bővítmény processzora, vagy a mozgásérzékelő processzora
 * IoT Hub fogadó
    * Nem lehet közvetlenül a IoT Hub forrásának vége.
 

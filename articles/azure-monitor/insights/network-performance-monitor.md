@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326086"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798907"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -37,8 +37,10 @@ További információ a [Network Performance monitor](../../networking/network-m
 ## <a name="supported-regions"></a>Támogatott régiók
 A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti kapcsolatot a következő régiók egyikében üzemeltetett munkaterületről képes figyelni:
 * Észak-Európa
-* West Europe
+* Nyugat-Európa
+* Észak-Svájc
 * Közép-Franciaország
+* Dél-Afrika északi régiója
 * Közép-Kanada
 * USA nyugati régiója
 * USA nyugati középső régiója
@@ -58,6 +60,7 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * Dél-Korea középső régiója
 * Közép-India
 * USA-beli kormányzati Virginia
+* Egyesült Államok kormánya, Arizona
 * Kelet-Kína 2
 
 
@@ -158,7 +161,7 @@ A **csomópontok** lapon az összes olyan csomópont szerepel, amelyen telepítv
 
 1. Válassza ki vagy törölje azokat a csomópontokat, amelyek figyelését vagy leállítását meg szeretné szüntetni. 
 2. A **figyeléshez**válassza a használat lehetőséget, vagy törölje a jelölést, ha szükséges. 
-3. Válassza a **Mentés** lehetőséget. 
+3. Kattintson a **Mentés** gombra. 
 
 
 Konfigurálja a kívánt képességeket:
@@ -289,6 +292,6 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 
 * **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md). 
 

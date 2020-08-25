@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 80a590ff97cc6595f2da6d1e573820324a46c2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82231506"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>Oktatóanyag: a ASP.NET-alkalmazás üzembe helyezése az Azure Virtual Machines szolgáltatásban az Azure DevOps Starter használatával
@@ -34,7 +34,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
 > * Az Azure Application Insights monitorozásának konfigurálása
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -169,7 +169,7 @@ Az Azure Application Insights segítségével egyszerűen monitorozhatja alkalma
 
 1. Adja meg a teszt nevét, majd válassza a **Létrehozás**lehetőséget. Létrejön egy egyszerű ping-teszt az alkalmazás rendelkezésre állásának ellenőrzéséhez. Néhány perc elteltével elérhetővé válnak a teszteredmények, és az Application Insights-irányítópulton megjelenik a rendelkezésre állás állapota.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti az oktatóanyagban létrehozott Azure-beli virtuális gépet és az ahhoz kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján. 
 
@@ -193,7 +193,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
 > * Az Azure Application Insights monitorozásának konfigurálása
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

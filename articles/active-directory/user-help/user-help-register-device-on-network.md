@@ -13,12 +13,12 @@ ms.date: 01/04/2019
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747387"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799400"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Személyes eszköz regisztrálása a szervezet hálózatán
 Regisztrálja személyes eszközét (jellemzően telefon vagy tabletta) a szervezet hálózatán. Az eszköz regisztrálása után hozzáférhet a szervezet korlátozott erőforrásaihoz.
@@ -31,9 +31,9 @@ Az eszköz a szervezet hálózatán való regisztrálása közben a következő 
 
 - A Windows regisztrálja az eszközt a szervezet hálózatán.
 
-- A szervezete által választott lehetőségek alapján előfordulhat, hogy az [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági adatok](user-help-security-info-overview.md)között két lépésből álló ellenőrzést kell beállítania.
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy az [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági adatok](./security-info-setup-signin.md)között két lépésből álló ellenőrzést kell beállítania.
 
-- A szervezete által választott lehetőségek alapján előfordulhat, hogy automatikusan regisztrálva van a mobileszköz-kezelésben, például Microsoft Intune. További információ a Microsoft Intune való regisztrálásáról: [eszköz regisztrálása az Intune-ban](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy automatikusan regisztrálva van a mobileszköz-kezelésben, például Microsoft Intune. További információ a Microsoft Intune való regisztrálásáról: [eszköz regisztrálása az Intune-ban](/intune-user-help/enroll-your-device-in-intune-all).
 
 - A bejelentkezési folyamatot a munkahelyi vagy iskolai fiókjához tartozó felhasználónévvel és jelszóval végezheti el.
 
@@ -66,10 +66,7 @@ Győződjön meg arról, hogy regisztrálta a beállításait.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután regisztrálta a személyes eszközét a szervezet hálózatán, el kell tudnia érni a legtöbb erőforrást.
 
 - Ha a szervezete szeretne csatlakozni a munkahelyi eszközhöz, tekintse [meg a munkahelyi eszköz csatlakoztatása a szervezet hálózatához](user-help-join-device-on-network.md)című témakört.
-
-
-

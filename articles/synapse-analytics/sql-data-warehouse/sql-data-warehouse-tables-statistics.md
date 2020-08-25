@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 914c3128805c9875249bb1998fcdb6e456e73b16
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495635"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799315"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Táblázat statisztikái a szinapszis SQL-készletben
 
@@ -149,6 +149,9 @@ left join
 on objIdsWithStats.object_id = actualRowCounts.object_id
 
 ```
+
+>[!TIP]
+> A szinapszis SQL-ben a jobb teljesítmény érdekében érdemes lehet sys. **pdw_permanent_table_mappings** helyett a sys **. pdw_table_mappingst** használni az állandó felhasználói táblákon. További információért lásd: **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 **2. lekérdezés:** Tekintse meg a statisztikák korát úgy, hogy az utolsó alkalommal ellenőrzi, hogy a statisztikáik frissültek-e az egyes táblákon. 
 
@@ -476,7 +479,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Leírás |
+| Katalógus nézet | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Egy sor az adatbázis minden objektumához. |
@@ -490,7 +493,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Leírás |
+| System függvény | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |

@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605002"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783671"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -81,7 +81,7 @@ A címtár legalább annyi prémium szintű Azure AD P2-licencet igényel, mint 
 
 Prémium szintű Azure AD P2-licencek **nem** szükségesek a globális rendszergazdai vagy felhasználói rendszergazdai szerepkörrel rendelkező felhasználók számára, akik hozzáférési felülvizsgálatokat állítanak be, konfigurálják a beállításokat, vagy alkalmazhatják a döntéseket a felülvizsgálatok alapján.
 
-Minden, a saját szervezete felhasználói számára hozzárendelt fizetett prémium szintű Azure AD P2-licenc esetében használhatja az Azure AD Business-to-Business (B2B) használatát, hogy a külső felhasználói támogatás keretében legfeljebb öt vendéget hívjon fel. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+Minden, a saját szervezete felhasználói számára hozzárendelt fizetett prémium szintű Azure AD P2-licenc esetében használhatja az Azure AD Business-to-Business (B2B) használatát, hogy a külső felhasználói támogatás keretében legfeljebb öt vendéget hívjon fel. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../external-identities/licensing-guidance.md).
 
 További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 

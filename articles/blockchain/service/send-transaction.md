@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82086657"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Oktatóanyag: intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben
@@ -29,17 +29,17 @@ A Ethereum készült Azure Blockchain Development Kit a következő célokra has
 * Gyors útmutató [: a Visual Studio Code használata Azure Blockchain Service Consortium-hálózathoz való kapcsolódáshoz](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x vagy újabb](https://nodejs.org/download)
+* [Node.js 10.15. x vagy újabb](https://nodejs.org/download)
 * [Git 2.10. x vagy újabb](https://git-scm.com)
-* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) Adja hozzá a Python. exe fájlt az elérési úthoz. Az Azure Blockchain Development Kit 2.7.15 Python-verzióra van szükség az elérési úton.
+* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) python.exe hozzáadása az elérési úthoz. Az Azure Blockchain Development Kit 2.7.15 Python-verzióra van szükség az elérési úton.
 * [Szarvasgomba 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI-6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Windows rendszeren a Node-GYP modulhoz egy telepített C++ fordító szükséges. Használhatja az MSBuild-eszközöket:
 
-* Ha a Visual Studio 2017 telepítve van, konfigurálja a NPM az MSBuild-eszközök használatára a paranccsal`npm config set msvs_version 2017 -g`
+* Ha a Visual Studio 2017 telepítve van, konfigurálja a NPM az MSBuild-eszközök használatára a paranccsal `npm config set msvs_version 2017 -g`
 * Ha a Visual Studio 2019 telepítve van, állítsa be az MS Build Tools elérési útját a NPM. Például: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* Ellenkező esetben telepítse a különálló, vagy Build eszközöket egy emelt szintű `npm install --global windows-build-tools` *Futtatás rendszergazdaként* parancs-rendszerhéj használatával.
+* Ellenkező esetben telepítse a különálló, vagy Build eszközöket `npm install --global windows-build-tools` egy emelt szintű *Futtatás rendszergazdaként* parancs-rendszerhéj használatával.
 
 További információ a Node-GYP-ről: [Node-GYP adattár a githubon](https://github.com/nodejs/node-gyp).
 
@@ -49,7 +49,7 @@ A Ethereum készült Azure Blockchain Development Kit a Project templates és a 
 
 1. A VS Code parancs palettáján válassza az **Azure Blockchain: új szilárdtest-projekt**lehetőséget.
 1. Válassza az **alapszintű projekt létrehozása**lehetőséget.
-1. Hozzon létre egy nevű `HelloBlockchain` új mappát, és **válassza az új projekt elérési útja lehetőséget**.
+1. Hozzon létre egy nevű új mappát `HelloBlockchain` , és **válassza az új projekt elérési útja lehetőséget**.
 
 Az Azure Blockchain Development Kit létrehoz és inicializál egy új szilárdtest-projektet. Az alapszintű projekt tartalmaz egy minta **HelloBlockchain** intelligens szerződést, valamint az összes szükséges fájlt, amely az Azure Blockchain szolgáltatásban a konzorciumi tag felépítésére és üzembe helyezésére szolgál. A projekt létrehozása több percet is igénybe vehet. Az Azure Blockchain kimenetének kiválasztásával nyomon követheti a VS Code termináljának előrehaladását.
 
@@ -106,14 +106,14 @@ A SendRequest hívás függvény a **RequestMessage** és az **állapot** mezők
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölheti az erőforrásokat úgy, hogy `myResourceGroup` törli a *blockchain-tag* előfeltételeinek létrehozása előfeltételként létrehozott erőforráscsoportot.
+Ha már nincs rá szükség, törölheti az erőforrásokat úgy, hogy törli a `myResourceGroup` *blockchain-tag* előfeltételeinek létrehozása előfeltételként létrehozott erőforráscsoportot.
 
 Az erőforráscsoport törlése:
 
 1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
 1. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy minta-szilárdtest projektet az Azure Blockchain Development Kit használatával. Az Azure Blockchain Service-ben üzemeltetett blockchain Consortium-hálózat tranzakcióján keresztül létrehozott és telepített egy intelligens szerződést.
 

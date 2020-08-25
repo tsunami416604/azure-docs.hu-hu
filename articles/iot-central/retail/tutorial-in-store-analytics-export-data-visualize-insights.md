@@ -12,10 +12,10 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81000104"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
@@ -35,7 +35,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Az előző két oktatóanyag elvégzéséhez [hozzon létre egy áruházbeli elemzési alkalmazást az azure IoT Centralban](./tutorial-in-store-analytics-create-app.md) , és [szabja testre az operátor irányítópultját, és kezelje az eszközöket az Azure IoT Centralban](./tutorial-in-store-analytics-customize-dashboard.md).
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 * Egy Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
@@ -110,7 +110,7 @@ A Power BI irányítópulton megjelennek a kiskereskedelmi monitorozási alkalma
 
     | Érték neve  | Érték típusa |
     | ----------- | ---------- |
-    | Időbélyeg   | DateTime   |
+    | Timestamp   | DateTime   |
     | Páratartalom    | Szám     |
     | Hőmérséklet | Szám     |
 
@@ -133,7 +133,7 @@ Szüksége lesz egy folyamatos átviteli adatkészletre is a foglaltság telemet
 
     | Érték neve     | Érték típusa |
     | -------------- | ---------- |
-    | Időbélyeg      | DateTime   |
+    | Timestamp      | DateTime   |
     | Várólista hossza 1 | Szám     |
     | Várólista hossza 2 | Szám     |
     | 1. tartózkodási idő   | Szám     |
@@ -179,11 +179,11 @@ A következő lépések bemutatják, hogyan hozhatja létre a logikai alkalmazá
     * Az **Event hub neveként**válassza a **Store-telemetria**elemet.
     * A **tartalom típusa**területen válassza az **alkalmazás/JSON**elemet.
     * Az **intervallumot** állítsa három értékre, a **gyakoriságot** pedig másodpercre.
-1. A logikai alkalmazás mentéséhez válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra a logikai alkalmazás mentéséhez.
 
 A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
 
-1. Cserélje `"actions": {},` le a t a következő JSON-ra. Cserélje le a két `[YOUR RUUVITAG DEVICE ID 1]` helyőrzőt `[YOUR RUUVITAG DEVICE ID 2]` és a két RuuviTag-eszközön megjegyzett azonosítókat:
+1. Cserélje le `"actions": {},` a t a következő JSON-ra. Cserélje le a két helyőrzőt `[YOUR RUUVITAG DEVICE ID 1]` és `[YOUR RUUVITAG DEVICE ID 2]` a két RuuviTag-eszközön megjegyzett azonosítókat:
 
     ```json
     "actions": {
@@ -384,7 +384,7 @@ A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
     * Válassza ki a **páratartalom** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **páratartalom**lehetőséget.
     * Válassza ki a **hőmérséklet** mezőt, majd válassza a **továbbiak** lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **hőmérséklet**elemet.
-    * A módosítások mentéséhez válassza a **Mentés** gombot. A **1. zóna környezeti** művelet a következő képernyőképre hasonlít: ![1. zóna-környezet](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
+    * A módosítások mentéséhez válassza a **Mentés** gombot. A **1. zóna környezeti** művelet a következő képernyőképre hasonlít: ![ 1. zóna-környezet](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
 1. Válassza ki a **2. zóna környezeti** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
 1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
@@ -396,7 +396,7 @@ A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
     * Válassza ki a **páratartalom** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **páratartalom**lehetőséget.
     * Válassza ki a **hőmérséklet** mezőt, majd válassza a **továbbiak** lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **hőmérséklet**elemet.
-    A módosítások mentéséhez válassza a **Mentés** gombot.  A **2. zóna környezeti** művelet a következő képernyőképre hasonlít: ![2. zóna-környezet](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
+    A módosítások mentéséhez válassza a **Mentés** gombot.  A **2. zóna környezeti** művelet a következő képernyőképre hasonlít: ![ 2. zóna-környezet](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
 1. Válassza ki a **kihasználtsági** műveletet, majd válassza ki a **kapcsolót illesztőfelület-azonosító** művelettel.
 1. Válassza ki a **tartózkodási idő illesztőfelülete** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
 1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
@@ -409,7 +409,7 @@ A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
     * Válassza ki a **tartózkodási idő 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime1**lehetőséget.
     * Válassza ki a **tartózkodási idő 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime2**lehetőséget.
-    * A módosítások mentéséhez válassza a **Mentés** gombot. A **tartózkodási idő illesztőfelülete** művelet a következő képernyőképhez hasonlóan ![néz ki: Foglaltság művelet](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * A módosítások mentéséhez válassza a **Mentés** gombot. A **tartózkodási idő illesztőfelülete** művelet a következő képernyőképhez hasonlóan néz ki: ![ Foglaltság művelet](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Válassza ki a **személyek száma illesztőfelület** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
 1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
@@ -421,11 +421,11 @@ A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
     * Válassza ki a **várólista hossza 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **count1**lehetőséget.
     * Válassza ki a **várólista hossza 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **count2**lehetőséget.
-    * A módosítások mentéséhez válassza a **Mentés** gombot. A **személyek száma Interface** művelet a következő képernyőképhez hasonlóan néz ![ki: Foglaltság művelet](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
+    * A módosítások mentéséhez válassza a **Mentés** gombot. A **személyek száma Interface** művelet a következő képernyőképhez hasonlóan néz ki: ![ Foglaltság művelet](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
 
 A logikai alkalmazás automatikusan fut. Az egyes futtatások állapotának megtekintéséhez navigáljon a logikai alkalmazás **Áttekintés** lapjára a Azure Portalban:
 
-## <a name="create-a-power-bi-dashboard"></a>Power BI irányítópult létrehozása
+## <a name="create-a-power-bi-dashboard"></a>Power BI-irányítópult létrehozása
 
 Most már telemetria a IoT Central alkalmazásból az Event hub-on keresztül. Ezután a logikai alkalmazás elemzi az Event hub-üzeneteket, és hozzáadja őket egy Power BI streaming-adatkészlethez. Most létrehozhat egy Power BI irányítópultot a telemetria megjelenítéséhez:
 
@@ -440,13 +440,13 @@ Adja hozzá a négy vonalas diagramot a hőmérséklet és a páratartalom megje
 
 | Beállítás | Diagram #1 | Diagram #2 | Diagram #3 | Diagram #4 |
 | ------- | -------- | -------- | -------- | -------- |
-| Adatkészlet | 1. zóna érzékelő | 1. zóna érzékelő | 2. zóna érzékelő | 2. zóna érzékelő |
+| Adathalmaz | 1. zóna érzékelő | 1. zóna érzékelő | 2. zóna érzékelő | 2. zóna érzékelő |
 | Vizualizáció típusa | Vonaldiagram | Vonaldiagram | Vonaldiagram | Vonaldiagram |
-| Tengely | Időbélyeg | Időbélyeg | Időbélyeg | Időbélyeg |
+| Tengely | Timestamp | Timestamp | Timestamp | Timestamp |
 | Értékek | Hőmérséklet | Páratartalom | Hőmérséklet | Páratartalom |
 | Időablak | 60 perc | 60 perc | 60 perc | 60 perc |
 | Cím | Hőmérséklet (1 óra) | Páratartalom (1 óra) | Hőmérséklet (1 óra) | Páratartalom (1 óra) |
-| Alcím | 1\. zóna | 1\. zóna | 2\. zóna | 2\. zóna |
+| Alcím | 1. zóna | 1. zóna | 2. zóna | 2. zóna |
 
 Az alábbi képernyőképen az első diagram beállításai láthatók:
 
@@ -458,11 +458,11 @@ A két környezeti érzékelő közül a legutóbbi hőmérséklet és a párata
 
 | Beállítás | Kártya #1 | Kártya #2 | Kártya #3 | Kártya #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Adatkészlet | 1. zóna érzékelő | 1. zóna érzékelő | 2. zóna érzékelő | 2. zóna érzékelő |
+| Adathalmaz | 1. zóna érzékelő | 1. zóna érzékelő | 2. zóna érzékelő | 2. zóna érzékelő |
 | Vizualizáció típusa | Kártya | Kártya | Kártya | Kártya |
 | Mezők | Hőmérséklet | Páratartalom | Hőmérséklet | Páratartalom |
 | Cím | Hőmérséklet (F) | Páratartalom (%) | Hőmérséklet (F) | Páratartalom (%) |
-| Alcím | 1\. zóna | 1\. zóna | 2\. zóna | 2\. zóna |
+| Alcím | 1. zóna | 1. zóna | 2. zóna | 2. zóna |
 
 Az alábbi képernyőképen az első kártya beállításai láthatók:
 
@@ -474,11 +474,11 @@ Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a t
 
 | Beállítás | Kártya #1 | Kártya #2 | Kártya #3 | Kártya #4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Adatkészlet | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője |
+| Adathalmaz | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője |
 | Vizualizáció típusa | Fürtözött oszlopdiagram | Fürtözött oszlopdiagram | Kijelző | Kijelző |
-| Tengely    | Időbélyeg | Időbélyeg | N/A | N/A |
+| Tengely    | Timestamp | Timestamp | N.A. | N.A. |
 | Érték | 1. tartózkodási idő | 2. tartózkodási idő | Várólista hossza 1 | Várólista hossza 2 |
-| Időablak | 60 perc | 60 perc |  N/A | N/A |
+| Időablak | 60 perc | 60 perc |  N.A. | N.A. |
 | Cím | Tartózkodási idő | Tartózkodási idő | Processzor-várólista hossza | Processzor-várólista hossza |
 | Alcím | 1. pénztár | 2. pénztár | 1. pénztár | 2. pénztár |
 
@@ -500,7 +500,7 @@ Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Stor
 
 Power BI adatkészleteket és irányítópultokat a munkaterület Power BI beállítások lapján lévő munkaterület törlésével törölheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a három oktatóanyag olyan teljes körű megoldást mutat be, amely a **Store Analytics-checkout** IoT Central alkalmazás sablonját használja. Csatlakoztatta az eszközöket az alkalmazáshoz, a IoT Central használta az eszközök figyelésére, és Power BI, hogy irányítópultot hozzon létre az eszköz telemetria való betekintés céljából. A következő lépés egy másik IoT Central alkalmazás-sablon egyikének megismerése:
 

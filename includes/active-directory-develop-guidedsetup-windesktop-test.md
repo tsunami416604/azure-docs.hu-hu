@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82181535"
 ---
 ## <a name="test-your-code"></a>A kód tesztelése
@@ -41,9 +41,9 @@ Amikor először jelentkezik be az alkalmazásba, a rendszer arra kéri, hogy en
 
 A bejelentkezést követően meg kell jelennie a Microsoft Graph API-nak a hívás által visszaadott felhasználói profil adatainak. Az eredmények az **API-hívás eredményei** mezőben jelennek meg. A jogkivonat információ mezőjében a vagy a hívásakor beszerzett jogkivonatra vonatkozó alapszintű információk `AcquireTokenInteractive` `AcquireTokenSilent` láthatók. **Token Info** Az eredmények a következő tulajdonságokat tartalmazzák:
 
-|Tulajdonság  |Formátum  |Leírás |
+|Tulajdonság  |Formátum  |Description |
 |---------|---------|---------|
-|**Username** |<span>user@domain.com</span> |A felhasználó azonosítására szolgáló Felhasználónév.|
+|**Felhasználónév** |<span>user@domain.com</span> |A felhasználó azonosítására szolgáló Felhasználónév.|
 |**A jogkivonat lejár** |DateTime |A jogkivonat lejárati ideje. A MSAL a jogkivonatot szükség szerint megújítva kiterjeszti a lejárati dátumot.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről

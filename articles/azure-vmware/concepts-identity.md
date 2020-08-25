@@ -1,16 +1,16 @@
 ---
 title: Fogalmak – identitás és hozzáférés
-description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait (AVS)
+description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82740953"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750584"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Az Azure VMware megoldás (AVS) identitásával kapcsolatos fogalmak
+# <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
 A vCenter-kiszolgáló és a NSX-T kezelő kiépítése a privát felhő telepítésekor történik. A vCenter használatával felügyelheti a virtuális gépek számítási feladatait és a NSX-T kezelőt a saját felhőalapú szoftver által meghatározott hálózat kibővítéséhez.
 
@@ -33,7 +33,7 @@ A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látha
 |  ESX-ügynök kezelője       |  --  |         --       |  A Microsoft minden műveletet elvégez.  |
 |  Mappa                  |  A CloudAdmin-felhasználók minden mappa jogosultsággal rendelkeznek.     |  --  |  --  |
 |  Globális                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. ServiceManagers, Global. SetCustomField, Global.SystemTag         |                  |    |
-|  Gazdagép                    |  Host. HBR. HbrManagement      |        --          |  A Microsoft minden más gazdagép-műveletet hajt végre.  |
+|  Gazda                    |  Host. HBR. HbrManagement      |        --          |  A Microsoft minden más gazdagép-műveletet hajt végre.  |
 |  InventoryService        |  InventoryService. tagging      |        --          |  --  |
 |  Network (Hálózat)                 |  Network. assign    |                  |  A Microsoft minden más hálózati műveletet hajt végre.  |
 |  Engedélyek             |  --  |        --       |  A Microsoft minden engedély műveletet végez.  |

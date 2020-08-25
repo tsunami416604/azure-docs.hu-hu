@@ -6,10 +6,10 @@ ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86058027"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: állapot-ellenőrzési funkció használata az Azure telepítéskezelő (nyilvános előzetes verzió)
@@ -31,14 +31,14 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A bevezetés központi telepítésének ellenőrzése
 > * A bevezetés kifogástalan állapotú üzembe helyezése
 > * A bevezetés központi telepítésének ellenőrzése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 További források:
 
 * Az [Azure telepítéskezelő REST API referenciája](/rest/api/deploymentmanager/).
 * [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,7 +73,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Az Azure-függvény ellenőrzése és tesztelése:
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot.  Az alapértelmezett név a projekt neve **RG** hozzáfűzéssel.
 1. Válassza ki az App Service-t az erőforráscsoporthoz.  Az App Service alapértelmezett neve a projekt neve **WebApp** hozzáfűzéssel.
 1. Bontsa ki a **függvények**csomópontot, majd válassza a **HttpTrigger1**lehetőséget.
@@ -265,7 +265,7 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez használja a következőt: `Get-AZDeploymentManagerRollout` .  Tekintse meg a következő eljárást.
+> `New-AzResourceGroupDeployment` aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez használja a következőt: `Get-AZDeploymentManagerRollout` .  Tekintse meg a következő eljárást.
 
 A bevezetési folyamat ellenőrzéséhez használja a következő PowerShell-parancsfájlt:
 
@@ -346,13 +346,13 @@ A bevezetés befejezése után egy további, az USA nyugati régiója számára 
 
 Ennek a szakasznak a megismétlésével újra üzembe helyezheti a bevezetést a kifogástalan állapot URL-címével.  A bevezetést követően egy további, az USA keleti régiója számára létrehozott erőforráscsoport fog megjelenni.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.
 3. Nyissa meg a webalkalmazást egy webböngészőben. Ellenőrizze a helyet és a verziót az index.html fájlban.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 

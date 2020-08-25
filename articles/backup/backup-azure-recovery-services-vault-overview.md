@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c69883a88473cd304bb772430ddfe662da4d8fac
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587752"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757098"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 

@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f80b986a9d1a3b2be9aa413ce4175d8eb88bc4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213838"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795327"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
 
-Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által Microsoft 365 csoportoknak közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános GA-ban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) támogatja az [Microsoft 365 megfelelőségi központ](https://sip.protection.office.com/homepage) által Microsoft 365 csoportoknak közzétett érzékenységi címkék alkalmazását. Az érzékenységi címkék olyan szolgáltatásokra vonatkoznak, mint az Outlook, a Microsoft Teams és a SharePoint. Ez a szolgáltatás jelenleg nyilvános GA-ban érhető el. Az Office 365-alkalmazások támogatásával kapcsolatos további információkért lásd: [office 365-támogatás az érzékenységi címkékhez](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > A szolgáltatás konfigurálásához legalább egy aktív prémium szintű Azure Active Directory P1-licenccel kell rendelkeznie az Azure AD-szervezetben.
@@ -48,7 +48,7 @@ A közzétett címkék csoportokba való alkalmazásához először engedélyezn
     ```
 
     > [!NOTE]
-    > Ha nem hoztak létre csoportházirend-beállításokat ehhez az Azure AD-szervezethez, először létre kell hoznia a beállításokat. Az Azure AD-szervezethez tartozó csoportházirend-beállítások létrehozásához kövesse a [Azure Active Directory parancsmagok](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) című szakasz lépéseit.
+    > Ha nem hoztak létre csoportházirend-beállításokat ehhez az Azure AD-szervezethez, először létre kell hoznia a beállításokat. Az Azure AD-szervezethez tartozó csoportházirend-beállítások létrehozásához kövesse a [Azure Active Directory parancsmagok](./groups-settings-cmdlets.md) című szakasz lépéseit.
 
 1. Ezután jelenítse meg az aktuális csoport beállításait.
 
@@ -135,7 +135,7 @@ A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják
 1. Válassza a **csoportok**lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 
@@ -145,7 +145,7 @@ Ha módosítania kell a módosításokat, az [Azure ad PowerShell-parancsfájlla
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Microsoft Teams, a Microsoft 365 csoportok és a SharePoint-webhelyek érzékenységi feliratainak használata](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [A Microsoft Teams, a Microsoft 365 csoportok és a SharePoint-webhelyek érzékenységi feliratainak használata](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Csoportok frissítése a címkézési házirend módosítása után manuálisan az Azure AD PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
-- [A csoport beállításainak szerkesztése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
-- [Csoportok kezelése PowerShell-parancsokkal](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)
+- [A csoport beállításainak szerkesztése](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Csoportok kezelése PowerShell-parancsokkal](./groups-settings-v2-cmdlets.md)

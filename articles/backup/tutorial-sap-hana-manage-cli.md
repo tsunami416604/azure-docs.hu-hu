@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-b
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 13cd6e33fbec261b52aae73b1b01fe26764885fe
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489435"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757353"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok kezelése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="protect-new-databases-added-to-an-sap-hana-instance"></a>SAP HANA-példányhoz hozzáadott új adatbázisok védelmének biztosítása
 
-[Egy SAP HANA-példánynak a Recovery Services-tárolóval való regisztrálása](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) automatikusan felfedi az összes adatbázist ebben a példányban.
+Egy Recovery Services-tárolóval [rendelkező SAP HANA-példány regisztrálása](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) automatikusan felfedi az összes adatbázist ebben a példányban.
 
 Azonban abban az esetben, ha később új adatbázisokat ad hozzá a SAP HANA-példányhoz, használja az az [Backup Protect-Item inicializálási](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) parancsmagot. Ez a parancsmag felfedi a hozzáadott új adatbázisokat.
 
@@ -91,7 +91,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Ezután használja az az [Backup Protected-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) parancsmagot az SAP HANA-példányon felderített adatbázisok listázásához. Ez a lista azonban kizárja azokat az adatbázisokat, amelyeken már konfigurálva van a biztonsági másolat. Az adatbázis biztonsági mentésének észlelése után tekintse meg az SAP HANA- [adatbázis biztonsági másolatának engedélyezése](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)című témakört.
+Ezután használja az az [Backup Protected-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) parancsmagot az SAP HANA-példányon felderített adatbázisok listázásához. Ez a lista azonban kizárja azokat az adatbázisokat, amelyeken már konfigurálva van a biztonsági másolat. Az adatbázis biztonsági mentésének észlelése után tekintse meg az SAP HANA-  [adatbázis biztonsági másolatának engedélyezése](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)című témakört.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \

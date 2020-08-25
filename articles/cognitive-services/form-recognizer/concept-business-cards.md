@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 8519daffd8ee0ad6c12be2f40fd8030caaaf34c8
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724975"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749300"
 ---
 # <a name="business-card-concepts"></a>Névjegykártya-fogalmak
 
@@ -69,6 +69,8 @@ A második lépés a [Get elemezze névjegykártya-eredmény](https://westcentra
 | |  | sikeres: az elemzési művelet sikeresen befejeződött. |
 
 Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a névjegykártya-megértést és a szöveges felismerés eredményeit. Az üzleti kártya megértésének eredménye a megnevezett mezőértékek szótára lesz, ahol minden érték a kinyert szöveget, normalizált értéket, határoló mezőt, megbízhatóságot és a hozzá tartozó elemeket tartalmazza. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
+
+![Contoso smample eredményei](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Példa JSON-kimenetre
 
@@ -374,7 +376,7 @@ Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" cso
 }
 ```
 
-Kövesse a [kinyert névjegykártya-adatok](./QuickStarts/python-business-cards.md) kinyerése az névjegykártya-adatok kinyerésének a Python és a REST API használatával történő megvalósítását ismertető témakört.
+Az névjegykártya-adatok kinyeréséhez a Python és a REST API használatával hajtsa végre az névjegykártya- [adatok](./QuickStarts/python-business-cards.md) kinyerése című témakört.
 
 ## <a name="customer-scenarios"></a>Felhasználói forgatókönyvek  
 

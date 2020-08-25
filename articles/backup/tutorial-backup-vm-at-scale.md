@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Recove
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263418"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757506"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
@@ -136,7 +136,7 @@ Biztonsági mentési feladat manuális futtatása:
 
 1. A helyi menüben válassza a **Biztonsági mentés** elemet.
 
-    ![Helyi menü](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Helyi menü – biztonsági mentés kiválasztása](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Megnyílik a Biztonsági mentés menü.
 
@@ -166,7 +166,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
 1. A **biztonsági mentési elemek** menüben kattintson a három pontra a helyi menü megnyitásához.
 
-    ![Helyi menü](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![A biztonsági mentési elemek menüben, a helyi menü megnyitása](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. A helyi menüben válassza a **biztonsági mentés leállítása** lehetőséget a biztonsági mentés leállítása menü megnyitásához.
 

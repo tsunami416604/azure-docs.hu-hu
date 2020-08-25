@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252749"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
@@ -60,7 +60,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel a
     ```
 2. Adja meg a „TestContainer” nevet az alkalmazás neveként.
 3. Adja meg az „azurevotefront” nevet az alkalmazásszolgáltatás neveként.
-4. Adja meg az előtérbeli adattár tárolórendszerkép-útvonalát az ACR-ben – például „\<acrName>.azurecr.io/azure-vote-front:v1”. Az \<acrName > mezőnek egyeznie kell az előző oktatóanyagban használt értékkel.
+4. Adja meg a tároló rendszerképének elérési útját az ACR-ben a frontend-tárházhoz – például: " \<acrName> . azurecr.IO/Azure-vote-front:v1". A \<acrName> mezőnek meg kell egyeznie az előző oktatóanyagban használt értékkel.
 5. Nyomja le az Enter billentyűt, hogy a Parancsok szakasz üres maradjon.
 6. A példányszám legyen 1.
 
@@ -83,7 +83,7 @@ A yo parancs futtatásának bemenete és kimenete az alábbiak szerint fog kiné
 Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 
 1. Módosítsa a könyvtár első szintjét a **TestContainer** könyvtárra, például *./TestContainer*
-2. Futtassa a `yo azuresfcontainer:AddService` parancsot.
+2. Az `yo azuresfcontainer:AddService` parancs futtatása
 3. Adja a szolgáltatásnak az „azurevoteback” nevet.
 4. Adja meg a Redis tárolórendszerkép-útvonalát: „alpine:redis”.
 5. Nyomja le az Enter billentyűt, hogy a Parancsok szakasz üres maradjon.
@@ -272,11 +272,11 @@ Használja a **TestContainer** könyvtárban megadott telepítési szkriptet, ho
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és navigáljon a\/Service Fabric Explorer a http:/containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
+Nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer a http: \/ /containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-A futó alkalmazáshoz való kapcsolódáshoz nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét –\/például http:/containertestcluster.eastus.cloudapp.Azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
+A futó alkalmazáshoz való kapcsolódáshoz nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét – például http: \/ /containertestcluster.eastus.cloudapp.Azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
 ![szavazóalkalmazás][votingapp]
 
@@ -395,7 +395,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
  </ServiceManifest>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban több tárolót csomagolt egy Service Fabric-alkalmazásba a Yeoman használatával, majd az alkalmazást üzembe helyezte és futtatta egy Service Fabric-fürtön. A következő lépéseket hajtotta végre:
 

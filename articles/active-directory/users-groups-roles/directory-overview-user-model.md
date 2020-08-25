@@ -14,16 +14,16 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a752eb8f38c5a2ccc88d7ceed3d3b342d20d3f51
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223822"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795304"
 ---
 # <a name="what-is-enterprise-user-management"></a>Mi a vállalati felhasználók felügyelete?
 
-A cikk az Azure AD-rendszergazdák számára mutatja be a felhasználókra vonatkozó felső szintű [identitáskezelési](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context) feladatok közti kapcsolatot a csoportok, a licencek, az üzembe helyezett vállalati alkalmazások és a rendszergazdai szerepkörök tekintetében. A szervezet növekedtével az Azure AD-csoportok és rendszergazdai szerepkörök használatával a következőket teheti:
+A cikk az Azure AD-rendszergazdák számára mutatja be a felhasználókra vonatkozó felső szintű [identitáskezelési](../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) feladatok közti kapcsolatot a csoportok, a licencek, az üzembe helyezett vállalati alkalmazások és a rendszergazdai szerepkörök tekintetében. A szervezet növekedtével az Azure AD-csoportok és rendszergazdai szerepkörök használatával a következőket teheti:
 
 * Licencek hozzárendelése egyének helyett csoportokhoz
 * Engedélyek delegálása az Azure AD felügyeleti tevékenységeinek korlátozottabb jogosultságokkal rendelkező szerepkörökre való elosztásához
@@ -37,7 +37,7 @@ A nagyobb rugalmasság és a csoporttagság-felügyeleti tevékenységek csökke
 
 ## <a name="assign-licenses-to-groups"></a>Licencek hozzárendelése csoportokhoz
 
-Ha a licenceket külön rendeli hozzá vagy törli a felhasználókról, az sok időt és nagy figyelmet vehet igénybe. Ha a [licenceket inkább csoportokhoz rendeli](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), a nagy volumenű licenc-hozzárendelési tevékenységeket egyszerűbbé teheti.
+Ha a licenceket külön rendeli hozzá vagy törli a felhasználókról, az sok időt és nagy figyelmet vehet igénybe. Ha a [licenceket inkább csoportokhoz rendeli](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), a nagy volumenű licenc-hozzárendelési tevékenységeket egyszerűbbé teheti.
 
 Amikor az Azure AD-ben a felhasználó egy licencelt csoport tagja lesz, automatikusan megkapja a megfelelő licenceket. Amikor a felhasználók elhagyják a csoportot, az Azure AD törli a hozzárendelt licenceket. Az Azure AD-csoportok nélkül PowerShell-szkripteket kellene írnia vagy a Graph API-t használnia a felhasználói licencek tömeges hozzáadásához vagy eltávolításához a szervezethez csatlakozó vagy azt elhagyó felhasználók számára.
 
@@ -60,7 +60,7 @@ Folyamatosan jelennek meg új Azure AD-rendszergazdai szerepkörök. A jelenleg 
 
 ## <a name="assign-app-access"></a>Alkalmazás-hozzáférés hozzárendelése
 
-Az Azure AD használatával csoportokhoz férhet hozzá az [Azure ad-szervezetben üzembe helyezett vállalati alkalmazásokhoz](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). A csoportszintű alkalmazás-hozzárendelést a dinamikus csoportokkal kombinálva automatizálható a felhasználók alkalmazás-hozzáféréseinek hozzárendelése a szervezet növekedésével. A vállalati alkalmazások hozzáféréseinek kiosztásához Azure Active Directory Premium P1 vagy P2 szintű licenc szükséges.
+Az Azure AD használatával csoportokhoz férhet hozzá az [Azure ad-szervezetben üzembe helyezett vállalati alkalmazásokhoz](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context). A csoportszintű alkalmazás-hozzárendelést a dinamikus csoportokkal kombinálva automatizálható a felhasználók alkalmazás-hozzáféréseinek hozzárendelése a szervezet növekedésével. A vállalati alkalmazások hozzáféréseinek kiosztásához Azure Active Directory Premium P1 vagy P2 szintű licenc szükséges.
 
 Az Azure AD emellett lehetővé teszi az alkalmazások és a hozzáféréssel felruházott csoportok közötti adatáramlás finomhangolását. A [Vállalati alkalmazásokban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) az alkalmazást megnyitva, majd a **Kiépítés** lehetőséget választva:
 
@@ -70,8 +70,8 @@ Az Azure AD emellett lehetővé teszi az alkalmazások és a hozzáféréssel fe
 * Elindíthatja vagy leállíthatja az Azure AD kiépítési szolgáltatást valamely alkalmazásra, törölheti a kiépítési gyorsítótárat, vagy újraindíthatja a szolgáltatást
 * Megtekintheti a **kiépítési tevékenységekre vonatkozó jelentést**, amely naplózza az Azure AD és az alkalmazás között létrehozott, frissített és törölt összes felhasználót és csoportot, valamint a **kiépítési hibákat tartalmazó jelentést**, amely a részletes hibaüzeneteket tartalmazza
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Amennyiben még csak most ismerkedik az Azure AD rendszergazdai feladataival, az alapvető információkért tekintse meg [az Azure Active Directory alapjait](https://docs.microsoft.com/azure/active-directory/fundamentals/index) bemutató cikket.
+Amennyiben még csak most ismerkedik az Azure AD rendszergazdai feladataival, az alapvető információkért tekintse meg [az Azure Active Directory alapjait](../fundamentals/index.yml) bemutató cikket.
 
-Vagy mindjárt hozzá is láthat [a csoportok létrehozásának](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [a licencek hozzárendelésének](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [az alkalmazás-hozzáférések hozzárendelésének](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) vagy [a rendszergazdai szerepkörök hozzárendelésének](directory-assign-admin-roles.md).
+Vagy mindjárt hozzá is láthat [a csoportok létrehozásának](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), [a licencek hozzárendelésének](../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context), [az alkalmazás-hozzáférések hozzárendelésének](../manage-apps/assign-user-or-group-access-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) vagy [a rendszergazdai szerepkörök hozzárendelésének](directory-assign-admin-roles.md).

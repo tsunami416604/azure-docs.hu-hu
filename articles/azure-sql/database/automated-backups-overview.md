@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921945"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756724"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -36,14 +36,12 @@ Adatbázis visszaállításakor a szolgáltatás határozza meg, hogy a rendszer
 
 ### <a name="backup-storage-redundancy"></a>Biztonsági mentési tár redundancia
 
-> [!IMPORTANT]
-> A biztonsági mentések konfigurálható tárolási redundancia jelenleg csak az SQL felügyelt példányai számára érhető el, és csak a felügyelt példány létrehozása folyamat során adható meg. Az erőforrás kiépítése után nem módosítható a biztonságimásolat-tárolási redundancia beállítás.
+Alapértelmezés szerint a SQL Database és az SQL felügyelt példánya olyan geo-redundáns (RA-GRS) [tárolási blobokban](../../storage/common/storage-redundancy.md) tárolja az értékeket, amelyek egy [párosított régióba](../../best-practices-availability-paired-regions.md)vannak replikálva. Ez segít az elsődleges régió biztonsági mentési tárhelyét érintő kimaradások elleni védelemben, és lehetővé teszi a kiszolgáló más régióba való visszaállítását vészhelyzet esetén. 
 
-A Backup Storage-redundancia konfigurálásának lehetősége lehetővé teszi a helyileg redundáns (LRS), a Zone-redundáns (ZRS) vagy a Geo-redundáns (RA-GRS) [tárolási Blobok](../../storage/common/storage-redundancy.md)közötti választást. A tárolási redundancia-mechanizmusok több példányban tárolják az adataikat, így védve vannak a tervezett és nem tervezett eseményekről, beleértve az átmeneti hardverhiba, a hálózati vagy áramkimaradások vagy a súlyos természeti katasztrófákat. Ez a funkció jelenleg csak az SQL felügyelt példányai esetében érhető el.
+Az SQL felügyelt példánya bevezeti a tárterület-redundancia módosítását a helyileg redundáns (LRS) vagy a Zone-redundáns (ZRS) tárolási blobokra, így biztosítva, hogy az adatai ugyanabban a régióban maradnak, ahol a felügyelt példány telepítve van. A tárolási redundancia-mechanizmusok több példányban tárolják az adataikat, így védve vannak a tervezett és nem tervezett eseményekről, beleértve az átmeneti hardverhiba, a hálózati vagy áramkimaradások vagy a súlyos természeti katasztrófákat. 
 
-Az RA-GRS Storage-Blobok egy [párosított régióba](../../best-practices-availability-paired-regions.md) vannak replikálva, hogy védelmet nyújtson a biztonsági mentési tárolót az elsődleges régióban, és lehetővé teszi a kiszolgáló más régióba való visszaállítását vészhelyzet esetén. 
+A Backup Storage-redundancia konfigurálásának lehetősége lehetővé teszi az SQL felügyelt példányok LRS, ZRS vagy RA-GRS Storage-Blobok közötti választását. A biztonsági mentési tár redundancia konfigurálása a felügyelt példányok létrehozási folyamata során az erőforrás kiépítése után már nem lehetséges a tárterület-redundancia módosítása. (A zóna – redundáns tárolás (ZRS) jelenleg csak [bizonyos régiókban](../../storage/common/storage-redundancy.md#zone-redundant-storage)érhető el).
 
-Ezzel szemben a LRS és a ZRS Storage-Blobok biztosítják, hogy az adatai ugyanabban a régióban maradnak, ahol a SQL Database vagy az SQL felügyelt példánya telepítve van. A Zone-redundáns tárolás (ZRS) jelenleg csak [bizonyos régiókban](../../storage/common/storage-redundancy.md#zone-redundant-storage)érhető el).
 
 > [!IMPORTANT]
 > A felügyelt SQL-példányok esetében a rendszer a konfigurált biztonsági mentési redundanciát alkalmazza az időponthoz kötött visszaállítási (PITR) és hosszú távú adatmegőrzési biztonsági másolatok (LTR) esetében használt rövid távú biztonsági mentési adatmegőrzési beállításokra is.
@@ -194,7 +192,7 @@ Adjon hozzá egy szűrőt a **szolgáltatás neveként**, majd válassza az **SQ
 
 ## <a name="encrypted-backups"></a>Titkosított biztonsági másolatok
 
-Ha az adatbázis TDE van titkosítva, a biztonsági másolatok automatikusan titkosítva maradnak, beleértve a LTR biztonsági mentéseket is. Az Azure SQL összes új adatbázisa alapértelmezés szerint engedélyezve van a TDE. További információ a TDE-ről: [transzparens adattitkosítás SQL Database & SQL felügyelt példányával](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Ha az adatbázis TDE van titkosítva, a biztonsági másolatok automatikusan titkosítva maradnak, beleértve a LTR biztonsági mentéseket is. Az Azure SQL összes új adatbázisa alapértelmezés szerint engedélyezve van a TDE. További információ a TDE-ről:  [transzparens adattitkosítás SQL Database & SQL felügyelt példányával](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Biztonsági mentés integritása
 

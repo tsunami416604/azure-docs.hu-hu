@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30c8526271a636b8890dde0079e27374df9c38af
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067343"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757268"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -102,7 +102,7 @@ Az ebben a szakaszban található információk segítségével elvégezheti az 
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>A SATA-meghajtók előkészítése és a szállítás az Azure-ba
 
-A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure-adatközpontba küldendő SATA-meghajtókat. Ez a segédprogram a Azure Backup Agent telepítési könyvtárában érhető el (a következő elérési úton):`*\Microsoft Azure Recovery Services Agent\Utils\\*`
+A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure-adatközpontba küldendő SATA-meghajtókat. Ez a segédprogram a Azure Backup Agent telepítési könyvtárában érhető el (a következő elérési úton): `*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. Nyissa meg a könyvtárat, és másolja a **AzureOfflineBackupDiskPrep** könyvtárat egy másik számítógépre, AMELYEN a SATA-meghajtók csatlakoznak. A csatlakoztatott SATA meghajtókkal rendelkező számítógépen ügyeljen a következőre:
 

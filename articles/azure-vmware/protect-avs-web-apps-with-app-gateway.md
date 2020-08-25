@@ -1,39 +1,39 @@
 ---
 title: Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
-description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson (AVS) futó webalkalmazások biztonságos megjelenítéséhez.
+description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson futó webalkalmazások biztonságos megjelenítéséhez.
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: dfe55ab6b32e9c7b73b8501a16fa6cfaad5bbabe
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d4e193c58c5eccb29f603c3b4d56a09d26686975
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514279"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750597"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 
-Az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) egy 7. rétegbeli webes forgalmi terheléselosztó, amely lehetővé teszi a webes alkalmazások forgalmának kezelését. Számos képességet kínál: a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást és a webalkalmazási tűzfalat (WAF), hogy néhányat említsünk. (A szolgáltatások teljes listájáért lásd: az [Azure Application Gateway funkciói](../application-gateway/features.md).) A szolgáltatás két verzióban, a v1-ben és a v2-ben is elérhető. Mindkettőt tesztelték az Azure VMware-megoldáson (AVS) futó webalkalmazásokkal.
+Az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) egy 7. rétegbeli webes forgalmi terheléselosztó, amely lehetővé teszi a webes alkalmazások forgalmának kezelését. Számos képességet kínál: a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást és a webalkalmazási tűzfalat (WAF), hogy néhányat említsünk. (A szolgáltatások teljes listájáért lásd: az [Azure Application Gateway funkciói](../application-gateway/features.md).) A szolgáltatás két verzióban, a v1-ben és a v2-ben is elérhető. Mindkettő tesztelték az Azure VMware-megoldáson futó webalkalmazásokkal.
 
-Ebben a cikkben egy olyan gyakori forgatókönyvet ismertetünk, amely a webkiszolgáló-farmok előtt Application Gatewayt használ egy olyan konfigurációkkal és javaslatokkal, amelyek az Azure VMware-megoldáson (AVS) futó webalkalmazások elleni védelemmel rendelkeznek. 
+Ebben a cikkben egy olyan gyakori forgatókönyvet ismertetünk, amely a webkiszolgáló-farmok előtt Application Gatewayt használ egy olyan konfigurációval és javaslatokkal, amelyekkel az Azure VMware-megoldáson futó webalkalmazások védhetők. 
 
 ## <a name="topology"></a>Topológia
-Ahogy az az alábbi ábrán is látható, Application Gateway használható az Azure IaaS Virtual Machines, az Azure Virtual Machine Scale sets vagy a helyszíni kiszolgálók elleni védelemhez. Az AVS-alapú virtuális gépek a Application Gateway alapján lesznek kezelve helyszíni kiszolgálókként.
+Ahogy az az alábbi ábrán is látható, Application Gateway használható az Azure IaaS Virtual Machines, az Azure Virtual Machine Scale sets vagy a helyszíni kiszolgálók elleni védelemhez. Az Azure VMware-megoldás virtuális gépei Application Gateway alapján lesznek kezelve helyszíni kiszolgálóként.
 
-![A Application Gateway az AVS-alapú virtuális gépeket védi.](media/protect-avs-web-apps-with-app-gw/app-gateway-protects.png)
+![Application Gateway védi az Azure VMware-megoldás virtuális gépeket.](media/protect-avs-web-apps-with-app-gw/app-gateway-protects.png)
 
 > [!IMPORTANT]
-> Az Azure Application Gateway jelenleg az egyetlen támogatott módszer az AVS-alapú virtuális gépeken futó webalkalmazások elérhetővé tétele érdekében.
+> Az Azure Application Gateway jelenleg az egyetlen támogatott módszer az Azure VMware megoldású virtuális gépeken futó webalkalmazások elérhetővé tétele érdekében.
 
-Az alábbi ábrán a Application Gateway az AVS-webalkalmazásokkal való ellenőrzéséhez használt tesztelési forgatókönyv látható.
+Az alábbi ábrán az Azure VMware Solution web Applications használatával végzett Application Gateway ellenőrzéséhez használt tesztelési forgatókönyv látható.
 
-![Application Gateway a Web Apps szolgáltatást futtató AVS-integrációt.](media/protect-avs-web-apps-with-app-gw/app-gateway-avs-scenario.png)
+![Application Gateway integráció a Web Apps szolgáltatást futtató Azure VMware-megoldással.](media/protect-avs-web-apps-with-app-gw/app-gateway-avs-scenario.png)
 
-A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve a központban. Azure-beli nyilvános IP-címmel rendelkezik; ajánlott a virtuális hálózat szabványos DDoS-védelmének aktiválása. A webkiszolgáló egy NSX T0 és T1 útválasztó mögötti AVS Private Cloud-on fut. Az AVS a [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használatával teszi lehetővé a kommunikációt az elosztóval és a helyszíni rendszerekkel.
+A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve a központban. Azure-beli nyilvános IP-címmel rendelkezik; ajánlott a virtuális hálózat szabványos DDoS-védelmének aktiválása. A webkiszolgáló a NSX T0 és T1 útválasztók mögötti Azure VMware-megoldásban található. Az Azure VMware-megoldás [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használ az elosztóval és a helyszíni rendszerekkel való kommunikáció engedélyezésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók.
-- Egy telepített és futtatott AVS Private Cloud.
+- Azure VMware-megoldás saját felhő üzembe helyezése és futtatása.
 
 ## <a name="deployment-and-configuration"></a>Üzembe helyezés és konfigurálás
 
@@ -48,7 +48,7 @@ A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve
     > [!NOTE]
     > Privát frontendek esetében csak a standard és a Web Application Firewall (WAF) SKU-ket támogatja a rendszer.
 
-4. Ezután adjon hozzá egy háttér-készletet, amely az alkalmazás vagy szolgáltatás részét képező példányokat ismerteti (ebben az esetben az AVS-infrastruktúrán futó virtuális gépek). Adja meg az AVS Private Cloud-on futó webkiszolgálók részleteit, és válassza a **Hozzáadás**lehetőséget. Ezután válassza a **következő: Configuration>**.
+4. Ezután vegyen fel egy háttér-készletet, amely az alkalmazás vagy szolgáltatás részét képező példányokat ismerteti (ebben az esetben az Azure VMware megoldás-infrastruktúrán futó virtuális gépeket). Adja meg az Azure VMware-megoldás saját felhőben futó webkiszolgálók részleteit, és válassza a **Hozzáadás**lehetőséget. Ezután válassza a **következő: Configuration>**.
 
 1. A **konfiguráció** lapon válassza az **útválasztási szabály hozzáadása**elemet.
 
@@ -70,18 +70,18 @@ A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve
 
 ## <a name="configuration-examples"></a>Konfigurációs példák
 
-Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a Application Gateway az AVS virtuális gépekkel a háttér-készletekként a következő felhasználási esetekben: 
+Ebből a szakaszból megtudhatja, hogyan konfigurálhatja a Application Gateway az Azure VMware megoldás virtuális gépei használatával a következő felhasználási esetekben: 
 
 - [Több webhely üzemeltetése](#hosting-multiple-sites)
 - [Útválasztás URL-cím szerint](#routing-by-url)
 
 ### <a name="hosting-multiple-sites"></a>Több webhely üzemeltetése
 
-Az alkalmazás-átjáró létrehozásakor a Azure Portal használatával több webhely üzemeltetését is konfigurálhatja. Ebben az oktatóanyagban a háttérbeli címkészlet a meglévő Application Gateway-beli AVS Private Cloud-on futó virtuális gépek használatával definiálható. Az Application Gateway egy hub virtuális hálózat része, amelyet az [AVS integrálása egy központba és küllős architektúrába](concepts-avs-hub-and-spoke-integration.md)című témakörben talál. Ez az oktatóanyag feltételezi, hogy a saját több tartománya van, és példákat használ a www.contoso.com és a www.fabrikam.com.
+Az alkalmazás-átjáró létrehozásakor a Azure Portal használatával több webhely üzemeltetését is konfigurálhatja. Ebben az oktatóanyagban a háttérbeli címkészlet meghatározása egy Azure VMware-megoldásban futó virtuális gépek használatával egy meglévő Application Gateway-en. Az Application Gateway egy hub virtuális hálózat része, amely az [Azure VMware-megoldás integrálása egy központba és küllős architektúrába](concepts-avs-hub-and-spoke-integration.md)című részben leírtak szerint. Ez az oktatóanyag feltételezi, hogy a saját több tartománya van, és példákat használ a www.contoso.com és a www.fabrikam.com.
 
-1. Hozza létre a virtuális gépeket. Az AVS Private Cloud-ban hozzon létre két különböző készletet a virtuális gépek közül; az egyik a Contosot és a második Fabrikam-t jelöli. 
+1. Hozza létre a virtuális gépeket. Az Azure VMware-megoldás saját felhőben hozzon létre két különböző készletet a virtuális gépeken; az egyik a Contosot és a második Fabrikam-t jelöli. 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs.png" alt-text="Webkiszolgáló-készlet az AVS-ben":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs.png" alt-text="Hozza létre a virtuális gépeket.":::
 
     Ennek az oktatóanyagnak a szemléltetéséhez a Windows Server 2016-et telepítette Internet Information Services (IIS) szerepkörrel. Miután telepítette a virtuális gépeket, futtassa az alábbi PowerShell-parancsokat az IIS konfigurálásához az egyes virtuális gépeken. 
 
@@ -90,31 +90,31 @@ Az alkalmazás-átjáró létrehozásakor a Azure Portal használatával több w
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-2. Adja hozzá a háttér-készleteket. Egy meglévő Application Gateway-példányban válassza ki a bal oldali menüben a **háttér-készletek** elemet, válassza a **Hozzáadás**lehetőséget, majd adja meg az új készletek részleteit. A jobb oldali ablaktáblán válassza a **Hozzáadás** lehetőséget.
+2. Adja hozzá a háttér-készleteket. Egy meglévő Application Gateway-példányban válassza ki a bal oldali menüben a **háttér-készletek** elemet, válassza a  **Hozzáadás**lehetőséget, majd adja meg az új készletek részleteit. A jobb oldali ablaktáblán válassza a **Hozzáadás** lehetőséget.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png" alt-text="Háttérbeli készlet konfigurálása" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png" alt-text="Adja hozzá a háttér-készleteket." lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-02.png":::
 
 3. A **figyelők** szakaszban hozzon létre egy új figyelőt az egyes webhelyekhez. Adja meg az egyes figyelők részleteit, és válassza a **Hozzáadás**lehetőséget.
 
 4. A bal oldali navigációs sávon válassza a **http-beállítások** elemet, és válassza a **Hozzáadás** lehetőséget a bal oldali ablaktáblán. A részletek kitöltésével hozzon létre egy új HTTP-beállítást, és kattintson a **Mentés**gombra.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png" alt-text="Az 5-HTP beállításainak konfigurálása" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png" alt-text="A részletek kitöltésével hozzon létre egy új HTTP-beállítást, és kattintson a Mentés gombra." lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png":::
 
 5. Hozza létre a szabályokat a bal oldali menü **szabályok** szakaszában. Társítsa az egyes szabályokat a megfelelő figyelőhöz. Válassza a **Hozzáadás** elemet.
 
 6. Konfigurálja a megfelelő háttér-készletet és a HTTP-beállításokat. Válassza a **Hozzáadás** elemet.
 
-7. A kapcsolatok tesztelése. Nyissa meg a kívánt böngészőt, és navigáljon az AVS-környezetben üzemeltetett különböző webhelyekre, például: http://www.fabrikam.com .
+7. A kapcsolatok tesztelése. Nyissa meg az előnyben részesített böngészőt, és navigáljon az Azure VMware-megoldási környezetében üzemeltetett különböző webhelyekre, például: http://www.fabrikam.com .
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-07.png" alt-text="Szabály háttérbeli konfigurációja":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-07.png" alt-text="A kapcsolatok tesztelése.":::
 
 ### <a name="routing-by-url"></a>Útválasztás URL-cím szerint
 
-Az Azure Application Gateway az URL-elérésiút-alapú útválasztási szabályok konfigurálására használható. Ebben az oktatóanyagban a háttérbeli címkészlet a meglévő Application Gateway-beli AVS Private Cloud-on futó virtuális gépek használatával definiálható. Az Application Gateway egy központi virtuális hálózat része, az [AVS Azure Native Integration dokumentációjában](concepts-avs-hub-and-spoke-integration.md)leírtak szerint. Ezután olyan útválasztási szabályokat hozhat létre, amelyek gondoskodnak arról, hogy a webes forgalom a készletekben lévő megfelelő kiszolgálókon érkezzen.
+Az Azure Application Gateway az URL-elérésiút-alapú útválasztási szabályok konfigurálására használható. Ebben az oktatóanyagban a háttérbeli címkészlet meghatározása egy Azure VMware-megoldásban futó virtuális gépek használatával egy meglévő Application Gateway-en. Az Application Gateway egy hub virtuális hálózat része, az Azure [VMware megoldás Azure natív integrációs dokumentációjában](concepts-avs-hub-and-spoke-integration.md)leírtak szerint. Ezután olyan útválasztási szabályokat hozhat létre, amelyek gondoskodnak arról, hogy a webes forgalom a készletekben lévő megfelelő kiszolgálókon érkezzen.
 
-1. Hozza létre a virtuális gépeket. Az AVS Private Cloud-ban hozzon létre egy virtuális gépek készletét, amely a webfarmt jelképezi. 
+1. Hozza létre a virtuális gépeket. Az Azure VMware-megoldás saját felhőben hozzon létre egy virtuális gépek készletét, amely a webfarmt jelképezi. 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs.png" alt-text="Webkiszolgáló-készlet az AVS-ben":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs.png" alt-text="Hozzon létre egy virtuális gépek készletét az Azure VMware megoldásban.":::
 
     Az oktatóanyag szemléltetésére a Windows Server 2016 operációs rendszert futtató IIS-szerepkört használták. Miután telepítette a virtuális gépeket, futtassa a következő PowerShell-parancsokat az IIS az oktatóanyaghoz való konfigurálásához minden virtuális gépen. 
 
@@ -143,30 +143,30 @@ Az Azure Application Gateway az URL-elérésiút-alapú útválasztási szabály
 
 2. Adja hozzá a háttér-készleteket. Három új háttér-készletet kell hozzáadnia egy meglévő Application Gateway-példányban. Válassza ki a **háttér-készletek** elemet a bal oldali menüben. Válassza a **Hozzáadás** lehetőséget, és adja meg a **contoso-web**első készletének részleteit. Adjon hozzá egy virtuális gépet célként. Válassza a **Hozzáadás** elemet. Ismételje meg ezt a folyamatot a **contoso-images** és a **contoso-video**esetében, és adjon hozzá egy egyedi virtuális gépet az egyes célhoz. 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png" alt-text="Háttérrendszer-készlet létrehozása" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png" alt-text="Vegyen fel három új háttér-készletet." lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-02.png":::
 
 3. A **figyelők** szakaszban hozzon létre egy alapszintű új figyelőt az 8080-es port használatával.
 
 4. A bal oldali navigációs sávon válassza a **http-beállítások** elemet, és válassza a **Hozzáadás** lehetőséget a bal oldali ablaktáblán. A részletek kitöltésével hozzon létre egy új HTTP-beállítást, és kattintson a **Mentés**gombra.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-04.png" alt-text="Az 5-HTP beállításainak konfigurálása":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-04.png" alt-text="Az 5-HTP beállításainak konfigurálása.":::
 
 5. Hozza létre a szabályokat a bal oldali menü **szabályok** szakaszában. Társítsa az egyes szabályokat a korábban létrehozott figyelőhöz. Ezután konfigurálja a fő háttér-készletet és a HTTP-beállításokat. Válassza a **Hozzáadás** elemet.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-07.png" alt-text="Szabály háttérbeli konfigurációja":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-07.png" alt-text="Hozza létre a szabályokat a bal oldali menü szabályok szakaszában.":::
 
 6. Tesztelje a konfigurációt. Nyissa meg az Application Gatewayt a Azure Portalon, és az **Áttekintés** szakaszban másolja a nyilvános IP-címet. Ezután nyisson meg egy új böngészőablakot, és írja be az URL-címet `http://<app-gw-ip-address>:8080` . 
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-08.png" alt-text="Konfigurációs teszt":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-08.png" alt-text="Tesztelje a konfigurációt a Azure Portal.":::
 
     Módosítsa az URL-címet a következőre: `http://<app-gw-ip-address>:8080/images/test.htm`.
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-09.png" alt-text="Konfigurációs teszt":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-09.png" alt-text="Módosítsa az URL-címet.":::
 
     Módosítsa újra az URL-címet a következőre: `http://<app-gw-ip-address>:8080/video/test.htm` .
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-10.png" alt-text="Konfigurációs teszt":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-10.png" alt-text="Módosítsa újra az URL-címet.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További konfigurációs példákért tekintse át az [Azure Application Gateway dokumentációját](https://docs.microsoft.com/azure/application-gateway/) .

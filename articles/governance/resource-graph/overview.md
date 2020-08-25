@@ -1,14 +1,14 @@
 ---
 title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
-ms.date: 07/25/2020
+ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541787"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798533"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -37,6 +37,9 @@ Az Azure Resource Graph segítségével a következőket teheti:
 
 - Az erőforrás-szolgáltatók által visszaadott tulajdonságok elérése anélkül, hogy az egyes erőforrás-szolgáltatóknak külön hívásokat kellene végezniük.
 - Megtekintheti az Erőforrás változási előzményeinek utolsó 14 napját, és megtekintheti, hogy milyen tulajdonságok változtak és mikor. (előzetes verzió)
+
+> [!NOTE]
+> _Előzetes_ `type` verzióként egyes objektumokhoz további, nem Resource Manager-tulajdonságok érhetők el. További információ: [kiterjesztett tulajdonságok (előzetes verzió)](./concepts/query-language.md#extended-properties).
 
 ## <a name="how-resource-graph-is-kept-current"></a>Az erőforrás-gráf naprakészen tartása
 
@@ -74,8 +77,8 @@ Adja meg az üzleti esetét, és válassza a "Microsoft e-mail küldése a vissz
 
 Az erőforrás-gráf a lekérdezéseket a felhasználói szinten szabályozza. A szolgáltatás válasza a következő HTTP-fejléceket tartalmazza:
 
-- `x-ms-user-quota-remaining`(int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
-- `x-ms-user-quota-resets-after`(óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja
+- `x-ms-user-quota-remaining` (int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- `x-ms-user-quota-resets-after` (óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja
 
 További információ: [útmutatás a szabályozott kérelmekhez](./concepts/guidance-for-throttled-requests.md).
 

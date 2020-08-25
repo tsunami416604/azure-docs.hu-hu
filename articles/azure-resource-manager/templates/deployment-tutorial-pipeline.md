@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86118919"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
@@ -29,9 +29,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Azure-folyamat létrehozása
 > * A folyamat központi telepítésének ellenőrzése
 > * A sablon frissítése és újbóli üzembe helyezése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -83,8 +83,8 @@ A **CreateWebApp** mappa a sablon tárolására szolgáló mappa. A **pwd** para
 
 A sablonok létrehozása helyett letöltheti a sablonokat, és mentheti azokat a **CreateWebApp** mappába.
 
-* A fő sablon:https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* A csatolt sablon:https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* A fő sablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* A csatolt sablon: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 A rendszer a mappa nevét és a fájlneveket is használja, mivel azok a folyamatban vannak.  Ha megváltoztatja ezeket a neveket, frissítenie kell a folyamatban használt neveket.
 
@@ -105,7 +105,7 @@ A azuredeploy.jsbekerült a helyi tárházba. Ezután töltse fel a sablont a t�
 
     Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
 1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím: **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . Ekkor megjelenik a **CreateWebApp** mappa, valamint a mappában található három fájl.
-1. A sablon megnyitásához válassza **alinkedStorageAccount.json** lehetőséget.
+1. A sablon megnyitásához válassza ** alinkedStorageAccount.json** lehetőséget.
 1. Kattintson a **RAW** gombra. Az URL-cím a **RAW.githubusercontent.com**-vel kezdődik.
 1. Másolja az URL-címet.  Ezt az értéket kell megadnia, amikor az oktatóanyag későbbi részében konfigurálja a folyamatot.
 
@@ -120,14 +120,14 @@ A következő eljárás folytatásához szükség van egy DevOps-szervezetre.  H
 
     ![Azure DevOps-projekt létrehozása Azure-DevOps Azure-folyamatokkal Azure Resource Manager](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. Válassza a **New project** (Új projekt) lehetőséget. Ha nem rendelkezik projektekkel, a projekt létrehozása lap automatikusan megnyílik.
+1. Válassza az **Új projekt** lehetőséget. Ha nem rendelkezik projektekkel, a projekt létrehozása lap automatikusan megnyílik.
 1. Írja be a következő értékeket:
 
     * **Projekt neve**: adja meg a projekt nevét. Az oktatóanyag legelején a projekt nevét is használhatja.
     * **Verziókövetés**: válassza a **git**lehetőséget. Előfordulhat, hogy a **speciális** elemre kell bontania a **verziókövetés**megjelenítéséhez.
 
     Használja az alapértelmezett értéket a többi tulajdonsághoz.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-ba való telepítésére szolgál.
 
@@ -138,7 +138,7 @@ Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-
 1. Írja be a következő értékeket:
 
     * **Hatóköri szint**: válassza az **előfizetés**lehetőséget.
-    * **Előfizetés**: válassza ki az előfizetését.
+    * **Előfizetés**: Válassza ki előfizetését.
     * **Erőforráscsoport**: hagyja üresen.
     * **Kapcsolatok neve**: adjon meg egy nevet. Például: **AzureRmPipeline-Conn**. Jegyezze fel ezt a nevet, a folyamat létrehozásakor szüksége lesz a névre.
     * **Hozzáférési engedély biztosítása minden folyamathoz**. kiválasztott
@@ -196,7 +196,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
     ![Azure DevOps Azure-YAML Azure Resource Manager](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-status.png)
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. A nevet a folyamat YAML fájlban megadott név határozza meg.  Ekkor létrejön egy Storage-fiók.  A Storage-fiók neve a **tárolóval**kezdődik.
@@ -228,7 +228,7 @@ Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba
 
 A módosítások ellenőrzéséhez ellenőrizze a Storage-fiók replikáció tulajdonságát.  Lásd: [a központi telepítés ellenőrzése](#verify-the-deployment).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -239,7 +239,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, befejezte ezt a Resource Manager-sablon üzembe helyezését ismertető oktatóanyagot. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 Készen áll a sablonokkal kapcsolatos speciális fogalmak beugrására. A következő oktatóanyag részletesen ismerteti a sablon-referenciák dokumentációjának használatát, amely segítséget nyújt a telepítendő erőforrások definiálásához.

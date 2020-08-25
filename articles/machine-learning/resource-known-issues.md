@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190503"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757285"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -121,6 +121,18 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure Machine Learning SDK telepítése sikertelen kivétel esetén: ModuleNotFoundError: nincs "ruamel" vagy "ImportError" nevű modul: nincs ruamel. YAML nevű modul.**
+   
+   Ez a probléma a Pythonhoz készült Azure Machine Learning SDK-nak a legújabb PIP (>20.1.1) telepítésével kapcsolatos, a Pythonhoz készült Azure Machine Learning SDK összes kiadott verziójára vonatkozóan. Tekintse meg a következő megkerülő megoldásokat:
+
+    * Ne telepítse a Python SDK-t a Conda-alapú környezetbe, hanem hozza létre a Conda-környezetet, és telepítse az SDK-t az újonnan létrehozott felhasználói környezetbe. A legújabb pip-nek működnie kell az új Conda-környezetben.
+
+    * Lemezképek a Docker-ben való létrehozásához, ahol nem lehet átváltani a Conda alapkörnyezetből, a pip<= 20.1.1 a Docker-fájlban rögzítheti.
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **Databricks hiba a csomagok telepítésekor**
 
     Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Bizonyos csomagok, például a `psutil` , ütközéseket okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
@@ -169,7 +181,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
   * Chrome (legújabb verzió)
   * Firefox (legújabb verzió)
 
-## <a name="set-up-your-environment"></a>A környezet kialakítása
+## <a name="set-up-your-environment"></a>Saját környezet beállítása
 
 * **Hiba történt a AmlCompute létrehozásakor**: ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
 
@@ -214,7 +226,7 @@ Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
 * Az adatkészlet-figyelők csak a 50 vagy több sort tartalmazó adatkészleteken működnek.
 * Az adatkészletben lévő oszlopok vagy szolgáltatások a következő táblázatban szereplő feltételek alapján kategorikusnak vagy numerikusnak minősülnek. Ha a szolgáltatás nem felel meg az alábbi feltételeknek – például egy karakterlánc típusú, >100 egyedi értékekkel rendelkező oszlop – a szolgáltatás el lesz dobva az adateltolódási algoritmusból, de a rendszer még mindig felhasználható. 
 
-    | Szolgáltatás típusa | Adattípus | Feltétel | Korlátozások | 
+    | Szolgáltatás típusa | Adattípus | Condition (Állapot) | Korlátozások | 
     | ------------ | --------- | --------- | ----------- |
     | Kategorikus | karakterlánc, bool, int, float | A szolgáltatásban található egyedi értékek száma kevesebb, mint 100, és a sorok száma kevesebb, mint 5%. | A Null érték a saját kategóriája. | 
     | Numerikus | int, float | A szolgáltatás értékei numerikus adattípussal rendelkeznek, és nem felelnek meg a kategorikus funkció feltételének. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
@@ -437,7 +449,7 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

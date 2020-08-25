@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80999061"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban
@@ -23,7 +23,7 @@ Az Azure IoT Central használatával távolról is figyelheti a csatlakoztatott 
 
 Az eszközök a telemetria használatával numerikus adatok küldését az eszközről. Egy szabály akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket.
 
-Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a szimulált környezeti érzékelő eszköz hőmérséklete meghaladja&deg; a 70 F-ot.
+Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a szimulált környezeti érzékelő eszköz hőmérséklete meghaladja a 70 F-ot &deg; .
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -46,7 +46,7 @@ Telemetria szabály létrehozásához az eszköz sablonjának tartalmaznia kell 
 
     ![Még nincsenek szabályok](media/tutorial-create-telemetry-rules/rules-landing-page1.png)
 
-1. Új **+** szabály hozzáadásához válassza a lehetőséget.
+1. **+** Új szabály hozzáadásához válassza a lehetőséget.
 
 1. A szabály azonosításához adja meg a name _hőmérséklet-figyelőt_ , majd nyomja le az ENTER billentyűt.
 
@@ -56,13 +56,13 @@ Telemetria szabály létrehozásához az eszköz sablonjának tartalmaznia kell 
 
 ### <a name="configure-the-rule-conditions"></a>A szabály feltételeinek konfigurálása
 
-A feltételek határozzák meg a szabály által figyelt feltételeket. Ebben az oktatóanyagban a szabályt úgy konfigurálja, hogy a hőmérséklet meghaladja a 70&deg; F-ot.
+A feltételek határozzák meg a szabály által figyelt feltételeket. Ebben az oktatóanyagban a szabályt úgy konfigurálja, hogy a hőmérséklet meghaladja a 70 &deg; F-ot.
 
 1. Válassza a **hőmérséklet** lehetőséget a **telemetria** legördülő menüben.
 
 1. Ezután válassza a **nagyobb, mint** a **kezelőt** , és adja meg a _70_ **értéket**.
 
-    ![Állapot](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
+    ![Condition (Állapot)](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. Igény szerint **időösszesítést**is beállíthat. Amikor kiválaszt egy időösszesítést, ki kell választania egy összesítési típust is, például az összesítési legördülő listából az átlagot vagy az összeget.
 

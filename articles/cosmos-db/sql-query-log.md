@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302508"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798261"
 ---
 # <a name="log-azure-cosmos-db"></a>NAPLÓ (Azure Cosmos DB)
  A megadott numerikus kifejezés természetes alapú logaritmusát adja vissza.  
@@ -41,7 +41,9 @@ LOG (<numeric_expr> [, <base>])
   
   A természetes logaritmus az **e**-Base logaritmusa, ahol az **e** egy, körülbelül 2,718281828-as irracionális konstans.  
   
-  Egy szám exponenciális értékének természetes alapú logaritmusa maga a szám: LOG (EXP (n)) = n. Egy szám természetes alapú logaritmusának exponenciális értéke maga a szám: EXP (LOG (n)) = n.  
+  Egy szám exponenciális értékének természetes alapú logaritmusa maga a szám: LOG (EXP (n)) = n. Egy szám természetes alapú logaritmusának exponenciális értéke maga a szám: EXP (LOG (n)) = n.
+
+  Ez a rendszerfüggvény nem fogja használni az indexet.
   
 ## <a name="examples"></a>Példák
   
@@ -69,11 +71,7 @@ SELECT EXP(LOG(10)) AS expLog
 [{expLog: 10.000000000000002}]  
 ```  
 
-## <a name="remarks"></a>Megjegyzések
-
-Ez a rendszerfüggvény nem fogja használni az indexet.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

@@ -1,18 +1,18 @@
 ---
 title: Helyszíni helyi környezetek saját felhőhöz
-description: Ebben az Azure VMware-megoldással (AVS) foglalkozó oktatóanyagban a ExpressRoute Global Reach-társítást hoz létre egy privát felhőbe egy AVS-ben.
+description: Ebben az Azure VMware-megoldás oktatóanyagában ExpressRoute-Global Reach-társítást hoz létre egy Azure VMware-megoldásban található privát felhőbe.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101680"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750451"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
 
-A ExpressRoute Global Reach összekapcsolja a helyszíni környezetet a privát Felhőkkel. A ExpressRoute Global Reach kapcsolat létrejött egy privát felhőalapú ExpressRoute áramkör és egy meglévő ExpressRoute-kapcsolat között a helyszíni környezetekhez.  A ExpressRoute-Global Reach az Azure CLI-vel és a PowerShell-lel való konfigurálására vonatkozó utasítások találhatók, és a [CLI-parancsokat](../expressroute/expressroute-howto-set-global-reach-cli.md) speciális részletekkel és példákkal bővítettük, amelyek segítségével konfigurálhatja a ExpressRoute Global REACH a helyszíni környezetek között az Azure VMware megoldás (AVS) privát felhőbe.   
+A ExpressRoute Global Reach összekapcsolja a helyszíni környezetet a privát Felhőkkel. A ExpressRoute Global Reach kapcsolat létrejött egy privát felhőalapú ExpressRoute áramkör és egy meglévő ExpressRoute-kapcsolat között a helyszíni környezetekhez.  A ExpressRoute-Global Reach az Azure CLI-vel és a PowerShell-lel való konfigurálására vonatkozó utasítások, valamint a [CLI-parancsok](../expressroute/expressroute-howto-set-global-reach-cli.md) kibővítésével konkrét részleteket és példákat talál, amelyek segítségével konfigurálhatja a ExpressRoute Global REACH a helyszíni környezetek között egy Azure VMware-megoldás saját felhőbe.   
 
 Mielőtt engedélyezi a kapcsolatot a két ExpressRoute-áramkör között a ExpressRoute Global Reach használatával, tekintse át a dokumentációt, amely bemutatja, hogyan [engedélyezheti a kapcsolatokat különböző Azure-előfizetésekben](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  Az [Azure – Private felhő hálózatkezelésének konfigurálásakor](tutorial-configure-networking.md) használt ExpressRoute-áramkörhöz engedélyezési kulcsokat kell létrehoznia és használnia, amikor a ExpressRoute átjárókat vagy más ExpressRoute-áramköröket használ a Global REACH használatával. A ExpressRoute áramkör már használ egy engedélyezési kulcsot, és létrehoz egy másikat a helyszíni ExpressRoute áramkörrel.
 
@@ -33,19 +33,19 @@ Az oktatóanyag előfeltételei a következők:
 - Egy különálló, működő ExpressRoute-áramkör a helyi környezetek az Azure-hoz való összekapcsolásához – ez az _1. áramköri_ eljárás a társítási eljárások szempontjából.
 - Egy/29 nem átfedésben lévő [hálózati címterület](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) a ExpressRoute Global REACH-társításhoz.
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>ExpressRoute-engedélyezési kulcs létrehozása az AVS Private Cloud-ban
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>ExpressRoute-engedélyezési kulcs létrehozása az Azure VMware Solution Private Cloud-ban
 
 1. A Private Cloud **Overview**(kezelés) területen válassza a **kapcsolat > ExpressRoute > az engedélyezési kulcs igénylése**lehetőséget.
 
-   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérelem elindításához kérjen egy engedélyezési kulcsot":::
+   :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
 
 2. Adja meg az engedélyezési kulcs nevét, majd válassza a **Létrehozás**lehetőséget. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Új engedélyezési kulcs létrehozásához kattintson a Létrehozás gombra.":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Új engedélyezési kulcs létrehozásához kattintson a Létrehozás gombra. ":::
 
    A létrehozást követően az új kulcs megjelenik a privát felhőhöz tartozó engedélyezési kulcsok listájában. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Győződjön meg arról, hogy az új engedélyezési kulcs megjelenik a titkos felhőhöz tartozó kulcsok listájában.":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Győződjön meg arról, hogy az új engedélyezési kulcs megjelenik a titkos felhőhöz tartozó kulcsok listájában. ":::
 
 3. Jegyezze fel az engedélyezési kulcsot és a ExpressRoute AZONOSÍTÓját, valamint a/29-címterület számát. A következő lépésben a társítás befejezéséhez fogja használni őket. 
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78bed4f5c600bfa0218f924dc4444119e9729e28
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798749"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783552"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
 
@@ -58,7 +58,7 @@ Az Azure AD-jogosultságok felügyeletének használatához és a felhasználók
 
 ### <a name="viewing-assignments-programmatically"></a>A hozzárendelések programozott megtekintése
 
-Microsoft Graph használatával is lekérheti a hozzárendeléseket egy hozzáférési csomagban.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a [accessPackageAssignments listázására](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+Microsoft Graph használatával is lekérheti a hozzárendeléseket egy hozzáférési csomagban.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a [accessPackageAssignments listázására](/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Felhasználó közvetlen kiosztása
 
@@ -90,7 +90,7 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 ### <a name="directly-assigning-users-programmatically"></a>Felhasználók közvetlen kiosztása programozott módon
 
-Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasználót egy hozzáférési csomaghoz.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageAssignmentRequest létrehozására](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasználót egy hozzáférési csomaghoz.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageAssignmentRequest létrehozására](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Hozzárendelés eltávolítása
 
@@ -110,7 +110,7 @@ Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasznál
 
     Ekkor megjelenik egy értesítés, amely tájékoztatja, hogy a hozzárendelés el lett távolítva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag kérésének és beállításainak módosítása](entitlement-management-access-package-request-policy.md)
 - [Jelentések és naplók megtekintése](entitlement-management-reports.md)

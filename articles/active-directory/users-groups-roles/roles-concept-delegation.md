@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498225"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798601"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Felügyelet delegálása Azure Active Directory
 
@@ -60,7 +60,7 @@ Határozza meg, hogy a rendszergazdák milyen Active Directory feladatokat hajta
 Az egyes feladatokat a gyakoriság, a fontosság és a nehézségek alapján kell kiértékelni. Ezek a feltételek a feladat-definíció alapvető szempontjai, mert szabályozzák, hogy az engedélyek delegálása szükséges-e:
 
 * A rutinszerűen feltett feladatok korlátozott kockázattal rendelkeznek, és a legrövidebb betöltésük kiválóan alkalmas a delegálásra.
-* Azok a feladatok, amelyeket ritkán tesznek elérhetővé, de nagy hatással vannak a szervezetre, és magas képzettségi szintet igényelnek, a delegálás előtt nagyon Körültekintőnek kell tekinteni. Ehelyett [ideiglenesen megemelheti a fiókot a szükséges szerepkörhöz](../active-directory-privileged-identity-management-configure.md) , vagy újra hozzárendelheti a feladatot.
+* Azok a feladatok, amelyeket ritkán tesznek elérhetővé, de nagy hatással vannak a szervezetre, és magas képzettségi szintet igényelnek, a delegálás előtt nagyon Körültekintőnek kell tekinteni. Ehelyett [ideiglenesen megemelheti a fiókot a szükséges szerepkörhöz](../privileged-identity-management/pim-configure.md) , vagy újra hozzárendelheti a feladatot.
 
 ## <a name="delegate-app-administration"></a>Alkalmazás-felügyelet delegálása
 
@@ -110,8 +110,8 @@ A rendszerjogosultságú fiókok felügyeletét befogadó támadók óriási ká
 
 ## <a name="elevate-privilege-temporarily"></a>Jogosultságszint-emelési jogosultság átmenetileg
 
-A mindennapos tevékenységek esetében nem minden felhasználónak globális rendszergazdai jogosultságra van szüksége, és nem mindegyiknek véglegesen hozzá kell rendelnie a globális rendszergazdai szerepkörhöz. Ha a felhasználóknak a globális rendszergazda engedélyeire van szükségük, aktiválniuk kell a szerepkör-hozzárendelést az Azure AD-ban [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) a saját fiókjában vagy egy másik rendszergazdai fiókban.
+A mindennapos tevékenységek esetében nem minden felhasználónak globális rendszergazdai jogosultságra van szüksége, és nem mindegyiknek véglegesen hozzá kell rendelnie a globális rendszergazdai szerepkörhöz. Ha a felhasználóknak a globális rendszergazda engedélyeire van szükségük, aktiválniuk kell a szerepkör-hozzárendelést az Azure AD-ban [Privileged Identity Management](../privileged-identity-management/pim-configure.md) a saját fiókjában vagy egy másik rendszergazdai fiókban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-szerepkörök leírásával kapcsolatos információkért lásd: [rendszergazdai szerepkörök társítása az Azure ad-ben](directory-assign-admin-roles.md)

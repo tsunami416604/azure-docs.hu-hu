@@ -2,18 +2,18 @@
 title: A Azure Portal használata Azure Stack Edge-rendezési problémák elhárításához | Microsoft Docs
 description: Útmutatás Azure Stack peremhálózati rendezési problémák elhárításához.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: v-grpr
-ms.openlocfilehash: d403fb0da27e3f91e00f3fd8a2fbea77e915898b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.author: twooley
+ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136828"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783994"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>A Azure Stack Edge-rendezéssel kapcsolatos problémák elhárítása
 

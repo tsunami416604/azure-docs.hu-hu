@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 429fe0c4db4a7825a6a98aa5d2cd6af609a34a61
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82570999"
 ---
 # <a name="tutorial-install-azure-stack-edge"></a>Oktatóanyag: Azure Stack Edge telepítése
@@ -211,7 +211,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
     - A PORT 2 csatlakoztatása esetén használja az RJ-45 hálózati kábelt.
     - A 10/25 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, például a következőket:
 

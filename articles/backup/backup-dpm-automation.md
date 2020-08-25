@@ -3,12 +3,12 @@ title: A DPM-munkaterhelések biztonsági mentése a PowerShell használatával
 description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protection Manager (DPM) Azure Backup a PowerShell használatával
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 4d8b8f6ca233c997bc2a94f88903d14009481d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538853"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762742"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 
@@ -47,7 +47,7 @@ A PowerShell használatával a következő telepítési és regisztrációs fela
 * Hálózati beállítások
 * Titkosítási beállítások
 
-## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A következő lépések végigvezetik a Recovery Services-tároló létrehozásának lépésein. Egy Recovery Services-tár nem azonos a Backup-tárolóval.
 
@@ -177,13 +177,13 @@ Ha a DPM-kiszolgáló regisztrálva van a Recovery Services-tárolóban, az alap
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon, ```$setting``` majd a teljes objektum elkötelezett a DPM és Azure Backup a [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával történő mentéshez. A módosítások megőrzése érdekében a ```–Commit``` jelzőt kell használnia. A rendszer nem alkalmazza a beállításokat, és nem használja a Azure Backup, hacsak nincs véglegesítve.
+A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon, ```$setting```  majd a teljes objektum elkötelezett a DPM és Azure Backup a [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával történő mentéshez. A módosítások megőrzése érdekében a ```–Commit``` jelzőt kell használnia. A rendszer nem alkalmazza a beállításokat, és nem használja a Azure Backup, hacsak nincs véglegesítve.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer``` és a ```-ProxyPort``` , ```-ProxyUsername``` valamint a ```ProxyPassword``` [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmaggal végzett paraméterek használatával végezheti el. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
 
@@ -321,12 +321,12 @@ Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -TimesOfDay 
 Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-A fenti példában ```$onlineSch``` egy olyan tömb, amely négy elemet tartalmaz, amely a GFS séma védelmi csoportjának meglévő online védelmi ütemtervét tartalmazza:
+A fenti példában ```$onlineSch``` egy négy elemet tartalmazó tömb található, amely a GFS séma védelmi csoportjának meglévő online védelmi ütemtervét tartalmazza:
 
-1. ```$onlineSch[0]```a napi ütemtervet tartalmazza
-2. ```$onlineSch[1]```a heti ütemtervet tartalmazza
-3. ```$onlineSch[2]```a havi ütemtervet tartalmazza
-4. ```$onlineSch[3]```az éves ütemezést tartalmazza
+1. ```$onlineSch[0]``` a napi ütemtervet tartalmazza
+2. ```$onlineSch[1]``` a heti ütemtervet tartalmazza
+3. ```$onlineSch[2]``` a havi ütemtervet tartalmazza
+4. ```$onlineSch[3]``` az éves ütemezést tartalmazza
 
 Tehát ha módosítania kell a heti ütemtervet, a következőre kell hivatkoznia: ```$onlineSch[1]``` .
 
@@ -354,8 +354,8 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 A [Get-DPMRecoveryPoint](/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) parancsmag használatával lekérheti az adatforrások összes helyreállítási pontjának listáját. Ebben a példában a következőket tesszük:
 
-* az összes PGs beolvasása a DPM-kiszolgálón és egy tömbben tárolva```$PG```
-* a következőhöz tartozó adatforrások beolvasása```$PG[0]```
+* az összes PGs beolvasása a DPM-kiszolgálón és egy tömbben tárolva ```$PG```
+* a következőhöz tartozó adatforrások beolvasása ```$PG[0]```
 * az adatforrás összes helyreállítási pontjának beolvasása.
 
 ```powershell
@@ -370,7 +370,7 @@ Az adatvisszaállítás egy ```RecoverableItem``` objektum és egy objektum komb
 
 Az alábbi példában bemutatjuk, hogyan állíthatja vissza a Hyper-V rendszerű virtuális gépeket Azure Backupről a biztonsági mentési pontok és a helyreállítás céljának kombinálásával. Ez a példa a következőket tartalmazza:
 
-* Helyreállítási lehetőség létrehozása a [New-DPMRecoveryOption](/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) parancsmag használatával.
+* Helyreállítási lehetőség létrehozása a  [New-DPMRecoveryOption](/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) parancsmag használatával.
 * A biztonsági mentési pontok tömbjét a parancsmag használatával olvashatja be ```Get-DPMRecoveryPoint``` .
 * Válasszon ki egy biztonsági mentési pontot a visszaállításhoz.
 
@@ -386,6 +386,6 @@ Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -RecoveryOption $
 
 A parancsok egyszerűen bővíthetők bármilyen adatforrás-típusra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a DPM-ről Azure Backupről: [Bevezetés a DPM Backup](backup-azure-dpm-introduction.md) használatába

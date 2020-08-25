@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837159"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783722"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -43,28 +43,7 @@ Az Azure Gyorsított hálózatkezelés javítja a hálózati teljesítményt az�
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure-beli virtuálisgép-méretezési csoportok Azure Load Balancer
-
-A virtuálisgép-méretezési csoportok és a terheléselosztó használatakor a következő elemeket kell figyelembe venni:
-
-* **Több virtuálisgép-méretezési csoport nem használhatja ugyanazt a**terheléselosztó-t.
-* **A port továbbítása és a bejövő NAT-szabályok**:
-  * Minden virtuálisgép-méretezési csoportnak rendelkeznie kell egy bejövő NAT-szabállyal.
-  * A méretezési csoport létrehozása után a háttér-port nem módosítható a terheléselosztó állapot-mintavételi eljárása által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapot-mintavételt az Azure virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapotot.
-  * Ha a terheléselosztó backend-készletében a virtuálisgép-méretezési csoport van használatban, az alapértelmezett bejövő NAT-szabályok automatikusan jönnek létre.
-* **Bejövő NAT-készlet**:
-  * A bejövő NAT-készlet a bejövő NAT-szabályok gyűjteménye. Egy bejövő NAT-készlet nem képes több virtuálisgép-méretezési csoport támogatására.
-* **Terheléselosztási szabályok**:
-  * A terheléselosztó backend-készletében lévő virtuálisgép-méretezési csoport használatakor az alapértelmezett terheléselosztási szabály automatikusan létrejön.
-* **Kimenő szabályok**:
-  *  Ha olyan **háttér-** készlethez szeretne kimenő szabályt létrehozni, amelyre már egy terheléselosztási szabály hivatkozik, először a **"implicit kimenő szabályok létrehozása"** lehetőséget kell megadnia a portálon a bejövő terheléselosztási szabály létrehozásakor.
-
-  :::image type="content" source="./media/vmsslb.png" alt-text="Terheléselosztási szabály létrehozása" border="true":::
-
-A következő módszerek használhatók a virtuálisgép-méretezési csoport meglévő Azure Load balancerrel való üzembe helyezéséhez.
-
-* [Egy virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer a Azure Portal használatával](../load-balancer/configure-vm-scale-set-portal.md).
-* [Egy virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer Azure PowerShell használatával](../load-balancer/configure-vm-scale-set-powershell.md).
-* [Egy virtuálisgép-méretezési csoport konfigurálása meglévő Azure Load Balancer az Azure CLI használatával](../load-balancer/configure-vm-scale-set-cli.md).
+[Azure Load Balancer és Virtual Machine Scale sets](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) további információt talál arról, hogyan konfigurálhatja a standard Load Balancer Virtual Machine Scale sets alapján a forgatókönyv szerint.
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway-re hivatkozó méretezési csoport létrehozása
 Ha alkalmazásátjárót használó méretezési csoportot szeretne létrehozni, akkor hivatkozzon az alkalmazásátjáró háttércímkészletére a méretezési csoport ipConfigurations szakaszában, mint ebben az ARM-sablonkonfigurációban:
@@ -405,5 +384,5 @@ az vmss show \
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli virtuális hálózatokról az [Azure-beli virtuális hálózatok áttekintését](../virtual-network/virtual-networks-overview.md) ismertető dokumentumban talál további információt.

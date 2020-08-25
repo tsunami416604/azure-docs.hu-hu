@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: c7e2b522d475a49f694a8cb57bf57f62900948b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743186"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799383"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával
 
@@ -88,11 +88,11 @@ Ha valamilyen okból nem tudja használni az elsődleges bejelentkezési módsze
 
 3. Miután visszatért a fiókjába, frissítheti az ellenőrzési módszereket (ha szükséges). A módszerek hozzáadásával vagy módosításával kapcsolatos további információkért tekintse meg a [beállítások kezelése kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-manage-settings.md) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A biztonsági adatok [(előzetes verzió) – áttekintés című](user-help-security-info-overview.md) cikkben talál további információt.
+- A biztonsági adatok [(előzetes verzió) – áttekintés című](./security-info-setup-signin.md) cikkben talál további információt.
 
-- A kétlépéses [ellenőrzés áttekintése című](user-help-two-step-verification-overview.md) cikkben megismerheti a kétlépéses ellenőrzést.
+- A kétlépéses [ellenőrzés áttekintése című](./multi-factor-authentication-end-user-first-time.md) cikkben megismerheti a kétlépéses ellenőrzést.
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa alaphelyzetbe a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/)
 

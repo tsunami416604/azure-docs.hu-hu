@@ -150,41 +150,45 @@
       href: concept-ml-pipelines.md
     - name: Alkalmasság vállalati használatra és biztonság
       items:
+        - name: Vállalati biztonság áttekintése
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
-        - name: Vállalati biztonság és irányítás
+        - name: Identitás és hozzáférés kezelése
           items:
-            - name: Vállalati biztonság áttekintése
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
+            - name: Hitelesítés beállítása
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
             - name: Felhasználók és szerepkörök kezelése
               href: how-to-assign-roles.md
+            - name: Az Azure AD Identity használata AKS-környezetekben
+              href: how-to-use-azure-ad-identity.md
+        - name: Hálózati biztonság
+          items:
             - name: Virtuális hálózatok használata
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Privát kapcsolat használata
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Webszolgáltatások biztonságossá tétele TLS használatával
-              displayName: ssl
+            - name: Biztonságos webszolgáltatások konfigurálása
+              displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
+            - name: Tűzfal konfigurálása
+              href: how-to-access-azureml-behind-firewall.md
+        - name: Adatvédelem
+          items:
             - name: Rugalmasság növelése
               displayName: 'high availability, disaster recovery'
               href: how-to-high-availability-machine-learning.md
-            - name: Az Azure AD Identity használata AKS-környezetekben
-              href: how-to-use-azure-ad-identity.md
             - name: Tárelérési kulcsok újragenerálása
               href: how-to-change-storage-access-key.md
-            - name: Az Azure Firewall használata
-              href: how-to-access-azureml-behind-firewall.md
-            - name: Biztonságos kódolás
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: Hitelesítés beállítása
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
         - name: Az Azure Machine Learning monitorozása
           href: monitor-azure-machine-learning.md
+        - name: Biztonságos kódolás
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
     - name: Felelősségteljes ML
       items:
         - name: Felelősségteljes ML áttekintése

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86146735"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Oktatóanyag: egyetlen erdő integrálása egyetlen Azure AD-Bérlővel
@@ -51,7 +51,7 @@ Az oktatóanyagban létrehozott környezetet tesztelésre vagy a Felhőbeli kié
    - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **mscrl.microsoft.com:80**, **CRL.microsoft.com:80**, **OCSP.msocsp.com:80**és **www \. Microsoft.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
-1. Jelentkezzen be a tartományhoz csatlakoztatott kiszolgálóra.  Ha az [alapszintű ad-és Azure-környezettel](tutorial-basic-ad-azure.md) foglalkozó oktatóanyagot használja, az DC1 lenne.
+1. Jelentkezzen be a tartományhoz csatlakoztatott kiszolgálóra.  Ha az  [alapszintű ad-és Azure-környezettel](tutorial-basic-ad-azure.md) foglalkozó oktatóanyagot használja, az DC1 lenne.
 2. Jelentkezzen be a Azure Portalba kizárólag Felhőbeli globális rendszergazdai hitelesítő adatok használatával.
 3. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect**lehetőséget, majd a központban válassza a **felügyelet kiépítés (előzetes verzió)** elemet.
 
@@ -83,7 +83,7 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -128,7 +128,7 @@ Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkroniz
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
-1. Tallózással keresse meg a[https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Tallózással keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
    ![Ellenőrzés](media/tutorial-single-forest/verify1.png)</br>
 

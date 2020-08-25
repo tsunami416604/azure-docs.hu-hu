@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 8b585dc46eb2bdd54e48950ca861f0edc8f0a7ed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187042"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762453"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -67,7 +67,7 @@ Ellenőrizze a következőket:
 Az offline biztonsági mentés elindítása előtt győződjön meg arról, hogy a szükséges Data Box eszközök *kézbesítése* folyamatban van. A szükséglethez legmegfelelőbb SKU megrendeléséhez tekintse meg a [biztonsági másolatok mérete és a támogatott Data Box SKU](#backup-data-size-and-supported-data-box-skus) -ket. A Data Box-eszközök megrendeléséhez és fogadásához kövesse az [ebben a cikkben](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) ismertetett lépéseket.
 
 > [!IMPORTANT]
-> Ne válassza a *BlobStorage* lehetőséget a **fiók típusához**. A DPM/MABS-kiszolgálónak olyan fiókra van szüksége, amely támogatja az oldal blobokat, amelyek nem támogatottak, ha a *BlobStorage* van kiválasztva. Válassza a **Storage v2 (általános célú v2)** lehetőséget **a Azure Data Box** feladathoz tartozó cél Storage-fiók létrehozásakor.
+> Ne válassza a *BlobStorage* lehetőséget a **fiók típusához**. A DPM/MABS-kiszolgálónak olyan fiókra van szüksége, amely támogatja az oldal blobokat, amelyek nem támogatottak, ha a *BlobStorage* van kiválasztva. Válassza a  **Storage v2 (általános célú v2)** lehetőséget **a Azure Data Box** feladathoz tartozó cél Storage-fiók létrehozásakor.
 
 ![Az Azure databox beállítása](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -93,7 +93,7 @@ A DPM/MABS-kiszolgáló a rendszerkörnyezetben működik, ezért ugyanazt a jog
 1. Engedélyezze az NFS-ügyfélszolgáltatás funkcióját a DPM/MABS-kiszolgálón.
 Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 2. Töltse le a **PSExec** -t a rendszerből [https://download.sysinternals.com/files/PSTools.zip](https://download.sysinternals.com/files/PSTools.zip) a DPM/MABS-kiszolgálóra.
-3. Nyisson meg egy rendszergazda jogú parancssort, és hajtsa végre a következő parancsot az *PSExec.exet* tartalmazó könyvtárral az aktuális könyvtárként.
+3. Nyisson meg egy rendszergazda jogú parancssort, és hajtsa végre a következő parancsot az *PSExec.exet * tartalmazó könyvtárral az aktuális könyvtárként.
 
    ```cmd
    psexec.exe  -s  -i  cmd.exe
@@ -131,7 +131,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
     ![A kezdeti online replikáció kiválasztása](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > A **Microsoft tulajdonában lévő lemezekkel történő átvitel** kiválasztásának lehetősége nem érhető el az MABS V3 esetében, mivel a funkció előzetes verzióban érhető el. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)Ha ezt a funkciót szeretné használni a MABS v3-hez, lépjen kapcsolatba velünk a következővel:.
+    > A **Microsoft tulajdonában lévő lemezekkel történő átvitel** kiválasztásának lehetősége nem érhető el az MABS V3 esetében, mivel a funkció előzetes verzióban érhető el. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)Ha ezt a funkciót szeretné használni a MABS v3-hez, a következő címen juthat el hozzánk:.
 
 12. Ha a rendszer kéri, jelentkezzen be az Azure-ba, és használja az Azure-előfizetéshez tulajdonosi hozzáféréssel rendelkező felhasználói hitelesítő adatokat. Sikeres bejelentkezés után a következő képernyő jelenik meg:
 
@@ -143,13 +143,13 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
      > Az első bejelentkezés a szokásosnál hosszabb időt vesz igénybe. A Azure PowerShell modul a háttérben települ, és az Azure AD-alkalmazás is regisztrálva lesz.
      >
      >  - A következő PowerShell-modulok vannak telepítve:<br>
-          -AzureRM. profil *5.8.3*<br>
-          -AzureRM. Resources *6.7.3*<br>
-          -AzureRM. Storage *5.2.0*<br>
-          – Azure. Storage *4.6.1*<br>
+          -AzureRM. profil     *5.8.3*<br>
+          -AzureRM. Resources   *6.7.3*<br>
+          -AzureRM. Storage     *5.2.0*<br>
+          – Azure. Storage       *4.6.1*<br>
      >  - Az Azure AD-alkalmazás *AzureOfflineBackup_ként \<object GUID of the user> *van regisztrálva.
 
-13. Válassza ki a megfelelő adatmező-sorrendet, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezét. Válassza a **Tovább** lehetőséget.
+13. Válassza ki a megfelelő adatmező-sorrendet, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezét. Kattintson a **Tovább** gombra.
 
     ![Válassza ki a databox](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
     > Ha például a lemez elérési útja, a `\\mydomain\myserver\disk1\` *Disk1* pedig a *PageBlob*nevű KÖNYVTÁRAT tartalmazza, akkor a DPM/MABS-kiszolgáló varázslóban meg kell adni az elérési utat `\\mydomain\myserver\disk1\` .
     > Ha [Azure Data Box 100 TB-os eszközt állít](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)be, adja meg a következőt az eszköz hálózati elérési útjaként `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
-15. Válassza a **Tovább** lehetőséget. Az **Összefoglalás** lapon tekintse át a beállításokat, majd válassza a **csoport létrehozása**lehetőséget.
+15. Kattintson a **Tovább** gombra. Az **Összefoglalás** lapon tekintse át a beállításokat, majd válassza a **csoport létrehozása**lehetőséget.
 
     ![Databox észlelése](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -215,7 +215,7 @@ A kapcsolat nélküli biztonsági mentés konfigurálásakor a Azure PowerShell 
 
 A következő lépések egyikének végrehajtásával biztosíthatja, hogy a hiba a fenti [probléma](#issue) miatt megtörténjen:
 
-#### <a name="step-1"></a>1\. lépés
+#### <a name="step-1"></a>1. lépés
 
 Ellenőrizze, hogy a következő hibaüzenet jelenik-e meg a DPM/MABS-konzolon az offline biztonsági mentés konfigurálásakor:
 
@@ -258,10 +258,10 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
     > - Navigáljon az CurrentUserId nevű beállításjegyzékbeli elérési útra `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` . *CurrentUserId*
 
 6. Kattintson a jobb gombbal a fenti lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a **2. pontban** exportált tanúsítvány ujjlenyomatát, és kattintson az **OK gombra**.
-7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra, majd válassza a **részletek** elemet, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza ki az **ujjlenyomatot** , és másolja az értéket.
+7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra, majd válassza a **részletek**  elemet, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza ki az **ujjlenyomatot** , és másolja az értéket.
 
-   ![Tanúsítvány](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
+   ![Ujjlenyomat értéke](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Offline előkészítés saját lemez használatával (az Azure import/export szolgáltatás használatával)](backup-azure-backup-server-import-export.md)

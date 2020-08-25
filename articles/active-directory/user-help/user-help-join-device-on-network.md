@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745724"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799485"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
 Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz.
@@ -27,9 +27,9 @@ A Windows 10-es eszköznek a szervezet hálózatához való csatlakoztatása kö
 
 - A Windows regisztrálja az eszközt a szervezet hálózatán, és lehetővé teszi az erőforrások elérését a személyes fiókjával. Az eszköz regisztrálása után a Windows csatlakoztatja az eszközt a hálózathoz, így a bejelentkezéshez és a korlátozott erőforrásokhoz való hozzáféréshez a szervezet felhasználónevét és jelszavát is használhatja.
 
-- A szervezete által választott lehetőségek alapján előfordulhat, hogy az [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági adatok](user-help-security-info-overview.md)között két lépésből álló ellenőrzést kell beállítania.
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy az [multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy a [biztonsági adatok](./security-info-setup-signin.md)között két lépésből álló ellenőrzést kell beállítania.
 
-- A szervezete által választott lehetőségek alapján előfordulhat, hogy automatikusan regisztrálva van a mobileszköz-kezelésben, például Microsoft Intune. További információ a Microsoft Intune való regisztrálásáról: [eszköz regisztrálása az Intune-ban](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- A szervezete által választott lehetőségek alapján előfordulhat, hogy automatikusan regisztrálva van a mobileszköz-kezelésben, például Microsoft Intune. További információ a Microsoft Intune való regisztrálásáról: [eszköz regisztrálása az Intune-ban](/intune-user-help/enroll-your-device-in-intune-all).
 
 - A bejelentkezési folyamattal a szervezeti fiókjával való automatikus bejelentkezést használva végezheti el a bejelentkezést.
 
@@ -91,7 +91,7 @@ Ha már beállította az eszközét, és már be van állítva, akkor az alábbi
 
     ![Mobil értesítési képernyő](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. A győződjön meg róla, hogy **Ez a szervezet** képernyő, tekintse át az adatokat, és győződjön meg arról, hogy a megfelelő, majd válassza a **Csatlakozás**lehetőséget.
+7. A győződjön meg róla, hogy  **Ez a szervezet** képernyő, tekintse át az adatokat, és győződjön meg arról, hogy a megfelelő, majd válassza a **Csatlakozás**lehetőséget.
 
     ![Győződjön meg arról, hogy a szervezet ellenőrző képernyője](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
@@ -110,9 +110,9 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután csatlakoztatta az eszközt a szervezete hálózatához, a munkahelyi vagy iskolai fiókja adataival férhet hozzá az összes erőforráshoz.
 
 - Ha a szervezete szeretné regisztrálni a személyes eszközét, például a telefont, tekintse meg a [személyes eszköz regisztrálása a szervezet hálózatán](user-help-register-device-on-network.md)című témakört.
 
-- Ha a szervezetét Microsoft Intune használatával felügyeli, és kérdései vannak a beléptetéssel, a bejelentkezéssel vagy bármely más, az Intune-nal kapcsolatos problémával kapcsolatban, tekintse meg az [Intune felhasználói súgójának tartalmát](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Ha a szervezetét Microsoft Intune használatával felügyeli, és kérdései vannak a beléptetéssel, a bejelentkezéssel vagy bármely más, az Intune-nal kapcsolatos problémával kapcsolatban, tekintse meg az [Intune felhasználói súgójának tartalmát](/intune-user-help/use-managed-devices-to-get-work-done).

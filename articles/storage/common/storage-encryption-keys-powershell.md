@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a3fdde755a5e024efead5c8861a1d5cd769b6d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c928056ec0e7b101d991c8d8c8db3bd659251ba
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036828"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799128"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával
 
@@ -81,13 +81,16 @@ Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcs
 
 Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Ebben a lépésben az Azure Storage-fiókot úgy konfigurálja, hogy az ügyfél által felügyelt kulcsokat Azure Key Vault használatával használja, majd adja meg a Storage-fiókhoz társítandó kulcsot.
 
-Ha az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást, dönthet úgy, hogy automatikusan elforgatja a titkosításhoz használt kulcsot, amikor a verzió módosul a társított kulcstartóban. Másik lehetőségként explicit módon megadhatja a titkosításhoz használni kívánt verziót, amíg a kulcs verzióját manuálisan nem frissíti.
+Ha ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást, beállíthatja, hogy a rendszer automatikusan frissítse a titkosításhoz használt kulcsot, amikor a kulcs verziója megváltozik a társított kulcstartóban. Másik lehetőségként explicit módon megadhatja a titkosításhoz használni kívánt verziót, amíg a kulcs verzióját manuálisan nem frissíti.
 
-### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsok automatikus elforgatásához
+> [!NOTE]
+> A kulcs elforgatásához hozza létre a kulcs új verzióját Azure Key Vault. Az Azure Storage nem kezeli a kulcs elforgatását Azure Key Vaultban, ezért manuálisan kell elforgatnia a kulcsot, vagy létre kell hoznia egy függvényt, amellyel elforgathatja azt ütemterv szerint.
 
-Az ügyfél által felügyelt kulcsok automatikus elforgatásához a titkosítás konfigurálásához telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modult, a Version 2.0.0 vagy az újabb verziót.
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>A titkosítási konfiguráció konfigurálása a kulcs verziójának automatikus frissítéséhez
 
-Az ügyfél által felügyelt kulcsok automatikus elforgatásához hagyja ki a kulcs verzióját, ha az ügyfél által felügyelt kulcsokat konfigurálja a Storage-fiókhoz. A [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a Storage-fiók titkosítási beállításainak frissítésére szolgál, ahogy az az alábbi példában is látható, és a **-KeyvaultEncryption** beállítással engedélyezheti az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+Ha a titkosítást az ügyfél által felügyelt kulcsokkal szeretné konfigurálni a kulcs verziójának automatikus frissítéséhez, telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modult, a Version 2.0.0 vagy az újabb verziót.
+
+Az ügyfél által felügyelt kulcs verziószámának automatikus frissítéséhez hagyja ki a kulcs verzióját, ha a Storage-fiókhoz az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást. A [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a Storage-fiók titkosítási beállításainak frissítésére szolgál, ahogy az az alábbi példában is látható, és a **-KeyvaultEncryption** beállítással engedélyezheti az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -97,7 +100,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Titkosítás konfigurálása a kulcsfontosságú verziók manuális elforgatásához
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>Titkosítási konfiguráció konfigurálása a kulcsfontosságú verziók manuális frissítéséhez
 
 Ha explicit módon meg szeretné adni a titkosításhoz használni kívánt verziót, adja meg a kulcs verziószámát, ha a titkosítást az ügyfél által felügyelt kulcsokkal konfigurálja a Storage-fiókhoz. A [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a Storage-fiók titkosítási beállításainak frissítésére szolgál, ahogy az az alábbi példában is látható, és a **-KeyvaultEncryption** beállítással engedélyezheti az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
@@ -110,7 +113,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-Amikor manuálisan elforgatja a kulcs verzióját, frissítenie kell a Storage-fiók titkosítási beállításait az új verzió használatára. Először hívja meg a [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) a kulcs legújabb verziójának beszerzéséhez. Ezután hívja meg a [set-AzStorageAccount-](/powershell/module/az.storage/set-azstorageaccount) t, hogy frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára az előző példában látható módon.
+Amikor manuálisan frissíti a kulcs verzióját, frissítenie kell a Storage-fiók titkosítási beállításait az új verzió használatára. Először hívja meg a [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) a kulcs legújabb verziójának beszerzéséhez. Ezután hívja meg a [set-AzStorageAccount-](/powershell/module/az.storage/set-azstorageaccount) t, hogy frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára az előző példában látható módon.
 
 ## <a name="use-a-different-key"></a>Másik kulcs használata
 
@@ -135,7 +138,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -StorageEncryption  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

@@ -2,74 +2,85 @@
 title: 'Oktatóanyag: hálózati ellenőrzőlista'
 description: A hálózati kapcsolatra és a hálózati portokra vonatkozó előfeltételek és részletek
 ms.topic: tutorial
-ms.date: 05/04/2020
-ms.openlocfilehash: 42bd579a455c7efe3b8f6e4d4154e687726adb1d
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.date: 08/21/2020
+ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740149"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750409"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution-avs"></a>Hálózati ellenőrzőlista az Azure VMware-megoldáshoz (AVS)
+# <a name="networking-checklist-for-azure-vmware-solution"></a>Hálózati ellenőrzőlista az Azure VMware-megoldáshoz 
 
-Az Azure VMware megoldás egy VMware Private Cloud Environment-környezetet kínál, amely a helyszíni és az Azure-alapú környezetek vagy erőforrások felhasználói és alkalmazásai számára érhető el. A kapcsolat olyan hálózati szolgáltatásokon keresztül valósul meg, mint az Azure ExpressRoute és a VPN-kapcsolatok, és bizonyos hálózati címtartományok és tűzfal-portok szükségesek a szolgáltatások engedélyezéséhez. Ez a cikk azokat az információkat tartalmazza, amelyeket tudnia kell, hogy megfelelően konfigurálja a hálózatkezelést az AVS-vel való együttműködéshez.
+Az Azure VMware megoldás egy VMware Private Cloud Environment-környezetet kínál, amely a helyszíni és az Azure-alapú környezetek vagy erőforrások felhasználói és alkalmazásai számára érhető el. A kapcsolat olyan hálózati szolgáltatásokon keresztül valósul meg, mint az Azure ExpressRoute és a VPN-kapcsolatok, és bizonyos hálózati címtartományok és tűzfal-portok szükségesek a szolgáltatások engedélyezéséhez. Ebből a cikkből megtudhatja, hogy milyen információkra van szüksége ahhoz, hogy megfelelően konfigurálja a hálózatkezelést az Azure VMware-megoldással való együttműködéshez.
 
 Ez az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hálózati kapcsolatra vonatkozó követelmények
-> * DHCP az AVS-ben
+> * DHCP az Azure VMware-megoldásban
 
-## <a name="network-connectivity"></a>Hálózati kapcsolat
+## <a name="virtual--network-and-expressroute-circuit--considerations"></a>A Virtual Network és a ExpressRoute Circuit szempontjai
+Amikor létrehoz egy kapcsolatot az előfizetésben található virtuális hálózatból, a ExpressRoute áramkör a társításon keresztül jön létre, és egy engedélyezési kulcsot és egy, a Azure Portal által kért társ-azonosítót használ. A társítás egy privát, egy-az-egyhez kapcsolat a privát felhő és a virtuális hálózat között.
 
-Az AVS Private Cloud egy Azure ExpressRoute-kapcsolaton keresztül csatlakozik az Azure-beli virtuális hálózathoz. Ez a nagy sávszélességű, kis késleltetésű kapcsolat lehetővé teszi, hogy hozzáférjen az Azure-előfizetésében futó szolgáltatásokhoz a saját felhőalapú környezetében.
+> [!NOTE] 
+> A ExpressRoute áramkör nem része a felhőalapú telepítésnek. A helyszíni ExpressRoute áramkör a jelen dokumentum hatókörén kívül esik. Ha helyszíni kapcsolatra van szüksége a saját felhőhöz, használhat egy meglévő ExpressRoute-áramkört, vagy vásárolhat egyet a Azure Portal.
 
-Az AVS Private-felhőkhöz legalább egy `/22` CIDR hálózati címfordító szükséges az alhálózatok számára, alább látható. Ez a hálózat kiegészíti a helyszíni hálózatokat. A helyszíni környezetekhez és a virtuális hálózatokhoz való kapcsolódáshoz nem átfedésben lévő hálózati címterület szükséges.
+Privát felhő telepítésekor a vCenter és a NSX-T kezelő IP-címeit kapja meg. Ezen felügyeleti felületek eléréséhez további erőforrásokat kell létrehoznia az előfizetésében található virtuális hálózatban. Ezen erőforrások létrehozásához és ExpressRoute létrehozásához szükséges eljárásokat az oktatóanyagokban találja.
 
-Példa `/22` a CIDR hálózati címterület:`10.10.0.0/22`
+A privát felhőalapú logikai hálózat előre kiépített NSX-T tartalmaz. Az Ön számára előre kiépített 0. rétegbeli átjáró és 1. rétegbeli átjáró. Létrehozhat egy szegmenst, és csatolhatja azt a meglévő 1. rétegbeli átjáróhoz, vagy csatolhatja azt egy Ön által definiált új 1. rétegbeli átjáróhoz. A NSX-T logikai hálózatkezelési összetevők kelet-nyugati kapcsolatot biztosítanak a munkaterhelések között, és észak-déli kapcsolatot biztosítanak az internettel és az Azure-szolgáltatásokkal.
+
+## <a name="routing-and-subnet-considerations"></a>Útválasztás és alhálózat szempontjai
+Az AVS Private Cloud egy Azure ExpressRoute-kapcsolaton keresztül csatlakozik az Azure-beli virtuális hálózathoz. Ez a nagy sávszélességű, kis késleltetésű kapcsolat lehetővé teszi, hogy hozzáférjen az Azure-előfizetésében futó szolgáltatásokhoz a saját felhőalapú környezetében. Az Útválasztás Border Gateway Protocol (BGP) alapul, automatikusan kiépítve, és alapértelmezés szerint engedélyezve van minden egyes privát Felhőbeli telepítéshez. 
+
+Az AVS Private-felhőkhöz legalább egy `/22` CIDR hálózati címfordító szükséges az alhálózatok számára, alább látható. Ez a hálózat kiegészíti a helyszíni hálózatokat. A Címterület nem fedi át az előfizetésben és a helyszíni hálózatokban lévő más virtuális hálózatokban használt címeket. Ezen a címen a blokkon belül a felügyelet, a kiépítés és a vMotion hálózat automatikusan kiépítve lesz.
+
+Példa a `/22` CIDR hálózati címterület:  `10.10.0.0/22`
 
 Az alhálózatok:
 
 | Hálózati forgalom             | Alhálózat | Példa        |
 | ------------------------- | ------ | -------------- |
-| Magánfelhő-felügyelet            | `/24`    | `10.10.0.0/24`   |
-| vMotion hálózat       | `/24`    | `10.10.1.0/24`   |
-| Virtuális gépek számítási feladatai | `/24`   | `10.10.2.0/24`   |
-| ExpressRoute-társítás | `/24`    | `10.10.3.8/30`   |
+| Magánfelhő-felügyelet  | `/24`  | `10.10.0.0/24` |
+| vMotion hálózat           | `/24`  | `10.10.1.0/24` |
+| Virtuális gépek számítási feladatai              | `/24`  | `10.10.2.0/24` |
+| ExpressRoute-társítás      | `/24`  | `10.10.3.8/30` |
+
 
 ### <a name="network-ports-required-to-communicate-with-the-service"></a>A szolgáltatással való kommunikációhoz szükséges hálózati portok
 
-Forrás|Cél|Protocol (Protokoll) |Port |Leírás  |Megjegyzés
----|-----|:-----:|:-----:|-----|-----
-Saját Felhőbeli DNS-kiszolgáló  |Helyszíni DNS-kiszolgáló  |UDP |53|DNS-ügyfél – a számítógépek vCenter érkező, a helyszíni DNS-lekérdezésekre vonatkozó kérések (lásd az alábbi DNS-szakaszt) |
-Helyszíni DNS-kiszolgáló  |Saját Felhőbeli DNS-kiszolgáló  |UDP |53|DNS-ügyfelek – helyszíni szolgáltatásokból származó, saját Felhőbeli DNS-kiszolgálókra irányuló kérések (a DNS-t lásd alább)
-Helyszíni hálózat  |Saját felhőalapú vCenter-kiszolgáló  |TCP (HTTP)  |80|vCenter Server a közvetlen HTTP-kapcsolatokhoz a 80-es portot igényli.A 80-es port átirányítja a kérelmeket a 443-es HTTPS-portra. Ez az átirányítás segít, ha `http://server` a helyett `https://server`a-t használja.  <br><br>WS-Management (az 443-es port megnyitásához is szükséges) <br><br>Ha egyéni Microsoft SQL Database-adatbázist használ, és nem a csomagban lévő SQL Server 2008-adatbázist a vCenter Server, akkor a SQL Reporting-szolgáltatások a 80-es portot használják. A vCenter Server telepítésekor a telepítő felszólítja, hogy módosítsa a vCenter Server HTTP-portját. A sikeres telepítés érdekében módosítsa a vCenter Server HTTP-portot egy egyéni értékre.A Microsoft Internet Information Services (IIS) a 80-es portot is használja. Lásd: az vCenter Server és az IIS közötti ütközés az 80-as porton.
-Saját felhőalapú felügyeleti hálózat |Helyszíni Active Directory  |TCP  |389|Ennek a portnak nyitva kell lennie a helyi és a vCenter Server összes távoli példányán. Ez a port az vCenter Server-csoport címtárszolgáltatás-szolgáltatásainak LDAP-portszáma. A vCenter Server rendszernek az 389-es porthoz kell kötnie, még akkor is, ha nem csatlakozik ehhez a vCenter Server-példányhoz egy csatolt módú csoporthoz. Ha egy másik szolgáltatás fut ezen a porton, érdemes lehet eltávolítani, vagy egy másik portra módosítani a portot. Az LDAP szolgáltatást a 1025 és 65535 közötti bármely porton futtathatja.Ha ez a példány Microsoft Windows Active Directoryként szolgál, módosítsa az 389-es portszámot a 1025 és 65535 közötti rendelkezésre álló portra. Ez a port nem kötelező – a helyszíni AD identitás-forrásként való konfigurálásához a privát felhő vCenter
-Helyszíni hálózat  |Saját felhőalapú vCenter-kiszolgáló  |TCP (HTTPS)  |443|Ez a port lehetővé teszi a helyszíni hálózatról érkező vCenter elérését.Az a vCenter Server rendszer által használt alapértelmezett port, amellyel figyeli a vSphere-ügyfél kapcsolatait. Ha engedélyezni szeretné a vCenter Server rendszer számára a vSphere-ügyféltől érkező adatok fogadását, nyissa meg a tűzfal 443-as portját. A vCenter Server rendszer az 443-es portot is használja az SDK-ügyfelekről érkező adatátvitel figyelésére.Ez a port a következő szolgáltatásokhoz is használatos: WS-Management (az 80-es portot is meg kell nyitni). vSphere-ügyfél hozzáférése a vSphere Update Managerhez. Harmadik féltől származó hálózatkezelési ügyfélkapcsolatok vCenter Serverhoz. A harmadik féltől származó hálózatkezelési ügyfelek hozzáférést biztosítanak a gazdagépekhez. 
-Webböngésző  | Hibrid Cloud Manager  | TCP (https) | 9443 | Hibrid Cloud Manager virtuálisgép-kezelési felület a hibrid Cloud Manager rendszer-konfigurációhoz.
-Felügyeleti hálózat  | Hibrid Cloud Manager |SSH |22| Rendszergazdai SSH-hozzáférés a hibrid Cloud Managerhez.
-HCM |   Felhőbeli átjáró|TCP (HTTPS) |8123| Gazdagép-alapú replikációs szolgáltatásra vonatkozó utasítások küldése a hibrid Felhőbeli átjárónak.
-HCM |   Felhőbeli átjáró  |    HTTP TCP (HTTPS) |    9443  |  Felügyeleti utasítások küldése a helyi hibrid Felhőbeli átjárónak a REST API használatával.
-Felhőbeli átjáró|      L2C |    TCP (HTTP)  |   443 |   Felügyeleti utasítások küldése a Cloud Gatewaytől a L2C, ha a L2C ugyanazt az útvonalat használja, mint a hibrid felhőalapú átjáró.
-Felhőbeli átjáró |     ESXi-gazdagépek |     TCP |    80 902  |   Felügyelet és OVF üzembe helyezése
-Felhőalapú átjáró (helyi)|     Cloud Gateway (távoli)|     UDP  |   4500 | IPSEC-hez szükséges<br>   Internet Key Exchange (IKEv2) a kétirányú alagút számítási feladatainak beágyazásához. Hálózati címfordítás – bejárási (NAT-T) is támogatott.
-Felhőalapú átjáró (helyi)  |   Cloud Gateway (távoli)  |   UDP  |   500   | IPSEC-hez szükséges<br> Az Internet Key Exchange (ISAKMP) a kétirányú alagúthoz.
-Helyszíni vCenter-hálózat|      Saját felhőalapú felügyeleti hálózat|      TCP  |    8000    |  helyszíni vCenter származó virtuális gépek vMotion saját Felhőbeli vCenter   |     
+| Forrás | Cél | Protokoll | Port | Leírás  | 
+| ------ | ----------- | :------: | :---:| ------------ | 
+| Saját Felhőbeli DNS-kiszolgáló | Helyszíni DNS-kiszolgáló | UDP | 53 | DNS-ügyfél – a számítógépek vCenter érkező, a helyszíni DNS-lekérdezésekre vonatkozó kérések (lásd az alábbi DNS-szakaszt) |  
+| Helyszíni DNS-kiszolgáló   | Saját Felhőbeli DNS-kiszolgáló | UDP | 53 | DNS-ügyfelek – helyszíni szolgáltatásokból származó, saját Felhőbeli DNS-kiszolgálókra irányuló kérések (a DNS-t lásd alább) |  
+| Helyszíni hálózat  | Saját felhőalapú vCenter-kiszolgáló  | TCP (HTTP)  | 80 | vCenter Server a közvetlen HTTP-kapcsolatokhoz a 80-es portot igényli.A 80-es port átirányítja a kérelmeket a 443-es HTTPS-portra. Ez az átirányítás segít, ha  `http://server`   a helyett a-t használja  `https://server` .  <br><br>WS-Management (az 443-es port megnyitásához is szükséges) <br><br>Ha egyéni Microsoft SQL Database-adatbázist használ, és nem a csomagban lévő SQL Server 2008-adatbázist a vCenter Server, akkor a SQL Reporting-szolgáltatások a 80-es portot használják. A vCenter Server telepítésekor a telepítő felszólítja, hogy módosítsa a vCenter Server HTTP-portját. A sikeres telepítés érdekében módosítsa a vCenter Server HTTP-portot egy egyéni értékre.A Microsoft Internet Information Services (IIS) a 80-es portot is használja. Lásd: az vCenter Server és az IIS közötti ütközés az 80-as porton. |  
+| Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory  | TCP  | 389 | Ennek a portnak nyitva kell lennie a helyi és a vCenter Server összes távoli példányán. Ez a port az vCenter Server-csoport címtárszolgáltatás-szolgáltatásainak LDAP-portszáma. A vCenter Server rendszernek az 389-es porthoz kell kötnie, még akkor is, ha nem csatlakozik ehhez a vCenter Server-példányhoz egy csatolt módú csoporthoz. Ha egy másik szolgáltatás fut ezen a porton, érdemes lehet eltávolítani, vagy egy másik portra módosítani a portot. Az LDAP szolgáltatást a 1025 és 65535 közötti bármely porton futtathatja.Ha ez a példány Microsoft Windows Active Directoryként szolgál, módosítsa az 389-es portszámot a 1025 és 65535 közötti rendelkezésre álló portra. Ez a port nem kötelező – a helyszíni AD identitás-forrásként való konfigurálásához a privát felhő vCenter. |  
+| Helyszíni hálózat  | Saját felhőalapú vCenter-kiszolgáló  | TCP (HTTPS)  | 443 | Ez a port lehetővé teszi a helyszíni hálózatról érkező vCenter elérését.Az a vCenter Server rendszer által használt alapértelmezett port, amellyel figyeli a vSphere-ügyfél kapcsolatait. Ha engedélyezni szeretné a vCenter Server rendszer számára a vSphere-ügyféltől érkező adatok fogadását, nyissa meg a tűzfal 443-as portját. A vCenter Server rendszer az 443-es portot is használja az SDK-ügyfelekről érkező adatátvitel figyelésére.Ez a port a következő szolgáltatásokhoz is használatos: WS-Management (az 80-es portot is meg kell nyitni). vSphere-ügyfél hozzáférése a vSphere Update Managerhez. Harmadik féltől származó hálózatkezelési ügyfélkapcsolatok vCenter Serverhoz. A harmadik féltől származó hálózatkezelési ügyfelek hozzáférést biztosítanak a gazdagépekhez. |  
+| Webböngésző  | Hibrid Cloud Manager  | TCP (HTTPS) | 9443 | Hibrid Cloud Manager virtuálisgép-kezelési felület a hibrid Cloud Manager rendszer-konfigurációhoz. |
+| Felügyeleti hálózat  | Hibrid Cloud Manager | SSH | 22 | Rendszergazdai SSH-hozzáférés a hibrid Cloud Managerhez. |
+| HCM | Felhőbeli átjáró | TCP (HTTPS) | 8123 | Gazdagép-alapú replikációs szolgáltatásra vonatkozó utasítások küldése a hibrid Felhőbeli átjárónak. |
+| HCM | Felhőbeli átjáró | HTTP TCP (HTTPS) | 9443 | Felügyeleti utasítások küldése a helyi hibrid Felhőbeli átjárónak a REST API használatával. |
+| Felhőbeli átjáró | L2C | TCP (HTTPS) | 443 | Felügyeleti utasítások küldése a Cloud Gatewaytől a L2C, ha a L2C ugyanazt az útvonalat használja, mint a hibrid felhőalapú átjáró. |
+| Felhőbeli átjáró | ESXi-gazdagépek | TCP | 80 902 | Felügyelet és OVF üzembe helyezése. |
+| Felhőalapú átjáró (helyi)| Cloud Gateway (távoli) | UDP | 4500 | IPSEC-hez szükséges<br>   Internet Key Exchange (IKEv2) a kétirányú alagút számítási feladatainak beágyazásához. Hálózati címfordítás – bejárási (NAT-T) is támogatott. |
+| Felhőalapú átjáró (helyi) | Cloud Gateway (távoli)  | UDP | 500 | IPSEC-hez szükséges<br> Az Internet Key Exchange (ISAKMP) a kétirányú alagúthoz. |
+| Helyszíni vCenter-hálózat | Saját felhőalapú felügyeleti hálózat | TCP | 8000 |  helyszíni vCenter származó virtuális gépek vMotion saját Felhőbeli vCenter   |     
 
-## <a name="dhcp"></a>DHCP
-
+## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP-és DNS-feloldási megfontolások
 A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések névfeloldást és DHCP-szolgáltatásokat igényelnek a keresési és IP-címek hozzárendeléséhez. Ezeknek a szolgáltatásoknak a biztosításához megfelelő DHCP-és DNS-infrastruktúra szükséges. A virtuális gépeket konfigurálhatja úgy, hogy biztosítsa ezeket a szolgáltatásokat a saját felhőalapú környezetében.  
+
 Azt javasoljuk, hogy használja a beépített DHCP-szolgáltatást a NSX, vagy használjon helyi DHCP-kiszolgálót a privát felhőben, ahelyett, hogy a szórásos DHCP-forgalmat átirányítja a WAN-on keresztül a helyszíni környezetbe.
+
+
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 
 > [!div class="checklist"]
 > * Hálózati kapcsolatra vonatkozó követelmények
-> * DHCP az AVS-ben
+> * DHCP az Azure VMware-megoldásban
 
-## <a name="next-steps"></a>További lépések
-
-Ha a megfelelő hálózatkezelés van érvényben, folytassa a következő oktatóanyaggal az AVS Private Cloud létrehozásához.
+Ha a megfelelő hálózatkezelés van érvényben, folytassa a következő oktatóanyaggal, amely az Azure VMware-megoldás saját felhőjét hozza létre.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: egyéni AVS-felhő létrehozása](tutorial-create-private-cloud.md)
+> [Oktatóanyag: Azure VMware-megoldás – saját felhő létrehozása](tutorial-create-private-cloud.md)
