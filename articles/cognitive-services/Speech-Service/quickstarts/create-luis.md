@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
 ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391604"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Gyors útmutató: LUIS Endpoint kulcs beszerzése
@@ -31,7 +31,7 @@ A LUIS integrálható a Speech Service szolgáltatással a beszédből való sz�
 
 A LUIS háromféle kulcsot használ:
 
-|Kulcs típusa|Cél|
+|Kulcs típusa|Rendeltetés|
 |--------|-------|
 |Tartalomkészítés|Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását|
 |Kezdő|Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával|
@@ -61,7 +61,7 @@ A **kulcsok és végpont beállításai** lapon:
 ![A LUIS-app előfizetési kulcsai](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Leképezések felismerése](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)

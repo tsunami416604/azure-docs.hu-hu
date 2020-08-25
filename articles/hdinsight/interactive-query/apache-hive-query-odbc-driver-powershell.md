@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73494318"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Oktatóanyag: lekérdezés Apache Hive ODBC-vel és PowerShell-lel
@@ -42,7 +42,7 @@ Töltse le és telepítse a [Microsoft kaptár ODBC-illesztőt](https://www.micr
 
 A következő lépések bemutatják, hogyan hozhat létre Apache Hive ODBC-adatforrást.
 
-1. A Windowsban navigáljon a**Windows felügyeleti eszközök** > **ODBC-adatforrások (32 bites)/(64 bites)** **elindításához** > .  Megnyílik egy **ODBC adatforrás-rendszergazda** ablak.
+1. A Windowsban navigáljon **Start**a  >  **Windows felügyeleti eszközök**  >  **ODBC-adatforrások (32 bites)/(64 bites)** elindításához.  Megnyílik egy **ODBC adatforrás-rendszergazda** ablak.
 
     ![OBDC-adatforrás rendszergazdája](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ADATFORRÁS konfigurálása az ODBC-adatforrás rendszergazdájával")
 
@@ -55,7 +55,7 @@ A következő lépések bemutatják, hogyan hozhat létre Apache Hive ODBC-adatf
    | Tulajdonság | Leírás |
    | --- | --- |
    |  Adatforrás neve |Adjon nevet az adatforrásának |
-   |  Állomás (ok) |Írja be a `CLUSTERNAME.azurehdinsight.net` (igen) kifejezést. Például: `myHDICluster.azurehdinsight.net` |
+   |  Állomás (ok) |Írja be a következő szöveget: `CLUSTERNAME.azurehdinsight.net`. Például: `myHDICluster.azurehdinsight.net` |
    |  Port |Használja a **443** számú portot.|
    |  Adatbázis |Használja az **alapértelmezett értéket**. |
    |  Mechanizmus |A **Windows Azure HDInsight szolgáltatás** kiválasztása |
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-Az alábbi kódrészlet a fenti függvény használatával hajt végre egy lekérdezést az oktatóanyag elején létrehozott interaktív lekérdezési fürtön. Cserélje `DATASOURCENAME` le a értéket a **Microsoft kaptár ODBC-illesztőprogram DSN-telepítő** képernyőjén megadott **adatforrás nevére** . Ha a rendszer a hitelesítő adatok megadását kéri, adja meg a fürt létrehozásakor a **fürt bejelentkezési felhasználóneve** és a **fürt bejelentkezési jelszava** alatt megadott felhasználónevet és jelszót.
+Az alábbi kódrészlet a fenti függvény használatával hajt végre egy lekérdezést az oktatóanyag elején létrehozott interaktív lekérdezési fürtön. Cserélje le a `DATASOURCENAME` értéket a **Microsoft kaptár ODBC-illesztőprogram DSN-telepítő** képernyőjén megadott **adatforrás nevére** . Ha a rendszer a hitelesítő adatok megadását kéri, adja meg a fürt létrehozásakor a **fürt bejelentkezési felhasználóneve** és a **fürt bejelentkezési jelszava** alatt megadott felhasználónevet és jelszót.
 
 ```powershell
 

@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: Szabályzatok és ütemezések beállítása
           href: devtest-lab-set-lab-policy.md
+        - name: "Tesztkörnyezeti identitás konfigurálása\_"
+          href: configure-lab-identity.md
         - name: Tesztkörnyezet konfigurálása távoli asztali átjáró használatához
           href: configure-lab-remote-desktop-gateway.md
         - name: Értesítés közzététele tesztkörnyezetben
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: A tesztkörnyezet skálázása
           href: devtest-lab-scale-lab.md
-        - name: Tesztkörnyezeti virtuális gépek felügyelt identitásainak engedélyezése
-          href: enable-managed-identities-lab-vms.md
         - name: Virtuálisgép-bázisok felügyelete
           items:
             - name: Azure Marketplace-rendszerképek konfigurálása
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: Virtuális gépek importálása másik tesztkörnyezetből
           href: import-virtual-machines-from-another-lab.md
+        - name: Tesztkörnyezeti virtuális gépek felügyelt identitásainak engedélyezése
+          href: enable-managed-identities-lab-vms.md
     - name: Környezetek használata tesztkörnyezetben
       items:
         - name: Környezet létrehozása

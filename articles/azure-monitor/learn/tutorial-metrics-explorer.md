@@ -7,10 +7,10 @@ ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79082812"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-erőforrásra a figyel
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
+Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="open-metrics-explorer-and-select-a-scope"></a>A metrikák Explorer megnyitása és hatókör kiválasztása
 A metrikák Explorert a Azure Monitor menüjéből vagy a Azure Portal erőforrás menüjéből nyithatja meg. Az összes erőforrás metrikái elérhetők, függetlenül attól, hogy melyik beállítást használja. 

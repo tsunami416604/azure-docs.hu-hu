@@ -4,12 +4,12 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28645311328a2e2054851af6bacf07927eaa88aa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989569"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761117"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 
@@ -48,23 +48,7 @@ Igen, megtekintheti a jelentéseket a tárakban és az előfizetésekben, valami
 
 Ha Ön [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) -felhasználó, aki delegált hozzáféréssel rendelkezik ügyfelei előfizetéséhez vagy a La munkaterületekhez, a biztonsági mentési jelentések segítségével megtekintheti az összes bérlő adatait.
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi ideig tart az Azure Backup-ügynök feladata, hogy tükrözze a portálon?
-
-A Azure Portal akár 15 percet is igénybe vehet, hogy tükrözze az Azure Backup Agent-feladatok állapotát.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>A biztonsági mentési feladat sikertelensége után mennyi időt vesz igénybe egy riasztás küldése?
-
-Az Azure Backup hibája 20 percen belül riasztást vált ki.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Van olyan eset, amikor a rendszer nem küld e-mailt, ha az értesítések konfigurálva vannak?
-
-Igen. A következő helyzetekben az értesítéseket a rendszer nem küldi el.
-
-* Ha a rendszer óránként konfigurálja az értesítéseket, és az órán belül riasztást vált ki és oldott fel
-* Feladat megszakításakor
-* Ha egy második biztonsági mentési művelet meghiúsul, mert az eredeti biztonsági mentési feladata folyamatban van
-
-## <a name="recovery-services-vault"></a>Recovery Services-tároló
+## <a name="recovery-services-vault"></a>Helyreállítási tár
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi ideig tart az Azure Backup-ügynök feladata, hogy tükrözze a portálon?
 

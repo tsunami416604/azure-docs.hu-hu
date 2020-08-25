@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77471329"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: az adatData Box Heavy használata felügyelt lemezként az Azure-ban
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box Heavy beállítása](data-box-heavy-deploy-set-up.md).
+1. Az [ Az Azure Data Box Heavy beállítása](data-box-heavy-deploy-set-up.md) című oktatóanyagot.
 2. Megkapta a Data Box Heavyt, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Nagy sebességű hálózathoz csatlakozik. A legnagyobb másolási sebesség érdekében két 40 GbE sebességű kapcsolat (csomópontonként egy) használható egyidejűleg. Ha nem rendelkezik 40 GbE sebességű kapcsolattal, javasoljuk, hogy legalább két 10 GbE sebességű kapcsolattal (csomópontonként eggyel) rendelkezzen. 
 4. Áttekintette a következőket:
@@ -42,7 +42,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-to-data-box-heavy"></a>Csatlakozás a Data Box Heavyhez
 
-A megadott erőforráscsoportok alapján a Data Box Heavy minden egyes társított erőforráscsoport számára létrehoz egy megosztást. Például ha `mydbmdrg1` a és `mydbmdrg2` a rendelés elhelyezésekor jött létre, a következő megosztások jönnek létre:
+A megadott erőforráscsoportok alapján a Data Box Heavy minden egyes társított erőforráscsoport számára létrehoz egy megosztást. Például ha `mydbmdrg1` `mydbmdrg2` a és a rendelés elhelyezésekor jött létre, a következő megosztások jönnek létre:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
@@ -126,7 +126,7 @@ Ha Linux rendszerű gazdagépet használ, a következő lépésekkel konfigurál
 
     `sudo mount <Data Box or Data Box Heavy IP>:/<NFS share on Data Box or Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Az alábbi példa bemutatja, hogyan csatlakozhat NFS-en keresztül egy Data Box vagy Data Box Heavy-megosztáshoz. A Data Box vagy Data Box Heavy eszköz IP- `169.254.250.200`címe, a `mydbmdrg1_MDisk` megosztás a ubuntuVM, a csatlakoztatási ponthoz `/home/databoxubuntuhost/databox`van csatlakoztatva.
+    Az alábbi példa bemutatja, hogyan csatlakozhat NFS-en keresztül egy Data Box vagy Data Box Heavy-megosztáshoz. A Data Box vagy Data Box Heavy eszköz IP-címe `169.254.250.200` , a megosztás a `mydbmdrg1_MDisk` ubuntuVM, a csatlakoztatási ponthoz van csatlakoztatva `/home/databoxubuntuhost/databox` .
 
     `sudo mount -t nfs 169.254.250.200:/mydbmdrg1_MDisk /home/databoxubuntuhost/databox`
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74456103"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: webalkalmazás üzembe helyezése egy földrajzilag replikált Azure Container registryből
@@ -37,11 +37,11 @@ Ebben a lépésben létrehoz egy Web App for Containers-példányt az *USA nyuga
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és lépjen az előző oktatóanyagban létrehozott regisztrációs adatbázisra.
 
-Válassza ki az**ACR-HelloWorld** **adattárakat** > , majd kattintson a jobb gombbal a **v1** címkére a **címkék** területen, majd válassza a **telepítés a webalkalmazásba**lehetőséget:
+Válassza **ki**  >  az**ACR-HelloWorld**adattárakat, majd kattintson a jobb gombbal a **v1** címkére a **címkék** területen, majd válassza a **telepítés a webalkalmazásba**lehetőséget:
 
 ![Üzembe helyezés az App Service-ben az Azure Portalon][deploy-app-portal-01]
 
-Ha az „Üzembe helyezés a webalkalmazásban” lehetőség nem érhető el, előfordulhat, hogy nem engedélyezte a beállításjegyzék rendszergazdai felhasználóját a [Tároló-beállításjegyzék létrehozása](container-registry-tutorial-prepare-registry.md#create-a-container-registry) első oktatóanyagának utasításai szerint. A rendszergazdai felhasználót a Azure Portal **Beállítások** > **hozzáférési kulcsaiban** engedélyezheti.
+Ha az „Üzembe helyezés a webalkalmazásban” lehetőség nem érhető el, előfordulhat, hogy nem engedélyezte a beállításjegyzék rendszergazdai felhasználóját a [Tároló-beállításjegyzék létrehozása](container-registry-tutorial-prepare-registry.md#create-a-container-registry) első oktatóanyagának utasításai szerint. A rendszergazdai felhasználót a Azure Portal **Beállítások**  >  **hozzáférési kulcsaiban** engedélyezheti.
 
 Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjelenített **Web App for Containers** területen adja meg a következő értékeket a beállításokhoz:
 
@@ -49,7 +49,7 @@ Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjeleníte
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-westus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
-| **App Service-csomag/Hely** | Hozzon létre `plan-westus` nevű új csomagot az **USA nyugati régiójában**. |
+| **App Service-csomag/hely** | Hozzon létre `plan-westus` nevű új csomagot az **USA nyugati régiójában**. |
 | **Kép** | `acr-helloworld:v1` |
 | **Operációs rendszer** | Linux |
 
@@ -82,7 +82,7 @@ Kövesse az előző szakaszban leírt eljárást egy második webalkalmazás az 
 |---|---|
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-eastus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
-| **App Service-csomag/Hely** | Hozzon létre `plan-eastus` nevű új csomagot az **USA keleti régiójában**. |
+| **App Service-csomag/hely** | Hozzon létre `plan-eastus` nevű új csomagot az **USA keleti régiójában**. |
 | **Kép** | `acr-helloworld:v1` |
 | **Operációs rendszer** | Linux |
 

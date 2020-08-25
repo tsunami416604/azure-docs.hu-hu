@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86109620"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
@@ -16,7 +16,7 @@ ms.locfileid: "86109620"
 Ez a cikk segít felkészülni a helyszíni Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)és [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool)használatával.
 
 
-Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Az oktatóanyag a következőket ismerteti:
+Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
@@ -26,7 +26,7 @@ Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését é
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
@@ -100,7 +100,7 @@ Rendelje hozzá a virtuális gépi közreműködő szerepkört a fiókhoz, hogy 
 
 A Hyper-V-t manuálisan is előkészítheti a virtuális gépek felméréséhez, vagy konfigurációs parancsfájl használatával. Ezek az előkészítési lépések. Ha parancsfájlt készít elő, ezeket a rendszer automatikusan konfigurálja.
 
-**Lépés** | **Parancsfájl** | **Kézi**
+**Lépés** | **Script** | **Kézi**
 --- | --- | ---
 **A Hyper-V gazdagépre vonatkozó követelmények ellenőrzése** | A parancsfájl ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.<br/><br/> Engedélyezi a WinRM szolgáltatást, és megnyitja a 5985 (HTTP) és a 5986 (HTTPS) portot a gazdagépen (a metaadat-gyűjteményhez szükséges). | Ellenőrizze a [Hyper-V gazdagépre vonatkozó követelményeket](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) a kiszolgálók értékeléséhez.<br/><br/> Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#port-access) meg vannak nyitva a Hyper-V-gazdagépeken.
 **PowerShell-verzió ellenőrzése** | Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e. | Győződjön meg arról, hogy a PowerShell 4,0-es vagy újabb verzióját futtatja a Hyper-V-gazdagépen.
@@ -133,7 +133,7 @@ Futtassa a szkriptet a következő módon:
 
 A kivonatoló értékek a következők:
 
-| **Hash** | **Érték** |
+| **Kivonat** | **Érték** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
@@ -179,7 +179,7 @@ A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

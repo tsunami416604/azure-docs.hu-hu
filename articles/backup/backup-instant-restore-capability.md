@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: df5af780730f4f5b972107f50387dc0c58b80eaa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611805"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761746"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -115,4 +115,3 @@ Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükség azonnali visszaállítási funkcióra. Le lehet tiltani?
 
 Az azonnali visszaállítás funkció mindenki számára engedélyezve van, és nem tiltható le. A pillanatképek megőrzését legalább egy napra csökkentheti.
-

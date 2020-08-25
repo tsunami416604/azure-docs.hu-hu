@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 45bdd569741dc13181bcaf9e8587a02b3d02c621
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "68728815"
 ---
 1. Jelentkezzen be a [Firebase konzoljába](https://firebase.google.com/console/). Hozzon létre egy új Firebase-projektet, ha nem rendelkezik még ilyennel.
@@ -25,9 +25,9 @@ ms.locfileid: "68728815"
 
         ![Adja meg a csomag nevét](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
     2. Válassza az **alkalmazás regisztrálása**lehetőséget.  
-    1. Válassza a **Google-Services. JSON letöltése**lehetőséget. Ezután mentse a fájlt a projekt mappájába, és válassza a **tovább**lehetőséget. Ha még nem hozta létre a Visual Studio-projektet, ezt a lépést a projekt létrehozása után is elvégezheti. 
+    1. Válassza **a letöltés google-services.jsa**következőn:. Ezután mentse a fájlt a projekt mappájába, és válassza a **tovább**lehetőséget. Ha még nem hozta létre a Visual Studio-projektet, ezt a lépést a projekt létrehozása után is elvégezheti. 
 
-        ![Google-Services. JSON letöltése](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
+        ![google-services.jsletöltése](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
     6. Kattintson a **Tovább** gombra. 
     7. Válassza **a lépés kihagyása**lehetőséget. 
 
@@ -35,9 +35,9 @@ ms.locfileid: "68728815"
 8. A Firebase konzolján kattintson a projektjéhez tartozó fogaskerékre. Ezután kattintson a **Project Settings** (Projektbeállítások) elemre.
 
     ![A projektbeállítások kiválasztása](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
-4. Ha még nem töltötte le a **Google-Services. JSON** fájlt, akkor letöltheti a lapot ezen az oldalon. 
+4. Ha nem töltötte le a **google-services.js** fájlt, letöltheti azt ezen az oldalon. 
 
-    ![Töltse le a Google-Services. JSON fájlt az általános lapról](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-services-json-general-page.png)
+    ![google-services.jsletöltése az Általános lapon](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-services-json-general-page.png)
 1. Váltson a felül található **Cloud Messaging (Felhőbeli üzenetkezelés** ) lapra. Másolja és mentse a **kiszolgálói kulcsot** későbbi használatra. Ezt az értéket használja az értesítési központ konfigurálásához.
 
     ![Kiszolgáló kulcsának másolása](./media/notification-hubs-enable-firebase-cloud-messaging/server-key.png)

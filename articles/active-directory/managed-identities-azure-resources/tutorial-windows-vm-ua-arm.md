@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` felügyelt identitás használata Azure Resource Manager-Windows-Azure ad eléréséhez
+title: Oktatóanyag `:` felügyelt identitás használata Azure Resource Manager-Windows-Azure ad eléréséhez
 description: Oktatóanyag, amely végigvezeti az Azure Resource Manager Windows VM-beli, felhasználó által hozzárendelt felügyelt identitással való elérésének folyamatán.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75977841"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: felhasználó által hozzárendelt felügyelt identitás használata Windows rendszerű virtuális gépen a Azure Resource Manager eléréséhez
@@ -55,7 +55,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - Futtassa az `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` parancsot az `Az.ManagedServiceIdentity` modul kiadás előtti verziójának telepítéséhez, hogy elvégezhesse a cikkben szereplő, felhasználó által hozzárendelt identitással kapcsolatos műveleteket.
 
 
-## <a name="enable"></a>Bekapcsolás
+## <a name="enable"></a>Engedélyezés
 
 A felhasználó által hozzárendelt identitáson alapuló forgatókönyv esetén a következő lépéseket kell elvégeznie:
 
@@ -129,7 +129,7 @@ CanDelegate: False
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
-1. Jelentkezzen be a Azure Portal[https://portal.azure.com](https://portal.azure.com)
+1. Jelentkezzen be a Azure Portal [https://portal.azure.com](https://portal.azure.com)
 
 2. A portálon lépjen a **Virtuális gépek** szakaszra, lépjen a Windows rendszerű virtuális géphez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
 

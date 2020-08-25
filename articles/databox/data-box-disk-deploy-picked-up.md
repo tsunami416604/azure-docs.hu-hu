@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923781"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257447"
 ---
 ::: zone target="docs"
 
@@ -224,7 +224,7 @@ Végezze el a következő lépéseket, ha Kínába küldi vissza az eszközt.
 
 ### <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
-Ha a Data Box Disket Japánban, Szingapúrban, Koreában, Nyugat-Európában vagy Indiában használja, és a rendelés létrehozása során kiválasztotta az Egyénileg kezelt szállítás lehetőséget, kövesse az alábbi utasításokat.
+Ha a Data Box Disket az Egyesült Államok államigazgatási szerveinél, Japánban, Szingapúrban, Koreában, Nyugat-Európában, a Dél-afrikai Köztársaságban vagy Indiában használja, és a rendelés létrehozása során kiválasztotta az önállóan felügyelt szállítás lehetőséget, kövesse az alábbi utasításokat.
 
 1. Az Azure Portalon lépjen a rendeléséhez tartozó **Áttekintés** panelre. Az **Átvétel ütemezése** lehetőség kiválasztásakor tekintse át a megjelenő utasításokat. Egy hitelesítési kódot fog látni, amelyre a rendelés feladásakor lesz szüksége.
 

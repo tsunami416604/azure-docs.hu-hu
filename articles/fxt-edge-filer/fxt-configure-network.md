@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80754690"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: a fürt hálózati beállításainak konfigurálása
@@ -45,7 +45,7 @@ Ha többet szeretne megtudni a fürt hálózati beállításairól, olvassa el a
 
 * Active Directory és Felhasználónév/csoport nevének letöltésének konfigurálása (ha szükséges)
 
-  Ha a hálózati gazdagépek Active Directory vagy más típusú külső címtárszolgáltatás használatát használják, akkor módosítania kell a fürt címtárszolgáltatások konfigurációját, hogy beállítsa, hogyan töltse le a fürt a felhasználónevet és a csoport adatait. A részletekért **tekintse meg a fürt****címtár-szolgáltatásait** a fürt konfigurációs útmutatójában. > 
+  Ha a hálózati gazdagépek Active Directory vagy más típusú külső címtárszolgáltatás használatát használják, akkor módosítania kell a fürt címtárszolgáltatások konfigurációját, hogy beállítsa, hogyan töltse le a fürt a felhasználónevet és a csoport adatait. A részletekért tekintse meg a **fürt**  >  **címtár-szolgáltatásait** a fürt konfigurációs útmutatójában.
 
   Ha az SMB-támogatást szeretné használni, szükség van egy AD-kiszolgálóra. Konfigurálja az AD-t az SMB beállításának megkezdése előtt.
 
@@ -58,7 +58,7 @@ Ha többet szeretne megtudni a fürt hálózati beállításairól, olvassa el a
   Ha a fürt proxykiszolgálón keresztül éri el a külső címeket, a következő lépésekkel állíthatja be:
 
   1. A proxykiszolgáló megadása a **proxy konfigurációs** beállításai lapon
-  1. Alkalmazza a proxykiszolgáló konfigurációját a **fürt** > **általános beállítása** lapon vagy a **Core Filer részletek** lapon.
+  1. Alkalmazza a proxykiszolgáló konfigurációját a **fürt**  >  **általános beállítása** lapon vagy a **Core Filer részletek** lapon.
   
   További információért olvassa el a következő témakört: [webproxyk használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/proxy_overview.html) a fürt konfigurációs útmutatójában.
 
@@ -74,9 +74,9 @@ Az FXT Edge Filer-fürt X. 509 tanúsítványokat használ ehhez a függvényekh
 
 * A felhőalapú szolgáltatók kiszolgálói tanúsítványainak ellenőrzéséhez
 
-Ha tanúsítványokat kell feltöltenie a fürtre, használja a **fürt** > **tanúsítványainak** beállításai lapot. A részletek a fürt konfigurációs útmutatójának [fürt > tanúsítványok](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) lapján találhatók.
+Ha tanúsítványokat kell feltöltenie a fürtre, használja a **fürt**  >  **tanúsítványainak** beállításai lapot. A részletek a fürt konfigurációs útmutatójának [fürt > tanúsítványok](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) lapján találhatók.
 
-A fürt felügyeleti kommunikációjának titkosításához használja a **fürt** > **általános telepítési** Beállítások lapját, és válassza ki, hogy melyik tanúsítványt kívánja használni a felügyeleti TLS-hez.
+A fürt felügyeleti kommunikációjának titkosításához használja a **fürt**  >  **általános telepítési** Beállítások lapját, és válassza ki, hogy melyik tanúsítványt kívánja használni a felügyeleti TLS-hez.
 
 > [!Note] 
 > A Cloud Service-hozzáférési kulcsok tárolása a **Felhőbeli hitelesítő adatok** konfigurálása lapon történik. A fenti [Core Filer hozzáadása](fxt-add-storage.md#add-a-core-filer) szakasz egy példát mutat be. a részletekért olvassa el a fürt konfigurációs útmutatójának [Felhőbeli hitelesítő adatai](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) című szakaszt. 
@@ -105,8 +105,8 @@ Az optimális teljesítmény érdekében konfigurálja úgy a DNS-kiszolgálót,
 
 A bal oldalon megjelenik egy fürt VServer, és az IP-címek a központban és a jobb oldalon jelennek meg. Konfigurálja az egyes ügyfél-hozzáférési pontokat egy rekordokkal és mutatókkal az ábrán látható módon.
 
-![Fürt ciklikus multiplexelés DNS-diagramja – részletes szöveg: az ALT](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
-Text hivatkozás a kép[részletes leírását](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+![Fürt ciklikus multiplexelés DNS-diagramja – részletes szöveg: az ALT Text hivatkozás a kép ](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
+ [részletes leírását](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Minden ügyfél felé irányuló IP-címnek egyedi névvel kell rendelkeznie a fürt belső használatára. (Ebben a diagramban az ügyfél IP-címeinek neve vs1-Client-IP-*, az éles környezetben azonban érdemes lehet valami tömörebb, például az ügyfél * esetében használni.)
 
@@ -138,7 +138,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>DNS engedélyezése a fürtben 
 
-Válassza ki azt a DNS-kiszolgálót, amelyet a fürt használ a **fürt** > **felügyeleti hálózati** beállításai lapon. Az oldalon található beállítások a következők:
+Válassza ki azt a DNS-kiszolgálót, amelyet a fürt használ a **fürt**  >  **felügyeleti hálózati** beállításai lapon. Az oldalon található beállítások a következők:
 
 * DNS-kiszolgáló címe
 * DNS-tartománynév

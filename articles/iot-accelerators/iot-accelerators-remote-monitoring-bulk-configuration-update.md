@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77565578"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Oktatóanyag: a csatlakoztatott eszközök tömeges kezelése
@@ -31,7 +31,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A konfiguráció üzembe helyezése az eszközön az eszközök csoportban
 > * A telepítés monitorozása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -99,7 +99,7 @@ Az [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsc
 
 Az eszköz belső vezérlőprogram kezdeti verziója a 1.0.0. Az új belső vezérlőprogram verziószámának magasabbnak kell lennie.
 
-1. A VS Code-ban nyissa meg a **FirmwareOTA. Ino** fájlt `currentFirmwareVersion` , `1.0.0` és `1.0.1`változtassa meg a következőt:
+1. A VS Code-ban nyissa meg a **FirmwareOTA. Ino** fájlt, és változtassa meg a `currentFirmwareVersion` következőt `1.0.0` `1.0.1` :
 
     ![Belső vezérlőprogram verziójának módosítása](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
@@ -107,7 +107,7 @@ Az eszköz belső vezérlőprogram kezdeti verziója a 1.0.0. Az új belső vez�
 
     ![Eszköz fordítása](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
-    A VS Code a projektben lévő `.build` mappában menti a lefordított fájlt. A beállításoktól függően a VS Code elrejtheti a `.build` mappát a Explorer nézetben.
+    A VS Code a projektben lévő mappában menti a lefordított fájlt `.build` . A beállításoktól függően a VS Code elrejtheti a `.build` mappát a Explorer nézetben.
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>A CRC-érték előállítása és a belső vezérlőprogram fájlméretének kiszámítása
 
@@ -135,7 +135,7 @@ Használja Azure Storage-fiókját az új belső vezérlőprogram-fájl Felhőbe
 
 ### <a name="build-and-upload-the-original-firmware-to-the-iot-devkit-device"></a>Az eredeti belső vezérlőprogram felépítése és feltöltése a IoT fejlesztői készlet-eszközre
 
-1. A VS Code-ban nyissa meg a **FirmwareOTA. Ino** fájlt `currentFirmwareVersion` , és `1.0.0`váltson vissza a következőre:
+1. A VS Code-ban nyissa meg a **FirmwareOTA. Ino** fájlt, és váltson vissza a következőre `currentFirmwareVersion` `1.0.0` :
 
     ![A 1.0.0 verziója](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
@@ -153,7 +153,7 @@ Használja Azure Storage-fiókját az új belső vezérlőprogram-fájl Felhőbe
 
 Az eszköz konfigurációja meghatározza az eszközök kívánt állapotát. A fejlesztő általában a Azure Portal **IoT-eszköz konfigurációja** lapján [hozza létre a konfigurációt](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) . Az eszköz konfigurációja egy JSON-dokumentum, amely meghatározza az eszközök kívánt állapotát és a mérőszámok egy készletét.
 
-Mentse a következő konfigurációt a **Firmware-Update. JSON** nevű fájlként a helyi számítógépen. Cserélje le `YOURSTRORAGEACCOUNTNAME`a `YOURCHECKSUM`,, `YOURPACKAGESIZE` és helyőrzőket a korábban megjegyzett értékekre:
+Mentse a következő konfigurációt a **firmware-update.js** nevű fájlként a helyi gépen. Cserélje le a `YOURSTRORAGEACCOUNTNAME` , `YOURCHECKSUM` , és `YOURPACKAGESIZE` helyőrzőket a korábban megjegyzett értékekre:
 
 ```json
 {
@@ -210,7 +210,7 @@ Ebben a szakaszban az eszköz konfigurációját csomagként importálja a távo
 
     ![Új csomag](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. Az **új csomag** panelen válassza az **eszköz konfigurációja** lehetőséget a csomag típusaként és a **belső vezérlőprogramként** a konfiguráció típusaként. A **Tallózás** gombra kattintva keresse meg a **belső vezérlőprogram-Update. JSON** fájlt a helyi gépen, majd kattintson a **feltöltés**gombra:
+1. Az **új csomag** panelen válassza az **eszköz konfigurációja** lehetőséget a csomag típusaként és a **belső vezérlőprogramként** a konfiguráció típusaként. Kattintson a **Tallózás** gombra a helyi gépen található fájl **firmware-update.js** megkereséséhez, majd kattintson a **feltöltés**gombra:
 
     ![Csomag feltöltése](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
@@ -228,10 +228,10 @@ Ebben a szakaszban olyan központi telepítést hoz létre és hajt végre, amel
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|Belső vezérlőprogram frissítésének telepítése|
+    |Név|Belső vezérlőprogram frissítésének telepítése|
     |Csomag típusa|Eszközkonfiguráció|
     |Konfiguráció típusa|Belső vezérlőprogram|
-    |Csomag|belső vezérlőprogram – Update. JSON|
+    |Csomag|firmware-update.jsbekapcsolva|
     |Eszközcsoport|IoT fejlesztői készlet-eszközök|
     |Prioritás|10|
 

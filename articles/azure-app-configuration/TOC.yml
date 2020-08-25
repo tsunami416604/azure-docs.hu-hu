@@ -62,8 +62,14 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: Integráció CI-/CD-folyamattal
-      href: integrate-ci-cd-pipeline.md
+    - name: CI/CD-folyamat integrálása
+      items:
+        - name: Leküldés az Azure Pipelines használatával
+          href: push-kv-devops-pipeline.md
+        - name: Leküldés GitHub-műveletekkel
+          href: concept-github-action.md
+        - name: Projektek összeállítása exportált konfigurációkkal
+          href: integrate-ci-cd-pipeline.md
     - name: Integrálás Kubernetes-telepítéssel a Helm használatával
       href: integrate-kubernetes-deployment-helm.md
 - name: Példák
@@ -81,8 +87,6 @@
       href: concept-point-time-snapshot.md
     - name: Funkciókezelés
       href: concept-feature-management.md
-    - name: Szinkronizálás GitHub-műveletekkel
-      href: concept-github-action.md
     - name: Eseménykezelés
       href: concept-app-configuration-event.md
     - name: Biztonság

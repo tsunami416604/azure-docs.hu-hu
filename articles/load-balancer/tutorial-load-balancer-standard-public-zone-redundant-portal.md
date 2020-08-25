@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86057007"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
@@ -39,7 +39,7 @@ A rendelkezésre állási zónák a Standard Load Balancerrel való használatá
 
 Igény szerint az oktatóanyag az [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) használatával is elvégezhető.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -54,15 +54,15 @@ A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki az előfizetését.    |    
+    | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *MyResourceGroupLBAZ* szöveget a szövegmezőbe.|
-    | Name                   | *myLoadBalancer*                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Név                   | *myLoadBalancer*                                   |
+    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
-    |Rendelkezésreállási zóna| Válassza ki a **felesleges zónát**.    |
+    |A rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
    
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
@@ -229,7 +229,7 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
 
 Ha meg szeretné tekinteni, hogy hogyan osztja el a terheléselosztó a zónák között elosztott virtuális gépek között a forgalmat, kényszerítheti a webböngésző frissítését.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki a terheléselosztót tartalmazó erőforráscsoportot, és kattintson a **Törlés** elemre.
 

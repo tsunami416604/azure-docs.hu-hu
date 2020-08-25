@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "66117511"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: rendellenességek észlelése a szélén a távoli figyelési megoldás gyorsítása révén
@@ -45,7 +45,7 @@ A IoT Edge eszközön:
 
 Ez az oktatóanyag egy linuxos virtuális gépet használ IoT Edge eszközként. Egy peremhálózati modult is telepít, amely szimulálja az olaj-szivattyú Jack-eszközét.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -83,7 +83,7 @@ Annak érdekében, hogy könnyebben kezelje a megoldás IoT Edge eszközeit, hoz
     | Feladat     | Címkék  |
     | Feladat neve | AddEdgeTag |
     | Kulcs     | IsOilPump |
-    | Érték   | I     |
+    | Érték   | Y     |
     | Típus    | Szöveg  |
 
     [![Címke hozzáadása](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
@@ -96,15 +96,15 @@ Annak érdekében, hogy könnyebben kezelje a megoldás IoT Edge eszközeit, hoz
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név)    | OilPumps |
+    | Név    | OilPumps |
     | Mező   | Címkék. IsOilPump |
-    | Művelet | = Egyenlő |
-    | Érték    | I |
+    | Operátor | = Egyenlő |
+    | Érték    | Y |
     | Típus     | Szöveg |
 
     [![Eszközcsoport létrehozása](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 IoT Edge eszköz most már a **OilPumps** csoportban található.
 
@@ -203,17 +203,17 @@ Ezután létre kell hoznia egy IoT Edge telepítési jegyzéket, amely meghatár
 
 1. A Azure Portal navigáljon a IoT hubhoz a távoli figyelési megoldásban. Az IoT hub a távoli figyelési megoldás nevével megegyező nevű erőforráscsoporthoz is megkereshető.
 
-1. Az IoT központban kattintson a **IoT Edge** elemre az **automatikus eszközkezelés** szakaszban. Kattintson **a IoT Edge központi telepítés hozzáadása**lehetőségre.
+1. Az IoT központban kattintson a **IoT Edge** elemre az **automatikus eszközkezelés** szakaszban. Kattintson  **a IoT Edge központi telepítés hozzáadása**lehetőségre.
 
 1. A **központi telepítés létrehozása > név és címke** lapon adja meg az **Oil-Pump-Device**nevet. Kattintson a **Tovább** gombra.
 
 1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **+ Hozzáadás**gombra. Válassza **IoT Edge modult**.
 
-1. A **IoT Edge egyéni modulok** panelen írja be a **hőmérséklet-érzékelő** nevet és a **asaedgedockerhubtest/ASA-Edge-test-Module: Sensor-ad-Linux-amd64** értéket a rendszerkép URI-jaként. Kattintson a **Save** (Mentés) gombra.
+1. A **IoT Edge egyéni modulok** panelen írja be a **hőmérséklet-érzékelő** nevet és a **asaedgedockerhubtest/ASA-Edge-test-Module: Sensor-ad-Linux-amd64** értéket a rendszerkép URI-jaként. Kattintson a **Mentés** gombra.
 
 1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **+ Hozzáadás** elemre egy második modul hozzáadásához. Válassza **Azure stream Analytics modult**.
 
-1. Az **Edge Deployment (peremhálózati telepítés** ) panelen válassza ki az előfizetését és az előző szakaszban létrehozott **EdgeDeviceJob** . Kattintson a **Save** (Mentés) gombra.
+1. Az **Edge Deployment (peremhálózati telepítés** ) panelen válassza ki az előfizetését és az előző szakaszban létrehozott **EdgeDeviceJob** . Kattintson a **Mentés** gombra.
 
 1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **tovább**gombra.
 
@@ -243,7 +243,7 @@ Ezután létre kell hoznia egy IoT Edge telepítési jegyzéket, amely meghatár
 
 1. A fő **IoT Edge** lapon kattintson a **IoT Edge központi telepítések**elemre. A központi telepítések listájában látható az **olaj-szivattyú – eszköz** .
 
-1. Kattintson az **olaj-szivattyú-eszköz** telepítés elemre, majd kattintson a **IoT Edge jegyzékfájl letöltése**elemre. Mentse a fájlt **olaj-szivattyú-Device. JSON** néven a helyi gépen található megfelelő helyre. Ezt a fájlt az oktatóanyag következő szakaszában kell megadnia.
+1. Kattintson az **olaj-szivattyú-eszköz** telepítés elemre, majd kattintson a **IoT Edge jegyzékfájl letöltése**elemre. Mentse a fájlt **oil-pump-device.jsa** megfelelő helyre a helyi gépen. Ezt a fájlt az oktatóanyag következő szakaszában kell megadnia.
 
 Ezzel létrehozott egy IoT Edge jegyzékfájlt, amely csomagként importálható a távoli figyelési megoldásba. A fejlesztők általában létrehozzák a IoT Edge modulokat és a jegyzékfájlt.
 
@@ -255,11 +255,11 @@ Ebben a szakaszban a peremhálózati jegyzékfájlt csomagként importálja a t�
 
     [![Új csomag](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. Az **új csomag** panelen válassza a **Edge manifest** lehetőséget a csomag típusaként, kattintson a **Tallózás** gombra az **olaj-szivattyú-eszköz. JSON** fájl megkereséséhez a helyi gépen, majd kattintson a **feltöltés**gombra:
+1. Az **új csomag** panelen válassza a **Edge manifest** lehetőséget csomag típusaként, kattintson a **Tallózás** gombra a helyi gépen található fájl **oil-pump-device.js** megkereséséhez, majd kattintson a **feltöltés**gombra:
 
     [![Csomag feltöltése](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
-    A csomagok listája mostantól tartalmazza a **Oil-Pump-Device. JSON** csomagot.
+    A csomagok listája mostantól tartalmazza a csomag **oil-pump-device.js** .
 
 A következő szakaszban olyan központi telepítést hoz létre, amely alkalmazza a csomagot a peremhálózati eszközre.
 
@@ -275,9 +275,9 @@ Most már készen áll a csomag üzembe helyezésére az eszközön.
 
     | Beállítás | Érték |
     | ------ | ----- |
-    | Name (Név)   | OilPumpDevices |
+    | Név   | OilPumpDevices |
     | Csomag típusa | Edge-jegyzékfájl |
-    | Csomag | olaj-szivattyú-Device. JSON |
+    | Csomag | oil-pump-device.jsbekapcsolva |
     | Eszközcsoport | OilPumps |
     | Prioritás | 10 |
 
@@ -319,7 +319,7 @@ Ha a küszöbérték elérésekor értesíteni szeretné a kezelőket, létrehoz
     | Eszközcsoport | OilPumps |
     | Számítás | Azonnali |
     | Mező | hőmérséklet |
-    | Művelet | > |
+    | Operátor | > |
     | Érték | 300 |
     | Súlyossági szint | Információ |
 

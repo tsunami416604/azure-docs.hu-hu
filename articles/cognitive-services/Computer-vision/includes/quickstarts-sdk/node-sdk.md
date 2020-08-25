@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 861e6528b52af39a56cc6b936eae0d68df2eecf5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4d025057cf8992e1dc54a0fd4a07814c7cbb13d3
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841859"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748793"
 ---
 <a name="HOLTop"></a>
 
@@ -208,9 +208,9 @@ A segítő függvény megadása `describeType` :
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
+## <a name="extract-text-ocr-with-read"></a>Szöveg (OCR) kinyerése olvasással
 
-A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba.
+A Computer Vision kinyerheti a képen látható szöveget, és átalakíthatja a karakteres adatfolyamba. Ez a példa az olvasási műveleteket használja.
 
 > [!NOTE]
 > Helyi rendszerképből is beolvashat szöveget. A helyi rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) találhatók.
@@ -221,17 +221,17 @@ Mentse annak a lemezképnek az URL-címét, amelyből szöveget szeretne kinyern
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
+### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
-Adja hozzá az alábbi kódot, amely meghívja a `recognizeText` függvényt az adott lemezképekhez.
+Adja hozzá az alábbi kódot, amely meghívja a `readTextFromURL` és a `readTextFromFile` függvényeket az adott lemezképekhez.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Adja meg a `recognizeText` függvényt. Ez meghívja a **recognizeText** metódust az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és egy aszinkron folyamatot indít el a rendszerkép tartalmának olvasásához. Ezután a műveleti azonosító használatával vizsgálja meg a műveletet egy másodperces időközönként, amíg vissza nem adja az eredményeket. Ezután a kinyert eredményeket adja vissza.
+Adja meg a `readTextFromURL` és a `readTextFromFile` függvényeket. Ezek meghívja a **READ** és a **readInStream** metódust az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához. Ezután a művelet AZONOSÍTÓját használják a művelet állapotának vizsgálatára, amíg az eredmények vissza nem állnak. Ezután visszaadják a kinyert eredményeket.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Ezután adja meg a segítő függvényt `printRecText` , amely egy felismerési művelet eredményét kiírja a-konzolra.
+Ezután adja meg a segítő függvényt `printRecText` , amely kiírja az olvasási műveletek eredményeit a-konzolra.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
@@ -243,14 +243,14 @@ Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található 
 node index.js
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API referenciája (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)

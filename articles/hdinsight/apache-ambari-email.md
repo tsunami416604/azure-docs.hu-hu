@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "80082313"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight
@@ -48,7 +48,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="configure-ambari-e-mail-notification"></a>Ambari e-mail értesítések konfigurálása
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts` , ahol a a `CLUSTERNAME` fürt neve.
 
 1. A **műveletek** legördülő listában válassza az **értesítések kezelése**lehetőséget.
 
@@ -60,11 +60,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     |Tulajdonság |Leírás |
     |---|---|
-    |Name (Név)|Adja meg az értesítés nevét.|
+    |Név|Adja meg az értesítés nevét.|
     |Csoportok|Konfigurálja a kívánt módon.|
-    |Severity|Konfigurálja a kívánt módon.|
+    |Súlyosság|Konfigurálja a kívánt módon.|
     |Leírás|Választható.|
-    |Módszer|Hagyjon **e-mailt**.|
+    |Metódus|Hagyjon **e-mailt**.|
     |E-mail cím|Adja meg az e-maileket az értesítések fogadásához, vesszővel elválasztva.|
     |SMTP-kiszolgáló|`smtp.sendgrid.net`|
     |SMTP-port|25 vagy 587 (titkosítatlan/TLS-kapcsolatokhoz).|

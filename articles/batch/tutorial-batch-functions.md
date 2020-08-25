@@ -7,10 +7,10 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
 ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85963852"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Oktatóanyag: batch-feladatok elindítása Azure Functions használatával
@@ -41,13 +41,13 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre a Batch-készle
     1. Válassza az **Ubuntu 18,04-LTS** operációs rendszert.
     1. Válassza ki `Standard_f2s_v2` a virtuális gép méretét.
     1. Engedélyezze az indítási feladatot, és adja hozzá a parancsot `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` . Ügyeljen arra, hogy a felhasználói identitást a **feladat alapértelmezett felhasználója (rendszergazda)** értékre állítsa be, amely lehetővé teszi, hogy a feladatok elindításával parancsokat tartalmazzon a paranccsal `sudo` .
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 ### <a name="create-a-job"></a>Feladat létrehozása
 
 1. Hozzon létre egy feladatot a készleten a bal oldali sávban a **feladatok** elem kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
     1. Válassza ki az azonosítót és a megjelenítendő nevet. `ocr-job`Ezt a példát fogjuk használni.
     1. Állítsa be a készletet `ocr-pool` , vagy bármilyen nevet, amelyet a készlethez választott.
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
 
 ## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
@@ -72,8 +72,8 @@ Ebben a szakaszban létrehoz egy Azure-függvényt, amely elindítja az OCR batc
     1. Amikor a rendszer a Storage-fiókra kéri, használja ugyanazt a Storage-fiókot, amelyet a Batch-fiókjához társított.
     1. A **futásidejű verem**esetében válassza a .net elemet. A Batch .NET SDK kihasználása érdekében a C# nyelven írunk függvényt.
 1. A blob által aktivált függvény létrehozása után a függvényben használja a [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) és a [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) githubot.
-    * `run.csx`akkor fut le, amikor új blobot adnak hozzá a bemeneti blob-tárolóhoz.
-    * `function.proj`felsorolja a függvény kódjában található külső kódtárakat, például a Batch .NET SDK-t.
+    * `run.csx` akkor fut le, amikor új blobot adnak hozzá a bemeneti blob-tárolóhoz.
+    * `function.proj` felsorolja a függvény kódjában található külső kódtárakat, például a Batch .NET SDK-t.
 1. Módosítsa a fájl függvényében szereplő változók helyőrző értékeit `Run()` `run.csx` , hogy azok tükrözzék a Batch és a Storage hitelesítő adatait. A Batch-és Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portaljában találja.
     * Kérje le a Batch-és a Storage-fiók hitelesítő adatait a Batch-fiók **kulcsok** szakaszának Azure Portal. 
 

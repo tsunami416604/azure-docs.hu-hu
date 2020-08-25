@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81000118"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Oktatóanyag: az operátor irányítópultjának testreszabása és az eszközök kezelése az Azure-ban IoT Central
@@ -148,11 +148,11 @@ Csempék hozzáadása a környezeti adatok RuuviTag-érzékelőkből való megje
 
 1. Válassza a **Szerkesztés** elemet.
 
-1. Válassza `RuuviTag` ki az **eszköz sablonjának** listáját. 
+1. Válassza ki `RuuviTag` az **eszköz sablonjának** listáját. 
 
-1. Válassza ki a két RuuviTag-érzékelő egyikének **eszköz-példányát** . A példában a contoso-tárolóban `Zone 1 Ruuvi` válassza a telemetria csempe létrehozásához 1. zóna. 
+1. Válassza ki a két RuuviTag-érzékelő egyikének **eszköz-példányát** . A példában a contoso-tárolóban válassza a `Zone 1 Ruuvi` telemetria csempe létrehozásához 1. zóna. 
 
-1. Válassza `Relative humidity` ki `temperature` a és a elemet a **telemetria** listán. Ezek a csempén lévő egyes zónákhoz megjelenített telemetria elemek.
+1. Válassza ki `Relative humidity` a és a elemet `temperature` a **telemetria** listán. Ezek a csempén lévő egyes zónákhoz megjelenített telemetria elemek.
 
 1. Válassza a **összevonás**lehetőséget. 
 
@@ -203,9 +203,9 @@ Tulajdonságok csempe hozzáadása az egyes RuuviTag:
 
 1. Válassza a **Szerkesztés** elemet.
 
-1. Válassza `RuuviTag` ki az **eszköz sablonjának** listáját. 
+1. Válassza ki `RuuviTag` az **eszköz sablonjának** listáját. 
 
-1. Válassza ki a két RuuviTag-érzékelő egyikének **eszköz-példányát** . A példában a contoso-tárolóban `Zone 1 Ruuvi` válassza a telemetria csempe létrehozásához 1. zóna. 
+1. Válassza ki a két RuuviTag-érzékelő egyikének **eszköz-példányát** . A példában a contoso-tárolóban válassza a `Zone 1 Ruuvi` telemetria csempe létrehozásához 1. zóna. 
 
 1. Válassza a **tulajdonságok > a szoftver verziója**lehetőséget.
 
@@ -232,7 +232,7 @@ Parancs hozzáadása az átjáró újraindításához:
 
 1. Válassza a **Szerkesztés** elemet. 
 
-1. Válassza `C500` ki az **eszköz sablonjának** listáját. Ez a sablon a Rigado C500-átjáróhoz. 
+1. Válassza ki `C500` az **eszköz sablonjának** listáját. Ez a sablon a Rigado C500-átjáróhoz. 
 
 1. Válassza ki az átjáró példányát az **eszköz példányában**.
 

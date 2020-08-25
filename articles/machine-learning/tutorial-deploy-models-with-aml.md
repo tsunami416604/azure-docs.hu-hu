@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
 ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86025675"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Oktatóanyag: lemezkép besorolási modell üzembe helyezése Azure Container Instances
@@ -37,7 +37,7 @@ A Container Instances nagyszerű megoldás a munkafolyamatok tesztelésére és 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jegyzetfüzet futtatásához először végezze el a modell betanítását az [oktatóanyagban (1. rész): képbesorolási modell betanítása](tutorial-train-models-with-aml.md).   Ezután nyissa meg az *IMG-besorolás-part2-Deploy. ipynb* notebookot a klónozott *oktatóanyagok/lemezkép-besorolás-mnist-adat* mappában.
+A jegyzetfüzet futtatásához először végezze el a modell betanítását az [oktatóanyagban (1. rész): képbesorolási modell betanítása](tutorial-train-models-with-aml.md).   Ezután nyissa meg az  *IMG-besorolás-part2-Deploy. ipynb* notebookot a klónozott *oktatóanyagok/lemezkép-besorolás-mnist-adat* mappában.
 
 Ez az oktatóanyag a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni.  Győződjön meg arról, hogy telepítve van `matplotlib` és `scikit-learn` a környezetében. 
 
@@ -343,7 +343,7 @@ print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az erőforráscsoportot és a munkaterületet más oktatóanyagokhoz és feltáráshoz szeretné megőrizni, csak a Container Instances üzemelő példányt törölheti az alábbi API-hívás használatával:
 

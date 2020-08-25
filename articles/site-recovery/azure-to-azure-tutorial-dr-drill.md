@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.custom: mvc
 ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76166191"
 ---
 # <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Vész-helyreállítási gyakorlat futtatása Azure-beli virtuális gépek másodlagos régiójába
@@ -29,7 +29,7 @@ Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállít�
 
 Az oktatóanyag elvégzése előtt tekintse át a következő elemeket:
 
-- A feladatátvételi teszt futtatása előtt javasoljuk, hogy ellenőrizze a virtuális gép tulajdonságait, és győződjön meg róla, hogy az a vész-helyreállításra van konfigurálva. A replikálási és feladatátvételi tulajdonságok megtekintéséhez lépjen a virtuális gép **műveleteinek** > vész-**helyreállítási** > **tulajdonságaira** .
+- A feladatátvételi teszt futtatása előtt javasoljuk, hogy ellenőrizze a virtuális gép tulajdonságait, és győződjön meg róla, hogy az a vész-helyreállításra van konfigurálva. A **Operations**  >  **Disaster Recovery**  >  replikálási és feladatátvételi tulajdonságok megtekintéséhez lépjen a virtuális gép műveleteinek vész-helyreállítási**tulajdonságaira** .
 - **Javasoljuk, hogy a feladatátvételi teszthez a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett használjon egy külön Azure-beli virtuálisgép-hálózatot**.
 - Az egyes hálózati adapterek forrás-hálózati konfigurációjától függően megadhatja az **alhálózatot**, a **magánhálózati IP-címet**, a **nyilvános IP**-címet, a **hálózati biztonsági csoportot**vagy a **Load balancert** úgy, hogy az egyes hálózati adapterekhez a **számítás és a hálózat** feladatátvételi beállításai alatt, a vész-helyreállítási gyakorlat végrehajtása előtt is csatolni lehessen.
 
@@ -37,7 +37,7 @@ Az oktatóanyag elvégzése előtt tekintse át a következő elemeket:
 
 Ez a példa bemutatja, hogyan használható egy Recovery Services tároló a virtuális gép feladatátvételi tesztje során.
 
-1. Válasszon ki egy tárolót, és lépjen a **védett elemek** > **replikált elemek elemre** , és válasszon ki egy virtuális gépet.
+1. Válasszon ki egy tárolót, és lépjen a **védett elemek**  >  **replikált elemek elemre** , és válasszon ki egy virtuális gépet.
 1. A feladatátvételi **teszt**területen válassza ki a feladatátvételhez használandó helyreállítási pontot:
    - **Legutóbb**: feldolgozza site Recovery összes információját, és megadja a legalacsonyabb RTO (helyreállítási idő célkitűzés).
    - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölti le az adatfeldolgozási időt, így alacsony RTO biztosít.
@@ -48,7 +48,7 @@ Ez a példa bemutatja, hogyan használható egy Recovery Services tároló a vir
    > [!NOTE]
    > Ha a feladatátvételi teszt beállításai előre konfigurálva vannak a replikált elemhez, az Azure-beli virtuális hálózat kiválasztására szolgáló legördülő menü nem látható.
 
-1. A feladatátvétel elindításához kattintson **az OK gombra**. A tár előrehaladásának nyomon követéséhez lépjen a **figyelés** > **site Recovery feladatok** elemre, és válassza ki a **feladatátvételi teszt** feladatot.
+1. A feladatátvétel elindításához kattintson **az OK gombra**. A tár előrehaladásának nyomon követéséhez lépjen a **figyelés**  >  **site Recovery feladatok** elemre, és válassza ki a **feladatátvételi teszt** feladatot.
 1. A feladatátvétel befejeződése után a replika Azure-beli virtuális gép megjelenik a Azure Portal **Virtual Machines**. Győződjön meg arról, hogy a virtuális gép fut, megfelelő a méretezése és a megfelelő hálózathoz csatlakozik.
 1. A feladatátvételi teszt során létrehozott virtuális gépek törléséhez válassza a **feladatátvételi teszt** törlése elemet a replikált elemen vagy a helyreállítási terven. A **jegyzetek**területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket.
 

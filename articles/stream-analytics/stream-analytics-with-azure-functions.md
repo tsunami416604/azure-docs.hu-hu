@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
 ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77589453"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
@@ -52,7 +52,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
 
 1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) című szakaszát. Ez a szakasz bemutatja, hogyan hozhat létre egy Function-alkalmazást és egy [http által aktivált függvényt Azure Functionsban](../azure-functions/functions-create-first-azure-function.md#create-function)a csharp nyelvének használatával.  
 
-2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. Cserélje le a **\<"saját Azure cache for Redis-kapcsolatok\>karakterlánca"** kifejezést az előző szakaszban lekért elsődleges Redis Azure cache-sel. 
+2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. Cserélje le a **" \<your Azure Cache for Redis connection string goes here\> "** karakterláncot az Azure cache Redis az előző szakaszban lekért elsődleges kapcsolatok karakterláncára. 
 
     ```csharp
     using System;
@@ -140,7 +140,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
 
 1. Nyissa meg a Stream Analytics-feladatot az Azure Portalon.  
 
-2. Keresse meg a függvényt, és válassza az **Áttekintés** > **kimenetek** > **Hozzáadás**lehetőséget. Új kimenet hozzáadásához válassza az **Azure-függvény** lehetőséget a fogadó beállításánál. A functions kimeneti adapter a következő tulajdonságokkal rendelkezik:  
+2. Keresse meg a függvényt, és válassza az **Áttekintés**  >  **kimenetek**  >  **Hozzáadás**lehetőséget. Új kimenet hozzáadásához válassza az **Azure-függvény** lehetőséget a fogadó beállításánál. A functions kimeneti adapter a következő tulajdonságokkal rendelkezik:  
 
    |**Tulajdonság neve**|**Leírás**|
    |---|---|
@@ -167,7 +167,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Indítsa el a telcodatagen. exe alkalmazást a következő parancs parancssorból történő futtatásával. A parancs a formátumot `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`használja.  
+5. Indítsa el a telcodatagen.exe alkalmazást a parancssorban a következő parancs futtatásával. A parancs a formátumot használja `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]` .  
    
    ```cmd
    telcodatagen.exe 1000 0.2 2

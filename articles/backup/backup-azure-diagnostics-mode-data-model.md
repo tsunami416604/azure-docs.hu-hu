@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539074"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761406"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -461,36 +461,38 @@ Az alábbi példák segítséget nyújtanak a Azure Diagnostics táblában talá
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 Schema vs v2 séma
-Korábban a Azure Backup-ügynök és az Azure-beli virtuális gép biztonsági mentésének diagnosztikai adatait a rendszer a ***v1 sémának***nevezett sémában Azure Diagnostics táblába küldték. Ezt követően új oszlopok lettek hozzáadva a más forgatókönyvek és munkaterhelések támogatásához, és a diagnosztikai adatok egy, a ***v2-séma***néven ismert új sémában lettek leküldve. 
 
-A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure virtuális gép biztonsági mentésének diagnosztikai adatait jelenleg a v1-es és v2-es sémában is elküldi Azure Diagnostics táblázatba (a v1 séma mostantól egy elavult útvonalon érhető el). A naplózási lekérdezésekben a SchemaVersion_s = = "v1" rekordok szűrésével azonosíthatja, hogy mely rekordok Log Analytics v1 sémában. 
+Korábban a Azure Backup-ügynök és az Azure-beli virtuális gép biztonsági mentésének diagnosztikai adatait a rendszer a ***v1 sémának***nevezett sémában Azure Diagnostics táblába küldték. Ezt követően új oszlopok lettek hozzáadva a más forgatókönyvek és munkaterhelések támogatásához, és a diagnosztikai adatok egy, a ***v2-séma***néven ismert új sémában lettek leküldve.  
+
+A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure virtuális gép biztonsági mentésének diagnosztikai adatait jelenleg a v1-es és v2-es sémában is elküldi Azure Diagnostics táblázatba (a v1 séma mostantól egy elavult útvonalon érhető el). A naplózási lekérdezésekben a SchemaVersion_s = = "v1" rekordok szűrésével azonosíthatja, hogy mely rekordok Log Analytics v1 sémában.
 
 A fent ismertetett [adatmodellben](#using-azure-backup-data-model) tekintse meg a harmadik oszlop "Description" utasítását, és azonosítsa, hogy mely oszlopok csak a v1 sémához tartoznak.
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>A lekérdezések módosítása a v2 séma használatára
+
 Mivel a v1 séma elavult elérési úton van, ajánlott csak a v2 sémát használni a Azure Backup diagnosztikai adatain lévő összes egyéni lekérdezésben. Az alábbi példa bemutatja, hogyan frissítheti a lekérdezéseket a v1-séma függőségének eltávolítására:
 
 1. Azonosítsa, hogy a lekérdezés olyan mezőket használ-e, amelyek csak a v1 sémára alkalmazhatók. Tegyük fel, hogy van egy lekérdezése, amely felsorolja az összes biztonsági mentési elemet és a hozzájuk társított védett kiszolgálókat a következőképpen:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-A fenti lekérdezés a ProtectedServerUniqueId_s mezőt használja, amely csak a v1 sémára alkalmazható. Ennek a mezőnek a v2-sémája ProtectedContainerUniqueId_s (lásd a fenti táblázatokat). A BackupItemUniqueId_s mező még a v2 séma esetében is alkalmazható, és ugyanez a mező használható ebben a lekérdezésben.
+    A fenti lekérdezés a ProtectedServerUniqueId_s mezőt használja, amely csak a v1 sémára alkalmazható. Ennek a mezőnek a v2-sémája ProtectedContainerUniqueId_s (lásd a fenti táblázatokat). A BackupItemUniqueId_s mező még a v2 séma esetében is alkalmazható, és ugyanez a mező használható ebben a lekérdezésben.
 
 2. Frissítse a lekérdezést, hogy a v2 séma mezőinek nevét használja. Javasoljuk, hogy a (z) "Where SchemaVersion_s = =" v2 "" szűrőt használja az összes lekérdezésben, hogy csak a v2 sémának megfelelő rekordokat elemezze a lekérdezés:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/learn/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.

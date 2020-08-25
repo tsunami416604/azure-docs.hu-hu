@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79239216"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása 
@@ -55,7 +55,7 @@ Az alapszintű Filer hozzáadása után frissítheti a beállításait az alapsz
 
 ## <a name="add-a-core-filer"></a>Alapvető Filer hozzáadása
 
-Definiáljon egy alapvető Filer-t az alapszintű **Filer** > **Manage Core filers** beállítások lap **Létrehozás** gombjára kattintva.
+Definiáljon egy alapvető Filer-t **Create** az alapszintű **Filer**  >  **Manage Core filers** beállítások lap létrehozás gombjára kattintva.
 
 ![Kattintson a Create (létrehozás) gombra az alapszintű filers lista felett a Core filers kezelése lapon.](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -79,7 +79,7 @@ Az alfeladatok a következők:
 
   ![A Cloud Core Filer információi az új Core Filer varázslóban](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
-  Ha a fürthöz már hozzáadta a Felhőbeli hozzáférési hitelesítő adatokat, azok megjelennek a listában. Frissítse és adja hozzá a hitelesítő adatokat a **fürt** > **Felhőbeli hitelesítő adatok** beállításai lapon. 
+  Ha a fürthöz már hozzáadta a Felhőbeli hozzáférési hitelesítő adatokat, azok megjelennek a listában. Frissítse és adja hozzá a hitelesítő adatokat a **fürt**  >  **Felhőbeli hitelesítő adatok** beállításai lapon. 
 
 Miután kitöltötte a varázsló összes szükséges beállítását, kattintson a **Filer hozzáadása** gombra a módosítás elküldéséhez.
 
@@ -129,7 +129,7 @@ Szüksége van legalább egy VServer a fürthöz.
 
 * Ha a hálózata VLAN-okat tartalmaz, melyik VLAN-t használja ehhez a VServer
 
-Hozzon létre egy új VServer a **VServer** > **kezelése VServers** beállítások lapján. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában. 
+**VServer**  >  Hozzon létre egy új VServer a VServer**kezelése VServers** beállítások lapján. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában. 
 
 ![új VServer létrehozásának előugró ablaka](media/fxt-cluster-config/new-vserver.png)
 
@@ -141,7 +141,7 @@ Ezzel a rendszerrel leegyszerűsítheti az ügyfél csatlakoztatási pontjaiban 
 
 ![Új csatlakozási pont hozzáadása varázsló lapja a kitöltött beállításokkal](media/fxt-cluster-config/add-junction-full.png)
 
-A névtér-összekapcsolás létrehozásával kapcsolatos részletes információkért tekintse meg a [ **VServer** > névteret](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) a fürtkonfiguráció útmutatójában.
+A névtér-összekapcsolás létrehozásával kapcsolatos részletes információkért tekintse meg a [ **VServer**  >  **névteret** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) a fürtkonfiguráció útmutatójában.
 
 ![A VServer > névtér beállításai oldal, amely egy elágazás részleteit jeleníti meg](media/fxt-cluster-config/namespace-populated.png)
 
@@ -149,9 +149,9 @@ A névtér-összekapcsolás létrehozásával kapcsolatos részletes informáci�
 
 A VServer és a Core Filer együttes használata után testre kell szabnia az exportálási szabályokat és az exportálási házirendeket, amelyek azt szabályozzák, hogy az ügyfelek hogyan férhetnek hozzá a fájlokhoz az alapvető Filer-exportálásokban.
 
-Először a **VServer** > -**exportálási szabályok** lapon új szabályokat adhat hozzá, módosíthatja az alapértelmezett házirendet, vagy létrehozhatja a saját egyéni exportálási szabályzatát.
+Először a VServer- **VServer**  >  **exportálási szabályok** lapon új szabályokat adhat hozzá, módosíthatja az alapértelmezett házirendet, vagy létrehozhatja a saját egyéni exportálási szabályzatát.
 
-Másodszor, a **VServer** > -**exportálási házirendek** lapon alkalmazza a testreszabott szabályzatot az alapvető Filer exportálására, amikor a VServer keresztül éri el.
+Másodszor, a **VServer**  >  -**exportálási házirendek** lapon alkalmazza a testreszabott szabályzatot az alapvető Filer exportálására, amikor a VServer keresztül éri el.
 
 A részletekért tekintse meg a következő témakört: az [alapvető Filer-exportálásokhoz való hozzáférés szabályozása](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) című cikk.
 

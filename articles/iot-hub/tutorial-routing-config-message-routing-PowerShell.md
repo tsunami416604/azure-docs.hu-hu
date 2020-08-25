@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74084437"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Oktatóanyag: a Azure PowerShell használata IoT Hub üzenet-útválasztás konfigurálásához
@@ -26,7 +26,7 @@ ms.locfileid: "74084437"
 
 Az oktatóanyag második részében le kell töltenie és futtatnia kell egy Visual Studio-alkalmazást, amely üzeneteket küld a IoT Hub. A letöltésben egy olyan mappa található, amely tartalmazza a Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-és PowerShell-parancsfájlokat. 
 
-Ha meg szeretné tekinteni a kész parancsfájlt, töltse le az [Azure IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a Master. zip fájlt. Az Azure CLI-szkript a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ben **iothub_routing_psh. ps1**néven szerepel.
+Ha meg szeretné tekinteni a kész parancsfájlt, töltse le az [Azure IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a master.zip fájlt. Az Azure CLI-szkript **iothub_routing_psh.ps1**/IOT-hub/tutorials/Routing/SimulatedDevice/Resources/van.
 
 ## <a name="create-your-resources"></a>Erőforrások létrehozása
 
@@ -148,7 +148,7 @@ Ezek a szkriptek által használt változók, amelyeket a Cloud Shell-munkamenet
 
 **végpontneve**: Ez a mező a végpontot azonosító név. 
 
-**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `eventhub` `servicebusqueue`, vagy `servicebustopic`a értékre kell beállítani. Itt adja meg a kívánt `azurestoragecontainer`célokat.
+**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `eventhub` `servicebusqueue` , vagy a értékre kell beállítani `servicebustopic` . Itt adja meg a kívánt célokat `azurestoragecontainer` .
 
 **subscriptionID**: Ez a mező az Azure-fiókhoz tartozó subscriptionID van beállítva.
 
@@ -156,13 +156,13 @@ Ezek a szkriptek által használt változók, amelyeket a Cloud Shell-munkamenet
 
 **containerName**: Ez a mező annak a tárolónak a neve, amelybe az adatírás történik.
 
-**Kódolás**: ezt a mezőt a `AVRO` vagy `JSON`a értékre kell beállítani. Ez kijelöli a tárolt adatmennyiség formátumát. Az alapértelmezett érték a AVRO.
+**Kódolás**: ezt a mezőt a vagy a értékre kell beállítani `AVRO` `JSON` . Ez kijelöli a tárolt adatmennyiség formátumát. Az alapértelmezett érték a AVRO.
 
 **z**: Ez a mező a beállított útvonal neve. 
 
-**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. A tárolóba átirányított üzenetek lekérdezési feltétele `level="storage"`.
+**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. A tárolóba átirányított üzenetek lekérdezési feltétele `level="storage"` .
 
-**engedélyezve**: Ez a mező alapértelmezés szerint `true`a (z) értékre van beállítva, ami azt jelzi, hogy a létrehozás után engedélyezni kell az üzenet útvonalát.
+**engedélyezve**: Ez a mező alapértelmezés szerint a (z) értékre van beállítva `true` , ami azt jelzi, hogy a létrehozás után engedélyezni kell az üzenet útvonalát.
 
 Másolja ezt a szkriptet, és illessze be a Cloud Shell ablakába.
 
@@ -208,7 +208,7 @@ Add-AzIotHubRoute `
 
 ### <a name="route-to-a-service-bus-queue"></a>Útvonal Service Bus üzenetsor felé
 
-Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. A Service Bus üzenetsor kapcsolódási karakterláncának beolvasásához létre kell hoznia egy engedélyezési szabályt, amely rendelkezik a megfelelő jogosultságokkal. A következő szkript létrehoz egy engedélyezési szabályt a nevű `sbauthrule`Service Bus üzenetsor számára, és beállítja a jogosultságokat `Listen Manage Send`. Ha ezt az engedélyezési szabályt beállította, a segítségével lekérheti a várólista kapcsolódási karakterláncát.
+Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. A Service Bus üzenetsor kapcsolódási karakterláncának beolvasásához létre kell hoznia egy engedélyezési szabályt, amely rendelkezik a megfelelő jogosultságokkal. A következő szkript létrehoz egy engedélyezési szabályt a nevű Service Bus üzenetsor számára `sbauthrule` , és beállítja a jogosultságokat `Listen Manage Send` . Ha ezt az engedélyezési szabályt beállította, a segítségével lekérheti a várólista kapcsolódási karakterláncát.
 
 ```powershell
 ##### ROUTING FOR SERVICE BUS QUEUE #####
@@ -236,11 +236,11 @@ Most állítsa be az útválasztási végpontot és a Service Bus üzenetsor üz
 
 **végpontneve**: Ez a mező a végpontot azonosító név. 
 
-**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `eventhub` `servicebusqueue`, vagy `servicebustopic`a értékre kell beállítani. Itt adja meg a kívánt `servicebusqueue`célokat.
+**endpointType**: Ez a mező a végpont típusát adja meg. Ezt az értéket a,, `azurestoragecontainer` `eventhub` `servicebusqueue` , vagy a értékre kell beállítani `servicebustopic` . Itt adja meg a kívánt célokat `servicebusqueue` .
 
 **z**: Ez a mező a beállított útvonal neve. 
 
-**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. Az Service Bus várólistára átirányított üzenetek lekérdezési feltétele `level="critical"`.
+**feltétel**: Ez a mező a végpontnak küldött üzenetek szűrésére szolgáló lekérdezés. Az Service Bus várólistára átirányított üzenetek lekérdezési feltétele `level="critical"` .
 
 Itt látható a Service Bus üzenetsor üzenet-útválasztási Azure PowerShell.
 

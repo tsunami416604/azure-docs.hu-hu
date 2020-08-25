@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75553512"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Oktatóanyag: Azure HDInsight-fürtök létrehozása Azure Automation
@@ -60,13 +60,13 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Name (Név) | `cluster-password` |
+    | Név | `cluster-password` |
     | Felhasználónév | `admin` |
     | Jelszó | `SECURE_PASSWORD` |
     | Jelszó megerősítése | `SECURE_PASSWORD` |
 
 1. Kattintson a **Létrehozás** gombra.
-1. Ismételje meg ugyanezt a folyamatot egy `ssh-password` új hitelesítő adathoz a felhasználónévvel `sshuser` és az Ön által választott jelszóval. Kattintson a **Létrehozás** gombra. Ez a hitelesítő adat a fürt SSH-jelszavának tárolása.
+1. Ismételje meg ugyanezt a folyamatot egy új hitelesítő adathoz a `ssh-password` felhasználónévvel `sshuser` és az Ön által választott jelszóval. Kattintson a **Létrehozás** gombra. Ez a hitelesítő adat a fürt SSH-jelszavának tárolása.
 
     ![hitelesítő adat létrehozása](./media/manage-clusters-runbooks/create-credentials.png)
 
@@ -74,7 +74,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 1. Válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
 1. Válassza **a Runbook létrehozása**lehetőséget.
-1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-create`. Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
+1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-create` . Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
 1. Kattintson a **Létrehozás** gombra.
 
     ![runbook létrehozása](./media/manage-clusters-runbooks/create-runbook.png)
@@ -130,7 +130,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 1. Válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
 1. Válassza **a Runbook létrehozása**lehetőséget.
-1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-delete`. Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
+1. A **Runbook létrehozása** panelen adja meg a runbook nevét, például: `hdinsight-cluster-delete` . Válassza a **PowerShell** lehetőséget a **Runbook típusa** legördülő listából.
 1. Kattintson a **Létrehozás** gombra.
 1. Adja meg a következő kódot a **PowerShell-Runbook szerkesztése** képernyőn, és válassza a **Közzététel**lehetőséget:
 
@@ -153,7 +153,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 ### <a name="create-a-cluster"></a>Fürt létrehozása
 
 1. Tekintse meg az Automation-fiók Runbookok listáját úgy, hogy kiválasztja a **runbookok** elemet a **folyamat automatizálása**alatt.
-1. Válassza `hdinsight-cluster-create`ki vagy a fürt létrehozási runbook létrehozásakor használt nevet.
+1. Válassza ki `hdinsight-cluster-create` vagy a fürt létrehozási runbook létrehozásakor használt nevet.
 1. Válassza az **Indítás** lehetőséget a runbook azonnali végrehajtásához. A runbookok rendszeres időközönként is ütemezhetők. Lásd: [Runbook ütemezése Azure Automationban](../automation/shared-resources/schedules.md)
 1. Adja meg a parancsfájl kötelező paramétereit, majd kattintson **az OK gombra**. Ez egy új HDInsight-fürtöt hoz létre a **CLUSTERNAME** paraméterben megadott névvel.
 
@@ -161,7 +161,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ### <a name="delete-a-cluster"></a>Fürt törlése
 
-Törölje a fürtöt a `hdinsight-cluster-delete` létrehozott runbook kiválasztásával. Kattintson a **Start**gombra, írja be a **CLUSTERNAME** paramétert, és sselect **az OK gombot**.
+Törölje a fürtöt a létrehozott runbook kiválasztásával `hdinsight-cluster-delete` . Kattintson a **Start**gombra, írja be a **CLUSTERNAME** paramétert, és sselect **az OK gombot**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

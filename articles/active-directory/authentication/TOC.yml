@@ -43,7 +43,7 @@
         - name: Licencek
           href: concept-mfa-licensing.md
         - name: MFA az Office 365-höz
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: GYIK
           href: multi-factor-authentication-faq.md
     - name: Jelszó nélküli hitelesítés
@@ -87,7 +87,7 @@
         - name: Címtárösszevonás
           items:
             - name: Windows Server 2016 AD FS-adapter
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: Összevonási szolgáltatások
               href: multi-factor-authentication-get-started-adfs.md
             - name: Az AD FS használata
@@ -119,7 +119,7 @@
         - name: Jelszó nélküli telefonos bejelentkezés
           href: howto-authentication-passwordless-phone.md
         - name: Vállalati Windows Hello
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: Biztonsági tudnivalók regisztrálása
       items:
         - name: A kombinált regisztráció engedélyezése
@@ -220,7 +220,7 @@
 - name: Referencia
   items:
     - name: MFA – felhasználói útmutató
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: Kódminták
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-parancsmagok
@@ -234,7 +234,7 @@
     - name: Azure visszajelzési fórum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Szolgáltatási hírek

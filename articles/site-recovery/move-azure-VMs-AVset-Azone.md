@@ -8,13 +8,13 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86135462"
 ---
-# <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba
+# <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése Availability Zonesba
 Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Az egyes rendelkezésre állási zónák egy vagy több, önálló áramellátással, hűtéssel, és hálózattal rendelkező adatközpontból állnak. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogyan az a [Availability Zones támogató régiókban](../availability-zones/az-region.md)szerepel.
 
 Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üzembe helyezve egy adott régióban, és szeretné javítani a rendelkezésre állást azáltal, hogy ezeket a virtuális gépeket egy rendelkezésre állási zónába helyezi, ezt Azure site Recovery használatával teheti meg. Ez a művelet a következő kategóriákba rendezhető:
@@ -66,7 +66,7 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 
      A következő dokumentumok azt mutatják be, hogyan hozhatja létre az Ön számára releváns leggyakrabban használt hálózati erőforrásokat a forrásként szolgáló virtuális gép konfigurációja alapján.
 
-    - [Network security groups (Hálózati biztonsági csoportok)](../virtual-network/manage-network-security-group.md)
+    - [Hálózati biztonsági csoportok](../virtual-network/manage-network-security-group.md)
     - [Terheléselosztók](../load-balancer/index.yml)
     - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
@@ -85,7 +85,7 @@ A következő lépések végigvezetik a Azure Site Recovery az adatreplikálás 
 
 1. A Azure Portal válassza a **virtuális gépek**lehetőséget, majd válassza ki azt a virtuális gépet, amelyet át szeretne helyezni Availability Zonesba.
 2. A **Műveletek** részen válassza a **Vészhelyreállítás** elemet.
-3. A vész- **helyreállítási**  >  **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi. Győződjön meg arról, hogy a régió [támogatja](../availability-zones/az-region.md) a Availability Zones.
+3. A **Vészhelyreállítás konfigurálása** > **Célrégió** részben válassza ki a célrégiót, amelybe a replikálást végezni kívánja. Győződjön meg arról, hogy a régió [támogatja](../availability-zones/az-region.md) a Availability Zones.
 
     ![A célként kijelölt régió kiválasztása](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -110,7 +110,7 @@ A replikálási feladat befejeződése után ellenőrizheti a replikálás álla
 
 ## <a name="test-the-configuration"></a>A konfiguráció tesztelése
 
-1. A virtuális gép menüben válassza a vész- **helyreállítás**lehetőséget.
+1. A virtuális gép menüben válassza a vész-  **helyreállítás**lehetőséget.
 2. Válassza a **feladatátvételi teszt** ikont.
 3. A feladatátvételi **teszt**területen válassza ki a feladatátvételhez használandó helyreállítási pontot:
 
@@ -129,7 +129,7 @@ A replikálási feladat befejeződése után ellenőrizheti a replikálás álla
 
 ## <a name="move-to-the-target-region-and-confirm"></a>Lépjen a célhelyre, és erősítse meg
 
-1.  A virtuális gép menüben válassza a vész- **helyreállítás**lehetőséget.
+1.  A virtuális gép menüben válassza a vész-  **helyreállítás**lehetőséget.
 2. Válassza a **feladatátvétel** ikont.
 3. A **Feladatátvétel** területen válassza a **Legújabb** elemet. 
 4. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamat a **feladatok** lapon követhető. 

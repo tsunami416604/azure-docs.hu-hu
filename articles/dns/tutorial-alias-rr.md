@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76939250"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Oktatóanyag: Hozzon létre egy aliasrekordot a zónában lévő erőforrásrekordra való hivatkozáshoz
@@ -57,8 +57,8 @@ Aliasrekord létrehozása, amely egy erőforrásrekordra mutat a zónában.
 
 ## <a name="test-the-alias-record"></a>Az aliasrekord tesztelése
 
-1. Indítsa el a kedvenc nslookup eszközét. Az egyik lehetőség, hogy megkeresi a [https://network-tools.com/nslook](https://network-tools.com/nslook)következőt:.
-2. A lekérdezés típusaként adja meg az A rekordok értéket, és keresse meg a **teszt.\<saját tartományneve\>** elemet. A válasz: **10.10.10.10**.
+1. Indítsa el a kedvenc nslookup eszközét. Az egyik lehetőség, hogy megkeresi a következőt: [https://network-tools.com/nslook](https://network-tools.com/nslook) .
+2. Adja meg a rekordok lekérdezési típusát, és keresse meg a **tesztet. \<your domain name\> ** A válasz: **10.10.10.10**.
 3. Az Azure Portalon módosítsa a **kiszolgáló** A rekordjának értékét a következőre: **10.11.11.11**.
 4. Várjon néhány percig, és használja újra az nslookup eszközt a **teszt** rekordhoz. A válasz: **10.11.11.11**.
 

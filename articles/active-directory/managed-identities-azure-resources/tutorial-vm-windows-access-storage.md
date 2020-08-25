@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75971968"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
@@ -42,7 +42,7 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy Win
 
 
 
-## <a name="enable"></a>Bekapcsolás
+## <a name="enable"></a>Engedélyezés
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -60,7 +60,7 @@ Ebben a szakaszban egy új tárfiókot fog létrehozni.
 3. A **Név** mezőben adja meg a tárfiók nevét.
 4. A **Telepítési modell** mezőben a **Resource Manager**, a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -69,7 +69,7 @@ Ebben a szakaszban egy új tárfiókot fog létrehozni.
 A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egyet, amelyben a fájlt tárolhatja. Ezután fel fog tölteni egy fájlt az új tárfiókon lévő blobtárolóba.
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
-2. A **Blob Service** területen kattintson a **Tárolók** lehetőségre.
+2. A **blob szolgáltatás**alatt kattintson a **tárolók**elemre.
 3. Kattintson a **+ Tároló** gombra a lap tetején.
 4. Az **Új tároló** területen írja be a tároló nevét, és a **Nyilvános hozzáférés szintje** területen tartsa meg az alapértelmezett értéket.
 
@@ -92,7 +92,7 @@ Ez a szakasz bemutatja, hogyan biztosítható a virtuális gép hozzáférése e
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a **Minden erőforráscsoport** értékre.
 7. A **Kiválasztás** mezőben válassza ki a virtuális gépet, majd kattintson a **Mentés** gombra.
 
-    ![Engedélyek kiosztása](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
+    ![Engedélyek hozzárendelése](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
 ## <a name="access-data"></a>Adatok elérése 
 

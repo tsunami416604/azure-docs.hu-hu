@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "81000251"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
@@ -146,7 +146,7 @@ RuuviTag-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
 1. Keresse meg és válassza ki a **RuuviTag** -érzékelő eszköz sablonját az Azure IoT-eszköz katalógusában. 
 
-1. Válassza a **Tovább: testreszabás**lehetőséget.
+1. Kattintson a **Tovább: Testreszabás** elemre.
 
     ![Azure IoT Central RuuviTag-érzékelő eszköz sablonja](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
@@ -177,7 +177,7 @@ A RuuviTag-eszköz beépített felületének testreszabása:
 
 1. Válassza a **Testreszabás** lehetőséget a RuuviTag-eszköz sablon menüjében. 
 
-1. Görgessen a lehetőségek listájához, és keresse `humidity` meg a telemetria típusát. Ez az a sor, amelynek a *nedvességtartalma*a szerkeszthető **megjelenítendő név** értékével rendelkezik.
+1. Görgessen a lehetőségek listájához, és keresse meg a `humidity` telemetria típusát. Ez az a sor, amelynek a *nedvességtartalma*a szerkeszthető **megjelenítendő név** értékével rendelkezik.
 
 A következő lépésekben testreszabhatja a `humidity` RuuviTag érzékelők telemetria-típusát. Igény szerint testreszabhat néhány más telemetria-típust.
 
@@ -244,15 +244,15 @@ Szabály létrehozása:
 
 1. Válassza a **szabályok**lehetőséget.
 
-1. Válassza az **+ új**lehetőséget.
+1. Válassza a **+ Új** lehetőséget.
 
 1. A szabály neveként adja meg a *páratartalom szintjét* . 
 
 1. Válassza ki a RuuviTag-eszköz sablonját a **hatókörökben**. Az Ön által definiált szabály a sablon alapján az összes érzékelőre érvényes lesz. Szükség esetén létrehozhat egy szűrőt, amely csak az érzékelők egy meghatározott részhalmazára alkalmazza a szabályt. 
 
-1. Válassza `Relative humidity` ki a **telemetria**. Ez az eszköz azon funkciója, amelyet az előző lépésben testreszabtak.
+1. Válassza ki `Relative humidity` a **telemetria**. Ez az eszköz azon funkciója, amelyet az előző lépésben testreszabtak.
 
-1. Válassza `Is greater than` ki az **operátort**. 
+1. Válassza ki `Is greater than` az **operátort**. 
 
 1. Adjon meg egy tipikus felső tartományba eső, a környezetnek megfelelő belső páratartalom- **szintet.** Adja meg például a *65*értéket. Megadta a szabály feltételét, amely akkor fordul elő, ha a RuuviTag valós vagy szimulált érzékelő relatív páratartalma meghaladja ezt az értéket. Előfordulhat, hogy a környezete normál nedvességtartalmának megfelelően módosítania kell az értéket.  
 

@@ -4,10 +4,10 @@ description: Használjon mintázatokat a szándékok és az entitások előrejel
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86039500"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Oktatóanyag: általános minta sablon-megadási formátumok hozzáadása az előrejelzések tökéletesítéséhez
@@ -33,7 +33,7 @@ A LUIS-alkalmazásban két típusú hosszúságú kimondott szöveg tárol:
 
 A sablon hosszúságú kimondott szöveg hozzáadásával a minta lehetővé teszi, hogy az általános hosszúságú kimondott szöveg kevesebb példát szolgáltasson.
 
-A rendszer a szöveg egyeztetése és a gépi tanulás kombinációja alapján alkalmazza a mintát.  A sablon kiválasztása a mintában, a példában szereplő hosszúságú kimondott szöveg együtt, hogy LUIS jobban megértse, hogy milyen hosszúságú kimondott szöveg illeszkednek a szándékhoz.
+A minták alkalmazása a szövegegyeztetés és a gépi tanulás kombinációjaként történik.  A mintában található sablonbeszédelem a szándék példabeszédelemeivel együtt segít megérteni a LUIS számára, hogy milyen beszédelemek felelnek meg a szándéknak.
 
 ## <a name="import-example-app-and-clone-to-new-version"></a>Példa importálása az alkalmazásra és a klónozás új verzióra
 
@@ -193,7 +193,7 @@ Ne zárja be ezt a második böngészőablakot. Később ismét használni fogja
 ## <a name="template-utterances"></a>Kimondottszöveg-sablon
 A humán erőforrás tárgyi tartományának jellegéből adódóan néhány gyakori módszer a szervezeten belüli alkalmazottak kapcsolatainak megkérdezésére. Például:
 
-|Beszédmódok|
+|Beszédelemek|
 |--|
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
@@ -204,8 +204,8 @@ A szándék sablonként szolgáló kimondott szövegeinek példái a következő
 
 |Példák kimondottszöveg-sablonokra|szintaxis jelentése|
 |--|--|
-|`Who does {EmployeeListEntity} report to[?]`|felcserélhetők`{EmployeeListEntity}`<br>figyelmen kívül`[?]`|
-|`Who reports to {EmployeeListEntity}[?]`|felcserélhetők`{EmployeeListEntity}`<br>figyelmen kívül`[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|felcserélhetők `{EmployeeListEntity}`<br>figyelmen kívül `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|felcserélhetők `{EmployeeListEntity}`<br>figyelmen kívül `[?]`|
 
 Az `{EmployeeListEntity}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis, a `[?]` jelölők szavai vagy a nem kötelező [írásjelek](luis-reference-application-settings.md#punctuation-normalization) . A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
 
@@ -249,7 +249,7 @@ Ahhoz, hogy egy minta kimondható legyen, _először_ a Kimondás alá tartozó 
 
 Most, hogy a mintákat hozzáadja az alkalmazáshoz, a betanításhoz, a közzétételhez és az alkalmazás lekérdezéséhez az előrejelzési futtatókörnyezet végpontján.
 
-1. Válassza a **betanítás**lehetőséget. A betanítás befejezése után válassza a **Közzététel** lehetőséget, majd válassza ki az **üzemi** tárolóhelyet, majd válassza a **kész**lehetőséget.
+1. Válassza a **Betanítás** lehetőséget. A betanítás befejezése után válassza a **Közzététel** lehetőséget, majd válassza ki az **üzemi** tárolóhelyet, majd válassza a **kész**lehetőséget.
 
 1. A közzététel befejezése után váltson vissza a böngésző lapjaira a végpont URL-címe lapra.
 
@@ -489,7 +489,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. E
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs sávon.
 
-1. Válassza a **+ Létrehozás**lehetőséget, írja be a nevet `FormName` , és válassza a **minta. any** típust. Válassza a **Létrehozás** lehetőséget.
+1. Válassza a **+ Létrehozás**lehetőséget, írja be a nevet `FormName` , és válassza a **minta. any** típust. Kattintson a **Létrehozás** gombra.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>A Pattern.any entitást használó minta hozzáadása
 
@@ -529,7 +529,7 @@ Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelel�
 
 Ez az oktatóanyag olyan mintákat vett fel, amelyek segítségével a LUIS előre jelezheti a szándékot, és nem kell további példát hosszúságú kimondott szöveg hozzá. Az entitások és az elhagyható szövegek megjelölésével a LUIS szélesebb körben képes alkalmazni a mintát a kimondott szövegekre.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 

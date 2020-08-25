@@ -14,10 +14,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86119327"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához (előzetes verzió)
@@ -34,7 +34,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
 > * A sikertelen parancsfájl hibakeresése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -341,7 +341,7 @@ Távolítsa el a **Write-Output1** sort, és telepítse újra a sablont.
 
 A második központi telepítés sikeres futtatásakor a szkript szolgáltatás eltávolítja a telepítési parancsfájl erőforrásait, mivel a **cleanupPreference** tulajdonság értéke **OnSuccess**.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -350,7 +350,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja az üzembe helyezési szkriptet az ARM-sablonokban. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
 

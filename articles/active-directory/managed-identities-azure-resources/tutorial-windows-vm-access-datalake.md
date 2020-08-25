@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:` felügyelt identitás használata Azure Data Lake Store-Windows-Azure ad eléréséhez
+title: Oktatóanyag `:` felügyelt identitás használata Azure Data Lake Store-Windows-Azure ad eléréséhez
 description: Ez az oktatóanyag bemutatja, hogyan használhat Windows VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Data Lake Storage eléréséhez.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "75977878"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Oktatóanyag: Hozzáférés az Azure Data Lake Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
@@ -38,7 +38,7 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt fel�
 
 
 
-## <a name="enable"></a>Bekapcsolás
+## <a name="enable"></a>Engedélyezés
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -76,7 +76,7 @@ Ebben az oktatóanyagban a Data Lake Store-fájlrendszer REST API-jában fog hit
 1. A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben. 
-4. A Powershell `Invoke-WebRequest` parancsával küldjön kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot az Azure Data Lake Storage-hoz.  Data Lake Store erőforrás-azonosítója `https://datalake.azure.net/`.  A Data Lake az erőforrás-azonosítót pontosan egyezteti, így a záró perjel nem hagyható el.
+4. A Powershell `Invoke-WebRequest` parancsával küldjön kérést az Azure-erőforrások helyi felügyeltidentitási végpontjára, hogy lekérjen egy hozzáférési jogkivonatot az Azure Data Lake Storage-hoz.  Data Lake Store erőforrás-azonosítója `https://datalake.azure.net/` .  A Data Lake az erőforrás-azonosítót pontosan egyezteti, így a záró perjel nem hagyható el.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}

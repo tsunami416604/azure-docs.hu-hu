@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73890394"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
@@ -96,7 +96,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 ### <a name="create-the-stream-analytics-job"></a>A Stream Analytics-feladat létrehozása
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás** > létrehozása**eszközök internetes hálózata** > **stream Analyticsi feladatot**.
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analyticsi feladatot**.
 
 2. Adja meg a feladat alábbi adatait.
 
@@ -162,7 +162,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
-1. A **Feladattopológia** területen válassza a **Lekérdezés** lehetőséget.
+1. A **feladatok topológiája**területen válassza a **lekérdezés**lehetőséget.
 
 2. A `[YourInputAlias]` elemet cserélje le a feladat bemeneti áljelére. Ez az oktatóanyag a **contosoinputs** bemeneti áljelet használja.
 
@@ -176,7 +176,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-A stream Analyticsi feladatokban válassza az **Indítás** > **most** > **Indítás**lehetőséget. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
+A stream Analyticsi feladatokban válassza az **Indítás**  >  **most**  >  **Indítás**lehetőséget. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
 
 A Power BI-jelentés beállításához adatokra van szükség, ezért a Power BI-t az eszköz létrehozása és az eszközszimulációs alkalmazás futtatása után fogja beállítani.
 
@@ -280,7 +280,7 @@ Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába. Lépjen
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup`az oktatóanyag elején a **ContosoResources** vissza lett állítva.
+Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítható el. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -288,7 +288,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Erőforrások törlése a PowerShell használatával
 
-Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsot. `$resourceGroup`az oktatóanyag elején a **ContosoResources** vissza lett állítva.
+Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsot. `$resourceGroup` az oktatóanyag elején a **ContosoResources** vissza lett állítva.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

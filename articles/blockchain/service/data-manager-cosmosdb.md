@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79533181"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Oktatóanyag: az Blockchain-Data Manager használata az adatküldés Azure Cosmos DB
@@ -43,7 +43,7 @@ Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgált
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az előfeltételként szolgáló rövid útmutatóban létrehozott Azure Blockchain Service-tagot [: hozzon létre egy Blockchain-tagot a Azure Portal használatával](create-member.md). Válassza ki a **Blockchain Data Manager**.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     ![Blockchain hozzáadása Data Manager](./media/data-manager-cosmosdb/add-instance.png)
 
@@ -51,7 +51,7 @@ Egy Blockchain Data Manager-példány csatlakozik egy Azure Blockchain szolgált
 
     Beállítás | Példa | Leírás
     --------|---------|------------
-    Name (Név) | mywatcher | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager.
+    Név | mywatcher | Adjon egyedi nevet a csatlakoztatott Blockchain Data Manager.
     Tranzakciós csomópont | myblockchainmember | Válassza ki az előfeltételként létrehozott Azure Blockchain Service-tag alapértelmezett tranzakciós csomópontját.
     Kapcsolat neve | cosmosdb | Adja meg a kimenő kapcsolatok egyedi nevét, ahol a blockchain tranzakciós adatküldés történik.
     Event Grid-végpont | myTopic | Válassza ki az előfeltételként létrehozott Event Grid-témakört. Megjegyzés: a Blockchain Data Manager példányának és az Event Grid témakörnek ugyanahhoz az előfizetéshez kell tartoznia.
@@ -76,7 +76,7 @@ A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja
 
     A rendszer átmásolja a szerződéses ABI-t a vágólapra.
 
-1. Mentse az **ABI** TÖMBÖt JSON-fájlként. Például: *ABI. JSON*. Ezt a fájlt egy későbbi lépésben használhatja.
+1. Mentse az **ABI** TÖMBÖt JSON-fájlként. *abi.js*például:. Ezt a fájlt egy későbbi lépésben használhatja.
 
 A Blockchain Data Manager igényli az intelligens szerződés üzembe helyezett bytecode. Az üzembe helyezett bytecode eltér az intelligens szerződés bytecode. Az Azure blockchain Development Kit bővítmény használatával másolja a bytecode a vágólapra.
 
@@ -88,11 +88,11 @@ A Blockchain Data Manager igényli az intelligens szerződés üzembe helyezett 
 
     A rendszer a vágólapra másolja a bytecode.
 
-1. Mentse a **bytecode** -értéket JSON-fájlként. Például: *bytecode. JSON*. Ezt a fájlt egy későbbi lépésben használhatja.
+1. Mentse a **bytecode** -értéket JSON-fájlként. *bytecode.js*például:. Ezt a fájlt egy későbbi lépésben használhatja.
 
-Az alábbi példa az *ABI. JSON* és a *bytecode. JSON* fájlt mutatja meg a vs Code Editorban. A fájloknak hasonlóan kell kinézniük.
+Az alábbi példa a VS Code Editorban megnyitott fájlok *abi.js* és *bytecode.jsét* mutatja be. A fájloknak hasonlóan kell kinézniük.
 
-![ABI. JSON és bytecode. JSON fájlok – példa](./media/data-manager-cosmosdb/contract-files.png)
+![Példa a fájlokra abi.jsés bytecode.js](./media/data-manager-cosmosdb/contract-files.png)
 
 ### <a name="create-contract-abi-and-bytecode-url"></a>Egyezményes ABI és bytecode URL-cím létrehozása
 
@@ -110,7 +110,7 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Name (Név)  | Nevezze el a tárolót. Például: *smartcontract* |
+    | Név  | Nevezze el a tárolót. Például: *smartcontract* |
     | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
 
 1. A tároló létrehozásához válassza az **OK** gombot.
@@ -138,7 +138,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
 1. Válassza ki a Blockchain Data Manager példányt a példány listából.
 1. Válassza a **Blockchain-alkalmazások**elemet.
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     ![Blockchain-alkalmazás hozzáadása](./media/data-manager-cosmosdb/add-application.png)
 
@@ -146,7 +146,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
     Beállítás | Leírás
     --------|------------
-    Name (Név) | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
+    Név | Adjon meg egy egyedi nevet a nyomon követett blockchain-alkalmazás számára.
     Egyezményes ABI | A szerződéses ABI-fájl URL-címének elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
     Szerződés bytecode | A bytecode fájl URL-elérési útja. További információkért lásd: [egyezményes ABI és bytecode URL-cím létrehozása](#create-contract-abi-and-bytecode-url).
 
@@ -174,7 +174,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     | Beállítás | Leírás
     |---------|-------------|
     | Adatbázis-azonosító | Adja meg a **blockchain** nevet az új adatbázis neveként. |
-    | Átviteli sebesség | Az átviteli sebesség **400** adategység/másodperc (ru/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.|
+    | Teljesítmény | Az átviteli sebesség **400** adategység/másodperc (ru/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.|
     | Tároló azonosítója | Adja meg az **üzeneteket** az új tároló neveként. |
     | Partíciókulcs | A **/MessageType** használata partíciós kulcsként. |
 
@@ -235,7 +235,7 @@ Hozzon létre egy műveletet egy dokumentum létrehozásához Cosmos DB minden t
     A kifejezés beolvassa az üzenet adat részét, és az azonosítót egy időbélyeg-értékre állítja be.
 
 1. Válassza az **új paraméter hozzáadása** lehetőséget, és válassza a **partíciós kulcs értéke**lehetőséget.
-1. Állítsa a **Partition Key értéket** a `"@{triggerBody()['data']['MessageType']}"`következőre:. Az értéket idézőjelek között kell megadni.
+1. Állítsa a **Partition Key értéket** a következőre: `"@{triggerBody()['data']['MessageType']}"` . Az értéket idézőjelek között kell megadni.
 
     ![Logic Apps Designer Cosmos DB beállításokkal](./media/data-manager-cosmosdb/create-action.png)
 

@@ -4,10 +4,10 @@ description: A C# használatával hozzon létre egy csevegőrobotot integrált n
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.openlocfilehash: b9da1d1fecbb251ebf27833cc381eb658a9df46b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445899"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: webalkalmazás-robot használata a Language Understanding C használatával #
@@ -35,23 +35,23 @@ A C# használatával a Language Understanding (LUIS) nyelvvel integrált cseveg�
 
 1. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
 
-    |Beállítás|Cél|Javasolt beállítás|
+    |Beállítás|Rendeltetés|Javasolt beállítás|
     |--|--|--|
     |Bot-fogantyú|Erőforrás neve|`luis-csharp-bot-` + `<your-name>`, például: `luis-csharp-bot-johnsmith`|
     |Előfizetés|Az előfizetés, amelyben létre szeretné hozni a robotot.|Az Ön elsődleges előfizetése.
     |Erőforráscsoport|Az Azure-erőforrások logikai csoportja|Hozzon létre új csoportot a robothoz használt erőforrások tárolására. A csoport neve legyen: `luis-csharp-bot-resource-group`.|
     |Hely|Azure-régió – Nem kell a LUIS létrehozási vagy közzétételi régiójával azonosnak lennie.|`westus`|
     |Tarifacsomag|Szolgáltatáskérési korlátokhoz és számlázáshoz használható.|Az `F0` az ingyenes szint.
-    |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, például: `luis-csharp-bot-johnsmith`|
+    |Alkalmazás neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, például: `luis-csharp-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
-    |App Service-csomag/Hely|Ne módosítsa a megadott alapértelmezett értéket.|
+    |App Service-csomag/hely|Ne módosítsa a megadott alapértelmezett értéket.|
     |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
     |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
 1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
-    |Beállítás|Cél|Kiválasztás|
+    |Beállítás|Rendeltetés|Kiválasztás|
     |--|--|--|
     |SDK nyelve|Robot programozási nyelve|**C#**|
     |Bot|Robot típusa|**Alapszintű robot**|
@@ -74,7 +74,7 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|None|Az app tartományán kívül bármi.|
+|Nincsenek|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 

@@ -4,10 +4,10 @@ description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86117559"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
@@ -39,7 +39,7 @@ Ebben a cikkben a következő lépéseket hajtja végre:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 * A [Visual studio 2019](https://www.visualstudio.com/vs/) a következő számítási feladatokkal rendelkezik: .net Desktop-fejlesztés, Azure-fejlesztés, ASP.net és webfejlesztés, Node.js fejlesztés és Python-fejlesztés.
 * Töltse le a [EventHubsCaptureEventGridDemo minta projektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
 
@@ -79,9 +79,9 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
         ```azurecli
         az group create -l eastus -n rgDataMigration
         ```
-    2. Nyomja le az **ENTER** billentyűt. 
+    2. Nyomja le az **ENTER**billentyűt. 
 
-        Például:
+        Alább bemutatunk egy példát:
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp
@@ -201,7 +201,7 @@ Hozzon létre egy táblázatot az adattárházban a [CreateDataWarehouseTable. S
 
 ## <a name="publish-the-azure-functions-app"></a>Az Azure Functions-alkalmazás közzététele
 
-1. Indítsa el a Visual Studiót.
+1. Indítsa el a Visual studiót.
 2. Nyissa meg a **EventHubsCaptureEventGridDemo. SLN** megoldást, amelyet az előfeltételek részeként letöltött a [githubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) .
 3. A Megoldáskezelőben kattintson a jobb gombbal a **FunctionEGDWDumper** elemre, majd válassza a **Közzététel** lehetőséget.
 
@@ -307,7 +307,7 @@ Az Event Grid elküldi az eseményadatokat az előfizetőknek. Az alábbi példa
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure üzenetkezelési szolgáltatások különbségeiről [az üzenetkézbesítő Azure-szolgáltatás kiválasztásának ismertetésében](compare-messaging-services.md) olvashat.
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

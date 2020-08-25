@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "74084395"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Azure Resource Manager-sablon használata IoT Hub üzenet-útválasztás konfigurálásához
@@ -30,7 +30,7 @@ ms.locfileid: "74084395"
 
 Az oktatóanyag második részében le kell töltenie és futtatnia kell egy Visual Studio-alkalmazást, amely üzeneteket küld a IoT Hub. A letöltésben egy olyan mappa található, amely tartalmazza a Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-t és a PowerShell-parancsfájlokat.
 
-Most töltse le az [Azure IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) . Bontsa ki a Master. zip fájlt. A Resource Manager-sablon és a Parameters fájl a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ban **template_iothub. JSON** és **template_iothub_parameters. JSON**néven szerepel.
+Most töltse le az [Azure IoT C#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) . Bontsa ki a master.zip fájlt. A Resource Manager-sablon és a Parameters fájl a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ben **template_iothub.jsbe** -és **template_iothub_parameters.js**.
 
 ## <a name="create-your-resources"></a>Erőforrások létrehozása
 
@@ -195,7 +195,7 @@ A következő szakasz az IOT hub üzenet-útválasztási konfigurációjának sz
 
 A várólista kapcsolódási karakterláncának létrehozásához szükség van a queueAuthorizationRulesResourcedId, amelyet a rendszer beolvasott. A Storage-fiókhoz tartozó kapcsolódási karakterlánc létrehozásához le kell kérnie az elsődleges tároló kulcsát, majd azt a kapcsolódási karakterlánc formátumában kell használni.
 
-A végpont konfigurációját is be kell `AVRO` állítani a vagy `JSON`a blob-formátumra.
+A végpont konfigurációját is be kell állítani a vagy a blob-formátumra `AVRO` `JSON` .
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
@@ -231,7 +231,7 @@ A végpont konfigurációját is be kell `AVRO` állítani a vagy `JSON`a blob-f
 
 Ez a következő szakasz a végpontokhoz tartozó üzenet-útvonalakat tartalmazza. Mindegyik végponthoz egy beállítás van beállítva, így a Service Bus üzenetsor és a Storage-fiók tárolója közül egyet is megadhat.
 
-Ne feledje `level="storage"`, hogy a tárolóba átirányított üzenetek lekérdezési feltétele, valamint az Service Bus várólistára átirányított üzenetek lekérdezési feltétele `level="critical"`.
+Ne feledje, hogy a tárolóba átirányított üzenetek lekérdezési feltétele `level="storage"` , valamint az Service Bus várólistára átirányított üzenetek lekérdezési feltétele `level="critical"` .
 
 ```json
 "routes": [

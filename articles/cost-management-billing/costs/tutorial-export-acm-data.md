@@ -3,17 +3,17 @@ title: Oktatóanyag – Az Azure Cost Managementből exportált adatok létrehoz
 description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure Cost Managementből exportált adatokat külső rendszerekkel való használat céljából.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 69b7b4bff46ba2998ca931ba1cb6bc9e7c1d9096
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142313"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272213"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -49,40 +49,38 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-daily-export"></a>Napi rendszerességű exportálás létrehozása
 
-Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyissa meg a kívánt hatókört az Azure Portalon, majd válassza a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A Költségelemzés lap tetején kattintson a **Beállítások**, majd az **Exportálások** elemre, és válasszon ki egy exportálási beállítást.
+Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyissa meg a kívánt hatókört az Azure Portalon, majd válassza a **Költségelemzés** lehetőséget a menüben. Például lépjen az **Előfizetések** pontra, válasszon ki egy előfizetést a listában, majd válassza a **Költségelemzés** menüpontot. A Költségelemzés lap tetején kattintson a **Beállítások**, majd az **Exportálások** elemre.
 
 > [!NOTE]
-> - Az előfizetéseken túl erőforráscsoportokhoz, fiókokhoz, részlegekhez és regisztrációkhoz is hozhat létre exportálásokat. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
+> - Az előfizetéseken túl erőforráscsoportokhoz, felügyeleti csoportokhoz, részlegekhez és regisztrációkhoz is hozhat létre exportálásokat. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 >- Amikor partnerként jelentkezik be a számlázási fiók hatókörébe vagy egy ügyfél bérlőjébe, adatokat exportálhat abba az Azure Storage-fiókba, amely össze van kapcsolva a partner tárfiókjával. Ehhez azonban aktív előfizetéssel kell rendelkeznie a CSP-bérlő esetében.
 
-Kattintson a **Hozzáadás** elemre, adja meg az exportálás kívánt nevét, majd válassza **Az eddigi tárgyhavi költségek napi exportálása** lehetőséget. Kattintson a **Tovább** gombra.
+1. Válassza a **Hozzáadás** lehetőséget, majd írja be az exportálás nevét. 
+1. A **Metrika** elemhez válasszon a következők közül:
+    - **Tényleges költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a standard használatot és költségeket szeretné exportálni
+    - **Amortizált költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a vásárlások, például az Azure Reservations amortizált költségeit szeretné exportálni
+1. Az **Exportálás típusa** elemhez válasszon a következő lehetőségek közül:
+    - **Az eddigi tárgyhavi költségek napi exportálása** – Naponta új exportálási fájlt biztosít a tárgyhavi költségekről. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
+    - **Az elmúlt 7 nap költségeinek heti exportálása** – Az elmúlt hét nap költségeit hetente exportálja, az exportálás kiválasztott kezdődátumától.  
+    - **A múlt havi költségek havi exportálása** – A múlt havi költségeket exportálja, összehasonlítva az aktuális hónappal, amikor az exportálást létrehozza. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.  
+    - **Egyszeri exportálás** – Lehetővé teszi az Azure Blob Storage-be exportálandó előzményadatok dátumtartományának kiválasztását. A kiválasztott naptól számítva legfeljebb 90 nap előzményadatai exportálhatók. Ez az exportálás azonnal lefut, és két órán belül elérhetővé válik a tárfiókjában.  
+        Az exportálás típusától függően kiválaszthat egy kezdődátumot, vagy megadhat **Kezdő** és **Záró** dátumot.
+1. Adja meg az Azure-tárfiókhoz tartozó előfizetést, majd válasszon ki egy erőforráscsoportot, vagy hozzon létre egy újat. 
+1. Válassza ki a tárfiók nevét, vagy hozzon létre egy újat. 
+1. Válassza ki a helyet (Azure-régiót).
+1. Adja meg a tárolót és a könyvtár elérési útját, ahová az exportálást irányítani szeretné. 
+    :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Új exportálási példa" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
+1. Tekintse át az exportálás adatait, majd kattintson a **Létrehozás** gombra.
 
-[![Példa új exportálásra az exportálás típusával](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
+Az új exportálás megjelenik az exportálások listájában. Alapértelmezés szerint az új exportálások engedélyezve vannak. Ha le szeretne tiltani vagy törölni szeretne egy ütemezett exportálást, kattintson a lista bármelyik elemére, majd a **Letiltás** vagy a **Törlés** parancsra.
 
-Adja meg az Azure-tárfiók előfizetését, majd válassza ki a tárfiókját.  Adja meg a tárolót és a könyvtár elérési útját, ahová az exportálást irányítani szeretné. Kattintson a **Tovább** gombra.
-
-![Új exportálási példa a tárfiók adataival](./media/tutorial-export-acm-data/storage_exports.png)
-
-Tekintse át az exportálás adatait, majd kattintson a **Létrehozás** gombra.
-
-Az új exportálási feladat megjelenik az exportálási feladatok listájában. Alapértelmezés szerint az új exportálások engedélyezve vannak. Ha le szeretne tiltani vagy törölni szeretne egy ütemezett exportálást, kattintson a lista bármelyik elemére, majd a **Letiltás** vagy a **Törlés** parancsra.
-
-Kezdetben egy-két óra is eltelhet az exportálási feladat lefutásáig. Azonban négy órát is igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
+Kezdetben 12–24 óra is eltelhet az exportálási feladat lefutásáig. Azonban több időt igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
 
 ### <a name="export-schedule"></a>Exportálás üzemezése
 
-Az ütemezett exportálást meghatározza, hogy azt eredetileg a hét mely napján és mely időpontban hozta létre. Amikor ütemezett exportálást hoz létre, minden további exportálási eseményre ugyanazon gyakorisággal fog sor kerülni. Például ha egy aktuális havi exportálás napi gyakoriságúra van beállítva, az exportálási feladat naponta fut le. Hasonlóan a heti exportáláshoz, az exportálási feladat minden héten ugyanazon a napon fut le, az ütemezésnek megfelelően. Az exportált adatok pontos kézbesítési időpontja nem garantált, és az exportált adatok a futtatás időpontjától számított négy órán belül állnak rendelkezésre.
+Az ütemezett exportálást meghatározza, hogy azt eredetileg a hét mely napján és mely időpontban hozta létre. Amikor ütemezett exportálást hoz létre, minden további exportálási eseményre ugyanazon gyakorisággal fog sor kerülni. Például ha az eddigi tárgyhavi költségek napi exportálása napi gyakoriságúra van beállítva, az exportálási feladat naponta fut le. Hasonlóan a heti exportáláshoz, az exportálási feladat minden héten ugyanazon a napon fut le, az ütemezésnek megfelelően. Az exportált adatok pontos kézbesítési időpontja nem garantált, és az exportált adatok a futtatás időpontjától számított négy órán belül állnak rendelkezésre.
+
 Mindegyik exportálás egy új fájlt hoz létre, azaz a régebben exportált adatok nem lesznek felülírva.
-
-Kétféle exportálási lehetőség áll rendelkezésre:
-
-**Az eddigi tárgyhavi költségek napi exportálása** – A kezdeti exportálás azonnal lefut. A további exportálási feladatok minden rákövetkező nap az eredeti exportálással meg egyező időpontban futnak le. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
-
-**Egyéni** – Heti és havi exportálási feladatok ütemezését teszi lehetővé az addigi tárgyheti vagy tárgyhavi adatokkal. *A kezdeti exportálás azonnal lefut.*
-
-Ha használatalapú, MSDN- vagy Visual Studio-előfizetéssel rendelkezik, a számlázási időszak nem feltétlenül esik egybe a naptári hónapokkal. Az ilyen típusú előfizetésekhez és erőforráscsoportokhoz olyan exportálásokat is létrehozhat, amelyek a számlázási időszakhoz vagy a naptári hónapokhoz igazodnak. A számlázási hónaphoz igazodó exportálás létrehozásához lépjen az **Egyéni** menüpontra, majd válassza a **Számlázási időszak mai napig** lehetőséget.  A naptári hónaphoz igazodó exportálás létrehozásához válassza az **Ebben a hónapban** lehetőséget.
-
-![Új exportálás – Alapvető beállítások lap, amelyen látható az aktuális heti egyéni kiválasztás](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>Exportálás létrehozása több előfizetéshez
 
@@ -90,10 +88,11 @@ Ha Nagyvállalati Szerződéssel rendelkezik, akkor egy felügyeleti csoporton k
 
 Más előfizetési típusokhoz tartozó felügyeleti csoportok adatainak exportálása nem támogatott.
 
-1. Hozzon létre egy felügyeleti csoportot, és rendeljen hozzá előfizetéseket.
-1. Az Exportálások elemnél válassza a **Hatókör** lehetőséget.
-1. Jelölje ki a **Válassza ezt a felügyeleti csoportot** lehetőséget.
-1. Hozzon létre egy megfelelő hatókörű exportálást, hogy lekérhesse a felügyeleti csoportba tartozó előfizetések költségkezelési adatait.
+1. Ha még nem hozott létre felügyeleti csoportot, hozzon létre egyet, és rendeljen hozzá előfizetéseket.
+1. Adja meg a felügyeleti csoport hatókörét a költségelemzésben, majd jelölje ki a **Válassza ezt a felügyeleti csoportot** lehetőséget.  
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="A Válassza ezt a felügyeleti csoportot lehetőséget bemutató példa" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+1. Hozzon létre egy megfelelő hatókörű exportálást, hogy lekérhesse a felügyeleti csoportba tartozó előfizetések költségkezelési adatait.  
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Az új exportálás felügyeleti csoport hatókörrel való létrehozását bemutató példa":::
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
 
@@ -123,6 +122,16 @@ Az exportált CSV-fájlt az Azure Portalon is letöltheti. A következő lépés
 1. Jelölje ki a CSV-fájlt, majd a válassza a **Letöltés** lehetőséget.
 
 [![Példa exportálás letöltésére](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
+
+## <a name="view-export-run-history"></a>Az exportálás futtatási előzményeinek megtekintése  
+
+Az ütemezett exportálások futtatási előzményeinek megtekintéséhez válasszon ki egy exportálást az exportálások listáját tartalmazó oldalon. Az exportálások listáját tartalmazó oldalon gyorsan megtekintheti a korábbi exportálások futásidejét és a következő exportálás futtatásának időpontját is. Az alábbi példa a futtatási előzményeket mutatja be.
+
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Az exportálás futtatási előzményeit bemutató példa":::
+
+Válasszon ki egy exportálást a futtatási előzményei megtekintéséhez.
+
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Az exportálás futtatási előzményeit bemutató példa":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Exportált adatokhoz való hozzáférés más rendszerekből
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan nyomon követheti és kezelhe
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9f69b8815cc8d508d5a10dda82803581216a4eb
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079315"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761627"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
 
@@ -17,7 +17,7 @@ Azure Backup szolgáltatás olyan feladatokat indít el, amelyek a háttérben f
 
 ## <a name="fetch-job-information-from-operations"></a>Feladatok adatainak beolvasása a műveletből
 
-Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Például: a [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) végső válasza a következő:
+Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Például: a [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup) végső válasza a következő:
 
 ```http
 {
@@ -45,7 +45,7 @@ A a `{jobName}` fent említett "jobId". A válasz mindig 200 OK az "állapot" me
 
 ### <a name="response"></a>Reagálás
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

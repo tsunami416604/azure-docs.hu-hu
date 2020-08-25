@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "61450546"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
@@ -28,7 +28,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Eszközmodell klónozása
 > * Eszközmodellek törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,7 +64,7 @@ Adja meg az alábbi adatokat az űrlapon:
 | ------------------- | ---------------------------------------------------- |
 | Eszközmodell neve   | Hűtő                                         |
 | Modell leírása   | Hőmérséklet- és páratartalom-érzékelőkkel rendelkező hűtő |
-| Verzió             | 1.0                                                  |
+| Verzió             | 1,0                                                  |
 
 > [!NOTE]
 > Az eszközmodell nevének egyedinek kell lennie.

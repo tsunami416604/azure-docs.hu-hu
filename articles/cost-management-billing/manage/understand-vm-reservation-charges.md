@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan érvényesül az Azure Reserved VM Instances-ke
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018382"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192220"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Az Azure-foglalási kedvezmény alkalmazása virtuális gépekre
 
@@ -56,11 +56,15 @@ Windows rendszerű virtuálisgép-példányok futtatásakor a foglalás az infra
 
 ## <a name="discount-can-apply-to-different-sizes"></a>A kedvezmény különböző méretekre alkalmazható
 
-Ha egy Reserved VM Instances-példány megvásárlásakor kiválasztja az **Optimalizálva a következőre:** **Példányméreti rugalmasság** beállítást, akkor a kedvezmény általi lefedettség a virtuális gép kiválasztott méretétől függ. A foglalást az ugyanabban a méretsorozat-csoportban található virtuálisgép-méretekre lehet alkalmazni. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
+Ha egy Reserved VM Instances-példány megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a virtuális gép kiválasztott méretére vonatkozik. Ez vonatkozhat az ugyanazon sorozatú példányméret-rugalmassági csoportban található más virtuálisgép-méretekre is. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>A kedvezmény csak a megfelelő szolgáltatástípusra érvényes
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>A Premium Storage virtuális gépekre a nem prémium szintű kedvezmények nem vonatkoznak
 
-A foglalási kedvezmény csak az olyan virtuálisgép-használatra vonatkozik, ahol az `AdditionalInfo``ServiceType` értéke megfelel a megvásárolt foglalásnak. A foglalási kedvezmény alkalmazása figyelmen kívül hagyja a virtuális gépekhez használt mérőszámot, és csak a `ServiceType` kiértékelését végzi. Legyen tudatában annak, hogy melyik szolgáltatástípushoz vásárolta meg a virtuális gépet. A nem prémium szintű tárolási virtuálisgép-foglalást prémium szintű tárolási foglalásra cserélheti, vagy fordítva.
+Íme egy példa. Tegyük fel, hogy öt Standard_D1 virtuális géphez vásárolt foglalást. A foglalási kedvezmény csak a Standard_D1 virtuális gépekre vagy az ugyanazon példánycsaládban lévő virtuális gépekre vonatkozik. A kedvezmény nem vonatkozik a Standard_DS1 virtuális gépekre vagy a DS1 példányméret-rugalmassági csoportban lévő más méretekre.
+
+A foglalási kedvezmény alkalmazása figyelmen kívül hagyja a virtuális gépekhez használt mérőszámot, és csak a ServiceType kiértékelését végzi. Tekintse meg az `ServiceType` értékét az `AdditionalInfo` területen, és állapítsa meg a virtuális gép példányrugalmassági csoportjára/sorozatára vonatkozó információkat. Az értékek a használati adatokat tartalmazó CSV-fájlban találhatók.
+
+Nem módosíthatja közvetlenül a foglalás példányrugalmassági csoportját/sorozatát a vásárlás után. Azonban a virtuális gép foglalását *lecserélheti* az egyik példányrugalmassági csoportról/sorozatról egy másikra.
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>A virtuálisgép-foglalási kedvezményekre jogosult szolgáltatások
 
@@ -72,7 +76,7 @@ A példány méretrugalmassági beállítása határozza meg, hogy mely szolgál
 
 Ha a *ConsumedService* értéke `Microsoft.Compute`, a foglalási kedvezmények automatikusan érvényesülnek minden megfelelő virtuálisgép-használat esetében, attól függetlenül, hogy a beállítás be vagy ki van-e kapcsolva. Ebből kifolyólag ellenőrizze a használati adatait a *ConsumedService* értékének megtekintéséhez. Néhány példa:
 
-- Virtual machines (Virtuális gépek)
+- Virtuális gépek
 - Virtuálisgép-méretezési csoportok
 - Container Service
 - Azure Batch-üzemelőpéldányok (felhasználói előfizetési módban)

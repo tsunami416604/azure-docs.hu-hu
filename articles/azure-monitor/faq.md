@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828506"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782940"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -80,6 +80,10 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hogyan beolvasni az adatnaplót?
 Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query Language (KQL) használatával írt napló lekérdezés használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és bepillantást, amelyek egy adott alkalmazáshoz vagy szolgáltatáshoz tartozó naplózási lekérdezéseket tartalmaznak. Lásd: [Azure monitorban található naplók áttekintése](log-query/log-query-overview.md).
+
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Törölhetek adatok Log Analytics munkaterületről?
+Az adatok el lettek távolítva a munkaterületről a [megőrzési időtartamnak](platform/manage-cost-storage.md#change-the-data-retention-period)megfelelően. A megadott adatokat adatvédelmi vagy megfelelőségi okokból is törölheti. További információkért lásd: [privát adatok exportálása és törlése](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
+
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Mi a Log Analytics-munkaterület?
 A Azure Monitor által gyűjtött összes naplózási adatokat egy Log Analytics munkaterületen tárolja a rendszer. A munkaterület lényegében egy olyan tároló, amelyben a naplózási adatokat különböző forrásokból gyűjti a rendszer. Lehet, hogy az összes figyelési adathoz egyetlen Log Analytics munkaterület tartozik, vagy több munkaterületre vonatkozó követelmények is lehetnek. Lásd: [a Azure monitor naplók üzembe helyezésének megtervezése](platform/design-logs-deployment.md).
@@ -171,7 +175,7 @@ A következő témakörben ismertetett lépéseket követve értesülhet arról,
 - **Riasztási feltétel meghatározása**: adja meg az log Analytics munkaterületet erőforrás-célként.
 - **Riasztási feltételek** 
    - **Jel neve**: *egyéni naplók keresése*
-   - **Keresési lekérdezés**:`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Keresési lekérdezés**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Riasztási logika**: az *eredmények száma*, a **Condition** **küszöbértéknél** *nagyobb*érték **alapján** *0*
    - **Értékelés alapja**: **időtartam (percben)** *30*, **gyakoriság (perc)** *10*
 - **Riasztás részleteinek megadása** 
@@ -272,7 +276,7 @@ Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
-[További információk](app/monitor-performance-live-website-now.md#questions).
+[További információ](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
@@ -318,7 +322,7 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan lesznek begyűjtve Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
 
 
-Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információ](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -371,7 +375,7 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 * Ha egy valós felhasználó különböző böngészőkben használja a webhelyét, vagy ha privát vagy inkognitóbani böngészést vagy különböző gépeket használ, a rendszer egynél többször veszi fel őket.
 * A bejelentkezett felhasználók számítógépek és böngészők közötti azonosításához vegyen fel egy hívást a [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users)szolgáltatásba.
 
-### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Engedélyeztem mindent Application Insights?
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Engedélyeztem mindent Application Insights?
 | Mit kell látnia? | Útmutató | Miért szeretné |
 | --- | --- | --- |
 | Rendelkezésre állási diagramok |[Webes tesztek](app/monitor-web-app-availability.md) |Ismerje meg a webalkalmazását |
@@ -430,9 +434,9 @@ Javasoljuk, hogy használja az SDK-kat, és használja az [SDK API](app/api-cust
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Nyomon követhető az intranetes webkiszolgáló?
 
 Igen, de engedélyeznie kell a szolgáltatásoknak a tűzfal-kivételek vagy a proxy-átirányítások által nyújtott forgalmat.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Tekintse át a szolgáltatások és IP-címek teljes listáját [itt](app/ip-addresses.md).
@@ -714,7 +718,7 @@ Ez néhány ok miatt fordulhat elő.  Abban az esetben, ha az adatgyűjtésben h
 Igen, a függőségi ügynök telepítése után adatokat gyűjtünk a virtuális gépekről az előfizetés, az erőforráscsoport, a virtuálisgép-méretezési csoportok és a Cloud Services alapján.  Ha már használta a Service Map és létrehozott számítógép-csoportokat, ezek is megjelennek.  A számítógépcsoportok akkor is megjelennek a csoportok szűrőben, ha létrehozta őket a megtekintett munkaterülethez. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan tekintse meg a 95. percentilis-sor az összesített teljesítményű diagramokon való vezetésének részleteit?
-Alapértelmezés szerint a lista úgy van rendezve, hogy megjelenítse azokat a virtuális gépeket, amelyek a 95. percentilis legmagasabb értékkel rendelkeznek a kiválasztott metrika esetében, kivéve a rendelkezésre álló memória diagramot, amely az 5. percentilis legalacsonyabb értékkel rendelkező gépeket jeleníti meg.  A diagramra kattintva megnyílik a **legfelső N listanézet** nézet a megfelelő metrika kiválasztásával.
+Alapértelmezés szerint a lista úgy van rendezve, hogy megjelenítse azokat a virtuális gépeket, amelyek a 95. percentilis legmagasabb értékkel rendelkeznek a kiválasztott metrika esetében, kivéve a rendelkezésre álló memória diagramot, amely az 5. percentilis legalacsonyabb értékkel rendelkező gépeket jeleníti meg.  A diagramra kattintva megnyílik a **legfelső N listanézet**  nézet a megfelelő metrika kiválasztásával.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hogyan kezeli a Map szolgáltatás a duplikált IP-címeket különböző virtuális hálózatok és alhálózatokon?
 Ha az IP-tartományokat virtuális gépek vagy Azure virtuálisgép-méretezési csoportok között duplikálja az alhálózatok és a virtuális hálózatok között, akkor Azure Monitor for VMs leképezés helytelen információk megjelenítésére vezethet. Ez egy ismert probléma, amely a tapasztalatok fejlesztését vizsgálja.
@@ -741,7 +745,7 @@ Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log A
 Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.
 
 - [Log Analytics](/answers/topics/azure-monitor.html)

@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85851251"
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
@@ -74,7 +74,7 @@ Az eredeti válasznak így kell kinéznie:
 1. Válassza a **Demo Conference API** lehetőséget.
 2. A képernyő felső részén válassza a **Tervezés** lapot.
 3. Válassza **az összes művelet**lehetőséget.
-4. A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
+4. A **kimenő feldolgozás** szakaszban kattintson az **</>** ikonra.
 5. Vigye a kurzort a ** &lt; kimenő &gt; ** elemen belülre.
 6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
 
@@ -113,7 +113,7 @@ Az eredeti válasz megtekintése:
 1.  Válassza a **Demo Conference API** lehetőséget.
 2.  Válassza **az összes művelet**lehetőséget.
 3.  A képernyő felső részén válassza a **Tervezés** lapot.
-4.  A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
+4.  A **kimenő feldolgozás** szakaszban kattintson az **</>** ikonra.
 5.  Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és kattintson a jobb felső sarokban található **kódrészletek megjelenítése** gombra.
 6.  A jobb oldali ablak **átalakítási házirendek**területén kattintson a **tartalom maszk URL-címek**elemére.
 

@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
 ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86027511"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
@@ -61,7 +61,7 @@ taxi_train_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windo
 modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 ```
 
-### <a name="import-libraries"></a>Tárak importálása
+### <a name="import-libraries"></a>Kódtárak importálása
 
 A beállításhoz a szükséges kódtárak importálására is szükség van. Állítsa be a Spark-környezetet, és importálja a szükséges kódtárakat a következő kóddal:
 
@@ -172,7 +172,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 A fenti cella végrehajtásához szükséges idő: 51,72 másodperc
 
-## <a name="explore-the-data"></a>Az adatok vizsgálata
+## <a name="explore-the-data"></a>Az adatok feltárása
 
 Miután az adatgyűjtés bekerült a Sparkba, az adatelemzési folyamat következő lépése az adatelemzési és vizualizációs eredmények mélyebb megismerése. Ebben a szakaszban az SQL-lekérdezések használatával vizsgáljuk meg a taxi-adatforrásokat, és kirajzoljuk a vizuális vizsgálathoz használt cél változókat és a jövőbeli funkciókat. Konkrétan az utasok számának gyakoriságát vesszük igénybe a taxiban, a tipp összegének gyakoriságát, és azt, hogy a tippek milyen mértékben változnak a fizetési mennyiség és a típus szerint.
 

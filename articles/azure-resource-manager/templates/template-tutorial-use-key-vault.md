@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
 ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86119276"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Oktatóanyag: Azure Key Vault integrálása az ARM-sablon üzembe helyezésével
@@ -29,9 +29,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A paraméterfájl szerkesztése
 > * A sablon üzembe helyezése
 > * Az üzembe helyezés ellenőrzése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -131,7 +131,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
 A statikus azonosító módszer használatával semmilyen módosítást nem kell végeznie a sablon fájljában. A titkos érték beolvasása a sablon-paraméter fájljának konfigurálásával végezhető el.
 
-1. A Visual Studio Code-ban nyissa meg *aazuredeploy.parameters.json* , ha még nincs megnyitva.
+1. A Visual Studio Code-ban nyissa meg * aazuredeploy.parameters.json* , ha még nincs megnyitva.
 1. A paraméter frissítése a következőre `adminPassword` :
 
     ```json
@@ -190,13 +190,13 @@ A statikus azonosító módszer használatával semmilyen módosítást nem kell
 
 A virtuális gép sikeres üzembe helyezését követően tesztelje a bejelentkezési hitelesítő adatokat a Key vaultban tárolt jelszó használatával.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 1. Válassza az **erőforráscsoportok**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**elemet.
 1. Kattintson a fent található **kapcsolat** lehetőségre.
 1. Válassza az **RDP-fájl letöltése**lehetőséget, majd kövesse az utasításokat a virtuális gépre való bejelentkezéshez a Key vaultban tárolt jelszó használatával.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az Azure-erőforrásokra, az erőforráscsoport törlésével törölje az üzembe helyezett erőforrásokat.
 
@@ -209,7 +209,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy titkos kulcsot adott vissza az Azure Key vaultból. Ezután használta a titkot a sablon üzembe helyezésében. Ha szeretné megtudni, hogyan használhatja a virtuálisgép-bővítményeket az üzembe helyezés utáni feladatok végrehajtásához, olvassa el a következő témakört:
 

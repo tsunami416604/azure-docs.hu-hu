@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76722373"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: szimulált eszköz-adatértékek előállítása
@@ -67,9 +67,9 @@ Ennek a lépésnek a működésével egyenértékűnek kell lennie az eszközök
 
    ![VS Code Restore prompt](media/tutorial-machine-learning-edge-03-generate-data/restore-package-dependencies.png)
 
-   Ha nem kapja meg ezeket az értesítéseket, akkor nyissa meg a Visual Studio Code-ot, `C:\source\IoTEdgeAndMlSample\DeviceHarness`törölje a bin és az obj könyvtárakat a alkalmazásban, nyissa meg a Visual Studio Code-ot, majd nyissa meg újra
+   Ha nem kapja meg ezeket az értesítéseket, akkor nyissa meg a Visual Studio Code-ot, törölje a bin és az obj könyvtárakat a alkalmazásban `C:\source\IoTEdgeAndMlSample\DeviceHarness` , nyissa meg a Visual Studio Code-ot, majd nyissa meg újra
 
-1. Ellenőrizze, hogy a környezet megfelelően van-e beállítva a Build, a **CTRL** + **SHIFT** + **B**vagy a **Terminal** > **Run Build feladat**aktiválásával.
+1. Ellenőrizze, hogy a környezet megfelelően van-e beállítva a Build, a **CTRL**  +  **SHIFT**  +  **B**vagy a **Terminal**  >  **Run Build feladat**aktiválásával.
 
 1. A rendszer kéri, hogy válassza ki a futtatandó felépítési feladatot. Válassza a **Létrehozás**lehetőséget.
 
@@ -77,7 +77,7 @@ Ennek a lépésnek a működésével egyenértékűnek kell lennie az eszközök
 
    ![Sikeres kimeneti üzenet létrehozása](media/tutorial-machine-learning-edge-03-generate-data/build-success.png)
 
-1. Ezt kiépítheti az alapértelmezett Build feladattal, ha kiválasztja a **terminál** > **konfigurálása alapértelmezett Build feladatát.** .. lehetőséget, majd kiválaszthatja a **Build** elemet a parancssorból.
+1. Ezt kiépítheti az alapértelmezett Build feladattal, ha kiválasztja a **terminál**  >  **konfigurálása alapértelmezett Build feladatát.** .. lehetőséget, majd kiválaszthatja a **Build** elemet a parancssorból.
 
 ## <a name="connect-to-iot-hub-and-run-deviceharness"></a>Kapcsolódás IoT Hub és DeviceHarness futtatása
 
@@ -85,7 +85,7 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 ### <a name="sign-in-to-azure-in-visual-studio-code"></a>Bejelentkezés az Azure-ba a Visual Studio Code-ban
 
-1. Jelentkezzen be az Azure-előfizetésbe a Visual Studio Code-ban `Ctrl + Shift + P` a parancs paletta megnyitásával vagy a**parancs-paletta** **megtekintésével** > .
+1. Jelentkezzen be az Azure-előfizetésbe a Visual Studio Code-ban a parancs paletta megnyitásával `Ctrl + Shift + P` vagy a parancs-paletta **megtekintésével**  >  **Command Palette**.
 
 1. Keresse meg az **Azure: Sign in** parancsot.
 
@@ -105,7 +105,7 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 ### <a name="run-the-deviceharness-project"></a>A DeviceHarness projekt futtatása
 
-1. A Visual Studio Code Terminal megnyitásához válassza a**terminál** **megtekintése** > lehetőséget.
+1. **View**  >  A Visual Studio Code Terminal megnyitásához válassza a**terminál** megtekintése lehetőséget.
 
    Ha nem jelenik meg a kérdés, nyomja le az ENTER billentyűt.
 
@@ -145,7 +145,7 @@ Az IoT hub számára elküldett adatait a rendszer átirányítja az előző cik
 
 1. A Storage-fiók navigátorában válassza a **Storage Explorer (előzetes verzió)** lehetőséget.
 
-1. A Storage Explorerben válassza a **blob-tárolók** lehetőséget `devicedata`.
+1. A Storage Explorerben válassza a **blob-tárolók** lehetőséget `devicedata` .
 
 1. A tartalom ablaktáblán kattintson az IoT hub neveként a mappára, amelyet év, hónap, nap és óra követ. Ekkor több, a perceket jelképező mappa jelenik meg, amikor az adatgyűjtés megtörténik.
 

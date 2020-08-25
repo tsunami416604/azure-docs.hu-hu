@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 463bd290c304d9436316c9e08778f37ce8bd0b55
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86135429"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
@@ -66,7 +66,7 @@ Előfordulhat, hogy az Azure-infrastruktúra szolgáltatásként (IaaS) virtuál
 
    Azure Site Recovery automatikusan felkeresi és létrehoz egy virtuális hálózati és Storage-fiókot, amikor engedélyezi a forrás virtuális gép replikálását. Ezeket az erőforrásokat előre is létrehozhatja és hozzárendelheti a virtuális géphez az Enable-Replication lépés részeként. A célként megadott régióban azonban manuálisan kell létrehoznia a többi erőforrást. Tekintse át a következő dokumentumokat a leggyakrabban használt hálózati erőforrások létrehozásához a forrás virtuális gép konfigurációja alapján:
 
-   - [Network security groups (Hálózati biztonsági csoportok)](../virtual-network/manage-network-security-group.md)
+   - [Hálózati biztonsági csoportok](../virtual-network/manage-network-security-group.md)
    - [Terheléselosztók](../load-balancer/index.yml)
    - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     

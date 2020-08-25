@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
 ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85368107"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Gyors útmutató: egyéni szolgáltató létrehozása és egyéni erőforrások üzembe helyezése
@@ -18,7 +18,7 @@ Ebben a rövid útmutatóban létrehoz egy saját erőforrás-szolgáltatót, é
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - A rövid útmutató lépéseinek elvégzéséhez meg kell hívnia a `REST` műveleteket. [A REST-kérelmek küldésének különböző módjai](/rest/api/azure/)vannak.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -361,7 +361,7 @@ A `delete` parancs felszólítja, és csak az egyéni erőforrás-szolgáltatót
 az custom-providers resource-provider delete --resource-group $rgName --name $funcName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyéni szolgáltatók bevezetését a következő cikk ismerteti:
 

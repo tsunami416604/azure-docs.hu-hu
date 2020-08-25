@@ -14,10 +14,10 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "77201298"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével
@@ -32,7 +32,7 @@ A virtuális hálózatok közötti társviszony létesítésével virtuális há
 
 Igény szerint az oktatóanyagot az [Azure CLI](tutorial-connect-virtual-networks-cli.md) vagy az [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) használatával is elvégezheti.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -48,8 +48,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
     |---|---|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-    |Régió| Válassza az **USA keleti régiója** lehetőséget.|
-    |Name (Név)|myVirtualNetwork1|
+    |Region| Válassza az **USA keleti régiója** lehetőséget.|
+    |Név|myVirtualNetwork1|
 
 4. Az **IP-címek** lapon adja meg a 10.0.0.0/16 értéket a **címterület** mezőben. Kattintson a lenti **alhálózat hozzáadása** gombra, és adja meg a *Subnet1* az alhálózat **neve** és a 10.0.0.0/24 **alhálózati címtartomány**mezőben.
 5. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
@@ -58,7 +58,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myVirtualNetwork2|
+    |Név|myVirtualNetwork2|
     |Címtér|10.1.0.0/16|
     |Erőforráscsoport| Válassza a **meglévő használata** , majd a **myResourceGroup**lehetőséget.|
     |Alhálózat neve | Subnet2|
@@ -101,7 +101,7 @@ Hozzon létre egy virtuális gépet az egyes virtuális hálózatokon, hogy komm
     |Beállítás|Érték|
     |---|---|
     |Erőforráscsoport| Válassza a **meglévő használata** , majd a **myResourceGroup**lehetőséget.|
-    |Name (Név)|myVm1|
+    |Név|myVm1|
     |Hely| Válassza az **USA keleti régiója** lehetőséget.|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -124,7 +124,7 @@ Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
 
 |Beállítás|Érték|
 |---|---|
-|Name (Név) | myVm2|
+|Név | myVm2|
 |Virtuális hálózat | myVirtualNetwork2|
 
 A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.

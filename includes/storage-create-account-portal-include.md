@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76759848"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
@@ -30,14 +30,14 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 
    |Mező  |Érték  |
    |---------|---------|
-   |Üzemi modell     |Resource Manager         |
+   |Üzembehelyezési modell     |Resource Manager         |
    |Teljesítmény     |Standard         |
-   |Fióktípus     |StorageV2 (általános célú v2)         |
+   |Fiók altípusa     |StorageV2 (általános célú v2)         |
    |Replikáció     |Írásvédett georedundáns tárolás (RA-GRS)         |
    |Hozzáférési szint     |Gyakori         |
 
 8. Ha [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használatát tervezi, válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve**értékre.
 9. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
-10. Válassza a **Létrehozás** lehetőséget.
+10. Kattintson a **Létrehozás** gombra.
 
 További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview). További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743779"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782736"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Vendég felhasználók meghívása és Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
@@ -45,7 +45,7 @@ Ez a cikk bemutatja, hogyan hívhat meg egy vendéget a szervezet számára, és
 
 ## <a name="how-does-collaboration-using-b2b-guests-work"></a>Hogyan működik a B2B-vendégeket használó együttműködés?
 
-Ha B2B-együttműködést használ, egy külső felhasználót is meghívhat vendégként a szervezet számára. A vendég felügyelhető felhasználóként a szervezetében, de a vendéget hitelesíteni kell a saját szervezetében, és nem az Azure AD-szervezetben. Ez azt jelenti, hogy ha a vendég már nem fér hozzá a saját szervezetéhez, akkor is elveszti a hozzáférést a szervezethez. Ha például a vendég elhagyja a szervezetét, automatikusan elveszíti az Azure AD-vel megosztott összes erőforráshoz való hozzáférést anélkül, hogy bármit el kellene végeznie. További információ a B2B együttműködésről: [Mi a vendég felhasználói hozzáférés Azure Active Directory B2B-ben?](../b2b/what-is-b2b.md).
+Ha B2B-együttműködést használ, egy külső felhasználót is meghívhat vendégként a szervezet számára. A vendég felügyelhető felhasználóként a szervezetében, de a vendéget hitelesíteni kell a saját szervezetében, és nem az Azure AD-szervezetben. Ez azt jelenti, hogy ha a vendég már nem fér hozzá a saját szervezetéhez, akkor is elveszti a hozzáférést a szervezethez. Ha például a vendég elhagyja a szervezetét, automatikusan elveszíti az Azure AD-vel megosztott összes erőforráshoz való hozzáférést anélkül, hogy bármit el kellene végeznie. További információ a B2B együttműködésről: [Mi a vendég felhasználói hozzáférés Azure Active Directory B2B-ben?](../external-identities/what-is-b2b.md).
 
 ![Azt bemutató ábra, hogy a vendég felhasználó hogyan legyen hitelesítve a saját könyvtárában](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
@@ -163,7 +163,7 @@ A naplókat megtekintve nyomon követheti, hogy a vendégek mit csinálnak.
 
     ![Címtár-naplózási naplók listázási dátuma, cél, kezdeményező és tevékenység](./media/pim-resource-roles-external-users/audit-directory.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-beli rendszergazdai szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Mi a vendég felhasználói hozzáférés az Azure AD B2B együttműködésben?](../b2b/what-is-b2b.md)
+- [Mi a vendég felhasználói hozzáférés az Azure AD B2B együttműködésben?](../external-identities/what-is-b2b.md)

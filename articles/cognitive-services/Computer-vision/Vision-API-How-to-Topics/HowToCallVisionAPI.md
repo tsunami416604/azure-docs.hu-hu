@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85957902"
 ---
 # <a name="call-the-computer-vision-api"></a>A Computer Vision API meghívása
@@ -148,7 +148,7 @@ Ebben az esetben az összes v1 lekérdezési paraméter ugyanúgy viselkedik. Ha
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Az elemzéshez használt JSON-kimenet beolvasása és megismerése
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```json
 {  

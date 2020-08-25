@@ -4,10 +4,10 @@ description: 'Oktatóanyag: a Azure Event Grid az Azure Storage-ban blob-feltöl
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86105795"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
@@ -28,7 +28,7 @@ Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési f
 
 ---
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Storage-fiók létrehozása
@@ -247,7 +247,7 @@ A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function.js
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Ha többet szeretne megtudni erről a függvényről, tekintse [meg afunction.jsés index.js fájlokat](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+Ha többet szeretne megtudni erről a függvényről, tekintse [ meg afunction.jsés index.js fájlokat](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
 ---
 
@@ -271,7 +271,7 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
-    | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. |
+    | **Név** | imageresizersub | Az új esemény-előfizetés azonosítóneve. |
     | **Témakörtípus** | Tárfiókok | Válassza ki a Storage-fiók eseményszolgáltatóját. |
     | **Előfizetés** | Az Azure-előfizetése | Alapértelmezés szerint az aktuális Azure-előfizetés van kiválasztva. |
     | **Erőforráscsoport** | myResourceGroup | Válassza a **Meglévő használata** elemet, majd válassza ki az oktatóanyagban használt erőforráscsoportot. |

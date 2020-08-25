@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
 ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86083066"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Adatátalakítás az Azure Virtual Networkban a kaptár tevékenységgel Azure Data Factory a Azure Portal
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Fac
 > * A folyamat futásának monitorozása 
 > * Kimenet ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +70,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 3. Hozzon létre egy **hivescripts** nevű mappát.
 4. Töltse fel a **hivescript.hql** fájlt a **hivescripts** almappába.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
@@ -94,7 +94,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -168,7 +168,7 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
     2. Válassza a **MySelfHostedIR** elemet a **Connect via integration runtime** (Csatlakozás integrációs modulon keresztül) lehetőségnél.
     3. Válassza ki az Azure Storage-fiókját a **Storage-fiók nevéhez**. 
     4. Ha tesztelni szeretné a tárfiókkal létrejövő kapcsolatot, kattintson a **Test connection** (Kapcsolat tesztelése) lehetőségre.
-    5. Kattintson a **Save** (Mentés) gombra.
+    5. Kattintson a **Mentés** gombra.
    
         ![Azure Blob Storage-fiók megadása](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -228,7 +228,7 @@ Vegye figyelembe a következő szempontokat:
         ![Szkript beállításai](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. A **Script lapon** bontsa ki az **Advanced** (Speciális) szakaszt. 
     6. Kattintson az **Auto-fill from script** (Automatikus kitöltés szkript alapján) elemre a **Parameters** (Paraméterek) menüpontban. 
-    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Példa: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Például: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Szkript argumentumai](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Ahhoz, hogy közzétehesse az összetevőket a Data Factoryn, kattintson a **Publish** (Közzététel) gombra.
@@ -260,7 +260,7 @@ Vegye figyelembe a következő szempontokat:
 
     ![Kimeneti fájl](./media/tutorial-transform-data-using-hive-in-vnet-portal/output-file.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

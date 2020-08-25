@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85360520"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek
 Az első teendő, hogy a hibrid identitás-környezet felépítésének és működtetésének megkezdéséhez hozzon létre egy virtuális gépet, amelyet a helyszíni Active Directory-kiszolgálóként fog használni.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell
     #Declare variables
@@ -90,7 +90,7 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése előtt végre kell hajtania néhány dolgot.  Éppen ezért át kell neveznie a virtuális gépet, meg kell adnia egy statikus IP-címet és a DNS-adatokat, és telepítenie kell a Távoli kiszolgálófelügyelet eszközeit.   Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell
     #Declare variables
@@ -126,7 +126,7 @@ Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése 
 Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory tartományi szolgáltatások telepítését és konfigurálását.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell 
     #Declare variables
@@ -157,7 +157,7 @@ Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-cím
 Most, hogy már rendelkezik Active Directory-környezettel, tesztelési fiókkal kell rendelkeznie.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell 
     # Filename:    4_CreateUser.ps1
@@ -199,9 +199,9 @@ Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálni tudja a felh
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Válassza a **Létrehozás** lehetőséget.</br>
+4. Kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-single-forest/create1.png)</br>
-5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután kattintson a **Létrehozás** elemre. Ezzel létrejön a címtár.
+5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás** elemet. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Globális rendszergazda létrehozása az Azure AD-ben
@@ -223,7 +223,7 @@ Ha csak további kiszolgálóra van szüksége, akkor a- **create The Virtual Ma
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell
     # Filename:    1_CreateVM_CP.ps1
@@ -277,7 +277,7 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése előtt végre kell hajtania néhány dolgot.  Éppen ezért át kell neveznie a virtuális gépet, meg kell adnia egy statikus IP-címet és a DNS-adatokat, és telepítenie kell a Távoli kiszolgálófelügyelet eszközeit.   Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell
     # Filename:    2_ADPrep_CP.ps1
@@ -327,7 +327,7 @@ Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése 
 Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory tartományi szolgáltatások telepítését és konfigurálását.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell
     # Filename:    3_InstallAD_CP.ps1
@@ -373,7 +373,7 @@ Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-cím
 Most, hogy már rendelkezik Active Directory-környezettel, tesztelési fiókkal kell rendelkeznie.  Ez a fiók a helyszíni AD-környezetben jön létre, majd szinkronizálva lesz az Azure AD-vel.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
-2. Futtassa az alábbi parancsprogramot.
+2. Futtassa az alábbi parancsfájlt.
 
     ```powershell 
     # Filename:    4_CreateUser_CP.ps1
@@ -408,7 +408,7 @@ Most, hogy már rendelkezik Active Directory-környezettel, tesztelési fiókkal
     Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Enabled $true
     ```
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 Most már rendelkezik egy olyan környezettel, amely használható a meglévő oktatóanyagokhoz, és tesztelheti a további funkciókat a felhőalapú kiépítés terén.
 
 ## <a name="next-steps"></a>További lépések 

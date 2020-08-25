@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,17 +11,17 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: f69502907e2dd3c5b3c64634b1b11e10af5397f5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "67438443"
 ---
 ## <a name="more-information-about-bots"></a>További információ a botokról
 
 A szolgáltatás a botokkal való használatával kapcsolatos további információkért Kezdje a következő erőforrásokkal:
 
-|Erőforrás|Cél|
+|Erőforrás|Rendeltetés|
 |--|--|
 |[Azure bot Service](https://dev.botframework.com/)|Az Azure bot Service egy teljes körű felhőalapú webszolgáltatást biztosít, amely egy bot-végponttal rendelkezik. A szolgáltatások a [bot Framework](https://github.com/Microsoft/botframework)-t használják, amely több nyelven is elérhető.|
 |[Robot keretrendszer](https://github.com/Microsoft/botframework)|A Microsoft bot Framework egy átfogó platform, amely nagyvállalati szintű társalgási funkciók létrehozására szolgál.|

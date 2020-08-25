@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "79501854"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: az adatData Box használata felügyelt lemezként az Azure-ban
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box beállítása](data-box-deploy-set-up.md).
+1. Az [ Az Azure Data Box beállítása](data-box-deploy-set-up.md) című oktatóanyagot.
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Nagy sebességű hálózathoz csatlakozik. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, használjon 1 GbE adatkapcsolatot, de a másolási sebességet is érinti.
 4. Áttekintette a következőket:
@@ -44,7 +44,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-to-data-box"></a>Csatlakozás a Data Boxhoz
 
-A megadott erőforráscsoportok alapján Data Box létrehoz egy megosztást az egyes társított erőforráscsoportok számára. Például ha `mydbmdrg1` a és `mydbmdrg2` a rendelés elhelyezésekor jött létre, a következő megosztások jönnek létre:
+A megadott erőforráscsoportok alapján Data Box létrehoz egy megosztást az egyes társított erőforráscsoportok számára. Például ha `mydbmdrg1` `mydbmdrg2` a és a rendelés elhelyezésekor jött létre, a következő megosztások jönnek létre:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`

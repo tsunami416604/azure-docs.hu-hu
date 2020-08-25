@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82561674"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Oktatóanyag: csatlakozási, beállítás, aktiválás Azure Data Box Gateway
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és aktiválni a Data Box Gateway eszközt a helyi webes felhasználói felület használatával. 
 
@@ -41,7 +41,7 @@ A Data Box Gateway konfigurálása és beállítása előtt győződjön meg az 
 
 1. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes FELÜLETét a következő címen:
    
-   https:\//IP-Address-of-Network-Interface
+   https: \/ /IP-Address-of-Network-Interface
    
    Használja az előző oktatóanyagban feljegyzett kapcsolatok URL-címét. Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
 
@@ -88,7 +88,7 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
    
    A **webproxy** lapon tegye a következőket:
    
-   1. A **webproxy URL-címe** mezőbe írja be az URL-címet a `http://&lt;host-IP address or FQDN&gt;:Port number`következő formátumban:. A HTTPS URL-címek nem támogatottak.
+   1. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://&lt;host-IP address or FQDN&gt;:Port number` . A HTTPS URL-címek nem támogatottak.
    2. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget.
    3. Ha hitelesítést használ, adjon meg egy **felhasználónevet** és egy **jelszót**.
    4. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához kattintson az **alkalmaz**gombra.
@@ -109,7 +109,7 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
     1. Az **időzóna** legördülő listában válassza ki azt az időzónát, amely megfelel az eszköz központi telepítésének földrajzi helyének.
         Az eszköz alapértelmezett időzónája a PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
 
-    2. Adja meg az eszköz **Elsődleges NTP-kiszolgálóját** , vagy fogadja el `time.windows.com`az alapértelmezett értéket.   
+    2. Adja meg az eszköz **Elsődleges NTP-kiszolgálóját** , vagy fogadja el az alapértelmezett értéket `time.windows.com` .   
         Győződjön meg arról, hogy a hálózat engedélyezi az adatközpont és az internet közötti NTP-adatforgalmat.
 
     3. Szükség esetén a **másodlagos NTP-kiszolgáló** mezőbe írja be az eszköz másodlagos kiszolgálóját.

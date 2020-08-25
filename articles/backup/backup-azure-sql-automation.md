@@ -4,12 +4,12 @@ description: Az SQL-adatbázisok biztonsági mentése és visszaállítása Azur
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: a5b62b05c36afac078ccc7aeb7ed0e7259072fc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6bd119b743ad83bcab9f92d386a5091593f6a5c0
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513795"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761321"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>Az SQL-alapú virtuális gép regisztrálása
 
-Az Azure-beli virtuális gépek biztonsági mentései és Azure-fájlmegosztás esetén a Backup szolgáltatás képes csatlakozni ezekhez a Azure Resource Manager erőforrásokhoz, és beolvasni a vonatkozó adatokat. Mivel az SQL egy Azure-beli virtuális gépen belüli alkalmazás, a Backup szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok beolvasásához. Ehhez *regisztrálnia* kell az Azure-beli virtuális gépet, amely a Recovery Services-tárolóval rendelkező SQL-alkalmazást tartalmazza. Miután regisztrált egy SQL virtuális gépet egy tárolóval, csak az adott tárolóhoz biztosíthatja az SQL-adatbázisok védettségét. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PS parancsmagot.
+Az Azure-beli virtuális gépek biztonsági mentései és Azure-fájlmegosztás esetén a Backup szolgáltatás képes csatlakozni ezekhez a Azure Resource Manager erőforrásokhoz, és beolvasni a vonatkozó adatokat. Mivel az SQL egy Azure-beli virtuális gépen belüli alkalmazás, a Backup szolgáltatásnak engedéllyel kell rendelkeznie az alkalmazás eléréséhez és a szükséges adatok beolvasásához. Ehhez *regisztrálnia* kell az Azure-beli virtuális gépet, amely tartalmazza az SQL-alkalmazást Recovery Services-tárolóval. Miután regisztrált egy SQL virtuális gépet egy tárolóval, csak az adott tárolóhoz biztosíthatja az SQL-adatbázisok védettségét. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PS parancsmagot.
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -522,6 +522,7 @@ Meglévő szabályzat szerkesztéséhez használja a [set-AzRecoveryServicesBack
 ```powershell
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
+
 A hibák követéséhez egy idő elteltével a biztonsági mentési feladatokat tekintse át. Ha vannak ilyenek, ki kell javítania a problémákat. Ezután futtassa újra a szabályzat szerkesztése parancsot a **FixForInconsistentItems** paraméterrel, hogy újra megpróbálja szerkeszteni a házirendet az összes olyan biztonsági mentési elemnél, amelynél a művelet korábban meghiúsult.
 
 ```powershell

@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "64919008"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Oktatóanyag: a PHS beállítása biztonsági másolatként a AD FShoz Azure AD Connect
@@ -61,7 +61,7 @@ Most bemutatjuk, hogyan válthat át a jelszó-kivonat szinkronizálására. Mie
 1. Kattintson duplán az asztalon létrehozott Azure AD Connect ikonra.
 2.  Kattintson a **Configure** (Konfigurálás) elemre.
 3.  Válassza **a felhasználói bejelentkezés módosítása** lehetőséget, majd kattintson a **tovább**gombra.
-![Módosítás](media/tutorial-phs-backup/backup2.png)</br>
+![Módosítása](media/tutorial-phs-backup/backup2.png)</br>
 4.  Adja meg a globális rendszergazda felhasználónevét és jelszavát.  Ez a fiók az előző oktatóanyagban [lett létrehozva](tutorial-federation.md#create-a-global-administrator-in-azure-ad) .
 5.  A **felhasználó bejelentkezési** képernyőjén válassza a jelszó- **kivonat szinkronizálása** lehetőséget, és jelölje be a **ne alakítsa át a felhasználói fiókok** számára jelölőnégyzetet.  
 6.  Hagyja bejelölve az **egyszeri bejelentkezés alapértelmezett engedélyezése** beállítást, és kattintson a **tovább**gombra.
@@ -72,8 +72,8 @@ Most bemutatjuk, hogyan válthat át a jelszó-kivonat szinkronizálására. Mie
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
-1. Tallózással keresse meg a[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: (user@domain.onmicrosoft.com). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
+1. Tallózással keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
    ![Ellenőrzés](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>Váltson vissza az összevonásra
@@ -108,8 +108,8 @@ Most vissza kell állítania a AD FS és az Azure közötti megbízhatóságot.
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
-1.  Tallózással keresse meg a[https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: (user@domain.onmicrosoft.com). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.
+1.  Tallózással keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.
 ![Ellenőrzés](media/tutorial-password-hash-sync/verify1.png)
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.

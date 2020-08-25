@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás visszaállítása REST API
 description: Megtudhatja, hogyan használhatja a REST APIt az Azure-fájlmegosztás vagy a megadott fájlok visszaállítására Azure Backup által létrehozott visszaállítási pontról
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538156"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761797"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-fájlmegosztás visszaállítása REST API használatával
 
@@ -64,7 +64,7 @@ A GET URI az összes szükséges paraméterrel rendelkezik. Nincs szükség tov�
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
 ```
 
-### <a name="example-response"></a>Példaválasz
+### <a name="example-response-for-fetch-recovery-points"></a>Példa a helyreállítási pontok beolvasására
 
 Miután elküldte a GET URI-t, a rendszer egy 200-es választ ad vissza:
 
@@ -168,7 +168,7 @@ A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse me
 
 ### <a name="restore-to-original-location"></a>Visszaállítás az eredeti helyre
 
-#### <a name="request-body-example"></a>Példa a kérelem szövegtörzsére
+#### <a name="request-body-example-for-restore-to-original-location"></a>Kérelem törzse – példa az eredeti helyre történő visszaállításra
 
 A következő kérelem törzse definiálja az Azure-fájlmegosztás visszaállításának elindításához szükséges tulajdonságokat:
 
@@ -192,7 +192,7 @@ A másodlagos hely helyreállításához a következő paramétereket kell megad
 * **Name (név**): a célként megadott Storage-fiókon belüli fájlmegosztás, amelyhez a biztonsági másolat tartalma helyreáll.
 * **targetFolderPath**: a fájlmegosztás alatt lévő mappa, amelyhez az adat vissza lett állítva.
 
-#### <a name="request-body-example"></a>Példa a kérelem szövegtörzsére
+#### <a name="request-body-example-for-restore-to-alternate-location"></a>Kérelem törzse – példa a visszaállítás másik helyre
 
 A következő kérelem törzse visszaállítja a *azurefiles* fájlmegosztást a *afsaccount* Storage-fiókban a *azurefiles1* -fájlmegosztás számára a *afaccount1* Storage-fiókban.
 
@@ -366,7 +366,7 @@ A (z) {containerName} és a (z) {protectedItemName} értékek [itt](#fetch-conta
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>Kérelem törzsének létrehozása
+### <a name="create-request-body-for-item-level-recovery-using-rest-api"></a>Kérelem törzsének létrehozása elemszintű helyreállításhoz REST API használatával
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
@@ -376,7 +376,7 @@ Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdons
 
 A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg az [trigger Restore REST API dokumentumot](/rest/api/backup/restores/trigger#request-body).
 
-### <a name="restore-to-original-location"></a>Visszaállítás az eredeti helyre
+### <a name="restore-to-original-location-for-item-level-recovery-using-rest-api"></a>Visszaállítás az eredeti helyre az elemszintű helyreállításhoz REST API használatával
 
 A következő kérelem törzse a *azurefiles* -fájlmegosztás *Restoretest.txt* fájljának visszaállítása a *afsaccount* Storage-fiókban.
 
@@ -402,7 +402,7 @@ Kérelem törzsének létrehozása
 }
 ```
 
-### <a name="restore-to-alternate-location"></a>Visszaállítás másik helyre
+### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>Az elemszintű helyreállítás másik helyre való visszaállítása REST API használatával
 
 A következő kérelem törzse a *afsaccount* Storage-fiókban található *azurefiles* -fájlmegosztás *Restoretest.txt* fájljának visszaállítása a *afaccount1* Storage-fiókban található *azurefiles1* -fájlmegosztás *restoredata* mappájába.
 
@@ -433,6 +433,6 @@ Kérelem törzsének létrehozása
 
 A választ ugyanúgy kell kezelni, mint a fentiekben ismertetett [teljes megosztást](#full-share-recovery-using-rest-api).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [kezelheti az Azure file share Backup szolgáltatást a REST API használatával](manage-azure-file-share-rest-api.md).

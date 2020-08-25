@@ -14,12 +14,12 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008090"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783212"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -59,7 +59,7 @@ További információ: [a Privileged Identity Management használatára vonatkoz
 
 ### <a name="key-terminology"></a>Kulcsfontosságú terminológia
 
-| Kifejezés vagy fogalom | Leírás |
+| Kifejezés vagy fogalom | Description |
 | --- | --- |
 | támogatható | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
 | aktiválás | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
@@ -100,7 +100,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Név | Role | Művelet |
+| Name | Szerepkör | Műveletek |
 | --- | --- | --- |
 | Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management-infrastruktúrához. | SO/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a munkatársaik Privileged Identity Managementának elősegítésében. | SO/R/I |
@@ -110,7 +110,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Érintett felek: Privileged Identity Management az Azure-erőforrás szerepköreihez
 
-| Név | Role | Művelet |
+| Name | Szerepkör | Műveletek |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
 | Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
@@ -241,7 +241,7 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD-szerepkörök Privileged Identity Management beállításainak megadása
 
-| Role | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Állandó rendszergazda |
+| Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Állandó rendszergazda |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészhelyzeti hozzáférési fiókok |
 | Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincsenek | 2 óra | Nincsenek |
@@ -249,7 +249,7 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Az Azure-erőforrás szerepköreinek Privileged Identity Management beállításai
 
-| Role | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
+| Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincsenek | n.a. | 3 hónap |
 | Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincsenek | 1 óra | Nincsenek | n.a. | 3 hónap |
@@ -259,7 +259,7 @@ Az alábbi táblázat az egyes beállításokat ismerteti.
 
 | Beállítás | Leírás |
 | --- | --- |
-| Role | Annak a szerepkörnek a neve, amelynek a beállításait definiálja. |
+| Szerepkör | Annak a szerepkörnek a neve, amelynek a beállításait definiálja. |
 | MFA megkövetelése | Azt határozza meg, hogy a jogosult felhasználónak az MFA-t kell-e elvégeznie a szerepkör aktiválása előtt.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy minden rendszergazdai szerepkör esetében érvényesítse az MFA-t, különösen akkor, ha a szerepkörök vendég felhasználókkal rendelkeznek. |
 | Értesítés | Ha igaz értékre van állítva, a globális rendszergazda, a Kiemelt szerepkörű rendszergazda és a szervezet biztonsági rendszergazdája e-mailben értesítést fog kapni, ha egy jogosult felhasználó aktiválja a szerepkört.<br/><br/>**Megjegyzés:** Egyes szervezetek nem rendelkeznek e-mail-címmel, amely a rendszergazdai fiókjához van kötve, az e-mail-értesítések beszerzéséhez be kell állítania egy alternatív e-mail címet, hogy a rendszergazdák megkapják ezeket az e-maileket. |
 | Incidens jegy | Azt határozza meg, hogy a jogosult felhasználónak rögzítenie kell-e az incidens jegy számát a szerepkör aktiválása során. Ez a beállítás segít a szervezetnek az egyes aktiválások belső incidensek számával történő azonosításában a nemkívánatos aktiválások enyhítése érdekében.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy az incidensek jegyei száma alapján a belső rendszerébe kösse a Privileged Identity Management. Ez különösen olyan jóváhagyók számára hasznos, akiknek az aktiváláshoz környezetre van szükségük. |
@@ -291,7 +291,7 @@ A táblázatban azonosíthatja azokat a felhasználókat, akik ellenőrizni fogj
 
 ### <a name="test-implementation"></a>Tesztelés megvalósítása
 
-Most, hogy azonosította a felhasználók tesztelését, ezzel a lépéssel konfigurálhatja a Privileged Identity Management a tesztelési felhasználók számára. Ha a szervezete Privileged Identity Management munkafolyamatot kíván beépíteni a saját belső alkalmazásba ahelyett, hogy a Azure Portal Privileged Identity Management kellene használnia, a [Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root)-ban a Privileged Identity Management összes művelete is támogatott.
+Most, hogy azonosította a felhasználók tesztelését, ezzel a lépéssel konfigurálhatja a Privileged Identity Management a tesztelési felhasználók számára. Ha a szervezete Privileged Identity Management munkafolyamatot kíván beépíteni a saját belső alkalmazásba ahelyett, hogy a Azure Portal Privileged Identity Management kellene használnia, a [Graph API](/graph/api/resources/privilegedidentitymanagement-root)-ban a Privileged Identity Management összes művelete is támogatott.
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Privileged Identity Management konfigurálása Azure AD-szerepkörökhöz
 
@@ -319,7 +319,7 @@ Most, hogy azonosította a felhasználók tesztelését, ezzel a lépéssel konf
 
 Ezt a szakaszt kell használnia annak ellenőrzéséhez, hogy a szerepkörökhöz beállított összes konfiguráció megfelelően működik-e. A tesztek dokumentálása a következő táblázattal végezhető el. Az érintett felhasználókkal folytatott kommunikáció optimalizálásához ezt a szakaszt is érdemes használni.
 
-| Role | Az aktiválás során várt viselkedés | Tényleges eredmények |
+| Szerepkör | Az aktiválás során várt viselkedés | Tényleges eredmények |
 | --- | --- | --- |
 | Globális rendszergazda | (1) MFA megkövetelése<br/>(2) jóváhagyás szükséges<br/>(3) a jóváhagyó értesítést kap, és jóváhagyhatja<br/>(4) a szerepkör az előre beállított idő után lejár |  |
 | Az előfizetés *X* tulajdonosa | (1) MFA megkövetelése<br/>(2) a jogosult hozzárendelés a beállított időszak után lejár |  |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86077651"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Elágazó és láncolási tevékenységek egy Azure Data Factory-folyamatban a Azure Portal használatával
@@ -42,7 +42,7 @@ Ez az oktatóanyag az Azure Portalt használja. Az Azure Data Factoryvel való i
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 * **Azure Storage-fiók**. A blobtárolót használjuk **forrás** adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
 * **Azure SQL Database**. Ezt az adatbázist használjuk **fogadó** adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, a létrehozásához szükséges lépésekért tekintse meg az [adatbázis létrehozása Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben.
 
@@ -93,7 +93,7 @@ A kérelem a következő képen láthatóhoz hasonlóan jelenik meg a Logikaialk
 
 ![Logikaialkalmazás-tervező – kérelem](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-Az **E-mail küldése** művelethez szabja testre az e-mail formátumát a kérelemtörzs JSON-sémájában átadott tulajdonságokkal. Például:
+Az **E-mail küldése** művelethez szabja testre az e-mail formátumát a kérelemtörzs JSON-sémájában átadott tulajdonságokkal. Alább bemutatunk egy példát:
 
 ![Logikaialkalmazás-tervező – e-mail küldése művelet](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +105,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Sikertelen műveletről tájékoztató e-mail munkafolyamata
-Ugyanezen lépésekkel hozzon létre egy másik Logic Apps-munkafolyamatot **CopyFailEmail** néven. A kérelem eseményindítójában a `Request Body JSON schema` ugyanaz. Módosítsa az e-mail formátumát (például a `Subject` értékét) a sikertelen műveletről tájékoztató e-mailnek megfelelően. Például:
+Ugyanezen lépésekkel hozzon létre egy másik Logic Apps-munkafolyamatot **CopyFailEmail** néven. A kérelem eseményindítójában a `Request Body JSON schema` ugyanaz. Módosítsa az e-mail formátumát (például a `Subject` értékét) a sikertelen műveletről tájékoztató e-mailnek megfelelően. Alább bemutatunk egy példát:
 
 ![Logikaialkalmazás-tervező – Sikertelen műveletről tájékoztató e-mail munkafolyamata](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 
@@ -126,7 +126,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
@@ -151,7 +151,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** lehetőségre.      
+7. Kattintson a **Create** (Létrehozás) gombra.      
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**.
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -198,7 +198,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
-    3. Kattintson a **Save** (Mentés) gombra.
+    3. Kattintson a **Mentés** gombra.
 
    ![Új Azure Storage-beli társított szolgáltatás](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Adja meg a `@pipeline().parameters.sourceBlobContainer` mappanevet és az `emp.txt` fájlnevet. A sourceBlobContainer folyamatparaméterrel adhatja meg az adatkészlet mappájának elérési útját.
@@ -331,7 +331,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     ![Tevékenységfuttatási hiba](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

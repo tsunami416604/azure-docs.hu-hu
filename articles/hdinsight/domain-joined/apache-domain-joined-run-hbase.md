@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73044647"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 
-1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse `<ClusterName>` el megváltoztatni a HBase-fürt nevét.
+1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse el megváltoztatni a `<ClusterName>` HBase-fürt nevét.
 
     > [!NOTE]  
     > A Ranger hitelesítő adatai nem ugyanazok, mint a Hadoop-fürthöz használt hitelesítő adatok. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, egy új InPrivate-böngészőablakból csatlakozzon a Ranger rendszergazdai felhasználói felületéhez.
@@ -59,7 +59,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
     hbase shell
     ```
 
-2. Hozzon létre egy `Customers` HBase táblázatot kétoszlopos `Name` családokkal `Contact`: és.
+2. Hozzon létre egy HBase táblázatot `Customers` kétoszlopos családokkal: `Name` és `Contact` .
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -95,7 +95,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 
 Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz**.
 
-1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson a ** \<ClusterName>_hbase** elemre a **hbase**alatt.
+1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson ** \<ClusterName> _Hbase** a **hbase**alatt.
 
    ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
@@ -108,7 +108,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
    |Házirend neve  |  sales_customers_name_contact   |
-   |HBase táblázat   |  Ügyfelek |
+   |HBase táblázat   |  Az ügyfelek |
    |HBase oszlop – család   |  Név, kapcsolattartó |
    |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
@@ -117,8 +117,8 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
 
    A témakör nevében a következő helyettesítő karakterek használhatók:
 
-   * `*`nulla vagy több karakterből álló előfordulást jelez.
-   * `?`egyetlen karaktert jelöl.
+   * `*` nulla vagy több karakterből álló előfordulást jelez.
+   * `?` egyetlen karaktert jelöl.
 
    ![Apache Ranger-szabályzat – értékesítések létrehozása](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
@@ -132,7 +132,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
    |Házirend neve  |  marketing_customers_contact   |
-   |HBase táblázat   |  Ügyfelek |
+   |HBase táblázat   |  Az ügyfelek |
    |HBase oszlop – család   |  Kapcsolattartó |
    |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
@@ -145,7 +145,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
 
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
 
-A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az oszlopok összes adatait az és `Name` `Contact` az oszlop családokban is. A **marketing_user1** csak az `Contact` oszlop családjában lévő adatmegjelenítést tudja megtekinteni.
+A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az oszlopok összes adatait az `Name` és az `Contact` oszlop családokban is. A **marketing_user1** csak az oszlop családjában lévő adatmegjelenítést tudja megtekinteni `Contact` .
 
 ### <a name="access-data-as-sales_user1"></a>Az adathozzáférés sales_user1
 
@@ -161,14 +161,14 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az 
    kinit sales_user1
    ```
 
-2. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot.
+2. Nyissa meg a HBase-rendszerhéjt, és vizsgálja meg a táblázatot `Customers` .
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Figyelje meg, hogy az értékesítési felhasználó megtekintheti a `Customers` tábla összes oszlopát, beleértve az `Name` oszlop két oszlopát, valamint az `Contact` oszlop-család öt oszlopát.
+3. Figyelje meg, hogy az értékesítési felhasználó megtekintheti a tábla összes oszlopát `Customers` , beleértve az oszlop két oszlopát, valamint az `Name` `Contact` oszlop-család öt oszlopát.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -203,14 +203,14 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az 
    kinit marketing_user1
    ```
 
-1. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot:
+1. Nyissa meg a HBase-rendszerhéjt, és vizsgálja meg a táblázatot `Customers` :
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-1. Figyelje meg, hogy a marketing felhasználó csak az `Contact` oszlop öt oszlopát tekintheti meg.
+1. Figyelje meg, hogy a marketing felhasználó csak az oszlop öt oszlopát tekintheti meg `Contact` .
 
     ```hbaseshell
     ROW                                COLUMN+CELL

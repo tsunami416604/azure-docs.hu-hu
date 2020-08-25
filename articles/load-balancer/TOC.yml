@@ -134,8 +134,10 @@
           href: load-balancer-troubleshoot.md
         - name: Gyakori üzembehelyezési hibák elhárítása
           href: load-balancer-common-deployment-errors.md
-        - name: Gyakori kimenő kapcsolati problémák elhárítása
+        - name: Kimenő kapcsolatok gyakori problémáinak a hibaelhárítása
           href: troubleshoot-outbound-connection.md
+        - name: Az erőforrások állapotával és a bejövő rendelkezésre állással kapcsolatos hibák elhárítása
+          href: troubleshoot-rhc.md
 - name: Referencia
   items:
     - name: Kódminták

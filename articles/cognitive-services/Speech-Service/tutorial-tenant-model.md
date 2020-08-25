@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85391213"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
@@ -59,7 +59,7 @@ Ha a Speech SDK-val szeretné használni a bérlői modellt, szüksége lesz egy
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. A **keresőmezőbe** írja be a **Speech**kifejezést.
 1. Az eredmények listájában válassza a **beszéd**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
-1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ellenőrizze a következőket:
+1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ügyeljen a következőkre:
    * A **hely** a **eastus** vagy a **westus**értékre van beállítva.
    * A **díjszabás** a **S0**értékre van állítva.
 1. Kattintson a **Létrehozás** gombra.
@@ -303,7 +303,7 @@ Ezután újra kell építenie és futtatnia a projektet a parancssorból. A para
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egyéni beszédfelismerési modellt az Office 365-ben, hogyan helyezheti üzembe, és hogyan használhatja azt a Speech SDK-val.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Speech Studio](https://speech.microsoft.com/)
 * [Beszéd SDK](speech-sdk.md)
