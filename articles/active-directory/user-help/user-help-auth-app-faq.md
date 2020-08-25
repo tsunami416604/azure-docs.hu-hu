@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423626"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799468"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -64,6 +64,6 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 
 - Ha további információra van szüksége a kétlépéses ellenőrzésről, tekintse [meg a fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című témakört.
 
-- Ha további információra van szüksége a biztonsági adatokról, tekintse meg a [biztonsági adatok (előzetes verzió) áttekintése](user-help-security-info-overview.md) című témakört.
+- Ha további információra van szüksége a biztonsági adatokról, tekintse meg a [biztonsági adatok (előzetes verzió) áttekintése](./security-info-setup-signin.md) című témakört.
 
 - Ha nem válaszolt erre a kérdésre, szeretnénk meghallgatni Önt. Lépjen a [Microsoft Authenticator alkalmazás fórumára](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) , ahol felteheti a kérdéseit, és segítséget kérhet a Közösségtől, vagy hozzászólást hagyhat ezen az oldalon.

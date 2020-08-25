@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927215"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752338"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -364,6 +364,16 @@ Előfordulhat, hogy az alábbiakban ismertetett tüneteket tapasztalja, amikor a
 ### <a name="solution"></a>Megoldás
 
 Javasoljuk, hogy a mappa/fájl szintű engedélyek megkerülő megoldásként való konfigurálásához használja a [icacls eszközt](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) . 
+
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>A JOIN-AzStorageAccountForAuth parancsmag futtatásakor fellépő hibák
+
+### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Hiba: "a címtárszolgáltatás nem tudott relatív azonosítót lefoglalni"
+
+Ez a hiba akkor fordulhat elő, ha a RID-főkiszolgáló FSMO-szerepkört birtokló tartományvezérlő nem érhető el, vagy eltávolította a tartományból, és visszaállította a biztonsági mentésből.  Győződjön meg arról, hogy az összes tartományvezérlő fut és elérhető.
+
+### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Hiba: „Nem köthetők a pozicionálás paraméterek, mert nincsenek nevek megadva.”
+
+Ezt a hibát valószínűleg a Join-AzStorageAccountforAuth parancsban lévő szintaktikai hiba váltja ki.  Ellenőrizze a hibás helyesírású vagy szintaktikai hibákat a parancsban, és ellenőrizze, hogy a AzFilesHybrid modul legújabb verziója https://github.com/Azure-Samples/azure-files-samples/releases) van-e telepítve.  
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

@@ -3,12 +3,12 @@ title: SQL Server VM biztonsági mentése a virtuális gép paneljéről
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról az Azure Virtual Machines szolgáltatásban a virtuális gép ablaktáblán.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227116"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755245"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>SQL Server biztonsági mentése a virtuális gép paneljéről
 
@@ -62,7 +62,7 @@ A biztonsági mentést a virtuális gép **biztonsági mentési** paneljén enge
 
     ![A biztonsági mentés készültsége nem áll készen](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. Ha további műveleteket vagy figyelést szeretne végrehajtani a biztonsági másolaton SQL Server VM, ugorjon a megfelelő Recovery Service-tárolóra. Nyissa meg a **biztonsági másolati elemeket** , és tekintse meg az összes olyan adatbázist, amelyről biztonsági másolatot készített a tárban, és aktiválja az igény szerinti biztonsági mentést és visszaállítást. Ehhez hasonlóan tekintse meg a **biztonsági mentési feladatok** lehetőséget, hogy [Figyelje](manage-monitor-sql-database-backup.md) a műveleteknek megfelelő feladatokat, például a védelem, a biztonsági mentés és a visszaállítás konfigurálását.
+8. Ha további műveleteket vagy figyelést szeretne végrehajtani a biztonsági másolaton SQL Server VM, lépjen a megfelelő Recovery Services-tárolóra. Nyissa meg a **biztonsági másolati elemeket** , és tekintse meg az összes olyan adatbázist, amelyről biztonsági másolatot készített a tárban, és aktiválja az igény szerinti biztonsági mentést és visszaállítást. Ehhez hasonlóan tekintse meg a **biztonsági mentési feladatok** lehetőséget, hogy [Figyelje](manage-monitor-sql-database-backup.md) a műveleteknek megfelelő feladatokat, például a védelem, a biztonsági mentés és a visszaállítás konfigurálását.
 
     ![Tekintse meg a biztonsági másolati elemek biztonsági mentését tartalmazó adatbázisokat](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 

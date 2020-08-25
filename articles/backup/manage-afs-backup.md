@@ -3,12 +3,12 @@ title: Azure-fájlmegosztások biztonsági másolatainak kezelése
 description: Ez a cikk a Azure Backup által biztonsági mentés alatt álló Azure-fájlmegosztás felügyeletének és figyelésének általános feladatait ismerteti.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073306"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757625"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure-fájlmegosztások biztonsági másolatainak kezelése
 
@@ -143,7 +143,7 @@ Az Azure-fájlmegosztás biztonsági mentési adatfájljainak törlése:
 
 ## <a name="unregister-a-storage-account"></a>Storage-fiók regisztrációjának törlése
 
-Ha egy másik Recovery Services-tároló használatával szeretné védetté tenni a fájlmegosztást egy adott tárolási fiókban, először állítsa le az adott Storage-fiókban található [összes fájlmegosztás védelmét](#stop-protection-on-a-file-share) . Ezután törölje a fiók regisztrációját a védelemhez használt aktuális Recovery Services-tárból.
+Ha egy adott Storage-fiókban lévő fájlmegosztást egy másik Recovery Services-tárolóval szeretne védelemmel ellátni, először állítsa le a Storage-fiókban lévő [összes fájlmegosztás védelmét](#stop-protection-on-a-file-share) . Ezután törölje a fiók regisztrációját a védelemhez használt aktuális Recovery Services-tárból.
 
 Az alábbi eljárás azt feltételezi, hogy a védelem le lett állítva az összes olyan fájlmegosztás esetében, amelyről törölni szeretné a regisztrációt.
 

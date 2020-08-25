@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737631"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757812"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark adattárolási optimalizálása
 
@@ -43,7 +44,7 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
     * Szerializálási/deszerializálási terhelés hozzáadására szolgál.
     * Magas GC-terhelés.
     * A teljes fázisú programkódok létrehozásának megszakítása.
-* **RDD**
+* **RDD-k**
     * Nem kell RDD használnia, hacsak nem kell új egyéni RDD létrehoznia.
     * Nincs lekérdezés optimalizálása a katalizátoron keresztül.
     * Nincs egész fázist generáló kód.
@@ -56,11 +57,11 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
 
 | Áruház típusa | Fájlrendszer | Sebesség | Átmeneti | Használati esetek |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Átmeneti fürt |
-| Azure Blob Storage (biztonságos) | **wasbs:**//URL/ | **Standard** | Yes | Átmeneti fürt |
-| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gyorsabb** | Yes | Átmeneti fürt |
-| 1. generációs Azure Data Lake Storage| **ADL:**//URL/ | **Gyorsabb** | Yes | Átmeneti fürt |
-| Helyi HDFS | **hdfs:**//URL/ | **Leggyorsabb** | No | Interaktív 24/7-fürt |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Blob Storage (biztonságos) | **wasbs:**//URL/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| 1. generációs Azure Data Lake Storage| **ADL:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Helyi HDFS | **hdfs:**//URL/ | **Leggyorsabb** | Nem | Interaktív 24/7-fürt |
 
 A tárolási lehetőségek teljes leírását lásd: [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz](../hdinsight-hadoop-compare-storage-options.md).
 
@@ -77,7 +78,7 @@ A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek k�
     * Memóriabeli és SSD-gyorsítótárazást használ.
 
 * Helyi HDFS (ajánlott)
-    * `hdfs://mycluster`elérési útja.
+    * `hdfs://mycluster` elérési útja.
     * SSD-gyorsítótárazást használ.
     * A gyorsítótárazott adatvesztés a fürt törlésekor elveszik, a gyorsítótár újraépítését igényli.
 
@@ -86,7 +87,7 @@ A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek k�
 A Spark-feladatok terjesztése megtörténik, ezért a megfelelő adatszerializálás fontos a legjobb teljesítmény érdekében.  A Spark két szerializálási lehetőséggel rendelkezik:
 
 * A Java-szerializálás az alapértelmezett.
-* `Kryo`a szerializálás egy újabb formátum, amely gyorsabb és kompakt szerializálást eredményezhet a Javánál.  `Kryo`Ehhez regisztrálnia kell az osztályokat a programban, és még nem támogatja az összes szerializálható típust.
+* `Kryo` a szerializálás egy újabb formátum, amely gyorsabb és kompakt szerializálást eredményezhet a Javánál.  `Kryo` Ehhez regisztrálnia kell az osztályokat a programban, és még nem támogatja az összes szerializálható típust.
 
 ## <a name="use-bucketing"></a>Gyűjtés használata
 

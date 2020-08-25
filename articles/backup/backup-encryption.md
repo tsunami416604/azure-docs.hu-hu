@@ -4,12 +4,12 @@ description: Ismerje meg, hogy a Azure Backup titkosítási funkciói hogyan vé
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586647"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763643"
 ---
 # <a name="encryption-in-azure-backup"></a>Titkosítás az Azure Backupban
 
@@ -27,7 +27,7 @@ A Azure Backup két szinten tartalmaz titkosítást:
   - **Azure-beli virtuális gépek biztonsági mentése**: Azure Backup támogatja a [platform által felügyelt kulcsokkal](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)titkosított lemezeket, valamint az Ön által birtokolt és felügyelt [ügyfelek által felügyelt kulcsokat](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) . Emellett olyan Azure-beli virtuális gépek biztonsági mentését is elvégezheti, amelyeken a [Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade)használatával titkosított operációs rendszer vagy adatlemez található. Az ADE a BitLockert használja a Windows rendszerű virtuális gépekhez, és a Linux rendszerű virtuális gépekhez készült DM-Crypt használatával végzi a vendég titkosítást.
 
 >[!NOTE]
->Az infrastruktúra-titkosítás jelenleg korlátozott előzetes verzióban érhető el, és az USA keleti, USA-beli West2, az USA déli középső régiójában, US Gov Arizona és USA Ha a funkciót bármelyik régióban használni szeretné, kérjük, töltse ki [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) , és küldjön e-mailt a következő címre: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Az infrastruktúra-titkosítás jelenleg korlátozott előzetes verzióban érhető el, és az USA keleti, USA-beli West2, az USA déli középső régiójában, US Gov Arizona és USA Ha bármelyik régióban szeretné használni a szolgáltatást, töltse ki [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) , és küldjön e-mailt a következő címre: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="next-steps"></a>További lépések
 

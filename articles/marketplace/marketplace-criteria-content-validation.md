@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604411"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812869"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace listázási irányelvei
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 |:--- |:--- |:--- |:--- |
 | 1 | Érdeklődő célhelye | Egy vezető célhely van konfigurálva.| Az egyik kereskedelmi partneri (OCP-) katalógus a partneri megoldás lapon is szerepel a vezető cél CRM-információkkal. |
 | 2 | Ajánlat címe | Röviden leírja a megoldás ajánlatát. Megfelel a megoldás online promóciójának a partner webhelyén. | A legfontosabb keresési szavakat tartalmazza. |
-| 3 | Embléma | Az embléma helyesen jelenik meg. | Az embléma helyesen jelenik meg. |
+| 3 | Embléma | Az embléma helyesen jelenik meg.  | Az embléma helyesen jelenik meg.  |
 | 4 |  Ajánlat leírása | <ul><li> 2-3 bekezdést tartalmaz.</li><li>A megoldási ajánlat könnyen értelmezhető egy pillantással.</li><li>A helyesírási és nyelvtani hibáktól mentes.</li><li>Az átfogó és a célközönséget, a felhasználó típusát és az értékes (Value kiosztást) is rögzíti.</li><li>A bekezdésben a rövid mondatok alapján könnyen értelmezhető.</li></ul> | <ul><li> A célként megadott iparág (ha van ilyen).</li><li>A megfelelő stílus formázása minden bekezdéssel együtt, amely egyetlen mondattal vagy kifejezéssel összegzi az alábbi tartalmakat, és szükség esetén felsorolásjeles pontokat használ, hogy kiemelje a legfontosabb előnyöket. A cél az, hogy az olvasó könnyen látható formában tekintse meg az ajánlatot, és nem kell hosszú bekezdéseket olvasnia.</li><li>Az egyes bekezdések között térköz van. Például egy autós brosúra beolvasása. Ez azt mutatja, hogy átfogó, és az ajánlat leírása egyszerűen, technikai szakzsargon nélkül történik. | 
 | 5 | Kategóriák és iparágak | <ul><li>A kategóriák és alkategóriáknak meg kell egyezniük az ajánlati lehetőségekkel </li><li>Ne válasszon olyan kategóriákat/alkategóriákat, amelyek nem felelnek meg az ajánlati képességeinek. </li></ul> | <ul><li>Válasszon legfeljebb két kategóriát, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).</li><li>Minden elsődleges és/vagy másodlagos kategória esetében két alkategóriát válasszon ki. Ha nincs alkategória kiválasztva, az ajánlata továbbra is a kiválasztott kategóriában lesz felderíthető.</li></ul> |
 | 6 | Képek | <ul><li>A rendszerképekre vonatkozó követelmények a partner Center webhelyen találhatók.</li><li>A képernyőképen látható szöveg olvasható, a rendszerkép pedig egyértelmű. | A megoldási ajánlat könnyen értelmezhető egy pillantással. |
@@ -53,7 +53,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 4 | Online áruház részletei: ajánlat összegzése | Megjelenik az alkalmazás keresési oldalán, és legfeljebb 100 karakterből állhat. | |
 | 5 | Online áruház részletei: iparágak | Iparágak (max. 2): válassza ki azokat az iparágakat, amelyekhez az alkalmazás a legmegfelelőbb és alkalmazható. | |
 | 6 | Ajánlat leírása | <ul><li>Az egyszerű HTML engedélyezve van, beleértve a,,,, \<p> \<em> és a \<ul> \<li> \<ol> fejléc címkéit is. Legfeljebb 3000 karakter.</li><li>2-3 bekezdést tartalmaz.</li><li>A megoldási ajánlat könnyen értelmezhető egy pillantással.</li><li>A Leírás átfogó, és rögzíti a célközönséget, a felhasználói típust, valamint azt, hogy miért fontos (az érték kiosztása).</li><li>A bekezdés narratív formája, rövid mondatokkal, amelyek könnyen megérthetők. | <ul><li>A célként megadott iparág (ha van ilyen).</li><li>A megfelelő stílus formázása minden bekezdéssel együtt, amely egyetlen mondattal vagy kifejezéssel összegzi az alábbi tartalmakat, és szükség esetén felsorolásjeles pontokat használ, hogy kiemelje a legfontosabb előnyöket. A cél az, hogy az olvasó megértse az ajánlatot egy könnyen megtekinthető formátumban, és nem kell a bekezdéseket beolvasnia.</li><li>Az egyes bekezdések között térköz van. Például egy autós brosúra beolvasása. Ez azt mutatja, hogy átfogó, és az ajánlat leírása egyszerűen, technikai szakzsargon nélkül történik. | 
-| 7 | Marketing-összetevők | A logók helyesen jelennek meg. | <ul><li>Logók: kicsi (48 x 48 képpont), közepes (90 x 90 képpont) és nagy (az 216 x 216 és a 350 x 350 képpont) esetében kötelező megadni.</li><li>Képernyőkép (max. 5): a szükséges. PNG-kép 1280x720 képpont felbontással. |
+| 7 | Marketing-összetevők | A logók helyesen jelennek meg. | <ul><li>Logók: kicsi (48 x 48 px, nem kötelező), közepes (90 x 90 px, opcionális) és nagy (a 216 x 216 és a 350 x 350 px, szükséges).</li><li>Képernyőkép (max. 5): a szükséges. PNG-kép 1280x720 képpont felbontással. |
 | 8 | Kategóriák és iparágak | <ul><li>A kategóriák megfelelnek a megoldás-ajánlati lehetőségeknek.</li><li>Válasszon ki legalább egy elemet az előugró ablakban.</li><li>Ne válasszon olyan kategóriákat, amelyeket a megoldás nem fér el.</li><li>Az optimális iparág vagy az összes kiválasztott iparág (ha nem az optimális iparágak). | Legfeljebb 3 kategória van kiválasztva, ha van ilyen. |
 | 9 | Érdeklődők kezelése | Válassza ki a rendszer helyét, ahol az érdeklődőket tárolni fogja. Lásd: [ügyfél-érdeklődők beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) a CRM-rendszer összekapcsolásához. |  |
 | 10 | Névjegyek: megoldás-támogatás és Súgó | <ul><li>Mérnöki kapcsolattartó neve: az alkalmazáshoz tartozó mérnöki kapcsolattartó neve. Ez a kapcsolat technikai kommunikációt fog kapni a Microsofttól.</li><li>Mérnöki kapcsolattartási e-mail cím: az alkalmazás mérnöki kapcsolatának e-mail-címe.</li><li>Engineering Contacts Phone: a mérnöki Kapcsolattartó telefonszáma. Az [ISO-telefonszámok jelölései](https://en.wikipedia.org/wiki/E.123) támogatottak.</li><li>Támogatási kapcsolattartó neve: az alkalmazás támogatási partnerének neve. Ez a partner a Microsoft támogatással kapcsolatos kommunikációját fogja kapni.</li><li>Támogatási kapcsolattartási e-mail cím: az alkalmazás támogatási partnerének e-mail-címe.</li><li>Támogatási Kapcsolattartó telefonszáma: a támogatási partner telefonszáma. Az [ISO-telefonszámok jelölései](https://en.wikipedia.org/wiki/E.123) támogatottak.</li><li>Támogatási URL-cím: a támogatási oldal URL-címe. | <ul><li>Az összes támogatási módszer szerepel a felsorolásban.</li><li>A *próbaverziós* és a *tesztelési* időszak alatt ingyenes fizetős támogatást kínálunk. |
@@ -66,7 +66,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 |:--- |:--- |:--- |:--- |
 |1 |Ajánlat beállításai | <ul><li>Ajánlat azonosítója: max. 50 karakter.</li><li>Közzétevő azonosítója: válassza ki a legördülő listából.</li><li>Név: max. 50 karakter. | A leírásban már elérhető Cím stílusát tükrözi. Kerülje a hosszú címek használatát. |
 | 2 | Tervek | A partner új terveket választ.| A cím a leírásban már elérhető Cím stílusát tükrözi. Kerülje a hosszú címek használatát.  |
-| 3 | Piactéri összetevők | A logók helyesen jelennek meg. |<ul><li>Logók: kicsi (48 x 48 képpont), közepes (90 x 90 képpont) és nagy (az 216 x 216 és a 350 x 350 képpont) esetében kötelező megadni.</li><li>Képernyőkép (max. 5): a szükséges. PNG-kép 1280 x 720 képpont felbontással.|
+| 3 | Piactéri összetevők | A logók helyesen jelennek meg. |<ul><li>Logók: kicsi (48 x 48 px, nem kötelező), közepes (90 x 90 px, opcionális) és nagy (a 216 x 216 és a 350 x 350 px, szükséges).</li><li>Képernyőkép (max. 5): a szükséges. PNG-kép 1280 x 720 képpont felbontással.|
 | 4 | Érdeklődők kezelése |<ul><li>Érdeklődők kezelése: válassza ki a rendszer helyét, ahol az érdeklődőket tárolni fogja.</li><li>Lásd: [ügyfél-érdeklődők beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) a CRM-rendszer összekapcsolásához. | |
 |||
 
@@ -88,7 +88,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 12 | További információ  | <ul><li>A lenti hivatkozások (a Leírás alatt, nem az Azure Marketplace-hivatkozások a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők, és helyesen jelennek meg.</li><li>A hivatkozásoknak "felhasználóbarát" névvel kell rendelkezniük, és nem jelennek meg a letöltésekhez tartozó fájlnévként. | |
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg az Azure Marketplace különböző ajánlati típusait:
   * [SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)

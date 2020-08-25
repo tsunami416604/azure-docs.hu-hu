@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318827"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812937"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára (előzetes verzió)
 
@@ -46,7 +46,7 @@ A következő módon használhat tervezői mintát:
 
    1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
 
-   1. A megjelenő párbeszédpanelen válasszon ki egy meglévő számítási célt, vagy hozzon létre újat. Válassza a **Mentés** lehetőséget.
+   1. A megjelenő párbeszédpanelen válasszon ki egy meglévő számítási célt, vagy hozzon létre újat. Kattintson a **Mentés** gombra.
 
    1. Válassza a **beküldés** lehetőséget a vászon tetején a folyamat futtatásának elküldéséhez.
 
@@ -55,9 +55,9 @@ A következő módon használhat tervezői mintát:
 
 1. A folyamat futásának befejeződése után áttekintheti a folyamatot, és megtekintheti az egyes modulok kimenetét, és további információkat jeleníthet meg. A modulok kimeneteit a következő lépésekkel tekintheti meg:
 
-   1. Válasszon ki egy modult a vásznon.
+   1. Kattintson a jobb gombbal arra a vászonra, amelynek kimenetét látni szeretné.
+   1. Válassza a **Megjelenítés**lehetőséget.
 
-   1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. Az ![ ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) egyes modulok eredményeinek megtekintéséhez válassza a Graph ikon megjelenítés ikonját. 
 
    A minták kiindulási pontként használhatók a leggyakoribb gépi tanulási forgatókönyvekhez.
 
@@ -70,7 +70,7 @@ Ismerkedjen meg ezekkel a beépített regressziós mintákkal.
 | [1. példa: regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
 | [2. minta: regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
 
-## <a name="classification"></a>Besorolás
+## <a name="classification"></a>Osztályozás
 
 Ismerkedjen meg ezekkel a beépített besorolási mintákkal. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
 

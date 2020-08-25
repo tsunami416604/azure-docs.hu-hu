@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717576"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756690"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -111,25 +111,16 @@ Ha a gépnek jelenleg van felhasználó által hozzárendelt rendszeridentitása
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 
-Minden vendég konfigurációhoz tartozó naplózási futtatáshoz két házirend-definíció, egy **DeployIfNotExists** -definíció és egy **AuditIfNotExists** -definíció szükséges. A **DeployIfNotExists** házirend-definíciói az egyes gépeken végzett naplózási függőségeket kezelik.
+A vendég-konfigurációs házirendek a **AuditIfNotExists** hatást használják. A definíció hozzárendelésekor a háttérrendszer automatikusan kezeli az Azure erőforrás-szolgáltató összes követelményének életciklusát `Microsoft.GuestConfiguration` .
 
-A **DeployIfNotExists** házirend-definíciója ellenőrzi és kijavította a következő elemeket:
+A **AuditIfNotExists** szabályzatok nem adják vissza a megfelelőségi eredményeket, amíg az összes követelmény nem teljesül a gépen. A követelményekről az Azure-beli [virtuális gépek üzembe helyezési követelményei](#deploy-requirements-for-azure-virtual-machines) című szakaszban olvashat.
 
-- Ellenőrizze, hogy a gép hozzárendelt-e egy konfigurációt az értékeléshez. Ha jelenleg nincs hozzárendelés, szerezze be a hozzárendelést, és készítse elő a gépet a alábbiak szerint:
-  - Hitelesítés a gépen [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) használatával
-  - A **Microsoft. GuestConfiguration** bővítmény legújabb verziójának telepítése
-  - [Ellenőrzési eszközök](#validation-tools) és függőségek telepítése szükség esetén
+> [!IMPORTANT]
+> A vendég konfigurációjának előzetes kiadásában egy kezdeményezésre volt szükség a **DeployIfNoteExists** és a **AuditIfNotExists** -definíciók összevonásához. A **DeployIfNotExists** -definíciók már nem szükségesek. A definíciók és a intiaitives címkével vannak ellátva, `[Deprecated]` de a meglévő hozzárendelések továbbra is működni fognak.
+>
+> Manuális lépésre van szükség. Ha korábban már hozzárendelte a házirend-kezdeményezéseket a kategóriában `Guest Configuration` , törölje a szabályzat-hozzárendelést, és rendelje hozzá az új definíciót. A vendég-konfigurációs szabályzatok neve a következő: `Audit <Windows/Linux> machines that <non-compliant condition>`
 
-Ha a **DeployIfNotExists** -hozzárendelés nem megfelelő, akkor a rendszer [szervizelési feladatot](../how-to/remediate-resources.md#create-a-remediation-task) is felhasználhat.
-
-Ha a **DeployIfNotExists** -hozzárendelés megfelelő, a **AuditIfNotExists** szabályzat-hozzárendelés meghatározza, hogy a vendég-hozzárendelés megfelelő vagy nem megfelelő-e. Az érvényesítési eszköz biztosítja az eredményeket a vendég konfigurációs ügyfelének. Az ügyfél továbbítja az eredményeket a vendég bővítménynek, ami elérhetővé teszi őket a vendég-konfiguráció erőforrás-szolgáltatóján keresztül.
-
-Azure Policy a vendég-konfiguráció erőforrás-szolgáltatói **complianceStatus** tulajdonságot **használja a megfelelőségi csomópont** megfelelőségének jelentéséhez. További információ: a [megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md).
-
-> [!NOTE]
-> Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa. A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
-
-A vendég konfigurációhoz tartozó összes beépített szabályzatot egy olyan kezdeményezés tartalmazza, amely csoportosítja a definíciókat a hozzárendelésekben való használathoz. Az előnézet nevű beépített kezdeményezés _ \[ : a \] jelszavas biztonság naplózása a Linux és a Windows rendszerű gépeken_ 18 szabályzatot tartalmaz. A Windows hat **DeployIfNotExists** és **AuditIfNotExists** pár, a Linux esetében pedig három pár. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
+Azure Policy a vendég konfigurációja erőforrás-szolgáltató **complianceStatus** tulajdonságot **használja a megfelelőségi csomópont** megfelelőségének jelentéséhez. További információ: a [megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
 

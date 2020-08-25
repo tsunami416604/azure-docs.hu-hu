@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654157"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757149"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
-Azure Backup lehetővé teszi az Azure-beli [virtuális gépek (VM-EK) és lemezek](./backup-azure-arm-restore-vms.md) visszaállítását az Azure VM biztonsági másolatokból, más néven helyreállítási pontokból. Ez a cikk azt ismerteti, hogyan lehet helyreállítani a fájlokat és mappákat egy Azure-beli virtuális gép biztonsági másolatából. A fájlok és mappák visszaállítása csak a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépekhez és a Recovery Services-tárolóhoz való védelemhez érhető el.
+Azure Backup lehetővé teszi az Azure-beli [virtuális gépek (VM-EK) és lemezek](./backup-azure-arm-restore-vms.md) visszaállítását az Azure VM biztonsági másolatokból, más néven helyreállítási pontokból. Ez a cikk azt ismerteti, hogyan lehet helyreállítani a fájlokat és mappákat egy Azure-beli virtuális gép biztonsági másolatából. A fájlok és mappák visszaállítása csak a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépekhez és a Recovery Services-tárolóhoz való védelemmel érhető el.
 
 > [!NOTE]
 > Ez a funkció a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépek számára érhető el, és Recovery Services-tárolóval védett.
@@ -68,7 +68,7 @@ Tekintse meg a [hozzáférési követelmények](#access-requirements) szakaszt, 
 
 A végrehajtható fájl futtatásakor az operációs rendszer csatlakoztatja az új köteteket, és hozzárendeli a meghajtóbetűjeleket. A meghajtók tallózásához használhatja a Windows Intézőt vagy a fájlkezelőt is. Előfordulhat, hogy a kötetekhez rendelt meghajtóbetűjelek nem azonosak az eredeti virtuális géppel. A kötet neve azonban megmarad. Ha például az eredeti virtuális gép kötete "adatlemez (E: `\` )" volt, akkor a kötet a helyi számítógépen "Adatlemezként" ("bármely levél":) csatolható `\` . Tallózással keresse meg a parancsfájl kimenetében említett összes kötetet, amíg meg nem találja a fájlokat vagy a mappát.  
 
-   ![Fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![Csatolt helyreállítási kötetek](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Linux esetén
 
@@ -302,7 +302,7 @@ A parancsfájlnak a Python és a bash összetevők futtatására is szükség va
 Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancsfájlt, ellenőrizze, hogy van-e hozzáférése a következőhöz:
 
 - `download.microsoft.com`
-- Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
+- A helyreállítási szolgáltatás URL-címei (a Geo neve arra a régióra utal, ahol a Recovery Services-tároló található)
   - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure-beli nyilvános régiókban)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Az Azure China 21Vianet esetében)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure USA kormánya)
@@ -332,7 +332,7 @@ Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a bizt
     - Győződjön meg arról, hogy az operációs rendszer WS 2012 vagy újabb.
     - Győződjön meg arról, hogy a beállításjegyzék-kulcsok az alábbi módon vannak beállítva a visszaállítási kiszolgálón, és indítsa újra a kiszolgálót. A GUID melletti szám a 0001-0005-tól terjedhet. A következő példában ez a 0004. A parameters (paraméterek) szakaszig navigáljon a beállításkulcs elérési útjára.
 
-    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![Beállításkulcs módosításai](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -343,7 +343,7 @@ Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a bizt
 
 - Ha a visszaállítási kiszolgáló egy Linux rendszerű virtuális gép:
   - A fájl/etc/iSCSI/iscsid.conf módosítsa a beállítást a következőről:
-    - Node. Conn [0]. Timeo. noop_out_timeout = 5 – Node. Conn [0]. Timeo. noop_out_timeout = 30
+    - `node.conn[0].timeo.noop_out_timeout = 5`  hogy `node.conn[0].timeo.noop_out_timeout = 30`
 - A fenti módosítás után futtassa újra a parancsfájlt. Ezekkel a változásokkal nagyon valószínű, hogy a fájl helyreállítása sikeres lesz.
 - Minden alkalommal, amikor a felhasználó letölt egy parancsfájlt, Azure Backup kezdeményezi a letöltéshez a helyreállítási pont előkészítésének folyamatát. A nagyméretű lemezek esetében ez a folyamat jelentős időt vesz igénybe. Ha egymást követő kérések fordultak elő, a cél-előkészítés egy letöltés spirálba kerül. Ezért javasoljuk, hogy töltsön le egy parancsfájlt a portálról, a PowerShellből vagy a CLI-ből, várjon 20-30 percet (egy heurisztikus), majd futtassa. Ez idő alatt a cél várhatóan készen áll a parancsfájlból való kapcsolódásra.
 - A fájlok helyreállítása után lépjen vissza a portálra, és válassza a **lemezek leválasztása** lehetőséget a helyreállítási pontokhoz, ahol nem tudta csatlakoztatni a köteteket. Ez a lépés lényegében törli a meglévő folyamatokat/munkameneteket, és növeli a helyreállítás esélyét.

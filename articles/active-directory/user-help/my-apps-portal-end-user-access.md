@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741965"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798040"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérj
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Ez a tartalom a saját alkalmazások felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> Ez a tartalom a saját alkalmazások felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 
@@ -59,7 +59,7 @@ Ez a bővítmény a következőket teszi lehetővé:
 
 - Tekintse meg a legutóbbi **használat** szakaszban használt alkalmazásokat.
 
-- A belső vállalati URL-címek használata az [alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)használatával.
+- A belső vállalati URL-címek használata az [alkalmazásproxy](../manage-apps/application-proxy.md)használatával.
 
 ### <a name="to-download-and-install-the-extension"></a>A bővítmény letöltése és telepítése
 
@@ -186,7 +186,7 @@ Miután elvégezte a **saját alkalmazások** portált, a következőket teheti:
 >[!Note]
 >Ha nem látja az elérhető gyűjteményeket vagy kategóriákat, az azt jelenti, hogy a rendszergazda még nem állította be és nem osztotta meg Önnel a t. Ha további segítségre vagy engedélyekre van a megosztott gyűjtemények megtekintéséhez, forduljon a szervezet ügyfélszolgálatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az **alkalmazások** oldal elolvasása után a következőket teheti:
 

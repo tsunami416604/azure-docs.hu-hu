@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése a Azure Portal
 description: Ismerje meg, hogyan használhatja a Azure Portal az Azure-fájlmegosztás biztonsági mentésére az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: e0d9edbcb89dbdcac51893eb720da880a150bc7b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532698"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757795"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 
@@ -31,13 +31,13 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>A biztonsági mentés konfigurálása a Recovery Services-tárolóból
 
-A következő lépések bemutatják, hogyan konfigurálhatja a biztonsági mentést több fájlmegosztás számára a helyreállítási tár ablaktáblán:
+A következő lépések bemutatják, hogyan konfigurálhatja a biztonsági mentést több fájlmegosztás számára a Recovery Services tároló ablaktáblán:
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a fájlmegosztás biztonsági mentésének konfigurálásához használni kívánt Recovery Services-tárolót.
 
 1. A **Recovery Services** -tároló ablaktáblán kattintson a felül található menü **+ biztonsági mentés** elemére.
 
-   ![Recovery Services-tároló](./media/backup-afs/recovery-services-vault.png)
+   ![Helyreállítási tár](./media/backup-afs/recovery-services-vault.png)
 
     1. A **biztonsági mentés célja** panelen állítsa be, hogy **hol fut** a számítási feladat? **a legördülő** listából válassza az **Azure** lehetőséget.
 
@@ -123,16 +123,16 @@ A következő lépések bemutatják, hogyan konfigurálhatja a biztonsági ment�
 
 1. A Recovery Services-tároló kiválasztásához tegye a következők egyikét:
 
-    * Ha már rendelkezik tárolóval, jelölje be a **meglévő** helyreállítási tár kiválasztása választógombot, és válassza ki az egyik meglévő tárolót a tár **neve** legördülő menüből.
+    * Ha már rendelkezik tárolóval, válassza a **meglévő** Recovery Services-tároló választógombot, és válasszon ki egy meglévő tárat a tár **neve** legördülő menüből.
 
        ![Meglévő tár kiválasztása](./media/backup-afs/select-existing-vault.png)
 
-    * Ha nem rendelkezik tárolóval, válassza az **új** Recovery Service Vault-választógombot. Adja meg a tároló nevét. Ugyanabban a régióban jön létre, mint a fájlmegosztás. Alapértelmezés szerint a tároló ugyanabban az erőforráscsoportban jön létre, mint a fájlmegosztás. Ha másik erőforráscsoportot szeretne választani, válassza az **új hivatkozás létrehozása** az **erőforrástípus** legördülő lista alatt lehetőséget, és adja meg az erőforráscsoport nevét. A folytatáshoz kattintson az **OK** gombra.
+    * Ha nem rendelkezik tárolóval, válassza az új Recovery Services-tároló **létrehozása** választógombot. Adja meg a tároló nevét. Ugyanabban a régióban jön létre, mint a fájlmegosztás. Alapértelmezés szerint a tároló ugyanabban az erőforráscsoportban jön létre, mint a fájlmegosztás. Ha másik erőforráscsoportot szeretne választani, válassza az **új hivatkozás létrehozása** az **erőforrástípus** legördülő lista alatt lehetőséget, és adja meg az erőforráscsoport nevét. A folytatáshoz kattintson az **OK** gombra.
 
        ![Új tár létrehozása](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >Ha a Storage-fiók regisztrálva van egy tárolóban, vagy a védeni kívánt fájlmegosztást tartalmazó Storage-fiókon belül néhány védett megosztás található, akkor a Recovery Services-tároló neve előre ki lesz töltve, és nem szerkeszthető [További információ itt](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share).
+      >Ha a Storage-fiók regisztrálva van egy tárolóban, vagy a védeni kívánt fájlmegosztást tartalmazó Storage-fiókon belül néhány védett megosztás található, akkor a Recovery Services tár neve előre ki lesz töltve, és nem szerkesztheti [további információkkal](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share).
 
 1. A **biztonsági mentési szabályzat** kiválasztásához hajtsa végre az alábbi műveletek egyikét:
 

@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566233"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757438"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
@@ -293,5 +293,5 @@ A **védett példány (PI)** díját csak akkor számítjuk ki az operációsren
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa](backup-support-matrix-iaas.md)
+- [Az Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa](backup-support-matrix-iaas.md)
 - [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](backup-azure-vm-backup-faq.md)

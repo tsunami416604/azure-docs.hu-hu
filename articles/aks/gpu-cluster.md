@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749140"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757642"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -158,12 +158,12 @@ A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítm
 az extension update --name aks-preview
 ```
 
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Az AK speciális GPU-rendszerképének használata új fürtökön (előzetes verzió)
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Az AK speciális GPU-rendszerképének használata új fürtökön (előzetes verzió)    
 
 Konfigurálja úgy a fürtöt, hogy a fürt létrehozásakor az AK speciális GPU-rendszerképet használja. Használja az `--aks-custom-headers` új fürt GPU-ügynök csomópontjainak jelölőjét az AK speciális GPU-rendszerkép használatára.
 
 ```azure-cli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
 Ha a normál AK-lemezképek használatával szeretne fürtöt létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` . Azt is megteheti, hogy az alábbi módon további speciális GPU Node-készleteket ad hozzá.
@@ -178,6 +178,12 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 ```
 
 Ha a normál AK-lemezképek használatával szeretne csomópont-készletet létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` . 
+
+> [!NOTE]
+> Ha a GPU SKU-hoz 2. generációs virtuális gépek szükségesek, a következőket teheti:
+> ```azure-cli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Ellenőrizze, hogy a GPU-k ütemezhető-e
 

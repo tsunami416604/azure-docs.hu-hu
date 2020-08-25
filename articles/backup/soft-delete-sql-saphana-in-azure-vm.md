@@ -3,12 +3,12 @@ title: Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP
 description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server és az Azure-beli virtuális gépek számítási feladatainak SAP HANAa hogyan teszi biztonságosabbá a biztonsági mentéseket
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538190"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757472"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
 
@@ -62,7 +62,7 @@ A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció
 >[!NOTE]
 >Ezek az utasítások az Azure virtuális gépen SAP HANAra is érvényesek.
 
-1. Egy SQL Server-adatbázis biztonsági mentési adatfájljainak törléséhez le kell állítani a biztonsági mentést. A Azure Portal lépjen a Recovery Services-tárolóba, nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés leállítása**lehetőséget.
+1. Egy SQL Server-adatbázis biztonsági mentési adatfájljainak törléséhez le kell állítani a biztonsági mentést. A Azure Portal nyissa meg a Recovery Services-tárolót, nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés leállítása**lehetőséget.
 
    ![Biztonsági mentés leállítása](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 
@@ -129,7 +129,7 @@ A biztonsági mentési elemek **DeleteState** visszaállnak a **NotDeleted**. A 
 
 A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és a törlés és az ismételt védelem (például egy tesztkörnyezetben) esetében nem várhatja el a szükséges 14 napot, az egyetlen olyan körülmény, amelyben érdemes megfontolni a Soft delete letiltását. A Soft delete letiltásával kapcsolatos utasításokért lásd: a [Soft delete engedélyezése és letiltása](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Soft delete [gyakori kérdéseinek](backup-azure-security-feature-cloud.md#frequently-asked-questions) áttekintése
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

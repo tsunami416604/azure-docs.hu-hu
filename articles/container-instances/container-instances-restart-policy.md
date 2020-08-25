@@ -2,19 +2,19 @@
 title: Újraindítási szabályzat a futtatási egyszeri feladatokhoz
 description: Megtudhatja, hogyan használhatja a Azure Container Instances a befejezésre futó feladatok végrehajtásához, például a létrehozási, tesztelési vagy képrenderelési feladatokban.
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/11/2020
+ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261345"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798941"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása újraindítási szabályzatokkal
 
 A tárolók Azure Container Instances szolgáltatásban való üzembe helyezésének egyszerűsége és gyorsasága kényelmes platformot biztosít, amellyel egy tárolópéldányban hajthat végre olyan egyszer futó feladatokat, mint a létrehozás, a tesztelés és a képrenderelés.
 
-A konfigurálható újraindítási szabályzat segítségével megadhatja, hogy a tárolók leálljanak, amikor a folyamataik befejeződtek. Mivel a Container Instances számlázása másodpercalapú, csak azokért a számítási erőforrásokért kell díjat fizetnie, amelyek használatban voltak, amikor a feladatot végrehajtó tároló futott.
+A konfigurálható újraindítási szabályzat segítségével megadhatja, hogy a tárolók leálljanak, amikor a folyamataik befejeződtek. Mivel a tárolópéldányok számlázása másodpercalapú, csak azokért a számítási erőforrásokért kell díjat fizetnie, amelyek használatban voltak, amikor a feladatot végrehajtó tároló futott.
 
 A cikkben bemutatott példák az Azure CLI-t használják. Az Azure CLI verziójának 2.0.21 [vagy újabb verziójára van szükség][azure-cli-install], vagy a CLI-t kell használnia a [Azure Cloud Shell](../cloud-shell/overview.md).
 
@@ -27,6 +27,8 @@ Amikor Azure Container Instancesban hoz létre egy [tároló csoportot](containe
 | `Always` | A tárolócsoportban lévő tárolókat a rendszer mindig újraindítja. Ez az **alapértelmezés szerint** érvényben lévő beállítás, ha nem ad meg újraindítási szabályzatot a tároló létrehozásakor. |
 | `Never` | A tárolócsoportban lévő tárolókat a rendszer sosem indítja újra. A tárolók legfeljebb egyszer futnak. |
 | `OnFailure` | A tárolócsoportban lévő tárolókat a rendszer csak akkor indítja újra, ha a tárolóban végrehajtott folyamat meghiúsult (azaz nullától eltérő kilépési kóddal zárul). A tárolók legalább egyszer futnak. |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>Újraindítási szabályzat meghatározása
 

@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztons
 description: Ez a cikk az Azure Virtual Machines szolgáltatásban futó SAP HANA adatbázisok biztonsági mentését ismerteti.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533444"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757540"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztonsági mentéséről
 
@@ -31,9 +31,9 @@ A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyv
 
 ![Biztonsági mentési architektúra diagramja](./media/sap-hana-db-about/backup-architecture.png)
 
-* A biztonsági mentési folyamat [egy Recovery Services-tároló létrehozásával](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) kezdődik az Azure-ban. Ezt a tárolót fogja használni a biztonsági másolatok és a létrehozott helyreállítási pontok tárolásához az idő múlásával.
+* A biztonsági mentési folyamat [egy Recovery Services tároló létrehozásával](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault) kezdődik az Azure-ban. Ezt a tárolót fogja használni a biztonsági másolatok és a létrehozott helyreállítási pontok tárolásához az idő múlásával.
 * A SAP HANA-kiszolgálót futtató Azure-beli virtuális gép regisztrálva van a tárolóban, és a biztonsági mentésre kerülő adatbázisokat a rendszer [felderíti](./tutorial-backup-sap-hana-db.md#discover-the-databases). Ahhoz, hogy a Azure Backup szolgáltatás lehetővé váljon az adatbázisok felderítése, egy [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni a HANA-kiszolgálón root felhasználóként.
-* Ez a szkript létrehozza a **AZUREWLBACKUPHANAUSER** db-felhasználót és a megfelelő kulcsot ugyanazzal a névvel a **hdbuserstore**-ben. Ha többet szeretne megtudni a parancsfájlról, tekintse meg a [Mi az előzetes regisztrációs parancsfájlt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) ismertető szakaszát.
+* Ez a szkript létrehozza a **AZUREWLBACKUPHANAUSER** db-felhasználót és a megfelelő kulcsot ugyanazzal a névvel a **hdbuserstore**-ben. Ha többet szeretne megtudni a parancsfájlról, tekintse meg a  [Mi az előzetes regisztrációs parancsfájlt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) ismertető szakaszát.
 * Azure Backup a szolgáltatás most telepíti a HANA-hoz készült **Azure Backup beépülő modult** a regisztrált SAP HANA kiszolgálón.
 * Az előregisztrációs parancsfájl által létrehozott **AZUREWLBACKUPHANAUSER** db-felhasználót a HANA-hoz készült **Azure Backup beépülő modul** használja az összes biztonsági mentési és visszaállítási művelet elvégzéséhez. Ha a parancsfájl futtatása nélkül kísérli meg SAP HANA-adatbázisok biztonsági mentésének konfigurálását, a következő hibaüzenet jelenhet meg: **UserErrorHanaScriptNotRun**.
 * Ha a [biztonsági mentést](./tutorial-backup-sap-hana-db.md#configure-backup) a felderített adatbázisokon szeretné konfigurálni, válassza ki a szükséges biztonsági mentési szabályzatot, és engedélyezze a biztonsági mentéseket.

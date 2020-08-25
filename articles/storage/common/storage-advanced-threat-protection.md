@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118416"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757931"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
@@ -32,6 +32,17 @@ Az Azure Storage komplex veszélyforrások elleni védelme jelenleg blob Storage
 Az Azure Blob Storage API-kat és a Data Lake Storage API-kat használó Data Lake Storage támogatási tranzakciókat engedélyező hierarchikus névtereket tartalmazó fiókok. Az Azure-fájlmegosztás támogatja a tranzakciókat az SMB protokollon keresztül.
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
+
+Az alábbi lista összefoglalja az Azure Storage komplex veszélyforrások elleni védelmének rendelkezésre állását:
+
+- Kiadás állapota:
+  - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)
+  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (az előzetes verzió támogatja az SMB-és Rest-tranzakciókat)
+  - Azure Data Lake Storage Gen2 (előzetes verzió)
+- Felhők<br>
+    ✔ Kereskedelmi felhők<br>
+    ✔ US Gov<br>
+    ✘ China gov, egyéb gov
 
 ## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
@@ -51,7 +62,7 @@ Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyfo
 1. Az **árképzési rétegek kiválasztása erőforrástípus szerint** szakaszban, a Storage- **fiókok** sorban kattintson az **engedélyezve** vagy a **Letiltva**lehetőségre.
 
     ![ATP engedélyezése Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -126,7 +137,7 @@ Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági rias
 
 A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. Az Azure Storage-hoz kapcsolódó riasztások listáját a [Azure Security Center adatszolgáltatásainak veszélyforrások elleni védelme](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage) **című rész tartalmazza** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
 * További információ a [Azure Security Center](../../security-center/security-center-intro.md)

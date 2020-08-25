@@ -3,18 +3,18 @@ title: Azure-fájlmegosztás biztonsági mentése a REST API
 description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegosztás biztonsági mentésére az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b3d83104b699740c43b0c6506c00694c2b2ac063
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654140"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757132"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
 
 Ez a cikk azt ismerteti, hogyan készíthet biztonsági mentést egy Azure-fájlmegosztás Azure Backup használatával REST API segítségével.
 
-Ez a cikk azt feltételezi, hogy már létrehozott egy Recovery Services-tárolót és szabályzatot a fájlmegosztás biztonsági mentésének konfigurálásához. Ha még nem tette meg, tekintse meg a [create vaultot](./backup-azure-arm-userestapi-createorupdatevault.md) , és [hozzon létre házirendet](./backup-azure-arm-userestapi-createorupdatepolicy.md) REST API oktatóanyagokat új tárolók és házirendek létrehozásához.
+Ez a cikk azt feltételezi, hogy már létrehozott egy Recovery Services-tárolót és házirendet a fájlmegosztás biztonsági mentésének konfigurálásához. Ha még nem tette meg, tekintse meg a [create vaultot](./backup-azure-arm-userestapi-createorupdatevault.md) , és [hozzon létre házirendet](./backup-azure-arm-userestapi-createorupdatepolicy.md) REST API oktatóanyagokat új tárolók és házirendek létrehozásához.
 
 Ebben a cikkben a következő erőforrásokat fogjuk használni:
 

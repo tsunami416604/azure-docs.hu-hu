@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741923"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798023"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérj
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
 
 ## <a name="manage-access-reviews"></a>Hozzáférési felülvizsgálatok kezelése
 
@@ -58,7 +58,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
     ![Hozzáférési felülvizsgálati oldal, amely az Áttekintés részleteit jeleníti meg](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Ha Ön rendszergazda, és lehetővé teszi, hogy áttekintse a szervezet hozzáférését a csoportokhoz és alkalmazásokhoz, egy másik oldal jelenik meg. A csoportok és alkalmazások szervezethez való áttekintésével kapcsolatos további információkért lásd: [hozzáférés ellenőrzése csoportokhoz vagy alkalmazásokhoz az Azure ad hozzáférési felülvizsgálatokban](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Ha Ön rendszergazda, és lehetővé teszi, hogy áttekintse a szervezet hozzáférését a csoportokhoz és alkalmazásokhoz, egy másik oldal jelenik meg. A csoportok és alkalmazások szervezethez való áttekintésével kapcsolatos további információkért lásd: [hozzáférés ellenőrzése csoportokhoz vagy alkalmazásokhoz az Azure ad hozzáférési felülvizsgálatokban](../governance/perform-access-review.md).
 
 6. Válassza az **Igen** lehetőséget a hozzáférésének megtartásához, vagy a **nem** gombra a hozzáférés eltávolításához.
 
@@ -73,7 +73,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
     >[!Note]
     >A hozzáférését bármikor módosíthatja, amíg a hozzáférési felülvizsgálati időszak véget nem ér. Ha eltávolít egy alkalmazáshoz vagy csoporthoz való hozzáférését, azt nem távolítja el azonnal. Az eltávolítás akkor történik meg, amikor a hozzáférési felülvizsgálati időszak véget ér, vagy amikor a rendszergazda bezárja a felülvizsgálatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálján](my-apps-portal-end-user-access.md)
 - [Profilinformációk módosítása](my-apps-portal-end-user-update-profile.md)

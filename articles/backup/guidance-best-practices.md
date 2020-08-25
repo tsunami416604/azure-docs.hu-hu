@@ -3,12 +3,12 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650876"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757591"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -48,7 +48,7 @@ Azure Backup lehetővé teszi az adatvédelem különböző számítási feladat
 
 ### <a name="management-plane"></a>Felügyeleti sík
 
-* **Hozzáférés-vezérlés** – a helyreállítási tár biztosítja a felügyeleti funkciókat, és a Azure Portal, az SDK, a CLI és a REST API-kon keresztül érhető el. Emellett egy RBAC határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
+* **Hozzáférés-vezérlés** – a Recovery Services-tároló biztosítja a felügyeleti képességeket, és a Azure Portal, az SDK, a CLI és a REST API-k segítségével érhető el. Emellett egy RBAC határ is, amely lehetővé teszi a biztonsági másolatok elérésének korlátozását csak az engedélyezett biztonsági mentési rendszergazdák számára.
 
 * **Házirend-kezelés** – az egyes tárakon belül Azure Backup szabályzatok határozzák meg, hogy a biztonsági mentések Mikor legyenek aktiválva, és mennyi ideig kell megőrizni őket. Ezeket a szabályzatokat kezelheti, és több elem között is alkalmazhatja őket.
 
@@ -72,7 +72,7 @@ A biztonsági másolatok rendszerezéséhez és kezeléséhez egyetlen tárat va
 
 * Ha a számítási feladatok az előfizetések között oszlanak el, több tárolót is létrehozhat, egy vagy több előfizetéssel.
   * Az operatív tevékenységek monitorozásának leegyszerűsítése az összes tárolón, előfizetésen és bérlőn keresztül a Backup Explorer és a jelentések segítségével végezhető el. [További információ](monitor-azure-backup-with-backup-explorer.md) : összesített nézet beszerzése.
-  * Ha konzisztens szabályzatra van szüksége a tárakban, akkor az Azure Policy segítségével több tárolón is propagálhatja a biztonsági mentési szabályzatot. Írhat olyan egyéni Azure Policy- [definíciót](../governance/policy/concepts/definition-structure.md) , amely a ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) effektus használatával propagálja a biztonsági mentési szabályzatot több tárolón keresztül. Ezt a Azure Policy [definíciót hozzárendelheti](../governance/policy/assign-policy-portal.md) egy adott hatókörhöz (előfizetés vagy RG), így egy "biztonsági mentési szabályzat" erőforrást helyez üzembe a Azure Policy hozzárendelés hatókörében lévő összes Recovery Services-tárolóra. A biztonsági mentési szabályzat beállításait (például a biztonsági mentés gyakoriságát, a megőrzést stb.) a felhasználónak kell megadnia paraméterként a Azure Policy-hozzárendelésben.
+  * Ha konzisztens szabályzatra van szüksége a tárakban, akkor az Azure Policy segítségével több tárolón is propagálhatja a biztonsági mentési szabályzatot. Írhat olyan egyéni Azure Policy- [definíciót](../governance/policy/concepts/definition-structure.md) , amely a ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) effektus használatával propagálja a biztonsági mentési szabályzatot több tárolón keresztül. Ezt a Azure Policy [definíciót hozzárendelheti](../governance/policy/assign-policy-portal.md) egy adott hatókörhöz (előfizetés vagy RG), így egy "biztonsági mentési szabályzat" erőforrást helyez üzembe az Azure Policy hozzárendelés hatókörében lévő összes Recovery Services-tárolóra. A biztonsági mentési szabályzat beállításait (például a biztonsági mentés gyakoriságát, a megőrzést stb.) a felhasználónak kell megadnia paraméterként a Azure Policy-hozzárendelésben.
 
 * Ahogy a szervezeti lábnyoma nő, érdemes lehet áthelyezni a munkaterheléseket az előfizetések között a következő okok miatt: a biztonsági mentési szabályzattal való összehangolás, a tárolók összevonása, az alacsonyabb redundancia elleni kereskedelmi forgalom csökkentése a GRS és a LRS között.  Azure Backup támogatja egy Recovery Services-tároló áthelyezését az Azure-előfizetések között, vagy egy másik erőforráscsoporthoz ugyanazon az előfizetésen belül. [További információ itt](backup-azure-move-recovery-services-vault.md).
 
@@ -247,7 +247,7 @@ Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell l
 
 * Azure Backup egy **beépített riasztási** értesítési mechanizmust biztosít a hibák, figyelmeztetések és kritikus műveletek e-mailben történő elküldéséhez. Megadhat egyedi e-mail-címeket vagy terjesztési listát, amelyekről értesítést kaphat, ha riasztás jön létre. Azt is megadhatja, hogy az egyes riasztások értesítést kapjanak-e, vagy egy óránkénti kivonatban csoportosítsa őket, majd értesítést kap.
   * Ezeket a riasztásokat a szolgáltatás definiálja, és támogatást nyújt a korlátozott forgatókönyvek számára – biztonsági mentési/visszaállítási hibák, az adatok megőrzésének megakadályozása/a védelem leállítása az adatok törlésével és így tovább. [További információ itt](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Ha olyan roncsolásos műveletet hajt végre, mint például az adattörlési védelem leállítása, a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak, még akkor is, ha az értesítések nincsenek konfigurálva a helyreállítási tárolóhoz.
+  * Ha olyan roncsolásos műveletet végez, mint például a védelem leállítása a törlési művelettel, a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva az Recovery Services-tárolóhoz.
   * Bizonyos munkaterhelések nagy gyakoriságú hibákat okozhatnak (például SQL Server 15 percenként). Ha meg szeretné akadályozni, hogy az egyes hibák előfordulásakor kiváltott riasztások eljusson, a riasztások konszolidálva lesznek. [További információ itt](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * A beépített riasztások nem szabhatók testre, és a Azure Portal meghatározott e-mailekre vannak korlátozva.
 

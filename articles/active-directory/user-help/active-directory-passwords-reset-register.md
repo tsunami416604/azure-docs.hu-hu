@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266100"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799026"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>A saját jelszavának alaphelyzetbe állításához regisztrálja az ellenőrzési módszer adatait
 
@@ -26,7 +26,7 @@ Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a
 A rendszergazdának be kell kapcsolnia ezt a funkciót, hogy regisztrálni tudja az adatait, és visszaállítson egy saját jelszót. Ha nem látja az **elfelejtettem a jelszavam** beállítást, az azt jelenti, hogy a rendszergazda nem kapcsolta be a szolgáltatást a szervezet számára. Ha úgy véli, hogy ez helytelen, segítségért forduljon az ügyfélszolgálathoz.
 
 >[!Important]
->Ez a cikk azoknak a felhasználóknak készült, akik a regisztrációt szeretnék használni az önkiszolgáló jelszó-visszaállításra. Ez azt jelenti, hogy a alain@contoso.com rendszergazda segítségének megkövetelése nélkül állíthatja alaphelyzetbe a saját munkahelyi vagy iskolai jelszavát (például). Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)témakört.
+>Ez a cikk azoknak a felhasználóknak készült, akik a regisztrációt szeretnék használni az önkiszolgáló jelszó-visszaállításra. Ez azt jelenti, hogy a alain@contoso.com rendszergazda segítségének megkövetelése nélkül állíthatja alaphelyzetbe a saját munkahelyi vagy iskolai jelszavát (például). Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](../authentication/howto-sspr-deployment.md)témakört.
 
 ## <a name="set-up-your-password-reset-verification-method"></a>A jelszó-visszaállítás ellenőrzési módszerének beállítása
 
@@ -61,7 +61,7 @@ A rendszergazdának be kell kapcsolnia ezt a funkciót, hogy regisztrálni tudja
 | A fiókja nincs engedélyezve a jelszó-visszaállításhoz.<br>Sajnos az informatikai részleg nem állította be a fiókját a szolgáltatással való használatra.<br>Ha szeretné, felvehetjük a kapcsolatot a szervezet rendszergazdájával, hogy alaphelyzetbe állítsa a jelszavát. | Ha a felhasználói azonosító beírása után ezt a hibaüzenetet kapja, az azt jelenti, hogy a szervezet nem kapcsolta be a jelszó-visszaállítási funkciót, vagy nem használhatja azt. Ha ebben a helyzetben szeretné visszaállítani a jelszavát, ki kell választania a **kapcsolatot a rendszergazda** hivatkozással. Miután rákattintott a hivatkozásra, a rendszer elküld egy e-mailt a szervezet ügyfélszolgálatának vagy rendszergazdájának, és tudatja Önnel, hogy szeretné visszaállítani a jelszavát. |
 | Nem lehetett ellenőrizni a fiókját.<br>Ha szeretné, felvehetjük a kapcsolatot a szervezet rendszergazdájával, hogy alaphelyzetbe állítsa a jelszavát. | Ha a felhasználói azonosító beírása után ezt a hibaüzenetet kapja, az azt jelenti, hogy a szervezete bekapcsolta a jelszó-visszaállítást, és használhatja azt, de nem regisztrált a szolgáltatáshoz. Ebben az esetben kapcsolatba kell lépnie a szervezet ügyfélszolgálatával vagy rendszergazdájával a jelszó alaphelyzetbe állításához. További információ a jelszó-visszaállítás regisztrálásáról az eszközre való visszatérés után: ebben a cikkben. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Jelszó módosítása az önkiszolgáló jelszó-visszaállítás használatával](active-directory-passwords-update-your-own-password.md)
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652828"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757217"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -303,7 +303,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
 > [!NOTE]
 > Jelenleg Azure Backup CLI csak az Azure-beli virtuális gépek biztonsági másolatainak kezelését támogatja, így a tároló csak akkor törölhető, ha a tár Azure-beli virtuális gépek biztonsági másolatait tartalmazza. Azure Backup CLI használatával nem törölhet tárolót, ha a tár az Azure-beli virtuális gépektől eltérő típusú biztonságimásolat-elemeket tartalmaz.
 
-A meglévő Recovery Services-tároló törléséhez hajtsa végre az alábbi műveleteket:
+A meglévő Recovery Services-tároló törléséhez hajtsa végre a következő lépéseket:
 
 - A védelem leállítása és a biztonsági másolatok törlése
 
@@ -320,7 +320,7 @@ A meglévő Recovery Services-tároló törléséhez hajtsa végre az alábbi m�
 
     További információkért tekintse meg ezt a [cikket](/cli/azure/backup/protection#az-backup-protection-disable).
 
-- Meglévő Recovery Services-tároló törlése:
+- Meglévő Recovery Services tároló törlése:
 
     ```azurecli
     az backup vault delete [--force]
@@ -357,13 +357,13 @@ További információ a ARMClient parancsról: [ARMCLIENT readme](https://github
 1. Futtassa az alábbi parancsot az előfizetés-azonosító, az erőforráscsoport neve és a tár neve használatával. Ha nem rendelkezik függőségekkel, a tár törlődik a következő parancs futtatásakor:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>?api-version=2015-03-15
    ```
 
 2. Ha a tároló nem üres, a következő hibaüzenet jelenik meg: a tár *nem törölhető, mert a tárban található meglévő erőforrások.* Egy védett elem vagy tároló egy tárolón belüli eltávolításához futtassa a következő parancsot:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
 3. Győződjön meg arról, hogy a Azure Portal törli a tárolót.

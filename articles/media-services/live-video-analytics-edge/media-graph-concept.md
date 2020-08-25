@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690680"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798839"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -83,7 +83,7 @@ A HTTP-bővítmény processzor-csomópontja lehetővé teszi saját IoT Edge mod
 
 #### <a name="grpc-extension-processor"></a>gRPC-bővítmény processzora
 
-A gRPC-bővítmény processzor-csomópontja dekódolja a képkockákat bemenetként, és továbbítja ezeket a képkockákat a modul által elérhető gRPC-végpontnak. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a gRPC-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot.
+A gRPC-bővítmény processzor-csomópontja dekódolja a képkockákat bemenetként, és továbbítja ezeket a képkockákat a modul által elérhető [gRPC](terminology.md#grpc) -végpontnak. Emellett a csomópont beépített rendszerképekkel rendelkezik a képkockák méretezéséhez és kódolásához, mielőtt azok továbbítva lesznek a gRPC-végpontnak. A méretezési lehetőségekkel a képméretarány megtartható, párnázott vagy kifeszíthető. A képkódoló támogatja a JPEG, a PNG vagy a BMP formátumot.
 
 #### <a name="signal-gate-processor"></a>Signal Gate processzor  
 
@@ -105,7 +105,7 @@ Egy IoT Hub Message fogadó csomópont lehetővé teszi az események közzété
 
 ## <a name="rules-on-the-use-of-nodes"></a>A csomópontok használatára vonatkozó szabályok
 
-A különböző csomópontok adathordozó-diagramon belüli használatának módjáról további szabályokat a [kvóták](quotas-limitations.md#limitations-on-graph-topologies-at-preview) című témakörben talál.
+A különböző csomópontok adathordozó-diagramon belüli használatának módjával kapcsolatos további szabályok a [Graph-topológiák korlátozásai](quotas-limitations.md#limitations-on-graph-topologies-at-preview) című témakörben találhatók.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -115,6 +115,6 @@ A fent definiált források, processzorok és mosogatók kombinációjának hasz
 * [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
 * [Live Video Analytics videófelvétel nélkül](analyze-live-video-concept.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan futtathatja a mozgásérzékelőt élő videós hírcsatornán, tekintse meg a rövid útmutató [: élő videó-elemzés futtatása a saját modelljével](use-your-model-quickstart.md)című témakört.

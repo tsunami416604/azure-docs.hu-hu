@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128070"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799349"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
 
@@ -47,7 +47,7 @@ Ez a témakör a [CDN-integráció](#enable-azure-cdn-integration)engedélyezés
 
 Ha egy streaming-végpontot engedélyeztek a CDN szolgáltatással, akkor a Media Services várakozási idő van a DNS-frissítés végrehajtása előtt, hogy leképezje a folyamatos átviteli végpontot a CDN-végpontra.
 
-Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. Akár két óráig is eltarthat, amíg a Azure CDN integrációja engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. A streaming végpontot és az adatfolyamot azonban megszakítások nélkül is elindíthatja a folyamatos átviteli végpontról. Az integráció befejezését követően a stream a CDN-ből érkezik. A kiépítési időszak alatt a folyamatos átviteli végpont a **kezdeti** állapotba kerül, és megfigyelheti a teljesítmény romlását.
+Ha később le kívánja tiltani/engedélyezni szeretné a CDN-t, a folyamatos átviteli végpontnak **leállított** állapotban kell lennie. A folyamatos átviteli végpont elindítása után akár két óráig is eltarthat, amíg a Azure CDN integrációja engedélyezve lesz, és a módosítások az összes CDN-pop-ban aktívak lesznek. A streaming végpontot és az adatfolyamot azonban megszakítások nélkül is elindíthatja a folyamatos átviteli végpontról. Az integráció befejezését követően a stream a CDN-ből érkezik. A kiépítési időszak alatt a folyamatos átviteli végpont a **kezdeti** állapotba kerül, és megfigyelheti a teljesítmény romlását.
 
 A standard folyamatos átviteli végpont létrehozásakor a rendszer alapértelmezés szerint a standard Verizon-t konfigurálja. A Premium Verizon vagy a standard szintű Akamai-szolgáltatók a REST API-k használatával konfigurálhatók.
 
@@ -86,7 +86,7 @@ A *forrás – támogatás CDN-kiindulási* funkció előnyei a következők:
 
 A `Origin-Assist CDN-Prefetch` Akamai CDN-vel közvetlen szerződéssel rendelkező ügyfelek számára a CDN támogatja a fejléceket (az élő és a video igény szerinti streaming esetében egyaránt). A szolgáltatás a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Szerep|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Rendeltetés|
 | ---- | ---- | ---- | ---- | ----- |
 |`CDN-Origin-Assist-Prefetch-Enabled` | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e.|
 |`CDN-Origin-Assist-Prefetch-Path`| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|Megadhatja a CDN elérési útját.|
@@ -154,7 +154,7 @@ A `Origin-Assist CDN-Prefetch` szolgáltatás a következő folyamatos átviteli
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Győződjön meg arról, hogy az [adatfolyam-végpont (forrás)](streaming-endpoint-concept.md) dokumentumot tekinti át.
 * Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.

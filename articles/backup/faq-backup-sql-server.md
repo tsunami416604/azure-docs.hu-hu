@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090977"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762844"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -52,7 +52,7 @@ A DefaultBackupTasksThreshold alapértelmezett értéke **20**.
  Habár ez a módszer segít, ha a biztonságimásolat-készítő alkalmazás nagy mennyiségű erőforrást használ fel, SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) sokkal általánosabb módszer a határértékek megadására a bejövő alkalmazások által igényelt CPU, fizikai IO és memória mennyisége tekintetében.
 
 > [!NOTE]
-> Az UX-ben továbbra is bármikor előre ütemezheti a sok biztonsági mentést, azonban a fenti példának megfelelően a rendszer egy csúszó ablakban fogja feldolgozni, azaz 5.
+> Az UX-ben továbbra is előre megtekintheti a sok biztonsági mentést, és bármikor ütemezheti azt. A fenti példának megfelelően a rendszer a következő példában szereplő 5. szövegű csúszó ablakban dolgozza fel őket.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Futtathatok teljes biztonsági mentést egy másodlagos replikáról?
 

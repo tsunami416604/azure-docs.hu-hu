@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3bf180c2b70a686879082888e45e67936cdbec67
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494825"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799230"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Táblázatok kialakítása a szinapszis SQL használatával
 
@@ -75,7 +75,7 @@ Az SQL-készletben lévő táblák szervezetének megjelenítéséhez használha
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL-készlet |
 |:-----|:-----|:------|:-----|
-| Település | Dimenzió | WWI. DimCity |
+| City | Dimenzió | WWI. DimCity |
 | Rendelés | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
@@ -96,7 +96,7 @@ Egy ideiglenes tábla csak a munkamenet időtartama alatt létezik. Egy ideiglen
 
 Az SQL on-demand támogatja az ideiglenes táblákat. A használata azonban korlátozott, mert az ideiglenes táblából választhat, de nem csatlakoztatható a tárolóban található fájlokhoz.
 
-További információ: [ideiglenes táblák](develop-tables-temporary.md).
+További információ:  [ideiglenes táblák](develop-tables-temporary.md).
 
 ### <a name="external-table"></a>Külső tábla
 
@@ -207,7 +207,7 @@ Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZ
 
 Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Leírás |
+| T-SQL-utasítás | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Létrehoz egy külső táblát. A tábla definícióját az SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |
@@ -361,6 +361,9 @@ FROM size
 ;
 ```
 
+>[!TIP]
+> A szinapszis SQL-ben a jobb teljesítmény érdekében érdemes lehet sys. **pdw_permanent_table_mappings** helyett a sys **. pdw_table_mappingst** használni az állandó felhasználói táblákon. További információért lásd: **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
+
 ### <a name="table-space-summary"></a>Táblázat területének összegzése
 
 Ez a lekérdezés a sorokat és a szóközt adja vissza táblázat szerint.  A tábla területének összegzése lehetővé teszi, hogy a legnagyobb táblák közül melyik táblákat kell megtekinteni. Azt is láthatja, hogy a ciklikus multiplexelés, a replikált vagy a hash eloszlású.  Kivonatoló eloszlású táblák esetén a lekérdezés a terjesztési oszlopot jeleníti meg.  
@@ -439,6 +442,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába.  Betöltési oktatóanyag: az [SQL-készletbe való betöltés](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool).

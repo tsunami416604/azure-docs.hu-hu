@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fb3113b02d20355e3ac9ede593bf8fc4136461
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705962"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799298"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 csoportok elévülési szabályzatának konfigurálása
 
@@ -110,7 +110,7 @@ Ha a visszaállítani kívánt csoport dokumentumokat, SharePoint-webhelyeket va
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Microsoft 365 csoport lejárati dátumának beolvasása
 
-A hozzáférési panelen kívül a felhasználók megtekinthetik a csoport részleteit, beleértve a lejárati dátumot és az utolsó megújított dátumot, a Microsoft 365 csoport lejárati idejét Microsoft Graph REST API Bétaverzióból kérheti le. a expirationDateTime tulajdonság engedélyezve van Microsoft Graph Beta-ban. Lekérhető GET kéréssel. További részletekért tekintse meg [ezt a példát](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
+A hozzáférési panelen kívül a felhasználók megtekinthetik a csoport részleteit, beleértve a lejárati dátumot és az utolsó megújított dátumot, a Microsoft 365 csoport lejárati idejét Microsoft Graph REST API Bétaverzióból kérheti le. a expirationDateTime tulajdonság engedélyezve van Microsoft Graph Beta-ban. Lekérhető GET kéréssel. További részletekért tekintse meg [ezt a példát](/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > A csoporttagságok a hozzáférési panelen való kezeléséhez a "nem" értékre kell állítani a "hozzáférés a csoportok számára a hozzáférési panelen" beállítást a Azure Active Directory csoportok általános beállításában.
@@ -172,7 +172,7 @@ Az adatmegőrzési szabályt a biztonsági és megfelelőségi központ konfigur
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-A következő parancsmagok segítségével konfigurálhatja a szabályzatot részletesebben. További információ: PowerShell- [dokumentáció](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
+A következő parancsmagok segítségével konfigurálhatja a szabályzatot részletesebben. További információ: PowerShell- [dokumentáció](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
 - Új – AzureADMSGroupLifecyclePolicy
@@ -183,7 +183,7 @@ A következő parancsmagok segítségével konfigurálhatja a szabályzatot rés
 - Alaphelyzetbe állítás – AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak az Azure AD-csoportokról.
 

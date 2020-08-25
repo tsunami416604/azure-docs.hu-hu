@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentése
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 03bbcef2ce408a1b1f5e2c2d909728d3ed8e7e19
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611245"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757030"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
@@ -116,7 +116,7 @@ A cikkben említett biztonsági funkciók védelmi mechanizmusokat biztosítanak
 | Hozzáférési kód módosítása |A megadott biztonsági PIN-kód helytelen. (AZONOSÍTÓ: 100130) A művelet végrehajtásához adja meg a helyes biztonsági PIN-kódot. |**Okozhat**<br/> Ez a hiba akkor jelenik meg, ha a kritikus művelet végrehajtása közben érvénytelen vagy lejárt biztonsági PIN-kódot ad meg (például a jelszó módosítása). <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
 | Hozzáférési kód módosítása |A művelet sikertelen volt. AZONOSÍTÓ: 120002 |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A hozzáférési kód módosításához először frissítenie kell a Backup ügynököt a minimálisan szükséges minimális 2.0.9052, Azure Backup-kiszolgálóval az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Recovery Services-tároló használatának [első lépései](backup-azure-vms-first-look-arm.md) a funkciók engedélyezéséhez.
 - [Töltse le a legújabb Azure Recovery Services-ügynököt](https://aka.ms/azurebackup_agent) , hogy megvédje a Windows rendszerű számítógépeket, és védelmet nyújtson biztonsági mentési adatainak a támadásokkal szemben.

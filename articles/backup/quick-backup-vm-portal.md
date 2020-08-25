@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c41fb7426cf740b5861b0b571cf7ce5c54d681ef
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656943"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757608"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 
@@ -24,7 +24,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>A virtuális gép kiválasztása a biztonsági mentéshez
 
-Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery Services-tárolóba.
+Hozzon létre egy egyszerű ütemezett napi biztonsági mentést egy Recovery Services-tárolóba.
 
 1. A bal oldali menüben válassza a **Virtuális gépek** elemet.
 2. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni. Ha a virtuális gépet a gyors üzembe helyezés példaparancsai használatával hozta létre, a virtuális gép *myVM* néven szerepel a *myResourceGroup* erőforráscsoportban.
@@ -85,7 +85,7 @@ Ha folytatja a biztonsági mentési oktatóanyagot, amely leírja, hogyan lehet 
 
     ![Az erőforráscsoport törlése az Azure Portal használatával](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

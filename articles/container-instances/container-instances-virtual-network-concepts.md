@@ -2,14 +2,14 @@
 title: Virtuális hálózat használatára vonatkozó forgatókönyvek
 description: Forgatókönyvek, erőforrások és korlátozások a tároló-csoportok Azure-beli virtuális hálózatra való üzembe helyezéséhez.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259549"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797860"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Virtuális hálózati forgatókönyvek és erőforrások
 
@@ -42,6 +42,8 @@ Az Azure-beli virtuális hálózatba üzembe helyezett tároló-csoportok a köv
 * Nem használhat [felügyelt identitást](container-instances-managed-identity.md) egy virtuális hálózatra központilag telepített tároló csoportba.
 * Egy virtuális hálózatra központilag üzembe helyezett tároló csoportban nem engedélyezhető az [élő](container-instances-liveness-probe.md) vagy a [készültségi](container-instances-readiness-probe.md) mintavétel.
 * Az érintett további hálózati erőforrások miatt a virtuális hálózatra történő központi telepítések általában lassabbak, mint a standard Container-példányok üzembe helyezése.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="where-to-deploy"></a>Az üzembe helyezés helye
 

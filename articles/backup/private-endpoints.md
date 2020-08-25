@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654701"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762912"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -192,7 +192,7 @@ Lásd: [privát végpontok manuális jóváhagyása a Azure Resource Manager üg
 ## <a name="adding-dns-records"></a>DNS-rekordok hozzáadása
 
 >[!NOTE]
-> Ez a lépés nem kötelező, ha integrált DNS-zónát használ. Ha azonban létrehozta saját Azure saját DNS-zónáját, vagy egyéni magánhálózati DNS-zónát használ, győződjön meg arról, hogy az ebben a szakaszban leírt módon szerepelnek a bejegyzések.
+> Ez a lépés nem kötelező, ha integrált DNS-zónát használ. Ha azonban létrehozta saját Azure saját DNS-zónáját, vagy egyéni magánhálózati DNS-zónát használ, ügyeljen arra, hogy a jelen szakaszban leírtak szerint hozzon létre bejegyzéseket.
 
 Miután létrehozta a választható magánhálózati DNS-zónát és a tárolóhoz tartozó magánhálózati végpontokat, DNS-rekordokat kell hozzáadnia a DNS-zónához. Ezt manuálisan vagy PowerShell-parancsfájl használatával is elvégezheti. Ezt csak a biztonsági mentési DNS-zónára kell elvégezni, a blobok és a várólisták esetében a rendszer automatikusan frissíti azokat.
 
@@ -239,7 +239,7 @@ Ehhez a privát végponton lévő összes FQDN-hez bejegyzéseket kell készíte
 Miután jóváhagyta a VNet-tárolóhoz létrehozott privát végpontokat, megkezdheti a biztonsági mentések és a visszaállítások elvégzését.
 
 >[!IMPORTANT]
->A folytatás előtt győződjön meg arról, hogy sikeresen végrehajtotta az összes fent említett lépést a dokumentumban. A betöltéshez el kell végeznie az alábbi ellenőrzőlista lépéseit:
+>A folytatás előtt győződjön meg arról, hogy sikeresen elvégezte az összes fent említett lépést a dokumentumban. A betöltéshez el kell végeznie az alábbi ellenőrzőlista lépéseit:
 >
 >1. Létrehozott egy (új) Recovery Services-tárolót
 >1. A tár engedélyezése a rendszerhez rendelt felügyelt identitás használatára

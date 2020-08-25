@@ -11,21 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266117"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799043"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
-Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát. A rendszergazdának be kell kapcsolnia ezt a funkciót ahhoz, hogy be tudja állítani az adatokat, és [alaphelyzetbe állíthatja a saját jelszavát](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
+Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát. A rendszergazdának be kell kapcsolnia ezt a funkciót ahhoz, hogy be tudja állítani az adatokat, és [alaphelyzetbe állíthatja a saját jelszavát](./active-directory-passwords-reset-register.md).
 
-Ha ismeri a jelszavát, és módosítani szeretné, tekintse meg a jelen cikk [jelszavas lépések módosítása](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) című részét.
+Ha ismeri a jelszavát, és módosítani szeretné, tekintse meg a jelen cikk [jelszavas lépések módosítása](#how-to-change-your-password) című részét.
 
 >[!Important]
->Ez a cikk olyan felhasználók számára készült, akik elfelejtett vagy ismeretlen munkahelyi vagy iskolai fiók jelszavának visszaállítását szeretnék használni. Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)témakört.
+>Ez a cikk olyan felhasználók számára készült, akik elfelejtett vagy ismeretlen munkahelyi vagy iskolai fiók jelszavának visszaállítását szeretnék használni. Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](../authentication/howto-sspr-deployment.md)témakört.
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Munkahelyi vagy iskolai fiók jelszavának alaphelyzetbe állítása vagy zárolásának feloldása
 
@@ -162,8 +162,8 @@ Ha a rendszergazda bekapcsolta a funkciót, megtekintheti a **jelszó alaphelyze
 |A felhasználói azonosító megadását követően hibaüzenet jelenik meg: "a fiók nincs engedélyezve a jelszó alaphelyzetbe állításához."|A rendszergazda nem állította be a fiókját, így visszaállíthatja a saját jelszavát.|A rendszergazda a (z) "nem tud hozzáférni a fiókhoz" hivatkozásra kattintva nem kapcsolta be a jelszó-visszaállítást, vagy nem rendelkezik licenccel a szolgáltatás használatához.<br><br> A jelszó alaphelyzetbe állításához ki kell választania a "Kapcsolatfelvétel a rendszergazdával" lehetőséget, hogy e-mailt küldjön a vállalati rendszergazdának, és tájékoztassa őket arról, hogy szeretné visszaállítani a jelszavát.|
 |A felhasználói azonosító megadását követően hibaüzenet jelenik meg, amely szerint "nem sikerült ellenőrizni a fiókját."|A bejelentkezési folyamat nem tudta ellenőrizni a fiók adatait.|Ennek az üzenetnek két oka lehet.<br><br>1. a rendszergazda bekapcsolta a szervezete jelszavának alaphelyzetbe állítását, de nem regisztrált a szolgáltatás használatára. A jelszó-visszaállításhoz való regisztrációhoz tekintse meg a következő cikkek egyikét az ellenőrzési módszer alapján: [állítsa be a biztonsági adatokat a hitelesítő alkalmazás használatára (előzetes verzió)](security-info-setup-auth-app.md), [állítsa be a biztonsági adatokat telefonhívás használatára (előzetes](security-info-setup-phone-number.md)verzió), a [biztonsági információk beállítása a szöveges üzenetküldés használatára (előzetes](security-info-setup-text-msg.md)verzió), a biztonsági [információk beállítása az e-mailek használatára (](security-info-setup-email.md)előzetes verzió), vagy biztonsági [kérdések (](security-info-setup-questions.md)előzetes verzió) használatára.<br><br>2. a rendszergazda nem kapcsolta be a szervezet jelszavának visszaállítását. Ebben az esetben ki kell választania a "Kapcsolatfelvétel a rendszergazdával" lehetőséget, ha e-mailt szeretne küldeni a rendszergazdának, és a jelszó alaphelyzetbe állítását kéri.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A biztonsági adatok [(előzetes verzió) – áttekintés című](user-help-security-info-overview.md) cikkben talál további információt.
+- A biztonsági adatok [(előzetes verzió) – áttekintés című](./security-info-setup-signin.md) cikkben talál további információt.
 
 - Ha olyan személyes fiókkal próbál visszakapni, mint például az Xbox, a hotmail.com vagy a outlook.com, akkor próbálkozzon a javaslatokkal, [Ha nem tud bejelentkezni a Microsoft-fiók cikkbe](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

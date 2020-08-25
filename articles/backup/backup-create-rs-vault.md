@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586188"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757744"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -20,7 +20,7 @@ ms.locfileid: "88586188"
 A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a tárterület replikálásának módját.
 
 > [!NOTE]
-> A **tároló replikálási típusának** (helyileg redundáns/földrajzi redundáns) módosítása a helyreállítási tár esetében a biztonsági mentések a tárban való konfigurálása előtt kell elvégezni. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva.
+> A **tároló replikálási típusának** (helyileg redundáns vagy földrajzilag redundáns Recovery Services) módosítását el kell végezni ahhoz, hogy a biztonsági mentések a tárban legyenek konfigurálva. A biztonsági mentés konfigurálása után a módosítás lehetőség le lesz tiltva.
 >
 >- Ha még nem konfigurálta a biztonsági mentést, [kövesse az alábbi lépéseket](#set-storage-redundancy) a beállítások áttekintéséhez és módosításához.
 >- Ha már konfigurálta a biztonsági mentést, és át kell térnie a GRS-ről a LRS-re, [tekintse át ezeket a megkerülő megoldásokat](#how-to-change-from-grs-to-lrs-after-configuring-backup).

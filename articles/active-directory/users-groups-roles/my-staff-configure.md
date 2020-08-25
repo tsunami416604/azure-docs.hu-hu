@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850906"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798958"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Felhasználók kezelése a munkatársaival (előzetes verzió)
 
@@ -64,7 +64,7 @@ Miután konfigurálta az AUs-t, alkalmazza ezt a hatókört a munkatársaihoz ho
 
 Az Azure AD feltételes hozzáférési szabályzatával védetté teheti a saját munkatársak portálját. Használhatja olyan feladatokhoz, mint például a többtényezős hitelesítés megkövetelése a munkatársak elérése előtt.
 
-Határozottan javasoljuk, hogy az [Azure ad feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/conditional-access/)használatával megvédje a munkatársakat. Ha feltételes hozzáférési szabályzatot szeretne alkalmazni a munkatársaim számára, manuálisan kell létrehoznia a saját munkatársak szolgáltatását a PowerShell használatával.
+Határozottan javasoljuk, hogy az [Azure ad feltételes hozzáférési szabályzatok](../conditional-access/index.yml)használatával megvédje a munkatársakat. Ha feltételes hozzáférési szabályzatot szeretne alkalmazni a munkatársaim számára, manuálisan kell létrehoznia a saját munkatársak szolgáltatását a PowerShell használatával.
 
 ### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Feltételes hozzáférési szabályzat alkalmazása a saját munkatársakra
 
@@ -125,11 +125,11 @@ A saját munkatársaiban található keresősáv használatával kereshet a szer
 
 Egy AU-n belül is kereshet egy felhasználót. Ehhez használja a felhasználói lista tetején található keresési sávot.
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 A naplókat megtekintheti a munkatársaim által a Azure Active Directory portálon végrehajtott műveletekhez. Ha a naplót egy, a munkatársain végrehajtott művelet hozta létre, akkor ez a naplózási esemény további részletei között jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Munkatársak felhasználói dokumentációja](../user-help/my-staff-team-manager.md) 
  [Felügyeleti egységek dokumentációja](directory-administrative-units.md)

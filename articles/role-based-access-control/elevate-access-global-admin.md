@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791996"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799332"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez
 
@@ -144,6 +144,22 @@ Az alábbi lépéseket követve távolíthatja el a felhasználói hozzáférés
     ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="elevate-access-for-a-global-administrator"></a>Globális rendszergazda hozzáférésének megemelése
+
+Az alábbi alapszintű lépésekkel emelheti ki a globális rendszergazda hozzáférését az Azure CLI használatával.
+
+1. Az az [Rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) paranccsal hívja `elevateAccess` meg a végpontot, amely megadja a felhasználói hozzáférés rendszergazdai szerepkörét a root scope ( `/` ) használatával.
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. Emelt szintű hozzáféréshez végezze el a szükséges módosításokat.
+
+    További információ a szerepkörök hozzárendeléséről: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md).
+
+1. Az emelt szintű hozzáférés eltávolításához hajtsa végre a lépéseket egy későbbi szakaszban.
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Szerepkör-hozzárendelés listázása a gyökérszintű hatókörben (/)
 
@@ -275,7 +291,7 @@ A hívásakor `elevateAccess` létre kell hoznia egy szerepkör-hozzárendelést
     ```
         
     >[!NOTE] 
-    >A címtár-rendszergazda nem rendelkezhet sok hozzárendeléssel, ha az előző lekérdezés túl sok hozzárendelést ad vissza, az összes hozzárendelés lekérdezése csak a címtár hatóköri szintjén végezhető el, majd szűrheti az eredményeket:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >A címtár-rendszergazda nem rendelkezhet sok hozzárendeléssel, ha az előző lekérdezés túl sok hozzárendelést ad vissza, az összes hozzárendelés lekérdezése csak a címtár hatóköri szintjén végezhető el, majd szűrheti az eredményeket: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
             
 1. Az előző hívások a szerepkör-hozzárendelések listáját adják vissza. Keresse meg azt a szerepkör-hozzárendelést, amelyben a hatókör szerepel, `"/"` és az `roleDefinitionId` 1. lépésben megtalált szerepkör-név és a `principalId` címtár-rendszergazda objectId. 
     
@@ -311,7 +327,7 @@ A hívásakor `elevateAccess` létre kell hoznia egy szerepkör-hozzárendelést
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)

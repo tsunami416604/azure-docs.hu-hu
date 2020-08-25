@@ -3,12 +3,12 @@ title: Fájlok visszaállítása Windows Serverre a MARS-ügynök használatáva
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d96c6c54431d0160bd58be0c3491ef2b22753e53
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263401"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757081"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
 
@@ -72,7 +72,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
 
 9. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás**lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
 
-    ![Képernyőfelvétel az adatok helyreállítása varázsló Tallózás és fájlok helyreállítása lapján (visszaállítás ugyanarra a gépre)](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Képernyőfelvétel az adatok helyreállítása varázsló Tallózás és helyreállítás fájlok lapján (visszaállítás ugyanarra a gépre) – a helyreállítási kötet leválasztásának megerősítése](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
     > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban akár legfeljebb 24 óráig is meghosszabbítható egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/29/2020
-ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.custom: contperfq1
+ms.date: 08/21/2020
+ms.openlocfilehash: 4c4b9c60eb967b5791af724e5c15bba887263d44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612707"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757863"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
@@ -279,6 +279,6 @@ Ebben az esetben manuálisan kell módosítani a **num_llap_node konfigurációt
 
 Az események autoskálázása nem változtatja meg a struktúra konfigurációjának **maximális összesített lekérdezéseit** a Ambari. Ez azt jelenti, hogy a kaptár-kiszolgáló 2 interaktív szolgáltatása **csak a megadott számú egyidejű lekérdezést tudja kezelni egy adott időpontban, még akkor is, ha a LLAP-démonok száma terhelés/ütemterv alapján fel van méretezve**. Az általános javaslat az, hogy ezt a konfigurációt a maximális használati forgatókönyvhöz állítsa be, hogy a manuális beavatkozás elkerülhető legyen. Vegye azonban figyelembe, hogy az **egyidejű lekérdezések maximális száma beállítás magas értékének beállítása sikertelen lehet a kaptár-kiszolgáló 2 interaktív szolgáltatásának újraindítása, ha a munkavégző csomópontok minimális száma nem képes a megadott számú TEZ AMS (az egyidejű lekérdezések maximális teljes konfigurációjának megadásával)**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók a fürtök méretezési [útmutatóinak](hdinsight-scaling-best-practices.md) manuális skálázásához

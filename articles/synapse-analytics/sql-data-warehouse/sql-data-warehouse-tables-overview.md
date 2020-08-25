@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f4cf9e2d02030021d3092629731fcd8b77566907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213941"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798567"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Tervezési táblázatok a szinapszis SQL-készletben
 
@@ -46,7 +46,7 @@ Az SQL-készletben lévő táblák szervezetének megjelenítéséhez használha
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL-készlet |
 |:-----|:-----|:------|:-----|
-| Város | Dimenzió | WWI. DimCity |
+| City | Dimenzió | WWI. DimCity |
 | Rendelés | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
@@ -65,7 +65,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 Egy ideiglenes tábla csak a munkamenet időtartama alatt létezik. Egy ideiglenes tábla használatával megakadályozhatja, hogy más felhasználók ideiglenes eredményeket láthassanak, és csökkentse a törlés szükségességét.  
 
-Az ideiglenes táblák a helyi tárterületet használják a gyors teljesítmény érdekében.  További információ: [ideiglenes táblák](sql-data-warehouse-tables-temporary.md).
+Az ideiglenes táblák a helyi tárterületet használják a gyors teljesítmény érdekében.  További információ:  [ideiglenes táblák](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Külső tábla
 
@@ -295,6 +295,9 @@ FROM size
 ;
 ```
 
+>[!TIP]
+> A szinapszis SQL-ben a jobb teljesítmény érdekében érdemes lehet sys. **pdw_permanent_table_mappings** helyett a sys **. pdw_table_mappingst** használni az állandó felhasználói táblákon. További információért lásd: **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
+
 ### <a name="table-space-summary"></a>Táblázat területének összegzése
 
 Ez a lekérdezés a sorokat és a szóközt adja vissza táblázat szerint.  Lehetővé teszi, hogy megtekintse, mely táblák a legnagyobb táblák, és hogy azok ciklikus multiplexelés, replikált vagy kivonattal vannak-e elterjesztve.  Kivonatoló eloszlású táblák esetén a lekérdezés a terjesztési oszlopot jeleníti meg.  
@@ -373,6 +376,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta az SQL-készlethez tartozó táblákat, a következő lépésben be kell töltenie az adatait a táblába.  A betöltési oktatóanyagért lásd: [az SQL-készletbe való betöltés](load-data-wideworldimportersdw.md).

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290285"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812984"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
 
 1. Adja meg a számítási erőforrás nevét.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > Számítási erőforrás létrehozása körülbelül öt percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
@@ -104,13 +104,7 @@ A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben a
 
 Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet.
 
-1. Válassza ki a **személygépkocsi-árlista (RAW)** modult.
-
-1. A vászontól jobbra található modul részletei ablaktáblán válassza a **kimenetek + napló**lehetőséget.
-
-1. Válassza ki a Graph ikont az adatmegjelenítéshez.
-    
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Helyettesítő szöveg itt.":::
+1. Kattintson a jobb gombbal a **személygépkocsi-árlista (nyers)** elemre, majd válassza a **Megjelenítés**lehetőséget.
 
 1. Válassza ki az adatablak különböző oszlopait az egyes adatok megtekintéséhez.
 
@@ -140,7 +134,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza az **oszlop szerkesztése**lehetőséget.
 
-1. Bontsa ki az **oszlopnevek** legördülő listát a **Belefoglalás**elem mellett, majd válassza az **összes oszlop**lehetőséget.
+1. Bontsa ki az **oszlopnevek** legördülő listát a **Belefoglalás**elem mellett, majd válassza az  **összes oszlop**lehetőséget.
 
 1. Jelölje be az **+** új szabály hozzáadásához.
 
@@ -291,9 +285,7 @@ Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat 
 
 A Futtatás után megtekintheti a folyamat futtatásának eredményét. Először tekintse meg a regressziós modell által generált előrejelzéseket.
 
-1. A **pontszám modell** modul kiválasztásával megtekintheti a kimenetét.
-
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** > gráf ikon ![ Megjelenítés ikont az ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) eredmények megtekintéséhez.
+1. Kattintson a jobb gombbal a **pontszám modell** modulra, és válassza a **Megjelenítés** elemet a kimenet megtekintéséhez.
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
@@ -303,9 +295,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
 A **kiértékelési modell** használatával megtekintheti, hogy a betanított modell milyen jól lett elvégezve a teszt adatkészleten.
 
-1. Válassza ki a **modell kiértékelése** modult a kimenet megtekintéséhez.
-
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** > gráf ikon ![ Megjelenítés ikont az ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) eredmények megtekintéséhez.
+1. Kattintson a jobb gombbal a **modell kiértékelése** modulra, és válassza a **Megjelenítés** elemet a kimenet megtekintéséhez.
 
 A modellhez a következő statisztikák láthatók:
 

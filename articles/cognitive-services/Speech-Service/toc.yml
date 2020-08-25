@@ -3,10 +3,8 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a beszédszolgáltatás?
+    - name: A Speech szolgáltatás áttekintése
       href: overview.md
-    - name: Próbálja ki ingyenesen a Beszédszolgáltatást
-      href: get-started.md
     - name: Nyelvi és hangszolgáltatási támogatás
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md

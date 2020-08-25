@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 351fe5acd8d607b5b60817c235161ac09e530e99
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25ee5d389bc70d82730c7056c752de393a6bf4c5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495012"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799145"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI használatával
 
@@ -94,13 +94,16 @@ Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcs
 
 Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Ebben a lépésben az Azure Storage-fiókot úgy konfigurálja, hogy az ügyfél által felügyelt kulcsokat Azure Key Vault használatával használja, majd adja meg a Storage-fiókhoz társítandó kulcsot.
 
-Ha az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást, dönthet úgy, hogy automatikusan elforgatja a titkosításhoz használt kulcsot, amikor a verzió módosul a társított kulcstartóban. Másik lehetőségként explicit módon megadhatja a titkosításhoz használni kívánt verziót, amíg a kulcs verzióját manuálisan nem frissíti.
+Ha ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást, beállíthatja, hogy a rendszer automatikusan frissítse a titkosításhoz használt kulcsot, amikor a kulcs verziója megváltozik a társított kulcstartóban. Másik lehetőségként explicit módon megadhatja a titkosításhoz használni kívánt verziót, amíg a kulcs verzióját manuálisan nem frissíti.
 
-### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsok automatikus elforgatásához
+> [!NOTE]
+> A kulcs elforgatásához hozza létre a kulcs új verzióját Azure Key Vault. Az Azure Storage nem kezeli a kulcs elforgatását Azure Key Vaultban, ezért manuálisan kell elforgatnia a kulcsot, vagy létre kell hoznia egy függvényt, amellyel elforgathatja azt ütemterv szerint.
 
-Az ügyfél által felügyelt kulcsok automatikus elforgatására szolgáló titkosítás konfigurálásához telepítse az [Azure CLI-verziót 2.4.0 vagy újabb verzióra](/cli/azure/release-notes-azure-cli#april-21-2020) . További információ: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>A titkosítási konfiguráció konfigurálása a kulcs verziójának automatikus frissítéséhez
 
-Az ügyfél által felügyelt kulcsok automatikus elforgatásához hagyja ki a kulcs verzióját, ha az ügyfél által felügyelt kulcsokat konfigurálja a Storage-fiókhoz. Az alábbi példában látható módon frissítse a Storage-fiók titkosítási beállításait az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal. Adja meg a `--encryption-key-source` paramétert, és állítsa be úgy, hogy `Microsoft.Keyvault` engedélyezze az ügyfél által felügyelt kulcsokat a fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+Ha a titkosítást az ügyfél által felügyelt kulcsokkal szeretné konfigurálni a kulcs verziójának automatikus frissítéséhez, telepítse az [Azure CLI Version 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) vagy újabb verzióját. További információ: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+Az ügyfél által felügyelt kulcs verziószámának automatikus frissítéséhez hagyja ki a kulcs verzióját, ha a Storage-fiókhoz az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást. Az alábbi példában látható módon frissítse a Storage-fiók titkosítási beállításait az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal. Adja meg a `--encryption-key-source` paramétert, és állítsa be úgy, hogy `Microsoft.Keyvault` engedélyezze az ügyfél által felügyelt kulcsokat a fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -116,7 +119,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Titkosítás konfigurálása a kulcsfontosságú verziók manuális elforgatásához
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>Titkosítási konfiguráció konfigurálása a kulcsfontosságú verziók manuális frissítéséhez
 
 Ha explicit módon meg szeretné adni a titkosításhoz használni kívánt verziót, adja meg a kulcs verziószámát, ha a titkosítást az ügyfél által felügyelt kulcsokkal konfigurálja a Storage-fiókhoz. Az alábbi példában látható módon frissítse a Storage-fiók titkosítási beállításait az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal. Adja meg a `--encryption-key-source` paramétert, és állítsa be úgy, hogy `Microsoft.Keyvault` engedélyezze az ügyfél által felügyelt kulcsokat a fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
@@ -140,7 +143,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-Amikor manuálisan elforgatja a kulcs verzióját, frissítenie kell a Storage-fiók titkosítási beállításait az új verzió használatára. Első lépésként a Key Vault URI-JÁT az [az kulcstartó show](/cli/azure/keyvault#az-keyvault-show)paranccsal hívhatja meg, és a kulcs verziószámát az az [kulcstartó Key List-Versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions)paranccsal hívja meg. Ezt követően az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára az előző példában látható módon.
+Amikor manuálisan frissíti a kulcs verzióját, frissítenie kell a Storage-fiók titkosítási beállításait az új verzió használatára. Első lépésként a Key Vault URI-JÁT az [az kulcstartó show](/cli/azure/keyvault#az-keyvault-show)paranccsal hívhatja meg, és a kulcs verziószámát az az [kulcstartó Key List-Versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions)paranccsal hívja meg. Ezt követően az az [Storage Account Update](/cli/azure/storage/account#az-storage-account-update) paranccsal frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára az előző példában látható módon.
 
 ## <a name="use-a-different-key"></a>Másik kulcs használata
 
@@ -167,7 +170,7 @@ az storage account update
     --encryption-key-source Microsoft.Storage
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md) 
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
