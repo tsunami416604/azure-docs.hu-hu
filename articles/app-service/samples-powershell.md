@@ -7,17 +7,17 @@ ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
 ms.openlocfilehash: a1577d42de9a4452467a448a0de5cd5f9575a55f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86169425"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-minták a Azure App Servicehoz
 
 Az alábbi táblázat a Azure PowerShell használatával létrehozott PowerShell-szkriptekre mutató hivatkozásokat tartalmaz.
 
-| Parancsfájl | Leírás |
+| Script | Leírás |
 |-|-|
 |**Alkalmazás létrehozása**||
 | [Alkalmazás létrehozása a GitHubról történő üzembe helyezéssel](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, amely kódot húz le a GitHubról. |

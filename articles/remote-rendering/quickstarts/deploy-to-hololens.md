@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557054"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796799"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Gyors útmutató: Unity-minta üzembe helyezése a HoloLens-ben
 
@@ -44,7 +44,7 @@ Győződjön meg arról, hogy a hitelesítő adatai megfelelően vannak mentve a
 1. Konfiguráció módosítása **kiadásra** és **ARM64**
 1. A hibakereső üzemmód átváltása **Távoli gépre**\
     ![Megoldás konfigurálása](media/unity-deploy-config.png)
-1. Megoldás létrehozása (F7)
+1. A megoldás létrehozása
 1. A "gyors útmutató" projekt esetében lépjen a *tulajdonságok > hibakeresés* elemre.
     1. Győződjön meg arról, hogy a konfigurációs *kiadás* aktív
     1. Hibakereső beállítása a **Távoli gépre** *való indításhoz*
@@ -58,7 +58,7 @@ Győződjön meg arról, hogy a hitelesítő adatai megfelelően vannak mentve a
 A minta alkalmazásnak el kell indítania, majd el kell indítania egy új munkamenetet. Egy idő után a munkamenet készen áll, és a távolról renderelt modell fog megjelenni az Ön előtt.
 Ha később szeretné elindítani a mintát, azt a HoloLens Start menüjéből is megtalálhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő rövid útmutatóban egy egyéni modell átalakítását fogjuk megtekinteni.
 

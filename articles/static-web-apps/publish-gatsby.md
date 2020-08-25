@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 192e939d21cae3b67cafe190e32e7202cd8bdb20
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 03e9f99301444032d867bc1c2f854c807380844e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429679"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797734"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Gatsby-webhely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -114,7 +114,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
    :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
-### <a name="build"></a>Build
+### <a name="build"></a>Létrehozás
 
 Ezután adja hozzá a konfigurációs beállításokat, amelyeket a létrehozási folyamat az alkalmazás létrehozásához használ.
 

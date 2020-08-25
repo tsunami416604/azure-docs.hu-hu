@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: b9e1800d07d418ff385f2c5e7af112b170e3fd44
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82780198"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
@@ -152,7 +152,7 @@ serviceContext =>
 
 Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  
 
-Ha az&lt;előző&gt;PowerShell-paranccsal létrehozott egy önaláírt tanúsítványt, vagy használja a tanúsítvány CN-t, cserélje le a "your_CN_value" kifejezést "mytestcert" értékre.
+&lt; &gt; Ha az előző PowerShell-paranccsal létrehozott egy önaláírt tanúsítványt, vagy használja a tanúsítvány CN-t, cserélje le a "your_CN_value" kifejezést "mytestcert" értékre.
 Vegye figyelembe, hogy a helyi üzembe helyezés esetén `localhost` érdemes a "CN = localhost" kifejezést használni a hitelesítési kivételek elkerülése érdekében.
 
 ```csharp
@@ -350,9 +350,9 @@ Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **Ru
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-A Megoldáskezelő válassza ki a **szavazati** alkalmazást, és állítsa be az **alkalmazás URL-címe** tulajdonságot a "https:\//localhost: 443" értékre.
+A Megoldáskezelő válassza ki a **szavazati** alkalmazást, és állítsa be az **alkalmazás URL-címe** tulajdonságot a "https: \/ /localhost: 443" értékre.
 
-Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezését követően megnyílik egy webböngésző a https:\//localhost: 443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
+Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezését követően megnyílik egy webböngésző a https: \/ /localhost: 443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
 ![Szavazóalkalmazás][image2]
 
@@ -360,7 +360,7 @@ Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatá
 
 Mielőtt telepítené az alkalmazást az Azure-ban, telepítse a tanúsítványt a `Cert:\LocalMachine\My` távoli fürtcsomópontok tárolójába.  A szolgáltatások a fürt különböző csomópontjaira léphetnek át.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
-Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm. msc alkalmazást, és navigáljon a **személyes**>**tanúsítványok**elemre.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza a **minden feladat**>**Exportálás**lehetőséget.
+Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm. msc alkalmazást, és navigáljon a **személyes** > **tanúsítványok**elemre.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza a **minden feladat** > **Exportálás**lehetőséget.
 
 ![Tanúsítvány exportálása][image4]
 
@@ -396,7 +396,7 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
-## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
+## <a name="deploy-the-application-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
 Mentsen minden fájlt, váltson Hibakeresésről Kiadásra, majd nyomja le az F6 billentyűt az újraépítéshez.  A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd válassza a **Közzététel** lehetőséget. Válassza ki az [Alkalmazás üzembe helyezése egy fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md) területen létrehozott fürt kapcsolati végpontját, vagy válasszon ki egy másik fürtöt.  Kattintson a **Közzététel** gombra az alkalmazás közzétételéhez a távoli fürtön.
 

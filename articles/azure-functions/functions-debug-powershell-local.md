@@ -1,17 +1,17 @@
 ---
 title: PowerShell-Azure Functions helyi hibakeresése
-description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell használatával.
+description: Megtudhatja, hogyan lehet hibakeresést végezni a PowerShell-függvények helyi futtatásakor.
 author: tylerleonhardt
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642231"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799366"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell-Azure Functions helyi hibakeresése
 
@@ -247,7 +247,7 @@ Ha ez a szünet történik, futtassa a `continue` vagy a `c` parancsot a Törés
 
 Ha a hibakeresés során nehézségekbe ütközik, ellenőrizze a következőket:
 
-| Jelölőnégyzet | Művelet |
+| Jelölőnégyzet | Műveletek |
 |------|------|
 | Futtatás `func --version` a terminálról. Ha olyan hibaüzenetet kap `func` , amely nem található, az alapvető eszközök (func.exe) hiányozhatnak a helyi `path` változóból.| [Telepítse újra az alapvető eszközöket](functions-run-local.md#v2).|  
 | A Visual Studio Code-ban az alapértelmezett terminálnak hozzá kell férnie func.exehoz. Győződjön meg arról, hogy nem használ olyan alapértelmezett terminált, amely nem rendelkezik telepített alapeszközökkel, például a Linux Windows alrendszerét (WSL).  | Állítsa be az alapértelmezett rendszerhéjt a Visual Studio Code-ban a PowerShell 7 (ajánlott) vagy a Windows PowerShell 5,1-es verzióra.|

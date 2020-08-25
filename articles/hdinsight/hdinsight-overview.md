@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
-ms.date: 02/27/2020
-ms.openlocfilehash: 31e8506067133304144614ff58974ee21e9680be
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.custom: contperfq1
+ms.date: 08/21/2020
+ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709232"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754871"
 ---
 # <a name="what-is-azure-hdinsight"></a>Mi az az Azure HDInsight?
 
@@ -97,7 +97,7 @@ Az Azure HDInsight olyan nyílt forráskódú keretrendszerekkel rendelkező fü
 
 A HDInsight-fürtök, például többek közt a Spark, a HBase, a Kafka, és a Hadoop, számos programozási nyelvet támogatnak. Egyes programozási nyelvek nincsenek alapértelmezés szerint telepítve. Az alapértelmezés szerint nem telepített könyvtárak, modulok vagy csomagok esetén [használjon parancsfájl-műveletet az összetevő telepítéséhez](./hdinsight-hadoop-script-actions-linux.md).
 
-|Programozási nyelv  |Információ  |
+|Programozási nyelv  |Tájékoztatás  |
 |---------|---------|
 |Alapértelmezés szerint támogatott programozási nyelvek     | Alapértelmezés szerint a HDInsight-fürtök a következőket támogatják:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Indítás</li></ul>  |
 |JVM (Java virtuális gép) nyelvek     | A Java-alapú virtuális gépeken (JVM) a Javán kívül számos más nyelv is futtatható. Előfordulhat azonban, hogy egyes nyelvek futtatásához további összetevőket is telepítenie kell a fürtön. A HDInsight-fürtök az alábbi JVM-alapú nyelveket támogatják: <ul><li>Clojure</li><li>Jython (Python a Javához)</li><li>Scala</li></ul>     |
@@ -109,7 +109,7 @@ A HDInsight fejlesztői eszközei (köztük az IntelliJ, az Eclipse, a Visual St
 
 * [IntelliJ készült Azure-eszközkészlet](./spark/apache-spark-intellij-tool-plugin.md)
 
-* [Az Eclipse-hez készült Azure-eszközkészlet](./spark/apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
 
 * [A VS Code-hoz készült Azure HDInsight-eszközök](./hdinsight-for-vscode.md)
 
@@ -132,3 +132,6 @@ A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő mo
 ## <a name="next-steps"></a>További lépések
 
 * [Apache Hadoop-fürt létrehozása a HDInsight-ben](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Apache Spark-fürt létrehozása – Portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* [Virtuális hálózat megtervezése az Azure HDInsight](hdinsight-plan-virtual-network-deployment.md)
+* [Vállalati biztonság az Azure HDInsight](./domain-joined/hdinsight-security-overview.md)

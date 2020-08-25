@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076776"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754956"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Kapcsolódás az Apache beelinhez a HDInsight-on vagy helyi telepítése
 
@@ -146,7 +146,7 @@ Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A
 
 1. Módosítsa a bashrc-fájlt. Meg kell határoznia azt az elérési utat, ahová az archívumok kicsomagolása megtörtént. Ha a [Linux Windows alrendszerét](https://docs.microsoft.com/windows/wsl/install-win10)használja, és pontosan követte a lépéseket, az elérési út az `/mnt/c/Users/user/` , ahol a a `user` Felhasználónév.
 
-    1. Nyissa meg a fájlt:`nano ~/.bashrc`
+    1. Nyissa meg a fájlt: `nano ~/.bashrc`
 
     1. Módosítsa az alábbi parancsokat a megfelelő elérési úttal, majd írja be őket a bashrc fájl végére:
 

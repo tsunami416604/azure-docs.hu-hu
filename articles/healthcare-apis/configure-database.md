@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: adc6fdf144927d10f811a00aa33f244cfdc25042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871763"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795779"
 ---
 # <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása 
 
@@ -26,14 +26,17 @@ Az átviteli sebességet úgy kell kiépíteni, hogy mindig elegendő rendszerer
 > Mivel a különböző műveletek különböző számú RU-t használnak, a válasz fejlécében szereplő összes API-hívásban felhasznált RUs tényleges számát fogjuk visszaadni. Így megtekintheti az alkalmazás által felhasznált RUs számát.
 
 ## <a name="update-throughput"></a>Frissítési sebesség
+
 Ha módosítani szeretné ezt a beállítást a Azure Portalban, lépjen a FHIR Azure API-ra, és nyissa meg az adatbázis panelt. Ezután módosítsa a kiosztott átviteli sebességet a kívánt értékre a teljesítmény igényeitől függően. Az értéket legfeljebb 10 000 RU/s értékre módosíthatja. Ha nagyobb értékre van szüksége, forduljon az Azure ügyfélszolgálatához.
+
+Ha az adatbázis átviteli sebessége nagyobb, mint 10 000 RU/s, vagy ha az adatbázisban tárolt adatok száma meghaladja az 50 GB-ot, az ügyfélalkalmazás képesnek kell lennie a folytatási tokenek kezelésére. A rendszer létrehoz egy új partíciót az adatbázisban minden 10 000 RU/s érték növeléséhez, vagy ha a tárolt adatok mennyisége meghaladja az 50 GB-ot. Több partíció létrehoz egy többoldalas választ, amelyben a tördelés a folytatási jogkivonatok használatával valósul meg.
 
 > [!NOTE] 
 > A magasabb érték azt jelenti, hogy magasabb szintű Azure API-t biztosít a FHIR átviteli sebességhez és a szolgáltatás magasabb díjszabásához.
 
 ![Konfiguráció Cosmos DB](media/database/database-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan frissítheti a FHIR készült Azure API-t. Ezután telepítsen egy teljes körűen felügyelt Azure API-t a FHIR-hez:
  

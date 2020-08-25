@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8b6ed41333a0ea113d939ab79bd9e9291a0dae9c
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ca1419fe95e9ca383c09c7bc33a16ce148549cb6
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244023"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755075"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -55,7 +55,11 @@ Hozzon létre egy ML-folyamat futtatásához szükséges erőforrásokat:
 
 * Állítson be egy adattárolót, amely a folyamat lépéseiben szükséges információ elérésére szolgál.
 
-* Konfiguráljon egy `Dataset` objektumot úgy, hogy olyan állandó adatértékre mutasson, amely egy adattárban él vagy elérhető. Konfiguráljon egy `PipelineData` objektumot a folyamat lépései között átadott ideiglenes adatmennyiséghez. 
+* Konfiguráljon egy `Dataset` objektumot úgy, hogy olyan állandó adatértékre mutasson, amely egy adattárban él vagy elérhető. Konfiguráljon egy `OutputFileDatasetConfig` objektumot a folyamat lépései között átadott ideiglenes adatmennyiségek vagy a kimenetek létrehozásához. 
+> [!NOTE]
+>Az `OutputFileDatasetConfig` osztály egy kísérleti előzetes funkció, amely bármikor változhat.
+>
+>További információ: https://aka.ms/azuremlexperimental.
 
 * Állítsa be azokat a [számítási célokat](concept-azure-machine-learning-architecture.md#compute-targets) , amelyeken a folyamat lépései futni fognak.
 
@@ -90,7 +94,7 @@ Egy folyamat egy vagy több lépésből áll. A lépés egy számítási célra 
 
 Ha többet szeretne megtudni a folyamat adataihoz való csatlakoztatásáról, tekintse meg a cikkek [elérését](how-to-access-data.md) és az [adatkészletek regisztrálását](how-to-create-register-datasets.md)ismertető cikket. 
 
-### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>Az adatkészletek `Dataset` és az `PipelineData` objektumok konfigurálása
+### <a name="configure-data-with-dataset-and-outputfiledatasetconfig-objects"></a>Az és az `Dataset` `OutputFileDatasetConfig` objektumok konfigurálása
 
 Az imént létrehozott egy olyan adatforrást, amely egy adott lépés bemenetének megfelelően hivatkozhat egy folyamatra. Az adatfolyamatok adatátvitelének előnyben részesített módja egy [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) -objektum. Az `Dataset` objektum olyan adatokra mutat, amelyek vagy egy adattárból vagy egy webes URL-címről érhetők el. Az `Dataset` osztály absztrakt, ezért létre kell hoznia egy `FileDataset` (egy vagy több fájlra hivatkozó) vagy egy olyan példányát, amelyet egy `TabularDataset` vagy több, tagolt oszlopokkal rendelkező fájlból hozott létre.
 
@@ -104,18 +108,17 @@ from azureml.core import Dataset
 iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/iris.csv')])
 ```
 
-A közbenső adatokat (vagy egy lépés kimenetét) egy [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektum képviseli. `output_data1` egy lépés kimenete jön létre, és egy vagy több jövőbeli lépés bemenetéhez használható. `PipelineData` bevezet egy, a lépések közötti függőséget, és egy implicit végrehajtási sorrendet hoz létre a folyamatban. Ezt az objektumot később a folyamat lépéseinek létrehozásakor fogjuk használni.
+A közbenső adatokat (vagy egy lépés kimenetét) egy [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) objektum jelképezi. `output_data1` egy lépés kimenete jön létre, és egy vagy több jövőbeli lépés bemenetéhez használható. `OutputFileDatasetConfig` bevezet egy, a lépések közötti függőséget, és egy implicit végrehajtási sorrendet hoz létre a folyamatban. Ezt az objektumot később a folyamat lépéseinek létrehozásakor fogjuk használni.
+
+`OutputFileDatasetConfig` az objektumok egy könyvtárat adnak vissza, és alapértelmezés szerint a munkaterülethez tartozó alapértelmezett adattárba írja a kimenetet.
 
 ```python
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
-output_data1 = PipelineData(
-    "output_data1",
-    datastore=def_blob_store,
-    output_name="output_data1")
+output_data1 = OutputFileDatasetConfig()
 ```
 
-Az adatkészletek és a folyamat adatainak kezeléséhez további részletek és mintakód az [adatok átvitele a következőbe: ml folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md).
+Az adatkészletek és a OutputFileConfig-objektumok használatához további részletek és mintakód az [adatok átvitele a következőbe: ml folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md).
 
 ## <a name="set-up-a-compute-target"></a>Számítási cél beállítása
 
@@ -316,8 +319,6 @@ data_prep_step = PythonScriptStep(
     script_name=entry_point,
     source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
-    inputs=[ds_input],
-    outputs=[output_data1],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
@@ -326,7 +327,7 @@ data_prep_step = PythonScriptStep(
 
 A fenti kód egy tipikus kezdeti folyamat lépését jeleníti meg. Az adatelőkészítési kód egy alkönyvtárban található (ebben a példában `"prepare.py"` a címtárban `"./dataprep.src"` ). A folyamat-létrehozási folyamat részeként a rendszer kicsomagolja és feltölti a könyvtárat, `compute_target` és a lépés futtatja a paraméterként megadott parancsfájlt `script_name` .
 
-A `arguments` , `inputs` és `outputs` értékek adja meg a lépés bemeneteit és kimeneteit. A fenti példában az alapértékek az `my_dataset` adatkészlet. A rendszer letölti a megfelelő adatokkal a számítási erőforrást, mivel a kód azt adja meg `as_download()` . A szkript `prepare.py` minden olyan Adatátalakítási feladatot megtesz, amely megfelel a feladatnak, és a következő típusú adatokat adja eredményül: `output_data1` `PipelineData` . További információkért lásd: [adatok áthelyezése a következőre és a között: ml-folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md). 
+Az `arguments` értékek határozzák meg a lépés bemeneteit és kimeneteit. A fenti példában az alapértékek az `my_dataset` adatkészlet. A rendszer letölti a megfelelő adatokkal a számítási erőforrást, mivel a kód azt adja meg `as_download()` . A szkript `prepare.py` minden olyan Adatátalakítási feladatot megtesz, amely megfelel a feladatnak, és a következő típusú adatokat adja eredményül: `output_data1` `OutputFileDatasetConfig` . További információkért lásd: [adatok áthelyezése a következőre és a között: ml-folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md). 
 
 A lépés a által definiált gépen fog futni a `compute_target` konfiguráció használatával `aml_run_config` . 
 
@@ -338,24 +339,20 @@ Egyetlen lépéssel létrehozhat egy folyamatot, de szinte mindig választhatja 
 train_source_dir = "./train_src"
 train_entry_point = "train.py"
 
-training_results = PipelineData(
-    "training_results",
-    datastore=def_blob_store,
-    output_name="training_results")
+training_results = OutputFileDatasetConfig(name = "training_results",
+                                           destination = def_blob_store)
 
 train_step = PythonScriptStep(
     script_name=train_entry_point,
     source_directory=train_source_dir,
     arguments=["--prepped_data", output_data1, "--training_results", training_results],
-    inputs=[output_data1],
-    outputs=[training_results],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
 )
 ```
 
-A fenti kód nagyon hasonlít az adatelőkészítési lépéshez. A betanítási kód egy olyan címtárban található, amely az adatok előkészítési kódjától eltér. Az `PipelineData` adat-előkészítési lépés kimenete a `output_data1` betanítási lépés _bemenete_ lesz. Egy új `PipelineData` objektum `training_results` jön létre, amely egy későbbi összehasonlító vagy központi telepítési lépés eredményét fogja tárolni. 
+A fenti kód nagyon hasonlít az adatelőkészítési lépéshez. A betanítási kód egy olyan címtárban található, amely az adatok előkészítési kódjától eltér. Az `OutputFileDatasetConfig` adat-előkészítési lépés kimenete a `output_data1` betanítási lépés _bemenete_ lesz. Egy új `OutputFileDatasetConfig` objektum `training_results` jön létre, amely egy későbbi összehasonlító vagy központi telepítési lépés eredményét fogja tárolni. 
 
 A lépések meghatározása után a folyamatokat a fenti lépések némelyikével vagy mindegyikével kell felépíteni.
 
@@ -397,10 +394,10 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata 
 
-Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py), [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py). 
+Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py), [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py). 
 
 > [!IMPORTANT]
-> A kimeneti adatokat csak az Azure Blob és az Azure file share adattárolók esetében támogatja a PipelineData-t használó adattárba való visszaírás. Ez a funkció jelenleg nem támogatott a [2. generációs ADLS](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) -adattárolók esetében.
+> A kimeneti adatokat egy adattár használatával való visszaírás `OutputFileDatasetConfig` csak az Azure Blob, az Azure file share, a ADLS Gen 1 és a ADLS Gen 2 adattárolók esetében támogatott.
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -454,7 +451,7 @@ A folyamat első futtatásakor Azure Machine Learning:
 * Letölti a projekt pillanatképét a számítási célra a munkaterülethez társított blob Storage-ból.
 * Létrehoz egy Docker-rendszerképet a folyamat egyes lépéseinek megfelelően.
 * Letölti az egyes lépésekhez tartozó Docker-rendszerképet a számítási célra a tároló-beállításjegyzékből.
-* A és az objektumok elérését konfigurálja `Dataset` `PipelineData` . A as `as_mount()` hozzáférési mód használata esetén a rendszer biztosítékot biztosít a virtuális hozzáférés biztosításához. Ha a csatlakoztatás nem támogatott, vagy ha a felhasználó a hozzáférési jogosultságot adja `as_download()` meg, az adatok a számítási célra lesznek másolva.
+* A és az objektumok elérését konfigurálja `Dataset` `OutputFileDatasetConfig` . `as_mount()`Hozzáférési mód esetén a rendszer a biztosítékot használja a virtuális hozzáférés biztosításához. Ha a csatlakoztatás nem támogatott, vagy ha a felhasználó a hozzáférési jogosultságot adja `as_upload()` meg, az adatok a számítási célra lesznek másolva.
 * Futtatja a lépést a lépés definíciójában megadott számítási célként. 
 * Olyan összetevőket hoz létre, mint például a naplók, az stdout és az stderr, a metrikák és a lépés által megadott kimenet. Ezeket az összetevőket a rendszer feltölti és megőrzi a felhasználó alapértelmezett adattárában.
 

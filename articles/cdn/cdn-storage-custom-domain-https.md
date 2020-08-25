@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81259884"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Oktatóanyag – Tárolóblobok elérése egyéni Azure CDN-tartomány használatával HTTPS-en keresztül
@@ -59,7 +59,7 @@ Ha a blobokat az Azure CDN-en keresztül éri el, akkor a [Blob Storage díjszab
 
 Ha például rendelkezik egy Storage-fiókkal az Egyesült Államokban, amelyhez az Azure CDN-en keresztül fér hozzá, és valaki Európából az Azure CDN-en keresztül megkísérli az ott található blobok egyikéhez való hozzáférést, az Azure CDN először megkeresi az Európához legközelebb eső POP-kiszolgálót a blob számára. Ha megtalálta, az Azure CDN hozzáfér a blob másolatához, és a CDN díjszabását használja, mert a hozzáférés az Azure CDN-en történik. Ha nem talál ilyet, az Azure CDN átmásolja a blobot a POP-kiszolgálóra, amely a Blob Storage díjszabásában megadott kimenő forgalmi és tranzakciós díjakat vonja maga után, majd a POP-kiszolgálón hozzáfér a fájlhoz, amelyre már az Azure CDN díjszabása vonatkozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Oktatóanyag: Azure CDN gyorsítótárazási szabályainak beállítása](cdn-caching-rules-tutorial.md)
 
 

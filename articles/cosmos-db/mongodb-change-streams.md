@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036708"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798890"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 
@@ -21,26 +21,6 @@ A Azure Cosmos DB API-MongoDB való [adatcsatorna](change-feed.md) -támogatás 
 
 > [!NOTE]
 > Az adatfolyamok módosításának használatához hozza létre a fiókot a Azure Cosmos DB API-MongoDB vagy egy újabb verziójának 3,6-es verziójával. Ha az adatfolyam módosítása példát egy korábbi verzióra futtatja, akkor előfordulhat, hogy a hibaüzenet jelenik meg `Unrecognized pipeline stage name: $changeStream` .
-
-## <a name="current-limitations"></a>Aktuális korlátozások
-
-A Change streamek használatakor a következő korlátozások érvényesek:
-
-* A `operationType` és a `updateDescription` Tulajdonságok még nem támogatottak a kimeneti dokumentumban.
-* A `insert` , a `update` és az `replace` Operations típusok jelenleg támogatottak. 
-* A törlési művelet vagy más esemény még nem támogatott.
-
-A korlátozások miatt a $match szakasz, a $project szakasz és a fullDocument lehetőségek szükségesek, ahogy az előző példákban is látható.
-
-A Azure Cosmos DB SQL API-ban megjelenő változási csatornától eltérően a változási adatfolyamok nem használhatók fel külön [módosítási adatcsatornára](change-feed-processor.md) , vagy a bérletek tárolóra van szükségük. Jelenleg nem támogatott a [Azure functions eseményindítók](change-feed-functions.md) feldolgozása a változási adatfolyamok feldolgozásához.
-
-## <a name="error-handling"></a>Hibakezelés
-
-A Change streamek használatakor a következő hibakódok és üzenetek támogatottak:
-
-* **Http-hibakód 16500** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
-
-* **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a hiba helyett, `operationType Invalidate` a `NamespaceNotFound` rendszer a hibát adja vissza.
 
 ## <a name="examples"></a>Példák
 
@@ -156,19 +136,21 @@ var cursor = db.coll.watch(
 A Change streamek használatakor a következő korlátozások érvényesek:
 
 * A `operationType` és a `updateDescription` Tulajdonságok még nem támogatottak a kimeneti dokumentumban.
-* A `insert` , a `update` és az `replace` Operations típusok jelenleg támogatottak. A törlési művelet vagy más esemény még nem támogatott.
+* A `insert` , a `update` és az `replace` Operations típusok jelenleg támogatottak. A törlési művelet vagy más események azonban még nem támogatottak.
 
 A korlátozások miatt a $match szakasz, a $project szakasz és a fullDocument lehetőségek szükségesek, ahogy az előző példákban is látható.
+
+A Azure Cosmos DB SQL API-ban megjelenő változási csatornától eltérően a változási adatfolyamok nem használhatók fel külön [módosítási adatcsatornára](change-feed-processor.md) , vagy a bérletek tárolóra van szükségük. Jelenleg nem támogatott a [Azure functions eseményindítók](change-feed-functions.md) feldolgozása a változási adatfolyamok feldolgozásához.
 
 ## <a name="error-handling"></a>Hibakezelés
 
 A Change streamek használatakor a következő hibakódok és üzenetek támogatottak:
 
-* **Http-hibakód 429** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
+* **Http-hibakód 16500** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
 
 * **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a hiba helyett, `operationType Invalidate` a `NamespaceNotFound` rendszer a hibát adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A MongoDB Azure Cosmos DB API-ban való használatának ideje az élettartam lejáratára](mongodb-time-to-live.md)
 * [Indexelés Azure Cosmos DB API-MongoDB](mongodb-indexing.md)

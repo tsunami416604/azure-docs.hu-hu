@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718696"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796935"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -246,7 +246,7 @@ Ha több lemezzel rendelkező virtuális géppel rendelkezik, akkor ez a hiba ak
 
 ### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Hibaüzenet: belső hiba történt. [Pillanatkép előállítása felfüggesztve]
 
-Ez a probléma akkor fordul elő, ha a pillanatkép-létrehozás lefagyott. Ha ez a probléma bekövetkezik, a pillanatkép létrehozása feladat leáll a 95%-os vagy a 99%-nál. A probléma megoldása érdekében tekintse meg ezt a [VMware kb-ot](https://go.microsoft.com/fwlink/?linkid=2138969) .
+Ez a probléma akkor fordul elő, ha a pillanatkép-létrehozás nem válaszol. Ha ez a probléma bekövetkezik, a pillanatkép létrehozása feladat leáll a 95%-os vagy a 99%-nál. A probléma megoldása érdekében tekintse meg ezt a [VMware kb-ot](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
 ### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_]
 

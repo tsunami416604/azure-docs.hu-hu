@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266253"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795983"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Hol található a további ellenőrzési oldal?
 
@@ -33,7 +33,7 @@ A kétfaktoros ellenőrzés biztonságosabb, mint a jelszó, mivel a hitelesít�
 A kétfaktoros ellenőrzés segít megakadályozni, hogy a rosszindulatú hackerek az Ön számára is kiálljanak. Akkor is, ha a jelszavuk is van, az az esélye, hogy nem rendelkezik az eszközzel.
 
 >[!Important]
->Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók kétfaktoros ellenőrzésének bekapcsolásával kapcsolatos információkat keres, tekintse meg a [Azure Active Directory hitelesítési dokumentációját](https://docs.microsoft.com/azure/active-directory/authentication/). Ez a cikk arra szolgál, hogy a felhasználók a kéttényezős ellenőrzést használják munkahelyi vagy iskolai fiókkal (például alain@contoso.com ).
+>Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók kétfaktoros ellenőrzésének bekapcsolásával kapcsolatos információkat keres, tekintse meg a [Azure Active Directory hitelesítési dokumentációját](../authentication/index.yml). Ez a cikk arra szolgál, hogy a felhasználók a kéttényezős ellenőrzést használják munkahelyi vagy iskolai fiókkal (például alain@contoso.com ).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Ki dönti el, hogy használja-e ezt a funkciót?
 
@@ -60,13 +60,13 @@ Miután a szervezet bekapcsolta a kétfaktoros ellenőrzést, minden bejelentkez
 
 2. A **további biztonsági ellenőrzés** lapon válassza ki a kétfaktoros ellenőrzési módszert, amelyet annak ellenőrzésére használ, hogy a felhasználó a munkahelyi vagy iskolai fiókjába jelentkezik be. Az alábbiak közül választhat:
 
-    | Kapcsolatfelvételi mód | Leírás |
+    | Kapcsolatfelvételi mód | Description |
     | --- | --- |
     | Mobilalkalmazás | <ul><li>**Értesítések fogadása az ellenőrzéshez.** Ez a beállítás egy értesítést küld az okostelefonján vagy a táblaszámítógépen lévő hitelesítő alkalmazásnak. Tekintse meg az értesítést, és ha az megbízható, válassza a **hitelesítés** lehetőséget az alkalmazásban. Előfordulhat, hogy a munkahelye vagy iskolája megköveteli, hogy a hitelesítés előtt PIN-kódot adjon meg.</li><li>**Ellenőrző kód használata.** Ebben a módban az alkalmazás egy 30 másodpercenként frissülő ellenőrző kódot hoz létre. Adja meg a jelenlegi ellenőrző kódot a bejelentkezési képernyőn.<br>Az Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594) és [iOS](https://go.microsoft.com/fwlink/?linkid=866594)rendszerhez érhető el.</li></ul> |
     | Hitelesítő telefon | <ul><li>A **telefonhívás** egy automatikus hanghívást helyez el az Ön által megadott telefonszámra. Válaszolja meg a hívást, majd a hitelesítéshez nyomja meg a telefon billentyűzetén a font (#) gombot.</li><li>A **szöveges üzenet** egy ellenőrző kódot tartalmazó szöveges üzenetet ér véget. A szövegben szereplő Rákérdezés után válaszoljon a szöveges üzenetre, vagy adja meg a bejelentkezési felületen megadott ellenőrző kódot.</li></ul> |
     | Munkahelyi telefon | Elhelyez egy automatikus hanghívást az Ön által megadott telefonszámon. Válaszolja meg a hívást, majd a hitelesítéshez nyomja meg a telefon billentyűzetén a font (#) gombot. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután kiválasztott egy kétfaktoros ellenőrzési módszert a **további biztonsági ellenőrzés** oldalon, be kell állítania a következőket:
 

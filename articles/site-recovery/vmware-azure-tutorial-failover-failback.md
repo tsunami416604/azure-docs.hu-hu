@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86132006"
 ---
 # <a name="fail-over--vmware-vms"></a>Feladatátvétel VMware virtuális gépeken
@@ -65,7 +65,7 @@ A tulajdonságok ellenőrzése a következőképpen történik:
 ## <a name="run-a-failover-to-azure"></a>Feladatátvétel futtatása az Azure-ban
 
 1. A **Beállítások**  >  **replikált elemek**területen válassza ki azt a virtuális gépet, amelyen át szeretné adni a **feladatátvételt**, majd válassza a feladatátvétel lehetőséget.
-2. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyhez át szeretné adni a **feladatátvételt**. Az alábbi lehetőségek egyikét használhatja:
+2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
    * **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. Ez a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvételt követően létrehozott Azure virtuális gép minden olyan adattal rendelkezik, amelyet a feladatátvétel elindításakor Site Recovery replikált a rendszer.
    * **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gépet a site Recovery által feldolgozott legutóbbi helyreállítási pontra nem tudja átvenni. Ez a beállítás alacsony RTO (helyreállítási idő célkitűzés) biztosít, mivel a feldolgozatlan adatmennyiségek feldolgozása nem történik meg.
    * Az **alkalmazás legújabb konzisztens**beállítása: Ez a beállítás a virtuális gép feladatátvételét a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre.

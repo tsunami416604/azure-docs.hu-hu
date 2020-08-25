@@ -3,22 +3,23 @@ title: Keresési tevékenység a Azure Data Factory
 description: Ismerje meg, hogyan kereshet meg egy külső forrásból származó értéket a keresési tevékenység használatával. Ezt a kimenetet a sikeres tevékenységek továbbra is hivatkozhatják.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: linda33wj
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417999"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795881"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A keresési tevékenység lekérheti az adatkészletet a Azure Data Factory által támogatott adatforrásokból. A következő esetekben használja:
@@ -36,29 +37,28 @@ A keresési tevékenység a következő adatforrásokat támogatja. A keresési 
 
 ```json
 {
-    "name": "LookupActivity",
-    "type": "Lookup",
-    "typeProperties": {
-        "source": {
-            "type": "<source type>"
-            <additional source specific properties (optional)>
+    "name":"LookupActivity",
+    "type":"Lookup",
+    "typeProperties":{
+        "source":{
+            "type":"<source type>"
         },
-        "dataset": { 
-            "referenceName": "<source dataset name>",
-            "type": "DatasetReference"
+        "dataset":{
+            "referenceName":"<source dataset name>",
+            "type":"DatasetReference"
         },
-        "firstRowOnly": false
+        "firstRowOnly":<true or false>
     }
 }
 ```
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Name | Leírás | Típus | Kötelező?
+Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
-source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
-firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
+adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
+source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
+firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai érték | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
 > 
@@ -66,23 +66,24 @@ firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja
 > * A **struktúra** nem támogatott az adatkészlet-definíciókban. Szöveges formátumú fájlok esetében a fejlécsor használatával adja meg az oszlop nevét.
 > * Ha a keresési forrás egy JSON-fájl, a `jsonPathDefinition` JSON-objektum átformálásának beállítása nem támogatott. A rendszer lekéri a teljes objektumot.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>A keresési tevékenység eredményének használata egy későbbi tevékenységben
+## <a name="use-the-lookup-activity-result"></a>Keresési tevékenység eredményének használata
 
 A keresési eredmény a `output` tevékenység futtatási eredményének szakaszában lesz visszaadva.
 
-* **Ha a `firstRowOnly` értéke `true` (alapértelmezett)**, a kimeneti formátum a következő kódban látható. A keresési eredmény egy rögzített kulcs alatt található `firstRow` . Ha a következő tevékenység eredményét szeretné használni, használja a mintázatát `@{activity('MyLookupActivity').output.firstRow.TableName}` .
+* **Ha a `firstRowOnly` értéke `true` (alapértelmezett)**, a kimeneti formátum a következő kódban látható. A keresési eredmény egy rögzített kulcs alatt található `firstRow` . Ha a következő tevékenység eredményét szeretné használni, használja a mintázatát  `@{activity('LookupActivity').output.firstRow.table` .
 
     ```json
     {
         "firstRow":
         {
             "Id": "1",
-            "TableName" : "Table1"
+            "schema":"dbo",
+            "table":"Table1"
         }
     }
     ```
 
-* Ha a értéke, a kimeneti formátum a következő kódban látható. ** `firstRowOnly` `false` ** Egy `count` mező jelzi, hogy a rendszer hány rekordot ad vissza. A részletes értékek egy rögzített tömb alatt jelennek meg `value` . Ilyen esetben a keresési tevékenységet egy [foreach-tevékenység](control-flow-for-each-activity.md)követi. A `value` tömböt a foreach tevékenység mezőjébe kell átadni `items` a mintázatának használatával `@activity('MyLookupActivity').output.value` . A tömb elemeinek eléréséhez `value` használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Például: `@{activity('lookupActivity').output.value[0].tablename}`.
+* Ha a értéke, a kimeneti formátum a következő kódban látható. ** `firstRowOnly` `false` ** Egy `count` mező jelzi, hogy a rendszer hány rekordot ad vissza. A részletes értékek egy rögzített tömb alatt jelennek meg `value` . Ilyen esetben a keresési tevékenységet egy [foreach-tevékenység](control-flow-for-each-activity.md)követi. A `value` tömböt a foreach tevékenység mezőjébe kell átadni `items` a mintázatának használatával `@activity('MyLookupActivity').output.value` . A tömb elemeinek eléréséhez `value` használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Például: `@{activity('lookupActivity').output.value[0].schema}`.
 
     ```json
     {
@@ -90,23 +91,26 @@ A keresési eredmény a `output` tevékenység futtatási eredményének szakasz
         "value": [
             {
                 "Id": "1",
-                "TableName" : "Table1"
+                "schema":"dbo",
+                "table":"Table1"
             },
             {
                 "Id": "2",
-                "TableName" : "Table2"
+                "schema":"dbo",
+                "table":"Table2"
             }
         ]
     } 
     ```
 
-### <a name="copy-activity-example"></a>Példa másolási tevékenységre
-Ebben a példában a másolási tevékenység az Azure SQL Database-példányban található SQL-táblából másolja át az adatait az Azure Blob Storage-ba. Az SQL-tábla neve egy JSON-fájlban tárolódik a blob Storage-ban. A keresési tevékenység futásidőben megkeresi a tábla nevét. A JSON dinamikusan módosul a módszer használatával. Nem kell újratelepítenie a folyamatokat vagy adatkészleteket. 
+## <a name="example"></a>Példa
+
+Ebben a példában a folyamat két tevékenységet tartalmaz: **Keresés** és **Másolás**. A másolási tevékenység az Azure SQL Database-példányban található SQL-táblából másolja az Azure Blob Storage-ba. Az SQL-tábla neve egy JSON-fájlban tárolódik a blob Storage-ban. A keresési tevékenység futásidőben megkeresi a tábla nevét. A JSON dinamikusan módosul a módszer használatával. Nem kell újratelepítenie a folyamatokat vagy adatkészleteket. 
 
 Ez a példa csak az első sor keresését mutatja be. Az összes sorhoz való kereséshez, valamint az eredmények ForEach-tevékenységgel való láncolásához tekintse meg a [több táblázat másolása tömegesen a Azure Data Factory használatával](tutorial-bulk-copy.md)című témakör mintáit.
 
+
 ### <a name="pipeline"></a>Folyamat
-Ez a folyamat két tevékenységet tartalmaz: keresés és másolás. 
 
 - A keresési tevékenység a **LookupDataset**használatára van konfigurálva, amely az Azure Blob Storage-ban található helyre hivatkozik. A keresési tevékenység beolvassa az SQL-táblázat nevét egy olyan JSON-fájlból, amely ezen a helyen található. 
 - A másolási tevékenység a keresési tevékenység kimenetét használja, amely az SQL-tábla neve. A **SourceDataset** **Táblanév** tulajdonsága a keresési tevékenység kimenetének használatára van konfigurálva. A másolási tevékenység az SQL-táblából másolja az adatait az Azure Blob Storage egyik helyére. A helyet a **SinkDataset** tulajdonság határozza meg. 
@@ -119,161 +123,241 @@ Ez a folyamat két tevékenységet tartalmaz: keresés és másolás.
             {
                 "name": "LookupActivity",
                 "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource"
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
                     },
-                    "dataset": { 
-                        "referenceName": "LookupDataset", 
-                        "type": "DatasetReference" 
-                    }
+                    "dataset": {
+                        "referenceName": "LookupDataset",
+                        "type": "DatasetReference"
+                    },
+                    "firstRowOnly": true
                 }
             },
             {
                 "name": "CopyActivity",
                 "type": "Copy",
-                "typeProperties": {
-                    "source": { 
-                        "type": "SqlSource", 
-                        "sqlReaderQuery": "select * from @{activity('LookupActivity').output.firstRow.tableName}" 
-                    },
-                    "sink": { 
-                        "type": "BlobSink" 
+                "dependsOn": [
+                    {
+                        "activity": "LookupActivity",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
                     }
-                },                
-                "dependsOn": [ 
-                    { 
-                        "activity": "LookupActivity", 
-                        "dependencyConditions": [ "Succeeded" ] 
-                    }
-                 ],
-                "inputs": [ 
-                    { 
-                        "referenceName": "SourceDataset", 
-                        "type": "DatasetReference" 
-                    } 
                 ],
-                "outputs": [ 
-                    { 
-                        "referenceName": "SinkDataset", 
-                        "type": "DatasetReference" 
-                    } 
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": {
+                            "value": "select * from [@{activity('LookupActivity').output.firstRow.schema}].[@{activity('LookupActivity').output.firstRow.table}]",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SourceDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schemaName": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "tableName": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "SinkDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schema": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "table": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
                 ]
             }
-        ]
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-08-17T10:48:25Z"
     }
 }
 ```
 
 ### <a name="lookup-dataset"></a>Keresési adatkészlet
-A **keresési** adatkészlet a **AzureStorageLinkedService** típus által megadott Azure Storage keresési mappában található fájl **sourcetable.js** . 
+
+A **keresési** adatkészlet a **AzureBlobStorageLinkedService** típus által megadott Azure Storage keresési mappában található fájl **sourcetable.js** . 
 
 ```json
 {
     "name": "LookupDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "lookup",
-            "fileName": "sourcetable.json",
-            "format": {
-                "type": "JsonFormat",
-                "filePattern": "SetOfObjects"
-            }
-        },
         "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
+            "referenceName": "AzureBlobStorageLinkedService",
             "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "sourcetable.json",
+                "container": "lookup"
+            }
         }
     }
 }
 ```
 
 ### <a name="source-dataset-for-copy-activity"></a>Másolási tevékenység **forrás** -adatkészlete
+
 A **forrás** -adatkészlet a keresési tevékenység kimenetét használja, amely az SQL-tábla neve. A másolási tevékenység az adott SQL-táblából másolja át az adatait az Azure Blob Storage egyik helyére. **A helyet a fogadó adatkészlet adja** meg. 
 
 ```json
 {
     "name": "SourceDataset",
     "properties": {
-        "type": "AzureSqlTable",
-        "typeProperties":{
-            "tableName": "@{activity('LookupActivity').output.firstRow.tableName}"
-        },
         "linkedServiceName": {
-            "referenceName": "AzureSqlLinkedService",
+            "referenceName": "AzureSqlDatabase",
             "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schemaName": {
+                "type": "string"
+            },
+            "tableName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": {
+                "value": "@dataset().schemaName",
+                "type": "Expression"
+            },
+            "table": {
+                "value": "@dataset().tableName",
+                "type": "Expression"
+            }
         }
     }
 }
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>Másolási tevékenység fogadó **adatkészlete**
-A másolási tevékenység átmásolja az adatait az SQL-táblából az Azure Storage **CSV** -mappájában lévő **filebylookup.csv** fájlba. A fájlt a **AzureStorageLinkedService** tulajdonság határozza meg. 
+
+A másolási tevékenység átmásolja az adatait az SQL-táblából az Azure Storage **CSV** -mappájában lévő **filebylookup.csv** fájlba. A fájlt a **AzureBlobStorageLinkedService** tulajdonság határozza meg. 
 
 ```json
 {
     "name": "SinkDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "csv",
-            "fileName": "filebylookup.csv",
-            "format": {
-                "type": "TextFormat"                                                                    
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schema": {
+                "type": "string"
+            },
+            "table": {
+                "type": "string"
             }
         },
-        "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
-            "type": "LinkedServiceReference"
-        }
-    }
-}
-```
-
-### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Ez a Storage-fiók tartalmazza az SQL-táblák nevét tartalmazó JSON-fájlt. 
-
-```json
-{
-    "properties": {
-        "type": "AzureStorage",
+        "annotations": [],
+        "type": "DelimitedText",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
-        }
-    },
-        "name": "AzureStorageLinkedService"
-}
-```
-
-### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
-Ez a Azure SQL Database-példány tartalmazza a blob Storage-ba másolandó adatfájlokat. 
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
-        }
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@{dataset().schema}_@{dataset().table}.csv",
+                    "type": "Expression"
+                },
+                "container": "csv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": []
     }
 }
 ```
 
 ### <a name="sourcetablejson"></a>sourcetable.jsbekapcsolva
 
+A következő két típusú formátumot használhatja a **sourcetable.js** fájlhoz:.
+
 #### <a name="set-of-objects"></a>Objektumok halmaza
 
 ```json
 {
-  "Id": "1",
-  "tableName": "Table1"
+   "Id":"1",
+   "schema":"dbo",
+   "table":"Table1"
 }
 {
-   "Id": "2",
-  "tableName": "Table2"
+   "Id":"2",
+   "schema":"dbo",
+   "table":"Table2"
 }
 ```
 
@@ -283,11 +367,13 @@ Ez a Azure SQL Database-példány tartalmazza a blob Storage-ba másolandó adat
 [ 
     {
         "Id": "1",
-        "tableName": "Table1"
+        "schema":"dbo",
+        "table":"Table1"
     },
     {
         "Id": "2",
-        "tableName": "Table2"
+        "schema":"dbo",
+        "table":"Table2"
     }
 ]
 ```
@@ -301,7 +387,7 @@ Ez a Azure SQL Database-példány tartalmazza a blob Storage-ba másolandó adat
 | A keresési tevékenység legfeljebb 5 000 sort tartalmaz, és legfeljebb 2 MB méretű. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat egy belső folyamaton keresztül történik, amely nem haladja meg a maximálisan megengedett sorokat vagy méretet. |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

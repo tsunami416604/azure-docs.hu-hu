@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206413"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763660"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL?
 
@@ -37,6 +37,9 @@ Ez a Azure Database for MySQL cikk a teljesítménygel, a méretezhetőséggel �
 Több Azure CLI-mintát talál itt:
 
 - [Azure CLI-példák az Azure Database for MySQL-hez](sample-scripts-azure-cli.md)
+
+## <a name="automated-patching"></a>Automatikus javítás
+A szolgáltatás a mögöttes hardver, az operációs rendszer és az adatbázis motorjának automatizált javítását végzi. A javítás a mögöttes hardver, az operációs rendszer és az adatbázismotor biztonsági és szoftverfrissítési szolgáltatásait is tartalmazza. A MySQL-motor esetében az alverziók frissítése automatikusan megtörténik, és a javítási kiadás részeként szerepel. Ha a Közösség alverziót bocsát ki, az automatikusan integrálva lesz a szolgáltatás tesztelési ciklusának részeként. Az alverzió tesztelése a MySQL-hez készült kanonikus számítási feladatokon történik. A MySQL-motor alverzióit a rendszer kiértékeli a megbízhatóság (összeomlás nélkül), a rendelkezésre állás, a biztonság és a teljesítmény szempontjából. A szolgáltatás nem minden alverziót bocsát ki éles környezetben, de a hibajavítások és az új növekményes értékek kritikus evaluted alapul. Ezzel a megfelelő egyensúlyt kell megteremteni az új növekményes érték és a stabilitási rendszer változóinak minimalizálása között. Nincs szükség felhasználói műveletre vagy konfigurációs beállításra a javításhoz. A javítási gyakoriság a szolgáltatás által felügyelt, az adattartalom kritikus jellemzői alapján. Általánosságban elmondható, hogy a szolgáltatás a folyamatos integráció és a kiadás részeként havi kiadási ütemtervet követ. A felhasználók előfizethetnek a [tervezett karbantartási értesítésre](concepts-monitoring.md) , hogy értesítést kapjanak a közelgő karbantartási 72 órával az esemény előtt.
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
 A Azure Database for MySQL szolgáltatás számos szolgáltatási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részletekért tekintse meg a [díjszabási szintet](concepts-service-tiers.md) .

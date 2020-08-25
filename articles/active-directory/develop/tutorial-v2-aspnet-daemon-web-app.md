@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83641109"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: a Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.
 
-Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs` . A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. `SyncController.cs`egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
+Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs` . A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. `SyncController.cs` egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
 
 >[!NOTE]
 > Ha most ismerkedik a Microsoft Identity platformmal, javasoljuk, hogy kezdje a [.net Core Daemon](quickstart-v2-netcore-daemon.md)gyors üzembe helyezésével.
@@ -63,7 +63,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Vagy [töltse le a mintát egy zip-fájlba](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 Ez a minta egy projekttel rendelkezik. Az alkalmazás Azure AD-Bérlővel való regisztrálásához az alábbiakat teheti:
 
@@ -140,7 +140,7 @@ A projektek konfigurálásához nyissa meg a megoldást a Visual Studióban.
 
 Ha a telepítési parancsfájlokat használta, a következő módosításokat alkalmazza a rendszer.
 
-1. Nyissa meg a **UserSync\Web.config** fájlt.
+1. Nyissa meg a **UserSync\Web.Config** fájlt.
 1. Keresse meg az **Ida: ClientId**alkalmazás kulcsát. Cserélje le a meglévő értéket a Azure Portal-ból másolt, a **DotNet-web-Daemon-v2** alkalmazás alkalmazás-azonosítójával.
 1. Keresse meg az **Ida: ClientSecret**alkalmazás kulcsát. Cserélje le a meglévő értéket arra a kulcsra, amelyet a **DotNet-web-Daemon-v2** alkalmazás létrehozásakor mentett a Azure Portal.
 
@@ -232,7 +232,7 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Az Azure AD-bérlői alkalmazás regisztrációjának frissítése a DotNet-web-Daemon-v2-re
 
-1. Lépjen vissza az [Azure Portalra](https://portal.azure.com).
+1. Térjen vissza a [Azure Portal](https://portal.azure.com).
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Válassza ki a **DotNet-web-Daemon-v2** alkalmazást.
 1. Az alkalmazás **hitelesítés** lapján frissítse a **kijelentkezési URL-** mezőket a szolgáltatás címével. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
@@ -240,7 +240,7 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 1. Mentse a konfigurációt.
 1. Adja hozzá ugyanazt az URL-címet a **hitelesítési**  >  **átirányítási URI** -k menü értékeinek listájához. Ha több átirányítási URL-címmel rendelkezik, győződjön meg arról, hogy van egy új bejegyzés, amely az App Service URI azonosítóját használja az egyes átirányítási URL-címekhez.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#register-your-application) lépésben létrehozott alkalmazás-objektumot.  Az alkalmazás eltávolításához kövesse az [Ön vagy a szervezete által létrehozott alkalmazás eltávolítása](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)című témakör utasításait.
 
 ## <a name="get-help"></a>Segítség kérése
@@ -255,7 +255,7 @@ Ha hibát talál a MSAL.NET-ben, akkor emelje fel a problémát a [MSAL.net GitH
 
 A javaslatok megadásához nyissa meg a [felhasználói hang lapot](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Microsoft Identity platform által támogatott különböző [hitelesítési folyamatokról és alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md) .
 
 További információkért tekintse meg a következő fogalmi dokumentációt:

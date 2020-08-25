@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761763"
+ms.locfileid: "88763303"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -90,11 +90,11 @@ A biztonsági mentési művelet a Windows Service **com+** rendszeralkalmazás h
 
 * Próbálja meg elindítani vagy újraindítani a Windows Service **com+ Rendszeralkalmazást** (egy rendszergazda jogú parancssorból **– net start COMSysApp**).
 * Győződjön meg arról, **Elosztott tranzakciók koordinátora** a szolgáltatás **hálózati szolgáltatás** fiókként fut. Ha nem, módosítsa a futtató **hálózati szolgáltatás** fiókját, és indítsa újra a **com+ rendszeralkalmazást**.
-* Ha a szolgáltatás nem indítható újra, akkor a következő lépések végrehajtásával telepítse újra **Elosztott tranzakciók koordinátora** szolgáltatást:
+* Ha nem tudja újraindítani a szolgáltatást, a következő lépésekkel telepítse újra **Elosztott tranzakciók koordinátora** szolgáltatást:
   * Állítsa le az MSDTC szolgáltatást
   * Nyisson meg egy parancssort (cmd)
-  * Az "MSDTC-uninstall" parancs futtatása
-  * Az "MSDTC-install" parancs futtatása
+  * Futtassa a következő parancsot: `msdtc -uninstall`.
+  * Futtassa a következő parancsot: `msdtc -install`.
   * Indítsa el az MSDTC szolgáltatást
 * Indítsa el a Windows Service **com+ Rendszeralkalmazást**. A **com+ rendszeralkalmazás** elindítása után indítson el egy biztonsági mentési feladatot a Azure Portal.</ol>
 
@@ -165,7 +165,7 @@ A biztonsági mentési művelet nem sikerült, mert inkonzisztens állapotú a b
 Hibakód: ExtensionFailedSnapshotLimitReachedError  <br/>
 Hibaüzenet: a pillanatkép-művelet nem sikerült, mert a csatlakoztatott lemezek némelyike túllépte a pillanatkép-korlátot
 
-A pillanatkép-művelet meghiúsult, mert a csatolt lemezek némelyike túllépte a pillanatkép-korlátot. Végezze el az alábbi hibaelhárítási lépéseket, majd próbálja megismételni a műveletet.
+A pillanatkép-művelet meghiúsult, mert a csatolt lemezek némelyike túllépte a pillanatkép-korlátot. Hajtsa végre az alábbi hibaelhárítási lépéseket, majd próbálja megismételni a műveletet.
 
 * Törölje a nem szükséges lemezes blob-pillanatképeket. Legyen óvatos a lemez blobjának törléséhez, csak a pillanatkép-blobokat kell törölni.
 * Ha a Soft-delete engedélyezve van a virtuális gép lemezének Storage-fiókjaiban, konfigurálja a helyreállítható törlési adatmegőrzést úgy, hogy a meglévő Pillanatképek kevesebbek legyenek, mint a maximálisan megengedett idő.
@@ -183,7 +183,7 @@ A virtuális gépen a biztonsági mentési művelet sikertelen volt, mert a hál
 
 **1. lépés**: pillanatkép létrehozása a gazdagépen keresztül
 
-Egy emelt szintű (rendszergazdai) parancssorból futtassa a következő parancsot:
+Futtassa a következő parancsot egy emelt szintű (rendszergazda) parancssorból:
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f

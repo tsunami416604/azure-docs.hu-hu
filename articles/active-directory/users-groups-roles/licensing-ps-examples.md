@@ -14,12 +14,12 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025217"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797683"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>A PowerShell és a Graph példák az Azure AD-beli csoportos licencelésre
 
@@ -445,7 +445,7 @@ HTTP/1.1 200 OK
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Közvetlen licencek eltávolítása a csoport licenccel rendelkező felhasználók számára
 
-Ennek a szkriptnek a célja, hogy eltávolítsa a szükségtelen közvetlen licenceket olyan felhasználóktól, akik már örökölnek egy adott licencet egy csoportból. például a [csoport alapú licencelésre való áttérés](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)részeként.
+Ennek a szkriptnek a célja, hogy eltávolítsa a szükségtelen közvetlen licenceket olyan felhasználóktól, akik már örökölnek egy adott licencet egy csoportból. például a [csoport alapú licencelésre való áttérés](./licensing-groups-migrate-users.md)részeként.
 > [!NOTE]
 > Fontos, hogy először ellenőrizze, hogy az eltávolítandó közvetlen licencek nem teszik lehetővé több szolgáltatás használatát, mint az örökölt licencek. Ellenkező esetben a közvetlen licenc eltávolítása letilthatja a felhasználóknak a szolgáltatásokhoz és az adatbázisokhoz való hozzáférést. Jelenleg nem lehet megnézni a PowerShellen keresztül, hogy mely szolgáltatások engedélyezettek az örökölt licencek és a Direct használatával. A szkriptben meghatározjuk, hogy a rendszer milyen minimális szintű szolgáltatásokat örökölt a csoportokból, és ellenőrizze, hogy a felhasználók nem vesznek-e el váratlanul a szolgáltatásokhoz való hozzáférést.
 
@@ -619,7 +619,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 > [!NOTE]
 > Frissítse a változók értékeit `$skuId` , és `$groupId`   azt célozza meg, hogy a fenti szkript futtatása előtt a rendszer a közvetlen licenceket a tesztkörnyezet alapján távolítsa el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a csoportokon keresztüli licencelési szolgáltatásról, tekintse meg a következő cikkeket:
 

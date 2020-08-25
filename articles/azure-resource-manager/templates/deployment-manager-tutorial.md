@@ -6,10 +6,10 @@ ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86056888"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
@@ -34,16 +34,16 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A szolgáltatástopológia-sablon létrehozása
 > * A bevezetési sablon létrehozása
 > * A sablonok üzembe helyezése
-> * A telepítés ellenőrzése
+> * Az üzemelő példány ellenőrzése
 > * Az újabb verzió üzembe helyezése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 További források:
 
 * Az [Azure telepítéskezelő REST API referenciája](/rest/api/deploymentmanager/).
 * [Oktatóanyag: az állapot-ellenőrzési szolgáltatás használata az Azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -334,7 +334,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
     Ha ezt a parancsfájlt egy másik PowerShell-munkamenetből futtatja, amelyből az összetevők [előkészítése](#prepare-the-artifacts) parancsfájlt futtatta, először újra fel kell töltenie a változókat, köztük a **$resourceGroupName** és a **$filepath**.
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment`aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez tekintse meg az eljárás 2. és 4. lépését.
+    > `New-AzResourceGroupDeployment` aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez tekintse meg az eljárás 2. és 4. lépését.
 
 2. Ellenőrizze, hogy a szolgáltatástopológia és az alapjául szolgáló erőforrások sikeresen létrejöttek-e az Azure Portal használatával:
 
@@ -425,9 +425,9 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     A bevezetés sikeres üzembe helyezése után két további erőforráscsoport (szolgáltatásonként egy-egy) létrehozása is látható.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.
 3. Nyissa meg a webalkalmazást egy webböngészőben. Ellenőrizze a helyet és a verziót az index.html fájlban.
 
@@ -440,7 +440,7 @@ Ha új verzió (1.0.0.1) érhető el a webalkalmazáshoz, az alábbi eljárássa
 3. Helyezze újra üzembe a bevezetést [a sablonok üzembe helyezését](#deploy-the-rollout-template) ismertető szakasz utasításai szerint.
 4. Ellenőrizze a telepítést [a vonatkozó szakaszban](#verify-the-deployment) foglaltak szerint. A weblap most az 1.0.0.1-es verziót mutatja.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 

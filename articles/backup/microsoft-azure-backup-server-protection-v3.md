@@ -3,12 +3,12 @@ title: Milyen Azure Backup Server v3 RTM biztonsági mentést készíthet
 description: Ez a cikk egy védelmi mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amely Azure Backup a v3 RTM védelmét szolgálja.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661282"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763609"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM védelmi mátrix
 

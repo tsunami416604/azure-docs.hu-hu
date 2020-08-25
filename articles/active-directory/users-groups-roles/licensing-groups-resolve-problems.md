@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611288"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799553"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -66,7 +66,7 @@ Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a
 
 **Probléma:** A csoportban megadott termékek egyike olyan szolgáltatási csomagot tartalmaz, amely ütközik egy másik terméken keresztül már hozzárendelt felhasználóval. Egyes szolgáltatási csomagok úgy vannak konfigurálva, hogy nem rendelhetők hozzá ugyanahhoz a felhasználóhoz, mint egy másik, kapcsolódó szolgáltatáscsomag.
 
-Lásd az alábbi példát. A felhasználó rendelkezik az Office 365 Enterprise *E1* -licenccel közvetlenül hozzárendelt licenctel, és minden csomag engedélyezve van. A felhasználó hozzá lett adva egy olyan csoporthoz, amelyhez az Office 365 Enterprise *E3* termék hozzá van rendelve. Az E3 termék olyan szolgáltatási csomagokat tartalmaz, amelyek nem fedik át az E1-ben foglalt csomagokat, így a csoportos licenc-hozzárendelés meghiúsul az "ütköző szolgáltatási csomagok" hibával. Ebben a példában az ütköző szolgáltatási csomagok a következők:
+Gondolja át a következő példát. A felhasználó rendelkezik az Office 365 Enterprise *E1* -licenccel közvetlenül hozzárendelt licenctel, és minden csomag engedélyezve van. A felhasználó hozzá lett adva egy olyan csoporthoz, amelyhez az Office 365 Enterprise *E3* termék hozzá van rendelve. Az E3 termék olyan szolgáltatási csomagokat tartalmaz, amelyek nem fedik át az E1-ben foglalt csomagokat, így a csoportos licenc-hozzárendelés meghiúsul az "ütköző szolgáltatási csomagok" hibával. Ebben a példában az ütköző szolgáltatási csomagok a következők:
 
 - A SharePoint Online (2. csomag) ütközik a SharePoint Online-val (1. csomag).
 - Az Exchange Online (2. csomag) ütközik az Exchange Online-val (1. csomag).
@@ -107,7 +107,7 @@ Ha az Exchange Online-t használja, előfordulhat, hogy a szervezet egyes felhas
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> A problémával kapcsolatos további információkért tekintse [meg a "proxy címe már használatban van" hibaüzenetet az Exchange Online-ban](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk azt is ismerteti, [hogyan csatlakozhat az Exchange Online-hoz a távoli PowerShell használatával](https://technet.microsoft.com/library/jj984289.aspx).
+> A problémával kapcsolatos további információkért tekintse [meg a "proxy címe már használatban van" hibaüzenetet az Exchange Online-ban](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk azt is ismerteti, [hogyan csatlakozhat az Exchange Online-hoz a távoli PowerShell használatával](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps).
 
 Miután feloldotta az érintett felhasználók proxy-címeivel kapcsolatos problémákat, ügyeljen arra, hogy a licencek feldolgozását kényszerítse a csoporton, hogy a licencek érvénybe lépjenek.
 
@@ -173,7 +173,7 @@ Attól függően, hogy milyen lépéseket hajtott végre a hibák elhárításá
 
 Ha például egy érintett felhasználó duplikált proxy-problémáját oldja fel, aktiválnia kell a felhasználó feldolgozását. Egy felhasználó újrafeldolgozásához lépjen a felhasználó ablaktáblára, nyissa meg a **licenceket**, majd kattintson az eszköztáron az **újrafeldolgozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a licencek csoportokon keresztüli kezelésével kapcsolatos egyéb forgatókönyvekről, tekintse meg a következőket:
 

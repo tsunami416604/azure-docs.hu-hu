@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b00fe7a515d1d27ce9be2ab62a96c719d5e045a5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302916"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798584"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Egy tömbre fordított kifejezést ad vissza. Ha a kifejezés nem fordítható le, a nem definiált értéket adja vissza.  
@@ -33,7 +33,7 @@ StringToArray(<str_expr>)
   Egy tömböt megadó kifejezést vagy nem definiált értéket ad vissza. 
   
 ## <a name="remarks"></a>Megjegyzések
-  A beágyazott karakterlánc-értékeket idézőjelek közé kell írni, hogy érvényes JSON legyen. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/)
+  A beágyazott karakterlánc-értékeket idézőjelek közé kell írni, hogy érvényes JSON legyen. A JSON formátumával kapcsolatos részletekért lásd: [JSON.org](https://json.org/). Ez a rendszerfüggvény nem fogja használni az indexet.
   
 ## <a name="examples"></a>Példák
   
@@ -91,11 +91,7 @@ Itt látható az eredményhalmaz.
 [{}]
 ```
 
-## <a name="remarks"></a>Megjegyzések
-
-Ez a rendszerfüggvény nem fogja használni az indexet.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

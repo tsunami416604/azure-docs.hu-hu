@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422410"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798159"
 ---
 # <a name="what-is-the-my-account-portal"></a>Mi az a Saját fiók portál?
 
@@ -33,11 +33,11 @@ A fiókom **-portálon** (a https://myaccount.microsoft.com) következő böngé
 ![Saját fiók portál, áttekintő lap](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Ez a cikk azoknak a felhasználóknak készült, akik a saját fiók portálon szeretnék frissíteni a biztonsági adataikat, az eszköz adatait, a jelszavukat, a csatlakoztatott szervezeteket, a nyelvi beállításokat, az adatvédelmet vagy az előző bejelentkezési adatokat. Ha Ön rendszergazda, aki a hitelesítés és az egyéb Azure Active Directory (Azure AD) funkcióinak bekapcsolását kéri az alkalmazottak és más alkalmazások számára, tekintse meg a [rendszergazdák Azure ad-dokumentációját](https://docs.microsoft.com/azure/active-directory/).
+>Ez a cikk azoknak a felhasználóknak készült, akik a saját fiók portálon szeretnék frissíteni a biztonsági adataikat, az eszköz adatait, a jelszavukat, a csatlakoztatott szervezeteket, a nyelvi beállításokat, az adatvédelmet vagy az előző bejelentkezési adatokat. Ha Ön rendszergazda, aki a hitelesítés és az egyéb Azure Active Directory (Azure AD) funkcióinak bekapcsolását kéri az alkalmazottak és más alkalmazások számára, tekintse meg a [rendszergazdák Azure ad-dokumentációját](../index.yml).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Válassza ki a [biztonsági adatok](user-help-security-info-overview.md) megtekintéséhez vagy kezeléséhez
+- Válassza ki a [biztonsági adatok](./security-info-setup-signin.md) megtekintéséhez vagy kezeléséhez
 
 - Csatlakoztatott [eszközök](my-account-portal-devices-page.md) megtekintése és kezelése
 

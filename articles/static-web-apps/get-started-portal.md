@@ -1,0 +1,124 @@
+---
+title: 'Rövid útmutató: az első statikus webalkalmazás felépítése az Azure statikus Web Apps a Azure Portal használatával'
+description: Ismerje meg, hogyan hozhat létre egy Azure statikus Web Apps példányt a Azure Portal.
+services: static-web-apps
+author: craigshoemaker
+ms.service: static-web-apps
+ms.topic: quickstart
+ms.date: 08/13/2020
+ms.author: cshoe
+ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752903"
+---
+# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rövid útmutató: az első statikus webalkalmazás felépítése a Azure Portal
+
+Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure statikus Web Apps szolgáltatásban a portál használatával.
+
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- [GitHub](https://github.com) -fiók
+- [Azure](https://portal.azure.com) -fiók
+
+[!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
+
+## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
+
+Most, hogy létrejött az adattár, létrehozhat egy statikus webalkalmazást a Azure Portal.
+
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Válassza **az erőforrás létrehozása** lehetőséget.
+1. Keressen rá a **Static Web Apps** kifejezésre
+1. **Statikus Web Apps kiválasztása (előzetes verzió)**
+1. Kattintson a **Létrehozás** elemre.
+
+Az _alapvető beállítások_ lapon kezdje az új alkalmazás konfigurálásával és a GitHub-tárházhoz való csatolásával.
+
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Alapbeállítások lap":::
+
+1. Azure- _előfizetés_ kiválasztása
+1. Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
+1. Nevezze el az alkalmazás **az első-statikus-Web-App**nevet.
+      1. Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.
+1. Válasszon egy Önhöz legközelebb eső _régiót_
+1. Válassza ki az **ingyenes** _SKU_ -t
+1. Jelölje ki a GitHub gombbal a **bejelentkezést** , és végezze el a hitelesítést a GitHub használatával
+
+Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
+
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Adattár részletei":::
+
+1. Válassza ki az előnyben részesített _szervezetet_
+1. Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
+1. Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
+1. A Build konfigurációjának szerkesztéséhez válassza a **következő: >létrehozása ** gombot
+
+:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="Következő Build gomb":::
+
+> [!NOTE]
+> Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve**lehetőségre, válassza az **Azure statikus Web Apps**lehetőséget, majd válassza a **támogatás**lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
+
+1. A _Build_ (fejlesztés) lapon adja hozzá az előnyben részesített kezelőfelületi keretrendszerhez tartozó konfigurációs adatokat.
+
+    # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
+
+    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
+    - Az alapértelmezett érték törlése az _API helye_ mezőben
+    - Az alapértelmezett érték törlése az _alkalmazás_ -összetevő hely mezőjéből
+
+    # <a name="angular"></a>[Angular](#tab/angular)
+
+    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
+    - Az alapértelmezett érték törlése az _API helye_ mezőben
+    - Az alkalmazás-összetevő _helye_ mezőben adja meg a **dist/szögletes-Basic** értéket
+
+    # <a name="react"></a>[React](#tab/react)
+
+    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
+    - Az alapértelmezett érték törlése az _API helye_ mezőben
+    - Írja be a **Build** értéket az alkalmazás-összetevő _helye_ mezőbe
+
+    # <a name="vue"></a>[Vue](#tab/vue)
+
+    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
+    - Az alapértelmezett érték törlése az _API helye_ mezőben
+    - Írja be a **dist** értéket az alkalmazás-összetevő _helye_ mezőbe
+
+    ---
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="A létrehozás gomb áttekintése":::
+
+    > [!NOTE]
+    > A [munkafolyamat-fájl](github-actions-workflow.md) szerkesztésével módosíthatja ezeket az értékeket az alkalmazás létrehozása után.
+
+1. Kattintson a **Létrehozás** gombra.
+
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Létrehozás gomb":::
+
+1. Válassza az **Erőforrás megnyitása** lehetőséget.
+
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
+
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure statikus Web Apps példányát:
+
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
+1. Keresés az **én-első-web-static-app** a felső keresési sávon
+1. Válassza ki az alkalmazás nevét
+1. Válassza a **Törlés** gombot
+1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
+
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [API hozzáadása](add-api.md)

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: 3614fac027dd32ab5f5d70f5835432ac3b9b512d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/21/2020
+ms.custom: contperfq1
+ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207743"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755092"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 
@@ -25,7 +25,7 @@ A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain talá
 
 * Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Figyelje meg a fürt elsődleges tárolójának URI-sémáját. Például `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő: `wasbs://` . További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
+* Figyelje meg a fürt elsődleges tárolójának URI-sémáját. Például  `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő: `wasbs://` . További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
 * 1. lehetőség: egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t.
 

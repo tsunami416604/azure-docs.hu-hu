@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701498"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752057"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Csökkentse a költségeket az Azure-lemezek foglalásával
 
@@ -31,7 +31,7 @@ A lemezes foglalások lemezes SKU-ra épülnek. Ennek eredményeképpen a foglal
 Tegyük fel például, hogy fenntart egy P40 lemezt, amely 2 TiB kiépített tárolókapacitással rendelkezik. Azt is feltételezzük, hogy csak két P30-lemezt foglal le. A P40-foglalás ebben az esetben nem veszi figyelembe a P30-felhasználást, és az utólagos elszámolású díjszabást a P30-lemezekre kell fizetnie.
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>A vásárláskor megfontolandó szempontok
 
@@ -55,7 +55,7 @@ Ritka körülmények között az Azure korlátozza az új foglalások beszerzés
 
 ## <a name="buy-a-disk-reservation"></a>Lemezes foglalás vásárlása
 
-Azure Disk Storage foglalásokat a [Azure Portal](https://portal.azure.com/)használatával vásárolhat. A foglalást akár elöl, akár havi fizetéssel is megfizetheti. További információ a havi fizetések megvásárlásáról: [foglalások vásárlása havi fizetéssel](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md).
+Azure Disk Storage foglalásokat a [Azure Portal](https://portal.azure.com/)használatával vásárolhat. A foglalást akár elöl, akár havi fizetéssel is megfizetheti. További információ a havi fizetések megvásárlásáról: [foglalások vásárlása havi fizetéssel](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments).
 
 A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
 
@@ -103,5 +103,5 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az az Azure Reservations?](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése](../cost-management-billing/reservations/understand-disk-reservations.md)

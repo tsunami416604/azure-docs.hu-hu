@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4b2d79b24263a848d146bbbe8d42f23ec28f49b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19e441334395f600c3adaa867660345164537f96
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415882"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799451"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
 
@@ -55,7 +55,7 @@ Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy isk
 - **Ha már használta az alkalmazást a kétfaktoros ellenőrzéshez**, a fiók csempére koppintva megtekintheti a fiók teljes képernyős nézetét. Ezután koppintson a **telefonos bejelentkezés engedélyezése** lehetőségre a telefonos bejelentkezés bekapcsolásához.
 - **Ha nem találja a munkahelyi vagy iskolai fiókját** az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá munkahelyi vagy iskolai fiókját a [munkahelyi vagy iskolai fiók hozzáadása Súgó](user-help-auth-app-add-work-school-account.md)lépéseit követve.
 
-A telefonos bejelentkezés bekapcsolását követően csak a Microsoft Authenticator alkalmazás használatával jelentkezhet be. Ezt a következőképpen teheti meg:
+A telefonos bejelentkezés bekapcsolását követően csak a Microsoft Authenticator alkalmazás használatával jelentkezhet be. Ez a következőképpen érhető el:
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
@@ -110,12 +110,12 @@ A munkahelyi vagy iskolai vagy személyes fiókba való bejelentkezéshez szüks
 | Hogyan történik a telefonos bejelentkezés biztonságosabb, mint a jelszó beírása? | Manapság a legtöbb felhasználó felhasználónevet és jelszót használ a webhelyekre vagy alkalmazásokba való bejelentkezéshez. A jelszavakat sajnos a hackerek elveszik, ellopják vagy kitalálják.<br><br>Miután beállította a Microsoft Authenticator alkalmazást, egy kulcsot hoz létre a telefonján a telefon PIN-kódjának vagy biometrikus zárolásának védelme alatt álló fiók zárolásának feloldásához. Ezt követően a rendszer a bejelentkezéskor a személyazonosság igazolására használja a kulcsot.<br><br>**Fontos**<br>Az adatait a rendszer kizárólag a kulcs helyi védelme érdekében használja. A felhőben soha nem érkezik, vagy nem tárolódik. |
 | A telefonos bejelentkezés lecseréli a kétlépéses ellenőrzést? Ki kell kapcsolni? | A telefonos bejelentkezés a kétlépéses ellenőrzés típusa, ahol két lépés zajlik a mobileszközön. Ha további biztonságra van szüksége a fiók számára, tartsa meg a két lépésből álló ellenőrzést. |
 | Ha a fiókomban a kétlépéses ellenőrzés bekapcsolva maradok, két értesítést kell jóváhagyni? | Nem. Ha telefonján bejelentkezik a Microsoft-fiókba, a két lépésből álló ellenőrzésnek számít, így nincs szükség második jóváhagyásra. |
-| Mi a teendő, ha elveszítem a telefont, vagy nem vagyok velem? Hogyan hozzáférni a fiókomhoz? | A bejelentkezési oldalon bármikor bejelölheti a jelszó használata helyet, hogy visszaváltson a jelszó használatára. Ha azonban kétlépéses ellenőrzést használ, továbbra is egy második módszert kell használnia a személyazonosságának ellenőrzéséhez.<br><br>**Fontos**<br>Javasoljuk, hogy győződjön meg arról, hogy a fiókjához tartozó több, naprakész, ellenőrzési módszert használ.<br><br>A [biztonsági beállítások](https://account.live.com/proofs/manage) lapról kezelheti a személyes fiókok ellenőrzési módszereit. Munkahelyi vagy iskolai fiókok esetében lépjen a szervezet [további biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) lapjára, vagy a **fiók biztonságos megőrzése** lapra, ha a rendszergazda bekapcsolta a biztonsági adatokat. További információ a biztonsági adatokról: [biztonsági adatok (előzetes verzió) – áttekintés](user-help-security-info-overview.md).<br><br>Ha nem tudja kezelni az ellenőrzési módszereket, forduljon a rendszergazdához. |
+| Mi a teendő, ha elveszítem a telefont, vagy nem vagyok velem? Hogyan hozzáférni a fiókomhoz? | A bejelentkezési oldalon bármikor bejelölheti a jelszó használata helyet, hogy visszaváltson a jelszó használatára. Ha azonban kétlépéses ellenőrzést használ, továbbra is egy második módszert kell használnia a személyazonosságának ellenőrzéséhez.<br><br>**Fontos**<br>Javasoljuk, hogy győződjön meg arról, hogy a fiókjához tartozó több, naprakész, ellenőrzési módszert használ.<br><br>A [biztonsági beállítások](https://account.live.com/proofs/manage) lapról kezelheti a személyes fiókok ellenőrzési módszereit. Munkahelyi vagy iskolai fiókok esetében lépjen a szervezet [további biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) lapjára, vagy a **fiók biztonságos megőrzése** lapra, ha a rendszergazda bekapcsolta a biztonsági adatokat. További információ a biztonsági adatokról: [biztonsági adatok (előzetes verzió) – áttekintés](./security-info-setup-signin.md).<br><br>Ha nem tudja kezelni az ellenőrzési módszereket, forduljon a rendszergazdához. |
 | Hogyan a funkció használatát, és térjen vissza a saját jelszó használatára? | Személyes fiókok esetén a bejelentkezéskor válassza a **jelszó használata hivatkozás helyett** lehetőséget. A legutóbbi bejelentkezés alkalmával a rendszer alapértelmezés szerint megjegyezi és felkínálja a legutóbbi választást. Ha bármikor vissza szeretne térni a telefonos bejelentkezés használatára, jelölje be az **alkalmazás használata hivatkozás helyett** a bejelentkezéskor lehetőséget.<br><br>Munkahelyi vagy iskolai fiókok esetében szüntesse meg az eszköz regisztrációját a Microsoft Authenticator alkalmazás **Beállítások** lapján, vagy tiltsa le az eszközt a profiljának **eszközök & tevékenység** területéről. További információ az eszköz profilból való letiltásáról: a [profil és a fiókadatok frissítése a saját alkalmazások portálról](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information). |
 | Miért nem használhatok több munkahelyi vagy iskolai fiókot a telefonos bejelentkezéshez? | A telefont egyetlen munkahelyi vagy iskolai fiókhoz kell regisztrálni. Ha egy másik munkahelyi vagy iskolai fiókhoz szeretné bekapcsolni a telefonos bejelentkezést, akkor a **Beállítások** lapon törölni kell a fiókját az eszközről. |
 | Be tudok jelentkezni a számítógépre a telefonom használatával? | A számítógép esetében javasoljuk, hogy jelentkezzen be a Windows Hello használatával a Windows 10 rendszeren. A Windows Hello lehetővé teszi az arc, az ujjlenyomat vagy a PIN-kód használatát a bejelentkezéshez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 
@@ -123,4 +123,4 @@ A munkahelyi vagy iskolai vagy személyes fiókba való bejelentkezéshez szüks
 
 - Ha további információra van szüksége a kétlépéses ellenőrzésről, tekintse [meg a fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című témakört.
 
-- Ha további információra van szüksége a biztonsági adatokról, tekintse meg a [biztonsági adatok (előzetes verzió) áttekintése](user-help-security-info-overview.md) című témakört.
+- Ha további információra van szüksége a biztonsági adatokról, tekintse meg a [biztonsági adatok (előzetes verzió) áttekintése](./security-info-setup-signin.md) című témakört.

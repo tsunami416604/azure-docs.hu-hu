@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e3ed41ad3038cf66d61c25292ebad55c2b5e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731697"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798278"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 szolgáltatások rendszergazdai szerepkörei
 
@@ -29,23 +29,23 @@ A Microsoft 365ban található összes termék felügyelhető az Azure AD-ben re
 
 Microsoft 365 szolgáltatás | Szerepkör tartalma | API-tartalom
 ---------------------- | ------------------ | -----------------
-Rendszergazdai szerepkörök az Office 365-ben és Microsoft 365 üzleti tervekben | [Office 365-rendszergazdai szerepkörök](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nem érhető el
-Azure Active Directory (Azure AD) és Azure AD Identity Protection| [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Exchange Online| [Exchange szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell Exchange-hez](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md)<br>[A SharePoint-rendszergazdai szerepkör az Office 365-ben](https://docs.microsoft.com/sharepoint/sharepoint-admin-role) is | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Csapatok/Skype vállalati verzió | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Biztonsági & megfelelőségi központ (Office 365 Advanced Threat Protection, Exchange Online Protection, Information Protection) | [Office 365-rendszergazdai szerepkörök](https://docs.microsoft.com/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-Biztonságos pontszám | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Compliance Manager | [A megfelelőségi kezelő szerepkörei](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Nem érhető el
-Azure Information Protection | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Microsoft Cloud App Security | [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/cloud-app-security/manage-admins) | [API-leírások](https://docs.microsoft.com/cloud-app-security/api-tokens) 
-Azure Komplex veszélyforrások elleni védelem | [Az Azure ATP szerepkörcsoportjai](https://docs.microsoft.com/azure-advanced-threat-protection/atp-role-groups) | Nem érhető el
-Windows Defender Komplex veszélyforrások elleni védelem | [Windows Defender ATP szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Nem érhető el
-Privileged Identity Management | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Intune | [Intune szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/intune/role-based-access-control) | [Graph API](https://docs.microsoft.com/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
-Felügyelt asztal | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Rendszergazdai szerepkörök az Office 365-ben és Microsoft 365 üzleti tervekben | [Office 365-rendszergazdai szerepkörök](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nem elérhető
+Azure Active Directory (Azure AD) és Azure AD Identity Protection| [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Exchange Online| [Exchange szerepköralapú hozzáférés-vezérlés](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell Exchange-hez](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Szerepkör-hozzárendelések beolvasása](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
+SharePoint Online | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md)<br>[A SharePoint-rendszergazdai szerepkör az Office 365-ben](/sharepoint/sharepoint-admin-role) is | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Csapatok/Skype vállalati verzió | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Biztonsági & megfelelőségi központ (Office 365 Advanced Threat Protection, Exchange Online Protection, Information Protection) | [Office 365-rendszergazdai szerepkörök](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Szerepkör-hozzárendelések beolvasása](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
+Biztonságos pontszám | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Compliance Manager | [A megfelelőségi kezelő szerepkörei](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Nem elérhető
+Azure Information Protection | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Microsoft Cloud App Security | [Szerepköralapú hozzáférés-vezérlés](/cloud-app-security/manage-admins) | [API-leírások](/cloud-app-security/api-tokens) 
+Azure Komplex veszélyforrások elleni védelem | [Az Azure ATP szerepkörcsoportjai](/azure-advanced-threat-protection/atp-role-groups) | Nem elérhető
+Windows Defender Komplex veszélyforrások elleni védelem | [Windows Defender ATP szerepköralapú hozzáférés-vezérlés](/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | Nem elérhető
+Privileged Identity Management | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
+Intune | [Intune szerepköralapú hozzáférés-vezérlés](/intune/role-based-access-control) | [Graph API](/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
+Felügyelt asztal | [Azure AD-rendszergazdai szerepkörök](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[Szerepkör-hozzárendelések beolvasása](/graph/api/directoryrole-list?view=graph-rest-1.0)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD-rendszergazdai szerepkörök kiosztása vagy eltávolítása](directory-manage-roles-portal.md)
 * [Az Azure AD rendszergazdai szerepköreinek referenciája](directory-assign-admin-roles.md)

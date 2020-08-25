@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f084057c8bc2d0be1e04dc1821378c9733cc050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e003c45aa1e7d75b709b7fbf99532fb1302fcbb9
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741535"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797649"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazáshoz
 
@@ -30,7 +30,7 @@ Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja a munkahelyi 
 1. A számítógépen lépjen a [további biztonsági ellenőrzés](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) lapra.
 
     >[!Note]
-    >Ha nem látja a **további biztonsági ellenőrzés** oldalt, lehetséges, hogy a rendszergazda bekapcsolta a biztonsági adatok (előzetes verzió) szolgáltatást. Ha ez a helyzet, kövesse a [biztonsági adatok beállítása a hitelesítő alkalmazás használatára](security-info-setup-auth-app.md) című szakasz utasításait. Ha ez nem így van, segítségért forduljon a szervezet ügyfélszolgálatához. További információ a biztonsági adatokról: [biztonsági adatok (előzetes verzió) – áttekintés](user-help-security-info-overview.md).
+    >Ha nem látja a **további biztonsági ellenőrzés** oldalt, lehetséges, hogy a rendszergazda bekapcsolta a biztonsági adatok (előzetes verzió) szolgáltatást. Ha ez a helyzet, kövesse a [biztonsági adatok beállítása a hitelesítő alkalmazás használatára](security-info-setup-auth-app.md) című szakasz utasításait. Ha ez nem így van, segítségért forduljon a szervezet ügyfélszolgálatához. További információ a biztonsági adatokról: [biztonsági adatok (előzetes verzió) – áttekintés](./security-info-setup-signin.md).
 
 2. Jelölje be a **hitelesítő alkalmazás**melletti jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
 
@@ -52,7 +52,7 @@ Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja a munkahelyi 
 
     ![Fiókok képernyő](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

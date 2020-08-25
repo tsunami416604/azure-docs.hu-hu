@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741187"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799434"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazás?
 
@@ -33,7 +33,7 @@ A Microsoft Authenticator alkalmazást többféleképpen is használhatja, több
 > [!Important]
 > A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely kétfaktoros ellenőrzést használ, és támogatja az idő-alapú egyszeri jelszó (TOTP) szabványait.
 >
->Ez a cikk azoknak a felhasználóknak készült, akik a Microsoft Authenticator alkalmazást biztonsági ellenőrzési módszerként szeretnék letölteni és használni. Ha Ön rendszergazda, aki információt keres arról, hogyan kapcsolhatja be a jelszó nélküli bejelentkezést az alkalmazottak és más alkalmazások hitelesítő alkalmazásával, tekintse meg a [jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)című témakört.
+>Ez a cikk azoknak a felhasználóknak készült, akik a Microsoft Authenticator alkalmazást biztonsági ellenőrzési módszerként szeretnék letölteni és használni. Ha Ön rendszergazda, aki információt keres arról, hogyan kapcsolhatja be a jelszó nélküli bejelentkezést az alkalmazottak és más alkalmazások hitelesítő alkalmazásával, tekintse meg a [jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)](../authentication/howto-authentication-passwordless-phone.md)című témakört.
 
 ## <a name="terminology"></a>Terminológia
 
@@ -71,7 +71,7 @@ A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros elle
 
 ## <a name="in-this-section"></a>A szakasz tartalma
 
-| Cikk | Leírás |
+| Cikk | Description |
 | ------ | ------------ |
 | [Az alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) | Leírja, hogy hol és hogyan lehet beolvasni és telepíteni a Microsoft Authenticator alkalmazást az Android és az iOS rendszerű eszközökön. |
 | [Munkahelyi vagy iskolai fiókjainak hozzáadása](user-help-auth-app-add-work-school-account.md) | Ismerteti, hogyan adhat hozzá különböző munkahelyi vagy iskolai és személyes fiókokat a Microsoft Authenticator alkalmazáshoz. |

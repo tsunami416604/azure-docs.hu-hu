@@ -1,18 +1,18 @@
 ---
 title: Fogalmak – tárolás
-description: Ismerje meg az Azure VMware-megoldás (AVS) előzetes privát felhőkre vonatkozó főbb tárolási lehetőségeit.
+description: Ismerje meg a főbb tárolási képességeket az Azure VMware Solution előzetes privát felhőkben.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604116"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752212"
 ---
-# <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware-megoldás (AVS) – előzetes verziójú tárolási fogalmak
+# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware-megoldás előzetes verziójú tárolási fogalmak
 
-Az AVS privát felhők natív, fürtre kiterjedő tárolót biztosítanak a VMware vSAN. A fürt minden gazdagépéről a vSAN-adattárban lévő összes helyi tárterületet használja a rendszer, és alapértelmezés szerint elérhető az inaktív adatok titkosítása. Az Azure Storage-erőforrások használatával kiterjesztheti a privát felhők tárolási képességeit.
+Az Azure VMware-megoldás privát felhők natív, fürtre kiterjedő tárolót biztosítanak a VMware vSAN. A fürt minden gazdagépéről a vSAN-adattárban lévő összes helyi tárterületet használja a rendszer, és alapértelmezés szerint elérhető az inaktív adatok titkosítása. Az Azure Storage-erőforrások használatával kiterjesztheti a privát felhők tárolási képességeit.
 
 ## <a name="vsan-clusters"></a>vSAN-fürtök
 

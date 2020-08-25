@@ -3,12 +3,12 @@ title: Azure Backup Server beállítása Azure VMware-megoldáshoz
 description: Állítsa be az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079536"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750615"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server beállítása Azure VMware-megoldáshoz
 
@@ -56,7 +56,7 @@ Az Azure VMware-megoldás Azure Backup Serverának beállításához a következ
 
 Azure Backup Server üzembe helyezése Azure-beli infrastruktúra-szolgáltatásként (IaaS), amely az Azure VMware-megoldás virtuális gépei elleni védelemmel rendelkezik.
 
-:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="AVS üzembe helyezési architektúra" border="false":::
+:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Azure Backup Server üzembe helyezése Azure-beli infrastruktúra-szolgáltatásként (IaaS), amely az Azure VMware-megoldás virtuális gépei elleni védelemmel rendelkezik." border="false":::
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>A Azure Backup Server környezet előfeltételei
 
@@ -140,23 +140,23 @@ A Recovery Services-tároló egy olyan tárolási entitás, amely az idő múlá
 
 1. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
 
-   ![Minden szolgáltatás kiválasztása](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![A bal oldali menüben válassza a minden szolgáltatás lehetőséget.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. A **minden szolgáltatás** párbeszédpanelen írja be a **Recovery Services** , és válassza ki **Recovery Services** tárolókat a listából.
 
-   ![Adja meg és válassza ki Recovery Services tárolókat](../backup/media/backup-create-rs-vault/all-services.png)
+   ![Adja meg és válassza Recovery Services tárolók lehetőséget.](../backup/media/backup-create-rs-vault/all-services.png)
 
    Megjelenik az előfizetésben található Recovery Services-tárolók listája.
 
 1. A **Recovery Services** -tárolók irányítópultján válassza a **Hozzáadás**lehetőséget.
 
-   ![Recovery Services-tároló hozzáadása](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
+   ![Recovery Services-tároló hozzáadása.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
    Megnyílik az **Recovery Services** -tároló párbeszédpanel.
 
 1. Adja meg a **név**, az **előfizetés**, az **erőforráscsoport**és a **hely**értékét.
 
-   ![A Recovery Services-tároló konfigurálása](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
+   ![Konfigurálja a Recovery Services-tárolót.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
    - **Név**: adjon meg egy rövid nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetésben. Olyan nevet adjon meg, amely legalább kettőnél több mint 50 karakterből áll. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat.
    - **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha csak egy előfizetés tagja, akkor ezt a nevet fogja látni. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Több választási lehetőség is van, ha a munkahelyi vagy iskolai fiók egynél több Azure-előfizetéshez van társítva.
@@ -165,11 +165,11 @@ A Recovery Services-tároló egy olyan tárolási entitás, amely az idő múlá
 
 1. Ha készen áll az Recovery Services-tároló létrehozására, válassza a **Létrehozás**lehetőséget.
 
-   ![A Recovery Services-tároló létrehozása](../backup/media/backup-create-rs-vault/click-create-button.png)
+   ![Hozza létre a Recovery Services-tárolót.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
    A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területén. A tároló létrehozása után a Recovery Services-tárolók listájában látható. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
 
-   ![A Backup-tárolók listájának frissítése](../backup/media/backup-create-rs-vault/refresh-button.png)
+   ![Frissítse a Backup-tárolók listáját.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
 ## <a name="set-storage-replication"></a>Tárolási replikáció beállítása
 
@@ -184,7 +184,7 @@ A tárolási replikáció lehetőséggel választhat a Geo-redundáns tárolók 
 
 1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
 
-   ![Új tároló tárolási konfigurációjának beállítása](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+   ![Adja meg az új tároló tárolási konfigurációját.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>A szoftvercsomag letöltése és telepítése
 
@@ -206,15 +206,15 @@ Kövesse az ebben a szakaszban található lépéseket a szoftvercsomag letölt�
 
    Megnyílik a kiválasztott tároló irányítópultja.
 
-   ![A tár irányítópultjának megnyitása](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+   ![Megnyílik a kiválasztott tároló irányítópultja.](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 
    A **Beállítások** lehetőség alapértelmezés szerint megnyílik. Ha be van zárva, válassza a **Beállítások** lehetőséget a megnyitásához.
 
-   ![Tár beállításainak megnyitása lehetőség](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
+   ![A beállítások lehetőség alapértelmezés szerint megnyílik. Ha be van zárva, válassza a beállítások lehetőséget a megnyitásához.](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
 1. A **első lépések** varázsló megnyitásához válassza a **biztonsági mentés** lehetőséget.
 
-   ![A biztonsági mentés megnyílik Első lépések varázsló](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+   ![A Első lépések varázsló megnyitásához válassza a biztonsági mentés lehetőséget.](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
 1. A megnyíló ablakban tegye a következőket:
 
@@ -241,7 +241,7 @@ Kövesse az ebben a szakaszban található lépéseket a szoftvercsomag letölt�
    > [!NOTE]
    > Az összes fájlt ugyanabba a mappába kell letöltenie. Mivel a fájlok letöltésének mérete 3 GB-nál nagyobb, akár 60 percet is igénybe vehet, amíg a letöltés be nem fejeződik. 
 
-   ![Fájlok kiválasztása a letöltőközpontban](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+   ![A letöltési oldalon válassza ki az összes fájlt, majd kattintson a Tovább gombra.](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
 ### <a name="extract-the-software-package"></a>A szoftvercsomag kibontása
 
@@ -256,9 +256,9 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
 
 1. A kinyerési folyamat elindításához válassza a **Kibontás** lehetőséget.
 
-   ![Microsoft Azure Backup telepítővarázslója](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
+   ![A kinyerési folyamat elindításához válassza a Kibontás lehetőséget.](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-1. A kibontás után válassza a **setup.exevégrehajtásának** lehetőségét, majd válassza a **Befejezés**lehetőséget.
+1. A kibontás után válassza a **setup.exevégrehajtásának ** lehetőségét, majd válassza a **Befejezés**lehetőséget.
 
 > [!TIP]
 > Megkeresheti a setup.exe fájlt abban a mappában is, ahová kicsomagolta a szoftvercsomagot.
@@ -267,17 +267,17 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
 
 1. A **telepítés ablak telepítés területén válassza**a **Microsoft Azure Backup** lehetőséget a telepítővarázsló megnyitásához.
 
-   ![Microsoft Azure Backup telepítővarázsló telepítésének gombja](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
+   ![A telepítés ablak telepítés területén válassza a Microsoft Azure Backup lehetőséget a telepítővarázsló megnyitásához.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
 1. Az **üdvözlőképernyőn** kattintson a **Next** (tovább) gombra az **Előfeltételek ellenőrzése** lap folytatásához.
 
 1. Ha meg szeretné állapítani, hogy teljesülnek-e a Azure Backup Server hardver-és szoftver-előfeltételei, válassza az **ismételt ellenőrzés** lehetőséget. Ha a Met sikeresen megtörtént, válassza a **tovább**lehetőséget.
 
-   ![Előfeltételek ellenőrzése Azure Backup Server](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+   ![ Ha meg szeretné állapítani, hogy teljesülnek-e a Azure Backup Server hardver-és szoftver-előfeltételei, válassza az ismételt ellenőrzés lehetőséget. Ha a Met sikeresen megtörtént, válassza a tovább lehetőséget.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
 1. A Azure Backup Server telepítőcsomag a szükséges SQL Server bináris fájlokkal együtt van csomagolva. Új Azure Backup Server telepítésének indításakor válassza a **SQL Server új példányának telepítése** ezzel a telepítési lehetőséggel lehetőséget. Ezután válassza **az ellenőrzési és telepítési**lehetőséget.
 
-   ![Azure Backup Server SQL Server-vizsgálat](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
+   ![A Azure Backup Server telepítőcsomag a szükséges SQL Server bináris fájlokkal együtt van csomagolva.](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
    > Ha saját SQL Server-példányát szeretné használni, a támogatott SQL Server-verziók SQL Server 2014 SP1 vagy újabb, 2016 és 2017. Minden SQL Server verziónak standard vagy Enterprise 64 bitesnek kell lennie. Azure Backup Server nem működik távoli SQL Server-példánnyal. A Azure Backup Server által használt példánynak helyinek kell lennie. Ha meglévő SQL Server-példányt használ a Azure Backup Serverhoz, a telepítő csak a SQL Server *példányainak* használatát támogatja.
@@ -321,18 +321,18 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
    > [!NOTE]
    > Az Azure-ba történő biztonsági mentéshez meg kell adni a tartalék helyet. Győződjön meg arról, hogy a hely a felhőbe történő biztonsági mentéshez tervezett adatmennyiség legalább 5%-a. A lemezes védelemhez a telepítés befejezése után külön lemezeket kell konfigurálni. További információ a Storage-készletekről: a [tárolási készletek és a lemezes tárolás konfigurálása](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
-   ![Microsoft Azure Backup telepítési beállítások](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
+   ![Adja meg Microsoft Azure Backup Server-fájlok telepítésének helyét, majd kattintson a Tovább gombra.](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
 1. Adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **Tovább gombra**.
 
-   ![Microsoft Azure Backup telepítési biztonsági beállítások](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
+   ![Adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a Tovább gombra.](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
 
 1. Válassza ki, hogy szeretné-e használni a Microsoft Update a frissítések kereséséhez, majd kattintson a **tovább**gombra.
 
    > [!NOTE]
    > Javasoljuk, hogy Windows Update átirányítást a Microsoft Updatera, amely biztonsági és fontos frissítéseket kínál a Windows és más termékek, például a Azure Backup Server számára.
 
-   ![Microsoft Azure Backup telepítő Microsoft Update](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+   ![Válassza ki, hogy szeretné-e használni a Microsoft Update a frissítések kereséséhez, majd kattintson a Tovább gombra.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
 1. Tekintse át a **Beállítások összegzését**, és válassza a **telepítés**lehetőséget.
 
@@ -352,7 +352,7 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
 
    A Microsoft Azure Recovery Services ügynök telepítésének befejeződése után a telepítési lépés a SQL Server és a Azure Backup Server összetevők telepítésére és konfigurálására kerül át.
 
-   ![Microsoft Azure Backup telepítésének telepítése](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+   ![A Microsoft Azure Recovery Services ügynök telepítésének befejeződése után a telepítési lépés a SQL Server és a Azure Backup Server összetevők telepítésére és konfigurálására kerül át.](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 1. A telepítési lépés befejeződése után válassza a **Bezárás**lehetőséget.
 

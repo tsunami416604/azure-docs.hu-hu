@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084392"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756826"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>A Linux rendszerű virtuális gép eszköz nevének módosításainak megoldása
 
 Ez a cikk azt ismerteti, hogy az eszközök nevei miért változnak a Linux rendszerű virtuális gépek újraindítása vagy az adatlemezek újracsatolása után. A cikk a probléma megoldásait is tartalmazza.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 A Linux rendszerű virtuális gépek Microsoft Azureban való futtatásakor a következő problémák merülhetnek fel:
 
 - A virtuális gép újraindítás után nem indul el.
@@ -42,7 +42,7 @@ A probléma akkor fordul elő, ha a Linux rendszerű eszközök vizsgálatát az
 
 A probléma megoldásához használja az állandó elnevezést. Az állandó elnevezést négy módon lehet használni: a FileSystem Label, az UUID, az ID vagy az Path alapján. Javasoljuk, hogy az Azure Linux rendszerű virtuális gépekhez a fájlrendszer címkéjét vagy az UUID-t használja.
 
-A legtöbb disztribúció a `fstab` **nem hibás** vagy a **nobootwait** paramétert adja meg. Ezek a paraméterek lehetővé teszik a rendszer rendszerindítását, ha a lemez nem csatlakoztatható indításkor. A paraméterekkel kapcsolatos további információkért olvassa el a terjesztési dokumentációt. Arról, hogy hogyan konfigurálhat Linux rendszerű virtuális gépet egy adatlemez hozzáadásakor UUID használatára, olvassa el a [Csatlakozás a Linux rendszerű virtuális géphez az új lemez csatlakoztatása](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)című témakört.
+A legtöbb disztribúció a `fstab` **nem hibás** vagy a **nobootwait** paramétert adja meg. Ezek a paraméterek lehetővé teszik a rendszer rendszerindítását, ha a lemez nem csatlakoztatható indításkor. A paraméterekkel kapcsolatos további információkért olvassa el a terjesztési dokumentációt. Arról, hogy hogyan konfigurálhat Linux rendszerű virtuális gépet egy adatlemez hozzáadásakor UUID használatára, olvassa el a [Csatlakozás a Linux rendszerű virtuális géphez az új lemez csatlakoztatása](../linux/add-disk.md#format-and-mount-the-disk)című témakört.
 
 Ha az Azure Linux-ügynök egy virtuális gépre van telepítve, az ügynök udev-szabályokkal hozza létre a szimbolikus hivatkozásokat a/dev/disk/Azure elérési útja alatt. Az alkalmazások és a parancsfájlok udev szabályokat használnak a virtuális géphez csatolt lemezek azonosítására, valamint a lemez típusára és a lemez logikai egységére.
 
@@ -164,7 +164,7 @@ Az Azure Storage legújabb szabályainak beszerzéséhez futtassa a következő 
 
 ## <a name="see-also"></a>Lásd még
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Ubuntu: az UUID használata](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat: állandó elnevezés](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)

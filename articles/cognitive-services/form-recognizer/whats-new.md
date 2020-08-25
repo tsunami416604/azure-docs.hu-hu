@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724132"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751072"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -30,7 +30,7 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 - **REST API hivatkozás elérhető** – tekintse meg a [v 2.1 – preview. 1 hivatkozást](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - Az angol nyelveken **kívül támogatott új nyelvek**a következők:, `Layout` és `Train Custom Model` : angol (en), Kínai (egyszerűsített) (zh-zh), holland (NL), francia (FR), német (de), olasz (IT), Portugál (PT) és spanyol (es).
 - **Jelölőnégyzet/kiválasztási jel észlelése** – az űrlap-felismerő támogatja a kiválasztási jelek, például a jelölőnégyzetek és választógombok észlelését és kinyerését. A kiválasztási jelek kibontása a-ben megtörténik, `Layout` és most már címkézheti és betaníthatja a `Train Custom Model`  -  _betanítást a vonaton_ , hogy kinyerje a legfontosabb érték párokat 
-- A Model levélírás lehetővé teszi több modell **összeállítását** és meghívását egyetlen modell-azonosítóval. Ha egy dokumentumot egy összeállított modell-azonosítóval kell elemezni, a rendszer először egy besorolási lépést hajt végre a megfelelő egyéni modellhez való továbbításhoz. A Model összeállítás elérhető a `Train Custom Model`  -  _feliratokkal rendelkező vonatok_számára.
+- A Model levélírás lehetővé teszi több modell **összeállítását** és meghívását egyetlen modell-azonosítóval. Ha egy dokumentumot egy összeállított modell-AZONOSÍTÓval kell elemezni, a rendszer először egy besorolási lépést hajt végre a megfelelő egyéni modellhez való továbbításhoz. A Model összeállítás elérhető a `Train Custom Model`  -  _feliratokkal rendelkező vonatok_számára.
 - **Modell neve** : adjon meg egy felhasználóbarát nevet az egyéni modellekhez, így könnyebben kezelhető és nyomon követhető.
 - **Új, előre elkészített modell a vállalati kártyákhoz** a gyakori mezők angol nyelvű kinyeréséhez, valamint a Language Business Cards szolgáltatásban.
 - **Új területi beállítások az előre elkészített visszaigazolásokhoz** az en-us mellett a támogatás mostantól elérhető az EN-au, az en-CA, az en-GB, az EN-in
@@ -50,8 +50,10 @@ Az **új minták** a githubon érhetők el.
 ## <a name="july-2020"></a>2020. július
 
 ### <a name="new-features"></a>Új funkciók
+
 * a **v 2.0 referenciája elérhető** Megtekintheti a [v 2.0 API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) és a [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)és [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)rendszerhez készült frissített SDK-kat.
 * A **tábla fejlesztései és a kinyerési fejlesztések** közé tartozik a pontossági fejlesztések és a táblázatos kivonások továbbfejlesztése, amelyek lehetővé teszik a táblázatok fejlécének és szerkezetének megismerését _címkék nélkül_. 
+
 * **Pénznem-támogatás** Globális pénznemű szimbólumok észlelése és kinyerése.
 * **Azure gov** Az űrlap-felismerő mostantól elérhető az Azure gov-ben is.
 * **Fokozott biztonsági funkciók**: 
@@ -76,8 +78,8 @@ Az **új minták** a githubon érhetők el.
 * **SDK-támogatás az űrlap-FELISMERŐ API 2.0** -s verziójának nyilvános előzetes verziójához Ebben a hónapban kibővítettük a szolgáltatás támogatását, amely tartalmaz egy előzetes verziójú SDK-t az űrlap-felismerési v 2.0 (előzetes verzió) kiadáshoz. Használja az alábbi hivatkozásokat a választott nyelv megkezdéséhez: 
    * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-python-preview)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre?view=azure-node-preview)
 
   Az új SDK a v 2.0 REST API összes funkcióját támogatja az űrlap-felismerőhöz. Például betaníthat egy modellt címkékkel vagy anélkül, és kinyerheti a szöveget, a kulcs érték párokat és táblákat az űrlapokból, kinyerheti a nyugták adatait az előre elkészített visszaigazolási szolgáltatással, és kinyerheti a szöveget és a táblákat az elrendezési szolgáltatással a dokumentumaiból. Az [SDK-visszajelzési űrlapon](https://aka.ms/FR_SDK_v1_feedback)megoszthatja az SDK-kat.
  
