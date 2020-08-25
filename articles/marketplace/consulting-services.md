@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607447"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814722"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -72,40 +72,40 @@ A kompetenciákkal kapcsolatos további információkért nyissa meg a [Microsof
 
 A rendszerintegrátor partnerei a következő 20 ország/régió számára nyújthatnak tanácsadási szolgáltatásokat:
 
-| Országok  | (folytatás...)   | (folytatás...)  | (folytatás...)  |
+| Országok | (folytatás) |  (folytatás) |  (folytatás) |
 |---------|----------|----------|----------|
 | Ausztrália | Belgium | Kanada | Dánia |
 | Finnország  | Franciaország | Németország  | India   |
 | Olaszország    | Japán  |  Mexikó  |  Hollandia  |
 |  Új-Zéland  |  Norvégia  |  Lengyelország  | Dél-afrikai Köztársaság |
 |  Svédország  | Svájc  |  Egyesült Államok  | Egyesült Királyság  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Regisztráljon a kereskedelmi piactéren elérhető tanácsadói szolgáltatásokra
 
-Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vállalati adatokat a piactéren. A regisztrációs követelmények teljes listáját itt tekintheti meg: [közzétevő a piactéren](become-publisher.md). 
+Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vállalati adatokat a piactéren. A regisztrációs követelmények teljes listáját itt tekintheti meg: [közzétevő a piactéren](become-publisher.md).
 
 ## <a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
 A regisztráció előtt megkezdheti a tartalom gyűjtését és előkészítését, amely segít a listán a szolgáltatás és a megoldás értékének megjelölése a cél ügyfelének. 
 
 |Új közzétevők beállítása  |
-|---------|
-|MPN-azonosító     |
-|Vállalati emblémák (48 x 48, 216 x 216 képpont)     |
-|Érdeklődő célhelye     |
-||
+| - |
+| MPN-azonosító |
+| Vállalati emblémák (48 x 48, 216 x 216 képpont) |
+| Érdeklődő célhelye |
+|
 
 |Új ajánlatok beállítása  |
-|---------|
-|Ajánlat neve (200 karakter) és leírás (2 000 karakter)    |
-|Kompetenciák     |
-|Ország/régió elérhetősége     |
-|Az engagement időtartama     |
-|Alkalmazható iparágak, kategóriák és keresési kulcsszavak     |
-|A termék áttekintése – videó    |
-|Képernyőképek (legfeljebb 5, 1280 x 720 képpont)     |
-|Marketing dokumentumok (legfeljebb 3)     |
-||
+| - |
+| Ajánlat neve (200 karakter) és leírás (2 000 karakter) |
+| Kompetenciák  |
+| Ország/régió elérhetősége |
+| Az engagement időtartama  |
+| Alkalmazható iparágak, kategóriák és keresési kulcsszavak |
+| A termék áttekintése – videó |
+| Képernyőképek (legfeljebb 5, 1280 x 720 képpont) |
+| Marketing dokumentumok (legfeljebb 3) |
+|
 
 ## <a name="the-publishing-process"></a>A közzétételi folyamat
 
@@ -169,7 +169,7 @@ A partner Centerben a [Markdown](/contribute/markdown-reference)használatával 
 * Minden címsor után adjon hozzá sortörést.
 * **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

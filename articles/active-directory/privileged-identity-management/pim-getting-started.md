@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742912"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815997"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
@@ -38,9 +38,7 @@ További információ: [a Privileged Identity Management használatára vonatkoz
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>A PIM előkészítése Azure AD-szerepkörökhöz
 
-Miután engedélyezte a Privileged Identity Management a címtárban, előkészítheti Privileged Identity Management az Azure AD-szerepkörök kezelésére.
-
-Az alábbi feladatokat javasoljuk az Azure AD-szerepkörök előkészítéséhez, sorrendben:
+Az Azure AD-szerepkörök kezeléséhez Privileged Identity Management előkészítéséhez ajánlott feladatok:
 
 1. [Azure ad-szerepkör beállításainak konfigurálása](pim-how-to-change-default-settings.md).
 1. [Adja meg a jogosult hozzárendeléseket](pim-how-to-add-role-to-user.md).
@@ -48,9 +46,7 @@ Az alábbi feladatokat javasoljuk az Azure AD-szerepkörök előkészítéséhez
 
 ## <a name="prepare-pim-for-azure-roles"></a>A PIM előkészítése az Azure-szerepkörökhöz
 
-Miután engedélyezte a Privileged Identity Management a címtárhoz, előkészítheti a Privileged Identity Managementt az Azure-erőforrásokhoz való hozzáféréshez szükséges Azure-szerepkörök kezeléséhez az előfizetésben.
-
-Az alábbi feladatokat javasoljuk az Azure-szerepkörök előkészítéséhez, sorrendben:
+Az alábbiakban azokat a feladatokat javasoljuk, amelyekkel előkészítheti Privileged Identity Management az előfizetéshez tartozó Azure-szerepkörök kezeléséhez:
 
 1. [Az Azure-erőforrások felfedezése](pim-resource-roles-discover-resources.md)
 1. [Konfigurálja az Azure-szerepkör beállításait](pim-resource-roles-configure-role-settings.md).
@@ -63,7 +59,7 @@ A Privileged Identity Management beállítása után megismerheti a módját.
 
 ![Navigációs ablak Privileged Identity Management feladatok és kezelési beállítások megjelenítése](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Feladat + kezelés | Description |
+| Feladat + kezelés | Leírás |
 | --- | --- |
 | **Saját szerepkörök**  | Megjeleníti az Önhöz hozzárendelt jogosult és aktív szerepkörök listáját. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
 | **Saját kérések** | Megjeleníti a jogosult szerepkör-hozzárendelések aktiválásához függőben lévő kéréseit. |
@@ -82,15 +78,15 @@ A Privileged Identity Management megnyitásának megkönnyítéséhez adjon hozz
 
     ![Azure AD Privileged Identity Management az összes szolgáltatásban](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Válassza ki a Privileged Identity Management rövid útmutatót.
+1. Válassza ki a Privileged Identity Management **gyors üzembe helyezést**.
 
-1. Az irányítópultra rögzítheti az Privileged Identity Management rövid útmutató panelt az **irányítópulton** .
+1. Válassza a **panel rögzítése az irányítópulton** lehetőséget, hogy rögzítse a Privileged Identity Management **gyors üzembe helyezés** lapját az irányítópulton.
 
-    ![Gombostű ikonja Privileged Identity Management panel rögzítése az irányítópulton](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Gombostű ikonja Privileged Identity Management lap rögzítése az irányítópulton](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Az Azure-irányítópulton a következőhöz hasonló csempe látható:
 
-    ![Privileged Identity Management rövid útmutató csempe az irányítópulton](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Privileged Identity Management gyors üzembe helyezési csempe az irányítópulton](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>További lépések
 

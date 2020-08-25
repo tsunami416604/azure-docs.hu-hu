@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741980"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798074"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>A csoportok adatainak frissítése a saját alkalmazások portálon
 
@@ -26,7 +26,7 @@ Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** portálo
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
 
 ## <a name="view-your-groups-information"></a>A csoportok adatainak megtekintése
 
@@ -82,7 +82,7 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
         - **Biztonsági.** Segítségével kezelheti a tag és a számítógép hozzáféréseket a megosztott erőforrásokhoz a felhasználók egy csoportjára. Például létrehozhat egy biztonsági csoportot egy meghatározott biztonsági házirendhez. Ha így tesz, az összes tagnak egyszerre oszthatja ki az engedélyeket, nem kell az engedélyeket minden tagnak külön kiadni.
 
-        - **Office 365.** Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a beállítás lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz.
+        - **Office 365.** Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a lehetőség lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz.
 
     - **Csoport neve.** Olyan nevet adjon a csoportnak, aminek értelme van és nem felejti el.
 
@@ -90,7 +90,7 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
     - **Csoportházirend.** Válassza ki a lehetőséget, hogy mindenki csatlakozzon a csoporthoz, vagy csak a csoport tulajdonosa számára engedélyezze a tagok hozzáadását.
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
     Az új csoport tulajdonosként jön létre, és megjelenik a **saját csoportok** listájában. Mivel Ön a tulajdonosa, ez a csoport is megjelenik a listán szereplő **csoportokban** .
 
@@ -164,7 +164,7 @@ Egy már meglévő csoportot is csatlakozhat a **csoportok** lapról, vagy megha
 
     ![Csatlakozás a csoportok oldalhoz, a kilépés gomb kiemelésével](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 

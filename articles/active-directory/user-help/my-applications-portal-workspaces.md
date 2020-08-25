@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 29a202b3833bbc6ee550df89b240d95ecb38ef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742051"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798057"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Gyűjtemények használata a saját alkalmazások portálján
 
@@ -26,7 +26,7 @@ A gyűjtemények különböző alkalmazás-nézetek, amelyeket a **saját alkalm
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/access-panel-collections.md).
 
 ## <a name="access-apps-using-collections"></a>Alkalmazások elérése gyűjtemények használatával
 
@@ -40,7 +40,7 @@ A listában megjelenő többi gyűjteményt a rendszergazda hozta létre, és me
 
 Amikor kiválaszt és megtekint egy gyűjteményt, csak azok az alapértelmezett alkalmazások jelennek meg, amelyekhez hozzáfér.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután az alkalmazásokat a **saját alkalmazások** portál különböző kategóriáira rendezi, a következőket teheti:
 

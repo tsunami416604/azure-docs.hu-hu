@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 98d7566d5e9339ea2ac5d81d91f1d9f8ace5b0f4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719636"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816065"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Central
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 Az eszköz által küldött telemetria figyeléséhez használja a következő parancsot:
 
 ```cmd/bash
-az iot central app monitor-events -n <app-id> -d <device-name>
+az iot central app monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Ha az eszköz sikeresen csatlakozott a IoT Centralhoz, a következőhöz hasonló kimenet jelenik meg:
@@ -82,7 +82,7 @@ Filtering on device: device-001
 Ha figyelni szeretné a tulajdonság frissítését, az eszköz IoT Central a következő előnézeti paranccsal végez cserét:
 
 ```cmd/bash
-az iot central app monitor-properties -n <app-id> -d <device-name>
+az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Ha az eszköz sikeresen elküldte a tulajdonságokat, a következőhöz hasonló kimenet jelenik meg:
@@ -108,7 +108,7 @@ Ha továbbra sem jelenik meg az adatok a terminálon, akkor valószínű, hogy a
 Ha az adatai nem jelennek meg a figyelőben, ellenőrizze az eszköz kiépítési állapotát a következő parancs futtatásával:
 
 ```cmd/bash
-az iot central app device registration-info -n <app-id> -d <device-id>
+az iot central app device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 Az alábbi kimenet egy olyan eszközt mutat be, amely nem kapcsolódik a csatlakozáshoz:
@@ -133,7 +133,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | n.a. |
+| Kiépítve | Nincs azonnal felismerhető probléma. | N.A. |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
 | Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#connect-without-registering-devices) |
@@ -178,13 +178,13 @@ Ha szeretné megállapítani, hogy a probléma melyik kategóriába esik, futtas
 - A telemetria érvényesítéséhez használja az előnézet parancsot:
 
     ```cmd/bash
-    az iot central app validate-messages -n <app-id> -d <device-name>
+    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - A tulajdonságok frissítéseinek ellenőrzéséhez használja az előnézet parancsot
 
     ```cmd/bash
-    az iot central app validate-properties -n <app-id> -d <device-name>
+    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
 - Ha inkább grafikus felhasználói felületet szeretne használni, a IoT Central **nyers** adatnézet használatával ellenőrizze, hogy valami nincs-e modellezve. A **nyers adatok** nézet nem ismeri fel, hogy az eszköz helytelenül formázott JSON-t küld-e.

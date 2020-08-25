@@ -3,17 +3,17 @@ title: OPERÁCIÓSRENDSZER-lemezek titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja az operációs rendszer (OS) lemezeit az ügyfél által felügyelt kulcsokkal Azure DevTest Labsban.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566199"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815921"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Operációs rendszer (OS) lemezek titkosítása az ügyfél által felügyelt kulcsok használatával Azure DevTest Labs
 A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az SSE alapértelmezés szerint automatikusan titkosítja a felügyelt lemezeken tárolt adatait az Azure-ban (az operációs rendszer és az adatlemezek), amikor a felhőben megmarad. További információ az Azure-beli [lemezek titkosításáról](../virtual-machines/windows/disk-encryption.md) . 
 
-A DevTest Labs szolgáltatásban a labor részeként létrehozott operációsrendszer-lemezek és adatlemezek a platform által felügyelt kulcsok használatával lesznek titkosítva. A labor tulajdonosaként azonban úgy is dönthet, hogy a saját kulcsait használva titkosítja a tesztkörnyezet virtuális gépe operációsrendszer-lemezeit. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhatja az **ügyfél által felügyelt kulcsot** , amelyet a rendszer a Lab operációsrendszer-lemezeken tárolt adattitkosításhoz használ. Az ügyfél által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lásd még: [korlátozások az ügyfél által felügyelt kulcsok használatával](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+A DevTest Labs szolgáltatásban a labor részeként létrehozott operációsrendszer-lemezek és adatlemezek a platform által felügyelt kulcsok használatával lesznek titkosítva. A labor tulajdonosaként azonban úgy is dönthet, hogy a saját kulcsait használva titkosítja a tesztkörnyezet virtuális gépe operációsrendszer-lemezeit. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhatja az **ügyfél által felügyelt kulcsot** , amelyet a rendszer a Lab operációsrendszer-lemezeken tárolt adattitkosításhoz használ. Az ügyfél által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lásd még: [korlátozások az ügyfél által felügyelt kulcsok használatával](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,7 +25,7 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-1. Ha nem rendelkezik lemezes titkosítási készlettel, akkor az alábbi cikk alapján [állítson be egy Key Vault és egy lemezes titkosítási készletet](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Jegyezze fel a következő követelményeket a lemez titkosítási készletéhez: 
+1. Ha nem rendelkezik lemezes titkosítási készlettel, akkor az alábbi cikk alapján [állítson be egy Key Vault és egy lemezes titkosítási készletet](../virtual-machines/disks-enable-customer-managed-keys-portal.md). Jegyezze fel a következő követelményeket a lemez titkosítási készletéhez: 
 
     - A lemez titkosítási készletének ugyanabban a **régióban és előfizetésben kell lennie, mint a labornak**. 
     - Győződjön meg arról, hogy (Lab tulajdonos) rendelkezik **-e legalább olvasó szintű hozzáféréssel** ahhoz a lemezes titkosítási készlethez, amelyet a labor operációsrendszer-lemezek titkosításához fog használni. 

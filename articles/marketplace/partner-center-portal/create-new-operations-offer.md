@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606103"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817000"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
@@ -21,7 +21,7 @@ Ez a témakör bemutatja, hogyan hozhat létre új Dynamics 365 for Operations a
 A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 >[!NOTE]
-> Ha egy ajánlat közzé lett téve, a partner Centerben végzett ajánlat szerkesztése csak a rendszeren történik meg, és az újbóli közzététel után tárolja az előfizetéseket. Győződjön meg arról, hogy a módosítások elvégzése után elküldi az ajánlatot közzétételre.
+> Az ajánlat közzétételét követően az ajánlat szerkesztése csak a partner Centerben és az online áruházban lesz frissítve, miután újra beküldi az ajánlatot a kiadványba.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
@@ -193,12 +193,16 @@ Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az 
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémáját két képpontos méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** embléma létrehozásához. Ezt később is lecserélheti egy másik rendszerképpel.
 
-- **Kicsi** (48 x 48)
-- **Nagyméretű** (216 x 216)
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
+
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 

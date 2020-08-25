@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606049"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816983"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -135,18 +135,19 @@ Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az 
 >[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
-#### <a name="marketplace-logos"></a>Piactéri emblémák
+#### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg ajánlata emblémáját négy képpontos méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
 
-- **Kicsi** (48 x 48)
-- **Közepes** (90 x 90)
-- **Nagyméretű** (216 x 216)
-- **Széles** (255 x 115)
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Közepes** (90 x 90 px, nem kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
 
-Ezeket az emblémákat az Azure Marketplace különböző helyein használják:
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 
@@ -265,7 +266,7 @@ Amikor egy ügyfél üzembe helyezi az ajánlatot, az Azure-beli [delegált erő
 
 Bármikor [közzéteheti az ajánlat frissített verzióját](update-existing-offer.md) . Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni egy korábban közzétett ajánlathoz. Ha így tesz, a már hozzáadott ügyfelek egy ikont láthatnak a Azure Portal [**szolgáltatók**](../../lighthouse/how-to/view-manage-service-providers.md) lapján, amely lehetővé teszi, hogy a frissítés elérhető legyen. Minden ügyfél áttekintheti a módosításokat, és eldöntheti, hogy szeretné-e frissíteni az új verzióra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)
 - [További tudnivalók az Azure Lighthouse-ról](../../lighthouse/overview.md)

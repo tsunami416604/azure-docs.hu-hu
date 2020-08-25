@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757914"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799281"
 ---
-# <a name="business-card-concepts"></a>Névjegykártya-fogalmak
+# <a name="business-card-concepts"></a>Névjegykártyákra vonatkozó fogalmak
 
 Az Azure űrlap-felismerő szolgáltatás az előre elkészített modellek egyikével elemezheti és kinyerheti az üzleti kártyákból származó kulcs érték párokat. A Business Card API ötvözi a hatékony optikai karakterfelismerési (OCR) képességeket a Business Card Understanding modell segítségével, hogy az üzleti kártyákról angol nyelven kinyerje a legfontosabb információkat. Kigyűjti a személyes kapcsolattartási adatokat, a vállalat nevét, a munkakör címét és egyebeket. Az előre elkészített névjegykártya API nyilvánosan elérhető a Form felismerő v 2.1 előzetes verziójában. 
 
@@ -70,7 +70,7 @@ A második lépés a [Get elemezze névjegykártya-eredmény](https://westcentra
 
 Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a névjegykártya-megértést és a szöveges felismerés eredményeit. Az üzleti kártya megértésének eredménye a megnevezett mezőértékek szótára lesz, ahol minden érték a kinyert szöveget, normalizált értéket, határoló mezőt, megbízhatóságot és a hozzá tartozó elemeket tartalmazza. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
 
-![Contoso smample eredményei](./media/business-card-results.png)
+![névjegykártya-kimenet mintája](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Példa JSON-kimenetre
 
@@ -90,8 +90,8 @@ Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" cso
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-    "lines": 
-         {
+                "lines": 
+                          {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -389,7 +389,7 @@ A Business Card API-val kinyert adatok különféle feladatok elvégzésére has
 
 A Business Card API a [AIBuilder névjegykártya-feldolgozási funkciót](https://docs.microsoft.com/ai-builder/prebuilt-business-card)is felhasználja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első lépések a [Business Cards API Python](./quickstarts/python-business-cards.md) gyors üzembe helyezésének első lépéseiben
 - Az űrlap- [felismerő ismertetése REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

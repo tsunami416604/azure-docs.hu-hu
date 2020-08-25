@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185213"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816174"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>A mobilitási szolgáltatás leküldéses telepítésének hibáinak megoldása
 
@@ -41,8 +41,8 @@ Windows esetén (**95107**-es hiba) ellenőrizze, hogy a felhasználói fiók re
 * Távoli felhasználói hozzáférés-vezérlést letiltó beállításkulcs manuális hozzáadása:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Új hozzáadása `DWORD` :`LocalAccountTokenFilterPolicy`
-  * Érték beállítása a következőre`1`
+  * Új hozzáadása `DWORD` : `LocalAccountTokenFilterPolicy`
+  * Érték beállítása a következőre `1`
 
 * A beállításkulcs hozzáadásához a parancssorból futtassa a következő parancsot:
 
@@ -129,6 +129,28 @@ A hiba elhárítása:
 ## <a name="connectivity-failure-errorid-95523"></a>Csatlakozási hiba (ErrorID: 95523)
 
 Ez a hiba akkor fordul elő, ha a forrást futtató hálózat nem található, lehet, hogy törölték, vagy már nem érhető el. A hiba elhárításának egyetlen módja a hálózat létezésének biztosítása.
+
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>Hálózati megosztott mappák hozzáférésének engedélyezése a forrásoldali gépen (ErrorID: 95105, 95523)
+
+Ellenőrizze, hogy a virtuális gépen lévő hálózati megosztott mappák elérhetők-e a Process Server (PS) szolgáltatásból a megadott hitelesítő adatok használatával távolról. A hozzáférés megerősítése: 
+
+1. Jelentkezzen be a Process Server-gépre.
+2. Nyissa meg a Fájlkezelőt. A címsorba írja be a értéket, `\\<SOURCE-MACHINE-IP>\C$` majd kattintson az ENTER (bevitel) gombra.
+
+    ![Mappa megnyitása a PS-ben](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. A fájlkezelő kérni fogja a hitelesítő adatokat. Adja meg a felhasználónevet és a jelszót, majd kattintson az OK gombra. <br><br/>
+
+    ![Hitelesítő adatok megadása](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > Ha a forrásoldali számítógép tartományhoz csatlakozik, adja meg a tartománynevet a felhasználónévvel együtt `<domainName>\<username>` . Ha a forrásszámítógép munkahelyi csoportban van, csak a felhasználónevet adja meg.
+
+4. Ha a kapcsolatok sikeresek, a forrásoldali számítógép mappái távolról láthatók lesznek a Process Serverről.
+
+    ![A forrásoldali gépről látható mappák](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+Ha a csatlakozás sikertelen, ellenőrizze, hogy teljesülnek-e az előfeltételek.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Fájl-és nyomtatómegosztás-ellenőrzési szolgáltatások (ErrorID: 95105 & 95106)
 
@@ -260,7 +282,7 @@ Ha a mobilitási ügynököt a forrásoldali gépre másolja, legalább 100 MB s
 
 ## <a name="low-system-resources"></a>Alacsony rendszererőforrások
 
-Ez a probléma akkor fordul elő, ha a rendszer alacsony rendelkezésre állású memóriával rendelkezik, és nem tud memóriát lefoglalni a mobilitási szolgáltatás telepítéséhez. Győződjön meg arról, hogy a telepítés folytatásához és sikeres befejezéséhez elegendő memória van kiszabadítva.
+A probléma lehetséges hibáinak azonosítói a következők: 95572 és 95573. Ez a probléma akkor fordul elő, ha a rendszer alacsony rendelkezésre állású memóriával rendelkezik, és nem tud memóriát lefoglalni a mobilitási szolgáltatás telepítéséhez. Győződjön meg arról, hogy a telepítés folytatásához és sikeres befejezéséhez elegendő memória van kiszabadítva.
 
 ## <a name="vss-installation-failures"></a>VSS-telepítési hibák
 
@@ -396,6 +418,6 @@ A hiba megoldása érdekében:
 
 1. Telepítse újra a hiányzó illesztőprogramokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](vmware-azure-tutorial.md) információ a VMWare virtuális gépek vész-helyreállításának beállításáról.

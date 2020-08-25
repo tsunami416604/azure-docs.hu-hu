@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607393"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816269"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -22,7 +22,7 @@ Ez a cikk a Microsoft kereskedelmi Marketplace-ajánlatok létrehozásának és 
 
 | Beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Offer Name | Alkalmazások esetében adjon meg egy világos címet, amely tartalmazza a keresési kulcsszavakat, amelyek segítségével az ügyfelek felfedezhetik az ajánlatot. <br> <br> A tanácsadási szolgáltatások esetében kövesse az alábbi formátumot: [ajánlat neve: [időtartam] [ajánlat típusa] (például contoso: 2 hetes implementáció) |
+| Ajánlat neve | Alkalmazások esetében adjon meg egy világos címet, amely tartalmazza a keresési kulcsszavakat, amelyek segítségével az ügyfelek felfedezhetik az ajánlatot. <br> <br> A tanácsadási szolgáltatások esetében kövesse az alábbi formátumot: [ajánlat neve: [időtartam] [ajánlat típusa] (például contoso: 2 hetes implementáció) |
 | Ajánlat leírása | Adjon meg egy egyértelmű leírást, amely leírja az ajánlat értékeit az első néhány mondatban.  Ne feledje, hogy ezek a mondatok a keresőmotor eredményeiben is használhatók. Az értékek kiosztásának alapvető összetevői a következők: <ul> <li>A termék vagy megoldás leírása. </li> <li> A termék vagy megoldás előnyeit élvező felhasználói persona. </li> <li> Az ügyfélnek szüksége van a termékre vagy a megoldás címére. </li> </ul> <br> Ha lehetséges, használja az iparági szabványnak megfelelő szókincset vagy juttatáson alapuló szövegezést.  Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez.  Ehelyett a megadott értékre kell összpontosítania. <br> <br> A tanácsadási szolgáltatások listázásához egyértelműen adja meg az Ön által megadott professzionális szolgáltatást. |
 
 > [!IMPORTANT]
@@ -54,12 +54,12 @@ A kategóriák és alkategóriák a célközönség alapján vannak leképezve a
 
 Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóriákat, valamint a célközönséget. Az alábbiak közül választhat:
 
-* Legfeljebb két (2) kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
-* Akár két (2) alkategória az egyes elsődleges és/vagy másodlagos kategóriákhoz. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető.
+* Legfeljebb két kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
+* Legfeljebb két alkategória lehet minden elsődleges és/vagy másodlagos kategóriához. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-**Fontos: SaaS-ajánlatok és Microsoft 365-bővítmények**
+#### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>Fontos: SaaS-ajánlatok és Microsoft 365-bővítmények
 
 Tekintse meg az [útmutató ajánlat típusát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) , amely részletesen ismerteti, hogy a Transact-funkciók milyen hatással lehetnek az ajánlat megtekintésére és a piactéren elérhető ügyfelek általi vásárlására. Az SaaS-ajánlatok esetében az ajánlat tranzakciós képessége, valamint a kategória kiválasztása határozza meg azt az online áruházat, ahol az ajánlat közzé lesz téve:
 
@@ -94,7 +94,7 @@ Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és
 | **Disztribúció** | Nagykereskedelem <br> Parcella & csomag szállítása |  
 | **Education** | Felsőoktatás <br> Elsődleges & másodlagos edu/K-12 <br> Könyvtárak & múzeumok |
 | **Pénzügyi szolgáltatások** | Banki & tőkepiacok <br> Biztosítási | 
-| **Government** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
+| **Államigazgatás** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
 | **Egészségügy** | Állapot költségviselő <br> Állapot szolgáltatója <br> Gyógyszerek | 
 | **Vendéglátás & utazás** | Utazási & szállítás <br> Hotelek & szabadidő <br> Éttermek & Food Services | 
 | **Gyártási & erőforrások** | Kémiai & Agrokémiai <br> Diszkrét gyártás <br> Energia | 
@@ -120,9 +120,9 @@ A kulcsszavak segítségével az ügyfelek megkereshetik az ajánlatot a keresé
 ## <a name="online-store-marketing-details"></a>Online áruházbeli marketing részletei
 | Beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Ajánlat emblémája (PNG formátum, 48 &nbsp; &times; &nbsp; 48): keresési oldal | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat keresési oldalára. |
-| Ajánlat emblémája (PNG formátum, 216 &nbsp; &times; &nbsp; 216): alkalmazás részletei lap | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat alkalmazás részletei listázási oldalára. |
-| "További információ" dokumentumok | A "További információ" című részében szerepelnek a Sales és a marketing-eszközök támogatása, néhány példa: <ul> <li> tanulmányok, </li> <li> brosúrák </li> <li> Ellenőrzőlista vagy </li> <li> PowerPoint-bemutatók.</li> </ul>Mentse az összes fájlt PDF formátumban. A cél az, hogy az ügyfeleket ne értékesítsen. <br><br>Vegyen fel egy hivatkozást az alkalmazás kezdőlapján az összes dokumentumra, és adjon hozzá URL-paramétereket a látogatók és a próbaverziók nyomon követéséhez. |
+| Ajánlat emblémája (PNG formátum, 216 × 216 – 350 x 350 px): alkalmazás részletei lap | A digitális médiumok emblémájának megtervezése és optimalizálása:<br>Töltse fel a logót PNG formátumban az ajánlat alkalmazás részletei listázási oldalára. A partner Center átméretezi a szükséges méretű emblémákat. |
+| Ajánlat emblémája (PNG formátum, 48 × 48 képpont): keresési oldal | A partner Center a feltöltött nagy embléma alapján hozza ezt az emblémát. Ezt később is lecserélheti egy másik rendszerképpel. |
+| "További információ" dokumentumok | A "További információ" című részében szerepelnek a Sales és a marketing-eszközök támogatása, néhány példa:<ul><li>tanulmányok</li><li> brosúrák</li><li>Ellenőrzőlista vagy</li><li> PowerPoint-bemutatók</li></ul><br>Mentse az összes fájlt PDF formátumban. A cél az, hogy az ügyfeleket ne értékesítsen.<br><br>Vegyen fel egy hivatkozást az alkalmazás kezdőlapján az összes dokumentumra, és adjon hozzá URL-paramétereket a látogatók és a próbaverziók nyomon követéséhez. |
 | Videók: AppSource, tanácsadási szolgáltatások és SaaS-ajánlatok | A legerősebb videók az ajánlat értékét a narratív formában közlik:<ul> <li> Tegye meg az ügyfelet, és ne a vállalata, a történet hőse. </li> <li> A videónak foglalkoznia kell a megcélzott ügyfél legfontosabb kihívásaival és céljaival. </li> <li> Javasolt hossz: 60-90 másodperc.</li> <li> A videók nevét használó legfontosabb keresési szavakat foglalja bele. </li> <li> Vegye fontolóra további videók, például útmutató, első lépések vagy vásárlói visszajelzések hozzáadását. </li> </ul> |
 | Képernyőképek (1280 &nbsp; &times; &nbsp; 720) | Legfeljebb öt képernyőkép hozzáadása:<br>A kulcsok keresési szavainak belefoglalása a fájlnevekben. |
 
@@ -136,9 +136,8 @@ A következő példában szereplő URL-cím az előző lekérdezési paramétere
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 
 Az ajánlat létrehozásához és konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-

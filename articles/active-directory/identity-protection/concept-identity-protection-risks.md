@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507433"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815052"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -39,6 +39,7 @@ Ezeket a kockázatokat a Microsoft belső és külső veszélyforrások elleni i
 | Kockázati észlelés | Leírás |
 | --- | --- |
 | Kiszivárgott hitelesítő adatok | Ez a kockázati észlelési típus azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. Ha a kiberbűnözők veszélyezteti a legitim felhasználók érvényes jelszavait, gyakran megosztják ezeket a hitelesítő adatokat. Ezt a megosztást általában nyilvánosan közzétesszük a Dark web, a Sites vagy a Trading szolgáltatásban, és a hitelesítő adatokat a fekete piacon forgalmazzák. Ha a Microsoft által kiszivárgott hitelesítő adatokkal rendelkező szolgáltatás felhasználói hitelesítő adatokat kér a sötét webhelyről, illetve más forrásokból, akkor azokat a rendszer az Azure AD-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi, hogy érvényes egyezéseket keres. A kiszivárgott hitelesítő adatokkal kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](#common-questions). |
+| Jelszó spray | A jelszó-szórásos támadás olyankor történik, ahol több felhasználónevet is megtámadnak a gyakori jelszavakkal egy egységes találgatásos kényszerített módon a jogosulatlan hozzáférés megszerzéséhez. Ez a kockázati észlelés akkor aktiválódik, ha jelszó-szórásos támadást hajtottak végre. |
 | Azure AD-fenyegetések felderítése | Ez a kockázati észlelési típus azt jelzi, hogy az adott felhasználó számára szokatlan felhasználói tevékenység van, vagy konzisztens a Microsoft belső és külső veszélyforrások elleni hírszerzési forrásaira épülő ismert támadási mintákkal. |
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat

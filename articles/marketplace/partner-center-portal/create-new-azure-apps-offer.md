@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606182"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815665"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -249,16 +249,17 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának PNG-fájlját a következő három pixeles méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
 
-- **Kicsi** (48 x 48)
-- **Közepes** (90 x 90)
-- **Nagyméretű** (216 x 216)
-- **Széles** (255 x 115)
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Közepes** (90 x 90 px, nem kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
 
-Mindhárom emblémát meg kell adni, és a lista különböző helyein használják.
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 
@@ -599,6 +600,6 @@ A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat �
 
 Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa ki azokat az ajánlat ismételt közzététele előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

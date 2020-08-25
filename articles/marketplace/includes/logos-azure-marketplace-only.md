@@ -7,14 +7,14 @@ ms.topic: include
 author: dannyevers
 ms.author: mingshen
 ms.reviewer: trkeya
-ms.date: 08/07/2020
-ms.openlocfilehash: 5dcf1f932e72473b6d4bc2442b19b5a674becaa4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/18/2020
+ms.openlocfilehash: 3659b9dbdd6108a650ffc44169bed1d33b140345
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031492"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815630"
 ---
--   A kis embléma (48 x 48 képpont) megjelenik az Azure Marketplace keresési eredményei között.
--   A közepes embléma (90 x 90 képpont) akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
--   A nagyméretű embléma (216 x 216 és 350 x 350 képpont között) megjelenik az ajánlati lista oldalán az Azure Marketplace-en.
+- A nagyméretű embléma megjelenik az ajánlat listázási lapján az Azure Marketplace-en.
+- A közepes embléma (nem kötelező) akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
+- A kis embléma (opcionális) az Azure piactér keresési eredményei között jelenik meg.

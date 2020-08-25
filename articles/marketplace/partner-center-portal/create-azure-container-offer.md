@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606363"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815631"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure-tárolóra vonatkozó ajánlat létrehozása az Azure Marketplace-en
 
@@ -197,16 +197,17 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
- Adja meg az ajánlat emblémájának PNG-fájlját a következő négy pixeles méretben:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
 
-- **Kicsi** (48 x 48)
-- **Közepes** (90 X 90)
-- **Nagyméretű** (216 x 216)
-- **Széles** (255 X 115)
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Közepes** (90 x 90 px, nem kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
 
-Mind a négy emblémát kötelező megadni, és a piactér-lista különböző helyein használatos.
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

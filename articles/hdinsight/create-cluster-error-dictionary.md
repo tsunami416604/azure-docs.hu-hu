@@ -7,13 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/19/2019
-ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186634"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816456"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure-HDInsight: fürtök létrehozásával kapcsolatos hibák
 
@@ -24,19 +24,17 @@ Ez a cikk a fürtök létrehozásakor esetlegesen előforduló hibák megoldása
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
 
-### <a name="error"></a>Hiba
+**Hiba**: "a parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
 
-"A parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
-
-#### <a name="error-message"></a>Hibaüzenet
+### <a name="error-message-1"></a>1. hibaüzenet
 
 "A távoli kiszolgáló a következő hibát adta vissza: (404) nem található."
 
-### <a name="cause"></a>Ok
+#### <a name="cause"></a>Ok
 
 A HDInsight szolgáltatás nem fér hozzá a fürt létrehozása kérelem részeként megadott parancsfájl-művelet URL-címéhez. A szolgáltatás megkapja az előző hibaüzenetet, amikor megpróbál hozzáférni a parancsfájl művelethez.
 
-### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 - HTTP-vagy HTTPS-URL-cím esetén ellenőrizze, hogy az URL-cím egy inkognitóban böngészőablakban található-e.
 - WASB URL-cím esetén győződjön meg arról, hogy a parancsfájl létezik a kérelemben megadott Storage-fiókban. Győződjön meg arról is, hogy a Storage-fiókhoz tartozó tárolási kulcs helyes.
@@ -44,37 +42,29 @@ A HDInsight szolgáltatás nem fér hozzá a fürt létrehozása kérelem része
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
-
-### <a name="error"></a>Hiba
-
-"A parancsfájl műveleti helye nem érhető el URI: \<SCRIPT_ACTION_URL\> "
-
-#### <a name="error-message"></a>Hibaüzenet
+### <a name="error-message-2"></a>2. hibaüzenet
 
 "A megadott parancsfájl URI \<SCRIPT_URI\> -ja a ADLS, de a fürthöz nem tartozik a (z)"
 
-### <a name="cause"></a>Ok
+#### <a name="cause"></a>Ok
 
 A HDInsight szolgáltatás nem fér hozzá a fürt létrehozása kérelem részeként megadott parancsfájl-művelet URL-címéhez. A szolgáltatás megkapja az előző hibaüzenetet, amikor megpróbál hozzáférni a parancsfájl művelethez.
 
-### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Adja hozzá a megfelelő Azure Data Lake Storage 1. generációs fiókot a fürthöz. Adja hozzá azt a szolgáltatásnevet is, amely hozzáfér a Data Lake Storage Gen 1 fiókhoz a fürthöz.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
-
-### <a name="error"></a>Hiba
+### <a name="error-message-3"></a>3. hibaüzenet
 
 \<CUSTOMER_SPECIFIED_VM_SIZE\>A kérelemben megadott "virtuálisgép-méret" érvénytelen vagy nem támogatott a (z) "" szerepkörben \<ROLE\> . Az érvényes értékek a következők: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
-### <a name="cause"></a>Ok
+#### <a name="cause"></a>Ok
 
 A virtuális gép megadott mérete nem engedélyezett a szerepkörhöz. Ez a hiba akkor fordulhat elő, ha a virtuális gép mérete nem a várt módon működik, vagy nem megfelelő a számítógép szerepkörhöz.
 
-### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A hibaüzenet felsorolja a virtuális gép méretének érvényes értékeit. Válassza ki az alábbi értékek egyikét, majd próbálja megismételni a fürt létrehozása kérelmet.
 
@@ -90,7 +80,7 @@ A hibaüzenet felsorolja a virtuális gép méretének érvényes értékeit. V�
 
 A fürt létrehozása során megadott **VirtualNetworkId** érték formátuma nem megfelelő.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy a **VirtualNetworkId** és az alhálózati értékek a megfelelő formátumban vannak. A **VirtualNetworkId** értékének lekérése:
 
@@ -114,7 +104,7 @@ Győződjön meg arról, hogy a **VirtualNetworkId** és az alhálózati érték
 
 A fürt létrehozásakor megadott egyéni parancsfájl végrehajtása a fürt sikeres telepítése után történik. Ez a hibakód azt jelzi, hogy hiba történt a nevű egyéni parancsfájl végrehajtása során \<SCRIPT_NAME\> .
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Mivel a szkript az egyéni szkript, javasoljuk, hogy hárítsa el a problémát, és szükség esetén futtassa újra a parancsfájlt. A parancsfájl hibáinak megoldásához vizsgálja meg a/var/lib/ambari-Agent/* mappában található naplókat. Vagy nyissa meg a Ambari felhasználói felületén az **Operations (műveletek** ) lapot, majd a hiba részleteinek megtekintéséhez válassza ki a **run_customscriptaction** műveletet.
 
@@ -130,7 +120,7 @@ Mivel a szkript az egyéni szkript, javasoljuk, hogy hárítsa el a problémát,
 
 Az egyéni metaadattár nem kompatibilis a kiválasztott HDInsight-fürt verziójával. A HDInsight 4,0-fürtök jelenleg csak a 3,0-es és újabb Metaadattár-verziót támogatják, míg a HDInsight 3,6-fürtök nem támogatják a Metaadattár 3,0-es és újabb verzióit.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Csak azokat a Metaadattár-verziókat használja, amelyeket a HDInsight-fürt verziója támogat. Ha nem ad meg egyéni metaadattár, a HDInsight belsőleg létrehoz egy metaadattár, majd törli azt a fürt törlése után.
 
@@ -146,7 +136,7 @@ Csak azokat a Metaadattár-verziókat használja, amelyeket a HDInsight-fürt ve
 
 A hálózati biztonsági csoporton (NSG) található tűzfalszabály blokkolja a kritikus Azure állapot-és felügyeleti szolgáltatásokkal folytatott kommunikációt.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom szabályozásához, a HDInsight telepítése előtt végezze el a következő műveleteket:
 
@@ -167,7 +157,7 @@ Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom s
 
 Nem adta meg az identitás kezeléséhez szükséges engedélyeket. A felhasználó által hozzárendelt felügyelt identitás nem rendelkezik Blob Storage közreműködő szerepkörrel a Azure Data Lake Storage Gen2 Storage-fiókban.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Nyissa meg az Azure Portalt.
 1. Nyissa meg a Storage-fiókját.
@@ -188,7 +178,7 @@ További információ: az [Data Lake Storage Gen2 fiókban található felügyel
 
 Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalak (UDR-EK) vezérlik a HDInsight-fürt felé irányuló bejövő forgalmat, akkor győződjön meg arról, hogy a fürt képes kommunikálni a kritikus Azure állapot-és felügyeleti szolgáltatásokkal.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom szabályozásához, a HDInsight telepítése előtt végezze el a következő műveleteket:
 
@@ -208,7 +198,7 @@ Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom s
 
 Ez a hiba általában akkor jön létre, ha átmeneti probléma merül fel, vagy ha egy Azure-leállás történik.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy minden olyan Azure- [leállást](https://status.azure.com) tartalmaz, amely hatással lehet a fürt üzembe helyezésére. Ha nincsenek kimaradások, próbálja megismételni a fürt üzembe helyezését.
 
@@ -224,13 +214,13 @@ Nem lehet csatlakozni a fürt felügyeleti végponthoz. Próbálkozzon újra ké
 
 A HDInsight szolgáltatás nem tud csatlakozni a fürthöz a fürt létrehozásakor
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha az egyéni VNet hálózati biztonsági csoportot (NSG) és a felhasználó által megadott útvonalakat (UDR) használja, győződjön meg arról, hogy a fürt képes kommunikálni a HDInsight felügyeleti szolgáltatásaival. További információ: [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hibakód: az üzemelő példányok házirend megsértése miatt sikertelenek: a (z) erőforrást <Resource URI> a szabályzat nem engedélyezte. Házirend-azonosítók: "[{" policyAssignment ": {" Name ":" <Policy Name> "," id ":"/Providers/Microsoft.Management/managementGroups/ <Management Group Name> providers/Microsoft. Authorization/policyAssignments/ <Policy Name> "}," policyDefinition ":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hibakód: az üzemelő példányok házirend megsértése miatt sikertelenek: a (z) erőforrást <Resource URI> a szabályzat nem engedélyezte. Házirend-azonosítók: "[{" policyAssignment ": {" Name ":" <Policy Name> "," id ":"/Providers/Microsoft.Management/managementGroups/ <Management Group Name> providers/Microsoft. Authorization/policyAssignments/ <Policy Name> "}," policyDefinition ": <Policy Definition>
 
 ### <a name="cause"></a>Ok
 
@@ -242,7 +232,7 @@ A következő házirendek általában befolyásolják a fürtök létrehozását
 * Házirend, amely megakadályozza a Storage-fiókok létrehozását.
 * Olyan házirend, amely megakadályozza a hálózati erőforrások, például az IP-címek vagy a terheléselosztó törlését.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Törölje vagy tiltsa le az előfizetés-alapú Azure Policy hozzárendelést a HDInsight-fürt létrehozásakor.
 

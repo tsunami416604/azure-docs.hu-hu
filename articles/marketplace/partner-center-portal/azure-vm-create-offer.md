@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166705"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816524"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -180,7 +180,7 @@ Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az aj
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
-#### <a name="name"></a>Name (Név)
+#### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező az ajánlat **aliasa** mezőben megadott névvel van feltöltve az ajánlat létrehozásakor. A nevet később módosíthatja. A név:
 
@@ -226,7 +226,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor használandó kapcsolattartási adatokat. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Name (Név)
+- Név
 - E-mail
 - Telefon
 
@@ -234,7 +234,7 @@ Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor hasz
 
 Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén használandó kapcsolattartási adatokat, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Name (Név)
+- Név
 - E-mail
 - Telefon
 
@@ -249,16 +249,17 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace-logók
 
-Adja meg az ajánlat emblémájának PNG-fájlját a következő négy képdimenzióval:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
 
-- **Kicsi** (48 &times; 48 képpont)
-- **Közepes** (90 &times; 90 képpont)
-- **Nagyméretű** (216 &times; 216 képpont)
-- **Széles** (255 &times; 115 képpont)
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Közepes** (90 x 90 px, nem kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
 
-Mind a négy emblémát meg kell adni, és különböző Azure Marketplace-listákban jelennek meg.
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 
@@ -403,7 +404,7 @@ A használati alapú havi számlás csomag esetében a következő három díjsz
 
 Az ügyfeleknek egy-vagy három hónapos *ingyenes próbaverziót* is kínálunk.
 
-#### <a name="visibility"></a>Láthatóság
+#### <a name="visibility"></a>Visibility (Látótávolság)
 
 Megtervezheti, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy kijelölt közönség számára. Az Azure-előfizetési azonosítók használatával társíthat tagságokat ebben a korlátozott célközönségben.
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959993"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816694"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Alacsony prioritású virtuális gépek használata a Batch szolgáltatással
 
@@ -23,7 +23,7 @@ Az alacsony prioritású virtuális gépek használatának kompromisszuma az, ho
 Az alacsony prioritású virtuális gépeket a dedikált virtuális gépekhez képest jelentősen csökkentett áron kínáljuk. A díjszabás részleteiért lásd: [Batch-díjszabás](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
-> Az [egypéldányos virtuális gépekhez](../virtual-machines/linux/spot-vms.md) és a virtuálisgép- [méretezési csoportokhoz](../virtual-machine-scale-sets/use-spot.md)mostantól elérhetők a [helyszíni virtuális gépek](https://azure.microsoft.com/pricing/spot/) . A helyszíni virtuális gépek az alacsony prioritású virtuális gépek fejlődése, azonban a díjszabásban különböznek, és a helyszíni virtuális gépek kiosztásakor a választható maximális árat is megadhatja.
+> Az [egypéldányos virtuális gépekhez](../virtual-machines/spot-vms.md) és a virtuálisgép- [méretezési csoportokhoz](../virtual-machine-scale-sets/use-spot.md)mostantól elérhetők a [helyszíni virtuális gépek](https://azure.microsoft.com/pricing/spot/) . A helyszíni virtuális gépek az alacsony prioritású virtuális gépek fejlődése, azonban a díjszabásban különböznek, és a helyszíni virtuális gépek kiosztásakor a választható maximális árat is megadhatja.
 >
 > Azure Batch készletek az általánosan elérhető néhány hónapon belül elkezdik támogatni a helyszíni virtuális gépeket, a [Batch API-k és eszközök](./batch-apis-tools.md)új verzióival. A helyszíni virtuális gépek támogatásának engedélyezése után az alacsony prioritású virtuális gépek elavultak lesznek, így a jelenlegi API-k és az eszközök verziószáma legalább 12 hónapig érvényes lesz, hogy elegendő idő álljon rendelkezésre a helyszíni virtuális gépekre való áttelepítéshez. 
 >

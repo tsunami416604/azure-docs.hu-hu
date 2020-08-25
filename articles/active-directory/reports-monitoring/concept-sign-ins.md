@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388118"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816082"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -47,11 +47,7 @@ Ez a cikk áttekintést nyújt a bejelentkezési jelentésről.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
 
-- A bejelentkezési tevékenységről szóló jelentés az [Azure ad minden kiadásában](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)elérhető.
-
-- Ha API-val szeretné elérni a bejelentkezési adatait, a bérlőnek hozzá kell rendelnie egy [prémium szintű Azure Active Directory](../fundamentals/active-directory-get-started-premium.md) -licencet.
-
-
+A bejelentkezési tevékenységről szóló jelentés az [Azure ad minden kiadásában](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) elérhető, és a Microsoft Graph API-n keresztül is elérhető.
 
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
@@ -128,7 +124,7 @@ Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön 
 
 A **hely** – a hálózatról kezdeményezett hely:
 
-- Település
+- City
 
 - Állam/megye
 
@@ -238,7 +234,7 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - Ügyfél
 - Hely
 - IP-cím
-- Dátum
+- Date
 - Az MFA megadása kötelező
 - Bejelentkezés állapota
 
@@ -279,7 +275,7 @@ Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központbó
 
 Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
 * [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)

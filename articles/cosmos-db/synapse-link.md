@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034178"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814390"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
 
@@ -27,7 +27,7 @@ Az alábbi képen az Azure szinapszis hivatkozásának Azure Cosmos DB és az Az
 
 :::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Architektúra-diagram az Azure szinapszis Analytics-integrációhoz Azure Cosmos DB" border="false":::
 
-## <a name="benefits"></a><a id="synapse-link-benefits"></a>Előnyei
+## <a name="benefits"></a><a id="synapse-link-benefits"></a> Előnyei
 
 A nagyméretű működési adatkészletek elemzéséhez, miközben minimálisra csökkenti a kritikus fontosságú tranzakciós számítási feladatok teljesítményére gyakorolt hatást, a hagyományos módon a Azure Cosmos DBben lévő operatív adatokat kinyeri és dolgozza fel a kinyert átalakító-betöltési (ETL) folyamatok. Az ETL-folyamatok sok adatátviteli réteget igényelnek, ami sok működési bonyolultságot eredményez, és teljesítménybeli hatással van a tranzakciós munkaterhelésekre. Emellett növeli a késést a működési adatoknak a származási időpontból való elemzéséhez.
 

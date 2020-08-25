@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80281782"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816354"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
@@ -69,6 +69,5 @@ Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a
 
 * A **Start** menü megnyitásával tárja fel a DSVM található eszközöket.
 * Ismerje meg a Azure Machine Learningt, ha elolvasta [, mi az Azure Machine learning?](../overview-what-is-azure-ml.md) , és próbálja ki az [oktatóanyagokat](../index.yml).
-* Olvassa el a [Data Science Virtual Machineon](https://aka.ms/dsvmtenthings)elvégezhető tíz dolgot.
-* Látogasson el az Azure-ban Azure Machine Learning és kapcsolódó adatszolgáltatásokat használó gépi tanulási és adatelemzési minták [Azure AI Gallery](https://gallery.cortanaintelligence.com) . A katalógushoz a **Start** menüben és a virtuális gép asztalán is elérhető egy ikon.
+* Olvassa el az [adatelemzési cikk a Windows Data Science Virtual Machine az Azure-ban](./vm-do-ten-things.md) című cikket
 

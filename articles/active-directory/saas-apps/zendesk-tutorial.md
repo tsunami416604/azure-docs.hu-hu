@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546063"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815066"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a zendesk
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A zendesk támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 * A zendesk támogatja az [ **automatikus** felhasználó-kiépítés használatát](zendesk-provisioning-tutorial.md)
-* A zendesk konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A zendesk konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Zendesk hozzáadása a gyűjteményből
 
@@ -54,7 +54,7 @@ A zendesk Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **zendesk** kifejezést a keresőmezőbe.
 1. Válassza ki a **zendesk** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a zendesk
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Azure AD SSO konfigurálása és tesztelése a zendesk-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a zendesk a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a zendesk-ben.
 
@@ -149,50 +149,29 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Ha manuálisan szeretné beállítani a zendesk, nyisson meg egy új böngészőablakot, és jelentkezzen be a zendesk vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-1. Kattintson a **rendszergazda**elemre.
+1. A **zendesk felügyeleti központban**kattintson a biztonsági **Beállítások** elemre a **Biztonság** lapon.
 
-1. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**, majd a **Biztonság**elemre.
+    ![Biztonság](./media/zendesk-tutorial/settings.png "Biztonság")
 
-1. A **Biztonság** lapon hajtsa végre a következő lépéseket:
+1. Nyissa meg az **egyszeri bejelentkezési** oldalt, és kattintson a **Szerkesztés** elemre az **SAML**-ban.
 
-    ![Biztonság](./media/zendesk-tutorial/ic773089.png "Biztonság")
+    ![Biztonság](./media/zendesk-tutorial/saml-sso.png "Biztonság")
 
-    ![Egyszeri bejelentkezés](./media/zendesk-tutorial/ic773090.png "Egyszeri bejelentkezés")
+1. Hajtsa végre az alábbi lépéseket az **egyszeri bejelentkezés** lapon.
 
-    a. Kattintson a **rendszergazda & ügynökök** fülre.
+    ![Egyszeri bejelentkezés](./media/zendesk-tutorial/saml-configuration.png "Egyszeri bejelentkezés")
 
-    b. Válassza az **egyszeri bejelentkezés (SSO) és az SAML**lehetőséget, majd válassza az **SAML**lehetőséget.
+    a. Az **SAML SSO URL** szövegmezőben illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
-    c. Az **SAML SSO URL** szövegmezőben illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
+    b. A **Tanúsítvány ujjlenyomata** szövegmezőbe illessze be a tanúsítvány **ujjlenyomatának** értékét, amelyet a Azure Portal másolt.
 
-    d. A **távoli kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
+    c. A **távoli kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
 
-    e. A **Tanúsítvány ujjlenyomata** szövegmezőbe illessze be a tanúsítvány **ujjlenyomatának** értékét, amelyet a Azure Portal másolt.
-
-    f. Kattintson a **Mentés** gombra.
+    d. Kattintson a **Mentés** gombra.
 
 ### <a name="create-zendesk-test-user"></a>Zendesk-tesztelési felhasználó létrehozása
 
 Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a zendesk-ben. A zendesk támogatja az automatikus felhasználó-kiépítés használatát, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](Zendesk-provisioning-tutorial.md) felhasználó-kiépítés konfigurálását ismertető témakört.
-
-**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre a következő lépéseket:**
-
-> [!NOTE]
-> A rendszer automatikusan kiépíti a **végfelhasználói** fiókokat a bejelentkezéskor. Az **ügynök** -és **rendszergazdai** fiókokat manuálisan kell kiépíteni a **zendesk** a bejelentkezés előtt.
-
-1. Jelentkezzen be a **zendesk** -bérlőbe.
-
-2. Válassza ki az **Ügyfél lista** lapot.
-
-3. Válassza a **felhasználó** fület, majd kattintson a **Hozzáadás**gombra.
-
-    ![Felhasználói csoportok](./media/zendesk-tutorial/ic773632.png "Felhasználó hozzáadása")
-4. Írja be a kiépíteni kívánt meglévő Azure AD-fiók **nevét** és **e-mail-címét** , majd kattintson a **Mentés**gombra.
-
-    ![Új felhasználó](./media/zendesk-tutorial/ic773633.png "Új felhasználó")
-
-> [!NOTE]
-> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a zendesk által biztosított zendesk felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

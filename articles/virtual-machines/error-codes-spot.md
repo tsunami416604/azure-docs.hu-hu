@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e151145bd3c4d1db87ef5d1b0d553555a580279
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069787"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816745"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>A helyszíni virtuális gépekhez és a méretezési csoportokhoz tartozó hibaüzenetek
 
@@ -31,11 +31,11 @@ ms.locfileid: "87069787"
 | MaxPriceChangeNotAllowedForAllocatedVMs | A maximális árváltozás nem engedélyezett, ha a (z {0} ) "" virtuális gép jelenleg le van foglalva. Szabadítson fel és próbálkozzon újra. | Stop\Deallocate a virtuális gépet, hogy meg lehessen változtatni a maximális árat. |
 | MaxPriceChangeNotAllowed | Az árváltozás maximális értéke nem engedélyezett. | A virtuális gép maximális ára nem módosítható. |
 | AzureSpotIsNotSupportedForThisAPIVersion  |  Az Azure spot nem támogatott ehhez az API-verzióhoz. | Az API-verziót 2019-03-01-re kell állítani. |
-| AzureSpotIsNotSupportedForThisVMSize  |  Az Azure spot nem támogatott ehhez a virtuálisgép-mérethez {0} . | Válasszon másik virtuális gép méretét. További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
-| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  A maximális díj csak az Azure spot Virtual Machines esetén támogatott. | További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
+| AzureSpotIsNotSupportedForThisVMSize  |  Az Azure spot nem támogatott ehhez a virtuálisgép-mérethez {0} . | Válasszon másik virtuális gép méretét. További információ: [Spot Virtual Machines](./spot-vms.md). |
+| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  A maximális díj csak az Azure spot Virtual Machines esetén támogatott. | További információ: [Spot Virtual Machines](./spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure-beli helyszíni virtuális gépet tartalmaz. Ez jelenleg nem támogatott. Tekintse meg a virtuális gépek azonosítóinak részleteit. | A Direktszínű virtuális gépek nem helyezhetők át. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure-beli virtuálisgép-méretezési készletet tartalmaz. Ez jelenleg nem támogatott. Tekintse meg a virtuálisgép-méretezési csoport azonosítóinak részleteit. | A direktszín-méretezési csoport példányai nem helyezhetők át. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | A virtuálisgép-méretezési csoport virtuálisgép-méretezési módban nem támogatja az Azure-beli helyszíni virtuális gépeket. | A hangelőkészítési módot állítsa be a virtuálisgép-méretezési csoportba a direktszínes példányok használatához. |
 
 
-**További lépések** További információ: [spot Virtual Machines](./linux/spot-vms.md).
+**További lépések** További információ: [spot Virtual Machines](./spot-vms.md).

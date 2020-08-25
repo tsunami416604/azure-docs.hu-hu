@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 13c54b548a507043fda7ff230cf7641c26f471d1
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b7c41d96e9817c548dbf52d4e56a78df4a88d696
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724057"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815746"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -265,7 +265,7 @@ Ez a funkció jelenleg a 2.1-es verzióban érhető el. előnézet.
 
 A Model összeállításával akár 100 modellt is létrehozhat egyetlen modell-AZONOSÍTÓra. Ha ezzel a modell-AZONOSÍTÓval hívja meg az elemzést, az űrlap-felismerő először a beküldött űrlapot sorolja be, és a legmegfelelőbb modellnek felel meg, majd visszaadja az adott modell eredményeit. Ez akkor hasznos, ha a bejövő űrlapok több sablon egyikéhez tartozhatnak.
 
-A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (két nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. A felugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
+A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (egyesítési nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. A felugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model komponált UX nézet.":::
 
@@ -296,7 +296,7 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 ### <a name="resume-a-project"></a>Projekt folytatása
 
-Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. vott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
+Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. fott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
 ## <a name="next-steps"></a>További lépések
 

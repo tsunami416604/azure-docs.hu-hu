@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336922"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815810"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -113,7 +113,7 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
     h. Válassza a **növekményes** lehetőséget a **központi telepítési módhoz**.
 
     > [!WARNING]
-    > Ha a **Befejezés** lehetőséget választja a **központi telepítési módhoz**, a meglévő erőforrások törölhetők, beleértve a Resource Manager-sablonban nem definiált cél erőforráscsoport összes erőforrását.
+    > A teljes üzembe helyezési módban az erőforráscsoporthoz tartozó, de az új Resource Manager-sablonban nem megadott erőforrások **törlődni**fognak. További információkért tekintse meg [Azure Resource Manager telepítési módokat](../azure-resource-manager/templates/deployment-modes.md)
 
     ![Gyártási Data Factory](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -165,7 +165,7 @@ A titkokat kétféleképpen kezelheti:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynökének
 
-Ha a megfelelő engedélyek nincsenek beállítva, a Azure Key Vault feladat meghiúsulhat a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és keresse meg azt a. ps1 fájlt, amely a parancsot tartalmazza az Azure-folyamatok ügynökének engedélyek megadásához. A parancsot közvetlenül is futtathatja. Vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. `Get`és `List` a minimálisan szükséges engedélyek.
+Ha a megfelelő engedélyek nincsenek beállítva, a Azure Key Vault feladat meghiúsulhat a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és keresse meg azt a. ps1 fájlt, amely a parancsot tartalmazza az Azure-folyamatok ügynökének engedélyek megadásához. A parancsot közvetlenül is futtathatja. Vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. `Get` és `List` a minimálisan szükséges engedélyek.
 
 ### <a name="updating-active-triggers"></a>Aktív eseményindítók frissítése
 
@@ -305,7 +305,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 ```
 Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
-#### <a name="pipelines"></a>Folyamatok
+#### <a name="pipelines"></a>Pipelines
     
 * Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
@@ -630,7 +630,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 
 -   Jelenleg nem futtathat projekteket a bitbucket-on.
 
-## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a>Példa előtti és utáni parancsfájl
+## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Példa előtti és utáni parancsfájl
 
 A következő minta-parancsfájl segítségével leállíthatja az eseményindítókat a telepítés előtt, és később újraindíthatja őket. A parancsfájl emellett kódot is tartalmaz az eltávolított erőforrások törléséhez. Mentse a parancsfájlt egy Azure DevOps git-tárházban, és hivatkozzon egy Azure PowerShell-feladaton keresztül a 4-es verziójú. * használatával.
 

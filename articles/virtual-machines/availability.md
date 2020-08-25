@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 583e4d3a45d31b9c386b542d42d8e749b0c36bc1
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650213"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815606"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek rendelkezésreállási beállításai
 
@@ -59,7 +59,7 @@ A rendelkezésre állási csoport a virtuális gépek logikai csoportosítása a
 
 A rendelkezésre állási csoportokban a virtuális gépek automatikusan el lesznek osztva ezen tartalék tartományok között. Ez a módszer korlátozza a potenciális hardvermeghibásodások, hálózatkimaradások vagy a tápellátás megszakadásának hatását.
 
-Az [Azure Managed Disks](./windows/faq-for-disks.md) használatával létrehozott virtuális gépek felügyelt rendelkezésre állási csoportok használata esetén felügyelt lemezes tartalék tartományokra vannak elosztva. Ez a kiosztás biztosítja, hogy a virtuális géphez csatolt mindegyik felügyelt lemez ugyanabban a felügyelt lemezes tartalék tartományban legyen. 
+Az [Azure Managed Disks](./faq-for-disks.md) használatával létrehozott virtuális gépek felügyelt rendelkezésre állási csoportok használata esetén felügyelt lemezes tartalék tartományokra vannak elosztva. Ez a kiosztás biztosítja, hogy a virtuális géphez csatolt mindegyik felügyelt lemez ugyanabban a felügyelt lemezes tartalék tartományban legyen. 
 
 Kizárólag felügyelt lemezeken futó virtuális gépek hozhatók létre felügyelt rendelkezésre állási csoportokban. A felügyelt lemezes tartalék tartományok száma régiónként eltérő – régiónként kettő vagy három felügyelt lemezes tartalék tartomány lehet. Ezekről a felügyelt lemezes tartalék tartományokról a [Linux rendszerű virtuális gépek](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) vagy a [Windows rendszerű virtuális gépek](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)esetében olvashat bővebben.
 

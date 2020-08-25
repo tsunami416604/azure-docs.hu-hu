@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606157"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814264"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -101,7 +101,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Elemzés
     - Alkalmazások modernizálása
     - Archívum
-    - AI + Machine Learning
+    - Mesterséges intelligencia és gépi tanulás
     - Backup
     - Big Data
     - Adatplatform
@@ -110,7 +110,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Vészhelyreállítás
     - Identitás
     - Eszközök internetes hálózata
-    - Migrálás
+    - Áttelepítés
     - Hálózatkezelés
     - Biztonság
     - Tárolás
@@ -209,15 +209,14 @@ Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden k�
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának PNG-fájlját a következő képpont méretek mindegyikében:
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** embléma létrehozásához. Ezt később is lecserélheti egy másik rendszerképpel.
 
-- **Kicsi (48 x 48)**
-- **Nagyméretű (216 x 216)**
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
 
-Az összes emblémát meg kell adni, és a Piactéri lista különböző helyein használják.
+Ezeket az emblémákat a lista különböző helyein használják.
 
--   A kis embléma (48 x 48 képpont) megjelenik az Azure piactér keresési eredményei között, valamint a Microsoft AppSource főoldalon és a keresési eredmények oldalon. 
--   A nagyméretű embléma (216 x 216 és 350 x 350 képpont között) megjelenik az ajánlati lista lapján az Azure Marketplace-en és a Microsoft AppSourceban.
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Képernyőképek (nem kötelező)
 

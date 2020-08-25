@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 8996673cf8f01334e3dcd35aab8544643bd37360
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88802183"
+ms.locfileid: "88815844"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Útmutató: alkalmazás futtatása a Fortanix enklávé Managerrel 
 
@@ -46,7 +46,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át az alkalmazás r
 1. Bejelentkezés a [FORTANIX em](https://fortanix.com) -be
 1. Az új fiók létrehozásához navigáljon a **fiókok** lapra, és válassza a **fiók hozzáadása** lehetőséget. 
     
-[!div class="mx-imgBorder"]
 ![Fiók létrehozása](media/how-to-fortanix-enclave-manager/create-account.png)
 
 1. A fiók létrehozása után nyomja meg a **kijelölés lehetőséget** az újonnan létrehozott fiók kiválasztásához. Most már elkezdheti a számítási csomópontok regisztrálását és az alkalmazások létrehozását. 
@@ -169,7 +168,7 @@ A létrehozott Fortanix enklávé-kezelő fiók törléséhez nyissa meg az enkl
 
   ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a Fortanix-eszközök használatával alakíthatja át az alkalmazás rendszerképét, hogy az a bizalmas számítástechnikai virtuális gépen fusson. Az Azure-beli bizalmas számítástechnikai virtuális gépekkel kapcsolatos további információkért lásd: [Virtual Machines-megoldások](virtual-machine-solutions.md). 
 

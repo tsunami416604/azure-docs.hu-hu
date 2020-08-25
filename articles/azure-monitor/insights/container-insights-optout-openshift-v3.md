@@ -3,16 +3,16 @@ title: Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása | Micros
 description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091215"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815436"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása 
 
-Miután engedélyezte az Azure Red Hat OpenShift 3. x verziójú fürt figyelését, leállíthatja a fürt figyelését Azure Monitor for containers használatával, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a Azure Resource Manager sablonnal.  
+Miután engedélyezte az Azure Red Hat OpenShift 3. x verziójú fürt figyelését, leállíthatja a fürt figyelését Azure Monitor for containers használatával, ha úgy dönt, hogy már nem szeretné figyelni. Ez a cikk bemutatja, hogyan hajthatja végre ezt a Azure Resource Manager sablonnal. 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 

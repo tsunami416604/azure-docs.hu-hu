@@ -8,14 +8,14 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448937"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815589"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Azure Disk Storage kiszolgálóoldali titkosítása a PowerShellhez
 
 A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az SSE alapértelmezés szerint automatikusan titkosítja az Azure Managed Disks (operációs rendszer és adatlemezek) tárolt adatait a felhőben való megőrzéskor. 
 
@@ -84,8 +84,8 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 
 ## <a name="next-steps"></a>További lépések
 
-- Engedélyezze a végpontok közötti titkosítást a gazdagépen a [PowerShell](disks-enable-host-based-encryption-powershell.md) vagy a [Azure Portal](disks-enable-host-based-encryption-portal.md)használatával történő titkosítással.
-- A PowerShell vagy a [Azure Portal](disks-enable-double-encryption-at-rest-portal.md) [használatával](disks-enable-double-encryption-at-rest-powershell.md) a felügyelt lemezek esetében engedélyezze a kettős titkosítást.
-- Engedélyezheti az ügyfél által felügyelt kulcsokat a felügyelt lemezeken a PowerShell vagy a [Azure Portal](disks-enable-customer-managed-keys-portal.md) [használatával](disks-enable-customer-managed-keys-powershell.md) .
+- Engedélyezze a végpontok közötti titkosítást a gazdagépen a [PowerShell](disks-enable-host-based-encryption-powershell.md) vagy a [Azure Portal](../disks-enable-host-based-encryption-portal.md)használatával történő titkosítással.
+- A PowerShell vagy a [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md) [használatával](disks-enable-double-encryption-at-rest-powershell.md) a felügyelt lemezek esetében engedélyezze a kettős titkosítást.
+- Engedélyezheti az ügyfél által felügyelt kulcsokat a felügyelt lemezeken a PowerShell vagy a [Azure Portal](../disks-enable-customer-managed-keys-portal.md) [használatával](disks-enable-customer-managed-keys-powershell.md) .
 - [Az ügyfél által felügyelt kulcsokkal rendelkező titkosított lemezek létrehozásához Azure Resource Manager-sablonok megismerése](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)

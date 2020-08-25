@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119494"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814416"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
 
@@ -34,7 +34,7 @@ A gyártók a Felhőbeli natív technológiákba való bevezetéssel kitörhetik
 
 A következő architektúra a Azure Cosmos DB kihasználása a Felhőbeli natív operatív adatbázis és a szinapszis hivatkozását mutatja be az ellátási lánc Analyticsben:
 
-:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false":::
 
 A korábbi architektúra alapján a következő használati esetek érhetők el a Azure Cosmos DB a szinapszis-hivatkozással:
 

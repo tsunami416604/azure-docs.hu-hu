@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852225"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816303"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Hivatkozás: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -248,8 +248,6 @@ Működővé tenni azokat a gépi tanulási modelleket, amelyeket a webszolgált
 
 Az R-vagy Python-modelleket a virtuális gépen is létrehozhatja, majd üzembe helyezheti őket éles környezetben Azure Machine Learningon. A funkció engedélyezéséhez az R (**AzureML**) és a Python (**AzureML**) függvénytárait telepítettük.
 
-Az R-és Python-modellek Azure Machine Learningba való üzembe helyezésével kapcsolatos információkért lásd: [tíz dolog, amit elvégezhet a Data Science Virtual Machine](vm-do-ten-things.md).
-
 > [!NOTE]
 > Ezek az utasítások a Data Science Virtual Machine Windows-verziójára lettek írva. A modelleknek a Azure Machine Learning való üzembe helyezésére vonatkozó információk azonban a Linux rendszerű virtuális gépre érvényesek.
 
@@ -346,6 +344,6 @@ Ekkor megnyílik egy grafikus felület, amely fülekből áll. A következő rö
 
 Kiléphet a csörgő és az R lehetőségből. Most már módosíthatja a generált R-szkriptet. Használhatja a parancsfájlt is, és bármikor futtathatja, hogy megismételje a csörgő felhasználói felületen végzett összes műveletet. Különösen az R-ben kezdőknek, így gyorsan elvégezheti az elemzést és a gépi tanulást egy egyszerű grafikus felületen, az R-ben pedig automatikusan generálhat kódot a módosításhoz vagy a megismeréshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További kérdései vannak? Hozzon létre egy [támogatási jegyet](https://azure.microsoft.com/support/create-ticket/).

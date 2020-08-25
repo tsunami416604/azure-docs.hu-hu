@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757149"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763456"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -200,13 +200,13 @@ Most már minden, egyedi azonosítóval rendelkező VG-név szerepel.
 
 ###### <a name="active-volume-groups"></a>Aktív kötetek csoportjai
 
-Győződjön meg arról, hogy a parancsfájl köteteinek megfelelő kötetek aktívak. Az alábbi parancs az aktív mennyiségi csoportok megjelenítésére szolgál. Győződjön meg arról, hogy a parancsfájl kapcsolódó kötetei szerepelnek-e a listában.
+Győződjön meg arról, hogy a parancsfájl köteteinek megfelelő kötetek aktívak. A következő parancs használatával jelenítheti meg az aktív kötetek csoportjait. Győződjön meg arról, hogy a parancsfájl kapcsolódó kötetei szerepelnek-e a listában.
 
 ```bash
 vgdisplay -a
 ```  
 
-Ellenkező esetben aktiválja a kötet csoportot az alábbi parancs használatával.
+Ellenkező esetben aktiválja a kötet csoportot a következő parancs használatával.
 
 ```bash
 #!/bin/bash
@@ -215,7 +215,7 @@ vgchange –a y  <volume-group-name>
 
 ##### <a name="listing-logical-volumes-within-volume-groups"></a>A mennyiségi csoportokban található logikai kötetek listázása
 
-Miután beolvasta a parancsfájlhoz kapcsolódó VGs egyedi, aktív listáját, az ezekben a kötetekben található logikai kötetek az alábbi paranccsal szerepelhetnek.
+Miután beolvasta a parancsfájlhoz kapcsolódó VGs egyedi, aktív listáját, az ezekben a kötetekben lévő logikai kötetek a következő paranccsal szerepelhetnek.
 
 ```bash
 #!/bin/bash

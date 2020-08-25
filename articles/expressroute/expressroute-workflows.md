@@ -1,55 +1,120 @@
 ---
-title: 'Azure ExpressRoute: áramkör-konfigurációs munkafolyamatok'
-description: Ezen a lapon láthatók a ExpressRoute-áramkör és-társítások konfigurálásának munkafolyamatai
+title: 'Azure ExpressRoute: áramkör-konfigurációs munkafolyamat'
+description: Ezen a lapon látható a ExpressRoute-áramkörök és-társítások konfigurálásának munkafolyamata
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 08/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: contperfq1
+ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204158"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814076"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
-Ez az oldal végigvezeti a szolgáltatás kiépítési és útválasztási konfigurációs munkafolyamatainak magas szinten való használatával.
 
-![áramköri munkafolyamat](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+Ez a cikk részletesen ismerteti a szolgáltatás kiépítési és útválasztási konfigurációs munkafolyamatait. Az alábbi fejezetek a ExpressRoute áramkör végpontok közötti kiépítésének feladatait ismertetik.
 
-A következő ábra és a megfelelő lépések körvonalazzák azokat a feladatokat, amelyek a ExpressRoute áramkör teljes körű kiépítéséhez szükségesek. 
+## <a name="workflow-steps"></a>Munkafolyamat lépései
 
-1. ExpressRoute-áramkör konfigurálása a PowerShell használatával. További részletekért kövesse a [ExpressRoute-áramkörök létrehozása](expressroute-howto-circuit-classic.md) című cikk utasításait.
-2. Rendeljen kapcsolatot a szolgáltatótól. Ez a folyamat változó. A kapcsolat megrendelésével kapcsolatos további információkért forduljon a kapcsolati szolgáltatóhoz.
-3. Győződjön meg arról, hogy az áramkör üzembe helyezése sikeresen megtörtént az ExpressRoute áramkör kiépítési állapotának PowerShell használatával történő ellenőrzésével. 
-4. Útválasztási tartományok konfigurálása. Ha a kapcsolat szolgáltatója a 3. réteg konfigurációját kezeli, akkor a rendszer az áramkör útválasztási beállításait konfigurálja. Ha a kapcsolati szolgáltató csak a 2. rétegbeli szolgáltatásokat nyújtja, az útválasztási [követelmények](expressroute-routing.md) és az [útválasztási konfigurációs](expressroute-howto-routing-classic.md) lapok című cikkben ismertetett irányelvek szerint kell konfigurálnia az útválasztást.
-   
-   * Az Azure privát társának engedélyezése – engedélyezze ezt a társat a virtuális hálózatokon belül üzembe helyezett virtuális gépekhez/felhőalapú szolgáltatásokhoz való kapcsolódáshoz.
+### <a name="1-prerequisites"></a>1. előfeltételek
 
-   * Microsoft-társak engedélyezése – engedélyezze ezt a Microsoft online szolgáltatások, például az Office 365 eléréséhez. Az összes Azure-beli Pásti-szolgáltatás a Microsoft-partneri hozzáférésen keresztül érhető el.
-     
-     > [!IMPORTANT]
-     > Gondoskodnia kell arról, hogy a Microsofthoz való csatlakozáshoz külön proxyt vagy Edge-t használjon, mint amelyet az internethez használ. Ha a ExpressRoute és az internet között ugyanazt a szegélyt használja, az aszimmetrikus útválasztást okoz, és a hálózati kapcsolat kimaradást okoz.
-     > 
-     > 
-     
-     ![útválasztási munkafolyamatok](./media/expressroute-workflows/routing-workflow.png)
-5. Virtuális hálózatok összekapcsolása a ExpressRoute-áramkörökkel – a virtuális hálózatokat összekapcsolhatja a ExpressRoute-áramkörrel. Kövesse az utasításokat a virtuális hálózatok az áramkörhöz való [kapcsolásához](expressroute-howto-linkvnet-arm.md) . Ezek a virtuális hálózatok lehetnek ugyanabban az Azure-előfizetésben, mint a ExpressRoute áramkör, vagy egy másik előfizetésben is lehetnek.
+Győződjön meg arról, hogy az előfeltételek teljesülnek. A teljes listát lásd: [Előfeltételek és ellenőrzőlista](expressroute-prerequisites.md).
 
-## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute áramkör kiépítési állapota
-Minden ExpressRoute-áramkör két állapottal rendelkezik:
+* Egy Azure-előfizetés lett létrehozva.
+* A fizikai kapcsolat létrejött a ExpressRoute partnerrel, vagy a ExpressRoute Direct használatával lett konfigurálva. Tekintse át a [helyek és partnerek](expressroute-locations-providers.md#partners) témakört, ahol megtekintheti a ExpressRoute partnereket és ExpressRoute a közvetlen kapcsolatot a különböző helyek között.
 
-* Szolgáltató kiépítési állapota
-* Állapot
+### <a name="2-order-connectivity-or-configure-expressroute-direct"></a>2. a kapcsolat megrendelése vagy a ExpressRoute közvetlen konfigurálása
 
-Az állapot a Microsoft kiépítési állapotát jelöli. Ez a tulajdonság úgy van beállítva, hogy az Expressroute-kör létrehozásakor engedélyezve legyen
+Rendeljen kapcsolatot a szolgáltatótól, vagy konfigurálja a közvetlen ExpressRoute.
 
-A kapcsolati szolgáltató kiépítési állapota a kapcsolati szolgáltató oldalán lévő állapotot jelöli. Ez lehet *NotProvisioned*, *kiépítés*vagy *üzembe*helyezés. A ExpressRoute áramkörnek kiépített állapotban kell lennie a társítás konfigurálásához.
+#### <a name="expressroute-partner-model"></a>ExpressRoute partneri modell
+
+Rendeljen kapcsolatot a szolgáltatótól. Ez a folyamat változó. A kapcsolat megrendelésével kapcsolatos további információkért forduljon a kapcsolati szolgáltatóhoz.
+
+* Válassza ki a ExpressRoute-partnert
+* Válassza ki az egyenrangú helyet
+* Válassza ki a sávszélességet
+* Számlázási modell kiválasztása
+* Válassza a standard vagy a prémium bővítmény lehetőséget.
+
+#### <a name="expressroute-direct-model"></a>ExpressRoute Direct modell
+
+* Az elérhető ExpressRoute közvetlen kapacitásának megtekintése a különböző helyekre.
+* A portok lefoglalásához hozza létre a ExpressRoute Direct-erőforrást az Azure-előfizetésében.
+* Kérje le és fogadja el az engedélyezési engedélyt, és rendelje meg a fizikai kapcsolatok listáját a partneri hely szolgáltatójától.
+* Engedélyezheti a rendszergazdai állapotot, és megtekintheti a fényszinteket és a fizikai hivatkozásokat [Azure monitor](expressroute-monitoring-metrics-alerts.md#expressroute-direct-metrics)használatával.
+
+### <a name="3-create-an-expressroute-circuit"></a>3. ExpressRoute áramkör létrehozása
+
+#### <a name="expressroute-partner-model"></a>ExpressRoute partneri modell
+
+Ellenőrizze, hogy a ExpressRoute-partner készen áll-e a kapcsolat létesítésére. A ExpressRoute-áramkör számlázása a szolgáltatási kulcs kiállításának pillanatától számítva történik. Az áramkör létrehozásához kövesse az [ExpressRoute-áramkör létrehozása](expressroute-howto-circuit-portal-resource-manager.md) című témakör utasításait.
+
+#### <a name="expressroute-direct-model"></a>ExpressRoute Direct modell
+
+Győződjön meg arról, hogy a fizikai kapcsolat és a rendszergazdai állapot mindkét hivatkozáson engedélyezve van. Útmutatásért tekintse meg a [ExpressRoute Direct konfigurálását ismertető témakört](how-to-expressroute-direct-portal.md) . A ExpressRoute-áramkör számlázása a szolgáltatási kulcs kiállításának pillanatától számítva történik. Az áramkör létrehozásához kövesse az [ExpressRoute-áramkör létrehozása](expressroute-howto-circuit-portal-resource-manager.md) című témakör utasításait.
+
+### <a name="4-service-provider-provisions-connectivity"></a>4. a szolgáltató belefoglalja a kapcsolatot
+
+Ez a szakasz csak a ExpressRoute partneri kapcsolat modelljére vonatkozik:
+
+* Adja meg a szolgáltatás kulcsát (s-Key) a kapcsolat szolgáltatójának.
+* Adja meg a kapcsolati szolgáltató (például VPN-azonosító) számára szükséges további információkat.
+* Ha a szolgáltató kezeli az útválasztási konfigurációt, adja meg a szükséges adatokat.
+
+A ExpressRoute áramkör kiépítési állapotát a PowerShell, a Azure Portal vagy a parancssori felület használatával ellenőrizheti, hogy az áramkör üzembe helyezése sikeresen megtörtént-e.
+
+### <a name="5-configure-routing-domains"></a>5. útválasztási tartományok konfigurálása
+
+Útválasztási tartományok konfigurálása. Ha a kapcsolat szolgáltatója a 3. réteg konfigurációját kezeli, akkor a rendszer az áramkör útválasztási beállításait konfigurálja. Ha a kapcsolati szolgáltató csak a 2. rétegbeli szolgáltatásokat kínálja, vagy ha közvetlen ExpressRoute használ, akkor az útválasztási [követelmények](expressroute-routing.md) és az [útválasztási konfiguráció](expressroute-howto-routing-classic.md) cikkeiben ismertetett irányelvek szerint kell konfigurálnia az útválasztást.
+
+#### <a name="for-azure-private-peering"></a>Azure-beli privát partnerek számára
+
+Az Azure Virtual Networkben üzembe helyezett virtuális gépekhez és felhőalapú szolgáltatásokhoz való kapcsolódás engedélyezése a privát társak számára.
+
+* Az 1. elérési út (/30) társítási alhálózata
+* Társítási alhálózat a 2. elérési úthoz (/30)
+* A VLAN-azonosító a társításhoz
+* ASN társításhoz
+* ExpressRoute ASN = 12076
+* MD5-kivonat (nem kötelező)
+
+#### <a name="for-microsoft-peering"></a>Microsoft-partnerek számára
+
+A Microsoft online szolgáltatások, például az Office 365 elérésének engedélyezése. Emellett az összes Azure Pásti-szolgáltatás a Microsoft-partnereken keresztül is elérhető. Gondoskodnia kell arról, hogy a Microsofthoz való csatlakozáshoz külön proxyt vagy Edge-t használjon, mint amelyet az internethez használ. Ha a ExpressRoute és az internet között ugyanazt a szegélyt használja, az aszimmetrikus útválasztást okoz, és a hálózati kapcsolat kimaradást okoz.
+
+* Az 1. elérési út (/30) társítási alhálózatának nyilvános IP-nek kell lennie
+* A 2. elérési út (/30) társítási alhálózata nyilvános IP-címmel kell rendelkeznie
+* A VLAN-azonosító a társításhoz
+* ASN társításhoz
+* Meghirdetett előtagok – nyilvános IP-előtagnak kell lennie
+* Ügyfél ASN-je (nem kötelező, ha különbözik az ASN-től)
+* RIR/IRR IP-és ASN-ellenőrzéshez
+* ExpressRoute ASN = 12076
+* MD5-kivonat (nem kötelező)
+
+### <a name="6-start-using-the-expressroute-circuit"></a>6. a ExpressRoute áramkör használatának megkezdése
+
+* Az Azure-beli virtuális hálózatokat összekapcsolhatja a ExpressRoute áramkörével, hogy lehetővé váljon a helyszíni és az Azure-beli virtuális hálózat közötti kapcsolat. Útmutatásért tekintse meg a VNet csatlakoztatása [egy áramköri](expressroute-howto-linkvnet-arm.md) cikkhez című cikket. Ezek a virtuális hálózatok lehetnek ugyanabban az Azure-előfizetésben, mint a ExpressRoute áramkör, vagy egy másik előfizetésben is lehetnek.
+* Kapcsolódjon az Azure-szolgáltatásokhoz és a Microsoft Cloud Serviceshez a Microsoft-partneri kapcsolaton keresztül.
+
+##  <a name="expressroute-partner-circuit-provisioning-states"></a><a name="expressroute-circuit-provisioning-states"></a>ExpressRoute-partneri áramkör kiépítési állapota
+
+A következő szakasz az ExpressRoute partneri kapcsolati modell különböző ExpressRoute-áramköri állapotait ismerteti.
+Minden ExpressRoute-partner áramkör két állapottal rendelkezik:
+
+* A **ServiceProviderProvisioningState** a kapcsolati szolgáltató oldalán lévő állapotot jelöli. Ez lehet *NotProvisioned*, *kiépítés*vagy *üzembe*helyezés. A ExpressRoute áramkörnek kiépített állapotban kell lennie a társítás konfigurálásához. **Ez az állapot csak a ExpressRoute partneri körökre vonatkozik, és nem jelenik meg egy ExpressRoute Direct áramkör tulajdonságaiban**.
+
+* Az **állapot** a Microsoft kiépítési állapotát jelöli. Ez a tulajdonság úgy van beállítva, hogy az ExpressRoute-kör létrehozásakor engedélyezve legyen
 
 ### <a name="possible-states-of-an-expressroute-circuit"></a>Egy ExpressRoute áramkör lehetséges állapotai
-Ez a szakasz a ExpressRoute áramkör lehetséges állapotait sorolja fel.
+
+Ez a szakasz a ExpressRoute partner csatlakozási modellje alatt létrehozott ExpressRoute-áramkör lehetséges állapotait ismerteti.
 
 **Létrehozáskor**
 
@@ -94,11 +159,12 @@ Igény szerint újra engedélyezheti, vagy PowerShell-parancsmagok futtatásáva
 > 
 
 ## <a name="routing-session-configuration-state"></a>Útválasztási munkamenet konfigurációjának állapota
+
 A BGP-kiépítési állapot azt jelenti, hogy a BGP-munkamenet engedélyezve van-e a Microsoft Edge-ben. Az állapotot engedélyezni kell a privát vagy a Microsoft-partnerek használatához.
 
 Fontos, hogy a BGP-munkamenet állapota különösen a Microsoft-társak számára legyen ellenőrizhető. A BGP kiépítési állapotán kívül egy másik, *meghirdetett nyilvános előtagok*nevű állam is van. A meghirdetett nyilvános előtagok állapotának *konfigurált* állapotban kell lennie, mind a BGP-munkamenethez, mind az Útválasztás teljes körű működéséhez. 
 
-Ha a meghirdetett nyilvános előtag állapota *érvényesítés szükséges* állapotra van állítva, a BGP-munkamenet nincs engedélyezve, mivel a meghirdetett előtagok nem feleltek meg az as-számnak az útválasztási kibocsátásiegység-forgalmi jegyzékekben. 
+Ha a meghirdetett nyilvános előtag állapota *érvényesítés szükséges* állapotra van állítva, a BGP-munkamenet nincs engedélyezve, mivel a meghirdetett előtagok nem feleltek meg az as-számnak az útválasztási kibocsátásiegység-forgalmi jegyzékekben.
 
 > [!IMPORTANT]
 > Ha a meghirdetett nyilvános előtagok *kézi ellenőrzési* állapotban vannak, meg kell nyitnia egy támogatási jegyet a [Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) szolgálatával, és bizonyítania kell, hogy Ön rendelkezik a meghirdetett IP-címekkel a társított autonóm rendszerszámmal együtt.
@@ -106,9 +172,9 @@ Ha a meghirdetett nyilvános előtag állapota *érvényesítés szükséges* á
 > 
 
 ## <a name="next-steps"></a>További lépések
+
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-arm.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-arm.md)
-

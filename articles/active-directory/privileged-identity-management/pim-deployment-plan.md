@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 7c6537ace2caeb2f5dc25848a04aa2e0e65b31d6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783212"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815980"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -30,7 +30,7 @@ Ez a részletes útmutató ismerteti, hogyan tervezhető meg a Privileged Identi
 >
 > : heavy_check_mark: a **Microsoft javasolja**
 >
-> Ezek általános javaslatok, és csak akkor kell megvalósítani, ha az adott vállalati igényekre vonatkoznak.
+> Ezek általános javaslatok, amelyeket csak akkor kell megvalósítani, ha az adott vállalati igényekre vonatkoznak.
 
 ## <a name="learn-about-privileged-identity-management"></a>Tudnivalók a Privileged Identity Management
 
@@ -59,7 +59,7 @@ További információ: [a Privileged Identity Management használatára vonatkoz
 
 ### <a name="key-terminology"></a>Kulcsfontosságú terminológia
 
-| Kifejezés vagy fogalom | Description |
+| Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | támogatható | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
 | aktiválás | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
@@ -100,7 +100,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Name | Szerepkör | Műveletek |
+| Név | Szerepkör | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management-infrastruktúrához. | SO/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a munkatársaik Privileged Identity Managementának elősegítésében. | SO/R/I |
@@ -110,16 +110,16 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Érintett felek: Privileged Identity Management az Azure-erőforrás szerepköreihez
 
-| Name | Szerepkör | Műveletek |
+| Név | Szerepkör | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
 | Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
 | Név és e-mail | **INFORMATIKAI támogatás kezelője/ügyfélszolgálata**<br/>Az informatikai támogatási szervezet egyik képviselője, aki a változás támogatását nyújtja a helpdesk szemszögéből. | R/I |
 | A kísérleti felhasználók neve és e-mail-címe | **Azure-szerepkör felhasználói**<br/>Azon felhasználók csoportja, amelyeken a Privileged Identity Management implementálva van. Tudnia kell, hogyan aktiválja a szerepköröket Privileged Identity Management megvalósítása után. | I |
 
-### <a name="enable-privileged-identity-management"></a>Privileged Identity Management engedélyezése
+### <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
-A tervezési folyamat részeként először el kell fogadnia a Privileged Identity Managementt, és engedélyeznie kell az [Privileged Identity Management cikk használatának](pim-getting-started.md) első lépéseit. A Privileged Identity Management engedélyezése olyan funkciók elérését teszi lehetővé, amelyek kifejezetten az üzemelő példány segítségére lettek kialakítva.
+A tervezési folyamat részeként elő kell készítenie Privileged Identity Managementt a Privileged Identity Management cikk [használatának megkezdése](pim-getting-started.md) után. Privileged Identity Management hozzáférést biztosít néhány olyan szolgáltatáshoz, amelyet kifejezetten az üzembe helyezésének segítésére terveztek.
 
 Ha a cél az Azure-erőforrásokhoz való Privileged Identity Management üzembe helyezése, kövesse az [Azure-erőforrások felderítése Privileged Identity Management cikkben való felügyeletét](pim-resource-roles-discover-resources.md) ismertető cikket. Csak az előfizetések és a felügyeleti csoportok tulajdonosai tudják felderíteni és bevezetni ezeket az erőforrásokat Privileged Identity Managementba. A bevezetést követően a PIM funkció minden szinten elérhető a tulajdonosok számára, beleértve a felügyeleti csoportot, az előfizetést, az erőforráscsoportot és az erőforrást. Ha Ön a globális rendszergazda, aki az Azure-erőforrások Privileged Identity Management telepítését kísérli meg, az [összes Azure-előfizetés kezeléséhez megemelheti a hozzáférést](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , hogy az összes Azure-erőforráshoz hozzáférhessen a felderítéshez. Azt javasoljuk azonban, hogy az egyes előfizetésekhez tartozó tulajdonosok jóváhagyása előtt az erőforrásaikat Privileged Identity Management-mel kezelhesse.
 
@@ -244,16 +244,16 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 | Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Állandó rendszergazda |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészhelyzeti hozzáférési fiókok |
-| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincsenek | 2 óra | Nincsenek |
-| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | Nincsenek | 8 óra | Nincsenek |
+| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincs | 2 óra | Nincs |
+| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | Nincs | 8 óra | Nincs |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Az Azure-erőforrás szerepköreinek Privileged Identity Management beállításai
 
 | Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincsenek | n.a. | 3 hónap |
-| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincsenek | 1 óra | Nincsenek | n.a. | 3 hónap |
-| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincsenek | 3 óra | Nincsenek | n.a. | 6 hónap |
+| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincs | n.a. | 3 hónap |
+| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincs | 1 óra | Nincs | n.a. | 3 hónap |
+| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincs | 3 óra | Nincs | n.a. | 6 hónap |
 
 Az alábbi táblázat az egyes beállításokat ismerteti.
 

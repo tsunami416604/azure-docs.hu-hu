@@ -1,6 +1,6 @@
 ---
 title: Linux-rendszerképek létrehozása az Azure-ban – áttekintés
-description: A Linux rendszerű virtuális gépek rendszerképeinek beszerzése, illetve az Azure-ban használandó új rendszerképek létrehozása.
+description: Hogyan hozhatja létre a linuxos virtuálisgép-lemezképeket, vagy létrehozhat új rendszerképeket az Azure-ban való használatra.
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502180"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815300"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -25,7 +25,7 @@ Ez a cikk a rendszerképekkel kapcsolatos döntési pontokon és követelmények
 ## <a name="difference-between-managed-disks-and-images"></a>A felügyelt lemezek és a lemezképek közötti különbség
 
 
-Az Azure lehetővé teszi, hogy egy virtuális merevlemezt a platformra, [felügyelt lemezként](../windows/faq-for-disks.md#managed-disks)használja, vagy a lemezkép forrásaként használja. 
+Az Azure lehetővé teszi, hogy egy virtuális merevlemezt a platformra, [felügyelt lemezként](../faq-for-disks.md#managed-disks)használja, vagy a lemezkép forrásaként használja. 
 
 Az Azure Managed Disks egyetlen virtuális merevlemez. Létrehozhat egy meglévő VHD-t, és létrehozhat egy felügyelt lemezt, vagy létrehozhat egy üres, felügyelt lemezt. Létrehozhat virtuális gépeket a felügyelt lemezekről úgy, hogy csatlakoztatja a lemezt a virtuális géphez, de csak egy virtuális géppel rendelkező virtuális merevlemezt tud használni. Az operációs rendszer tulajdonságai nem módosíthatók, az Azure csak a virtuális gép bekapcsolását és a lemez használatának megkezdését kísérli meg. 
 
@@ -58,7 +58,7 @@ Ezek a rendszerképek létrehozásának [előfeltételei](./create-upload-generi
 ### <a name="specialized-images"></a>Speciális rendszerképek
 Ezek olyan rendszerképek, amelyek teljesen konfigurálva vannak, és nem igénylik a virtuális gépeket és a speciális paramétereket, a platform csak a virtuális gépet kapcsolja be, a virtuális gépen egyedivé kell tennie, mint például a hostname beállítása, hogy elkerülje a DNS-ütközéseket ugyanazon a VNET. 
 
-Ezekhez a lemezképekhez nem szükségesek kiépítési ügynökök, azonban lehetséges, hogy a bővítmények kezelési képességei is rendelkezésre állnak. Telepítheti a Linux-ügynököt, de letilthatja a létesítési lehetőséget. Annak ellenére, hogy nincs szüksége kiépítési ügynökre, a rendszerképnek meg kell felelnie az Azure-lemezképek [előfeltételeinek](./create-upload-generic.md) .
+Ezekhez a lemezképekhez nem szükségesek kiépítési ügynökök, azonban lehetséges, hogy a bővítmények kezelési képességei is rendelkezésre állnak. Telepítheti a Linux-ügynököt, de letilthatja a létesítési lehetőséget. Annak ellenére, hogy nincs szüksége kiépítési ügynökre, a rendszerképnek meg kell felelnie az Azure-lemezképek [előfeltételeinek](./create-upload-generic.md)  .
 
 
 ## <a name="image-storage-options"></a>Rendszerkép-tárolási beállítások
@@ -108,6 +108,6 @@ Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg a
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).

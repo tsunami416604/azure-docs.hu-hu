@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277587"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816762"
 ---
 # <a name="read-and-write-spatial-data"></a>Térbeli adatok beolvasása és írása
 
@@ -150,9 +150,15 @@ A következő kód a jól ismert szövegek olvasását és írását mutatja be 
 A GML egy térbeli XML-fájl specifikációja, amelyet gyakran használnak más XML-specifikációk kiterjesztésére. A GeoJSON-alapú adat a függvény használatával XML-ként és GML-címkékkel is írható `atlas.io.core.GmlWriter.write` . A GML tartalmazó XML-fájl olvasható a függvény használatával `atlas.io.core.GmlReader.read` . Az olvasási függvénynek két lehetősége van:
 
 - A `isAxisOrderLonLat` "szélesség, hosszúság" vagy "hosszúság, szélesség" koordinátáinak tengelyes sorrendje eltérő lehet az adathalmazok között, és nem mindig megfelelően van definiálva. Alapértelmezés szerint a GML-olvasó a "szélesség, hosszúság" értékként beolvassa a koordináta-adatokat, de a beállítás True értékre állítása "hosszúsági fok".
-- Ez a beállítás a `propertyTypes` kulcs értékének keresési táblázata, ahol a kulcs az adathalmaz egyik tulajdonságának a neve. Az érték az az Objektumtípus, amelybe a rendszer az elemzés során átadja az értéket. A támogatott típusú értékek a következők: `string` ,, `number` `boolean` és `date` . Ha egy tulajdonság nem szerepel a keresési táblában, vagy a típus nincs definiálva, a tulajdonság karakterláncként lesz értelmezve.
+- Ez a beállítás a `propertyTypes` kulcs értékének keresési táblázata, ahol a kulcs az adathalmaz egyik tulajdonságának a neve. Az érték az az Objektumtípus, amelybe a rendszer az elemzés során átadja az értéket. A támogatott típusú értékek a következők: `string` ,, `number` `boolean` és  `date` . Ha egy tulajdonság nem szerepel a keresési táblában, vagy a típus nincs definiálva, a tulajdonság karakterláncként lesz értelmezve.
 
 A `atlas.io.read` függvény alapértelmezés szerint a `atlas.io.core.GmlReader.read` függvényt fogja észlelni, amikor azt észleli, hogy a bemeneti adatok XML-formátumúak, de az adatok nem a további támogatási térbeli XML-formátumok egyike.
+
+A a `GmlReader` következő srid azonosítókat egyikével rendelkező koordinátákat elemzi:
+
+- EPSG: 4326 (előnyben részesített)
+- EPSG: 4269, EPSG: 4283, EPSG: 4258, EPSG: 4308, EPSG: 4230, EPSG: 4272, EPSG: 4271, EPSG: 4267, EPSG: 4608, EPSG: 4674, valószínűleg kis mennyiségű hibával.
+- EPSG: 3857, EPSG: 102100, EPSG: 3785, EPSG: 900913, EPSG: 102113, EPSG: 41001, EPSG: 54004
 
 ## <a name="next-steps"></a>További lépések
 

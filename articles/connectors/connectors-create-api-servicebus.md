@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461608"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815725"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -77,6 +77,9 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
    Az összes Service Bus eseményindító *hosszú lekérdezési* eseményindítók. Ez a Leírás azt jelenti, hogy az eseményindító indításakor az eseményindító feldolgozza az összes üzenetet, majd 30 másodpercet vár, hogy további üzenetek jelenjenek meg a várólista vagy a témakör előfizetésében. Ha 30 másodpercen belül nem jelenik meg üzenet, a rendszer kihagyja a trigger futtatását. Ellenkező esetben az trigger folytatja az üzenetek olvasását, amíg a várólista vagy a témakör-előfizetés üres. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési intervallumon alapul.
 
    Egyes eseményindítók, például **Ha egy vagy több üzenet érkezik egy várólistába (automatikusan befejeződött)** , egy vagy több üzenetet adhat vissza. Ha ezek az eseményindítók tüzet adnak vissza, a rendszer az eseményindítók **maximális** száma tulajdonsága által megadott számú üzenetet adja vissza.
+
+    > [!NOTE]
+    > Az automatikus kiegészítési trigger automatikusan végrehajt egy üzenetet, de a Befejezés csak a következő trigger futtatásakor történik meg. Ez a viselkedés hatással lehet a logikai alkalmazás kialakítására. Ha például úgy állítja be az automatikus kiegészítést, hogy percenként ellenőrizze az üzeneteket, de a zárolás időtartama 30 másodpercre van állítva Service Bus oldalon, akkor az eredmény a "zárolás lejárt" hiba, amely az üzenet befejezésekor következik be. A zárolás időtartamát olyan értékre kell beállítani, amely hosszabb a lekérdezési időköznél.
 
 1. Ha az trigger első alkalommal csatlakozik a Service Bus-névtérhez, kövesse az alábbi lépéseket, amikor a Logic app Designer kéri a kapcsolódási adatok megadását.
 

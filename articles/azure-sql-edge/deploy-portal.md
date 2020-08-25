@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233244"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816864"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Az Azure SQL Edge üzembe helyezése (előzetes verzió) 
 
@@ -57,7 +57,7 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
 
    |**Paraméter**  |**Leírás**|
    |---------|---------|
-   | Name | A modul neve. |
+   | Név | A modul neve. |
    |SA_PASSWORD  | Erős jelszót kell megadnia az SQL Edge rendszergazdai fiókjához. |
    |MSSQL_LCID   | Beállítja a SQL Server használandó nyelvi azonosítót. Például 1036 a francia. |
    |MSSQL_COLLATION | Beállítja SQL Server alapértelmezett rendezését. Ez a beállítás felülbírálja a nyelvi azonosító (LCID) alapértelmezett leképezését a rendezéshez. |
@@ -114,9 +114,114 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
 12. Kattintson a **Tovább** gombra.
 13. Kattintson a **Submit (Küldés**) gombra.
 
-Ebben a rövid útmutatóban egy SQL Edge-modult telepített egy IoT Edge eszközön.
+## <a name="connect-to-azure-sql-edge"></a>Kapcsolódás az Azure SQL Edge-hez
 
-## <a name="next-steps"></a>Következő lépések
+A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd**-t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
+
+> [!NOTE]
+> a Sqlcmd eszköz nem érhető el az SQL Edge-tárolók ARM64-verzióján belül.
+
+1. A `docker exec -it` paranccsal interaktív bash-rendszerhéj indítható el a futó tárolóban. A következő példában a `azuresqledge` `Name` IoT Edge modul paraméterében megadott név szerepel.
+
+   ```bash
+   sudo docker exec -it azuresqledge "bash"
+   ```
+
+2. A tárolón belül a helyi kapcsolat Sqlcmd. A Sqlcmd alapértelmezés szerint nem található az elérési úton, ezért meg kell adnia a teljes elérési utat.
+
+   ```bash
+   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+   ```
+
+   > [!TIP]
+   > A parancssorból kihagyhatja a jelszót, hogy a rendszer megkérje a jelszó megadását.
+
+3. Ha a művelet sikeres, egy **Sqlcmd** parancssorba kell beolvasnia: `1>` .
+
+## <a name="create-and-query-data"></a>Adatlekérdezés létrehozása és lekérdezése
+
+A következő szakasz végigvezeti a **Sqlcmd** és a Transact-SQL használatával egy új adatbázis létrehozásához, az adathozzáadáshoz és egy egyszerű lekérdezés futtatásához.
+
+### <a name="create-a-new-database"></a>Új adatbázis létrehozása
+
+A következő lépések egy nevű új adatbázist hoznak létre `TestDB` .
+
+1. A **Sqlcmd** parancssorba illessze be a következő Transact-SQL parancsot egy teszt adatbázis létrehozásához:
+
+   ```sql
+   CREATE DATABASE TestDB
+   Go
+   ```
+
+2. A következő sorban írjon egy lekérdezést a kiszolgálón található összes adatbázis nevének visszaküldéséhez:
+
+   ```sql
+   SELECT Name from sys.Databases
+   Go
+   ```
+
+### <a name="insert-data"></a>Adat beszúrása
+
+Ezután hozzon létre egy új táblát, `Inventory` és szúrjon be két új sort.
+
+1. A **Sqlcmd** -parancssorban váltson a kontextusra az új `TestDB` adatbázisra:
+
+   ```sql
+   USE TestDB
+   ```
+
+2. Új nevű tábla létrehozása `Inventory` :
+
+   ```sql
+   CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+   ```
+
+3. Az új táblába szúrja be az adatbevitelt:
+
+   ```sql
+   INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+   ```
+
+4. `GO`Az előző parancsok végrehajtásához írja be a következőt:
+
+   ```sql
+   GO
+   ```
+
+### <a name="select-data"></a>Adatok kiválasztása
+
+Most futtasson egy lekérdezést a tábla adatainak visszaküldéséhez `Inventory` .
+
+1. A **Sqlcmd** parancssorában adjon meg egy lekérdezést, amely a tábla azon sorait adja vissza, amelyekben a mennyiség meghaladja a 152-et `Inventory` :
+
+   ```sql
+   SELECT * FROM Inventory WHERE quantity > 152;
+   ```
+
+2. Hajtsa végre a parancsot:
+
+   ```sql
+   GO
+   ```
+
+### <a name="exit-the-sqlcmd-command-prompt"></a>Kilépés a Sqlcmd-parancssorból
+
+1. A **Sqlcmd** -munkamenet befejezéséhez írja be a következőt `QUIT` :
+
+   ```sql
+   QUIT
+   ```
+
+2. A tárolóban lévő interaktív parancssorból való kilépéshez írja be a következőt: `exit` . Az interaktív bash-rendszerhéjból való kilépés után a tároló továbbra is fut.
+
+## <a name="connect-from-outside-the-container"></a>A tárolón kívülről való kapcsolat
+
+SQL-lekérdezéseket kapcsolódhat és futtathat az Azure SQL Edge-példányon minden olyan külső Linux-, Windows-vagy macOS-eszközön, amely támogatja az SQL-kapcsolatokat. Az SQL Edge-tárolón kívülről való csatlakozásról a [csatlakozás és az Azure SQL Edge lekérdezése](https://docs.microsoft.com/azure/azure-sql-edge/connect)című témakörben olvashat bővebben.
+
+Ebben a rövid útmutatóban egy SQL Edge-modult telepített egy IoT Edge eszközön. 
+
+## <a name="next-steps"></a>További lépések
 
 - [Machine learning és mesterséges intelligencia a ONNX az SQL Edge-ben](onnx-overview.md).
 - [Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge segítségével](tutorial-deploy-azure-resources.md).
+- [Adatfolyamok az Azure SQL Edge-ben](stream-data.md)

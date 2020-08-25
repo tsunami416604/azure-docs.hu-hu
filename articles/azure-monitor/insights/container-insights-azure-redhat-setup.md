@@ -3,14 +3,14 @@ title: Az Azure Red Hat OpenShift v3. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 3-as vagy újabb verziójában üzemeltetett Azure Monitor használatával.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317977"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816643"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v3 konfigurálása a Azure Monitor for containers szolgáltatással
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v3 konfigurálása a Azure Monitor for containers szolgáltatással 
 
 A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Kubernetes szolgáltatás (ak) és az AK-beli motor fürtök számára. Ez a cikk azt ismerteti, hogyan engedélyezhető a Kubernetes-fürtök figyelése az [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 3. verziójában és a 3. verzió legújabb támogatott verzióján, hogy hasonló figyelési élményt lehessen elérni.
 
@@ -32,7 +32,7 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift figyelését az 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Log Analytics munkaterület](../platform/design-logs-deployment.md).
+- Egy [Log Analytics-munkaterület](../platform/design-logs-deployment.md).
 
     A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
 

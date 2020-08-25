@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakozhat egy Azure Batch-fiókhoz privát v
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004242"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814110"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privát végpontok használata Azure Batch-fiókokkal
 
@@ -19,7 +19,8 @@ Az [Azure Private link](../private-link/private-link-overview.md)használatával
 
 A privát hivatkozás lehetővé teszi, hogy a felhasználók a virtuális hálózatról vagy bármely társ virtuális hálózatról hozzáférjenek Azure Batch fiókhoz. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az [Azure-ExpressRoute](../expressroute/expressroute-introduction.md)keresztül is elérhetők a helyszínen keresztül. Az [automatikus vagy manuális jóváhagyási módszer](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)használatával csatlakozhat egy privát kapcsolattal konfigurált Azure batch-fiókhoz.
 
-A Azure Batch-beli magánhálózati kapcsolat támogatása jelenleg a következő Azure-régiókban érhető el: az USA nyugati középső régiója, az USA 2. nyugati régiója, az USA keleti régiója, az USA déli középső régiója, US Gov Virginia, US Gov Arizona, Kelet-Ázsia, Franciaország és Egyesült Királyság déli régiója.
+> [!IMPORTANT]
+> A Azure Batch-beli magánhálózati kapcsolat támogatása jelenleg a következő Azure-régiókban érhető el: az USA középső régiója, az USA északi középső régiója, az USA déli középső régiója, az USA nyugati középső régiója, az USA keleti régiója, az USA US Gov Kelet-Ausztrália Egyesült Királyság déli régiója Kelet-Ázsia 2. nyugati régiója, az USA nyugati régiója
 
 Ez a cikk azt ismerteti, hogyan hozható létre egy privát batch-fiók, és hogyan férhet hozzá egy privát végponton keresztül.
 

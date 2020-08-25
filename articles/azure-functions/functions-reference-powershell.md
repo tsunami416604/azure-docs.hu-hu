@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642214"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816405"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 A PowerShellben van egy PowerShell-profil fogalma. Ha még nem ismeri a PowerShell-profilokat, tekintse meg a következő témakört: [About Profiles](/powershell/module/microsoft.powershell.core/about/about_profiles).
 
-A PowerShell-függvények esetében a profil parancsfájlja a Function alkalmazás indításakor végrehajtódik. A Function apps az első üzembe helyezéskor kezdődik, és az üresjárat után ([Cold Start](#cold-start)).
+A PowerShell-függvények esetében a profil parancsfájlja PowerShell-feldolgozó példányon, az első üzembe helyezéskor és a tétlen állapotba állítása után lesz végrehajtva ([hidegindítás](#cold-start)). Ha a Egyidejűség engedélyezve van a [PSWorkerInProcConcurrencyUpperBound](#concurrency) érték beállításával, a rendszer minden létrehozott RunSpace futtatja a profil parancsfájlját.
 
 Ha eszközöket használó Function-alkalmazást hoz létre, például a Visual Studio Code-ot és a Azure Functions Core Toolst, a rendszer alapértelmezés szerint létrehoz egy alapértelmezett értéket `profile.ps1` . Az alapértelmezett profil a [GitHub-tárház alapvető eszközein](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) marad, és a következőket tartalmazza:
 
@@ -417,7 +417,10 @@ A functions lehetővé teszi a [PowerShell-Galéria](https://www.powershellgalle
 Ha frissíti a requirements.psd1 fájlt, a rendszer újraindítást követően telepíti a frissített modulokat.
 
 > [!NOTE]
-> A felügyelt függőségekhez hozzáférés szükséges a www.powershellgallery.com a modulok letöltéséhez. Helyileg futtatva győződjön meg arról, hogy a futtatókörnyezet hozzáférhet ehhez az URL-címhez a szükséges tűzfalszabályok hozzáadásával. 
+> A felügyelt függőségekhez hozzáférés szükséges a www.powershellgallery.com a modulok letöltéséhez. Helyileg futtatva győződjön meg arról, hogy a futtatókörnyezet hozzáférhet ehhez az URL-címhez a szükséges tűzfalszabályok hozzáadásával.
+
+> [!NOTE]
+> A felügyelt függőségek jelenleg nem támogatják azokat a modulokat, amelyek megkövetelik a felhasználónak, hogy fogadja el a licencet, vagy ha a licencet interaktívan fogadja el, vagy ha meghívja a `-AcceptLicense` kapcsolót `Install-Module` .
 
 A következő Alkalmazásbeállítások segítségével megváltoztathatja a felügyelt függőségek letöltésének és telepítésének módját. Az alkalmazás frissítése a-n belül elindul `MDMaxBackgroundUpgradePeriod` , és a frissítési folyamat körülbelül a-ban fejeződik be `MDNewSnapshotCheckPeriod` .
 
@@ -435,6 +438,7 @@ A függvények között `PSModulePath` két elérési út található:
 
 * Egy `Modules` mappa, amely a Function alkalmazás gyökerében található.
 * A `Modules` PowerShell nyelvi feldolgozója által vezérelt mappa elérési útja.
+
 
 ### <a name="function-app-level-modules-folder"></a>Függvény alkalmazás-szintű `Modules` mappája
 
@@ -502,17 +506,22 @@ Alapértelmezés szerint a függvények PowerShell-futtatókörnyezete egyszerre
 * Ha nagy számú hívást próbál meg egyszerre kezelni.
 * Ha olyan függvényekkel rendelkezik, amelyek más függvényeket hívnak meg ugyanazon a Function alkalmazáson belül.
 
-Ezt a viselkedést úgy módosíthatja, ha a következő környezeti változót egész értékre állítja:
+A számítási feladatok típusától függően néhány Párhuzamossági modell is felderíthető:
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* Növekedés ```FUNCTIONS_WORKER_PROCESS_COUNT``` . Ez lehetővé teszi, hogy az egyazon példányon belül több folyamaton, a processzor és a memória terhelésének bevezetésével kezelje a funkciót. Az I/O-kötésű függvények általában nem fognak szenvedni ebből a terhelésből. A CPU-kötésű függvények esetében a hatás jelentős lehet.
 
-Ezt a környezeti változót a függvényalkalmazás [alkalmazás beállításaiban](functions-app-settings.md) állíthatja be.
+* Növelje meg az ```PSWorkerInProcConcurrencyUpperBound``` alkalmazásbeállítás értékét. Ez lehetővé teszi, hogy több futási terek hozzon létre ugyanazon a folyamaton belül, ami jelentősen csökkenti a processzor-és a memória terhelését.
+
+Ezeket a környezeti változókat a Function alkalmazás [Alkalmazásbeállítások](functions-app-settings.md) között állíthatja be.
+
+A használati esettől függően Durable Functions jelentősen növelheti a méretezhetőséget. További információ: [Durable functions alkalmazási minták](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns).
+
+>[!NOTE]
+> Előfordulhat, hogy a "kérelmek várólistára helyezése az elérhető futási terek hiányában" figyelmeztetést kap, ne feledje, hogy ez nem jelent hibát. Az üzenet közli, hogy a kérések várólistára kerülnek, és az előző kérések befejezésekor lesznek kezelve.
 
 ### <a name="considerations-for-using-concurrency"></a>A párhuzamosság használatának szempontjai
 
-Alapértelmezés szerint a PowerShell _egyszálas_ parancsfájlkezelési nyelv. A párhuzamosság azonban több PowerShell-futási terek is hozzáadható ugyanabban a folyamatban. A létrehozott futási terek mérete megegyezik a PSWorkerInProcConcurrencyUpperBound alkalmazás beállításával. Az átviteli sebességet a kiválasztott csomagban elérhető CPU és memória mennyisége befolyásolja.
+Alapértelmezés szerint a PowerShell _egyszálas_ parancsfájlkezelési nyelv. A párhuzamosság azonban több PowerShell-futási terek is hozzáadható ugyanabban a folyamatban. A létrehozott futási terek-mennyiség megegyezik az ```PSWorkerInProcConcurrencyUpperBound``` alkalmazás beállításával. Az átviteli sebességet a kiválasztott csomagban elérhető CPU és memória mennyisége befolyásolja.
 
 A Azure PowerShell egyes _folyamat-szintű_ kontextusokat és állapotot használ, hogy segítsen a felesleges gépelésben. Ha azonban a függvény alkalmazásban bekapcsolja a párhuzamosságot, és meghívja az állapotot megváltoztató műveleteket, akkor a verseny feltételei is megváltozhatnak. Ezek a versenyhelyzet nehéz hibakeresést végezni, mert egy hívás egy bizonyos állapotra támaszkodik, és a másik meghívás megváltoztatta az állapotot.
 
@@ -600,7 +609,7 @@ Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-sc
 
 A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

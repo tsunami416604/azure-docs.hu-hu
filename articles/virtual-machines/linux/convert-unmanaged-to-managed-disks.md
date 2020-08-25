@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89035d26e05ca4b93dc271f02fef1afea24b0f20
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654429"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815334"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linuxos virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -21,7 +21,7 @@ Ha már létezik olyan linuxos virtuális gép (VM), amely nem felügyelt lemeze
 Ez a cikk bemutatja, hogyan alakíthatja át a virtuális gépeket az Azure CLI használatával. Ha telepíteni vagy frissíteni szeretné, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. 
 
 ## <a name="before-you-begin"></a>Előkészületek
-* Tekintse át [a Managed Disksre való áttelepítéssel kapcsolatos gyakori kérdéseket](faq-for-disks.md#migrate-to-managed-disks).
+* Tekintse át [a Managed Disksre való áttelepítéssel kapcsolatos gyakori kérdéseket](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

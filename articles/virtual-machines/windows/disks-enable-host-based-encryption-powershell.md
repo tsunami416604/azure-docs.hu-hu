@@ -4,18 +4,18 @@ description: Az Azure-beli virtuális gépek végpontok közötti titkosításá
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cb6235c5c1a34cb3f48d315adee565591bb72c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a352ecc2d2b02f03e2b55f7c5896ac905077921
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814792"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-powershell"></a>A végpontok közötti titkosítás engedélyezése a következő gazdagépen lévő titkosítás használatával: Azure PowerShell
+# <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>A Azure PowerShell modullal engedélyezheti a végpontok közötti titkosítást a gazdagépen lévő titkosítás használatával
 
 Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva maradnak a tárolási szolgáltatásba titkosított adatforgalomban. A gazdagépen található titkosítással, valamint az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos elméleti információkat lásd: [titkosítás a gazdagép-végpontok közötti titkosítással a virtuális gép adataihoz](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 

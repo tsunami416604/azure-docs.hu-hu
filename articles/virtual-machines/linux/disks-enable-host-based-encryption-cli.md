@@ -4,18 +4,18 @@ description: Használjon titkosítást a gazdagépen az Azure Managed Disks szol
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff56654981ef69648b1fa7ad11a8681c887289f6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029008"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816966"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Végpontok közötti titkosítás engedélyezése a gazdagépen található titkosítás használatával – Azure CLI
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>A végpontok közötti titkosítás engedélyezése az Azure CLI használatával a gazdagépen való titkosítással
 
 Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva maradnak a tárolási szolgáltatásba titkosított adatforgalomban. A gazdagépen található titkosítással, valamint az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos elméleti információkat lásd: [titkosítás a gazdagép-végpontok közötti titkosítással a virtuális gép adataihoz](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 

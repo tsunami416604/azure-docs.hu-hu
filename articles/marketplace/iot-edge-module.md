@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750243"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816252"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -40,13 +40,13 @@ A IoT Edge modul ajánlat típusa egy IoT Edge eszközön futó adott típusú t
 
 **A megfelelő online áruház kiválasztása**
 
-IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé, a AppSource nem alkalmazható.  További információ a különbségekről és a célközönségről az online áruházakban: [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
- 
+IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé; A AppSource nem érvényes. További információ a különbségekről és a célközönségről az online áruházakban: [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
+
 **Számlázási beállítások**
 
 A piactér jelenleg **ingyenes** , és **saját licenc (BYOL)** számlázási lehetőségeket biztosít IoT Edge modulokhoz.
- 
-**Közzétételi beállítások**
+
+### <a name="publishing-options"></a>Közzétételi beállítások
 
 IoT Edge moduloknak minden esetben ki kell választaniuk a **Transact** Publishing beállítást.  A közzétételi beállításokkal kapcsolatos további részletekért tekintse meg [a közzétételi lehetőség kiválasztása](determine-your-listing-type.md) című témakört.  
 
@@ -54,22 +54,22 @@ IoT Edge moduloknak minden esetben ki kell választaniuk a **Transact** Publishi
 
 A Microsoft Azure Marketplace-szerződések és-szabályzatok minden feltétele IoT Edge modul-ajánlatok esetében érvényes.  Emellett a IoT Edge modulokra vonatkozó előfeltételeket és műszaki követelményeket is megkövetelnek.  
 
-**Előfeltételek**
+### <a name="prerequisites"></a>Előfeltételek
 
 IoT Edge modul Azure Marketplace-en való közzétételéhez meg kell felelnie a következő előfeltételeknek:
 
 - Hozzáférés a partner központhoz. További információ: az [Azure Marketplace és a AppSource közzétételi útmutatója](marketplace-publishers-guide.md).
-- IoT Edge moduljának üzemeltetése egy Azure Container Registry. 
-- A IoT Edge modul metaadatainak készen állnak, például (nem teljes lista): 
+- IoT Edge moduljának üzemeltetése egy Azure Container Registry.
+- A IoT Edge modul metaadatainak készen állnak, például (nem teljes lista):
     - Egy cím
     - Leírás (HTML formátumban)
-    - Egy embléma képe (PNG-formátum és rögzített képméret, beleértve az 40x40px, a 90x90px, a 115x115px, a 255x115px)
+    - Egy embléma képe (48 x 48 (opcionális), 90 x 90 (opcionális) és 216 x 216 – 350 x 350 px, mind PNG formátumban
     - Használati feltételek és adatvédelmi szabályzat
     - Alapértelmezett modul konfigurációja (Route, Twin kívánt tulajdonságok, createOptions, környezeti változók)
     - Dokumentáció
     - Támogatási kapcsolattartók
 
-**Technikai követelmények**
+### <a name="technical-requirements"></a>Technikai követelmények
 
 Az IoT Edge modul elsődleges műszaki követelményei, hogy az informatikai támogatás és közzététel az Azure Marketplace-en, részletesen megtalálhatók a [IoT Edge modul előkészítésének technikai eszközein](./partner-center-portal/create-iot-edge-module-asset.md).
 

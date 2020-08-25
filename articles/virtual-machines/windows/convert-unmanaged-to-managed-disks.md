@@ -7,12 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf601c7f7429d4676ec480ddc016158150da8ce5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508610"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815199"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows rendszerű virtuális gép átállítása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -25,7 +25,7 @@ Ha már van olyan Windows rendszerű virtuális gép (VM), amely nem felügyelt 
 
 * Tekintse át [a Managed Disksre való áttelepítésre vonatkozó tervet](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Tekintse át [a Managed Disksre való áttelepítéssel kapcsolatos gyakori kérdéseket](faq-for-disks.md#migrate-to-managed-disks).
+* Tekintse át [a Managed Disksre való áttelepítéssel kapcsolatos gyakori kérdéseket](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -103,7 +103,7 @@ A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a f
 
 A rendszer a Migrálás befejezése után leállítja és újraindítja a virtuális gépet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Standard szintű felügyelt lemezek átalakítása prémium szintre](convert-disk-storage.md)
 

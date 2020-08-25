@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509110"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815181"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -52,9 +52,10 @@ Az Identity Protection a következő besorolások kockázatait azonosítja:
 | Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
 | Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
-| Kártevők társított IP-címe | Bejelentkezés kártevővel összekapcsolt IP-címről |
-| Kiszivárgott hitelesítő adatok | Ez a kockázati észlelés azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott |
-| Azure AD-fenyegetések felderítése | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak |
+| Kártevők társított IP-címe | Jelentkezzen be egy kártevővel összekapcsolt IP-címről. |
+| Kiszivárgott hitelesítő adatok | Ez a kockázati észlelés azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. |
+| Jelszó spray | Azt jelzi, hogy a rendszer több felhasználónevet is megtámad a gyakori jelszavakkal egy egységes találgatásos kényszerített módon. |
+| Azure AD-fenyegetések felderítése | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak. |
 
 A kockázatokról és azok kiszámításáról további részleteket a cikkben [találhat.](concept-identity-protection-risks.md)
 

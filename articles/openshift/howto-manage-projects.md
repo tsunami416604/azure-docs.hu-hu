@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139113"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816439"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift-fürtben 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projektek, sablonok, képstreamek kezelése Azure Red Hat OpenShift-fürtben
 
 A OpenShift-tároló platformon a kapcsolódó objektumok csoportosítására és elkülönítésére szolgálnak a projektek. Rendszergazdaként hozzáférést biztosíthat a fejlesztőknek bizonyos projektekhez, így saját projektjeiket hozhatnak létre, és rendszergazdai jogosultságokat biztosíthatnak az egyes projektekhez.
 
@@ -45,7 +45,7 @@ Az API-hoz való hozzáférés a fejlesztők számára az önkiszolgáló fürt 
    oc edit template project-request -n openshift
    ```
 
-3. A következő jegyzet hozzáadásával távolítsa el az alapértelmezett Project sablont az Azure Red Hat OpenShift (ARO) frissítési folyamatból:`openshift.io/reconcile-protect: "true"`
+3. A következő jegyzet hozzáadásával távolítsa el az alapértelmezett Project sablont az Azure Red Hat OpenShift (ARO) frissítési folyamatból: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...

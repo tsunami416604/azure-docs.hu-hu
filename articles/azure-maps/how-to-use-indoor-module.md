@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287095"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815946"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
-A Azure Maps web SDK tartalmazza a *Azure Maps beltéri* modult. A *Azure Maps beltéri* modul lehetővé teszi a Azure Maps creatorben létrehozott beltéri leképezések megjelenítését.
+A Azure Maps web SDK tartalmazza a *Azure Maps beltéri* modult. A  *Azure Maps beltéri* modul lehetővé teszi a Azure Maps creatorben létrehozott beltéri leképezések megjelenítését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,10 +35,8 @@ A *Azure Maps beltéri* modult kétféleképpen telepítheti és ágyazhatja be.
 Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Delivery Network verzióját szeretné használni, a `<head>` HTML-fájl elemében a következő JavaScript-és stíluslap-hivatkozásokra kell hivatkoznia:
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  Vagy letöltheti a *Azure Maps beltéri* modult is. A *Azure Maps beltéri* modul tartalmaz egy ügyféloldali kódtárat a Azure Maps szolgáltatások eléréséhez. Az alábbi lépéseket követve telepítheti és betöltheti a *beltéri* modult a webalkalmazásba.  
@@ -46,15 +44,14 @@ Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Deliver
   1. Telepítse az [Azure-Maps-Indoor csomagot](https://www.npmjs.com/package/azure-maps-indoor).
   
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
   2. A HTML-fájl elemében a *Azure Maps beltéri* modul JavaScript-és stíluslapjának hivatkozása `<head>` :
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>A Térkép objektumának példánya
@@ -148,11 +145,11 @@ Ebből a példából megtudhatja, hogyan használhatja a *Azure Maps beltéri* m
 3. A HTML-fejlécben hivatkozzon a *Azure Maps beltéri* modul JavaScript-és stíluslap-stílusára.
 
 4. *Leképezési objektum*inicializálása. A *map objektum* a következő beállításokat támogatja:
-    - `Subscription key`a Azure Maps elsődleges előfizetési kulcs.
-    - `center`meghatározza a beltéri Térkép középpontjának földrajzi szélességét és hosszúságát. Adjon meg egy értéket, `center` Ha nem kíván értéket megadni a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `center` : [-122,13315, 47,63637].
-    - `bounds`az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumot a következőképpen kell megjelennie `bounds` : [# West, # Dél, # Kelet, # North].
-    - `style`lehetővé teszi a háttér színének megadását. Fehér háttér megjelenítéséhez adja meg `style` az "üres" értéket.
-    - `zoom`lehetővé teszi a Térkép minimális és maximális nagyítási szintjeinek megadását.
+    - `Subscription key` a Azure Maps elsődleges előfizetési kulcs.
+    - `center` meghatározza a beltéri Térkép középpontjának földrajzi szélességét és hosszúságát. Adjon meg egy értéket, `center` Ha nem kíván értéket megadni a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `center` : [-122,13315, 47,63637].
+    - `bounds` az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumot a következőképpen kell megjelennie `bounds` : [# West, # Dél, # Kelet, # North].
+    - `style` lehetővé teszi a háttér színének megadását. Fehér háttér megjelenítéséhez adja meg `style` az "üres" értéket.
+    - `zoom` lehetővé teszi a Térkép minimális és maximális nagyítási szintjeinek megadását.
 
 5. Ezután hozza létre a *Indoor Manager* modult. Rendelje hozzá a *Azure Maps beltéri* `tilesetId` és opcionálisan adja hozzá a elemet `statesetId` .
 

@@ -2,19 +2,19 @@
 title: Azure CLI – ügyfél által felügyelt kulcsok engedélyezése SSE által felügyelt lemezekkel
 description: A felügyelt lemezeken az Azure CLI használatával engedélyezheti az ügyfél által felügyelt kulcsokat.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: cd1855a4ce2d394559db28448d9f1c9a01b4bd08
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2acc95190454de2ffdd81a05a6e6cf166a9a6549
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235996"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814134"
 ---
-# <a name="azure-cli---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure CLI – ügyfél által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással felügyelt lemezekkel
+# <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Az Azure CLI használatával engedélyezheti a kiszolgálóoldali titkosítást a felügyelt lemezekhez tartozó ügyfél által felügyelt kulcsokkal
 
 A Azure Disk Storage lehetővé teszi a saját kulcsok kezelését, ha kiszolgálóoldali titkosítást (SSE) használ a felügyelt lemezekhez, ha a lehetőséget választja. Az ügyfelek által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos koncepcionális információk a lemezes titkosításról szóló cikkben, az [ügyfél által felügyelt kulcsok](disk-encryption.md#customer-managed-keys) című szakaszban találhatók.
 
@@ -129,5 +129,5 @@ az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url 
 
 - [Az ügyfél által felügyelt kulcsokkal rendelkező titkosított lemezek létrehozásához Azure Resource Manager-sablonok megismerése](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Gépek replikálása az ügyfél által felügyelt kulcsokkal rendelkező lemezekkel](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [VMware virtuális gépek Azure-ba történő vészhelyreállításának beállítása a PowerShell használatával](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [Hyper-V virtuális gépek Azure-ba történő vészhelyreállításának beállítása a PowerShell és az Azure Resource Manager használatával](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

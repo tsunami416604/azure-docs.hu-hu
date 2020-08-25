@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653137"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815572"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
@@ -19,7 +19,7 @@ A Azure Cosmos DB szinapszis hivatkozása egy felhőalapú hibrid tranzakciós �
 
 
 > [!IMPORTANT]
-> Az Azure szinapszis-hivatkozás használatához győződjön meg arról, hogy az Azure Cosmos-fiókját & Azure szinapszis Analytics-munkaterületen helyezi üzembe a fenti támogatott régiók egyikében. A támogatott régiók listáját az [Azure-szolgáltatások frissítései](https://azure.microsoft.com/updates/)című témakörben tekintheti meg. 
+> Az Azure szinapszis-hivatkozás használatához győződjön meg arról, hogy az Azure Cosmos-fiókot & Azure szinapszis Analytics-munkaterületen helyezi üzembe az egyik támogatott régióban. Az Azure szinapszis hivatkozás jelenleg a következő Azure-régiókban érhető el: USA nyugati középső régiója, USA keleti régiója, Nyugat-RÉGIÓJA, Észak-Európa, Nyugat-Európa, az USA déli középső régiója, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Európai U2, Egyesült Királyság déli régiója.
 
 Az alábbi lépések végrehajtásával elemzési lekérdezéseket futtathat a Azure Cosmos DB szinapszis hivatkozásával:
 

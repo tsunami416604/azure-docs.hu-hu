@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 08/20/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: dcb8f709bc75fdf9fe80ee26497acb78cc023327
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116342"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814621"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -45,7 +45,7 @@ Ez a cikk bemutatja, hogyan listázhat alkalmazást az Azure Active Directory (A
 
 **Hogyan szerezhet be Azure AD-t a fejlesztőknek?**
 
-A prémium szintű Azure AD-funkciókkal ingyenes tesztelési fiókot vehet igénybe – a 90 napos ingyenes és a bővíthető, ha a fejlesztői munkát végzik:https://docs.microsoft.com/office/developer-program/office-365-developer-program
+A prémium szintű Azure AD-funkciókkal ingyenes tesztelési fiókot vehet igénybe – a 90 napos ingyenes és a bővíthető, ha a fejlesztői munkát végzik: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="submit-the-request-in-the-portal"></a>A kérelem elküldése a portálon
 
@@ -113,7 +113,7 @@ Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési olda
 
 ![Jelszó-SSO-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
 
-* Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használatával, válassza a **jelszó egyszeri bejelentkezés** lehetőséget.
+* Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használatával, válassza a **jelszó egyszeri bejelentkezés (UserName & Password)** lehetőséget az ábrán látható módon.
 * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="request-for-user-provisioning"></a>A felhasználó kiépítési kérelme

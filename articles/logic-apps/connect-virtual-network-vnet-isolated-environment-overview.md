@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963665"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816021"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
@@ -117,7 +117,14 @@ Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési v
 > [!IMPORTANT]
 > A hozzáférési végpontot csak az ISE létrehozása során választhatja ki, és később nem módosíthatja ezt a beállítást.
 
-* **Belső**: a privát végpontok lehetővé teszik az ISE-beli logikai alkalmazások meghívását, ahol megtekintheti és elérheti a Logic apps futtatási előzményeinek bemeneteit és kimeneteit *csak a virtuális hálózatán belülről*. Győződjön meg arról, hogy van hálózati kapcsolat a privát végpontok és azon számítógép között, ahonnan el szeretné érni a futtatási előzményeket. Például az ügyfélszámítógép létezhet az ISE virtuális hálózatán belül vagy egy olyan virtuális hálózaton belül, amely csatlakozik az ISE virtuális hálózatához, például a peering vagy egy virtuális magánhálózat használatával.
+* **Belső**: a privát végpontok lehetővé teszik az ISE-beli logikai alkalmazások meghívását, ahol megtekintheti és elérheti a Logic apps futtatási előzményeinek bemeneteit és kimeneteit *csak a virtuális hálózatán belülről*.
+
+  > [!IMPORTANT]
+  > Győződjön meg arról, hogy van hálózati kapcsolat a privát végpontok és azon számítógép között, ahonnan el szeretné érni a futtatási előzményeket. Ellenkező esetben, ha megpróbálja megtekinteni a logikai alkalmazás futási előzményeit, hibaüzenet jelenik meg, amely szerint "váratlan hiba történt. Nem sikerült beolvasni a következőt: ".
+  >
+  > ![Azure Storage-műveleti hiba történt a forgalom tűzfalon keresztüli küldésének képtelensége miatt](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
+  >
+  > Például az ügyfélszámítógép létezhet az ISE virtuális hálózatán belül, vagy egy olyan virtuális hálózaton belül, amely az ISE virtuális hálózatára van csatlakoztatva a peering vagy egy virtuális magánhálózat használatával. 
 
 * **Külső**: a nyilvános végpontok lehetővé teszik olyan logikai alkalmazások meghívását az ISE-ben, ahol megtekintheti és elérheti a Logic apps alkalmazásban található bemeneteket és kimeneteket *a virtuális hálózaton kívülről*. Ha hálózati biztonsági csoportokat (NSG) használ, győződjön meg róla, hogy be van állítva a bejövő szabályokkal, hogy engedélyezze a futtatási előzmények bemeneteit és kimeneteit. További információ: az [ISE hozzáférésének engedélyezése](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 

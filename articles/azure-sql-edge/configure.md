@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551982"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816881"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
 
@@ -157,9 +157,63 @@ Az Azure SQL Edge korábbi CTP-je úgy lett konfigurálva, hogy legfelső szint�
   - A tároló-létrehozási beállítások módosításával adja meg a `*"User": "user_name | user_id*` kulcs-érték párokat a tároló létrehozása lehetőség alatt. Cserélje le user_name vagy user_id a Docker-gazdagépről származó tényleges user_name vagy user_idra. 
   - Módosítsa a könyvtár/csatlakoztatási kötet engedélyeit.
 
+## <a name="persist-your-data"></a>Adatmegőrzés
+
+Az Azure SQL Edge konfigurációjának módosításai és az adatbázisfájlok a tárolóban maradnak, még akkor is, ha a tárolót a és a rendszerre indítja újra `docker stop` `docker start` . Ha azonban eltávolítja a tárolót a `docker rm` -val, a tárolóban lévő összes elem törlődik, beleértve az Azure SQL Edge és az adatbázisait is. A következő szakasz azt ismerteti, hogyan használhatók az **adatkötetek az adatbázisfájlok megőrzésére** , még akkor is, ha a társított tárolók törlődnek.
+
+> [!IMPORTANT]
+> Az Azure SQL Edge esetében fontos, hogy tisztában legyen az adatmegőrzéssel a Docker szolgáltatásban. Az ebben a szakaszban található vitán kívül lásd: a Docker dokumentációja a [Docker-tárolókban tárolt adatok kezelésével](https://docs.docker.com/engine/tutorials/dockervolumes/)kapcsolatban.
+
+### <a name="mount-a-host-directory-as-data-volume"></a>Gazdagép könyvtárának csatlakoztatása adatkötetként
+
+Az első lehetőség az, hogy az állomáson lévő könyvtárat egy adatkötetként csatlakoztassa a tárolóban. Ehhez használja a `docker run` parancsot a `-v <host directory>:/var/opt/mssql` jelzővel. Ez lehetővé teszi, hogy a tároló-végrehajtások között visszaálljon az adatgyűjtés.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+Ezzel a technikával a Docker-on kívül is megoszthatja és megtekintheti a gazdagépen lévő fájlokat.
+
+> [!IMPORTANT]
+> A **Windowson futó Docker** gazdagép-kötetének leképezése jelenleg nem támogatja a teljes könyvtár leképezését `/var/opt/mssql` . Leképezheti azonban egy alkönyvtárat is, például a `/var/opt/mssql/data` gazdagépet.
+
+> [!IMPORTANT]
+> Jelenleg nem támogatott a gazdagép mennyiségi hozzárendelése a Docker-hez a **Mac gépen** az Azure SQL Edge-lemezképpel. Használja helyette az adatmennyiség-tárolókat. Ez a korlátozás a `/var/opt/mssql` címtárra vonatkozik. A csatlakoztatott könyvtárból való olvasás jól működik. Például csatlakoztathat egy gazdagép-könyvtárat a-v használatával Mac gépen, és visszaállíthatja a biztonsági mentést egy. bak fájlból, amely a gazdagépen található.
+
+### <a name="use-data-volume-containers"></a>Adatmennyiség-tárolók használata
+
+A második lehetőség egy adatmennyiség-tároló használata. Adatmennyiség-tároló létrehozásához adjon meg egy kötet nevet a paraméterrel rendelkező gazdagép könyvtára helyett `-v` . A következő példa egy **sqlvolume**nevű megosztott adatkötetet hoz létre.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+> [!NOTE]
+> Ez a technika a futtatási parancsban lévő adatmennyiség implicit létrehozásához nem működik a Docker régebbi verzióival. Ebben az esetben használja a Docker dokumentációjában leírt explicit lépéseket, [és hozzon létre és csatlakoztatjon egy adatmennyiség-tárolót](https://docs.docker.com/engine/tutorials/dockervolumes/#creating-and-mounting-a-data-volume-container).
+
+Ha leállítja és eltávolítja a tárolót, az adatmennyiség továbbra is fennáll. Megtekintheti a `docker volume ls` paranccsal.
+
+```bash
+docker volume ls
+```
+
+Ha ezt követően egy másik tárolót hoz létre ugyanazzal a kötettel, akkor az új tároló ugyanazt az Azure SQL Edge-adatmennyiséget használja, amely a kötetben található.
+
+Adatmennyiség-tároló eltávolításához használja az `docker volume rm` parancsot.
+
+> [!WARNING]
+> Ha törli az adatmennyiség-tárolót, a tárolóban lévő összes Azure SQL Edge-adatbázis *véglegesen* törölve lesz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

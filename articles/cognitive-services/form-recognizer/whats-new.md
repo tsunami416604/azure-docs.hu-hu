@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751072"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816371"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -28,12 +28,12 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 
 
 - **REST API hivatkozás elérhető** – tekintse meg a [v 2.1 – preview. 1 hivatkozást](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
-- Az angol nyelveken **kívül támogatott új nyelvek**a következők:, `Layout` és `Train Custom Model` : angol (en), Kínai (egyszerűsített) (zh-zh), holland (NL), francia (FR), német (de), olasz (IT), Portugál (PT) és spanyol (es).
+- Az angol nyelveken **kívül**a következő [nyelvek](language-support.md) támogatottak: a `Layout` és a `Train Custom Model` : angol (), a `en` kínai (egyszerűsített) (), a holland (), a `zh-Hans` francia (), a német (), az `nl` `fr` `de` olasz (), a `it` portugál ( `pt` ) és a spanyol ( `es` ).
 - **Jelölőnégyzet/kiválasztási jel észlelése** – az űrlap-felismerő támogatja a kiválasztási jelek, például a jelölőnégyzetek és választógombok észlelését és kinyerését. A kiválasztási jelek kibontása a-ben megtörténik, `Layout` és most már címkézheti és betaníthatja a `Train Custom Model`  -  _betanítást a vonaton_ , hogy kinyerje a legfontosabb érték párokat 
 - A Model levélírás lehetővé teszi több modell **összeállítását** és meghívását egyetlen modell-azonosítóval. Ha egy dokumentumot egy összeállított modell-AZONOSÍTÓval kell elemezni, a rendszer először egy besorolási lépést hajt végre a megfelelő egyéni modellhez való továbbításhoz. A Model összeállítás elérhető a `Train Custom Model`  -  _feliratokkal rendelkező vonatok_számára.
 - **Modell neve** : adjon meg egy felhasználóbarát nevet az egyéni modellekhez, így könnyebben kezelhető és nyomon követhető.
-- **Új, előre elkészített modell a vállalati kártyákhoz** a gyakori mezők angol nyelvű kinyeréséhez, valamint a Language Business Cards szolgáltatásban.
-- **Új területi beállítások az előre elkészített visszaigazolásokhoz** az en-us mellett a támogatás mostantól elérhető az EN-au, az en-CA, az en-GB, az EN-in
+- **[Új, előre elkészített modell a vállalati kártyákhoz](concept-business-cards.md)** a gyakori mezők angol nyelvű kinyeréséhez, valamint a Language Business Cards szolgáltatásban.
+- **[Új területi beállítások az előre elkészített visszaigazolásokhoz](concept-receipts.md)** az en-us mellett a támogatás mostantól elérhető az EN-au, az en-CA, az en-GB, az EN-in
 - **Minőségi fejlesztése** `Layout` , `Train Custom Model`  -  _címkék nélküli betanítás_ , _címkék_nélkül.
 
 
@@ -43,6 +43,7 @@ a 2.0-s **verzió** a következő frissítést tartalmazza:
 
 Az **új minták** a githubon érhetők el. 
 - A [Knowledge Extracting-receptek – az űrlapok](https://github.com/microsoft/knowledge-extraction-recipes-forms) forgatókönyve az ajánlott eljárásokat a valós Form-felismerő ügyfelek bevonásával gyűjti, és a projektek fejlesztéséhez használt, használható mintakód-mintákat, ellenőrzőlistákat és mintavételi folyamatokat biztosít. 
+- A [mintául szolgáló címkéző eszköz](https://github.com/microsoft/OCR-Form-Tools) frissítve lett az új v 2.1 funkció támogatásához. Ebben a rövid útmutatóban [megismerheti az eszköz](quickstarts/label-tool.md) első lépéseit. 
 - Az [intelligens kioszk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) űrlap felismerő mintája azt mutatja be, hogyan integrálható `Analyze Receipt` és `Train Custom Model`  -  _betanítható címkék nélkül_.
 
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034464"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814518"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -24,7 +24,7 @@ Az Azure Storage mindig több példányban tárolja az adatait, így védve van 
 Ha eldönti, hogy melyik redundancia-lehetőség a legmegfelelőbb a forgatókönyvéhez, vegye figyelembe az alacsonyabb költségek és a magasabb rendelkezésre állás és a tartósság közötti kompromisszumokat. Az alábbi tényezők segítenek meghatározni, hogy melyik redundancia-beállítást kell választania:  
 
 - Hogyan replikálódnak az adatai az elsődleges régióban
-- Azt jelzi, hogy a rendszer replikálja-e az adatait egy második helyre, amely földrajzilag az elsődleges régióban van, a regionális katasztrófák elleni védelem érdekében
+- Azt jelzi, hogy a rendszer replikálja-e az adatait egy második régióba, amely földrajzilag távol van az elsődleges régiótól, hogy védelmet nyújtson a regionális katasztrófák ellen
 - Azt jelzi, hogy az alkalmazásnak van-e olvasási hozzáférése a másodlagos régióban lévő replikált értékekhez, ha az elsődleges régió bármilyen okból elérhetetlenné válik
 
 ## <a name="redundancy-in-the-primary-region"></a>Redundancia az elsődleges régióban
@@ -64,13 +64,13 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 | Tárfiók típusa | Támogatott régiók | Támogatott szolgáltatások |
 |--|--|--|
 | Általános célú v2<sup>1</sup> | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója | Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
-| <sup>1</sup> . BlockBlobStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója | Csak Premium blokk Blobok |
-| FileStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója | Csak a prémium szintű fájlok megosztása |
+| <sup>1</sup> . BlockBlobStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója <br /> USA 2. nyugati régiója| Csak Premium blokk Blobok |
+| FileStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója <br /> USA 2. nyugati régiója | Csak a prémium szintű fájlok megosztása |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
 <sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-További információ arról, hogy mely régiók támogatják a ZRS-t: a **szolgáltatások támogatása régiók szerint** a [Mi a Azure Availability Zones?](../../availability-zones/az-overview.md).
+További információ arról, hogy mely régiók támogatják a ZRS-t: a **szolgáltatások támogatása régiók szerint**  a [Mi a Azure Availability Zones?](../../availability-zones/az-overview.md).
 
 ## <a name="redundancy-in-a-secondary-region"></a>Redundancia egy másodlagos régióban
 
@@ -83,9 +83,9 @@ Az Azure Storage két lehetőséget kínál az adatok másodlagos régióba tör
 - A **geo-redundáns tárolás (GRS)** a LRS használatával háromszor másolja az adatait az elsődleges régióban található egyetlen fizikai helyen belül. Ezután aszinkron módon másolja át az adatait a másodlagos régió egyetlen fizikai helyére.
 - A **geo-Zone-redundáns tárolás (GZRS)** az összes Azure-beli rendelkezésre állási zónában szinkron módon másolja az adatait az elsődleges régióban az ZRS használatával. Ezután aszinkron módon másolja át az adatait a másodlagos régió egyetlen fizikai helyére.
 
-A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos helyen a LRS használatával a rendszer mindig szinkron módon replikálja az adataikat. A másodlagos régióban lévő LRS megvédi adatait a hardver meghibásodása ellen.
+A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos régión belül a LRS használatával a rendszer mindig szinkron módon replikálja az adatátvitelt. A másodlagos régióban lévő LRS megvédi adatait a hardver meghibásodása ellen.
 
-A GRS vagy a GZRS esetében a másodlagos helyen lévő információk nem érhetők el olvasási vagy írási hozzáférés esetén, kivéve, ha feladatátvétel történik a másodlagos régióval. Ha olvasási hozzáférést szeretne adni a másodlagos helyhez, konfigurálja a Storage-fiókot az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS) használatára. További információ: [olvasási hozzáférés az adatokhoz a másodlagos régióban](#read-access-to-data-in-the-secondary-region).
+A GRS vagy a GZRS esetében a másodlagos régióban lévő információk nem érhetők el olvasási vagy írási hozzáférés esetén, kivéve, ha feladatátvétel történik a másodlagos régióval. Ha olvasási hozzáférést szeretne adni a másodlagos régióhoz, konfigurálja a Storage-fiókot az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS) használatára. További információ: [olvasási hozzáférés az adatokhoz a másodlagos régióban](#read-access-to-data-in-the-secondary-region).
 
 Ha az elsődleges régió elérhetetlenné válik, dönthet úgy, hogy átadja a feladatátvételt a másodlagos régiónak. A feladatátvétel befejeződése után a másodlagos régió lesz az elsődleges régió, és újra elolvashatja és írhatja az adataikat. A vész-helyreállítással és a másodlagos régióba való feladatátvételsel kapcsolatos további információkért tekintse meg a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
 
@@ -166,7 +166,7 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 | Kimaradási forgatókönyv | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Igen |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Yes |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Igen |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be | Nem | Nem | Igen<sup>1</sup> | Igen<sup>1</sup> |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 
@@ -196,4 +196,4 @@ Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)
 - [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)
-- [Vész-helyreállítási és Storage-fiók feladatátvétele](storage-disaster-recovery-guidance.md)
+- [Vészhelyreállítás és tárfiók feladatátvétele](storage-disaster-recovery-guidance.md)

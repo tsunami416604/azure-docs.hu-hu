@@ -10,34 +10,34 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 675ddf073393afde6ac8d08a65b40da11d90d3ea
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f6d128ace64f7c100a974883bff82435a496be97
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026661"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815453"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Ubuntu-Data Science Virtual Machine létrehozása ARM-sablonnal
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science Virtual Machine Azure Resource Manager sablonnal (ARM-sablon használatával). Az adatelemzési Virtual Machines az adatelemzési és gépi tanulási keretrendszerek és eszközök által előre feltöltött felhőalapú virtuális gépek. GPU-alapú számítási erőforrásokon való üzembe helyezéskor az összes eszköz és könyvtár a GPU használatára van konfigurálva. 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science Virtual Machine Azure Resource Manager sablonnal (ARM-sablon használatával). Az adatelemzési Virtual Machines az adatelemzési és gépi tanulási keretrendszerek és eszközök által előre feltöltött felhőalapú virtuális gépek. GPU-alapú számítási erőforrásokon való üzembe helyezéskor az összes eszköz és könyvtár a GPU használatára van konfigurálva.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/services/machine-learning/).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/services/machine-learning/), mielőtt hozzákezd.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli)-re.
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)származik. A cikk teljes sablonja túl hosszú ahhoz, hogy megjelenjen itt. A teljes sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Itt látható a DSVM sajátosságait meghatározó rész:
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/) közül származik. A cikk teljes sablonja túl hosszú ahhoz, hogy megjelenjen itt. A teljes sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Itt látható a DSVM sajátosságait meghatározó rész:
 
 :::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
 
@@ -74,8 +74,8 @@ A fenti parancs futtatásakor írja be a következőket:
 
 A Data Science Virtual Machine megtekintéséhez:
 
-1. Nyissa meg a következőt: https://portal.azure.com.
-1. Bejelentkezés lehetőséget.
+1. Ugrás a [Azure Portal](https://portal.azure.com)
+1. Jelentkezzen be.
 1. Válassza ki az imént létrehozott erőforráscsoportot.
 
 Ekkor megjelenik az erőforráscsoport adatai:
@@ -84,7 +84,7 @@ Ekkor megjelenik az erőforráscsoport adatai:
 
 Kattintson a virtuális gép erőforrására, hogy megnyissa az információ lapját. Itt információkat találhat a virtuális gépen, beleértve a kapcsolat részleteit is.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem szeretné használni ezt a virtuális gépet, törölje azt. Mivel a DSVM más erőforrásokhoz, például egy Storage-fiókhoz van társítva, valószínűleg törölni szeretné a teljes létrehozott erőforráscsoportot. A portálon törölheti az erőforráscsoportot, ha a **Törlés** gombra kattint, és megerősíti a szolgáltatást. Vagy törölheti is az erőforráscsoportot a parancssori felületről a következővel:
 
@@ -95,7 +95,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Data Science Virtual Machine egy ARM-sablonból.
 

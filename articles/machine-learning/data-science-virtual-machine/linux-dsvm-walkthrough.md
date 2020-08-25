@@ -8,19 +8,17 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/17/2020
+ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078103"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816218"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
+# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Adatelemzés Ubuntu-Data Science Virtual Machine az Azure-ban
 
-Ez az útmutató bemutatja, hogyan végezheti el számos gyakori adatelemzési feladatot a Linux Data Science Virtual Machine (DSVM) használatával. A Linux DSVM az Azure-ban elérhető virtuálisgép-rendszerkép, amely az adatok elemzéséhez és a gépi tanuláshoz gyakran használt eszközök gyűjteményével van előtelepítve. A legfontosabb szoftver-összetevők a [linuxos Data Science Virtual Machine](linux-dsvm-intro.md)kiépítésében vannak részletezve. A DSVM-rendszerkép megkönnyíti az adatelemzés percek alatt történő megkezdését anélkül, hogy mindegyik eszközt külön kell telepítenie és konfigurálnia. Ha szükséges, egyszerűen méretezheti a DSVM, és leállíthatja, ha nincs használatban. A DSVM-erőforrás rugalmas és költséghatékony.
-
-Az ebben az útmutatóban bemutatott adatelemzési feladatok követik a [Mi a csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) lépéseit? A csoportos adatelemzési folyamat az adatelemzés szisztematikus megközelítése, amely segítséget nyújt az adatszakértőknek a csapatok számára az intelligens alkalmazások létrehozásának életciklusa során. Az adatelemzési folyamat olyan iterációs keretrendszert is biztosít az adatelemzéshez, amelyet egy személy követhet.
+Ez az útmutató bemutatja, hogyan végezheti el számos gyakori adatelemzési feladatot az Ubuntu Data Science Virtual Machine (DSVM) használatával. Az Ubuntu DSVM az Azure-ban elérhető virtuálisgép-rendszerkép, amely az adatok elemzéséhez és a gépi tanuláshoz gyakran használt eszközök gyűjteményével van előtelepítve. A legfontosabb szoftver-összetevők az [Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md)kiépítésében vannak részletezve. A DSVM-rendszerkép megkönnyíti az adatelemzés percek alatt történő megkezdését anélkül, hogy mindegyik eszközt külön kell telepítenie és konfigurálnia. Ha szükséges, egyszerűen méretezheti a DSVM, és leállíthatja, ha nincs használatban. A DSVM-erőforrás rugalmas és költséghatékony.
 
 Ebben az útmutatóban elemezzük a [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) adatkészletet. A Spambase a levélszemét vagy a sonka (nem levélszemét) jelölésű e-mailek halmaza. A Spambase az e-mailek tartalmával kapcsolatos statisztikát is tartalmaz. A statisztikáról az útmutató későbbi részében olvashat.
 
@@ -29,10 +27,10 @@ Ebben az útmutatóban elemezzük a [spambase](https://archive.ics.uci.edu/ml/da
 A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
-* [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
-* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](dsvm-ubuntu-intro.md#x2go).
+
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). További információ a virtuális gép kiépítéséről: [az Ubuntu Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
+* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
 * Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információ](https://support.mozilla.org/questions/981140).
-* **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
 
@@ -228,7 +226,7 @@ A többi szakaszban bemutatjuk, hogyan használhatja a Linux DSVM telepített es
 * JupyterHub
 * Rattle
 * PostgreSQL és mókus SQL
-* Adattárház SQL Server
+* Azure Synapse Analytics (korábban SQL DW)
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -286,31 +284,6 @@ clf = svm.SVC()
 clf.fit(X, y)
 ```
 
-A modell közzététele Azure Machine Learning:
-
-```Python
-# Publish the model.
-workspace_id = "<workspace-id>"
-workspace_token = "<workspace-token>"
-from azureml import services
-@services.publish(workspace_id, workspace_token)
-@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-@services.returns(int) # 0 or 1
-def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-    return clf.predict(inputArray)
-
-# Get some info about the resulting model.
-predictSpam.service.url
-predictSpam.service.api_key
-
-# Call the model
-predictSpam.service(1, 1, 1)
-```
-
-> [!NOTE]
-> Ez a beállítás csak a Python 2,7 esetében érhető el. A Python 3,5-es verzióban még nem támogatott. A futtatáshoz használja a **/anaconda/bin/python2.7**.
-
 ### <a name="jupyterhub"></a>JupyterHub
 
 A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. Jelentkezzen be a helyi Linux-felhasználónevével és-jelszavával a következő címen \<DSVM DNS name or IP address\> : https://: 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
@@ -334,7 +307,6 @@ Több minta jegyzetfüzet már telepítve van a DSVM:
 
 * Python-jegyzetfüzetek – példa:
   * [IntroToJupyterPython. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
-  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
 * Példa R-jegyzetfüzetre:
   * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
@@ -508,7 +480,7 @@ A helyi kiszolgálóhoz való kapcsolódás beállítása:
 1. Adja meg a felhasználónevét és a jelszavát.
 1. Kattintson az **OK** gombra.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
 Lekérdezések futtatása:
 
@@ -532,9 +504,9 @@ A legtöbb olyan e-mail-cím, amelynek a *3D-s* előfordulása látszólag levé
 
 Ha a PostgreSQL-adatbázisban tárolt adataival szeretne gépi tanulást végezni, érdemes lehet [MADlib](https://madlib.incubator.apache.org/)használni.
 
-### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+### <a name="azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (korábban SQL DW)
 
-A Azure SQL Data Warehouse egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem rokon adatmennyiséget képes feldolgozni. További információ: [Mi az Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Az Azure szinapszis Analytics egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, egymással rokon és nem rokon adatmennyiséget képes feldolgozni. További információ: [Mi az az Azure szinapszis Analytics?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Az adatraktárhoz való kapcsolódáshoz és a tábla létrehozásához futtassa a következő parancsot egy parancssorból:
 
@@ -567,8 +539,4 @@ GO
 
 A mókus SQL használatával is lekérdezheti. Kövesse a PostgreSQL-hez hasonló lépéseket a SQL Server JDBC-illesztő használatával. A JDBC-illesztő a/usr/share/Java/jdbcdrivers/sqljdbc42.jar mappában található.
 
-## <a name="next-steps"></a>További lépések
 
-Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos cikkek áttekintését itt találja: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
-
-A csoportos adatelemzési folyamat lépéseit bemutató, részletes útmutatót a csoportos adatelemzési [folyamatról szóló útmutatóban](../team-data-science-process/walkthroughs.md)talál. A forgatókönyvek azt is bemutatják, hogyan kombinálhatja a Felhőbeli és a helyszíni eszközöket és szolgáltatásokat munkafolyamat vagy folyamatba egy intelligens alkalmazás létrehozásához.

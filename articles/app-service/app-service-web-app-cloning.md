@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255188"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815385"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Alkalmazások klónozásának Azure App Service a PowerShell használatával
 
@@ -107,6 +107,8 @@ A Traffic Manger AZONOSÍTÓjának megadását követően a következő parancs 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
+> [!NOTE]
+> Ha a következő hibaüzenetet kapja: "a Traffic Manager-állomásnév SSL-ellenőrzése sikertelen", javasoljuk, hogy használja a-IgnoreCustomHostNames attribútumot a PowerShell-parancsmagban a klónozási művelet végrehajtása közben, vagy használja a portált.
 
 ## <a name="current-restrictions"></a>Jelenlegi korlátozások
 Az alkalmazások klónozásának ismert korlátozásai:

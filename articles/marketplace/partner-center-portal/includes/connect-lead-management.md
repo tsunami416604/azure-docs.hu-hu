@@ -1,22 +1,22 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-ms.date: 08/16/2019
+ms.date: 08/24/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b2d4ce0de130942ccd52dc2894d91a4e4f667c99
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7709f26b30d41b932569227b8b6f05b5725dc98f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326620"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815664"
 ---
-Ha a partner centeren keresztül tesz közzé ajánlatot a piactéren, az ajánlatot a CRM-rendszerhez kell csatlakoznia. Így azonnal megkaphatja az ügyfelek kapcsolattartási adatait, miután az ügyfél kifejezte érdeklődését vagy üzembe helyezi a terméket.
+Ha a partner centeren keresztül tesz közzé ajánlatot a kereskedelmi piactéren, az ajánlatot a CRM-rendszerhez kell csatlakoznia. Így azonnal megkaphatja az ügyfelek kapcsolattartási adatait, miután az ügyfél kifejezte érdeklődését vagy üzembe helyezi a terméket.
 
 1. Válasszon egy érdeklődési célt, ahová küldhetjük az érdeklődőket. A következő CRM-rendszerek támogatottak:
 
@@ -29,7 +29,6 @@ Ha a partner centeren keresztül tesz közzé ajánlatot a piactéren, az ajánl
     * [Azure-tábla](../commercial-marketplace-lead-management-instructions-azure-table.md)
     * [HTTPS-végpont](../commercial-marketplace-lead-management-instructions-https.md)
 
-2. Olvassa el a kiválasztott vezető célhelyhez tartozó csatolt dokumentációt, amelyből megtudhatja, hogyan állíthatja be a vezető célhelyet a Piactéri ajánlatból érkező érdeklődők fogadására.
-3. Ha az ajánlatot a piactéren a partner Centerben teszi közzé, az ajánlatot a vezető célhoz köti. Ennek módjáról a csatolt dokumentációban olvashat bővebben.
-4. Ellenőrizze, hogy a vezető célhoz való kapcsolódás megfelelően van-e beállítva. Miután megfelelően konfigurálta az érdeklődő célhelyét, válassza a **Közzététel** lehetőséget az ajánlatban a partner Centerben. Ezután érvényesítjük a kapcsolatokat, és elküldünk egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot.
-5. Győződjön meg arról, hogy a vezető célhoz tartozó kapcsolat naprakész marad, hogy ne veszítse el az érdeklődőket. Győződjön meg arról, hogy frissíti ezeket a kapcsolatokat, amikor valami módosult a végén.
+1. Olvassa el a fenti kapcsolódó dokumentációt, amelyből megtudhatja, hogyan állíthatja be a vezető célhelyet, és hogyan fogadhat érdeklődőket kereskedelmi Piactéri ajánlatai alapján.
+1. Miután csatlakoztatta az ajánlatot a vezető célhoz, válassza a **Közzététel** lehetőséget az ajánlatában a partner Centerben. A rendszer érvényesíti a kapcsolatokat, és elküld egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot.
+1. Győződjön meg arról, hogy a vezető célhoz tartozó kapcsolat naprakész marad, hogy ne veszítse el az érdeklődőket. Győződjön meg róla, hogy frissíti ezeket a kapcsolatokat, amikor valamilyen változás történt.
