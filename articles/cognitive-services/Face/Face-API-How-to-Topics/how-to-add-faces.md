@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76169830"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Arcok hozzáadása egy PersonGroup
@@ -28,7 +28,7 @@ A következő kód több változót deklarál, és egy segítő függvényt val�
 - `PersonCount` a személy száma összesen.
 - `CallLimitPerSecond` a másodpercenkénti meghívások maximális száma az előfizetés csomag szerint.
 - `_timeStampQueue` a kérés időbélyegeket rögzítő üzenetsor.
-- `await WaitCallLimitPerSecondAsync()`megvárja, amíg a következő kérelem elküldése nem érvényes.
+- `await WaitCallLimitPerSecondAsync()` megvárja, amíg a következő kérelem elküldése nem érvényes.
 
 ```csharp
 const int PersonCount = 10000;
@@ -84,7 +84,7 @@ await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 
 ## <a name="step-4-create-the-persons-for-the-persongroup"></a>4. lépés: a PersonGroup személyek létrehozása
 
-A személyek párhuzamosan jönnek létre, és `await WaitCallLimitPerSecondAsync()` a rendszer azt is alkalmazza, hogy ne lépje túl a hívási korlátot.
+A személyek párhuzamosan jönnek létre, és a `await WaitCallLimitPerSecondAsync()` rendszer azt is alkalmazza, hogy ne lépje túl a hívási korlátot.
 
 ```csharp
 Person[] persons = new Person[PersonCount];
@@ -100,7 +100,7 @@ Parallel.For(0, PersonCount, async i =>
 ## <a name="step-5-add-faces-to-the-persons"></a>5. lépés: Arcok adása a személyekhez
 
 A különböző személyeknek hozzáadott arcok egyidejűleg lesznek feldolgozva. Egy adott személyhez hozzáadott arcok sorrendben lesznek feldolgozva.
-Újra meghívja a rendszer, `await WaitCallLimitPerSecondAsync()` hogy a kérelmek gyakorisága a korlátozás hatókörén belül legyen.
+Újra `await WaitCallLimitPerSecondAsync()` meghívja a rendszer, hogy a kérelmek gyakorisága a korlátozás hatókörén belül legyen.
 
 ```csharp
 Parallel.For(0, PersonCount, async i =>

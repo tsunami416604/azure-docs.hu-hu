@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 08/21/2020
+ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079216"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749457"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/o
 > * Több szál használata az indexelési sebesség növeléséhez
 > * Az exponenciális leállítási újrapróbálkozási stratégiájának használata a sikertelen elemek újrapróbálkozásához
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -154,7 +154,7 @@ DataGenerator dg = new DataGenerator();
 List<Hotel> hotels = dg.GetHotels(100000, "large");
 ```
 
-Ebben a példában két különböző méretű Hotel érhető el: **kicsi** és **nagy**.
+Ebben a példában két különböző méretű Hotel érhető el: **kicsi** és  **nagy**.
 
 Az index sémája jelentős hatással lehet az indexelési sebességre. Ennek a hatása miatt érdemes átkonvertálni ezt az osztályt a kívánt index sémának megfelelő adatlétrehozáshoz az oktatóanyag futtatása után.
 
@@ -380,9 +380,9 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő indexeket, és tör
 
 Az indexek törléséhez használhatja a portált is.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

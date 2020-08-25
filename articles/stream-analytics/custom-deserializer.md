@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75443692"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Oktatóanyag: egyéni .NET-deszerializálók a Azure Stream Analytics
@@ -63,7 +63,7 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
 
 ## <a name="configure-a-stream-analytics-job"></a>Stream Analytics-feladatok konfigurálása
 
-1. Kattintson duplán a **JobConfig. JSON**fájlra. Használja az alapértelmezett konfigurációkat, a következő beállítások kivételével:
+1. Kattintson duplán ** aJobConfig.js**elemre. Használja az alapértelmezett konfigurációkat, a következő beállítások kivételével:
 
    |Beállítás|Ajánlott érték|
    |-------|---------------|
@@ -74,7 +74,7 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
    |Egyéni kód tárolási beállításainak Storage-fiókja|< a Storage-fiókját >|
    |Egyéni kód tárolási beállításainak tárolója|< a Storage-tárolót >|
 
-2. A **bemenetek**alatt kattintson duplán a **input. JSON**fájlra. Használja az alapértelmezett konfigurációkat, a következő beállítások kivételével:
+2. A **bemenetek**területen kattintson duplán ** aInput.js**elemre. Használja az alapértelmezett konfigurációkat, a következő beállítások kivételével:
 
    |Beállítás|Ajánlott érték|
    |-------|---------------|
@@ -85,9 +85,9 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
    |Tároló|< a Storage-tárolót >|
    |Esemény szerializálási formátuma|Egyéb (Protopuf, XML, tulajdonosi...)|
    |Erőforrás|Betöltés az ASA-projekt referenciájának vagy CodeBehind|
-   |CSharp szerelvény neve|ProtobufDeserializer. dll|
+   |CSharp szerelvény neve|ProtobufDeserializer.dll|
    |Osztály neve|MessageBodyProto.MessageBodyDeserializer|
-   |Esemény tömörítési típusa|None|
+   |Esemény tömörítési típusa|Nincsenek|
 
 3. Adja hozzá a következő lekérdezést a **script. asaql** fájlhoz.
 
@@ -95,14 +95,14 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
    SELECT * FROM Input
    ```
 
-4. Töltse le a [minta protopuf bemeneti fájlját](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). A **bemenetek** mappában kattintson a jobb gombbal a **input. JSON** fájlra, majd válassza a **helyi bemenet hozzáadása**elemet. Ezután kattintson duplán a **local_Input. JSON** fájlra, és konfigurálja a következő beállításokat:
+4. Töltse le a [minta protopuf bemeneti fájlját](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). A **bemenetek** mappában kattintson a jobb gombbal ** aInput.js** elemre, majd válassza a **helyi bemenet hozzáadása**elemet. Ezután kattintson duplán ** alocal_Input.js** elemre, és konfigurálja a következő beállításokat:
 
    |Beállítás|Ajánlott érték|
    |-------|---------------|
-   |Input Alias (Bemeneti alias)|Input (Bemenet)|
+   |Input Alias (Bemeneti alias)|Bevitel|
    |Source Type (Forrás típusa)|Data Stream (Adatstream)|
    |Esemény szerializálási formátuma|Egyéb (Protopuf, XML, tulajdonosi...)|
-   |CSharp szerelvény neve|ProtobufDeserializer. dll|
+   |CSharp szerelvény neve|ProtobufDeserializer.dll|
    |Osztály neve|MessageBodyProto.MessageBodyDeserializer|
    |Helyi bemeneti fájl elérési útja|< a letöltött minta protopuf bemeneti fájljának elérési útját>|
 
@@ -130,7 +130,7 @@ Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos �
 
 2. Az erőforráscsoport lapján válassza a **Törlés** elemet, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan implementálhat egy egyéni .net deszerializáló a protokoll pufferének bemeneti szerializálásához. Ha többet szeretne megtudni az egyéni deszerializálók létrehozásáról, folytassa a következő cikkel:
 

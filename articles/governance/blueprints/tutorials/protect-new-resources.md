@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban az Azure-tervrajzok erőforrás-zárolási
 ms.date: 05/06/2020
 ms.topic: tutorial
 ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85969641"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-a-blueprint-definition"></a>Terv definíciójának létrehozása
 
@@ -153,8 +153,8 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
 
      |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Name|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Név|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA 2. nyugati régiója|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
      |StorageAccount|Resource Manager-sablon|Tárfióktípus (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték _Standard_LRS_.|
 
 1. Miután megadta az összes paramétert, válassza az oldal alján található **hozzárendelés** elemet.
@@ -215,7 +215,7 @@ Az erőforráscsoport biztonsága azt mutatja, hogy a terv hozzárendelése már
 
 Ha a **terv-hozzárendelés eltávolítása sikeres** portál értesítés jelenik meg, lépjen a következő lépésre.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
 

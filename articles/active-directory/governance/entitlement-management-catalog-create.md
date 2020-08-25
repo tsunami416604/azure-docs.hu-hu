@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339568"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783535"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -53,7 +53,7 @@ A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell h
 
 ### <a name="creating-a-catalog-programmatically"></a>Katalógus létrehozása programozott módon
 
-Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog létrehozására](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog létrehozására](/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
 
 ## <a name="add-resources-to-a-catalog"></a>Erőforrások hozzáadása egy katalógushoz
 
@@ -83,7 +83,7 @@ Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőfo
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Erőforrás hozzáadása egy katalógushoz programozott módon
 
-Microsoft Graph használatával is hozzáadhat erőforrást egy katalógushoz.  A megfelelő szerepkörben vagy katalógusban és erőforrás-tulajdonosban lévő felhasználó egy olyan alkalmazással, amely delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageResourceRequest létrehozásához](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
+Microsoft Graph használatával is hozzáadhat erőforrást egy katalógushoz.  A megfelelő szerepkörben vagy katalógusban és erőforrás-tulajdonosban lévő felhasználó egy olyan alkalmazással, amely delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageResourceRequest létrehozásához](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Erőforrások eltávolítása egy katalógusból
 
@@ -137,7 +137,7 @@ Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az infor
 
     ![Katalógus beállításainak szerkesztése](./media/entitlement-management-shared/catalog-edit.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="delete-a-catalog"></a>Katalógus törlése
 
@@ -155,8 +155,8 @@ A katalógust törölheti, de csak akkor, ha nincs hozzáférési csomagja.
 
 ### <a name="deleting-a-catalog-programmatically"></a>Katalógus programozott törlése
 
-A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog törlésére](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog törlésére](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési szabályozás delegálása a csomagkezelő-kezelők eléréséhez](entitlement-management-delegate-managers.md)

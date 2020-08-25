@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
 ms.openlocfilehash: c0d0e9f0994f7d4d75a67911a5191d6e4ffecaa8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80382800"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Oktatóanyag: Azure Database for MySQL-adatbázis tervezése az Azure Portal használatával
@@ -41,7 +41,7 @@ A MySQL-kiszolgálóhoz készült Azure-adatbázis [számítási és tárolási 
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-2. Válassza az **adatbázisok** > **Azure Database for MySQL**elemet. Ha nem találja a MySQL-kiszolgálót az **adatbázisok** kategóriában, kattintson az **összes megtekintése** lehetőségre az összes elérhető adatbázis-szolgáltatás megjelenítéséhez. A keresőmezőbe be is írhatja az **Azure Database for MySQL** szöveget, hogy gyorsan megtalálja a szolgáltatást.
+2. Válassza az **adatbázisok**  >  **Azure Database for MySQL**elemet. Ha nem találja a MySQL-kiszolgálót az **adatbázisok** kategóriában, kattintson az **összes megtekintése** lehetőségre az összes elérhető adatbázis-szolgáltatás megjelenítéséhez. A keresőmezőbe be is írhatja az **Azure Database for MySQL** szöveget, hogy gyorsan megtalálja a szolgáltatást.
    
    ![Ugrás a MySQL-re](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
 
@@ -60,14 +60,14 @@ A MySQL-kiszolgálóhoz készült Azure-adatbázis [számítási és tárolási 
     Jelszó megerősítése | *Az Ön választása*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *A legújabb verzió*| A legújabb verzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
-    Tarifacsomag | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** lehetőséget, Ezután válassza a **általános célú** fület. a *Gen 5*, *2 virtuális mag*, *5 GB*és *7 nap* a **számítási generáció**, a **virtuális mag**, a **tárolás**és a **biztonsági másolatok megőrzési időszakának**alapértelmezett értékei. A csúszkákat nem szükséges módosítania. Ha engedélyezni szeretné a kiszolgáló biztonsági mentését a földrajzilag redundáns tárolóban, válassza a **földrajzilag redundáns** **lehetőséget a biztonsági mentési redundancia lehetőségei**közül. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Tarifacsomag | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza ki az **árképzési szintet**. Ezután válassza a **általános célú** fület. a *Gen 5*, *2 virtuális mag*, *5 GB*és *7 nap* a **számítási generáció**, a **virtuális mag**, a **tárolás**és a **biztonsági másolatok megőrzési időszakának**alapértelmezett értékei. A csúszkákat nem szükséges módosítania. Ha engedélyezni szeretné a kiszolgáló biztonsági mentését a földrajzilag redundáns tárolóban, válassza a **földrajzilag redundáns** **lehetőséget a biztonsági mentési redundancia lehetőségei**közül. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
 
    ![Tarifacsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
    > Az **automatikus növekedés** lehetővé teszi, hogy a kiszolgáló növelje a tárterületet, ha közeledik a lefoglalt korláthoz, anélkül, hogy ez befolyásolná a munkaterhelést.
 
-4. Kattintson az **Áttekintés + létrehozás** elemre. Az eszköztár **értesítések** gombjára kattintva figyelheti a telepítési folyamatot. Az üzembe helyezés akár 20 percet is igénybe vehet.
+4. Kattintson a **Felülvizsgálat + létrehozás** elemre. Az eszköztár **értesítések** gombjára kattintva figyelheti a telepítési folyamatot. Az üzembe helyezés akár 20 percet is igénybe vehet.
 
 ## <a name="configure-firewall"></a>Tűzfal konfigurálása
 
@@ -91,7 +91,7 @@ Kérje le az Azure Database for MySQL-kiszolgáló teljes **kiszolgálónevét**
 2. Az **Áttekintés** oldalon jegyezze fel a **Kiszolgálónév** és a **Kiszolgálói rendszergazda bejelentkezési neve** értékét. A mezők melletti másolás gombra kattintva a vágólapra másolhatja az értékeket.
    ![4-2 Kiszolgáló tulajdonságai](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-Ebben a példában a kiszolgáló neve *mydemoserver.mysql.database.Azure.com*, és a kiszolgáló-rendszergazdai bejelentkezés *myadmin\@mydemoserver*.
+Ebben a példában a kiszolgáló neve *mydemoserver.mysql.database.Azure.com*, és a kiszolgáló-rendszergazdai bejelentkezés *myadmin \@ mydemoserver*.
 
 ## <a name="connect-to-the-server-using-mysql"></a>Csatlakozás a kiszolgálóhoz a mysql használatával
 
@@ -181,7 +181,7 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
    
 3. Kattintson **az OK** gombra, ha vissza szeretné állítani a kiszolgálót a tábla törlése előtti [időpontra](./howto-restore-server-portal.md) . A kiszolgáló visszaállítása létrehoz egy új másolatot a kiszolgálóról a megadott időpontban aktuális állapotában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következők elvégzését sajátította el az Azure Portallal:
 

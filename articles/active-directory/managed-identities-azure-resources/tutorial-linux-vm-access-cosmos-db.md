@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag`:`felügyelt identitás használata a Azure Cosmos db-Linux-Azure ad eléréséhez
+title: Oktatóanyag `:` felügyelt identitás használata a Azure Cosmos db-Linux-Azure ad eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Cosmos DB-hez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78248278"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
@@ -55,7 +55,7 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
 4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Gyűjtemény létrehozása Cosmos DB-fiókban
 
@@ -67,7 +67,7 @@ Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lé
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>A Linux VM-beli, rendszer által hozzárendelt felügyelt identitás `principalID` paraméterének lekérése
 
-Ahhoz, hogy az ezt követő szakaszban a Resource Managerből is hozzáférhessen a Cosmos DB-fiók hozzáférési kulcsaihoz, le kell kérdeznie a Linux VM-beli, rendszer által hozzárendelt felügyelt identitás `principalID` paraméterét.  A `<SUBSCRIPTION ID>` `<RESOURCE GROUP>` (z) ((erőforráscsoport, amelyben a virtuális gép) és `<VM NAME>` a paraméterek értékét cserélje le a saját értékeire.
+Ahhoz, hogy az ezt követő szakaszban a Resource Managerből is hozzáférhessen a Cosmos DB-fiók hozzáférési kulcsaihoz, le kell kérdeznie a Linux VM-beli, rendszer által hozzárendelt felügyelt identitás `principalID` paraméterét.  A `<SUBSCRIPTION ID>` `<RESOURCE GROUP>` (z) ((erőforráscsoport, amelyben a virtuális gép) és a paraméterek értékét cserélje le a `<VM NAME>` saját értékeire.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
@@ -88,7 +88,7 @@ A válasz tartalmazza a rendszer által hozzárendelt felügyelt identitás rés
 
 A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. Felügyelt identitás használatával azonban lekérheti a Cosmos DB hozzáférési kulcsát a Resource Managerből, és azzal elérheti a Cosmos DB-t. Ebben a lépésben hozzáférést biztosít a rendszer által hozzárendelt felügyelt identitás számára a Cosmos DB-fiók kulcsaihoz.
 
-Ha az Azure CLI használatával kíván hozzáférést adni a rendszer által hozzárendelt felügyelt identitás számára a Cosmos DB-fiókhoz az Azure Resource Managerben, frissítse a környezet `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` értékeit. Cserélje `<MI PRINCIPALID>` le a `principalId` `az resource show` parancsot a parancs által visszaadott TULAJDONSÁGRA a Linux rendszerű virtuális gép principalID lekéréséhez.  A Cosmos DB a részletesség két szintjét támogatja a hozzáférési kulcsok használatakor: a fiók írási/olvasási, illetve írásvédett hozzáférését.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkört, ha a fiók írási/olvasási kulcsait szeretné lekérni, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkört, ha írásvédett hozzáférést szeretne a fiókhoz:
+Ha az Azure CLI használatával kíván hozzáférést adni a rendszer által hozzárendelt felügyelt identitás számára a Cosmos DB-fiókhoz az Azure Resource Managerben, frissítse a környezet `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` értékeit. Cserélje le a `<MI PRINCIPALID>` `principalId` parancsot a parancs által visszaadott tulajdonságra a Linux rendszerű `az resource show` virtuális gép principalID lekéréséhez.  A Cosmos DB a részletesség két szintjét támogatja a hozzáférési kulcsok használatakor: a fiók írási/olvasási, illetve írásvédett hozzáférését.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkört, ha a fiók írási/olvasási kulcsait szeretné lekérni, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkört, ha írásvédett hozzáférést szeretne a fiókhoz:
 
 ```azurecli-interactive
 az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -223,10 +223,10 @@ Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan használhat rendszer által hozzárendelt felügyelt identitást Linux virtuális gépeken a Cosmos DB eléréséhez.  További információ a Cosmos DB-ről:
 
 > [!div class="nextstepaction"]
->[Az Azure Cosmos DB áttekintése](/azure/cosmos-db/introduction)
+>[Azure Cosmos DB áttekintése](/azure/cosmos-db/introduction)
 

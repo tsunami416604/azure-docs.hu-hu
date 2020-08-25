@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84216540"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található viszonyítási adatbázis tervezése
@@ -75,13 +75,13 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
     | Beállítás       | Ajánlott érték | Leírás |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Kiszolgáló neve** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-    | **Kiszolgáló-rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
+    | **Kiszolgáló rendszergazdájának felhasználóneve** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakterből kell állnia, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűk, számok és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](./media/design-first-database-tutorial/create-database-server.png)
 
-5. Kattintson a **Kiválasztás** gombra.
+5. Kattintson a **Kiválasztás** elemre.
 6. Kattintson a **Tarifacsomag** parancsra a szolgáltatási szint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Megvizsgálhatja az egyes szolgáltatási szintek számára elérhető DTU/virtuális mag és tárhelyek számát.
 
     Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz**gombra.
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 8. Most, hogy végrehajtotta a **SQL Database** űrlapot, kattintson a **Létrehozás** gombra az adatbázis kiépítéséhez. Ez a lépés néhány percet is igénybe vehet.
 
-9. Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
+9. Az eszköztáron kattintson az **Értesítések** elemre az üzembehelyezési folyamat monitorozásához.
 
    ![értesítés](./media/design-first-database-tutorial/notification.png)
 
@@ -115,7 +115,7 @@ A Azure SQL Database egy IP-tűzfalat hoz létre a kiszolgáló szintjén. Ez a 
 
 1. Kattintson az **ügyfél IP-** címének hozzáadása elemre az eszköztáron, és adja hozzá az aktuális IP-címet egy új IP-tűzfalszabály-szabályhoz. Az IP-tűzfalszabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára is megnyithatja.
 
-1. Kattintson a **Save** (Mentés) gombra. A rendszer a kiszolgálón a 1433-as portot nyitja meg a jelenlegi IP-címhez.
+1. Kattintson a **Mentés** gombra. A rendszer a kiszolgálón a 1433-as portot nyitja meg a jelenlegi IP-címhez.
 
 1. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
@@ -212,7 +212,7 @@ Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymásho
    )
    ```
 
-   ![Táblázatok létrehozása](./media/design-first-database-tutorial/create-tables.png)
+   ![Táblák létrehozása](./media/design-first-database-tutorial/create-tables.png)
 
 3. A létrehozott táblák megtekintéséhez bontsa ki a **táblák** csomópontot a **Object Explorer** *yourDatabase* alatt.
 
@@ -274,7 +274,7 @@ Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő inf
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban számos alapvető adatbázis-feladatot tanult meg. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban számos alapvető adatbázis-feladatot tanult meg. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 >

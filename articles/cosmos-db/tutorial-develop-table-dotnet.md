@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.openlocfilehash: 2133b68bf942cee87548783fb40d08c9bfe876ff
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85851625"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
@@ -49,7 +49,7 @@ Hozzon létre egy új .NET-konzol alkalmazást a Visual Studióban. A következ�
 
 1. A **projekt neve** mezőben adja meg az alkalmazás nevét, például **CosmosTableSamples**. (Szükség szerint más nevet is megadhat.)
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Az ebben a mintában szereplő összes példa felvehető a konzol alkalmazás **program.cs** fájljának Main () metódusára.
 

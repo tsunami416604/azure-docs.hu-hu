@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban egy tervezet-mintát használ egy olyan te
 ms.date: 03/25/2020
 ms.topic: tutorial
 ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80677095"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: környezet létrehozása tervrajz mintából
@@ -25,7 +25,7 @@ Az alábbi oktatóanyag az **RBAC** terv minta használatával mutatja be az Azu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez szükség van egy Azure-előfizetésre. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Az oktatóanyag elvégzéséhez szükség van egy Azure-előfizetésre. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="create-blueprint-definition-from-sample"></a>Terv definíciójának létrehozása mintából
 
@@ -96,14 +96,14 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
    - Összetevő paramétereinek
 
-     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az érték oszlopban definiált **értékre** . Válassza `{Your ID}`ki az Azure-beli felhasználói fiókját.
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az érték oszlopban definiált **értékre** . `{Your ID}`Válassza ki az Azure-beli felhasználói fiókját.
 
      |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |ProdRG erőforráscsoport|Erőforráscsoport|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
-     |ProdRG erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Megadja az első erőforráscsoport helyét.|
+     |ProdRG erőforráscsoport|Erőforráscsoport|Name|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
+     |ProdRG erőforráscsoport|Erőforráscsoport|Hely|USA 2. nyugati régiója|Megadja az első erőforráscsoport helyét.|
      |Közreműködő|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _közreműködői_ szerepkör-hozzárendelést az első erőforráscsoporthoz.|
-     |PreProdRG erőforráscsoport|Erőforráscsoport|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
+     |PreProdRG erőforráscsoport|Erőforráscsoport|Name|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
      |PreProdRG erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója|Beállítja a második erőforráscsoport helyét.|
      |Tulajdonos|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _tulajdonosi_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
      |Olvasók|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg az _olvasók_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
@@ -144,7 +144,7 @@ A terv-hozzárendelés létrehozza és nyomon követi a terv definíciójában m
 
 1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza a **megtagadott engedélyek** lapot.
 
-   A megtagadási hozzárendelés megakadályozza a és a **\*** **művelet** konfigurációjának összes műveletét, de a ** \*/Read** kizárásával lehetővé teszi az olvasási **hozzáférést.**
+   A megtagadási hozzárendelés megakadályozza a és a **\*** **művelet** konfigurációjának összes műveletét, de a ** \* /READ** kizárásával **NotActions**lehetővé teszi az olvasási hozzáférést.
 
 1. A Azure Portal navigációs listából válassza a **PreProductionRG-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a _PreProductionRG_ nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 
@@ -181,7 +181,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat
 - Erőforráscsoport _PreProductionRG_
 - Terv definíciója: _Two-RGS-a-role-hozzárendelései_
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy új tervet egy minta definícióból. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

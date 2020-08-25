@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80066544"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Az Elastic Stack telepítése egy Azure-beli virtuális gépen
@@ -234,9 +234,9 @@ A Kibana-konzolon a **Discover** (Felderítés) elemet választva kereshet és t
 
 ![Rendszernapló-események tallózása a Kibanában](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban telepítette az Elastic Stacket egy fejlesztési célú virtuális gépre az Azure-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban telepítette az Elastic Stacket egy fejlesztési célú virtuális gépre az Azure-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Ubuntus virtuális gép létrehozása egy Azure-erőforráscsoportban

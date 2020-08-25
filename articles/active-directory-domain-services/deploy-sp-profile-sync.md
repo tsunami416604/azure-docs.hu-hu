@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: f498111afaaeff935e1ea7d1d3400cfe05efda12
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722959"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749641"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services konfigurálása a SharePoint Server felhasználói profilok szinkronizálásának támogatásához
 
@@ -71,7 +71,7 @@ Az Azure AD DS felügyeleti virtuális gépről hajtsa végre a következő lép
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [Active Directory tartományi szolgáltatások engedélyek megadása a SharePoint-kiszolgálón a profilok szinkronizálásához](/SharePoint/administration/user-profile-service-administration)
+További információ: [a felhasználói profilok szinkronizálásának kezelése a SharePoint-kiszolgálón](/SharePoint/administration/manage-profile-synchronization).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

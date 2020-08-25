@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box Disk önfelügyelt szállítás | AdatMicrosoft Docs
 description: A Azure Data Box Disk eszközök önfelügyelt szállítási munkafolyamatát ismerteti
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 95c0a884b335920df9803a9b468ab522646b26a1
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.author: twooley
+ms.openlocfilehash: f3292e2088397e332323bec71f9a5965eddd0fe0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258762"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783229"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>A Azure Portal Azure Data Box Disk önfelügyelt szállítás használata
 
@@ -86,6 +86,6 @@ Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyel
 
 11. Az eszköz fogadása után az Adatmásolás folytatódni fog. A másolás befejezésekor a rendelés elkészült.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: Azure Data Box Disk üzembe helyezése a Azure Portal használatával](data-box-disk-quickstart-portal.md)

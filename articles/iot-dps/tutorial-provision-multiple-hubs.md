@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74976740"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
@@ -25,7 +25,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több
 > * A Device Provisioning Service kiosztási szabályzatának beállítása **egyenletes eloszláshoz**
 > * Az új IoT hub csatolása a Device Provisioning Service-hez
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ Kövesse az alábbi lépéseket a kiosztási szabályzat beállításához:
 
 1. A kiosztási szabályzat beállításához kattintson a **Kiosztási szabályzat kezelése** lehetőségre a Device Provisioning Service lapján.
 2. Állítsa a kiosztási szabályzatot **Egyenletesen súlyozott elosztás** értékre.
-3. Kattintson a **Save** (Mentés) gombra.
+3. Kattintson a **Mentés** gombra.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Az új IoT hub csatolása a Device Provisioning Service-hez
 
@@ -65,7 +65,7 @@ Kapcsolja össze a Device Provisioning Service-t és az IoT hubot, hogy a Device
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
 3. Kattintson a **Hozzáadás** parancsra.
 4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 

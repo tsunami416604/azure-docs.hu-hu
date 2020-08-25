@@ -9,10 +9,10 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86045297"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az adatátalakítás Apache Hive használatával.
 > * A Sqoop használatával töltse be az Azure SQL Database az adataiba.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 2. Az oldalon válassza ki a következő értékeket:
 
-   | Name | Érték |
+   | Név | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2013 |
    | Filter Period (Szűrési időszak) |January |
@@ -58,7 +58,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
    
    Az összes többi mező jelölését törölje.
 
-3. Válassza a **Download** (Letöltés) lehetőséget. Egy .zip fájlt kap, amely a kiválasztott adatmezőket tartalmazza.
+3. Válassza a **Letöltés** lehetőséget. Egy .zip fájlt kap, amely a kiválasztott adatmezőket tartalmazza.
 
 ## <a name="extract-and-upload-the-data"></a>Adatok kinyerése és feltöltése
 
@@ -122,7 +122,7 @@ Ebben a szakaszban a Beeline használatával futtat egy Apache Hive feladatot.
 
 A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy **késleltetés**nevű Apache Hive táblába.
 
-1. A HDInsight-fürthöz már meglévő SSH-parancssorból a következő paranccsal hozhat létre és szerkeszthet egy **flightdelays. HQL**nevű új fájlt:
+1. A HDInsight-fürthöz már meglévő SSH-parancssorból a következő paranccsal hozhat létre és szerkeszthet egy     **flightdelays. HQL**nevű új fájlt:
 
    ```bash
    nano flightdelays.hql
@@ -226,7 +226,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
 
 Ehhez a művelethez SQL Database-kiszolgáló nevét kell megadnia. A kiszolgáló nevének megkereséséhez hajtsa végre a következő lépéseket.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2. Válassza az **SQL-adatbázisok**lehetőséget.
 
@@ -300,7 +300,7 @@ Ehhez a művelethez SQL Database-kiszolgáló nevét kell megadnia. A kiszolgál
 
 ## <a name="export-and-load-the-data"></a>Az adatexportálás és-betöltés
 
-Az előző részekben a helyről másolta az átalakított adatterületet `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Ebben a szakaszban a Sqoop használatával exportálja az adatait a `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL Databaseban létrehozott táblába.
+Az előző részekben a helyről másolta az átalakított adatterületet  `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Ebben a szakaszban a Sqoop használatával exportálja az adatait a `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL Databaseban létrehozott táblába.
 
 1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 
@@ -335,7 +335,7 @@ Az előző részekben a helyről másolta az átalakított adatterületet `abfs:
 
 5. `exit`A TSQL segédprogramból való kilépéshez írja be a parancsot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyagban használt összes erőforrás már létezik. Nincs szükség karbantartásra.
 

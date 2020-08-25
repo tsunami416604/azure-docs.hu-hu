@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86045450"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
@@ -27,7 +27,7 @@ Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/o
 > * Indexelő futtatása az adatgyűjtés indexbe való betöltéséhez
 > * Index lekérdezése ellenőrzési lépésként
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,7 +108,7 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. `searchServiceName`Ha a teljes URL-cím " https://my-demo-service.search.windows.net ", a szolgáltatás neve a következő: "My-demo-Service".
 
-1. A esetében `AzureSqlConnectionString` a karakterlánc formátuma a következőhöz hasonló:`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
+1. A esetében `AzureSqlConnectionString` a karakterlánc formátuma a következőhöz hasonló: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
@@ -242,9 +242,9 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és t
 
 A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

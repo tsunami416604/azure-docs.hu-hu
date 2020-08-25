@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85318624"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Oktatóanyag: a ASP.NET-alkalmazás üzembe helyezése és Azure SQL Database kód használata az Azure DevOps Starter használatával
@@ -34,7 +34,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
 > * Kapcsolódás az Azure SQL Database-hez 
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza **az adatbázis hozzáadása**lehetőséget, majd kattintson a **tovább**gombra. Az alkalmazás-keretrendszer, amelyet az előző lépésben választott, az itt elérhető Azure-szolgáltatás telepítési célját diktálja be. 
     
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure-DevOps és Azure-előfizetés konfigurálása
 
@@ -66,7 +66,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza ki az Azure-előfizetési szolgáltatásokat. Ha szeretné megtekinteni a további Azure-konfigurációs beállításokat, és azonosítani a felhasználónevet az **adatbázis-kiszolgáló bejelentkezési adatai** szakaszban, akkor válassza a **módosítás**lehetőséget. Tárolja el a felhasználónevet az oktatóanyag további lépéseihez. Ha ezt a választható lépést hajtja végre, lépjen ki az Azure konfigurációs területén a **kész**gombra kattintva.
  
-1. Válassza a **Done** (Kész) lehetőséget. Néhány perc elteltével a folyamat befejeződik, és megnyílik a DevOps-indító irányítópult a Azure Portal. Közvetlenül az irányítópulton is megnyithatja a Azure Portal **összes erőforrását** . A jobb oldalon kattintson a **Tallózás** gombra a futó alkalmazás megtekintéséhez.
+1. Válassza a **Kész** lehetőséget. Néhány perc elteltével a folyamat befejeződik, és megnyílik a DevOps-indító irányítópult a Azure Portal. Közvetlenül az irányítópulton is megnyithatja a Azure Portal **összes erőforrását** . A jobb oldalon kattintson a **Tallózás** gombra a futó alkalmazás megtekintéséhez.
     
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
@@ -163,7 +163,7 @@ A Azure SQL Databasehoz való kapcsolódáshoz megfelelő engedélyekkel kell re
    > [!NOTE]
    > Ha megváltoztatja a jelszavát az SQL-bejelentkezéshez, a kiadási folyamat változóban módosítania kell a jelszót a [CD-folyamat vizsgálata](#examine-the-cd-pipeline) című részben leírtak szerint.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti Azure SQL Database és az ebben az oktatóanyagban létrehozott kapcsolódó erőforrásokat is. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -185,7 +185,7 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
 > * Kapcsolódás az Azure SQL Database-hez 
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

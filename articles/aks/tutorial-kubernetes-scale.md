@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
 ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85361591"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
@@ -176,7 +176,7 @@ Ha a fürt méretezése sikeresen megtörtént, a kimenet a következő példáh
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az alkalmazást futtató Kubernetes-podok manuális skálázása

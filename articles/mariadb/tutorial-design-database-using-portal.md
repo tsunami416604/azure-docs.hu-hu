@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80063782"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Oktatóanyag: Azure Database for MariaDB-adatbázis tervezése az Azure Portalon
@@ -41,7 +41,7 @@ Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőfor
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-2. Válassza az **adatbázisok** > **Azure Database for MariaDB**elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
+2. Válassza az **adatbázisok**  >  **Azure Database for MariaDB**elemet. A **MariaDB** a keresőmezőbe is beírhatja a szolgáltatás megtalálásához.
 
    ![Ugrás a MySQL-hez](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
@@ -60,14 +60,14 @@ Az Azure Database for MariaDB-kiszolgálót [számítási és tárolási erőfor
     Jelszó megerősítése | *tetszés szerinti*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *a felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
     Verzió | *a legújabb verzió*| A legújabb verzió (ha nincsenek olyan egyedi igényei, amelyek miatt egy másikat kell kiválasztania).
-    Tarifacsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza ki az **árképzési szintet** > **általános célú**. A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**virtuális mag** (4 virtuális mag)</li><li>**Tárterület** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
+    Tarifacsomag | Lásd a leírást. | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza ki az **árképzési szintet**  >  **általános célú**. A következő beállításoknál használja az alapértelmezett értékeket:<br><ul><li>**Számítási generáció** (Gen 5)</li><li>**virtuális mag** (4 virtuális mag)</li><li>**Tárterület** (100 GB)</li><li>**Biztonsági másolatok megőrzési időszaka** (7 nap)</li></ul><br>A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Georedundáns** lehetőséget a **Biztonsági másolat redundanciabeállításai** területen. <br><br>A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
     
    ![Tarifacsomag](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
    > Az **automatikus növekedés** lehetővé teszi, hogy a kiszolgáló növelje a tárterületet, ha közeledik a lefoglalt korláthoz, anélkül, hogy ez befolyásolná a munkaterhelést.
 
-4. Kattintson az **Áttekintés + létrehozás** elemre. Az eszköztár **értesítések** gombjára kattintva figyelheti a telepítési folyamatot. Az üzembe helyezés akár 20 percet is igénybe vehet.
+4. Kattintson a **Felülvizsgálat + létrehozás** elemre. Az eszköztár **értesítések** gombjára kattintva figyelheti a telepítési folyamatot. Az üzembe helyezés akár 20 percet is igénybe vehet.
 
 ## <a name="configure-the-firewall"></a>A tűzfal konfigurálása
 
@@ -93,7 +93,7 @@ Kérje le az Azure Database for MariaDB-kiszolgáló teljes **kiszolgálónevét
 
    ![Kiszolgáló tulajdonságai](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-A példánkban a kiszolgáló neve **mydemoserver.MariaDB.database.Azure.com** , a kiszolgáló-rendszergazdai bejelentkezési név pedig az **myadmin\@mydemoserver**.
+A példánkban a kiszolgáló neve **mydemoserver.MariaDB.database.Azure.com** , a kiszolgáló-rendszergazdai bejelentkezési név pedig az **myadmin \@ mydemoserver**.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Csatlakozás a kiszolgálóhoz a mysql használatával
 
@@ -181,7 +181,7 @@ Tegyük fel, hogy véletlenül törölt egy fontos adatbázistáblát, és nem t
    
 3. Az **OK** gomb kiválasztásával [állítsa vissza a kiszolgálót egy időpontra](./howto-restore-server-portal.md), amely megelőzi a tábla törlését. A kiszolgáló visszaállítása egy olyan új másolatot hoz létre a kiszolgálóról, amely a megadott időpontban aktuális állapotát tükrözi. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban a következők elvégzését sajátította el az Azure Portallal:
 
 > [!div class="checklist"]

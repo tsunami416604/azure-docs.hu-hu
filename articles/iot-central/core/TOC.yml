@@ -163,6 +163,10 @@
               href: howto-manage-preferences.md
             - name: Élő csevegés ki-/bekapcsolása
               href: howto-show-hide-chat.md
+    - name: Hibaelhárítás
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
 - name: Referencia
   items:
     - name: Azure CLI

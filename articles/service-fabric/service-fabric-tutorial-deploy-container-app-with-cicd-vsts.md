@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75614128"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
@@ -42,7 +42,7 @@ Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció
 
 Az alkalmazás forrásfájljait megoszthatja az Azure DevOps, így létrehozhat buildeket.
 
-Hozzon létre egy új helyi git-tárházat a projekthez a Visual Studio jobb alsó sarkában lévő állapotsorban a **Hozzáadás a forrás vezérlőelemhez** -> **git** elemre kattintva.
+Hozzon létre egy új helyi git-tárházat a projekthez a Visual Studio jobb alsó sarkában lévő állapotsorban a **Hozzáadás a forrás vezérlőelemhez**  ->  **git** elemre kattintva.
 
 A **Team Explorer****Push** (Leküldés) nézetében válassza ki a **Push to Azure DevOps** (Leküldés Azure DevOps szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
@@ -62,7 +62,7 @@ Az Azure DevOps kiadási definíciója olyan munkafolyamatot ír le, amely egy a
 
 ### <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Nyissa meg az új csapat projektjét, https://dev.azure.com és navigáljon a webböngészőben, és válassza ki a szervezetét, majd az új projektet. 
+Nyissa meg az új csapat projektjét, és navigáljon a https://dev.azure.com webböngészőben, és válassza ki a szervezetét, majd az új projektet. 
 
 Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson az **új folyamat**elemre.
 
@@ -134,7 +134,7 @@ Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadá
 
 ![Eseményindító engedélyezése][enable-trigger]
 
-A kiadás létrehozásához válassza a **+ kiadás** -> **Létrehozás egy kiadás** -> **létrehozása** lehetőséget. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
+A kiadás létrehozásához válassza a **+ kiadás**  ->  **Létrehozás egy kiadás**  ->  **létrehozása** lehetőséget. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
 
 Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` lapra.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
 

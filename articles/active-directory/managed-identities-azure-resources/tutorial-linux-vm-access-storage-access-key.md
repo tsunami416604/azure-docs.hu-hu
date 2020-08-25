@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag`:` : felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulcs – Linux – Azure ad'
+title: 'Oktatóanyag: `:` felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulcs – Linux – Azure ad'
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78273824"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
@@ -45,7 +45,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt
 3. Adjon meg egy nevet a tárfiók számára a **Név** mezőben, amelyet később használ majd.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -194,7 +194,7 @@ Válasz:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan használhat Linux VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Storage hozzáférési kulcsokkal való eléréséhez.  További információ az Azure Storage tárelérési kulcsairól:
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
 ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85362014"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzáférés biztosítása egy erőforráscsoport-hatókörben lévő felhasználó számára
 > * Hozzáférés eltávolítása
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -78,7 +78,7 @@ Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkö
 
    ![Szerepkör-hozzárendelési ablaktábla hozzáadása](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
-1. A **Szerepkör** legördülő listájában válassza a **Virtuális gépek közreműködője** szerepkört.
+1. A **Szerepkör** legördülő listában válassza a **Virtuális gépek közreműködője** szerepkört.
 
 1. A **Kiválasztás** listában válassza ki saját magát vagy egy másik felhasználót.
 
@@ -94,7 +94,7 @@ Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szer
 
 1. A szerepkör-hozzárendelések listájában vegyen fel egy pipát a felhasználó mellett a virtuális gép közreműködői szerepkörével.
 
-1. Kattintson az **Eltávolítás** lehetőségre.
+1. Kattintson az **Eltávolítás** elemre.
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 

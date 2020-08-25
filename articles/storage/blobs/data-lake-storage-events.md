@@ -9,10 +9,10 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78303307"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: a Databricks-különbözeti tábla frissítéséhez a adattó rögzítési mintájának megvalósítása
@@ -34,7 +34,7 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű `contosoorders`Storage-fiókot használ. Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
+* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű Storage-fiókot használ `contosoorders` . Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
 
   Lásd: [Azure Data Lake Storage Gen2 fiók létrehozása](data-lake-storage-quickstart-create-account.md).
 
@@ -68,7 +68,7 @@ Először hozzon létre egy CSV-fájlt, amely leírja az értékesítési sorren
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. Mentse ezt a fájlt a helyi számítógépre, és adja meg a **. csv**nevet.
+4. Mentse ezt a fájlt a helyi számítógépre, és adjon neki nevet **data.csvnak **.
 
 5. A Storage Explorerban töltse fel ezt a fájlt a **bemeneti** mappába.  
 
@@ -86,7 +86,7 @@ Ebben a szakaszban a következő feladatokat hajtja végre:
 
 Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**elemzési** > **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks**lehetőséget.
 
     ![Databricks Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks Azure Portal")
 
@@ -100,7 +100,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 1. A [Azure Portal](https://portal.azure.com)lépjen a létrehozott Azure Databricks munkaterületre, majd válassza a **munkaterület indítása**elemet.
 
-2. A rendszer átirányítja az Azure Databricks portáljára. A portálon válassza az **új** > **fürt**lehetőséget.
+2. A rendszer átirányítja az Azure Databricks portáljára. A portálon válassza az **új**  >  **fürt**lehetőséget.
 
     ![Databricks az Azure-ban](./media/data-lake-storage-events/databricks-on-azure.png "Databricks az Azure-ban")
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     * Adjon egy nevet a fürtnek.
     * Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-4. Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+4. Válassza a **fürt létrehozása**lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
@@ -133,7 +133,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 
 1. A létrehozott jegyzetfüzetben másolja és illessze be az alábbi kódrészletet az első cellába, de még ne futtassa ezt a kódot.  
 
-   Cserélje le `appId`a `password`, `tenant` , helyőrző értékeit a kód blokkban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre.
+   Cserélje le a `appId` , `password` , `tenant` helyőrző értékeit a kód blokkban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -152,7 +152,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
     Ez a kód létrehoz egy **source_file**nevű widgetet. Később létrehoz egy Azure-függvényt, amely meghívja ezt a kódot, és átadja egy fájl elérési útját az adott widgetnek.  Ez a kód is hitelesíti a szolgáltatásnevet a Storage-fiókkal, és létrehoz néhány változót, amelyet más cellákban fog használni.
 
     > [!NOTE]
-    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`, az alábbi kódrészletet fogja használni:. `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
+    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` , az alábbi kódrészletet fogja használni: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
 
 2. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
@@ -241,9 +241,9 @@ Hozzon létre egy feladatot, amely a korábban létrehozott jegyzetfüzetet futt
 
 2. A **feladatok** lapon kattintson a **feladat létrehozása**elemre.
 
-3. Adjon nevet a feladatoknak, majd válassza ki `upsert-order-data` a munkafüzetet.
+3. Adjon nevet a feladatoknak, majd válassza ki a `upsert-order-data` munkafüzetet.
 
-   ![Feladatok létrehozása](./media/data-lake-storage-events/create-spark-job.png "Feladat létrehozása")
+   ![Feladat létrehozása](./media/data-lake-storage-events/create-spark-job.png "Feladat létrehozása")
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
@@ -277,9 +277,9 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    |Beállítás neve | Érték |
    |----|----|
-   |**DBX_INSTANCE**| A databricks-munkaterület régiója. Például:`westus2.azuredatabricks.net`|
+   |**DBX_INSTANCE**| A databricks-munkaterület régiója. Például: `westus2.azuredatabricks.net`|
    |**DBX_PAT**| A korábban létrehozott személyes hozzáférési jogkivonat. |
-   |**DBX_JOB_ID**|A futó feladathoz tartozó azonosító. Ebben az esetben ez az érték a `1`következő:.|
+   |**DBX_JOB_ID**|A futó feladathoz tartozó azonosító. Ebben az esetben ez az érték a következő: `1` .|
 7. A Function app áttekintés lapján kattintson az **új függvény** gombra.
 
    ![Új függvény](./media/data-lake-storage-events/new-function.png "Új függvény")
@@ -354,7 +354,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 ## <a name="test-the-event-grid-subscription"></a>A Event Grid előfizetés tesztelése
 
-1. Hozzon létre egy `customer-order.csv`nevű fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+1. Hozzon létre egy nevű fájlt `customer-order.csv` , illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
@@ -385,18 +385,18 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    ![A legfrissebb rekord megjelenik a táblában](./media/data-lake-storage-events/final_query.png "A legfrissebb rekord megjelenik a táblában")
 
-6. A rekord frissítéséhez hozzon létre egy nevű `customer-order-update.csv`fájlt, illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
+6. A rekord frissítéséhez hozzon létre egy nevű fájlt `customer-order-update.csv` , illessze be a következő adatokat a fájlba, majd mentse a helyi számítógépre.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
    536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-   Ez a CSV-fájl majdnem azonos az előzővel, kivéve, hogy a megrendelés mennyisége a- `228` ból `22`értékre módosult.
+   Ez a CSV-fájl majdnem azonos az előzővel, kivéve, hogy a megrendelés mennyisége a `228` -ból értékre módosult `22` .
 
 7. A Storage Explorerban töltse fel ezt a fájlt a Storage-fiókja **bemeneti** mappájába.
 
-8. Futtassa újra `select` a lekérdezést a frissített különbözeti táblázat megtekintéséhez.
+8. Futtassa `select` újra a lekérdezést a frissített különbözeti táblázat megtekintéséhez.
 
    ```
    %sql select * from customer_data
@@ -410,7 +410,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)

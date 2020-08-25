@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "76169783"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Példa: a nagyméretű szolgáltatás használata
@@ -201,16 +201,16 @@ Bár a betanítási művelet felgyorsítja a [FindSimilar](https://westus.dev.co
 |:---:|:---:|
 | 1,000 | 1-2 MP |
 | 10,000 | 5-10 mp |
-| 100 000 | 1-2 perc |
+| 100.000 | 1-2 perc |
 | 1,000,000 | 10-30 perc |
 
 A nagyméretű funkciók jobb kihasználásához a következő stratégiákat javasoljuk.
 
 ### <a name="step-31-customize-time-interval"></a>3,1. lépés: az időintervallum testreszabása
 
-Ahogy az a- `TrainLargeFaceList()`ben is látható, a végtelen betanítási állapot-ellenőrzési folyamat késleltethető ezredmásodpercben. A több arcot tartalmazó LargeFaceList esetén nagyobb időköz választása csökkenti a meghívások számát és költségét. Szabja testre az időintervallumot a LargeFaceList várt kapacitásának megfelelően.
+Ahogy az a-ben is látható `TrainLargeFaceList()` , a végtelen betanítási állapot-ellenőrzési folyamat késleltethető ezredmásodpercben. A több arcot tartalmazó LargeFaceList esetén nagyobb időköz választása csökkenti a meghívások számát és költségét. Szabja testre az időintervallumot a LargeFaceList várt kapacitásának megfelelően.
 
-Ugyanez a stratégia a LargePersonGroup is vonatkozik. Ha például 1 000 000 személyt tartalmazó LargePersonGroup-t tanít be, `timeIntervalInMilliseconds` akkor az a 60 000, amely egy 1 perces intervallum.
+Ugyanez a stratégia a LargePersonGroup is vonatkozik. Ha például 1 000 000 személyt tartalmazó LargePersonGroup-t tanít be, akkor az a `timeIntervalInMilliseconds` 60 000, amely egy 1 perces intervallum.
 
 ### <a name="step-32-small-scale-buffer"></a>3,2. lépés: kisméretű puffer
 
@@ -231,7 +231,7 @@ Példa munkafolyamat:
 
 Ha a viszonylag hosszú késés elfogadható, nem szükséges a vonat működésének elindításához közvetlenül az új adatértékek hozzáadása után. Ehelyett a betanítás művelet a fő működésről leválasztva indítható rendszeresen. Ez a stratégia alkalmas olyan dinamikus forgatókönyvekhez, amelyek elfogadható késéssel rendelkeznek. A vonatok gyakoriságának további csökkentése érdekében statikus forgatókönyvekre is alkalmazható.
 
-Tegyük fel, `TrainLargePersonGroup` hogy `TrainLargeFaceList`a függvény hasonló a következőhöz:. A LargePersonGroup önálló betanításának tipikus megvalósítása a következő [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) osztály meghívásával: `System.Timers`
+Tegyük fel `TrainLargePersonGroup` , hogy a függvény hasonló a következőhöz: `TrainLargeFaceList` . A LargePersonGroup önálló betanításának tipikus megvalósítása a [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) következő osztály meghívásával `System.Timers` :
 
 ```csharp
 private static void Main()

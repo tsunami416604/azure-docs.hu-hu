@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84712513"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
@@ -33,7 +33,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Meglévő szabály szerkesztése
 > * Szabályok be- vagy kikapcsolása
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -57,7 +57,7 @@ Kattintson az **Új szabály** elemre egy olyan szabály létrehozásához, amel
 | Leírás      | A nyomás a hűtőben túllépte a 150 PSI-t |
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
 | Számítás      | Azonnali                               |
-| 1. feltétel mezője| pressure                              |
+| 1. feltétel mezője| nyomás                              |
 | 1. feltétel operátora | Nagyobb, mint                      |
 | 1. feltétel értéke    | 150                               |
 | Súlyossági szint  | Figyelmeztetés                               |
@@ -79,7 +79,7 @@ Kattintson az **Új szabály** elemre egy olyan többfeltételes szabály létre
 | Szabály neve        | Kritikus páratartalom- és hőmérsékletszint a hűtőben    |
 | Leírás      | A páratartalom és a hőmérséklet szintje kritikus |
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
-| Számítás      | Átlag                               |
+| Számítás      | Average                               |
 | Időtartam      | 5                                     |
 | 1. feltétel mezője| páratartalom                              |
 | 1. feltétel operátora | Nagyobb, mint                      |
