@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497579"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816235"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
@@ -65,25 +65,9 @@ Az Azure Red Hat OpenShift 4. x fürtökön jelenleg nem érhetők el infrastruk
 
 Az Azure Red Hat OpenShift 3,11-fürtökön alapértelmezés szerint az infrastruktúra-csomópontok is szerepelnek.
 
-## <a name="upgrades"></a>Frissítések
+## <a name="how-do-i-handle-cluster-upgrades"></a>Hogyan kezeli a fürt frissítéseit?
 
-###  <a name="what-is-the-general-upgrade-process"></a>Mi az általános frissítési folyamat?
-
-A rendszer automatikusan alkalmazza a javításokat a fürtön. Nem kell semmilyen műveletet végrehajtania a fürtön a javítások frissítéseinek fogadásához.
-
-A frissítés futtatása biztonságos folyamat, amely nem zavarja a fürtszolgáltatásokat. A közös Microsoft-Red Hat csapat aktiválhatja a frissítési folyamatot, ha új verzió érhető el, vagy gyakori biztonsági rések és a kitettségek is fennállnak. Az elérhető frissítések egy átmeneti környezetben vannak tesztelve, majd az üzemi fürtökre alkalmazhatók. Az ajánlott eljárások követésével minimálisan nem lehet leállást biztosítani.
-
-A tervezett karbantartás nincs előre beütemezhetve az ügyféllel. A karbantartással kapcsolatos értesítéseket e-mailben lehet elküldeni.
-
-### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Mi az Azure Red Hat OpenShift-karbantartási folyamata?
-
-Az Azure Red Hat OpenShift két típusa van: a frissítések és a felhőalapú szolgáltató által kezdeményezett karbantartás.
-- A frissítések közé tartoznak a szoftverfrissítések és a gyakori biztonsági rések és a kitettségek.
-- A felhőalapú szolgáltató által kezdeményezett karbantartás magában foglalja a hálózat, a tárolás és a regionális kimaradásokat. A karbantartás a felhőalapú szolgáltatótól függ, és a szolgáltató által biztosított frissítésekre támaszkodik.
-
-### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Mi a helyzet a sürgősségi és a tervezett karbantartási időszakokkal?
-
-A két karbantartási típus között nem kell különbséget tenni. Csapatunk 24/7/365, és nem használja a hagyományos ütemezett "munkaidőn kívüli" karbantartási időszakokat.
+További információ a frissítésekről, a karbantartásról és a támogatott verziókról: [támogatási életciklus – útmutató](support-lifecycle.md).
 
 ### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Hogyan fogja frissíteni a gazda operációs rendszer és a OpenShift szoftverét?
 
@@ -143,7 +127,7 @@ További információ: a [Pod elhelyezésének szabályozása](https://docs.open
 
 3,11-fürtök esetén a Docker-rendszerkép beállításjegyzéke elérhető. A Docker-beállításjegyzék elérhető innen: `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Azure Container Registry is használhatja.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Telepíthetek fürtöt meglévő virtuális hálózatra?
 
@@ -157,7 +141,7 @@ Az ügyfél és az egyéni projekt rendszergazdája testre szabható a névterek
 
 ### <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben próbálok egyenrangú virtuális hálózatra csatlakozni, de nem sikerült lekérni a VNet CIDR-hibát.
 
-Győződjön meg arról, hogy a virtuális hálózatot tartalmazó előfizetésben regisztrálja a `Microsoft.ContainerService` szolgáltatót a következő paranccsal:`az provider register -n Microsoft.ContainerService --wait`
+Győződjön meg arról, hogy a virtuális hálózatot tartalmazó előfizetésben regisztrálja a `Microsoft.ContainerService` szolgáltatót a következő paranccsal: `az provider register -n Microsoft.ContainerService --wait`
 
 ### <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Megadhatjuk az IP-címtartományok üzembe helyezését a privát VNet, így elkerülhetők a többi vállalati virtuális hálózatok való ütközések?
 
@@ -218,7 +202,7 @@ További információkért tekintse meg a fürt verziójának önálló kiépít
 
 3,11-fürtök esetében az Azure AD-integrációt használhatja. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="is-data-on-my-cluster-encrypted"></a>A fürtön lévő adatai titkosítva vannak?
 

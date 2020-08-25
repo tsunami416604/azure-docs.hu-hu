@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 5ebb3883304584570759ea02a2de7187efcdaf26
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718679"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757673"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Oktatóanyag – Azure-lemezek kezelése az Azure CLI használatával
 
@@ -50,6 +50,7 @@ Az Azure két lemeztípust kínál.
 **Prémium szintű lemezek** – SSD-alapú, nagy teljesítményű, kis késleltetésű lemez. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. A virtuális gépek [mérete a méret nevével](../vm-naming-conventions.md), általában **támogatja a Premium Storage** . A DS-sorozat, a DSv2-sorozat, a GS-sorozat és az FS sorozatú virtuális gépek például támogatják a Premium Storage szolgáltatást. Lemezméret kiválasztásakor az értéket felfelé kerekíti a rendszer a következő típusra. Ha például a lemez mérete meghaladja a 64 GB-ot, de kevesebb, mint 128 GB, a lemez típusa P10. 
 
 <br>
+
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
@@ -112,16 +113,17 @@ Hozzon léte egy SSH-kapcsolatot a virtuális géppel. Cserélje le a példában
 ssh 10.101.10.10
 ```
 
-Particionálja a lemezt az `fdisk` használatával.
+Particionálja a lemezt az `parted` használatával.
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-Írjon egy fájlrendszert a partícióra az `mkfs` paranccsal.
+Írjon egy fájlrendszert a partícióra az `mkfs` paranccsal. A használatával `partprobe` az operációs rendszer tisztában lehet a módosítással.
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 Csatolja az új lemezt, hogy elérhető legyen az operációs rendszerben.
@@ -130,18 +132,19 @@ Csatolja az új lemezt, hogy elérhető legyen az operációs rendszerben.
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-A lemez a *datadrive* (adatmeghajtó) csatlakozási ponton keresztül érhető el, ami a `df -h` parancs futtatásával ellenőrizhető.
+A lemez most már a csatlakoztatási pont keresztül érhető el `/datadrive` , amely ellenőrizhető a parancs futtatásával `df -h` .
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-A kimenet a */datadrive* pontra csatlakoztatott új meghajtót mutatja.
+A kimenetben látható az új csatlakoztatott meghajtó `/datadrive` .
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -157,11 +160,22 @@ A kimenet megjeleníti a meghajtó UUID-jét, amely esetünkben a `/dev/sdc1`.
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-Adjon hozzá egy, a következőhöz hasonló sort az */etc/fstab* fájlba.
+> [!NOTE]
+> Az **/etc/fstab** fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre az/etc/fstab fájl biztonsági másolatát.
+
+Nyissa meg a `/etc/fstab` fájlt egy szövegszerkesztőben a következőképpen:
+
+```bash
+sudo nano /etc/fstab
+```
+
+Adjon hozzá egy, a következőhöz hasonló sort az */etc/fstab* -fájlhoz, és cserélje le az UUID értéket a saját értékére.
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
 ```
+
+Ha elkészült a fájl szerkesztésével, `Ctrl+O` írja a fájlt a fájl írására és `Ctrl+X` a szerkesztőből való kilépéshez.
 
 Most, hogy a lemez konfigurálva lett, zárja be az SSH-munkamenetet.
 
@@ -175,7 +189,7 @@ A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott i
 
 ### <a name="create-snapshot"></a>Pillanatkép készítése
 
-A virtuálisgép-lemez pillanatképének elkészítése előtt szükség van a lemez azonosítójára vagy nevére. A lemez AZONOSÍTÓjának visszaküldéséhez használja az az [VM show](/cli/azure/vm#az-vm-show) paranccsal. A példában a lemezazonosítót egy változó tárolja, így az egy későbbi lépésben majd felhasználható.
+Pillanatkép létrehozása előtt szüksége lesz a lemez AZONOSÍTÓJÁRA vagy nevére. Használja az [az VM show](/cli/azure/vm#az-vm-show) paranccsal a lemez azonosítójának felvételéhez. A példában a lemezazonosítót egy változó tárolja, így az egy későbbi lépésben majd felhasználható.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -185,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Most, hogy rendelkezik a virtuálisgép-lemez azonosítójával, a következő paranccsal készítheti el a lemez pillanatképét.
+Most, hogy már rendelkezik AZONOSÍTÓval, az [az Snapshot Create](/cli/azure/snapshot#az-snapshot-create) paranccsal hozzon létre egy pillanatképet a lemezről.
 
 ```azurecli-interactive
 az snapshot create \
@@ -196,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Lemez létrehozása pillanatképből
 
-A pillanatkép ezután lemezzé alakítható, amelynek segítségével újra létrehozhatja a virtuális gépet.
+Ezt a pillanatképet ezután átalakíthatja egy lemezre az [az Disk Create](/cli/azure/disk#az-disk-create)paranccsal, amely a virtuális gép újbóli létrehozásához használható.
 
 ```azurecli-interactive
 az disk create \
@@ -207,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Virtuális gép visszaállítása pillanatképből
 
-A virtuálisgép-helyreállítás bemutatása érdekében törölje a meglévő virtuális gépet.
+A virtuális gép helyreállításának bemutatásához törölje a meglévő virtuális gépet az [az VM delete](/cli/azure/vm#az-vm-delete)paranccsal.
 
 ```azurecli-interactive
 az vm delete \
@@ -229,7 +243,7 @@ az vm create \
 
 Az összes adatlemezt újra kell csatolni a virtuális gépre.
 
-Először keresse ki a lemez nevét az [az disk list](/cli/azure/disk#az-disk-list) paranccsal. A példában a lemez nevét a *datadisk* nevű változóba helyezzük, amelyet a következő lépésben használunk majd.
+Keresse meg az adatlemez nevét az az [Disk List](/cli/azure/disk#az-disk-list) paranccsal. Ez a példa a lemez nevét egy nevű változóba helyezi `datadisk` , amelyet a következő lépésben kell használni.
 
 ```azurecli-interactive
 datadisk=$(az disk list \
