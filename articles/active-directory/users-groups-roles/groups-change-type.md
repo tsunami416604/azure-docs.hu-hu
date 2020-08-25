@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05bcf589e685d0a35a58bb1e8069a6ce3699b61c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ee5af5d7489835f125319050d291a89ab252a6
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728384"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797122"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statikus csoporttagság módosítása a Azure Active Directory dinamikus értékre
 
@@ -57,7 +57,7 @@ A következő lépések a csoportok statikusról dinamikus tagságra történő 
 ## <a name="change-membership-type-for-a-group-powershell"></a>Csoport tagsági típusának módosítása (PowerShell)
 
 > [!NOTE]
-> A dinamikus csoport tulajdonságainak módosításához az [Azure ad PowerShell 2. verziójának](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) **előzetes verziójából** származó parancsmagokat kell használnia. Az előnézetet a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview)is telepítheti.
+> A dinamikus csoport tulajdonságainak módosításához az [Azure ad PowerShell 2. verziójának](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) **előzetes verziójából** származó parancsmagokat kell használnia. Az előnézetet a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview)is telepítheti.
 
 Íme egy példa olyan függvényekre, amelyek átváltják a tagságok kezelését egy meglévő csoporton. Ebben a példában a GroupTypes tulajdonság megfelelő kezelését és a dinamikus tagsághoz nem kapcsolódó értékek megőrzését kell elvégezni.
 
@@ -115,7 +115,7 @@ Dinamikus csoport létrehozása:
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82233210"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a GitHub-tárházhoz az Azure DevOps Starter használatával
@@ -32,7 +32,7 @@ Az alábbiakat fogja elvégezni:
 > * Azure-DevOps és Azure-előfizetés konfigurálása 
 > * Módosítások elvégzése a GitHubon, és automatikus üzembe helyezése az Azure-ban
 > * Az Azure-folyamatok CI/CD-folyamatának vizsgálata
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,11 +107,11 @@ Az Azure DevOps Starter automatikusan konfigurálja a CI/CD-folyamatokat az Azur
 
 1. Válassza az **Eseményindítók** fület. Azure DevOps projects automatikusan létrehoz egy CI-eseményindítót néhány alapértelmezett beállítással. Olyan eseményindítókat is beállíthat, mint például a **folyamatos integráció lehetővé tétele** , hogy minden egyes kód módosításakor futtasson egy buildet. Az eseményindítókat beállíthatja úgy is, hogy az adott időpontokban futtatandó buildek ütemezhetők legyenek.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége Azure App Servicera és az oktatóanyagban létrehozott kapcsolódó erőforrásokra, törölheti őket. Használja a **delete** funkciót a DevOps projects irányítópulton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha ebben az oktatóanyagban konfigurálta a CI/CD-folyamatot, a Azure DevOps Projects-ben automatikusan létrehozta a létrehozási és kiadási folyamatokat. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat.
 

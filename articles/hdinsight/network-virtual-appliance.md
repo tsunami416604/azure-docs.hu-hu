@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 805be8d5c9ab4f6316251adbb9bce3e99f4fa01d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b9e33ba8d9610067cb9e844477ec273391fbdb0b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086670"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751725"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Hálózati virtuális berendezés konfigurálása az Azure HDInsight
 
@@ -47,7 +47,7 @@ A következő szolgáltatási végpontok közül egyet vagy többet is engedély
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-függőségek
 
 > [!Important]
-> Az alábbi lista csak néhányat ad a legfontosabb FQDN-nek. A NVA [ezen a fájlban](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)való konfigurálásához teljes listát kaphat a teljes tartománynevek (elsősorban az Azure Storage és a Azure Service Bus) teljes listájáról. Ezeket a függőségeket a HDInsight vezérli a fürt sikeres létrehozása érdekében.
+> Az alábbi lista csak néhány teljes tartománynevet ad meg, amelyekre szükség lehet az operációs rendszer és a biztonság javításához vagy a tanúsítvány érvényességéhez a fürt létrehozása és a fürt műveleteinek élettartama során. A NVA ebben a [fájlban](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)való konfigurálásához lekérheti a teljes tartománynevek függőségeinek (elsősorban az Azure Storage és a Azure Service Bus) listáját. Ezeket a függőségeket a HDInsight erőforrás-szolgáltató (RP) használja a fürtök sikeres létrehozásához és figyeléséhez/kezeléséhez. Ilyenek például a telemetria/diagnosztikai naplók, a metaadatok kiépítése, a fürthöz kapcsolódó konfigurációk, parancsfájlok, ARM-sablonok stb. Előfordulhat, hogy a teljes tartománynév-függőségi lista a későbbi HDIngisht-frissítések felszabadításával változhat.
 
 | **Végpont**                                                          |
 |---|

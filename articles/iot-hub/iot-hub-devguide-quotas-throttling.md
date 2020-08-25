@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782566"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797802"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -112,7 +112,7 @@ IoT Hub érvényesíti a többi működési korlátot:
 | Automatikus központi telepítések IoT Edge<sup>1</sup> | 50 modul üzembe helyezése. 100 üzemelő példányok (beleértve a rétegzett központi telepítéseket) fizetett SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
 | Ikrek<sup>1</sup> | A kívánt tulajdonságok maximális mérete és a jelentett tulajdonságok rész 32 KB. A címkék maximális mérete 8 KB. |
 | Megosztott elérési szabályzatok | A megosztott hozzáférési házirendek maximális száma 16. |
-| CA-tanúsítványok | A regisztrált X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok maximális száma 25. |
+| x509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok | A IoT Hubban regisztrálható x509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok maximális száma 25. |
 
 <sup>1</sup> Ez a funkció nem érhető el az alapszintű IoT Hub. További információ: [How to Choo the right IoT hub](iot-hub-scaling.md).
 

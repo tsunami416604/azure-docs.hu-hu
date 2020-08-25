@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.openlocfilehash: 6a9ab62d5ea408a5c7683d2f06e2cd52f52da1bb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83683882"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
@@ -20,7 +20,7 @@ ms.locfileid: "83683882"
 > * [.NET v2 SDK-példák](sql-api-dotnet-samples.md)
 > * [.NET v3 SDK-példák](sql-api-dotnet-v3sdk-samples.md)
 > * [Java v4 SDK-példák](sql-api-java-sdk-samples.md)
-> * [Node. js-példák](sql-api-nodejs-samples.md)
+> * [Node.js példák](sql-api-nodejs-samples.md)
 > * [Python-példák](sql-api-python-samples.md)
 > * [Azure Kódminta-katalógus](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
@@ -38,7 +38,7 @@ A .NET SDK 3,0-as (előzetes verziójú) kódjának mintáit lásd: az [Azure-Co
 A Visual Studio 2019 és az Azure fejlesztői munkafolyamata telepítve van
 - Letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során. 
 
-A [Microsoft. Azure. DocumentDB NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 
+A [Microsoft.Azure.DocUmentDB NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 
 
 Azure-előfizetés vagy ingyenes Cosmos DB próbaverziós fiók
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 

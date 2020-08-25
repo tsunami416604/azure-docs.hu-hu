@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77565578"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Oktatóanyag: a csatlakoztatott eszközök tömeges kezelése
@@ -272,6 +272,6 @@ A **központi telepítések** lapon kattintson a központi telepítésre, és te
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan frissítheti a megoldáshoz csatlakoztatott eszközök egy csoportjának belső vezérlőprogram-eszközét. Az eszközök frissítéséhez a megoldás automatikus eszközkezelés használatával működik. Ha többet szeretne megtudni a megoldás alapjául szolgáló IoT hub automatikus eszközkezelés szolgáltatásával kapcsolatban, tekintse meg a következő témakört: [IoT-eszközök konfigurálása és figyelése nagy méretekben a Azure Portal használatával](../iot-hub/iot-hub-auto-device-config.md).

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213800"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797105"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -135,7 +135,7 @@ Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabál
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
-| Operátor | Szintaxis |
+| Operátor | Syntax |
 | --- | --- |
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Bővítmény tulajdonságai és egyéni bővítmény tulajdonságai
 
-A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinamikus tagsági szabályokban karakterlánc-tulajdonságokként használhatók. A [bővítmény attribútumai](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) a helyszíni Windows Server ad-ből szinkronizálhatók, és a "ExtensionAttributeX" formátumot használják, ahol az X egyenlő 1-15. Íme egy példa egy olyan szabályra, amely egy Extension attribútumot használ tulajdonságként:
+A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinamikus tagsági szabályokban karakterlánc-tulajdonságokként használhatók. A [bővítmény attribútumai](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) a helyszíni Windows Server ad-ből szinkronizálhatók, és a "ExtensionAttributeX" formátumot használják, ahol az X egyenlő 1-15. Íme egy példa egy olyan szabályra, amely egy Extension attribútumot használ tulajdonságként:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Az [Egyéni bővítmények tulajdonságai](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) szinkronizálva vannak a helyszíni Windows Server ad-ből vagy egy csatlakoztatott SaaS-alkalmazásból, és a következő formátumban vannak `user.extension_[GUID]_[Attribute]` :
+Az [Egyéni bővítmények tulajdonságai](../hybrid/how-to-connect-sync-feature-directory-extensions.md) szinkronizálva vannak a helyszíni Windows Server ad-ből vagy egy csatlakoztatott SaaS-alkalmazásból, és a következő formátumban vannak `user.extension_[GUID]_[Attribute]` :
 
 * A [GUID] az Azure AD-ben egyedi azonosító azon alkalmazás számára, amely létrehozta a tulajdonságot az Azure AD-ben
 * A (z) [Attribute] a létrehozott tulajdonság neve.
@@ -393,7 +393,7 @@ A következő eszköz-attribútumok használhatók.
  systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (device.systemLabels – a "M365Managed" kifejezést tartalmazza)
 
 > [!Note]  
-> Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
+> Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](/intune/reports-ref-devices#ownertypes) . 
 
 ## <a name="next-steps"></a>Következő lépések
 

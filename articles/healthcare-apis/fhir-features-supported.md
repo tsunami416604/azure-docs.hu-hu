@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142519"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796561"
 ---
-# <a name="features"></a>Szolgáltatások
+# <a name="features"></a>Funkciók
 
 A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztosít az Azure-hoz készült Microsoft FHIR-kiszolgáló számára. A kiszolgáló a [FHIR](https://hl7.org/fhir) standard implementációja. Ez a dokumentum a FHIR-kiszolgáló fő funkcióit sorolja fel.
 
@@ -90,7 +90,7 @@ Az összes keresési paraméter típusa támogatott.
 | `_security`             | Igen       | Igen       | Igen       |         |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
-| `_list`                 | Nem        | Igen       | Igen       |         |
+| `_list`                 | Igen       | Igen       | Igen       |         |
 | `_has`                  | Nem        | Nem        | Nem        |         |
 | `_type`                 | Igen       | Igen       | Igen       |         |
 | `_query`                | Nem        | Nem        | Nem        |         |

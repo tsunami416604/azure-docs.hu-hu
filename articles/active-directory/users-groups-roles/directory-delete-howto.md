@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21e0358e2226f93a6c7088906d1146e5e2cf740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729030"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795422"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Bérlő törlése Azure Active Directory
 
@@ -85,7 +85,7 @@ A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti köz
 
    ![Előfizetés törlésére szolgáló hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
 
-6. Válassza az **előfizetés törlése** lehetőséget az előfizetés törléséhez és a használati feltételek elfogadásához. Az összes adatfeldolgozás három napon belül véglegesen törölve lesz. Ha meggondolja magát, újra [aktiválhatja az előfizetést](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) a három napos időszakban.
+6. Válassza az **előfizetés törlése** lehetőséget az előfizetés törléséhez és a használati feltételek elfogadásához. Az összes adatfeldolgozás három napon belül véglegesen törölve lesz. Ha meggondolja magát, újra [aktiválhatja az előfizetést](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) a három napos időszakban.
   
    ![a feltételek és kikötések körültekintő beolvasása](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,18 +97,18 @@ A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti köz
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Olyan próbaverziós előfizetésem van, amely blokkolja a törlést
 
-Az [önkiszolgáló regisztrációs termékek](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power bi, a Rights Management szolgáltatások, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók regisztrálhatnak az Office 365-on keresztül, ami szintén létrehoz egy vendég felhasználót az Azure ad-szervezetben való hitelesítéshez. Ezek az önkiszolgáló termékek letiltják a címtár törlését, amíg a termékek teljes mértékben törlődnek a szervezetből, így elkerülhető az adatvesztés. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
+Az [önkiszolgáló regisztrációs termékek](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power bi, a Rights Management szolgáltatások, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók regisztrálhatnak az Office 365-on keresztül, ami szintén létrehoz egy vendég felhasználót az Azure ad-szervezetben való hitelesítéshez. Ezek az önkiszolgáló termékek letiltják a címtár törlését, amíg a termékek teljes mértékben törlődnek a szervezetből, így elkerülhető az adatvesztés. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
 
 Az önkiszolgáló regisztrációs termékek két típusa van a hozzárendelésük módjában: 
 
 * Szervezeti szintű hozzárendelés: az Azure AD-rendszergazda hozzárendeli a terméket a teljes szervezethez, és a felhasználó aktívan használhatja a szolgáltatást ezzel a szervezeti szintű hozzárendeléssel, még akkor is, ha nem rendelkezik külön licenccel.
 * Felhasználói szintű hozzárendelés: az önkiszolgáló regisztráció során egy egyéni felhasználó lényegében a terméket rendszergazda nélkül rendeli hozzá önmagához. Ha a szervezetet egy rendszergazda felügyeli (lásd: nem [felügyelt szervezet rendszergazdai átvétele](domains-admin-takeover.md), a rendszergazda közvetlenül is hozzárendelheti a terméket a felhasználókhoz önkiszolgáló regisztráció nélkül.  
 
-Az önkiszolgáló regisztrációs termék törlésének megkezdése után a művelet véglegesen törli az információkat, és eltávolítja az összes felhasználói hozzáférést a szolgáltatáshoz. Minden olyan felhasználó, aki egyénileg vagy a szervezet szintjén lett hozzárendelve, a rendszer letiltja a bejelentkezést vagy a meglévő adatok elérését. Ha szeretné megakadályozni az adatvesztést az önkiszolgáló regisztrációs termékkel, például a [Microsoft Power bi irányítópultokkal](https://docs.microsoft.com/power-bi/service-export-to-pbix) vagy [Rights Management Services házirend-konfigurációval](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), győződjön meg arról, hogy az adatbiztonsági mentés és a Mentés máshol megtörtént.
+Az önkiszolgáló regisztrációs termék törlésének megkezdése után a művelet véglegesen törli az információkat, és eltávolítja az összes felhasználói hozzáférést a szolgáltatáshoz. Minden olyan felhasználó, aki egyénileg vagy a szervezet szintjén lett hozzárendelve, a rendszer letiltja a bejelentkezést vagy a meglévő adatok elérését. Ha szeretné megakadályozni az adatvesztést az önkiszolgáló regisztrációs termékkel, például a [Microsoft Power bi irányítópultokkal](/power-bi/service-export-to-pbix) vagy [Rights Management Services házirend-konfigurációval](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), győződjön meg arról, hogy az adatbiztonsági mentés és a Mentés máshol megtörtént.
 
-A jelenleg elérhető önkiszolgáló regisztrációs termékekkel és szolgáltatásokkal kapcsolatos további információkért lásd a [rendelkezésre álló](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)önkiszolgáló programok című témakört.
+A jelenleg elérhető önkiszolgáló regisztrációs termékekkel és szolgáltatásokkal kapcsolatos további információkért lásd a [rendelkezésre álló](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)önkiszolgáló programok című témakört.
 
-A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Termék állapota | Adatok | Hozzáférés az adatkezeléshez
 ------------- | ---- | --------------
@@ -141,6 +141,6 @@ Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs ter
 
     ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/delete-organization.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Azure Active Directory-dokumentáció](https://docs.microsoft.com/azure/active-directory/)
+[Azure Active Directory-dokumentáció](../index.yml)

@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "81409258"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
@@ -31,13 +31,13 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * Folyamat futtatásának aktiválása
 > * A folyamat futásának monitorozása.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Egy Azure Storage-fiók**. Létrehoz egy Python-szkriptet és egy bemeneti fájlt, és feltölti őket az Azure Storage-be. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
+* **Azure Storage-fiók**. Létrehoz egy Python-szkriptet és egy bemeneti fájlt, és feltölti őket az Azure Storage-be. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
 
 > [!NOTE]
 > A HdInsight csak az általános célú, standard szintű tárfiókokat támogatja. Győződjön meg róla, hogy nem prémium szintű tárfiókot vagy blobfiókot adott meg.
@@ -71,7 +71,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     if __name__ == "__main__":
         main()
     ```
-1. Cserélje * &lt;le&gt; az storageAccountName* az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
+1. Cserélje le az * &lt; StorageAccountName &gt; * az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
 1. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik. 
 1. Hozzon létre egy **spark** mappát.
 1. Hozzon létre egy **script** almappát a **spark** mappában. 
@@ -83,7 +83,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 1. Hozzon létre egy **inputfiles** nevű almappát a **spark** mappában. 
 1. Töltse fel a **minecraftstory.txt** fájlt az **inputfiles** almappába. 
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
@@ -93,7 +93,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
       
    ![„Új adat-előállító” lap](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például használja ** &lt;a sajátneve&gt;ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például használja a ** &lt; sajátneve &gt; ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
@@ -159,7 +159,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    f. A **Szolgáltatásnév kulcsa** mezőben adja meg a kulcsot. 
    
-   g. Az **Erőforráscsoport** beállításnál válassza ki az adat-előállító létrehozásához használt erőforráscsoportot. Ekkor a Spark-fürt létrejön ebben az erőforráscsoportban. 
+   : Az **Erőforráscsoport** beállításnál válassza ki az adat-előállító létrehozásához használt erőforráscsoportot. Ekkor a Spark-fürt létrejön ebben az erőforráscsoportban. 
    
    h. Bontsa ki az **OS type** (Operációs rendszer típusa) elemet.
    
@@ -167,7 +167,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    j. Adja meg a felhasználónévhez tartozó jelszót a **Cluster password** (Fürt jelszava) mezőben. 
    
-   k. Válassza a **Finish** (Befejezés) elemet. 
+   k. Válassza a **Befejezés** lehetőséget. 
 
    ![HDInsight társított szolgáltatás beállításai](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -199,7 +199,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    c. Keresse meg az **adftutorial/spark/script mappát**, válassza ki a **WordCount_Spark.py** fájlt, majd kattintson a **Befejezés** gombra.      
 
-1. A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az érvényesítési ablak bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
+1. A folyamat érvényesítéséhez kattintson az **Érvényesítés** gombra az eszköztáron. Az **>>** érvényesítési ablak bezárásához kattintson a (jobbra mutató nyíl) gombra. 
     
    ![„Érvényesítés” gomb](./media/tutorial-transform-data-spark-portal/validate-button.png)
 1. Kattintson **Az összes közzététele** gombra. A Data Factory felhasználói felülete entitásokat (társított szolgáltatásokat és folyamatot) tesz közzé az Azure Data Factory szolgáltatásban. 
@@ -243,8 +243,8 @@ A fájlban a bemeneti szövegfájl összes szavának szerepelnie kell, valamint 
 (u'file', 1)
 ```
 
-## <a name="next-steps"></a>További lépések
-A mintában szereplő folyamat egy Spark-tevékenységgel és egy igény szerinti HDInsight társított szolgáltatással alakítja át az adatokat. Megismerte, hogyan végezheti el az alábbi műveleteket: 
+## <a name="next-steps"></a>Következő lépések
+A mintában szereplő folyamat egy Spark-tevékenységgel és egy igény szerinti HDInsight társított szolgáltatással alakítja át az adatokat. Megtanulta végrehajtani az alábbi műveleteket: 
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása 

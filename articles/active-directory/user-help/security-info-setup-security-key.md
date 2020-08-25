@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744412"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797666"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Biztonsági kulcs beállítása ellenőrzési módszerként
 
@@ -92,7 +92,7 @@ Létre kell hoznia a biztonsági kulcsot, és egyedi PIN-kódot kell megadnia ah
 
     Visszatér az **új bejelentkezési módszer beállítása** mezőbe.
 
-7. Válassza a **Tovább** lehetőséget.
+7. Kattintson a **Tovább** gombra.
 
 8. Térjen vissza a **biztonsági adatok** lapra, adjon meg egy nevet, amelyet később felismer az új biztonsági kulcshoz, majd kattintson a **tovább**gombra.
 
@@ -158,13 +158,13 @@ Létrehozhat egy új biztonsági kulcsot tartalmazó PIN-kódot a biztonsági ku
 
 ## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
-Egy biztonsági kulcs regisztrálásához legalább egy további, a biztonsági ellenőrzési módszer regisztrálása szükséges. További információért tekintse meg az [Áttekintés szakaszt](security-info-add-update-methods-overview.md) . 
+Egy biztonsági kulcs regisztrálásához legalább egy további, a biztonsági ellenőrzési módszer regisztrálása szükséges. További információért tekintse meg az [Áttekintés szakaszt](./security-info-setup-auth-app.md) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A jelszóval nem rendelkező ellenőrzési módszerekkel kapcsolatos további információkért olvassa el a [Microsoft Azure ad nyilvános előzetes kiadását a FIDO2 biztonsági kulcsaihoz, amely engedélyezi a jelszóval nem rendelkező bejelentkezések](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogját, vagy olvassa el a [Mi az Microsoft Authenticator alkalmazás? és a](user-help-auth-app-overview.md) [Windows Hello áttekintő](https://www.microsoft.com/windows/windows-hello) cikkeket.
 
-- Részletesebb információ a [Microsoft-kompatibilis biztonsági kulcsokról](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
+- Részletesebb információ a [Microsoft-kompatibilis biztonsági kulcsokról](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

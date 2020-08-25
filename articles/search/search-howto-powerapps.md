@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565840"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751064"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Oktatóanyag: Cognitive Search index lekérdezése a Power Appsből
 
@@ -47,7 +47,7 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Egyéni összekötő menü" border="true":::
 
-1. Válassza az **+ új egyéni összekötő**lehetőséget, majd válassza **a létrehozás üresből**lehetőséget.
+1. Válassza az  **+ új egyéni összekötő**lehetőséget, majd válassza **a létrehozás üresből**lehetőséget.
 
     :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Létrehozás üres menüből" border="true":::
 
@@ -72,9 +72,9 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
 1. Görgessen le. A kérelmek területen válassza a **+ Importálás mintából** gombot a keresési szolgáltatás lekérdezési kérelmének konfigurálásához:
 
-   * Válassza ki a műveletet`GET`
+   * Válassza ki a műveletet `GET`
 
-   * Az URL-cím mezőben adja meg a keresési index mintájának lekérdezését (az `search=*` összes dokumentum visszaadása `$select=` lehetővé teszi a mezők kiválasztását). Az API-verziót kötelező megadni. Teljesen meg van adva egy URL-cím, amely a következőhöz hasonló lehet:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
+   * Az URL-cím mezőben adja meg a keresési index mintájának lekérdezését (az `search=*` összes dokumentum visszaadása `$select=` lehetővé teszi a mezők kiválasztását). Az API-verziót kötelező megadni. Teljesen meg van adva egy URL-cím, amely a következőhöz hasonló lehet: `https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
    * A fejlécek mezőbe írja be a következőt: `Content-Type` . 
 
@@ -92,7 +92,7 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
 1. A *Select (kiválasztás*) beállításnál állítsa be `HotelName,Description,Address/City` az **required** alapértelmezett értéket, állítsa a False **visibility** ( *hamis*) **értékre**, és állítsa a *nincs*értékre.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Version paraméter metaadatai" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Paraméter metaadatainak kiválasztása" border="true":::
 
 1. Az *API-Version*: beállítás értékeként állítsa be `2020-06-30` az **alapértelmezett értéket**, állítsa *igaz*értékre, és *belsőként*állítsa be a **láthatóságot** . **required**  
 
@@ -250,7 +250,7 @@ Ebben a lépésben hozzon létre egy energiagazdálkodási alkalmazást egy kere
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

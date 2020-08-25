@@ -3,12 +3,12 @@ title: Offline biztonsági mentés Azure Data Box használatával
 description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Data Box a nagyméretű kezdeti biztonsági mentési adatoknak a MARS-ügynökből egy Recovery Services-tárolóba való összevetéséhez
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091028"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761559"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
 
@@ -154,7 +154,7 @@ Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként c
 
 1. Engedélyezze az ügyfél számára az NFS-szolgáltatást azon a Windows Serveren, amelyen telepítve van a MARS-ügynök. Határozza meg a másodlagos forrás *wim: D: \Sources\Install.wim: 4*.
 1. Töltse le a PsExec a [Sysinternals](/sysinternals/downloads/psexec) lapról a kiszolgálóra, amelyen telepítve van a Mars-ügynök.
-1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot az *PSExec.exet* tartalmazó könyvtárral az aktuális könyvtárként.
+1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot az *PSExec.exet * tartalmazó könyvtárral az aktuális könyvtárként.
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
@@ -195,7 +195,7 @@ Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként c
 
     ![Data Box feladatok beolvasása az előfizetés-AZONOSÍTÓhoz](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Válassza ki a helyes Data Box rendelést, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezt. Válassza a **Tovább** lehetőséget.
+1. Válassza ki a helyes Data Box rendelést, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezt. Kattintson a **Tovább** gombra.
 
     ![Data Box rendelések kiválasztása](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -259,13 +259,13 @@ A kapcsolat nélküli biztonsági mentés konfigurálásakor előfordulhat, hogy
 
 Ha szeretné megtekinteni, hogy a probléma megegyezik-e a korábban leírttal, hajtsa végre az alábbi lépések egyikét.
 
-#### <a name="step-1"></a>1\. lépés
+#### <a name="step-1-of-verification"></a>Az ellenőrzés 1. lépése
 
 Ellenőrizze, hogy a következő hibaüzenet jelenik-e meg a Mohácsi-konzolon, amikor konfigurálta az offline biztonsági mentést.
 
 ![Nem lehet offline biztonsági mentési szabályzatot létrehozni az aktuális Azure-fiókhoz](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>2. lépés
+#### <a name="step-2-of-verification"></a>Ellenőrzés 2. lépése
 
 1. Nyissa meg a **temp** mappát a telepítési útvonalon. Az alapértelmezett ideiglenes mappa elérési útja a *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Keresse meg a *CBUICurr* fájlt, és nyissa meg a fájlt.
 
@@ -275,11 +275,11 @@ Ellenőrizze, hogy a következő hibaüzenet jelenik-e meg a Mohácsi-konzolon, 
 
 A probléma megoldásához hajtsa végre a következő lépéseket, majd próbálja megismételni a házirend-konfigurációt.
 
-#### <a name="step-1"></a>1\. lépés
+#### <a name="step-1-of-workaround"></a>Áthidaló megoldás 1. lépése
 
 Jelentkezzen be a Mohácsi felhasználói felületén megjelenő PowerShellbe egy másik, rendszergazdai hozzáféréssel rendelkező fiókkal az előfizetésben, amely az importálási vagy exportálási feladatot létrehozta.
 
-#### <a name="step-2"></a>2. lépés
+#### <a name="step-2-of-workaround"></a>Áthidaló megoldás 2. lépése
 
 Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítéssel, és az alkalmazástól nem függ más kiszolgáló `AzureOfflineBackup_<Azure User Id>` , törölje az alkalmazást. Válassza ki **Azure Portal**  >  **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 

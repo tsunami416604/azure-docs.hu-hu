@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475787"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795898"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Felügyeleti egységek felügyelete Azure Active Directoryban (előzetes verzió)
 
@@ -47,8 +47,8 @@ A felügyeleti egységek használatához prémium szintű Azure Active Directory
 Ebben az előzetes kiadásban a felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok, vagy a Microsoft Graph használatával kezelheti. A részletekért tekintse meg a dokumentációt:
 
 - [Szerepkörök létrehozása, eltávolítása, feltöltése és hozzáadása felügyeleti egységekhez](roles-admin-units-manage.md): az eljárások befejezése
-- Rendszergazdai [egységek](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)használata: a felügyeleti egységekkel való együttműködés a PowerShell használatával
-- [Felügyeleti egység Graph-támogatás](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): Részletes dokumentáció a Microsoft Graph felügyeleti egységekhez.
+- Rendszergazdai [egységek](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)használata: a felügyeleti egységekkel való együttműködés a PowerShell használatával
+- [Felügyeleti egység Graph-támogatás](/graph/api/resources/administrativeunit?view=graph-rest-beta): Részletes dokumentáció a Microsoft Graph felügyeleti egységekhez.
 
 ### <a name="planning-your-administrative-units"></a>A felügyeleti egységek megtervezése
 
@@ -101,7 +101,7 @@ felügyeleti egység – a csoportos licencelés hatókörön belüli kezelése 
 
 A felügyeleti egységek hatóköre csak a felügyeleti engedélyekre vonatkozik. Nem akadályozzák meg, hogy a tagok vagy a rendszergazdák az [alapértelmezett felhasználói engedélyeiket](../fundamentals/users-default-permissions.md) használják a felügyeleti egységen kívüli más felhasználók, csoportok vagy erőforrások tallózására. Az Office 365-portálon a hatókörön kívüli rendszergazda felügyeleti egységeken kívüli felhasználók is kiszűrve vannak, de az Azure AD-portálon, a PowerShellben és más Microsoft-szolgáltatásokban is böngészhet más felhasználók között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az AUs kezelése](roles-admin-units-manage.md)
 - [Felhasználók kezelése az AUs-ban](roles-admin-units-add-manage-users.md)

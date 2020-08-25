@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82024472"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azure-ban IoT Central
@@ -153,7 +153,7 @@ A víz minőségének monitorozására szolgáló eszköz sablonja előre meghat
 
   ![Eszköz sablon nézetei](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
 
-### <a name="publish-the-device-template"></a>Az eszköz közzétételének közzététele
+### <a name="publish-the-device-template"></a>Az eszközsablon közzététele
 
 Ha bármilyen módosítást végez, ügyeljen arra, hogy a **Közzététel** lehetőségre kattintva tegye közzé az eszköz sablonját.
 
@@ -231,7 +231,7 @@ Az Azure IoT Central-feladatokkal több eszközön is aktiválhatja a frissíté
 
 Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához.
 
-1. Válassza az **Adminisztráció** > **testre szabása alkalmazást**.
+1. Válassza **Administration**  >  **az adminisztráció testre szabása alkalmazást**.
 1. Az **alkalmazás emblémája**területen válassza a **módosítás** lehetőséget, hogy kiválassza a logóként feltölteni kívánt képet.
 1. A **böngésző ikonja**alatt válassza a **módosítás** lehetőséget a böngésző lapjain megjelenő rendszerkép kiválasztásához.
 1. A **böngésző színei**területen lecserélheti az alapértelmezett értékeket HTML hexadecimális színkódokkal.
@@ -241,7 +241,7 @@ Az Azure IoT Central-feladatokkal több eszközön is aktiválhatja a frissíté
 
 ### <a name="update-the-application-image"></a>Az alkalmazás rendszerképének frissítése
 
-1. Válassza az **adminisztrációs** > **alkalmazás beállításai**lehetőséget.
+1. Válassza az **adminisztrációs**  >  **alkalmazás beállításai**lehetőséget.
 
 1. A **rendszerkép kiválasztása** gomb használatával kiválaszthatja az alkalmazási képként feltölteni kívánt képet.
 
@@ -254,6 +254,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 
     ![Az alkalmazás törlése](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md).

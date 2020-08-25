@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/18/2020
 ms.author: victorh
 ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82608813"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Oktatóanyag: WAF szabályzat létrehozása Azure CDN a Azure Portal használatával
@@ -84,7 +84,7 @@ Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés sz
 
  ![WAF-szabálykészlet módosítása](../media/waf-cdn-create-portal/managed2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure webalkalmazási tűzfalról](../overview.md)

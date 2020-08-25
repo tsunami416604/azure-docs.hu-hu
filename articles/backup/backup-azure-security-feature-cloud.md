@@ -3,12 +3,12 @@ title: Azure Backup helyreállítható törlés
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538836"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763439"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup helyreállítható törlés
 
@@ -136,7 +136,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor a rendszer a törölt állapotot fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
 
-1. Először vonja vissza a törlési műveleteket az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)leírt lépésekkel.
+1. Először vonja vissza a törlési műveleteket az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)leírt lépésekkel.
 2. Ezután tiltsa le a Soft-delete funkciót a REST API használatával az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépések végrehajtásával.
 3. Ezután törölje a biztonsági mentéseket a REST API az [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említett módon.
 
@@ -178,6 +178,6 @@ Nem. Nem lehet kényszeríteni a nem törölt elemek törlését. A rendszer 14 
 
 A helyreállítható törlési műveletek a PowerShell használatával végezhetők el. A CLI jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

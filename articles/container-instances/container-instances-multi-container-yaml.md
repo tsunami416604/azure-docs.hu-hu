@@ -3,12 +3,12 @@ title: Oktatóanyag – több tárolós csoport üzembe helyezése – YAML
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy Azure Container Instances több tárolót tartalmazó YAML-fájllal az Azure CLI használatával.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 2673f1066db705e4d2e850230c5f96dc2690a85c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6ba9152003c68192ddc0fdffa5652bc0b6daa86
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259555"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750900"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Oktatóanyag: több tárolós csoport üzembe helyezése YAML-fájl használatával
 
@@ -76,7 +76,7 @@ properties:
       port: 80
     - protocol: tcp
       port: 8080
-tags: null
+tags: {exampleTag: tutorial}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
@@ -166,7 +166,7 @@ Connection: keep-alive
 
 Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP-válasz kódját kapta `200 OK` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy YAML-fájlt használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megtanulta végrehajtani az alábbi műveleteket:
 

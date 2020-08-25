@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 26531e80292a53400671ac3507b47371c1fbbcad
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566165"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796816"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Gyors útmutató: Unity-minta üzembe helyezése az asztalra
 
@@ -57,7 +57,7 @@ Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR
 1. Módosítsa a konfigurációt **kiadásra** és **x86**-ra.
 1. Állítsa át a hibakereső üzemmódot a **helyi gépre**. \
   ![Megoldás konfigurálása](./media/unity-deploy-config-pc.png)
-1. Hozza létre a megoldást (F7).
+1. Hozza létre a megoldást.
 
 ## <a name="launch-the-sample-project"></a>A minta projekt elindítása
 
@@ -66,7 +66,7 @@ Indítsa el a hibakeresőt a Visual Studióban (F5). A rendszer automatikusan te
 A minta alkalmazásnak el kell indítania, majd el kell indítania egy új munkamenetet. Egy idő után a munkamenet készen áll, és a távolról renderelt modell fog megjelenni az Ön előtt.
 Ha később szeretné elindítani a mintát, azt a Start menüből is megtalálhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő rövid útmutatóban egy egyéni modell átalakítását fogjuk megtekinteni.
 

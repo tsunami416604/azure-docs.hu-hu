@@ -4,10 +4,10 @@ description: Ez az oktatóanyag azt mutatja be, hogyan használható a Batch Tes
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83681632"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: batch test adatkészletek
@@ -24,7 +24,7 @@ A Batch-tesztelésre vonatkozó követelmények:
 
 Ha az oktatóanyagtól eltérő *alkalmazást használ, ne használja az* alkalmazáshoz már hozzáadott hosszúságú kimondott szöveg.
 
-**Az oktatóanyag a következőket ismerteti:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -138,7 +138,7 @@ Ebből az oktatóanyagból megtudhatta, hogyan futtathat egy tesztet, és hogyan
     * További pozitív példa hosszúságú kimondott szöveg hozzáadása
     * Példa hosszúságú kimondott szöveg egyenlegének áttekintése a leképezések között
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](./includes/cleanup-resources-preview-portal.md)]
 

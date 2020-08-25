@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543198"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798125"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezési oldalról
 
@@ -68,11 +68,11 @@ A szokatlan tevékenységként megjelölt bejelentkezések az adott tevékenysé
 
 ![Szokatlan bejelentkezési csempe, amely megerősíti, hogy Ön vagy nem kísérelte meg a bejelentkezést](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legutóbbi bejelentkezési tevékenység megtekintése után a következőket teheti:
 
-- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
+- [Biztonsági adatok](./security-info-setup-signin.md)megtekintése és kezelése.
 
 - A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 

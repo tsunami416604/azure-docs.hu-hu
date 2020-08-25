@@ -10,10 +10,10 @@ ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86080481"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge-vel speciális üzembe helyezési folyamat esetén
@@ -31,7 +31,7 @@ A számítás konfigurálható az eszköz egyszerű vagy speciális üzembe hely
 
 Ez az eljárás körülbelül 20 – 30 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -66,11 +66,11 @@ A számítás Azure Stack Edge-ben való konfigurálásához létre kell hoznia 
     |Mező  |Érték  |
     |---------|---------|
     |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint a rendszer egy standard szintű (S1) szintet használ IoT-erőforrás létrehozásához. Az ingyenes szintű IoT erőforrás használatához hozzon létre egyet, majd válassza ki a meglévő erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
-    |Name     |Adja meg a IoT Hub erőforrás nevét.         |
+    |Név     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Válassza a **Létrehozás** lehetőséget. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrejötte után az **Edge számítási** csempék konfigurálása a számítási konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása** csempén.
+4. Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrejötte után az **Edge számítási** csempék konfigurálása a számítási konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása** csempén.
     
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
@@ -183,7 +183,7 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
      
         |Mező  |Érték  |
         |---------|---------|
-        |Name (Név)     | A modul egyedi neve. Ez a modul egy Docker-tároló, amelyet a Azure Stack Edge-hez társított IoT Edge eszközre telepíthet.        |
+        |Név     | A modul egyedi neve. Ez a modul egy Docker-tároló, amelyet a Azure Stack Edge-hez társított IoT Edge eszközre telepíthet.        |
         |Rendszerkép URI-ja     | A modulhoz tartozó tároló rendszerképéhez tartozó képuri.        |
         |Szükséges hitelesítő adatok     | Ha be van jelölve, a rendszer a felhasználónevet és a jelszót használja a modulok megfelelő URL-címmel való lekéréséhez.        |
     
@@ -219,7 +219,7 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
    
    ![Az útvonalak meghatározása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    Az *útvonalat* lecserélheti a korábban átmásolt következő útvonal-karakterláncra. Ebben a példában adja meg annak a helyi megosztásnak a nevét, amely a Felhőbeli megosztásba küldi az adattovábbítást. Cserélje le a `modulename` nevet a modul nevére. Válassza a **Tovább** lehetőséget.
+    Az *útvonalat* lecserélheti a korábban átmásolt következő útvonal-karakterláncra. Ebben a példában adja meg annak a helyi megosztásnak a nevét, amely a Felhőbeli megosztásba küldi az adattovábbítást. Cserélje le a `modulename` nevet a modul nevére. Kattintson a **Tovább** gombra.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"

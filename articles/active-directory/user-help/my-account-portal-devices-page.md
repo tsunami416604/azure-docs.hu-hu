@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422478"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798210"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
 
@@ -27,7 +27,7 @@ A **saját fiók** portál **eszközök** lapján kezelheti a munkahelyi vagy is
 - Tiltsa le az összes olyan eszközt, amely már nem tulajdonosa, elveszett vagy ellopták.
 
 >[!Important]
->Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott eszköz-információkat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más felhasználások eszköz-kezelésével kapcsolatos információkat keres, tekintse meg az [eszköz identitásait ismertető dokumentációt](https://docs.microsoft.com/azure/active-directory/devices/index).
+>Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott eszköz-információkat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más felhasználások eszköz-kezelésével kapcsolatos információkat keres, tekintse meg az [eszköz identitásait ismertető dokumentációt](../devices/index.yml).
 
 ## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
 
@@ -68,7 +68,7 @@ Ha kizárta az eszközét, vagy végzetes hibát észlel, lépjen egy másik esz
 
 A csatlakoztatott eszközök megtekintése után a következőket teheti:
 
-- A [biztonsági adatok](user-help-security-info-overview.md)megtekintéséhez vagy kezeléséhez válassza a lehetőséget.
+- A [biztonsági adatok](./security-info-setup-signin.md)megtekintéséhez vagy kezeléséhez válassza a lehetőséget.
 
 - Megtekintheti és kezelheti a [szervezeteit](my-account-portal-organizations-page.md).
 

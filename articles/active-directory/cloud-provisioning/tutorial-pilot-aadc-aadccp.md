@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "86146814"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
@@ -78,7 +78,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  
  4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Ezután kattintson a **Tovább** gombra. 
 
-    |Szabály|Attribútum|Művelet|Érték|
+    |Szabály|Attribútum|Operátor|Érték|
     |-----|----|----|-----|
     |Hatóköri szervezeti egység|DN|ENDSWITH|A szervezeti egység megkülönböztető neve.|
     |Hatókör-csoport||ISMEMBEROF|A biztonsági csoport megkülönböztető neve.|
@@ -118,7 +118,7 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
 Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasználó, csoport és kapcsolattartó).
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
-1. Jelentkezzen be a-kiszolgálóra, amelyet a vállalati rendszergazdai engedélyekkel fog használni.  Ha az [alapszintű ad-és Azure-környezetbeli](tutorial-basic-ad-azure.md) oktatóanyagot használja, az CP1 lenne.
+1. Jelentkezzen be a-kiszolgálóra, amelyet a vállalati rendszergazdai engedélyekkel fog használni.  Ha az  [alapszintű ad-és Azure-környezetbeli](tutorial-basic-ad-azure.md) oktatóanyagot használja, az CP1 lenne.
 2. Töltse le a Azure AD Connect Cloud kiépítési ügynököt az [itt](how-to-install.md#install-the-agent)ismertetett lépések segítségével.
 3. Az Azure AD Connect Cloud kiépítés (AADConnectProvisioningAgent. Installer) futtatása
 3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
@@ -141,7 +141,7 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 

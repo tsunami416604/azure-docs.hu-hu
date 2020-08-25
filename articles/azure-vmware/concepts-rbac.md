@@ -1,28 +1,28 @@
 ---
 title: Fogalmak – szerepköralapú hozzáférés-vezérlés (RBAC)
-description: Ismerje meg az Azure VMware-megoldás (AVS) szerepköralapú hozzáférés-vezérlésének főbb képességeit
+description: Ismerje meg az Azure VMware-megoldás szerepköralapú hozzáférés-vezérlésének főbb képességeit
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8628c88c300ef8ed271f5e06a8e8dfae40231fec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9e83f0442953f59d02c42514a8550301ea947b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660819"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752256"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution-avs"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure VMware-megoldáshoz (AVS)
+# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure VMware-megoldáshoz
 
-A vCenter és az ESXi helyszíni üzembe helyezése során a rendszergazda hozzáférhet a vCenter administrator@vsphere.local -fiókhoz, és rendelkezhet további Active Directory (ad) felhasználókkal vagy csoportokkal. Ha azonban egy Azure VMware-megoldás (AVS) üzemel, a rendszergazda nem fér hozzá a rendszergazdai felhasználói fiókhoz, de AD-felhasználókat és-csoportokat rendelhet a CloudAdmin szerepkörhöz a vCenter.  Emellett az AVS Private Cloud-felhasználónak nincs engedélye a Microsoft által támogatott és kezelt felügyeleti összetevők (például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók) elérésére vagy konfigurálására.
+A vCenter és az ESXi helyszíni üzembe helyezése során a rendszergazda hozzáférhet a vCenter administrator@vsphere.local -fiókhoz, és rendelkezhet további Active Directory (ad) felhasználókkal vagy csoportokkal. Egy Azure VMware-megoldás üzembe helyezése esetén azonban a rendszergazda nem fér hozzá a rendszergazdai felhasználói fiókhoz, de AD-felhasználókat és-csoportokat rendelhet a CloudAdmin szerepkörhöz a vCenter.  Emellett az Azure VMware-megoldás saját felhőalapú felhasználója nem jogosult a Microsoft által támogatott és felügyelt felügyeleti összetevők, például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók elérésére vagy konfigurálására.
 
 
-Az AVS-ben a vCenter beépített helyi felhasználó nevű cloudadmin, amely a beépített CloudAdmin szerepkörhöz van rendelve. A helyi cloudadmin-felhasználó további felhasználók beállítására szolgál az AD-ben. A CloudAdmin szerepkör általában a saját Felhőbeli munkaterhelések (virtuális gépek, erőforrás-készletek, adattárolók és hálózatok) létrehozásához és kezeléséhez szükséges jogosultsággal rendelkezik. A CloudAdmin szerepkör az AVS-ben olyan vCenter-jogosultságokkal rendelkezik, amelyek eltérnek a többi VMware Cloud-megoldástól.   
+Az Azure VMware megoldásban a vCenter beépített helyi felhasználó nevű cloudadmin, amely a beépített CloudAdmin szerepkörhöz van rendelve. A helyi cloudadmin-felhasználó további felhasználók beállítására szolgál az AD-ben. A CloudAdmin szerepkör általában a saját Felhőbeli munkaterhelések (virtuális gépek, erőforrás-készletek, adattárolók és hálózatok) létrehozásához és kezeléséhez szükséges jogosultsággal rendelkezik. Az Azure VMware-megoldás CloudAdmin szerepköre olyan vCenter-jogosultságokkal rendelkezik, amelyek eltérnek a többi VMware Cloud-megoldástól.   
 
 > [!NOTE]
-> Az AVS jelenleg nem biztosít egyéni szerepköröket a vCenter vagy az AVS-portálon. 
+> Az Azure VMware-megoldás jelenleg nem biztosít egyéni szerepköröket a vCenter vagy az Azure VMware Solution Portalon. 
 
-## <a name="avs-cloudadmin-role-on-vcenter"></a>AVS CloudAdmin-szerepkör a vCenter
+## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Azure VMware-megoldás CloudAdmin-szerepkör a vCenter
 
-Az AVS CloudAdmin szerepkörhöz megadott jogosultságokat az AVS Private Cloud vCenter tekintheti meg.
+Megtekintheti az Azure VMware-megoldás CloudAdmin szerepkörhöz biztosított jogosultságokat az Azure VMware-megoldás saját Felhőbeli vCenter.
 
 1. Jelentkezzen be a SDDC vSphere-ügyfelébe, és lépjen a **menü adminisztráció elemre**  >  **Administration**.
 1. A **Access Control**területen válassza a **szerepkörök**lehetőséget.
@@ -30,9 +30,9 @@ Az AVS CloudAdmin szerepkörhöz megadott jogosultságokat az AVS Private Cloud 
 
    :::image type="content" source="media/rbac-cloudadmin-role-privileges.png" alt-text="A CloudAdmin szerepkörhöz tartozó jogosultságok megtekintése a vSphere-ügyfélben":::
 
-A CloudAdmin szerepkör az AVS-ben a következő jogosultságokkal rendelkezik a vCenter. Az egyes jogosultságok részletes ismertetését a [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) találja.
+Az Azure VMware-megoldás CloudAdmin szerepköre a következő jogosultságokkal rendelkezik a vCenter. Az egyes jogosultságok részletes ismertetését a [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) találja.
 
-| Privilege | Description |
+| Privilege | Leírás |
 | --------- | ----------- |
 | **Riasztások** | Riasztás nyugtázása<br />Riasztás létrehozása<br />Riasztási művelet letiltása<br />Riasztás módosítása<br />Riasztás eltávolítása<br />Riasztás állapotának beállítása |
 | **Engedélyek** | Engedélyek módosítása |

@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422511"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798193"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a jelszó módosítása lapról
 
 A **saját fiók** portál **jelszó módosítása** lapja segítséget nyújt a munkahelyi vagy iskolai fiókja meglévő jelszavának frissítéséhez, feltéve, hogy emlékszik a jelszóra, és nem zárja ki a fiókját. Ha nem emlékszik a jelszavára, ha ki van zárva a fiókjából, vagy ha soha nem kapott jelszót a szervezettől, akkor a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a jelszót.
 
 >[!Important]
->Ez a cikk olyan felhasználók számára készült, akik egy meglévő munkahelyi vagy iskolai fiókhoz tartozó ismert jelszavakat próbálnak frissíteni. Ha a felhasználó személyes fiókkal próbál beolvasni, például Xbox-, Hotmail-vagy Outlook.com, akkor próbálja meg a következő témakörben ismertetett javaslatokat, ha [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe. Ha a rendszergazda további információkat szeretne megtudni arról, hogyan tesztelheti az önkiszolgáló jelszó-visszaállítást az alkalmazottak vagy más felhasználók számára, tekintse meg az [önkiszolgáló jelszó-visszaállítást](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)ismertető témakört.
+>Ez a cikk olyan felhasználók számára készült, akik egy meglévő munkahelyi vagy iskolai fiókhoz tartozó ismert jelszavakat próbálnak frissíteni. Ha a felhasználó személyes fiókkal próbál beolvasni, például Xbox-, Hotmail-vagy Outlook.com, akkor próbálja meg a következő témakörben ismertetett javaslatokat, ha [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe. Ha a rendszergazda további információkat szeretne megtudni arról, hogyan tesztelheti az önkiszolgáló jelszó-visszaállítást az alkalmazottak vagy más felhasználók számára, tekintse meg az [önkiszolgáló jelszó-visszaállítást](../authentication/tutorial-enable-sspr.md)ismertető témakört.
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Jelszó frissítése a jelszó módosítása lapról
 
@@ -45,7 +45,7 @@ A **saját fiók** portál **jelszó módosítása** lapja segítséget nyújt a
 
 A jelszó módosítása után a következőket teheti:
 
-- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
+- [Biztonsági adatok](./security-info-setup-signin.md)megtekintése és kezelése.
 
 - A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 

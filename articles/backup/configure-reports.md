@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 94298c5826f7158655367ae1dd6b7dd54cb88d24
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612435"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755262"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -89,7 +89,7 @@ Ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási p
    ![Használat lap](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> A DPM számítási feladatokhoz a felhasználók egy kis eltérést (20 MB-os sorrendet) látnak a jelentésekben megjelenített használati értékek között az összesített használati értékhez képest, ahogy azt a Recovery Services-tároló áttekintése lapon is láthatja. Ezt a különbséget azzal a ténnyel kell figyelembe venni, hogy minden biztonsági mentéshez regisztrált DPM-kiszolgáló társítva van egy "metaadatok" adatforrással, amely nem szerepel a jelentéskészítési összetevőként.
+> A DPM számítási feladatokhoz a felhasználók a jelentésekben szereplő használati értékek között kis mértékben (20 MB-os sorrendet) láthatnak az összesített használati értékhez képest, ahogy az a Recovery Services-tároló **áttekintése** lapon látható. Ezt a különbséget azzal a ténnyel kell figyelembe venni, hogy minden biztonsági mentéshez regisztrált DPM-kiszolgáló társítva van egy "metaadatok" adatforrással, amely nem szerepel a jelentéskészítési összetevőként.
 
 ##### <a name="jobs"></a>Feladatok
 
@@ -177,6 +177,6 @@ A biztonsági mentési jelentésben szereplő widgeteket Kusto-lekérdezések m�
 
 - Emellett a diagnosztikai adatok egy Storage-fiókba vagy egy LA-munkaterületre való küldésének [v1-sémája](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) is egy elavult útvonalon található. Ez azt jelenti, hogy ha a v1 séma alapján egyéni lekérdezéseket vagy automatizálásokat írt, javasoljuk, hogy frissítse ezeket a lekérdezéseket a jelenleg támogatott v2 séma használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a Azure Backup figyeléséről és jelentéskészítéséről](./backup-azure-monitor-alert-faq.md)

@@ -3,12 +3,12 @@ title: SQL Server adatbázisok kezelése és figyelése Azure-beli virtuális g�
 description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok felügyeletét és figyelését ismerteti.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659585"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756316"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése és monitorozása
 
@@ -16,15 +16,11 @@ Ez a cikk az Azure-beli virtuális gépen (VM) futó SQL Server adatbázisok fel
 
 Ha még nem konfigurált biztonsági másolatokat a SQL Server adatbázisokhoz, tekintse [meg a SQL Server adatbázisok biztonsági mentése Azure-beli virtuális gépeken](backup-azure-sql-database.md) című témakört.
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Manuális biztonsági mentési feladatok figyelése a portálon
+## <a name="monitor-backup-jobs-in-the-portal"></a>Biztonsági mentési feladatok figyelése a portálon
 
-Azure Backup megjeleníti az összes manuálisan aktivált feladatot a **biztonsági mentési feladatok** portálon. A portálon megjelenő feladatok közé tartozik az adatbázis-felderítés és a regisztrálás, valamint a biztonsági mentési és visszaállítási műveletek.
+Azure Backup megjeleníti az összes ütemezett és igény szerinti műveletet a portál **biztonsági mentési feladatok** területén, kivéve az ütemezett naplókat, mivel ezek nagyon gyakoriak. A portálon megjelenő feladatok közé tartozik az adatbázis-felderítés és-regisztráció, a biztonsági mentés konfigurálása, valamint a biztonsági mentési és visszaállítási műveletek.
 
 ![A biztonsági mentési feladatok portál](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> A **biztonsági mentési feladatok** portálon nem jelennek meg ütemezett biztonsági mentési feladatok. Az ütemezett biztonsági mentési feladatok figyeléséhez használja a SQL Server Management Studio a következő szakaszban leírtak szerint.
->
 
 A figyelési forgatókönyvekkel kapcsolatos részletekért tekintse meg [a figyelés a Azure Portal és a](backup-azure-monitoring-built-in-monitor.md) [figyelés Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)című részt.  
 
@@ -162,7 +158,7 @@ A védelem letiltása, de a tár törlése előtt törölje a SQL Server példá
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>A bővítmény újbóli regisztrálása a SQL Server VM
 
-Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény az egyik ok vagy egy másikra hatással lesz. Ilyen esetekben a virtuális gépen aktivált összes művelet sikertelen lesz. Előfordulhat, hogy újra regisztrálnia kell a bővítményt a virtuális gépen. Az **ismételt regisztrálási** művelet újratelepíti a munkaterhelési biztonsági mentési bővítményt a virtuális gépen a folytatáshoz. Ezt a lehetőséget a helyreállítási tár **biztonsági mentési infrastruktúra** területén találja.
+Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény hatással lehet az egyik ok vagy egy másikra. Ilyen esetekben a virtuális gépen aktivált összes művelet sikertelen lesz. Előfordulhat, hogy újra regisztrálnia kell a bővítményt a virtuális gépen. Az **ismételt regisztrálási** művelet újratelepíti a munkaterhelési biztonsági mentési bővítményt a virtuális gépen a folytatáshoz. Ezt a lehetőséget a Recovery Services- **tárolóban található biztonsági mentési infrastruktúra** területen találja.
 
 ![Biztonsági mentési infrastruktúra alatt lévő védett kiszolgálók](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422443"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798176"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a szervezetek lapról
 
@@ -30,7 +30,7 @@ A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy i
 - **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
 >[!Important]
->Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott szervezeti adatokat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott szervezeti adatokat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
@@ -61,7 +61,7 @@ Minden olyan szervezetet meghagyhat, amely nem a saját szervezete.
 
 A szervezetek megtekintése után a következőket teheti:
 
-- [Biztonsági adatok](user-help-security-info-overview.md)megtekintése és kezelése.
+- [Biztonsági adatok](./security-info-setup-signin.md)megtekintése és kezelése.
 
 - A csatlakoztatott [eszközök](my-account-portal-devices-page.md)megtekintése és kezelése.
 

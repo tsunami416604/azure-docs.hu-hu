@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983305"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798380"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>A kétfaktoros ellenőrzési módszer és beállítások módosítása
 
@@ -31,10 +31,10 @@ A munkahelyi vagy iskolai fiókjához tartozó biztonsági ellenőrzési módsze
 
 ## <a name="using-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés lap használata
 
-Ha a szervezete a kétfaktoros ellenőrzés bekapcsolásának és kezelésének konkrét lépéseit is megadja, először kövesse ezeket az utasításokat. Ellenkező esetben a biztonsági ellenőrzési módszer beállításait a [további biztonsági ellenőrzés](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) oldalon érheti el.
+Ha a szervezete a kétfaktoros ellenőrzés bekapcsolásának és kezelésének konkrét lépéseit is megadja, először kövesse ezeket az utasításokat. Ellenkező esetben a biztonsági ellenőrzési módszer beállításait a [további biztonsági ellenőrzés](./multi-factor-authentication-end-user-first-time.md) oldalon érheti el.
 
 >[!Note]
->Ha a képernyőn megjelenő információk nem egyeznek meg a jelen cikkben ismertetett lépésekkel, az azt jelenti, hogy a rendszergazda bekapcsolta a **biztonsági adatok (előzetes verzió)** felhasználói élményét, vagy hogy a szervezete saját egyéni portált adott meg. További információ az új biztonsági információkkal kapcsolatban: biztonsági adatok [(előzetes verzió) – áttekintés](user-help-security-info-overview.md). Ha többet szeretne megtudni a szervezet egyéni portálján, forduljon a szervezet ügyfélszolgálatához.
+>Ha a képernyőn megjelenő információk nem egyeznek meg a jelen cikkben ismertetett lépésekkel, az azt jelenti, hogy a rendszergazda bekapcsolta a **biztonsági adatok (előzetes verzió)** felhasználói élményét, vagy hogy a szervezete saját egyéni portált adott meg. További információ az új biztonsági információkkal kapcsolatban: biztonsági adatok [(előzetes verzió) – áttekintés](./security-info-setup-signin.md). Ha többet szeretne megtudni a szervezet egyéni portálján, forduljon a szervezet ügyfélszolgálatához.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>A további biztonsági ellenőrzés oldalának beolvasása
 
@@ -130,7 +130,7 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
 A [ **további biztonsági ellenőrzés** lapon](#to-get-to-the-additional-security-verification-page)válassza a **többtényezős hitelesítés visszaállítása korábban megbízható eszközökön**lehetőséget. Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 
