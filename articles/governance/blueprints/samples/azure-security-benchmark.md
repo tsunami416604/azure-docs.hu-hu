@@ -4,10 +4,10 @@ description: Az Azure-biztonsági teljesítményteszt tervmintájának áttekint
 ms.date: 06/02/2020
 ms.topic: sample
 ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84740378"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Az Azure Security benchmark tervének mintája
@@ -27,7 +27,7 @@ Az Azure-tervezetek Azure Security benchmark Blueprint-minta üzembe helyezésé
 > - A minta másolatának megjelölése **közzétettként**
 > - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
 
 ### <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 

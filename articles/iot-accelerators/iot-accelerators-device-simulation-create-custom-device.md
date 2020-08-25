@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "61450546"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
@@ -71,7 +71,7 @@ Adja meg az alábbi adatokat az űrlapon:
 
 Kattintson az **+ Adatpont hozzáadása** elemre a hőmérséklet- és páratartalom-adatpontok hozzáadásához az alábbi értékekkel:
 
-| Adatpont          | Viselkedés        | Minimális érték | Maximális érték | Unit (Egység) |
+| Adatpont          | Működés        | Minimális érték | Maximális érték | Unit (Egység) |
 | ------------------- | --------------- | --------- | --------- | ---- |
 | Hőmérséklet         | Véletlenszerű          | -50       | 100       | F    |
 | Páratartalom            | Véletlenszerű          | 0         | 100       | %    |
@@ -96,7 +96,7 @@ Bármelyik egyéni eszközmodellt törölheti. Egy eszközmodell törléséhez j
 
 ![Eszközmodell törlése](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte, hogyan hozhat létre, klónozhat és törölhet egyéni eszközmodelleket. Az eszközmodellekkel kapcsolatos további információkért tekintse meg az alábbi útmutatót:
 

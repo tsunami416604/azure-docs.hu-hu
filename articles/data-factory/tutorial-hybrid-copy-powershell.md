@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 6eec9c197f0bc17a5237a05e198b12cb769da89d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84194579"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
@@ -135,7 +135,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét (idézőjelek között, például így: `"adfrg"`), majd futtassa a parancsot. 
    
@@ -299,7 +299,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     f. Adja meg a felhasználónevet.
 
-    g. Adja meg a felhasználónévhez tartozó jelszót.
+    : Adja meg a felhasználónévhez tartozó jelszót.
 
     h. Annak ellenőrzéséhez, hogy az Integration Runtime kapcsolódik-e az SQL Serverhez, kattintson a **Teszt** gombra.  
     ![Sikeres csatlakozás](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
@@ -413,7 +413,7 @@ Ebben a lépésben összekapcsolja SQL Server példányát az adatelőállítóv
 
     > [!IMPORTANT]
     > - Válassza ki az SQL Server-példányhoz való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
-    > - Cserélje le az értékét **\<integration runtime name>** az Integration Runtime nevére.
+    > - Cserélje le az értékét  **\<integration runtime name>** az Integration Runtime nevére.
     > - A fájl mentése előtt cserélje le a,, **\<servername>** **\<databasename>** **\<username>** és **\<password>** értéket a SQL Server példányának értékeire.
     > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser*.
 
@@ -717,7 +717,7 @@ A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `a
 
 
 ## <a name="next-steps"></a>További lépések
-A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
+A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

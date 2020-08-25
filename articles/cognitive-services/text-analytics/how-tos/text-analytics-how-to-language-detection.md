@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84142384"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Példa: nyelv felismerése Text Analytics
@@ -270,6 +270,6 @@ Ebben a cikkben az Azure-Cognitive Services Text Analytics használatával megta
 
 ## <a name="see-also"></a>Lásd még
 
-* [Text Analytics áttekintése](../overview.md)
+* [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
 * [Újdonságok](../whats-new.md)

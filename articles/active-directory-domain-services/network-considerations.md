@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 307b1a6838c3a78c04ba6a36ffd52bd6b98aae04
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722823"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749613"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
 
@@ -104,7 +104,7 @@ A felügyelt tartomány hálózati erőforrásokat hoz létre az üzembe helyez�
 
 ## <a name="network-security-groups-and-required-ports"></a>Hálózati biztonsági csoportok és szükséges portok
 
-A [hálózati biztonsági csoport (NSG)](../virtual-network/virtual-network-vnet-plan-design-arm.md) olyan szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják egy Azure-beli virtuális hálózat forgalmának hálózati forgalmát. A hálózati biztonsági csoport akkor jön létre, ha olyan felügyelt tartományt telepít, amely olyan szabályokat tartalmaz, amelyek lehetővé teszik a szolgáltatás számára a hitelesítési és felügyeleti funkciókat. Ez az alapértelmezett hálózati biztonsági csoport ahhoz a virtuális hálózati alhálózathoz van társítva, amelyet a felügyelt tartomány üzembe helyez.
+A [hálózati biztonsági csoport (NSG)](../virtual-network/security-overview.md) olyan szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják egy Azure-beli virtuális hálózat forgalmának hálózati forgalmát. A hálózati biztonsági csoport akkor jön létre, ha olyan felügyelt tartományt telepít, amely olyan szabályokat tartalmaz, amelyek lehetővé teszik a szolgáltatás számára a hitelesítési és felügyeleti funkciókat. Ez az alapértelmezett hálózati biztonsági csoport ahhoz a virtuális hálózati alhálózathoz van társítva, amelyet a felügyelt tartomány üzembe helyez.
 
 A következő hálózati biztonsági csoportokra vonatkozó szabályokra van szükség ahhoz, hogy a felügyelt tartomány hitelesítő és felügyeleti szolgáltatásokat nyújtson. Ne szerkessze vagy törölje ezeket a hálózati biztonsági csoportokra vonatkozó szabályokat arra a virtuális hálózati alhálózatra, amelyet a felügyelt tartomány üzembe helyez.
 

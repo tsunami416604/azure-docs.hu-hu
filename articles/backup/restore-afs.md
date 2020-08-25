@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás visszaállítása
 description: Ebből a témakörből megtudhatja, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat a Azure Backup által létrehozott visszaállítási pontról a Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503642"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761848"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-fájlmegosztás visszaállítása
 
@@ -66,7 +66,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
     * **Eredeti hely**: állítsa vissza a teljes fájlmegosztást ugyanarra a helyre, mint az eredeti forrást.
     * **Másik hely**: állítsa vissza a teljes fájlmegosztást egy másik helyre, és tartsa meg az eredeti fájlmegosztást.
 
-#### <a name="restore-to-the-original-location"></a>Visszaállítás az eredeti helyre
+#### <a name="restore-to-the-original-location-full-share-recovery"></a>Visszaállítás az eredeti helyre (teljes megosztás helyreállítása)
 
 1. Válassza ki a **helyreállítási célhelyként**az **eredeti helyet** , és válassza ki, hogy az ütközések esetén ki kell-e hagyni vagy felülírja a megfelelő lehetőséget az **ütközések** legördülő listájának kiválasztásával.
 
@@ -74,7 +74,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
 
     ![Az indításhoz válassza a visszaállítás lehetőséget.](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Visszaállítás másik helyre
+#### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Visszaállítás másik helyre (teljes megosztás helyreállítása)
 
 1. Válasszon **másik helyet** a **helyreállítási célhelyként**.
 1. Válassza ki azt a cél Storage-fiókot, ahol vissza kívánja állítani a biztonsági másolatban szereplő tartalmat a **Storage-fiók** legördülő listájából.
@@ -106,7 +106,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
     * **Eredeti hely**: a kijelölt fájlok vagy mappák visszaállítása az eredeti forrással megegyező fájlmegosztást.
     * **Másik hely**: állítsa vissza a kijelölt fájlokat vagy mappákat egy másik helyre, és tartsa meg az eredeti fájlmegosztás tartalmát.
 
-#### <a name="restore-to-the-original-location"></a>Visszaállítás az eredeti helyre
+#### <a name="restore-to-the-original-location-item-level-recovery"></a>Visszaállítás az eredeti helyre (elemszintű helyreállítás)
 
 1. Válassza ki az **eredeti helyet** **helyreállítási célhelyként**, és válassza ki, hogy ki szeretné-e hagyni vagy felülírja-e az ütközéseket, ha az **ütközések** legördülő listában a megfelelő lehetőséget választja.
 
@@ -125,7 +125,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Az indításhoz válassza a visszaállítás lehetőséget.](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Visszaállítás másik helyre
+#### <a name="restore-to-an-alternate-location-item-level-recovery"></a>Visszaállítás másik helyre (elemszintű helyreállítás)
 
 1. Válasszon **másik helyet** a **helyreállítási célhelyként**.
 1. Válassza ki azt a cél Storage-fiókot, ahol vissza kívánja állítani a biztonsági másolatban szereplő tartalmat a **Storage-fiók** legördülő listájából.
@@ -162,6 +162,6 @@ A visszaállítási folyamat figyelését a Recovery Services-tárolóból is ny
 
     ![A visszaállított részletek megtekintése](./media/restore-afs/restore-details.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [kezelheti az Azure-fájlmegosztás biztonsági másolatait](manage-afs-backup.md).

@@ -8,7 +8,14 @@
   expanded: true
   items:
     - name: Az első Static Web Apps-alkalmazás létrehozása
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: Azure Portal
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: Alapelvek
   items:
     - name: API-támogatás az Azure Functions szolgáltatással

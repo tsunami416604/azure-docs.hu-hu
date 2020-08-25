@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83747423"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Android-alkalmazás migrálása a Google Mapsből
@@ -52,7 +52,7 @@ Ha az Androidhoz készült Google Maps SDK-val szeretne térképet megjeleníten
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  Vegyen fel egy Google Maps API-kulcsot a **Google \_ Maps \_ API. XML** fájljának alkalmazás szakaszában:
+1.  Vegyen fel egy Google Maps API-kulcsot a  **Google \_ Maps \_api.xml** fájl alkalmazás szakaszában.
     
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
@@ -182,7 +182,7 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
         > A Azure Maps Android SDK-t rendszeresen frissítjük és bővítettük. A legújabb Azure Maps verziószámának beszerzéséhez tekintse meg az [első lépések az Android Map Control](how-to-use-android-map-control-library.md) használatával című témakört. Azt is megteheti, hogy a verziószám a "0,2" értékről "0 +" értékre van állítva, hogy a kód mindig a legújabb verzióra mutasson.
     
     4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal**elemre.
-3. Térképi töredék hozzáadása a fő tevékenységhez (erőforrások \> elrendezési \> tevékenység \_ Main. xml):
+3. Térképi töredék hozzáadása a fő tevékenységhez (erőforrások \> elrendezése \> tevékenység \_main.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -495,7 +495,7 @@ Az egyéni rendszerképeket egy térképen ábrázoló pontok ábrázolására l
 <center>
 
 ![sárga gombostű-rendszerkép](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW \_ gombostű. png</center>
+YLW \_pushpin.png</center>
 
 Mindkét példában megjelenik a fenti rendszerkép az alkalmazások erőforrásainak megrajzolható mappájába.
 
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 A térképhez hasonló módon adhat hozzá egy csempe réteget, mint bármely más réteget. Olyan formázott URL-cím, amely x, y és nagyítási helyőrzőket tartalmaz; `{x}`, `{y}` `{z}` vagy annak a rétegnek a használatával kell eldönteni, hogy hová fér hozzá a csempék. Emellett a rétegek Azure Maps támogatás `{quadkey}` , `{bbox-epsg-3857}` és `{subdomain}` helyőrzők között. A csempék félig áttetszővé tételéhez a rendszer 0,8-es opacitási értéket használ. A fedettség és az átlátszóság, bár hasonló, fordított értékeket használjon. A két lehetőség közötti átalakításhoz vonja ki az értékét az első számból.
 
 > [!TIP]
-> A Azure Maps-ben a rétegek a többi réteg alá kerülnek, beleértve az alapszintű leképezési rétegeket is. Emellett gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempéket, hogy könnyen olvashatóak legyenek. A `map.layers.add` metódus egy második paramétert használ, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. A térképi feliratok alá tartozó csempe réteg beszúrásához a következő kódot használhatja:`map.layers.add(myTileLayer, "labels");`
+> A Azure Maps-ben a rétegek a többi réteg alá kerülnek, beleértve az alapszintű leképezési rétegeket is. Emellett gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempéket, hogy könnyen olvashatóak legyenek. A `map.layers.add` metódus egy második paramétert használ, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. A térképi feliratok alá tartozó csempe réteg beszúrásához a következő kódot használhatja: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

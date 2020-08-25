@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84235024"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modulok és kapcsolatok beállítása
@@ -35,7 +35,7 @@ Miután létrehozta a Azure Stream Analytics feladatot az Edge-vel beállított 
    -----|-----
    Esemény szerializálási formátuma|JSON
    Encoding|UTF-8
-   Esemény tömörítési típusa|None
+   Esemény tömörítési típusa|Nincsenek
 
 2. A **kimenet**létrehozásához kattintson a **+ Hozzáadás** elemre, és válassza a SQL Database lehetőséget. Töltse ki a részletek szakaszt az alábbi információk alapján.
 
@@ -77,7 +77,7 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
    _Mező_|_Érték_
    -------|-------
-   Name (Név)|Beállításjegyzék neve
+   Név|Beállításjegyzék neve
    Cím|Bejelentkezési kiszolgáló
    Felhasználónév|Felhasználónév
    Jelszó|Jelszó
@@ -128,6 +128,6 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
        }
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával](tutorial-run-ml-model-on-sql-edge.md)

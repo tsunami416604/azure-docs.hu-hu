@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079298"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761474"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 
@@ -25,13 +25,13 @@ A biztonsági másolati elemek rendelkezésre álló helyreállítási pontjai a
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-A `{containerName}` és a `{protectedItemName}` kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}`az "Azure".
+A `{containerName}` és a `{protectedItemName}` kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` az "Azure".
 
 A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére
 
 ### <a name="responses"></a>Válaszok
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -117,7 +117,7 @@ A helyreállítási pont a `{name}` fenti válaszban található mezővel azonos
 
 ## <a name="restore-disks"></a>Lemezek visszaállítása
 
-Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági másolati adatokból, akkor a lemezeket csak egy kiválasztott Storage-fiókba állíthatja vissza, és a követelmények szerint hozhat létre virtuális gépet ezekből a lemezekről. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem szabad zónába esnie. A lemezeket és a biztonsági másolatban szereplő virtuális gép konfigurációját ("vmconfig.json") a rendszer a megadott Storage-fiókban tárolja.
+Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági másolati adatokból, akkor a lemezeket csak egy kiválasztott Storage-fiókba állíthatja vissza, és a követelmények szerint hozhat létre virtuális gépet ezekből a lemezekről. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem lehet redundáns zónának lennie. A lemezeket és a biztonsági másolatban szereplő virtuális gép konfigurációját ("vmconfig.json") a rendszer a megadott Storage-fiókban tárolja.
 
 A visszaállítási lemezek elindítása *post* kérelem. Ha többet szeretne tudni a lemezek visszaállítása műveletről, tekintse meg a ["trigger Restore" REST API](/rest/api/backup/restores/trigger).
 
@@ -125,13 +125,13 @@ A visszaállítási lemezek elindítása *post* kérelem. Ha többet szeretne tu
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-A `{containerName}` és a `{protectedItemName}` kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}`az "Azure", a `{recoveryPointId}` pedig a `{name}` [fent](#example-response)említett helyreállítási pont mezője.
+A `{containerName}` és a `{protectedItemName}` kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` az "Azure", a `{recoveryPointId}` pedig a `{name}` [fent](#example-response)említett helyreállítási pont mezője.
 
 ### <a name="create-request-body"></a>Kérelem törzsének létrehozása
 
 Egy lemez Azure-beli virtuális gép biztonsági mentésből való visszaállításának elindításához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,7 +165,7 @@ A visszaállítási lemez indítása [aszinkron művelet](../azure-resource-mana
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadva    |
 

@@ -89,6 +89,8 @@
       href: ../../data-lake-analytics/security-baseline.md
     - name: A DDoS Protection biztonsági alapkonfigurációja
       href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Az Event Grid biztonsági alapkonfigurációja
+      href: ../../event-grid/security-baseline.md
     - name: Az Event Hubs biztonsági alapkonfigurációja
       href: ../../event-hubs/security-baseline.md
     - name: Az ExpressRoute biztonsági alapkonfigurációja

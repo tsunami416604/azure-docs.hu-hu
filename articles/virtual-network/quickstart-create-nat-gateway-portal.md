@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84711408"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Oktatóanyag: NAT-átjáró létrehozása a Azure Portal használatával
@@ -97,8 +97,8 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4** lehetőséget.
     | Termékváltozat | Válassza a **standard**lehetőséget.
-    | Name | Adja meg a **myPublicIP**. |
-    | Előfizetés | Válassza ki az előfizetését.|
+    | Név | Adja meg a **myPublicIP**. |
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
 
@@ -163,7 +163,7 @@ ssh <username>@<ip-address-destination>
 
 Most már készen áll a NAT szolgáltatás használatára.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 

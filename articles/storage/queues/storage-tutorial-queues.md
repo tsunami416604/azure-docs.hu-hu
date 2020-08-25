@@ -9,21 +9,21 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.openlocfilehash: 73bc21307ff0648b7e0aab7611e57f6fa60a806b
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84809563"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Oktatóanyag: az Azure Storage-várólisták használata a .NET-ben
 
 Az Azure Queue Storage olyan felhőalapú várólistákat valósít meg, amelyek lehetővé teszik az elosztott alkalmazások összetevői közötti kommunikációt. Minden üzenetsor fenntart egy listát azokról az üzenetekről, amelyeket a küldő összetevő hozzáadhat, és amelyet egy fogadó összetevő dolgoz fel. A várólista használatával az alkalmazás azonnal méretezhető az igények kielégítése érdekében. Ez a cikk az Azure Storage-üzenetsor használatának alapvető lépéseit mutatja be.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> - Azure Storage-fiók létrehozása
+> - Azure-tárfiók létrehozása
 > - Az alkalmazás létrehozása
 > - Az Azure-ügyfél kódtárainak hozzáadása
 > - Aszinkron kód támogatásának hozzáadása
@@ -32,7 +32,7 @@ Az oktatóanyag a következőket ismerteti:
 > - Üzenetek várólistára helyezése
 > - Üres üzenetsor törlése
 > - Parancssori argumentumok keresése
-> - Az alkalmazás létrehozása és futtatása
+> - Készítsen buildet és futtassa az alkalmazást
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Az oktatóanyag a következőket ismerteti:
 - Töltse le és telepítse a [.NET Core SDK](https://dotnet.microsoft.com/download) 3,1-es vagy újabb verzióját.
 - Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) a Kezdés előtt.
 
-## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
 Először hozzon létre egy Azure Storage-fiókot. A Storage-fiók létrehozásával kapcsolatos részletes útmutatóért lásd: [Storage-fiók létrehozása](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) . Ez egy külön lépés, amelyet a rendszer az előfeltételekhez tartozó ingyenes Azure-fiók létrehozása után hajt végre.
 
@@ -133,7 +133,7 @@ Hozzon létre egy **QueueApp**nevű .net Core-alkalmazást. Az egyszerűség ked
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-1. Mentse a **program.cs** fájlt.
+1. Mentse a **Program.cs** fájlt.
 
 ## <a name="add-support-for-asynchronous-code"></a>Aszinkron kód támogatásának hozzáadása
 
@@ -145,7 +145,7 @@ Mivel az alkalmazás Felhőbeli erőforrásokat használ, a kód aszinkron módo
    static async Task Main(string[] args)
    ```
 
-1. Mentse a **program.cs** fájlt.
+1. Mentse a **Program.cs** fájlt.
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
@@ -159,7 +159,7 @@ Adja hozzá a kapcsolati karakterláncot az alkalmazáshoz, hogy hozzáférhesse
 
 1. Váltson vissza a Visual Studio Code-ra.
 
-1. A **Main** metódusban cserélje le a `Console.WriteLine("Hello World!");` kódot a következő sorra, amely a környezeti változóból lekéri a kapcsolatok karakterláncát.
+1. A **Main**  metódusban cserélje le a `Console.WriteLine("Hello World!");` kódot a következő sorra, amely a környezeti változóból lekéri a kapcsolatok karakterláncát.
 
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -286,7 +286,7 @@ Itt látható a projekt teljes kódjának listája.
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 1. A projekt könyvtárának parancssorában futtassa a következő DotNet-parancsot a projekt felépítéséhez.
 
@@ -300,7 +300,7 @@ Itt látható a projekt teljes kódjának listája.
    dotnet run First queue message
    ```
 
-   A következő kimenet jelenik meg:
+   A következő kimenetnek kell megjelennie:
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message

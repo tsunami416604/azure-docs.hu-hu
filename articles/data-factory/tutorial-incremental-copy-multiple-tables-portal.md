@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85251148"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Az adatok növekményes betöltése a SQL Server több táblájából egy Azure SQL Database-adatbázisba az Azure Portal
@@ -34,7 +34,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * Társított szolgáltatások létrehozása. 
 > * Forrás-, fogadó- és küszöbadatkészletek létrehozása.
 > * Folyamat létrehozása, futtatása és figyelése.
-> * Itt tekintheti meg a művelet eredményét.
+> * Tekintse át az eredményeket.
 > * Adatok hozzáadása vagy frissítése a forrástáblákban.
 > * A folyamat újrafuttatása és monitorozása.
 > * A végső eredmények áttekintése.
@@ -65,7 +65,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
     ![Adatok növekményes betöltése](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
@@ -233,7 +233,7 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**: 
@@ -254,7 +254,7 @@ END
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás** lehetőségre.      
+8. Kattintson a **Create** (Létrehozás) gombra.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -410,7 +410,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
     ![ForEach tevékenység – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
-1. Válassza ki a **ForEach** tevékenységet a folyamatban, ha még nincs kiválasztva. Kattintson az **Edit** (Szerkesztés) gombra (ceruza ikon).
+1. Válassza ki a **ForEach** tevékenységet a folyamatban, ha még nincs kiválasztva. Kattintson a **Szerkesztés (ceruza ikon)** gombra.
 
 1. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, húzza a **keresési** tevékenységet a folyamat tervezőfelületére, és a **Név** mezőbe írja be a **LookupOldWaterMarkActivity** kifejezést.
 
@@ -477,7 +477,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Name | Típus | Érték | 
+        | Név | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -692,7 +692,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * Társított szolgáltatások létrehozása. 
 > * Forrás-, fogadó- és küszöbadatkészletek létrehozása.
 > * Folyamat létrehozása, futtatása és figyelése.
-> * Itt tekintheti meg a művelet eredményét.
+> * Tekintse át az eredményeket.
 > * Adatok hozzáadása vagy frissítése a forrástáblákban.
 > * A folyamat újrafuttatása és monitorozása.
 > * A végső eredmények áttekintése.

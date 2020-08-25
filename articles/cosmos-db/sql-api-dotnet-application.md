@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118882"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
@@ -46,7 +46,7 @@ Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik a következő erőforrásokkal:
 
-* Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -68,7 +68,7 @@ A következő szakaszban új ASP.NET Core MVC-alkalmazást hoz létre.
 
 1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget.
 
-1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki **ASP.net Core webalkalmazást** a C# nyelvhez. A folytatáshoz kattintson a **Tovább** gombra.
+1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki **ASP.net Core webalkalmazást** a C# nyelvhez. A folytatáshoz válassza a **Tovább** gombot.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Új ASP.NET Core webalkalmazás-projekt létrehozása":::
 
@@ -86,7 +86,7 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET Core MVC Framework-k
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. A **NuGet csomagkezelő eszközben**keresse meg és válassza ki a **Microsoft. Azure. Cosmos**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. A **NuGet csomagkezelő eszközben**keresse meg és válassza ki a **Microsoft. Azure. Cosmos**elemet. Válassza a **Telepítés** lehetőséget.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet-csomag telepítése":::
 
@@ -102,7 +102,7 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET Core MVC Framework-k
 
 Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC-alkalmazáshoz.
 
-### <a name="add-a-model"></a><a name="add-a-model"></a>Modell hozzáadása
+### <a name="add-a-model"></a><a name="add-a-model"></a> Modell hozzáadása
 
 1. A **megoldáskezelő**kattintson a jobb gombbal a **modellek** mappára, majd **Add**válassza az  >  **osztály**hozzáadása elemet.
 

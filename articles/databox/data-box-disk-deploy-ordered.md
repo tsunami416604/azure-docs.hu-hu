@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84266525"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk rendelése
@@ -41,7 +41,7 @@ A központi telepítése előtt végezze el a következő konfigurálási előfe
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Rendelkezik egy ügyfélszámítógéppel, amelyről lemásolhatja az adatokat. Az ügyfélszámítógépen:
-  * Futtasson egy [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+  * egy [támogatott operációs rendszernek](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) kell futnia;
   * Windows-ügyfél esetén további [szükséges szoftvereknek](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) telepítve kell lennie.  
 
 ## <a name="order-data-box-disk"></a>A Data Box Disk megrendelése
@@ -57,7 +57,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
    ![Keresse meg az Azure Data Box lehetőséget 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Kattintson a **Létrehozás**gombra.
+2. Kattintson a **Create** (Létrehozás) gombra.
 
 3. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre.
 

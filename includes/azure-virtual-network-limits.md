@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 832abd0d8a5b7fad126359edcc7de5019560a82f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82096005"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748851"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
 A következő korlátozások csak a **Azure Resource Manager** régiónként felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
@@ -100,7 +100,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Virtuális hálózatonkénti privát IP-címek |4 096 |4 096 |
 | Virtuális gép vagy szerepkör-példány hálózati adapterén egyidejű TCP-vagy UDP-forgalom |500 000, legfeljebb 1 000 000 kettő vagy több hálózati adapter számára. |500 000, legfeljebb 1 000 000 kettő vagy több hálózati adapter számára. |
 | Hálózati biztonsági csoportok (NSG) |200 |200 |
-| NSG-ben szereplő NSG-szabályok |1,000 |1,000 |
+| NSG-ben szereplő NSG-szabályok |200 |1,000 |
 | Felhasználó által definiált útválasztási táblák |200 |200 |
 | Felhasználó által definiált útvonalak útválasztási táblázatban |400 |400 |
 | Nyilvános IP-címek (dinamikus) |500 |500 |

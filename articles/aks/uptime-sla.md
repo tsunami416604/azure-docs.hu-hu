@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: cc23e32db71439067421a9be8b18a1827515bd9c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563279"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749116"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -25,9 +25,8 @@ Az ügyfelek továbbra is létrehozhatnak korlátlan számú ingyenes fürtöt 9
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A rendelkezésre állási SLA olyan nyilvános régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+A rendelkezésre állási SLA nyilvános régiókban és Azure Government-régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* A Azure Government jelenleg nem támogatott.
 * Az Azure China 21Vianet jelenleg nem támogatott.
 
 ## <a name="limitations"></a>Korlátozások
@@ -122,7 +121,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Availability Zones][availability-zones] használatával növelheti a magas rendelkezésre állást az AK-fürt számítási feladataival.
 

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706205"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761865"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány kapcsolati architektúrája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,7 +89,12 @@ Az ügyfél biztonsági és kezelhetőségi követelményeinek kezeléséhez az 
 
 A szolgáltatással segített alhálózat konfigurálásával a felhasználó teljes mértékben felügyeli az adatok (TDS) forgalmát, míg az SQL felügyelt példány feladata, hogy biztosítsa a felügyeleti forgalom zavartalan áramlását az SLA teljesítése érdekében.
 
-A szolgáltatással segített alhálózat konfigurációja a virtuális hálózati alhálózati [delegálási](../../virtual-network/subnet-delegation-overview.md) szolgáltatásra épül, és lehetővé teszi az automatikus hálózati konfiguráció felügyeletét és a szolgáltatási végpontok engedélyezését. A szolgáltatás-végpontok a virtuális hálózati tűzfalszabályok konfigurálására használhatók a biztonsági mentéseket és naplókat tároló fiókoknál.
+A szolgáltatással segített alhálózat konfigurációja a virtuális hálózati alhálózati [delegálási](../../virtual-network/subnet-delegation-overview.md) szolgáltatásra épül, és lehetővé teszi az automatikus hálózati konfiguráció felügyeletét és a szolgáltatási végpontok engedélyezését. 
+
+A szolgáltatás-végpontok a virtuális hálózati tűzfalszabályok konfigurálására használhatók a biztonsági mentéseket és naplókat tároló fiókoknál. A szolgáltatás-végpontok engedélyezése esetén az ügyfeleknek javasoljuk, hogy olyan [privát hivatkozást](../../private-link/private-link-overview.md) használjanak, amely további biztonságot nyújt a szolgáltatási végpontokon.
+
+> [!IMPORTANT]
+> A felügyeleti sík konfigurációjának sajátosságai miatt a szolgáltatással segített alhálózat konfigurációja nem engedélyezte a szolgáltatási végpontokat az országos felhőkben. 
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -106,7 +111,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Name       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -116,14 +121,14 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Name       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával
 
-|Name|Címelőtag|Következő ugrás|
+|Név|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -294,7 +299,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 |Mi-204-79-180-24-nexthop-Internet|204.79.180.0/24|Internet|
 ||||
 
-\*A MI ALHÁLÓZAT az alhálózat IP-címtartományt jelöli x. x. x. x/y formátumban. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
+\* A MI ALHÁLÓZAT az alhálózat IP-címtartományt jelöli x. x. x. x/y formátumban. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
 
 Emellett hozzáadhat bejegyzéseket az útválasztási táblázathoz, hogy átirányítsa a helyszíni magánhálózati IP-tartományokat a virtuális hálózati átjáró vagy a virtuális hálózati berendezés (NVA) használatával.
 
@@ -326,15 +331,15 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármely              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 |health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -342,7 +347,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 > [!IMPORTANT]
 > Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440 és 1452 portokhoz, valamint egy kimenő szabályt a következő portokhoz: 443 és 12000. A felügyelt SQL-példányok Azure Resource Manager központi telepítéseken keresztüli kiépítése meghiúsul, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz a hibakód miatt `VnetSubnetConflictWithIntendedPolicy` .
 
-\*A MI ALHÁLÓZAT az alhálózat IP-címtartományt jelöli x. x. x. x/y formátumban. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
+\* A MI ALHÁLÓZAT az alhálózat IP-címtartományt jelöli x. x. x. x/y formátumban. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
 
 > [!IMPORTANT]
 > Habár a kötelező bejövő biztonsági szabályok engedélyezik a forgalmat a 9000, 9003, 1438, 1440 és 1452 portok _bármely_ forrásáról, ezeket a portokat egy beépített tűzfal védi. További információ: [a felügyeleti végponti címek meghatározása](management-endpoint-find-ip-address.md).
@@ -352,7 +357,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
-|Name|Címelőtag|Következő ugrás|
+|Név|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

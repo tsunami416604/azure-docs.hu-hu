@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Node. js webes API-hoz való hozzáférés engedélyezése asztali alkalmazásból'
-description: Útmutató a Node. js-alapú webes API-k és a .NET Desktop-alkalmazásokból való meghívásához a Active Directory B2C használatával.
+title: 'Oktatóanyag: hozzáférés biztosítása Node.js webes API-hoz egy asztali alkalmazásból'
+description: Útmutató a Node.js webes API-k Active Directory B2C való használatához és a .NET Desktop-alkalmazásokból való meghívásához.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84298847"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával
 
-Ez az oktatóanyag bemutatja, hogyan hívhat meg Azure Active Directory B2C (Azure AD B2C) által védett Node. js webes API-t egy Windows megjelenítési alaprendszer (WPF) asztali alkalmazásból, amelyet Azure AD B2C is véd.
+Ez az oktatóanyag bemutatja, hogyan hívhat meg egy Azure Active Directory B2C (Azure AD B2C) által védett Node.js webes API-t egy Windows megjelenítési alaprendszer (WPF) asztali alkalmazásból, amelyet Azure AD B2C is véd.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -51,7 +51,7 @@ A védett webes API-k natív ügyfélalkalmazások általi meghívásához meg k
 
 Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1*nevű natív ügyfélalkalmazás. A következő lépésekkel konfigurálhatja, hogy a natív alkalmazás regisztrálása az előző szakaszban *webapi1* elérhető API-hatókörökkel történjen. Ez lehetővé teszi, hogy az asztali alkalmazás olyan hozzáférési jogkivonatot szerezzen be Azure AD B2Ctól, amelyet a webes API használhat az erőforrásokhoz való hatókörön belüli hozzáférés ellenőrzéséhez és biztosításához. Az oktatóanyag későbbi részében az asztali alkalmazás és a webes API-kód is konfigurálható és futtatható.
 
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
@@ -92,16 +92,16 @@ A cikk előfeltétele, hogy egy [WPF asztali alkalmazást](https://github.com/Az
     1. Cserélje le a változó értékét `ApiScopes` a **demo. Read** hatókör meghatározásakor korábban rögzített értékre.
     1. Cserélje le a változó értékét `ApiEndpoint` a korábban feljegyzett **átirányítási URI-ra** , amikor a bérlőben regisztrálta a webes API-t (például *webapi1*).
 
-    Íme egy példa:
+    Bemutatunk egy példát:
 
     ```csharp
     public static string[] ApiScopes = { "https://contosob2c.onmicrosoft.com/api/demo.read" };
     public static string ApiEndpoint = "http://localhost:5000";
     ```
 
-### <a name="get-and-update-the-nodejs-api-sample"></a>A Node. js API-minta beolvasása és frissítése
+### <a name="get-and-update-the-nodejs-api-sample"></a>A Node.js API-minta beolvasása és frissítése
 
-Ezután szerezze be a Node. js webes API-kód mintát a GitHubról, és konfigurálja úgy, hogy az Azure AD B2C-bérlőben regisztrált webes API-t használja.
+Ezután szerezze be a Node.js webes API-kód mintát a GitHubról, és konfigurálja úgy, hogy az Azure AD B2C-bérlőben regisztrált webes API-t használja.
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
@@ -128,7 +128,7 @@ A mintául szolgáló Node.js webes API a Passport.js kódtárat használja arra
 
 ## <a name="run-the-samples"></a>A minták futtatása
 
-### <a name="run-the-nodejs-web-api"></a>A Node. js webes API futtatása
+### <a name="run-the-nodejs-web-api"></a>A Node.js webes API futtatása
 
 1. Indítsa el a Node.js parancssort.
 2. Váltson arra a könyvtárra, amelyben a Node.js-minta található. Például: `cd c:\active-directory-b2c-javascript-nodejs-webapi`

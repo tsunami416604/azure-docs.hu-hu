@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "83774065"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge-sel
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet számítási szerepkört konfigur
 
 Ez az eljárás körülbelül 10 – 15 percet is igénybe vehet.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -53,7 +53,7 @@ A számítás Azure Stack Edge-ben való konfigurálásához létre kell hoznia 
     |Mező  |Érték  |
     |---------|---------|
     |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint a rendszer egy standard szintű (S1) szintet használ IoT-erőforrás létrehozásához. Az ingyenes szintű IoT erőforrás használatához hozzon létre egyet, majd válassza ki a meglévő erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
-    |Name     |Adja meg a IoT Hub erőforrás nevét.         |
+    |Név     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -105,13 +105,13 @@ Hozzáadhat egy egyéni vagy egy előre elkészített modult. Ezen a peremháló
 
 Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet a [C# modul fejlesztése a Azure stack Edge számára](azure-stack-edge-create-iot-edge-module.md)című témakörben hozott létre. Ez az egyéni modul a peremhálózati eszköz peremhálózati helyi megosztásának fájljait veszi át, és áthelyezi őket egy peremhálózati (Felhőbeli) megosztásra az eszközön. A felhőalapú megosztás ezután leküldi a fájlokat a Felhőbeli megosztáshoz társított Azure Storage-fiókba.
 
-1. Ugrás az **Edge-számításra > első lépések**. A **modulok hozzáadása** csempén válassza ki a forgatókönyv típusát **egyszerűként**. Válassza a **Hozzáadás** lehetőséget.
+1. Ugrás az **Edge-számításra > első lépések**. A **modulok hozzáadása** csempén válassza ki a forgatókönyv típusát **egyszerűként**. Válassza a **Hozzáadás** elemet.
 2. A **modul konfigurálása és hozzáadása panelen adja** meg a következő értékeket:
 
     
     |Mező  |Érték  |
     |---------|---------|
-    |Name (Név)     | A modul egyedi neve. Ez a modul egy Docker-tároló, amelyet a Azure Stack Edge-hez társított IoT Edge eszközre telepíthet.        |
+    |Név     | A modul egyedi neve. Ez a modul egy Docker-tároló, amelyet a Azure Stack Edge-hez társított IoT Edge eszközre telepíthet.        |
     |Rendszerkép URI-ja     | A modulhoz tartozó tároló rendszerképéhez tartozó képuri.        |
     |Szükséges hitelesítő adatok     | Ha be van jelölve, a rendszer a felhasználónevet és a jelszót használja a modulok megfelelő URL-címmel való lekéréséhez.        |
     |Bemeneti megosztás     | Válasszon egy bemeneti megosztást. Ebben az esetben a peremhálózat helyi megosztása a bemeneti megosztás. Az itt használt modul áthelyezi a fájlokat a peremhálózati helyi megosztásból egy peremhálózati megosztásba, ahol azokat a rendszer feltölti a felhőbe.        |
@@ -122,7 +122,7 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
 
     ![Modul hozzáadása és konfigurálása](./media/azure-stack-edge-deploy-configure-compute/add-module-1.png)
 
-3. Válassza a **Hozzáadás** lehetőséget. A modul hozzá lesz adva. A **modul hozzáadása** csempére vonatkozó frissítések jelzik, hogy a modul telepítve van. 
+3. Válassza a **Hozzáadás** elemet. A modul hozzá lesz adva. A **modul hozzáadása** csempére vonatkozó frissítések jelzik, hogy a modul telepítve van. 
 
     ![Telepített modul](./media/azure-stack-edge-deploy-configure-compute/add-module-2.png)
 
