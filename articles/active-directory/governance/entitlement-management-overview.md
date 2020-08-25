@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25c43281ac213137d4a2ef39e76b3f13ffdad746
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034402"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783892"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -149,7 +149,7 @@ Prémium szintű Azure AD P2-licencek **nem** szükségesek a következő felada
 - Nem szükségesek licencek olyan felhasználók számára, akik delegáltak felügyeleti feladatokat, például a katalógus létrehozóját, a katalógus tulajdonosát és a hozzáférés csomagkezelő kezelőjét.
 - Nincs szükség licencre azon vendégek számára **, akik hozzáférési csomagokat igényelhetnek** , de **nem** igényelnek hozzáférési csomagot.
 
-Az Azure AD B2B szolgáltatással legfeljebb 5 vendéget hívhat meg, ha minden fizetős prémium szintű Azure AD P2-licenccel rendelkezik, amelyet a felhasználó (alkalmazottai) számára vásárolt. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+Az Azure AD B2B szolgáltatással legfeljebb 5 vendéget hívhat meg, ha minden fizetős prémium szintű Azure AD P2-licenccel rendelkezik, amelyet a felhasználó (alkalmazottai) számára vásárolt. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../external-identities/licensing-guidance.md).
 
 További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 
@@ -162,7 +162,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2000 |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
 - [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan teszi biztonságosabbá a biztonsági mentések
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503540"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763694"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Áltörlés virtuális gépekhez
 
@@ -25,7 +25,7 @@ A Soft delete jelenleg az USA nyugati középső régiójában támogatott Kelet
 
 ## <a name="soft-delete-for-vms-using-azure-portal"></a>Soft Delete a virtuális gépekhez Azure Portal használatával
 
-1. Egy virtuális gép biztonsági mentési adatmennyiségének törléséhez le kell állítani a biztonsági mentést. A Azure Portal lépjen a Recovery Services-tárolóba, kattintson a jobb gombbal a biztonsági mentési elemre, és válassza a **biztonsági mentés leállítása**lehetőséget.
+1. Egy virtuális gép biztonsági mentési adatmennyiségének törléséhez le kell állítani a biztonsági mentést. A Azure Portal nyissa meg a Recovery Services-tárolót, kattintson a jobb gombbal a biztonsági másolat elemre, és válassza a **biztonsági mentés leállítása**lehetőséget.
 
    ![Azure Portal biztonsági másolati elemek képernyőképe](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
@@ -38,7 +38,7 @@ A Soft delete jelenleg az USA nyugati középső régiójában támogatott Kelet
    ![Képernyőkép a Azure Portalről, a virtuális gép a Soft delete állapotában](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > Ha a tárolóban nem találhatók meg a helyreállított biztonsági mentési elemek, a tár ekkor nem törölhető. A biztonsági mentési elemek végleges törlését követően próbálja meg a tár törlését, és nincs olyan elem, amely a tárolóban marad.
+   > Ha a tárolóban nem találhatók meg a helyreállított biztonsági mentési elemek, a tár ekkor nem törölhető. A biztonsági mentési elemek végleges törlését követően próbálja meg törölni a tárolót, és nincs olyan elem, amely nem található a tárolóban.
 
 4. A helyreállított virtuális gép visszaállításához először törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted VM elemet, majd válassza a **Törlés**visszavonása lehetőséget.
 
@@ -110,13 +110,13 @@ A biztonsági mentési elemek "DeleteState" állapota "NotDeleted" lesz. A véde
 ## <a name="soft-delete-for-vms-using-rest-api"></a>Soft Delete a virtuális gépekhez REST API használatával
 
 - Törölje a biztonsági másolatokat a REST API az [itt](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)említett módon.
-- Ha a felhasználó vissza kívánja vonni ezeket a törlési műveleteket, tekintse meg az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)említett lépéseket.
+- Ha a felhasználó vissza kívánja vonni ezeket a törlési műveleteket, tekintse meg az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)említett lépéseket.
 
 ## <a name="how-to-disable-soft-delete"></a>A Soft delete letiltása
 
 A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és a törlés és az ismételt védelem (például egy tesztkörnyezetben) esetében nem várhatja el a szükséges 14 napot, az egyetlen olyan körülmény, amelyben érdemes megfontolni a Soft delete letiltását. A Soft delete letiltásával kapcsolatos utasításokért lásd: a [Soft delete engedélyezése és letiltása](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Soft delete [gyakori kérdéseinek](backup-azure-security-feature-cloud.md#frequently-asked-questions) áttekintése
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

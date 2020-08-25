@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a77bb5211d13f9b0566f4226163918a5310287bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075730"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763133"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Táblázatok particionálása a szinapszis SQL-készletben
 
@@ -30,7 +30,7 @@ A particionálás az adatkarbantartás és a lekérdezési teljesítmény előny
 
 ### <a name="benefits-to-loads"></a>Betöltési előnyök
 
-A szinapszis SQL-készlet particionálásának elsődleges előnye, hogy a partíciók törlésével, a váltással és az összevonással növeli az adatterhelés hatékonyságát és teljesítményét. A legtöbb esetben az adatok egy dátum oszlopra vannak particionálva, amely szorosan kötődik ahhoz a sorrendhez, amelyben az adatok betöltődik az adatbázisba. A partíciók használatának egyik legnagyobb előnye az, hogy a tranzakciók naplózásának elkerüléséhez az adatmennyiséget. Noha egyszerűen beillesztheti, frissítheti vagy törölheti az adatvesztést, némi gondolkodással és erőfeszítéssel, ami jelentősen növelheti a teljesítményt a betöltési folyamat során.
+A szinapszis SQL-készlet particionálásának elsődleges előnye, hogy a partíciók törlésével, a váltással és az összevonással növeli az adatterhelés hatékonyságát és teljesítményét. A legtöbb esetben az adatok egy dátum oszlopra vannak particionálva, amely szorosan kötődik ahhoz a sorrendhez, amelyben az adatok betöltődik az adatbázisba. Az egyik legnagyobb előnye, hogy a partíciók használatával tartja karban az adattárolást, így elkerülhető a tranzakciók naplózása. Noha egyszerűen beillesztheti, frissítheti vagy törölheti az adatvesztést, némi gondolkodással és erőfeszítéssel, ami jelentősen növelheti a teljesítményt a betöltési folyamat során.
 
 A partíciós váltással gyorsan eltávolíthatja vagy lecserélheti a táblák egy szakaszát.  Előfordulhat például, hogy egy értékesítési tény táblázata csak az elmúlt 36 hónapra vonatkozó adatforgalmat tartalmaz. Minden hónap végén az értékesítési adatok legrégebbi hónapja törlődik a táblából.  Ezt az adattörlési utasítás segítségével törölheti a legrégebbi hónapra vonatkozó adatok törléséhez. 
 
@@ -303,7 +303,7 @@ Ha el szeretné kerülni a tábla definícióját a forrás-ellenőrzési rendsz
     ;
     ```
 
-1. `SPLIT`a tábla a telepítési folyamat részeként:
+1. `SPLIT` a tábla a telepítési folyamat részeként:
 
     ```sql
      -- Create a table containing the partition boundaries

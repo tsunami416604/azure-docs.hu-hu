@@ -2,18 +2,18 @@
 title: Azure Stack Edge & Azure Data Box Gateway 1911 kibocsátási megjegyzések | Microsoft Docs
 description: Az Azure Stack Edge és a Data Box Gateway 1911-es verziójának futtatásával kapcsolatos kritikus nyitott problémákat és megoldásokat ismerteti.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 03/13/2020
-ms.author: v-grpr
-ms.openlocfilehash: c22ba44c3d567d363b1fec702fecb81ca203a48b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 4c5c6b423c9013719a703b5112e2a897d35454d1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322469"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783960"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Azure Stack Edge és Azure Data Box Gateway 1911 kibocsátási megjegyzései
 
@@ -37,7 +37,7 @@ Nincsenek új funkciók a 1911 kiadásban, csak hibajavítások.
 
 Ebben a kiadásban nem jelennek meg új problémák a kiadásban. Az összes megjelent kiadási probléma az előző kiadásokból lett végrehajtva. Ha meg szeretné tekinteni az ismert problémák listáját, lépjen [a ga kiadás ismert problémáira](data-box-gateway-release-notes.md#known-issues-in-ga-release).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés az Azure Stack Edge üzembe helyezésére](azure-stack-edge-deploy-prep.md)
 - [Az Azure Data Box Gateway üzembe helyezésének előkészítése](data-box-gateway-deploy-prep.md)

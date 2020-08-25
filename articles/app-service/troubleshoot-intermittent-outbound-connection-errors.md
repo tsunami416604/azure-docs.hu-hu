@@ -6,19 +6,19 @@ manager: barbkess
 ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
-ms.custom: security-recommendations
-ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: security-recommendations,fasttrack-edit
+ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447905"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763558"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
 Ez a cikk segítséget nyújt az időszakos kapcsolati hibák és a [Azure app Service](https://docs.microsoft.com/azure/app-service/overview)kapcsolódó teljesítménybeli problémák elhárításában. Ez a témakör további információkat nyújt a és a hibaelhárítási módszereiről, valamint a forrásoldali hálózati fordítási (SNAT) portok kimerítéséről. Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN Azure-beli szakértőkkel és a stack overflow fórumokkal](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Az Azure app Service-ben üzemeltetett alkalmazások és függvények a következő tünetek közül egyet vagy többet mutathatnak:
 
@@ -120,7 +120,7 @@ Más környezetek esetén tekintse át a szolgáltatót vagy az illesztőprogram
 * A [terhelési tesztnek](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) valós adatátviteli sebességgel kell szimulálnia a valós globális adatértékeket. Az alkalmazások és függvények tesztelése a valós terhelések alatt az idő előtt azonosíthatja és megoldhatja a SNAT-portok kimerülésével kapcsolatos problémákat.
 * Győződjön meg arról, hogy a háttér-szolgáltatások gyorsan adnak vissza válaszokat. A Azure SQL Database kapcsolatos teljesítménnyel kapcsolatos problémák elhárításához tekintse át az [Intelligent Insights-Azure SQL Database teljesítményproblémák elhárítása](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)című témakört.
 * Bővítse a App Service tervet több példányra. További információ a skálázásról: [alkalmazások méretezése Azure app Serviceban](https://docs.microsoft.com/azure/app-service/manage-scale-up). Az App Service-csomagokban minden feldolgozói példány több SNAT-portot foglal le. Ha több példányon terjeszti a használatot, a SNAT-portok használata a 100-as kimenő kapcsolatok ajánlott korlátja alá kerül, egyedi távoli végponton.
-* Érdemes lehet áthelyezni [app Service Environment (](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)beadási), ahol egyetlen kimenő IP-címet adott meg, és a kapcsolatok és SNAT portok korlátai jóval magasabbak.
+* Érdemes lehet áthelyezni [app Service Environment (](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)beadási), ahol egyetlen kimenő IP-címet adott meg, és a kapcsolatok és SNAT portok korlátai jóval magasabbak. A beosztásban a SNAT-portok száma az [Azure Load Balancer előfoglalási táblázatán](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable) alapul – így például az 1-50-es feldolgozói példányokkal rendelkező központnak 1024 előre lefoglalt 512 51-100 portja van.
 
 A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 

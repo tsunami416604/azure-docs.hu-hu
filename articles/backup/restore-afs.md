@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás visszaállítása
 description: Ebből a témakörből megtudhatja, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat a Azure Backup által létrehozott visszaállítási pontról a Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761848"
+ms.locfileid: "88762823"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-fájlmegosztás visszaállítása
 
@@ -59,7 +59,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
     ![Visszaállítási pont kiválasztása](./media/restore-afs/restore-point.png)
 
     >[!NOTE]
-    >Alapértelmezés szerint a **visszaállítási pont kiválasztása** ablaktábla felsorolja az elmúlt 30 nap visszaállítási pontjait. Ha egy adott időtartam alatt létrehozott visszaállítási pontokat szeretné megtekinteni, adja meg a tartományt a megfelelő **kezdési** és **befejezési időpontot** kiválasztva, majd kattintson a **frissítés** gombra.
+    >Alapértelmezés szerint a **visszaállítási pont kiválasztása** ablaktábla felsorolja az elmúlt 30 nap visszaállítási pontjait. Ha egy adott időtartam alatt létrehozott visszaállítási pontokat szeretné megtekinteni, adja meg a tartományt a megfelelő **kezdési** és **befejezési időpont** kiválasztásával, majd kattintson a **frissítés** gombra.
 
 1. A következő lépés a **visszaállítás helyének**kiválasztása. A **Helyreállítás célhelye** szakaszban adja meg, hogy hol vagy hogyan szeretné visszaállítani az adatgyűjtést. A váltógomb használatával válassza ki a következő két lehetőség egyikét:
 

@@ -1,15 +1,15 @@
 ---
 title: Blockchain-alkalmazás létrehozása – Azure Blockchain Workbench
 description: Útmutató blockchain-alkalmazások létrehozásához az Azure Blockchain Workbench előzetes verziójához.
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073103"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784028"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Oktatóanyag: blockchain-alkalmazás létrehozása az Azure Blockchain Workbenchhez
 
@@ -40,7 +40,7 @@ Kövesse az alkalmazásfájlok létrehozásához szükséges lépéseket, vagy [
 
 ## <a name="configuration-file"></a>Konfigurációs fájl
 
-A konfigurációs metaadatok a blockchain alkalmazás magas szintű munkafolyamatait és interakciós modelljét határozzák meg. A konfigurációs metaadatok a blockchain alkalmazás munkafolyamat-szakaszainak és interakciós modelljének felelnek meg.
+A konfigurációs metaadatok a blockchain alkalmazás magas szintű munkafolyamatait és interakciós modelljét határozzák meg. A konfigurációs metaadatok a blockchain alkalmazás munkafolyamat-szakaszainak és interakciós modelljének felelnek meg. A konfigurációs fájlok tartalmával kapcsolatos további információkért tekintse meg az [Azure Blockchain munkafolyamat-konfigurációjának referenciáját](configuration.md).
 
 1. A kedvenc szerkesztőjében hozzon létre egy nevű fájlt `HelloBlockchain.json` .
 2. Adja hozzá a következő JSON-t a blockchain alkalmazás konfigurációjának definiálásához.
@@ -212,8 +212,6 @@ Az alkalmazás szerepkörei szakasz azokat a felhasználói szerepköröket hat�
 
 A munkafolyamatok határozzák meg a szerződés egy vagy több szakaszát és műveletét. A kérelem-válasz forgatókönyvben a munkafolyamat első fázisa (állapot) egy kérelmező (szerepkör) egy kérés (függvény) elküldéséhez műveletet (átmenetet) igényel. A következő szakasz (állapot) egy válaszadó (szerepkör) a válasz (függvény) elküldéséhez műveletet (átmenetet) igényel. Az alkalmazás munkafolyamata olyan tulajdonságokat, függvényeket és állapotokat tartalmazhat, amelyek a szerződések folyamatát írják le.
 
-A konfigurációs fájlok tartalmával kapcsolatos további információkért tekintse meg az [Azure Blockchain munkafolyamat-konfigurációjának referenciáját](configuration.md).
-
 ## <a name="smart-contract-code-file"></a>Intelligens szerződési kód fájlja
 
 Az intelligens szerződések a blockchain alkalmazás üzleti logikáját jelentik. Az Blockchain Workbench jelenleg a Blockchain-főkönyvhez tartozó Ethereum támogatja. A Ethereum a [szilárdságot](https://solidity.readthedocs.io) programozási nyelvként használja az intelligens szerződések önérvényesítő üzleti logikájának írásához.
@@ -281,7 +279,7 @@ Adja hozzá a konstruktor függvényt a szerződéséhez az `HelloBlockchain.sol
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Függvények
 
 A függvények az üzleti logika végrehajtható egységei egy adott szerződésen belül. A függvény kötelező paraméterei a konfigurációs fájlban a Function paraméterként vannak definiálva. A paraméterek száma, sorrendje és típusa mindkét fájlban egyeznie kell. A függvények a konfigurációs fájlban lévő Blockchain Workbench-munkafolyamatban lévő átmenetekhez vannak társítva. Az átmenet olyan művelet, amely az alkalmazás munkafolyamatainak a Szerződés által meghatározott következő szakaszába való áthelyezésre szolgál.
 
@@ -346,7 +344,7 @@ Alkalmazások tagjainak hozzáadása az alkalmazáshoz a szerződések elindít�
 
 A felhasználók Blockchain Workbenchben való kezelésével kapcsolatos további információkért lásd: [felhasználók kezelése az Azure Blockchain workbenchben](manage-users.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban egy alapszintű kérést és egy gyorsreagáló alkalmazást hozott létre. Az alkalmazás használatának megismeréséhez folytassa a következő útmutatóval.
 

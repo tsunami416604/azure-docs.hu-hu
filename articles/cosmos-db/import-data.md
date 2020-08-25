@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118763"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Oktatóanyag: az adatáttelepítési eszköz használata az adatai áttelepítésére Azure Cosmos DB
@@ -74,7 +74,7 @@ Az eszköz telepítése után megkezdheti az adatok importálását. Milyen típ
 * [CSV-fájlok](#CSV)
 * [Azure Table storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
-* [BLOB](#BlobImport)
+* [Blob](#BlobImport)
 * [Azure Cosmos-tárolók](#SQLSource)
 * [HBase](#HBaseSource)
 * [Azure Cosmos DB – tömeges importálás](#SQLBulkTarget)

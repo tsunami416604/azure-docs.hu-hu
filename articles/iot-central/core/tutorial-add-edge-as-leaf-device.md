@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 1b90364bee42b31843ac8d84f5a692a3eeb6d3f1
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84417578"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
@@ -21,7 +21,7 @@ ms.locfileid: "84417578"
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat és adhat hozzá egy Azure IoT Edge-eszközt az Azure IoT Central-alkalmazáshoz. Az oktatóanyag egy IoT Edge-kompatibilis linuxos virtuális gépet (VM) használ egy IoT Edge-eszköz szimulálására. A IoT Edge eszköz szimulált környezeti telemetria létrehozó modult használ. A telemetria a IoT Central alkalmazásban található irányítópulton tekintheti meg.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Eszköz sablonjának létrehozása IoT Edge eszközhöz
@@ -34,9 +34,9 @@ Fejezze be az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-c
 
 Az oktatóanyag lépéseinek elvégzéséhez aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-Töltse le a IoT Edge manifest-fájlt a GitHubról. Kattintson a jobb gombbal a következő hivatkozásra, majd válassza a **hivatkozás mentése másként**: [EnvironmentalSensorManifest. JSON lehetőséget.](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
+Töltse le a IoT Edge manifest-fájlt a GitHubról. Kattintson a jobb gombbal a következő hivatkozásra, majd válassza a **hivatkozás mentése másként**: [EnvironmentalSensorManifest.jsbekapcsolva](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json) lehetőséget.
 
 ## <a name="create-device-template"></a>Eszköz sablonjának létrehozása
 
@@ -50,7 +50,7 @@ Eszköz sablonjának létrehozása IoT Edge jegyzékfájlból:
 
 1. A **sablon típusának kiválasztása** lapon válassza a **Azure IoT Edge** csempét. Ezután válassza a **Tovább: testreszabás**lehetőséget.
 
-1. Az **Azure IoT Edge központi telepítési jegyzék feltöltése** lapon adja meg a *környezeti érzékelő peremhálózati eszközét* az eszköz sablonjának neveként. Ezután válassza a **Tallózás** lehetőséget a korábban letöltött **EnvironmentalSensorManifest. JSON** feltöltéséhez. Ezután válassza a **Tovább: felülvizsgálat**lehetőséget.
+1. Az **Azure IoT Edge központi telepítési jegyzék feltöltése** lapon adja meg a *környezeti érzékelő peremhálózati eszközét* az eszköz sablonjának neveként. Ezután válassza a **Tallózás** lehetőséget a korábban letöltött **EnvironmentalSensorManifest.js** feltöltéséhez. Ezután válassza a **Tovább: felülvizsgálat**lehetőséget.
 
 1. Az **Áttekintés** lapon válassza a **Létrehozás**lehetőséget.
 
@@ -120,7 +120,7 @@ Ahhoz, hogy hozzáadjon egy olyan eszközt, amely a **környezeti érzékelők p
 
 Navigáljon a **környezeti érzékelő Edge-eszköz** sablonhoz, és válassza a **Közzététel**lehetőséget. Az **eszköz sablonjának közzététele az alkalmazás** panelen válassza a **Közzététel** lehetőséget a sablon közzétételéhez:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Az eszköz közzétételének közzététele":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Az eszközsablon közzététele":::
 
 ## <a name="add-iot-edge-device"></a>IoT Edge eszköz hozzáadása
 
@@ -140,11 +140,11 @@ Amikor az oktatóanyag későbbi részében telepíti a IoT Edge eszközt, szük
 
 1. Az **eszköz** lapon válassza ki a létrehozott eszközt.
 
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
 1. Az **eszköz-kapcsolatok** lapon jegyezze fel az **azonosító hatókörét**, az **eszköz azonosítóját**és az **elsődleges kulcsot**. Ezeket az értékeket később használhatja.
 
-1. Kattintson a **Bezárás** gombra.
+1. Válassza a **Bezárás** lehetőséget.
 
 Ezzel befejezte a IoT Central alkalmazás konfigurálását, hogy lehetővé váljon IoT Edge-eszköz csatlakoztatása.
 
@@ -152,7 +152,7 @@ Ezzel befejezte a IoT Central alkalmazás konfigurálását, hogy lehetővé vá
 
 Ebben az oktatóanyagban egy Azure IoT Edge-kompatibilis linuxos virtuális gépet használ, amelyet az Azure-ban hoztak létre egy IoT Edge-eszköz szimulálásához. Az IoT Edge-kompatibilis virtuális gép Azure-előfizetésben való létrehozásához kattintson a következőre:
 
-[![Üzembe helyezés az Azure-ban gomb a iotedge-VM-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+[![Az iotedge-vm-deploy sablon Üzembe helyezés az Azure-ban gombja](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 Az **Egyéni telepítés** lapon:
 
@@ -228,7 +228,7 @@ A virtuális gépen IoT Edge konfigurálásához a DPS használatával regisztr�
     ```
 
     > [!TIP]
-    > Győződjön meg arról, hogy nincs elég hely az előtt`provisioning:`
+    > Győződjön meg arról, hogy nincs elég hely az előtt `provisioning:`
 
 1. A helyére írja `{scope_id}` be az **azonosító hatókört** , amelyet korábban jegyzett készített.
 
@@ -283,7 +283,7 @@ Ha azt tervezi, hogy folytatja a munkát a IoT Edge virtuális géppel, megtarth
 * A IoT Edge virtuális gép és a hozzá tartozó erőforrások törléséhez törölje a **contoso-Edge-RG** erőforráscsoportot a Azure Portal.
 * A IoT Central alkalmazás törléséhez navigáljon az alkalmazás **Adminisztráció** szakaszának **alkalmazás** lapjára, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan dolgozhat és kezelhet IoT Edge-eszközöket IoT Centralban, a következő lépés az, hogy olvassa el a következőket:
 

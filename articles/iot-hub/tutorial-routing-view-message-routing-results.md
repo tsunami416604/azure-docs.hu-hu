@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73890394"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
@@ -298,7 +298,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Előfordulhat, hogy törölni szeretné a Beérkezett üzenetek mappában lévő azon e-mailek mennyiségét is, amelyek a logikai alkalmazáson keresztül jöttek létre, miközben az eszköz fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a kétrészes oktatóanyagban megtanulta, hogyan lehet az üzenet-útválasztás használatával átirányítani IoT Hub üzeneteket a különböző célhelyekre az alábbi feladatok végrehajtásával.  
 

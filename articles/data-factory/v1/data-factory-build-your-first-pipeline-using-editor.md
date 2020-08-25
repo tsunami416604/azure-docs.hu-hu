@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85254973"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
@@ -47,7 +47,7 @@ Olvassa el [Az oktatóanyag áttekintését](data-factory-build-your-first-pipel
 
 Ez a cikk nem nyújt fogalmi áttekintést a Data Factory szolgáltatásról. További információ a szolgáltatásról: [Az Azure Data Factory bemutatása](data-factory-introduction.md).  
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Ilyen például a másolási tevékenység, amely adatokat másol a forrásból a célként megadott adattárba. Egy másik példa a HDInsight Hive-tevékenység, amely egy Hive-szkript futtatásával átalakítja a bemeneti adatokat és létrehozza a kimeneti adatokat. 
 
 Adat-előállító létrehozásához kövesse az alábbi lépéseket:
@@ -413,7 +413,7 @@ A folyamatok monitorozásához a Monitor & Manage alkalmazást is használhatja.
 
     ![Monitor & Manage csempe](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. A Monitor & Manage alkalmazásban módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési és befejezési idejének. Kattintson az **Alkalmaz** gombra.
+1. A Monitor & Manage alkalmazásban módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési és befejezési idejének. Válassza az **Alkalmaz** lehetőséget.
 
     ![Monitor & Manage alkalmazás](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -438,6 +438,6 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 | Témakör | Leírás |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
-| [Adathalmazok](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti a Data Factory adatkészleteit. |
+| [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti a Data Factory adatkészleteit. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti a Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
 | [Folyamatok monitorozása és felügyelete a Monitor & Manage alkalmazással](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan monitorozhatja és kezelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management alkalmazással. |

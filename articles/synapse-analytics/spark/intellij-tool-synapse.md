@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85194942"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a IntelliJ a szinapszis-munkaterület használatával
@@ -24,7 +24,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for Inte
 - Hozzáférhet a Spark-készletek erőforrásaihoz.
 - A Scala Spark alkalmazást helyileg fejlesztheti és futtathatja.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > - A Azure Toolkit for IntelliJ beépülő modul használata
@@ -54,7 +54,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![IntelliJ IDEA új projekt párbeszédpanel](./media/intellij-tool-synapse/create-synapse-application01.png)
 
-5. Válassza a **Tovább** lehetőséget.
+5. Kattintson a **Tovább** gombra.
 6. Az **új projekt** ablakban adja meg a következő információkat:
 
     | Tulajdonság | Leírás |
@@ -67,7 +67,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![Az Apache Spark SDK kiválasztása](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. Válassza a **Befejezés** gombot. A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** lehetőséget. A projekt elérhetővé válása néhány percet igénybe vehet.
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő műveleteket:
 
    a. A menüsávban navigáljon a **fájl**  >  **projekt szerkezete...** elemre.

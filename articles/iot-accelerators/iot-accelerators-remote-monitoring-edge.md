@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "66117511"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: rendellenességek észlelése a szélén a távoli figyelési megoldás gyorsítása révén
@@ -315,7 +315,7 @@ Ha a küszöbérték elérésekor értesíteni szeretné a kezelőket, létrehoz
     | Beállítás | Érték |
     | ------ | ----- |
     | Szabály neve | Olaj-szivattyú hőmérséklete |
-    | Leírás | Az olaj-szivattyú hőmérséklete túllépte a 300 |
+    | Description | Az olaj-szivattyú hőmérséklete túllépte a 300 |
     | Eszközcsoport | OilPumps |
     | Számítás | Azonnali |
     | Mező | hőmérséklet |
@@ -329,7 +329,7 @@ Ha a küszöbérték elérésekor értesíteni szeretné a kezelőket, létrehoz
 
 1. Navigáljon az **irányítópult** lapra. Egy riasztás a **riasztások** panelen jelenik meg, ha az **olaj-szivattyú** eszköz hőmérséklete 300-ra csökken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat egy IoT Edge eszközt a távoli figyelési megoldás gyorsító eszközében. Ha többet szeretne megtudni a IoT Edge-csomagok a távoli figyelési megoldásban való használatáról, tekintse meg a következő útmutatókat:
 

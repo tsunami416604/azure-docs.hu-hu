@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84660961"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
@@ -78,7 +78,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
 2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy engedélyezve van **-e az Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgáló** számára a SQL Database rendszert futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az adatbázispéldányra. A beállítás ellenőrzéséhez és bekapcsolásához lépjen a logikai SQL Server > biztonsági > tűzfalak és virtuális hálózatok elemre > állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálón való elérésre** **lehetőséget.**
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
 
@@ -113,7 +113,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 1. Az Adatok másolása eszköz elindításához az **első lépéseket** ismertető oldalon kattintson az **Adatok másolása** csempére.
 
     ![Az Adatok másolása eszköz csempéje](./media/doc-common-process/get-started-page.png)
-1. A **Tulajdonságok** lap **Feladat neve** részénél adja meg a következőt: **CopyFromBlobToSqlPipeline**. Ezután válassza a **tovább**lehetőséget. A Data Factory felhasználói felülete létrehoz egy folyamatot a megadott feladatnéven.
+1. A **Tulajdonságok** lap **Feladat neve** részénél adja meg a következőt: **CopyFromBlobToSqlPipeline**. Ezután kattintson a **Tovább** gombra. A Data Factory felhasználói felülete létrehoz egy folyamatot a megadott feladatnéven.
     ![Folyamat létrehozása](./media/tutorial-copy-data-tool/create-pipeline.png)
 
 1. A **Forrásadattár** oldalon hajtsa végre az alábbi lépéseket:
@@ -134,7 +134,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     b. A következő lépéshez kattintson a **Tovább** gombra.
 
-1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként*való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Válassza a **Tovább** lehetőséget. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
+1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként*való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Kattintson a **Tovább** gombra. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
 
     ![A Fájlformátum beállításai](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. A **Céladattár** oldalon hajtsa végre a következő lépéseket:
@@ -176,8 +176,8 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     ![Szerző lap kiválasztása](./media/tutorial-copy-data-tool/author-tab.png)
 
-## <a name="next-steps"></a>Következő lépések
-Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

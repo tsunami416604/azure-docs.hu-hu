@@ -3,13 +3,15 @@ title: GPU használata az Azure Kubernetes szolgáltatásban (ak)
 description: Ismerje meg, hogyan használhatók a GPU-k nagy teljesítményű számítási vagy grafikus igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 03/27/2020
-ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213192"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749140"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -117,6 +119,65 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>Az AK speciális GPU-rendszerképének használata (előzetes verzió)
+
+Ezen lépések alternatívájaként az AK egy teljesen konfigurált AK-rendszerképet biztosít, amely már tartalmazza a [Kubernetes készült NVIDIA-eszköz beépülő modult][nvidia-github].
+
+> [!WARNING]
+> Ne telepítse manuálisan az NVIDIA Device plugin Daemon-készletét a fürtökhöz az új AK speciális GPU-rendszerkép használatával.
+
+
+Regisztrálja a `GPUDedicatedVHDPreview` szolgáltatást:
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+A következő Azure CLI-parancsokkal telepítheti az AK-előnézeti CLI-bővítményt:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítményt:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>Az AK speciális GPU-rendszerképének használata új fürtökön (előzetes verzió)
+
+Konfigurálja úgy a fürtöt, hogy a fürt létrehozásakor az AK speciális GPU-rendszerképet használja. Használja az `--aks-custom-headers` új fürt GPU-ügynök csomópontjainak jelölőjét az AK speciális GPU-rendszerkép használatára.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Ha a normál AK-lemezképek használatával szeretne fürtöt létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` . Azt is megteheti, hogy az alábbi módon további speciális GPU Node-készleteket ad hozzá.
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>Az AK speciális GPU-rendszerképének használata meglévő fürtökön (előzetes verzió)
+
+Konfiguráljon egy új csomópont-készletet az AK speciális GPU-rendszerkép használatára. Használja az `--aks-custom-headers` új csomóponton található GPU-ügynök csomópontjainak jelző jelzőjét az AK speciális GPU-rendszerkép használatára.
+
+```azure-cli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Ha a normál AK-lemezképek használatával szeretne csomópont-készletet létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` . 
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Ellenőrizze, hogy a GPU-k ütemezhető-e
 
@@ -327,7 +388,7 @@ A cikkben létrehozott társított Kubernetes-objektumok eltávolításához has
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Apache Spark feladatok futtatásához tekintse [meg Apache Spark feladatok futtatása az AK][aks-spark]-ban című témakört.
 

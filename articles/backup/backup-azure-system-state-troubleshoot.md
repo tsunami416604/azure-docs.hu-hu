@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a rendszer
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513848"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763388"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
 
@@ -17,7 +17,7 @@ Ez a cikk a rendszerállapot biztonsági mentésének használata során felmer�
 
 ## <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
 
-Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt végezze el az alábbi érvényesítést:
+Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt végezze el a következő ellenőrzési lépéseket:
 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -42,7 +42,7 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt a rendszerállapot biztonsági mentését a Azure Backupával hárítsa el, hajtsa végre az alábbi előfeltételek ellenőrzését.  
+Mielőtt elhárítja a rendszerállapot biztonsági mentését Azure Backupval, hajtsa végre az alábbi előfeltételek ellenőrzését.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server biztonsági másolat telepítésének ellenőrzése
 
@@ -56,7 +56,7 @@ Ha a kimenet a telepítési **állapotot** **elérhetőként**jeleníti meg, akk
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>1. módszer: Windows Server biztonsági másolat telepítése a PowerShell használatával
 
-Windows Server biztonsági másolat a PowerShell használatával történő telepítéséhez futtassa az alábbi parancsot:
+Windows Server biztonsági másolat a PowerShell használatával történő telepítéséhez futtassa a következő parancsot:
 
   ```powershell
   Install-WindowsFeature -Name Windows-Server-Backup
@@ -64,7 +64,7 @@ Windows Server biztonsági másolat a PowerShell használatával történő tele
 
 #### <a name="method-2-install-windows-server-backup-using-server-manager"></a>2. módszer: Windows Server biztonsági másolat telepítése a Kiszolgálókezelő használatával
 
-Windows Server biztonsági másolat telepítéséhez a Kiszolgálókezelő használatával hajtsa végre az alábbi lépéseket:
+A Windows Server biztonsági másolat Kiszolgálókezelő használatával történő telepítéséhez hajtsa végre a következő lépéseket:
 
 1. A **Server Managerben**kattintson a **szerepkörök és szolgáltatások hozzáadása**elemre. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
 
@@ -77,20 +77,20 @@ Windows Server biztonsági másolat telepítéséhez a Kiszolgálókezelő haszn
 3. Válasszon ki egy kiszolgálót a kiszolgáló-készletből, és kattintson a **tovább**gombra. A kiszolgálói szerepkörben hagyja meg az alapértelmezett beállítást, és kattintson a **tovább**gombra.
 4. Válassza a **Windows Server biztonsági másolat** elemet a **szolgáltatások** lapon, és kattintson a **tovább**gombra.
 
-    ![funkciók](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![Szolgáltatások kiválasztása ablak](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. A **megerősítés** lapon kattintson a **telepítés** gombra a telepítési folyamat elindításához.
 6. A **Results (eredmények** ) lapon megjelenik a Windows Server biztonsági másolat funkció a Windows Serverre való telepítése sikeres volt.
 
-    ![result](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![A telepítés eredményei](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Rendszerkötet információi engedély
 
-Győződjön meg arról, hogy a helyi rendszer teljes hozzáféréssel rendelkezik a **rendszerkötet-információ** mappájában, amely abban a kötetben található, amelyben a Windows telepítve van. Általában ez a **C:\System**. A Windows Server biztonsági másolat sikertelen lehet, ha a fenti engedélyek nincsenek megfelelően beállítva
+Győződjön meg arról, hogy a helyi rendszer teljes hozzáféréssel rendelkezik a **rendszerkötet-információ** mappájában, amely abban a kötetben található, amelyben a Windows telepítve van. Általában ez a **C:\System**. A Windows Server biztonsági másolat sikertelen lehet, ha a fenti engedélyek nincsenek megfelelően beállítva.
 
 ### <a name="dependent-services"></a>Függő szolgáltatások
 
-Győződjön meg arról, hogy az alábbi szolgáltatások fut állapotban vannak:
+Győződjön meg arról, hogy az alábbi szolgáltatások futó állapotban vannak:
 
 **Szolgáltatásnév** | **Indítási típus**
 --- | ---
@@ -113,7 +113,7 @@ Windows Server biztonsági másolat állapotának ellenőrzéséhez hajtsa végr
 
     - Ha ez a hiba meghiúsul, akkor telepítse újra a Windows Server biztonsági másolat szolgáltatást a kiszolgáló gépen az előfeltételek 1. lépésében leírtak szerint.
 
-  - Győződjön meg arról, hogy a WSB biztonsági mentése megfelelően működik, és futtassa az alábbi parancsot a rendszergazda jogú parancssorból:
+  - Győződjön meg arról, hogy a WSB biztonsági mentése megfelelően működik, és futtassa a következő parancsot egy rendszergazda jogú parancssorból:
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
@@ -145,6 +145,6 @@ Ha a feladat meghiúsul, egy WSB-problémát jelez, amely a MARS-ügynök rendsz
 | -- | --
 | A MARS-ügynök a következő hibaüzenettel meghiúsul: "a rendszerállapot biztonsági mentése nem sikerült, mert az EFI rendszerpartíció zárolva van. Ezt az okozhatja, hogy a rendszerpartíciók a harmadik féltől származó biztonsági vagy biztonsági mentési szoftverhez férnek hozzá. | – Ha a problémát egy külső gyártótól származó biztonsági szoftver okozza, akkor kapcsolatba kell lépnie a víruskereső gyártójával, hogy engedélyezze a MARS-ügynököt <br/><br/> – Ha fut egy külső gyártótól származó biztonsági mentési szoftver, várjon, amíg befejeződik, majd próbálkozzon újra a biztonsági mentéssel
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Windows rendszerállapotáról a Resource Manager üzembe helyezésében: a [Windows Server rendszerállapotának biztonsági mentése](backup-azure-system-state.md)

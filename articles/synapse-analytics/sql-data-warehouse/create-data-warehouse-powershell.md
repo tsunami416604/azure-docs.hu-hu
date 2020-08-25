@@ -1,5 +1,5 @@
 ---
-title: Szinapszis SQL-készlet létrehozása és lekérdezése Azure PowerShell
+title: Szinapszis SQL-készlet létrehozása Azure PowerShell
 description: Hozzon létre gyorsan egy szinapszis SQL-készletet egy kiszolgálói szintű tűzfalszabály segítségével Azure PowerShell használatával.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,20 +11,20 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 21ca3968065df2575b101efa7735d56f87683938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e6683746e2a8f274f7260a3d5bb60e956d49d30a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211068"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751917"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése Azure PowerShell
+# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>Gyors útmutató: szinapszis SQL-készlet létrehozása Azure PowerShell
 
 Hozzon létre egy szinapszis SQL-készletet (adattárház) az Azure szinapszis Analyticsben Azure PowerShell használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!IMPORTANT]
 > Egy SQL-készlet létrehozása egy új számlázható szolgáltatáshoz vezethet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>További lépések
 
-Ezzel létrehozott egy SQL-készletet, létrehozott egy tűzfalszabályot, kapcsolódott az SQL-készlethez, és futtat néhány lekérdezést. További információért folytassa az [SQL-készletbe való betöltéssel](load-data-from-azure-blob-storage-using-polybase.md) foglalkozó cikket.
+Ezzel létrehozott egy SQL-készletet, létrehozott egy tűzfalszabályet, és csatlakoztatta az SQL-készlethez. További információért folytassa az [SQL-készletbe való betöltéssel](load-data-from-azure-blob-storage-using-polybase.md) foglalkozó cikket.

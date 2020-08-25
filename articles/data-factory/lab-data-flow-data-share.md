@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
 ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85252661"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
@@ -226,7 +226,7 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
     ![Portál](media/lab-data-flow-data-share/join1.png)
 1. Nevezze el az "InnerJoinWithTripFares" illesztési átalakítót. Válassza a jobb oldali stream legördülő menüből a "TripFaresSQL" elemet. Válassza a **belső** lehetőséget az összekapcsolás típusaként. Ha többet szeretne megtudni a különböző illesztési típusokról a leképezési adatfolyamban, tekintse meg a [Csatlakozás típusai](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types)című részt.
 
-    Válassza ki, hogy mely oszlopokat kívánja egyeztetni az egyes adatfolyamok **között az illesztési feltételek** legördülő listából. További illesztési feltétel hozzáadásához kattintson a egy meglévő feltétel melletti plusz ikonra. Alapértelmezés szerint az összes csatlakoztatási feltétel össze van foglalva egy és operátorral, ami azt jelenti, hogy az összes feltételnek teljesülnie kell az egyeztetéshez. Ebben a laborban szeretnénk egyeztetni a következő oszlopokat:,, `medallion` `hack_license` `vendor_id` és`pickup_datetime`
+    Válassza ki, hogy mely oszlopokat kívánja egyeztetni az egyes adatfolyamok **között az illesztési feltételek** legördülő listából. További illesztési feltétel hozzáadásához kattintson a egy meglévő feltétel melletti plusz ikonra. Alapértelmezés szerint az összes csatlakoztatási feltétel össze van foglalva egy és operátorral, ami azt jelenti, hogy az összes feltételnek teljesülnie kell az egyeztetéshez. Ebben a laborban szeretnénk egyeztetni a következő oszlopokat:,, `medallion` `hack_license` `vendor_id` és `pickup_datetime`
 
     ![Portál](media/lab-data-flow-data-share/join2.png)
 1. Ellenőrizze, hogy sikeresen csatlakozott-e 25 oszlophoz egy adatelőnézetsel együtt.
@@ -336,7 +336,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![Megosztás részletei](media/lab-data-flow-data-share/ads-details.png)
 
-1. Válassza a **Folytatás** elemet. 
+1. Válassza a **Folytatás**lehetőséget. 
 
 1. Válassza az **adatkészletek hozzáadása** lehetőséget 
 
@@ -372,7 +372,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![Adatkészlet hozzáadása](media/lab-data-flow-data-share/add-dataset-adls.png)
 
-1. Válassza a **tovább** lehetőséget
+1. Kattintson a **Tovább** gombra.
 
 1. Bontsa ki a *wwtaxidata*. A *Boston taxi-adatközpont*kibontása. Figyelje meg, hogy a fájlok szintjén is megosztható. 
 
@@ -382,7 +382,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
 1. Tekintse át a hozzáadott adatkészleteket. Az adatmegosztáshoz hozzá kell adni egy SQL-táblázatot és egy ADLSGen2 mappát. 
 
-1. Válassza a **Folytatás** lehetőséget.
+1. Válassza a **Folytatás** elemet
 
 1. Ezen a képernyőn adhat hozzá címzetteket az adatmegosztáshoz. A hozzáadott címzettek megkapják az adatmegosztásra vonatkozó meghívókat. Ennek a labornak a céljára 2 e-mail címet kell hozzáadnia:
 

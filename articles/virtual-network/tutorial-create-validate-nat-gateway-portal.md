@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: d798725892a9586c17cd7023863fe5cf7df05cb6
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84417837"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása a Azure Portal használatával és a NAT szolgáltatás tesztelése
@@ -105,8 +105,8 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4** lehetőséget.
     | Termékváltozat | Válassza a **standard**lehetőséget.
-    | Name | Adja meg a **myPublicIPsource**. |
-    | Előfizetés | Válassza ki az előfizetését.|
+    | Név | Adja meg a **myPublicIPsource**. |
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
 
@@ -305,7 +305,7 @@ Ezzel a paranccsal az 100-es kérések, 10 párhuzamosan, 30 másodperces időko
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót, létrehozta a forrás és a cél virtuális gépet, majd tesztelte a NAT-átjárót.
 
 Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének megtekintéséhez. Problémák diagnosztizálása, például az elérhető SNAT-portok erőforrás-kimerülése.  A SNAT-portok erőforrás-kimerülése könnyen kezelhető további nyilvános IP-címek vagy nyilvános IP-előtag-erőforrások hozzáadásával vagy mindkettővel.

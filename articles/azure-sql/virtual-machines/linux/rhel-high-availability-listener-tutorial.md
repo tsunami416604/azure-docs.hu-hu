@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84343761"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához
@@ -57,7 +57,7 @@ Az alábbi utasítások végigvezetik az 1 – 4. lépésen a Load Balancer [lé
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Name (Név)** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
+   | **Név** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
    | **Típus** |**Belső** |
    | **Virtuális hálózat** |A létrehozott alapértelmezett virtuális hálózatnak a **VM1VNET**nevűnek kell lennie. |
    | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. Az alapértelmezett értéknek **VM1Subnet**kell lennie.|
@@ -98,10 +98,10 @@ A mintavétel határozza meg, hogy az Azure hogyan ellenőrzi, hogy a SQL Server
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Name (Név)** |A mintavételt jelölő szöveges név. Például: **SQLAlwaysOnEndPointProbe**. |
+   | **Név** |A mintavételt jelölő szöveges név. Például: **SQLAlwaysOnEndPointProbe**. |
    | **Protokoll** |**TCP** |
    | **Port** |Bármely elérhető portot használhat. Például *59999*. |
-   | **Időköz** |*5* |
+   | **Intervallum** |*5* |
    | **Nem kifogástalan állapot küszöbértéke** |*2* |
 
 4.  Kattintson az **OK** gombra. 
@@ -127,10 +127,10 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Name (Név)** |A terheléselosztási szabályokat jelképező szöveges név. Például: **SQLAlwaysOnEndPointListener**. |
+   | **Név** |A terheléselosztási szabályokat jelképező szöveges név. Például: **SQLAlwaysOnEndPointListener**. |
    | **Protokoll** |**TCP** |
    | **Port** |*1433* |
-   | **Háttér-port** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)**. |
+   | **Háttérport** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)**. |
    | **Mintavétel** |Használja a terheléselosztó számára létrehozott mintavétel nevét. |
    | **Munkamenet-állandóság** |**Nincs** |
    | **Üresjárati időkorlát (perc)** |*4* |
@@ -290,7 +290,7 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
 
     Látnia kell, hogy most már csatlakozik ahhoz a virtuális géphez, amelyre a feladatátvételt elvégezte.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure-beli terheléselosztó használatáról:
 

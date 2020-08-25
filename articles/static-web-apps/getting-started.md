@@ -1,22 +1,22 @@
 ---
 title: 'Rövid útmutató: az első statikus webalkalmazás felépítése az Azure statikus Web Apps'
-description: Ismerje meg, hogyan hozhat létre egy Azure statikus Web Apps példányt az előnyben részesített kezelőfelületi keretrendszerrel.
+description: Ismerje meg, hogyan hozhat létre Azure statikus Web Apps webhelyeket.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565910"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752391"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rövid útmutató: az első statikus webalkalmazás felépítése
 
-Az Azure Static Web Apps egy GitHub-adattárból származó alkalmazások létrehozásával tesz közzé webhelyeket egy éles környezetben. Ebben a rövid útmutatóban egy GitHub-tárházból egy webalkalmazást hoz létre az előnyben részesített kezelőfelületi keretrendszer használatával.
+Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure statikus Web Apps szolgáltatásban a Visual Studio Code bővítménnyel.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free).
 
@@ -24,153 +24,97 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 
 - [GitHub](https://github.com) -fiók
 - [Azure](https://portal.azure.com) -fiók
+- [Visual Studio Code](https://code.visualstudio.com)
+- [Azure statikus Web Apps-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
 
-## <a name="create-a-repository"></a>Adattár létrehozása
+[!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
-Ez a cikk a GitHub-sablonok tárházait használja, így egyszerűen létrehozhat egy új tárházat. A sablonok olyan alapszintű alkalmazásokat is tartalmaz, amelyek különböző előtér-keretrendszerekkel lettek felépítve.
+[!INCLUDE [clone the repository](../../includes/static-web-apps-get-started-clone-repo.md)]
 
-# <a name="angular"></a>[Angular](#tab/angular)
-
-- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
-  - https://github.com/staticwebdev/angular-basic/generate
-- Nevezze el az adattárat **az első-statikus-Web-App**
-
-# <a name="react"></a>[React](#tab/react)
-
-- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
-  - https://github.com/staticwebdev/react-basic/generate
-- Nevezze el az adattárat **az első-statikus-Web-App**
-
-# <a name="vue"></a>[Vue](#tab/vue)
-
-- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
-  - https://github.com/staticwebdev/vue-basic/generate
-- Nevezze el az adattárat **az első-statikus-Web-App**
-
-# <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
-
-- Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
-  - https://github.com/staticwebdev/vanilla-basic/generate
-- Nevezze el az adattárat **az első-statikus-Web-App**
-
-> [!NOTE]
-> Az Azure statikus Web Apps egy webalkalmazás létrehozásához legalább egy HTML-fájl szükséges. Az ebben a lépésben létrehozott tárház egyetlen _index.html_ fájlt tartalmaz.
-
----
-
-Kattintson a **Tárház létrehozása sablonból** gombra.
-
-:::image type="content" source="media/getting-started/create-template.png" alt-text="Tárház létrehozása sablonból":::
+Ezután nyissa meg a Visual Studio Code-ot, és nyissa meg a **fájl > megnyitása mappát** , ahol megnyithatja azt a tárházat, amelyet az imént klónozott a gépre a szerkesztőben.
 
 ## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
 
-Most, hogy létrejött az adattár, létrehozhat egy statikus webalkalmazást a Azure Portal.
+1. A Visual Studio Code-ban válassza ki az Azure-emblémát a tevékenység sávján az Azure-bővítmények ablak megnyitásához.
 
-- Navigáljon a [Azure Portal](https://portal.azure.com)
-- Kattintson az **Erőforrás létrehozása** gombra
-- Keressen rá a **Static Web Apps** kifejezésre
-- Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
-- Kattintson a **Létrehozás** gombra
+    :::image type="content" source="media/getting-started/extension-azure-logo.png" alt-text="Azure-embléma":::
 
-### <a name="basics"></a>Alapbeállítások
+    > [!NOTE]
+    > Az Azure-és a GitHub-bejelentkezés szükséges. Ha még nem jelentkezett be az Azure-ba és a GitHubot a Visual Studio Code-ból, a bővítmény arra kéri, hogy mindkét esetben jelentkezzen be a folyamatba.
 
-Először konfigurálja az új alkalmazást, és csatolja azt egy GitHub-tárházhoz.
+1. Vigye az egérmutatót a _statikus Web Apps_ címkéjére, és válassza ki a **plusz jelet**.
 
-:::image type="content" source="media/getting-started/basics-tab.png" alt-text="Alapbeállítások lap":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Alkalmazás neve":::
 
-- Azure- _előfizetés_ kiválasztása
-- Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
-- Nevezze el az alkalmazás **az első-statikus-Web-App**nevet.
-  - Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.
-- Válasszon egy Önhöz legközelebb eső _régiót_
-- Válassza ki az **ingyenes** _SKU_ -t
-- Kattintson a **Bejelentkezés GitHub-fiókkal** gombra, majd végezzen hitelesítést a GitHub-fiókkal
+1. A szájpadlás parancs a szerkesztő tetején nyílik meg, és rákérdez az alkalmazás nevének megadására.
 
-Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
+    Írja be **az én-First-static-Web-App** értéket, és nyomja le az **ENTER**billentyűt.
 
-:::image type="content" source="media/getting-started/repository-details.png" alt-text="Adattár részletei":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Statikus Webalkalmazás létrehozása":::
 
-- Válassza ki az előnyben részesített _szervezetet_
-- Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
-- Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
-- Kattintson a **Tovább: Létrehozás >** gombra a létrehozási konfiguráció szerkesztéséhez
+1. Válassza ki a **fő** ágat, majd nyomja le az **ENTER**billentyűt.
 
-:::image type="content" source="media/getting-started/next-build-button.png" alt-text="Következő Build gomb":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Ág neve":::
 
-> [!NOTE]
->  Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Nyissa meg a [GitHub weboldalát](https://github.com) , és kattintson a fiókja képére a legördülő menü megnyitásához. Kattintson a **Beállítások**elemre, majd az **alkalmazások > a jóváhagyott OAuth-alkalmazások > az Azure statikus Web Apps**lehetőségre, végül válassza a **támogatás**lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
+1. Válassza ki az **/** alkalmazás kódjának helyét, majd nyomja le az **ENTER**billentyűt.
 
-### <a name="build"></a>Létrehozás
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Alkalmazás kódjának helye":::
 
-Ezután adja meg az Ön által választott előtér-keretrendszerhez tartozó konfigurációs adatokat.
+1. A bővítmény az API helyét keresi az alkalmazásban. Ez a cikk nem valósít meg API-t.
 
-# <a name="angular"></a>[Angular](#tab/angular)
+    Kattintson **a Kihagyás gombra** , majd nyomja le az **ENTER**billentyűt.
 
-- Adja meg **/** az _alkalmazás helye_ mezőt
-- Az alapértelmezett érték törlése az _API helye_ mezőben
-- Az alkalmazás-összetevő _helye_ mezőben adja meg a **dist/szögletes – Basic** értéket.
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API-hely":::
 
-# <a name="react"></a>[React](#tab/react)
+1. Válassza ki azt a helyet, ahol az alkalmazásban a fájlok az éles környezethez készültek.
 
-- Adja meg **/** az _alkalmazás helye_ mezőt
-- Az alapértelmezett érték törlése az _API helye_ mezőben
-- Adja meg a **Build** értéket az alkalmazás-összetevő _helye_ mezőben
+    # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
-# <a name="vue"></a>[Vue](#tab/vue)
+    Törölje a mezőt, majd nyomja le az **ENTER**billentyűt.
 
-- Adja meg **/** az _alkalmazás helye_ mezőt
-- Az alapértelmezett érték törlése az _API helye_ mezőben
-- Adja meg a **dist** értéket az alkalmazás-összetevő _helye_ mezőben
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Alkalmazás fájljainak elérési útja":::
 
-# <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
+    # <a name="angular"></a>[Angular](#tab/angular)
 
-- Adja meg **/** az _alkalmazás helye_ mezőt
-- Az alapértelmezett érték törlése az _API helye_ mezőben
-- Az alapértelmezett érték törlése az _alkalmazás_ -összetevő hely mezőjéből
+    Írja be a **dist/szögletes-Basic** értéket, majd nyomja le az **ENTER**billentyűt.
 
----
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="A szögletes alkalmazás fájljainak elérési útja":::
 
-Kattintson az **Ellenőrzés és létrehozás** gombra.
+    # <a name="react"></a>[React](#tab/react)
 
-:::image type="content" source="media/getting-started/review-create.png" alt-text="A létrehozás gomb áttekintése":::
+    Írja be a **Build** és az **ENTER**billentyűt.
 
-Ha módosítani szeretné ezeket az értékeket az alkalmazás létrehozása után, akkor szerkesztheti a [munkafolyamat-fájlt](github-actions-workflow.md).
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Alkalmazás-fájlok elérési útjának megválaszolása":::
 
-### <a name="review--create"></a>Ellenőrzés és létrehozás
+    # <a name="vue"></a>[Vue](#tab/vue)
 
-A kérés érvényesítése után továbbra is létrehozhatja az alkalmazást.
+    Írja be a **dist** értéket, majd nyomja le az **ENTER**billentyűt
 
-Kattintson a **Létrehozás** gombra
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue-alkalmazás fájljainak elérési útja":::
 
-:::image type="content" source="media/getting-started/create-button.png" alt-text="Létrehozás gomb":::
+    ---
 
-Az erőforrás létrehozása után kattintson az **Ugrás erőforrásra** gombra.
+1. Válasszon ki egy legközelebbi helyet, és nyomja le az **ENTER**billentyűt.
 
-:::image type="content" source="media/getting-started/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Erőforrás helye":::
 
-## <a name="view-the-website"></a>Webhely megtekintése
+1. Az alkalmazás létrehozása után a rendszer megerősítő értesítést jelenít meg a Visual Studio Code-ban.
 
-A statikus alkalmazások üzembe helyezésének két aspektusa van. Az első azokat a mögöttes Azure-erőforrásokat építi ki, amelyekből az alkalmazás áll. A második egy GitHub Actions-munkafolyamat, amely létrehozza és közzéteszi az alkalmazást.
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Megerősítés létrehozva":::
 
-Az új statikus helyhez való csatlakozás előtt az üzembe helyezési buildnek először futnia kell.
+1. A Visual Studio Code Explorer ablakában térjen vissza a _statikus Web Apps_ szakaszra, majd kattintson a jobb gombbal az **éles** környezetben, és válassza a **Megnyitás a portálon** lehetőséget a Azure Portal alkalmazás megtekintéséhez.
 
-A statikus Web Apps áttekintése ablak a webalkalmazással való interakciót segítő hivatkozásokat jelenít meg.
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Portál megnyitása":::
 
-:::image type="content" source="media/getting-started/overview-window.png" alt-text="Áttekintő ablak":::
-
-1. Ha a szalagcímre kattint, a "kattintson ide a GitHub-műveletek futtatásának állapotának vizsgálatához" gombra kattintva megtekintheti a tárházon futó GitHub-műveleteket. Miután meggyőződött arról, hogy befejeződött a telepítési feladatok befejezése, a generált URL-címen keresztül megnyithatja a webhelyet.
-
-2. Miután befejeződött a GitHub-műveletek munkafolyamata, az _URL_ hivatkozásra kattintva megnyithatja a webhelyet az új lapon.
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure statikus Web Apps példányát:
+Ha nem folytatja az alkalmazás használatát, törölheti az Azure statikus Web Apps példányát a bővítmény használatával.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
-1. Keresés az **én-első-web-static-app** a felső keresési sávon
-1. Kattintson az alkalmazás nevére
-1. Kattintson a **Törlés** gombra
-1. A törlési művelet megerősítéséhez kattintson az **Igen** gombra.
+A Visual Studio Code Explorer ablakban térjen vissza a _statikus Web Apps_ szakaszhoz, és kattintson a jobb gombbal a **My-First-static-Web-App** elemre, és válassza a **Törlés**lehetőséget.
+
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Alkalmazás törlése":::
 
 ## <a name="next-steps"></a>További lépések
 

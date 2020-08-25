@@ -8,12 +8,12 @@ ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: cdfee2d75d662ce9aae6b40525d907ce7ab0e2c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4f49d4e78cd58d16627a0b6fda1957baa9f1f085
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658109"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752088"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
 
@@ -23,7 +23,7 @@ Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony
 
 ## <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 ## <a name="determine-vm-size-and-region-availability"></a>A virtuális gép méretének és a régió rendelkezésre állásának meghatározása
 
@@ -347,4 +347,4 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 ```
 ## <a name="next-steps"></a>További lépések
 
-Lásd: az [Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)](/azure/aks/use-ultra-disks).
+Lásd: az [Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)](../aks/use-ultra-disks.md).

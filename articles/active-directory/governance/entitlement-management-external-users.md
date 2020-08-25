@@ -16,26 +16,26 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef88a15286389c98bb77f982afbc54358897eef4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338210"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783858"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
-Az Azure AD-jogosultságok kezelése az [Azure ad vállalatközi (B2B)](../b2b/what-is-b2b.md) szolgáltatásával együttműködik a szervezeten kívüli személyekkel egy másik címtárban. Az Azure AD B2B-vel a külső felhasználók a saját címtárában hitelesítik magukat, de rendelkeznek egy képviselettel a címtárban. A címtárban lévő ábrázolás lehetővé teszi, hogy a felhasználó hozzáférjen az erőforrásokhoz.
+Az Azure AD-jogosultságok kezelése az [Azure ad vállalatközi (B2B)](../external-identities/what-is-b2b.md) szolgáltatásával együttműködik a szervezeten kívüli személyekkel egy másik címtárban. Az Azure AD B2B-vel a külső felhasználók a saját címtárában hitelesítik magukat, de rendelkeznek egy képviselettel a címtárban. A címtárban lévő ábrázolás lehetővé teszi, hogy a felhasználó hozzáférjen az erőforrásokhoz.
 
 Ez a cikk a külső felhasználók hozzáférésének szabályozására megadható beállításokat ismerteti.
 
 ## <a name="how-entitlement-management-can-help"></a>Hogyan segíthet a jogosultságok kezelése?
 
-Az [Azure ad B2B](../b2b/what-is-b2b.md) -Meghívási felületének használatakor már ismernie kell azon külső vendég felhasználók e-mail-címeit, akikkel az erőforrás-címtárba be szeretné állítani a szolgáltatást. Ez remekül működik, ha kisebb vagy rövid távú projekttel dolgozik, és már ismeri az összes résztvevőt, de ez nehezebben kezelhető, ha sok felhasználóval szeretne dolgozni, vagy ha a résztvevők idővel változnak.  Előfordulhat például, hogy egy másik szervezettel dolgozik, és egy kapcsolattartási ponttal rendelkezik az adott szervezethez, de az adott szervezet további felhasználói számára is hozzáférésre van szüksége.
+Az [Azure ad B2B](../external-identities/what-is-b2b.md) -Meghívási felületének használatakor már ismernie kell azon külső vendég felhasználók e-mail-címeit, akikkel az erőforrás-címtárba be szeretné állítani a szolgáltatást. Ez remekül működik, ha kisebb vagy rövid távú projekttel dolgozik, és már ismeri az összes résztvevőt, de ez nehezebben kezelhető, ha sok felhasználóval szeretne dolgozni, vagy ha a résztvevők idővel változnak.  Előfordulhat például, hogy egy másik szervezettel dolgozik, és egy kapcsolattartási ponttal rendelkezik az adott szervezethez, de az adott szervezet további felhasználói számára is hozzáférésre van szüksége.
 
 A jogosultságok kezelésével meghatározhatja azt a szabályzatot, amely lehetővé teszi, hogy a felhasználók az Ön által megadott szervezetek felhasználói számára egy hozzáférési csomagot saját maguk igényelhetnek. Megadhatja, hogy szükséges-e a jóváhagyás, valamint a hozzáférés lejárati dátuma. Ha jóváhagyásra van szükség, a külső szervezet egy vagy több felhasználóját is meghívhatja a címtárba, és jóváhagyhatja őket – mivel valószínűleg tudni fogják, hogy mely külső felhasználók férhetnek hozzá a szervezethez. A hozzáférési csomag konfigurálása után elküldheti a hozzáférési csomag hivatkozását a kapcsolattartó személyének (szponzorának) a külső szervezeten belül. Ez a kapcsolat a külső szervezet más felhasználóival is megosztható, és ezt a hivatkozást használhatja a hozzáférési csomag igényléséhez. Az adott szervezet azon felhasználói, akik már meghívást kaptak a címtárba, a hivatkozást is használhatják.
 
-A kérések jóváhagyása esetén a jogosultságok kezelése a szükséges hozzáféréssel fogja kiépíteni a felhasználót, amely magában foglalhatja a felhasználó meghívását, ha még nem szerepelnek a címtárban. Az Azure AD automatikusan létrehoz egy B2B vendég fiókot. Vegye figyelembe, hogy a rendszergazdák korábban már korlátozták az együttműködésre engedélyezett szervezeteket, ha egy [B2B engedélyezési vagy megtagadási listát](../b2b/allow-deny-list.md) állítanak be a más szervezetek számára történő meghívások engedélyezéséhez vagy letiltásához.  Ha a felhasználó számára nem engedélyezett az engedélyezési vagy a tiltási lista, a rendszer nem kéri le őket.
+A kérések jóváhagyása esetén a jogosultságok kezelése a szükséges hozzáféréssel fogja kiépíteni a felhasználót, amely magában foglalhatja a felhasználó meghívását, ha még nem szerepelnek a címtárban. Az Azure AD automatikusan létrehoz egy B2B vendég fiókot. Vegye figyelembe, hogy a rendszergazdák korábban már korlátozták az együttműködésre engedélyezett szervezeteket, ha egy [B2B engedélyezési vagy megtagadási listát](../external-identities/allow-deny-list.md) állítanak be a más szervezetek számára történő meghívások engedélyezéséhez vagy letiltásához.  Ha a felhasználó számára nem engedélyezett az engedélyezési vagy a tiltási lista, a rendszer nem kéri le őket.
 
 Mivel nem szeretné, hogy a külső felhasználó hozzáférhessen az utolsó Forever-hez, meg kell adnia egy lejárati dátumot a szabályzatban, például 180 nap. 180 nap után, ha a hozzáférésük nincs kiterjesztve, a jogosultságok kezelése eltávolítja a hozzáférési csomaghoz társított összes hozzáférést. Alapértelmezés szerint, ha a jogosultságok kezelésében meghívott felhasználó nem rendelkezik más hozzáférési csomag-hozzárendelésekkel, akkor amikor elvesztik az utolsó hozzárendelést, a vendég fiókjuk letiltja a bejelentkezést 30 napig, és ezt követően eltávolítja azt. Ez megakadályozza a szükségtelen fiókok elterjedését. A következő szakaszokban leírtak szerint ezek a beállítások konfigurálhatók.
 
@@ -57,7 +57,7 @@ A következő ábra és lépések áttekintést nyújtanak arról, hogy a küls�
 
 1. A kérés bekerül a [kézbesítési állapotba](entitlement-management-process.md).
 
-1. A B2B-Meghívási folyamat használatával a rendszer létrehoz egy vendég felhasználói fiókot a címtárban (ebben a példában**a kérelmező a vendég)** . Ha meg van adva egy [engedélyezési lista vagy egy megtagadási lista](../b2b/allow-deny-list.md) , a rendszer alkalmazza a lista beállítását.
+1. A B2B-Meghívási folyamat használatával a rendszer létrehoz egy vendég felhasználói fiókot a címtárban (ebben a példában**a kérelmező a vendég)** . Ha meg van adva egy [engedélyezési lista vagy egy megtagadási lista](../external-identities/allow-deny-list.md) , a rendszer alkalmazza a lista beállítását.
 
 1. A vendég felhasználó hozzá van rendelve a hozzáférési csomag összes erőforrásához. Az Azure AD-ben és más Microsoft Online szolgáltatásokban vagy csatlakoztatott SaaS-alkalmazásokban végzett módosítások elvégzése hosszabb időt is igénybe vehet. További információ: a [módosítások alkalmazása](entitlement-management-access-package-resources.md#when-changes-are-applied).
 
@@ -84,8 +84,8 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 - Lehetővé teszi, hogy a vendégek meghívjanak más vendégeket a címtárba, ami azt jelenti, hogy a vendég meghívása a jogosultsági felügyeleten kívül történhet Azt javasoljuk, hogy a **vendégek meghívhatják** a **nem** értéket, hogy csak a megfelelően szabályozott meghívókat engedélyezzék.
 - Ha a B2B engedélyezési listát használja, gondoskodnia kell arról, hogy minden olyan tartomány hozzá legyen adva a jogosultságok kezelése szolgáltatással, amelyet a listához felvesznek. Ha a B2B megtagadási listát használja, meg kell győződnie arról, hogy a partnerrel nem rendelkező tartomány nincs felvéve a listára.
 - Ha az **összes felhasználóra** vonatkozóan létrehoz egy jogosultsági felügyeleti szabályzatot (minden csatlakoztatott szervezet + bármely új külső felhasználó), akkor a vállalatközi engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek. Ezért ügyeljen arra, hogy a szabályzatban szerepeltetni kívánt tartományokat az engedélyezési listára vegye fel, ha Ön használ egyet, és kizárhatja őket a megtagadási listáról, ha megtagadási listát használ.
-- Ha olyan jogosultság-kezelési szabályzatot szeretne létrehozni, amely **minden felhasználót** tartalmaz (minden csatlakoztatott szervezet + bármely új külső felhasználó), először engedélyeznie kell az e-mailek egyszeri jelszavas hitelesítését a címtárban. További információ: az [e-mailek egyszeri jelszavas hitelesítése (előzetes verzió)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
-- Az Azure AD B2B külső együttműködési beállításaival kapcsolatos további információkért lásd: [B2B külső együttműködés engedélyezése és a vendégek meghívása](../b2b/delegate-invitations.md)a felhasználók számára.
+- Ha olyan jogosultság-kezelési szabályzatot szeretne létrehozni, amely **minden felhasználót** tartalmaz (minden csatlakoztatott szervezet + bármely új külső felhasználó), először engedélyeznie kell az e-mailek egyszeri jelszavas hitelesítését a címtárban. További információ: az [e-mailek egyszeri jelszavas hitelesítése (előzetes verzió)](../external-identities/one-time-passcode.md#opting-in-to-the-preview).
+- Az Azure AD B2B külső együttműködési beállításaival kapcsolatos további információkért lásd: [B2B külső együttműködés engedélyezése és a vendégek meghívása](../external-identities/delegate-invitations.md)a felhasználók számára.
 
     ![Az Azure AD külső együttműködési beállításai](./media/entitlement-management-external-users/collaboration-settings.png)
 
@@ -97,17 +97,17 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>A SharePoint Online külső megosztási beállításainak áttekintése
 
-- Ha a külső felhasználók hozzáférési csomagjaiban SharePoint Online-webhelyeket kíván felvenni, győződjön meg arról, hogy a szervezeti szintű külső megosztási beállítás **mindenki** számára van beállítva (a felhasználóknak nincs szükségük bejelentkezésre), vagy **új és meglévő vendégeknek** (a vendégeknek be kell jelentkezniük, vagy meg kell adniuk egy ellenőrző kódot). További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Ha a külső felhasználók hozzáférési csomagjaiban SharePoint Online-webhelyeket kíván felvenni, győződjön meg arról, hogy a szervezeti szintű külső megosztási beállítás **mindenki** számára van beállítva (a felhasználóknak nincs szükségük bejelentkezésre), vagy **új és meglévő vendégeknek** (a vendégeknek be kell jelentkezniük, vagy meg kell adniuk egy ellenőrző kódot). További információ: [külső megosztás be-és kikapcsolása](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Ha korlátozni szeretné a jogosultsági felügyeleten kívüli külső megosztást, megadhatja a külső megosztási beállítást a **meglévő vendégek**számára. Ezt követően csak a jogosultságok kezelésével meghívott új felhasználók férhetnek hozzá ezekhez a webhelyekhez. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Ha korlátozni szeretné a jogosultsági felügyeleten kívüli külső megosztást, megadhatja a külső megosztási beállítást a **meglévő vendégek**számára. Ezt követően csak a jogosultságok kezelésével meghívott új felhasználók férhetnek hozzá ezekhez a webhelyekhez. További információ: [külső megosztás be-és kikapcsolása](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Győződjön meg arról, hogy a hely szintű beállítások lehetővé teszik a vendég hozzáférését (ugyanazokat a beállításokat a korábban felsoroltak szerint). További információ: [külső megosztás be-és kikapcsolása egy adott helyen](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+- Győződjön meg arról, hogy a hely szintű beállítások lehetővé teszik a vendég hozzáférését (ugyanazokat a beállításokat a korábban felsoroltak szerint). További információ: [külső megosztás be-és kikapcsolása egy adott helyen](/sharepoint/change-external-sharing-site).
 
 ### <a name="review-your-microsoft-365-group-sharing-settings"></a>Tekintse át Microsoft 365 csoport megosztási beállításait
 
-- Ha a külső felhasználók hozzáférési csomagjaiban Microsoft 365 csoportokat szeretne felvenni, győződjön **meg** arról, hogy a **felhasználók új vendégeket adhatnak hozzá a szervezethez** , hogy engedélyezze a vendég hozzáférését. További információ: a [vendég hozzáférésének kezelése Microsoft 365 csoportokhoz](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Ha a külső felhasználók hozzáférési csomagjaiban Microsoft 365 csoportokat szeretne felvenni, győződjön **meg** arról, hogy a **felhasználók új vendégeket adhatnak hozzá a szervezethez** , hogy engedélyezze a vendég hozzáférését. További információ: a [vendég hozzáférésének kezelése Microsoft 365 csoportokhoz](/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és a Microsoft 365hoz társított erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Ha azt szeretné, hogy a külső felhasználók hozzáférhessenek a SharePoint Online-webhelyhez és a Microsoft 365hoz társított erőforrásokhoz, akkor ügyeljen arra, hogy bekapcsolja a SharePoint Online külső megosztást. További információ: [külső megosztás be-és kikapcsolása](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
 - A következő témakörben talál további információt arról, hogyan állíthatja be a Microsoft 365-csoportok vendég házirendjét a PowerShell címtár szintjén: [példa: a vendég házirend konfigurálása csoportok számára a címtár szintjén](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
@@ -143,9 +143,9 @@ Kiválaszthatja, hogy mi történjen, ha egy külső felhasználó, aki egy, a h
 
 1. Ha el szeretné távolítani a vendég felhasználói fiókot ebben a címtárban, beállíthatja, hogy hány nap elteltével távolítsa el a rendszer. Ha el szeretné távolítani a vendég felhasználói fiókot, amint elvesztik az utolsó hozzárendelését bármelyik hozzáférési csomaghoz, állítsa be a **napok számát, mielőtt eltávolítja a külső felhasználót a címtárból** **0-ra**.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md)
 - [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

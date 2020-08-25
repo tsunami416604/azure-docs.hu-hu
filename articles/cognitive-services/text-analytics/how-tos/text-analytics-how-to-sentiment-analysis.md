@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/18/2020
 ms.author: aahi
 ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84141245"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
@@ -23,13 +23,13 @@ A Text Analytics API Hangulatelemzés funkciója kiértékeli a szöveget, és a
 
 A hangulati elemzési kérelem elküldése után az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és a megbízhatósági pontszámokat adja vissza a mondat és a dokumentum szintjén.
 
-A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzióban. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
+A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzióban. További információ: [támogatott nyelvek](../text-analytics-supported-languages.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Verziók és szolgáltatások Hangulatelemzés
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funkció                                   | Hangulatelemzés v3 | Hangulatelemzés v 3.1 (előzetes verzió) |
+| Szolgáltatás                                   | Hangulatelemzés v3 | Hangulatelemzés v 3.1 (előzetes verzió) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Egyszeri és batch-kérelmek módszerei    | X                     | X                                 |
 | Érzelmek pontszámai és címkézése             | X                     | X                                 |
@@ -57,7 +57,7 @@ A kivonás a Hangulatelemzés egyik funkciója, amely a 3,1-es verziótól kezd�
 
 Ha például egy ügyfél visszajelzést küld egy olyan szállodáról, mint például "a szoba nagyszerű volt, de a személyzet nem volt barátja", a kisegítő adatbányászat megkeresi a szövegben szereplő szempontokat, valamint a hozzájuk kapcsolódó véleményeket és érzelmeket:
 
-| Aspektus | Véleményét    | Hangulat |
+| Szempont | Véleményét    | Hangulat |
 |--------|------------|-----------|
 | szoba   | nagyszerű      | pozitív  |
 | személyzet  | nemkívánatos | negatív  |
@@ -68,7 +68,7 @@ Ha szeretné kivonni a kiértékelést az eredmények között, a megjelölést 
 
 ### <a name="preparation"></a>Előkészítés
 
-Az érzelmek elemzése nagyobb minőségi eredményt eredményez, ha kisebb mennyiségű szöveget ad meg a munkához. Ez a ellentétes a kulcsszókereséssel, amely nagyobb mennyiségű szöveg esetén teljesít jobban. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
+Az érzelmek elemzése nagyobb minőségi eredményt eredményez, ha kisebb mennyiségű szöveget ad meg a munkához. Ez a ellentétes a kulcsszókereséssel, amely nagyobb mennyiségű szöveg esetén teljesít jobban. Annak érdekében, hogy mindkét művelet a legjobb eredményt hozza, érdemes lehet ennek megfelelően átszervezni a bemeneteket.
 
 A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg és nyelv.
 
@@ -136,7 +136,7 @@ Az elemzés a kérelem megkapásakor történik meg. További információ a má
 A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen adatmennyiséget, és az eredményeket azonnal visszaadja a válaszban.
 
 
-### <a name="view-the-results"></a>Eredmények megtekintése
+### <a name="view-the-results"></a>Az eredmények megtekintése
 
 Az érzelmek elemzése a teljes dokumentumra vonatkozó hangulati címkét és megbízhatósági pontszámot ad vissza, valamint minden mondatot. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. A dokumentumok több mondattal is rendelkezhetnek, és az egyes dokumentumokban vagy mondatokban lévő megbízhatósági pontszámok akár 1-re is felvehetők.
 
@@ -289,6 +289,6 @@ Ebben a cikkben a Text Analytics API segítségével megtanulta az érzelmek ele
 
 ## <a name="see-also"></a>Lásd még
 
-* [Text Analytics áttekintése](../overview.md)
+* [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
 * [Újdonságok](../whats-new.md)

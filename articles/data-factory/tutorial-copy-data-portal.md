@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85253964"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy Azure SQL Database-adatbázisba Azure Data Factory használatával
@@ -77,7 +77,7 @@ Készítse elő a Blob Storage-et és az SQL Database-t az oktatóanyaghoz a kö
 
 1. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése****BE** van kapcsolva az SQL Serverhez, hogy a Data Factory tudjon adatokat írni az SQL Serverre. A beállítás ellenőrzéséhez és bekapcsolásához lépjen a logikai SQL Server > áttekintés > **a**kiszolgáló tűzfalának beállítása> az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőségre.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
@@ -141,7 +141,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 1. Keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
-1. Válassza az **OK** lehetőséget. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+1. Kattintson az **OK** gombra. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![Forrásadatkészlet](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
@@ -174,7 +174,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
     ![Új társított szolgáltatás mentése](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. Automatikusan megnyitja a **tulajdonságok beállítása** párbeszédpanelt. A **Tábla** területen válassza a **[dbo].[emp]** elemet. Ezután kattintson az **OK** gombra.
+1. Automatikusan megnyitja a **tulajdonságok beállítása** párbeszédpanelt. A **Tábla** területen válassza a **[dbo].[emp]** elemet. Ez után válassza az **OK** gombot.
 
 1. Lépjen a folyamatot tartalmazó lapra, és győződjön meg arról, hogy a **Fogadóadattár** mezőben az **OutputSqlDataset** érték van kiválasztva.
 
@@ -232,11 +232,11 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
     e. Frissítse a **befejezési időt** , hogy az aktuális dátum és idő pár perccel korábbi legyen. Az eseményindító csak a módosítások közzététele után lesz aktív. Ha úgy állítja be, hogy csak néhány percre van beállítva, és nem teszi közzé azt, akkor nem jelenik meg a trigger futtatása.
 
-    f. Válassza az **OK** lehetőséget.
+    f. Kattintson az **OK** gombra.
 
     : Az **aktivált** beállításnál válassza az **Igen**lehetőséget.
 
-    h. Válassza az **OK** lehetőséget.
+    h. Kattintson az **OK** gombra.
 
     > [!IMPORTANT]
     > Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját ezt figyelembe véve adja meg.
@@ -256,7 +256,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 1. Ellenőrizze, hogy a megadott befejezési időig percenként (folyamatfuttatásonként) két sor be van-e szúrva az **emp** táblába.
 
 ## <a name="next-steps"></a>További lépések
-A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
+A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

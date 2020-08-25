@@ -3,12 +3,12 @@ title: Recovery Services-tárolók diagnosztikai beállításainak használata
 description: Ez a cikk a Azure Backup korábbi és új diagnosztikai eseményeinek használatát ismerteti.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 908420a3447869d3e417da51e6b2501fbf2fa5a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612622"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763524"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services-tárolók diagnosztikai beállításainak használata
 
@@ -29,7 +29,7 @@ Azure Backup a következő diagnosztikai eseményeket biztosítja. Minden esemé
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-Ha az [örökölt Event](#legacy-event) AzureBackupReport használja, javasoljuk, hogy a legkorábbi események használatára váltson.
+Ha továbbra is az [örökölt Event](#legacy-event) AzureBackupReport használja, javasoljuk, hogy váltson át a fenti események használatára.
 
 További információ: [Azure Backup diagnosztikai események adatmodellje](./backup-azure-reports-data-model.md).
 
@@ -128,6 +128,6 @@ Az alábbi képen egy olyan felhasználó látható, aki három diagnosztikai be
 
 ![Három beállítás](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A diagnosztikai események Log Analytics adatmodelljének megismerése](./backup-azure-reports-data-model.md)

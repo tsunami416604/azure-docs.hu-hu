@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
 ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74813141"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Oktatóanyag: ExpressRoute-kör létrehozása és módosítása
@@ -20,7 +20,7 @@ ms.locfileid: "74813141"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -47,7 +47,7 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 
 ExpressRoute-áramkör létrehozásához válassza az új erőforrás létrehozása lehetőséget. 
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Válassza a **hálózatkezelés** > **ExpressRoute**lehetőséget az alábbi ábrán látható módon:
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Válassza a **hálózatkezelés**  >  **ExpressRoute**lehetőséget az alábbi ábrán látható módon:
 
    ![ExpressRoute-kapcsolatcsoport létrehozása](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
 
@@ -159,7 +159,7 @@ A **Törlés** ikonra kattintva törölheti a ExpressRoute áramkörét. Tekints
 * Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés vagy **kiépítve** **van,** akkor a szolgáltatóval kell együttműködni, hogy kiépítse az áramkört a saját oldalán. Továbbra is fenntartjuk az erőforrásokat és számlázunk, amíg a szolgáltató befejezi az áramkör kiépítését, és értesítést küld nekünk.
 * Ha a szolgáltató kiépítte az áramkört (a szolgáltató kiépítési állapota **nincs kiépítve**), törölheti az áramkört. Ez leállítja a kapcsolatcsoport számlázását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áramkör létrehozása után folytassa a következő lépésekkel:
 

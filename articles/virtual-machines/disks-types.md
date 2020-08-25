@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2b8a5cf1bd3df1405f148c5fe84701c04a4d0c0a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658119"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752009"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetőek el az Azure-ban?
 
@@ -26,7 +26,7 @@ Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a
 | Részletek | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Lemeztípus   |SSD   |SSD   |SSD   |HDD   |
-|Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](~/articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
+|Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
 |Lemez maximális mérete   |65 536 gibibájt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
 |Maximális átviteli sebesség   |2 000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Maximális IOPS-érték   |160 000    |20 000   |6.000   |2000   |
@@ -62,7 +62,7 @@ Az ultra-lemezek főbb képességei a következők:
 
 ### <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 
 Ha szeretné megkezdeni az ultra-lemezek használatát, tekintse meg a tárgyat ismertető cikket: az [Azure Ultra Disks használatával](disks-enable-ultra-ssd.md).
@@ -71,10 +71,10 @@ Ha szeretné megkezdeni az ultra-lemezek használatát, tekintse meg a tárgyat 
 
 Az Azure Premium SSD-k nagy teljesítményű és kis késleltetésű lemezes támogatást biztosítanak a virtuális gépek (VM) számára a bemeneti/kimeneti (i/o) igényű számítási feladatokhoz. A Premium Storage-lemezek sebességének és teljesítményének kihasználásához áttelepítheti a meglévő VM-lemezeket prémium SSD-re. A prémium SSD-k megfelelőek a kritikus fontosságú üzemi alkalmazások számára. A prémium SSD-k csak a Premium Storage-kompatibilis virtuálisgép-sorozatokkal használhatók.
 
-Ha többet szeretne megtudni az Azure-beli virtuálisgép-típusokról és-méretekről a Windowshoz, beleértve a Premium Storage-kompatibilis méreteket, tekintse meg a [Windowsos virtuális gépek méretét](~/articles/virtual-machines/windows/sizes.md). Ha többet szeretne megtudni az Azure-beli VM-típusokról és-méretekről, például a Premium Storage-kompatibilis méretekről, tekintse meg a Linux rendszerű [virtuális gépek méretét](~/articles/virtual-machines/linux/sizes.md)ismertető témakört. Ezek közül bármelyik cikkből megtudhatja, hogy az egyes virtuálisgép-méretekkel kapcsolatos cikkek alapján megállapíthatja, hogy a prémium szintű Storage kompatibilis-e.
+Ha többet szeretne megtudni az Azure-ban Windows vagy Linux rendszerhez készült egyéni virtuálisgép-típusokról és-méretekről, beleértve a Premium Storage-kompatibilis méreteket, lásd: [virtuális gépek méretei az Azure-ban](sizes.md). Ha többet szeretne megtudni az Azure-beli VM-típusokról és-méretekről, például a Premium Storage-kompatibilis méretekről, tekintse meg a [virtuális gépek méretei az Azure-ban](sizes.md)című témakört. Ezek közül bármelyik cikkből megtudhatja, hogy az egyes virtuálisgép-méretekkel kapcsolatos cikkek alapján megállapíthatja, hogy a prémium szintű Storage kompatibilis-e.
 
 ### <a name="disk-size"></a>Lemezméret
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Ha Premium Storage-lemezt épít ki, a standard szintű tárterülettől eltérően, akkor garantált a lemez kapacitása, IOPS és átviteli sebessége. Ha például létrehoz egy P50 lemezt, az Azure 4 095 GB tárolókapacitást, 7 500 IOPS és 250 MB/s adatátviteli sebességet biztosít a lemez számára. Az alkalmazás a kapacitás és a teljesítmény egészét vagy egy részét használhatja. A prémium SSD lemezek úgy lettek kialakítva, hogy alacsony egyszámjegyű ezredmásodperces késéseket és célként megadott IOPS és átviteli sebességet biztosítson az idő 99,9%-ában.
 
@@ -82,7 +82,7 @@ Ha Premium Storage-lemezt épít ki, a standard szintű tárterülettől eltér�
 
 A P30-nál kisebb méretű prémium SSD a lemezes adatmennyiséget, a IOPS-t pedig 3 500-ig, a sávszélességük pedig 170 Mbps-ig képes feltörten. A bursás automatizált, és kreditrendszer alapján működik. A kreditek automatikusan halmozódnak, amikor a lemezes forgalom a kiosztott teljesítményű célpont alá esik, és a rendszer automatikusan felhasználja a krediteket, amikor a forgalom a célon kívül esik, a maximális burst korlátig. A maximális burst korlát határozza meg a lemez IOPS & sávszélességét akkor is, ha a rendszer felhasználja a feltört krediteket. A lemezek felskálázása nagyobb toleranciát biztosít az i/o-minták előre nem látható változásaihoz. A legjobb megoldás az operációs rendszer lemezes rendszerindításához és a tüskés forgalommal rendelkező alkalmazásokhoz.    
 
-A lemezek kitörésének támogatását a rendszer alapértelmezés szerint engedélyezi a megfelelő méretű lemezekre vonatkozó új központi telepítések esetén, és nincs szükség felhasználói beavatkozásra. A megfelelő méretű lemezek meglévő lemezei esetében engedélyezheti a kitörést a két lehetőség közül: válassza le és csatlakoztassa újra a lemezt, vagy állítsa le, majd indítsa újra a csatlakoztatott virtuális gépet. Az összes érintett lemez mérete a teljes burst kredit gyűjtővel kezdődik, ha a lemez egy olyan virtuális géphez van csatlakoztatva, amely legfeljebb 30 percnél hosszabb időt támogat a maximálisan megengedettnél. Ha többet szeretne megtudni az Azure-lemezek kitörésével kapcsolatban, tekintse meg a [prémium SSD burst](~/articles/virtual-machines/linux/disk-bursting.md)című témakört. 
+A lemezek kitörésének támogatását a rendszer alapértelmezés szerint engedélyezi a megfelelő méretű lemezekre vonatkozó új központi telepítések esetén, és nincs szükség felhasználói beavatkozásra. A megfelelő méretű lemezek meglévő lemezei esetében engedélyezheti a kitörést a két lehetőség közül: válassza le és csatlakoztassa újra a lemezt, vagy állítsa le, majd indítsa újra a csatlakoztatott virtuális gépet. Az összes érintett lemez mérete a teljes burst kredit gyűjtővel kezdődik, ha a lemez egy olyan virtuális géphez van csatlakoztatva, amely legfeljebb 30 percnél hosszabb időt támogat a maximálisan megengedettnél. Ha többet szeretne megtudni az Azure-lemezek kitörésével kapcsolatban, tekintse meg a [prémium SSD burst](linux/disk-bursting.md)című témakört. 
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -93,7 +93,7 @@ A prémium SSD-k esetében minden I/O-művelet a 256 KiB-as vagy annál nagyobb 
 Az Azure standard SSD-k költséghatékony tárolási lehetőséget biztosítanak olyan számítási feladatokhoz, amelyeknek konzisztens teljesítményre van szükségük az alacsonyabb IOPS szinten. A standard SSD jó beléptetési szintű élményt nyújt azok számára, akik a felhőbe szeretnének költözni, különösen akkor, ha a helyszíni HDD-megoldásokon futó munkaterhelések ingadozásával kapcsolatos problémákat tapasztal. A standard merevlemezekhez képest a standard SSD-k jobb rendelkezésre állást, következetességet, megbízhatóságot és késést biztosítanak. A standard SSD-k a webkiszolgálók, az alacsony IOPS, a könnyű használatú vállalati alkalmazások és a fejlesztési/tesztelési feladatok számára alkalmasak. A standard merevlemezekhez hasonlóan a standard SSD-k is elérhetők az összes Azure-beli virtuális gépen.
 
 ### <a name="disk-size"></a>Lemezméret
-[!INCLUDE [disk-storage-standard-ssd-sizes](~/includes/disk-storage-standard-ssd-sizes.md)]
+[!INCLUDE [disk-storage-standard-ssd-sizes](../../includes/disk-storage-standard-ssd-sizes.md)]
 
 A standard SSD-k úgy lettek kialakítva, hogy egyszámjegyű ezredmásodperces késéseket, valamint a IOPS és az átviteli sebességet az előző táblázatban 99%-ban leírt korlátokig. A tényleges IOPS és átviteli sebesség esetenként eltérő lehet a forgalmi mintáktól függően. A standard SSD-k konzisztens teljesítményt biztosítanak, mint a HDD-lemezek, amelyek alacsonyabb késéssel rendelkeznek.
 
@@ -106,7 +106,7 @@ A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal 
 Az Azure standard HDD-k megbízható, alacsony díjszabású lemezes támogatást biztosítanak a késést okozó munkaterheléseket futtató virtuális gépek számára. A standard szintű Storage szolgáltatásban az adattárakat merevlemez-meghajtókon (HDD-k) tárolja a rendszer. A standard HDD lemezek késése, IOPS és átviteli sebessége az SSD-alapú lemezekhez képest szélesebb körben is változhat. Standard HDD lemezeken írási késések érhetők el a 10ms alatt, a legtöbb IO-művelet esetében pedig a 20ms alatt olvashatók a késések, azonban a tényleges teljesítmény az i/o-mérettől és a számítási feladatoktől függően változhat. A virtuális gépek használatakor szabványos HDD-lemezeket használhat a fejlesztési és tesztelési forgatókönyvekhez, valamint a kevésbé fontos munkaterhelésekhez. A standard szintű HDD-k minden Azure-régióban elérhetők, és minden Azure-beli virtuális géppel használhatók.
 
 ### <a name="disk-size"></a>Lemezméret
-[!INCLUDE [disk-storage-standard-hdd-sizes](~/includes/disk-storage-standard-hdd-sizes.md)]
+[!INCLUDE [disk-storage-standard-hdd-sizes](../../includes/disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -139,7 +139,7 @@ A Managed Disks díjszabásáról, beleértve a tranzakciós költségeket is, t
 Az Azure-beli virtuális gépek képesek jelezni, hogy kompatibilisek-e az ultra Disks szolgáltatással. Az ultra Disk-kompatibilis virtuális gépek dedikált sávszélesség-kapacitást foglalnak magukban a számítási virtuálisgép-példány és a blokk tárolási méretezési egység között a teljesítmény optimalizálása és a késés csökkentése érdekében. Ha ezt a képességet hozzáadja a virtuális géphez, a foglalási díjat csak akkor számítjuk fel, ha a virtuális gépen engedélyezte az ultra Disk képességet, anélkül, hogy az eszközhöz hozzá kellene csatlakoztatni. Ha Ultra lemez van csatlakoztatva az ultra Disk-kompatibilis virtuális géphez, ez a díj nem lesz alkalmazva. Ez a díj a virtuális gép által kiosztott vCPU. 
 
 > [!Note]
-> A [korlátozott alapszintű](~/articles/virtual-machines/linux/constrained-vcpu.md)virtuálisgép-méretek esetében a foglalás díja a vCPU tényleges számától, és nem a korlátozott magoktól függ. Standard_E32-8s_v3 esetén a foglalás díja 32 mag lesz. 
+> A [korlátozott alapszintű](constrained-vcpu.md)virtuálisgép-méretek esetében a foglalás díja a vCPU tényleges számától, és nem a korlátozott magoktól függ. Standard_E32-8s_v3 esetén a foglalás díja 32 mag lesz. 
 
 Az ultra Disk díjszabásáról az [Azure Disks díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/managed-disks/) tájékozódhat.
 

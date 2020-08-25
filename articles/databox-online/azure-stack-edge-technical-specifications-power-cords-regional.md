@@ -2,18 +2,18 @@
 title: Az Microsoft Azure Stack Edge hálózati technikai specifikációi a helyszín alapján | Microsoft Docs
 description: Ismerje meg az Azure Stack Edge-tápkábelek műszaki specifikációit.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: v-grpr
-ms.openlocfilehash: 2fb28bcb1edb9a18b4d1628e211f87f2c772ef80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664654"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783977"
 ---
 # <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack peremhálózati tápkábelek specifikációi
 
@@ -76,7 +76,7 @@ A következő táblázat segítségével megkeresheti a régiójának megfelelő
 |India|250|10|IS694 3x 0,75|1293|C13|1830|
 |Indonézia|250|10|H05Z1Z1 3x 0,75|CEE 7|C13|1830|
 |Írország|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
-|Izrael|250|2.5|H05VV-F 3x 1.00|SI 32|C13|2000|
+|Izrael|250|2,5|H05VV-F 3x 1.00|SI 32|C13|2000|
 |Olaszország|250|10|H05VV-F 3x 0,75|CEI 23-50|C13|1800|
 |Jamaica|125|10|SVE 18/3|NÉMA 5 – 15P|C13|1830|
 |Japán|125|15|VCTF 3x 2,00|JIS C 8303|C13|2300|
@@ -156,6 +156,6 @@ A következő táblázat segítségével megkeresheti a régiójának megfelelő
 |Zambia|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
 |Zimbabwe|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Stack Edge műszaki specifikációi](data-box-edge-technical-specifications-compliance.md)

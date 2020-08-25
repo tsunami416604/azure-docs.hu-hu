@@ -4,10 +4,10 @@ description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85315610"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
@@ -172,7 +172,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    **Feladat neve**: Használja a **contosoEHjob** nevet. Ez a mező a feladat nevét tartalmazza, amelynek globálisan egyedinek kell lennie.
 
-   **Előfizetés**: Válassza ki az előfizetését.
+   **Előfizetés**: Válassza ki előfizetését.
 
    **Erőforráscsoport**: Használja az eseményközpont által használt erőforráscsoportot (**ContosoResourcesEH**).
 
@@ -180,7 +180,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** lehetőségre. 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Create** (Létrehozás) gombra. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -197,7 +197,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
    **Bemeneti alias**: Használja a **contosoinputs** aliast. Ez a mező a bemeneti stream nevét tartalmazza, amelyet az adatlekérdezés meghatározásakor kell használni.
 
-   **Előfizetés**: Válassza ki az előfizetését.
+   **Előfizetés**: Válassza ki előfizetését.
 
    **Event Hubs-névtér**: Válassza ki az Event Hubs-névterét ($**eventHubNamespace**). 
 
@@ -211,7 +211,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
    ![Bemeneti stream Stream Analytics-feladathoz való hozzáadását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -233,7 +233,7 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 4. A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -262,7 +262,7 @@ Ez a lekérdezés a Power BI-vizualizációnak küldött végső adatok lekéré
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének tesztelése 
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374848"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749179"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -92,7 +92,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A HDInsight 4,0 nem támogatja a Apache Hive MapReduce. Használja helyette az Apache TEZ. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
 * A HDInsight 4,0 nem támogatja a Apache Storm.
 * A HDInsight 4,0 nem támogatja a ML Services-fürt típusát.
-* A kaptár nézet már nem érhető el a HDInsight 4,0-ben.
+* A kaptár nézet csak olyan HDInsight 4,0-fürtökön érhető el, amelyek verziószáma legalább 4,1. Ez a verziószám a Ambari rendszergazdai > verzióiban érhető el.
 * Az Apache Zeppelin rendszerhéj-értelmező nem támogatott a Spark és az interaktív lekérdezési fürtökben.
 * Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Csak az LLAP kikapcsolására van lehetősége.
 * A Azure Data Lake Storage Gen2 nem tudja menteni a Jupyter-jegyzetfüzeteket egy Spark-fürtben.

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 5a0c9d1888f1efbd90ef345cecabe244422abe95
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604681"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763626"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
 
@@ -124,9 +124,9 @@ A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-lo
 
 Az útválasztási táblák mostantól társítási és propagálási funkciókkal rendelkeznek. A már meglévő útválasztási táblázat olyan útválasztási táblázat, amely nem rendelkezik ezekkel a funkciókkal. Ha már meglévő útvonalak vannak a hub-útválasztásban, és az új képességeket szeretné használni, vegye figyelembe a következőket:
 
-* **Standard szintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez szükséges. Ha a Azure Portal lévő központ útválasztási szakaszának már meglévő útvonalakkal rendelkezik, először törölnie kell őket, majd kísérletet kell készítenie az új útválasztási táblák létrehozásához (az Azure Portal-ben a hub Route Tables (útválasztási táblázatok) szakaszában elérhető.
+* **Standard szintű virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**: ha a Azure Portalben már meglévő útvonalak vannak az Útválasztás szakaszban, először törölnie kell őket, majd kísérletet kell készítenie az új útválasztási táblák létrehozásához (a Azure Portal-ben lévő hub Route Tables (útválasztási táblázatok) szakaszában is elérhetők.
 
-* **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetést elvégezte. Ha a Azure Portal lévő központ útválasztási szakaszának már meglévő útvonalakkal rendelkezik, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard Virtual WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
+* **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**: ha a Azure Portalben már meglévő útvonalak vannak az Útválasztás szakaszban, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard Virtual WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>GYIK
 
@@ -136,6 +136,6 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a virtuális WAN legújabb funkcióinak frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) oldalon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

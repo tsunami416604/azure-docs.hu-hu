@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522844"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763490"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -17,7 +17,7 @@ A következő táblázatokban található információk segítségével elhárí
 
 ## <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
 
-Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárítása előtt végezze el az alábbi érvényesítést:
+Javasoljuk, hogy a következő érvényesítést a hibaelhárítás megkezdése előtt Microsoft Azure Backup Server (MABS) használata előtt végezze el:
 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Ellenőrizze, hogy van-e hálózati kapcsolat a MARS-ügynök és az Azure között](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/tároló hitelesítő adatai hiba: 100110 <br/> <br/>**Hibaüzenet**: az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni. | **OK**: Ez a probléma akkor fordul elő, ha a fájlokat az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával szeretné visszaállítani, és ha a helyreállított kiszolgáló, illetve az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nem ugyanahhoz a helyreállítási tárhoz van társítva.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
+| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/tároló hitelesítő adatai hiba: 100110 <br/> <br/>**Hibaüzenet**: az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni. | **OK**: Ez a probléma akkor fordul elő, ha a fájlokat az eredeti kiszolgálóról a külső DPM-helyreállítási lehetőség használatával szeretné visszaállítani, és ha a helyreállított kiszolgáló és az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nem ugyanahhoz a Recovery Services-tárolóhoz van társítva.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek
 
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Védelmi csoportok konfigurálása | A DPM nem tudja felsorolni az alkalmazás összetevőjét a védett számítógépen (a védett számítógép neve). | Válassza a **frissítés** lehetőséget a védelmi csoport felhasználói felületének konfigurálása képernyőn a megfelelő DataSource/Component szinten. |
 | Védelmi csoportok konfigurálása | Nem konfigurálható védelem | Ha a védett kiszolgáló egy SQL-kiszolgáló, ellenőrizze, hogy az [ebben a cikkben](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)leírtak szerint meg lett-e biztosítva a rendszerfiók (NTAuthority\System) rendszergazdai szerepkör engedélyei a védett számítógépen.
 | Védelmi csoportok konfigurálása | Nincs elegendő szabad terület a tárolóban ehhez a védelmi csoporthoz. | A tárolóhelyhez hozzáadott lemezek [nem tartalmazhatnak partíciót](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Törölje a lemezeken lévő összes meglévő kötetet. Ezután adja hozzá őket a Storage-készlethez.|
-| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi idő elteltével próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. | **Okozhat**<br/>Ez a hiba három feltétel teljesülése esetén fordul elő: Ha a biztonsági beállítások engedélyezve vannak, akkor a rendszer a korábban megadott minimális értékek alatti megőrzési időtartamot próbálja csökkenteni, és ha nem támogatott verziót szeretne használni. (A nem támogatott verziók a Microsoft Azure Backup Server 2.0.9052 és a Azure Backup Server Update 1 verziónál régebbiek.) <br/>**Javasolt művelet:**<br/> A házirendekkel kapcsolatos frissítések folytatásához állítsa a megadott megőrzési időszakot a minimális megőrzési időtartam fölé. (A minimális megőrzési idő napi hét nap, heti három hét, havi vagy egy év éves időszakra szól.) <br><br>Egy másik előnyben részesített módszer a biztonsági mentési ügynök és a Azure Backup Server frissítése az összes biztonsági frissítés kihasználása érdekében. |
+| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi idő elteltével próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. | **Okozhat**<br/>Ez a hiba három feltétel teljesülése esetén fordul elő: Ha a biztonsági beállítások engedélyezve vannak, akkor a rendszer a korábban megadott minimális értékek alatti megőrzési időtartamot próbálja csökkenteni, és ha nem támogatott verziót szeretne használni. (A nem támogatott verziók a Microsoft Azure Backup Server 2.0.9052 és a Azure Backup Server Update 1 verziónál alacsonyabbak.) <br/>**Javasolt művelet:**<br/> A házirendekkel kapcsolatos frissítések folytatásához állítsa a megadott megőrzési időszakot a minimális megőrzési időtartam fölé. (A minimális megőrzési idő napi hét nap, heti három hét, havi vagy egy év éves időszakra szól.) <br><br>Egy másik előnyben részesített módszer a biztonsági mentési ügynök és a Azure Backup Server frissítése az összes biztonsági frissítés kihasználása érdekében. |
 
 ## <a name="backup"></a>Backup
 
