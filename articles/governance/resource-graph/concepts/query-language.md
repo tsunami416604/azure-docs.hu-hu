@@ -1,14 +1,14 @@
 ---
 title: A lekérdezésnyelv megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723434"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798550"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -26,9 +26,9 @@ Ez a cikk az erőforrás-gráf által támogatott nyelvi összetevőket ismertet
 
 Az erőforrás-diagram több táblázatot is biztosít a Azure Resource Manager erőforrástípusok és tulajdonságaik által tárolt adattároláshoz. Ezek a táblák a (z `join` ) és a (z `union` ) operátorokkal használhatók a kapcsolódó erőforrástípusok tulajdonságainak lekéréséhez. Itt látható az erőforrás-gráfban elérhető táblák listája:
 
-|Resource Graph-táblák |Leírás |
+|Resource Graph-táblák |Description |
 |---|---|
-|További források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
+|Források |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
 |ResourceContainers |A tartalmazza az előfizetést (előzetes verzióban `Microsoft.Resources/subscriptions` ) és az erőforráscsoport ( `Microsoft.Resources/subscriptions/resourcegroups` ) típusú erőforrásokat és az adattípusokat. |
 |AdvisorResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Advisor` . |
 |AlertsManagementResources |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.AlertsManagement` . |
@@ -63,6 +63,25 @@ Resources
 
 > [!NOTE]
 > Az eredmények a alkalmazással való korlátozásakor `join` `project` a által használt tulajdonságnak `join` szerepelnie kell a következő példában szereplő két tábla _subscriptionId_ `project` .
+
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Kiterjesztett tulajdonságok (előzetes verzió)
+
+_Előzetes_ verzióként az erőforrás-gráf egyes erőforrástípusok további típusokkal kapcsolatos tulajdonságokkal rendelkeznek, amelyek a Azure Resource Manager által biztosított tulajdonságokkal meghaladják a lekérdezéseket. A (z) rendszer egy támogatott erőforrástípus esetében a _kiterjesztett tulajdonságok_néven ismert értékeket tartalmaz `properties.extended` . A következő lekérdezéssel megtekintheti, hogy mely erőforrástípusok rendelkeznek _kiterjesztett tulajdonságokkal_:
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+Példa: a virtuális gépek számának lekérése a következővel `instanceView.powerState.code` :
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
 
 ## <a name="resource-graph-custom-language-elements"></a>Az erőforrás-gráf egyéni nyelvi elemei
 
@@ -123,8 +142,7 @@ Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-
 Annak az előfizetésnek a hatóköre, amelyből a lekérdezés az erőforrásokat adja vissza, az erőforrás-gráf elérésének módjától függ. Az Azure CLI és a Azure PowerShell feltöltheti a kérelembe felvenni kívánt előfizetések listáját a jogosultsággal rendelkező felhasználó kontextusa alapján. Az előfizetések listája manuálisan is definiálható az **előfizetések** és az **előfizetési** paraméterek esetében.
 A REST API és az összes többi SDK-ban a kérés részeként explicit módon meg kell határozni az előfizetések listáját.
 
-**Előzetes**verzióként REST API verziója `2020-04-01-preview` egy tulajdonság hozzáadásával a lekérdezés hatókörét egy [felügyeleti csoportba](../../management-groups/overview.md)helyezi. Ez az előzetes verziójú API azt is lehetővé teszi, hogy az előfizetés tulajdonság nem kötelező. Ha sem a felügyeleti csoport, sem az előfizetési lista nincs definiálva, a lekérdezési hatókör a hitelesített felhasználó által elérhető összes erőforrás. Az új `managementGroupId` tulajdonság a felügyeleti csoport azonosítóját veszi át, amely eltér a felügyeleti csoport nevétől.
-Ha `managementGroupId` meg van adva, a rendszer a megadott felügyeleti csoport hierarchiájának első 5000-előfizetésének erőforrásait tartalmazza. `managementGroupId` nem használható egyszerre a következővel: `subscriptions` .
+**Előzetes**verzióként REST API verziója `2020-04-01-preview` egy tulajdonság hozzáadásával a lekérdezés hatókörét egy [felügyeleti csoportba](../../management-groups/overview.md)helyezi. Ez az előzetes verziójú API azt is lehetővé teszi, hogy az előfizetés tulajdonság nem kötelező. Ha nincs definiálva felügyeleti csoport vagy előfizetési lista, a lekérdezési hatókör a hitelesített felhasználó által elérhető összes erőforrás. Az új `managementGroupId` tulajdonság a felügyeleti csoport azonosítóját veszi át, amely eltér a felügyeleti csoport nevétől. Ha `managementGroupId` meg van adva, a rendszer a megadott felügyeleti csoport hierarchiájának első 5000-előfizetésének erőforrásait tartalmazza. `managementGroupId` nem használható egyszerre a következővel: `subscriptions` .
 
 Példa: a "saját felügyeleti csoport" nevű felügyeleti csoport hierarchiájában lévő összes erőforrás lekérdezése a (z) myMG AZONOSÍTÓval.
 
@@ -175,7 +193,7 @@ Egyes tulajdonságokat, például a vagy a karaktert tartalmazó neveket `.` be 
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183207"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798312"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -33,7 +33,7 @@ Hozzon létre egy új Office 365 vagy biztonsági csoportot az "isAssignableToRo
 Ha nem szeretné, hogy a csoport tagjai rendelkezzenek állandó hozzáféréssel a szerepkörhöz, használhatja a Azure AD Privileged Identity Management. Rendeljen hozzá egy csoportot egy Azure AD-szerepkör jogosult tagjaként. A csoport minden tagja ezután jogosult a hozzárendelés aktiválására ahhoz a szerepkörhöz, amelyhez a csoport hozzá van rendelve. Ezután aktiválják a szerepkör-hozzárendelést egy rögzített időtartamra.
 
 > [!Note]
-> A Privileged Identity Management frissített verziójának kell lennie ahhoz, hogy a PIM használatával hozzá lehessen rendelni egy csoportot az Azure AD-szerepkörhöz. Előfordulhat, hogy a PIM régebbi verziójával rendelkezik, mert az Azure AD-szervezet kihasználja a Privileged Identity Management API-t. Lépjen kapcsolatba az aliassal a pim_preview@microsoft.com szervezet áthelyezéséhez és az API frissítéséhez. További információ: [Az Azure ad szerepkörei és funkciói a PIM-ben](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features).
+> A Privileged Identity Management frissített verziójának kell lennie ahhoz, hogy a PIM használatával hozzá lehessen rendelni egy csoportot az Azure AD-szerepkörhöz. Előfordulhat, hogy a PIM régebbi verziójával rendelkezik, mert az Azure AD-szervezet kihasználja a Privileged Identity Management API-t. Lépjen kapcsolatba az aliassal a pim_preview@microsoft.com szervezet áthelyezéséhez és az API frissítéséhez. További információ: [Az Azure ad szerepkörei és funkciói a PIM-ben](../privileged-identity-management/azure-ad-roles-features.md).
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Miért kell kikényszeríteni egy speciális csoport létrehozását a szerepkörhöz való hozzárendelésre.
 
@@ -65,7 +65,7 @@ A következő forgatókönyvek jelenleg nem támogatottak:
   - A PIM-portálon a **saját szerepkörök** csak egy szerepkör-hozzárendelést tudnak megjeleníteni, függetlenül attól, hogy a hozzárendelés hány módszerből áll (egy vagy több csoporton és közvetlenül).
 - *Azure ad P2 licenccel rendelkező ügyfeleinknek* Még a csoport törlése után is megjelenik a szerepkör jogosult tagja a PIM felhasználói felületén. Funkcionálisan nincs probléma; Ez csak egy gyorsítótár-probléma a Azure Portalban.  
 - Az Exchange felügyeleti központ még nem ismeri fel a szerepkör-tagságot, de a PowerShell-parancsmag működni fog.
-- Azure Information Protection portálon (a klasszikus portálon) még nem ismeri fel a szerepkör-tagságot a csoporton keresztül. [Áttelepítheti az egységes érzékenységű címkézési platformra](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) , majd az Office 365 biztonsági & megfelelőségi központjának használatával csoportos hozzárendeléseket használhat a szerepkörök kezeléséhez.
+- Azure Information Protection portálon (a klasszikus portálon) még nem ismeri fel a szerepkör-tagságot a csoporton keresztül. [Áttelepítheti az egységes érzékenységű címkézési platformra](/azure/information-protection/configure-policy-migrate-labels) , majd az Office 365 biztonsági & megfelelőségi központjának használatával csoportos hozzárendeléseket használhat a szerepkörök kezeléséhez.
 
 Ezeket a problémákat kijavítja.
 

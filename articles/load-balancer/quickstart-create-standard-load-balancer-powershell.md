@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: bdacd752ab549d0caed4d3579ac8d0c3b2606477
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 3589aeb21053525e481f3448270d236265dd698e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925702"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815317"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
 
@@ -38,7 +38,7 @@ A Azure Load Balancer használatának első lépései a Azure PowerShell haszná
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -56,7 +56,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 ```
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[1. lehetőség (alapértelmezett): nyilvános Load Balancer létrehozása (standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard termékváltozat**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
@@ -219,7 +219,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
 
-### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Virtuális hálózat és Azure Bastion-gazdagép létrehozása
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
@@ -228,16 +228,13 @@ Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/mo
 * **MyBackendSubnet**nevű alhálózat.
 * Virtuális hálózat **10.0.0.0/16**.
 * Alhálózat **10.0.0.0/24**.
-* Megerősített alhálózat **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
-$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
-$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
@@ -246,35 +243,10 @@ $vpfx = '10.0.0.0/16'
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
-## Create Bastion subnet config ##
-$bassubnetConfig =
-New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
-
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
 ```
-Hozza létre a megerősített gazdagépet a [New-AzBastion](/powershell/module/az.network/new-azbastion):
-
-* Elnevezett **myBastionHost**.
-* **MyBastionIP**nyilvános IP-címe.
-
-```azurepowershell-interactive
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$bas = 'myBastionHost'
-$basip = 'myBastionIP'
-$all = 'Static'
-$sku 'Standard'
-
-## Create public IP address for Bastion host ##
-$baspubip = 
-New-AzPublicIPAddress -ResourceGroupName $rg -Name $basip -Location $loc -AllocationMethod $all -Sku $sku
-
-## Create the bastion host using the $vnet variable from previous step ##
-New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $baspubip -VirtualNetwork $vnet
-```
-Néhány percet is igénybe vehet, amíg a megerősített gazdagép üzembe lesz helyezve a virtuális hálózaton.
 
 ### <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
@@ -285,7 +257,7 @@ Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-A
 * Elnevezett **myNSGRuleHTTP**.
 * A **http engedélyezésének**leírása.
 * Hozzáférés **engedélyezése**.
-* **TCP**protokoll.
+* Protokoll **(*)**.
 * Irány **bejövő**.
 * **2000**prioritás.
 * Az **Internet**forrása.
@@ -298,7 +270,7 @@ Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-A
 $rnm = 'myNSGRuleHTTP'
 $des = 'Allow HTTP'
 $acc = 'Allow'
-$pro = 'Tcp'
+$pro = '*'
 $dir = 'Inbound'
 $pri = '2000'
 $spfx = 'Internet'
@@ -596,6 +568,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 ```azurepowershell-interactive
 ## Variables for the command ##
 $fen = 'myFrontEndOutbound'
+$lbn = 'myLoadBalancer'
 
 ## Get the load balancer configuration  and apply the frontend config##
 Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFrontendIPConfig -Name $fen -PublicIpAddress $publicIP | Set-AzLoadBalancer
@@ -734,7 +707,7 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 
 ```
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[2. lehetőség: nyilvános terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
@@ -885,7 +858,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 A virtuális gépek üzembe helyezése és a terheléselosztó tesztelése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
 
-### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Virtuális hálózat és Azure Bastion-gazdagép létrehozása
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
@@ -894,16 +867,13 @@ Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](/powershell/mo
 * **MyBackendSubnet**nevű alhálózat.
 * Virtuális hálózat **10.0.0.0/16**.
 * Alhálózat **10.0.0.0/24**.
-* Megerősített alhálózat **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
-$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
-$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
@@ -912,31 +882,9 @@ $vpfx = '10.0.0.0/16'
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
-## Create Bastion subnet config ##
-$bassubnetConfig =
-New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
-
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
-```
-Hozza létre a megerősített gazdagépet a [New-AzBastion](/powershell/module/az.network/new-azbastion):
-
-* Elnevezett **myBastionHost**.
-* **MyBastionIP**nyilvános IP-címe.
-
-```azurepowershell-interactive
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$bas = 'myBastionHost'
-$basip = 'myBastionIP'
-
-## Create public IP address for Bastion host ##
-$basip = 
-New-AzPublicIPAddress -ResourceGroupName $rg -Location $loc
-
-## Create the bastion host using the $vnet variable from previous step ##
-New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $basip -VirtualNetwork $vnet
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
 ```
 
 ### <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
@@ -948,7 +896,7 @@ Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-A
 * Elnevezett **myNSGRuleHTTP**.
 * A **http engedélyezésének**leírása.
 * Hozzáférés **engedélyezése**.
-* **TCP**protokoll.
+* Protokoll **(*)**.
 * Irány **bejövő**.
 * **2000**prioritás.
 * Az **Internet**forrása.
@@ -961,7 +909,7 @@ Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a [New-A
 $rnm = 'myNSGRuleHTTP'
 $des = 'Allow HTTP'
 $acc = 'Allow'
-$pro = 'Tcp'
+$pro = '*'
 $dir = 'Inbound'
 $pri = '2000'
 $spfx = 'Internet'
@@ -1236,51 +1184,74 @@ A három virtuális gép létrehozása és konfigurálása néhány percet vesz 
 
 ## <a name="install-iis"></a>Az IIS telepítése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+A [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) használatával telepítse az egyéni szkriptek bővítményét. 
 
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza ki a **myVM1** , amely a **myresourcegrouplb erőforráscsoportban** erőforráscsoporthoz található.
+A bővítmény futtatja a PowerShell Add-WindowsFeature Web-Server parancsot az IIS webkiszolgáló telepítéséhez, majd frissíti a Default.htm lapot a virtuális gép állomásneve megjelenítéséhez:
 
-3. Az **Áttekintés** lapon válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
+### <a name="vm1"></a>VM1 
 
-4. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+```azurepowershell-interactive
+## Variables for command. ##
+$rg = 'myResourceGroupLB'
+$enm = 'IIS'
+$vmn = 'myVM1'
+$loc = 'eastus'
+$pub = 'Microsoft.Compute'
+$ext = 'CustomScriptExtension'
+$typ = '1.8'
 
-5. Kattintson a **Csatlakozás** gombra.
+Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+```
 
-6. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök**  >  **Windows PowerShell**elemre.
+### <a name="vm2"></a>VM2 
 
-7. A PowerShell ablakban futtassa a következő parancsokat:
+```azurepowershell-interactive
+## Variables for command. ##
+$rg = 'myResourceGroupLB'
+$enm = 'IIS'
+$vmn = 'myVM2'
+$loc = 'eastus'
+$pub = 'Microsoft.Compute'
+$ext = 'CustomScriptExtension'
+$typ = '1.8'
 
-    * Az IIS-kiszolgáló telepítése
-    * Az alapértelmezett iisstart.htm fájl eltávolítása
-    * Adjon hozzá egy új iisstart.htm fájlt, amely megjeleníti a virtuális gép nevét:
+Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+```
 
-   ```powershell
-    
-    # install IIS server role
-     Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # remove default htm file
-     Remove-Item  C:\inetpub\wwwroot\iisstart.htm
-    
-    # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
-   ```
-8. A megerősített munkamenet lezárása a **myVM1**.
+### <a name="vm3"></a>VM3
 
-9. Ismételje meg az 1 – 8. lépést az IIS és a frissített iisstart.htm fájl **myVM2** és **myVM3**történő telepítéséhez.
+```azurepowershell-interactive
+## Variables for command. ##
+$rg = 'myResourceGroupLB'
+$enm = 'IIS'
+$vmn = 'myVM3'
+$loc = 'eastus'
+$pub = 'Microsoft.Compute'
+$ext = 'CustomScriptExtension'
+$typ = '1.8'
+
+Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+```
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
-1. A Azure Portal keresse meg a terheléselosztó nyilvános IP-címét az **Áttekintés** képernyőn. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd válassza a **myPublicIP**lehetőséget.
+A Load Balancer nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) :
 
-2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
+```azurepowershell-interactive
+  ## Variables for command. ##
+  $rg = 'myResourceGroupLB'
+  $ipn = 'myPublicIP'
+    
+  Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ipn | select IpAddress
+```
+
+Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
    ![IIS-webkiszolgáló](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
 
-
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és a többi erőforrás.
 
@@ -1303,5 +1274,5 @@ Ebben a rövid útmutatóban
 Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [mi Azure Load Balancer?](load-balancer-overview.md) és [Load Balancer a gyakori kérdések](load-balancer-faqs.md)című témakört.
 
 * További információ a [Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).
-* További információ az Azure Bastion-ről: [Mi az az Azure Bastion?](https://docs.microsoft.com/azure/bastion/bastion-overview).
+
 

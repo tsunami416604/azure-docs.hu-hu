@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374576"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798329"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Munkahelyi vagy iskolai fiók lezárása egy nem felügyelt Azure AD-szervezetben
 
@@ -32,9 +32,9 @@ A nem felügyelt szervezetekben lévő felhasználók gyakran jönnek létre az 
 
 A fiók lezárása előtt ellenőrizze a következő elemeket:
 
-* Győződjön meg arról, hogy egy nem felügyelt Azure AD-szervezet felhasználója. Ha felügyelt szervezethez tartozik, nem zárhatja be a fiókját. Ha egy felügyelt szervezethez tartozik, és be szeretné állítani a fiókját, forduljon a rendszergazdához. További információ arról, hogyan állapítható meg, hogy egy nem felügyelt szervezethez tartozik-e: [a felhasználó törlése a nem felügyelt bérlőből](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Győződjön meg arról, hogy egy nem felügyelt Azure AD-szervezet felhasználója. Ha felügyelt szervezethez tartozik, nem zárhatja be a fiókját. Ha egy felügyelt szervezethez tartozik, és be szeretné állítani a fiókját, forduljon a rendszergazdához. További információ arról, hogyan állapítható meg, hogy egy nem felügyelt szervezethez tartozik-e: [a felhasználó törlése a nem felügyelt bérlőből](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
-* Mentse a megőrizni kívánt összes adatfájlt. További információ az exportálási kérelmek beküldéséről: a nem [felügyelt bérlők számára a rendszer által létrehozott naplók elérése és exportálása](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
+* Mentse a megőrizni kívánt összes adatfájlt. További információ az exportálási kérelmek beküldéséről: a nem [felügyelt bérlők számára a rendszer által létrehozott naplók elérése és exportálása](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 
 > [!WARNING]
 > A fiók bezárása visszafordíthatatlan. Ha bezárta a fiókját, az összes személyes adatait eltávolítja a rendszer. Többé nem fog hozzáférni fiókjához és a fiókjához tartozó adataihoz.
@@ -53,8 +53,8 @@ Nem felügyelt munkahelyi vagy iskolai fiók bezárásához kövesse az alábbi 
 
     ![Adatkérések – Bezárás megerősítése](./media/users-close-account/confirm-close.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
-- [A felhasználó törlése nem felügyelt bérlőből](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [A rendszer által létrehozott naplók elérése és exportálása nem felügyelt bérlőnél](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)
+- [A felhasználó törlése nem felügyelt bérlőből](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [A rendszer által létrehozott naplók elérése és exportálása nem felügyelt bérlőnél](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

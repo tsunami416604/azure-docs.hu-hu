@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606128"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817034"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
 
@@ -197,12 +197,16 @@ Adja meg az ajánlathoz tartozó emblémákat és képeket. Minden képnek PNG f
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg ajánlata emblémáját három képpontos méretben:
-- **Kicsi** (kötelező; 48 x 48)
-- **Nagyméretű** (kötelező; 216 x 216)
-- **Wide** (opcionális; 255 x 115)
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** embléma létrehozásához. Ezt később is lecserélheti egy másik rendszerképpel.
+
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
+
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Képernyőképek
 

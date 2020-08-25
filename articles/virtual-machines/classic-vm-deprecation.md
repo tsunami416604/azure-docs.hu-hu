@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505308"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754803"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>A IaaS-erőforrások migrálása a Azure Resource Managerra 2023. március 1-től 
 
@@ -38,6 +38,8 @@ Ez a nyugdíjazás **nem** érinti a következő Azure-szolgáltatásokat és-fu
 ## <a name="what-actions-should-i-take"></a>Milyen műveleteket kell elvégeznie? 
 
 - Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre, ma. 
+
+- Készítse el az összes érintett virtuális gép listáját. Az [Azure Portal](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) virtuálisgép-paneljén található "Virtual Machines (klasszikus)" virtuálisgép-típus az előfizetésen belüli összes érintett virtuális gép. 
 
 - [További](./windows/migration-classic-resource-manager-overview.md) információ a klasszikus [Linux](./linux/migration-classic-resource-manager-plan.md) -és Windows- [alapú](./windows/migration-classic-resource-manager-plan.md) virtuális gépek Azure Resource Manager való áttelepítéséről.
 

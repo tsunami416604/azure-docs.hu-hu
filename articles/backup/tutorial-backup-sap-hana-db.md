@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611823"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757489"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -125,7 +125,7 @@ A parancs kimenetének meg kell jelennie a {SID} {DBNAME} kulcsnak, amely a felh
 >[!NOTE]
 > Győződjön meg arról, hogy rendelkezik a SSFS-fájlok egyedi készletével `/usr/sap/{SID}/home/.hdb/` . Ezen az elérési úton csak egy mappa lehet.
 
-## <a name="create-a-recovery-service-vault"></a>Recovery Service-tároló létrehozása
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A Recovery Services-tároló egy olyan entitás, amely az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat tárolja. A Recovery Services-tároló a védett virtuális gépekhez társított biztonsági mentési házirendeket is tartalmazza.
 
@@ -149,7 +149,7 @@ Egy Recovery Services-tároló létrehozásához:
 
    ![Helyreállítási tár létrehozása](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * **Név**: a név a Recovery Services-tároló azonosítására szolgál, és egyedinek kell lennie az Azure-előfizetésben. Adjon meg legalább két, de legfeljebb 50 karakterből álló nevet. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat. Ebben az oktatóanyagban a **SAPHanaVault**nevet használtuk.
+   * **Név**: a név a Recovery Services-tár azonosítására szolgál, és egyedinek kell lennie az Azure-előfizetésben. Adjon meg legalább két, de legfeljebb 50 karakterből álló nevet. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat. Ebben az oktatóanyagban a **SAPHanaVault**nevet használtuk.
    * **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha csak egy előfizetés tagja, akkor ezt a nevet fogja látni. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Több választási lehetőség is van, ha a munkahelyi vagy iskolai fiók egynél több Azure-előfizetéshez van társítva. Itt a **SAP HANA Solution Lab előfizetési** előfizetést használtuk.
    * **Erőforráscsoport**: használjon meglévő erőforráscsoportot, vagy hozzon létre egy újat. Itt **SAPHANADemo**használunk.<br>
    Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata**lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a nevet. Az erőforráscsoportok részletes ismertetését itt tekintheti meg: [Azure Resource Manager Overview (áttekintés](../azure-resource-manager/management/overview.md)).
@@ -243,7 +243,7 @@ A házirend-beállításokat a következőképpen adhatja meg:
 
 Sikeresen konfigurálta a (z) SAP HANA adatbázis (ok) hoz készült biztonsági másolat (oka) t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [futtathat igény szerinti biztonsági mentést az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokon](backup-azure-sap-hana-database.md#run-an-on-demand-backup)
 * Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](sap-hana-db-restore.md)

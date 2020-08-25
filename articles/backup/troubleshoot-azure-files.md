@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524488"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763677"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -22,10 +22,10 @@ Ez a cikk a Azure Backup szolgáltatással történő biztonsági mentés vagy a
 - Ellenőrizze, hogy a Storage-fiókhoz tartozó fájlmegosztás már védett-e egy másik Recovery Services-tárolóval.
 
   >[!NOTE]
-  >A Storage-fiókokban lévő összes fájlmegosztást csak egy Recovery Services tárolóban lehet védeni. [Ezzel a parancsfájllal](scripts/backup-powershell-script-find-recovery-services-vault.md) megkeresheti azt a Recovery Services-tárolót, ahol a Storage-fiók regisztrálva van.
+  >A Storage-fiókokban lévő összes fájlmegosztást csak egy Recovery Services tárolóban lehet védeni. [Ezzel a parancsfájllal](scripts/backup-powershell-script-find-recovery-services-vault.md) megkeresheti azt a Recovery Services tárolót, ahol a Storage-fiók regisztrálva van.
 
 - Győződjön meg arról, hogy a fájlmegosztás nem szerepel a nem támogatott Storage-fiókok egyikében sem. A támogatott Storage-fiókok kereséséhez tekintse meg az [Azure-fájlmegosztás biztonsági mentésének támogatási mátrixát](azure-file-share-support-matrix.md) .
-- Győződjön meg arról, hogy a Storage-fiók neve és az erőforráscsoport neve nem haladja meg a 84 karaktert az új Storage-fiókok esetében, illetve a 77 karaktert a klasszikus Storage-fiókok esetében. 
+- Győződjön meg arról, hogy a Storage-fiók neve és az erőforráscsoport neve nem haladja meg a 84 karaktert az új Storage-fiókok esetében, illetve a 77 karaktert a klasszikus Storage-fiókok esetében.
 - Ellenőrizze a Storage-fiók tűzfal-beállításait, és győződjön meg arról, hogy engedélyezve van-e a megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz lehetőség.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Hiba történt a portál állapotában a Storage-fiókok felderítése során
@@ -54,7 +54,7 @@ Próbálja megismételni a regisztrációt. Ha a probléma továbbra is fennáll
 A Azure Portal nyissa **meg a tároló**  >  **biztonsági mentési infrastruktúrájának**  >  **Storage-fiókjait** , és kattintson a **regisztráció megszüntetése** gombra a Storage-fiókok Recovery Services-tárból való eltávolításához.
 
 >[!NOTE]
->A Recovery Services-tároló csak a tárban regisztrált összes Storage-fiók regisztrációjának törlése után törölhető.
+>Recovery Services-tárolót csak a tárolóban regisztrált összes Storage-fiók regisztrációjának törlése után lehet törölni.
 
 ## <a name="common-backup-or-restore-errors"></a>Gyakori biztonsági mentési vagy visszaállítási hibák
 
@@ -318,7 +318,7 @@ Hibaüzenet: a biztonsági mentés nem sikerült, mert a társított Azure-fájl
 
 Ellenőrizze, hogy a mentett fájlmegosztás véglegesen törölve lett-e. Ha igen, állítsa le a fájlmegosztás biztonsági mentését, hogy elkerülje az ismételt biztonsági mentési hibákat. A védelem leállításával kapcsolatos további információkért lásd: [Az Azure-fájlmegosztás védelmének leállítása](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure-fájlmegosztás biztonsági mentéséről további információt a következő témakörben talál:
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604754"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817017"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -282,18 +282,19 @@ A mező kitöltése kötelező.
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
 - **Dokumentumok** (kötelező) – kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz, PDF formátumban, legalább egy és legfeljebb három dokumentumhoz.
-- **Képek**  – emblémaként szolgáló képek feltöltése PNG formátumban:
+- **Képek** (kötelező) – több hely is van, ahol az ajánlat emblémájának képei az egész piactéren megjelenhetnek. Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
 
-  - **Kicsi** (48 x 48 képpont, kötelező)
-  - **Közepes** (90 x 90 képpont, kötelező)
-  - **Nagyméretű** (216 x 216 képpont, kötelező)
-  - **Széles** (255 x 115 képpont) (nem kötelező)
+  - **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+  - **Közepes** (90 x 90 px, nem kötelező)
+  - **Kicsi** (48 x 48 px, opcionális)
+  
+  Ezeket az emblémákat a lista különböző helyein használják:
 
-   Ezt a három embléma-méretet az online áruházak különböző helyein használják:
+   - Az Azure Marketplace-en és a Microsoft AppSourceban megjelenik a nagyméretű embléma az ajánlati lista oldalán.
+   - A közepes embléma akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
+   - A kis embléma megjelenik az Azure Marketplace keresési eredményei között, valamint a Microsoft AppSource főoldalán és a keresési eredmények oldalon.
 
-   -   A kis embléma (48 x 48 képpont) megjelenik az Azure piactér keresési eredményei között, valamint a Microsoft AppSource főoldalon és a keresési eredmények oldalon. 
-   -   A közepes embléma (90 x 90 képpont) akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
-   -   A nagyméretű embléma (216 x 216 és 350 x 350 képpont között) megjelenik az ajánlati lista lapján az Azure Marketplace-en és a Microsoft AppSourceban.
+   [!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 - **Képernyőképek** (kötelező) – adjon meg legfeljebb öt képernyőképet, amely az ajánlatát mutatja be, a mérete 1280 x 720 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező) – az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.
@@ -486,6 +487,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - Adjon meg tesztelési utasításokat a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget, ha közzé szeretné tenni az ajánlatát a nyilvános (vagy ha egy privát ajánlat, a privát célközönség) számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

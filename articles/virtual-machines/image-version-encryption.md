@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245553"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816490"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
@@ -27,9 +27,9 @@ Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosí
 
 Ehhez a cikkhez már van szükség a lemezképhez használni kívánt lemezes titkosításra.
 
-- Ha csak az ügyfél által felügyelt kulcsot szeretné használni, tekintse meg az **ügyfél által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással** a [Azure Portal](./windows/disks-enable-customer-managed-keys-portal.md) vagy a [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)használatával című témakört.
+- Ha csak az ügyfél által felügyelt kulcsot szeretné használni, tekintse meg az **ügyfél által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással** a [Azure Portal](./disks-enable-customer-managed-keys-portal.md) vagy a [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)használatával című témakört.
 
-- Ha a platform által felügyelt és az ügyfél által felügyelt kulcsokat is szeretné használni (dupla titkosításhoz), tekintse meg a következőt: a [Azure Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) vagy a [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)használatával **engedélyezze a kettős titkosítás** használatát.
+- Ha a platform által felügyelt és az ügyfél által felügyelt kulcsokat is szeretné használni (dupla titkosításhoz), tekintse meg a következőt: a [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) vagy a [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)használatával **engedélyezze a kettős titkosítás** használatát.
     > [!IMPORTANT]
     > Ezt a hivatkozást kell használnia [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) a Azure Portal eléréséhez. A kettős titkosítás jelenleg nem látható a nyilvános Azure Portal a hivatkozás használata nélkül.
 

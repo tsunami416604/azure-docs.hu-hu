@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606149"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817051"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -182,16 +182,16 @@ Adjon meg legalább egy (és legfeljebb három) kapcsolódó marketing-dokumentu
 
 ### <a name="marketplace-images"></a>Marketplace-rendszerképek
 
-Adja meg az ajánlathoz tartozó emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. 
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** embléma létrehozásához. Ezt később is lecserélheti egy másik rendszerképpel.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
+- **Kicsi** (48 x 48 px, opcionális)
 
-Töltse fel az ajánlat emblémáját két méretben:
-
-* **Kicsi** (48 x 48 képpont)
-* **Nagyméretű** (216 x 216 képpont)
+Ezeket az emblémákat a lista különböző helyein használják:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a `https://upload.xboxlive.com` partner központ által használt szolgáltatást.
@@ -315,6 +315,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

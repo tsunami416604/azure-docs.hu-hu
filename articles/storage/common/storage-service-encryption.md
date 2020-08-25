@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797921"
+ms.locfileid: "88814450"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok Azure Storage-titkosítása
 
@@ -48,8 +48,8 @@ Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosa
 | Titkosítási/visszafejtési műveletek | Azure | Azure | Azure |
 | Az Azure Storage szolgáltatásai támogatottak | Mind | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
 | Kulcstároló | Microsoft Key Store | Azure Key Vault | Ügyfél saját kulcstárolója |
-| Kulcs rotációs felelőssége | Microsoft | Customer | Customer |
-| Kulcs vezérlő | Microsoft | Customer | Customer |
+| Kulcs rotációs felelőssége | Microsoft | Ügyfél | Ügyfél |
+| Kulcs vezérlő | Microsoft | Ügyfél | Ügyfél |
 
 <sup>1</sup> . az ügyfél által felügyelt kulcsok üzenetsor-tárolással történő létrehozását támogató fiók létrehozásával kapcsolatos információkért lásd: [hozzon létre egy fiókot, amely támogatja az ügyfél által felügyelt kulcsokat a várólistákhoz](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> . az ügyfél által felügyelt kulcsokat tartalmazó fiók létrehozásával kapcsolatos információkért lásd: [hozzon létre egy fiókot, amely támogatja az ügyfél által felügyelt kulcsokat a táblázatokhoz](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
@@ -68,7 +68,7 @@ Az Azure Storage erőforrás-szolgáltató használatával létrehozhat egy vagy
 Miután létrehozott egy titkosítási hatókört, megadhatja a titkosítási hatókört egy tároló vagy blob létrehozásához szükséges kérelemben. A titkosítási hatókör létrehozásával kapcsolatos további információkért lásd: [titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](../blobs/encryption-scope-manage.md).
 
 > [!NOTE]
-> A titkosítási hatókörök nem támogatottak az előzetes verzióban elérhető, olvasási hozzáférésű geo-redundáns tárolási (RA-GRS) fiókokkal.
+> A titkosítási hatókörök nem támogatottak olvasási hozzáférésű geo-redundáns tárolással (RA-GRS) és olvasási hozzáférésű geo-Zone-redundáns tárolási (RA-GZRS) fiókokkal az előzetes verzió során.
 
 > [!IMPORTANT]
 > A titkosítási hatókörök előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
@@ -97,7 +97,7 @@ Ha a titkosítási hatókör védett a Azure Key Vault ügyfél által felügyel
 > [!NOTE]
 > Titkosítási hatókört nem lehet törölni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - [Felhasználó által kezelt kulcsok konfigurálása az Azure Storage titkosításához az Azure Portalon](storage-encryption-keys-portal.md)
