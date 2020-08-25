@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905592"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824950"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -187,7 +187,7 @@ A példányban történt módosítások a lekérdezésekben akár 10 másodperce
 
 Az előzetes verzió használatakor további korlátozások is rendelkezésre állnak `JOIN` .
 * Az utasítás nem támogatja az allekérdezéseket `FROM` .
-* `OUTER JOIN`a szemantika nem támogatott, ami azt jelenti, hogy ha a kapcsolat nulla rangú, akkor a rendszer a teljes "sort" kizárja a kimeneti eredményhalmaz alapján.
+* `OUTER JOIN` a szemantika nem támogatott, ami azt jelenti, hogy ha a kapcsolat nulla rangú, akkor a rendszer a teljes "sort" kizárja a kimeneti eredményhalmaz alapján.
 * Az előzetes verzióban a Graph bejárási mélysége `JOIN` lekérdezési szinten legfeljebb öt szintre van korlátozva.
 * A műveletek forrása `JOIN` korlátozott: a lekérdezésnek deklarálnia kell azokat az ikreket, amelyeken a lekérdezés elindul.
 
@@ -223,7 +223,6 @@ Az alábbiakban néhány tippet talál az Azure digitális Twins lekérdezéséh
         ```
 * A tulajdonságok nevei és értékei megkülönböztetik a kis-és nagybetűket, ezért ügyeljen a modellekben definiált pontos nevek használatára. Ha a tulajdonságok neve hibásan van megadva vagy helytelenül van megadva, az eredményhalmaz üres, és nem ad vissza hibát.
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet az [Azure Digital Twins API-król és SDK](how-to-use-apis-sdks.md)-król, beleértve a LEKÉRDEZÉSi API-t, amely a jelen cikkben található lekérdezések futtatására szolgál.

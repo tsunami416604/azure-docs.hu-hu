@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 043122271bfa91b1cbaa490760da712cd1b867cc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514118"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825035"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
 
@@ -105,6 +105,6 @@ Az online helyreállítási pontok esetében öt helyreállítási típus létez
 
     ![Online replikáció kiválasztása](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Backup GYIK](backup-azure-backup-faq.md)

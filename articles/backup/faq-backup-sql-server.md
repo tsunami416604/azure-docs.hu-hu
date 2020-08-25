@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762844"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827239"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -30,7 +30,7 @@ Bizonyos körülmények között a Azure Backup szolgáltatás elindítja a jav�
 - Ha a visszaállítás során úgy dönt, hogy felülírja az adatbázist, a következő napló/különbözeti biztonsági mentés meghiúsul, és a rendszer egy teljes biztonsági mentést indít el helyette.
 - Ha az adatbázis-helyreállítási modell változása miatt teljes biztonsági mentésre van szükség a naplók alaphelyzetbe állításához, a következő időpontra automatikusan aktiválódik a teljes érték.
 
-Automatikus gyógyulás, mivel a funkció alapértelmezés szerint engedélyezve van az összes felhasználó számára; Ha azonban úgy dönt, hogy kikapcsolja, akkor hajtsa végre az alábbi műveleteket:
+Alapértelmezés szerint minden felhasználó számára engedélyezve van az automatikus gyógyulás. Ha azonban úgy dönt, hogy kikapcsolja, akkor hajtsa végre a következő lépéseket:
 
 - A SQL Server példányon a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre vagy szerkessze a fájlt a **ExtensionSettingsOverrides.js** .
 - A **ExtensionSettingsOverrides.jsa**(z) beállításnál állítsa be a (z) *{"EnableAutoHealer": false}* értéket.
@@ -56,7 +56,7 @@ A DefaultBackupTasksThreshold alapértelmezett értéke **20**.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Futtathatok teljes biztonsági mentést egy másodlagos replikáról?
 
-Az SQL-korlátozások szerint a csak a teljes biztonsági mentést a másodlagos replikán futtathatja. azonban a teljes biztonsági mentés nem engedélyezett.
+Az SQL-korlátozások alapján a csak a teljes biztonsági mentés másolása a másodlagos replikán lehetőséggel futtatható. Azonban a teljes biztonsági mentés nem engedélyezett.
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Biztosíthatom a helyszínen a rendelkezésre állási csoportokat?
 

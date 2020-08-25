@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 048b0e3fae776be5577948f91d84bb2be7fa2d59
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757744"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827358"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -57,7 +57,7 @@ Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási s
 >- A régión belüli visszaállítás (CRR) szolgáltatás most már az összes Azure-beli nyilvános régióban meg van jelenítve.
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
->- Jelenleg a CRR csak a Backup Management Type-ARM Azure-beli virtuális gépen támogatott (a klasszikus Azure-beli virtuális gép nem lesz támogatott).  Ha a további felügyeleti típusok támogatják a CRR-t, a **rendszer automatikusan** regisztrálja őket.
+>- Jelenleg a CRR csak a Backup Management Type-ARM Azure-beli virtuális gépen támogatott (a klasszikus Azure virtuális gép nem lesz támogatott).  Ha a további felügyeleti típusok támogatják a CRR-t, a **rendszer automatikusan** regisztrálja őket.
 >- A régiók közötti visszaállítás jelenleg nem állítható vissza GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet.
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása

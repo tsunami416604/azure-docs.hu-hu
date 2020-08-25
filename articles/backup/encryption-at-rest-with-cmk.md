@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763116"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827341"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -39,7 +39,7 @@ Ez a cikk a következőket ismerteti:
 
 - Ez a funkció jelenleg csak a Azure Portal konfigurálható.
 
-Ha nem hozta létre és konfigurálta a Recovery Services-tárolót, [olvassa el a következő témakört](backup-create-rs-vault.md):.
+Ha még nem hozta létre és konfigurálta a Recovery Services-tárolót, [olvassa el a következő témakört](backup-create-rs-vault.md):.
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Tároló konfigurálása az ügyfél által felügyelt kulcsok használatával történő titkosításhoz
 
@@ -60,7 +60,7 @@ Szükség van arra, hogy az összes fenti lépést a fent említett sorrendben v
 Azure Backup a rendszerhez rendelt felügyelt identitás használatával hitelesíti a Recovery Services-tárolót a Azure Key Vault tárolt titkosítási kulcsok eléréséhez. Az Recovery Services-tároló felügyelt identitásának engedélyezéséhez kövesse az alábbi lépéseket.
 
 >[!NOTE]
->Ha engedélyezve van, a felügyelt identitás nem tiltható le (akár átmenetileg is). A felügyelt identitás letiltása inkonzisztens viselkedést eredményezhet.
+>Ha engedélyezve van, a felügyelt identitás **nem** tiltható le (akár átmenetileg is). A felügyelt identitás letiltása inkonzisztens viselkedést eredményezhet.
 
 1. Ugrás a Recovery Services-tárolóra – > **identitás**
 
@@ -138,7 +138,7 @@ A következő lépésekkel engedélyezheti a helyreállítható törlési és-ki
 > - A fent említett lépések sikeresen befejeződtek:
 >   - Az Recovery Services-tár felügyelt identitása engedélyezve lett, és hozzá van rendelve a szükséges engedélyek
 >   - A Azure Key Vault a Soft-delete és a Purge-Protection engedélyezve van
-> - Az a Recovery Services-tároló, amelynek engedélyezni szeretné a CMK titkosítását, nem rendelkezik védett vagy regisztrált elemmel
+> - Az a Recovery Services-tároló, amelynek engedélyezni szeretné a CMK titkosítását, **nem** rendelkezik védett vagy regisztrált elemmel
 
 A fentiek betartását követően folytassa a tároló titkosítási kulcsának kiválasztásával.
 
@@ -240,7 +240,7 @@ Nem, a CMK-titkosítás csak az új tárolók esetében engedélyezhető. Így a
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>Megpróbáltam védelemmel ellátni egy elemet a tárolóban, de nem sikerült, és a tár továbbra sem tartalmaz védett elemeket. Engedélyezhető a CMK titkosítás ehhez a tárolóhoz?
 
-Nem, a tár nem rendelkezhet semmilyen, a múltbeli elemek elleni védelemmel kapcsolatos kísérlettel.
+Nem, a tárolónak még nem volt lehetősége arra, hogy a múltban egyetlen elemet se lehessen védelemmel ellátni.
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Van egy CMK-titkosítást használó tároló. Később is visszaállíthatók a titkosítás a platform által felügyelt kulcsokkal, még akkor is, ha a biztonsági másolati elemek védettek a tárolóban?
 
@@ -252,7 +252,7 @@ Nem, ez a cikk a biztonsági mentési adatmennyiség titkosítását tárgyalja.
 
 ### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-cmk-encryption"></a>Kihagytam a cikkben szereplő lépések egyikét, és folytattam az adatforrások védelme érdekében. Továbbra is használhatom a CMK titkosítást?
 
-Nem követi a cikkben szereplő lépéseket, és az elemek védelemmel való ellátása azt eredményezheti, hogy a tároló nem tudja használni a titkosítást az ügyfél által felügyelt kulcsok használatával. Ezért javasoljuk, hogy tekintse meg [ezt az ellenőrzőlistát](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) , mielőtt továbblép az elemek védelemmel.
+Nem követi a cikkben szereplő lépéseket, és az elemek védelemének folytatása azt eredményezheti, hogy a tároló nem tudja használni a titkosítást az ügyfél által felügyelt kulcsok használatával. Ezért javasoljuk, hogy tekintse meg [ezt az ellenőrzőlistát](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) , mielőtt továbblép az elemek védelemmel.
 
 ### <a name="does-using-cmk-encryption-add-to-the-cost-of-my-backups"></a>A CMK-titkosítást használ a biztonsági mentések költségeit?
 

@@ -3,12 +3,12 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757591"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825579"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -239,7 +239,7 @@ Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell l
 * ráadásul
   * Az adatok (például feladatok, házirendek stb.) a **log Analytics** munkaterületre is elküldhetők. Ez lehetővé teszi Azure Monitor naplók funkcióit, hogy lehetővé tegyék az adatok korrelációját a Azure Monitor által gyűjtött más monitorozási adatokkal, összevonja a naplóbejegyzéseket több Azure-előfizetésből és-bérlőből egyetlen helyre az elemzéshez [További információ itt](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
   * Adatokat küldhet az Event hub-nak az Azure-on kívüli bejegyzések küldéséhez, például egy harmadik féltől származó SIEM (biztonsági információk és rendezvényszervezés) vagy más log Analytics megoldáshoz. [További információ itt](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információk](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * Az Azure Storage-fiókba küldheti az adatait, ha a naplózást, a statikus elemzést vagy a biztonsági mentést 90 napnál hosszabb ideig kívánja megőrizni. Ha csak 90 vagy kevesebb napig kell megtartania az eseményeket, nem kell létrehoznia az archívumokat egy Storage-fiókhoz, mivel a tevékenység-naplózási események az Azure-platformon maradnak a 90 napig. [További információ](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Riasztások kezelése
 
@@ -247,13 +247,13 @@ Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell l
 
 * Azure Backup egy **beépített riasztási** értesítési mechanizmust biztosít a hibák, figyelmeztetések és kritikus műveletek e-mailben történő elküldéséhez. Megadhat egyedi e-mail-címeket vagy terjesztési listát, amelyekről értesítést kaphat, ha riasztás jön létre. Azt is megadhatja, hogy az egyes riasztások értesítést kapjanak-e, vagy egy óránkénti kivonatban csoportosítsa őket, majd értesítést kap.
   * Ezeket a riasztásokat a szolgáltatás definiálja, és támogatást nyújt a korlátozott forgatókönyvek számára – biztonsági mentési/visszaállítási hibák, az adatok megőrzésének megakadályozása/a védelem leállítása az adatok törlésével és így tovább. [További információ itt](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Ha olyan roncsolásos műveletet végez, mint például a védelem leállítása a törlési művelettel, a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva az Recovery Services-tárolóhoz.
+  * Ha olyan roncsolásos műveletet végez, mint például a védelem leállítása a törlési művelettel, a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések **nincsenek konfigurálva az** Recovery Services-tárolóhoz.
   * Bizonyos munkaterhelések nagy gyakoriságú hibákat okozhatnak (például SQL Server 15 percenként). Ha meg szeretné akadályozni, hogy az egyes hibák előfordulásakor kiváltott riasztások eljusson, a riasztások konszolidálva lesznek. [További információ itt](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * A beépített riasztások nem szabhatók testre, és a Azure Portal meghatározott e-mailekre vannak korlátozva.
 
 * Ha **Egyéni riasztásokat kell létrehoznia** (például a sikeres feladatok riasztásait), használja a log Analytics. Azure Monitor a saját riasztásokat a Log Analytics munkaterületen hozhatja létre. A hibrid munkaterhelések (DPM/MABS) is küldhetnek az adatoknak az LA-be, és a LA használatával a Azure Backup által támogatott munkaterhelések közötti gyakori riasztásokat.
 
-* Értesítéseket is beszerezhet a beépített Recovery Services tár tevékenység- **naplók**használatával. azonban támogatja a korlátozott forgatókönyveket, és nem alkalmas olyan műveletekhez, mint az ütemezett biztonsági mentés, amely jobban igazodik az erőforrás-naplókhoz, mint a tevékenységek naplói. Ha többet szeretne megtudni ezekről a korlátozásokról, valamint arról, hogy miként használhatja a Log Analytics munkaterületet az Azure Backup által védett munkaterhelések figyelésére és riasztására, tekintse meg ezt a [cikket](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
+* Értesítéseket a beépített Recovery Services tár **tevékenység-naplókban**is kaphat. Azonban támogatja a korlátozott forgatókönyveket, és nem alkalmas olyan műveletekhez, mint az ütemezett biztonsági mentés, amely jobban igazodik az erőforrás-naplókhoz, mint a tevékenységek naplói. Ha többet szeretne megtudni ezekről a korlátozásokról, valamint arról, hogy miként használhatja a Log Analytics munkaterületet az Azure Backup által védett munkaterhelések figyelésére és riasztására, tekintse meg ezt a [cikket](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
 
 ## <a name="next-steps"></a>További lépések
 

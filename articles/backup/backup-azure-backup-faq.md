@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757200"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827392"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -214,7 +214,7 @@ Igen. Az Azure-ban az inaktív állapotú adatok titkosítva vannak.
 - Helyszíni biztonsági mentéshez az inaktív állapotú adatokat védő titkosítás használható az Azure-ra irányuló biztonsági mentés során megadott jelszóval.
 - Azure-beli virtuális gépek esetén a rendszer Storage Service Encryption (SSE) használatával titkosítja az inaktív adatokat.
 
-A Microsoft soha nem fejt vissza adatokat.
+A Microsoft semmilyen időpontban nem tudja visszafejteni a biztonsági mentési adatvesztést.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Mekkora a biztonsági mentési adatmennyiség titkosításához használt titkosítási kulcs minimális hossza?
 
@@ -222,7 +222,7 @@ A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosít�
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Mi történik, ha elveszítem a titkosítási kulcsot? Helyre tudom állítani az adatokat? A Microsoft helyre tudja állítani az adatokat?
 
-Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tárol másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
+Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tart fenn másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
 ## <a name="next-steps"></a>További lépések
 

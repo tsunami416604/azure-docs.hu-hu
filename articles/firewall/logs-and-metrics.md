@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086591"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827222"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplói és metrikái
 
@@ -115,17 +115,17 @@ A Azure Firewall a következő metrikák érhetők el:
   - Állapot: a lehetséges értékek állapota *kifogástalan*, *csökkentett teljesítményű*, *sérült*.
   - Ok: a tűzfal megfelelő állapotának okát jelzi. 
 
-     Ha SNAT-portokat használ > 95%-ot, akkor a rendszer kimeríti őket, és az állapota 50%, állapot =**csökkentett teljesítményű** , ok =**SNAT-port**. A tűzfal megtartja a forgalom feldolgozását, és a meglévő kapcsolatokat nem érinti. Előfordulhat azonban, hogy az új kapcsolatokat nem lehet időnként létrehozni.
+     Ha SNAT-portokat használ > 95%-ot, akkor a rendszer kimeríti őket, és az állapota 50%, állapot =**csökkentett teljesítményű** , ok =**SNAT-port**. A tűzfal továbbra is feldolgozza a forgalmat, és a meglévő kapcsolatokat ez nem érinti. Előfordulhat azonban, hogy időnként nem jönnek létre új kapcsolatok.
 
      Ha SNAT-portokat használ < 95%-ot, akkor a tűzfal kifogástalannak minősül, és a rendszer 100%-ként jeleníti meg az állapotot.
 
-     Ha nem jelentettek SNAT-portok használatát, az állapot 0%-ként jelenik meg. 
+     Ha a rendszer nem kap jelentést az SNAT-portok használatáról, az állapot 0%-osként jelenik meg. 
 
 - **SNAT-port kihasználtsága** – a tűzfal által használt SNAT-portok százalékos aránya.
 
     Egység: százalék
 
-   Ha több nyilvános IP-címet ad hozzá a tűzfalhoz, további SNAT portok érhetők el, ami csökkenti a SNAT-portok kihasználtságát. Emellett, ha a tűzfal a különböző okokból (például CPU vagy átviteli sebesség) is kibővíthető, további SNAT-portok is elérhetővé válnak. Így gyakorlatilag a SNAT-portok kihasználtságának adott százaléka lemerülhet anélkül, hogy nyilvános IP-címeket adna hozzá, csak azért, mert a szolgáltatás ki van bővítve. A tűzfalon elérhető portok növeléséhez a rendelkezésre álló nyilvános IP-címek számát közvetlenül is szabályozhatja. Azonban nem vezérelheti közvetlenül a tűzfal skálázását. A SNAT-portok jelenleg csak az első öt nyilvános IP-címhez lesznek hozzáadva.   
+   Ha több nyilvános IP-címet ad hozzá a tűzfalhoz, további SNAT-portok érhetők el, ami csökkenti az SNAT-portok kihasználtságát. Emellett, ha a tűzfal a különböző okokból (például CPU vagy átviteli sebesség miatt) felskálázást végez, további SNAT-portok is elérhetővé válnak. Így gyakorlatilag a SNAT-portok kihasználtságának adott százaléka lemerülhet anélkül, hogy nyilvános IP-címeket adna hozzá, csak azért, mert a szolgáltatás ki van bővítve. A tűzfalon elérhető portok növeléséhez a rendelkezésre álló nyilvános IP-címek számát közvetlenül is szabályozhatja. Azonban nem vezérelheti közvetlenül a tűzfal skálázását.
 
 
 ## <a name="next-steps"></a>További lépések

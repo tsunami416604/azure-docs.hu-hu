@@ -3,16 +3,16 @@ title: Logikaialkalmazás-sablonok üzembe helyezése
 description: Megtudhatja, hogyan telepítheti a Azure Logic Appshoz létrehozott Azure Resource Manager sablonokat
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501508"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827494"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sablonok üzembe helyezése Azure Logic Apps-alkalmazásokhoz
 
@@ -119,13 +119,18 @@ Az Azure-folyamatok használatának általános magas szintű lépései:
 
 ## <a name="authorize-oauth-connections"></a>OAuth-kapcsolatok engedélyezése
 
-Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és érvényes paraméterekkel rendelkezik. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-vs-authorization.md)azonban továbbra is engedélyezni kell minden OAuth-kapcsolatot, hogy érvényes hozzáférési jogkivonatokat állítson elő. Az alábbi módokon engedélyezheti az OAuth-kapcsolatokat:
+Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és érvényes paraméterekkel rendelkezik. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-vs-authorization.md)azonban továbbra is engedélyeznie kell az előkészítő OAuth-kapcsolatokat, és érvényes hozzáférési jogkivonatokat kell létrehoznia. Íme néhány javaslat:
 
-* Automatikus telepítés esetén olyan parancsfájlt használhat, amely az egyes OAuth-kapcsolatok beleegyezik. Íme egy példa a GitHub-szkriptre a [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projektben.
+* Engedélyezze és ossza meg az API-kapcsolatok erőforrásait az azonos régióban található logikai alkalmazások között. Az API-kapcsolatok az Azure-erőforrásoktól függetlenül működnek a Logic apps szolgáltatásban. Míg a Logic apps függőségekkel rendelkezik az API-kapcsolatok erőforrásainál, az API-kapcsolatok erőforrásai nem rendelkeznek a logikai alkalmazásokkal kapcsolatos függőségekkel, és a függő logikai alkalmazások törlése után is megmaradnak. Emellett a Logic apps más erőforráscsoportok is használhat API-kapcsolatokat. A Logic app Designer azonban csak a logikai alkalmazásokkal azonos erőforráscsoporthoz támogatja az API-kapcsolatok létrehozását.
 
-* A OAuth-kapcsolatok manuális engedélyezéséhez nyissa meg a logikai alkalmazást a Logic app Designerben, vagy a Azure Portal vagy a Visual Studióban. A tervezőben engedélyezze a szükséges kapcsolatokat.
+  > [!NOTE]
+  > Ha az API-kapcsolatok megosztását fontolgatja, győződjön meg arról, hogy a megoldás képes [kezelni a lehetséges szabályozási problémákat](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling). A szabályozás a kapcsolódási szinten történik, ezért a több logikai alkalmazás közötti kapcsolatok újrafelhasználásával növelheti a problémák szabályozásának lehetőségét.
 
-Ha a kapcsolatok engedélyezése helyett egy Azure Active Directory (Azure AD [) szolgáltatásnevet használ](../active-directory/develop/app-objects-and-service-principals.md) , megtudhatja, hogyan [adhat meg egyszerű szolgáltatásnév-paramétereket a logikai alkalmazás sablonjában](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
+* Ha a forgatókönyv olyan szolgáltatásokat és rendszereket foglal magába, amelyek többtényezős hitelesítést igényelnek, egy PowerShell-parancsfájl használatával biztosíthatja az egyes OAuth-kapcsolatok jóváhagyását azáltal, hogy egy folyamatos integrációs feldolgozót futtat egy olyan virtuális gépen, amelyen aktív böngésző-munkamenetek vannak megadva a már megadott engedélyekkel és hozzájárulásokkal. Áthelyezheti például a LogicAppConnectionAuth projekt által biztosított parancsfájlt [a GitHub-tárház Logic apps](https://github.com/logicappsio/LogicAppConnectionAuth).
+
+* Az OAuth-kapcsolatok manuális engedélyezéséhez nyissa meg a logikai alkalmazást a Logic app Designerben, vagy a Azure Portal vagy a Visual Studióban.
+
+* Ha a kapcsolatok engedélyezése helyett egy Azure Active Directory (Azure AD [) szolgáltatásnevet használ](../active-directory/develop/app-objects-and-service-principals.md) , megtudhatja, hogyan [adhat meg egyszerű szolgáltatásnév-paramétereket a logikai alkalmazás sablonjában](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
 
 ## <a name="next-steps"></a>További lépések
 

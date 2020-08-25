@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: c93f4f3976e4e036aa47144618145461ac37ad4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a93ec3157900a83e799f845e868546cbf5ef6ca9
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755619"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823863"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -27,10 +27,10 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
-- Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) is használhat.
+- Egy nyugtá képe. Ehhez a rövid útmutatóhoz [minta képet](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) is használhat.
 
 > [!NOTE]
-> Ez a rövid útmutató az URL-cím alapján elért távoli nyugtát használja. Ha inkább helyi fájlokat szeretne használni, tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
+> Ez a rövid útmutató egy helyi fájlt használ. Az URL-cím alapján elért nyugtás rendszerkép használatához tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -41,7 +41,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés visszaigazolása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
-1. Cserélje le a értékét `<your receipt URL>` egy nyugtát ábrázoló rendszerkép URL-címére.
+1. Cserélje le a helyére `<path to your receipt>` a helyi űrlaphoz tartozó dokumentum elérési útját.
 1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)

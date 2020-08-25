@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382712"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824729"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -36,7 +36,7 @@ Amikor megkísérli a biztonsági mentést, válassza ki azt a Storage-fiókot, 
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Miért nem változtathatom meg a tárolót a fájlmegosztás biztonsági mentésének konfigurálásához?
 
-Ha a Storage-fiók már regisztrálva van egy tárolóban, vagy a Storage-fiókban lévő más fájlmegosztás is védelemmel van ellátva, akkor nincs lehetőség arra, hogy megváltoztassa, mivel a Storage-fiókban lévő összes fájlmegosztást csak ugyanazon tár tudja védeni. Ha módosítani kívánja a [tárolót, le kell állítania a Storage-fiókban lévő összes fájlmegosztás védelmét](manage-afs-backup.md#stop-protection-on-a-file-share) a csatlakoztatott tárból, [törölni](manage-afs-backup.md#unregister-a-storage-account) kell a Storage-fiókot, majd választania kell egy másik tárolót a védelemhez.
+Ha a Storage-fiók már regisztrálva van egy tárolóban, vagy a Storage-fiókban lévő más fájlmegosztás is védelemmel van ellátva, akkor nincs lehetőség a módosítására. A Storage-fiókokban lévő összes fájlmegosztást csak ugyanahhoz a tárolóhoz lehet védeni. Ha módosítani szeretné a [tárolót, le kell állítania a Storage-fiókban lévő összes fájlmegosztás védelmét](manage-afs-backup.md#stop-protection-on-a-file-share) a csatlakoztatott tárból, [törölni](manage-afs-backup.md#unregister-a-storage-account) kell a Storage-fiókot, majd egy másik tárolót kell választania a védelemhez.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Módosíthatom azt a tárolót, amelyre biztonsági másolatot készítek a fájlmegosztást?
 
@@ -97,13 +97,13 @@ Ha módosítja a napi biztonsági mentési szabályzatot a GFS házirendre (hete
 
 |Adatmegőrzés típusa |Ütemezés |Megőrzés  |
 |---------|---------|---------|
-|Napi    |    Minden nap 20:00-kor    |  100 nap       |
+|naponta    |    Minden nap 20:00-kor    |  100 nap       |
 
 #### <a name="new-policy-modified-p1"></a>Új szabályzat [módosított P1]
 
 | Adatmegőrzés típusa | Ütemezés                       | Megőrzés |
 | -------------- | ------------------------------ | --------- |
-| Napi          | Minden nap 21:00 órakor              | 50 nap   |
+| naponta          | Minden nap 21:00 órakor              | 50 nap   |
 | Heti         | Vasárnap, 21:00 órakor              | 3 hét   |
 | havonta        | Az utolsó hétfőn, 9 ÓRAKOR         | 1 hónap   |
 | Évi         | Januártól harmadik vasárnap, 21:00-kor | 4 év   |
@@ -131,14 +131,14 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 
 | Adatmegőrzés típusa | Ütemezés           | Megőrzés |
 | -------------- | ------------------ | --------- |
-| Napi          | Minden nap 20:00-kor | 50 nap   |
+| naponta          | Minden nap 20:00-kor | 50 nap   |
 | Heti         | Hétfő: 20:00  | 3 hét   |
 
 #### <a name="new-policy-modified-p2"></a>Új szabályzat [módosított P2]
 
 | Adatmegőrzés típusa | Ütemezés               | Megőrzés |
 | -------------- | ---------------------- | --------- |
-| Napi          | Minden nap 21:00 órakor     | 10 nap   |
+| naponta          | Minden nap 21:00 órakor     | 10 nap   |
 | Heti         | Hétfőn, 21:00 órakor      | 2 hét   |
 | havonta        | Az utolsó hétfőn, 9 ÓRAKOR | 2 hónap  |
 
@@ -155,6 +155,6 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 >[!NOTE]
 >A házirend módosítása csak az ütemezett biztonsági mentés részeként létrehozott helyreállítási pontokra lesz hatással. Igény szerinti biztonsági mentések esetén a megőrzési időtartamot a biztonsági mentés során megadott **megőrzési** érték határozza meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása](troubleshoot-azure-files.md)

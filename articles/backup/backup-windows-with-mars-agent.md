@@ -3,12 +3,12 @@ title: Windows rendszerű gépek biztonsági mentése a MARS-ügynök használat
 description: A Windows rendszerű gépek biztonsági mentéséhez használja a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 381df40dfe4149b2f43dc22bb2186ec1f17b0515
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538632"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825891"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server-fájlok és-mappák biztonsági mentése az Azure-ba
 
@@ -155,7 +155,7 @@ A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** ál
 
 További információt a [biztonsági mentési szabályzat létrehozása](#create-a-backup-policy)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure-ban](backup-azure-restore-windows-server.md).
 * [Gyakori kérdések a fájlok és mappák biztonsági mentéséről](backup-azure-file-folder-backup-faq.md)

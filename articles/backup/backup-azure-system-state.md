@@ -3,12 +3,12 @@ title: A Windows rendszer állapotának biztonsági mentése az Azure-ba
 description: Ismerje meg, hogyan készíthet biztonsági mentést a Windows Server rendszerű számítógépek rendszerállapotáról az Azure-ba.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263044"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824462"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
 
@@ -86,7 +86,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     ![a tároló hitelesítő adatainak letöltése](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    A tár hitelesítő adatai le vannak letöltve a **letöltések** mappájába. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Válassza a **Mentés** lehetőséget. Ha véletlenül kiválasztja a **Megnyitás**lehetőséget, hagyja meg a párbeszédpanelt, amely a tár hitelesítő adatainak megnyitását kísérli meg. Nem fogja tudni megnyitni a tároló hitelesítő adatait. Folytassa a következő lépéssel. A tároló hitelesítő adatai a **letöltések** mappában találhatók.
+    A tár hitelesítő adatai le vannak letöltve a **letöltések** mappájába. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Mentés** gombra. Ha véletlenül kiválasztja a **Megnyitás**lehetőséget, hagyja meg a párbeszédpanelt, amely a tár hitelesítő adatainak megnyitását kísérli meg. Nem fogja tudni megnyitni a tároló hitelesítő adatait. Folytassa a következő lépéssel. A tároló hitelesítő adatai a **letöltések** mappában találhatók.
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -98,7 +98,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 ## <a name="install-and-register-the-agent"></a>Az ügynök telepítése és regisztrálása
 
 > [!NOTE]
-> A biztonsági mentés engedélyezése az Azure Portalon keresztül még nem érhető el. A Microsoft Azure Recovery Services ügynök használatával biztonsági mentést készíthet a Windows Server rendszerállapotáról.
+> Nem érhető el a biztonsági mentés engedélyezése a Azure Portalon keresztül. A Microsoft Azure Recovery Services ügynök használatával biztonsági mentést készíthet a Windows Server rendszerállapotáról.
 >
 
 1. Keresse meg és kattintson duplán az **MARSagentinstaller.exe** fájlra a Letöltések mappában (vagy más mentési helyen).
@@ -116,7 +116,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
    * Mentse a titkosítási jelszót egy biztonságos helyen.
 
      > [!NOTE]
-     > Ha elveszíti vagy elfelejti a jelszót, a Microsoft nem tud segíteni az adatok biztonsági másolatának visszaállításában. Mentse a fájlt egy biztonságos helyen. Erre szükség van a biztonsági másolat visszaállításához.
+     > Ha elveszíti vagy elfelejti a jelszót, a Microsoft nem segít helyreállítani a biztonsági mentési adatokat. Mentse a fájlt egy biztonságos helyen. A biztonsági másolat visszaállításához szükséges.
      >
      >
 
@@ -132,7 +132,7 @@ A kezdeti biztonsági mentés két feladatot tartalmaz:
 A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Recovery Services-ügynököt.
 
 > [!NOTE]
-> A Windows Server 2008 R2 rendszeren a Windows Server 2016 használatával biztonsági mentést készíthet a rendszerállapotról. A rendszerállapot biztonsági mentése nem támogatott az ügyfél SKU-ban. A rendszerállapot nem jelenik meg a Windows-ügyfelek, illetve a Windows Server 2008 SP2 rendszerű gépek esetén.
+> A Windows Server 2008 R2 rendszeren a Windows Server 2016 használatával biztonsági mentést készíthet a rendszerállapotról. A rendszerállapot biztonsági mentése nem támogatott az ügyfél SKU-ban. A rendszerállapot nem jelenik meg a Windows-ügyfelek vagy a Windows Server 2008 SP2 rendszerű gépek beállításként.
 >
 >
 

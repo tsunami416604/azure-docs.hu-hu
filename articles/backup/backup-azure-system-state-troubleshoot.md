@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a rendszer
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763388"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824270"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
 
@@ -37,7 +37,7 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
 
 ### <a name="limitation"></a>Korlátozás
 
-- A Microsoft nem javasolja, hogy más hardverre próbáljon helyreállítást végezni a rendszerállapot-helyreállítással
+- A Microsoft nem javasolja a rendszerállapot-helyreállítást használó különböző hardverekre történő helyreállítást
 - A rendszerállapot biztonsági mentése jelenleg a "helyszíni" Windows-kiszolgálókat támogatja. Ez a funkció nem érhető el az Azure-beli virtuális gépekhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -86,7 +86,7 @@ A Windows Server biztonsági másolat Kiszolgálókezelő használatával tört�
 
 ### <a name="system-volume-information-permission"></a>Rendszerkötet információi engedély
 
-Győződjön meg arról, hogy a helyi rendszer teljes hozzáféréssel rendelkezik a **rendszerkötet-információ** mappájában, amely abban a kötetben található, amelyben a Windows telepítve van. Általában ez a **C:\System**. A Windows Server biztonsági másolat sikertelen lehet, ha a fenti engedélyek nincsenek megfelelően beállítva.
+Győződjön meg arról, hogy a helyi rendszer teljes hozzáféréssel rendelkezik a **rendszerkötet-információ** mappájában, amely abban a kötetben található, amelyben a Windows telepítve van. Általában ez a **C:\System**. A Windows Server biztonsági másolat sikertelen lehet, ha a fenti engedélyek nem megfelelően vannak beállítva.
 
 ### <a name="dependent-services"></a>Függő szolgáltatások
 

@@ -3,12 +3,12 @@ title: A DPM-munkaterhelések biztonsági mentése a PowerShell használatával
 description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protection Manager (DPM) Azure Backup a PowerShell használatával
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762742"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825970"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 
@@ -69,7 +69,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testVault beállításnál a GeoRedundant értékre.
+4. Adja meg a használandó tárolási redundancia típusát. Használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testVault beállításnál a GeoRedundant értékre.
 
    > [!TIP]
    > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
@@ -177,13 +177,13 @@ Ha a DPM-kiszolgáló regisztrálva van a Recovery Services-tárolóban, az alap
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon, ```$setting```  majd a teljes objektum elkötelezett a DPM és Azure Backup a [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával történő mentéshez. A módosítások megőrzése érdekében a ```–Commit``` jelzőt kell használnia. A rendszer nem alkalmazza a beállításokat, és nem használja a Azure Backup, hacsak nincs véglegesítve.
+A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon, ```$setting```  majd a teljes objektum elkötelezett a DPM és Azure Backup a [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmag használatával történő mentéshez. A módosítások megőrzése érdekében a ```–Commit``` jelzőt kell használnia. A beállítások nem lesznek alkalmazva, és a Azure Backup csak akkor használja, ha nincs véglegesítve.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer``` és a ```-ProxyPort``` , ```-ProxyUsername``` valamint a ```ProxyPassword``` [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) parancsmaggal végzett paraméterek használatával végezheti el. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
 
@@ -262,7 +262,7 @@ Minden DPM-ügynök ismeri azon a kiszolgálón lévő adatforrások listáját,
 3. A kiszolgálón található összes adatforrás listájának beolvasása.
 4. Válasszon ki egy vagy több adatforrást, és vegye fel őket a védelmi csoportba.
 
-Azon kiszolgálók listáját, amelyeken a DPM-ügynök telepítve van, és a DPM-kiszolgáló felügyeli, a [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) parancsmaggal szerezheti be. Ebben a példában a (z) *productionserver01* nevű PS-t fogjuk szűrni és konfigurálni a biztonsági mentéshez.
+Azon kiszolgálók listáját, amelyeken a DPM-ügynök telepítve van, és a DPM-kiszolgáló felügyeli, a [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) parancsmaggal szerezheti be. Ebben a példában a PowerShellt csak a *productionserver01* nevű biztonsági mentéshez konfigurálja.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

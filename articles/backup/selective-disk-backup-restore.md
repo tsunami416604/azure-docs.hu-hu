@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757438"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824746"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
@@ -190,7 +190,7 @@ A parancsok végrehajtásakor látni fogja a következőt: `"diskExclusionProper
 
 ## <a name="using-powershell"></a>A PowerShell használata
 
-Győződjön meg arról, hogy az Azure PS 3.7.0 vagy újabb verzióját használja.
+Győződjön meg arról, hogy Azure PowerShell 3.7.0 vagy újabb verziót használ.
 
 ### <a name="enable-backup-with-powershell"></a>Biztonsági mentés engedélyezése a PowerShell-lel
 
@@ -261,7 +261,7 @@ Itt megtekintheti a biztonsági másolatban szereplő lemezeket a visszaállít�
 A virtuális gépek szelektív lemezes biztonsági mentési élményének konfigurálása a Azure Portalon keresztül **csak a biztonsági mentés operációsrendszer-lemezre** lehetőségre korlátozódik. Ha a szelektív lemezek biztonsági mentését már egy biztonsági másolattal rendelkező virtuális gépen szeretné használni, vagy egy virtuális gép adott adatlemezének speciális felvételére vagy kizárására van lehetősége, használja a PowerShellt vagy az Azure CLI-t.
 
 >[!NOTE]
->Ha az adatlemezek átnyúlnak, győződjön meg arról, hogy az összes függő lemez szerepel a biztonsági mentésben. Ha nem készít biztonsági másolatot a köteten lévő összes függő lemezről, a rendszer nem készíti el a kötetet, amely néhány nem mentett lemezből áll.
+>Ha az adatlemezek átnyúlnak, győződjön meg arról, hogy az összes függő lemez szerepel a biztonsági mentésben. Ha nem készít biztonsági másolatot az összes függő lemezről egy köteten, akkor a visszaállítás során a rendszer nem biztonsági másolattal rendelkező lemezeket hoz létre.
 
 ### <a name="backup-os-disk-only-in-the-azure-portal"></a>Az operációsrendszer-lemez biztonsági mentése csak a Azure Portal
 

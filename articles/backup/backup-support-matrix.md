@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 41bc06e2c63b1b35bb789636bcd269439078be70
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612520"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825188"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -29,7 +29,7 @@ A Azure Backup Recovery Services-tárolókat használ a biztonsági másolatok e
 
 A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerteti:
 
-**Funkció** | **Részletek**
+**Szolgáltatás** | **Részletek**
 --- | ---
 **Tárolók az előfizetésben** | Akár 500 Recovery Services-tároló egyetlen előfizetésben.
 **Tárolóban lévő gépek** | Az összes számítási feladat (például Azure-beli virtuális gépek, SQL Server VM, MABS-kiszolgálók stb.) esetében akár 2000 adatforrás is védhető egyetlen tárolóban.<br><br>Akár 1 000 Azure-beli virtuális gép egyetlen tárolóban.<br/><br/> Akár 50 MABS-kiszolgáló is regisztrálható egyetlen tárolóban.
@@ -44,7 +44,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 
 A következő mi támogatott, ha biztonsági mentést szeretne készíteni a helyszíni gépekről:
 
-**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
+**Gép** | **A biztonsági mentés** | **Hely** | **Funkciók**
 --- | --- | --- | ---
 **Windows rendszerű gép közvetlen biztonsági mentése a MARS-ügynökkel** | Fájlok, mappák, rendszerállapot | Biztonsági mentés Recovery Services-tárolóba. | Napi három alkalommal történő biztonsági mentés<br/><br/> Nincs alkalmazás-kompatibilis biztonsági másolat<br/><br/> Fájl, mappa, kötet visszaállítása
 **A Linux-gép közvetlen biztonsági mentése a MARS-ügynökkel** | A biztonsági mentés nem támogatott
@@ -64,7 +64,7 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 
 Ha az Azure-beli virtuális gépek biztonsági mentését kívánja végezni, a következők támogatottak:
 
-**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
+**Gép** | **A biztonsági mentés** | **Hely** | **Funkciók**
 --- | --- | --- | ---
 **Azure virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | Teljes virtuális gép | Biztonsági mentés a tárba. | A bővítmény akkor lett telepítve, ha engedélyezi a virtuális gép biztonsági mentését.<br/><br/> Naponta egyszer készít biztonsági mentést.<br/><br/> App-Aware Backup a Windows rendszerű virtuális gépekhez; fájl-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez. A Linux rendszerű gépekhez egyéni parancsfájlok használatával is konfigurálhatja az alkalmazások konzisztenciáját.<br/><br/> Virtuális gép vagy lemez visszaállítása.<br/><br/> Nem lehet biztonsági mentést készíteni egy Azure-beli virtuális gépről egy helyszíni helyre.
 **Azure virtuális gépek biztonsági mentése a MARS-ügynök használatával** | Fájlok, mappák, rendszerállapot | Biztonsági mentés a tárba. | Naponta három alkalommal készíthet biztonsági másolatot.<br/><br/> Ha a teljes virtuális gép helyett adott fájlokról vagy mappákról szeretne biztonsági másolatot készíteni, a MARS-ügynök a virtuálisgép-bővítmény mellett is futhat.
@@ -150,11 +150,11 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Igen.   Támogatott a 4 TB-nál kisebb lemezzel rendelkező titkosított virtuális gépek és virtuális gépek esetében | Minden Azure-beli nyilvános régió.  |
-| MARS-ügynök/helyszíni | No                                                           | n.a.               |
-| SQL/SAP HANA          | No                                                           | n.a.               |
-| AFS                    | No                                                           | n.a.               |
+| MARS-ügynök/helyszíni | Nem                                                           | N.A.               |
+| SQL/SAP HANA          | Nem                                                           | N.A.               |
+| AFS                    | Nem                                                           | N.A.               |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](backup-support-matrix-iaas.md) az Azure virtuális gépek biztonsági mentésének támogatási mátrixát.
 

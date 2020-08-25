@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c3f964032d10988bf7ae615eb64d3b56b99a7747
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757302"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827256"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
