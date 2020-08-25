@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049455"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826701"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -129,7 +129,7 @@ Megváltoztathatja egy SAP HANA biztonsági másolati elem alapjául szolgáló 
 >[!NOTE]
 > A megőrzési időtartam változásai visszamenőlegesen lesznek alkalmazva az újakon kívül az összes korábbi helyreállítási pontra.
 >
-> A növekményes biztonsági mentési szabályzatok nem használhatók SAP HANA adatbázisokhoz. Ezen adatbázisok esetében a növekményes biztonsági mentés jelenleg nem támogatott.
+> A növekményes biztonsági mentési házirendek nem használhatók SAP HANA adatbázisokhoz. Ezen adatbázisok esetében jelenleg nem támogatott a növekményes biztonsági mentés.
 
 ### <a name="modify-policy"></a>Házirend módosítása
 
@@ -171,7 +171,7 @@ Több módon is leállíthatja a SAP HANA adatbázisok védelmét:
 
 Ha úgy dönt, hogy kihagyja a helyreállítási pontokat, tartsa szem előtt az alábbi adatokat:
 
-* Az összes helyreállítási pont érintetlen marad, és az összes törlés leáll a védelem leállításakor az adatmegőrzés során.
+* Az összes helyreállítási pont érintetlen marad, és az összes törlés leáll a védelem leállításakor az adatmegőrzéssel.
 * A védett példányért és a felhasznált tárterületért díjat számítunk fel. További információ: [Azure Backup díjszabása](https://azure.microsoft.com/pricing/details/backup/).
 * Ha töröl egy adatforrást a biztonsági mentések leállítása nélkül, az új biztonsági mentések sikertelenek lesznek.
 

@@ -3,19 +3,19 @@ title: Azure-fájlmegosztás biztonsági másolatainak kezelése a PowerShell-le
 description: Megtudhatja, hogyan kezelheti és figyelheti a PowerShell használatával a Azure Backup szolgáltatás által biztonsági mentés alatt lévő Azure-fájlmegosztást.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb400c25ca6b1deebaef6af6fe4b322951dfcdcc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538593"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826752"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Azure-fájlmegosztás biztonsági másolatainak kezelése a PowerShell-lel
 
 Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell az Azure Backup szolgáltatás által biztonsági mentés alatt álló Azure-fájlmegosztás felügyeletéhez és figyeléséhez.
 
 > [!WARNING]
-> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További részletekért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice-backup-item-identification) .
+> Győződjön meg arról, hogy a PowerShell-verzió az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára van frissítve. További részletekért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice-backup-item-identification) .
 
 ## <a name="modify-the-protection-policy"></a>A védelmi szabályzat módosítása
 
@@ -107,6 +107,6 @@ WorkloadName     Operation            Status         StartTime                 E
 afsfileshare     DeleteBackupData     Completed      1/26/2020 2:50:57 PM      1/26/2020 2:51:39 PM      b1a61c0b-548a-4687-9d15-9db1cc5bcc85
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ismerje meg](manage-afs-backup.md) , hogyan kezelheti az Azure-fájlmegosztás biztonsági másolatait a Azure Portalban.

@@ -3,12 +3,12 @@ title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehoz�
 description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-beli virtuális gépet hoz létre Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586698"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825953"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -64,7 +64,7 @@ Megjegyzés:
     1. Az erőforráscsoportok nevei csak alfanumerikus karaktereket, pontokat, aláhúzást, kötőjelet és zárójelet tartalmazhatnak. Nem végződhet ponttal.
     2. Az erőforráscsoportok nevei legfeljebb 74 karaktert tartalmazhatnak, beleértve a RG nevét és az utótagot is.
 4. Az első `<alpha-numeric-string>` kötelező, míg a második az "n" után nem kötelező. Ez csak akkor érvényes, ha a testreszabott nevet adja meg. Ha nem ad meg semmit a szövegmezők egyikében sem, a rendszer az alapértelmezett nevet használja.
-5. A RG nevét szerkesztheti a szabályzat módosításával, ha szükséges. Ha a név minta módosul, a rendszer az új RPs-t hozza létre az új RG-ban. A régi RPs azonban továbbra is a régi RG-ban marad, és nem helyezhető át, mivel az RP-gyűjtemény nem támogatja az erőforrás-áthelyezést. Végül az RPs a pontok lejárata után begyűjti a szemetet.
+5. A RG nevét szerkesztheti a szabályzat módosításával, ha szükséges. Ha a név minta módosul, a rendszer az új RPs-t hozza létre az új RG-ban. A régi RPs azonban továbbra is a régi RG-ban található, és nem helyezhető át, mivel az RP-gyűjtemény nem támogatja az erőforrás-áthelyezést. Végül az RPs a pontok lejárata után begyűjti a szemetet.
 ![Név módosítása a házirend módosításakor](./media/backup-during-vm-creation/modify-policy.png)
 6. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot.
 

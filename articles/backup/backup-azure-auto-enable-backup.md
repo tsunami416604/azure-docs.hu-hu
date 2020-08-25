@@ -3,12 +3,12 @@ title: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure P
 description: A cikk azt ismerteti, hogyan használható a Azure Policy az adott hatókörben létrehozott összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763592"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826072"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 
@@ -52,7 +52,7 @@ A szabályzatnak a szükséges hatókörhöz való hozzárendeléséhez kövesse
 
 > [!NOTE]
 >
-> Javasoljuk, hogy a házirendet egyszerre ne rendelje hozzá több mint 200 virtuális géphez. Ha a házirend több mint 200 virtuális géphez van hozzárendelve, akkor a biztonsági mentés néhány órával később is elindítható, mint amelyet az ütemterv meghatároz.
+> Javasoljuk, hogy a szabályzatot egyszerre több mint 200 virtuális géphez lehessen hozzárendelni. Ha a házirend több mint 200 virtuális géphez van hozzárendelve, akkor a biztonsági mentés néhány órával később is elindítható, mint amelyet az ütemterv meghatároz.
 
 ## <a name="next-steps"></a>További lépések
 

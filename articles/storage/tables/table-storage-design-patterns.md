@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 32904044cf6dcecf19b1a78eb4236dc02555bb86
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8a50aa02a2ba7187c8221c046fcabb7f4a6473fa
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034197"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826684"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk a Table service-megoldásokkal való használatra alkalmas mintákat ismerteti. Azt is megtudhatja, hogyan lehet gyakorlatilag a más Table Storage-kialakítási cikkekben tárgyalt problémák és kompromisszumok kezelésére. A következő ábra összefoglalja a különböző minták közötti kapcsolatokat:  
@@ -310,7 +310,7 @@ Figyelje meg, hogy a **RowKey** mostantól egy összetett kulcs, amely az ALKALM
 
 Az alábbi példa azt ismerteti, hogyan kérhető le egy adott alkalmazott összes felülvizsgálati adata (például 000123 alkalmazott az értékesítési részlegben):  
 
-$filter = (PartitionKey EQ "Sales") és (RowKey GE "empid_000123") és (RowKey lt "empid_000124") &$select = RowKey, felettes minősítés, társ-minősítés, megjegyzések  
+$filter = (PartitionKey EQ ' Sales ') és (RowKey GE ' empid_000123 ') és (RowKey lt ' 000123_2012 ') &$select = RowKey, felettes minősítés, társ-minősítés, megjegyzések  
 
 ### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -710,7 +710,7 @@ Kivételek történtek, ha a Storage ügyféloldali kódtár egy EGT hajt végre
 Azt is gondolja át, hogy a terv hogyan befolyásolja az ügyfélalkalmazás a párhuzamossági és frissítési műveleteket.  
 
 ### <a name="managing-concurrency"></a>Az egyidejűség kezelése
-Alapértelmezés szerint a Table szolgáltatás a **beszúrási**, **egyesítési**és **törlési** műveletek szintjén hajtja végre az optimista egyidejűségi ellenőrzéseket, bár lehetséges, hogy egy ügyfél kényszeríti a Table szolgáltatást, hogy megkerülje ezeket az ellenőrzéseket. További információ arról, hogyan kezeli a Table szolgáltatás a párhuzamosságot: az [Egyidejűség kezelése Microsoft Azure Storageban](../../storage/common/storage-concurrency.md).  
+Alapértelmezés szerint a Table szolgáltatás a **beszúrási**, **egyesítési**és **törlési** műveletek szintjén hajtja végre az optimista egyidejűségi ellenőrzéseket, bár lehetséges, hogy egy ügyfél kényszeríti a Table szolgáltatást, hogy megkerülje ezeket az ellenőrzéseket. További információ arról, hogyan kezeli a Table szolgáltatás a párhuzamosságot: az  [Egyidejűség kezelése Microsoft Azure Storageban](../../storage/common/storage-concurrency.md).  
 
 ### <a name="merge-or-replace"></a>Egyesítés vagy csere
 A **TableOperation** osztály **replace** metódusa mindig a Table Service teljes entitását váltja fel. Ha nem tartalmaz tulajdonságot a kérelemben, ha az adott tulajdonság létezik a tárolt entitásban, a kérelem eltávolítja a tulajdonságot a tárolt entitásból. Hacsak nem szeretne explicit módon eltávolítani egy tulajdonságot egy tárolt entitásból, a kérelemben szereplő összes tulajdonságot fel kell vennie.  

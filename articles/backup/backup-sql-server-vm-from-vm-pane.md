@@ -3,12 +3,12 @@ title: SQL Server VM biztonsági mentése a virtuális gép paneljéről
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról az Azure Virtual Machines szolgáltatásban a virtuális gép ablaktáblán.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 3d44c856d264c784d07b8301fa5605affddd7c02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755245"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827477"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>SQL Server biztonsági mentése a virtuális gép paneljéről
 
@@ -67,7 +67,7 @@ A biztonsági mentést a virtuális gép **biztonsági mentési** paneljén enge
     ![Tekintse meg a biztonsági másolati elemek biztonsági mentését tartalmazó adatbázisokat](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 
 >[!NOTE]
->A biztonsági mentés nem lesz automatikusan konfigurálva a védett virtuális géphez később hozzáadott új SQL Server példányokon. Az újonnan hozzáadott példányok biztonsági mentésének konfigurálásához meg kell nyitnia azt a tárolót, amelyre a virtuális gép regisztrálva van, és kövesse az [itt](backup-sql-server-database-azure-vms.md)felsorolt lépéseket.
+>A biztonsági mentés nem lesz automatikusan konfigurálva olyan új SQL Server példányokon, amelyek később hozzáadhatók a védett virtuális géphez. Az újonnan hozzáadott példányok biztonsági mentésének konfigurálásához meg kell nyitnia azt a tárolót, amelyre a virtuális gép regisztrálva van, és kövesse az [itt](backup-sql-server-database-azure-vms.md)felsorolt lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 

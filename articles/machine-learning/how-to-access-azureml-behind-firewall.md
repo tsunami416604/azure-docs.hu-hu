@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873636"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827426"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -39,7 +39,7 @@ Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkater�
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -51,18 +51,19 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 | **\*. aether.ms** | Azure Machine Learning folyamatok futtatásakor használatos |
 | **\*. instances.azureml.net** | Számítási példányok Azure Machine Learning |
 | **\*. instances.azureml.ms** | Azure Machine Learning számítási példányok, ha a munkaterület saját hivatkozás engedélyezve van |
-| **windows.net** | Azure Blob-tároló |
+| **windows.net** | Azure Blob Storage |
 | **vault.azure.net** | Azure Key Vault |
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | Microsoft Container Registry az alapszintű Docker-rendszerképekhez |
 | **your-acr-server-name.azurecr.io** | Csak akkor szükséges, ha a Azure Container Registry a virtuális hálózat mögött van. Ebben a konfigurációban a Microsoft-környezetből a saját előfizetésében található ACR-példányhoz privát hivatkozás jön létre. Használja az ACR-kiszolgáló nevét az Azure Machine Learning munkaterülethez. |
 | **\*. notebooks.azure.net** | Azure Machine Learning Studióban található jegyzetfüzetek szükségesek. |
+| **graph.windows.net** | Jegyzetfüzetekhez szükséges |
 
 ## <a name="python-hosts"></a>Python-gazdagépek
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
 | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
@@ -75,11 +76,20 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Rendeltetés** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="azure-government-region"></a>Azure Government régió
+
+A Azure Government-régiókhoz szükséges URL-címek.
+
+| **Állomásnév** | **Rendeltetés** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | Az USA – Arizona régió |
+| **usgovvirginia.api.ml.azure.us** | Az USA-Virginia régió |
+
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](../firewall/tutorial-firewall-deploy-portal.md)
 * [Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit](how-to-enable-virtual-network.md)

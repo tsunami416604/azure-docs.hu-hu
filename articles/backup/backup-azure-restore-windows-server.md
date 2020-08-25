@@ -3,12 +3,12 @@ title: Fájlok visszaállítása Windows Serverre a MARS-ügynök használatáva
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757081"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827069"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
 
@@ -47,7 +47,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
 
     ![Képernyőkép az adatok helyreállítása varázsló helyreállítási mód kiválasztása lapján (visszaállítás ugyanarra a gépre)](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > Az egyes fájlok és mappák visszaállításának lehetősége a .NET-keretrendszer 4.5.2-es vagy újabb verziójára van szükség. Ha nem látja az **egyes fájlok és mappák** beállítást, a .NET-keretrendszert a 4.5.2-es vagy újabb verzióra kell frissíteni, majd próbálkozzon újra.
+   > Az egyes fájlok és mappák visszaállításának lehetősége a .NET-keretrendszer 4.5.2-es vagy újabb verziójára van szükség. Ha nem jelenik meg az **egyes fájlok és mappák** lehetőség, a .NET-keretrendszert a 4.5.2-es vagy újabb verzióra kell frissíteni, majd próbálkozzon újra.
 
    > [!TIP]
    > Az **egyes fájlok és mappák** lehetőséggel gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, a mérete nem haladhatja meg a 80 GB-ot, és az átviteli vagy a másolási sebesség akár 6 MBps is lehet. A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet biztosít (akár 40 MBps), ami ideális a nagyméretű adatok vagy a teljes kötetek helyreállításához.

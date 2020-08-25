@@ -3,12 +3,12 @@ title: Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP
 description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server és az Azure-beli virtuális gépek számítási feladatainak SAP HANAa hogyan teszi biztonságosabbá a biztonsági mentéseket
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757472"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825171"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
 
@@ -17,7 +17,7 @@ A Azure Backup mostantól az Azure-beli virtuális gépen futó SQL Serverhez é
 A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció, amely a törlés után is védelmet nyújt a biztonsági mentési adatai számára. A helyreállítható törléssel akkor is, ha egy rosszindulatú szereplő töröl egy adatbázis biztonsági másolatát (vagy a biztonsági mentési adat véletlenül törlődik), a biztonsági mentési adat 14 további napig megmarad. Ez lehetővé teszi, hogy a biztonsági mentési tétel adatvesztés nélkül legyen helyreállítva. Ez a "Soft Delete" állapotban lévő biztonsági mentési adatoknak a 14 napos további megőrzésével kapcsolatos költségek nem merülnek fel az ügyfél számára.
 
 >[!NOTE]
->Ha az előzetes verzió engedélyezve van egy előfizetéshez, nem lehet letiltani a csak az SQL Serverhez vagy SAP HANA a virtuális gépekhez tartozó helyreállítható törlést, miközben az azonos tárolóban lévő virtuális gépek számára engedélyezve van. A részletes szabályozáshoz külön tárolókat is létrehozhat.
+>Ha az előzetes verzió engedélyezve van egy előfizetéshez, nem lehet letiltani a csak az SQL Serverhez vagy a SAP HANA a virtuális gépekhez tartozó nem kötelező törlést, miközben az azonos tárolóban lévő virtuális gépek számára engedélyezve van. A részletes szabályozáshoz külön tárolókat is létrehozhat.
 
 ## <a name="steps-to-enroll-in-preview"></a>Az előzetes verzióra való regisztrálás lépései
 
@@ -99,7 +99,7 @@ A Azure PowerShell használatára vonatkozó lépések sorrendjének megegyeznek
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>A biztonsági mentési tétel törlése Azure PowerShell használatával
 
-Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS parancsmag használatával.
+Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection PowerShell-](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) parancsmag használatával.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS parancsmag használatával.
+Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell-parancsmag használatával.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

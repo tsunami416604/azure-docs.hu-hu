@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja, kezdeménye
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762878"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826412"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -445,7 +445,7 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 |202 elfogadva     |         |     Elfogadva    |
 
 > [!IMPORTANT]
-> A véletlen törlési forgatókönyvek elleni védelem érdekében a Recovery Services-tárolóhoz [elérhető egy törlési funkció](use-restapi-update-vault-properties.md#soft-delete-state) . Ha a tároló Soft-delete állapota engedélyezve értékre van állítva, akkor a törlési művelet nem fogja azonnal törölni az adatmennyiséget. A rendszer 14 napig őrzi meg, majd véglegesen törli. Az ügyfél a 14 napos időszakra vonatkozóan nem számít fel díjat. A törlési művelet visszavonásához tekintse meg a [Visszavonás-törlés szakaszt](#undo-the-deletion).
+> A véletlen törlési forgatókönyvek elleni védelem érdekében a Recovery Services-tárolóhoz [elérhető egy törlési funkció](use-restapi-update-vault-properties.md#soft-delete-state) . Ha a tároló Soft-delete állapota engedélyezve értékre van állítva, akkor a törlési művelet nem fogja azonnal törölni az adatmennyiséget. A rendszer 14 napig őrzi meg, majd véglegesen törli. Ezt a 14 napos időszakot nem terheljük a tárterület. A törlési művelet visszavonásához tekintse meg a [Visszavonás-törlés szakaszt](#undo-the-deletion).
 
 ### <a name="undo-the-deletion"></a>Törlés visszavonása
 

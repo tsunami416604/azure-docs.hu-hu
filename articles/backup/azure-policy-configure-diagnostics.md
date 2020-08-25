@@ -3,12 +3,12 @@ title: Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 description: Log Analytics diagnosztikai beállítások konfigurálása egy adott hatókörben lévő összes tárolóhoz a Azure Policy használatával
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612503"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824049"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 
@@ -78,11 +78,11 @@ Ha a felhasználó rendelkezik egy olyan tárolóval, amely a hat erőforrás-sp
 >
 > Ha egy tároló rendelkezik egy meglévő diagnosztikai beállítással, amelynek az erőforrás-specifikus kategóriák egy **részhalmaza** engedélyezve van, úgy van konfigurálva, hogy adatokat küldjön egy adott La munkaterületre, azaz a "munkaterület x" értéket, a Szervizelési feladat meghiúsul (csak az adott tár esetében), ha a házirend-hozzárendelésben megadott cél La munkaterület **ugyanaz** a "munkaterület x".
 >
->Ennek az az oka, hogy ha az ugyanazon az erőforráson két különböző diagnosztikai beállítás által engedélyezett események valamilyen formában **átfedésben** vannak, akkor a beállításoknak nem lehet ugyanaz a La munkaterülete, mint a célhely. Ennek a hibának a manuális feloldásához navigáljon a megfelelő tárolóhoz, és konfigurálja a diagnosztikai beállításokat egy másik LA-munkaterülettel a célhelyként.
+>Ennek az az oka, hogy ha az ugyanazon az erőforráson két különböző diagnosztikai beállítás által engedélyezett események valamilyen formában **átfedésben** vannak, akkor a beállítások nem rendelkezhetnek a CÉLKÉNT megadott La munkaterülettel. Ennek a hibának a manuális feloldásához navigáljon a megfelelő tárolóhoz, és konfigurálja a diagnosztikai beállításokat egy másik LA-munkaterülettel a célhelyként.
 >
 > Vegye figyelembe, hogy a Szervizelési feladat **nem** fog sikerülni, ha a meglévő diagnosztikai beállítás csak az X munkaterület AzureBackupReport engedélyezett, mert ebben az esetben a meglévő beállítás által engedélyezett események és a Szervizelési feladat által létrehozott események között nem lesz átfedés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a biztonsági mentési jelentések használatáról](./configure-reports.md)
 * [További információ a Azure Policy](../governance/policy/index.yml)

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649414"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826140"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -56,13 +56,13 @@ A.  Ha szeretné megtekinteni, hogy jelenleg milyen Data Box lemezek érhetők e
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
 A. A Data Box Disk az Egyesült Államok, Kanada, Ausztrália, Nyugat-Európa és Észak-Európa, Korea és Japán régiókban is támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>K. A szállítás során a Data Box Disk országok/régiók határok lesznek?
-A. Data Box Disk a rendeltetésük szerinti országon/régión belül, és nem léphetnek fel nemzetközi határokon. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol a lemezek bármelyik EU-országba/régióba oda tudnak szállítani.
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
+A. A Data Box Disk az Egyesült Államok, Kanada, Ausztrália, Nyugat-Európa és Észak-Európa, Korea és Japán régiókban is támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>K. Hogyan importálhatók a helyszíni forrásadatok egy országba vagy régióba egy másik országban/régióban lévő Azure-régióba?
-A. Data Box Disk támogatja az adatfeldolgozást csak ugyanabban a régióban (kereskedelmi határ) belül. Minden más esetben szükség lehet további műveletre. 
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>K. Hogyan importálhatók a saját helyükre tartozó forrásadatok egy adott országban vagy régióban egy másik országban található Azure-régióba?
+A. Data Box Disk támogatja az adatfeldolgozást kizárólag a rendeltetési országon vagy régióban belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol a Data Box-lemezek bármelyik EU-országba/régióba oda tudnak szállítani.
 
-Ha például olyan, a Kanadában található helyszíni adattal rendelkezett, amelyet egy Azure WestUS Storage-fiókba szeretne áthelyezni, akkor a következő módon érheti el:
+Ha például az Azure-beli WestUS-fiókba kívánja helyezni az adatait, az alábbi módon érheti el:
 
 ### <a name="option-1"></a>1. módszer: 
 

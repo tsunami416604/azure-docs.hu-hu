@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentése
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757030"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826905"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
@@ -20,14 +20,14 @@ A biztonsági problémákkal, például a kártevővel, a ransomware és a behat
 - **Helyreállítás**. A törölt biztonsági mentési adatok a törlés időpontjától számítva további 14 napig megmaradnak. Ez egy adott időszakon belül gondoskodik az adathelyreállításról, így az adatvesztés még akkor sem, ha támadás történik. Emellett a rendszer a minimális helyreállítási pontok számát is megőrzi a sérült információk védelme érdekében.
 
 > [!NOTE]
-> A biztonsági funkciókat nem szabad engedélyezni, ha az infrastruktúra-szolgáltatás (IaaS) virtuális gép biztonsági mentését használja. Ezek a funkciók még nem állnak rendelkezésre a IaaS virtuális gépek biztonsági mentéséhez, így azok nem lesznek hatással. A biztonsági funkciókat csak akkor kell engedélyezni, ha a következőket használja: <br/>
+> A biztonsági funkciókat nem szabad engedélyezni, ha az infrastruktúra-szolgáltatást (IaaS) használó virtuális gép biztonsági mentést használ. Ezek a funkciók még nem állnak rendelkezésre a IaaS virtuális gépek biztonsági mentéséhez, így azok nem lesznek hatással. A biztonsági funkciókat csak akkor kell engedélyezni, ha a következőket használja: <br/>
 >
 > - **Azure Backup ügynök**. Az ügynök minimális verziószáma 2.0.9052. Miután engedélyezte ezeket a szolgáltatásokat, a kritikus műveletek végrehajtásához frissítsen erre az ügynök-verzióra. <br/>
 > - **Azure Backup Server**. A minimális Azure Backup ügynök verziója a Azure Backup Server Update 1 2.0.9052. <br/>
 > - **System Center Data Protection Manager**. A minimális Azure Backup ügynök verziója 2.0.9052 Data Protection Manager 2012 R2 UR12 vagy Data Protection Manager 2016 UR2. <br/>
 
 > [!NOTE]
-> Ezek a szolgáltatások csak Recovery Services-tárolóhoz érhetők el. Az újonnan létrehozott Recovery Services-tárolók alapértelmezés szerint engedélyezve vannak ezekkel a szolgáltatásokkal. A meglévő Recovery Services-tárolók esetében a felhasználók a következő szakaszban említett lépések végrehajtásával engedélyezhetik ezeket a funkciókat. A szolgáltatások engedélyezése után a rendszer az összes Recovery Services ügynök számítógépére, Azure Backup Server példányára, valamint a tárolóban regisztrált Data Protection Manager kiszolgálóra vonatkozik. Ha engedélyezi ezt a beállítást, a rendszer egyszeri műveletet végez, és ezek engedélyezése után nem tilthatja le ezeket a funkciókat.
+> Ezek a szolgáltatások csak Recovery Services-tárolóhoz érhetők el. Az újonnan létrehozott Recovery Services-tárolók alapértelmezés szerint engedélyezve vannak ezekkel a szolgáltatásokkal. A meglévő Recovery Services-tárolók esetében a felhasználók a következő szakaszban említett lépések végrehajtásával engedélyezhetik ezeket a funkciókat. A szolgáltatások engedélyezése után a rendszer az összes Recovery Services ügynök számítógépére, Azure Backup Server példányára, valamint a tárolóban regisztrált Data Protection Manager kiszolgálóra vonatkozik. Ha engedélyezi ezt a beállítást, az egyszeri művelet, és az engedélyezése után nem lehet letiltani ezeket a funkciókat.
 >
 
 ## <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése

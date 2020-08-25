@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757217"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826735"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -101,7 +101,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
     > [!NOTE]
     >
     >- Ha a védett kiszolgáló szinkronizálva van az Azure-szolgáltatásokkal és a biztonsági mentési elemekkel, akkor a beleegyezik jelölőnégyzet megjeleníti a függő biztonsági mentési elemek számát és a biztonsági másolati elemek megtekintésére szolgáló hivatkozást.
-    >- Ha a védett kiszolgáló nincs szinkronizálva az Azure-szolgáltatásokkal, és a biztonsági másolati elemek léteznek, a beleegyezett jelölőnégyzet csak a biztonsági másolati elemek számát jeleníti meg.
+    >- Ha a védett kiszolgáló nincs szinkronizálva az Azure-szolgáltatásokkal és a biztonsági mentési elemekkel, akkor a beleegyezett jelölőnégyzet csak a biztonsági mentési elemek számát jeleníti meg.
     >- Ha nincsenek biztonsági másolati elemek, a beleegyezett jelölőnégyzettel a törlést kéri a rendszer.
 
 4. Jelölje be a beleegyezett jelölőnégyzetet, majd válassza a **Törlés**lehetőséget.
@@ -301,7 +301,7 @@ Recovery Services-tároló törlése:
 Először olvassa el az első **[lépések](#before-you-start)** szakaszt a függőségek és a tár törlési folyamatának megismeréséhez.
 
 > [!NOTE]
-> Jelenleg Azure Backup CLI csak az Azure-beli virtuális gépek biztonsági másolatainak kezelését támogatja, így a tároló csak akkor törölhető, ha a tár Azure-beli virtuális gépek biztonsági másolatait tartalmazza. Azure Backup CLI használatával nem törölhet tárolót, ha a tár az Azure-beli virtuális gépektől eltérő típusú biztonságimásolat-elemeket tartalmaz.
+> Jelenleg Azure Backup CLI csak az Azure-beli virtuális gépek biztonsági másolatainak kezelését támogatja, így a tároló csak akkor törölhető, ha a tár Azure-beli virtuális gépek biztonsági másolatait tartalmazza. Azure Backup CLI használatával nem törölheti a tárolót, ha a tároló az Azure-beli virtuális gépektől eltérő típusú biztonsági másolati elemeket tartalmaz.
 
 A meglévő Recovery Services-tároló törléséhez hajtsa végre a következő lépéseket:
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: ac121195ba46389798acc7f099829fde96da72e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763456"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827137"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -17,7 +17,7 @@ Azure Backup lehetővé teszi az Azure-beli [virtuális gépek (VM-EK) és lemez
 
 > [!NOTE]
 > Ez a funkció a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépek számára érhető el, és Recovery Services-tárolóval védett.
-> A titkosított virtuális gépek biztonsági másolatból történő helyreállítása nem támogatott.
+> A titkosított virtuális gépekről történő helyreállítás nem támogatott.
 >
 
 ## <a name="mount-the-volume-and-copy-files"></a>A kötet csatlakoztatása és a fájlok másolása
@@ -87,7 +87,7 @@ A lemezek leválasztása után üzenet jelenik meg. A kapcsolatok frissítése e
 A Linux rendszerben a helyreállítási ponttal létesített csatlakozás letelte után az operációs rendszer nem távolítja el automatikusan a megfelelő csatlakoztatási útvonalakat. A csatlakoztatási útvonalak "árva" kötetekként léteznek, és láthatók, de hiba történt a fájlok elérése/írása közben. Ezeket manuálisan is el lehet távolítani. A parancsfájl futtatásakor a rendszer a korábbi helyreállítási pontokból származó összes ilyen kötetet azonosítja, és jóváhagyja őket.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a szükséges fájlok visszaállítása után a kapcsolatok be vannak zárva. Ez fontos, különösen abban az esetben, ha a gép, amelyben a parancsfájlt futtatja, a biztonsági mentésre is konfigurálva van. Ha a kapcsolatok továbbra is nyitva vannak, a következő biztonsági mentés sikertelen lehet, hiba: "UserErrorUnableToOpenMount". Ez azért történik, mert a csatlakoztatott meghajtók/kötetek elérhetőnek kell lenniük, és a hozzáférésük sikertelen lehet, mert a mögöttes tároló, azaz az iSCSI-célkiszolgáló nem érhető el. A kapcsolatok tisztítása eltávolítja ezeket a meghajtókat/köteteket, így azok nem lesznek elérhetők a biztonsági mentés során.
+> Győződjön meg arról, hogy a szükséges fájlok visszaállítása után a kapcsolatok be vannak zárva. Ez fontos, különösen abban az esetben, ha a gép, amelyben a parancsfájlt futtatja, a biztonsági mentésre is konfigurálva van. Ha a kapcsolatok még nyitva vannak, a következő biztonsági mentés meghiúsulhat a "UserErrorUnableToOpenMount" hibaüzenettel. Ez azért történik, mert a csatlakoztatott meghajtók/kötetek elérhetőnek kell lenniük, és a hozzáférésük sikertelen lehet, mert az alapul szolgáló tárterület, azaz az iSCSI-célkiszolgáló nem érhető el. A kapcsolatok tisztítása eltávolítja ezeket a meghajtókat/köteteket, így azok nem lesznek elérhetők a biztonsági mentés során.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>A megfelelő gép kiválasztása a parancsfájl futtatásához
 
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> Ne használja a "Mount-a" kulcsszót. Ezzel a paranccsal az "/etc/fstab"-ben leírt összes eszköz csatlakoztatható. Ez azt jelentheti, hogy duplikált eszközök csatlakoztatása is lehetséges. Az adatelemek átirányíthatók a parancsfájl által létrehozott eszközökre, amelyek nem őrzik meg az adatmegőrzést, ezért adatvesztést okozhatnak.
+> Ne használja a "Mount-a" kulcsszót. Ezzel a paranccsal az "/etc/fstab"-ben leírt összes eszköz csatlakoztatható. Ez azt jelentheti, hogy duplikált eszközök csatlakoztatása is lehetséges. Az adatelemek átirányíthatók egy parancsfájl által létrehozott eszközökre, amelyek nem őrzik meg az adatmegőrzést, ezért adatvesztést okozhatnak.
 
 #### <a name="for-raid-arrays"></a>RAID-tömbök esetén
 

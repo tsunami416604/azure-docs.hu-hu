@@ -4,12 +4,12 @@ description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Ba
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755368"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826053"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -57,7 +57,7 @@ A Azure Backup a virtuálisgép-Pillanatképek bővítmény használatával kés
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információk](../virtual-machines/extensions/features-windows.md#network-access).
+- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információ](../virtual-machines/extensions/features-windows.md#network-access).
   - Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
   - Ha letiltotta a hozzáférést `168.63.129.16` a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül sikertelenek lesznek. A 80, 443 és 32526 portok szükségesek, [További információ](../virtual-machines/extensions/features-windows.md#network-access).
 
@@ -119,7 +119,7 @@ Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépe
 Javasolt művelet:<br>
 A probléma megoldásához távolítsa el a virtuális gép erőforráscsoport zárolását, majd próbálja megismételni a műveletet a tisztítás elindításához.
 > [!NOTE]
-> A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma a következőket eredményezi: AzureBackupRG_ `<Geo>` _ `<number>` például: AzureBackupRG_northeurope_1
+> A Backup szolgáltatás egy külön erőforráscsoportot hoz létre, mint a virtuális gép erőforráscsoport, amely a helyreállítási pontok gyűjtését tárolja. Azt javasoljuk, hogy ne zárolja a Backup szolgáltatás általi használatra létrehozott erőforráscsoportot. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_ `<Geo>` _ `<number>` . Például: *AzureBackupRG_northeurope_1*
 
 **1. lépés: [a zárolás eltávolítása a visszaállítási pont erőforráscsoporthoz](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. lépés: a [visszaállítási pontok gyűjtésének tisztítása](#clean_up_restore_point_collection)**<br>
@@ -297,7 +297,7 @@ A visszaállítási pontok tisztításához kövesse az alábbi módszereket:<br
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>A visszaállítási pontok gyűjtésének tisztítása igény szerinti biztonsági mentés futtatásával
 
-A zárolás eltávolítását követően indítson el egy igény szerinti biztonsági mentést. Ez a művelet biztosítja, hogy a visszaállítási pontok automatikusan törlődnek. Az igény szerinti művelet az első alkalommal meghiúsul; a visszaállítási pontok manuális törlése helyett azonban gondoskodni fog az automatikus tisztításról. A karbantartás után a következő ütemezett biztonsági mentésnek sikeresnek kell lennie.
+A zárolás eltávolítását követően indítson el egy igény szerinti biztonsági mentést. Ez a művelet biztosítja, hogy a visszaállítási pontok automatikusan törlődnek. Az igény szerinti művelet az első alkalommal sikertelen lesz. A visszaállítási pontok manuális törlése helyett azonban gondoskodni fog az automatikus tisztításról. A karbantartás után a következő ütemezett biztonsági mentésnek sikeresnek kell lennie.
 
 > [!NOTE]
 > Az automatikus tisztítás az igény szerinti biztonsági mentés néhány órája után is megtörténik. Ha az ütemezett biztonsági mentés továbbra is sikertelen, próbálja meg manuálisan törölni a visszaállítási pont gyűjteményét az [itt](#clean-up-restore-point-collection-from-azure-portal)felsorolt lépések segítségével.
@@ -320,4 +320,4 @@ Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, a
 6. Próbálja megismételni a biztonsági mentési műveletet.
 
 > [!NOTE]
- >Ha az erőforrás (RP-gyűjtemény) nagy számú visszaállítási ponttal rendelkezik, akkor a portálról való törlés után időtúllépés és sikertelen lehet. Ez egy ismert CRP-probléma, amelyben az összes visszaállítási pont nem törlődik a megadott időn belül, és a művelet túllépi az időkorlátot. a törlési művelet azonban általában 2 vagy 3 újrapróbálkozást követően sikeres lesz.
+ >Ha az erőforrás (RP-gyűjtemény) nagy számú visszaállítási ponttal rendelkezik, akkor a portálról való törlés után időtúllépés és sikertelen lehet. Ez egy ismert CRP-probléma, amelyben az összes visszaállítási pont nem törlődik a meghatározott időn belül, és a művelet időtúllépést eredményez. A törlési művelet azonban általában két vagy három újrapróbálkozás után is sikeres.

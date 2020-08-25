@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762453"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824559"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -67,7 +67,7 @@ Ellenőrizze a következőket:
 Az offline biztonsági mentés elindítása előtt győződjön meg arról, hogy a szükséges Data Box eszközök *kézbesítése* folyamatban van. A szükséglethez legmegfelelőbb SKU megrendeléséhez tekintse meg a [biztonsági másolatok mérete és a támogatott Data Box SKU](#backup-data-size-and-supported-data-box-skus) -ket. A Data Box-eszközök megrendeléséhez és fogadásához kövesse az [ebben a cikkben](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) ismertetett lépéseket.
 
 > [!IMPORTANT]
-> Ne válassza a *BlobStorage* lehetőséget a **fiók típusához**. A DPM/MABS-kiszolgálónak olyan fiókra van szüksége, amely támogatja az oldal blobokat, amelyek nem támogatottak, ha a *BlobStorage* van kiválasztva. Válassza a  **Storage v2 (általános célú v2)** lehetőséget **a Azure Data Box** feladathoz tartozó cél Storage-fiók létrehozásakor.
+> Ne válassza a *BlobStorage* lehetőséget a **fiókhoz**. A DPM/MABS-kiszolgálónak olyan fiókra van szüksége, amely támogatja a *BlobStorage* kiválasztásakor nem támogatott lapok blobokat. Válassza a  **Storage v2 (általános célú v2)** lehetőséget **a Azure Data Box** feladathoz tartozó cél Storage-fiók létrehozásakor.
 
 ![Az Azure databox beállítása](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -131,7 +131,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
     ![A kezdeti online replikáció kiválasztása](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > A **Microsoft tulajdonában lévő lemezekkel történő átvitel** kiválasztásának lehetősége nem érhető el az MABS V3 esetében, mivel a funkció előzetes verzióban érhető el. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)Ha ezt a funkciót szeretné használni a MABS v3-hez, a következő címen juthat el hozzánk:.
+    > A **Microsoft tulajdonában lévő lemezekkel való átvitel** kiválasztásának lehetősége nem érhető el a MABS v3-hez, mivel a funkció előzetes verzióban érhető el. [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)Ha ezt a funkciót szeretné használni a MABS v3-hez, a következő címen juthat el hozzánk:.
 
 12. Ha a rendszer kéri, jelentkezzen be az Azure-ba, és használja az Azure-előfizetéshez tulajdonosi hozzáféréssel rendelkező felhasználói hitelesítő adatokat. Sikeres bejelentkezés után a következő képernyő jelenik meg:
 
@@ -234,7 +234,7 @@ A probléma megoldásához végezze el a következő lépéseket, majd próbálj
 2. Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítéssel, és nem függ az `AzureOfflineBackup_<Azure User Id>` alkalmazástól, akkor törölje az alkalmazást **Azure Portal > Azure Active Directory > Alkalmazásregisztrációk**.
 
    > [!NOTE]
-   > Ellenőrizze, hogy az alkalmazás `AzureOfflineBackup_<Azure User Id>` nem rendelkezik-e más kapcsolat nélküli előkészítéssel, és nem függ-e az alkalmazástól. Lépjen a **beállítások > kulcsok** területen a nyilvános kulcsok szakaszban, hogy ne legyenek hozzáadva más **nyilvános kulcsok** . Tekintse meg a következő képernyőképet a hivatkozáshoz:
+   > Ellenőrizze, hogy az alkalmazás `AzureOfflineBackup_<Azure User Id>` nem rendelkezik-e más kapcsolat nélküli előkészítéssel, és nem függ-e az alkalmazástól. Lépjen a **beállítások > kulcsok** elemre a nyilvános kulcsok szakaszban. Nem adhat hozzá további **nyilvános kulcsokat** . Tekintse meg a következő képernyőképet a hivatkozáshoz:
    >
    > ![Nyilvános kulcsok](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 

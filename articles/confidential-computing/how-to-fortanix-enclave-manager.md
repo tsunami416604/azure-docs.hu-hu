@@ -9,19 +9,19 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815844"
+ms.locfileid: "88826293"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Útmutató: alkalmazás futtatása a Fortanix enklávé Managerrel 
 
 Indítsa el az alkalmazást az Azure bizalmas számítástechnikai szolgáltatásban az [Fortanix enklávé Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview) és a [Fortanix Node Agent ügynök](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) használatával a [Fortanix](https://www.fortanix.com/)-ból.
 
 
-A Fortanix egy külső gyártótól származó szoftvergyártó, amely Azure-infrastruktúrára épülő termékekkel és szolgáltatásokkal rendelkezik. Vannak más, az Azure-ban hasonló, bizalmas számítástechnikai szolgáltatásokat nyújtó külső szolgáltatók, például a [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) és a [Scone](https://sconedocs.github.io).  
+A Fortanix egy külső gyártótól származó szoftvergyártó, amely Azure-infrastruktúrára épülő termékekkel és szolgáltatásokkal rendelkezik. Más külső szolgáltatók is hasonló bizalmas számítástechnikai szolgáltatásokat kínálnak az Azure-ban.
 
 > [!Note] 
  > A DOKUMENTUMBAN HIVATKOZOTT TERMÉKEK NEM A MICROSOFT FELÜGYELETE ALÁ TARTOZNAK. A MICROSOFT EZT AZ INFORMÁCIÓT KIZÁRÓLAG KÉNYELMI CÉLOKRA NYÚJTJA, ÉS A NEM MICROSOFT-TERMÉKEKRE VALÓ HIVATKOZÁS NEM A MICROSOFT JÓVÁHAGYÁSÁT JELENTI.
@@ -162,7 +162,7 @@ ahol
 
 Ha már nincs rá szükség, törölheti az erőforráscsoportot, a virtuális gépet és a kapcsolódó erőforrásokat. Az erőforráscsoport törlésével törli a konvertált rendszerképhez társított csomópontok regisztrációját. 
 
-Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez. \
+Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
 A létrehozott Fortanix enklávé-kezelő fiók törléséhez nyissa meg az enklávé-kezelő [fiókok lapját](https://em.fortanix.com/accounts) . Vigye a kurzort a törölni kívánt fiók fölé. Válassza a jobb felső sarokban található függőleges fekete pontokat, és válassza a **fiók törlése**lehetőséget.
 
@@ -174,3 +174,4 @@ Ebben a rövid útmutatóban a Fortanix-eszközök használatával alakíthatja 
 
 További információ az Azure bizalmas számítástechnikai kínálatáról: az [Azure bizalmas számítástechnika áttekintése](overview.md)
 
+ Megtudhatja, hogyan hajthat végre hasonló feladatokat más, harmadik féltől származó ajánlatokkal az Azure-ban, például a [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) és a [Scone](https://sconedocs.github.io).  

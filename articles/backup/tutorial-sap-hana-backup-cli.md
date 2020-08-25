@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztons�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 505c4502281f4d32e1e28d913ed5a040e533cfb2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762402"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824305"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -178,7 +178,7 @@ A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladat
 >[!NOTE]
 >A teljes vagy különbözeti biztonsági másolat ütemezése mellett manuálisan is aktiválhatja őket. A naplók biztonsági mentését a rendszer automatikusan aktiválja és felügyeli SAP HANA belsőleg.
 >
-> A Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
+> Az Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
 
 ## <a name="next-steps"></a>További lépések
 

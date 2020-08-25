@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612656"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827307"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -161,7 +161,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
     > [!WARNING]
     > Ön rendelkezik a titkosítási jelszóval, és a Microsoft nem rendelkezik a láthatósággal.
-    > Ha a jelszó elveszett vagy elfelejtve; A Microsoft nem tud segítséget nyújtani a biztonsági mentési adatgyűjtés helyreállításához.
+    > Ha a jelszó elvesztése vagy elvész, a Microsoft nem tud segítséget nyújtani a biztonsági mentési adatgyűjtés helyreállításához.
 
 7. Válassza a **regisztráció** lehetőséget a DPM-kiszolgáló a tárolóhoz való regisztrálásához.
 

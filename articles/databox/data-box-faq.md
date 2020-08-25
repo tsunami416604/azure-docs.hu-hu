@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652576"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823981"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -57,7 +57,7 @@ A.  További információ arról, hogy mely országokban/régiókban érhető el
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>K. Mely régiókban tárolhatok adatokat a Data Box segítségével?
 A. A Data Box az USA, Nyugat-Európa, Észak-Európa, Franciaország, Egyesült Királyság, Japán, Ausztrália és Kanada területén található összes régióban támogatott. További információért lépjen a [régió rendelkezésre állása](data-box-overview.md#region-availability)elemre.
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>K. Hogyan importálhatók a helyszíni forrásadatok egy másik országba vagy régióba tartozó Azure-régióba, vagy exportálható az adatok egy adott országban lévő Azure-régióból egy másik országba/régióba?
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>K. Hogyan importálhatók a forrásadatok egy adott országban egy másik országban vagy régióban lévő Azure-régióba, vagy exportálható az adatok az egyik országban található Azure-régióból egy másik országba/régióba?
 
 Data Box támogatja az adatfeldolgozást vagy a kilépést kizárólag a rendeltetési országon/régión belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az adatmezők bármely EU-országba/régióból elhelyezhetők.
 

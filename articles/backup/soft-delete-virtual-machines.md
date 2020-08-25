@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan teszi biztonságosabbá a biztonsági mentések
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763694"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826480"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Áltörlés virtuális gépekhez
 
 A virtuális gépek Soft törlésével megvédheti a virtuális gépek biztonsági másolatait a nem kívánt törléstől. Még a biztonsági másolatok törlése után is megmaradnak a további 14 napig.
 
 > [!NOTE]
-> A helyreállítható törlés csak a törölt biztonsági mentési adatvédelmet védi. Ha egy virtuális gépet biztonsági mentés nélkül töröl, a helyreállítható funkció nem fogja megőrizni az adatvédelmet. A teljes rugalmasság biztosítása érdekében minden erőforrást Azure Backup védelemmel kell ellátni.
+> A helyreállítható törlés csak a törölt biztonsági mentési adatvédelmet védi. Ha egy virtuális gépet biztonsági mentés nélkül töröl, a törlési funkció nem őrzi meg az adattárolást. A teljes rugalmasság biztosítása érdekében minden erőforrást Azure Backup védelemmel kell ellátni.
 >
 
 ## <a name="supported-regions"></a>Támogatott régiók
@@ -38,7 +38,7 @@ A Soft delete jelenleg az USA nyugati középső régiójában támogatott Kelet
    ![Képernyőkép a Azure Portalről, a virtuális gép a Soft delete állapotában](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > Ha a tárolóban nem találhatók meg a helyreállított biztonsági mentési elemek, a tár ekkor nem törölhető. A biztonsági mentési elemek végleges törlését követően próbálja meg törölni a tárolót, és nincs olyan elem, amely nem található a tárolóban.
+   > Ha a tárolóban nem találhatók meg a helyreállított biztonsági mentési elemek, a tár ekkor nem törölhető. A biztonsági másolati elemek végleges törlését követően próbálja meg törölni a tárolót, és nincsenek olyan elemek, amelyek nem törlődnek a tárolóban.
 
 4. A helyreállított virtuális gép visszaállításához először törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted VM elemet, majd válassza a **Törlés**visszavonása lehetőséget.
 
@@ -62,13 +62,13 @@ A Soft delete jelenleg az USA nyugati középső régiójában támogatott Kelet
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Soft Delete a virtuális gépekhez Azure PowerShell használatával
 
 > [!IMPORTANT]
-> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```A legújabb verziójának beszerzéséhez használja a következőt:.
+> Az az. Recoveryservices szolgáltatónál verziója szükséges ahhoz, hogy a Azure PowerShell a Soft delete használatával a minimális 2.2.0-t használja. ```Install-Module -Name Az.RecoveryServices -Force```A legújabb verziójának beszerzéséhez használja a következőt:.
 
 A fentiekben leírtak szerint a lépések sorrendjének Azure Portal a Azure PowerShell is.
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>A biztonsági mentési tétel törlése Azure PowerShell használatával
 
-Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS parancsmag használatával.
+Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection PowerShell-](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) parancsmag használatával.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -95,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS parancsmag használatával.
+Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell-parancsmag használatával.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

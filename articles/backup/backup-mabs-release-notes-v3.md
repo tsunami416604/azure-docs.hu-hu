@@ -4,12 +4,12 @@ description: Ez a cikk a Microsoft Azure Backup Server (MABS) v3 ismert problém
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032561"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826616"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
 
@@ -78,7 +78,7 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 **Áthidaló megoldás**: az RDL-fájlok cseréjéhez kövesse az alábbi lépéseket:
 
 1. A MABS gépen nyissa meg SQL Reporting Services webes portál URL-címét.
-1. A webportál URL-címében a DPMReports mappa a következő formátumban jelenik meg:**`DPMReports_<GUID>`**
+1. A webportál URL-címében a DPMReports mappa a következő formátumban jelenik meg: **`DPMReports_<GUID>`**
 
     >[!NOTE]
     >Az elnevezési konvenciónak mindig csak egy mappája van. Ha a MABS egy korábbi verzióról frissít, lehet, hogy egy másik régebbi mappa is létezik, de nem fogja tudni megnyitni.
@@ -95,7 +95,7 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 
 1. Az új lapon válassza a **replace (csere** ) lehetőséget, hogy a fájlokat a legújabb jelentési fájlokkal cserélje le.
 
-    A legfrissebb jelentési fájlok az elérési útban találhatók`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    A legfrissebb jelentési fájlok az elérési útban találhatók `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     Például: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 

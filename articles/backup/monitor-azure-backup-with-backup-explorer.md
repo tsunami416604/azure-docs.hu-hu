@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használható a Backup Explorer a t
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092796"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824412"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Biztonsági másolatok figyelése a Backup Explorerrel
 
@@ -78,7 +78,7 @@ A **szabályzatok** lapon megtekintheti a biztonsági mentési területen létre
 
 ### <a name="the-backup-not-enabled-tab"></a>A biztonsági mentés nem engedélyezett lap
 
-A biztonsági mentést engedélyezni kell minden olyan gépen, amely védelmet igényel. A Backup Explorer segítségével a biztonsági mentési rendszergazdák gyorsan azonosíthatják, hogy a szervezet mely számítógépeit még nem védi biztonsági másolat. Ezen információk megtekintéséhez válassza a **biztonsági mentés nem engedélyezett** lapot.
+A biztonsági mentést engedélyezni kell minden olyan gépen, amely védelmet igényel. A Backup Explorer segítségével a biztonsági mentési rendszergazdák gyorsan azonosíthatják, hogy a szervezet mely számítógépeit még nem védi biztonsági mentés. Ezen információk megtekintéséhez válassza a **biztonsági mentés nem engedélyezett** lapot.
 
 A **biztonsági mentés nem engedélyezett** ablaktáblán a nem védett gépek listáját tartalmazó tábla jelenik meg. A szervezet különböző címkéket rendelhet az üzemi gépekhez és a tesztelési gépekhez, illetve a különböző funkciókat ellátó gépekhez. Mivel a gépek minden egyes osztályának külön biztonsági mentési szabályzatra van szüksége, a címkék alapján történő szűrés segít megtekinteni az egyes alkalmazásokra vonatkozó információkat. Bármely gép nevének kiválasztásával átirányítja a gép **biztonsági mentési** paneljére, ahol kiválaszthatja a megfelelő biztonsági mentési szabályzatot.
 

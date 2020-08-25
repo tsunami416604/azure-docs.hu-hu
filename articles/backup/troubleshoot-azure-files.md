@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763677"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825460"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -251,7 +251,7 @@ Hibaüzenet: a helyreállítási pontnak megfelelő Azure file share pillanatké
 - Győződjön meg arról, hogy a fájlmegosztás pillanatképe, amely a helyreállításhoz használni kívánt helyreállítási pontnak felel meg, továbbra is létezik.
 
   >[!NOTE]
-  >Ha Azure Backup által létrehozott fájlmegosztás-pillanatképet töröl, a megfelelő helyreállítási pontok használhatatlanná válnak. Javasoljuk, hogy ne töröljön pillanatképeket a garantált helyreállítás biztosításához.
+  >Ha Azure Backup által létrehozott fájlmegosztás-pillanatképet töröl, a megfelelő helyreállítási pontok használhatatlanná válnak. A garantált helyreállítás biztosítása érdekében javasoljuk, hogy ne törölje a pillanatképeket.
 
 - Válasszon másik visszaállítási pontot az adatok helyreállításához.
 

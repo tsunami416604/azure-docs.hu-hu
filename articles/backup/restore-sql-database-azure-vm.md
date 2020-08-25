@@ -3,12 +3,12 @@ title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921146"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826556"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -126,7 +126,7 @@ Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsá
     >
     >- Futtatás `PsExec -s cmd` az NT AUTHORITY\SYSTEM-rendszerhéjba való belépéshez
     >   - Hajtsa végre az `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` parancsot.
-    >   - Hozzáférés ellenőrzése`dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >   - Hozzáférés ellenőrzése `dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- A Backup-tárolóban lévő fájlok visszaállításának elindítási `\\<storageacct>.file.core.windows.net\<filesharename>` útja<BR>
     A PsExec letöltése a [Sysinternals](/sysinternals/downloads/psexec) lapról végezhető el.
 
@@ -165,7 +165,7 @@ Ha a **teljes & különbözetet** választotta a visszaállítási típusként, 
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Adatbázisok visszaállítása nagy számú fájllal
 
-Ha egy adatbázisban lévő fájlok teljes mérete meghaladja az [adott korlátot](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), akkor Azure Backup egy másik pit-összetevőben tárolja az adatbázisfájlok listáját, hogy a visszaállítási művelet során nem tudja beállítani a cél-visszaállítási útvonalat. Ehelyett a rendszer visszaállítja a fájlokat az alapértelmezett SQL-elérési útra.
+Ha egy adatbázisban lévő fájlok teljes mérete meghaladja az [adott korlátot](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), akkor a Azure Backup egy másik pit-összetevőben tárolja az adatbázisfájlok listáját, így nem állíthatja be a cél-visszaállítási útvonalat a visszaállítási művelet során. Ehelyett a rendszer visszaállítja a fájlokat az alapértelmezett SQL-elérési útra.
 
   ![Adatbázis visszaállítása nagyméretű fájllal](./media/backup-azure-sql-database/restore-large-files.jpg)
 

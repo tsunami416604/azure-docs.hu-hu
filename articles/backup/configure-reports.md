@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755262"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826854"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -70,7 +70,7 @@ Válassza ezt a hivatkozást a biztonsági mentési jelentés munkafüzetének m
 
 A jelentés különböző lapokat tartalmaz:
 
-##### <a name="summary"></a>Összefoglalás
+##### <a name="summary"></a>Összegzés
 
 Ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
 
@@ -89,7 +89,7 @@ Ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási p
    ![Használat lap](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> A DPM számítási feladatokhoz a felhasználók a jelentésekben szereplő használati értékek között kis mértékben (20 MB-os sorrendet) láthatnak az összesített használati értékhez képest, ahogy az a Recovery Services-tároló **áttekintése** lapon látható. Ezt a különbséget azzal a ténnyel kell figyelembe venni, hogy minden biztonsági mentéshez regisztrált DPM-kiszolgáló társítva van egy "metaadatok" adatforrással, amely nem szerepel a jelentéskészítési összetevőként.
+> A DPM számítási feladatokhoz a felhasználók a jelentésekben szereplő használati értékek között kis mértékben (20 MB-os sorrendet) láthatnak az összesített használati értékhez képest, ahogy az a Recovery Services-tároló **áttekintése** lapon látható. Ezt a különbséget azzal a ténnyel kell figyelembe venni, hogy minden biztonsági mentéshez regisztrált DPM-kiszolgáló társítva van egy olyan "metaadatok" adatforrással, amely nem része a jelentéskészítési összetevőnek.
 
 ##### <a name="jobs"></a>Feladatok
 

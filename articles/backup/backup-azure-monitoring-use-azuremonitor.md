@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054612"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827154"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -46,7 +46,7 @@ A riasztások meghatározó jellemzője az aktiválási feltétel. Válassza ki 
 Ha szükséges, szerkesztheti a Kusto-lekérdezést. Válassza ki a küszöbértéket, az időszakot és a gyakoriságot. A küszöbérték határozza meg, hogy a riasztás Mikor kerül kiemelésre. Az időszak az az időablak, amelyben a lekérdezés fut. Ha például a küszöbérték nagyobb nullánál, az időszak 5 perc, a gyakoriság pedig 5 perc, a szabály 5 percenként futtatja a lekérdezést, és az előző 5 percet tekinti át. Ha az eredmények száma nagyobb, mint 0, a rendszer értesítést küld a kiválasztott műveleti csoporton.
 
 > [!NOTE]
-> Ha naponta egyszer szeretné futtatni a riasztási szabályt az összes, az adott napon létrehozott esemény/napló között, módosítsa a "period" és a "Frequency" értékét 1440-ra, azaz 24 órára.
+> Ha naponta egyszer szeretné futtatni a riasztási szabályt az összes, az adott napon létrehozott esemény/napló között, módosítsa a "period" és a "Frequency" érték értékét 1440-ra, azaz 24 órára.
 
 #### <a name="alert-action-groups"></a>Riasztási műveleti csoportok
 

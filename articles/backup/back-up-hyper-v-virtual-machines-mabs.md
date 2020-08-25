@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514551"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823964"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -139,7 +139,7 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
     - **Visszaállítás az eredeti példányban**: Ha az eredeti példányba állít vissza, akkor az eredeti virtuális merevlemez törlődik. A MABS a Hyper-V VSS-író használatával helyreállítja a VHD-t és az egyéb konfigurációs fájlokat az eredeti helyükre. A helyreállítási folyamat végén a virtuális gépek továbbra is magas rendelkezésre állásúak lesznek.
         A helyreállításhoz szükség van az erőforráscsoportra. Ha az nem érhető el, akkor egy másik helyre végezze el a helyreállítást, és állítsa a virtuális gépet magas rendelkezésre állásúra.
 
-    - **Helyreállítás virtuális gépnek bármely gazdagépre**: a MABS támogatja a másik helyre történő helyreállítást (ALR), amely a védett Hyper-v virtuális gépek zökkenőmentes helyreállítását teszi lehetővé egy másik Hyper-v-gazdagépen, a processzor-architektúrától függetlenül. A fürtcsomópontra helyreállított Hyper-V virtuális gépek nem lesznek magas rendelkezésre állásúak. Ha ezt a beállítást választja, a Helyreállítási varázsló megjelenít egy további, a cél és a cél elérési útjának azonosítására szolgáló képernyőt.
+    - **Helyreállítás virtuális gépnek bármely gazdagépre**: a MABS támogatja a másik helyre történő helyreállítást (ALR), amely a védett Hyper-v virtuális gépek zökkenőmentes helyreállítását teszi lehetővé egy másik Hyper-v-gazdagépen, a processzor-architektúrától függetlenül. A fürtcsomóponton helyreállított Hyper-V virtuális gépek nem lesznek magasan elérhetők. Ha ezt a beállítást választja, a Helyreállítási varázsló megjelenít egy további, a cél és a cél elérési útjának azonosítására szolgáló képernyőt.
 
     - **Másolás hálózati mappába**: a MABS támogatja az elemszintű helyreállítást (ILR), amely lehetővé teszi a fájlok, mappák, kötetek és virtuális merevlemezek (VHD-k) elemszintű helyreállítását a Hyper-V virtuális gépek gazdagép szintű biztonsági másolatából egy hálózati megosztásra vagy egy MABS által védett kiszolgáló kötetére. Az elemszintű helyreállítás végrehajtásához a MABS védelmi ügynököt nem kell a vendégen belül telepíteni. Ha ezt a beállítást választja, a Helyreállítási varázsló megjelenít egy további, a cél és a cél elérési útjának azonosítására szolgáló képernyőt.
 
@@ -153,6 +153,6 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
 
 7. A helyreállítási feladatra vonatkozó információk a **Helyreállítás állapota** képernyőn jelennek meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adatok helyreállítása az Azure Backup Serverről](./backup-azure-alternate-dpm-server.md)

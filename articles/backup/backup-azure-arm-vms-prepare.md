@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261939"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826310"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -89,7 +89,7 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
      !["Virtuális gépek kiválasztása" panel](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Az ugyanabban a régióban és előfizetésben lévő összes virtuális gép elérhető a biztonsági mentés konfigurálásához. A biztonsági mentés konfigurálásakor megkeresheti a virtuális gép nevét és az erőforráscsoportot, még akkor is, ha nem rendelkezik a szükséges engedélyekkel ezekhez a virtuális gépekhez. Ha a virtuális gép lágyan törölt állapotban van, akkor nem jelenik meg a listában. Ha újra kell védetté tenni a virtuális gépet, meg kell várnia, amíg a helyreállított törlési időszak lejár, vagy visszavonja a virtuális gép törlését a nem kötelezően törölt listából. További információkért lásd [a virtuális gépek Soft delete szolgáltatását ismertető cikket](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
+    > Az ugyanabban a régióban és előfizetésben lévő összes virtuális gép elérhető a biztonsági mentés konfigurálásához. A biztonsági mentés konfigurálásakor megkeresheti a virtuális gép nevét és az erőforráscsoportot, még akkor is, ha nem rendelkezik a szükséges engedélyekkel ezekhez a virtuális gépekhez. Ha a virtuális gép lágyan törölt állapotban van, akkor ez a lista nem jelenik meg. Ha újra kell védetté tenni a virtuális gépet, meg kell várnia, amíg a helyreállított törlési időszak lejár, vagy visszavonja a virtuális gép törlését a nem kötelezően törölt listából. További információkért lásd [a virtuális gépek Soft delete szolgáltatását ismertető cikket](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. A **biztonsági mentés**területen válassza a **biztonsági mentés engedélyezése**lehetőséget. Ezzel telepíti a szabályzatot a tárolóba és a virtuális gépekre, és telepíti a biztonsági mentési bővítményt az Azure-beli virtuális gépen futó virtuálisgép-ügynökön.
 

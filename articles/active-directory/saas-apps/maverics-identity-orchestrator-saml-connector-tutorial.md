@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Maverics Identity Orchestrator SAML-összekötővel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása a Maverics Identity Orchestrator SAML-összekötővel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Maverics Identity Orchestrator SAML-összekötő között.
 services: active-directory
 author: jeevansd
@@ -11,67 +11,65 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: ec5368427f50f548be965bb883683c859759bbf3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518928"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825562"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Maverics Identity Orchestrator SAML-összekötővel
+# <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
-## <a name="introduction"></a>Bevezetés
+A rétegek egyszerű módszert biztosítanak a helyszíni alkalmazások és a Azure Active Directory (Azure AD) integrálására a hitelesítéshez és a hozzáférés-vezérléshez.
 
-A rétegek egyszerű módszert biztosítanak a helyszíni alkalmazások integrálására az Azure AD-vel a hitelesítéshez és a hozzáférés-vezérléshez.
-
-Ez az útmutató végigvezeti a Maverics Identity Orchestrator konfigurálásának lépésein &trade; :
+Ez a cikk bemutatja, hogyan konfigurálhatja a Maverics Identity Orchestrator a következőre:
 * A helyszíni identitásrendszer felhasználóinak növekményes áttelepítését az Azure AD-be egy örökölt helyszíni alkalmazásba való bejelentkezés során.
-* Átirányíthatja a bejelentkezési kérelmeket egy örökölt webes hozzáférés-kezelési termékből, például a CA SiteMinder vagy az Oracle Access Managerből az Azure AD-be.
-* A felhasználókat a HTTP-fejlécek vagy a tulajdonosi munkamenetek cookie-jait használó helyszíni alkalmazásokhoz hitelesítheti, miután a felhasználót az Azure AD-ben hitelesíti.
+* A bejelentkezési kérelmek átirányítása egy örökölt webes elérésű felügyeleti termékből, például a CA SiteMinder vagy az Oracle Access Managerből az Azure AD-be.
+* A felhasználókat hitelesítheti a HTTP-fejlécek vagy a tulajdonosi munkamenetek cookie-jai által védett helyszíni alkalmazásokhoz, miután a felhasználót az Azure AD-ben hitelesíti.
 
-A rétegek olyan szoftvereket biztosít, amelyek helyszíni vagy Felhőbeli üzembe helyezést, kapcsolódást és koordinálást tesznek lehetővé az identitás-szolgáltatók között a hibrid és a többfelhős vállalatok számára elérhető elosztott Identitáskezelés létrehozásához.
+A rétegek olyan szoftvereket biztosít, amelyek a helyszínen vagy a felhőben is üzembe helyezhetők. Segít felderíteni, csatlakozni és összehangolni az identitás-szolgáltatók között a hibrid és a többfelhős vállalatok számára elérhető elosztott Identitáskezelés létrehozásához.
 
-Ez az oktatóanyag bemutatja, hogyan telepíthet át egy örökölt Webhozzáférés-kezelő termékkel (CA SiteMinder) jelenleg védett helyszíni webalkalmazást az Azure AD hitelesítéshez és hozzáférés-vezérléshez való használatához.
-1. A Maverics Identity Orchestrator telepítése&trade;
-2. Regisztrálja vállalati alkalmazását az Azure AD-ben, és konfigurálja úgy, hogy az Maverics Azure AD SAML zéró kódú összekötőt használja az &trade; SAML-alapú egyszeri bejelentkezéshez.
-3. Integrálja a Maverics-t a SiteMinder és az LDAP felhasználói tárolóval.
-4. Állítsa be Azure Key Vault és konfigurálja a Maverics, hogy azok a titkokat kezelő szolgáltatóként használhassák.
+Ez az oktatóanyag bemutatja, hogyan telepíthet át egy olyan helyszíni webalkalmazást, amelyet jelenleg egy örökölt webes hozzáférés-kezelési termék (CA SiteMinder) véd az Azure AD hitelesítéshez és hozzáférés-vezérléshez való használatához. Az alapszintű lépések a következők:
+1. Telepítse a Maverics Identity Orchestrator.
+2. Regisztrálja vállalati alkalmazását az Azure AD-ben, és konfigurálja úgy, hogy az Maverics Azure AD SAML zéró kódú összekötőt használja az SAML-alapú egyszeri bejelentkezéshez (SSO).
+3. Integrálja a Maverics-t a SiteMinder és a Lightweight Directory Access Protocol (LDAP) felhasználói tárolóval.
+4. Állítson be egy Azure Key vaultot, és konfigurálja a Maverics, hogy azok a titkokat kezelő szolgáltatóként használhassák.
 5. A felhasználók áttelepítésének és a munkamenetek absztrakciójának bemutatása a Maverics használatával a helyszíni Java-webalkalmazásokhoz való hozzáférés biztosításához.
 
-További telepítési és konfigurációs utasításokért tekintse meg a következőt: https://strata.io/docs
+További telepítési és konfigurációs utasításokért lépjen a [rétegek webhelyére](https://strata.io/docs).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-- Maverics Identity Orchestrator SAML-összekötő egyszeri bejelentkezéses (SSO) engedélyezett előfizetése. A Maverics szoftver beszerzéséhez vegye fel a kapcsolatot sales@strata.io
+- Egy Maverics Identity Orchestrator SAML-összekötő SSO-kompatibilis előfizetés. A Maverics szoftver beszerzéséhez vegye fel a kapcsolatot a [rétegek értékesítésével](mailto:sales@strata.io).
 
-## <a name="install-maverics-identity-orchestratortrade"></a>A Maverics Identity Orchestrator telepítése&trade;
+## <a name="install-maverics-identity-orchestrator"></a>A Maverics Identity Orchestrator telepítése
 
-A Maverics Identity Orchestrator telepítésének megkezdéséhez tekintse meg a telepítési utasításokat a következő címen: https://strata.io/docs
+A Maverics Identity Orchestrator telepítésének megkezdéséhez tekintse meg a [telepítési utasításokat](https://strata.io/docs).
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
-### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-* RHEL 7+
-* CentOS 7+
+### <a name="system-requirements"></a>Rendszerkövetelmények
+* Támogatott operációs rendszerek
+  * RHEL 7+
+  * CentOS 7+
 
-### <a name="dependencies"></a>Függőségek
-* rendszerszintű
+* Függőségek
+  * rendszerszintű
 
-## <a name="installation"></a>Telepítés
+### <a name="installation"></a>Telepítés
 
-1. Szerezze be a legújabb Maverics RPM-csomagot. Másolja a csomagot arra a rendszerre, amelyre telepíteni szeretné a Maverics szoftvert.
+1. Szerezze be a legújabb Maverics RedHat Package Manager (RPM) csomagot. Másolja a csomagot arra a rendszerre, amelyre telepíteni kívánja a Maverics szoftvert.
 
-2. Telepítse a Maverics csomagot, és helyettesítse be a fájlnevét a helyére `maverics.rpm` .
+2. Telepítse a Maverics csomagot, és cserélje le a fájlnevét a helyére `maverics.rpm` .
 
     `sudo rpm -Uvf maverics.rpm`
 
-3. A Maverics telepítése után a szolgáltatás a következőként fog futni: `systemd` . A szolgáltatás működésének ellenőrzéséhez hajtsa végre a következő parancsot.
+3. A Maverics telepítése után a szolgáltatás a következőként fog futni: `systemd` . A szolgáltatás futásának ellenőrzéséhez hajtsa végre a következő parancsot:
 
     `sudo systemctl status maverics`
 
-Alapértelmezés szerint a Maverics telepítve van a `/usr/local/bin` címtárban.
+Alapértelmezés szerint a Maverics a */usr/local/bin helyekre* könyvtárba van telepítve.
 
-A Maverics telepítése után az alapértelmezett `maverics.yaml` fájl jön létre a `/etc/maverics` könyvtárban. Mielőtt szerkeszti a konfigurációt a `workflows` `connectors` (z) és a (z) rendszerre, a konfigurációs fájl a következőképpen fog kinézni:
+A Maverics telepítése után a rendszer az alapértelmezett *Maverics. YAML* fájlt hozza létre a */etc/maverics* könyvtárban. Mielőtt szerkeszti a konfigurációt a `workflows` `connectors` (z) és a (z) rendszerre, a konfigurációs fájl a következőképpen fog kinézni:
 
 ```yaml
 # © Strata Identity Inc. 2020. All Rights Reserved. Patents Pending.
@@ -79,24 +77,24 @@ A Maverics telepítése után az alapértelmezett `maverics.yaml` fájl jön lé
 version: 0.1
 listenAddress: ":7474"
 ```
-## <a name="config-options"></a>Konfigurációs beállítások
+## <a name="configuration-options"></a>Beállítási lehetőségek
 ### <a name="version"></a>Verzió
-A `version` mező kijelenti, hogy a konfigurációs fájl melyik verzióját használja. Ha nincs megadva, a rendszer a legújabb konfigurációs verziót fogja használni.
+A `version` mező kijelenti, hogy a konfigurációs fájl melyik verzióját használja a rendszer. Ha a verzió nincs megadva, a rendszer a legújabb konfigurációs verziót fogja használni.
 
 ```yaml
 version: 0.1
 ```
-### <a name="listen-address"></a>Figyelési címe
-`listenAddress` kijelenti, hogy a Orchestrator mely címen fog figyelni. Ha a cím gazdagép szakasza üres, a Orchestrator a helyi rendszer összes elérhető egyedi küldési és kiválasztási IP-címét figyeli. Ha a címnek a port szakasza üres, akkor a rendszer automatikusan kiválasztja a portszámot.
+### <a name="listenaddress"></a>listenAddress
+`listenAddress` kijelenti, hogy mely Orchestrator fogja figyelni. Ha a cím gazdagép szakasza üres, a Orchestrator a helyi rendszer összes elérhető egyedi küldési és kiválasztási IP-címét fogja figyelni. Ha a címnek a port szakasza üres, akkor a rendszer automatikusan kiválasztja a portszámot.
 
 ```yaml
 listenAddress: ":453"
 ```
 ### <a name="tls"></a>TLS
 
-A `tls` mező deklarálja a szállítási réteg biztonsági objektumainak térképét. A TLS-objektumokat összekötők, valamint a Orchestrator-kiszolgáló is használhatja. Az összes rendelkezésre álló TLS-beállítás esetében tekintse `transport` meg a csomag dokumentációját.
+A `tls` mező deklarálja Transport Layer Security (TLS) objektumok leképezését. A TLS-objektumokat összekötők és a Orchestrator-kiszolgáló is használhatja. Az összes rendelkezésre álló TLS-beállításnál tekintse meg a `transport` csomag dokumentációját.
 
-A Microsoft Azure SAML-alapú egyszeri bejelentkezés használata esetén a TLS protokollon keresztüli kommunikációra van szükség, további információt [itt](https://letsencrypt.org/getting-started/) talál a tanúsítványok létrehozásához.
+Az SAML-alapú egyszeri bejelentkezés használata esetén a Microsoft Azure a TLS protokollon keresztüli kommunikációt igényli. A tanúsítványok létrehozásával kapcsolatos információkért lépjen a [titkosítás webhelyre](https://letsencrypt.org/getting-started/).
 
 A `maverics` kulcs a Orchestrator-kiszolgáló számára van fenntartva. Minden más kulcs elérhető, és használható egy TLS-objektum egy adott összekötőbe való beadásához.
 
@@ -106,9 +104,10 @@ tls:
     certFile: /etc/maverics/maverics.cert
     keyFile: /etc/maverics/maverics.key
 ```  
-### <a name="include-files"></a>Fájlok belefoglalása
+### <a name="include-files"></a>Beágyazott fájlok
 
-`connectors` a és `workflows` a saját, különálló konfigurációs fájljaiban is definiálható, és `maverics.yaml` `includeFiles` a következő példa alapján hivatkozhat rájuk.
+`connectors` `workflows` A következő példa alapján megadhatja a saját, különálló konfigurációs fájljait, és hivatkozhat rájuk a *maverics. YAML* fájlban `includeFiles` :
+
 ```yaml
 includeFiles:
   - workflow/sessionAbstraction.yaml
@@ -116,14 +115,15 @@ includeFiles:
   - connector/siteminder.yaml
   ```
 
-Ez az oktatóanyag egyetlen `maverics.yaml` konfigurációs fájlt használ.
+Ez az oktatóanyag egyetlen *maverics. YAML* konfigurációs fájlt használ.
 
-## <a name="using-azure-key-vault-as-your-secrets-provider"></a>Azure Key Vault használata titkok szolgáltatóként
+## <a name="use-azure-key-vault-as-your-secrets-provider"></a>Azure Key Vault használata titkok szolgáltatóként
 
-### <a name="secret-management"></a>Titkos kód kezelése
+### <a name="manage-secrets"></a>Titkos kulcsok kezelése
 
-A Maverics képes a titkok betöltésére különböző titkos felügyeleti megoldásokkal integrálni. A jelenlegi integrációk közé tartozik egy fájl, a Hashicorp-tár és a Azure Key Vault. Ha nincs megadva titkos felügyeleti megoldás, a Maverics alapértelmezés szerint egyszerű szövegként tölti be a titkokat a rendszerből `maverics.yaml` .
-Ha egy konfigurációs fájlban titkos kulcsot szeretne deklarálni `maverics.yaml` , zárja be a titkos kódot a szögletes zárójelekkel:
+A titkok betöltéséhez a Maverics különböző titkos felügyeleti megoldásokkal integrálható. A jelenlegi integrációk közé tartozik egy fájl, a Hashicorp-tároló és a Azure Key Vault. Ha nincs megadva titkos felügyeleti megoldás, a Maverics alapértelmezés szerint a *Maverics. YAML* fájlból kifelé irányuló egyszerű szövegbe tölti be a titkokat.
+
+Ha egy *maverics. YAML* konfigurációs fájlban titkos kulcsot szeretne deklarálni, zárja be a titkos kódot szögletes zárójelek közé:
 
   ```yaml
   connectors:
@@ -134,111 +134,125 @@ Ha egy konfigurációs fájlban titkos kulcsot szeretne deklarálni `maverics.ya
     oauthClientSecret: <AzureADOAuthClientSecret>
   ```
 
-### <a name="file"></a>Fájl
+### <a name="load-secrets-from-a-file"></a>Titkok betöltése fájlból
 
-A titkok fájlból való betöltéséhez adja hozzá a környezeti változót `MAVERICS_SECRET_PROVIDER` a fájlhoz a következővel  `/etc/maverics/maverics.env` :
+1. A titkos kulcsok fájlból való betöltéséhez adja hozzá a környezeti változót `MAVERICS_SECRET_PROVIDER` a */etc/maverics/maverics.env* fájlban a következő használatával:
 
-`MAVERICS_SECRET_PROVIDER=secretfile:///<PATH TO SECRETS FILE>`
+   `MAVERICS_SECRET_PROVIDER=secretfile:///<PATH TO SECRETS FILE>`
 
-Ezután indítsa újra a maverics szolgáltatást: `sudo systemctl restart maverics`
+2. Indítsa újra a Maverics szolgáltatást a futtatásával:
 
-A `secrets.yaml` fájl tartalma tetszőleges számú lehet `secrets` .
+   `sudo systemctl restart maverics`
+
+A *Secrets. YAML* fájl tartalma tetszőleges számú lehet `secrets` .
+
 ```yaml
 secrets:
   AzureADAPIToken: aReallyGoodToken
   AzureADOAuthClientID: aReallyUniqueID
   AzureADOAuthClientSecret: aReallyGoodSecret
 ```
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="set-up-an-azure-key-vault"></a>Azure Key Vault beállítása
 
-A következő lépések bemutatják, hogyan állíthat be egy Azure Key Vaultt a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)használatával:
+Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható be.
 
-1. [Jelentkezzen](https://portal.azure.com) be a Azure Portal használatával vagy a CLI parancs használatával:
+**Az Azure Portal használata**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. [Hozzon létre egy új kulcstartót](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
+1. [Adja hozzá a titkos kulcsokat a kulcstartóhoz](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
+1. [Alkalmazás regisztrálása az Azure ad](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)-ben.
+1. [Engedélyezze az alkalmazás számára a titkos kód használatát](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
+
+**Az Azure parancssori felületének használata**
+
+1. Nyissa meg az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t, majd írja be a következő parancsot:
+
     ```shell
     az login
     ```
 
-2. [Hozzon létre egy új](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)tárat, vagy használja a CLI-parancsot:
+1. Hozzon létre egy új kulcstartót a következő parancs futtatásával:
     ```shell
     az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
     ```
 
-3. [Adja hozzá a titkokat Key Vaulthoz](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault), vagy használjon CLI-parancsot:
+1. Adja hozzá a titkokat a Key vaulthoz a következő parancs futtatásával:
     ```shell
     az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
     ```
 
-4. [Alkalmazás regisztrálása Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)vagy CLI-parancs használatával:
+1. Az alábbi parancs futtatásával regisztrálhat egy alkalmazást az Azure AD-ben:
     ```shell
     az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
     ```
 
-5. [Engedélyezze az alkalmazás számára a titkos kód használatát](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)vagy egy CLI-parancs használatát:
+1. A következő parancs futtatásával engedélyezheti, hogy az alkalmazás titkos kulcsot használjon:
     ```shell
     az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
     #APPID can be found in the azure-credentials.json
     generated in the previous step
     ```
 
-Az Azure kulcstartóból származó titkok betöltéséhez állítsa be a környezeti változót `MAVERICS_SECRET_PROVIDER` a fájlban `/etc/maverics/maverics.env` , és a hitelesítő adatok a fájl azure-credentials.jstalálhatók a következő minta használatával: `MAVERICS_SECRET_PROVIDER='azurekeyvault://<KEYVAULT NAME>.vault.azure.net?clientID=<APPID>&clientSecret=<PASSWORD>&tenantID=<TENANT>'`
+1. Az Azure Key vaultban lévő titkos kulcsok betöltéséhez állítsa a környezeti változót a `MAVERICS_SECRET_PROVIDER` */etc/maverics/maverics.env* fájlban a *azure-credentials.js* fájlon található hitelesítő adatok használatával, a következő formátumban:
+ 
+   `MAVERICS_SECRET_PROVIDER='azurekeyvault://<KEYVAULT NAME>.vault.azure.net?clientID=<APPID>&clientSecret=<PASSWORD>&tenantID=<TENANT>'`
 
-Ezután indítsa újra a maverics szolgáltatást: `sudo systemctl restart maverics`
+1. Indítsa újra a Maverics szolgáltatást: `sudo systemctl restart maverics`
 
 ## <a name="configure-your-application-in-azure-ad-for-saml-based-sso"></a>Az alkalmazás konfigurálása az Azure AD-ben az SAML-alapú egyszeri bejelentkezéshez
 
-1. A Azure Active Directory-bérlőben navigáljon a `Enterprise applications` elemre, keresse meg `Maverics Identity Orchestrator SAML Connector` és jelölje ki.
+1. Az Azure AD-bérlőben lépjen a **vállalati alkalmazások**elemre, keresse meg a **MAVERICS Identity Orchestrator SAML-összekötőt**, majd jelölje ki.
 
-2. A "Maverics Identity Orchestrator SAML-összekötő" | Tulajdonságok lapon `User assignment required?` a nem értékre állítva engedélyezheti, hogy az alkalmazás működjön az újonnan áttelepített felhasználók számára.
+1. A Maverics Identity Orchestrator SAML-összekötő **tulajdonságai** ablaktáblán adja meg a **felhasználó-hozzárendelés szükséges lehetőséget?** a **nem** gombra kattintva engedélyezheti, hogy az alkalmazás működjön az újonnan áttelepített felhasználók számára.
 
-3. A "Maverics Identity Orchestrator SAML-összekötő" | Áttekintés oldalon válassza a lehetőséget, `Setup single sign-on` majd válassza a lehetőséget `SAML` .
+1. Az Maverics Identity Orchestrator SAML-összekötő **Áttekintés** paneljén válassza az **egyszeri bejelentkezés beállítása**lehetőséget, majd válassza az **SAML**lehetőséget.
 
-4. A "Maverics Identity Orchestrator SAML-összekötő" | SAML-alapú bejelentkezés, az alapszintű SAML-konfiguráció szerkesztése.
+1. A Maverics Identity Orchestrator SAML-összekötő **SAML-alapú bejelentkezési** paneljén szerkessze az **alapszintű SAML-konfigurációt** a **Szerkesztés** (ceruza ikon) gomb kiválasztásával.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Képernyőkép az "alapszintű SAML-konfiguráció" szerkesztés gombról.](common/edit-urls.png)
 
-5. Állítsa be az `Entity ID` URL-cím beírását a következő minta használatával: `https://<SUBDOMAIN>.maverics.org` . A `Entity ID` -nek egyedinek kell lennie a bérlő alkalmazásai között. Mentse az itt megadott értéket a Maverics-konfigurációba való felvételhez.
+1. Adja meg az **entitás azonosítóját** úgy, hogy beírja az URL-címet a következő formátumban: `https://<SUBDOMAIN>.maverics.org` . Az entitás AZONOSÍTÓjának egyedinek kell lennie a bérlő alkalmazásai között. Mentse az itt megadott értéket a Maverics-konfigurációba való felvételhez.
 
-6. Adja meg a válasz URL-címét a következő minta használatával: `https://<AZURECOMPANY.COM>/<MY_APP>/` . 
+1. Adja meg a **Válasz URL-címét** a következő formátumban: `https://<AZURECOMPANY.COM>/<MY_APP>/` . 
 
-7. Állítsa be a bejelentkezési URL-címet a következő minta használatával: `https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>` , majd kattintson a Mentés gombra.
+1. Adja meg a **bejelentkezési URL-címet** a következő formátumban: `https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>` . 
 
-8. Nyissa meg az SAML aláíró tanúsítvány szakaszt, és kattintson a Másolás gombra az alkalmazás-összevonás metaadat-URL-címének másolásához és a számítógépen való mentéséhez.
+1. Kattintson a **Mentés** gombra.
 
-    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
+1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonás metaadat-URL-címének**másolásához, majd mentse azt a számítógépre.
 
-## <a name="maverics-identity-orchestrator-azure-ad-saml-connector-configuration"></a>Maverics Identity Orchestrator Azure AD SAML-összekötő konfigurálása
+    ![Képernyőkép az "SAML aláíró tanúsítvány" másolási gombról.](common/copy-metadataurl.png)
 
-A Maverics Identity Orchestrator az Azure AD Connector a következőket támogatja: 
-- OpenID Connect
-- SAML-kapcsolat 
+## <a name="configure-maverics-identity-orchestrator-azure-ad-saml-connector"></a>Az Azure AD SAML-összekötő Maverics-identitásának konfigurálása Orchestrator
+
+A Maverics Identity Orchestrator Azure AD-összekötő támogatja az OpenID Connect és az SAML Connect használatát. Az összekötő konfigurálásához tegye a következőket: 
 
 1. Az SAML-alapú egyszeri bejelentkezés engedélyezéséhez állítsa be a következőt: `authType: saml` .
 
-1. A következő értékének létrehozása `samlMetadataURL` : `samlMetadataURL:https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>`
+1. Hozza létre az értéket a `samlMetadataURL` következő formátumban: `samlMetadataURL:https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>` .
 
-1. Most adja meg azt az URL-címet, amelyet az Azure átirányít az alkalmazásba, miután bejelentkezett az Azure-beli hitelesítő adataival.
-`samlRedirectURL: https://<AZURECOMPANY.COM>/<MY_APP>`
+1. Adja meg azt az URL-címet, amelyet az Azure átirányít majd az alkalmazásba, miután a felhasználók bejelentkezett az Azure-beli hitelesítő adataikkal. Használja a következő formátumot: `samlRedirectURL: https://<AZURECOMPANY.COM>/<MY_APP>` .
 
-1. Másolja az értéket a fent konfigurált EntityID: `samlEntityID: https://<SUBDOMAIN>.maverics.org`
+1. Másolja az értéket a korábban konfigurált EntityID: `samlEntityID: https://<SUBDOMAIN>.maverics.org` .
 
-1. Másolja ki a válasz URL-címéből azt az értéket, amelyet az Azure AD az SAML-válasz KÖZZÉTÉTELéhez fog használni.
-`samlConsumerServiceURL: https://<AZURE-COMPANY.COM>/<MY_APP>`
+1. Másolja ki a válasz URL-címéből azt az értéket, amelyet az Azure AD az SAML-válasz közzétételéhez fog használni: `samlConsumerServiceURL: https://<AZURE-COMPANY.COM>/<MY_APP>` .
 
-1. JWT-aláíró kulcs létrehozása, amely a Maverics-identitás Orchestrator-munkamenet adatainak a megvédésére szolgál &trade; az [OpenSSL eszközzel](https://www.openssl.org/source/):
+1. Létrehoz egy JSON Web Token (JWT) aláíró kulcsot, amely az [OpenSSL eszköz](https://www.openssl.org/source/)használatával védi a Maverics Identity Orchestrator-munkamenet adatait:
 
     ```shell 
     openssl rand 64 | base64
     ```
-1. Másolja a választ a `jwtSigningKey` config tulajdonságra: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==`
+1. Másolja a választ a `jwtSigningKey` config tulajdonságra: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==` .
 
 ## <a name="attributes-and-attribute-mapping"></a>Attribútumok és attribútumok megfeleltetése
-Az attribútum-hozzárendelés használatával határozható meg a felhasználói attribútumok leképezése a helyszíni felhasználói címtárból az Azure AD-be a felhasználók kiosztásakor.
+Az attribútum-hozzárendelés használatával határozható meg a felhasználói attribútumok leképezése a helyszíni felhasználói címtárból egy Azure AD-bérlőbe a felhasználó beállítása után.
 
-Az attribútumok határozzák meg a jogcímek alkalmazásához visszaadott felhasználói és a munkamenet-cookie-k átadását, illetve az alkalmazásnak a HTTP-fejléc változókban való továbbítását.
+Az attribútumok határozzák meg, hogy mely felhasználói értékeket lehet visszaadni egy jogcímben lévő alkalmazásnak, a munkamenet-cookie-k átadásának vagy a HTTP-fejléc változóinak az alkalmazásnak.
 
-## <a name="configure-maverics-identity-orchestrator-azure-ad-saml-connector-yaml"></a>Maverics-identitás konfigurálása Orchestrator Azure AD SAML-összekötő YAML
+## <a name="configure-the-maverics-identity-orchestrator-azure-ad-saml-connector-yaml-file"></a>A Maverics Identity Orchestrator Azure AD SAML-összekötő YAML-fájljának konfigurálása
 
 Az Azure AD Connector-Orchestrator Maverics-identitásának konfigurációja a következőképpen fog kinézni:
+
 ```yaml
 - name: AzureAD
   type: azure
@@ -257,28 +271,32 @@ Az Azure AD Connector-Orchestrator Maverics-identitásának konfigurációja a k
     password: password
 ```
 
-## <a name="migrate-users-to-azure-ad"></a>Felhasználók migrálása az Azure AD-be
+## <a name="migrate-users-to-an-azure-ad-tenant"></a>Felhasználók migrálása egy Azure AD-bérlőbe
 
-Ezt a konfigurációt követve fokozatosan áttelepítheti a felhasználókat egy Web Access Management termékből, például a CA SiteMinder, az Oracle Access Managerből vagy az IBM Tivoliből; egy LDAP-címtár; vagy egy SQL-adatbázis.
+Ezt a konfigurációt követve fokozatosan telepítheti át a felhasználókat egy Web Access Management termékből, például a CA SiteMinder, az Oracle Access Managerből vagy az IBM Tivoliből. Ezeket áttelepítheti egy Lightweight Directory Access Protocol-(LDAP-) címtárból vagy egy SQL-adatbázisból is.
 
-## <a name="configure-your-application-permissions-in-azure-ad-to-create-users"></a>Az alkalmazás engedélyeinek konfigurálása az Azure AD-ben felhasználók létrehozásához
+### <a name="configure-your-application-permissions-in-azure-ad-to-create-users"></a>Az alkalmazás engedélyeinek konfigurálása az Azure AD-ben felhasználók létrehozásához
 
-1. A Azure Active Directory-bérlőben navigáljon a `App registrations` "Maverics Identity Orchestrator SAML-összekötő" alkalmazáshoz.
+1. Az Azure AD-bérlőben lépjen a be, `App registrations` és válassza ki a **Maverics Identity Orchestrator SAML-összekötő** alkalmazást.
 
-2. A "Maverics Identity Orchestrator SAML-összekötő" | Tanúsítványok & titkok, válassza ki, `New client secret` majd válassza a lejárati lehetőséget. Kattintson a Másolás gombra a titok másolásához és a számítógépre mentéséhez.
+1. A **Maverics Identity Orchestrator SAML-összekötőn | Tanúsítványok & titkok** ablaktáblán válassza ki, `New client secret` majd válassza a lejárat lehetőséget. A **Másolás** gombra kattintva másolja be a titkos kulcsot, és mentse a számítógépre.
 
-3. A "Maverics Identity Orchestrator SAML-összekötő" | API-engedélyek, válassza ki, majd `Add permission` a kérelem API engedélyei lehetőségnél válassza ki `Microsoft Graph` , majd `Application permissions` . A következő képernyőn válassza ki a `User.ReadWrite.All` elemet, majd válassza a lehetőséget `Add permissions` . Ezzel a beállítással visszatérhet az API-engedélyekhez `Grant admin consent` .
+1. A **Maverics Identity Orchestrator SAML-összekötőn | API-engedélyek** panel, válassza az **engedély hozzáadása** lehetőséget, majd **a kérelem API-engedélyek** ablaktáblán válassza a **Microsoft Graph** és az **alkalmazás engedélyei**lehetőséget. 
+
+1. A következő képernyőn válassza a **User. ReadWrite. All**lehetőséget, majd kattintson az **engedélyek hozzáadása**lehetőségre. 
+
+1. Vissza az **API-engedélyek** ablaktáblán válassza a **rendszergazdai jóváhagyás megadása**lehetőséget.
+
+### <a name="configure-the-maverics-identity-orchestrator-saml-connector-yaml-file-for-user-migration"></a>A Maverics Identity Orchestrator SAML-összekötő YAML-fájljának konfigurálása a felhasználók áttelepítéséhez
+
+A felhasználó áttelepítési munkafolyamatának engedélyezéséhez adja hozzá ezeket a további tulajdonságokat a konfigurációs fájlhoz:
+1. Adja meg az **Azure Graph URL-címét** a következő formátumban: `graphURL: https://graph.microsoft.com` .
+1. Adja meg az **OAuth token URL-címét** a következő formátumban: `oauthTokenURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>` .
+1. Adja meg a korábban generált ügyfél titkos kulcsát a következő formátumban: `oauthClientSecret: <CLIENT SECRET>` .
 
 
-## <a name="configure-the-maverics-identity-orchestrator-saml-connector-yaml-for-user-migration"></a>A Maverics Identity Orchestrator SAML-összekötő YAML konfigurálása a felhasználók áttelepítéséhez
+Az Azure AD Connector konfigurációs fájljának végső Maverics-Orchestrator a következőképpen fog kinézni:
 
-A felhasználó áttelepítési munkafolyamatának engedélyezéséhez adja hozzá ezt a további tulajdonságokat a konfigurációs fájlhoz:
-1. Az Azure Graph URL-címének beállítása: `graphURL: https://graph.microsoft.com`
-1. Állítsa be az OAuth token URL-címét a következő minta alapján: `oauthTokenURL: https://login.microsoftonline.com/<TENANT ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<APP ID>`
-1. Állítsa be a fent generált ügyfél-titkos kulcsot: `oauthClientSecret: <CLIENT SECRET>`
-
-
-Az Azure AD Connector Orchestrator végső Maverics-identitása a következőképpen fog kinézni:
 ```yaml
 - name: AzureAD
   type: azure
@@ -301,19 +319,20 @@ Az Azure AD Connector Orchestrator végső Maverics-identitása a következőké
     password: password
 ```
 
-## <a name="configure-the-maverics-zero-code-connectortrade-for-siteminder"></a>A Maverics Zero Code-összekötő konfigurálása a &trade; SiteMinder
+### <a name="configure-maverics-zero-code-connector-for-siteminder"></a>A Maverics Zero Code-összekötő konfigurálása a SiteMinder
 
-Az SiteMinder-összekötő használatával a felhasználók áttelepíthetők az Azure AD-be, és a felhasználók a SiteMinder által védett örökölt helyszíni alkalmazásokban az újonnan létrehozott Azure AD-identitásokkal és hitelesítő adatokkal jelentkezhetnek be.
+A SiteMinder-összekötő használatával telepítheti át a felhasználókat egy Azure AD-bérlőbe. Az újonnan létrehozott Azure AD-identitások és hitelesítő adatok használatával naplózza a felhasználókat a SiteMinder által védett örökölt helyszíni alkalmazásokban.
 
-Ebben az oktatóanyagban a SiteMinder úgy lett konfigurálva, hogy megvédje a régi alkalmazást űrlapalapú hitelesítéssel és a `SMSESSION` cookie használatával. Ha olyan alkalmazással szeretné integrálni a hitelesítést és a munkamenetet, amely HTTP-fejléceket használ, akkor hozzá kell adnia a fejléc emulációs konfigurációját az összekötőhöz.
+Ebben az oktatóanyagban az SiteMinder úgy lett konfigurálva, hogy az űrlapalapú hitelesítés és a cookie használatával megvédje az örökölt alkalmazást `SMSESSION` . Ahhoz, hogy integrálni lehessen egy olyan alkalmazással, amely HTTP-fejléceken keresztül használja a hitelesítési és a munkamenet-információkat, hozzá kell adnia a fejléc emulációs konfigurációját az összekötőhöz.
 
 Ez a példa az `username` attribútumot a `SM_USER` http-fejlécre képezi le:
+
 ```yaml
   headers:
     SM_USER: username
 ```
 
-Állítsa a `proxyPass` -t arra a helyre, amelyhez a kérések a proxyn vannak. Ez általában a védett alkalmazás gazdagépe.
+Állítsa `proxyPass` arra a helyre, amelyhez a kérések a proxyn vannak. Ez a hely általában a védett alkalmazás gazdagépe.
 
 `loginPage` meg kell egyeznie a SiteMinder által jelenleg használt bejelentkezési űrlap URL-címével, amikor átirányítja a felhasználókat a hitelesítéshez.
 
@@ -326,21 +345,21 @@ connectors:
   proxyPass: http://host.company.com
 ```
 
-## <a name="configure-the-maverics-zero-code-connectortrade-for-ldap"></a>A Maverics Zero Code-összekötő konfigurálása &trade; az LDAP-hez
+### <a name="configure-maverics-zero-code-connector-for-ldap"></a>Maverics nulla kódú összekötő konfigurálása LDAP-hez
 
-Ha az alkalmazásokat egy olyan WAM-termék védi, mint például a SiteMinder, a felhasználói identitások és attribútumok általában egy LDAP-címtárban tárolódnak.
+Ha az alkalmazásokat egy Web Access Management (WAM) termék védi, például a SiteMinder, a felhasználói identitások és attribútumok általában egy LDAP-címtárban tárolódnak.
 
-Ez az összekötő-konfiguráció azt mutatja be, hogyan lehet a SiteMinder felhasználói tárolóként konfigurált LDAP-címtárhoz csatlakozni, így a megfelelő felhasználói profil adatai gyűjthetők az áttelepítési munkafolyamatban, és egy megfelelő felhasználó az Azure AD-ben is létrehozható.
+Ez az összekötő-konfiguráció azt mutatja be, hogyan lehet csatlakozni az LDAP-címtárhoz. Az összekötő a SiteMinder felhasználói tárolóként van konfigurálva, így a megfelelő felhasználói profil adatai gyűjthetők az áttelepítési munkafolyamatban, és egy megfelelő felhasználó létrehozható az Azure AD-ben.
 
 * `baseDN` meghatározza az LDAP-keresés végrehajtásához használt könyvtár helyét.
 
 * `url` az az LDAP-kiszolgáló címe és portja, amelyhez csatlakozni kíván.
 
-* `serviceAccountUsername` az LDAP-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév, amely általában kötési DN-ként van kifejezve, például: `CN=Directory Manager` .
+* `serviceAccountUsername` az LDAP-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév, amely általában kötési DN-ként (például) van kifejezve `CN=Directory Manager` .
 
 * `serviceAccountPassword` az LDAP-kiszolgálóhoz való kapcsolódáshoz használt jelszó. Ezt az értéket a korábban konfigurált Azure Key Vault-példány tárolja.  
 
-* `userAttributes` meghatározza a lekérdezéshez kapcsolódó felhasználói attribútumok listáját. Ezek az attribútumok később a megfelelő Azure AD-attribútumokra vannak leképezve.
+* `userAttributes` a lekérdezéshez használt felhasználóhoz kapcsolódó attribútumok listáját határozza meg. Ezek az attribútumok később a megfelelő Azure AD-attribútumokra vannak leképezve.
 
 ```yaml
 - name: company-ldap
@@ -358,22 +377,26 @@ Ez az összekötő-konfiguráció azt mutatja be, hogyan lehet a SiteMinder felh
     - mobile
 ```
 
-## <a name="configure-the-migration-workflow"></a>Az áttelepítési munkafolyamat konfigurálása
+### <a name="configure-the-migration-workflow"></a>Az áttelepítési munkafolyamat konfigurálása
 
-Az áttelepítési munkafolyamat konfigurációja meghatározza, hogy a Maverics hogyan fogja áttelepíteni a felhasználókat a SiteMinder/LDAP-ből az Azure AD-be.
+Az áttelepítési munkafolyamat konfigurációja meghatározza, hogy a Maverics hogyan telepíti át a felhasználókat a SiteMinder vagy az LDAP-ből az Azure AD-be.
 
 Ez a munkafolyamat:
 - A SiteMinder-összekötőt használja a SiteMinder-bejelentkezéshez. A felhasználói hitelesítő adatok érvényesítése a SiteMinder-hitelesítésen keresztül történik, majd a munkafolyamat későbbi lépéseire lesz átadva.
 - A felhasználói profil attribútumainak beolvasása a SiteMinder felhasználói tárolóból.
 - Kérést küld a Microsoft Graph API-nak, hogy létrehozza a felhasználót az Azure AD-bérlőben.
 
-Lépések:
-1. Adjon nevet a munkafolyamatnak, például SiteMinder az Azure AD-Migrálás felé.
-2. Itt adhatja meg a (z `endpoint` )-t, amely egy olyan http-elérési út, amelyen a munkafolyamat elérhetővé vált, amely a `actions` kérelmekre adott válaszként elindítja az adott munkafolyamat A `endpoint` általában a proxyn lévő alkalmazásnak felel meg, például: `/my_app` . Az értéknek tartalmaznia kell a kezdő és a záró perjelet is.
-3. Adja hozzá a megfelelőt `actions` a munkafolyamathoz.
-    - Adja meg az `login` SiteMinder-összekötő metódusát. Az összekötő értékének meg kell egyeznie az összekötő konfigurációjában szereplő Name értékkel.
-     - Az `getprofile` LDAP-összekötő metódusának megadása.
-     - Adja meg az `createuser` AzureAD-összekötőt.
+Az áttelepítési munkafolyamat konfigurálásához tegye a következőket:
+
+1. Adjon nevet a munkafolyamatnak (például **SiteMinder az Azure ad áttelepítéséhez**).
+1. A (z `endpoint` ), amely a munkafolyamat által elérhetővé tett http-elérési út, amely a `actions` munkafolyamatot a kérésekre válaszul aktiválja. A `endpoint` általában a proxyn futó alkalmazásnak felel meg (például: `/my_app` ). Az értéknek tartalmaznia kell a kezdő és a záró perjelet is.
+1. Adja hozzá a megfelelőt `actions` a munkafolyamathoz.
+
+   a. Adja meg az `login` SiteMinder-összekötő metódusát. Az összekötő értékének meg kell egyeznie az összekötő konfigurációjában szereplő Name értékkel.
+
+   b. Az `getprofile` LDAP-összekötő metódusának megadása.
+
+   c.  Adja meg az `createuser` AzureAD-összekötő metódusát.
 
     ```yaml
       workflows:
@@ -389,25 +412,29 @@ Lépések:
     ```
 ### <a name="verify-the-migration-workflow"></a>Az áttelepítési munkafolyamat ellenőrzése
 
-1. Ha a Maverics szolgáltatás még nem fut, indítsa el a következő parancs végrehajtásával: `sudo systemctl start maverics`
+1. Ha a Maverics szolgáltatás még nem fut, indítsa el a következő parancs végrehajtásával: 
 
-2. Navigáljon a proxyn keresztüli bejelentkezési URL-címre: `http://host.company.com/my_app` .
-3. Adja meg az alkalmazásba való bejelentkezéshez használt felhasználói hitelesítő adatokat, miközben a SiteMinder védi.
-4. Navigáljon a Kezdőlap > felhasználókhoz | Minden felhasználó ellenőrzi, hogy a felhasználó az Azure AD-bérlőben lett-e létrehozva.  
+   `sudo systemctl start maverics`
 
-## <a name="configure-the-session-abstraction-workflow"></a>A munkamenet-absztrakt munkafolyamat konfigurálása
+1. Nyissa meg a proxyn keresztüli bejelentkezési URL-címet `http://host.company.com/my_app` .
+1. Adja meg az alkalmazásba való bejelentkezéshez használt felhasználói hitelesítő adatokat, miközben a SiteMinder védi.
+4. **Kezdőlap**  >  **felhasználók keresése | Minden felhasználó** ellenőrzi, hogy a felhasználó az Azure ad-bérlőben lett-e létrehozva.  
 
-A munkamenet-absztrakt munkafolyamat a régi helyszíni webalkalmazás hitelesítését és hozzáférés-vezérlését áthelyezi az Azure AD-be.
+### <a name="configure-the-session-abstraction-workflow"></a>A munkamenet-absztrakt munkafolyamat konfigurálása
+
+A munkamenet-absztrakt munkafolyamat a régi helyszíni webalkalmazás hitelesítését és hozzáférés-vezérlését áthelyezi az Azure AD-bérlőbe.
 
 Az Azure Connector a `login` metódus használatával irányítja át a felhasználót a bejelentkezési URL-címre, feltéve, hogy nem létezik munkamenet.
 
-A hitelesítés után az eredményként létrehozott munkamenet-tokent a rendszer átadja a Maverics-nek, és a SiteMinder `emulate` -összekötő metódusa a cookie-alapú munkamenet és/vagy a fejléc-alapú munkamenet emulálása, majd a kérésnek az alkalmazás által megkövetelt további attribútumokkal való díszítésére szolgál.
+A hitelesítés után a rendszer az eredményként létrehozott munkamenet-tokent továbbítja a Maverics. Az SiteMinder-összekötő `emulate` metódusa a cookie-alapú munkamenet vagy a fejléc-alapú munkamenet emulálása, majd a kérésnek az alkalmazás által megkövetelt további attribútumokkal való díszítve.
 
-1. Adjon nevet a munkafolyamatnak, például SiteMinder-munkamenet absztrakciója.
-2. Itt adhatja meg a `endpoint` -t, amely megfelel az alkalmazásnak, amely a proxy. Az értéknek tartalmaznia kell a kezdő és a záró perjelet is, például `/my_app/` :.
-3. Adja hozzá a megfelelőt `actions` a munkafolyamathoz.
-    - Az `login` Azure-összekötő metódusának megadása. Az `connector` értéknek meg kell egyeznie az `name` összekötő konfigurációjában szereplő értékkel.
-    - Adja meg az `emulate` SiteMinder-összekötő metódusát.
+1. Adjon nevet a munkafolyamatnak (például **SiteMinder-munkamenet absztrakció**).
+1. Itt adhatja meg a `endpoint` -t, amely megfelel a proxyn lévő alkalmazásnak. Az értéknek tartalmaznia kell a kezdő és a záró perjelet is (például: `/my_app/` ).
+1. Adja hozzá a megfelelőt `actions` a munkafolyamathoz.
+
+   a. Az `login` Azure-összekötő metódusának megadása. Az `connector` értéknek meg kell egyeznie az `name` összekötő konfigurációjában szereplő értékkel.
+
+   b. Adja meg az `emulate` SiteMinder-összekötő metódusát.
 
      ```yaml
       - name: SiteMinder Session Abstraction
@@ -420,6 +447,10 @@ A hitelesítés után az eredményként létrehozott munkamenet-tokent a rendsze
      ```
 ### <a name="verify-the-session-abstraction-workflow"></a>A munkamenet-absztrakt munkafolyamat ellenőrzése
 
-1. Navigáljon a proxy alkalmazás URL-címére: `https://<AZURECOMPANY.COM>/<MY_APP>` . A rendszer átirányítja a felhasználót a proxyn lévő bejelentkezési oldalra.
-2. Adja meg az Azure AD felhasználói hitelesítő adatait.
-3. A felhasználót úgy kell átirányítani az alkalmazásba, mintha közvetlenül a SiteMinder hitelesíti.
+1. Nyissa meg a proxyn keresztüli alkalmazás URL-címét `https://<AZURECOMPANY.COM>/<MY_APP>` . 
+    
+    A rendszer átirányítja a proxyn lévő bejelentkezési oldalra.
+
+1. Adja meg az Azure AD felhasználói hitelesítő adatait.
+
+   Az alkalmazást úgy kell átirányítani, mintha közvetlenül a SiteMinder hitelesítette volna.

@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a
 description: Az Azure-beli virtuális gépek biztonsági mentését és helyreállítását ismerteti a PowerShell-lel Azure Backup használatával
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763371"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826446"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -96,7 +96,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testvault beállításnál a GeoRedundant értékre.
+3. Adja meg a használandó tárolási redundancia típusát. Használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testvault beállításnál a GeoRedundant értékre.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 A védelmi házirend meghatározása után továbbra is engedélyeznie kell egy elem házirendjét. A védelem engedélyezéséhez használja az [enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) . A védelem engedélyezéséhez két objektum szükséges – az elem és a házirend. Miután a házirend társítva lett a tárolóhoz, a biztonsági mentési munkafolyamat a házirend-ütemtervben meghatározott időpontban aktiválódik.
 
 > [!IMPORTANT]
-> A PS használatával egyszerre több virtuális gép biztonsági mentését is lehetővé teheti, hogy egyetlen házirendhez ne legyen több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Jelenleg a PS-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
+> Míg a PowerShell használatával egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen házirendhez nincs több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Jelenleg a PowerShell-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
 
 Az alábbi példák lehetővé teszik a V2VM, az NewPolicy-t használó elem védelmét. A példák attól függően különböznek, hogy a virtuális gép titkosítva van-e, és milyen típusú titkosítást tartalmaz.
 
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>Az azonnali visszaállítás pillanatkép-megőrzésének konfigurálása
 
 > [!NOTE]
-> Az az PS Version 1.6.0-től kezdve az egyik frissítéssel frissítheti az azonnali visszaállítás pillanatképének megőrzési időszakát a szabályzatban a PowerShell használatával
+> A Azure PowerShell verzió 1.6.0 kezdve az egyik a PowerShell használatával frissítheti az azonnali visszaállítás pillanatképének megőrzési időtartamát a szabályzatban
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,12 +323,12 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-Az alapértelmezett érték 2, a felhasználó beállíthatja az értéket 1 és legfeljebb 5 közötti értékre. A heti biztonsági mentési házirendek esetében az időszak értéke 5, és nem módosítható.
+Az alapértelmezett érték 2, a felhasználó beállíthatja az értéket legalább 1 és legfeljebb 5 értékkel. A heti biztonsági mentési házirendek esetében az időszak értéke 5, és nem módosítható.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Azure Backup erőforráscsoport létrehozása a pillanatképek megőrzése során
 
 > [!NOTE]
-> Az Azure PS-verziók 3.7.0 kezdve az egyik létrehozható és szerkeszthető az azonnali Pillanatképek tárolására létrehozott erőforráscsoport.
+> Azure PowerShell 3.7.0-verziótól kezdődően az egyik létrehozható és szerkeszthető az azonnali Pillanatképek tárolására létrehozott erőforráscsoport.
 
 Ha többet szeretne megtudni az erőforráscsoport-létrehozási szabályokról és az egyéb kapcsolódó részletekről, tekintse meg a Virtual Machines dokumentációjának [Azure Backup erőforráscsoportot](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines) .
 
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>Adatok megőrzése
 
-Ha a felhasználó le szeretné állítani a védelmet, használhatja a [disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS parancsmagot. Ezzel leállítja az ütemezett biztonsági mentéseket, de a biztonsági mentés egészen addig, amíg a rendszer örökre megőrzi az adatokat.
+Ha le szeretné állítani a védelmet, használhatja a [disable-AzRecoveryServicesBackupProtection PowerShell-](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) parancsmagot. Ezzel leállítja az ütemezett biztonsági mentéseket, de a biztonsági mentés egészen addig, amíg a rendszer örökre megőrzi az adatokat.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 Adjon meg egy további paramétert, amely meghatározza, hogy a rendszer mely **TargetResourceGroupName** adja vissza a felügyelt lemezeket.
 
 > [!IMPORTANT]
-> Erősen ajánlott a **TargetResourceGroupName** paraméter használata a felügyelt lemezek visszaállítására, mivel jelentős teljesítménybeli javítást eredményez. Ha ez a paraméter nincs megadva, az ügyfelek nem élvezhetik az azonnali visszaállítás funkció előnyeit, és a visszaállítási művelet lassabban fog működni. Ha a felügyelt lemezeket nem felügyelt lemezként szeretné visszaállítani, ne adja meg ezt a paramétert, és törölje a szándékot a-RestoreAsUnmanagedDisks paraméter megadásával. A-RestoreAsUnmanagedDisks paraméter az az PS 3.7.0-től kezdődően érhető el. A későbbi verziókban kötelező megadni a paraméterek egyikét a megfelelő visszaállítási élményhez.
+> Erősen ajánlott a **TargetResourceGroupName** paraméter használata a felügyelt lemezek visszaállítására, mivel jelentős teljesítménybeli javítást eredményez. Ha ez a paraméter nincs megadva, akkor nem használhatja ki az azonnali visszaállítás funkció előnyeit, és a visszaállítási művelet lassabban lesz az összehasonlításban. Ha a felügyelt lemezeket nem felügyelt lemezként szeretné visszaállítani, ne adja meg ezt a paramétert, és törölje a kívánt célt a paraméter megadásával `-RestoreAsUnmanagedDisks` . A `-RestoreAsUnmanagedDisks` paraméter Azure PowerShell 3.7.0 és újabb verziókon érhető el. A későbbi verziókban a megfelelő visszaállítási élmény érdekében kötelező megadni a paraméterek egyikét.
 >
 >
 
@@ -530,7 +530,7 @@ A lemezek visszaállítása után a következő lépésekkel hozza létre és ko
 >
 > 1. A AzureAz modul 3.0.0 vagy újabb verziója szükséges. <br>
 > 2. Ahhoz, hogy titkosított virtuális gépeket hozzon létre a visszaállított lemezekről, az Azure-szerepkörnek engedéllyel kell rendelkeznie a művelet elvégzéséhez, Microsoft. kulcstartó/tárolók/ **üzembe helyezés/művelet**. Ha a szerepkör nem rendelkezik ezzel az engedéllyel, hozzon létre egy egyéni szerepkört ehhez a művelethez. További információ: [Egyéni szerepkörök az Azure RBAC-ben](../role-based-access-control/custom-roles.md). <br>
-> 3. A lemezek visszaállítása után már beszerezheti a központi telepítési sablont, amelyet közvetlenül használhat új virtuális gép létrehozásához. Nincs több különböző PS-parancsmag olyan felügyelt/nem felügyelt virtuális gépek létrehozásához, amelyek titkosított/nem titkosítottak.<br>
+> 3. A lemezek visszaállítása után már beszerezheti a központi telepítési sablont, amelyet közvetlenül használhat új virtuális gép létrehozásához. Nem kell más PowerShell-parancsmagokkal felügyelt/nem felügyelt virtuális gépeket létrehozni, amelyek titkosított/nem titkosítottak.<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Virtuális gép létrehozása a telepítési sablonnal

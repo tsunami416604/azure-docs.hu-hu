@@ -4,12 +4,12 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 28645311328a2e2054851af6bacf07927eaa88aa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 2112a439585e6b111614e728dbc4a1a5eb4ee3d2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761117"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827171"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 
@@ -60,7 +60,7 @@ Az Azure Backup hibája 20 percen belül riasztást vált ki.
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Van olyan eset, amikor a rendszer nem küld e-mailt, ha az értesítések konfigurálva vannak?
 
-Igen. A következő helyzetekben a rendszer nem küld értesítéseket:
+Igen. A következő helyzetekben az értesítések nem lesznek elküldve:
 
 * Ha a rendszer óránként konfigurálja az értesítéseket, és az órán belül riasztást vált ki és oldott fel
 * Feladat megszakításakor

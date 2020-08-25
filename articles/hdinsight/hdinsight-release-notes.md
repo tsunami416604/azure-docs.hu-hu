@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751474"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826820"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
@@ -75,4 +75,4 @@ Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 �
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Amikor Azure HDInsight-fürtöt kísérel meg létrehozni a Azure Portalból, és egy nyilvános kulcsú SSH-hitelesítési típust használ, a felhasználók hibát tapasztalnak, amikor a **felülvizsgálat + létrehozás**gombra kattintanak. A portálon található hiba "nem tartalmazhat három egymást követő karaktert az SSH-felhasználónévből." A probléma megoldása folyamatban van; Ha azonban ezt a hibát tapasztalja, a megkerülő megoldás létrehoz egy ARM-sablonnal rendelkező fürtöt. 
+Probléma merült fel az Azure Portalon, ahol a felhasználók egy Azure HDInsight-fürt létrehozásakor hibát észleltek egy nyilvános kulcs SSH-hitelesítési típusának használatával. Ha a felhasználó a **felülvizsgálat + létrehozás**gombra kattintott, a következő hibaüzenetet kapja: "nem tartalmazhat három egymást követő KARAKTERT az SSH-felhasználónévből." Ezt a problémát megoldottuk, de előfordulhat, hogy a CTRL + F5 billentyűkombinációval frissítenie kell a böngésző gyorsítótárát a javított nézet betöltéséhez. A probléma megoldása egy ARM-sablonnal rendelkező fürt létrehozása volt. 

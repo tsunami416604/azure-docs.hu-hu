@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/04/2019
+ms.date: 08/25/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924030"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826871"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -85,7 +85,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrés")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -94,12 +94,12 @@ A kiépítési adatait szűrheti. Egyes szűrési értékek dinamikusan vannak f
 Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
-- Dátum
+- Date
 - status
 - Művelet
 
 
-![Szűrő](./media/concept-provisioning-logs/default-filter.png "Szűrés")
+![Szűrő](./media/concept-provisioning-logs/default-filter.png "Szűrő")
 
 Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
 
@@ -118,7 +118,7 @@ Amikor kiválaszt egy egyéni időkeretet, beállíthatja a kezdési és a befej
 
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
-- Az összes
+- Mind
 - Success
 - Hiba
 - Kimarad
@@ -172,10 +172,10 @@ A részletek a következő kategóriák alapján vannak csoportosítva:
 
 - Módosított tulajdonságok
 
-- Összefoglalás
+- Összegzés
 
 
-![Szűrő](./media/concept-provisioning-logs/provisioning-tabs.png "Lapok")
+![Szűrő](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
 
 
 
@@ -190,7 +190,7 @@ A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepe
 
 
 
-![Szűrő](./media/concept-provisioning-logs/steps.png "Szűrés")
+![Szűrő](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
@@ -204,7 +204,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 
@@ -242,6 +242,8 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 |LicenseLimitExceeded|A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. További licenceket is megadhat a célalkalmazás számára, vagy áttekintheti a felhasználói hozzárendelések és attribútumok leképezésének konfigurációját, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.|
 |DuplicateTargetEntries  |A műveletet nem lehetett befejezni, mert a célalkalmazás több felhasználója található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)leírtak szerint.|
 |DuplicateSourceEntries | A műveletet nem lehetett befejezni, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)leírtak szerint.|
+|ImportSkipped | Az egyes felhasználók kiértékelése után a rendszer megkísérli importálni a felhasználót a forrásrendszer használatával. Ez a hiba általában akkor fordul elő, ha az importálandó felhasználó hiányzik az attribútum-hozzárendelésekben definiált megfelelő tulajdonság. A megfelelő attribútumhoz tartozó felhasználói objektumon nincs megadva érték, nem értékelhető ki a hatókör, a megfeleltetés vagy az Exportálás módosítása. Vegye figyelembe, hogy a hiba jelenléte nem jelzi, hogy a felhasználó hatókörben van, mivel még nem értékelte ki a hatókört a felhasználó számára.|
+|EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. A kihagyás oka az lehet, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már meglévő a célszámítógépen, és nincs szükség további módosításokra.|
 
 ## <a name="next-steps"></a>További lépések
 

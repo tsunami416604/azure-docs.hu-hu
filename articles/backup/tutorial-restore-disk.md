@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan h
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: f13ff10579e7413a2ee7c64cafc2db856559a9d7
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141346"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824440"
 ---
-# <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI-vel
+# <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI használatával
 
 Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép parancssori felülettel való visszaállításának módját ismerteti. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -88,7 +88,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
     ```
 
     > [!WARNING]
-    > Ha a cél-erőforráscsoport nincs megadva, a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az ügyfelek csak akkor kapják meg az azonnali visszaállítás előnyeit, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a cél-erőforrás-csoport paramétert, hanem adja meg a Restore-as-Unmanaged-Disk paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
+    > Ha a **cél-erőforrás csoport** nincs megadva, akkor a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az ügyfelek csak akkor kapják meg az azonnali visszaállítás előnyeit, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a **cél-erőforrás-csoport** paramétert, hanem adja meg a **Restore-as-Unmanaged-Disk** paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,7 +101,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
     --restore-as-unmanaged-disk
     ```
 
-Ez a művelet a felügyelt lemezeket nem felügyelt lemezként állítja vissza a megadott Storage-fiókba, és nem fogja használni az "Instant" visszaállítási funkciót. A CLI jövőbeli verzióiban kötelező megadni a cél-erőforrás-csoport paramétert vagy a "visszaállítás – nem felügyelt lemez" paramétert.
+Ez a művelet a felügyelt lemezeket nem felügyelt lemezként állítja vissza a megadott Storage-fiókba, és nem fogja használni az "Instant" visszaállítási funkciót. A CLI jövőbeli verzióiban kötelező megadni a **cél-erőforrás-csoport** paramétert vagy a **visszaállítás – nem felügyelt lemez** paramétert.
 
 ### <a name="unmanaged-disks-restore"></a>Nem felügyelt lemezek visszaállítása
 
@@ -264,7 +264,7 @@ Ha ellenőrizni szeretné, hogy létrejött-e a virtuális gép a helyreállíto
 az vm list --resource-group myResourceGroup --output table
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban visszaállított egy lemezt a helyreállítási pontról, és létrehozott egy virtuális gépet a lemezről. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a Data Protection Manager (DPM) és a Microso
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server korábbi verzióihoz tartozó offline biztonsági mentési munkafolyamatot ismerteti.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261922"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826599"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM és Azure Backup Server offline biztonsági mentési munkafolyamata (korábbi verziók)
 
@@ -46,7 +46,7 @@ Az offline biztonsági mentés a Azure Backup összes olyan üzemi modelljénél
 > * Az összes munkaterhelés és fájl biztonsági mentése a MABS-mel.
 
 >[!NOTE]
->Az Azure CSP-előfizetések használata nem támogatott a DPM 2019 RTM és korábbi verziók esetében, valamint a MABS v3 RTM és korábbi verziók esetében. Az online biztonsági mentések továbbra is támogatottak a hálózaton.
+>Az Azure CSP-előfizetések nem támogatottak a DPM 2019 RTM és korábbi verziók esetében, valamint a MABS v3 RTM és korábbi verziók esetében. Az online biztonsági mentések továbbra is támogatottak a hálózaton.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -87,7 +87,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 * A *AzureOfflineBackupCertGen.exe* eszköz létrehoz egy *OfflineApplicationParams.xml* fájlt. Másolja ezt a fájlt a kiszolgálóra a MABS vagy a DPM használatával.
 * Telepítse a [legújabb Mars-ügynököt](https://aka.ms/azurebackup_agent) a DPM-példányra vagy a Azure Backup-kiszolgálóra.
 * Regisztrálja a kiszolgálót az Azure-ban.
-* Futtassa az alábbi parancsot:
+* Futtassa a következő parancsot:
 
     ```cmd
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
@@ -99,7 +99,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 A következő lépésekkel manuálisan feltöltheti az offline biztonsági mentési tanúsítványt egy korábban létrehozott Azure Active Directory alkalmazásba az offline biztonsági mentéshez.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Nyissa meg **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 1. A **tulajdonban lévő alkalmazások** lapon keresse meg a megjelenítendő név formátumot tartalmazó alkalmazást `AzureOfflineBackup _<Azure User Id` .
 
@@ -183,7 +183,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram a legközelebbi Azure-adatközpontb
      > [!IMPORTANT]
      > Ha a forrásszámítógép egy virtuális gép, akkor a másolási számítógépként egy másik fizikai kiszolgálót vagy ügyfélszámítógépet kell használnia.
 
-1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa az alábbi parancsot:
+1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa a következő parancsot:
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 

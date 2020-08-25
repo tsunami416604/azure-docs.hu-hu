@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: df5af780730f4f5b972107f50387dc0c58b80eaa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761746"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825851"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -21,7 +21,7 @@ Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 
 * A helyreállításhoz elérhető biztonsági mentési feladatok részeként készített pillanatképek használatának lehetősége anélkül, hogy a tárolóba való adatátvitelre kellene várni. Ez csökkenti a várakozási időt a pillanatképek másolásához a tárolóba a visszaállítás elindítása előtt.
 * Csökkenti a biztonsági mentési és visszaállítási időt a pillanatképek helyi megőrzésével, alapértelmezés szerint két napig. Ez az alapértelmezett pillanatkép-megőrzési érték 1 és 5 nap közötti értékre állítható be.
-* A legfeljebb 32 TB méretű lemezeket támogat. A lemezek átméretezését Azure Backup nem ajánlott.
+* A legfeljebb 32 TB méretű lemezeket támogat. Azure Backup nem javasolja a lemezek átméretezését.
 * A standard SSD lemezeket standard HDD lemezekkel és prémium SSD lemezekkel együtt támogatja.
 * A nem felügyelt virtuális gépek eredeti Storage-fiókjai (lemezenként) való használatának lehetősége a visszaállításkor. Ez a képesség akkor is fennáll, ha a virtuális gépnek vannak olyan lemezek, amelyek a Storage-fiókok között oszlanak el. A rendszer a virtuálisgép-konfigurációk széles körére felgyorsítja a visszaállítási műveleteket.
 * A nem felügyelt prémium szintű lemezeket használó virtuális gépek biztonsági mentéséhez azonnali visszaállítással ajánlott a teljes lefoglalt tárolóhely *50%* -a kiosztása, amely **csak** az első biztonsági mentéshez szükséges. Az 50%-os szabad terület nem követelmény a biztonsági mentéshez az első biztonsági mentés befejeződése után.

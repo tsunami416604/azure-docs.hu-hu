@@ -3,12 +3,12 @@ title: Fájlok és mappák lassú biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítményproblémák okának diagnosztizálásához
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513832"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824015"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 
@@ -97,6 +97,6 @@ A következő mutatók segítségével megismerheti a szűk keresztmetszeteket, 
 
 Ha nagyméretű lemezekről szeretne biztonsági mentést készíteni, ajánlott [Azure Data Box](./offline-backup-azure-data-box.md) használni az első biztonsági mentéshez (kezdeti replikáció).  Ha nem tudja használni a Data Boxt, akkor a környezetben előforduló, hosszú adatátvitelt okozó átmeneti hálózati problémák a biztonsági mentési hibákhoz vezethetnek.  Ezeknek a hibáknak a védelme érdekében hozzáadhat néhány mappát a kezdeti biztonsági mentéshez, és további mappák növekményes hozzáadásával megőrizheti az Azure-ba történő biztonsági mentést.  A további növekményes biztonsági mentések viszonylag gyorsabbak lesznek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](backup-azure-file-folder-backup-faq.md)

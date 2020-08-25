@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136337"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826769"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -50,7 +50,7 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Kanada                              | CA        | CAD          |
 | Kajmán-szigetek                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Kína\**                            | CN        | N/A          |
+| Kína\**                            | CN        | N.A.          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
 | Côte d'Ivoire                       | CI        | USD          |
@@ -166,18 +166,25 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*Brazíliában a felhőalapú megoldások szolgáltatói (CSP) használatával a piactér USD-t használ.
+\* Brazíliában a felhőalapú megoldások szolgáltatói (CSP) használatával a piactér USD-t használ.
 
 \** Csak az ingyenes és a BYOL VM-lemezképek.
 
 ## <a name="how-we-convert-currency"></a>A pénznem átalakítása
 
-Az ISV-ket az összes fizetős ajánlat esetében USD-ben, a helyi pénznemben pedig az árakat is megadhatja. Az USD-ben megadott árakat a rendszer automatikusan helyi pénznemre konvertálja az oldal mentésekor. A partneri központ által használt díjak naponta frissülnek. Az ISV-ket exportálhatja az árakat, és áttekintheti a konvertált megfelelőket.
+Az összes fizetős ajánlat esetében lehetősége van az árak USD-ben való megadására, illetve az árak helyi pénznemben történő feltöltésére. Az USD-ben megadott árakat a rendszer automatikusan helyi pénznemre konvertálja az oldal mentésekor. A partneri központ által használt díjak naponta frissülnek. Exportálhatja az árakat, és áttekintheti a konvertált megfelelőket.
 
 Ha bármilyen árat szeretne módosítani a közzététel előtt, csak exportálja a díjszabási táblázatot, módosítsa, és töltse fel a módosításokat.
 
 > [!NOTE]
 > Miután közzétette a csomag egy piacának árát, később nem módosítható. Annak érdekében, hogy a közzététel előtt a díjak megfelelőek legyenek, exportálja a díjszabási táblázatot, és tekintse át az árakat az egyes piacokon.
+
+Az ajánlat díja mindig az ügyfelek számára jelenik meg a helyi pénznemben. A partner Centerben kiválasztott árat az ügyfelek helyi pénznemére alakítja át az árfolyamok alapján, amikor az árat a partner Centerben mentette. Az online áruházakban lévő ügyfeleknek megjelenő ár nem változik, kivéve, ha újból közzéteszi az ajánlatot.
+
+A Microsoft a helyi pénznemben fogadja az ügyfelektől érkező befizetéseket, és a helyi pénznemben fizet Önnek. A Microsoft az ügyfél helyi pénznemét átalakítja a helyi pénznemre a vásárlás napján érvényes árfolyam használatával.
+
+> [!NOTE]
+> A Microsoft a Microsoft Treasury Exchange díjszabásával konvertálja az ajánlatok árát.
 
 ## <a name="retrieving-currency-information-by-api"></a>Pénznem információinak beolvasása API szerint
 
@@ -189,7 +196,7 @@ Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért te
 - [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md)
 - [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](partner-center-portal/azure-vm-create-offer.md)
 - [Tanácsadási szolgáltatásajánlat létrehozása](partner-center-portal/create-consulting-service-offer.md)
-- [Dynamics 365 létrehozása a Customer engagement & PowerApps ajánlathoz](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations-ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)
 - [Microsoft Dynamics 365 Business Central-ajánlat létrehozása](partner-center-portal/create-new-business-central-offer.md)
 - [IoT Edge-modulajánlat létrehozása](partner-center-portal/azure-iot-edge-module-creation.md)

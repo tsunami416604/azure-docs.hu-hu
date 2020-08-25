@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763541"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826361"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 
@@ -210,7 +210,7 @@ Mivel a visszaállítási feladat hosszú ideig futó művelet, azt a [feladatok
 
 ### <a name="restore-disks"></a>Lemezek visszaállítása
 
-Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági másolati adatokból, akkor a lemezeket csak egy kiválasztott Storage-fiókba állíthatja vissza, és a követelmények szerint hozhat létre virtuális gépet ezekből a lemezekről. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem lehet redundáns zónának lennie. A lemezeket és a biztonsági másolatban szereplő virtuális gép konfigurációját ("vmconfig.json") a rendszer a megadott Storage-fiókban tárolja. A [fentiekben](#restore-operations)leírtak szerint a visszaállítási lemezek vonatkozó kérés törzse alább található.
+Ha testre kell szabnia egy virtuális gép létrehozását a biztonsági mentési adatokból, egyszerűen visszaállíthatja a lemezeket egy kiválasztott Storage-fiókba, és létrehozhat egy virtuális gépet az adott lemezekről a követelmények szerint. A Storage-fióknak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak, és nem szabad zónának lennie. A lemezeket, valamint a biztonsági másolattal ellátni kívánt virtuális gép konfigurációját ("vmconfig.json") a rendszer a megadott Storage-fiókban tárolja. A [fentiekben](#restore-operations)leírtak szerint a visszaállítási lemezek vonatkozó kérés törzse alább található.
 
 #### <a name="create-request-body"></a>Kérelem törzsének létrehozása
 

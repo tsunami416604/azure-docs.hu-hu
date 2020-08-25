@@ -3,12 +3,12 @@ title: Key Vault kulcs visszaállítása a titkosított virtuális gép titkos &
 description: Megtudhatja, hogyan állíthatja vissza Azure Backup Key Vault kulcsát és titkos kódját a PowerShell használatával
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 2323ca17dad214d3797b65285e8c79c4140ce240
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649550"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827086"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával
 
@@ -92,7 +92,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * Az $secretname értékének megszerzéséhez a $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl és a titkokat követő szöveg, valamint a titkos kód URL-címe szerepel, a `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` titkos név pedig B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * $Secretname értékének megszerzéséhez a $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl és a titkokat követő szöveg, illetve a titkos kulcs neve, például a kimeneti titkos URL-cím, a `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` titkos név pedig B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * A DiskEncryptionKeyFileName címke értéke megegyezik a titkos névvel.
 >
 >

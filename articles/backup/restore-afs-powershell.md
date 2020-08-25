@@ -3,12 +3,12 @@ title: Azure Files visszaállítása a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 23de6e1e352a1b72d1435fc65d6a59ab37d838b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538547"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826497"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files visszaállítása a PowerShell-lel
 
@@ -17,7 +17,7 @@ Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy teljes fájlmegosztá
 Visszaállíthat egy teljes fájlmegosztást vagy adott fájlokat a megosztáson. Az eredeti helyre vagy egy másik helyre is visszaállíthatja.
 
 > [!WARNING]
-> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További információkért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice-backup-item-identification) .
+> Győződjön meg arról, hogy a PowerShell-verzió az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára van frissítve. További információkért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice-backup-item-identification) .
 
 >[!NOTE]
 >Azure Backup mostantól támogatja több fájl vagy mappa visszaállítását az eredeti vagy a másik helyre a PowerShell használatával. Ennek megismeréséhez tekintse meg a dokumentum [ezen szakaszát](#restore-multiple-files-or-folders-to-original-or-alternate-location) .
@@ -169,6 +169,6 @@ azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM      
 
 Ha több fájlt vagy mappát kíván visszaállítani másik helyre, használja a fenti parancsfájlokat a célhelyhez kapcsolódó paraméterek értékének megadásával, ahogy azt az [Azure-fájl visszaállítása egy másik helyre](#restore-an-azure-file-to-an-alternate-location)című részben leírtak szerint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tudnivalók](restore-afs.md) a Azure Portal Azure Files visszaállításáról.
