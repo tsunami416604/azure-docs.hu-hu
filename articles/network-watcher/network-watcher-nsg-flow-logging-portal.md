@@ -16,10 +16,10 @@ ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84808690"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
@@ -31,7 +31,7 @@ ms.locfileid: "84808690"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
-A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek bejövő és kimenő forgalmának szűrését. A Network Watcher NSG-folyamatnaplózási funkciójával naplózhatja az egyes hálózati biztonsági csoportokon áthaladó hálózati forgalmat. Az oktatóanyag a következőket ismerteti:
+A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek bejövő és kimenő forgalmának szűrését. A Network Watcher NSG-folyamatnaplózási funkciójával naplózhatja az egyes hálózati biztonsági csoportokon áthaladó hálózati forgalmat. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hálózati biztonsági csoporttal rendelkező virtuális gép létrehozása
@@ -40,7 +40,7 @@ A hálózati biztonsági csoportok (NSG-k) lehetővé teszik a virtuális gépek
 > * Naplózott adatok letöltése
 > * Naplózott adatok megtekintése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -50,10 +50,10 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myVM|
+    |Név|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki az előfizetését.|
+    |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
     |Hely| Válassza ki az **USA keleti** régióját|
 
@@ -67,7 +67,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. Ne ugorjon a
 
 Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytassa az [Insights-szolgáltató regisztrálása](#register-insights-provider) szakasszal.
 
-1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha **Network Watcher** jelenik meg az eredmények között, válassza ki.
 2. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
@@ -93,7 +93,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
     | Beállítás        | Érték                                                        |
     | ---            | ---   |
-    | Name (Név)           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
+    | Név           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
     | Hely       | Válassza ki az **USA keleti** régióját                                           |
     | Erőforráscsoport | Válassza a **meglévő használata**lehetőséget, majd a **myResourceGroup** lehetőséget. |
 
@@ -215,7 +215,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | T            | Protokoll               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
 | O            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
-| C            | Csak a flow állapota **2. verzió** | Rögzíti a folyamat állapotát. A lehetséges állapotok a **B**: Begin, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: folyamatos folyamat folytatása. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés, ha egy folyamat leáll. Statisztikákat biztosítunk. |
+| C#            | Csak a flow állapota **2. verzió** | Rögzíti a folyamat állapotát. A lehetséges állapotok a **B**: Begin, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: folyamatos folyamat folytatása. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés, ha egy folyamat leáll. Statisztikákat biztosítunk. |
 | 30 | Küldött csomagok – a forrás célhelye **csak a 2. verzióra** | A forrásról a célhelyre küldött TCP-vagy UDP-csomagok teljes száma az utolsó frissítés óta. |
 | 16978 | Küldési sebesség (bájt) – a forrás és a cél **2-es verziója csak** | A forrás és a célhely között a legutóbbi frissítés óta küldött TCP-vagy UDP-csomagok teljes száma. A csomagok bájtjai a csomagok fejlécét és a hasznos adatokat tartalmazzák. |
 | 24 | Küldött csomagok – célhely a forrás **2-es verzióra** | Az utolsó frissítés óta a célhelyről a forrásba küldött TCP-vagy UDP-csomagok teljes száma. |

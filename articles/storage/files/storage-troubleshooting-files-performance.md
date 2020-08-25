@@ -4,15 +4,15 @@ description: Az Azure-fájlmegosztás ismert teljesítményével kapcsolatos pro
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 04/25/2019
+ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009273"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782370"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
 
@@ -20,9 +20,9 @@ Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problé
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Nagy késés, alacsony átviteli sebesség és általános teljesítménnyel kapcsolatos problémák
 
-### <a name="cause-1-share-experiencing-throttling"></a>1. ok: a megosztás észlelt sávszélesség szabályozása
+### <a name="cause-1-share-was-throttled"></a>1. ok: a megosztás szabályozása megvolt
 
-A prémium megosztás alapértelmezett kvótája 100 GiB, amely 100 alapszintű IOPS biztosít (amely egy órán át akár 300-ra is feltörte). A kiépítés és a IOPS kapcsolatával kapcsolatos további információkért tekintse meg a tervezési útmutató [kiépített megosztások](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) című szakaszát.
+A kérelmek szabályozása akkor történik meg, amikor elérik a fájlmegosztás IOPS, bejövő vagy kimenő elérési korlátait. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)ismertető témakört.
 
 Annak ellenőrzéséhez, hogy a megosztás szabályozása folyamatban van-e, kihasználhatja az Azure-mérőszámokat a portálon.
 
@@ -47,7 +47,8 @@ Annak ellenőrzéséhez, hogy a megosztás szabályozása folyamatban van-e, kih
 
 ### <a name="solution"></a>Megoldás
 
-- Növelje meg a megosztás kiosztott kapacitását egy magasabb kvóta megadásával a megosztáson.
+- Ha szabványos fájlmegosztást használ, engedélyezze a [nagyméretű fájlmegosztást](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) a Storage-fiókban. A nagyméretű fájlmegosztás akár 10 000 IOPS-t is támogat.
+- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További tudnivalókat a Azure Files tervezési útmutató a [prémium szintű fájlmegosztás kiépítés ismertetése](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) című szakaszában talál.
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>2. ok: nagy mennyiségű metaadat/névtér
 
@@ -202,7 +203,7 @@ Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokho
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)](storage-files-faq.md)

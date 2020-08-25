@@ -17,10 +17,10 @@ ms.author: markvi
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57b68ebb21c0c10c3fbe3fd77d11785d16a10053
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "60443466"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Az Azure Resource Manager elérése Linux VM-beli, felhasználó által hozzárendelt felügyelt identitással
@@ -174,7 +174,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használ
     } 
     ```
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte, hogy hogyan hozhat létre felhasználó által hozzárendelt felügyelt identitást, majd csatolhatja egy Linux rendszerű virtuális géphez az Azure Resource Manager API elérése érdekében.  További információ az Azure Resource Managerről:
 

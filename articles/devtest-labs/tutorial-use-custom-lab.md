@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
 ms.openlocfilehash: b4477e0b98ef534b8170ee297edf88ac6fa62dd7
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85476444"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése az Azure DevTest Labs szolgáltatásban
@@ -21,7 +21,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Kapcsolódás a virtuális géphez
 > * A virtuális gép lefoglalásának feloldása
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="access-the-lab"></a>Hozzáférés a tesztkörnyezethez
 

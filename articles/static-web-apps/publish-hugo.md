@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85297941"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új, a kapcsolódó GitHub-műveletekkel rendelkező Azure-beli statikus webalkalmazás, amely lehetővé teszi az alkalmazás felépítésének és közzétételének vezérlését.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -97,10 +97,10 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 ### <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
-1. Kattintson **az erőforrás létrehozása** elemre.
-1. **Statikus Web Apps** keresése
-1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Kattintson az **Erőforrás létrehozása** gombra
+1. Keressen rá a **Static Web Apps** kifejezésre
+1. Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
 1. Kattintson a **Létrehozás** gombra
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
@@ -127,11 +127,11 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
-### <a name="build"></a>Felépítés
+### <a name="build"></a>Létrehozás
 
 Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létrehozási folyamat az alkalmazás létrehozásához használ. Az alábbi beállítások a GitHub-művelet munkafolyamat-fájlját konfigurálja.
 
-1. Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
+1. Kattintson a **Tovább: Létrehozás >** gombra a létrehozási konfiguráció szerkesztéséhez
 
 1. Az _alkalmazás helyének_ beállítása a következőre: **/** .
 
@@ -151,7 +151,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 

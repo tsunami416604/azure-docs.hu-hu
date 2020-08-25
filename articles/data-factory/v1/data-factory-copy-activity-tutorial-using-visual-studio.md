@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 013f82c33b149d754e059bbc4c9933f917a2555a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85248628"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Visual Studio használatával
@@ -108,7 +108,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 ### <a name="create-the-azure-sql-linked-service"></a>Az Azure SQL társított szolgáltatás létrehozása
 1. A **Solution Explorerben** (Megoldáskezelőben) ismét kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) csomópontra, mutasson az **Add** (Hozzáadás) elemre, és kattintson a **New Item** (Új elem) lehetőségre. 
 2. Ezúttal válassza a **Azure SQL Linked Service** (Azure SQL társított szolgáltatás) lehetőséget, és kattintson az **Add** (Hozzáadás) elemre. 
-3. A **fájlAzureSqlLinkedService1.js**cserélje le a, a, a `<servername>` `<databasename>` `<username@servername>` és `<password>` a nevet a kiszolgáló, az adatbázis, a felhasználói fiók és a jelszó nevére.    
+3. A ** fájlAzureSqlLinkedService1.js**cserélje le a, a, a `<servername>` `<databasename>` `<username@servername>` és `<password>` a nevet a kiszolgáló, az adatbázis, a felhasználói fiók és a jelszó nevére.    
 4. Mentse az **AzureSqlLinkedService1.json** fájlt. 
     
     További információ a JSON-tulajdonságokról: [Azure SQL Database-összekötő](data-factory-azure-sql-connector.md#linked-service-properties).
@@ -229,7 +229,7 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a **Pipelines** (Folyamatok) elemre, mutasson az **Add** (Hozzáadás) elemre, és kattintson a **New Item** (Új elem) lehetőségre.  
 2. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza a **Copy Data Pipeline** (Adatok másolása folyamat) elemet, és kattintson az **Add** (Hozzáadás) parancsra. 
-3. Cserélje le a JSON-t a következő JSON- **ra** , és mentse aCopyActivity1.jsfájlt.
+3. Cserélje le a JSON-t a következő JSON- ** ra** , és mentse aCopyActivity1.jsfájlt.
 
    ```json   
     {

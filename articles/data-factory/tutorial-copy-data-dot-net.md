@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
 ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85513258"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
@@ -97,8 +97,8 @@ Hozzon létre egy C# .NET-konzol alkalmazást a Visual Studióval.
 
 1. Nyissa meg a Visual Studiót.
 2. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
-3. A **create a New Project (új projekt létrehozása** ) ablakban válassza ki a **Console app (.NET-keretrendszer)** C#-verzióját a projekttípus listájából. Ezután válassza a **tovább**lehetőséget.
-4. Az **új projekt konfigurálása** ablakban adja meg az *ADFv2Tutorial* **projekt nevét** . A **Hely mezőben**keresse meg és/vagy hozza létre azt a könyvtárat, amelybe menteni szeretné a projektet. Ezután kattintson a **Létrehozás** elemre. Az új projekt megjelenik a Visual Studio IDE-ban.
+3. A **create a New Project (új projekt létrehozása** ) ablakban válassza ki a **Console app (.NET-keretrendszer)** C#-verzióját a projekttípus listájából. Ezután kattintson a **Tovább** gombra.
+4. Az **új projekt konfigurálása** ablakban adja meg az *ADFv2Tutorial* **projekt nevét** . A **Hely mezőben**keresse meg és/vagy hozza létre azt a könyvtárat, amelybe menteni szeretné a projektet. Ezután válassza a **Létrehozás** elemet. Az új projekt megjelenik a Visual Studio IDE-ban.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
@@ -184,7 +184,7 @@ Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *adatelőállítót*.
 
@@ -275,7 +275,7 @@ Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *Azur
 
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a Blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik, és a következőket írja le:
 
-- A másolandó blob helye: `FolderPath` és`FileName`
+- A másolandó blob helye: `FolderPath` és `FileName`
 - A tartalom elemzését `TextFormat` , a hozzá tartozó beállításokat, például az oszlop elválasztóját jelző blob formátum
 - Az adatstruktúra, beleértve az oszlopnevek és az adattípusokat, amelyek ebben a példában a fogadó SQL-táblára mutatnak.
 
@@ -436,7 +436,7 @@ Hozza létre az alkalmazást a **Build**  >  **Build megoldás**kiválasztásáv
 
 A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozásának állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelenik a másolási tevékenység futtatási részletei az adatok olvasási/írási méretével. Ezt követően a SQL Server Management Studio (SSMS) vagy a Visual Studio használatával csatlakozhat a célhelyhez Azure SQL Database és megtekintheti, hogy a megadott céltábla tartalmazza-e a másolt adatait.
 
-### <a name="sample-output"></a>Példa kimenet
+### <a name="sample-output"></a>Példakimenet
 
 ```json
 Creating a data factory AdfV2Tutorial...
@@ -566,7 +566,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>További lépések
 
-A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
+A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

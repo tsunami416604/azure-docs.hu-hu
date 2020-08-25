@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015697"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794549"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
@@ -134,7 +134,7 @@ A-Filter paraméter használatával kereshet egy adott csoportot. Ez a paraméte
 ```
 
 > [!NOTE]
-> Az Azure AD PowerShell-parancsmagok implementálják a OData lekérdezési szabványt. További információ: **$Filter** a [OData rendszer-lekérdezési beállításokban az OData végpont használatával](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
+> Az Azure AD PowerShell-parancsmagok implementálják a OData lekérdezési szabványt. További információ: **$Filter** a [OData rendszer-lekérdezési beállításokban az OData végpont használatával](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)#BKMK_filter).
 
 ## <a name="create-groups"></a>Csoportok létrehozása
 
@@ -315,7 +315,7 @@ Ha el szeretne távolítani egy tulajdonost egy csoportból, használja a Remove
 Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasználó számára a csoport e-mail-címének részeként használandó mailNickname vagy alias megadását.A következő, magas jogosultságú e-mail-aliasokkal rendelkező csoportokat csak az Azure AD globális rendszergazdája hozhatja létre. 
   
 * visszaélés
-* admin
+* felügyelet
 * adminisztrátor
 * hostmaster
 * majordomo
@@ -336,7 +336,7 @@ További részletekért tekintse meg a [Azure ad Connect Sync szolgáltatás](..
 
 Az Office 365 Group visszaírási a Azure Active Directory (Azure AD) nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhető. Az előzetes verziókkal kapcsolatos jogi információkhoz tekintse meg a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Active Directory-parancsmagokkal](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
 

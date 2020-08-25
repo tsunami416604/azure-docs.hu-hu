@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85255432"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
@@ -107,7 +107,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     ![Társított szolgáltatás létrehozása](media/tutorial-sync-data-factory/create-linked-service.png)
 
-    7. Válassza az **OK** lehetőséget.
+    7. Kattintson az **OK** gombra.
 
 8. A **Beállítások** lapon válassza a **Szerkesztés**lehetőséget.
 
@@ -125,7 +125,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A **táblázat**alatt válassza ki a szinkronizálni kívánt táblát. Ehhez az adatkészlethez is megadhat egy lekérdezést az oktatóanyag későbbi részében leírtak szerint. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblázatban.
 
-    3. Válassza az **OK** lehetőséget.
+    3. Kattintson az **OK** gombra.
 
 14. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával. A keresési tevékenység tulajdonságok ablakában ellenőrizze, hogy a **SourceDataset** van-e kiválasztva a **forrás adatkészlet** listájában.
 
@@ -179,7 +179,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     1. A **fájl elérési útja**területen adja meg a *asdedatasync/incrementalcopy*nevet, ahol a *asdedatasync* a blob-tároló neve, a *incrementalcopy* pedig a mappa neve. Ha nem létezik, hozza létre a tárolót, vagy használjon egy meglévőt. Azure Data Factory automatikusan létrehozza a kimeneti mappa *incrementalcopy* , ha az nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
 
-    2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a ** @CONCAT következőt: (növekményes, folyamat (). RunId, '. txt ')** a megnyíló ablakban. Válassza a **Befejezés** gombot. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
+    2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a ** @CONCAT következőt: (növekményes, folyamat (). RunId, '. txt ')** a megnyíló ablakban. Válassza a **Befejezés** lehetőséget. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
 
 28. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával.
 
@@ -195,7 +195,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A tárolt eljárás paraméterei értékének megadásához válassza a **paraméter importálása** lehetőséget, majd adja meg az alábbi értékeket a paraméterekhez:
 
-    |Name|Típus|Érték|
+    |Név|Típus|Érték|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@ {Activity ("NewWaterMark"). output. firstRow. NewWatermarkvalue}|
     |TableName|Sztring|@ {Activity ("OldWaterMark"). output. firstRow. Táblanév}|
@@ -210,7 +210,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 2. Nevezze el az trigger **HourlySync**. A **típus**területen válassza az **ütemterv**lehetőséget. Állítsa be az **ismétlődést** 1 óránként.
 
-3. Válassza az **OK** lehetőséget.
+3. Kattintson az **OK** gombra.
 
 4. Kattintson **Az összes közzététele** gombra.
 

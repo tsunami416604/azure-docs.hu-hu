@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85513309"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
@@ -31,7 +31,7 @@ Ez a ábra áttekintést nyújt a forgatókönyvről:
 Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 
 > [!div class="checklist"]
-> * Data factory létrehozása
+> * Adat-előállító létrehozása
 > * Azure Storage-beli társított szolgáltatás létrehozása
 > * Azure Blob-adatkészlet létrehozása
 > * Másolási tevékenységet és webes tevékenységet tartalmazó folyamat létrehozása
@@ -42,14 +42,14 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 
 Ez az oktatóanyag a .NET SDK-t használja. Más mechanizmusokkal is használhatja a Azure Data Factory. Data Factory rövid útmutatók: [5 perces](/azure/data-factory/quickstart-create-data-factory-portal)gyors útmutató.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Storage-fiók. A blob Storage-t forrásként szolgáló adattárként használhatja. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
 * Azure Storage Explorer. Az eszköz telepítéséhez lásd: [Azure Storage Explorer](https://storageexplorer.com/).
-* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse [meg az adatbázis létrehozása a Azure SQL Database-ben](../azure-sql/database/single-database-create-quickstart.md)című témakört.
-* Visual Studio. Ez a cikk a Visual Studio 2019-et használja.
+* Azure SQL Database. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse [meg az adatbázis létrehozása a Azure SQL Database-ben](../azure-sql/database/single-database-create-quickstart.md)című témakört.
+* A Visual Studióval. Ez a cikk a Visual Studio 2019-et használja.
 * Azure .NET SDK. Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
 
 Azon Azure-régiók listájáért, amelyekben jelenleg Data Factory érhető el, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/). Az adattárak és a számítások más régiókban is lehetnek. Az üzletek közé tartozik az Azure Storage és a Azure SQL Database. A számítások közé tartoznak a HDInsight, amelyeket a Data Factory használ.
@@ -65,7 +65,7 @@ Hozzon létre egy alkalmazást az [Azure Active Directory alkalmazás létrehoz�
    Tamika|Walsh
    ```
 
-1. Nyissa meg Azure Storage Explorer. Bontsa ki a Storage-fiókját. Kattintson a jobb gombbal a **blob-tárolók** elemre, majd válassza a **blob tároló létrehozása**lehetőséget.
+1. Nyissa meg Azure Storage Explorer. Bontsa ki a Storage-fiókját. Kattintson a jobb gombbal a **Blobtárolók** elemre, majd válassza a **Blobtároló létrehozása** lehetőséget.
 1. Nevezze el az új tároló *adfv2branch* , és válassza a **feltöltés** lehetőséget, hogy hozzáadja a *input.txt* fájlt a tárolóhoz.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása<a name="create-visual-studio-project"></a>
@@ -146,7 +146,7 @@ C# .NET-konzol alkalmazás létrehozása:
    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
    ```
 
-### <a name="create-a-data-factory"></a>Data factory létrehozása
+### <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Adjon hozzá egy `CreateOrUpdateDataFactory` metódust a *program.cs* -fájlhoz:
 
@@ -236,7 +236,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a blob-adatkészlet az előző lépésben támogatott Azure Storage társított szolgáltatásra hivatkozik. A blob-adatkészlet leírja a másolandó blob helyét a következő helyről: *FolderPath* és *fájlnév*.
 
-Figyelje meg a *FolderPath*paramétereinek használatát. `sourceBlobContainer`a paraméter neve, a kifejezés helyére pedig a folyamat futása során átadott értékek szerepelnek. A paraméterek meghatározására szolgáló szintaxis: `@pipeline().parameters.<parameterName>`
+Figyelje meg a *FolderPath*paramétereinek használatát. `sourceBlobContainer` a paraméter neve, a kifejezés helyére pedig a folyamat futása során átadott értékek szerepelnek. A paraméterek meghatározására szolgáló szintaxis: `@pipeline().parameters.<parameterName>`
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Adatkészlet létrehozása egy fogadó Azure-Blobhoz
 
@@ -336,7 +336,7 @@ A munkafolyamat a következő példához hasonlóan néz ki:
 
 Ez a JSON-tartalom az `EmailRequest` előző szakaszban létrehozott osztályhoz igazodik.
 
-Adja hozzá a műveletét `Office 365 Outlook – Send an email` . Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Íme egy példa:
+Adja hozzá a műveletét `Office 365 Outlook – Send an email` . Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Bemutatunk egy példát:
 
 ![Logic app Designer – e-mail küldése művelet](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -344,7 +344,7 @@ A munkafolyamat mentése után másolja és mentse a **http post URL-címet** az
 
 ## <a name="fail-email-workflow"></a>Sikertelen műveletről tájékoztató e-mail munkafolyamata
 
-A **copysuccessemail munkafolyamatot** klónozása egy másik Logic apps *CopyFailEmail*nevű munkafolyamat. A kérelem eseményindítójában a `Request Body JSON schema` ugyanaz. Módosítsa az e-mail formátumát (például a `Subject` értékét) a sikertelen műveletről tájékoztató e-mailnek megfelelően. Például:
+A **copysuccessemail munkafolyamatot** klónozása egy másik Logic apps *CopyFailEmail*nevű munkafolyamat. A kérelem eseményindítójában a `Request Body JSON schema` ugyanaz. Módosítsa az e-mail formátumát (például a `Subject` értékét) a sikertelen műveletről tájékoztató e-mailnek megfelelően. Alább bemutatunk egy példát:
 
 ![Logic app Designer – sikertelen e-mail munkafolyamat](media/tutorial-control-flow/fail-email-workflow.png)
 
@@ -753,7 +753,7 @@ Press any key to exit...
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
 > [!div class="checklist"]
-> * Data factory létrehozása
+> * Adat-előállító létrehozása
 > * Azure Storage-beli társított szolgáltatás létrehozása
 > * Azure Blob-adatkészlet létrehozása
 > * Másolási tevékenységet és webes tevékenységet tartalmazó folyamat létrehozása

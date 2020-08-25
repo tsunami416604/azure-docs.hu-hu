@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84266304"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage elérése SAS-hitelesítő adatok használatával Linux VM-beli rendszer által hozzárendelt identitással
@@ -53,7 +53,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt
 3. Adjon meg egy nevet a tárfiók számára a **Név** mezőben, amelyet később használ majd.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

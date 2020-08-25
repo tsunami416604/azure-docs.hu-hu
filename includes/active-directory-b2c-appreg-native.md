@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 06/02/2020
 ms.author: mimart
 ms.openlocfilehash: 65fb406fa4f52f19b4d8e9dc4e3895207ffe6336
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "84793647"
 ---
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
@@ -28,7 +28,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
     * **Egyedi**: az átirányítási URI sémájának minden alkalmazás esetében egyedinek kell lennie. A példában a `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` `com.onmicrosoft.contosob2c.exampleapp` séma. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazást. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
     * **Befejezés**: az átirányítási URI-nak egy sémával és egy útvonallal kell rendelkeznie. Az elérési útnak legalább egy perjelet tartalmaznia kell a tartomány után. A működése például `//oauth/` `//oauth` sikertelen. Az URI-ban ne szerepeljenek speciális karakterek, például aláhúzások.
 1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
-2. Kattintson a **Register** (Regisztrálás) elemre.
+2. Válassza a **Regisztráció** lehetőséget.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
@@ -41,4 +41,4 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 1. **Egyéni átirányítási URI** -t adjon meg egyedi sémával. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Az átirányítási URI kiválasztásakor két fontos szempontot kell figyelembe venni:
     * **Egyedi**: az átirányítási URI sémájának minden alkalmazás esetében egyedinek kell lennie. A példában a `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` `com.onmicrosoft.contosob2c.exampleapp` séma. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazást. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
     * **Befejezés**: az átirányítási URI-nak egy sémával és egy útvonallal kell rendelkeznie. Az elérési útnak legalább egy perjelet tartalmaznia kell a tartomány után. A működése például `//oauth/` `//oauth` sikertelen. Az URI-ban ne szerepeljenek speciális karakterek, például aláhúzások.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.

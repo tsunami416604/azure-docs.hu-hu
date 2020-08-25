@@ -10,10 +10,10 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84608434"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Oktatóanyag: Azure Stack Edge összekapcsolása, beállítása és aktiválása 
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és akt
 
 A telepítés és az aktiválás folyamata körülbelül 20 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -134,7 +134,7 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
 6. A bal oldali ablaktáblán válassza a **felhő beállításai**lehetőséget, majd aktiválja az eszközt a Azure Portal Azure stack Edge szolgáltatásával.
     
     1. Az **aktiválási kulcs** mezőben adja meg azt az aktiválási kulcsot, amelyet a Azure stack Edge [aktiválási kulcsának beszerzése](azure-stack-edge-deploy-prep.md#get-the-activation-key) című mezőjében kapott.
-    2. Kattintson az **Alkalmaz** gombra.
+    2. Válassza az **Alkalmaz** lehetőséget.
        
         ![Helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 

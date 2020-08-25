@@ -4,15 +4,15 @@ description: A táblázatos 1200-es és újabb adatmodellek által támogatott a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503599"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749089"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
 
@@ -120,7 +120,7 @@ Felhőbeli adatforrások esetén:
 
 ## <a name="oauth-credentials"></a>OAuth hitelesítő adatai
 
-A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis (korábban SQL Data Warehouse), a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
+A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis (korábban SQL Data Warehouse), a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához Power Query használatával állítsa be a hitelesítő adatokat.
 
 A OAuth hitelesítő adatai nem támogatják a közvetlen lekérdezési módot.
 

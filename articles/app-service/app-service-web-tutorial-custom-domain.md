@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 1496f46eb29831dfb858f061ccc00c9e3dbc2e75
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190055"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782311"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -277,7 +277,7 @@ A CNAME hozzáadása után a DNS-rekordok oldala a következő példához hasonl
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>A CNAME rekord hozzárendelésének engedélyezése az alkalmazásban
 
-Mostantól hozzáadhat bármely olyan altartományt, amely megfelel a helyettesítő karakteres névnek (például `sub1.contoso.com` és `sub2.contoso.com` mindkét egyezés `*.contoso.com` ).
+Mostantól hozzáadhat bármely olyan altartományt, amely megfelel a helyettesítő karakter nevének (például, `sub1.contoso.com` `sub2.contoso.com` és `*.contoso.com` mindkét egyezés `*.contoso.com` ).
 
 Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet.
 

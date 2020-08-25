@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.openlocfilehash: 10a630aa04f51dc96b948b01e5fc01cfad4356fd
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85118814"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Oktatóanyag: .NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
@@ -73,7 +73,7 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 
    Az Azure Cosmos DB SQL API ügyfélkódtárának csomagazonosítója a következő: [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
 
-Nagyszerű! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! Az oktatóanyag befejezett projektjét lásd: .NET- [konzol alkalmazás fejlesztése Azure Cosmos db használatával](https://github.com/Azure-Samples/cosmos-dotnet-getting-started).
+Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! Az oktatóanyag befejezett projektjét lásd: .NET- [konzol alkalmazás fejlesztése Azure Cosmos db használatával](https://github.com/Azure-Samples/cosmos-dotnet-getting-started).
 
 ## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
 
@@ -162,7 +162,7 @@ Az adatbázis a tárolók között particionált elemek logikai tárolója. A `C
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
 
-    `CreateDatabaseAsync`egy olyan új adatbázist hoz létre, amely AZONOSÍTÓval `FamilyDatabase` rendelkezik, ha még nem létezik, és amely a mezőben megadott azonosítóval rendelkezik `databaseId` .
+    `CreateDatabaseAsync` egy olyan új adatbázist hoz létre, amely AZONOSÍTÓval `FamilyDatabase` rendelkezik, ha még nem létezik, és amely a mezőben megadott azonosítóval rendelkezik `databaseId` .
 
 1. Másolja és illessze be az alábbi kódot, ahol létrehozza a CosmosClient az imént hozzáadott **ból** metódus meghívásához.
 
@@ -279,7 +279,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos-adatbázist.
 
 A tárolót a osztály [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) vagy [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) metódusával lehet létrehozni `CosmosDatabase` . A tároló elemekből áll (JSON-dokumentumok, ha az SQL API) és a kapcsolódó kiszolgálóoldali alkalmazás-logikát a JavaScriptben, például tárolt eljárásokat, felhasználó által definiált függvényeket és eseményindítókat.
 
-1. Másolja és illessze be a metódust a `CreateContainerAsync` `CreateDatabaseAsync` metódus alá. `CreateContainerAsync`létrehoz egy új tárolót az AZONOSÍTÓval `FamilyContainer` , ha még nem létezik, a `containerId` tulajdonság által particionált mező alapján megadott azonosító használatával `LastName` .
+1. Másolja és illessze be a metódust a `CreateContainerAsync` `CreateDatabaseAsync` metódus alá. `CreateContainerAsync`  létrehoz egy új tárolót az AZONOSÍTÓval `FamilyContainer` , ha még nem létezik, a `containerId` tulajdonság által particionált mező alapján megadott azonosító használatával `LastName` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
 

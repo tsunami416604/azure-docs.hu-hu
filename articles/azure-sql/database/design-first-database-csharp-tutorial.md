@@ -11,10 +11,10 @@ ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
 ms.openlocfilehash: 057ffcdc8a21567e909d768236e454ee10036115
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84216561"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: a Azure SQL Database C&#x23; és a ADO.NET-ben található, viszonyítási adatbázis tervezése
@@ -65,13 +65,13 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
     | Beállítás       | Ajánlott érték | Leírás |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Kiszolgáló neve** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-    | **Kiszolgáló-rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
+    | **Kiszolgáló rendszergazdájának felhasználóneve** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakterből kell állnia, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűk, számok és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](./media/design-first-database-csharp-tutorial/create-database-server.png)
 
-5. Kattintson a **Kiválasztás** gombra.
+5. Kattintson a **Kiválasztás** elemre.
 6. Kattintson a **Tarifacsomag** parancsra a szolgáltatási szint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Megvizsgálhatja az egyes szolgáltatási szintek számára elérhető DTU/virtuális mag és tárhelyek számát.
 
     Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz**gombra.
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 8. Most, hogy végrehajtotta a **SQL Database** űrlapot, kattintson a **Létrehozás** gombra az adatbázis kiépítéséhez. Ez a lépés néhány percet is igénybe vehet.
 
-9. Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
+9. Az eszköztáron kattintson az **Értesítések** elemre az üzembehelyezési folyamat monitorozásához.
 
    ![értesítés](./media/design-first-database-csharp-tutorial/notification.png)
 
@@ -103,7 +103,7 @@ A SQL Database egy IP-tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfa
 
 4. Kattintson az **ügyfél IP-** címének hozzáadása elemre az eszköztáron, és adja hozzá az aktuális IP-címet egy új IP-tűzfalszabály-szabályhoz. Az IP-tűzfalszabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára is megnyithatja.
 
-5. Kattintson a **Save** (Mentés) gombra. A rendszer a kiszolgálón a 1433-as portot nyitja meg a jelenlegi IP-címhez.
+5. Kattintson a **Mentés** gombra. A rendszer a kiszolgálón a 1433-as portot nyitja meg a jelenlegi IP-címhez.
 
 6. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
@@ -116,7 +116,7 @@ Az IP-cím mostantól átadható az IP-tűzfalon. Most már csatlakozhat az adat
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte az adatbázis alapvető feladatait, például az adatbázisok és táblák létrehozását, az adatbázishoz való kapcsolódást, az adatok betöltését és a lekérdezések futtatását. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban megismerte az adatbázis alapvető feladatait, például az adatbázisok és táblák létrehozását, az adatbázishoz való kapcsolódást, az adatok betöltését és a lekérdezések futtatását. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 >

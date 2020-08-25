@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585764"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782719"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault áthelyezése másik előfizetésre
 
@@ -59,7 +59,9 @@ Győződjön meg arról, hogy a Azure Portal Azure Policy lapjára mutat, és te
 
 ## <a name="procedure"></a>Eljárás
 
-### <a name="initial-steps-moving-key-vault"></a>Kezdeti lépések (Key Vault áthelyezése)
+Ha 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Key Vault áthelyezése egy új előfizetésre ugyanazon a bérlőn belül
 
 1. Bejelentkezés az Azure Portalra
 2. Navigáljon a kulcstartóhoz
@@ -70,9 +72,9 @@ Győződjön meg arról, hogy a Azure Portal Azure Policy lapjára mutat, és te
 7. Az erőforrások áthelyezésével kapcsolatos figyelmeztetés nyugtázása
 8. Válassza az OK lehetőséget
 
-### <a name="additional-steps-post-move"></a>További lépések (áthelyezés utáni lépés)
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>További lépések, ha áthelyezte a Key vaultot egy új bérlőn lévő előfizetésbe
 
-Most, hogy áthelyezte a kulcstartót az új előfizetésbe, frissítenie kell a bérlő AZONOSÍTÓját, és el kell távolítania a régi hozzáférési házirendeket. Ezek a lépések a PowerShell és az Azure CLI-ben című témakörben találhatók.
+Ha áthelyezte a kulcstartót egy új bérlő egyik előfizetéséhez, manuálisan kell frissítenie a bérlő AZONOSÍTÓját, és el kell távolítania a régi hozzáférési házirendeket. Ezek a lépések a PowerShell és az Azure CLI-ben című témakörben találhatók. Ha a PowerShellt használja, előfordulhat, hogy az alábbiakban ismertetett Clear-AzContext parancsot kell futtatnia, hogy az aktuálisan kiválasztott hatókörön kívül is megjelenjenek az erőforrások. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

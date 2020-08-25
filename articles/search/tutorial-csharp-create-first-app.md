@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85261460"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
@@ -504,7 +504,7 @@ Az Azure Cognitive Search hívást a **RunQueryAsync** metódusban ágyazjuk be.
 
     A keresendő aszinkron hívás (**Model. resultList = vár _indexClient.Documents. A SearchAsync &lt; Hotel &gt; (Model. keresettszöveg, Parameters);**) az oktatóanyag és az alkalmazás lényege. A **DocumentSearchResult** osztály egy érdekes, és jó ötlet (ha az alkalmazás fut) itt egy töréspontot kell beállítania, és egy hibakereső használatával meg kell vizsgálnia a **Model. resultList**tartalmát. Érdemes megkeresni, hogy a rendszer intuitív módon adja meg a kért adatmennyiséget, és nem sok más.
 
-Most az igazság pillanatában.
+Most következik az igazság pillanata.
 
 ### <a name="test-the-app"></a>Az alkalmazás tesztelése
 

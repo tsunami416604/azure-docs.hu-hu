@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 235b2a1e3a75c01c8e57a0e4b0c27664f638385f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: c93f4f3976e4e036aa47144618145461ac37ad4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723520"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755619"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -44,9 +44,9 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
 1. Cserélje le a értékét `<your receipt URL>` egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
-  # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
-    ```
-    python
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+```python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -82,11 +82,10 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+```
     
-   # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
-    ```
-    python
+# <a name="v21-preview1"></a>[v 2.1 – előzetes verzió. 1](#tab/v2-1)    
+```python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -96,7 +95,7 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.0/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -123,11 +122,14 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+```
+
 > [!NOTE]
 > **Nyelvi bevitel** 
 >
 > Az Analzye-visszaigazolás 2,1-es kiadási művelete opcionális kérési paramétert tartalmaz a nyelvhez, a beérkezési hely területi beállításaként. A támogatott területi beállítások a következők: en-AU, en-CA, en-GB, en-IN, en-US. 
+
+---
 
 1. Mentse a kódot egy. file kiterjesztésű fájlba. Például: *Form-Recognizer-receipts.py*.
 1. Nyisson meg egy parancsablakot.
@@ -135,9 +137,15 @@ A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hí
 
 Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amely segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában szereplő sztring a `operations/` művelet azonosítója.
 
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
 ```console
 https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
+# <a name="v21-preview1"></a>[v 2.1 – előzetes verzió. 1](#tab/v2-1)    
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+---
 
 ## <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
@@ -175,13 +183,13 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A parancsfájl a-konzolra adott válaszokat küldi el, amíg az **elemzés visszaigazolási** művelete be nem fejeződik. Ezután JSON formátumban fogja kinyomtatni a kinyert szöveges adatfájlokat. A `"recognitionResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, a `"understandingResults"` mező pedig a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza.
+A parancsfájl a-konzolra adott válaszokat küldi el, amíg az **elemzés visszaigazolási** művelete be nem fejeződik. Ezután JSON formátumban fogja kinyomtatni a kinyert szöveges adatfájlokat. A `"readResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, a `"documentResults"` mező pedig a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza.
 
 Tekintse meg az alábbi beérkezési képet és a hozzá tartozó JSON-kimenetet. A kimenet le lett rövidítve az olvashatóság érdekében.
 
 ![A contoso áruházból érkezett visszaigazolás](../media/contoso-allinone.jpg)
 
-A `"recognitionResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"understandingResults"` csomópont tartalmazza a modell által felderített bevételezés-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, mint például az adó, a teljes, a kereskedelmi címek és így tovább.
+A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített bevételezés-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, mint például az adó, a teljes, a kereskedelmi címek és így tovább.
 
 ```json
 { 

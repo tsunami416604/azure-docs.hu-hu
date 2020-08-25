@@ -9,10 +9,10 @@ ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: ee8b8c2931d006dbb3d472b545030d3aff79c56a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85297987"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
@@ -31,7 +31,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 Először be kell állítania a projekt és az egység jelenetét:
 1. Az egység elindítása.
-2. Válassza az **új**lehetőséget.
+2. Válassza az **Új** lehetőséget.
 4. Győződjön meg arról, hogy a **3D** ki van választva.
 5. Nevezze el a projektet, és adjon meg egy mentési **helyet**.
 6. Kattintson a **projekt létrehozása**gombra.
@@ -212,7 +212,7 @@ A rendszer feltölti az egyik horgonyt a felhőbe, készen áll arra, hogy újra
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=273-311&highlight=13-31,35-36)]
 
-Most adjuk hozzá a `ResetSession()` és a `CleanupObjects()` metódusokat. Az alábbi lépéseket helyezheti el`QueueOnUpdate()`
+Most adjuk hozzá a `ResetSession()` és a `CleanupObjects()` metódusokat. Az alábbi lépéseket helyezheti el `QueueOnUpdate()`
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=124-177)]
 

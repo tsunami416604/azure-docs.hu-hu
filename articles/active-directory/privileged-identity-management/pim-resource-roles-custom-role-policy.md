@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24b7845ec66a85e6ced4f1df9caec409a94016bf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034099"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782600"
 ---
 # <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Egyéni Azure-szerepkörök használata Privileged Identity Management
 
@@ -31,7 +31,7 @@ Kövesse a következő szakaszban ismertetett lépéseket az Azure-beli erőforr
 
 ## <a name="create-the-custom-role"></a>Az egyéni szerepkör létrehozása
 
-Ha egyéni szerepkört szeretne létrehozni egy erőforráshoz, kövesse az [Azure egyéni szerepkörök](../role-based-access-control-custom-roles.md)című témakörben ismertetett lépéseket.
+Ha egyéni szerepkört szeretne létrehozni egy erőforráshoz, kövesse az [Azure egyéni szerepkörök](../../role-based-access-control/custom-roles.md)című témakörben ismertetett lépéseket.
 
 Ha egyéni szerepkört hoz létre, akkor adjon meg egy leíró nevet, így könnyen megjegyezhető, hogy melyik beépített szerepkört szeretné duplikálni.
 
@@ -48,7 +48,7 @@ Miután létrehozta a szerepkört az Azure AD-szervezetben, lépjen a Azure Port
 
 Végezetül [rendeljen hozzá szerepköröket](pim-resource-roles-assign-roles.md) azon tagok különálló csoportjához, amelyeket meg szeretne célozni ezekkel a beállításokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
 - [Egyéni szerepkörök az Azure-ban](../../role-based-access-control/custom-roles.md)

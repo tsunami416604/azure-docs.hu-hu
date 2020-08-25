@@ -8,19 +8,21 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 171c53aa36ecc854cf32a64f9f2639a7086c24e5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84448631"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782583"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
 
 Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal a regressziós fák együttesét hozhatja létre a boosting használatával. A *kiemelés* azt jelenti, hogy az egyes faszerkezetek az előző fáktől függenek. Az algoritmus az előtte lévő fák maradékának beépítésével tanul. Így a döntési fazenekarban egyre nagyobb a pontosság, és kisebb a lefedettségük.  
+
+Ez a modul a LightGBM algoritmuson alapul.
   
 Ez a regressziós módszer egy felügyelt tanulási módszer, ezért *címkével ellátott adatkészletet*igényel. A Label oszlopnak numerikus értékeket kell tartalmaznia.  
 
@@ -103,6 +105,6 @@ A betanítás befejezése után:
 
 + A betanított modell pillanatképének mentéséhez a **betanított modell** jobb oldali paneljén válassza a **kimenetek** fület, majd kattintson az **adatkészlet regisztrálása** ikonra. A betanított modell másolata modulként lesz mentve a modul fájában, és a folyamat egymást követő futtatása során nem lesz frissítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

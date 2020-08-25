@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ec0453725186ddef359f85f8c3e5554ff240d3e3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654123"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755721"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -95,7 +95,7 @@ Ha a gyakoriságot egy óránkénti kivonatoló értékre állították be, és 
 
 > [!NOTE]
 >
-> - Ha olyan roncsolásos műveletet végez, mint például a **védelem leállítása a törlési adatokkal** , akkor a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva a helyreállítási tárolóhoz.
+> - Ha olyan roncsolásos műveletet végez, mint például a **védelem leállítása a törlési** művelettel, a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva az Recovery Services-tárolóhoz.
 > - A sikeres feladatok értesítésének konfigurálásához használja a [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="inactivating-alerts"></a>Riasztások inaktiválása

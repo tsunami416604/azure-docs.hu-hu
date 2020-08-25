@@ -1,15 +1,15 @@
 ---
 title: Azure Backup Recovery Services-tárolók áthelyezése
-description: Útmutató a Recovery Services-tároló Azure-előfizetések és-erőforráscsoportok közötti áthelyezéséhez.
+description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és-erőforráscsoportok közötti áthelyezéséhez.
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650913"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755738"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -50,12 +50,12 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Recovery Services-tár másik erőforráscsoporthoz való áthelyezéséhez használja a Azure Portal
 
-A Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése más erőforráscsoport-csoportba
+Recovery Services-tároló és a hozzá tartozó erőforrások áthelyezése különböző erőforráscsoporthoz:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg **Recovery Services** -tárolók listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor megnyílik a tároló irányítópultja, az a következő képen látható módon jelenik meg.
 
-   ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Recovery Services-tároló megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
    Ha nem látja a tár **alapvető** információit, válassza a legördülő ikont. Ekkor látnia kell a tár alapvető információit.
 
@@ -84,7 +84,7 @@ Egy Recovery Services-tárolót és a hozzá tartozó erőforrásokat egy másik
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg Recovery Services-tárolók listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor megnyílik a tároló irányítópultja, az a következő képen látható módon jelenik meg.
 
-    ![A Service Vault helyreállítási tárolójának megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Recovery Services-tároló megnyitása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
     Ha nem látja a tár **alapvető** információit, válassza a legördülő ikont. Ekkor látnia kell a tár alapvető információit.
 

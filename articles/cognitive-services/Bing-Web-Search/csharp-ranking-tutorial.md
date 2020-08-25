@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85609435"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozása C-ben #
@@ -48,7 +48,7 @@ Nevezze el az alkalmazás **MyConsoleSearchApp**, majd kattintson **az OK**gombr
 A JSON.net lehetővé teszi az API által visszaadott JSON-válaszok használatát. Adja hozzá a NuGet-csomagot a projekthez:
 
 - **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése...** lehetőséget.
-- A **Tallózás** lapon keressen rá a kifejezésre `Newtonsoft.Json` . Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
+- A  **Tallózás** lapon keressen rá a kifejezésre `Newtonsoft.Json` . Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
 - Kattintson a **módosítások áttekintése** ablak **OK** gombjára.
 - Zárjuk be a Visual Studio fület a **NuGet: MyConsoleSearchApp**címen.
 
@@ -275,7 +275,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 Ez a metódus:
 
 - Hurkok a `rankingResponse` Válasz által tartalmazott csoportok felett
-- Megjeleníti az egyes csoportok elemeit a hívással`DisplaySpecificResults(...)`
+- Megjeleníti az egyes csoportok elemeit a hívással `DisplaySpecificResults(...)`
 
 A **program.cs**-ben adja hozzá a következő két módszert:
 
@@ -308,7 +308,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 
 Ezek a módszerek együttműködve a keresési eredményeket a konzolra exportálják.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást. A kimenetnek a következőképpen kell kinéznie:
 

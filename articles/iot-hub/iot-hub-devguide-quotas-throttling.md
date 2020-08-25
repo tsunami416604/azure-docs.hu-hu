@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87335562"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782566"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -111,7 +111,8 @@ IoT Hub érvényesíti a többi működési korlátot:
 | Automatikus eszköz-és modul-konfigurációk<sup>1</sup> | 100 konfiguráció/fizetős SKU-hub. 20 konfiguráció egy ingyenes SKU-hubhoz. |
 | Automatikus központi telepítések IoT Edge<sup>1</sup> | 50 modul üzembe helyezése. 100 üzemelő példányok (beleértve a rétegzett központi telepítéseket) fizetett SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
 | Ikrek<sup>1</sup> | A kívánt tulajdonságok maximális mérete és a jelentett tulajdonságok rész 32 KB. A címkék maximális mérete 8 KB. |
-| Megosztott elérési szabályzatok | A megosztott hozzáférési házirendek maximális száma 16 |
+| Megosztott elérési szabályzatok | A megosztott hozzáférési házirendek maximális száma 16. |
+| CA-tanúsítványok | A regisztrált X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok maximális száma 25. |
 
 <sup>1</sup> Ez a funkció nem érhető el az alapszintű IoT Hub. További információ: [How to Choo the right IoT hub](iot-hub-scaling.md).
 
@@ -131,7 +132,7 @@ Több IoT Hub egység is befolyásolja a szabályozást a korábban leírtak sze
 
 Ha a művelet késése váratlan növekedést lát, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 IoT Hub szabályozási viselkedés részletes ismertetését a következő blogbejegyzésben találja: [IoT hub szabályozás és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

@@ -7,24 +7,26 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 973eeebfdf9164cb50cf98ae8edc845a80a7e080
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534039"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794498"
 ---
-# <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Biztonságos Azure-beli digitális Twins szerepköralapú hozzáférés-vezérléssel
+# <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
 A biztonság érdekében az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé az üzembe helyezés meghatározott adatai, erőforrásai és műveletei számára. Ez egy, a **szerepköralapú hozzáférés-vezérlés (RBAC)** nevű részletes szerepkör és az engedélyek kezelési stratégiája segítségével történik. Az Azure-hoz készült RBAC általános elveiről [itt](../role-based-access-control/overview.md)olvashat.
 
-## <a name="rbac-through-azure-ad"></a>RBAC az Azure AD-n keresztül
+Az Azure Digital Twins az inaktív adatok titkosítását is támogatja.
+
+## <a name="granting-permissions-with-rbac"></a>Engedélyek megadása a RBAC
 
 A RBAC az Azure Digital Twins [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) szolgáltatással való integrációja révén biztosítjuk.
 
 A RBAC segítségével engedélyeket adhat egy *rendszerbiztonsági tag*számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű alkalmazás. A rendszerbiztonsági tag hitelesítve van az Azure AD-ben, és egy OAuth 2,0 tokent kap vissza. Ez a jogkivonat egy Azure Digital Twins-példány hozzáférési kérelmének engedélyezésére használható.
 
-## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
+### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
 Az Azure AD-vel a hozzáférés egy kétlépéses folyamat. Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) megpróbál hozzáférni az Azure digitális Twinshoz, a kérést *hitelesíteni* és *engedélyezni*kell. 
 
@@ -37,13 +39,13 @@ Az engedélyezési lépés megköveteli, hogy az Azure-szerepkört hozzá lehess
 
 Ha többet szeretne megtudni az Azure-ban támogatott szerepkörökről és szerepkör-hozzárendelésekről, tekintse meg az Azure RBAC dokumentációjának [*különböző szerepköreinek megismerése*](../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.
 
-### <a name="authentication-with-managed-identities"></a>Hitelesítés felügyelt identitásokkal
+#### <a name="authentication-with-managed-identities"></a>Hitelesítés felügyelt identitásokkal
 
 Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához szükséges biztonságos identitást hozzon létre. Ezt az identitást hozzáférés-vezérlési szerepkörökkel társíthatja, így egyéni engedélyeket adhat meg az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
 
 A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű identitást. Az alkalmazás kódjában vagy konfigurációjában nem kell tárolnia és védelemmel ellátnia a hozzáférési kulcsokat, vagy magát az identitást, vagy a hozzáféréshez szükséges erőforrásokat. Egy Azure App Service alkalmazáson belül futó Azure Digital Twins-ügyfélalkalmazás nem igényel SAS-szabályokat és-kulcsokat, vagy bármely más hozzáférési jogkivonatot. Az ügyfélalkalmazás csak az Azure Digital Twins-névtér végpont-címeként szükséges. Az alkalmazás csatlakozásakor az Azure Digital Twins a felügyelt entitás környezetét az ügyfélhez köti. Ha egy felügyelt identitáshoz van társítva, az Azure digitális Twins-ügyfele minden jóváhagyott műveletet végrehajthat. Az engedélyezést ezután egy felügyelt entitás egy Azure digitális Twins Azure-szerepkörrel való társításával lehet megadni (lásd alább).
 
-### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Engedélyezés: az Azure Digital Twins Azure-szerepkörei
+#### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Engedélyezés: az Azure Digital Twins Azure-szerepkörei
 
 Az Azure az alábbi Azure beépített szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
 * *Azure digitális ikrek tulajdonosa (előzetes verzió)* – ezt a szerepkört használva teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
@@ -60,7 +62,7 @@ A szerepköröket kétféleképpen rendelheti hozzá:
 
 A részletes útmutatásért próbálja ki az Azure Digital Twins [*oktatóanyagban: teljes körű megoldás összekapcsolása*](tutorial-end-to-end.md).
 
-## <a name="permission-scopes"></a>Engedélyek hatókörei
+### <a name="permission-scopes"></a>Engedélyek hatókörei
 
 Mielőtt Azure-szerepkört rendeljen egy rendszerbiztonsági tag számára, határozza meg a rendszerbiztonsági tag hozzáférési hatókörét. Az ajánlott eljárások azt írják elő, hogy a legjobb, ha csak a lehető legszűkebb hatókört adja meg.
 
@@ -71,11 +73,15 @@ Az alábbi lista azokat a szinteket ismerteti, amelyeken az Azure Digital Twins-
 * Digitális kettős kapcsolat: az erőforráshoz tartozó műveletek határozzák meg a SZIFILISZi műveletek vezérlését a digitális ikrek közötti [kapcsolatokon](concepts-twins-graph.md) a Twin gráfban.
 * Esemény útvonala: az erőforrás műveletei határozzák meg az Azure digitális ikrek [eseményeinek továbbítására](concepts-route-events.md) vonatkozó engedélyeket egy végponti szolgáltatáshoz, például az [Event Hub](../event-hubs/event-hubs-about.md), a [Event Grid](../event-grid/overview.md)vagy a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting-permissions"></a>Hibaelhárítási engedélyek
 
 Ha egy felhasználó olyan műveletet próbál végrehajtani, amelyet nem engedélyeznek a szerepkörük, előfordulhat, hogy a szolgáltatáskérelem olvasása hibaüzenetet kap `403 (Forbidden)` . További információt és hibaelhárítási lépéseket a [*Hibaelhárítás: az Azure digitális Twins-kérelem sikertelen állapot: 403 (tiltott)*](troubleshoot-error-403.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
+
+Az Azure Digital Twins inaktív és átvitel alatt álló adatok titkosítását teszi lehetővé az adatközpontokban, és visszafejti azt az eléréséhez.
+
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md).
 

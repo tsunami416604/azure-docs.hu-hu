@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/17/2020
-ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 916d23670e1db22efe43e2966d96aa1c82f1852a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983407"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782158"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
@@ -77,11 +77,11 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 
 A betanítás befejezése után:
 
-+ A legjobb modellhez tartozó pontossági mérőszámok megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
++ A sweep eredményeinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
 
-    A kimenet tartalmazza a modell típusára vonatkozó összes pontossági mérőszámot, de a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell a "legjobb".
+    A kimenet tartalmazza a modell típusára vonatkozó összes paraméter-áthúzási és pontossági mérőszámot, de a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell a "legjobb".
 
-+ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
++ A betanított modell pillanatképének mentéséhez válassza a **kimenetek + naplók** fület a **Train Model** modul jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
@@ -149,7 +149,7 @@ A képzés során azonban *egyetlen* mérőszámot kell kiválasztania, amelyet 
 A Azure Machine Learning szinte minden tanuló támogatja a többtényezős hitelesítést egy integrált paraméteres sweeptel, amely lehetővé teszi, hogy kiválassza a folyamathoz használandó paramétereket. Ha a tanuló nem támogatja az értékek tartományának beállítását, akkor továbbra is használhatja azt több érvényesítéssel. Ebben az esetben a rendszer az összes engedélyezett értéket kijelöli a sweep értékre. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

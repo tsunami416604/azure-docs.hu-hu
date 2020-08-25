@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84706436"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Oktatóanyag: az Azure SQL felügyelt példányának biztonsága Azure AD Server-rendszerbiztonsági tag használatával (bejelentkezések)
@@ -27,7 +27,7 @@ Az Azure SQL felügyelt példánya szinte minden olyan biztonsági funkciót biz
 - Hitelesítés használata szerepköralapú tagságokkal és engedélyekkel
 - Biztonsági funkciók engedélyezése
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -136,7 +136,7 @@ A bejelentkezés hozzáadása a `sysadmin` kiszolgálói szerepkörhöz:
     GO
     ```
 
-    Az alábbi példa megadja a `sysadmin` kiszolgálói szerepkört a bejelentkezésheznativeuser@aadsqlmi.onmicrosoft.com
+    Az alábbi példa megadja a `sysadmin` kiszolgálói szerepkört a bejelentkezéshez nativeuser@aadsqlmi.onmicrosoft.com
 
     ```sql
     ALTER SERVER ROLE sysadmin ADD MEMBER [nativeuser@aadsqlmi.onmicrosoft.com]
@@ -239,7 +239,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
     GO
     ```
 
-    A következő példa létrehoz egy felhasználót bob@aadsqlmi.net a bejelentkezésbőlbob@aadsqlmi.net:
+    A következő példa létrehoz egy felhasználót bob@aadsqlmi.net a bejelentkezésből bob@aadsqlmi.net:
 
     ```sql
     USE MyMITestDB

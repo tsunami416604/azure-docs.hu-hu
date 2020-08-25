@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc
 ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85367376"
 ---
 # <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
@@ -152,7 +152,7 @@ Az előző feladatban használt osztályok, tulajdonságok és metódusok a köv
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
 |[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Létezik](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[Blobelemet](/dotnet/api/azure.storage.blobs.models.blobitem) | [Name (Név)](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[Blobelemet](/dotnet/api/azure.storage.blobs.models.blobitem) | [Név](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
 |[UriBuilder](/dotnet/api/system.uribuilder) | [Lekérdezés](/dotnet/api/system.uribuilder.query) |  |
 |[Lista](/dotnet/api/system.collections.generic.list-1) | | [Hozzáadás](/dotnet/api/system.collections.generic.list-1.add) |
 
@@ -184,7 +184,7 @@ Most, hogy biztonságos átvitel szükséges, az alábbi üzenetet kapja:
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat harmadik részében megtanulta, hogy miként teheti biztonságossá a tárfiókhoz való hozzáférést, többek között:
 

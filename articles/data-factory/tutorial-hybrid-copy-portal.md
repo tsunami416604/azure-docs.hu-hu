@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84660990"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
@@ -100,13 +100,13 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Hozzon létre egy újat a **tárolók** ablakban a **+ tároló** elemre kattintva.
 
-1. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet. Ezután kattintson a **Létrehozás** elemre.
+1. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet. Ezután válassza a **Létrehozás** elemet.
 
 1. A tárolók listájában válassza ki az imént létrehozott **adftutorial** .
 
 1. Tartsa meg a **tároló** ablakát a **adftutorial** megnyitásához. Ezzel ellenőrizheti az oktatóanyag végén található kimenetet. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
@@ -159,7 +159,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra.
 
-1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután kattintson a **Létrehozás** elemre.
+1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután válassza a **Létrehozás** elemet.
 
 1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
     ![Integrációs modul telepítése](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
@@ -186,13 +186,13 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
  
     ![Új társított szolgáltatás (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
-1. A társított szolgáltatás létrehozása után vissza fog térni a SqlServerDataset **tulajdonságok beállítása** lapjára. Hajtsa végre a következő lépéseket:
+1. A társított szolgáltatás létrehozása után vissza fog térni a SqlServerDataset **tulajdonságok beállítása** lapjára. Tegye a következőket:
 
     a. Ellenőrizze, hogy a **Társított szolgáltatás** mezőben látható-e az **SqlServerLinkedService** szolgáltatás.
 
     b. A **tábla neve**területen válassza a **[dbo] elemet. [ EMP]**.
     
-    c. Válassza az **OK** lehetőséget.
+    c. Kattintson az **OK** gombra.
 
 1. Lépjen az **SQLServerToBlobPipeline** folyamatot tartalmazó lapra, vagy válassza az **SQLServerToBlobPipeline** folyamatot a fanézetben.
 
@@ -208,7 +208,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** nevet, válassza ki a Storage-fiók nevét a **Storage-fiók** neve listából. Tesztelje a kapcsolódást, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
-1. A társított szolgáltatás létrehozása után vissza kell térnie a **set Properties (tulajdonságok beállítása** ) lapra. Válassza az **OK** lehetőséget.
+1. A társított szolgáltatás létrehozása után vissza kell térnie a **set Properties (tulajdonságok beállítása** ) lapra. Kattintson az **OK** gombra.
 
 1. Nyissa meg a fogadó adatkészletet. A **Kapcsolat** lapon hajtsa végre az alábbi lépéseket:
 
@@ -248,8 +248,8 @@ Válassza az **trigger hozzáadása** elemet a folyamat eszköztárán, majd vá
 A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `adftutorial` blobtárolóban. Ellenőrizze, hogy a *[pipeline().RunId].txt* fájl megjelenik-e a kimeneti mappában.
 
 
-## <a name="next-steps"></a>Következő lépések
-A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

@@ -4,16 +4,16 @@ description: Ebben az oktatóanyagban az aktív tanulással fejlesztheti tudásb
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84635375"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Oktatóanyag: a Tudásbázis hozzáadása a virtuális ügynökökhöz
 Hozzon létre és terjesszen ki egy [Power Virtual Agents](https://powervirtualagents.microsoft.com/) -robotot, hogy válaszokat nyújtson a Tudásbázisból.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -210,13 +210,13 @@ A végleges ügynök vásznon látható.
 
 1. Tesztelje az ügynököt úgy, hogy a következő sorrendben írja be a felhasználói szöveget. A szerzői vászon a sikeres lépéseket zöld pipa jelzi.
 
-    |Kérdés sorrendje|Kérdések tesztelése|Szerep|
+    |Kérdés sorrendje|Kérdések tesztelése|Rendeltetés|
     |--|--|--|
-    |1|helló|Beszélgetés indítása|
+    |1|Üdvözöljük|Beszélgetés indítása|
     |2|Tárolási idő|Példa témakörre. Ez úgy van konfigurálva, hogy az Ön részéről további munka nélkül működjön.|
-    |3|Yes|Válasz címzettje`Did that answer your question?`|
-    |4|Kiváló|Válasz címzettje`Please rate your experience.`|
-    |5|Yes|Válasz címzettje`Can I help with anything else?`|
+    |3|Igen|Válasz címzettje `Did that answer your question?`|
+    |4|Kiváló|Válasz címzettje `Please rate your experience.`|
+    |5|Igen|Válasz címzettje `Can I help with anything else?`|
     |6|Hogyan javíthatom a lekérdezési előrejelzések teljesítményének teljesítményét?|Ez a kérdés elindítja a visszalépési műveletet, amely választ küld a szövegnek a tudásbázisba. Ezután megjelenik a válasz. az egyes műveletekhez tartozó zöld pipa jelzi az egyes műveletek sikerességét.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Képernyőkép a csevegési robotról, amely zöld pipa jelzi a sikeres műveletekhez.":::
@@ -229,7 +229,7 @@ Ahhoz, hogy az ügynök elérhető legyen az iskola vagy szervezet összes tagja
 
 1. Próbálja ki a robotot a bemutató webhelyén (keresse meg a **Közzététel**alatt található hivatkozást).
 
-    Megnyílik egy új weblap a robottal. Kérdezze meg a robotot ugyanazzal a tesztelési kérdéssel:`How can I improve the throughput performance for query predictions?`
+    Megnyílik egy új weblap a robottal. Kérdezze meg a robotot ugyanazzal a tesztelési kérdéssel: `How can I improve the throughput performance for query predictions?`
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőfelvétel a végleges ügynök vászonról](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
@@ -244,7 +244,7 @@ A bemutató webhely megosztásához konfigurálja a csatornát csatornaként.
 
 1. Másolja a hivatkozást, és válassza a **Mentés**lehetőséget. Illessze be a bemutató webhelyére mutató hivatkozást egy e-mailbe az iskolájában vagy a szervezet tagjainak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a tudásbázissal, távolítsa el a Azure Portal QnA Maker erőforrásait.
 

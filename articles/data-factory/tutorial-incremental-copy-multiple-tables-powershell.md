@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85250961"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Több táblázatból származó adatok növekményes betöltése SQL Server Azure SQL Database a PowerShell használatával
@@ -34,7 +34,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 > * Társított szolgáltatások létrehozása. 
 > * Forrás-, fogadó- és küszöbadatkészletek létrehozása.
 > * Folyamat létrehozása, futtatása és figyelése.
-> * Itt tekintheti meg a művelet eredményét.
+> * Tekintse át az eredményeket.
 > * Adatok hozzáadása vagy frissítése a forrástáblákban.
 > * A folyamat újrafuttatása és monitorozása.
 > * A végső eredmények áttekintése.
@@ -65,7 +65,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
     ![Adatok növekményes betöltése](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -235,7 +235,7 @@ END
 
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét dupla idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`.
 
@@ -985,7 +985,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * Társított szolgáltatások létrehozása. 
 > * Forrás-, fogadó- és küszöbadatkészletek létrehozása.
 > * Folyamat létrehozása, futtatása és figyelése.
-> * Itt tekintheti meg a művelet eredményét.
+> * Tekintse át az eredményeket.
 > * Adatok hozzáadása vagy frissítése a forrástáblákban.
 > * A folyamat újrafuttatása és monitorozása.
 > * A végső eredmények áttekintése.

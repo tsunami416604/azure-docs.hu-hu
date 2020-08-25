@@ -9,10 +9,10 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84872688"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>Oktatóanyag: egyenrangú szolgáltatási kapcsolatok telemetria mérése
@@ -47,12 +47,12 @@ Ha egy adott társ-szolgáltatási kapcsolatok késési jelentését szeretné m
 
 | **Előtag-események** | **Esemény típusa**|**Indoklása**|
 |-----------|---------|---------|
-| PrefixAnnouncementEvent |Információ|Előtag-hirdetmény érkezett|
+| PrefixAnnouncementEvent |Tájékoztatás|Előtag-hirdetmény érkezett|
 | PrefixWithdrawalEvent|Figyelmeztetés| Az előtag visszavonása megérkezett |
-| PrefixBackupRouteAnnouncementEvent |Információ|Az előtag biztonsági mentési útvonalának bejelentése megérkezett |
+| PrefixBackupRouteAnnouncementEvent |Tájékoztatás|Az előtag biztonsági mentési útvonalának bejelentése megérkezett |
 | PrefixBackupRouteWithdrawalEvent|Figyelmeztetés|Az előtag biztonsági mentési útvonalának visszavonása megérkezett |
-| PrefixActivePath |Információ| Aktuális előtag aktív útvonala   |
-| PrefixBackupPath | Információ|Aktuális előtag biztonsági mentési útvonala   |
+| PrefixActivePath |Tájékoztatás| Aktuális előtag aktív útvonala   |
+| PrefixBackupPath | Tájékoztatás|Aktuális előtag biztonsági mentési útvonala   |
 | PrefixOriginAsChangeEvent|Kritikus| Pontos előtag érkezett a különböző forrás autonóm rendszer számával (aktív útvonalhoz)| 
 | PrefixBackupRouteOriginAsChangeEvent  | Hiba|A különböző forrásként kapott előtag (biztonsági mentési útvonal)  |
 
