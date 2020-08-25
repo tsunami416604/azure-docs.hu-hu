@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816116"
+ms.locfileid: "88825256"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -49,7 +49,7 @@ Biztonsági mentések naponta (DPM/MABS-n keresztül) | Naponta két ütemezett 
 Havi/éves biztonsági mentés| Nem támogatott az Azure virtuálisgép-bővítménysel történő biztonsági mentés során. Csak naponta és hetente támogatott.<br/><br/> Beállíthatja a szabályzatot, hogy megőrizze a napi/heti biztonsági mentéseket a havi/éves megőrzési időszakra.
 Automatikus órajel-beállítás | Nem támogatott.<br/><br/> A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást a virtuális gép biztonsági mentésekor.<br/><br/>  Szükség szerint módosítsa manuálisan a szabályzatot.
 [Biztonsági funkciók a hibrid biztonsági mentéshez](./backup-azure-security-feature.md) |A biztonsági funkciók letiltása nem támogatott.
-Biztonsági másolat készítése arra a virtuális gépre, amelynek a gépi ideje módosult | Nem támogatott.<br/><br/> Ha a gép ideje a virtuális gép biztonsági mentésének engedélyezése után egy jövőbeli dátumra módosul. Ha azonban az idő változása visszaállt, a sikeres biztonsági mentés nem garantált.
+Biztonsági másolat készítése arra a virtuális gépre, amelynek a gépi ideje módosult | Nem támogatott.<br/><br/> Ha a gép ideje a virtuális gép biztonsági mentésének engedélyezése után egy későbbi dátumra változik, akkor is, ha az idő változása visszaállt, a sikeres biztonsági mentés nem garantált.
 Azure-beli [virtuális gépek a virtuálisgép-méretezési csoportokban](../virtual-machine-scale-sets/overview.md) | A biztonsági mentés és a visszaállítás támogatott olyan virtuális gépek esetén, amelyeknél a [hangszerelési mód](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) 3 értékre van beállítva. <br><br>A rendelkezésre állási készletek nem támogatottak.
 
 ## <a name="operating-system-support-windows"></a>Operációs rendszer támogatása (Windows)

@@ -3,12 +3,12 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756010"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827375"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -170,7 +170,7 @@ Miután a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet a
 
     >[!NOTE]
     >Ha saját SQL Server-kiszolgálót szeretne használni, a támogatott SQL Server verziók a következők: SQL Server 2014 SP1 vagy újabb, 2016 és 2017.  Minden SQL Server verziónak standard vagy Enterprise 64 bitesnek kell lennie.
-    >A Azure Backup Server távoli SQL Server példánnyal nem fog működni. A Azure Backup Server által használt példánynak helyinek kell lennie. Ha meglévő SQL Servert használ a MABS, a MABS telepítője csak az SQL Server *nevesített példányainak* használatát támogatja.
+    >Azure Backup Server nem fog működni egy távoli SQL Server-példánnyal. A Azure Backup Server által használt példánynak helyinek kell lennie. Ha meglévő SQL Servert használ a MABS, a MABS telepítője csak az SQL Server *nevesített példányainak* használatát támogatja.
 
     ![Azure Backup Server – SQL-vizsgálat](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -343,7 +343,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
    > [!NOTE]
    >
-   > Ne lépjen ki az SQL-példány frissítésekor, a kilépés eltávolítja az SQL jelentéskészítési példányt, így a MABS újrafrissítésére tett kísérlet sikertelen lesz.
+   > Ne lépjen ki az SQL-példány frissítése közben. A kilépés eltávolítja az SQL jelentéskészítési példányt, így a MABS újrafrissítésére tett kísérlet sikertelen lesz.
 
    > [!IMPORTANT]
    >
@@ -353,7 +353,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információ](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

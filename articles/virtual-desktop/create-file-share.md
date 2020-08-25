@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009222"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825443"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -33,9 +33,9 @@ Storage-fiók beállítása:
 
 2. Keresse meg a **Storage-fiókot** a keresősáv alatt.
 
-3. Válassza a **+ Hozzáadás**lehetőséget.
+3. Válassza a **+Hozzáadás** lehetőséget.
 
-4. Adja meg a következő információkat a **Storage-fiók létrehozása** lapon:
+4. Adja meg a következő információkat a  **Storage-fiók létrehozása** lapon:
 
     - Új erőforráscsoport létrehozása.
     - Adja meg a tárfiók egyedi nevét.
@@ -60,7 +60,7 @@ Fájlmegosztás létrehozása:
 
 3. Válassza a **+ fájlmegosztás**lehetőséget, hozzon létre egy új fájlmegosztási **profilt**, majd adjon meg egy megfelelő kvótát, vagy hagyja üresen a mezőt a kvóta nélkül.
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 ## <a name="enable-active-directory-authentication"></a>Active Directory hitelesítés engedélyezése
 
@@ -127,7 +127,7 @@ A következőképpen kérheti le az UNC elérési utat:
 
 5. Az URI másolása után végezze el a következő műveleteket az UNC-re való váltáshoz:
 
-    - Eltávolítás `https://` és csere a`\\`
+    - Eltávolítás `https://` és csere a `\\`
     - Cserélje le a Forward perjelet a `/` vissza perjelre `\` .
     - Adja hozzá az [Azure-fájlmegosztás létrehozása](#create-an-azure-file-share) az UNC végéhez létrehozott fájlmegosztás nevét.
 
@@ -151,15 +151,15 @@ Az NTFS-engedélyek konfigurálása:
 
 1. Nyisson meg egy parancssort egy tartományhoz csatlakoztatott virtuális gépen.
 
-2. Futtassa a következő parancsmagot az Azure-fájlmegosztás csatlakoztatásához, és rendeljen hozzá egy meghajtó-betűjelet: 
+2. A következő parancs futtatásával csatlakoztassa az Azure-fájlmegosztást, és rendeljen hozzá egy meghajtóbetűjelet:
 
-     ```powershell
+     ```cmd
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
      ```
 
-3. A következő parancsmag futtatásával tekintse át az Azure-fájlmegosztás hozzáférési engedélyeit:
+3. A következő parancs futtatásával tekintse át az Azure-fájlmegosztás hozzáférési engedélyeit:
 
-    ```powershell
+    ```cmd
     icacls <mounted-drive-letter>:
     ```
 
@@ -167,9 +167,9 @@ Az NTFS-engedélyek konfigurálása:
 
     Alapértelmezés szerint az *NT Authority\Authenticated-felhasználók* és a *BUILTIN\Users* is rendelkeznek bizonyos engedélyekkel. Ezek az alapértelmezett engedélyek lehetővé teszik, hogy ezek a felhasználók beolvassák a többi felhasználó profiljának tárolóit. A [tárolási engedélyek konfigurálása a profil tárolókkal és az Office-tárolókkal való használatra](/fslogix/fslogix-storage-config-ht) című témakörben ismertetett engedélyek azonban nem teszik lehetővé a felhasználók számára, hogy olvassák a többi profil tárolóját.
 
-4. A következő parancsmagok futtatásával engedélyezheti, hogy a Windows rendszerű virtuális asztali felhasználók saját profil tárolókat hozzanak létre, miközben blokkolja a más felhasználók profiljához való hozzáférést.
+4. A következő parancsok futtatásával engedélyezheti, hogy a Windows rendszerű virtuális asztali felhasználók saját profilt hozzanak létre, miközben blokkolja a más felhasználóktól származó profiljaik elérését.
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -181,7 +181,7 @@ Az NTFS-engedélyek konfigurálása:
 
      Például:
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007709"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825613"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
 
@@ -96,7 +96,7 @@ A Storage-fiók elérési kulcsának beszerzése:
 
 6. Amikor bejelentkezett a virtuális gépre, futtassa a parancssort rendszergazdaként.
 
-7. Futtassa az alábbi parancsot:
+7. Futtassa a következő parancsot:
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -113,19 +113,25 @@ A Storage-fiók elérési kulcsának beszerzése:
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. A következő parancs futtatásával teljes hozzáférést biztosíthat a felhasználónak a Azure Files megosztáshoz.
+8. A következő parancsok futtatásával engedélyezheti, hogy a Windows rendszerű virtuális asztali felhasználók saját profilt hozzanak létre, miközben blokkolja a más felhasználóktól származó profilok tárolóhoz való hozzáférést.
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - A helyére írja be annak a `<mounted-drive-letter>` meghajtónak a betűjelét, amelyet a felhasználó használni kíván.
-    - A helyére írja be annak a felhasználónak a felhasználónevét, `<user-email>` aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
+    - Cserélje le a `<mounted-drive-letter>` betűt arra a meghajtóra, amelyet a meghajtó leképezéséhez használt.
+    - A helyére írja be annak a `<user-email>` felhasználónak vagy Active Directory csoportnak az egyszerű felhasználónevét, amely a megosztáshoz való hozzáférést igénylő felhasználókat tartalmazza.
 
     Például:
 
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>Profiltároló létrehozása
