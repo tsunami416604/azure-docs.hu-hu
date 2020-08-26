@@ -2,19 +2,19 @@
 title: 'Gyorsútmutató: Adatok exportálása a Microsoft Azure Data Boxhoz'
 description: Megtudhatja, hogyan exportálhatja gyorsan az Azure Data Box adatait az Azure Portalon
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
 ms.date: 07/17/2020
-ms.author: v-grpr
+ms.author: twooley
 ms.localizationpriority: high
-ms.openlocfilehash: fbe14151845d19dd1d0f2a4069afb2badb125077
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 55366096a9eef7380ad8df855931c4d675973631
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122241"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783059"
 ---
 # <a name="quickstart-get-started-with-azure-data-box-to-export-data-from-azure"></a>Gyorsútmutató: Ismerkedés az Azure Data Boxszal az adatok Azure-ból való exportálásához
 

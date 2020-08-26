@@ -4,15 +4,16 @@ description: Ez a cikk segít a megvásárolni kívánt Azure-beli foglalás kiv
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759893"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684745"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>A megvásárolni kívánt foglalás kiválasztása
 
@@ -38,7 +39,7 @@ A jogosult virtuálisgép-használatok szűkítéséhez a következő szűrőket
 
 Hagyja figyelmen kívül a napi 24 óránál kevesebb használati idővel rendelkező erőforrásokat.
 
-Ha a példányméretet családi szinten szeretné elemezni, akkor a [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) oldalon elérheti a példányméret rugalmassági értékeit. Az elemzéshez vonja össze ezeket az értékeket az adataival. A példányok méretrugalmasságára vonatkozó további információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
+Ha a példányméretet családi szinten szeretné elemezni, akkor a [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) oldalon elérheti a példányméret rugalmassági értékeit. Az elemzéshez vonja össze ezeket az értékeket az adataival. A példányok méretrugalmasságára vonatkozó további információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/reserved-vm-instance-size-flexibility.md) ismertető cikket.
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Használat elemzése fenntartott Azure Synapse Analytics-példányok vásárlásához
 

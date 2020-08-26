@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271243"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891861"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -98,7 +98,7 @@ A OAuth 2,0 egy [iparági szabványnak](https://oauth.net/2/) megfelelő protoko
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2,0 vagy WS-fed
 
-Az SAML egy érett és széles körben elfogadott, egyszeri bejelentkezéses standard a webalkalmazásokhoz. Ha többet szeretne megtudni arról, hogy az Azure hogyan használja az SAML-t, tekintse meg, [hogyan használja az Azure az SAML protokollt](active-directory-saml-protocol-reference.md). 
+Az SAML egy érett és széles körben elfogadott, [egyszeri bejelentkezéses standard](https://www.oasis-open.org/standards#samlv2.0) a webalkalmazásokhoz. Ha többet szeretne megtudni arról, hogy az Azure hogyan használja az SAML-t, tekintse meg, [hogyan használja az Azure az SAML protokollt](active-directory-saml-protocol-reference.md). 
 
 A webszolgáltatások összevonása (WS-Fed) a .NET platformmal kifejlesztett webalkalmazásokhoz általánosan használt [iparági szabvány](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) .
 
@@ -135,7 +135,7 @@ Az egyes példák áttekintését lásd: [Microsoft Identity platform Code Sampl
 A Mobile-specifikus példák áttekintését lásd: 
 * [Android](quickstart-v2-android.md)
 * [iOS](quickstart-v2-ios.md)
-* [Univerzális Windows-platform](quickstart-v2-uwp.md)
+* [Universal Windows Platform](quickstart-v2-uwp.md)
 
 ### <a name="implement-saml-20"></a>SAML 2,0 implementálása
 
