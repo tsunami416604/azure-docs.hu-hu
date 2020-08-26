@@ -195,7 +195,7 @@
     - name: Áttekintés
       href: ../managed-disks-overview.md
     - name: GYIK
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: Tárerőforrások törlésekor jelentkező hibák
       href: storage-resource-deletion-errors.md
     - name: Klasszikus tárerőforrások törlésekor jelentkező hibák

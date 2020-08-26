@@ -41,6 +41,10 @@
           href: tutorial-alias-rr.md
 - name: Alapelvek
   items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Nyilvános DNS
       items:
         - name: Zónák és rekordok

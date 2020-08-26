@@ -297,7 +297,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot virtuális gépek
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
           href: ../azure-vms-no-temp-disk.md
         - name: Azure-beli virtuálisgép-méretek elnevezési konvenciói
@@ -984,15 +984,15 @@
             - name: Titkosítás engedélyezése a gazdagépen – CLI
               href: disks-enable-host-based-encryption-cli.md
             - name: Titkosítás engedélyezése a gazdagépen – Portal
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Felhasználó által kezelt kulcsok engedélyezése – CLI
               href: disks-enable-customer-managed-keys-cli.md
             - name: Felhasználó által kezelt kulcsok engedélyezése – Portal
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Inaktív állapotban történő kettős adattitkosítás engedélyezése – CLI
               href: disks-enable-double-encryption-at-rest-cli.md
             - name: Inaktív állapotban történő kettős adattitkosítás engedélyezése – Portal
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Migrálás és átalakítás
           items:
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
@@ -1024,7 +1024,7 @@
         - name: Fájltároló használata
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: Lemezek – Gyakori kérdések
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Hálózatkezelés felügyelete
       items:
         - name: Virtuális hálózat létrehozása

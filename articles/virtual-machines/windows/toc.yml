@@ -282,7 +282,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot virtuális gépek
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
           href: ../azure-vms-no-temp-disk.md
         - name: Azure-beli virtuálisgép-méretek elnevezési konvenciói
@@ -879,15 +879,15 @@
             - name: Titkosítás engedélyezése a gazdagépen – PowerShell
               href: disks-enable-host-based-encryption-powershell.md
             - name: Titkosítás engedélyezése a gazdagépen – Portal
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Felhasználó által kezelt kulcsok engedélyezése – PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: Felhasználó által kezelt kulcsok engedélyezése – Portal
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Inaktív állapotban történő dupla adattitkosítás engedélyezése
               href: disks-enable-double-encryption-at-rest-powershell.md
             - name: Inaktív állapotban történő kettős adattitkosítás engedélyezése – Portal
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Migrálás és átalakítás
           items:
             - name: Lemez konvertálása a standard és a prémium szint között
@@ -911,7 +911,7 @@
         - name: Nem csatlakoztatott lemezek keresése – portál
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Lemezek – Gyakori kérdések
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Hálózatkezelés felügyelete
       href: ps-common-network-ref.md
       items:

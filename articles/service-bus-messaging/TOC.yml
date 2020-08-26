@@ -117,6 +117,8 @@
           href: network-security.md
 - name: Útmutatók
   items:
+    - name: Áthelyezés régiók között
+      href: move-across-regions.md
     - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
       href: deprecate-service-bus-management.md
     - name: Névtér létrehozása
