@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00219dbebb8e84c21b9e5b84cf71309c63fc518e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589367"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855964"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -39,18 +39,19 @@ Először is vegye fel a következő csomagokat a projektbe a .NET SDK és a hit
 
 A választott eszközöktől függően a Visual Studio Package Managerrel vagy a parancssori eszközzel is megadhatja a csomagokat `dotnet` . 
 
-A .NET SDK-val történő hitelesítéshez használja az [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) könyvtárban definiált hitelesítő adatok beszerzésére szolgáló metódusok egyikét.
-
-Az alábbi két módszer általában használatban van: 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet). Ez a módszer interaktív alkalmazások számára készült, és a rendszer egy webböngészőt hoz létre a hitelesítéshez.
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet). Ez a módszer nagyban használható olyan esetekben, ahol [felügyelt identitásokra (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)van szükség – például a Azure functions használatakor. 
-
 A következő utasításokra is szüksége lesz:
 
 ```csharp
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
+A .NET SDK-val történő hitelesítéshez használja az [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) könyvtárban definiált hitelesítő adatok beszerzésére szolgáló metódusok egyikét. Az alábbi két módszer általában használatban van (még ugyanabban az alkalmazásban együtt):
+
+* A [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) interaktív alkalmazásokhoz készült, és használható egy hitelesített SDK-ügyfél létrehozásához.
+* A [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) remekül működik olyan esetekben, amikor felügyelt identitásokat (MSI) kell használnia, és jó választás a Azure functions
+
+### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential metódus
+Az [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódus interaktív alkalmazásokhoz készült, és egy webböngészőt hoz létre a hitelesítéshez.
 
 Ha egy hitelesített SDK-ügyfél létrehozásához az interaktív böngésző hitelesítő adatait szeretné használni, adja hozzá a következő kódot:
 
@@ -79,6 +80,8 @@ try
 >[!NOTE]
 > Habár az ügyfél-azonosító, a bérlői azonosító és a példány URL-címét közvetlenül a programkódba helyezheti a fentiekben látható módon, érdemes lehet a programkódot egy konfigurációs fájlból vagy környezeti változóból is beolvasni.
 
+### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential metódus
+ A [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) metódus nagyban működik olyan esetekben, ahol [felügyelt identitásokra (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)van szükség – például a Azure functions használatakor.
 Az Azure-függvényekben a felügyelt identitás hitelesítő adatait használhatja a következőhöz hasonló módon:
 
 ```csharp

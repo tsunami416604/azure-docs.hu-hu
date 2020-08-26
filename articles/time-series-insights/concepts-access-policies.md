@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531424"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856111"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Az adathozzáférés biztosítása egy környezethez
 
@@ -64,7 +64,7 @@ A `Guest` szerepkör nem felügyeleti szerepkör. Ez egy olyan fiók, amelyet az
 
 Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani egy Azure Time Series Insights-környezethez egy másik bérlő Azure AD-felhasználója számára.
 
-1. Lépjen a Azure Portal, majd a **Azure Active Directory**elemre, görgessen le az **Áttekintés** lapon, majd válassza a **vendég felhasználó**lehetőséget.
+1. Lépjen a Azure Portal, majd a  **Azure Active Directory**elemre, görgessen le az **Áttekintés** lapon, majd válassza a **vendég felhasználó**lehetőséget.
 
     [![Válassza az Adathozzáférési házirendek, majd a + meghívás lehetőséget.](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
@@ -106,7 +106,7 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
 1. A rendszergazda [megosztja a környezet URL-címét](time-series-insights-parameterized-urls.md) a vendégük számára.
 
-1. Miután bejelentkezett a vendég felhasználó a meghívni kívánt e-mail-címre, és elfogadják a meghívót, a rendszer átirányítja Azure Portalra. 
+1. Miután bejelentkezett a vendég felhasználó a meghívni kívánt e-mail-címre, és elfogadják a meghívót, a rendszer átirányítja Azure Portalra.
 
 1. A vendég most már hozzáférhet a megosztott környezethez a rendszergazda által biztosított környezeti URL-címmel. Az URL-címet megadhatják a böngészőjében azonnali hozzáférés céljából.
 
@@ -114,14 +114,14 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
     [![Avatár kiválasztása a insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    Miután a vendég felhasználó kiválasztja a rendszergazda bérlőjét, kiválaszthatja a megosztott Azure Time Series Insights környezetet.
 
-    Miután a vendég felhasználó kiválasztja a rendszergazda bérlőjét, kiválaszthatja a megosztott Azure Time Series Insights környezetet. 
-    
     Most már az **5. lépésben**megadott szerepkörhöz tartozó összes képességgel rendelkeznek.
 
     [![A vendég felhasználó kiválasztja az Azure-bérlőt a legördülő menüből](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 * Olvasási [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md) Azure Active Directory alkalmazás regisztrációs lépéseihez.
 
-* Tekintse [meg a környezetet a Azure Time Series Insights Gen2 Explorerben](./time-series-insights-update-explorer.md).
+* Tekintse [meg a környezetet a Azure Time Series INSIGHTS ÁME Explorerben](./time-series-insights-update-explorer.md).

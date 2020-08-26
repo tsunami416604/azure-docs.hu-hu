@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587562"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855882"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -63,7 +63,7 @@ A Date Plant API-kat a [CLI](how-to-use-cli.md)használatával is használhatja 
 Az Azure Digital Twins .NET (C#) SDK része a .NET-hez készült Azure SDK-nak. Nyílt forráskódú, és az Azure Digital Twins adatsíkja API-jai alapján érhető el.
 
 > [!NOTE]
-> Az SDK kialakításával kapcsolatos részletes információkért tekintse meg az Azure SDK-k általános [tervezési alapelveit](https://azure.github.io/azure-sdk/general_introduction.html) és az adott [.net tervezési irányelveket](https://azure.github.io/azure-sdk/dotnet_introduction.html).
+> Az SDK kialakításával kapcsolatos további információkért tekintse meg az Azure SDK-k általános [tervezési alapelveit](https://azure.github.io/azure-sdk/general_introduction.html) és az adott [.net tervezési irányelveket](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
 Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csomagot a projektbe. Szüksége lesz az **Azure. Identity** csomagra is (1.1.1-es verzió).
 
@@ -143,7 +143,7 @@ További mintákat is talál a GitHub-tárházban a [.net (C#) SDK](https://gith
 
 #### <a name="serialization-helpers"></a>Szerializálási segítők
 
-A korábban leírtaknak megfelelően az alapszintű SDK-metódusok a Twin-et JSON-ként adják vissza. Az SDK azonban a szerializálás segítő osztályait is tartalmazza. Ezek a segítő függvények lehetővé teszik a Twin adatok gyors létrehozását vagy deszerializálását az alapvető információk eléréséhez.
+A szerializáló segítői az SDK-n belül elérhető segítő függvények, amelyek lehetővé teszik a Twin adatok gyors létrehozását vagy deszerializálását az alapvető információk eléréséhez. Mivel az alapszintű SDK-metódusok alapértelmezés szerint a következő két értéket adják vissza JSON-ként, hasznos lehet ezeket a segítő osztályokat használni a Twin-adatsorok további bontásához.
 
 Az elérhető segítő osztályok a következők:
 * `BasicDigitalTwin`: A digitális iker alapértékeit jelöli
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>Kapcsolat létrehozása
 
-A (z) osztály használatával létrehozhatók `BasicDigitalTwin` olyan kapcsolatok, amelyekkel kapcsolat hozható létre egy kettős példányon:
+A (z) osztály használatával létrehozhatók `BasicRelationship` olyan kapcsolatok, amelyekkel kapcsolat hozható létre egy kettős példányon:
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

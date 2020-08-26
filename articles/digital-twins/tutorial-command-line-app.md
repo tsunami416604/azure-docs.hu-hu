@@ -1,5 +1,5 @@
 ---
-title: Az alapok megismerése egy minta-ügyfélalkalmazással
+title: 'Oktatóanyag: az alapok megismerése egy minta ügyfélalkalmazás alkalmazásával'
 titleSuffix: Azure Digital Twins
 description: Oktatóanyag az Azure digitális Twins SDK-k megismeréséhez egy minta parancssori alkalmazás használatával
 author: baanders
@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 58013ba84e1ede36ed54284af4d20b943d63436f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986271"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855856"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Ismerje meg az Azure Digital Twins-t egy minta ügyfélalkalmazás alkalmazásával
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
 Ez az oktatóanyag egy olyan minta alkalmazást vezet be, amely egy parancssori ügyfélalkalmazás megvalósítását teszi lehetővé egy Azure digitális Twins-példánnyal való interakcióhoz. Az ügyfélalkalmazás hasonló az [*oktatóanyagban írt útmutatóhoz: az ügyfélalkalmazás kódolása*](tutorial-code.md).
 
@@ -283,7 +283,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
 * Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.
@@ -314,12 +314,5 @@ Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 
 Folytassa a következő oktatóanyaggal, amely a minta parancssori alkalmazást más Azure-szolgáltatásokkal együtt használja egy adatvezérelt, végpontok közötti forgatókönyv végrehajtásához:
-
 > [!div class="nextstepaction"]
 > [*Oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)
-
-Vagy tekintse meg a koncepció dokumentációját, ahol további információt talál az oktatóanyagban használt elemekről:
-* [*Fogalmak: egyéni modellek*](concepts-models.md)
-
-Az oktatóanyag folyamatairól részletesebben is tájékozódhat a következő útmutatók elindításával:
-* [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)

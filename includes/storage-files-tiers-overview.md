@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 24f92443acddb17c0a2d337f51dbf9183996c49f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62c2193a0045cc2ee35930e87b360446e94ba861
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520522"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864782"
 ---
 A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós optimalizált, a gyakori és a ritka elérésű csomagokat, hogy lehetővé tegye a megosztások testreszabását a forgatókönyv teljesítményére és árára vonatkozó követelmények szerint:
 
@@ -32,7 +32,22 @@ A gyakori és ritka elérésű fájlmegosztás jelenleg a nyilvános régiók k�
 - Délkelet-Ausztrália
 - Közép-Franciaország
 - Dél-Franciaország
+- Észak-Németország (nyilvános)
+- Középnyugat-Németország (nyilvános)
+- Közép-India
+- Dél-India
+- Nyugat-India
+- Kelet-Japán
+- Nyugat-Japán
 - Dél-Korea középső régiója
 - Dél-Korea déli régiója
+- Kelet-Norvégia
+- Norvégia nyugati régiója
+- Dél-Afrika északi régiója
+- Dél-Afrika nyugati régiója
+- UAE középső régiója
+- Észak-Egyesült Arab
+- Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
 
 A gyakori vagy ritka elérésű fájlmegosztás üzembe helyezésével kapcsolatban lásd: [gyors vagy lassú fájlmegosztás létrehozása](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513139"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855920"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 
@@ -33,7 +33,7 @@ Először is fontos megérteni az adatsík és a felügyeleti sík-műveletek k�
 
 Az adatsík a klasszikus üzembe helyezési modell és a Resource Manager-verem között azonos. A különbség az, hogy az áttelepítési folyamat során a Microsoft lefordítja az erőforrások ábrázolását a klasszikus üzemi modellből a Resource Manager-verembe. Ennek eredményeképpen új eszközöket, API-kat és SDK-kat kell használnia az erőforrások kezeléséhez a Resource Manager-veremben.
 
-![A felügyelet/vezérlési sík és az adatsík közötti különbséget bemutató diagram](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![A felügyelet/vezérlési sík és az adatsík közötti különbséget bemutató diagram](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Az áttelepítés megkezdése előtt:
 
 Az áttelepítési munkafolyamat a következő:
 
-![Az áttelepítési munkafolyamatot bemutató diagram](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Az áttelepítési munkafolyamatot bemutató diagram](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > A következő szakaszokban ismertetett műveletek mindegyike idempotens. Ha a nem támogatott funkció vagy a konfigurációs hiba nem a megfelelő hibával rendelkezik, próbálkozzon újra az előkészítési, a megszakítási vagy a végrehajtási művelettel. Az Azure újra próbálkozik a művelettel.
@@ -94,17 +94,17 @@ Az Azure ezután elindítja a metaadatok áttelepítését a klasszikus üzemi m
 Az előkészítési művelet befejezése után lehetősége van arra, hogy a klasszikus üzemi modellben és a Resource Managerben is megjelenítse az erőforrásokat. Az Azure platform a klasszikus üzemi modellben minden egyes felhőszolgáltatáshoz létrehoz egy erőforráscsoport-nevet a következő mintának megfelelően: `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Nem lehet kijelölni az áttelepített erőforrásokhoz létrehozott erőforráscsoport nevét (azaz "-Migrálva"). Az áttelepítés befejezése után azonban a Azure Resource Manager áthelyezés funkciójával áthelyezheti az erőforrásokat bármely olyan erőforráscsoporthoz, amelyet használni szeretne. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](~/articles/resource-group-move-resources.md).
+> Nem lehet kijelölni az áttelepített erőforrásokhoz létrehozott erőforráscsoport nevét (azaz "-Migrálva"). Az áttelepítés befejezése után azonban a Azure Resource Manager áthelyezés funkciójával áthelyezheti az erőforrásokat bármely olyan erőforráscsoporthoz, amelyet használni szeretne. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Az alábbi két képernyőkép a sikeres előkészítési művelet utáni eredményt mutatja. Az első egy olyan erőforráscsoportot mutat be, amely az eredeti Cloud Service-t tartalmazza. A második az új "áttelepített" erőforráscsoportot mutatja, amely az egyenértékű Azure Resource Manager erőforrásokat tartalmazza.
 
-![Az eredeti Cloud Service-t bemutató képernyőkép](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Az eredeti Cloud Service-t bemutató képernyőkép](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![Az előkészítési művelet Azure Resource Manager erőforrásait bemutató képernyőkép](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Az előkészítési művelet Azure Resource Manager erőforrásait bemutató képernyőkép](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 A mögöttes jeleneteket az előkészítési fázis befejezése után tekintheti meg az erőforrások között. Vegye figyelembe, hogy az adatsíkon lévő erőforrás ugyanaz. Ez a felügyeleti síkon (a klasszikus üzemi modellben) és a vezérlési síkon (Resource Manager) egyaránt képviselteti magát.
 
-![Az előkészítési fázis ábrája](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Az előkészítési fázis ábrája](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > A klasszikus üzemi modellben nem virtuális hálózatban lévő virtuális gépek leállnak és fel lesznek foglalva az áttelepítés ezen fázisában.
@@ -124,7 +124,7 @@ Ha bármilyen problémát észlel, mindig megszakíthatja a migrálást, és vis
 ### <a name="abort"></a>Megszakítás
 Ez egy nem kötelező lépés, ha a módosításokat a klasszikus üzemi modellre kívánja visszaállítani, és le szeretné állítani az áttelepítést. Ez a művelet törli az erőforrásokhoz tartozó Resource Manager-metaadatokat (az előkészítési lépésben létrehozva). 
 
-![Megszakítási lépés diagramja](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Megszakítási lépés diagramja](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,18 +139,18 @@ Az ellenőrzés befejezése után véglegesítheti a migrálást. Az erőforrás
 >
 >
 
-![A véglegesítő lépés ábrája](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![A véglegesítő lépés ábrája](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Áttelepítési folyamatábra
 
 Az alábbi folyamatábra bemutatja, hogyan folytathatja az áttelepítést:
 
-![Képernyőkép a migrálási lépésekről](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Képernyőkép a migrálási lépésekről](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>A klasszikus üzembe helyezési modell fordítása Resource Manager-erőforrásokra
 A következő táblázatban található erőforrások klasszikus üzemi modelljét és erőforrás-kezelői képviseleteit találhatja meg. Az egyéb szolgáltatások és erőforrások jelenleg nem támogatottak.
 
-| Klasszikus ábrázolás | Resource Manager-ábrázolás | Megjegyzések |
+| Klasszikus ábrázolás | Resource Manager-ábrázolás | Jegyzetek |
 | --- | --- | --- |
 | Felhőszolgáltatás neve |DNS-név |A migrálás során minden felhőszolgáltatáshoz egy új erőforráscsoport jön létre a következő elnevezési mintának megfelelően: `<cloudservicename>-migrated`. Ez az erőforráscsoport tartalmazza az összes erőforrást. A felhőszolgáltatás egy DNS-névvé alakul, amely a nyilvános IP-címhez van társítva. |
 | Virtuális gép |Virtuális gép |A virtuális gépre jellemző tulajdonságok a migrálás során nem változnak. Bizonyos osProfile-információk, például a számítógépnév nem a klasszikus üzemi modellben tárolódnak, és az áttelepítés után üresek maradnak. |

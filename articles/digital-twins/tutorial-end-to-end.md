@@ -1,5 +1,5 @@
 ---
-title: Teljes körű megoldás csatlakoztatása
+title: 'Oktatóanyag: végpontok közötti megoldás összekötése'
 titleSuffix: Azure Digital Twins
 description: Oktatóanyag egy teljes körű Azure digitális Twins-megoldás kiépítéséhez, amelyet az eszközön tárolt adatszolgáltatások vezéreltek.
 author: baanders
@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f4155c479151c5af64049e0cf9a6a1c4dc4a553
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827331"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855906"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>Hozzon létre egy végpontok közötti megoldást
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
 A környezetből származó élő adatok teljes körű megoldásának beállításához az Azure Digital Twins-példányát más Azure-szolgáltatásokhoz is összeállíthatja az eszközök és adatok kezeléséhez.
 
@@ -429,7 +429,7 @@ Itt látható az oktatóanyagban kiépített forgatókönyv áttekintése.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
@@ -450,12 +450,10 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 
 Ezután tekintse meg a koncepció dokumentációját, ahol további információt talál az oktatóanyagban használt elemekről:
-* [*Fogalmak: egyéni modellek*](concepts-models.md)
-
-Vagy részletesebben is megtudhatja az oktatóanyag folyamatait az útmutató cikkeinek elindításával:
-* [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> [*Fogalmak: egyéni modellek*](concepts-models.md)

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829679"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856015"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -40,6 +40,9 @@ Az oktatóanyag elvégzéséhez:
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-new-dashboard"></a>Új irányítópult létrehozása
+> [!WARNING]
+> Ha áthelyezi az Application ininsight-erőforrást egy másik erőforráscsoporthoz vagy előfizetésbe, manuálisan kell frissítenie az irányítópultot, ha eltávolítja a régi csempéket, és új csempéket szeretne kijelölni ugyanabból az Application-betekintő erőforrásból az új helyen. 
+
 Egyazon irányítópult több alkalmazáshoz, erőforráscsoporthoz és előfizetéshez tartozó erőforrásokat is tartalmazhat.  Az oktatóanyag első lépéseként hozzon létre egy új irányítópultot az alkalmazásához.  
 
 1. Az irányítópult ablaktáblán válassza az **új irányítópult**lehetőséget.
@@ -126,7 +129,7 @@ Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló 
 5. Válassza a **megosztás** lehetőséget, ha újra közzé szeretné tenni a módosításokat az irányítópulton, amely mostantól számos diagramot és vizualizációt tartalmaz a Application Insightsból.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekintse át az Application Insights dokumentációját, amely egy esettanulmányt is tartalmaz.
 
 > [!div class="nextstepaction"]

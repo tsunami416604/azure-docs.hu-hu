@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 34f972624d1b7dd56fd6271baeaa855627eb870c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1c24eba79c26c4540e9d97a3e2b6646fd0b5439c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752973"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864890"
 ---
 > [!IMPORTANT]
 > * Az űrlap-felismerő SDK jelenleg a from felismerő szolgáltatás v 2.0-s verzióját célozza meg.
@@ -66,6 +66,8 @@ Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
 
 ## <a name="object-model"></a>Objektummodell 
 
+Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első az, `FormRecognizerClient` hogy a szolgáltatás lekérdezését felismerő űrlapmezők és tartalom használatával kérdezi le. A második a `FormTrainingClient` használatával egyéni modelleket hozhat létre és kezelhet, amelyeket az elismerés javítása érdekében használhat. 
+
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `FormRecognizerClient` a következő műveleteit biztosítja:
 
@@ -76,12 +78,12 @@ Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `FormTrainingClient` a következő műveleteit biztosítja:
 
-* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték felismeréséhez. A `CustomFormModel` visszatérési értéke jelzi, hogy a modell milyen típusú adattípusokat fog felismerni, és hogy milyen mezőket kell kibontania az egyes űrlapok típusaihoz. A betanítási adatkészletek létrehozásával kapcsolatos részletesebb magyarázatért tekintse meg a [szolgáltatás dokumentációját a címke nélküli modell betanítása] [fr-Train-No-labels] című témakört.
-* Egyéni modellek betanítása az egyéni űrlapok címkézésével megadott mezők és értékek felismeréséhez. A `CustomFormModel` visszaadja a modell által kinyert mezőket, valamint az egyes mezők becsült pontosságát. Tekintse meg a [szolgáltatás dokumentációját a modell betanítása című témakörben] [fr-Train-with-labels] részletesebb magyarázatot a címkék a betanítási adatkészletre való alkalmazásáról.
+* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték felismeréséhez. A `CustomFormModel` visszatérési értéke jelzi, hogy a modell milyen típusú adattípusokat fog felismerni, és hogy milyen mezőket kell kibontania az egyes űrlapok típusaihoz. A betanítási adatkészletek létrehozásával kapcsolatos részletesebb magyarázatért tekintse [meg a szolgáltatás dokumentációját a címke nélküli modell betanításához](#train-a-model-without-labels) .
+* Egyéni modellek betanítása az egyéni űrlapok címkézésével megadott mezők és értékek felismeréséhez. A `CustomFormModel` visszaadja a modell által kinyert mezőket, valamint az egyes mezők becsült pontosságát. Tekintse [meg a szolgáltatás dokumentációját a modell betanítása](#train-a-model-with-labels) című témakörben, amely részletesebben ismerteti a címkék egy betanítási adatkészletbe való alkalmazásának részletes ismertetését.
 * A fiókban létrehozott modellek kezelése.
 * Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
 
-Vegye figyelembe, hogy a modelleket grafikus felhasználói felülettel is ki lehet képezni, például az [űrlap felismerő címkézési eszköz] [ https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool ].
+Vegye figyelembe, hogy a modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -256,7 +258,7 @@ A következő függvény egy modellt hoz létre egy adott dokumentumon, és kií
 ```javascript
 async function trainModel() {
 
-    const containerSasUrl = "https://formtraningiron.blob.core.windows.net/form-training-data";
+    const containerSasUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
     const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
     const poller = await trainingClient.beginTraining(containerSasUrl, false, {
@@ -342,7 +344,7 @@ Egyéni modelleket is betaníthat, ha manuálisan címkézi a betanítási dokum
 ```javascript
 async function trainModelLabels() {
 
-    const containerSasUrl = "https://formtraningiron.blob.core.windows.net/form-training-data";
+    const containerSasUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
     const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
 
     const poller = await trainingClient.beginTraining(containerSasUrl, true, {

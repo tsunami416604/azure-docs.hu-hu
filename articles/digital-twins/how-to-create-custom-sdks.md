@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a93e0b6d29bb10e5e71f48134916cac9cd563fb2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420039"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855951"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
@@ -27,7 +27,7 @@ Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett a
 Az SDK létrehozásához a következőkre lesz szüksége:
 * Az [autorest](https://github.com/Azure/autorest), a Version 2.0.4413 (3-as verzió jelenleg nem támogatott)
 * [Node.js](https://nodejs.org) az autorest előfeltétele
-* Az Azure Digital Twins [adatsíkon Felhencegő (OpenAPI) fájl](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) , amely *adigitaltwins.js*, és a hozzá tartozó, a példákhoz kapcsolódó mappa. Töltse le a hencegő fájlt és a hozzá tartozó mappát a helyi gépre.
+* Az Azure Digital Twins [adatsíkon Felhencegő (OpenAPI) fájl](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) , amely * adigitaltwins.js*, és a hozzá tartozó, a példákhoz kapcsolódó mappa. Töltse le a hencegő fájlt és a hozzá tartozó mappát a helyi gépre.
 
 Ha a gép a fenti listából mindent megtesz, készen áll az autorest használatára az SDK létrehozásához.
 
@@ -41,10 +41,10 @@ npm install -g autorest@2.0.4413
 Az Azure digitális Twins hencegő fájlján az autorest futtatásához kövesse az alábbi lépéseket:
 1. Másolja az Azure digitális Twins hencegő fájlját és a hozzá tartozó kapcsolódó mappát egy munkakönyvtárba.
 2. Egy parancssori ablak használatával váltson át erre a munkakönyvtárra.
-3. Futtassa az autorest parancsot a következő paranccsal. Cserélje le a `<language>` helyőrzőt az Ön által választott nyelvre: `--python` ,, `--java` `--go` stb. (A beállítások teljes listáját megtalálja az [Autorest README fájlban](https://github.com/Azure/autorest).)
+3. Futtassa az autorest parancsot a következő paranccsal. Cserélje le a `<language>` helyőrzőt az Ön által választott nyelvre: `python` ,, `java` `go` stb. (A beállítások teljes listáját megtalálja az [Autorest README fájlban](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
 Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi*lesznek. Ezt a névteret továbbra is használhatja a jelen cikkben található használati példákban.
@@ -83,7 +83,7 @@ Most már felépítheti a projektet, és felhasználhatja azt projekt-referenci�
 
 ## <a name="general-guidelines-for-generated-sdks"></a>A generált SDK-k általános iránymutatásai
 
-Ez a szakasz a generált SDK használatával kapcsolatos általános információkat és útmutatásokat tartalmazza.
+Ez a szakasz a generált SDK használatának általános információit és irányelveit tartalmazza.
 
 ### <a name="synchronous-and-asynchronous-calls"></a>Szinkron és aszinkron hívások
 
@@ -189,7 +189,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

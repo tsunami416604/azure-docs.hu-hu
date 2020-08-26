@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135810"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855795"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -123,31 +123,17 @@ A NAT működését a Azure Monitorban elérhető többdimenziós metrikák hasz
 
 Általánosan elérhető a NAT-adatelérési út legalább 99,9%-os rendelkezésre állású.
 
-
 ## <a name="pricing"></a>Díjszabás
 
-A NAT-átjáró számlázása két külön mérőszámmal történik:
-
-| Mérő | Rate (Egységár) |
-| --- | --- |
-| Erőforrás-órák | $0.045/óra |
-| Feldolgozott adatfeldolgozás | $0.045/GB |
-
-Az erőforrás-órák a NAT-átjáró erőforrásának időtartama alatt.
-Az adatok feldolgozott fiókjai a NAT-átjáró erőforrásai által feldolgozott összes forgalomhoz.
+A díjszabással kapcsolatos részletekért tekintse meg a [Virtual Network díjszabását](https://azure.microsoft.com/pricing/details/virtual-network).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Virtual Network NAT és a NAT-átjáró erőforrás az összes Azure-beli nyilvános felhő- [régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
-
-## <a name="support"></a>Támogatás
-
-A NAT a normál támogatási csatornákon keresztül támogatott.
+Virtual Network NAT és a NAT-átjáró erőforrás az összes Azure-beli felhő [régiójának](https://azure.microsoft.com/global-infrastructure/regions/)összes régiójában elérhető.
 
 ## <a name="suggestions"></a>Javaslatok
 
 Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szavazzon arra, hogy mi a következő lépés a [NAT-UserVoice](https://aka.ms/natuservoice).
-
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -155,7 +141,7 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
 * Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
 * A NAT nem tud több virtuális hálózatot kifogni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).

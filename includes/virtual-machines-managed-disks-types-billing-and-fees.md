@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 335b2f345cbebc55ad7ddd60487cfd17288d547d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c0627dd0833e3b20468eb5f50fbeb9fd9d9ae2b3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88704078"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864729"
 ---
 **Kimenő**adatforgalom: a [kimenő](https://azure.microsoft.com/pricing/details/bandwidth/) adatforgalom (az Azure-adatközpontok által kiváltott adatok) a sávszélesség-használatért kell fizetnie.
 
@@ -26,7 +26,7 @@ A Managed Disks díjszabásáról, beleértve a tranzakciós költségeket is, t
 Az Azure-beli virtuális gépek képesek jelezni, hogy kompatibilisek-e az ultra Disks szolgáltatással. Az ultra Disk-kompatibilis virtuális gépek dedikált sávszélesség-kapacitást foglalnak magukban a számítási virtuálisgép-példány és a blokk tárolási méretezési egység között a teljesítmény optimalizálása és a késés csökkentése érdekében. Ha ezt a képességet hozzáadja a virtuális géphez, a foglalási díjat csak akkor számítjuk fel, ha a virtuális gépen engedélyezte az ultra Disk képességet, anélkül, hogy az eszközhöz hozzá kellene csatlakoztatni. Ha Ultra lemez van csatlakoztatva az ultra Disk-kompatibilis virtuális géphez, ez a díj nem lesz alkalmazva. Ez a díj a virtuális gép által kiosztott vCPU. 
 
 > [!Note]
-> A [korlátozott alapszintű](~/articles/virtual-machines/constrained-vcpu.md)virtuálisgép-méretek esetében a foglalás díja a vCPU tényleges számától, és nem a korlátozott magoktól függ. Standard_E32-8s_v3 esetén a foglalás díja 32 mag lesz. 
+> A [korlátozott alapszintű](../articles/virtual-machines/constrained-vcpu.md)virtuálisgép-méretek esetében a foglalás díja a vCPU tényleges számától, és nem a korlátozott magoktól függ. Standard_E32-8s_v3 esetén a foglalás díja 32 mag lesz. 
 
 Az ultra Disk díjszabásáról az [Azure Disks díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/managed-disks/) tájékozódhat.
 

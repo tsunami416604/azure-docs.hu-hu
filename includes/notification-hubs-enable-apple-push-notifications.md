@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81007831"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864865"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítvány-aláírási kérelem fájljának előállítása
 
@@ -95,7 +95,7 @@ Az újabb megközelítés számos előnnyel jár (a tanúsítványok használata
     Megjelenik az **új tanúsítvány létrehozása** képernyő.
 
     > [!NOTE]
-    > Ez az oktatóprogram fejlesztési tanúsítványt használ. Ugyanez a folyamat használatos a termelési tanúsítvány regisztrálásához is. Csak arra ügyeljen, hogy ugyanazt a tanúsítványtípust használja az értesítések küldéséhez.
+    > Ez az oktatóanyag egy fejlesztési tanúsítványt használ, amelyet az alkalmazás használ egy egyedi eszköz-jogkivonat létrehozásához. Ugyanez a folyamat használatos a termelési tanúsítvány regisztrálásához is. Csak arra ügyeljen, hogy ugyanazt a tanúsítványtípust használja az értesítések küldéséhez.
 
 3. Válassza a **fájl kiválasztása**elemet, keresse meg azt a helyet, AHOVÁ a CSR-fájlt mentette az első feladatból, majd kattintson duplán a tanúsítvány nevére a betöltéshez. Ezután válassza a **Folytatás** elemet.
 
@@ -183,7 +183,7 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
     2. A **szoftver** szakaszban válassza az **Apple Development**elemet. Ezután válassza a **Folytatás** elemet.
     3. Az **új tanúsítvány létrehozása** képernyőn válassza a **fájl kiválasztása**lehetőséget.
     4. Keresse meg a korábban létrehozott **tanúsítvány-aláírási kérelem** tanúsítványát, jelölje ki, majd kattintson a **Megnyitás**gombra.
-    5. Válassza a **Folytatás** elemet.
+    5. Válassza a **Folytatás**lehetőséget.
     6. Töltse le a fejlesztési tanúsítványt, és jegyezze meg a helyet, ahová a rendszer mentette.
 
 1. Térjen vissza a **tanúsítványok, azonosítók & profilok** lapra, válassza a bal oldali menüben a **profilok** lehetőséget, majd válassza **+** az új profil létrehozása lehetőséget. Megjelenik az **új létesítési Profil regisztrálása** képernyő.
@@ -211,7 +211,7 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
 A **Notification Services**alatt válassza az **Apple (APNS)** lehetőséget, majd kövesse a megfelelő lépéseket a [tanúsítvány létrehozása Notification Hubs](#creating-a-certificate-for-notification-hubs) szakaszban korábban kiválasztott megközelítés alapján.  
 
 > [!NOTE]
-> Csak akkor használja az **éles** **alkalmazási módot** , ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak.
+> Ha App Store-beli vagy alkalmi terjesztési profillal hozza létre az alkalmazást, használja az **éles** **alkalmazás módot**. Ezzel lehetővé válik, hogy az eszköz leküldéses értesítéseket küldjön az alkalmazást az áruházból megvásárolt felhasználóknak.
 
 ### <a name="option-1-using-a-p12-push-certificate"></a>1. lehetőség:. P12 leküldéses tanúsítvány használata
 

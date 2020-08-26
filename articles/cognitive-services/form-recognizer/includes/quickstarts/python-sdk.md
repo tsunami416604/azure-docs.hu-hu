@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/21/2020
 ms.author: pafarley
-ms.openlocfilehash: b7ee606ab17171c5f2fcf20d94ff18de8b05b773
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b178a0b347888f22d9a3c0ee88a203e377cb15be
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753003"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864927"
 ---
 > [!IMPORTANT]
 > * Az űrlap-felismerő SDK jelenleg a from felismerő szolgáltatás v 2.0-s verzióját célozza meg.
@@ -30,6 +30,27 @@ ms.locfileid: "88753003"
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
     * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+
+## <a name="object-model"></a>Objektummodell 
+
+Az űrlap-felismerő használatával két különböző típusú ügyfél hozható létre. Az első az, `form_recognizer_client` hogy a szolgáltatás lekérdezését felismerő űrlapmezők és tartalom használatával kérdezi le. A második a `form_training_client` használatával egyéni modelleket hozhat létre és kezelhet, amelyeket az elismerés javítása érdekében használhat. 
+
+### <a name="formrecognizerclient"></a>FormRecognizerClient
+`form_recognizer_client` a következő műveleteit biztosítja:
+
+ * Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok felismerése céljából betanított egyéni modellek használatával. 
+ * Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt. 
+ * A beérkezések gyakori mezőinek felismerése, az űrlap-felismerő szolgáltatásban egy előre betanított modell használatával.
+
+### <a name="formtrainingclient"></a>FormTrainingClient
+`form_training_client` a következő műveleteit biztosítja:
+
+* Egyéni modellek betanítása az egyéni űrlapokon található összes mező és érték felismeréséhez. A betanítási adatkészletek létrehozásával kapcsolatos részletesebb magyarázatért tekintse [meg a szolgáltatás dokumentációját a címke nélküli modell betanításához](#train-a-model-without-labels) .
+* Egyéni modellek betanítása az egyéni űrlapok címkézésével megadott mezők és értékek felismeréséhez. Tekintse [meg a szolgáltatás dokumentációját a modell betanítása](#train-a-model-with-labels) című témakörben, amely részletesebben ismerteti a címkék egy betanítási adatkészletbe való alkalmazásának részletes ismertetését.
+* A fiókban létrehozott modellek kezelése.
+* Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
+
+Vegye figyelembe, hogy a modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool) használatával.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -346,9 +367,7 @@ Ez a szakasz azt mutatja be, hogyan lehet kinyerni a kulcs/érték információk
 > [!IMPORTANT]
 > Ennek a forgatókönyvnek a megvalósításához már be kell tanítania egy modellt, hogy az ID-t az alábbi metódusba tudja adni. Lásd a [modell betanítása](#train-a-model-without-labels) szakaszt.
 
-<<<<<<< fej a `begin_recognize_custom_forms_from_url` metódust fogja használni. A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
-= = = = = = = A **begin_recognize_custom_forms_from_url** metódust fogja használni. A visszaadott érték a **RecognizedForm** objektumok gyűjteménye. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
->>>>>>> 4c76de6b4e93d2a4669953300c5686837b3be13c
+A `begin_recognize_custom_forms_from_url` metódust fogja használni. A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
 
 ```python
 # Model ID from when you trained your model.
@@ -483,7 +502,7 @@ except ResourceNotFoundError:
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
+Az alkalmazást bármikor futtathatja, ha a rövid útmutatóban szereplő összes funkcióval elolvasta ezt a parancsot:
 
 ```console
 python quickstart-file.py
