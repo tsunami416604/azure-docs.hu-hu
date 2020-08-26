@@ -5,18 +5,18 @@ description: A Azure SQL Database és az Azure SQL felügyelt példánya néhán
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: sqldbrb=2
+ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 485a137f552ca06fba366d261eb38268d821ccaf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756724"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853215"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -46,7 +46,14 @@ A Backup Storage-redundancia konfigurálásának lehetősége lehetővé teszi a
 > [!IMPORTANT]
 > A felügyelt SQL-példányok esetében a rendszer a konfigurált biztonsági mentési redundanciát alkalmazza az időponthoz kötött visszaállítási (PITR) és hosszú távú adatmegőrzési biztonsági másolatok (LTR) esetében használt rövid távú biztonsági mentési adatmegőrzési beállításokra is.
 
+
+> [!NOTE]
+> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg korlátozott privát előzetes verzióként érhető el az egyes ügyfelek számára a Délkelet-ázsiai Azure-régióban. Ha a privát előzetes verzióban szeretné figyelembe venni a regisztrációt, forduljon a következőhöz: [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) . 
+
+Ha az adatvédelmi szabályok megkövetelik, hogy a biztonsági másolatok hosszabb ideig is elérhetők legyenek (akár 10 évig), konfigurálhatja a [hosszú távú adatmegőrzést](long-term-retention-overview.md) mind az önálló, mind a készletezett adatbázisokhoz.
+
 ### <a name="backup-usage"></a>Biztonsági mentés használata
+
 
 A biztonsági másolatokat a következő célokra használhatja:
 

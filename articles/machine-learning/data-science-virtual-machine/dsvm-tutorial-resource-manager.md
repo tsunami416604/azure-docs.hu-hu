@@ -10,12 +10,12 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: f6d128ace64f7c100a974883bff82435a496be97
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9b89c0a4135bf595991439dd47e57a870ea2b0d1
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815453"
+ms.locfileid: "88855063"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Ubuntu-Data Science Virtual Machine létrehozása ARM-sablonnal
 
@@ -37,12 +37,17 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/) közül származik. A cikk teljes sablonja túl hosszú ahhoz, hogy megjelenjen itt. A teljes sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Itt látható a DSVM sajátosságait meghatározó rész:
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
+:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
 A következő erőforrások vannak definiálva a sablonban:
 
+* [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft. számítási/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): felhőalapú virtuális gép létrehozása. Ebben a sablonban a virtuális gép az Ubuntu 18,04-as verzióját futtató Data Science Virtual Machine van konfigurálva.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése

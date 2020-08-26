@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033581"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853713"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
 
@@ -48,7 +48,7 @@ A vezérlési várólisták számos különböző előkészítési életciklus-t
 
 A tartós feladathoz tartozó bővítmény egy véletlenszerű exponenciális visszakapcsolási algoritmust valósít meg, amely csökkenti az üresjárati üzenetsor lekérdezésének hatását a tárolási tranzakciós költségekre. Ha egy üzenet található, a futtatókörnyezet azonnal egy másik üzenetet keres; Ha nem talál üzenetet, egy ideig várakozik, mielőtt újra próbálkozik. A várakozási sor üzenetének későbbi sikertelen próbálkozásai után a várakozási idő továbbra is növekszik, amíg el nem éri a maximális várakozási időt, amely az alapértelmezett érték 30 másodperc.
 
-A maximális lekérdezési késleltetés a `maxQueuePollingInterval` [fájlhost.js](../functions-host-json.md#durabletask)tulajdonságán keresztül konfigurálható. Ha ezt a tulajdonságot magasabb értékre állítja, akkor az üzenet feldolgozási késése magasabb lehet. A nagyobb késések csak a tétlenségi időszakok után várhatók. Ha ez a tulajdonság alacsonyabb értékre van állítva, a megnövekedett tárolási tranzakciók miatt magasabb tárolási költségek léphetnek fel.
+A maximális lekérdezési késleltetés a `maxQueuePollingInterval` [ fájlhost.js](../functions-host-json.md#durabletask)tulajdonságán keresztül konfigurálható. Ha ezt a tulajdonságot magasabb értékre állítja, akkor az üzenet feldolgozási késése magasabb lehet. A nagyobb késések csak a tétlenségi időszakok után várhatók. Ha ez a tulajdonság alacsonyabb értékre van állítva, a megnövekedett tárolási tranzakciók miatt magasabb tárolási költségek léphetnek fel.
 
 > [!NOTE]
 > A Azure Functions-felhasználás és a prémium csomagok futtatásakor a [Azure functions skálázási vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) 10 másodpercenként egyszer lekérdezi az egyes vezérlőket és a munkaelemek várólistáit. Ez a további lekérdezés a Function app-példányok aktiválásához és a méretezési döntések elvégzéséhez szükséges. Az írás időpontjában ez a 10 másodperces intervallum állandó, és nem konfigurálható.
@@ -62,7 +62,7 @@ Az előkészítési példányok elkezdődnek, ha egy üzenetet helyeznek el `Exe
 
 ## <a name="storage-account-selection"></a>Storage-fiók kiválasztása
 
-Az Durable Functions által használt várólisták, táblák és Blobok egy konfigurált Azure Storage-fiókban jönnek létre. A használni kívánt fiók a `durableTask/storageProvider/connectionStringName` (z `durableTask/azureStorageConnectionStringName` )host.jsfájljában a (z) Durable functions 1. x fájlban megadott beállítással adható **meg** .
+Az Durable Functions által használt várólisták, táblák és Blobok egy konfigurált Azure Storage-fiókban jönnek létre. A használni kívánt fiók a `durableTask/storageProvider/connectionStringName` (z `durableTask/azureStorageConnectionStringName` )host.jsfájljában a (z) Durable functions 1. x fájlban megadott beállítással adható ** meg** .
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -224,6 +224,10 @@ Ennek a beállításnak két lehetséges hátránya van:
 Ha például `durableTask/extendedSessionIdleTimeoutInSeconds` 30 másodpercre van beállítva, akkor egy rövid életű Orchestrator vagy Entity függvény, amely 1 másodpercnél rövidebb ideig fut, továbbra is 30 másodpercig memóriát foglal le. Emellett a `durableTask/maxConcurrentOrchestratorFunctions` korábban említett kvótára is vonatkozik, ami esetleg megakadályozza más Orchestrator vagy Entity függvények futtatását.
 
 A következő szakaszok ismertetik a kiterjesztett munkamenetek a Orchestrator és az Entity functions szolgáltatásban megadott effektusait.
+
+> [!NOTE]
+> A kiterjesztett munkamenetek jelenleg csak .NET nyelveken támogatottak, például C# vagy F #. A `extendedSessionsEnabled` `true` más platformokra való beállítása futtatókörnyezeti problémákhoz vezethet, például a tevékenységek és a folyamat által aktivált függvények csendes meghibásodása esetén.
+
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator függvény újrajátszása
 

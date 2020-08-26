@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 30b90b89300d6ca63255a000c7a6f7723f648056
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 64b38d0e776a0e3dab155704dcc368cc738c278e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118764"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855425"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -132,7 +132,7 @@ ASP.NET Core egy másik fájl ([properties\launchSettings.json](https://github.c
 }
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. A két előző konfigurációs fájl esetében a következő lesz: `https://localhost:44321/signin-oidc` . Ennek az az oka `applicationUrl` , hogy az `http://localhost:3110` , de meg `sslPort` van adva (44321). `CallbackPath`a ( `/signin-oidc` ) a ben definiált `appsettings.json` .
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. A két előző konfigurációs fájl esetében a következő lesz: `https://localhost:44321/signin-oidc` . Ennek az az oka `applicationUrl` , hogy az `http://localhost:3110` , de meg `sslPort` van adva (44321). `CallbackPath` a ( `/signin-oidc` ) a ben definiált `appsettings.json` .
 
 Ugyanígy a kijelentkezési URI is a következőre lesz beállítva: `https://localhost:44321/signout-oidc` .
 
@@ -225,7 +225,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
 
 1. Adja hozzá a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) és a [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet-csomagokat a projekthez. Ha megtalálható, távolítsa el a Microsoft. AspNetCore. Authentication. AzureAD. UI NuGet-csomagot.
 
-2. Frissítse a kódot `ConfigureServices` úgy, hogy az és a `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` metódusokat használja.
+2. Frissítse a kódot `ConfigureServices` úgy, hogy az és a `AddMicrosoftIdentityWebAppAuthentication` `AddMicrosoftIdentityUI` metódusokat használja.
 
    ```c#
    public class Startup
@@ -234,7 +234,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
+     services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -245,7 +245,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
      }).AddMicrosoftIdentityUI();
     ```
 
-3. A `Configure` *Startup.cs*metódusában engedélyezze a hitelesítést a következő hívásával:`app.UseAuthentication();`
+3. A `Configure` *Startup.cs*metódusában engedélyezze a hitelesítést a következő hívásával: `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -259,20 +259,20 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
    ```
 
 A fenti kódban:
-- A `AddMicrosoftWebAppAuthentication` kiterjesztési módszer a **Microsoft. Identity. webban**van definiálva. Ez
+- A `AddMicrosoftIdentityWebAppAuthentication` kiterjesztési módszer a **Microsoft. Identity. webban**van definiálva. Ez
   - Hozzáadja a hitelesítési szolgáltatást.
   - A konfigurációs fájl olvasásához szükséges beállításokat konfigurálja (itt az "AzureAD" szakaszból)
   - Az OpenID Connect beállításainak konfigurálása, hogy a szolgáltató a Microsoft Identity platform végpontja legyen.
   - Ellenőrzi a jogkivonat kiállítóját.
   - Biztosítja, hogy a névnek megfelelő jogcímeket a rendszer az `preferred_username` azonosító jogkivonatban lévő jogcímből rendeli le.
 
-- A konfigurációs objektum mellett megadhatja a konfigurációs szakasz nevét is a híváskor `AddMicrosoftWebAppAuthentication` . Alapértelmezés szerint ez a érték `AzureAd` .
+- A konfigurációs objektum mellett megadhatja a konfigurációs szakasz nevét is a híváskor `AddMicrosoftIdentityWebAppAuthentication` . Alapértelmezés szerint ez a érték `AzureAd` .
 
-- `AddMicrosoftWebAppAuthentication`más paraméterekkel rendelkezik a speciális forgatókönyvekhez. Az OpenID Connect middleware-események nyomon követése például segíthet a webalkalmazások hibakeresésében, ha a hitelesítés nem működik. Ha a nem kötelező paramétert állítja be, akkor `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` megmutathatja, hogyan dolgozza fel az információkat a ASP.net Core köztes middleware-készlet, mivel a http-válaszból a felhasználó identitására kerül `HttpContext.User` .
+- `AddMicrosoftIdentityWebAppAuthentication` más paraméterekkel rendelkezik a speciális forgatókönyvekhez. Az OpenID Connect middleware-események nyomon követése például segíthet a webalkalmazások hibakeresésében, ha a hitelesítés nem működik. Ha a nem kötelező paramétert állítja be, akkor `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` megmutathatja, hogyan dolgozza fel az információkat a ASP.net Core köztes middleware-készlet, mivel a http-válaszból a felhasználó identitására kerül `HttpContext.User` .
 
 - A `AddMicrosoftIdentityUI` kiterjesztési módszer a **Microsoft. Identity. Web. UI fájlon**belül van definiálva. Egy alapértelmezett vezérlőt biztosít a bejelentkezés és a kijelentkezés kezeléséhez.
 
-További információ arról, hogy a Microsoft. Identity. Web segítségével hogyan hozhat létre webalkalmazásokat a következőben:<https://aka.ms/ms-id-web/webapp>
+További információ arról, hogy a Microsoft. Identity. Web segítségével hogyan hozhat létre webalkalmazásokat a következőben: <https://aka.ms/ms-id-web/webapp>
 
 > [!WARNING]
 > Jelenleg a Microsoft. Identity. Web nem támogatja az **egyéni felhasználói fiókok** (a felhasználói fiókok alkalmazásban való tárolása) esetét az Azure ad és a külső bejelentkezési szolgáltató használata esetén. Részletekért lásd: [AzureAD/Microsoft-Identity-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
