@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525415"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869218"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek számára az Azure-ban
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -49,7 +49,7 @@ A teljes rendszerkép listában futtassa `az vm image list --publisher redhat --
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Nem EUS-tárházhoz csatlakoztatott képek
 
-Ha olyan RHEL-lemezképből hoz létre virtuális gépet, amely nem EUS-tárházhoz van csatlakoztatva, a futtatásakor a rendszer a legújabb RHEL alverzióra frissíti `sudo yum update` . Ha például egy virtuális gépet egy RHEL 7,4 TB-lemezképből hoz létre, és a futtatását futtatja `sudo yum update` , akkor a RHEL 7,7 virtuális gép (a RHEL7 család legújabb alverziója).
+Ha olyan RHEL-lemezképből hoz létre virtuális gépet, amely nem EUS-tárházhoz van csatlakoztatva, a futtatásakor a rendszer a legújabb RHEL alverzióra frissíti `sudo yum update` . Ha például egy virtuális gépet egy RHEL 7,4 TB-lemezképből hoz létre, és a futtatását futtatja `sudo yum update` , akkor a RHEL 7,8 virtuális gép (a RHEL7 család legújabb alverziója).
 
 A nem EUS adattárakhoz csatlakoztatott lemezképek nem tartalmaznak alverziószámot az SKU-ban. Az SKU a harmadik eleme az URN-ben (a rendszerkép teljes neve). Az alábbi képek például a nem EUS adattárakhoz vannak csatolva:
 

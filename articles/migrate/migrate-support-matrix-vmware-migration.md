@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387421"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869099"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -116,7 +116,7 @@ A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt 
 **Hálózat/tárterület** | A legfrissebb információkért tekintse át a Site Recovery [hálózati](../site-recovery/vmware-physical-azure-support-matrix.md#network) és [tárolási](../site-recovery/vmware-physical-azure-support-matrix.md#storage) előfeltételeit. Azure Migrate azonos hálózati/tárolási követelményeket biztosít.
 **Azure-követelmények** | A legfrissebb információkért tekintse át az [Azure hálózati](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [tárolási](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)és [számítási](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) követelményeit site Recovery. A Azure Migrate a VMware-Migrálás követelményeivel azonos.
 **Mobilitási szolgáltatás** | Az áttelepíteni kívánt virtuális gépeken telepíteni kell a mobilitási szolgáltatás ügynökét.
-**UEFI-rendszerindítás** | Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva.<br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
+**UEFI-rendszerindítás** | Támogatott.
 **Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, prémium SSD) az Azure-ban.
 **Lemezméret** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 63 lemez/virtuális gép.
@@ -125,7 +125,7 @@ A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt 
 **Független lemezek** | Támogatott.
 **Továbbító lemezek** | Támogatott.
 **NFS** | A virtuális gépeken kötetként csatlakoztatott NFS-kötetek nem lesznek replikálva.
-**iSCSI-tárolók** | Az iSCSI-tárolókkal rendelkező virtuális gépek nem támogatottak az ügynök nélküli Migrálás esetén.
+**iSCSI-tárolók** | Támogatott.
 **Többutas IO** | Nem támogatott.
 **Tárolási vMotion** | Támogatott
 **Összevont hálózati adapterek** | Nem támogatott.

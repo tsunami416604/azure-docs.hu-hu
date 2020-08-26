@@ -12,22 +12,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c43281ac213137d4a2ef39e76b3f13ffdad746
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783892"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871207"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
 A Azure Active Directory (Azure AD) jogosultságok kezelése egy olyan [identitás-irányítási](identity-governance-overview.md) szolgáltatás, amely lehetővé teszi a szervezetek számára, hogy a hozzáférési kérelmek munkafolyamatainak automatizálásával, a hozzáférési hozzárendelésekkel, a felülvizsgálatokkal és a lejárattal együtt kezeljék az identitásokat és a hozzáférés életciklusát
 
-A szervezet alkalmazottainak a feladatuk elvégzéséhez különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférnie. A hozzáférés kezelése kihívást jelent, mivel a követelmények változnak – új alkalmazások hozzáadása vagy a felhasználóknak további hozzáférési jogosultságok szükségesek.  Ez a forgatókönyv bonyolultabb lehet a külső szervezetekkel való együttműködés során – előfordulhat, hogy nem tudja, hogy a másik szervezetnél kik is hozzáférjenek a szervezet erőforrásaihoz, és nem tudják, hogy a szervezet által használt alkalmazások, csoportok vagy webhelyek milyen alkalmazásokat használnak.
+A szervezet alkalmazottainak a feladatuk elvégzéséhez különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférnie. A hozzáférés kezelése kihívást jelent, mivel a követelmények változnak – új alkalmazások hozzáadása vagy a felhasználóknak további hozzáférési jogosultságok szükségesek.  Ez a forgatókönyv bonyolultabb lehet a külső szervezetekkel való együttműködés során – előfordulhat, hogy nem tudja, hogy a másik szervezetnél kik számára van szükség a szervezet erőforrásainak elérésére, és nem fogja tudni, hogy a szervezet által használt alkalmazások, csoportok vagy webhelyek hogyan használják.
 
 Az Azure AD-jogosultságok kezelésével hatékonyabban kezelheti a csoportokhoz, alkalmazásokhoz és SharePoint Online-webhelyekhez való hozzáférést a belső felhasználók számára, valamint a szervezeten kívüli felhasználók számára is, akiknek szükségük van az erőforrásokhoz való hozzáférésre.
 
@@ -54,7 +55,10 @@ Az Azure AD-jogosultságok kezelése segíthet a problémák megoldásában.  Ha
 - A nem rendszergazdák számára delegált hozzáférési csomagok létrehozásának lehetősége. Ezek a hozzáférési csomagok tartalmazzák azokat az erőforrásokat, amelyeket a felhasználók igényelhetnek, és a delegált hozzáférési csomag kezelői olyan szabályzatokat határoznak meg, amelyekkel a felhasználók igényelhetnek, és akiknek jóvá kell hagyniuk a hozzáférést, és amikor a hozzáférés lejár.
 - Válassza ki azokat a csatlakoztatott szervezeteket, amelyekhez a felhasználók igényelhetnek hozzáférést.  Ha egy olyan felhasználó, aki még nem szerepel a címtárban, a hozzáférését jóváhagyja, a rendszer automatikusan meghívja őket a címtárba, és hozzárendeli a hozzáférést.  Ha a hozzáférésük lejár, ha nincs más hozzáférési csomag-hozzárendelésük, a címtárban lévő B2B-fiókja automatikusan eltávolítható.
 
-Az [első hozzáférési csomag létrehozásához](entitlement-management-access-package-first.md)megkezdheti az oktatóanyagot. Elolvashatja a [gyakori forgatókönyveket](entitlement-management-scenarios.md), vagy megtekintheti a videókat, beleértve a következőket is
+>[!NOTE]
+>Ha készen áll a jogosultságok kezelésének kipróbálására, megkezdheti az [első hozzáférési csomag létrehozását ismertető oktatóanyagot](entitlement-management-access-package-first.md).
+
+Elolvashatja a [gyakori forgatókönyveket](entitlement-management-scenarios.md), vagy megtekintheti a videókat, beleértve a következőket is
 
 - [Az Azure AD-jogosultságok felügyeletének üzembe helyezése a szervezetben](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [Az Azure AD-jogosultságok felügyeletének monitorozása és méretezése](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -99,16 +103,16 @@ Az alábbi ábrán egy példa látható a jogosultságok kezelésének különb�
 
 ## <a name="when-should-i-use-access-packages"></a>Mikor érdemes használni a hozzáférési csomagokat?
 
-A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáférési hozzárendeléshez.  Ezek a legmegfelelőbbek olyan helyzetekben, mint például a következők:
+A hozzáférési csomagok nem helyettesítik más mechanizmusokat a hozzáférési hozzárendeléshez.  Ezek a legmegfelelőbbek olyan helyzetekben, mint például:
 
 - Az alkalmazottaknak időre korlátozott hozzáférésre van szükségük egy adott feladathoz.  Használhat például egy csoportos licencelést és egy dinamikus csoportot annak biztosítására, hogy az alkalmazottak rendelkezzenek Exchange Online-postaládával, majd a hozzáférési csomagok használatával olyan helyzetekben, amikor az alkalmazottaknak további hozzáférésre van szükségük, például egy másik részleg szervezeti erőforrásainak olvasásához.
-- A hozzáférést egy alkalmazott felettesének vagy más kijelölt személynek kell jóváhagynia.
+- Hozzáférés, amelyhez az alkalmazott felettesének vagy más kijelölt személyeknek kell jóváhagyása.
 - A részlegek saját hozzáférési szabályzatokat kívánnak kezelni az erőforrásaik bevonása nélkül.  
 - Két vagy több szervezet együttműködik egy projekttel, és ennek eredményeképpen az egyik szervezet több felhasználóját az Azure AD B2B-be kell vinni egy másik szervezet erőforrásaihoz való hozzáféréshez.
 
 ## <a name="how-do-i-delegate-access"></a>Hogyan delegálja a hozzáférést?
 
- A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.  Egyetlen katalógussal is rendelkezhet az összes hozzáférési csomaghoz, vagy kijelölhet egyéni személyeket saját katalógusok létrehozásához. A rendszergazdák bármilyen katalógusba hozzáadhatnak erőforrásokat, de a nem rendszergazdai jogosultsággal rendelkezők csak a saját erőforrásaikat használhatják katalógusba. A katalógus tulajdonosa más felhasználókat is hozzáadhat a katalógus-tulajdonosként, vagy a hozzáférési csomag kezelői.  Ezeket a forgatókönyveket az [Azure ad-jogosultságok felügyeletének delegálása és szerepkörei](entitlement-management-delegate.md)című cikk ismerteti.
+ A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.  Egyetlen katalógussal is rendelkezhet az összes hozzáférési csomaghoz, vagy kijelölhet egyéni személyeket saját katalógusok létrehozásához. A rendszergazdák bármilyen katalógusba hozzáadhatnak erőforrásokat, de a nem rendszergazda csak katalógusba veheti fel a saját erőforrásaikat. A katalógus tulajdonosa más felhasználókat is hozzáadhat a katalógus-tulajdonosként, vagy a hozzáférési csomag kezelői.  Ezeket a forgatókönyveket az [Azure ad-jogosultságok felügyeletének delegálása és szerepkörei](entitlement-management-delegate.md)című cikk ismerteti.
 
 ## <a name="summary-of-terminology"></a>Terminológia összefoglalása
 
@@ -149,7 +153,7 @@ Prémium szintű Azure AD P2-licencek **nem** szükségesek a következő felada
 - Nem szükségesek licencek olyan felhasználók számára, akik delegáltak felügyeleti feladatokat, például a katalógus létrehozóját, a katalógus tulajdonosát és a hozzáférés csomagkezelő kezelőjét.
 - Nincs szükség licencre azon vendégek számára **, akik hozzáférési csomagokat igényelhetnek** , de **nem** igényelnek hozzáférési csomagot.
 
-Az Azure AD B2B szolgáltatással legfeljebb 5 vendéget hívhat meg, ha minden fizetős prémium szintű Azure AD P2-licenccel rendelkezik, amelyet a felhasználó (alkalmazottai) számára vásárolt. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../external-identities/licensing-guidance.md).
+Az Azure AD B2B-vel minden olyan fizetős prémium szintű Azure AD P2-licenchez használhatja, amelyet a felhasználó (alkalmazottai) számára vásárolt. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../external-identities/licensing-guidance.md).
 
 További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 

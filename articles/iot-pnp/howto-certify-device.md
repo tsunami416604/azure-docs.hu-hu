@@ -204,6 +204,6 @@ Három lépést kell végrehajtania:
 1. Tekintse át a csatolókat. Tekintse át az illesztőfelületet, és győződjön meg arról, hogy mindegyik rendelkezik olyan hasznos adatokkal, amelyek a tesztelés szempontjából ésszerűek.
 1. Teszt. A rendszer minden eszköz modelljét teszteli, és ellenőrzi, hogy a modellben ismertetett telemetria, tulajdonságok és parancsok követik-e a IoT Plug and Play konvencióit. Ha a teszt elkészült, a **naplók megtekintése** hivatkozásra kattintva megtekintheti a telemetria az eszközről és a nyers adatok IoT hub eszköz Twin tulajdonságai között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az eszköz beküldésének befejezése után a következő lépésekkel léphet kapcsolatba az eszköz minősítési csapatával, [iotcert@microsoft.com](mailto:iotcert@microsoft.com) amely tartalmazza a Microsoft Partner Network tagságának ellenőrzését és az első lépéseket ismertető útmutatók áttekintését. Ha az összes követelmény teljesül, dönthet úgy, hogy az eszközt belefoglalja az [Azure IoT-eszközökre tanúsított tanúsítvánnyal](https://aka.ms/devicecatalog).

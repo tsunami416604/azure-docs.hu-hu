@@ -1,0 +1,51 @@
+- name: Azure Arc-kompatibilis kiszolgálók dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az Azure Arc-kompatibilis kiszolgálók ismertetése
+      href: overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Az Arc-kompatibilis kiszolgálói ügynök engedélyezése
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: Oktatóanyagok
+  items:
+    - name: Szabályzat hozzárendelése a megfelelőség kiértékeléséhez
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: Gép monitorozása
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      items:
+        - name: Arc-kompatibilis kiszolgálók
+          href: policy-samples.md
+- name: Alapelvek
+  items:
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+- name: Útmutatók
+  items:
+    - name: Csatlakozás az Azure Archoz
+      items:
+        - name: A csatlakoztatott gépi ügynök áttekintése
+          href: agent-overview.md
+        - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
+          href: onboard-portal.md
+        - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
+          href: onboard-service-principal.md
+        - name: Gépek csatlakoztatása az Azure Archoz a PowerShell DSC használatával
+          href: onboard-dsc.md
+    - name: Kezelés
+      items:
+        - name: Azure-beli virtuálisgép-bővítmények kezelése és használata
+          href: manage-vm-extensions.md
+        - name: Ügynök kezelése
+          href: manage-agent.md
+    - name: Hibaelhárítás
+      items:
+        - name: Ügynökök kapcsolódási problémái
+          href: troubleshoot-agent-onboard.md

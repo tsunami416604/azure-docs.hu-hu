@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871564"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -48,7 +48,7 @@ Az összekötők beépített eseményindítóként és műveletként, illetve fe
 
   Az összekötők a standard vagy a vállalat kategóriába tartoznak. A [vállalati összekötők](#enterprise-connectors) felár ellenében hozzáférést biztosítanak a nagyvállalati rendszerekhez, például az SAP, az IBM MQ és az IBM 3270 szolgáltatásokhoz. Annak megállapításához, hogy az összekötő szabványos vagy nagyvállalati szintű-e, tekintse meg a technikai részleteket az egyes összekötők hivatkozásait ismertető oldalon az [Összekötők áttekintésében](/connectors).
 
-  Az összekötőket ezen kategóriák használatával is azonosíthatja, bár egyes összekötők több kategóriát is használhatnak. Például az SAP egy vállalati összekötő és egy helyszíni összekötő:
+  Az összekötőket ezen kategóriák használatával is azonosíthatja, bár egyes összekötők több kategóriában is létezhetnek. Például az SAP egy vállalati összekötő és egy helyszíni összekötő:
 
   | Kategória | Leírás |
   |----------|-------------|
@@ -66,9 +66,9 @@ Azon logikai alkalmazások esetében, amelyeknek közvetlen hozzáférésre van 
 > [!NOTE]
 > Az ISE-ben és azok összekötői futó Logic apps, függetlenül attól, hogy az összekötők hol futnak, a rögzített díjszabási csomagot és a fogyasztáson alapuló díjszabást kell követnie. További információ: [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md) és [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Címke | Példa | Description |
+| Címke | Példa | Leírás |
 |-------|---------|-------------|
-| **CORE** | ![Példa ISE-összekötőre](./media/apis-list/example-core-connector.png) | Az ezzel a címkével rendelkező beépített eseményindítók és műveletek a logikai alkalmazásokkal megegyező ISE-ben futnak. |
+| **CORE** | ![Példa CORE-összekötőre](./media/apis-list/example-core-connector.png) | Az ezzel a címkével rendelkező beépített eseményindítók és műveletek a logikai alkalmazásokkal megegyező ISE-ben futnak. |
 | **ISE** | ![Példa ISE-összekötőre](./media/apis-list/example-ise-connector.png) | Az ezzel a címkével rendelkező felügyelt összekötők ugyanabban az ISE-ben futnak, mint a Logic apps. Ha egy Azure-beli virtuális hálózathoz csatlakoztatott helyszíni rendszerrel rendelkezik, az ISE lehetővé teszi, hogy a logikai alkalmazások közvetlenül hozzáférhessenek a rendszerhez a [helyszíni adatátjáró](../logic-apps/logic-apps-gateway-connection.md)nélkül. Ehelyett használhatja a rendszer **ISE** -összekötőjét, ha van ilyen, http-művelet vagy [egyéni összekötő](#custom). Az **ISE** -összekötőket nem tartalmazó helyszíni rendszerekhez használja a helyszíni adatátjárót. Az elérhető ISE-összekötők áttekintését lásd: [ISE-összekötők](#ise-connectors). |
 | Nincs címke | ![Példa több-bérlős összekötőre](./media/apis-list/example-multi-tenant-connector.png) | Az összes többi olyan összekötő, amely nem rendelkezik a **Core** vagy az **ISE** címkével, amelyet tovább használhat, a globális, több-bérlős Logic apps szolgáltatásban futtathatja. |
 |||
@@ -81,13 +81,13 @@ A Logic Apps beépített eseményindítókat és műveleteket biztosít, így ü
 
 | Név | Leírás |
 |------|-------------|
-| [![API-ikon ][schedule-icon]<br> **ütemterve**][schedule-doc] | – Futtasson egy logikai alkalmazást egy megadott ismétlődésen, amely az alapszintű és a speciális ütemezések között az [ **ismétlődési** eseményindítóval][schedule-recurrence-doc]. <br>– Futtasson egy logikai alkalmazást, amely folyamatos adattömbökben lévő, a [ **csúszó ablakos** triggerrel][schedule-sliding-window-doc]való adatkezelésre szorul. <br>– Szüneteltetheti a logikai alkalmazást egy adott időtartamra a [ **késleltetési** művelettel][schedule-delay-doc]. <br>– Szüneteltetheti a logikai alkalmazást, amíg a [művelet **nem** ][schedule-delay-until-doc]lesz a megadott dátummal és időponttal. |
-| [![API-ikon ][batch-icon]<br> **köteg**][batch-doc] | – A Batch **üzenetek** triggerrel rendelkező kötegekben lévő üzenetek feldolgozása. <br>– Olyan logikai alkalmazásokat hívhat meg, amelyek meglévő batch-eseményindítókkal rendelkeznek az **üzenetek küldése kötegelt** művelettel. |
-| [![API-ikon ][http-icon]<br> **http**][http-doc] | HTTP- vagy HTTPS-végpontok meghívása HTTP-triggerekkel vagy -műveletekkel. Más beépített HTTP-eseményindítók és műveletek a következők: [http + hencegés][http-swagger-doc] és [http + webhook][http-webhook-doc]. |
-| [![API-ikon ][http-request-icon]<br> **kérése**][http-request-doc] | – Meghívhatja a logikai alkalmazást más alkalmazásokból vagy szolgáltatásokból, kiválthatja Event Grid erőforrás-eseményeit, vagy aktiválhatja a válaszokat a **kérések** triggerével Azure Security Center riasztásokra. <br>– Válaszok küldése egy alkalmazásnak vagy szolgáltatásnak a **Válasz** művelettel. |
-| [![API-ikon ][azure-api-management-icon]<br> **Azure API <br> Management**][azure-api-management-doc] | Saját, Azure API Managementtel felügyelt és közzétett API-jaival definiált triggereket és műveleteket hívhat meg. |
-| [![API-ikon ][azure-app-services-icon]<br> **Azure app <br> Services**][azure-app-services-doc] | Az Azure App Service-en keresztül üzemeltetett Azure API Apps vagy Web Apps meghívása. Az alkalmazások által definiált eseményindítók és műveletek úgy jelennek meg, mint bármely más, az első osztályú eseményindító és művelet, amikor a kivágás bekerül. |
-| [![API-ikon ][azure-logic-apps-icon]<br> **Azure Logic <br> apps**][nested-logic-app-doc] | Hívjon fel más Logic apps-alkalmazásokat, amelyek a **kérelem** -triggerrel kezdődnek. |
+| [![Beépített összekötők ][schedule-icon]<br> **ütemezett** ütemterve][schedule-doc] | – Futtasson egy logikai alkalmazást egy megadott ismétlődésen, amely az alapszintű és a speciális ütemezések között az [ **ismétlődési** eseményindítóval][schedule-recurrence-doc]. <br>– Futtasson egy logikai alkalmazást, amely folyamatos adattömbökben lévő, a [ **csúszó ablakos** triggerrel][schedule-sliding-window-doc]való adatkezelésre szorul. <br>– Szüneteltetheti a logikai alkalmazást egy adott időtartamra a [ **késleltetési** művelettel][schedule-delay-doc]. <br>– Szüneteltetheti a logikai alkalmazást, amíg a [művelet **nem** ][schedule-delay-until-doc]lesz a megadott dátummal és időponttal. |
+| [![Batch beépített összekötő ][batch-icon]<br> **kötege**][batch-doc] | – A Batch **üzenetek** triggerrel rendelkező kötegekben lévő üzenetek feldolgozása. <br>– Olyan logikai alkalmazásokat hívhat meg, amelyek meglévő batch-eseményindítókkal rendelkeznek az **üzenetek küldése kötegelt** művelettel. |
+| [![HTTP-alapú beépített összekötő ][http-icon]<br> **http**][http-doc] | HTTP- vagy HTTPS-végpontok meghívása HTTP-triggerekkel vagy -műveletekkel. Más beépített HTTP-eseményindítók és műveletek közé tartozik [a http + a beépített összekötő és a][http-swagger-doc] [http + webhook][http-webhook-doc]. |
+| [![Igény szerinti beépített összekötő ][http-request-icon]<br> **kérése**][http-request-doc] | – Meghívhatja a logikai alkalmazást más alkalmazásokból vagy szolgáltatásokból, kiválthatja Event Grid erőforrás-eseményeit, vagy aktiválhatja a válaszokat a **kérések** triggerével Azure Security Center riasztásokra. <br>– Válaszok küldése egy alkalmazásnak vagy szolgáltatásnak a **Válasz** művelettel. |
+| [![Azure API Management beépített összekötő ][azure-api-management-icon]<br> **Azure API <br> Management**][azure-api-management-doc] | Saját, Azure API Managementtel felügyelt és közzétett API-jaival definiált triggereket és műveleteket hívhat meg. |
+| [![Azure App Services beépített összekötő ][azure-app-services-icon]<br> **Azure app <br> Services**][azure-app-services-doc] | Az Azure App Service-en keresztül üzemeltetett Azure API Apps vagy Web Apps meghívása. Az alkalmazások által definiált eseményindítók és műveletek úgy jelennek meg, mint bármely más, az első osztályú eseményindító és művelet, amikor a kivágás bekerül. |
+| [![Azure Logic Apps beépített összekötő ][azure-logic-apps-icon]<br> **Azure Logic <br> apps**][nested-logic-app-doc] | Hívjon fel más Logic apps-alkalmazásokat, amelyek a **kérelem** -triggerrel kezdődnek. |
 |||
 
 ### <a name="run-code-from-logic-apps"></a>Kód futtatása a Logic appsből
@@ -96,8 +96,8 @@ A Logic Apps beépített műveleteket biztosít a saját kód futtatásához a l
 
 | Név | Leírás |
 |------|-------------|
-| [![API-ikon ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Hívja meg az Azure functions szolgáltatást, amely egyéni kódrészleteket (C# vagy Node.js) futtat a logikai alkalmazásokból. |
-| [![API-ikon ][inline-code-icon]<br> **beágyazott kódja**][inline-code-doc] | JavaScript-kódrészletek hozzáadása és futtatása a logikai alkalmazásokból. |
+| [![Beépített összekötő Azure Functions ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Hívja meg az Azure functions szolgáltatást, amely egyéni kódrészleteket (C# vagy Node.js) futtat a logikai alkalmazásokból. |
+| [![Beágyazott kód beépített összekötő ][inline-code-icon]<br> **beágyazott kódja**][inline-code-doc] | JavaScript-kódrészletek hozzáadása és futtatása a logikai alkalmazásokból. |
 |||
 
 ### <a name="control-workflow"></a>Vezérlési munkafolyamat
@@ -106,12 +106,12 @@ A Logic Apps beépített műveleteket biztosít a logikai alkalmazás munkafolya
 
 | Név | Leírás |
 |------|-------------|
-| [![Beépített ikon ][condition-icon]<br> **feltétele**][condition-doc] | Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis. |
-| [![Beépített ][for-each-icon]<br> **For each** ikon][for-each-doc] | Hajtsa végre ugyanezeket a műveleteket egy tömb minden elemén. |
-| [![Beépített ikon ][scope-icon]<br> **hatóköre**][scope-doc] | A *műveletek hatókörbe*való csoportosítása, amelyek a hatókör befejezésének befejezése után kapják meg a saját állapotukat. |
-| [![Beépített ikon ][switch-icon]<br> **kapcsoló**][switch-doc] | Olyan *esetekre*csoportosíthat műveleteket, amelyek az alapértelmezett eset kivételével egyedi értékeket kapnak. Csak akkor futtassa ezt az esetet, ha a hozzárendelt érték megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet. |
-| [![Beépített ikon ][terminate-icon]<br> **leállítása**][terminate-doc] | Egy aktívan futó logikai alkalmazás munkafolyamatának leállítása. |
-| [![Beépített ikon, ][until-icon]<br> **amíg**][until-doc] | Ismételje meg a műveleteket, amíg a megadott feltétel igaz vagy valamilyen állapot megváltozott. |
+| [![Feltétel beépített műveleti ][condition-icon]<br> **feltétele**][condition-doc] | Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis. |
+| [![][for-each-icon]<br>**For each** Minden beépített művelethez][for-each-doc] | Hajtsa végre ugyanezeket a műveleteket egy tömb minden elemén. |
+| [![Hatókör beépített műveleti ][scope-icon]<br> **hatóköre**][scope-doc] | A *műveletek hatókörbe*való csoportosítása, amelyek a hatókör befejezésének befejezése után kapják meg a saját állapotukat. |
+| [![Beépített műveleti kapcsoló váltása ][switch-icon]<br> **Switch**][switch-doc] | Olyan *esetekre*csoportosíthat műveleteket, amelyek az alapértelmezett eset kivételével egyedi értékeket kapnak. Csak akkor futtassa ezt az esetet, ha a hozzárendelt érték megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet. |
+| [![Beépített ][terminate-icon]<br> **Terminate** művelet leállítása][terminate-doc] | Egy aktívan futó logikai alkalmazás munkafolyamatának leállítása. |
+| [![A beépített műveletig egészen ][until-icon]<br> **addig** , amíg][until-doc] | Ismételje meg a műveleteket, amíg a megadott feltétel igaz vagy valamilyen állapot megváltozott. |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>Az adatkezelés és-kezelés
@@ -120,9 +120,9 @@ A Logic Apps beépített műveleteket biztosít az adatkimenetek és azok formá
 
 | Név | Leírás |
 |------|-------------|
-| [![Beépített ikon ][data-operations-icon]<br> **adatműveletek**][data-operations-doc] | Műveletek végrehajtása adatokkal: <p>- **Összeállítás**: egyetlen kimenet létrehozása több bemenetből különböző típusokkal. <br>- **CSV-táblázat létrehozása**: hozzon létre egy vesszővel tagolt (CSV-) táblázatot egy olyan tömbből, amely JSON-objektumokkal rendelkezik. <br>- **HTML-táblázat létrehozása**: HTML-táblázat létrehozása egy JSON-objektumokkal rendelkező tömbből. <br>- **Tömb szűrése**: hozzon létre egy tömböt egy másik tömb elemeiből, amelyek megfelelnek a feltételeknek. <br>- **Csatlakozás**: hozzon létre egy karakterláncot egy tömb összes eleméről, és válassza szét ezeket az elemeket a megadott elválasztóval. <br>- **JSON**elemzése: hozzon létre felhasználóbarát tokeneket a tulajdonságok és azok értékei alapján a JSON-tartalomban, hogy használhassa ezeket a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki**: hozzon létre egy tömböt JSON-objektumokkal egy másik tömb elemeinek vagy értékeinek átalakításával, és rendelje hozzá ezeket az elemeket a megadott tulajdonságokhoz. |
-| ![Beépített ikon][date-time-icon]<br>**Dátum és idő** | Műveletek elvégzése időbélyegekkel: <p>- **Hozzáadás az időponthoz**: adja hozzá a megadott számú egységet egy időbélyeghez. <br>- **Időzóna konvertálása**: a forrás időzóna időbélyegének konvertálása a cél időzónára. <br>- **Aktuális idő**: az aktuális időbélyeg visszaadása karakterláncként. <br>- **Jövőbeli idő beolvasása**: az aktuális időbélyeg és a megadott időegységek visszaadása. <br>- **Beolvasás időpontja**: az aktuális időbélyeg visszaküldése a megadott időegységek szerint. <br>- **Kivonás az időpontból**: több időegység kivonása egy időbélyegből. |
-| [![Beépített ikon ][variables-icon]<br> **változók**][variables-doc] | Műveletek végrehajtása változókkal: <p>- **Hozzáfűzés a tömb változóhoz**: szúrjon be egy értéket egy változó által tárolt tömb utolsó elemeként. <br>- **Hozzáfűzés a karakterlánc-változóhoz**: az értéket egy változó által tárolt sztring utolsó karakterének szúrja be. <br>- **Változó csökkentése**: a változókat állandó értékkel csökkentheti. <br>- **Növekmény változó**: állandó értékkel növelheti a változókat. <br>- **Változó inicializálása**: hozzon létre egy változót, és állapítsa meg az adattípus és a kezdeti érték megadását. <br>- **Változó beállítása**: adjon meg egy másik értéket egy meglévő változóhoz. |
+| [![Az adatműveletek beépített műveleti ][data-operations-icon]<br> **adatműveletei**][data-operations-doc] | Műveletek végrehajtása adatokkal: <p>- **Összeállítás**: egyetlen kimenet létrehozása több bemenetből különböző típusokkal. <br>- **CSV-táblázat létrehozása**: hozzon létre egy vesszővel tagolt (CSV-) táblázatot egy olyan tömbből, amely JSON-objektumokkal rendelkezik. <br>- **HTML-táblázat létrehozása**: HTML-táblázat létrehozása egy JSON-objektumokkal rendelkező tömbből. <br>- **Tömb szűrése**: hozzon létre egy tömböt egy másik tömb elemeiből, amelyek megfelelnek a feltételeknek. <br>- **Csatlakozás**: hozzon létre egy karakterláncot egy tömb összes eleméről, és válassza szét ezeket az elemeket a megadott elválasztóval. <br>- **JSON**elemzése: hozzon létre felhasználóbarát tokeneket a tulajdonságok és azok értékei alapján a JSON-tartalomban, hogy használhassa ezeket a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki**: hozzon létre egy tömböt JSON-objektumokkal egy másik tömb elemeinek vagy értékeinek átalakításával, és rendelje hozzá ezeket az elemeket a megadott tulajdonságokhoz. |
+| ![Beépített művelet dátuma][date-time-icon]<br>**Dátum és idő** | Műveletek elvégzése időbélyegekkel: <p>- **Hozzáadás az időponthoz**: adja hozzá a megadott számú egységet egy időbélyeghez. <br>- **Időzóna konvertálása**: a forrás időzóna időbélyegének konvertálása a cél időzónára. <br>- **Aktuális idő**: az aktuális időbélyeg visszaadása karakterláncként. <br>- **Jövőbeli idő beolvasása**: az aktuális időbélyeg és a megadott időegységek visszaadása. <br>- **Beolvasás időpontja**: az aktuális időbélyeg visszaküldése a megadott időegységek szerint. <br>- **Kivonás az időpontból**: több időegység kivonása egy időbélyegből. |
+| [![Beépített műveleti változók változói ][variables-icon]<br> **Variables**][variables-doc] | Műveletek végrehajtása változókkal: <p>- **Hozzáfűzés a tömb változóhoz**: szúrjon be egy értéket egy változó által tárolt tömb utolsó elemeként. <br>- **Hozzáfűzés a karakterlánc-változóhoz**: az értéket egy változó által tárolt sztring utolsó karakterének szúrja be. <br>- **Változó csökkentése**: a változókat állandó értékkel csökkentheti. <br>- **Növekmény változó**: állandó értékkel növelheti a változókat. <br>- **Változó inicializálása**: hozzon létre egy változót, és állapítsa meg az adattípus és a kezdeti érték megadását. <br>- **Változó beállítása**: adjon meg egy másik értéket egy meglévő változóhoz. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -133,18 +133,18 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 
 | Név | Leírás |
 |------|-------------|
-| [![API-ikon ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | A Logic Apps leggyakrabban használt összekötőjével aszinkron üzeneteket, munkameneteket és témakör-előfizetéseket kezelhet. |
-| [![API-ikon ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kapcsolódjon SQL Server a felhőben, vagy egy Azure SQL Database a felhőben, így kezelheti a rekordokat, futtathatja a tárolt eljárásokat vagy lekérdezéseket végezhet. |
-| [![API-ikon ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Kapcsolódjon a Storage-fiókhoz a blob-tartalmak létrehozásához és kezeléséhez. |
-| [![API-ikon ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Kapcsolódjon az Office 365 e-mail-fiókjához, így e-maileket, feladatokat, naptári eseményeket és értekezleteket, névjegyeket, kéréseket és egyebeket hozhat létre és kezelhet. |
-| [![API ][sftp-ssh-icon]<br> **-ikon SFTP – SSH**][sftp-ssh-doc] | Olyan SFTP-kiszolgálókhoz csatlakozhat, amelyek az internetről az SSH használatával érhetők el, hogy a fájlok és mappák is működjenek. |
-| [![API-ikon ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Kapcsolódjon a SharePoint Online-hoz, hogy kezelje a fájlokat, a mellékleteket, a mappákat és egyebeket. |
-| [![API-ikon ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc] | Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni. |
-| [![API-ikon ][ftp-icon]<br> **FTP**][ftp-doc] | Csatlakozhat az internetről elérhető FTP-kiszolgálókhoz, így a fájlokkal és mappákkal is dolgozhat. |
-| [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc] | Kapcsolódjon a helyszíni fájlmegosztás számára, hogy fájlokat lehessen létrehozni és kezelni. |
-| [![API-ikon ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Események felhasználása és közzététele az Event hub használatával. Az Event Hubs szolgáltatással például lekérheti a logikai alkalmazások kimenetét, majd elküldheti a kimenetet valamely valós idejű elemzési szolgáltatónak. |
-| [![API-ikon ][azure-event-grid-icon]<br> **Azure Event** <br> **Grid**][azure-event-grid-doc] | Egy Event Grid által közzétett események figyelése, például amikor az Azure-erőforrások vagy a külső gyártók erőforrásai változnak. |
-| [![API-ikon ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kapcsolódjon a Salesforce-fiókhoz, így olyan elemeket hozhat létre és kezelhet, mint a rekordok, a feladatok, az objektumok stb. |
+| [![Azure Service Bus felügyelt összekötő ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | A Logic Apps leggyakrabban használt összekötőjével aszinkron üzeneteket, munkameneteket és témakör-előfizetéseket kezelhet. |
+| [![SQL Server felügyelt összekötő ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kapcsolódjon SQL Server a felhőben, vagy egy Azure SQL Database a felhőben, így kezelheti a rekordokat, futtathatja a tárolt eljárásokat vagy lekérdezéseket végezhet. |
+| [![Azure Blob Storage felügyelt összekötő ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Kapcsolódjon a Storage-fiókhoz a blob-tartalmak létrehozásához és kezeléséhez. |
+| [![Office 365 Outlook által felügyelt összekötő ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Kapcsolódjon az Office 365 e-mail-fiókjához, így e-maileket, feladatokat, naptári eseményeket és értekezleteket, névjegyeket, kéréseket és egyebeket hozhat létre és kezelhet. |
+| [![SFTP – SSH által felügyelt összekötő ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc] | Olyan SFTP-kiszolgálókhoz csatlakozhat, amelyek az internetről az SSH használatával érhetők el, hogy a fájlok és mappák is működjenek. |
+| [![SharePoint Online felügyelt összekötő – ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Kapcsolódjon a SharePoint Online-hoz, hogy kezelje a fájlokat, a mellékleteket, a mappákat és egyebeket. |
+| [![Azure Queues felügyelt összekötő ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc] | Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni. |
+| [![FTP által felügyelt összekötő ][ftp-icon]<br> **FTP**][ftp-doc] | Csatlakozhat az internetről elérhető FTP-kiszolgálókhoz, így a fájlokkal és mappákkal is dolgozhat. |
+| [![Fájlrendszer által felügyelt összekötő ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc] | Kapcsolódjon a helyszíni fájlmegosztás számára, hogy fájlokat lehessen létrehozni és kezelni. |
+| [![Azure Event Hubs felügyelt összekötő ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Események felhasználása és közzététele az Event hub használatával. Az Event Hubs szolgáltatással például lekérheti a logikai alkalmazások kimenetét, majd elküldheti a kimenetet valamely valós idejű elemzési szolgáltatónak. |
+| [![Azure Event Grid felügyelt összekötő ][azure-event-grid-icon]<br> **Azure Event** <br> **Grid**][azure-event-grid-doc] | Egy Event Grid által közzétett események figyelése, például amikor az Azure-erőforrások vagy a külső gyártók erőforrásai változnak. |
+| [![Salesforce felügyelt összekötő ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Kapcsolódjon a Salesforce-fiókhoz, így olyan elemeket hozhat létre és kezelhet, mint a rekordok, a feladatok, az objektumok stb. |
 |||
 
 <a name="on-premises-connectors"></a>
@@ -155,38 +155,38 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 
 :::row:::
     :::column:::
-        [![API-ikon ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+        [![BizTalk Server-összekötő ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc]
+        [![Fájlrendszer-összekötő ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![DB2-összekötő, ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-ikon ][mysql-icon]<br> **MySQL**][mysql-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][oracle-db-icon]<br> **Oracle db**][oracle-db-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][sharepoint-server-icon]<br> **SharePoint- <br> kiszolgáló**][sharepoint-server-doc]
+        [![Informix-összekötő, ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-ikon ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![MySQL-összekötő ][mysql-icon]<br> **MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][teradata-icon]<br> **Teradata**][teradata-doc]
+        [![Oracle DB összekötő ][oracle-db-icon]<br> **Oracle db**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![PostgreSQL-összekötő ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![SharePoint Server-összekötő ][sharepoint-server-icon]<br> **SharePoint- <br> kiszolgáló**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SQL Server-összekötő ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata-összekötő ][teradata-icon]<br> **Teradata**][teradata-doc]
     :::column-end:::
     :::column:::
         
@@ -204,44 +204,44 @@ A Logic Apps szabványos összekötőket biztosít a vállalatközi (B2B) megold
 
 :::row:::
     :::column:::
-        [![API-ikon ][as2-icon]<br> **AS2- <br> dekódolás**][as2-doc]
+        [![AS2-dekódolási művelet ][as2-icon]<br> **AS2- <br> dekódolás**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][as2-icon]<br> **AS2- <br> kódolás**][as2-doc]
+        [![AS2 kódolási művelet ][as2-icon]<br> **AS2- <br> kódolása**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][edifact-icon]<br> **EDIFACT <br> dekódolása**][edifact-decode-doc]
+        [![EDIFACT dekódolási művelet ][edifact-icon]<br> **EDIFACT <br> ** dekódolása][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][edifact-icon]<br> **EDIFACT <br> kódolása**][edifact-encode-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-ikon – ][flat-file-decode-icon]<br> **lapos fájl <br> dekódolása**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon – ][flat-file-encode-icon]<br> **lapos fájl <br> kódolása**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][integration-account-icon]<br> **integrációs <br> fiókja**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][liquid-icon]<br> **folyékony** <br> **átalakítások**][json-liquid-transform-doc]
+        [![EDIFACT kódolási művelet ][edifact-icon]<br> **EDIFACT <br> kódolása**][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-ikon ][x12-icon]<br> **X12 <br> dekódolása**][x12-decode-doc]
+        [![Lapos fájl dekódolása művelet – ][flat-file-decode-icon]<br> **lapos fájl <br> dekódolása**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][x12-icon]<br> **X12 <br> kódolása**][x12-encode-doc]
+        [![Lapos kódolású művelet – ][flat-file-encode-icon]<br> **lapos fájl <br> kódolása**][flat-file-encode-doc]
     :::column-end:::
     :::column:::
-        [![API ][xml-transform-icon]<br> **-ikon XML-** <br> **átalakítások**][xml-transform-doc]
+        [![Integrációs fiók műveleti ][integration-account-icon]<br> **integrációs <br> fiókja**][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![API ][xml-validate-icon]<br> **-ikon XML- <br> ellenőrzése**][xml-validate-doc]
+        [![Folyékony átalakítások műveleti ][liquid-icon]<br> **folyékony** <br> **átalakítások**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![X12 dekódolási művelet ][x12-icon]<br> **X12 <br> ** dekódolása][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 Kódolási művelet ][x12-icon]<br> **X12 <br> kódolása**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![XML-átalakítási művelet ][xml-transform-icon]<br> **XML-** <br> **transzformációi**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![XML-érvényesítési művelet ][xml-validate-icon]<br> **XML- <br> érvényesítése**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -253,13 +253,13 @@ A Logic Apps a nagyvállalati rendszerekhez (például SAP és IBM MQ) való hoz
 
 :::row:::
     :::column:::
-        [![API-ikon ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![IBM 3270-összekötő ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![MQ-összekötő ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][sap-icon]<br> **SAP**][sap-connector-doc]
+        [![SAP-összekötő ][sap-icon]<br> **SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -274,86 +274,86 @@ A dedikált [integrációs szolgáltatási környezetben (ISE)](#integration-ser
 
 :::row:::
     :::column:::
-        [![API-ikon ][as2-icon]<br> **AS2**][as2-doc]
+        [![AS2 ISE-összekötő ][as2-icon]<br> **AS2**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
+        [![Azure Automation ISE-összekötő ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc]
+        [![Azure Blob Storage ISE-összekötő az ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage** -ban][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-ikon ][azure-event-hubs-icon]<br> **Azure Event <br> hubok**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][azure-event-grid-icon]<br> **Azure Event <br> Grid**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][azure-file-storage-icon]<br> **Azure file <br> Storage**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon az ][azure-key-vault-icon]<br> **Azure Key <br> vaultban**][azure-key-vault-doc]
+        [![Azure Cosmos DB ISE-összekötő ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-ikon ][azure-monitor-logs-icon]<br> **Azure monitor <br> naplók**][azure-monitor-logs-doc]
+        [![Azure Event Hubs ISE-összekötő ][azure-event-hubs-icon]<br> **Azure Event <br> hubok**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
+        [![Azure Event Grid ISE-összekötő ][azure-event-grid-icon]<br> **Azure Event <br> Grid**][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][azure-sql-data-warehouse-icon]<br> **Az Azure SQL- <br> adattárházban**][azure-sql-data-warehouse-doc]
+        [![Azure File Storage ISE-összekötő az ][azure-file-storage-icon]<br> **Azure file <br> Storage** -ban][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][azure-table-storage-icon]<br> **Azure Table <br> Storage**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-ikon ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][edifact-icon]<br> **EDIFACT**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![API-ikon ][ftp-icon]<br> **FTP**][ftp-doc]
+        [![Azure Key Vault ISE-összekötő az ][azure-key-vault-icon]<br> **Azure Key <br> vaultban**][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-ikon ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![Azure Monitor naplózó ISE-összekötő ][azure-monitor-logs-icon]<br> **Azure monitor <br> naplók**][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![Azure Service Bus ISE-összekötő ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![Azure SQL Data Warehouse ISE-összekötő ][azure-sql-data-warehouse-icon]<br> **Az Azure SQL- <br> adattárházban**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][sap-icon]<br> **SAP**][sap-connector-doc]
+        [![Azure Table Storage ISE-összekötő az ][azure-table-storage-icon]<br> **Azure Table <br> Storage** -ban][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API ][sftp-ssh-icon]<br> **-ikon SFTP – SSH**][sftp-ssh-doc]
+        [![Azure Queues ISE-összekötő ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][smtp-icon]<br> **SMTP**][smtp-doc]
+        [![EDIFACT ISE-összekötő ][edifact-icon]<br> **EDIFACT**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![Fájlrendszer ISE-összekötő ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API-ikon ][x12-icon]<br> **X12**][x12-doc]
+        [![FTP ISE-összekötő ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270 ISE-összekötő ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2 ISE-összekötő, ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ ISE-összekötő ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP ISE-összekötő ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH ISE ][sftp-ssh-icon]<br> **-összekötő sftp-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![SMTP ISE-összekötő ][smtp-icon]<br> **SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![SQL Server ISE-összekötő ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 ISE-összekötő ][x12-icon]<br> **X12**][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -410,9 +410,9 @@ Ha a szervezete nem engedélyezi a kapcsolódást bizonyos erőforrásokhoz a Az
 
 ## <a name="get-ready-for-deployment"></a>Felkészülés az üzembe helyezésre
 
-Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön Azure-erőforrások, saját erőforrás-definíciókkal rendelkeznek. A kapcsolódási erőforrás-definíciók áttekintéséhez tekintse meg [a logikai alkalmazáshoz tartozó erőforráscsoportot a Azure Portal használatával](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) , vagy [töltse le az Azure-ból származó logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md), amely a legegyszerűbben az üzembe helyezésre kész, érvényes paraméteres Logic app-sablon létrehozása.
+Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön Azure-erőforrások, saját erőforrás-definíciókkal rendelkeznek. A kapcsolódási erőforrás-definíciók áttekintéséhez [töltse le a logikai alkalmazást az Azure-ból a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md), amely a legegyszerűbben az üzembe helyezésre kész, érvényes paraméteres Logic app-sablon létrehozása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [teljes összekötő listájának](/connectors) megtekintése
 * [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -574,7 +574,7 @@ Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Üzeneteket küldhet a Service Bus-üzenetsorokból és -témakörökből, valamint fogadhatja a Service Bus-üzenetsorok és -előfizetések üzeneteit."
 [azure-sql-data-warehouse-doc]: /connectors/sqldw/ "A Azure SQL Data Warehouse csatlakozhat, így megtekintheti az adatait"
 [azure-table-storage-doc]: /connectors/azuretables/ "Kapcsolódjon az Azure Storage-fiókjához, így táblákat hozhat létre, frissíthet és lekérdezéseket végezhet"
-[biztalk-server-doc]: /connectors/biztalk/ "Kapcsolódjon a BizTalk Serverhoz, hogy a BizTalk-alapú alkalmazások párhuzamosan futtathatók legyenek Azure Logic Apps"
+[biztalk-server-doc]: /connectors/biztalk/ "Kapcsolódjon a BizTalk Serverhoz, hogy a BizTalk-alapú alkalmazások egymás mellett is futtathatók legyenek Azure Logic Apps"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Csatlakozhat egy helyszíni fájlrendszerhez"
 [ftp-doc]: ./connectors-create-api-ftp.md "Csatlakozhat egy FTP-/FTPS-kiszolgálóhoz, és ott különféle FTP-műveleteket hajthat végre, például fájlokat törölhet, tölthet fel vagy kérhet le"
 [github-doc]: ./connectors-create-api-github.md "Csatlakozhat a GitHubhoz, és különböző problémákat követhet nyomon"

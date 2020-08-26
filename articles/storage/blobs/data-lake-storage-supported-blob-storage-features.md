@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053473"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869456"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -47,12 +47,13 @@ Ez a táblázat a blob Storage azon funkcióit sorolja fel, amelyeket a Azure Da
 |Megváltoztathatatlan tároló|Előnézet|Még nem támogatott|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
 |Életciklus-kezelési szabályzatok|Előnézet|Még nem támogatott|[Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
 |Tároló – Soft delete|Előnézet|Előnézet|[Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)|
-|Blobos törlés|Még nem támogatott|Még nem támogatott|[A Blobok Soft delete](storage-blob-soft-delete.md)|
+|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](storage-blob-soft-delete.md)|
 |Blobfuse|Előnézet|Még nem támogatott|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Csatorna módosítása|Még nem támogatott|Még nem támogatott|[A hírcsatornák támogatásának módosítása az Azure Blob Storage-ban](storage-blob-change-feed.md)|
 |Fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB Container ACL|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Tároló ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
+|Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|
 
 <div id="diagnostic-logging"><sup>1</sup> a prémium szintű blokk blob Storage-fiókok esetében a Azure Portal használatával nem engedélyezhető a diagnosztikai naplók (klasszikus). Engedélyezze őket a PowerShell használatával.</div><br>
 

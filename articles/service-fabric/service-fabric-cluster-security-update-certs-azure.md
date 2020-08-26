@@ -3,12 +3,12 @@ title: Tanúsítványok kezelése Azure Service Fabric-fürtben
 description: Útmutatás új tanúsítványok hozzáadásához, az átváltási tanúsítványhoz és a tanúsítvány eltávolításához egy Service Fabric-fürtön.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869745"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Tanúsítványok hozzáadása és törlése Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy ismerkedjen meg a Service Fabric X. 509 tanúsítványokkal, és Ismerje meg a [fürt biztonsági forgatókönyveit](service-fabric-cluster-security.md). A folytatás előtt meg kell ismernie, hogy mi a fürt tanúsítványa, és mire használható.
@@ -260,7 +260,7 @@ A fürt tanúsítványainak mellett az Ügyféltanúsítványok hozzáadásával
 
 Kétféle ügyféltanúsítványt vehet fel – rendszergazda vagy csak olvasható. Ezek ezután a fürt rendszergazdai műveleteihez és lekérdezési műveleteihez való hozzáférés szabályozására használhatók. Alapértelmezés szerint a rendszer hozzáadja a fürtözött tanúsítványokat az engedélyezett rendszergazdai tanúsítványok listához.
 
-tetszőleges számú ügyféltanúsítványt is megadhat. Minden hozzáadás/törlés a Service Fabric-fürt konfigurációs frissítését eredményezi
+Tetszőleges számú ügyféltanúsítványt is megadhat. Minden hozzáadás/törlés a Service Fabric-fürt konfigurációs frissítését eredményezi.
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Ügyféltanúsítványok hozzáadása – rendszergazda vagy csak olvasható a portálon keresztül
@@ -279,7 +279,7 @@ Ha el szeretne távolítani egy másodlagos tanúsítványt a fürt biztonságá
 
 Az alkalmazásokhoz a fürthöz használt tanúsítvány üzembe helyezéséhez tekintse meg [ezt a PowerShell-parancsfájlt](scripts/service-fabric-powershell-add-application-certificate.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fürtözéssel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)

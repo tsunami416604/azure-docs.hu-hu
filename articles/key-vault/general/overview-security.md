@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534804"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870578"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
@@ -95,8 +95,8 @@ A naplózási adatok a Key Vault műveletét követő 10 percen belül érhetők
 
 A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse meg az [Azure Storage biztonsági útmutatóját](../../storage/blobs/security-recommendations.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
-- [virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
+

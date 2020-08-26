@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bf16ee0af1c5816822f6a201ad1d5a70127082db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 10674d15a7515b01b0df6cf37bce89f153cb9b0b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825378"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870685"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure Managed Disks Storage konvertálása standard csomagról prémium vagy prémium szintre
 
-Az Azure Managed Disks négyféle lemezből áll: az Azure Ultra SSD (előzetes verzió), a prémium SSD, a standard SSD és a standard HDD. A teljesítmény igényei alapján válthat a három GA-lemez típusa (prémium SSD, standard SSD és standard HDD) között. Még nem tud váltani egy ultra SSD-ről, és telepítenie kell egy újat.
+Az Azure Managed Disks négyféle típusú lemezből áll: az Azure Ultra Disks, a Premium SSD, a standard SSD és a standard HDD. A teljesítmény igényei alapján válthat a három GA-lemez típusa (prémium SSD, standard SSD és standard HDD) között. Még nem tud váltani egy ultra-lemezre, és egy újat kell telepítenie.
 
 A nem felügyelt lemezek esetében ez a funkció nem támogatott. A nem [felügyelt lemezeket azonban könnyedén átalakíthatja egy felügyelt lemezre](convert-unmanaged-to-managed-disks.md) , hogy képes legyen váltani a lemezek típusai között.
 

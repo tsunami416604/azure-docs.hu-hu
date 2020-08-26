@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 797580e00c1ec36a2ed79d1b3a6fc73da1322aed
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d81cd0ac57a5a18d90144584e8705cbffcba6f9b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831124"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871428"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Felügyelt lemez tárolási típusának frissítése
 
-Az Azure Managed Disks négyféle lemezből áll: az Azure Ultra SSD (előzetes verzió), a prémium SSD, a standard SSD és a standard HDD. A teljesítmény igényei alapján válthat a három GA-lemez típusa (prémium SSD, standard SSD és standard HDD) között. Még nem tud váltani egy ultra SSD-ről, és telepítenie kell egy újat.
+Az Azure Managed Disks négyféle típusú lemezből áll: az Azure Ultra Disks, a Premium SSD, a standard SSD és a standard HDD. A teljesítmény igényei alapján válthat a három GA-lemez típusa (prémium SSD, standard SSD és standard HDD) között. Még nem tud váltani egy ultra-lemezre, és egy újat kell telepítenie.
 
 A nem felügyelt lemezek esetében ez a funkció nem támogatott. A nem [felügyelt lemezeket azonban könnyedén átalakíthatja egy felügyelt lemezre](convert-unmanaged-to-managed-disks.md) , hogy képes legyen váltani a lemezek típusai között.
 
@@ -151,6 +151,6 @@ $disk | Update-AzDisk
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készítse el a virtuális gép írásvédett másolatát egy [Pillanatkép](snapshot-copy-managed-disk.md)használatával.

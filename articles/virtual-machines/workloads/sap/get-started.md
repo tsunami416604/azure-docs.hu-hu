@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2020
+ms.date: 08/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749671"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871377"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -88,7 +88,10 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
-- 08/21/2020: új operációsrendszer-kiadás hozzáadása [kompatibilis operációs rendszerekhez HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) számára elérhető operációs rendszerként az i és a II típusú HLI-egységekhez.
+- 08/25/2020: változás a [Ha az SAP ASCS/SCS és a WSFC és a megosztott lemez](./sap-high-availability-guide-wsfc-shared-disk.md)között, [készítse elő az Azure-infrastruktúrát az SAP ASCS/SCS és a WSFC](./sap-high-availability-infrastructure-wsfc-shared-disk.md) , valamint a megosztott lemezzel, és [telepítse az SAP NW ha WSFC és a megosztott lemezzel](./sap-high-availability-guide-wsfc-shared-disk.md) lehetőséget, hogy bemutassa az Azure Shared Disk és a Document SAP ERS2 architektúrájának használatát.
+- 08/25/2020: [több SID-t tartalmazó útmutató kiadása az SAP ASCS/SCS-hez a WSFC és az Azure megosztott lemezzel](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
+- 08/25/2020: változás a [Ha-útmutatóban az SAP ASCS/SCS és a WSFC és a Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md)esetében [készítse elő az Azure-infrastruktúrát az SAP ASCS/SCS-hez a WSFC és a fájlmegosztás](./sap-high-availability-infrastructure-wsfc-file-share.md), valamint a [multi-SID-vel kapcsolatos útmutató az SAP ASCS/SCS-hez a WSFC és a megosztott lemezzel](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) , valamint a multi-SID if útmutatót az SAP ASCS/SCS-hez [WSFC és SOFS fájlmegosztás](./sap-ascs-ha-multi-sid-wsfc-file-share.md) eredményeként a ASCS és a megosztott lemezzel rendelkező SAP WFC/SCS esetében 
+- 08/21/2020: új operációsrendszer-kiadás hozzáadása [kompatibilis operációs rendszerekhez HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) számára elérhető operációs rendszerként az I és a II típusú HLI-egységekhez.
 - 08/18/2020: a [(z) SAP HANA kiadásának felskálázása a ANF on RHEL](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 08/17/2020: További információ a Azure Site Recovery használatáról az SAP NetWeaver-rendszerek a helyszíni rendszerből az Azure-ba való áthelyezéséhez az [azure Virtual Machines tervezése és implementálása az SAP NetWeaver](./planning-guide.md) -ban című cikk nyújt tájékoztatást.
 - 08/14/2020: lemez-konfigurációs tanácsok hozzáadása a DB2-hez az [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

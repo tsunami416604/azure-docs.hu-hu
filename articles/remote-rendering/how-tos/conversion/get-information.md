@@ -1,20 +1,40 @@
 ---
-title: A konvertált modell adatainak lekérése
-description: Az összes modell-átalakítási paraméter leírása
+title: A konverzióval kapcsolatos információk beolvasása
+description: A konverzióval kapcsolatos információk beolvasása
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509297"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870289"
 ---
-# <a name="get-information-about-a-converted-model"></a>A konvertált modell adatainak lekérése
+# <a name="get-information-about-conversions"></a>A konverzióval kapcsolatos információk beolvasása
 
-Az átalakítási szolgáltatás által létrehozott arrAsset-fájl kizárólag a renderelési szolgáltatás általi felhasználásra szolgál. Előfordulhat azonban, hogy a modellre vonatkozó információkat a renderelési munkamenet elindítása nélkül szeretné elérni. Ezért az átalakítási szolgáltatás egy JSON-fájlt helyez el a kimeneti tároló arrAsset fájlja mellett. Ha például egy fájl `buggy.gltf` konvertálása történik, a kimeneti tároló tartalmazni fog egy nevű fájlt `buggy.info.json` a konvertált eszköz mellett `buggy.arrAsset` . A forrás modellről, a konvertált modellről, valamint magáról a konverzióról tartalmaz információkat.
+## <a name="information-about-a-conversion-the-result-file"></a>A konverzióval kapcsolatos információk: az eredmény fájl
+
+Ha az átalakítási szolgáltatás átalakítja az eszközt, az egy "eredmény" fájlba írja az esetleges problémák összegzését. Ha például egy fájl `buggy.gltf` konvertálása történik, a kimeneti tároló egy nevű fájlt fog tartalmazni `buggy.result.json` .
+
+Az eredmény fájl felsorolja az átalakítás során bekövetkezett hibákat és figyelmeztetéseket, valamint az eredmény összegzését, amely a vagy az egyike `succeeded` `failed` `succeeded with warnings` .
+Az eredményként szolgáló fájl az objektumok JSON-tömbje, amelyek mindegyike egy,,, és típusú karakterlánc-tulajdonsággal rendelkezik `warning` `error` `internal warning` `internal error` `result` . Legfeljebb egy hiba ( `error` vagy `internal error` ) lesz, és mindig lesz egy `result` .
+
+## <a name="example-result-file"></a>Példa az *eredmény* fájlra
+
+Az alábbi példa egy olyan konverziót ismertet, amely sikeresen generált egy arrAsset. Mivel azonban hiányzik a textúra, az eredményül kapott arrAsset nem lehet a szándéka.
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>Az átalakított modellel kapcsolatos információk: az információs fájl
+
+Az átalakítási szolgáltatás által létrehozott arrAsset-fájl kizárólag a renderelési szolgáltatás általi felhasználásra szolgál. Előfordulhat azonban, hogy a modellre vonatkozó információkat a renderelési munkamenet elindítása nélkül szeretné elérni. A munkafolyamat támogatásához a konverziós szolgáltatás egy JSON-fájlt helyez el a kimeneti tároló arrAsset fájlja mellett. Ha például egy fájl `buggy.gltf` konvertálása történik, a kimeneti tároló tartalmazni fog egy nevű fájlt `buggy.info.json` a konvertált eszköz mellett `buggy.arrAsset` . A forrás modellről, a konvertált modellről, valamint magáról a konverzióról tartalmaz információkat.
 
 ## <a name="example-info-file"></a>Példa *információs* fájlra
 
@@ -125,7 +145,12 @@ Ez a szakasz a konvertált eszközről kiszámított adatokat rögzíti.
 * `recenteringOffset`: Ha a `recenterToOrigin` [ConversionSettings](configure-model-conversion.md) engedélyezve van, ez az érték a fordítás, amely áthelyezi a konvertált modellt az eredeti helyére.
 * `boundingBox`: A modell határai.
 
-## <a name="next-steps"></a>További lépések
+## <a name="deprecated-features"></a>Elavult funkciók:
+
+A konverziós szolgáltatás a fájlokat `stdout.txt` és `stderr.txt` a kimeneti tárolót írja, és ezek a figyelmeztetések és hibák egyetlen forrása voltak.
+Ezek a fájlok már elavultak. Ehelyett használja az [eredményhalmaz fájljait](#information-about-a-conversion-the-result-file) erre a célra.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [A modellátalakítás konfigurálása](configure-model-conversion.md)

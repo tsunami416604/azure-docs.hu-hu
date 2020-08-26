@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 5c2c994b48fb2b950afb67f5c8b6d3c4f7d01e39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826650"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871547"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -21,7 +21,7 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 - A magánhálózati végpontok csak az új Recovery Services-tárolók számára hozhatók létre (amelyek nem rendelkeznek a tárolóhoz regisztrált elemekkel). Ezért létre kell hozni a privát végpontokat, mielőtt a tár bármely elemét védetté tenné.
 - Egy virtuális hálózat több Recovery Services-tárolóhoz is tartalmazhat privát végpontokat. Emellett egy Recovery Services-tár több virtuális hálózatban is rendelkezhet saját végpontokkal. Azonban a tárolóhoz létrehozható privát végpontok maximális száma 12.
 - Miután létrehozta a tárolóhoz egy privát végpontot, a rendszer zárolja a tárolót. Nem lesz elérhető (biztonsági mentéshez és visszaállításhoz) a hálózatokon kívülről is, amelyek a tárolóhoz privát végpontot tartalmaznak. Ha a tár összes privát végpontja törlődik, a tároló minden hálózatról elérhető lesz.
-- A biztonsági mentéshez használt privát végponti kapcsolatok összesen 11 magánhálózati IP-címet használnak az alhálózaton. Az egyes Azure-régiók esetében ez a szám magasabb (akár 25) is lehet. Ezért javasoljuk, hogy elegendő privát IP-cím álljon rendelkezésre, ha privát végpontokat próbál létrehozni a biztonsági mentéshez.
+- A biztonsági mentéshez használt privát végponti kapcsolatok összesen 11 magánhálózati IP-címet használnak az alhálózaton, beleértve a Azure Backup által a Storage szolgáltatáshoz használt. Az egyes Azure-régiók esetében ez a szám magasabb (akár 25) is lehet. Ezért javasoljuk, hogy elegendő privát IP-cím álljon rendelkezésre, ha privát végpontokat próbál létrehozni a biztonsági mentéshez.
 - A Recovery Services-tárolót (mindkettő) Azure Backup és Azure Site Recovery is használja, ez a cikk a privát végpontok használatát ismerteti csak Azure Backup esetén.
 - Azure Active Directory jelenleg nem támogatja a privát végpontokat. A Azure Active Directory működéséhez szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez.
 - A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt le kell tiltania a hálózati házirendeket.
@@ -566,6 +566,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

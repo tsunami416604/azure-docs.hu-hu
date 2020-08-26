@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
-ms.date: 01/30/2019
-ms.openlocfilehash: f0bda1f4b9894b1ea5a68f44a728f715676d500e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 08/25/2020
+ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869117"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Az Azure karbantartási eseményeinek megtervezése Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,21 +29,21 @@ Az egyes adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Mire számíthat egy tervezett karbantartási esemény során
 
-Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik. Az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázisa új elsődleges másodpéldányához. Ha egy új kapcsolatra akkor kerül sor, amikor az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-as hibaüzenet jelenik meg (az adatbázis nem érhető el): a (z) {servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Később próbáljon újból kapcsolódni.” hiba elhárítása. Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
+A karbantartási esemény a karbantartási esemény elején lévő elsődleges és másodlagos replikák csillagképtől függően egy vagy több feladatátvételt is képes létrehozni. Átlagosan 1,7 feladatátvétel történik egy tervezett karbantartási eseménynél. Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik. Az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázis új elsődleges replikához. Ha egy új kapcsolatra akkor kerül sor, amikor az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-as hibaüzenet jelenik meg (az adatbázis nem érhető el): a (z) *{servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Próbálja megismételni a kapcsolatokat később. "* Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
+
+## <a name="how-to-simulate-a-planned-maintenance-event"></a>Tervezett karbantartási esemény szimulálása
+
+Annak biztosítása, hogy az ügyfélalkalmazás az éles környezetben történő üzembe helyezést megelőzően a karbantartási események számára is rugalmas legyen, segít csökkenteni az alkalmazások hibáinak kockázatát, és hozzájárul az alkalmazások rendelkezésre állásához a végfelhasználók számára. A tervezett karbantartási események során tesztelheti az ügyfélalkalmazás viselkedését, ha a PowerShell, a CLI vagy a REST API segítségével [manuális feladatátvételt kezdeményez](https://aka.ms/mifailover-techblog) . Azonos viselkedést eredményez, mint a karbantartási esemény, amely az elsődleges replikát offline állapotba hozza.
 
 ## <a name="retry-logic"></a>Újrapróbálkozási logika
 
-A felhőalapú adatbázis-szolgáltatáshoz csatlakozó összes ügyfél-éles alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia. Ez segít enyhíteni ezeket a helyzeteket, és általában a végfelhasználók számára transzparens módon végezze el a hibákat.
-
-## <a name="frequency"></a>Frequency
-
-Átlagosan 1,7 tervezett karbantartási esemény történik havonta.
+A felhőalapú adatbázis-szolgáltatáshoz csatlakozó összes ügyfél-éles alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia. Ez segít a feladatátvételek transzparensvé tételében a végfelhasználók számára, vagy legalább minimálisra csökkenteni a negatív hatásokat.
 
 ## <a name="resource-health"></a>Erőforrás állapota
 
 Ha az adatbázis bejelentkezési hibákat észlel, tekintse meg az aktuális állapot [Azure Portal](https://portal.azure.com) [Resource Health](../../service-health/resource-health-overview.md#get-started) ablakát. Az állapot előzményei szakasz az egyes események állásidői okát tartalmazza (ha elérhető).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure SQL Database és az Azure SQL felügyelt példányának [Resource Healthéről](resource-health-to-troubleshoot-connectivity.md) .
 - Az újrapróbálkozási logikával kapcsolatos további információkért lásd az [átmeneti hibákra vonatkozó újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).

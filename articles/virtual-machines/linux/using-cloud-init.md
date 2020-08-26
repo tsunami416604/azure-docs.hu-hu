@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510072"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869269"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
@@ -23,7 +23,7 @@ A virtuális gépek üzembe helyezése az a folyamat, amelyben az Azure leállí
 Az Azure két üzembe helyezési ügynököt támogat a [Cloud-init](https://cloudinit.readthedocs.io)és az [Azure Linux Agent (Wala)](../extensions/agent-linux.md)számára.
 
 ## <a name="cloud-init-overview"></a>Cloud-init – áttekintés
-a [Cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux RENDSZERű virtuális gépek első indításakor való testre szabására. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A `#cloud-config` fájlok vagy más bemenetek megfelelő formázásáról további információt a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config`a fájlok a Base64 kódolású szövegfájlok.
+a [Cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux RENDSZERű virtuális gépek első indításakor való testre szabására. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A `#cloud-config` fájlok vagy más bemenetek megfelelő formázásáról további információt a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config` a fájlok a Base64 kódolású szövegfájlok.
 
 a Cloud-init a disztribúciók között is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. a Cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
@@ -46,7 +46,7 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | n.a. |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
@@ -61,15 +61,15 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | n.a. |
-|OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
-|OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
-|OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
-|OpenLogic 7,7 (Gen2) |CentOS – HPC | 7_7 – Gen2 |7.6.2020062601 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
-|OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
-|OpenLogic 8,1 (Gen2) |CentOS | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
-|OpenLogic 8,1 |CentOS – HPC | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
-|OpenLogic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-7.el8_1.1`|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
+|OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
+|OpenLogic 7,7 (Gen2) |CentOS – HPC | 7_7 – Gen2 |7.6.2020062601 |igen | igen – a csomag verziójának támogatása: `18.5-6.el7.centos.5`|
+|OpenLogic 8,1 |CentOS | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása: `18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása: `18.5-7.el8_1.1`|
+|OpenLogic 8,1 |CentOS – HPC | 8_1 |8.1.2020062400 |igen | igen – a csomag verziójának támogatása: `18.5-7.el8_1.1`|
+|OpenLogic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1 – Gen2 |8.1.2020062401 |igen | igen – a csomag verziójának támogatása: `18.5-7.el8_1.1`|
 
 * Minden OpenLogic: CentOS 7,8 és 8,2 (Gen1 és Gen2) lemezképek kiépítve a Cloud-init használatával.
 
@@ -151,6 +151,8 @@ az vm create \
 ```
 
 A virtuális gép létrehozása után az Azure CLI az üzemelő példányra vonatkozó információkat jeleníti meg. Jegyezze fel a `publicIpAddress` értékét. Ez a cím használható a virtuális gép eléréséhez.  Időbe telik a virtuális gép létrehozása, a telepítendő csomagok és az alkalmazás elindítása. Néhány háttérfeladat azután is tovább fut, hogy az Azure CLI visszairányítja Önt a parancssorhoz. A felhő-init naplók megtekintéséhez SSH-t használhat a virtuális gépre, és a hibaelhárítás szakaszban leírt lépéseket követve tekintheti meg. 
+
+Az [ARM-sablon paramétereinek](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)átadásával is üzembe helyezhet egy Felhőbeli init-alapú virtuális gépet.
 
 ## <a name="troubleshooting-cloud-init"></a>A Cloud-init hibaelhárítása
 A virtuális gép üzembe helyezése után a Cloud-init a `--custom-data` virtuális gép konfigurálásához megadott összes modulon és parancsfájlon keresztül fut.  Ha a konfiguráció hibáit vagy kihagyásait szeretné elhárítani, keresse meg a modul nevét ( `disk_setup` vagy `runcmd` például) a **/var/log/Cloud-init.log**-ben található Cloud-init naplóban.

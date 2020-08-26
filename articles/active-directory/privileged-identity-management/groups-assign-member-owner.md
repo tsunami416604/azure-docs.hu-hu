@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1dcc98366e37455f462fe1a0740aa161201912f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506224"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869647"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Jogosultsági szintű hozzáférési csoport (előzetes verzió) kiosztása Privileged Identity Management
 
@@ -33,19 +33,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) segítsé
 
 Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek egy emelt szintű hozzáférési csoport tagjának vagy tulajdonosának a használatára.
 
-1. Jelentkezzen be [Privileged Identity Managementra](https://portal.azure.com/) a Azure Portal a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörrel rendelkező jogosultságokkal.
+1. [Jelentkezzen be az Azure ad-be](https://aad.portal.azure.com) globális rendszergazdai vagy csoport-tulajdonosi engedélyekkel.
+1. Válassza a **csoportok** lehetőséget, majd válassza ki a kezelni kívánt szerepkör-hozzárendelhető csoportot. Kereshet vagy szűrheti a listát.
 
-    További információ a Privileged Identity Management kezeléséhez szükséges további rendszergazdai hozzáférésről: [hozzáférés biztosítása más rendszergazdák számára a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md).
+    ![szerepkörhöz hozzárendelhető csoport keresése a PIM-ben való kezeléshez](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. Nyissa meg a csoportot, és válassza a **privilegizált hozzáférés (előzetes verzió)** lehetőséget.
 
-1. Válassza a **privilegizált hozzáférés (előzetes verzió)** lehetőséget.
-
-1. Megkeresheti a csoport nevét, és a **csoport típusát** használva szűrheti a listát, és kiválaszthatja a kezelni kívánt csoportot.
-
-    ![A felügyelni kívánt privilegizált hozzáférési csoportok listája](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. A **kezelés**területen válassza a **hozzárendelések**lehetőséget.
+    ![A Privileged Identity Management felület megnyitása](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Válassza a **hozzárendelések hozzáadása**lehetőséget.
 
@@ -77,27 +72,26 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek egy e
 
 A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításához kövesse az alábbi lépéseket.
 
-1. Nyissa meg **Azure ad Privileged Identity Management**.
+1. [Jelentkezzen be az Azure ad-be](https://aad.portal.azure.com) globális rendszergazdai vagy csoport-tulajdonosi engedélyekkel.
+1. Válassza a **csoportok** lehetőséget, majd válassza ki a kezelni kívánt szerepkör-hozzárendelhető csoportot. Kereshet vagy szűrheti a listát.
 
-1. Válassza a **privilegizált hozzáférés (előzetes verzió)** lehetőséget.
+    ![szerepkörhöz hozzárendelhető csoport keresése a PIM-ben való kezeléshez](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Megkeresheti a csoport nevét, és a **csoport típusát** használva szűrheti a listát, és kiválaszthatja a kezelni kívánt csoportot.
+1. Nyissa meg a csoportot, és válassza a **privilegizált hozzáférés (előzetes verzió)** lehetőséget.
 
-    ![A felügyelni kívánt privilegizált hozzáférési csoportok listája](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. A **kezelés**területen válassza a **hozzárendelések**lehetőséget.
+    ![A Privileged Identity Management felület megnyitása](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Válassza ki a frissíteni vagy eltávolítani kívánt szerepkört.
 
 1. Keresse meg a szerepkör-hozzárendelést a **jogosult szerepkörök** vagy az **aktív szerepkörök** lapon.
 
-    ![Szerepkör-hozzárendelés frissítése vagy eltávolítása](./media/groups-assign-member-owner/groups-add-assignment.png)
+    ![Szerepkör-hozzárendelés frissítése vagy eltávolítása](./media/groups-assign-member-owner/groups-bring-under-management.png)
 
 1. A szerepkör-hozzárendelés frissítéséhez vagy eltávolításához válassza a **frissítés** vagy az **Eltávolítás** lehetőséget.
 
     További információ a szerepkör-hozzárendelés kibővítéséről: [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Managementban](pim-resource-roles-renew-extend.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Management](pim-resource-roles-renew-extend.md)
 - [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)

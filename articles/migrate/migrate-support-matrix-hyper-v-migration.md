@@ -3,12 +3,12 @@ title: A Hyper-V áttelepítésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V áttelepítésének támogatásával Azure Migrateokkal.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1ea7d139b3d3cc8c14e43ccfb7c233fcbe4c564c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122064"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871496"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>A Hyper-V áttelepítésének támogatási mátrixa
 
@@ -25,7 +25,7 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 | :-------------------       | :------------------- |
 | **Üzembe helyezés**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető. <br/>Azure Migrate replikációs szoftver (Hyper-V replikációs szolgáltató) telepítve van a Hyper-V-gazdagépeken.|
 | **Engedélyek**           | Rendszergazdai engedélyekkel kell rendelkeznie a Hyper-V-gazdagépen. |
-| **Gazda operációs rendszer** | Windows Server 2019, Windows Server 2016 vagy Windows Server 2012 R2. |
+| **Gazda operációs rendszer** | Windows Server 2019, Windows Server 2016 vagy Windows Server 2012 R2 a legújabb frissítésekkel. Vegye figyelembe, hogy ezek az operációs rendszerek Server Core telepítése is támogatott. |
 | **Port-hozzáférés** |  Kimenő kapcsolatok a 443-es HTTPS-porton a virtuális gép replikációs adatküldéséhez.
 
 
@@ -38,7 +38,7 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 **Linux rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek.<br/><br/> A Linux rendszerben a Azure Migrate automatikusan végrehajtja a módosításokat a következő operációs rendszereken:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8. Más operációs rendszerekhez manuálisan végezze el a [szükséges módosításokat](prepare-for-migration.md#linux-machines) .
 | **Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. A módosításokat manuálisan végezze el az áttelepítés előtt. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak. |
 | **Linux rendszerű rendszerindítás**                 | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie. |
-| **UEFI-rendszerindítás**                  | Az Azure-ban áttelepített virtuális gép automatikusan BIOS rendszerindító virtuális gépre lesz konvertálva. A virtuális gépnek csak a Windows Server 2012-es vagy újabb verziójának kell futnia. Az operációsrendszer-lemez legfeljebb öt partíciót tartalmazhat, és az operációsrendszer-lemez mérete nem haladhatja meg a 300 GB-ot.|
+| **UEFI-rendszerindítás**                  | Támogatott. Győződjön meg arról, hogy az Azure 2. generációs virtuális gépe által támogatott virtuálisgép-méretet választ  |
 | **Lemezméret**                  | 2 TB az operációsrendszer-lemez, 4 TB az adatlemezek számára.|
 | **Lemez száma** | Legfeljebb 16 lemez virtuális gépenként.|
 | **Titkosított lemezek/kötetek**    | Migrálás esetén nem támogatott.|
@@ -93,7 +93,7 @@ Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogato
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A számítógép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 – 63 karakter.<br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. |  Frissítse az értéket a Site Recovery számítógép tulajdonságai között.
-Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/><br/> – Az áttelepítés előtt engedélyezze az RDP-t a helyszíni virtuális gépen. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/><br/> -Helyek közötti VPN-hozzáférés esetén engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára. Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](prepare-for-migration.md). |
+Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/><br/> – Az áttelepítés előtt engedélyezze az RDP-t a helyszíni virtuális gépen. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/><br/> -Helyek közötti VPN-hozzáférés esetén engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartományok és magánhálózatok** számára. Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](prepare-for-migration.md). |
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> – Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> – Az áttelepítés után az Azure-beli virtuális gépen engedélyezze a hálózati biztonsági csoportra vonatkozó, a feladatátvételi virtuális gépen található szabályok bejövő kapcsolatait, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van. Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez. |  
 
 ## <a name="next-steps"></a>Következő lépések

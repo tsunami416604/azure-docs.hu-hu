@@ -12,6 +12,11 @@
   items:
     - name: Megoldások virtuális gépeken
       href: virtual-machine-solutions.md
+- name: Útmutató
+  expanded: true
+  items:
+    - name: Fortanix Enclave Manager
+      href: how-to-fortanix-enclave-manager.md
 - name: További források
   expanded: true
   items:

@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6eaabac35676e9c836d07ffe6942ef9fc8c20cd8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855399"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871516"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -540,7 +540,7 @@ Miután mindkét csomópontra telepítette a SIOS DataKeeper, indítsa el a konf
 
    ![43. ábra: válassza az Igen lehetőséget a replikált kötet fürtözött kötetként való beállításához.][sap-ha-guide-figure-3043]
 
-   _ Válassza az **Igen** lehetőséget, ha a replikált kötetet fürtként szeretné beállítani volume_
+   _Válassza az **Igen** lehetőséget a replikált kötet fürtözött kötetként való beállításához_
 
    A kötet létrehozása után a DataKeeper-kezelés és-konfiguráció eszköz azt mutatja, hogy a replikációs feladatok aktívak.
 
@@ -555,6 +555,6 @@ Miután mindkét csomópontra telepítette a SIOS DataKeeper, indítsa el a konf
    _Feladatátvevőfürt-kezelő megjeleníti a replikált DataKeeper lemezt_
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Telepítse az SAP NetWeaver HA szolgáltatást egy Windows feladatátvevő fürt és egy SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-installation-wsfc-shared-disk]

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: d7d0979a52b4762ec4cc2fa82f507e8ce2b083c9
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86056888"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870646"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
 
@@ -61,7 +61,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="understand-the-scenario"></a>A forgatókönyv megismerése
 
-A szolgáltatástopológia-sablon a szolgáltatást alkotó Azure-erőforrásokat és a telepítési helyüket írja le. A szolgáltatástopológia definíciója az alábbi hierarchiát követi:
+A szolgáltatás-topológia sablonja ismerteti a szolgáltatást alkotó Azure-erőforrásokat és a telepítésük helyét. A szolgáltatástopológia definíciója az alábbi hierarchiát követi:
 
 * Szolgáltatástopológia
   * Szolgáltatások
@@ -455,6 +455,6 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag az Azure Deployment Manager használatát mutatta be. Az Azure telepítéskezelő állapotának monitorozásához lásd [: oktatóanyag: az állapot-ellenőrzés használata az azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).

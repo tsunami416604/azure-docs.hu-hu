@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056856"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870714"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -31,17 +31,52 @@ A Speech SDK számos funkciót tesz elérhetővé a beszédfelismerési szolgál
 
 A [beszéd – szöveg](speech-to-text.md) (más néven *beszédfelismerés*) a hangstreameket olyan szöveggé írja át, amelyet az alkalmazások, eszközök vagy eszközök képesek felhasználni vagy megjeleníteni. A beszéd-szöveg és a [Language Understanding (Luis)](../luis/index.yml) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. A [beszédfelismerés](speech-translation.md) használatával más nyelvre is lefordíthatja a hangbevitelt egyetlen hívással. További információ: [beszédfelismerés és szöveg közötti alapismeretek](speech-to-text-basics.md).
 
+A **beszédfelismerés (SR), a kifejezések listája, a szándék, a fordítás és a helyszíni tárolók** a következő platformokon érhetők el:
+
+  - C++/Windows & Linux & macOS rendszerhez
+  - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
+  - Java (JRE és Android)
+  - JavaScript (böngésző és NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
+  - Go (csak SR)
+
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 
 A [szöveg és a beszéd](text-to-speech.md) (más néven *beszéd szintézis*) szöveggé alakítja át a szöveget az emberi, például a szintetizált beszédbe. A bemeneti szöveg karakterlánc-literál vagy a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)használata. A standard vagy neurális hangokkal kapcsolatos további információkért lásd: [szöveg – beszéd nyelv és hangalapú támogatás](language-support.md#text-to-speech).
+
+A **szöveg-beszéd (TTS)** a következő platformokon érhető el:
+
+  - C++/Windows & Linux rendszerhez
+  - C#/Windows & UWP & Unity
+  - Java (JRE és Android)
+  - Python
+  - Swift
+  - Objective-C
+  - A TTS REST API minden más helyzetben használható.
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
 A Speech SDK-t használó [hangsegédek](voice-assistants.md) lehetővé teszik, hogy a fejlesztők természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy segéd között. A megvalósítás a bot Framework közvetlen vonalas beszédfelismerési csatornáját vagy az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni Hangportálon](https://aka.ms/customvoice) létrehozott egyéni hangokat is felhasználhatják egy egyedi hangkimeneti élmény hozzáadásához.
 
+A **hangsegédek** a következő platformokon érhetők el:
+
+  - C++/Windows & Linux & macOS rendszerhez
+  - C#/Windows
+  - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
+
 #### <a name="keyword-spotting"></a>Kulcsszavas bepecsételés
 
 [A beszédfelismerés](speech-devices-sdk-create-kws.md) fogalma támogatott a Speech SDK-ban. A kulcsszó-bepecsételés a kulcsszónak a beszédben való azonosítására szolgáló művelet, amelyet a kulcsszó meghallgatása után kell végezni. A "Hey Cortana" például aktiválja a Cortana Segédet.
+
+A következő platformokon érhető el a **(z) kulcsszó-Felpecsételés (KWS)** :
+
+  - C++/Windows & Linux rendszerhez
+  - C#/Windows & Linux rendszerhez
+  - Python/Windows & Linux
+  - Java/Windows & Linux & Android (Speech Devices SDK)
+  - A "a" kulcsszó-bepecsételés (KWS) funkció bármilyen mikrofonos típussal működhet, a hivatalos KWS-támogatás azonban jelenleg az Azure Kinect DK hardverben vagy a Speech Devices SDK-ban található mikrofon-tömbökre korlátozódik.
 
 ### <a name="meeting-scenarios"></a>Értekezleti forgatókönyvek
 
@@ -51,9 +86,20 @@ A Speech SDK kiválóan alkalmas az értekezlet-forgatókönyvek átírására, 
 
 A [beszélgetés átirata](conversation-transcription.md) lehetővé teszi a valós idejű (és aszinkron) beszédfelismerést, a hangszórók azonosítását és a mondatok kiosztását az egyes hangszórókhoz (más néven *diarization*). A személyes értekezletek átírása tökéletes választás a hangszórók megkülönböztetésére.
 
+A **beszélgetés átírása** a következő platformokon érhető el:
+
+  - C++/Windows & Linux rendszerhez
+  - C# (Framework & .NET Core)/Windows & UWP & Linux
+  - Java/Windows & Linux & Android (Speech Devices SDK)
+
 #### <a name="multi-device-conversation"></a>Több eszközre kiterjedő beszélgetés
 
 A [többeszközes beszélgetéssel](multi-device-conversation.md)több eszköz vagy ügyfél összekapcsolásával beszéd-vagy szöveges üzeneteket küldhet az átíráshoz és a fordításhoz egyszerű támogatással.
+
+A **multi-Device beszélgetés** a következő platformokon érhető el:
+
+  - C++/Windows
+  - C# (Framework & .NET Core)/Windows
 
 ### <a name="custom--agent-scenarios"></a>Egyéni/ügynöki forgatókönyvek
 
@@ -63,9 +109,17 @@ A Speech SDK használható a Call Center-forgatókönyvek továbbítására, aho
 
 A [Call Center átírása](call-center-transcription.md) gyakori forgatókönyv a beszédek közötti kommunikációhoz, amely különböző rendszerekről származó, nagy mennyiségű telefonos adatok (például interaktív hangválasztó (IVR)) beolvasására használható. A Speech Service Excel legújabb beszédfelismerési modelljei a telefonos adatok átírásakor, még abban az esetben is, ha az adatok nehezen érthetők.
 
+A **Call Center átirata** a Batch Speech szolgáltatáson keresztül érhető el a REST API használatával, és bármilyen helyzetben használható.
+
 ### <a name="codec-compressed-audio-input"></a>Codec tömörített hangbemenet
 
 A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok <span class="docon docon-navigate-external x-hidden-focus"></span> használata </a>.
+
+A **kodek tömörített hangbemenete** a következő platformokon érhető el:
+
+  - C++/Linux
+  - C#/Linux
+  - Java/Linux, Android és iOS
 
 ## <a name="rest-api"></a>REST API
 
@@ -123,7 +177,7 @@ Az egyéni hangvezérelt szöveg-beszéd, más néven az egyéni hang olyan onli
 
 [!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

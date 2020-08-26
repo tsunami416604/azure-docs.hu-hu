@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688351"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870204"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -154,6 +154,8 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
    using Azure.Search.Documents.Models;
    ```
 
+1. A JSON-szerializálást igénylő osztályok esetében cserélje le a-t a következőre: `using Newtonsoft.Json` `using System.Text.Json.Serialization` .
+
 1. Az ügyfél-hitelesítési kód módosítása. A korábbi verziókban az ügyfél objektumának tulajdonságaival állíthatja be az API-kulcsot (például a [SearchServiceClient. hitelesítő adatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) tulajdonságot). A jelenlegi verzióban a [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) osztály használatával adja át a kulcsot hitelesítő adatként, így ha szükséges, az API-kulcsot új ügyfélalkalmazások létrehozása nélkül is frissítheti.
 
    Az ügyfél tulajdonságainak egyszerűsítése csak `Endpoint` , `ServiceName` és `IndexName` (ahol szükséges). A következő példa a rendszer [URI](https://docs.microsoft.com/dotnet/api/system.uri) osztályát használja, hogy a végpontot és a [környezeti](https://docs.microsoft.com//dotnet/api/system.environment) osztályt adja meg a kulcs értékének olvasásához:
@@ -189,7 +191,7 @@ A szolgáltatási verziók frissítései esetében, ahol a Code Changes in 11-es
 
 + A null értékek [rendezett eredményei](search-query-odata-orderby.md) módosultak ebben a verzióban, és először Null érték jelenik meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` . Ha kódot írt a null értékek rendezésének kezeléséhez, tekintse át és távolítsa el ezt a kódot, ha már nincs rá szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Példák a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)

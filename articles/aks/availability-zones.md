@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 08/13/2020
-ms.openlocfilehash: 6bca57f799681a9f51b983da6f565bb465da8814
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214253"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871411"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -28,6 +28,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfig
 
 Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozhatók létre a következő régiókban:
 
+* Kelet-Ausztrália
 * Central US
 * USA 2. keleti régiója
 * USA keleti régiója

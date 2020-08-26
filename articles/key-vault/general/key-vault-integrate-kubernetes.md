@@ -1,19 +1,22 @@
 ---
 title: Az Azure Key Vault integrálása a Kubernetesszel
 description: Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el, és beolvashatja az Kubernetes hüvelybe való csatlakoztatáshoz a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával.
-author: rkarlin
-ms.author: rkarlin
+author: ShaneBala-keyvault
+ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 06/04/2020
-ms.openlocfilehash: 1942576037c7367612580a04d4187ccf4655aade
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 08/25/2020
+ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685884"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869184"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
+
+> [!IMPORTANT]
+> A CSI-illesztőprogram egy nyílt forráskódú projekt, amelyet az Azure technikai támogatása nem támogat. Az oldal alján található GitHub-hivatkozásra kattintva jelentse be a CSI-illesztőprogram Key Vault integrálásával kapcsolatos összes visszajelzést és problémát. Ez az eszköz arra szolgál, hogy a felhasználók önállóan telepítsék a fürtöket, és visszajelzést gyűjtsenek a Közösségtől.
 
 Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri le, a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával a titkokat a Kubernetes hüvelybe csatlakoztatni.
 
@@ -339,7 +342,7 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]

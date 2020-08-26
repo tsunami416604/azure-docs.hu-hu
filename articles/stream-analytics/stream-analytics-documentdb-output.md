@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848041"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870833"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
 A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti.
@@ -95,7 +95,7 @@ A bejövő események aránya Event Hubsban két alkalommal magasabb, mint Azure
 
 ![Azure Cosmos DB mérőszámok összehasonlítása](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-A 1,2-as verzióban a Stream Analytics sokkal intelligensebb a rendelkezésre álló átviteli sebesség 100 százalékának kihasználásával Azure Cosmos DB és a szabályozástól és a díjszabástól való korlátozástól függően nagyon kevés újraküldéssel. Ez jobb felhasználói élményt nyújt más számítási feladatokhoz, például a tárolón futó lekérdezésekhez. Ha szeretné megtekinteni, hogy a Stream Analytics hogyan méretezi a Azure Cosmos DB-et a 1 000-10 000 üzenetek másodpercenkénti fogadójának, próbálja ki [ezt az Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)-beli projektet.
+A 1,2-as verzióban a Stream Analytics sokkal intelligensebb a rendelkezésre álló átviteli sebesség 100 százalékának kihasználásával Azure Cosmos DB és a szabályozástól és a díjszabástól való korlátozástól függően nagyon kevés újraküldéssel. Ez jobb felhasználói élményt nyújt más számítási feladatokhoz, például a tárolón futó lekérdezésekhez. Ha szeretné megtekinteni, hogy a Stream Analytics hogyan méretezi a Azure Cosmos DB-et a 1 000-10 000 üzenetek másodpercenkénti fogadójának, próbálja ki  [ezt az Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)-beli projektet.
 
 A Azure Cosmos DB kimenetének teljesítménye megegyezik a 1,0-es és a 1,1-es értékkel. Azt *javasoljuk* , hogy a Stream Analytics kompatibilitási 1,2 szintjének használatát Azure Cosmos db.
 
@@ -105,7 +105,7 @@ A Azure Cosmos DB Stream Analytics kimenetként való használata a következő 
 
 ![Azure Cosmos DB kimeneti adatfolyamhoz tartozó információs mezők](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Mező           | Description|
+|Mező           | Leírás|
 |-------------   | -------------|
 |Kimeneti alias    | Egy alias, amely a Stream Analytics lekérdezésében erre a kimenetre hivatkozik.|
 |Előfizetés    | Az Azure-előfizetés.|

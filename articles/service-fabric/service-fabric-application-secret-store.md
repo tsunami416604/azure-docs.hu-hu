@@ -3,16 +3,19 @@ title: Azure Service Fabric központi titkok tárolója
 description: Ez a cikk azt ismerteti, hogyan használható a központi titkok tárolása az Azure Service Fabricban.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197766"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869755"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolása az Azure-ban Service Fabric 
 Ez a cikk azt ismerteti, hogyan használható a Central Secrets Store (CSS) az Azure Service Fabricban a titkok létrehozásához Service Fabric alkalmazásokban. A CSS egy helyi titkos tároló-gyorsítótár, amely a memóriában titkosított bizalmas adatokat, például jelszavakat, jogkivonatokat és kulcsokat tárol.
 
+  > [!NOTE] 
+  > Amikor először aktiválja a CSS-t az SF 7,1-es verziója előtt. A CU3, az aktiválás meghiúsulhat, és a CSS-t véglegesen nem megfelelő állapotba hagyhatja, ha: a CSS aktiválva van egy Windows hitelesített fürtön; A CSS minden fürtön aktiválva `EncryptionCertificateThumbprint` van, de helytelenül van deklarálva, vagy a megfelelő tanúsítvány nincs telepítve/ACL-ED a csomópontokon. Windows Auth-fürt esetén a 7,1-ra kell érkeznie. CU3 a továbblépés előtt. Más fürtök esetében tekintse meg a következő invariánsokat, vagy lépjen a 7,1-ra. CU3.
+  
 ## <a name="enable-central-secrets-store"></a>Központi titkok tárolójának engedélyezése
 Adja hozzá a következő parancsfájlt a fürt konfigurációjához a `fabricSettings` CSS engedélyezéséhez. Javasoljuk, hogy a CSS-fürtön kívül más tanúsítványt használjon. Győződjön meg arról, hogy a titkosítási tanúsítvány telepítve van az összes csomóponton, és `NetworkService` olvasási engedéllyel rendelkezik a tanúsítvány titkos kulcsához.
   ```json
@@ -125,5 +128,5 @@ A következő kódrészlet a módosított **ApplicationManifest.xml**.
    </EnvironmentVariables>
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md).

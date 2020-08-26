@@ -81,7 +81,7 @@ Ha egy felhasználó olyan műveletet próbál végrehajtani, amelyet nem enged�
 
 Az Azure Digital Twins inaktív és átvitel alatt álló adatok titkosítását teszi lehetővé az adatközpontokban, és visszafejti azt az eléréséhez. Ez a titkosítás egy Microsoft által felügyelt titkosítási kulcs használatával történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md).
 

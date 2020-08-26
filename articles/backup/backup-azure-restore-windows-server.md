@@ -3,12 +3,12 @@ title: Fájlok visszaállítása Windows Serverre a MARS-ügynök használatáva
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871258"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
 
@@ -50,7 +50,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
    > Az egyes fájlok és mappák visszaállításának lehetősége a .NET-keretrendszer 4.5.2-es vagy újabb verziójára van szükség. Ha nem jelenik meg az **egyes fájlok és mappák** lehetőség, a .NET-keretrendszert a 4.5.2-es vagy újabb verzióra kell frissíteni, majd próbálkozzon újra.
 
    > [!TIP]
-   > Az **egyes fájlok és mappák** lehetőséggel gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, a mérete nem haladhatja meg a 80 GB-ot, és az átviteli vagy a másolási sebesség akár 6 MBps is lehet. A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet biztosít (akár 40 MBps), ami ideális a nagyméretű adatok vagy a teljes kötetek helyreállításához.
+   > Az **egyes fájlok és mappák** lehetőséggel gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, és az 80 GB-nál kisebb teljes mérethez ajánlott. A helyreállítás során akár 6 MBps sebességű átvitelt és másolást is biztosít. A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet (akár 40 MBps-t) biztosít, és a nagy méretű adatok vagy a teljes kötetek helyreállításához ajánlott.
 
 5. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely tartalmazza a visszaállítani kívánt fájlokat és mappákat.
 
@@ -141,7 +141,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
     > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban akár legfeljebb 24 óráig is meghosszabbítható egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
     >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy helyreállítja a fájlokat és mappákat, [kezelheti a biztonsági mentéseket](backup-azure-manage-windows-server.md).
 

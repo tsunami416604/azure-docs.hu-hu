@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074039"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871479"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Windows rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -60,7 +60,7 @@ Alapértelmezés szerint a Windows operációs rendszerhez készült virtuálisg
 - Az NTP-szolgáltató, amely információt kap a time.windows.com.
 - A VMICTimeSync szolgáltatás, amely a gazdagépi idő és a virtuális gépek közötti kommunikációra szolgál, és a virtuális gép karbantartás utáni szüneteltetése után végez javítást. Az Azure-gazdagépek a Microsoft által birtokolt stratum 1 eszközöket használják a pontos idő megtartására.
 
-a W32Time a következő prioritási sorrendben szeretné előnyben részesíteni az időszolgáltatót: stratum szint, root delay, root diszperzió, Time eltolás. A legtöbb esetben a W32Time szívesebben time.windows.com a gazdagépre, mert a time.windows.com az alsó réteget jelenti. 
+a W32Time a következő prioritási sorrendben szeretné előnyben részesíteni az időszolgáltatót: stratum szint, root delay, root diszperzió, Time eltolás. A legtöbb esetben az Azure-beli virtuális gépeken a W32Time a kiértékelés miatt előnyben részesítették, hogy mindkét időforrást összehasonlítani kellene. 
 
 Tartományhoz csatlakozó gépek esetén a tartomány maga is időszinkronizálási hierarchiát hoz létre, de az erdő gyökerének el kell érnie az időt, és a következő szempontokat továbbra is igaz értékre kell állítani.
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 Itt látható a kimenet, és mit jelent:
     
-- **Time.Windows.com** – az alapértelmezett konfigurációban a w32time a Time.Windows.com-től származó időt is igénybe veheti. Az időszinkronizálási minőség függ az internetkapcsolattól, és a csomagok késése is befolyásolja. Ez az alapértelmezett beállítás normál kimenete.
-- **VM IC-idő szinkronizációs szolgáltatója** – a virtuális gép szinkronizálja az időt a gazdagépről. Ez általában akkor következik be, ha csak a gazdagépen lévő idő szinkronizálására van lehetőség, vagy ha a NTP jelenleg nem érhető el. 
+- **Time.Windows.com** – az alapértelmezett konfigurációban a w32time a Time.Windows.com-től származó időt is igénybe veheti. Az időszinkronizálási minőség függ az internetkapcsolattól, és a csomagok késése is befolyásolja. Ez a normál kimenet a fizikai gépen.
+- **VM IC-idő szinkronizációs szolgáltatója**  – a virtuális gép szinkronizálja az időt a gazdagépről. Ez az a szokásos kimenet, amelyet az Azure-on futó virtuális gépeken fog kapni. 
 - *A tartományi kiszolgáló* – az aktuális gép egy tartományban van, és a tartomány meghatározza az időszinkronizálási hierarchiát.
 - *Egy másik kiszolgáló* -W32Time explicit módon úgy lett konfigurálva, hogy lekérje a másik kiszolgáló idejét. Az időszinkronizálás minősége ettől az időponttól függ a kiszolgáló minőségétől.
 - A **helyi CMOS óra** – óra nincs szinkronizálva. Ezt a kimenetet akkor érheti el, ha a W32Time nem volt elég ideje elindítani az újraindítás után, vagy ha a konfigurált időforrások nem érhetők el.
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-Ahhoz, hogy a W32Time használni tudja az új lekérdezési időközöket, a NtpServers meg kell adni őket használva. Ha a kiszolgálók megjegyzése 0x1 bitflag maszkkal történik, akkor ez felülbírálja ezt a mechanizmust, és a W32Time a SpecialPollInterval-t fogja használni. Győződjön meg arról, hogy a megadott NTP-kiszolgálók 0x8 jelzőt vagy nincs jelölőt használnak:
+Ahhoz, hogy a W32Time használni tudja az új lekérdezési időközöket, a NtpServers kell megjelölni. Ha a kiszolgálók megjegyzése 0x1 bitflag maszkkal történik, akkor ez felülbírálja ezt a mechanizmust, és a W32Time a SpecialPollInterval-t fogja használni. Győződjön meg arról, hogy a megadott NTP-kiszolgálók 0x8 jelzőt vagy nincs jelölőt használnak:
 
 Győződjön meg arról, hogy a használt NTP-kiszolgálókhoz milyen jelzők vannak használatban.
 
@@ -168,11 +168,11 @@ Győződjön meg arról, hogy a használt NTP-kiszolgálókhoz milyen jelzők va
 w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozások az idő szinkronizálásával kapcsolatos további részletekre mutatnak:
 
 - [A Windows időszolgáltatás eszközei és beállításai](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
-- [A Windows Server 2016 fejlesztése](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [A Windows Server 2016 fejlesztése ](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
 - [Pontos idő a Windows Server 2016-hoz](/windows-server/networking/windows-time-service/accurate-time)
 - [Határ támogatása a Windows időszolgáltatásának magas pontosságú környezetekhez való konfigurálásához](/windows-server/networking/windows-time-service/support-boundary)

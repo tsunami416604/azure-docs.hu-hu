@@ -3,12 +3,12 @@ title: Böngészőalapú kapcsolatok engedélyezése Azure DevTest Labs virtuál
 description: A DevTest Labs mostantól integrálva van az Azure Bastion szolgáltatással, a labor tulajdonosaként pedig engedélyezheti a tesztkörnyezet összes virtuális gépe elérését egy böngészőben.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c78b872855b3fe21f2cb41d394c599aeca7a790
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272351"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870493"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Böngészőalapú kapcsolatok engedélyezése Azure DevTest Labs virtuális gépeken 
 A DevTest Labs integrálható az [Azure Bastion](../bastion/index.yml)szolgáltatással, amely lehetővé teszi a virtuális gépekhez való kapcsolódást egy böngészőben. Először engedélyeznie kell a böngészőalapú kapcsolódást a labor virtuális gépeken.
@@ -19,14 +19,12 @@ A labor tulajdonosaként engedélyezheti az összes Tesztkörnyezet virtuális g
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a böngészőalapú kapcsolatokat a labor virtuális gépeken.
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Helyezzen üzembe egy megerősített gazdagépet a meglévő labor virtuális hálózatában **(vagy)** a labort egy megerősített konfigurált virtuális hálózattal. 
-
-Ha meg szeretné tudni, hogyan helyezhet üzembe egy megerősített gazdagépet egy virtuális hálózaton, tekintse meg [Az Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)című témakört. A megerősített gazdagép létrehozásakor válassza ki a labor virtuális hálózatát. 
-
-Először létre kell hoznia egy második alhálózatot a megerősített virtuális hálózatban, mivel a AzureBastionSubnet nem engedélyezi a nem megerősített erőforrások létrehozását. 
+- Helyezzen üzembe egy megerősített gazdagépet a meglévő labor virtuális hálózatában **(vagy)** a labort egy megerősített konfigurált virtuális hálózattal.
+Ha meg szeretné tudni, hogyan helyezhet üzembe egy megerősített gazdagépet egy virtuális hálózaton, tekintse meg  [Az Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)című témakört. A megerősített gazdagép létrehozásakor válassza ki a labor virtuális hálózatát. 
+- A tesztkörnyezet felhasználójának **olvasó** szerepkörrel kell rendelkeznie a megerősített gazdagépen és a megerősített virtuális hálózaton. 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Második alhálózat létrehozása a megerősített virtuális hálózaton
-Nem hozhat létre laboratóriumi virtuális gépeket egy Azure-beli megerősített alhálózatban. Hozzon létre egy másik alhálózatot a megerősített virtuális hálózaton belül az alábbi ábrán látható módon:
+Először létre kell hoznia egy második alhálózatot a megerősített virtuális hálózatban, mivel a AzureBastionSubnet nem engedélyezi a nem megerősített erőforrások létrehozását. Hozzon létre egy másik alhálózatot a megerősített virtuális hálózaton belül az alábbi ábrán látható módon:
 
 ![Második alhálózat az Azure Bastion Virtual Networkben](./media/connect-virtual-machine-through-browser/second-subnet.png)
 
@@ -50,7 +48,7 @@ Most engedélyezze a virtuális gépek létrehozását ebben az alhálózatban a
     ![VIRTUÁLIS gépek létrehozásának engedélyezése az alhálózatban](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. Válassza **a használat a virtuális gép létrehozásakor** lehetőséget. 
 1. Válassza az eszköztár **Save** (Mentés) elemét. 
-1. Ha van egy régi virtuális hálózata a laborhoz, távolítsa el a **...* elemre kattintva.  és **távolítsa el**. 
+1. Ha van egy régi virtuális hálózata a laborhoz, távolítsa el a **...*  elemre kattintva.  és **távolítsa el**. 
 
 ## <a name="enable-browser-connection"></a>Böngészőalapú kapcsolatok engedélyezése 
 
@@ -64,5 +62,5 @@ Az alábbi lépéseket követve engedélyezheti a böngésző kapcsolódását a
 
     ![Böngészőalapú kapcsolatok engedélyezése](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkből megtudhatja, hogyan csatlakozhat a virtuális gépekhez egy böngésző használatával: [Kapcsolódás a virtuális gépekhez egy böngészőben](connect-virtual-machine-through-browser.md)

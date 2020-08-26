@@ -127,7 +127,7 @@ Lemezterület növelése:
 
 3. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás**lehetőséget, majd kattintson **az OK gombra**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 

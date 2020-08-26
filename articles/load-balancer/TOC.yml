@@ -16,6 +16,8 @@
       href: quickstart-load-balancer-standard-public-template.md
     - name: Belső terheléselosztó létrehozása – Portal
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: Belső terheléselosztó létrehozása – Azure CLI
+      href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
 - name: Oktatóanyagok
   items:

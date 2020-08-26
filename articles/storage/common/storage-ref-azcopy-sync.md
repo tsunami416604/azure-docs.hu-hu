@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285203"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869439"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -143,13 +143,17 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: `*.jpg;*.pdf;exactName`
 
-**– Súgó** a szinkronizáláshoz.
+**– Súgó**    a szinkronizáláshoz.
 
 **--include-attributes** sztring (csak Windows) csak azokat a fájlokat tartalmazza, amelyek attribútumai megegyeznek az attribútumok listájával. Például: `A;S;R`
 
 **--include-Pattern** sztring csak olyan fájlokat tartalmazhat, amelyekben a név megegyezik a minta listával. Például: `*.jpg;*.pdf;exactName`
 
 **– a naplózási szintű** karakterlánc meghatározza a naplófájl részletességét, a rendelkezésre álló szinteket: `INFO` (az összes kérelem és válasz), `WARNING` (lassú válasz), `ERROR` (csak sikertelen kérelmek) és `NONE` (nincs kimeneti napló). (alapértelmezett `INFO` ). 
+
+**--az SMB-info megőrzése**     Alapértelmezés szerint hamis.A megőrzi az SMB-tulajdonságok adatait (az utolsó írási időt, a létrehozási időt, az attribútum-biteket) az SMB-kompatibilis erőforrások (Windows és Azure Files) között.Ez a jelző mind a fájlokra, mind a mappákra vonatkozik, kivéve, ha meg van adva egy csak fájlhoz tartozó szűrő (például: include-Pattern).A mappákhoz továbbított adatok ugyanazok, mint a fájlok esetében, kivéve az utolsó írási időt, amelyet a mappák nem őrzik meg.
+
+**--megőrzése-SMB-engedélyek**     Alapértelmezés szerint hamis.Az SMB ACL-ek megőrzése az adatforrások (Windows és Azure Files) között.Ez a jelző a fájlokra és a mappákra is vonatkozik, kivéve, ha meg van adva egy csak fájl szűrő (például  `include-pattern` ).
 
 **--put-MD5**     Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.
 
@@ -165,6 +169,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 |--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

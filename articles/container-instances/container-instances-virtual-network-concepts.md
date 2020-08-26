@@ -4,12 +4,12 @@ description: Forgatókönyvek, erőforrások és korlátozások a tároló-csopo
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797860"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870765"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Virtuális hálózati forgatókönyvek és erőforrások
 
@@ -80,6 +80,7 @@ A következő ábrán számos tároló csoport lett telepítve egy Azure Contain
 * Az Azure CLI-vel történő üzembe helyezési példákat lásd: [Container instances telepítése Azure-beli virtuális hálózatba](container-instances-vnet.md).
 * Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )használatával című témakört.
+* Ha a [Azure Portal](container-instances-quickstart-portal.md) használatával hoz létre egy tároló-példányt, megadhat egy új vagy exsting virtuális hálózat beállításait is a **hálózatkezelés** lapon.
 
 
 <!-- IMAGES -->
