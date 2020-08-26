@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: c69883a88473cd304bb772430ddfe662da4d8fac
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757098"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889617"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
@@ -20,9 +20,9 @@ Ez a cikk egy Recovery Services-tároló funkcióit ismerteti. A Recovery Servic
 
 - **Szerepköralapú Access Control (RBAC)**: a RBAC részletes hozzáférés-kezelési vezérlést biztosít az Azure-ban. Az [Azure számos beépített szerepkört kínál](../role-based-access-control/built-in-roles.md), és a Azure Backup három [beépített szerepkörrel rendelkezik a helyreállítási pontok kezeléséhez](backup-rbac-rs-vault.md). Recovery Services-tárolók kompatibilisek a RBAC-mel, amely korlátozza a biztonsági mentést, és visszaállítja a felhasználói szerepkörök meghatározott készletéhez való hozzáférést. [További információ](backup-rbac-rs-vault.md)
 
-- Helyreállítható **Törlés**: a helyreállítható törléssel még akkor is, ha rosszindulatú színész törli a biztonsági másolatokat (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig tart, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok megőrzésének további 14 napja nem jár költséggel az ügyfélnek. [További információk](backup-azure-security-feature-cloud.md).
+- Helyreállítható **Törlés**: a helyreállítható törléssel még akkor is, ha rosszindulatú színész törli a biztonsági másolatokat (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig tart, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok megőrzésének további 14 napja nem jár semmilyen költséggel. [További információ](backup-azure-security-feature-cloud.md).
 
-- **Régiók közötti visszaállítás**: a régiók közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy Azure párosított régió. Ha az Azure bejelenti a katasztrófát az elsődleges régióban, akkor a másodlagos régióban lévő, a másodlagos régióban visszaállított adatvesztéssel csökkenthetők a valós állásidő a környezete elsődleges régiójában. [További információk](backup-azure-arm-restore-vms.md#cross-region-restore).
+- **Régiók közötti visszaállítás**: a régiók közötti visszaállítás (CRR) lehetővé teszi az Azure-beli virtuális gépek visszaállítását egy másodlagos régióban, amely egy Azure párosított régió. Ha az Azure bejelenti a katasztrófát az elsődleges régióban, akkor a másodlagos régióban lévő, a másodlagos régióban visszaállított adatvesztéssel csökkenthetők a valós állásidő a környezete elsődleges régiójában. [További információ](backup-azure-arm-restore-vms.md#cross-region-restore).
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Tárolási beállítások a Recovery Services-tárolóban
 

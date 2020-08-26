@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827239"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890555"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -68,7 +68,7 @@ A Azure Backup Recovery Services-tároló képes felderíteni és védelemmel el
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>A sikeres biztonsági mentési feladatok létrehoznak riasztásokat?
 
-Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A rendszer csak a sikertelen biztonsági mentési feladatokhoz küld riasztásokat. A portálon megjelenő riasztások részletes viselkedését [itt](backup-azure-monitoring-built-in-monitor.md)dokumentáljuk. Ha azonban érdekli, hogy még a sikeres feladatok esetében is vannak riasztások, a [figyelést a Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)is használhatja.
+Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A rendszer csak a sikertelen biztonsági mentési feladatokhoz küld riasztásokat. A portálon megjelenő riasztások részletes viselkedését [itt](backup-azure-monitoring-built-in-monitor.md)dokumentáljuk. Ha azonban még a sikeres feladatokhoz is szeretne riasztásokat bevezetni, a [figyelést a Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)is használhatja.
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Láthatom az ütemezett biztonsági mentési feladatokat a biztonsági mentési feladatok menüben?
 

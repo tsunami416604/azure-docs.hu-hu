@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827426"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889940"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -24,9 +24,9 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt a Azure
 
 Míg a dokumentumban található információk a [Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)használatára épülnek, a többi tűzfallal is használható. Ha kérdése van a tűzfalon keresztüli kommunikáció engedélyezésével kapcsolatban, tekintse meg az Ön által használt tűzfal dokumentációját.
 
-## <a name="network-rules"></a>Hálózatszabályok
+## <a name="application-rules"></a>Alkalmazásszabályok
 
-A tűzfalon hozzon létre egy hálózati szabályt, amely engedélyezi a cikkben szereplő címekre irányuló és onnan érkező forgalmat.
+A tűzfalon hozzon létre egy olyan _szabályt_ , amely engedélyezi a jelen cikkben szereplő címekre irányuló és onnan érkező forgalmat.
 
 > [!TIP]
 > A hálózati szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és a portokat a következőre: `*` .

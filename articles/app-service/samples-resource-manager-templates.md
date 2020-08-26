@@ -4,15 +4,15 @@ description: A gyakori App Service forgatókönyvek némelyikéhez Azure Resourc
 author: tfitzmac
 tags: azure-service-management
 ms.topic: sample
-ms.date: 01/04/2019
+ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517705"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891045"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service Azure Resource Manager sablonjai
 
@@ -44,6 +44,7 @@ A App Services erőforrások JSON-szintaxisával és tulajdonságaival kapcsolat
 | [Alkalmazás Azure SQL Database-adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Üzembe helyez egy App Service alkalmazást és egy adatbázist az alapszintű szolgáltatási szinten Azure SQL Databaseban. |
 | [Alkalmazás blob Storage-kapcsolatban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy App Service alkalmazást egy Azure Blob Storage-beli kapcsolatok karakterláncával. Ezután használhatja a blob Storage-t az alkalmazásból. |
 | [Alkalmazás egy Azure cache for Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Üzembe helyez egy App Service alkalmazást a Redis készült Azure cache-sel. |
+| [Alkalmazás egy háttér webapphoz csatlakoztatva](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection)| Két webalkalmazást (frontend és háttérrendszer) helyez üzembe a VNet-befecskendezéssel és privát végponttal együtt. |
 |**App Service-környezet**| **Leírás** |
 | [App Service Environment v2-környezet létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton. |
 | [App Service Environment v2-környezet létrehozása ILB-címmel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton egy privát belső terheléselosztó címmel. |

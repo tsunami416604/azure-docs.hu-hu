@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825460"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889808"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -300,7 +300,7 @@ Hibaüzenet: a felsorolt visszaállítási pontok nem érhetők el, mert a vissz
 Ellenőrizze, hogy a mentett fájlmegosztás törölve van-e. Ha a fájl nem lett törölve, akkor ellenőrizze, hogy a helyreállított törlés megőrzési ideje túl van-e, és hogy a helyreállítás nem történt-e vissza. Ezekben az esetekben az összes pillanatképet véglegesen elveszítjük, és nem fogják tudni helyreállítani az adatokat.
 
 >[!NOTE]
-> Azt javasoljuk, hogy ne törölje a biztonsági másolatba mentett fájlmegosztást, vagy törölje a törlést a törlés előtti megőrzési időszak lejárta előtt, hogy elkerülje az összes visszaállítási pont elvesztését.
+> Azt javasoljuk, hogy ne törölje a biztonsági másolatba mentett fájlmegosztást, vagy ha a törlésre kész állapotban van, törölje a törlést, mielőtt lejár az összes visszaállítási pont.
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState – a biztonsági mentés nem sikerült, mert az Azure-fájlmegosztás Soft-Deleted állapotban van
 

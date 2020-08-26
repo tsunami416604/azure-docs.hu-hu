@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827409"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889719"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 
@@ -32,7 +32,7 @@ A folytatás előtt győződjön meg arról, hogy teljesülnek a Microsoft Azure
 * Az ügynök és a tároló hitelesítő adatai le lettek töltve a DPM-kiszolgálóra.
 * Az ügynök telepítve van a DPM-kiszolgálón.
 * A rendszer a tároló hitelesítő adatait használta a DPM-kiszolgáló regisztrálásához.
-* Ha az Exchange 2016-et védi, frissítsen a DPM 2012 R2 UR9 vagy újabb verzióra
+* Ha az Exchange 2016-et védi, frissítsen a DPM 2012 R2 UR9 vagy újabb verzióra.
 
 ## <a name="dpm-protection-agent"></a>DPM védelmi ügynök
 

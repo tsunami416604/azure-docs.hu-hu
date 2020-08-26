@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan h
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: f13ff10579e7413a2ee7c64cafc2db856559a9d7
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824440"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890671"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI használatával
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Virtuálisgép-lemez visszaállítása
 
 > [!IMPORTANT]
-> Erősen ajánlott az az CLI Version 2.0.74 vagy újabb használata a gyors visszaállítás összes előnyének beszerzéséhez, beleértve a felügyelt lemezek visszaállítását. A legjobb, ha a felhasználó mindig a legújabb verziót használja.
+> Erősen ajánlott az az CLI Version 2.0.74 vagy újabb használata a gyors visszaállítás összes előnyének beszerzéséhez, beleértve a felügyelt lemezek visszaállítását. A legjobb megoldás, ha mindig a legújabb verziót használja.
 
 ### <a name="managed-disk-restore"></a>Felügyelt lemez visszaállítása
 
@@ -88,7 +88,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
     ```
 
     > [!WARNING]
-    > Ha a **cél-erőforrás csoport** nincs megadva, akkor a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az ügyfelek csak akkor kapják meg az azonnali visszaállítás előnyeit, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a **cél-erőforrás-csoport** paramétert, hanem adja meg a **Restore-as-Unmanaged-Disk** paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
+    > Ha a **cél-erőforrás csoport** nincs megadva, akkor a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az azonnali visszaállítás előnyeit csak akkor érheti el, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a **cél-erőforrás-csoport** paramétert, hanem adja meg a **Restore-as-Unmanaged-Disk** paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -105,7 +105,7 @@ Ez a művelet a felügyelt lemezeket nem felügyelt lemezként állítja vissza 
 
 ### <a name="unmanaged-disks-restore"></a>Nem felügyelt lemezek visszaállítása
 
-Ha a biztonsági másolatban szereplő virtuális gép nem felügyelt lemezekkel rendelkezik, és ha a helyreállítási pontról szeretné visszaállítani a lemezeket, először egy Azure Storage-fiókot kell megadnia. Ez a Storage-fiók a virtuálisgép-konfiguráció és a központi telepítési sablon tárolására szolgál, amelyet később a virtuális gép a visszaállított lemezekről való üzembe helyezéséhez használhat. Alapértelmezés szerint a nem felügyelt lemezeket a rendszer visszaállítja az eredeti Storage-fiókokba. Ha a felhasználó egyetlen helyre szeretné visszaállítani az összes nem felügyelt lemezt, akkor a megadott Storage-fiók is használható átmeneti helyként a lemezek számára.
+Ha a biztonsági másolatban szereplő virtuális gép nem felügyelt lemezekkel rendelkezik, és ha a helyreállítási pontról szeretné visszaállítani a lemezeket, először egy Azure Storage-fiókot kell megadnia. Ez a Storage-fiók a virtuálisgép-konfiguráció és a központi telepítési sablon tárolására szolgál, amelyet később a virtuális gép a visszaállított lemezekről való üzembe helyezéséhez használhat. Alapértelmezés szerint a nem felügyelt lemezeket a rendszer visszaállítja az eredeti Storage-fiókokba. Ha az összes nem felügyelt lemezt egyetlen helyre szeretné visszaállítani, akkor a megadott Storage-fiók is használható átmeneti helyként a lemezek számára.
 
 A további lépésekben a visszaállított lemezzel létrehoz egy virtuális gépet.
 

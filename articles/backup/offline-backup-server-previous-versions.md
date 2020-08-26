@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a Data Protection Manager (DPM) és a Microso
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server korábbi verzióihoz tartozó offline biztonsági mentési munkafolyamatot ismerteti.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826599"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890093"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM és Azure Backup Server offline biztonsági mentési munkafolyamata (korábbi verziók)
 
@@ -203,7 +203,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram a legközelebbi Azure-adatközpontb
 
 1. Adja meg a meghajtóbetűjelet az Azure-ba való átvitelre előkészíteni kívánt csatlakoztatott lemez záró kettőspontja nélkül. Ha a rendszer kéri, adja meg a meghajtó formázásának megerősítését.
 
-    Az eszköz ezután megkezdi a lemez előkészítését és a biztonsági mentési Adatmásolást. Előfordulhat, hogy további lemezeket kell csatlakoztatnia, ha az eszköz erre kéri, ha a megadott lemez nem rendelkezik elegendő hellyel a biztonsági mentési információkhoz. <br/>
+    Az eszköz ezután megkezdi a lemez előkészítését és a biztonsági mentési Adatmásolást. Előfordulhat, hogy további lemezeket kell csatlakoztatnia, amikor az eszköz kéri, ha a megadott lemez nem rendelkezik elegendő hellyel a biztonsági mentési információkhoz. <br/>
 
     Az eszköz sikeres befejeződése után egy vagy több megadott lemez készen áll az Azure-ba történő szállításra. Az Azure-ban az "Offline biztonsági mentés kezdeményezése" című szakaszban megadott névvel létrehozott importálási feladatok is létrejönnek. Végül az eszköz megjeleníti a szállítási címet arra az Azure-adatközpontba, ahol a lemezeket el kell szállítani.
 

@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 30c8526271a636b8890dde0079e27374df9c38af
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757268"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890076"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -115,7 +115,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
      > [!IMPORTANT]
      > Ha a forrásszámítógép egy virtuális gép, akkor a másolási számítógépként egy másik fizikai kiszolgálót vagy ügyfélszámítógépet kell használnia.
 
-1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa az alábbi parancsot:
+1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa a következő parancsot:
 
     ```console
     .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
@@ -136,7 +136,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
 
     ![Azure bejelentkezési képernyő](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
-    Az eszköz ezután megkezdi a lemez előkészítését és a biztonsági mentési Adatmásolást. Előfordulhat, hogy további lemezeket kell csatlakoztatnia, ha az eszköz erre kéri, ha a megadott lemez nem rendelkezik elegendő hellyel a biztonsági mentési információkhoz. <br/>
+    Az eszköz ezután megkezdi a lemez előkészítését és a biztonsági mentési Adatmásolást. Előfordulhat, hogy további lemezeket kell csatlakoztatnia, amikor az eszköz kéri, ha a megadott lemez nem rendelkezik elegendő hellyel a biztonsági mentési információkhoz. <br/>
 
     Az eszköz sikeres végrehajtása végén a parancssor három információt nyújt:
     * Egy vagy több megadott lemez készen áll az Azure-ba történő szállításra.

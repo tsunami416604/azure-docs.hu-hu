@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan végezhet fájlszintű helyreállítást egy Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: bb327d014efc3df02edd14afafe1e2e7c1ea9d73
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f972913bcae68297ed166f82fd78a047ce9d475d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824474"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890654"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
 
@@ -23,7 +23,7 @@ Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreáll�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -139,7 +139,7 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
     ./myVM_we_1571974050985163527.sh
     ```
 
-    A szkript futtatásakor a rendszer kéri, hogy adja meg a jelszót a helyreállítási pont eléréséhez. Adja meg a helyreállítási szkriptet létrehozó, előzőleg futtatott [az backup restore files mount-rp](/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp) parancs kimenetében szereplő jelszót.
+    A szkript futtatásakor a rendszer felszólítja, hogy adjon meg egy jelszót a helyreállítási pont eléréséhez. Adja meg a helyreállítási szkriptet létrehozó, előzőleg futtatott [az backup restore files mount-rp](/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp) parancs kimenetében szereplő jelszót.
 
     A szkript kimenetében megtalálható a helyreállítási pont elérési útja. Az alábbi példa kimenetében látható, hogy a helyreállítási pont csatlakoztatva van a */home/azureuser/myVM-20170919213536/Volume1* címen:
 

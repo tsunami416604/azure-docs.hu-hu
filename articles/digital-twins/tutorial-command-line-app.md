@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 58013ba84e1ede36ed54284af4d20b943d63436f
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0fc79cab5868ec7d676c956581407dce308d80ad
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855856"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891494"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -288,24 +288,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
 * Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.
 
-Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
-
-A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot és az Azure Digital Twins-példányt.
-
-> [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
-
-Nyisson meg egy Azure Cloud Shell, és futtassa a következő parancsot az erőforráscsoport és a benne található összes elem törléséhez.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Ezután törölje az ügyfélalkalmazás számára a következő paranccsal létrehozott Azure Active Directory-alkalmazás regisztrációját:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 

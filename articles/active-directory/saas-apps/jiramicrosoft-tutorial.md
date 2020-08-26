@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 08f5829eb624f13be44bba633f3188d8d9876058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547460"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891606"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -28,7 +28,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a JIRA SAML SSO-t 
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
-## <a name="description"></a>Description
+## <a name="description"></a>Leírás
 
 Az egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Active Directory-fiókját a Atlassian JIRA-kiszolgálóval. Így az összes céges felhasználó használhatja az Azure AD hitelesítő adatait a JIRA alkalmazásba való bejelentkezéshez. Ez a beépülő modul SAML 2,0-et használ a összevonáshoz.
 
@@ -37,7 +37,7 @@ Az egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Acti
 Ha az Azure AD-integrációt a JIRA SAML SSO használatával szeretné konfigurálni a Microsoftnál, a következő elemek szükségesek:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-- A JIRA Core és a 6,4 szoftvert a 8.11.0 vagy a JIRA Service Desk 3,0 4.8.0 kell telepíteni és konfigurálni a Windows 64 bites verziójában
+- A JIRA Core és a 6,4 szoftvert a 8.11.0 vagy a JIRA Service Desk 3,0 4.11.1 kell telepíteni és konfigurálni a Windows 64 bites verziójában
 - A JIRA-kiszolgáló HTTPS-kompatibilis
 - Vegye figyelembe, hogy a JIRA beépülő modul támogatott verziói az alábbi szakaszban vannak felsorolva.
 - A JIRA-kiszolgáló elérhető az interneten, különösen az Azure AD bejelentkezési oldalán a hitelesítéshez, és képesnek kell lennie fogadni a jogkivonatot az Azure AD-től.
@@ -59,7 +59,7 @@ Első lépésként a következő elemeket kell megadnia:
 ## <a name="supported-versions-of-jira"></a>A JIRA támogatott verziói
 
 * JIRA Core és Software: 6,4 – 8.11.0
-* JIRA Service Desk 3.0.0 – 4.8.0
+* JIRA Service Desk 3.0.0 – 4.11.1
 * A JIRA a 5,2-es frissítést is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5,2](jira52microsoft-tutorial.md)
 
 > [!NOTE]

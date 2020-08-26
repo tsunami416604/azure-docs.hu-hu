@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827307"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890807"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -90,7 +90,7 @@ A hitelesítő adatok beszerzéséhez töltse le a tároló hitelesítőadat-fá
 - A tároló hitelesítő adatait csak a regisztrációs munkafolyamat során használja a rendszer.
 - Az Ön felelőssége, hogy a tár hitelesítő adatait tartalmazó fájl biztonságos legyen, és ne veszélyeztesse.
   - Ha a hitelesítő adatok ellenőrzése megszakad, a tároló hitelesítő adataival más gépek is regisztrálhatók a tárba.
-  - A biztonsági mentési adatai azonban a felhasználóhoz tartozó jelszóval vannak titkosítva, így a meglévő biztonsági mentési adatai nem lehetnek biztonságban.
+  - A biztonsági mentési adatai azonban az Ön tulajdonában lévő jelszóval vannak titkosítva, így a meglévő biztonsági mentési adatai nem lehetnek biztonságban.
 - Győződjön meg arról, hogy a fájl egy olyan helyen lett mentve, amely a DPM-kiszolgálóról érhető el. Ha egy fájlmegosztási vagy SMB-fájlban van tárolva, ellenőrizze a hozzáférési engedélyeket.
 - A tároló hitelesítő adatai 48 óra után lejárnak. Az új tár hitelesítő adatait igény szerint többször is letöltheti. A regisztrációs munkafolyamat során azonban csak a legújabb tár hitelesítőadat-fájl használható.
 - A Azure Backup szolgáltatás nem ismeri a tanúsítvány titkos kulcsát, és a titkos kulcs nem érhető el a portálon vagy a szolgáltatásban.

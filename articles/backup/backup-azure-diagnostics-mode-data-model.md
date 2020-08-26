@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890263"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -37,7 +37,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | AlertSeverity_s |Szöveg |A riasztás súlyossága, például kritikus |
 |AlertTimeToResolveInMinutes_s    | Szám        |A riasztás feloldásához szükséges idő. Üres az aktív riasztásokhoz.         |
 |AlertConsolidationStatus_s   |Szöveg         |Annak megállapítása, hogy a riasztás konszolidált riasztás-e, vagy sem         |
-|CountOfAlertsConsolidated_s     |Szám         |Összevont riasztások száma konszolidált riasztás esetén          |
+|CountOfAlertsConsolidated_s     |Szám         |Konszolidált riasztások száma összevont riasztás esetén          |
 |AlertRaisedOn_s     |Szöveg         |A riasztást kiváltó entitás típusa         |
 |AlertCode_s     |Szöveg         |Riasztás típusának egyedi azonosítására szolgáló kód         |
 |RecommendedAction_s   |Szöveg         |A riasztás feloldásához javasolt művelet         |
@@ -77,7 +77,7 @@ Ez a táblázat a biztonsági másolati elemek kapcsolódó mezőinek részletei
 | SecondaryBackupProtectionState_s |Szöveg |Azt jelzi, hogy engedélyezve van-e a másodlagos védelem a biztonsági mentési elemmel kapcsolatban|
 | SchemaVersion_s |Szöveg |A séma verziója, például **v2** |
 | State_s |Szöveg |A biztonsági mentési elem objektumának állapota, például aktív, törölve |
-| BackupManagementType_s |Szöveg |Szolgáltató típusa a biztonsági mentés végrehajtásához, például IaaSVM, fájlmappa, amelyhez ez a biztonsági mentési elem tartozik |
+| BackupManagementType_s |Szöveg |Szolgáltatói típus a biztonsági mentés végrehajtásához, például IaaSVM, fájlmappa, amelyhez ez a biztonsági mentési elem tartozik |
 | OperationName |Szöveg |A művelet neve, például BackupItem |
 | Kategória |Szöveg |A Azure Monitor naplókba leküldett diagnosztikai adatkategória. Mindig AzureBackupReport |
 | Erőforrás |Szöveg |Az az erőforrás, amelybe az adatokat gyűjti, például Recovery Services tár neve |
@@ -94,14 +94,14 @@ Ez a táblázat a különböző entitásokkal rendelkező biztonsági mentési e
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| EventName_s |Szöveg |Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |  
+| EventName_s |Szöveg |Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Szöveg |A biztonsági másolati tétel egyedi azonosítója |
-| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | State_s |Szöveg |A biztonsági mentési elem társítási objektumának aktuális állapota, például aktív, törölve |
 | BackupManagementType_s |Szöveg |Szolgáltató típusa a biztonsági mentési feladatot végző kiszolgáló számára, például IaaSVM, fájlmappa |
 | BackupItemSourceSize_s |Szöveg | A biztonsági mentési tétel előtér-mérete |
 | BackupManagementServerUniqueId_s |Szöveg | A biztonságimásolat-felügyeleti kiszolgáló egyedi azonosítására szolgáló mező, ha van ilyen, a biztonsági mentési elem védelme |
-| Kategória |Szöveg |Ez a mező a Log Analytics leküldett diagnosztikai adatkategóriát jelöli, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező a Log Analyticsba leküldett diagnosztikai adatkategóriákat jelöli. AzureBackupReport |
 | OperationName |Szöveg |Ez a mező az aktuális művelet nevét jelöli – BackupItemAssociation |
 | Erőforrás |Szöveg |Ez az az erőforrás, amelybe begyűjti az adatokat, Recovery Services tár nevét jeleníti meg |
 | ProtectedContainerUniqueId_s |Szöveg |A biztonsági mentési elemmel társított védett kiszolgáló egyedi azonosítója (ProtectedServerUniqueId_s v1) |
@@ -144,7 +144,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | State_s |Szöveg |A feladatütemezés aktuális állapota, például aktív, törölve |
 | BackupManagementType_s |Szöveg |Szolgáltató típusa a biztonsági mentési feladatot végző kiszolgáló számára, például IaaSVM, fájlmappa |
 | OperationName |Szöveg |Ez a mező az aktuális művelet nevét jelöli – feladat |
-| Kategória |Szöveg |Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli. AzureBackupReport |
 | Erőforrás |Szöveg |Ez az az erőforrás, amelybe begyűjti az adatokat, Recovery Services tár nevét jeleníti meg |
 | ProtectedServerUniqueId_s |Szöveg |A feladathoz társított védett kiszolgáló egyedi azonosítója |
 | ProtectedContainerUniqueId_s |Szöveg | A feladatot futtató védett tároló azonosítására szolgáló egyedi azonosító |
@@ -174,12 +174,12 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 
 | Mező | Adattípus | Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
-| EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
+| SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | State_s |Szöveg ||A házirend-objektum aktuális állapota, például aktív, törölve |
 | BackupManagementType_s |Szöveg ||Szolgáltató típusa a biztonsági mentési feladatot végző kiszolgáló számára, például IaaSVM, fájlmappa |
 | OperationName |Szöveg ||Ez a mező az aktuális műveleti szabályzat nevét jelöli. |
-| Kategória |Szöveg ||Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli, AzureBackupReport |
+| Kategória |Szöveg ||Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli. AzureBackupReport |
 | Erőforrás |Szöveg ||Ez az az erőforrás, amelybe begyűjti az adatokat, Recovery Services tár nevét jeleníti meg |
 | PolicyUniqueId_g |Szöveg ||A szabályzat azonosítására szolgáló egyedi azonosító |
 | PolicyName_s |Szöveg ||A megadott házirend neve |
@@ -196,7 +196,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | MonthlyRetentionTimes_s |Szöveg ||A havi megőrzés konfigurálásának dátuma és időpontja |
 | MonthlyRetentionFormat_s |Szöveg ||A havi megőrzés konfigurációjának típusa, például naponta, hetente, hetente |
 | MonthlyRetentionDaysOfTheWeek_s |Szöveg ||A havi megőrzésre kiválasztott hét napjai |
-| MonthlyRetentionWeeksOfTheMonth_s |Szöveg ||A hónap hete, amikor a havi megőrzés konfigurálva van, például: első, utolsó stb. |
+| MonthlyRetentionWeeksOfTheMonth_s |Szöveg ||A hónap hete, amikor a havi megőrzés konfigurálva van, például: első, utolsó |
 | YearlyRetentionDuration_s |Tizedes tört ||Teljes megőrzési időtartam években a konfigurált biztonsági másolatok esetében |
 | YearlyRetentionTimes_s |Szöveg ||Az éves adatmegőrzés konfigurálásának dátuma és időpontja |
 | YearlyRetentionMonthsOfTheYear_s |Szöveg ||Az év hónapos megőrzésre kiválasztott hónapja |
@@ -222,12 +222,12 @@ Ez a táblázat a különböző entitásokkal rendelkező házirend-társításo
 
 | Mező | Adattípus | Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
-| EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
+| SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | State_s |Szöveg ||A házirend-objektum aktuális állapota, például aktív, törölve |
 | BackupManagementType_s |Szöveg ||Szolgáltató típusa a biztonsági mentési feladatot végző kiszolgáló számára, például IaaSVM, fájlmappa |
 | OperationName |Szöveg ||Ez a mező az aktuális művelet nevét jelöli – PolicyAssociation |
-| Kategória |Szöveg ||Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli, AzureBackupReport |
+| Kategória |Szöveg ||Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli. AzureBackupReport |
 | Erőforrás |Szöveg ||Ez az az erőforrás, amelybe begyűjti az adatokat, Recovery Services tár nevét jeleníti meg |
 | PolicyUniqueId_g |Szöveg ||A szabályzat azonosítására szolgáló egyedi azonosító |
 | VaultUniqueId_s |Szöveg ||Azon tár egyedi azonosítója, amelyhez ez a szabályzat tartozik |
@@ -266,12 +266,12 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | --- | --- | --- |
 | CloudStorageInBytes_s |Tizedes tört |Biztonsági másolatok által használt Felhőbeli biztonsági mentési tár, amely a legutóbbi érték alapján lett kiszámítva (ez a mező csak a v1-séma esetében)|
 | ProtectedInstances_s |Tizedes tört |A előtér-tároló kiszámításához használt védett példányok száma a számlázásban, a legutóbbi érték alapján számítva |
-| EventName_s |Szöveg |Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| EventName_s |Szöveg |Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
+| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | State_s |Szöveg |A tárolási objektum aktuális állapota, például aktív, törölve |
 | BackupManagementType_s |Szöveg |Szolgáltató típusa a biztonsági mentési feladatot végző kiszolgáló számára, például IaaSVM, fájlmappa |
 | OperationName |Szöveg |Ez a mező a jelenlegi művelet – tár nevét jelöli. |
-| Kategória |Szöveg |Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli. AzureBackupReport |
 | Erőforrás |Szöveg |Ez az az erőforrás, amelybe begyűjti az adatokat, Recovery Services tár nevét jeleníti meg |
 | ProtectedServerUniqueId_s |Szöveg |Azon védett kiszolgáló egyedi azonosítója, amelyhez a tárterületet ki kell számítani |
 | VaultUniqueId_s |Szöveg |A tár tárolójának egyedi azonosítója kiszámítva |
@@ -293,7 +293,7 @@ Ez a táblázat a tárterületet más entitásokhoz összekötő alapszintű tá
 | Mező | Adattípus | Leírás |
 | --- | --- |  --- |
 | StorageUniqueId_s |Szöveg |A tárolási entitás azonosítására használt egyedi azonosító |
-| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | BackupItemUniqueId_s |Szöveg |A tárolási entitáshoz kapcsolódó biztonsági mentési elem azonosítására használt egyedi azonosító |
 | BackupManagementServerUniqueId_s |Szöveg |A tárolási entitáshoz kapcsolódó biztonságimásolat-felügyeleti kiszolgáló azonosítására használt egyedi azonosító|
 | VaultUniqueId_s |Szöveg |A tárolási entitáshoz kapcsolódó tár azonosítására használt egyedi azonosító|
@@ -306,11 +306,11 @@ Ez a táblázat a tárolóval kapcsolatos mezők részleteit tartalmazza.
 
 | Mező | Adattípus | Leírás |
 | --- | --- | --- |
-| EventName_s |Szöveg |Ez a mező az esemény nevét jelöli, mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| EventName_s |Szöveg |Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
+| SchemaVersion_s |Szöveg |Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | State_s |Szöveg |A tár objektum aktuális állapota, például aktív, törölve |
 | OperationName |Szöveg |Ez a mező az aktuális művelet (Vault) nevét jelöli. |
-| Kategória |Szöveg |Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező a Azure Monitor naplókba leküldett diagnosztikai adatkategóriákat jelöli. AzureBackupReport |
 | Erőforrás |Szöveg |Ez az az erőforrás, amelybe begyűjti az adatokat, Recovery Services tár nevét jeleníti meg |
 | VaultUniqueId_s |Szöveg |A tár egyedi azonosítója |
 | VaultName_s |Szöveg |A tároló neve |
@@ -470,7 +470,7 @@ A fent ismertetett [adatmodellben](#using-azure-backup-data-model) tekintse meg 
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>A lekérdezések módosítása a v2 séma használatára
 
-Mivel a v1 séma elavult elérési úton van, ajánlott csak a v2 sémát használni a Azure Backup diagnosztikai adatain lévő összes egyéni lekérdezésben. Az alábbi példa bemutatja, hogyan frissítheti a lekérdezéseket a v1-séma függőségének eltávolítására:
+Mivel a v1-séma elavult elérési úton van, ajánlott csak a v2 sémát használni a Azure Backup diagnosztikai adatain lévő összes egyéni lekérdezésben. Az alábbi példa bemutatja, hogyan frissítheti a lekérdezéseket a v1-séma függőségének eltávolítására:
 
 1. Azonosítsa, hogy a lekérdezés olyan mezőket használ-e, amelyek csak a v1 sémára alkalmazhatók. Tegyük fel, hogy van egy lekérdezése, amely felsorolja az összes biztonsági mentési elemet és a hozzájuk társított védett kiszolgálókat a következőképpen:
 
@@ -483,7 +483,7 @@ Mivel a v1 séma elavult elérési úton van, ajánlott csak a v2 sémát haszn�
 
     A fenti lekérdezés a ProtectedServerUniqueId_s mezőt használja, amely csak a v1 sémára alkalmazható. Ennek a mezőnek a v2-sémája ProtectedContainerUniqueId_s (lásd a fenti táblázatokat). A BackupItemUniqueId_s mező még a v2 séma esetében is alkalmazható, és ugyanez a mező használható ebben a lekérdezésben.
 
-2. Frissítse a lekérdezést, hogy a v2 séma mezőinek nevét használja. Javasoljuk, hogy a (z) "Where SchemaVersion_s = =" v2 "" szűrőt használja az összes lekérdezésben, hogy csak a v2 sémának megfelelő rekordokat elemezze a lekérdezés:
+2. Frissítse a lekérdezést, hogy a v2 séma mezőinek nevét használja. Javasoljuk, hogy az összes lekérdezésben használja a **SchemaVersion_s = = "v2"** szűrőt, hogy csak a v2-sémának megfelelő rekordokat elemezze a lekérdezés:
 
     ````Kusto
     AzureDiagnostics

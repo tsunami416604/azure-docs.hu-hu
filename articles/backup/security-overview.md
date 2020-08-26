@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0354e319c82e02072a8771f9aae383bf0b6240f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824594"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890467"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -56,7 +56,7 @@ A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfele
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>A véletlen törlésből származó biztonsági mentési adatok védelme
 
-A Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Ha a felhasználó törli a virtuális gép biztonsági mentését, a törlést követően a biztonsági mentési adat 14 további napig megmarad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek. [További információ a Soft delete](backup-azure-security-feature-cloud.md)szolgáltatásról.
+A Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Ha a felhasználó törli a virtuális gép biztonsági mentését, a törlést követően a biztonsági mentési adat 14 további napig megmarad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár semmilyen költséggel. [További információ a Soft delete](backup-azure-security-feature-cloud.md)szolgáltatásról.
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Gyanús tevékenység figyelése és riasztásai
 

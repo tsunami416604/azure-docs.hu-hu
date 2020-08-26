@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287233"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890914"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -52,7 +52,7 @@ A munkaterületet a következő módokon használhatja:
 > Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 + A weben:
-    + [Azure Machine Learning Studio](https://ml.azure.com) 
+    + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) – csak [Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterületeken érhető el.
 + Bármely Python-környezetben a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
 + Bármilyen R-környezetben az [r-hez készült Azure Machine learning SDK-val (előzetes verzió)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
@@ -87,9 +87,9 @@ A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 > [!WARNING]
 > Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
 
-## <a name="create-a-workspace"></a><a name='create-workspace'></a>Munkaterület létrehozása
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> Munkaterület létrehozása
 
-Munkaterületek létrehozásakor eldöntheti, hogy [alapszintű vagy Enterprise kiadással](overview-what-is-azure-ml.md#sku)hozza-e létre. A kiadás meghatározza a munkaterületen elérhető szolgáltatásokat. A nagyvállalati kiadás többek között a [Azure Machine learning Designerhez](concept-designer.md) és az [automatizált gépi tanulási kísérletek](tutorial-first-experiment-automated-ml.md)létrehozásához szükséges Studio-verzióhoz biztosít hozzáférést.  További részletek és díjszabási információk: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
+Munkaterületek létrehozásakor eldöntheti, hogy [alapszintű vagy Enterprise kiadással](overview-what-is-azure-ml.md#sku)hozza-e létre. A kiadás meghatározza a munkaterületen elérhető szolgáltatásokat. A nagyvállalati kiadás többek között a [Azure Machine learning Designerhez](concept-designer.md) és az [automatizált gépi tanulási kísérletek](tutorial-first-experiment-automated-ml.md)létrehozásához szükséges Studio-verzióhoz biztosít hozzáférést.  További információ és díjszabási információk: [Azure Machine learning díjszabása](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Több módon is létrehozhat egy munkaterületet:  
 
@@ -101,11 +101,11 @@ Több módon is létrehozhat egy munkaterületet:
 > [!NOTE]
 > A munkaterület neve megkülönbözteti a kis-és nagybetűket.
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Frissítés a Enterprise Edition verzióra
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Frissítés a Enterprise Edition verzióra
 
 [A munkaterületet az alapszintű és a nagyvállalati verzióról is frissítheti](how-to-manage-workspace.md#upgrade) Azure Portal használatával. Az Enterprise Edition-munkaterületeket nem lehet alapszintű kiadási munkaterületre visszaminősíteni. 
 
-## <a name="associated-resources"></a><a name="resources"></a>Társított erőforrások
+## <a name="associated-resources"></a><a name="resources"></a> Társított erőforrások
 
 Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-erőforrást, amelyet a munkaterület használ:
 
@@ -117,8 +117,16 @@ Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-er
 > [!NOTE]
 > Az új verziók létrehozása mellett használhatja a meglévő Azure-szolgáltatásokat is.
 
+### <a name="azure-storage-account"></a>Azure Storage-fiók
+
+Az alapértelmezett munkaterülettel létrehozott Azure Storage-fiók egy általános célú v1-fiók. Az általános célú v2-re a munkaterület létrehozása után a [frissítés egy általános célú v2 Storage-fiókra](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) című cikkben ismertetett lépéseket követve frissíthet.
+
 > [!IMPORTANT]
-> Ha meglévő Azure Storage-fiókot szeretne használni, akkor nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). Sem a Premium Storage, sem a hierarchikus névtér nem támogatott a munkaterület _alapértelmezett_ Storage-fiókjával. A Premium Storage vagy a hierarchikus névtér _nem alapértelmezett Storage-_ fiókokkal használható.
+> Az általános célú v2-re való frissítés után ne engedélyezze a hierarchikus névteret a Storage-fiókban.
+
+Ha meglévő Azure Storage-fiókot szeretne használni, akkor nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). A munkaterület _alapértelmezett_ Storage-fiókja nem támogatja a Premium Storage-t vagy a hierarchikus névtereket. A Premium Storage vagy a hierarchikus névtér _nem alapértelmezett Storage-_ fiókokkal használható.
+
+
 
 ## <a name="next-steps"></a>További lépések
 

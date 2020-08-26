@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871547"
+ms.locfileid: "88890892"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -41,7 +41,7 @@ Habár a privát végpontok engedélyezve vannak a tárolóhoz, az SQL-és SAP H
 Ez a szakasz a virtuális hálózatokon belüli Azure Backup magánhálózati végpontok létrehozásával és használatával kapcsolatos lépésekkel foglalkozik.
 
 >[!IMPORTANT]
-> Erősen ajánlott, hogy kövesse a jelen dokumentumban említett lépéseket. Ennek elmulasztása miatt előfordulhat, hogy a tár nem kompatibilis a privát végpontok használatára, és egy új tárolóval újra kell indítania a folyamatot.
+> Javasoljuk, hogy kövesse az ebben a dokumentumban említett lépéseket. Ennek elmulasztása miatt előfordulhat, hogy a tár nem kompatibilis a privát végpontok használatára, és egy új tárolóval újra kell indítania a folyamatot.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -99,7 +99,7 @@ Két kötelező DNS-zónát kell létrehoznia:
 
 ### <a name="optional-dns-zone"></a>Opcionális DNS-zóna
 
-Az ügyfelek dönthetnek úgy, hogy a magánhálózati végpontokat a Azure Backup magánhálózati DNS-zónákkal integrálják (lásd a privát végpontok létrehozásáról szóló szakaszt) a szolgáltatásokkal való kommunikációhoz. Ha nem kívánja integrálni a magánhálózati DNS-zónával, dönthet úgy, hogy saját DNS-kiszolgálót használ, vagy külön saját DNS-zónát hoz létre. Ez az előző szakaszban tárgyalt két kötelező magánhálózati DNS-zónán kívül történik.
+Kiválaszthatja, hogy a privát végpontok integrálva legyenek-e a Azure Backup magánhálózati DNS-zónákkal (lásd: a [privát végpontok létrehozása és használata a biztonsági mentéshez](#creating-and-using-private-endpoints-for-backup)című szakaszban) a szolgáltatásokkal való kommunikációhoz. Ha nem kívánja integrálni a magánhálózati DNS-zónával, dönthet úgy, hogy saját DNS-kiszolgálót használ, vagy külön saját DNS-zónát hoz létre. Ez az előző szakaszban tárgyalt két kötelező magánhálózati DNS-zónán kívül történik.
 
 Ha önálló, saját DNS-zónát szeretne létrehozni az Azure-ban, ugyanezt a lépéseket használhatja a kötelező DNS-zónák létrehozásához. Az elnevezési és az előfizetés részletei a következőkben vannak elosztva:
 
@@ -566,6 +566,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

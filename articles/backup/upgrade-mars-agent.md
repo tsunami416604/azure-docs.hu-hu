@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök frissítése
 description: Ismerje meg, hogyan frissítheti a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 1f4fd5074b0c6195742935e0cf0e742a00a3549e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827324"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890207"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök frissítése
 
@@ -31,7 +31,7 @@ Azure Backup-ügynök és az Azure Backup Server telepítése esetén:
 
     ![Azon kiszolgálók listája, amelyeken telepítve van a MARS-ügynök](./media/upgrade-mars-agent/protected-servers.png)
 
-1. A Azure Backup ügynök verzió oszlopának rendezéséhez **kattintson a Mars** -ügynök telepítése vagy az **Azure Backup ügynök verziója** oszlopra az Azure Backup Server telepítésekor.
+1. A Azure Backup ügynök verzió oszlop rendezéséhez válassza ki **a Mars** -ügynök telepítése vagy az **Azure Backup ügynök verziója** oszlopot az Azure Backup Server telepítésekor.
 
 1. Az előző lépéssel megadhatja azoknak a Azure Backup kiszolgálóknak a listáját, amelyeken a 2.0.9083.0-nál alacsonyabb verziójú, illetve az ügynök verziója üresként szerepel. Ezek azok a kiszolgálók, amelyeken frissíteni kell a Azure Backup ügynököket.
 
@@ -39,13 +39,13 @@ Azure Backup-ügynök és az Azure Backup Server telepítése esetén:
 
 Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgálókat, hajtsa végre a következő lépéseket az egyes azonosított kiszolgálókon (az Azure Backup Server vagy a MARS-ügynök használatával). Az alábbi lépéseket követve [töltse le az Azure Backup-ügynök legújabb verzióját](https://aka.ms/azurebackup_agent) .
 
-1. Kattintson egy olyan sorra, amelynek Azure Backup ügynöke alacsonyabb, mint 2.0.9083.0 vagy üres. Ekkor megnyílik a kiszolgáló részletei képernyő.
+1. Olyan sort válasszon, amelynek Azure Backup ügynöke alacsonyabb, mint 2.0.9083.0 vagy üres. Ekkor megnyílik a kiszolgáló részletei képernyő.
 
     ![Elavult ügynök-verziókkal rendelkező védett kiszolgálók](./media/upgrade-mars-agent/old-agent-version.png)
 
     ![Elavult ügynök-verziókkal rendelkező Azure Backup-kiszolgálók](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
-1. Kattintson a **Kapcsolódás** lehetőségre, hogy egy távoli asztali kapcsolati fájlt kapjon a kiszolgálóhoz való kapcsolódáshoz, vagy közvetlenül kapcsolódjon a kiszolgálóhoz a kiszolgáló távoli asztal kapcsolatán keresztül.
+1. Válassza a **Kapcsolódás** lehetőséget, ha egy távoli asztali kapcsolati fájlt szeretne csatlakoztatni a kiszolgálóhoz, vagy közvetlenül kapcsolódnia kell a kiszolgálóhoz távoli asztal kapcsolaton keresztül.
 
     ![Kapcsolódás a kiszolgálóhoz távoli asztali kapcsolaton keresztül](./media/upgrade-mars-agent/connect-to-server.png)
 
@@ -57,7 +57,7 @@ Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgá
 1. Ha a kiszolgáló vagy a kiszolgáló proxyja korlátozott internet-hozzáféréssel rendelkezik, győződjön meg arról, hogy a kiszolgálón vagy proxyn a tűzfal beállításai úgy vannak konfigurálva, hogy engedélyezzék az Ön által használt Azure-felhőnek megfelelő URL-címet:
 
     Azure-felhő | URL-cím
-    -- | ---
+    --- | ---
     Azure Cloud (nyilvános) |   `https://login.windows.net`
     Azure China 21Vianet-felhő   | `https://login.chinacloudapi.cn`
     Azure USA-beli kormányzati felhő |   `https://login.microsoftonline.us`
@@ -73,7 +73,7 @@ Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgá
 
 1. Kattintson a **Tovább** gombra.
 
-1. Kattintson a **Frissítés** gombra.
+1. Válassza a **frissítés**lehetőséget.
 
     ![Az Microsoft Azure Recovery Services-ügynök telepítése](./media/upgrade-mars-agent/upgrade-installation.png)
 

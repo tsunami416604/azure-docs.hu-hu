@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827256"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890042"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -17,7 +17,7 @@ Ez a cikk azt ismerteti, hogyan frissítheti az Azure Recovery Services-tároló
 
 ## <a name="soft-delete-state"></a>Helyreállítható törlés állapota
 
-A védett elemek biztonsági másolatának törlése olyan jelentős művelet, amelyet figyelni kell. A véletlen törlésekkel szembeni védelem érdekében az Azure Recovery Services-tárolónak van egy puha törlési képessége. Ez a funkció lehetővé teszi, hogy az ügyfelek szükség esetén visszaállítsák a törölt biztonsági másolatokat a törlést követő időszakon belül.
+A védett elemek biztonsági másolatának törlése olyan jelentős művelet, amelyet figyelni kell. A véletlen törlésekkel szembeni védelem érdekében az Azure Recovery Services-tárolónak van egy puha törlési képessége. Ez a funkció lehetővé teszi, hogy szükség esetén visszaállítsa a törölt biztonsági másolatokat a törlést követő időszakon belül.
 
 Vannak azonban olyan forgatókönyvek, amelyekben ez a képesség nem szükséges. Az Azure Recovery Services-tároló nem törölhető, ha olyan biztonsági másolati elemek találhatók benne, amelyeken még nem is törlődnek. Ez problémát jelenthet, ha a tárolót azonnal törölni kell. Például: az üzembe helyezési műveletek gyakran törlik a létrehozott erőforrásokat ugyanabban a munkafolyamatban. A központi telepítés létrehozhat egy tárolót, konfigurálhatja a biztonsági másolatokat egy elemhez, tesztet állíthat vissza, majd folytathatja a biztonsági mentési elemek és a tár törlését. Ha a tár törlése sikertelen, a teljes telepítés sikertelen lehet. A törlés letiltásával garantálható az azonnali törlés.
 

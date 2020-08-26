@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztons�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 505c4502281f4d32e1e28d913ed5a040e533cfb2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbf50a9b1fa33e86777c25dcbeee9681aa2dda62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824305"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890569"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-Az az [Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag felsorolja az összes olyan biztonsági mentési feladatot (ütemezett vagy igény szerint), amely fut vagy jelenleg fut a védett adatbázisban, valamint más műveleteket, például a regisztrálást, a biztonsági mentés konfigurálását, a biztonsági mentési adatok törlését stb.
+Az az [Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag felsorolja az összes olyan biztonsági mentési feladatot (ütemezett vagy igény szerint), amely fut vagy jelenleg fut a védett adatbázisban, valamint az egyéb műveleteket, például a regisztrálást, a biztonsági mentés konfigurálását és a biztonsági mentési adatok törlését.
 
 >[!NOTE]
 >A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást az Azure-beli virtuális gépen futó SAP HANA-adatbázis biztonsági mentésekor.
