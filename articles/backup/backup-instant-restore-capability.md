@@ -4,17 +4,17 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: e8037af9433cc642f57c1ab6ca2709a3d92c2f81
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825851"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892626"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
 > [!NOTE]
-> A felhasználók visszajelzései alapján átnevezzük a **VM Backup stack v2** -et az **azonnali visszaállításra** , hogy csökkentse a Azure stack funkcióinak összekeveredését.
+> A felhasználók visszajelzései alapján átalakítottuk a **VM Backup stack v2** -et az **azonnali visszaállításra** , hogy csökkentse a Azure stack funkcióinak összekeveredését.
 > Az Azure Backup összes felhasználója most már frissítve lett az **azonnali visszaállításra**.
 
 Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Az egyes szabályzatok alapértelmezett pillanatkép-megőrzése két napra van állítva. A felhasználó módosíthatja az értéket legalább 1 és legfeljebb öt napig. A heti házirendek esetében a pillanatképek megőrzésének öt napig kell megállapítania.
+Az egyes szabályzatok alapértelmezett pillanatkép-megőrzése két napra van állítva. Az értéket legalább 1, de legfeljebb öt napig módosíthatja. A heti házirendek esetében a pillanatképek megőrzésének öt napig kell megállapítania.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentése
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826905"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892456"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
@@ -57,7 +57,7 @@ Ha Recovery Services-tárolót hoz létre, az összes biztonsági funkciót hasz
 
 ## <a name="recover-deleted-backup-data"></a>Törölt biztonsági mentési adatok helyreállítása
 
-A biztonsági mentés további 14 napig megőrzi a törölt biztonsági mentési állapotot, és nem törli azonnal, ha a **biztonsági mentés törlése** művelettel műveletet hajt végre. Ha a 14 napos időszakban szeretné visszaállítani ezeket az adatfájlokat, hajtsa végre a következő lépéseket, attól függően, hogy mit használ:
+A biztonsági mentés további 14 napig megőrzi a törölt biztonsági mentési állapotot, és nem törli azonnal, ha a **biztonsági mentés törlése** művelettel műveletet hajt végre. A 14 napos időszakban az alábbi lépések végrehajtásával állíthatja vissza ezeket az adatfájlokat:
 
 Az **Azure Recovery Services Agent** felhasználói számára:
 
@@ -112,9 +112,9 @@ A cikkben említett biztonsági funkciók védelmi mechanizmusokat biztosítanak
 
 | Művelet | A hiba részletei | Feloldás |
 | --- | --- | --- |
-| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi várakozás után próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, ezért a fent megadott minimális értékeknél kevesebb megőrzési tartományt próbál meg csökkenteni (a támogatott verziók a cikk első megjegyzésében vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben meg kell határoznia a megőrzési időtartamot a megadott minimális megőrzési időtartam (napi hét nap, heti, hetente három hét, havi vagy egy év esetében évente), a szabályzatokkal kapcsolatos frissítések folytatásához. Ha szeretné, az előnyben részesített módszer a biztonsági mentési ügynök frissítése, Azure Backup Server és/vagy DPM, hogy kihasználja az összes biztonsági frissítést. |
+| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi várakozás után próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót használ (a támogatott verziók a cikk első megjegyzésében vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben meg kell határoznia a megőrzési időtartamot a megadott minimális megőrzési időtartam (napi hét nap, heti, hetente három hét, havi vagy egy év esetében évente), a szabályzatokkal kapcsolatos frissítések folytatásához. Ha szeretné, az előnyben részesített módszer a biztonsági mentési ügynök frissítése, Azure Backup Server és/vagy DPM, hogy kihasználja az összes biztonsági frissítést. |
 | Hozzáférési kód módosítása |A megadott biztonsági PIN-kód helytelen. (AZONOSÍTÓ: 100130) A művelet végrehajtásához adja meg a helyes biztonsági PIN-kódot. |**Okozhat**<br/> Ez a hiba akkor jelenik meg, ha a kritikus művelet végrehajtása közben érvénytelen vagy lejárt biztonsági PIN-kódot ad meg (például a jelszó módosítása). <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
-| Hozzáférési kód módosítása |A művelet sikertelen volt. AZONOSÍTÓ: 120002 |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A hozzáférési kód módosításához először frissítenie kell a Backup ügynököt a minimálisan szükséges minimális 2.0.9052, Azure Backup-kiszolgálóval az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
+| Hozzáférési kód módosítása |A művelet sikertelen volt. AZONOSÍTÓ: 120002 |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál meg módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A jelszó módosításához először frissítenie kell a Backup ügynököt a minimális verzió 2.0.9052, Azure Backup Server az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd adjon meg egy érvényes biztonsági PIN-kódot. A PIN-kód beszerzéséhez jelentkezzen be a Azure Portalba, és navigáljon a Recovery Services Vault > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
 
 ## <a name="next-steps"></a>További lépések
 

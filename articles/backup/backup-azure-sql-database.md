@@ -3,12 +3,12 @@ title: SQL Server adatbázisok biztonsági mentése az Azure-ba
 description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826922"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892439"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -51,9 +51,9 @@ Mielőtt elkezdené, ellenőrizze a következő követelményeket:
 * Egy NT SERVICE\AzureWLBackupPluginSvc-fiókot hoz létre a virtuális gépen lévő adatbázisok felderítéséhez. Ez a fiók biztonsági mentésre és helyreállításra szolgál, és SQL sysadmin engedélyeket igényel.
 * Egy virtuális gépen futó adatbázisok felfedése, Azure Backup az NT AUTHORITY\SYSTEM fiókot használja. Ennek a fióknak nyilvános bejelentkezéssel kell rendelkeznie az SQL-ben.
 
-Ha nem hozta létre a SQL Server VM az Azure Marketplace piactéren, vagy ha SQL 2008-es és 2008 R2-es verzióval rendelkezik, **UserErrorSQLNoSysadminMembership** hibaüzenet jelenhet meg.
+Ha nem hozta létre a SQL Server VM az Azure Marketplace-en, vagy ha SQL 2008-es vagy 2008 R2-es verzióval rendelkezik, előfordulhat, hogy **UserErrorSQLNoSysadminMembership** hibaüzenetet kap.
 
-Ha a Windows 2008 R2 rendszeren futó **SQL 2008** és **2008 R2** esetén ad meg engedélyeket [, tekintse](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)meg a következőt:.
+A Windows 2008 R2 rendszeren futó **SQL 2008** és **2008 R2** esetén az engedélyek megadása [itt](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)található.
 
 Az összes többi verzió esetében javítsa ki az engedélyeket a következő lépésekkel:
 

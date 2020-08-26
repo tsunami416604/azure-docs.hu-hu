@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783010"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893092"
 ---
 # <a name="material-mapping-for-model-formats"></a>Anyagleképzés a modellformátumokhoz
 
@@ -101,10 +101,10 @@ A fenti leképezés az anyag-átalakítás legbonyolultabb része, mivel számos
 Néhány alább használt definíció:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 + `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse` . Piros<sup>2</sup> + 0,587 * `Diffuse` . Zöld<sup>2</sup> + 0,114 * `Diffuse` . Kék<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular` . Piros<sup>2</sup> + 0,587 * `Specular` . Zöld<sup>2</sup> + 0,114 * `Specular` . Kék<sup>2</sup>
-* `SpecularStrength`= Max ( `Specular` . Piros, `Specular` . Zöld, `Specular` . Kék
+* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 +  `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
+* `DiffuseBrightness` = 0,299 * `Diffuse` . Piros<sup>2</sup> + 0,587 * `Diffuse` . Zöld<sup>2</sup> + 0,114 * `Diffuse` . Kék<sup>2</sup>
+* `SpecularBrightness` = 0,299 * `Specular` . Piros<sup>2</sup> + 0,587 * `Specular` . Zöld<sup>2</sup> + 0,114 * `Specular` . Kék<sup>2</sup>
+* `SpecularStrength` = Max ( `Specular` . Piros, `Specular` . Zöld, `Specular` . Kék
 
 A SpecularIntensity képlet [innen](https://en.wikipedia.org/wiki/Luma_(video))származik.
 Ez a [specifikáció](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)a fényerő képletét írja le.
@@ -113,7 +113,7 @@ Ez a [specifikáció](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-
 
 `Roughness``Specular` `ShininessExponent` ennek a [képletnek](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)a kiszámítása és használata. A képlet a (z) a következő:
 
-```Cpp
+```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
@@ -124,6 +124,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 Itt az a gondolat, hogy megoldjuk a következő egyenletet: AX<sup>2</sup> + BX + C = 0.
 Alapvetően a dielektromos felületek a fény 4%-át tükrözik a fényt tükröző módon, a többi pedig diffúz. A fémes felületek nem tükrözik a fényt a diffúz módon, hanem az egészet.
 Ennek a képletnek néhány hátránya van, mivel nem lehet különbséget tenni a fényes műanyagok és a fényes fémes felületek között. Tegyük fel, hogy a felületnek nagy része fémes tulajdonságokkal rendelkezik, ezért a fényes műanyag/gumi felületek nem a várt módon jelennek meg.
+
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -138,12 +139,12 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedó
 
-`Albedo`a, a és a alapján van kiszámítva `Diffuse` `Specular` `Metalness` .
+`Albedo` a, a és a alapján van kiszámítva `Diffuse` `Specular` `Metalness` .
 
 A Metaling című szakaszban leírtak szerint a dielektromos felületek a fény 4%-át tükrözik.  
 Az itt található ötlet a és a színek lineáris interpolációja az `Dielectric` `Metal` `Metalness` érték tényezőként való használatával. Ha a fémesség értéke `0.0` , akkor a visszaverődéstől függően sötét színű lesz (ha magas a visszaverődés), vagy a diffúzió nem változik (ha nincs fényvisszaverődés). Ha a fémesség nagy értékű, akkor a diffúz szín eltűnik a fényvisszaverődési szín mellett.
 
-```Cpp
+```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
 
@@ -153,13 +154,13 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`a fenti képlet alapján számítottuk ki, de az alfa-csatorna további számításokat igényel. A FBX formátuma homályos az áttetszőséggel kapcsolatban, és számos módon definiálható. A különböző tartalmi eszközök különböző módszereket használnak. A következő ötlet az, hogy egyesítse őket egyetlen képletbe. A szolgáltatás nem megfelelően átlátszóként jeleníti meg az eszközöket, azonban ha azok nem közös módon jönnek létre.
+`AlbedoRGB` a fenti képlet alapján számítottuk ki, de az alfa-csatorna további számításokat igényel. A FBX formátuma homályos az áttetszőséggel kapcsolatban, és számos módon definiálható. A különböző tartalmi eszközök különböző módszereket használnak. A következő ötlet az, hogy egyesítse őket egyetlen képletbe. A szolgáltatás nem megfelelően átlátszóként jeleníti meg az eszközöket, azonban ha azok nem közös módon jönnek létre.
 
 Ez a következőből lett kiszámítva `TransparentColor` `TransparencyFactor` :,, `Opacity` :
 
 Ha `Opacity` meg van adva, használja közvetlenül a következőket: `AlbedoAlpha`  =  `Opacity` más  
 Ha `TransparencyColor` meg van adva, akkor `AlbedoAlpha` = 1,0-(( `TransparentColor` ). Piros + `TransparentColor` . Zöld + `TransparentColor` . Kék)/3,0) egyéb  
-If `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+If `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 A végső `Albedo` színnek négy csatornája van, amely a és a együttesét kombinálja `AlbedoRGB` `AlbedoAlpha` .
 

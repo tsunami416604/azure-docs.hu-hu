@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892762"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -26,7 +26,7 @@ Tárolónként maximum 1000 Azure-beli virtuális gépet regisztrálhat. Ha a Mi
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Egy tároló hány adatforrás/elem védelmére képes?
 
-Összesen maximum 2000 adatforrást/elemet helyezhet védelem alá egy tárolóban. Ez a szám az összes számítási feladatra (IaaS VM, SQL, AFS stb.) egyszerre vonatkozik.
+Az összes számítási feladatban (például IaaS VM, SQL, AFS) akár 2000 adatforrás/elem is védhető a tárolóban.
 Ha például már védett a 500-es virtuális gépek és a 400 Azure Files a tárolóban lévő megosztások, akkor csak a 1100-os SQL-adatbázisok védelmét tudja biztosítani.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Hány szabályzatot lehet létrehozni tárolónként?

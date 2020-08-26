@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4f3889a0ba121cb9a3167c1f6ac95f0bed280539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 566bbca4c9b5c2f2a96ad231d69dda94374c7db2
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83759013"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893000"
 ---
 # <a name="outline-rendering"></a>Vázlat renderelése
 
@@ -18,15 +18,15 @@ A kijelölt objektumok vizuális megjelenítéséhez a [hierarchikus állapot fe
 
 A körvonal tulajdonságai globális beállítások. A tagolást használó összes objektum ugyanazt a beállítást fogja használni – az objektumon belüli körvonal színét nem lehet használni.
 
-## <a name="parameters-for-outlinesettings"></a>Paraméterek a következőhöz:`OutlineSettings`
+## <a name="parameters-for-outlinesettings"></a>Paraméterek a következőhöz: `OutlineSettings`
 
 `OutlineSettings`Az osztály a globális vázlat tulajdonságaival kapcsolatos beállításokat tartalmazza. A következő tagokat teszi elérhetővé:
 
-| Paraméter      | Típus    | Description                                             |
+| Paraméter      | Típus    | Leírás                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Color`          | Color4Ub | A körvonal rajzolásához használt szín Az alfa-rész figyelmen kívül lesz hagyva.         |
-| `PulseRateHz`    | lebegőpontos   | A szerkezeti rezgések másodpercenkénti száma|
-| `PulseIntensity` | lebegőpontos   | A tagolási impulzus hatásának intenzitása A teljes lüktetés esetén 0,0 és 1,0 közötti értéknek kell lennie. Az intenzitás implicit módon beállítja a vázlat minimális opacitását `MinOpacity = 1.0 - PulseIntensity` . |
+| `PulseRateHz`    | float   | A szerkezeti rezgések másodpercenkénti száma|
+| `PulseIntensity` | float   | A tagolási impulzus hatásának intenzitása A teljes lüktetés esetén 0,0 és 1,0 közötti értéknek kell lennie. Az intenzitás implicit módon beállítja a vázlat minimális opacitását `MinOpacity = 1.0 - PulseIntensity` . |
 
 ![A (z ](./media/outlines.png) `color` ) sárga (balra) és a magenta (Közép) és a `pulseIntensity` 0 – 0,8 (jobb) közötti érték módosításának hatását ismerteti.
 
@@ -47,12 +47,12 @@ void SetOutlineParameters(AzureSession session)
 ```cpp
 void SetOutlineParameters(ApiHandle<AzureSession> session)
 {
-    ApiHandle<OutlineSettings> outlineSettings = *session->Actions()->OutlineSettings();
+    ApiHandle<OutlineSettings> outlineSettings = session->Actions()->GetOutlineSettings();
     Color4Ub outlineColor;
     outlineColor.channels = { 255, 255, 0, 255 };
-    outlineSettings->Color(outlineColor);
-    outlineSettings->PulseRateHz(2.0f);
-    outlineSettings->PulseIntensity(0.5f);
+    outlineSettings->SetColor(outlineColor);
+    outlineSettings->SetPulseRateHz(2.0f);
+    outlineSettings->SetPulseIntensity(0.5f);
 }
 ```
 

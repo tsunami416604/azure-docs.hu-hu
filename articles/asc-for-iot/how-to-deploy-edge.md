@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c646c750cb54228211fadb0a4f6733d495e9219
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311277"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892065"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -47,7 +47,7 @@ A következő lépésekkel telepítheti a IoT Edge IoT biztonsági moduljának A
     - A naplózott ellenőrzés aktív a következő parancs futtatásával:
 
     `sudo systemctl status auditd`<br>
-    - A várt válasz:`active (running)`
+    - A várt válasz: `active (running)`
 
 ### <a name="deployment-using-azure-portal"></a>Üzembe helyezés Azure Portal használatával
 
@@ -93,9 +93,21 @@ Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge te
 
 1. A **modul Twin beállítások** lapján adja hozzá a következő konfigurációt:
 
-    ``` json
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
-    ```
+   Modul Twin tulajdonsága:
+   
+   ``` json
+     "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
+   ```
+
+   Modul Twin tulajdonságának tartalma: 
+
+   ```json
+     {
+
+     }
+   ```
+    
+   Az ügynök konfigurálásával kapcsolatos további információkért lásd: [biztonsági ügynökök konfigurálása](https://docs.microsoft.com/azure/asc-for-iot/how-to-agent-configuration).
 
 1. Válassza a **Frissítés** lehetőséget.
 
@@ -131,7 +143,7 @@ Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge te
 
 1. Kattintson a **Mentés** gombra.
 
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 
 #### <a name="step-3-specify-routes"></a>3. lépés: útvonalak meghatározása
 
@@ -147,7 +159,7 @@ Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge te
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 
 #### <a name="step-4-review-deployment"></a>4. lépés: az üzembe helyezés áttekintése
 
@@ -165,7 +177,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
 
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
 
-   | Name | KÉP |
+   | Név | KÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

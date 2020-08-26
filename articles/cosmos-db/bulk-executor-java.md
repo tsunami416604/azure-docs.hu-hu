@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309154"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892609"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Műveletek tömeges végrehajtása Azure Cosmos DB-adatokon a tömeges végrehajtási Java-kódtárral
 
@@ -183,7 +183,8 @@ A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. E
    |int getNumberOfDocumentsUpdated ()  |   Azon dokumentumok teljes száma, amelyek sikeresen frissítve lettek a tömeges frissítési API-híváshoz megadott dokumentumokból.      |
    |dupla getTotalRequestUnitsConsumed () |  A tömeges frissítési API-hívás által felhasznált összes kérési egység (RU).       |
    |Időtartam getTotalTimeTaken ()  |   A tömeges frissítési API hívása által a végrehajtás befejezésére tett teljes idő.      |
-   |GetErrors listázása \<Exception> ()   |       A hibák listájának beolvasása, ha a tömeges frissítési API-híváshoz megadott kötegből nem sikerült beszúrni néhány dokumentumot.      |
+   |GetErrors listázása \<Exception> ()   |       A frissítési művelettel kapcsolatos működési vagy hálózati problémák listájának beolvasása.      |
+   |GetFailedUpdates listázása \<BulkUpdateFailure> ()   |       A frissítések listájának beolvasása, amely nem hajtható végre, valamint a hibákhoz vezető konkrét kivételek.|
 
 3. Miután elvégezte a tömeges frissítés alkalmazását, hozza létre a parancssori eszközt a forrásból a "MVN tiszta csomag" parancs használatával. Ez a parancs egy jar-fájlt hoz létre a célmappában:  
 

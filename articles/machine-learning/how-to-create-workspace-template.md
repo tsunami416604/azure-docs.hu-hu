@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1d405aff5233f38aee2031220fd119693da64abb
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751709"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892864"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 Alapértelmezés szerint a sablon részeként létrehozott összes erőforrás új. Lehetősége van azonban meglévő erőforrások használatára is. Ha további paramétereket biztosít a sablonhoz, használhatja a meglévő erőforrásokat. Ha például egy meglévő Storage-fiókot szeretne használni, állítsa a **storageAccountOption** értéket **meglévő** értékre, és adja meg a Storage-fiók nevét a **storageAccountName** paraméterben.
 
 > [!IMPORTANT]
-> Ha meglévő Azure Storage-fiókot szeretne használni, akkor nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). Sem a Premium Storage, sem a hierarchikus névtér nem támogatott a munkaterület alapértelmezett Storage-fiókjával.
+> Ha meglévő Azure Storage-fiókot szeretne használni, akkor nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). Sem a Premium Storage, sem a hierarchikus névtér nem támogatott a munkaterület alapértelmezett Storage-fiókjával. A munkaterület _alapértelmezett_ Storage-fiókja nem támogatja a Premium Storage-t vagy a hierarchikus névtereket. A Premium Storage vagy a hierarchikus névtér _nem alapértelmezett Storage-_ fiókokkal használható.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

@@ -1,22 +1,23 @@
 ---
-title: Jupyter-jegyzetfüzet-projekt exportálása a Azure Notebooks előzetes verzióból
-description: Jupyter-jegyzetfüzet-projekt gyors exportálása.
+title: Jupyter Notebook projekt exportálása a Azure Notebooks előzetes verziójából
+description: Jupyter Notebook projekt gyors exportálása.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832032"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892099"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Gyors útmutató: Jupyter notebook-projekt exportálása Azure Notebooks előzetes verzióban
+# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Gyors útmutató: Jupyter Notebook projekt exportálása Azure Notebooks előzetes verzióban
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Ebben a rövid útmutatóban egy Azure Notebooks projektet fog letölteni más Jupyter notebook-megoldásokban való használatra. 
+Ebben a rövid útmutatóban egy Azure Notebooks projektet fog letölteni más Jupyter Notebook-megoldásokban való használatra. 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Egy meglévő Azure Notebooks-projekt.
 
 ## <a name="export-an-azure-notebooks-project"></a>Azure Notebooks projekt exportálása

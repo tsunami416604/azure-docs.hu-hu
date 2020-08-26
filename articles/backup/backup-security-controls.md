@@ -3,12 +3,12 @@ title: Biztonsági vezérlők
 description: Tudnivalók a Azure Backup szolgáltatásban használt biztonsági ellenőrzésekről. Ezek a vezérlők segítik a szolgáltatást a biztonsági rések megelőzésében, észlelésében és megválaszolásában.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e69053d4646207b34e8df31b949410994c967303
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827290"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892962"
 ---
 # <a name="security-controls-for-azure-backup"></a>A Azure Backup biztonsági vezérlői
 
@@ -29,7 +29,7 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció
 |---|---|--|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | A Log Analytics erőforrás-naplókon keresztül támogatott. További információ: [Azure Backup védett munkaterhelések figyelése log Analytics használatával](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
+| Azure monitoring-támogatás (például log Analytics, alkalmazás-elemzések)| Igen | A Log Analytics erőforrás-naplókon keresztül támogatott. További információ: [Azure Backup védett munkaterhelések figyelése log Analytics használatával](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A Azure Portal összes ügyfél által aktivált műveletét a rendszer naplózza a tevékenység naplófájljaiba. |  |
 | Adatsíkok naplózása és naplózása| Nem | Azure Backup az adatsík nem érhető el közvetlenül.  |  |
 
@@ -54,7 +54,7 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció
 |---|---|--|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen|  |  |
+| Configuration Management-támogatás (a konfiguráció verziószámozása stb.)| Igen|  |  |
 
 ## <a name="next-steps"></a>Következő lépések
 

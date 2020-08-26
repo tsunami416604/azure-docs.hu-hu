@@ -3,12 +3,12 @@ title: Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 description: Log Analytics diagnosztikai beállítások konfigurálása egy adott hatókörben lévő összes tárolóhoz a Azure Policy használatával
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824049"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892235"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
 
@@ -20,9 +20,9 @@ A diagnosztikai beállítások méretezésének leegyszerűsítése érdekében 
 
 ## <a name="supported-scenarios"></a>Támogatott helyzetek
 
-* A szabályzat egyszerre alkalmazható egy adott előfizetésben található összes Recovery Services-tárolóra (vagy az előfizetésben található erőforráscsoporthoz). A szabályzatot hozzárendelő felhasználónak tulajdonosi hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
+* A szabályzat egyszerre alkalmazható egy adott előfizetésben található összes Recovery Services-tárolóra (vagy az előfizetésben található erőforráscsoporthoz). A házirendet hozzárendelő felhasználónak **tulajdonosi** hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
 
-* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak az "olvasó", a "közreműködő" vagy a "tulajdonos" jogosultsággal kell rendelkeznie ahhoz az előfizetéshez, amelyben a megadott LA munkaterület létezik.
+* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak rendelkeznie kell **olvasóval**, **közreműködővel** vagy **tulajdonosi** hozzáféréssel ahhoz az előfizetéshez, amelyben a megadott La munkaterület létezik.
 
 * A felügyeleti csoport hatóköre jelenleg nem támogatott.
 

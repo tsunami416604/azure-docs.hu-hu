@@ -2,15 +2,15 @@
 title: Sablonok üzembe helyezése az Azure telepítéskezelő használatával
 description: Ismerje meg, hogyan helyezhet üzembe Azure-erőforrásokat az Azure telepítéskezelő Resource Manager-sablonok használatával.
 author: mumian
-ms.date: 12/04/2019
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7d0979a52b4762ec4cc2fa82f507e8ce2b083c9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 49465f05b5484dfd358136866b67ce35f789799f
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870646"
+ms.locfileid: "88892932"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
 
@@ -455,6 +455,6 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 5. Ennek a két lépésnek az ismétlésével törölje az oktatóanyagban létrehozott több erőforráscsoportot is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag az Azure Deployment Manager használatát mutatta be. Az Azure telepítéskezelő állapotának monitorozásához lásd [: oktatóanyag: az állapot-ellenőrzés használata az azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).

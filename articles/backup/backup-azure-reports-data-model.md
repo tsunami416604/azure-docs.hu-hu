@@ -3,12 +3,12 @@ title: Adatmodell a Azure Backup diagnosztikai eseményeihez
 description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) történő küldésének erőforrás-specifikus módjára hivatkozik.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538870"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892524"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez
 
@@ -53,7 +53,7 @@ Ez a táblázat az alapszintű biztonsági mentési entitásokkal, például a t
 | ProtectedContainerWorkloadType    | Szöveg          | A védett tároló biztonsági mentésének típusa. Például: IaaSVMContainer |
 | ProtectionGroupName               | Szöveg          | A védelmi csoport neve, amelyben a biztonsági másolati elem védett, az SC DPM és a MABS esetében, ha van ilyen. |
 | ResourceGroupName                 | Szöveg          | Az erőforrás erőforráscsoport (például Recovery Services tároló) az összegyűjtött adatokhoz |
-| Sémaverzióval                     | Szöveg          | Ez a mező a séma aktuális verzióját jelöli, **v2** |
+| Sémaverzióval                     | Szöveg          | Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | SecondaryBackupProtectionState    | Szöveg          | Azt jelzi, hogy engedélyezve van-e a másodlagos védelem a biztonsági mentési elemmel kapcsolatban  |
 | Állapot                             | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
 | StorageReplicationType            | Szöveg          | A tár tárolási replikálásának típusa. Például: GeoRedundant |
@@ -84,7 +84,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | BackupItemUniqueId             | Szöveg          | A riasztáshoz társított biztonsági mentési tétel egyedi azonosítója |
 | BackupManagementServerUniqueId | Szöveg          | A biztonságimásolat-felügyeleti kiszolgáló egyedi azonosítására szolgáló mező, ha van ilyen, a biztonsági mentési elem védelme |
 | BackupManagementType           | Szöveg          | Szolgáltató típusa a biztonsági mentési feladatot végző kiszolgáló számára, például IaaSVM, fájlmappa |
-| CountOfAlertsConsolidated      | Szám        | Összevont riasztások száma konszolidált riasztás esetén  |
+| CountOfAlertsConsolidated      | Szám        | Konszolidált riasztások száma összevont riasztás esetén  |
 | ProtectedContainerUniqueId     | Szöveg          | A riasztáshoz társított védett kiszolgáló egyedi azonosítója |
 | RecommendedAction              | Szöveg          | A riasztás feloldásához javasolt művelet                      |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
@@ -165,12 +165,12 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | DiffBackupTime                  | Idő           | Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje     |
 | LogBackupFrequency              | Tizedes tört | SQL-naplók biztonsági másolatainak gyakorisága                            |
 | LogBackupRetentionDuration      | Tizedes tört | Az SQL Azure-beli virtuális gép biztonsági mentésében tárolt biztonsági másolatok megőrzési időtartama |
-| MonthlyRetentionDaysOfTheMonth  | Szöveg           | A hónap hete, amikor a havi megőrzés konfigurálva van.  Például: első, utolsó stb. |
+| MonthlyRetentionDaysOfTheMonth  | Szöveg           | A hónap hete, amikor a havi megőrzés konfigurálva van.  Például: első, utolsó |
 | MonthlyRetentionDaysOfTheWeek   | Szöveg           | A havi megőrzésre kiválasztott hét napjai              |
 | MonthlyRetentionDuration        | Szöveg           | A beállított biztonsági másolatok teljes megőrzési időtartama (hónap)    |
 | MonthlyRetentionFormat          | Szöveg           | A havi megőrzés konfigurációjának típusa Például naponta, hetente, hetente |
 | MonthlyRetentionTimes           | Szöveg           | A havi megőrzés konfigurálásának dátuma és időpontja           |
-| MonthlyRetentionWeeksOfTheMonth | Szöveg           | A hónap hete, amikor a havi megőrzés konfigurálva van.   Például: első, utolsó stb. |
+| MonthlyRetentionWeeksOfTheMonth | Szöveg           | A hónap hete, amikor a havi megőrzés konfigurálva van.   Például: első, utolsó |
 | PolicyName                      | Szöveg           | A megadott házirend neve                                   |
 | PolicyUniqueId                  | Szöveg           | A szabályzat azonosítására szolgáló egyedi azonosító                             |
 | PolicyTimeZone                  | Szöveg           | Az időzóna, amelyben a szabályzat időmezői meg vannak adva a naplókban |
@@ -218,7 +218,7 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | VolumeFriendlyName             | Szöveg          | A tárolási kötet rövid neve                          |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ismerje meg, hogyan küldhet diagnosztikai információkat Log Analytics](./backup-azure-diagnostic-events.md)
 - [Megtudhatja, hogyan írhat lekérdezéseket az erőforrás-specifikus táblákon](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

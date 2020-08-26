@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320680"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893133"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a pod Security számára az Azure Kubernetes szolgáltatásban (ak)
 
@@ -42,7 +42,7 @@ A pod biztonsági környezet további képességeket és engedélyeket is meghat
 A következő példában a pod YAML manifest beállítja a biztonsági környezet beállításait a következők meghatározásához:
 
 * A pod a *1000* felhasználói azonosítóként fut, és az *2000* -es azonosítójú csoport tagja.
-* Nem lehet kibővíteni a jogosultságokat a használatra`root`
+* Nem lehet kibővíteni a jogosultságokat a használatra `root`
 * Lehetővé teszi a Linux-képességek elérését a hálózati adapterekhez és a gazdagép valós idejű (hardveres) órájához.
 
 ```yaml
@@ -85,7 +85,7 @@ A következő [társított AK nyílt forráskódú projektek][aks-associated-pro
 
 Az Azure-erőforrások felügyelt identitása lehetővé teszi, hogy a pod hitelesítse magát az azt támogató Azure-szolgáltatásokkal, például a Storage vagy az SQL használatával. A pod olyan Azure-identitáshoz van rendelve, amely lehetővé teszi, hogy a hitelesítés Azure Active Directory és digitális jogkivonatot kapjon. Ez a digitális jogkivonat olyan egyéb Azure-szolgáltatásokhoz is bemutatható, amelyek azt ellenőrizzék, hogy a pod jogosult-e a szolgáltatás elérésére és a szükséges műveletek elvégzésére. Ez a módszer azt jelenti, hogy az adatbázis-kapcsolatok sztringek esetében nem szükségesek titkos kódok, például:. A pod felügyelt identitás egyszerűsített munkafolyamata az alábbi ábrán látható:
 
-![Egyszerűsített munkafolyamat a pod által felügyelt identitáshoz az Azure-ban](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Egyszerűsített munkafolyamat a pod által felügyelt identitáshoz az Azure-ban":::
 
 Felügyelt identitás esetén az alkalmazás kódjának nem kell tartalmaznia a szolgáltatásokhoz, például az Azure Storage-hoz való hozzáféréshez szükséges hitelesítő adatokat. Mivel mindegyik Pod a saját identitásával hitelesít, így ellenőrizheti és ellenőrizheti a hozzáférést. Ha az alkalmazása más Azure-szolgáltatásokhoz kapcsolódik, akkor a felügyelt identitások használatával korlátozhatja a hitelesítő adatok újrafelhasználását és a kitettség kockázatát.
 
@@ -97,7 +97,7 @@ A pod Identity projekt használata lehetővé teszi a hitelesítést az Azure-sz
 
 Ha az alkalmazásoknak hitelesítő adatokra van szükségük, kommunikálnak a digitális tárolóval, lekérik a legújabb titkos tartalmakat, majd csatlakoznak a szükséges szolgáltatáshoz. Azure Key Vault lehet ez a digitális tároló. A következő ábrán látható az egyszerűsített munkafolyamat, amely a Azure Key Vault a pod felügyelt identitások használatával beolvassa a hitelesítő adatokat.
 
-![Egyszerűsített munkafolyamat a hitelesítő adatok beolvasásához a Key Vault Pod által felügyelt identitás használatával](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Egyszerűsített munkafolyamat a hitelesítő adatok beolvasásához a Key Vault Pod által felügyelt identitás használatával":::
 
 A Key Vault a titkokat, például a hitelesítő adatokat, a Storage-fiók kulcsait vagy a tanúsítványokat tárolja és rendszeresen elforgatja. A [Secrets Store CSI-illesztőprogram Azure Key Vault szolgáltatójának](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)használatával integrálhatja Azure Key Vaultt egy AK-fürttel. A Secrets Store CSI-illesztőprogram lehetővé teszi, hogy az AK-fürt natív módon beolvassa a titkos tartalmat a Key Vaultból, és biztonságosan biztosítsa azokat csak a kérelmező Pod számára. Működjön együtt a fürt üzemeltetőjével, hogy a Secrets Store CSI-illesztőprogramot az AK munkavégző csomópontokra telepítse. A pod felügyelt identitással hozzáférést kérhet Key Vaulthoz, és beolvashatja a Secrets Store CSI-illesztőprogramon keresztül szükséges titkos tartalmat.
 
