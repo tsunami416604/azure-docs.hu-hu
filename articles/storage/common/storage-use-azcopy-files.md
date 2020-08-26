@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 793f3869a9534c71d860cc8dea7a1995f5ee278d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037150"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871241"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele az AzCopy használatával és fájltárolás 
 
@@ -49,7 +49,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A feltöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
-> |Eset|Jelölő|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -155,7 +155,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A letöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
-> |Eset|Jelölő|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -253,7 +253,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A másolási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
-> |Eset|Jelölő|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -304,9 +304,10 @@ Ha a `--delete-destination` jelzőt úgy állítja be, hogy a `true` AzCopy tör
 > [!TIP]
 > A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
-> |Eset|Jelölő|
+> |Forgatókönyv|Jelölő|
 > |---|---|
-> |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--ellenőrzési-MD5** = \[ Nincs \| bejelentkezett bejelentkezési \| FailIfDifferent \| FailIfDifferentOrMissing\]|
+> |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
+> |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
 > |Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
 > |Adja meg, hogy a szinkronizálással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– naplózási szint** = \[ FIGYELMEZTETÉSi \| hiba – \| \| nincs\]|
 > 
@@ -341,7 +342,7 @@ Az ebben a parancsban megjelenő első fájlmegosztás a forrás. Az URI végén
 
 További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a következő cikkekben talál:
 

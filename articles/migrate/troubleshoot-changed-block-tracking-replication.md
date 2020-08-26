@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796935"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871180"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -30,13 +30,36 @@ A következő lépések segítségével figyelheti a virtuális gépek replikál
 
   1. Nyissa meg a Azure Portal Azure Migrate kiszolgálók lapját.
   2. Navigáljon a "kiszolgálók replikálása" lapra a kiszolgáló áttelepítésének csempén a "kiszolgálók replikálása" elemre kattintva.
-  3. Ekkor megjelenik a replikáló kiszolgálók listája, valamint további információk, például állapot, állapot, utolsó szinkronizálás időpontja stb. Az Állapot oszlopban a virtuális gép aktuális replikációs állapota látható. Az Állapot oszlopban szereplő "Critical'or" figyelmeztetési érték általában azt jelzi, hogy a virtuális gép előző replikációs ciklusa meghiúsult. További részletekért kattintson a jobb gombbal a virtuális gépre, és válassza a "hiba részletei" lehetőséget. A hiba részletei lap a hibával kapcsolatos információkat és a hibakeresési útmutató további részleteit tartalmazza. Ekkor megjelenik egy "legutóbbi események" hivatkozás is, amely a virtuális gép események lapjára mutat.
+  3. Ekkor megjelenik a replikáló kiszolgálók listája, valamint további információk, például állapot, állapot, utolsó szinkronizálás időpontja stb. Az Állapot oszlopban a virtuális gép aktuális replikációs állapota látható. Az Állapot oszlopban szereplő "kritikus" vagy "figyelmeztetés" érték általában azt jelzi, hogy a virtuális gép előző replikációs ciklusa meghiúsult. További részletekért kattintson a jobb gombbal a virtuális gépre, és válassza a "hiba részletei" lehetőséget. A hiba részletei lap a hibával kapcsolatos információkat és a hibakeresési útmutató további részleteit tartalmazza. Ekkor megjelenik egy "legutóbbi események" hivatkozás is, amely a virtuális gép események lapjára mutat.
   4. Kattintson a "legutóbbi események" elemre a virtuális gép előző replikációs ciklusa során fellépő hibák megtekintéséhez. Az Events (események) lapon keresse meg a virtuális gép replikálási ciklusa nem sikerült vagy a lemez replikálási ciklusa nem sikerült.
   5. Kattintson az eseményre a hiba lehetséges okainak és a javasolt szervizelési lépések megismeréséhez. A hiba elhárításához és javításához használja a megadott információkat.
     
 ## <a name="common-replication-errors"></a>Gyakori replikációs hibák
 
 Ez a szakasz néhány gyakori hibát ismertet, valamint azt, hogy miként lehet elhárítani őket.
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>A virtuális gépek replikálására tett kísérlet során nem sikerült Key Vault a művelet hibáját
+
+**Hiba:** "Key Vault művelet sikertelen volt. Művelet: felügyelt Storage-fiók konfigurálása, Key Vault: Key-Vault-név, Storage-fiók: a Storage-fiók neve sikertelen a következő hibával: "
+
+**Hiba:** "Key Vault művelet sikertelen volt. Művelet: közös hozzáférésű aláírás definíciójának létrehozása, Key Vault: Key-Vault-név, Storage-fiók: a Storage-fiók neve sikertelen volt, a következő hiba miatt: "
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+Ez a hiba általában azért fordul elő, mert a Key Vault felhasználói hozzáférési házirendje nem biztosítja a jelenleg bejelentkezett felhasználó számára a szükséges engedélyeket a Storage-fiókok Key Vault kezeléséhez. A Key Vault felhasználói hozzáférési házirendjének kereséséhez nyissa meg a Key Vault oldalt a Key Vault portálon, és válassza a hozzáférési szabályzatok lehetőséget. 
+
+Amikor a portál létrehozza a Key vaultot, egy felhasználói hozzáférési szabályzatot is ad hozzá, amely megadja a jelenleg bejelentkezett felhasználói engedélyeket a Key Vault felügyelni kívánt tárolási fiókok konfigurálásához. Ez két okból sikertelen lehet
+
+- A bejelentkezett felhasználó az ügyfelek Azure-bérlője (CSP-előfizetés – és a bejelentkezett felhasználó a partner rendszergazdája) távoli rendszerbiztonsági tagja. Ebben az esetben az a megoldás, ha törli a kulcstartót, kijelentkezik a portálról, majd bejelentkezik egy felhasználói fiókkal az ügyfelek bérlőről (nem a távoli résztvevőtől), majd próbálja megismételni a műveletet. A CSP-partner általában felhasználói fiókkal fog rendelkezni az ügyfelek Azure Active Directory bérlő számára, amelyet használhatnak. Ha nem hozhatnak létre új felhasználói fiókot saját maguk számára az ügyfelek Azure Active Directory bérlőben, jelentkezzen be a portálra új felhasználóként, majd próbálja megismételni a replikálási műveletet. A használt fióknak tulajdonos vagy közreműködő + felhasználói hozzáférés rendszergazdai engedélyekkel kell rendelkeznie az erőforráscsoport fiókja számára (projekt-erőforráscsoport átmigrálása)
+
+- A másik eset, ha ez akkor fordulhat elő, amikor egy felhasználó (Felhasználó1) megpróbálta először beállítani a replikálást, és hibát észlelt, de a kulcstartó már létrejött (és a felhasználói hozzáférési házirend megfelelően van hozzárendelve ehhez a felhasználóhoz). Most egy későbbi időpontban egy másik felhasználó (Felhasználó2) megpróbálja beállítani a replikálást, de a felügyelt Storage-fiók konfigurálása vagy az SAS-definíció létrehozása művelet meghiúsul, mert nincs olyan felhasználói hozzáférési házirend, amely a kulcstartó Felhasználó2 tartozik.
+
+**Megoldás**: a probléma megoldásához hozzon létre egy felhasználói hozzáférési szabályzatot a Felhasználó2-hez a kulcstartó-engedélyezési Felhasználó2 engedéllyel a felügyelt Storage-fiók konfigurálásához és a sas-definíciók létrehozásához. A Felhasználó2 az alábbi parancsmagok használatával teheti ezt Azure PowerShell:
+
+$userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). ID
+
+Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipalId-PermissionsToStorage beolvasás, Listázás, törlés, beállítás, frissítés, regeneratekey, getsas, listsas, deletesas, setsas, helyreállítás, biztonsági mentés, visszaállítás, törlés
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 

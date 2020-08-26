@@ -172,6 +172,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: Feladatok futtatása az IoT Edge-en
           href: stream-analytics-edge.md
+        - name: Feladatok futtatása az Azure Stacken
+          href: on-azure-stack.md
         - name: Fizetőkapu érzékelőadatainak elemzése
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: Nagy gyakoriságú kereskedelem

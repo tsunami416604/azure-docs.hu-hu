@@ -10,12 +10,12 @@ ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 407853152d4f18d8f8daacd8ef7d19c878384076
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814518"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871156"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -64,8 +64,8 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 | Tárfiók típusa | Támogatott régiók | Támogatott szolgáltatások |
 |--|--|--|
 | Általános célú v2<sup>1</sup> | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója | Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
-| <sup>1</sup> . BlockBlobStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója <br /> USA 2. nyugati régiója| Csak Premium blokk Blobok |
-| FileStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója <br /> USA 2. nyugati régiója | Csak a prémium szintű fájlok megosztása |
+| <sup>1</sup> . BlockBlobStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br /> Nyugat-Európa<br /> USA keleti régiója <br /> USA 2. nyugati régiója| Csak Premium blokk Blobok |
+| FileStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br /> Nyugat-Európa<br /> USA keleti régiója <br /> USA 2. nyugati régiója | Csak a prémium szintű fájlok megosztása |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
 <sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).

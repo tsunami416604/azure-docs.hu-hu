@@ -210,14 +210,14 @@
           href: storage-dotnet-how-to-use-queues.md
         - name: Java
           href: storage-java-how-to-use-queue-storage.md
+        - name: Python
+          href: storage-python-how-to-use-queue-storage.md
         - name: Node.js
           href: storage-nodejs-how-to-use-queues.md
         - name: C++
           href: storage-c-plus-plus-how-to-use-queues.md
         - name: PHP
           href: storage-php-how-to-use-queues.md
-        - name: Python
-          href: storage-python-how-to-use-queue-storage.md
         - name: Ruby
           href: storage-ruby-how-to-use-queue-storage.md
     - name: Üzenetsorok kezelése
@@ -253,12 +253,12 @@
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Storage Explorer – kisegítő lehetőségek
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Azure Storage-fórum
+    - name: A Microsoft Azure Storage-ére vonatkozó kérdések és válaszok
       href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
     - name: Az Azure Storage a Stack Overflow-n
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Az Azure Storage díjszabása
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: A Queue Storage díjszabása
+      href: 'https://azure.microsoft.com/pricing/details/storage/queues/'
     - name: Azure-díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videók

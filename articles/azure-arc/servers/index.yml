@@ -1,0 +1,32 @@
+### YamlMime:Landing
+title: Azure Arc-kiszolgálók (előzetes verzió)
+summary: Azure Arc-kiszolgálók
+metadata:
+  title: Azure Arc-kiszolgálók
+  description: Tudnivalók a helyszíni gépek Azure-ban történő felügyeletéről
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763821"
+landingContent:
+- title: Gépek csatlakoztatása az Azure-hoz Azure Arc-kompatibilis kiszolgálókkal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi azok az Azure Arc-kompatibilis kiszolgálók?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
+      url: onboard-portal.md
+    - text: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
+      url: onboard-service-principal.md
+    - text: Gépek csatlakoztatása az Azure-hoz a PowerShell DSC használatával
+      url: onboard-dsc.md

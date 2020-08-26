@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP több biztonsági azonosítóval
           items:
+            - name: Windows Azure közös lemezzel (A)SCS példányhoz
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows közös lemezzel (A)SCS példányhoz
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz

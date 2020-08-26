@@ -1,68 +1,87 @@
-### YamlMime:Landing
-title: Azure Arc
-summary: Az Azure Arc bármely helyszíni, többfelhős vagy peremhálózati található infrastruktúrán üzemelő Linux- és Windows-kiszolgálókra, valamint Kubernetes-fürtökre kiterjeszti az Azure Resource Manager képességeit. Az Azure Arc segítségével az ügyfelek bárhol futtathatják az Azure-adatszolgáltatásokat, így élhetnek a felhőinnováció előnyeivel, például a mindig naprakész adatokkal, a(z órák helyett) másodpercek alatt elvégezhető üzembe helyezéssel, valamint a minden infrastruktúrán elérhető dinamikus skálázással.
+### YamlMime:Hub
+title: Az Azure Arc dokumentációja
+summary: Egyszerűsítheti az összetett és elosztott, helyszíni, peremhálózati és többfelhős környezeteket.
+brand: azure
 metadata:
   title: Azure Arc
-  description: Tudnivalók a helyszíni gépek Azure-ban történő felügyeletéről
-  author: mgoedtel
+  description: Megtudhatja, hogyan helyezhet üzembe erőforrásokat összetett és elosztott, helyszíni, peremhálózati és többfelhős környezetekben. Az Azure Arc bárhol lehetővé teszi az Azure-szolgáltatások üzembe helyezését, és az Azure-felügyeletet bármilyen infrastruktúrában képes bevezetni.
   ms.service: azure-arc
-  ms.topic: landing-page
-  ms.date: 08/13/2020
+  ms.topic: hub-page
+  author: MGoedtel
   ms.author: magoedte
-  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.date: 08/21/2020
+  ms.openlocfilehash: 961d8b892841f2d8761053279f053afe3b859798
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88212769"
-landingContent:
-- title: Az Azure Arc bemutatása
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763334"
+highlightedContent:
+  items:
+  - title: Azure Arc-kompatibilis kiszolgálók (előzetes verzió)
+    itemType: overview
+    url: ./servers/overview.md
+  - title: Azure Arc-kompatibilis Kubernetes (előzetes verzió)
+    itemType: overview
+    url: ./kubernetes/overview.md
+  - title: Az Azure Arc bemutatása
+    itemType: overview
+    url: https://azure.microsoft.com/en-us/services/azure-arc
+productDirectory:
+  title: Azure Arc-kompatibilis szolgáltatások
+  summary: Tekintse át, mi kell ahhoz, hogy bárhol futtathasson szolgáltatásokat.
+  items:
+  - title: Azure Arc-kompatibilis kiszolgálók
+    imageSrc: ./media/manage-450-machines-azure-arc.svg
     links:
-    - text: Mi az az Azure Arc?
-      url: https://aka.ms/Azure-Arc-Info
-- title: Gépek csatlakoztatása az Azure-hoz Azure Arc-kompatibilis kiszolgálókkal
-  linkLists:
-  - linkListType: overview
+    - url: ./servers/onboard-portal.md
+      text: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
+    - url: ./servers/onboard-service-principal.md
+      text: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
+    - url: ./servers/onboard-dsc.md
+      text: Gépek csatlakoztatása az Azure-hoz a PowerShell DSC használatával
+    - url: ./servers/index.yml
+      text: Több megjelenítése...
+  - title: Azure Arc-kompatibilis Kubernetes
+    imageSrc: ./media/containers-101-kubernetes-services.svg
     links:
-    - text: Mi azok az Azure Arc-kompatibilis kiszolgálók?
-      url: ./servers/overview.md
-  - linkListType: quickstart
+    - url: ./kubernetes/connect-cluster.md
+      text: Fürt csatlakoztatása
+    - url: ./kubernetes/use-gitops-connected-cluster.md
+      text: Konfigurációk üzembe helyezése GitOps használatával
+    - url: ./kubernetes/index.yml
+      text: Több megjelenítése...
+conceptualContent:
+  title: Bevezetés
+  items:
+  - title: Azure Arc-kompatibilis kiszolgálók (előzetes verzió)
     links:
-    - text: Az Arc-kompatibilis kiszolgálói ügynök engedélyezése
-      url: ./servers/learn/quick-enable-hybrid-vm.md
-  - linkListType: how-to-guide
+    - url: ./servers/learn/quick-enable-hybrid-vm.md
+      itemType: get-started
+      text: Az Arc-kompatibilis kiszolgálói ügynök engedélyezése
+    - url: ./servers/learn/tutorial-enable-vm-insights.md
+      itemType: tutorial
+      text: Hibrid gép monitorozása virtuális gépekhez készült Azure Monitorral
+    - url: ./servers/policy-samples.md
+      itemType: learn
+      text: Belépésvezérlési szabályzatok az Azure Policyval
+    - url: ./servers/manage-vm-extensions.md
+      itemType: how-to-guide
+      text: Azure-beli virtuálisgép-bővítmények kezelése és használata
+  - title: Azure Arc-kompatibilis Kubernetes (előzetes verzió)
     links:
-    - text: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
-      url: ./servers/onboard-portal.md
-    - text: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
-      url: ./servers/onboard-service-principal.md
-    - text: Gépek csatlakoztatása az Azure-hoz a PowerShell DSC használatával
-      url: ./servers/onboard-dsc.md
-    - text: Azure-beli virtuálisgép-bővítmények kezelése és használata
-      url: ./servers/manage-vm-extensions.md
-- title: Kubernetes-fürtök csatlakoztatása az Azure-hoz az Azure Arc használatával
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Mi az Azure Arc-kompatibilis Kubernetes?
-      url: ./kubernetes/overview.md
-  - linkListType: quickstart
-    links:
-    - text: Fürt csatlakoztatása
-      url: ./kubernetes/connect-cluster.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurációk üzembe helyezése GitOps használatával
-      url: ./kubernetes/use-gitops-connected-cluster.md
-    - text: Helm-diagramok üzembe helyezése GitOps használatával
-      url: ./kubernetes/use-gitops-with-helm.md
-    - text: GitOps kényszerítése az Azure Policyval
-      url: ./kubernetes/use-azure-policy.md
-    - text: Monitorozás a tárolókhoz készült Azure Monitor használatával
-      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
-    - text: Belépésvezérlési szabályzatok az Azure Policyval
-      url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
-    - text: Azure IoT Edge számítási feladatok üzembe helyezése
-      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - url: ./kubernetes/use-gitops-with-helm.md
+      itemType: deploy
+      text: Helm-diagramok üzembe helyezése GitOps használatával
+    - url: ./kubernetes/use-azure-policy.md
+      itemType: how-to-guide
+      text: GitOps kényszerítése az Azure Policyval
+    - url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/toc.json
+      itemType: tutorial
+      text: Monitorozás a tárolókhoz készült Azure Monitor használatával
+    - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
+      itemType: learn
+      text: Belépésvezérlési szabályzatok az Azure Policyval
+    - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+      itemType: deploy
+      text: Azure IoT Edge számítási feladatok üzembe helyezése

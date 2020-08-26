@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747634"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869813"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
 
@@ -44,7 +44,7 @@ Miután a feladatot megkezdte, az *ügyfelek* tárolója a következőhöz hason
 
 ![Ügyfelek tárolója](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Az egyes mappák több blobot is tartalmazhatnak, amelyek mindegyike egy vagy több rekordot tartalmaz. A fenti példában egyetlen blob található a "06000000" címkével ellátott mappában a következő tartalommal:
+Az egyes mappák több blobot is tartalmazhatnak, amelyek mindegyike egy vagy több rekordot tartalmaz. A fenti példában a "06000000" címkével ellátott mappában található egyetlen blob a következő tartalommal:
 
 ![BLOB tartalma](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Példa
 
-Hozzon létre egy Storage-fiókot, egy erőforráscsoportot, egy Stream Analytics feladatot és egy bemeneti forrást az [Azure stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) rövid útmutatója alapján. A gyors üzembe helyezési útmutatóban használt mintaadatok is használhatók a [githubon](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
+Hozzon létre egy Storage-fiókot, egy erőforráscsoportot, egy Stream Analytics feladatot és egy bemeneti forrást a [Azure Stream Analytics Azure Portal](stream-analytics-quick-create-portal.md) gyors útmutatójának megfelelően. A gyors üzembe helyezési útmutatóban használt mintaadatok is használhatók a [githubon](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).
 
 Hozzon létre egy blob kimeneti gyűjtőt a következő konfigurációval:
 

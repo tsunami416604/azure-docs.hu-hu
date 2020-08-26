@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan telepíthet át egy élő webhelyhez már hozz�
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782209"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871394"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név átmigrálása Azure App Service
 
@@ -59,31 +59,27 @@ A DNS-rekordok oldalon jegyezze fel az áttelepíteni kívánt DNS-név bejegyz�
 
 ### <a name="enable-the-domain-for-your-app"></a>Az alkalmazás tartományának engedélyezése
 
-A [Azure Portal](https://portal.azure.com)az alkalmazás lap bal oldali navigációs sávján válassza az **Egyéni tartományok**elemet. 
+1. A [Azure Portal](https://portal.azure.com)az alkalmazás lap bal oldali navigációs sávján válassza az **Egyéni tartományok**elemet. 
 
-![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Az **Egyéni tartományok** lapon jelölje be az **+** **állomásnév hozzáadása**jelölőnégyzetet.
+1. Az **Egyéni tartományok** lapon válassza az **egyéni tartomány hozzáadása**elemet.
 
-![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Írja be az áttelepíteni kívánt teljes tartománynevet, amely megfelel a létrehozott TXT-rekordnak (például,, `contoso.com` `www.contoso.com` vagy `*.contoso.com` ).
+1. Írja be az áttelepíteni kívánt teljes tartománynevet, amely megfelel a létrehozott TXT-rekordnak (például,, `contoso.com` `www.contoso.com` vagy `*.contoso.com` ). Válassza az **Érvényesítés** lehetőséget.
 
-Válassza az **Érvényesítés** lehetőséget.
+    Az **egyéni tartomány hozzáadása** gomb aktiválva van. 
 
-A **Gazdagépnév hozzáadása** gomb aktívvá válik. 
+1. Győződjön meg arról, hogy az **állomásnév bejegyzéstípus** az áttelepíteni kívánt DNS-bejegyzéstípusra van beállítva. Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
-Győződjön meg arról, hogy az **állomásnév bejegyzéstípus** az áttelepíteni kívánt DNS-bejegyzéstípusra van beállítva.
+    ![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Válassza a **Gazdagépnév hozzáadása** lehetőséget.
+    Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
 
-![DNS-név hozzáadása az alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Eltarthat egy ideig, amíg az új gazdanév megjelenik az alkalmazás **Egyéni tartományok** lapján. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
-
-![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-Az egyéni DNS-név mostantól engedélyezve van az Azure-alkalmazásban. 
+    Az egyéni DNS-név mostantól engedélyezve van az Azure-alkalmazásban. 
 
 ## <a name="remap-the-active-dns-name"></a>Az aktív DNS-név újratársítása
 
@@ -96,8 +92,6 @@ Az egyetlen teendő, hogy átirányítja az aktív DNS-rekordot, hogy App Servic
 Ha egy CNAME rekordot újra hozzárendel, ugorja át ezt a szakaszt. 
 
 Egy rekord átadásához szüksége lesz a App Service alkalmazás külső IP-címére, amely az **Egyéni tartományok** lapon látható.
-
-Az **állomásnév hozzáadása** oldal bezárásához kattintson a jobb felső sarokban található **X** elemre. 
 
 Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 

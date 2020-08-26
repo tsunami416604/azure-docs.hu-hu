@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345359"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869864"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Adatfolyam-továbbítás Azure SQL Database Azure Stream Analytics Integration (előzetes verzió)
 
@@ -31,7 +31,7 @@ A felhasználók mostantól a valós idejű adatfolyam-adatok táblázatba való
 - További egyszerű használat az előzetes verziójú adatokkal: a beérkező adatok előnézete az események forrásáról (Event hub/IoT Hub) a kiválasztott tábla kontextusában
 
 > [!IMPORTANT]
-> Az Azure Stream Analytics feladatok kimenete Azure SQL Database, Azure SQL felügyelt példány vagy Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) lehet. További információt a [kimenetek](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)című témakörben talál.
+> Az Azure Stream Analytics feladatok kimenete Azure SQL Database, Azure SQL felügyelt példány vagy Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) lehet. További információt a [kimenetek](../../stream-analytics/sql-database-output.md)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,14 +43,14 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 ## <a name="configure-stream-analytics-integration"></a>A stream Analytics-integráció konfigurálása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Navigáljon ahhoz az adatbázishoz, ahol be szeretné állítani a folyamatos átviteli adatait. Válassza a **stream Analytics (előzetes verzió)** lehetőséget.
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
 3. A folyamatos átviteli adatok ebbe az adatbázisba való betöltéséhez válassza a **Létrehozás** lehetőséget, és adjon nevet a folyamatos átviteli feladatnak, majd válassza a **Tovább: bemenet**lehetőséget.
 
-    ![Stream Analytics-feladatok létrehozása](./media/stream-data-stream-analytics-integration/create-job.png)
+    ![Stream Analytics feladatok alapalapjainak konfigurálása](./media/stream-data-stream-analytics-integration/create-job.png)
 
 4. Adja meg az események forrásának adatait, majd válassza a **Tovább: kimenet**lehetőséget.
 
@@ -64,7 +64,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
       Javasoljuk, hogy hozzon létre egy fogyasztói csoportot és egy szabályzatot minden olyan új Azure Stream Analytics feladatokhoz, amelyeket itt hoz létre. A fogyasztói csoportok csak öt egyidejű olvasót engedélyeznek, így az egyes feladatokhoz egy dedikált fogyasztói csoportot biztosítanak, így elkerülhetők a korlátot meghaladó hibák. A dedikált szabályzat lehetővé teszi a kulcs elforgatását vagy az engedélyek visszavonását anélkül, hogy ez hatással lenne más erőforrásokra.
 
-     ![Stream Analytics-feladatok létrehozása](./media/stream-data-stream-analytics-integration/create-job-output.png)
+     ![Stream Analytics feladatok kimenetének konfigurálása](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
 5. Válassza ki, hogy melyik táblát szeretné bevenni a streaming-adataiba. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 
@@ -122,7 +122,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
      ![Stream Analytics-feladatok](./media/stream-data-stream-analytics-integration/jobs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Stream Analytics dokumentációja](https://docs.microsoft.com/azure/stream-analytics/)
 - [Az Azure Stream Analytics megoldásmintái](../../stream-analytics/stream-analytics-solution-patterns.md)

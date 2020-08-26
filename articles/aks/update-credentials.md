@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan frissítheti vagy állíthatja alaphelyzetbe az
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e787322f421094cf9ac6681df0119ba820b654ea
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386928"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871224"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) hitelesítő adatainak frissítése vagy elforgatása
 
@@ -31,7 +31,8 @@ Ha egy AK-fürt hitelesítő adatait szeretné frissíteni, a következők köz�
 * Frissítse a meglévő egyszerű szolgáltatásnév hitelesítő adatait.
 * Hozzon létre egy új szolgáltatásnevet, és frissítse a fürtöt az új hitelesítő adatok használatára. 
 
-> ! Figyelmeztetés Ha úgy dönt, hogy *új* szolgáltatásnevet hoz létre, akkor a nagyméretű AK-fürtök frissítése a hitelesítő adatok használatára hosszú időt vehet igénybe.
+> [!WARNING]
+> Ha úgy dönt, hogy *új* szolgáltatásnevet hoz létre, akkor a nagyméretű AK-fürtök frissítése a hitelesítő adatok használatára hosszú időt vehet igénybe.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Az egyszerű szolgáltatás lejárati idejének megtekintése
 

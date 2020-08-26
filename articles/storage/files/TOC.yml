@@ -296,12 +296,12 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Az Azure File Sync kibocsátási megjegyzései
       href: storage-files-release-notes.md
-    - name: Azure Storage-fórum
-      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
+    - name: A Microsoft Azure Storage-ére vonatkozó kérdések és válaszok
+      href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
     - name: Az Azure Storage a Stack Overflow-n
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Az Azure Storage díjszabása
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Az Azure Files díjszabása
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Azure-díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videók

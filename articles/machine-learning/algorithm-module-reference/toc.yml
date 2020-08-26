@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: Modulhibák és hibaelhárítás
   href: designer-error-codes.md
+- name: Gráfkeresés lekérdezési szintaxisa
+  href: graph-search-syntax.md

@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 8/20/2020
 ms.author: allensu
-ms.openlocfilehash: ed6c60b4f66361e87f67f3c64bb60846b2df757b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817579"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870456"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN Endpoint multi-Origin
 
@@ -66,6 +66,7 @@ Ha több kezdőpontot választ egy Azure CDN végponton belül, a redundancia a 
 
    | Beállítás           | Érték                                                                 |
    |-------------------|-----------------------------------------------------------------------|
+   | Név        | Adja meg a forrás nevét.        |
    | Forrás típusa | Válassza a **Storage**, a **Cloud Service**, a **Web App**vagy az **Egyéni forrás**lehetőséget.                                   |
    | Forrás gazdaneve        | Válassza ki vagy adja meg a forrás állomásnevét.  A legördülő lista felsorolja az előző beállításban megadott típusú összes rendelkezésre álló forrást. Ha az **Egyéni forrás** lehetőséget választotta a forrás típusaként, adja meg az ügyfél-forráskiszolgáló tartományát. |
    | Forrás állomásfejléce    | Adja meg az egyes kérésekhez küldendő Azure CDN, vagy hagyja meg az alapértelmezett értéket.                        |
@@ -85,7 +86,7 @@ Ha több kezdőpontot választ egy Azure CDN végponton belül, a redundancia a 
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Forrás elérési útjának konfigurálása" border="true":::
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-origins-and-origin-group-settings"></a>Az Origins és a származási csoport beállításainak konfigurálása
 
@@ -114,6 +115,34 @@ Ha több eredete és a származási csoport is van, hozzáadhat vagy eltávolít
 2. Ha el szeretne távolítani egy forrást a forrás csoportból, jelölje be a forrás melletti Kuka ikont, majd válassza a **Mentés**lehetőséget:
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="A Origin csoport törlési forrásának frissítése" border="true":::
+
+## <a name="override-origin-group-with-rules-engine"></a>A forrás csoport felülbírálása a szabályok motorral
+
+A Standard Rules Engine használatával testreszabhatja, hogy a rendszer hogyan ossza el a forgalmat a különböző Origin csoportokba.
+
+A forgalom elosztása egy másik csoportba a kérelem URL-címe alapján.
+
+1. A CDN-végponton válassza a **szabályok motor** elemet a **Beállítások**területen:
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Szabályok motorja" border="true":::
+
+2. Válassza a **+ szabály hozzáadása**elemet.
+
+3. Adja meg a szabály nevét a **névben**.
+
+4. Válassza a **+ feltétel**, majd az **URL-cím elérési útja**lehetőséget.
+
+5. A **kezelő** legördülő menüben válassza a **tartalmaz**elemet.
+
+6. Az **érték**mezőben adja meg a **/images**.
+
+7. Válassza a **+ művelet hozzáadása**, majd a **Origó felülbírálás**lehetőséget.
+
+8. A **forrás csoportban**válassza ki a forrás csoportot a legördülő listából.
+
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Szabályok motorjának feltételei" border="true":::
+
+Az összes bejövő kérelem esetén, ha az URL-cím **/images**tartalmaz, akkor a kérés a művelet szakaszban **(myorigingroup)** lesz hozzárendelve a forrás csoportjához. 
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben engedélyezte Azure CDN Endpoint multi-Origin használatát.

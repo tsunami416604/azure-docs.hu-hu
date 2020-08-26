@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: Egyidejű frissítések kezelése
           href: search-howto-concurrency.md
-    - name: Azure-adatok betöltése
+    - name: Csak az Azure-tól származó adatok betöltése
       items:
         - name: Indexelők konfigurálása
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
-    - name: Betöltés mesterséges intelligencia használatával
+    - name: Készségek használata (MI)
       items:
         - name: Cognitive Services-erőforrás csatolása
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Leképezés index mezőire
               href: cognitive-search-output-field-mapping.md
-            - name: Információk kinyerése képekből
+            - name: Rendszerképfájlok feldolgozása
               href: cognitive-search-concept-image-scenarios.md
             - name: Gyorsítótár (növekményes) bővítése
               href: search-howto-incremental-index.md

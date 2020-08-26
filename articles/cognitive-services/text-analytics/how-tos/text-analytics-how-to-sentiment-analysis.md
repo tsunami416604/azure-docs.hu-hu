@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e7dca6f74145d1ea50c5a9bfc57b52e1cbdfcab3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84141245"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869830"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
@@ -49,7 +49,7 @@ A Címkék: `positive` , `negative` és `neutral` . A dokumentum szintjén a `mi
 | Legalább egy `negative` mondat és legalább egy `positive` mondat szerepel a dokumentumban.    | `mixed`                 |
 | A dokumentumban szereplő összes mondat `neutral` .                                                  | `neutral`               |
 
-A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. Az egyes dokumentumokban vagy mondatokban szereplő megbízhatósági pontszámok akár 1-re is felvehetők.
+A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. Az egyes mondatokon belüli (nem dokumentum) megbízhatósági pontszámok legfeljebb 1 értékkel adhatók hozzá.
 
 ### <a name="opinion-mining"></a>Vélemény bányászata
 

@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706375"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871445"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Az alkalmazás összekötése az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Egy alkalmazás csatlakoztatása, ha egy másik virtuális hálózaton belül ta
 
 A virtuális hálózatok összekapcsolásának két lehetősége van:
 
-- [Azure VPN-partneri kapcsolat](../../virtual-network/virtual-network-peering-overview.md)
+- [Azure VNet-társítás](../../virtual-network/virtual-network-peering-overview.md)
 - VNet – VNet VPN Gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
 A társítás előnyben részesített, mivel a Microsoft gerinc hálózatot használja, így a kapcsolati szempontból nem észlelhető különbség a virtuális gépek és az azonos virtuális hálózatok közötti késésben. A virtuális hálózat társítása az azonos régióban található hálózatokra korlátozódik.  
@@ -63,13 +63,13 @@ Ha sikeresen létrehozott egy helyszíni Azure-kapcsolatot, és nem tud kapcsola
 
 ## <a name="connect-the-developer-box"></a>A fejlesztői Box összekötése
 
-A fejlesztői Box is csatlakoztatható SQL felügyelt példányhoz. A felügyelt SQL-példányok csak magánhálózati IP-címeken keresztül érhetők el, így a fejlesztői Box-ból való hozzáféréshez először kapcsolatot kell létesítenie a fejlesztői és az SQL felügyelt példány virtuális hálózata között. Ehhez konfiguráljon egy pont – hely kapcsolatot egy virtuális hálózathoz natív Azure tanúsítványalapú hitelesítés használatával. További információ: [pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányának helyszíni számítógépről való összekapcsolásához](point-to-site-p2s-configure.md).
+A fejlesztői Box is csatlakoztatható SQL felügyelt példányhoz. A felügyelt SQL-példányok csak magánhálózati IP-címeken keresztül érhetők el, így a fejlesztői Box-ból való hozzáféréshez először kapcsolatot kell létesítenie a fejlesztői és az SQL felügyelt példány virtuális hálózata között. Ehhez konfiguráljon egy pont – hely kapcsolatot egy virtuális hálózathoz natív Azure tanúsítványalapú hitelesítés használatával. További információ:  [pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányának helyszíni számítógépről való összekapcsolásához](point-to-site-p2s-configure.md).
 
 ## <a name="connect-with-vnet-peering"></a>VNet-társítással való kapcsolat
 
 Az ügyfelek által megvalósított egy másik forgatókönyv, ahol a VPN-átjáró egy különálló virtuális hálózatban van telepítve, és az SQL felügyelt példányának egyik üzemeltetése az előfizetés. Ezt követően a két virtuális hálózat összevonásra kerül. A következő minta architektúra-diagram bemutatja, hogyan valósítható meg ez a megoldás.
 
-![Társviszony létesítése virtuális hálózatok között](./media/connect-application-instance/vnet-peering.png)
+![Virtuális hálózati társviszony](./media/connect-application-instance/vnet-peering.png)
 
 Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN-átjáró láthassa az SQL felügyelt példányát futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások**alatt.
 
@@ -154,7 +154,7 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 |SSMS| 18,0 vagy [újabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

@@ -4,23 +4,25 @@ description: Megtudhatja, hogyan hozhat létre titkosítási hatókört a blob-a
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/04/2020
+ms.date: 08/25/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870255"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)
 
-A titkosítási hatókörök (előzetes verzió) lehetővé teszik a titkosítás kezelését egy adott blob vagy tároló szintjén. A titkosítási hatókör elkülöníti a blob-adattárakat egy biztonságos enklávéban egy Storage-fiókon belül. A titkosítási hatókörök használatával biztonságos határokat hozhat létre az azonos Storage-fiókban található, de különböző ügyfelekhez tartozó adategységek között. A titkosítási hatókörökkel kapcsolatos további információkért lásd: [titkosítási hatókörök a blob Storage-hoz (előzetes verzió)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
+A titkosítási hatókörök (előzetes verzió) lehetővé teszik a titkosítás kezelését egy adott blob vagy tároló szintjén. A titkosítási hatókör elkülöníti a blobadatokat egy biztonságos enklávéban a tárfiókon belül. A titkosítási hatókörök használatával biztonságos határokat hozhat létre az azonos Storage-fiókban található, de különböző ügyfelekhez tartozó adategységek között. A titkosítási hatókörökkel kapcsolatos további információkért lásd: [titkosítási hatókörök a blob Storage-hoz (előzetes verzió)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre titkosítási hatókört. Azt is bemutatja, hogyan adhat meg titkosítási hatókört Blobok vagy tárolók létrehozásakor.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Titkosítási hatókör létrehozása
 

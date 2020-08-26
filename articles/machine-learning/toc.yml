@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: Machine Learning-folyamatok – YAML-referencia
       href: reference-pipeline-yaml.md
+    - name: Szuverén felhőparitás
+      href: reference-machine-learning-cloud-parity.md
 - name: További források
   items:
     - name: Kibocsátási megjegyzések

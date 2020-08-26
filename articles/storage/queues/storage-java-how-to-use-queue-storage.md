@@ -9,16 +9,18 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 78e2bd80b689394b654a85ea913c618c08120091
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 9c2f8ea55f99ac893dca0fa380729b7cc866812e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854010"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871283"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
+
+## <a name="overview"></a>Áttekintés
 
 Ez az útmutató bemutatja, hogyan használható a gyakori forgatókönyvek kódja az Azure üzenetsor-tárolási szolgáltatással. A kódminták Java nyelven íródtak, és a [Java-hoz készült Azure Storage SDK-t][Azure Storage SDK for Java] használják. A forgatókönyvek közé tartoznak az üzenetsor-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** . A várólisták **létrehozásához** és **törléséhez** szükséges kód is szerepel. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
 
@@ -594,7 +596,7 @@ catch (Exception e)
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a várólista-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.
 

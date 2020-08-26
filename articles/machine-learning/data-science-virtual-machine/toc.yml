@@ -44,12 +44,18 @@
       href: vm-do-ten-things.md
     - name: Linux rendszerű adatelemzési virtuális gép használata
       href: linux-dsvm-walkthrough.md
-    - name: Automatikus skálázású adatelemzési virtuálisgép-készlet létrehozása
-      href: dsvm-pools.md
-    - name: Az integrációt az Active Directoryval.
-      href: dsvm-common-identity.md
-    - name: Biztonságos erőforrás-hozzáférési hitelesítő adatok
-      href: dsvm-secure-access-keys.md
+    - name: Integrálás az Azure Machine Learninggel
+      items:
+        - name: Kísérletek nyomon követése
+          href: how-to-track-experiments.md
+    - name: Vállalati útmutató
+      items:
+        - name: Automatikus skálázású adatelemzési virtuálisgép-készlet létrehozása
+          href: dsvm-pools.md
+        - name: Az integrációt az Active Directoryval.
+          href: dsvm-common-identity.md
+        - name: Biztonságos erőforrás-hozzáférési hitelesítő adatok
+          href: dsvm-secure-access-keys.md
 - name: További források
   items:
     - name: Microsoft Q&A kérdések oldala
