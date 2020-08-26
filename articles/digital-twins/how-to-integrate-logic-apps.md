@@ -46,7 +46,7 @@ Emellett létre kell hoznia egy **_ügyfél-titkot_** az Azure ad-alkalmazás re
 
 A *tanúsítványokat és a titkos kulcsokat* a regisztráció menüjéből, majd az *+ új ügyfél titka*elemre kattintva érheti el.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a "tanúsítványok és titkok" elemre mutató kiemelés, valamint az "új ügyfél titka" nevű oldalon egy kiemelés látható.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD-alkalmazás regisztrációjának portál nézete. Az erőforrás menüben a tanúsítványok és titkok elemre mutató kiemelés, valamint az új ügyfél titka nevű oldalon egy kiemelés látható.":::
 
 Adja meg a leíráshoz és a lejárathoz szükséges értékeket, majd kattintson a *Hozzáadás gombra*.
 A rendszer hozzáadja a titkos kulcsot a *tanúsítványok és titkok* oldalon található ügyfél-titkok listájához. Jegyezze fel a későbbi használat értékét (a vágólapra másolhatja a másolás ikont is).
@@ -65,11 +65,11 @@ Ebben a lépésben egy [egyéni Logic apps-összekötőt](../logic-apps/custom-c
 
 Navigáljon a Azure Portal [Logic apps egyéni összekötő](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) oldalára (ezt a hivatkozást használhatja, vagy megkeresheti a portál keresési sávján). Hit *+ Hozzáadás*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="A Azure Portal Logic Apps egyéni összekötő lapja. Kiemelés a "Hozzáadás" gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="A Azure Portal Logic Apps egyéni összekötő lapja. Kiemelés a Hozzáadás gomb körül":::
 
 Az alábbi *Logic apps egyéni összekötő létrehozása* oldalon válassza ki az előfizetést és az erőforráscsoportot, valamint az új összekötő nevét és üzembe helyezési helyét. Találatok *áttekintése + létrehozás*. Ekkor megnyílik a *felülvizsgálat + létrehozás* lap, ahol a *Létrehozás* alul található az erőforrás létrehozásához.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Az Azure Portal a "Logic Apps egyéni összekötő létrehozása" lap "felülvizsgálat + létrehozás" lapját. Kiemelés a "létrehozás" gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Az Azure Portal a Logic Apps egyéni összekötő létrehozása lap felülvizsgálat + létrehozás lapját. Kiemelés a létrehozás gomb körül":::
 
 Ekkor megjelenik az összekötő üzembe helyezési lapja. Ha befejezte az üzembe helyezést, *lépjen az erőforrás* megnyitása gombra, és tekintse meg az összekötő részleteit a portálon.
 
@@ -81,7 +81,7 @@ Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy let
 
 Ezután az összekötő áttekintő oldaláról a Azure Portalban kattintson a *Szerkesztés*elemre.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Az előző lépésben létrehozott összekötő "áttekintés" lapja. Kiemelés a "szerkesztés" gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Az előző lépésben létrehozott összekötő áttekintés lapja. Kiemelés a szerkesztés gomb körül":::
 
 A következő *Logic apps egyéni összekötő szerkesztése* oldalon adja meg az alábbi adatokat:
 * **Egyéni összekötők**
@@ -96,7 +96,7 @@ A következő *Logic apps egyéni összekötő szerkesztése* oldalon adja meg a
 
 Ezután nyomja meg az ablak alján található *biztonsági* gombot, és folytassa a következő konfigurációs lépéssel.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Képernyőkép a "Logic Apps egyéni összekötő szerkesztése" oldal aljáról. A biztonság folytatásához jelölje ki a gombot.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Képernyőkép a Logic Apps egyéni összekötő szerkesztése oldal aljáról. A biztonság folytatásához jelölje ki a gombot.":::
 
 A biztonsági lépésben nyomja meg az alábbi információk *szerkesztését* és konfigurálását:
 * **Hitelesítés típusa**: OAuth 2,0
@@ -112,13 +112,13 @@ A biztonsági lépésben nyomja meg az alábbi információk *szerkesztését* �
 
 Vegye figyelembe, hogy az átirányítási URL-cím mező azt jelzi, hogy az *egyéni összekötő mentésével létrehozza az átirányítási URL-címet*. Ezt most úgy teheti meg, hogy a panel tetején megnyomja a *frissítési összekötőt* az összekötő beállításainak megerősítéséhez.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Képernyőkép a "Logic Apps egyéni összekötő szerkesztése" oldal tetején. Kiemelés az "összekötő frissítése" gomb körül":::
+:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Képernyőkép a Logic Apps egyéni összekötő szerkesztése oldal tetején. Kiemelés az összekötő frissítése gomb körül":::
 
 <!-- Success message? didn't see one -->
 
 Térjen vissza az átirányítási URL-címhez, és másolja ki a generált értéket. Ezt a következő lépésben fogja használni.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="A "Logic Apps egyéni összekötő szerkesztése" lapon található átirányítási URL-cím mező most a következő értékkel rendelkezik: " https://logic-apis-westus2.consent.azure-apim.net/redirect ". Az érték másolására szolgáló gomb kiemelve.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="A Logic Apps egyéni összekötő szerkesztése lapon található átirányítási URL-cím mező most a következő értékkel rendelkezik:  https://logic-apis-westus2.consent.azure-apim.net/redirect . Az érték másolására szolgáló gomb kiemelve.":::
 
 Ez az összekötő létrehozásához szükséges összes információ (nincs szükség a definíciós lépéshez való korábbi biztonság folytatására). A *szerkesztés Logic apps egyéni összekötő* panelt is lezárhatja.
 
@@ -133,7 +133,7 @@ Navigáljon a Azure Portal [Alkalmazásregisztrációk](https://portal.azure.com
 
 A regisztráció menü *hitelesítés* területén adjon hozzá egy URI-t.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Az alkalmazás regisztrációjának hitelesítési lapja a Azure Portalban. A menüben a "hitelesítés" elem ki van jelölve, és az oldalon az "URI hozzáadása" gomb ki van emelve."::: 
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Az alkalmazás regisztrációjának hitelesítési lapja a Azure Portalban. A menüben a hitelesítés elem ki van jelölve, és az oldalon az URI hozzáadása gomb ki van emelve."::: 
 
 Adja meg az egyéni összekötő *átirányítási URL-címét* az új mezőbe, és nyomja le a *Save (Mentés* ) ikont.
 
@@ -147,7 +147,7 @@ Ezután létre fog hozni egy logikai alkalmazást, amely az új összekötő has
 
 Keresse meg a Azure Portal [Logic apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) lapját (ezt a hivatkozást használhatja, vagy keresse meg a portálon a keresési sávban). Kattintson a *logikai alkalmazás létrehozása*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="A Azure Portal "Logic Apps" lapja. A "logikai alkalmazás létrehozása" gomb kiemelése":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="A Azure Portal Logic Apps lapja. A logikai alkalmazás létrehozása gomb kiemelése":::
 
 Az alábbi *logikai alkalmazás* oldalon válassza ki az előfizetést és az erőforráscsoportot, valamint az új logikai alkalmazás nevét és üzembe helyezési helyét. Találatok *áttekintése + létrehozás*. Ekkor megnyílik a *felülvizsgálat + létrehozás* lap, ahol a *Létrehozás* alul található az erőforrás létrehozásához.
 
@@ -157,7 +157,7 @@ Ekkor megjelenik a logikai alkalmazás üzembe helyezési lapja. Ha befejezte az
 
 A *Logic apps Designerben*az *Indítás általános eseményindítóval*területen válassza az _**Ismétlődés**_ lehetőséget.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="A Azure Portal "Logic Apps Designer" lapja. Az ismétlődés általános eseményindítójának kiemelése":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="A Azure Portal Logic Apps Designer lapja. Az ismétlődés általános eseményindítójának kiemelése":::
 
 Az alábbi *Logic apps Designer* lapon módosítsa az **ismétlődési** gyakoriságot a *második*értékre, hogy az eseményt 3 másodpercenként aktiválja. Ez megkönnyíti az eredmények későbbi megtekintését anélkül, hogy sokáig várnia kellene.
 
