@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192289"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853277"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure Signaler szolgáltatás – gyakori kérdések
 
@@ -78,8 +78,8 @@ Az Azure Signal Service-erőforrások áttekintés paneljén már kiválasztottu
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Mit jelent a szolgáltatási mód `Default` / `Serverless` / `Classic` ? Hogyan választhatok?
 
 Módok
-* `Default` a mód használatához a központi kiszolgáló **szükséges** . Ha nincs elérhető kiszolgálói kapcsolat a központhoz, az ügyfél megpróbál csatlakozni ehhez a hubhoz.
-* `Serverless` a Mode **nem** engedélyezi a kiszolgálók kapcsolatát, azaz elutasítja az összes kiszolgálói kapcsolatot, minden ügyfélnek kiszolgáló nélküli módban kell lennie.
+* `Default` a mód használatához a központi kiszolgáló *szükséges* . Ebben a módban az Azure Signaler a csatlakoztatott hub-kiszolgáló kapcsolataira irányítja az ügyfél forgalmát. Az Azure Signal ellenőrzi a csatlakoztatott központi kiszolgálókat. Ha nem található csatlakoztatott hub-kiszolgáló, az Azure-jelző elutasítja a bejövő ügyfélkapcsolatokat. Ebben a módban a **Management API** -t is használhatja a csatlakoztatott ügyfelek közvetlen Azure-jelzővel való kezeléséhez.
+* `Serverless` a Mode *nem* engedélyezi a kiszolgálók kapcsolatát, azaz elutasítja az összes kiszolgálói kapcsolatot. Minden ügyfélnek kiszolgáló nélküli módban kell lennie. Az ügyfelek csatlakoznak az Azure-jelzőhöz, és a felhasználók általában kiszolgáló nélküli technológiákat, például **Azure-függvényt** használnak a hub-logika kezelésére. Tekintse meg az Azure-jelző kiszolgáló nélküli üzemmódját használó [egyszerű példát](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) .
 * `Classic` a mód vegyes állapotú. Ha egy hubhoz kiszolgálói csatlakozás van, az új ügyfél a központi kiszolgálóra lesz irányítva, ha nem, akkor az ügyfél kiszolgáló nélküli módba lép.
 
   Ez némi problémát okozhat, például az összes kiszolgálói kapcsolat elvész egy pillanatra, egyes ügyfelek kiszolgáló nélküli módba lépnek, nem a központi kiszolgálóra való továbbítás helyett.

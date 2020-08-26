@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76697897"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853856"
 ---
 # <a name="brokered-authentication-in-android"></a>Felügyelt hitelesítés az Androidban
 
@@ -58,7 +58,7 @@ Ha egy eszközön még nincs telepítve Broker-alkalmazás, a MSAL arra utasítj
 
 Ha egy ügynök telepítve van egy eszközön, az összes további interaktív jogkivonat-kérést (hívásokat `acquireToken()` ) a közvetítő kezeli, nem pedig helyileg a MSAL. A MSAL számára korábban elérhető SSO-állapotok nem érhetők el a közvetítő számára. Ennek eredményeképpen a felhasználónak újra hitelesítenie kell magát, vagy ki kell választania egy fiókot az eszközön ismert fiókok meglévő listájából.
 
-A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException`több okból is kidobják, és interaktív módon kell feloldani. Ezek gyakori okai:
+A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException` több okból is kidobják, és interaktív módon kell feloldani. Ezek gyakori okai:
 
 - A felhasználó megváltoztatta a fiókhoz társított jelszót.
 - A felhasználó fiókja már nem felel meg a feltételes hozzáférési szabályzatnak.
@@ -76,7 +76,7 @@ Ha a Intune Céges portál telepítve van, és az aktív közvetítőként műk�
 
 Regisztrálnia kell egy átirányítási URI-t, amely kompatibilis a közvetítővel. A közvetítő átirányítási URI-ja tartalmaznia kell az alkalmazás csomagjának nevét, valamint az alkalmazás aláírásának Base64 kódolású ábrázolását.
 
-Az átirányítási URI formátuma:`msauth://<yourpackagename>/<base64urlencodedsignature>`
+Az átirányítási URI formátuma: `msauth://<yourpackagename>/<base64urlencodedsignature>`
 
 Generálja Base64 URL-kódolású aláírását az alkalmazás aláíró kulcsaival. Íme néhány példa a hibakeresési aláírási kulcsokat használó parancsokra:
 
@@ -122,3 +122,12 @@ Ha `MsalClientException` hibakódot kap `"BROKER_BIND_FAILURE"` , két lehetős�
 
 - Kérje meg a felhasználót, hogy tiltsa le az Microsoft Authenticator alkalmazás és a Intune Céges portál energiagazdálkodásának optimalizálását.
 - Kérje meg a felhasználót, hogy adja meg az `"READ_CONTACTS"` engedélyt
+
+## <a name="verifying-broker-integration"></a>A Broker integrációjának ellenőrzése
+
+Előfordulhat, hogy nem azonnal egyértelmű, hogy a közvetítő integrációja működik, de a következő lépésekkel ellenőrizheti:
+
+1. Az Android-eszközön végezzen el egy kérelmet a közvetítő használatával.
+1. Az Android-eszköz beállításai között keresse meg a által hitelesített fióknak megfelelő újonnan létrehozott fiókot. A fióknak *munkahelyi fiók*típusúnak kell lennie.
+
+Ha meg szeretné ismételni a tesztet, eltávolíthatja a fiókot a beállítások közül.

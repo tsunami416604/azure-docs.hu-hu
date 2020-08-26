@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475464"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854216"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
 
@@ -54,6 +54,10 @@ A kapcsolati karakterláncok a végponthoz való kapcsolódáshoz szükséges ad
 
 - Az eszköz kapcsolati karakterláncai lehetővé teszik, hogy a [IoT Plug and Play eszközök](#iot-plug-and-play-device) csatlakozzanak az IoT hub eszközre irányuló végpontokhoz. Az eszközön a kapcsolati sztring használatával biztonságos kapcsolat hozható létre egy IoT hubhoz.
 - IoT Hub kapcsolati karakterláncok lehetővé teszik a háttér-megoldások és-eszközök számára, hogy biztonságosan kapcsolódjanak a IoT hub szolgáltatáshoz csatlakozó végpontokhoz. Ezek a megoldások és eszközök kezelik az IoT hubot és az ahhoz csatlakoztatott eszközöket.
+
+## <a name="device-certification"></a>Eszköz minősítése
+
+A IoT Plug and Play eszköz minősítési program ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 
 ## <a name="device-model"></a>Eszközmodell
 

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815725"
+ms.locfileid: "88853289"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -85,23 +85,23 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
    1. Adja meg a kapcsolatok nevét, és válassza ki a Service Bus névteret.
 
-      ![Service Bus kapcsolat létrehozása, 1. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![A kapcsolatok nevének megadását és a Service Bus névtér kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása**lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
 
    1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás**lehetőséget.
 
-      ![Service Bus kapcsolat létrehozása, 2. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![A Service Bus szabályzat kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. Válassza ki a kívánt üzenetküldési entitást, például egy várólistát vagy egy témakört. Ebben a példában válassza ki a Service Bus várólistát.
    
-      ![Service Bus üzenetsor kiválasztása](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![A Service Bus üzenetsor kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. Adja meg a szükséges információkat a kiválasztott triggerhez. Ha más elérhető tulajdonságokat szeretne hozzáadni a művelethez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt tulajdonságokat.
 
    Ehhez a példához tartozó trigger esetében válassza ki a lekérdezési időközt és a várólista ellenőrzésének gyakoriságát.
 
-   ![Lekérdezési időköz beállítása](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![A Service Bus triggeren a lekérdezési időköz beállítását bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    Az elérhető eseményindítókkal és tulajdonságokkal kapcsolatos további információkért tekintse meg az összekötő [hivatkozási oldalát](/connectors/servicebus/).
 
@@ -123,29 +123,29 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
    Ebben a példában válassza az **üzenet küldése** műveletet.
 
-   ![Service Bus művelet kiválasztása](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![A Service Bus művelet kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. Ha a művelet első alkalommal csatlakozik a Service Bus-névtérhez, kövesse az alábbi lépéseket, amikor a Logic app Designer kéri a kapcsolati információk megadását.
 
    1. Adja meg a kapcsolatok nevét, és válassza ki a Service Bus névteret.
 
-      ![Service Bus kapcsolat létrehozása, 1. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![A kapcsolatok nevének megadását és a Service Bus névtér kiválasztását bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása**lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
 
    1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás**lehetőséget.
 
-      ![Service Bus kapcsolat létrehozása, 2. rész](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![Képernyőkép a Service Bus házirend kiválasztásáról és a létrehozás gomb kiválasztásáról](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. Válassza ki a kívánt üzenetküldési entitást, például egy várólistát vagy egy témakört. Ebben a példában válassza ki a Service Bus várólistát.
 
-      ![Service Bus üzenetsor kiválasztása](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![Service Bus üzenetsor kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. Adja meg a kiválasztott művelethez szükséges adatokat. Ha más elérhető tulajdonságokat szeretne hozzáadni a művelethez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt tulajdonságokat.
 
    Válassza ki például a **tartalom** és a **tartalomtípus** tulajdonságokat, hogy hozzáadja őket a művelethez. Ezután adja meg az elküldeni kívánt üzenet tartalmát.
 
-   ![Üzenet tartalmának és részleteinek megadása](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![Az üzenet tartalmának típusát és részleteit megjelenítő képernyőkép](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    Az elérhető műveletekkel és azok tulajdonságaival kapcsolatos további információkért tekintse meg az összekötő [hivatkozási oldalát](/connectors/servicebus/).
 

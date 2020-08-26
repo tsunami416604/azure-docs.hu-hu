@@ -13,16 +13,16 @@ ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163662"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853381"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
-A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják a hitelesítéshez, például a OAuth 2,0 [ügyfél hitelesítő adatait adja](v2-oauth2-client-creds-grant-flow.md) meg, és a [befelé irányuló](v2-oauth2-on-behalf-of-flow.md) (OBO) folyamatot.
+A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják a hitelesítéshez, például a OAuth 2,0  [ügyfél hitelesítő adatait adja](v2-oauth2-client-creds-grant-flow.md) meg, és a [befelé irányuló](v2-oauth2-on-behalf-of-flow.md) (OBO) folyamatot.
 
 Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy [JSON web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
 
@@ -36,13 +36,13 @@ Az állítás kiszámításához használhatja a számos JWT-függvénytár egyi
 | --- | --- |
 | `alg` | **RS256** kell lennie |
 | `typ` | **JWT** kell lennie |
-| `x5t` | Az X. 509 tanúsítvány kivonata (más néven a tanúsítvány SHA-1 *ujjlenyomata*) Base64 karakterlánc-értékként van kódolva. Például egy X. 509 tanúsítvány kivonata miatt `84E05C1D98BCE3A5421D225B140B36E86A3D5534` a jogcím a következő: `x5t` `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
+| `x5t` | Az X. 509 tanúsítvány kivonatának (más néven a CERT SHA-1 *ujjlenyomata*) hexadecimális ábrázolása Base64 karakterlánc-értékként kódolva. Például egy X. 509 tanúsítvány kivonata `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (hexadecimális) esetén a `x5t` jogcím a következő: `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64). |
 
 ### <a name="claims-payload"></a>Jogcímek (hasznos adatok)
 
 | Paraméter |  Megjegyzések |
 | --- | --- |
-| `aud` | Célközönség: legyen`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `aud` | Célközönség: legyen `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
 | `exp` | Lejárati dátum: a jogkivonat lejárati dátuma. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat érvényességének lejárta előtt. Javasoljuk, hogy rövid lejárati időt használjon – 10 percet egy órára.|
 | `iss` | Kiállító: az ügyfélszolgáltatás client_id (*alkalmazás-ügyfél) azonosítója* . |
 | `jti` | GUID: a JWT azonosítója |
@@ -103,8 +103,8 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 
 A tanúsítvány birtokában a következőket kell kiszámítani:
 
-- `$base64Thumbprint`-A tanúsítvány kivonatának Base64 kódolású értéke
-- `$base64Value`-A tanúsítvány nyers adatmennyiségének Base64 kódolású értéke
+- `$base64Thumbprint` -A tanúsítvány kivonatának Base64 kódolású értéke
+- `$base64Value` -A tanúsítvány nyers adatmennyiségének Base64 kódolású értéke
 
 Meg kell adnia egy GUID azonosítót is a kulcs azonosításához az alkalmazás jegyzékfájljában ( `$keyId` ).
 

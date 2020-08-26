@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82120781"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852598"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>A Python 3-kompatibilis Linux Azure Virtual Machines rendszerek virtuálisgép-bővítményeit használó problémák
 
@@ -28,7 +28,7 @@ ms.locfileid: "82120781"
 >
 > A **Python 2. x** éles környezetben való telepítése előtt vegye figyelembe a Python 2. x hosszú távú támogatásának kérdését, különösen a biztonsági frissítések fogadásának lehetőségét. Termékként, beleértve az említett bővítmények némelyikét, a **python 3,8** -támogatással való frissítéssel a Python 2. x verziójának használatát kell megszüntetnie.
 
-Egyes Linux-disztribúciók áttértek a Python 3,8-re, és eltávolította a `/usr/bin/python` teljes Python örökölt BelépésiPont. Ez az áttérés a következő feltételekkel befolyásolja az egyes virtuálisgép-bővítmények beépített, automatizált üzembe helyezését:
+Egyes Linux-disztribúciók áttértek a Python 3,8-re, és eltávolította a `/usr/bin/python` teljes Python örökölt BelépésiPont. Ez az áttérés hatással van az egyes virtuálisgép-bővítmények beépített, automatikus üzembe helyezésére a következő két feltétellel:
 
 - A Python 3. x-támogatással továbbra is elérhető bővítmények
 - A régi BelépésiPont használó bővítmények `/usr/bin/python`
@@ -41,52 +41,54 @@ A **Python 3. x verzióra** áttérő Linux-disztribúciós felhasználóknak bi
 
 A helyben történő verziófrissítések, például az **ubuntu 18,04 LTS** -ről **Ubuntu 20,04 LTS**-re való frissítés, meg kell őrizni a `/usr/bin/python` symlinket, és nem kell tovább működniük.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
-A bővítmények üzembe helyezése előtt vegye figyelembe a következő általános javaslatokat az összegzésben korábban ismertetett ismert forgatókönyvekben:
+A bővítmények telepítése előtt vegye figyelembe ezeket az általános ajánlásokat az összegzésben korábban ismertetett ismert forgatókönyvekben:
 
-1.  A bővítmény telepítése előtt állítsa vissza a `/usr/bin/python` symlink-t a Linux Distribution gyártó által biztosított módszer használatával.
+1. A bővítmény telepítése előtt állítsa vissza a `/usr/bin/python` symlink-t a Linux Distribution gyártó által biztosított módszer használatával.
 
-    - Például a **Python 2,7**esetén használja a következőt:`sudo apt update && sudo apt install python-is-python2`
+   - Például a **Python 2,7**esetén használja a következőt: `sudo apt update && sudo apt install python-is-python2`
 
-2.  Ha már telepített egy ezt a problémát bemutató példányt, használja a **virtuális gép** panelen a **futtatási parancs** funkciót a fent említett parancsok futtatásához. A futtatási parancs kiterjesztését nem érinti a Python 3,8-re való áttérés.
+1. Ez az ajánlat az Azure-ügyfelekre vonatkozik, és nem támogatott a Azure Stackban:
 
-3.  Ha új példányt telepít, és a kiépítési időpontban be kell állítania egy bővítményt, a fent említett csomagok telepítéséhez a **Cloud-init** felhasználói adatszolgáltatásokat kell használnia.
+   - Ha már telepített egy ezt a problémát bemutató példányt, használja a virtuális gép panelen a futtatási parancs funkciót a fent említett parancsok futtatásához. A futtatási parancs kiterjesztését nem érinti a Python 3,8-re való áttérés.
 
-    Például a Python 2,7 esetén:
+1. Ha új példányt telepít, és a kiépítési időpontban be kell állítania egy bővítményt, a fent említett csomagok telepítéséhez a **Cloud-init** felhasználói adatszolgáltatásokat kell használnia.
 
-    ```
-    # create cloud-init config
-    cat > cloudinitConfig.json <<EOF
-    #cloud-config
-    package_update: true
+   Például a Python 2,7 esetén:
+
+   ```python
+   # create cloud-init config
+   cat > cloudinitConfig.json <<EOF
+   #cloud-config
+   package_update: true
     
-    runcmd:
-    - sudo apt update
-    - sudo apt install python-is-python2 
-    EOF
-    
-    # create VM
-    az vm create \
-        --resource-group <resourceGroupName> \
-        --name <vmName> \
-        --image <Ubuntu 20.04 Image URN> \
-        --admin-username azadmin \
-        --ssh-key-value "<sshPubKey>" \
-        --custom-data ./cloudinitConfig.json
-    ```
+   runcmd:
+   - sudo apt update
+   - sudo apt install python-is-python2 
+   EOF
 
-4.  Ha a szervezete házirend-rendszergazdája megállapítja, hogy a bővítmények nem telepíthetők virtuális gépekre, akkor letilthatja a bővítmények támogatását a kiépítési időszakban:
+   # create VM
+   az vm create \
+       --resource-group <resourceGroupName> \
+       --name <vmName> \
+       --image <Ubuntu 20.04 Image URN> \
+       --admin-username azadmin \
+       --ssh-key-value "<sshPubKey>" \
+       --custom-data ./cloudinitConfig.json
+   ```
 
-    - REST API
+1. Ha a szervezete házirend-rendszergazdája megállapítja, hogy a bővítmények nem telepíthetők virtuális gépekre, akkor letilthatja a bővítmények támogatását a kiépítési időszakban:
 
-      A bővítmények letiltásához és engedélyezéséhez, ha egy virtuális gépet telepít a következő tulajdonsággal:
+   - REST API
 
-      ```
-        "osProfile": {
-          "allowExtensionOperations": false
-        },
-      ```
+     A bővítmények letiltásához és engedélyezéséhez, ha egy virtuális gépet telepít a következő tulajdonsággal:
+
+     ```python
+       "osProfile": {
+         "allowExtensionOperations": false
+       },
+     ```
 
 ## <a name="next-steps"></a>További lépések
 

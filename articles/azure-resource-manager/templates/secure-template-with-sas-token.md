@@ -2,17 +2,20 @@
 title: Sablon biztonságos üzembe helyezése SAS-tokenrel
 description: Erőforrások üzembe helyezése az Azure-ban olyan Azure Resource Manager sablonnal, amelyet SAS-jogkivonat véd. A Azure PowerShell és az Azure CLI-t jeleníti meg.
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80156395"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855662"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Private ARM-sablon üzembe helyezése SAS-tokenrel
 
-Ha a Azure Resource Manager-(ARM-) sablon egy Storage-fiókban található, akkor a sablonhoz való hozzáférést korlátozhatja, hogy ne tegye nyilvánosan nyilvánosságra. A biztonságos sablont úgy érheti el, hogy létrehoz egy közös hozzáférésű aláírás (SAS) tokent a sablonhoz, és az üzembe helyezés során megadja a tokent. Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell vagy az Azure CLI egy olyan sablon üzembe helyezéséhez, amely SAS-tokent tartalmaz.
+Ha a Azure Resource Manager-sablon (ARM-sablon) egy Storage-fiókban található, akkor a sablonhoz való hozzáférést korlátozhatja, hogy ne tegye közzé nyilvánosan. A biztonságos sablont úgy érheti el, hogy létrehoz egy közös hozzáférésű aláírás (SAS) tokent a sablonhoz, és az üzembe helyezés során megadja a tokent. Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell vagy az Azure CLI egy olyan sablon üzembe helyezéséhez, amely SAS-tokent tartalmaz.
+
+> [!IMPORTANT]
+> A sablon SAS-jogkivonattal való biztonságossá tétele helyett érdemes lehet a [sablonhoz tartozó specifikációkat](template-specs.md)használni. A sablon specifikációi segítségével megoszthatja a sablonokat a szervezet más felhasználóival, és kezelheti a sablonokat az Azure RBAC keresztül.
 
 ## <a name="create-storage-account-with-secured-container"></a>Storage-fiók létrehozása biztonságos tárolóval
 
@@ -110,6 +113,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az alábbi példa az Cloud Shell bash-környezettel működik. Más környezetek esetében eltérő szintaxisra lehet szükség az SAS-token lejárati idejének létrehozásához.
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

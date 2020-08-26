@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 15c3f2de30509a7dc6836f5d39fac4c0ea8b7f25
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513195"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854332"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Managed Disks használata Azure Resource Manager sablonokban
 
@@ -263,7 +263,7 @@ A REST API-specifikációkkal kapcsolatos teljes információkért tekintse át 
 * A felügyelt lemezeket használó teljes sablonokhoz látogasson el az alábbi Azure-beli rövid útmutatókra mutató hivatkozásokra.
     * [Windowsos virtuális gép felügyelt lemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [Linux rendszerű virtuális gép felügyelt lemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* A felügyelt lemezekkel kapcsolatos további információkért látogasson el az [Azure Managed Disks áttekintő](~/articles/virtual-machines/windows/managed-disks-overview.md) dokumentumra.
+* A felügyelt lemezekkel kapcsolatos további információkért látogasson el az [Azure Managed Disks áttekintő](managed-disks-overview.md) dokumentumra.
 * Tekintse át a virtuális gépek erőforrásainak dokumentációját a [Microsoft. számítás/virtualMachines sablon](/azure/templates/microsoft.compute/virtualmachines) dokumentációjában.
 * Tekintse át a sablonra vonatkozó dokumentációt a lemez erőforrásaihoz a [Microsoft. számítási/lemezek sablon-hivatkozási](/azure/templates/microsoft.compute/disks) dokumentumának meglátogatásával.
 * A felügyelt lemezek Azure-beli virtuálisgép-méretezési csoportokban való használatáról további információt az [adatlemezek használata méretezési csoportokkal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) című dokumentumban találhat.

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11fa99acda5f1c8edac3026961c426257bb74d92
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808833"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853670"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue
 - [Az Azure Storage közös ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 - [Azure Storage-üzenetsor .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 - [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-- Egy [Azure-tárfiók](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Azure Storage-fiók](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -49,7 +49,7 @@ Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A követke
 
 1. Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 2. **Platform**  >  **Windows** kiválasztása
-3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer) lehetőséget
+3. A **konzol alkalmazás kiválasztása (.NET-keretrendszer)**
 4. Kattintson a **Tovább** gombra.
 5. A **projekt neve** mezőben adja meg az alkalmazás nevét
 6. Kattintson a **Létrehozás** elemre.
@@ -154,6 +154,8 @@ A Azurite-tároló emulátorának megcélzásához használhatja a jól ismert f
 ```
 
 ### <a name="add-using-directives"></a>Hozzáadás irányelvekkel
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 Adja hozzá a következő `using` irányelveket a `Program.cs` fájl elejéhez:
 
@@ -495,7 +497,7 @@ Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokbó
 
 - A Queue szolgáltatás elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
   - [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API referenciája](https://msdn.microsoft.com/library/azure/dd179355)
+  - [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)
 - Megtudhatja, hogyan egyszerűsítheti az Azure Storage-ban az [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)használatával írt kódot.
 - Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
   - [Get started with Azure Table Storage using .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) a strukturált adatok tárolásához.

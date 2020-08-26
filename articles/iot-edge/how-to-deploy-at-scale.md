@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512010"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855390"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>IoT Edge modulok méretezése a Azure Portal használatával
 
@@ -61,7 +61,7 @@ Az üzemelő példány létrehozásának öt lépése van. A következő szakasz
 
 ### <a name="step-2-modules"></a>2. lépés: modulok
 
-Akár 30 modult is hozzáadhat egy központi telepítéshez. Ha modulokat nem tartalmazó központi telepítést hoz létre, az eltávolítja a megcélzott eszközökről származó aktuális modulokat.
+Akár 50 modult is hozzáadhat egy központi telepítéshez. Ha modulokat nem tartalmazó központi telepítést hoz létre, az eltávolítja a megcélzott eszközökről származó aktuális modulokat.
 
 A központi telepítések során a IoT Edge ügynök és IoT Edge hub-modulok beállításait kezelheti. Válassza a **Futásidejű beállítások** lehetőséget a két futásidejű modul konfigurálásához. A rétegzett központi telepítésben a futásidejű modulok nincsenek megadva, ezért nem konfigurálhatók.
 
@@ -183,7 +183,7 @@ Amikor módosít egy központi telepítést, a módosítások azonnal replikál�
 
 1. Az IoT központban válassza a bal oldali ablaktábla menüjének **IoT Edge** elemét.
 1. Válassza a **IoT Edge központi telepítések** fület, majd válassza ki a konfigurálni kívánt központi telepítést.
-1. Válassza ki a **cél feltételt** lapon. módosítsa a **cél feltételt** a kívánt eszközök célzására. Módosíthatja a **prioritást**is.  Válassza a **Mentés** lehetőséget.
+1. Válassza ki a **cél feltételt** lapon. módosítsa a **cél feltételt** a kívánt eszközök célzására. Módosíthatja a **prioritást**is.  Kattintson a **Mentés** gombra.
 
     Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
 
@@ -191,7 +191,7 @@ Amikor módosít egy központi telepítést, a módosítások azonnal replikál�
     * Ha a központi telepítést jelenleg futtató eszköz már nem felel meg a célként megadott feltételnek, akkor eltávolítja ezt a központi telepítést, és a következő legmagasabb prioritású üzemelő példányra kerül.
     * Ha a központi telepítést jelenleg futtató eszköz már nem felel meg a célként megadott feltételnek, és nem felel meg a többi üzemelő példány céljának, akkor az eszközön nem történik változás. Az eszköz továbbra is a jelenlegi állapotukban futtatja az aktuális modulokat, de az üzembe helyezés részeként már nem felügyelhető. Ha teljesíti az egyéb üzemelő példányok célját, eltávolítja ezt az üzembe helyezést, és az újat veszi.
 
-1. Válassza a **metrikák** fület, majd kattintson a **mérőszámok szerkesztése** gombra. Egyéni metrikák hozzáadása vagy módosítása útmutatóként a példa szintaxis használatával. Válassza a **Mentés** lehetőséget.
+1. Válassza a **metrikák** fület, majd kattintson a **mérőszámok szerkesztése** gombra. Egyéni metrikák hozzáadása vagy módosítása útmutatóként a példa szintaxis használatával. Kattintson a **Mentés** gombra.
 
     ![Egyéni metrikák szerkesztése egy központi telepítésben](./media/how-to-deploy-monitor/metric-list.png)
 
@@ -211,6 +211,6 @@ Ha töröl egy központi telepítést, minden telepített eszköz a következő 
 1. Válassza a **Törlés** elemet.
 1. A rendszer értesíti arról, hogy ez a művelet törli ezt a központi telepítést, és az összes eszköz előző állapotára vált vissza.Alacsonyabb prioritású üzemelő példány lesz érvényben.Ha nincs más központi telepítés megcélozva, a rendszer nem távolítja el a modulokat. Ha el szeretné távolítani az összes modult az eszközről, hozzon létre egy üzembe helyezést nulla modulokkal, és telepítse azt ugyanarra az eszközre.Válassza az **Igen** lehetőséget a folytatáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [modulok IoT Edge eszközökön való telepítéséről](module-deployment-monitoring.md).

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1b296cd942e36817da2832467ab603ebd833f825
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909870"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854861"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins hibaelhárítása: riasztások
 
@@ -28,13 +28,17 @@ Itt láthatja, hogyan engedélyezheti a riasztásokat az Azure Digital Twins-pé
 
 2. Válassza a **riasztások** lehetőséget a menüből, majd az **+ új riasztási szabályt**.
 
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Képernyőfelvétel: a riasztások oldal és a hozzáadandó gomb. Még nincsenek beállított riasztások" lightbox="media/troubleshoot-alerts/alerts-pre.png":::
-
 3. A *riasztási szabály létrehozása* lapon a következő utasításokat követve határozhatja meg a feltételeket, az aktiválható műveleteket és a riasztás részleteit.     
-    * A **hatókör** részleteinek automatikusan ki kell töltenie a példány részleteit.
-    * A riasztási eseményindítók és válaszok testreszabásához meg kell határoznia a **feltételt** és a **műveleti csoport** részleteit.
+    * A **hatókör** részleteinek automatikusan ki kell töltenie a példány adatait
+    * A riasztási eseményindítók és válaszok testreszabásához meg kell határoznia a **feltételt** és a **műveleti csoport** részleteit
+    * A **riasztási szabály részletei** szakaszban adja meg a _riasztási szabály nevét_, _leírását (nem kötelező)_. Ha azt szeretné, hogy a riasztás a létrehozása után azonnal aktívvá váljon, jelölje be a _riasztási szabály engedélyezése a létrehozáskor_ jelölőnégyzetet.
+    * A hozzáadott feltételek és műveletek alapján ki kell választania a _riasztási szabály mentése az erőforráscsoport_ és a _Súlyosság_ lehetőséget a megfelelő legördülő listából.
 
-    :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Képernyőfelvétel: a riasztási szabály létrehozása lap a hatókör, a feltétel és a műveleti csoport fejezeteivel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+4. A riasztási szabály létrehozásához kattintson a _riasztási szabály létrehozása_ gombra.
+
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Képernyőfelvétel: a riasztási szabály létrehozása lap a hatókör, a feltétel és a műveleti csoport fejezeteivel" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+
+:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="A riasztási szabály létrehozásához tartozó riasztási szabály részletei szakaszt bemutató képernyőkép" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
 
 A mezők kitöltését bemutató útmutató a [*Microsoft Azure riasztások áttekintése*](../azure-monitor/platform/alerts-overview.md)című témakörben található. Az alábbiakban néhány példát láthat arra, hogyan fog kinézni a lépések az Azure Digital Twins szolgáltatásban.
 
@@ -51,7 +55,7 @@ A riasztások beállítása után a rendszer megjeleníti a példány *riasztás
 :::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Képernyőfelvétel: a riasztások oldal és a hozzáadandó gomb. Egy riasztás van konfigurálva" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Monitor riasztásokkal kapcsolatos további információkért lásd: [*Microsoft Azure riasztások áttekintése*](../azure-monitor/platform/alerts-overview.md).
 * További információ az Azure digitális Twins metrikáinak használatáról [*: a metrikák megtekintése Azure Monitorsal*](troubleshoot-metrics.md).

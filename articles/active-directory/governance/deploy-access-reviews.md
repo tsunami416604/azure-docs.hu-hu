@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783603"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853028"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -283,7 +283,7 @@ A külső identitások a következő műveletek egyikével kaphatnak hozzáfér�
 
 * Kiemelt szerepkör hozzárendelése az Azure AD-ben vagy egy Azure-előfizetésben
 
-Lásd: [minta parancsfájl](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.). A szkript megmutatja, hogy a bérlőn meghívott külső identitások hol vannak használatban. Megtekintheti a külső felhasználó csoporttagság, szerepkör-hozzárendelések és az alkalmazás-hozzárendelések az Azure AD szolgáltatásban című témakört. A parancsfájl nem jeleníti meg az Azure AD-n kívüli hozzárendeléseket, például a közvetlen jogosultság-hozzárendelést a SharePoint-erőforrásokhoz, csoportok használata nélkül.
+Lásd: [minta parancsfájl](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). A szkript megmutatja, hogy a bérlőn meghívott külső identitások hol vannak használatban. Megtekintheti a külső felhasználó csoporttagság, szerepkör-hozzárendelések és az alkalmazás-hozzárendelések az Azure AD szolgáltatásban című témakört. A parancsfájl nem jeleníti meg az Azure AD-n kívüli hozzárendeléseket, például a közvetlen jogosultság-hozzárendelést a SharePoint-erőforrásokhoz, csoportok használata nélkül.
 
 A csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozásakor dönthet úgy, hogy a felülvizsgáló mindenki számára elérhető, vagy csak vendég felhasználóra koncentrál. A csak vendég felhasználók lehetőség kiválasztásával a felülvizsgálók az Azure AD B2B-ből származó külső identitások célzott listáját kapják meg, amelyek hozzáférnek az erőforráshoz.
 
@@ -419,7 +419,7 @@ Miután előkészített egy stratégiát és egy tervet az Azure AD-vel integrá
 
 Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazdák a hozzáférési csomag aktív hozzárendeléseivel rendelkező felhasználók rendszeres felülvizsgálatát is lehetővé teszik. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Description |
+| Útmutatók| Leírás |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](entitlement-management-access-reviews-create.md)| Hozzáférési csomag felülvizsgálatának engedélyezése. |
 | [Hozzáférési felülvizsgálatok végrehajtása](/entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
@@ -433,7 +433,7 @@ Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazd
 
 Az alkalmazottak és a vendégek számára az idő múlásával valószínűleg változnak a csoportok és az alkalmazások hozzáférése. Az elavult hozzáférési hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében a rendszergazdák hozzáférési felülvizsgálatokat hozhatnak létre a csoporttagok vagy az alkalmazások eléréséhez. Kövesse az alábbi hivatkozás utasításait:
 
-| Útmutatók| Description |
+| Útmutatók| Leírás |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](create-access-review.md)| Hozzon létre egy vagy több hozzáférési felülvizsgálatot a csoporttagok vagy az alkalmazások eléréséhez. |
 | [Hozzáférési felülvizsgálatok végrehajtása](perform-access-review.md)| Hozzáférési felülvizsgálat végrehajtása egy csoport vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára. |
@@ -450,7 +450,7 @@ Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentés
 
 Kövesse az alábbi hivatkozások utasításait:
 
-| Útmutatók | Description |
+| Útmutatók | Leírás |
 | - | - |
  [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure AD-szerepkörökhöz a PIM-ben |
 | [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
@@ -465,7 +465,7 @@ Az elavult szerepkör-hozzárendelések kockázatának csökkentése érdekében
 
 Kövesse az alábbi hivatkozások utasításait:
 
-| Útmutatók| Description |
+| Útmutatók| Leírás |
 | - | -|
 | [Hozzáférési felülvizsgálatok létrehozása](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Hozzáférési felülvizsgálatok létrehozása a Kiemelt Azure-beli erőforrás-szerepkörökhöz a PIM-ben |
 | [Saját hozzáférés ellenőrzése](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Ha rendszergazdai szerepkörhöz van rendelve, hagyja jóvá vagy tagadja meg a szerepkör elérését |
@@ -511,7 +511,7 @@ A hozzáférési felülvizsgálatok tevékenységeit a rendszer rögzíti, és e
 
 A hozzáférési felülvizsgálatok részletesebb lekérdezése és elemzése, valamint a módosítások és a felülvizsgálatok befejezésének nyomon követése érdekében javasoljuk, hogy az Azure AD-naplókat az [azure log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) vagy az Azure Event hub szolgáltatásba exportálja. Az Azure Log Analytics-ban való tárolás során használhatja a [hatékony elemzési nyelvet](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) , és saját irányítópultokat építhet ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az alábbi kapcsolódó technológiákat.
 

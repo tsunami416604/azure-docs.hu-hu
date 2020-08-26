@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027053"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854915"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library konfigurációs fájl
 
@@ -32,12 +32,12 @@ Ez a cikk segítséget nyújt a konfigurációs fájl különböző beállítás
 
 | Tulajdonság | Adattípus | Kötelező | Jegyzetek |
 |-----------|------------|-------------|-------|
-| `client_id` | Sztring | Yes | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `redirect_uri`   | Sztring | Yes | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
-| `authorities` | Listáját\<Authority> | No | Az alkalmazás által igényelt hatóságok listája |
-| `authorization_user_agent` | AuthorizationAgent (enumerálás) | No | Lehetséges értékek: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
-| `http` | HttpConfiguration | No | Konfigurálás `HttpUrlConnection` `connect_timeout` és`read_timeout` |
-| `logging` | LoggingConfiguration | No | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a következők: `pii_enabled` , amely egy logikai értéket vesz igénybe, és amely a (z),, `log_level` `ERROR` `WARNING` `INFO` vagy `VERBOSE` . |
+| `client_id` | Sztring | Igen | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `redirect_uri`   | Sztring | Igen | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
+| `authorities` | Listáját\<Authority> | Nem | Az alkalmazás által igényelt hatóságok listája |
+| `authorization_user_agent` | AuthorizationAgent (enumerálás) | Nem | Lehetséges értékek: `DEFAULT` , `BROWSER` , `WEBVIEW` |
+| `http` | HttpConfiguration | Nem | Konfigurálás `HttpUrlConnection` `connect_timeout` és `read_timeout` |
+| `logging` | LoggingConfiguration | Nem | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a következők: `pii_enabled` , amely egy logikai értéket vesz igénybe, és amely a (z),, `log_level` `ERROR` `WARNING` `INFO` vagy `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -58,7 +58,7 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
     "audience": {
         "type": "AzureADandPersonalMicrosoftAccount"
     },
-    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken or acquireTokenSilent call
+    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken call
 },
 // Example AzureAD My Organization
 {
@@ -88,7 +88,7 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 
 | Típus | Célközönség | Bérlőazonosító | Authority_Url | Eredményül kapott végpont | Jegyzetek |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`egy bérlői alias a fiókhoz. Például egy adott Azure Active Directory bérlő vagy a Microsoft-fiók rendszer. |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` egy bérlői alias a fiókhoz. Például egy adott Azure Active Directory bérlő vagy a Microsoft-fiók rendszer. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Csak a contoso.com lévő fiókok kaphatnak jogkivonatot. A bérlői AZONOSÍTÓként bármely ellenőrzött tartomány vagy bérlői GUID is használható. |
 | AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | Ehhez a végponthoz csak Azure Active Directory fiókok használhatók. A Microsoft-fiókok lehetnek szervezetek tagjai. Ha egy szervezet erőforrásának Microsoft-fiók használatával szeretne tokent beszerezni, akkor határozza meg azt a szervezeti bérlőt, amelyről a jogkivonatot szeretné használni. |
 | AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | Csak a Microsoft-fiókok használhatják ezt a végpontot. |
@@ -103,17 +103,17 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 |-----------|-------------|-----------|--------|
-| `type` | Sztring | Yes | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD` ,`B2C` |
-| `audience` | Objektum | No | Csak akkor érvényes, ha a Type = értéket adja meg `AAD` . Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
-| `authority_url` | Sztring | Yes | Csak akkor szükséges, ha Type = `B2C` . Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
-| `default` | boolean | Yes | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
+| `type` | Sztring | Igen | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD` , `B2C` |
+| `audience` | Objektum | Nem | Csak akkor érvényes, ha a Type = értéket adja meg `AAD` . Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
+| `authority_url` | Sztring | Igen | Csak akkor szükséges, ha Type = `B2C` . Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
+| `default` | boolean | Igen | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
 
 #### <a name="audience-properties"></a>Célközönség tulajdonságai
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 |-----------|-------------|------------|-------|
-| `type` | Sztring | Yes | Meghatározza azt a célközönséget, amelyet az alkalmazás szeretne megcélozni. Lehetséges értékek: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
-| `tenant_id` | Sztring | Yes | Csak akkor szükséges, ha `"type":"AzureADMyOrg"` . Egyéb értékekhez nem kötelező megadni `type` . Ez lehet egy bérlői tartomány, például `contoso.com` , vagy egy bérlői azonosító, például a ( `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
+| `type` | Sztring | Igen | Meghatározza azt a célközönséget, amelyet az alkalmazás szeretne megcélozni. Lehetséges értékek: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
+| `tenant_id` | Sztring | Igen | Csak akkor szükséges, ha `"type":"AzureADMyOrg"` . Egyéb értékekhez nem kötelező megadni `type` . Ez lehet egy bérlői tartomány, például `contoso.com` , vagy egy bérlői azonosító, például a ( `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -140,8 +140,8 @@ Konfigurálja a HTTP-időtúllépések globális beállításait, például:
 
 | Tulajdonság | Adattípus | Kötelező | Jegyzetek |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | No | Idő ezredmásodpercben |
-| `read_timeout` | int | No | Idő ezredmásodpercben |
+| `connect_timeout` | int | Nem | Idő ezredmásodpercben |
+| `read_timeout` | int | Nem | Idő ezredmásodpercben |
 
 ### <a name="logging"></a>naplózás
 
@@ -149,15 +149,15 @@ A következő globális beállítások állnak a naplózásra:
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | No | Személyes adatkibocsátás |
+| `pii_enabled`  | boolean | Nem | Személyes adatkibocsátás |
 | `log_level`   | sztring | No | A kimenő üzenetek naplózása. A támogatott naplózási szintek a következők:,, `ERROR` `WARNING` `INFO` és `VERBOSE` . |
-| `logcat_enabled` | boolean | No | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
+| `logcat_enabled` | boolean | Nem | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
 
 ### <a name="account_mode"></a>account_mode
 
 Meghatározza, hogy egyszerre hány fiókot lehet használni az alkalmazáson belül. Lehetséges értékek:
 
-- `MULTIPLE`Alapértelmezett
+- `MULTIPLE` Alapértelmezett
 - `SINGLE`
 
 `PublicClientApplication`Ha olyan fiókot használ, amely nem felel meg ennek a beállításnak, kivételt fog eredményezni.

@@ -9,14 +9,14 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337653"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855623"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Mi a IoT Plug and Play előzetes verzió?
+# <a name="what-is-iot-plug-and-play-preview"></a>Mi az az előzetes verziójú IoT Plug and Play?
 
 A IoT Plug and Play előzetes verziója lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában a egy eszköz _modellje_ , amelyet az eszköz használ a képességeinek egy IoT Plug and Play-kompatibilis alkalmazásba való reklámozásához. Ez a modell olyan elemek halmaza, amelyek a következőket határozzák meg:
 
@@ -62,6 +62,10 @@ Eszköz-szerkesztőként olyan IoT-terméket fejleszthet, amely támogatja a IoT
 > [!Important]
 > A IoT Plug and Play-eszközöknek MQTT vagy MQTT-t kell használniuk a WebSockets-en keresztül. Más protokollok, például a AMQP vagy a HTTP nem érvényesek a IoT Plug and Play-eszközök megvalósítására.
 
+## <a name="device-certification"></a>Eszköz minősítése
+
+A [IoT Plug and Play eszköz minősítési program](howto-certify-device.md) ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
+
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Ez a IoT Plug and Play előzetes verzió frissítését az USA középső régiójában, Észak-Európában és Kelet-japán régióban létrehozott IoT-hubokon érhető el.
@@ -71,5 +75,5 @@ Ez a IoT Plug and Play előzetes verzió frissítését az USA középső régi�
 Most, hogy áttekintette a IoT Plug and Play, a javasolt következő lépés az egyik rövid útmutató kipróbálása:
 
 - [Eszköz csatlakoztatása IoT Hubhoz (C)](./quickstart-connect-device-c.md)
-- [Eszköz használata a megoldásban (Node.js)](./quickstart-service-node.md)
+- [Kommunikáció egy eszközzel a megoldásból (Node.js)](./quickstart-service-node.md)
 

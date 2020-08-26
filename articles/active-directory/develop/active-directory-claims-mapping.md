@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141533"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853360"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -143,7 +143,6 @@ Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használ
 | onprem_sid |
 | openid2_id |
 | jelszó |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -248,11 +247,11 @@ A jogcímek kibocsátásának szabályozásához, illetve az adatok forrásainak
 
 **Összefoglalás:** Ez a tulajdonság határozza meg, hogy az alapszintű jogcímek készlete szerepel-e a szabályzat által érintett jogkivonatokban.
 
-- Ha igaz értékre van állítva, a rendszer az alapszintű jogcímek készletében lévő összes jogcímet a szabályzat által érintett jogkivonatokban bocsátja ki. 
+- Ha igaz értékre van állítva, a rendszer az alapszintű jogcímek készletében lévő összes jogcímet a szabályzat által érintett jogkivonatokban bocsátja ki.
 - Ha hamis értékre van állítva, akkor az alapszintű jogcímek készletében lévő jogcímek nincsenek a jogkivonatokban, kivéve, ha azokat egyedileg adtak hozzá ugyanahhoz a Szabályzathoz tartozó jogcím-séma tulajdonsághoz.
 
-> [!NOTE] 
-> Az alapszintű jogcímek készletében lévő jogcímek minden jogkivonatban szerepelnek, függetlenül attól, hogy ez a tulajdonság milyen értékre van beállítva. 
+> [!NOTE]
+> Az alapszintű jogcímek készletében lévő jogcímek minden jogkivonatban szerepelnek, függetlenül attól, hogy ez a tulajdonság milyen értékre van beállítva.
 
 ### <a name="claims-schema"></a>Jogcím-séma
 
@@ -267,14 +266,14 @@ Az ebben a tulajdonságban definiált minden jogcím-séma bejegyzéshez bizonyo
 
 **Érték:** Az Value (érték) elem statikus értéket határoz meg a jogcímek által kibocsátott adatmennyiségként.
 
-**Forrás/azonosító pár:** A forrás-és azonosító elemek határozzák meg, hogy a jogcímben szereplő adatok honnan származnak.  
+**Forrás/azonosító pár:** A forrás-és azonosító elemek határozzák meg, hogy a jogcímben szereplő adatok honnan származnak.
 
 **Forrás-/ExtensionID pár:** A forrás-és ExtensionID elemek határozzák meg a címtár-séma kiterjesztése attribútumot, ahol a jogcímben lévő adatok forrása származik. További információ: a [címtár-séma bővítmény attribútumainak használata a jogcímekben](active-directory-schema-extensions.md).
 
-Állítsa a forrásoldali elemet a következő értékek egyikére: 
+Állítsa a forrásoldali elemet a következő értékek egyikére:
 
-- "user" (felhasználó): a jogcímben szereplő adattulajdonság a felhasználói objektumon található. 
-- "Application" (alkalmazás): a jogcímben szereplő adattulajdonság az alkalmazás (ügyfél) egyszerű szolgáltatása. 
+- "user" (felhasználó): a jogcímben szereplő adattulajdonság a felhasználói objektumon található.
+- "Application" (alkalmazás): a jogcímben szereplő adattulajdonság az alkalmazás (ügyfél) egyszerű szolgáltatása.
 - "erőforrás": a jogcímben szereplő, az erőforrás-szolgáltatásnév egyik tulajdonsága.
 - "hallgatóság": a jogcímben szereplő adattulajdonság a jogkivonat célközönségét képező egyszerű szolgáltatásnév (az ügyfél vagy az erőforrás-szolgáltatás résztvevője).
 - "vállalat": a jogcímben szereplő adatforrások az erőforrás-bérlő vállalati objektumának egyik tulajdonsága.
@@ -322,8 +321,8 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
 | Felhasználó | othermail | Egyéb E-mail |
 | Felhasználó | ország | Ország/régió |
-| Felhasználó | city | Település |
-| Felhasználó | állapot | Állam |
+| Felhasználó | city | City |
+| Felhasználó | állapot | Állapot |
 | Felhasználó | beosztás | Beosztás |
 | Felhasználó | Alkalmazottkód | Alkalmazott azonosítója |
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
@@ -349,7 +348,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 **Karakterlánc:** ClaimsTransformation
 
-**Adattípus:** JSON-blob, egy vagy több átalakítási bejegyzéssel 
+**Adattípus:** JSON-blob, egy vagy több átalakítási bejegyzéssel
 
 **Összefoglalás:** Ezzel a tulajdonsággal általános átalakításokat alkalmazhat a forrásadatok számára, és előállíthatja a jogcímek sémájában megadott jogcímek kimeneti értékeit.
 
@@ -368,7 +367,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 **Szabályzattípushoz:** Egy Szabályzattípushoz elem használatával továbbíthatja az adatok átadását a jogcím-séma bejegyzéseiből egy átalakításba. Két attribútummal rendelkezik: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
-- A **ClaimTypeReferenceId** a jogcím-séma bejegyzés azonosító elemével van csatlakoztatva, hogy megtalálja a megfelelő bemeneti jogcímet. 
+- A **ClaimTypeReferenceId** a jogcím-séma bejegyzés azonosító elemével van csatlakoztatva, hogy megtalálja a megfelelő bemeneti jogcímet.
 - A **TransformationClaimType** a bemenet egyedi nevének megadására szolgál. Ennek a névnek meg kell egyeznie az átalakítási módszer várt bemenetével.
 
 **InputParameters:** Egy InputParameters elem használatával egy állandó értéket adhat át egy átalakításnak. Két attribútummal rendelkezik: **érték** és **azonosító**.
@@ -413,14 +412,14 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |
-| ExtractMailPrefix | Nincsenek |
+| ExtractMailPrefix | Nincs |
 | Csatlakozás | A csatlakoztatott utótagnak az erőforrás-bérlő ellenőrzött tartományának kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni aláíró kulcs
 
 A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a Azure PowerShell parancsmaggal `new-azureadapplicationkeycredential` hozhat létre szimmetrikus kulcsú hitelesítő adatokat az alkalmazás objektumához. További információ erről a Azure PowerShell parancsmagról: [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
-Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, a jogkivonat-aláíró kulcsokat az `appid={client_id}` [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell: 
+Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, a jogkivonat-aláíró kulcsokat az `appid={client_id}` [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -464,20 +463,20 @@ A kezdéshez hajtsa végre a következő lépéseket:
 Ebben a példában egy olyan házirendet hoz létre, amely eltávolítja az alapszintű jogcímek készletét a társított egyszerű szolgáltatások számára kiállított jogkivonatokból.
 
 1. Hozzon létre egy jogcím-hozzárendelési szabályzatot. Ez a szabályzat meghatározott egyszerű szolgáltatásokhoz kapcsolódik, és eltávolítja a jogkivonatok alapszintű jogcímeit.
-   1. A szabályzat létrehozásához futtassa a következő parancsot: 
-    
+   1. A szabályzat létrehozásához futtassa a következő parancsot:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. Az új szabályzat megtekintéséhez és a szabályzat ObjectId beszerzéséhez futtassa a következő parancsot:
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie.
    1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti a Microsoft Graph API](/graph/traverse-the-graph)-t. Vagy [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
-   2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:  
-     
+   2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ Ebben a példában egy olyan házirendet hoz létre, amely eltávolítja az alap
 Ebben a példában egy olyan házirendet hoz létre, amely hozzáadja az Alkalmazottkód és a TenantCountry elemet a társított egyszerű szolgáltatások számára kiállított jogkivonatokhoz. Az Alkalmazottkód az SAML-jogkivonatokban és a JWTs a név jogcím típusaként van kibocsátva. A TenantCountry az SAML-jogkivonatokban és az JWTs-ben az ország/régió jogcímek típusaként van kibocsátva. Ebben a példában továbbra is a jogkivonatokban beállított alapszintű jogcímeket fogjuk használni.
 
 1. Hozzon létre egy jogcím-hozzárendelési szabályzatot. Ez a szabályzat meghatározott egyszerű szolgáltatásokhoz kapcsolódik, és hozzáadja az Alkalmazottkód és a TenantCountry jogcímeket a jogkivonatokhoz.
-   1. A szabályzat létrehozásához futtassa a következő parancsot:  
-     
+   1. A szabályzat létrehozásához futtassa a következő parancsot:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. Az új szabályzat megtekintéséhez és a szabályzat ObjectId beszerzéséhez futtassa a következő parancsot:
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie. 
+1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie.
    1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti a Microsoft Graph API](/graph/traverse-the-graph)-t. Vagy [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
-   2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:  
-     
+   2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
 
 1. Hozzon létre egy jogcím-hozzárendelési szabályzatot. Ez a szabályzat meghatározott egyszerű szolgáltatásokhoz kapcsolódik, és hozzáadja az Alkalmazottkód és a TenantCountry jogcímeket a jogkivonatokhoz.
    1. A szabályzat létrehozásához futtassa a következő parancsot:
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. Az új szabályzat megtekintéséhez és a szabályzat ObjectId beszerzéséhez futtassa a következő parancsot: 
-     
+
+   2. Az új szabályzat megtekintéséhez és a szabályzat ObjectId beszerzéséhez futtassa a következő parancsot:
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie. 
+1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie.
    1. A szervezet összes szolgáltatásának megtekintéséhez [lekérdezheti a Microsoft Graph API](/graph/traverse-the-graph)-t. Vagy [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)jelentkezzen be az Azure ad-fiókjába.
-   2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot: 
-     
+   2. Ha rendelkezik az egyszerű szolgáltatásnév ObjectId, futtassa a következő parancsot:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```

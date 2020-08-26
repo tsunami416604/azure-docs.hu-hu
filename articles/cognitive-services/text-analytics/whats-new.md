@@ -10,24 +10,25 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192026"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854733"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
 
-## <a name="august-2020"></a>Augusztus 2020
+## <a name="august-2020"></a>2020. augusztus
 
 ### <a name="general-api-updates"></a>Általános API-frissítések
 
 * Modell verziója `2020-07-01` a v3 `/keyphrases` és a `/pii` `/languages` végpontok számára, amely a következőket adja:
     * További kormányzati és ország-specifikus [entitások kategóriái](named-entity-types.md?tabs=personal) a nevesített entitások felismeréséhez.
 * A rendszer mostantól HTTP 400-es hibát ad vissza az olyan V3 API-kérelmek esetében, amelyek túllépik a közzétett [adatkorlátot](concepts/data-limits.md). 
+* Az eltolást visszaadó végpontok támogatják a választható `stringIndexType` paramétert, amely a visszaadott `offset` és az értékeket úgy állítja be, `length` hogy az megfeleljen egy támogatott [karakterlánc-indexelési sémának](concepts/text-offsets.md).
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>Az állapot-tárolók augusztus Text Analytics frissítései
 
@@ -187,11 +188,11 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)
-* [Hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
-* [Kulcskifejezések kinyerése](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)

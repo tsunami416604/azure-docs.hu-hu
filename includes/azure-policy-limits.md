@@ -6,12 +6,12 @@ ms.service: azure-policy
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: dacoulte
-ms.openlocfilehash: e22594a50a9c0d814ef7d66443f8253f5832cb1d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9fcaca3f89217f649eb970ec70514a5735222782
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038496"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854078"
 ---
 A Azure Policyhoz tartozó egyes objektumtípusok maximális száma. A _Hatókör_ bejegyzés az előfizetést vagy a [felügyeleti csoportot](../articles/governance/management-groups/overview.md) jelöli.
 
@@ -26,4 +26,4 @@ A Azure Policyhoz tartozó egyes objektumtípusok maximális száma. A _Hatókö
 | Kezdeményezési definíció | Paraméterek | 100 |
 | Házirend-vagy kezdeményezési hozzárendelések | Kizárások (notScope) | 400 |
 | Házirend-szabály | Beágyazott feltételesség | 512 |
-| Szervizelési feladat | További források | 1000 |
+| Szervizelési feladat | Erőforrások | 500 |

@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 06/01/2020
+ms.date: 08/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036878"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855607"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
@@ -71,6 +71,10 @@ További információ a VPN Gateway átjáró-termékváltozatokról: [Gateway S
 ## <a name="faq"></a><a name="faq"></a>GYIK
 
 A VPN Gateway-re vonatkozó gyakori kérdésekért lásd a [VPN Gateway gyakori kérdéseit](vpn-gateway-vpn-faq.md).
+
+## <a name="whats-new"></a><a name="new"></a>Mi újság?
+
+Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb VPN Gateway szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VPN%20Gateway) oldalon.
 
 ## <a name="next-steps"></a>További lépések
 

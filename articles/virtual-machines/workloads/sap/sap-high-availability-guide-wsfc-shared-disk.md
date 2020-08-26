@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982955"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854406"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows operációs rendszer][Logo_Windows] Windows
 >
 
 A Windows Server feladatátvételi fürtszolgáltatás a magas rendelkezésre állású SAP ASCS/SCS-telepítés és az adatbázis-kezelő rendszer alapja a Windows rendszerben.
@@ -40,7 +40,7 @@ A cikkben szereplő feladatok elkezdése előtt tekintse át a következő cikke
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server feladatátvételi fürtszolgáltatás az Azure-ban
 
-Az operációs rendszer nélküli vagy a saját felhőalapú üzemelő példányokhoz képest az Azure Virtual Machines további lépéseket igényel a Windows Server feladatátvételi fürtszolgáltatás konfigurálásához. Fürt létrehozásakor több IP-címet és virtuális állomásnevet kell beállítania az SAP ASCS/SCS-példányhoz.
+A Windows Server feladatátvételi fürtszolgáltatás az Azure Virtual Machines további konfigurációs lépéseket igényel. Fürt létrehozásakor több IP-címet és virtuális állomásnevet kell beállítania az SAP ASCS/SCS-példányhoz.
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Névfeloldás az Azure-ban és a fürt virtuális gazdagépének neve
 
@@ -52,7 +52,7 @@ Helyezze üzembe a belső terheléselosztó-t a fürtcsomópontok tartalmazó er
 
 ![1. ábra: Windows feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban megosztott lemez nélkül][sap-ha-guide-figure-1001]
 
-_**1. ábra:** Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban megosztott lemez nélkül_
+_Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban megosztott lemez nélkül_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA fürt megosztott lemezekkel
 A Windows rendszerben az SAP ASCS/SCS példány az SAP Central Services, az SAP Message Server, a sorba helyezni Server folyamatai és az SAP globális gazdagép fájljait tartalmazza. Az SAP globális gazdagép fájljai a teljes SAP-rendszer központi fájljait tárolják.
@@ -73,30 +73,104 @@ Az SAP-ASCS/SCS-példányok a következő összetevőket tartalmazják:
 
 ![2. ábra: a folyamatok, a fájlok szerkezete és a globális gazdagép sapmnt egy SAP ASCS/SCS-példányon][sap-ha-guide-figure-8001]
 
-_**2. ábra:** Egy SAP ASCS/SCS-példány folyamatai, a fájl szerkezete és a globális gazdagép sapmnt_
+_Egy SAP ASCS/SCS-példány folyamatai, a fájl szerkezete és a globális gazdagép sapmnt_
 
 Magas rendelkezésre állási beállítás esetén az SAP ASCS/SCS-példányok fürtje. A *fürtözött megosztott lemezeket* (a példában a meghajtót) a SAP ASCS/SCS és az SAP globális gazdagép fájljainak elhelyezésére használjuk.
 
 ![3. ábra: SAP ASCS/SCS HA-architektúra megosztott lemezzel][sap-ha-guide-figure-8002]
 
-_**3. ábra:** SAP ASCS/SCS HA architektúra megosztott lemezzel_
+_SAP ASCS/SCS HA architektúra megosztott lemezzel_
 
-> [!IMPORTANT]
-> Ez a két összetevő ugyanazon az SAP ASCS/SCS-példányon fut:
->* Ugyanezt \<ASCS/SCS virtual host name> használja az SAP-üzenetek és a sorba helyezni-kiszolgáló folyamatainak, valamint az SAP globális gazdagép-fájlok elérésére a sapmnt-fájlmegosztás segítségével.
->* Ugyanaz a fürt megosztott lemezmeghajtója van megosztva egymás között.
->
 
+A sorba helyezni Server Replication 1 architektúrával:
+* Ugyanezt \<ASCS/SCS virtual host name> használja az SAP-üzenetek és a sorba helyezni-kiszolgáló folyamatainak, valamint az SAP globális gazdagép-fájlok elérésére a sapmnt-fájlmegosztás segítségével.
+* Ugyanaz a fürt megosztott lemezmeghajtója van megosztva egymás között.  
+
+A sorba helyezni Server Replication 2 architektúrával: 
+* Ugyanezt \<ASCS/SCS virtual host name> használja az SAP Message Server folyamat és az SAP globális gazdagép fájljainak elérésére a sapmnt-fájlmegosztás segítségével.
+* Ugyanaz a fürt megosztott lemezmeghajtója van megosztva egymás között.
+* \<ERS virtual host name>A sorba helyezni-kiszolgáló folyamata külön érhető el  
 
 ![4. ábra: SAP ASCS/SCS HA architektúra megosztott lemezzel][sap-ha-guide-figure-8003]
 
-_**4. ábra:** SAP ASCS/SCS HA architektúra megosztott lemezzel_
+_SAP ASCS/SCS HA architektúra megosztott lemezzel_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>Megosztott lemez-és sorba helyezni replikációs kiszolgáló 
+
+1. A megosztott lemez a sorba helyezni Server Replication 1 architektúrával támogatott, ahol a sorba helyezni-replikációs kiszolgáló (ERS) példánya:   
+
+   - nem fürtözött
+   - felhasználás `localhost` neve
+   - helyi lemezeken van telepítve az egyes fürtcsomópontok esetében
+
+2. A megosztott lemez a sorba helyezni Server Replication 2 architektúrával is támogatott, ahol a sorba helyezni Replication Server 2 (ERS2) példánya:  
+
+   - fürtözött
+   - dedikált virtuális/hálózati gazdagép nevét használja
+   - szüksége van az ERS virtuális állomásnév IP-címére, amelyet az Azure belső Load Balancer kell konfigurálni, az (A) SCS IP-címén kívül
+   - minden fürtözött csomóponton **helyi lemezekre** van telepítve, ezért nincs szükség megosztott lemezre
+
+   > [!TIP]
+   > További információt az 1. és 2. sorba helyezni replikációs kiszolgálóról (ERS1 és ERS2) itt talál:  
+   > [Sorba helyezni replikációs kiszolgáló egy Microsoft feladatátvevő fürtben](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [Új sorba helyezni replikátor a feladatátvevő fürt környezetében](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>Az Azure-beli megosztott lemez lehetőségei az SAP számítási feladatokhoz
+
+Az Azure-beli Windows feladatátvevő fürtben két lehetőség van megosztott lemezre:
+
+- [Azure Shared](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) Disks – funkció, amely lehetővé teszi az Azure felügyelt lemez egyidejű csatlakoztatását több virtuális géphez. 
+- A harmadik féltől származó szoftverek [SIOS DataKeeper cluster Edition](https://us.sios.com/products/datakeeper-cluster) használatával hozzon létre egy tükrözött tárolót, amely szimulálja a fürt megosztott tárolóját. 
+
+A megosztott lemez technológiájának kiválasztásakor vegye figyelembe a következő szempontokat:
+
+**Azure megosztott lemez SAP számítási feladatokhoz**
+- Lehetővé teszi, hogy az Azure felügyelt lemezeket egyszerre több virtuális géphez csatolja anélkül, hogy további szoftvereket kellene fenntartania és működnie 
+- Egyetlen tároló fürtön egyetlen Azure-beli megosztott lemezzel fog működni. Ez hatással van az SAP-megoldás megbízhatóságára.
+- Jelenleg az egyetlen támogatott üzemelő példány a rendelkezésre állási csoporton belül az Azure Shared Premium Disk. Az Azure-beli megosztott lemez nem támogatott a zónabeli telepítésben.     
+- Győződjön meg arról, hogy az Azure Premium-lemezt a [prémium SSD tartományokban](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) megadott minimális méretű lemezzel szeretné kiépíteni, hogy képes legyen a szükséges számú virtuális gép egyidejű csatolására (általában 2 az SAP ASCS Windows feladatátvevő fürt esetén). 
+- Az Azure Shared Ultra Disk nem támogatott az SAP-munkaterhelések esetében, mivel nem támogatja az üzembe helyezést a rendelkezésre állási csoportokban vagy a zónabeli üzembe helyezésben.  
+ 
+**SIOS**
+- A SIOS megoldás valós idejű szinkron adatreplikálást biztosít két lemez között
+- Ha a SIOS-megoldás két felügyelt lemezzel működik, és ha rendelkezésre állási csoportokat vagy rendelkezésre állási zónákat használ, a felügyelt lemezek különböző tárolási fürtökön fognak megjelenni. 
+- A rendelkezésre állási zónákban való üzembe helyezés támogatott
+- Külső gyártótól származó szoftver telepítésére és üzemeltetésére van szükség, amelyet Emellett meg kell vásárolnia
+
+### <a name="shared-disk-using-azure-shared-disk"></a>Megosztott lemez az Azure Shared Disk használatával
+
+A Microsoft Azure-beli [megosztott lemezeket](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)kínál, amelyek segítségével megosztott lemezes lehetőséggel implementálhatja az SAP ASCS/SCS magas rendelkezésre állását.
+
+#### <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
+
+Jelenleg az Azure prémium SSD-lemezeket Azure-beli megosztott lemezként használhatja az SAP ASCS/SCS-példányhoz. Jelenleg a következő korlátozások vannak érvényben:
+
+-  Az [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) nem támogatott Azure-beli megosztott lemezként az SAP-munkaterhelésekhez. Jelenleg nem helyezhetők üzembe Azure-beli virtuális gépek a rendelkezésre állási csoportba tartozó Azure Ultra Disk használatával
+-  Prémium SSD lemezzel rendelkező Azure-beli [megosztott lemez](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) csak a rendelkezésre állási csoportba tartozó virtuális gépek esetében támogatott. Availability Zones üzemelő példányban nem támogatott. 
+-  Az Azure Shared Disk Value [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) meghatározza, hogy hány fürtcsomópont használhatja a megosztott lemezt. Az SAP ASCS/SCS-példány esetében általában két csomópontot fog konfigurálni a Windows feladatátvevő fürtben, ezért a értékét `maxShares` kettőre kell beállítani.
+-  Az összes SAP-ASCS/SCS-fürt virtuális gépnek ugyanabban az Azure-beli [közelségi csoportban](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)kell lennie.   
+   Bár a Windows-fürt virtuális gépeket a rendelkezésre állási csoportba helyezheti a PPG nélkül, az Azure-ban megosztott lemezzel, a PPG biztosítja az Azure-beli megosztott lemezek és a fürt virtuális gépei közel fizikai közelségét, így a virtuális gépek és a tárolási réteg közötti alacsonyabb késést is biztosít.    
+
+Az Azure Shared Disk korlátozásával kapcsolatos további részletekért tekintse át az Azure Shared Disk dokumentációjának [korlátozások](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) című szakaszát.
+
+> [!IMPORTANT]
+> Ha az Azure megosztott lemezzel telepíti az SAP ASCS/SCS Windows feladatátvevő fürtöt, vegye figyelembe, hogy az üzemelő példány egyetlen megosztott lemezzel fog működni egyetlen tároló fürtben. Az SAP-ASCS/SCS-példány hatással lenne a Storage-fürttel kapcsolatos problémák esetén, ahol az Azure-beli megosztott lemez telepítve van.    
+
+> [!TIP]
+> Tekintse át az SAP [NetWeaver az Azure tervezési útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) és az [Azure Storage útmutatót az SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) számítási feladataihoz az SAP üzembe helyezésének megtervezése során.
+
+### <a name="supported-os-versions"></a>Támogatott operációsrendszer-verziók
+
+A Windows Server 2016 és a 2019 egyaránt támogatott (a legújabb adatközpont-lemezképek használata).
+
+Javasoljuk, hogy a **Windows Server 2019 Datacenter**használatát a következőképpen ajánljuk:
+- A Windows 2019 feladatátvételi fürtszolgáltatás Azure-beli szolgáltatás
+- Az Azure-gazdagép karbantartásával és jobb megismerésével bővült az Azure-beli menetrend eseményeinek monitorozása.
+- Az elosztott hálózat nevét is használhatja (ez az alapértelmezett beállítás). Ezért nem kell dedikált IP-címet adni a fürt hálózati neveként. Ezt az IP-címet nem kell konfigurálnia az Azure belső Load Balancerján. 
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Megosztott lemezek az Azure-ban a SIOS DataKeeper
 
-A magas rendelkezésre állású SAP ASCS/SCS-példányhoz fürt megosztott tárterületre van szükség.
-
-A külső gyártóktól származó szoftverek SIOS DataKeeper cluster Edition használatával létrehozhat egy tükrözött tárolót, amely szimulálja a fürt megosztott tárolóját. A SIOS megoldás valós idejű szinkron adatreplikálást biztosít.
+A megosztott lemez egy másik lehetősége, hogy külső gyártótól származó szoftverek SIOS DataKeeper cluster Edition használatával hozzon létre egy tükrözött tárolót, amely szimulálja a fürt megosztott tárolóját. A SIOS megoldás valós idejű szinkron adatreplikálást biztosít.
 
 Megosztott lemez erőforrásának létrehozása fürthöz:
 
@@ -108,7 +182,7 @@ További információ a [SIOS DataKeeper](https://us.sios.com/products/datakeepe
 
 ![5. ábra: Windows Server feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban a SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**5. ábra:** Windows feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban a SIOS DataKeeper_
+_Windows feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban a SIOS DataKeeper_
 
 > [!NOTE]
 > A magas rendelkezésre álláshoz nincs szükség megosztott lemezekre, néhány adatbázis-kezelő termékkel, például a SQL Serversal. SQL Server a AlwaysOn replikálja az adatbázis-kezelői adatait és a naplófájlokat az egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows-fürt konfigurációjának nincs szüksége megosztott lemezre.

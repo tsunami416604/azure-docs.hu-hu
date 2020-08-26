@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 6148cedbf004e3e63200ac50b91a40866c5b18db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719721"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855249"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Az erőforrás-állapot, a frontend és a háttérbeli rendelkezésre állási problémák elhárítása 
 
@@ -30,6 +30,9 @@ Az adatelérési út rendelkezésre állási metrikáját a rendszer 25 másodpe
 
 ## <a name="health-probe-status"></a>Állapotadat-mintavétel állapota
 Az állapotfigyelő állapot mérőszáma az állapot-mintavételben definiált protokoll pingelésével jön létre. Ezt a pingelést a rendszer a háttérbeli készlet minden példányára és az állapot-mintavételben definiált portra továbbítja. HTTP-és HTTPS-mintavétel esetén a sikeres pingeléshez HTTP 200 OK-válasz szükséges, míg a TCP-mintavételek esetében minden válasz sikeresnek minősül. Az egyes mintavételek egymás utáni sikeressége vagy meghibásodása azt határozza meg, hogy a háttérbeli példány kifogástalan állapotú-e, és képes-e forgalmat fogadni azokhoz a terheléselosztási szabályokhoz, amelyekhez a háttér-készlet hozzá van rendelve. Az adatelérési utak rendelkezésre állásához hasonlóan az átlagos összesítést használjuk, ami azt jelzi, hogy az átlagos sikeres/összes pingelés a mintavételezési intervallumban történik. Ez az állapot-mintavételi állapot azt jelzi, hogy a háttér állapota a terheléselosztó által elkülönített módon, a háttérbeli példányok elküldése nélkül, a felhasználói felületről küldött adatforgalom nélkül.
+
+>[!IMPORTANT]
+>Az állapot mintavételi állapotának mintavételezése egy percen keresztül történik. Ez kisebb ingadozásokat eredményezhet egy máskülönben állandó értékben. Ha például két háttér-példány létezik, az egyik mintavétel és egy leállt, az állapot mintavételi szolgáltatása 7 mintát rögzíthet az egészséges példányhoz, és 6 a nem kifogástalan állapotú példányhoz. Ez egy, a 50-as számú, a 46,15-es, egy perces intervallumot eredményező, korábban állandó értékre mutat. 
 
 ## <a name="diagnose-degraded-and-unavailable-load-balancers"></a>Csökkentett teljesítményű és nem elérhető terheléselosztó diagnosztizálása
 Az [Erőforrás-állapot című cikkben](load-balancer-standard-diagnostics.md#resource-health-status)leírtaknak megfelelően a csökkentett teljesítményű Load Balancer az egyik, amely 25%-os és 90%-os adatelérési út közötti rendelkezésre állást mutat, és egy nem elérhető terheléselosztó az adatelérési út kevesebb mint 25%-át, kétperces időtartamon belül. Ugyanezekkel a lépésekkel vizsgálhatja meg a hibát, amelyet az állapot-mintavételi állapot vagy a konfigurált adatelérési útvonalak elérhetőségi riasztásai észleltek. Megvizsgáljuk azt az esetet, amikor bevizsgáltuk az erőforrás állapotát, és megtaláljuk, hogy a terheléselosztó nem érhető el a 0%-os adatelérési utak elérhetőségével – a szolgáltatás nem áll le.

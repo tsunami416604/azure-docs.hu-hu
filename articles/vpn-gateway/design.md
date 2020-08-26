@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300322"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852706"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway kialakítás
 
@@ -27,7 +27,9 @@ A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv
 
 ![Azure VPN Gateway helyek közti kapcsolat – példa](./media/design/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a><a name="Multi"></a>Többhelyes kapcsolat
+A VPN Gateway konfigurálható aktív-készenléti módban egy nyilvános IP-cím vagy aktív-aktív mód használatával két nyilvános IP-cím használatával. Aktív-készenléti módban az egyik IPsec-alagút aktív, a másik alagút pedig készenléti állapotban van. Ebben a beállításban a forgalom az aktív alagúton keresztül áramlik, és ha valamilyen probléma merül fel ezzel az alagúttal, a forgalom átvált a készenléti alagútra. Az aktív-aktív módban való VPN Gateway beállítása *ajánlott* , ha az IPSec-alagutak egyszerre aktívak, és mindkét alagúton keresztül áramlanak. Az aktív-aktív mód további előnye, hogy az ügyfelek nagyobb átviteli sebességet tapasztalnak.
+
+### <a name="multi-site"></a><a name="Multi"></a>Több hely
 
 Ez a típusú kapcsolat a helyek közötti kapcsolat egy változata. A virtuális hálózati átjáróról több VPN-kapcsolatot hoz létre, amelyek általában több helyszíni helyhez csatlakoznak. Ha több kapcsolatot használ, RouteBased (útvonalalapú) VPN-típust kell alkalmaznia (klasszikus virtuális hálózatok használatakor ezt dinamikus átjárónak nevezik). Mivel minden virtuális hálózat csak egy VPN-átjáróval rendelkezhet, az átjárón keresztüli összes kapcsolat osztozik a rendelkezésre álló sávszélességen. Ezt a kapcsolattípust gyakran „többhelyes” kapcsolatnak nevezik.
 
@@ -37,7 +39,7 @@ Ez a típusú kapcsolat a helyek közötti kapcsolat egy változata. A virtuáli
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="point-to-site-vpn"></a><a name="P2S"></a>Pont–hely VPN
+## <a name="point-to-site-vpn"></a><a name="P2S"></a>Pont – hely típusú VPN
 
 A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni egy Azure virtuális hálózatokhoz, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni.
 

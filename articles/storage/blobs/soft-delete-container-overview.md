@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 47582f941c314933baf378478b1380cb8316935b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066610"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854539"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
@@ -27,8 +27,8 @@ A blob-adatai teljes körű védelme érdekében a Microsoft a következő adatv
 - BLOB-Törlés – az egyes Blobok véletlen törlésével vagy felülírásával szembeni védelem érdekében. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el [a](soft-delete-blob-overview.md)Blobok eltávolítását ismertető témakört.
 - BLOB verziószámozása (előzetes verzió), hogy automatikusan fenntartsa a blob korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve. A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 
-> [!IMPORTANT]
-> Egy Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+> [!WARNING]
+> A Storage-fiók törlése nem vonható vissza. A Soft delete nem véd a Storage-fiókok törlésével szemben. Egy Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>A tárolók törlésének működése
 
@@ -122,5 +122,5 @@ A tárolók törlésének engedélyezése nem díjköteles. A helyreállított t
 ## <a name="next-steps"></a>További lépések
 
 - [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
-- [A Blobok Soft delete](soft-delete-blob-overview.md)
+- [Blobok helyreállítható törlése](soft-delete-blob-overview.md)
 - [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)

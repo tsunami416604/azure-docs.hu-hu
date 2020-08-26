@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8a4a4360265cabc179c8cd41d0a33a0575f55a6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554078"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Azure Active Directory a Palo Alto Networks-integrációval – rendszergazdai felhasználói felület
 
@@ -43,6 +43,7 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 * Palo Alto Networks – a rendszergazdai KEZELŐFELÜLET támogatja az **SP** által kezdeményezett SSO-t
 * Palo Alto Networks – a rendszergazda felhasználói FELÜLETe **a** felhasználók üzembe helyezését támogatja
+* Miután konfigurálta a Palo Alto Networks-admin felhasználói felületet, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>Palo Alto Networks – rendszergazdai felhasználói felület hozzáadása a katalógusból
 
@@ -55,8 +56,7 @@ A Palo Alto Networks-admin felhasználói felület az Azure AD-be való integrá
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **Palo Alto Networks-admin UI** a keresőmezőbe.
 1. Válassza a **Palo Alto Networks – rendszergazdai felhasználói felület** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
+## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Palo Alto Networks-admin felhasználói felületen konfigurálja és teszteli a **B. Simon**nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozzá tartozó, a Palo Alto hálózatokban található felhasználó közötti kapcsolati kapcsolat szükséges.
 
@@ -111,11 +111,14 @@ Az Azure AD egyszeri bejelentkezés a Palo Alto Networks-rendszergazdai KEZELŐF
 
 1. A fentiek mellett a Palo Alto Networks-admin UI alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name |  Forrás attribútum|
+    | Név |  Forrás attribútum|
     | --- | --- |
     | username | User. userPrincipalName |
     | adminrole | customadmin |
     | | |
+
+    > [!NOTE]
+    > A _adminrole_ értékének meg kell egyeznie a (z) 9. lépésben említett, a **Palo Alto hálózatokban** konfigurált szerepkör nevével. 
 
     > [!NOTE]
     > Az attribútumokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
@@ -188,7 +191,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     c. Törölje az **identitás-szolgáltatói tanúsítvány** ellenőrzése jelölőnégyzet jelölését.
 
-    d. Kattintson az **OK** gombra.
+    d. Válassza az **OK** lehetőséget.
 
     e. Ha a tűzfalon szeretné véglegesíteni a konfigurációkat **, válassza a**végrehajtás lehetőséget.
 
@@ -202,7 +205,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
   
     a. Az **Identity Provider slo URL-címe** mezőben cserélje le a korábban importált slo URL-címet a következő URL-címre: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   
-    b. Kattintson az **OK** gombra.
+    b. Válassza az **OK** lehetőséget.
 
 7. A Palo Alto Networks tűzfal rendszergazdai felhasználói felületén válassza az **eszköz**lehetőséget, majd válassza a **rendszergazdai szerepkörök**lehetőséget.
 
@@ -237,7 +240,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     f. Jelölje be az **összes** jelölőnégyzetet, vagy válassza ki azokat a felhasználókat és csoportokat, akikkel hitelesíteni lehet a profilt.  
     Amikor egy felhasználó hitelesíti magát, a tűzfal megfelel a társított felhasználónévnek vagy csoportnak a listában szereplő bejegyzéseknek. Ha nem ad hozzá bejegyzéseket, akkor egyetlen felhasználó sem tud hitelesíteni.
 
-    : Kattintson az **OK** gombra.
+    : Válassza az **OK** lehetőséget.
 
 13. Ha engedélyezni szeretné, hogy a rendszergazdák az SAML SSO-t használják az Azure-ban, válassza az **eszköz**  >  **beállítása**lehetőséget. A **telepítés** ablaktáblán válassza a **felügyelet** fület, majd a **hitelesítési beállítások**területen válassza a **Beállítások** ("fogaskerék") gombot.
 
@@ -247,7 +250,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A hitelesítési profil mező](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-15. Kattintson az **OK** gombra.
+15. Válassza az **OK** lehetőséget.
 
 16. A konfiguráció elvégzéséhez válassza a **commit (véglegesítés**) lehetőséget.
 
@@ -272,5 +275,3 @@ Ha a hozzáférési panelen a Palo Alto Networks-admin felhasználói felület c
 - [A Palo Alto Networks kipróbálása – rendszergazdai KEZELŐFELÜLET az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [A Palo Alto-hálózatok elleni védelem – rendszergazdai KEZELŐFELÜLET speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

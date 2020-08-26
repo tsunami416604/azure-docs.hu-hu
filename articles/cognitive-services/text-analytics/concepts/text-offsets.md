@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219235"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855643"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Szöveg eltolása a Text Analytics API kimenetében
 
-A többnyelvű és Emoji támogatás olyan Unicode-kódolást eredményezett, amely egynél több [adatpontot](https://wikipedia.org/wiki/Code_point) használ egy megjelenített karakter (Graféma) megjelenítéséhez. Például a hangulatjelek, mint a 🌷 👍 , és több karaktert is használhatnak a vizuális attribútumok (például a bőr tónusa) további karakterekkel való összeállításához. Hasonlóképpen, a hindi szó `अनुच्छेद` öt betűt és három kombinációt jelöl.
+A többnyelvű és Emoji támogatás olyan Unicode-kódolást eredményezett, amely egynél több [adatpontot](https://wikipedia.org/wiki/Code_point) használ egy megjelenített karakter (Graféma) megjelenítéséhez. Például a hangulatjelek, mint a 🌷, és 👍 több karaktert is használhatnak a vizuális attribútumok (például a bőr tónusa) további karakterekkel való összeállításához. Hasonlóképpen, a hindi szó `अनुच्छेद` öt betűt és három kombinációt jelöl.
 
 A lehetséges többnyelvű és Emoji kódolások különböző hossza miatt a Text Analytics API a válaszban visszaadott eltolásokat adhat vissza.
 
@@ -40,10 +40,20 @@ A .NET-ben érdemes lehet a [StringInfo](https://docs.microsoft.com/dotnet/api/s
 
 A Text Analytics API ezeket a szöveges elemeket is visszaadja az egyszerűség kedvéért.
 
+## <a name="offsets-in-api-version-31-preview"></a>Eltolások az API 3,1-es verziójában – előzetes verzió
+
+Az API 3,1-es verziójától kezdődően az előzetes verzió. 1, az eltolást visszaadó összes Text Analytics API-végpont támogatja a `stringIndexType` paramétert. Ez a paraméter módosítja az `offset` `length` API kimenetének és attribútumait, hogy azok megfeleljenek a kért karakterlánc-iterációs sémának. Jelenleg három típust támogatunk:
+
+1. `textElement_v8` (alapértelmezett): iterációk a graphemes felett a [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) standard által meghatározott módon
+2. `unicodeCodePoint`: az Unicode- [hibakódok](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564), a Python 3 alapértelmezett sémája
+3. `utf16CodeUnit`: iteráció az [UTF-16 kód egységeken](https://unicode.org/faq/utf_bom.html#UTF16), a JavaScript, a Java és a .net alapértelmezett sémája
+
+Ha a `stringIndexType` kért programozási környezet megfelel a szükségesnek, az alkarakterlánc kinyerése szabványos alkarakterlánc vagy szelet metódusok használatával végezhető el. 
+
 ## <a name="see-also"></a>Lásd még
 
-* [Text Analytics áttekintése](../overview.md)
-* [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [A Text Analytics áttekintése](../overview.md)
+* [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Nyelv felismerése](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Nyelvi felismerés](../how-tos/text-analytics-how-to-language-detection.md)

@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 719b96c9186d463ca3ee41c6fb401a8f22c4c11c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431968"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854828"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
 
@@ -161,7 +161,7 @@ Most, hogy Machine Learning Studio (klasszikus) adataink vannak, létre kell hoz
 
 1. Válassza az **+ új** lehetőséget a bal alsó sarokban, majd válassza a **kísérlet**, majd az **üres kísérlet**lehetőséget.
 1. A kísérletet a lap tetején, a **... címmel létrehozott kísérlet** kiválasztásával és módosításával nevezheti el. Például módosítsa a **hitelesítésszolgáltatói tejtermékek elemzését**.
-1. A kísérlet lap bal oldalán bontsa ki a **mentett adatkészletek**, majd **az adatkészletek**elemet. Ekkor meg kell jelennie a korábban feltöltött **cadairydata.csvnak** .
+1. A kísérlet lap bal oldalán bontsa ki a **mentett adatkészletek**, majd **az adatkészletek**elemet. Ekkor meg kell jelennie a korábban feltöltött **cadairydata.csvnak ** .
 1. Húzza a **csdairydata.csv adatkészletet** a kísérletbe.
 1. A bal oldali ablaktábla felső részén található **kísérletezési elemek keresése** mezőben írja be az [R-parancsfájl végrehajtása][execute-r-script]parancsot. Ekkor megjelenik a modul a keresési listán.
 1. Húzza az [R szkript végrehajtása][execute-r-script] modult a raklapra.  
@@ -225,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betöltéséről. Miután létrehozta és tesztelte az előző szakaszban bemutatott R-szkriptet, tegye a következőket:
 
-1. Mentse az R-szkriptet a-ba. R-fájl. Meghívom a "simpleplot" szkriptet. R ". Itt látható a tartalom.
+1. Mentse az R-szkriptet a-ba. R-fájl. Meghívom a "simpleplot" szkriptet. R ". Itt a fájlban:
 
    ```r
    ## Only one of the following two lines should be used
@@ -250,7 +250,7 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
 
 1. Írja be a `source()` függvényt a zip-fájl nevével az R- [szkript végrehajtása][execute-r-script] modul kódjának ablakába. Az én esetemben begépeltem `source("src/simpleplot.R")` .  
 
-1. Győződjön meg róla, hogy a **Mentés**gombra kattint.
+1. Mindenképpen kattintson a **Mentés** lehetőségre.
 
 A lépések befejezését követően az [r szkript végrehajtása][execute-r-script] modul végrehajtja az r-szkriptet a zip-fájlban a kísérlet futtatásakor. Ekkor a kísérletnek az 5. ábrához hasonlóan kell kinéznie.
 
@@ -570,11 +570,11 @@ Most futtassa a frissített kísérletet, és a kimeneti napló használatával 
 
 Ebben a szakaszban néhány egyszerű átalakítást végzünk a dataframe egyes oszlopaiban lévő értékekre. Az R nyelv szinte tetszőleges értékű átalakításokat támogat. Az [alább olvasható hivatkozások részletes](#appendixb) példákat tartalmaznak.
 
-Ha megtekinti a dataframe összefoglalóinak értékeit, itt valami furcsaat kell látnia. Több fagylaltot, mint a Kaliforniában előállított tej? Nem, természetesen nem, mivel ez nincs értelme, szomorú, hogy ez a tény lehet az amerikai jégkrém szerelmeseinek. Az egységek eltérőek. Az ár az USA-beli font egységében van, a tej 1 millió USA-beli egységben van, az Ice Cream pedig 1 000 US gallon egységben van, a túró pedig 1 000 USD. Feltételezve, hogy az Ice Cream körülbelül 6,5 kilót mérlegel, a szorzást egyszerűen elvégezheti az értékek konvertálásával, így azok mind a 1 000 font egységben egyenlő egységben vannak.
+Ha megtekinti a dataframe összefoglalóinak értékeit, itt valami furcsaat kell látnia. Több fagylaltot, mint a Kaliforniában előállított tej? Nem, természetesen nem, mivel ez nincs értelme, szomorú, hogy ez a tény lehet az amerikai jégkrém szerelmeseinek. Az egységek eltérőek. Az ár az USA-beli font egységében van, a tej 1 millió USA-beli egységben van, az Ice Cream pedig 1 000 US gallon egységben van, a túró pedig 1 000 USD. Feltételezve, hogy az Ice Cream körülbelül 6,5 kilót foglal le, a szorzást egyszerűen elvégezheti az értékek átalakításához, így azok mind a 1 000 font értékkel egyenlő egységben vannak.
 
 Az előrejelzési modellhez multiplikatív modellt használunk az adattrendek és a szezonális beállítások megváltoztatásához. A log-átalakítás lehetővé teszi, hogy lineáris modellt használjon, ezzel egyszerűbbé téve ezt a folyamatot. A log-transzformációt ugyanabban a függvényben lehet alkalmazni, ahol a szorzót alkalmazták.
 
-A következő kódban Definiálok egy új függvényt, `log.transform()` és alkalmazza azt a numerikus értékeket tartalmazó sorokra. Az R `Map()` függvény a `log.transform()` függvény a dataframe kijelölt oszlopaira való alkalmazására szolgál. `Map()`hasonló, `apply()` de a függvényhez több argumentumot is engedélyez. Vegye figyelembe, hogy a multiplikátorok listája a függvény második argumentumát adja meg `log.transform()` . A `na.omit()` függvény egy kis karbantartási művelet, amely gondoskodik arról, hogy ne legyenek hiányzó vagy nem definiált értékek a dataframe.
+A következő kódban Definiálok egy új függvényt, `log.transform()` és alkalmazza azt a numerikus értékeket tartalmazó sorokra. Az R `Map()` függvény a `log.transform()` függvény a dataframe kijelölt oszlopaira való alkalmazására szolgál. `Map()` hasonló, `apply()` de a függvényhez több argumentumot is engedélyez. Vegye figyelembe, hogy a multiplikátorok listája a függvény második argumentumát adja meg `log.transform()` . A `na.omit()` függvény egy kis karbantartási művelet, amely gondoskodik arról, hogy ne legyenek hiányzó vagy nem definiált értékek a dataframe.
 
 ```r
 log.transform <- function(invec, multiplier = 1) {
@@ -773,7 +773,7 @@ A változók közötti kapcsolatokban valamilyen furcsa megjelenésű struktúra
 
 ### <a name="correlation-analysis"></a>Korrelációs elemzés
 
-A korrelációs elemzés végrehajtásához a változókat is el kell végezni. Egyszerűen használhatja az R- `scale()` függvényt, amely a központok és a skála változókat is használja. Előfordulhat, hogy ez a függvény jóval gyorsabban fut. Szeretném azonban megmutatni, hogyan lehet védekező programot használni az R-ben.
+A korrelációs elemzés végrehajtásához a változókat is el kell végezni. Egyszerűen használhatja az R- `scale()` függvényt, amely a központok és a skála változókat is használja. Előfordulhat, hogy ez a függvény jóval gyorsabban fut. Szeretném azonban megmutatni, hogyan lehet védekező programozást használni az R-ben.
 
 Az `ts.detrend()` alább látható függvény mindkét műveletet végrehajtja. A következő két sornyi kód lenyomja az adatokat, majd egységesíti az értékeket.
 
@@ -1136,7 +1136,7 @@ lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
 A trend Model esetében be kell jelentkeznie, és tartalmaznia kell az idényjellegű hatásokat. Az év hónapját a lineáris modellben lévő dummy változóként fogjuk használni, hogy rögzítse a hónapról hónapra érvényes hatást. Vegye figyelembe, hogy amikor egy modellbe bevezeti a faktor változóit, az elfogás nem számítható ki. Ha ezt nem teszi meg, a képlet túl van megadva, és az R levonja az egyik kívánt tényezőt, de megtartja az elfogási kifejezést.
 
-Mivel megfelelő trend-modellel rendelkezünk, a függvény használatával `update()` adhatjuk hozzá az új feltételeket a meglévő modellhez. A frissítési képletben az-1 az elfogási kifejezést eldobja. Folytatás a RStudio a pillanatra:
+Mivel megfelelő trend-modellel rendelkezünk, a `update()` függvény használatával adhatjuk hozzá az új feltételeket a meglévő modellhez. A frissítési képletben az-1 az elfogási kifejezést eldobja. Folytatás a RStudio a pillanatra:
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1338,7 +1338,7 @@ A RStudio elég jól dokumentálva. Íme néhány hivatkozás a RStudio dokument
 Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Azure Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
 
 * A [kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) az Emmanuel Paradis jó kiindulópontja az R.  
-* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. mtsai. egy kicsit mélyebbre kerül.
+* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. A Venables és az al. egy kicsit mélyebbre kerül.
 
 Az R-ben számos könyv található, amely segítséget nyújt az első lépésekhez. Itt talál néhány hasznosat:
 
@@ -1355,7 +1355,8 @@ A könyv **bevezető idősorozata** , az r Paul Cowpertwait és Andrew Metcalfe,
 Íme néhány nagyszerű internetes erőforrás:
 
 * A DataCamp megtanítja az R-t a böngésző kényelmében a videók és a kódolási gyakorlatok révén. A legújabb R-technikák és csomagok interaktív oktatóanyagokkal rendelkeznek. Használja ki az ingyenes [interaktív R-oktatóanyagot](https://www.datacamp.com/courses/introduction-to-r).
-* [Ismerkedjen meg az R programozással, a végleges útmutatóval](https://www.programiz.com/r-programming) a Programiz.
+* [Ismerkedjen meg az R programozással, a végleges útmutatóval](https://www.datamentor.io/r-programming/) a DataMentor.
+* [R-kódoló](https://r-coder.com/). Részletes R-oktatóanyagok és ingyenes R-tanfolyam kezdőknek.
 * Egy gyors [R-oktatóanyag](https://www.cyclismo.org/tutorial/R/) : Kelly Black, Clark University.
 * Több mint 60 R erőforrás szerepel a [legnépszerűbb r nyelvi erőforrásokban az adatkezelési képességek javítása érdekében](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 

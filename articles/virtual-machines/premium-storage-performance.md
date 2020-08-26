@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751504"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855534"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -230,7 +230,7 @@ Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premiu
 
 *Linux-disztribúciók*  
 
-Az Azure Premium Storage a Windows és a Linux rendszerű virtuális gépek esetében azonos szintű teljesítményt nyújt. A Linux-disztribúciók számos változatát támogatjuk, és [itt](~/articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)láthatja a teljes listát. Fontos megjegyezni, hogy a különböző disztribúciók jobban illeszkednek a különböző típusú munkaterhelésekhez. A számítási feladatok különböző szintjeit fogja látni, attól függően, hogy milyen disztribúció fut a számítási feladatban. Tesztelje a Linux-disztribúciókat az alkalmazással, és válassza ki azt, amely a legjobban működik.
+Az Azure Premium Storage a Windows és a Linux rendszerű virtuális gépek esetében azonos szintű teljesítményt nyújt. A Linux-disztribúciók számos változatát támogatjuk, és [itt](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)láthatja a teljes listát. Fontos megjegyezni, hogy a különböző disztribúciók jobban illeszkednek a különböző típusú munkaterhelésekhez. A számítási feladatok különböző szintjeit fogja látni, attól függően, hogy milyen disztribúció fut a számítási feladatban. Tesztelje a Linux-disztribúciókat az alkalmazással, és válassza ki azt, amely a legjobban működik.
 
 A Linux és a Premium Storage használatával a nagy teljesítmény biztosításához tekintse meg a szükséges illesztőprogramok legújabb frissítéseit.
 
@@ -279,7 +279,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 255e0e38d8dc434843452308d2eebc2fd4774c50
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116516"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852034"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -63,7 +63,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="protocols-and-authorization-flows"></a>Protokollok és engedélyezési folyamatok
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-engedélyezési kód](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 engedélyezési kód a PKCE |  |  | X | Csak mobil alkalmazások  |
@@ -76,7 +76,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="identify-providers-federation"></a>Szolgáltatók összevonásának azonosítása 
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Például: Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Például: Facebook.  |
@@ -87,7 +87,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="rest-api-integration"></a>REST API integráció
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [REST API egyszerű hitelesítéssel](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [REST API ügyféltanúsítvány-alapú hitelesítéssel](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -95,7 +95,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="component-support"></a>Összetevő-támogatás
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Telefonos faktoros hitelesítés](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure MFA-hitelesítés](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -110,27 +110,27 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [2.0.0](page-layout.md#200) |  | X |  |  |
-| [1.2.0](page-layout.md#120) |  | X |  |  |
-| [1.1.0](page-layout.md#110) |  |  | X |  |
-| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [2.0.0](page-layout.md) |  | X |  |  |
+| [1.2.0](page-layout.md) |  | X |  |  |
+| [1.1.0](page-layout.md) |  |  | X |  |
+| [1.0.0](page-layout.md) |  |  | X |  |
 | [JavaScript-támogatás](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>IEF-integráció
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Lekérdezési karakterlánc paraméter`domain_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
-| Lekérdezési karakterlánc paraméter`login_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
-| JSON beszúrása felhasználói útra a használatával`client_assertion` | X |  |  | Elavulttá válik. |
-| JSON beszúrása a felhasználói útra`id_token_hint` |  | X |  | Továbbítási megközelítés a JSON továbbítására. |
+| Lekérdezési karakterlánc paraméter `domain_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
+| Lekérdezési karakterlánc paraméter `login_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
+| JSON beszúrása felhasználói útra a használatával `client_assertion` | X |  |  | Elavulttá válik. |
+| JSON beszúrása a felhasználói útra `id_token_hint` |  | X |  | Továbbítási megközelítés a JSON továbbítására. |
 | [Identitás-szolgáltatói token átadása az alkalmazásnak](idp-pass-through-custom.md) |  | X |  | Például a Facebookról az alkalmazásra. |
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Alapértelmezett egyszeri bejelentkezés munkamenet-szolgáltatója](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Külső bejelentkezési munkamenet-szolgáltató](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
@@ -140,7 +140,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="security"></a>Biztonság
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Házirend-kulcsok – generál, manuális, feltöltés |  |  | X |  |
 | Szabályzat kulcsai – RSA/CERT, Secrets |  |  | X |  |
@@ -148,7 +148,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal – IEF UX |  |  | X |  |
 | Szabályzat feltöltése |  |  | X |  |

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: b8b19b5bbb327c55b4f4103a133e77e73f0ae4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088257"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853116"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
 
@@ -101,7 +101,7 @@ Az SMB-fájlmegosztás előfeltételei a következők:
 
 A jelen hivatkozási architektúrában az SAP központi szolgáltatások megosztását Azure NetApp Files a következő kínálja:
 
-![SAP ASCS/SCS HA architektúra SMB-megosztással](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
+![SAP ASCS/SCS HA architektúra SMB-megosztás részleteivel](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
 
 ## <a name="create-and-mount-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása és csatlakoztatása Azure NetApp Fileshoz
 
@@ -112,8 +112,8 @@ Hajtsa végre a következő lépéseket a Azure NetApp Files használatának el�
 3. A kapacitás készlet beállítása a [Kapacitási készlet beállítása](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md) című részben leírtak szerint
 4. Azure NetApp Files erőforrásoknak a delegált alhálózatban kell lenniük. Delegált alhálózat létrehozásához kövesse az [alhálózat delegálása Azure NetApp Filesre](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) című témakör utasításait.  
 
-> [!IMPORTANT]
-> SMB-kötet létrehozása előtt létre kell hoznia Active Directory kapcsolatokat. Tekintse át [Active Directory kapcsolatok követelményeit](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
+   > [!IMPORTANT]
+   > SMB-kötet létrehozása előtt létre kell hoznia Active Directory kapcsolatokat. Tekintse át [Active Directory kapcsolatok követelményeit](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
 
 5. Hozzon létre Active Directory-kapcsolatokat a [Active Directory-kapcsolatok létrehozása](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) című témakörben leírtak szerint.  
 6. Hozzon létre SMB-Azure NetApp Files SMB-kötetet, kövesse az [SMB-kötet hozzáadása](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) című témakör utasításait.  
@@ -124,15 +124,11 @@ Hajtsa végre a következő lépéseket a Azure NetApp Files használatának el�
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>Az infrastruktúra előkészítése az SAP HA-hez Windows feladatátvevő fürt használatával 
 
-1. [A szükséges DNS IP-címek beállítása](./sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
-2. [Statikus IP-címek beállítása az SAP virtuális gépekhez](./sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30).
-3. [Statikus IP-címet állítson be az Azure belső terheléselosztó számára](./sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e).
-4. [Állítsa be az alapértelmezett ASCS/SCS terheléselosztási szabályokat az Azure belső terheléselosztó számára](./sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c).
-5. [Módosítsa a ASCS/SCS alapértelmezett terheléselosztási szabályait az Azure belső terheléselosztó számára](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
-6. [Adja hozzá a Windows rendszerű virtuális gépeket a tartományhoz](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
-7. [Beállításjegyzék-bejegyzések hozzáadása az SAP ASCS/SCS-példányhoz tartozó fürtcsomópontok esetében](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
-8. [Windows Server feladatátvevő fürt beállítása SAP ASCS/SCS-példányhoz](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
-9. Ha a Windows Server 2016-et használja, javasoljuk, hogy konfigurálja az [Azure Cloud tanúsító](/windows-server/failover-clustering/deploy-cloud-witness).
+1. [Állítsa be az ASCS/SCS terheléselosztási szabályokat az Azure belső terheléselosztó számára](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
+2. [Adja hozzá a Windows rendszerű virtuális gépeket a tartományhoz](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
+3. [Beállításjegyzék-bejegyzések hozzáadása az SAP ASCS/SCS-példányhoz tartozó fürtcsomópontok esetében](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
+4. [Windows Server feladatátvevő fürt beállítása SAP ASCS/SCS-példányhoz](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
+5. Ha a Windows Server 2016-et használja, javasoljuk, hogy konfigurálja az [Azure Cloud tanúsító](/windows-server/failover-clustering/deploy-cloud-witness).
 
 
 ## <a name="install-sap-ascs-instance-on-both-nodes"></a>Az SAP ASCS-példány telepítése mindkét csomóponton
@@ -152,11 +148,11 @@ Az SAP-től a következő szoftverekre van szüksége:
 2. Válassza ki a **fájlmegosztás fürtöt** a SWPM-ben.  
 3. Ha a rendszer a **rendszerszintű SAP Rendszerfürt paramétereinek**megadását kéri, adja meg a korábban **fájlmegosztási állomásnévként**létrehozott Azure NetApp Files SMB-megosztás állomásnevét.  Ebben a példában az SMB-megosztás állomásneve a következő: **anfsmb-9562**. 
 
-> [!IMPORTANT]
-> Ha az előfeltétel-ellenőrző eredményei a SWPM a folyamatos rendelkezésre állási szolgáltatási feltétel nem teljesülnek, akkor a késleltetett hibaüzenet utasításait követve, [amikor olyan megosztott mappához próbál hozzáférni, amely már nem létezik a Windows rendszerben](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  
+   > [!IMPORTANT]
+   > Ha az előfeltétel-ellenőrző eredményei a SWPM a folyamatos rendelkezésre állási szolgáltatási feltétel nem teljesülnek, akkor a késleltetett hibaüzenet utasításait követve, [amikor olyan megosztott mappához próbál hozzáférni, amely már nem létezik a Windows rendszerben](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  
 
-> [!TIP]
-> Ha az előfeltétel-ellenőrző eredményei a SWPM a swap-méret feltétele nem teljesülnek, akkor a saját számítógép>a Rendszertulajdonságok>a teljesítmény beállításai> a speciális> virtuális memória> módosítása elemre.  
+   > [!TIP]
+   > Ha az előfeltétel-ellenőrző eredményei a SWPM a swap-méret feltétele nem teljesülnek, akkor a saját számítógép>a Rendszertulajdonságok>a teljesítmény beállításai> a speciális> virtuális memória> módosítása elemre.  
 
 4. Konfiguráljon egy SAP-fürterőforrás, a mintavételi `SAP-SID-IP` portot a PowerShell használatával. Hajtsa végre ezt a konfigurációt az egyik SAP ASCS/SCS fürtcsomópontokon a mintavételi [port konfigurálása](./sap-high-availability-installation-wsfc-shared-disk.md#10822f4f-32e7-4871-b63a-9b86c76ce761)című cikkben leírtak szerint.
 

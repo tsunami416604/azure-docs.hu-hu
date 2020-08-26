@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853215"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852087"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
 
 A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Ebben a NVA-forgatókönyvben a cél az, hogy átirányítsa a forgalmat egy NVA (hálózati virtuális készüléken) a VNet és a VNet ágat. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Az útválasztási funkciók némelyike továbbra is kivezethető. Ha a bevezetés még nem történt meg a régióban, akkor a cikkek ezen verzióiban található lépéseket a következő időpontokban használhatja:
+> Ha már rendelkezik olyan útvonalakkal, amelyek a [virtuális központ útválasztásának konfigurálásához](how-to-virtual-hub-routing.md) szükséges új funkciókkal rendelkeznek, használja a cikkek ezen verzióiban ismertetett lépéseket:
 >* [Azure Portal cikk](virtual-wan-route-table-nva-portal.md)
 >* [PowerShell-cikk](virtual-wan-route-table-nva.md)
 >
@@ -41,7 +41,7 @@ A következő kapcsolati mátrix összegzi az ebben a forgatókönyvben támogat
 
 | Forrás             | Címzett:|   *NVA küllők*|*NVA virtuális hálózatok*|*Nem NVA virtuális hálózatok*|*Ágak*|
 |---|---|---|---|---|---|
-| **NVA küllők**   | &#8594; | 0/0 UDR  |  Társhálózat-létesítés |   0/0 UDR    |  0/0 UDR  |
+| **NVA küllők**   | &#8594; | 0/0 UDR  |  Társviszony-létesítés |   0/0 UDR    |  0/0 UDR  |
 | **NVA virtuális hálózatok**    | &#8594; |   Statikus |      X   |        X     |      X    |
 | **Nem NVA virtuális hálózatok**| &#8594; |   Statikus |      X   |        X     |      X    |
 | **Ágak**     | &#8594; |   Statikus |      X   |        X     |      X    |
@@ -129,7 +129,7 @@ Ez az útválasztási konfiguráció változását eredményezi, ahogy az a **3.
 
    :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="3. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

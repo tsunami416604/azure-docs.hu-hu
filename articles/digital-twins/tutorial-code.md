@@ -1,5 +1,5 @@
 ---
-title: Ügyfélalkalmazás kódolása
+title: 'Oktatóanyag: ügyfélalkalmazás kódolása'
 titleSuffix: Azure Digital Twins
 description: Oktatóanyag egy ügyfélalkalmazás minimális kódjának megírásához a .NET (C#) SDK használatával.
 author: baanders
@@ -7,16 +7,23 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 282c506f509adce4c616615e8b8e3580166052e6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723469"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854671"
 ---
-# <a name="coding-with-the-azure-digital-twins-apis"></a>Kódolás az Azure Digital Twins API-kkal
+# <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
 Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital Twins szolgáltatás példányaival együttműködve írhatnak be egy ügyfélalkalmazás-alkalmazást. Ez a fejlesztői témájú oktatóanyag bevezetést nyújt az Azure Digital Twins szolgáltatással való programozáshoz, amely az [Azure IoT Digital Twin ügyféloldali kódtárat használja a .net-hez (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Részletesen ismerteti a C#-konzol ügyfélalkalmazás lépésről lépésre történő írását.
+
+> [!div class="checklist"]
+> * Projekt beállítása
+> * Első lépések a Project Code-ban   
+> * Kód teljes mintája
+> * Az erőforrások eltávolítása
+> * További lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -561,7 +568,3 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan teheti me
 
 > [!div class="nextstepaction"]
 > [*Oktatóanyag: az alapok megismerése egy minta ügyfélalkalmazás alkalmazásával*](tutorial-command-line-app.md)
-
-Azt is megteheti, hogy az oktatóanyagban írt kóddal több felügyeleti műveletet tanul, vagy megkezdi a koncepció dokumentációját, hogy többet tudjon meg az oktatóanyagban használt elemekről.
-* [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)
-* [*Fogalmak: egyéni modellek*](concepts-models.md)

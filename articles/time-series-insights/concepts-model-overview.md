@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141720"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855205"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -24,9 +24,9 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modellek A
 > [!TIP]
 >
 > * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
-> * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights Gen2 Explorer használatával.
+> * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights ÁME Explorer használatával.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Hagyományosan a IoT-eszközökről összegyűjtött adatok nem rendelkeznek környezetfüggő információkkal, ami megnehezíti az érzékelők gyors megtalálását és elemzését. Az idősorozat-modell fő motivációja a IoT és az idősoros adatok megkeresésének és elemzésének egyszerűbbé tétele. Ezt a célt úgy éri el, hogy lehetővé teszi a Time Series-adatokat a kurátorok, a karbantartás és az idősorozat-adathalmazok gazdagítása érdekében, hogy előkészítse a felhasználók számára kész adatkészleteket
 
@@ -75,7 +75,7 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Idősorozat-modell áttekintő diagramja](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Egy idősorozat-modell hozható létre és kezelhető a [Azure Time Series Insights Gen2 Explorerben](/azure/time-series-insights/concepts-model-overview). Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
+Egy idősorozat-modell hozható létre és kezelhető az [Azure Time Series INSIGHTS ÁME Explorer](/azure/time-series-insights/concepts-model-overview)használatával. Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
@@ -87,7 +87,7 @@ A példányok a *példány tulajdonságaihoz*tartozó, például egy idősorozat
 
 A *példány mezői* olyan leíró információk gyűjteményei, amelyek a hierarchia szintjeire, valamint a gyártóra, a kezelőre és így továbbra is tartalmazhatnak értékeket.
 
-Ha egy eseményforrás konfigurálva van a Azure Time Series Insights Gen2-környezethez, a rendszer automatikusan felderíti és létrehozza a példányokat egy idősorozat-modellben. A példányok a Azure Time Series Insights Gen2 Explorerben hozhatók létre vagy frissíthetők az idősorozat-modell lekérdezéseinek használatával.
+Ha egy eseményforrás konfigurálva van a Azure Time Series Insights Gen2-környezethez, a rendszer automatikusan felderíti és létrehozza a példányokat egy idősorozat-modellben. A példányok az Azure Time Series Insights ÁME-tallózón keresztül hozhatók létre vagy frissíthetők az idősorozat-modell lekérdezéseinek használatával.
 
 A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/preview/samples) több élő példányra vonatkozó példát is tartalmaz.
 
@@ -182,8 +182,8 @@ A hierarchia a következőképpen jelenik meg a JSON-ben:
 
 Az előző JSON-példában:
 
-* `Location`szülővel és gyermekgel rendelkező hierarchia definiálása `states` `cities` . Mindegyiknek `location` több is lehet `states` , ami viszont több is lehet `cities` .
-* `ManufactureDate`szülővel és gyermekgel rendelkező hierarchia definiálása `year` `month` . Mindegyiknek `ManufactureDate` több is lehet `years` , ami viszont több is lehet `months` .
+* `Location` szülővel és gyermekgel rendelkező hierarchia definiálása `states` `cities` . Mindegyiknek `location` több is lehet `states` , ami viszont több is lehet `cities` .
+* `ManufactureDate` szülővel és gyermekgel rendelkező hierarchia definiálása `year` `month` . Mindegyiknek `ManufactureDate` több is lehet `years` , ami viszont több is lehet `months` .
 
 > [!TIP]
 > A hierarchia API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
@@ -216,7 +216,7 @@ Az előző definícióban és a több idősorozatban használt példány mezők 
 | ID4 | "Building" = "1000", "Floor" = "10"  |
 | ID5 | A "Building", a "Floor" vagy a "Room" nincs beállítva. |
 
-Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg a [Azure Time Series Insights Gen2 Explorerben](time-series-insights-update-explorer.md) , mert teljes mértékben definiálva és megfelelően rendezett *kialakítási*, *padlói*és *szobai* paraméterekkel rendelkeznek.
+Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg az [Azure Time Series Insights ÁME Explorerben](time-series-insights-update-explorer.md) , mert teljes mértékben definiálva és megfelelően rendezték a *kiépítési*, a *padló*és a *szoba* paramétereit.
 
 A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek meg a megadott adathierarchiának.
 
@@ -286,7 +286,7 @@ A típusok megfelelnek a következő JSON-példának:
 
 Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken. További információ az [idősorozat-modell változók definiálásáról](./concepts-variables.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
 

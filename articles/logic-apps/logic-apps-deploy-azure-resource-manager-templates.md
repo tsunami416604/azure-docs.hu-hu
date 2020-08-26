@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827494"
+ms.locfileid: "88855592"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sablonok üzembe helyezése Azure Logic Apps-alkalmazásokhoz
 
@@ -119,7 +119,9 @@ Az Azure-folyamatok használatának általános magas szintű lépései:
 
 ## <a name="authorize-oauth-connections"></a>OAuth-kapcsolatok engedélyezése
 
-Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és érvényes paraméterekkel rendelkezik. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-vs-authorization.md)azonban továbbra is engedélyeznie kell az előkészítő OAuth-kapcsolatokat, és érvényes hozzáférési jogkivonatokat kell létrehoznia. Íme néhány javaslat:
+Az üzembe helyezést követően a logikai alkalmazás teljes körűen használható paraméterekkel, de érvényes hozzáférési jogkivonatokat hoz létre a [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-vs-authorization.md), továbbra is engedélyeznie kell vagy használnia kell az előkészítő OAuth-kapcsolatokat. Azonban csak egyszer kell telepítenie és hitelesítenie az API-kapcsolatok erőforrásait, ami azt jelenti, hogy a későbbi központi telepítések során nem kell felvennie ezeket a kapcsolódási erőforrásokat, kivéve, ha frissítenie kell a kapcsolódási adatokat. Ha folyamatos integrációs és folyamatos üzembe helyezési folyamatot használ, csak a frissített Logic Apps erőforrásokat kell telepítenie, és nem kell minden alkalommal újra engedélyezni a kapcsolatokat.
+
+Íme néhány javaslat az engedélyezett kapcsolatok kezeléséhez:
 
 * Engedélyezze és ossza meg az API-kapcsolatok erőforrásait az azonos régióban található logikai alkalmazások között. Az API-kapcsolatok az Azure-erőforrásoktól függetlenül működnek a Logic apps szolgáltatásban. Míg a Logic apps függőségekkel rendelkezik az API-kapcsolatok erőforrásainál, az API-kapcsolatok erőforrásai nem rendelkeznek a logikai alkalmazásokkal kapcsolatos függőségekkel, és a függő logikai alkalmazások törlése után is megmaradnak. Emellett a Logic apps más erőforráscsoportok is használhat API-kapcsolatokat. A Logic app Designer azonban csak a logikai alkalmazásokkal azonos erőforráscsoporthoz támogatja az API-kapcsolatok létrehozását.
 

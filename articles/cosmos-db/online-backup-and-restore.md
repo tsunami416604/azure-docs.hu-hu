@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799516"
+ms.locfileid: "88853918"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
 
@@ -26,7 +26,7 @@ A Azure Cosmos DB, nem csupán az adatai, hanem az adatbiztonsági másolatok is
 
 * Azure Cosmos DB tárolja ezeket a biztonsági másolatokat az Azure Blob Storage-ban, míg a tényleges adatok helyileg, Azure Cosmos DB belül találhatók.
 
-*  A kis késleltetés garantálása érdekében a biztonsági mentés pillanatképét az Azure Blob Storage tárolja ugyanabban a régióban, mint az aktuális írási régió (vagy **egy** írási régió, ha több főkiszolgálós konfiguráció van). A regionális katasztrófák elleni rugalmasság érdekében az Azure Blob Storage-ban tárolt biztonsági mentési adatok minden pillanatképét újra replikálja egy másik régióba a Geo-redundáns tárolás (GRS) használatával. Az a régió, amelybe a biztonsági mentés replikálódik, a forrás-és a forrásoldali régióhoz társított regionális pár alapján történik. További információért tekintse meg a [geo-redundáns párok listáját az Azure-régiókról](../best-practices-availability-paired-regions.md) szóló cikkben. Ez a biztonsági másolat nem érhető el közvetlenül. A Azure Cosmos DB csapat a támogatási kérések során visszaállítja a biztonsági mentést.
+* A kis késleltetés garantálása érdekében a biztonsági mentés pillanatképét az Azure Blob Storage tárolja ugyanabban a régióban, mint az aktuális írási régió (vagy **egy** írási régió, ha több főkiszolgálós konfiguráció van). A regionális katasztrófák elleni rugalmasság érdekében az Azure Blob Storage-ban tárolt biztonsági mentési adatok minden pillanatképét újra replikálja egy másik régióba a Geo-redundáns tárolás (GRS) használatával. Az a régió, amelybe a biztonsági mentés replikálódik, a forrás-és a forrásoldali régióhoz társított regionális pár alapján történik. További információért tekintse meg a [geo-redundáns párok listáját az Azure-régiókról](../best-practices-availability-paired-regions.md) szóló cikkben. Ez a biztonsági másolat nem érhető el közvetlenül. A Azure Cosmos DB csapat a támogatási kérések során visszaállítja a biztonsági mentést.
 
    Az alábbi képen látható, hogy az USA nyugati régiójában lévő három elsődleges fizikai partícióval rendelkező Azure Cosmos-tároló hogyan készül biztonsági mentésben egy távoli Azure Blob Storage-fiókban az USA nyugati régiójában, majd replikálva az USA keleti régiójába:
 
@@ -42,15 +42,15 @@ Azure Cosmos DB SQL API-fiókokkal a következő módszerek egyikével is megőr
 
 * A teljes biztonsági mentéshez, illetve a növekményes változtatásokhoz és a saját tárolóban történő tárolásához használja a Azure Cosmos DB [változási hírcsatorna](change-feed.md) használatát az adat rendszeres olvasásához.
 
-## <a name="backup-interval-and-retention-period"></a>Biztonsági mentési időköz és megőrzési idő
+## <a name="modify-the-backup-interval-and-retention-period"></a>A biztonsági mentés intervallumának és megőrzési idejének módosítása
 
-Azure Cosmos DB automatikusan biztonsági másolatot készít az adatairól 4 óránként, a legújabb két biztonsági mentést pedig tárolja. Ez a konfiguráció az alapértelmezett beállítás, és további díj nélkül elérhető. Ha olyan munkaterhelésekkel rendelkezik, amelyekben az alapértelmezett biztonsági mentési időköz és a megőrzési időszak nem elegendő, megváltoztathatja őket. Ezeket az értékeket az Azure Cosmos-fiók létrehozásakor vagy a fiók létrehozása után módosíthatja. A biztonsági mentési konfiguráció az Azure Cosmos-fiók szintjén van beállítva, és minden fiókon konfigurálnia kell. Miután konfigurálta egy fiók biztonsági mentési beállításait, a rendszer az adott fiókban lévő összes tárolóra alkalmazza. A biztonsági mentési beállításokat jelenleg csak Azure Portal lehet módosítani.
+Azure Cosmos DB automatikusan biztonsági másolatot készít az adatairól 4 óránként, a legújabb két biztonsági mentést pedig tárolja. Ez a konfiguráció az alapértelmezett beállítás, és további díj nélkül elérhető. Az alapértelmezett biztonsági mentési időköz és a megőrzési időszak az Azure Cosmos-fiók létrehozásakor vagy a fiók létrehozása után módosítható. A biztonsági mentési konfiguráció az Azure Cosmos-fiók szintjén van beállítva, és minden fiókon konfigurálnia kell. Miután konfigurálta egy fiók biztonsági mentési beállításait, a rendszer az adott fiókban lévő összes tárolóra alkalmazza. A biztonsági mentési beállításokat jelenleg csak Azure Portal lehet módosítani.
 
 Ha véletlenül törölte vagy megsérült az adatai, az **adatok visszaállítására vonatkozó támogatási kérelem létrehozása előtt győződjön meg arról, hogy a fiók biztonsági mentése legalább hét napig megnövekszik. Az eseménytől számított 8 órán belül növelheti az adatmegőrzést.** Így a Azure Cosmos DB csapatnak elég ideje visszaállítani a fiókját.
 
 A következő lépésekkel módosíthatja egy meglévő Azure Cosmos-fiók alapértelmezett biztonsági mentési beállításait:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
+1. Jelentkezzen be a [Azure Portalba.](https://portal.azure.com/)
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **biztonsági mentés & visszaállítás** panelt. Frissítse a biztonsági mentési időközt és a biztonsági mentés megőrzési időtartamát igény szerint.
 
    * **Biztonsági mentés időköze** – ez az az időtartam, amikor a Azure Cosmos db megkísérel biztonsági másolatot készíteni az adatairól. A biztonsági mentés nem nulla időt vesz igénybe, és bizonyos esetekben előfordulhat, hogy az alsóbb rétegbeli függőségek miatt sikertelen lesz. Azure Cosmos DB megpróbálja a legjobb biztonsági mentést készíteni a beállított időközönként, azonban nem garantálja, hogy a biztonsági mentés az adott időintervallumon belül befejeződik. Ezt az értéket órában vagy percben is konfigurálhatja. A biztonsági mentési időköz nem lehet kevesebb, mint 1 óra, és 24 óránál hosszabb. Ha megváltoztatja ezt az időközt, az új intervallum az utolsó biztonsági mentés időpontjától kezdve lép érvénybe.
@@ -104,7 +104,7 @@ Az alábbi módokon térhet vissza az eredeti Azure Cosmos-fiókba:
 
 Győződjön meg arról, hogy az adatok migrálása után azonnal törli a visszaállított fiókokat, mivel ezek után folyamatos költségek merülnek fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő témakörből megtudhatja, hogyan állíthatja vissza az Azure Cosmos-fiók adatait, vagy megismerheti az adatok áttelepítését egy Azure Cosmos-fiókba
 

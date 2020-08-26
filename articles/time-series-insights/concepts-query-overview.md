@@ -8,18 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 61c969bc0c0ac9731ae35e445b82db633c3c5191
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163169"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855151"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérdezése Azure Time Series Insights Gen2
 
-Azure Time Series Insights Gen2 lehetővé teszi az adatok lekérdezését a környezetben tárolt eseményeken és metaadatokon a nyilvános felületi API-kon keresztül. Ezeket az API-kat a [Azure Time Series Insights Gen2 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)is használja.
+Azure Time Series Insights Gen2 lehetővé teszi az adatok lekérdezését a környezetben tárolt eseményeken és metaadatokon a nyilvános felületi API-kon keresztül. Ezeket az API-kat a [Azure Time Series INSIGHTS ÁME Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)is használja.
 
 A Azure Time Series Insights Gen2 három elsődleges API-kategória érhető el:
 
@@ -73,4 +73,4 @@ Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (mele
 ## <a name="next-steps"></a>További lépések
 
 * További információ az [idősorozat-modellben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)definiálható különböző változókról.
-* További információ az adatok lekérdezéséről a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* További információ az [Azure Time Series INSIGHTS ÁME Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)adatainak lekérdezéséről.
