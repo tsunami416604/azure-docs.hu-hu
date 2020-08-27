@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b3909281cf475a003ffaaef6f6f48441337728e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810254"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892660"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Gyors útmutató: natív C++ minta üzembe helyezése a HoloLens-ben
 
@@ -63,7 +63,6 @@ Váltson a Build konfigurációra a *hibakereséshez* (vagy *kiadáshoz*) és a 
 
 Mivel a fiók hitelesítő adatai az oktatóanyag hardcoded találhatók, módosítsa azokat érvényes hitelesítő adatokra. Ehhez nyissa meg a fájlt a `HolographicAppMain.cpp` Visual Studióban, és változtassa meg a felületet a következő osztály konstruktorán belül `HolographicAppMain` :
 
-
 ```cpp
 // 2. Create front end
 {
@@ -79,8 +78,8 @@ Mivel a fiók hitelesítő adatai az oktatóanyag hardcoded találhatók, módos
 ```
 
 Pontosabban módosítsa a következő értékeket:
-* `init.AccountId`és `init.AccountKey` a fiókja adatait is használhatja. Lásd: a [fiókadatok beolvasása](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* A karakterlánc régiójának része `init.AccountDomain` más régiókban, mint `westus2` például`"westeurope.mixedreality.azure.com"`
+* `init.AccountId` és `init.AccountKey` a fiókja adatait is használhatja. Lásd: a [fiókadatok beolvasása](../../../how-tos/create-an-account.md#retrieve-the-account-information).
+* A karakterlánc régiójának része `init.AccountDomain` más régiókban, mint `westus2` például `"westeurope.mixedreality.azure.com"`
 * Emellett a `m_sessionOverride` meglévő munkamenet-azonosítóra is módosítható. A munkamenetek ezen a mintán kívül is létrehozhatók, például [a PowerShell-parancsfájl](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) használatával vagy a [munkamenet-REST API](../../../how-tos/session-rest-api.md#create-a-session) közvetlen használatával.
 Ha a mintát többször kell futtatni, akkor a mintán kívüli munkamenet létrehozása ajánlott. Ha a rendszer nem ad át munkamenetet, a minta minden indításkor létrehoz egy új munkamenetet, amely több percet is igénybe vehet.
 

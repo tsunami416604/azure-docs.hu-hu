@@ -4,15 +4,16 @@ description: Tudja meg, miért merülnek fel díjak ingyenes Azure-fiókja haszn
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200948"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682926"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Díjak elkerülése az ingyenes Azure-fiókkal
 
@@ -23,7 +24,6 @@ Vizsgáljunk meg néhány indokot, amelyek miatt költségek merülhetnek fel az
 ## <a name="your-credit-runs-out-or-is-expired"></a>Ha a kreditje elfogyott vagy lejárt
 
 Ha a kredit elfogyott vagy a 30 nap elteltével lejárt, az előfizetése és szolgáltatásai le lesznek tiltva. Az Azure-szolgáltatások további használatához frissítenie kell a fiókját. További információkért lásd az [ingyenes Azure-fiók frissítését](upgrade-azure-subscription.md) ismertető cikket. A frissítés után 12 hónapig még van hozzáférése az ingyenes szolgáltatásokhoz, és csak az ingyenes szolgáltatásokon és mennyiségeken felüli használatért kell fizetnie.
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Ha a használat meghaladja az ingyenes szolgáltatások korlátait
 

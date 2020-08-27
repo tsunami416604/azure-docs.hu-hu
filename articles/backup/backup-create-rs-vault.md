@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 048b0e3fae776be5577948f91d84bb2be7fa2d59
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 0c0b7b25eeecad8e8c519d37139551590a51a29e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827358"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892354"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -48,7 +48,7 @@ A visszaállítási lehetőségek egyike, a régiók közötti visszaállítás 
 
 A szolgáltatás kiválasztásához válassza a **tartományok közötti visszaállítás engedélyezése** lehetőséget a **biztonsági mentési konfiguráció** ablaktáblán.
 
-Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási szinten vannak.
+Ehhez a folyamathoz díjszabási szempontokat számítunk fel, mivel azok tárolási szinten vannak.
 
 >[!NOTE]
 >Előkészületek:

@@ -3,16 +3,16 @@ title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823880"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892252"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
-Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági mentési megoldás, amely megvédi a felhőben tárolt adatait, és kiküszöböli a helyszíni biztonsági mentési megoldásokban érintett További karbantartási költségeket. A Azure Backup szolgáltatás zökkenőmentesen integrálható Azure File Syncekkel, és lehetővé teszi a fájlmegosztás-és a biztonsági mentések központosítását. Ez az egyszerű, megbízható és biztonságos megoldás lehetővé teszi, hogy néhány egyszerű lépéssel konfigurálja a vállalati fájlmegosztás védelmét, és gondoskodjon arról, hogy vészhelyzet esetén helyreállítsa az adatokat.
+Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági mentési megoldás, amely megvédi a felhőben tárolt adatait, és kiküszöböli a helyszíni biztonsági mentési megoldásokban érintett További karbantartási költségeket. A Azure Backup szolgáltatás zökkenőmentesen integrálható Azure File Syncekkel, és lehetővé teszi a fájlmegosztás-és a biztonsági mentések központosítását. Ez az egyszerű, megbízható és biztonságos megoldás lehetővé teszi, hogy néhány egyszerű lépéssel konfigurálja a vállalati fájlmegosztás védelmét, és garantálni tudja, hogy bármely katasztrófa esetén helyreállíthatja az adatokat.
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Az Azure-fájlmegosztás biztonsági mentésének főbb előnyei
 

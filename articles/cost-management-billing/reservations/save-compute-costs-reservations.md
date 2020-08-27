@@ -4,15 +4,16 @@ description: Megismerheti az Azure Reservationst és annak díjszabását a virt
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
+ms.subservice: reservations
+ms.topic: overview
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 437344d1a0e3cc1178c21efb4bfa26f192d23e5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760039"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682586"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -109,7 +110,6 @@ Szoftvercsomagok:
 - **Azure Red Hat OpenShift** – A foglalás az OpenShift-költségeket foglalja magában, az Azure-infrastruktúra költségeit nem.
 
 A Windows rendszerű virtuális gépek és az SQL Database esetében a foglalási kedvezmény nem vonatkozik a szoftverek költségeire. A licencelési költségeket az [Azure Hybrid Benefittel](https://azure.microsoft.com/pricing/hybrid-benefit/) fedezheti.
-
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

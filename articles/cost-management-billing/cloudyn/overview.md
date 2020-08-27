@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: overview
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9e1acee631316ec961af364769daa1f2a3001e72
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3acc13ca535808f14cb01d50e38f6bd4d12902fc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065881"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684439"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Mi az a Cloudyn szolgáltatás?
 
@@ -22,7 +23,7 @@ A Microsoft leányvállalata, a Cloudyn lehetővé teszi az Azure-erőforrások 
 
 Bevezető videó: [Az Azure Cloudyn bemutatása](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo/).
  
-Az Azure Cost Management a Cloudynhez hasonló funkcionalitást kínál. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](../cost-management-billing-overview.md).
+Az Azure Cost Management hasonló funkciókat kínál, mint a Cloudyn. Az Azure Cost Management egy natív Azure költségkezelő megoldás. Segít kezelni a költségvetéseket, exportálni az adatokat, valamint áttekinteni és végrehajtani az optimalizálási javaslatokat pénzmegtakarítás céljából. További információ: [Azure Cost Management](../cost-management-billing-overview.md).
  
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
@@ -57,4 +58,4 @@ Ha AWS lefoglalt példányokat helyezett üzembe, az optimalizálási jelentése
 
 Most, hogy megismerte a Cloudynt, a következő lépés a felhőalapú környezet regisztrálása és az adatok megismerése.
 
-- [Regisztrálás a CSP-partnerprogrammal és a költségadatok megtekintése](quick-register-csp.md)
+- [Regisztrálás a CSP partnerprogrammal és a költségadatok megtekintése](quick-register-csp.md)
