@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027630"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918825"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integráció egy ügyfélalkalmazás használatával a Speech SDK-val
 
@@ -64,7 +65,7 @@ Ebben a lépésben hozzáadjuk az alkalmazás felhasználói felületét meghat�
 
 Hozza létre az alkalmazás felhasználói felületét a XAML kód hozzáadásával.
 
-1. A **megoldáskezelő**megnyitásához nyissa meg a`MainPage.xaml`
+1. A **megoldáskezelő**megnyitásához nyissa meg a `MainPage.xaml`
 
 1. A tervező XAML-nézetében cserélje le a teljes tartalmat a következő kódrészletre:
 
@@ -302,7 +303,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
     > 1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget, majd válassza a **frissítések** lehetőséget. 
     > 1. Ha a frissítés listán a **Microsoft. NETCore. UniversalWindowsPlatform** található, frissítse a **Microsoft. NETCore. UniversalWindowsPlatform** verziót a legújabb verzióra.
 
-1. Adja hozzá a következő kódot a metódus törzséhez`InitializeDialogServiceConnector`
+1. Adja hozzá a következő kódot a metódus törzséhez `InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -319,7 +320,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. Cserélje le a karakterláncokat, `YourApplicationId` `YourSpeechSubscriptionKey` és az `YourServiceRegion` alkalmazás, a beszédfelismerés és a [régió](regions.md) saját értékeivel
 
-1. Fűzze hozzá a következő kódrészletet a metódus törzsének végéhez`InitializeDialogServiceConnector`
+1. Fűzze hozzá a következő kódrészletet a metódus törzsének végéhez `InitializeDialogServiceConnector`
 
    ```csharp
    //

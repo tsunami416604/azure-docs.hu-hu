@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084211"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923126"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Dimenziós szűrő létrehozása az Azure-ban Cognitive Search 
 
@@ -38,12 +38,12 @@ Az aspektusok az egyértékű mezőkön és a gyűjteményeken is kiszámíthat�
 
 Ha az attribútumot a (z) értékre állítja, akkor a rendszer mező alapján, az index létrehozásakor engedélyezve van `facetable` `true` . Az attribútumot általában úgy kell beállítania, hogy az `filterable` `true` ilyen mezőkhöz a keresési alkalmazás a végfelhasználó által kiválasztott aspektusok alapján szűrheti ezeket a mezőket. 
 
-Ha a REST API használatával hoz létre egy indexet, a rendszer a felhasználható [mezők bármely típusát](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) alapértelmezés szerint megjelöli `facetable` :
+Ha a REST API használatával hoz létre egy indexet, a rendszer a felhasználható [mezők bármely típusát](/rest/api/searchservice/supported-data-types) alapértelmezés szerint megjelöli `facetable` :
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Numerikus mezők típusai: `Edm.Int32` , `Edm.Int64` ,`Edm.Double`
++ Numerikus mezők típusai: `Edm.Int32` , `Edm.Int64` , `Edm.Double`
 + A fenti típusok (például `Collection(Edm.String)` vagy) gyűjteményei `Collection(Edm.Double)`
 
 Nem használhatók `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)` mezők a csiszolatlan navigálásban. Az aspektusok a legjobban a kis-és nagyszámú mezőkben működnek. A földrajzi koordináták feloldása miatt ritkán fordul elő, hogy a két közös koordinációs csoport egy adott adatkészletben egyenlő lesz. Ezért az aspektusok nem támogatottak a földrajzi koordináták esetében. Egy város vagy régió mezőre lesz szüksége a következő helyen: Face.
@@ -77,11 +77,11 @@ Indexelő attribútumok, amelyek azt szabályozzák, hogy a rendszer hogyan hasz
 ```
 
 > [!Note]
-> Az index definícióját a rendszer [a REST API használatával másolja az Azure Cognitive Search index létrehozása](https://docs.microsoft.com/azure/search/search-create-index-rest-api)elemből. Ez a mező-definíciók esetében azonos, kivéve a felületi különbségeket. A `filterable` és `facetable` attribútumok explicit módon hozzáadódnak a,,, `category` `tags` `parkingIncluded` `smokingAllowed` és `rating` mezőkhöz. A gyakorlatban, `filterable` és `facetable` alapértelmezés szerint engedélyezve lesznek ezeken a mezőkön a REST API használatakor. A .NET SDK használatakor ezeket az attribútumokat explicit módon kell engedélyezni.
+> Az index definícióját a rendszer [a REST API használatával másolja az Azure Cognitive Search index létrehozása](./search-get-started-powershell.md)elemből. Ez a mező-definíciók esetében azonos, kivéve a felületi különbségeket. A `filterable` és `facetable` attribútumok explicit módon hozzáadódnak a,,, `category` `tags` `parkingIncluded` `smokingAllowed` és `rating` mezőkhöz. A gyakorlatban, `filterable` és `facetable` alapértelmezés szerint engedélyezve lesznek ezeken a mezőkön a REST API használatakor. A .NET SDK használatakor ezeket az attribútumokat explicit módon kell engedélyezni.
 
 ## <a name="build-and-load-an-index"></a>Index létrehozása és betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az, hogy [az indexet fel kell építenie és fel kell töltenie a](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
+Egy közbenső (és talán nyilvánvaló) lépés az, hogy [az indexet fel kell építenie és fel kell töltenie a](./search-get-started-dotnet.md#1---create-an-index) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
 
 ## <a name="add-facet-filters-to-a-query"></a>Dimenziós szűrők hozzáadása egy lekérdezéshez
 
@@ -107,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Ha a felhasználó a gyűjtemény mezőjéhez hasonló `tags` , például a "pool" értékre kattint, az alkalmazásnak a következő szűrési szintaxist kell használnia:`$filter=tags/any(t: t eq 'pool')`
+Ha a felhasználó a gyűjtemény mezőjéhez hasonló `tags` , például a "pool" értékre kattint, az alkalmazásnak a következő szűrési szintaxist kell használnia: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tippek és megkerülő megoldások
 
@@ -124,5 +124,5 @@ Bár ez egy gyakori használati eset, nem az, hogy a facet navigációs struktú
 ## <a name="see-also"></a>Lásd még
 
 + [Szűrők az Azure Cognitive Search](search-filters.md)
-+ [Index létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Index létrehozása REST API](/rest/api/searchservice/create-index)
++ [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents)

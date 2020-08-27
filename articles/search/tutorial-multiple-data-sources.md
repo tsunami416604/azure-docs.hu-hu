@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 815709611c0d7985a97ce52584b9e223c6d79aa2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85262208"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924112"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
@@ -21,7 +21,7 @@ Az Azure Cognitive Search több adatforrás adatait is importálhatja, elemezhet
 
 Ez az oktatóanyag azt ismerteti, hogyan indexelheti a szállodai adatokat egy Azure Cosmos DB adatforrásból, és hogyan egyesítheti az Azure Blob Storage-dokumentumokból kirajzolt szállodai helyiségek adatait. Az eredmény egy összetett szállodai keresési index, amely komplex adattípusokat tartalmaz.
 
-Ez az oktatóanyag a C# nyelvet és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-t használja. Ebben az oktatóanyagban a következő feladatokat hajtja végre:
+Ez az oktatóanyag a C# nyelvet és a [.net SDK](/dotnet/api/overview/azure/search)-t használja. Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 > [!div class="checklist"]
 > * Mintaadatok feltöltése és adatforrások létrehozása
@@ -34,8 +34,8 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure Storage](../storage/common/storage-account-create.md)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
 
@@ -80,7 +80,7 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), navigáljon az Azure Storage-fiókjához, kattintson a **Blobok**elemre, majd a **+ tároló**elemre.
 
-1. [Hozzon létre egy](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) " **Hotel-Rooms** " nevű BLOB-tárolót a minta szállodai szoba JSON-fájljainak tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
+1. [Hozzon létre egy](../storage/blobs/storage-quickstart-blobs-portal.md) " **Hotel-Rooms** " nevű BLOB-tárolót a minta szállodai szoba JSON-fájljainak tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
    ![Blobtároló létrehozása](media/tutorial-multiple-data-sources/blob-add-container.png "Blobtároló létrehozása")
 
@@ -171,7 +171,7 @@ Ez az egyszerű C# kódon-konzol alkalmazás a következő feladatokat hajtja v�
 
 ### <a name="create-an-index"></a>Index létrehozása
 
-Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy a C# adatmodell osztályból létrehozzon egy index-struktúrát.
+Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja a [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy a C# adatmodell osztályból létrehozzon egy index-struktúrát.
 
 Az adatmodellt a Hotel osztály határozza meg, amely a címekre és a helyiségekre vonatkozó osztályokra mutató hivatkozásokat is tartalmaz. A FieldBuilder részletesen részletezi az indexek összetett adatstruktúrájának létrehozásához. A metaadatok címkéi az egyes mezők attribútumainak meghatározására szolgálnak, például hogy kereshető vagy rendezhető legyen.
 
@@ -319,7 +319,7 @@ A JSON-Blobok egy nevű kulcs mezőt tartalmaznak a **`Id`** helyett **`HotelId`
 
 A blob Storage-indexelő a használni kívánt elemzési mód azonosítására szolgáló paramétereket használhatnak. Az elemzési mód eltér az olyan Blobok esetében, amelyek egyetlen dokumentumot jelölnek, vagy több, ugyanazon a blobon belüli dokumentumot. Ebben a példában minden blob egyetlen index-dokumentumot képvisel, ezért a kód a `IndexingParameters.ParseJson()` paramétert használja.
 
-További információ a JSON-Blobok indexelő paramétereinek elemzéséről: [JSON-Blobok indexelése](search-howto-index-json-blobs.md). A paraméterek .NET SDK használatával történő megadásával kapcsolatos további információkért tekintse meg a [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) osztályt.
+További információ a JSON-Blobok indexelő paramétereinek elemzéséről: [JSON-Blobok indexelése](search-howto-index-json-blobs.md). A paraméterek .NET SDK használatával történő megadásával kapcsolatos további információkért tekintse meg a [IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) osztályt.
 
 A program az új létrehozása előtt törli az azonos nevű meglévő indexelő, ha egynél többször szeretné futtatni ezt a példát.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923092"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – gyakori kérdések (GYIK)
 
@@ -23,7 +23,7 @@ ms.locfileid: "85317226"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Miben különbözik az Azure Cognitive Search a teljes szöveges kereséstől az adatbázis-kezelő szolgáltatásban?
 
-Az Azure Cognitive Search több adatforrást, [nyelvi elemzést is támogat számos nyelvhez](https://docs.microsoft.com/rest/api/searchservice/language-support), [az egyéni elemzésekhez érdekes és szokatlan adatbevitelt](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), keresési rangsor-vezérlést [pontozási profilokon](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)keresztül, valamint felhasználói élményt biztosító funkciókkal, például typeahead, találatok kiemelésével és sokoldalú navigálással. Emellett más funkciókat is tartalmaz, például a szinonimákat és a részletes lekérdezési szintaxist, de ezek általában nem különböztetik meg a funkciókat.
+Az Azure Cognitive Search több adatforrást, [nyelvi elemzést is támogat számos nyelvhez](/rest/api/searchservice/language-support), [az egyéni elemzésekhez érdekes és szokatlan adatbevitelt](/rest/api/searchservice/custom-analyzers-in-azure-search), keresési rangsor-vezérlést [pontozási profilokon](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)keresztül, valamint felhasználói élményt biztosító funkciókkal, például typeahead, találatok kiemelésével és sokoldalú navigálással. Emellett más funkciókat is tartalmaz, például a szinonimákat és a részletes lekérdezési szintaxist, de ezek általában nem különböztetik meg a funkciókat.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Szüneteltethető az Azure Cognitive Search szolgáltatás, és nem lehet leállítani a számlázást?
 
@@ -39,7 +39,7 @@ Vagy előfordulhat, hogy biztonsági másolatot szeretne készíteni egy olyan f
 
 Ezeket a műveleteket az [Azure Cognitive Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples) **-tárház index-Backup-Restore** mintakód-kódjával teheti meg. 
 
-Az Azure Cognitive Search REST API használatával bármikor lekérheti az [index definícióját](https://docs.microsoft.com/rest/api/searchservice/get-index) is.
+Az Azure Cognitive Search REST API használatával bármikor lekérheti az [index definícióját](/rest/api/searchservice/get-index) is.
 
 A Azure Portalban jelenleg nincs beépített index-kinyerés, pillanatkép vagy biztonsági mentési visszaállítási funkció. A biztonsági mentési és visszaállítási funkciókat azonban egy későbbi kiadásban vesszük fontolóra. Ha meg szeretné jeleníteni a funkció támogatását, szavazzon a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
 
@@ -53,7 +53,7 @@ Az indexek újbóli létrehozásához a külső forrásokból származó adatok 
 
 Alternatív megoldásként használhatja az [Azure Cognitive Search .net minta](https://github.com/Azure-Samples/azure-search-dotnet-samples) -tárházának **index-Backup-Restore** mintakód elemét, hogy biztonsági másolatot készítsen egy index-definícióról, és hogyan indexelje a PILLANATKÉPet egy sor JSON-fájlra. Később az eszköz és a fájlok segítségével visszaállíthatja az indexet, ha szükséges.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Indexelhető-e a SQL Database replikák ( [Azure SQL Database indexelő](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)alkalmazásra vonatkozik)
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Indexelhető-e a SQL Database replikák ( [Azure SQL Database indexelő](./search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)alkalmazásra vonatkozik)
 
 Az elsődleges vagy másodlagos replikák adatforrásként való használata nem vonatkozik a teljesen új indexek létrehozásakor. Az indexnek a növekményes frissítésekkel (módosított rekordok alapján) való frissítése azonban az elsődleges replikát igényli. Ez a követelmény SQL Databaseból származik, amely csak az elsődleges replikák változás-követését garantálja. Ha másodlagos replikákat próbál használni egy index-frissítési feladathoz, akkor nem garantáljuk az összes adat beszerzését.
 
@@ -65,17 +65,17 @@ Nem, ez a művelet nem támogatott. A keresés mindig egyetlen indexre terjed ki
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Korlátozható a keresési index hozzáférése a felhasználói identitás alapján?
 
-A szűrővel [biztonsági szűrőket](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) alkalmazhat `search.in()` . A szűrő jól együttműködik a [(z) Azure Active Directory (HRE) identitás-kezelési szolgáltatásokkal](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) , hogy a keresési eredményeket a definiált felhasználói csoporttagság alapján vágja ki.
+A szűrővel [biztonsági szűrőket](./search-security-trimming-for-azure-search.md) alkalmazhat `search.in()` . A szűrő jól együttműködik a [(z) Azure Active Directory (HRE) identitás-kezelési szolgáltatásokkal](./search-security-trimming-for-azure-search-with-aad.md) , hogy a keresési eredményeket a definiált felhasználói csoporttagság alapján vágja ki.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Miért van nulla egyezés az érvényes feltételek alapján?
 
 A leggyakoribb eset az, hogy az egyes lekérdezési típusok a különböző keresési viselkedéseket és a nyelvi elemzések szintjét támogatják. A teljes szöveges keresés, amely a legelterjedtebb munkaterhelés, tartalmaz egy nyelvi elemzési szakaszt, amely lebontja a kifejezéseket a legfelső szintű űrlapokra. A lekérdezések elemzésének ezen aspektusa szélesebb körű, a lehetséges egyezésekre mutató, a jogkivonatok által megadottnál nagyobb számú változatot vet fel.
 
-A helyettesítő karakteres, a zavaros és a regex lekérdezéseket azonban nem elemezze, például a reguláris kifejezéseket vagy a kifejezéseket, és gyenge visszahívást eredményezhet, ha a lekérdezés nem felel meg a szó elemzett formátumának a keresési indexben. A lekérdezések elemzésével és elemzésével kapcsolatos további információkért lásd: a [lekérdezési architektúra](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+A helyettesítő karakteres, a zavaros és a regex lekérdezéseket azonban nem elemezze, például a reguláris kifejezéseket vagy a kifejezéseket, és gyenge visszahívást eredményezhet, ha a lekérdezés nem felel meg a szó elemzett formátumának a keresési indexben. A lekérdezések elemzésével és elemzésével kapcsolatos további információkért lásd: a [lekérdezési architektúra](./search-lucene-query-architecture.md).
 
 ### <a name="my-wildcard-searches-are-slow"></a>A helyettesítő karakteres keresések lassúak.
 
-A legtöbb helyettesítő karakteres keresési lekérdezést, például az előtagot, a fuzzy és a regexet, a rendszer a keresési indexben lévő egyező kifejezésekkel együtt írja felül. A keresési index ellenőrzésének további feldolgozása a késéshez. Emellett a széles körű keresési lekérdezések, mint `a*` például a sok kifejezéssel valószínűleg újraírhatók, nagyon lassúak lehetnek. Az elvégezhető helyettesítő karakteres keresések esetében érdemes lehet [Egyéni elemzőt](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)definiálni.
+A legtöbb helyettesítő karakteres keresési lekérdezést, például az előtagot, a fuzzy és a regexet, a rendszer a keresési indexben lévő egyező kifejezésekkel együtt írja felül. A keresési index ellenőrzésének további feldolgozása a késéshez. Emellett a széles körű keresési lekérdezések, mint `a*` például a sok kifejezéssel valószínűleg újraírhatók, nagyon lassúak lehetnek. Az elvégezhető helyettesítő karakteres keresések esetében érdemes lehet [Egyéni elemzőt](/rest/api/searchservice/custom-analyzers-in-azure-search)definiálni.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Miért rangsorolja a keresés a 1,0 konstans vagy egyenlő pontszámát minden találatot illetően?
 
@@ -95,7 +95,7 @@ További információ a [növekményes dúsításról](cognitive-search-incremen
 
 ### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Mi a legjobb megközelítés a honosított keresés megvalósításához?
 
-A legtöbb ügyfél dedikált mezőket választ egy gyűjteményben, amikor különböző területi beállításokat (nyelveket) támogat ugyanabban az indexben. A területi beállításokkal megadott mezők segítségével megfelelő elemzőt rendelhet hozzá. Tegyük fel például, hogy a Microsoft francia analizátort egy francia sztringeket tartalmazó mezőhöz rendeli. Emellett leegyszerűsíti a szűrést. Ha tudja, hogy egy lekérdezés egy fr-fr oldalon van kezdeményezve, a keresési eredmények erre a mezőre korlátozhatók. Vagy hozzon létre egy [pontozási profilt](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , hogy a mező a relatív súlyozást adja. Az Azure Cognitive Search több mint [50 nyelvi elemzőt](https://docs.microsoft.com/azure/search/search-language-support) támogat, amelyek közül választhat.
+A legtöbb ügyfél dedikált mezőket választ egy gyűjteményben, amikor különböző területi beállításokat (nyelveket) támogat ugyanabban az indexben. A területi beállításokkal megadott mezők segítségével megfelelő elemzőt rendelhet hozzá. Tegyük fel például, hogy a Microsoft francia analizátort egy francia sztringeket tartalmazó mezőhöz rendeli. Emellett leegyszerűsíti a szűrést. Ha tudja, hogy egy lekérdezés egy fr-fr oldalon van kezdeményezve, a keresési eredmények erre a mezőre korlátozhatók. Vagy hozzon létre egy [pontozási profilt](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , hogy a mező a relatív súlyozást adja. Az Azure Cognitive Search több mint [50 nyelvi elemzőt](./search-language-support.md) támogat, amelyek közül választhat.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -105,4 +105,4 @@ Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Kérje a s
 
  [StackOverflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)  
- [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)
+ [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)

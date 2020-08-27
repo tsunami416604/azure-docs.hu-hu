@@ -124,7 +124,7 @@ az aks update-credentials \
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a saját AK-fürthöz tartozó egyszerű szolgáltatás és a HRE integrációs alkalmazásai is frissültek. A fürtön belüli számítási feladatok identitásának kezelésével kapcsolatos további információkért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][best-practices-identity].
 

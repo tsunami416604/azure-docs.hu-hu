@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 101fd5298482f2f92e2a3fa4284d6e3fe94989a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905781"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923228"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
 
-Ha a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)9,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás a 10-es verzió használatára való frissítéséhez.
+Ha a [.net SDK](/dotnet/api/overview/azure/search)9,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás a 10-es verzió használatára való frissítéséhez.
 
 Azure Search a 10-es verzióban az Azure Cognitive Search lett átnevezve, de a névterek és a csomagok nevei változatlanok. Az SDK korábbi verziói (9,0-es és korábbi verziók) továbbra is a korábbi nevet használják. További információ az SDK használatáról, beleértve a példákat: az [Azure Cognitive Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
@@ -35,13 +35,13 @@ A 10-es verzió számos funkciót és hibajavítást tartalmaz, így a REST API 
 Az Azure Cognitive Search .NET SDK-célok 10-ös verziója REST API a `2019-05-06` következő frissítésekkel:
 
 * Két új szaktudás bevezetése – a [feltételes szaktudás](cognitive-search-skill-conditional.md) és a [szöveg fordítási](cognitive-search-skill-text-translation.md)képességei.
-* A rendszer átalakította a [formálói képességek](cognitive-search-skill-shaper.md) bemeneteit, hogy az összevont környezetek összevonását is elférjen. További információt ebben a példában a [JSON-definícióban](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)talál.
+* A rendszer átalakította a [formálói képességek](cognitive-search-skill-shaper.md) bemeneteit, hogy az összevont környezetek összevonását is elférjen. További információt ebben a példában a [JSON-definícióban](./cognitive-search-skill-shaper.md#scenario-3-input-consolidation-from-nested-contexts)talál.
 * Két új mező- [hozzárendelési függvény](search-indexer-field-mappings.md)hozzáadása:
-    - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
-    - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* Az [Indexelő végrehajtási állapotában](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) megjelenő hibák és figyelmeztetések bizonyos esetekben további részleteket is tartalmazhatnak, amelyek segítenek a hibakeresésben. `IndexerExecutionResult`frissítve lett, hogy tükrözze ezt a viselkedést.
+    - [urlEncode](./search-indexer-field-mappings.md#urlencode-function)
+    - [urlDecode](./search-indexer-field-mappings.md#urldecode-function)
+* Az [Indexelő végrehajtási állapotában](/rest/api/searchservice/get-indexer-status) megjelenő hibák és figyelmeztetések bizonyos esetekben további részleteket is tartalmazhatnak, amelyek segítenek a hibakeresésben. `IndexerExecutionResult` frissítve lett, hogy tükrözze ezt a viselkedést.
 * A [készségkészlet](cognitive-search-defining-skillset.md) belül meghatározott egyéni készségeket egy tulajdonság megadásával lehet azonosítani `name` .
-* `ServiceLimits`az [összetett típusok](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) korlátait jeleníti meg, és megjeleníti a kapcsolódó `IndexerExecutionInfo` Indexelő korlátokat/kvótákat.
+* `ServiceLimits` az [összetett típusok](./search-howto-complex-data-types.md) korlátait jeleníti meg, és megjeleníti a kapcsolódó `IndexerExecutionInfo` Indexelő korlátokat/kvótákat.
 
 <a name="UpgradeSteps"></a>
 
@@ -139,13 +139,13 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`hozzá van rendelve egy név `#1` , hozzá `WebApiSkill` van rendelve `#2` , `ShaperSkill` `#3` és így tovább.
+`SentimentSkill` hozzá van rendelve egy név `#1` , hozzá `WebApiSkill` van rendelve `#2` , `ShaperSkill` `#3` és így tovább.
 
 Ha úgy dönt, hogy egyéni névvel azonosítja a szaktudást, akkor először frissítse az ügyfelek összes példányát az SDK 10-es verziójára. Ellenkező esetben előfordulhat, hogy az SDK régebbi verzióját használó ügyfelek kihasználhatják a `null` `Name` képességek tulajdonságát, így az ügyfél visszatérhet az alapértelmezett elnevezési sémához.
 
 ## <a name="details-about-errors-and-warnings"></a>Hibákkal és figyelmeztetésekkel kapcsolatos részletek
 
-`ItemError`az `ItemWarning` Indexelő végrehajtása során felmerülő hibák és figyelmeztetések (vagy) részletes adatait tartalmazó modellek módosítva lettek, hogy három új tulajdonságot tartalmazzanak, amelyek célja az indexelő hibakeresése. Ezek a tulajdonságok a következők:
+`ItemError` az `ItemWarning` Indexelő végrehajtása során felmerülő hibák és figyelmeztetések (vagy) részletes adatait tartalmazó modellek módosítva lettek, hogy három új tulajdonságot tartalmazzanak, amelyek célja az indexelő hibakeresése. Ezek a tulajdonságok a következők:
 
 - `Name`: Annak a forrásnak a neve, amelyen a hiba származik. Előfordulhat például, hogy egy adott képességre hivatkozik a csatolt készségkészlet.
 - `Details`: További részletes információk a hibáról vagy figyelmeztetésről.
@@ -154,9 +154,8 @@ Ha úgy dönt, hogy egyéni névvel azonosítja a szaktudást, akkor először f
 > [!NOTE]
 > Elkezdjük felstrukturálni a hibákat és a figyelmeztetéseket, hogy a lehető legpontosabban szerepeljenek ezek a hasznos információk. Dolgozunk annak biztosításán, hogy az összes hiba és figyelmeztetés ezen adatok jelennek meg, de a folyamat folyamatban van, és ezek a további részletek nem mindig lesznek feltöltve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Shapeer-képesség változásai a legnagyobb hatással lehetnek az új vagy meglévő kódokra. A következő lépésként mindenképpen tekintse át ezt a példát a bemeneti struktúra: [formáló ÜGYESSÉGI JSON-definíció példájának](cognitive-search-skill-shaper.md) szemléltetése.
 - Ugorjon végig a [mesterséges intelligenciával foglalkozó áttekintésben](cognitive-search-concept-intro.md).
 - Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét az "[Azure Cognitive Search]" előtaggal adja meg.
-

@@ -3,12 +3,13 @@ title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítség�
 description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni vagy virtuális gépeken üzemeltetett ASP.NET webalkalmazásokkal működik.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310446"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923823"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -140,7 +141,7 @@ Ezt a problémát [itt](https://github.com/Microsoft/ApplicationInsights-Home/is
   
 ### <a name="detailed-logs"></a>Részletes naplók
 
-* Alapértelmezés szerint Állapotmonitor a következő helyen fogja kimutatni a diagnosztikai naplókat:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Alapértelmezés szerint Állapotmonitor a következő helyen fogja kimutatni a diagnosztikai naplókat: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
 * A részletes naplók kimenetének módosításához módosítsa a konfigurációs fájlt, `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` és adja hozzá a következőt: `<add key="TraceLevel" value="All" />` `appsettings` .
 Ezután indítsa újra az állapot-figyelőt.
@@ -243,7 +244,7 @@ Derítse ki, melyik alkalmazások állnak megfigyelés alatt:
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`: A webalkalmazás neve az IIS-ben.
-* `-InstrumentationKey`(Nem kötelező.) Ezzel a paranccsal módosíthatja azt az erőforrást, amelyre az alkalmazás telemetria el lesz küldve.
+* `-InstrumentationKey` (Nem kötelező.) Ezzel a paranccsal módosíthatja azt az erőforrást, amelyre az alkalmazás telemetria el lesz küldve.
 * Ez a parancsmag:
   * frissíti az elnevezett alkalmazást a gépre legutóbb letöltött SDK-verzióra. (Csak akkor működik, ha `SdkState==EnabledAfterDeployment`)
   * Ha megad egy kialakítási kulcsot, újrakonfigurálja az elnevezett alkalmazást, hogy telemetriát küldjön az erőforrásnak ezzel a kulccsal. (Akkor működik, ha `SdkState != Disabled`)
