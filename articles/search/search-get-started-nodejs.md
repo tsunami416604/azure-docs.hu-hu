@@ -10,19 +10,19 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 043d5224c9bfefb189e36c0f4b744c93b376ace0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420855"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917890"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Node.js REST API-k használatával
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Portál](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -84,7 +84,7 @@ Először nyisson meg egy PowerShell-konzolt vagy más környezetet, amelyben No
     npm install --save-dev eslint eslint-config-prettier eslint-config-airbnb-base eslint-plugin-import prettier
     ```
 
-4. Győződjön meg arról, hogy konfigurálta a projekteket és annak függőségeit, ha ellenőrzi, hogy a **package.js** fájl a következőhöz hasonlóan néz ki:
+4. Győződjön meg arról, hogy konfigurálta a projekteket és annak függőségeit, ha ellenőrzi, hogy a  **package.js** fájl a következőhöz hasonlóan néz ki:
 
     ```json
     {
@@ -130,7 +130,7 @@ Cserélje le az `[SERVICE_NAME]` értéket a keresési szolgáltatás nevére. C
 
 ## <a name="1---create-index"></a>1 – index létrehozása 
 
-Hozzon létre egy fájlt **hotels_quickstart_index.jsa**következőn:.  Ez a fájl határozza meg, hogyan működik az Azure Cognitive Search a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott értékkel történik `type` . Az egyes mezőkben index attribútumok is megadhatók, amelyek meghatározzák, hogy az Azure Cognitive Search kereshet, szűrhető, rendezhető és kategorizálható a mező alapján. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott adattípusokról](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) és az [index attribútumairól](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)itt olvashat. 
+Hozzon létre egy fájlt **hotels_quickstart_index.jsa**következőn:.  Ez a fájl határozza meg, hogyan működik az Azure Cognitive Search a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott értékkel történik `type` . Az egyes mezőkben index attribútumok is megadhatók, amelyek meghatározzák, hogy az Azure Cognitive Search kereshet, szűrhető, rendezhető és kategorizálható a mező alapján. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott adattípusokról](/rest/api/searchservice/supported-data-types) és az [index attribútumairól](./search-what-is-an-index.md#index-attributes)itt olvashat. 
 
 Adja hozzá a következőt a **hotels_quickstart_index.jshoz** , vagy [töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
@@ -267,7 +267,7 @@ Adja hozzá a következőt a **hotels_quickstart_index.jshoz** , vagy [töltse l
 ```
     
 
-Célszerű elkülöníteni egy adott forgatókönyv sajátosságait a széles körben alkalmazandó kódból. A `AzureSearchClient` fájl **AzureSearchClient.jsban** definiált osztály tudni fogja, hogyan kell létrehozni a kérelmek URL-címét, a BEolvasás API-val történő kérést, és reagálni a válasz állapotkódot.
+Célszerű elkülöníteni egy adott forgatókönyv sajátosságait a széles körben alkalmazandó kódból. A `AzureSearchClient` fájl **AzureSearchClient.jsban ** definiált osztály tudni fogja, hogyan kell létrehozni a kérelmek URL-címét, a BEolvasás API-val történő kérést, és reagálni a válasz állapotkódot.
 
 A **AzureSearchClient.js** a **Node-Fetch** csomag importálásával és egy egyszerű osztály létrehozásával megkezdheti a munkát. A `AzureSearchClient` különböző konfigurációs értékek megadásával elkülönítheti a osztály cserélhető részeit:
 
@@ -346,8 +346,8 @@ static throwOnHttpError(response) {
 Végül adja hozzá a metódusokat az Azure Cognitive Search index észleléséhez, törléséhez és létrehozásához. Ezek a metódusok mind ugyanazzal a struktúrával rendelkeznek:
 
 * Szerezze be azt a végpontot, amelyhez a kérést el szeretné végezni.
-* A kérést a megfelelő végponttal, HTTP-művelettel, API-kulccsal, és ha szükséges, egy JSON-törzstel kell előállítani. `indexExistsAsync()`és `deleteIndexAsync()` nem rendelkezik JSON-törzstel, de nem `createIndexAsync(definition)` .
-* `await`a kérelemre adott válasz.  
+* A kérést a megfelelő végponttal, HTTP-művelettel, API-kulccsal, és ha szükséges, egy JSON-törzstel kell előállítani. `indexExistsAsync()` és `deleteIndexAsync()` nem rendelkezik JSON-törzstel, de nem `createIndexAsync(definition)` .
+* `await` a kérelemre adott válasz.  
 * A válasz állapotkód alapján járjon el.
 * Egy megfelelő érték (Boolean, `this` vagy lekérdezési eredmények) ígéretének visszaadása. 
 
@@ -610,7 +610,7 @@ Futtassa újra a programot a alkalmazással `node index.js` . Az 1. lépésben l
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Térjen vissza az **indexek** lapra a Azure Portal keresési szolgáltatásának **áttekintésében** . Az index most négy dokumentumot tartalmaz, és bizonyos mennyiségű tárterületet használ (ez eltarthat néhány percig, amíg a felhasználói felület megfelelően tükrözi az index mögöttes állapotát). Kattintson az index nevére a **keresési tallózóhoz**. Ez a lap lehetővé teszi az adatlekérdezésekkel való kísérletezést. Próbáljon meg lekérdezési karakterláncot keresni, `*&$count=true` és az összes dokumentumot és az eredmények számát vissza kell kérnie. Próbálja ki a lekérdezési karakterláncot `historic&highlight=Description&$filter=Rating gt 4` , és készítsen vissza egyetlen dokumentumot, amelynek a szövege a "Historic" címkével van becsomagolva `<em></em>` . További információ az [Azure Cognitive Search-beli lekérdezések összeállításáról](https://docs.microsoft.com/azure/search/search-query-overview). 
+Térjen vissza az **indexek** lapra a Azure Portal keresési szolgáltatásának **áttekintésében** . Az index most négy dokumentumot tartalmaz, és bizonyos mennyiségű tárterületet használ (ez eltarthat néhány percig, amíg a felhasználói felület megfelelően tükrözi az index mögöttes állapotát). Kattintson az index nevére a **keresési tallózóhoz**. Ez a lap lehetővé teszi az adatlekérdezésekkel való kísérletezést. Próbáljon meg lekérdezési karakterláncot keresni, `*&$count=true` és az összes dokumentumot és az eredmények számát vissza kell kérnie. Próbálja ki a lekérdezési karakterláncot `historic&highlight=Description&$filter=Rating gt 4` , és készítsen vissza egyetlen dokumentumot, amelynek a szövege a "Historic" címkével van becsomagolva `<em></em>` . További információ az [Azure Cognitive Search-beli lekérdezések összeállításáról](./search-query-overview.md). 
 
 A lekérdezéseket a kódban a **index.js** megnyitásával, majd a kód felüli hozzáadásával reprodukálhatja.
 
@@ -699,7 +699,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a Node.js rövid útmutatóban egy index létrehozásához, a dokumentumokkal való betöltéshez és a lekérdezések futtatásához kapcsolódó feladatok sorozatán keresztül dolgozott. Bizonyos lépések, például a konfiguráció olvasása és a lekérdezések meghatározása a lehető legegyszerűbb módon történt. Egy valós alkalmazásban ezeket a problémákat külön modulokban érdemes elhelyezni, amelyek rugalmasságot és beágyazást tesznek lehetővé. 
  

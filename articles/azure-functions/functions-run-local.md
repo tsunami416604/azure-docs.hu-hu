@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505716"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929489"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -37,7 +37,7 @@ A Azure Functions Core Tools három verziója létezik. A használt verzió a he
 
 + **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
 
-Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
+Egy adott számítógépen csak az alapvető eszközök egyetlen verzióját lehet telepíteni. Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -257,20 +257,21 @@ Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes 
 
   ![A Storage Explorerból származó kapcsolatok karakterláncának másolása](./media/functions-run-local/storage-explorer.png)
 
-+ Az alábbi parancsok egyikével töltheti le a kapcsolódási karakterláncot az Azure-ból a Core Tools használatával:
++ A projekt gyökerében található alapeszközök használatával töltse le az Azure-beli kapcsolódási karakterláncot az alábbi parancsok egyikével:
 
   + Egy meglévő Function alkalmazás összes beállításának letöltése:
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + Egy adott Storage-fiókhoz tartozó kapcsolatok karakterláncának beolvasása:
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Ha még nem jelentkezett be az Azure-ba, a rendszer erre kéri.
+    Ha még nem jelentkezett be az Azure-ba, a rendszer erre kéri. Ezek a parancsok felülírják a local.settings.jsfájl meglévő beállításait. 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Függvény létrehozása
 

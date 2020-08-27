@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: cb931d0b9c3dd4d3fa0fa69f69f5f90fc37ea8f6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207221"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929193"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -141,7 +141,7 @@ Az olvasási művelet jelenleg kizárólag angol nyelven támogatja a kézzel í
 Az [olvasás 3. x REST API](./QuickStarts/CSharp-hand-text.md) az előnyben részesített lehetőség a legtöbb ügyfél számára, mivel a könnyű integráció és a gyors termelékenység a box-ban. Az Azure és a Computer Vision szolgáltatás kezeli a méretezést, a teljesítményt, az adatbiztonságot és a megfelelőségi igényeket, miközben az ügyfelek igényeinek kielégítésére koncentrál.
 
 ### <a name="use-containers-for-on-premise-deployment"></a>Tárolók használata helyi telepítéshez
-Az [olvasási 2,0 Docker-tároló (előzetes verzió)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) lehetővé teszi az új OCR-képességek üzembe helyezését a saját helyi környezetében. A tárolók az adott biztonsági és adatirányítási követelményekhez is kiválóak.
+Az [olvasási 2,0 Docker-tároló (előzetes verzió)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) lehetővé teszi az új OCR-képességek üzembe helyezését a saját helyi környezetében. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez.
 
 ## <a name="read-ocr-examples"></a>OCR-példák olvasása
 
@@ -186,7 +186,7 @@ Akárcsak az összes kognitív szolgáltatás esetében, az olvasási/OCR szolg�
 > [!NOTE]
 > A vison 2,0 RecognizeText művelet folyamatban van a jelen cikkben ismertetett új olvasási API Javához. A meglévő ügyfeleknek [át kell térniük az olvasási műveletek használatára](upgrade-api-versions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [olvasási 3,0 Rest APIról](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
 - Ismerkedjen meg az [olvasási 3,1 nyilvános előzetes](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) verziójával REST API az egyszerűsített kínai támogatásával.

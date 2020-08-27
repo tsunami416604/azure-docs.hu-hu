@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.openlocfilehash: d50e1acd104916d68f7fbb84ff568cf4efc0b46b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6d50a8e2c9d0263616b25e25958be6a6f0fb7fe1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289755"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929269"
 ---
 Ezzel a rövid útmutatóval megkezdheti a C#-hoz készült Bing Video Search ügyféloldali kódtár híreinek keresését. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) található további megjegyzésekkel és szolgáltatásokkal.
 
@@ -45,7 +46,7 @@ A [[NuGet Video Search SDK-csomag]](https://www.nuget.org/packages/Microsoft.Azu
     using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
     ```
 
-2. Hozza létre az ügyfelet egy új `ApiKeyServiceClientCredentials` objektum létrehozásával az előfizetési kulccsal, és hívja meg a konstruktort.
+2. Hozza létre az ügyfelet egy új objektum létrehozásával az `ApiKeyServiceClientCredentials` előfizetési kulccsal, és hívja meg a konstruktort.
 
     ```csharp
     var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
@@ -59,7 +60,7 @@ A [[NuGet Video Search SDK-csomag]](https://www.nuget.org/packages/Microsoft.Azu
     var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
     ```
 
-2. Ha bármilyen eredményt adott vissza, szerezze be az elsőt `videoResults.Value[0]`a következővel:. Ezután nyomtassa ki a videó AZONOSÍTÓját, címét és URL-címét.
+2. Ha bármilyen eredményt adott vissza, szerezze be az elsőt a következővel: `videoResults.Value[0]` . Ezután nyomtassa ki a videó AZONOSÍTÓját, címét és URL-címét.
 
     ```csharp
     if (videoResults.Value.Count > 0)

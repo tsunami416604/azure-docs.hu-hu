@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400052"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944395"
 ---
 :::row:::
     :::column span="3":::
@@ -27,9 +28,9 @@ ms.locfileid: "81400052"
 
 A Windowson futó Speech SDK használatához a <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ újraterjeszthető változata szükséges a Visual <span class="docon docon-navigate-external x-hidden-focus"></span> Studio 2019-hez</a> a rendszeren.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Telepítés x86-ra<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Telepítés x64-re<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Telepítés a ARMx64<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Telepítés x86-ra <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Telepítés x64-re <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Telepítés a ARMx64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ### <a name="c"></a>C#
 
@@ -45,10 +46,10 @@ A szükséges Speech SDK-fájlokat az alkalmazással megegyező könyvtárba leh
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Felügyelt központi telepítéshez szükséges                      |
 
 > [!NOTE]
-> A (korábbi kiadásokban szállított) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` fájl kiadási 1.3.0 kezdve többé nem szükséges. A funkció most már integrálva van az alap SDK-val.
+> A `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (korábbi kiadásokban szállított) fájl kiadási 1.3.0 kezdve többé nem szükséges. A funkció most már integrálva van az alap SDK-val.
 
 > [!IMPORTANT]
-> A Windows Forms-alkalmazás (.NET-keretrendszer) C# projekt esetében ellenőrizze, hogy a kódtárak szerepelnek-e a projekt központi telepítési beállításaiban. Ezt a következő szakaszban `Properties -> Publish Section`tekintheti meg:. Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a legördülő listából. Győződjön meg arról, hogy `Included`a érték a következőre van beállítva:. A Visual Studio tartalmazni fogja a fájlt a projekt közzétételekor vagy telepítésekor.
+> A Windows Forms-alkalmazás (.NET-keretrendszer) C# projekt esetében ellenőrizze, hogy a kódtárak szerepelnek-e a projekt központi telepítési beállításaiban. Ezt a következő szakaszban tekintheti meg: `Properties -> Publish Section` . Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a legördülő listából. Győződjön meg arról, hogy a érték a következőre van beállítva: `Included` . A Visual Studio tartalmazni fogja a fájlt a projekt közzétételekor vagy telepítésekor.
 
 ### <a name="c"></a>C++
 

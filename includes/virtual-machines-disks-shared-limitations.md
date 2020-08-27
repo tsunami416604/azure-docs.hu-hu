@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88809836"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944350"
 ---
 A megosztott lemezek engedélyezése csak a lemezek egy részhalmaza számára lehetséges. Jelenleg csak az ultra-lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemez, amelyen engedélyezve vannak a megosztott lemezek, a következő korlátozások vonatkoznak a lemez típusa szerint rendezve:
 
@@ -50,10 +50,15 @@ A közös prémium SSD-k csak a következő régiókban támogatottak:
 - USA 2. nyugati régiója
 - USA nyugati középső régiója
 - USA déli középső régiója
-- USA középső régiója
+- USA északi középső régiója
+- Central US
+- West Europe
+- Észak-Európa
 - Dél-Korea középső régiója
 - Közép-Kanada
 - Kelet-Kanada
+- Kelet-Japán
+- Nyugat-Japán
 - USA-beli államigazgatás – Virginia
 - USA-beli államigazgatás – Arizona
 
