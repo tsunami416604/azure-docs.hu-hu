@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987468"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936112"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84987468"
 
 Az **egyéni entitás keresési** képessége szövegeket keres a szavak és kifejezések egyéni, felhasználó által definiált listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható.  
 
-Ez a képesség nem kötődik Cognitive Services API-hoz, és az előzetes verzió időtartama alatt díjmentesen használható. A napi alkoholtartalom-növelési korlát felülbírálásához azonban továbbra is [csatolni kell egy Cognitive Services erőforrást](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services). A napi korlát arra az esetre vonatkozik, ha az Azure Cognitive Search keresztül éri el Cognitive Services ingyenes hozzáférését.
+Ez a képesség nem kötődik Cognitive Services API-hoz, és az előzetes verzió időtartama alatt díjmentesen használható. A napi alkoholtartalom-növelési korlát felülbírálásához azonban továbbra is [csatolni kell egy Cognitive Services erőforrást](./cognitive-search-attach-cognitive-services.md). A napi korlát arra az esetre vonatkozik, ha az Azure Cognitive Search keresztül éri el Cognitive Services ingyenes hozzáférését.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. Skills. Text. CustomEntityLookupSkill 
@@ -36,7 +36,7 @@ Microsoft. Skills. Text. CustomEntityLookupSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Description |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | `entitiesDefinitionUri`    | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
 |`inlineEntitiesDefinition` | Beágyazott JSON-entitások definíciói. Ez a paraméter felülírja a entitiesDefinitionUri paramétert, ha van ilyen. Legfeljebb 10 KB konfigurációt lehet megadni. A várt JSON-sémáért lásd alább az [egyéni entitások definícióját](#custom-entity-definition-format) . |
@@ -45,7 +45,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Description                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | `text`          | Az elemezni kívánt szöveg.          |
 | `languageCode`    | Választható. Az alapértelmezett szint a `"en"`.  |
@@ -54,7 +54,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 
-| Kimenet neve      | Description                   |
+| Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
 | `entities` | Olyan objektumok tömbje, amelyek tartalmazzák a talált egyezésekre vonatkozó információkat, valamint a kapcsolódó metaadatokat. Az azonosított entitások mindegyike a következő mezőket tartalmazza:  <ul> <li> *Name (név*): a legfelső szintű entitás azonosítva. Az entitás a "normalizált" űrlapot jelöli. </li> <li> *azonosító*: az entitás egyedi azonosítója, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *Leírás*: az entitások leírása a felhasználó által az "egyéni entitás definíciójának formátuma" kifejezésben meghatározott módon. </li> <li> *írja be a következőt:* Az entitás típusa, amelyet a felhasználó határoz meg az "egyéni entitás definíciójának formátuma" formátumban.</li> <li> *altípus:* Az entitás altípusa a felhasználó által az "egyéni entitás definíciójának formátuma" beállításban meghatározott.</li>  <li> *egyezések*: gyűjtemény, amely leírja az adott entitáshoz tartozó összes egyezést a forrás szövegén. Minden egyezés a következő tagokkal fog rendelkezni: </li> <ul> <li> *text (szöveg*): a forrás dokumentum szövege megegyezik a nyers szöveggel. </li> <li> *eltolás*: az a hely, ahol a egyezés megtalálható a szövegben. </li> <li> *length (hossz*): az egyező szöveg hossza. </li> <li> *matchDistance*: a megfeleltetéstől eltérő karakterek száma az eredeti entitás neve vagy aliasa volt.  </li> </ul> </ul>
   |
@@ -69,7 +69,7 @@ Ha a definíciót beágyazottként adták meg, akkor azt a *inlineEntitiesDefini
 
 ### <a name="csv-format"></a>CSV-formátum
 
-A vesszővel tagolt (CSV) fájlokban megkeresheti az egyéni entitások definícióját, ha megadja a fájl elérési útját, és beállítja azt a *entitiesDefinitionUri* skill paraméterben. Az elérési útnak HTTPS-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
+A vesszővel tagolt (CSV) fájlokban megkeresheti az egyéni entitások definícióját, ha megadja a fájl elérési útját, és beállítja azt a *entitiesDefinitionUri*  skill paraméterben. Az elérési útnak HTTPS-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
 
 A CSV formátum egyszerű. Minden sor egy egyedi entitást képvisel, ahogy az alábbi ábrán látható:
 
@@ -143,7 +143,7 @@ A JSON-definíció összetettebb példája opcionálisan megadhatja az egyes ent
 
 Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs paramétereket, amelyekkel meghatározhatja az entitások egyeztetését:
 
-|  Mező neve  |        Description  |
+|  Mező neve  |        Leírás  |
 |--------------|----------------------|
 | `name` | A legfelső szintű entitás leírója A képzettségi kimenetben szereplő egyezések ezen név szerint vannak csoportosítva, és a talált szöveg "normalizált" formáját jelölik.  |
 | `description`  | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
@@ -156,7 +156,7 @@ Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs 
 | `defaultFuzzyEditDistance` | Választható Megváltoztatja az entitás alapértelmezett homályos szerkesztési távolságának értékét. Az összes alias fuzzyEditDistance alapértelmezett értékének módosítására használható. |
 | `aliases` | Választható Összetett objektumok tömbje, amellyel alternatív helyesírásokat vagy szinonimákat adhat meg a gyökér entitás nevéhez. |
 
-| Alias tulajdonságai | Description |
+| Alias tulajdonságai | Leírás |
 |------------------|-------------|
 | `text`  | Egy megcélzott entitás nevének alternatív helyesírása vagy ábrázolása.  |
 | `caseSensitive` | Választható Ugyanaz, mint a legfelső szintű "caseSensitive" paraméter, de csak erre az aliasra vonatkozik. |
@@ -231,7 +231,7 @@ Ha úgy dönt, hogy az entitások definíciós fájljára mutató mutatót ad me
 
 ```
 
-##    <a name="sample-input"></a>Minta bemenet
+##    <a name="sample-input"></a>Példabemenet
 
 ```json
 {
@@ -248,7 +248,7 @@ Ha úgy dönt, hogy az entitások definíciós fájljára mutató mutatót ad me
 }
 ```
 
-##    <a name="sample-output"></a>Példa kimenet
+##    <a name="sample-output"></a>Példakimenet
 
 ```json
   { 

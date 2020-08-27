@@ -2,17 +2,17 @@
 title: Sablon specifikációjának telepítése csatolt sablonként
 description: Megtudhatja, hogyan helyezhet üzembe egy meglévő sablon-SPECT egy csatolt üzemelő példányban.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 5d4824ea432d804418fda2cdc90d49154d496722
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: dacf2fba3ff78f3ff92741b49edad8fdf5bffe29
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096682"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918383"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként (előzetes verzió)
 
-Megtudhatja, hogyan helyezhet üzembe egy meglévő [sablon-specifikációt](template-specs.md) egy [csatolt központi telepítés](linked-templates.md#linked-template)használatával. A sablon specifikációi segítségével megoszthatja az ARM-sablonokat a szervezet más felhasználóival. Miután létrehozta a sablon specifikációját, Azure PowerShell használatával telepítheti a sablon specifikációját. A sablon specifikációját egy csatolt sablonnal is üzembe helyezheti a megoldás részeként.
+Megtudhatja, hogyan helyezhet üzembe egy meglévő [sablon-specifikációt](template-specs.md) egy [csatolt központi telepítés](linked-templates.md#linked-template)használatával. A sablon specifikációi segítségével megoszthatja az ARM-sablonokat a szervezet más felhasználóival. Miután létrehozta a sablon specifikációját, az Azure PowerShell vagy az Azure CLI használatával telepítheti a sablon specifikációját. A sablon specifikációját egy csatolt sablonnal is üzembe helyezheti a megoldás részeként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,9 +117,22 @@ Ha egy ARM-sablonban szeretné üzembe helyezni a specifikációt, adjon hozzá 
 
 A rendszer a függvény használatával hozza létre a sablon spec-AZONOSÍTÓját [`resourceID()`](template-functions-resource.md#resourceid) . Az resourceID () függvényben szereplő erőforráscsoport argumentum nem kötelező, ha a templateSpec az aktuális üzemelő példány ugyanazon erőforráscsoporthoz esik.  Közvetlenül is átadható az erőforrás-azonosító paraméterként. Az azonosító beszerzéséhez használja a következőt:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell-interactive
 $id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
 ```
+
+# <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
+
+```azurecli-interactive
+id = $(az template-specs show --name $templateSpecName --resource-group $resourceGroupName --version $templateSpecVersion --query "id")
+```
+
+> [!NOTE]
+> Ismert probléma a sablon specifikációjának beolvasása, majd a Windows PowerShellben lévő változóhoz rendelése.
+
+---
 
 A paraméterek sablonra való átadásának szintaxisa a következő:
 
@@ -138,6 +151,8 @@ A paraméterek sablonra való átadásának szintaxisa a következő:
 
 A csatolt sablon központi telepítésekor a webalkalmazást és a Storage-fiókot is telepíti. A központi telepítés ugyanaz, mint a többi ARM-sablon üzembe helyezése.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name webRG `
@@ -147,6 +162,21 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
   -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
 ```
+
+# <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+az deployment group create \
+  --resource-group webRG \
+  --template-file "c:\Templates\deployTS\azuredeploy.json"
+
+```
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

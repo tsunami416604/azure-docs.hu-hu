@@ -3,12 +3,12 @@ title: SQL Server VM biztonsági mentése a virtuális gép paneljéről
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról az Azure Virtual Machines szolgáltatásban a virtuális gép ablaktáblán.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: 3d44c856d264c784d07b8301fa5605affddd7c02
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827477"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891657"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>SQL Server biztonsági mentése a virtuális gép paneljéről
 
@@ -35,7 +35,7 @@ A biztonsági mentést a virtuális gép **biztonsági mentési** paneljén enge
     ![SQL Server biztonsági mentési nézet](./media/backup-sql-server-vm-from-vm-pane/sql-server-backup-view.png)
 
     >[!NOTE]
-    >Nem látja a szalagcímet? A szalagcím csak azokhoz az SQL Server virtuális gépekhez jelenik meg, amelyeket az Azure Marketplace-lemezképek használatával hoztak létre. Emellett az Azure-beli virtuális gép biztonsági mentésével védett virtuális gépek esetében is megjelenik. Más lemezképek esetén az [itt](backup-sql-server-database-azure-vms.md)leírtak szerint állíthatja be a biztonsági mentést.
+    >Nem látja a szalagcímet? A szalagcím csak azokhoz az SQL Server virtuális gépekhez jelenik meg, amelyeket az Azure Marketplace-lemezképek használatával hoztak létre. Emellett az Azure-beli virtuális gépek biztonsági mentésével védett virtuális gépek esetében is megjelenik. Más lemezképek esetén az [itt](backup-sql-server-database-azure-vms.md)leírtak szerint állíthatja be a biztonsági mentést.
 
 2. Adja meg az Recovery Services-tároló nevét. A tároló egy logikai entitás, amely az összes biztonsági mentést tárolja és kezeli. Új tár létrehozásakor:
 

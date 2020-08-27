@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 0fd7ba1723da77313407725ec676e69b0ef3bca1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496672"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917856"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
@@ -33,7 +33,7 @@ Első lépésként javasoljuk a [Hotel adatkészletét](https://github.com/Azure
 
 ## <a name="example-of-a-complex-structure"></a>Példa összetett szerkezetre
 
-A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből áll. Az összetett mezők, például a `Address` és a `Rooms` , rendelkeznek almezővel. `Address`az adott almezőhöz tartozó értékek egyetlen halmaza, mivel ez a dokumentum egyetlen objektuma. Ezzel szemben `Rooms` az almezőinek több halmaza van, egyet a gyűjtemény minden objektumához.
+A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből áll. Az összetett mezők, például a `Address` és a `Rooms` , rendelkeznek almezővel. `Address` az adott almezőhöz tartozó értékek egyetlen halmaza, mivel ez a dokumentum egyetlen objektuma. Ezzel szemben `Rooms` az almezőinek több halmaza van, egyet a gyűjtemény minden objektumához.
 
 ```json
 {
@@ -62,9 +62,9 @@ A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből ál
 
 ## <a name="creating-complex-fields"></a>Összetett mezők létrehozása
 
-Ahogy az index definíciója esetében is, a portál, a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) használatával összetett típusokat tartalmazó sémát hozhat létre. 
+Ahogy az index definíciója esetében is, a portál, a [REST API](/rest/api/searchservice/create-index)vagy a [.net SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) használatával összetett típusokat tartalmazó sémát hozhat létre. 
 
-Az alábbi példa egy olyan JSON-index sémát mutat be, amely egyszerű mezőket, gyűjteményeket és összetett típusokat tartalmaz. Figyelje meg, hogy egy összetett típuson belül minden almező rendelkezik egy típussal, és rendelkezhet attribútumokkal, mint a legfelső szintű mezők. A séma megfelel a fenti példában szereplő adatként. `Address`a egy olyan összetett mező, amely nem gyűjtemény (a szállodában van egy címe). `Rooms`egy összetett gyűjtemény mező (a Hotel számos szobát tartalmaz).
+Az alábbi példa egy olyan JSON-index sémát mutat be, amely egyszerű mezőket, gyűjteményeket és összetett típusokat tartalmaz. Figyelje meg, hogy egy összetett típuson belül minden almező rendelkezik egy típussal, és rendelkezhet attribútumokkal, mint a legfelső szintű mezők. A séma megfelel a fenti példában szereplő adatként. `Address` a egy olyan összetett mező, amely nem gyűjtemény (a szállodában van egy címe). `Rooms` egy összetett gyűjtemény mező (a Hotel számos szobát tartalmaz).
 
 ```json
 {
@@ -151,7 +151,7 @@ Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést
 
 A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőkben, ha az index definíciójában a **szűrhető** attribútum van beállítva `true` . További információ: [create index API Reference](/rest/api/searchservice/create-index).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a [Hotels adatkészletet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) az **adatimportálás** varázslóban. Az adatok eléréséhez a readme szolgáltatásban megadott Cosmos DB kapcsolati információkra lesz szüksége.
 

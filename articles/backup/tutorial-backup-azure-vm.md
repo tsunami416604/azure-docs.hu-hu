@@ -4,12 +4,12 @@ description: Ez az oktatóanyag részletesen ismerteti a több Azure-beli virtu�
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46dd6ef15e3b0dad53f029ec722acf0fb5a0df7c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513217"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889838"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése PowerShell-lel
 
@@ -52,13 +52,13 @@ A [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tár eg
 
 Hozza létre a tárolót a következőképpen:
 
-1. A [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)használatával hozza létre a tárolót. Adja meg annak a virtuális gépnek az erőforráscsoport-nevét és helyét, amelyről biztonsági másolatot szeretne készíteni.
+1. A  [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)használatával hozza létre a tárolót. Adja meg annak a virtuális gépnek az erőforráscsoport-nevét és helyét, amelyről biztonsági másolatot szeretne készíteni.
 
     ```powershell
     New-AzRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
     ```
 
-2. Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
+2. Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ezért célszerű a Backup Recovery Services Vault-objektumot tárolni egy változóban.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
@@ -113,7 +113,7 @@ Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
 Remove-AzRecoveryServicesVault -Vault $vault1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tekintse át](backup-azure-vms-automation.md) az Azure-beli virtuális gépek PowerShell-lel történő biztonsági mentésének és visszaállításának részletes ismertetését.
 * [Azure-beli virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md)

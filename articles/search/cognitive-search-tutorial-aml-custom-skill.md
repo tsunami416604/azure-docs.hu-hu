@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245330"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924588"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
 
-Ebben az oktatóanyagban a [Hotel Reviews adatkészletet](https://www.kaggle.com/datafiniti/hotel-reviews) fogja használni (amelyet a Creative Commons Licence [CC-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) használ, hogy [Egyéni képességeket](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) hozzon létre a Azure Machine learning használatával, hogy kinyerje a véleményekből származó Aspect-alapú véleményét. Ez lehetővé teszi a pozitív és negatív érzelmek hozzárendelését ugyanabban a felülvizsgálatban, hogy helyesen legyenek megjelölve az azonosított entitásokhoz, például a személyzethez, a helyiséghez, a lobbyhoz vagy a készlethez.
+Ebben az oktatóanyagban a [Hotel Reviews adatkészletet](https://www.kaggle.com/datafiniti/hotel-reviews) fogja használni (amelyet a Creative Commons Licence [CC-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) használ, hogy [Egyéni képességeket](./cognitive-search-aml-skill.md) hozzon létre a Azure Machine learning használatával, hogy kinyerje a véleményekből származó Aspect-alapú véleményét. Ez lehetővé teszi a pozitív és negatív érzelmek hozzárendelését ugyanabban a felülvizsgálatban, hogy helyesen legyenek megjelölve az azonosított entitásokhoz, például a személyzethez, a helyiséghez, a lobbyhoz vagy a készlethez.
 
 A Azure Machine Learning aspektus-alapú hangulati modell betanításához az [NLP receptek tárházat](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)fogja használni. Ezután a modell egy Azure Kubernetes-fürtön végpontként lesz üzembe helyezve. Az üzembe helyezést követően a végpontot a Cognitive Search szolgáltatás általi használatra vonatkozó pénzmosás-képességként adja hozzá a dúsítási folyamathoz.
 
@@ -36,10 +36,10 @@ Két adatkészlet van megadva. Ha saját maga szeretné betanítani a modellt, a
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [ingyenes előfizetés](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)beszerzése.
-* [Cognitive Search szolgáltatás](https://docs.microsoft.com/azure/search/search-get-started-arm)
-* [Erőforrás Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)
-* [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-* [Azure Machine Learning-munkaterület](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
+* [Cognitive Search szolgáltatás](./search-get-started-arm.md)
+* [Erőforrás Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
+* [Azure Storage-fiók](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Machine Learning-munkaterület](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Telepítés
 
@@ -47,9 +47,9 @@ Két adatkészlet van megadva. Ha saját maga szeretné betanítani a modellt, a
 * Tartalom kinyerése, ha a letöltés zip-fájl. Győződjön meg arról, hogy a fájlok írhatók és írhatók.
 * Az Azure-fiókok és-szolgáltatások beállítása közben másolja a neveket és a kulcsokat egy könnyen elérhető szövegfájlba. A rendszer hozzáadja a neveket és a kulcsokat a jegyzetfüzet első cellájához, ahol a változók az Azure-szolgáltatások eléréséhez vannak meghatározva.
 * Ha nem ismeri a Azure Machine Learning és a hozzá tartozó követelményeket, érdemes áttekintenie ezeket a dokumentumokat az első lépések előtt:
- * [Fejlesztési környezet konfigurálása Azure Machine Learninghoz](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment)
- * [Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
- * A Azure Machine Learning fejlesztési környezetének konfigurálásakor érdemes lehet a [felhőalapú számítási példányt](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#compute-instance) használni a gyors és egyszerű használat érdekében.
+ * [Fejlesztési környezet konfigurálása Azure Machine Learninghoz](../machine-learning/how-to-configure-environment.md)
+ * [Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal](../machine-learning/how-to-manage-workspace.md)
+ * A Azure Machine Learning fejlesztési környezetének konfigurálásakor érdemes lehet a [felhőalapú számítási példányt](../machine-learning/how-to-configure-environment.md#compute-instance) használni a gyors és egyszerű használat érdekében.
 * Töltse fel az adatkészlet-fájlt egy tárolóba a Storage-fiókban. A nagyobb fájlra akkor van szükség, ha szeretné végrehajtani a betanítási lépést a jegyzetfüzetben. Ha szeretné kihagyni a betanítási lépést, a kisebb fájl használata javasolt.
 
 ## <a name="open-notebook-and-connect-to-azure-services"></a>Jegyzetfüzet megnyitása és kapcsolódás az Azure-szolgáltatásokhoz
@@ -68,9 +68,9 @@ A 2. szakasz hat cellát tartalmaz, amelyek letöltik a kesztyű beágyazási f�
 
 A jegyzetfüzet 3. szakasza a 2. szakaszban létrehozott modelleket fogja betanítani, regisztrálja ezeket a modelleket, és az Azure Kubernetes-fürtben végpontként telepíti őket. Ha nem ismeri az Azure Kubernetes, javasoljuk, hogy tekintse át a következő cikkeket, mielőtt megpróbál létrehozni egy következtetési fürtöt:
 
-* [Az Azure Kubernetes szolgáltatás áttekintése](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-* [Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)
-* [Kvóták, virtuális gépek méretére vonatkozó korlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
+* [Az Azure Kubernetes szolgáltatás áttekintése](../aks/intro-kubernetes.md)
+* [Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai](../aks/concepts-clusters-workloads.md)
+* [Kvóták, virtuális gépek méretére vonatkozó korlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (ak)](../aks/quotas-skus-regions.md)
 
 A következtetési fürt létrehozása és üzembe helyezése akár 30 percet is igénybe vehet. A webszolgáltatás tesztelése a végső lépésekre való áttérés előtt, a készségkészlet frissítése és az indexelő futtatása előtt ajánlott.
 
@@ -108,5 +108,5 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az egyéni ügyességi webes API áttekintése](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-web-api) 
->  [További információ az egyéni szaktudás hozzáadásáról a dúsítási folyamathoz](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)
+> [Az egyéni ügyességi webes API áttekintése](./cognitive-search-custom-skill-web-api.md) 
+>  [További információ az egyéni szaktudás hozzáadásáról a dúsítási folyamathoz](./cognitive-search-custom-skill-interface.md)

@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244125"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934378"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
@@ -50,7 +51,7 @@ Ezek a módszerek lehetővé teszik a következőket:
 
 Ez a metódus lekéri a felhasználó által létrehozott fordítások számát. Megjeleníti a fordítások listáját a uriPrefix, a, a, a felhasználó, a minRating és a maxRating kérelmek paramétereinek csoportosításával.
 
-**Szintaxis**
+**Syntax**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -121,7 +122,7 @@ Az eredményhalmaz a **UserTranslationCount**tömbjét tartalmazza. Minden UserT
 
 Ezzel a módszerrel a felhasználó által létrehozott fordítások olvashatók be. A fordítást a uriPrefix, a, a, a felhasználó és a minRating, valamint a maxRating-kérelmek paramétereinek csoportosításával biztosítja.
 
-**Szintaxis**
+**Syntax**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs

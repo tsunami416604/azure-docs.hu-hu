@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589656"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921239"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
@@ -37,11 +38,11 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes szolgáltatásokhoz tartozó API-referenciák tallózásához kövesse a hivatkozást.
 
-| Szolgáltatás | Funkció | Leírás |
+| Szolgáltatás | Szolgáltatás | Leírás |
 |---------|---------|-------------|
 | Translator | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
 | Translator | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 70 nyelvre. |
-| Translator | [Észlelés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
+| Translator | [Kinyomoz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
 | Bing – Helyesírás-ellenőrzés | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -114,7 +115,7 @@ Nézzük meg, hogy mi építünk.
 
 A felhasználói felület a következő összetevőket tartalmazza:
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Megjeleníti a Microsoft Translator által a szöveges fordításhoz támogatott nyelvek listáját. A felhasználó kiválasztja azt a nyelvet, amelyről a fordítás történik. |
 | `ToLanguageComboBox` | ComboBox | Ugyanazokat a nyelveket jeleníti meg, mint a `FromComboBox` , de azon nyelv kiválasztására szolgál, amelyet a felhasználó lefordít. |
@@ -250,7 +251,7 @@ Az összes projekt be van ágyazva a `MainWindow : Window` osztályba. Kezdjük 
 
 Ebben a kódrészletben két, a fordításhoz elérhető nyelvekkel kapcsolatos információt tartalmazó tag-változót jelentettünk be:
 
-| Változó | Típus | Description |
+| Változó | Típus | Leírás |
 |----------|------|-------------|
 |`languageCodes` | Karakterláncok tömbje |A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
 |`languageCodesAndTitles` | Rendezett szótár | A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket. |

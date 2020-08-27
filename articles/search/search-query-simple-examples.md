@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3ea1c42234267bdbc5f8a7d35f0fd73bbb59b33c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553422"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918026"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search
 
 Az Azure Cognitive Searchban az [egyszerű lekérdezési szintaxis](query-simple-syntax.md) meghívja az alapértelmezett lekérdezési elemzőt a teljes szöveges keresési lekérdezések indexre való végrehajtásához. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, például a teljes szöveges keresést, a szűrt és a sokoldalú keresést, valamint a Geo-keresést. 
 
-Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére, a `search=` [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) művelet paraméterének feltöltésére.
+Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére, a `search=` [keresési dokumentumok](/rest/api/searchservice/search-documents) művelet paraméterének feltöltésére.
 
 Egy alternatív lekérdezési szintaxis [teljes Lucene](query-lucene-syntax.md), amely összetettebb lekérdezési struktúrákat támogat, például a fuzzy és a helyettesítő karakterek keresését, ami további időt vehet igénybe. További információt és példákat a teljes szintaxissal kapcsolatban [a teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
 
@@ -103,7 +103,7 @@ Lehetséges, hogy észrevette a keresési pontszámot a válaszban. 1 egységes 
 
 ## <a name="example-2-look-up-by-id"></a>2. példa: Keresés azonosító alapján
 
-Ez a példa egy kicsit atipikus, de a keresési viselkedés kiértékelése során érdemes megvizsgálni egy adott dokumentum teljes tartalmát, hogy megtudja, miért került bele vagy kizárt az eredményekből. Egyetlen dokumentum teljes egészében történő visszaadásához használjon [keresési műveletet](https://docs.microsoft.com/rest/api/searchservice/lookup-document) a dokumentum azonosítójának továbbításához.
+Ez a példa egy kicsit atipikus, de a keresési viselkedés kiértékelése során érdemes megvizsgálni egy adott dokumentum teljes tartalmát, hogy megtudja, miért került bele vagy kizárt az eredményekből. Egyetlen dokumentum teljes egészében történő visszaadásához használjon [keresési műveletet](/rest/api/searchservice/lookup-document) a dokumentum azonosítójának továbbításához.
 
 Minden dokumentum egyedi azonosítóval rendelkezik. Ha egy keresési lekérdezés szintaxisát szeretné kipróbálni, először a dokumentumok azonosítóinak listáját kell visszaadnia, hogy megtalálja az egyiket a használathoz. A NYC-feladatok esetében az azonosítók a mezőben vannak tárolva `id` .
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>3. példa: lekérdezések szűrése
 
-A [szűrési szintaxis](https://docs.microsoft.com/azure/search/search-query-odata-filter) egy OData kifejezés, amelyet a **kereséssel** vagy önmagában is használhat. A keresési paraméter nélküli önálló szűrő akkor hasznos, ha a szűrő kifejezés képes teljes mértékben minősíteni a dokumentumokat. A lekérdezési karakterláncok nélkül nincs lexikális vagy nyelvi elemzés, nincs pontozás (az összes pontszám 1), és nincs rangsor. Figyelje meg, hogy a keresési karakterlánc üres.
+A [szűrési szintaxis](./search-query-odata-filter.md) egy OData kifejezés, amelyet a **kereséssel** vagy önmagában is használhat. A keresési paraméter nélküli önálló szűrő akkor hasznos, ha a szűrő kifejezés képes teljes mértékben minősíteni a dokumentumokat. A lekérdezési karakterláncok nélkül nincs lexikális vagy nyelvi elemzés, nincs pontozás (az összes pontszám 1), és nincs rangsor. Figyelje meg, hogy a keresési karakterlánc üres.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -147,7 +147,7 @@ Egy másik hatékony módszer a szűrő és a keresés összekapcsolására **`s
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-A függvénnyel kapcsolatos további információkért tekintse [meg a Search. ismatch "példák szűrése"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)című témakört.
+A függvénnyel kapcsolatos további információkért tekintse [meg a Search. ismatch "példák szűrése"](./search-query-odata-full-text-search-functions.md#examples)című témakört.
 
 ## <a name="example-4-range-filters"></a>4. példa: tartomány szűrőinek
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-5-geo-search"></a>5. példa: Geo-keresés
 
-A minta index egy geo_location mezőt tartalmaz szélességi és hosszúsági koordinátákkal. Ez a példa a [Geo. Distance függvényt](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) használja, amely egy kiindulási pont kerületén belüli dokumentumok szűrésére szolgál, az Ön által megadott távolságra (kilométerben). A lekérdezésben szereplő utolsó értéket (4) módosíthatja a lekérdezés felületi területének csökkentése vagy nagyítása érdekében.
+A minta index egy geo_location mezőt tartalmaz szélességi és hosszúsági koordinátákkal. Ez a példa a [Geo. Distance függvényt](./search-query-odata-geo-spatial-functions.md#examples) használja, amely egy kiindulási pont kerületén belüli dokumentumok szűrésére szolgál, az Ön által megadott távolságra (kilométerben). A lekérdezésben szereplő utolsó értéket (4) módosíthatja a lekérdezés felületi területének csökkentése vagy nagyítása érdekében.
 
 A következő példa formátuma az olvashatóság érdekében:
 
@@ -223,7 +223,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 A kifejezéses lekérdezések egyetlen kifejezésből állnak, amelyek közül sok közülük egymástól függetlenül kerül kiértékelésre. A kifejezéses lekérdezések idézőjelek közé vannak lefoglalva, és egy Verbatim sztringként vannak kiértékelve. A egyezés pontosságát a kezelők és a searchMode vezérlik.
 
-1. példa: **`&search=fire`** a 150 eredményt adja vissza, ahol az összes egyezés tartalmazza a Word tüzet a dokumentumban.
+1. példa: **`&search=fire`**  a 150 eredményt adja vissza, ahol az összes egyezés tartalmazza a Word tüzet a dokumentumban.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire
@@ -288,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ## <a name="next-steps"></a>További lépések
 Próbálkozzon a kódban szereplő lekérdezések megadásával. Az alábbi hivatkozások azt ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz az alapértelmezett egyszerű szintaxis használatával.
 
-* [Az index lekérdezése a .NET SDK használatával](search-query-dotnet.md)
-* [Az index lekérdezése a REST API használatával](search-create-index-rest-api.md)
+* [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)
+* [Az index lekérdezése a REST API használatával](./search-get-started-powershell.md)
 
 A szintaxissal, a lekérdezési architektúrával és a példákkal kapcsolatban a következő hivatkozásokban találhat további tudnivalókat:
 
 + [Példák a speciális lekérdezések kiépítési Lucene](search-query-lucene-examples.md)
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
-+ [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Teljes Lucene-lekérdezés](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Szűrő-és OrderBy szintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Egyszerű lekérdezési szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Teljes Lucene-lekérdezés](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Szűrő-és OrderBy szintaxis](/rest/api/searchservice/odata-expression-syntax-for-azure-search)

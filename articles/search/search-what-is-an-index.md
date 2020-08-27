@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496500"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932882"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Alapszintű keresési index létrehozása az Azure-ban Cognitive Search
 
@@ -26,10 +26,10 @@ Az index fizikai szerkezetét a séma határozza meg, a "kereshető" jelölésű
 Létrehozhat egy indexet a következő eszközökkel és API-kkal:
 
 * A Azure Portal használja az **index hozzáadása** vagy az **adatimportálás** varázslót.
-* A [create index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) használata
-* A [.net SDK](search-create-index-dotnet.md) használata
+* A [create index (REST API)](/rest/api/searchservice/create-index) használata
+* A [.net SDK](./search-get-started-dotnet.md) használata
 
-A portál eszközzel könnyebben tanulhat. A portál bizonyos adattípusokra vonatkozóan kényszeríti a követelményeket és a séma szabályait, például a teljes szöveges keresési képességek letiltását a numerikus mezőkön. Ha egy működőképes indextel rendelkezik, a JSON-definíció lekérése a szolgáltatásból a [Get index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) használatával és a megoldáshoz való hozzáadásával átválthat a kódra.
+A portál eszközzel könnyebben tanulhat. A portál bizonyos adattípusokra vonatkozóan kényszeríti a követelményeket és a séma szabályait, például a teljes szöveges keresési képességek letiltását a numerikus mezőkön. Ha egy működőképes indextel rendelkezik, a JSON-definíció lekérése a szolgáltatásból a [Get index (REST API)](/rest/api/searchservice/get-index) használatával és a megoldáshoz való hozzáadásával átválthat a kódra.
 
 ## <a name="recommended-workflow"></a>Javasolt munkafolyamat
 
@@ -59,7 +59,7 @@ Az utolsó index kialakításának megérkezése egy iterációs folyamat. Gyako
 
    ![Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg](media/search-what-is-an-index//field-definitions.png "Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg")
 
-1. Töltse le az index sémát a [Get index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) és egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md)használatával. Most már rendelkezik az index JSON-ábrázolásával, amelyet a kód számára is adaptálhat.
+1. Töltse le az index sémát a [Get index (REST API)](/rest/api/searchservice/get-index) és egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md)használatával. Most már rendelkezik az index JSON-ábrázolásával, amelyet a kód számára is adaptálhat.
 
 1. [Töltse be az indexet az adataival](search-what-is-data-import.md). Az Azure Cognitive Search JSON-dokumentumokat fogad el. Az adatok programozott módon történő betöltéséhez használhatja a Poster-t JSON-dokumentumokkal a kérelem hasznos adatai között. Ha az adatai nem könnyen használhatók JSON-ként, ez a lépés a legintenzívebb munkaerő. 
 
@@ -169,7 +169,7 @@ A mezők névvel, a tárolt adat osztályozására szolgáló típussal és a me
 
 ### <a name="data-types"></a>Adattípusok
 
-| Típus | Description |
+| Típus | Leírás |
 |------|-------------|
 | Edm.String |A teljes szöveges kereséshez (Word-Breaking, fakadóan stb.) tartozó szöveg, amely lehet jogkivonatos. |
 | Collection(Edm.String) |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
@@ -180,7 +180,7 @@ A mezők névvel, a tárolt adat osztályozására szolgáló típussal és a me
 | Edm.DateTimeOffset |A dátum-és időértékek a OData v4 formátumban (például `yyyy-MM-ddTHH:mm:ss.fffZ` vagy) jelennek meg `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` . |
 | Edm.GeographyPoint |A pont egy konkrét földrajzi helyet jelöl. |
 
-További információ: [támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+További információ: [támogatott adattípusok](/rest/api/searchservice/Supported-data-types).
 
 <a name="index-attributes"></a>
 
@@ -195,14 +195,14 @@ A karakterlánc típusú mezők gyakran "kereshető" és "lekérhető" jelölés
 |kereshető |Kereshető – Teljes szöveges keresésre alkalmas, az indexelés során lexikai elemzés, például szavakra bontás végezhető rajta. Ha egy kereshető mező értékének például a „sunny day” szöveget adja meg, akkor az két különálló tokenre lesz bontva: „sunny” és „day”. További részletek az [A teljes szöveges keresés működése](search-lucene-query-architecture.md) című cikkben.|  
 |szűrhető |Szűrhető – A $filter lekérdezések hivatkoznak rá. Az `Edm.String` vagy `Collection(Edm.String)` típusú szűrhető mezők nem lesznek szavakra bontva, ezért összehasonlítások csak pontos egyezésekre végezhetők. Ha egy ilyen mező értékének például a „sunny day” szöveget adja meg, akkor a `$filter=f eq 'sunny'` keresés nem talál egyezést, a `$filter=f eq 'sunny day'` viszont igen. |  
 |rendezhető |Rendezhető – A rendszer alapértelmezés szerint érték szerint rendezi a találatokat, de a dokumentumok mezői alapján végzett rendezés is konfigurálható. A típusú mezők `Collection(Edm.String)` nem lehetnek "rendezve". |  
-|kategorizálható |Kategorizálható – Általában akkor használják, ha a keresési eredményeket a kategóriánkénti találatok számával együtt kell bemutatni (például szállodák egy adott városban). Ez a lehetőség az `Edm.GeographyPoint` típusú mezők esetén nem használható. A `Edm.String` szűrhető, "rendezhető" vagy "sokrétű" típusú mezők legfeljebb 32 kilobájt hosszúságú lehetnek. Részletek az [Index létrehozása (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) című cikkben.|  
+|kategorizálható |Kategorizálható – Általában akkor használják, ha a keresési eredményeket a kategóriánkénti találatok számával együtt kell bemutatni (például szállodák egy adott városban). Ez a lehetőség az `Edm.GeographyPoint` típusú mezők esetén nem használható. A `Edm.String` szűrhető, "rendezhető" vagy "sokrétű" típusú mezők legfeljebb 32 kilobájt hosszúságú lehetnek. Részletek az [Index létrehozása (REST API)](/rest/api/searchservice/create-index) című cikkben.|  
 |kulcs |Kulcs – Az indexen belüli dokumentumok egyedi azonosítója. Kulcsmezőként egyetlen `Edm.String` típusú mezőt kell megadni.|  
 |visszakereshetőnek |Lekérdezhető – Megadja, hogy a mező visszaadható-e egy keresési eredményben. Ez akkor hasznos, ha egy mező (például *nyereség*) szűrésre, rendezésre vagy értékelésre szolgál, de a végfelhasználó számára nem kell megjelennie. Ennek a tulajdonságnak az értéke `key` tulajdonságú mezők esetén csak `true` lehet.|  
 
 Új mezők bármikor megadhatók, a meglévő meződefiníciók azonban az index élettartamára rögzülnek. A fejlesztők ezért általában egyszerű indexek létrehozására vagy ötletek kipróbálására használják a portált, vagy a portál oldalain néznek utána egy beállításnak. Egy index rendszeres kiegészítése hatékonyabb az index újraépítését megkönnyítő kódalapú megközelítéssel.
 
 > [!NOTE]
-> Az indexek létrehozásához használt API-k eltérő alapértelmezett viselkedéssel rendelkeznek. A [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)-k esetében a legtöbb attribútum alapértelmezés szerint engedélyezve van (például a "kereshető" és a "lekérhető" igaz a karakterlánc mezőknél), és gyakran csak akkor kell beállítania őket, ha ki szeretné kapcsolni őket. A .NET SDK esetében az ellenkezője igaz. A nem kifejezetten beállított bármely tulajdonság esetében az alapértelmezett érték a megfelelő keresési viselkedés letiltása, kivéve, ha kifejezetten engedélyezi azt.
+> Az indexek létrehozásához használt API-k eltérő alapértelmezett viselkedéssel rendelkeznek. A [REST API](/rest/api/searchservice/Create-Index)-k esetében a legtöbb attribútum alapértelmezés szerint engedélyezve van (például a "kereshető" és a "lekérhető" igaz a karakterlánc mezőknél), és gyakran csak akkor kell beállítania őket, ha ki szeretné kapcsolni őket. A .NET SDK esetében az ellenkezője igaz. A nem kifejezetten beállított bármely tulajdonság esetében az alapértelmezett érték a megfelelő keresési viselkedés letiltása, kivéve, ha kifejezetten engedélyezi azt.
 
 ## `analyzers`
 
@@ -210,7 +210,7 @@ Az analizátorok elem beállítja a mezőhöz használandó nyelvi elemző nevé
 
 ## `suggesters`
 
-A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában a részleges keresési karakterláncokat küldi el a [javaslatok (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) számára, amíg a felhasználó begépel egy keresési lekérdezést, és az API a javasolt dokumentumok vagy kifejezések készletét adja vissza. 
+A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában a részleges keresési karakterláncokat küldi el a [javaslatok (REST API)](/rest/api/searchservice/suggestions) számára, amíg a felhasználó begépel egy keresési lekérdezést, és az API a javasolt dokumentumok vagy kifejezések készletét adja vissza. 
 
 A rendszer a javaslathoz hozzáadott mezőket használja a típus előtti keresési feltételek kiépítéséhez. Az összes keresési kifejezés az indexelés során jön létre, és külön tárolja őket. A javaslati struktúra létrehozásával kapcsolatos további információkért lásd: [javaslatok hozzáadása](index-add-suggesters.md).
 
@@ -249,7 +249,7 @@ A szűrőket és a rendezést támogató indexek a csak teljes szöveges keresé
 > [!Note]
 > A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az index-összeállítás megismerésével a portálon folytathatja az első index létrehozását. Javasoljuk, hogy az **adatimportálás** varázslóval Kezdje a *Realestate-US-Sample* vagy a *Hotels-Sample* Hosted adatforrások kiválasztásával.
 

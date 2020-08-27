@@ -2,13 +2,14 @@
 title: Adathiány hibaelhárítása – Application Insights .NET-hez
 description: Nem látja az Azure Application Insightsban tárolt adatmegjelenítést? Próbálja ki itt.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: eeae4503111897d7a2fa64bc2a69c13381515157
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563075"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936469"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -66,7 +67,7 @@ Javítsa ki
 
 Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a **Application Insights > a Application Insights konfigurálása**lehetőséget. Megjelenik egy párbeszédpanel, amely meghívja Önt, hogy bejelentkezzen az Azure-ba, vagy hozzon létre egy Application Insights-erőforrást, vagy használja újra a meglévőt.
 
-## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a>"Hiányzó NuGet-csomag (ok)" a saját Build-kiszolgálón
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> "Hiányzó NuGet-csomag (ok)" a saját Build-kiszolgálón
 *Minden rendben van, ha hibakeresést végezek a fejlesztői gépen, de NuGet hibaüzenetet kapok a Build-kiszolgálón.*
 
 Tekintse meg a [NuGet-csomag visszaállítása](https://docs.nuget.org/Consume/Package-Restore) és az [automatikus csomag visszaállítása](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)című témakört.
@@ -120,7 +121,7 @@ Javítsa ki
   Itt láthat néhány összefoglaló diagramot. Ide kattintva további részleteket tekinthet meg.
 * A Visual Studióban az alkalmazás hibakeresése közben kattintson a Application Insights gombra.
 
-## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a>Nincsenek kiszolgálói adatértékek (vagy nincsenek az összes adathalmaz)
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a> Nincsenek kiszolgálói adatértékek (vagy nincsenek az összes adathalmaz)
 *Futtattam az alkalmazást, majd megnyitottam a Application Insights szolgáltatást a Microsoft Azureban, de az összes diagramon a "Ismerje meg, hogyan kell gyűjteni..." vagy nincs konfigurálva.* Vagy *csak az oldal nézet és a felhasználói adatértékek, de nem szolgálnak.*
 
 * Futtassa az alkalmazást hibakeresési módban a Visual Studióban (F5). Használja az alkalmazást úgy, hogy létrehozzon néhány telemetria. Ellenőrizze, hogy láthatók-e a Visual Studio kimeneti ablakában naplózott események.  
@@ -185,7 +186,7 @@ Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási 
 
 ### <a name="net-framework"></a>.NET-keretrendszer
 
-1. Telepítse a [Microsoft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) csomagot a NuGet webhelyről. A telepített verziónak meg kell egyeznie a jelenlegi telepített verziójával`Microsoft.ApplicationInsighs`
+1. Telepítse a [Microsoft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) csomagot a NuGet webhelyről. A telepített verziónak meg kell egyeznie a jelenlegi telepített verziójával `Microsoft.ApplicationInsighs`
 
 2. Módosítsa a applicationinsights.config fájlt, hogy az tartalmazza a következőket:
 
@@ -227,7 +228,7 @@ Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási 
 4. Ha elkészült, állítsa át ezeket a módosításokat.
 
 
-## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>Naplók gyűjtése a Perfview eszköz
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> Naplók gyűjtése a Perfview eszköz
 A [perfview eszköz](https://github.com/Microsoft/perfview) egy ingyenes diagnosztikai és teljesítmény-elemzési eszköz, amely a különböző forrásokból származó diagnosztikai információk összegyűjtésével és megjelenítésével segíti a CPU, a memória és az egyéb problémák elkülönítését.
 
 Az Application Insights SDK-napló EventSource önkiszolgáló hibaelhárítási naplókat, amelyeket a Perfview eszköz képes rögzíteni.
@@ -249,7 +250,7 @@ További információk:
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Naplók összegyűjtése a DotNet-tracevel
 
-Alternatív módszer a hibakeresési naplók gyűjtésére, amelyek különösen hasznosak lehetnek a Linux-alapú környezetekben[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+Alternatív módszer a hibakeresési naplók gyűjtésére, amelyek különösen hasznosak lehetnek a Linux-alapú környezetekben [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore

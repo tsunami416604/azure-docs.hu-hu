@@ -3,18 +3,18 @@ title: .NET programozási útmutató – Azure Event Hubs (örökölt) | Microso
 description: Ez a cikk azt ismerteti, hogyan írhat kódot az Azure Event Hubs az Azure .NET SDK használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5be30d7786fa094a55badb7b38ff2116a6013b6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074842"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934021"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
 Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](./event-hubs-about.md).
 
 > [!WARNING]
-> Ez az útmutató a régi **Microsoft. Azure. EventHubs** csomaghoz készült. Javasoljuk, hogy a legújabb [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) csomag használatára [telepítse át](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) a kódot.  
+> Ez az útmutató a régi **Microsoft. Azure. EventHubs** csomaghoz készült. Javasoljuk, hogy a legújabb [Azure. Messaging. EventHubs](event-hubs-dotnet-standard-getstarted-send.md) csomag használatára [telepítse át](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) a kódot.  
 
 
 ## <a name="event-publishers"></a>Esemény-közzétevők

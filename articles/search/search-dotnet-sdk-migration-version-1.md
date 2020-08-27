@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c8e44a3d57ee519ff792de97ed2b3d183bf666b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171958"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923364"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Frissítés a Azure Search .NET SDK 1,1-es verziójára
 
-Ha a [Azure Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-hoz tartozó 1.0.2-Preview vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez az 1,1-es verzió használatára.
+Ha a [Azure Search .net SDK](/dotnet/api/overview/azure/search)-hoz tartozó 1.0.2-Preview vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez az 1,1-es verzió használatára.
 
 Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
@@ -53,9 +53,9 @@ Végül a felépítési hibák kijavítása után módosíthatja az alkalmazást
 A következő lista a valószínűsége, hogy a módosítás hatással lesz az alkalmazás kódjára.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch-és IndexAction-változások
-`IndexBatch.Create`a rendszer átnevezte, `IndexBatch.New` és már nem tartalmaz `params` argumentumot. `IndexBatch.New`Olyan kötegekhez használható, amelyek különböző típusú műveleteket (egyesítéseket, törléseket stb.) kevernek. Emellett új statikus metódusok vannak a kötegek létrehozásához, ahol az összes művelet azonos: `Delete` , `Merge` , `MergeOrUpload` és `Upload` .
+`IndexBatch.Create` a rendszer átnevezte, `IndexBatch.New` és már nem tartalmaz `params` argumentumot. `IndexBatch.New`Olyan kötegekhez használható, amelyek különböző típusú műveleteket (egyesítéseket, törléseket stb.) kevernek. Emellett új statikus metódusok vannak a kötegek létrehozásához, ahol az összes művelet azonos: `Delete` , `Merge` , `MergeOrUpload` és `Upload` .
 
-`IndexAction`már nem rendelkezik nyilvános konstruktorokkal, és annak tulajdonságai már nem változtathatók meg. Az új statikus metódusok használatával különböző célokra hozhat létre műveleteket:,, `Delete` `Merge` `MergeOrUpload` és `Upload` . `IndexAction.Create`el lett távolítva. Ha a túlterhelést használta, amely csak a dokumentumot veszi figyelembe, ne felejtse el használni `Upload` .
+`IndexAction` már nem rendelkezik nyilvános konstruktorokkal, és annak tulajdonságai már nem változtathatók meg. Az új statikus metódusok használatával különböző célokra hozhat létre műveleteket:,, `Delete` `Merge` `MergeOrUpload` és `Upload` . `IndexAction.Create` el lett távolítva. Ha a túlterhelést használta, amely csak a dokumentumot veszi figyelembe, ne felejtse el használni `Upload` .
 
 #### <a name="example"></a>Példa
 Ha a kód így néz ki:
@@ -169,7 +169,7 @@ A 1,1-es verziótól kezdődően a Azure Search .NET SDK különböző műveleti
 
 * A választható paraméterek mostantól alapértelmezett paraméterekként lettek modellezve, nem pedig a további metódusok túlterheltsége. Ez csökkenti a metódusok túlterhelésének számát, esetenként drámai módon.
 * A bővítményi metódusok mostantól a hívótól származó HTTP-adatok nagy részét is elrejtik. Az SDK régebbi verziói például egy HTTP-állapotkód által visszaadott Response objektumot adtak vissza, amelyet gyakran nem kell ellenőriznie, mert a műveleti metódusok `CloudException` minden olyan állapotkódot kidobjanak, amely hibát jelez. Az új bővítményi metódusok csak a modell objektumokat adják vissza, így a hiba miatt nem kell kicsomagolni őket a kódban.
-* Ezzel szemben a központi felületek mostantól olyan metódusokat tesznek elérhetővé, amelyekkel hatékonyabban vezérelheti a HTTP-szintet, ha szüksége van rá. Mostantól megadhatja a kérések részét képező egyéni HTTP-fejléceket, és az új `AzureOperationResponse<T>` visszatérési típus közvetlen hozzáférést biztosít a `HttpRequestMessage` és a `HttpResponseMessage` művelethez. `AzureOperationResponse`a névtérben van definiálva `Microsoft.Rest.Azure` , és lecseréli `Hyak.Common.OperationResponse` .
+* Ezzel szemben a központi felületek mostantól olyan metódusokat tesznek elérhetővé, amelyekkel hatékonyabban vezérelheti a HTTP-szintet, ha szüksége van rá. Mostantól megadhatja a kérések részét képező egyéni HTTP-fejléceket, és az új `AzureOperationResponse<T>` visszatérési típus közvetlen hozzáférést biztosít a `HttpRequestMessage` és a `HttpResponseMessage` művelethez. `AzureOperationResponse` a névtérben van definiálva `Microsoft.Rest.Azure` , és lecseréli `Hyak.Common.OperationResponse` .
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters változásai
 A `ScoringParameter` legújabb SDK-ban új nevű osztály lett hozzáadva, amely megkönnyíti a paraméterek megadását a keresési lekérdezésekben. Korábban az `ScoringProfiles` osztály tulajdonsága a `SearchParameters` következőképpen lett beírva: `IList<string>` ; Most már be van írva `IList<ScoringParameter>` .
@@ -199,10 +199,10 @@ sp.ScoringParameters =
 ### <a name="model-class-changes"></a>Modell osztály változásai
 A [műveleti módszer változásaiban](#OperationMethodChanges)leírt aláírási változások miatt a névtér számos osztálya `Microsoft.Azure.Search.Models` átnevezve lett vagy el lett távolítva. Például:
 
-* `IndexDefinitionResponse`váltotta fel`AzureOperationResponse<Index>`
+* `IndexDefinitionResponse` váltotta fel `AzureOperationResponse<Index>`
 * A `DocumentSearchResponse` új nevet kapott: `DocumentSearchResult`
 * A `IndexResult` új nevet kapott: `IndexingResult`
-* `Documents.Count()`most visszaadja a- `long` t a dokumentumok száma helyett`DocumentCountResponse`
+* `Documents.Count()` most visszaadja a- `long` t a dokumentumok száma helyett `DocumentCountResponse`
 * A `IndexGetStatisticsResponse` új nevet kapott: `IndexGetStatisticsResult`
 * A `IndexListResponse` új nevet kapott: `IndexListResult`
 
@@ -401,4 +401,3 @@ Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 Ezért azt javasoljuk, hogy az ajánlott eljárás szerint a modell osztályaiban is használjon null értékű típusokat.
 
 A hibával és a javítással kapcsolatos további részletekért tekintse [meg ezt a problémát a githubon](https://github.com/Azure/azure-sdk-for-net/issues/1063).
-

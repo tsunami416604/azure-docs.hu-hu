@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201992"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917873"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure-ban Cognitive Search- `and` , `or` ,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure-ban Cognitive Search- `and` , `or` , `not`
 
 Az Azure Cognitive Search [OData](query-odata-filter-orderby-syntax.md) olyan logikai kifejezések, amelyek kiértékelése `true` vagy `false` . Az összetett szűrőket úgy írhatja be, hogy az [egyszerűbb szűrők](search-query-odata-comparison-operators.md) sorozatát írja le, és a logikai operátorok segítségével készíti el őket a logikai [algebra](https://en.wikipedia.org/wiki/Boolean_algebra)használatával:
 
@@ -58,21 +58,21 @@ Az interaktív szintaxis diagram is elérhető:
 
 A logikai kifejezések két formája létezik: bináris ( `and` / `or` ), ahol két alkifejezés létezik, és az unáris ( `not` ), ahol csak egy szerepel. Az alkifejezések bármely típusú logikai kifejezés lehet:
 
-- Mezők vagy tartomány típusú változók`Edm.Boolean`
-- Függvények, amelyek típusú értékeket adnak vissza `Edm.Boolean` , például `geo.intersects` vagy`search.ismatch`
-- [Összehasonlító kifejezések](search-query-odata-comparison-operators.md), például`rating gt 4`
-- [Gyűjtési kifejezések](search-query-odata-collection-operators.md), például`Rooms/any(room: room/Type eq 'Deluxe Room')`
+- Mezők vagy tartomány típusú változók `Edm.Boolean`
+- Függvények, amelyek típusú értékeket adnak vissza `Edm.Boolean` , például `geo.intersects` vagy `search.ismatch`
+- [Összehasonlító kifejezések](search-query-odata-comparison-operators.md), például `rating gt 4`
+- [Gyűjtési kifejezések](search-query-odata-collection-operators.md), például `Rooms/any(room: room/Type eq 'Deluxe Room')`
 - A logikai literálok `true` vagy `false` .
 - Egyéb, a, és a használatával létrehozott logikai kifejezések `and` `or` `not` .
 
 > [!IMPORTANT]
 > Vannak olyan helyzetek, amelyekben nem használhatók az alkifejezések `and` / `or` , különösen lambda kifejezéseken belül. Részletekért lásd: [OData Collection Operators in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) .
 
-### <a name="logical-operators-and-null"></a>Logikai operátorok és`null`
+### <a name="logical-operators-and-null"></a>Logikai operátorok és `null`
 
 A legtöbb logikai kifejezés, például a függvények és az összehasonlítások nem hozhatnak létre `null` értékeket, és a logikai operátorok nem alkalmazhatók `null` közvetlenül a konstansra (például `x and null` nem megengedett). A logikai mezők azonban lehetnek `null` , ezért tisztában kell lennie azzal, hogy a `and` , a `or` és a `not` operátorok hogyan működnek a nullák jelenlétében. Ezt a következő táblázat foglalja össze, ahol a `b` egy típusú mező `Edm.Boolean` :
 
-| Kifejezés | Eredmény `b` , ha`null` |
+| Expression | Eredmény `b` , ha `null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -120,4 +120,4 @@ A következőhöz tartozó dokumentumok egyeztetése: Vancouver, Kanada, ahol va
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

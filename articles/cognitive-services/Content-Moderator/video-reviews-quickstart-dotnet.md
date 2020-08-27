@@ -10,12 +10,13 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931676"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919318"
 ---
 # <a name="create-video-reviews-using-net"></a>Videós felülvizsgálatok létrehozása a .NET használatával
 
@@ -92,7 +93,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Privát tulajdonságok hozzáadása
 
-Adja hozzá a következő privát tulajdonságokat a névtér **VideoReviews**, az osztály **programhoz**. Frissítse a `AzureEndpoint` és `CMSubscriptionKey` a mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
+Adja hozzá a következő privát tulajdonságokat a névtér **VideoReviews**, az osztály **programhoz**. Frissítse a `AzureEndpoint` és a `CMSubscriptionKey` mezőket a végpont URL-címének és előfizetési kulcsának értékeivel. Ezeket a Azure Portalban található erőforrás **gyors üzembe helyezés** lapján találja.
 
 
 ```csharp
@@ -157,7 +158,7 @@ Hozzon létre egy videó-áttekintést a **ContentModeratorClient. Reviews. Crea
 A **CreateVideoReviews** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie. 
 1. Az Content Moderator-csoport neve.
-1. Egy **IList\<CreateVideoReviewsBodyItem>** objektumot. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
+1. Egy **IList \<CreateVideoReviewsBodyItem> ** objektum. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
 
 A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a következő tulajdonságokat kell beállítania:
 - **Tartalom**. Az áttekinteni kívánt videó URL-címe.
@@ -165,7 +166,7 @@ A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a 
 - **Állapot**. Állítsa az értéket "közzététel előtt" értékre. Ha nem állítja be, a rendszer alapértelmezés szerint "függőben" állapotba kerül, ami azt jelenti, hogy a videó felülvizsgálata közzé van téve, és az emberi felülvizsgálat függőben van. A videó felülvizsgálatának közzététele után már nem adhat hozzá képkockákat, átiratokat vagy átiratok moderálási eredményét.
 
 > [!NOTE]
-> A **CreateVideoReviews** egy IList\<karakterláncot ad vissza>. Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével. 
+> A **CreateVideoReviews** egy IList ad vissza \<string> . Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével. 
 
 Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
 
@@ -215,18 +216,18 @@ A **AddVideoFrameUrl** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie.
 1. Az Content Moderator-csoport neve.
 1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
-1. Egy **IList\<VideoFrameBodyItem>** objektumot. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
+1. Egy **IList \<VideoFrameBodyItem> ** objektum. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
 
 A **VideoFrameBodyItem** a következő tulajdonságokkal rendelkezik:
 - **Időbélyeg**. Egy karakterlánc, amely másodpercek alatt azt a videót tartalmazza, amelyből a videó keretet készített.
 - **FrameImage**. A videó keretének URL-címe
-- **Metaadatok**. Egy IList\<VideoFrameBodyItemMetadataItem>. A **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Az érvényes kulcsok a következők:
+- **Metaadatok**. Egy IList \<VideoFrameBodyItemMetadataItem> . A **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Az érvényes kulcsok a következők:
 - **reviewRecommended**. Igaz, ha a videó keretének emberi felülvizsgálata ajánlott.
 - **adultScore**. 0 és 1 közötti érték, amely a videó keretében lévő felnőtt tartalom súlyosságát értékeli.
 - **a**. Igaz, ha a videó felnőtt tartalmat tartalmaz.
 - **racyScore**. 0 és 1 közötti érték, amely a videó keretében a zamatos tartalom súlyosságát értékeli.
 - **r**. Értéke true, ha a videó kerete tartalmaz zamatos tartalmat.
-- **ReviewerResultTags**. Egy IList\<VideoFrameBodyItemReviewerResultTagsItem>. A **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás ezeket a címkéket használhatja a képkockák rendszerezéséhez.
+- **ReviewerResultTags**. Egy IList \<VideoFrameBodyItemReviewerResultTagsItem> . A **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás ezeket a címkéket használhatja a képkockák rendszerezéséhez.
 
 > [!NOTE]
 > Ez a rövid útmutató véletlenszerű értékeket hoz létre a **adultScore** és a **racyScore** tulajdonsághoz. Éles alkalmazásokban ezeket az értékeket az Azure Media Service-ben üzembe helyezett [videó-moderálási szolgáltatásból](video-moderation-api.md)szerezheti be.
@@ -541,7 +542,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>Tekintse meg a videó felülvizsgálatát
 
-Végezetül tekintse meg a videó felülvizsgálatot a Content moderator felülvizsgálati eszköz fiókjában a **Review**>**videó** áttekintése képernyőn.
+Végezetül tekintse meg a videó felülvizsgálatot a Content moderator felülvizsgálati eszköz fiókjában a **Review** > **videó** áttekintése képernyőn.
 
 ![Az emberi moderátorok videós áttekintése](images/ams-video-review.PNG)
 

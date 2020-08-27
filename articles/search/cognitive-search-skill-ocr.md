@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a6902d1420090b81c933f07f7e929aa86c052404
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 56e3c1e48df51cd24d70517ee23d47ef27d378d7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009239"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935330"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
 
-Az **optikai karakterfelismerési (OCR)** képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
+Az **optikai karakterfelismerési (OCR)** képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](../cognitive-services/computer-vision/home.md) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
 
 + Angol, spanyol, német, francia, olasz, portugál és holland nyelven az új ["READ"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API használatos.
 + Az összes többi nyelv esetében az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API használatos.
@@ -208,8 +208,8 @@ A fenti készségkészlet példa azt feltételezi, hogy a normalizált lemezkép
 }
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [TextMerger-szakértelem](cognitive-search-skill-textmerger.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexelő létrehozása (REST)](/rest/api/searchservice/create-indexer)

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a fizikai kiszolgálók ért�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: aba1608c9219e7e8dffe66344b04fa3f085b06f3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420787"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927374"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba történő értékelésére és áttelepítésére
 
@@ -35,11 +35,12 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Állítsa be az Azure-t, hogy működjön együtt Azure Migrateokkal. 
 
-**Feladat** | **Részletek** 
+**Tevékenység** | **Részletek** 
 --- | --- 
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához. 
 **Erőforrás-szolgáltatók regisztrálása (csak értékelés)** | A Azure Migrate egy könnyű Azure Migrate berendezéssel észleli és értékeli a gépeket a Azure Migrate: Server Assessment használatával.<br/><br/> A készülék regisztrálása során az erőforrás-szolgáltatók regisztrálva vannak a berendezésben kiválasztott előfizetésben. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.
 **Azure AD-alkalmazás létrehozása (csak értékelés)** | A berendezés regisztrálása során Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást, amely a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz használható. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Engedélyekre van szüksége az Azure AD-alkalmazások (az Application Developer) szerepkörben való létrehozásához.
+**Kulcstartó létrehozása** | A Key Vault a készülék regisztrációjának részeként jön létre, és a konfiguráció során a készüléken letöltött tanúsítvány kezelésére szolgál.<br/><br/>Ahhoz, hogy a Azure Migrate létrehozza a Key Vault, az Azure-fióknak közreműködői engedélyekkel kell rendelkeznie azon az erőforráscsoporthoz, amelyben a Azure Migrate projekt található.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához 
@@ -86,7 +87,7 @@ A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői sz
 
 Készítse elő az Azure-t a fizikai kiszolgálók áttelepítéséhez a kiszolgáló áttelepítése révén.
 
-**Feladat** | **Részletek**
+**Tevékenység** | **Részletek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
@@ -159,7 +160,7 @@ Tekintse át a fizikai kiszolgálók áttelepítésére vonatkozó követelmény
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
