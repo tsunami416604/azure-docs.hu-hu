@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565923"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917958"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Teljes szöveges keresés az Azure Cognitive Search
 
@@ -49,7 +49,7 @@ Az alábbi ábra a keresési kérések feldolgozásához használt összetevőke
 
 A keresési kérések teljes körűen meghatározzák, hogy mit kell visszaadni egy eredményhalmaz. Legegyszerűbb formában ez egy üres lekérdezés, amely nem tartalmaz semmiféle feltételt. A reálisabb példa többek között paramétereket, több lekérdezési kifejezést is magában foglal, például bizonyos mezőkre, például egy szűrési kifejezésre és a megrendelési szabályokra.  
 
-A következő példa egy olyan keresési kérelem, amelyet az Azure-Cognitive Search küldhet az [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.  
+A következő példa egy olyan keresési kérelem, amelyet az Azure-Cognitive Search küldhet az [REST API](/rest/api/searchservice/search-documents)használatával.  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2020-06-30
@@ -69,7 +69,7 @@ Ehhez a kérelemhez a keresőmotor a következő műveleteket végzi el:
 2. Végrehajtja a lekérdezést. Ebben a példában a keresési lekérdezés kifejezésekből és kifejezésből áll: `"Spacious, air-condition* +\"Ocean view\""` (a felhasználók általában nem adnak meg írásjeleket, de a példában szereplő módon lehetővé teszi, hogy elmagyarázza, hogyan kezeli a elemzőket). Ebben a lekérdezésben a keresőmotor megvizsgálja az `searchFields` "Ocean View" és a "tágas" kifejezéssel, illetve a "légkondicionáló" előtaggal kezdődő feltételekben megadott leírási és title mezőket. A `searchMode` paraméter minden olyan kifejezésre (alapértelmezett) vagy mindegyikre vonatkozik, amelynél nincs expliciten kötelező kifejezés ( `+` ).
 3. Megrendeli az eredményül kapott szállodákat egy adott földrajzi hely közelében, majd visszaadja a hívó alkalmazásnak. 
 
-Ennek a cikknek a többsége a *keresési lekérdezés*feldolgozását ismerteti: `"Spacious, air-condition* +\"Ocean view\""` . A szűrés és a megrendelés a hatókörön kívül esik. További információkért tekintse meg a [Search API-referenciák dokumentációját](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Ennek a cikknek a többsége a *keresési lekérdezés*feldolgozását ismerteti: `"Spacious, air-condition* +\"Ocean view\""` . A szűrés és a megrendelés a hatókörön kívül esik. További információkért tekintse meg a [Search API-referenciák dokumentációját](/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>1. lépés: lekérdezés elemzése 
@@ -86,7 +86,7 @@ A lekérdezés-elemző a keresési kifejezésektől elkülöníti a operátoroka
 + kifejezések *lekérdezése* idézőjelek között (például Ocean View)
 + előtag- *lekérdezés* a kifejezésekhez, majd egy előtag `*` -operátor (például a légkondicionáló).
 
-A támogatott lekérdezési típusok teljes listáját lásd: [Lucene lekérdezési szintaxisa](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
+A támogatott lekérdezési típusok teljes listáját lásd: [Lucene lekérdezési szintaxisa](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
 Az allekérdezéshez társított operátorok határozzák meg, hogy a lekérdezésnek "vagy" értékűnek kell lennie ahhoz, hogy egy dokumentum egyezésnek tekintendő legyen. Például `+"Ocean view"` a "kötelező" a `+` kezelő miatt. 
 
@@ -96,7 +96,7 @@ A lekérdezés-elemző átstrukturálja az allekérdezéseket egy *lekérdezési
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Támogatott elemzők: egyszerű és teljes Lucene 
 
- Az Azure Cognitive Search két különböző lekérdezési nyelvet tesz elérhetővé `simple` (alapértelmezett) és `full` . `queryType`Ha a paramétert a keresési kérelemre állítja be, a lekérdezési elemzőnek meg kell határoznia, hogy melyik lekérdezési nyelvet választotta, hogy tudja, hogyan kell értelmezni a kezelőket és a szintaxist. Az [egyszerű lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) intuitív és robusztus, ami gyakran alkalmas arra, hogy az ügyféloldali feldolgozás nélkül értelmezze a felhasználói adatokat. Támogatja a webes keresőmotorokból ismerős lekérdezési operátorokat. A beállítás által beolvasott [teljes Lucene lekérdezési nyelv](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) `queryType=full` kibővíti az alapértelmezett egyszerű lekérdezési nyelvet azáltal, hogy további operátorokat és lekérdezési típusokat (például helyettesítő karaktert, fuzzy, regexet és mező-hatókörű lekérdezéseket) ad hozzá. Az egyszerű lekérdezési szintaxisban eljuttatott reguláris kifejezés például lekérdezési karakterláncként, nem pedig kifejezésként értelmezhető. A cikkben szereplő példa a teljes Lucene lekérdezési nyelvet használja.
+ Az Azure Cognitive Search két különböző lekérdezési nyelvet tesz elérhetővé `simple` (alapértelmezett) és `full` . `queryType`Ha a paramétert a keresési kérelemre állítja be, a lekérdezési elemzőnek meg kell határoznia, hogy melyik lekérdezési nyelvet választotta, hogy tudja, hogyan kell értelmezni a kezelőket és a szintaxist. Az [egyszerű lekérdezési nyelv](/rest/api/searchservice/simple-query-syntax-in-azure-search) intuitív és robusztus, ami gyakran alkalmas arra, hogy az ügyféloldali feldolgozás nélkül értelmezze a felhasználói adatokat. Támogatja a webes keresőmotorokból ismerős lekérdezési operátorokat. A beállítás által beolvasott [teljes Lucene lekérdezési nyelv](/rest/api/searchservice/lucene-query-syntax-in-azure-search) `queryType=full` kibővíti az alapértelmezett egyszerű lekérdezési nyelvet azáltal, hogy további operátorokat és lekérdezési típusokat (például helyettesítő karaktert, fuzzy, regexet és mező-hatókörű lekérdezéseket) ad hozzá. Az egyszerű lekérdezési szintaxisban eljuttatott reguláris kifejezés például lekérdezési karakterláncként, nem pedig kifejezésként értelmezhető. A cikkben szereplő példa a teljes Lucene lekérdezési nyelvet használja.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Az elemző searchMode gyakorolt hatása 
 
@@ -123,7 +123,7 @@ A lekérdezés módosított lekérdezési fájának a következőnek kell lennie
  ![Searchmode logikai lekérdezés][3]
 
 > [!Note] 
-> `searchMode=any`A többit megillető `searchMode=all` döntés a legjobb választás a reprezentatív lekérdezések futtatásával. Azok a felhasználók, akik valószínűleg belefoglalják az operátorokat (a dokumentumtárakban való kereséskor gyakran előfordulnak), az eredmények könnyebben megjelenhetnek, ha a `searchMode=all` logikai lekérdezési szerkezeteket tájékoztatja. A és a operátorok közötti interakcióról további információt az `searchMode` [egyszerű lekérdezés szintaxisa](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)című témakörben talál.
+> `searchMode=any`A többit megillető `searchMode=all` döntés a legjobb választás a reprezentatív lekérdezések futtatásával. Azok a felhasználók, akik valószínűleg belefoglalják az operátorokat (a dokumentumtárakban való kereséskor gyakran előfordulnak), az eredmények könnyebben megjelenhetnek, ha a `searchMode=all` logikai lekérdezési szerkezeteket tájékoztatja. A és a operátorok közötti interakcióról további információt az `searchMode` [egyszerű lekérdezés szintaxisa](/rest/api/searchservice/simple-query-syntax-in-azure-search)című témakörben talál.
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>2. fázis: lexikális analízis 
@@ -137,10 +137,10 @@ A lexikális analízis leggyakoribb formája a *nyelvi elemzés* , amely az adot
 * Összetett szó lebontása összetevő-részekre 
 * Alsó borítású szó kisbetűvel 
 
-Az összes művelet általában törli a felhasználó által megadott szövegbevitel és az indexben tárolt feltételek közötti különbségeket. Az ilyen műveletek túlmutatnak a szöveg feldolgozásán, és a nyelv részletes ismeretét igényli. Az Azure Cognitive Search a nyelvi [elemzések](https://docs.microsoft.com/rest/api/searchservice/language-support) egy hosszú listáját támogatja a Lucene és a Microsofttól.
+Az összes művelet általában törli a felhasználó által megadott szövegbevitel és az indexben tárolt feltételek közötti különbségeket. Az ilyen műveletek túlmutatnak a szöveg feldolgozásán, és a nyelv részletes ismeretét igényli. Az Azure Cognitive Search a nyelvi [elemzések](/rest/api/searchservice/language-support) egy hosszú listáját támogatja a Lucene és a Microsofttól.
 
 > [!Note]
-> Az elemzési követelmények a forgatókönyvtől függően minimálisról kidolgozhatók. A lexikális analízis bonyolultságát az előre definiált elemzők egyikének kiválasztásával vagy a saját [Egyéni analizátor](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)létrehozásával szabályozhatja. Az elemzők a kereshető mezőkre vannak kiterjedően, és a mező definíciójának részeként vannak megadva. Ez lehetővé teszi, hogy a lexikális elemzést egy mező alapján változtassa meg. Meghatározatlan, a *standard* Lucene Analyzer használatos.
+> Az elemzési követelmények a forgatókönyvtől függően minimálisról kidolgozhatók. A lexikális analízis bonyolultságát az előre definiált elemzők egyikének kiválasztásával vagy a saját [Egyéni analizátor](/rest/api/searchservice/Custom-analyzers-in-Azure-Search)létrehozásával szabályozhatja. Az elemzők a kereshető mezőkre vannak kiterjedően, és a mező definíciójának részeként vannak megadva. Ez lehetővé teszi, hogy a lexikális elemzést egy mező alapján változtassa meg. Meghatározatlan, a *standard* Lucene Analyzer használatos.
 
 A példánkban az elemzést megelőzően a kezdeti lekérdezési fa a "tágas" kifejezést, egy nagybetűvel és egy vesszőt tartalmaz, amelyet a lekérdezési elemző a lekérdezési kifejezés részeként értelmez (a vesszőt nem tekinti a lekérdezési nyelv operátornak).  
 
@@ -150,7 +150,7 @@ Ha az alapértelmezett elemző feldolgozza a kifejezést, az az "Ocean View" és
 
 ### <a name="testing-analyzer-behaviors"></a>Az analizátor viselkedésének tesztelése 
 
-Az analizátor viselkedését az [elemzés API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)használatával lehet tesztelni. Adja meg az elemezni kívánt szöveget, és tekintse meg, hogy az adott elemző milyen feltételekkel fog létrejönni. Ha például azt szeretné látni, hogy a standard Analyzer hogyan dolgozza fel a "légkondicionáló" szöveget, a következő kérést adhatja ki:
+Az analizátor viselkedését az [elemzés API](/rest/api/searchservice/test-analyzer)használatával lehet tesztelni. Adja meg az elemezni kívánt szöveget, és tekintse meg, hogy az adott elemző milyen feltételekkel fog létrejönni. Ha például azt szeretné látni, hogy a standard Analyzer hogyan dolgozza fel a "légkondicionáló" szöveget, a következő kérést adhatja ki:
 
 ~~~~
 {
@@ -251,7 +251,7 @@ Gyakori, de nem kötelező, ha ugyanazokat az elemzőket használja a keresési 
 
 Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a következőképpen néz ki:
 
-| Kifejezés | Dokumentumok listája |
+| Időszak | Dokumentumok listája |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -265,7 +265,7 @@ A title (cím) mezőben csak a ( *z* ) két dokumentum jelenik meg: 1, 3.
 
 A **Leírás** mezőben az index a következő:
 
-| Kifejezés | Dokumentumok listája |
+| Időszak | Dokumentumok listája |
 |------|---------------|
 | levegő | 3
 | és | 4
@@ -286,7 +286,7 @@ A **Leírás** mezőben az index a következő:
 | Shore | 2
 | tágas | 1
 | műveletnek a(z) | 1, 2
-| erre: | 1
+| a következőre: | 1
 | megtekintése | 1, 2, 3
 | séta | 1
 | a | 3
@@ -359,8 +359,8 @@ Ebben a példában egy példa szemlélteti, hogy miért fontos a kérdés. A hel
 
 Az Azure Cognitive Searchban kétféleképpen hangolhatja be a relevancia pontszámait:
 
-1. A **pontozási profilok** a szabályok egy halmaza alapján támogatják az eredmények rangsorolt listáján szereplő dokumentumokat. A példánkban a title (cím) mezőben szereplő dokumentumokat a Leírás mezőben szereplő dokumentumokra vonatkozó szempontok szerint érdemes megfontolni. Továbbá, ha az indexünk minden egyes szállodára érvényes, akkor alacsonyabb díjszabású dokumentumokat is támogatunk. További információ a [pontozási profilok keresési indexhez való hozzáadásáról.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) olyan fellendítő operátort biztosít `^` , amely a lekérdezési fa bármely részén alkalmazható. A példánkban az előtagot a *levegő feltételének*megkeresése helyett \* az egyik a pontos *állapotot* vagy az előtagot is megkeresheti, de a pontos kifejezéssel megegyező dokumentumok magasabbra vannak rangsorolva, ha a lekéréses lekérdezésre a következő feltételek vonatkoznak: * Air-condition ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+1. A **pontozási profilok** a szabályok egy halmaza alapján támogatják az eredmények rangsorolt listáján szereplő dokumentumokat. A példánkban a title (cím) mezőben szereplő dokumentumokat a Leírás mezőben szereplő dokumentumokra vonatkozó szempontok szerint érdemes megfontolni. Továbbá, ha az indexünk minden egyes szállodára érvényes, akkor alacsonyabb díjszabású dokumentumokat is támogatunk. További információ a [pontozási profilok keresési indexhez való hozzáadásáról.](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) olyan fellendítő operátort biztosít `^` , amely a lekérdezési fa bármely részén alkalmazható. A példánkban az előtagot a *levegő feltételének*megkeresése helyett \* az egyik a pontos *állapotot* vagy az előtagot is megkeresheti, de a pontos kifejezéssel megegyező dokumentumok magasabbra vannak rangsorolva, ha a lekéréses lekérdezésre a következő feltételek vonatkoznak: * Air-condition ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Pontozás egy elosztott indexben
@@ -371,7 +371,7 @@ Ez azt jelenti, hogy a *relevancia pontszáma* eltérő lehet az azonos dokument
 
 Általánosságban elmondható, hogy a dokumentum pontszáma nem a legjobb megoldás a dokumentumok rendezéséhez, ha a megrendelés stabilitása fontos. Ha például két, azonos pontszámmal rendelkező dokumentumot adott meg, akkor nincs garancia arra, hogy az adott lekérdezés későbbi futtatása során az egyik első jelenik meg. A dokumentum pontszáma csak az eredmények készletében lévő többi dokumentumra vonatkozó általános értelemben vett dokumentum-megfelelőséget adja meg.
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 
 Az internetes keresőprogramok sikere miatt a teljes szöveges keresésre vonatkozó elvárások merültek fel a magánjellegű adatokon. Mostantól szinte bármilyen keresési élményhez elvárjuk, hogy a motor megértse a szándékát, még akkor is, ha a feltételek helytelenül vannak írva vagy hiányosak. Az is előfordulhat, hogy az egyezéseket a közel azonos feltételek vagy szinonimák alapján is elvárjuk, amelyeket valójában nem adtunk meg.
 
@@ -383,23 +383,23 @@ Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search konte
 
 + Hozza létre a minta indexet, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [index létrehozása és lekérdezése a portálon](search-get-started-portal.md#query-index).
 
-+ További lekérdezési szintaxist a [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) example szakasz vagy az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a Search Explorerben a portálon.
++ További lekérdezési szintaxist a [Search Documents](/rest/api/searchservice/search-documents#bkmk_examples) example szakasz vagy az [egyszerű lekérdezési szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) a Search Explorerben a portálon.
 
-+ Tekintse át a [pontozási profilokat](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , ha a keresési alkalmazásban szeretné hangolni a rangsorolást.
++ Tekintse át a [pontozási profilokat](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , ha a keresési alkalmazásban szeretné hangolni a rangsorolást.
 
-+ Megtudhatja, hogyan alkalmazhat [nyelvi specifikus lexikális elemzőket](https://docs.microsoft.com/rest/api/searchservice/language-support).
++ Megtudhatja, hogyan alkalmazhat [nyelvi specifikus lexikális elemzőket](/rest/api/searchservice/language-support).
 
-+ [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
++ [Egyéni elemzők konfigurálása](/rest/api/searchservice/custom-analyzers-in-azure-search) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
 ## <a name="see-also"></a>Lásd még
 
-[Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents) 
 
-[Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[Egyszerű lekérdezési szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Teljes Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Teljes Lucene lekérdezési szintaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
-[A keresési eredmények kezelése](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+[A keresési eredmények kezelése](./search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

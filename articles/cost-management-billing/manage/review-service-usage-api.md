@@ -3,15 +3,16 @@ title: Azure-szolgáltatások erőforrás-használatának áttekintése REST API
 description: Megtudhatja, hogyan tekintheti át az Azure-szolgáltatások erőforrás-használatát Azure REST API-kkal. Költségkezelési jelentés létrehozása, és adott erőforrástípusok szűrése.
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 89767ff64da0473feef9e1d340ee4046cd4a1373
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: a7b06ff41e537513558e7f4dc8e1732966299b01
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461714"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684728"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Azure-erőforráshasználat áttekintése a REST API-val
 

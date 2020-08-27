@@ -4,14 +4,15 @@ description: Számos skálázási helyzetben a vásárlónak gyakran több péld
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74158161"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921987"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezheti a Signaler szolgáltatást több példányon?
 A legújabb Signaler Service SDK támogatja a Signaler szolgáltatás példányainak több végpontját. Ezzel a szolgáltatással méretezheti az egyidejű kapcsolatokat, vagy felhasználhatja a régiók közötti üzenetkezeléshez.
@@ -217,7 +218,7 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 Az `ServiceEndpoint` objektum `EndpointType` tulajdonsága értéke `primary` vagy `secondary` .
 
-`primary`a végpontok előnyben részesített végpontok az ügyfél forgalmának fogadására, és megbízhatóbb hálózati kapcsolatnak tekintendők. a `secondary` végpontoknak kevesebb megbízható hálózati kapcsolattal kell rendelkezniük, és csak azért használják a kiszolgálót az ügyfelek forgalmára, mint például a szórási üzenetek, nem pedig az ügyfél és a kiszolgáló közötti adatforgalom.
+`primary` a végpontok előnyben részesített végpontok az ügyfél forgalmának fogadására, és megbízhatóbb hálózati kapcsolatnak tekintendők. a `secondary` végpontoknak kevesebb megbízható hálózati kapcsolattal kell rendelkezniük, és csak azért használják a kiszolgálót az ügyfelek forgalmára, mint például a szórási üzenetek, nem pedig az ügyfél és a kiszolgáló közötti adatforgalom.
 
 Régiók közötti esetekben a hálózat instabil lehet. Az *USA keleti*régiójában található egyik app Server esetében az UGYANABBAN az USA-beli *keleti* régióban található Signal Service-végpont konfigurálható `primary` más régiókban, illetve végpontként is `secondary` . Ebben a konfigurációban a más régiókban lévő szolgáltatási végpontok **fogadhatnak** e-maileket erről az USA-beli *East* app Server-kiszolgálóról, de nem lesznek átirányítva **régiók közötti** ügyfelek az adott app Serverhez. Az architektúra az alábbi ábrán látható:
 

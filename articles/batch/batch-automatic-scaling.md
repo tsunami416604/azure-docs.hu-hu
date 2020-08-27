@@ -3,13 +3,13 @@ title: Számítási csomópontok automatikus méretezése egy Azure Batch-készl
 description: A készletben lévő számítási csomópontok számának dinamikus beállításához engedélyezze a Felhőbeli készlet automatikus méretezését.
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387472"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932321"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -188,11 +188,11 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
 Ternáris operátorral () való dupla tesztelés esetén a nem `double ? statement1 : statement2` nulla érték **igaz**, és a nulla **hamis**.
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 Ezeket az előre definiált **függvényeket** használhatja az autoscale-képletek definiálásához.
 
-| Függvény | Visszatérési típus | Description |
+| Függvény | Visszatérési típus | Leírás |
 | --- | --- | --- |
 | átlag (doubleVecList) |double |A doubleVecList lévő összes érték átlagos értékét adja vissza. |
 | Len (doubleVecList) |double |A doubleVecList létrehozott vektor hosszát adja vissza. |
@@ -255,7 +255,7 @@ Képletek definiálásakor az erőforrás és a tevékenység mérőszámait is 
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Feladat</b></td>
+    <td><b>Tevékenység</b></td>
     <td><p>A tevékenységek mérőszámai a feladatok állapotán alapulnak, például az aktív, a függőben lévő és a befejezett műveletekkel. A következő, szolgáltatás által definiált változók hasznosak lehetnek a készletre vonatkozó méretek végrehajtásához a tevékenységek metrikái alapján:</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -281,9 +281,9 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 A következő módszerek használhatók a szolgáltatás által definiált változókra vonatkozó mintaadatok beszerzéséhez.
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 | --- | --- |
-| GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`: Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból. `GetSample(1)`az utolsó elérhető mintát adja vissza. A hasonló mérőszámok esetében `$CPUPercent` azonban `GetSample(1)` nem ajánlott használni, mert a minta gyűjtése nem lehetséges. *when* Lehet, hogy a közelmúltban vagy a rendszerproblémák miatt sokkal régebbi lehet. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben. Például a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 mintát kell visszaadnia, ha az elmúlt 10 percben az összes minta megtalálható az `CPUPercent` előzményekben. Ha a korábbi előzmények nem voltak elérhetők, csak 18 mintát ad vissza. Ebben az esetben `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` sikertelen lesz, mert a minták csak 90%-a érhető el, de `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Az adatgyűjtés időkeretét adja meg a kezdési és befejezési időponttal együtt. A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtése és a képletek elérhetővé válása között eltelt időt vesz igénybe. Ezt a késleltetést a metódus használatakor érdemes figyelembe venni `GetSample` . Lásd `GetSamplePercent` alább. |
+| GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`: Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból. `GetSample(1)` az utolsó elérhető mintát adja vissza. A hasonló mérőszámok esetében `$CPUPercent` azonban `GetSample(1)` nem ajánlott használni, mert a minta gyűjtése nem lehetséges. *when* Lehet, hogy a közelmúltban vagy a rendszerproblémák miatt sokkal régebbi lehet. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben. Például a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 mintát kell visszaadnia, ha az elmúlt 10 percben az összes minta megtalálható az `CPUPercent` előzményekben. Ha a korábbi előzmények nem voltak elérhetők, csak 18 mintát ad vissza. Ebben az esetben `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` sikertelen lesz, mert a minták csak 90%-a érhető el, de `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Az adatgyűjtés időkeretét adja meg a kezdési és befejezési időponttal együtt. A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtése és a képletek elérhetővé válása között eltelt időt vesz igénybe. Ezt a késleltetést a metódus használatakor érdemes figyelembe venni `GetSample` . Lásd `GetSamplePercent` alább. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
 | Darabszám () |A metrikus előzményekben szereplő minták teljes számát adja vissza. |
 | HistoryBeginTime() |A metrika legrégebbi rendelkezésre állási mintájának időbélyegét adja vissza. |
@@ -667,7 +667,7 @@ $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
 
-`$curTime`a helyi időzónának megfelelően módosítható úgy, hogy hozzáadja `time()` a termékhez `TimeZoneInterval_Hour` és az UTC-eltoláshoz. Például `$curTime = time() + (-6 * TimeInterval_Hour);` a hegyvidéki nyári idő (MDT) használatával. Ne feledje, hogy az eltolást a nyári időszámítási idő elején és végén kell módosítani (ha van ilyen).
+`$curTime` a helyi időzónának megfelelően módosítható úgy, hogy hozzáadja `time()` a termékhez `TimeZoneInterval_Hour` és az UTC-eltoláshoz. Például `$curTime = time() + (-6 * TimeInterval_Hour);` a hegyvidéki nyári idő (MDT) használatával. Ne feledje, hogy az eltolást a nyári időszámítási idő elején és végén kell módosítani (ha van ilyen).
 
 ### <a name="example-2-task-based-adjustment"></a>2. példa: feladat-alapú beállítás
 
@@ -736,7 +736,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [hajthat végre egyszerre több feladatot a készlet számítási csomópontjain](batch-parallel-node-tasks.md). Az automatikus skálázással együtt az egyes munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 - Megtudhatja, hogyan lehet [hatékonyan lekérdezni a Azure batch szolgáltatást](batch-efficient-list-queries.md) a további hatékonyság érdekében.

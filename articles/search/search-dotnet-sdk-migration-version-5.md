@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171907"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923211"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Frissítés a Azure Search .NET SDK 5-ös verziójára
 
-Ha a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)4,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás 5-ös verzióra való frissítéséhez.
+Ha a [.net SDK](/dotnet/api/overview/azure/search)4,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás 5-ös verzióra való frissítéséhez.
 
 Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
@@ -35,7 +35,7 @@ A Azure Search .NET SDK 5-ös verziója néhány változást tartalmaz a korább
 A Azure Search .NET SDK 5-ös verziója a Azure Search REST API legújabb általánosan elérhető verzióját célozza meg, pontosabban 2017-11-11. Ez lehetővé teszi a Azure Search új funkcióinak használatát egy .NET-alkalmazásból, beleértve a következőket:
 
 * [Szinonimák](search-synonyms.md).
-* Mostantól programozott módon férhet hozzá a figyelmeztetésekhez az indexelő végrehajtási előzményeiben ( `Warning` `IndexerExecutionResult` További részletekért lásd a [.net-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) található tulajdonságot).
+* Mostantól programozott módon férhet hozzá a figyelmeztetésekhez az indexelő végrehajtási előzményeiben ( `Warning` `IndexerExecutionResult` További részletekért lásd a [.net-referenciában](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) található tulajdonságot).
 * A .NET Core 2 támogatása.
 * Az új csomag szerkezete csak az SDK által igényelt részek használatát támogatja (részletekért lásd az [5. verzióban](#ListOfChanges) megjelenő változásokat).
 
@@ -97,7 +97,7 @@ Ha a 4,0-es verzióról frissít az 5. verzióra, vegye figyelembe, hogy a rends
 
 Ha az alkalmazás nem rendelkezik a funkciókhoz szükséges függőséggel, nem fogja tudni frissíteni a Azure Search .NET SDK 5-ös verziójára. Továbbra is használhatja a 4,0-es verziót – előzetes verzió. Ne feledje azonban, hogy az **előnézeti SDK-k éles alkalmazásokban való használatát nem javasoljuk**. Az előzetes verziójú funkciók csak értékelésre használhatók, és változhatnak.
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 Ha további részletekre van szüksége a Azure Search .NET SDK használatával kapcsolatban, tekintse meg a [.net útmutató](search-howto-dotnet-sdk.md)című témakört.
 
 Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét "[Azure Search]" előtaggal adja meg.

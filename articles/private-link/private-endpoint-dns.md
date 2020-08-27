@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985784"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918128"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Private Endpoint DNS-konfiguráció
 
@@ -33,6 +33,9 @@ A következő beállításokkal konfigurálhatja a magánhálózati végpontok D
 Az Azure-szolgáltatások egy kanonikus DNS-rekordot (CNAME) hoznak létre a nyilvános DNS-szolgáltatásban, hogy átirányítsák a felbontást a javasolt privát tartomány nevére. Felülbírálhatja a felbontást a privát végpontok magánhálózati IP-címével. 
  
 Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyilvános DNS-szolgáltatás használatával próbál feloldani, a DNS-kiszolgáló most feloldja a magánhálózati végpontokat. A folyamat nem érinti a meglévő alkalmazásokat. 
+
+> [!IMPORTANT]
+> A magánhálózati DNS-zónát egy adott típushoz már használó magánhálózatok csak akkor csatlakozhatnak nyilvános erőforrásokhoz, ha nem rendelkeznek magánhálózati végponti kapcsolatokkal, ellenkező esetben a DNS-zónához tartozó DNS-konfiguráció szükséges a DNS-feloldási folyamat befejezéséhez. 
 
 Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az alábbi táblázatban leírtak szerint:
 

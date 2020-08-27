@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a9564576715c32f8bcc871d10fae50f139aacdb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420634"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932151"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
 
@@ -462,8 +462,8 @@ Az eredmények földrajzi távolság alapján történő megjelenítéséhez tö
 
 4. Most össze kell kötnie ezeket a fogalmakat. Ezek a kódrészletek azonban a jelen oktatóanyagban is elérhetők, így a térképes alkalmazások létrehozása az olvasó számára is megmarad. Ahhoz, hogy ez a példa továbbra is megtörténjen, vegye fontolóra egy város nevének beírását egy sugárral, vagy egy pont megkeresését a térképen, és kiválaszthatja a sugarat. Ezen beállítások további vizsgálatához tekintse meg a következő forrásokat:
 
-* [Az Azure Maps dokumentációja](https://docs.microsoft.com/azure/azure-maps/)
-* [Címek keresése a Azure Maps Search szolgáltatással](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Az Azure Maps dokumentációja](../azure-maps/index.yml)
+* [Címek keresése a Azure Maps Search szolgáltatással](../azure-maps/how-to-search-for-address.md)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Eredmények megrendelése pontozási profil alapján
 
@@ -957,9 +957,9 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 4. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Erőforrások
 
-További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)című témakörben talál.
+További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](/azure/search/index-add-scoring-profiles)című témakörben talál.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
@@ -971,8 +971,8 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Természetes, hogy egyes eredmények növekvő sorrendben legyenek rendezve (azaz távolság egy ponttól), és néhány csökkenő sorrendben (azaz a vendég minősítése).
 * A pontozási profilok meghatározhatók, ha a numerikus összehasonlítások nem érhetők el, vagy nem elég intelligensek egy adatkészlethez. Az egyes eredmények pontozásával intelligens módon rendezheti és jelenítheti meg az eredményeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Elvégezte ezt a C#-oktatóanyagokat – értékes ismereteket szerzett az Azure Cognitive Search API-król.
 
-További tudnivalókat és oktatóanyagokat az [Azure Cognitive Search dokumentációjában találhat](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)vagy más oktatóanyagokat.
+További tudnivalókat és oktatóanyagokat az [Azure Cognitive Search dokumentációjában találhat](./index.yml) [Microsoft Learn](/learn/browse/?products=azure)vagy más oktatóanyagokat.

@@ -7,15 +7,16 @@ author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: 7522df94a0055af398f1fdbf2050e132f5519eb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 397239f92e3b07669a22481b07a67d9859176b7a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092694"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932338"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics engedélyezése az Azure-ban Cloud Services
 A Azure Diagnostics hátterének [Azure Diagnostics áttekintését](../azure-diagnostics.md) lásd:.
@@ -192,7 +193,7 @@ A diagnosztikai konfigurációs fájl határozza meg azokat az értékeket, amel
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha problémája van, tekintse meg a gyakori problémákkal kapcsolatos segítségért [Azure Diagnostics hibaelhárítással](../azure-diagnostics-troubleshooting.md) foglalkozó témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Tekintse meg a kapcsolódó Azure virtuális gépek diagnosztikai cikkeinek listáját](../azure-monitor/platform/diagnostics-extension-overview.md) a gyűjtött adatok módosításához, a problémák elhárításához, illetve a diagnosztika általános megismeréséhez.
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
