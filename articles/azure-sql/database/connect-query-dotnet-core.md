@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-csharp
 ms.devlang: dotnet
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5da69c4bc0770c4588dce95b01386e6a5be75eec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504580"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936401"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET Core (C#) használata egy adatbázis lekérdezéséhez Azure SQL Database vagy Azure SQL felügyelt példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
+Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Egy adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist:
@@ -59,7 +59,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
+2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett, Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
@@ -202,7 +202,7 @@ namespace sqltest
 
 3. Az alkalmazás ablakának bezárásához kattintson az **ENTER** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - Ismerkedjen meg [a .NET-keretrendszer és a Visual Studio használatával a Azure SQL Database vagy az Azure SQL felügyelt példányának összekapcsolásával és lekérdezésével](connect-query-dotnet-visual-studio.md).  

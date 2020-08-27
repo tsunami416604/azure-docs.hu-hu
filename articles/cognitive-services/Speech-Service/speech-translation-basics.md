@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 8c9a99927512ed842fc05e4f3067b2732fc2d00b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1efc665add9b07c4922b376e9e8394ed4eefd17a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405830"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925256"
 ---
 # <a name="learn-the-basics-of-speech-translation"></a>Ismerkedjen meg a beszédfelismerés alapjaival
 
@@ -53,6 +53,6 @@ A Speech Service egyik fő funkciója az emberi beszéd felismerése és más ny
 [!INCLUDE [More languages include](includes/how-to/speech-translation-basics/more.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Codec tömörített hangformátumok használata](how-to-use-codec-compressed-audio-input-streams.md)

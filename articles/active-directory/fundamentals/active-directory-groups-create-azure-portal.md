@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 69367da8a732f383222836442406a495bf82a0db
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797661"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892592"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../users-groups-roles/index.yml).
@@ -28,7 +28,7 @@ Több csoport-és tagsági típus van. Az alábbi információk ismertetik az eg
 
 ### <a name="group-types"></a>Csoportok típusai:
 - **Biztonság**. Segítségével kezelheti a tag és a számítógép hozzáféréseket a megosztott erőforrásokhoz a felhasználók egy csoportjára. Például létrehozhat egy biztonsági csoportot egy meghatározott biztonsági házirendhez. Ha így tesz, az összes tagnak egyszerre oszthatja ki az engedélyeket, nem kell az engedélyeket minden tagnak külön kiadni. Egy biztonsági csoport tagjainak, eszközeinek, csoportjainak és egyszerű szolgáltatásainak tulajdonosaként a felhasználók, a felhasználók és a szolgáltatások lehetnek. Erőforrásokhoz való hozzáférés kezelésével kapcsolatos további információkért lásd: [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory-csoportokkal](active-directory-manage-groups.md).
-- **Office 365**. Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a lehetőség lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz. Az Office 365-csoportok tagjai csak felhasználók lehetnek. A felhasználók és az egyszerű szolgáltatások is lehetnek Office 365-csoportok tulajdonosainak. Az Office 365-csoportokról bővebben lásd: [A Office 365-csoportok ismertetése](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Microsoft 365**. Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a lehetőség lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz. Egy Microsoft 365 csoport tagjai csak felhasználók lehetnek. A felhasználók és a szolgáltatások a Microsoft 365 csoportok tulajdonosainak is lehetnek. Az Office 365-csoportokkal kapcsolatos további információkért lásd: [Microsoft 365 csoportok megismerése](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Tagsági típusok:
 - **Rendelt.** Lehetővé teszi, hogy konkrét felhasználók a csoport tagjai lehessenek és egyedi engedélyekkel rendelkezzenek. A cikk céljaira ezt a lehetőséget használjuk.
@@ -63,7 +63,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 1. Válasszon egy előre definiált **tagsági típust (kötelező).** A tagsági típusokkal kapcsolatos további információkért lásd: [csoport-és tagsági típusok](#membership-types).
 
-1. Válassza a **Létrehozás** lehetőséget. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
+1. Kattintson a **Létrehozás** gombra. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
 
 1. Válassza ki a **Tagok** területet a **Csoport** lapon, és utána kezdje el megkeresni a csoportba felvenni kívánt tagokat a **Tagok kiválasztása** lapon.
 
@@ -77,7 +77,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>Csoport üdvözlő e-mail-címének be-és kikapcsolása
 
-Ha új Office 365-csoportot hoz létre, akár dinamikus, akár statikus tagsággal rendelkezik, a rendszer a csoporthoz hozzáadott összes felhasználóhoz üdvözlő értesítést küld. Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer a szervezet összes dinamikus csoportjának szabályait feldolgozza a lehetséges tagsági változások miatt. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést kikapcsolhatja az [Exchange PowerShellben](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+Ha új Microsoft 365 csoportot hoz létre, akár dinamikus, akár statikus tagsággal rendelkezik, a rendszer a csoportba felvett összes felhasználóhoz üdvözlő értesítést küld. Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer a szervezet összes dinamikus csoportjának szabályait feldolgozza a lehetséges tagsági változások miatt. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést kikapcsolhatja az [Exchange PowerShellben](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 28aadb60703f32e486ed2de3e44b23758c57d3ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86045450"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935126"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
 
 Konfiguráljon egy [Indexelő](search-indexer-overview.md) a kereshető adatok kinyeréséhez Azure SQL Databaseről, majd küldje el azt egy keresési indexbe az Azure Cognitive Searchban. 
 
-Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a C# és a [.net SDK](/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Azure SQL Databasehoz csatlakozó adatforrás létrehozása
@@ -144,7 +144,7 @@ A sémák tartalmazhatnak egyéb elemeket is, például keresési pontszámok n�
 
 A fő program logikát tartalmaz az ügyfelek, az indexek, az adatforrások és az indexelő létrehozásához. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
 
-Az adatforrás-objektum a Azure SQL Database erőforrásokra vonatkozó beállításokkal van konfigurálva, beleértve a [részleges vagy növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) is az Azure SQL beépített [változás-észlelési funkcióinak](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted**nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot az Azure Cognitive Search indexből.
+Az adatforrás-objektum a Azure SQL Database erőforrásokra vonatkozó beállításokkal van konfigurálva, beleértve a [részleges vagy növekményes indexelést](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) is az Azure SQL beépített [változás-észlelési funkcióinak](/sql/relational-databases/track-changes/about-change-tracking-sql-server) kihasználásához. Az Azure SQL-ben a demo Hotels-adatbázis **IsDeleted**nevű "Soft Delete" oszlopot tartalmaz. Ha ez az oszlop igaz értékre van állítva az adatbázisban, az indexelő eltávolítja a megfelelő dokumentumot az Azure Cognitive Search indexből.
 
   ```csharp
   Console.WriteLine("Creating data source...");

@@ -3,12 +3,12 @@ title: Az alkalmazás megtervezése – LUIS
 description: Körvonalazza a releváns alkalmazás-leképezéseket és entitásokat, majd hozza létre az alkalmazási terveket Language Understanding intelligens szolgáltatásokban (LUIS).
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340232"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892915"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
 
@@ -64,16 +64,16 @@ Vegye figyelembe a következő két hosszúságú kimondott szöveg, amelyek nag
 
 Ahelyett, hogy két külön szándékot kellene létrehoznia, hozzon létre egyetlen szándékot egy `FlightAction` Machine learning-entitással. A Machine learning-entitásnak ki kell bontania a művelet részleteit az ütemezés és a megszakítási kérelem, valamint a forrás vagy a célhely esetében is.
 
-Az `FlightAction` entitás a Machine learning-entitás és alentitások következő suedo lesz strukturálva:
+Az `FlightAction` entitás a Machine learning-entitás és alentitások következő pszeudo-sémájában lesz strukturálva:
 
 * FlightAction
-    * Műveletek
+    * Művelet
     * Forrás
     * Cél
 
 Az alentitások hozzáadási funkcióinak kibontásának elősegítése érdekében. A funkciók a felhasználói hosszúságú kimondott szöveg és az előrejelzési válaszban visszaadott értékek alapján lesznek kiválasztva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A LUIS fejlesztői lifecylce megismerése](luis-concept-app-iteration.md)

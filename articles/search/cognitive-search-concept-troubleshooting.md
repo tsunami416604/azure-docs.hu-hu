@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510859"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935466"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
 
@@ -54,7 +54,7 @@ Ebben az esetben érdemes megállapítania, hogy az indexelő figyelmen kívül 
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>4. tipp: hibakeresési munkamenetek használata a készségkészlet kapcsolatos problémák azonosításához és megoldásához 
 
-A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. Hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és véglegesítheti a változtatásokat egy éles készségkészlet az AI-bővítési folyamatban. Ez egy előzetes verziójú funkció, amely [elolvassa a dokumentációt](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). További információ a fogalmakról és az első lépésekről: [hibakeresési munkamenetek](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. Hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és véglegesítheti a változtatásokat egy éles készségkészlet az AI-bővítési folyamatban. Ez egy előzetes verziójú funkció, amely [elolvassa a dokumentációt](./cognitive-search-debug-session.md). További információ a fogalmakról és az első lépésekről: [hibakeresési munkamenetek](./cognitive-search-tutorial-debug-sessions.md).
 
 A hibakeresési munkamenetek egyetlen dokumentumon működnek, így a iteratív összetettebb bővítési folyamatokat hozhat létre.
 

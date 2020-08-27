@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b95880c8cdda67f895615f9a3ba8daf3ab5e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506005"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935881"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a PowerShellben REST API-k használatával
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Poster (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portál](search-get-started-portal.md)
 > 
 
-Ez a cikk végigvezeti egy Azure Cognitive Search index létrehozásának, betöltésének és lekérdezésének lépésein a PowerShell és az [azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k használatával. Ez a cikk azt ismerteti, hogyan lehet interaktív módon futtatni a PowerShell-parancsokat. Azt is megteheti, hogy [letölti és futtat egy PowerShell-parancsfájlt](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , amely ugyanezeket a műveleteket hajtja végre.
+Ez a cikk végigvezeti egy Azure Cognitive Search index létrehozásának, betöltésének és lekérdezésének lépésein a PowerShell és az [azure Cognitive Search REST API](/rest/api/searchservice/)-k használatával. Ez a cikk azt ismerteti, hogyan lehet interaktív módon futtatni a PowerShell-parancsokat. Azt is megteheti, hogy [letölti és futtat egy PowerShell-parancsfájlt](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , amely ugyanezeket a műveleteket hajtja végre.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szükségesek. 
 
-+ [PowerShell 5,1 vagy újabb](https://github.com/PowerShell/PowerShell), a [Meghívási-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) használatával szekvenciális és interaktív lépésekhez.
++ [PowerShell 5,1 vagy újabb](https://github.com/PowerShell/PowerShell), a [Meghívási-RestMethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) használatával szekvenciális és interaktív lépésekhez.
 
 + [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
@@ -85,7 +85,7 @@ Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes k
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés határozza meg az indexet, és leküldi azt a szolgáltatásnak. Ehhez a lépéshez a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban.
+Ha nem használja a portált, akkor az adatgyűjtés előtt léteznie kell egy indexnek a szolgáltatáson. Ez a lépés határozza meg az indexet, és leküldi azt a szolgáltatásnak. Ehhez a lépéshez a [create Index REST API](/rest/api/searchservice/create-index) van használatban.
 
 Az index kötelező elemei közé tartozik a név és a mezők gyűjteménye. A mezők gyűjteménye meghatározza a *dokumentumok*szerkezetét. Minden mező rendelkezik egy névvel, típussal és attribútummal, amely meghatározza, hogyan használják a rendszer (például hogy teljes szöveges kereshető, szűrhető vagy kereshető a keresési eredmények között). Egy indexen belül az egyik típusú mezőt `Edm.String` meg kell jelölni a dokumentum-identitás *kulcsaként* .
 
@@ -179,7 +179,7 @@ Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíció
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-címének végpontján. A feladathoz tartozó REST API [dokumentumok hozzáadása, frissítése vagy törlése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-címének végpontján. A feladathoz tartozó REST API [dokumentumok hozzáadása, frissítése vagy törlése](/rest/api/searchservice/addupdate-or-delete-documents).
 
 1. Illessze be a példát a PowerShellbe, és hozzon létre egy **$Body** objektumot, amely tartalmazza a feltölteni kívánt dokumentumokat. 
 
@@ -281,7 +281,7 @@ A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-cím�
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    Az eredményeknek az alábbi példához hasonlóan kell kinéznie. Ekkor meg kell jelennie a 201-as [állapotkódot](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+    Az eredményeknek az alábbi példához hasonlóan kell kinéznie. Ekkor meg kell jelennie a 201-as [állapotkódot](/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -317,7 +317,7 @@ A dokumentumok leküldéséhez használjon HTTP POST-kérést az index URL-cím�
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával.
+Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [Search Documents API](/rest/api/searchservice/search-documents)használatával.
 
 Ügyeljen arra, hogy egyetlen idézőjelet használjon a keresési $urls. A lekérdezési karakterláncok tartalmazhatnak **$** karaktereket, és kihagyhatják, hogy a teljes karakterlánc egyetlen idézőjelbe van-e zárva.
 
@@ -393,7 +393,7 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 ```
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

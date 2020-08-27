@@ -7,15 +7,15 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935109"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-naplók és-metrikák megjelenítése Power BI
-Az [azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) lehetővé teszi, hogy egy Azure Storage-fiókban tárolja a keresési szolgáltatáshoz tartozó műveleti naplókat és szolgáltatási metrikákat. Ezen a lapon megtudhatja, hogyan jelenítheti meg ezt az információt egy Power BI sablon alkalmazáson keresztül. Az alkalmazás részletes információkat nyújt a keresési szolgáltatásról, többek között a kereséssel, az indexeléssel, a műveletekkel és a szolgáltatási metrikákkal kapcsolatban.
+Az [azure Cognitive Search](./search-what-is-azure-search.md) lehetővé teszi, hogy egy Azure Storage-fiókban tárolja a keresési szolgáltatáshoz tartozó műveleti naplókat és szolgáltatási metrikákat. Ezen a lapon megtudhatja, hogyan jelenítheti meg ezt az információt egy Power BI sablon alkalmazáson keresztül. Az alkalmazás részletes információkat nyújt a keresési szolgáltatásról, többek között a kereséssel, az indexeléssel, a műveletekkel és a szolgáltatási metrikákkal kapcsolatban.
 
 A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elemzése** a [Power bi apps piactéren](https://appsource.microsoft.com/marketplace/apps).
 
@@ -23,7 +23,7 @@ A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elem
 
 1. A keresési szolgáltatás metrikájának és erőforrás-naplózásának engedélyezése:
 
-    1. Hozzon létre vagy azonosítson egy meglévő [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , ahol archiválhatja a naplókat
+    1. Hozzon létre vagy azonosítson egy meglévő [Azure Storage-fiókot](../storage/common/storage-account-create.md) , ahol archiválhatja a naplókat
     1. Navigáljon az Azure Cognitive Search szolgáltatásra a Azure Portal
     1. A bal oldali oszlopban a figyelés szakaszban válassza a **diagnosztikai beállítások** elemet.
 
@@ -98,8 +98,8 @@ Ha úgy találja, hogy az adatai nem láthatók, kövesse az alábbi hibaelhár�
 1. Ellenőrizze, hogy az adatkészlet továbbra is frissül-e. A frissítési állapot jelzője a fenti 8. lépésben látható. Ha továbbra is frissül, várjon, amíg a frissítés be nem fejeződik a jelentés megnyitásához és frissítéséhez.
 
 ## <a name="next-steps"></a>További lépések
-[További információ az Azure Cognitive Search](https://docs.microsoft.com/azure/search/)
+[További információ az Azure Cognitive Search](./index.yml)
 
-[Mi az a Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Mi az a Power BI?](/power-bi/fundamentals/power-bi-overview)
 
-[A Power BI szolgáltatás alapfogalmai tervezők számára](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[A Power BI szolgáltatás alapfogalmai tervezők számára](/power-bi/service-basic-concepts)

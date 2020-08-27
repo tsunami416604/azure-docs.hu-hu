@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1e19fd41b4d98cb401582cd86232d8ada25733
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76838258"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935517"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
 
@@ -29,7 +29,7 @@ A dokumentum repedésének részeként új indexelő konfigurációs paramétere
 
 A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek normalizált képeket várnak. A képnormalizálás indexelésének engedélyezéséhez az szükséges, hogy egy készségkészlet csatolva legyen ehhez az indexelő.
 
-| Konfigurációs paraméter | Description |
+| Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
 | imageAction   | A "None" értékre van állítva, ha a rendszer nem hajt végre műveletet a beágyazott képek vagy képfájlok előfordulásakor. <br/>A "generateNormalizedImages" értékre állítva a normalizált képek tömbjét hozza létre a dokumentum repedésének részeként.<br/>Állítsa "generateNormalizedImagePerPage" értékre, ha normalizált képekből álló tömböt hoz létre, ahol az adatforrásban található PDF-fájlok esetében minden oldal egy kimeneti képhez jelenik meg.  A funkció ugyanaz, mint a nem PDF fájltípusok esetében a "generateNormalizedImages".<br/>Minden olyan lehetőség esetében, amely nem "None", a rendszer a képeket a *normalized_images* mezőben teszi elérhetővé. <br/>Az alapértelmezett érték a "None". Ez a konfiguráció csak a blob-adatforrásokra vonatkozik, ha a "dataToExtract" tulajdonság értéke "contentAndMetadata". <br/>Egy adott dokumentumból legfeljebb 1000 lemezkép lesz kinyerve. Ha a dokumentumban több mint 1000 kép található, akkor a rendszer kinyeri az első 1000, és egy figyelmeztetést fog generálni. |
 |  normalizedImageMaxWidth | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték 2000. A maximálisan engedélyezett érték 10000. | 
@@ -42,7 +42,7 @@ A képnormalizálás nem kapcsolható ki. A képeken ismétlődő képességek n
 
 A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 
-A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](https://docs.microsoft.com/rest/api/searchservice/create-indexer) :
+A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](/rest/api/searchservice/create-indexer) :
 
 ```json
 {
@@ -60,7 +60,7 @@ A imageAction az alábbi módon adhatja meg az [Indexelő definíciójában](htt
 
 Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_images* mező képek tömbjét fogja tartalmazni. Mindegyik rendszerkép egy összetett típus, amely a következő tagokkal rendelkezik:
 
-| Rendszerkép tagja       | Description                             |
+| Rendszerkép tagja       | Leírás                             |
 |--------------------|-----------------------------------------|
 | adatok               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
 | szélesség              | A normalizált képek szélessége képpontban megadva |
@@ -214,7 +214,7 @@ Segítőként, ha a normalizált koordinátákat át kell alakítani az eredeti 
 ```
 
 ## <a name="see-also"></a>Lásd még
-+ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexelő létrehozása (REST)](/rest/api/searchservice/create-indexer)
 + [Rendszerkép-elemzési képesség](cognitive-search-skill-image-analysis.md)
 + [OCR-képesség](cognitive-search-skill-ocr.md)
 + [Szöveg egyesítésének képessége](cognitive-search-skill-textmerger.md)

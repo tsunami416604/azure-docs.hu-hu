@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146178"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934922"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
 Ez a cikk azt ismerteti, hogyan kérhet le egy lekérdezési választ, amely a megfelelő dokumentumok teljes számával, a többoldalas eredményekkel, a rendezett eredményekkel és a találatok kiemelésével kapcsolatos feltételeket tartalmaz.
 
-A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a REST API vagy a [DocumentSearchResult OSZTÁLYBAN](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) a .net SDK-ban.
+A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](/rest/api/searchservice/Search-Documents) a REST API vagy a [DocumentSearchResult OSZTÁLYBAN](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) a .net SDK-ban.
 
 ## <a name="result-composition"></a>Eredmény összetétele
 
@@ -47,9 +47,9 @@ Ha más számú egyező dokumentumot szeretne visszaadni, adja hozzá `$top` `$s
 
 + A Hozzáadás gombra kattintva megadhatja `$count=true` Az indexen belüli egyező dokumentumok teljes számát.
 
-+ A 15 egyező dokumentum első készletének visszaadása, valamint a teljes egyezések száma:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ A 15 egyező dokumentum első készletének visszaadása, valamint a teljes egyezések száma: `GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Adja vissza a második készletet, kihagyva az első 15 értéket a következő 15: érték beszerzéséhez `$top=15&$skip=15` . Tegye meg ugyanezt a 15. harmadik készletnél:`$top=15&$skip=30`
++ Adja vissza a második készletet, kihagyva az első 15 értéket a következő 15: érték beszerzéséhez `$top=15&$skip=15` . Tegye meg ugyanezt a 15. harmadik készletnél: `$top=15&$skip=30`
 
 A többoldalas lekérdezések eredményei nem garantálják, hogy stabilak legyenek, ha az alapul szolgáló index változik. A lapozás megváltoztatja az `$skip` egyes lapok értékeit, de az egyes lekérdezések függetlenek, és az adatok aktuális nézetén működnek, mivel a lekérdezési időpontban már szerepel az indexben (vagyis nem áll rendelkezésre az eredmények gyorsítótárazása vagy pillanatképe, például egy általános célú adatbázisban található).
  
@@ -98,7 +98,7 @@ Egy másik lehetőség [Egyéni pontozási profilt](index-add-scoring-profiles.m
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
 
-A találatok kiemelése olyan szövegformázást jelent (például félkövér vagy sárga kiemelés), amely a megfelelő kifejezésekre vonatkozik, így könnyen megoldható a egyezés. A [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)a találatok kiemelésére vonatkozó utasításokat tartalmaz. 
+A találatok kiemelése olyan szövegformázást jelent (például félkövér vagy sárga kiemelés), amely a megfelelő kifejezésekre vonatkozik, így könnyen megoldható a egyezés. A [lekérdezési kérelem](/rest/api/searchservice/search-documents)a találatok kiemelésére vonatkozó utasításokat tartalmaz. 
 
 A találatok kiemelésének engedélyezéséhez adja hozzá `highlight=[comma-delimited list of string fields]` a elemet annak megadásához, hogy mely mezők legyenek kiemelve. A kiemelés hasznos lehet a több tartalom mezőhöz, például a Leírás mezőhöz, ahol az egyeztetés nem azonnal nyilvánvaló. Csak a találatok kiemeléséhez **kereshető** minősítéssel rendelkező mezők definíciói láthatók.
 

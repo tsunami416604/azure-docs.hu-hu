@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552526"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935075"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezési kérelmek figyelése az Azure Cognitive Search
 
@@ -36,13 +36,13 @@ A kötet a **másodpercenkénti keresési lekérdezések** (QPS) alapján mérhe
 
 A lekérdezések végrehajtása általában ezredmásodpercben történik, ezért a mérőszámokban csak a másodpercben lekérdezett lekérdezések jelennek meg.
 
-| Aggregáció típusa | Description |
+| Aggregáció típusa | Leírás |
 |------------------|-------------|
-| Átlag | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
+| Average | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Egy percen belül másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma. |
-| Minimális | Egy perc alatt másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma.  |
-| Összeg | A percen belül végrehajtott lekérdezések összege.  |
+| Minimum | Egy perc alatt másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma.  |
+| Sum | A percen belül végrehajtott lekérdezések összege.  |
 
 Előfordulhat például, hogy egy percen belül egy ilyen mintázattal rendelkezik: egy másodperces magas terhelés, amely a SearchQueriesPerSecond maximális értéke, majd az átlagos terhelés 58 másodperce, végül egy másodperc csak egy lekérdezéssel, amely a minimum.
 
@@ -56,10 +56,10 @@ Az egész szolgáltatásra kiterjedő lekérdezési teljesítmény a keresési k
 
 | Aggregáció típusa | Késés | 
 |------------------|---------|
-| Átlag | Lekérdezés átlagos időtartama ezredmásodpercben. | 
+| Average | Lekérdezés átlagos időtartama ezredmásodpercben. | 
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Leghosszabb ideig futó lekérdezés a mintában. | 
-| Minimális | A legrövidebb futó lekérdezés a mintában.  | 
+| Minimum | A legrövidebb futó lekérdezés a mintában.  | 
 | Összesen | A mintában lévő összes lekérdezés teljes végrehajtási ideje (egy perc) az intervallumon belül.  |
 
 Vegye figyelembe a következő példát a **keresési késési** mérőszámokra: 86 lekérdezés lett mintavétel alatt, átlagosan 23,26 ezredmásodperc. Legalább 0 érték azt jelzi, hogy néhány lekérdezés el lett dobva. A leghosszabb ideig futó lekérdezés 1000 ezredmásodpercet vett igénybe. A végrehajtási idő összesen 2 másodperc volt.
@@ -84,10 +84,10 @@ A szabályozott lekérdezések megerősítéséhez használja a **szabályozott 
 
 | Aggregáció típusa | Throttling |
 |------------------|-----------|
-| Átlag | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
+| Average | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Az intervallumon belül eldobott lekérdezések százalékos aránya.|
-| Minimális | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
+| Minimum | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 | Összesen | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 
 A **szabályozott keresési lekérdezések aránya**, a minimum, a maximum, az átlag és az összes érték azonos értékű: a megadott keresési lekérdezések százalékos aránya, a keresési lekérdezések teljes száma egy percen belül.
@@ -100,7 +100,7 @@ Az alábbi képernyőképen az első szám a darabszám (vagy a naplóba eljutta
 
 A jelenlegi számok gyors áttekintéséhez a szolgáltatás áttekintő lapjának **figyelés** lapja három mérőszámot jelenít meg (**keresési késés**, **keresési lekérdezések másodpercenként (keresési egység alapján)**, a **szabályozott keresési lekérdezések százalékos aránya**) a rögzített intervallumok között óra, nap és hét szerint, az Összesítés típusának módosításához.
 
-A mélyebb feltáráshoz nyissa meg a metrikák Explorert a **figyelés** menüből, hogy a trendek és rendellenességek feltárásához a rétegek, a nagyítás és az adatok megjelenítése is megtörténjen. További információ a metrikák Explorerrel: az oktatóanyag elvégzése [a metrikák diagram létrehozásához](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer).
+A mélyebb feltáráshoz nyissa meg a metrikák Explorert a **figyelés** menüből, hogy a trendek és rendellenességek feltárásához a rétegek, a nagyítás és az adatok megjelenítése is megtörténjen. További információ a metrikák Explorerrel: az oktatóanyag elvégzése [a metrikák diagram létrehozásához](../azure-monitor/learn/tutorial-metrics-explorer.md).
 
 1. A figyelés szakaszban válassza a **metrikák** lehetőséget, hogy megnyissa a metrikák Explorert a keresési szolgáltatás hatókörével.
 

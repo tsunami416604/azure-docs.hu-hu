@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565311"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924367"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
 
@@ -31,7 +31,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
-+ Egy Azure Storage-fiók [blob Storage](https://docs.microsoft.com/azure/storage/blobs/)-val.
++ Egy Azure Storage-fiók [blob Storage](../storage/blobs/index.yml)-val.
 
 > [!NOTE]
 > Ez a rövid útmutató az AI-hoz készült [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) is használja. Mivel a számítási feladatok olyan kicsik, Cognitive Services a jelenetek mögött, akár 20 tranzakcióra is felhasználható. Ez azt jelenti, hogy ezt a gyakorlatot anélkül végezheti el, hogy további Cognitive Services erőforrást kellene létrehoznia.
@@ -42,7 +42,7 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
 1. [HotelReviews_Free.csvletöltése ](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Ezek az adatok egy CSV-fájlban (Kaggle.com-ből származó) tárolt adatok, amelyek egy adott szállodával kapcsolatban 19 darab ügyfél-visszajelzést tartalmaznak. 
 
-1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
+1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
 
    + Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
@@ -56,13 +56,13 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
     ![Az Azure Blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Az Azure Blob-tároló létrehozása")
 
-1. A blob Storage-lapok bezárása előtt a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc az alábbi példához hasonlóan néz ki:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. A blob Storage-lapok bezárása előtt a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc az alábbi példához hasonlóan néz ki: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 Most már készen áll az **adatimportálás** varázsló áthelyezésére.
 
 ## <a name="run-the-import-data-wizard"></a>Az adatimportálás varázsló futtatása
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
 1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés lapon kattintson az **adat importálása** parancsra a parancssorban, és hozzon létre egy tudásbázist négy lépésben.
 
@@ -101,7 +101,7 @@ A varázsló lépésében egy készségkészlet hoz létre a kognitív képessé
 1. A **dúsítás részletességi szintjének**kiválasztásához válassza a **lapok (5000 karakteres tömbök) elemet.**
 
 1. Válassza ki ezeket a kognitív képességeket:
-    + **Kulcsszavak kinyerése**
+    + **Kulcsszókeresés**
     + **Szöveg lefordítása**
     + **Érzelmek észlelése**
 

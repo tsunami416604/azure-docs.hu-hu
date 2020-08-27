@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5dfa105b7af146086da6b72dd55f6fe679832f44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845051"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936027"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: kereshető tartalom előállítása az Azure-blobokból a Python és a AI használatával
 
 Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Bár a folyamatok feldolgozhatják a lemezképeket, ez a Python-oktatóanyag a szövegre, a nyelvfelismerés és a természetes nyelvi feldolgozás alkalmazására koncentrál, hogy új mezőket hozzon létre, amelyeket a lekérdezések, a dimenziók és a szűrők használhatnak.
 
-Ez az oktatóanyag a Python és a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a Python és a [Search REST API](/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Az Azure Blob Storage-ban teljes dokumentumokkal (strukturálatlan szöveggel), például PDF-, HTML-, DOCX-és PPTX-verziókkal kezdheti meg a használatot.
@@ -163,7 +163,7 @@ Az Azure Cognitive Searchban az AI-feldolgozás az indexelés (vagy az adatfeldo
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
 
-Az [adatforrás-objektumok](https://docs.microsoft.com/rest/api/searchservice/create-data-source) biztosítják a kapcsolódási karakterláncot a fájlokat tartalmazó blob-tárolóhoz.
+Az [adatforrás-objektumok](/rest/api/searchservice/create-data-source) biztosítják a kapcsolódási karakterláncot a fájlokat tartalmazó blob-tárolóhoz.
 
 A következő parancsfájlban cserélje le a helyőrzőt a-BLOB-RESOURCE-replace-STRING értékre az előző lépésben létrehozott blobhoz tartozó kapcsolatok karakterláncával. Cserélje le a tároló helyőrző szövegét. Ezután futtassa a parancsfájlt egy nevű adatforrás létrehozásához `cogsrch-py-datasource` .
 
@@ -375,11 +375,11 @@ print(r.status_code)
 
 A kérelemnek 201-as állapotkódot kell visszaadnia.
 
-Az index definiálásával kapcsolatos további tudnivalókért tekintse meg az [index létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)című témakört.
+Az index definiálásával kapcsolatos további tudnivalókért tekintse meg az [index létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index)című témakört.
 
 ### <a name="step-4-create-and-run-an-indexer"></a>4. lépés: indexelő létrehozása és futtatása
 
-Az [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer) vezeti a folyamatot. Az eddig létrehozott három összetevő (az adatforrás, a készségkészlet, az index) egy indexelő bemenete. Az indexelő létrehozása az Azure Cognitive Searchon az az esemény, amely a teljes folyamatot mozgásba helyezi. 
+Az [Indexelő](/rest/api/searchservice/create-indexer) vezeti a folyamatot. Az eddig létrehozott három összetevő (az adatforrás, a készségkészlet, az index) egy indexelő bemenete. Az indexelő létrehozása az Azure Cognitive Searchon az az esemény, amely a teljes folyamatot mozgásba helyezi. 
 
 Ha ezeket az objektumokat egy indexelő alkalmazásban szeretné összekapcsolni, meg kell adnia a mezők leképezéseit.
 
@@ -512,7 +512,7 @@ Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyők
 
 Ismételje meg a további mezőket:,, `content` `languageCode` és ebben `keyPhrases` `organizations` a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
-A lekérdezési sztring összetettségétől és hosszától függően használhatja a GET vagy a POST metódust. További információkért lásd: [Lekérdezés a REST API-val](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+A lekérdezési sztring összetettségétől és hosszától függően használhatja a GET vagy a POST metódust. További információkért lásd: [Lekérdezés a REST API-val](/rest/api/searchservice/search-documents).
 
 <a name="reset"></a>
 
@@ -543,13 +543,13 @@ A [beépített képességek](cognitive-search-predefined-skills.md) , valamint a
 
 Végezetül megtanulta, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszer további iterációkat. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Ebben a kiadásban szerepel egy belső szerkezetek (a rendszer által létrehozott bővített dokumentumok) megjelenítésére szolgáló mechanizmus. Azt is megtanulta, hogyan ellenőrizhető az indexelő állapota, és milyen objektumokat kell törölni a folyamat újrafuttatása előtt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

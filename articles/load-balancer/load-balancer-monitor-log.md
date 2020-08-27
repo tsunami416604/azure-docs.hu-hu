@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448848"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935602"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az Azure Monitor naplózza a nyilvános Alapszintű Load Balancert
 
@@ -29,7 +29,7 @@ Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Ba
 * **Állapot-mintavételi naplók:** Ezzel a naplóval megtekintheti az állapot-mintavétel által észlelt problémákat, például a háttérben található példányok számát, amelyek nem kapják meg a terheléselosztó kéréseit az állapot-mintavételi hibák miatt. Ez a napló akkor íródik le, amikor módosul az állapot-mintavételi állapot.
 
 > [!IMPORTANT]
-> **Az állapot-mintavételi események naplófájljai jelenleg nem működőképesek, és a [Azure Load Balancer ismert problémái](whats-new.md#known-issues)szerepelnek.** Azure Monitor naplók jelenleg csak nyilvános alapszintű terheléselosztó esetén működnek. A naplók csak a Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások esetében érhetők el. A klasszikus üzemi modell erőforrásaihoz nem használhat naplókat. További információ az üzembe helyezési modellekről: a [Resource Manager telepítésének ismertetése és a klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
+> **Az állapot-mintavételi események naplófájljai jelenleg nem működőképesek, és a [Azure Load Balancer ismert problémái](whats-new.md#known-issues)szerepelnek.** A naplók csak a Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások esetében érhetők el. A klasszikus üzemi modell erőforrásaihoz nem használhat naplókat. További információ az üzembe helyezési modellekről: a [Resource Manager telepítésének ismertetése és a klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 

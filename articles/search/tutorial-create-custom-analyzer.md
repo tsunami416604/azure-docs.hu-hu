@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 667ee4b362d62cd4b7bd1b6c5a8ecf762adb0730
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021885"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936622"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Oktatóanyag: egyéni analizátor létrehozása telefonszámokhoz
 
@@ -21,7 +21,7 @@ Az [elemzők](search-analyzers.md) bármely keresési megoldás egyik kulcsfonto
 
 Bizonyos esetekben, például egy ingyenes szövegmezővel, a megfelelő [nyelvi elemző](index-add-language-analyzers.md) kiválasztásával javíthatja a keresési eredményeket. Bizonyos esetekben azonban előfordulhat, hogy a telefonszámok, URL-címek vagy e-mailek pontos keresése az egyéni elemzők használatát igényli.
 
-Ez az oktatóanyag a Poster és az Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/) -jait használja a következőre:
+Ez az oktatóanyag a Poster és az Azure Cognitive Search [REST API](/rest/api/searchservice/) -jait használja a következőre:
 
 > [!div class="checklist"]
 > * Az elemzők működésének ismertetése
@@ -201,7 +201,7 @@ A lekérdezés **négy várt eredményből három eredményt** ad vissza, de **k
 }
 ```
 
-Következő lépésként keressen egy számot formázás nélkül`4255550100`
+Következő lépésként keressen egy számot formázás nélkül `4255550100`
 
 ```http
 GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic-index/docs?api-version=2019-05-06&search=4255550100
@@ -225,7 +225,7 @@ Ha ezeket az eredményeket zavarosnak találja, nem Ön egyedül. A következő 
 
 ## <a name="4---debug-search-results"></a>4 – keresési eredmények hibakeresése
 
-A keresési eredmények megismeréséhez fontos, hogy megértse, hogyan működnek az elemzők. Innen az [elemzés szöveg API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) használatával tesztelheti az alapértelmezett elemzőt, majd létrehozhatja az igényeinek megfelelő elemzőt.
+A keresési eredmények megismeréséhez fontos, hogy megértse, hogyan működnek az elemzők. Innen az [elemzés szöveg API](/rest/api/searchservice/test-analyzer) használatával tesztelheti az alapértelmezett elemzőt, majd létrehozhatja az igényeinek megfelelő elemzőt.
 
 ### <a name="how-analyzers-work"></a>A elemzők működése
 
@@ -260,7 +260,7 @@ Ha a lekérdezési feltételek nem egyeznek meg a fordított index feltételeive
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>A test Analyzer használata az elemzés szövege API-val
 
-Az Azure Cognitive Search egy [elemzés SZÖVEGES API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) -t biztosít, amely lehetővé teszi az elemzők tesztelését a szöveg feldolgozásának megértéséhez.
+Az Azure Cognitive Search egy [elemzés SZÖVEGES API](/rest/api/searchservice/test-analyzer) -t biztosít, amely lehetővé teszi az elemzők tesztelését a szöveg feldolgozásának megértéséhez.
 
 Az elemzés szövege API a következő kérelem használatával hívható meg:
 
@@ -404,7 +404,7 @@ Habár ezen szűrők egyikét sem kell használnia ehhez a forgatókönyvhöz, e
 
 Az [nGram_v2 jogkivonat szűrő](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html) a tokeneket a és paraméter alapján adott méretű n-grammra osztja szét `minGram` `maxGram` .
 
-A Phone Analyzer esetében úgy van beállítva, hogy `minGram` `3` a legrövidebb alsztringet várjuk a felhasználóknak a kereséshez. `maxGram`úgy van beállítva, hogy `20` biztosítsa, hogy az összes telefonszám, még a bővítmények is csak egyetlen n-grammba illeszkedjenek.
+A Phone Analyzer esetében úgy van beállítva, hogy `minGram` `3` a legrövidebb alsztringet várjuk a felhasználóknak a kereséshez. `maxGram` úgy van beállítva, hogy `20` biztosítsa, hogy az összes telefonszám, még a bővítmények is csak egyetlen n-grammba illeszkedjenek.
 
  Az n-gramm szerencsétlen mellékhatása az, hogy a rendszer hamis pozitív értékeket ad vissza. Ezt a 7. lépésben javítjuk, ha kiépítünk egy különálló elemzőt az n-Gram-jogkivonat szűrőjét nem tartalmazó keresésekhez.
 
@@ -584,7 +584,7 @@ Ez az oktatóanyag az egyéni elemzők létrehozásának és tesztelésének fol
 
 Míg az oktatóanyagban definiált elemző egyszerű megoldást kínál a telefonszámok keresésére, ezzel a folyamattal bármely lehetséges forgatókönyvhöz létrehozhat egy egyéni telefon-elemzőt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes eltávolítani azokat az erőforrásokat, amelyekre már nincs szüksége a projekt végén. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

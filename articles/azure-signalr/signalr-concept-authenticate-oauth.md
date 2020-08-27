@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: eb770dab33e1ec0e1a35f7ebcb6e620fc93692aa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: da0c3284b42be6d9054b7386839004b57d8ca274
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383001"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935738"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR szolgáltatás – hitelesítés
 
@@ -59,7 +59,7 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 3. Adja meg a következő beállításokat az új OAuth-alkalmazás számára, majd kattintson a **Register application (Alkalmazás regisztrálása)** lehetőségre:
 
-    | Beállítás neve | Ajánlott érték | Description |
+    | Beállítás neve | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
     | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználónak képesnek kell lennie a hitelesítéssel rendelkező alkalmazás felismerésére és megbízhatóságára.   |
     | Kezdőlap URL-címe | `http://localhost:5000/home` | |
@@ -582,7 +582,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban OAuth-hitelesítést adott hozzá az alkalmazáshoz, hogy jobb hitelesítési megoldást biztosítson az Azure SignalR Service szolgáltatással. Ha többet szeretne megtudni az Azure SignalR Server használatáról, lépjen tovább a SignalR Service Azure CLI-mintáira.
 

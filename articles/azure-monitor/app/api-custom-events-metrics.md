@@ -3,13 +3,13 @@ title: Application Insights API egyéni eseményekhez és mérőszámokhoz | Mic
 description: A használat és a problémák diagnosztizálásához helyezzen be néhány sornyi kódot az eszközön, az asztali alkalmazásban, a weblapon vagy a szolgáltatásban.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 430ec96006ed8f564ea5bbd0a28beca858ebe1ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366872"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936571"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -19,7 +19,7 @@ Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinál
 
 Az alapszintű API minden platformon egységes, többek között a `GetMetric` (csak .net-es) változatokon kívül.
 
-| Metódus | Alkalmazási cél |
+| Módszer | Alkalmazási cél |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Lapok, képernyők, pengék vagy űrlapok. |
 | [`TrackEvent`](#trackevent) |Felhasználói műveletek és egyéb események. A felhasználói viselkedés nyomon követésére vagy a teljesítmény figyelésére szolgál. |
@@ -59,7 +59,7 @@ Példány beszerzése `TelemetryClient` (kivéve a weblapokon található JavaSc
 
 A .NET/.NET Core-alkalmazások esetében [ASP.net Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) alkalmazások és [nem http/feldolgozók](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) esetében ajánlott a függőségi injektálási tároló egy példányának beszerzése a saját `TelemetryClient` dokumentációjában ismertetett módon.
 
-Ha AzureFunctions v2 + vagy Azure WebJobs v3 +-t használ, kövesse a következő dokumentumot:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+Ha AzureFunctions v2 + vagy Azure WebJobs v3 +-t használ, kövesse a következő dokumentumot: https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -204,8 +204,8 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 A telemetria `customMetrics` [Application Insights Analytics](../log-query/log-query-overview.md)táblázatában érhető el. Az egyes sorok az alkalmazásban meghívást jelentenek `trackMetric(..)` .
 
-* `valueSum`– Ez a mérések összege. A Mean értékének megszerzéséhez ossza el a következőt: `valueCount` .
-* `valueCount`– Az ebben a hívásban összesített mérések száma `trackMetric(..)` .
+* `valueSum` – Ez a mérések összege. A Mean értékének megszerzéséhez ossza el a következőt: `valueCount` .
+* `valueCount` – Az ebben a hívásban összesített mérések száma `trackMetric(..)` .
 
 ## <a name="page-views"></a>Lapok nézetei
 
@@ -825,7 +825,7 @@ Figyelje meg, hogy:
 * Ha Kinyer egy értéket a customDimensions vagy a customMeasurements JSON-ból, dinamikus típussal rendelkezik, és ezért el kell azt tennie `tostring` `todouble` .
 * A [mintavétel](./sampling.md)lehetőségének figyelembevételéhez a következőt kell használnia: `sum(itemCount)` `count()` .
 
-## <a name="timing-events"></a><a name="timed"></a>Időzítési események
+## <a name="timing-events"></a><a name="timed"></a> Időzítési események
 
 Néha diagramot szeretne készíteni, hogy mennyi ideig tart egy művelet végrehajtása. Előfordulhat például, hogy meg szeretné tudni, hogy a felhasználók milyen hosszú időt vesznek igénybe a játékokban. Ehhez a mérési paramétert használhatja.
 
@@ -972,7 +972,7 @@ applicationInsights.setup()
     .start();
 ```
 
-Ha az inicializálás után le szeretné tiltani ezeket a gyűjtőket, használja a következő konfigurációs objektumot:`applicationInsights.Configuration.setAutoCollectRequests(false)`
+Ha az inicializálás után le szeretné tiltani ezeket a gyűjtőket, használja a következő konfigurációs objektumot: `applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="developer-mode"></a><a name="debug"></a>Fejlesztői mód
 
@@ -1001,7 +1001,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>A kialakítási kulcs beállítása a kiválasztott egyéni telemetria
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> A kialakítási kulcs beállítása a kiválasztott egyéni telemetria
 
 *C#*
 
@@ -1011,7 +1011,7 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamic Instrumentation-kulcs
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamic Instrumentation-kulcs
 
 A fejlesztési, tesztelési és éles környezetek telemetria elkerülése érdekében [létrehozhat külön Application Insights erőforrásokat](./create-new-resource.md) , és módosíthatja a kulcsokat a környezettől függően.
 

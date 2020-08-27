@@ -8,20 +8,20 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080045"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924694"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Szöveg fordítása – kognitív képességek
 
-A **szöveges fordítási** készség kiértékeli a szöveget, és minden egyes rekord esetében a megadott nyelvre lefordított szöveget adja vissza. Ez a képesség a Cognitive Services elérhető [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) -s verzióját használja.
+A **szöveges fordítási** készség kiértékeli a szöveget, és minden egyes rekord esetében a megadott nyelvre lefordított szöveget adja vissza. Ez a képesség a Cognitive Services elérhető [Translator Text API v 3.0](../cognitive-services/translator/reference/v3-0-translate.md) -s verzióját használja.
 
 Ez a funkció akkor hasznos, ha úgy látja, hogy a dokumentumok nem mindegyike egy nyelven, ebben az esetben a szöveget egyetlen nyelvre is kihasználhatja, mielőtt lefordítja a keresést.  Hasznos lehet a honosítási használati esetekben is, ahol előfordulhat, hogy ugyanaz a szöveg több nyelven is elérhető.
 
-A [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) egy nem regionális kognitív szolgáltatás, ami azt jelenti, hogy az adatai nem garantáltak abban, hogy az Azure Cognitive Search vagy a csatolt Cognitive Services erőforrással azonos régióban maradjon.
+A [Translator Text API v 3.0](../cognitive-services/translator/reference/v3-0-reference.md) egy nem regionális kognitív szolgáltatás, ami azt jelenti, hogy az adatai nem garantáltak abban, hogy az Azure Cognitive Search vagy a csatolt Cognitive Services erőforrással azonos régióban maradjon.
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -32,29 +32,29 @@ A [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-service
 Microsoft. Skills. Text. TranslationSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szüntetnie az adatokat, mielőtt elküldené a szöveg fordítási képességeinek, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](/dotnet/api/system.string.length) . Ha meg kell szüntetnie az adatokat, mielőtt elküldené a szöveg fordítási képességeinek, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek                | Description |
+| Bevitelek                | Leírás |
 |---------------------|-------------|
-| defaultToLanguageCode | Szükséges A dokumentumok olyan dokumentumokhoz való fordítására szolgáló nyelvkód, amelyek nem adják meg explicit módon a nyelvet. <br/> [A támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)itt tekintheti meg. |
-| defaultFromLanguageCode | Választható A dokumentumok olyan dokumentumokból való fordítására szolgáló nyelvkód, amelyek nem határozzák meg explicit módon a feladó nyelvét.  Ha a defaultFromLanguageCode nincs megadva, a rendszer az Translator Text API által megadott automatikus nyelvfelismerés alapján határozza meg a feladó nyelvét. <br/> [A támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)itt tekintheti meg. |
-| suggestedFrom | Választható A dokumentumok fordításának nyelve, ha sem a fromLanguageCode, sem a defaultFromLanguageCode paraméter nincs megadva, és az automatikus nyelvfelismerés nem sikerült.  Ha a suggestedFrom nyelve nincs megadva, a rendszer az angol (en) nyelvet használja suggestedFrom nyelvként. <br/> [A támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)itt tekintheti meg. |
+| defaultToLanguageCode | Szükséges A dokumentumok olyan dokumentumokhoz való fordítására szolgáló nyelvkód, amelyek nem adják meg explicit módon a nyelvet. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
+| defaultFromLanguageCode | Választható A dokumentumok olyan dokumentumokból való fordítására szolgáló nyelvkód, amelyek nem határozzák meg explicit módon a feladó nyelvét.  Ha a defaultFromLanguageCode nincs megadva, a rendszer az Translator Text API által megadott automatikus nyelvfelismerés alapján határozza meg a feladó nyelvét. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
+| suggestedFrom | Választható A dokumentumok fordításának nyelve, ha sem a fromLanguageCode, sem a defaultFromLanguageCode paraméter nincs megadva, és az automatikus nyelvfelismerés nem sikerült.  Ha a suggestedFrom nyelve nincs megadva, a rendszer az angol (en) nyelvet használja suggestedFrom nyelvként. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név     | Description |
+| Bemeneti név     | Leírás |
 |--------------------|-------------|
 | szöveg | A lefordítani kívánt szöveg.|
-| toLanguageCode    | Egy karakterlánc, amely azt jelzi, hogy a szöveget milyen nyelven kell lefordítani. Ha nincs megadva ez a bemenet, a rendszer a defaultToLanguageCode fogja használni a szöveg fordításához. <br/>[A támogatott nyelvek teljes listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
-| fromLanguageCode  | A szöveg aktuális nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer a defaultFromLanguageCode (vagy az automatikus nyelvfelismerés, ha a defaultFromLanguageCode nincs megadva) a szöveg fordítására szolgál. <br/>[A támogatott nyelvek teljes listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
+| toLanguageCode    | Egy karakterlánc, amely azt jelzi, hogy a szöveget milyen nyelven kell lefordítani. Ha nincs megadva ez a bemenet, a rendszer a defaultToLanguageCode fogja használni a szöveg fordításához. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/translator/language-support.md)|
+| fromLanguageCode  | A szöveg aktuális nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer a defaultFromLanguageCode (vagy az automatikus nyelvfelismerés, ha a defaultFromLanguageCode nincs megadva) a szöveg fordítására szolgál. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/translator/language-support.md)|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve    | Description |
+| Kimenet neve    | Leírás |
 |--------------------|-------------|
 | translatedText | A translatedFromLanguageCode és a translatedToLanguageCode közötti szöveg-fordítás karakterláncának eredménye.|
 | translatedToLanguageCode  | Egy karakterlánc, amely azt jelzi, hogy a szöveg melyik nyelvkódot lett lefordítva. Akkor hasznos, ha több nyelvre végez fordítást, és szeretné nyomon követni, hogy melyik szöveg milyen nyelven van.|
@@ -91,7 +91,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
   }
 ```
 
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Példabemenet
 
 ```json
 {
@@ -115,7 +115,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 ```
 
 
-##  <a name="sample-output"></a>Példa kimenet
+##  <a name="sample-output"></a>Példakimenet
 
 ```json
 {

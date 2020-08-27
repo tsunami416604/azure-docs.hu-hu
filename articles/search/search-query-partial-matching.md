@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260984"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935772"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezéses keresés és minták speciális karakterekkel (helyettesítő karakterek, regex, mintázatok)
 
@@ -51,7 +51,7 @@ Ha töredékekre vagy mintázatokra vagy speciális karakterekre kell keresnie, 
 + Az index létrehozása és tesztelése
 
 > [!TIP]
-> Az elemzők kiértékelése olyan iterációs folyamat, amely gyakori index-újraépítést igényel. Ezt a lépést a Poster, a REST API-k [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index), az indexek [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index), a[dokumentumok betöltése](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)és a dokumentumok [keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)során egyszerűbbé teheti. A betöltési dokumentumok esetében a kérelem törzsének tartalmaznia kell egy kis reprezentatív adatkészletet, amelyet szeretne tesztelni (például egy telefonszámot vagy Termékkód számot tartalmazó mező). Ha ezekkel az API-kkal ugyanabban a Poster-gyűjteményben vannak, gyorsan elvégezheti ezeket a lépéseket.
+> Az elemzők kiértékelése olyan iterációs folyamat, amely gyakori index-újraépítést igényel. Ezt a lépést a Poster, a REST API-k [létrehozása](/rest/api/searchservice/create-index), az indexek [törlése](/rest/api/searchservice/delete-index), a[dokumentumok betöltése](/rest/api/searchservice/addupdate-or-delete-documents)és a dokumentumok [keresése](/rest/api/searchservice/search-documents)során egyszerűbbé teheti. A betöltési dokumentumok esetében a kérelem törzsének tartalmaznia kell egy kis reprezentatív adatkészletet, amelyet szeretne tesztelni (például egy telefonszámot vagy Termékkód számot tartalmazó mező). Ha ezekkel az API-kkal ugyanabban a Poster-gyűjteményben vannak, gyorsan elvégezheti ezeket a lépéseket.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Ismétlődő mezők különböző forgatókönyvekhez
 
@@ -85,7 +85,7 @@ Ha olyan elemzőt választ ki, amely teljes körű jogkivonatokat állít elő, 
 | [szóköz](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Csak szóközöket választ ki. A kötőjeleket vagy más karaktereket tartalmazó kifejezéseket egyetlen jogkivonatként kezeli a rendszer. |
 | [Egyéni analizátor](index-add-custom-analyzers.md) | ajánlott Az egyéni elemző létrehozása lehetővé teszi a tokenizer és a jogkivonat-szűrő megadását is. A korábbi elemzőket a következőképpen kell használni:. Az egyéni elemző lehetővé teszi, hogy kiválassza a használni kívánt tokenizers és jogkivonat-szűrőket. <br><br>Az ajánlott kombináció a [tokenizer kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) , amely egy [kisbetűs jogkivonat-szűrővel](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)rendelkezik. Önmagában az előre definiált [kulcsszó-elemző](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nem kisbetűs, így a lekérdezések sikertelenek lehetnek. Az egyéni elemző egy mechanizmust biztosít az alsó szintű jogkivonat-szűrő hozzáadásához. |
 
-Ha webes API-teszt eszközt (például Poster) használ, hozzáadhatja a [test Analyzer-Rest-hívást](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a jogkivonat-kimenet vizsgálatához.
+Ha webes API-teszt eszközt (például Poster) használ, hozzáadhatja a [test Analyzer-Rest-hívást](/rest/api/searchservice/test-analyzer) a jogkivonat-kimenet vizsgálatához.
 
 A használatához fel kell töltenie egy feltöltött indexet. A meglévő indexek és a kötőjeleket vagy a részleges kifejezéseket tartalmazó mezők esetében különböző elemzőket lehet kipróbálni a megadott feltételek alapján, hogy megtudja, milyen jogkivonatok vannak kibocsátva.  
 
@@ -160,7 +160,7 @@ Függetlenül attól, hogy az elemzőket kiértékeli, vagy egy adott konfigurá
 
 A beépített vagy előre definiált elemzők név szerint adhatók meg `analyzer` egy mező definíciójának tulajdonságában, és az indexben nem szükséges további konfiguráció. Az alábbi példa bemutatja, hogyan állíthatja be az `whitespace` elemzőt egy mezőre. 
 
-További forgatókönyvek és további információ a beépített elemzők használatáról: [előre definiált elemzők listája](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+További forgatókönyvek és további információ a beépített elemzők használatáról: [előre definiált elemzők listája](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -222,19 +222,19 @@ Miután meghatározta a forgatókönyvét támogató elemzőket és mezőérték
 
 Az előző szakaszban a logikát ismertetjük. Ez a szakasz végigvezeti az egyes API-k lépésein, amelyeket a megoldás tesztelésekor kell meghívnia. Ahogy korábban már említettük, ha interaktív webes tesztelési eszközt (például Poster) használ, gyorsan elvégezheti ezeket a feladatokat.
 
-+ Az [index törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) eltávolítja az azonos nevű meglévő indexet, hogy újra létre lehessen hozni.
++ Az [index törlése](/rest/api/searchservice/delete-index) eltávolítja az azonos nevű meglévő indexet, hogy újra létre lehessen hozni.
 
-+ A [create index](https://docs.microsoft.com/rest/api/searchservice/create-index) létrehozza az index struktúrát a keresési szolgáltatásban, beleértve az analizátor-definíciókat és a Analyzer-specifikációval rendelkező mezőket.
++ A [create index](/rest/api/searchservice/create-index) létrehozza az index struktúrát a keresési szolgáltatásban, beleértve az analizátor-definíciókat és a Analyzer-specifikációval rendelkező mezőket.
 
-+ A [betöltési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) a dokumentumokat a tárgymutatóval megegyező struktúrával, valamint kereshető tartalommal importálják. A lépés után az index készen áll a lekérdezésre vagy a tesztelésre.
++ A [betöltési dokumentumok](/rest/api/searchservice/addupdate-or-delete-documents) a dokumentumokat a tárgymutatóval megegyező struktúrával, valamint kereshető tartalommal importálják. A lépés után az index készen áll a lekérdezésre vagy a tesztelésre.
 
-+ A [test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) bemutatkozott a [válasszon egy elemzőt](#choose-an-analyzer). Tesztelje az index egyes karakterláncait különböző elemzők használatával, hogy megtudja, hogyan történik a feltételek tokenje.
++ A [test Analyzer](/rest/api/searchservice/test-analyzer) bemutatkozott a [válasszon egy elemzőt](#choose-an-analyzer). Tesztelje az index egyes karakterláncait különböző elemzők használatával, hogy megtudja, hogyan történik a feltételek tokenje.
 
-+ A [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) során megtudhatja, hogyan hozhat létre egy lekérdezési kérést [egyszerű szintaxissal](query-simple-syntax.md) vagy [teljes Lucene szintaxissal](query-lucene-syntax.md) helyettesítő karakterekkel és reguláris kifejezésekkel.
++ A [dokumentumok keresése](/rest/api/searchservice/search-documents) során megtudhatja, hogyan hozhat létre egy lekérdezési kérést [egyszerű szintaxissal](query-simple-syntax.md) vagy [teljes Lucene szintaxissal](query-lucene-syntax.md) helyettesítő karakterekkel és reguláris kifejezésekkel.
 
   A részleges lejáratú lekérdezéseknél, például a "3-6214" lekérdezésben a "+ 1 (425) 703-6214" kifejezésre való kereséshez használhatja az egyszerű szintaxist: `search=3-6214&queryType=simple` .
 
-  A Infix és az utótag lekérdezéséhez, például a "NUM" vagy a "numerikus" lekérdezéshez az "alfanumerikus" kifejezéshez használja a teljes Lucene szintaxist és egy reguláris kifejezést:`search=/.*num.*/&queryType=full`
+  A Infix és az utótag lekérdezéséhez, például a "NUM" vagy a "numerikus" lekérdezéshez az "alfanumerikus" kifejezéshez használja a teljes Lucene szintaxist és egy reguláris kifejezést: `search=/.*num.*/&queryType=full`
 
 ## <a name="tune-query-performance"></a>Lekérdezési teljesítmény hangolása
 
@@ -287,5 +287,5 @@ Ez a cikk azt ismerteti, hogyan járulnak hozzá az elemzők a problémák leké
 
 + [Nyelvi elemzők](search-language-support.md)
 + [Az Azure Cognitive Searchban való szövegszerkesztés elemzői](search-analyzers.md)
-+ [Szöveges API elemzése (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Szöveges API elemzése (REST)](/rest/api/searchservice/test-analyzer)
 + [A teljes szöveges keresés működése (lekérdezési architektúra)](search-lucene-query-architecture.md)

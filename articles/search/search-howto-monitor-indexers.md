@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf7ae504e57d0b7947f4ff7dc48d50b2e0141eea
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529743"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936639"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
 
@@ -80,7 +80,7 @@ További információ az indexelő hibáiról és a figyelmeztetésekről: [Az A
 
 ## <a name="monitor-using-rest-apis"></a>Figyelés REST API-k használatával
 
-Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
+Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](/rest/api/searchservice/get-indexer-status)kérheti le:
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -125,7 +125,7 @@ Az indexelő minden futtatása saját állapottal rendelkezik, amely azt jelzi, 
 
 Ha egy indexelő visszaáll a Change Tracking állapotának frissítésére, egy külön végrehajtási előzmény kerül a **visszaállítási** állapotba.
 
-Az állapotkódok és az indexelő adatainak figyelésével kapcsolatos további információkért lásd: [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Az állapotkódok és az indexelő adatainak figyelésével kapcsolatos további információkért lásd: [GetIndexerStatus](/rest/api/searchservice/get-indexer-status).
 
 <a name="dotnetsdk"></a>
 
@@ -184,8 +184,8 @@ Az indexelő minden futtatása saját állapottal rendelkezik, hogy az adott vé
 
 Ha egy indexelő visszaáll a változás követési állapotának frissítésére, egy külön előzmény kerül a **visszaállítási** állapotba.
 
-Az állapotkódok és az indexelő figyelési információkkal kapcsolatos további információkért lásd: [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) a REST API.
+Az állapotkódok és az indexelő figyelési információkkal kapcsolatos további információkért lásd: [GetIndexerStatus](/rest/api/searchservice/get-indexer-status) a REST API.
 
 A dokumentum-specifikus hibákra vagy figyelmeztetésekre vonatkozó részletek a lista és a felsorolás enumerálásával olvashatók be `IndexerExecutionResult.Errors` `IndexerExecutionResult.Warnings` .
 
-Az indexelő figyeléséhez használt .net SDK-osztályokkal kapcsolatos további információkért lásd: [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) és [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).
+Az indexelő figyeléséhez használt .net SDK-osztályokkal kapcsolatos további információkért lásd: [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) és [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

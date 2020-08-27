@@ -3,14 +3,14 @@ title: Az Azure AD használata az Azure Kubernetes szolgáltatásban
 description: Ismerje meg, hogyan használhatja az Azure AD-t az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661061"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936996"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -37,17 +37,19 @@ Az AK által felügyelt Azure Active Directory integráció olyan nyilvános ré
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure CLI verziója 2.9.0 vagy újabb verzió
-* Kubectl legalább [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) -es verzióval
+* Az Azure CLI verziója 2.11.0 vagy újabb verzió
+* Kubectl a [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) vagy a [kubelogin](https://github.com/Azure/kubelogin) minimális verziójával
+* Ha a [helmot](https://github.com/helm/helm)használja, a Helm 3,3 minimális verzióját kell használnia.
 
 > [!Important]
-> A Kubectl-et legalább 1,18-es verzióval kell használni
+> A Kubectl-t a 1.18.1 vagy a kubelogin minimális verziójával kell használni. Ha nem a megfelelő verziót használja, a rendszer a hitelesítési problémákat észleli.
 
-A kubectl telepítéséhez használja a következő parancsokat:
+A kubectl és a kubelogin telepítéséhez használja a következő parancsokat:
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 [Ezeket az utasításokat](https://kubernetes.io/docs/tasks/tools/install-kubectl/) más operációs rendszerekhez használhatja.

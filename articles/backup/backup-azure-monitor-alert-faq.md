@@ -4,12 +4,12 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 2112a439585e6b111614e728dbc4a1a5eb4ee3d2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827171"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892558"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 

@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823964"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892813"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -149,7 +149,7 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
     - Ha a hálózatot konfigurálta, válassza ki a **Hardveresen készített pillanatfelvételek segítségével történő SAN-alapú helyreállítás engedélyezése** beállítást.
     - Ha azt szeretné, hogy a rendszer e-mail-értesítést küldjön a helyreállítási folyamat befejezése után, jelölje be az **E-mail küldése a helyreállítás befejezéséről** lehetőséget, majd adja meg a kívánt e-mail-címeket.
 
-6. Az Összefoglalás képernyőn ellenőrizze az adatok helyességét. Ha az adatok nem megfelelőek, vagy módosítani szeretné őket, kattintson a **Vissza** gombra. Ha elégedett a beállításokkal, kattintson a **Helyreállítás** gombra a helyreállítási folyamat megkezdéséhez.
+6. Az Összefoglalás képernyőn ellenőrizze az adatok helyességét. Ha az adatok nem megfelelőek, vagy módosítani szeretné őket, kattintson a **Vissza** gombra. Ha elégedett a beállításokkal **, kattintson a helyreállítás gombra** a helyreállítási folyamat elindításához.
 
 7. A helyreállítási feladatra vonatkozó információk a **Helyreállítás állapota** képernyőn jelennek meg.
 

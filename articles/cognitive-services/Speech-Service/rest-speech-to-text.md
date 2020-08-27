@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
-ms.openlocfilehash: 5c356a1c707ede3b9417bc3e742a940333b4c4ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056822"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934582"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -155,7 +156,7 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 A darabolásos átvitel ( `Transfer-Encoding: chunked` ) segítségével csökkentheti az elismerés késését. Lehetővé teszi, hogy a beszédfelismerési szolgáltatás megkezdje a hangfájl feldolgozását a továbbítás során. A REST API nem biztosít részleges vagy időközi eredményeket.
 
-Ez a mintakód azt mutatja be, hogyan lehet hangot küldeni a darabokban. Csak az első részletnek kell tartalmaznia a hangfájl fejlécét. `request`egy olyan `HttpWebRequest` objektum, amely a megfelelő Rest-végponthoz van csatlakoztatva. `audioFile`a lemezen lévő hangfájl elérési útja.
+Ez a mintakód azt mutatja be, hogyan lehet hangot küldeni a darabokban. Csak az első részletnek kell tartalmaznia a hangfájl fejlécét. `request` egy olyan `HttpWebRequest` objektum, amely a megfelelő Rest-végponthoz van csatlakoztatva. `audioFile` a lemezen lévő hangfájl elérési útja.
 
 ```csharp
 var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);

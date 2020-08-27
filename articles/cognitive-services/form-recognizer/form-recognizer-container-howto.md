@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547358"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925181"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Űrlap-felismerő tárolók telepítése és futtatása (előzetes verzió)
 
@@ -24,7 +25,7 @@ Az Azure űrlap-felismerő a gépi tanulási technológiát alkalmazza a kulcs-�
 
 Ha csökkenteni szeretné a bonyolultságot és egyszerűen integrálhat egy egyéni űrlap-felismerő modellt a munkafolyamat-automatizálási folyamatba vagy más alkalmazásba, meghívhatja a modellt egy egyszerű REST API használatával. Csak öt dokumentum (vagy egy üres űrlap és két kitöltött űrlap) szükséges, így az eredményeket gyorsan, pontosan és az adott tartalomhoz igazíthatja. Nincs szükség nehéz manuális beavatkozásra vagy kiterjedt adatelemzési szaktudásra. És nem szükséges az adatfelirat vagy az adatjegyzet.
 
-| Függvény | Funkciók |
+| Függvény | Szolgáltatások |
 |----------|----------|
 | Form Recognizer | <li>PDF-, PNG-és JPG-fájlok feldolgozása<li>Az egyéni modelleket az azonos elrendezésből legalább öt formával ellátott vonatok <li>A kulcs-érték párok és a tábla adatainak kibontása <li>Az Azure Cognitive Services Computer Vision API szövegfelismerés funkció használatával azonosíthatja és kinyerheti a képekből származó nyomtatott szöveget az űrlapokon belül<li>Nincs szükség jegyzet vagy címkézésre |
 
@@ -72,7 +73,7 @@ Ez a kulcs a tároló elindítására szolgál, és a megfelelő kognitív szolg
 
 A következő táblázat ismerteti az egyes űrlap-felismerő tárolók lefoglalásához szükséges minimális és ajánlott CPU-magokat és memóriát:
 
-| Tároló | Minimális | Ajánlott |
+| Tároló | Minimum | Ajánlott |
 |-----------|---------|-------------|
 | Form Recognizer | 2 mag, 4 GB memória | 4 mag, 8 GB memória |
 | szövegfelismerés | 1 mag, 8 GB memória | 2 mag, 8 GB memória |
@@ -319,7 +320,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta az űrlap-felismerő tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

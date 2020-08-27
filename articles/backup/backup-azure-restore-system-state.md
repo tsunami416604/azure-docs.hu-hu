@@ -3,12 +3,12 @@ title: Rendszerállapot visszaállítása Windows Serverre
 description: Részletes útmutató a Windows Server rendszerállapotának az Azure-beli biztonsági másolatból történő visszaállításához.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827103"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892541"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -181,7 +181,7 @@ Ez a cikk csak az első forgatókönyvet tárgyalja, amely az AD DS nonauthorati
     * A fenti utasításokat követve [alkalmazza a visszaállított rendszerállapotot egy Windows Serveren](#apply-restored-system-state-on-a-windows-server) a Windows Server biztonsági másolat segédprogrammal.
 
         >[!NOTE]
-        >Ha az összes Active Directory-adat visszaállítása (és nincsenek működő tartományvezérlők az erdőben), a fenti 9. lépésben jelölje be a **Active Directory fájlok mérvadó visszaállításának elvégzése**jelölőnégyzetet.
+        >Ha az összes Active Directory-adat visszaállítását végzi (és nincsenek működő tartományvezérlők az erdőben), a fenti 9. lépésben jelölje be a **Active Directory fájlok mérvadó visszaállításának elvégzése**jelölőnégyzetet.
 
     * A [Wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) segédprogram használatával hajtsa végre a visszaállítást a parancssorból.
 

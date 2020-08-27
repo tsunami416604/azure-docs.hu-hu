@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230774"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924299"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>A Knowledge Store az Azure Cognitive Search
 
@@ -21,7 +21,7 @@ A Knowledge Store az Azure Cognitive Search egyik funkciója, amely egy mesters�
 
 Ha korábban már használta a kognitív képességeket, már tudja, hogy a *szakértelmével* a bővítési folyamaton keresztül helyezi át a dokumentumot. Az eredmény lehet keresési index vagy kivetítés a Knowledge Store-ban. A két kimenet, a keresési index és a Knowledge Store azonos folyamat termékei. azonos bemenetből származtatva, de az olyan kimenetet eredményez, amely strukturált, tárolt és nagyon különböző módokon használható.
 
-Fizikailag a Knowledge Store az [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), az Azure Table Storage, az Azure Blob Storage vagy mindkettő. Minden olyan eszköz vagy folyamat, amely képes az Azure Storage-hoz kapcsolódni, felhasználhatja a Tudásbázis tartalmát.
+Fizikailag a Knowledge Store az [Azure Storage](../storage/common/storage-account-overview.md), az Azure Table Storage, az Azure Blob Storage vagy mindkettő. Minden olyan eszköz vagy folyamat, amely képes az Azure Storage-hoz kapcsolódni, felhasználhatja a Tudásbázis tartalmát.
 
 
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
@@ -39,7 +39,7 @@ Enumerált, a Knowledge Store előnyei a következők:
 
 + A kereséstől eltérő [elemzési és jelentéskészítő eszközökön](#tools-and-apps) a dúsított dokumentumokat használhatja. A Power BI a Power Query vonzó választás, de az Azure Storage-hoz csatlakoztatható bármely eszköz vagy alkalmazás lehívható a létrehozott Tudásbázisból.
 
-+ Egy AI-indexelési folyamat pontosítása a lépések és a készségkészlet-definíciók hibakeresése közben. A Tudásbázis egy AI-indexelési folyamat készségkészlet-definíciójának termékét jeleníti meg. Ezeket az eredményeket a jobb készségkészlet kialakításához használhatja, mert láthatja, hogy pontosan mit néz ki a gazdagítás. Az Azure Storage [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) használatával megtekintheti a Tudásbázis tartalmát.
++ Egy AI-indexelési folyamat pontosítása a lépések és a készségkészlet-definíciók hibakeresése közben. A Tudásbázis egy AI-indexelési folyamat készségkészlet-definíciójának termékét jeleníti meg. Ezeket az eredményeket a jobb készségkészlet kialakításához használhatja, mert láthatja, hogy pontosan mit néz ki a gazdagítás. Az Azure Storage [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) használatával megtekintheti a Tudásbázis tartalmát.
 
 + Az új űrlapokra alakítja az adathalmazt. Az átformálás a szakértelmével-ben kodifikált, de a lényeg az, hogy egy készségkészlet most már megadhatja ezt a képességet. A feladathoz való igazodás érdekében a [shapeer-képesség](cognitive-search-skill-shaper.md) az Azure Cognitive Search kiterjeszthető. Az átformálás lehetővé teszi, hogy olyan leképezést határozzon meg, amely igazodik az adatfelhasználáshoz a kapcsolatok megőrzése mellett.
 
@@ -84,7 +84,7 @@ Azonban több kivetítési készlet is létrehozható `table` - `object` - `file
 
 ## <a name="requirements"></a>Követelmények 
 
-Az [Azure Storage](https://docs.microsoft.com/azure/storage/) -t kötelező megadni. Fizikai tárterületet biztosít. A blob Storage-t, a Table Storage-t vagy mindkettőt használhatja. A blob Storage a nem ép, dúsított dokumentumokhoz használatos, általában akkor, ha a kimenet az alsóbb rétegbeli folyamatokra fog irányulni. A Table Storage az elemzéshez és jelentéskészítéshez gyakran használt, dúsított dokumentumokból álló szeletekhez használható.
+Az [Azure Storage](../storage/index.yml) -t kötelező megadni. Fizikai tárterületet biztosít. A blob Storage-t, a Table Storage-t vagy mindkettőt használhatja. A blob Storage a nem ép, dúsított dokumentumokhoz használatos, általában akkor, ha a kimenet az alsóbb rétegbeli folyamatokra fog irányulni. A Table Storage az elemzéshez és jelentéskészítéshez gyakran használt, dúsított dokumentumokból álló szeletekhez használható.
 
 A [készségkészlet](cognitive-search-working-with-skillsets.md) megadása kötelező. Tartalmazza a `knowledgeStore` definíciót, és meghatározza a dúsított dokumentumok szerkezetét és összeállítását. Nem hozhat létre a Knowledge Store-t üres készségkészlet használatával. A készségkészlet legalább egy képességgel rendelkeznie kell.
 
@@ -130,16 +130,16 @@ Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table St
 
 + Jelentéskészítés és elemzés [Power bi](knowledge-store-connect-power-bi.md) . 
 
-+ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) a további manipulációhoz.
++ [Azure Data Factory](../data-factory/index.yml) a további manipulációhoz.
 
 <a name="kstore-rest-api"></a>
 
 ## <a name="api-reference"></a>API-referencia
 
-A REST API verziója `2020-06-30` a szakértelmével további definíciói alapján biztosítja a Knowledge Store-t. A hivatkozáson kívül tekintse meg a [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
+A REST API verziója `2020-06-30` a szakértelmével további definíciói alapján biztosítja a Knowledge Store-t. A hivatkozáson kívül tekintse meg a  [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
 
-+ [Készségkészlet létrehozása (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Készségkészlet frissítése (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
++ [Készségkészlet létrehozása (API-Version = 2020-06-30)](/rest/api/searchservice/create-skillset)
++ [Készségkészlet frissítése (API-Version = 2020-06-30)](/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>További lépések

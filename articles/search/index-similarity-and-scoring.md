@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 5b3df38e8feef2a7b9bbc090e11a669164010f32
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213206"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924486"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Hasonlóság és pontozás az Azure Cognitive Search
 
@@ -21,11 +21,11 @@ A pontozás a teljes szöveges keresési lekérdezések keresési eredményei k�
 
 Alapértelmezés szerint a rendszer az első 50-as értéket adja vissza a válaszban, de a **$Top** paraméterrel kisebb vagy nagyobb számú elemet adhat vissza (legfeljebb 1000 egyetlen válaszban), és **$skip** a következő eredmények beszerzéséhez.
 
-A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai tulajdonságai alapján történik. Az Azure Cognitive Search megkeresi azokat a dokumentumokat, amelyek megfelelnek a keresési kifejezéseknek ( [searchMode](https://docs.microsoft.com/rest/api/searchservice/search-documents#searchmodeany--all-optional)függően), a keresési kifejezés számos példányát tartalmazó dokumentumokat. A keresési pontszám még magasabbra nő, ha a kifejezés az adatindexben ritkán előfordul, de a dokumentumon belül is. A számítástechnikai szempontoknak való megfelelés alapja a *TF-IDF vagy* a kifejezés gyakorisága – fordított dokumentum gyakorisága.
+A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai tulajdonságai alapján történik. Az Azure Cognitive Search megkeresi azokat a dokumentumokat, amelyek megfelelnek a keresési kifejezéseknek ( [searchMode](/rest/api/searchservice/search-documents#searchmodeany--all-optional)függően), a keresési kifejezés számos példányát tartalmazó dokumentumokat. A keresési pontszám még magasabbra nő, ha a kifejezés az adatindexben ritkán előfordul, de a dokumentumon belül is. A számítástechnikai szempontoknak való megfelelés alapja a *TF-IDF vagy* a kifejezés gyakorisága – fordított dokumentum gyakorisága.
 
 A keresési pontszám értékei megismételhetők egy eredményhalmaz során. Ha több találat azonos keresési pontszámmal rendelkezik, az azonos pontszámú elemek sorrendje nincs definiálva, és nem stabil. Futtassa újra a lekérdezést, és előfordulhat, hogy az elemek eltolási pozíciója látható, különösen akkor, ha az ingyenes szolgáltatást vagy egy számlázható szolgáltatást több replikával használ. Az azonos pontszámú két elem esetében nincs garancia arra, hogy az egyik első megjelenjen.
 
-Ha meg szeretné szüntetni a döntetlent az ismétlődő pontszámok között, hozzáadhat egy **$OrderBy** záradékot az első sorrend szerint a pontszám szerint, majd egy másik rendezhető mező szerint (például: `$orderby=search.score() desc,Rating desc` ). További információ: [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
+Ha meg szeretné szüntetni a döntetlent az ismétlődő pontszámok között, hozzáadhat egy **$OrderBy** záradékot az első sorrend szerint a pontszám szerint, majd egy másik rendezhető mező szerint (például: `$orderby=search.score() desc,Rating desc` ). További információ: [$OrderBy](./search-query-odata-orderby.md).
 
 > [!NOTE]
 > A egy nem `@search.score = 1.00` pontszámmal ellátható vagy nem rangsorolt eredményhalmaz. A pontszám egységes az összes eredményben. A nem pontozásos eredmények akkor fordulnak elő, ha a lekérdezési űrlap nem intelligens keresés, helyettesítő karakter vagy regex lekérdezés, vagy egy **$Filter** kifejezés. 
@@ -44,7 +44,7 @@ A méretezhetőség érdekében az Azure Cognitive Search horizontálisan osztja
 
 Alapértelmezés szerint a rendszer a dokumentum pontszámát a szegmensen *belüli*adatstatisztikai tulajdonságok alapján számítja ki. Ez a megközelítés általában nem jelent problémát a nagy mennyiségű adat esetében, és jobb teljesítményt nyújt, mint a pontszám kiszámításához az összes szegmens információi alapján. Ez azt eredményezte, hogy ez a teljesítmény-optimalizálás két nagyon hasonló dokumentumot (vagy akár azonos dokumentumokat) is okozhat, amelyek a különböző szegmensekben való befejezéskor különböző releváns pontszámokkal rendelkeznek.
 
-Ha az összes szegmens statisztikai tulajdonságai alapján szeretné kiszámítani a pontszámot, ezt a *scoringStatistics = Global* [lekérdezési paraméterként](https://docs.microsoft.com/rest/api/searchservice/search-documents) való hozzáadásával teheti meg (vagy a *"scoringStatistics": "Global"* értéket adja hozzá a [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)törzsének paraméteréhez).
+Ha az összes szegmens statisztikai tulajdonságai alapján szeretné kiszámítani a pontszámot, ezt a *scoringStatistics = Global* [lekérdezési paraméterként](/rest/api/searchservice/search-documents) való hozzáadásával teheti meg (vagy a *"scoringStatistics": "Global"* értéket adja hozzá a [lekérdezési kérelem](/rest/api/searchservice/search-documents)törzsének paraméteréhez).
 
 ```http
 GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2020-06-30&search=[search term]
@@ -77,7 +77,7 @@ A következő videó szegmense gyorsan továbbítható az Azure Cognitive Search
 
 ## <a name="featuresmode-parameter-preview"></a>featuresMode paraméter (előzetes verzió)
 
-A [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) egy új [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) -paraméterrel rendelkeznek, amely további részleteket biztosít a mező szintű relevancia vonatkozásában. Míg a `@searchScore` teljes dokumentum kiszámításának alapja (ez a dokumentum a lekérdezés kontextusában található), a featuresMode-on keresztül az egyes mezőkre vonatkozó információkat az adott struktúrában látható módon lehet lekérdezni `@search.features` . A struktúra tartalmazza a lekérdezésben használt összes mezőt (vagy egy lekérdezés **searchFields** keresztül adott mezőket, vagy az összes olyan mezőt, amely az indexben **kereshető** ). Az egyes mezőknél a következő értékeket kapja:
+A [keresési dokumentumok](/rest/api/searchservice/preview-api/search-documents) egy új [featuresMode](/rest/api/searchservice/preview-api/search-documents#featuresmode) -paraméterrel rendelkeznek, amely további részleteket biztosít a mező szintű relevancia vonatkozásában. Míg a `@searchScore` teljes dokumentum kiszámításának alapja (ez a dokumentum a lekérdezés kontextusában található), a featuresMode-on keresztül az egyes mezőkre vonatkozó információkat az adott struktúrában látható módon lehet lekérdezni `@search.features` . A struktúra tartalmazza a lekérdezésben használt összes mezőt (vagy egy lekérdezés **searchFields** keresztül adott mezőket, vagy az összes olyan mezőt, amely az indexben **kereshető** ). Az egyes mezőknél a következő értékeket kapja:
 
 + A mezőben található egyedi tokenek száma
 + Hasonlósági pontszám vagy a mező tartalmához hasonló mérték, a lekérdezési kifejezéshez viszonyítva
@@ -107,6 +107,6 @@ Ezeket az adatpontokat [Egyéni pontozási megoldásokban](https://github.com/Az
 
 ## <a name="see-also"></a>Lásd még
 
- [Pontozási profilok](index-add-scoring-profiles.md) [REST API referenciája](https://docs.microsoft.com/rest/api/searchservice/)   
- [Dokumentumok keresése API](https://docs.microsoft.com/rest/api/searchservice/search-documents)   
- [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+ [Pontozási profilok](index-add-scoring-profiles.md) [REST API referenciája](/rest/api/searchservice/)   
+ [Dokumentumok keresése API](/rest/api/searchservice/search-documents)   
+ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

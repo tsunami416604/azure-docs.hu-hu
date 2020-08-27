@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
-ms.custom: devx-track-javascript
+ms.custom: devx-track-javascript, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 944257c93e00dca77507f26db15f7bf45fbb387e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383630"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936418"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -56,19 +56,19 @@ A kapcsolatok maximális hossza 4096 karakter.
 
 #### <a name="key-value-pairs"></a>Kulcs-érték párok
 
-A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvesszővel elválasztott beállítások listájából áll:`key1=value1;key2=value2;key3=value3`
+A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvesszővel elválasztott beállítások listájából áll: `key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>Syntax
 
-- `InstrumentationKey`(pl.: 00000000-0000-0000-0000-000000000000)  A kapcsolatok karakterlánca mező **kitöltése kötelező** .
-- `Authorization`(pl.: rendszerállapotkulcsot) (Ez a beállítás nem kötelező, mert ma már csak a rendszerállapotkulcsot-hitelesítés támogatott.)
-- `EndpointSuffix`(pl.: applicationinsights.azure.cn) A végpont utótagjának beállítása arra utasítja az SDK-t, amelyhez az Azure Cloud csatlakozik. Az SDK össze fogja állítani a végpont többi részét az egyes szolgáltatásokhoz.
+- `InstrumentationKey` (pl.: 00000000-0000-0000-0000-000000000000)  A kapcsolatok karakterlánca mező **kitöltése kötelező** .
+- `Authorization` (pl.: rendszerállapotkulcsot) (Ez a beállítás nem kötelező, mert ma már csak a rendszerállapotkulcsot-hitelesítés támogatott.)
+- `EndpointSuffix` (pl.: applicationinsights.azure.cn) A végpont utótagjának beállítása arra utasítja az SDK-t, amelyhez az Azure Cloud csatlakozik. Az SDK össze fogja állítani a végpont többi részét az egyes szolgáltatásokhoz.
 - Explicit végpontok.
   Bármely szolgáltatás explicit módon felülbírálható a kapcsolatok karakterláncában.
-   - `IngestionEndpoint`(pl.: `https://dc.applicationinsights.azure.com` )
-   - `LiveEndpoint`(pl.: `https://live.applicationinsights.azure.com` )
-   - `ProfilerEndpoint`(pl.: `https://profiler.applicationinsights.azure.com` )
-   - `SnapshotEndpoint`(pl.: `https://snapshot.applicationinsights.azure.com` )
+   - `IngestionEndpoint` (pl.: `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint` (pl.: `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint` (pl.: `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint` (pl.: `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Végpont sémája
 
@@ -83,15 +83,15 @@ Itt látható az érvényes utótagok listája
 - applicationinsights.us
 
 
-Lásd még:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+Lásd még: https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
 ##### <a name="valid-prefixes"></a>Érvényes előtagok
 
-- [Telemetria](./app-insights-overview.md)betöltése:`dc`
-- [Élő metrikák](./live-stream.md):`live`
-- [Profiler](./profiler-overview.md):`profiler`
-- [Pillanatkép](./snapshot-debugger.md):`snapshot`
+- [Telemetria](./app-insights-overview.md)betöltése: `dc`
+- [Élő metrikák](./live-stream.md): `live`
+- [Profiler](./profiler-overview.md): `profiler`
+- [Pillanatkép](./snapshot-debugger.md): `snapshot`
 
 
 
@@ -107,10 +107,10 @@ Ebben a példában csak a kialakítási kulcs van beállítva.
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k az [SDK alapértelmezett értékein](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) alapulnak, és a nyilvános globális Azure-hoz csatlakoznak:
-   - Lenyelés`https://dc.services.visualstudio.com/`
-   - Élő metrikák:`https://rt.services.visualstudio.com/`
-   - Profiler`https://agent.azureserviceprofiler.net/`
-   - Hibakereső`https://agent.azureserviceprofiler.net/`
+   - Lenyelés `https://dc.services.visualstudio.com/`
+   - Élő metrikák: `https://rt.services.visualstudio.com/`
+   - Profiler `https://agent.azureserviceprofiler.net/`
+   - Hibakereső `https://agent.azureserviceprofiler.net/`
 
 
 
@@ -123,10 +123,10 @@ Ebben a példában ez a kapcsolatot megadó karakterlánc megadja a végpont ut�
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k a megadott végponti utótagon alapulnak: 
-   - Lenyelés`https://dc.ai.contoso.com`
-   - Élő metrikák:`https://live.ai.contoso.com`
-   - Profiler`https://profiler.ai.contoso.com`
-   - Hibakereső`https://snapshot.ai.contoso.com`  
+   - Lenyelés `https://dc.ai.contoso.com`
+   - Élő metrikák: `https://live.ai.contoso.com`
+   - Profiler `https://profiler.ai.contoso.com`
+   - Hibakereső `https://snapshot.ai.contoso.com`  
 
 
 
@@ -139,10 +139,10 @@ Ebben a példában ez a hálózati karakterlánc explicit felülbírálásokat h
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k az explicit felülbírálási értékeken alapulnak: 
-   - Lenyelés`https://custom.com:111/`
-   - Élő metrikák:`https://custom.com:222/`
-   - Profiler`https://custom.com:333/`
-   - Hibakereső`https://custom.com:444/`  
+   - Lenyelés `https://custom.com:111/`
+   - Élő metrikák: `https://custom.com:222/`
+   - Profiler `https://custom.com:333/`
+   - Hibakereső `https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>A kapcsolódási karakterlánc beállítása
@@ -160,11 +160,11 @@ A kapcsolatok karakterláncát kód, környezeti változó vagy konfigurációs 
 
 ### <a name="environment-variable"></a>Környezeti változó
 
-- Kapcsolatok karakterlánca:`APPLICATIONINSIGHTS_CONNECTION_STRING`
+- Kapcsolatok karakterlánca: `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-TelemetryConfiguration. ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetryConfiguration. ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
 .NET explicit módon beállítva:
 ```csharp
@@ -271,7 +271,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépések futtatáskor:
 

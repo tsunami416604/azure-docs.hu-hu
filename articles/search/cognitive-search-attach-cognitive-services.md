@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: ffb52cd34d56c227fc689ea70146e99983e17c0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564439"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924977"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Cognitive Services-erőforrás csatlakoztatása egy készségkészlet az Azure-ban Cognitive Search 
 
@@ -37,7 +37,7 @@ Az Azure Cognitive Search függ a Cognitive Servicestől, beleértve a képelemz
 
 ## <a name="same-region-requirement"></a>Azonos régióra vonatkozó követelmény
 
-Az Azure Cognitive Search és az Azure Cognitive Services ugyanazon a régión belül kell lennie. Ellenkező esetben az üzenet futtatása a következő időpontban történik:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Az Azure Cognitive Search és az Azure Cognitive Services ugyanazon a régión belül kell lennie. Ellenkező esetben az üzenet futtatása a következő időpontban történik: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Egy szolgáltatás nem helyezhető át a régiók között. Ha ezt a hibaüzenetet kapja, hozzon létre egy új Cognitive Services erőforrást ugyanabban a régióban, mint az Azure Cognitive Search.
 
@@ -170,5 +170,5 @@ Mindezt együttesen a $57,00-es számú 1 000-es PDF-dokumentumot kell fizetnie 
 ## <a name="next-steps"></a>További lépések
 + [Az Azure Cognitive Search díjszabási oldala](https://azure.microsoft.com/pricing/details/search/)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Készségkészlet létrehozása (REST)](/rest/api/searchservice/create-skillset)
 + [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)

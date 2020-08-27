@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4569137bc80fc2a9af26d58bb2ba3863325a3368
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922268"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936690"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
 
-Az új [Azure.Search.Documents (11-es verzió) ügyféloldali kódtár](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) használatával létrehozhat egy .net Core Console-alkalmazást a C#-ban, amely egy keresési indexet hoz létre, tölt be és kérdez le.
+Az új [Azure.Search.Documents (11-es verzió) ügyféloldali kódtár](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) használatával létrehozhat egy .net Core Console-alkalmazást a C#-ban, amely egy keresési indexet hoz létre, tölt be és kérdez le.
 
 [Töltse le a forráskódot](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11) , hogy a kész projekttel kezdődjön, vagy kövesse a cikk lépéseit saját létrehozásához.
 
@@ -77,7 +77,7 @@ A projekt létrehozása után adja hozzá az ügyféloldali kódtárat. A [Azure
    using Azure.Search.Documents.Models;
    ```
 
-1. Hozzon létre két ügyfelet: a [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) létrehozza az indexet, és a [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) egy meglévő indextel működik. A létrehozási/törlési jogokkal való hitelesítéshez mindkettőnek szüksége van a szolgáltatási végpontra és egy rendszergazdai API-kulcsra.
+1. Hozzon létre két ügyfelet: a [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) létrehozza az indexet, és a [SearchClient](/dotnet/api/azure.search.documents.searchclient) egy meglévő indextel működik. A létrehozási/törlési jogokkal való hitelesítéshez mindkettőnek szüksége van a szolgáltatási végpontra és egy rendszergazdai API-kulcsra.
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +99,7 @@ A projekt létrehozása után adja hozzá az ügyféloldali kódtárat. A [Azure
 
 Ez a rövid útmutató egy olyan szállodai indexet hoz létre, amelyet betölt a szállodai adatforrásokkal, és lekérdezéseket futtat. Ebben a lépésben definiálja a mezőket az indexben. Minden mező definíciója tartalmaz egy nevet, egy adattípust és egy attribútumot, amely meghatározza, hogy a rendszer hogyan használja a mezőt.
 
-Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait használjuk az egyszerűség és az olvashatóság érdekében. Éles környezetekben azonban aszinkron metódusokat kell használnia, hogy az alkalmazás méretezhető és rugalmas legyen. A [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)helyett például a [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) -et kellene használnia.
+Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait használjuk az egyszerűség és az olvashatóság érdekében. Éles környezetekben azonban aszinkron metódusokat kell használnia, hogy az alkalmazás méretezhető és rugalmas legyen. A [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)helyett például a [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) -et kellene használnia.
 
 1. Adjon hozzá egy üres osztály-definíciót a projekthez: **Hotel.cs**
 
@@ -131,7 +131,7 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
     }
     ```
 
-1. A **program.cs**területen határozza meg a mezőket és az attribútumokat. A [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) és a [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) index létrehozására szolgál.
+1. A **program.cs**területen határozza meg a mezőket és az attribútumokat. A [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) és a [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) index létrehozására szolgál.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +154,9 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
 
 A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. Az `IsFilterable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amely támogatja a szűrési kifejezést.
 
-A .NET SDK azon korábbi verzióival szemben, amelyek kereshető [IsSearchable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) igényelnek, a [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) és a [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) használatával egyszerűsítheti a mezők definícióit.
+A .NET SDK azon korábbi verzióival szemben, amelyek kereshető [IsSearchable](/dotnet/api/microsoft.azure.search.models.field.issearchable) igényelnek, a [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) és a [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) használatával egyszerűsítheti a mezők definícióit.
 
-A korábbi verziókhoz hasonlóan további attribútumok is szükségesek a definícióban. Például a [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), a [IsSortable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)és a [IsFacetable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) explicit módon kell szerepelnie a fenti mintában látható módon. 
+A korábbi verziókhoz hasonlóan további attribútumok is szükségesek a definícióban. Például a [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), a [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)és a [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) explicit módon kell szerepelnie a fenti mintában látható módon. 
 
 <a name="load-documents"></a>
 
@@ -166,7 +166,7 @@ Az Azure Cognitive Search megkeresi a szolgáltatásban tárolt tartalmakat. Ebb
 
 Az Azure Cognitive Searchban a dokumentumok olyan adatstruktúrák, amelyek mind a lekérdezések indexeléséhez, mind pedig a kimenetekhez tartoznak. Egy külső adatforrásból beszerzett módon a dokumentumok bemenetei egy adatbázisban, a blob Storage-ban vagy a lemezen található JSON-dokumentumok soraiban lehetnek. Ebben a példában egy, a kódban öt szálláshelyre mutató parancsikont és beágyazott JSON-dokumentumot használunk. 
 
-Dokumentumok feltöltésekor [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektumot kell használnia. A IndexDocumentsBatch olyan [műveletek](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)gyűjteményét tartalmazza, amelyek mindegyike tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely az Azure Cognitive Search a végrehajtandó műveletet ([feltöltés, Egyesítés, törlés és mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Dokumentumok feltöltésekor [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektumot kell használnia. A IndexDocumentsBatch olyan [műveletek](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)gyűjteményét tartalmazza, amelyek mindegyike tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely az Azure Cognitive Search a végrehajtandó műveletet ([feltöltés, Egyesítés, törlés és mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
 1. A **program.cs**-ben hozzon létre egy tömböt a dokumentumok és az indexelési műveletek közül, majd adja át a tömböt `ndexDocumentsBatch` az alábbi dokumentumoknak, amelyek megfelelnek a Hotel osztály által definiált Hotels-Gyorsindítás-v11 indexnek.
 
@@ -185,7 +185,7 @@ Dokumentumok feltöltésekor [IndexDocumentsBatch](https://docs.microsoft.com/do
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    Miután elvégezte a [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektum inicializálását, a [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) objektum [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) meghívásával elküldheti az indexbe.
+    Miután elvégezte a [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektum inicializálását, a [SearchClient](/dotnet/api/azure.search.documents.searchclient) objektum [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) meghívásával elküldheti az indexbe.
 
 1. Mivel ez egy olyan konzolos alkalmazás, amely egymás után futtatja az összes parancsot, adjon meg egy 2 másodperces várakozási időt az indexelés és a lekérdezések között.
 
@@ -201,9 +201,9 @@ Dokumentumok feltöltésekor [IndexDocumentsBatch](https://docs.microsoft.com/do
 
 A lekérdezési eredményeket az első dokumentum indexelése után azonnal lekérheti, de az index tényleges tesztelésének meg kell várnia, amíg az összes dokumentum indexelve van.
 
-Ez a szakasz két funkciót tartalmaz: a lekérdezési logikát és az eredményeket. Lekérdezésekhez használja a [keresési](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) módszert. Ez a metódus a keresési szöveget (a lekérdezési karakterláncot) és egyéb [beállításokat](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions)is végrehajtja.
+Ez a szakasz két funkciót tartalmaz: a lekérdezési logikát és az eredményeket. Lekérdezésekhez használja a [keresési](/dotnet/api/azure.search.documents.searchclient.search) módszert. Ez a metódus a keresési szöveget (a lekérdezési karakterláncot) és egyéb [beállításokat](/dotnet/api/azure.search.documents.searchoptions)is végrehajtja.
 
-A [SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1) osztály az eredményeket jelöli.
+A [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) osztály az eredményeket jelöli.
 
 1. A **program.cs**-ben hozzon létre egy WriteDocuments metódust, amely a keresési eredményeket a konzolra nyomtatja.
 
@@ -267,19 +267,19 @@ Ez a példa a [kifejezések egyezésének két módját mutatja be egy lekérdez
 
 + Egy vagy több kifejezés teljes szöveges keresési lekérdezése az index kereshető mezőiben. Az első lekérdezés a teljes szöveges keresés. A teljes szöveges keresés az eredmények rangsorolására szolgáló releváns pontszámokat eredményez.
 
-+ A Filter egy logikai kifejezés, amely egy index [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) mezőin keresztül lesz kiértékelve. A lekérdezéseket belefoglalhatja vagy kizárhatja az értékek közül. Ennek megfelelően a szűrő lekérdezéséhez nincs releváns pontszám társítva. Az utolsó két lekérdezés szemlélteti a szűrők keresését.
++ A Filter egy logikai kifejezés, amely egy index [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) mezőin keresztül lesz kiértékelve. A lekérdezéseket belefoglalhatja vagy kizárhatja az értékek közül. Ennek megfelelően a szűrő lekérdezéséhez nincs releváns pontszám társítva. Az utolsó két lekérdezés szemlélteti a szűrők keresését.
 
 A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
 
-A keresések és a szűrők a [SearchClient. Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) metódus használatával is elvégezhetők. Keresési lekérdezés adható át a `searchText` karakterláncban, míg a [SearchOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) osztály [Filter](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter) tulajdonságában egy szűrési kifejezés adható át. A keresés nélküli szűréshez csak adja `"*"` meg a `searchText` [keresési](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) metódus paraméterét. Szűrés nélküli kereséshez hagyja üresen a `Filter` tulajdonságot, vagy ne adjon meg egyetlen `SearchOptions` példányt sem.
+A keresések és a szűrők a [SearchClient. Search](/dotnet/api/azure.search.documents.searchclient.search) metódus használatával is elvégezhetők. Keresési lekérdezés adható át a `searchText` karakterláncban, míg a [SearchOptions](/dotnet/api/azure.search.documents.searchoptions) osztály [Filter](/dotnet/api/azure.search.documents.searchoptions.filter) tulajdonságában egy szűrési kifejezés adható át. A keresés nélküli szűréshez csak adja `"*"` meg a `searchText` [keresési](/dotnet/api/azure.search.documents.searchclient.search) metódus paraméterét. Szűrés nélküli kereséshez hagyja üresen a `Filter` tulajdonságot, vagy ne adjon meg egyetlen `SearchOptions` példányt sem.
 
 ## <a name="run-the-program"></a>A program futtatása
 
 Nyomja le az F5 billentyűt az alkalmazás újraépítéséhez és a program teljes körű futtatásához. 
 
-A kimenet magában foglalja a [Console. WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline)és a lekérdezési adatok és eredmények hozzáadásával kapcsolatos üzeneteket.
+A kimenet magában foglalja a [Console. WriteLIne](/dotnet/api/system.console.writeline)és a lekérdezési adatok és eredmények hozzáadásával kapcsolatos üzeneteket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
@@ -297,4 +297,4 @@ Ebben a C# rövid útmutatóban egy sor feladatot dolgozott ki egy index létreh
 Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 > [!div class="nextstepaction"]
-> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [A költségek elemzésének megkezdése a Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

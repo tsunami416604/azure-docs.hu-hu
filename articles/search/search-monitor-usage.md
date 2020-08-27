@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806811"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935007"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
 
@@ -59,7 +59,7 @@ A következő API-k segítségével kérheti le a portál figyelés és használ
 
 ### <a name="activity-logs-and-service-health"></a>Tevékenységek naplói és szolgáltatás állapota
 
-A portál [**tevékenység napló**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) lapja adatokat gyűjt a Azure Resource Managerről, és jelentéseket készít a szolgáltatás állapotának változásairól. A szolgáltatási állapottal kapcsolatos kritikus, hibával és figyelmeztetési feltételekkel nyomon követheti a tevékenység naplóját.
+A portál [**tevékenység napló**](../azure-monitor/platform/activity-log.md#view-the-activity-log) lapja adatokat gyűjt a Azure Resource Managerről, és jelentéseket készít a szolgáltatás állapotának változásairól. A szolgáltatási állapottal kapcsolatos kritikus, hibával és figyelmeztetési feltételekkel nyomon követheti a tevékenység naplóját.
 
 A közös bejegyzések az API-kulcsokra mutató hivatkozásokat tartalmaznak – általános tájékoztató értesítések, például *rendszergazdai kulcs* beolvasása és *lekérdezési kulcsok beolvasása*. Ezek a tevékenységek azokat a kérelmeket jelzik, amelyeket a felügyeleti kulcs (objektumok létrehozása vagy törlése) vagy a lekérdezési kulcs használatával hoztak létre, de a kérést nem jelenítik meg. A gabonával kapcsolatos információkért be kell állítania a diagnosztikai naplózást.
 
@@ -75,13 +75,13 @@ Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektum�
  "A használati állapot a rétegek korlátaihoz képest")
 
 > [!NOTE]
-> A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. A tárolási riasztások beszerzéséhez létre kell hoznia [egy egyéni megoldást](../azure-monitor/insights/solutions-creating.md) , amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ.
+> A tárterülettel kapcsolatos riasztások jelenleg nem érhetők el; a tárolási felhasználás nincs összesítve, vagy be van jelentkezve a Azure Monitor **AzureMetrics** táblába. A tárolási riasztások beszerzéséhez létre kell hoznia [egy egyéni megoldást](../azure-monitor/insights/solutions.md) , amely az erőforrásokkal kapcsolatos értesítéseket bocsát ki, ahol a kód ellenőrzi a tárolási méretet, és kezeli a választ.
 
 <a name="add-azure-monitor"></a>
 
 ## <a name="add-on-monitoring-with-azure-monitor"></a>Kiegészítő figyelés Azure Monitor
 
-Számos szolgáltatás, többek között az Azure Cognitive Search, a további riasztások, metrikák és naplózási diagnosztikai adatok [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) integrálásával. 
+Számos szolgáltatás, többek között az Azure Cognitive Search, a további riasztások, metrikák és naplózási diagnosztikai adatok [Azure monitor](../azure-monitor/index.yml) integrálásával. 
 
 A keresési szolgáltatás [diagnosztikai naplózásának engedélyezése](search-monitor-logs.md) , ha az adatgyűjtést és-tárolást szeretné szabályozni. Az Azure Monitor által rögzített naplózott eseményeket a rendszer a **AzureDiagnostics** táblában tárolja, és a lekérdezésekhez és indexeléshez kapcsolódó operatív adatból áll.
 
@@ -107,4 +107,4 @@ Ezt az információt nem lehet külön naplózni a lekérdezési karakterláncb�
 A Azure Monitorekkel való gördülékenység elengedhetetlen az Azure-szolgáltatások, például az Azure-Cognitive Searchek felügyeletéért. Ha nem ismeri a Azure Monitort, szánjon időt az erőforrásokkal kapcsolatos cikkek áttekintésére. Az oktatóanyagokon kívül a következő cikk is jó kiindulópont.
 
 > [!div class="nextstepaction"]
-> [Azure-erőforrások monitorozása Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Azure-erőforrások monitorozása az Azure Monitor segítségével](../azure-monitor/insights/monitor-azure-resource.md)

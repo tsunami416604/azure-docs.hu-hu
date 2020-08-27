@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503217"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935279"
 ---
 # <a name="sentiment-cognitive-skill"></a>Érzelmek kognitív szaktudása
 
-A **hangulati** készség kiértékeli a strukturálatlan szöveget a pozitív negatív folytonosság mellett, és minden rekord esetében 0 és 1 közötti numerikus pontszámot ad vissza. Az 1. ponthoz közeledő pontszámok pozitív és negatív eredményt jeleznek. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
+A **hangulati** készség kiértékeli a strukturálatlan szöveget a pozitív negatív folytonosság mellett, és minden rekord esetében 0 és 1 közötti numerikus pontszámot ad vissza. Az 1. ponthoz közeledő pontszámok pozitív és negatív eredményt jeleznek. Ez a képesség a Cognitive Services [text Analytics](../cognitive-services/text-analytics/overview.md) által biztosított gépi tanulási modelleket használja.
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -29,7 +29,7 @@ A **hangulati** készség kiértékeli a strukturálatlan szöveget a pozitív n
 Microsoft. Skills. Text. SentimentSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 5000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+A rekordok maximális méretének 5000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](/dotnet/api/system.string.length) . Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
@@ -38,14 +38,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve | Leírás |
 |----------------|----------------------|
-| `defaultLanguageCode` | választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód. <br/> [A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| `defaultLanguageCode` | választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód. <br/> [A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/language-support.md) |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei 
 
 | Bemeneti név | Leírás |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
-| `languageCode`    |  Választható A rekordok nyelvét jelző sztring. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/>[A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/text-analytics-supported-languages.md)itt tekintheti meg.|
+| `languageCode`    |  Választható A rekordok nyelvét jelző sztring. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/>[A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/language-support.md)itt tekintheti meg.|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
@@ -78,7 +78,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 }
 ```
 
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Példabemenet
 
 ```json
 {
@@ -95,7 +95,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 ```
 
 
-##  <a name="sample-output"></a>Példa kimenet
+##  <a name="sample-output"></a>Példakimenet
 
 ```json
 {

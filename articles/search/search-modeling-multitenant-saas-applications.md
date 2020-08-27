@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230757"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935024"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Az Azure Cognitive Search használatakor az egyik a *keresési szolgáltatásra*
 
 A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező*határoz meg. Az Azure Cognitive Search indexbe kerülnek az egyes *dokumentumok*formájában. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor az Azure Cognitive Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kiadva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
 
-### <a name="scalability"></a>Skálázhatóság
+### <a name="scalability"></a>Méretezhetőség
 A standard szintű [díjszabásban](https://azure.microsoft.com/pricing/details/search/) szereplő Azure Cognitive Search-szolgáltatások két dimenzióban méretezhetők: tárterület és rendelkezésre állás.
 
 * A *partíciók* hozzáadhatók a keresési szolgáltatás tárterületének növeléséhez.
@@ -119,7 +119,7 @@ A fenti tervezési minták a több-bérlős forgatókönyvek Azure-beli modellez
 
 Ha a szolgáltatás-/bérlői és az index/bérlői modellek nem eléggé kis hatókörű, az index modellezése még finomabb részletességi fokú részletességgel valósítható meg.
 
-Ahhoz, hogy egyetlen index eltérő módon viselkedjen a különböző ügyféloldali végpontok esetében, egy mező hozzáadható egy olyan indexhez, amely minden lehetséges ügyfél esetében egy bizonyos értéket jelöl ki. Minden alkalommal, amikor egy ügyfél meghívja az Azure Cognitive Search egy index lekérdezésére vagy módosítására, az ügyfélalkalmazás kódja megadja az adott mező megfelelő értékét az Azure Cognitive Search [szűrő](https://msdn.microsoft.com/library/azure/dn798921.aspx) funkciójának lekérdezési időpontra való használatakor.
+Ahhoz, hogy egyetlen index eltérő módon viselkedjen a különböző ügyféloldali végpontok esetében, egy mező hozzáadható egy olyan indexhez, amely minden lehetséges ügyfél esetében egy bizonyos értéket jelöl ki. Minden alkalommal, amikor egy ügyfél meghívja az Azure Cognitive Search egy index lekérdezésére vagy módosítására, az ügyfélalkalmazás kódja megadja az adott mező megfelelő értékét az Azure Cognitive Search [szűrő](./query-odata-filter-orderby-syntax.md) funkciójának lekérdezési időpontra való használatakor.
 
 Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosultsági szintek és akár teljesen különálló alkalmazások funkciói is elérhetők.
 
@@ -132,4 +132,3 @@ Ezzel a módszerrel különböző felhasználói fiókok, különálló jogosult
 Az Azure Cognitive Search számos alkalmazás számára meggyőző megoldás. A több-bérlős alkalmazások különböző tervezési mintáinak kiértékelése során vegye figyelembe a [különböző díjszabási](https://azure.microsoft.com/pricing/details/search/) csomagokat és a megfelelő [szolgáltatási korlátokat](search-limits-quotas-capacity.md) a legmegfelelőbb Azure-Cognitive Search az alkalmazások számítási feladatainak és architektúráinak méretének megfelelően.
 
 Az Azure Cognitive Search és a több-bérlős forgatókönyvekkel kapcsolatos bármilyen kérdés a következő lehet: azuresearch_contact@microsoft.com .
-
