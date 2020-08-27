@@ -44,6 +44,6 @@ Az 400-es hibás kérelem olyan lekérdezési műveletekben fordul elő, ahol a 
 1. Kövesse a [.net v3](performance-tips-dotnet-sdk-v3-sql.md) vagy a [.NET v2](performance-tips.md) teljesítménnyel kapcsolatos tippek című cikk útmutatását. Alakítsa át az alkalmazást a közvetlen kapcsolati mód használatára a TCP protokollal. A TCP protokollal létesített közvetlen kapcsolati mód nem rendelkezik a fejléc méretére vonatkozó korlátozással, például a HTTP protokollal, így elkerülhető a probléma. 
 1. Ha a TCP protokollal létesített közvetlen kapcsolati mód nem választható a munkaterhelés számára, állítsa be a `ResponseContinuationTokenLimitInKb` beállítást. Ezt a lehetőséget a v2-ben `FeedOptions` vagy a v3-ben is megtalálhatja `QueryRequestOptions` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.

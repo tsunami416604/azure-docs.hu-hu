@@ -97,6 +97,6 @@ Az az adatbázis vagy tároló, amelyben az adott eleme található, törölve l
 1. [Állítsa vissza](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) a szülő erőforrást, vagy hozza létre újra az erőforrásokat.
 1. Hozzon létre egy új erőforrást a törölt erőforrás cseréjéhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.
