@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212386"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934956"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Az Azure-Cognitive Search teljesítményének méretezése
 
@@ -30,7 +30,7 @@ A nagyobb üzembe helyezési erőfeszítések elvégzése előtt győződjön me
 
 1. Kezdje a másodpercenkénti lekérdezések másodpercenkénti számát (QPS), majd fokozatosan növelje a teszt során végrehajtott számot, amíg a lekérdezés késése az előre definiált cél alá nem csökken. Ez egy fontos viszonyítási alap, amely segít a méretezés megtervezésében, mivel alkalmazása növekszik a használat során.
 
-1. Ahol csak lehet, használja újra a HTTP-kapcsolatokat. Ha az Azure Cognitive Search .NET SDK-t használja, ez azt jelenti, hogy fel kell használni egy példány-vagy [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) -példányt, és ha a REST API használja, akkor egyetlen HttpClient kell felhasználnia.
+1. Ahol csak lehet, használja újra a HTTP-kapcsolatokat. Ha az Azure Cognitive Search .NET SDK-t használja, ez azt jelenti, hogy fel kell használni egy példány-vagy [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) -példányt, és ha a REST API használja, akkor egyetlen HttpClient kell felhasználnia.
 
 1. A lekérdezési kérések lényegének változása, hogy a Keresés az index különböző részein történjen. A változás azért fontos, mert ha folyamatosan hajtja végre ugyanazokat a keresési kéréseket, az adatgyorsítótárazás megkezdi, hogy a teljesítmény jobban nézzen ki, mint a több különböző lekérdezési készlet.
 
@@ -43,7 +43,7 @@ A tesztelési feladatok létrehozásakor az Azure Cognitive Search néhány jell
 + Az Azure Cognitive Search nem futtat indexelési feladatokat a háttérben. Ha a szolgáltatás párhuzamosan kezeli a lekérdezési és indexelési feladatokat, ezt vegye figyelembe az indexelési feladatok bevezetésével a lekérdezési tesztekben, vagy az indexelési feladatok futtatásának időpontjában való futási lehetőségek feltárásával.
 
 > [!Tip]
-> A valós lekérdezési terhelést a Load Testing Tools használatával szimulálhatja. Próbálja meg [betölteni az Azure DevOps,](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) vagy használja az alábbi [alternatívák](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)egyikét.
+> A valós lekérdezési terhelést a Load Testing Tools használatával szimulálhatja. Próbálja meg [betölteni az Azure DevOps,](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) vagy használja az alábbi [alternatívák](/azure/devops/test/load-test/overview?view=azure-devops#alternatives)egyikét.
 
 ## <a name="scale-for-high-query-volume"></a>Méretezés nagy lekérdezési kötethez
 
@@ -99,7 +99,7 @@ A földrajzi eloszlású keresési szolgáltatások célja, hogy legalább két,
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>Több szolgáltatás között szinkronizálva marad az adatszinkronizálás
 
-Az elosztott keresési szolgáltatások szinkronizálása két lehetőség közül választhat, amelyek az [azure Cognitive Search indexelő](search-indexer-overview.md) vagy a leküldéses API (más néven [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)) használatával állnak.  
+Az elosztott keresési szolgáltatások szinkronizálása két lehetőség közül választhat, amelyek az [azure Cognitive Search indexelő](search-indexer-overview.md) vagy a leküldéses API (más néven [Azure Cognitive Search REST API](/rest/api/searchservice/)) használatával állnak.  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexelő használata több szolgáltatás tartalmának frissítéséhez
 
@@ -111,7 +111,7 @@ Itt látható egy magas szintű vizualizáció, hogy az architektúra milyen mó
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>A REST API-k használata a tartalmi frissítések több szolgáltatásban való leküldéséhez
 
-Ha az Azure Cognitive Search REST APIt használja az [azure Cognitive Search indexben lévő tartalmak leküldéséhez](https://docs.microsoft.com/rest/api/searchservice/update-index), a különböző keresési szolgáltatásokat szinkronizálhatja, ha az összes keresési szolgáltatás módosítását kéri, amikor frissítésre van szükség. Ügyeljen arra, hogy a kódban olyan eseteket kezeljen, amelyekben az egyik keresési szolgáltatás frissítése meghiúsul, de a többi keresési szolgáltatás sikeres.
+Ha az Azure Cognitive Search REST APIt használja az [azure Cognitive Search indexben lévő tartalmak leküldéséhez](/rest/api/searchservice/update-index), a különböző keresési szolgáltatásokat szinkronizálhatja, ha az összes keresési szolgáltatás módosítását kéri, amikor frissítésre van szükség. Ügyeljen arra, hogy a kódban olyan eseteket kezeljen, amelyekben az egyik keresési szolgáltatás frissítése meghiúsul, de a többi keresési szolgáltatás sikeres.
 
 ## <a name="leverage-azure-traffic-manager"></a>Az Azure Traffic Manager kihasználása
 

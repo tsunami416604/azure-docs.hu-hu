@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510912"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929771"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása a Poster-ben REST API-k használatával
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
-> * [C#](search-create-index-dotnet.md)
+> * [C#](./search-get-started-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Ez a cikk azt ismerteti, hogyan lehet interaktív módon kialakítani REST API kérelmeket az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice) -kkal és egy API-ügyféllel a kérelmek küldéséhez és fogadásához. Az API-ügyféllel és ezekkel az utasításokkal bármilyen kód írása előtt elküldheti a kérelmeket, és megtekintheti a válaszokat.
+Ez a cikk azt ismerteti, hogyan lehet interaktív módon kialakítani REST API kérelmeket az [Azure Cognitive Search REST API](/rest/api/searchservice) -kkal és egy API-ügyféllel a kérelmek küldéséhez és fogadásához. Az API-ügyféllel és ezekkel az utasításokkal bármilyen kód írása előtt elküldheti a kérelmeket, és megtekintheti a válaszokat.
 
 A cikk a Poster alkalmazást használja. Ha előre definiált kéréseket szeretne használni, [letöltheti és importálhatja a Poster-gyűjteményeket](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) . 
 
@@ -74,7 +74,7 @@ A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz has
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Az Azure Cognitive Search általában az indexet hozza létre az adatbevitel előtt. Ehhez a feladathoz a [create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) van használatban. 
+Az Azure Cognitive Search általában az indexet hozza létre az adatbevitel előtt. Ehhez a feladathoz a [create Index REST API](/rest/api/searchservice/create-index) van használatban. 
 
 Az URL-cím kiterjeszthető, hogy tartalmazza az `hotels` index nevét.
 
@@ -128,7 +128,7 @@ A kérelem elküldését követően megjelenik a 201-es HTTP-válasz, amely azt 
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Cognitive Searchban az index tartalmazza az összes kereshető adatértéket. Ebben a forgatókönyvben az információk JSON-dokumentumként vannak megadva. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) használják. 
+Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Cognitive Searchban az index tartalmazza az összes kereshető adatértéket. Ebben a forgatókönyvben az információk JSON-dokumentumként vannak megadva. Ehhez a feladathoz a [Hozzáadás, frissítés vagy törlés dokumentumok REST API](/rest/api/searchservice/addupdate-or-delete-documents) használják. 
 
 Az URL-cím kiterjeszthető a `docs` gyűjtemények és a művelet belefoglalására `index` .
 
@@ -236,12 +236,12 @@ Néhány másodpercen belül megjelenik egy HTTP 201-válasz a munkamenetek list
 Ha a 207-es HTTP-válasz jelenik meg, legalább egy dokumentumot nem sikerült feltölteni. Ha a 404-es válasz jelenik meg, akkor a kérelem fejlécében vagy törzsében szintaktikai hiba van: ellenőrizze, hogy valóban módosította-e a végpontot, hogy tartalmazza a `/docs/index` útvonalat.
 
 > [!Tip]
-> A kiválasztott adatforrások esetében választhatja az alternatív *indexelő* megközelítést, amely egyszerűbb, és csökkenti az indexáláshoz szükséges kódot. További információkért lásd: [Indexelőműveletek](https://docs.microsoft.com/rest/api/searchservice/indexer-operations).
+> A kiválasztott adatforrások esetében választhatja az alternatív *indexelő* megközelítést, amely egyszerűbb, és csökkenti az indexáláshoz szükséges kódot. További információkért lásd: [Indexelőműveletek](/rest/api/searchservice/indexer-operations).
 
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Most, hogy az index és a dokumentumkészlet be van töltve, a [keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)használatával küldhet lekérdezéseket.
+Most, hogy az index és a dokumentumkészlet be van töltve, a [keresési dokumentumok REST API](/rest/api/searchservice/search-documents)használatával küldhet lekérdezéseket.
 
 Az URL-cím kiterjesztése a keresési operátor használatával megadott lekérdezési kifejezésre.
 
@@ -278,7 +278,7 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 ```
 
 ## <a name="get-index-properties"></a>Index tulajdonságainak beolvasása
-A [lekérési statisztikákat](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) is használhatja a dokumentumok számának és az index méretének lekérdezéséhez: 
+A [lekérési statisztikákat](/rest/api/searchservice/get-index-statistics) is használhatja a dokumentumok számának és az index méretének lekérdezéséhez: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2020-06-30
@@ -292,7 +292,7 @@ Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` k
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

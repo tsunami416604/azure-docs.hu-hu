@@ -2,13 +2,14 @@
 title: Application Insights a Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Azure Monitor Application Insightsokkal.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6f31236e516e44df9f5115e3efeb48db46853e8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933273"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
@@ -46,7 +47,7 @@ Az egyes alkalmazási típusok részletes ismertetését a következő szakaszok
 A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) van megosztva
 
 1. A [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) letöltése és telepítése
-2. Új feldolgozói szolgáltatási projekt létrehozása a Visual Studio új projekt sablonjának vagy parancssorának használatával`dotnet new worker`
+2. Új feldolgozói szolgáltatási projekt létrehozása a Visual Studio új projekt sablonjának vagy parancssorának használatával `dotnet new worker`
 3. Telepítse a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
 
 4. Adja hozzá `services.AddApplicationInsightsTelemetryWorkerService();` a `CreateHostBuilder()` metódust az `Program.cs` osztályban, ahogy az alábbi példában is látható:
@@ -124,7 +125,7 @@ Azt is megteheti, hogy a kialakítási kulcsot a következő környezeti változ
 `APPINSIGHTS_INSTRUMENTATIONKEY` vagy `ApplicationInsights:InstrumentationKey`
 
 Például: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
-VAGY`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
+VAGY `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 Általában meghatározza a rendszerállapot- `APPINSIGHTS_INSTRUMENTATIONKEY` kulcsot a webes Feladatokhoz Web Apps központilag telepített alkalmazásokhoz.
 
@@ -312,7 +313,7 @@ A függőségi gyűjtemény alapértelmezés szerint engedélyezve van. [Ez](asp
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3,0-alkalmazásokból gyűjti össze a számlálók alapértelmezett készletét. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
+`EventCounterCollectionModule` Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3,0-alkalmazásokból gyűjti össze a számlálók alapértelmezett készletét. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
 
 ### <a name="manually-tracking-additional-telemetry"></a>További telemetria manuális követése
 
@@ -349,7 +350,7 @@ A következő példához hasonlóan módosíthat néhány gyakori beállítást 
 
 Vegye figyelembe, hogy ebben az SDK-ban a ASP.NET Core SDK-ban lévő `ApplicationInsightsServiceOptions` névtérben található `Microsoft.ApplicationInsights.WorkerService` `Microsoft.ApplicationInsights.AspNetCore.Extensions` .
 
-Leggyakrabban használt beállítások a`ApplicationInsightsServiceOptions`
+Leggyakrabban használt beállítások a `ApplicationInsightsServiceOptions`
 
 |Beállítás | Leírás | Alapértelmezett
 |---------------|-------|-------
@@ -425,7 +426,7 @@ A következő automatikus gyűjtési modulok alapértelmezés szerint engedélye
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`-(Jelenleg a telemetria modult érintő probléma merül fel. Ideiglenes áthidaló megoldásért lásd: [GitHub-probléma 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+* `AppServicesHeartbeatTelemetryModule` -(Jelenleg a telemetria modult érintő probléma merül fel. Ideiglenes áthidaló megoldásért lásd: [GitHub-probléma 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
 ).)
 * `AzureInstanceMetadataTelemetryModule`
 

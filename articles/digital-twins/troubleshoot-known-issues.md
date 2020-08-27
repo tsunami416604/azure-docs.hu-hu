@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661486"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921069"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -51,7 +51,9 @@ A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolg
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Probléma az interaktív böngésző-hitelesítéssel
 
-Ha az Azure ** [. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) Library**legújabb verziójának ( **1.2.0**) használatával ír be hitelesítési kódot az Azure-beli digitális Twins-alkalmazásokban, akkor a [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódussal kapcsolatos problémák léphetnek fel.
+Az Azure-beli digitális Twins-alkalmazásokban az ** [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódussal.
+
+Ez nem a könyvtár legújabb verziója. A legújabb verzió az **1.2.2**.
 
 Az érintett módszert a következő cikkek használják: 
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)
@@ -62,10 +64,7 @@ A probléma az "Azure. Identity. AuthenticationFailedException" hibaüzenettel i
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-A megoldáshoz az alkalmazások explicit módon használják az Azure. Identity **1.1.1**-es verzióját. A könyvtár ezen verziójával a böngészőnek be kell töltenie és hitelesítenie kell a várt módon.
-
->[!NOTE]
-> Nem elegendő, ha a könyvtárat anélkül adja hozzá, hogy bármilyen verziót megad, mivel ez a legújabb **1.2.0**továbbra is alapértelmezett lesz. Explicit módon meg kell adnia a **1.1.1** -es verziót.
+A megoldáshoz frissítse alkalmazásait az Azure. Identity **1.2.2**-es verziójának használatára. A könyvtár ezen verziójával a böngészőnek be kell töltenie és hitelesítenie kell a várt módon.
 
 ### <a name="possible-causes"></a>Lehetséges okok
 

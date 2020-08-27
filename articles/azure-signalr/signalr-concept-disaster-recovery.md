@@ -4,14 +4,15 @@ description: A többszörös szignáló szolgáltatási példányok beállítás
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 1bf8191b0a76ad442ac5d2b286c214f6ee9da822
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504852"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935687"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Rugalmasság és vész-helyreállítás az Azure Signaler szolgáltatásban
 
@@ -131,7 +132,7 @@ Ha a használni kívánt mintákat nem számítja ki, akkor az egyes szignáló 
 A Signaler-kapcsolatok jellegéből adódóan (ez egy hosszú csatlakozás), az ügyfelek a kapcsolódást akkor fogják tapasztalni, ha katasztrófa és feladatátvétel történik.
 Ezeket az eseteket az ügyféloldali oldalon kell kezelnie ahhoz, hogy transzparensek legyenek a végfelhasználók számára. Tegyük fel például, hogy újracsatlakozik a kapcsolat lezárása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja az alkalmazást, hogy rugalmasságot biztosítson a Signaler szolgáltatás számára. Ha többet szeretne megtudni a kiszolgálóról/az ügyfél kapcsolatáról és a kapcsolati útválasztásról a Signaler szolgáltatásban, olvassa el [ezt a cikket](signalr-concept-internals.md) a signaler szolgáltatás belső szolgáltatásaihoz.
 

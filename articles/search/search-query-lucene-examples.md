@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c344d7bd7007dfbea366ea597ec622e35bf1e2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561769"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934973"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>A "teljes" Lucene keresési szintaxis használata (speciális lekérdezések az Azure Cognitive Searchban)
 
@@ -147,7 +147,7 @@ A **mezőnév: searchExpression** szintaxissal megadhat egy mezőhöz tartozó k
 
 Ügyeljen arra, hogy az idézőjelek között több karakterláncot is helyezzen el, ha azt szeretné, hogy mindkét sztring egyetlen entitásként legyen kiértékelve, mivel ebben az esetben két különböző helyet keres a `state` mezőben. Győződjön meg arról is, hogy az operátor olyan tőkésített, ahogyan a nem és a és a is látható.
 
-A **mezőnév: searchExpression** mezőben megadott mezőnek kereshető mezőnek kell lennie. További részletekért lásd: [create index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+A **mezőnév: searchExpression** mezőben megadott mezőnek kereshető mezőnek kell lennie. További részletekért lásd: [create index (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) .
 
 > [!NOTE]
 > A fenti példában nem volt szükség a paraméter használatára, `searchFields` mert a lekérdezés egyes részeihez explicit módon meg van adva a mező neve. Azonban továbbra is használhatja a `searchFields` paramétert, ha olyan lekérdezést szeretne futtatni, amelyben bizonyos részek hatóköre egy adott mezőre vonatkozik, a REST pedig több mezőre is vonatkozhat. Például a lekérdezés `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` `senior NOT junior` csak a `business_title` mezőhöz igazodik, míg a "külső" értékkel egyezik a `posting_type` mezővel. A Mezőnév mezőben megadott mezőnév **: a searchExpression** mindig elsőbbséget élvez a `searchFields` paraméterrel szemben, ezért ebben a példában nem kell belefoglalni `business_title` a `searchFields` paraméterbe.
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Regex-lekérdezés](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> A regex-lekérdezések [elemzése](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
+> A regex-lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
 ## <a name="example-7-wildcard-search"></a>7. példa: helyettesítő karakteres keresés
@@ -278,18 +278,18 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
   ![Helyettesítő karakteres lekérdezés](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> A helyettesítő karakteres lekérdezések [elemzése](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
+> A helyettesítő karakteres lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
 ## <a name="next-steps"></a>További lépések
 Próbálja megadni a Lucene lekérdezés-elemzőjét a kódban. A következő hivatkozások ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz. A hivatkozások az alapértelmezett egyszerű szintaxist használják, így a **queryType**megadásához alkalmaznia kell a cikkből megtanult tudnivalókat.
 
-* [Az index lekérdezése a .NET SDK használatával](search-query-dotnet.md)
-* [Az index lekérdezése a REST API használatával](search-create-index-rest-api.md)
+* [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)
+* [Az index lekérdezése a REST API használatával](./search-get-started-powershell.md)
 
 A szintaxissal, a lekérdezési architektúrával és a példákkal kapcsolatban a következő hivatkozásokban találhat további tudnivalókat:
 
 + [Példák egyszerű szintaxisú lekérdezésekre](search-query-simple-examples.md)
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
-+ [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Teljes Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Egyszerű lekérdezési szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Teljes Lucene lekérdezési szintaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)

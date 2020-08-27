@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321306"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935432"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Példa: űrlap-felismerő egyéni képességének létrehozása
 
@@ -30,18 +30,18 @@ Ebben az Azure Cognitive Search készségkészlet példaként megtudhatja, hogya
 
 ## <a name="train-your-model"></a>A modell betanítása
 
-Ennek a képességnek a használata előtt be kell tanítania egy űrlap-felismerő modellt a bemeneti űrlapjaira. Kövesse a [curl](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) rövid útmutatóját, és ismerkedjen meg a modellek betanításával. Használhatja az ebben a rövid útmutatóban található mintaűrlapok használatát, vagy használhatja a saját adatait is. A modell betanítása után másolja az azonosító értékét egy biztonságos helyre.
+Ennek a képességnek a használata előtt be kell tanítania egy űrlap-felismerő modellt a bemeneti űrlapjaira. Kövesse a [curl](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) rövid útmutatóját, és ismerkedjen meg a modellek betanításával. Használhatja az ebben a rövid útmutatóban található mintaűrlapok használatát, vagy használhatja a saját adatait is. A modell betanítása után másolja az azonosító értékét egy biztonságos helyre.
 
 ## <a name="set-up-the-custom-skill"></a>Az egyéni képesség beállítása
 
 Ez az oktatóanyag a [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) projektet használja az [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub-tárházban. A tárház klónozása a helyi gépre, és a projekt eléréséhez navigáljon a **jövőkép/AnalyzeForm/** gombra. Ezután nyissa meg a _AnalyzeForm. csproj_ a Visual Studióban. Ez a projekt létrehoz egy Azure Function-erőforrást, amely megfelel az [Egyéni képességi felületnek](cognitive-search-custom-skill-interface.md) , és használható az Azure Cognitive Search-bővítéshez. A dokumentum bemenetként jeleníti meg a dokumentumokat, és a megadott kulcs/érték párokat (szövegként) adja eredményként.
 
 Először adja hozzá a projekt szintű környezeti változókat. Keresse meg a **AnalyzeForm** projektet a bal oldali ablaktáblán, kattintson rá a jobb gombbal, és válassza a **Tulajdonságok**lehetőséget. A **Tulajdonságok** ablakban kattintson a **hibakeresés** lapra, majd keresse meg a **környezeti változók** mezőt. A **Hozzáadás** gombra kattintva adja hozzá a következő változókat:
-* `FORMS_RECOGNIZER_ENDPOINT_URL`a végpont URL-címéhez megadott értékkel.
-* `FORMS_RECOGNIZER_API_KEY`az előfizetési kulcshoz beállított értékkel.
-* `FORMS_RECOGNIZER_MODEL_ID`a betanított modell AZONOSÍTÓjának értékeként megadva.
-* `FORMS_RECOGNIZER_RETRY_DELAY`a 1000 értékre van beállítva. Ez az érték azt az időpontot ezredmásodpercben, ameddig a program megvárja a lekérdezés újbóli megkísérlése előtt.
-* `FORMS_RECOGNIZER_MAX_ATTEMPTS`a 100 értékre van beállítva. Ez az érték az a szám, ahányszor a program lekérdezi a szolgáltatást, miközben megpróbál sikeres választ kapni.
+* `FORMS_RECOGNIZER_ENDPOINT_URL` a végpont URL-címéhez megadott értékkel.
+* `FORMS_RECOGNIZER_API_KEY` az előfizetési kulcshoz beállított értékkel.
+* `FORMS_RECOGNIZER_MODEL_ID` a betanított modell AZONOSÍTÓjának értékeként megadva.
+* `FORMS_RECOGNIZER_RETRY_DELAY` a 1000 értékre van beállítva. Ez az érték azt az időpontot ezredmásodpercben, ameddig a program megvárja a lekérdezés újbóli megkísérlése előtt.
+* `FORMS_RECOGNIZER_MAX_ATTEMPTS` a 100 értékre van beállítva. Ez az érték az a szám, ahányszor a program lekérdezi a szolgáltatást, miközben megpróbál sikeres választ kapni.
 
 Ezután nyissa meg a _AnalyzeForm.cs_ , és keresse meg a `fieldMappings` változót, amely a fájl *field-mappings.js* hivatkozik. Ez a fájl (és az azt hivatkozó változó) meghatározza az űrlapokból kinyerni kívánt kulcsok listáját, valamint az egyes kulcsok egyéni címkéjét. Egy érték például `{ "Address:", "address" }, { "Invoice For:", "recipient" }` azt jelenti, hogy a parancsfájl csak az észlelt és a mezők értékeit fogja menteni `Address:` `Invoice For:` , és az értékeket a és a értékre fogja címkézni `"address"` `"recipient"` .
 
@@ -87,7 +87,7 @@ Ha olyan távoli dokumentumot szeretne elemezni, amely nem az Azure Blob Storage
 > [!NOTE]
 > Ha a képesség integrálva van egy készségkészlet, az URL-címet és a jogkivonatot a Cognitive Search fogja biztosítani.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 Az alábbi példához hasonló válasznak kell megjelennie:
 
@@ -167,5 +167,5 @@ Ebben az útmutatóban létrehozott egy egyéni képességet az Azure Form-felis
 * [Azure Search energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
 * [Képességcsoport megadása](cognitive-search-defining-skillset.md)
-* [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+* [Készségkészlet létrehozása (REST)](/rest/api/searchservice/create-skillset)
 * [Gazdagított mezők leképezése](cognitive-search-output-field-mapping.md)

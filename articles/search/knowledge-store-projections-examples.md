@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18646fc92dda7cebb7a8c1030285956d8fe4df74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85566002"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924162"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>A dúsítások formázása és exportálása
 
@@ -206,7 +206,7 @@ Az Azure Storage-táblákba való kivetítés hasznos lehet az olyan eszközök 
 Hozzon létre egy irányítópultot, amely megjeleníti a dokumentumokból Word-felhőként kinyert legfontosabb kifejezéseket. A megfelelő adatstruktúra létrehozásához adjon hozzá egy formáló képességet a készségkészlet egy olyan egyéni alakzat létrehozásához, amely a dokumentumra vonatkozó részleteket és a legfontosabb kifejezéseket tartalmaz. Az egyéni alakzatot a rendszer a `pbiShape` `document` legfelső szintű csomóponton hívja meg.
 
 > [!NOTE] 
-> A tábla-előrejelzések az Azure Storage-táblák, amelyek az Azure Storage által kiszabott tárolási korlátokra vonatkoznak. További információ: [Table Storage-korlátok](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Érdemes tudni, hogy az entitás mérete nem haladhatja meg az 1 MB-ot, és egyetlen tulajdonság sem lehet nagyobb, mint 64 KB. Ezek a megkötések jó megoldást biztosítanak a táblák nagy számú kis entitásának tárolására.
+> A tábla-előrejelzések az Azure Storage-táblák, amelyek az Azure Storage által kiszabott tárolási korlátokra vonatkoznak. További információ: [Table Storage-korlátok](/rest/api/storageservices/understanding-the-table-service-data-model). Érdemes tudni, hogy az entitás mérete nem haladhatja meg az 1 MB-ot, és egyetlen tulajdonság sem lehet nagyobb, mint 64 KB. Ezek a megkötések jó megoldást biztosítanak a táblák nagy számú kis entitásának tárolására.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Egyéni alakzat létrehozása a Shapeer-szakértelem használatával
 
@@ -677,4 +677,3 @@ A kivetítésekkel kapcsolatos további információkért tekintse meg a csoport
 
 > [!div class="nextstepaction"]
 > [Kivetítések a Knowledge Store-ban](knowledge-store-projection-overview.md)
-

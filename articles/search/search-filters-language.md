@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084194"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923109"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Szűrés nyelv alapján az Azure-ban Cognitive Search 
 
@@ -37,11 +37,11 @@ A következő példa a [Real-Estate mintából](search-get-started-portal.md) sz
   ![Képernyőfelvétel: a Real-Estate minta Fields (mezők) képernyője. A mezők egy csoportja kiemelten kiemeli, hogy a Language Analyzer-hozzárendelések hogyan felelnek meg a Kiemelt mezők nyelveinek.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> A következő kódrészletek esetében a nyelvi elemzőket bemutató példákat lásd: [index (.net) definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [index (REST) definiálása](search-create-index-rest-api.md).
+> A következő kódrészletek esetében a nyelvi elemzőket bemutató példákat lásd: [index (.net) definiálása](./search-get-started-dotnet.md) és [index (REST) definiálása](./search-get-started-powershell.md).
 
 ## <a name="build-and-load-an-index"></a>Index létrehozása és betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az, hogy [az indexet fel kell építenie és fel kell töltenie a](https://docs.microsoft.com/azure/search/search-create-index-dotnet) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
+Egy közbenső (és talán nyilvánvaló) lépés az, hogy [az indexet fel kell építenie és fel kell töltenie a](./search-get-started-dotnet.md) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek elérhetővé tételének egyik módja a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
 
 ## <a name="constrain-the-query-and-trim-results"></a>A lekérdezés és a vágás eredményének korlátozása
 
@@ -63,7 +63,6 @@ parameters =
 ## <a name="see-also"></a>Lásd még
 
 + [Szűrők az Azure Cognitive Search](search-filters.md)
-+ [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [Nyelvi elemzők](/rest/api/searchservice/language-support)
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
-+ [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-
++ [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents)

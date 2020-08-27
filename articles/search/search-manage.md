@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835952"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935041"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Portál](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +33,9 @@ Az Azure Cognitive Search egy teljes körűen felügyelt, felhőalapú keresési
 * A hozzáférés kezelése a **kulcsok** oldal bal oldalán.
 * Állítsa be a kapacitást a **Méretezés** lapon balra.
 
-A portálon végrehajtott feladatokat a [felügyeleti API](https://docs.microsoft.com/rest/api/searchmanagement/) -k és az [az. Search PowerShell-modul](search-manage-powershell.md)használatával is lehet programozott módon kezelni. A felügyeleti feladatok teljes mértékben képviseltetik magukat a portál és a programozott felületek között. Nincs olyan konkrét felügyeleti feladat, amely csak egy módozatban érhető el.
+A portálon végrehajtott feladatokat a [felügyeleti API](/rest/api/searchmanagement/) -k és az [az. Search PowerShell-modul](search-manage-powershell.md)használatával is lehet programozott módon kezelni. A felügyeleti feladatok teljes mértékben képviseltetik magukat a portál és a programozott felületek között. Nincs olyan konkrét felügyeleti feladat, amely csak egy módozatban érhető el.
 
-Az Azure Cognitive Search további Azure-szolgáltatásokat használ a további monitorozáshoz és felügyelethez. Önmagában az egyetlen keresési szolgáltatással tárolt adattartalom (indexek, indexelő és adatforrás-definíciók és egyéb objektumok). A portál oldalain jelentett mérőszámok a 30 napos időszakon belüli belső naplókból vannak kihúzva. A felhasználó által vezérelt naplózás és a további események esetében [Azure monitorra](https://docs.microsoft.com/azure/azure-monitor/)lesz szüksége. 
+Az Azure Cognitive Search további Azure-szolgáltatásokat használ a további monitorozáshoz és felügyelethez. Önmagában az egyetlen keresési szolgáltatással tárolt adattartalom (indexek, indexelő és adatforrás-definíciók és egyéb objektumok). A portál oldalain jelentett mérőszámok a 30 napos időszakon belüli belső naplókból vannak kihúzva. A felhasználó által vezérelt naplózás és a további események esetében [Azure monitorra](../azure-monitor/index.yml)lesz szüksége. 
 
 ## <a name="fixed-service-properties"></a>Rögzített szolgáltatás tulajdonságai
 
@@ -58,7 +58,7 @@ A végponthoz való hozzáférés tekintetében bárki hozzáférhet a szolgált
 
 A szolgáltatás kiépítési berendezéséhez szükséges jogosultságokat a szerepkör-hozzárendelések biztosítják. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer. 
 
-Az Azure Cognitive Search kontextusában az [Azure szerepkör-hozzárendelések](search-security-rbac.md) határozzák meg, hogy ki végezhet el feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)használják:
+Az Azure Cognitive Search kontextusában az [Azure szerepkör-hozzárendelések](search-security-rbac.md) határozzák meg, hogy ki végezhet el feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](/rest/api/searchmanagement/search-howto-management-rest-api)használják:
 
 * Szolgáltatás létrehozása vagy törlése
 * A szolgáltatás skálázása
@@ -73,12 +73,12 @@ Az Azure Cognitive Search kontextusában az [Azure szerepkör-hozzárendelések]
 
 Az alapszintű és újabb verziók esetében a Microsoft minden Azure Cognitive Search-szolgáltatást az 99,9%-os rendelkezésre állást figyeli a szolgáltatói szerződések (SLA) esetében. Ha a szolgáltatás lassú, vagy az átviteli sebesség az SLA-küszöbérték alá esik, a támogatási csapatoknak tekintse át a rendelkezésre álló naplófájlokat, és foglalkozzon a probléma megoldásával.
 
-Az Azure Cognitive Search az indexelési és lekérdezési tevékenységek gyűjtésére és tárolására [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) használ. A keresési szolgáltatás önmagában csak a tartalmát tárolja (indexek, indexelő definíciók, adatforrás-definíciók, készségkészlet-definíciók, szinonimák leképezései). A gyorsítótárazás és a naplózott adatok a szolgáltatáson kívül, gyakran egy Azure Storage-fiókban tárolódnak. Az indexelési és lekérdezési számítási feladatok naplózásával kapcsolatos további információkért lásd: [naplózási adatok gyűjtése és elemzése](search-monitor-logs.md).
+Az Azure Cognitive Search az indexelési és lekérdezési tevékenységek gyűjtésére és tárolására [Azure monitor](../azure-monitor/index.yml) használ. A keresési szolgáltatás önmagában csak a tartalmát tárolja (indexek, indexelő definíciók, adatforrás-definíciók, készségkészlet-definíciók, szinonimák leképezései). A gyorsítótárazás és a naplózott adatok a szolgáltatáson kívül, gyakran egy Azure Storage-fiókban tárolódnak. Az indexelési és lekérdezési számítási feladatok naplózásával kapcsolatos további információkért lásd: [naplózási adatok gyűjtése és elemzése](search-monitor-logs.md).
 
 A szolgáltatással kapcsolatos általános információk alapján az Azure Cognitive Search beépített szolgáltatásainak használatával a következő módokon szerezheti be az információkat:
 
 * A szolgáltatás **áttekintése** lap értesítések, tulajdonságok és állapotüzenetek használatával.
-* A [szolgáltatás tulajdonságainak beolvasása](https://docs.microsoft.com/rest/api/searchmanagement/services)a [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/) használatával. Nem található új információ vagy művelet a programozott rétegben. A felületek léteznek, így parancsfájlok írhatók.
+* A [szolgáltatás tulajdonságainak beolvasása](/rest/api/searchmanagement/services)a [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](/rest/api/searchmanagement/) használatával. Nem található új információ vagy művelet a programozott rétegben. A felületek léteznek, így parancsfájlok írhatók.
 
 ## <a name="monitor-resource-usage"></a>Erőforrás-használat figyelése
 
@@ -86,8 +86,8 @@ Az irányítópulton az erőforrás-figyelés a szolgáltatás irányítópultj�
 
 A Search szolgáltatás REST API használatával a dokumentumok és indexek száma programozott módon is elvégezhető: 
 
-* [Index statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Dokumentumok számlálása](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Index statisztikáinak beolvasása](/rest/api/searchservice/Get-Index-Statistics)
+* [Dokumentumok számlálása](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Vész-helyreállítási és szolgáltatás-kimaradások
 
@@ -135,7 +135,7 @@ A replikák eltávolításával szemben, amelyhez nincs szükség további erőf
 
 Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolva egy adott partíción. Az egyes partíciók körülbelül 25 GB tárhelyet biztosítanak, ezért a tárterületet a szükséges partíciók számával kell csökkenteni. Ha egy partícióra kíván visszaállítani, akkor mind a 12 szegmensnek el kell férnie.
 
-Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
+Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
 
 ## <a name="next-steps"></a>További lépések
 

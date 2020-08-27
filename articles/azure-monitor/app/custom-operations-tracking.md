@@ -2,14 +2,15 @@
 title: Egyéni műveletek nyomon követése az Azure Application Insights .NET SDK-val
 description: Egyéni műveletek nyomon követése az Azure Application Insights .NET SDK-val
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320374"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933307"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -347,9 +348,9 @@ Ha a hangszer-üzenetek törlését végzi, ügyeljen rá, hogy a művelet (korr
 ### <a name="dependency-types"></a>Függőségi típusok
 
 Application Insights függőségi típust használ a felhasználói felületi élmények testreszabásához. A várólisták esetében a következő típusokat ismeri fel `DependencyTelemetry` , amelyek javítják a [tranzakciós diagnosztika élményét](./transaction-diagnostics.md):
-- `Azure queue`Azure Storage-várólisták esetén
-- `Azure Event Hubs`Azure-Event Hubs
-- `Azure Service Bus`Azure Service Bus
+- `Azure queue` Azure Storage-várólisták esetén
+- `Azure Event Hubs` Azure-Event Hubs
+- `Azure Service Bus` Azure Service Bus
 
 ### <a name="batch-processing"></a>Kötegelt feldolgozás
 Egyes várólisták esetében több üzenetet is elhelyezhet egy kérelemmel. Az ilyen üzenetek feldolgozása valószínűleg független, és a különböző logikai műveletekhez tartozik. A műveletet nem lehet korrelálni `Dequeue` egy adott üzenet feldolgozásakor.
@@ -388,7 +389,7 @@ async Task BackgroundTask()
 }
 ```
 
-Ebben a példában `telemetryClient.StartOperation` a létrehozza `DependencyTelemetry` és betölti a korrelációs környezetet. Tegyük fel, hogy rendelkezik egy fölérendelt művelettel, amelyet a műveletet ütemezett bejövő kérelmek hoztak létre. Ha `BackgroundTask` a rendszer ugyanabban az aszinkron vezérlési folyamatban indul el bejövő kérelemként, akkor az a fölérendelt művelettel összefügg. `BackgroundTask`és az összes beágyazott telemetria elem automatikusan összefügg azzal a kéréssel, amelyik azt okozta, még a kérelem befejeződése után is.
+Ebben a példában `telemetryClient.StartOperation` a létrehozza `DependencyTelemetry` és betölti a korrelációs környezetet. Tegyük fel, hogy rendelkezik egy fölérendelt művelettel, amelyet a műveletet ütemezett bejövő kérelmek hoztak létre. Ha `BackgroundTask` a rendszer ugyanabban az aszinkron vezérlési folyamatban indul el bejövő kérelemként, akkor az a fölérendelt művelettel összefügg. `BackgroundTask` és az összes beágyazott telemetria elem automatikusan összefügg azzal a kéréssel, amelyik azt okozta, még a kérelem befejeződése után is.
 
 Ha a feladat olyan háttérbeli szálból indul el, amelynek nincs művelete ( `Activity` ) társítva van, `BackgroundTask` nem rendelkezik szülővel. Azonban rendelkezhet beágyazott műveletekkel. A feladatból jelentett összes telemetria-elem összefügg a `DependencyTelemetry` létrehozásával `BackgroundTask` .
 
@@ -429,7 +430,7 @@ Az ártalmatlanítási művelet leállítja a műveletet, így nem kell meghívn
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Párhuzamos műveletek feldolgozása és nyomon követése
 
-`StopOperation`csak az elindított műveletet állítja le. Ha az aktuálisan futó művelet nem egyezik meg azzal, amelyet le szeretne állítani, akkor `StopOperation` semmit sem tesz. Ez a helyzet akkor fordulhat elő, ha párhuzamosan több műveletet indít el ugyanabban a végrehajtási környezetben:
+`StopOperation` csak az elindított műveletet állítja le. Ha az aktuálisan futó művelet nem egyezik meg azzal, amelyet le szeretne állítani, akkor `StopOperation` semmit sem tesz. Ez a helyzet akkor fordulhat elő, ha párhuzamosan több műveletet indít el ugyanabban a végrehajtási környezetben:
 
 ```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
@@ -469,11 +470,11 @@ public async Task RunAllTasks()
 ```
 
 ## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>ApplicationInsights-műveletek vs System. Diagnostics. Activity
-`System.Diagnostics.Activity`az elosztott nyomkövetési környezetet jelöli, és a keretrendszerek és könyvtárak használják a folyamaton belüli és kívüli környezet létrehozására és propagálására, valamint a telemetria-elemek korrelációját. A tevékenység együttműködik a `System.Diagnostics.DiagnosticSource` keretrendszer/könyvtár közötti értesítési mechanizmussal, amely értesíti az érdekes eseményekről (bejövő vagy kimenő kérelmek, kivételek stb.).
+`System.Diagnostics.Activity` az elosztott nyomkövetési környezetet jelöli, és a keretrendszerek és könyvtárak használják a folyamaton belüli és kívüli környezet létrehozására és propagálására, valamint a telemetria-elemek korrelációját. A tevékenység együttműködik a `System.Diagnostics.DiagnosticSource` keretrendszer/könyvtár közötti értesítési mechanizmussal, amely értesíti az érdekes eseményekről (bejövő vagy kimenő kérelmek, kivételek stb.).
 
 A tevékenységek a Application Insights és az automatikus függőségek, valamint a kérések gyűjteménye az eseményekkel együtt erősen támaszkodik rájuk `DiagnosticSource` . Ha tevékenységet hoz létre az alkalmazásban, akkor nem eredményezi Application Insights telemetria létrehozását. Application Insights meg kell kapnia a DiagnosticSource eseményeket, és ismernie kell az események nevét és a hasznos adatokat, hogy lefordítsa a tevékenységeket a telemetria.
 
-Minden Application Insights művelet (kérelem vagy függőség) magában foglalja `Activity` a-ha `StartOperation` a neve, a tevékenység a következőt hozza létre:. `StartOperation`a kérések vagy függőségi telemetriáiról manuális nyomon követése ajánlott módszer, és minden összefügg.
+Minden Application Insights művelet (kérelem vagy függőség) magában foglalja `Activity` a-ha `StartOperation` a neve, a tevékenység a következőt hozza létre:. `StartOperation` a kérések vagy függőségi telemetriáiról manuális nyomon követése ajánlott módszer, és minden összefügg.
 
 ## <a name="next-steps"></a>További lépések
 

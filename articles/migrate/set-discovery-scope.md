@@ -3,12 +3,12 @@ title: A VMware virtuális gép felderítési hatókörének beállítása Azure
 description: Ismerteti, hogyan állítható be a felderítési hatókör a VMware virtuális gépek felméréséhez és a Azure Migrate-re való áttelepítéshez.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: e53eb0d01df2152aeced2901335f75879885fd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770390"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919726"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Felderítési hatókör beállítása a VMware virtuális gépekhez
 
@@ -39,7 +39,7 @@ A vCenter VM-mappa szintjén nem lehet hatókör-felderítést felderíteni. Ha 
 1. A felderítéshez használt vCenter-fiókban alkalmazza a **csak olvasási** szerepkört minden olyan szülőobjektum esetében, amely a felderíteni és értékelni kívánt virtuális gépeket üzemelteti (gazdagép, fürt, gazdagépek mappa, fürtök mappa, akár Datacenter).
 2. Ezeket az engedélyeket a hierarchia alárendelt objektumaira propagálja.
 
-    ![Engedélyek kiosztása](./media/tutorial-assess-vmware/assign-perms.png)
+    ![Engedélyek hozzárendelése](./media/tutorial-assess-vmware/assign-perms.png)
 
 ### <a name="assign-a-role-for-agentless-migration"></a>Szerepkör társítása az ügynök nélküli Migrálás számára
 
@@ -60,4 +60,4 @@ A szerepköralapú hozzáférés-vezérlés beállítása biztosítja, hogy a me
 
 ## <a name="next-steps"></a>További lépések
 
-[Állítsa be a készüléket](how-to-set-up-appliance-vmware.md), és [indítsa el a folyamatos felderítést](how-to-set-up-appliance-vmware.md#start-continuous-discovery-by-providing-vcenter-server-and-vm-credential).
+[A készülék beállítása](how-to-set-up-appliance-vmware.md)

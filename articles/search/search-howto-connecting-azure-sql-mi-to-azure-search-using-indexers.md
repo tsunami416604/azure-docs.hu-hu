@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76964889"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922888"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search indexelő és SQL felügyelt példány közötti kapcsolatok konfigurálása
 
@@ -38,11 +38,11 @@ Győződjön meg arról, hogy a hálózati biztonsági csoport rendelkezik a meg
 > Az indexelő továbbra is megköveteli, hogy az SQL felügyelt példánya nyilvános végponttal legyen konfigurálva az adatolvasás érdekében.
 > Lehetősége van azonban arra is, hogy az aktuális szabályt ( `public_endpoint_inbound` ) a következő 2 szabállyal lecserélve a nyilvános végpontra korlátozza a bejövő hozzáférést:
 >
-> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("forrás" = `AzureCognitiveSearch` , "név" = `cognitive_search_inbound` )
+> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](../virtual-network/service-tags-overview.md#available-service-tags) ("forrás" = `AzureCognitiveSearch` , "név" = `cognitive_search_inbound` )
 >
 > * A keresési szolgáltatás IP-címéről érkező bejövő hozzáférés engedélyezése, amelyet a teljes tartománynév (például:) pingelésével lehet megszerezni `<your-search-service-name>.search.windows.net` . ("forrás" = `IP address` , "név" = `search_service_inbound` )
 >
-> Mindegyik 2 szabály esetében állítsa be a "PORT" =, `3342` a "Protocol" = `TCP` , a "cél" = `Any` , "művelet" =`Allow`
+> Mindegyik 2 szabály esetében állítsa be a "PORT" =, `3342` a "Protocol" = `TCP` , a "cél" = `Any` , "művelet" = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>Nyilvános végponti kapcsolatok karakterláncának beolvasása
 Győződjön meg arról, hogy a **nyilvános végpont** (3342-as port, nem a 1433-es port) csatlakozási karakterláncát használja.

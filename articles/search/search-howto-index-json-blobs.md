@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: cdf71f939d6e5e1ada0ba141dce3bcba9d7d9b01
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529794"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917992"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search
 
@@ -37,7 +37,7 @@ Azt javasoljuk, hogy az Azure Cognitive Search és az Azure Storage-hoz ugyanazt
 
 ### <a name="1---prepare-source-data"></a>1 – forrásadatok előkészítése
 
-[Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és [hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , amely az adatait tartalmazza. A nyilvános hozzáférési szint bármelyik érvényes értékére beállítható.
+[Jelentkezzen be a Azure Portalba](https://portal.azure.com/) , és [hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md) , amely az adatait tartalmazza. A nyilvános hozzáférési szint bármelyik érvényes értékére beállítható.
 
 Az **adatimportálás** varázslóban szüksége lesz a Storage-fiók nevére, a tároló nevére és egy hozzáférési kulcsra az adatlekérdezéshez.
 
@@ -77,7 +77,7 @@ Az **index** lapon meg kell jelennie egy adattípusú mezők listájának, valam
 
 Az attribútumok tömeges kiválasztásához kattintson az attribútum oszlop tetején található jelölőnégyzetre. Válassza a **beolvasható** és **kereshető** lehetőséget minden olyan mező esetében, amelyet vissza kell adni egy ügyfélalkalmazás számára, és a teljes szöveges keresés feldolgozására is érvényes. Megfigyelheti, hogy az egész számok nem teljes szöveges vagy zavaros kereshetők (a számok szó szerint vannak kiértékelve, és gyakran hasznosak a szűrőkben).
 
-További információkért tekintse át az [index attribútumainak](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) és a [nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support) leírását. 
+További információkért tekintse át az [index attribútumainak](/rest/api/searchservice/create-index#bkmk_indexAttrib) és a [nyelvi elemzők](/rest/api/searchservice/language-support) leírását. 
 
 Szánjon egy kis időt a kiválasztott elemek áttekintésére. A varázsló futtatása után a rendszer létrehozza a fizikai adatstruktúrákat, és nem tudja szerkeszteni ezeket a mezőket az összes objektum eldobása és újbóli létrehozása nélkül.
 
@@ -110,9 +110,9 @@ A szakasz végén található [Rest-mintakód](#rest-example) áttekintésével 
 
 A kód alapú JSON-indexeléshez a [Poster](search-get-started-postman.md) és a REST API használatával hozza létre ezeket az objektumokat:
 
-+ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [adatforrás](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
-+ [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [index](/rest/api/searchservice/create-index)
++ [adatforrás](/rest/api/searchservice/create-data-source)
++ [Indexelő](/rest/api/searchservice/create-indexer)
 
 A műveletek sorrendje megköveteli, hogy az objektumokat ebben a sorrendben hozza létre és hívja meg. A portál munkafolyamatával ellentétben a kód megközelítéséhez egy elérhető indexre van szükség, amely elfogadja az **Indexelő** kéréssel elküldhető JSON-dokumentumokat.
 
@@ -120,9 +120,9 @@ Az Azure Blob Storage-ban található JSON-Blobok jellemzően egyetlen JSON-doku
 
 | JSON-dokumentum | parsingMode | Leírás | Rendelkezésre állás |
 |--------------|-------------|--------------|--------------|
-| Egy blob | `json` | A JSON-blobokat egyetlen darab szövegként elemzi. Minden JSON-blob egyetlen Azure Cognitive Search-dokumentum lesz. | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
-| Több blobon | `jsonArray` | Egy JSON-tömböt elemez a blobban, ahol a tömb minden eleme külön Azure Cognitive Search dokumentum lesz.  | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
-| Több blobon | `jsonLines` | Egy olyan blobot elemez, amely több JSON-entitást (egy "tömböt") tartalmaz egy sortöréssel elválasztva, ahol minden entitás külön Azure Cognitive Search dokumentum lesz. | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
+| Egy blob | `json` | A JSON-blobokat egyetlen darab szövegként elemzi. Minden JSON-blob egyetlen Azure Cognitive Search-dokumentum lesz. | Általánosan elérhető a [Rest](/rest/api/searchservice/indexer-operations) API-ban és a [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
+| Több blobon | `jsonArray` | Egy JSON-tömböt elemez a blobban, ahol a tömb minden eleme külön Azure Cognitive Search dokumentum lesz.  | Általánosan elérhető a [Rest](/rest/api/searchservice/indexer-operations) API-ban és a [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
+| Több blobon | `jsonLines` | Egy olyan blobot elemez, amely több JSON-entitást (egy "tömböt") tartalmaz egy sortöréssel elválasztva, ahol minden entitás külön Azure Cognitive Search dokumentum lesz. | Általánosan elérhető a [Rest](/rest/api/searchservice/indexer-operations) API-ban és a [.net](/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – bemenetek összegyűjtése a kérelemhez
 
@@ -168,7 +168,7 @@ Az indexelő egy index sémával vannak párosítva. Ha az API-t (nem pedig a po
 
 Az index a kereshető tartalmat tárolja az Azure Cognitive Searchban. Index létrehozásához adjon meg egy sémát, amely meghatározza a keresési élményt formáló dokumentum, attribútum és egyéb szerkezetek mezőit. Ha olyan indexet hoz létre, amelynek neve és adattípusa megegyezik a forrással, az indexelő megegyezik a forrás és a cél mezővel, így a munka megtakarításával a mezők explicit módon képezhetők le.
 
-Az alábbi példa egy [create index](https://docs.microsoft.com/rest/api/searchservice/create-index) -kérést mutat be. Az index egy kereshető mezővel fog rendelkezni `content` , amely a blobokból kinyert szöveget tárolja:   
+Az alábbi példa egy [create index](/rest/api/searchservice/create-index) -kérést mutat be. Az index egy kereshető mezővel fog rendelkezni `content` , amely a blobokból kinyert szöveget tárolja:   
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -280,10 +280,10 @@ Az indexelő létrehozása az Azure Cognitive Search eseményindítók adatimpor
 
 A .NET SDK-val teljes paritású a REST API. Javasoljuk, hogy tekintse át az előző REST API szakaszt a fogalmak, a munkafolyamatok és a követelmények megismeréséhez. A következő .NET API-referenciák dokumentációjában a JSON-indexelő implementálása felügyelt kódban végezhető el.
 
-+ [Microsoft. Azure. Search. models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [Microsoft. Azure. Search. models. datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [Microsoft. Azure. Search. models. indexelő](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. models. DataSource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. models. datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. models. index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. models. indexelő](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62c2193a0045cc2ee35930e87b360446e94ba861
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: cace61739e13514bb4aba1169c51ea670a167c9d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864782"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944512"
 ---
 A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós optimalizált, a gyakori és a ritka elérésű csomagokat, hogy lehetővé tegye a megosztások testreszabását a forgatókönyv teljesítményére és árára vonatkozó követelmények szerint:
 
@@ -30,6 +30,8 @@ A gyakori és ritka elérésű fájlmegosztás jelenleg a nyilvános régiók k�
 - Ausztrália 2. középső régiója
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
+- Kelet-Kanada
+- Közép-Kanada
 - Közép-Franciaország
 - Dél-Franciaország
 - Észak-Németország (nyilvános)
@@ -45,6 +47,8 @@ A gyakori és ritka elérésű fájlmegosztás jelenleg a nyilvános régiók k�
 - Norvégia nyugati régiója
 - Dél-Afrika északi régiója
 - Dél-Afrika nyugati régiója
+- Észak-Svájc
+- Nyugat-Svájc
 - UAE középső régiója
 - Észak-Egyesült Arab
 - Az Egyesült Királyság déli régiója

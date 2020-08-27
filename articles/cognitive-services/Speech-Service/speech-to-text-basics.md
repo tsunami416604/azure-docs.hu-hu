@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 92ba3127bfa3b4de67bef3f9b97b95a7713bed84
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 49189eaa4b04b0f14f62a07a64334f56f658ac5d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874586"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934539"
 ---
 # <a name="learn-the-basics-of-speech-recognition"></a>Ismerkedjen meg a beszédfelismerés alapjaival
 
@@ -51,6 +51,6 @@ A Speech Service egyik fő funkciója az emberi beszéd felismerése és átír�
 [!INCLUDE [More languages include](./includes/how-to/speech-to-text-basics/more.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Codec tömörített hangformátumok használata](how-to-use-codec-compressed-audio-input-streams.md)

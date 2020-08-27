@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: be873ed122bb521ce00e2d18d55a9be8197a0048
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413017"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936758"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
@@ -23,7 +23,7 @@ A keresési típus egy gyakori módszer a felhasználó által kezdeményezett l
 A tapasztalatok Azure Cognitive Search-ban való megvalósításához a következőkre lesz szüksége:
 
 + Egy *javaslat* a háttérben.
-+ Egy *lekérdezés* , amely az [automatikus kiegészítést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vagy a [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions) API-t határozza meg a kérelemre vonatkozóan.
++ Egy *lekérdezés* , amely az [automatikus kiegészítést](/rest/api/searchservice/autocomplete) vagy a [javaslatok](/rest/api/searchservice/suggestions) API-t határozza meg a kérelemre vonatkozóan.
 + Egy *felhasználói felületi vezérlő* , amely a keresési típusok közötti interakciókat kezeli az ügyfélalkalmazás számára. Azt javasoljuk, hogy egy meglévő JavaScript-függvénytárat használjon erre a célra.
 
 Az Azure Cognitive Searchban az automatikusan befejezett lekérdezéseket és a javasolt eredményeket a rendszer a keresési indexből kérdezi le, a kijelölt mezőkből, amelyeket egy javaslatban regisztráltak. A javaslat az index részét képezi, és meghatározza, hogy mely mezők biztosítanak a lekérdezés befejezését, vagy a két művelet eredményét. Az index létrehozásakor és betöltésekor a rendszer belsőleg létrehoz egy szuggesztív adatstruktúrát a részleges lekérdezésekhez való megfeleltetéshez használt előtagok tárolásához. A javaslatok, amelyek egyedi, vagy legalábbis ismétlődő, megfelelő mezők kiválasztásával elengedhetetlenek a felhasználói élményhez. További információ: [javaslat létrehozása](index-add-suggesters.md).
@@ -54,16 +54,16 @@ A egyezések egy kifejezés elején vannak, bárhol a bemeneti karakterláncban.
 
 Kövesse az alábbi hivatkozásokat a REST és a .NET SDK-referenciák oldalaihoz:
 
-+ [Javaslatok REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [Automatikus kiegészítés REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Javaslatok REST API](/rest/api/searchservice/suggestions) 
++ [Automatikus kiegészítés REST API](/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync metódus](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync metódus](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>Válasz strukturálása
 
-Az automatikus kiegészítésre és a javaslatokra adott válaszok a következő mintában számíthatnak: az [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) a feltételek listáját adja vissza, a [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) pedig egy dokumentum azonosítóját, így a dokumentum beolvasása érdekében (a [keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/lookup-document) API-val lekérheti az adott dokumentumot egy részletes oldalhoz).
+Az automatikus kiegészítésre és a javaslatokra adott válaszok a következő mintában számíthatnak: az [automatikus kiegészítés](/rest/api/searchservice/autocomplete#response) a feltételek listáját adja vissza, a [javaslatok](/rest/api/searchservice/suggestions#response) pedig egy dokumentum azonosítóját, így a dokumentum beolvasása érdekében (a [keresési dokumentum](/rest/api/searchservice/lookup-document) API-val lekérheti az adott dokumentumot egy részletes oldalhoz).
 
-A válaszokat a kérés paraméterei alakítják ki. Az automatikus kiegészítés beállításnál állítsa be a [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) annak megállapítására, hogy a szöveg befejezése egy vagy két kifejezésen történik-e. Javaslatok esetén a kiválasztott mező határozza meg a válasz tartalmát.
+A válaszokat a kérés paraméterei alakítják ki. Az automatikus kiegészítés beállításnál állítsa be a [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) annak megállapítására, hogy a szöveg befejezése egy vagy két kifejezésen történik-e. Javaslatok esetén a kiválasztott mező határozza meg a válasz tartalmát.
 
 A javaslatok esetében tovább pontosíthatja a választ, hogy elkerülje a duplikált elemeket, vagy hogy mi úgy tűnik, hogy a nem kapcsolódó eredmények. Az eredmények ellenőrzéséhez adjon meg több paramétert a kéréshez. A következő paraméterek mind az automatikus kiegészítésre, mind a javaslatokra érvényesek, de a javaslatok esetében talán több szükséges, különösen akkor, ha egy javaslat több mezőt is tartalmaz.
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Ha C#-ot és MVC-alkalmazást használ, a **HomeController.cs** -fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslati függvény a [DocumentsOperationsExtensions. javaslat metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)alapul.
 
-A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](./search-howto-dotnet-sdk.md).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -175,7 +175,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett. A metódus létrehoz egy [SuggestParameters objektumot](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), amelyet a rendszer továbbít az ajánlott API-nak. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
+A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett. A metódus létrehoz egy [SuggestParameters objektumot](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), amelyet a rendszer továbbít az ajánlott API-nak. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
 ## <a name="autocomplete"></a>Automatikus kiegészítés
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Automatikus kiegészítési függvény
 
-Az automatikus kiegészítés a [DocumentsOperationsExtensions. autocomplete metóduson](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)alapul. Ahogy a javaslatok esetében, ez a kódrészlet a **HomeController.cs** -fájlban is elérhető.
+Az automatikus kiegészítés a [DocumentsOperationsExtensions. autocomplete metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)alapul. Ahogy a javaslatok esetében, ez a kódrészlet a **HomeController.cs** -fájlban is elérhető.
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -243,9 +243,9 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](https://docs.microsoft.com/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
+Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 

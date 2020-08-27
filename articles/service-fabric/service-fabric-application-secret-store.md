@@ -128,5 +128,5 @@ A következő kódrészlet a módosított **ApplicationManifest.xml**.
    </EnvironmentVariables>
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md).

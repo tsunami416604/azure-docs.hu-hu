@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982016"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924639"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Szöveg egyesítése – kognitív képességek
 
@@ -29,13 +29,13 @@ Microsoft. Skills. Text. MergeSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Description |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | `insertPreTag`    | Minden Beszúrás előtt szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket a következőre: `""` .  |
 | `insertPostTag`   | Az összes beszúrás után szerepeltetni kívánt karakterlánc. Az alapértelmezett érték `" "`. A szóköz kihagyása érdekében állítsa a értéket a következőre: `""` .  |
 
 
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Példabemenet
 Az ehhez a képességhez használható, felhasználható bemenetet biztosító JSON-dokumentum a következő lehet:
 
 ```json
@@ -54,7 +54,7 @@ Az ehhez a képességhez használható, felhasználható bemenetet biztosító J
 }
 ```
 
-##  <a name="sample-output"></a>Példa kimenet
+##  <a name="sample-output"></a>Példakimenet
 Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPreTag* be van állítva `" "` , és a *insertPostTag* értékre van állítva `""` . 
 
 ```json
@@ -75,7 +75,7 @@ Ez a példa az előző bemenet kimenetét mutatja be, feltéve, hogy a *insertPr
 
 A szöveges egyesítés használatának gyakori forgatókönyve, hogy egyesítse a képek szöveges megjelenítését (OCR-képességből származó szöveg vagy kép felirata) egy dokumentum tartalom mezőjébe. 
 
-A következő példában a készségkészlet az OCR-képességet használja a dokumentumba ágyazott képek szövegének kinyeréséhez. Ezután létrehoz egy *merged_text* mezőt, amely az eredeti és a OCRed szöveget is tartalmazza az egyes képekből. Az OCR-képességről [itt](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)olvashat bővebben.
+A következő példában a készségkészlet az OCR-képességet használja a dokumentumba ágyazott képek szövegének kinyeréséhez. Ezután létrehoz egy *merged_text* mezőt, amely az eredeti és a OCRed szöveget is tartalmazza az egyes képekből. Az OCR-képességről [itt](./cognitive-search-skill-ocr.md)olvashat bővebben.
 
 ```json
 {
@@ -148,4 +148,4 @@ A fenti példa azt feltételezi, hogy a normalizált lemezképek mező létezik.
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexelő létrehozása (REST)](/rest/api/searchservice/create-indexer)

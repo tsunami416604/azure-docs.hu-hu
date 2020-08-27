@@ -11,15 +11,16 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: 21ff3e456a587a7d676de379987c86f154878c61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887643"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936945"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>A webes tartalmak elévülésének kezelése Azure CDN-ben
 > [!div class="op_single_selector"]
@@ -66,7 +67,7 @@ A webkiszolgáló fejlécének beállítására szolgáló előnyben részesíte
 
    Ez a globális gyorsítótárazási szabály egy óra gyorsítótári időtartamát állítja be, és a végpontra irányuló összes kérést érinti. Felülbírálja `Cache-Control` `Expires` a végpont által megadott forráskiszolgáló által elküldett bármely vagy HTTP-fejlécet.   
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 **Webkiszolgáló-fájl gyorsítótár-vezérlő fejlécének beállítása egyéni gyorsítótárazási szabályok használatával:**
 
@@ -80,7 +81,7 @@ A webkiszolgáló fejlécének beállítására szolgáló előnyben részesíte
 
     Az első egyéni gyorsítótárazási szabály a `/webfolder1` végpont által megadott forráskiszolgáló mappájában lévő fájlok esetében négy órányi gyorsítótári időtartamot állít be. A második szabály csak a fájl első szabályát felülbírálja, `file1.txt` és két órás gyorsítótári időtartamot állít be.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>A Cache-Control fejlécek beállítása konfigurációs fájlok használatával
@@ -130,7 +131,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
 Könnyedén ellenőrizheti a webes tartalom ÉLETTARTAMának beállításait. A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)ellenőrizze, hogy a webes tartalom tartalmazza-e a `Cache-Control` Válasz fejlécét. Olyan eszközt is használhat, mint például a **wget**, a [Poster](https://www.getpostman.com/)vagy a [Hegedűs](https://www.telerik.com/fiddler) , és megvizsgálhatja a válasz fejléceit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A **clientCache** elem részleteinek olvasása](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [Olvassa el a **HttpResponse. cache** tulajdonság dokumentációját.](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
 * [A **HttpCachePolicy osztály** dokumentációjának elolvasása](/dotnet/api/system.web.httpcachepolicy)  

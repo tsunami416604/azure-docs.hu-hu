@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562295"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923075"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
 
@@ -47,9 +47,9 @@ Például a következő forgatókönyvek tartoznak ide:
 
 Ha szűkítő hatást szeretne a keresési eredményekre, a szűrők nem az Ön egyetlen választása. Ezek az alternatívák jobban illeszkednek az Ön céljától függően:
 
- + `searchFields`a lekérdezési paraméter az adott mezőkre keres. Ha például az index külön mezőket biztosít az angol és a spanyol leíráshoz, a searchFields segítségével megcélozhatja, hogy mely mezők használhatók a teljes szöveges kereséshez. 
+ + `searchFields` a lekérdezési paraméter az adott mezőkre keres. Ha például az index külön mezőket biztosít az angol és a spanyol leíráshoz, a searchFields segítségével megcélozhatja, hogy mely mezők használhatók a teljes szöveges kereséshez. 
 
-+ `$select`a paraméter használatával határozható meg, hogy mely mezők szerepeljenek egy eredményhalmaz számára, és így a válasz hatékonyan vágható a hívó alkalmazásba való küldés előtt. Ez a paraméter nem pontosítja a lekérdezést, vagy nem csökkenti a dokumentum-gyűjteményt, de ha a cél kisebb válasz, ez a paraméter egy megfontolandó lehetőség. 
++ `$select` a paraméter használatával határozható meg, hogy mely mezők szerepeljenek egy eredményhalmaz számára, és így a válasz hatékonyan vágható a hívó alkalmazásba való küldés előtt. Ez a paraméter nem pontosítja a lekérdezést, vagy nem csökkenti a dokumentum-gyűjteményt, de ha a cél kisebb válasz, ez a paraméter egy megfontolandó lehetőség. 
 
 A paraméterekkel kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paraméterek](/rest/api/searchservice/search-documents#query-parameters).
 
@@ -61,7 +61,7 @@ A lekérdezési időpontnál a szűrő-elemző a feltételeket bemenetként foga
 A szűrés párhuzamosan történik a kereséssel, amely feljogosítja, hogy a dokumentumok lekéréséhez és a relevancia pontozásához mely dokumentumokat kell felvenni az alárendelt feldolgozásba. Keresési karakterlánccal párosítva a szűrő hatékonyan csökkenti a későbbi keresési művelet visszahívási készletét. Ha egyedül használja (például ha a lekérdezési karakterlánc üres, ahol `search=*` ), a szűrési feltételek az egyetlen bemenetek. 
 
 ## <a name="defining-filters"></a>Szűrők definiálása
-A szűrők OData kifejezések, amelyek az [Azure Cognitive Search által támogatott OData v4-szintaxist](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)használnak. 
+A szűrők OData kifejezések, amelyek az [Azure Cognitive Search által támogatott OData v4-szintaxist](/rest/api/searchservice/odata-expression-syntax-for-azure-search)használnak. 
 
 Megadhat egy szűrőt az egyes **keresési** műveletekhez, de maga a szűrő több mezőt is tartalmazhat, több feltételt, és ha **ismatch** függvényt használ, több teljes szöveges keresési kifejezés is használható. A többrészes szűrési kifejezésekben bármely sorrendben megadhat predikátumokat (az operátori prioritás szabályainak megfelelően). Ha egy adott sorozatban megpróbál átrendezni predikátumokat, a teljesítmény nem észlelhető.
 
@@ -95,7 +95,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Használati minták szűrése
 
-Az alábbi példák több használati mintát mutatnak be a szűrési forgatókönyvek esetében. További ötletek: OData- [kifejezés szintaxisa > példák](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Az alábbi példák több használati mintát mutatnak be a szűrési forgatókönyvek esetében. További ötletek: OData- [kifejezés szintaxisa > példák](./search-query-odata-filter.md#examples).
 
 + Önálló **$Filter**lekérdezési karakterlánc nélkül, akkor hasznos, ha a szűrő kifejezés képes teljes mértékben minősíteni a dokumentumokat. A lekérdezési karakterláncok nélkül nincs lexikális vagy nyelvi elemzés, nincs pontozás vagy rangsorolás. Figyelje meg, hogy a keresési sztring csak egy csillag, ami az összes dokumentum egyezését jelenti.
 
@@ -135,9 +135,9 @@ Az alábbi cikkekben részletes útmutatást talál az egyes használati esetekh
 
 ## <a name="field-requirements-for-filtering"></a>A szűréshez szükséges mezők
 
-A REST APIban az egyszerű mezők esetében a szűrhető beállítás alapértelmezés szerint be van *kapcsolva* . Szűrhető mezők: az index mérete növekszik; Ügyeljen arra, hogy `"filterable": false` a szűrőben ténylegesen használni kívánt mezőkhöz legyen beállítva. További információ a mezőértékek beállításairól: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+A REST APIban az egyszerű mezők esetében a szűrhető beállítás alapértelmezés szerint be van *kapcsolva* . Szűrhető mezők: az index mérete növekszik; Ügyeljen arra, hogy `"filterable": false` a szűrőben ténylegesen használni kívánt mezőkhöz legyen beállítva. További információ a mezőértékek beállításairól: [create index](/rest/api/searchservice/create-index).
 
-A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy a megfelelő [mező](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektum [IsFilterable tulajdonságát](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) a értékre állítja `true` . Ezt a deklaratív [IsFilterable attribútum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum `BaseRate` egy olyan modell osztály tulajdonságára van beállítva, amely az index definícióját képezi le.
+A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy a megfelelő [mező](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektum [IsFilterable tulajdonságát](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) a értékre állítja `true` . Ezt a deklaratív [IsFilterable attribútum](/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum `BaseRate` egy olyan modell osztály tulajdonságára van beállítva, amely az index definícióját képezi le.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -156,7 +156,7 @@ A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. A felső r�
 
 ### <a name="approaches-for-filtering-on-text"></a>A szöveg szűrésének módszerei
 
-| Módszer | Description | A következő esetekben használja |
+| Módszer | Leírás | A következő esetekben használja |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény sebességre lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összehasonlítása az egyes sztringekkel a és a használatával `eq` `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresési műveleteket szigorúan logikai szűrési műveletekkel keverje ugyanabban a szűrő kifejezésben. | Használja a **Search. ismatch** (vagy annak pontozási egyenértéke, **Search. ismatchscoring**) kifejezést, ha egy kérelemben több keresési kombinációt szeretne használni. Azt is megteheti, hogy egy olyan szűrőt *tartalmaz* , amely egy nagyobb sztringen belüli részleges karakterláncot szűr. |
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](./search-query-odata-filter.md#examples).
 
 ## <a name="see-also"></a>Lásd még
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
-+ [Dokumentumok keresése – REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-+ [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents)
++ [Egyszerű lekérdezési szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene lekérdezési szintaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Támogatott adattípusok](/rest/api/searchservice/supported-data-types)

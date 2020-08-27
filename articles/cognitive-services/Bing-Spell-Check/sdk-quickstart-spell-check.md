@@ -10,12 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1e05ca9b63bda3373afb8a090118953d89ad8f9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273531"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934225"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Gyors útmutató: helyesírás-ellenőrzés a C Bing Spell Check SDK-val #
 
@@ -36,7 +37,7 @@ Ha hozzá szeretné adni a Bing Spell Check SDK-t a projekthez, válassza a **Nu
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a `using` következő utasítást.
+1. Hozzon létre egy új C# konzolos megoldást a Visual Studióban. Ezután adja hozzá a következő `using` utasítást.
     
     ```csharp
     using System;
@@ -46,9 +47,9 @@ Ha hozzá szeretné adni a Bing Spell Check SDK-t a projekthez, válassza a **Nu
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Hozzon létre egy új osztályt. Ezután hozzon létre egy nevű `SpellCheckCorrection()` aszinkron függvényt, amely egy előfizetési kulcsot fogad, és elküldi a helyesírás-ellenőrzési kérést.
+2. Hozzon létre egy új osztályt. Ezután hozzon létre egy nevű aszinkron függvényt `SpellCheckCorrection()` , amely egy előfizetési kulcsot fogad, és elküldi a helyesírás-ellenőrzési kérést.
 
-3. Új `ApiKeyServiceClientCredentials` objektum létrehozásával hozza létre az ügyfelet. 
+3. Új objektum létrehozásával hozza létre az ügyfelet `ApiKeyServiceClientCredentials` . 
 
     ```csharp
     public static class SpellCheckSample{
@@ -61,7 +62,7 @@ Ha hozzá szeretné adni a Bing Spell Check SDK-t a projekthez, válassza a **Nu
 
 ## <a name="send-the-request-and-read-the-response"></a>A kérelem elküldése és a válasz elolvasása
 
-1. A fent létrehozott függvényben hajtsa végre a következő lépéseket. Küldje el a helyesírás-ellenőrzési kérelmet az ügyféllel. Adja hozzá a `text` paraméterhez ellenőrizendő szöveget, és állítsa be a módot a következőre: `proof`.  
+1. A fent létrehozott függvényben hajtsa végre a következő lépéseket. Küldje el a helyesírás-ellenőrzési kérelmet az ügyféllel. Adja hozzá a `text` paraméterhez ellenőrizendő szöveget, és állítsa be a módot a következőre: `proof` .  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");

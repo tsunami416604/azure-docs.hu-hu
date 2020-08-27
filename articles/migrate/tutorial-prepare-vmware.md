@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a VMware virtuális gépek é
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109575"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927306"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz
 
@@ -36,8 +36,8 @@ A táblázat összefoglalja az Azure-ban elvégzendő feladatokat. Az egyes fela
 --- | --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure Migrate projektek központi helyet biztosítanak a felmérések és áttelepítések előkészítéséhez és kezeléséhez Azure Migrate eszközökkel, Microsoft-eszközökkel és harmadik féltől származó ajánlatokkal. | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie abban az erőforráscsoportban, amelyben a projekt található.
 **Berendezés regisztrálása** | A Azure Migrate egy egyszerűsített Azure Migrate berendezéssel észleli a virtuális gépeket, értékeli azokat a kiszolgáló-értékelési eszközzel, és a kiszolgáló áttelepítési eszközével az ügynök nélküli Migrálás segítségével áttelepítheti azokat. [További](migrate-appliance-architecture.md#appliance-registration) információ a regisztrációról. | A készülék regisztrálásához az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az Azure-előfizetésben.
-**Azure AD-alkalmazások létrehozása** | A berendezések regisztrálása Azure Migrate Azure Active Directory (Azure AD) alkalmazásokat hoz létre. <br/><br/> – Az első alkalmazás a készüléken futó ügynökök és Azure Migrate közötti kommunikációra szolgál. <br/><br/> – A második alkalmazás kizárólag az ügynök nélküli VMware VM-Migrálás felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál.   | Az Azure-fióknak rendelkeznie kell az Azure AD-alkalmazások létrehozásához szükséges engedélyekkel.
-**Kulcstartó létrehozása** | A VMware virtuális gépek ügynök nélküli áttelepítéssel való áttelepítéséhez Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetése replikációs fiókjához kezeli. | Ahhoz, hogy a Azure Migrate létrehozza a Key Vault, beállíthatja az engedélyeket (tulajdonos, közreműködő és felhasználói hozzáférés rendszergazdája) azon erőforráscsoporthoz, amelyben a Azure Migrate projekt található.
+**Azure AD-alkalmazások létrehozása** | A berendezések regisztrálása Azure Migrate létrehozza az Azure két Active Directory (Azure AD) alkalmazást. <br/><br/> – Az első alkalmazás a készüléken futó ügynökök és Azure Migrate közötti kommunikációra szolgál. <br/><br/> – A második alkalmazás kizárólag az ügynök nélküli VMware VM-Migrálás felhasználói előfizetésében létrehozott kulcstartó elérésére szolgál.   | Az Azure-fióknak ezekre az [engedélyekre](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps) van szüksége az Azure ad-alkalmazások létrehozásához.
+**Kulcstartó létrehozása** | – Az első Key Vault a berendezés regisztrációjának részeként jön létre, és a rendszer a készüléken a konfiguráció során letöltött tanúsítvány kezelésére szolgál. <br/><br/> – A VMware virtuális gépek ügynök nélküli áttelepítéssel történő áttelepítéséhez Azure Migrate létrehoz egy másik Key Vault az előfizetésben lévő replikációs fiók elérési kulcsainak kezeléséhez.| Ahhoz, hogy a Azure Migrate létrehozza a Key Vault, beállíthatja az engedélyeket (tulajdonos, közreműködő és felhasználói hozzáférés rendszergazdája) azon erőforráscsoporthoz, amelyben a Azure Migrate projekt található.
 
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
@@ -64,7 +64,7 @@ A készülék regisztrálásához az Azure-fióknak rendelkeznie kell az Azure A
 A következőképpen adja meg az engedélyeket a fióknak:
 
 1. Győződjön meg arról, hogy Ön bérlő vagy globális rendszergazda. Ezután az Azure ad-ben navigáljon **Azure Active Directory**  >  **felhasználók**  >  **felhasználói beállításait**.
-2. Állítsa **App registrations** a Alkalmazásregisztrációk **értéket igen**értékre. Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. Állítsa **App registrations** a Alkalmazásregisztrációk **értéket igen**értékre. Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-vmware/aad.png)
 

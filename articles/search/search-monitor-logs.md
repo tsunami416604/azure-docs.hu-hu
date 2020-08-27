@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c940d0dd4c92aca92291bfe1dbd6c15f1091f0b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611611"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935058"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
 
 A diagnosztikai vagy működési naplók betekintést nyújtanak az Azure Cognitive Search részletes műveleteibe, és hasznosak a szolgáltatás-és munkaterhelés-folyamatok figyeléséhez. Belsőleg a rendszerinformációk némelyike rövid idő alatt létezik a háttérben, és elegendő a vizsgálathoz és az elemzéshez, ha támogatási jegyet ad. Ha azonban az operatív adatokra vonatkozó önirányítást szeretne, állítson be egy diagnosztikai beállítást annak megadásához, hogy a naplózási információk hol legyenek gyűjtve.
 
-A diagnosztikai naplózás a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/)-vel való integráción keresztül érhető el. 
+A diagnosztikai naplózás a [Azure monitor](../azure-monitor/index.yml)-vel való integráción keresztül érhető el. 
 
 A diagnosztikai naplózás beállításakor a rendszer megkéri a tárolási mechanizmus megadására. Az alábbi táblázat az adatok gyűjtésére és megőrzésére vonatkozó beállításokat sorolja fel.
 
 | Erőforrás | Alkalmazási cél |
 |----------|----------|
-| [Küldés a Log Analytics-munkaterületre](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Az eseményeket és mérőszámokat egy Log Analytics munkaterületre küldi a rendszer, amely lekérdezhető a portálon, és részletes információkat adhat vissza. Bevezetés: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
-| [Archiválás blob Storage-val](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Az események és a metrikák archiválása egy blob-tárolóba történik, és JSON-fájlokban tárolódik. A naplók meglehetősen részletesek (óránként/percenként), ami hasznos lehet egy adott incidens kereséséhez, de a nyílt végű vizsgálathoz nem. Egy JSON-szerkesztővel megtekintheti a naplófájlok összesítéséhez és megjelenítéséhez használható nyers naplófájlt vagy Power BI.|
-| [Stream az Event hub-ba](https://docs.microsoft.com/azure/event-hubs/) | Az események és mérőszámok továbbítása egy Azure Event Hubs szolgáltatásba történik. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
+| [Küldés a Log Analytics-munkaterületre](../azure-monitor/learn/tutorial-resource-logs.md) | Az eseményeket és mérőszámokat egy Log Analytics munkaterületre küldi a rendszer, amely lekérdezhető a portálon, és részletes információkat adhat vissza. Bevezetés: Ismerkedés [a Azure monitor-naplókkal](../azure-monitor/log-query/get-started-portal.md) |
+| [Archiválás blob Storage-val](../storage/blobs/storage-blobs-overview.md) | Az események és a metrikák archiválása egy blob-tárolóba történik, és JSON-fájlokban tárolódik. A naplók meglehetősen részletesek (óránként/percenként), ami hasznos lehet egy adott incidens kereséséhez, de a nyílt végű vizsgálathoz nem. Egy JSON-szerkesztővel megtekintheti a naplófájlok összesítéséhez és megjelenítéséhez használható nyers naplófájlt vagy Power BI.|
+| [Stream az Event hub-ba](../event-hubs/index.yml) | Az események és mérőszámok továbbítása egy Azure Event Hubs szolgáltatásba történik. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Hozzon létre erőforrásokat előre, hogy a diagnosztikai naplózás konfigurá
 
 + [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md)
++ [Tárfiók létrehozása](../storage/common/storage-account-create.md)
 
 + [Event hub létrehozása](../event-hubs/event-hubs-create.md)
 
@@ -120,11 +120,11 @@ AzureDiagnostics
 
 A Azure Monitor által rögzített naplózott események magukban foglalják az indexeléssel és a lekérdezésekkel kapcsolatos eseményeket. A Log Analytics **AzureDiagnostics** táblázata a lekérdezésekhez és az indexeléshez kapcsolódó operatív adatokat gyűjti.
 
-| OperationName | Description |
+| OperationName | Leírás |
 |---------------|-------------|
-| ServiceStats | Ez a művelet egy rutinos hívás a [szolgáltatás statisztikáinak beszerzésére](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), vagy közvetlenül vagy implicit módon, a portál áttekintő oldalának feltöltésekor, amikor betöltődik vagy frissül. |
+| ServiceStats | Ez a művelet egy rutinos hívás a [szolgáltatás statisztikáinak beszerzésére](/rest/api/searchservice/get-service-statistics), vagy közvetlenül vagy implicit módon, a portál áttekintő oldalának feltöltésekor, amikor betöltődik vagy frissül. |
 | Lekérdezés. keresés |  Lekérdezési kérelmek egy indextel kapcsolatban: a naplózott lekérdezésekkel kapcsolatos információk [figyelése](search-monitor-queries.md) .|
-| Indexelés. index  | Ez a művelet a [dokumentumok hozzáadását, frissítését és törlését](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)hívja meg. |
+| Indexelés. index  | Ez a művelet a [dokumentumok hozzáadását, frissítését és törlését](/rest/api/searchservice/addupdate-or-delete-documents)hívja meg. |
 | indexek. Prototípus | Ez az adatbázis importálása varázsló által létrehozott index. |
 | Indexelő. létrehozás | Hozzon létre egy indexelő explicit módon vagy implicit módon az adatimportálás varázsló segítségével. |
 | Indexelő. Get | Egy indexelő nevét adja vissza, amikor az indexelő fut. |
@@ -138,7 +138,7 @@ Ha egyéni jelentéseket készít, az Azure Cognitive Search-naplóba tartozó a
 
 Az alábbi táblázat az erőforrás-naplózáshoz leggyakrabban használt mezők részleges listáját tartalmazza.
 
-| Name | Típus | Példa | Jegyzetek |
+| Név | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
 | timeGenerated |dátum/idő |"2018-12-07T00:00:43.6872559 Z" |A művelet időbélyege |
 | resourceId |sztring |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK/<br/> Microsoft. KERESÉS/SEARCHSERVICES/SEARCHSERVICE " |Az Ön ResourceId |
@@ -148,13 +148,13 @@ Az alábbi táblázat az erőforrás-naplózáshoz leggyakrabban használt mező
 | resultType |sztring |Sikeres |Lehetséges értékek: sikeres vagy sikertelen |
 | resultSignature |int |200 |HTTP-eredmény kódja |
 | Átl |int |50 |A művelet időtartama ezredmásodpercben |
-| properties |objektum |Tekintse meg a következő táblázatot |Művelet-specifikus adathalmazt tartalmazó objektum |
+| properties |object |Tekintse meg a következő táblázatot |Művelet-specifikus adathalmazt tartalmazó objektum |
 
 ### <a name="properties-schema"></a>Tulajdonságok séma
 
 Az alábbi tulajdonságok az Azure Cognitive Search-ra vonatkoznak.
 
-| Name | Típus | Példa | Jegyzetek |
+| Név | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
 | Description_s |sztring |"/Indexes beolvasása (" tartalom ")/docs" |A művelet végpontja |
 | Documents_d |int |42 |Feldolgozott dokumentumok száma |
@@ -165,7 +165,7 @@ Az alábbi tulajdonságok az Azure Cognitive Search-ra vonatkoznak.
 
 A rendszer a lekérdezési kérelmek esetében rögzíti a metrikákat, és egy percen belül méri őket. Minden metrika percenkénti minimális, maximális és átlagos értékeket tesz elérhetővé. További információ: [lekérdezési kérelmek figyelése](search-monitor-queries.md).
 
-| Name | Típus | Példa | Jegyzetek |
+| Név | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
 | resourceId |sztring |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK/<br/>Microsoft. KERESÉS/SEARCHSERVICES/SEARCHSERVICE " |az erőforrás-azonosító |
 | metricName |sztring |Késleltetés |a metrika neve |

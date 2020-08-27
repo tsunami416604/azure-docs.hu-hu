@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496417"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928523"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Az Azure Cognitive Search az eredmények kivágására szolgáló biztonsági szűrők
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre a biztonsági szűrést a következ
 > [!div class="checklist"]
 > * A résztvevő azonosítóit tartalmazó mező létrehozása 
 > * Meglévő dokumentumok leküldése vagy frissítése a vonatkozó elsődleges azonosítókkal
-> * Keresési kérelem `search.in` kiadása`filter`
+> * Keresési kérelem `search.in` kiadása `filter`
 
 >[!NOTE]
 > A résztvevő azonosítók lekérésének folyamata nem szerepel ebben a dokumentumban. Szerezze be az azonosítót a személyazonossági szolgáltatótól.
@@ -109,13 +109,13 @@ Ha egy meglévő dokumentumot kell frissítenie a csoportok listájával, a `mer
 }
 ```
 
-A dokumentumok hozzáadásával vagy frissítésével kapcsolatos részletes információkért olvassa el a [dokumentumok szerkesztése című dokumentumot](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+A dokumentumok hozzáadásával vagy frissítésével kapcsolatos részletes információkért olvassa el a [dokumentumok szerkesztése című dokumentumot](/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>A biztonsági szűrő alkalmazása
 
 A dokumentumok hozzáférés alapján történő kivágásához egy `group_ids` szűrővel rendelkező keresési lekérdezést kell kiadnia `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` , ahol "group_id1 group_id2,..." azok a csoportok, amelyekhez a keresési kérelem kiállítója tartozik.
 Ez a szűrő minden olyan dokumentumra illeszkedik, amelynek a `group_ids` mezője tartalmazza a megadott azonosítók egyikét.
-A dokumentumok Azure Cognitive Search használatával történő keresésével kapcsolatos részletes információkért olvassa el a [keresési dokumentumokat](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+A dokumentumok Azure Cognitive Search használatával történő keresésével kapcsolatos részletes információkért olvassa el a [keresési dokumentumokat](/rest/api/searchservice/search-documents).
 Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet dokumentumokat a POST-kérések használatával.
 
 A HTTP POST-kérelem kiadása:
@@ -152,7 +152,7 @@ A dokumentumokat vissza kell olvasnia, ahol a `group_ids` "group_id1" vagy a "gr
  ]
 }
 ```
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 
 Így szűrheti az eredményeket a felhasználói identitás és az Azure Cognitive Search `search.in()` függvény alapján. Ezzel a függvénnyel az egyes dokumentumokhoz társított elsődleges azonosítókkal egyező azonosítókat adhat meg a kérelmező felhasználó számára. Keresési kérelem kezelésekor a `search.in` függvény kiszűri azokat a keresési eredményeket, amelyekhez a felhasználó egyetlen résztvevője sem rendelkezik olvasási hozzáféréssel. A résztvevő azonosítói a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitása is lehetnek.
  

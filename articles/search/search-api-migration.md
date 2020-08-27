@@ -8,16 +8,16 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1e5269333de27c146d4b9e2040801c4b14564125
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562625"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927136"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Frissítés a legújabb Azure Cognitive Search Service REST API verzióra
 
-Ha a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/)egy korábbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a legújabb általánosan elérhető API-verzió (2020-06-30) használatára.
+Ha a [Search REST API](/rest/api/searchservice/)egy korábbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a legújabb általánosan elérhető API-verzió (2020-06-30) használatára.
 
 A REST API 2020-06-30-es verziója a korábbi verziók néhány módosítását tartalmazza. Ezek többnyire visszamenőlegesen kompatibilisek, ezért a kód módosítása csak minimális erőfeszítést igényelhet, attól függően, hogy melyik verziót használta. A [verziófrissítés lépései](#UpgradeSteps) az új funkciók használatához szükséges kód módosításait ismertetik.
 
@@ -32,7 +32,7 @@ Az új verzióra való frissítéskor valószínűleg nem kell módosítania a k
 
 * A kód meghiúsul, ha a rendszer ismeretlen tulajdonságokat ad vissza egy API-válaszban. Alapértelmezés szerint az alkalmazás figyelmen kívül hagyja az általa nem értelmezhető tulajdonságokat.
 
-* A kód megőrzi az API-kérelmeket, és megkísérli az új API-verzióra való újraküldést. Ez például akkor fordulhat elő, ha az alkalmazás a keresési API által visszaadott folytatási tokeneket is megőrzi (további információért keresse `@search.nextPageParameters` a [Search API-referenciát](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* A kód megőrzi az API-kérelmeket, és megkísérli az új API-verzióra való újraküldést. Ez például akkor fordulhat elő, ha az alkalmazás a keresési API által visszaadott folytatási tokeneket is megőrzi (további információért keresse `@search.nextPageParameters` a [Search API-referenciát](/rest/api/searchservice/Search-Documents)).
 
 * A kód olyan API-verzióra hivatkozik, amely a 2019-05-06-es időpontra vonatkozik, és az adott kiadásban feltörhető változások közül egy vagy több is érvényes. A [2019-05-06-es verzióra való frissítés](#upgrade-to-2019-05-06) további részleteket tartalmaz. 
 
@@ -146,4 +146,4 @@ A "Flat" indexeket az új formátumra frissítheti a következő lépésekkel az
 Tekintse át a Search REST API dokumentációját. Ha problémákba ütközik, kérjen segítséget [stack overflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Keresési szolgáltatás REST API referenciája](https://docs.microsoft.com/rest/api/searchservice/)
+> [Keresési szolgáltatás REST API referenciája](/rest/api/searchservice/)

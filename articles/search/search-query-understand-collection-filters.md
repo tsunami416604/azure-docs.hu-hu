@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206174"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932916"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search
 
@@ -88,14 +88,14 @@ Ennek az az oka, hogy a `Rooms/Type` teljes dokumentumban a mező összes elemze
 
 `Rooms/Type`A teljes szöveges keresés tárolása:
 
-| Kifejezés a`Rooms/Type` | Dokumentumok azonosítói |
+| Kifejezés a `Rooms/Type` | Dokumentumok azonosítói |
 | --- | --- |
 | Deluxe | 1, 2 |
 | Standard | 1 |
 
 `Rooms/Description`A teljes szöveges keresés tárolása:
 
-| Kifejezés a`Rooms/Description` | Dokumentumok azonosítói |
+| Kifejezés a `Rooms/Description` | Dokumentumok azonosítói |
 | --- | --- |
 | Courtyard | 2 |
 | city | 1 |
@@ -142,7 +142,7 @@ Tegyük fel például, hogy egy szűrhető karakterlánc-gyűjtési mező, péld
 
 A `seasons` mező értékét egy **fordított index**nevű struktúrában tárolja a rendszer, amely a következőhöz hasonlóan néz ki:
 
-| Kifejezés | Dokumentumok azonosítói |
+| Időszak | Dokumentumok azonosítói |
 | --- | --- |
 | Spring | 1, 2 |
 | nyári | 1 |
@@ -180,9 +180,9 @@ Ezért lehetséges a `all` és a használata `ne` `and` .
 > [!NOTE]
 > Bár a részletek ezen dokumentum hatókörén kívül esnek, ugyanazok az alapelvek a [földrajzi térbeli pontok gyűjteményeit is kiterjesztik a távolságra és a metszeti tesztekre](search-query-odata-geo-spatial-functions.md) . Ezért `any` :
 >
-> - `geo.intersects`nem lehet megfosztani
+> - `geo.intersects` nem lehet megfosztani
 > - `geo.distance`össze kell hasonlítani a vagy a használatával `lt``le`
-> - a kifejezéseket kombinálni kell `or` , nem`and`
+> - a kifejezéseket kombinálni kell `or` , nem `and`
 >
 > A Converse szabályok érvényesek `all` .
 
@@ -204,4 +204,4 @@ Adott példákat, amelyek esetében engedélyezett a szűrők típusa, és amely
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

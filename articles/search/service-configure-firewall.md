@@ -8,21 +8,21 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125586"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932797"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Az Azure Cognitive Search IP-tűzfalának konfigurálása
 
 Az Azure Cognitive Search támogatja az IP-szabályokat a bejövő tűzfalak támogatásához. Ez a modell egy további biztonsági réteget biztosít a keresési szolgáltatáshoz, amely az Azure virtuális hálózati biztonsági csoportban található IP-szabályokhoz hasonló. Ezeknek az IP-szabályoknak a segítségével úgy állíthatja be a keresési szolgáltatást, hogy csak jóváhagyott gépekből és/vagy felhőalapú szolgáltatásokból legyen elérhető. A keresési szolgáltatásban tárolt adatoknak ezen jóváhagyott készletekből és szolgáltatásokból való elérése továbbra is megköveteli, hogy a hívó érvényes engedélyezési jogkivonatot jelentsen.
 
 > [!Important]
-> Az Azure Cognitive Search Service-ben az IP-szabályok konfigurálhatók a Azure Portal vagy a [felügyeleti REST API 2020-03-13-es verziójának](https://docs.microsoft.com/rest/api/searchmanagement/)használatával.
+> Az Azure Cognitive Search Service-ben az IP-szabályok konfigurálhatók a Azure Portal vagy a [felügyeleti REST API 2020-03-13-es verziójának](/rest/api/searchmanagement/)használatával.
 
-## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a>IP-tűzfal konfigurálása a Azure Portal használatával
+## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> IP-tűzfal konfigurálása a Azure Portal használatával
 
 A Azure Portal IP-hozzáférés-vezérlési szabályzatának beállításához nyissa meg az Azure Cognitive Search szolgáltatás lapját, és válassza a **hálózatkezelés** lehetőséget a navigációs menüben. A végponti hálózati kapcsolatnak **nyilvánosnak**kell lennie. Ha a kapcsolat **privát**értékre van állítva, akkor csak privát végponton keresztül érheti el a keresési szolgáltatást.
 
