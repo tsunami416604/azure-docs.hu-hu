@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083043"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961720"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
@@ -35,7 +35,7 @@ A [githubon](https://github.com/azure-app-service)található összes Docker-fá
 | Java SE         | a JAR-alkalmazás elindítására szolgáló parancs (például `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
 | Tomcat          | egy parancsfájl helye a szükséges konfigurációk végrehajtásához (például `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | a PM2 konfigurációs fájl vagy a parancsfájl                                |
-| .NET Core       | a lefordított DLL-név a következőképpen`dotnet <myapp>.dll`                                 |
+| .NET Core       | a lefordított DLL-név a következőképpen `dotnet <myapp>.dll`                                 |
 | Ruby            | a Ruby-parancsfájl, amelybe az alkalmazást inicializálni szeretné                     |
 
 Ezeket a parancsokat vagy parancsfájlokat a rendszer a beépített Docker-tároló elindítása után hajtja végre, de az alkalmazás kódjának elindítása előtt.
@@ -122,7 +122,7 @@ Adja meg a beállításjegyzék teljes URL-címét, beleértve a vagy a-t `http:
 
 **Mi a rendszerkép nevének formátuma a privát beállításjegyzékben?**
 
-Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name` használja a [ `az` parancssori eszközt](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name` használja a [ `az` parancssori eszközt](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Ki lehet-e tenni egynél több portot az egyéni tároló rendszerképén?**
 
@@ -130,7 +130,7 @@ Nem támogatunk egynél több portot.
 
 **Használhatom a saját tárhelyet?**
 
-Igen, [a saját tárterülete](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage) előzetes verzióban érhető el.
+Igen, [a saját tárterülete](./configure-connect-to-azure-storage.md) előzetes verzióban érhető el.
 
 **Miért nem tudok böngészni az egyéni tároló fájlrendszerén, vagy hogyan futnak a folyamatok az SCM-helyről?**
 
@@ -201,7 +201,7 @@ Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúz�
 
 Ötleteit a [Web Apps visszajelzési fórumában](https://aka.ms/webapps-uservoice)küldheti el. Adja hozzá a "[Linux]" címet az ötlete címéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Linux Azure App Service?](overview.md#app-service-on-linux)
 - [Átmeneti környezetek beállítása az Azure App Service-ben](deploy-staging-slots.md)

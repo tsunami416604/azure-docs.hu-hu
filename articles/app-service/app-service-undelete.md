@@ -5,16 +5,16 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 04e496806f2c388eb3a69df1b4cc3897b8132f6c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985682"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962910"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Eltávolított App Service-alkalmazás visszaállítása a PowerShell használatával
 
-Ha véletlenül törölte az alkalmazást Azure App Serviceban, visszaállíthatja az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)parancsainak használatával.
+Ha véletlenül törölte az alkalmazást Azure App Serviceban, visszaállíthatja az az [PowerShell-modul](/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)parancsainak használatával.
 
 > [!NOTE]
 > - A törölt alkalmazások a kezdeti törlés után 30 nappal törlődnek a rendszerből. Az alkalmazások törlése után nem állítható helyre.
@@ -53,7 +53,7 @@ A részletes információk a következők:
 ## <a name="restore-deleted-app"></a>Törölt alkalmazás visszaállítása
 
 >[!NOTE]
-> `Restore-AzDeletedWebApp`function apps esetében nem támogatott.
+> `Restore-AzDeletedWebApp` function apps esetében nem támogatott.
 
 Miután azonosította a visszaállítani kívánt alkalmazást, visszaállíthatja azt a használatával `Restore-AzDeletedWebApp` .
 
@@ -61,7 +61,7 @@ Miután azonosította a visszaállítani kívánt alkalmazást, visszaállíthat
 Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Az üzembe helyezési pontok nem állíthatók vissza az alkalmazás részeként. Ha vissza kell állítania egy átmeneti tárolóhelyet, használja a `-Slot <slot-name>` jelzőt.
+> Az üzembe helyezési pontok nem állíthatók vissza az alkalmazás részeként. Ha vissza kell állítania egy átmeneti tárolóhelyet, használja a `-Slot <slot-name>`  jelzőt.
 >
 
 A következő parancs bemenetei:
@@ -76,4 +76,4 @@ Alapértelmezés szerint az `Restore-AzDeletedWebApp` alkalmazás konfiguráció
 > Ha az alkalmazás futott, majd törölve lett egy App Service Environment, akkor csak akkor állítható vissza, ha a megfelelő App Service Environment még létezik.
 >
 
-A teljes parancsmagot-hivatkozást itt találja: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).
+A teljes parancsmagot-hivatkozást itt találja: [Restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp).

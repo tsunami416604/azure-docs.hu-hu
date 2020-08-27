@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637928"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961618"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
 
@@ -90,7 +90,7 @@ Ha a Resource Manager-sablon MSDeploy használ, a telepítési hibaüzenetek neh
 
 1. Nyissa meg a hely [kudu-konzolját](https://github.com/projectkudu/kudu/wiki/Kudu-console).
 2. Tallózással keresse meg a mappát a következő címen: D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Keresse meg a appManagerStatus.xml és appManagerLog.xml fájlokat. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a [fórumon](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+3. Keresse meg a appManagerStatus.xml és appManagerLog.xml fájlokat. Az első fájl naplózza az állapotot. A második fájl a hibával kapcsolatos információkat naplózza. Ha a hiba nem egyértelmű, akkor azt is megteheti, ha segítséget kér a [fórumon](/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Egyedi webalkalmazás nevének kiválasztása
 
@@ -131,7 +131,7 @@ A sablonban adja meg a tanúsítvány nevét `keyVaultSecretName` .
 
 Példaként lásd: [webalkalmazás-tanúsítvány üzembe helyezése Key Vault titkos kulcsból, és az SSL-kötés létrehozásához használja](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A webalkalmazások sablonnal történő üzembe helyezésével kapcsolatos oktatóanyagért tekintse meg a következő témakört: az [Azure-ban előre jelzett szolgáltatások üzembe helyezése és telepítése](deploy-complex-application-predictably.md).
 * A sablonokban található erőforrástípusok JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Azure Resource Manager sablon referenciája](/azure/templates/).

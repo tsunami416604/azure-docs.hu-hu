@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 580525b2e8e408949ce1d8f2d1b8241c431fc755
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209554"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958150"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Privát Python-csomagok használata Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ A privát csomagokat a [környezeti](https://docs.microsoft.com/python/api/azure
  * A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
  * [Azure Machine learning munkaterület](how-to-manage-workspace.md)
 
-### <a name="use-small-number-of-packages-for-development-and-testing"></a>Kis számú csomagot használhat a fejlesztéshez és a teszteléshez
+## <a name="use-small-number-of-packages-for-development-and-testing"></a>Kis számú csomagot használhat a fejlesztéshez és a teszteléshez
 
 Ha kis mennyiségű privát csomagot használ egy adott munkaterülethez, használja a statikus [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) módszert. Ezzel a módszerrel gyorsan hozzáadhat egy privát csomagot a munkaterülethez, és kiválóan alkalmas fejlesztési és tesztelési célokra.
 
@@ -50,7 +50,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Belsőleg a Azure Machine Learning szolgáltatás a biztonságos SAS URL-cím alapján cseréli le az URL-címet, így a Wheel-fájl privát és biztonságos marad.
 
-### <a name="consume-a-repository-of-packages-from-azure-devops-feed"></a>A csomagok tárházának felhasználása az Azure DevOps-hírcsatornából
+## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Csomagok tárházának használata az Azure DevOps-hírcsatornából
 
 Ha aktívan fejleszt Python-csomagokat a Machine learning-alkalmazáshoz, az Azure DevOps-tárházban tárolhatja őket, és hírcsatornáként közzéteheti őket. Ez a módszer lehetővé teszi, hogy integrálja a DevOps munkafolyamatot a csomagok létrehozásához a Azure Machine Learning-munkaterület. A Python-hírcsatornák Azure DevOps való beállításának megismeréséhez olvassa el [a Python-csomagok használatának első lépései az Azure-](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops) összetevőkben című témakört.
 
@@ -87,19 +87,23 @@ Ez a módszer személyes hozzáférési tokent használ a tárházon végzett hi
 
 A környezet most már készen áll a futtatásra vagy a webszolgáltatás-végpontok üzembe helyezésére. A környezet létrehozásakor Azure Machine Learning szolgáltatás a PAT használatával hitelesíti a hírcsatornát a megfelelő alap URL-címmel.
 
-### <a name="consume-a-repository-of-packages-from-private-storage"></a>Saját tárterületből származó csomagok tárházának felhasználása
+## <a name="use-a-repository-of-packages-from-private-storage"></a>Csomagok tárházának használata a privát tárolóból
 
-Az Azure Storage-fiókból csomagokat használhat a szervezet tűzfalán belül. Ez a Storage-fiók a nagyvállalati használatra szánt csomagok, illetve a nyilvánosan elérhető csomagok belső tükrözése számára is rendelkezhet.
+Az Azure Storage-fiókból csomagokat használhat a szervezet tűzfalán belül. A Storage-fiókban tárolhatók a csomagok vagy a nyilvánosan elérhető csomagok belső tükrözései.
 
 A magánhálózati tároló beállítása:
 
- 1. [Helyezze el a munkaterületet egy virtuális hálózaton (VNET) belül](how-to-enable-virtual-network.md).
- 2. Hozzon létre egy Storage-fiókot, és [engedélyezze a nyilvános hozzáférést](https://docs.microsoft.com/azure/storage/common/storage-network-security).
- 2. Helyezze a használni kívánt Python-csomagokat a Storage-fiókban lévő tárolóba. 
- 3. [A Storage-fiók hozzáférésének engedélyezése a munkaterület VNET](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network) 
+1. [Helyezze el a munkaterületet egy virtuális hálózaton (VNet) belül](how-to-enable-virtual-network.md).
+1. Hozzon létre egy Storage-fiókot, és [engedélyezze a nyilvános hozzáférést](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+1. Helyezze a használni kívánt Python-csomagokat a Storage-fiókban lévő tárolóba. 
+1. [A Storage-fiók hozzáférésének engedélyezése a munkaterület VNet](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
+1. [Helyezze a munkaterület Azure Container Registry (ACR) a VNet mögé](how-to-enable-virtual-network.md#azure-container-registry).
 
-Ezután hivatkozhat a Azure Machine Learning környezeti definícióban található csomagokra az Azure Blob Storage teljes URL-címével.
+    > [!IMPORTANT]
+    > Ezt a lépést kell végrehajtania ahhoz, hogy a privát csomag adattárával be tudja tanítani vagy üzembe lehessen helyezni a modelleket.
 
-## <a name="next-steps"></a>További lépések
+A konfigurációk befejezése után hivatkozhat a Azure Machine Learning környezeti definícióban található csomagokra az Azure Blob Storage teljes URL-címével.
+
+## <a name="next-steps"></a>Következő lépések
 
  * További információ a [Azure Machine learning vállalati biztonságáról](concept-enterprise-security.md)

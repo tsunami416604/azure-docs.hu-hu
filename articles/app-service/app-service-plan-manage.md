@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811714"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962944"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>App Service-csomag kezelése az Azure-ban
 
@@ -82,7 +82,7 @@ A **klónozási alkalmazást** a menü **fejlesztői eszközök** szakaszában t
 
 Az App Service csomag díjszabási szintjeinek vertikális felskálázásához tekintse meg az [alkalmazás vertikális Felskálázása az Azure-ban](manage-scale-up.md)című témakört.
 
-Az alkalmazások példányszámának felskálázásához tekintse meg a [Példányszám manuális vagy automatikus skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md)című témakört.
+Az alkalmazások példányszámának felskálázásához tekintse meg a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md)című témakört.
 
 <a name="delete"></a>
 
@@ -93,10 +93,10 @@ Ha el szeretné kerülni a nem várt díjakat, akkor a App Service csomag utols�
 > [!IMPORTANT]
 > Azok a App Service csomagok, amelyeknek nincsenek hozzárendelt alkalmazásai, díjkötelesek, mert továbbra is fenntartják a konfigurált virtuálisgép-példányokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Alkalmazás vertikális felméretezése az Azure-ban](manage-scale-up.md)
+> [Alkalmazás vertikális felskálázása az Azure-ban](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

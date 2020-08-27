@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318895"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962672"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Felhasználói tulajdonban lévő Storage-fiókok a naplózás betöltéséhez Azure Monitor
 
@@ -77,6 +77,8 @@ Ez az érték a következő struktúrát használja:
 subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
 ```
 
+
+## <a name="get-linked-storage-accounts"></a>Társított Storage-fiókok beolvasása
 
 ### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Társított Storage-fiókok beolvasása az összes adatforrás-típushoz
 
@@ -233,7 +235,7 @@ Ha a munkaterület regisztrált Storage-fiókja egy másik régióban találhat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A privát hivatkozások beállításával kapcsolatos további információkért lásd: az [Azure privát hivatkozás használata a hálózatok biztonságos csatlakoztatásához Azure monitor](private-link-security.md)
 

@@ -9,12 +9,12 @@ author: ericgre
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 8b15b3c4444a6f26734b133f169cea7074956ae7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: f88ccd077c857826271484c9929b37f8c5d751fe
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88043021"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962706"
 ---
 # <a name="terraform-samples-for-azure-app-service"></a>Terraform-minták Azure App Service
 
@@ -24,5 +24,5 @@ A következő táblázat a Terraform parancsfájlokra mutató hivatkozásokat ta
 |-|-|
 |**Alkalmazás létrehozása**||
 | [Hozzon létre két alkalmazást, és kapcsolódjon biztonságosan a privát végponttal és a VNet-integrációval](./scripts/terraform-secure-backend-frontend.md )| Két App Service alkalmazást hoz létre, és összekapcsolja az alkalmazásokat a privát végponttal és a VNet-integrációval együtt. |
-| [App Service üzembe helyezése és a tárolóhely-csere használata a telepítéshez](https://docs.microsoft.com/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| App Service infrastruktúra kiépítése az Azure üzembe helyezési pontjaival. |
+| [App Service üzembe helyezése és a tárolóhely-csere használata a telepítéshez](/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| App Service infrastruktúra kiépítése az Azure üzembe helyezési pontjaival. |
 | | |

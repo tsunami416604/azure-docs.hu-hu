@@ -6,19 +6,19 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 875649d2405aa5542a7b66e247cc50d4b2cba20d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085126"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961333"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Ruby on Rails-alkalmazás létrehozása App Service
 
-A [linuxon Azure app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Ruby on Rails-alkalmazást a Linuxon a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával app Service.
+A [linuxon Azure app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Ruby on Rails-alkalmazást a Linuxon a [Cloud Shell](../cloud-shell/overview.md)használatával app Service.
 
 > [!NOTE]
-> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot, például Sinatra-t szeretne használni, vagy ha nem támogatott Ruby-verziót szeretne használni, [azt egy egyéni tárolóban kell futtatnia](containers/quickstart-docker-go.md).
+> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot, például Sinatra-t szeretne használni, vagy ha nem támogatott Ruby-verziót szeretne használni, [azt egy egyéni tárolóban kell futtatnia](./quickstart-custom-container.md?pivots=platform-linux%3fpivots%3dplatform-linux).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
@@ -121,7 +121,7 @@ http://<app-name>.azurewebsites.net
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Ruby on Rails és postgres](tutorial-ruby-postgres-app.md)

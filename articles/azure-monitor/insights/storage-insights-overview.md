@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327344"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961975"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban
 
@@ -54,11 +54,11 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és rendelkezésr
 
 ### <a name="overview-workbook"></a>Áttekintő munkafüzet
 
-A kiválasztott előfizetéshez tartozó **áttekintő** munkafüzetben a tábla interaktív tárolási metrikákat és szolgáltatás rendelkezésre állási állapotát jeleníti meg legfeljebb 10 Storage-fiókhoz az előfizetésben. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
+A kiválasztott előfizetéshez tartozó **áttekintő** munkafüzetben a tábla interaktív tárolási metrikákat és szolgáltatás rendelkezésre állási állapotát jeleníti meg legfeljebb 5 Storage-fiókhoz az előfizetésen belül csoportosítva. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
 
 * **Előfizetések** – csak a Storage-fiókkal rendelkező előfizetések jelennek meg.  
 
-* **Storage-fiókok** – alapértelmezés szerint a 10 Storage-fiók előre ki van választva. Ha a hatókör-választóban az összes vagy több Storage-fiókot választja, a rendszer legfeljebb 200 Storage-fiókot ad vissza. Ha például összesen 573 Storage-fiókkal rendelkezett a kiválasztott három előfizetésben, csak 200-fiókok jelennek meg. 
+* **Storage-fiókok** – alapértelmezés szerint 5 a Storage-fiókok előre ki vannak választva. Ha a hatókör-választóban az összes vagy több Storage-fiókot választja, a rendszer legfeljebb 200 Storage-fiókot ad vissza. Ha például összesen 573 Storage-fiókkal rendelkezett a kiválasztott három előfizetésben, csak 200-fiókok jelennek meg. 
 
 * **Időtartomány** – alapértelmezés szerint az utolsó 4 órányi információt jeleníti meg a megfelelő beállítások alapján.
 
@@ -267,7 +267,7 @@ Ha n + 1 értéknél több különböző típusú hibát szeretne megtekinteni, 
 
 A rendszer minden munkafüzetet a Storage-fiókba ment, amelyet a ben mentett. Próbálja meg megkeresni az adott Storage-fiókot, amelyben a felhasználó mentette a munkafüzetet. Ellenkező esetben nem talál egy adott munkafüzetet az erőforrás (Storage-fiók) ismerete nélkül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
 

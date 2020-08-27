@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: f5e4c4d89a1119b0f59aa15885406cd7261d2f69
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170003"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962026"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe olyan alkalmazásokat, amelyekben a [Azure app Service](https://azure.microsoft.com/services/app-service/) egy egységként, a [JSON-erőforráscsoportok](https://en.wikipedia.org/wiki/Microservices) és a PowerShell-parancsfájlok használatával kiszámítható módon használható. 
@@ -29,7 +29,7 @@ Az oktatóanyagban egy olyan alkalmazást fog telepíteni, amely a következőke
 Ebben az oktatóanyagban az alábbi eszközöket fogja használni. Mivel az eszközök nem teljes körű vitát végeznek, a végpontok közötti forgatókönyvre fogok ragaszkodni, és csak egy rövid bevezetőt adunk hozzá, ahol további információkat talál. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager sablonok (JSON)
-Minden alkalommal, amikor létrehoz egy alkalmazást a Azure App Serviceban, például Azure Resource Manager JSON-sablonnal hozza létre a teljes erőforráscsoportot az összetevő-erőforrásokkal. Az [Azure Marketplace](/azure/marketplace) -en található összetett sablon magában foglalhatja az adatbázist, a Storage-fiókokat, a app Service tervet, az alkalmazást, a riasztási szabályokat, az Alkalmazásbeállítások, az automatikusan méretezhető beállításokat és egyebeket, és az összes ilyen sablon elérhető a PowerShell használatával. A Azure Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése](../azure-resource-manager/templates/template-syntax.md)
+Minden alkalommal, amikor létrehoz egy alkalmazást a Azure App Serviceban, például Azure Resource Manager JSON-sablonnal hozza létre a teljes erőforráscsoportot az összetevő-erőforrásokkal. Az [Azure Marketplace](../marketplace/index.yml) -en található összetett sablon magában foglalhatja az adatbázist, a Storage-fiókokat, a app Service tervet, az alkalmazást, a riasztási szabályokat, az Alkalmazásbeállítások, az automatikusan méretezhető beállításokat és egyebeket, és az összes ilyen sablon elérhető a PowerShell használatával. A Azure Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>A Visual studióhoz készült Azure SDK 2,6
 A legújabb SDK a JSON-szerkesztőben a Resource Manager-sablon támogatásának újdonságait tartalmazza. Ezzel gyorsan létrehozhat egy erőforráscsoport-sablont a semmiből, vagy megnyithat egy meglévő JSON-sablont (például egy letöltött katalógus-sablont) a módosításhoz, feltöltheti a paramétereket tartalmazó fájlt, és akár közvetlenül is üzembe helyezheti az erőforráscsoportot egy Azure-erőforráscsoport megoldásból.
@@ -39,7 +39,7 @@ További információ: [Azure SDK 2,6 for Visual Studio](https://azure.microsoft
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 vagy újabb
 A 0.8.0 verziótól kezdődően a Azure PowerShell telepítés az Azure-modul mellett az Azure Resource Manager modult is tartalmazza. Ez az új modul lehetővé teszi az erőforráscsoportok központi telepítésének parancsfájlját.
 
-További információ: a [Azure PowerShell használata a Azure Resource Manager](../powershell-azure-resource-manager.md)
+További információ: a [Azure PowerShell használata a Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md)
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 Ez az [előnézeti eszköz](https://resources.azure.com) lehetővé teszi az előfizetésben lévő erőforráscsoportok és az egyes erőforrások JSON-definícióinak megismerését. Az eszközben szerkesztheti az erőforrások JSON-definícióit, törölheti az erőforrások teljes hierarchiáját, és új erőforrásokat hozhat létre.  Az eszközön könnyen elérhető információk nagyon hasznosak a sablon készítéséhez, mert megmutatja, hogy milyen tulajdonságokat kell beállítania egy adott típusú erőforráshoz, a helyes értékekhez stb. Az erőforráscsoportot az [Azure Portalon](https://portal.azure.com/)is létrehozhatja, majd megvizsgálhatja a JSON-definíciókat az Explorer eszközben, hogy segítsen az templatize.
@@ -90,7 +90,7 @@ Nem fogom leírni a JSON formátum minden részletét, de a [További erőforrá
 ### <a name="parameters"></a>Paraméterek
 Tekintse meg a parameters (paraméterek) szakaszt, amelyből megtudhatja, hogy a paraméterek többsége az, amit az **Azure-beli üzembe helyezés** gomb kér a bevitelhez. A **telepítés az Azure** -ba gomb mögötti hely feltölti a bemeneti felhasználói felületet a azuredeploy.json paraméterben meghatározott paraméterek használatával. Ezeket a paramétereket az erőforrás-definíciók, például az erőforrások neve, a tulajdonságértékek stb. használják.
 
-### <a name="resources"></a>Forrásanyagok
+### <a name="resources"></a>További források
 A Resources (erőforrások) csomópontban láthatja, hogy 4 legfelső szintű erőforrás van definiálva, beleértve egy SQL Server példányt, egy App Service tervet és két alkalmazást. 
 
 #### <a name="app-service-plan"></a>App Service-csomag
@@ -137,8 +137,8 @@ Az Alkalmazásbeállítások beágyazott erőforrásként is definiálva lesznek
 
 A `properties` elemben `config/appsettings` két alkalmazás-beállítás szerepel a formátumban `"<name>" : "<value>"` .
 
-* `PROJECT`a egy [KUDU-beállítás](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , amely azt jelzi, hogy az Azure üzembe helyezése milyen projektet használ egy többprojektes Visual Studio-megoldásban. Megmutatom, hogy a verziókövetés hogyan van konfigurálva, de mivel a ToDoApp-kód egy többprojektes Visual Studio-megoldásban van, erre a beállításra van szükség.
-* `clientUrl`egyszerűen egy alkalmazás-beállítás, amelyet az alkalmazás kód használ.
+* `PROJECT` a egy [KUDU-beállítás](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , amely azt jelzi, hogy az Azure üzembe helyezése milyen projektet használ egy többprojektes Visual Studio-megoldásban. Megmutatom, hogy a verziókövetés hogyan van konfigurálva, de mivel a ToDoApp-kód egy többprojektes Visual Studio-megoldásban van, erre a beállításra van szükség.
+* `clientUrl` egyszerűen egy alkalmazás-beállítás, amelyet az alkalmazás kód használ.
 
 ##### <a name="connection-strings"></a>Kapcsolati sztringek
 A kapcsolatok karakterlánca beágyazott erőforrásként is definiálva van.
@@ -157,7 +157,7 @@ A verziókövetés beállításai beágyazott erőforrásként is definiálva le
 
 ![Azt mutatja, hogy a verziókövetés beállításai hogyan vannak definiálva beágyazott erőforrásként a JSON-kódban.](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl`és `branch` elég intuitívnak kell lennie, és a git-tárházra, valamint annak a fióknak a nevére kell mutatnia, amelyet közzé szeretne tenni. Ezeket a paramétereket a bemeneti paraméterek határozzák meg. 
+`RepoUrl` és `branch` elég intuitívnak kell lennie, és a git-tárházra, valamint annak a fióknak a nevére kell mutatnia, amelyet közzé szeretne tenni. Ezeket a paramétereket a bemeneti paraméterek határozzák meg. 
 
 Vegye figyelembe, hogy a (z `dependsOn` ) és az alkalmazás-erőforrás mellett a (z `sourcecontrols/web` ) és a is függ `config/appsettings` `config/connectionstrings` . Ennek az az oka `sourcecontrols/web` , hogy ha egyszer konfigurálva van, az Azure üzembe helyezési folyamata automatikusan megkísérli az alkalmazás kódjának telepítését, összeállítását és elindítását. Ezért a függőség beírásával gondoskodhat arról, hogy az alkalmazás hozzáférjen a szükséges alkalmazás-beállításokhoz és a kapcsolati karakterláncokhoz az alkalmazás kódjának futtatása előtt. 
 
@@ -213,7 +213,7 @@ Az **üzembe helyezés az Azure** -ban gomb nagyszerű, de lehetővé teszi, hog
     
     ![Bemutatja az új projekt üzembe helyezésének módját.](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Ha még nem tette meg, jelentkezzen be az Azure-fiókjába.
-14. Válasszon ki egy meglévő erőforráscsoportot az előfizetésben, vagy hozzon létre egy újat, válassza **aazuredeploy.js**be lehetőséget, majd kattintson a **Paraméterek szerkesztése**elemre.
+14. Válasszon ki egy meglévő erőforráscsoportot az előfizetésben, vagy hozzon létre egy újat, válassza ** aazuredeploy.js**be lehetőséget, majd kattintson a **Paraméterek szerkesztése**elemre.
     
     ![Bemutatja, hogyan szerkesztheti a paramétereket a azuredeploy.jsfájljában.](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
@@ -228,7 +228,7 @@ Az **üzembe helyezés az Azure** -ban gomb nagyszerű, de lehetővé teszi, hog
     > Az automatikus skálázás a **standard** szintű vagy magasabb szintű szolgáltatás, és az **alapszintű** vagy magasabb szintű riasztások olyan funkciók, amelyeken az **SKU** paramétert **standard** vagy **Premium** értékre kell beállítani, hogy az összes új alkalmazás-megállapítási erőforrás felálljon.
     > 
     > 
-16. Kattintson a **telepítés**elemre. Ha a **jelszavak mentése**lehetőséget választotta, a jelszót a rendszer **egyszerű szövegként**menti a paraméter fájlba. Ellenkező esetben a rendszer megkéri, hogy adja meg az adatbázis jelszavát a telepítési folyamat során.
+16. Kattintson az **Üzembe helyezés** gombra. Ha a **jelszavak mentése**lehetőséget választotta, a jelszót a rendszer **egyszerű szövegként**menti a paraméter fájlba. Ellenkező esetben a rendszer megkéri, hogy adja meg az adatbázis jelszavát a telepítési folyamat során.
 
 Készen is van. Most az [Azure Portalra](https://portal.azure.com/) és a [Azure erőforrás-kezelő](https://resources.azure.com) eszközre kell kattintania, hogy megtekintse a JSON-ban üzembe helyezett alkalmazáshoz hozzáadott új riasztásokat és az autoskálázási beállításokat.
 
@@ -244,7 +244,7 @@ Az utolsó lépést egyszerűen egy PowerShell-parancsmag hajtja végre. Ha szer
 
 Az utolsó parancsmag, `New-AzureResourceGroup` amely az a művelet, amely ténylegesen végrehajtja a műveletet. Mindez azt mutatja meg, hogy az eszközök segítségével viszonylag egyszerű üzembe helyezni a felhőalapú alkalmazást. Minden alkalommal, amikor ugyanazon a sablonon futtatja a parancsmagot ugyanazzal a fájllal, ugyanazt az eredményt fogja kapni.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A DevOps-ben az ismételhetőség és a kiszámíthatóság olyan kulcs, amely egy nagy léptékű alkalmazás sikeres üzembe helyezését eredményezi. Ebben az oktatóanyagban egy kétszolgáltatásos alkalmazást helyezett üzembe az Azure-ban egyetlen erőforráscsoportként a Azure Resource Manager sablon használatával. Remélhetőleg megkapta a szükséges tudást ahhoz, hogy megkezdje az alkalmazás átalakítását az Azure-ban egy sablonba, és kiszámítható módon üzembe helyezheti és telepítheti azt. 
 
 <a name="resources"></a>
@@ -254,10 +254,10 @@ A DevOps-ben az ismételhetőség és a kiszámíthatóság olyan kulcs, amely e
 * [Azure Resource Manager sablonok készítése](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager sablon függvények](../azure-resource-manager/templates/template-functions.md)
 * [Alkalmazás üzembe helyezése Azure Resource Manager sablonnal](../azure-resource-manager/templates/deploy-powershell.md)
-* [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Erőforráscsoport-telepítések hibaelhárítása Az Azure-ban](../azure-resource-manager/templates/common-deployment-errors.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a cikkben üzembe helyezett erőforrástípusok JSON-szintaxisáról és tulajdonságairól további információt a következő témakörben talál:
 

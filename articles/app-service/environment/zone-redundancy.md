@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1b32ae55030cc24c8892b204ff7330269993a483
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b129db56a9c6854bc3c1f2814a8776ec39adc6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098563"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961567"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>A rendelkezésre állási zónák támogatása App Service környezetekben
 
@@ -77,7 +77,7 @@ Az alábbi példa ARM-sablon az új ***zónák*** tulajdonságot mutatja be, ame
     ]
 ```
 
-Ahhoz, hogy az alkalmazások zónája redundáns legyen, üzembe kell helyeznie két ILB-ASE. A két Zona ILB-ASE külön rendelkezésre állási zónákban kell lennie. Ezután telepítenie kell az alkalmazásokat az egyes ILB-ASE. Az alkalmazások létrehozása után konfigurálnia kell egy terheléselosztási megoldást. Az ajánlott megoldás egy, a zóna ILB-ASE felsőbb rétegében [redundáns Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) üzembe helyezése. 
+Ahhoz, hogy az alkalmazások zónája redundáns legyen, üzembe kell helyeznie két ILB-ASE. A két Zona ILB-ASE külön rendelkezésre állási zónákban kell lennie. Ezután telepítenie kell az alkalmazásokat az egyes ILB-ASE. Az alkalmazások létrehozása után konfigurálnia kell egy terheléselosztási megoldást. Az ajánlott megoldás egy, a zóna ILB-ASE felsőbb rétegében [redundáns Application Gateway](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) üzembe helyezése. 
 
 ## <a name="in-region-data-residency"></a>Régióbeli adattárolás ##
 
@@ -90,5 +90,3 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy az App Service Envi
 1. A [erőforrás-kezelő](https://resources.azure.com)használatával navigáljon a app Service Environment ARM-erőforráshoz.  A ASE a *szolgáltatók/Microsoft. Web/hostingEnvironments*területen találhatók.
 2. Ha egy *Zones* tulajdonság létezik az ARM JSON-szintaxis nézetében, és egyetlen értékű JSON-tömböt tartalmaz, amelynek értéke "1", "2" vagy "3", akkor a zonally üzembe helyezése és az ügyféladatok ugyanabban a régióban maradnak.
 2. Ha a *Zones tulajdonság nem* létezik, vagy a tulajdonság nem rendelkezik a korábban megadott értékkel, akkor a zonally nincs telepítve, és az ügyféladatok nem kizárólag ugyanabban a régióban tárolódnak.
-
-

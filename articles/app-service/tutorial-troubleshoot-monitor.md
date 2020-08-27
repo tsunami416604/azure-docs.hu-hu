@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 106427a6b26386e6ff881862f836e9108a27aa96
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084479"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959017"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Oktatóanyag: App Service-alkalmazás hibakeresése Azure Monitor
 
@@ -18,9 +18,9 @@ ms.locfileid: "88084479"
 > Az App Service-integráció Azure Monitor [előzetes](https://aka.ms/appsvcblog-azmon)verzióban érhető el.
 >
 
-Ez az oktatóanyag bemutatja, hogyan lehet elhárítani egy [app Service](overview.md) alkalmazást a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)használatával. A minta alkalmazás a memóriához és a HTTP 500 hibákat okozó kódot tartalmaz, így diagnosztizálhatja és elháríthatja a problémát a Azure Monitor használatával. Ha elkészült, egy App Serviceon futó minta-alkalmazás fog futni, amely a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)integrált Linux rendszeren fut.
+Ez az oktatóanyag bemutatja, hogyan lehet elhárítani egy [app Service](overview.md) alkalmazást a [Azure monitor](../azure-monitor/overview.md)használatával. A minta alkalmazás a memóriához és a HTTP 500 hibákat okozó kódot tartalmaz, így diagnosztizálhatja és elháríthatja a problémát a Azure Monitor használatával. Ha elkészült, egy App Serviceon futó minta-alkalmazás fog futni, amely a [Azure monitor](../azure-monitor/overview.md)integrált Linux rendszeren fut.
 
-[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére.
+[Azure monitor](../azure-monitor/overview.md) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -38,7 +38,7 @@ Az oktatóanyag lépései macOS, Linux és Windows rendszerre is vonatkoznak.
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - [Azure-előfizetés](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli)
 - [Git](https://git-scm.com/)
 
 ## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
@@ -73,12 +73,12 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 
 ### <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
 
-A diagnosztikai beállításokkal bizonyos Azure-szolgáltatások metrikáit gyűjthetik be Azure Monitor naplókba más figyelési adatokkal való elemzéshez a naplók használatával. Ebben az oktatóanyagban engedélyezheti a webkiszolgálót és a standard kimeneti/hibanapló-naplókat. A naplózási típusok és leírások teljes listájáért lásd: [támogatott naplózási típusok](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) .
+A diagnosztikai beállításokkal bizonyos Azure-szolgáltatások metrikáit gyűjthetik be Azure Monitor naplókba más figyelési adatokkal való elemzéshez a naplók használatával. Ebben az oktatóanyagban engedélyezheti a webkiszolgálót és a standard kimeneti/hibanapló-naplókat. A naplózási típusok és leírások teljes listájáért lásd: [támogatott naplózási típusok](./troubleshoot-diagnostic-logs.md#supported-log-types) .
 
 A következő parancsok futtatásával diagnosztikai beállításokat hozhat létre a AppServiceConsoleLogs (normál kimenet/hiba) és a AppServiceHTTPLogs (webkiszolgáló-naplók) számára. Cserélje le az _\<app-name>_ _\<workspace-name>_ értékeket az értékekre. 
 
 > [!NOTE]
-> Az első két parancs `resourceID` és a `workspaceID` , a `az monitor diagnostic-settings create` parancsban használandó változók. További információ a parancsról: [diagnosztikai beállítások létrehozása az Azure CLI használatával](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) .
+> Az első két parancs `resourceID` és a `workspaceID` , a `az monitor diagnostic-settings create` parancsban használandó változók. További információ a parancsról: [diagnosztikai beállítások létrehozása az Azure CLI használatával](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) .
 >
 
 ```bash
@@ -129,7 +129,7 @@ A Azure Portal válassza ki Log Analytics munkaterületét.
 
 ### <a name="log-queries"></a>Naplólekérdezések
 
-A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. A naplók segítségével azonosíthatja a naplókat mind a AppServiceHTTPLogs, mind a AppServiceConsoleLogs. A naplók lekérdezésével kapcsolatos további információkért tekintse meg a [napló lekérdezésének áttekintése](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) című témakört.
+A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. A naplók segítségével azonosíthatja a naplókat mind a AppServiceHTTPLogs, mind a AppServiceConsoleLogs. A naplók lekérdezésével kapcsolatos további információkért tekintse meg a [napló lekérdezésének áttekintése](../azure-monitor/log-query/log-query-overview.md) című témakört.
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs megtekintése a log lekérdezéssel
 
@@ -186,7 +186,7 @@ Most, hogy már azonosította a HTTP-500 és a standard hibákat, meg kell erős
 >
 > - HTTPLogs szűrők 500 hibákhoz
 > - A konzol naplófájljainak lekérdezése
-> - A következőhöz csatlakozik a táblákhoz`TimeGenerated`
+> - A következőhöz csatlakozik a táblákhoz `TimeGenerated`
 >
 
 Futtassa az alábbi lekérdezést:
@@ -268,7 +268,7 @@ Az alábbiak elvégzését ismerte meg:
 > * Naplók elküldése a Log Analyticsba
 > * A webalkalmazások hibáinak azonosítására és elhárítására használt naplózási lekérdezések
 
-## <a name="next-steps"></a><a name="nextsteps"></a>További lépések
+## <a name="next-steps"></a><a name="nextsteps"></a> További lépések
 * [Naplók lekérdezése Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Hibaelhárítási Azure App Service a Visual Studióban](troubleshoot-dotnet-visual-studio.md)
 * [Alkalmazás-naplók elemzése a HDInsight-ben](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

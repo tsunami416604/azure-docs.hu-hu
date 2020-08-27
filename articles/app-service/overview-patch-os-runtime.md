@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan frissíti Azure App Service az operációs rend
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 831ba5f055b70e2f46cb8c6a941c0401df347dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414938"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961516"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
 Ebből a cikkből megtudhatja, hogyan szerezheti be a [app Service](overview.md)operációs rendszerével vagy szoftverével kapcsolatos egyes verziókat. 
 
-App Service egy szolgáltatásként szolgáló platform, ami azt jelenti, hogy az operációs rendszer és az alkalmazás veremét az Azure felügyeli. csak az alkalmazás és az adatai kezelhetők. Az operációs rendszer és az alkalmazás verem további felügyelete az [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/)érhető el. Ennek ellenére hasznos, ha App Service-felhasználó további információkat szeretne megtudni, például:
+App Service egy szolgáltatásként szolgáló platform, ami azt jelenti, hogy az operációs rendszer és az alkalmazás veremét az Azure felügyeli. csak az alkalmazás és az adatai kezelhetők. Az operációs rendszer és az alkalmazás verem további felügyelete az [Azure Virtual Machines](../virtual-machines/index.yml)érhető el. Ennek ellenére hasznos, ha App Service-felhasználó további információkat szeretne megtudni, például:
 
 -   Hogyan és mikor alkalmazza az operációs rendszer frissítéseit?
 -   Hogyan App Service javítani a jelentős biztonsági rések (például a nulla nap) ellen?
@@ -25,7 +25,7 @@ Biztonsági okokból a biztonsági információk bizonyos sajátosságai nincsen
 
 ## <a name="how-and-when-are-os-updates-applied"></a>Hogyan és mikor alkalmazza az operációs rendszer frissítéseit?
 
-Az Azure két szinten kezeli az operációs rendszer javításait, a fizikai kiszolgálókat és a App Service erőforrásokat futtató vendég virtuális gépeket (VM). Mindkettő havonta frissül, amely igazodik a havi [patch keddi](https://technet.microsoft.com/security/bulletins.aspx) időponthoz. A rendszer automatikusan alkalmazza ezeket a frissítéseket, így garantálja az Azure-szolgáltatások magas rendelkezésre állású SLA-t. 
+Az Azure két szinten kezeli az operációs rendszer javításait, a fizikai kiszolgálókat és a App Service erőforrásokat futtató vendég virtuális gépeket (VM). Mindkettő havonta frissül, amely igazodik a havi [patch keddi](/security-updates/) időponthoz. A rendszer automatikusan alkalmazza ezeket a frissítéseket, így garantálja az Azure-szolgáltatások magas rendelkezésre állású SLA-t. 
 
 A frissítések alkalmazásával kapcsolatos részletes információkért lásd: [a Demystifying app Service operációs rendszer frissítései mögött](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
@@ -55,7 +55,7 @@ A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások fr
 
 ### <a name="new-major-and-minor-versions"></a>Új fő-és alverziók
 
-Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha egy konfigurációs fájlban (például és) konfigurálta a futásidejű verziót `web.config` `package.json` , ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a [Azure Portalban](https://portal.azure.com) vagy egy [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
+Új fő vagy másodlagos verzió hozzáadásakor a rendszer a meglévő verziókkal együtt telepíti. Az alkalmazást manuálisan is frissítheti az új verzióra. Ha egy konfigurációs fájlban (például és) konfigurálta a futásidejű verziót `web.config` `package.json` , ugyanezt a metódust kell frissítenie. Ha App Service beállítást használt a futtatókörnyezet verziójának konfigurálásához, akkor azt a [Azure Portalban](https://portal.azure.com) vagy egy [Azure CLI](/cli/azure/get-started-with-azure-cli) -parancs futtatásával módosíthatja a [Cloud Shell](../cloud-shell/overview.md), ahogy az alábbi példákban is látható:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -75,7 +75,7 @@ Habár a kritikus operációsrendszer-információk le vannak tiltva a hozzáfé
 
 Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmazásokat futtató nyelvi futtatókörnyezetek verziói:
 
-| Információ | Hol található | 
+| Tájékoztatás | Hol található | 
 |-|-|
 | Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a Rendszerinformáció területen) |
 | .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
@@ -86,7 +86,7 @@ Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmaz
 | Java-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `java -version` |  
 
 > [!NOTE]  
-> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , ahol a ["kb"-os javításokat](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) tartalmazó információk tárolódnak, zárolva vannak.
+> Hozzáférés a beállításjegyzék helyéhez `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , ahol a ["kb"-os javításokat](/security-updates/SecurityBulletins/securitybulletins) tartalmazó információk tárolódnak, zárolva vannak.
 >
 >
 

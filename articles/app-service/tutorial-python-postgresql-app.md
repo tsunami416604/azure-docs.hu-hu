@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: d9d8694c8ac81352ab36f3d610f02f3751090b27
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 368a87d1054e4a5ad12fa1e8c78bcde39f76ee63
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120592"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959408"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -121,7 +121,7 @@ Ezek a módosítások a Django konfigurálására szolgálnak az éles környeze
 ## <a name="create-postgres-database-in-azure"></a>Postgres-adatbázis létrehozása az Azure-ban
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
 
 Telepítse a `db-up` bővítményt az Azure CLI-hez:
 
@@ -184,7 +184,7 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 <!-- - Create the resource group if it doesn't exist. `--resource-group` is optional. -->
 <!-- No it doesn't. az webapp up doesn't respect --resource-group -->
 - Ha még nem létezik, hozza létre az [erőforráscsoportot](../azure-resource-manager/management/overview.md#terminology) . (Ebben a parancsban ugyanazt az erőforráscsoportot használja, amelyben korábban létrehozta az adatbázist.)
-- Ha nem létezik, hozza létre [app Service](overview-hosting-plans.md) az alapszintű díjszabási csomag (B1) *DjangoPostgres* . `--plan`és `--sku` nem kötelező.
+- Ha nem létezik, hozza létre [app Service](overview-hosting-plans.md) az alapszintű díjszabási csomag (B1) *DjangoPostgres* . `--plan` és `--sku` nem kötelező.
 - Ha nem létezik, hozza létre a App Service alkalmazást.
 - Az alkalmazás alapértelmezett naplózásának engedélyezése, ha még nincs engedélyezve.
 - Töltse fel az adattárat a ZIP-telepítéssel a Build Automation használatával.
@@ -414,7 +414,7 @@ Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CT
 > [!NOTE]
 > A naplófájlokat a böngészőből is ellenőrizheti `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
 >
-> `az webapp up`az alapértelmezett naplózás bekapcsolása. A teljesítmény szempontjából ez a naplózás egy kis idő elteltével kikapcsolja magát, de minden alkalommal újra visszavált `az webapp up` . A manuális bekapcsolásához futtassa a következő parancsot:
+> `az webapp up` az alapértelmezett naplózás bekapcsolása. A teljesítmény szempontjából ez a naplózás egy kis idő elteltével kikapcsolja magát, de minden alkalommal újra visszavált `az webapp up` . A manuális bekapcsolásához futtassa a következő parancsot:
 >
 > ```azurecli
 > az webapp log config --docker-container-logging filesystem
@@ -444,7 +444,7 @@ A parancs az *. Azure/config* fájlban gyorsítótárazott erőforráscsoport-ne
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan képezhető le egyéni DNS-név az alkalmazáshoz:
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ced35f30966a96061792ad2171afe19599ed22c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077254"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962859"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Az Azure Storage hálózati megosztásként való elérése App Service-tárolóból
 
@@ -77,7 +77,7 @@ Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t egy Linu
 
 Miután létrehozta az [Azure Storage-fiókot, a fájlmegosztást és a könyvtárat](#prerequisites), mostantól konfigurálhatja az alkalmazást az Azure Storage használatával.
 
-Ha Azure Files-megosztást szeretne csatlakoztatni egy címtárhoz a App Service alkalmazásban, használja az [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típusnak AzureFiles kell lennie.
+Ha Azure Files-megosztást szeretne csatlakoztatni egy címtárhoz a App Service alkalmazásban, használja az [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típusnak AzureFiles kell lennie.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -91,7 +91,7 @@ Ezt minden olyan könyvtárhoz el kell végeznie, amelyet Azure Files-megosztás
 
 Miután létrehozta az [Azure Storage-fiókot, a fájlmegosztást és a könyvtárat](#prerequisites), mostantól konfigurálhatja az alkalmazást az Azure Storage használatával.
 
-Ha Storage-fiókot szeretne csatlakoztatni a App Service alkalmazás egyik könyvtárába, használja az [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típus lehet AzureBlob vagy AzureFiles. Ebben a példában a AzureFiles van használatban. A csatlakoztatási útvonal beállítása az Azure Storage-ból csatlakoztatni kívánt mappának felel meg. A "/" értékre állításával a teljes Azure-tárterületet csatlakoztathatja.
+Ha Storage-fiókot szeretne csatlakoztatni a App Service alkalmazás egyik könyvtárába, használja az [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típus lehet AzureBlob vagy AzureFiles. Ebben a példában a AzureFiles van használatban. A csatlakoztatási útvonal beállítása az Azure Storage-ból csatlakoztatni kívánt mappának felel meg. A "/" értékre állításával a teljes Azure-tárterületet csatlakoztathatja.
 
 
 > [!CAUTION]
@@ -114,7 +114,7 @@ Ha a megosztás az alkalmazáshoz van társítva, akkor a következő parancs fu
 az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ::: zone pivot="container-windows"
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211861"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961703"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>ASP.NET-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -95,7 +95,7 @@ Telepítse újra az alkalmazást a frissített *Web.config*. Ekkor ugyanazt a r�
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-A diagnosztikai üzeneteket a [System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace)használatával adhatja hozzá az alkalmazás kódjához. Például: 
+A diagnosztikai üzeneteket a [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace)használatával adhatja hozzá az alkalmazás kódjához. Például: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

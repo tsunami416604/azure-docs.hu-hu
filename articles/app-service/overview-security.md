@@ -5,16 +5,16 @@ keywords: Azure app Service, webalkalmazás, mobil alkalmazás, API-alkalmazás,
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080300"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961499"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság a Azure App Service
 
-Ez a cikk bemutatja, hogyan segíti a [Azure app Service](overview.md) a webalkalmazások, a Mobile App back end, az API-alkalmazás és a [Function-alkalmazás](/azure/azure-functions/)biztonságossá tételét. Azt is bemutatja, hogyan lehet tovább biztonságossá tenni az alkalmazást a beépített App Service funkciókkal.
+Ez a cikk bemutatja, hogyan segíti a [Azure app Service](overview.md) a webalkalmazások, a Mobile App back end, az API-alkalmazás és a [Function-alkalmazás](../azure-functions/index.yml)biztonságossá tételét. Azt is bemutatja, hogyan lehet tovább biztonságossá tenni az alkalmazást a beépített App Service funkciókkal.
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
@@ -43,7 +43,7 @@ A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. A FT
 
 Alapértelmezés szerint a App Service alkalmazás az internetről érkező összes IP-címről fogad kérelmeket, de az IP-címek kis részhalmazára korlátozhatja a hozzáférést. A Windows App Service lehetővé teszi az alkalmazás elérésére jogosult IP-címek listájának megadását. Az engedélyezett lista tartalmazhat egyedi IP-címeket vagy egy alhálózati maszk által meghatározott IP-címtartományt. További információ: [Azure app Service statikus IP-korlátozások](app-service-ip-restrictions.md).
 
-A Windows App Service esetén a _web.config_konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság \<dynamicIpSecurity> ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+A Windows App Service esetén a _web.config_konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonság \<dynamicIpSecurity> ](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ügyfél-hitelesítés és engedélyezés
 
@@ -55,7 +55,7 @@ App Service a hitelesítés és az engedélyezés több hitelesítésszolgáltat
 
 A háttérrendszer hitelesítése során a App Service két különböző mechanizmust biztosít a szükségestől függően:
 
-- **Szolgáltatás identitása** – jelentkezzen be a távoli erőforrásba az alkalmazás identitásával. App Service lehetővé teszi, hogy könnyen hozzon létre egy [felügyelt identitást](overview-managed-identity.md), amelyet más szolgáltatásokkal való hitelesítéshez használhat, például [Azure SQL Database](/azure/sql-database/) vagy [Azure Key Vault](/azure/key-vault/). Ennek a megközelítésnek a teljes körű oktatóanyagát lásd: [biztonságos Azure SQL Database a app Service-kapcsolatot felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md).
+- **Szolgáltatás identitása** – jelentkezzen be a távoli erőforrásba az alkalmazás identitásával. App Service lehetővé teszi, hogy könnyen hozzon létre egy [felügyelt identitást](overview-managed-identity.md), amelyet más szolgáltatásokkal való hitelesítéshez használhat, például [Azure SQL Database](/azure/sql-database/) vagy [Azure Key Vault](../key-vault/index.yml). Ennek a megközelítésnek a teljes körű oktatóanyagát lásd: [biztonságos Azure SQL Database a app Service-kapcsolatot felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md).
 - **Bejelentkezett (OBO)** – a felhasználó nevében delegált hozzáférést biztosít a távoli erőforrásokhoz. A Azure Active Directory hitelesítési szolgáltatóként a App Service alkalmazás delegált bejelentkezést hajthat végre egy távoli szolgáltatáshoz, például [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) -hoz vagy egy távoli API-alkalmazáshoz app Service. Ennek a módszernek a teljes körű oktatóanyagát lásd: a [felhasználók hitelesítése és engedélyezése a Azure app Service](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Távoli erőforrásokhoz való kapcsolódás
@@ -70,13 +70,13 @@ Ezekben az esetekben a App Service lehetővé teszi a biztonságos kapcsolatok b
 
 ### <a name="azure-resources"></a>Azure-erőforrások
 
-Ha az alkalmazás az Azure-erőforrásokhoz, például a [SQL Databasehoz](https://azure.microsoft.com/services/sql-database/) és az [Azure Storage](/azure/storage/)-hoz csatlakozik, a kapcsolat az Azure-ban marad, és nem keresztez semmilyen hálózati határt. A kapcsolat azonban a megosztott hálózatkezelésen keresztül zajlik az Azure-ban, ezért mindig ellenőrizze, hogy a kapcsolat titkosítva van-e. 
+Ha az alkalmazás az Azure-erőforrásokhoz, például a [SQL Databasehoz](https://azure.microsoft.com/services/sql-database/) és az [Azure Storage](../storage/index.yml)-hoz csatlakozik, a kapcsolat az Azure-ban marad, és nem keresztez semmilyen hálózati határt. A kapcsolat azonban a megosztott hálózatkezelésen keresztül zajlik az Azure-ban, ezért mindig ellenőrizze, hogy a kapcsolat titkosítva van-e. 
 
 Ha az alkalmazás egy [app Service környezetben](environment/intro.md)üzemel, akkor [Virtual Network szolgáltatás-végpontok használatával kell csatlakoznia a támogatott Azure-szolgáltatásokhoz](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Azure-Virtual Network belüli erőforrások
 
-Az alkalmazás [Virtual Network-integráción](web-sites-integrate-with-vnet.md)keresztül férhet hozzá az [Azure-Virtual Network](/azure/virtual-network/) erőforrásaihoz. Az integráció egy Virtual Network pont – hely típusú VPN-kapcsolattal van létrehozva. Az alkalmazás ezután hozzáférhet a Virtual Network lévő erőforrásokhoz saját IP-címeik használatával. A pont – hely kapcsolat azonban továbbra is a megosztott hálózatokon halad át az Azure-ban. 
+Az alkalmazás [Virtual Network-integráción](web-sites-integrate-with-vnet.md)keresztül férhet hozzá az [Azure-Virtual Network](../virtual-network/index.yml) erőforrásaihoz. Az integráció egy Virtual Network pont – hely típusú VPN-kapcsolattal van létrehozva. Az alkalmazás ezután hozzáférhet a Virtual Network lévő erőforrásokhoz saját IP-címeik használatával. A pont – hely kapcsolat azonban továbbra is a megosztott hálózatokon halad át az Azure-ban. 
 
 Ha az erőforrás-kapcsolatot teljesen el szeretné különíteni az Azure-beli megosztott hálózatokból, hozza létre az alkalmazást [app Service környezetben](environment/intro.md). Mivel egy App Service környezet mindig dedikált Virtual Network van telepítve, az alkalmazás és a Virtual Network belüli erőforrások közötti kapcsolat teljesen elkülönített. App Service környezetben a hálózati biztonság egyéb szempontjaival kapcsolatban lásd: [hálózati elkülönítés](#network-isolation).
 
@@ -92,14 +92,14 @@ A helyszíni erőforrásokhoz (például adatbázisokhoz) való biztonságos hoz
 
 Ne tárolja az alkalmazás-titkokat, például az adatbázis hitelesítő adatait, az API-jogkivonatokat és a titkos kulcsokat a kódban vagy a konfigurációs fájlokban. Az általánosan elfogadott módszer az, hogy az Ön által választott nyelven a standard minta alapján [környezeti változókként](https://wikipedia.org/wiki/Environment_variable) férjen hozzájuk. App Service a környezeti változók definiálásának módja az [Alkalmazásbeállítások](configure-common.md#configure-app-settings) (és különösen a .NET-alkalmazások, a [kapcsolódási karakterláncok](configure-common.md#configure-connection-strings)) használatával történik. Az Alkalmazásbeállítások és a kapcsolódási karakterláncok az Azure-ban vannak titkosítva, és csak akkor lesznek visszafejtve, ha az alkalmazás elindul az alkalmazás folyamatának memóriájában. A titkosítási kulcsok elforgatása rendszeresen történik.
 
-Azt is megteheti, hogy a App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](/azure/key-vault/) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/tutorial-web-application-keyvault.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz.
+Azt is megteheti, hogy a App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](../key-vault/index.yml) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/general/tutorial-net-create-vault-azure-web-app.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz.
 
-## <a name="network-isolation"></a>Hálózati elkülönítés
+## <a name="network-isolation"></a>Hálózatelkülönítés
 
-Az **elkülönített** díjszabási szinten kívül minden csomag a app Service megosztott hálózati infrastruktúráján futtatja az alkalmazásokat. A nyilvános IP-címek és az előtér-terheléselosztó például más Bérlővel is megoszthatók. Az **elkülönített** csomag lehetővé teszi a hálózati elkülönítést az alkalmazások dedikált [app Service környezetben](environment/intro.md)való futtatásával. App Service környezet az [Azure Virtual Network](/azure/virtual-network/)saját példányában fut. A következőkre van lehetőség: 
+Az **elkülönített** díjszabási szinten kívül minden csomag a app Service megosztott hálózati infrastruktúráján futtatja az alkalmazásokat. A nyilvános IP-címek és az előtér-terheléselosztó például más Bérlővel is megoszthatók. Az **elkülönített** csomag lehetővé teszi a hálózati elkülönítést az alkalmazások dedikált [app Service környezetben](environment/intro.md)való futtatásával. App Service környezet az [Azure Virtual Network](../virtual-network/index.yml)saját példányában fut. A következőkre van lehetőség: 
 
 - Az alkalmazásokat dedikált nyilvános végponton keresztül, dedikált kezelőfelülettel tálalhatja.
 - Belső alkalmazás kiszolgálása belső terheléselosztó (ILB) használatával, amely csak az Azure-Virtual Networkon belülről engedélyezi a hozzáférést. A ILB IP-címmel rendelkezik a privát alhálózatból, amely az alkalmazások teljes elkülönítését biztosítja az internetről.
 - [Használjon egy ILB a webalkalmazási tűzfal mögött (WAF)](environment/integrate-with-application-gateway.md). A WAF nagyvállalati szintű védelmet kínál a nyilvános alkalmazásokhoz, például a DDoS-védelemhez, az URI-szűréshez és az SQL-injektálások megelőzéséhez.
 
-További információ: [bevezetés Azure app Service környezetekben](environment/intro.md). 
+További információ: [bevezetés Azure app Service környezetekben](environment/intro.md).

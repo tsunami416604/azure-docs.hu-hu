@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213582"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962893"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -44,7 +44,7 @@ Más nyelvi stackekhez hasonlóan az Alkalmazásbeállítások környezeti vált
 Az Alkalmazásbeállítások mindig titkosítva tárolódnak (titkosított – REST).
 
 > [!NOTE]
-> Az Alkalmazásbeállítások [Key Vault referenciák](app-service-key-vault-references.md)használatával is feloldhatók [Key Vault](/azure/key-vault/) .
+> Az Alkalmazásbeállítások [Key Vault referenciák](app-service-key-vault-references.md)használatával is feloldhatók [Key Vault](../key-vault/index.yml) .
 
 ### <a name="show-hidden-values"></a>Rejtett értékek megjelenítése
 
@@ -115,7 +115,7 @@ Egy *connectionstring1* nevű MySQL-kapcsolati sztring például környezeti vá
 A kapcsolódási karakterláncok mindig titkosítva tárolódnak (titkosított – REST).
 
 > [!NOTE]
-> A kapcsolatok karakterláncai a [Key Vault](/azure/key-vault/) [Key Vault hivatkozásokkal](app-service-key-vault-references.md)is feloldhatók.
+> A kapcsolatok karakterláncai a [Key Vault](../key-vault/index.yml) [Key Vault hivatkozásokkal](app-service-key-vault-references.md)is feloldhatók.
 
 ### <a name="show-hidden-values"></a>Rejtett értékek megjelenítése
 

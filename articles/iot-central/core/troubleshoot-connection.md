@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6a1506de0bf21e44d84925fabeeea860f5807e2c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816065"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958099"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Central
 
@@ -95,8 +95,6 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-### <a name="interpreting-terminal-output"></a>A terminál kimenetének értelmezése
-
 Ha megjelenik az adatai a terminálon, akkor az adatai a IoT Central alkalmazásnak megfelelően jelennek meg.
 
 Ha néhány perc elteltével sem jelenik meg az adat, próbálja meg lenyomni `Enter` a `return` billentyűzeten a vagy a billentyűt arra az esetre, ha a kimenet beragadt.
@@ -133,7 +131,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | N.A. |
+| Kiépítve | Nincs azonnal felismerhető probléma. | n.a. |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
 | Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#connect-without-registering-devices) |
@@ -187,8 +185,6 @@ Ha szeretné megállapítani, hogy a probléma melyik kategóriába esik, futtas
     az iot central app validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-- Ha inkább grafikus felhasználói felületet szeretne használni, a IoT Central **nyers** adatnézet használatával ellenőrizze, hogy valami nincs-e modellezve. A **nyers adatok** nézet nem ismeri fel, hogy az eszköz helytelenül formázott JSON-t küld-e.
-
 Előfordulhat, hogy a rendszer először a `uamqp` parancs futtatásakor kéri a könyvtár telepítését `validate` .
 
 Az alábbi kimenet a validate parancs által jelzett hibát és figyelmeztető üzeneteket jeleníti meg:
@@ -205,19 +201,16 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Képernyőfelvétel a nyers adatnézetről":::
+Ha inkább grafikus felhasználói felületet szeretne használni, a IoT Central **nyers** adatnézet használatával ellenőrizze, hogy valami nincs-e modellezve. A **nyers adatok** nézet nem ismeri fel, hogy az eszköz helytelenül formázott JSON-t küld-e.
 
-### <a name="interpreting-terminal-output"></a>A terminál kimenetének értelmezése
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Képernyőfelvétel a nyers adatnézetről":::
 
 Ha észlelte a problémát, lehet, hogy frissítenie kell az eszköz belső vezérlőprogramja, vagy létre kell hoznia egy új sablont, amely korábban nem modellezett adatmodelleket modellez.
 
 Ha úgy döntött, hogy olyan új sablont hoz létre, amely helyesen modellezi az adatmodelleket, telepítse át az eszközöket a régi sablonból az új sablonba. További információ: [eszközök kezelése az Azure IoT Central alkalmazásban](howto-manage-devices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha nem tudja elhárítani a problémát az útmutató segítségével, nyisson meg egy támogatási jegyet. Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban:
-
-- [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [A Egyesült Államok Government Azure Portal](https://portal.azure.us/)
+Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure- [támogatási jegyet](https://portal.azure.com/#create/Microsoft.Support)is megadhat.
 
 További információ: az [Azure IoT-támogatás és a Súgó beállításai](../../iot-fundamentals/iot-support-help.md).

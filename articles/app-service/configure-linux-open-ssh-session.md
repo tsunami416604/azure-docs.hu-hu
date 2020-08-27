@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f663b58de666e2a0fe44fa3c023816a524b7d6c5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083028"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961605"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Nyisson meg egy SSH-munkamenetet egy Linux-tárolóban Azure App Service
 
@@ -48,7 +48,7 @@ az webapp create-remote-connection --subscription <subscription-id> --resource-g
 ```
 
 > [!TIP]
-> `&`a parancs végén a Cloud Shell használata esetén csak kényelmi célokat szolgál. A háttérben futtatja a folyamatot, így a következő parancsot ugyanazon a rendszerhéjon futtathatja.
+> `&` a parancs végén a Cloud Shell használata esetén csak kényelmi célokat szolgál. A háttérben futtatja a folyamatot, így a következő parancsot ugyanazon a rendszerhéjon futtathatja.
 
 A parancs kimenete megadja az SSH-munkamenet megnyitásához szükséges információkat.
 
@@ -111,9 +111,9 @@ Load average: 0.07 0.04 0.08 4/765 45738
 45738     1 root     Z        0   0%   0   0% [init]
 </pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Kérdéseket és problémákat tehet közzé az [Azure fórumán](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+Kérdéseket és problémákat tehet közzé az [Azure fórumán](/answers/topics/azure-webapps.html).
 
 További információ a Web App for Containersről:
 

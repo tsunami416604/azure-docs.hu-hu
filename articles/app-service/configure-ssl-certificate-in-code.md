@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811701"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962128"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>TLS/SSL-tanúsítvány használata a kódban Azure App Service
 
@@ -24,7 +24,7 @@ Ha App Service felügyeli a TLS/SSL-tanúsítványokat, megtarthatja a tanúsít
 
 A következő útmutató követése:
 
-- [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
+- [Létre kell hoznia egy App Service-alkalmazást.](./index.yml)
 - [Tanúsítvány hozzáadása az alkalmazáshoz](configure-ssl-certificate.md)
 
 ## <a name="find-the-thumbprint"></a>Az ujjlenyomat megkeresése
@@ -164,4 +164,4 @@ Ha szeretné megtekinteni, hogyan tölthető be a TLS/SSL-tanúsítvány egy Nod
 * [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service](configure-ssl-bindings.md)
 * [HTTPS kényszerítése](configure-ssl-bindings.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](configure-ssl-bindings.md#enforce-tls-versions)
-* [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Gyakori kérdések: App Service tanúsítványok](./faq-configuration-and-management.md)

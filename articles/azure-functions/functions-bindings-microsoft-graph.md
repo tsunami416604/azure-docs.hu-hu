@@ -6,14 +6,17 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 9dd4067d066362f5842b504971afbc59fd0717a3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d10b36047959299f5b66da5fb16beef8a591a983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212206"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962842"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions-kötések Microsoft Graph
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 Ez a cikk azt ismerteti, hogyan lehet konfigurálni és dolgozni Microsoft Graph eseményindítókat és kötéseket a Azure Functionsban. Ezekkel a Azure Functions használatával dolgozhat a [Microsoft Graph](https://developer.microsoft.com/graph)adatokkal, elemzésekkel és eseményekkel.
 
@@ -38,6 +41,9 @@ Az Auth token bemeneti kötése a [Microsoft. Azure. webjobs. Extensions. AuthTo
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>A bővítmények beállítása
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 Microsoft Graph kötések a _kötési bővítmények_segítségével érhetők el. A kötési bővítmények választható összetevők a Azure Functions futtatókörnyezethez. Ez a szakasz bemutatja, hogyan állíthatja be a Microsoft Graph és az Auth token bővítményeket.
 
@@ -71,6 +77,9 @@ Ha a Azure Portal használja, a bővítmény telepítéséhez a rendszer figyelm
 
 <a name="token-input"></a>
 ## <a name="auth-token"></a>Hitelesítési jogkivonat
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 Az Auth token bemeneti kötése egy Azure AD-tokent kap egy adott erőforráshoz, és karakterláncként adja meg a kódot. Az erőforrás lehet bármely, amelyhez az alkalmazás rendelkezik engedéllyel. 
 
@@ -206,7 +215,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Token` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [hitelesítési jogkivonat bemeneti kötésének használata kódból](#token-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `token` .|
@@ -229,6 +238,9 @@ A jogkivonat mindig karakterláncként jelenik meg a kódban.
 
 <a name="excel-input"></a>
 ## <a name="excel-input"></a>Excel-bemenet
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 Az Excel-táblázat bemeneti kötése beolvassa a OneDrive-ben tárolt Excel-táblázat tartalmát.
 
@@ -341,7 +353,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – az Excel-táblázat függvény kódjában használt változó neve. Lásd: [Excel-táblázat bemeneti kötésének használata kódból](#excel-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `excel` .|
@@ -503,7 +515,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Excel` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [Excel-táblázat kimeneti kötésének használata kódból](#excel-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `excel` .|
@@ -537,6 +549,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 <a name="onedrive-input"></a>
 ## <a name="file-input"></a>Fájl bemenete
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 A OneDrive fájl bemeneti kötése beolvassa a OneDrive-ben tárolt fájl tartalmát.
 
@@ -649,7 +664,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl bemeneti kötésének használata kódból](#onedrive-input-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `onedrive` .|
@@ -681,6 +696,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 <a name="onedrive-output"></a>
 ## <a name="file-output"></a>Fájl kimenete
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 A OneDrive fájl kimeneti kötése módosítja a OneDrive-ben tárolt fájl tartalmát.
 
@@ -797,7 +815,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `OneDrive` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl kimeneti kötésének használata kódból](#onedrive-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `onedrive` .|
@@ -828,6 +846,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 <a name="outlook-output"></a>
 ## <a name="outlook-output"></a>Outlook-kimenet
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 Az Outlook-üzenet kimeneti kötése e-mail üzenetet küld az Outlookon keresztül.
 
@@ -948,7 +969,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Outlook` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `outlook` .|
@@ -979,6 +1000,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 ## <a name="webhooks"></a>Webhookok
 
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
+
 A webhookok lehetővé teszik a Microsoft Graph eseményeire való reagálást. A webhookok támogatásához a függvényeknek a _webhook-előfizetések_létrehozásához, frissítéséhez és az azokra való reagáláshoz is szükségük van. A teljes webhook-megoldás a következő kötések kombinációját igényli:
 - A [Microsoft Graph webhook-trigger](#webhook-trigger) lehetővé teszi, hogy reagáljon egy bejövő webhookra.
 - A [Microsoft Graph webhook előfizetésének bemeneti kötése](#webhook-input) lehetővé teszi a meglévő előfizetések listázását és igény szerint frissítését.
@@ -993,6 +1017,9 @@ A webhookokkal kapcsolatos további információkért lásd: [Microsoft Graph we
 
 
 ## <a name="webhook-trigger"></a>Webhook-trigger
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 A Microsoft Graph webhook-trigger lehetővé teszi, hogy a függvény reagáljon egy bejövő webhookra a Microsoft Graph. Ennek az eseményindítónak minden példánya egy Microsoft Graph-erőforrástípusra reagálhat.
 
@@ -1091,7 +1118,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhook` .|
@@ -1112,6 +1139,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 <a name="webhook-input"></a>
 ## <a name="webhook-input"></a>Webhook bemenet
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 A Microsoft Graph webhook bemeneti kötése lehetővé teszi a Function app által kezelt előfizetések listájának beolvasását. A kötés beolvassa a Function app Storage-ból, így az nem tükrözi az alkalmazáson kívül létrehozott egyéb előfizetéseket.
 
@@ -1243,7 +1273,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhookSubscription` .|
@@ -1263,6 +1293,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 
 ## <a name="webhook-output"></a>Webhook kimenete
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 A webhook előfizetésének kimeneti kötése lehetővé teszi a Microsoft Graph webhook-előfizetések létrehozását, törlését és frissítését.
 
@@ -1384,7 +1417,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `GraphWebhookSubscription` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**név**| n.a. |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
 |**típusa**| n.a. |Kötelező – a következőre kell beállítani: `graphWebhookSubscription` .|
@@ -1407,6 +1440,9 @@ A kötés a következő típusokat teszi elérhetővé a .NET-függvények szám
 
 <a name="webhook-examples"></a>
 ## <a name="webhook-subscription-refresh"></a>Webhook-előfizetés frissítése
+
+> [!IMPORTANT]
+> A Microsoft Graph előnézeti kötések már elavultak. A Microsoft Graph Azure Functions használatával történő használatáról a [Azure Functions Microsoft Graph](https://docs.microsoft.com/graph/tutorials/azure-functions) oktatóanyagban talál további információt.
 
 Az előfizetések frissítésének két módja van:
 

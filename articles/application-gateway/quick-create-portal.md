@@ -1,20 +1,20 @@
 ---
 title: 'Gyors útmutató: webes forgalom közvetlen használata a portálon'
 titleSuffix: Azure Application Gateway
-description: Megtudhatja, hogyan hozhat létre egy olyan Azure-Application Gateway, amely a webes forgalmat egy háttér-készletben lévő virtuális gépekre irányítja a Azure Portal használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a Azure Portal egy olyan Azure-Application Gateway létrehozásához, amely egy háttér-készletben lévő virtuális gépekre irányítja a webes forgalmat.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 05/21/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a6415657d68e10b63e357f3c1353bb66fc9c8262
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779424"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961958"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal
 
@@ -34,7 +34,7 @@ Ezt a rövid útmutatót [Azure PowerShell](quick-create-powershell.md) vagy az 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -201,7 +201,7 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
    > [!div class="mx-imgBorder"]
    > ![Háttérkiszolgálók hozzáadása](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 7. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
 
@@ -217,7 +217,7 @@ Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a röv
 
    Többször is frissítse a böngészőt, és látnia kell a myVM és a myVM2 kapcsolatait.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, törölje az erőforráscsoportot. Az erőforráscsoport törlésekor az Application Gateway és az összes kapcsolódó erőforrás is törlődik.
 
@@ -228,7 +228,7 @@ Az erőforráscsoport törlése:
 3. Az **erőforráscsoport lapon**válassza az **erőforráscsoport törlése**elemet.
 4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Application Gateway konfigurálása TLS-megszakítással a Azure Portal használatával](create-ssl-portal.md)

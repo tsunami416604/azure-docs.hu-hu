@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271022"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962825"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -31,7 +31,7 @@ A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismer�
 > [!NOTE]
 > Ha engedélyezi ezt a funkciót, a rendszer az alkalmazásnak **nem biztonságos** http-kérelmeket automatikusan átirányítja a https-re, függetlenül a HTTPS-t [kikényszerítő](configure-ssl-bindings.md#enforce-https)app Service konfigurációs beállításától. Ha szükséges, letilthatja ezt az `requireHttps` [Auth-beállítások konfigurációs fájljának](app-service-authentication-how-to.md#configuration-file-reference)beállításával, de ügyelnie kell arra, hogy ne legyenek továbbítva biztonsági tokenek a nem biztonságos http-kapcsolatokon keresztül.
 
-A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.
+A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)használatával.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -52,7 +52,7 @@ A modul külön fut az alkalmazás kódjától, és az Alkalmazásbeállítások
 
 ### <a name="on-containers"></a>Tárolók
 
-A hitelesítési és engedélyezési modul egy külön tárolóban fut, amely el van különítve az alkalmazás kódjától. A mi a nagykövet mintának nevezett [minta](https://docs.microsoft.com/azure/architecture/patterns/ambassador)használatával a bejövő forgalom a Windows rendszeren hasonló funkciókat hajthat végre. Mivel nem fut a folyamaton belül, az adott nyelvi keretrendszerrel való közvetlen integráció nem lehetséges; az alkalmazás által igényelt releváns információk azonban az alább ismertetett kérelmek fejlécének használatával továbbítódnak.
+A hitelesítési és engedélyezési modul egy külön tárolóban fut, amely el van különítve az alkalmazás kódjától. A mi a nagykövet mintának nevezett [minta](/azure/architecture/patterns/ambassador)használatával a bejövő forgalom a Windows rendszeren hasonló funkciókat hajthat végre. Mivel nem fut a folyamaton belül, az adott nyelvi keretrendszerrel való közvetlen integráció nem lehetséges; az alkalmazás által igényelt releváns információk azonban az alább ismertetett kérelmek fejlécének használatával továbbítódnak.
 
 ### <a name="userapplication-claims"></a>Felhasználói/alkalmazási jogcímek
 
@@ -150,7 +150,7 @@ Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alka
 ## <a name="more-resources"></a>További erőforrások
 
 [Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](tutorial-auth-aad.md)  
-[Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)  
+[Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 [A hitelesítés és az engedélyezés testreszabása app Service](app-service-authentication-how-to.md) 
  [Az Azure AppService EasyAuth .net Core-integrációja (harmadik fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
  [Azure app Service hitelesítés használata a .net Core-ban (harmadik fél)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
@@ -171,8 +171,8 @@ Szolgáltatóra vonatkozó útmutatók:
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
 
-[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
+[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
+[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
+[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal

@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081051"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961873"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
 
@@ -127,7 +127,7 @@ A szkriptben jelentkezzen be a használatával `az login --service-principal` , 
 
 ### <a name="java"></a>Java
 
-Használja a kudu [zipdeploy/](deploy-zip.md) API-t a jar-alkalmazások üzembe helyezéséhez, valamint a wardeployjal és a War [-](deploy-zip.md#deploy-war-file) alkalmazásokhoz. Ha Jenkins-t használ, ezeket az API-kat közvetlenül az üzembe helyezési fázisban is használhatja. További információkért tekintse meg [ezt a cikket](../jenkins/execute-cli-jenkins-pipeline.md).
+Használja a kudu [zipdeploy/](deploy-zip.md) API-t a jar-alkalmazások üzembe helyezéséhez, valamint a wardeployjal és a War [-](deploy-zip.md#deploy-war-file) alkalmazásokhoz. Ha Jenkins-t használ, ezeket az API-kat közvetlenül az üzembe helyezési fázisban is használhatja. További információkért tekintse meg [ezt a cikket](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
 ### <a name="node"></a>Csomópont
 
@@ -149,7 +149,7 @@ A leállás megakadályozása érdekében mindig a helyi gyorsítótárat haszn�
 
 Ha a App Service csomag a rendelkezésre álló CPU vagy memória több mint 90%-át használja, előfordulhat, hogy az alapul szolgáló virtuális gép nem tudja feldolgozni az üzemelő példányt. Ebben az esetben a példányok számának ideiglenes skálázásával végezze el az üzembe helyezést. Miután az üzembe helyezés befejeződött, visszaállíthatja a példányszámot az előző értékre.
 
-Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
+Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](./overview-diagnostics.md) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
 
 - Navigáljon a webalkalmazáshoz a [Azure Portal](https://portal.azure.com).
 - Kattintson a bal oldali navigációs sávon található **problémák diagnosztizálásához és megoldásához** , amely megnyitja app Service diagnosztikát.

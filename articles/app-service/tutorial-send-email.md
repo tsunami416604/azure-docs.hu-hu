@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hívhat meg üzleti folyamatokat a App Service 
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212839"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962196"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: e-mail küldése és más üzleti folyamatok meghívása App Service
 
@@ -84,7 +84,7 @@ Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendsze
 1. A tervező alján kattintson az **új lépés**gombra, írja be a **Gmail** kifejezést a műveletek keresőmezőbe, és keresse meg és válassza az **e-mail küldése (v2)** lehetőséget.
     
     > [!TIP]
-    > Más típusú integrációkat is kereshet, például a SendGrid, a MailChimp, az Office 365 és a SalesForce. További információ: [Logic apps dokumentáció](https://docs.microsoft.com/azure/logic-apps/).
+    > Más típusú integrációkat is kereshet, például a SendGrid, a MailChimp, az Office 365 és a SalesForce. További információ: [Logic apps dokumentáció](../logic-apps/index.yml).
 1. A **Gmail** párbeszédpanelen válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be arra a Gmail-fiókba, ahová el szeretné küldeni az e-mailt.
 
     ![Képernyőkép, amely a Gmail-fiókba való bejelentkezéshez használt Gmail-párbeszédpanelt jeleníti meg, amelyről e-mailt szeretne küldeni.](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ Egy példa megjelenítéséhez kattintson az alábbi előnyben részesített nye
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-A ASP.NET-ben a HTTP-bejegyzést a [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
+A ASP.NET-ben a HTTP-bejegyzést a [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ Ha teszteli ezt a kódot a következő oktatóanyag-alkalmazásban [: ASP.NET-al
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-ASP.NET Core a HTTP-bejegyzést a [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
+ASP.NET Core a HTTP-bejegyzést a [System .net. http. HttpClient](/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Ez a kód a bemutató egyszerűségére íródott. A gyakorlatban ne hozza létre az `HttpClient` összes kérelemhez tartozó objektumot. A [rugalmas HTTP-kérések megvalósításához kövesse a IHttpClientFactory használata](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)című témakör útmutatását.
+> Ez a kód a bemutató egyszerűségére íródott. A gyakorlatban ne hozza létre az `HttpClient` összes kérelemhez tartozó objektumot. A [rugalmas HTTP-kérések megvalósításához kövesse a IHttpClientFactory használata](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)című témakör útmutatását.
 
 Ha teszteli ezt a kódot a minta alkalmazásban [oktatóanyag: ASP.net Core létrehozása és SQL Database alkalmazás](tutorial-dotnetcore-sqldb-app.md)létrehozása a Azure app Service-ben, akkor a használatával e-mailt küldhet a [létrehozási műveletben](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)az `Todo` elem hozzáadása után.
 

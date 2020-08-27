@@ -8,21 +8,21 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065437"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962230"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Hozzon létre két webalkalmazást biztonságos kapcsolattal a privát végponttal és a VNet-integrációval
 
-Ez a cikk példákat mutat be a [privát végpontok](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) és a regionális [VNet-integráció](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) használatára két webalkalmazás (előtér és háttér) biztonságos csatlakoztatásához az alábbi lépéseket követve:
+Ez a cikk példákat mutat be a [privát végpontok](../networking/private-endpoint.md) és a regionális [VNet-integráció](../web-sites-integrate-with-vnet.md) használatára két webalkalmazás (előtér és háttér) biztonságos csatlakoztatásához az alábbi lépéseket követve:
 - VNet üzembe helyezése
 - Hozza létre az első alhálózatot az integrációhoz
 - Hozza létre a második alhálózatot a privát végponthoz, egy adott paramétert kell beállítania a hálózati házirendek letiltásához
 - Helyezzen üzembe egy PremiumV2 típusú App Service tervet, amely a privát végpontok szolgáltatáshoz szükséges minimális SKU-t igényli
-- Hozza létre a előtér-webalkalmazást meghatározott Alkalmazásbeállítások használatával a magánhálózati DNS-zóna felhasználása érdekében, [További részletekért](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#azure-dns-private-zones)
+- Hozza létre a előtér-webalkalmazást meghatározott Alkalmazásbeállítások használatával a magánhálózati DNS-zóna felhasználása érdekében, [További részletekért](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - Az előtér-webalkalmazás összekötése az integrációs alhálózattal
 - A háttér-Webalkalmazás létrehozása
 - A saját DNS-zóna létrehozása a privát kapcsolati zóna nevével a webalkalmazás privatelink.azurewebsites.net
@@ -31,7 +31,7 @@ Ez a cikk példákat mutat be a [privát végpontok](https://docs.microsoft.com/
 
 ## <a name="how-to-use-terraform-in-azure"></a>A Terraform használata az Azure-ban
 
-A Terraform és az Azure használatának megismeréséhez keresse fel az [Azure dokumentációját](https://docs.microsoft.com/azure/developer/terraform/) .
+A Terraform és az Azure használatának megismeréséhez keresse fel az [Azure dokumentációját](/azure/developer/terraform/) .
 
 ## <a name="the-complete-terraform-file"></a>A teljes Terraform fájl
 
@@ -146,7 +146,7 @@ resource "azurerm_private_endpoint" "privateendpoint" {
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
-> [További információ a Terraform Azure-beli használatáról](https://docs.microsoft.com/azure/developer/terraform/)
+> [További információ a Terraform Azure-beli használatáról](/azure/developer/terraform/)

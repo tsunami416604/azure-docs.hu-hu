@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170800"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958326"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>A "502 hibás átjáró" és "503 szolgáltatás nem érhető el" HTTP-hibák elhárítása Azure App Service
 a "502 hibás átjáró" és a "503 szolgáltatás nem érhető el" gyakori hibák a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714)üzemeltetett alkalmazásban. Ez a cikk segít a hibák elhárításában.
@@ -42,7 +42,7 @@ A hibaelhárítás három különálló feladatra osztható, szekvenciális sorr
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. az alkalmazások viselkedésének megfigyelése és figyelése
 #### <a name="track-service-health"></a>Szolgáltatás állapotának nyomon követése
-Microsoft Azure minden alkalommal nyilvánosságra kerül, amikor a szolgáltatás megszakad vagy a teljesítmény romlása. A szolgáltatás állapotát az [Azure Portalon](https://portal.azure.com/)követheti nyomon. További információ: a [szolgáltatás állapotának nyomon követése](../monitoring-and-diagnostics/insights-service-health.md).
+Microsoft Azure minden alkalommal nyilvánosságra kerül, amikor a szolgáltatás megszakad vagy a teljesítmény romlása. A szolgáltatás állapotát az [Azure Portalon](https://portal.azure.com/)követheti nyomon. További információ: a [szolgáltatás állapotának nyomon követése](../service-health/service-notifications.md).
 
 #### <a name="monitor-your-app"></a>Az alkalmazás figyelése
 Ezzel a beállítással megtudhatja, hogy az alkalmazás problémákba ütközik-e. Az alkalmazás paneljén kattintson a **kérelmek és hibák** csempére. A **metrika** panel megjeleníti az összes felvehető mérőszámot.
@@ -51,7 +51,7 @@ Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 
 * Memória átlagos munkakészlete
 * Átlagos válaszidő
-* CPU-idő
+* Processzoridő
 * Memória munkakészlete
 * Kérelmek
 
@@ -60,7 +60,7 @@ Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 További információkért lásd:
 
 * [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
-* [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md)
 
 <a name="collect"></a>
 
@@ -108,5 +108,4 @@ Ez gyakran az egyszeri problémákból való helyreállítás legegyszerűbb mó
 
  ![az alkalmazás újraindítása a 502-es hibás átjáró HTTP-hibáinak megoldásához, és a 503 szolgáltatás nem érhető el](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-Az alkalmazást az Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../powershell-azure-resource-manager.md).
-
+Az alkalmazást az Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../azure-resource-manager/management/manage-resources-powershell.md).

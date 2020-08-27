@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220813"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962553"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső Load Balancer használata App Service Environment
 
@@ -68,7 +68,7 @@ Az alkalmazások ILB-ben történő létrehozása megegyeznek az alkalmazások s
 3. Válassza ki előfizetését.
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 5. Válasszon ki vagy hozzon létre egy App Service tervet (ASP). Ha új ASP hoz létre, válassza ki a beadási helyet, és válassza ki azt a munkavégző készletet, amelyben létre szeretné hozni az ASP-t. Az ASP létrehozásakor kiválaszthatja a beadási helyet és a munkavégző készletet. Az alkalmazás nevének megadásakor látni fogja, hogy az alkalmazás neve alá tartozó altartomány helyébe a szolgáltató altartománya kerül. 
-6. Válassza a **Létrehozás** lehetőséget. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
+6. Kattintson a **Létrehozás** gombra. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
 
 ![Bemutatja, hogyan hozhat létre alkalmazást egy ILB-előAzure Portalban.][2]
 
@@ -104,7 +104,7 @@ A ILB IP-címe a tulajdonságok között a virtuális IP-cím mezőben jelenik m
 #### <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
 Az ILB-beadási szolgáltatás lehetővé teszi az alkalmazások hálózati elkülönítését. Az alkalmazások nem érhetők el, vagy az Internet sem ismeri. Ez a megközelítés kiválóan használható az intranetes webhelyek, például az üzletági alkalmazások üzemeltetéséhez. Ha továbbra is korlátozni szeretné a hozzáférést, továbbra is használhat hálózati biztonsági csoportokat (NSG) a hozzáférés vezérléséhez a hálózati szinten. 
 
-Ha a NSG-t szeretné a hozzáférés további korlátozására használni, meg kell győződnie arról, hogy nem kell megszüntetnie a szolgáltató működéséhez szükséges kommunikációt. Annak ellenére, hogy a HTTP/HTTPS-hozzáférés csak a szolgáltató által használt ILB keresztül történik, a szolgáltató továbbra is a VNet kívüli erőforrásokból függ. Ha szeretné megtekinteni, hogy milyen hálózati hozzáférésre van szükség, tekintse meg a [Bejövő forgalom vezérlése egy app Service Environment][ControlInbound] és [hálózati konfiguráció részleteit app Service környezetek ExpressRoute][ExpressRoute]. 
+Ha a NSG-t szeretné a hozzáférés további korlátozására használni, meg kell győződnie arról, hogy nem kell megszüntetnie a szolgáltató működéséhez szükséges kommunikációt. Annak ellenére, hogy a HTTP/HTTPS-hozzáférés csak a szolgáltató által használt ILB keresztül történik, a szolgáltató továbbra is a VNet kívüli erőforrásokból függ. Ha szeretné megtekinteni, hogy milyen hálózati hozzáférésre van szükség, tekintse meg a [Bejövő forgalom vezérlése egy app Service Environment][ControlInbound] és  [hálózati konfiguráció részleteit app Service környezetek ExpressRoute][ExpressRoute]. 
 
 A NSG konfigurálásához ismernie kell az Azure által a szolgáltatói felügyelethez használt IP-címet. Ez az IP-cím is a kifelé irányuló kimenő IP-cím, ha internetes kérelmeket tesz elérhetővé. A beadáshoz tartozó kimenő IP-cím statikus marad a szolgáltatói életében. Ha törli és újból létrehozza a beadást, akkor egy új IP-címet fog kapni. Az IP-cím megkereséséhez lépjen a **Beállítások-> tulajdonságok** elemre, és keresse meg a **kimenő IP-címet**. 
 
@@ -140,9 +140,9 @@ App Service környezetek használatának megkezdéséhez tekintse [meg a app Ser
 [WhatisASE]: app-service-app-service-environment-intro.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

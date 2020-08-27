@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211992"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958711"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazás hibakeresési [módban](https://docs.microsoft.com/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
+Ez az oktatóanyag azt mutatja be, hogyan használható a Visual Studio Tools a [app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazás hibakeresési [módban](/visualstudio/debugger/) történő futtatásával, vagy az alkalmazás-naplók és a webkiszolgáló-naplók megtekintésével.
 
 Az oktatóanyagból a következőket sajátíthatja el:
 
@@ -680,7 +680,7 @@ A webkiszolgáló-naplók elemzésével kapcsolatos további információkért t
   Egy eszköz a webkiszolgáló-naplók (*. log* fájlok) adatmegjelenítéséhez.
 * [AZ IIS teljesítményével kapcsolatos hibák elhárítása és az LogParser-t használó alkalmazáshiba](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Bevezetés a log Parser eszközbe, amely a webkiszolgáló-naplók elemzésére használható.
-* [Blogbejegyzések: Robert McMurray on using LogParser](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
+* [Blogbejegyzések: Robert McMurray on using LogParser](/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [A HTTP-állapotkód az IIS 7,0-ben, az IIS 7,5-ben és az IIS 8,0-ban](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Sikertelen kérelmek nyomkövetési naplóinak elemzése

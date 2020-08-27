@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236743"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962162"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
 <a name="Overview"></a>
@@ -62,7 +62,7 @@ Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten k
 
 6. Válassza ki az alkalmazás URL-címét a tárolóhely erőforrás lapján. Az üzembe helyezési pont saját állomásnévvel rendelkezik, és egy élő alkalmazás is. Az üzembe helyezési pont nyilvános hozzáférésének korlátozásához tekintse meg [Azure app Service IP-korlátozásokat](app-service-ip-restrictions.md).
 
-Az új üzembe helyezési pontnak nincs tartalma, még akkor sem, ha a beállításokat egy másik tárolóhelyről klónozott. Például [közzéteheti ezt a tárolóhelyet a git](app-service-deploy-local-git.md)használatával. Egy másik adattárból vagy egy másik adattárból is telepítheti a tárolóhelyre.
+Az új üzembe helyezési pontnak nincs tartalma, még akkor sem, ha a beállításokat egy másik tárolóhelyről klónozott. Például [közzéteheti ezt a tárolóhelyet a git](./deploy-local-git.md)használatával. Egy másik adattárból vagy egy másik adattárból is telepítheti a tárolóhelyre.
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ Ha két tárolóhelyet cserél le (általában egy átmeneti tárolóhelyről az
 
 1. Ha a [helyi gyorsítótár](overview-local-cache.md) engedélyezve van, aktiválja a helyi gyorsítótár inicializálását úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán. Várjon, amíg az egyes példányok HTTP-válaszokat nem adnak vissza. A helyi gyorsítótár inicializálása egy másik újraindítást okoz az egyes példányokon.
 
-1. Ha az [automatikus swap](#Auto-Swap) engedélyezve van az [Egyéni bemelegítővel](#Warm-up), aktiválja az [alkalmazás indítását](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán.
+1. Ha az [automatikus swap](#Auto-Swap) engedélyezve van az [Egyéni bemelegítővel](#Warm-up), aktiválja az [alkalmazás indítását](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) úgy, hogy egy HTTP-kérést küld az alkalmazás gyökerének ("/") a forrás tárolóhely minden példányán.
 
     Ha `applicationInitialization` nincs megadva, indítson el egy HTTP-kérelmet az egyes példányok forrásoldali tárolóhelyének alkalmazás gyökerébe. 
     
@@ -222,7 +222,7 @@ Ha bármilyen problémája van, olvassa el a [swap-hibák elhárítása](#troubl
 
 ## <a name="monitor-a-swap"></a>Swap figyelése
 
-Ha a [swap művelet](#AboutConfiguration) végrehajtása hosszú időt vesz igénybe, akkor a [tevékenység naplójának](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)swap műveletével kapcsolatos információkat kaphat.
+Ha a [swap művelet](#AboutConfiguration) végrehajtása hosszú időt vesz igénybe, akkor a [tevékenység naplójának](../azure-monitor/platform/platform-logs-overview.md)swap műveletével kapcsolatos információkat kaphat.
 
 Az alkalmazás erőforrás oldalán a portálon, a bal oldali ablaktáblán válassza a **műveletnapló**elemet.
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Automatizálás Resource Manager-sablonokkal
 
-[Azure Resource Manager sablonok](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) deklaratív JSON-fájlok, amelyek az Azure-erőforrások üzembe helyezésének és konfigurálásának automatizálására szolgálnak. Ha Resource Manager-sablonok használatával kívánja felcserélni a tárolóhelyeket, a *Microsoft. Web/Sites/Slots* és a *Microsoft. Web/Sites* erőforrásain két tulajdonságot kell beállítania:
+[Azure Resource Manager sablonok](../azure-resource-manager/templates/overview.md) deklaratív JSON-fájlok, amelyek az Azure-erőforrások üzembe helyezésének és konfigurálásának automatizálására szolgálnak. Ha Resource Manager-sablonok használatával kívánja felcserélni a tárolóhelyeket, a *Microsoft. Web/Sites/Slots* és a *Microsoft. Web/Sites* erőforrásain két tulajdonságot kell beállítania:
 
 - `buildVersion`: ez egy karakterlánc-tulajdonság, amely a tárolóhelyen üzembe helyezett alkalmazás aktuális verzióját jelöli. Például: "v1", "1.0.0.1" vagy "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: ez egy karakterlánc-tulajdonság, amely megadja, hogy `buildVersion` a tárolóhelynek milyennek kell lennie. Ha a targetBuildVersion nem egyezik a jelenlegivel `buildVersion` , akkor ez a művelet a megadott tárolóhely megkeresésével elindítja a swap műveletet `buildVersion` .
@@ -426,5 +426,5 @@ Ha bármilyen hiba fordul elő a [tárolóhelyek cseréjekor](#AboutConfiguratio
 
 - A tárolóhelyek cseréje után az alkalmazás váratlan újraindítást tapasztalhat. Ennek az az oka, hogy a cserét követően az állomásnév-kötési konfiguráció elkerül a szinkronizálásból, ami önmagában nem okozza az újraindítást. Előfordulhat azonban, hogy bizonyos mögöttes tárolási események (például a tárolási kötetek feladatátvétele) észlelik ezeket az eltéréseket, és kényszerítik az összes munkavégző folyamat újraindítását. Az ilyen típusú újraindítások minimalizálásához állítsa az [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` alkalmazás beállításait](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) az *összes tárolóhelyre*. Ez az Alkalmazásbeállítás azonban *nem* működik Windows COMMUNICATION Foundation (WCF) alkalmazásokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Nem éles tárolóhelyekhez való hozzáférés letiltása](app-service-ip-restrictions.md)

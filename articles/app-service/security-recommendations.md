@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eba08211355b0f57dd9dd11ec4c18d5912208ec8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546705"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962213"
 ---
 # <a name="security-recommendations-for-app-service"></a>A App Service biztonsági javaslatai
 
 Ez a cikk a Azure App Service biztonsági javaslatait tartalmazza. A javaslatok megvalósítása a közös felelősségi modellben leírtak szerint biztosítja a biztonsági kötelezettségek teljesítését, és javítja a webalkalmazás-megoldások általános biztonságát. További információk arról, hogy a Microsoft miként teljesíti a szolgáltatói feladatokat, olvassa el az [Azure-infrastruktúra biztonsága](../security/fundamentals/infrastructure.md)című témakört.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 | Ajánlás | Megjegyzések |
 |-|-|----|
@@ -38,17 +38,17 @@ Ez a cikk a Azure App Service biztonsági javaslatait tartalmazza. A javaslatok 
 | Ajánlás | Megjegyzések |
 |-|-|
 | HTTP átirányítása HTTPs-re | Alapértelmezés szerint az ügyfelek HTTP-vagy HTTPS-kapcsolaton keresztül csatlakozhatnak a webalkalmazásokhoz. Javasoljuk, hogy a HTTP-t a HTTPs-re irányítsa, mert a HTTPS SSL/TLS protokollt használ a biztonságos kapcsolat biztosításához, amely titkosítva és hitelesítve van. |
-| Az Azure-erőforrásokkal folytatott kommunikáció titkosítása | Ha az alkalmazás az Azure-erőforrásokhoz, például a [SQL Databasehoz](https://azure.microsoft.com/services/sql-database/) vagy az [Azure Storage](/azure/storage/)-hoz csatlakozik, a kapcsolat az Azure-ban marad. Mivel a kapcsolat az Azure megosztott hálózatán halad végig, mindig titkosítsa az összes kommunikációt. |
+| Az Azure-erőforrásokkal folytatott kommunikáció titkosítása | Ha az alkalmazás az Azure-erőforrásokhoz, például a [SQL Databasehoz](https://azure.microsoft.com/services/sql-database/) vagy az [Azure Storage](../storage/index.yml)-hoz csatlakozik, a kapcsolat az Azure-ban marad. Mivel a kapcsolat az Azure megosztott hálózatán halad végig, mindig titkosítsa az összes kommunikációt. |
 | A legújabb TLS-verzió megkövetelése | 2018 óta az új Azure App Service alkalmazások a TLS 1,2-et használják. A TLS újabb verziói biztonsági funkciókat is tartalmaznak a régebbi protokollos verziókhoz képest. |
 | FTPS használata | A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. Ha lehetséges, FTP helyett használjon FTPS. Ha az egyik vagy mindkét protokoll nincs használatban, [Tiltsa le őket](deploy-ftp.md#enforce-ftps). |
-| Az alkalmazásadatok védelme | Ne tárolja az alkalmazás-titkokat, például az adatbázis hitelesítő adatait, az API-jogkivonatokat vagy a titkos kulcsokat a kódban vagy a konfigurációs fájlokban. Az általánosan elfogadott módszer az, hogy az Ön által választott nyelven a standard minta alapján [környezeti változókként](https://wikipedia.org/wiki/Environment_variable) férjen hozzájuk. A Azure App Serviceban környezeti változókat adhat meg az [Alkalmazásbeállítások](web-sites-configure.md) és a [kapcsolatok karakterláncai](web-sites-configure.md)segítségével. Az Alkalmazásbeállítások és a kapcsolatok karakterláncai titkosítva tárolódnak az Azure-ban. Az Alkalmazásbeállítások csak akkor lesznek visszafejtve, ha az alkalmazás elindul az alkalmazás folyamatának memóriájában. A titkosítási kulcsok elforgatása rendszeresen történik. Azt is megteheti, hogy a Azure App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](/azure/key-vault/) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/tutorial-web-application-keyvault.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz. |
+| Az alkalmazásadatok védelme | Ne tárolja az alkalmazás-titkokat, például az adatbázis hitelesítő adatait, az API-jogkivonatokat vagy a titkos kulcsokat a kódban vagy a konfigurációs fájlokban. Az általánosan elfogadott módszer az, hogy az Ön által választott nyelven a standard minta alapján [környezeti változókként](https://wikipedia.org/wiki/Environment_variable) férjen hozzájuk. A Azure App Serviceban környezeti változókat adhat meg az [Alkalmazásbeállítások](./configure-common.md) és a [kapcsolatok karakterláncai](./configure-common.md)segítségével. Az Alkalmazásbeállítások és a kapcsolatok karakterláncai titkosítva tárolódnak az Azure-ban. Az Alkalmazásbeállítások csak akkor lesznek visszafejtve, ha az alkalmazás elindul az alkalmazás folyamatának memóriájában. A titkosítási kulcsok elforgatása rendszeresen történik. Azt is megteheti, hogy a Azure App Service alkalmazást a speciális titkok kezeléséhez [Azure Key Vault](../key-vault/index.yml) segítségével integrálja. Ha [a Key Vault felügyelt identitással fér hozzá](../key-vault/general/tutorial-net-create-vault-azure-web-app.md), a app Service alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz. |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések |
 |-|-|
 | Statikus IP-korlátozások használata | A Windows Azure App Service lehetővé teszi az alkalmazás elérésére jogosult IP-címek listájának megadását. Az engedélyezett lista tartalmazhat egyedi IP-címeket vagy egy alhálózati maszk által meghatározott IP-címtartományt. További információ: [Azure app Service statikus IP-korlátozások](app-service-ip-restrictions.md).  |
-| Az elkülönített díjszabási csomag használata | Az elkülönített díjszabási szinten kívül minden csomag a Azure App Service megosztott hálózati infrastruktúráján futtatja az alkalmazásokat. Az elkülönített csomag lehetővé teszi a hálózati elkülönítést az alkalmazások dedikált [app Service környezetben](environment/intro.md)való futtatásával. App Service környezet az [Azure Virtual Network](/azure/virtual-network/)saját példányában fut.|
+| Az elkülönített díjszabási csomag használata | Az elkülönített díjszabási szinten kívül minden csomag a Azure App Service megosztott hálózati infrastruktúráján futtatja az alkalmazásokat. Az elkülönített csomag lehetővé teszi a hálózati elkülönítést az alkalmazások dedikált [app Service környezetben](environment/intro.md)való futtatásával. App Service környezet az [Azure Virtual Network](../virtual-network/index.yml)saját példányában fut.|
 | Biztonságos kapcsolatok használata a helyszíni erőforrások elérésekor | A helyszíni erőforrásokhoz való csatlakozáshoz [hibrid kapcsolatokat](app-service-hybrid-connections.md), [Virtual Network integrációt](web-sites-integrate-with-vnet.md)vagy [app Service környezetet](environment/intro.md) használhat. |
 | A bejövő hálózati forgalomra való kitettség korlátozása | A hálózati biztonsági csoportok lehetővé teszik a hálózati hozzáférés korlátozását és a kitett végpontok számának szabályozását. További információ: [a bejövő forgalom vezérlése egy app Service Environment](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
@@ -58,6 +58,6 @@ Ez a cikk a Azure App Service biztonsági javaslatait tartalmazza. A javaslatok 
 |-|-|
 |Standard szintű Azure Security Center használata | A [Azure Security Center](../security-center/security-center-app-services.md) natív módon van integrálva a Azure app Serviceval. Értékeléseket futtathat, és biztonsági javaslatokat is megadhat. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](../security/fundamentals/abstract-develop-secure-apps.md).
+Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

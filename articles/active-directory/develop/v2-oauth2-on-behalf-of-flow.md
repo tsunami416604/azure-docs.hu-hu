@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987035"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958660"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -153,7 +153,7 @@ Az alábbi példa egy, a webes API hozzáférési jogkivonatára vonatkozó kér
 ```
 
 > [!NOTE]
-> A fenti hozzáférési jogkivonat a Microosft gráfhoz tartozó 1.0 formátumú token. Ennek az az oka, hogy a jogkivonat formátuma az elérni kívánt **erőforráson** alapul, és nem kapcsolódik a kérelemhez használt végpontokhoz. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Más alkalmazások azt jelezhetik, hogy a 2.0 formátumú jogkivonatok, a 1.0 formátumú tokenek, vagy akár a tulajdonosi, akár a titkosított jogkivonat-formátumok is megadhatók.  A 1.0-s és a v 2.0-s végpontok egyaránt rendelkezhetnek tokenek formátumával – így az erőforrás mindig a token megfelelő formátumát tudja lekérdezni, függetlenül attól, hogy az ügyfél milyen módon vagy hol kérte a jogkivonatot. 
+> A fenti hozzáférési jogkivonat a Microsoft Graph 1.0-s verziójának formátuma. Ennek az az oka, hogy a jogkivonat formátuma az elérni kívánt **erőforráson** alapul, és nem kapcsolódik a kérelemhez használt végpontokhoz. A Microsoft Graph a 1.0-s verziójú tokenek elfogadására van beállítva, így a Microsoft Identity platform 1.0-s verziójú hozzáférési jogkivonatokat hoz létre, amikor az ügyfél a Microsoft Graph jogkivonatait kéri le. Más alkalmazások azt jelezhetik, hogy a 2.0 formátumú jogkivonatok, a 1.0 formátumú tokenek, vagy akár a tulajdonosi, akár a titkosított jogkivonat-formátumok is megadhatók.  A 1.0-s és a v 2.0-s végpontok egyaránt rendelkezhetnek tokenek formátumával – így az erőforrás mindig a token megfelelő formátumát tudja lekérdezni, függetlenül attól, hogy az ügyfél milyen módon vagy hol kérte a jogkivonatot. 
 >
 > Csak az alkalmazásoknak kell megkeresniük a hozzáférési jogkivonatokat. Az ügyfeleknek **nem kell** megvizsgálniuk azokat. A kód más alkalmazásaihoz tartozó hozzáférési jogkivonatok vizsgálatakor az alkalmazás váratlanul leáll, amikor az alkalmazás megváltoztatja a tokenek formátumát, vagy megkezdi a titkosítást. 
 
@@ -222,7 +222,7 @@ Bizonyos helyzetekben csak a középső rétegbeli és az előtér-ügyfél egye
 
 Ha az ügyfél az implicit folyamattal id_token kap, és az ügyfél a válasz URL-címében helyettesítő karaktereket is tartalmaz, akkor a id_token nem használható OBO-folyamathoz.  Az implicit engedélyezési folyamaton keresztül beszerzett hozzáférési tokenek azonban továbbra is beválthatók egy bizalmas ügyfél számára, még akkor is, ha a kezdeményező ügyfélhez a helyettesítő karakteres válasz URL-címe van regisztrálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OAuth 2,0 protokollról, valamint a szolgáltatás és a szolgáltatás hitelesítésének másik módja ügyfél-hitelesítő adatok használatával.
 

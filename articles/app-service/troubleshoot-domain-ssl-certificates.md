@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668022"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958422"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>A tartományok és a TLS/SSL-tanúsítványok problémáinak elhárítása Azure App Service
 
@@ -131,7 +131,7 @@ Egy altartomány hozzárendeléséhez nem adhat hozzá új állomásnevet az alk
 #### <a name="solution"></a>Megoldás
 
 - Az előfizetés rendszergazdájával ellenőrizze, hogy van-e engedélye az állomásnév hozzáadására az alkalmazáshoz.
-- Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: [altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: [altartomány hozzáadása](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
 
 ### <a name="dns-cant-be-resolved"></a>A DNS nem oldható fel
 
@@ -260,7 +260,7 @@ Ez a probléma a következő okok egyike miatt fordul elő:
 
     **Megoldás**: Ellenőrizze, hogy a CNAME vagy egy rekord megfelelően van-e konfigurálva. Ha egyéni tartományt szeretne hozzárendelni egy alkalmazáshoz, hozzon létre egy CNAME rekordot vagy egy rekordot. Ha legfelső szintű tartományt kíván használni, A és A TXT típusú rekordokat kell használnia:
 
-    |Rekordtípus|Gazdagép|Mutasson a|
+    |Rekordtípus|Gazda|Mutasson a|
     |------|------|-----|
     |A|@|Alkalmazás IP-címe|
     |TXT|@|`<app-name>.azurewebsites.net`|
@@ -310,7 +310,7 @@ Igen. Ha a Azure Portal az egyéni tartományokhoz és a TLS-panelhez fér hozz�
 
 **Átvihetek egy tartományt egy előfizetésből egy másik előfizetésbe?**
 
-A [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell-parancsmag használatával áthelyezheti a tartományt egy másik előfizetésre vagy erőforrás-csoportra.
+A [Move-AzResource](/powershell/module/az.Resources/Move-azResource) PowerShell-parancsmag használatával áthelyezheti a tartományt egy másik előfizetésre vagy erőforrás-csoportra.
 
 **Hogyan kezelhetem az egyéni tartományt, ha jelenleg nem Azure App Service alkalmazásom van?**
 

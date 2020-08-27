@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961788"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása
 
@@ -63,7 +63,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
     ![Webalkalmazás létrehozása][1]
 
-2. Válassza ki az előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
+2. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha szerepköralapú Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
@@ -101,7 +101,7 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
     ![Webalkalmazás létrehozása][7]
 
-1. Válassza ki az előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
+1. Válassza ki előfizetését. Az alkalmazás és a kiegészítő szolgáltatás ugyanabban az előfizetésben jön létre.
 
 1. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok segítségével a kapcsolódó Azure-erőforrásokat egységként kezelheti. Az erőforráscsoportok akkor is hasznosak, ha szerepköralapú Access Control szabályokat hoz létre az alkalmazásaihoz. További információért lásd [az Azure Resource Manager áttekintését][ARMOverview].
 
@@ -147,7 +147,7 @@ Ha önálló kisegítő lehetőséget hoz létre, azzal semmi sincs benne. Egy �
 
     ![Beosztási elnevezés][5]
 
-1. Válassza ki az előfizetését. Ez az előfizetés egyben az is, amelyet a központhoz tartozó összes alkalmazás használ. Egy másik előfizetésben található VNet nem helyezheti üzembe a központot.
+1. Válassza ki előfizetését. Ez az előfizetés egyben az is, amelyet a központhoz tartozó összes alkalmazás használ. Egy másik előfizetésben található VNet nem helyezheti üzembe a központot.
 
 1. Válasszon ki vagy adjon meg egy új erőforráscsoportot. A VNet használt erőforráscsoportot meg kell egyeznie a saját előfizetésével. Ha kiválaszt egy meglévő VNet, a rendszer frissíti a beadási csoport kiválasztott erőforrását, hogy tükrözze a VNet. *Ha Resource Manager-sablont használ, létrehozhat egy olyan erőforráscsoportot, amely nem azonos a VNet erőforráscsoporthoz.* Ha egy sablonból szeretne létrehozni egy előkészítő-t, tekintse meg a [app Service környezet sablonból][MakeASEfromTemplate]való létrehozását ismertető témakört.
 
@@ -196,7 +196,7 @@ További információ a ASEv1: [a app Service Environment v1 bemutatása][ASEv1I
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md
-[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[mobileapps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/management/overview.md

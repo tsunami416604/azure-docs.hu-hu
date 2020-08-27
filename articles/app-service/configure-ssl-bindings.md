@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078631"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962638"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
-Ez a cikk bemutatja, hogyan védheti meg az [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) a [app Service alkalmazásban](https://docs.microsoft.com/azure/app-service/) vagy a [Function alkalmazásban](https://docs.microsoft.com/azure/azure-functions/) egy tanúsítvány kötésének létrehozásával. Ha elkészült, elérheti a App Service alkalmazást a `https://` végpontban az egyéni DNS-név (például `https://www.contoso.com` ) számára. 
+Ez a cikk bemutatja, hogyan védheti meg az [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) a [app Service alkalmazásban](./index.yml) vagy a [Function alkalmazásban](../azure-functions/index.yml) egy tanúsítvány kötésének létrehozásával. Ha elkészült, elérheti a App Service alkalmazást a `https://` végpontban az egyéni DNS-név (például `https://www.contoso.com` ) számára. 
 
 ![Egyéni TLS/SSL-tanúsítvánnyal rendelkező webalkalmazás](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A következő útmutató követése:
 
-- [Létre kell hoznia egy App Service-alkalmazást.](/azure/app-service/)
+- [Létre kell hoznia egy App Service-alkalmazást.](./index.yml)
 - [Tartománynév hozzárendelése az alkalmazáshoz](app-service-web-tutorial-custom-domain.md) , illetve [Az Azure-beli vásárlás és konfigurálás](manage-custom-dns-buy-domain.md)
 - [Privát tanúsítvány hozzáadása az alkalmazáshoz](configure-ssl-certificate.md)
 
@@ -168,4 +168,4 @@ A nyelvspecifikus konfigurációs útmutatók, például a [Linux Node.js konfig
 ## <a name="more-resources"></a>További erőforrások
 
 * [TLS/SSL-tanúsítvány használata a kódban Azure App Service](configure-ssl-certificate-in-code.md)
-* [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Gyakori kérdések: App Service tanúsítványok](./faq-configuration-and-management.md)

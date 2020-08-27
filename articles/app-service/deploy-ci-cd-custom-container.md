@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b168328f64f599de109dbd0a5bd95c0a26f5f902
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083125"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961856"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Folyamatos üzembe helyezés a Web App for Containers használatával
 
@@ -55,13 +55,13 @@ Másolja a webhook URL-címét. Ha webhookot szeretne hozzáadni a Docker hub-ho
 
 ## <a name="automate-with-cli"></a>Automatizálás a parancssori felülettel
 
-Ha az Azure CLI használatával szeretné konfigurálni a CI/CD-t, futtassa az az [WebApp Deployment Container config](https://docs.microsoft.com/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) parancsot a webhook URL-címének létrehozásához. Az URL-cím használatával konfigurálhatja a DockerHub vagy a Azure Container Registry.
+Ha az Azure CLI használatával szeretné konfigurálni a CI/CD-t, futtassa az az [WebApp Deployment Container config](/cli/azure/webapp/deployment/container?view=azure-cli-latest#az-webapp-deployment-container-config) parancsot a webhook URL-címének létrehozásához. Az URL-cím használatával konfigurálhatja a DockerHub vagy a Azure Container Registry.
 
 ```azurecli-interactive
 az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben](quickstart-dotnetcore.md?pivots=platform-linux)

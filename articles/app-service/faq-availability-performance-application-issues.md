@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159983"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958999"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
 
@@ -32,15 +32,15 @@ Több tényező is hozzájárulhat a lassú alkalmazások teljesítményéhez. A
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hogyan a nagy CPU-fogyasztási forgatókönyvet?
 
-Bizonyos nagy CPU-fogyasztási helyzetekben előfordulhat, hogy az alkalmazásnak több számítási erőforrásra van szüksége.Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Más időpontokban a nagy CPU-felhasználás oka lehet rossz hurok vagy kódolási gyakorlat. Betekintést nyerhet a megnövelt CPU-fogyasztás indítására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. További információ: [a memóriakép rögzítése és elemzése a nagy CPU-fogyasztáshoz Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
+Bizonyos nagy CPU-fogyasztási helyzetekben előfordulhat, hogy az alkalmazásnak több számítási erőforrásra van szüksége.Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Más időpontokban a nagy CPU-felhasználás oka lehet rossz hurok vagy kódolási gyakorlat. Betekintést nyerhet a megnövelt CPU-fogyasztás indítására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. További információ: [a memóriakép rögzítése és elemzése a nagy CPU-fogyasztáshoz Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hogyan a nagy memória-felhasználású forgatókönyvek hibakeresését?
 
-Néhány nagy mennyiségű memóriát használó alkalmazás esetében előfordulhat, hogy alkalmazása valóban több számítási erőforrást igényel.Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Máskor a kódban szereplő hiba okozhatja a memória szivárgását. A kódolási gyakorlat A memóriahasználat növelését is növelheti.Betekintést nyerhet a nagy memória-használat aktiválására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. Az Azure site Extension Gallery összeomlás-diagnosztizálása hatékonyan hajthatja végre ezeket a lépéseket. További információ: a [memóriakép rögzítése és elemzése a Web Apps időszakos nagy memóriához](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+Néhány nagy mennyiségű memóriát használó alkalmazás esetében előfordulhat, hogy alkalmazása valóban több számítási erőforrást igényel.Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Máskor a kódban szereplő hiba okozhatja a memória szivárgását. A kódolási gyakorlat A memóriahasználat növelését is növelheti.Betekintést nyerhet a nagy memória-használat aktiválására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. Az Azure site Extension Gallery összeomlás-diagnosztizálása hatékonyan hajthatja végre ezeket a lépéseket. További információ: a [memóriakép rögzítése és elemzése a Web Apps időszakos nagy memóriához](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hogyan automatizálja App Service webalkalmazásokat a PowerShell használatával?
 
-A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App Service webalkalmazásait. A blogbejegyzésben a [PowerShell használatával automatizálható webalkalmazások automatizálása Azure app Service](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)a Azure Resource Manager-alapú PowerShell-parancsmagok használata a gyakori feladatok automatizálásához. A blogbejegyzés a webalkalmazások különböző felügyeleti feladataihoz is tartalmaz mintakód-kódot. Az összes App Service Web Apps-parancsmag leírását és szintaxisát lásd: [az. websites](/powershell/module/az.websites).
+A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App Service webalkalmazásait. A blogbejegyzésben a [PowerShell használatával automatizálható webalkalmazások automatizálása Azure app Service](/archive/blogs/puneetgupta/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way)a Azure Resource Manager-alapú PowerShell-parancsmagok használata a gyakori feladatok automatizálásához. A blogbejegyzés a webalkalmazások különböző felügyeleti feladataihoz is tartalmaz mintakód-kódot. Az összes App Service Web Apps-parancsmag leírását és szintaxisát lásd: [az. websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Hogyan megtekintheti a webalkalmazásom eseménynaplóit?
 
@@ -81,7 +81,7 @@ A következő három feltétel okozhatja ezt a hibát:
 * A webalkalmazás le lett állítva a portálon.
 * A webalkalmazás elérte az adott erőforrás-kvótára vonatkozó korlátot, amely az ingyenes vagy a megosztott méretezési szolgáltatási csomagra is érvényes lehet.
 
-Ha szeretné megtekinteni, hogy mi okozza a hibát, és hogyan oldja meg a problémát, kövesse a [Web Apps: "hiba 403 – ez a webalkalmazás leállt"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)című témakör lépéseit.
+Ha szeretné megtekinteni, hogy mi okozza a hibát, és hogyan oldja meg a problémát, kövesse a [Web Apps: "hiba 403 – ez a webalkalmazás leállt"](/archive/blogs/waws/azure-web-apps-error-403-this-web-app-is-stopped)című témakör lépéseit.
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Hol tudhatok meg többet a különböző App Service-csomagok kvótái és korlátairól?
 
@@ -103,7 +103,7 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
 1. A Azure Portal nyissa meg a webalkalmazást.
 3. Válassza **a minden beállítás**  >  **diagnosztikai naplók**lehetőséget.
 4. A **Sikertelen kérelmek nyomkövetéséhez**válassza **a be**lehetőséget.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 6. A Web App (webalkalmazás) panelen válassza az **eszközök**lehetőséget.
 7. Válassza a **Visual Studio online**lehetőséget.
 8. Ha a beállítás nincs **bekapcsolva**, válassza **a be**lehetőséget.
@@ -167,7 +167,7 @@ A webjobs a háttérben történő feldolgozásra szolgál. Annyi háttérbeli f
 
 A korábbi [vércse-verziók](https://github.com/aspnet/KestrelHttpServer/issues/1182) ismert problémái miatt előfordulhat, hogy egy ASP.net Core 1,0 alkalmazás, amely app Serviceben fut, időnként leállítja a válaszadást. Ezt az üzenetet is láthatja: "a megadott CGI-alkalmazás hibát észlelt, és a kiszolgáló megszakította a folyamatot."
 
-Ez a probléma a vércse 1.0.2-es verziójában van kijavítva. Ez a verzió a ASP.NET Core 1.0.3 frissítés részét képezi. A probléma megoldásához győződjön meg arról, hogy az alkalmazás függőségeit a vércse 1.0.2 használatára frissíti. Azt is megteheti, hogy a blogbejegyzésben ismertetett két megkerülő megoldás egyikét használja [app Service web apps 1,0 ASP.net Core lassú](https://blogs.msdn.microsoft.com/waws/2016/12/11/asp-net-core-slow-perf-issues-on-azure-websites)teljesítményű problémák megoldásához.
+Ez a probléma a vércse 1.0.2-es verziójában van kijavítva. Ez a verzió a ASP.NET Core 1.0.3 frissítés részét képezi. A probléma megoldásához győződjön meg arról, hogy az alkalmazás függőségeit a vércse 1.0.2 használatára frissíti. Azt is megteheti, hogy a blogbejegyzésben ismertetett két megkerülő megoldás egyikét használja [app Service web apps 1,0 ASP.net Core lassú](/archive/blogs/waws/asp-net-core-slow-perf-issues-on-azure-websites)teljesítményű problémák megoldásához.
 
 
 ## <a name="i-cant-find-my-log-files-in-the-file-structure-of-my-web-app-how-can-i-find-them"></a>Nem találom a naplófájlokat a saját webalkalmazásom fájljának struktúrájában. Hogyan találhatom meg őket?
@@ -188,4 +188,4 @@ A webalkalmazás kimenő kapcsolataival kapcsolatos további információkért t
 
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Hogyan a Visual studiót a App Service webalkalmazásom távoli hibakereséséhez?
 
-A webalkalmazások Visual Studióval való hibakeresését bemutató részletes útmutató: [a app Service webalkalmazás távoli hibakeresése](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/).
+A webalkalmazások Visual Studióval való hibakeresését bemutató részletes útmutató: [a app Service webalkalmazás távoli hibakeresése](/archive/blogs/benjaminperkins/remote-debug-your-azure-app-service-web-app).

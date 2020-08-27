@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272314"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962468"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -146,7 +146,7 @@ A App Service speciális fejlécek használatával átadja az alkalmazásnak a f
 
 A bármely nyelven vagy keretrendszerben írt kód a fenti fejlécek által igényelt információkat kérheti le. A ASP.NET 4,6 alkalmazások esetében a **ClaimsPrincipal** automatikusan a megfelelő értékekkel van beállítva. ASP.NET Core azonban nem biztosít olyan hitelesítési middleware-t, amely App Service felhasználói jogcímekbe integrálódik. Megkerülő megoldásért tekintse meg a következőt: [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Ha a [jogkivonat-tároló](overview-authentication-authorization.md#token-store) engedélyezve van az alkalmazáshoz, a meghívásával további részleteket is megtudhat a hitelesített felhasználóról `/.auth/me` . Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile Apps Node.js SDK használata](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), valamint az Azure-hoz [készült .net backend Server SDK-val való együttműködés. Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Ha a [jogkivonat-tároló](overview-authentication-authorization.md#token-store) engedélyezve van az alkalmazáshoz, a meghívásával további részleteket is megtudhat a hitelesített felhasználóról `/.auth/me` . Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile Apps Node.js SDK használata](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity), valamint az Azure-hoz [készült .net backend Server SDK-val való együttműködés. Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Jogkivonatok beolvasása az alkalmazás kódjában
 
@@ -489,7 +489,7 @@ Megtekintheti a platform-hitelesítés middleware aktuális verzióját az Azure
 
 ##### <a name="from-the-azure-cli"></a>Az Azure CLI-ből
 
-Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) paranccsal.
+Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) paranccsal.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +520,7 @@ Egy alkalmazás/.auth/Version-végpontját is elérheti, ha meg szeretné tekint
 
 #### <a name="update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának frissítése
 
-Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
+Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -530,9 +530,9 @@ az webapp auth update --name <my_app_name> \
 
 A helyére írja `<my_app_name>` be az alkalmazás nevét. Az `<my_resource_group>` alkalmazáshoz tartozó erőforráscsoport nevét is cserélje le. Továbbá cserélje le az értékét az `<version>` 1. x futtatókörnyezet érvényes verziójára vagy `~1` a legújabb verzióra. A kibocsátási megjegyzéseket a különböző futtatókörnyezet-verziókban találja ([ide]) (a https://github.com/Azure/app-service-announcements) rögzítéshez használt verzió meghatározásához.
 
-Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](https://docs.microsoft.com/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](https://docs.microsoft.com/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
+Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Felhasználók teljes körű hitelesítése és engedélyezése](tutorial-auth-aad.md)

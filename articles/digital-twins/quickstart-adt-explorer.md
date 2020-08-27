@@ -1,5 +1,5 @@
 ---
-title: Példa a forgatókönyvre
+title: Mintaforgatókönyv felfedezése
 titleSuffix: Azure Digital Twins
 description: A ADT Explorer minta használatával megjelenítheti és feltárhatja az előre elkészített forgatókönyvet.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: b199a50443445b983011d755c3ffacaa71131faf
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c3230294fd9d5761433b4507ff054bcaae7a11ad
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88894335"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959813"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Egy minta Azure digitális Twins-forgatókönyv megismerése a ADT Explorer használatával
 
@@ -170,7 +170,7 @@ A *gráf nézet* mezőben kattintson a *diagram importálása* ikonra.
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="A gráf nézet mezőben egy ikon van kiemelve. Egy felhőbe mutató nyilat mutat be." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-A fájl kiválasztása mezőben navigáljon újra az *ügyfél/példák* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
+A fájl kiválasztása mezőben navigáljon a *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
 
 Néhány másodperc elteltével a ADT Explorer megnyílik egy *importálási* nézet, amely megjeleníti a betöltendő gráf előnézetét.
 
@@ -314,7 +314,7 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**ADT_Explorer.zip**_ és _**Azure_Digital_Twins_samples.zip**_).
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

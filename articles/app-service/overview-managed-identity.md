@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86f501a145ea82f7a4499824dd0b21822c3f1cbd
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211891"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961584"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -52,7 +52,7 @@ Felügyelt identitás Azure CLI használatával történő beállításához a `
 
 - Használja [Azure Cloud Shell](../cloud-shell/overview.md) a Azure Portal.
 - A beágyazott Azure Cloud Shell az alábbi, az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-- [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 vagy újabb), ha helyi CLI-konzolt szeretne használni. 
+- [Telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) (2.0.31 vagy újabb), ha helyi CLI-konzolt szeretne használni. 
 
 A következő lépések végigvezetik a webalkalmazások létrehozásán és az identitás a CLI használatával történő hozzárendelésén.
 
@@ -109,7 +109,7 @@ Az alábbi lépések végigvezetik az alkalmazás létrehozásán és identitás
 
 1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
 
-2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions hivatkozást](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions hivatkozást](/powershell/module/az.functions/?view=azps-4.1.0#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Az alábbi lépések végigvezetik az alkalmazás létrehozásán és identitás
 
 1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
 
-2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions referenciát](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Az alábbi szkript azt is lehetővé teszi, hogy `New-AzUserAssignedIdentity` külön kell telepíteni, mint a [Létrehozás, a felhasználó által hozzárendelt felügyelt identitások listázása vagy törlése Azure PowerShell használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions referenciát](/powershell/module/az.functions/?view=azps-4.1.0#functions). Az alábbi szkript azt is lehetővé teszi, hogy `New-AzUserAssignedIdentity` külön kell telepíteni, mint a [Létrehozás, a felhasználó által hozzárendelt felügyelt identitások listázása vagy törlése Azure PowerShell használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -324,7 +324,7 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
 > | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja a "2019-08-01" vagy az újabb verziót (kivéve, ha Linux-használatot használ, amely jelenleg csak a "2017-09-01"-ot kínálja) – lásd a fenti megjegyzést.                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |
@@ -347,7 +347,7 @@ A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajd
 > | erőforrás      | Az erőforráshoz a hozzáférési tokent kérték, amely megfelel a `resource` kérelem lekérdezési karakterlánc paraméterének.                                                                                                                               |
 > | token_type    | Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a FBearer. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg [a OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
-Ez a válasz ugyanaz, mint az [Azure ad szolgáltatás – szolgáltatás hozzáférési jogkivonat-kérelemre adott válasz](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Ez a válasz ugyanaz, mint az [Azure ad szolgáltatás – szolgáltatás hozzáférési jogkivonat-kérelemre adott válasz](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 ### <a name="rest-protocol-examples"></a>REST protokoll – példák
 

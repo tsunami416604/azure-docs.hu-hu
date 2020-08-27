@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9011c56096d61e50ae3655a76a396ec3f2dd97c5
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 65b35c30d796f733e91c71e569634b61f9f7c52b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352917"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959289"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Rövid útmutató: a Linux vagy Windows rendszeren futó minta IoT Plug and Play előzetes verziójának csatlakoztatása IoT Hub (C)
 
@@ -117,7 +117,10 @@ Az eszköz SDK használatával hozza létre a mellékelt mintakód:
 
 A minta alkalmazásnak az SDK-ban való futtatásához, amely szimulál egy IoT Plug and Play eszköz telemetria küldését az IoT hubhoz:
 
-Hozzon létre egy **IOTHUB_DEVICE_CONNECTION_STRING** nevű környezeti változót, amely a korábban jegyzett eszköz-kapcsolódási karakterláncot tárolja.
+Hozzon létre két környezeti változót a minta konfigurálásához, hogy kapcsolati sztringet használjon az IoT hubhoz való kapcsolódáshoz:
+
+- **IOTHUB_DEVICE_SECURITY_TYPE** az értékkel `"connectionString"`
+- **IOTHUB_DEVICE_CONNECTION_STRING** a korábban létrehozott eszköz-kapcsolódási karakterláncot.
 
 A _CMAK_ mappában navigáljon a végrehajtható fájlt tartalmazó mappához, és futtassa a következőt:
 
@@ -174,7 +177,7 @@ A kód a plébános-függvénytárat használja az IoT hub-ból eljuttatott hasz
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 

@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dea07e8a2dd0f70c714c6213408db9264bd30750
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48ef1344a76444af23fd462175a8087af2724d3e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826956"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961941"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből a cikkből megtudhatja, hogyan hozhat létre, tölthet fel vagy importálhat privát tanúsítványt vagy nyilvános tanúsítványt App Serviceba. 
 
-Miután hozzáadta a tanúsítványt a App Service app vagy [Function alkalmazáshoz](https://docs.microsoft.com/azure/azure-functions/), biztonságossá teheti az [Egyéni DNS-nevet](configure-ssl-bindings.md) , vagy [használhatja azt az alkalmazás kódjában](configure-ssl-certificate-in-code.md).
+Miután hozzáadta a tanúsítványt a App Service app vagy [Function alkalmazáshoz](../azure-functions/index.yml), biztonságossá teheti az [Egyéni DNS-nevet](configure-ssl-bindings.md) , vagy [használhatja azt az alkalmazás kódjában](configure-ssl-certificate-in-code.md).
 
 A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanúsítványokat adhat hozzá a App Serviceban:
 
@@ -25,7 +25,7 @@ A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanús
 |-|-|
 | Ingyenes App Service felügyelt tanúsítvány létrehozása (előzetes verzió) | Egy könnyen használható privát tanúsítvány, ha csak az `www` [Egyéni tartományt](app-service-web-tutorial-custom-domain.md) vagy a nem meztelen tartományt kell védenie app Serviceban. |
 | App Service-tanúsítvány vásárlása | Az Azure által felügyelt privát tanúsítvány. A szolgáltatás ötvözi az automatizált tanúsítványok kezelését, valamint a megújítási és exportálási lehetőségek rugalmasságát. |
-| Tanúsítvány importálása Key Vault | Hasznos, ha a [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) használatával kezeli a [PKCS12/pfx-profil-tanúsítványokat](https://wikipedia.org/wiki/PKCS_12). Lásd a [privát tanúsítványra vonatkozó követelményeket](#private-certificate-requirements). |
+| Tanúsítvány importálása Key Vault | Hasznos, ha a [Azure Key Vault](../key-vault/index.yml) használatával kezeli a [PKCS12/pfx-profil-tanúsítványokat](https://wikipedia.org/wiki/PKCS_12). Lásd a [privát tanúsítványra vonatkozó követelményeket](#private-certificate-requirements). |
 | Privát tanúsítvány feltöltése | Ha már rendelkezik egy külső szolgáltatótól származó privát tanúsítvánnyal, feltöltheti azt. Lásd a [privát tanúsítványra vonatkozó követelményeket](#private-certificate-requirements). |
 | Nyilvános tanúsítvány feltöltése | A nyilvános tanúsítványok nem használhatók az egyéni tartományok biztonságossá tételéhez, de betöltheti őket a kódra, ha szüksége van rájuk a távoli erőforrásokhoz való hozzáféréshez. |
 
@@ -33,7 +33,7 @@ A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanús
 
 A következő útmutató követése:
 
-- [Hozzon létre egy app Service alkalmazást](/azure/app-service/).
+- [Hozzon létre egy app Service alkalmazást](./index.yml).
 - Csak az ingyenes tanúsítvány: altartomány hozzárendelése (például `www.contoso.com` ) egy [CNAME-rekorddal](app-service-web-tutorial-custom-domain.md#map-a-cname-record)app Service.
 
 ## <a name="private-certificate-requirements"></a>Magánjellegű tanúsítványokra vonatkozó követelmények
@@ -135,7 +135,7 @@ Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.a
 
 ![App Service tanúsítvány Key Vault-tárolójának konfigurálása](./media/configure-ssl-certificate/configure-key-vault.png)
 
-A [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) egy Azure-szolgáltatás, amely segít megvédeni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Ez a App Service-tanúsítványok számára választható tároló.
+A [Key Vault](../key-vault/general/overview.md) egy Azure-szolgáltatás, amely segít megvédeni a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkokat. Ez a App Service-tanúsítványok számára választható tároló.
 
 A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új tároló létrehozásához, vagy válasszon egy meglévő **tárat** . Ha úgy dönt, hogy létrehoz egy új tárat, a következő táblázat segítségével konfigurálja a tárolót, és kattintson a Létrehozás gombra. Hozza létre az új Key Vault ugyanabban az előfizetésben és erőforráscsoporthoz, mint a App Service alkalmazás.
 
@@ -252,7 +252,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 Amikor a rendszer megkéri, adjon meg egy exportálási jelszót. Ezt a jelszót fogja használni a TLS/SSL-tanúsítvány későbbi App Service való feltöltésekor.
 
-Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkérést, telepítse a tanúsítványt a helyi számítógépre, majd [exportálja a tanúsítványt PFX-fájlba](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
+Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkérést, telepítse a tanúsítványt a helyi számítógépre, majd [exportálja a tanúsítványt PFX-fájlba](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11)).
 
 ### <a name="upload-certificate-to-app-service"></a>Tanúsítvány feltöltése a App Serviceba
 
@@ -331,9 +331,9 @@ Miután befejeződött a megújítási művelet, kattintson a **szinkronizálás
 
 ### <a name="export-certificate"></a>Tanúsítvány exportálása
 
-Mivel az App Service-tanúsítvány [Key Vault titkos kulcs](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), exportálhatja azt, és más Azure-szolgáltatásokhoz vagy az Azure-on kívül is használhatja.
+Mivel az App Service-tanúsítvány [Key Vault titkos kulcs](../key-vault/general/about-keys-secrets-certificates.md), exportálhatja azt, és más Azure-szolgáltatásokhoz vagy az Azure-on kívül is használhatja.
 
-Ha a App Service-tanúsítvány PFX-fájlként szeretné exportálni, futtassa az alábbi parancsokat a [Cloud Shell](https://shell.azure.com). Ha az [Azure CLI-t telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli), helyileg is futtathatja. Cserélje le a helyőrzőket az [app Service-tanúsítvány létrehozásakor](#start-certificate-order)használt nevekre.
+Ha a App Service-tanúsítvány PFX-fájlként szeretné exportálni, futtassa az alábbi parancsokat a [Cloud Shell](https://shell.azure.com). Ha az [Azure CLI-t telepítette](/cli/azure/install-azure-cli), helyileg is futtathatja. Cserélje le a helyőrzőket az [app Service-tanúsítvány létrehozásakor](#start-certificate-order)használt nevekre.
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -380,4 +380,4 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 * [HTTPS kényszerítése](configure-ssl-bindings.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](configure-ssl-bindings.md#enforce-tls-versions)
 * [TLS/SSL-tanúsítvány használata a kódban Azure App Service](configure-ssl-certificate-in-code.md)
-* [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [Gyakori kérdések: App Service tanúsítványok](./faq-configuration-and-management.md)

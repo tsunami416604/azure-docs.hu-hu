@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079671"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959791"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -152,14 +152,14 @@ A kvóták megkereséséhez válassza a **Beállítások**  >  **kvóták**lehet
 
 A diagramok bármelyikére kattintva megtekintheti a mérőszámokat, ahol egyéni diagramokat hozhat létre, különböző mérőszámokat jeleníthet meg, és még sok minden mást is megadhat. 
 
-További információ a metrikákkal kapcsolatban: a [szolgáltatás metrikáinak figyelése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+További információ a metrikákkal kapcsolatban: a [szolgáltatás metrikáinak figyelése](../azure-monitor/platform/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Riasztások és autoskálázás
-Az alkalmazásokhoz vagy App Service tervekhez tartozó metrikák összekapcsolható riasztásokkal. További információ: [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Riasztások fogadása).
+Az alkalmazásokhoz vagy App Service tervekhez tartozó metrikák összekapcsolható riasztásokkal. További információ: [Receive alert notifications](../azure-monitor/platform/alerts-classic-portal.md) (Riasztások fogadása).
 
 Az alapszintű vagy magasabb App Service-csomagokban üzemeltetett App Service-alkalmazások támogatják az autoskálázást. Az autoscale használatával olyan szabályokat konfigurálhat, amelyek figyelik a App Service terv mérőszámait. A szabályok növelhetik vagy csökkenthetik a példányszámot, ami igény szerint további erőforrásokat is biztosíthat. A szabályok segítségével pénzt takaríthat meg, ha az alkalmazás túl van kiépítve.
 
-További információ az automatikus méretezésről: az automatikus [skálázás Azure monitorának](../azure-monitor/platform/autoscale-best-practices.md) [skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md) és ajánlott eljárásai.
+További információ az automatikus méretezésről: az automatikus [skálázás Azure monitorának](../azure-monitor/platform/autoscale-best-practices.md) [skálázása](../azure-monitor/platform/autoscale-get-started.md) és ajánlott eljárásai.
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

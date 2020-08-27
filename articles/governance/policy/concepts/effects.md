@@ -1,14 +1,14 @@
 ---
 title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544723"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958762"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -205,7 +205,7 @@ Példa: kiértékeli a Virtual Machines annak megállapítására, hogy a kárte
 }
 ```
 
-## <a name="deny"></a>Megtagadás
+## <a name="deny"></a>Deny (Megtagadás)
 
 A Megtagadás megakadályozza egy olyan erőforrás-kérelem használatát, amely nem felel meg a meghatározott szabványoknak egy házirend-definíción keresztül, és a kérést nem teljesíti.
 
@@ -479,14 +479,33 @@ Példa: forgalomirányító v2 belépésvezérlési szabály, amely csak a megad
 
 ## <a name="modify"></a>Módosítás
 
-A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó címkék hozzáadására, frissítésére és eltávolítására szolgál. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A módosítási szabályzatnak mindig `mode` _indexelt_ értékre kell állítania, kivéve, ha a célként megadott erőforrás egy erőforráscsoport. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
+A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó tulajdonságok vagy címkék hozzáadására, frissítésére és eltávolítására szolgál.
+Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
+
+A módosítás a következő műveleteket támogatja:
+
+- Erőforrás-Címkék hozzáadása, cseréje vagy eltávolítása. Címkék esetén a módosítási házirendet `mode` csak akkor kell _indexelni_ , ha a célként megadott erőforrás egy erőforráscsoport.
+- Adja hozzá vagy cserélje le a `identity.type` virtuális gépek és a virtuálisgép-méretezési csoportok felügyelt identitási típusának értékét.
+- Adja hozzá vagy cserélje le az egyes aliasok értékeit (előzetes verzió).
+  - A `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` használata
+    Azure PowerShell a módosítással használható aliasok listájának lekéréséhez.
 
 > [!IMPORTANT]
-> A módosítás jelenleg csak címkékkel használható. Ha címkéket kezel, javasolt a hozzáfűzés helyett a módosítás használata, amely további műveleti típusokat és a meglévő erőforrások javítását is lehetővé teszi. A Hozzáfűzés azonban ajánlott, ha nem tud felügyelt identitást létrehozni.
+> Ha címkéket kezel, javasolt a hozzáfűzés helyett a módosítás használata, amely további műveleti típusokat és a meglévő erőforrások javítását is lehetővé teszi. A Hozzáfűzés azonban ajánlott, ha nem tud felügyelt identitást létrehozni, vagy a módosítás még nem támogatja az erőforrás-tulajdonság aliasát.
 
 ### <a name="modify-evaluation"></a>Értékelés módosítása
 
-A módosítja a kiértékeléseket, mielőtt az erőforrás-szolgáltató feldolgozza a kérést az erőforrás létrehozása vagy frissítése során. Ha a házirend- **szabály feltételei** teljesülnek, módosítja a hozzáadási vagy frissítési címkéket az erőforráson.
+A módosítja a kiértékeléseket, mielőtt az erőforrás-szolgáltató feldolgozza a kérést az erőforrás létrehozása vagy frissítése során. A módosítási műveletek a kérelem tartalmára lesznek alkalmazva **, ha** teljesülnek a házirend szabályának feltételei. Az egyes módosítási műveletek megadhatnak egy olyan feltételt, amely meghatározza, hogy mikor alkalmazza a rendszer. A rendszer kihagyja a _hamis_ értékkel kiértékelt feltételekkel rendelkező műveleteket.
+
+Alias megadásakor a rendszer a következő további ellenőrzéseket hajtja végre annak biztosítása érdekében, hogy a módosítási művelet ne módosítsa a kérelem tartalmát úgy, hogy az erőforrás-szolgáltató visszautasítsa azt:
+
+- Az alias leképezésének tulajdonsága "módosítható" jelöléssel van megjelölve a kérelem API-verziójában.
+- A módosítási műveletben szereplő token típusa megegyezik a kérelem API-verziójában szereplő tulajdonsághoz tartozó várt jogkivonat-típussal.
+
+Ha az ellenőrzések bármelyike meghiúsul, a szabályzat kiértékelése visszakerül a megadott **conflictEffect**.
+
+> [!IMPORTANT]
+> Olyan javasolt, amelyek aliasokat tartalmazó definíciókat módosítanak, a _naplózási_ **ütközési effektussal** elkerülhetők az olyan API-verziókkal kapcsolatos sikertelen kérelmek, amelyeknél a leképezett tulajdonság nem "módosítható". Ha ugyanaz az alias eltérően viselkedik az API-verziók között, a feltételes módosítási műveletek segítségével határozható meg az egyes API-verziókban használt módosítási művelet.
 
 Ha a módosítási hatást használó házirend-definíció egy értékelési ciklus részeként fut, akkor nem módosítja a már létező erőforrásokat. Ehelyett olyan erőforrást jelöl, amely megfelel az **IF** feltétel nem megfelelőnek.
 
@@ -498,7 +517,7 @@ A Modify Effect **details** tulajdonsága minden olyan altulajdonsággal rendelk
   - Ennek a tulajdonságnak tartalmaznia kell egy olyan karakterlánc-tömböt, amely megfelel az előfizetés által elérhető szerepköralapú hozzáférés-vezérlési szerepkör-AZONOSÍTÓnak. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
   - A definiált szerepkörnek tartalmaznia kell a [közreműködő](../../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz megadott összes műveletet.
 - **conflictEffect** (nem kötelező)
-  - Meghatározza, hogy mely "WINS" házirend-definíciót kell módosítani abban az esetben, ha egynél több házirend-definíció módosítja ugyanazt a tulajdonságot.
+  - Meghatározza, hogy mely "WINS" házirend-definíciót kell módosítani abban az esetben, ha egynél több házirend-definíció módosítja ugyanazt a tulajdonságot, vagy ha a módosítási művelet nem működik a megadott aliason.
     - Új vagy frissített erőforrások esetén a _megtagadással_ rendelkező szabályzat-definíció elsőbbséget élvez. Szabályzat-definíciók a _naplózás_ kihagyása minden **művelet**. Ha több házirend-definíció is meg van _tagadva_, a rendszer ütközésként megtagadja a kérelmet. Ha az összes házirend-definíció _naplózással_rendelkezik, akkor a rendszer nem dolgozza fel az ütköző házirend-definíciók egyik **műveletét** sem.
     - Ha a meglévő erőforrások esetében több házirend-definíció is meg van _tagadva_, a megfelelőségi állapot _ütközést_jelez. Ha egy vagy több szabályzat-definíció _megtagadást_tartalmaz, az egyes hozzárendelések _nem megfelelőnek_minősülő megfelelőségi állapotot adnak vissza.
   - Elérhető értékek: _naplózás_, _Megtagadás_, _Letiltva_.
@@ -513,6 +532,9 @@ A Modify Effect **details** tulajdonsága minden olyan altulajdonsággal rendelk
     - **érték** (nem kötelező)
       - Az az érték, amellyel a címkét be kell állítani.
       - Ez a tulajdonság kötelező, ha a **művelet** _addOrReplace_ vagy _hozzáadása_.
+    - **feltétel** (nem kötelező)
+      - Egy Azure Policy nyelvi kifejezést tartalmazó karakterlánc [, amely a](./definition-structure.md#policy-functions) _true_ vagy a _false értéket_értékeli.
+      - A nem támogatja a következő házirend-funkciókat:, `field()` `resourceGroup()` , `subscription()` .
 
 ### <a name="modify-operations"></a>Műveletek módosítása
 
@@ -546,11 +568,11 @@ Az **Operations** Property Array lehetővé teszi több címke különböző mó
 
 A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 
-|Művelet |Description |
+|Művelet |Leírás |
 |-|-|
-|addOrReplace |Hozzáadja a definiált címkét és értéket az erőforráshoz, még akkor is, ha a címke már létezik egy másik értékkel. |
-|Hozzáadás |Hozzáadja a definiált címkét és értéket az erőforráshoz. |
-|Eltávolítás |Eltávolítja a definiált címkét az erőforrásból. |
+|addOrReplace |Hozzáadja a definiált tulajdonságot vagy címkét és értéket az erőforráshoz, még akkor is, ha a tulajdonság vagy a címke már létezik egy másik értékkel. |
+|Hozzáadás |Hozzáadja a definiált tulajdonságot vagy címkét és értéket az erőforráshoz. |
+|Eltávolítás |Eltávolítja a definiált tulajdonságot vagy címkét az erőforrásból. |
 
 ### <a name="modify-examples"></a>Példák módosítása
 
@@ -599,6 +621,28 @@ A **Operation** tulajdonság a következő beállításokkal rendelkezik:
 }
 ```
 
+3. példa: gondoskodjon arról, hogy a Storage-fiók ne engedélyezze a Blobok nyilvános elérését, a módosítási műveletet csak akkor alkalmazza a rendszer, ha az API-verzióval nagyobb vagy egyenlő, mint a "2019-04-01" értékkel:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
+            }
+        ]
+    }
+}
+```
+
 ## <a name="layering-policy-definitions"></a>Rétegbeli házirend-definíciók
 
 Egy erőforrásra több hozzárendelés is hatással lehet. Ezek a hozzárendelések lehetnek ugyanazon a hatókörön vagy eltérő hatókörökben. Ezen hozzárendelések mindegyike valószínűleg más effektust is meghatároz. Az egyes szabályzatok feltételeit és hatásait egymástól függetlenül ki kell értékelni. Például:
@@ -628,7 +672,7 @@ Ha az 1. és a 2. házirend mindkét esetben megtagadta a Megtagadás hatását,
 
 Minden hozzárendelés külön kiértékelésre kerül. Ilyen esetben nincs lehetőség arra, hogy egy erőforrás a hatókörben lévő eltérések miatt nem csúszik meg. A rétegbeli házirend-definíciók nettó eredményét **összesítő legszigorúbbnak**tekinti a rendszer. Ha például az 1. és a 2. szabályzat is megtagadási hatást gyakorolt, az átfedésben lévő és ütköző házirend-definíciók letiltják az erőforrásokat. Ha továbbra is szüksége van az erőforrás létrehozására a cél hatókörében, tekintse át az egyes hozzárendelések kizárásait a megfelelő házirend-hozzárendelések érvényesítéséhez a megfelelő hatókörökre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.

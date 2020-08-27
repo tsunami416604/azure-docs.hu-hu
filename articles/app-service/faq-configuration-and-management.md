@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160000"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962349"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -63,9 +63,9 @@ A webalkalmazás kiszolgálói időzónájának beállítása:
 2. Az **Alkalmazásbeállítások**területen adja hozzá a következő beállítást:
     * Kulcs = WEBSITE_TIME_ZONE
     * Value = *a kívánt időzóna*
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
-A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: America/Adak.
+A Windows rendszeren futó app Services esetében tekintse meg az elfogadott értékekhez tartozó [alapértelmezett időzóna](/windows-hardware/manufacture/desktop/default-time-zones) -cikk **timezone** oszlopát. A Linuxon futó app Services esetében állítsa be a [TZ-adatbázis nevét](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) az időzóna értékeként. Íme egy példa a TZ-adatbázis nevére: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Miért nem sikerül a folyamatos webjobs-feladatok néha?
 
@@ -141,13 +141,13 @@ Ha Hibrid kapcsolatokt használ a SQL Server eléréséhez, Microsoft .NET a 201
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A kivételt az a hibridkapcsolat-kezelő, amely azóta megoldódott. Ügyeljen rá, hogy a probléma megoldásához [frissítse a hibridkapcsolat-kezelő](https://go.microsoft.com/fwlink/?LinkID=841308) .
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hogyan adjon hozzá egy URL-átírási szabályt?
 
-URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web.config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információt az [Azure app Services: az URL-cím újraírásának ismertetése](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)című témakörben talál.
+URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web.config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információt az [Azure app Services: az URL-cím újraírásának ismertetése](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)című témakörben talál.
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hogyan a bejövő forgalom vezérlését App Servicere?
 
@@ -222,7 +222,7 @@ A probléma megoldásához győződjön meg arról, hogy a következő feltétel
 * A hibás hálózati biztonsági csoport megakadályozza a App Service Environment hálózati kapcsolati követelményeit.
 * A kényszerített bújtatás be van kapcsolva.
 
-További információkért lásd: [új Azure app Service Environment telepítésekor (létrehozásakor) gyakori problémák](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/).
+További információkért lásd: [új Azure app Service Environment telepítésekor (létrehozásakor) gyakori problémák](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>Miért nem tudom törölni a App Service csomagot?
 
@@ -286,7 +286,7 @@ A App Service hitelesítésével és engedélyezésével kapcsolatos részletes 
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Hogyan határozza meg, hogy a .NET-verzió melyik verziója van telepítve a App Service-ben?
 
-A App Serviceban telepített Microsoft .NET verziószámának leggyorsabb módja a kudu-konzol használata. A kudu-konzolt a portálról vagy a App Service alkalmazás URL-címének használatával érheti el. Részletes útmutatás: [a telepített .NET-verzió meghatározása app Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/).
+A App Serviceban telepített Microsoft .NET verziószámának leggyorsabb módja a kudu-konzol használata. A kudu-konzolt a portálról vagy a App Service alkalmazás URL-címének használatával érheti el. Részletes útmutatás: [a telepített .NET-verzió meghatározása app Service](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Miért nem a várt módon működik az autoskálázás?
 

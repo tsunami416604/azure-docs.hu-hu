@@ -1,14 +1,14 @@
 ---
 title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b6509f684e611fbb79184383e1b332d793458b9
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547800"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958779"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -652,6 +652,13 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
+  > [!NOTE]
+  > A [módosítási](./effects.md#modify) effektussal használható aliasok megkereséséhez használja a következő parancsot:
+  >
+  > ```azurepowershell-interactive
+  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+  > ```
+
 - Azure CLI
 
   ```azurecli-interactive
@@ -704,7 +711,7 @@ Ez a minta-szabály a **ipRules \[ \* \] . Value** összes egyezését ellenőrz
 
 További információ: [[ \* ] alias kiértékelése](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [kezdeményezési definíció szerkezetét](./initiative-definition-structure.md)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

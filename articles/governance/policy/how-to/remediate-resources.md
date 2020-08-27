@@ -1,18 +1,18 @@
 ---
 title: Nem megfelelő erőforrások szervizelése
 description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésén, amelyek nem felelnek meg a Azure Policy szabályzatának.
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636308"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958745"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Nem megfelelő erőforrások szervizelése Azure Policy
 
-Azok az erőforrások, amelyek nem felelnek meg a **deployIfNotExists** vagy a házirend- **módosítási** szabályzatoknak, **szervizeléssel**kompatibilis állapotba helyezhetők. A szervizelést arra utasítja Azure Policy, hogy futtassa a **deployIfNotExists** hatást vagy a hozzárendelt házirend címkézési **műveleteit** a meglévő erőforrásokon, függetlenül attól, hogy a hozzárendelés egy felügyeleti csoportba, egy előfizetésbe, egy erőforráscsoporthoz vagy egy adott erőforrásra vonatkozik-e. Ez a cikk azokat a lépéseket mutatja be, amelyekkel megismerheti és elvégezheti a szervizelést Azure Policy.
+Azok az erőforrások, amelyek nem felelnek meg a **deployIfNotExists** vagy a házirend- **módosítási** szabályzatoknak, **szervizeléssel**kompatibilis állapotba helyezhetők. A szervizelést arra utasítja Azure Policy, hogy futtassa a **deployIfNotExists** hatást vagy a hozzárendelt házirend **módosítási műveleteit** a meglévő erőforrásokon, függetlenül attól, hogy a hozzárendelés egy felügyeleti csoportra, egy előfizetésre, egy erőforráscsoport vagy egy adott erőforrásra vonatkozik-e. Ez a cikk azokat a lépéseket mutatja be, amelyekkel megismerheti és elvégezheti a szervizelést Azure Policy.
 
 ## <a name="how-remediation-security-works"></a>A Szervizelési biztonság működése
 
@@ -182,7 +182,7 @@ Más szervizelési parancsmagok és példák esetében tekintse meg az az [. Pol
 
 A Szervizelési feladatok zökkenőmentes létrehozásához a Azure Portal a házirend-hozzárendelés során. Ha a hozzárendelni kívánt házirend-definíció **deployIfNotExists** vagy **módosítási** hatás, a **szervizelés** lapon lévő varázsló egy _szervizelési feladat létrehozása_ lehetőséget kínál. Ha ez a beállítás be van jelölve, a rendszer a szabályzat-hozzárendeléssel megegyező időpontban létrehoz egy szervizelési feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

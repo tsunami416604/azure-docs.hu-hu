@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: 7515fe7b7e3d2a9d0f1e0497aa226ceb3e6be16c
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085011"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961635"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -21,7 +21,7 @@ A App Service üzembe helyezési motor automatikusan aktiválja a virtuális kö
 Ez az útmutató ismerteti a Python-fejlesztők számára a App Service beépített Linux-tárolóját használó főbb fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [Python](quickstart-python.md) rövid [útmutatóját és a Pythont a PostgreSQL oktatóanyaggal](tutorial-python-postgresql-app.md) .
 
 > [!NOTE]
-> A Linux jelenleg az ajánlott lehetőség a Python-alkalmazások App Service-ben való futtatására. További információ a Windows lehetőségről: [Python a app Service Windows-íz](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
+> A Linux jelenleg az ajánlott lehetőség a Python-alkalmazások App Service-ben való futtatására. További információ a Windows lehetőségről: [Python a app Service Windows-íz](/visualstudio/python/managing-python-on-azure-app-service).
 >
 
 ## <a name="show-python-version"></a>Python-verzió megjelenítése
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
-1. A `pip install -r requirements.txt` parancs futtatása.
+1. Futtassa az `pip install -r requirements.txt` parancsot.
 1. Ha a *Manage.py* a tárház gyökerében található, futtassa a *Manage.py collectstatic*. Ha azonban a értékre `DISABLE_COLLECTSTATIC` van állítva `true` , ez a lépés kimarad.
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
@@ -193,7 +193,7 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 - [A log stream elérése](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
