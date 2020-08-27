@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: c5597528d395c2c8facd4a1b916b1378b659a646
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee788125a5710e5a8b9861c28c4af8e6d83d5d80
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565297"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924537"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Rangsorolási algoritmus az Azure Cognitive Search
 
@@ -105,7 +105,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## <a name="see-also"></a>Lásd még  
 
-+ [REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/)   
++ [REST API referenciája](/rest/api/searchservice/)   
 + [Pontozási profilok hozzáadása az indexhez](index-add-scoring-profiles.md)    
-+ [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-+ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [Index API létrehozása](/rest/api/searchservice/create-index)   
++ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

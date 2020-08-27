@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 726dd4e18565174c8bbf49b204af64129e607db5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714729"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934446"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Hangsegédek implementálása Windows rendszeren
 
@@ -150,7 +151,7 @@ Ha programozott módon szeretné bezárni az alkalmazást a zárolás felett vag
 > [!NOTE]
 > Az alkalmazás bezárható az [alábbi zárolási példány](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)bezárása nélkül. Ebben az esetben a fenti zárolási nézetet a "tisztítás" értékre kell állítani, így biztosítva, hogy a képernyő zárolása után ne kelljen a fenti zárolási nézetet módosítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tekintse meg a példákat és a kódot bemutató UWP hangsegéd minta alkalmazást](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)

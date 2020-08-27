@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 079e3f9219d649d9740d38a8a8452e51b9d84acf
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919709"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL infrastruktúra kettős titkosítása
 
@@ -62,6 +62,12 @@ A Azure Database for MySQL által biztosított titkosítási képességek együt
 Azure Database for MySQL esetében a szolgáltatás által felügyelt kulccsal történő kettős titkosítás támogatása a következő korlátozásokkal jár:
 
 * A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
+* A következő régiókban hozhat létre olyan Azure Database for MySQL, amelyeken engedélyezve van az infrastruktúra-titkosítás:
+
+   * USA keleti régiója
+   * USA déli középső régiója
+   * USA 2. nyugati régiója
+   
 * * Ez a funkció csak a 16 TB-ig terjedő tárterületet támogató régiókban és kiszolgálókon támogatott. A tárterületet 16 TB-ot támogató Azure-régiók listájáért tekintse meg a [Storage dokumentációját](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

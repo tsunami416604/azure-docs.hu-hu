@@ -3,12 +3,12 @@ title: Partíciók terhelésének elosztása több példány között – Azure 
 description: Ismerteti, hogyan lehet terheléselosztást végezni az alkalmazás több példánya között egy eseményvezérelt processzor és az Azure Event Hubs SDK használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8bf3f05b823a784f4f3fc2074719ed346f769f5e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512316"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933793"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>A partíciók terhelésének elosztása az alkalmazás több példánya között
 Az Event Processing-alkalmazás méretezéséhez az alkalmazás több példánya is futtatható, és saját maguk is elérhetik a terhelést. A régebbi verziókban a [EventProcessorHost](event-hubs-event-processor-host.md) lehetővé tette a program több példánya közötti terhelés elosztását és az ellenőrzőpont-események fogadását. Az újabb verziókban (5,0-ig) a **EventProcessorClient** (.net és Java) vagy a **EventHubConsumerClient** (Python és JavaScript) is lehetővé teszi ugyanezt. A fejlesztési modellt az események használatával egyszerűbbé teszik. Előfizet az Önt érdeklő eseményekre egy eseménykezelő regisztrálásával.
@@ -78,17 +78,17 @@ Ha az ellenőrzőpontot egy esemény feldolgozottként való megjelölésére ha
 > Ha Azure Blob Storaget használ az ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK egy másik verzióját, mint az Azure-ban, akkor a Storage szolgáltatás API-verziójának az adott környezet által támogatott verzióra való módosításához programkódot kell használnia. Ha például [egy 2002-es Azure stack hub-os verzióban](/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) vagy [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) vagy  [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ## <a name="thread-safety-and-processor-instances"></a>A szál biztonsági és processzor-példányai
 
 Alapértelmezés szerint az eseményeket feldolgozó függvényt a rendszer szekvenciálisan egy adott partícióra hívja. Az ezt a függvényt érintő további események és hívások ugyanabból a partíciós várólistából a háttérben, ahogy az esemény-szivattyú továbbra is fut a háttérben a többi szálon. Vegye figyelembe, hogy a különböző partíciók eseményei egyszerre is feldolgozhatók, és a partíciók között elérhető megosztott állapotokat szinkronizálni kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg az alábbi rövid útmutatókat:
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)

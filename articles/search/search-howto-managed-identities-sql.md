@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553138"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924129"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása Azure SQL Database felügyelt identitás használatával (előzetes verzió)
 
@@ -44,7 +44,7 @@ A **Mentés** gombra kattintva megjelenik egy objektumazonosító, amely hozzá 
 
 Ha a következő lépésben csatlakozik az adatbázishoz, csatlakoznia kell egy olyan Azure Active Directory (Azure AD) fiókhoz, amely rendszergazdai hozzáféréssel rendelkezik az adatbázishoz ahhoz, hogy a keresési szolgáltatás hozzáférhessen az adatbázishoz.
 
-Kövesse az [itt](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) található utasításokat, és adja meg az Azure ad-fiókja rendszergazdai hozzáférését az adatbázishoz.
+Kövesse az [itt](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-database) található utasításokat, és adja meg az Azure ad-fiókja rendszergazdai hozzáférését az adatbázishoz.
 
 ### <a name="3---assign-the-search-service-permissions"></a>3 – a keresési szolgáltatás engedélyeinek társítása
 
@@ -97,9 +97,9 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad az ada
 
 ### <a name="5---create-the-data-source"></a>5 – az adatforrás létrehozása
 
-A [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Azure SQL Database adatainak indexeléséhez a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
+A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Azure SQL Database adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
 
-Amikor a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával hoz létre adatforrást, az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
+Amikor a [REST API](/rest/api/searchservice/create-data-source)használatával hoz létre adatforrást, az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
 * a **Name** a keresési szolgáltatásban található adatforrás egyedi neve.
 * **típus**`azuresql`
@@ -109,7 +109,7 @@ Amikor a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-dat
         * *Kezdeti katalógus | Adatbázis =**adatbázis neve**; ResourceId =/Subscriptions/**az előfizetés-azonosítóját****az/resourceGroups//Providers/Microsoft.SQL/Servers/** a**SQL Server neve**/; Kapcsolat időtúllépése = a**kapcsolat időtúllépési hossza**;*
 * a **Container (tároló** ) megadja az indexelni kívánt tábla vagy nézet nevét.
 
-Példa Azure SQL adatforrás-objektum létrehozására a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával:
+Példa Azure SQL adatforrás-objektum létrehozására a [REST API](/rest/api/searchservice/create-data-source)használatával:
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -144,7 +144,7 @@ api-key: [admin key]
 }
 ```
 
-További információk az indexek létrehozásáról: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index)
+További információk az indexek létrehozásáról: [create index](/rest/api/searchservice/create-index)
 
 ### <a name="7---create-the-indexer"></a>7 – az indexelő létrehozása
 
@@ -169,13 +169,13 @@ api-key: [admin key]
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 
-Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)című leírást.
+Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](/rest/api/searchservice/create-indexer)című leírást.
 
 Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha hibaüzenet jelenik meg, amikor az indexelő megpróbál csatlakozni az adatforráshoz, amely szerint az ügyfél nem fér hozzá a kiszolgálóhoz, vessen egy pillantást a [gyakori indexelő hibákra](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting).
+Ha hibaüzenet jelenik meg, amikor az indexelő megpróbál csatlakozni az adatforráshoz, amely szerint az ügyfél nem fér hozzá a kiszolgálóhoz, vessen egy pillantást a [gyakori indexelő hibákra](./search-indexer-troubleshooting.md).
 
 ## <a name="see-also"></a>Lásd még
 

@@ -2,13 +2,14 @@
 title: Azure Cloud Services-Application Insights | Microsoft Docs
 description: Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2adcdcdc36fdd41b1f871acbea386beb1d7a9451
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318436"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923857"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.

@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 8c63c979300af4c180751b3824def0cb974ee186
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 750ce2d19334f549242c37494a11a1f683469f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400917"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926140"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -555,6 +556,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
 2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az **F5**billentyűt.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

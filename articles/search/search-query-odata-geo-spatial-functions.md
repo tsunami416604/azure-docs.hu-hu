@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202010"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934837"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Searchban – `geo.distance` és`geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Searchban – `geo.distance` és `geo.intersects`
 
 Az Azure Cognitive Search támogatja a Geo-térbeli lekérdezéseket a [OData-szűrési kifejezésekben](query-odata-filter-orderby-syntax.md) a `geo.distance` és `geo.intersects` függvények használatával. A `geo.distance` függvény két pont közötti távolságot adja vissza, amelyek közül az egyik egy mező-vagy tartomány-változó, és a szűrő részeként egy konstans lett átadva. A `geo.intersects` függvény akkor adja vissza `true` , ha egy adott pont egy adott sokszögen belül van, ahol a pont egy mező-vagy tartomány-változó, és a sokszög a szűrő részeként megadott konstansként van megadva.
 
@@ -84,7 +84,7 @@ A földrajzi pont állandója az űrlap `geography'POINT(<longitude> <latitude>)
 
 A `geo.intersects` függvény egy típus és egy állandó változót használ, `Edm.GeographyPoint` `Edm.GeographyPolygon` és egy értéket ad vissza `Edm.Boolean`  --  `true` , ha a pont a sokszög határain belül van, `false` ellenkező esetben.
 
-A sokszög egy kétdimenziós felület, amely egy határoló gyűrűt definiáló pontok sorozata (lásd az alábbi [példákat](#examples) ). A sokszöget le kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. [A sokszögben lévő pontoknak nem megfelelő sorrendben kell lenniük](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+A sokszög egy kétdimenziós felület, amely egy határoló gyűrűt definiáló pontok sorozata (lásd az alábbi [példákat](#examples) ). A sokszöget le kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. [A sokszögben lévő pontoknak nem megfelelő sorrendben kell lenniük](/rest/api/searchservice/supported-data-types#Anchor_1).
 
 ### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geo-térbeli lekérdezések és sokszögek, amelyek a 180th meridiánt átívelően
 
@@ -92,7 +92,7 @@ Számos, a 180th Meridian-t (a Dátumvonali közelében) tartalmazó lekérdezé
 
 Az Azure Cognitive Search-ban a 180 fokos hosszúságú földrajzi térbeli lekérdezések a várt módon fognak működni, ha a lekérdezési alakzat téglalap alakú, és a koordináták a hosszúság és a szélesség (például:) rácsos elrendezésére vannak igazítva `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'` . Ellenkező esetben a nem téglalap alakú vagy nem igazított alakzatok esetében vegye figyelembe a felosztott sokszög megközelítését.  
 
-### <a name="geo-spatial-functions-and-null"></a>Geo-térbeli függvények és`null`
+### <a name="geo-spatial-functions-and-null"></a>Geo-térbeli függvények és `null`
 
 Az Azure Cognitive Search összes többi nem gyűjteményéhez hasonlóan a típusú mezők `Edm.GeographyPoint` is tartalmazhatnak `null` értékeket. Amikor az Azure Cognitive Search kiértékel `geo.intersects` egy mezőt `null` , az eredmény mindig a következő lesz: `false` . Ebben az esetben a viselkedése a `geo.distance` kontextustól függ:
 
@@ -109,7 +109,7 @@ Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kil
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-A megadott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a hely egy típusú mező `Edm.GeographyPoint` ). Vegye figyelembe, hogy a sokszög le van zárva (az első és az utolsó pontnak azonosnak kell lennie), és [a pontoknak](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)a következő sorrendben kell szerepelniük.
+A megadott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a hely egy típusú mező `Edm.GeographyPoint` ). Vegye figyelembe, hogy a sokszög le van zárva (az első és az utolsó pontnak azonosnak kell lennie), és [a pontoknak](/rest/api/searchservice/supported-data-types#Anchor_1)a következő sorrendben kell szerepelniük.
 
 ```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -134,4 +134,4 @@ Rendezheti a szállodákat csökkenő sorrendben `search.score` , a és a alapj�
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

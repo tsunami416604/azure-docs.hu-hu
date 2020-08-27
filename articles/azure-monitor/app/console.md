@@ -3,13 +3,14 @@ title: Azure-Application Insights a konzol alkalmazásaihoz | Microsoft Docs
 description: Webes alkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 ms.topic: conceptual
 ms.date: 05/21/2020
+ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98f1ea8a4994515b437841174ae95563ea53ed88
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310463"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933341"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
@@ -36,7 +37,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> A telemetria nincs azonnal elküldve. A telemetria elemek kötegelt és a ApplicationInsights SDK által küldött kötegek. A konzolos alkalmazásokban, amelyek közvetlenül a metódusok meghívása után lépnek fel `Track()` , a telemetria nem küldhetők el, kivéve, ha `Flush()` `Sleep` / `Delay` az alkalmazás kilép, amint az a jelen cikk későbbi [részében](#full-example) látható. `Sleep`a használata esetén nem szükséges `InMemoryChannel` . Aktív probléma merült fel, amely a következő `Sleep` nyomon követéséhez szükséges: [ApplicationInsights-DotNet/Issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
+> A telemetria nincs azonnal elküldve. A telemetria elemek kötegelt és a ApplicationInsights SDK által küldött kötegek. A konzolos alkalmazásokban, amelyek közvetlenül a metódusok meghívása után lépnek fel `Track()` , a telemetria nem küldhetők el, kivéve, ha `Flush()` `Sleep` / `Delay` az alkalmazás kilép, amint az a jelen cikk későbbi [részében](#full-example) látható. `Sleep` a használata esetén nem szükséges `InMemoryChannel` . Aktív probléma merült fel, amely a következő `Sleep` nyomon követéséhez szükséges: [ApplicationInsights-DotNet/Issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * A [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) Package legújabb verziójának telepítése – automatikusan nyomon követi a http, az SQL vagy más külső függőségi hívásokat.
@@ -44,7 +45,7 @@ telemetryClient.TrackTrace("Hello World!");
 A kód vagy a fájl használatával Application Insights inicializálható és konfigurálható `ApplicationInsights.config` . Győződjön meg arról, hogy az inicializálás a lehető leghamarabb megtörténik. 
 
 > [!NOTE]
-> A **ApplicationInsights.configra** hivatkozó utasítások csak a .NET-keretrendszert célzó alkalmazásokra vonatkoznak, és a .net Core-alkalmazásokra nem érvényesek.
+> A **ApplicationInsights.configra ** hivatkozó utasítások csak a .NET-keretrendszert célzó alkalmazásokra vonatkoznak, és a .net Core-alkalmazásokra nem érvényesek.
 
 ### <a name="using-config-file"></a>Konfigurációs fájl használata
 

@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: devx-track-python
-ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843624"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933358"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -34,7 +34,7 @@ A Service-környezetekben az összetevőkből származó nyomkövetési adatok k
 
 ## <a name="example"></a>Példa
 
-Lássunk erre egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngészője a használatával nyit meg `GET /Home/Stock` . Az alkalmazás a HTTP-hívás használatával kérdezi le a Stock API-t `GET /api/stock/value` .
+Lássunk egy példát. A tőzsdei díjak nevű alkalmazás a készlet aktuális piaci árát jeleníti meg egy Stock nevű külső API használatával. A tőzsdei díjszabási alkalmazás rendelkezik egy Stock oldal nevű oldallal, amelyet az ügyfél webböngészője a használatával nyit meg `GET /Home/Stock` . Az alkalmazás a HTTP-hívás használatával kérdezi le a Stock API-t `GET /api/stock/value` .
 
 Az eredményül kapott telemetria a következő lekérdezés futtatásával elemezheti:
 
@@ -210,11 +210,11 @@ A [OpenTracing adatmodell-specifikációja](https://opentracing.io/) és Applica
 
 | Application Insights                   | OpenTracing                                        |
 |------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span`a`span.kind = server`                    |
-| `Dependency`                           | `Span`a`span.kind = client`                    |
+| `Request`, `PageView`                  | `Span` a `span.kind = server`                    |
+| `Dependency`                           | `Span` a `span.kind = client`                    |
 | `Id``Request`és`Dependency`     | `SpanId`                                            |
 | `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference`típus `ChildOf` (a szülő span)     |
+| `Operation_ParentId`                   | `Reference` típus `ChildOf` (a szülő span)     |
 
 További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md).
 
@@ -308,12 +308,12 @@ A naplózási adatai a használatával exportálhatók `AzureLogHandler` . Tová
 
 Az idő múlásával a .NET számos módszert definiált a telemetria és diagnosztikai naplók összekapcsolásához:
 
-- `System.Diagnostics.CorrelationManager`lehetővé teszi a [LogicalOperationStack és a tevékenységazonosító](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)nyomon követését.
-- `System.Diagnostics.Tracing.EventSource`és Windows esemény-nyomkövetés (ETW) határozza meg a [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metódust.
-- `ILogger`a [naplózási hatóköröket](/aspnet/core/fundamentals/logging#log-scopes)használja.
+- `System.Diagnostics.CorrelationManager` lehetővé teszi a [LogicalOperationStack és a tevékenységazonosító](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)nyomon követését.
+- `System.Diagnostics.Tracing.EventSource` és Windows esemény-nyomkövetés (ETW) határozza meg a [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metódust.
+- `ILogger` a [naplózási hatóköröket](/aspnet/core/fundamentals/logging#log-scopes)használja.
 - A Windows Communication Foundation (WCF) és a HTTP-átvitel "aktuális" kontextus-propagálást használ.
 
-Ezek a módszerek azonban nem engedélyezték az automatikus elosztott nyomkövetés támogatását. `DiagnosticSource`támogatja az automatikus gépek közötti korrelációt. A .NET-kódtárak támogatják `DiagnosticSource` és engedélyezik a korrelációs környezet automatikus, a szállításon keresztüli propagálását, például a http-t.
+Ezek a módszerek azonban nem engedélyezték az automatikus elosztott nyomkövetés támogatását. `DiagnosticSource` támogatja az automatikus gépek közötti korrelációt. A .NET-kódtárak támogatják `DiagnosticSource` és engedélyezik a korrelációs környezet automatikus, a szállításon keresztüli propagálását, például a http-t.
 
 A [tevékenység felhasználói útmutatója](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) `DiagnosticSource` ismerteti a tevékenységek követésének alapjait.
 
@@ -370,7 +370,7 @@ A [Java-ügynök](./java-in-process-agent.md) , valamint a [Java SDK](../../azur
 
   A Spring boot Starter automatikusan hozzárendeli `cloudRoleName` a `spring.application.name` tulajdonsághoz megadott értéket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)írása.
 - A ASP.NET Core-és ASP.NET speciális korrelációs forgatókönyvei: [Egyéni műveletek nyomon követése](custom-operations-tracking.md).

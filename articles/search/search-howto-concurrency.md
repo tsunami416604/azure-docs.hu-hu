@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 5171db64f931d59d4f5b66143072cfc8153e8775
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145287"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935194"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Az egyidejűség kezelése az Azure-ban Cognitive Search
 
@@ -22,14 +22,14 @@ Az Azure Cognitive Search-erőforrások, például az indexek és az adatforrás
 > [!Tip]
 > A [mintául szolgáló C#-megoldás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) fogalmi kódja azt ismerteti, hogyan működik a Egyidejűség-vezérlés az Azure Cognitive Searchban. A kód olyan feltételeket hoz létre, amelyek a Egyidejűség vezérlését hívják meg. Az [alábbi kódrészlet](#samplecode) beolvasása valószínűleg elegendő a legtöbb fejlesztő számára, de ha futtatni szeretné, szerkessze appsettings.jsa szolgáltatást a szolgáltatás nevének és a felügyeleti API-kulcsnak a hozzáadásához. A szolgáltatás URL-címe `http://myservice.search.windows.net` a szolgáltatás neve `myservice` .
 
-## <a name="how-it-works"></a>A működési elv
+## <a name="how-it-works"></a>Működés
 
 Az optimista Egyidejűség az API-hívások indexekre, indexelő anyagokba, adatforrásokra és synonymMap-erőforrásokra való írásával valósítható meg.
 
 Minden erőforráshoz tartozik egy [*ETAG*](https://en.wikipedia.org/wiki/HTTP_ETag) , amely az objektum verziószámára vonatkozó információkat biztosít. A ETag első ellenőrzésével elkerülheti az egyidejű frissítéseket egy tipikus munkafolyamatban (Beolvasás, helyi frissítés), mivel gondoskodik arról, hogy az erőforrás ETag megfeleljen a helyi másolatnak.
 
-+ A REST API egy [ETAG](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) használ a kérelem fejlécében.
-+ A .NET SDK a ETag egy accessCondition-objektumon keresztül állítja be, az [IF-Match beállítással | If-Match-none fejléc](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) az erőforráson. A [IResourceWithETag (.net SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) rendszerből örökölt objektumok accessCondition objektummal rendelkeznek.
++ A REST API egy [ETAG](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) használ a kérelem fejlécében.
++ A .NET SDK a ETag egy accessCondition-objektumon keresztül állítja be, az [IF-Match beállítással | If-Match-none fejléc](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) az erőforráson. A [IResourceWithETag (.net SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) rendszerből örökölt objektumok accessCondition objektummal rendelkeznek.
 
 Minden alkalommal, amikor frissít egy erőforrást, a ETag automatikusan megváltozik. A párhuzamossági felügyelet megvalósítása során mindössze egy olyan előfeltételt hoz létre a frissítési kérelemnél, amely megköveteli, hogy a távoli erőforrás ugyanazzal a ETag rendelkezzen, mint az ügyfélen módosított erőforrás másolata. Ha egy egyidejű folyamat már megváltoztatta a távoli erőforrást, a ETag nem felel meg az előfeltételnek, és a kérés sikertelen lesz a HTTP 412-nél. Ha a .NET SDK-t használja, ez a jegyzékfájl, `CloudException` ahol a `IsAccessConditionFailed()` bővítmény metódus igaz értéket ad vissza.
 
@@ -217,6 +217,6 @@ A következő minták egyikének módosításával Etagek vagy AccessCondition o
 
 ## <a name="see-also"></a>Lásd még
 
-[Gyakori HTTP-kérelem és válasz-fejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
- [Http-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
- [Indexelési műveletek (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Gyakori HTTP-kérelem és válasz-fejlécek](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ [Http-állapotkódok](/rest/api/searchservice/http-status-codes) 
+ [Indexelési műveletek (REST API)](/rest/api/searchservice/index-operations)

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2211dbe8a5e336ec10562bb8a66ed0e8cc2a9e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208755"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935177"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -30,7 +30,7 @@ Bizonyos helyzetekben hasznosak lehetnek a mezők leképezése:
 * Az adatai Base64 kódolása vagy dekódolása szükséges. A mező-hozzárendelések több **leképezési funkciót**is támogatnak, beleértve a Base64 kódoláshoz és a dekódoláshoz használható függvényeket.
 
 > [!NOTE]
-> Az indexelő mezőkhöz tartozó leképezések egyszerű módot biztosítanak az adatmezők index mezőibe történő leképezésére, és némi képességgel rendelkeznek a könnyű adatátalakításra. Az összetettebb adatfeldolgozáshoz szükség lehet az előzetes feldolgozásra, hogy egy olyan űrlapra alakítsa át, amely az indexelést eredményezi. Lehetséges, hogy az egyik lehetőség a [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
+> Az indexelő mezőkhöz tartozó leképezések egyszerű módot biztosítanak az adatmezők index mezőibe történő leképezésére, és némi képességgel rendelkeznek a könnyű adatátalakításra. Az összetettebb adatfeldolgozáshoz szükség lehet az előzetes feldolgozásra, hogy egy olyan űrlapra alakítsa át, amely az indexelést eredményezi. Lehetséges, hogy az egyik lehetőség a [Azure Data Factory](../data-factory/index.yml).
 
 ## <a name="set-up-field-mappings"></a>Mezők leképezésének beállítása
 
@@ -47,7 +47,7 @@ A mező-hozzárendelések az `fieldMappings` Indexelő definíciójának tömbje
 
 ## <a name="map-fields-using-the-rest-api"></a>Mezők leképezése a REST API használatával
 
-Az [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) API-kérelem használatával új indexelő létrehozásakor mező-hozzárendeléseket adhat hozzá. Az [Indexelő](https://docs.microsoft.com/rest/api/searchservice/update-indexer) API-kérelem használatával kezelheti egy meglévő indexelő mező-hozzárendeléseit.
+Az [Indexelő](/rest/api/searchservice/create-Indexer) API-kérelem használatával új indexelő létrehozásakor mező-hozzárendeléseket adhat hozzá. Az [Indexelő](/rest/api/searchservice/update-indexer) API-kérelem használatával kezelheti egy meglévő indexelő mező-hozzárendeléseit.
 
 Például a következő módon képezhető le egy forrás mezőt egy célként megadott mezőre egy másik névvel:
 
@@ -80,7 +80,7 @@ A forrás mező több mező-hozzárendelésre is hivatkozhat. Az alábbi példa 
 
 ## <a name="map-fields-using-the-net-sdk"></a>Mezők leképezése a .NET SDK használatával
 
-A [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza a tulajdonságokat, valamint a `SourceFieldName` `TargetFieldName` választható `MappingFunction` hivatkozást.
+A [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza a tulajdonságokat, valamint a `SourceFieldName` `TargetFieldName` választható `MappingFunction` hivatkozást.
 
 Az indexelő létrehozásakor vagy később a tulajdonság közvetlen beállításával megadhatja a mezők leképezését `Indexer.FieldMappings` .
 
@@ -125,7 +125,7 @@ Egy mező-hozzárendelési függvény átalakítja egy mező tartalmát, mielőt
 
 #### <a name="example---document-key-lookup"></a>Példa – dokumentum kulcsának keresése
 
-Csak az URL-alapú biztonságos karakterek szerepelhetnek az Azure Cognitive Search-dokumentum kulcsában (mivel az ügyfeleknek a [keresési API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) használatával tudniuk kell kezelni a dokumentumot). Ha a kulcs forrás mezőjében URL-nem biztonságos karakterek szerepelnek, akkor a függvény használatával `base64Encode` átalakíthatja az indexelési időt. Azonban a dokumentum kulcsa (az átalakítás előtt és után is) nem lehet hosszabb 1 024 karakternél.
+Csak az URL-alapú biztonságos karakterek szerepelhetnek az Azure Cognitive Search-dokumentum kulcsában (mivel az ügyfeleknek a [keresési API](/rest/api/searchservice/lookup-document) használatával tudniuk kell kezelni a dokumentumot). Ha a kulcs forrás mezőjében URL-nem biztonságos karakterek szerepelnek, akkor a függvény használatával `base64Encode` átalakíthatja az indexelési időt. Azonban a dokumentum kulcsa (az átalakítás előtt és után is) nem lehet hosszabb 1 024 karakternél.
 
 Ha a beolvasott kulcsot keresési időpontban kéri le, a függvény használatával beolvashatja `base64Decode` az eredeti kulcs értékét, és használhatja azt a forrásbizonylat lekéréséhez.
 
@@ -200,10 +200,10 @@ Az Azure Cognitive Search két különböző Base64-kódolást támogat. Ugyanez
 
 Az Azure Cognitive Search támogatja az URL-alapú biztonságos Base64-kódolást és a normál Base64-kódolást. Az indexelés során Base64 kódolású karakterláncot később kell dekódolni ugyanazzal a kódolási lehetőségekkel, különben az eredmény nem egyezik az eredetivel.
 
-Ha a `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` kódoláshoz és a dekódoláshoz szükséges paraméterek a (z) értékre vannak beállítva `true` , akkor a következőképpen `base64Encode` viselkedik: [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) , és `base64Decode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Ha a `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` kódoláshoz és a dekódoláshoz szükséges paraméterek a (z) értékre vannak beállítva `true` , akkor a következőképpen `base64Encode` viselkedik: [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) , és `base64Decode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8).
 
 > [!WARNING]
-> Ha `base64Encode` a kulcs értékének megadására szolgál, akkor igaz értékre kell `useHttpServerUtilityUrlTokenEncode` állítani. A kulcsok értékeihez csak az URL-alapú biztonságos Base64-kódolást lehet használni. Lásd: az [Azure Cognitive Search&#41;elnevezési szabályai &#40;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) az összes korlátozást a kulcsok értékeiben.
+> Ha `base64Encode` a kulcs értékének megadására szolgál, akkor igaz értékre kell `useHttpServerUtilityUrlTokenEncode` állítani. A kulcsok értékeihez csak az URL-alapú biztonságos Base64-kódolást lehet használni. Lásd: az [Azure Cognitive Search&#41;elnevezési szabályai &#40;](/rest/api/searchservice/naming-rules) az összes korlátozást a kulcsok értékeiben.
 
 A .NET-kódtárak az Azure-ban Cognitive Search feltételezik a teljes .NET-keretrendszert, amely beépített kódolást biztosít. A `useHttpServerUtilityUrlTokenEncode` és a `useHttpServerUtilityUrlTokenDecode` beállítások ezt a beépített funkciót használják. Ha .NET Core-t vagy más keretrendszert használ, javasoljuk, hogy ezeket a beállításokat úgy állítsa be, hogy `false` közvetlenül a keretrendszer kódolási és dekódolási funkcióit hívja meg.
 

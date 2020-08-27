@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 982073c77a7e876611f753c716f55c50df8b0817
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208806"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935160"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -31,8 +31,8 @@ Az Indexelő szolgáltatást igény szerint vagy ismétlődő adatfrissítési �
 Az indexelők létrehozása és kezelése a következő módszerekkel történhet:
 
 * [Portál > adatimportálás varázsló](search-import-data-portal.md)
-* [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [Szolgáltatás REST API-ja](/rest/api/searchservice/Indexer-operations)
+* [.NET SDK](/dotnet/api/microsoft.azure.search.iindexersoperations)
 
 Az új indexelőket először előzetes verziójú funkcióként vezetjük be. Az előzetes verziójú funkciók API-kban (REST és .NET) kerülnek bemutatásra, majd később, azok általánosan elérhetővé tétele után integráljuk őket a portál rendszerével. Új indexelő kiértékelése esetén érdemes számolni azzal, hogy kódírásra is sor fog kerülni.
 
@@ -95,24 +95,24 @@ A következő képen egy példa indexelő [hibakeresési munkamenetének](cognit
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
-Az indexelő beolvassa az adatforrás-kapcsolatokat *egy adatforrás-objektumból* . Az adatforrás-definíció egy kapcsolati karakterláncot és esetleg hitelesítő adatokat biztosít. Az erőforrás létrehozásához hívja meg a [create datasource](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API vagy az [DataSource osztályt](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) .
+Az indexelő beolvassa az adatforrás-kapcsolatokat *egy adatforrás-objektumból* . Az adatforrás-definíció egy kapcsolati karakterláncot és esetleg hitelesítő adatokat biztosít. Az erőforrás létrehozásához hívja meg a [create datasource](/rest/api/searchservice/create-data-source) REST API vagy az [DataSource osztályt](/dotnet/api/microsoft.azure.search.models.datasource) .
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
 ### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
-Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. A mezőknek meg kell egyezniük a név és az adattípus alapján. Az indexek strukturálásával kapcsolatos további információkért lásd: [index létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) vagy [index osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). A mezők társításával kapcsolatos segítségért lásd: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.
+Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. A mezőknek meg kell egyezniük a név és az adattípus alapján. Az indexek strukturálásával kapcsolatos további információkért lásd: [index létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Index) vagy [index osztály](/dotnet/api/microsoft.azure.search.models.index). A mezők társításával kapcsolatos segítségért lásd: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.
 
 > [!Tip]
 > Az indexelők nem tudnak indexet létrehozni Önnek, de a portál **Adatok importálása** varázslója a segítségére lehet ebben. A legtöbb esetben a varázsló következtetni tud az indexsémára a forrás meglévő metaadataiból, és előállít egy olyan előzetes indexsémát, amely beágyazott módon szerkeszthető mindaddig, amíg a varázsló aktív. Miután létrejött az index a szolgáltatásban, a további szerkesztés a portálon a legtöbb esetben új mezők hozzáadására van korlátozva. A varázsló használatát érdemes megfontolnia az indexek létrehozásakor, de az áttekintésükkor nem. A gyakorlati tanuláshoz végezze el a [portál útmutatójában](search-get-started-portal.md) foglalt lépéseket.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>3. lépés: Az indexelő létrehozása és ütemezése
-Az indexelő definíciója egy olyan szerkezet, amely az adatfeldolgozással kapcsolatos összes elemet egyesíti. A szükséges elemek közé tartozik az adatforrás és az index. A választható elemek közé tartozik az ütemterv és a mező leképezése. A mező-hozzárendelés csak akkor választható, ha a forrás mezők és az index mezők világosan megfelelnek. Az indexelő strukturálásával kapcsolatos további információkért lásd: az [Indexelő létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Az indexelő definíciója egy olyan szerkezet, amely az adatfeldolgozással kapcsolatos összes elemet egyesíti. A szükséges elemek közé tartozik az adatforrás és az index. A választható elemek közé tartozik az ütemterv és a mező leképezése. A mező-hozzárendelés csak akkor választható, ha a forrás mezők és az index mezők világosan megfelelnek. Az indexelő strukturálásával kapcsolatos további információkért lásd: az [Indexelő létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
 ## <a name="run-indexers-on-demand"></a>Indexelő futtatása igény szerint
 
-Habár az indexelés ütemezését közösen is megteheti, az indexelő a [Run paranccsal](https://docs.microsoft.com/rest/api/searchservice/run-indexer)is igény szerint hívható meg:
+Habár az indexelés ütemezését közösen is megteheti, az indexelő a [Run paranccsal](/rest/api/searchservice/run-indexer)is igény szerint hívható meg:
 
 ```http
 POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
@@ -128,7 +128,7 @@ Az indexelő állapotát a portálon vagy az indexelő status API-n keresztül k
 
 ## <a name="get-indexer-status"></a>Indexelő állapotának beolvasása
 
-Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
+Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](/rest/api/searchservice/get-indexer-status)kérheti le:
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -167,7 +167,7 @@ A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő)
 
 A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtást tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (így a legutóbbi végrehajtás a válaszban elsőként jelenik meg).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

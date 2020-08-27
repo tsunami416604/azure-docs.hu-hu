@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ced05e8ccd04775df189e9dff1af1fdaa990f3b2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e83faee7d72026dafc50b21d0a0773e663e5a03a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751669"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933111"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -224,7 +224,7 @@ During a run there are two applications of an identity:
 1. The user applies an identity to access resources from within the code for a submitted run
     
     * In this case, the user must provide the *client_id* corresponding to the managed identity they want to use to retrieve a credential. 
-    * Alternatively, AML exposes the user-assigned identity's client id through the *DEFAULT_IDENTITY_CLIENT_ID* environment variable.
+    * Alternatively, AML exposes the user-assigned identity's client ID through the *DEFAULT_IDENTITY_CLIENT_ID* environment variable.
     
     For example, to retrieve a token for a datastore with the default managed identity:
     
@@ -424,6 +424,112 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
+### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
+
+A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. A számítási célként Azure Machine Learning folyamattal is használható.
+
+Használat előtt hozzon létre egy Azure Databricks munkaterületet. Munkaterület-erőforrás létrehozásához tekintse [meg a Spark-feladatok futtatása Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) dokumentumon című témakört.
+
+Azure Databricks számítási célként való csatolásához adja meg a következő információkat:
+
+* __Databricks számítási név__: a számítási erőforráshoz hozzárendelni kívánt név.
+* __Databricks-munkaterület neve__: az Azure Databricks munkaterület neve.
+* __Databricks hozzáférési jogkivonat__: a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) dokumentumot.
+
+Az alábbi kód azt mutatja be, hogyan csatolható Azure Databricks számítási célként a Azure Machine Learning SDK-val (__az Databricks-munkaterületnek ugyanabban az előfizetésben kell lennie, mint a pénzmosás-munkaterület__):
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, DatabricksCompute
+from azureml.exceptions import ComputeTargetException
+
+databricks_compute_name = os.environ.get(
+    "AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_workspace_name = os.environ.get(
+    "AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get(
+    "AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
+databricks_access_token = os.environ.get(
+    "AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(
+        workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
+    print('databricks_access_token {}'.format(databricks_access_token))
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group=databricks_resource_group,
+                                                           workspace_name=databricks_workspace_name,
+                                                           access_token=databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+        ws,
+        databricks_compute_name,
+        attach_config
+    )
+
+    databricks_compute.wait_for_completion(True)
+```
+
+Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-databricks) .
+
+### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
+
+A Azure Data Lake Analytics egy big data elemzési platform az Azure-felhőben. A számítási célként Azure Machine Learning folyamattal is használható.
+
+Használat előtt hozzon létre egy Azure Data Lake Analytics fiókot. Az erőforrás létrehozásához tekintse meg az [Ismerkedés a Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentummal című témakört.
+
+Data Lake Analytics számítási célként való csatolásához a Azure Machine Learning SDK-t kell használnia, és meg kell adnia a következő információkat:
+
+* __Számítási név__: a számítási erőforráshoz hozzárendelni kívánt név.
+* __Erőforráscsoport__: az Data Lake Analytics fiókot tartalmazó erőforráscsoport.
+* __Fiók neve__: a Data Lake Analytics fiók neve.
+
+A következő kód bemutatja, hogyan csatolhatja Data Lake Analytics számítási célként:
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, AdlaCompute
+from azureml.exceptions import ComputeTargetException
+
+
+adla_compute_name = os.environ.get(
+    "AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_group = os.environ.get(
+    "AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get(
+    "AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group=adla_resource_group,
+                                                     account_name=adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+        ws,
+        adla_compute_name,
+        attach_config
+    )
+
+    adla_compute.wait_for_completion(True)
+```
+
+Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](https://aka.ms/pl-adla) .
+
+> [!TIP]
+> Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) másolhatja az Adatmásolást a betanítás előtt.
+
 ## <a name="set-up-in-azure-machine-learning-studio"></a>Beállítás a Azure Machine Learning Studióban
 
 A munkaterülethez társított számítási célokat a Azure Machine Learning Studióban érheti el.  A Studio segítségével a következőket végezheti el:
@@ -468,7 +574,7 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. Töltse ki az űrlapot. Adja meg a szükséges tulajdonságokat, különösen a virtuálisgép- **családot**, valamint a számítás felgyorsításához használni kívánt **csomópontok maximális** értékét.  
 
-1. Kattintson a __Létrehozás__ gombra.
+1. Válassza a __Létrehozás__ lehetőséget.
 
 
 1. A létrehozási művelet állapotának megtekintéséhez válassza ki a listából a számítási célt:

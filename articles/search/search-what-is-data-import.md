@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202303"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932763"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Az adatimportálás áttekintése – Azure Cognitive Search
 
@@ -34,12 +34,12 @@ Ez a megközelítés rugalmasabb a lekéréses modellnél, mivel dokumentumokat 
 
 Az alábbi API-kat használhatja egy vagy több dokumentum indexbe való betöltésére:
 
-+ [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) vagy [indexBatch osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction osztály](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) vagy [indexBatch osztály](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 A portálon keresztül történő adatleküldéshez jelenleg nincsenek támogató eszközök.
 
-Az egyes módszerek bevezetését lásd: gyors útmutató [: azure Cognitive Search index létrehozása a PowerShell](search-create-index-rest-api.md) -lel vagy a C# gyors üzembe helyezésével [: Azure Cognitive Search index létrehozása a .net SDK használatával](search-get-started-dotnet.md).
+Az egyes módszerek bevezetését lásd: gyors útmutató [: azure Cognitive Search index létrehozása a PowerShell](./search-get-started-powershell.md) -lel vagy a C# gyors üzembe helyezésével [: Azure Cognitive Search index létrehozása a .net SDK használatával](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -52,7 +52,7 @@ A REST API a JSON-kéréseket tartalmazó HTTP POST kérelmeket az Azure Cogniti
 A .NET SDK-ban csomagolja ki az adatait egy `IndexBatch` objektumba. Az egy `IndexBatch` objektumokból álló gyűjteményt ágyaz be `IndexAction` , amely tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely közli az Azure-Cognitive Search, hogy milyen műveletet hajtson végre az adott dokumentumban. A kód például a [C#](search-get-started-dotnet.md)gyors üzembe helyezési útmutatójában található.
 
 
-| @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések |
+| @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Jegyzetek |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Az `upload` művelet működése hasonló az „upsert” (frissítés/beszúrás) műveletéhez, ahol a rendszer az új dokumentumot beilleszti, ha pedig már létező dokumentumról van szó, akkor frissíti/kicseréli azt. |billentyű, továbbá a meghatározni kívánt egyéb mezők |Létező dokumentum frissítése/cseréje esetén a kérésben nem megadott mezők beállítása a következő lesz: `null`. Ez történik abban az esetben is, ha a mező korábban nem null értékre lett beállítva. |
 | `merge` |Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. A .NET SDK-ban a következő típusú mezők szerepelnek: `DataType.Collection(DataType.String)` . A REST API a következő típusú mezőket tartalmazza: `Collection(Edm.String)` . Ha például a dokumentum egy `["budget"]` értékű `tags` mezőt tartalmaz, és egyesítést hajt végre a `tags` mező `["economy", "pool"]` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`. |
@@ -61,7 +61,7 @@ A .NET SDK-ban csomagolja ki az adatait egy `IndexBatch` objektumba. Az egy `Ind
 
 ### <a name="formulate-your-query"></a>A lekérdezés meghatározása
 
-Kétféleképpen [keresheti meg az indexet a REST API használatával](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kérés URL-címén belül. A lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
+Kétféleképpen [keresheti meg az indexet a REST API használatával](/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kérés URL-címén belül. A lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
 
 A POST és a GET esetében egyaránt meg kell adnia a *szolgáltatás nevét*, az *index nevét*és az *API-verziót* a kérelem URL-címében. 
 

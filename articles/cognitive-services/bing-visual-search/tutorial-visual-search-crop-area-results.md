@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
-ms.openlocfilehash: 3c331faad3c49b91defc9f081352eda80c701b4a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 84cbdfbf4d34e1779fc119e4b6a92a3bbec88bdc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205385"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925130"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Oktatóanyag: kép körülvágása a C Bing Visual Search SDK-val #
 
@@ -69,7 +70,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>Az URL-cím adatainak beolvasása`ImageModuleAction`
+## <a name="get-the-url-data-from-imagemoduleaction"></a>Az URL-cím adatainak beolvasása `ImageModuleAction`
 
 Bing Visual Search eredmények `ImageTag` objektumok. Mindegy egyes címke `ImageAction` objektumok listáját tartalmazza. Mindegyik `ImageAction` tartalmaz egy `Data` mezőt, amely a művelet típusától függő értékek listáját tartalmazza.
 
@@ -108,7 +109,7 @@ A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalak�
     }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)
 

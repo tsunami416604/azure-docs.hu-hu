@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146133"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934888"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>A hibás helyesírási hibák és az elírások kijavítása a zavaros kereséssel
 
@@ -82,7 +82,7 @@ Ha az eredmények nem egyértelműek, a [találatok kiemelése](search-paginatio
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>1. példa: fuzzy keresés a pontos kifejezéssel
 
-Tegyük fel, hogy a következő sztring létezik egy `"Description"` keresési dokumentum egy mezőjében:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Tegyük fel, hogy a következő sztring létezik egy `"Description"` keresési dokumentum egy mezőjében: `"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 Kezdje egy fuzzy kereséssel a "speciális" kifejezésre, és vegyen fel találatot kiemelve a Leírás mezőbe:
 
@@ -136,5 +136,5 @@ Ennek a kibővített példának a lényege, hogy illusztrálja, hogy a találato
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)
-+ [Lekérdezés a .NET-ben](search-query-dotnet.md)
-+ [A lekérdezés a REST-ben](search-create-index-rest-api.md)
++ [Lekérdezés a .NET-ben](./search-get-started-dotnet.md)
++ [A lekérdezés a REST-ben](./search-get-started-powershell.md)

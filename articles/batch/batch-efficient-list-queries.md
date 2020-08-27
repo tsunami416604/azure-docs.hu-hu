@@ -3,13 +3,13 @@ title: Hatékony lista-lekérdezések tervezése
 description: Növelje a teljesítményt a lekérdezések szűrésével, amikor adatokat kér a Batch-erőforrásokról, például a készletekről, a feladatokról, a tevékenységekről és a számítási csomópontokról.
 ms.topic: how-to
 ms.date: 06/18/2020
-ms.custom: seodec18
-ms.openlocfilehash: bcf99dbc55d708af70a28155a3f98c20003e51f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960605"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933514"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Lekérdezések létrehozása a Batch-erőforrások hatékony listázásához
 
@@ -88,8 +88,8 @@ Ez a példa a karakterlánc kibontásával meghatározza, hogy a statisztikai ad
 - Az összes tulajdonságnév megkülönbözteti a kis-és nagybetűket, de a tulajdonságértékek a kis-és nagybetűk megkülönböztetése.
 - A dátum/idő karakterláncok két formátum egyike lehet, és előtte kell lennie `DateTime` .
   
-  - W3C-DTF formátum például:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  - RFC 1123 formátumú példa:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  - W3C-DTF formátum például: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  - RFC 1123 formátumú példa: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 - A logikai karakterláncok `true` vagy vagy `false` .
 - Ha érvénytelen tulajdonság vagy operátor van megadva, a rendszer egy `400 (Bad Request)` hibát eredményez.
 

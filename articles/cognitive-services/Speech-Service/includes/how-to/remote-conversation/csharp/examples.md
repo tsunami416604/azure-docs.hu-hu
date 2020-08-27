@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 58fa9361cc591f7d2b78a19f3db620112e288592
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 51b919c97a15946f57211cf8fe12d7c5efe435bf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284216"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934640"
 ---
 ## <a name="upload-the-audio"></a>A hang feltöltése
 
@@ -109,7 +110,7 @@ Telepítse a **Microsoft. CognitiveServices. Speech. Remoteconversation verziót
 
 ### <a name="sample-transcription-code"></a>Példa transzkripciós kód
 
-Miután létrehozta a `conversationId` -t, hozzon létre egy távoli beszélgetési **RemoteConversationTranscriptionClient** az ügyfélalkalmazás számára az aszinkron átírás állapotának lekérdezéséhez. Hozzon létre egy **RemoteConversationTranscriptionOperation** objektumot egy hosszú ideig futó [művelet](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) objektum beszerzéséhez. Megtekintheti a művelet állapotát, vagy megvárhatja, hogy befejeződjön. 
+Miután létrehozta a `conversationId` -t, hozzon létre egy távoli beszélgetési **RemoteConversationTranscriptionClient** az ügyfélalkalmazás számára az aszinkron átírás állapotának lekérdezéséhez. Hozzon létre egy  **RemoteConversationTranscriptionOperation** objektumot egy hosszú ideig futó [művelet](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) objektum beszerzéséhez. Megtekintheti a művelet állapotát, vagy megvárhatja, hogy befejeződjön. 
 
 ```csharp
 // Create the speech config

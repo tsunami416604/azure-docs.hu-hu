@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/26/2020
+ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875455"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932950"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -102,7 +102,7 @@ A gyűjtemények, általában tömbök, karakterláncok és esetenként a szót�
 
 | Gyűjtési függvény | Tevékenység |
 | ------------------- | ---- |
-| [tartalmazza](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Győződjön meg arról, hogy egy gyűjteménynek van-e konkrét eleme. |
+| [tartalmaz](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Győződjön meg arról, hogy egy gyűjteménynek van-e konkrét eleme. |
 | [üres](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Győződjön meg arról, hogy a gyűjtemény üres. |
 | [első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Egy gyűjtemény első elemének visszaadása. |
 | [kereszteződés](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Olyan gyűjteményt ad vissza, amely *csak* a megadott gyűjtemények közös elemeit tartalmazta. |
@@ -509,7 +509,7 @@ Ez a példa a `status` Twitter-művelet tulajdonság értékét olvassa be `Get 
 actions('Get_user').outputs.body.status
 ```
 
-És visszaadja ezt az eredményt:`"Succeeded"`
+És visszaadja ezt az eredményt: `"Succeeded"`
 
 <a name="add"></a>
 
@@ -539,7 +539,7 @@ Ez a példa hozzáadja a megadott számokat:
 add(1, 1.5)
 ```
 
-És visszaadja ezt az eredményt:`2.5`
+És visszaadja ezt az eredményt: `2.5`
 
 <a name="addDays"></a>
 
@@ -571,7 +571,7 @@ Ez a példa 10 napot ad hozzá a megadott időbélyeghez:
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-25T00:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-25T00:00:0000000Z"`
 
 *2\. példa*
 
@@ -581,7 +581,7 @@ Ez a példa öt napot kivon a megadott időbélyegből:
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-10T00:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
@@ -613,7 +613,7 @@ Ez a példa 10 órát ad hozzá a megadott időbélyeghez:
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T10:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T10:00:0000000Z"`
 
 *2\. példa*
 
@@ -623,7 +623,7 @@ Ez a példa öt órát kivon a megadott időbélyegből:
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T10:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -655,7 +655,7 @@ Ez a példa 10 percet ad hozzá a megadott időbélyeghez:
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T00:20:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T00:20:00.0000000Z"`
 
 *2\. példa*
 
@@ -665,7 +665,7 @@ Ez a példa öt percet kivon a megadott időbélyegből:
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T00:15:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
@@ -796,7 +796,7 @@ Ez a példa 10 másodpercet ad hozzá a megadott időbélyeghez:
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T00:00:10.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T00:00:10.0000000Z"`
 
 *2\. példa*
 
@@ -806,7 +806,7 @@ Ez a példa öt másodpercet kivon a megadott időbélyegre:
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T00:00:25.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
@@ -840,7 +840,7 @@ Ez a példa egy napot ad hozzá a megadott időbélyeghez:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-És visszaadja ezt az eredményt:`"2018-01-02T00:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-01-02T00:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -850,7 +850,7 @@ Ez a példa egy napot ad hozzá a megadott időbélyeghez:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-És visszaadja az eredményt a nem kötelező "D" formátum használatával:`"Tuesday, January 2, 2018"`
+És visszaadja az eredményt a nem kötelező "D" formátum használatával: `"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
@@ -934,7 +934,7 @@ Ez a példa egy tömböt hoz létre a "Hello" sztringből:
 array('hello')
 ```
 
-És visszaadja ezt az eredményt:`["hello"]`
+És visszaadja ezt az eredményt: `["hello"]`
 
 <a name="base64"></a>
 
@@ -967,7 +967,7 @@ Ez a példa a "Hello" karakterláncot Base64 kódolású karakterlánccá alakí
 base64('hello')
 ```
 
-És visszaadja ezt az eredményt:`"aGVsbG8="`
+És visszaadja ezt az eredményt: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
@@ -1035,7 +1035,7 @@ Ez a példa a "aGVsbG8 =" Base64 kódolású karakterláncot csak karakterláncc
 base64ToString('aGVsbG8=')
 ```
 
-És visszaadja ezt az eredményt:`"hello"`
+És visszaadja ezt az eredményt: `"hello"`
 
 <a name="binary"></a>
 
@@ -1120,7 +1120,7 @@ body('Get_user')
 
 ### <a name="bool"></a>logikai
 
-Egy érték logikai verziójának visszaadása.
+Egy érték logikai változatának visszaadása.
 
 ```
 bool(<value>)
@@ -1128,27 +1128,27 @@ bool(<value>)
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Igen | Bármely | Az átalakítandó érték |
+| <*érték*> | Igen | Bármely | A logikai értékké konvertálandó érték. |
 |||||
+
+Ha `bool()` objektumot használ, az objektum értékének egy olyan sztringnek vagy egész számnak kell lennie, amely logikai értékké konvertálható.
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| true (igaz) vagy false (hamis) | Logikai | A megadott érték logikai verziója |
+| `true` vagy `false` | Logikai | A megadott érték logikai verziója. |
 ||||
 
-*Példa*
+*Kimenetek*
 
-Ezek a példák logikai értékekre alakítják át a megadott értékeket:
+Ezek a példák a különböző támogatott típusú bemeneti típusokat mutatják `bool()` :
 
-```
-bool(1)
-bool(0)
-```
-
-És a következő eredményeket adja vissza:
-
-* Első példa:`true`
-* Második példa:`false`
+| Bemeneti érték | Típus | Visszatérési érték |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | Egész szám | `true` |
+| `bool(0)` | Egész szám    | `false` |
+| `bool(-1)` | Egész szám | `true` |
+| `bool('true')` | Sztring | `true` |
+| `bool('false')` | Sztring | `false` |
 
 <a name="coalesce"></a>
 
@@ -1183,9 +1183,9 @@ coalesce(null, null, null)
 
 És a következő eredményeket adja vissza:
 
-* Első példa:`true`
-* Második példa:`"hello"`
-* Harmadik példa:`null`
+* Első példa: `true`
+* Második példa: `"hello"`
+* Harmadik példa: `null`
 
 <a name="concat"></a>
 
@@ -1215,7 +1215,7 @@ Ez a példa a "Hello" és a "World" karakterláncokat ötvözi:
 concat('Hello', 'World')
 ```
 
-És visszaadja ezt az eredményt:`"HelloWorld"`
+És visszaadja ezt az eredményt: `"HelloWorld"`
 
 <a name="contains"></a>
 
@@ -1293,7 +1293,7 @@ Ez a példa egy időbélyeget konvertál a megadott időzónába:
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-És visszaadja ezt az eredményt:`"2018-01-01T00:00:00.0000000"`
+És visszaadja ezt az eredményt: `"2018-01-01T00:00:00.0000000"`
 
 *2\. példa*
 
@@ -1303,7 +1303,7 @@ Ez a példa egy időbélyeget konvertál a megadott időzónába és formátumba
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-És visszaadja ezt az eredményt:`"Monday, January 1, 2018"`
+És visszaadja ezt az eredményt: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
@@ -1336,7 +1336,7 @@ Ez a példa a forrás időzónát a cél időzónára konvertálja:
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-És visszaadja ezt az eredményt:`"2018-01-01T00:00:00.0000000"`
+És visszaadja ezt az eredményt: `"2018-01-01T00:00:00.0000000"`
 
 *2\. példa*
 
@@ -1346,7 +1346,7 @@ Ez a példa egy időzónát konvertál a megadott időzónába és formátumba:
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-És visszaadja ezt az eredményt:`"Monday, January 1, 2018"`
+És visszaadja ezt az eredményt: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
@@ -1378,7 +1378,7 @@ Ez a példa a következő időbélyeget konvertálja UTC-re:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-És visszaadja ezt az eredményt:`"2018-01-01T08:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-01-01T08:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -1388,7 +1388,7 @@ Ez a példa a következő időbélyeget konvertálja UTC-re:
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-És visszaadja ezt az eredményt:`"Monday, January 1, 2018"`
+És visszaadja ezt az eredményt: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
@@ -1419,7 +1419,7 @@ Ez a példa egy tömböt hoz létre ezekből a bemenetekről:
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-És visszaadja ezt az eredményt:`["h", "e", "l", "l", "o"]`
+És visszaadja ezt az eredményt: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
@@ -1449,7 +1449,7 @@ Ez a példa létrehoz egy adaturi-t a "Hello" karakterlánchoz:
 dataUri('hello')
 ```
 
-És visszaadja ezt az eredményt:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+És visszaadja ezt az eredményt: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
@@ -1516,7 +1516,7 @@ Ez a példa karakterláncot hoz létre ehhez az adaturi-hoz:
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-És visszaadja ezt az eredményt:`"hello"`
+És visszaadja ezt az eredményt: `"hello"`
 
 <a name="dayOfMonth"></a>
 
@@ -1546,7 +1546,7 @@ Ez a példa a hónap napjának számát adja vissza ebből az időbélyegből:
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-És visszaadja ezt az eredményt:`15`
+És visszaadja ezt az eredményt: `15`
 
 <a name="dayOfWeek"></a>
 
@@ -1576,7 +1576,7 @@ Ez a példa a hét napjának számát adja vissza ebből az időbélyegből:
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-És visszaadja ezt az eredményt:`4`
+És visszaadja ezt az eredményt: `4`
 
 <a name="dayOfYear"></a>
 
@@ -1606,7 +1606,7 @@ Ez a példa az év napjának számát adja vissza ebből az időbélyegből:
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-És visszaadja ezt az eredményt:`74`
+És visszaadja ezt az eredményt: `74`
 
 <a name="decodeBase64"></a>
 
@@ -1680,7 +1680,7 @@ Ez a példa dekódolású verziókkal helyettesíti a karakterlánc Escape-karak
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-És visszaadja ezt az eredményt:`"https://contoso.com"`
+És visszaadja ezt az eredményt: `"https://contoso.com"`
 
 <a name="div"></a>
 
@@ -1705,7 +1705,7 @@ div(<dividend>, <divisor>)
 
 *1\. példa*
 
-Mindkét példa egész típusú értékkel adja vissza ezt az értéket:`2`
+Mindkét példa egész típusú értékkel adja vissza ezt az értéket: `2`
 
 ```
 div(10,5)
@@ -1714,7 +1714,7 @@ div(11,5)
 
 *2\. példa*
 
-Mindkét példa lebegőpontos típussal adja vissza ezt az értéket:`2.2`
+Mindkét példa lebegőpontos típussal adja vissza ezt az értéket: `2.2`
 
 ```
 div(11,5.0)
@@ -1752,7 +1752,7 @@ Ez a példa egy URI-kódolású verziót hoz létre ehhez a karakterlánchoz:
 encodeUriComponent('https://contoso.com')
 ```
 
-És visszaadja ezt az eredményt:`"http%3A%2F%2Fcontoso.com"`
+És visszaadja ezt az eredményt: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -1821,7 +1821,7 @@ Ez a példa ellenőrzi, hogy a "Hello World" karakterlánc a "World" karakterlá
 endsWith('hello world', 'world')
 ```
 
-És visszaadja ezt az eredményt:`true`
+És visszaadja ezt az eredményt: `true`
 
 *2\. példa*
 
@@ -1831,7 +1831,7 @@ Ez a példa ellenőrzi, hogy a "Hello World" karakterlánc a "Universe" karakter
 endsWith('hello world', 'universe')
 ```
 
-És visszaadja ezt az eredményt:`false`
+És visszaadja ezt az eredményt: `false`
 
 <a name="equals"></a>
 
@@ -1900,8 +1900,8 @@ first(createArray(0, 1, 2))
 
 És az eredmények visszaadása:
 
-* Első példa:`"h"`
-* Második példa:`0`
+* Első példa: `"h"`
+* Második példa: `0`
 
 <a name="float"></a>
 
@@ -1932,7 +1932,7 @@ Ez a példa egy karakterlánc-verziót hoz létre ehhez a lebegőpontos számhoz
 float('10.333')
 ```
 
-És visszaadja ezt az eredményt:`10.333`
+És visszaadja ezt az eredményt: `10.333`
 
 <a name="formatDateTime"></a>
 
@@ -1963,7 +1963,7 @@ Ez a példa egy időbélyeget konvertál a megadott formátumba:
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T12:00:00"`
+És visszaadja ezt az eredményt: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
@@ -1994,7 +1994,7 @@ Ez a példa egy tömböt hoz létre a "tulajdonos" kulcs értékétől a megadot
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-És visszaadja a tárgy szövegét egy tömbben, például:`["Hello world"]`
+És visszaadja a tárgy szövegét egy tömbben, például: `["Hello world"]`
 
 <a name="formDataValue"></a>
 
@@ -2026,7 +2026,7 @@ Ez a példa egy karakterláncot hoz létre a "tulajdonos" kulcs értékével a m
 formDataValue('Send_an_email', 'Subject')
 ```
 
-És karakterláncként adja vissza a tárgy szövegét, például:`"Hello world"`
+És karakterláncként adja vissza a tárgy szövegét, például: `"Hello world"`
 
 <a name="formatNumber"></a>
 
@@ -2113,7 +2113,7 @@ Ez a példa öt napot tesz a következő időbélyeghez:
 getFutureTime(5, 'Day')
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-06T00:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-06T00:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -2124,7 +2124,7 @@ Ez a példa öt napot ad hozzá, és az eredményt "D" formátumra alakítja át
 getFutureTime(5, 'Day', 'D')
 ```
 
-És visszaadja ezt az eredményt:`"Tuesday, March 6, 2018"`
+És visszaadja ezt az eredményt: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
@@ -2157,7 +2157,7 @@ Ez a példa öt napot kivon az időbélyegből:
 getPastTime(5, 'Day')
 ```
 
-És visszaadja ezt az eredményt:`"2018-01-27T00:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-01-27T00:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -2168,7 +2168,7 @@ Ebben a példában öt napot kell kivonnia, és az eredményt "D" formátumra ko
 getPastTime(5, 'Day', 'D')
 ```
 
-És visszaadja ezt az eredményt:`"Saturday, January 27, 2018"`
+És visszaadja ezt az eredményt: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
@@ -2204,8 +2204,8 @@ greater('apple', 'banana')
 
 És az eredmények visszaadása:
 
-* Első példa:`true`
-* Második példa:`false`
+* Első példa: `true`
+* Második példa: `false`
 
 <a name="greaterOrEquals"></a>
 
@@ -2241,8 +2241,8 @@ greaterOrEquals('apple', 'banana')
 
 És az eredmények visszaadása:
 
-* Első példa:`true`
-* Második példa:`false`
+* Első példa: `true`
+* Második példa: `false`
 
 <a name="guid"></a>
 
@@ -2278,7 +2278,7 @@ Ez a példa ugyanazt a GUID azonosítót hozza létre, de 32 számjegyből áll,
 guid('P')
 ```
 
-És visszaadja ezt az eredményt:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+És visszaadja ezt az eredményt: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
@@ -2341,7 +2341,7 @@ Ez a példa megkeresi a "világ" alsztring kezdő indexének értékét a "Hello
 indexOf('hello world', 'world')
 ```
 
-És visszaadja ezt az eredményt:`6`
+És visszaadja ezt az eredményt: `6`
 
 <a name="int"></a>
 
@@ -2371,7 +2371,7 @@ Ez a példa egy egész verziót hoz létre a (z) "10" karakterlánchoz:
 int('10')
 ```
 
-És visszaadja ezt az eredményt:`10`
+És visszaadja ezt az eredményt: `10`
 
 <a name="item"></a>
 
@@ -2555,7 +2555,7 @@ Ez a példa átalakítja ezt a karakterláncot a JSON-értékre:
 json('[1, 2, 3]')
 ```
 
-És visszaadja ezt az eredményt:`[1, 2, 3]`
+És visszaadja ezt az eredményt: `[1, 2, 3]`
 
 *2\. példa*
 
@@ -2627,7 +2627,7 @@ Ez a példa a következő tömbökben lévő gyakori elemeket keresi:
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-És egy olyan tömböt ad vissza, amely *csak* az alábbi elemekből áll:`[1, 2]`
+És egy olyan tömböt ad vissza, amely *csak* az alábbi elemekből áll: `[1, 2]`
 
 <a name="join"></a>
 
@@ -2658,7 +2658,7 @@ Ez a példa egy karakterláncot hoz létre a tömb összes eleméről a megadott
 join(createArray('a', 'b', 'c'), '.')
 ```
 
-És visszaadja ezt az eredményt:`"a.b.c"`
+És visszaadja ezt az eredményt: `"a.b.c"`
 
 <a name="last"></a>
 
@@ -2692,8 +2692,8 @@ last(createArray(0, 1, 2, 3))
 
 És a következő eredményeket adja vissza:
 
-* Első példa:`"d"`
-* Második példa:`3`
+* Első példa: `"d"`
+* Második példa: `3`
 
 <a name="lastindexof"></a>
 
@@ -2772,7 +2772,7 @@ length('abcd')
 length(createArray(0, 1, 2, 3))
 ```
 
-És az eredmény visszaadása:`4`
+És az eredmény visszaadása: `4`
 
 <a name="less"></a>
 
@@ -2808,8 +2808,8 @@ less('banana', 'apple')
 
 És az eredmények visszaadása:
 
-* Első példa:`true`
-* Második példa:`false`
+* Első példa: `true`
+* Második példa: `false`
 
 <a name="lessOrEquals"></a>
 
@@ -2845,8 +2845,8 @@ lessOrEquals('apply', 'apple')
 
 És az eredmények visszaadása:
 
-* Első példa:`true`
-* Második példa:`false`
+* Első példa: `true`
+* Második példa: `false`
 
 <a name="listCallbackUrl"></a>
 
@@ -2872,7 +2872,7 @@ Ez a példa egy minta visszahívási URL-címet mutat be, amelyet a függvény v
 
 <a name="max"></a>
 
-### <a name="max"></a>Max
+### <a name="max"></a>max.
 
 Egy listából vagy tömbből származó legmagasabb értéket ad vissza, amelynek a száma mindkét végén szerepel.
 
@@ -2901,7 +2901,7 @@ max(1, 2, 3)
 max(createArray(1, 2, 3))
 ```
 
-És az eredmény visszaadása:`3`
+És az eredmény visszaadása: `3`
 
 <a name="min"></a>
 
@@ -2934,7 +2934,7 @@ min(1, 2, 3)
 min(createArray(1, 2, 3))
 ```
 
-És az eredmény visszaadása:`1`
+És az eredmény visszaadása: `1`
 
 <a name="mod"></a>
 
@@ -2966,7 +2966,7 @@ Ez a példa a második szám szerint osztja el az első számot:
 mod(3, 2)
 ```
 
-És az eredmény visszaadása:`1`
+És az eredmény visszaadása: `1`
 
 <a name="mul"></a>
 
@@ -3000,8 +3000,8 @@ mul(1.5, 2)
 
 És az eredmények visszaadása:
 
-* Első példa:`2`
-* Második példa`3`
+* Első példa: `2`
+* Második példa `3`
 
 <a name="multipartBody"></a>
 
@@ -3221,7 +3221,7 @@ Ez a példa a megadott paraméter értékét kéri le:
 parameters('fullName')
 ```
 
-És visszaadja ezt az eredményt:`"Sophia Owen"`
+És visszaadja ezt az eredményt: `"Sophia Owen"`
 
 <a name="rand"></a>
 
@@ -3252,7 +3252,7 @@ Ez a példa egy véletlenszerű egész számot kap a megadott tartományból, ki
 rand(1, 5)
 ```
 
-És visszaadja az alábbi számok egyikét a következő eredményként:,,, `1` `2` `3` vagy`4`
+És visszaadja az alábbi számok egyikét a következő eredményként:,,, `1` `2` `3` vagy `4`
 
 <a name="range"></a>
 
@@ -3283,7 +3283,7 @@ Ez a példa egy egész tömböt hoz létre, amely a megadott indextől kezdődik
 range(1, 4)
 ```
 
-És visszaadja ezt az eredményt:`[1, 2, 3, 4]`
+És visszaadja ezt az eredményt: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
@@ -3315,7 +3315,7 @@ Ez a példa megkeresi a "régi" karakterláncot a "régi" karakterláncban, és 
 replace('the old string', 'old', 'new')
 ```
 
-És visszaadja ezt az eredményt:`"the new string"`
+És visszaadja ezt az eredményt: `"the new string"`
 
 <a name="removeProperty"></a>
 
@@ -3656,7 +3656,7 @@ Ez a példa egy elemet távolít el, a 0 számot a megadott tömb elejéről:
 skip(createArray(0, 1, 2, 3), 1)
 ```
 
-Ezt a tömböt a többi elemmel együtt adja vissza:`[1,2,3]`
+Ezt a tömböt a többi elemmel együtt adja vissza: `[1,2,3]`
 
 <a name="split"></a>
 
@@ -3687,7 +3687,7 @@ Ez a példa egy olyan tömböt hoz létre, amely alsztringekkel rendelkezik a me
 split('a_b_c', '_')
 ```
 
-És ezt a tömböt adja vissza eredményként:`["a","b","c"]`
+És ezt a tömböt adja vissza eredményként: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 
@@ -3718,7 +3718,7 @@ Ez a példa megkeresi a nap kezdetét ehhez az időbélyeghez:
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T00:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
@@ -3749,7 +3749,7 @@ Ez a példa megkeresi az óra kezdetét ehhez az időbélyeghez:
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-15T13:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
@@ -3780,7 +3780,7 @@ Ez a példa az időbélyeg hónapjának kezdetét adja vissza:
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-01T00:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-01T00:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -3790,7 +3790,7 @@ Ez a példa a hónap kezdetét adja vissza a megadott formátumban a következő
 startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
 ```
 
-És visszaadja ezt az eredményt:`"2018-03-01"`
+És visszaadja ezt az eredményt: `"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3823,7 +3823,7 @@ Ez a példa ellenőrzi, hogy a "Hello World" karakterlánc a "Hello" alkarakterl
 startsWith('hello world', 'hello')
 ```
 
-És visszaadja ezt az eredményt:`true`
+És visszaadja ezt az eredményt: `true`
 
 *2\. példa*
 
@@ -3833,7 +3833,7 @@ Ez a példa ellenőrzi, hogy a "Hello World" karakterlánc a "köszöntések" al
 startsWith('hello world', 'greetings')
 ```
 
-És visszaadja ezt az eredményt:`false`
+És visszaadja ezt az eredményt: `false`
 
 <a name="string"></a>
 
@@ -3867,7 +3867,7 @@ Ez a példa a következő karakterlánc-verziót hozza létre ehhez a számhoz:
 string(10)
 ```
 
-És visszaadja ezt az eredményt:`"10"`
+És visszaadja ezt az eredményt: `"10"`
 
 *2\. példa*
 
@@ -3877,7 +3877,7 @@ Ez a példa egy karakterláncot hoz létre a megadott JSON-objektumhoz, és a fo
 string( { "name": "Sophie Owen" } )
 ```
 
-És visszaadja ezt az eredményt:`"{ \\"name\\": \\"Sophie Owen\\" }"`
+És visszaadja ezt az eredményt: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
@@ -3908,7 +3908,7 @@ Ez a példa kivonja a második számot az első számból:
 sub(10.3, .3)
 ```
 
-És visszaadja ezt az eredményt:`10`
+És visszaadja ezt az eredményt: `10`
 
 <a name="substring"></a>
 
@@ -3941,7 +3941,7 @@ Ez a példa egy öt karakterből álló alkarakterláncot hoz létre a megadott 
 substring('hello world', 6, 5)
 ```
 
-És visszaadja ezt az eredményt:`"world"`
+És visszaadja ezt az eredményt: `"world"`
 
 <a name="subtractFromTime"></a>
 
@@ -3975,7 +3975,7 @@ Ez a példa egy napot kivonja ebből az időbélyegből:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-És visszaadja ezt az eredményt:`"2018-01-01T00:00:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-01-01T00:00:00:0000000Z"`
 
 *2\. példa*
 
@@ -3985,7 +3985,7 @@ Ez a példa egy napot kivonja ebből az időbélyegből:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 ```
 
-És visszaadja ezt az eredményt a nem kötelező "D" formátum használatával:`"Monday, January, 1, 2018"`
+És visszaadja ezt az eredményt a nem kötelező "D" formátum használatával: `"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
@@ -4020,8 +4020,8 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 És az eredmények visszaadása:
 
-* Első példa:`"abc"`
-* Második példa:`[0, 1, 2]`
+* Első példa: `"abc"`
+* Második példa: `[0, 1, 2]`
 
 <a name="ticks"></a>
 
@@ -4071,7 +4071,7 @@ Ez a példa kisbetűsre alakítja át ezt a karakterláncot:
 toLower('Hello World')
 ```
 
-És visszaadja ezt az eredményt:`"hello world"`
+És visszaadja ezt az eredményt: `"hello world"`
 
 <a name="toUpper"></a>
 
@@ -4101,7 +4101,7 @@ Ez a példa nagybetűvé alakítja át ezt a karakterláncot:
 toUpper('Hello World')
 ```
 
-És visszaadja ezt az eredményt:`"HELLO WORLD"`
+És visszaadja ezt az eredményt: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
@@ -4170,7 +4170,7 @@ Ez a példa egy olyan tömböt hoz létre a "feedUrl" kulcs értékében egy RSS
 triggerFormDataMultiValues('feedUrl')
 ```
 
-És ezt a tömböt adja vissza példaként eredményként:`["http://feeds.reuters.com/reuters/topNews"]`
+És ezt a tömböt adja vissza példaként eredményként: `["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4201,7 +4201,7 @@ Ez a példa egy RSS-trigger űrlap-vagy űrlap-kódolású kimenetében lévő "
 triggerFormDataValue('feedUrl')
 ```
 
-És ezt a karakterláncot adja vissza példaként eredményként:`"http://feeds.reuters.com/reuters/topNews"`
+És ezt a karakterláncot adja vissza példaként eredményként: `"http://feeds.reuters.com/reuters/topNews"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4268,7 +4268,7 @@ Ez a példa eltávolítja a kezdő és záró szóközt a (z) ""Helló világ!"a
 trim(' Hello World  ')
 ```
 
-És visszaadja ezt az eredményt:`"Hello World"`
+És visszaadja ezt az eredményt: `"Hello World"`
 
 <a name="union"></a>
 
@@ -4300,7 +4300,7 @@ Ez a példa a gyűjtemények *összes* elemét lekéri:
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
-És visszaadja ezt az eredményt:`[1, 2, 3, 10, 101]`
+És visszaadja ezt az eredményt: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
@@ -4332,7 +4332,7 @@ Ez a példa egy URI-kódolású verziót hoz létre ehhez a karakterlánchoz:
 uriComponent('https://contoso.com')
 ```
 
-És visszaadja ezt az eredményt:`"http%3A%2F%2Fcontoso.com"`
+És visszaadja ezt az eredményt: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4397,7 +4397,7 @@ Ez a példa az URI-kódolású karakterlánc dekódolt karakterlánc-verzióját
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-És visszaadja ezt az eredményt:`"https://contoso.com"`
+És visszaadja ezt az eredményt: `"https://contoso.com"`
 
 <a name="uriHost"></a>
 
@@ -4427,7 +4427,7 @@ Ez a példa megkeresi az `host` URI értékét:
 uriHost('https://www.localhost.com:8080')
 ```
 
-És visszaadja ezt az eredményt:`"www.localhost.com"`
+És visszaadja ezt az eredményt: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
@@ -4457,7 +4457,7 @@ Ez a példa megkeresi az `path` URI értékét:
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-És visszaadja ezt az eredményt:`"/catalog/shownew.htm"`
+És visszaadja ezt az eredményt: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
@@ -4487,7 +4487,7 @@ Ez a példa megkeresi az `path` `query` URI azonosítóját és értékeit:
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-És visszaadja ezt az eredményt:`"/catalog/shownew.htm?date=today"`
+És visszaadja ezt az eredményt: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
@@ -4517,7 +4517,7 @@ Ez a példa az `port` URI értékét adja vissza:
 uriPort('http://www.localhost:8080')
 ```
 
-És visszaadja ezt az eredményt:`8080`
+És visszaadja ezt az eredményt: `8080`
 
 <a name="uriQuery"></a>
 
@@ -4547,7 +4547,7 @@ Ez a példa az `query` URI értékét adja vissza:
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-És visszaadja ezt az eredményt:`"?date=today"`
+És visszaadja ezt az eredményt: `"?date=today"`
 
 <a name="uriScheme"></a>
 
@@ -4577,7 +4577,7 @@ Ez a példa az `scheme` URI értékét adja vissza:
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-És visszaadja ezt az eredményt:`"http"`
+És visszaadja ezt az eredményt: `"http"`
 
 <a name="utcNow"></a>
 
@@ -4611,7 +4611,7 @@ Ez a példa az aktuális időbélyeget kapja:
 utcNow()
 ```
 
-És visszaadja ezt az eredményt:`"2018-04-15T13:00:00.0000000Z"`
+És visszaadja ezt az eredményt: `"2018-04-15T13:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -4622,7 +4622,7 @@ Ez a példa az aktuális időbélyeget az opcionális "D" formátum használatá
 utcNow('D')
 ```
 
-És visszaadja ezt az eredményt:`"Sunday, April 15, 2018"`
+És visszaadja ezt az eredményt: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
@@ -4653,7 +4653,7 @@ Ez a példa beolvassa a változó egész értékét:
 variables('numItems')
 ```
 
-És visszaadja ezt az eredményt:`20`
+És visszaadja ezt az eredményt: `20`
 
 <a name="workflow"></a>
 
@@ -4781,7 +4781,7 @@ Az 1. példában szereplő példa az XPath kifejezést adja `'/produce/item/name
 
 `xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-Az eredmény:`Gala`
+Az eredmény: `Gala`
 
 *3\. példa*
 
@@ -4789,7 +4789,7 @@ Az 1. példában szereplő példa az XPath kifejezést adja át, `'/produce/item
 
 `xpath(xml(parameters('items')), '/produce/item/name[last()]')`
 
-Az eredmény:`Honeycrisp`
+Az eredmény: `Honeycrisp`
 
 *4. példa*
 
@@ -4801,7 +4801,7 @@ Ez a példa a következő XPath-kifejezéssel halad `'//name[@expired]'` át, az
 
 `xpath(xml(parameters('items')), '//name[@expired]')`
 
-Az eredmény:`[ Gala, Honeycrisp ]`
+Az eredmény: `[ Gala, Honeycrisp ]`
 
 *5. példa*
 
@@ -4813,7 +4813,7 @@ Ez a példa a következő XPath-kifejezéssel halad `'//name[@expired = 'true']'
 
 `xpath(xml(parameters('items')), '//name[@expired = 'true']')`
 
-Az eredmény:`[ Gala ]`
+Az eredmény: `[ Gala ]`
 
 *6. példa*
 
@@ -4828,7 +4828,7 @@ Ez a példa a következő XPath-kifejezést adja meg `'//name[price>35]'` `name`
 
 `xpath(xml(parameters('items')), '//name[price>35]')`
 
-Az eredmény:`Honeycrisp`
+Az eredmény: `Honeycrisp`
 
 *7. példa*
 
@@ -4840,7 +4840,7 @@ Ez a példa megkeresi a csomópontnak megfelelő csomópontokat, `<count></count
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-Az eredmény:`30`
+Az eredmény: `30`
 
 *8. példa*
 
@@ -4863,9 +4863,9 @@ Itt látható az eredmény csomópont, amely megfelel a `<location></location>` 
 > Például ha egy kifejezést JSON-karakterláncként szerializál, a Escape-karaktereket kell használnia. 
 > Ha azonban a Logic app Designerben vagy a kifejezés-szerkesztőben dolgozik, nem kell elmenekülnie az idézőjelek közé, mert a fordított perjel karaktert a rendszer automatikusan hozzáadja a mögöttes definícióhoz, például:
 > 
-> * Kód nézet:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+> * Kód nézet: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
-> * Kifejezés-szerkesztő:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> * Kifejezés-szerkesztő: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
 *9. példa*
 
@@ -4873,8 +4873,8 @@ A példában szereplő 8. példában a példa az XPath kifejezést használja `'
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-Az eredmény:`Paris`
+Az eredmény: `Paris`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

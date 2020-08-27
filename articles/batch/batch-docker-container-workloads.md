@@ -3,13 +3,13 @@ title: Tárolókhoz kapcsolódó számítási feladatok
 description: Megtudhatja, hogyan futtathatja és méretezheti az alkalmazásokat a Azure Batch tároló lemezképei között. Hozzon létre egy olyan számítási csomópontok készletét, amelyek támogatják a futó tárolók feladatait.
 ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18
-ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: a26582572302f670010f3038147687b47feef84a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726723"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933545"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
 
@@ -56,15 +56,15 @@ A Linux-tárolók számítási feladataihoz a Batch jelenleg a Microsoft Azure B
 
 #### <a name="vm-sizes-without-rdma"></a>VM-méretek RDMA nélkül
 
-- Publisher`microsoft-azure-batch`
-  - Ajánlat`centos-container`
-  - Ajánlat`ubuntu-server-container`
+- Publisher `microsoft-azure-batch`
+  - Ajánlat `centos-container`
+  - Ajánlat `ubuntu-server-container`
 
 #### <a name="vm-sizes-with-rdma"></a>VM-méretek a RDMA
 
-- Publisher`microsoft-azure-batch`
-  - Ajánlat`centos-container-rdma`
-  - Ajánlat`ubuntu-server-container-rdma`
+- Publisher `microsoft-azure-batch`
+  - Ajánlat `centos-container-rdma`
+  - Ajánlat `ubuntu-server-container-rdma`
 
 Ezek a lemezképek csak Azure Batch készletekben használhatók, és a Docker-tárolók futtatására szolgálnak. Ezek a szolgáltatások:
 
@@ -253,7 +253,7 @@ A választható [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcont
 
 ### <a name="container-task-working-directory"></a>Tároló-feladat munkakönyvtára
 
-A Batch-tároló feladat a tároló egyik munkakönyvtárában fut, amely nagyon hasonlít a címtár batch-készletéhez a normál (nem tárolós) feladathoz. Vegye figyelembe, hogy ez a munkakönyvtár különbözik a [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , ha a rendszerképben van konfigurálva, vagy az alapértelmezett tároló munkakönyvtára ( `C:\` Windows-tárolón vagy `/` Linux-tárolón).
+A Batch-tároló feladat a tároló egyik munkakönyvtárában fut, amely nagyon hasonlít a címtár batch-készletéhez a normál (nem tárolós) feladathoz. Vegye figyelembe, hogy ez a munkakönyvtár különbözik a [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) , ha a rendszerképben van konfigurálva, vagy az alapértelmezett tároló munkakönyvtára ( `C:\`  Windows-tárolón vagy `/` Linux-tárolón).
 
 Batch-tároló feladathoz:
 

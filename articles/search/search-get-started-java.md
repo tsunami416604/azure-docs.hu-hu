@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6ac8638efc09efe6d74f634c4042346d738d44ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327531"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924197"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "87327531"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Portál](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -76,7 +76,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 1. Válassza a **fájl**  >  **beállításai**lehetőséget.
 1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven**-  >  **Importálás**lehetőséget.
-1. Jelölje be a **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálva lesznek, amikor a következő lépésben frissíti a pom.xml fájlt.
+1. Jelölje be a  **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálva lesznek, amikor a következő lépésben frissíti a pom.xml fájlt.
 
     ![A Maven importálási lehetőségei a IntelliJ-beállításokban](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
 
@@ -565,13 +565,13 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
 
     A kód futtatásakor keresse meg az "index létrehozása" üzenetet, majd egy 201-es hibakódot. Ez a válasz kód megerősíti, hogy az index létrejött. A futtatásnak egy BUILD SIKERESSÉGi üzenettel és egy nulla (0) kilépési kóddal kell végződnie.
     
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `service` , és adjon hozzá egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `service` , és adjon hozzá egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a  **fájl**lehetőséget, majd adja meg a fájl nevét.
 1. Szúrja be a következő szállodai dokumentumokat a fájlba.
 
     ```json
@@ -685,7 +685,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
 
     A feltöltési kérelem után a rendszer két másodperces szünetet szúr be, amely biztosítja, hogy a dokumentum betöltési folyamata befejeződjön, mielőtt lekérdezi az indexet.
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
 
     Mivel az előző lépésben létrehozta a "Hotels-Gyorsindítás" indexet, a kód törli, majd újra létrehozza újból a szállodai dokumentumok betöltése előtt.
 
@@ -814,7 +814,7 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
 
     A [kifejezéseket kétféleképpen lehet egyeztetni a lekérdezésekben](search-query-overview.md#types-of-queries): teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést keres az `IsSearchable` index mezőiben. A szűrő egy logikai kifejezés, amely egy index mezőin van kiértékelve `IsFilterable` . A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
 
     Keresse meg az egyes lekérdezések összegzését és eredményeit. A futtatásnak SIKERESnek kell lennie a BUILD SIKERe üzenettel és egy nulla (0) kilépési kóddal.
 

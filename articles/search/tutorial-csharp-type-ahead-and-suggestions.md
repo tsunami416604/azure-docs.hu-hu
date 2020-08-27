@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 244809db8efac00124a11ab5c163bfefc9ea7dd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dd93ef68b0e0e7ac465584eaecb3b4c8a0c39476
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420600"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934939"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Oktatóanyag: automatikus kiegészítés és javaslatok hozzáadása a .NET SDK használatával
 
@@ -145,7 +145,7 @@ Kezdjük a legegyszerűbb esettel, ha alternatívákat ajánlunk fel a felhaszn�
  
     ![A "PA" kifejezés beírása az igaz értékre](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    Ha érdekli, a [Lucene lekérdezési szintaxisa az Azure Cognitive Search](https://docs.microsoft.com/azure/search/query-lucene-syntax) ismerteti a fuzzy keresésekben használt logikát.
+    Ha érdekli, a [Lucene lekérdezési szintaxisa az Azure Cognitive Search](./query-lucene-syntax.md) ismerteti a fuzzy keresésekben használt logikát.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Kiemelés hozzáadása a javaslatokhoz
 
@@ -244,7 +244,7 @@ Egy másik változat, amely némileg eltér a javaslatoktól, az autocomplete (n
 
     Figyelje meg, hogy ugyanazt a *javaslati* funkciót használjuk, amelyet a "SG" néven használunk az automatikus kiegészítési keresésben, ahogy a javaslatok esetében tettük (ezért csak a szállodai nevek automatikus kiegészítését próbáljuk ki).
 
-    Számos **AutocompleteMode** -beállítás létezik, és **OneTermWithContext**használunk. További beállítások leírását az [automatikus kiegészítési API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) -ban találja.
+    Számos **AutocompleteMode** -beállítás létezik, és **OneTermWithContext**használunk. További beállítások leírását az [automatikus kiegészítési API](/rest/api/searchservice/autocomplete) -ban találja.
 
 4. Futtassa az alkalmazást. Figyelje meg, hogy a legördülő listában megjelenő beállítások köre egyetlen szó. Próbálja meg beírni a szavakat az "újra" kifejezéssel kezdődően. Figyelje meg, hogy a lehetőségek száma több karakter beírásával csökken.
 
@@ -458,11 +458,9 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Mindig tesztelje az autocomplete függvényeket a bemenet összes formájával.
 * A **setInterval** függvény használata hasznos lehet a felhasználói felületi elemek ellenőrzése és javítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő oktatóanyagban megvizsgáljuk a felhasználói élmény javításának egy másik módját, a dimenziók használatával szűkítheti a keresést egyetlen kattintással.
 
 > [!div class="nextstepaction"]
 > [C# oktatóanyag: dimenziók használata a navigáláshoz – Azure Cognitive Search](tutorial-csharp-facets.md)
-
-

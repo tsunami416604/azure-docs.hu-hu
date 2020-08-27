@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321381"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935211"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Az Azure Cognitive Search adatimportálási varázslója
 
@@ -68,19 +68,19 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 | [**Azure SQL Database vagy SQL felügyelt példány**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati sztring használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati sztring lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet.|
 | **Azure virtuális gépen futó SQL Server** |Adja meg a teljes szolgáltatásnevet, a felhasználói azonosítót és a jelszót, valamint az adatbázist a kapcsolatok karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Útmutatásért lásd: [SQL VM-kapcsolódás az Azure Cognitive Searchhoz](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Megadhat egy lekérdezést, amely lelapul vagy szűrheti a sorhalmazt, vagy hagyja üresen a lekérdezést. A varázslóban nincs szükség lekérdezésre.|
-| [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy tároló. Szükség esetén, ha csoportosítási célból a blob-nevek egy virtuális elnevezési konvenciót követnek, akkor a név virtuáliskönyvtár-részét a tárolóban található mappa neveként is megadhatja. A további információkat [a Blob Storage indexelését](search-howto-indexing-azure-blob-storage.md) ismertető témakör tartalmazza. |
+| [**Azure-Blob Storage**](search-howto-indexing-azure-blob-storage.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy tároló. Szükség esetén, ha csoportosítási célból a blob-nevek egy virtuális elnevezési konvenciót követnek, akkor a név virtuáliskönyvtár-részét a tárolóban található mappa neveként is megadhatja. A további információkat [a Blob Storage indexelését](search-howto-indexing-azure-blob-storage.md) ismertető témakör tartalmazza. |
 | [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy táblanév. Szükség esetén megadhat egy lekérdezést a táblák részhalmazának beolvasásához. A további információkat [a Table Storage indexelését](search-howto-indexing-azure-tables.md) ismertető témakör tartalmazza. |
 
 ## <a name="wizard-output"></a>Varázsló kimenete
 
-A varázsló a háttérben hozza létre, konfigurálja és hívja meg a következő objektumokat. A varázsló futtatása után megkeresheti a kimenetét a portál oldalain. A szolgáltatás Áttekintés lapja indexek, indexelő, adatforrások és szakértelmével listáját tartalmazza. Az index-definíciók teljes JSON-ben megtekinthetők a portálon. Más definíciók esetén a [REST API](https://docs.microsoft.com/rest/api/searchservice/) használatával kérhet le konkrét objektumokat.
+A varázsló a háttérben hozza létre, konfigurálja és hívja meg a következő objektumokat. A varázsló futtatása után megkeresheti a kimenetét a portál oldalain. A szolgáltatás Áttekintés lapja indexek, indexelő, adatforrások és szakértelmével listáját tartalmazza. Az index-definíciók teljes JSON-ben megtekinthetők a portálon. Más definíciók esetén a [REST API](/rest/api/searchservice/) használatával kérhet le konkrét objektumokat.
 
-| Objektum | Description | 
+| Objektum | Leírás | 
 |--------|-------------|
-| [Adatforrás](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Megtartja a kapcsolódási adatokat a forrásadatok, beleértve a hitelesítő adatokat is. Az adatforrás-objektumok kizárólag indexelő alkalmazással használhatók. | 
-| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | A teljes szöveges kereséshez és más lekérdezésekhez használt fizikai adatstruktúra. | 
-| [Készségkészlet](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | A tartalmak manipulálására, átalakítására és alakítására vonatkozó utasítások teljes készlete, beleértve a képfájlokból származó információk elemzését és kinyerését. A nagyon egyszerű és korlátozott szerkezetek kivételével egy Cognitive Services erőforrásra mutató hivatkozást tartalmaz, amely a dúsítást biztosítja. Szükség esetén az is tartalmazhatja az áruház definícióját.  | 
-| [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Egy olyan konfigurációs objektum, amely egy adatforrást, egy célként megadott indexet, egy opcionális készségkészlet, választható ütemtervet és opcionális konfigurációs beállításokat ad meg a hibák és a Base-64 kódoláshoz. |
+| [Adatforrás](/rest/api/searchservice/create-data-source)  | Megtartja a kapcsolódási adatokat a forrásadatok, beleértve a hitelesítő adatokat is. Az adatforrás-objektumok kizárólag indexelő alkalmazással használhatók. | 
+| [Index](/rest/api/searchservice/create-index) | A teljes szöveges kereséshez és más lekérdezésekhez használt fizikai adatstruktúra. | 
+| [Készségkészlet](/rest/api/searchservice/create-skillset) | A tartalmak manipulálására, átalakítására és alakítására vonatkozó utasítások teljes készlete, beleértve a képfájlokból származó információk elemzését és kinyerését. A nagyon egyszerű és korlátozott szerkezetek kivételével egy Cognitive Services erőforrásra mutató hivatkozást tartalmaz, amely a dúsítást biztosítja. Szükség esetén az is tartalmazhatja az áruház definícióját.  | 
+| [Indexelő](/rest/api/searchservice/create-indexer)  | Egy olyan konfigurációs objektum, amely egy adatforrást, egy célként megadott indexet, egy opcionális készségkészlet, választható ütemtervet és opcionális konfigurációs beállításokat ad meg a hibák és a Base-64 kódoláshoz. |
 
 
 ## <a name="how-to-start-the-wizard"></a>A varázsló elindítása
@@ -103,7 +103,7 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 
 1. A mezőlista elkészült? Vegyen fel új mezőket a kihagyott mintavételezésből, és távolítsa el azokat, amelyek nem adhatnak értéket keresési élményhez, vagy nem használhatók [szűrő kifejezésben](search-query-odata-filter.md) vagy [pontozási profilban](index-add-scoring-profiles.md).
 
-1. Megfelelő az adattípus a bejövő adattípusokhoz? Az Azure Cognitive Search támogatja az [Entity adatmodell-(EDM-) adattípusokat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Az Azure SQL-adatok esetében van olyan [leképezési diagram](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) , amely egyenértékű értékeket határoz meg. További hátteret a [mező-hozzárendelések és átalakítások](search-indexer-field-mappings.md)című témakörben talál.
+1. Megfelelő az adattípus a bejövő adattípusokhoz? Az Azure Cognitive Search támogatja az [Entity adatmodell-(EDM-) adattípusokat](/rest/api/searchservice/supported-data-types). Az Azure SQL-adatok esetében van olyan [leképezési diagram](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) , amely egyenértékű értékeket határoz meg. További hátteret a [mező-hozzárendelések és átalakítások](search-indexer-field-mappings.md)című témakörben talál.
 
 1. Van egy mezője, amely *kulcsként*szolgálhat? A mezőnek EDM. stringnek kell lennie, és egyedi módon kell azonosítania a dokumentumot. A kapcsolódó adatértékek esetében előfordulhat, hogy az elsődleges kulcshoz van rendelve. A Blobok esetében ez lehet a következő: `metadata-storage-path` . Ha a mezőértékek szóközöket vagy kötőjeleket tartalmaznak, a **Speciális beállítások**területen a **Base-64 kódolási kulcs** beállítását kell megadnia **a következő** karakterek érvényesítési ellenőrzésének mellőzéséhez.
 
@@ -115,7 +115,7 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 
    + A **beolvasható** érték a keresési eredményekben lévő mezőt adja vissza. A keresési eredményekhez tartalmat biztosító minden mezőnek rendelkeznie kell ezzel az attribútummal. A mező beállítása nem befolyásolja az index méretét.
 
-   + **Szűrhetővé** teszi, hogy a mező hivatkozhat a szűrési kifejezésekben. A **$Filter** kifejezésben használt összes mezőnek rendelkeznie kell ezzel az attribútummal. A szűrési kifejezések pontos egyezéseket biztosítanak. Mivel a szöveges karakterláncok érintetlenek maradnak, további tárterületre van szükség a Verbatim-tartalom befogadásához.
+   + **Szűrhetővé** teszi, hogy a mező hivatkozhat a szűrési kifejezésekben. A **$Filter**  kifejezésben használt összes mezőnek rendelkeznie kell ezzel az attribútummal. A szűrési kifejezések pontos egyezéseket biztosítanak. Mivel a szöveges karakterláncok érintetlenek maradnak, további tárterületre van szükség a Verbatim-tartalom befogadásához.
 
    + A **többtényezős** Navigálás lehetővé teszi a mező számára a sokoldalú navigációt. Csak a **szűrőként** megjelölt mezők jelölhetők **meg.**
 

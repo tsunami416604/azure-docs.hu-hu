@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891095"
+ms.locfileid: "88923449"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene lekérdezési szintaxis az Azure Cognitive Search
 
 Lekérdezéseket írhat az Azure Cognitive Search a speciális lekérdezési űrlapok Rich [Lucene lekérdezési elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) szintaxisa alapján: helyettesítő karakter, fuzzy keresés, közelségi keresés, reguláris kifejezések néhány példa. A Lucene lekérdezés-elemző szintaxisának nagy része [érintetlenül van megvalósítva az azure Cognitive Searchban](search-lucene-query-architecture.md), az Azure-ban Cognitive Search kifejezéseken keresztül létrehozott *tartomány-keresések* kivételével `$filter` . 
 
 > [!NOTE]
-> A teljes Lucene szintaxis a [keresési dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) API **keresési** paramétere által átadott lekérdezési kifejezésekhez használatos, és nem tévesztendő össze az API [$Filter](search-filters.md) paraméteréhez használt [OData-szintaxissal](query-odata-filter-orderby-syntax.md) . Ezek a különböző szintaxisok magukban foglalják a lekérdezések összeállításához, a karakterláncok kiszökéséhez és így tovább.
+> A teljes Lucene szintaxis a [keresési dokumentumok](/rest/api/searchservice/search-documents) API **keresési** paramétere által átadott lekérdezési kifejezésekhez használatos, és nem tévesztendő össze az API [$Filter](search-filters.md) paraméteréhez használt [OData-szintaxissal](query-odata-filter-orderby-syntax.md) . Ezek a különböző szintaxisok magukban foglalják a lekérdezések összeállításához, a karakterláncok kiszökéséhez és így tovább.
 
 ## <a name="invoke-full-parsing"></a>Teljes elemzés meghívása
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-További Példákért lásd: [Lucene-lekérdezési szintaxis példák az Azure Cognitive Search lekérdezések létrehozásához](search-query-lucene-examples.md). A lekérdezési paraméterek teljes feltételének megadásával kapcsolatos részletekért lásd: [dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+További Példákért lásd: [Lucene-lekérdezési szintaxis példák az Azure Cognitive Search lekérdezések létrehozásához](search-query-lucene-examples.md). A lekérdezési paraméterek teljes feltételének megadásával kapcsolatos részletekért lásd: [dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents).
 
 > [!NOTE]  
 >  Az Azure Cognitive Search az [egyszerű lekérdezési szintaxist](query-simple-syntax.md)is támogatja, amely egyszerű és robusztus lekérdezési nyelvet biztosít, amely egyszerű kulcsszavas kereséshez használható.  
@@ -139,7 +139,7 @@ Megadhat egy mezőhöz tartozó keresési műveletet a `fieldName:searchExpressi
 
 Ügyeljen arra, hogy az idézőjelek között több karakterláncot is helyezzen el, ha azt szeretné, hogy mindkét sztring egyetlen entitásként legyen kiértékelve, ebben az esetben a mezőben két különböző előadó keres `artists` .  
 
-A mezőben megadott mezőnek `fieldName:searchExpression` mezőnek kell lennie `searchable` .  További részletekért tekintse meg az index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) című témakört, amely azt ismerteti, hogyan használhatók az index attribútumai.  
+A mezőben megadott mezőnek `fieldName:searchExpression` mezőnek kell lennie `searchable` .  További részletekért tekintse meg az index [létrehozása](/rest/api/searchservice/create-index) című témakört, amely azt ismerteti, hogyan használhatók az index attribútumai.  
 
 > [!NOTE]
 > A mezőn alapuló keresési kifejezések használatakor nem kell használnia a `searchFields` paramétert, mert az egyes mezőkhöz tartozó keresési kifejezésekhez explicit módon van megadva a mezőnév. Azonban továbbra is használhatja a `searchFields` paramétert, ha olyan lekérdezést szeretne futtatni, amelyben bizonyos részek hatóköre egy adott mezőre vonatkozik, a REST pedig több mezőre is vonatkozhat. A lekérdezés például `search=genre:jazz NOT history&searchFields=description` `jazz` csak a `genre` mezőnek felel meg, míg `NOT history` a mezőnek egyeznie kell `description` . A mezőben megadott mezőnév `fieldName:searchExpression` elsőbbséget élvez a `searchFields` paraméterrel szemben, ezért ebben a példában nem kell belefoglalni `genre` a `searchFields` paraméterbe.
@@ -202,6 +202,6 @@ Az Azure Cognitive Search a frekvencia-alapú pontozást ([TF-IDF](https://en.wi
 
 + [Példák az egyszerű keresésre](search-query-simple-examples.md)
 + [Példák a teljes Lucene keresésre](search-query-lucene-examples.md)
-+ [Dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Dokumentumok keresése](/rest/api/searchservice/Search-Documents)
 + [A szűrők és a rendezés OData kifejezésének szintaxisa](query-odata-filter-orderby-syntax.md)   
-+ [Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search](query-simple-syntax.md)   
++ [Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search](query-simple-syntax.md)

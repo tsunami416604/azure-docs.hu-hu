@@ -3,12 +3,13 @@ title: Adatváltozás – LUIS
 description: Megtudhatja, hogyan változtathatók meg az adatváltozások a Language Understanding (LUIS) előrejelzések előtt
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872253"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934667"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>A kiírási adatértékek módosítása az előrejelzés előtt vagy közben
 LUIS lehetővé teszi a Kimondás kezelését a jóslat előtt vagy közben. Ezek közé tartozik a [helyesírás javítása](luis-tutorial-bing-spellcheck.md), valamint az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md)időzóna-problémáinak javítása.
@@ -30,7 +31,7 @@ A végpontnak két paramétert kell megadnia a helyesírási javítások működ
 
 |Param|Érték|
 |--|--|
-|`spellCheck`|logikai|
+|`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) -végpont kulcsa|
 
 Ha [Bing Spell Check API v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) hibát észlel, az eredeti kimaradás és a korrigált Kimondás a végponton lévő előrejelzések mellett történik.
@@ -77,10 +78,10 @@ Ha egy LUIS-alkalmazás az előre elkészített [datetimeV2](luis-reference-preb
 
 ### <a name="v3-prediction-api-to-alter-timezone"></a>V3 előrejelzési API az időzóna módosításához
 
-A v3-as `datetimeReference` verzióban a meghatározza az időzóna eltolását. További információ a [v3-előrejelzések](luis-migration-api-v3.md#v3-post-body)használatáról.
+A v3-as verzióban a `datetimeReference` meghatározza az időzóna eltolását. További információ a [v3-előrejelzések](luis-migration-api-v3.md#v3-post-body)használatáról.
 
 ### <a name="v2-prediction-api-to-alter-timezone"></a>V2 előrejelzési API az időzóna módosításához
-Az időzóna kijavítása úgy történik, hogy a felhasználó időzónáját `timezoneOffset` hozzáadja a végponthoz az API-verzió alapján a paraméter használatával. A paraméter értékének az idő módosításához a pozitív vagy negatív számnak kell lennie percben.
+Az időzóna kijavítása úgy történik, hogy a felhasználó időzónáját hozzáadja a végponthoz az `timezoneOffset` API-verzió alapján a paraméter használatával. A paraméter értékének az idő módosításához a pozitív vagy negatív számnak kell lennie percben.
 
 #### <a name="v2-prediction-daylight-savings-example"></a>V2 előrejelzési nyári megtakarítások – példa
 Ha a visszaadott előre elkészített datetimeV2 kell beállítani a nyári időszámításhoz, akkor a querystring paramétert a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezéséhez percben kell használni.

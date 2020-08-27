@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 8679d6d4c8ff0a6abdf045187c284ca65f43ee7e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a6c498b1f68ca4e8c40a2baf30cc81176a0898bb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80986260"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934691"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -19,11 +20,11 @@ Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-e
 
 Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t. A platformtól függően kövesse az alábbi utasításokat:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET-keretrendszer<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Unity<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">UWP<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET-keretrendszer <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Unity <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">UWP <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="import-dependencies"></a>Függőségek importálása
 
@@ -40,19 +41,19 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet). Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
 
 > [!NOTE]
 > Függetlenül attól, hogy elvégezte-e a beszédfelismerést, a beszédfelismerést, a fordítást vagy a szándék felismerését, mindig hozzon létre egy konfigurációt.
 
-Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet):
+Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) :
 
 * Előfizetéssel: adjon egy kulcsot és a hozzá tartozó régiót.
 * Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
 * Gazdagép esetén: adjon meg egy gazdagép-címeket. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
 * Engedélyezési jogkivonattal: adjon meg egy engedélyezési jogkivonatot és a hozzá tartozó régiót.
 
-Ebben a példában egy előfizetési kulcsot [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) és egy régiót hoz létre. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
+Ebben a példában egy [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) előfizetési kulcsot és egy régiót hoz létre. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
 
 ```csharp
 public class Program 
@@ -71,9 +72,9 @@ public class Program
 
 ## <a name="synthesize-speech-to-a-file"></a>Beszéd készítése fájlba
 
-Ezután létrehoz egy [`SpeechSynthesizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet) objektumot, amely szöveg-beszéd átalakításokat és kimeneteket hajt végre a hangszórók, fájlok vagy más kimeneti adatfolyamok számára. Az [`SpeechSynthesizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet) elfogadva paraméterként az [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) előző lépésben létrehozott objektumot, valamint egy [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) objektumot, amely meghatározza a kimeneti eredmények kezelését.
+Ezután létrehoz egy [`SpeechSynthesizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet) objektumot, amely szöveg-beszéd átalakításokat és kimeneteket hajt végre a hangszórók, fájlok vagy más kimeneti adatfolyamok számára. Az [`SpeechSynthesizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet) elfogadva paraméterként az [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) előző lépésben létrehozott objektumot, valamint egy objektumot, [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) amely meghatározza a kimeneti eredmények kezelését.
 
-Az indításhoz hozzon `AudioConfig` létre egy fájlt, és a `.wav` `FromWavFileOutput()` függvény használatával automatikusan írja be a kimenetet egy fájlba, majd készítsen `using` egy utasítást egy utasítással. Az `using` ebben a kontextusban található utasítás automatikusan elveti a nem felügyelt erőforrásokat, és az objektum kivezetését követően kikerül a hatókörből.
+Az indításhoz hozzon létre egy `AudioConfig` fájlt, és a függvény használatával automatikusan írja be a kimenetet egy `.wav` fájlba, majd készítsen egy `FromWavFileOutput()` `using` utasítást egy utasítással. Az `using` ebben a kontextusban található utasítás automatikusan elveti a nem felügyelt erőforrásokat, és az objektum kivezetését követően kikerül a hatókörből.
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -83,7 +84,7 @@ static async Task SynthesizeAudioAsync()
 }
 ```
 
-Ezután hozza létre a példányt `SpeechSynthesizer` egy másik `using` utasítással. Adja át `config` az objektumot és `audioConfig` az objektumot paraméterként. Ezután a beszédfelismerés végrehajtása és a fájlba való írás olyan egyszerű, mintha egy szöveges `SpeakTextAsync()` karakterláncot futtasson.
+Ezután hozza létre a példányt egy `SpeechSynthesizer` másik `using` utasítással. Adja át az `config` objektumot és az `audioConfig` objektumot paraméterként. Ezután a beszédfelismerés végrehajtása és a fájlba való írás olyan egyszerű, mintha `SpeakTextAsync()` egy szöveges karakterláncot futtasson.
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -99,7 +100,7 @@ Futtassa a programot, és a rendszer a `.wav` megadott helyre írja a szintetiz�
 
 ## <a name="synthesize-to-speaker-output"></a>Szintetizálás a hangszórók kimenetére
 
-Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez egyszerűen hagyja `AudioConfig` `SpeechSynthesizer` ki a paramétert a fenti példában szereplő példa létrehozásakor. Ez a kimenet az aktuális aktív kimeneti eszközre mutat.
+Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez egyszerűen hagyja `AudioConfig` ki a paramétert a `SpeechSynthesizer` fenti példában szereplő példa létrehozásakor. Ez a kimenet az aktuális aktív kimeneti eszközre mutat.
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -118,12 +119,12 @@ A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az ere
 * Az eredmény integrálása más API-k vagy szolgáltatások használatával.
 * A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el `AudioConfig` a blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja `null` át a `AudioConfig` -t `SpeechSynthesizer` a konstruktorban. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `null` `AudioConfig` `SpeechSynthesizer` konstruktorban. 
 
 > [!NOTE]
-> A `null` `AudioConfig`(z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
+> `null`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
 
-Ezúttal egy [`SpeechSynthesisResult`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult?view=azure-dotnet) változóba menti az eredményt. A `AudioData` tulajdonság tartalmazza `byte []` a kimeneti adatokat. Ezt `byte []` manuálisan is elvégezheti, vagy a [`AudioDataStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) osztály használatával kezelheti a memóriában lévő adatfolyamot. Ebben a példában a `AudioDataStream.FromResult()` statikus függvény használatával kap egy streamet az eredményből.
+Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult?view=azure-dotnet) . A `AudioData` tulajdonság tartalmazza a `byte []` kimeneti adatokat. Ezt manuálisan is elvégezheti `byte []` , vagy a [`AudioDataStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) osztály használatával kezelheti a memóriában lévő adatfolyamot. Ebben a példában a `AudioDataStream.FromResult()` statikus függvény használatával kap egy streamet az eredményből.
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -146,11 +147,11 @@ A következő szakasz bemutatja, hogyan szabhatja testre a hangkimeneti attribú
 * Mintavételezési arány
 * Kis mélység
 
-A hangformátum módosításához használja a `SetSpeechSynthesisOutputFormat()` függvényt az `SpeechConfig` objektumon. Ez a függvény egy `enum` típust [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet)vár, amelyet a kimeneti formátum kiválasztásához használ. A rendelkezésre álló [hangformátumok listáját](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet) az útmutató dokumentációjában tekintheti meg.
+A hangformátum módosításához használja a `SetSpeechSynthesisOutputFormat()` függvényt az `SpeechConfig` objektumon. Ez a függvény egy `enum` típust vár [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet) , amelyet a kimeneti formátum kiválasztásához használ. A rendelkezésre álló [hangformátumok listáját](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?view=azure-dotnet) az útmutató dokumentációjában tekintheti meg.
 
-A követelményektől függően különböző fájltípusok választhatók. Vegye figyelembe, hogy definíció szerint a nyers `Raw24Khz16BitMonoPcm` formátumok, például a nem tartalmaznak hangfejléceket. A nyers formátumok csak akkor használhatók, ha tudja, hogy az alsóbb rétegbeli implementáció dekódolást végez a nyers Bitstream, vagy ha manuálisan kívánja felépíteni a fejléceket a kis mélység, a mintavételezési arány, a csatornák száma stb. alapján.
+A követelményektől függően különböző fájltípusok választhatók. Vegye figyelembe, hogy definíció szerint a nyers formátumok, például a nem `Raw24Khz16BitMonoPcm` tartalmaznak hangfejléceket. A nyers formátumok csak akkor használhatók, ha tudja, hogy az alsóbb rétegbeli implementáció dekódolást végez a nyers Bitstream, vagy ha manuálisan kívánja felépíteni a fejléceket a kis mélység, a mintavételezési arány, a csatornák száma stb. alapján.
 
-Ebben a példában egy magas hűségű RIFF formátumot `Riff24Khz16BitMonoPcm` kell megadnia az `SpeechSynthesisOutputFormat` `SpeechConfig` objektumra vonatkozó beállítással. Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
+Ebben a példában egy magas hűségű RIFF formátumot kell megadnia az `Riff24Khz16BitMonoPcm` objektumra vonatkozó beállítással `SpeechSynthesisOutputFormat` `SpeechConfig` . Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
 
 ```csharp
 static async Task SynthesizeAudioAsync() 
@@ -166,14 +167,14 @@ static async Task SynthesizeAudioAsync()
 }
 ```
 
-A program ismételt futtatásakor a rendszer `.wav` egy fájlt ír a megadott elérési útra.
+A program ismételt futtatásakor a rendszer egy `.wav` fájlt ír a megadott elérési útra.
 
 ## <a name="use-ssml-to-customize-speech-characteristics"></a>A SSML használata a beszédfelismerési jellemzők testreszabásához
 
 A Speech szintézis Markup Language (SSML) lehetővé teszi, hogy a kérések XML-sémából való elküldésével részletesen beállítsa a szöveg-beszéd kimenetet, a kiejtést, a beszéd sebességét, a kötetet és a többit. Ez a szakasz néhány hasznos példát mutat be, de részletesebb útmutatásért tekintse meg a [SSML ismertető cikket](../../../speech-synthesis-markup.md).
 
 A SSML testreszabáshoz való használatának megkezdéséhez egy egyszerű módosítást hajt végre, amely átváltja a hangot.
-Először hozzon létre egy új XML-fájlt a SSML config-hoz a legfelső szintű Project- `ssml.xml`címtárban, ebben a példában. A gyökérelem mindig `<speak>`, és egy `<voice>` elem szövegének körbefuttatása lehetővé teszi a hang módosítását a `name` param használatával. Ez a példa egy férfi angol (Egyesült Királysági) hangra vált. Vegye figyelembe, hogy ez a hang egy **szabványos** hang, amely különböző díjszabással és rendelkezésre állással rendelkezik, mint a **neurális** hangok. Tekintse meg a támogatott **standard** hangok [teljes listáját](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) .
+Először hozzon létre egy új XML-fájlt a SSML config-hoz a legfelső szintű Project-címtárban, ebben a példában `ssml.xml` . A gyökérelem mindig `<speak>` , és egy elem szövegének körbefuttatása `<voice>` lehetővé teszi a hang módosítását a `name` param használatával. Ez a példa egy férfi angol (Egyesült Királysági) hangra vált. Vegye figyelembe, hogy ez a hang egy **szabványos** hang, amely különböző díjszabással és rendelkezésre állással rendelkezik, mint a **neurális** hangok. Tekintse meg a támogatott **standard** hangok [teljes listáját](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) .
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -183,7 +184,7 @@ Először hozzon létre egy új XML-fájlt a SSML config-hoz a legfelső szintű
 </speak>
 ```
 
-Ezután módosítania kell a beszédfelismerési kérést az XML-fájlra való hivatkozáshoz. A kérelem többnyire azonos, de a `SpeakTextAsync()` függvény használata helyett használja `SpeakSsmlAsync()`a parancsot. Ez a függvény egy XML-karakterláncot vár, így először be kell töltenie a SSML- `File.ReadAllText()`konfigurációt karakterláncként a használatával. Innen az eredmény objektum pontosan megegyezik az előző példákkal.
+Ezután módosítania kell a beszédfelismerési kérést az XML-fájlra való hivatkozáshoz. A kérelem többnyire azonos, de a függvény használata helyett használja a parancsot `SpeakTextAsync()` `SpeakSsmlAsync()` . Ez a függvény egy XML-karakterláncot vár, így először be kell töltenie a SSML-konfigurációt karakterláncként a használatával `File.ReadAllText()` . Innen az eredmény objektum pontosan megegyezik az előző példákkal.
 
 > [!NOTE]
 > Ha a Visual studiót használja, a Build-konfiguráció valószínűleg nem fogja megkeresni az XML-fájlt alapértelmezetten. A probléma megoldásához kattintson a jobb gombbal az XML-fájlra, és válassza a **Tulajdonságok**lehetőséget. Változtassa meg a **Build műveletet** a *tartalomra*, és a másolás **a kimeneti könyvtárba** a *mindig*elemre.
@@ -202,7 +203,7 @@ public static async Task SynthesizeAudioAsync()
 }
 ```
 
-A kimenet működik, de van néhány egyszerű további módosítás is, amely segít a természetesebb hangzásban. A teljes beszélő sebesség egy kicsit túl gyors, ezért felvesszük a `<prosody>` címkét, és az alapértelmezett sebesség **90%-ában** csökkentik a sebességet. Emellett a mondatban található vessző utáni szünet egy kicsit túl rövid és természetellenes hang. A probléma megoldásához vegyen fel `<break>` egy címkét a beszéd késleltetéséhez, és állítsa be az időparamétert a **200ms**értékre. Futtassa újra a szintézist, hogy megtekintse, hogy a testreszabások hogyan érintik a kimenetet.
+A kimenet működik, de van néhány egyszerű további módosítás is, amely segít a természetesebb hangzásban. A teljes beszélő sebesség egy kicsit túl gyors, ezért felvesszük a `<prosody>` címkét, és az alapértelmezett sebesség **90%-ában** csökkentik a sebességet. Emellett a mondatban található vessző utáni szünet egy kicsit túl rövid és természetellenes hang. A probléma megoldásához vegyen fel egy `<break>` címkét a beszéd késleltetéséhez, és állítsa be az időparamétert a **200ms**értékre. Futtassa újra a szintézist, hogy megtekintse, hogy a testreszabások hogyan érintik a kimenetet.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -218,7 +219,7 @@ A kimenet működik, de van néhány egyszerű további módosítás is, amely s
 
 A neurális hangok a mély neurális hálózatok által működtetett hangszintézisi algoritmusok. Neurális hang használatakor a szintetizált beszéd szinte nem különbözteti meg az emberi felvételeket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelési fáradtságot, amikor a felhasználók interakcióba lépnek az AI-rendszerekkel.
 
-Ha egy neurális hangra szeretne váltani, módosítsa `name` a beállítást az egyik [neurális hanglehetőségre](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Ezután adjon hozzá egy XML-névteret a `mstts`elemhez, és szúrja be a szöveget a `<mstts:express-as>` címkébe. A `style` paraméter használatával testreszabhatja a beszéd stílusát. Ez a példa `cheerful`a következőt használja, de `customerservice` megpróbáljuk beállítani a vagy `chat` a értékre, hogy megtekintse a beszéd stílusának különbségét.
+Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az egyik [neurális hanglehetőségre](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices). Ezután adjon hozzá egy XML-névteret a `mstts` elemhez, és szúrja be a szöveget a `<mstts:express-as>` címkébe. A `style` paraméter használatával testreszabhatja a beszéd stílusát. Ez a példa a következőt használja `cheerful` , de megpróbáljuk beállítani a vagy a értékre, `customerservice` `chat` hogy megtekintse a beszéd stílusának különbségét.
 
 > [!IMPORTANT]
 > A neurális hangokat **csak** az *USA keleti*régiójában, *Dél-Kelet-Ázsia*és *Nyugat-Európában* létrehozott beszédfelismerési erőforrások támogatják.

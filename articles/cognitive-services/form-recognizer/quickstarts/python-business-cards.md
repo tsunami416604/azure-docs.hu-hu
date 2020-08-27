@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8132358dcd0ad9d87dc6687afd2adef1942f3b67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 5e27aaebc015f47e0fcdb5da81770d49b86ad000
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823904"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934327"
 ---
 # <a name="quickstart-extract-business-card-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: névjegykártya-adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
-- Egy névjegykártya-rendszerkép. Ehhez a rövid útmutatóhoz [minta képet](../media/business-card-english.jpg) is használhat.
+- Egy névjegykártya képe. Ehhez a rövid útmutatóhoz [minta képet](../media/business-card-english.jpg) is használhat.
 
 > [!NOTE]
 > Ez a rövid útmutató egy helyi fájlt használ. Az URL-cím alapján elérhető távoli névjegykártya-rendszerkép használatához tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
@@ -38,33 +38,35 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="analyze-a-business-card"></a>Névjegykártya elemzése
 
-A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card API elemzése](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** az alábbi Python-szkripttel. A szkript futtatása előtt végezze el a következő módosításokat:
+A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card API elemzése](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)** az alábbi Python-szkripttel. A szkript futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
-1. Cserélje le a helyére `<path to your business card>` a helyi űrlaphoz tartozó dokumentum elérési útját.
+1. Cserélje le `<endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
+1. Cserélje le a helyére `<path to your business card>` a névjegykártyájának vagy PDF-fájljának helyi elérési útját.
 1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
+1. Cserélje le `<file type>` a "rendszerkép/JPEG", a "képfájl/png", az "Application/PDF" vagy a "képek/TIFF" kifejezésre.
 
     ```python
-    ########### Python Form Recognizer Async Business cards #############
+    ########### Python Form Recognizer Async Business Cards #############
 
     import json
     import time
     from requests import get, post
     
     # Endpoint URL
-    endpoint = r"<Endpoint>"
+    endpoint = r"<endpoint>"
     apim_key = "<subscription key>"
     post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyze"
     source = r"<path to your business card>"
+    content_type = "<file type>"
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': content_type,
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     
     params = {
-        "includeTextDetails": True
+        "includeTextDetails": True  # True to output all recognized text
     }
     
     with open(source, "rb") as f:
@@ -86,15 +88,15 @@ A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card AP
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognizer-businesscards.py`.
 
-Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amely segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában szereplő sztring a `operations/` művelet azonosítója.
+Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy eredmény-azonosítót tartalmaz, amelynek segítségével lekérdezheti a hosszú ideig futó művelet állapotát, és lekérheti az eredményeket. A következő példában a karakterlánc az eredmény-azonosító után következik be `operations/` .
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeresults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-business-card-results"></a>A névjegykártya eredményeinek beolvasása
 
-Miután megismerte a **Business Card elemzése** API-t, hívja meg a **[Get elemezze Business Card result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult)** API-t, hogy lekérje a művelet állapotát és a kinyert adatmennyiséget. Adja hozzá a következő kódot a Python-szkript aljához. Ez a műveleti azonosító értékét használja egy új API-hívásban. Ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
+Miután megismerte a **Business Card elemzése** API-t, hívja meg a **[Get elemezze Business Card result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult)** API-t, hogy lekérje a művelet állapotát és a kinyert adatmennyiséget. Adja hozzá a következő kódot a Python-szkript aljához. Ez az eredmény-azonosító értékét használja egy új API-hívásban. Ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
 
 ```python
 n_tries = 10
@@ -129,7 +131,7 @@ while n_try < n_tries:
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 ![A contoso vállalat üzleti kártyája](../media/business-card-english.jpg)
 
-Ez a példa az űrlap-felismerő által visszaadott JSON-kimenetet mutatja be. Ez a minta a példa olvashatóságára lett csonkítva.
+Ez a példa az űrlap-felismerő által visszaadott JSON-kimenetet mutatja be. A rendszer csonkolja az olvashatóságot.
 
 ```json
 {
@@ -243,7 +245,7 @@ Ez a példa az űrlap-felismerő által visszaadott JSON-kimenetet mutatja be. E
 }
 ```
 
-A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződik a **névjegykártya elemzése** művelet. A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt talál hasznos kulcs/érték párokat, például a vállalat nevét, utónevét, vezetéknevét, telefonszámát és így tovább.
+A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződik a **névjegykártya elemzése** művelet. A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A `"documentResults"` csomópont tartalmazza a modell által felderített névjegykártya-specifikus értékeket. Itt találhat hasznos kapcsolattartási adatokat, például a vállalat nevét, utónevét, vezetéknevét, telefonszámát stb.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -251,4 +253,4 @@ A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződ
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a névjegykártya tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)
+> [REST API dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

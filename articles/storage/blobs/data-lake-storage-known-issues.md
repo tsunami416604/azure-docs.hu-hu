@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056078"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923738"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -60,9 +60,9 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Fájlrendszer-támogatás az SDK-k, a PowerShell és az Azure CLI-ben
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállításának támogatása
 
-- Az ACL-műveletek beolvasása és beállítása jelenleg nem rekurzív.
+Az ACL-változások rekurzív módon történő alkalmazása a szülő könyvtárból a alárendelt elemekre [nyilvános előzetes](recursive-access-control-lists.md)verzióban érhető el. Ennek a funkciónak a jelenlegi kiadásában a PowerShell, a .NET SDK és a Python SDK használatával is alkalmazhatja az ACL-módosításokat. A támogatás még nem érhető el a Java SDK, az Azure CLI, a Azure Portal vagy a Azure Storage Explorer számára.
 
 <a id="known-issues-tools"></a>
 

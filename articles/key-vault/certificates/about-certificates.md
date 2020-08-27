@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604899"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923687"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
@@ -44,7 +44,8 @@ Key Vault-tanúsítvány létrehozásakor a megcímezhető titkos kulcsból a PF
 
 A címezhető kulcs nagyobb jelentőséggel bír a nem exportálható KV-tanúsítványok esetén. A megcímezhető KV-kulcs műveletei a KV tanúsítvány létrehozásához használt KV-os tanúsítvány-házirend *kulcshasználat* mezőjéből vannak leképezve.  
 
-Két típusú kulcs támogatott: *RSA* vagy *RSA HSM* tanúsítványokkal. Az exportálhatóként csak az RSA-mel engedélyezett, az RSA HSM nem támogatja.  
+ - Támogatott főtípusok: az RSA, az RSA-HSM, az EC, az EC-HSM, a TOT ( [itt](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)felsorolva) csak az RSA, az EC esetében engedélyezett. A HSM-kulcsok nem exportálhatók.
+
 
 ## <a name="certificate-attributes-and-tags"></a>Tanúsítvány attribútumai és címkéi
 
@@ -102,14 +103,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| n.a. |
-|DecipherOnly|visszafejteni| n.a.  |
+|DataEncipherment|titkosítás, visszafejtés| N.A. |
+|DecipherOnly|visszafejteni| N.A.  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| n.a. |
-|KeyCertSign|aláírás, ellenőrzés|n.a.|
+|EncipherOnly|encrypt| N.A. |
+|KeyCertSign|aláírás, ellenőrzés|N.A.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| n.a. |
-|crlsign|aláírás, ellenőrzés| n.a. |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
+|crlsign|aláírás, ellenőrzés| N.A. |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 
@@ -177,7 +178,7 @@ Ha a tanúsítvány házirendje automatikus megújításra van beállítva, akko
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tudnivalók a Key Vaultról](../general/overview.md)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)

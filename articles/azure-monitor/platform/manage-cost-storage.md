@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184652"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933664"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal    
 
@@ -64,7 +64,7 @@ Ha még nem használ Azure Monitor naplókat, a [Azure monitor árképzési szá
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>A használati és becsült költségek megismerése
 
-Ha most Azure Monitor naplókat használ, könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Ehhez használja a **log Analytics használati és becsült költségeket** az adatfelhasználás áttekintéséhez és elemzéséhez. Ez azt mutatja, hogy az egyes megoldások milyen mennyiségű adatot gyűjtenek, mennyi adatot tartanak fenn, valamint a költségek becslését a betöltött adatok mennyisége és a benne foglalt mennyiség utáni további megőrzés alapján.
+Ha most Azure Monitor naplókat használ, könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Ehhez használja a  **log Analytics használati és becsült költségeket** az adatfelhasználás áttekintéséhez és elemzéséhez. Ez azt mutatja, hogy az egyes megoldások milyen mennyiségű adatot gyűjtenek, mennyi adatot tartanak fenn, valamint a költségek becslését a betöltött adatok mennyisége és a benne foglalt mennyiség utáni további megőrzés alapján.
 
 ![Használat és becsült költségek](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -96,7 +96,7 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
 
 [Az árképzési szintet Azure Resource Manager használatával is beállíthatja](template-workspace-configuration.md#configure-a-log-analytics-workspace) a `sku` ( `pricingTier` Azure Resource Manager sablonban) paraméterrel. 
 
-## <a name="legacy-pricing-tiers"></a>Örökölt árképzési szintek
+## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
 Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a [Azure Security Center](https://docs.microsoft.com/azure/security-center/)által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
 
@@ -135,7 +135,7 @@ A következő lépések azt írják le, hogyan kell konfigurálni, hogy a rendsz
 A munkaterület alapértelmezett megőrzésének beállításához 
  
 1. A Azure Portal a munkaterületen válassza a **használat és becsült költségek** lehetőséget a bal oldali panelen.
-2. A **használat és a becsült költségek** lapon kattintson a lap tetején található **adatmegőrzés** elemre.
+2. A **Felhasználás és becsült költségek** oldalon kattintson az oldal tetején található **Adatmegőrzés** elemre.
 3. A panelen a csúszka mozgatásával növelje vagy csökkentse a napok számát, majd kattintson az **OK** gombra.  Ha az *ingyenes* szintet választja, nem fogja tudni módosítani az adatmegőrzési időszakot, és frissítenie kell a fizetős szintre a beállítás szabályozása érdekében.
 
     ![Munkaterület adatmegőrzési beállításának módosítása](media/manage-cost-storage/manage-cost-change-retention-01.png)
@@ -199,7 +199,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
 
-Beállíthatja a napi korlátot, és korlátozhatja a napi betöltést a munkaterülethez, de körültekintően használhatja, mert a cél nem a napi korlát.  Ellenkező esetben a nap hátralevő részében elveszíti az adatok mennyiségét, ami hatással lehet más Azure-szolgáltatásokra és-megoldásokra, amelyek működése a munkaterületen elérhető naprakész adatoktól függ.  Mindez az informatikai szolgáltatásokat támogató erőforrások állapotára vonatkozó riasztások észlelésére és fogadására vonatkozó képességre is hatással van.  A napi korlátot arra használjuk, hogy az adatmennyiséget a felügyelt erőforrásokból érkező **váratlan növekedéssel** kezelje, és a korláton belül maradjon, vagy ha korlátozni szeretné a munkaterülethez tartozó nem tervezett díjakat. Nem célszerű napi korlátot beállítani, hogy minden nap teljesítve legyen a munkaterületen.
+Beállíthatja a napi korlátot, és korlátozhatja a napi betöltést a munkaterülethez, de körültekintően használhatja, mert a cél nem a napi korlát.  Ellenkező esetben a nap hátralevő részében elveszíti az adatok mennyiségét, ami hatással lehet más Azure-szolgáltatásokra és-megoldásokra, amelyek működése a munkaterületen elérhető naprakész adatoktól függ.  Mindez az informatikai szolgáltatásokat támogató erőforrások állapotára vonatkozó riasztások észlelésére és fogadására vonatkozó képességre is hatással van.  A napi korlátot arra használjuk, hogy az adatmennyiséget a felügyelt erőforrásokból érkező **váratlan növekedéssel** kezelje, és a korláton belül maradjon, vagy ha korlátozni szeretné a munkaterülethez tartozó nem tervezett díjakat. A napi korlát beállítása nem annak biztosítására szolgál, hogy minden nap elérjék a korlátot a munkaterületen.
 
 Minden munkaterület napi korlátja a nap egy másik óráján érvényes. Az alaphelyzetbe állítási óra a **napi korlát** oldalon látható (lásd alább). Ez az átállítási óra nem konfigurálható. 
 
@@ -432,7 +432,7 @@ Az adatforrások egy adott adattípussal való mélyebb feltárásához Íme né
 + **AzureDiagnostics** adattípus
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-## <a name="tips-for-reducing-data-volume"></a>Az adatmennyiség csökkentésére szolgáló tippek
+## <a name="tips-for-reducing-data-volume"></a>Tippek az adatmennyiség csökkentéséhez
 
 Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 
@@ -604,7 +604,7 @@ Az adatgyűjtés leállításakor az OperationStatus állapota: **Figyelmezteté
 |Az OK gyűjtése leáll| Megoldás| 
 |-----------------------|---------|
 |Elérte a munkaterület napi korlátját|Várjon, amíg a gyűjtemény automatikusan újraindul, vagy növelje a napi adatmennyiség kezelése című témakörben leírt napi adatmennyiség korlátját. A napi korlát alaphelyzetbe állításának ideje a **napi korlát** oldalon látható. |
-| A munkaterület elérte az [adatfeldolgozási kötet sebességét](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | Az alapértelmezett betöltési mennyiség 500 MB (tömörített) a munkaterületekre vonatkozik, ami körülbelül **6 GB/perc** tömöríthető – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. Ez a küszöbérték az Azure-erőforrásokból a [diagnosztikai beállítások](diagnostic-settings.md), [az adatgyűjtő API vagy az](data-collector-api.md) ügynökök használatával elküldhető összes betöltött adatot érinti. Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan elérheti azt, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt a munkaterületen. Ha értesítést szeretne kapni a munkaterületen lévő eseményről, hozzon létre egy [riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján a nulla értékkel rendelkező, 5 perces értékelési időszak és 5 perc gyakorisága alapján. A betöltési mennyiség elérte a küszöbérték 80%-át: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . A betöltési mennyiség elérte a küszöbértéket: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
+| A munkaterület elérte az [adatfeldolgozási kötet sebességét](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | Az alapértelmezett betöltési mennyiség 500 MB (tömörített) a munkaterületekre vonatkozik, ami körülbelül **6 GB/perc** tömöríthető – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. Ez a küszöbérték az Azure-erőforrásokból a [diagnosztikai beállítások](diagnostic-settings.md), [az adatgyűjtő API vagy az](data-collector-api.md) ügynökök használatával elküldhető összes betöltött adatot érinti. Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan elérheti azt, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt a munkaterületen. Ha értesítést szeretne kapni a munkaterületen lévő ilyen eseményekről, hozzon létre egy [riasztási szabályt](alerts-log.md) a következő lekérdezéssel, amely a nullánál nagyobb eredmények alapján, 5 perces próbaidőszakot és 5 perces gyakoriságot használ. A betöltési mennyiség elérte a küszöbérték 80%-át: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . A betöltési mennyiség elérte a küszöbértéket: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |Elérte az örökölt ingyenes díjszabási csomag napi korlátját |Várjon, amíg a gyűjtemény automatikusan újraindul, vagy váltson egy fizetős díjszabási csomagra.|
 |Az Azure-előfizetés felfüggesztett állapotban van, a következő okból:<br> Az ingyenes próbaverzió véget ért<br> Az Azure pass lejárt<br> Elérte a havi költségkeretet (például MSDN-vagy Visual Studio-előfizetéssel)|Átállás a fizetős verzióra<br> Törlési korlát, vagy várjon, amíg a korlát alaphelyzetbe nem áll|
 
@@ -615,7 +615,7 @@ Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *n
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket az Azure- [előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)dokumentálják.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../log-query/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.

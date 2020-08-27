@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85391213"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934480"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
 
@@ -62,7 +63,7 @@ Ha a Speech SDK-val szeretné használni a bérlői modellt, szüksége lesz egy
 1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ügyeljen a következőkre:
    * A **hely** a **eastus** vagy a **westus**értékre van beállítva.
    * A **díjszabás** a **S0**értékre van állítva.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    Néhány perc elteltével létrejön az erőforrás. Az előfizetési kulcs az erőforrás **Áttekintés** szakaszában érhető el.
 
@@ -295,7 +296,7 @@ Ezután újra kell építenie és futtatnia a projektet a parancssorból. A para
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-1. Futtassa az alábbi parancsot:
+1. Futtassa a következő parancsot:
 
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>

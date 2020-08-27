@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165209"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923398"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Az `$filter` `$orderby` `$select` Azure Cognitive Search OData nyelvének áttekintése
 
@@ -76,8 +76,8 @@ A következő táblázat példákat mutat be a mezők elérési útjaira:
 | `Address/City` | Az `City` index összetett mezőjének almezőjét jelöli. `Address` ebben a példában a típus `Edm.ComplexType` |
 | `Rooms/Type` | Az `Type` indexben található összetett gyűjtemény mező almezőjét jelöli. ebben a `Rooms` példában a következő típusú `Collection(Edm.ComplexType)` : |
 | `Stores/Address/Country` | Az `Country` `Address` indexben található összetett gyűjtemény mezőjének almezőjét jelöli, `Stores` `Collection(Edm.ComplexType)` és a `Address` `Edm.ComplexType` példában szereplő típusú. |
-| `room/Type` | A `Type` tartomány változójának almezőjére hivatkozik `room` , például a Filter kifejezésben.`Rooms/any(room: room/Type eq 'deluxe')` |
-| `store/Address/Country` | A `Country` `Address` tartomány változó almezőjét jelöli `store` , például a szűrő kifejezésben.`Stores/any(store: store/Address/Country eq 'Canada')` |
+| `room/Type` | A `Type` tartomány változójának almezőjére hivatkozik `room` , például a Filter kifejezésben. `Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | A `Country` `Address` tartomány változó almezőjét jelöli `store` , például a szűrő kifejezésben. `Stores/any(store: store/Address/Country eq 'Canada')` |
 
 A mező elérési útjának jelentése a környezettől függően eltérő. A szűrők területen a mező elérési útja az aktuális dokumentumban lévő mező egy *példányának* értékére hivatkozik. Más környezetekben, például **$OrderBy**, **$Select**vagy a [teljes Lucene szintaxisban található, mezőn belüli keresésben](query-lucene-syntax.md#bkmk_fields)a mező elérési útja magára a mezőre hivatkozik. Ez a különbség bizonyos következményekkel jár, hogy miként használhatók a mezők elérési útjai a szűrőkben.
 
@@ -91,25 +91,25 @@ Ebben a példában a tartomány változó `room` megjelenik a `room/Type` mező 
 
 ### <a name="using-field-paths"></a>Mezők elérési útjának használata
 
-A mező elérési útjait az [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)-k számos paramétere használja. A következő táblázat felsorolja az összes felhasználható helyet, valamint a használattal kapcsolatos korlátozásokat is:
+A mező elérési útjait az [Azure Cognitive Search REST API](/rest/api/searchservice/)-k számos paramétere használja. A következő táblázat felsorolja az összes felhasználható helyet, valamint a használattal kapcsolatos korlátozásokat is:
 
 | API | Paraméter neve | Korlátozások |
 | --- | --- | --- |
-| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincsenek |
-| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
-| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Ha `queryType` a`full` | Csak **kereshető** mezőkre hivatkozhat |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Csak a **sokrétű** mezőkre hivatkozhat |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Csak **kereshető** mezőkre hivatkozhat |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Csak **kereshető** mezőkre hivatkozhat |
-| [Javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Csak a [javaslat](index-add-suggesters.md) részét képező mezőkre hivatkozhat. |
-| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions)és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Csak **szűrhető** mezőkre hivatkozhat |
-| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents) és [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Csak **rendezhető** mezőkre hivatkozhat |
-| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions)és [Keresés](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Csak lekérhető **mezőkre** hivatkozhat |
+| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincsenek |
+| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
+| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
+| [Search](/rest/api/searchservice/search-documents) | `search` Ha `queryType` a `full` | Csak **kereshető** mezőkre hivatkozhat |
+| [Search](/rest/api/searchservice/search-documents) | `facet` | Csak a **sokrétű** mezőkre hivatkozhat |
+| [Search](/rest/api/searchservice/search-documents) | `highlight` | Csak **kereshető** mezőkre hivatkozhat |
+| [Search](/rest/api/searchservice/search-documents) | `searchFields` | Csak **kereshető** mezőkre hivatkozhat |
+| [Javaslat](/rest/api/searchservice/suggestions) és [automatikus kiegészítés](/rest/api/searchservice/autocomplete) | `searchFields` | Csak a [javaslat](index-add-suggesters.md) részét képező mezőkre hivatkozhat. |
+| [Keresés](/rest/api/searchservice/search-documents), [javaslat](/rest/api/searchservice/suggestions)és [automatikus kiegészítés](/rest/api/searchservice/autocomplete) | `$filter` | Csak **szűrhető** mezőkre hivatkozhat |
+| [Keresés](/rest/api/searchservice/search-documents) és [javaslat](/rest/api/searchservice/suggestions) | `$orderby` | Csak **rendezhető** mezőkre hivatkozhat |
+| [Keresés](/rest/api/searchservice/search-documents), [javaslat](/rest/api/searchservice/suggestions)és [Keresés](/rest/api/searchservice/lookup-document) | `$select` | Csak lekérhető **mezőkre** hivatkozhat |
 
 ## <a name="constants"></a>Állandók
 
-A OData konstansai egy adott [entitás adatmodell](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) -(EDM-) típusának literális értékei. Az Azure Cognitive Search támogatott típusai listáját a [támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) részben tekintheti meg. A gyűjteményi típusok állandói nem támogatottak.
+A OData konstansai egy adott [entitás adatmodell](/dotnet/framework/data/adonet/entity-data-model) -(EDM-) típusának literális értékei. Az Azure Cognitive Search támogatott típusai listáját a [támogatott adattípusok](/rest/api/searchservice/supported-data-types) részben tekintheti meg. A gyűjteményi típusok állandói nem támogatottak.
 
 Az alábbi táblázat az Azure Cognitive Search által támogatott adattípusok állandóit mutatja be:
 
@@ -243,6 +243,6 @@ A **$Filter**, **$OrderBy**és **$Select** paramétereket részletesebben ismert
 
 - [Sokoldalú navigálás az Azure-ban Cognitive Search](search-faceted-navigation.md)
 - [Szűrők az Azure Cognitive Search](search-filters.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
 - [Egyszerű lekérdezési szintaxis az Azure-ban Cognitive Search](query-simple-syntax.md)

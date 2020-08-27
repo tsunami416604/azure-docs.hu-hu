@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 282c506f509adce4c616615e8b8e3580166052e6
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854671"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923704"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -55,7 +55,7 @@ Következő lépésként vegyen fel két szükséges függőséget az Azure Digi
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity
 ```
 
 Az első függőség az [Azure IoT Digital Twin ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). A második függőség olyan eszközöket biztosít, amelyek segítenek az Azure-beli hitelesítésben.
@@ -426,7 +426,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 using Azure.DigitalTwins.Core.Serialization;
 using System.Text.Json;
 
@@ -539,24 +538,7 @@ namespace minimal
  
 Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [*oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel*](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
  
-Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
-
-A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot és az Azure Digital Twins-példányt.
-
-> [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
-
-Nyisson meg egy Azure Cloud Shell, és futtassa a következő parancsot az erőforráscsoport és a benne található összes elem törléséhez.
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-Ezután törölje az ügyfélalkalmazás számára a következő paranccsal létrehozott Azure Active Directory-alkalmazás regisztrációját:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 

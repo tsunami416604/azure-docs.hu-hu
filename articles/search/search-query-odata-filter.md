@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201543"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934854"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData $filter szintaxis az Azure-ban Cognitive Search
 
@@ -67,7 +67,7 @@ A logikai kifejezések típusai a következők:
 - Logikai függvények hívása, beleértve a következőket:
   - `geo.intersects`, amely azt ellenőrzi, hogy egy adott pont egy adott sokszögen belül van-e. További információ: [OData geo-térbeli függvények az Azure Cognitive Searchban](search-query-odata-geo-spatial-functions.md).
   - `search.in`, amely egy mező-vagy tartomány-változót hasonlít össze az értékek listájában szereplő értékekkel. További információ: [OData `search.in` függvény az Azure Cognitive Search](search-query-odata-search-in-function.md).
-  - `search.ismatch`és `search.ismatchscoring` , amely teljes szöveges keresési műveleteket hajt végre a szűrő környezetében. További információ: [OData teljes szöveges keresési függvények az Azure Cognitive Searchban](search-query-odata-full-text-search-functions.md).
+  - `search.ismatch` és `search.ismatchscoring` , amely teljes szöveges keresési műveleteket hajt végre a szűrő környezetében. További információ: [OData teljes szöveges keresési függvények az Azure Cognitive Searchban](search-query-odata-full-text-search-functions.md).
 - A mező elérési útjai vagy tartomány típusú változói `Edm.Boolean` . Ha például az index egy nevű logikai mezővel rendelkezik `IsEnabled` , és az összes olyan dokumentumot vissza szeretné adni, ahol ez a mező `true` , akkor a szűrő kifejezése csak a név lehet `IsEnabled` .
 - Logikai kifejezések zárójelben. A zárójelek használatával explicit módon határozható meg a szűrők műveleteinek sorrendje. A OData operátorok alapértelmezett sorrendjéről a következő szakaszban talál további információt.
 
@@ -75,7 +75,7 @@ A logikai kifejezések típusai a következők:
 
 Ha olyan szűrési kifejezést ír, amely nem rendelkezik zárójelekkel az alkifejezések köré, az Azure Cognitive Search az operátor elsőbbségi szabályainak megfelelően értékeli ki azt. Ezek a szabályok azon alapulnak, hogy mely operátorok használják az alkifejezések összevonását. A következő táblázat az operátorok csoportjait sorolja fel a legmagasabbtól a legalacsonyabb prioritásig:
 
-| Csoport | Operátor (ok) |
+| Csoportosítás | Operátor (ok) |
 | --- | --- |
 | Logikai operátorok | `not` |
 | Összehasonlító operátorok | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
@@ -142,7 +142,7 @@ Az összes olyan Hotel megkeresése, amely tartalmazza a parkolóhelyet, és aho
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 ```
 
- \-Vagy  
+ \- Vagy  
 
 ```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
@@ -178,7 +178,7 @@ Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kil
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 ```
 
-Az adott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a `Location` EDM. geographypoint adattípuson típusú mező). A sokszöget be kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. Emellett [a pontoknak a sorrendben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)kell szerepelniük.
+Az adott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a `Location` EDM. geographypoint adattípuson típusú mező). A sokszöget be kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. Emellett [a pontoknak a sorrendben](/rest/api/searchservice/supported-data-types#Anchor_1)kell szerepelniük.
 
 ```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
@@ -214,7 +214,7 @@ Megtalálhatja a gyűjteményen belüli kifejezéseket, például a "fűtött t�
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 ```
 
-Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
+Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
@@ -249,4 +249,4 @@ Itt megtalálhatja azokat a szállodákat, amelyekben a "Hotel" és a "repülőt
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

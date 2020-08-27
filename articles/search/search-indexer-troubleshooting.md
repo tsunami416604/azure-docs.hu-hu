@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05d0cba2a3751ac010dc26f68137a31dd04c62ce
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935143"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása
 
@@ -30,7 +30,7 @@ Az indexelő több problémát is futtathat az Azure Cognitive Searchba való ad
 >
 > A keresési szolgáltatás IP-címét a teljes tartománynév (pl.:) pingelésével tekintheti meg `<your-search-service-name>.search.windows.net` .
 >
-> A `AzureCognitiveSearch` [Service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-CÍMTARTOMÁNY a [letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-n keresztül található meg. Az IP-címtartomány hetente frissül.
+> A `AzureCognitiveSearch` [Service tag](../virtual-network/service-tags-overview.md#available-service-tags) IP-CÍMTARTOMÁNY a [letölthető JSON-fájlok](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)-n keresztül található meg. Az IP-címtartomány hetente frissül.
 
 ### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 
@@ -39,19 +39,19 @@ Az Azure Storage, a CosmosDB és az Azure SQL konfigurálható tűzfalat biztos�
 A következő két lehetőség közül választhat, amelyek lehetővé teszik az indexelő számára ezen erőforrások elérését egy adott példányban:
 
 * Tiltsa le a tűzfalat azáltal, hogy engedélyezi a hozzáférést az **összes hálózatról** (ha lehetséges).
-* Azt is megteheti, hogy engedélyezi a keresési szolgáltatás IP-címét és a `AzureCognitiveSearch` [szolgáltatási címke](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány használatát az erőforrás tűzfalszabályok esetében (az IP-címtartomány korlátozása).
+* Azt is megteheti, hogy engedélyezi a keresési szolgáltatás IP-címét és a `AzureCognitiveSearch` [szolgáltatási címke](../virtual-network/service-tags-overview.md#available-service-tags) IP-címtartomány használatát az erőforrás tűzfalszabályok esetében (az IP-címtartomány korlátozása).
 
 Az IP-címtartomány korlátozásának az egyes adatforrások esetében történő konfigurálásával kapcsolatos részletek a következő hivatkozásokban találhatók:
 
-* [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
+* [Azure Storage](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range)
 
-* [Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
+* [Cosmos DB](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range)
 
-* [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+* [Azure SQL](../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)
 
 **Korlátozás**: az Azure Storage fenti dokumentációjában leírtaknak megfelelően az IP-címtartomány korlátozásai csak akkor működnek, ha a keresési szolgáltatás és a Storage-fiók különböző régiókban található.
 
-Az Azure functions (amely [egyéni webes API-képességként](cognitive-search-custom-skill-web-api.md)használható) az [IP-címek korlátozásait](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)is támogatja. A konfigurálni kívánt IP-címek listája a keresési szolgáltatás IP-címe és a szolgáltatási címke IP-címtartomány `AzureCognitiveSearch` .
+Az Azure functions (amely [egyéni webes API-képességként](cognitive-search-custom-skill-web-api.md)használható) az [IP-címek korlátozásait](../azure-functions/ip-addresses.md#ip-address-restrictions)is támogatja. A konfigurálni kívánt IP-címek listája a keresési szolgáltatás IP-címe és a szolgáltatási címke IP-címtartomány `AzureCognitiveSearch` .
 
 Az Azure-beli virtuális gépen futó SQL Server-adatokhoz való hozzáférés részleteit [itt](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) találja:
 
@@ -61,13 +61,13 @@ Ha egy SQL felügyelt példányban lévő adatokhoz fér hozzá, vagy ha egy Azu
 
 Ilyen esetekben az Azure-beli virtuális gép vagy az SQL felügyelt példánya konfigurálható úgy, hogy a virtuális hálózaton belül legyen. Ezután egy hálózati biztonsági csoport konfigurálható úgy, hogy szűrje a virtuális hálózati alhálózatok és hálózati adapterek bejövő és kimenő hálózati forgalmának típusát.
 
-A `AzureCognitiveSearch` szolgáltatási címke közvetlenül használható a bejövő [NSG-szabályokban](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) anélkül, hogy meg kellene keresnie az IP-címtartományt.
+A `AzureCognitiveSearch` szolgáltatási címke közvetlenül használható a bejövő [NSG-szabályokban](../virtual-network/manage-network-security-group.md#work-with-security-rules) anélkül, hogy meg kellene keresnie az IP-címtartományt.
 
 A felügyelt SQL-példányokban tárolt adatokhoz való hozzáférés további részleteit [itt](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) találja
 
 ### <a name="cosmosdb-indexing-isnt-enabled"></a>Az "indexelés" CosmosDB nincs engedélyezve
 
-Az Azure Cognitive Search implicit függőséggel rendelkezik Cosmos DB indexeléshez. Ha kikapcsolja az automatikus indexelést Cosmos DBban, az Azure Cognitive Search sikeres állapotot ad vissza, de nem tudja indexelni a tároló tartalmát. A beállítások vizsgálatával és az indexelés bekapcsolásával kapcsolatos utasításokért lásd: [az indexelés kezelése Azure Cosmos DBban](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
+Az Azure Cognitive Search implicit függőséggel rendelkezik Cosmos DB indexeléshez. Ha kikapcsolja az automatikus indexelést Cosmos DBban, az Azure Cognitive Search sikeres állapotot ad vissza, de nem tudja indexelni a tároló tartalmát. A beállítások vizsgálatával és az indexelés bekapcsolásával kapcsolatos utasításokért lásd: [az indexelés kezelése Azure Cosmos DBban](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Dokumentált feldolgozási hibák
 
@@ -108,11 +108,11 @@ api-key: [admin key]
 
 ### <a name="missing-documents"></a>Hiányzó dokumentumok
 
-Az indexelő a dokumentumokat egy [adatforrásból](https://docs.microsoft.com/rest/api/searchservice/create-data-source)keresi meg. Időnként előfordulhat, hogy az adatforrásból olyan dokumentum van, amelyet indexelni kellett volna egy indexből. A hibák néhány gyakori oka lehet:
+Az indexelő a dokumentumokat egy [adatforrásból](/rest/api/searchservice/create-data-source)keresi meg. Időnként előfordulhat, hogy az adatforrásból olyan dokumentum van, amelyet indexelni kellett volna egy indexből. A hibák néhány gyakori oka lehet:
 
 * A dokumentum nem lett indexelve. A sikeres indexelő futtatásához keresse meg a portált.
-* A [change Tracking](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) értékének megadásával. Ha a magas küszöbértékű érték egy jövőbeli időpontra van állítva, akkor az indexelő által kihagyható minden olyan dokumentum, amelynek a dátumnál kisebb a dátuma. Az indexelő Change Tracking állapotát az [Indexelő állapotának](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)"initialTrackingState" és "finalTrackingState" mezőivel tudja értelmezni.
-* A dokumentum frissült az indexelő futtatása után. Ha az indexelő [ütemezett](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), akkor a rendszer végül Újrafuttatja és felveszi a dokumentumot.
+* A [change Tracking](/rest/api/searchservice/create-data-source#data-change-detection-policies) értékének megadásával. Ha a magas küszöbértékű érték egy jövőbeli időpontra van állítva, akkor az indexelő által kihagyható minden olyan dokumentum, amelynek a dátumnál kisebb a dátuma. Az indexelő Change Tracking állapotát az [Indexelő állapotának](/rest/api/searchservice/get-indexer-status#indexer-execution-result)"initialTrackingState" és "finalTrackingState" mezőivel tudja értelmezni.
+* A dokumentum frissült az indexelő futtatása után. Ha az indexelő [ütemezett](/rest/api/searchservice/create-indexer#indexer-schedule), akkor a rendszer végül Újrafuttatja és felveszi a dokumentumot.
 * Az adatforrásban megadott [lekérdezés](/rest/api/searchservice/create-data-source) kizárja a dokumentumot. Az indexelő nem tudja indexelni azokat a dokumentumokat, amelyek nem részei az adatforrásnak.
-* A [mező-hozzárendelések](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) vagy a [mesterséges intelligencia-gazdagítás](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) megváltoztatta a dokumentumot, és a várttól eltérőnek tűnik.
-* A dokumentum kereséséhez használja a [keresési dokumentum API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) -t.
+* A [mező-hozzárendelések](/rest/api/searchservice/create-indexer#fieldmappings) vagy a [mesterséges intelligencia-gazdagítás](./cognitive-search-concept-intro.md) megváltoztatta a dokumentumot, és a várttól eltérőnek tűnik.
+* A dokumentum kereséséhez használja a [keresési dokumentum API](/rest/api/searchservice/lookup-document) -t.

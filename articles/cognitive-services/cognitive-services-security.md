@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: erhopf
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2b3f7934a24f67992d6b80ac359c29ebe2a40b09
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: b6c7f6d8cd4638dd2b7a1f6cc23b192ed6803b41
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849556"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921137"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -220,7 +220,7 @@ A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. A 
 > [!IMPORTANT]
 > A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a különböző [Cognitive Servicesokkal](welcome.md)
 * További információ a [Cognitive Services Virtual Networks](cognitive-services-virtual-networks.md) szolgáltatásról
