@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206925"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922820"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData `search.in` függvény az Azure Cognitive Search
 
@@ -82,7 +82,7 @@ A paraméterek a következő táblázatban vannak meghatározva:
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Teljesítmény`search.in`
+### <a name="performance-of-searchin"></a>Teljesítmény `search.in`
 
 Ha használja `search.in` , akkor várható, hogy a második paraméterben a másodpercben megadott idő több száz vagy ezer értékből álló listát tartalmaz. Az átadható elemek száma nincs kifejezett korláttal `search.in` , de a kérések maximális mérete továbbra is korlátozott. Azonban a késés növekedni fog, ahogy az értékek száma növekszik.
 
@@ -123,4 +123,4 @@ A "Motel" vagy a "cabin'" címke nélküli összes Hotel megkeresése:
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

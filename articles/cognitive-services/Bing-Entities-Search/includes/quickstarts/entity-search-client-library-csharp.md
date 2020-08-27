@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.openlocfilehash: 39a6c21ad056980e8c7b146e36a6e185cb3ed95e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 27951a6da2c5e4a9d17e8b332d8ee9706701649d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136780"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931887"
 ---
 Ezzel a rövid útmutatóval megkezdheti az entitások keresését a C# Bing Entity Search ügyféloldali függvénytárával. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch)található.
 
@@ -28,7 +28,7 @@ Ezzel a rövid útmutatóval megkezdheti az entitások keresését a C# Bing Ent
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-Ha hozzá szeretné adni a Bing Entity Search ügyféloldali kódtárat a Visual Studio-projekthez, használja a **NuGet-csomagok kezelése** lehetőséget a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` **megoldáskezelő**, és adja hozzá a csomagot.
+Ha hozzá szeretné adni a Bing Entity Search ügyféloldali kódtárat a Visual Studio-projekthez, használja a **NuGet-csomagok kezelése** lehetőséget a **megoldáskezelő**, és adja hozzá a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` csomagot.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -48,13 +48,13 @@ Ha hozzá szeretné adni a Bing Entity Search ügyféloldali kódtárat a Visual
 
 ## <a name="create-a-client-and-send-a-search-request"></a>Ügyfél létrehozása és keresési kérelem küldése
 
-1. Hozzon létre egy új keresési ügyfelet. Adja hozzá az előfizetési kulcsot új `ApiKeyServiceClientCredentials`létrehozásához.
+1. Hozzon létre egy új keresési ügyfelet. Adja hozzá az előfizetési kulcsot új létrehozásához `ApiKeyServiceClientCredentials` .
 
     ```csharp
     var client = new EntitySearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-1. A lekérdezés megkereséséhez használja az ügyfél `Entities.Search()` függvényét:
+1. A `Entities.Search()` lekérdezés megkereséséhez használja az ügyfél függvényét:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");
@@ -62,7 +62,7 @@ Ha hozzá szeretné adni a Bing Entity Search ügyféloldali kódtárat a Visual
 
 ## <a name="get-and-print-an-entity-description"></a>Entitás leírásának beolvasása és nyomtatása
 
-1. Ha az API keresési eredményeket adott vissza, szerezze be a fő `entityData`entitást a következőből:.
+1. Ha az API keresési eredményeket adott vissza, szerezze be a fő entitást a következőből: `entityData` .
 
     ```csharp
     var mainEntity = entityData.Entities.Value.Where(thing => thing.EntityPresentationInfo.EntityScenario == EntityScenario.DominantEntity).FirstOrDefault();

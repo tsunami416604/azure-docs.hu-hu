@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85559015"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929703"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
 Az Azure Cognitive Search képes indexelni az Azure Blob Storage-ban található JSON-dokumentumokat és-tömböket olyan [Indexelő](search-indexer-overview.md) használatával, amely képes a részben strukturált információk beolvasására. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Feldarabolja a strukturálatlan adatmennyiségek közötti különbséget, amelyeknek teljes mértékben indexelve kell lenniük, és az olyan, az adatmodellbe (például egy olyan kapcsolati adatbázis-sémához) tartozó, formálisan strukturált adat, amely egy mező alapján indexelhető.
 
-Ez az oktatóanyag a Poster és a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a Poster és a [Search REST API](/rest/api/searchservice/) -k használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Azure Cognitive Search-adatforrás konfigurálása Azure Blob-tárolóhoz
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Storage](../storage/common/storage-account-create.md)
 + [Postman asztali alkalmazás](https://www.getpostman.com/)
 + [Meglévő keresési szolgáltatás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [létrehozása](search-create-service-portal.md) vagy keresése 
 
@@ -72,7 +72,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Kattintson a **Blobok** szolgáltatás elemre.
 
-1. [Hozzon létre egy BLOB-tárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
+1. [Hozzon létre egy BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md) a mintaadatok tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
 1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét.
 
@@ -116,7 +116,7 @@ Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as érték
 
 ## <a name="3---create-a-data-source"></a>3 – adatforrás létrehozása
 
-Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
+Az [adatforrás létrehozása API](/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
 
 1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/datasources?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
 
@@ -159,7 +159,7 @@ Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchser
 
 ## <a name="4---create-an-index"></a>4 – index létrehozása
     
-A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
+A második hívás [index API-t hoz létre](/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
 
 1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
@@ -234,7 +234,7 @@ A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/
 
 ## <a name="5---create-and-run-an-indexer"></a>5 – indexelő létrehozása és futtatása
 
-Az indexelő csatlakozik az adatforráshoz, importálja az adatmennyiséget a cél keresési indexbe, és opcionálisan biztosít egy ütemtervet az Adatfrissítés automatizálásához. A REST API [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Az indexelő csatlakozik az adatforráshoz, importálja az adatmennyiséget a cél keresési indexbe, és opcionálisan biztosít egy ütemtervet az Adatfrissítés automatizálásához. A REST API [Indexelő létrehozása](/rest/api/searchservice/create-indexer).
 
 1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexers?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 

@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/20/2019
 ms.author: trbye
-ms.openlocfilehash: cef47d1c6598e73d2c17c6799f3de90458206a8d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098299"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919012"
 ---
-# <a name="custom-keyword-basics"></a>Egyéni kulcsszó alapjai
+# <a name="custom-keyword-basics"></a>Az egyéni kulcsszavak alapjai
 
 Ebből a cikkből megtudhatja, hogyan használhatja az egyéni kulcsszavakat a Speech Studio és a Speech SDK használatával. A kulcsszó egy szó vagy rövid kifejezés, amely lehetővé teszi, hogy a termék hangvezérelt legyen. Kulcsszavas modelleket hozhat létre a Speech Studióban, majd exportálhatja az alkalmazásaiban a Speech SDK-val használt modell-fájlt.
 

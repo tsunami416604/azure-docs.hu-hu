@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509603"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922565"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
 >[!IMPORTANT]
->A csapatoknak szánt média-optimalizálás Microsoft 365 kormányzati környezetekben nem támogatott.
+>A csapatok multimédia-optimalizálása Microsoft 365 Government (GCC) környezetekben támogatott. A csapatoknak szóló média-optimalizálás a GCC-High vagy a DoD esetében nem támogatott.
 
 >[!NOTE]
 >A Microsoft Teams szolgáltatáshoz készült média-optimalizálás csak Windows 10-es gépeken futó Windows asztali ügyfélprogram esetében érhető el. A média-optimalizáláshoz a Windows asztali ügyfél verziója 1.2.1026.0 vagy újabb verzió szükséges.
@@ -32,7 +32,7 @@ Ahhoz, hogy a Microsoft Teams szolgáltatást használhassa a Windows rendszerű
 - [Készítse elő a hálózatát](/microsoftteams/prepare-network/) a Microsoft Teams szolgáltatásban.
 - Telepítse a [Windows asztali ügyfelet](connect-windows-7-10.md) egy Windows 10 vagy Windows 10 IoT Enterprise rendszerű eszközre, amely megfelel a Microsoft Teams [Windows rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Csatlakozhat egy Windows 10 rendszerű többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuális géphez (VM).
-- Telepítse a Teams Desktop alkalmazást a gazdagépre számítógépenkénti telepítés használatával. A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
+- [Töltse le](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app) és telepítse a Teams Desktop alkalmazást a gazdagépen a számítógépenkénti telepítés használatával. A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
 
 ## <a name="install-the-teams-desktop-app"></a>A Teams asztali alkalmazás telepítése
 
@@ -94,8 +94,8 @@ A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti tel
 
         Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 64 bites operációs rendszeren, valamint egy 32 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
 
-        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a csapatok számítógép-szintű telepítője megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows-beállításokban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat. 
-       
+        A csapatok telepítésekor két jelzőt lehet beállítani, a **ALLUSER = 1** és a **AllUsers = 1**. Fontos megérteni a paraméterek közötti különbséget. A **ALLUSER = 1** paraméter csak VDI-környezetekben használatos a számítógépenkénti telepítés megadásához. A **AllUsers = 1** paraméter nem VDI-és VDI-környezetekben is használható. Ha beállítja ezt a paramétert, a csapatok számítógép-szintű telepítője megjelenik a Vezérlőpult program és szolgáltatások paneljén, valamint a Windows-beállításokban található alkalmazások & szolgáltatásokban. A számítógépen rendszergazdai hitelesítő adatokkal rendelkező felhasználók is eltávolíthatják a csapatokat.
+
         > [!NOTE]
         > A felhasználók és a rendszergazdák jelenleg nem tudják letiltani a csapatok automatikus indítását a bejelentkezés során.
 

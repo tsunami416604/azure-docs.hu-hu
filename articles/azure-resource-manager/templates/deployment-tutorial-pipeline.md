@@ -1,15 +1,15 @@
 ---
 title: Folyamatos integráció az Azure Pipelinesszal
 description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azure Resource Manager-sablonokat.
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86118919"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892677"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -65,7 +65,7 @@ Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden 
 
 1. Nyissa meg a git-rendszerhéj vagy a git bash felületet.  Lásd: [Előfeltételek](#prerequisites).
 1. Ellenőrizze, hogy az aktuális mappa a **GitHub**-e.
-1. Futtassa az alábbi parancsot:
+1. Futtassa a következő parancsot:
 
     ```bash
     git clone https://github.com/[YourAccountName]/[YourGitHubRepositoryName]
@@ -95,7 +95,7 @@ A azuredeploy.jsbekerült a helyi tárházba. Ezután töltse fel a sablont a t�
 1. Ha nincs megnyitva, nyissa meg a *git-rendszerhéj* vagy a *git bash*eszközt.
 1. Módosítsa a könyvtárat a helyi tárház CreateWebApp mappájába.
 1. Ellenőrizze, hogy a fájl **azuredeploy.js** a mappában van-e.
-1. Futtassa az alábbi parancsot:
+1. Futtassa a következő parancsot:
 
     ```bash
     git add .
@@ -175,8 +175,8 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
     * **Hely**: válassza ki az erőforráscsoport helyét, például az **USA középső**régióját.
     * **Sablon helye**: válassza a **társított**összetevő elemet, ami azt jelenti, hogy a feladat közvetlenül a csatlakoztatott tárházból keresi a sablonfájlt.
     * **Sablon**: írja be **a CreateWebApp/azuredeploy.js**értéket. Ha módosította a mappa nevét és a fájl nevét, módosítania kell ezt az értéket.
-    * **Sablon paraméterei**: hagyja üresen ezt a mezőt. A paraméterek értékét a * * sablon felülbírálása paraméterben adhatja meg.
-    * **overrideParameters**: ENTER **-projektnév [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Cserélje le a projekt nevét és a csatolt sablon URL-címét. A csatolt sablon URL-címe a [GitHub-Tárház létrehozása](#create-a-github-repository)végén írt leírás.
+    * **Sablon paraméterei**: hagyja üresen ezt a mezőt. A paraméter értékeit a **felülbírálási sablon paraméterei**között kell megadni.
+    * **Felülbírálja a sablon paramétereit**: ENTER **-projektnév [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Cserélje le a projekt nevét és a csatolt sablon URL-címét. A csatolt sablon URL-címe a [GitHub-Tárház létrehozása](#create-a-github-repository)végén írt leírás. Ezzel kezdődik **https://raw.githubusercontent.com** .
     * **Üzembe helyezési mód**: válassza a **növekményes**lehetőséget.
     * **Központi telepítés neve**: adja meg a **DeployPipelineTemplate**. A **központi telepítés nevének**megtekintéséhez válassza a **speciális** lehetőséget.
 

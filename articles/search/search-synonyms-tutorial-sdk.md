@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079437"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922752"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Példa: az Azure Cognitive Search szinonimáinak hozzáadása a C-ben #
 
@@ -22,8 +22,8 @@ A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik 
 Az Azure Cognitive Searchban a szinonimák a *szinonimák*szerint vannak definiálva, a *megfeleltetési szabályok* alapján, amelyek egyenértékű feltételeket társítanak. Ez a példa a szinonimák meglévő indextel való hozzáadásának és használatának alapvető lépéseit ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Hozzon létre egy szinonima leképezést a [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) osztály használatával. 
-> * Adja meg a [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) tulajdonságot olyan mezőknél, amelyeknek támogatnia kell a lekérdezés kiterjesztését szinonimák használatával.
+> * Hozzon létre egy szinonima leképezést a  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) osztály használatával. 
+> * Adja meg a [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) tulajdonságot olyan mezőknél, amelyeknek támogatnia kell a lekérdezés kiterjesztését szinonimák használatával.
 
 A szinonimákat támogató mezőket a szokásos módon kérdezheti le. A szinonimák eléréséhez nincs szükség további lekérdezési szintaxisra.
 
@@ -38,8 +38,8 @@ Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search szolgáltatás](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET-könyvtár](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [Az Azure Cognitive Search használata .NET-alkalmazásokból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Microsoft.Azure.Search .NET-könyvtár](/dotnet/api/overview/azure/search)
+* [Az Azure Cognitive Search használata .NET-alkalmazásokból](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -77,7 +77,7 @@ Az „előtte és utána” lekérdezések a szinonimák előnyeit mutatják be.
       Console.ReadKey();
   }
 ```
-A minta index létrehozásának és feltöltésének lépéseit az [Azure Cognitive Search .NET-alkalmazásokból való használatának](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)ismertetése ismerteti.
+A minta index létrehozásának és feltöltésének lépéseit az [Azure Cognitive Search .NET-alkalmazásokból való használatának](./search-howto-dotnet-sdk.md)ismertetése ismerteti.
 
 ## <a name="before-queries"></a>„Előtte” lekérdezések
 
@@ -167,13 +167,13 @@ A szinonimák hozzáadásával teljesen megváltozik a keresési élmény. Ebben
 ## <a name="sample-application-source-code"></a>Mintaalkalmazás forráskódja
 A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) webhelyén találja.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Egy példa után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a példa a C#-kódban szereplő szinonimák funkciót mutatta be a leképezési szabályok létrehozásához és közzétételéhez, majd a szinonimák leképezésének meghívásához a lekérdezésen. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
+Ez a példa a C#-kódban szereplő szinonimák funkciót mutatta be a leképezési szabályok létrehozásához és közzétételéhez, majd a szinonimák leképezésének meghívásához a lekérdezésen. További információt a [.NET SDK](/dotnet/api/microsoft.azure.search) és a [REST API](/rest/api/searchservice/) referencia-dokumentációjában találhat.
 
 > [!div class="nextstepaction"]
 > [Szinonimák használata az Azure-ban Cognitive Search](search-synonyms.md)

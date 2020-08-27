@@ -7,12 +7,12 @@ ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6336a0d4d8aa9c781befed0470d9a190af5aa9eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589982"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930859"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés Azure Key Vault
 
@@ -112,14 +112,9 @@ Ezen a ponton rendelkezik egy regisztrált egyszerű szolgáltatással. Megtekin
 1. Tanúsítvány létrehozása
 
     * 1. lehetőség: tanúsítvány létrehozása az [OpenSSL](https://www.openssl.org/) használatával (csak tesztelési célokra, nem használ önaláírt tanúsítványokat éles környezetben)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
     * 2. lehetőség: tanúsítvány létrehozása a Key Vault használatával. [Tanúsítvány létrehozása Azure Key Vaultban](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
 
-1. A tanúsítvány letöltése PEM formátumban
+1. A tanúsítvány letöltése a PEM/PFX formátumban
 1. Jelentkezzen be a Azure Portalba, és navigáljon a Azure Active Directory
 1. Kattintson az "alkalmazások regisztrálása" elemre.
 1. Válassza ki az 1. részben létrehozott szolgáltatásnevet.
@@ -192,6 +187,6 @@ if __name__ == "__main__":
 ![KÉP](../media/authentication-3.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. Ismerje meg, hogyan lehet elhárítani a Key Vault hitelesítési hibáit. [Key Vault hibaelhárítási útmutató](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes)

@@ -3,12 +3,13 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 08/17/2020
-ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba09deda155ac446693a7e1037390a3f1fd2700f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508535"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919377"
 ---
 Ez a cikk a Custom Vision ügyféloldali kódtár C# használatával való használatának megkezdéséhez nyújt útmutatást a képbesorolási modell létrehozásához. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a példa sablonként használható saját .NET-alkalmazás létrehozásához. Ha a besorolási modellt kód _nélkül_ szeretné felépíteni és használni, tekintse meg a [böngészőalapú útmutatást](../../getting-started-build-a-classifier.md) .
 

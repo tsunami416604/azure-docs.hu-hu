@@ -2,13 +2,14 @@
 title: Virtuális fájlrendszer csatlakoztatása egy készlethez
 description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert egy batch-készlethez.
 ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144407"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921630"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
@@ -167,7 +168,7 @@ A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles]
 | Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft – ADS | Linux – adattudomány – virtuális gép | linuxdsvm | :heavy_check_mark: <br>Megjegyzés: kompatibilis a CentOS 7,4-mel. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-batch | CentOS – tároló | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Microsoft-Azure-batch | CentOS-Container-RDMA | 7.4 | :heavy_check_mark: <br>Megjegyzés: a A_8 vagy a 9 tárolót támogatja</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Microsoft-Azure-batch | CentOS-Container-RDMA | 7,4 | :heavy_check_mark: <br>Megjegyzés: a A_8 vagy a 9 tárolót támogatja</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft-Azure-batch | Ubuntu – kiszolgáló – tároló | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Microsoft – dsvm | Linux – adattudomány – virtuális gép – Ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

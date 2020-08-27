@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826240"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892337"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljenek a vendég helyett. Próbálkozzon újra a biztonsági mentési művelettel.
 
-**2. lépés**: próbálja meg módosítani a biztonsági mentési ütemtervet olyan időpontra, amikor a virtuális gép kevesebb terhelés alatt van (kevesebb CPU/IOps stb.)
+**2. lépés**: próbálja meg módosítani a biztonsági mentési ütemtervet olyan időpontra, amikor a virtuális gép kevesebb terhelés alatt van (például kevesebb CPU vagy IOps)
 
 **3. lépés**: próbálja meg [növelni a virtuális gép méretét](https://azure.microsoft.com/blog/resize-virtual-machines/) , és ismételje meg a műveletet.
 
@@ -246,7 +246,7 @@ Hibakód: ExtensionSnapshotFailedNoSecureNetwork <br/> Hibaüzenet: a pillanatk�
 Hibakód: ExtensionVCRedistInstallationFailure <br/> Hibaüzenet: a pillanatkép-művelet sikertelen volt, mert a Visual C++ újraterjeszthető csomagjának telepítése sikertelen volt a Visual Studio 2012-ben.
 
 * Navigáljon a `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64ra, és telepítse a következőt:.<br/>Győződjön meg arról, hogy a beállításjegyzék-kulcs értéke, amely lehetővé teszi, hogy a szolgáltatás telepítése a megfelelő értékre legyen állítva. Ez azt eredményezi, hogy a **kezdő** értéket **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** **3** értékre, nem pedig **4**értékre állítja. <br><br>Ha továbbra is problémái vannak a telepítéssel, indítsa újra a telepítési szolgáltatást az msiexec **/UNREGISTER** , majd az **msiexec/Register** egy rendszergazda jogú parancssorból való futtatásával.
-* Ellenőrizze az eseménynaplót, és győződjön meg arról, hogy a hozzáféréshez kapcsolódó problémák merültek fel. Például: *termék: Microsoft Visual C++ 2013 x64 minimális futtatókörnyezet – 12.0.21005 – hiba 1401. nem sikerült létrehozni a kulcsot: Software\Classes.  5. rendszerhiba.  Ellenőrizze, hogy van-e megfelelő engedélye a kulcs eléréséhez, vagy forduljon a technikai tanácsadási csoporthoz.* <br><br> Győződjön meg arról, hogy a rendszergazda vagy a felhasználói fiók rendelkezik a megfelelő engedélyekkel a beállításkulcs **HKEY_LOCAL_MACHINE \software\classes**való frissítéséhez. Adja meg a megfelelő engedélyeket, és indítsa újra a Windows Azure Guest Agent ügynököt.<br><br> <li> Ha víruskereső termékek vannak érvényben, győződjön meg arról, hogy a megfelelő kizárási szabályokkal rendelkeznek a telepítés engedélyezéséhez.
+* Ellenőrizze az eseménynaplót, és ellenőrizze, hogy a hozzáféréshez kapcsolódó problémák vannak-e. Például: *termék: Microsoft Visual C++ 2013 x64 minimális futtatókörnyezet – 12.0.21005 – hiba 1401. nem sikerült létrehozni a kulcsot: Software\Classes.  5. rendszerhiba.  Ellenőrizze, hogy van-e megfelelő engedélye a kulcs eléréséhez, vagy forduljon a technikai tanácsadási csoporthoz.* <br><br> Győződjön meg arról, hogy a rendszergazda vagy a felhasználói fiók rendelkezik a megfelelő engedélyekkel a beállításkulcs **HKEY_LOCAL_MACHINE \software\classes**való frissítéséhez. Adja meg a megfelelő engedélyeket, és indítsa újra a Windows Azure Guest Agent ügynököt.<br><br> <li> Ha víruskereső termékek vannak érvényben, győződjön meg arról, hogy a megfelelő kizárási szabályokkal rendelkeznek a telepítés engedélyezéséhez.
 
 ### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – Érvénytelen szabályzat van konfigurálva a virtuális gépen, amely meggátolja a Pillanatkép műveletet
 
@@ -336,7 +336,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
 További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:

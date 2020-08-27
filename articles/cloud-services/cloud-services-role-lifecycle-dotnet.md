@@ -5,15 +5,16 @@ services: cloud-services
 documentationcenter: .net
 author: tgore03
 ms.service: cloud-services
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930060"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes vagy feldolgozói szerepkör életciklusának testreszabása a .NET-ben
 Feldolgozói szerepkör létrehozásakor ki kell bővíteni a [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztályt, amely lehetővé teszi a felülbírálását, amely lehetővé teszi, hogy válaszoljon az életciklus eseményeire. A webes szerepkörök esetében ez az osztály nem kötelező, ezért azt kell használnia, hogy válaszoljon az életciklus eseményeire.
@@ -74,7 +75,7 @@ A **futtatási** metódus felülbírálása nem kötelező; az alapértelmezett 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>A ASP.NET életciklus-módszereinek megvalósítása webes szerepkörhöz
 A **RoleEntryPoint** osztály által biztosított ASP.net-életciklusi módszerek mellett a webes szerepkörök inicializálási és leállítási folyamatait is kezelheti. Ez a kompatibilitási célokra hasznos lehet, ha meglévő ASP.NET-alkalmazást PORTOL az Azure-ba. A ASP.NET életciklusának metódusait a rendszer a **RoleEntryPoint** metódusok alapján hívja meg. Az **alkalmazás \_ indítási** módszerét a **RoleEntryPoint. OnStart** metódus befejeződése után hívja meg a rendszer. Az **alkalmazás \_ befejezési** metódusát a rendszer a **RoleEntryPoint. OnStop** metódus meghívása előtt hívja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan [hozhat létre Cloud Service-csomagot](cloud-services-model-and-package.md).
 
 

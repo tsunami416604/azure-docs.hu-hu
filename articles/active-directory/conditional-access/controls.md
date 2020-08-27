@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253307"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922103"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
@@ -33,11 +33,11 @@ Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne
 
 Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
 
-![Vezérlés](./media/controls/82.png)
+![Egyéni vezérlők felülete feltételes hozzáféréssel](./media/controls/custom-controls-conditional-access.png)
 
 Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
-![Vezérlés](./media/controls/81.png)
+![Új egyéni vezérlő](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 
@@ -53,7 +53,7 @@ Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és 
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítását (SSPR), a többtényezős hitelesítési jogcím követelményeinek kielégítését, illetve a szerepkörök emelt szintű Identity Managerben (PIM) való emelését.
+Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) használatát, a multi-Factor Authentication jogcím követelményeinek kielégítését, a szerepkörök a Privileged Identity Manager (PIM) vagy az Intune-eszközök regisztrálásának részeként való használatát.
 
 ## <a name="next-steps"></a>További lépések
 
