@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922103"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948300"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
@@ -53,9 +53,9 @@ Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és 
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) használatát, a multi-Factor Authentication jogcím követelményeinek kielégítését, a szerepkörök a Privileged Identity Manager (PIM) vagy az Intune-eszközök regisztrálásának részeként való használatát.
+Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítását (SSPR), a többtényezős hitelesítési jogcím követelményeit, a szerepköröket a Privileged Identity Managerben (PIM), az Intune-eszközök regisztrálásának részeként, illetve az eszközök Azure AD-be való csatlakoztatásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

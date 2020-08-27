@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: f8ba4ef590b3becd9259230246555d6c74b0078b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0920c4e98527640875a236bbea8693bfa8ab0942
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925173"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926659"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin)készült [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t, amely egy nyílt forráskódú platform, amely modern és nagy teljesítményű alkalmazásokat hoz létre iOS, Android és Windows rendszerre a .NET használatával. Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját `Install-Package Microsoft.CognitiveServices.Speech` számára, futtassa a parancsot a NuGet-konzolon.
+Ez az útmutató bemutatja, hogyan telepítheti a [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin)készült [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t, amely egy nyílt forráskódú platform, amely modern és nagy teljesítményű alkalmazásokat hoz létre iOS, Android és Windows rendszerre a .NET használatával. Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját számára, futtassa `Install-Package Microsoft.CognitiveServices.Speech` a parancsot a NuGet-konzolon.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 

@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 6271eab35be22d04f8ac1c6413f4f965c6800290
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931165"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950255"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -53,7 +53,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>A OpenVINO™ Model Server – AI bővítmény az Inteltől
 A [OpenVINO™ Toolkit](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (nyílt vizuális következtetések és neurális hálózati optimalizálás) Intel® eloszlása egy ingyenes szoftvercsomag, amely segít a fejlesztőknek és az adatszakértőknek felgyorsítani a számítógépes vizualizációk számítási feladatait, egyszerűsíteni a mélyebb tanulási következtetéseket és üzembe helyezéseket, és lehetővé teszi a könnyű és heterogén végrehajtást az Intel® platformok között a szélétől a felhőbe. Magában foglalja az Intel® Deep learning üzembe helyezési eszközkészletét a modell-optimalizáló és a következtetési motorral, valamint az [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) -tárházat, amely több mint 40 optimalizált, előre betanított modellt tartalmaz.
 
-Összetett, nagy teljesítményű élő videós elemzési megoldások létrehozásához a IoT Edge modul élő videó-elemzését egy olyan hatékony következtetési motorral kell párosítani, amely képes kihasználni a skálát a peremen. Ebben az oktatóanyagban a következtetési kérelmeket a rendszer elküldi a [OpenVINO™ Model Server – AI bővítménynek az Inteltől](https://aka.ms/lva-intel-ovms), egy Edge-modulból, amely a IoT Edge élő videó-elemzéssel való működésre lett tervezve. Ez a következtetési kiszolgálói modul tartalmazza a OpenVINO™ Model Servert (OVMS), amely a OpenVINO™ Toolkit által működtetett következtetési kiszolgáló, amely a számítógép-vizualizációs számítási feladatokhoz van optimalizálva, és az Intel® architektúrák számára lett kifejlesztve. A rendszer hozzáad egy bővítményt az OVMS-hez a képkeretek egyszerű cseréjéhez és a következtetési eredmények és a IoT Edge modul élő videós elemzései között, így lehetővé téve, hogy bármely OpenVINO-™ eszközkészlet által támogatott modellt futtasson ( [a kód](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)módosításával testre szabhatja a következtetési kiszolgáló modulját). Az Intel® hardverei által biztosított gyorsítási mechanizmusok széles választéka közül választhat. Ezek közé tartoznak a processzorok (atom, Core, Xeon), a FPGA, a VPUs.
+Összetett, nagy teljesítményű élő videós elemzési megoldások létrehozásához a IoT Edge modul élő videó-elemzését egy olyan hatékony következtetési motorral kell párosítani, amely képes kihasználni a skálát a peremen. Ebben az oktatóanyagban a következtetési kérelmeket a rendszer elküldi a [OpenVINO™ Model Server – AI bővítménynek az Inteltől](https://aka.ms/lva-intel-ovms), egy Edge-modulból, amely a IoT Edge élő videó-elemzéssel való működésre lett tervezve. Ez a következtetési kiszolgálói modul tartalmazza a OpenVINO™ Model Servert (OVMS), amely a OpenVINO™ Toolkit által működtetett következtetési kiszolgáló, amely a számítógép-vizualizációs számítási feladatokhoz van optimalizálva, és az Intel® architektúrák számára lett kifejlesztve. A rendszer hozzáad egy bővítményt az OVMS-hez a képkeretek egyszerű cseréjéhez és a következtetési eredményekhez a következtetési kiszolgáló és a IoT Edge modul élő videó-elemzései között, így lehetővé téve, hogy bármely OpenVINO-™ eszközkészlet által támogatott modellt futtasson (a [kód](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)módosításával testre szabhatja a következtetési kiszolgáló modulját). Az Intel® hardverei által biztosított gyorsítási mechanizmusok széles választéka közül választhat. Ezek közé tartoznak a processzorok (atom, Core, Xeon), a FPGA, a VPUs.
 
 A következtetési kiszolgáló kezdeti kiadásában a következő [modellek](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models)érhetők el:
 
@@ -372,7 +372,7 @@ Most megismételheti a fenti lépéseket a minta program újbóli futtatásához
 
 Ha más rövid útmutatókat vagy oktatóanyagokat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

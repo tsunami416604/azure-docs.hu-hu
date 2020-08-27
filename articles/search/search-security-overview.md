@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225274"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928768"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
@@ -94,7 +94,7 @@ A keresési szolgáltatáshoz való hozzáférés további szabályozásához ol
 
 A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md).
 
-Másik lehetőségként használhatja a felügyeleti REST API-kat is. Az 2020-03-13-es API-verzió a [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) paraméterrel lehetővé teszi a szolgáltatáshoz való hozzáférés korlátozását úgy, hogy az IP-címeket, egyenként vagy egy tartományon belül azonosítja, hogy hozzáférést kíván biztosítani a keresési szolgáltatáshoz.
+Másik lehetőségként használhatja a felügyeleti REST API-kat is. Az 2020-03-13-es API-verzió a [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) paraméterrel lehetővé teszi a szolgáltatáshoz való hozzáférés korlátozását úgy, hogy az IP-címeket, egyenként vagy egy tartományon belül azonosítja, hogy hozzáférést kíván biztosítani a keresési szolgáltatáshoz.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Magánhálózati végpont (nincs internetes forgalom)
 
@@ -127,7 +127,7 @@ Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények
 
 ## <a name="administrative-rights"></a>Rendszergazdai jogosultságok
 
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer. Az Azure Cognitive Search a Resource Manager használatával létrehozhatja vagy törölheti a szolgáltatást, kezelheti az API-kulcsokat, és méretezheti a szolgáltatást. Az Azure-beli szerepkör-hozzárendelések határozzák meg, hogy kik tudják elvégezni ezeket a feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)használják.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer. Az Azure Cognitive Search a Resource Manager használatával létrehozhatja vagy törölheti a szolgáltatást, kezelheti az API-kulcsokat, és méretezheti a szolgáltatást. Az Azure-beli szerepkör-hozzárendelések határozzák meg, hogy kik tudják elvégezni ezeket a feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](/rest/api/searchmanagement/search-howto-management-rest-api)használják.
 
 Ezzel szemben a szolgáltatásban üzemeltetett tartalommal kapcsolatos rendszergazdai jogosultságokat, például az indexek létrehozását vagy törlését, az API-kulcsok az [előző szakaszban](#index-access)leírtak szerint.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039823"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948861"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt
 
@@ -25,11 +25,11 @@ A környezet bizonyos felhőalapú alkalmazásaihoz való hozzáférés előtt �
 - Egyszerű módszer a felhasználási feltételek konfigurálására
 - A használati feltételek feltételes hozzáférési szabályzattal való elfogadásának megkövetelése  
 
-Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy olyan [Azure ad feltételes hozzáférési szabályzatot](../active-directory-conditional-access-azure-portal.md) , amely megköveteli, hogy a környezetében egy kiválasztott felhőalapú alkalmazásnak el kell fogadnia a felhasználási feltételeket.
+Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy olyan [Azure ad feltételes hozzáférési szabályzatot](./overview.md) , amely megköveteli, hogy a környezetében egy kiválasztott felhőalapú alkalmazásnak el kell fogadnia a felhasználási feltételeket.
 
 ![Szabályzat létrehozása](./media/require-tou/5555.png)
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -82,7 +82,7 @@ Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit is
    1. **Nyelvként**válassza az **angol**nyelvet.
    1. Ahogy a felhasználók a használati **feltételek kibontását kérik**, válassza **a be**lehetőséget.
    1. A **feltételes hozzáférési házirend-sablonokkal való betartatáshoz**válassza az **egyéni házirend**elemet.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -96,7 +96,7 @@ A házirendben állítsa be a következőket:
 | Beállítás | Érték |
 | --- | --- |
 | Felhasználók és csoportok | Isabella Simonsen |
-| Felhőalapú alkalmazások | Microsoft Azure-kezelés |
+| Felhőalkalmazások | Microsoft Azure-kezelés |
 | Hozzáférés biztosítása | Saját felhasználási feltételek |
 
 ![Szabályzat létrehozása](./media/require-tou/1234.png)
@@ -105,7 +105,7 @@ A házirendben állítsa be a következőket:
 
 1. Az **új** lap **név** szövegmezőbe írja be a következőt: az **Isabella kötelező felhasználási**helyének megadása.
 
-   ![Name](./media/require-tou/71.png)
+   ![Név](./media/require-tou/71.png)
 
 1. A **hozzárendelés** szakaszban kattintson a **felhasználók és csoportok**elemre.
 
@@ -116,19 +116,19 @@ A házirendben állítsa be a következőket:
    ![Felhasználók és csoportok](./media/require-tou/24.png)
 
    1. Kattintson a **felhasználók és csoportok kiválasztása**elemre, majd válassza a **felhasználók és csoportok**lehetőséget.
-   1. Kattintson a **Kiválasztás** gombra.
+   1. Kattintson a **Kiválasztás** elemre.
    1. A **kiválasztás** lapon válassza az **Isabella Simonsen**elemet, majd kattintson a **kiválasztás**elemre.
    1. A **felhasználók és csoportok** lapon kattintson a **kész**gombra.
 1. Kattintson a **Cloud apps**lehetőségre.
 
-   ![Felhőalapú alkalmazások](./media/require-tou/08.png)
+   ![Felhőalkalmazások](./media/require-tou/08.png)
 
 1. A **Cloud apps** oldalon:
 
    ![Felhőalapú alkalmazások kiválasztása](./media/require-tou/26.png)
 
    1. Kattintson az **alkalmazások kiválasztása**elemre.
-   1. Kattintson a **Kiválasztás** gombra.
+   1. Kattintson a **Kiválasztás** elemre.
    1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet**lehetőséget, majd kattintson a **kiválasztás**gombra.
    1. A **Cloud apps** lapon kattintson a **kész**gombra.
 1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
@@ -141,12 +141,12 @@ A házirendben állítsa be a következőket:
 
    1. Válassza a **Hozzáférés biztosítása** lehetőséget.
    1. Válassza **a saját felhasználási**feltételek lehetőséget.
-   1. Kattintson a **Kiválasztás** gombra.
+   1. Kattintson a **Kiválasztás** elemre.
 1. A **házirend engedélyezése** szakaszban kattintson **a be**gombra.
 
    ![Szabályzat engedélyezése](./media/require-tou/18.png)
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
@@ -176,11 +176,11 @@ A **What if** elemre kattintva létrehoz egy szimulációs jelentést, amely a k
 
 1. Felhőalapú alkalmazás kiválasztása:
 
-   ![Felhőalapú alkalmazások](./media/require-tou/16.png)
+   ![Felhőalkalmazások](./media/require-tou/16.png)
 
    1. Kattintson a **Cloud apps**lehetőségre.
    1. A **Cloud apps lapon**kattintson az **alkalmazások kiválasztása**elemre.
-   1. Kattintson a **Kiválasztás** gombra.
+   1. Kattintson a **Kiválasztás** elemre.
    1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet**lehetőséget, majd kattintson a **kiválasztás**gombra.
    1. A Cloud apps lapon kattintson a **kész**gombra.
 1. Kattintson **What if**.
@@ -193,20 +193,20 @@ A szabályzat teszteléséhez próbáljon meg bejelentkezni a [Azure Portalba](h
 
 ![Használati feltételek](./media/require-tou/57.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes hozzáférési szabályzatot:
 
 - Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse meg [a felhasználók törlése az Azure ad-ból](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
 - A szabályzat törléséhez válassza ki a szabályzatot, majd kattintson a gyorselérési eszköztár **Törlés** elemére.
 
-    ![Többtényezős hitelesítés](./media/require-tou/33.png)
+    ![Multi-Factor Authentication](./media/require-tou/33.png)
 
 - A használati feltételek törléséhez jelölje ki azt, majd kattintson a **feltételek törlése** elemre a felül található eszköztárban.
 
-    ![Többtényezős hitelesítés](./media/require-tou/29.png)
+    ![Multi-Factor Authentication](./media/require-tou/29.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [MFA megkövetelése adott alkalmazásokhoz](app-based-mfa.md)
+> [MFA megkövetelése adott alkalmazásokhoz](../authentication/tutorial-enable-azure-mfa.md)

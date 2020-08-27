@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009205"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928683"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure-szerepkörök beállítása az Azure-beli rendszergazdai hozzáféréshez Cognitive Search
 
@@ -26,11 +26,11 @@ Az Azure [globális szerepköralapú engedélyezési modellt](../role-based-acce
 
 Az Azure Cognitive Search esetében a szerepkörök a következő felügyeleti feladatokat támogató jogosultsági szintekhez vannak társítva:
 
-| Role | Tevékenység |
+| Szerepkör | Tevékenység |
 | --- | --- |
 | Tulajdonos |Hozza létre vagy törölje a szolgáltatást vagy a szolgáltatás bármely objektumát, beleértve az API-kulcsokat, az indexeket, az indexelő, az indexelő adatforrásokat és az indexelő-ütemterveket.<p>A szolgáltatás állapotának megtekintése, beleértve a darabszámot és a tárterület méretét.<p>Szerepkör-tagság hozzáadása vagy törlése (csak a tulajdonosok kezelhetik a szerepkör-tagságot).<p>Az előfizetés-rendszergazdák és a szolgáltatás tulajdonosai automatikus tagsággal rendelkeznek a tulajdonosi szerepkörben. |
 | Közreműködő |Azonos szintű hozzáférés tulajdonosként, mínusz az Azure szerepkör-kezelés. A közreműködők például létrehozhatnak vagy törölhetnek objektumokat, vagy megtekinthetik és újragenerálják az [API-kulcsokat](search-security-api-keys.md), de nem módosíthatják a szerepkör-tagságokat. |
-| [Search Service közreműködő beépített szerepköre](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | A közreműködő szerepkörrel egyenértékű. |
+| [Search Service közreműködő beépített szerepköre](../role-based-access-control/built-in-roles.md#search-service-contributor) | A közreműködő szerepkörrel egyenértékű. |
 | Olvasó |A szolgáltatás Essentials és metrikáinak megtekintése. Ennek a szerepkörnek a tagjai nem tekinthetik meg az indexet, az indexelő, az adatforrás vagy a kulcs információit.  |
 
 A szerepkörök nem biztosítanak hozzáférési jogosultságot a szolgáltatási végpont számára. A keresési szolgáltatási műveleteket, például az indexelést, az indexelést és a keresési adatok lekérdezéseit az API-kulcsok vezérlik, nem pedig a szerepkörök. További információ: az [API-kulcsok kezelése](search-security-api-keys.md).
@@ -50,7 +50,7 @@ Az alábbi táblázat összefoglalja az Azure Cognitive Searchban engedélyezett
 | Rendszergazdai kulcsok kezelése | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson |
 | Lekérdezési kulcsok kezelése |  Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson  |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás az Azure Cognitive Search](search-performance-optimization.md)

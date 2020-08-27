@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0d8d9f598da41b2bd39369e063200f5445ba740a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 20845a6f1238095b40c9b05b5f5d8d85217b6db5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554780"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950408"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-preview-pipelines"></a>Azure Machine Learning Designer (előzetes verzió) folyamatok naplózásának engedélyezése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -78,5 +78,5 @@ A folyamat futásának befejeződése után megtekintheti a *Mean_Absolute_Error
 
 Ebben a cikkben megtanulta, hogyan használhatja a naplókat a tervezőben. A következő lépésekért tekintse meg az alábbi kapcsolódó cikkeket:
 
-* Ismerje meg, hogyan lehet a tervezői folyamatokat elhárítani: [hibakeresés & ml-folyamatok hibaelhárítása](how-to-debug-pipelines.md#azure-machine-learning-designer-preview).
+* Ismerje meg, hogyan lehet a tervezői folyamatokat elhárítani: [hibakeresés & ml-folyamatok hibaelhárítása](how-to-debug-pipelines.md#logging-in-azure-machine-learning-designer-preview).
 * Megtudhatja, hogyan használhatja a Python SDK-t a mérőszámok naplózására az SDK-létrehozási élményben: a [naplózás engedélyezése az Azure ml betanítási futtatásával](how-to-track-experiments.md).

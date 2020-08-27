@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fb83b30f0844b9bf0e362e6f1e3a3822ba0044d1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078954"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950000"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Kötetek szolgáltatásszintjének dinamikus módosítása
 
@@ -53,6 +53,7 @@ A kötetek egy másik kapacitási készletbe való áthelyezésének funkciója 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
+Használhatja az Azure CLI-parancsokat is, [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) és [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>Kötet áthelyezése másik kapacitási készletbe
 
@@ -67,7 +68,7 @@ A kötetek egy másik kapacitási készletbe való áthelyezésének funkciója 
 3.  Kattintson az **OK** gombra.
 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)

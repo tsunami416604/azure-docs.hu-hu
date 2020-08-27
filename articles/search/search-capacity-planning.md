@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546258"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927204"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Kapacitás módosítása az Azure-ban Cognitive Search
 
@@ -21,7 +21,7 @@ A [keresési szolgáltatás](search-create-service-portal.md) üzembe helyezése
 
 A kapacitás a [kiválasztott rétegek](search-sku-tier.md) függvénye (a szintek határozzák meg a hardver jellemzőit), valamint a tervezett munkaterhelésekhez szükséges replika és partíciós kombinációt. A szintjétől és a beállítás méretétől függően a kapacitás hozzáadása vagy csökkentése akár 15 perctől akár több óráig is eltarthat. 
 
-A replikák és partíciók kiosztásának módosításakor javasoljuk, hogy használja a Azure Portal. A portál kényszeríti az olyan megengedett kombinációk korlátozásait, amelyek az adott szinten maximális korláton belül maradnak. Ha azonban parancsfájl-vagy programkód-alapú létesítési megközelítésre van szüksége, akkor a [Azure PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatív megoldás.
+A replikák és partíciók kiosztásának módosításakor javasoljuk, hogy használja a Azure Portal. A portál kényszeríti az olyan megengedett kombinációk korlátozásait, amelyek az adott szinten maximális korláton belül maradnak. Ha azonban parancsfájl-vagy programkód-alapú létesítési megközelítésre van szüksége, akkor a [Azure PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](/rest/api/searchmanagement/services) alternatív megoldás.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminológia: replikák és partíciók
 

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032883"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948198"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibaelhárítás a feltételes hozzáférés Lehetőségelemzési eszközével
 
-A [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt**.
+A [feltételes hozzáférés](./overview.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt**.
 
 Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférési szabályzatok teszteléséhez.
 
@@ -102,7 +102,7 @@ A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhat
 
 Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A feltételes hozzáférési szabályzat alkalmazásával kapcsolatos további információkért a [feltételes hozzáférési információk és jelentéskészítés](howto-conditional-access-insights-reporting.md)funkció használatával a házirend csak jelentés mód használatával érhető el.
-- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg a [feltételes hozzáférés általános házirendjeit](concept-conditional-access-policy-common.md). 
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg a [feltételes hozzáférés általános házirendjeit](concept-conditional-access-policy-common.md).

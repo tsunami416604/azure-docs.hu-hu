@@ -12,19 +12,23 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480980"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949541"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 
 Az Azure MFA-kiszolgáló Címtár-integráció szakaszának használatával integrálhatja a címtárat az Active Directoryval vagy egy másik LDAP-címtárral. Konfigurálhatja az attribútumokat, hogy megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, akik a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure-Multi-Factor Authenticationt kell használniuk.
+>
+> A felhőalapú MFA megismeréséhez tekintse meg a következő [oktatóanyagot: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával.
+>
+> Az MFA-kiszolgálót az 2019. július 1. előtt aktivált meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon előállítják az aktiválási hitelesítő adatokat.
 
 ## <a name="settings"></a>Beállítások
 
@@ -35,7 +39,7 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-(MFA-) kiszolgál�
 > [!NOTE]
 > A címtár-integráció nem garantált, hogy a Active Directory tartományi szolgáltatásokon kívüli címtárakkal is működjön.
 
-| Szolgáltatás | Description |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Active Directory használata |Válassza az Active Directory használata beállítást, ha az Active Directoryt szeretné alkalmazni importáláshoz és szinkronizáláshoz.  Ez az alapértelmezett beállítás. <br>Megjegyzés: Az Active Directory-integráció megfelelő működéséhez csatlakoztatnia kell a számítógépet egy tartományhoz, és be kell jelentkeznie egy tartományfiókkal. |
 | Megbízható tartományok belefoglalása |Jelölje be a **Megbízható tartományok belefoglalása** jelölőnégyzetet, hogy az ügynök az aktuális tartomány által megbízhatónak tartott tartományokhoz, az erdőben egy másik tartományhoz vagy erdőszintű megbízhatósággal rendelkező tartományokhoz csatlakozzon.  Amikor nem a megbízható tartományokból importál vagy szinkronizál felhasználókat, törölje a jelölőnégyzet jelölését a teljesítmény növeléséhez.  Alapértelmezés szerint be van jelölve. |
@@ -45,7 +49,7 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-(MFA-) kiszolgál�
 
 A következő táblázat az LDAP-konfigurációs beállításokat ismerteti.
 
-| Szolgáltatás | Description |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Kiszolgáló |Megadhatja az LDAP-címtárat futtató kiszolgáló állomásnevét vagy IP-címét.  Tartalékkiszolgálót is megadhat pontosvesszővel elválasztva. <br>Megjegyzés: Ha a kötési típus SSL (TLS), a teljes állomásnév megadása kötelező. |
 | Alap DN |Megadhatja az alap címtárobjektum megkülönböztető nevét, ahonnan az összes címtárlekérdezés indul.  Például dc=abc,dc=com. |
@@ -76,7 +80,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 
 ![A címtár-integrációs attribútumok testreszabása az MFA-kiszolgálón](./media/howto-mfaserver-dir-ad/dirint3.png)
 
-| Szolgáltatás | Description |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Egyedi azonosító |Megadhatja a tároló-, biztonságicsoport- és felhasználórekordok egyedi azonosítójaként szolgáló attribútum nevét.  Az Active Directoryban ez általában az objectGUID. Egyéb LDAP-megvalósításokban az entryUUID vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték az objectGUID. |
 | Egyedi azonosító típusa |Válassza ki az egyedi azonosító attribútum típusát.  Az Active Directoryban az objectGUID attribútum típusa GUID. Egyéb LDAP-megvalósításokban az ASCII bájttömb vagy Sztring típusok is előfordulhatnak.  Az alapértelmezett érték a GUID. <br><br>Fontos, hogy ezt a típust helyesen adja meg, mivel a rendszer a szinkronizált elemekre az egyedi azonosítójuk alapján hivatkozik. Az objektumok a címtárban közvetlenül az egyedi azonosítótípusuk segítségével kereshetők meg.  Ha a típust Sztringre állítja, miközben a címtár valójában ASCII-karakterek bájttömbjeként tárolja az értéket, a szinkronizálás nem fog megfelelően működni. |
@@ -88,7 +92,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | Vezetéknév |Megadhatja azon attribútum nevét, amely a vezetéknevet egy felhasználórekordban tárolja.  Az alapértelmezett érték az sn. |
 | E-mail-cím |Megadhatja azon attribútum nevét, amely az e-mail-címet egy felhasználórekordban tárolja.  A rendszer a megadott e-mail-címre üdvözlő és tájékoztató e-maileket küld a felhasználónak.  Az alapértelmezett érték a mail. |
 | Felhasználói csoport |Megadhatja azon attribútum nevét, amely a felhasználói csoportot egy felhasználórekordban tárolja.  A felhasználói csoportokkal szűrheti a felhasználókat az ügynökben és a jelentésekben a Multi-Factor Auth-kiszolgáló felügyeleti portálján. |
-| Description |Megadhatja azon attribútum nevét, amely a leírást egy felhasználórekordban tárolja.  A leírás csak keresésekhez használható.  Az alapértelmezett érték a description. |
+| Leírás |Megadhatja azon attribútum nevét, amely a leírást egy felhasználórekordban tárolja.  A leírás csak keresésekhez használható.  Az alapértelmezett érték a description. |
 | Telefonhívás nyelve |Megadhatja azon attribútum nevét, amely a felhasználóhoz intézett hanghívásokhoz használt nyelv rövid nevét tartalmazza. |
 | Szöveges üzenetek nyelve |Megadhatja azon attribútum nevét, amely a felhasználónak küldött SMS szöveges üzenetekhez használt nyelv rövid nevét tartalmazza. |
 | Mobilalkalmazások nyelve |Megadhatja azon attribútum nevét, amely a felhasználónak küldött telefonos alkalmazásbeli szöveges üzenetekhez használt nyelv rövid nevét tartalmazza. |
@@ -100,7 +104,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | Fax |Megadhatja azon attribútum nevét, amely a faxszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték a facsimileTelephoneNumber. |
 | IP-telefon |Megadhatja azon attribútum nevét, amely az IP-telefonszámot egy felhasználórekordban tárolja.  Az alapértelmezett érték az ipPhone. |
 | Egyéni |Megadhatja azon attribútum nevét, amely egy egyéni telefonszámot tárol egy felhasználórekordban.  Alapértelmezés szerint ez a mező üres. |
-| Mellék |Megadhatja azon attribútum nevét, amely a telefonszámhoz tartozó melléket egy felhasználórekordban tárolja.  A mellék mező értékét a rendszer csak az elsődleges telefonszám mellékeként használja.  Alapértelmezés szerint ez a mező üres. <br><br>Ha a Mellék attribútum nincs meghatározva, a mellékek megadhatók a telefonattribútum részeként. Ebben az esetben a mellék elé tegyen egy „x” karaktert, hogy a rendszer megfelelően tudja elemezni.  Például az 555-123-4567 x890 érték az 555-123-4567-es telefonszámot jelöli 890-es mellékkel. |
+| Kiterjesztés |Megadhatja azon attribútum nevét, amely a telefonszámhoz tartozó melléket egy felhasználórekordban tárolja.  A mellék mező értékét a rendszer csak az elsődleges telefonszám mellékeként használja.  Alapértelmezés szerint ez a mező üres. <br><br>Ha a Mellék attribútum nincs meghatározva, a mellékek megadhatók a telefonattribútum részeként. Ebben az esetben a mellék elé tegyen egy „x” karaktert, hogy a rendszer megfelelően tudja elemezni.  Például az 555-123-4567 x890 érték az 555-123-4567-es telefonszámot jelöli 890-es mellékkel. |
 | Alapértelmezések visszaállítása gomb |Kattintson az **Alapértelmezések visszaállítása** gombra, hogy az összes attribútum visszaálljon az alapértelmezett értékre.  Az alapértelmezett értékek megfelelően működnek a normál Active Directory- vagy ADAM-sémával. |
 
 Az attribútumok szerkesztéséhez kattintson a **Szerkesztés** gombra az attribútumok lapon.  Ekkor megjelenik egy ablak, ahol szerkesztheti az attribútumokat. Bármely attribútum mellett a **...** elemet kiválasztva megnyílik egy ablak, ahol kiválaszthatja, hogy mely attribútumok jelenjenek meg.
@@ -121,7 +125,7 @@ Ha az LDAP-címtár támogatja a DirSync vezérlőt és ahhoz van konfigurálva,
 
 Az alábbi táblázat további információkat tartalmaz a Szinkronizálás lap egyes beállításairól.
 
-| Szolgáltatás | Description |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Active Directory-szinkronizálás engedélyezése |Ha be van jelölve, a Multi-Factor Auth-kiszolgáló szolgáltatás rendszeres időközönként lekérdezi a változásokat az Active Directoryból. <br><br>Megjegyzés: Legalább egy szinkronizált elemet hozzá kell adni és egy Szinkronizálás most műveletet végre kell hajtani, mielőtt a Multi-Factor Auth-kiszolgáló szolgáltatás elkezdené a változások feldolgozását. |
 | Szinkronizálás gyakorisága |Megadhatja azt az időtartamot, amennyit a Multi-Factor Auth-kiszolgáló szolgáltatás vár a változások lekérdezése és feldolgozása között. <br><br> Megjegyzés: A megadott időköz az egyes ciklusok kezdete között eltelt idő.  Ha a feldolgozási idő meghaladja az időközt, a szolgáltatás azonnal ismét elindítja a lekérdezést. |

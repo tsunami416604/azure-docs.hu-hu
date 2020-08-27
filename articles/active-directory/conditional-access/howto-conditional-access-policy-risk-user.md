@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c890c8e9af7310338e8470c4d56b46d1e259c168
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605584"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948062"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Feltételes hozzáférés: felhasználói kockázat alapú feltételes hozzáférés
 
@@ -29,7 +29,7 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
-1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében. További információ: [a szabályzatok elnevezési szabályainak beállítása](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies).
+1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében. További információ: [a szabályzatok elnevezési szabályainak beállítása](./plan-conditional-access.md#set-naming-standards-for-your-policies).
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
@@ -54,7 +54,7 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
 1. A **Controls**  >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése**jelölőnégyzetet.
    1. Válassza a **Kiválasztás** lehetőséget.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -66,4 +66,4 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
-[Mi az az Azure Active Directory Identity Protection?](../identity-protection/overview.md)
+[Mi az az Azure Active Directory Identity Protection?](../identity-protection/overview-identity-protection.md)

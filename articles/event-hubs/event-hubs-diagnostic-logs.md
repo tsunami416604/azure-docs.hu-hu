@@ -3,12 +3,12 @@ title: Diagnosztikai naplók beállítása – Azure Event hub | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és a diagnosztikai naplókat az Azure-beli Event hubokhoz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521938"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927731"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
@@ -61,18 +61,18 @@ Az Archive log JSON-karakterláncok az alábbi táblázatban felsorolt elemeket 
 
 Név | Leírás
 ------- | -------
-Feladatnév | A sikertelen feladat leírása
-Tevékenységazonosító | A nyomon követéshez használt belső azonosító
-trackingId | A nyomon követéshez használt belső azonosító
-resourceId | Erőforrás-azonosító Azure Resource Manager
-eventHub | Event hub teljes neve (tartalmazza a névtér nevét)
-partitionId | Az Event hub-partíció írása folyamatban
-archiveStep | lehetséges értékek: ArchiveFlushWriter, DestinationInit
-startTime | Sikertelen kezdési idő
-hibák | A hiba előfordulási idejének száma
-durationInSeconds | Hiba időtartama
-message | Hibaüzenet
-category | ArchiveLogs
+`TaskName` | A sikertelen feladat leírása
+`ActivityId` | A nyomon követéshez használt belső azonosító
+`trackingId` | A nyomon követéshez használt belső azonosító
+`resourceId` | Erőforrás-azonosító Azure Resource Manager
+`eventHub` | Event hub teljes neve (tartalmazza a névtér nevét)
+`partitionId` | Az Event hub-partíció írása folyamatban
+`archiveStep` | lehetséges értékek: ArchiveFlushWriter, DestinationInit
+`startTime` | Sikertelen kezdési idő
+`failures` | A hiba előfordulási idejének száma
+`durationInSeconds` | Hiba időtartama
+`message` | Hibaüzenet
+`category` | ArchiveLogs
 
 A következő kód egy példa egy archivált log JSON-karakterláncra:
 
@@ -99,15 +99,15 @@ Az operatív napló JSON-karakterláncai az alábbi táblázatban felsorolt elem
 
 Név | Leírás
 ------- | -------
-Tevékenységazonosító | Belső azonosító, követési célokra használatos |
-EventName | Művelet neve |
-resourceId | Erőforrás-azonosító Azure Resource Manager |
-SubscriptionId | Előfizetés azonosítója |
-EventTimeString | Működési idő |
-EventProperties | Művelet tulajdonságai |
-status | Művelet állapota |
-Hívó | A művelet hívója (Azure Portal vagy felügyeleti ügyfél) |
-Kategória | OperationalLogs |
+`ActivityId` | Belső azonosító, követési célokra használatos |
+`EventName` | Művelet neve |
+`resourceId` | Erőforrás-azonosító Azure Resource Manager |
+`SubscriptionId` | Előfizetés azonosítója |
+`EventTimeString` | Működési idő |
+`EventProperties` | Művelet tulajdonságai |
+`Status` | Művelet állapota |
+`Caller` | A művelet hívója (Azure Portal vagy felügyeleti ügyfél) |
+`Category` | OperationalLogs |
 
 A következő kód példa egy operatív napló JSON-karakterláncára:
 
@@ -131,9 +131,9 @@ Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 
 | Név | Leírás |
 | ---- | ----------- | 
-| TrackingId | Belső azonosító, amely nyomkövetési célokra szolgál |
-| ResourceId | Azure Resource Manager erőforrás-azonosító. |
-| Üzenet | Tájékoztató üzenet, amely részletesen ismerteti az automatikus feltöltés műveleteit. Az üzenet tartalmazza az adott névtér átviteli egységének előző és aktuális értékét, valamint azt, hogy mi indította el a TU-t. |
+| `TrackingId` | Belső azonosító, amely nyomkövetési célokra szolgál |
+| `ResourceId` | Azure Resource Manager erőforrás-azonosító. |
+| `Message` | Tájékoztató üzenet, amely részletesen ismerteti az automatikus feltöltés műveleteit. Az üzenet tartalmazza az adott névtér átviteli egységének előző és aktuális értékét, valamint azt, hogy mi indította el a TU-t. |
 
 Íme egy példa az autoscale eseményre: 
 
@@ -150,13 +150,13 @@ A Kafka-koordinátor log JSON a következő táblázatban felsorolt elemeket tar
 
 | Név | Leírás |
 | ---- | ----------- | 
-| Kérelemazonosító | A kérelem azonosítója, amely nyomkövetési célokra szolgál |
-| ResourceId | Erőforrás-azonosító Azure Resource Manager |
-| Művelet | A csoport koordinálásakor végzett művelet neve |
-| ClientID | Ügyfél-azonosító |
-| Namespacename tulajdonság | Névtér neve | 
-| SubscriptionId | Azure-előfizetés azonosítója |
-| Üzenet | Tájékoztató vagy figyelmeztető üzenet, amely részletesen ismerteti a csoportos koordináció során végrehajtott műveleteket. |
+| `RequestId` | A kérelem azonosítója, amely nyomkövetési célokra szolgál |
+| `ResourceId` | Erőforrás-azonosító Azure Resource Manager |
+| `Operation` | A csoport koordinálásakor végzett művelet neve |
+| `ClientId` | Ügyfél-azonosító |
+| `NamespaceName` | Névtér neve | 
+| `SubscriptionId` | Azure-előfizetés azonosítója |
+| `Message` | Tájékoztató vagy figyelmeztető üzenet, amely részletesen ismerteti a csoportos koordináció során végrehajtott műveleteket. |
 
 ### <a name="example"></a>Példa
 
@@ -178,14 +178,14 @@ A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt ele
 
 | Név | Leírás |
 | ---- | ----------- |
-| TrackingId | Nyomkövetési azonosító, amely nyomkövetési célokra szolgál. |
-| Namespacename tulajdonság | Névtér neve |
-| Eventhub | Event Hubs neve |
-| PartitionId | Partícióazonosító |
-| Csoportazonosító | Csoportazonosító |
-| ClientID | Ügyfél-azonosító |
-| ResourceId | Azure Resource Manager erőforrás-azonosító. |
-| Üzenet | Tájékoztató üzenet, amely a hibával kapcsolatos részleteket tartalmaz |
+| `TrackingId` | Nyomkövetési azonosító, amely nyomkövetési célokra szolgál. |
+| `NamespaceName` | Névtér neve |
+| `Eventhub` | Event Hubs neve |
+| `PartitionId` | Partícióazonosító |
+| `GroupId` | Csoportazonosító |
+| `ClientId` | Ügyfél-azonosító |
+| `ResourceId` | Azure Resource Manager erőforrás-azonosító. |
+| `Message` | Tájékoztató üzenet, amely a hibával kapcsolatos részleteket tartalmaz |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs virtuális hálózati kapcsolati esemény sémája
 
@@ -193,13 +193,13 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 
 | Név | Leírás |
 | ---  | ----------- | 
-| SubscriptionId | Azure-előfizetés azonosítója |
-| Namespacename tulajdonság | Névtér neve |
-| IPAddress | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
-| Művelet | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
-| Ok | A művelet elvárt okát adja meg |
-| Darabszám | Az adott művelet előfordulásainak száma |
-| ResourceId | Azure Resource Manager erőforrás-azonosító. |
+| `SubscriptionId` | Azure-előfizetés azonosítója |
+| `NamespaceName` | Névtér neve |
+| `IPAddress` | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
+| `Action` | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
+| `Reason` | A művelet elvárt okát adja meg |
+| `Count` | Az adott művelet előfordulásainak száma |
+| `ResourceId` | Azure Resource Manager erőforrás-azonosító. |
 
 ### <a name="example"></a>Példa
 
@@ -221,22 +221,22 @@ Az ügyfél által felügyelt kulcs felhasználói napló JSON a következő tá
 
 | Név | Leírás |
 | ---- | ----------- | 
-| Kategória | Az üzenet kategóriájának típusa A következő értékek egyike: **hiba** és **információ** |
-| ResourceId | Belső erőforrás-azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
-| KeyVault | A Key Vault erőforrás neve |
-| Kulcs | A Key Vault kulcs neve. |
-| Verzió | A Key Vault kulcs verziója |
-| Művelet | A kérelmek kiszolgálására tett művelet neve |
-| Code | Állapotkód |
-| Üzenet | Üzenet, amely egy hiba vagy tájékoztató üzenet részleteit tartalmazza |
+| `Category` | Az üzenet kategóriájának típusa A következő értékek egyike: **hiba** és **információ** |
+| `ResourceId` | Belső erőforrás-azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
+| `KeyVault` | A Key Vault erőforrás neve |
+| `Key` | A Key Vault kulcs neve. |
+| `Version` | A Key Vault kulcs verziója |
+| `Operation` | A kérelmek kiszolgálására tett művelet neve |
+| `Code` | Állapotkód |
+| `Message` | Üzenet, amely egy hiba vagy tájékoztató üzenet részleteit tartalmazza |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Bevezetés a Event Hubsba](./event-hubs-about.md)
 - [Event Hubs minták](sdks.md)
 - Bevezetés az Event Hubs használatába
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

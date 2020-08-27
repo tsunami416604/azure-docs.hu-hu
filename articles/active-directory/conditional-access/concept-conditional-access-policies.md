@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295328"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948385"
 ---
 # <a name="building-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -44,7 +44,7 @@ Egy házirend több [feltételt](concept-conditional-access-conditions.md)is tar
 
 #### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
-Az [Azure ad Identity Protection](../identity-protection/overview.md)-t használó szervezetek esetében az ott létrehozott kockázati észlelések befolyásolhatják a feltételes hozzáférési szabályzatokat.
+Az [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md)-t használó szervezetek esetében az ott létrehozott kockázati észlelések befolyásolhatják a feltételes hozzáférési szabályzatokat.
 
 #### <a name="device-platforms"></a>Eszközplatformok
 
@@ -125,7 +125,7 @@ A feltételes hozzáférési szabályzatnak legalább a következőket kell tart
 
 Az [általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md) a legtöbb szervezet számára hasznosnak bizonyuló szabályzatokat tartalmaznak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 

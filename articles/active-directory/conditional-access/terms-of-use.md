@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184346"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948912"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -50,7 +50,7 @@ Az Azure AD használati feltételei a következő képességekkel rendelkeznek:
 - A használati feltételekhez tartozó vagy még nem elfogadott lista.
 - Segítségnyújtás az adatvédelmi szabályozásokban.
 - A megfelelőség és a naplózás használati feltételeinek naplóját jeleníti meg.
-- Használati feltételek létrehozása és kezelése [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) -kkal (jelenleg előzetes verzióban).
+- Használati feltételek létrehozása és kezelése [Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) -kkal (jelenleg előzetes verzióban).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,7 +117,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
    ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
-   | Sablon | Description |
+   | Sablon | Leírás |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie és be kell jelentkeznie. |

@@ -5,34 +5,47 @@ description: Azure Machine Learning folyamatok hibakeresése a Pythonban. Ismerj
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: likebupt
-ms.author: keli19
-ms.date: 03/18/2020
+author: lobrien
+ms.author: laobri
+ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: ac8896bae4b3bf36ee6e943581bbf6791401c821
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a036cb4212b0237bea1c8509532dc78d469acb17
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904649"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950153"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárítást a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -ban és [Azure Machine learning Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/concept-designer). A következő témakörben található információk:
+Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibakeresést a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -ban és [Azure Machine learning Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/concept-designer). 
 
-* Hibakeresés a Azure Machine Learning SDK használatával
-* Hibakeresés a Azure Machine Learning Designer használatával
-* Hibakeresés Application Insights használatával
-* Interaktív hibakeresés a Visual Studio Code (VS Code) és a Python Tools for Visual Studio (PTVSD) használatával
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
-A következő szakaszokban áttekintheti a folyamatok összeállításakor előforduló gyakori buktatókat, valamint a folyamatokban futó kód hibakereséséhez szükséges különböző stratégiákat. Ha nem sikerül a folyamat futtatása a várt módon, kövesse az alábbi tippeket.
+Az alábbi táblázat a folyamat fejlesztése során felmerülő gyakori problémákat tartalmazza, és lehetséges megoldásokat tartalmaz.
 
-### <a name="testing-scripts-locally"></a>Parancsfájlok helyi tesztelése
+| Probléma | Lehetséges megoldás |
+|--|--|
+| Nem sikerült átadni az `PipelineData` adatkönyvtárat | Győződjön meg arról, hogy létrehozott egy könyvtárat a parancsfájlban, amely megfelel annak, ahol a folyamat a lépés kimeneti adatait várja. A legtöbb esetben a bemeneti argumentum meghatározza a kimeneti könyvtárat, majd explicit módon létrehozza a könyvtárat. `os.makedirs(args.output_dir, exist_ok=True)`A paranccsal hozhatja létre a kimeneti könyvtárat. Tekintse meg az [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) egy pontozási parancsfájl példája, amely ezt a kialakítási mintát mutatja. |
+| Függőségi hibák | Ha olyan függőségi hibákat lát a távoli folyamatokban, amelyek helyi teszteléskor nem történtek meg, ellenőrizze, hogy a távoli környezet függőségei és verziói megfelelnek-e a tesztkörnyezetben. (Lásd: [környezetek kiépítése, gyorsítótárazása és újrafelhasználása](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
+| Nem egyértelmű hibák a számítási célokkal | Próbálkozzon a számítási célok törlésével és újbóli létrehozásával. A számítási célok újbóli létrehozása gyorsan elvégezhető, és bizonyos átmeneti problémák is megoldhatók. |
+| A folyamat nem használja újra a lépéseket | Az ismételt használat alapértelmezés szerint engedélyezve van, de gondoskodjon arról, hogy ne tiltsa le egy folyamat lépéseiben. Ha az újbóli használat le van tiltva, a `allow_reuse` lépésben megadott paraméter a következő lesz: `False` . |
+| A folyamat feleslegesen fut újra | Annak biztosítása érdekében, hogy a lépések csak akkor fussanak újra, amikor a mögöttes adatokat vagy parancsfájlokat módosítják, az egyes lépésekhez tartozó forráskód-címtárakat le kell választva. Ha ugyanazt a könyvtárat használja több lépéshez, előfordulhat, hogy szükségtelen ismétléseket tapasztal. Használja a `source_directory` paramétert egy folyamat lépés objektumon, hogy az elkülönített könyvtárba mutasson erre a lépésre, és győződjön meg arról, hogy nem ugyanazt az `source_directory` útvonalat használja több lépéshez. |
 
-A folyamat egyik leggyakoribb meghibásodása, hogy egy csatolt parancsfájl (adattisztítási parancsfájl, pontozási parancsfájl stb.) nem a kívánt módon fut, vagy futásidejű hibákat tartalmaz a távoli számítási környezetben, amelyek nehezen tudnak hibakeresést végezni a munkaterületen a Azure Machine Learning Studióban. 
+
+## <a name="debugging-techniques"></a>Hibakeresési technikák
+
+A folyamatok hibakereséséhez három fő módszer áll rendelkezésre: 
+
+* Az egyes folyamatokkal kapcsolatos lépések hibakeresése a helyi számítógépen
+* A naplózás és a Application Insights használatával elkülönítheti és diagnosztizálhatja a probléma forrását
+* Távoli hibakereső csatolása az Azure-ban futó folyamatokhoz
+
+### <a name="debug-scripts-locally"></a>Parancsfájlok helyi hibakeresése
+
+A folyamat egyik leggyakoribb meghibásodása, hogy a tartomány parancsfájlja nem a kívánt módon fut, vagy futásidejű hibákat tartalmaz a távoli számítási környezetben, amely nehezen hibakeresést végez.
 
 Maguk a folyamatok nem futtathatók helyileg, de a parancsfájlok a helyi gépen való elkülönítése lehetővé teszi a gyorsabb hibakeresést, mivel nem kell megvárnia a számítási és a környezeti felépítési folyamatra. Ehhez szükség van egy fejlesztési munkára:
 
@@ -49,41 +62,9 @@ Ha a parancsfájl beállítása a helyi környezetben való futtatásra van beá
 > [!TIP] 
 > Ha ellenőrizni szeretné, hogy a parancsfájl a várt módon fut-e, egy jó következő lépés futtatja a szkriptet egy egylépéses folyamaton, mielőtt egy több lépésből álló folyamaton próbálja futtatni azt.
 
-### <a name="debugging-scripts-from-remote-context"></a>Parancsfájlok hibakeresése távoli környezetből
+## <a name="configure-write-to-and-review-pipeline-logs"></a>A folyamat naplófájljainak konfigurálása, írása és áttekintése
 
 A parancsfájlok helyi tesztelése nagyszerű módja annak, hogy a folyamat megkezdése előtt hibakeresést végezzen a fő kódrészletek és az összetett logika között, de előfordulhat, hogy a tényleges folyamat futtatásakor valószínűleg a parancsfájlokat kell hibakeresést végeznie, különösen a folyamat lépései közötti interakció során felmerülő viselkedés diagnosztizálásakor. Javasoljuk, hogy az utasítások liberális használatát `print()` a lépés parancsfájljaiban is megtekintheti, így a távoli végrehajtás során az objektum állapota és a várt értékek láthatók, hasonlóan a JavaScript-kód hibakereséséhez.
-
-A naplófájl `70_driver_log.txt` tartalma: 
-
-* A parancsfájl végrehajtása során kinyomtatott utasítások
-* A parancsfájl verem-nyomkövetése 
-
-Ha a portálon szeretné megkeresni a többi naplófájlt, először kattintson a folyamat futtatására a munkaterületen.
-
-![Folyamat futtatási listájának lapja](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-Navigáljon a folyamat futásának részletei lapra.
-
-![Folyamat futásának részletes lapja](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-Kattintson a modulra az adott lépéshez. Navigáljon a **naplók** lapra. Egyéb naplók a környezeti rendszerkép létrehozási folyamatával és a lépés-előkészítési parancsfájlokkal kapcsolatos információkat tartalmaznak.
-
-![Folyamat futásának részletes lapja napló lapja](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> A *közzétett folyamatokra* vonatkozó futtatások a munkaterület **végpontok** lapján találhatók. A *nem közzétett folyamatokra* vonatkozó futtatások a **kísérletekben** vagy **folyamatokban**találhatók.
-
-### <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
-
-Az alábbi táblázat a folyamat fejlesztése során felmerülő gyakori problémákat tartalmazza, és lehetséges megoldásokat tartalmaz.
-
-| Probléma | Lehetséges megoldás |
-|--|--|
-| Nem sikerült átadni az `PipelineData` adatkönyvtárat | Győződjön meg arról, hogy létrehozott egy könyvtárat a parancsfájlban, amely megfelel annak, ahol a folyamat a lépés kimeneti adatait várja. A legtöbb esetben a bemeneti argumentum meghatározza a kimeneti könyvtárat, majd explicit módon létrehozza a könyvtárat. `os.makedirs(args.output_dir, exist_ok=True)`A paranccsal hozhatja létre a kimeneti könyvtárat. Tekintse meg az [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) egy pontozási parancsfájl példája, amely ezt a kialakítási mintát mutatja. |
-| Függőségi hibák | Ha helyileg fejlesztett ki és tesztelt parancsfájlokat, de függőségi problémákat tapasztal, amikor távoli számítási folyamaton fut, ügyeljen arra, hogy a számítási környezet függőségei és verziói megfeleljenek a tesztkörnyezet feltételeinek. (Lásd: [környezetek kiépítése, gyorsítótárazása és újrafelhasználása](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
-| Nem egyértelmű hibák a számítási célokkal | A számítási célok törlése és újbóli létrehozása a számítási célokkal kapcsolatos bizonyos problémák megoldására szolgál. |
-| A folyamat nem használja újra a lépéseket | Az ismételt használat alapértelmezés szerint engedélyezve van, de gondoskodjon arról, hogy ne tiltsa le egy folyamat lépéseiben. Ha az újbóli használat le van tiltva, a `allow_reuse` lépésben megadott paraméter a következő lesz: `False` . |
-| A folyamat feleslegesen fut újra | Annak biztosítása érdekében, hogy a lépések csak akkor fussanak újra, amikor a mögöttes adatokat vagy parancsfájlokat módosítják, az egyes lépésekhez adja meg a címtárakat Ha ugyanazt a könyvtárat használja több lépéshez, előfordulhat, hogy szükségtelen ismétléseket tapasztal. Használja a `source_directory` paramétert egy folyamat lépés objektumon, hogy az elkülönített könyvtárba mutasson erre a lépésre, és győződjön meg arról, hogy nem ugyanazt az `source_directory` útvonalat használja több lépéshez. |
 
 ### <a name="logging-options-and-behavior"></a>Naplózási beállítások és viselkedés
 
@@ -127,9 +108,31 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer (előzetes verzió)
+### <a name="finding-and-reading-pipeline-log-files"></a>A folyamat naplófájljainak keresése és olvasása
 
-Ez a szakasz áttekintést nyújt a folyamatoknak a tervezőben való hibakereséséről. A tervezőben létrehozott folyamatok esetében az **70_driver_log** fájlt a szerzői műveletek lapon vagy a folyamat futtatása Részletek lapon találja.
+A naplófájl `70_driver_log.txt` tartalma: 
+
+* A parancsfájl végrehajtása során kinyomtatott utasítások
+* A parancsfájl verem-nyomkövetése 
+
+Ha a portálon szeretné megkeresni a többi naplófájlt, először kattintson a folyamat futtatására a munkaterületen.
+
+![Folyamat futtatási listájának lapja](./media/how-to-debug-pipelines/pipelinerun-01.png)
+
+Navigáljon a folyamat futásának részletei lapra.
+
+![Folyamat futásának részletes lapja](./media/how-to-debug-pipelines/pipelinerun-02.png)
+
+Kattintson a modulra az adott lépéshez. Navigáljon a **naplók** lapra. Egyéb naplók a környezeti rendszerkép létrehozási folyamatával és a lépés-előkészítési parancsfájlokkal kapcsolatos információkat tartalmaznak.
+
+![Folyamat futásának részletes lapja napló lapja](./media/how-to-debug-pipelines/pipelinerun-03.png)
+
+> [!TIP]
+> A *közzétett folyamatokra* vonatkozó futtatások a munkaterület **végpontok** lapján találhatók. A *nem közzétett folyamatokra* vonatkozó futtatások a **kísérletekben** vagy **folyamatokban**találhatók.
+
+## <a name="logging-in-azure-machine-learning-designer-preview"></a>Bejelentkezés Azure Machine Learning Designerben (előzetes verzió)
+
+A tervezőben létrehozott folyamatok esetében az **70_driver_log** fájlt a szerzői műveletek lapon vagy a folyamat futtatása Részletek lapon találja.
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>Valós idejű végpontok naplózásának engedélyezése
 
@@ -140,7 +143,7 @@ A tervezőben a valós idejű végpontok hibaelhárításához és hibakeresés�
 Amikor elküld egy folyamat futását, és az authoring (szerzői műveletek) oldalon marad, megkeresheti az egyes modulokhoz generált naplófájlokat, mivel az egyes modulok futtatása befejeződött.
 
 1. Válassza ki azt a modult, amely a szerzői műveletek vásznon fut.
-1. A modul jobb oldali ablaktáblájában lépjen a **kimenetek és naplók** lapra.
+1. A modul jobb oldali ablaktáblájában lépjen a  **kimenetek és naplók** lapra.
 1. Bontsa ki a jobb oldali ablaktáblát, és válassza ki a **70_driver_log.txt** a fájl böngészőben való megtekintéséhez. A naplókat helyileg is letöltheti.
 
     ![Kibontott kimeneti ablaktábla a tervezőben](./media/how-to-debug-pipelines/designer-logs.png)
@@ -154,7 +157,7 @@ A naplófájlokat meghatározott futtatásokhoz is megtalálhatja a folyamat fut
     ![Folyamat futtatása lap](./media/how-to-debug-pipelines/designer-pipelines.png)
 
 1. Válasszon ki egy modult a betekintő ablaktáblán.
-1. A modul jobb oldali ablaktáblájában lépjen a **kimenetek és naplók** lapra.
+1. A modul jobb oldali ablaktáblájában lépjen a  **kimenetek és naplók** lapra.
 1. A jobb oldali ablaktábla kibontásával megtekintheti a **70_driver_log.txt** fájlt a böngészőben, vagy kiválaszthatja a fájlt a naplók helyi letöltéséhez.
 
 > [!IMPORTANT]
@@ -163,7 +166,7 @@ A naplófájlokat meghatározott futtatásokhoz is megtalálhatja a folyamat fut
 ## <a name="application-insights"></a>Application Insights
 A OpenCensus Python-függvénytár ily módon történő használatával kapcsolatos további információkért tekintse meg a következő útmutatót: a [gépi tanulási folyamatok hibakeresése és hibaelhárítása Application Insights](how-to-debug-pipelines-application-insights.md)
 
-## <a name="visual-studio-code"></a>Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
 Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a ML-folyamaton használt Python-kóddal. A Visual Studio Code (VS Code) és a debugpy használatával a kódot a betanítási környezetben futtatva is csatlakoztathatja. További információkért tekintse meg az [interaktív hibakeresést a vs Code útmutatóban](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
 

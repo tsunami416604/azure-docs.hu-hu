@@ -4,19 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 63fc699cfd2f02a322f71324519b2f0b5b22234b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400692"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926427"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrás létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrás létrehozása <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
@@ -93,8 +94,8 @@ namespace Speech.Recognition
 
 Most már készen áll az alkalmazás újraépítésére és a beszédfelismerési funkció tesztelésére a Speech Service használatával.
 
-1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **megoldás**létrehozása lehetőséget.
-2. **Indítsa** el az alkalmazást – a menüsávban **válassza** > a hibakeresés**indítása** vagy az <kbd>F5</kbd>billentyűt.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build**  >  **megoldás**létrehozása lehetőséget.
+2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az <kbd>F5</kbd>billentyűt.
 3. **Felismerés elindítása** – a rendszer felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
 ## <a name="next-steps"></a>További lépések

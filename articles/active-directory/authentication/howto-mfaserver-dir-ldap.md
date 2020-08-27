@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f15fcd2d8e42d56deb50ee7eaae7472dae6bf6c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653020"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949490"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-hitelesítés és Azure-Multi-Factor Authentication-kiszolgáló
 
@@ -25,7 +25,11 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-kiszolgáló úgy 
 Ha az Azure Multi-Factor Authenticationt LDAP-proxyként szeretné használni, szúrja be az Azure-Multi-Factor Authentication-kiszolgáló az LDAP-ügyfél (például VPN-készülék, alkalmazás) és az LDAP-kiszolgáló között. Az Azure Multi-Factor Authentication-kiszolgálót úgy kell konfigurálni, hogy az ügyfélkiszolgálókkal és az LDAP-címtárral is kommunikáljon. Ebben a konfigurációban az Azure Multi-Factor Authentication-kiszolgáló fogadja az ügyfélkiszolgálóktól és alkalmazásoktól érkező LDAP-kéréseket, majd továbbítja őket a cél LDAP-címtárkiszolgálónak az elsődleges hitelesítő adatok ellenőrzéséhez. Ha az LDAP-címtár érvényesíti az elsődleges hitelesítő adatokat, az Azure Multi-Factor Authentication végrehajt egy második identitás-ellenőrzést, és visszaküldi a választ az LDAP-ügyfélnek. A teljes hitelesítés csak akkor lesz sikeres, ha az LDAP-kiszolgálón való hitelesítés és a kétlépéses hitelesítés is sikeres.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, akik a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure-Multi-Factor Authenticationt kell használniuk.
+>
+> A felhőalapú MFA megismeréséhez tekintse meg a következő [oktatóanyagot: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával.
+>
+> Az MFA-kiszolgálót az 2019. július 1. előtt aktivált meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon előállítják az aktiválási hitelesítő adatokat.
 
 ## <a name="configure-ldap-authentication"></a>LDAP-hitelesítés konfigurálása
 

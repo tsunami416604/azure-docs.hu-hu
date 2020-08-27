@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: 85990aee5143c9ccc0362a00597a748763977204
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080215"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950340"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -65,6 +65,7 @@ A **Pillanatkép-házirend** szolgáltatás jelenleg előzetes verzióban érhet
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
+Használhatja az Azure CLI-parancsokat is, [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) és [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
 ### <a name="create-a-snapshot-policy"></a>Pillanatkép-szabályzat létrehozása 
 
@@ -164,7 +165,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

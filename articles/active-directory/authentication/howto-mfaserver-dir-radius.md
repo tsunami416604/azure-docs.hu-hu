@@ -11,21 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 679a8fee80711e8244cf953e78fd7260d922ff49
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652944"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949388"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés integrálása az Azure Multi-Factor Authentication-kiszolgálóval
 
 A RADIUS egy szabványos protokoll hitelesítési kérések fogadására és feldolgozására. Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-kiszolgálóként is használható. A kétlépéses ellenőrzés hozzáadásához szúrja be a kiszolgálót a RADIUS-ügyfél (VPN-berendezés) és a hitelesítési cél közé. A hitelesítési cél Active Directory, LDAP-címtár vagy egy másik RADIUS-kiszolgáló is lehet. Az Azure Multi-Factor Authentication (MFA) működéséhez az Azure MFA-kiszolgálót úgy kell konfigurálni, hogy az ügyfélkiszolgálókkal és a hitelesítési céllal is tudjon kommunikálni. Az Azure MFA-kiszolgáló fogadja a RADIUS-ügyfél kéréseit, ellenőrzi a hitelesítő adatokat a hitelesítési célon, Azure Multi-Factor Authenticationt biztosít és választ küld a RADIUS-ügyfélnek. A hitelesítés csak akkor sikeres, ha az elsődleges hitelesítés és az Azure Multi-Factor Authentication is sikeres.
 
 > [!IMPORTANT]
-> Ez a cikk csak az Azure MFA-kiszolgáló felhasználói számára érhető el. Ha felhőalapú Azure MFA-t használ, ehelyett tekintse át [a RADIUS-hitelesítés integrálása az Azure MFA-](howto-mfa-nps-extension.md)hoz című témakört.
+> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, akik a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure-Multi-Factor Authenticationt kell használniuk.
 >
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> A felhőalapú MFA megismeréséhez tekintse meg a következő [oktatóanyagot: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával.
+>
+> Ha felhőalapú MFA-t használ, tekintse [meg a meglévő NPS-infrastruktúra integrálása az Azure multi-Factor Authentication](howto-mfa-nps-extension.md)használatával című témakört.
+>
+> Az MFA-kiszolgálót az 2019. július 1. előtt aktivált meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon előállítják az aktiválási hitelesítő adatokat.
 
 > [!NOTE]
 > Az MFA-kiszolgáló csak a PAP (Password Authentication Protocol) és az MSCHAPv2 (Microsoft Challenge-Handshake Authentication Protocol) RADIUS-protokollt támogatja, ha RADIUS-kiszolgálóként működik.  Egyéb protokollok, például az EAP (Extensible Authentication Protocol), akkor használhatók, ha az MFA-kiszolgáló egy másik olyan RADIUS-kiszolgáló RADIUS-proxyjaként működik, amely támogatja az adott protokollt.
@@ -81,6 +85,6 @@ A RADIUS-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 * Használja a korábban konfigurált közös titkos kulcsot.
 * Konfigurálja a RADIUS-időtúllépést 30-60 másodpercre, hogy a felhasználó hitelesítő adatainak érvényesítéséhez, a kétlépéses ellenőrzés végrehajtásához, a válasz fogadásához és a RADIUS-hozzáférési kérelem megválaszolásához legyen idő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [RADIUS-hitelesítés integrálásával](howto-mfa-nps-extension.md), ha rendelkezik Azure Multi-Factor Authenticationnel a felhőben. 

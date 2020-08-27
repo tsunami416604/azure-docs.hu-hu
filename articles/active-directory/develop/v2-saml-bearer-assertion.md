@@ -2,7 +2,7 @@
 title: Microsoft Identity platform & SAML-tulajdonos állítási folyamata | Azure
 description: Megtudhatja, hogyan kérhet le adatokat a Microsoft Graphról anélkül, hogy az SAML-tulajdonosra vonatkozó állítási folyamatot használó hitelesítő adatokat kérjen a felhasználótól.
 services: active-directory
-author: umeshbarapatre
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.custom: aaddev
-ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114693"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949354"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform és OAuth 2,0 SAML-tulajdonos állítási folyamata
 A OAuth 2,0 SAML-tulajdonos állítási folyamata lehetővé teszi, hogy egy SAML-kijelentéssel igényeljen egy OAuth hozzáférési tokent, ha az ügyfélnek meglévő megbízhatósági kapcsolatot kell használnia. Az SAML-kijelentésre alkalmazott aláírás a hitelesítő alkalmazás hitelesítését biztosítja. Az SAML-jogcímek egy, az identitás-szolgáltató által kiadott és a szolgáltató által használt XML biztonsági jogkivonat. A szolgáltató a tartalomra támaszkodva azonosítja az állítás tárgyát a biztonsággal kapcsolatos célokra.
@@ -89,6 +88,6 @@ A hozzáférési jogkivonat kézhezvétele után hívja meg a Graph API-kat (ebb
 
 1. A sikeres kérelem után JSON-választ fog kapni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a különböző [hitelesítési folyamatokról és alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md).

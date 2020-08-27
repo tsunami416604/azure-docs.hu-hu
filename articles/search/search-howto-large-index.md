@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484562"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927017"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
@@ -50,7 +50,7 @@ Az index sémája fontos szerepet játszik az adatindexelésben. Mezők hozzáad
 
 ### <a name="batch-size"></a>Köteg mérete
 
-A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy a [dokumentumok hozzáadása REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) vagy a .net SDK [index metódusát](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) használja-e. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
+A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy a .net SDK [index metódusát](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) használja-e. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
 
 A batchs használatával a dokumentumok indexelése jelentősen javítja az indexelési teljesítményt. Az adathalmazok optimális méretének meghatározása az indexelési sebesség optimalizálásának egyik fő összetevője. Az optimális batch-méretet befolyásoló két elsődleges tényező a következők:
 + Az index sémája
@@ -74,14 +74,14 @@ Módosíthatja ezt a mintát és tesztelheti a különböző szálak számát, h
 > [!NOTE]
 > A keresési szolgáltatás szintjeinek növelésével vagy a partíciók növelésével növelheti az egyidejű szálak számát is.
 
-A keresési szolgáltatást elérve a kérések felfutásakor előfordulhat, hogy a kérést nem teljesen sikerült [http-állapotkódot](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) észlelni. Az indexelés során két gyakori HTTP-állapotkód van:
+A keresési szolgáltatást elérve a kérések felfutásakor előfordulhat, hogy a kérést nem teljesen sikerült [http-állapotkódot](/rest/api/searchservice/http-status-codes) észlelni. Az indexelés során két gyakori HTTP-állapotkód van:
 
 + **503 a szolgáltatás nem érhető el** – ez a hiba azt jelenti, hogy a rendszer nagy terhelés alatt áll, és a kérés jelenleg nem dolgozható fel.
 + **207 többszörös állapot** – ez a hiba azt jelenti, hogy egyes dokumentumok sikeresek, de legalább egy sikertelen volt.
 
 ### <a name="retry-strategy"></a>Újrapróbálkozási stratégia 
 
-Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbálkozási stratégiájának használatával újra](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)kell próbálkozni.
+Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbálkozási stratégiájának használatával újra](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)kell próbálkozni.
 
 Az Azure Cognitive Search .NET SDK automatikusan újrapróbálkozik a 503s és más sikertelen kérelmekkel, de a 207s újrapróbálkozásához saját logikát kell megvalósítani. A nyílt forráskódú eszközök, például a [Polly](https://github.com/App-vNext/Polly) is használható az újrapróbálkozási stratégia megvalósításához.
 
@@ -95,14 +95,14 @@ Az [Indexelő](search-indexer-overview.md) a támogatott Azure-adatforrások bej
 
 + Az ütemező segítségével rendszeres időközönként kioszthatja az indexelést, így az idő múlásával kiterjesztheti.
 + Az ütemezett indexelés az utolsó ismert leállítási ponton is folytatódhat. Ha egy adatforrást nem teljes egészében bemászott egy 24 órás időszakon belül, az indexelő a második napon folytatja az indexelést, bárhol marad.
-+ Az adatmennyiség kisebb különálló adatforrásokra való particionálásával párhuzamos feldolgozást tesz lehetővé. A forrásadatok feloszthatók kisebb összetevőkre, például több tárolóra az Azure Blob Storage-ban, majd létrehozhatja a megfelelő, több [adatforrás-objektumot](https://docs.microsoft.com/rest/api/searchservice/create-data-source) az Azure Cognitive Searchban, amely párhuzamosan indexelhető.
++ Az adatmennyiség kisebb különálló adatforrásokra való particionálásával párhuzamos feldolgozást tesz lehetővé. A forrásadatok feloszthatók kisebb összetevőkre, például több tárolóra az Azure Blob Storage-ban, majd létrehozhatja a megfelelő, több [adatforrás-objektumot](/rest/api/searchservice/create-data-source) az Azure Cognitive Searchban, amely párhuzamosan indexelhető.
 
 > [!NOTE]
 > Az indexelő az adatforrás-specifikus, ezért az indexelő módszer használata csak az Azure-beli kiválasztott adatforrások esetén használható: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos db](search-howto-index-cosmosdb.md).
 
 ### <a name="batch-size"></a>Köteg mérete
 
-A leküldéses API-hoz hasonlóan az indexelő is lehetővé teszi az elemek másodpercenkénti számának konfigurálását. Az indexelő [REST API létrehozásán](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)alapuló indexek esetében beállíthatja az `batchSize` argumentumot úgy, hogy testreszabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
+A leküldéses API-hoz hasonlóan az indexelő is lehetővé teszi az elemek másodpercenkénti számának konfigurálását. Az indexelő [REST API létrehozásán](/rest/api/searchservice/Create-Indexer)alapuló indexek esetében beállíthatja az `batchSize` argumentumot úgy, hogy testreszabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
 
 Az alapértelmezett batch-méretek az adatforrás-specifikusak. Azure SQL Database és Azure Cosmos DB a Batch alapértelmezett mérete 1000. Ezzel szemben az Azure Blob indexelése 10 dokumentumon állítja be a köteg méretét a nagyobb méretű dokumentumok méretének elismeréseként. 
 
@@ -112,7 +112,7 @@ Az indexelő ütemezése fontos mechanizmus a nagyméretű adatkészletek feldol
 
 A tervezés szerint a ütemezett indexelés adott időközönként indul el, és a következő ütemezett időközön végzett folytatás előtt a feladatok általában befejeződik. Ha azonban a feldolgozás nem fejeződik be az intervallumon belül, az indexelő leáll (mert elfogyott az idő). A következő időszakban a feldolgozás folytatja az utolsó leállást, és a rendszer nyomon követi, hogy hol történik. 
 
-A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. További információ erről a megközelítésről: [nagyméretű adatkészletek indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
+A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. További információ erről a megközelítésről: [nagyméretű adatkészletek indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](/rest/api/searchservice/Create-Indexer) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
@@ -125,8 +125,8 @@ A nem rutin jellegű, számítási igényű indexelési követelmények – mint
 A párhuzamos feldolgozás a következő elemekből áll:
 
 + A forrásadatok felosztása több tároló vagy ugyanazon tárolóban található több virtuális mappa között. 
-+ Rendelje hozzá az egyes mini-adatkészleteket saját [adatforrásához](https://docs.microsoft.com/rest/api/searchservice/create-data-source), párosítva a saját [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer)szolgáltatásával.
-+ A kognitív kereséshez az egyes indexelő definíciók azonos [készségkészlet](https://docs.microsoft.com/rest/api/searchservice/create-skillset) hivatkozhat.
++ Rendelje hozzá az egyes mini-adatkészleteket saját [adatforrásához](/rest/api/searchservice/create-data-source), párosítva a saját [Indexelő](/rest/api/searchservice/create-indexer)szolgáltatásával.
++ A kognitív kereséshez az egyes indexelő definíciók azonos [készségkészlet](/rest/api/searchservice/create-skillset) hivatkozhat.
 + Írás ugyanabba a cél keresési indexbe. 
 + Ütemezze az összes indexelő futtatását egy időben.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553971"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922803"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -25,7 +25,7 @@ A legtöbb ügyfél az ingyenes szintjével kezdődik, így kiértékelheti a sz
 
 Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ismerteti.
 
-| Funkció | Korlátozások |
+| Szolgáltatás | Korlátozások |
 |---------|-------------|
 | [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben. |
 | [MI-bővítés](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
@@ -98,7 +98,7 @@ Az [AI](cognitive-search-concept-intro.md)-bővítés esetében érdemes megterv
 | Művelet | Számlázási hatás |
 |-----------|----------------|
 | Dokumentum repedése, szöveg kinyerése | Ingyenes |
-| A dokumentumok repedése, a képek kinyerése | A számlázás a dokumentumokból kinyert képek száma alapján történik. Az [Indexelő konfigurációjában](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)a **imageAction** az a paraméter, amely a képek kinyerését váltja ki. Ha a **imageAction** értéke "None" (alapértelmezett), nem számítunk fel díjat a képek kinyeréséhez. A képek kinyerésének díja az Azure Cognitive Search [díjszabási részleteit ismertető](https://azure.microsoft.com/pricing/details/search/) oldalon található.|
+| A dokumentumok repedése, a képek kinyerése | A számlázás a dokumentumokból kinyert képek száma alapján történik. Az [Indexelő konfigurációjában](/rest/api/searchservice/create-indexer#indexer-parameters)a **imageAction** az a paraméter, amely a képek kinyerését váltja ki. Ha a **imageAction** értéke "None" (alapértelmezett), nem számítunk fel díjat a képek kinyeréséhez. A képek kinyerésének díja az Azure Cognitive Search [díjszabási részleteit ismertető](https://azure.microsoft.com/pricing/details/search/) oldalon található.|
 | [Beépített kognitív képességek](cognitive-search-predefined-skills.md) | A számlázás ugyanolyan sebességgel történik, mint ha a feladatot a Cognitive Services közvetlen használatával végezte el. |
 | Egyéni készségek | Az egyéni képességek az Ön által megadott funkciók. Az egyéni képességek használatának díja teljes mértékben attól függ, hogy az egyéni kód más mért szolgáltatásokat hív-e meg. |
 
@@ -130,7 +130,7 @@ A következő javaslatok segítségével csökkentheti a költségeket, vagy hat
 
 + Vertikális felskálázás az erőforrás-igényes műveletekhez, például az indexeléshez, majd a rendszeres lekérdezési feladatokhoz tartozó leállások újraigazítása. Az Azure Cognitive Search minimális konfigurációjának megkezdése (egy partícióból és egy replikából álló egy SU), majd a felhasználói tevékenység figyelése olyan használati minták azonosításához, amelyek nagyobb kapacitást jelezhetnek. Ha kiszámítható minta van, lehetséges, hogy szinkronizálni tudja a méretezést a tevékenységgel (ezt a kódot kell írnia az automatizáláshoz).
 
-Emellett megtekintheti a [számlázással és a költséghatékonysággal](https://docs.microsoft.com/azure/billing/billing-getting-started) kapcsolatos beépített eszközöket és szolgáltatásokat.
+Emellett megtekintheti a [számlázással és a költséghatékonysággal](../cost-management-billing/manage/getting-started.md) kapcsolatos beépített eszközöket és szolgáltatásokat.
 
 A keresési szolgáltatás ideiglenes leállítása nem lehetséges. A dedikált erőforrások mindig működőképesek, és a szolgáltatás élettartama szempontjából kizárólagos használatra vannak kiosztva. A szolgáltatás törlése végleges, és a hozzá tartozó adatai is törlődnek.
 
@@ -175,7 +175,7 @@ A durva becsléssel megduplázhatja ezt a költségvetést két index (fejleszt�
 
 A dedikált erőforrások nagyobb mintavételezési és feldolgozási időt biztosítanak a fejlesztés során az index mennyiségének, méretének és lekérdezési köteteinek reális becsléséhez. Néhány ügyfél azonnal egy számlázható réteggel ugrik, majd újraértékeli a fejlesztési projekt futamideje alatt.
 
-1. [Tekintse át a szolgáltatási korlátokat az egyes szinteknél](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) annak megállapításához, hogy az alsóbb szintű csomagok támogatni tudják-e a szükséges indexek számát. Az alapszintű, S1 és S2 szinten az index korlátai 15, 50 és 200. A tárolási optimalizált csomagok korlátja 10 index, mert a rendszer úgy van kialakítva, hogy támogassa a nagyon nagy méretű indexek alacsony számát.
+1. [Tekintse át a szolgáltatási korlátokat az egyes szinteknél](./search-limits-quotas-capacity.md#index-limits) annak megállapításához, hogy az alsóbb szintű csomagok támogatni tudják-e a szükséges indexek számát. Az alapszintű, S1 és S2 szinten az index korlátai 15, 50 és 200. A tárolási optimalizált csomagok korlátja 10 index, mert a rendszer úgy van kialakítva, hogy támogassa a nagyon nagy méretű indexek alacsony számát.
 
 1. [Szolgáltatás létrehozása számlázandó szinten](search-create-service-portal.md):
 
@@ -213,7 +213,7 @@ Az ingyenes szint és az előzetes verzió funkciói nem biztosítanak [szolgál
 
 + Ne feledje, hogy a kiépítés alatti egyetlen hátránya, hogy előfordulhat, hogy le kell bontania egy szolgáltatást, ha a tényleges követelmények nagyobbak az előrejelzéseknél. A szolgáltatás megszakadásának elkerülése érdekében hozzon létre egy új szolgáltatást egy magasabb szintű szinten, és futtassa azt egymás mellett, amíg az összes alkalmazás és kérelem meg nem célozza az új végpontot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kezdje egy ingyenes csomaggal, és hozzon létre egy kezdeti indexet az adatok egy részhalmazának használatával, hogy megértse a jellemzőit. Az Azure Cognitive Search adatstruktúrája fordított index struktúra. A fordított index méretét és összetettségét a tartalom határozza meg. Ne feledje, hogy a nagyon redundáns tartalom általában kisebb indexet eredményez, mint a nagymértékben szabálytalan tartalom. Így az adatkészlet mérete helyett a tartalom jellemzői határozzák meg az index tárolási követelményeit.
 

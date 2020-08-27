@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ebe6671e0a5f4821d06e93e3da4e37bd09a2fa7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 7ac4813e26d847f99f6a3bb7e3eb91bf06797d3c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716945"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949337"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 
@@ -27,7 +27,13 @@ Mivel a terminálszolgáltatások Windows-hitelesítése nem támogatott Server 
 Az Azure Multi-Factor Authentication-kiszolgálót külön kiszolgálóra kell telepíteni, amely a RADIUS-kérést proxykapcsolaton keresztül visszaadja az NPS-nek a távoli asztali átjárókiszolgálón. Miután az NPS hitelesíti a felhasználónevet és a jelszót, választ küld a Multi-Factor Authentication-kiszolgálónak. Az MFA-kiszolgáló ekkor elvégzi a hitelesítés második tényezőjét, és visszaküldi az eredményt az átjárónak.
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, akik a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure-Multi-Factor Authenticationt kell használniuk.
+>
+> A felhőalapú MFA megismeréséhez tekintse meg a következő [oktatóanyagot: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával.
+>
+> Ha felhőalapú MFA-t használ, tekintse meg az [Azure-beli RADIUS-hitelesítés integrálásával multi-Factor Authentication](howto-mfa-nps-extension.md).
+>
+> Az MFA-kiszolgálót az 2019. július 1. előtt aktivált meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon előállítják az aktiválási hitelesítő adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -84,7 +90,7 @@ Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-proxyként van konfigur
 
 ![RADIUS-hitelesítés az MFA-kiszolgálón](./media/howto-mfaserver-nps-rdg/radius.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure MFA és az [IIS-webalkalmazások](howto-mfaserver-iis.md) integrálása
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232345"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949174"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Szószedet Azure Active Directory Identity Protection
 
@@ -59,10 +59,10 @@ A kockázatértékeléssel kapcsolatos tevékenységek, naplók és egyéb kapcs
 ### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
 Az aktuális felhasználói hitelesítő adatok (Felhasználónév és jelszó) kiváltása akkor aktiválódik, amikor a kutatók a Dark web-ben nyilvánosan közzétették a felhasználókat.
 
-### <a name="mitigation"></a>Kezelés
+### <a name="mitigation"></a>Kockázatcsökkentés
 Olyan művelet, amely korlátozza vagy megszünteti a támadók számára a sérült identitás vagy eszköz kihasználása az identitás vagy az eszköz biztonságos állapotba való visszaállítása nélkül. A mérséklés nem oldja meg az identitáshoz vagy eszközhöz társított korábbi kockázati észleléseket.
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Olyan hitelesítési módszer, amelynek két vagy több hitelesítési módszerre van szüksége, ami magában foglalhatja a felhasználó által birtokolt, ilyen tanúsítványokat is. amit a felhasználó ismer, például felhasználóneveket, jelszavakat vagy pass-kifejezéseket; fizikai attribútumok, például ujjlenyomatok; és személyes attribútumok, például személyes aláírások.
 
 ### <a name="offline-detection"></a>Offline észlelés
@@ -89,13 +89,13 @@ A rendellenességek észlelése és a kockázat kiértékelése olyan események
 ### <a name="remediated-risk-detection"></a>Szervizelés (kockázat észlelése)
 Az Identity Protection automatikusan beállítja a kockázatkezelési állapotot, ami azt jelzi, hogy a kockázat észlelését a rendszer az ilyen típusú kockázati észleléshez használt standard szervizelési művelettel szervizelte. Ha például a rendszer alaphelyzetbe állítja a felhasználói jelszót, számos olyan kockázati észlelést észlel, amely azt jelzi, hogy az előző jelszó biztonsága megsérül.
 
-### <a name="remediation"></a>Kockázatcsökkentés
+### <a name="remediation"></a>Szervizelés
 Egy olyan művelet, amely olyan identitás vagy eszköz védelmét teszi biztonságossá, amely korábban gyanúba esett vagy ismert volt. Egy szervizelési művelet visszaállítja az identitást vagy az eszközt egy biztonságos állapotba, és feloldja az identitáshoz vagy eszközhöz társított korábbi veszélyforrások észlelését.
 
 ### <a name="resolved-risk-detection"></a>Megoldott (kockázati észlelés)
 Egy Identity Protection-felhasználó által manuálisan beállított kockázatkezelési állapot, amely azt jelzi, hogy a felhasználó megfelelő szervizelési műveletet végzett az Identity Protectionn kívül, és a kockázat észlelését zártnak kell tekinteni.
 
-### <a name="risk-detection-status"></a>Kockázat észlelésének állapota
+### <a name="risk-detection-status"></a>Kockázatészlelés állapota
 Egy kockázatkezelési tulajdonság, amely azt jelzi, hogy az esemény aktív-e, és ha be van zárva, a Bezárás oka.
 
 ### <a name="risk-detection-type"></a>Kockázat észlelésének típusa
@@ -140,7 +140,7 @@ A kockázatkezelés akkor aktiválódik, amikor egy felhasználó sikeresen beje
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
 Lásd: kockázati szint (bejelentkezés)
 
-### <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati házirend
+### <a name="sign-in-risk-policy"></a>Bejelentkezési kockázati szabályzat
 Egy feltételes hozzáférési szabályzat, amely kiértékeli a kockázatot egy adott bejelentkezésre, és az előre meghatározott feltételek és szabályok alapján alkalmazza a kockázatcsökkentő tényezőket.
 
 ### <a name="user-compromise-risk"></a>Felhasználói kompromisszumos kockázat
@@ -149,7 +149,7 @@ Lásd: kockázati szint (felhasználói kompromisszum)
 ### <a name="user-risk"></a>Felhasználói kockázat
 Lásd: kockázati szint (felhasználói kompromisszum).
 
-### <a name="user-risk-policy"></a>Felhasználói kockázati házirend
+### <a name="user-risk-policy"></a>Felhasználói kockázati szabályzat
 Feltételes hozzáférési szabályzat, amely figyelembe veszi a bejelentkezést, és az előre meghatározott feltételek és szabályok alapján alkalmazza a korlátozásokat.
 
 ### <a name="users-flagged-for-risk"></a>Kockázatosként megjelölt felhasználók
@@ -160,4 +160,4 @@ A Azure Active Directory konfigurációját vagy feltételét, amely a könyvtá
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

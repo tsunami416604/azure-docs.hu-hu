@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c3715995d0d53cd72acf7277f46a279fa4cfb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019658"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950119"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>A Azure Active Directory Identity Protection és a Microsoft Graph első lépései
 
-Microsoft Graph a Microsoft Unified API-végpontja és a [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k otthona. A kockázatos felhasználókról és a bejelentkezésekről három API található. Az első API ( **riskDetection**) lehetővé teszi Microsoft Graph lekérdezését a felhasználók és a bejelentkezéshez kapcsolódó kockázati észlelések, valamint az észleléssel kapcsolatos kapcsolódó információk listájának lekéréséhez. A második API, a **riskyUsers**lehetővé teszi, hogy lekérdezze Microsoft Graph a kockázatként észlelt felhasználói identitások védelmére vonatkozó információkat. A harmadik API, a **bejelentkezési**lehetővé teszi az Azure ad-bejelentkezésekre vonatkozó információk Microsoft Graph lekérdezését a kockázati állapottal, a részletekkel és a szinttel kapcsolatos konkrét tulajdonságokkal. 
+Microsoft Graph a Microsoft Unified API-végpontja és a [Azure Active Directory Identity Protection](./overview-identity-protection.md) API-k otthona. A kockázatos felhasználókról és a bejelentkezésekről három API található. Az első API ( **riskDetection**) lehetővé teszi Microsoft Graph lekérdezését a felhasználók és a bejelentkezéshez kapcsolódó kockázati észlelések, valamint az észleléssel kapcsolatos kapcsolódó információk listájának lekéréséhez. A második API, a **riskyUsers**lehetővé teszi, hogy lekérdezze Microsoft Graph a kockázatként észlelt felhasználói identitások védelmére vonatkozó információkat. A harmadik API, a **bejelentkezési**lehetővé teszi az Azure ad-bejelentkezésekre vonatkozó információk Microsoft Graph lekérdezését a kockázati állapottal, a részletekkel és a szinttel kapcsolatos konkrét tulajdonságokkal. 
 
 Ebből a cikkből megtudhatja, hogyan csatlakozhat a Microsoft Graphhoz, és hogyan kérdezheti le ezeket az API-kat. A részletes bevezetést, a teljes dokumentációt és a Graph Explorerrel való hozzáférést a [Microsoft Graph webhelyén](https://graph.microsoft.io/) vagy az API-k konkrét dokumentációjában találja:
 
@@ -86,9 +86,9 @@ Ezen a ponton a következőket kell tennie:
 A hitelesítéshez küldjön post-kérést a `https://login.microsoft.com` következő paraméterekkel a törzsben:
 
 - grant_type: "**client_credentials**"
-- erőforrás`https://graph.microsoft.com`
-- client_id:\<your client ID\>
-- client_secret:\<your key\>
+- erőforrás `https://graph.microsoft.com`
+- client_id: \<your client ID\>
+- client_secret: \<your key\>
 
 Ha ez sikeres, a kérelem egy hitelesítési jogkivonatot ad vissza.  
 Az API meghívásához hozzon létre egy fejlécet a következő paraméterrel:
@@ -99,7 +99,7 @@ Az API meghívásához hozzon létre egy fejlécet a következő paraméterrel:
 
 A hitelesítés során megkeresheti a jogkivonat típusát és a hozzáférési jogkivonatot a visszaadott jogkivonatban.
 
-Küldje el ezt a fejlécet kérelemként a következő API URL-címre:`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
+Küldje el ezt a fejlécet kérelemként a következő API URL-címre: `https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
 
 A válasz, ha a sikeres, az identitások kockázatának észlelése és a hozzájuk kapcsolódó adatok OData JSON formátumban való gyűjteménye, amely elemezhető és kezelhető, ahogy az illik.
 
@@ -158,7 +158,7 @@ Annak megismeréséhez, hogy a szervezete milyen hatással van az Identity Prote
 GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, most elkészítette az első hívását Microsoft Graph!  
 Most már lekérdezheti az identitások kockázati észleléseit, és használhatja az adatok megjelenítését.
@@ -167,8 +167,8 @@ Ha többet szeretne megtudni a Microsoft Graphről, és hogyan hozhat létre alk
 
 A kapcsolódó információk a következő témakörben találhatók:
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-- [A Azure Active Directory Identity Protection által észlelt kockázati észlelések típusai](../reports-monitoring/concept-risk-events.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)
+- [A Azure Active Directory Identity Protection által észlelt kockázati észlelések típusai](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [A Microsoft Graph áttekintése](https://developer.microsoft.com/graph/docs)
-- [Azure AD Identity Protection szolgáltatás gyökerének](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)
+- [Azure AD Identity Protection szolgáltatás gyökerének](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

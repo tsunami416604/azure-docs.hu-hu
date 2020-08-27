@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275428"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948453"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
-A [Azure Active Directory (Azure ad) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. Ez a cikk a következő információkat tartalmazza:
+A [Azure Active Directory (Azure ad) feltételes hozzáférés](./overview.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. Ez a cikk a következő információkat tartalmazza:
 
 - Tudni kívánt dolgok 
 - Mit kell elkerülni a feltételes hozzáférési házirendek konfigurálásakor. 
 
-Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminológiát: [Mi a feltételes hozzáférés a Azure Active Directoryban?](../active-directory-conditional-access-azure-portal.md)
+Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminológiát: [Mi a feltételes hozzáférés a Azure Active Directoryban?](./overview.md)
 
 ## <a name="whats-required-to-make-a-policy-work"></a>Mi szükséges a szabályzat működéséhez?
 
@@ -57,7 +57,7 @@ Az összes házirend kikényszerítve két fázisban:
    - A nem teljesített követelmények azonosításához használja az 1. fázisban összegyűjtött munkamenet részleteit. 
    - Ha van olyan házirend, amely a hozzáférés blokkolására van konfigurálva, a tiltás engedélyezése vezérlővel a kényszerítés le lesz tiltva, és a felhasználó blokkolva lesz. 
    - A felhasználónak ezután meg kell adnia további, az 1. fázisban nem teljesített támogatás-vezérlési követelményeket az alábbi sorrendben, amíg a szabályzat nem teljesül:  
-      - Többtényezős hitelesítés 
+      - Multi-Factor Authentication 
       - Jóváhagyott ügyfélalkalmazás/alkalmazás-védelmi szabályzat 
       - Felügyelt eszköz (megfelelő vagy hibrid Azure AD-csatlakozás) 
       - Használati feltételek 
@@ -150,9 +150,9 @@ Ajánlott eljárásként hozzon létre egy felhasználói fiókot:
 
 További információért lásd: [Klasszikus szabályzatok áttelepítése az Azure Portalon](policy-migration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha tudni szeretné:
 
-- Feltételes hozzáférési szabályzat konfigurálása: a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md).
+- Feltételes hozzáférési szabályzat konfigurálása: a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../authentication/tutorial-enable-azure-mfa.md).
 - A feltételes hozzáférési szabályzatok megtervezése: a [feltételes hozzáférési környezet megtervezése Azure Active Directoryban](plan-conditional-access.md).

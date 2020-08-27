@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234703"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948878"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
 
@@ -96,10 +96,10 @@ Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes h
 
 [Microsoft 365 vállalati verzió prémium szintű licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
 - [A feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md)
-- [Tudnivalók az Identity Protectionről](../identity-protection/overview-v2.md)
+- [Tudnivalók az Identity Protectionről](../identity-protection/overview-identity-protection.md)
 - [Tudnivalók a Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 - [Tudnivalók a Microsoft Intune](/intune/index)

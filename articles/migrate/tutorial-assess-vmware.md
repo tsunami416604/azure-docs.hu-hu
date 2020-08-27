@@ -4,12 +4,12 @@ description: Ismerteti, hogyan értékelheti a helyszíni VMware virtuális gép
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 7616ff48c03c0de61d9179724fd8e351c6440319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8c2784e999e751972883b6c9ffba2485bb9fe9e1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936248"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950085"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>VMware virtuális gépek értékelése a Server Assessmenttel
 
@@ -53,7 +53,7 @@ Hozzon létre egy új Azure Migrate projektet a következőképpen:
 
    ![A projekt neve és a régió mezői](./media/tutorial-assess-vmware/migrate-project.png)
 
-7. Válassza a **Tovább** gombot.
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment Next (kiszolgáló értékelése**  >  **Next**) elemet.
 
    ![A kiszolgáló-Assessment eszköz kiválasztása](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -108,13 +108,13 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
     
         **Algoritmus** | **Letöltés** | **SHA256**
         --- | --- | ---
-        VMware (11,6 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140333) | 9a06a316199330481f95b381a4d1d558f3869614a0ded68f1cc4f2584aa4f353
+        VMware (11,6 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
     - Azure Government esetén:
     
         **Algoritmus** | **Letöltés** | **SHA256**
         --- | --- | ---
-        VMware (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140337) | 31b1bfdd4fc29b3eb923c7c6e7a898af79b7cac0404426bea18809def2284188
+        VMware (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140337) | 7dab9445a89b47302994d6de4caddaa092c1c582c8f3c1fc5b9c4908c7d2f9f7
 
 
 ### <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
@@ -303,7 +303,7 @@ A megbízhatósági minősítés segít megbecsülni az értékelés méretére 
 
 [Ismerje meg](best-practices-assessment.md#best-practices-for-confidence-ratings) a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Migrate berendezést állít be. Az értékelést is létrehozta és felülvizsgálta.
 

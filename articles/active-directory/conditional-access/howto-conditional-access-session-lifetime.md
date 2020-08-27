@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28516482cf154c81912de0f8e3f35b9e54ef2f69
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874775"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948266"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
 
@@ -136,5 +136,5 @@ Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlo
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című cikket.
+* Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../authentication/tutorial-enable-azure-mfa.md)című cikket.
 * Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

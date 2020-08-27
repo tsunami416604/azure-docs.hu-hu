@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084143"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923024"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -34,13 +34,13 @@ Az **Indexelő** olyan erőforrás, amely egy adott adatforrást egy célként m
 * Egy index frissítése az adatforrásban lévő változásokkal egy ütemezett időpontban.
 * Igény szerint futtasson igény szerinti frissítést az indexek frissítéséhez.
 
-Egyetlen indexelő csak egyetlen táblát vagy nézetet használhat, de több indexelő is létrehozható, ha több keresési indexet szeretne feltölteni. A fogalmakkal kapcsolatos további információkért lásd [: indexelő műveletek: tipikus munkafolyamat](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Egyetlen indexelő csak egyetlen táblát vagy nézetet használhat, de több indexelő is létrehozható, ha több keresési indexet szeretne feltölteni. A fogalmakkal kapcsolatos további információkért lásd [: indexelő műveletek: tipikus munkafolyamat](/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Beállíthatja és konfigurálhatja az Azure SQL indexelő a használatával:
 
 * Adatimportálás varázsló a [Azure Portal](https://portal.azure.com)
-* Azure Cognitive Search [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* Azure Cognitive Search [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [REST API](/rest/api/searchservice/indexer-operations)
 
 Ebben a cikkben a REST API az **Indexelő** és az **adatforrások**létrehozásához használjuk.
 
@@ -51,7 +51,7 @@ Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az
 |----------|---------|
 | Az adatok egyetlen táblából vagy nézetből származnak. | Ha az adatmennyiség több táblázat között van szétszórva, létrehozhat egyetlen nézetet az adatnézetből. Ha azonban nézetet használ, nem használhatja SQL Server integrált változások észlelését, hogy az indexet a növekményes módosításokkal frissítse. További információ: a [módosított és törölt sorok rögzítése](#CaptureChangedRows) . |
 | Az adattípusok kompatibilisek | A legtöbb SQL-típus nem támogatott egy Azure Cognitive Search indexben. A listában tekintse meg az [adattípusok leképezése](#TypeMapping)című témakört. |
-| A valós idejű adatszinkronizálás nem szükséges | Az indexelő legfeljebb öt percenként tudja újraindexelni a táblát. Ha az adatai gyakran változnak, és a módosításokat másodperceken vagy egy percen belül meg kell jelenniük az indexben, javasoljuk, hogy a [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) vagy a [.net SDK](search-import-data-dotnet.md) használatával közvetlenül leküldse a frissített sorokat. |
+| A valós idejű adatszinkronizálás nem szükséges | Az indexelő legfeljebb öt percenként tudja újraindexelni a táblát. Ha az adatai gyakran változnak, és a módosításokat másodperceken vagy egy percen belül meg kell jelenniük az indexben, javasoljuk, hogy a [REST API](/rest/api/searchservice/AddUpdate-or-Delete-Documents) vagy a [.net SDK](./search-get-started-dotnet.md) használatával közvetlenül leküldse a frissített sorokat. |
 | Növekményes indexelés lehetséges | Ha nagy adatkészlettel rendelkezik, és az indexelő ütemezett futtatását tervezi, az Azure Cognitive Search képesnek kell lennie az új, módosított vagy törölt sorok hatékony azonosítására. A nem növekményes indexelés csak akkor engedélyezett, ha igény szerinti indexelést végez (nem ütemezés szerint), vagy kevesebb mint 100 000 sort indexel. További információ: a [módosított és törölt sorok rögzítése](#CaptureChangedRows) . |
 
 > [!NOTE] 
@@ -76,7 +76,7 @@ Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az
 
    Lekérheti a [Azure Portal](https://portal.azure.com)a kapcsolatok karakterláncát; használja a `ADO.NET connection string` kapcsolót.
 
-2. Ha még nem rendelkezik ilyennel, hozza létre a cél Azure Cognitive Search indexét. Létrehozhat egy indexet a [portál](https://portal.azure.com) vagy a [create index API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)használatával. Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrástábla sémájával – lásd: [leképezés az SQL és az Azure kognitív keresési adattípusok között](#TypeMapping).
+2. Ha még nem rendelkezik ilyennel, hozza létre a cél Azure Cognitive Search indexét. Létrehozhat egy indexet a [portál](https://portal.azure.com) vagy a [create index API](/rest/api/searchservice/Create-Index)használatával. Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrástábla sémájával – lásd: [leképezés az SQL és az Azure kognitív keresési adattípusok között](#TypeMapping).
 
 3. Hozza létre az indexet úgy, hogy megadja a nevét, és hivatkozik az adatforrásra és a célként megadott indexre:
 
@@ -99,9 +99,9 @@ Az ily módon létrehozott indexelő nem rendelkezik ütemtervtel. A létrehozá
     api-key: admin-key
 ```
 
-Testreszabhatja az indexelő viselkedésének számos aspektusát, például a köteg méretét, valamint azt, hogy hány dokumentumot lehet kihagyni az indexelő végrehajtásának sikertelensége előtt. További információ: [create indexelő API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Testreszabhatja az indexelő viselkedésének számos aspektusát, például a köteg méretét, valamint azt, hogy hány dokumentumot lehet kihagyni az indexelő végrehajtásának sikertelensége előtt. További információ: [create indexelő API](/rest/api/searchservice/Create-Indexer).
 
-Előfordulhat, hogy engedélyezni kell az Azure-szolgáltatások számára az adatbázishoz való kapcsolódást. Az ehhez szükséges útmutatásért lásd: [Csatlakozás az Azure-ból](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) .
+Előfordulhat, hogy engedélyezni kell az Azure-szolgáltatások számára az adatbázishoz való kapcsolódást. Az ehhez szükséges útmutatásért lásd: [Csatlakozás az Azure-ból](../azure-sql/database/firewall-configure.md) .
 
 Az indexelő állapot és a végrehajtási előzmények (az indexelt elemek, a hibák stb. száma) figyeléséhez használjon **Indexelő állapotra** vonatkozó kérelmet:
 
@@ -146,7 +146,7 @@ A válasznak a következőhöz hasonlóan kell kinéznie:
 ```
 
 A végrehajtási előzmények akár 50 a legutóbb befejezett végrehajtásokat, amelyek fordított időrendi sorrendben vannak rendezve (így a legutolsó végrehajtás a válaszban).
-A válaszról további információt talál az [Indexelő állapotának lekérése](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) című témakörben.
+A válaszról további információt talál az [Indexelő állapotának lekérése](/rest/api/searchservice/get-indexer-status) című témakörben.
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexelő futtatása ütemterv szerint
 Az indexelő úgy is rendezhető, hogy rendszeres időközönként fusson. Ehhez adja hozzá a **Schedule** tulajdonságot az indexelő létrehozásakor vagy frissítésekor. Az alábbi példa egy PUT-kérelmet mutat be az indexelő frissítéséhez:
@@ -174,7 +174,7 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 Az Azure Cognitive Search **növekményes indexeléssel** kerülhető el, hogy ne kelljen újraindexelni a teljes táblázatot vagy nézetet minden alkalommal, amikor egy indexelő fut. Az Azure Cognitive Search kétféle változás-észlelési szabályzatot biztosít a növekményes indexelés támogatásához. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Integrált SQL Change Tracking házirend
-Ha az SQL-adatbázis támogatja a [változások követését](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), javasoljuk, hogy az **SQL integrált Change Tracking házirendjét**használja. Ez a leghatékonyabb szabályzat. Emellett lehetővé teszi az Azure Cognitive Search számára a Törölt sorok azonosítását anélkül, hogy explicit "Soft Delete" oszlopot kellene hozzáadnia a táblához.
+Ha az SQL-adatbázis támogatja a [változások követését](/sql/relational-databases/track-changes/about-change-tracking-sql-server), javasoljuk, hogy az **SQL integrált Change Tracking házirendjét**használja. Ez a leghatékonyabb szabályzat. Emellett lehetővé teszi az Azure Cognitive Search számára a Törölt sorok azonosítását anélkül, hogy explicit "Soft Delete" oszlopot kellene hozzáadnia a táblához.
 
 #### <a name="requirements"></a>Követelmények 
 
@@ -182,7 +182,7 @@ Ha az SQL-adatbázis támogatja a [változások követését](https://docs.micro
   * SQL Server 2012 SP3 és újabb verziók, ha SQL Server Azure-beli virtuális gépeken használ.
   * Azure SQL Database vagy SQL felügyelt példánya.
 + Csak táblák (nincsenek nézetek). 
-+ Az adatbázison engedélyezze a táblázat [módosítás-követését](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) . 
++ Az adatbázison engedélyezze a táblázat [módosítás-követését](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) . 
 + Nincs összetett elsődleges kulcs (egy elsődleges kulcs, amely egynél több oszlopot tartalmaz) a táblán.  
 
 #### <a name="usage"></a>Használat
@@ -204,7 +204,7 @@ A szabályzat használatához a következőhöz hasonló adatforrást kell létr
 Az SQL integrált módosítás-követési szabályzatának használatakor ne határozzon meg külön adattörlési észlelési házirendet – ez a házirend beépített támogatást biztosít a Törölt sorok azonosításához. Ahhoz azonban, hogy a rendszer automatikusan észlelje a törléseket, a keresési indexben szereplő dokumentum kulcsának meg kell egyeznie az SQL-tábla elsődleges kulcsával. 
 
 > [!NOTE]  
-> Ha a [truncate Table](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) használatával nagy mennyiségű sort távolít el egy SQL-táblából, az indexelő [alaphelyzetbe kell állítania](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) a sorok törlésének megváltoztatásához.
+> Ha a [truncate Table](/sql/t-sql/statements/truncate-table-transact-sql) használatával nagy mennyiségű sort távolít el egy SQL-táblából, az indexelő [alaphelyzetbe kell állítania](/rest/api/searchservice/reset-indexer) a sorok törlésének megváltoztatásához.
 
 <a name="HighWaterMarkPolicy"></a>
 
@@ -217,10 +217,10 @@ Ez a változás-észlelési szabályzat egy "magas vízjelek" oszlopra támaszko
 * Az összes Beszúrás megadja az oszlop értékét.
 * Az elemek összes frissítése is megváltoztatja az oszlop értékét.
 * Az oszlop értéke minden beszúrási vagy frissítési művelettel nő.
-* A következő WHERE és ORDER BY záradékokkal rendelkező lekérdezések hatékonyan hajthatók végre:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* A következő WHERE és ORDER BY záradékokkal rendelkező lekérdezések hatékonyan hajthatók végre: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> Erősen ajánlott a [ROWVERSION](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) adattípust használni a magas vízjelek oszlophoz. Ha bármilyen más adattípus van használatban, a változások követése nem garantált, hogy rögzítse az összes változást az indexelő lekérdezéssel párhuzamosan végrehajtó tranzakciók jelenlétében. Ha a **ROWVERSION** -t csak olvasható replikákkal rendelkező konfigurációban használja, az indexelő az elsődleges replikán kell átirányítani. Adatszinkronizálási forgatókönyvekhez csak elsődleges replikát lehet használni.
+> Erősen ajánlott a [ROWVERSION](/sql/t-sql/data-types/rowversion-transact-sql) adattípust használni a magas vízjelek oszlophoz. Ha bármilyen más adattípus van használatban, a változások követése nem garantált, hogy rögzítse az összes változást az indexelő lekérdezéssel párhuzamosan végrehajtó tranzakciók jelenlétében. Ha a **ROWVERSION** -t csak olvasható replikákkal rendelkező konfigurációban használja, az indexelő az elsődleges replikán kell átirányítani. Adatszinkronizálási forgatókönyvekhez csak elsődleges replikát lehet használni.
 
 #### <a name="usage"></a>Használat
 
@@ -248,7 +248,7 @@ Ha magas vízjelekre vonatkozó szabályzatot szeretne használni, hozza létre 
 
 ##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
 
-Ha [ROWVERSION](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) -adattípust használ a magas vízjelek oszlophoz, érdemes lehet használni az `convertHighWaterMarkToRowVersion` Indexelő konfigurációs beállítást. `convertHighWaterMarkToRowVersion`két dolgot tesz:
+Ha [ROWVERSION](/sql/t-sql/data-types/rowversion-transact-sql) -adattípust használ a magas vízjelek oszlophoz, érdemes lehet használni az `convertHighWaterMarkToRowVersion` Indexelő konfigurációs beállítást. `convertHighWaterMarkToRowVersion` két dolgot tesz:
 
 * Használja a ROWVERSION adattípust az indexelő SQL-lekérdezés magas vízjelek oszlopához. A megfelelő adattípus használata javítja az indexelő lekérdezési teljesítményt.
 * Az indexelő lekérdezés futtatása előtt vonja ki az 1 értéket a ROWVERSION értékből. Az 1 és több illesztés közötti nézetek tartalmazhatnak ismétlődő ROWVERSION-értékekkel rendelkező sorokat. Az 1. kivonási funkció biztosítja, hogy az indexelő lekérdezés ne hagyja ki ezeket a sorokat.
@@ -321,12 +321,12 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 | bigint |EDM. Int64, EDM. String | |
 | valós, lebegőpontos |EDM. Double, EDM. String | |
 | túlcsordulási, pénzes decimális szám |Edm.String |Az Azure Cognitive Search nem támogatja a decimális típusok konvertálását a EDM. Double formátumba, mivel ez a pontosságot elveszíti |
-| char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Egy SQL-karakterlánc használatával feltölthető egy gyűjtemény (EDM. String) mező, ha a karakterlánc a karakterláncok JSON-tömbjét jelöli:`["red", "white", "blue"]` |
+| char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Egy SQL-karakterlánc használatával feltölthető egy gyűjtemény (EDM. String) mező, ha a karakterlánc a karakterláncok JSON-tömbjét jelöli: `["red", "white", "blue"]` |
 | idő adattípusúra, datetime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
 | uniqueidentifer |Edm.String | |
 | földrajz |Edm.GeographyPoint |Csak a SRID 4326 (amely az alapértelmezett) típusú földrajzi példányok támogatottak |
-| ROWVERSION |n.a. |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
-| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |n.a. |Nem támogatott |
+| ROWVERSION |N.A. |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
+| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N.A. |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
@@ -354,7 +354,7 @@ Igen. Azonban engedélyeznie kell a keresési szolgáltatásnak az adatbázishoz
 
 **K: használhatom az Azure SQL indexelő a helyszínen futó SQL-adatbázisokkal?**
 
-Nem közvetlenül. Nem ajánlunk és nem támogatunk közvetlen kapcsolatot, mert ehhez az szükséges, hogy az adatbázisokat az internetes forgalomhoz nyissa meg. Ennek a forgatókönyvnek a használata sikeres volt az ügyfelek számára, például Azure Data Factory. További információ: [adatok leküldése Azure Cognitive Search indexbe Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Nem közvetlenül. Nem ajánlunk és nem támogatunk közvetlen kapcsolatot, mert ehhez az szükséges, hogy az adatbázisokat az internetes forgalomhoz nyissa meg. Ennek a forgatókönyvnek a használata sikeres volt az ügyfelek számára, például Azure Data Factory. További információ: [adatok leküldése Azure Cognitive Search indexbe Azure Data Factory használatával](../data-factory/v1/data-factory-azure-search-connector.md).
 
 **K: használhatom az Azure SQL Indexer-t az Azure-ban futó IaaS-től eltérő adatbázisokon SQL Server?**
 
@@ -368,7 +368,7 @@ Igen. Egyszerre azonban csak egy indexelő futhat egyszerre egy csomóponton. Ha
 
 Igen. Az indexelő a keresési szolgáltatás egyik csomópontján fut, és a csomópont erőforrásai megoszlik az indexelés és a lekérdezési forgalom és más API-kérések között. Ha intenzív indexelési és lekérdezési számítási feladatokat futtat, és magas a 503-es hiba, illetve a válaszadási idő növekszik, érdemes lehet [a keresési szolgáltatás méretezését](search-capacity-planning.md).
 
-**K: használhatok másodlagos replikát egy [feladatátvevő fürtben](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) adatforrásként?**
+**K: használhatok másodlagos replikát egy [feladatátvevő fürtben](../azure-sql/database/auto-failover-group-overview.md) adatforrásként?**
 
 Attól függ. Egy tábla vagy nézet teljes indexeléséhez használhat másodlagos replikát. 
 
@@ -388,4 +388,4 @@ Nem ajánlott. Csak a **ROWVERSION** engedélyezi a megbízható adatszinkroniz�
 
 + Győződjön meg arról, hogy az indexelő futtatásakor nincsenek függőben lévő tranzakciók az indexelt táblában (például az összes tábla frissítése egy ütemezett kötegként történik, és az Azure Cognitive Search indexelő ütemterve úgy van beállítva, hogy ne legyen átfedés a tábla frissítési ütemtervével).  
 
-+ A kihagyott sorok kiválasztásához rendszeresen végezzen teljes újraindexelést. 
++ A kihagyott sorok kiválasztásához rendszeresen végezzen teljes újraindexelést.

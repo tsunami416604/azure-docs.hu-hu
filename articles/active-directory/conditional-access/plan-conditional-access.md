@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f0cb99fd7f2ce842f76cbe1df2f598f2188ca41
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339720"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948895"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -69,7 +69,7 @@ A feltételes hozzáférés megismeréséhez a következő erőforrások hasznos
 
 #### <a name="videos"></a>Videók
 
-* [Mi az a feltételes hozzáférés?](https://youtu.be/ffMAw2IVO7A)
+* [Mit jelent a feltételes hozzáférés?](https://youtu.be/ffMAw2IVO7A)
 * [Feltételes hozzáférés üzembe helyezése](https://youtu.be/c_izIRNJNuk)
 * [Hogyan kell kivonni a HITELESÍTÉSSZOLGÁLTATÓI házirendeket a végfelhasználók számára?](https://youtu.be/0_Fze7Zpyvc)
 * [Feltételes hozzáférés eszközvezérlőkkel](https://youtu.be/NcONUf-jeS4)
@@ -162,7 +162,7 @@ A felépítése előtt dokumentálja az egyes szabályzatok kérdéseire adott v
 
 #### <a name="common-questions-about-access-controls"></a>A hozzáférés-vezérléssel kapcsolatos gyakori kérdések
 
-[Engedélyezés vagy Letiltás](concept-conditional-access-grant.md) 
+[Engedélyezés vagy Letiltás ](concept-conditional-access-grant.md) 
 
 Szeretne hozzáférést biztosítani az erőforrásokhoz a következők közül egy vagy több beírásával?
 
@@ -313,7 +313,7 @@ A HITELESÍTÉSSZOLGÁLTATÓI házirend megoldásának tervezésekor mérje fel,
 
 * [Adminisztrátorok szerint](howto-conditional-access-policy-admin-mfa.md)
 
-* [Adott alkalmazások számára](app-based-mfa.md)
+* [Adott alkalmazások számára](../authentication/tutorial-enable-azure-mfa.md)
 
 * [Minden felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -354,7 +354,7 @@ Egyéb gyakori forgatókönyvek, amelyekkel letilthatja a felhasználók hozzáf
 
 * [Bizonyos hálózati telephelyek letiltása](howto-conditional-access-policy-location.md) a felhőalapú alkalmazások eléréséhez. Ezzel a szabályzattal blokkolhatja azokat az országokat, amelyekről tudja, hogy a forgalom nem származik.
 
-* Az Azure AD támogatja a régi hitelesítést. A régi hitelesítés azonban nem támogatja az MFA-t, és számos környezet megköveteli az identitások biztonságának kezelésében. Ebben az esetben [letilthatja, hogy az alkalmazások örökölt hitelesítéssel](block-legacy-authentication.md) hozzáférjenek a bérlő erőforrásaihoz.
+* Az Azure AD támogatja a régi hitelesítést. A régi hitelesítés azonban nem támogatja az MFA-t, és számos környezet megköveteli az identitások biztonságának kezelésében. Ebben az esetben [letilthatja, hogy az alkalmazások örökölt hitelesítéssel ](block-legacy-authentication.md) hozzáférjenek a bérlő erőforrásaihoz.
 
 ## <a name="build-and-test-policies"></a>Szabályzatok létrehozása és tesztelése
 
@@ -380,22 +380,22 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. Állítsa be a forgatókönyveket és a várt eredményeket a HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásának módja alapján.
 
-| Szabályzat| Forgatókönyv| Várt eredmény |
+| Szabályzat| Használati eset| Várt eredmény |
 | - | - | - |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| A meghatalmazott felhasználó bejelentkezik az alkalmazásba egy megbízható helyen/munkahelyen| A felhasználónak nem kell megadnia az MFA-t |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| Az engedélyezve lévő felhasználó bejelentkezik az alkalmazásba, és nem megbízható helyen/munkahelyen| A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet |
-| [MFA megkövetelése (rendszergazda)](howto-baseline-protect-administrators.md)| Globális rendszergazda bejelentkezik az alkalmazásba| A rendszergazda az MFA-t kéri |
-| [Kockázatos bejelentkezések](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| A felhasználó nem jóváhagyott böngésző használatával jelentkezik be az alkalmazásba| A rendszergazda az MFA-t kéri |
+| [MFA megkövetelése (rendszergazda)](../fundamentals/concept-fundamentals-security-defaults.md)| Globális rendszergazda bejelentkezik az alkalmazásba| A rendszergazda az MFA-t kéri |
+| [Kockázatos bejelentkezések](../identity-protection/howto-identity-protection-configure-risk-policies.md)| A felhasználó nem jóváhagyott böngésző használatával jelentkezik be az alkalmazásba| A rendszergazda az MFA-t kéri |
 | [Eszközfelügyelet](require-managed-devices.md)| A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni egy jóváhagyott eszközről| Hozzáférés engedélyezve |
 | [Eszközfelügyelet](require-managed-devices.md)| Az engedéllyel rendelkező felhasználó megpróbál bejelentkezni egy jogosulatlan eszközről| Hozzáférés letiltva |
-| [A kockázatos felhasználók jelszavának módosítása](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni a feltört hitelesítő adatokkal (nagy kockázatú bejelentkezés)| A rendszer megkéri a felhasználót, hogy változtassa meg a jelszót, vagy a hozzáférés le legyen tiltva a szabályzat alapján |
+| [A kockázatos felhasználók jelszavának módosítása](../identity-protection/howto-identity-protection-configure-risk-policies.md)| A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni a feltört hitelesítő adatokkal (nagy kockázatú bejelentkezés)| A rendszer megkéri a felhasználót, hogy változtassa meg a jelszót, vagy a hozzáférés le legyen tiltva a szabályzat alapján |
 
 
 ### <a name="configure-the-test-policy"></a>A tesztelési házirend konfigurálása
 
 A [Azure Portal](https://portal.azure.com/)Azure Active Directory > biztonság > feltételes hozzáférés területen KONFIGURÁLJA a hitelesítésszolgáltatói házirendeket.
 
-Ha többet szeretne megtudni a HITELESÍTÉSSZOLGÁLTATÓI házirendek létrehozásáról, tekintse meg a következő példát: [CA-házirend, amely az MFA-t kéri, amikor egy felhasználó bejelentkezik a Azure Portalba](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json). Ez a rövid útmutató a következőket teszi lehetővé:
+Ha többet szeretne megtudni a HITELESÍTÉSSZOLGÁLTATÓI házirendek létrehozásáról, tekintse meg a következő példát: [CA-házirend, amely az MFA-t kéri, amikor egy felhasználó bejelentkezik a Azure Portalba](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Ez a rövid útmutató a következőket teszi lehetővé:
 
 * Ismerkedjen meg a felhasználói felülettel
 
@@ -442,7 +442,7 @@ Ha az újonnan megvalósított szabályzatokat vissza kell állítania, használ
 > [!NOTE]
 >  Ezt a beállítást takarékosan kell használni, csak olyan helyzetekben, amikor a felhasználó megbízható. A felhasználót a lehető leghamarabb vissza kell venni a szabályzatba vagy a csoportba.
 
-* **Törölje a szabályzatot.** Ha a házirend már nem szükséges, [törölje](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) azt.
+* **Törölje a szabályzatot.** Ha a házirend már nem szükséges, [törölje](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) azt.
 
 ## <a name="manage-access-to-cloud-apps"></a>Felhőalapú alkalmazásokhoz való hozzáférés kezelése
 
@@ -495,10 +495,10 @@ Miután összegyűjtötte az adatokat, tekintse meg a következő forrásokat:
 
 * [A mi-if eszköz használata](troubleshoot-conditional-access-what-if.md) – megtudhatja, miért nem adott meg egy házirendet egy adott felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a többtényezős hitelesítésről](../authentication/concept-mfa-howitworks.md)
 
 [További információ az Identity Protectionről](../identity-protection/overview-identity-protection.md)
 
-[HITELESÍTÉSSZOLGÁLTATÓI házirendek kezelése Microsoft Graph API-val](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[HITELESÍTÉSSZOLGÁLTATÓI házirendek kezelése Microsoft Graph API-val](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3315a8d6bca9406461d0082ed85bbefc9459f4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72886999"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950204"
 ---
 # <a name="user-experiences-with-azure-ad-identity-protection"></a>Felhasználói élmény Azure AD Identity Protection
 
@@ -29,7 +29,7 @@ Az összes Identity Protection-házirend hatással van a felhasználók bejelent
 
 ## <a name="multi-factor-authentication-registration"></a>Multi-Factor Authentication-regisztráció
 
-A többtényezős hitelesítés regisztrációját és az összes felhasználó megcélzását igénylő Identity Protection-házirend engedélyezésével biztosíthatja, hogy az Azure MFA-t a jövőben is felhasználhatja önkiszolgálásra. A házirend konfigurálásakor a felhasználók 14 napos időszakot kapnak, ahol regisztrálhatnak, és a végén a regisztrációra kényszerülnek. A felhasználók felhasználói élményét az alábbiakban ismertetjük. További információ a cikk végfelhasználói dokumentációjában, a [kétfaktoros ellenőrzés és a munkahelyi vagy iskolai fiók áttekintése](../user-help/user-help-two-step-verification-overview.md)című cikkben található.
+A többtényezős hitelesítés regisztrációját és az összes felhasználó megcélzását igénylő Identity Protection-házirend engedélyezésével biztosíthatja, hogy az Azure MFA-t a jövőben is felhasználhatja önkiszolgálásra. A házirend konfigurálásakor a felhasználók 14 napos időszakot kapnak, ahol regisztrálhatnak, és a végén a regisztrációra kényszerülnek. A felhasználók felhasználói élményét az alábbiakban ismertetjük. További információ a cikk végfelhasználói dokumentációjában, a [kétfaktoros ellenőrzés és a munkahelyi vagy iskolai fiók áttekintése](../user-help/multi-factor-authentication-end-user-first-time.md)című cikkben található.
 
 ### <a name="registration-interrupt"></a>Regisztráció megszakítása
 
@@ -67,7 +67,7 @@ Ha egy felhasználói kockázati házirendet konfiguráltak, a felhasználói ko
 
 1. A rendszer értesíti a felhasználót, hogy a fiók biztonsága gyanús tevékenység vagy kiszivárgott hitelesítő adatok miatt veszélyben van.
    
-    ![Kockázatcsökkentés](./media/concept-identity-protection-user-experience/101.png)
+    ![Szervizelés](./media/concept-identity-protection-user-experience/101.png)
 
 1. A felhasználónak bizonyítania kell a személyazonosságát, ha az Azure MFA-t az egyik korábban regisztrált módszerrel végzi el. 
 1. Végül a felhasználónak meg kell változtatnia a jelszavát az önkiszolgáló jelszó-visszaállítással, mert valaki más is hozzáférhet a fiókjához.
@@ -80,8 +80,8 @@ A rendszergazdák dönthetnek úgy, hogy a kockázati szintjétől függően let
 
 Az informatikai munkatársak a [felhasználók letiltásának feloldása](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) című szakaszban szereplő utasításokat követve engedélyezhetik a felhasználóknak a bejelentkezést.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Kockázatok szervizelése és a felhasználók blokkolásának feloldása](howto-identity-protection-remediate-unblock.md)
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

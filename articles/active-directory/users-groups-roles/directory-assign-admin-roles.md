@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2bb8b98bfb936421c0522d4637a288d20a708b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 87bb20d23f773997addd170da09ca8f20d2a8ce7
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795405"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949983"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -56,19 +56,12 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 Az ebben a szerepkörben lévő felhasználók a vállalati alkalmazások, az alkalmazások regisztrációi és az alkalmazásproxy-beállítások összes aspektusát hozhatják létre és kezelhetik. Vegye figyelembe, hogy az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
-Az alkalmazás-rendszergazdák kezelhetik az alkalmazás hitelesítő adatait, amelyek lehetővé teszik az alkalmazás megszemélyesítését. Így az ehhez a szerepkörhöz hozzárendelt felhasználók csak azon alkalmazások hitelesítő adatait kezelhetik, amelyek nincsenek Azure AD-szerepkörökhöz rendelve, vagy csak a következő rendszergazdai szerepkörökhöz vannak rendelve:
-
-* alkalmazás-rendszergazda
-* Alkalmazásfejlesztő
-* Felhőalkalmazás-rendszergazda
-* Directory-olvasók
-
-Ha egy alkalmazás minden olyan szerepkörhöz hozzá van rendelve, amely nem szerepel a fentiekben, akkor az alkalmazás rendszergazdája nem tudja kezelni az adott alkalmazás hitelesítő adatait.
-
 Ez a szerepkör lehetővé teszi a delegált engedélyek _és az alkalmazás_ engedélyeinek megadását is, kivéve a Microsoft Graph API-ra vonatkozó engedélyeket.
 
 > [!IMPORTANT]
 > Ez a kivétel azt jelenti, hogy továbbra is hozzájárulhat _más_ alkalmazásokhoz (például a nem a Microsoft által regisztrált alkalmazásokhoz vagy alkalmazásokhoz) való hozzáféréshez, az Azure ad-re vonatkozó engedélyekkel azonban nem. Továbbra is _kérheti_ ezeket az engedélyeket az alkalmazás regisztrálásának részeként, de _megadhatja_ , hogy ezek az engedélyek Azure ad-rendszergazdát igényelnek. Ez azt jelenti, hogy a rosszindulatú felhasználók nem tudják egyszerűen megemelni az engedélyeiket, például egy olyan alkalmazás létrehozásával és beleegyezésével, amely a teljes címtárba való íráshoz és az alkalmazás engedélyein keresztül megemeli magukat globális rendszergazdaként.
+>
+>Ez a szerepkör lehetővé teszi az alkalmazás hitelesítő adatainak kezelését. Az ehhez a szerepkörhöz hozzárendelt felhasználók hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és ezekkel a hitelesítő adatokkal megszemélyesítheti az alkalmazás identitását. Ha az alkalmazás identitása hozzáférést kapott egy erőforráshoz, például felhasználói vagy más objektumok létrehozására vagy frissítésére, akkor a szerepkörhöz hozzárendelt felhasználó elvégezheti ezeket a műveleteket az alkalmazás megszemélyesítése közben. Előfordulhat, hogy az alkalmazás identitásának megszemélyesítése magasabb szintű jogosultságot jelent, mint amit a felhasználó a szerepkör-hozzárendelésein keresztül el tud végezni. Fontos tisztában lenni azzal, hogy egy felhasználó az alkalmazás-rendszergazdai szerepkörhöz való hozzárendelésével megszemélyesítheti az alkalmazás identitását.
 
 ### <a name="application-developer"></a>[Alkalmazásfejlesztő](#application-developer-permissions)
 
@@ -125,15 +118,11 @@ Lebonyolítja a vásárlásokat, kezeli az előfizetéseket és a támogatási j
 
 ### <a name="cloud-application-administrator"></a>[Felhőalkalmazás-rendszergazda](#cloud-application-administrator-permissions)
 
-Az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, az alkalmazásproxy felügyeletének lehetősége nélkül. Ez a szerepkör lehetővé teszi a vállalati alkalmazások és az alkalmazások regisztrálásának minden aspektusának létrehozását és felügyeletét. Ez a szerepkör lehetővé teszi a delegált engedélyek megadását és az alkalmazás engedélyeinek kizárását a Microsoft Graph API-val. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
+Az ebben a szerepkörben lévő felhasználók ugyanazok az engedélyek, mint az alkalmazás-rendszergazda szerepkör, az alkalmazásproxy felügyeletének lehetősége nélkül. Ez a szerepkör lehetővé teszi a vállalati alkalmazások és az alkalmazások regisztrálásának minden aspektusának létrehozását és felügyeletét. Ez a szerepkör lehetővé teszi a delegált engedélyekhez való hozzájárulást, valamint az Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kizárását is. Az ehhez a szerepkörhöz hozzárendelt felhasználók nem lesznek hozzáadva tulajdonosként új alkalmazás-regisztrációk vagy vállalati alkalmazások létrehozásakor.
 
-A felhőalapú alkalmazás-rendszergazdák kezelhetik az alkalmazás hitelesítő adatait, amelyek lehetővé teszik az alkalmazás megszemélyesítését. Így az ehhez a szerepkörhöz hozzárendelt felhasználók csak azon alkalmazások hitelesítő adatait kezelhetik, amelyek nincsenek Azure AD-szerepkörökhöz rendelve, vagy csak a következő rendszergazdai szerepkörökhöz vannak rendelve:
+> [!IMPORTANT]
+> Ez a szerepkör lehetővé teszi az alkalmazás hitelesítő adatainak kezelését. Az ehhez a szerepkörhöz hozzárendelt felhasználók hitelesítő adatokat adhatnak hozzá egy alkalmazáshoz, és ezekkel a hitelesítő adatokkal megszemélyesítheti az alkalmazás identitását. Ha az alkalmazás identitása hozzáférést kapott egy erőforráshoz, például felhasználói vagy más objektumok létrehozására vagy frissítésére, akkor a szerepkörhöz hozzárendelt felhasználó elvégezheti ezeket a műveleteket az alkalmazás megszemélyesítése közben. Előfordulhat, hogy az alkalmazás identitásának megszemélyesítése magasabb szintű jogosultságot jelent, mint amit a felhasználó a szerepkör-hozzárendelésein keresztül el tud végezni. Fontos tisztában lenni azzal, hogy egy felhasználó a Cloud Application Administrator szerepkörhöz való hozzárendelésével lehetővé válik az alkalmazás identitásának megszemélyesítése.
 
-* Alkalmazásfejlesztő
-* Felhőalkalmazás-rendszergazda
-* Directory-olvasók
-
-Ha egy alkalmazás minden olyan szerepkörhöz hozzá van rendelve, amely nem szerepel a fentiekben, akkor a Cloud Application Administrator nem tudja kezelni az adott alkalmazás hitelesítő adatait.
 
 ### <a name="cloud-device-administrator"></a>[Felhőalapú eszköz rendszergazdája](#cloud-device-administrator-permissions)
 
@@ -418,7 +407,7 @@ In | Elvégezhető
 Identity Protection-központ | A biztonsági olvasó szerepkörre vonatkozó összes engedély<br>Emellett az összes Identity Protection Center-művelet elvégzésének lehetősége, kivéve a jelszavak alaphelyzetbe állítását
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | A biztonsági olvasó szerepkörre vonatkozó összes engedély<br>Az Azure AD szerepkör-hozzárendelések és-beállítások **nem** kezelhetők
 [Office 365 biztonsági & megfelelőségi központ](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Biztonsági szabályzatok kezelése<br>Biztonsági fenyegetések megtekintése, vizsgálata és reagálás<br>Jelentések megtekintése
-Azure Komplex veszélyforrások elleni védelem | Gyanús biztonsági tevékenység figyelése és reagálás
+Azure Advanced Threat Protection | Gyanús biztonsági tevékenység figyelése és reagálás
 Windows Defender ATP és EDR | Szerepkörök hozzárendelése<br>Számítógépcsoportok kezelése<br>A végponti fenyegetések észlelésének és automatikus szervizelésének konfigurálása<br>Riasztások megtekintése, vizsgálata és válaszadás
 [megkezdése](/intune/role-based-access-control) | A felhasználók, az eszközök, a beléptetés, a konfiguráció és az alkalmazás adatainak megtekintése<br>Nem lehet módosítani az Intune-t
 [Cloud App Security](/cloud-app-security/manage-admins) | Rendszergazdák hozzáadása, szabályzatok és beállítások hozzáadása, naplók feltöltése és irányítási műveletek végrehajtása

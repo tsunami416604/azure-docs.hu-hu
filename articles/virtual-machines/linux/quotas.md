@@ -4,19 +4,22 @@ description: Ismerje meg az Azure-hoz készült vCPU-kvótákat.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 028da1fa9d2b16b4d87c345d8435c99b565e1774
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292304"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949694"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>Virtuális gépek vCPU-kvótái
+# <a name="check-vcpu-quotas-using-the-azure-cli"></a>VCPU-kvóták keresése az Azure CLI használatával
 
 A virtuális gépekhez és a virtuálisgép-méretezési csoportokhoz tartozó vCPU-kvóták minden egyes előfizetéshez két rétegben vannak rendezve. Az első réteg a teljes regionális vCPU, a második pedig a virtuális gépek különböző méretű, például a D sorozatú vCPU. Amikor új virtuális gépet telepít, a virtuális gép vCPU nem lépheti túl a virtuális gép vCPU-kvótáját vagy a teljes regionális vCPU-kvótát. Ha túllépi a kvótákat, a virtuális gép üzembe helyezése nem lesz engedélyezett. A régión belül a virtuális gépek teljes száma is rendelkezik kvótával. Az egyes kvóták részletei a [Azure Portal](https://portal.azure.com) **előfizetés** lapjának **használat + kvóták** szakaszában láthatók, vagy az Azure CLI használatával is lekérdezheti az értékeket.
+
+> [!NOTE]
+> A kvóta kiszámításának alapja a lefoglalt és a visszafoglalt magok teljes száma. Ha további magokra van szüksége, [igényeljen kvótát](../../azure-portal/supportability/resource-manager-core-quotas-request.md) , vagy törölje azokat a virtuális gépeket, amelyekre már nincs szükség. 
 
 
 ## <a name="check-usage"></a>Használat ellenőrzése
@@ -59,6 +62,6 @@ A fenntartott VM-példányok, amelyek a virtuális gépek méretének rugalmass�
 
 Ha egy előfizetési RI megvásárlásához kvóta-növelésre van szükség, akkor az előfizetésre vonatkozó [kvóta növelését kérheti](../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számlázással és a kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json).

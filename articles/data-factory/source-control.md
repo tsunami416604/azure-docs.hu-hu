@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067409"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949133"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -46,7 +46,7 @@ Az alábbi lista a git-integráció egyes előnyeit mutatja be a szerzői művel
 -   **Jobb teljesítmény:** A git-integrációval rendelkező átlagos gyár tízszer gyorsabban töltődik be, mint egy szerzői művelet az adatfeldolgozó szolgáltatásban. Ez a teljesítmény-fejlesztés az, hogy az erőforrások a git használatával töltődnek le.
 
 > [!NOTE]
-> A Data Factory szolgáltatással közvetlenül történő szerzői műveletek a git-tárház konfigurálásakor le vannak tiltva a Azure Data Factory UX-ben. A módosításokat közvetlenül a PowerShell vagy egy SDK használatával végezheti el a szolgáltatásban.
+> A Data Factory szolgáltatással közvetlenül történő szerzői műveletek a git-tárház konfigurálásakor le vannak tiltva a Azure Data Factory UX-ben. A PowerShellen vagy SDK-n keresztül végrehajtott módosítások közvetlenül a Data Factory szolgáltatásban lesznek közzétéve, és nem kerülnek be a git-be.
 
 ## <a name="author-with-azure-repos-git-integration"></a>Létrehozás Azure Repos Git-integrációval
 
@@ -255,7 +255,7 @@ Miután eltávolította az aktuális tárházhoz való társítást, beállítha
 > [!IMPORTANT]
 > A git-konfiguráció adat-előállítóból való eltávolítása nem törli az adattárból származó semmit. A gyár minden közzétett erőforrást tartalmaz majd. A gyárat továbbra is szerkesztheti közvetlenül a szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse [meg az Azure Data Factory folyamatos integrációját és továbbítását (CI/CD)](continuous-integration-deployment.md).

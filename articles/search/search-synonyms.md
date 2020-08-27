@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529561"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948640"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Az Azure Cognitive Search szinonimái
 
@@ -23,7 +23,7 @@ Az Azure Cognitive Searchban a Kibővítés a lekérdezés időpontjában tört�
 
 ## <a name="create-synonyms"></a>Szinonimák létrehozása
 
-A rendszer nem támogatja a szinonimák létrehozására szolgáló portál használatát, de használhatja a REST API vagy a .NET SDK-t is. A REST használatának megkezdéséhez javasoljuk, hogy a [Poster használatával](search-get-started-postman.md) és a kérelmek összeállításával hozzon létre a következő API-t: [szinonima térképek létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C#-fejlesztők számára a C# használatával megkezdheti a [szinonimák hozzáadását az Azure-beli kognitív keresésekhez](search-synonyms-tutorial-sdk.md).
+A rendszer nem támogatja a szinonimák létrehozására szolgáló portál használatát, de használhatja a REST API vagy a .NET SDK-t is. A REST használatának megkezdéséhez javasoljuk, hogy a [Poster használatával](search-get-started-postman.md) és a kérelmek összeállításával hozzon létre a következő API-t: [szinonima térképek létrehozása](/rest/api/searchservice/create-synonym-map). C#-fejlesztők számára a C# használatával megkezdheti a [szinonimák hozzáadását az Azure-beli kognitív keresésekhez](search-synonyms-tutorial-sdk.md).
 
 Ha az [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) használja a kiszolgálóoldali titkosításhoz, akkor ezt a védelmet a szinonima Térkép tartalmára is alkalmazhatja.
 
@@ -92,6 +92,21 @@ Az explicit leképezést a "=>" nyíl jelöli. Ha meg van adva, a "=>" bal oldal
 
 ```
 Washington, Wash., WA => WA
+```
+
+Ha vesszőket tartalmazó szinonimákat kell definiálni, akkor elkerülheti őket egy fordított perjeltel, például a következő példában:
+
+```
+WA\, USA, WA, Washington
+```
+
+Mivel a fordított perjel önmagában más nyelveken, például a JSON-ban vagy a C#-ban található speciális karakter, valószínűleg kétszer is el kell menekülnie. Például a fenti szinonima-Térkép REST API eljuttatott JSON a következőképpen fog kinézni:
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>A szolgáltatáshoz tartozó szinonimák listázása.
@@ -173,4 +188,4 @@ Ha meglévő indexe van egy fejlesztési (nem éles) környezetben, kísérletez
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Szinonima-Térkép létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [Szinonima-Térkép létrehozása](/rest/api/searchservice/create-synonym-map)

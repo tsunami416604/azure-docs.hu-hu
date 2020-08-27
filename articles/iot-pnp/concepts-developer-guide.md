@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f1860f9645a50789803d509a6a1ea98bc0ea1a9e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856039"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950136"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>IoT Plug and Play előzetes verziójának fejlesztői útmutatója
 
@@ -57,7 +57,7 @@ A modell AZONOSÍTÓjának bejelentése az SDK-k következő verzióihoz lett ho
 
 ## <a name="dps-payload"></a>DPS-tartalom
 
-A [Device kiépítési szolgáltatást (DPS)](/iot-dps/) használó eszközök tartalmazhatják a `modelId` kiépítési folyamat során a következő JSON-adattartalommal használható eszközöket.
+A [Device kiépítési szolgáltatást (DPS)](../iot-dps/about-iot-dps.md) használó eszközök tartalmazhatják a `modelId` kiépítési folyamat során a következő JSON-adattartalommal használható eszközöket.
 
 ```json
 {
@@ -423,7 +423,7 @@ POST /digitalTwins/t-123/components/Thermostat/commands/restart
 /digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az eszközök modellezését, íme néhány további erőforrás:
 

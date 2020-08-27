@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414945"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949956"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákon keresztül
 
@@ -167,7 +167,47 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
   - Tevékenység-futtatások = 001 \* 2 = 0,002 [1 Futtatás = $1/1000 = 0,001]
   - Adatfolyam-tevékenységek = $1,461 arány 20 percre (10 perc végrehajtási idő + 10 perc TTL). $0.274/óra Azure Integration Runtime 16 maggal általános számítási feladatokkal
 
-## <a name="next-steps"></a>További lépések
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Adatintegráció a Azure Data Factory felügyelt VNET
+Ebben az esetben törölni kívánja az eredeti fájlokat az Azure Blob Storageon, és az adatok Azure SQL Databaseból az Azure-ba Blob Storage másolhatók. Ezt a végrehajtást kétszer kell elvégeznie a különböző folyamatokon. A két folyamat végrehajtási ideje átfedésben van.
+![](media/pricing-concepts/scenario-4.png)A forgatókönyv végrehajtásához két folyamatot kell létrehoznia a következő elemek Scenario4:
+  - Egy folyamat tevékenység – törlési tevékenység.
+  - Egy másolási tevékenység egy bemeneti adatkészlettel az Azure Blob Storage-ból másolandó adatokhoz.
+  - A Azure SQL Database lévő adat kimeneti adatkészlete.
+  - Egy ütemezett eseményindító a folyamat végrehajtásához.
+
+
+| **Műveletek** | **Típusok és egységek** |
+| --- | --- |
+| Társított szolgáltatás létrehozása | 4 olvasási/írási entitás |
+| Adatkészletek létrehozása | 8 olvasási/írási entitás (4 az adatkészlet létrehozásához, 4 a társított szolgáltatási referenciák esetében) |
+| Folyamat létrehozása | 6 olvasási/írási entitás (2 a folyamat létrehozásához, 4 az adatkészlet-hivatkozásokhoz) |
+| Folyamat beolvasása | 2 olvasási/írási entitás |
+| Folyamat futtatása | 6 tevékenység fut (2 a trigger futtatásához, 4 a tevékenység futtatásához) |
+| Végrehajtási törlési tevékenység: minden végrehajtási idő = 5 perc. Az első folyamat törlési tevékenységének végrehajtása 10:00 órától UTC és 10:05 között van. A második folyamat törlési tevékenységének végrehajtása 10:02-tól UTC-ig 10:07 AM UTC-re esik.|A felügyelt VNET összesen 7 perces folyamat-végrehajtási művelet. A folyamat tevékenysége legfeljebb 50 egyidejűséget támogat a felügyelt VNET. |
+| Adatok másolása feltételezés: minden végrehajtási idő = 10 perc. Az első adatcsatorna másolási végrehajtása 10:06 órától UTC, 10:15 AM UTC. A második folyamat törlési tevékenységének végrehajtása 10:08-tól UTC-ig 10:17 AM UTC-re esik. | 10 * 4 Azure Integration Runtime (alapértelmezett DIU-beállítás = 4) az adatintegrációs egységekkel és a másolási teljesítmény optimalizálásával kapcsolatos további információkért tekintse meg [ezt a cikket.](copy-activity-performance.md) |
+| Figyelő folyamat feltételezése: csak 2 Futtatás történt | 6 figyelési futtatási rekordok újrapróbálva (2 a folyamat futtatásához, 4 a tevékenység futtatásához) |
+
+
+**Forgatókönyvek teljes díjszabása: $0,45523**
+
+- Data Factory műveletek = $0,00023
+  - Olvasás/írás = 20 * 00001 = $0,0002 [1 R/W = $0,50/50000 = 0,00001]
+  - Figyelés = 6 * 000005 = $0,00003 [1 figyelés = $0,25/50000 = 0,000005]
+- Folyamat-összehangolás & végrehajtás = $0,455
+  - Tevékenység-futtatások = 0,001 * 6 = 0,006 [1 Futtatás = $1/1000 = 0,001]
+  - Adatáthelyezési tevékenységek = $0,333 (a végrehajtási idő 10 perce arányban. 0,25 USD/óra Azure Integration Runtime)
+  - Folyamat aktivitása = $0,116 (a végrehajtási idő 7 perce arányban. $1/óra Azure Integration Runtime)
+
+> [!NOTE]
+> Ezek az árak csak példaként szolgálnak.
+
+**Gyakori kérdések**
+
+K: Ha több mint 50 folyamatot kívánok futtatni, akkor ezeket a tevékenységeket egyszerre hajthatja végre?
+
+A: legfeljebb 50 egyidejű folyamatra vonatkozó művelet engedélyezett.  A 51th folyamata tevékenység várólistára kerül, amíg meg nem nyit egy "szabad tárolóhelyet". Ugyanaz, mint a külső tevékenység. Legfeljebb 800 egyidejű külső tevékenység lesz engedélyezett.
+
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette Azure Data Factory díjszabását, megkezdheti!
 

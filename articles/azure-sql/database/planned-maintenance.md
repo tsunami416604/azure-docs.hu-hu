@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 08/25/2020
-ms.openlocfilehash: 85459f357032a7f9944d50e3e4f3929015c6dcfd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c7b78f14602632068a19d520aeeb940b543be61
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869117"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948215"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Az Azure karbantartási eseményeinek megtervezése Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,6 +24,8 @@ ms.locfileid: "88869117"
 Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket az adatbázisában Azure SQL Database és az Azure SQL felügyelt példányain.
 
 ## <a name="what-is-a-planned-maintenance-event"></a>Mi a tervezett karbantartási esemény?
+
+Annak érdekében, hogy Azure SQL Database és az Azure SQL felügyelt példányok biztonságos, megfelelő, stabil és teljesítményű, frissítéseit a szolgáltatás-összetevőkön keresztül szinte folyamatosan végrehajtsa. A modern és robusztus szolgáltatás architektúrájának és innovatív technológiáinak, például a [gyors javításoknak](https://aka.ms/azuresqlhotpatching)köszönhetően a frissítések többsége teljes mértékben átlátható és nem befolyásolható a szolgáltatás rendelkezésre állása szempontjából. Ugyanakkor a frissítések néhány típusa rövid szolgáltatás-megszakításokat okoz, és speciális kezelést igényel. 
 
 Az egyes adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt példányai az adatbázis-replikák kvórumát őrzik meg, ahol az egyik replika az elsődleges. Az elsődleges replika mindig online karbantartásnak kell lennie, és legalább egy másodlagos replikának kifogástalannak kell lennie. A tervezett karbantartás során az adatbázis Kvórumának tagjai egy időben offline állapotba kerülnek, azzal a szándékkal, hogy az ügyfél leállásának hiányában egyetlen válasz elsődleges replika és legalább egy másodlagos replika online állapotban van. Ha az elsődleges replikát offline állapotba kell helyezni, egy újrakonfigurálási/feladatátvételi folyamat fog történni, amelyben egy másodlagos replika lesz az új elsődleges.  
 

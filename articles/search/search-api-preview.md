@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935262"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950476"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Az Azure előzetes verziójának szolgáltatásai Cognitive Search
 
@@ -35,7 +35,7 @@ Az általánosan elérhetővé vált előzetes verziójú funkciók törlődnek 
 |  [**Azure Data Lake Storage Gen2 indexelő**](search-howto-index-azure-data-lake-storage.md) | Indexelő adatforrása | Tartalom és metaadatok indexelése Data Lake Storage Gen2ból.| A [regisztrációra](https://aka.ms/azure-cognitive-search/indexer-preview) azért van szükség, hogy a támogatás engedélyezve legyen az előfizetéséhez a háttérbeli alkalmazásban. Ezt az adatforrást az adatforrások [(REST) létrehozásával](/rest/api/searchservice/create-data-source) érheti el API-Version = 2020-06 -30-Preview vagy API-Version = 2019-05 -06-Preview használatával. |
 | [**moreLikeThis**](search-more-like-this.md) | Lekérdezés | Megkeresi az adott dokumentumhoz kapcsolódó dokumentumokat. Ez a funkció korábbi előzetes verziókban található. | Adja hozzá ezt a lekérdezési paramétert a [Search Documents (REST)](/rest/api/searchservice/search-documents) hívásokhoz a következő API-Version = 2020-06 -30-preview, 2019-05-06-preview, 2016-09-01-Preview, vagy 2017-11-11-preview. |
 
-## <a name="calling-preview-rest-apis"></a>Előnézet REST API-k hívása
+## <a name="how-to-call-a-preview-rest-api"></a>Előnézet REST API meghívása
 
 Az Azure Cognitive Search mindig előzetesen kibocsátja a kísérleti szolgáltatásokat a REST API a .NET SDK előzetes verzióival.
 
@@ -47,17 +47,19 @@ Előfordulhat, hogy néhány előzetes verziójú funkció elérhető a Portálo
 
 + A felügyeleti műveletek esetében [**`2019-10-01-Preview`**](/rest/api/searchmanagement/index-2019-10-01-preview) az aktuális előzetes verzió.
 
-A régebbi előzetes verziók továbbra is működőképesek, de idővel elavultak lesznek. Ha a kód meghívja `api-version=2019-05-06-Preview` vagy `api-version=2016-09-01-Preview` vagy vagy `api-version=2017-11-11-Preview` , ezek a hívások még érvényesek. Azonban csak a legújabb előzetes verzió frissült a újdonságokkal. 
+A régebbi előzetes verziók továbbra is működőképesek, de idővel elavultak lesznek. Ha a kód meghívja `api-version=2019-05-06-Preview` vagy `api-version=2016-09-01-Preview` vagy vagy `api-version=2017-11-11-Preview` , ezek a hívások még érvényesek. Azonban csak a legújabb előzetes verzió frissült a újdonságokkal.
 
 A következő példa szintaxisa az előzetes verziójú API-verzió hívását mutatja be.
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 Az Azure Cognitive Search szolgáltatás több verzióban is elérhető. További információ: API- [verziók](search-api-versions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a keresési REST előzetes verzió API-dokumentációját. Ha problémákba ütközik, kérjen segítséget [stack overflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 

@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927136"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949031"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Frissítés a legújabb Azure Cognitive Search Service REST API verzióra
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Frissítsen a legújabb REST APIra az Azure-ban Cognitive Search
 
-Ha a [Search REST API](/rest/api/searchservice/)egy korábbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a legújabb általánosan elérhető API-verzió (2020-06-30) használatára.
+Ha a [**Search REST API**](/rest/api/searchservice/)egy korábbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a legújabb általánosan elérhető API-verzióra, **2020-06-30**-re.
 
-A REST API 2020-06-30-es verziója a korábbi verziók néhány módosítását tartalmazza. Ezek többnyire visszamenőlegesen kompatibilisek, ezért a kód módosítása csak minimális erőfeszítést igényelhet, attól függően, hogy melyik verziót használta. A [verziófrissítés lépései](#UpgradeSteps) az új funkciók használatához szükséges kód módosításait ismertetik.
+Az 2020-06-30-es verzió egy fontos új funkciót ([Knowledge Store](knowledge-store-concept-intro.md)) tartalmaz, és számos kisebb viselkedési változást vezet be. Ennek a verziónak többnyire visszamenőlegesen kompatibilisnek kell lennie, ezért a kód módosításainak minimálisnak kell lennie, ha az előző verzióról frissít (2019-05-06).
 
 > [!NOTE]
-> Az Azure Cognitive Search Service-példányok számos REST API verziót támogatnak, köztük a korábbikat is. Továbbra is használhatja ezeket az API-verziókat, de javasoljuk, hogy a kód áttelepítését a legújabb verzióra, hogy hozzáférhessen az új funkciókhoz.
+> A keresési szolgáltatás számos REST API verziót támogat, beleértve a korábbikat is. Továbbra is használhatja ezeket az API-verziókat, de javasoljuk, hogy a kód áttelepítését a legújabb verzióra, hogy hozzáférhessen az új funkciókhoz. Idővel a REST API elavult verziói elavultak lesznek, és már [nem támogatottak](search-api-versions.md#unsupported-versions).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>A frissítés módja
 
-Az új verzióra való frissítéskor valószínűleg nem kell módosítania a kódot, kivéve a verziószámot. A következő esetekben lehet szükség a kód módosítására:
+Amikor új verzióra frissít, valószínűleg nem kell módosítania a kód módosításait, kivéve a verziószámot. A következő esetekben lehet szükség a kód módosítására:
 
 * A kód meghiúsul, ha a rendszer ismeretlen tulajdonságokat ad vissza egy API-válaszban. Alapértelmezés szerint az alkalmazás figyelmen kívül hagyja az általa nem értelmezhető tulajdonságokat.
 
@@ -36,7 +36,7 @@ Az új verzióra való frissítéskor valószínűleg nem kell módosítania a k
 
 * A kód olyan API-verzióra hivatkozik, amely a 2019-05-06-es időpontra vonatkozik, és az adott kiadásban feltörhető változások közül egy vagy több is érvényes. A [2019-05-06-es verzióra való frissítés](#upgrade-to-2019-05-06) további részleteket tartalmaz. 
 
-Ha ezek bármelyike Önre vonatkozik, előfordulhat, hogy a kódot ennek megfelelően kell módosítania. Ellenkező esetben nincs szükség módosításra, hacsak nem szeretné elindítani az új verzióban hozzáadott funkciók használatát.
+Ha ezek bármelyike Önre vonatkozik, előfordulhat, hogy a kódot ennek megfelelően kell módosítania. Ellenkező esetben nem szükséges módosítani a módosításokat, de érdemes lehet megkezdeni az új verzióban hozzáadott szolgáltatások használatát.
 
 ## <a name="upgrade-to-2020-06-30"></a>Frissítés 2020-06-30-re
 
@@ -63,7 +63,7 @@ Az 2019-05-06-es verzió a REST API korábbi általánosan elérhető kiadása. 
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
 
-A korábbi API-verziókra írt meglévő kód a következő funkciókat tartalmazza: API-Version = 2019-05-06, ha a kód a következő funkciókat tartalmazza:
+A korábbi API-verziókra írt meglévő kódok az API-Version = 2019-05-06-es és újabb verziókban lesznek megszakítva, ha a kód a következő funkciókat tartalmazza:
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>A Azure Cosmos db-DataSource indexelő most "type": "cosmosdb"
 
@@ -141,7 +141,7 @@ A "Flat" indexeket az új formátumra frissítheti a következő lépésekkel az
 > [!NOTE]
 > Nem lehetséges a régi "Flat" formátummal létrehozott indexek kezelése a Azure Portal. Frissítse az indexeket a "Flat" ábrázolásból a "Tree" kifejezésre a lehető leghamarabb.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Search REST API dokumentációját. Ha problémákba ütközik, kérjen segítséget [stack overflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 

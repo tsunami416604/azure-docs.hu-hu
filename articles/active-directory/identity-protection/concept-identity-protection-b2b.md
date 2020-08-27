@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72881310"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949196"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection- és B2B-felhasználók
 
@@ -49,8 +49,8 @@ Ha a saját címtárában lévő kockázatos B2B-felhasználót a kockázatkezel
 
 A szervezet kockázatalapú feltételes hozzáférési házirendjeinek B2B-felhasználóinak kizárásával megakadályozható, hogy a VÁLLALATKÖZI felhasználók kiértékeljék vagy letiltsák a kockázatértékelést. A B2B-felhasználók kizárásához hozzon létre egy csoportot az Azure AD-ben, amely az összes szervezet vendég felhasználóját tartalmazza. Ezt követően adja hozzá ezt a csoportot a beépített Identity Protection-felhasználói kockázat és a bejelentkezési kockázati szabályzatok kizárásához, valamint minden olyan feltételes hozzáférési szabályzatot, amely feltételként a bejelentkezési kockázatokat használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 
-- [Mi az az Azure AD B2B együttműködés?](../b2b/what-is-b2b.md)
+- [Mi az az Azure AD B2B együttműködés?](../external-identities/what-is-b2b.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb10effce8b94a6443e1daa8dadaa99111da0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099124"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950459"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Adatfolyam-betöltési átviteli sebesség korlátai
 
@@ -34,7 +34,7 @@ Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megab�
 
 > [!TIP]
 >
-> * A sávszélesség-támogatás a 16 MBps-ig terjedő sebességek igény szerinti megadásával adható meg.
+> * A legfeljebb 8 MBps sebességű átviteli környezet támogatása kéréssel biztosítható.
 > * Vegye fel velünk a kapcsolatot, ha a támogatási jegyet a Azure Portalon keresztül küldi el, ha nagyobb átviteli sebességre van szüksége.
  
 * **1. példa:**
@@ -42,16 +42,16 @@ Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megab�
     A contoso szállítása 100 000 olyan eszközzel rendelkezik, amely percenként három alkalommal bocsát ki eseményt. Az események mérete 200 bájt. A IoT Hub négy partíciót használnak a Azure Time Series Insights Gen2-esemény forrásaként.
 
     * A Azure Time Series Insights Gen2-környezet betöltési sebessége a következő: **100 000-es eszközök * 200 bájt/esemény * (3/60 esemény/másodperc) = 1 Mbps**.
-    * A másodpercenkénti betöltési arány 0,25 MBps.
-    * A contoso szállításának betöltési aránya a méretezési korlátozáson belül lenne.
+    * A kiegyensúlyozott partíciót feltételezve, hogy a partíciók terhelési aránya 0,25 MB/s.
+    * A contoso szállításának betöltési aránya a skálázási korlátokon belül lenne.
 
 * **2. példa:**
 
-    A contoso Fleet Analytics 60 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Olyan Event hub-t használnak, amelynek a partícióinak száma 4, Azure Time Series Insights Gen2-eseményforrás. Az események mérete 200 bájt.
+    A contoso Fleet Analytics 40 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Egy Event hub-t használnak, amelynek a partícióinak száma 2, Azure Time Series Insights Gen2 eseményforrás. Az események mérete 200 bájt.
 
-    * A környezet betöltési sebessége a következő: **60 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 12 Mbps**.
-    * A/partíciók aránya 3 MBps.
-    * A contoso Fleet Analytics betöltési aránya a környezet és a partíciók korlátain alapul. Kérést küldhetnek Azure Time Series Insights Gen2 a Azure Portalon keresztül a környezet betöltési arányának növeléséhez, és létrehozhat egy olyan Event hub-t, amely több partíciót használ a korlátokon belül.
+    * A környezet betöltési sebessége a következő: **40 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 8 Mbps**.
+    * A kiegyensúlyozott partíciót feltételezve a partíciók aránya 4 MBps.
+    * A contoso Fleet Analytics betöltési aránya a környezet és a partíciók korlátain alapul. Kérést küldhetnek Azure Time Series Insights Gen2 a Azure Portalon keresztül, hogy növeljék a környezet betöltési arányát, és hozzon létre egy olyan Event hub-t, amely a határértékeken belül több partícióval rendelkezik.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Hub-partíciók és partíciós korlátok
 
@@ -96,6 +96,6 @@ Az alábbi forrásokból tájékozódhat a hub átviteli sebességének és part
 * [Event hub-skála](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [Event hub-partíciók](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [adattárolásról](./concepts-storage.md)

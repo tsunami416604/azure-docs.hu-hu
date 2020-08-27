@@ -3,12 +3,12 @@ title: Mi az Azure Event Hubs? – Big adatfeldolgozási szolgáltatás | Micros
 description: További tudnivalók az Azure Event Hubsról, amely egy másodpercenként több millió eseményt feldolgozó Big Data streamszolgáltatás.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522108"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927901"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – A big data streaming platform és az esemény-betöltési szolgáltatás
 Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként több millió esemény fogadására és feldolgozására képes. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
@@ -77,14 +77,14 @@ A Event Hubs kiadásai (Azure Stack hub és az Azure-on) magas fokú szolgáltat
 A nyilvános előzetes verzióban a Event Hubs on stack ingyenes. További információ: [Event Hubs Azure stack hub – áttekintés](/azure-stack/user/event-hubs-overview).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Event Hubs használatának megkezdéséhez tekintse meg az **események küldése és fogadása** oktatóanyagokat:
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Ugrás](event-hubs-go-get-started-send.md)
 - [C (csak küldés)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)

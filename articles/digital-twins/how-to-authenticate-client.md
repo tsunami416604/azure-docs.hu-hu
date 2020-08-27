@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 00219dbebb8e84c21b9e5b84cf71309c63fc518e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855964"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930043"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -35,7 +35,7 @@ A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a k�
 
 Először is vegye fel a következő csomagokat a projektbe a .NET SDK és a hitelesítési eszközök használatához ehhez a útmutatóhoz:
 * `Azure.DigitalTwins.Core` (verzió `1.0.0-preview.2` )
-* `Azure.Identity` (verzió `1.1.1` )
+* `Azure.Identity`
 
 A választott eszközöktől függően a Visual Studio Package Managerrel vagy a parancssori eszközzel is megadhatja a csomagokat `dotnet` . 
 

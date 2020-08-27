@@ -3,22 +3,20 @@ title: Események fogadása az Event Processor Host használatával – Azure Ev
 description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, amely leegyszerűsíti az ellenőrzőpontok, a bérletek és az olvasási események ion párhuzamos kezelését.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936180"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949082"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]
-> Ez a cikk az Azure Event Hubs SDK régi verziójára vonatkozik. Az alábbi áttelepítési útmutatókból megtudhatja, hogyan telepítheti át a programkódot az SDK újabb verziójára. 
+> Ez a cikk az Azure Event Hubs SDK régi verziójára vonatkozik. Az SDK aktuális verziójával kapcsolatban lásd: a [partíciók terhelésének elosztása az alkalmazás több példánya között](event-processor-balance-partition-load.md). Az alábbi áttelepítési útmutatókból megtudhatja, hogyan telepítheti át a programkódot az SDK újabb verziójára. 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java-parancsfájl](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
->
-> Lásd még: [a partíciók terhelésének elosztása az alkalmazás több példánya között](event-processor-balance-partition-load.md).
 
 Az Azure Event Hubs egy hatékony telemetria-betöltési szolgáltatás, amellyel akár több millió eseményt is továbbíthat alacsony áron. Ez a cikk azt ismerteti, hogyan lehet a betöltött eseményeket az *Event Processor Host* (EF) használatával használni. intelligens fogyasztói ügynök, amely leegyszerűsíti az ellenőrzőpontok, a lízingek és a párhuzamos események kezelését.  
 
@@ -187,7 +185,7 @@ Nem javasoljuk, hogy az alkalmazások használatakor hozzon létre egy olyan fog
 > Azt javasoljuk, hogy különböző fogyasztói csoportokat alkalmazzon olyan alkalmazásokhoz, amelyek alapértékeket használnak, és amelyek nem használják a korokat a hibák elkerülésére. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri az Event Processor Hostt, tekintse meg a következő cikkeket, amelyekben további információt talál a Event Hubs:
 

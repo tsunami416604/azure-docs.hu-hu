@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432481"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950051"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások Excel-bővítménye
 
@@ -28,7 +28,10 @@ Az Excel megkönnyíti a webszolgáltatások közvetlen meghívását anélkül,
 1. Nyissa meg a [minta Excel-fájlt](https://aka.ms/amlexcel-sample-2), amely tartalmazza az Excel-bővítményt és a Titanic utasainak adatait. 
  
     > [!NOTE]
-    > Ekkor megjelenik a fájlhoz kapcsolódó webszolgáltatások listája, valamint az "automatikus előrejelzés" jelölőnégyzet alján. Ha engedélyezi az automatikus előrejelzést, az **összes** szolgáltatás előrejelzését minden alkalommal frissíti a rendszer, amikor módosul a bemenetek. Ha nincs bejelentkezve, kattintson az "összes előrejelzés" gombra a frissítéshez. Ha engedélyezni szeretné az automatikus előrejelzést a szolgáltatási szinten, folytassa a 6. lépéssel.
+    > - Ekkor megjelenik a fájlhoz kapcsolódó webszolgáltatások listája, valamint az "automatikus előrejelzés" jelölőnégyzet alján. Ha engedélyezi az automatikus előrejelzést, az **összes** szolgáltatás előrejelzését minden alkalommal frissíti a rendszer, amikor módosul a bemenetek. Ha nincs bejelentkezve, kattintson az "összes előrejelzés" gombra a frissítéshez. Ha engedélyezni szeretné az automatikus előrejelzést a szolgáltatási szinten, folytassa a 6. lépéssel.
+    > - Az Azure Machine Learning Excel-bővítmény a betöltéshez hívja meg az Office bővítmények tárolóját. Ha a szervezet tiltja az Office-bővítmények tárolóhoz való hozzáférést, hibaüzenet jelenik meg a beépülő modul betöltésekor. Ebben az esetben telepítse az Azure Machine Learning Excel-bővítményt Microsoft 365 felügyeleti központból. Ezután hívja meg a beépülő modult, és manuálisan adja hozzá a webszolgáltatást. ehhez illessze be az URL-címet és az API-kulcsot.
+
+ 
 
 2. Válassza ki a webszolgáltatást a következőre kattintva: "Titanic Survivor-előrejelző (Excel-bővítmény minta) [score]" ebben a példában.
    

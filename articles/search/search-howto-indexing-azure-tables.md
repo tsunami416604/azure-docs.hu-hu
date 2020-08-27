@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519779"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929567"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Táblázatok indexelése az Azure Table Storage-ból az Azure Cognitive Search
 
@@ -25,8 +25,8 @@ Ez a cikk bemutatja, hogyan használható az Azure Cognitive Search az Azure Tab
 Az alábbi erőforrásokkal állíthatja be az Azure Table Storage indexelő szolgáltatását:
 
 * [Azure Portal](https://ms.portal.azure.com)
-* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Cognitive Search [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* Azure Cognitive Search [REST API](/rest/api/searchservice/Indexer-operations)
+* Azure Cognitive Search [.net SDK](/dotnet/api/overview/azure/search)
 
 Itt mutatjuk be a folyamatot a REST API használatával. 
 
@@ -62,7 +62,7 @@ Adatforrás létrehozása:
     }   
 ```
 
-További információ a Create DataSource API-ról: [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
+További információ a Create DataSource API-ról: [adatforrás létrehozása](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>A hitelesítő adatok megadásának módjai ####
@@ -73,7 +73,7 @@ A következő módszerek egyikével megadhatja a táblázat hitelesítő adatait
 - **Storage-fiók közös hozzáférési aláírásának kapcsolati karakterlánca**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` a közös hozzáférésű aláírásnak szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók (ebben az esetben a táblák) és az objektumok (tábla sorai) számára.
 -  **Táblázat megosztott hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` a közös hozzáférésű aláírásnak lekérdezési (olvasási) engedélyekkel kell rendelkeznie a táblához.
 
-További információ a Storage közös hozzáférésű aláírásáról: a [közös hozzáférésű aláírások használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+További információ a Storage közös hozzáférésű aláírásáról: a [közös hozzáférésű aláírások használata](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
 > Ha közös hozzáférés-aláírási hitelesítő adatokat használ, az adatforráshoz tartozó hitelesítő adatokat rendszeresen frissíteni kell a megújított aláírásokkal, hogy megakadályozza a lejáratát. Ha a megosztott hozzáférés aláírásának hitelesítő adatai lejárnak, az indexelő a következőhöz hasonló hibaüzenetet küld: "a kapcsolati sztringben megadott hitelesítő adatok érvénytelenek vagy lejártak."  
@@ -97,7 +97,7 @@ Index létrehozása:
     }
 ```
 
-Az indexek létrehozásával kapcsolatos további információkért lásd: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Az indexek létrehozásával kapcsolatos további információkért lásd: [create index](/rest/api/searchservice/create-index).
 
 ### <a name="step-3-create-an-indexer"></a>3. lépés: indexelő létrehozása
 Az indexelő Összekapcsol egy adatforrást a cél keresési indexszel, és az Adatfrissítés automatizálására szolgáló ütemtervet biztosít. 
@@ -119,7 +119,7 @@ Az index és az adatforrás létrehozása után készen áll az indexelő létre
 
 Ez az indexelő két óránként fut. (Az ütemezett időköz értéke "PT2H".) Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz öt perc. Az ütemterv nem kötelező; Ha nincs megadva, az indexelő csak egyszer fut a létrehozásakor. Az Indexelő szolgáltatást azonban bármikor futtathatja igény szerint.   
 
-Az indexelő API létrehozásával kapcsolatos további információkért lásd: az [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Az indexelő API létrehozásával kapcsolatos további információkért lásd: az [Indexelő létrehozása](/rest/api/searchservice/create-indexer).
 
 Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
 
@@ -170,7 +170,7 @@ Alapértelmezés szerint az Azure Cognitive Search a következő lekérdezési s
 
 - Ha az adatait idő szerint particionálja (például naponta vagy hetente létrehoz egy új partíciót), vegye figyelembe a következő megközelítést: 
     - Használja az űrlap lekérdezését: `(PartitionKey ge <TimeStamp>) and (other filters)` . 
-    - Figyelje az indexelő állapotát az [Indexelő állapot API beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)szolgáltatással, és rendszeres időközönként frissítse a `<TimeStamp>` lekérdezés feltételét a legújabb sikeres magas vízjelek érték alapján. 
+    - Figyelje az indexelő állapotát az [Indexelő állapot API beolvasása](/rest/api/searchservice/get-indexer-status)szolgáltatással, és rendszeres időközönként frissítse a `<TimeStamp>` lekérdezés feltételét a legújabb sikeres magas vízjelek érték alapján. 
     - Ha ezzel a módszerrel teljes újraindexelést kell elindítania, alaphelyzetbe kell állítania az adatforrás-lekérdezést az indexelő alaphelyzetbe állítása mellett. 
 
 

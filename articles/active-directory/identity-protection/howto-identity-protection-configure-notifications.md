@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130432"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950391"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
 
@@ -29,7 +29,7 @@ Ez a cikk az értesítő e-mailek áttekintését tartalmazza.
 
 ## <a name="users-at-risk-detected-email"></a>Veszélyeztetett felhasználók észlelt e-mail-címe
 
-A veszélyeztetett észlelt fiókra adott válaszként Azure AD Identity Protection e-mail-riasztást hoz létre a **veszélyeztetett felhasználókkal** kapcsolatban. Az e-mail tartalmazza a kockázati jelentésre **[megjelölt felhasználókra](../reports-monitoring/concept-user-at-risk.md)** mutató hivatkozást. Ajánlott eljárásként azonnal vizsgálja meg a veszélyeztetett felhasználókat.
+A veszélyeztetett észlelt fiókra adott válaszként Azure AD Identity Protection e-mail-riasztást hoz létre a **veszélyeztetett felhasználókkal** kapcsolatban. Az e-mail tartalmazza a kockázati jelentésre **[megjelölt felhasználókra](./overview-identity-protection.md)** mutató hivatkozást. Ajánlott eljárásként azonnal vizsgálja meg a veszélyeztetett felhasználókat.
 
 Ennek a riasztásnak a konfigurációja lehetővé teszi, hogy meghatározza, milyen felhasználói kockázati szinten szeretné létrehozni a riasztást. A rendszer akkor hozza létre az e-mailt, ha a felhasználó kockázati szintje eléri a megadott értéket. Ha például úgy állítja be a házirendet, hogy az a közepes felhasználói kockázatra figyelmeztessen, és a felhasználó János felhasználói kockázati pontszáma közepes kockázatra vált a valós idejű bejelentkezési kockázat miatt, akkor a veszélyeztetett felhasználók számára észlelt e-mail üzenet jelenik meg. Ha a felhasználónál olyan kockázati észlelések következnek be, amelyek következtében a felhasználói kockázati szint kiszámítása a megadott kockázati szintre (vagy magasabbra) történik, akkor a kockázatnak kitett, a felhasználói kockázati pontszám újraszámítása esetén további veszélyeztetett felhasználókat is kapni fog. Ha például egy felhasználó január 1-től közepes kockázatra vált, e-mailben értesítést fog kapni, ha a beállítások közepes kockázatú riasztásra vannak beállítva. Ha ugyanezen a felhasználónál ezt követően egy másik, a január 5. januári kockázati észlelési kockázattal is jár, és a felhasználói kockázati pontszám újra ki van számítva, és még közepes, egy másik e-mail-értesítést fog kapni. 
 
@@ -70,4 +70,4 @@ Konfigurálja a heti kivonatoló e-mailt **Azure portal** a Azure Portal **Azure
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

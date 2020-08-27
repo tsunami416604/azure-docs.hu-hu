@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 621d39a684495edadf6c3134635ade6b86a4ab77
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 747d780b8f679adf66810bdcdf6e9b263e8d241c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798227"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923755"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-create-datasets.md)
 > * [Aktuális verzió](concepts-datasets-linked-services.md)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 Ez a cikk ismerteti, hogy mely adatkészletek, hogyan vannak meghatározva JSON formátumban, és hogyan használják őket Azure Data Factory folyamatokban.
@@ -69,10 +69,10 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
-típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: DelimitedText, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Yes |
-schema | Az adatkészlet sémája a fizikai adattípust és-alakzatot jelöli. | No |
-typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál. A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Yes |
+name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
+típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: DelimitedText, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
+schema | Az adatkészlet sémája a fizikai adattípust és-alakzatot jelöli. | Nem |
+typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál. A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
 
 Az adatkészlet sémájának importálásakor kattintson a **séma importálása** gombra, és válassza az Importálás a forrásból vagy egy helyi fájlból lehetőséget. A legtöbb esetben közvetlenül a forrásból importálja a sémát. Ha azonban már van helyi sémafájl (egy parketta-fájl vagy egy, a fejlécekkel rendelkező CSV), akkor a Data Factory a fájlra alapozva kiválaszthatja a sémát.
 
@@ -123,7 +123,7 @@ Adatkészleteket az alábbi eszközök vagy SDK-k egyikével hozhat létre: [.NE
 - A házirend és a rendelkezésre állási tulajdonságok nem támogatottak az aktuális verzióban. A folyamat kezdő időpontja az [eseményindítótól](concepts-pipeline-execution-triggers.md)függ.
 - A hatókörrel rendelkező adatkészletek (a folyamatokban megadott adatkészletek) nem támogatottak az aktuális verzióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő oktatóanyag részletes útmutatást nyújt a folyamatok és adatkészletek létrehozásához ezen eszközök vagy SDK-k egyikének használatával.
 
 - [Gyors útmutató: adat-előállító létrehozása .NET használatával](quickstart-create-data-factory-dot-net.md)

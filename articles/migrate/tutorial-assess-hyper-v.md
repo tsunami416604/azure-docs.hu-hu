@@ -4,12 +4,12 @@ description: Ismerteti, hogyan értékelheti a helyszíni Hyper-V virtuális gé
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 7e05f1c53d5e0a613dea6bec4a2ff6d120310ac8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: eae7e2d371ed8156debe9ae24cf0744bd6273943
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931437"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950272"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>A Hyper-V virtuális gépek felmérése Azure Migrate kiszolgáló értékelésével
 
@@ -110,13 +110,13 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
         **Forgatókönyv** | **Letöltés** | **SHA256**
         --- | --- | ---
-        Hyper-V (10,4 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140422) |  6b18a5d59a803cfc7dba6c8356e307ed65f52a3255f1cf989d8e633102c7c038
+        Hyper-V (10,4 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - Azure Government esetén:
 
         **Forgatókönyv*** | **Letöltés** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
+        Hyper-V (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  8025f315e41c01ebdb4ffb1de87982ae6cc4ea7c4cce612612c7e90a44e79b44
 
 
 ### <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
@@ -343,7 +343,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
