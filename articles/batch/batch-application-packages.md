@@ -3,13 +3,13 @@ title: Alkalmazáscsomag üzembe helyezése számítási csomópontokon
 description: A Azure Batch alkalmazáscsomag funkciójának használatával egyszerűen kezelhet több alkalmazást és verziót a Batch számítási csomópontokon történő telepítéshez.
 ms.topic: how-to
 ms.date: 04/26/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147222"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922004"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -176,11 +176,11 @@ Ha a **frissítés**gombra kattint, megjelenik a **frissítési csomag** ablak. 
 
 ![Frissítési csomag panelje Azure Portal][11]
 
-**Szabályzat**
+**Törlés**
 
 Ha a **Törlés**gombra kattint, a rendszer megkéri, hogy erősítse meg a csomag verziójának törlését, és a Batch törli a csomagot az Azure Storage-ból. Ha törli az alkalmazás alapértelmezett verzióját, a rendszer eltávolítja az **alapértelmezett verzió** beállítását az alkalmazáshoz.
 
-![Alkalmazás törlése][12]
+![Alkalmazás törlése ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Alkalmazások telepítése számítási csomópontokon
 Most, hogy megismerte, hogyan kezelheti az alkalmazás-csomagokat a Azure Portalkal, megtudhatja, hogyan helyezheti üzembe őket a számítási csomópontokon, és hogyan futtathatja azokat batch-feladatokkal.
@@ -255,7 +255,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`és `version` olyan értékek, amelyek megfelelnek az üzembe helyezéshez megadott alkalmazás-és csomag-verziónak. Ha például az alkalmazás- *turmixgép* 2,7-es verzióját kell telepíteni Windows-csomópontokon, a feladat parancssora ezt a környezeti változót fogja használni a fájlokhoz való hozzáféréshez:
+`APPLICATIONID` és `version` olyan értékek, amelyek megfelelnek az üzembe helyezéshez megadott alkalmazás-és csomag-verziónak. Ha például az alkalmazás- *turmixgép* 2,7-es verzióját kell telepíteni Windows-csomópontokon, a feladat parancssora ezt a környezeti változót fogja használni a fájlokhoz való hozzáféréshez:
 
 ```
 Windows:

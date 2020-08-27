@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130806"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928836"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
 
 Az Azure Cognitive Search-ban a lekérdezés egy kerekítési művelet teljes leírása. A kérelemben vannak olyan paraméterek, amelyek végrehajtási utasításokat biztosítanak a motorhoz, valamint a válasznak megfelelő paramétereket. Meghatározatlan ( `search=*` ), nem felel meg a feltételeknek, és null vagy alapértelmezett paramétereket használ, a lekérdezés teljes szöveges keresési műveletként hajtja végre az összes kereshető mezőt, így tetszőleges sorrendben adja vissza a nem megfelelő eredményt.
 
-Az alábbi példa egy, a [Rest APIban](https://docs.microsoft.com/rest/api/searchservice/search-documents)létrehozott reprezentatív lekérdezés. Ez a példa a [Hotels bemutató indexét](search-get-started-portal.md) célozza meg, és általános paramétereket tartalmaz, így megtalálhatja, hogy a lekérdezés hogyan néz ki.
+Az alábbi példa egy, a [Rest APIban](/rest/api/searchservice/search-documents)létrehozott reprezentatív lekérdezés. Ez a példa a [Hotels bemutató indexét](search-get-started-portal.md) célozza meg, és általános paramétereket tartalmaz, így megtalálhatja, hogy a lekérdezés hogyan néz ki.
 
 ```
 {
@@ -55,7 +55,7 @@ Az Azure Cognitive Search-ban a lekérdezés-végrehajtás mindig egy indexen al
 
 A kód megírása előtt a lekérdezési eszközök segítségével megismerheti a szintaxist, és kísérletezhet a különböző paraméterekkel. A leggyorsabb módszer a beépített portál eszköz, a [Search Explorer](search-explorer.md).
 
-Ha követte ezt a rövid útmutatót a [Hotels bemutató index létrehozásához](search-get-started-portal.md), a lekérdezési karakterláncot beillesztheti az Intéző címsorába az első lekérdezés futtatásához:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+Ha követte ezt a rövid útmutatót a [Hotels bemutató index létrehozásához](search-get-started-portal.md), a lekérdezési karakterláncot beillesztheti az Intéző címsorába az első lekérdezés futtatásához: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>A lekérdezési műveletek engedélyezése az index alapján
 
@@ -65,7 +65,7 @@ Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, ho
 
 ![A szállodai minta index-definíciója](./media/search-query-overview/hotel-sample-index-definition.png "A szállodai minta index-definíciója")
 
-A fenti képernyőkép a Hotels-minta index-attribútumainak részleges listája. A teljes index séma a portálon tekinthető meg. További információ az index attribútumairól: [create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
+A fenti képernyőkép a Hotels-minta index-attribútumainak részleges listája. A teljes index séma a portálon tekinthető meg. További információ az index attribútumairól: [create index REST API](/rest/api/searchservice/create-index).
 
 > [!Note]
 > Egyes lekérdezési funkciók esetében a teljes indexre van engedélyezve, nem pedig a mező alapján. Ezek a képességek többek között a következők: [szinonimák térképek](search-synonyms.md), [Egyéni elemzők](index-add-custom-analyzers.md), [javaslati szerkezetek (automatikus kiegészítés és javasolt lekérdezések esetén)](index-add-suggesters.md), [a rangsorolási eredmények pontozási logikája](index-add-scoring-profiles.md).
@@ -76,24 +76,24 @@ A lekérdezések mindig egyetlen indexre vannak irányítva. Az indexek nem csat
 
 A lekérdezési kérelemhez szükséges elemek a következő összetevőket tartalmazzák:
 
-+ A szolgáltatási végpont és az indexelési dokumentumok gyűjteménye rögzített és felhasználó által definiált összetevőket tartalmazó URL-címként kifejezve:**`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`**(Csak REST) szükséges, mert az API több verziója mindig elérhető. 
++ A szolgáltatási végpont és az indexelési dokumentumok gyűjteménye rögzített és felhasználó által definiált összetevőket tartalmazó URL-címként kifejezve: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Csak REST) szükséges, mert az API több verziója mindig elérhető. 
 + **`api-key`**, vagy egy lekérdezési vagy felügyeleti API-kulcs, hitelesíti a kérést a szolgáltatásnak.
 + **`queryType`**(egyszerű vagy teljes), amely kihagyható, ha a beépített alapértelmezett egyszerű szintaxist használja.
 + **`search`** vagy **`filter`** adja meg az egyeztetési feltételeket, amelyek nem adhatók meg, ha üres keresést szeretne végezni. Mindkét lekérdezési típust az egyszerű elemző is tárgyalja, de a speciális lekérdezésekhez a keresési paraméter szükséges a komplex lekérdezési kifejezések átadásához.
 
-Az összes többi keresési paraméter megadása nem kötelező. Az attribútumok teljes listájáért lásd: [index létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). A paraméterek a feldolgozás során való használatának alaposabb megismeréséhez lásd: [Hogyan működik a teljes szöveges keresés az Azure Cognitive Searchban](search-lucene-query-architecture.md).
+Az összes többi keresési paraméter megadása nem kötelező. Az attribútumok teljes listájáért lásd: [index létrehozása (REST)](/rest/api/searchservice/create-index). A paraméterek a feldolgozás során való használatának alaposabb megismeréséhez lásd: [Hogyan működik a teljes szöveges keresés az Azure Cognitive Searchban](search-lucene-query-architecture.md).
 
 ## <a name="choose-apis-and-tools"></a>API-k és eszközök kiválasztása
 
 A következő táblázat a lekérdezések elküldéséhez szükséges API-kat és eszköz-alapú megközelítéseket sorolja fel.
 
-| Módszertan | Description |
+| Módszertan | Leírás |
 |-------------|-------------|
 | [Keresési ablak (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
 | [Poster vagy más REST-eszközök](search-get-started-postman.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API az Azure Cognitive Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérések fejlécét és törzsét a kérelmek Azure Cognitive Searchba való küldéséhez.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Dokumentumok keresése (REST API)](/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Válasszon elemzőt: Simple | teljes
 
@@ -123,7 +123,7 @@ Az Azure Cognitive Search a lekérdezési típusok széles körét támogatja.
 |------------|--------|-------------------------------|
 | Szabad formátumú szöveges keresés | Keresési paraméter és vagy elemző| A teljes szöveges keresés egy vagy több kifejezést keres az index összes *kereshető* mezőjében, és úgy működik, ahogyan a keresőmotor, például a Google vagy a Bing működéséhez. A bevezetés példája a teljes szöveges keresés.<br/><br/>A teljes szöveges keresés a lexikális analízis használatával a standard Lucene Analyzer (alapértelmezés szerint) és az összes kifejezés, a leállítási szavak, például a "The". Felülbírálhatja az alapértelmezettet a [nem angol nyelvű elemzők](index-add-language-analyzers.md#language-analyzer-list) , illetve a lexikális analízist módosító [speciális nyelvtől független elemzők](index-add-custom-analyzers.md#AnalyzerTable) használatával. Példa egy [kulcsszóra](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , amely egy mező teljes tartalmát egyetlen tokenként kezeli. Ez hasznos lehet például a zip-kódok, az azonosítók és a termékek neveihez. | 
 | Szűrt keresés | [OData szűrési kifejezés](query-odata-filter-orderby-syntax.md) és vagy elemző | A szűrési lekérdezések egy logikai kifejezést értékelnek ki az index összes *szűrhető* mezőjében. A kereséstől eltérően a szűrő lekérdezése egy mező pontos tartalmának felel meg, beleértve a kis-és nagybetűk megkülönböztetését is a karakterlánc mezőiben. Egy másik különbség, hogy a szűrési lekérdezések OData szintaxisban vannak kifejezve. <br/>[Példa szűrési kifejezésre](search-query-simple-examples.md#example-3-filter-queries) |
-| Földrajzi keresés | [EDM. geographypoint adattípuson típus](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a mezőn, szűrési kifejezés és vagy elemző | Egy EDM rendelkező mezőben tárolt koordinátákat a rendszer a "keresés a közelben" vagy a térképes keresési vezérlőkben használja. <br/>[Földrajzi keresés – példa](search-query-simple-examples.md#example-5-geo-search)|
+| Földrajzi keresés | [EDM. geographypoint adattípuson típus](/rest/api/searchservice/supported-data-types) a mezőn, szűrési kifejezés és vagy elemző | Egy EDM rendelkező mezőben tárolt koordinátákat a rendszer a "keresés a közelben" vagy a térképes keresési vezérlőkben használja. <br/>[Földrajzi keresés – példa](search-query-simple-examples.md#example-5-geo-search)|
 | Tartomány keresése | szűrő kifejezés és egyszerű elemző | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. <br/>[Tartomány szűrője – példa](search-query-simple-examples.md#example-4-range-filters) | 
 | [Mező szerinti keresés](query-lucene-syntax.md#bkmk_fields) | Keresési paraméter és teljes elemző | Hozzon létre egy összetett lekérdezési kifejezést, amely egyetlen mezőt céloz meg. <br/>[Mező szerinti keresés – példa](search-query-lucene-examples.md#example-2-fielded-search) |
 | [fuzzy keresés](query-lucene-syntax.md#bkmk_fuzzy) | Keresési paraméter és teljes elemző | Megegyezik a hasonló szerkezettel vagy helyesírással kapcsolatos feltételekkel. <br/>[Fuzzy keresési példa](search-query-lucene-examples.md#example-3-fuzzy-search) |
@@ -169,5 +169,5 @@ Az Azure Cognitive Searchban a keresési lekérdezésnek megfelelő keresési er
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)
-+ [Lekérdezés a .NET-ben](search-query-dotnet.md)
-+ [A lekérdezés a REST-ben](search-create-index-rest-api.md)
++ [Lekérdezés a .NET-ben](./search-get-started-dotnet.md)
++ [A lekérdezés a REST-ben](./search-get-started-powershell.md)

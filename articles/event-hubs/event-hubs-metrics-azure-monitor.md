@@ -3,12 +3,12 @@ title: Metrikák a Azure Monitor-ban – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk tájékoztatást nyújt arról, hogyan használható az Azure monitoring az Azure-Event Hubs figyeléséhez
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074864"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931148"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-metrikák az Azure Monitorban
 
@@ -50,7 +50,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | Bejövő kérelmek  | Az Azure Event Hubs szolgáltatásnak küldött kérések száma egy adott időszakban. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName |
 | Sikeres kérelmek    | Az Azure Event Hubs szolgáltatásnak küldött sikeres kérések száma egy adott időszakban. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName |
@@ -60,13 +60,13 @@ Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
 ## <a name="throughput-metrics"></a>Átviteli sebesség mérőszámai
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Szabályozott kérelmek |Az átviteli egység felhasználási korlátjának túllépése miatt szabályozott kérések száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
 ## <a name="message-metrics"></a>Üzenet metrikái
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Bejövő üzenetek |A megadott időszakban Event Hubs küldött események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Kimenő üzenetek |A Event Hubsból beolvasott események vagy üzenetek száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -75,7 +75,7 @@ Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Aktív kapcsolatok |A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -85,7 +85,7 @@ Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
 Az Event hubok rögzítési funkciójának engedélyezésével figyelheti Event Hubs rögzítési metrikáit. A következő mérőszámok leírják, hogy a rögzítés engedélyezve legyen.
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Rögzítési hátralék |A kiválasztott célhoz még nem rögzített bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Rögzített üzenetek |A kiválasztott célhelyre rögzített üzenetek vagy események száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -95,7 +95,7 @@ Az Event hubok rögzítési funkciójának engedélyezésével figyelheti Event 
 
 Az Azure Event Hubs a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs támogatja az Event hub-entitásokat a névtér alatt.|
 
@@ -120,10 +120,10 @@ Abban az esetben, ha egy SIEM-eszköz egy esemény központból használ naplóz
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 
 - Bevezetés az Event Hubs használatába oktatóanyag
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 * [Az Event Hubsot használó mintaalkalmazások](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

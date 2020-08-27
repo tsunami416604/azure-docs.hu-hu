@@ -3,14 +3,14 @@ title: 'Gyors útmutató: az SDK használata a Tudásbázis létrehozásához é
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet tudásbázist az ügyfél-SDK használatával.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: e6a8a6d0688f362f934d1439c1ca0f6072acf6d6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 60ba7d18e9da791373914fef7962e32396a489f0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872922"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934174"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Gyors útmutató: QnA Maker ügyféloldali kódtár
 
@@ -28,14 +28,14 @@ Ismerkedjen meg az QnA Maker ügyféloldali kódtár használatába. Az alábbi 
 [!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Oktatóanyag: a Tudásbázis tesztelése batch-fájllal](./batch-testing.md)

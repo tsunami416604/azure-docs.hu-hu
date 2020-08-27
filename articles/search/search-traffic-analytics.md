@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2a65d31bd7cde0a1f456212a19c06f6b940ce602
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420073"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922735"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetria-adatok gyűjtése a keresési forgalom elemzéséhez
 
 A Search Traffic Analytics olyan minta, amellyel telemetria gyűjthet a felhasználói interakciókkal kapcsolatban az Azure Cognitive Search-alkalmazással, például a felhasználó által kezdeményezett Click Events és Keyboard Inputs szolgáltatással. Ezen információk alapján meghatározhatja a keresési megoldás hatékonyságát, beleértve a népszerű keresési kifejezéseket, az átkattintási arányt, valamint azt, hogy mely lekérdezési bemenetek nulla eredményt adnak.
 
-Ez a minta a felhasználói adatok gyűjtéséhez [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ( [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/)) függőségét veszi igénybe. Ehhez a jelen cikkben leírtak szerint hozzá kell adnia a rendszerállapotot az ügyfél kódjához. Végezetül szüksége lesz egy jelentéskészítési mechanizmusra az adatelemzéshez. Javasoljuk, hogy Power BI de használhatja az alkalmazás irányítópultját vagy bármely olyan eszközt, amely kapcsolódik Application Insightshoz.
+Ez a minta a felhasználói adatok gyűjtéséhez [Application Insights](../azure-monitor/app/app-insights-overview.md) ( [Azure monitor](../azure-monitor/index.yml)) függőségét veszi igénybe. Ehhez a jelen cikkben leírtak szerint hozzá kell adnia a rendszerállapotot az ügyfél kódjához. Végezetül szüksége lesz egy jelentéskészítési mechanizmusra az adatelemzéshez. Javasoljuk, hogy Power BI de használhatja az alkalmazás irányítópultját vagy bármely olyan eszközt, amely kapcsolódik Application Insightshoz.
 
 > [!NOTE]
 > A cikkben ismertetett minta speciális forgatókönyvekre és az ügyfélhez hozzáadott kód által generált kattintássorozat-adatokra vonatkozik. Ezzel szemben a szolgáltatási naplók egyszerűen állíthatók be, számos mérőszámot biztosítanak, és a portálon a kód nélkül is elvégezhető. A naplózás engedélyezése minden esetben ajánlott. További információ: a [naplófájlok adatainak összegyűjtése és elemzése](search-monitor-logs.md).
@@ -43,9 +43,9 @@ Az Azure Cognitive Search szolgáltatásának [portál](https://portal.azure.com
 
 ## <a name="1---set-up-application-insights"></a>1 – Application Insights beállítása
 
-Válasszon ki egy meglévő Application Insights-erőforrást, vagy [hozzon létre egyet](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) , ha még nem rendelkezik ilyennel. Ha a keresés Traffic Analytics lapot használja, akkor másolhatja az alkalmazás által a Application Insightshoz való csatlakozáshoz szükséges kialakítási kulcsot.
+Válasszon ki egy meglévő Application Insights-erőforrást, vagy [hozzon létre egyet](../azure-monitor/app/create-new-resource.md) , ha még nem rendelkezik ilyennel. Ha a keresés Traffic Analytics lapot használja, akkor másolhatja az alkalmazás által a Application Insightshoz való csatlakozáshoz szükséges kialakítási kulcsot.
 
-Ha Application Insights erőforrással rendelkezik, az alkalmazás regisztrálásához kövesse [a támogatott nyelvekre és platformokra vonatkozó utasításokat](https://docs.microsoft.com/azure/azure-monitor/app/platforms) . A regisztráció egyszerűen felveszi a rendszerállapot-kulcsot Application Insightsról a kódra, amely beállítja a társítást. A kulcsot a portálon, illetve a keresés Traffic Analytics oldalon találhatja meg, amikor kijelöl egy meglévő erőforrást.
+Ha Application Insights erőforrással rendelkezik, az alkalmazás regisztrálásához kövesse [a támogatott nyelvekre és platformokra vonatkozó utasításokat](../azure-monitor/app/platforms.md) . A regisztráció egyszerűen felveszi a rendszerállapot-kulcsot Application Insightsról a kódra, amely beállítja a társítást. A kulcsot a portálon, illetve a keresés Traffic Analytics oldalon találhatja meg, amikor kijelöl egy meglévő erőforrást.
 
 A Visual Studio-projektek egyes típusaihoz tartozó parancsikonok az alábbi lépésekben láthatók. Létrehoz egy erőforrást, és mindössze néhány kattintással regisztrálja az alkalmazást.
 
@@ -55,7 +55,7 @@ A Visual Studio-projektek egyes típusaihoz tartozó parancsikonok az alábbi l�
 
 1. Az alkalmazás regisztrálása Microsoft-fiók, Azure-előfizetés és egy Application Insights-erőforrás biztosításával (az új erőforrás az alapértelmezett). Kattintson a **Regisztrálás** parancsra.
 
-Ezen a ponton az alkalmazás figyelésre van beállítva, ami azt jelenti, hogy az összes oldal terhelését az alapértelmezett metrikák követik nyomon. További információ az előző lépésekről: [Application Insights kiszolgálóoldali telemetria engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio).
+Ezen a ponton az alkalmazás figyelésre van beállítva, ami azt jelenti, hogy az összes oldal terhelését az alapértelmezett metrikák követik nyomon. További információ az előző lépésekről: [Application Insights kiszolgálóoldali telemetria engedélyezése](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
 ## <a name="2---add-instrumentation"></a>2 – rendszerállapot-Hozzáadás
 
@@ -63,11 +63,11 @@ Ez a lépés a saját keresési alkalmazásának eszköze, amely a fenti lépés
 
 ### <a name="step-1-create-a-telemetry-client"></a>1. lépés: telemetria-ügyfél létrehozása
 
-Hozzon létre egy objektumot, amely eseményeket küld Application Insightsnak. A böngészőben futtatott kiszolgálóoldali alkalmazás kódjához vagy ügyféloldali kódjához is hozzáadhat rendszerállapot-kódot, amelyet C#-ként és JavaScript-változatként (más nyelveken pedig a [támogatott platformok és keretrendszerek](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)teljes listájában talál). Válassza ki azt a megközelítést, amely megadja a kívánt mélységű információt.
+Hozzon létre egy objektumot, amely eseményeket küld Application Insightsnak. A böngészőben futtatott kiszolgálóoldali alkalmazás kódjához vagy ügyféloldali kódjához is hozzáadhat rendszerállapot-kódot, amelyet C#-ként és JavaScript-változatként (más nyelveken pedig a [támogatott platformok és keretrendszerek](../azure-monitor/app/platforms.md)teljes listájában talál). Válassza ki azt a megközelítést, amely megadja a kívánt mélységű információt.
 
 A kiszolgálóoldali telemetria az alkalmazás rétegében rögzítik a mérőszámokat, például a felhőben webszolgáltatásként futó alkalmazásokban, vagy egy vállalati hálózaton lévő helyszíni alkalmazásként. A kiszolgálóoldali telemetria rögzítik a keresést, és rákattintanak az események elemre, egy dokumentum pozíciója az eredmények között, és a lekérdezési adatok, de az adatgyűjtés hatóköre az adott rétegen elérhető információk körébe tartozik.
 
-Előfordulhat, hogy az ügyfélen további kód szerepel, amely a lekérdezések bemeneteit, navigálást vagy kontextust tartalmaz (például a kezdőlapról vagy a termék oldaláról kezdeményezett lekérdezések). Ha ez leírja a megoldást, az ügyféloldali rendszerállapot-kialakítást is igénybe vehet, hogy a telemetria a további részleteket tükrözze. A további részletek gyűjtésének módja meghaladja a minta hatókörét, de további útmutatást a [weblapok Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) áttekintése című témakörben olvashat. 
+Előfordulhat, hogy az ügyfélen további kód szerepel, amely a lekérdezések bemeneteit, navigálást vagy kontextust tartalmaz (például a kezdőlapról vagy a termék oldaláról kezdeményezett lekérdezések). Ha ez leírja a megoldást, az ügyféloldali rendszerállapot-kialakítást is igénybe vehet, hogy a telemetria a további részleteket tükrözze. A további részletek gyűjtésének módja meghaladja a minta hatókörét, de további útmutatást a [weblapok Application Insights](../azure-monitor/app/javascript.md#explore-browserclient-side-data) áttekintése című témakörben olvashat. 
 
 **A C# használata**
 
@@ -234,10 +234,10 @@ Az alábbi képernyőfelvételen látható, hogy a beépített jelentések hogya
 
 ![Power BI irányítópult az Azure Cognitive Search](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Power BI irányítópult az Azure Cognitive Search")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A keresési alkalmazás hatékony és átgondolt adatainak beszerzése a keresési szolgáltatással.
 
-A [Application Insightsról](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) további információt talál, és megtekintheti a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-insights/) , ahol további információkat találhat a különböző szolgáltatási szintjeiről.
+A [Application Insightsról](../azure-monitor/app/app-insights-overview.md) további információt talál, és megtekintheti a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-insights/) , ahol további információkat találhat a különböző szolgáltatási szintjeiről.
 
-További információ a csodálatos jelentések létrehozásáról. A részletekért tekintse meg [a Power bi Desktop első lépéseit](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) ismertető témakört.
+További információ a csodálatos jelentések létrehozásáról. A részletekért tekintse meg [a Power bi Desktop első lépéseit](/power-bi/fundamentals/desktop-getting-started) ismertető témakört.

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488205"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929788"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Gyors útmutató: lekérdezések futtatása a portálon a keresési tallózó használatával
 
 A **Search Explorer** egy beépített lekérdezési eszköz, amellyel lekérdezéseket lehet futtatni az Azure Cognitive Search keresési indexében. Ez az eszköz megkönnyíti a lekérdezési szintaxis, a lekérdezési vagy szűrési kifejezés tesztelését vagy az Adatfrissítés megerősítését, ha ellenőrzi, hogy létezik-e új tartalom az indexben.
 
-Ez a rövid útmutató egy meglévő indexet használ a Search Explorer bemutatására. A kérések a [keresési REST API](https://docs.microsoft.com/rest/api/searchservice/)alapján lettek kialakítva, és JSON-dokumentumként visszaadott válaszokat kapnak.
+Ez a rövid útmutató egy meglévő indexet használ a Search Explorer bemutatására. A kérések a [keresési REST API](/rest/api/searchservice/)alapján lettek kialakítva, és JSON-dokumentumként visszaadott válaszokat kapnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -133,7 +133,7 @@ Ha a szabadszöveges keresés helyett pontos feltételeket szeretne megadni, has
 
    ![OrderBy kifejezés](./media/search-explorer/search-explorer-example-ordery.png "Rendezési sorrend módosítása")
 
-**$Filter** és **$OrderBy** kifejezések is OData-konstrukciók. További információk: [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+**$Filter** és **$OrderBy** kifejezések is OData-konstrukciók. További információk: [OData-szűrőszintaxis](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="start-search-explorer"></a>
 
@@ -147,19 +147,19 @@ Ebben a rövid útmutatóban a **keresési tallózó** használatával kérdezet
 
 + A kereskedelmi webböngészőben megadható, a szabad formátumú lekérdezések a végfelhasználói élmény teszteléséhez is hasznosak lehetnek. Tegyük fel például, hogy a beépített Realestate-minta indexe a "Seattle Apartments Lake Washington" kifejezést adja meg, majd a CTRL-F billentyűkombinációval megkeresheti a kifejezéseket a keresési eredmények között. 
 
-+ A lekérdezési és szűrési kifejezések az Azure Cognitive Search által támogatott szintaxissal vannak tagolva. Az alapértelmezett érték egy [egyszerű szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), de igény szerint a [teljes Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) is használhatja nagyobb teljesítményű lekérdezésekhez. A [szűrési kifejezések](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData szintaxis.
++ A lekérdezési és szűrési kifejezések az Azure Cognitive Search által támogatott szintaxissal vannak tagolva. Az alapértelmezett érték egy [egyszerű szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search), de igény szerint a [teljes Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) is használhatja nagyobb teljesítményű lekérdezésekhez. A [szűrési kifejezések](/rest/api/searchservice/odata-expression-syntax-for-azure-search) egy OData szintaxis.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a lekérdezési struktúrákról és a szintaxisról, a Poster vagy egy azzal egyenértékű eszköz használatával hozzon létre lekérdezési kifejezéseket, amelyek az API több részét hasznosítják. A [keresési REST API](https://docs.microsoft.com/rest/api/searchservice/) különösen hasznos a tanuláshoz és a feltáráshoz.
+Ha többet szeretne megtudni a lekérdezési struktúrákról és a szintaxisról, a Poster vagy egy azzal egyenértékű eszköz használatával hozzon létre lekérdezési kifejezéseket, amelyek az API több részét hasznosítják. A [keresési REST API](/rest/api/searchservice/) különösen hasznos a tanuláshoz és a feltáráshoz.
 
 > [!div class="nextstepaction"]
 > [Alapszintű lekérdezés létrehozása a Poster-ben](search-query-simple-examples.md)

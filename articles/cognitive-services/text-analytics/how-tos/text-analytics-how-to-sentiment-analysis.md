@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: e7dca6f74145d1ea50c5a9bfc57b52e1cbdfcab3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869830"
+ms.locfileid: "88933018"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
@@ -40,7 +40,7 @@ A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzi
 
 A (z) v3 Hangulatelemzés a szövegre, a mondatok és a dokumentumok szintjén visszaadott szövegre vonatkozik, és mindegyikhez megbízhatósági pontszám szükséges. 
 
-A Címkék: `positive` , `negative` és `neutral` . A dokumentum szintjén a `mixed` hangulat felirat is visszaadható. A dokumentum hangulatát a következők határozzák meg:
+A feliratok *pozitívak*, *negatívok*és *semlegesek*. A dokumentum szintjén a *vegyes* hangulat felirat is visszaadható. A dokumentum hangulatát a következők határozzák meg:
 
 | Mondat hangulata                                                                            | Visszaadott dokumentum címkéje |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ A Címkék: `positive` , `negative` és `neutral` . A dokumentum szintjén a `mi
 | Legalább egy `negative` mondat és legalább egy `positive` mondat szerepel a dokumentumban.    | `mixed`                 |
 | A dokumentumban szereplő összes mondat `neutral` .                                                  | `neutral`               |
 
-A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. Az egyes mondatokon belüli (nem dokumentum) megbízhatósági pontszámok legfeljebb 1 értékkel adhatók hozzá.
+A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. Minden egyes dokumentumhoz vagy mondathoz a címkékhez kapcsolódó előre jelzett pontszámok (pozitív, negatív és semleges) legfeljebb 1 adható hozzá.
 
 ### <a name="opinion-mining"></a>Vélemény bányászata
 
@@ -278,7 +278,7 @@ A Hangulatelemzés v 3.1 az 3,0-es **verzióban** található Response objektumo
 
 ---
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben a Text Analytics API segítségével megtanulta az érzelmek elemzéséhez szükséges fogalmakat és munkafolyamatokat. Összegezve:
 

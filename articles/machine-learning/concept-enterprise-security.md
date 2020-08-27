@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366927"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918587"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -91,7 +91,7 @@ A felügyelt identitásokkal kapcsolatos további információkért lásd: [fel�
 | Erőforrás | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő |
-| Tárfiók | Storage blob adatközreműködői |
+| Tárfiók | Storage-blobadatok közreműködője |
 | Key Vault | Hozzáférés az összes kulcshoz, titokhoz, tanúsítványhoz |
 | Azure Container Registry | Közreműködő |
 | A munkaterületet tartalmazó erőforráscsoport | Közreműködő |
@@ -119,19 +119,14 @@ Az Azure Private-hivatkozást is engedélyezheti a munkaterülethez. A privát h
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
 > [!IMPORTANT]
-> Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) állítsa be. 
+> Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) állítsa be. A `hbi_workspace` jelző csak akkor állítható be, ha létrehoznak egy munkaterületet. A meglévő munkaterületek esetében nem módosítható.
 
-A `hbi_workspace` jelző szabályozza a Microsoft által diagnosztikai célokra gyűjtött adatok mennyiségét, és lehetővé teszi a további titkosítást a Microsoft által felügyelt környezetekben. Emellett a következő műveleteket is lehetővé teszi:
+A `hbi_workspace` jelző szabályozza a Microsoft által [diagnosztikai célokra gyűjtött adatok](#microsoft-collected-data) mennyiségét, és lehetővé teszi a [további titkosítást a Microsoft által felügyelt környezetekben](../security/fundamentals/encryption-atrest.md). Emellett a következő műveleteket is lehetővé teszi:
 
 * Megkezdi a helyi lemez titkosítását a Azure Machine Learning számítási fürtben, ha nem hozott létre egy korábbi fürtöt az előfizetésben. Más esetben egy támogatási jegyet kell létrehoznia, amely lehetővé teszi a számítási fürtökhöz tartozó kaparós lemez titkosítását 
 * Kiüríti az ideiglenes lemezt a futtatások között
 * Biztonságosan továbbítja a Storage-fiók, a tároló-beállításjegyzék és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a kulcstartó használatával a számítási fürtökbe
 * Engedélyezi az IP-szűrést annak érdekében, hogy a mögöttes batch-készletek ne legyenek meghívva a AzureMachineLearningService-től eltérő külső szolgáltatásokkal.
-
-> [!WARNING]
-> A `hbi_workspace` jelző csak akkor állítható be, ha létrehoznak egy munkaterületet. A meglévő munkaterületek esetében nem módosítható.
-
-További információ arról, hogyan működik a titkosítás az Azure-ban: inaktív [Azure-adattitkosítás](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -204,7 +199,7 @@ A központi telepítési konfiguráció létrehozásával és használatával ka
 
 * [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) hivatkozás
 * [Az üzembe helyezés módja és helye](how-to-deploy-and-where.md)
-* [Modell üzembe helyezése Azure Container Instances](how-to-deploy-azure-container-instance.md)
+* [Modell üzembe helyezése az Azure Container Instances szolgáltatásban](how-to-deploy-azure-container-instance.md)
 
 Az ACI-val rendelkező, ügyfél által felügyelt kulcs használatával kapcsolatos további információkért lásd: [adatok titkosítása ügyfél által felügyelt kulccsal](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key).
 
@@ -325,7 +320,7 @@ Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) 
 
 [![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
-### <a name="training"></a>Oktatás
+### <a name="training"></a>Képzés
 
 Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d00fa5cf475eb2311bfa4b6f7dbe7dba70d080fd
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: b5f3a6b8b8a04cca9543a5343d4496524a166c39
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642333"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919607"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: Függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -52,35 +52,35 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), amelyet a Windows a NPM igényel. Csak [az aktív LTS-és karbantartási LTS-verziók](https://nodejs.org/about/releases/). A `node --version` parancs használatával vizsgálja meg a verziót.
     A macOS és Linux rendszereken a helyi fejlesztéshez nem szükséges.   
-::: zone-end  
+::: zone-end   
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót.
-::: zone-end 
++ [Node.js](https://nodejs.org/), aktív LTS-és karbantartási LTS-verziók (10.14.1 ajánlott). A `node --version` parancs használatával vizsgálja meg a verziót.  
+::: zone-end  
 ::: zone pivot="programming-language-python"
 + [Python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/) Azure functions (x64) támogatja.
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ A [.NET Core SDK 3,1](https://www.microsoft.com/net/download)  
++ Mind a [.net core 3,1](https://www.microsoft.com/net/download) , mind a [.net Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)  
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 + A [Java fejlesztői csomag](https://aka.ms/azure-jdks)8-as verziója.
 
 + [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 ::: zone-end  
-+ [Visual Studio Code](https://code.visualstudio.com/) az egyik [támogatott platformon](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
++ [Visual Studio Code](https://code.visualstudio.com/) az egyik [támogatott platformon](https://code.visualstudio.com/docs/supporting/requirements#_platforms).    
 ::: zone pivot="programming-language-csharp"  
 + A Visual Studio Code-hoz készült [C#-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .  
 ::: zone-end  
-::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"  
 + A [Python-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a Visual Studio Code-hoz.  
 ::: zone-end  
-::: zone pivot="programming-language-powershell"
-+ A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)-hoz készült PowerShell-bővítmény. 
+::: zone pivot="programming-language-powershell"  
++ A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)-hoz készült PowerShell-bővítmény.  
 ::: zone-end  
-::: zone pivot="programming-language-java"  
-+ A [Java-bővítmény csomagja](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone pivot="programming-language-java"   
++ A [Java-bővítmény csomagja](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
 ::: zone-end  
 
 + A Visual Studio Code [Azure functions bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) . 
@@ -190,7 +190,7 @@ Ellenkező esetben a következő lépésekkel törölheti a Function alkalmazás
 
 A functions-költségekkel kapcsolatos további tudnivalókért lásd: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 

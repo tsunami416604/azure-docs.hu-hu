@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd00c357a422a407a3367e45531e3443577f9bec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171941"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923245"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
 
@@ -50,7 +50,7 @@ A kiindulási pont egy olyan alkalmazási oldal, amely sokoldalú navigálást t
 1. Az Azure Cognitive Searchba eljuttatott lekérdezés megadja a csiszolt navigációs szerkezetet egy vagy több aspektus lekérdezési paraméterrel. Előfordulhat például, hogy a lekérdezés tartalmazhat `facet=Rating` , például egy `:values` vagy `:sort` lehetőséggel, hogy tovább pontosítsa a bemutatót.
 2. A megjelenítési réteg olyan keresési oldalt jelenít meg, amely sokoldalú navigálást tesz lehetővé a kérésben megadott aspektusok használatával.
 3. A minősítést tartalmazó, sokoldalú navigációs struktúra esetén a "4" gombra kattintva jelezheti, hogy csak a 4-es vagy magasabb minősítésű termékek jelennek meg. 
-4. Válaszként az alkalmazás egy lekérdezést küld, amely tartalmazza a következőket:`$filter=Rating ge 4` 
+4. Válaszként az alkalmazás egy lekérdezést küld, amely tartalmazza a következőket: `$filter=Rating ge 4` 
 5. A megjelenítési réteg frissíti az oldalt, amely egy csökkentett eredményhalmazt mutat, amely csak azokat az elemeket tartalmazza, amelyek megfelelnek az új feltételeknek (ebben az esetben a 4. és az összes termék).
 
 A dimenzió egy lekérdezési paraméter, de nem tévesztendő össze a lekérdezési bevitelsel. A lekérdezésben soha nem használjuk kiválasztási feltételként. Ehelyett a dimenzió lekérdezési paramétereit a válaszban visszakapott navigációs struktúra bemenetként kell megtekintenie. Az Azure Cognitive Search kiértékeli, hogy az egyes dimenziós lekérdezési paraméterek közül hány dokumentum szerepel az egyes dimenziós értékek részleges eredményei között.
@@ -63,7 +63,7 @@ Az alkalmazás kódjában a minta a dimenzió lekérdezési paramétereit haszn�
 
 ### <a name="query-basics"></a>Lekérdezés alapjai
 
-Az Azure Cognitive Searchban a kérelem egy vagy több lekérdezési paraméteren keresztül van megadva (lásd a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a leíráshoz című témakört). A lekérdezési paraméterek egyike sem szükséges, de legalább egyet meg kell adni ahhoz, hogy egy lekérdezés érvényes legyen.
+Az Azure Cognitive Searchban a kérelem egy vagy több lekérdezési paraméteren keresztül van megadva (lásd a [dokumentumok keresése](/rest/api/searchservice/Search-Documents) a leíráshoz című témakört). A lekérdezési paraméterek egyike sem szükséges, de legalább egyet meg kell adni ahhoz, hogy egy lekérdezés érvényes legyen.
 
 A nem releváns találatok kiszűrésének lehetősége a következő kifejezések egyikén vagy mindkettőn keresztül érhető el:
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Egy dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól függően további paramétert adhat meg a vesszővel tagolt lista, amely a következőket tartalmazza:,, `count:<integer>` `sort:<>` `interval:<integer>` és `values:<list>` . A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
+Egy dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól függően további paramétert adhat meg a vesszővel tagolt lista, amely a következőket tartalmazza:,, `count:<integer>` `sort:<>` `interval:<integer>` és `values:<list>` . A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Cognitive Search API)](/rest/api/searchservice/Search-Documents) című témakört.
 
 Az egyes aspektusokkal együtt az alkalmazás által létrehozott kérelemnek olyan szűrőket is kell kiépítenie, amelyekkel szűkítheti a jelölt dokumentumok készletét egy adott dimenzió érték kiválasztása alapján. A bike Store-ban a sokoldalú Navigálás olyan kérdéseket *tesz elérhetővé, mint a színek, a gyártók és a különböző típusú kerékpárok típusai?*. A szűrés olyan kérdésekre ad választ, mint a *pontos kerékpárok piros, Mountain Bikes, ebben az árakban?*. Ha a "vörös" gombra kattint, hogy csak a vörös termékek jelenjenek meg, az alkalmazás által küldött következő lekérdezés tartalmazza a-t `$filter=Color eq 'Red'` .
 
@@ -299,7 +299,7 @@ Content type
 
 A navigációs fa minden egyes csiszolt mezőjénél van egy alapértelmezett korlát 10 értéknél. Ez az alapértelmezett beállítás a navigációs struktúrákra vonatkozik, mivel az értékek listáját kezelhető méretre tartja. Az alapértelmezett érték felülbírálásához rendeljen hozzá egy értéket.
 
-* `&facet=city,count:5`azt határozza meg, hogy csak a legfelső rangsorolt eredményekben található első öt város lesz visszaadva. Vegyünk példaként egy "repülőtér" keresési kifejezéssel és 32-es egyezéssel rendelkező mintát. Ha a lekérdezés azt adja meg `&facet=city,count:5` , csak a keresési eredményekben a legtöbb dokumentumot tartalmazó első öt egyedi város szerepel a dimenzió eredményei között.
+* `&facet=city,count:5` azt határozza meg, hogy csak a legfelső rangsorolt eredményekben található első öt város lesz visszaadva. Vegyünk példaként egy "repülőtér" keresési kifejezéssel és 32-es egyezéssel rendelkező mintát. Ha a lekérdezés azt adja meg `&facet=city,count:5` , csak a keresési eredményekben a legtöbb dokumentumot tartalmazó első öt egyedi város szerepel a dimenzió eredményei között.
 
 Figyelje meg, hogy különbséget tesz a dimenzió eredményei és a keresési eredmények között. A keresési eredmények az összes olyan dokumentum, amely megfelel a lekérdezésnek. A dimenziók eredményei az egyes dimenziók értékeinek felelnek meg. A példában a keresési eredmények közé tartoznak azok a városok neve, amelyek nem szerepelnek a Face besorolási listán (5 a példánkban). A sokoldalú Navigálás során kiszűrt eredmények láthatóvá válnak, ha törli a dimenziókat, vagy más aspektusokat választ a város mellett. 
 
@@ -319,7 +319,7 @@ Ha szűrőket ad hozzá egy sokoldalú lekérdezéshez, érdemes megtartania a F
 
 **Győződjön meg róla, hogy pontos dimenziók száma**
 
-Bizonyos körülmények között előfordulhat, hogy a dimenziók száma nem egyezik meg az eredményhalmaz értékével (lásd: részletes [Navigálás az Azure Cognitive Search (Microsoft Q&a kérdéses oldalon)](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
+Bizonyos körülmények között előfordulhat, hogy a dimenziók száma nem egyezik meg az eredményhalmaz értékével (lásd: részletes [Navigálás az Azure Cognitive Search (Microsoft Q&a kérdéses oldalon)](/answers/topics/azure-cognitive-search.html)).
 
 A metszeti architektúra miatt pontatlan lehet a dimenziók száma. Minden keresési indexnek több szegmense van, és az egyes szegmensek az első N aspektust jelentik a dokumentumok száma alapján, amelyet aztán egyetlen eredménybe egyesít. Ha egyes szegmensek több egyező értékkel rendelkeznek, míg mások kevesebbet tartalmaznak, előfordulhat, hogy bizonyos aspektusok hiányoznak, vagy az eredmények között szerepelnek.
 
@@ -333,12 +333,12 @@ A címkék általában a HTML-ben vagy az űrlapon vannak definiálva ( `index.c
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Szűrés tartomány alapján
-Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. A tartományok numerikus adatok és DateTime értékek esetén támogatottak. További információt a [keresési dokumentumok (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)egyes módszereiről itt olvashat.
+Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra vonatkozó követelmény. A tartományok numerikus adatok és DateTime értékek esetén támogatottak. További információt a [keresési dokumentumok (Azure Cognitive Search API)](/rest/api/searchservice/Search-Documents)egyes módszereiről itt olvashat.
 
 Az Azure Cognitive Search egyszerűsíti a tartomány-kialakítást azáltal, hogy két módszert biztosít a különböző számítási felépítéshez. Mindkét megközelítés esetében az Azure Cognitive Search létrehozza a megfelelő tartományokat a megadott bemenetek alapján. Ha például 10 | 20 | 30 tartomány értéket ad meg, akkor a automatikusan 0-10, 10-20, 20-30 tartományt hoz létre. Az alkalmazás opcionálisan eltávolíthatja az összes olyan intervallumot, amely üres. 
 
 **1. módszer: az intervallum paraméter használata**  
-Az $10-es számú érték megadásához a következőket kell megadnia:`&facet=price,interval:10`
+Az $10-es számú érték megadásához a következőket kell megadnia: `&facet=price,interval:10`
 
 **2. módszer: értéklista használata**  
 Numerikus adatok esetében az értékek listáját használhatja.  Vegye fontolóra egy mező dimenzióérték-tartományát, amely a `listPrice` következőképpen jelenik meg:
@@ -404,4 +404,3 @@ A részletes Navigálás tervezési alapelveivel kapcsolatos további informáci
 
 * [Tervezési minták: csiszolt navigáció](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [A részletes keresés megvalósítása során felmerülő előzetesek – 1. rész](https://articles.uie.com/faceted_search2/)
-

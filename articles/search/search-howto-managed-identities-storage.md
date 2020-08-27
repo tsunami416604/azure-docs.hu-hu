@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553080"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917975"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás (előzetes verzió) használatával
 
@@ -68,7 +68,7 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad a Stor
 
 ### <a name="3---create-the-data-source"></a>3 – az adatforrás létrehozása
 
-A [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Storage-fiók adatainak indexeléséhez a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
+A [REST API](/rest/api/searchservice/create-data-source), Azure Portal és a [.net SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) támogatja a felügyelt identitás-kapcsolatok karakterláncát. Az alábbi példa bemutatja, hogyan hozhat létre egy adatforrást egy Storage-fiók adatainak indexeléséhez a [REST API](/rest/api/searchservice/create-data-source) és egy felügyelt identitás-kapcsolódási karakterlánc használatával. A felügyelt identitás-kapcsolatok karakterlánc-formátuma megegyezik a REST API, a .NET SDK és a Azure Portal esetében.
 
 Egy Storage-fiókból való indexeléskor az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
@@ -83,7 +83,7 @@ Egy Storage-fiókból való indexeléskor az adatforrásnak a következő szüks
         * *ResourceId =/Subscriptions/**az előfizetés-azonosítóját****a/resourceGroups//Providers/Microsoft.Storage/storageAccounts/** a**Storage-fiók neve**/;*
 * a tároló a Storage-fiókban **Megadja a** tároló vagy a tábla nevét. Alapértelmezés szerint a tárolóban lévő összes blob beolvasható. Ha a blobokat csak egy adott virtuális könyvtárban szeretné indexelni, megadhatja a könyvtárat a választható **lekérdezési** paraméter használatával.
 
-Példa blob-adatforrás objektum létrehozására a [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával:
+Példa blob-adatforrás objektum létrehozására a [REST API](/rest/api/searchservice/create-data-source)használatával:
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -118,7 +118,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt t
     }
 ```
 
-További információk az indexek létrehozásáról: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index)
+További információk az indexek létrehozásáról: [create index](/rest/api/searchservice/create-index)
 
 ### <a name="5---create-the-indexer"></a>5 – az indexelő létrehozása
 
@@ -143,7 +143,7 @@ Példa indexelő definíciója egy blob indexelő számára:
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 
-Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)című leírást.
+Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](/rest/api/searchservice/create-indexer)című leírást.
 
 Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
 

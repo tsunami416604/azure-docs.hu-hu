@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854733"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930910"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -27,6 +27,7 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 
 * Modell verziója `2020-07-01` a v3 `/keyphrases` és a `/pii` `/languages` végpontok számára, amely a következőket adja:
     * További kormányzati és ország-specifikus [entitások kategóriái](named-entity-types.md?tabs=personal) a nevesített entitások felismeréséhez.
+    * Norvég és török támogatás a Hangulatelemzés v3-as verzióban.
 * A rendszer mostantól HTTP 400-es hibát ad vissza az olyan V3 API-kérelmek esetében, amelyek túllépik a közzétett [adatkorlátot](concepts/data-limits.md). 
 * Az eltolást visszaadó végpontok támogatják a választható `stringIndexType` paramétert, amely a visszaadott `offset` és az értékeket úgy állítja be, `length` hogy az megfeleljen egy támogatott [karakterlánc-indexelési sémának](concepts/text-offsets.md).
 

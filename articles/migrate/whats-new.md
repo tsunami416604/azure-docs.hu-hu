@@ -4,41 +4,32 @@ description: Ismerkedjen meg a Azure Migrate szolgáltatás új és legújabb fr
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556930"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927171"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
 A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszolgálókat, alkalmazásokat és az Microsoft Azure felhőbe áttelepítheti, elemezheti és áttelepítheti azokat. Ez a cikk a Azure Migrate új kiadásait és szolgáltatásait foglalja össze.
+
+## <a name="update-august-2020"></a>Update (augusztus 2020)
+
+- Továbbfejlesztett bevezetési élmény, amelyben egy Azure Migrate-projekt kulcsa jön létre a portálról, és a készülék regisztrációjának befejezésére szolgál.
+- Lehetőség a petesejtek/VHD-fájlok vagy a portálon lévő telepítési parancsfájlok letöltésére a VMware és a Hyper-V berendezések beállításához.
+- Frissítette a készülék Configuration Managert a továbbfejlesztett felhasználói felülettel.
+- Több hitelesítő adat támogatja a Hyper-V virtuális gépek felderítését.
+- Továbbfejlesztett keresési, rendezési és szűrési funkciók a hozzáadott hitelesítő adatok és a felderítési források számára.
+- Egyetlen elem bemenete, több elem beolvasása és CSV-importálási beállítások a felhasználó számára a Hyper-V-gazdagépek/-fürtök felderítési forrásainak hozzáadásához & fizikai kiszolgálókon.
+- Továbbfejlesztett hiba történt az érvényesítési és felderítési műveletekhez tartozó állapot frissítéseivel a táblázatban szereplő összes hozzáadott forrás esetében. 
 
 ## <a name="update-june-2020"></a>Frissítés (2020. június)
 
 - A helyszíni VMware virtuális gépek [Azure VMware-megoldásba (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) való áttelepítésének felmérése mostantól támogatott. [További információ](how-to-create-azure-vmware-solution-assessment.md)
 - Több hitelesítő adat támogatása a készüléken a fizikai kiszolgálók felderítéséhez.
 - Támogatás, amely lehetővé teszi az Azure-bejelentkezést a készülékről olyan bérlőre, ahol a bérlői korlátozás konfigurálva van.
-- Az alább felsorolt új Azure Migrate Appliance-verziók.
-
-### <a name="azure-public-cloud"></a>Azure nyilvános felhő
-
-**Forgatókönyv** | **Letöltés** | **SHA256**
---- | --- | ---
-Hyper-V (8,93 GB) | [Legújabb verzió](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10,9 GB) | [Legújabb verzió](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-Fizikai (63,1 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Government
-
-**Forgatókönyv** | **Letöltés** | **SHA256**
---- | --- | ---
-Hyper-V (63,1 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63,1 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-Fizikai (63,1 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>Frissítés (2020. április)
@@ -47,7 +38,7 @@ A Azure Migrate a Azure Government üzemelő példányait támogatja.
 
 - A VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat is felderítheti és elemezheti.
 - VMware virtuális gépeket, Hyper-V virtuális gépeket és fizikai kiszolgálókat telepíthet át az Azure-ba.
-- A VMware-áttelepítés esetében ügynök nélküli vagy ügynök alapú áttelepítést használhat. [További információk](server-migrate-overview.md).
+- A VMware-áttelepítés esetében ügynök nélküli vagy ügynök alapú áttelepítést használhat. [További információ](server-migrate-overview.md).
 - [Tekintse át](migrate-support-matrix.md#supported-geographies-azure-government) a Azure Government támogatott földrajzi területeit és régióit.
 - Azure Government nem támogatja az [ügynök-alapú függőségek elemzését](concepts-dependency-visualization.md#agent-based-analysis) .
 - Az előzetes verzióban elérhető funkciók a Azure Government, különösen az [ügynök nélküli függőségek elemzése](concepts-dependency-visualization.md#agentless-analysis)és az [alkalmazások felderítése](how-to-discover-applications.md)esetén támogatottak.

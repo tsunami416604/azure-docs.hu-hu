@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3e1845eee9832770cc289821c60097e69eec6c08
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749457"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932015"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
 
@@ -21,7 +21,7 @@ Az Azure Cognitive Search az adatok keresési indexbe történő importálásán
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet hatékonyan indexelni az információkat a [leküldéses modellel](search-what-is-data-import.md#pushing-data-to-an-index) a kérelmek kötegelt feldolgozásával, valamint egy exponenciális leállítási újrapróbálkozási stratégiájának használatával. [Letöltheti és futtathatja az alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Ez a cikk ismerteti az alkalmazás legfontosabb szempontjait és azokat a tényezőket, amelyeket figyelembe kell venni az adatok indexelése során.
 
-Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a C# és a [.net SDK](/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Index létrehozása
@@ -111,7 +111,7 @@ Ez az egyszerű C# kódon-konzol alkalmazás a következő feladatokat hajtja v�
 
 ### <a name="creating-the-index"></a>Az index létrehozása
 
-Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy a C# adatmodell osztályból létrehozzon egy index-struktúrát.
+Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azure Cognitive Search indexét. Kihasználja a [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) osztályt, hogy a C# adatmodell osztályból létrehozzon egy index-struktúrát.
 
 Az adatmodellt a Hotel osztály határozza meg, amely a címe osztályra mutató hivatkozásokat is tartalmaz. A FieldBuilder részletesen részletezi az indexek összetett adatstruktúrájának létrehozásához. A metaadatok címkéi az egyes mezők attribútumainak meghatározására szolgálnak, például hogy kereshetők vagy rendezve legyenek.
 
@@ -162,8 +162,8 @@ Az index sémája jelentős hatással lehet az indexelési sebességre. Ennek a 
 
 Az Azure Cognitive Search a következő API-kat támogatja egy vagy több dokumentum indexbe való betöltéséhez:
 
-+ [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) vagy [indexBatch osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [Dokumentumok hozzáadása, frissítése vagy törlése (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction osztály](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) vagy [indexBatch osztály](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 A dokumentumok a kötegekben való indexelése jelentősen javítja az indexelési teljesítményt. Ezek a kötegek akár 1000-dokumentumok, akár 16 MB-onként is lehetnek.
 
@@ -258,14 +258,14 @@ Ahhoz, hogy teljes mértékben ki tudja használni az Azure Cognitive Search ind
 
 A fent említett legfontosabb szempontok közül több a szálak optimális számát befolyásolja. Módosíthatja ezt a mintát és tesztelheti a különböző szálak számát, hogy meghatározza a forgatókönyv optimális szálak számát. Ha azonban egyszerre több szál fut, akkor a legtöbb hatékonysági előnyt ki kell használnia.
 
-A keresési szolgáltatást elérve a kérések felfutásakor előfordulhat, hogy a kérést nem teljesen sikerült [http-állapotkódot](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) észlelni. Az indexelés során két gyakori HTTP-állapotkód van:
+A keresési szolgáltatást elérve a kérések felfutásakor előfordulhat, hogy a kérést nem teljesen sikerült [http-állapotkódot](/rest/api/searchservice/http-status-codes) észlelni. Az indexelés során két gyakori HTTP-állapotkód van:
 
 + **503 a szolgáltatás nem érhető el** – ez a hiba azt jelenti, hogy a rendszer nagy terhelés alatt áll, és a kérés jelenleg nem dolgozható fel.
 + **207 többszörös állapot** – ez a hiba azt jelenti, hogy egyes dokumentumok sikeresek, de legalább egy sikertelen volt.
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>Exponenciális leállítási újrapróbálkozási stratégia implementálása
 
-Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbálkozási stratégiájának használatával újra](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)kell próbálkozni.
+Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbálkozási stratégiájának használatával újra](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)kell próbálkozni.
 
 Az Azure Cognitive Search .NET SDK automatikusan újrapróbálkozik a 503s és más sikertelen kérelmekkel, de a 207s újrapróbálkozásához saját logikát kell megvalósítani. A nyílt forráskódú eszközök, például a [Polly](https://github.com/App-vNext/Polly) is használható az újrapróbálkozási stratégia megvalósításához. 
 
@@ -281,7 +281,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Fontos, hogy a [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) elkapjon, mivel ezek a kivételek azt jelzik, hogy az indexelési művelet csak részben sikeres (207s). A sikertelen elemeket újra meg kell próbálni a `FindFailedActionsToRetry` metódus használatával, amely megkönnyíti egy olyan új köteg létrehozását, amely csak a hibás elemeket tartalmazza.
+Fontos, hogy a [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) elkapjon, mivel ezek a kivételek azt jelzik, hogy az indexelési művelet csak részben sikeres (207s). A sikertelen elemeket újra meg kell próbálni a `FindFailedActionsToRetry` metódus használatával, amely megkönnyíti egy olyan új köteg létrehozását, amely csak a hibás elemeket tartalmazza.
 
 A kivételeken kívül más kivételeket `IndexBatchException` is el kell látni, és a kérést nem sikerült teljesen megadnia. Ezek a kivételek kevésbé gyakoriak, különösen a .NET SDK-val, mivel az automatikusan újrapróbálkozik a 503s.
 
@@ -346,7 +346,7 @@ A kitöltött keresési indexet a program futtatása után, a programozott módo
 
 ### <a name="programatically"></a>Programozott módon
 
-Két fő lehetőség áll rendelkezésre a dokumentumok számának ellenőrzéséhez egy indexben: a [dokumentumok száma API](https://docs.microsoft.com/rest/api/searchservice/count-documents) és az [index-statisztika beolvasása API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics). Ha a visszaadott dokumentumok száma alacsonyabb, mint az eredetileg várt érték, a két útvonal frissítésére is szükség lehet.
+Két fő lehetőség áll rendelkezésre a dokumentumok számának ellenőrzéséhez egy indexben: a [dokumentumok száma API](/rest/api/searchservice/count-documents) és az [index-statisztika beolvasása API](/rest/api/searchservice/get-index-statistics). Ha a visszaadott dokumentumok száma alacsonyabb, mint az eredetileg várt érték, a két útvonal frissítésére is szükség lehet.
 
 #### <a name="count-documents"></a>Dokumentumok számlálása
 
@@ -370,7 +370,7 @@ A Azure Portalban nyissa meg a keresési szolgáltatás **áttekintése** lapot,
 
   ![Az Azure Cognitive Search indexek listája](media/tutorial-optimize-data-indexing/portal-output.png "Az Azure Cognitive Search indexek listája")
 
-A *dokumentumok száma* és a *tárterület mérete* az [index statisztikai API beolvasása](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) alapján történik, és a frissítés több percet is igénybe vehet.
+A *dokumentumok száma* és a *tárterület mérete* az [index statisztikai API beolvasása](/rest/api/searchservice/get-index-statistics) alapján történik, és a frissítés több percet is igénybe vehet.
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 

@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4573224a77b080e0ba6cefe5069164466e7df5b9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 058450a4f28fb03da317debc9557a9beb45b2e90
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586517"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921414"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -190,7 +191,7 @@ static async Task Main(string[] args)
 
 Megfigyelheti, hogy a-ben `Main` deklarálja,, `subscriptionKey` `endpoint` `route` és a átbetűzés szkriptet `textToTransliterate` .
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Ekkor készen áll a minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
 
@@ -217,7 +218,7 @@ Ez az üzenet a nyers JSON-ből készült, amely így fog kinézni:
 ]
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
@@ -226,4 +227,4 @@ Ez az üzenet a nyers JSON-ből készült, amely így fog kinézni:
 Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
-> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -3,12 +3,12 @@ title: Azure Event Hubs – adatanomáliák megjelenítése valós idejű esemé
 description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85315610"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934055"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
@@ -308,7 +308,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép az adatkészlet megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. A vizualizáció típusánál válassza a **Kártya** lehetőséget. A **Mezők** területen kattintson az **Érték hozzáadása** elemre, majd válassza a **fraudulentuses** lehetőséget.
+9. A vizualizáció típusánál válassza a **Kártya** lehetőséget. A **mezők**területen kattintson az **érték hozzáadása**, majd a elemre `fraudulentuses` .
 
    ![Képernyőkép a vizualizációtípus és a mezők megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +329,9 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
 12. A **Vizualizáció típusa** területen válassza a **Vonaldiagram** lehetőséget.
 
-13. A **Tengely** területen kattintson az **Érték hozzáadása** elemre, és válassza a **windowend** lehetőséget. 
+13. A **tengely**területen kattintson az **érték hozzáadása**elemre, majd válassza a elemet `windowend` . 
 
-14. Az **Értékek** területen kattintson az **Érték hozzáadása** elemre, és válassza a **fraudulentuses** lehetőséget.
+14. Az **értékek**területen kattintson az **érték hozzáadása** lehetőségre, és válassza a lehetőséget `fraudulentuses` .
 
 15. A **Megjelenítendő időtartomány** területen válassza ki az utolsó öt percet. Kattintson a **Tovább** gombra.
 
@@ -378,6 +378,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő cikkel, ha többet szeretne megtudni az Azure Event Hubsról.
 
 > [!div class="nextstepaction"]
-> [Üzenetek küldése az Azure Event Hubsba a .NET Standardban – első lépések](get-started-dotnet-standard-send-v2.md)
+> [Üzenetek küldése az Azure Event Hubsba a .NET Standardban – első lépések](event-hubs-dotnet-standard-getstarted-send.md)
 
 [ingyenes fiók létrehozása]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

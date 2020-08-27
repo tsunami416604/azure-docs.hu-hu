@@ -175,6 +175,7 @@
               href: functions-develop-vs.md
             - name: A Core Tools fejlesztése
               href: functions-run-local.md
+              displayName: 'local, runtime'
         - name: Függvények létrehozása
           items:
             - name: HTTP eseményindító

@@ -49,3 +49,9 @@
       items:
         - name: Ügynökök kapcsolódási problémái
           href: troubleshoot-agent-onboard.md
+    - name: Hivatkozás
+      items:
+        - name: Regionális elérhetőség és adattárolási hely
+          href: data-residency.md
+        - name: REST
+          href: /rest/api/hybridcompute

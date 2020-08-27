@@ -3,12 +3,12 @@ title: Az Azure Migrate-berendezés architektúrája
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770900"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919743"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Az Azure Migrate-berendezés architektúrája
 
@@ -31,7 +31,7 @@ A készülék számos összetevővel rendelkezik.
 
 - **Felügyeleti alkalmazás**: ez egy webalkalmazás felhasználói bevitelhez a készülék üzembe helyezése során. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.
 - **Felderítési ügynök**: az ügynök a számítógép-konfigurációs adatokat gyűjti. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos. 
-- **Értékelő ügynök**: az ügynök teljesítményadatokat gyűjt. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.
+- **Gyűjtő ügynök**: az ügynök teljesítményadatokat gyűjt. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.
 - **DRA-ügynök**: a virtuális gépek replikálását és a replikált számítógépek és az Azure közötti kommunikáció koordinálását koordinálja. Csak akkor használható, ha a VMware virtuális gépeket az Azure-ba replikálja ügynök nélküli Migrálás használatával.
 - **Átjáró**: replikált adatokat küld az Azure-nak. Csak akkor használható, ha a VMware virtuális gépeket az Azure-ba replikálja ügynök nélküli Migrálás használatával.
 - **Automatikus frissítési szolgáltatás**: a készülék összetevőinek frissítése (24 óránként fut).

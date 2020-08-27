@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 07/02/2020
 ms.author: sbowles
-ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bae84d93d15abe8804a430dacd2f2cddf8a9aed9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85918744"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919165"
 ---
 # <a name="example-identify-faces-in-images"></a>Példa: arcok felismerése képeken
 
@@ -191,7 +192,7 @@ A lépések befejezése után próbálkozzon a különböző arcok azonosítás�
 
 A **PersonGroup** az előző tervezési korlátozás alapján akár 10 000 személyt is megtarthatnak. További információ az akár milliós esetekről: [A nagy méretű szolgáltatás használata](how-to-use-large-scale.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben az útmutatóban megtanulta, hogyan hozhat létre egy **PersonGroup** , és hogyan azonosítható egy személy. A következő funkciókat ismertetjük és mutatták be:
 

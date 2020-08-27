@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 3dc58b68270707eb5e92214def85ec8cf9cb3f5b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4821d4637a90acda12fec5656907ad3eedb24163
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587021"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921467"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -166,7 +167,7 @@ Console.WriteLine("Press any key to continue.");
 Console.ReadKey();
 ```
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Ekkor készen áll a minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
 
@@ -202,7 +203,7 @@ dotnet run
 ]
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
@@ -211,4 +212,4 @@ dotnet run
 Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
-> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

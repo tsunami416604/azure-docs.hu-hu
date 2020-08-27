@@ -10,12 +10,13 @@ ms.subservice: ink-recognizer
 ms.topic: overview
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 989c6464e45b95a276746b6d57e0ca08a345296c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927453"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931488"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
 
@@ -28,7 +29,7 @@ A tinta-felismerő kognitív szolgáltatás felhőalapú REST API biztosít a di
 
 A kézírás-felismerő API használatával könnyedén felismerheti az alkalmazásaiban található kézzel írt tartalmakat. 
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 | Kézírás-felismerés | A kézzel írt tartalmakat 63 fő [nyelven és területi beállításokban](language-support.md)ismerheti fel. | 
 | Elrendezés felismerése | A digitális tinta tartalmával kapcsolatos szerkezeti információk beolvasása. A tartalom a régiók, a bekezdések, a sorok, a szavak és a listajeles listák megírásával szakítható meg. Az alkalmazások ezután az elrendezési adatok segítségével további funkciókat hozhatnak létre, például az automatikus lista formázását és az alakzat igazítását. |

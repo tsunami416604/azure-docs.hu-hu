@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 85c6d58d78f095f2f221476a91ecae8da0213963
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502086"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928598"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagyméretű fájlmegosztás engedélyezése és létrehozása
 
@@ -23,7 +23,7 @@ Ha nagyméretű fájlmegosztást engedélyez a Storage-fiókjában, a fájlmegos
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 - Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -61,7 +61,7 @@ A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíth
 
     ![Képernyőfelvétel az "enabled" (engedélyezve) gombra a Azure Portal új Storage-fiókjában](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

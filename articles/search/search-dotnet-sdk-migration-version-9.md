@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db2017a3bb1a8910049527796f422227b741b960
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562358"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923194"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Frissítés a Azure Search .NET SDK 9-es verziójára
 
-Ha a [Azure Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-hoz készült 7,0-es vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás a 9-es verzió használatára való frissítéséhez.
+Ha a [Azure Search .net SDK](/dotnet/api/overview/azure/search)-hoz készült 7,0-es vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás a 9-es verzió használatára való frissítéséhez.
 
 > [!NOTE]
 > Ha az 8,0-es verzió előzetes verzióját szeretné használni a még nem általánosan elérhető funkciók kiértékeléséhez, a cikk utasításait követve frissítsen a 8,0-Preview verzióra a korábbi verziókról.
@@ -106,12 +106,12 @@ A paraméter nélküli konstruktor lett elvégezve `Field` `internal` . Mostant�
 
 Az 7,0-es verzióban – előzetes és korábbi verziók esetén a dokumentumok csoportjaiba ágyazott különböző osztályok párhuzamos osztály-hierarchiába vannak strukturálva:
 
-  -  `DocumentSearchResult`és `DocumentSearchResult<T>` öröklés forrása`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`és `DocumentSuggestResult<T>` öröklés forrása`DocumentSuggestResultBase`
-  -  `IndexAction`és `IndexAction<T>` öröklés forrása`IndexActionBase`
-  -  `IndexBatch`és `IndexBatch<T>` öröklés forrása`IndexBatchBase`
-  -  `SearchResult`és `SearchResult<T>` öröklés forrása`SearchResultBase`
-  -  `SuggestResult`és `SuggestResult<T>` öröklés forrása`SuggestResultBase`
+  -  `DocumentSearchResult` és `DocumentSearchResult<T>` öröklés forrása `DocumentSearchResultBase`
+  -  `DocumentSuggestResult` és `DocumentSuggestResult<T>` öröklés forrása `DocumentSuggestResultBase`
+  -  `IndexAction` és `IndexAction<T>` öröklés forrása `IndexActionBase`
+  -  `IndexBatch` és `IndexBatch<T>` öröklés forrása `IndexBatchBase`
+  -  `SearchResult` és `SearchResult<T>` öröklés forrása `SearchResultBase`
+  -  `SuggestResult` és `SuggestResult<T>` öröklés forrása `SuggestResultBase`
 
 Az általános típusparaméter nélküli származtatott típusok a "dinamikusan gépelt" forgatókönyvekben és a típus feltételezett használatában használhatók `Document` .
 
@@ -181,7 +181,7 @@ Ha az alkalmazás nem rendelkezik a szolgáltatáshoz szükséges függőséggel
 
 Ha a "dinamikusan beírt" `Search` , `Suggest` vagy "type" `Get` típusú példányokat visszaadó API-kat használ `Document` , vegye figyelembe, hogy most már deszerializálja az üres JSON-tömböket a `object[]` helyett `string[]` .
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 Ha további részletekre van szüksége a Azure Search .NET SDK használatával kapcsolatban, tekintse meg a [.net útmutató](search-howto-dotnet-sdk.md)című témakört.
 
 Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét "[Azure Search]" előtaggal adja meg.

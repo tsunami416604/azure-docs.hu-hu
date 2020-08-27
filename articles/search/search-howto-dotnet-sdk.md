@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9b08dff01ad125fb7e0a52674e25a4a973df7c16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905423"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927051"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>A Microsoft. Azure. Search (v10) használata .NET-alkalmazásokban
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet keresési objektumokat a C# és az [Azure Cognitive Search (v10) .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)használatával. A 10-es verzió a Microsoft. Azure. Search csomag utolsó verziója. Az új funkciók továbbítása az Azure SDK csapata [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) történik.
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet keresési objektumokat a C# és az [Azure Cognitive Search (v10) .net SDK](/dotnet/api/overview/azure/search)használatával. A 10-es verzió a Microsoft. Azure. Search csomag utolsó verziója. Az új funkciók továbbítása az Azure SDK csapata [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) történik.
 
 Ha már rendelkezik meglévő vagy fedélzeti fejlesztési projektekkel, folytassa a 10-es verzió használatát. Új projektek esetén vagy új funkciók használatához érdemes áttérnie egy meglévő keresési megoldásra az új könyvtárba.
 
@@ -36,14 +36,14 @@ Az SDK-ban található egyéb NuGet-csomagok a következők:
 
 A különböző ügyféloldali kódtárak olyan osztályokat határoznak meg, mint `Index` `Field` a, és, valamint `Document` `Indexes.Create` `Documents.Search` a `SearchServiceClient` és az `SearchIndexClient` osztályokhoz hasonló műveletek. Ezek az osztályok a következő névterekben vannak rendszerezve:
 
-* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft. Azure. Search. models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft. Azure. Search](/dotnet/api/microsoft.azure.search)
+* [Microsoft. Azure. Search. models](/dotnet/api/microsoft.azure.search.models)
 
 Ha visszajelzést szeretne küldeni az SDK jövőbeli frissítéséről, tekintse meg a [Visszajelzés oldalt](https://feedback.azure.com/forums/263029-azure-search/) , vagy hozzon létre egy problémát a [githubon](https://github.com/azure/azure-sdk-for-net/issues) , és nevezze el az "Azure Cognitive Search" kifejezést a probléma címében.
 
-Az `2019-05-06` [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/).net SDK-példánya. Ebben a verzióban az Azure-Blobok indexelése során az [összetett típusok](search-howto-complex-data-types.md), az [AI](cognitive-search-concept-intro.md)-bővítés, az [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete)és a [JsonLines-elemzési mód](search-howto-index-json-blobs.md) támogatása szerepel. 
+Az `2019-05-06` [Azure Cognitive Search REST API](/rest/api/searchservice/).net SDK-példánya. Ebben a verzióban az Azure-Blobok indexelése során az [összetett típusok](search-howto-complex-data-types.md), az [AI](cognitive-search-concept-intro.md)-bővítés, az [automatikus kiegészítés](/rest/api/searchservice/autocomplete)és a [JsonLines-elemzési mód](search-howto-index-json-blobs.md) támogatása szerepel. 
 
-Ez az SDK nem támogatja a [felügyeleti műveleteket](https://docs.microsoft.com/rest/api/searchmanagement/) , például a keresési szolgáltatások létrehozását és méretezését, valamint az API-kulcsok kezelését. Ha a keresési erőforrásokat egy .NET-alkalmazásból szeretné kezelni, használhatja az [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)-t.
+Ez az SDK nem támogatja a [felügyeleti műveleteket](/rest/api/searchmanagement/) , például a keresési szolgáltatások létrehozását és méretezését, valamint az API-kulcsok kezelését. Ha a keresési erőforrásokat egy .NET-alkalmazásból szeretné kezelni, használhatja az [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)-t.
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Frissítés az SDK legújabb verziójára
 Ha már használja az Azure Cognitive Search .NET SDK egy régebbi verzióját, és az általánosan elérhető legújabb verzióra szeretne frissíteni, [Ez a cikk](search-dotnet-sdk-migration-version-9.md) ismerteti, hogyan.
@@ -138,7 +138,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> Egy tipikus keresési alkalmazásban az indexek kezelését és a populációt a keresési lekérdezések egy külön összetevője is kezeli. `Indexes.GetClient`a kényelmes megoldás az index feltöltésére, mert a probléma a továbbiak megadásával `SearchCredentials` . Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a közvetlen létrehozása, `SearchIndexClient` így a lekérdezési kulcs átadható, amely csak az adatolvasást teszi lehetővé rendszergazdai kulcs helyett. Ez megfelel a legalacsonyabb jogosultsági szint elvének, és segítségével alkalmazása biztonságosabbá tehető. A rendszergazdai kulcsokról és a lekérdezési kulcsokról [itt](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)talál további információt.
+> Egy tipikus keresési alkalmazásban az indexek kezelését és a populációt a keresési lekérdezések egy külön összetevője is kezeli. `Indexes.GetClient` a kényelmes megoldás az index feltöltésére, mert a probléma a továbbiak megadásával `SearchCredentials` . Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a közvetlen létrehozása, `SearchIndexClient` így a lekérdezési kulcs átadható, amely csak az adatolvasást teszi lehetővé rendszergazdai kulcs helyett. Ez megfelel a legalacsonyabb jogosultsági szint elvének, és segítségével alkalmazása biztonságosabbá tehető. A rendszergazdai kulcsokról és a lekérdezési kulcsokról [itt](/rest/api/searchservice/#authentication-and-authorization)talál további információt.
 > 
 > 
 
@@ -264,7 +264,7 @@ Ez a metódus egy új objektumot hoz létre az `Index` `Field` új index sémáj
 >
 > 
 
-A mezőkön kívül pontozási profilokat, javaslatokat vagy CORS lehetőségeket is hozzáadhat az indexhez (ezek a paraméterek kimaradnak a mintából a rövidség kedvéért). Az index objektumról és annak összetevőiről az [SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index), valamint az [Azure Cognitive Search REST API-referenciában](https://docs.microsoft.com/rest/api/searchservice/)talál további információt.
+A mezőkön kívül pontozási profilokat, javaslatokat vagy CORS lehetőségeket is hozzáadhat az indexhez (ezek a paraméterek kimaradnak a mintából a rövidség kedvéért). Az index objektumról és annak összetevőiről az [SDK-referenciában](/dotnet/api/microsoft.azure.search.models.index), valamint az [Azure Cognitive Search REST API-referenciában](/rest/api/searchservice/)talál további információt.
 
 ### <a name="populating-the-index"></a>Az index feltöltése
 A következő lépésben `Main` feltölti az újonnan létrehozott indexet. Az index populációja a következő módon történik: (néhány kód helyébe "..." illusztrációs célokra.  Tekintse meg a teljes adatpopulációs kód teljes minta megoldását.)
@@ -395,7 +395,7 @@ A második rész létrehozza `IndexBatch` a dokumentumokat tartalmazó dokumentu
 A metódus harmadik része egy olyan Catch blokk, amely egy fontos, az indexeléshez szükséges hibát kezel. Ha az Azure Cognitive Search szolgáltatás nem tud indexelni néhány dokumentumot a kötegben, a a következőt adja meg `IndexBatchException` : `Documents.Index` . Ez a kivétel akkor fordulhat elő, ha a dokumentumok indexelése során a szolgáltatás nagy terhelés alatt áll. **Javasoljuk ennek az esetnek az explicit módon való kezelését a kódban.** Azon dokumentumok esetében, ahol az indexelés meghiúsult, elhalaszthatja azt, majd később újra megpróbálkozhat az indexeléssel, vagy a mintának megfelelően naplózhatja azt, és folytathatja a munkáját, esetleg – az alkalmazás adatkonzisztencia-követelményeitől függően – más műveletbe kezdhet.
 
 > [!NOTE]
-> A [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) metódussal olyan új köteget hozhat létre, amely csak azokat a műveleteket tartalmazza, amelyeken a korábbi hívás sikertelen volt `Index` . Megtudhatja, hogyan kell megfelelően használni [a StackOverflow-on](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> A [`FindFailedActionsToRetry`](/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) metódussal olyan új köteget hozhat létre, amely csak azokat a műveleteket tartalmazza, amelyeken a korábbi hívás sikertelen volt `Index` . Megtudhatja, hogyan kell megfelelően használni [a StackOverflow-on](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
@@ -470,7 +470,7 @@ Az első dolog, hogy az osztályban lévő egyes nyilvános tulajdonságok neve 
 
 A második dolog, ami észreveszi, hogy az egyes tulajdonságok olyan attribútumokkal vannak díszítve, mint a, a, `IsFilterable` `IsSearchable` és a `Key` `Analyzer` . Ezek az attribútumok közvetlenül [egy Azure Cognitive Search index megfelelő mező attribútumaira](/rest/api/searchservice/create-index)mutatnak. Az `FieldBuilder` osztály ezeket a tulajdonságokat használja az indexhez tartozó mező-definíciók összeállításához.
 
-Az osztályban a harmadik fontos dolog a `Hotel` nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusú leképezések találhatók a, `bool?` , `Edm.Boolean` `DateTimeOffset?` és `Edm.DateTimeOffset` stb. között. A típus-hozzárendelésre vonatkozó konkrét szabályok dokumentálva vannak az `Documents.Get` [Azure Cognitive Search .net SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)található metódussal. Az `FieldBuilder` osztály gondoskodik a leképezésről, de ez továbbra is hasznos lehet, ha a szerializálási problémák elhárításához szükséges.
+Az osztályban a harmadik fontos dolog a `Hotel` nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusú leképezések találhatók a, `bool?` , `Edm.Boolean` `DateTimeOffset?` és `Edm.DateTimeOffset` stb. között. A típus-hozzárendelésre vonatkozó konkrét szabályok dokumentálva vannak az `Documents.Get` [Azure Cognitive Search .net SDK-referenciában](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)található metódussal. Az `FieldBuilder` osztály gondoskodik a leképezésről, de ez továbbra is hasznos lehet, ha a szerializálási problémák elhárításához szükséges.
 
 Észrevette a `SmokingAllowed` tulajdonságot?
 
@@ -481,7 +481,7 @@ public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => 
 
 A `JsonIgnore` tulajdonság attribútuma azt jelzi `FieldBuilder` , hogy a nem szerializálja az indexet mezőként.  Ez nagyszerű módja annak, hogy olyan ügyféloldali számított tulajdonságokat hozzon létre, amelyeket segítőként használhat az alkalmazásban.  Ebben az esetben a `SmokingAllowed` tulajdonság azt jelzi, hogy `Room` a gyűjteményben lévő bármelyik a `Rooms` dohányzást teszi lehetővé.  Ha az összes hamis, az azt jelzi, hogy a teljes szálloda nem teszi lehetővé a dohányzást.
 
-Bizonyos tulajdonságok, például a `Address` és `Rooms` a .net-osztályok példányai.  Ezek a tulajdonságok összetettebb adatstruktúrákat jelentenek, és ennek eredményeképpen az indexben [összetett adattípusú](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) mezőket igényelnek.
+Bizonyos tulajdonságok, például a `Address` és `Rooms` a .net-osztályok példányai.  Ezek a tulajdonságok összetettebb adatstruktúrákat jelentenek, és ennek eredményeképpen az indexben [összetett adattípusú](./search-howto-complex-data-types.md) mezőket igényelnek.
 
 A tulajdonság a (z) `Address` osztály több értékének egy készletét jelöli `Address` , az alábbiakban meghatározottak szerint:
 
@@ -562,7 +562,7 @@ A .NET-beli adatmodellt és a hozzá tartozó index-sémát úgy kell kialakíta
 A saját osztályok használata lehetővé teszi, hogy az indexben lévő dokumentumokkal való kommunikáció mindkét irányban működjön. Lekérheti a keresési eredményeket, és az SDK automatikusan deszerializálhatja őket egy tetszőleges típusra, ahogy a következő szakaszban is látni fogjuk.
 
 > [!NOTE]
-> Az Azure Cognitive Search .NET SDK a osztály használatával dinamikusan begépelt dokumentumokat is támogat `Document` , amelyek a mezőnevek kulcs/érték leképezése mező értékekre. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Ebben az oktatóanyagban csak az utóbbit használjuk a mintakód. Az [ `Document` osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) örökli a következőt: `Dictionary<string, object>` .
+> Az Azure Cognitive Search .NET SDK a osztály használatával dinamikusan begépelt dokumentumokat is támogat `Document` , amelyek a mezőnevek kulcs/érték leképezése mező értékekre. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Ebben az oktatóanyagban csak az utóbbit használjuk a mintakód. Az [ `Document` osztály](/dotnet/api/microsoft.azure.search.models.document) örökli a következőt: `Dictionary<string, object>` .
 > 
 >
 
@@ -649,12 +649,12 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-Ez a metódus minden alkalommal egy új objektumot hoz létre, amikor lekérdezést hajt végre `SearchParameters` . Ez az objektum a lekérdezés további beállításainak megadására szolgál, például rendezés, szűrés, lapozás és aspektusok. Ebben a metódusban a,, `Filter` `Select` `OrderBy` és `Top` tulajdonságot a különböző lekérdezésekhez állítja be. Az összes `SearchParameters` tulajdonság dokumentálva [van](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters).
+Ez a metódus minden alkalommal egy új objektumot hoz létre, amikor lekérdezést hajt végre `SearchParameters` . Ez az objektum a lekérdezés további beállításainak megadására szolgál, például rendezés, szűrés, lapozás és aspektusok. Ebben a metódusban a,, `Filter` `Select` `OrderBy` és `Top` tulajdonságot a különböző lekérdezésekhez állítja be. Az összes `SearchParameters` tulajdonság dokumentálva [van](/dotnet/api/microsoft.azure.search.models.searchparameters).
 
 A következő lépés a keresési lekérdezés tényleges végrehajtása. A keresés futtatása a metódus használatával történik `Documents.Search` . Minden lekérdezés esetében a keresett szöveget karakterláncként kell használni (vagy `"*"` Ha nincs keresési szöveg), valamint a korábban létrehozott keresési paramétereket. `Hotel`A (z) Type paraméterként is megadható `Documents.Search` , amely azt jelzi, hogy az SDK a keresési eredményekben lévő dokumentumokat deszerializálja a típusú objektumokra `Hotel` .
 
 > [!NOTE]
-> A keresési lekérdezés kifejezésének szintaxisáról [itt](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)talál további információt.
+> A keresési lekérdezés kifejezésének szintaxisáról [itt](/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)talál további információt.
 > 
 > 
 
@@ -709,7 +709,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Ez a lekérdezés egy OData `$filter` kifejezést használ az `Rooms/any(r: r/BaseRate lt 100)` indexben lévő dokumentumok szűréséhez. Ez a [bármely operátort](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) használja a "BaseRate lt 100" a szobák gyűjtemény minden elemébe való alkalmazásához. Az Azure Cognitive Search által támogatott OData szintaxissal kapcsolatban [itt](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)talál további információt.
+Ez a lekérdezés egy OData `$filter` kifejezést használ az `Rooms/any(r: r/BaseRate lt 100)` indexben lévő dokumentumok szűréséhez. Ez a [bármely operátort](./search-query-odata-collection-operators.md) használja a "BaseRate lt 100" a szobák gyűjtemény minden elemébe való alkalmazásához. Az Azure Cognitive Search által támogatott OData szintaxissal kapcsolatban [itt](./query-odata-filter-orderby-syntax.md)talál további információt.
 
 A lekérdezés eredményei:
 
@@ -768,7 +768,7 @@ WriteDocuments(results);
 
 Ez a lépés befejezi az oktatóanyagot, de nem áll le itt. * * A következő lépések további forrásokat biztosítanak az Azure Cognitive Search megismeréséhez.
 
-## <a name="next-steps"></a>Következő lépések
-* Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.
-* Tekintse át az [elnevezési konvenciókat](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) a különböző objektumok elnevezési szabályainak megismeréséhez.
-* Tekintse át az Azure Cognitive Search [támogatott adattípusait](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) .
+## <a name="next-steps"></a>További lépések
+* Nézze át a [.NET SDK](/dotnet/api/microsoft.azure.search) és a [REST API](/rest/api/searchservice/) referenciáit.
+* Tekintse át az [elnevezési konvenciókat](/rest/api/searchservice/Naming-rules) a különböző objektumok elnevezési szabályainak megismeréséhez.
+* Tekintse át az Azure Cognitive Search [támogatott adattípusait](/rest/api/searchservice/Supported-data-types) .

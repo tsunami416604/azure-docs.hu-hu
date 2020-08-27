@@ -3,12 +3,12 @@ title: A Microsoft Azure Backup Server újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648751"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893187"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
 
@@ -37,7 +37,7 @@ A MABS v3 UR1 segítségével biztonsági mentést készíthet a ReFS köteten t
 >[!NOTE]
 > A ReFS-köteten tárolt Hyper-V virtuális gépek biztonsági mentését a MABS v3 támogatja
 
->FONTOS Azonosítottank néhány problémát a deduplikált ReFS-kötetek biztonsági mentésével kapcsolatban. Dolgozunk a kijavításán, és ezt a szakaszt azonnal frissítjük, amint elérhetővé tettük a javítást. Addig is eltávolítjuk a deduplikált ReFS-kötetek biztonsági mentésének támogatását a MABSv3-UR1.
+>FONTOS Azonosítottank néhány problémát a deduplikált ReFS-kötetek biztonsági mentésével kapcsolatban. Dolgozunk ezen a megoldáson, és frissítjük ezt a szakaszt, amint elérhetővé tettük a javítást. Addig is eltávolítjuk a deduplikált ReFS-kötetek biztonsági mentésének támogatását a MABSv3-UR1.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware-megoldás védelme – támogatás
 
