@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 88801e3f79884bbf3e7cd15e61572edf7763f83f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 399689f3f7d07a6e77128037be6b7439e7bf5184
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874214"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960020"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása Azure-beli virtuális hálózattal
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
 
 Ez a cikk ismerteti a Azure App Service VNet integrációs funkciót, valamint azt, hogyan állíthatja be a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal. Az [azure Virtual Network][VNETOverview] (virtuális hálózatok) használatával számos Azure-erőforrást elhelyezhet egy nem internetre irányítható hálózaton. A VNet integrációs funkciója lehetővé teszi, hogy alkalmazásai hozzáférjenek az erőforrásokhoz a vagy a VNet keresztül. A VNet-integráció nem teszi lehetővé, hogy az alkalmazások magánjellegű módon férhessenek hozzá.
 
@@ -105,7 +105,7 @@ Nincs szükség további konfigurációra ahhoz, hogy a regionális VNet integr�
 > 
 > 
 
-### <a name="peering"></a>Társhálózat-létesítés
+### <a name="peering"></a>Társviszony-létesítés
 
 Ha a regionális VNet-integrációval való társítást használ, nincs szükség további konfigurálásra.
 
@@ -212,19 +212,19 @@ Az átjárók számára szükséges VNet-integrációhoz a PowerShell használat
 
 
 <!--Links-->
-[VNETOverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
+[VNETOverview]: ../virtual-network/virtual-networks-overview.md
 [AzurePortal]: https://portal.azure.com/
 [ASPricing]: https://azure.microsoft.com/pricing/details/app-service/
 [VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
 [DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
-[V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
+[V2VNETP2S]: ../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
 [creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
-[creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
-[setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
-[VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
-[installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
+[setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
+[VNETRouteTables]: ../virtual-network/manage-route-table.md
+[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
 [privateendpoints]: networking/private-endpoint.md

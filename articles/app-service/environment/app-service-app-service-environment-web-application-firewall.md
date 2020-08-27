@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85833181"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961839"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
 
-A webalkalmazás-tűzfalak (WAF) segítik webalkalmazásai biztonságosabbá tételét azáltal, hogy megvizsgálják a bemenő webes forgalmat, és blokkolják az SQL-injektálásokat, a szkriptet alkalmazó támadásokat, a rosszindulatú feltöltéseket és DDoS-alkalmazásokat és egyéb támadásokat. Ezenkívül megvizsgálják a háttér-webkiszolgálóktól érkező válaszokat is az adatvesztés megelőzése (DLP) érdekében. Az App Service Environment elszigetelésével és további skálázásával kombinálva ideális környezetet nyújt az üzleti szempontból kritikus webalkalmazások tárolására, amelyeknek ellen kell állniuk a kártevő kéréseknek és a nagy forgalomnak. Az Azure az [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) révén WAF képességet is kínál.  Az App Service Environment Application Gatewayjel való integrálásának részleteiért olvassa el az [ILB ASE integrálása egy Application Gatewayjel](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) témakörről szóló dokumentumot.
+A webalkalmazás-tűzfalak (WAF) segítik webalkalmazásai biztonságosabbá tételét azáltal, hogy megvizsgálják a bemenő webes forgalmat, és blokkolják az SQL-injektálásokat, a szkriptet alkalmazó támadásokat, a rosszindulatú feltöltéseket és DDoS-alkalmazásokat és egyéb támadásokat. Ezenkívül megvizsgálják a háttér-webkiszolgálóktól érkező válaszokat is az adatvesztés megelőzése (DLP) érdekében. Az App Service Environment elszigetelésével és további skálázásával kombinálva ideális környezetet nyújt az üzleti szempontból kritikus webalkalmazások tárolására, amelyeknek ellen kell állniuk a kártevő kéréseknek és a nagy forgalomnak. Az Azure az [Application Gateway](../../application-gateway/overview.md) révén WAF képességet is kínál.  Az App Service Environment Application Gatewayjel való integrálásának részleteiért olvassa el az [ILB ASE integrálása egy Application Gatewayjel](./integrate-with-application-gateway.md) témakörről szóló dokumentumot.
 
 Az Azure Application Gatewayen túl több piactéri lehetőség is rendelkezésre áll, mint például a [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure). Ezek az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice)-en érhetők el. A dokumentáció további részre arra fókuszál, hogyan integrálhatja App Service Environment környezetét egy Barracuda WAF-eszközzel.
 
@@ -34,7 +34,7 @@ Ebben a dokumentumban a Barracuda WAF több elosztott terhelésű példánya mö
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>Az App Service Environment konfigurálása
-Egy App Service Environment környezet konfigurálásához tekintse meg az arról készült [dokumentációnkat](app-service-web-how-to-create-an-app-service-environment.md). Ha létrehozta App Service Environment környezetét, létrehozhat ebben a környezetben webalkalmazásokat, API-alkalmazásokat és [mobilalkalmazásokat](../../app-service-mobile/app-service-mobile-value-prop.md), amelyek mind védelem alatt fognak állni a következő szakaszban konfigurált WAF mögött.
+Egy App Service Environment környezet konfigurálásához tekintse meg az arról készült [dokumentációnkat](app-service-web-how-to-create-an-app-service-environment.md). Ha létrehozta App Service Environment környezetét, létrehozhat ebben a környezetben webalkalmazásokat, API-alkalmazásokat és [mobilalkalmazásokat](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop), amelyek mind védelem alatt fognak állni a következő szakaszban konfigurált WAF mögött.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>A Barracuda WAF Felhőszolgáltatás konfigurálása
 A Barracuda [részletes cikkben](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) ismerteti WAF-ja üzembe helyezését egy Azure-beli virtuális gépen. Mivel azonban redundanciát szeretnénk elérni, és nem rendszerkritikus meghibásodási pontot bevezetni, az alábbi utasítások követésekor érdemes legalább két, WAF-példánnyal rendelkező virtuális gépet üzembe helyezni ugyanabban a felhőszolgáltatásban.

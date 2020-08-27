@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080932"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958933"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integráció a szolgáltatási végpontokkal
 A App Service három változata van, amelyek némileg eltérő konfigurációt igényelnek az Azure Application Gateway-nal való integrációhoz. A variációk közé tartoznak a rendszeres App Service – többek között a több-bérlős, belső Load Balancer (ILB) App Service Environment (Bevezetés) és a külső betekintő is. Ez a cikk bemutatja, hogyan konfigurálhatja azt App Service (több-bérlős), és megvitathatja a ILB és a külső beadással kapcsolatos szempontokat.
@@ -83,7 +83,7 @@ Ha egyéni hozzáférési korlátozásokat szeretne beállítani az SCM-helyhez,
 az webapp config access-restriction add --resource-group myRG --name myWebApp --scm-site --rule-name KudoAccess --priority 200 --ip-address 208.130.0.0/16
 ```
 
-## <a name="next-steps"></a>További lépések
-További információ a App Service Environmentről: [app Service Environment dokumentáció](https://docs.microsoft.com/azure/app-service/environment).
+## <a name="next-steps"></a>Következő lépések
+További információ a App Service Environmentről: [app Service Environment dokumentáció](/azure/app-service/environment).
 
 A webalkalmazás további védelme érdekében a Application Gateway webalkalmazási tűzfallal kapcsolatos információk az [Azure webalkalmazási tűzfal dokumentációjában](../../web-application-firewall/ag/ag-overview.md)találhatók.

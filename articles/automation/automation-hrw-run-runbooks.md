@@ -3,14 +3,14 @@ title: Azure Automation runbookok futtatása hibrid Runbook-feldolgozón
 description: Ez a cikk azt ismerteti, hogyan futtatható a runbookok a helyi adatközpontban vagy a felhőalapú szolgáltatóban a hibrid Runbook-feldolgozóval rendelkező gépeken.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2019
+ms.date: 08/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 13c982dcfab21371ea6017f730065cc5ced4b79e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186214"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959569"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -43,7 +43,7 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-[InlineScript](automation-powershell-workflow.md#use-inlinescript) -tevékenységet is használhat. `InlineScript`lehetővé teszi a kódok blokkjának futtatását egy másik számítógépen, hitelesítő adatokkal.
+[InlineScript](automation-powershell-workflow.md#use-inlinescript) -tevékenységet is használhat. `InlineScript` lehetővé teszi a kódok blokkjának futtatását egy másik számítógépen, hitelesítő adatokkal.
 
 ## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Runbook-hitelesítés használata felügyelt identitásokkal
 
@@ -70,7 +70,7 @@ A következő lépésekkel felügyelt identitást használhat egy hibrid Runbook
     ```
 
     > [!NOTE]
-    > `Connect-AzAccount -Identity`a hibrid Runbook-feldolgozók számára a rendszer által hozzárendelt identitást és egyetlen felhasználó által hozzárendelt identitást használ. Ha több felhasználó által hozzárendelt identitást használ a hibrid Runbook-feldolgozón, a Runbook meg kell adnia a `AccountId` paramétert `Connect-AzAccount` egy adott felhasználó által hozzárendelt identitás kiválasztásához.
+    > `Connect-AzAccount -Identity` a hibrid Runbook-feldolgozók számára a rendszer által hozzárendelt identitást és egyetlen felhasználó által hozzárendelt identitást használ. Ha több felhasználó által hozzárendelt identitást használ a hibrid Runbook-feldolgozón, a Runbook meg kell adnia a `AccountId` paramétert `Connect-AzAccount` egy adott felhasználó által hozzárendelt identitás kiválasztásához.
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>Runbook-hitelesítés használata futtató fiókkal
 
@@ -305,7 +305,15 @@ Amikor a PowerShell használatával indítja el a runbook, használja a `RunOn` 
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="logging"></a>Naplózás
+
+A hibrid runbook-feldolgozón futó runbookok kapcsolatos problémák elhárítása érdekében a naplókat a következő helyen tárolja helyileg:
+
+* Windows rendszeren a `C:\ProgramData\Microsoft\System Center\Orchestrator\<version>\SMA\Sandboxes` következő helyen: a feladatok futtatásának részletes naplózása. A magas szintű runbook feladatok állapotára vonatkozó események az **alkalmazás és a szolgáltatások Logs\Microsoft-Automation\Operations-** eseménynaplóba íródnak.
+
+* Linux rendszeren a felhasználó hibrid feldolgozói naplókat talál a következő helyen: `/home/nxautomation/run/worker.log` , és a System runbook Worker naplói a következő címen találhatók: `/var/opt/microsoft/omsagent/run/automationworker/worker.log` .
+
+## <a name="next-steps"></a>Következő lépések
 
 * Ha a runbookok nem fejeződik be sikeresen, tekintse át a [runbook-végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)hibaelhárítási útmutatóját.
 * A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](/powershell/scripting/overview).

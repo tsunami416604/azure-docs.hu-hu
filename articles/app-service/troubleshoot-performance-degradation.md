@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170766"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958252"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service
 Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -43,7 +43,7 @@ A hibaelhárítás három különálló feladatra osztható, szekvenciális sorr
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. az alkalmazások viselkedésének megfigyelése és figyelése
 #### <a name="track-service-health"></a>Szolgáltatás állapotának nyomon követése
-Microsoft Azure minden alkalommal nyilvánosságra kerül, amikor a szolgáltatás megszakad vagy a teljesítmény romlása. A szolgáltatás állapotát a [Azure Portal](https://portal.azure.com/)követheti nyomon. További információ: a [szolgáltatás állapotának nyomon követése](../monitoring-and-diagnostics/insights-service-health.md).
+Microsoft Azure minden alkalommal nyilvánosságra kerül, amikor a szolgáltatás megszakad vagy a teljesítmény romlása. A szolgáltatás állapotát a [Azure Portal](https://portal.azure.com/)követheti nyomon. További információ: a [szolgáltatás állapotának nyomon követése](../service-health/service-notifications.md).
 
 #### <a name="monitor-your-app"></a>Az alkalmazás figyelése
 Ezzel a beállítással megtudhatja, hogy az alkalmazás problémákba ütközik-e. Az alkalmazás paneljén kattintson a **kérelmek és hibák** csempére. A **metrika** panel megjeleníti az összes felvehető mérőszámot.
@@ -52,7 +52,7 @@ Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 
 * Memória átlagos munkakészlete
 * Átlagos válaszidő
-* CPU-idő
+* Processzoridő
 * Memória munkakészlete
 * Kérelmek
 
@@ -61,7 +61,7 @@ Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 További információkért lásd:
 
 * [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
-* [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Webes végpont állapotának figyelése
 Ha az alkalmazást a **standard** szintű díjszabásban futtatja, app Service két végpont figyelését teszi lehetővé három földrajzi helyről.
@@ -161,4 +161,4 @@ Az újraindítás gyakran a legegyszerűbb módszer az egyszeri problémák elh�
 
  ![az alkalmazás újraindítása a teljesítménnyel kapcsolatos problémák megoldásához](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Az alkalmazást az Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../powershell-azure-resource-manager.md).
+Az alkalmazást az Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../azure-resource-manager/management/manage-resources-powershell.md).

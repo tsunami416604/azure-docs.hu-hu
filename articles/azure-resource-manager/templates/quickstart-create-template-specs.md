@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 08/26/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: aaceac9fccf21074732c4b6c4b3e72cc09552a65
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 84422862cfa73c2cbb27411bf0c1a7fb3fab9b35
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936384"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962655"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -257,7 +257,7 @@ Most már üzembe helyezheti a sablon specifikációját. a sablon specifikáci�
     ```
 
     > [!NOTE]
-    > Ismert probléma a sablon specifikációjának beolvasása, majd a Windows PowerShellben lévő változóhoz rendelése.
+    > Ismert probléma a sablon spec AZONOSÍTÓjának beszerzése és a Windows PowerShellben lévő változóhoz rendelése.
 
 1. Telepítse a sablon specifikációját.
 
@@ -352,6 +352,6 @@ Az ebben a rövid útmutatóban üzembe helyezett erőforrás törléséhez tör
 
 1. A felső menüben válassza az Erőforráscsoport törlése lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni arról, hogyan hozható létre csatolt sablonokat tartalmazó sablon-specifikáció, tekintse meg a [csatolt sablon specifikációjának létrehozása](template-specs-create-linked.md)című témakört.

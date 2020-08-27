@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824746"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961992"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
@@ -68,31 +68,31 @@ az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-nam
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>A már biztonsági másolattal rendelkező virtuális gépek védelmének módosítása az Azure CLI-vel
 
 ```azurecli
-az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
+az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting exclude --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-azure-cli"></a>Csak az operációsrendszer-lemez biztonsági mentése az Azure CLI-vel
 
 ```azurecli
-az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} -- exclude-all-data-disks
+az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --exclude-all-data-disks
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-azure-cli"></a>Csak az operációsrendszer-lemez biztonsági mentése az Azure parancssori felületének módosításakor
 
 ```azurecli
-az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --exclude-all-data-disks
+az backup protection update-for-vm --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --exclude-all-data-disks
 ```
 
 ### <a name="restore-disks-with-azure-cli"></a>Lemezek visszaállítása az Azure CLI-vel
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-to-staging-storage-account --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Csak az operációsrendszer-lemez visszaállítása az Azure CLI-vel
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-to-staging-storage-account --restore-only-osdisk
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} } --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --restore-only-osdisk
 ```
 
 ### <a name="get-protected-item-to-get-disk-exclusion-details-with-azure-cli"></a>Védett elemek beolvasása a lemezek kizárási részleteinek beolvasása az Azure CLI-vel
@@ -181,7 +181,7 @@ Mindegyik helyreállítási pont a tartalmazott és kizárt lemezek információ
 ### <a name="remove-disk-exclusion-settings-and-get-protected-item-with-azure-cli"></a>Lemezek kizárási beállításainak eltávolítása és védett elemek beolvasása az Azure CLI-vel
 
 ```azurecli
-az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --disk-list-setting resetexclusionsettings
+az backup protection update-for-vm --vault-name {vaultname} --resource-group {resourcegroup} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM --disk-list-setting resetexclusionsettings
 
 az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-group {resourcegroup} --backup-management-type AzureIaasVM
 ```
@@ -291,7 +291,7 @@ Az Azure-beli virtuális gépek biztonsági mentése a meglévő díjszabási mo
 
 A **védett példány (PI)** díját csak akkor számítjuk ki az operációsrendszer-lemezre, ha úgy dönt, hogy **csak az operációs rendszer lemezének** használatával készít biztonsági mentést.  Ha a biztonsági mentést konfigurálja, és legalább egy adatlemezt választ ki, a PI-költségeket a rendszer a virtuális géphez csatolt összes lemez esetében kiszámítja. A **biztonsági mentési tárolási költségeket** a rendszer csak a tartalmazott lemezek alapján számítja ki, így a tárolási költségeket is megtakaríthatja. A rendszer mindig kiszámítja a **Pillanatképek árát** a virtuális gép összes lemezéhez (a tartalmazott és kizárt lemezekkel együtt).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa](backup-support-matrix-iaas.md)
 - [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](backup-azure-vm-backup-faq.md)

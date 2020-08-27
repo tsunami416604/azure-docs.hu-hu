@@ -5,21 +5,21 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610241"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962876"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Egyéni tartománynév konfigurálása Azure App Serviceban Traffic Manager integrációval
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> Cloud Services esetében lásd: [Egyéni tartománynév konfigurálása Azure Cloud Service-hez](../cloud-services/cloud-services-custom-domain-name.md).
+> Cloud Services esetében lásd: [Egyéni tartománynév konfigurálása Azure Cloud Service-hez](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-Ha az [Azure Traffic Manager](/azure/traffic-manager/) használatával szeretné terheléselosztásra osztani a forgalmat [Azure App Service](overview.md), a App Service alkalmazás a ** \<traffic-manager-endpoint> . trafficmanager.net**használatával érhető el. Egy egyéni tartománynevet (például a www \. contoso.com) hozzárendelhet a app Service alkalmazással, hogy a felhasználók számára felismerhető tartománynevet adjon meg.
+Ha az [Azure Traffic Manager](../traffic-manager/index.yml) használatával szeretné terheléselosztásra osztani a forgalmat [Azure App Service](overview.md), a App Service alkalmazás a ** \<traffic-manager-endpoint> . trafficmanager.net**használatával érhető el. Egy egyéni tartománynevet (például a www \. contoso.com) hozzárendelhet a app Service alkalmazással, hogy a felhasználók számára felismerhető tartománynevet adjon meg.
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egy egyéni tartománynevet egy olyan App Service-alkalmazással, amely integrálva van a [Traffic Managerba](../traffic-manager/traffic-manager-overview.md).
 
@@ -55,7 +55,7 @@ Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-traffic-manager-endpoint"></a>Traffic Manager végpont létrehozása
 
-A [végpontok hozzáadása vagy törlése](../traffic-manager/traffic-manager-endpoints.md)lépéseit követve adja hozzá a app Service alkalmazást végpontként a Traffic Manager profilban.
+A [végpontok hozzáadása vagy törlése](../traffic-manager/traffic-manager-manage-endpoints.md)lépéseit követve adja hozzá a app Service alkalmazást végpontként a Traffic Manager profilban.
 
 Miután a App Service alkalmazás támogatott árképzési szinten van, megjelenik az elérhető App Service célok listájában a végpont hozzáadásakor. Ha az alkalmazás nem szerepel a listáján, [ellenőrizze az alkalmazás díjszabási szintjét](#prepare-the-app).
 
@@ -96,7 +96,7 @@ Miután a tartományneven lévő rekordok propagálása megtörtént, a böngés
 
     ![DNS-név hozzáadása az alkalmazáshoz](./media/configure-domain-traffic-manager/enable-traffic-manager-domain.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni DNS-név védelme SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)

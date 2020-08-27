@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961363"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
 
@@ -103,7 +103,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
    ![A Web App for Containers konfigurálása](media/quickstart-custom-container/configure-web-app-continer.png)
 
-    Ha az egyéni lemezkép nem a webalkalmazásban, hanem például az [Azure Container Registryben](/azure/container-registry/) vagy bármely egyéb privát adattárban található, itt konfigurálhatja.
+    Ha az egyéni lemezkép nem a webalkalmazásban, hanem például az [Azure Container Registryben](../container-registry/index.yml) vagy bármely egyéb privát adattárban található, itt konfigurálhatja.
 
 1. Válassza az **Áttekintés és létrehozás** , majd **a létrehozás lehetőséget, és várja** meg, amíg az Azure létrehozza a szükséges erőforrásokat.
 
@@ -173,8 +173,8 @@ A streamelt naplók a következőképpen néznek ki:
 
 Egy másik egyéni Docker-rendszerképet is használhat az alkalmazás futtatásához. A kívánt keretrendszerhez azonban ki kell választania a megfelelő [szülő rendszerképet (alaprendszerkép)](https://docs.docker.com/develop/develop-images/baseimages/) :
 
-- A .NET-keretrendszerbeli alkalmazások telepítéséhez a Windows Server Core 2019 [hosszú távú karbantartási csatorna (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) kiadásán alapuló szülő lemezképet használjon. 
-- A .NET Core-alkalmazások telepítéséhez a Windows Server Nano 1809 [féléves karbantartási csatorna (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásán alapuló szülő lemezképet használjon. 
+- A .NET-keretrendszerbeli alkalmazások telepítéséhez a Windows Server Core 2019 [hosszú távú karbantartási csatorna (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) kiadásán alapuló szülő lemezképet használjon. 
+- A .NET Core-alkalmazások telepítéséhez a Windows Server Nano 1809 [féléves karbantartási csatorna (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásán alapuló szülő lemezképet használjon. 
 
 Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe telhet. Az indítási időt azonban lecsökkentheti az alábbi, az Azure App Service-ben már gyorsítótárazott szülőrendszerképek egyikének használatával:
 
@@ -188,7 +188,7 @@ Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe t
 ::: zone-end  
 
 ::: zone pivot="container-linux"
-A Linuxon futó App Service a Linuxon előre definiált alkalmazási kötegeket biztosít, például a .NET, a PHP, a Node.js és más nyelvek támogatásával. Használhat egyéni Docker rendszerképet is, hogy a webalkalmazást egy, az Azure-ban nem meghatározott alkalmazáscsoportban futtassa. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy rendszerképet egy [Azure Container Registryból](/azure/container-registry) (ACR) a app Serviceba.
+A Linuxon futó App Service a Linuxon előre definiált alkalmazási kötegeket biztosít, például a .NET, a PHP, a Node.js és más nyelvek támogatásával. Használhat egyéni Docker rendszerképet is, hogy a webalkalmazást egy, az Azure-ban nem meghatározott alkalmazáscsoportban futtassa. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy rendszerképet egy [Azure Container Registryból](../container-registry/index.yml) (ACR) a app Serviceba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -200,7 +200,7 @@ A Linuxon futó App Service a Linuxon előre definiált alkalmazási kötegeket 
 
 ## <a name="create-an-image"></a>Rendszerkép létrehozása
 
-A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](/azure/container-registry)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a gyors útmutató [: privát tároló beállításjegyzékének létrehozása a Azure Portal használatával](/azure/container-registry/container-registry-get-started-portal), de a `mcr.microsoft.com/azuredocs/go` rendszerkép helyett használja a rendszerképet `hello-world` . A [minta Docker az Azure Samples-](https://github.com/Azure-Samples/go-docs-hello-world)tárházban található.
+A rövid útmutató elvégzéséhez szüksége lesz egy [Azure Container Registryban](../container-registry/index.yml)tárolt megfelelő webalkalmazás-rendszerképre. Kövesse a gyors útmutató [: privát tároló beállításjegyzékének létrehozása a Azure Portal használatával](../container-registry/container-registry-get-started-portal.md), de a `mcr.microsoft.com/azuredocs/go` rendszerkép helyett használja a rendszerképet `hello-world` . A [minta Docker az Azure Samples-](https://github.com/Azure-Samples/go-docs-hello-world)tárházban található.
 
 > [!IMPORTANT]
 > Ügyeljen arra, hogy a **rendszergazda felhasználó** beállítással **engedélyezze** a tároló-beállításjegyzék létrehozását. Azt is megteheti, hogy a beállításjegyzék oldalának **hozzáférési kulcsok** szakasza is be van állítva a Azure Portal. Ez a beállítás App Service hozzáféréshez szükséges.
@@ -261,4 +261,4 @@ Ezután tekintse meg a többi Azure-bővítményt.
 
 Az [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) bővítmény csomag telepítésével vagy az összes beszerzésével.
 
-::: zone-end  
+::: zone-end

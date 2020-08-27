@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081587"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962689"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása
 
 Ebben a rövid útmutatóban a Azure Portal, egy PowerShell-parancsfájl vagy egy Azure CLI-parancsfájl használatával hozhat létre egyetlen adatbázist a Azure SQL Database. Ezután lekérdezheti az adatbázist a Azure Portalban található **query Editor** használatával.
 
-[Egyetlen adatbázis](single-database-overview.md) a leggyorsabb és legegyszerűbb lehetőség a Azure SQL Database számára. Egyetlen adatbázist kezel egy [kiszolgálón](logical-servers.md)belül, amely egy adott Azure-régióban található [Azure-erőforráscsoport](../../active-directory-b2c/overview.md) belsejében van. Ebben a rövid útmutatóban létrehoz egy új erőforráscsoportot és egy kiszolgálót az új adatbázishoz.
+[Egyetlen adatbázis](single-database-overview.md) a leggyorsabb és legegyszerűbb lehetőség a Azure SQL Database számára. Egyetlen adatbázist kezel egy [kiszolgálón](logical-servers.md)belül, amely egy adott Azure-régióban található [Azure-erőforráscsoport](../../azure-resource-manager/management/manage-resource-groups-portal.md) belsejében van. Ebben a rövid útmutatóban létrehoz egy új erőforráscsoportot és egy kiszolgálót az új adatbázishoz.
 
 Létrehozhat egyetlen adatbázist a *kiépített* vagy *kiszolgáló* nélküli számítási rétegben. A kiépített adatbázisok előre meghatározott mennyiségű számítási erőforrást foglalnak magukban, beleértve a CPU-t és a memóriát, és a két [beszerzési modell](purchasing-models.md)egyikét használják. Ez a rövid útmutató egy kiépített adatbázist hoz létre a [virtuális mag-alapú](service-tiers-vcore.md) vásárlási modell használatával, de [DTU-alapú](service-tiers-dtu.md) modellt is választhat.
 
@@ -61,13 +61,13 @@ Az adatbázis létrehozása után a Azure Portal beépített **lekérdezési sze
 
 1. A **Lekérdezés-szerkesztő** oldal bezárásához kattintson az **OK gombra** , amikor a rendszer a nem mentett módosítások elvetésére kéri.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Tartsa meg az erőforráscsoportot, a kiszolgálót és az önálló adatbázist, és folytassa a következő lépésekkel, és megtudhatja, hogyan csatlakozhat az adatbázishoz, és hogyan kérdezheti le azokat különböző módszerekkel.
 
 Ha elkészült ezeknek az erőforrásoknak a használatával, törölheti a létrehozott erőforráscsoportot, amely a kiszolgálót és az önálló adatbázist is törli.
 
-### <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
+### <a name="the-azure-portal"></a>[A Azure Portal](#tab/azure-portal)
 
 A **myResourceGroup** és az összes erőforrás törlése a Azure Portal használatával:
 
@@ -75,7 +75,7 @@ A **myResourceGroup** és az összes erőforrás törlése a Azure Portal haszn�
 1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet.
 1. **A írja be az erőforráscsoport nevét**mezőbe írja be a *myResourceGroup*nevet, majd válassza a **Törlés**lehetőséget.
 
-### <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az erőforráscsoport és az összes erőforrás törléséhez futtassa az alábbi Azure CLI-parancsot az erőforráscsoport neve alapján:
 

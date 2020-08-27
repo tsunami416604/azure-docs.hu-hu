@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: bd1e44aefed310826465dbf44dee1324f5a085b3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d624d332fa35bf458e9158e00aaf83ce495b9061
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085168"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961340"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alapszintű HTML + CSS-helyet a Azure App Service. Ez a rövid útmutató [Cloud Shellban](https://docs.microsoft.com/azure/cloud-shell/overview)is elvégezhető, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI](/cli/azure/install-azure-cli)-vel.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alapszintű HTML + CSS-helyet a Azure App Service. Ez a rövid útmutató [Cloud Shellban](../cloud-shell/overview.md)is elvégezhető, de ezeket a parancsokat helyileg is futtathatja az [Azure CLI](/cli/azure/install-azure-cli)-vel.
 
 ![Mintaalkalmazás kezdőlapja](media/quickstart-html/hello-world-in-browser-az.png)
 
@@ -58,7 +58,7 @@ Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
 - Egy alkalmazás létrehozása a megadott néven.
 
-- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/azure/app-service/deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
+- Fájlok [tömörített üzembe helyezése](./deploy-zip.md) az aktuális munkakönyvtárból a webalkalmazásba.
 
 A parancs futtatása eltarthat néhány percig. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
 
@@ -132,7 +132,7 @@ az group delete --name appsvc_rg_Windows_westeurope
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

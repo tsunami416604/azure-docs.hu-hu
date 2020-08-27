@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211923"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961669"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>ASP.NET Core alkalmazás konfigurálása Azure App Servicehoz
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-windows"  
 
-Állítsa be a célként megadott keretrendszert a ASP.NET Core projekthez tartozó Project-fájlban. További információ: [válassza ki a](https://docs.microsoft.com/dotnet/core/versions/selection) .net Core-ban használandó verziót a .net Core dokumentációjában.
+Állítsa be a célként megadott keretrendszert a ASP.NET Core projekthez tartozó Project-fájlban. További információ: [válassza ki a](/dotnet/core/versions/selection) .net Core-ban használandó verziót a .net Core dokumentációjában.
 
 ::: zone-end
 
@@ -128,7 +128,7 @@ namespace SomeNamespace
 Ha például a App Service és a *appsettings.js*megegyező nevű Alkalmazásbeállítás van konfigurálva, akkor az App Service érték elsőbbséget élvez az *appsettings.js* értéknél. A helyi *appsettings.json* Value lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben az éles beállításokkal. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
 
 > [!NOTE]
-> Figyelje meg, hogy a *appsettings.json* lévő [hierarchikus konfigurációs adatai](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) a `:` .net Core szabványnak megfelelő elválasztóval érhetők el. A App Service adott hierarchikus konfigurációs beállításainak felülbírálásához állítsa az Alkalmazásbeállítások nevét ugyanazzal a tagolt formátummal a kulcsban. a következő példát futtathatja a [Cloud Shellban](https://shell.azure.com):
+> Figyelje meg, hogy a *appsettings.json* lévő [hierarchikus konfigurációs adatai](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) a `:` .net Core szabványnak megfelelő elválasztóval érhetők el. A App Service adott hierarchikus konfigurációs beállításainak felülbírálásához állítsa az Alkalmazásbeállítások nevét ugyanazzal a tagolt formátummal a kulcsban. a következő példát futtathatja a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -144,7 +144,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-A ASP.NET Core [beépített naplózási szolgáltatót biztosít a app Servicehoz](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service). A projekt *program.cs* adja hozzá a szolgáltatót az alkalmazáshoz a `ConfigureLogging` kiterjesztési módszer segítségével, az alábbi példában látható módon:
+A ASP.NET Core [beépített naplózási szolgáltatót biztosít a app Servicehoz](/aspnet/core/fundamentals/logging/#azure-app-service). A projekt *program.cs* adja hozzá a szolgáltatót az alkalmazáshoz a `ConfigureLogging` kiterjesztési módszer segítségével, az alábbi példában látható módon:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -159,11 +159,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-Ezután a [standard .net Core mintával](https://docs.microsoft.com/aspnet/core/fundamentals/logging)konfigurálhatja és létrehozhatja a naplókat.
+Ezután a [standard .net Core mintával](/aspnet/core/fundamentals/logging)konfigurálhatja és létrehozhatja a naplókat.
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-A App Service ASP.NET Core alkalmazások hibaelhárításával kapcsolatos további információkért lásd: [a Azure app Service-és IIS-ASP.net Core](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis) hibaelhárítása
+A App Service ASP.NET Core alkalmazások hibaelhárításával kapcsolatos további információkért lásd: [a Azure app Service-és IIS-ASP.net Core](/aspnet/core/test/troubleshoot-azure-iis) hibaelhárítása
 
 ## <a name="get-detailed-exceptions-page"></a>Részletes kivételek oldalának beolvasása
 
@@ -177,9 +177,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának tudnia kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, konfigurálja a továbbított fejlécek middleware-t a *Startup.cs*-ben:
 
-- Konfigurálja a middleware-t a [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , hogy továbbítsa a `X-Forwarded-For` és a `X-Forwarded-Proto` fejléceket a alkalmazásban `Startup.ConfigureServices` .
+- Konfigurálja a middleware-t a [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) , hogy továbbítsa a `X-Forwarded-For` és a `X-Forwarded-Proto` fejléceket a alkalmazásban `Startup.ConfigureServices` .
 - Adjon hozzá magánhálózati IP-címtartományt az ismert hálózatokhoz, hogy a köztes kapcsolat megbízható legyen a App Service Load balancerben.
-- A [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus meghívása a `Startup.Configure` többi middleware meghívása előtt.
+- A [UseForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) metódus meghívása a `Startup.Configure` többi middleware meghívása előtt.
 
 A három elem együttes elhelyezésével a kód a következő példához hasonlóan néz ki:
 
@@ -208,7 +208,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolgáló és a terheléselosztó működéséhez](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
+További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolgáló és a terheléselosztó működéséhez](/aspnet/core/host-and-deploy/proxy-load-balancer).
 
 ::: zone pivot="platform-linux"
 
@@ -231,4 +231,3 @@ További információkért lásd: [a ASP.net Core konfigurálása a proxykiszolg
 > [App Service Linux – gyakori kérdések](faq-app-service-linux.md)
 
 ::: zone-end
-

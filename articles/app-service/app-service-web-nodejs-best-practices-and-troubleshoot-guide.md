@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077475"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961890"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
@@ -166,7 +166,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Ugrás a hibakeresési konzol webhelyére`https://yoursite.scm.azurewebsites.net/DebugConsole`
+Ugrás a hibakeresési konzol webhelyére `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Lépjen be a site/wwwroot könyvtárba. Megjelenik egy parancssor, ahogy az az alábbi példában is látható:
 
@@ -267,15 +267,15 @@ Az alkalmazás sikertelen kérelmek ESEMÉNYTÁROLÁSI engedélyezése a Win32-h
 | 503 |1002 |A Win32-hibakód tényleges okának ellenőrzése – a kérést nem sikerült elküldeni egy node.exe. |
 | 503 |1003 |A nevesített cső túl elfoglalt – ellenőrizze, hogy a node.exe túlzott CPU-e. |
 
-NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES` . Azure App Service esetén ez az érték 5000-re van állítva. Azt jelenti, hogy a node.exe a nevesített pipe-on egyszerre tud 5000-kérelmeket fogadni. Az értéknek elég jónak lennie a Azure App Serviceon futó legtöbb Node-alkalmazáshoz. A 503,1003-as érték nem látható a Azure App Service a`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES` . Azure App Service esetén ez az érték 5000-re van állítva. Azt jelenti, hogy a node.exe a nevesített pipe-on egyszerre tud 5000-kérelmeket fogadni. Az értéknek elég jónak lennie a Azure App Serviceon futó legtöbb Node-alkalmazáshoz. A 503,1003-as érték nem látható a Azure App Service a `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>További erőforrások
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg a Azure App Service node.js alkalmazásairól.
 
 * [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](quickstart-nodejs.md)
-* [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [A Node.js modulok használata az Azure alkalmazásokkal](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps: Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js fejlesztői központ](../nodejs-use-node-modules-azure-apps.md)
 * [A Szupertitkos Kudu hibakereső konzol felfedezése](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

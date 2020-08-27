@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75768486"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962451"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Gyakorlati tanácsok az Azure App Service-hez
 Ez a cikk a [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714)használatának ajánlott eljárásait foglalja össze. 
@@ -66,8 +66,8 @@ Ha a biztonsági mentési hibák történnek, tekintse át a legutóbbi eredmén
 Azure App Service Node.js alkalmazások alapértelmezett konfigurációja a leggyakoribb alkalmazások igényeinek legmegfelelőbb. Ha a Node.js-alkalmazás konfigurációja kihasználhatja a személyre szabott finomhangolást, hogy javítsa a teljesítményt vagy optimalizálja a CPU/memória/hálózati erőforrások erőforrás-felhasználását, tekintse [meg az ajánlott eljárásokat és a hibaelhárítási útmutatót a Node-alkalmazásokhoz a Azure app Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md) Ez a cikk ismerteti azokat a iisnode-beállításokat, amelyeket a Node.js alkalmazásához konfigurálnia kell, ismerteti az alkalmazás által megtekinthető különböző forgatókönyveket vagy problémákat, és bemutatja, hogyan kezelheti ezeket a problémákat.
 
 
-## <a name="next-steps"></a>Következő lépések
-Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
+## <a name="next-steps"></a>További lépések
+Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](./overview-diagnostics.md) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
 
 - Navigáljon a webalkalmazáshoz a [Azure Portal](https://portal.azure.com).
 - Kattintson a bal oldali navigációs sávon található **problémák diagnosztizálásához és megoldásához** , amely megnyitja app Service diagnosztikát.

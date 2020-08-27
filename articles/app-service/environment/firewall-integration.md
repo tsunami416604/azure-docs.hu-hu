@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874197"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962502"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
 A App Service Environment (beadási) számos külső függőséggel rendelkezik, amelyekhez hozzáférést igényel ahhoz, hogy megfelelően működjön. A beszállító az Azure Virtual Networkban (VNet) él. Az ügyfeleknek engedélyezniük kell a bevezető függőségi forgalmat, ami olyan ügyfelek számára jelent problémát, akik az összes kimenő forgalomból le szeretnék zárni a VNet.
 
-Számos bejövő végpontot használnak a bevezetéshez. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és közzé lesznek téve a [app Service Environment felügyeleti címek](https://docs.microsoft.com/azure/app-service/environment/management-addresses) dokumentumban. Létezik egy AppServiceManagement nevű szolgáltatási címke is, amely hálózati biztonsági csoportokkal (NSG) is használható a bejövő forgalom biztonságossá tételéhez.
+Számos bejövő végpontot használnak a bevezetéshez. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és közzé lesznek téve a [app Service Environment felügyeleti címek](./management-addresses.md) dokumentumban. Létezik egy AppServiceManagement nevű szolgáltatási címke is, amely hálózati biztonsági csoportokkal (NSG) is használható a bejövő forgalom biztonságossá tételéhez.
 
 A kihelyezett kifelé irányuló kimenő függőségek szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek a mögöttes statikus címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok nem használhatók a kifelé irányuló kimenő forgalom zárolására. A címek elég gyakran változnak, hogy az aktuális felbontáson alapuló szabályok nem állíthatók be, és ezt a NSG létrehozásához használja. 
 
@@ -55,7 +55,7 @@ A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalo
 
    ![szolgáltatási végpontok kiválasztása][2]
   
-1. Hozzon létre egy AzureFirewallSubnet nevű alhálózatot abban a VNet, ahol a központjának létezik. A Azure Firewall létrehozásához kövesse az [Azure Firewall dokumentációjának](https://docs.microsoft.com/azure/firewall/) utasításait.
+1. Hozzon létre egy AzureFirewallSubnet nevű alhálózatot abban a VNet, ahol a központjának létezik. A Azure Firewall létrehozásához kövesse az [Azure Firewall dokumentációjának](../../firewall/index.yml) utasításait.
 
 1. Az Azure Firewall felhasználói felület > szabályok > az alkalmazási szabályok gyűjteménye területen válassza az alkalmazás-szabály gyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A FQDN-címkék szakaszban adjon meg egy nevet, állítsa be a címeket a * értékre, és válassza ki a App Service Environment FQDN címkét és a Windows Update. 
    
@@ -69,7 +69,7 @@ A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalo
 
    ![NTP szolgáltatási címke hálózati szabályának hozzáadása][6]
    
-1. Hozzon létre egy útválasztási táblázatot a [app Service Environment felügyeleti címekből]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) származó felügyeleti címekkel az Internet következő ugrásával. Az útválasztási tábla bejegyzéseinek elkerülheti az aszimmetrikus útválasztási problémákat. Vegyen fel útvonalakat az IP-címek függőségeinél alább látható, az Internet következő ugrásával elérhető IP-címek függőségeibe. Adjon hozzá egy virtuális berendezési útvonalat a 0.0.0.0/0 útválasztási táblázathoz, és a következő ugrás a Azure Firewall magánhálózati IP-címe legyen. 
+1. Hozzon létre egy útválasztási táblázatot a [app Service Environment felügyeleti címekből]( ./management-addresses.md) származó felügyeleti címekkel az Internet következő ugrásával. Az útválasztási tábla bejegyzéseinek elkerülheti az aszimmetrikus útválasztási problémákat. Vegyen fel útvonalakat az IP-címek függőségeinél alább látható, az Internet következő ugrásával elérhető IP-címek függőségeibe. Adjon hozzá egy virtuális berendezési útvonalat a 0.0.0.0/0 útválasztási táblázathoz, és a következő ugrás a Azure Firewall magánhálózati IP-címe legyen. 
 
    ![Útválasztási táblázat létrehozása][4]
    
@@ -77,7 +77,7 @@ A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalo
 
 #### <a name="deploying-your-ase-behind-a-firewall"></a>A bevezetése tűzfal mögötti üzembe helyezése
 
-A központnak a tűzfal mögötti üzembe helyezésének lépései ugyanazok, mint a meglévő beadási Azure Firewall konfigurálása, kivéve, ha létre kell hoznia a bevezetési alhálózatot, majd követnie kell az előző lépéseket. Ha egy meglévő alhálózatban szeretné létrehozni a bevezetőt, akkor egy Resource Manager-sablont kell használnia a szolgáltató [Resource Manager-sablonnal történő létrehozásával foglalkozó](https://docs.microsoft.com/azure/app-service/environment/create-from-template)dokumentumban leírtak szerint.
+A központnak a tűzfal mögötti üzembe helyezésének lépései ugyanazok, mint a meglévő beadási Azure Firewall konfigurálása, kivéve, ha létre kell hoznia a bevezetési alhálózatot, majd követnie kell az előző lépéseket. Ha egy meglévő alhálózatban szeretné létrehozni a bevezetőt, akkor egy Resource Manager-sablont kell használnia a szolgáltató [Resource Manager-sablonnal történő létrehozásával foglalkozó](./create-from-template.md)dokumentumban leírtak szerint.
 
 ## <a name="application-traffic"></a>Alkalmazás forgalma 
 
@@ -88,7 +88,7 @@ A fenti lépések lehetővé teszik, hogy a bevezetés problémamentesen működ
 
 Ha az alkalmazásai függőségekkel rendelkeznek, azokat hozzá kell adni a Azure Firewallhoz. Alkalmazás-szabályok létrehozása a HTTP/HTTPS-forgalom és a hálózati szabályok minden más számára történő engedélyezéséhez. 
 
-Ha ismeri azt a címtartományt, amelyet az alkalmazás kérelmének adatforgalma fog származni, hozzáadhatja azt a bevezető alhálózathoz rendelt útválasztási táblához. Ha a címtartomány nagy vagy nincs meghatározva, akkor a Application Gateway egy olyan hálózati berendezést használhat, amely az útválasztási táblázatba való felvételhez egy-egy-egy-egy IP-címeket biztosít. A Application Gateway ILB-vel történő konfigurálásával kapcsolatos részletekért olvassa el a következőt: a ILB-előállítók [integrálása egy Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+Ha ismeri azt a címtartományt, amelyet az alkalmazás kérelmének adatforgalma fog származni, hozzáadhatja azt a bevezető alhálózathoz rendelt útválasztási táblához. Ha a címtartomány nagy vagy nincs meghatározva, akkor a Application Gateway egy olyan hálózati berendezést használhat, amely az útválasztási táblázatba való felvételhez egy-egy-egy-egy IP-címeket biztosít. A Application Gateway ILB-vel történő konfigurálásával kapcsolatos részletekért olvassa el a következőt: a ILB-előállítók [integrálása egy Application Gateway](./integrate-with-application-gateway.md)
 
 A Application Gateway használata csupán egy példa arra, hogyan konfigurálhatja a rendszerét. Ha ezt az elérési utat követte, akkor hozzá kell adnia egy útvonalat a bevezető alhálózat útválasztási táblájához, hogy a Application Gateway küldött válasz-forgalom azonnal elérhető legyen. 
 
@@ -100,7 +100,7 @@ Azure Firewall küldhet naplókat az Azure Storage-ba, az Event hub-ba vagy a Az
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Ha nem ismeri az összes alkalmazás-függőséget, akkor hasznos, ha a Azure Firewall Azure Monitor naplókkal való integrációja során először működik. További tudnivalókat Azure Monitor naplók [elemzése a naplófájlok elemzéséről Azure monitor](../../azure-monitor/log-query/log-query-overview.md).
  
 ## <a name="dependencies"></a>Függőségek
 
@@ -269,7 +269,7 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 
 ## <a name="us-gov-dependencies"></a>US Gov függőségek
 
-US Gov régiókban található ASE esetében kövesse a jelen dokumentum [Azure Firewall konfigurálása](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) a beadással című szakaszának utasításait, és konfigurálja az Azure Firewallt a központhoz.
+US Gov régiókban található ASE esetében kövesse a jelen dokumentum [Azure Firewall konfigurálása](#configuring-azure-firewall-with-your-ase) a beadással című szakaszának utasításait, és konfigurálja az Azure Firewallt a központhoz.
 
 Ha a Azure Firewallon kívül más eszközt szeretne használni US Gov 
 

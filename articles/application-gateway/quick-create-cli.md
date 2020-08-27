@@ -1,20 +1,20 @@
 ---
 title: 'Gyors útmutató: webes forgalom közvetlen továbbítása a CLI használatával'
 titleSuffix: Azure Application Gateway
-description: Ismerje meg, hogyan hozhat létre Azure-Application Gateway az Azure CLI használatával, amely egy háttér-készletben lévő virtuális gépekre irányítja a webes forgalmat.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure CLI-t egy olyan Azure-Application Gateway létrehozásához, amely egy háttér-készletben lévő virtuális gépekre irányítja a webes forgalmat.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b6b2077a71870d619c023b0d66c37ebc043aa3f3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499126"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961737"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI
 
@@ -24,12 +24,14 @@ Az Application Gateway az alkalmazás webes forgalmát egy háttér-készlet ado
 
 A rövid útmutató [Azure PowerShell](quick-create-powershell.md) vagy a [Azure Portal](quick-create-portal.md)használatával is elvégezhető.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure CLI-verzió 2.0.4 vagy újabb verziója](/cli/azure/install-azure-cli) (ha helyileg futtatja az Azure CLI-t).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -193,7 +195,7 @@ Ha már nincs szüksége az Application Gateway használatával létrehozott er�
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)

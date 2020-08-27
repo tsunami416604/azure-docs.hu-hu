@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831879"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962043"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és a App Service Environment 
 
-A App Service Environment (bevezetési) az Azure-Virtual Network (VNet) belül futó Azure App Service központi telepítése. Üzembe helyezhető egy internetről elérhető alkalmazás-végponttal vagy egy VNet található alkalmazás-végponttal. Ha a központilag elérhető Internet-végponttal telepíti a bevezetést, akkor az üzembe helyezést külső kiegészítő szolgáltatásnak nevezzük. Ha a VNet egy végponttal helyezi üzembe a bevezetést, akkor az üzembe helyezést ILB-előállító-nek nevezzük. További információt a ILB a ILB-ben való [létrehozásáról és használatáról](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) című dokumentumban olvashat.
+A App Service Environment (bevezetési) az Azure-Virtual Network (VNet) belül futó Azure App Service központi telepítése. Üzembe helyezhető egy internetről elérhető alkalmazás-végponttal vagy egy VNet található alkalmazás-végponttal. Ha a központilag elérhető Internet-végponttal telepíti a bevezetést, akkor az üzembe helyezést külső kiegészítő szolgáltatásnak nevezzük. Ha a VNet egy végponttal helyezi üzembe a bevezetést, akkor az üzembe helyezést ILB-előállító-nek nevezzük. További információt a ILB a ILB-ben való [létrehozásáról és használatáról](./create-ilb-ase.md) című dokumentumban olvashat.
 
 A szolgáltató egyetlen bérlői rendszer. Mivel ez egyetlen bérlő, a több-bérlős App Serviceban nem elérhetővé vált egy olyan szolgáltatás, amely nem érhető el. 
 

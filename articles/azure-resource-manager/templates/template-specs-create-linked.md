@@ -2,13 +2,13 @@
 title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/27/2020
+ms.openlocfilehash: a70d4be2810b8d5a19fa9d806444cac1674e1a05
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936367"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959221"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 
@@ -245,10 +245,10 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> Ismert probléma a sablon specifikációjának beolvasása, majd a Windows PowerShellben lévő változóhoz rendelése.
+> Ismert probléma a sablon spec AZONOSÍTÓjának beszerzése és a Windows PowerShellben lévő változóhoz rendelése.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni a sablon specifikációjának csatolt sablonként való üzembe helyezéséről, tekintse meg a következő [oktatóanyagot: a sablon specifikációjának telepítése csatolt sablonként](template-specs-deploy-linked-template.md).

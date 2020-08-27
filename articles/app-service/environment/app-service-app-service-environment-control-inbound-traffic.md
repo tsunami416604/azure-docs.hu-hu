@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5efca8ab51c789a619e48b1ae96a53494ae411ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831165"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962060"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Bejövő forgalom vezérlése App Service Environment
 ## <a name="overview"></a>Áttekintés
@@ -31,8 +31,8 @@ Mielőtt zárolja a bejövő hálózati forgalmat egy hálózati biztonsági cso
 
 Az alábbi lista az App Service Environment által használt portokat tartalmazza. Az összes port a **TCP**, kivéve, ha más egyértelműen feljegyezték:
 
-* 454: az Azure-infrastruktúra által az App Service környezetek TLS-n keresztül történő kezeléséhez és karbantartásához használt **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
-* 455: az Azure-infrastruktúra által az App Service környezetek TLS-n keresztül történő kezeléséhez és karbantartásához használt **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
+* 454: az Azure-infrastruktúra által az App Service környezetek TLS-n keresztül történő kezeléséhez és karbantartásához használt  **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
+* 455: az Azure-infrastruktúra által az App Service környezetek TLS-n keresztül történő kezeléséhez és karbantartásához használt  **szükséges port** .  Ne blokkolja a forgalmat erre a portra.  Ez a port mindig a bevezetés nyilvános VIP-címéhez van kötve.
 * 80: alapértelmezett port a bejövő HTTP-forgalomhoz App Service-csomagokban futó alkalmazásokban egy App Service Environment.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
 * 443: alapértelmezett port a bejövő TLS-forgalomhoz olyan alkalmazásokhoz, amelyek App Service-csomagokban futnak egy App Service Environment.  Egy ILB-kompatibilis beadási porton ez a port a ILB-címnek van kötve.
 * 21: vezérlési csatorna az FTP-hez.  Ez a port biztonságosan tiltható le, ha az FTP nincs használatban.  A ILB-kompatibilis beadási szolgáltatásban ez a port a ILB-címekhez köthető.
@@ -86,7 +86,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityR
 Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 ```
 
-(**Megjegyzés:** az adatcsatorna porttartomány változhat az előzetes verzió időtartama alatt.)
+(**Megjegyzés:**  az adatcsatorna porttartomány változhat az előzetes verzió időtartama alatt.)
 
 Ha a Visual Studióval végzett távoli hibakeresést használ, a következő szabályok bemutatják, hogyan lehet hozzáférést biztosítani.  A Visual Studio minden támogatott verziójához külön szabály van, mivel mindegyik verzió egy másik portot használ a távoli hibakereséshez.  Az FTP-hozzáféréshez hasonlóan előfordulhat, hogy a Távoli hibakeresési forgalom nem működik megfelelően egy hagyományos WAF vagy proxy eszközön.  A *SourceAddressPrefix* Ehelyett a Visual studiót futtató fejlesztői gépek IP-címeire lehet beállítani.
 
@@ -130,12 +130,11 @@ További információ: [biztonságos csatlakozás a háttérbeli erőforrásokho
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
+[virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [SecurelyConnecttoBackend]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md
 [NewPortal]:  https://portal.azure.com  
 
 <!-- IMAGES -->
-

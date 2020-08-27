@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 89c317e6623a868fd75b09274c726720e726e470
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848638"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962328"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
 
@@ -33,8 +33,8 @@ A PHP-naplózás bekapcsolása:
 5. Válassza ki az **+** ikont, majd válassza az **új fájl**elemet.
 6. Adja meg a fájl nevét **.user.ini**.
 7. Válassza a **.user.ini**melletti ceruza ikont.
-8. A fájlban adja hozzá a következő kódot:`log_errors=on`
-9. Kattintson a **Mentés** gombra.
+8. A fájlban adja hozzá a következő kódot: `log_errors=on`
+9. Válassza a **Mentés** lehetőséget.
 10. Válassza a **wp-config. php**melletti ceruza ikont.
 11. Módosítsa a szöveget a következő kódra:
     ```php
@@ -43,7 +43,7 @@ A PHP-naplózás bekapcsolása:
     ```
 12. A Azure Portal webalkalmazás menüjében indítsa újra a webalkalmazást.
 
-További információ: a [WordPress-hibák naplózásának engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
+További információ: a [WordPress-hibák naplózásának engedélyezése](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hogyan a Python-alkalmazások hibáit a App Serviceban üzemeltetett alkalmazásokban?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
@@ -72,7 +72,7 @@ A Node.js alkalmazás verziójának módosításához a következő lehetősége
   Az Azure-verziókövetés telepítési folyamata a következő lépésekkel jár:
   1. Tartalmat helyez át az Azure-webalkalmazásba.
   2. Létrehoz egy alapértelmezett telepítési parancsfájlt, ha nincs egyetlen (Deploy. cmd,. Deployment Files) a webalkalmazás gyökérkönyvtárában.
-  3. Futtat egy üzembe helyezési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha a package.js> Engine-ben megemlíti a Node.js verzióját.`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Futtat egy üzembe helyezési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha a package.js> Engine-ben megemlíti a Node.js verzióját. `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. A iisnode. YML fájl a következő kódrészlettel rendelkezik:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -80,7 +80,7 @@ A Node.js alkalmazás verziójának módosításához a következő lehetősége
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>"Hiba történt az adatbázis-kapcsolatok létrehozásakor" üzenet jelenik meg a saját WordPress-alkalmazásban, amely a App Serviceban található. Hogyan a hibával kapcsolatban?
 
-Ha ezt a hibaüzenetet látja az Azure WordPress-alkalmazásban, a php_errors. log és a Debug. log naplófájl engedélyezéséhez végezze el a [WordPress-hibák naplózásának engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)című témakör lépéseit.
+Ha ezt a hibaüzenetet látja az Azure WordPress-alkalmazásban, a php_errors. log és a Debug. log naplófájl engedélyezéséhez végezze el a [WordPress-hibák naplózásának engedélyezése](/archive/blogs/azureossds/logging-php-errors-in-wordpress-2)című témakör lépéseit.
 
 Ha a naplók engedélyezve vannak, reprodukálja a hibát, majd ellenőrizze a naplókat, hogy kifogyott-e a kapcsolatok:
 ```
@@ -97,11 +97,11 @@ Ha ezt a hibát a Debug. log vagy a php_errors. log fájlban látja, az alkalmaz
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hogyan natív Python-modulokat telepíthet egy App Service Web App vagy API-alkalmazásban?
 
-Előfordulhat, hogy egyes csomagok nem települnek a pip használatával az Azure-ban. Előfordulhat, hogy a csomag nem érhető el a Python-csomag indexén, vagy szükség van egy fordítóra (a fordító nem érhető el a webalkalmazást App Service) futtató számítógépen. A natív modulok App Service webalkalmazásokban és API-alkalmazásokban való telepítésével kapcsolatos információkért lásd: [Python-modulok telepítése app Service-ben](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/).
+Előfordulhat, hogy egyes csomagok nem települnek a pip használatával az Azure-ban. Előfordulhat, hogy a csomag nem érhető el a Python-csomag indexén, vagy szükség van egy fordítóra (a fordító nem érhető el a webalkalmazást App Service) futtató számítógépen. A natív modulok App Service webalkalmazásokban és API-alkalmazásokban való telepítésével kapcsolatos információkért lásd: [Python-modulok telepítése app Service-ben](/archive/blogs/azureossds/install-native-python-modules-on-azure-web-apps-api-apps).
 
 ## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Hogyan üzembe helyezhet egy Django-alkalmazást a git és a Python új verziójának használatával App Servicehoz?
 
-További információ a Django telepítéséről: [Django-alkalmazás telepítése app Service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/).
+További információ a Django telepítéséről: [Django-alkalmazás telepítése app Service](/archive/blogs/azureossds/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python).
 
 ## <a name="where-are-the-tomcat-log-files-located"></a>Hol találhatók a Tomcat-naplófájlok?
 
@@ -183,7 +183,7 @@ Ha nemrég áttelepítette az Azure-ba, a WordPress átirányíthatja a régi ta
 
 A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)segítségével.
 
-Ha az átirányítási URL-címet az SQL-lekérdezések vagy a PHPMyAdmin használatával szeretné manuálisan frissíteni, tekintse meg a [WordPress: átirányítást a helytelen URL-címre](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Ha az átirányítási URL-címet az SQL-lekérdezések vagy a PHPMyAdmin használatával szeretné manuálisan frissíteni, tekintse meg a [WordPress: átirányítást a helytelen URL-címre](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan módosítja a WordPress bejelentkezési jelszavát?
 
@@ -197,12 +197,12 @@ Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy be
 
 A WordPress-webhelyhez csatlakoztatott MySQL-adatbázis áttelepítésének több lehetősége van:
 
-* Fejlesztők: a [parancssor vagy a phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) használata
+* Fejlesztők: a [parancssor vagy a phpMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service) használata
 * Nem fejlesztőknek: a [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) használata
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segít a WordPress biztonságosabbá tételében?
 
-A WordPress biztonsági eljárásaival kapcsolatos további információkért lásd: [ajánlott eljárások a WordPress biztonságához az Azure-ban](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/).
+A WordPress biztonsági eljárásaival kapcsolatos további információkért lásd: [ajánlott eljárások a WordPress biztonságához az Azure-ban](/archive/blogs/azureossds/best-practices-for-wordpress-security-on-azure).
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>A PHPMyAdmin használatával próbálkozom, és a "hozzáférés megtagadva" üzenet jelenik meg. Hogyan oldhatom meg ezt?
 

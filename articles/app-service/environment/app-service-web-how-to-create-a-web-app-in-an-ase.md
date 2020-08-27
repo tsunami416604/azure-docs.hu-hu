@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080609"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962519"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása App Service Environment v1-ben
 
@@ -57,7 +57,7 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. 
     Ha a bemutató belső virtuális IP-címet használ, akkor az alkalmazás URL-címe a (z) [*sitename*]. [a beléptetési*létrehozás során megadott altartomány*]   
     Miután kiválasztotta az ASP-t a központilag történő létrehozás során, látni fogja **az alábbi** altartomány-frissítést.
 
-## <a name="create-an-app-service-plan"></a><a name="createplan"></a>App Service terv létrehozása
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> App Service terv létrehozása
 Ha egy App Service Environment App Service csomagot hoz létre, a feldolgozói döntések eltérőek, mivel nincsenek megosztott feldolgozók egy központba.  Azokat a munkavégzőket kell használni, amelyeket a rendszergazda a szolgáltatóhoz rendelt.  Ez azt jelenti, hogy új csomag létrehozásához több dolgozót kell kiosztania a bedolgozói készletben, mint az összes, az adott munkaterületen már meglévő csomag példányainak száma.  Ha nem rendelkezik elegendő feldolgozóval a csomag létrehozásához, akkor hozzá kell dolgoznia a beadásával a beszerzéshez.
 
 Egy másik különbség a App Service Environment által üzemeltetett App Service-csomagokkal kapcsolatban a díjszabás hiánya.  Ha van App Service Environment, akkor a rendszer által használt számítási erőforrásokért kell fizetnie, és nem számítunk fel díjat az adott környezetben lévő csomagokhoz.  Általában Amikor létrehoz egy App Service tervet, ki kell választania egy díjszabási tervet, amely meghatározza a számlázást.  Az App Service Environment lényegében egy privát hely, ahol tartalmat hozhat létre.  A környezetért kell fizetnie, és nem kell a tartalmat üzemeltetni.
@@ -105,4 +105,4 @@ A webalkalmazás létrehozása és a App Service megtervezése után érdemes fe
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: /powershell/azure/?view=azps-3.8.0

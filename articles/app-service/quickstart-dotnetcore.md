@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b7402dc3f7c1e5c7ff5552b2f454156ef1539711
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212681"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961533"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -59,8 +59,8 @@ A webalkalmazás közzétételéhez először létre kell hoznia és konfigurál
 
 A App Service beállításának részeként a következőket fogja létrehozni:
 
-- Egy új [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/management/overview#terminology) , amely a szolgáltatáshoz tartozó összes Azure-erőforrást tartalmazza.
-- Új [üzemeltetési csomag](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) , amely meghatározza az alkalmazást futtató webkiszolgáló-Farm helyét, méretét és funkcióit.
+- Egy új [erőforráscsoport](../azure-resource-manager/management/overview.md#terminology) , amely a szolgáltatáshoz tartozó összes Azure-erőforrást tartalmazza.
+- Új [üzemeltetési csomag](./overview-hosting-plans.md) , amely meghatározza az alkalmazást futtató webkiszolgáló-Farm helyét, méretét és funkcióit.
 
 Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalmazás közzétételéhez:
 
@@ -80,7 +80,7 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
 1. A **üzemeltetési tervben: hozzon létre új** párbeszédpanelt, és adja meg a következő táblázatban megadott értékeket:
 
-   | Beállítás  | Ajánlott érték | Description |
+   | Beállítás  | Ajánlott érték | Leírás |
    | -------- | --------------- | ----------- |
    | **Szolgáltatási csomag**  | *myFirstAzureWebAppPlan* | Az App Service-csomag neve. |
    | **Hely**      | *Nyugat-Európa* | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
@@ -160,7 +160,7 @@ A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást,
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-A [linuxon app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan hozhat létre [.NET Core](https://docs.microsoft.com/aspnet/core/)-alkalmazást Linuxon futó App Service-ben. Az alkalmazást az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel hozza létre, és a git használatával helyezi üzembe a .net Core-kódot az alkalmazásban.
+A [linuxon app Service](overview.md#app-service-on-linux) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan hozhat létre [.NET Core](/aspnet/core/)-alkalmazást Linuxon futó App Service-ben. Az alkalmazást az [Azure CLI](/cli/azure/get-started-with-azure-cli)-vel hozza létre, és a git használatával helyezi üzembe a .net Core-kódot az alkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -322,4 +322,4 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 > [!div class="nextstepaction"]
 > [ASP.NET Core alkalmazás konfigurálása](configure-language-dotnetcore.md)
 
-::: zone-end  
+::: zone-end

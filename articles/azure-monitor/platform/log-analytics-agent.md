@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e1fa2fe11873d08fae5add1ee3206f6f887975eb
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121527"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88960917"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -22,7 +22,7 @@ Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a 
 > Azt is megteheti, hogy a Microsoft monitoring Agent (MMA) vagy a OMS Linux Agent néven ismert Log Analytics ügynök.
 
 > [!NOTE]
-> Azure Diagnostics bővítmény az egyik rendelkezésre álló ügynök, amely a számítási erőforrások vendég operációs rendszeréről gyűjti a figyelési adatokat. Lásd: [a Azure monitor ügynökök áttekintése](agents-overview.md) a különböző ügynökök leírására, valamint a megfelelő ügynökök kiválasztására vonatkozó útmutatást.
+> Azure Diagnostics bővítmény az egyik rendelkezésre álló ügynök, amely a számítási erőforrások vendég operációs rendszeréről gyűjti a figyelési adatokat. Lásd: [a Azure monitor ügynökök áttekintése ](agents-overview.md) a különböző ügynökök leírására, valamint a megfelelő ügynökök kiválasztására vonatkozó útmutatást.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Összehasonlítás az Azure Diagnostics bővítménnyel
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) a Azure monitorban is használható a figyelési adatok gyűjtésére az Azure-beli virtuális gépek vendég operációs rendszeréről. Dönthet úgy is, hogy a követelményektől függően vagy mindkettőt használja. A Azure Monitor-ügynökök részletes összehasonlítását lásd [a Azure monitor ügynökök áttekintésében](agents-overview.md) . 
@@ -70,7 +70,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. Az alábbi táblázat az egyes módszereket ismerteti, amelyekkel meghatározhatja, hogy melyik működik a legjobban a szervezetében.
 
-|Forrás | Metódus | Leírás|
+|Forrás | Módszer | Leírás|
 |-------|-------------|-------------|
 |Azure VM| [Manuálisan a Azure Portal](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | A Log Analytics munkaterületről telepítendő virtuális gépek meghatározása. |
 | | Log Analytics virtuálisgép-bővítmény Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) az Azure CLI használatával vagy egy Azure Resource Manager sablonnal | A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Azure Monitor-munkaterületre regisztrálja őket. |
@@ -118,9 +118,9 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 ### <a name="python-2-requirement"></a>Python 2 követelmény
  A Log Analytics ügynökhöz a Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.
 
- - Red Hat, CentOS, Oracle:`yum install -y python2`
- - Ubuntu, Debian:`apt-get install -y python2`
- - SUSE`zypper install -y python2`
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
 
 A python2 végrehajtható fájlját a következő eljárással kell a *Pythonhoz* aliasként használni:
 
@@ -130,7 +130,7 @@ A python2 végrehajtható fájlját a következő eljárással kell a *Pythonhoz
     sudo update-alternatives ––display python
     ```
 
-2. Futtassa az alábbi parancsot. Cserélje le *\<priority\>* a értéket a meglévő hivatkozás prioritása fölé, vagy 1, ha jelenleg nem található hivatkozás.
+2. Futtassa az alábbi parancsot: Cserélje le *\<priority\>* a értéket a meglévő hivatkozás prioritása fölé, vagy 1, ha jelenleg nem található hivatkozás.
 
     ```
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
@@ -214,9 +214,6 @@ A Linux-ügynök esetében a proxykiszolgáló a telepítés során vagy a [tele
 
 `[protocol://][user:password@]proxyhost[:port]`
 
-> [!NOTE]
-> Ha a proxykiszolgáló nem igényli a hitelesítést, a Linux-ügynöknek továbbra is meg kell adnia egy pszeudo-felhasználót vagy jelszót. Ez lehet bármilyen Felhasználónév vagy jelszó.
-
 |Tulajdonság| Leírás |
 |--------|-------------|
 |Protokoll | https |
@@ -232,7 +229,7 @@ Például: `https://user01:password@proxy01.contoso.com:30443`
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [adatforrásokat](agent-data-sources.md) , és Ismerje meg, hogy milyen adatforrások érhetők el az adatok Windows vagy Linux rendszerből való gyűjtéséhez. 
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 

@@ -7,18 +7,18 @@ ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212953"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958473"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
 ::: zone pivot="container-windows"  
 
-Az [Azure App Service](overview.md) előre meghatározott, IIS-en futó alkalmazáscsoportokat biztosít Windows rendszeren, például az ASP.NET-et vagy a Node.js-t. Az előre konfigurált Windows-környezet letiltja az operációs rendszeren például a rendszergazdai hozzáférést, a szoftvertelepítést vagy a globális szerelvény-gyorsítótár módosítását (lásd [az operációs rendszer Azure App Service-funkcionalitásával foglalkozó részt](operating-system-functionality.md)). Ha azonban a App Service (előzetes verzió) egyéni Windows-tárolót használ, lehetővé teszi az alkalmazás által igényelt operációsrendszer-módosításokat, így egyszerűen áttelepítheti a helyszíni alkalmazást, amely egyéni operációs rendszert és szoftver-konfigurációt igényel. Ez az oktatóanyag bemutatja egy Windows betűkészlet-könyvtárba telepített egyéni betűkészletet használó ASP.NET-alkalmazás az App Service-be való áttelepítésének menetét. Egy Visual Studióból származó egyénileg konfigurált Windows-rendszerképet kell üzembe helyeznie az [Azure Container Registryben](https://docs.microsoft.com/azure/container-registry/), majd futtatnia az App Service-ben.
+Az [Azure App Service](overview.md) előre meghatározott, IIS-en futó alkalmazáscsoportokat biztosít Windows rendszeren, például az ASP.NET-et vagy a Node.js-t. Az előre konfigurált Windows-környezet letiltja az operációs rendszeren például a rendszergazdai hozzáférést, a szoftvertelepítést vagy a globális szerelvény-gyorsítótár módosítását (lásd [az operációs rendszer Azure App Service-funkcionalitásával foglalkozó részt](operating-system-functionality.md)). Ha azonban a App Service (előzetes verzió) egyéni Windows-tárolót használ, lehetővé teszi az alkalmazás által igényelt operációsrendszer-módosításokat, így egyszerűen áttelepítheti a helyszíni alkalmazást, amely egyéni operációs rendszert és szoftver-konfigurációt igényel. Ez az oktatóanyag bemutatja egy Windows betűkészlet-könyvtárba telepített egyéni betűkészletet használó ASP.NET-alkalmazás az App Service-be való áttelepítésének menetét. Egy Visual Studióból származó egyénileg konfigurált Windows-rendszerképet kell üzembe helyeznie az [Azure Container Registryben](../container-registry/index.yml), majd futtatnia az App Service-ben.
 
 ![Megjeleníti a Windows-tárolóban futó webalkalmazást.](media/tutorial-custom-container/app-running.png)
 
@@ -92,7 +92,7 @@ Az _InstallFont.ps1_ megtalálható a **CustomFontSample** projektben. Ez egy eg
 
 ## <a name="publish-to-azure-container-registry"></a>Közzététel az Azure Container Registryben
 
-Az [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) képes tárolni a rendszerképeket a tárolók üzembe helyezéséhez. Az App Service-t az Azure Container Registryben üzemeltetett rendszerképek használatára konfigurálhatja.
+Az [Azure Container Registry](../container-registry/index.yml) képes tárolni a rendszerképeket a tárolók üzembe helyezéséhez. Az App Service-t az Azure Container Registryben üzemeltetett rendszerképek használatára konfigurálhatja.
 
 ### <a name="open-publish-wizard"></a>Közzétételi varázsló megnyitása
 
@@ -161,7 +161,7 @@ A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblá
 | ----------------- | ------------ |
 |**Kép forrása**| Azure Container-regisztráció |
 |**Registry**| Válassza ki [a korábban létrehozott beállításjegyzéket](#publish-to-azure-container-registry). |
-|**Kép**| customfontsample |
+|**Rendszerkép**| customfontsample |
 |**Tag**| legújabb |
 
 ### <a name="complete-app-creation"></a>Alkalmazás létrehozásának befejezése
@@ -342,7 +342,7 @@ ENTRYPOINT ["init.sh"]
 
 [!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ebben a szakaszban és a következő lépésekben olyan erőforrásokat kell kiépíteni az Azure-ban, amelyeken leküldi a lemezképet, majd üzembe helyezi a tárolót Azure App Service. Először hozzon létre egy erőforráscsoportot, amelyben az összes erőforrást össze szeretné gyűjteni.
 
@@ -439,7 +439,7 @@ Azure App Service tároló üzembe helyezéséhez először létre kell hoznia e
     
     A környezeti változóval kapcsolatos további információkért tekintse [meg a minta GitHub-tárházában található Readme](https://github.com/Azure-Samples/docker-django-webapp-linux)témakört.
 
-1. [Felügyelt identitás](/azure/app-service/overview-managed-identity) engedélyezése a webalkalmazás számára a következő [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) paranccsal:
+1. [Felügyelt identitás](./overview-managed-identity.md) engedélyezése a webalkalmazás számára a következő [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) paranccsal:
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -466,7 +466,7 @@ Azure App Service tároló üzembe helyezéséhez először létre kell hoznia e
     - `<registry-name>` a tároló-beállításjegyzék nevével
     - `<subscription-id>`a parancsból beolvasott előfizetés-AZONOSÍTÓval `az account show`
 
-További információ ezekről az engedélyekről: [Mi az Azure szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview) és 
+További információ ezekről az engedélyekről: [Mi az Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>A rendszerkép üzembe helyezése és az alkalmazás tesztelése
 

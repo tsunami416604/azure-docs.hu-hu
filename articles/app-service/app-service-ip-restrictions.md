@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207124"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962961"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Hozzáférési korlátozások Azure App Service
 
@@ -94,7 +94,7 @@ Az alkalmazáshoz való hozzáférés szabályozása mellett az alkalmazás ált
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Hozzáférés-korlátozási szabályok programozott manipulációja ##
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) és a [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) támogatja a hozzáférési korlátozások szerkesztését. Példa hozzáférési korlátozás hozzáadására az Azure CLI használatával:
+Az [Azure CLI](/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) és a [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) támogatja a hozzáférési korlátozások szerkesztését. Példa hozzáférési korlátozás hozzáadására az Azure CLI használatával:
 
 ```azurecli-interactive
 az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
@@ -107,7 +107,7 @@ Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName
     -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
 ```
 
-Az értékek manuálisan is megadhatók [Azure REST API](https://docs.microsoft.com/rest/api/azure/) Put művelettel a Resource Manager alkalmazás konfigurációjában, vagy egy Azure Resource Manager sablon használatával. Például használhatja a resources.azure.com, és szerkesztheti a ipSecurityRestrictions-blokkot a szükséges JSON hozzáadásához.
+Az értékek manuálisan is megadhatók [Azure REST API](/rest/api/azure/) Put művelettel a Resource Manager alkalmazás konfigurációjában, vagy egy Azure Resource Manager sablon használatával. Például használhatja a resources.azure.com, és szerkesztheti a ipSecurityRestrictions-blokkot a szükséges JSON hozzáadásához.
 
 Az információ helye a Resource Managerben:
 
@@ -133,10 +133,10 @@ A korábbi példa JSON-szintaxisa a következő:
 
 A hozzáférési korlátozások a App Service csomagokkal megegyező funkciókkal rendelkező Function apps-alkalmazásokhoz is elérhetők. A hozzáférési korlátozások engedélyezése letiltja a portál Kódszerkesztő használatát a nem engedélyezett IP-címekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure Functions hozzáférési korlátozásai](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Application Gateway integráció a szolgáltatási végpontokkal](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
-[serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[serviceendpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md

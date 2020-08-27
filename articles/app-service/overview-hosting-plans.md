@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611449"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958512"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -57,7 +57,7 @@ Amikor App Serviceban hoz létre alkalmazást, az egy App Service tervbe kerül.
 
 Így a App Service terv a App Service alkalmazások méretezési egysége. Ha a csomag öt virtuálisgép-példány futtatására van konfigurálva, akkor a tervben szereplő összes alkalmazás mind az öt példányon fut. Ha a terv automatikus skálázásra van konfigurálva, akkor a csomagban lévő összes alkalmazás az automatikus skálázási beállítások alapján ki lesz bővítve.
 
-Az alkalmazások horizontális felskálázásával kapcsolatos információkért tekintse meg a [példányok számának manuális vagy automatikus méretezését](../monitoring-and-diagnostics/insights-how-to-scale.md)ismertető témakört.
+Az alkalmazások horizontális felskálázásával kapcsolatos információkért tekintse meg a [példányok számának manuális vagy automatikus méretezését](../azure-monitor/platform/autoscale-get-started.md)ismertető témakört.
 
 <a name="cost"></a>
 
