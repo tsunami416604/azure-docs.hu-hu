@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: ba53b4a4765a2b3db0aa048a990a0a48f74682d0
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874979"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931182"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -87,14 +87,14 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
@@ -102,5 +102,5 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [A Text Analytics áttekintése](../overview.md)
 * [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Nyelvfelismerés](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Nyelv felismerése](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Nyelvi felismerés](../how-tos/text-analytics-how-to-language-detection.md)

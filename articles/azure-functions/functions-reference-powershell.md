@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816405"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933501"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -384,14 +384,60 @@ Ha eszközöket használó Function-alkalmazást hoz létre, például a Visual 
 
 ## <a name="powershell-versions"></a>PowerShell-verziók
 
-A következő táblázat a functions Runtime egyes főverziói által támogatott PowerShell-verziókat és a szükséges .NET-verziót mutatja be:
+A következő táblázat a functions Runtime egyes főbb verzióiban elérhető PowerShell-verziókat és a szükséges .NET-verziót mutatja be:
 
 | Függvények verziója | PowerShell-verzió                               | .NET-verzió  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (ajánlott) | PowerShell 7 (ajánlott)<br/>6. PowerShell-mag | .NET Core 3,1<br/>.NET Core 3,1 |
+| 3. x (ajánlott) | PowerShell 7 (ajánlott)<br/>6. PowerShell-mag | .NET Core 3,1<br/>.NET Core 2.1 |
 | 2. x               | 6. PowerShell-mag                                | .NET Core 2.2 |
 
 Az aktuális verziót bármely függvényből kinyomtatva láthatja `$PSVersionTable` .
+
+### <a name="running-local-on-a-specific-version"></a>Helyi futtatása adott verzión
+
+Amikor helyileg futtatja az Azure Functions Runtime alapértelmezett értékeit a PowerShell Core 6 használatával. Ha helyileg futtatja a PowerShell 7-et, a beállítást a `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` `Values` projekt gyökerében található fájl local.setting.jsjában kell hozzáadnia a tömbhöz. Ha helyileg futtatja a PowerShell 7-es verzióját, a local.settings.jsfájl a következő példához hasonlóan néz ki: 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "powershell",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"
+  }
+}
+```
+
+### <a name="changing-the-powershell-version"></a>A PowerShell verziójának módosítása
+
+A Function alkalmazásnak a 3. x verzióban kell futnia, hogy a PowerShell Core 6-ról a PowerShell 7-re tudjon frissíteni. Ennek módjáról [az aktuális futtatókörnyezet verziójának megtekintése és frissítése](set-runtime-version.md#view-and-update-the-current-runtime-version)című témakörben olvashat bővebben.
+
+A következő lépésekkel módosíthatja a Function alkalmazás által használt PowerShell-verziót. Ezt a Azure Portal vagy a PowerShell használatával teheti meg.
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg a Function alkalmazást.
+
+1. A **Beállítások**területen válassza a **konfiguráció**elemet. Az **általános beállítások** lapon keresse meg a **PowerShell verzióját**. 
+
+    :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="Válassza ki a Function alkalmazás által használt PowerShell-verziót"::: 
+
+1. Válassza ki a kívánt **PowerShell Core-verziót** , és kattintson a **Mentés**gombra. Ha a függőben lévő újraindításra figyelmezteti, válassza a **Folytatás**lehetőséget. A Function alkalmazás újraindul a kiválasztott PowerShell-verzióra. 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Futtassa a következő szkriptet a PowerShell verziójának módosításához: 
+
+```powershell
+Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<FUNCTION_APP>/config/web" -Properties @{  powerShellVersion  = '<VERSION>' } -Force -UsePatchSemantics
+
+```
+
+Cserélje le a, a és az értékét `<SUBSCRIPTION_ID>` `<RESOURCE_GROUP>` `<FUNCTION_APP>` Az Azure-előfizetés azonosítójával, az erőforráscsoport és a Function alkalmazás nevével együtt.  Továbbá cserélje le `<VERSION>` a `~6` vagy a-t `~7` . Ellenőrizheti a `powerShellVersion` visszaadott kivonatoló tábla beállításának frissített értékét `Properties` . 
+
+---
+
+A Function alkalmazás újraindul a konfiguráció módosítása után.
 
 ## <a name="dependency-management"></a>Függőségkezelés
 

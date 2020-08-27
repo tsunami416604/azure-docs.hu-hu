@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5dd5cd1ac0463c6c07496e4ea49edd08178a5a54
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 98d94e9544e75f762d4532101a92d14106d6a575
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834388"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931794"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -28,7 +29,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > - Az alkalmazás összekötése az Azure Computer Vision és Custom Vision használatával.
 > - Hozzon létre egy Azure-beli egyszerű fiókot az Azure-szolgáltatások alkalmazásból való üzembe helyezéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -171,13 +172,13 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
     ![Egy alkalmazás képernyője, amely a központi telepítési régió és az erőforráscsoport mezőit jeleníti meg](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha követte a forgatókönyv összes lépését, és az alkalmazást használta az Azure-szolgáltatások üzembe helyezéséhez a fiókjában, lépjen a [Azure Portal](https://ms.portal.azure.com/). Itt szakítsa meg a használni nem kívánt szolgáltatásokat.
 
 Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes előfizetése csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt**területen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy teljes funkcionalitású Xamarin. Forms-alkalmazást állít be és vizsgál meg, amely a Custom Vision szolgáltatást használja a mobil kamera-lemezképekben található emblémák észlelésére. Következő lépésként Ismerkedjen meg a Custom Vision-modell létrehozásával kapcsolatos ajánlott eljárásokkal, hogy a saját alkalmazásaihoz hozzon létre egyet, így hatékony és pontos lehet.
 

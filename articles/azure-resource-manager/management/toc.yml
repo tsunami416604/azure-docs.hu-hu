@@ -139,9 +139,9 @@
     - name: Nagyvállalati előfizetések
       items:
         - name: Létrehozás
-          href: programmatically-create-subscription.md
+          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: Hozzáférés biztosítása létrehozáshoz
-          href: grant-access-to-create-subscription.md
+          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Erőforrás-szolgáltatók és típusaik
       href: resource-providers-and-types.md
     - name: Erőforráscsoportok és erőforrások törlése

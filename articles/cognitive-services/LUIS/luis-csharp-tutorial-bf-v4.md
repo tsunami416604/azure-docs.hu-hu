@@ -3,12 +3,13 @@ title: 'Oktatóanyag: Language Understanding robot C# v4'
 description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). A robot a robot Framework 4-es verziójával és az Azure Web App bot Service-szel készült.
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: b9da1d1fecbb251ebf27833cc381eb658a9df46b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 820cdeb692dffbf80a0e85c9d3dd86b703a4cae3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445899"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931267"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: webalkalmazás-robot használata a Language Understanding C használatával #
 
@@ -31,7 +32,7 @@ A C# használatával a Language Understanding (LUIS) nyelvvel integrált cseveg�
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új erőforrás létrehozása** lehetőséget.
 
-1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Kattintson a **Létrehozás** gombra.
+1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Válassza a **Létrehozás** lehetőséget.
 
 1. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
 
@@ -56,7 +57,7 @@ A C# használatával a Language Understanding (LUIS) nyelvvel integrált cseveg�
     |SDK nyelve|Robot programozási nyelve|**C#**|
     |Bot|Robot típusa|**Alapszintű robot**|
 
-1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
+1. Válassza a **Létrehozás** lehetőséget. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
     > [!div class="mx-imgBorder"]
     > [![Webalkalmazás-robot létrehozása](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)

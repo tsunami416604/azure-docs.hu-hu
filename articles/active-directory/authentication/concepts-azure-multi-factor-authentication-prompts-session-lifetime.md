@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169340"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919675"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Újrahitelesítési kérések optimalizálása és az Azure-Multi-Factor Authentication munkamenet-élettartamának megértése
 
@@ -45,6 +45,8 @@ A felhasználókra vonatkozó hitelesítési kérések gyakoriságának optimali
 ### <a name="evaluate-session-lifetime-policies"></a>Munkamenet élettartamára vonatkozó szabályzatok kiértékelése
 
 A munkamenet-élettartam beállítása nélkül nincsenek állandó cookie-k a böngésző-munkamenetben. Minden alkalommal, amikor egy felhasználó bezárja és megnyitja a böngészőt, rákérdez az újrahitelesítésre. Az Office-ügyfelekben az alapértelmezett időtartam 90 nap. Ezzel az alapértelmezett Office-konfigurációval, ha a felhasználó alaphelyzetbe állítja a jelszavát, vagy több mint 90 nap van használatban, a felhasználónak minden szükséges tényezővel újra hitelesítenie kell magát (első és második tényező).
+
+Előfordulhat, hogy egy felhasználó több MFA-kérést lát egy olyan eszközön, amely nem rendelkezik identitással az Azure AD-ben. Több kérdés is jár, ha mindegyik alkalmazás saját OAuth frissítési tokent használ, amely nem más ügyfélalkalmazások számára van megosztva. Ebben a forgatókönyvben az MFA többször kéri az adatfeldolgozást, mivel az egyes alkalmazások OAuth frissítési jogkivonatot igényelnek az MFA-val való ellenőrzéshez.
 
 Az Azure AD-ben a munkamenet-élettartam legszigorúbb szabályzata határozza meg, hogy mikor kell újrahitelesíteni a felhasználót. Vegyük példaként a következő esetet:
 

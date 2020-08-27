@@ -188,6 +188,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: Az IoT üzemelő példányának védelme
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Biztonságossá tétel X.509-es hitelesítésszolgáltatói tanúsítványokkal
       items:
         - name: X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése
