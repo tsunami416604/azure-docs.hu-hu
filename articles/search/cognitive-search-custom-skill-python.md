@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852786"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936129"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
 
@@ -26,12 +26,12 @@ Az egyéni képességet a kialakítás egyszerűvé teszi (két karakterlánc ö
 
 + Tekintse át az [Egyéni ügyességi felületet](cognitive-search-custom-skill-interface.md) az egyéni képességek megvalósításához szükséges bemeneti/kimeneti interfész bevezetéséhez.
 
-+ Állítsa be a környezetet. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) követjük teljes körűen a kiszolgáló nélküli Azure-függvények beállításához a Visual Studio Code és a Python Extensions használatával. Az oktatóanyag végigvezeti Önt a következő eszközök és összetevők telepítésén: 
++ Állítsa be a környezetet. Ezt az [oktatóanyagot](/azure/python/tutorial-vs-code-serverless-python-01) követjük teljes körűen a kiszolgáló nélküli Azure-függvények beállításához a Visual Studio Code és a Python Extensions használatával. Az oktatóanyag végigvezeti Önt a következő eszközök és összetevők telepítésén: 
 
   + [Python 3,75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Azure Functions-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
@@ -264,11 +264,11 @@ Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a kész
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Gratulálunk! Létrehozta az első egyéni szaktudását. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. További információért kattintson az alábbi hivatkozásokra.
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Készségkészlet létrehozása (REST)](/rest/api/searchservice/create-skillset)
 + [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)

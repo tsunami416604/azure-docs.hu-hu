@@ -3,12 +3,12 @@ title: Események fogadása az Event Processor Host használatával – Azure Ev
 description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, amely leegyszerűsíti az ellenőrzőpontok, a bérletek és az olvasási események ion párhuzamos kezelését.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002522"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936180"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]
@@ -43,7 +43,7 @@ Ahelyett, hogy kiépíti a saját megoldását, Event Hubs biztosítja ezt a fun
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor felület
 
-Első lépésként az alkalmazások az [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) felületet implementálják, amely négy módszerrel rendelkezik: [OpenAsync, CloseAsync, ProcessErrorAsync és ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Ez az illesztőfelület tartalmazza a tényleges kódot, amely az Event Hubs által küldött eseményeket használja fel. A következő kód egy egyszerű implementációt mutat be:
+Első lépésként az alkalmazások az  [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) felületet implementálják, amely négy módszerrel rendelkezik: [OpenAsync, CloseAsync, ProcessErrorAsync és ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Ez az illesztőfelület tartalmazza a tényleges kódot, amely az Event Hubs által küldött eseményeket használja fel. A következő kód egy egyszerű implementációt mutat be:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -192,10 +192,10 @@ Nem javasoljuk, hogy az alkalmazások használatakor hozzon létre egy olyan fog
 Most, hogy már ismeri az Event Processor Hostt, tekintse meg a következő cikkeket, amelyekben további információt talál a Event Hubs:
 
 - Bevezetés az Event Hubs használatába
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 * [Rendelkezésre állás és konzisztencia az Event Hubsban](event-hubs-availability-and-consistency.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)

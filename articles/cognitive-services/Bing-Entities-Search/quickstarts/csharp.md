@@ -10,12 +10,13 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650272"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936826"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API C használatával #
 
@@ -32,7 +33,7 @@ Bár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgált
 
    1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
    2. Válassza a **NuGet-csomagok kezelése**lehetőséget.
-   3. Keresse meg és válassza ki a *Newtonsoft. JSON*fájlt, majd telepítse a csomagot.
+   3. Keresse meg és válassza ki a *Newtonsoft.Js*, majd telepítse a csomagot.
 
 - Ha Linux/MacOS rendszert használ, akkor az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
 
@@ -174,7 +175,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)

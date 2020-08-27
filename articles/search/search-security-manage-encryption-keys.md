@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed5d1f5b35bc9b6dee234678fa82af95e1d53bc7
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553996"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928819"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
 
-Az Azure Cognitive Search automatikusan titkosítja az indexelt tartalmat a [szolgáltatás által felügyelt kulcsokkal](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Ha további védelemre van szükség, az alapértelmezett titkosítás kiegészítő titkosítási réteggel kiegészíthető a Azure Key Vaultban létrehozott és kezelt kulcsok használatával. Ez a cikk végigvezeti a CMK-titkosítás beállításának lépésein.
+Az Azure Cognitive Search automatikusan titkosítja az indexelt tartalmat a [szolgáltatás által felügyelt kulcsokkal](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components). Ha további védelemre van szükség, az alapértelmezett titkosítás kiegészítő titkosítási réteggel kiegészíthető a Azure Key Vaultban létrehozott és kezelt kulcsok használatával. Ez a cikk végigvezeti a CMK-titkosítás beállításának lépésein.
 
-A CMK-titkosítás [Azure Key Vaulttól](https://docs.microsoft.com/azure/key-vault/key-vault-overview)függ. Létrehozhatja saját titkosítási kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-jait a titkosítási kulcsok létrehozásához. A Azure Key Vault használatával a [naplózás engedélyezésekor](../key-vault/general/logging.md)is naplózhatja a kulcshasználat.  
+A CMK-titkosítás [Azure Key Vaulttól](../key-vault/general/overview.md)függ. Létrehozhatja saját titkosítási kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-jait a titkosítási kulcsok létrehozásához. A Azure Key Vault használatával a [naplózás engedélyezésekor](../key-vault/general/logging.md)is naplózhatja a kulcshasználat.  
 
 Az ügyfél által felügyelt kulcsokkal történő titkosítást az egyes indexekre vagy a szinonimák leképezésére alkalmazza a rendszer, amikor ezek az objektumok létre lettek hozva, és nincs megadva a keresési szolgáltatás szintjén. Csak az új objektumokat lehet titkosítani. A már létező tartalmak nem titkosíthatók.
 
@@ -44,14 +44,14 @@ Ebben a példában a következő szolgáltatásokat és szolgáltatásokat haszn
 
 + [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 
 
-+ [Hozzon létre egy Azure Key Vault erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) , vagy keressen egy meglévő tárat ugyanabban az előfizetésben, mint az Azure Cognitive Search. Ehhez a szolgáltatáshoz azonos előfizetésre van szükség.
++ [Hozzon létre egy Azure Key Vault erőforrást](../key-vault/secrets/quick-create-portal.md#create-a-vault) , vagy keressen egy meglévő tárat ugyanabban az előfizetésben, mint az Azure Cognitive Search. Ehhez a szolgáltatáshoz azonos előfizetésre van szükség.
 
-+ A konfigurációs feladatokhoz [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) vagy [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) van használatban.
++ A konfigurációs feladatokhoz [Azure PowerShell](/powershell/azure/) vagy [Azure CLI](/cli/azure/install-azure-cli) van használatban.
 
-+ A [Poster](search-get-started-postman.md), a [Azure PowerShell](search-create-index-rest-api.md) és a [.net SDK előzetes](https://aka.ms/search-sdk-preview) verziója a titkosítási kulcs paraméterét tartalmazó indexeket és szinonimákat létrehozó REST API meghívására használható. Jelenleg nem támogatott a kulcsok indexekhez vagy szinonimához való hozzáadásához szükséges portál támogatása.
++ A [Poster](search-get-started-postman.md), a [Azure PowerShell](./search-get-started-powershell.md) és a [.net SDK előzetes](https://aka.ms/search-sdk-preview) verziója a titkosítási kulcs paraméterét tartalmazó indexeket és szinonimákat létrehozó REST API meghívására használható. Jelenleg nem támogatott a kulcsok indexekhez vagy szinonimához való hozzáadásához szükséges portál támogatása.
 
 >[!Note]
-> Az ügyfél által felügyelt kulcsokkal való titkosítás jellegéből adódóan az Azure Cognitive Search nem fogja tudni lekérni az adatait, ha az Azure Key Vault-kulcsot törlik. Ha meg szeretné akadályozni az adatvesztést a véletlen Key Vaulti törlések miatt, a Key vaulton engedélyezni kell a törlés és a kiürítés védelmét. A Soft-delete alapértelmezés szerint engedélyezve van, ezért csak akkor lesz probléma, ha szándékosan letiltotta. A védelem kiürítése alapértelmezés szerint nincs engedélyezve, de az Azure Cognitive Search CMK titkosításhoz szükséges. [További információ: a](../key-vault/key-vault-ovw-soft-delete.md) védelmi áttekintések eltávolítása és [kiürítése](../key-vault/general/soft-delete-overview.md#purge-protection) .
+> Az ügyfél által felügyelt kulcsokkal való titkosítás jellegéből adódóan az Azure Cognitive Search nem fogja tudni lekérni az adatait, ha az Azure Key Vault-kulcsot törlik. Ha meg szeretné akadályozni az adatvesztést a véletlen Key Vaulti törlések miatt, a Key vaulton engedélyezni kell a törlés és a kiürítés védelmét. A Soft-delete alapértelmezés szerint engedélyezve van, ezért csak akkor lesz probléma, ha szándékosan letiltotta. A védelem kiürítése alapértelmezés szerint nincs engedélyezve, de az Azure Cognitive Search CMK titkosításhoz szükséges. [További információ: a](../key-vault/general/soft-delete-overview.md) védelmi áttekintések eltávolítása és [kiürítése](../key-vault/general/soft-delete-overview.md#purge-protection) .
 
 ## <a name="1---enable-key-recovery"></a>1 – kulcshelyreállítás engedélyezése
 
@@ -117,7 +117,7 @@ Az Azure Cognitive Search az identitás hozzárendelésének két módját támo
 
 Ha lehetséges, használjon felügyelt identitást. Ez a legegyszerűbb módja annak, hogy identitást rendeljen a keresési szolgáltatáshoz, és a legtöbb esetben működjön. Ha az indexekhez és a szinonimához több kulcsot használ, vagy ha a megoldás olyan elosztott architektúrában van, amely nem jogosult az identitás-alapú hitelesítésre, használja a cikk végén ismertetett, [külsőleg felügyelt Azure Active Directory megközelítést](#aad-app) .
 
- Általánosságban elmondható, hogy egy felügyelt identitás lehetővé teszi a keresési szolgáltatás hitelesítését Azure Key Vault a hitelesítő adatok kódban való tárolása nélkül. Az ilyen típusú felügyelt identitás életciklusa a keresési szolgáltatás életciklusához van kötve, amely csak egyetlen felügyelt identitással rendelkezhet. [További információ a felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+ Általánosságban elmondható, hogy egy felügyelt identitás lehetővé teszi a keresési szolgáltatás hitelesítését Azure Key Vault a hitelesítő adatok kódban való tárolása nélkül. Az ilyen típusú felügyelt identitás életciklusa a keresési szolgáltatás életciklusához van kötve, amely csak egyetlen felügyelt identitással rendelkezhet. [További információ a felügyelt identitásokról](../active-directory/managed-identities-azure-resources/overview.md).
 
 1. [Jelentkezzen be Azure Portalba](https://portal.azure.com) , és nyissa meg a keresési szolgáltatás áttekintés lapját. 
 
@@ -129,7 +129,7 @@ Ha lehetséges, használjon felügyelt identitást. Ez a legegyszerűbb módja a
 
 Ha engedélyezni szeretné, hogy a keresési szolgáltatás használhassa a Key Vault kulcsot, bizonyos hozzáférési engedélyeket kell adnia a keresési szolgáltatásnak.
 
-A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a Key vaultot használó keresési szolgáltatás indexe vagy szinonimája használhatatlan lesz. A Key Vault-hozzáférési engedélyek későbbi visszaállításakor a rendszer visszaállítja a index\synonym-leképezési hozzáférést. További információt a [kulcstartó biztonságos elérését](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)ismertető témakörben talál.
+A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a Key vaultot használó keresési szolgáltatás indexe vagy szinonimája használhatatlan lesz. A Key Vault-hozzáférési engedélyek későbbi visszaállításakor a rendszer visszaállítja a index\synonym-leképezési hozzáférést. További információt a [kulcstartó biztonságos elérését](../key-vault/general/secure-your-key-vault.md)ismertető témakörben talál.
 
 1. [Jelentkezzen be Azure Portalba](https://portal.azure.com) , és nyissa meg a Key Vault áttekintés lapját. 
 
@@ -143,7 +143,7 @@ A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a 
 
 1. Kattintson a **legfontosabb engedélyek** elemre, és válassza a *beolvasás*, a *kulcs* és a *betakarás kulcsa*lehetőséget. A szükséges engedélyek gyors kiválasztásához használhatja a *Azure Data Lake Storage vagy az Azure Storage* -sablont.
 
-   Az Azure Cognitive Search a következő [hozzáférési engedélyekkel](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)kell megadni:
+   Az Azure Cognitive Search a következő [hozzáférési engedélyekkel](../key-vault/keys/about-keys.md#key-operations)kell megadni:
 
    * *Get* -lehetővé teszi, hogy a keresési szolgáltatás lekérje a kulcs nyilvános részeit egy Key Vault
    * *Wrap Key* – lehetővé teszi, hogy a keresési szolgáltatás a kulcs használatával megvédje a belső titkosítási kulcsot
@@ -162,7 +162,7 @@ A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a 
 
 ## <a name="5---encrypt-content"></a>5 – tartalom titkosítása
 
-Ha egy ügyfél által felügyelt kulcsot szeretne felvenni egy indexre vagy szinonimára, akkor a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) vagy egy SDK-t kell használnia. A portál nem teszi lehetővé a szinonimák leképezését vagy a titkosítási tulajdonságokat. Ha érvényes API-t használ, az indexek és a szinonima-leképezések is támogatják a legfelső szintű **encryptionKey** tulajdonságot. 
+Ha egy ügyfél által felügyelt kulcsot szeretne felvenni egy indexre vagy szinonimára, akkor a [Search REST API](/rest/api/searchservice/) vagy egy SDK-t kell használnia. A portál nem teszi lehetővé a szinonimák leképezését vagy a titkosítási tulajdonságokat. Ha érvényes API-t használ, az indexek és a szinonima-leképezések is támogatják a legfelső szintű **encryptionKey** tulajdonságot. 
 
 A Key Vault **URI-ja**, a **kulcs neve** és a Key Vault kulcsának **verziószáma** alapján hozzon létre egy **encryptionKey** -definíciót az alábbiak szerint:
 
@@ -194,7 +194,7 @@ Ha HRE alkalmazást használ a Key Vault hitelesítéshez felügyelt identitás 
 ```
 
 ## <a name="example-index-encryption"></a>Példa: index encryption
-Az új indexnek a REST API használatával történő létrehozásának részletei a [create index (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)helyen találhatók, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása az index definíciójának részeként: 
+Az új indexnek a REST API használatával történő létrehozásának részletei a [create index (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index)helyen találhatók, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása az index definíciójának részeként: 
 
 ```json
 {
@@ -222,7 +222,7 @@ Most már elküldheti az index-létrehozási kérelmet, majd megkezdheti a norm�
 
 ## <a name="example-synonym-map-encryption"></a>Példa: szinonimák leképezésének titkosítása
 
-Az új szinonimák leképezésének a REST API használatával történő létrehozásának részleteit a [szinonimák leképezése (Azure Cognitive Search REST API) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)című rész tartalmazza, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása a szinonimák leképezése definíciójának részeként: 
+Az új szinonimák leképezésének a REST API használatával történő létrehozásának részleteit a [szinonimák leképezése (Azure Cognitive Search REST API) létrehozása](/rest/api/searchservice/create-synonym-map)című rész tartalmazza, ahol az egyetlen különbség a titkosítási kulcs részleteinek megadása a szinonimák leképezése definíciójának részeként: 
 
 ```json
 {   
@@ -243,7 +243,7 @@ Most már elküldheti a szinonima-hozzárendelési kérést, majd normál módon
 > Habár a **encryptionKey** nem vehetők fel a meglévő Azure Cognitive Search indexekhez vagy szinonimái térképekhez, a három kulcstartó részleteinek (például a kulcs verziójának frissítése) különböző értékeinek megadásával lehet frissíteni. Új Key Vault kulcsra vagy új kulcs verzióra való váltáskor a kulcsot használó összes Azure Cognitive Search indexet vagy szinonima-térképet először frissíteni kell az új key\version használatára az előző key\version. törlése **előtt** . Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, mivel a kulcs elérésének elvesztése után nem tudja visszafejteni a tartalmat.   
 > A Key Vault-hozzáférési engedélyek későbbi visszaállításával visszaállíthatja a tartalom-hozzáférést.
 
-## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a>Speciális: külsőleg felügyelt Azure Active Directory alkalmazás használata
+## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a> Speciális: külsőleg felügyelt Azure Active Directory alkalmazás használata
 
 Ha egy felügyelt identitás nem lehetséges, létrehozhat egy Azure Active Directory alkalmazást az Azure Cognitive Search szolgáltatáshoz tartozó rendszerbiztonsági tag használatával. A felügyelt identitások nem életképesek az alábbi feltételek teljesülése esetén:
 
@@ -254,9 +254,9 @@ Ha egy felügyelt identitás nem lehetséges, létrehozhat egy Azure Active Dire
 Az ilyen topológiák befogadásához az Azure Cognitive Search támogatja Azure Active Directory (HRE) alkalmazások használatát a keresési szolgáltatás és a Key Vault közötti hitelesítéshez.    
 HRE-alkalmazás létrehozása a portálon:
 
-1. [Egy Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+1. [Egy Azure Active Directory-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md).
 
-1. [Szerezze be az alkalmazás azonosítóját és a hitelesítési kulcsot](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , mivel ezek a titkosított indexek létrehozásához szükségesek lesznek. A megadható értékeknek tartalmaznia kell az **alkalmazás azonosítóját** és a **hitelesítési kulcsot**.
+1. [Szerezze be az alkalmazás azonosítóját és a hitelesítési kulcsot](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) , mivel ezek a titkosított indexek létrehozásához szükségesek lesznek. A megadható értékeknek tartalmaznia kell az **alkalmazás azonosítóját** és a **hitelesítési kulcsot**.
 
 >[!Important]
 > Ha úgy dönt, hogy felügyelt identitás helyett HRE-alkalmazást használ, vegye figyelembe, hogy az Azure Cognitive Search nem rendelkezik jogosultsággal a HRE-alkalmazásnak az Ön nevében történő felügyeletére, és a HRE-alkalmazás kezelése (például az alkalmazás-hitelesítési kulcs rendszeres elforgatása).
@@ -271,14 +271,14 @@ A kulcs rotációja várhatóan az idő múlásával történik. A kulcsok elfor
 
 1. [Az index vagy a szinonima Térkép által használt kulcs meghatározása](search-security-get-encryption-keys.md).
 1. [Hozzon létre egy új kulcsot a Key vaultban](../key-vault/keys/quick-create-portal.md), de hagyja elérhetővé az eredeti kulcsot.
-1. Az új értékek használatához [frissítse a encryptionKey tulajdonságait](https://docs.microsoft.com/rest/api/searchservice/update-index) egy index vagy szinonima leképezésben. Csak azokat az objektumokat lehet frissíteni, amelyeket eredetileg ezzel a tulajdonsággal hoztak létre, hogy más értéket használjanak.
+1. Az új értékek használatához [frissítse a encryptionKey tulajdonságait](/rest/api/searchservice/update-index) egy index vagy szinonima leképezésben. Csak azokat az objektumokat lehet frissíteni, amelyeket eredetileg ezzel a tulajdonsággal hoztak létre, hogy más értéket használjanak.
 1. Tiltsa le vagy törölje az előző kulcsot a Key vaultban. A kulcs-hozzáférés figyelése az új kulcs használatának ellenőrzéséhez.
 
 A keresési szolgáltatás teljesítménybeli okokból akár több óráig is gyorsítótárazza a kulcsot. Ha letiltja vagy törli a kulcsot anélkül, hogy újat kellene benyújtania, a lekérdezések ideiglenesen is működni fognak, amíg a gyorsítótár le nem jár. Ha azonban a keresési szolgáltatás nem tudja visszafejteni a tartalmat, a következő üzenet jelenik meg: "Hozzáférés megtiltva. Lehetséges, hogy a használt lekérdezési kulcsot visszavonták – próbálkozzon újra. " 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](https://docs.microsoft.com/azure/security/), és különösen a következő cikket:
+Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](../security/index.yml), és különösen a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Inaktív adatok titkosítása](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [Inaktív adatok titkosítása](../security/fundamentals/encryption-atrest.md)

@@ -2,13 +2,14 @@
 title: Helyszíni WCF REST-szolgáltatás elérhetővé tétele az ügyfeleknek a Azure Relay használatával
 description: Ez az oktatóanyag azt ismerteti, hogyan tehet elérhetővé egy helyszíni WCF REST-szolgáltatást egy külső ügyfél számára az Azure WCF Relay használatával.
 ms.topic: tutorial
+ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 50628073efd7114aaacfe37177d2f5beb3be3d47
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85322692"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935704"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával
 

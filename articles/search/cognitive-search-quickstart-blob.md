@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 9bbe06cbdc5ad349995d93d01cc325ed8d7951a0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488953"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935398"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
@@ -29,7 +29,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
-+ Egy Azure Storage-fiók [blob Storage](https://docs.microsoft.com/azure/storage/blobs/)-val.
++ Egy Azure Storage-fiók [blob Storage](../storage/blobs/index.yml)-val.
 
 > [!NOTE]
 > Ez a rövid útmutató az AI-hoz készült [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) is használja. Mivel a számítási feladatok olyan kicsik, Cognitive Services a jelenetek mögött, akár 20 tranzakcióra is felhasználható. Ez azt jelenti, hogy ezt a gyakorlatot anélkül végezheti el, hogy további Cognitive Services erőforrást kellene létrehoznia.
@@ -40,7 +40,7 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
 1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. Bontsa ki a fájlokat.
 
-1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    + Válassza ki ugyanazt a régiót, mint az Azure Cognitive Search a sávszélességgel kapcsolatos költségek elkerülése érdekében. 
 
@@ -56,7 +56,7 @@ Most már készen áll az adatimportálás varázsló áthelyezésére.
 
 ## <a name="run-the-import-data-wizard"></a>Az adatimportálás varázsló futtatása
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
 1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés lapon kattintson az **adatimportálás** parancsra a parancssávban, és állítsa be a kognitív dúsítást négy lépésben.
 
@@ -169,22 +169,22 @@ Egy másik fontos szempont, hogy a képességek többek között a tartalomtípu
 
 A kimenet egy keresési indexre van irányítva, és az indexelés során és az index egyes mezőiben létrehozott név-érték párok között van leképezés. Belsőleg a portál [jegyzeteket](cognitive-search-concept-annotations-syntax.md) állít be és definiál egy [képességcsoportot](cognitive-search-defining-skillset.md), amellyel megalapozza a műveletek sorrendjét és az általános folyamatot. Ezeket a lépéseket a rendszer elrejti a portálon, ám az alapelvek ismerete fontos, amikor hozzálát a kód írásához.
 
-Végezetül megtanulta, hogy az index lekérdezésével ellenőrizheti a tartalmat. A végén az Azure Cognitive Search egy kereshető indexet tartalmaz, amelyet az [egyszerű](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vagy [teljes kibővített lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)használatával lehet lekérdezni. A bővített mezőket tartalmazó index ugyanúgy működik, akár az összes többi. Ha standard vagy [Egyéni elemzőket](search-analyzers.md), [pontozási profilokat](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [szinonimákat](search-synonyms.md), [sokoldalú szűrőket](search-filters-facets.md), Geo-keresést vagy bármely más Azure Cognitive Search funkciót szeretne beépíteni, akkor természetesen megteheti.
+Végezetül megtanulta, hogy az index lekérdezésével ellenőrizheti a tartalmat. A végén az Azure Cognitive Search egy kereshető indexet tartalmaz, amelyet az [egyszerű](/rest/api/searchservice/simple-query-syntax-in-azure-search) vagy [teljes kibővített lekérdezési szintaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)használatával lehet lekérdezni. A bővített mezőket tartalmazó index ugyanúgy működik, akár az összes többi. Ha standard vagy [Egyéni elemzőket](search-analyzers.md), [pontozási profilokat](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [szinonimákat](search-synonyms.md), [sokoldalú szűrőket](search-filters-facets.md), Geo-keresést vagy bármely más Azure Cognitive Search funkciót szeretne beépíteni, akkor természetesen megteheti.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szakértelmével a portál, a .NET SDK vagy a REST API használatával hozhat létre. Az ismeretek megismeréséhez próbálja ki a REST API a Poster és a több mintaadatok használatával.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: a JSON-Blobok szövegének és szerkezetének kinyerése a REST API-k használatával](cognitive-search-tutorial-blob.md)
+> [Oktatóanyag: a JSON-Blobok szövegének és szerkezetének kinyerése a REST API-k használatával ](cognitive-search-tutorial-blob.md)
 
 > [!Tip]
 > Ha szeretné megismételni ezt a gyakorlatot, vagy próbáljon meg egy másik AI-bővítési bemutatót használni, törölje az indexelő a portálon. Az indexelő törlése visszaállítja az ingyenes napi tranzakció számlálóját a Cognitive Services feldolgozáshoz.

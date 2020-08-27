@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554022"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927119"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
@@ -96,7 +96,7 @@ Az Azure Cognitive Search a legtöbb régióban elérhető. A támogatott régi�
 
  Ha AI-bővítést használ, hozza létre a keresési szolgáltatást ugyanabban a régióban, mint Cognitive Services. *Az Azure Cognitive Search és az ugyanazon régióban lévő Cognitive Services együttes elhelyezése az AI-bővítés követelménye*.
 
- Az üzletmenet-folytonossággal és a vész-helyreállítási (BCDR) követelményekkel rendelkező ügyfeleknek [regionális párokban](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)kell létrehozniuk a szolgáltatásaikat. Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes szolgáltatások esetében is megadható.
+ Az üzletmenet-folytonossággal és a vész-helyreállítási (BCDR) követelményekkel rendelkező ügyfeleknek [regionális párokban](../best-practices-availability-paired-regions.md#azure-regional-pairs)kell létrehozniuk a szolgáltatásaikat. Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes szolgáltatások esetében is megadható.
 
 ### <a name="recommendations"></a>Javaslatok
 
@@ -160,7 +160,7 @@ A legtöbb ügyfél csak egy olyan szolgáltatást használ, amely az [erőforr�
 
 Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet a szolgáltatás redundanciájára, ha az üzemeltetési körülmények között az alábbiak szerepelnek:
 
-+ [Üzletmenet-folytonosság és vész-helyreállítás (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Az Azure Cognitive Search áramszünet esetén nem biztosít azonnali feladatátvételt.
++ [Üzletmenet-folytonosság és vész-helyreállítás (BCDR)](../best-practices-availability-paired-regions.md). Az Azure Cognitive Search áramszünet esetén nem biztosít azonnali feladatátvételt.
 
 + A [több-bérlős architektúrák](search-modeling-multitenant-saas-applications.md) időnként két vagy több szolgáltatást hívhatnak meg.
 
@@ -171,7 +171,7 @@ Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet 
 
 A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replika frissítései szekvenciálisak, ami azt jelenti, hogy legalább egy működőképes a szolgáltatás frissítésekor. További információ az üzemidőről: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szolgáltatás kiépítés után folytathatja a portálon az első index létrehozását.
 

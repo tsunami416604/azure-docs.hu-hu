@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232508"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935381"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Növekményes gazdagodás és gyorsítótárazás az Azure-ban Cognitive Search
 
@@ -28,9 +28,9 @@ A növekményes gyorsítótárazást használó munkafolyamatok a következő l�
 
 1. [Hozzon létre vagy azonosítson egy Azure Storage-fiókot](../storage/common/storage-account-create.md) a gyorsítótár tárolásához.
 1. [Növekményes alkoholtartalom-növelés engedélyezése](search-howto-incremental-index.md) az indexelő alkalmazásban.
-1. [Hozzon létre egy indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -plusz egy [készségkészlet](https://docs.microsoft.com/rest/api/searchservice/create-skillset) a folyamat meghívásához. A feldolgozás során a rendszer menti a dúsítás szakaszait a blob Storage-ban a későbbi használat érdekében.
-1. Tesztelje a kódot, és a módosítások elvégzése után a [frissítés készségkészlet](https://docs.microsoft.com/rest/api/searchservice/update-skillset) módosítsa a definíciókat.
-1. [Futtassa az indexelő](https://docs.microsoft.com/rest/api/searchservice/run-indexer) a folyamat meghívásához, a gyorsítótárazott kimenet beolvasásához a gyorsabb és költséghatékonyabb feldolgozás érdekében.
+1. [Hozzon létre egy indexelő](/rest/api/searchservice/create-indexer) -plusz egy [készségkészlet](/rest/api/searchservice/create-skillset) a folyamat meghívásához. A feldolgozás során a rendszer menti a dúsítás szakaszait a blob Storage-ban a későbbi használat érdekében.
+1. Tesztelje a kódot, és a módosítások elvégzése után a [frissítés készségkészlet](/rest/api/searchservice/update-skillset) módosítsa a definíciókat.
+1. [Futtassa az indexelő](/rest/api/searchservice/run-indexer) a folyamat meghívásához, a gyorsítótárazott kimenet beolvasásához a gyorsabb és költséghatékonyabb feldolgozás érdekében.
 
 A meglévő indexelő alkalmazásával kapcsolatos lépésekről és megfontolásokról további információt a [növekményes bővítés beállítása](search-howto-incremental-index.md)című témakörben talál.
 
@@ -109,9 +109,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy olyan képességet módosít, amelyet az indexelő nem érzékel (például egy másikat a külső kódban, például egy egyéni képességet).
 
-Ebben az esetben a [képességek alaphelyzetbe állításával](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
+Ebben az esetben a [képességek alaphelyzetbe állításával](/rest/api/searchservice/preview-api/reset-skills) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
 
-## <a name="change-detection"></a>Változás észlelése
+## <a name="change-detection"></a>Módosításészleléses
 
 Miután engedélyezte a gyorsítótárat, az indexelő kiértékeli a folyamat-összeállítás változásait annak meghatározására, hogy mely tartalmak használhatók fel újra, és melyeket újra kell dolgozni. Ez a szakasz azokat a módosításokat sorolja fel, amelyek érvénytelenítik a gyorsítótárat, majd a növekményes feldolgozást kiváltó változások következnek. 
 
@@ -150,17 +150,17 @@ A növekményes feldolgozás kiértékeli a készségkészlet-definícióját, �
 
 ## <a name="api-reference"></a>API-referencia
 
-A REST API verzió `2020-06-30-Preview` növekményes dúsítást biztosít az indexelő további tulajdonságaival. A szakértelmével és az adatforrások használhatják az általánosan elérhető verziót. A dokumentáción kívül az API-k meghívásával kapcsolatos részletekért lásd: a [gyorsítótárazás konfigurálása a növekményes](search-howto-incremental-index.md) bővítéshez.
+A REST API verzió `2020-06-30-Preview` növekményes dúsítást biztosít az indexelő további tulajdonságaival. A szakértelmével és az adatforrások használhatják az általánosan elérhető verziót. A dokumentáción kívül az API-k meghívásával kapcsolatos részletekért lásd: a  [gyorsítótárazás konfigurálása a növekményes](search-howto-incremental-index.md) bővítéshez.
 
-+ [Index létrehozása (API-Version = 2020-06 -30 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
++ [Index létrehozása (API-Version = 2020-06 -30 – előzetes verzió)](/rest/api/searchservice/create-indexer) 
 
-+ [Indexer frissítése (API-Version = 2020-06 -30 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
++ [Indexer frissítése (API-Version = 2020-06 -30 – előzetes verzió)](/rest/api/searchservice/update-indexer) 
 
-+ [Készségkészlet frissítése (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (új URI-paraméter a kérésen)
++ [Készségkészlet frissítése (API-Version = 2020-06-30)](/rest/api/searchservice/update-skillset) (új URI-paraméter a kérésen)
 
-+ [Képességek alaphelyzetbe állítása (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
++ [Képességek alaphelyzetbe állítása (API-Version = 2020-06-30)](/rest/api/searchservice/preview-api/reset-skills)
 
-+ Adatbázis-indexelő (Azure SQL, Cosmos DB). Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-data-source) egy új paramétert támogat egy kérelem **ignoreResetRequirement**, amelyet akkor kell beállítani, `true` Ha a frissítési művelet nem érvényteleníti a gyorsítótárat. 
++ Adatbázis-indexelő (Azure SQL, Cosmos DB). Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](/rest/api/searchservice/update-data-source) egy új paramétert támogat egy kérelem **ignoreResetRequirement**, amelyet akkor kell beállítani, `true` Ha a frissítési művelet nem érvényteleníti a gyorsítótárat. 
 
   A **ignoreResetRequirement** takarékosan használható, mert nem kívánt inkonzisztenciát eredményezhet az adataiban, amelyeket nem lehet könnyen észlelni.
 

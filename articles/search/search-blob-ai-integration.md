@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73496434"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936741"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>A blob Storage-beli adatkezelési szolgáltatással való Ismerkedés
 
@@ -112,7 +112,7 @@ A folyamat végén található dúsított dokumentumok eltérnek az eredeti beme
 
 A mesterséges intelligenciával sokkal többet is megtudhat az Azure Storage-ban tárolt adatairól, többek között a Cognitive Services különböző módokon történő kombinálásával, valamint egyéni ismeretek készítésével olyan esetekre, amikor a forgatókönyvhöz nem áll rendelkezésre kognitív szolgáltatás. Az alábbi hivatkozásokra kattintva többet is megtudhat.
 
-+ [Blobok feltöltése, letöltése és listázása a Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Blobok feltöltése, letöltése és listázása a Azure Portal (Azure Blob Storage)](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [BLOB-indexelő beállítása (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
 + [AI-dúsítás áttekintése (Azure Cognitive Search)](cognitive-search-concept-intro.md) 
 + [Készségkészlet létrehozása (Azure Cognitive Search)](cognitive-search-defining-skillset.md)

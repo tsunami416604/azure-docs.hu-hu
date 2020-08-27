@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c32e1bc6e219ff645223cc34cf78991e229b86f0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029943"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935925"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Referenciaprofilok hozzáadása Azure Cognitive Search-indexekhez
 
@@ -64,7 +64,7 @@ A *pontozás* kiszámítja a keresési pontszámot a rangsorban rendezett eredm�
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
- Ez a lekérdezés a "Csárda" kifejezésre keres, és az aktuális helyen halad át. Figyelje meg, hogy ez a lekérdezés más paramétereket is tartalmaz, például: `scoringParameter` . A lekérdezési paramétereket a [dokumentumok &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)című cikkben találja.  
+ Ez a lekérdezés a "Csárda" kifejezésre keres, és az aktuális helyen halad át. Figyelje meg, hogy ez a lekérdezés más paramétereket is tartalmaz, például: `scoringParameter` . A lekérdezési paramétereket a [dokumentumok &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)című cikkben találja.  
 
  Kattintson a [példa](#bkmk_ex) lehetőségre egy pontozási profil részletesebb példájának áttekintéséhez.  
 
@@ -82,7 +82,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  A relevancia-alapú rendezés a pontozási profilok használatával is megvalósítható. A múltban használt keresési találati lapokon érdemes megfontolnia, hogy az ár, a dátum, a minősítés vagy a relevancia alapján rendezhető legyen. Az Azure Cognitive Searchban a pontozási profilok a "relevancia" lehetőséget vezetik be. A relevancia definícióját Ön vezérli, az üzleti célkitűzésekkel és a kívánt keresési élmény típusával.  
 
-##  <a name="example"></a><a name="bkmk_ex"></a>Például  
+##  <a name="example"></a><a name="bkmk_ex"></a> Például  
  Ahogy azt korábban említettük, a testreszabott pontozás az index sémában definiált egy vagy több pontozási profilon keresztül valósítható meg.  
 
  Ez a példa egy index sémáját mutatja be két pontozási profillal ( `boostGenre` , `newAndHighlyRated` ). Az indextel kapcsolatos bármilyen lekérdezés, amely a profilt lekérdezési paraméterként tartalmazza, a profilt fogja használni az eredményhalmaz kiértékeléséhez.  
@@ -157,18 +157,18 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  Kezdje a témakörben megadott [sablonnal](#bkmk_template) .  
 
- Adjon meg egy nevet. A pontozási profilok megadása nem kötelező, de ha hozzáad egyet, a nevet kötelező megadni. Ügyeljen arra, hogy kövesse a mezők elnevezési konvencióit (betűvel kezdődik, kerülje a speciális karaktereket és a fenntartott szavakat). Tekintse meg a teljes lista [elnevezési szabályait &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) .  
+ Adjon meg egy nevet. A pontozási profilok megadása nem kötelező, de ha hozzáad egyet, a nevet kötelező megadni. Ügyeljen arra, hogy kövesse a mezők elnevezési konvencióit (betűvel kezdődik, kerülje a speciális karaktereket és a fenntartott szavakat). Tekintse meg a teljes lista [elnevezési szabályait &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules) .  
 
  A pontozási profil törzse súlyozott mezőkből és függvényekből épül fel.  
 
 |||  
 |-|-|  
 |**Súlyozással**|Adjon meg olyan név-érték párokat, amelyek egy relatív súlyozást rendelnek egy mezőhöz. A [példában](#bkmk_ex)a albumTitle, a műfaj és a artistName mező a 1,5, 5 és 2 közötti növekedést eredményezi. Miért növelte a műfaj a többinél nagyobb mértékben? Ha a keresés olyan adatmennyiségen keresztül történik, amely némileg homogén (például a "műfaj" kifejezéssel `musicstoreindex` ), akkor a relatív súlyoknál nagyobb eltérésre lehet szükség. A (z) `musicstoreindex` "rock" például egy műfajként és azonos módon megfogalmazott műfaji leírásokban jelenik meg. Ha azt szeretné, hogy a műfaj meghaladja a műfaj leírását, a műfaj mezőnek sokkal nagyobb relatív súlyra van szüksége.|  
-|**Functions**|Akkor használatos, ha további számításokra van szükség az adott környezetekhez. Az érvényes értékek:,, `freshness` `magnitude` `distance` és `tag` . Minden függvényhez egyedi paraméterek tartoznak.<br /><br /> -   `freshness`akkor érdemes használni, ha az új vagy a régi elemek kiemelését szeretné növelni. Ez a függvény csak a `datetime` Fields (EDM) használatával használható. DataTimeOffset). Figyelje meg, hogy az `boostingDuration` attribútum csak a `freshness` függvényt használja.<br />-   `magnitude`akkor érdemes használni, ha a magas vagy alacsony numerikus érték alapján szeretne fokozni. A függvényt meghívó forgatókönyvek közé tartozik a haszonkulcs, a legmagasabb ár, a legalacsonyabb ár vagy a letöltések száma. Ez a függvény csak Double és Integer mezőkkel használható.<br />     A `magnitude` függvénynél visszafordíthatja a tartományt, magas – alacsony értékre, ha azt szeretné, hogy az inverz minta (például az alacsonyabb díjszabású elemek magasabb díjszabású elemek kiemelése). A $100 és $1 közötti árak széles választéka miatt `boostingRangeStart` a 100-as és az 1. számú értékkel `boostingRangeEnd` növelheti az alacsonyabb árú elemeket.<br />-   `distance`olyankor kell használni, ha a közelséget vagy a földrajzi helyet szeretné növelni. Ezt a függvényt csak `Edm.GeographyPoint` mezőkkel lehet használni.<br />-   `tag`akkor érdemes használni, ha a dokumentumok és a keresési lekérdezések között közös címkéket szeretne növelni. Ez a függvény csak a és a `Edm.String` mezők használatával használható `Collection(Edm.String)` .<br /><br /> **A függvények használatára vonatkozó szabályok**<br /><br /> A függvény típusának ( `freshness` , `magnitude` , `distance` ) `tag` kisbetűnek kell lennie.<br /><br /> A függvények nem tartalmazhatnak null értékű vagy üres értékeket. Pontosabban, ha a mezőnév-t is tartalmazza, be kell állítania valamire.<br /><br /> A függvények csak szűrhető mezőkre alkalmazhatók. A szűrhető mezőkkel kapcsolatos további információkért lásd: [create Index &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) .<br /><br /> A függvények csak olyan mezőkre alkalmazhatók, amelyek az index mezőinek gyűjteményében vannak meghatározva.|  
+|**Functions**|Akkor használatos, ha további számításokra van szükség az adott környezetekhez. Az érvényes értékek:,, `freshness` `magnitude` `distance` és `tag` . Minden függvényhez egyedi paraméterek tartoznak.<br /><br /> -   `freshness` akkor érdemes használni, ha az új vagy a régi elemek kiemelését szeretné növelni. Ez a függvény csak a `datetime` Fields (EDM) használatával használható. DataTimeOffset). Figyelje meg, hogy az `boostingDuration` attribútum csak a `freshness` függvényt használja.<br />-   `magnitude` akkor érdemes használni, ha a magas vagy alacsony numerikus érték alapján szeretne fokozni. A függvényt meghívó forgatókönyvek közé tartozik a haszonkulcs, a legmagasabb ár, a legalacsonyabb ár vagy a letöltések száma. Ez a függvény csak Double és Integer mezőkkel használható.<br />     A `magnitude` függvénynél visszafordíthatja a tartományt, magas – alacsony értékre, ha azt szeretné, hogy az inverz minta (például az alacsonyabb díjszabású elemek magasabb díjszabású elemek kiemelése). A $100 és $1 közötti árak széles választéka miatt `boostingRangeStart` a 100-as és az 1. számú értékkel `boostingRangeEnd` növelheti az alacsonyabb árú elemeket.<br />-   `distance` olyankor kell használni, ha a közelséget vagy a földrajzi helyet szeretné növelni. Ezt a függvényt csak `Edm.GeographyPoint` mezőkkel lehet használni.<br />-   `tag` akkor érdemes használni, ha a dokumentumok és a keresési lekérdezések között közös címkéket szeretne növelni. Ez a függvény csak a és a `Edm.String` mezők használatával használható `Collection(Edm.String)` .<br /><br /> **A függvények használatára vonatkozó szabályok**<br /><br /> A függvény típusának ( `freshness` , `magnitude` , `distance` ) `tag` kisbetűnek kell lennie.<br /><br /> A függvények nem tartalmazhatnak null értékű vagy üres értékeket. Pontosabban, ha a mezőnév-t is tartalmazza, be kell állítania valamire.<br /><br /> A függvények csak szűrhető mezőkre alkalmazhatók. A szűrhető mezőkkel kapcsolatos további információkért lásd: [create Index &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index) .<br /><br /> A függvények csak olyan mezőkre alkalmazhatók, amelyek az index mezőinek gyűjteményében vannak meghatározva.|  
 
- Az index meghatározása után hozza létre az indexet az index sémájának feltöltésével, amelyet a dokumentumok követnek. Lásd: [index létrehozása &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) , valamint [dokumentumok hozzáadása, frissítése vagy törlése &#40;Azure](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) Cognitive Search REST API&#41;a műveletekre vonatkozó utasításokért. Az index létrehozása után olyan funkcionális pontozási profillal kell rendelkeznie, amely együttműködik a keresési adataival.  
+ Az index meghatározása után hozza létre az indexet az index sémájának feltöltésével, amelyet a dokumentumok követnek. Lásd: [index létrehozása &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index) , valamint [dokumentumok hozzáadása, frissítése vagy törlése &#40;Azure ](/rest/api/searchservice/addupdate-or-delete-documents) Cognitive Search REST API&#41;a műveletekre vonatkozó utasításokért. Az index létrehozása után olyan funkcionális pontozási profillal kell rendelkeznie, amely együttműködik a keresési adataival.  
 
-##  <a name="template"></a><a name="bkmk_template"></a>Sablon  
+##  <a name="template"></a><a name="bkmk_template"></a> Sablon  
  Ez a szakasz a pontozási profilok szintaxisát és sablonját mutatja be. Az attribútumok leírását a következő szakaszban található [index attribútumok](#bkmk_indexref) című rész tartalmazza.  
 
 ```  
@@ -222,7 +222,7 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 . . .  
 ```  
 
-##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a>Index attribútumainak referenciája  
+##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a> Index attribútumainak referenciája  
 
 > [!NOTE]  
 >  Pontozási függvény csak szűrhető mezőkre alkalmazható.  
@@ -238,23 +238,23 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 |`fieldname`|Pontozási függvények esetén szükséges. Pontozási függvény csak olyan mezőkre alkalmazható, amelyek az index mező-gyűjteményének részét képezik, és amelyek szűrhetők. Emellett a függvények egyes típusai további korlátozásokat is bevezetnek (a frissesség a DateTime mezőkkel, az egész számmal vagy a dupla mezőkkel, valamint a távolság a hely mezőivel). Függvény definíciójában csak egyetlen mezőt lehet megadni. Ha például egy profilban kétszer szeretné használni a magnitúdót, két definíciót kell tartalmaznia, egyet az egyes mezőkhöz.|  
 |`interpolation`|Pontozási függvények esetén szükséges. Meghatározza azt a lejtőt, amelynek a pontszámának növelése a tartomány elejétől a tartomány végéig nő. Az érvényes értékek a következők: lineáris (alapértelmezett), állandó, másodfokú és logaritmikus. További részletek: [Interpolációk beállítása](#bkmk_interpolation) .|  
 |`magnitude`|A magnitúdó pontozási függvény egy numerikus mező értékeinek tartománya alapján változtatja meg a rangsort. A leggyakoribb felhasználási példák a következők:<br /><br /> -   **Csillagos minősítések:** Módosítsa a pontozást a "csillag minősítés" mező értéke alapján. Ha két elem van jelentősége, akkor a magasabb minősítésű elem jelenik meg először.<br />-   **Margin:** Ha két dokumentum van jelentősége, akkor a kiskereskedő a magasabb árrésű dokumentumokat szeretné növelni.<br />-   **Kattintson a Counts:** Az olyan alkalmazások esetében, amelyek nyomon követik a termékek vagy lapok műveleteit, a magnitúdó használatával növelheti az olyan elemeket, amelyek általában a legnagyobb forgalmat kapják meg.<br />-   **Letöltések száma:** A letöltéseket nyomon követő alkalmazások esetében a magnitúdó függvény lehetővé teszi a legtöbb letöltéssel rendelkező elemek növelését.|  
-|`magnitude`&#124;`boostingRangeStart`|Megadja annak a tartománynak az indítási értékét, amelynél a skálán szerepel a magnitúdó. Az értéknek egész vagy lebegőpontos számnak kell lennie. Az 1 – 4 csillagos minősítések esetében ez 1. 50%-nál nagyobb árrések esetén ez a 50.|  
-|`magnitude`&#124;`boostingRangeEnd`|Annak a tartománynak a záró értékét állítja be, amelynek a nagysága a pontszám. Az értéknek egész vagy lebegőpontos számnak kell lennie. Az 1 – 4 csillagos minősítések esetében ez 4.|  
-|`magnitude`&#124;`constantBoostBeyondRange`|Az érvényes értékek: true vagy FALSE (alapértelmezett). Ha igaz értékre van állítva, a teljes növekedés továbbra is érvényes lesz azokra a dokumentumokra, amelyek értéke a cél mezőnél magasabb, mint a tartomány felső vége. Hamis érték esetén a függvény fellendítése nem lesz alkalmazva azokra a dokumentumokra, amelyek értéke a tartományon kívül eső cél mezőhöz tartozik.|  
+|`magnitude` &#124; `boostingRangeStart`|Megadja annak a tartománynak az indítási értékét, amelynél a skálán szerepel a magnitúdó. Az értéknek egész vagy lebegőpontos számnak kell lennie. Az 1 – 4 csillagos minősítések esetében ez 1. 50%-nál nagyobb árrések esetén ez a 50.|  
+|`magnitude` &#124; `boostingRangeEnd`|Annak a tartománynak a záró értékét állítja be, amelynek a nagysága a pontszám. Az értéknek egész vagy lebegőpontos számnak kell lennie. Az 1 – 4 csillagos minősítések esetében ez 4.|  
+|`magnitude` &#124; `constantBoostBeyondRange`|Az érvényes értékek: true vagy FALSE (alapértelmezett). Ha igaz értékre van állítva, a teljes növekedés továbbra is érvényes lesz azokra a dokumentumokra, amelyek értéke a cél mezőnél magasabb, mint a tartomány felső vége. Hamis érték esetén a függvény fellendítése nem lesz alkalmazva azokra a dokumentumokra, amelyek értéke a tartományon kívül eső cél mezőhöz tartozik.|  
 |`freshness`|A frissességi pontozási függvénnyel megváltoztathatja az elemek rangsorolási pontszámait a mezőkben lévő értékek alapján `DateTimeOffset` . Például egy újabb dátummal rendelkező elem magasabb lehet a régebbi elemeknél.<br /><br /> Lehetőség van olyan elemek rangsorolására is, mint például a naptári események jövőbeli dátumokkal való kiosztása, hogy a jelenben lévő elemek a jövőben is magasabbak legyenek.<br /><br /> A jelenlegi kiadásban a tartomány egy végét az aktuális időpontra rögzíti a rendszer. A másik végén a (z) alapján egy idő van a múltban `boostingDuration` . A jövőbeli időintervallumok kiemeléséhez használjon negatívat `boostingDuration` .<br /><br /> A maximális és a minimális tartomány változásának növelését a pontozási profilra alkalmazott interpoláció határozza meg (lásd az alábbi ábrát). Az alkalmazott növelési tényező visszafordításához válasszon egy 1-nél kisebb növelési faktort.|  
-|`freshness`&#124;`boostingDuration`|A lejárati időszakot állítja be, amely után a kiemelés leáll egy adott dokumentum esetében. A szintaxist és példákat a következő szakaszban találja: [BoostingDuration beállítása](#bkmk_boostdur) .|  
+|`freshness` &#124; `boostingDuration`|A lejárati időszakot állítja be, amely után a kiemelés leáll egy adott dokumentum esetében. A szintaxist és példákat a következő szakaszban találja: [BoostingDuration beállítása](#bkmk_boostdur) .|  
 |`distance`|A távolsági pontozási függvény a dokumentumok pontszámának befolyásolására szolgál, attól függően, hogy milyen közel vagy messze vannak a hivatkozási földrajzi helyhez viszonyítva. A hivatkozás helye a lekérdezés részeként van megadva egy paraméterben (a `scoringParameterquery` karakterlánc beállítás használatával) Lon, Lat argumentumként.|  
-|`distance`&#124;`referencePointParameter`|A hivatkozási helyként használandó lekérdezésekben átadandó paraméter. `scoringParameter`lekérdezési paraméter. A lekérdezési paraméterek leírásához tekintse meg a [dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.|  
-|`distance`&#124;`boostingDistance`|Egy szám, amely megadja a távolságot kilométerben annak a hivatkozásnak a helyétől, ahol a kiemelési tartomány véget ér.|  
+|`distance` &#124; `referencePointParameter`|A hivatkozási helyként használandó lekérdezésekben átadandó paraméter. `scoringParameter` lekérdezési paraméter. A lekérdezési paraméterek leírásához tekintse meg a [dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents) című témakört.|  
+|`distance` &#124; `boostingDistance`|Egy szám, amely megadja a távolságot kilométerben annak a hivatkozásnak a helyétől, ahol a kiemelési tartomány véget ér.|  
 |`tag`|A címke pontozása függvény a dokumentumok és a keresési lekérdezések címkéjén alapuló dokumentumok pontszámának befolyásolására szolgál. A keresési lekérdezéssel közös címkékkel rendelkező dokumentumok is lendületet kapnak. A keresési lekérdezés címkéi pontozási paraméterként jelennek meg minden keresési kérelemben (a `scoringParameterquery` karakterlánc beállítás használatával).|  
-|`tag`&#124;`tagsParameter`|Egy adott kéréshez tartozó címkék megadására szolgáló lekérdezésekben átadandó paraméter. `scoringParameter`lekérdezési paraméter. A lekérdezési paraméterek leírásához tekintse meg a [dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.|  
+|`tag` &#124; `tagsParameter`|Egy adott kéréshez tartozó címkék megadására szolgáló lekérdezésekben átadandó paraméter. `scoringParameter` lekérdezési paraméter. A lekérdezési paraméterek leírásához tekintse meg a [dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents) című témakört.|  
 |`functionAggregation`|Választható. Csak akkor érvényes, ha a függvények meg vannak adva. Az érvényes értékek a következők: Sum (alapértelmezett), Average, minimum, maximum és firstMatching. A keresési pontszám egyetlen érték, amely több változóból lett kiszámítva, beleértve több függvényt is. Ez az attribútum azt jelzi, hogy az összes függvény fellendítése egyetlen összesített lökésbe van összevonva, amely azután az alapdokumentum pontszámára lesz alkalmazva. Az alappontszám a dokumentumból és a keresési lekérdezésből kiszámított [TF-IDF](http://www.tfidf.com/) értéken alapul.|  
 |`defaultScoringProfile`|Ha keresési kérést hajt végre, ha nincs megadva pontozási profil, akkor a rendszer az alapértelmezett pontozást használja (csak[TF-IDF](http://www.tfidf.com/) esetén).<br /><br /> Itt állíthatja be az alapértelmezett pontozási profil nevét, ami azt eredményezi, hogy az Azure Cognitive Search használja ezt a profilt, ha a keresési kérelemben nincs megadva adott profil.|  
 
-##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>Interpolációk beállítása  
+##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Interpolációk beállítása  
  Az Interpolációk lehetővé teszik a pontozáshoz használt lejtő alakjának megadását. Mivel a pontozás magas – alacsony, a lejtő mindig csökken, de az interpoláció határozza meg a lefelé lejtő görbe görbéjét. A következő interpolációkat lehet használni:  
 
-| Interpolációs | Description |  
+| Interpolációs | Leírás |  
 |-|-|  
 |`linear`|A maximális és a minimális tartományon belüli elemek esetében az elemre alkalmazott kiemelés folyamatosan csökkenő mennyiségű lesz. A lineáris egy pontozási profil alapértelmezett interpolációja.|  
 |`constant`|A kezdő és a záró tartományba tartozó elemek esetében állandó lökést alkalmaz a rendszer a rangsor eredményeire.|  
@@ -263,10 +263,10 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
  ![Állandó, lineáris, másodfokú, log10 vonalak a gráfon](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a>BoostingDuration beállítása  
- `boostingDuration`a függvény egyik attribútuma `freshness` . Ezzel a beállítással megadhat egy lejárati időszakot, amely után az egy adott dokumentumra vonatkozó növelés leáll. Ha például egy terméket vagy márkát szeretne egy 10 napos promóciós időszakra kijavítani, akkor az adott dokumentumok esetében a 10 napos időszakot "P10D" értékre kell állítani.  
+##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a> BoostingDuration beállítása  
+ `boostingDuration` a függvény egyik attribútuma `freshness` . Ezzel a beállítással megadhat egy lejárati időszakot, amely után az egy adott dokumentumra vonatkozó növelés leáll. Ha például egy terméket vagy márkát szeretne egy 10 napos promóciós időszakra kijavítani, akkor az adott dokumentumok esetében a 10 napos időszakot "P10D" értékre kell állítani.  
 
- `boostingDuration`XSD "dayTimeDuration" értékként kell formázni (az ISO 8601 időtartam értékének korlátozott részhalmaza). A minta ehhez a következő: "P [nD] [T [nH] [nM] [nS]]".  
+ `boostingDuration` XSD "dayTimeDuration" értékként kell formázni (az ISO 8601 időtartam értékének korlátozott részhalmaza). A minta ehhez a következő: "P [nD] [T [nH] [nM] [nS]]".  
 
  A következő táblázat több példát is tartalmaz.  
 
@@ -281,6 +281,6 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
 ## <a name="see-also"></a>Lásd még  
 
-+ [REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/)   
-+ [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-+ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [REST API referenciája](/rest/api/searchservice/)   
++ [Index API létrehozása](/rest/api/searchservice/create-index)   
++ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

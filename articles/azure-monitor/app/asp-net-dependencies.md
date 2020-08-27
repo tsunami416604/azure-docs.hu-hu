@@ -2,13 +2,14 @@
 title: Függőségek nyomon követése az Azure Application Insightsban | Microsoft Docs
 description: A helyszíni vagy Microsoft Azure webalkalmazástól származó függőségi hívások figyelése Application Insightsokkal.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321377"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936537"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -16,9 +17,9 @@ A *függőség* az alkalmazás által meghívott összetevő. Általában egy HT
 
 ## <a name="automatically-tracked-dependencies"></a>Automatikusan követett függőségek
 
-Application Insights SDK-kat .NET-és .NET Core-hajókhoz, `DependencyTrackingTelemetryModule` amelyekkel a telemetria modul automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](./asp-net.md) és a [ASP.net Core](./asp-net-core.md) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva. `DependencyTrackingTelemetryModule` [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagként szállítja, és automatikusan a NuGet-csomagok vagy a használatával `Microsoft.ApplicationInsights.Web` történik `Microsoft.ApplicationInsights.AspNetCore` .
+Application Insights SDK-kat .NET-és .NET Core-hajókhoz `DependencyTrackingTelemetryModule` , amely a telemetria modul, amely automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](./asp-net.md) és a [ASP.net Core](./asp-net-core.md) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva. `DependencyTrackingTelemetryModule` [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagként szállítja, és automatikusan a NuGet-csomagok vagy a használatával `Microsoft.ApplicationInsights.Web` történik `Microsoft.ApplicationInsights.AspNetCore` .
 
- `DependencyTrackingTelemetryModule`a jelenleg automatikusan nyomon követi a következő függőségeket:
+ `DependencyTrackingTelemetryModule` a jelenleg automatikusan nyomon követi a következő függőségeket:
 
 |Függőségek |Részletek|
 |---------------|-------|
@@ -34,7 +35,7 @@ Ha hiányzik egy függőség, vagy egy másik SDK-t használ, győződjön meg r
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatikus függőség-követés beállítása a konzolos alkalmazásokban
 
-A .NET-konzol alkalmazásaitól származó függőségek automatikus nyomon követéséhez telepítse a Nuget csomagot `Microsoft.ApplicationInsights.DependencyCollector` , és inicializálja a `DependencyTrackingTelemetryModule` következőt:
+A .NET-konzol alkalmazásaitól származó függőségek automatikus nyomon követéséhez telepítse a NuGet csomagot `Microsoft.ApplicationInsights.DependencyCollector` , és inicializálja a `DependencyTrackingTelemetryModule` következőt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -122,7 +123,7 @@ A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének 
 * A függőségi hívások vizsgálatához kattintson a lassú vagy sikertelen kérelmekre.
 * Az [elemzési szolgáltatás](#logs-analytics) a függőségi adatlekérdezéshez használható.
 
-## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Lassú kérelmek diagnosztizálása
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a> Lassú kérelmek diagnosztizálása
 
 Minden kérési esemény társítva van a függőségi hívások, a kivételek és az alkalmazás által a kérelem feldolgozásakor követett egyéb eseményekhez. Ha azonban bizonyos kérések helytelenek, megtudhatja, hogy a függőség miatt lassú válasz-e.
 
@@ -195,7 +196,19 @@ A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követhet
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hogyan nem sikerült az automatikus függőségi gyűjtő jelentése a függőségek meghívására?*
 
-* Sikertelen függőségi hívások esetén a "sikeres" mező értéke false (hamis) lesz. `DependencyTrackingTelemetryModule`nem jelent jelentést `ExceptionTelemetry` . A függőség teljes adatmodelljéről [itt](data-model-dependency-telemetry.md)olvashat.
+* Sikertelen függőségi hívások esetén a "sikeres" mező értéke false (hamis) lesz. `DependencyTrackingTelemetryModule` nem jelent jelentést `ExceptionTelemetry` . A függőség teljes adatmodelljéről [itt](data-model-dependency-telemetry.md)olvashat.
+
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>*Hogyan kiszámítja a betöltési késést a függőségi telemetria?*
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>*Hogyan meghatározza a függőségi hívás elindításának időpontját?*
+
+A Log Analytics lekérdezés nézetben `timestamp` a TrackDependency () hívás indításának pillanatát jelenti, amely közvetlenül a függőségi hívás válaszának kézhezvétele után következik be. A függőségi hívás elkezdésének időpontjának kiszámításához el kell végeznie a `timestamp` függőségi hívás rögzítését, és ki kell vonnia azt `duration` .
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 Mint minden Application Insights SDK, a függőség-gyűjtési modul is nyílt forráskódú. Olvassa el és járuljon hozzá a kóddal, vagy jelentse [a hibákat a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)-tárházban.

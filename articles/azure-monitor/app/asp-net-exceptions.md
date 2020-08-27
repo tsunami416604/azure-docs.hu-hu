@@ -2,15 +2,16 @@
 title: Hibák és kivételek diagnosztizálása az Azure Application Insights
 description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a kérelem telemetria együtt.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321360"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936503"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>A webalkalmazások kivételeinek diagnosztizálása a Application Insights
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Webalkalmazások kivételeinek diagnosztizálása az Application Insightsszal
 Az élő webalkalmazásban lévő kivételeket [Application Insights](./app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
 
 ## <a name="set-up-exception-reporting"></a>A kivételek jelentésének beállítása
@@ -91,7 +92,7 @@ A kérelem részletei nem tartalmazzák az alkalmazásba egy POST-hívásban tov
 * A [Microsoft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace)hívásához helyezzen be kódot az alkalmazásba. Küldje el a POST (üzenet) paramétert. Korlátozva van a megengedett méret, ezért csak az alapvető adatmennyiséget kell elküldenie.
 * Sikertelen kérelem kivizsgálásakor keresse meg a kapcsolódó nyomkövetéseket.
 
-## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Kivételek és kapcsolódó diagnosztikai adat rögzítése
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Kivételek és kapcsolódó diagnosztikai adat rögzítése
 Először nem jelenik meg a portálon az alkalmazás hibáit okozó kivételek. A böngészőre vonatkozó kivételek jelennek meg (ha a [JavaScript SDK](./javascript.md) -t használja a weboldalain). Az IIS azonban a legtöbb kiszolgálói kivételt felveszi, és egy kódot kell megírnia, hogy megtekintse őket.
 
 A következőket teheti:

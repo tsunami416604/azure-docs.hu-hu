@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: b5b27e201242f87e15af780bc26328dbdc5eb7fc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705894"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935959"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
 Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Ebben a C# oktatóanyagban az optikai karakterfelismerést (OCR) alkalmazzuk a képeken, és természetes nyelvi feldolgozást végeznek olyan új mezők létrehozásához, amelyeket használhat a lekérdezésekben, a dimenziókban és a szűrőkben.
 
-Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a C# és a [.net SDK](/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Az alkalmazás fájljait és lemezképeit az Azure Blob Storage-ban indíthatja el.
@@ -127,7 +127,7 @@ Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-o
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-Az [Azure Cognitive Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) néhány ügyféloldali kódtárat tartalmaz, amelyek lehetővé teszik az indexek, az adatforrások, az indexelő és a szakértelmével kezelését, valamint dokumentumok feltöltését és kezelését, valamint lekérdezések futtatását, anélkül, hogy a http-és JSON-adatokkal kellene foglalkoznia. Ezek az ügyféloldali kódtárak mind NuGet-csomagként vannak elosztva.
+Az [Azure Cognitive Search .net SDK](/dotnet/api/overview/azure/search) néhány ügyféloldali kódtárat tartalmaz, amelyek lehetővé teszik az indexek, az adatforrások, az indexelő és a szakértelmével kezelését, valamint dokumentumok feltöltését és kezelését, valamint lekérdezések futtatását, anélkül, hogy a http-és JSON-adatokkal kellene foglalkoznia. Ezek az ügyféloldali kódtárak mind NuGet-csomagként vannak elosztva.
 
 Ebben a projektben telepítse a NuGet-csomag 9-es vagy újabb verzióját `Microsoft.Azure.Search` .
 
@@ -680,7 +680,7 @@ Adja hozzá a következő using utasítást a egyértelműsítse-hivatkozás fel
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-Az index definiálásával kapcsolatos további tudnivalókért tekintse meg az [index létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)című témakört.
+Az index definiálásával kapcsolatos további tudnivalókért tekintse meg az [index létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index)című témakört.
 
 ### <a name="step-4-create-and-run-an-indexer"></a>4. lépés: indexelő létrehozása és futtatása
 
@@ -905,7 +905,7 @@ catch (Exception e)
 }
 ```
 
-Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Vesszővel tagolt lista használatával több mezőt is visszaadhat a [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) tulajdonságon keresztül.
+Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Vesszővel tagolt lista használatával több mezőt is visszaadhat a [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) tulajdonságon keresztül.
 
 <a name="reset"></a>
 
@@ -927,7 +927,7 @@ Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja annak összes erőforrását.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

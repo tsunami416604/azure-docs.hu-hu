@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dee6b0b1635880fb50b8d35f1f91ad2bce569cff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74158173"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928479"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása a ASP.NET és a Signaler szolgáltatással
 
@@ -32,7 +33,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -62,7 +63,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
 
 1. Válassza ki és másolja a vágólapra az elsődleges kapcsolati sztring értékét.
 
-1. Most állítsa be a kapcsolati karakterláncot a web. config fájlban.
+1. Most állítsa be a web.config fájlban a kapcsolatok karakterláncát.
 
     ```xml
     <configuration>
@@ -73,7 +74,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
     </configuration>
     ```
 
-1. A *Startup.cs*hívása helyett `MapSignalR()`a kapcsolati karakterláncot kell `MapAzureSignalR({your_applicationName})` meghívnia és továbbítania, hogy az alkalmazás kapcsolódjon a szolgáltatáshoz ahelyett, hogy saját maga is felhasználja a jelet. Cserélje `{YourApplicationName}` le az alkalmazást az alkalmazás nevére. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. `this.GetType().FullName` Ezt használhatja értékként.
+1. A *Startup.cs*hívása helyett a `MapSignalR()` `MapAzureSignalR({your_applicationName})` kapcsolati karakterláncot kell meghívnia és továbbítania, hogy az alkalmazás kapcsolódjon a szolgáltatáshoz ahelyett, hogy saját maga is felhasználja a jelet. Cserélje le `{YourApplicationName}` az alkalmazást az alkalmazás nevére. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. Ezt használhatja `this.GetType().FullName` értékként.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -92,7 +93,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
     A változásokon kívül minden más változatlan marad, továbbra is használhatja a hub felületét, amellyel az üzleti logikát írhat.
 
     > [!NOTE]
-    > Az implementációban a végpont `/signalr/negotiate` az Azure Signaler Service SDK általi egyeztetésre van kitéve. Speciális egyeztetési választ ad vissza, amikor az ügyfelek megpróbálnak csatlakozni a kapcsolati sztringben meghatározott szolgáltatási végponthoz, és átirányítják az ügyfeleket.
+    > Az implementációban a végpont `/signalr/negotiate` Az Azure signaler Service SDK általi egyeztetésre van kitéve. Speciális egyeztetési választ ad vissza, amikor az ügyfelek megpróbálnak csatlakozni a kapcsolati sztringben meghatározott szolgáltatási végponthoz, és átirányítják az ügyfeleket.
 
 1. A projekt hibakeresési módban való futtatásához nyomja le az **F5** billentyűt. Láthatja, hogy az alkalmazás helyileg fut. A szignáló futtatókörnyezetet az alkalmazás nem üzemelteti, hanem az Azure Signaler szolgáltatáshoz csatlakozik.
 

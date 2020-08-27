@@ -10,18 +10,18 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 6bbee606c59482e4a06f344d3221e8611f6dcc9d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544555"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935585"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>A modell profiljának meghatározása az erőforrások kihasználtságának meghatározásához
 
 Ez a cikk bemutatja, hogyan lehet profilt felvenni a gépi tanulás modelljébe annak meghatározásához, hogy mekkora CPU és memória szükséges a modell kiosztásához webszolgáltatásként való üzembe helyezéskor.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk feltételezi, hogy betanított és regisztrált egy modellt Azure Machine Learningsal. Tekintse meg a [minta oktatóanyagot](how-to-train-scikit-learn.md) , amely egy scikit-tanulási modell betanítását és regisztrálását Azure Machine learning.
 
@@ -36,6 +36,9 @@ A modell profiljának elvégzéséhez a következőkre lesz szüksége:
 
 > [!IMPORTANT]
 > Ezen a ponton csak olyan szolgáltatások profilkészítését támogatjuk, amelyek a kérési adatok karakterláncnak számítanak, például: karakterlánc szerializált JSON, szöveg, karakterlánc szerializált rendszerkép stb. Az adatkészlet (string) egyes sorainak tartalmát a rendszer a HTTP-kérelem törzsébe helyezi el, és elküldi a modellnek a pontozást tartalmazó szolgáltatásnak.
+
+> [!IMPORTANT]
+> A ChinaEast2 és a USGovArizona régióban csak 2 processzort támogatunk.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy bemeneti adatkészletet olyan szolgáltatás profiljához, amely a beérkező kérések adatait szerializált JSON-ként kívánja tartalmazni. Ebben az esetben létrehoztunk egy adatkészleten alapuló 100-példányt az azonos kérelem adattartalmából. A valós forgatókönyvekben azt javasoljuk, hogy használjon nagyobb adatkészleteket, amelyek különböző bemeneteket tartalmaznak, különösen akkor, ha a modell Erőforrás-kihasználtsága/viselkedése a bemenettől függ.
 
@@ -129,7 +132,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 * [Ügyfélalkalmazások létrehozása webszolgáltatások felhasználásához](how-to-consume-web-service.md)
 * [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
-* [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
+* [TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével](how-to-secure-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 * [Esemény-riasztások és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a Hyper-V virtuális gépek �
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86109620"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928921"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
@@ -36,8 +36,9 @@ A táblázat összefoglalja az Azure-ban elvégzendő feladatokat. Utasításoka
 **Tevékenység** | **Részletek** | **Engedélyek**
 --- | --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure Migrate projektek központi helyet biztosítanak a felmérések és áttelepítések előkészítéséhez és kezeléséhez Azure Migrate eszközökkel, Microsoft-eszközökkel és harmadik féltől származó ajánlatokkal. | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie abban az erőforráscsoportban, amelyben a projekt található.
-**Berendezés regisztrálása** | A Azure Migrate a Hyper-V virtuális gépek felderítésére és értékelésére egy könnyű Azure Migrate berendezést használ. [További információk](migrate-appliance-architecture.md#appliance-registration). | A készülék regisztrálásához az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az Azure-előfizetésben.
+**Berendezés regisztrálása** | A Azure Migrate a Hyper-V virtuális gépek felderítésére és értékelésére egy könnyű Azure Migrate berendezést használ. [További információ](migrate-appliance-architecture.md#appliance-registration). | A készülék regisztrálásához az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az Azure-előfizetésben.
 **Azure AD alkalmazás létrehozása** | A készülék regisztrálása során Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást, amelyet a készüléken futó ügynökök és a Azure Migrate között használ a kommunikációhoz. | Az Azure-fióknak rendelkeznie kell az Azure AD-alkalmazások létrehozásához szükséges engedélyekkel.
+**Kulcstartó létrehozása** | A Key Vault a készülék regisztrációjának részeként jön létre, és a konfiguráció során a készüléken letöltött tanúsítvány kezelésére szolgál.| Ahhoz, hogy a Azure Migrate létrehozza a Key Vault, az Azure-fióknak közreműködői engedélyekkel kell rendelkeznie azon az erőforráscsoporthoz, amelyben a Azure Migrate projekt található.
 **Virtuális gép létrehozása** | Az erőforráscsoport és a virtuális hálózat létrehozásához, valamint az Azure-beli felügyelt lemezre való íráshoz engedélyek szükségesek. | Az Azure-fióknak szüksége van a virtuális gépi közreműködő szerepkörre.
 
 
@@ -74,13 +75,14 @@ A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket:
     ![Azure AD-engedélyek](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információk](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása
 
-A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+
 
 ### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyeinek kiosztása
 

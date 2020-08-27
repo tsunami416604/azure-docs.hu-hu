@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935789"
 ---
-# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési függvények az Azure Cognitive Searchban – `search.ismatch` és`search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési függvények az Azure Cognitive Searchban – `search.ismatch` és `search.ismatchscoring`
 
-Az Azure Cognitive Search támogatja a teljes szöveges keresést a OData- [szűrési kifejezések](query-odata-filter-orderby-syntax.md) `search.ismatch` és függvények használatával `search.ismatchscoring` . Ezek a függvények lehetővé teszik, hogy a teljes szöveges keresést szigorú logikai szűréssel kombinálja olyan módokon, amelyek nem csak a `search` [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)legfelső szintű paraméterével használhatók.
+Az Azure Cognitive Search támogatja a teljes szöveges keresést a OData- [szűrési kifejezések](query-odata-filter-orderby-syntax.md) `search.ismatch` és függvények használatával `search.ismatchscoring` . Ezek a függvények lehetővé teszik, hogy a teljes szöveges keresést szigorú logikai szűréssel kombinálja olyan módokon, amelyek nem csak a `search` [Search API](/rest/api/searchservice/search-documents)legfelső szintű paraméterével használhatók.
 
 > [!NOTE]
-> A `search.ismatch` és a `search.ismatchscoring` függvények csak a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents)-ban lévő szűrőkben támogatottak. Az [ajánlott](https://docs.microsoft.com/rest/api/searchservice/suggestions) és az [automatikus kiegészítési](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API-k nem támogatják őket.
+> A `search.ismatch` és a `search.ismatchscoring` függvények csak a [Search API](/rest/api/searchservice/search-documents)-ban lévő szűrőkben támogatottak. Az [ajánlott](/rest/api/searchservice/suggestions) és az [automatikus kiegészítési](/rest/api/searchservice/autocomplete) API-k nem támogatják őket.
 
 ## <a name="syntax"></a>Syntax
 
@@ -73,10 +73,10 @@ A paraméterek a következő táblázatban vannak meghatározva:
 | --- | --- | --- |
 | `search` | `Edm.String` | A keresési lekérdezés ( [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) Lucene lekérdezési szintaxis). |
 | `searchFields` | `Edm.String` | A kereshető mezők vesszővel tagolt listája a kereséshez; az alapértelmezett érték az index összes kereshető mezőjénél. Ha a paraméterben a [mezőn belüli keresés](query-lucene-syntax.md#bkmk_fields) szerepel `search` , a Lucene lekérdezés mezőiben szereplő mezők felülbírálják az ebben a paraméterben megadott mezőket. |
-| `queryType` | `Edm.String` | `'simple'`vagy `'full'` ; alapértelmezett érték: `'simple'` . Megadja, hogy melyik lekérdezési nyelvet használták a `search` paraméter. |
-| `searchMode` | `Edm.String` | `'any'`vagy `'all'` alapértelmezett értéke: `'any'` . Azt jelzi, hogy a paraméterben szereplő keresési kifejezések bármelyike vagy mindegyike egyezik-e a `search` dokumentum egyezésként való megszámlálásához. Az [Lucene logikai operátorok](query-lucene-syntax.md#bkmk_boolean) használatakor a `search` paraméter elsőbbséget élvez a paraméterrel szemben. |
+| `queryType` | `Edm.String` | `'simple'` vagy `'full'` ; alapértelmezett érték: `'simple'` . Megadja, hogy melyik lekérdezési nyelvet használták a `search` paraméter. |
+| `searchMode` | `Edm.String` | `'any'` vagy `'all'` alapértelmezett értéke: `'any'` . Azt jelzi, hogy a paraméterben szereplő keresési kifejezések bármelyike vagy mindegyike egyezik-e a `search` dokumentum egyezésként való megszámlálásához. Az [Lucene logikai operátorok](query-lucene-syntax.md#bkmk_boolean) használatakor a `search` paraméter elsőbbséget élvez a paraméterrel szemben. |
 
-A fenti paraméterek a [keresési API megfelelő keresési kérelmi paramétereinek](https://docs.microsoft.com/rest/api/searchservice/search-documents)felelnek meg.
+A fenti paraméterek a [keresési API megfelelő keresési kérelmi paramétereinek](/rest/api/searchservice/search-documents)felelnek meg.
 
 A `search.ismatch` függvény egy típusú értéket ad vissza `Edm.Boolean` , amely lehetővé teszi, hogy más szűrő alkifejezésekkel kombinálja a logikai [logikai operátorok](search-query-odata-logical-operators.md)használatával.
 
@@ -96,7 +96,7 @@ A `search.ismatch` és a `search.ismatchscoring` függvények is ugyanabban a sz
 
 ## <a name="examples"></a>Példák
 
-Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
+Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
 
 ```odata-filter-expr
     search.ismatchscoring('waterfront')
@@ -133,4 +133,4 @@ Megkeresheti azokat a dokumentumokat, amelyekben a "Hotel" és a "repülőtér" 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
 - [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
-- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

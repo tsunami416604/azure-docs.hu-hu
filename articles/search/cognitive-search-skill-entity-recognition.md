@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080853"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936078"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
-Az **entitás-felismerési** képesség Kinyeri a szövegből származó különböző típusú entitásokat. Ez a képesség a Cognitive Services [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) által biztosított gépi tanulási modelleket használja.
+Az **entitás-felismerési** képesség Kinyeri a szövegből származó különböző típusú entitásokat. Ez a képesség a Cognitive Services [text Analytics](../cognitive-services/text-analytics/overview.md) által biztosított gépi tanulási modelleket használja.
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -29,23 +29,23 @@ Az **entitás-felismerési** képesség Kinyeri a szövegből származó külön
 Microsoft. Skills. Text. EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
 A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kötelező.
 
-| Paraméter neve     | Description |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | `categories`    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok:,,,, `"Person"` `"Location"` `"Organization"` `"Quantity"` `"Datetime"` , `"URL"` , `"Email"` . Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
 | `defaultLanguageCode` |    A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Nem minden entitás-kategória támogatott az összes nyelven; lásd az alábbi megjegyzést.|
 | `minimumPrecision` | 0 és 1 közötti érték. Ha a megbízhatósági pontszám (a `namedEntities` kimenetben) alacsonyabb ennél az értéknél, az entitás nem lesz visszaadva. Az alapértelmezett érték a 0. |
-| `includeTypelessEntities` | Állítsa be értékre, `true` Ha fel szeretné ismerni azokat a jól ismert entitásokat, amelyek nem felelnek meg az aktuális kategóriáknak. Az azonosított entitások a `entities` komplex kimenet mezőben lesznek visszaadva. Például a "Windows 10" egy jól ismert entitás (a termék), de mivel a "Products" nem támogatott kategória, ez az entitás szerepel az entitások kimenet mezőjében. Alapértelmezett érték`false` |
+| `includeTypelessEntities` | Állítsa be értékre, `true` Ha fel szeretné ismerni azokat a jól ismert entitásokat, amelyek nem felelnek meg az aktuális kategóriáknak. Az azonosított entitások a `entities` komplex kimenet mezőben lesznek visszaadva. Például a "Windows 10" egy jól ismert entitás (a termék), de mivel a "Products" nem támogatott kategória, ez az entitás szerepel az entitások kimenet mezőjében. Alapértelmezett érték `false` |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Description                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | `languageCode`    | Választható. Az alapértelmezett szint a `"en"`.  |
 | `text`          | Az elemezni kívánt szöveg.          |
@@ -53,9 +53,9 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 > [!NOTE]
-> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"` , a `"Location"` és az `"Organization"` Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_és a _zh-Hans_ támogatás támogatja a,, `"Quantity"` `"Datetime"` `"URL"` és `"Email"` típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"` , a `"Location"` és az `"Organization"` Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_és a _zh-Hans_ támogatás támogatja a,, `"Quantity"` `"Datetime"` `"URL"` és `"Email"` típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](../cognitive-services/text-analytics/language-support.md).  
 
-| Kimenet neve      | Description                   |
+| Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
 | `persons`       | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | `locations`  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
@@ -97,7 +97,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
     ]
   }
 ```
-##    <a name="sample-input"></a>Minta bemenet
+##    <a name="sample-input"></a>Példabemenet
 
 ```json
 {
@@ -114,7 +114,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 }
 ```
 
-##    <a name="sample-output"></a>Példa kimenet
+##    <a name="sample-output"></a>Példakimenet
 
 ```json
 {
@@ -187,7 +187,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 }
 ```
 
-Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolásokat a rendszer közvetlenül visszaadja a [text Analytics APIból](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview), ami azt jelenti, hogy ha az eredeti sztring indexbe való indexelését használja, akkor a [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt a .net-ben kell használnia a megfelelő tartalom kinyeréséhez.  [További részleteket itt találhat.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolásokat a rendszer közvetlenül visszaadja a [text Analytics APIból](../cognitive-services/text-analytics/overview.md), ami azt jelenti, hogy ha az eredeti sztring indexbe való indexelését használja, akkor a [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt a .net-ben kell használnia a megfelelő tartalom kinyeréséhez.  [További részleteket itt találhat.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Hibák esetei
 Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer hibát ad vissza, és egyetlen entitás sincs kibontva.

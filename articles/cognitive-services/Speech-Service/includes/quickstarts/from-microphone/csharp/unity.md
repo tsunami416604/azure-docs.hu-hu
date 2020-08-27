@@ -6,15 +6,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
+ms.custom: devx-track-csharp
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: e2302c92cf723b1ab28611d46769290ed54df43c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 8307cfee90fdf65d119bbc1e55eabb0533a4a6ad
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226496"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926426"
 ---
 > [!NOTE]
 > Az Unity Speech SDK támogatja a Windows Desktopot (x86 és x64) vagy Univerzális Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) és iOS (x64 Simulator, ARM32 és ARM64)
@@ -41,7 +42,7 @@ Ha már megtette ezt, remek. Folytasd a munkát.
 1. A **Project Name (projekt neve**) mezőben adja meg a **csharp-Unity**értéket.
 1. A **sablonokban**, ha a **3D** még nincs kiválasztva, jelölje ki.
 1. A **hely**mezőben válasszon ki vagy hozzon létre egy mappát, amelybe menteni szeretné a projektet.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Egy kis idő elteltével megjelenik az Unity Editor ablak.
 

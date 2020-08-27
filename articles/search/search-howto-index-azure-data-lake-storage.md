@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760311"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935857"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Dokumentumok indexelése Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ ms.locfileid: "87760311"
 > A Azure Data Lake Storage Gen2 támogatás jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az előzetes verzióhoz való hozzáférést az [űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)kitöltésével kérheti le. A [REST API 2020-06-30-es verziója – előzetes verzió](search-api-preview.md) és portál biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 
 
-Azure Storage-fiók beállításakor lehetősége van a [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)engedélyezésére. Ez lehetővé teszi, hogy a fiókban lévő tartalmak gyűjteménye a címtárak és a beágyazott alkönyvtárak hierarchiájában legyen rendszerezve. A hierarchikus névtér engedélyezésével engedélyezheti a [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+Azure Storage-fiók beállításakor lehetősége van a [hierarchikus névtér](../storage/blobs/data-lake-storage-namespace.md)engedélyezésére. Ez lehetővé teszi, hogy a fiókban lévő tartalmak gyűjteménye a címtárak és a beágyazott alkönyvtárak hierarchiájában legyen rendszerezve. A hierarchikus névtér engedélyezésével engedélyezheti a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 Ez a cikk bemutatja, hogyan kezdheti meg a Azure Data Lake Storage Gen2-ban található dokumentumok indexelését.
 
@@ -44,9 +44,9 @@ A Data Lake Storage Gen2 tartalmának indexelése azonos az Azure Blob Storage-b
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-Azure Data Lake Storage Gen2 olyan hozzáférés- [vezérlési modellt](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen2ból származó tartalom indexelése során az Azure Cognitive Search nem fogja kibontani a RBAC és az ACL-információkat a tartalomból. Ennek eredményeképpen ezek az információk nem kerülnek bele az Azure Cognitive Search indexbe.
+Azure Data Lake Storage Gen2 olyan hozzáférés- [vezérlési modellt](../storage/blobs/data-lake-storage-access-control.md) valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a POSIX-hez hasonló hozzáférés-vezérlési listákat (ACL-eket). A Data Lake Storage Gen2ból származó tartalom indexelése során az Azure Cognitive Search nem fogja kibontani a RBAC és az ACL-információkat a tartalomból. Ennek eredményeképpen ezek az információk nem kerülnek bele az Azure Cognitive Search indexbe.
 
-Ha a hozzáférés-vezérlést az index minden dokumentuma esetében fontos fenntartani, akkor az alkalmazás fejlesztője a [biztonsági körülvágás](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)megvalósítására szolgál.
+Ha a hozzáférés-vezérlést az index minden dokumentuma esetében fontos fenntartani, akkor az alkalmazás fejlesztője a [biztonsági körülvágás](./search-security-trimming-for-azure-search.md)megvalósítására szolgál.
 
 ## <a name="change-detection"></a>Változás észlelése
 

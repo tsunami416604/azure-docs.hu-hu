@@ -2,16 +2,17 @@
 title: A profil élő Azure Service Fabric alkalmazásai Application Insights
 description: A Profiler engedélyezése Service Fabric alkalmazáshoz
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539839"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930281"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>A profil élő Azure Service Fabric alkalmazásai Application Insights
 
@@ -54,7 +55,7 @@ A környezet beállításához végezze el a következő műveleteket:
 1. Telepítse újra az alkalmazást.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Adatforgalom létrehozása az alkalmazáshoz (például egy [rendelkezésre állási teszt](monitor-web-app-availability.md)elindításához). Ezután várjon 10 – 15 percet, amíg a Nyomkövetések el nem jutnak a Application Insights példányba.
 * Lásd: [Profiler-Nyomkövetések](profiler-overview.md?toc=/azure/azure-monitor/toc.json) a Azure Portalban.

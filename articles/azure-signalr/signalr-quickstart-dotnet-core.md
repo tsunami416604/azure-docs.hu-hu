@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c3a482dc1fa63b997b948cc3bc5cacefc9c2ad0a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962135"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928513"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
@@ -256,7 +257,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
 
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbbra is a következő oktatóanyagot használja, megtarthatja az ebben a rövid útmutatóban létrehozott erőforrásokat, és újból felhasználhatja őket.
 

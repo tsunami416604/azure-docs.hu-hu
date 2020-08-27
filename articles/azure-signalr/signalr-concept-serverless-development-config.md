@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387149"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928564"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással
 
@@ -113,16 +113,16 @@ Az összes hub- **metódusnak rendelkeznie kell** `[SignalRTrigger]` attribútum
 
 Alapértelmezés szerint `category=messages` a metódus neve csak a következő nevek egyike lehet:
 
-* **OnConnected**: kezelés másként`category=connections, event=connected`
-* **OnDisconnected**: kezelés másként`category=connections, event=disconnected`
+* **OnConnected**: kezelés másként `category=connections, event=connected`
+* **OnDisconnected**: kezelés másként `category=connections, event=disconnected`
 
 ### <a name="parameter-binding-experience"></a>Paraméter kötési élménye
 
 Az osztály alapú modellben `[SignalRParameter]` szükségtelen, mert az összes argumentum alapértelmezettként van megjelölve, kivéve, ha az `[SignalRParameter]` alábbi esetek egyike:
 
 * Az argumentumot egy kötési attribútum rendezi.
-* Az argumentum típusa a következő, `ILogger` vagy`CancellationToken`
-* Az argumentumot attribútum szerint rendezi a rendszer.`[SignalRIgnore]`
+* Az argumentum típusa a következő, `ILogger` vagy `CancellationToken`
+* Az argumentumot attribútum szerint rendezi a rendszer. `[SignalRIgnore]`
 
 ### <a name="negotiate-experience-in-class-based-model"></a>Az osztály-alapú modell egyeztetése
 
@@ -218,8 +218,8 @@ A JavaScript/írógéppel ügyfél HTTP-kérelmeket tesz elérhetővé az egyezt
 
 Ha a Function alkalmazást a helyi számítógépen futtatja, akkor a `Host` CORS engedélyezéséhez hozzáadhat egy szakaszt a *local.settings.jshoz* . A `Host` szakaszban adja hozzá a két tulajdonságot:
 
-* `CORS`-adja meg az ügyfélalkalmazás forrásaként szolgáló alap URL-címet
-* `CORSCredentials`-Állítsa be, hogy `true` engedélyezze a "withCredentials" kéréseket
+* `CORS` -adja meg az ügyfélalkalmazás forrásaként szolgáló alap URL-címet
+* `CORSCredentials` -Állítsa be, hogy `true` engedélyezze a "withCredentials" kéréseket
 
 Példa:
 
@@ -319,6 +319,6 @@ public static Task SendMessage(
 
 Más nyelvekkel kapcsolatos információkért tekintse meg az [Azure signaler szolgáltatás kötéseit](../azure-functions/functions-bindings-signalr-service.md) Azure functions-referenciához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan fejlesztheti és konfigurálhatja a kiszolgáló nélküli Signal Service-alkalmazásokat Azure Functions használatával. Hozzon létre egy alkalmazást saját maga a [signaler szolgáltatás áttekintés lapján](index.yml)található gyors indítás vagy oktatóanyag használatával.

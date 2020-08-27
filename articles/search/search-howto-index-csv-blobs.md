@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9008b30fd89e9d57923f6c612b7a454aa1ba528e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084092"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935840"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>CSV-Blobok indexelése delimitedText-elemzési mód és blob-indexek használatával az Azure-ban Cognitive Search
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan elemezheti a CSV-blobokat egy Azure Cognit
 > Kövesse az indexelő konfigurációs javaslatait az [egy-a-többhöz indexelésben](search-howto-index-one-to-many-blobs.md) , hogy egyetlen Azure-blobból végezzen több keresési dokumentumot.
 
 ## <a name="setting-up-csv-indexing"></a>CSV-indexelés beállítása
-CSV-Blobok indexeléséhez hozzon létre vagy frissítsen egy indexelő definíciót a `delimitedText` [create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -kérelem elemzési módjával:
+CSV-Blobok indexeléséhez hozzon létre vagy frissítsen egy indexelő definíciót a `delimitedText` [create Indexer](/rest/api/searchservice/create-indexer) -kérelem elemzési módjával:
 
 ```http
     {
@@ -42,7 +42,7 @@ CSV-Blobok indexeléséhez hozzon létre vagy frissítsen egy indexelő definíc
     }
 ```
 
-`firstLineContainsHeaders`azt jelzi, hogy az egyes Blobok első (nem üres) sora fejléceket tartalmaz.
+`firstLineContainsHeaders` azt jelzi, hogy az egyes Blobok első (nem üres) sora fejléceket tartalmaz.
 Ha a Blobok nem tartalmaznak kezdeti fejlécet, a fejléceket az indexelő konfigurációjában kell megadni: 
 
 ```http
@@ -98,4 +98,3 @@ Indexelő
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
 Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
-

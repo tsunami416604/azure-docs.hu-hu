@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553164"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936588"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával (előzetes verzió)
 
@@ -31,7 +31,7 @@ A probléma megoldásához felügyelt identitás használatával kell beállíta
 
 ## <a name="using-managed-identities"></a>Felügyelt identitások használata
 
-A [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) szolgáltatás egy automatikusan felügyelt identitással rendelkező Azure-szolgáltatásokat biztosít Azure Active Directory (Azure ad). Ezt a funkciót az Azure Cognitive Searchban olyan adatforrás-objektum létrehozására használhatja, amely nem tartalmaz hitelesítő adatokat. Ehelyett a keresési szolgáltatás szerepköralapú hozzáférés-vezérléssel (RBAC) lesz elérhető az adatforráshoz.
+A [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md) szolgáltatás egy automatikusan felügyelt identitással rendelkező Azure-szolgáltatásokat biztosít Azure Active Directory (Azure ad). Ezt a funkciót az Azure Cognitive Searchban olyan adatforrás-objektum létrehozására használhatja, amely nem tartalmaz hitelesítő adatokat. Ehelyett a keresési szolgáltatás szerepköralapú hozzáférés-vezérléssel (RBAC) lesz elérhető az adatforráshoz.
 
 Ha felügyelt identitással állítja be az adatforrást, módosíthatja az adatforrás hitelesítő adatait, és az indexelő továbbra is csatlakozhatnak az adatforráshoz. Az adatforrás-objektumokat a kódban is létrehozhatja anélkül, hogy hozzá kellene adnia egy fiókot, vagy a Key Vaultt kell használnia a fiók kulcsainak lekéréséhez.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986168"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932967"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
@@ -25,9 +25,9 @@ ms.locfileid: "87986168"
 
 #### <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment-analysis)
 
-| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójának elindítása: |              Megjegyzések |
+| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójának elindítása: |              Jegyzetek |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Egyszerűsített kínai    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh`szintén elfogadva |
+| Egyszerűsített kínai    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` szintén elfogadva |
 | Kínai – hagyományos   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
 | Dán               |     `da`      |     ✓      |            |                            |                    |
 | Holland                 |     `nl`      |     ✓      |            |                            |                    |
@@ -39,17 +39,17 @@ ms.locfileid: "87986168"
 | Olasz               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japán              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Koreai                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| Norvég (nyelven)   |     `no`      |     ✓      |            |                            |                    |
+| Norvég (nyelven)   |     `no`      |     ✓      |     ✓       |        2020-07-01         |                    |
 | Lengyel                |     `pl`      |     ✓      |            |                            |                    |
-| Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt`szintén elfogadva |
+| Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` szintén elfogadva |
 | Orosz               |     `ru`      |     ✓      |            |                            |                    |
 | Spanyol               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Svéd               |     `sv`      |     ✓      |            |                            |                    |
-| Török               |     `tr`      |     ✓      |            |                            |                    |
+| Török               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Közvélemény-bányászat (csak előzetes verzió)
 
-| Nyelv              | Nyelvkód | A v3 modell verziójától kezdve: |              Megjegyzések |
+| Nyelv              | Nyelvkód | A v3 modell verziójától kezdve: |              Jegyzetek |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | Angol               |     `en`      |              2020-04-01              |                    |
 
@@ -60,11 +60,11 @@ ms.locfileid: "87986168"
 > * Az egynyelvű v3 jelenleg csak az angol és a spanyol nyelvet támogatja. Ha más nyelvvel hívja meg a meghívott "v3"-t, az API a v 2.1 eredményeit fogja visszaadni, ha az 2,1-es verzió támogatja a nyelvet.
 > * a v 2.1 csak az angol, a kínai – egyszerűsített, francia, német és spanyol nyelven elérhető entitások teljes készletét adja vissza.  A többi támogatott nyelvhez a "person", a "location" és a "Organization" entitást adja vissza a rendszer.
 
-| Nyelv               | Nyelvkód | v 2.1 támogatás | v3 támogatás | A v3 modell verziójától kezdve: |       Megjegyzések        |
+| Nyelv               | Nyelvkód | v 2.1 támogatás | v3 támogatás | A v3 modell verziójától kezdve: |       Jegyzetek        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arab                |     `ar`      |     ✓      |            |                                 |                    |
 | Cseh                 |     `cs`      |     ✓      |            |                                 |                    |
-| Egyszerűsített kínai     |   `zh-hans`   |     ✓      |            |                                 | `zh`szintén elfogadva |
+| Egyszerűsített kínai     |   `zh-hans`   |     ✓      |            |                                 | `zh` szintén elfogadva |
 | Kínai – hagyományos   |   `zh-hant`   |     ✓      |            |                                 |                    |
 | Dán                |     `da`      |     ✓      |            |                                 |                    |
 | Holland                 |     `nl`      |     ✓      |            |                                 |                    |
@@ -77,9 +77,9 @@ ms.locfileid: "87986168"
 | Olasz               |     `it`      |     ✓      |            |                                 |                    |
 | Japán              |     `ja`      |     ✓      |            |                                 |                    |
 | Koreai                |     `ko`      |     ✓      |            |                                 |                    |
-| Norvég (nyelven)   |     `no`      |     ✓      |            |                                 | `nb`szintén elfogadva |
+| Norvég (nyelven)   |     `no`      |     ✓      |            |                                 | `nb` szintén elfogadva |
 | Lengyel                |     `pl`      |     ✓      |            |                                 |                    |
-| Portugál (Portugália) |    `pt-PT`    |     ✓      |            |                                 | `pt`szintén elfogadva |
+| Portugál (Portugália) |    `pt-PT`    |     ✓      |            |                                 | `pt` szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Orosz              |     `ru`      |     ✓      |            |                                 |                    |
 | Spanyol               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
@@ -88,7 +88,7 @@ ms.locfileid: "87986168"
 
 #### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
-| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: |       Megjegyzések        |
+| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: |       Jegyzetek        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | Holland                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Angol               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -98,9 +98,9 @@ ms.locfileid: "87986168"
 | Olasz               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Japán              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Koreai                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norvég (nyelven)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb`szintén elfogadva |
+| Norvég (nyelven)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` szintén elfogadva |
 | Lengyel                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt`szintén elfogadva |
+| Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Orosz               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Spanyol               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -108,14 +108,14 @@ ms.locfileid: "87986168"
 
 #### <a name="entity-linking"></a>[Entitás összekapcsolása](#tab/entity-linking)
 
-| Nyelv | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: | Megjegyzések |
+| Nyelv | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: | Jegyzetek |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | Angol  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | Spanyol  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
 
 #### <a name="language-detection"></a>[Nyelvfelismerés](#tab/language-detection)
 
-A Text Analytics API számos nyelvet, változatot, dialektust és néhány regionális/kulturális nyelvet képes felderíteni.  Nyelvfelismerés a nyelv "szkriptjét" adja vissza. Ha például a "Nekem van egy kutyám" kifejezés, akkor a helyett a értéket fogja visszaadni `en` `en-US` . Az egyetlen különleges eset a kínai, ahol a nyelvi észlelési képesség vissza fog térni, `zh_CHS` vagy `zh_CHT` Ha meg tudja határozni a parancsfájlt a megadott szöveg alapján. Azokban az esetekben, amikor egy kínai dokumentumhoz nem azonosítható egy adott parancsfájl, a rendszer egyszerűen visszaadja `zh` .
+A Text Analytics API számos nyelvet, változatot, dialektust és néhány regionális/kulturális nyelvet képes felderíteni.  Nyelvfelismerés a nyelv "szkriptjét" adja vissza. Ha például a "Nekem van egy kutyám" kifejezés, akkor a helyett a értéket fogja visszaadni  `en`  `en-US` . Az egyetlen különleges eset a kínai, ahol a nyelvi észlelési képesség vissza fog térni, `zh_CHS` vagy `zh_CHT` Ha meg tudja határozni a parancsfájlt a megadott szöveg alapján. Azokban az esetekben, amikor egy kínai dokumentumhoz nem azonosítható egy adott parancsfájl, a rendszer egyszerűen visszaadja `zh` .
 
 Nem tesszük közzé a funkcióhoz tartozó nyelvek pontos listáját, de számos nyelvet, változatot, dialektust és bizonyos regionális/kulturális nyelvet képes felderíteni. 
 
@@ -123,6 +123,6 @@ Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejez
 
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Text Analytics API?](overview.md)   

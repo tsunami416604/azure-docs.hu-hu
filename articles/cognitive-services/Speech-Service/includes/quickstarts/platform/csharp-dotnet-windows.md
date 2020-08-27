@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: b47fd90a3fc92234d95ddc9d9f4f14b5af67d757
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925655"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926658"
 ---
-Ez az útmutató bemutatja, hogyan telepítheti a .NET-keretrendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t (Windows). Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját `Install-Package Microsoft.CognitiveServices.Speech` számára, futtassa a parancsot a NuGet-konzolon.
+Ez az útmutató bemutatja, hogyan telepítheti a .NET-keretrendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t (Windows). Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját számára, futtassa `Install-Package Microsoft.CognitiveServices.Speech` a parancsot a NuGet-konzolon.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -41,7 +42,7 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
 1. Az **új projekt konfigurálása** ablakban írja be a *HelloWorld* nevet a **projekt neve**mezőbe, válassza ki vagy hozza létre a könyvtár elérési útját a **helyen**, majd válassza a **Létrehozás**lehetőséget.
 
-1. A Visual Studio menüsávban válassza az **eszközök** > **beolvasása eszközök és szolgáltatások**elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
+1. A Visual Studio menüsávban válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások**elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
 
 1. Győződjön meg arról, hogy elérhető-e a **.net Desktop fejlesztői** munkaterhelése. Ha a munkaterhelés még nincs telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** gombra a telepítés elindításához. A letöltése és telepítése néhány percet is igénybe vehet.
 
@@ -57,7 +58,7 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
    ![NuGet-csomagkezelő](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van- **`nuget.org`** e jelölve.
+1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van-e **`nuget.org`** jelölve.
 
 1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
 
@@ -75,7 +76,7 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
 A konzol alkalmazás létrehozásához és futtatásához hozzon létre egy, a számítógép architektúrájának megfelelő platform-konfigurációt.
 
-1. A menüsávban válassza a **Build** > **Configuration Manager**elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
+1. A menüsávban válassza a **Build**  >  **Configuration Manager**elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
 
    ![Configuration Manager párbeszédpanel](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080834"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936044"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
 
-A **képelemzési** képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. 
+A **képelemzési** képesség a vizualizációs funkciók gazdag készletét Kinyeri a kép tartalma alapján. Létrehozhat például egy képfeliratot egy képből, létrehozhat címkéket, vagy azonosíthatja a hírességeket és a tereptárgyait. Ez a képesség a Cognitive Services [Computer Vision](../cognitive-services/computer-vision/home.md) által biztosított gépi tanulási modelleket használja. 
 
 > [!NOTE]
 > A kis méretű kötetek (20 tranzakció alatt) ingyenesen végrehajthatók az Azure Cognitive Searchban, de a nagyobb munkaterhelésekhez [számlázható Cognitive Services erőforrást kell csatolni](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -32,15 +32,15 @@ Microsoft. Skills. vízió. ImageAnalysisSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Description |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | `defaultLanguageCode` |  A visszaadni kívánt nyelvet jelző sztring. A szolgáltatás egy megadott nyelven adja vissza az elismerés eredményét. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/><br/>A támogatott nyelvek a következők: <br/>*hu* – angol (alapértelmezett) <br/> *es* – spanyol <br/> *ja* – Japán <br/> *PT* – portugál <br/> *zh* -egyszerűsített kínai|
-| `visualFeatures` |    Karakterláncok tömbje, amely a vizuális szolgáltatások visszatérési típusait jelzi. A vizuális funkciók érvényes típusai a következők:  <ul><li>*felnőtt* – észleli, ha a rendszerkép a természetben (meztelenség vagy szexuális cselekmény ábrázolása), vagy véres (a szélsőséges erőszakot vagy vért ábrázol). A rendszer a szexuálisan szuggesztív tartalmat (más néven a zamatos tartalmat) is észleli.</li><li>*márkák* – különböző márkákat észlel egy képen belül, beleértve a hozzávetőleges helyet is. A *Brands* vizualizáció funkció csak angol nyelven érhető el.</li><li> *Kategóriák* – a rendszerképek tartalmának kategorizálása a Cognitive Services [Computer Vision dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)meghatározott besorolásnak megfelelően. </li><li>*Leírás* – a képek tartalmának teljes mondatát írja le a támogatott nyelveken.</li><li>*Faces* – észleli, hogy vannak-e arcok. Ha van, a a koordinátákat, a nemeket és a kort hozza létre.</li><li>   *objektumok* – a képen belül különböző objektumokat észlel, beleértve a hozzávetőleges helyet is. Az *objektumok* vizualizáció funkció csak angol nyelven érhető el.</li><li> *címkék* – a képet a képtartalommal kapcsolatos szavak részletes listájával címkézheti.</li></ul> A vizualizációs funkciók nevei megkülönböztetik a kis-és nagybetűket. Vegye figyelembe, hogy a *színes* és a *imageType* vizualizációs funkciók elavultak, de ez a funkció továbbra is elérhető egy [Egyéni képességgel](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).|
+| `visualFeatures` |    Karakterláncok tömbje, amely a vizuális szolgáltatások visszatérési típusait jelzi. A vizuális funkciók érvényes típusai a következők:  <ul><li>*felnőtt* – észleli, ha a rendszerkép a természetben (meztelenség vagy szexuális cselekmény ábrázolása), vagy véres (a szélsőséges erőszakot vagy vért ábrázol). A rendszer a szexuálisan szuggesztív tartalmat (más néven a zamatos tartalmat) is észleli.</li><li>*márkák* – különböző márkákat észlel egy képen belül, beleértve a hozzávetőleges helyet is. A *Brands* vizualizáció funkció csak angol nyelven érhető el.</li><li> *Kategóriák* – a rendszerképek tartalmának kategorizálása a Cognitive Services [Computer Vision dokumentációjában](../cognitive-services/computer-vision/category-taxonomy.md)meghatározott besorolásnak megfelelően. </li><li>*Leírás* – a képek tartalmának teljes mondatát írja le a támogatott nyelveken.</li><li>*Faces* – észleli, hogy vannak-e arcok. Ha van, a a koordinátákat, a nemeket és a kort hozza létre.</li><li>  *objektumok* – a képen belül különböző objektumokat észlel, beleértve a hozzávetőleges helyet is. Az *objektumok* vizualizáció funkció csak angol nyelven érhető el.</li><li> *címkék* – a képet a képtartalommal kapcsolatos szavak részletes listájával címkézheti.</li></ul> A vizualizációs funkciók nevei megkülönböztetik a kis-és nagybetűket. Vegye figyelembe, hogy a *színes* és a *imageType* vizualizációs funkciók elavultak, de ez a funkció továbbra is elérhető egy [Egyéni képességgel](./cognitive-search-custom-skill-interface.md).|
 | `details` | Karakterláncok tömbje, amely azt jelzi, hogy melyik tartományra vonatkozó adatokat kell visszaadnia. A vizuális funkciók érvényes típusai a következők: <ul><li>*hírességek* – azonosítja a hírességeket, ha a rendszerkép észleli őket.</li><li>*tereptárgyak* – a rendszerképben észlelt tereptárgyak azonosítására szolgál. </li></ul> |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Description                                          |
+| Bemeneti név      | Leírás                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ha a értéke nem a (z ```imageAction``` ) értékre van állítva ```none``` . További információért tekintse meg a [mintát](#sample-output) .|
 
@@ -333,7 +333,7 @@ Az alacsonyabb szintű tulajdonságokhoz (például tereptárgyak vagy híressé
             "targetFieldName": "celebrities"
         }
 ```
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Példabemenet
 
 ```json
 {
@@ -357,7 +357,7 @@ Az alacsonyabb szintű tulajdonságokhoz (például tereptárgyak vagy híressé
 }
 ```
 
-##  <a name="sample-output"></a>Példa kimenet
+##  <a name="sample-output"></a>Példakimenet
 
 ```json
 {
@@ -512,7 +512,7 @@ Az alacsonyabb szintű tulajdonságokhoz (például tereptárgyak vagy híressé
 ## <a name="error-cases"></a>Hibák esetei
 A következő hiba esetekben egyetlen elem sincs kibontva.
 
-| Hibakód | Description |
+| Hibakód | Leírás |
 |------------|-------------|
 | `NotSupportedLanguage` | A megadott nyelv nem támogatott. |
 | `InvalidImageUrl` | A képurl-cím helytelen formátumú vagy nem érhető el.|
@@ -542,4 +542,4 @@ Ha a következőhöz hasonló hibaüzenetet kap `"One or more skills are invalid
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Indexelő létrehozása (REST)](/rest/api/searchservice/create-indexer)

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214092"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935449"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Készségkészlet létrehozása AI-bővítési folyamatokban az Azure-ban Cognitive Search 
 
@@ -42,21 +42,21 @@ Tegyük fel, hogy több pénzügyi elemzői Megjegyzés feldolgozását érdekli
 
 | rekord – szöveg | vállalatok | hangulatelemzés | a cég leírása |
 |--------|-----|-----|-----|
-|minta – rekord| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
+|minta – rekord| ["Microsoft", "LinkedIn"] | 0,99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
 
 Az alábbi ábrán egy feltételezett alkoholtartalom-növelési folyamat látható:
 
 ![Egy feltételezett alkoholtartalom-növelési folyamat](media/cognitive-search-defining-skillset/sample-skillset.png "Egy feltételezett alkoholtartalom-növelési folyamat")
 
 
-Ha jó ötlete van arról, hogy mit szeretne a folyamaton belül, megadhatja a lépéseket készségkészlet. A készségkészlet az indexelő definíciójának Azure Cognitive Searchba való feltöltésekor fejezi ki. Az indexelő feltöltésével kapcsolatos további tudnivalókért tekintse meg az [Indexelő dokumentációját](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Ha jó ötlete van arról, hogy mit szeretne a folyamaton belül, megadhatja a lépéseket készségkészlet. A készségkészlet az indexelő definíciójának Azure Cognitive Searchba való feltöltésekor fejezi ki. Az indexelő feltöltésével kapcsolatos további tudnivalókért tekintse meg az [Indexelő dokumentációját](/rest/api/searchservice/create-indexer).
 
 
 A diagramon a *repedések* megjelenő lépése automatikusan megtörténik. Az Azure Cognitive Search ismeri a jól ismert fájlok megnyitását és az egyes dokumentumokból kinyert szöveget tartalmazó *tartalmi* mezőt. A fehér dobozok beépített gazdagítók, a pontozott "Bing Entity Search" mező pedig egy Ön által létrehozott egyéni dúsítást jelöl. Ahogy az ábrán látható, a készségkészlet három ismerettel rendelkezik.
 
 ## <a name="skillset-definition-in-rest"></a>Készségkészlet-definíció a REST-ben
 
-A készségkészlet a szaktudás tömbje van meghatározva. Az egyes képességek a bemenetek forrását és a létrehozott kimenetek nevét határozzák meg. A [Készségkészlet létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)segítségével megadhatja az előző diagramnak megfelelő készségkészlet: 
+A készségkészlet a szaktudás tömbje van meghatározva. Az egyes képességek a bemenetek forrását és a létrehozott kimenetek nevét határozzák meg. A [Készségkészlet létrehozása REST API](/rest/api/searchservice/create-skillset)segítségével megadhatja az előző diagramnak megfelelő készségkészlet: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -279,6 +279,6 @@ Dönthet úgy, hogy a dúsított dokumentumokat táblázatként vagy a blob Stor
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md). 
+Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md).

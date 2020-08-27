@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290673"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935976"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Oktatóanyag: a készségkészlet változásainak diagnosztizálása, javítása és elutasítása
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag az Azure Cognitive Search és az Azure Storage Services szolg
 
 * 19 fájlból álló [mintaadatok letöltése](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19) .
 
-* [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+* [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
    Válassza ki ugyanazt a régiót, mint az Azure Cognitive Search a sávszélességgel kapcsolatos költségek elkerülése érdekében.
    
@@ -258,5 +258,5 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a szakértelmével](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets) 
->  [További információ a növekményes bővítésről és a gyorsítótárazásról](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> [További információ a szakértelmével](./cognitive-search-working-with-skillsets.md) 
+>  [További információ a növekményes bővítésről és a gyorsítótárazásról](./cognitive-search-incremental-indexing-conceptual.md)

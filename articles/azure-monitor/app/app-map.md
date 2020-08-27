@@ -3,13 +3,14 @@ title: Alkalmazás-hozzárendelés az Azure Application Insightsban | Microsoft 
 description: Összetett alkalmazás-topológiák figyelése az alkalmazás-hozzárendeléssel
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421297"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936605"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -258,7 +259,7 @@ További információ arról, hogyan bírálható felül a Felhőbeli szerepkör
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
@@ -292,7 +293,7 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](correlation.md).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/02/2020
-ms.openlocfilehash: 51422be944d514de398d4bfa424679e2f6d531b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534753"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924265"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
 
@@ -23,7 +23,7 @@ Ebben a cikkben a REST API felület használatával végezheti el, indexelheti �
 
 Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el a [Storage Explorer](knowledge-store-view-storage-explorer.md) vagy [Power bi](knowledge-store-connect-power-bi.md)használatával a Knowledge Store-t.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 > [!TIP]
 > Ehhez a cikkhez a [Poster Desktop alkalmazást](https://www.getpostman.com/) ajánljuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tartalmaz egy Poster-gyűjteményt, amely tartalmazza az összes kérelmet. 
@@ -36,7 +36,7 @@ Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, h
 
 1. [HotelReviews_Free.csvletöltése ](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Ezek az adatok egy CSV-fájlban (Kaggle.com-ből származó) tárolt adatok, amelyek egy adott szállodával kapcsolatban 19 darab ügyfél-visszajelzést tartalmaznak. 
 
-1. [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
+1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a jelenlegi előfizetése alatt. Az Azure Storage-t fogja használni mind az importálandó nyers tartalomhoz, mind a Tudásbázis végeredményéhez.
 
    Válassza ki a **StorageV2 (általános célú v2)** fiók típusát.
 
@@ -50,7 +50,7 @@ Mivel a számítási feladatok olyan kicsik, Cognitive Services a háttérben, h
 
     ![Az Azure Blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Az Azure Blob-tároló létrehozása")
 
-1. Ezzel az erőforrással majdnem elkészült, de mielőtt elhagyja ezeket a lapokat, a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc az alábbi példához hasonlóan néz ki:`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. Ezzel az erőforrással majdnem elkészült, de mielőtt elhagyja ezeket a lapokat, a bal oldali navigációs ablaktáblán található hivatkozást használva nyissa meg a **hozzáférési kulcsok** lapot. A blob Storage-ból származó adatok lekérésére szolgáló kapcsolódási karakterlánc beolvasása. A kapcsolódási karakterlánc az alábbi példához hasonlóan néz ki: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 1. Továbbra is a portálon váltson az Azure Cognitive Searchra. [Hozzon létre egy új szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Ehhez a gyakorlathoz használhatja az ingyenes szolgáltatást.
 
@@ -172,7 +172,7 @@ A következő lépés a készségkészlet megadása, amely meghatározza az alka
 
 Két nagyméretű legfelső szintű objektum létezik: `skills` és `knowledgeStore` . Az objektumon belüli összes objektum `skills` egy dúsítási szolgáltatás. Minden alkoholtartalom-növelési szolgáltatás `inputs` és `outputs` . A `LanguageDetectionSkill` kimenete: `targetName` `Language` . Ennek a csomópontnak az értékét a más képességek többsége használja bemenetként. A forrás: `document/Language` . Egy csomópont kimenetének egy másikhoz való bemenetének lehetősége még nyilvánvalóbb a-ben `ShaperSkill` , amely meghatározza, hogy az adatok hogyan áramlanak be a Knowledge Store tábláiba.
 
-Az `knowledge_store` objektum a Poster változón keresztül kapcsolódik a Storage-fiókhoz `{{storage-connection-string}}` . `knowledge_store`a a tudásbázisban található bővített dokumentum és táblák és oszlopok közötti leképezések készletét tartalmazza. 
+Az `knowledge_store` objektum a Poster változón keresztül kapcsolódik a Storage-fiókhoz `{{storage-connection-string}}` . `knowledge_store` a a tudásbázisban található bővített dokumentum és táblák és oszlopok közötti leképezések készletét tartalmazza. 
 
 A készségkészlet létrehozásához kattintson a Poster **Send (Küldés** ) gombjára a kérelem elvégzéséhez:
 
@@ -306,7 +306,7 @@ A készségkészlet létrehozásához kattintson a Poster **Send (Küldés** ) g
 
 Az utolsó lépés az indexelő létrehozása. Az indexelő beolvassa az adatokat, és aktiválja a készségkészlet. A Poster területen válassza az **Indexelő kérés létrehozása** lehetőséget, majd tekintse át a törzset. Az indexelő definíciója több, már létrehozott erőforrásra hivatkozik: az adatforrás, az index és a készségkészlet. 
 
-Az `parameters/configuration` objektum azt szabályozza, hogy az indexelő Hogyan nyelje le az adatot. Ebben az esetben a bemeneti adatok egy olyan dokumentumban vannak, amely tartalmaz egy fejlécet és egy vesszővel tagolt értéket. A dokumentum kulcsa a dokumentum egyedi azonosítója. A kódolás előtt a dokumentum kulcsa a forrásdokumentum URL-címe. Végül a készségkészlet kimeneti értékei, például a Nyelvkód, a hangulat és a legfontosabb kifejezések a dokumentumban lévő helyükre vannak leképezve. Bár egyetlen érték van a esetében `Language` , `Sentiment` a rendszer a tömb minden elemére alkalmazza `pages` . `Keyphrases`egy olyan tömb, amely a tömb egyes elemeire is vonatkozik `pages` .
+Az `parameters/configuration` objektum azt szabályozza, hogy az indexelő Hogyan nyelje le az adatot. Ebben az esetben a bemeneti adatok egy olyan dokumentumban vannak, amely tartalmaz egy fejlécet és egy vesszővel tagolt értéket. A dokumentum kulcsa a dokumentum egyedi azonosítója. A kódolás előtt a dokumentum kulcsa a forrásdokumentum URL-címe. Végül a készségkészlet kimeneti értékei, például a Nyelvkód, a hangulat és a legfontosabb kifejezések a dokumentumban lévő helyükre vannak leképezve. Bár egyetlen érték van a esetében `Language` , `Sentiment` a rendszer a tömb minden elemére alkalmazza `pages` . `Keyphrases` egy olyan tömb, amely a tömb egyes elemeire is vonatkozik `pages` .
 
 Miután beállította a `api-key` és a `Content-type` fejléceket, és ellenőrizze, hogy a kérelem törzse hasonló-e a következő forráskódhoz, válassza a **Küldés** postán lehetőséget. A Poster egy PUT-kérelmet küld a következőnek: `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` . Az Azure Cognitive Search létrehozza és futtatja az indexelő. 
 

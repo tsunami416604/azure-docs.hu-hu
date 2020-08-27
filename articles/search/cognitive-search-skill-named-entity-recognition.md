@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080014"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935942"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Elnevezett entitások felismerése – kognitív képesség
 
@@ -32,28 +32,28 @@ Az **elnevezett entitás-felismerési** képességek nevű entitások szövegbő
 Microsoft. Skills. Text. NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Paraméter neve     | Description |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | kategóriák    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"` , `"Location"` , `"Organization"` . Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
-|defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak:`de, en, es, fr, it`|
+|defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `de, en, es, fr, it`|
 | minimumPrecision  | 0 és 1 közötti szám. Ha a pontosság ennél az értéknél kisebb, az entitás nem lesz visszaadva. Az alapértelmezett érték a 0.|
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Description                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
 | szöveg          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve     | Description                   |
+| Kimenet neve     | Leírás                   |
 |---------------|-------------------------------|
 | személyek      | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | helyek  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |
@@ -81,7 +81,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
     ]
   }
 ```
-##  <a name="sample-input"></a>Minta bemenet
+##  <a name="sample-input"></a>Példabemenet
 
 ```json
 {
@@ -98,7 +98,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 }
 ```
 
-##  <a name="sample-output"></a>Példa kimenet
+##  <a name="sample-output"></a>Példakimenet
 
 ```json
 {

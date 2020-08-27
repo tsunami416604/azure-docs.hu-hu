@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9de803789b7ec11a971cf9a79a5c4665ac372cb4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84986725"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928139"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Példa: Videók valós idejű elemzése
 
@@ -213,7 +214,7 @@ A minta használatához hajtsa végre az alábbi lépéseket:
 
 Ha készen áll az integrálásra, **a saját projektjeiből hivatkozhat a VideoFrameAnalyzer könyvtárra.** 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben az útmutatóban megtanulta, hogyan futtathat közel valós idejű elemzést az élő videó streameken az arc, a Computer Vision és az Emotion API-k használatával, és hogyan használhatja a minta kódját a kezdéshez.
 

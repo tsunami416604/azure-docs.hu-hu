@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fb43a0d39beacf02a6949228eaa32a719164987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd6b64f118460a115963ed0bf105641d80334348
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552237"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934990"
 ---
 # <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (előzetes verzió) az Azure Cognitive Search
 
 > [!IMPORTANT] 
 > Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2020-06-30-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál vagy .NET SDK-támogatás.
 
-`moreLikeThis=[key]`a a [keresési dokumentumok API](https://docs.microsoft.com/rest/api/searchservice/search-documents) lekérdezési paramétere, amely a dokumentum kulcsában megadott dokumentumhoz hasonló dokumentumokat keres. Ha keresési kérelem történik `moreLikeThis` , a rendszer egy lekérdezést hoz létre az adott dokumentumból kinyert keresési kifejezésekkel, amelyek az adott dokumentumot a legmegfelelőbb módon írják le. A rendszer ezután a generált lekérdezést használja a keresési kérelem elvégzéséhez. Alapértelmezés szerint az összes kereshető mező tartalma megtekinthető, mínusz a paraméterrel megadott korlátozott mezők `searchFields` . A `moreLikeThis` paraméter nem használható a keresési paraméterrel `search=[string]` .
+`moreLikeThis=[key]` a a [keresési dokumentumok API](/rest/api/searchservice/search-documents) lekérdezési paramétere, amely a dokumentum kulcsában megadott dokumentumhoz hasonló dokumentumokat keres. Ha keresési kérelem történik `moreLikeThis` , a rendszer egy lekérdezést hoz létre az adott dokumentumból kinyert keresési kifejezésekkel, amelyek az adott dokumentumot a legmegfelelőbb módon írják le. A rendszer ezután a generált lekérdezést használja a keresési kérelem elvégzéséhez. Alapértelmezés szerint az összes kereshető mező tartalma megtekinthető, mínusz a paraméterrel megadott korlátozott mezők `searchFields` . A `moreLikeThis` paraméter nem használható a keresési paraméterrel `search=[string]` .
 
 Alapértelmezés szerint a rendszer a legfelső szintű kereshető mezők tartalmát veszi figyelembe. Ha inkább konkrét mezőket szeretne megadni, használhatja a `searchFields` paramétert. 
 
@@ -52,7 +52,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
 
 ### <a name="apply-filters"></a>Szűrők alkalmazása
 
-`MoreLikeThis`kombinálható más gyakori lekérdezési paraméterekkel, például a következővel: `$filter` . A lekérdezés például csak olyan szállodákra korlátozható, amelyek kategóriája "költségvetés", és ahol a minősítés magasabb, mint 3,5:
+`MoreLikeThis` kombinálható más gyakori lekérdezési paraméterekkel, például a következővel: `$filter` . A lekérdezés például csak olyan szállodákra korlátozható, amelyek kategóriája "költségvetés", és ahol a minősítés magasabb, mint 3,5:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2020-06-30-Preview

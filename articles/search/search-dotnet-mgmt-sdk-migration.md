@@ -9,25 +9,25 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076405"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936707"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>A Azure Search .NET Management SDK verzióinak frissítése
 
 Ez a cikk azt ismerteti, hogyan lehet áttérni a Azure Search .NET Management SDK egymást követő verzióira, amelyek a keresési szolgáltatások kiépítésére vagy kiépítésére, a kapacitás módosítására és az API-kulcsok kezelésére szolgálnak.
 
-A felügyeleti SDK-k a felügyeleti REST API egy adott verzióját célozzák meg. A fogalmakkal és a műveletekkel kapcsolatos további információkért lásd: [keresési felügyelet (REST)](https://docs.microsoft.com/rest/api/searchmanagement/).
+A felügyeleti SDK-k a felügyeleti REST API egy adott verzióját célozzák meg. A fogalmakkal és a műveletekkel kapcsolatos további információkért lásd: [keresési felügyelet (REST)](/rest/api/searchmanagement/).
 
 ## <a name="versions"></a>Verziók
 
 | SDK verziója | A megfelelő REST API verziója | Szolgáltatások hozzáadásának vagy viselkedésének változása |
 |-------------|--------------------------------|-------------------------------------|
 | [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020 – 30 – 20 | Végpontok biztonsága (IP-tűzfalak és az [Azure Private-kapcsolat](../private-link/private-endpoint-overview.md)integrációja) |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Használhatóság javítása. A [lekérdezési kulcsok](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) lekérésének megszakítása (a Get megszűnik). |
+| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Használhatóság javítása. A [lekérdezési kulcsok](/rest/api/searchmanagement/querykeys/listbysearchservice) lekérésének megszakítása (a Get megszűnik). |
 | [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | Első verzió |
 
 ## <a name="how-to-upgrade"></a>A frissítés módja
@@ -48,21 +48,21 @@ Az 3,0-es verzió a magánhálózati végpontok védelmét az IP-tartományokhoz
 
 | API | Kategória| Részletek |
 |-----|--------|------------------|
-| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP-tűzfal | A szolgáltatás-végpontokhoz való hozzáférés korlátozása az engedélyezett IP-címek listájára. Lásd: az [IP-tűzfal konfigurálása](service-configure-firewall.md) fogalmak és portál utasításokhoz. |
-| [Megosztott privát kapcsolati erőforrás](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet egy keresési szolgáltatás használni fog.  |
-| [Magánhálózati végpontok kapcsolatai](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Private Link | A keresési szolgáltatás kapcsolatainak létrehozása és kezelése privát végponton keresztül. Lásd: [privát végpont létrehozása](service-create-private-endpoint.md) fogalmakhoz és portálhoz – útmutatás.|
-| [Privát kapcsolat erőforrásai](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Private Link | Egy privát végponti kapcsolatban álló keresési szolgáltatás esetében az azonos virtuális hálózatban használt összes szolgáltatás listájának beolvasása. Ha a keresési megoldás olyan indexelő tartalmaz, amelyek Azure-adatforrásokból (Azure Storage, Cosmos db, Azure SQL) származnak, vagy Cognitive Services vagy Key Vault használ, akkor az összes erőforrásnak rendelkeznie kell végpontokkal a virtuális hálózatban, és az API-nak egy listát kell visszaadnia. |
-| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Ez egy tulajdonság a szolgáltatási kérelmek létrehozásához vagy frissítéséhez. Ha le van tiltva, a privát hivatkozás az egyetlen hozzáférési mód. |
+| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP-tűzfal | A szolgáltatás-végpontokhoz való hozzáférés korlátozása az engedélyezett IP-címek listájára. Lásd: az [IP-tűzfal konfigurálása](service-configure-firewall.md) fogalmak és portál utasításokhoz. |
+| [Megosztott privát kapcsolati erőforrás](/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet egy keresési szolgáltatás használni fog.  |
+| [Magánhálózati végpontok kapcsolatai](/rest/api/searchmanagement/privateendpointconnections) | Private Link | A keresési szolgáltatás kapcsolatainak létrehozása és kezelése privát végponton keresztül. Lásd: [privát végpont létrehozása](service-create-private-endpoint.md) fogalmakhoz és portálhoz – útmutatás.|
+| [Privát kapcsolat erőforrásai](/rest/api/searchmanagement/privatelinkresources/) | Private Link | Egy privát végponti kapcsolatban álló keresési szolgáltatás esetében az azonos virtuális hálózatban használt összes szolgáltatás listájának beolvasása. Ha a keresési megoldás olyan indexelő tartalmaz, amelyek Azure-adatforrásokból (Azure Storage, Cosmos db, Azure SQL) származnak, vagy Cognitive Services vagy Key Vault használ, akkor az összes erőforrásnak rendelkeznie kell végpontokkal a virtuális hálózatban, és az API-nak egy listát kell visszaadnia. |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Ez egy tulajdonság a szolgáltatási kérelmek létrehozásához vagy frissítéséhez. Ha le van tiltva, a privát hivatkozás az egyetlen hozzáférési mód. |
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
 
-A GET [lekérdezési kulcsokra](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) vonatkozó kérést már nem használhatja. Az előző kiadásokban használhatja a GET vagy a POST verziót, ebben a kiadásban és minden olyan kiadásban, amely továbbra is elérhető, csak a POST támogatott. 
+A GET [lekérdezési kulcsokra](/rest/api/searchmanagement/querykeys/listbysearchservice) vonatkozó kérést már nem használhatja. Az előző kiadásokban használhatja a GET vagy a POST verziót, ebben a kiadásban és minden olyan kiadásban, amely továbbra is elérhető, csak a POST támogatott. 
 
 ## <a name="upgrade-to-20"></a>Frissítés 2,0-re
 
 A Azure Search .NET Management SDK 2. verziója egy kisebb frissítés, ezért a kód módosítása csak minimális erőfeszítést igényelhet. Az SDK módosításai szigorúan ügyféloldali változások az SDK használhatóságának javítása érdekében. Ezek a változások a következők:
 
-* `Services.CreateOrUpdate`a és az aszinkron verziói mostantól automatikusan lekérdezik a kiépítési és a nem visszaadott állapotot, `SearchService` amíg a szolgáltatás kiépítés be nem fejeződik. Ezzel elmentheti, hogy az ilyen lekérdezési kódot saját kezűleg írja.
+* `Services.CreateOrUpdate` a és az aszinkron verziói mostantól automatikusan lekérdezik a kiépítési és a nem visszaadott állapotot, `SearchService` amíg a szolgáltatás kiépítés be nem fejeződik. Ezzel elmentheti, hogy az ilyen lekérdezési kódot saját kezűleg írja.
 
 * Ha továbbra is manuálisan szeretné lekérdezni a szolgáltatás üzembe helyezését, használhatja az új `Services.BeginCreateOrUpdate` metódust vagy annak egy aszinkron verzióját.
 

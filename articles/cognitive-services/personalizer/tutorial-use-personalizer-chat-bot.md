@@ -3,12 +3,13 @@ title: Személyre szabás használata a csevegési robotban – személyre szab�
 description: Testreszabhatja a C# .NET chat robotot egy személyre szabott hurok használatával, hogy a megfelelő tartalmat biztosítsa a felhasználóknak a műveletek (funkciók) és a környezeti funkciók alapján.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131667"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935653"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Oktatóanyag: személyre szabott használata a .NET-csevegési robotban
 
@@ -191,8 +192,8 @@ Tartsa meg a webhelyet, mert az oktatóanyag leírja, hogy mit csinál a robot, 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>A robot használata a bot emulatorban
 
 1. Kérje meg, hogy írja be a menüt a következővel: `I would like to see the menu` . A csevegési robot megjeleníti az elemeket.
-1. A bot arra utalhat, hogy az emulátor beírásával `Please suggest a drink for me.` megjelenik a Range kérelem és válasz a csevegési ablakban, így megtekintheti a teljes JSON-t. A robot pedig javaslatot tesz, valami hasonló`How about Latte?`
-1. Válassza ki a választ, ami azt jelenti, hogy elfogadja a személyre szabott legjobb választást, `I like it.` az emulátor az 1. jutalom és a csevegési időszakra vonatkozó jutalom kérését jeleníti meg, így láthatja a teljes JSON-t. És a bot válaszol a `That’s great! I’ll keep learning your preferences over time.` és a`Would you like to get a new suggestion or reset the simulated context to a new day?`
+1. A bot arra utalhat, hogy az emulátor beírásával `Please suggest a drink for me.` megjelenik a Range kérelem és válasz a csevegési ablakban, így megtekintheti a teljes JSON-t. A robot pedig javaslatot tesz, valami hasonló `How about Latte?`
+1. Válassza ki a választ, ami azt jelenti, hogy elfogadja a személyre szabott legjobb választást, `I like it.` az emulátor az 1. jutalom és a csevegési időszakra vonatkozó jutalom kérését jeleníti meg, így láthatja a teljes JSON-t. És a bot válaszol a `That’s great! I’ll keep learning your preferences over time.` és a `Would you like to get a new suggestion or reset the simulated context to a new day?`
 
     Ha `no` a kiválasztott értékre válaszol, a jutalom pontszáma 0 lesz a személyre szabott.
 
@@ -201,9 +202,9 @@ Tartsa meg a webhelyet, mert az oktatóanyag leírja, hogy mit csinál a robot, 
 
 A .NET-megoldás egy egyszerű bot Framework-csevegési robot. A személyre szabáshoz kapcsolódó kód a következő mappákban található:
 * `/samples/ChatbotExample/Bots`
-    * `PersonalizerChatbot.cs`a bot és a megszemélyesítő közötti interakció fájlja
-* `/samples/ChatbotExample/ReinforcementLearning`-kezeli a személyre szabott modell műveleteit és funkcióit
-* `/samples/ChatbotExample/Model`– a személyre szabott műveletekhez és szolgáltatásokhoz, valamint a LUIS-szándékokhoz tartozó fájlok
+    * `PersonalizerChatbot.cs` a bot és a megszemélyesítő közötti interakció fájlja
+* `/samples/ChatbotExample/ReinforcementLearning` -kezeli a személyre szabott modell műveleteit és funkcióit
+* `/samples/ChatbotExample/Model` – a személyre szabott műveletekhez és szolgáltatásokhoz, valamint a LUIS-szándékokhoz tartozó fájlok
 
 ### <a name="personalizerchatbotcs---working-with-personalizer"></a>PersonalizerChatbot.cs – a személyre szabás használata
 

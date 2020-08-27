@@ -4,19 +4,19 @@ description: A ADO.NET és a Azure SQL Database közötti ügyfélkapcsolatok me
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-dotnet
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: c5ddcd083dfae1d0d4b79cd534b6ae4d034903b9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 73bd3a86d34f36c3737db62e531dc2f79c0db8b5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759308"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928326"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az 1433-as porton túli portok az ADO.NET 4.5 szoftverrel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,9 +77,9 @@ Ez a szakasz a termék verziójára hivatkozó monikereket pontosítja. Emellett
 * A ADO.NET 4,5-es verziójának kiadása: 2012. augusztus 15. A .NET-csapatról szóló blogbejegyzés [itt](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)érhető el.
   * Az ADO.NET 4.5.1-re vonatkozó blogbejegyzés [itt](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)érhető el.
 
-* Microsoft ODBC-illesztő, 17 SQL Serverhttps://aka.ms/downloadmsodbcsql
+* Microsoft ODBC-illesztő, 17 SQL Server https://aka.ms/downloadmsodbcsql
 
-* Kapcsolódás Azure SQL Database V12-hez átirányítás útjánhttps://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
+* Kapcsolódás Azure SQL Database V12-hez átirányítás útján https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [TDS protokoll verzióinak listája](https://www.freetds.org/)
 * [SQL Database fejlesztés áttekintése](develop-overview.md)

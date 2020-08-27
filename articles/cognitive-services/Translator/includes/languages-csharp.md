@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a69c0b7f204fb07e6d4ec94e8a2cecb0a404735
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586868"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921366"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -139,7 +140,7 @@ GetLanguages();
 Console.ReadLine();
 ```
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Ekkor készen áll a minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a projekt könyvtárába, és futtassa a következő parancsot:
 
@@ -235,7 +236,7 @@ Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.mi
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
@@ -244,4 +245,4 @@ Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.mi
 Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
-> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

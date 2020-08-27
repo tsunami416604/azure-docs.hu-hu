@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT Edge figyelésről és naplózásról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060457"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934293"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -100,13 +100,32 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
    ```
 A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)továbbítja, és innen más célhelyekre is átirányítható. 
 
+### <a name="timestamps-in-analytic-events"></a>Az analitikus események időbélyegei
+A fentiekben leírtaknak megfelelően a videó-elemzés részeként generált események időbélyegzővel vannak társítva. Ha a gráf topológiájának részeként [rögzítette az élő videót](video-recording-concept.md) , akkor ez az időbélyegző segít megkeresni, hogy a rögzített videó hol található az adott esemény bekövetkezésekor. A következő irányelvek azt ismertetik, hogyan képezhető le egy elemzési esemény időbélyege az [Azure Media Service-eszközbe](terminology.md#asset)rögzített videó idővonalára.
+
+Először bontsa ki az `eventTime` értéket. Használja ezt az értéket egy [időtartomány-szűrőben](playback-recordings-how-to.md#time-range-filters) a rögzítés megfelelő részének lekéréséhez. Előfordulhat például, hogy olyan videót szeretne beolvasni, amely 30 másodpercet indít el az előtt `eventTime` , és 30 másodperccel később ér véget. A fenti példában, ahol a `eventTime` 2020-05-12T23:33:09.381 z, a +/-30-as időszakra vonatkozó HLS-jegyzékfájl iránti kérelem a következőhöz hasonlóan fog kinézni:
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+A fenti URL-cím egy úgynevezett [fő listát](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)ad vissza, amely az URL-címeket tartalmazza a média lejátszási listáihoz. A média lista a következőhöz hasonló bejegyzéseket tartalmaz:
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+A fentiekben a bejegyzés azt jelzi, hogy egy videó töredék elérhető, amely időbélyeg-értékkel kezdődik `143039375031270` . Az `timestamp` analitikai eseményben szereplő érték ugyanazt az időkeretet használja, mint a média-lejátszási lista, és felhasználható a kapcsolódó videó-töredék azonosítására, és a megfelelő keretre való rákeresésre.
+
+További információért olvassa el a HLS-ben található, a frame-ben pontos kereséssel foglalkozó [cikk](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) egyikét.
+
 ## <a name="controlling-events"></a>Az események irányítása
 
 A következő modul-Twin tulajdonságokat használhatja a modul [Twin JSON-sémájában](module-twin-configuration-schema.md)leírtaknak megfelelően az élő videó Analytics IoT Edge modulban közzétett operatív és diagnosztikai események vezérléséhez.
 
-`diagnosticsEventsOutputName`– a tulajdonsághoz tartozó (bármilyen) érték belefoglalása és megadása, hogy a modul diagnosztikai eseményeket kapjon. Hagyja ki, vagy hagyja üresen a modult a diagnosztikai események közzétételének leállításához.
+`diagnosticsEventsOutputName` – a tulajdonsághoz tartozó (bármilyen) érték belefoglalása és megadása, hogy a modul diagnosztikai eseményeket kapjon. Hagyja ki, vagy hagyja üresen a modult a diagnosztikai események közzétételének leállításához.
    
-`operationalEventsOutputName`– a tulajdonsághoz tartozó (bármely) érték belefoglalása és megadása (bármilyen) a modul működési eseményeinek beszerzése érdekében. Hagyja ki, vagy hagyja üresen a modul működési események közzétételének leállításához.
+`operationalEventsOutputName` – a tulajdonsághoz tartozó (bármely) érték belefoglalása és megadása (bármilyen) a modul működési eseményeinek beszerzése érdekében. Hagyja ki, vagy hagyja üresen a modul működési események közzétételének leállításához.
    
 Az elemzési eseményeket olyan csomópontok hozza létre, mint például a mozgásészlelési processzor vagy a HTTP-bővítmény processzora, az IoT hub-fogadó pedig az IoT Edge hubhoz küldi el őket. 
 
@@ -180,11 +199,11 @@ Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
 
 #### <a name="event-classes"></a>Eseményosztályok
 
-|Osztály neve|Description|
+|Osztály neve|Leírás|
 |---|---|
 |Elemzés  |A tartalom elemzése részeként generált események.|
 |Diagnosztika    |A problémák és a teljesítmény diagnosztizálását segítő események.|
-|Operatív    |Az erőforrás-művelet részeként generált események.|
+|Működik    |Az erőforrás-művelet részeként generált események.|
 
 Az események típusai az egyes események osztályokra jellemzőek.
 
