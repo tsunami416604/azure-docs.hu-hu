@@ -1,21 +1,21 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 04/11/2019
+ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545327"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930799"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2 hozzáférési engedélyek kiosztása identitáshoz
+## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek kiosztása identitáshoz
 
 A Azure Files-erőforrások identitás-alapú hitelesítéssel való eléréséhez az identitásnak (egy felhasználónak, csoportnak vagy egyszerű szolgáltatásnak) rendelkeznie kell a szükséges engedélyekkel a megosztás szintjén. Ez a folyamat hasonló a Windows-megosztási engedélyek megadásához, ahol megadhatja, hogy egy adott felhasználó milyen típusú hozzáférést osszon meg a fájlmegosztás számára. Az ebben a szakaszban található útmutatás azt mutatja be, hogyan lehet olvasási, írási vagy törlési engedélyeket rendelni egy fájlmegosztás identitásához. 
 
@@ -35,7 +35,9 @@ A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti 
 
 Az általános javaslat a megosztási szint engedély használata a magas szintű hozzáférés-kezeléshez a felhasználók és identitások egy csoportját képviselő AD-csoportra vonatkozóan, majd az NTFS-engedélyek kihasználása a címtár/fájl szintjén a részletes hozzáférés-vezérléshez. 
 
-#### <a name="azure-portal"></a>Azure Portal
+### <a name="assign-an-azure-role-to-an-ad-identity"></a>Azure-szerepkör kiosztása AD-identitáshoz
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 Ha Azure-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure Portal](https://portal.azure.com)használatával, kövesse az alábbi lépéseket:
 
 1. A Azure Portal keresse meg a fájlmegosztást, vagy [hozzon létre egy fájlmegosztást](../articles/storage/files/storage-how-to-create-file-share.md).
@@ -44,7 +46,7 @@ Ha Azure-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure
 4. A **szerepkör-hozzárendelés hozzáadása** panelen válassza ki a megfelelő beépített szerepkört (tárolási fájl adatsmb-megosztási olvasó, tárolási fájl adat SMB-megosztás közreműködője) a **szerepkör** listából. Az alapértelmezett beállításhoz ne **rendeljen hozzá hozzáférést** : **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**. Válassza ki a cél Azure AD-identitást név vagy e-mail-cím alapján.
 5. A szerepkör-hozzárendelési művelet befejezéséhez válassza a **Mentés** lehetőséget.
 
-#### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A következő PowerShell-minta bemutatja, hogyan rendelhet hozzá Azure-szerepköröket egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök PowerShell-lel való hozzárendelésével kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../articles/role-based-access-control/role-assignments-powershell.md).
 
@@ -59,7 +61,7 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>parancssori felület
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
   
 A következő CLI 2,0-parancs bemutatja, hogyan rendelhet hozzá Azure-szerepköröket egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök Azure CLI-vel való hozzárendelésével kapcsolatos további információkért lásd: a [hozzáférés kezelése a RBAC és az Azure CLI használatával](../articles/role-based-access-control/role-assignments-cli.md). 
 
@@ -69,8 +71,10 @@ A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíten
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
+---
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3 NTFS-engedélyek konfigurálása SMB-kapcsolaton keresztül 
+## <a name="configure-ntfs-permissions-over-smb"></a>NTFS-engedélyek konfigurálása SMB-kapcsolaton keresztül
+
 A megosztási szintű engedélyek RBAC való hozzárendelését követően megfelelő NTFS-engedélyeket kell rendelnie a gyökér, a könyvtár vagy a fájl szintjén. Gondoljon arra, hogy a megosztási szintű engedélyek magas szintű forgalomirányító, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Míg az NTFS-engedélyek részletesebben határozzák meg, hogy a felhasználó milyen műveleteket végezhet el a címtárban vagy a fájl szintjén.
 
 Azure Files a teljes NTFS alapszintű és speciális engedélyeket támogatja. Az Azure-fájlmegosztás könyvtárain és fájljain NTFS-engedélyeket tekinthet meg és konfigurálhat, ha csatlakoztatja a megosztást, majd a Windows fájlkezelővel vagy a Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) vagy a [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) parancsot futtatja. 
@@ -108,6 +112,7 @@ Ha a Azure Fileshoz való csatlakozással kapcsolatos problémákat tapasztal, t
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>NTFS-engedélyek konfigurálása a Windows fájlkezelővel
+
 A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás alatt lévő összes könyvtárhoz és fájlhoz, beleértve a gyökérkönyvtárat is.
 
 1. Nyissa meg a Windows fájlkezelő alkalmazást, és kattintson a jobb gombbal a fájlra/könyvtárra, és válassza a **Tulajdonságok**lehetőséget.
@@ -115,11 +120,12 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 3. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
 4. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
 5. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a célként megadott felhasználónevet, amelynek engedélyt szeretne adni az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-7.    Kattintson az **OK** gombra.
+7.    Válassza az **OK** lehetőséget.
 8.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
-9.    Kattintson az **Alkalmaz** gombra.
+9.    Válassza az **Alkalmaz** lehetőséget.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS-engedélyek konfigurálása icacls-val
+
 A következő Windows-paranccsal teljes körű engedélyeket adhat meg a fájlmegosztás alatt lévő összes könyvtárhoz és fájlhoz, beleértve a gyökérkönyvtárat is. Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire.
 
 ```
@@ -128,7 +134,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 Ha többet szeretne megtudni arról, hogyan használható a icacls az NTFS-engedélyek megadásához és a különböző típusú támogatott engedélyekhez, tekintse meg [az icacls parancssori útmutatóját](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
 
 A következő folyamat ellenőrzi, hogy a fájlmegosztás és a hozzáférési engedélyek megfelelően lettek-e beállítva, és hogy elérhető-e egy Azure-fájlmegosztás egy tartományhoz csatlakoztatott virtuális gépről. Vegye figyelembe, hogy a megosztási szint Azure-szerepkör-hozzárendelése hosszabb időt is igénybe vehet. 
 

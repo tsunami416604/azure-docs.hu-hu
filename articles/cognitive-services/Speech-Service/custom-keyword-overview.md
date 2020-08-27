@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760549"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918893"
 ---
 # <a name="what-is-a-keyword"></a>Mi az a kulcsszó?
 
@@ -25,7 +26,7 @@ A kulcsszó egy szó vagy rövid kifejezés, amely lehetővé teszi, hogy a term
 
 Az egyéni kulcsszavak testreszabási, teljesítmény-és integrációs funkciói révén a hangalapú aktiválást testre szabhatja a termék jövőképének és felhasználói igényeinek megfelelően.
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 |----------|----------|
 | Kulcsszó testreszabása | A márka kiterjesztéseként egy kulcsszó megerősíti az ügyfeleivel létrehozott saját tőkét. A Speech Studio egyéni kulcsszavas portálján bármely olyan szót vagy rövid kifejezést megadhat, amely a legjobban jelképezi a márkáját. A kulcsszót a megfelelő kiejtések kiválasztásával személyre szabhatja, amelyet a generált Kulcsszóválasztó modell tiszteletben tart.
 | Kulcsszó ellenőrzése | Ha a kulcsszót helyileg észlelik, a rendszer a hangot a felhőbe küldi, hogy további ellenőrzés után a felhasználó a kulcsszót is elmondja. A kulcsszó-ellenőrzés egy további biztonsági réteget biztosít azáltal, hogy csökkenti a helytelen helyi észlelés és a felhasználói adatok védelmének hatásait.

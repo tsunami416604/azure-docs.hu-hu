@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054000"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919522"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure Multi-Factor Authentication-kiszolgáló frissítése
 
@@ -25,7 +25,11 @@ Ez a cikk végigvezeti az Azure Multi-Factor Authentication (MFA) Server 6.0-s v
 Ha v6. x-ről vagy régebbiről a v7. x vagy újabb verzióra frissít, az összes összetevő a .NET 2,0-ről a .NET 4,5-re vált. Az összes összetevőhöz a Microsoft Visual C++ 2015 újraterjeszthető frissítése 1 vagy újabb verzió szükséges. Az MFA-kiszolgáló telepítője az összetevők x86-os és x64-es verzióját is telepíti, ha még nincsenek telepítve. Ha a felhasználói portál és a Mobile App Web Service különálló kiszolgálókon fut, akkor az összetevők frissítése előtt telepítenie kell ezeket a csomagokat. A Microsoft [letöltőközpontból](https://www.microsoft.com/download/)megkeresheti a legújabb Microsoft Visual C++ 2015 terjeszthető frissítést. 
 
 > [!IMPORTANT]
-> 2019. július 1-től a Microsoft már nem kínál új, az MFA-kiszolgálót az új üzemelő példányokhoz. Azok a felhasználók, akik a többtényezős hitelesítést szeretnék megkövetelni a felhasználóknak, felhőalapú Azure-Multi-Factor Authentication kell használniuk. Azok a meglévő ügyfelek, akik aktiválták az MFA-kiszolgálót a július 1. előtt, le tudják tölteni a legújabb verziót, a jövőbeli frissítéseket, és az aktiválási hitelesítő adatokat a szokásos módon létrehozzák.
+> Az 2019. július 1-től a Microsoft már nem kínál az MFA-kiszolgálót az új üzemelő példányokhoz. Azok az új ügyfelek, akik a bejelentkezési események során a többtényezős hitelesítést (MFA) szeretnék megkövetelni, felhőalapú Azure-Multi-Factor Authenticationt kell használniuk.
+>
+> A felhőalapú MFA megismeréséhez tekintse meg a következő [oktatóanyagot: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával.
+>
+> Az MFA-kiszolgálót az 2019. július 1. előtt aktivált meglévő ügyfelek letöltik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon előállítják az aktiválási hitelesítő adatokat.
 
 Frissítés lépéseinek áttekintése:
 

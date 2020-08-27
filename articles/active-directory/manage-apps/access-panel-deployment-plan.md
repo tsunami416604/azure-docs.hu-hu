@@ -1,32 +1,27 @@
 ---
-title: Azure Active Directory-hozzáférési panel üzembe helyezésének megtervezése
-description: Útmutató a Azure Active Directory-hozzáférési panel üzembe helyezéséhez
+title: Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
+description: Útmutatás Azure Active Directory saját alkalmazások üzembe helyezéséhez
 services: active-directory
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.reviewer: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555306"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930536"
 ---
-# <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory-hozzáférési panel üzembe helyezésének megtervezése
+# <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
-A Azure Active Directory (Azure AD) hozzáférési panel egy webalapú portál, amely a támogatási költségek csökkentését, a termelékenység és a biztonság növelését, valamint a felhasználói frusztráció csökkentését segíti elő. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik a rendszer elérését, és értesítik a rendszergazdákat a visszaélésről vagy a visszaélésről.
+Azure Active Directory (Azure AD) az alkalmazásaim egy webalapú portál, amely segít csökkenteni a támogatási költségeket, növelheti a hatékonyságot és a biztonságot, és csökkentheti a felhasználói frusztrációt. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik a rendszer elérését, és értesítik a rendszergazdákat a visszaélésről vagy a visszaélésről.
 
-Az Azure AD hozzáférési paneljének használatával a következőket teheti:
+Az Azure AD saját alkalmazások használatával a következőket teheti:
 
 * Felderítheti és elérheti vállalata Azure AD-hez kapcsolódó erőforrásait, például az alkalmazásokat
 * Hozzáférés kérése új alkalmazásokhoz és csoportokhoz
@@ -41,23 +36,23 @@ Emellett a rendszergazdák számára is lehetővé teszi a felügyeletet:
 * Hozzáférési felülvizsgálatok
 
 
-## <a name="benefits-of-azure-ad-access-panel-integration"></a>Az Azure AD hozzáférési panel-integráció előnyei
+## <a name="benefits-of-azure-ad-my-apps-integration"></a>Az Azure AD alkalmazás-integráció előnyei
 
-Az Azure AD hozzáférési panelje a következő módokon nyújt előnyöket a vállalatoknak:
+Az Azure AD saját alkalmazásai a következő módokon nyújtják a vállalatokat:
 
-**Intuitív felhasználói élményt nyújt**: a hozzáférési panel egyetlen platformot biztosít az összes Azure-beli egyszeri bejelentkezéshez (SSO) csatlakoztatott alkalmazáshoz. A meglévő beállításokat és új képességeket (például a csoportok kezelését és az önkiszolgáló jelszó-visszaállítást) egy egységes portálon találja, ahogy hozzájuk lettek adva. Az intuitív élmény lehetővé teszi, hogy a felhasználók gyorsabban és hatékonyabban térjenek vissza a munkába, miközben csökkentik a frusztrációt.
+**Intuitív felhasználói élményt nyújt**: az alkalmazásaink egyetlen platformot biztosítanak az összes Azure-beli egyszeri bejelentkezéshez (SSO) csatlakoztatott alkalmazáshoz. A meglévő beállításokat és új képességeket (például a csoportok kezelését és az önkiszolgáló jelszó-visszaállítást) egy egységes portálon találja, ahogy hozzájuk lettek adva. Az intuitív élmény lehetővé teszi, hogy a felhasználók gyorsabban és hatékonyabban térjenek vissza a munkába, miközben csökkentik a frusztrációt.
 
-**Növeli a termelékenységet**: a hozzáférési panelen lévő összes felhasználói alkalmazás egyszeri bejelentkezéses engedélyezve van. A vállalati alkalmazások és az Office 365 egyszeri bejelentkezésének engedélyezése kiváló bejelentkezési élményt nyújt a további bejelentkezési kérések csökkentésével vagy megszüntetésével. A hozzáférési panel önkiszolgáló és dinamikus tagságot használ, és javítja az Identity rendszer általános biztonságát. Ezzel biztosíthatja, hogy a megfelelő személyek kezelhesse az alkalmazásokhoz való hozzáférést. A hozzáférési panel egy koherens kezdőlapként szolgál, amellyel gyorsan megtalálhatja az erőforrásokat, és folytathatja a munkahelyi feladatokat.
+**Növeli a termelékenységet**: az alkalmazásokban lévő összes felhasználói alkalmazáshoz SSO engedélyezve van. A nagyvállalati alkalmazások egyszeri bejelentkezésének engedélyezése és a Microsoft 365 a további bejelentkezési kérések csökkentése vagy kiküszöbölése révén kiváló bejelentkezési élményt hozhat létre. Az alkalmazások önkiszolgáló és dinamikus tagságot használnak, és növelik az Ön Identity rendszerének általános biztonságát. Ezzel biztosíthatja, hogy a megfelelő személyek kezelhesse az alkalmazásokhoz való hozzáférést. A saját alkalmazások egy koherens kezdőlapként szolgálnak, amellyel gyorsan megtalálhatja az erőforrásokat, és folytathatja a munkahelyi feladatokat.
 
-A **Cost**: a hozzáférési panel Azure ad-vel való engedélyezése segíthet a helyszíni infrastruktúrák kiválasztásában. A támogatási költségeket csökkenti azáltal, hogy egységes portált biztosít az összes alkalmazás megkereséséhez, az erőforrásokhoz való hozzáférés kéréséhez és a fiókok kezeléséhez.
+A szolgáltatás **kezelése**: a saját alkalmazások Azure ad-vel való engedélyezése segíthet a helyszíni infrastruktúrák kiválasztásában. A támogatási költségeket csökkenti azáltal, hogy egységes portált biztosít az összes alkalmazás megkereséséhez, az erőforrásokhoz való hozzáférés kéréséhez és a fiókok kezeléséhez.
 
-**Növeli a rugalmasságot és a biztonságot**: a hozzáférési panel hozzáférést biztosít a felhőalapú platform által biztosított biztonsághoz és rugalmassághoz. A rendszergazdák egyszerűen módosíthatják a beállításokat az alkalmazásokra és az erőforrásokra, és az új biztonsági követelményekkel is rendelkezhetnek anélkül, hogy ez befolyásolná a felhasználókat
+**Növeli a rugalmasságot és a biztonságot**: az alkalmazások lehetővé teszi a felhőalapú platform által biztosított biztonság és rugalmasság elérését. A rendszergazdák egyszerűen módosíthatják a beállításokat az alkalmazásokra és az erőforrásokra, és az új biztonsági követelményekkel is rendelkezhetnek anélkül, hogy ez befolyásolná a felhasználókat
 
 A **robusztus naplózás és használat nyomon követését teszi lehetővé**: az összes felhasználói funkció naplózási és használati nyomon követésével megtudhatja, hogy mikor használják a felhasználók az erőforrásaikat, és biztosítja, hogy értékelni tudja a biztonságot.
 
 ### <a name="licensing-considerations"></a>Licencelési megfontolások
 
-A hozzáférési panel ingyenes, és nincs szükség alapszintű licencek használatára. A címtárban lévő objektumok száma és a telepíteni kívánt további funkciók azonban további licenceket igényelhetnek. A licencelési követelményekkel rendelkező gyakori Azure AD-forgatókönyvek a következő biztonsági funkciókat tartalmazzák:
+Az alkalmazások ingyenesek, és nem igényelnek alapszintű licencet. A címtárban lévő objektumok száma és a telepíteni kívánt további funkciók azonban további licenceket igényelhetnek. A licencelési követelményekkel rendelkező gyakori Azure AD-forgatókönyvek a következő biztonsági funkciókat tartalmazzák:
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
@@ -69,7 +64,7 @@ A hozzáférési panel ingyenes, és nincs szükség alapszintű licencek haszn�
 
 Tekintse [meg az Azure ad teljes licencelési útmutatóját](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites-for-deploying-the-azure-ad-access-panel"></a>Az Azure AD hozzáférési panel üzembe helyezésének előfeltételei
+### <a name="prerequisites-for-deploying-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásainak üzembe helyezésének előfeltételei
 
 A projekt megkezdése előtt végezze el a következő előfeltételeket:
 
@@ -77,32 +72,32 @@ A projekt megkezdése előtt végezze el a következő előfeltételeket:
 
 * [Azure AD-felhasználó és-csoport infrastruktúrájának kezelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
-## <a name="plan-the-azure-ad-access-panel-deployment"></a>Az Azure AD hozzáférési panelének megtervezése
+## <a name="plan-azure-ad-my-apps-deployment"></a>Az Azure AD saját alkalmazások üzembe helyezésének megtervezése
 
-A következő táblázat a hozzáférési panel központi telepítésének legfontosabb használati eseteit ismerteti:
+Az alábbi táblázat a saját alkalmazások központi telepítésének legfontosabb használati eseteit ismerteti:
 
-| Terület| Description |
+| Terület| Leírás |
 | - | - |
-| Access| A hozzáférési panel portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
-|Access | A hozzáférési panel portál a vállalati hálózaton kívüli vállalati eszközökről érhető el. |
+| Access| A saját alkalmazások portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
+|Access | A saját alkalmazások portál a vállalati hálózaton kívüli vállalati eszközökről is elérhető. |
 | Naplózás| A használati adatok legalább 29 naponta letöltődnek a vállalati rendszerbe. |
 | Szabályozás| Az Azure AD-hez csatlakoztatott alkalmazások és csoportok felhasználói hozzárendeléseinek életciklusa definiálva és figyelve van. |
 | Biztonság| Az erőforrásokhoz való hozzáférést felhasználói és csoportos hozzárendelések segítségével szabályozhatja. Csak a jogosult felhasználók kezelhetik az erőforrás-hozzáférést. |
 | Teljesítmény| A hozzáférési hozzárendelések terjesztési ütemterveit dokumentálják és figyelik. |
-| Felhasználó felület| A felhasználók tisztában vannak a hozzáférési panel képességeivel és azok használatának módjával.|
+| Felhasználó felület| A felhasználók tisztában vannak az alkalmazások képességeivel, és hogyan használhatók.|
 | Felhasználó felület| A felhasználók kezelhetik az alkalmazások és a csoportok hozzáférését.|
 | Felhasználó felület| A felhasználók kezelhetik a fiókjaikat. |
 | Felhasználó felület| A felhasználók tisztában vannak a böngészők kompatibilitásával. |
-| Támogatás| A felhasználók a hozzáférési Panelrel kapcsolatos problémákat is megtalálják. |
+| Támogatás| A felhasználók megtalálhatják az alkalmazások problémáinak támogatását. |
 
-### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Ajánlott eljárások az Azure AD hozzáférési paneljének üzembe helyezéséhez
+### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>Ajánlott eljárások az Azure AD-alkalmazások üzembe helyezéséhez
 
-A hozzáférési panel működésének fokozatos engedélyezése is lehetséges. A következő üzembe helyezési sorrendet javasoljuk:
+A saját alkalmazások funkcióit fokozatosan lehet engedélyezni. A következő üzembe helyezési sorrendet javasoljuk:
 
 1. Saját alkalmazások
    * App Launcher
    * Önkiszolgáló alkalmazások kezelése
-   * Microsoft Office 365 integráció
+   * Microsoft 365 integráció
 
 1. Önkiszolgáló alkalmazások felderítése
    * Új jelszó önkiszolgáló kérése
@@ -118,20 +113,20 @@ A hozzáférési panel működésének fokozatos engedélyezése is lehetséges.
 
 Az alkalmazásoktól kezdve a felhasználók a portálra is bemutatják az erőforrások elérésének közös helyét. Az önkiszolgáló alkalmazás-felderítés hozzáadását a saját alkalmazások felületén kell megalkotni. A saját csoportok és hozzáférési felülvizsgálatok az önkiszolgáló képességekre épülnek.
 
-### <a name="plan-configurations-for-the-azure-ad-access-panel"></a>Konfigurációk tervezése az Azure AD hozzáférési paneljén
+### <a name="plan-configurations-for-azure-my-apps"></a>Az Azure-beli alkalmazások konfigurációjának megtervezése
 
-A következő táblázat a hozzáférési panel több fontos konfigurációját és az esetlegesen használt jellemző értékeket sorolja fel:
+A következő táblázat a saját alkalmazások számos fontos konfigurációját és az esetlegesen használt jellemző értékeket sorolja fel:
 
 | Konfiguráció| Jellemző értékek |
 | - | - |
 | A kísérleti csoportok meghatározása| Azonosítsa a használni kívánt Azure AD biztonsági csoportot, és győződjön meg arról, hogy az összes kísérleti tag a csoport részét képezi. |
 | Határozza meg az éles környezetben engedélyezni kívánt csoportokat vagy csoportokat.| Azonosítsa a használni kívánt Azure AD-beli biztonsági csoportokat, illetve az Azure AD-vel szinkronizált Active Directory csoportokat. Győződjön meg arról, hogy az összes kísérleti tag a csoport részét képezi. |
 | Egyszeri bejelentkezés használatának engedélyezése a felhasználók számára bizonyos típusú alkalmazásokhoz| Összevont egyszeri bejelentkezés, OAuth, jelszó egyszeri bejelentkezés, alkalmazásproxy |
-| Önkiszolgáló jelszó-visszaállítás használatának engedélyezése a felhasználók számára | Yes |
-| Multi-Factor Authentication használatának engedélyezése a felhasználók számára| Yes |
-| Lehetővé teszi a felhasználók számára az önkiszolgáló csoportok felügyeletének használatát bizonyos típusú csoportok esetében| Biztonsági csoportok, Office 365-csoportok |
-| Az önkiszolgáló alkalmazások felügyeletének engedélyezése a felhasználók számára| Yes |
-| Hozzáférési felülvizsgálatok használatának engedélyezése a felhasználók számára| Yes |
+| Önkiszolgáló jelszó-visszaállítás használatának engedélyezése a felhasználók számára | Igen |
+| Multi-Factor Authentication használatának engedélyezése a felhasználók számára| Igen |
+| Lehetővé teszi a felhasználók számára az önkiszolgáló csoportok felügyeletének használatát bizonyos típusú csoportok esetében| Biztonsági csoportok, Microsoft 365 csoportok |
+| Az önkiszolgáló alkalmazások felügyeletének engedélyezése a felhasználók számára| Igen |
+| Hozzáférési felülvizsgálatok használatának engedélyezése a felhasználók számára| Igen |
 
 ### <a name="plan-consent-strategy"></a>A beleegyező stratégia megtervezése
 
@@ -153,35 +148,20 @@ Ha a technológiai projektek sikertelenek, általában azért teszik ezt meg, me
 
 A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon tájékoztathatja a felhasználókat arról, hogy hogyan és Mikor változnak, és hogyan szerezhet támogatást, ha szükséges.
 
-Bár a hozzáférési panel általában nem hoz létre felhasználói problémákat, fontos, hogy előkészítse őket. Hozzon létre útmutatókat és a támogatási személyzet összes erőforrását az elindítása előtt.
+Bár az alkalmazások általában nem hoznak létre felhasználói problémákat, fontos, hogy előkészítse őket. Hozzon létre útmutatókat és a támogatási személyzet összes erőforrását az elindítása előtt.
 
 #### <a name="communications-templates"></a>Kommunikációs sablonok
 
-A Microsoft testreszabható sablonokat biztosít a hozzáférési panel [e-mailekhez és egyéb kommunikációhoz](https://aka.ms/APTemplates) . Ezeket az eszközöket más kommunikációs csatornákon is használhatja a vállalati kulturális környezetnek megfelelően.
+A Microsoft [testreszabható sablonokat biztosít az e-mailekhez és](https://aka.ms/APTemplates) az alkalmazásokhoz kapcsolódó egyéb kommunikációhoz. Ezeket az eszközöket más kommunikációs csatornákon is használhatja a vállalati kulturális környezetnek megfelelően.
 
 ## <a name="plan-your-sso-configuration"></a>Az egyszeri bejelentkezés konfigurációjának megtervezése
 
 Amikor egy felhasználó bejelentkezik egy alkalmazásba, egy hitelesítési folyamaton keresztül történik, és bizonyítania kell, hogy kik azok. Az SSO nélkül a rendszer jelszót tárol az alkalmazásban, és a felhasználónak ismernie kell ezt a jelszót. Az SSO-val a felhasználók hitelesítő adatai átkerülnek az alkalmazásba, így nem kell újból megadniuk a jelszavakat az egyes alkalmazásokhoz.
 
-Ha alkalmazásokat szeretne elindítani az alkalmazásokban, engedélyezni kell az egyszeri bejelentkezést.
+Ha alkalmazásokat szeretne elindítani az alkalmazásokban, engedélyezni kell az egyszeri bejelentkezést. Az Azure AD több SSO-beállítást is támogat. További információ: [az egyszeri bejelentkezés lehetőségei az Azure ad-ben](sso-options.md).
 
-Az Azure AD három különböző módon engedélyezheti az [egyszeri bejelentkezést az alkalmazásokban](what-is-single-sign-on.md):
-
-* **Összevont egyszeri bejelentkezés** 
-    * Lehetővé teszi egy alkalmazás számára, hogy felhasználói hitelesítésre átirányítsa az Azure AD-be a jelszó kérése helyett. 
-    * A protokollt használó alkalmazások esetében támogatott, például az SAML 2,0, a WS-Federation vagy az OpenID Connect, és az egyszeri bejelentkezés legszélesebb módja.
-
-* **Jelszó alapú egyszeri bejelentkezés** 
-    * Lehetővé teszi a biztonságos alkalmazás jelszavainak tárolását és visszajátszását webböngésző-bővítmény vagy Mobile-alkalmazás használatával. 
-    * Kihasználja az alkalmazás által biztosított meglévő bejelentkezési folyamat előnyeit, de lehetővé teszi a rendszergazdák számára a jelszavak kezelését. A felhasználónak nem kell tudnia a jelszót.
-
-* **Meglévő egyszeri bejelentkezés** 
-    * Lehetővé teszi az Azure AD számára, hogy kihasználhassa az alkalmazáshoz konfigurált meglévő egyszeri bejelentkezés előnyeit.
-    * Lehetővé teszi, hogy ezek az alkalmazások az Office 365 vagy az Azure AD hozzáférési panel portálokhoz legyenek csatolva. 
-    * További jelentéskészítés engedélyezése az Azure AD-ben az alkalmazások indításakor. 
-    * Az Azure alkalmazásproxy és a csatolt egyszeri bejelentkezési mód használatát foglalja magában.
-
-Itt megtudhatja, hogyan konfigurálhat egy alkalmazás egyszeri bejelentkezéses módját: [egyszeri bejelentkezés a Azure Active Directory lévő alkalmazásokba](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+> [!NOTE]
+> Ha többet szeretne megtudni az Azure AD-alkalmazás identitás-szolgáltatóként való használatáról az alkalmazáshoz, tekintse meg a gyors üzembe helyezési [sorozatot az alkalmazások kezelésében](view-applications-portal.md).
 
 A saját alkalmazások oldalával kapcsolatos legjobb megoldásként kezdje az összevont egyszeri bejelentkezéshez elérhető felhőalapú alkalmazások integrálásával. Az összevont egyszeri bejelentkezés lehetővé teszi a felhasználók számára, hogy egységes, egy kattintással elérhető felületet nyújtsanak az alkalmazásban a felületek elindítása előtt, és inkább robusztusak legyenek a konfigurációban.
 
@@ -191,7 +171,7 @@ Az SaaS-alkalmazások üzembe helyezésével és konfigurálásával kapcsolatos
 
 #### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>A My apps Browser bővítmény üzembe helyezésének megtervezése
 
-Amikor a felhasználók bejelentkeznek a jelszó-alapú SSO-alkalmazásokba, telepíteniük és használniuk kell a saját alkalmazások biztonságos bejelentkezési bővítményét. A bővítmény végrehajt egy parancsfájlt, amely továbbítja a jelszót az alkalmazás bejelentkezési űrlapjára. A rendszer felkéri a felhasználókat, hogy telepítse a bővítményt, amikor először elindítja a jelszó-alapú SSO-alkalmazást. A bővítménysel kapcsolatos további információkért tekintse meg ezt a dokumentációt a [hozzáférési panel böngésző bővítményének telepítéséhez](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav).
+Amikor a felhasználók bejelentkeznek a jelszó-alapú SSO-alkalmazásokba, telepíteniük és használniuk kell a saját alkalmazások biztonságos bejelentkezési bővítményét. A bővítmény végrehajt egy parancsfájlt, amely továbbítja a jelszót az alkalmazás bejelentkezési űrlapjára. A rendszer felkéri a felhasználókat, hogy telepítse a bővítményt, amikor először elindítja a jelszó-alapú SSO-alkalmazást. A bővítménysel kapcsolatos további információkért tekintse meg a jelen dokumentációban az [alkalmazások böngésző bővítményének telepítését](access-panel-extension-problem-installing.md)ismertető témakört.
 
 Ha a jelszó-alapú SSO-alkalmazásokat integrálni kell, meg kell határoznia azt a mechanizmust, amellyel a bővítményt a [támogatott böngészőkkel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)nagy méretben helyezheti üzembe. A lehetőségek a következők:
 
@@ -201,13 +181,7 @@ Ha a jelszó-alapú SSO-alkalmazásokat integrálni kell, meg kell határoznia a
 
 * [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-További információ: [a jelszó egyszeri bejelentkezésének konfigurálása](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
-
 Azok a felhasználók, akik nem használnak jelszó-alapú SSO-alkalmazásokat, a bővítmény előnyeit is kihasználhatják. Ezek az előnyök többek között lehetővé teszi bármely alkalmazás indítását a keresősáv használatával, a legutóbb használt alkalmazások elérésének megkeresését, valamint a saját alkalmazások lapra mutató hivatkozást.
-
-A felhasználó a jelszó-alapú egyszeri bejelentkezési alkalmazás első indításakor a következőt fogja látni:
-
-![Képernyőkép az alkalmazások böngésző bővítményének telepítési képernyőjéről ](media/access-panel-deployment-plan/ap-dp-sign-in.png)
 
 #### <a name="plan-for-mobile-access"></a>Mobil hozzáférés tervezése
 
@@ -215,11 +189,10 @@ Az Intune-szabályzattal (Microsoft Edge vagy Intune Managed Browser) védett b�
 
 ## <a name="plan-your-my-apps-deployment"></a>Saját alkalmazások üzembe helyezésének megtervezése
 
-A hozzáférési panel alapja az Application Launcher saját alkalmazások, amelyekhez a felhasználók férhetnek hozzá [https://myapps.microsoft.com](https://myapps.microsoft.com/) . A saját alkalmazások oldalain egyetlen helyet biztosítanak a felhasználóknak a munkájuk elindításához és a szükséges alkalmazások eléréséhez. Itt a felhasználók az összes olyan alkalmazás listáját megtalálják, amelyhez egyszeri bejelentkezés hozzáférése van. 
+Az alkalmazások alapja az Application Launcher portál, amely a felhasználók számára érhető el [https://myapps.microsoft.com](https://myapps.microsoft.com/) . A saját alkalmazások lap egyetlen helyet biztosít a felhasználóknak a munkájuk elindításához és a szükséges alkalmazások eléréséhez. Itt a felhasználók az összes olyan alkalmazás listáját megtalálják, amelyhez egyszeri bejelentkezés hozzáférése van. 
 
-![Az alkalmazások panel képernyőképe](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
-
-Ugyanazok az alkalmazások jelennek meg az Office 365 app launcherben, amikor a felhasználók az Office 365 portált használják.
+> [!NOTE]
+> Ugyanazok az alkalmazások jelennek meg a Microsoft 365 app launcherben.
 
 Tervezze meg, hogy milyen sorrendben adja hozzá az alkalmazásokat a saját alkalmazások indítóhoz, és döntse el, hogy fokozatosan vagy egyszerre fogja-e őket bevezetni. Ehhez létre kell hoznia egy alkalmazás-leltárt, amely felsorolja a hitelesítés típusát és az egyes alkalmazásokhoz tartozó összes meglévő SSO-integrációt.
 
@@ -229,7 +202,7 @@ Minden Azure AD SSO-kompatibilis alkalmazást hozzáadhat a saját alkalmazások
 
 #### <a name="use-my-apps-collections"></a>Saját alkalmazások gyűjtemény használata
 
-Alapértelmezés szerint az összes alkalmazás egyetlen oldalon jelenik meg. Azonban a gyűjtemények segítségével csoportosíthatja a kapcsolódó alkalmazásokat, és egy külön lapon is bemutathatja őket, így könnyebben megtalálhatja őket. A gyűjtemények segítségével például létrehozhat logikai csoportosításokat az alkalmazások számára adott feladatok, feladatok, projektek és így tovább. További információkért lásd: [az alkalmazások gyűjteményének használata a felhasználói hozzáférési panelek testreszabásához](access-panel-collections.md). 
+Alapértelmezés szerint az összes alkalmazás egyetlen oldalon jelenik meg. Azonban a gyűjtemények segítségével csoportosíthatja a kapcsolódó alkalmazásokat, és egy külön lapon is bemutathatja őket, így könnyebben megtalálhatja őket. A gyűjtemények segítségével például létrehozhat logikai csoportosításokat az alkalmazások számára adott feladatok, feladatok, projektek és így tovább. További információ: [How to use My apps Collections](access-panel-collections.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Saját alkalmazások vagy meglévő portál használatának megtervezése
 
@@ -253,13 +226,13 @@ A jóváhagyási munkafolyamatok az alkalmazások eléréséhez használhatók e
 
 ## <a name="plan-self-service-group-membership"></a>Önkiszolgáló csoporttagság megtervezése 
 
-Lehetővé teheti a felhasználók számára, hogy saját biztonsági Csoportjaikat vagy Office 365-csoportokat hozzanak létre és kezeljenek az Azure AD-ben. A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoport felügyeleti funkciói nem érhetők el levelezési biztonsági csoportokhoz vagy terjesztési listához.
+Lehetővé teheti a felhasználók számára, hogy saját biztonsági csoportokat vagy Microsoft 365 csoportokat hozzanak létre és kezeljenek az Azure AD-ben. A csoport tulajdonosa jóváhagyhatja vagy megtagadhatja a tagsági kérelmeket, és delegálhatja a csoporttagság vezérlését. Az önkiszolgáló csoport felügyeleti funkciói nem érhetők el levelezési biztonsági csoportokhoz vagy terjesztési listához.
 
-Az önkiszolgáló csoporttagság megtervezéséhez döntse el, hogy engedélyezi-e a szervezet összes felhasználója számára, hogy csoportokat hozzon létre és kezeljen, vagy csak a felhasználók egy részhalmazát. Ha engedélyezi a felhasználók egy részhalmazát, be kell állítania egy csoportot, amelyhez hozzá kívánja adni a felhasználókat. A forgatókönyvek engedélyezésével kapcsolatban lásd: [az önkiszolgáló csoport felügyeletének beállítása a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) .
+Az önkiszolgáló csoporttagság megtervezéséhez döntse el, hogy engedélyezi-e a szervezet összes felhasználója számára, hogy csoportokat hozzon létre és kezeljen, vagy csak a felhasználók egy részhalmazát. Ha engedélyezi a felhasználók egy részhalmazát, be kell állítania egy csoportot, amelyhez hozzá kívánja adni a felhasználókat. A forgatókönyvek engedélyezésével kapcsolatban lásd: [az önkiszolgáló csoport felügyeletének beállítása a Azure Active Directoryban](../users-groups-roles/groups-self-service-management.md) .
 
 ## <a name="plan-reporting-and-auditing"></a>Jelentéskészítés és naplózás tervezése
 
-Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismereteket kínálnak](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). Az üzleti és műszaki alkalmazások tulajdonosai együttműködve vehetik igénybe ezeket a jelentéseket, és rendszeres időközönként használhatják azokat. A következő táblázat néhány példát mutat be a tipikus jelentéskészítési forgatókönyvekre.
+Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismereteket kínálnak](../reports-monitoring/overview-reports.md). Az üzleti és műszaki alkalmazások tulajdonosai együttműködve vehetik igénybe ezeket a jelentéseket, és rendszeres időközönként használhatják azokat. A következő táblázat néhány példát mutat be a tipikus jelentéskészítési forgatókönyvekre.
 
 | Példa | A kockázatok kezelése| Termelékenység növelése| Cégirányítás és megfelelőség |
 |  - |- | - | - |
@@ -276,19 +249,17 @@ Naplózási, jelentéskészítési és vész-helyreállítási biztonsági máso
 
 ## <a name="deploy-applications-to-users-my-apps-panel"></a>Alkalmazások üzembe helyezése a felhasználók saját alkalmazások paneljén
 
-Miután az alkalmazás be lett állítva az SSO-ra, a csoportok hozzá vannak rendelve. A hozzárendelt csoportokban lévő felhasználók hozzáférhetnek majd az alkalmazáshoz, és az Office 365 app launcherben jelennek meg.
+Miután az alkalmazás be lett állítva az SSO-ra, a csoportok hozzá vannak rendelve. A hozzárendelt csoportokban lévő felhasználók hozzáférhetnek majd az alkalmazáshoz a saját alkalmazások és a Microsoft 365 app Launcher szolgáltatásban.
 
 Lásd: [felhasználók és csoportok társítása egy alkalmazáshoz Active Directory-ben](methods-for-assigning-users-and-groups.md).
 
-Ha tesztelés vagy üzembe helyezés során szeretné felvenni a csoportokat, de még nem engedélyezi az alkalmazások használatát a saját alkalmazásokban, tekintse meg az [alkalmazás elrejtése a felhasználói felületről Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)című témakört.
+Ha tesztelés vagy üzembe helyezés során szeretné felvenni a csoportokat, de még nem engedélyezi az alkalmazások használatát a saját alkalmazásokban, tekintse meg az [alkalmazás elrejtése a felhasználói felületről Azure Active Directoryban](hide-application-from-user-portal.md)című témakört.
 
-### <a name="deploy-microsoft-office-365-applications-to-my-apps"></a>Microsoft Office 365-alkalmazások üzembe helyezése az alkalmazásokban
+### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>Microsoft Microsoft 365-alkalmazások üzembe helyezése az alkalmazásokban
 
-Office 365-alkalmazások esetén a felhasználók a hozzájuk rendelt licencek alapján kapják meg az Office-példányt. Az Office-alkalmazásokhoz való hozzáférés előfeltétele, hogy a felhasználók az Office-alkalmazásokhoz kötött megfelelő licenceket kapjanak. Amikor licencet rendel egy felhasználóhoz, a saját alkalmazások lapján és az Office 365 app launcherben automatikusan megjelennek a licenccel társított alkalmazások.
+Microsoft 365 alkalmazások esetében a felhasználók az Office egy példányát kapják meg a hozzájuk rendelt licencek alapján. Az Office-alkalmazásokhoz való hozzáférés előfeltétele, hogy a felhasználók az Office-alkalmazásokhoz kötött megfelelő licenceket kapjanak. Ha hozzárendel egy licencet a felhasználóhoz, a rendszer automatikusan megtekinti a licenccel társított alkalmazásokat a saját alkalmazások lapján és a Microsoft 365 app launcherben.
 
-Ha az Office-alkalmazások egy készletét szeretné elrejteni a felhasználóktól, lehetősége van az alkalmazások elrejtésére a saját alkalmazások portálján, miközben továbbra is engedélyezheti a hozzáférést az Office 365-portálról. Ezeket a beállításokat az alkalmazás felhasználói beállítások részében találja meg. További információ: [alkalmazás elrejtése a felhasználók Azure Active Directoryban való felhasználói felületéről](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
-
-![Képernyőkép az alkalmazások elrejtésének konfigurálásáról](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
+Ha az Office-alkalmazások egy készletét szeretné elrejteni a felhasználóktól, lehetőség van az alkalmazások elrejtésére a saját alkalmazások portálról, miközben továbbra is engedélyezi a hozzáférést a Microsoft 365 portálról. További információ: [alkalmazás elrejtése a felhasználók Azure Active Directoryban való felhasználói felületéről](hide-application-from-user-portal.md).
 
 ### <a name="deploy-application-self-service-capabilities"></a>Alkalmazás önkiszolgáló képességeinek üzembe helyezése
 
@@ -296,13 +267,11 @@ Az önkiszolgáló alkalmazás-hozzáférés lehetővé teszi a felhasználók s
 
 Delegálhatja az alkalmazás hozzáférési kéréseinek jóváhagyását az üzleti jóváhagyóknak. Az üzleti jóváhagyó az alkalmazás-hozzáférési jelszavakat az üzleti jóváhagyó saját alkalmazások oldaláról állíthatja be.
 
-További információ: [az önkiszolgáló alkalmazás-hozzáférés használata](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
-
-![Képernyőkép az önkiszolgáló alkalmazások kezelésének konfigurálásáról](media/access-panel-deployment-plan/ap-dp-salesforce.png)
+További információ: [az önkiszolgáló alkalmazás-hozzáférés használata](access-panel-manage-self-service-access.md).
 
 ## <a name="validate-your-deployment"></a>Az üzemelő példány ellenőrzése
 
-Győződjön meg arról, hogy a hozzáférési panel üzembe helyezése alaposan ki van tesztelve, és a visszaállítási terv van érvényben.
+Győződjön meg arról, hogy a saját alkalmazások üzembe helyezését alaposan tesztelték, és a visszaállítási terv van érvényben.
 
 A következő teszteket a vállalati tulajdonú eszközökkel és a személyes eszközökkel kell elvégezni. Ezeknek a tesztelési eseteknek az üzleti használati eseteit is tükröznie kell. A következő néhány eset az ebben a dokumentumban és a tipikus technikai forgatókönyvekben szereplő üzleti követelmények alapján történik. Adja hozzá az igényeinek megfelelő egyéb szolgáltatásokat.
 
@@ -315,7 +284,7 @@ A következő teszteket a vállalati tulajdonú eszközökkel és a személyes e
 | A felhasználó egy összevont SSO-alkalmazást indít el| A felhasználó automatikusan bejelentkezik az alkalmazásba |
 | A felhasználó első alkalommal indítja el a jelszó-SSO-alkalmazást| A felhasználónak telepítenie kell a saját alkalmazások bővítményt |
 | A felhasználó a következő alkalommal indít el egy jelszó-SSO-alkalmazást| A felhasználó automatikusan bejelentkezik az alkalmazásba |
-| A felhasználó az Office 365 portálról indít el egy alkalmazást| A felhasználó automatikusan bejelentkezik az alkalmazásba |
+| A felhasználó elindít egy alkalmazást Microsoft 365 portálról| A felhasználó automatikusan bejelentkezik az alkalmazásba |
 | A felhasználó elindít egy alkalmazást a Managed Browser| A felhasználó automatikusan bejelentkezik az alkalmazásba |
 
 
@@ -329,38 +298,38 @@ A következő teszteket a vállalati tulajdonú eszközökkel és a személyes e
 
 ### <a name="rollback-steps"></a>Visszaállítási lépések
 
-Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezett módon történik. Ha az egyszeri bejelentkezés konfigurálása nem sikerül az üzembe helyezés során, meg kell ismernie az [egyszeri bejelentkezés hibáinak elhárítását](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) és a felhasználókra gyakorolt hatás csökkentését. Szélsőséges körülmények között előfordulhat, hogy vissza kell [állítania az egyszeri bejelentkezést](../manage-apps/plan-sso-deployment.md).
+Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezett módon történik. Ha az egyszeri bejelentkezés konfigurálása nem sikerül az üzembe helyezés során, meg kell ismernie az [egyszeri bejelentkezés hibáinak elhárítását](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) és a felhasználókra gyakorolt hatás csökkentését. Szélsőséges körülmények között előfordulhat, hogy vissza kell [állítania az egyszeri bejelentkezést](../manage-apps/plan-sso-deployment.md#rollback-process).
 
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 
-A legkevesebb Kiemelt szerepkört kell használnia a szükséges feladatok végrehajtásához Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
+A legkevesebb Kiemelt szerepkört kell használnia a szükséges feladatok végrehajtásához Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](../users-groups-roles/directory-assign-admin-roles.md) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|
-| Segélyszolgálat rendszergazdája| 1. szintű támogatás| None |
+| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincsenek |
 | Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
+| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincsenek |
 | Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
+| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincsenek |
 
-A [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
+A [Privileged Identity Management](../privileged-identity-management/pim-configure.md) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 
-### <a name="troubleshoot-access-panel-issues"></a>Hozzáférési panel problémáinak elhárítása
+### <a name="troubleshoot-my-apps-issues"></a>Alkalmazások hibáinak elhárítása
 
 Hozzon létre hibaelhárítási útmutatót a támogatási szervezete számára a gyakori forgatókönyvekkel, amelyek a Microsoft-dokumentációra mutatnak a felbontásban. Előfordulhat, hogy olyan segédvonalakat szeretne létrehozni, amelyek a szervezet által használt rétegekbe bontják a támogatást.
 
 Lásd a következő hibaelhárítási útmutatókat:
 
-[Nem megjelenő alkalmazások](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-application-not-appearing)
+[Nem megjelenő alkalmazások](access-panel-troubleshoot-application-not-appearing.md)
 
-[Váratlan alkalmazások jelennek meg](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-unexpected-application)
+[Váratlan alkalmazások jelennek meg](access-panel-troubleshoot-unexpected-application.md)
 
-[A felhasználó nem tud bejelentkezni a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-web-sign-in-problem)
+[A felhasználó nem tud bejelentkezni az alkalmazásokba](access-panel-troubleshoot-web-sign-in-problem.md)
 
-[Az önkiszolgáló alkalmazás-hozzáférés használatával kapcsolatos problémák](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-self-service-access)
+[Az önkiszolgáló alkalmazás-hozzáférés használatával kapcsolatos problémák](access-panel-troubleshoot-self-service-access.md)
 
-[A böngésző kiterjesztésével kapcsolatos problémák](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-access-panel-browser-extension)
+[A böngésző kiterjesztésével kapcsolatos problémák](manage-access-panel-browser-extension.md)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,13 +4,13 @@ description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg seg
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.custom: mvc
-ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: f57354a6eb52b3439cf298f66b706f53d101371e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062586"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930230"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -309,7 +309,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A tevékenységek futtatása után az alkalmazás automatikusan törli a létrehozott bemeneti Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A BatchClient [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) és [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) osztálya is rendelkezik megfelelő törlési metódusokkal, amelyeket a rendszer meghív, ha megerősíti a törlést. Bár magukért a feladatokért és tevékenységekért nem kell fizetnie, a számítási csomópontokért igen. Ezért ajánlott csak szükség szerint lefoglalni a készleteket. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A kimeneti fájlok azonban megmaradnak a Storage-fiókban.
 

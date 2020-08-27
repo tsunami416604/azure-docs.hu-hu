@@ -3,13 +3,13 @@ title: Az aktív tanulás javasolt kérdései – QnA Maker
 description: Az aktív tanulással javíthatja a Tudásbázis minőségét. Áttekintheti, elfogadhatja vagy elutasíthatja a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc7aebc3df2d14c78230d112e3e807d8d98fb047
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9bed80ac8c80fb4cecf06b979e0403e34645db01
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406979"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919131"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -132,7 +132,7 @@ Content-Type: application/json
 |--|--|--|--|
 |URL-útvonal paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
 |Egyéni altartomány|QnAMaker-erőforrás neve|sztring|Az erőforrás neve a QnA Maker egyéni altartománya lesz. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. A lista a `host` .|
-|Fejléc|Content-Type|sztring|Az API-nak eljuttatott törzs adathordozó-típusa. Az alapértelmezett érték:`application/json`|
+|Fejléc|Content-Type|sztring|Az API-nak eljuttatott törzs adathordozó-típusa. Az alapértelmezett érték: `application/json`|
 |Fejléc|Engedélyezés|sztring|A végpont kulcsa (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Post törzs|JSON-objektum|JSON|A betanítási visszajelzés|
 
@@ -339,7 +339,7 @@ Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az 
 
 Az aktív tanulás használata esetén ajánlott eljárások: [ajánlott eljárások](../Concepts/best-practices.md#active-learning).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Metaadatok használata a GenerateAnswer API-val](metadata-generateanswer-usage.md)

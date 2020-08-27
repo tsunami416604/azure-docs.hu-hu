@@ -3,12 +3,13 @@ title: Teljesítményszámlálók a Application Insightsban | Microsoft Docs
 description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322516"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918519"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
 
@@ -59,11 +60,11 @@ Ha a használni kívánt teljesítményszámláló nem szerepel a metrikák list
 > [!NOTE]
 > ASP.NET Core alkalmazások nem rendelkeznek `ApplicationInsights.config` , ezért a fenti módszer nem érvényes ASP.net Core alkalmazásokhoz.
 
-Rögzítheti a standard számlálókat és a saját maga által végrehajtott módosításokat is. `\Objects\Processes`egy példa egy szabványos számlálóra, amely minden Windows rendszeren elérhető. `\Sales(photo)\# Items Sold`egy olyan egyéni számlálóra mutat példát, amely egy webszolgáltatásban valósítható meg.
+Rögzítheti a standard számlálókat és a saját maga által végrehajtott módosításokat is. `\Objects\Processes` egy példa egy szabványos számlálóra, amely minden Windows rendszeren elérhető. `\Sales(photo)\# Items Sold` egy olyan egyéni számlálóra mutat példát, amely egy webszolgáltatásban valósítható meg.
 
 A formátum `\Category(instance)\Counter"` , vagy olyan kategóriák esetében, amelyek nem rendelkeznek példányokkal, csak `\Category\Counter` .
 
-`ReportAs`a nem egyező számlálók neve esetén szükséges `[a-zA-Z()/-_ \.]+` , azaz olyan karaktereket tartalmaznak, amelyek nem szerepelnek a következő készletekben: betűk, kerek zárójelek, perjel, kötőjel, aláhúzás, szóköz, pont.
+`ReportAs` a nem egyező számlálók neve esetén szükséges `[a-zA-Z()/-_ \.]+` , azaz olyan karaktereket tartalmaznak, amelyek nem szerepelnek a következő készletekben: betűk, kerek zárójelek, perjel, kötőjel, aláhúzás, szóköz, pont.
 
 Ha megad egy példányt, a rendszer a jelentett metrika "CounterInstanceName" dimenzióját fogja gyűjteni.
 

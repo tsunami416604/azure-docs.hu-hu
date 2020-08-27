@@ -3,14 +3,14 @@ title: 'Gyors útmutató: leképezés a REST API-kkal – LUIS'
 description: Ebben a REST API rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 2fd52011ed0d139e98740c8de077987edfae2c32
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 977348fcaf0cabf92268d71282222e1652321fac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873160"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919274"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Gyors útmutató: leképezés a REST API-kkal
 

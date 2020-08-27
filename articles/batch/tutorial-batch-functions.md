@@ -5,13 +5,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
-ms.custom: mvc
-ms.openlocfilehash: 88937e5bc9870075bfe273c21b11f886d32bf99d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85963852"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930094"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Oktatóanyag: batch-feladatok elindítása Azure Functions használatával
 
@@ -41,13 +41,13 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre a Batch-készle
     1. Válassza az **Ubuntu 18,04-LTS** operációs rendszert.
     1. Válassza ki `Standard_f2s_v2` a virtuális gép méretét.
     1. Engedélyezze az indítási feladatot, és adja hozzá a parancsot `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` . Ügyeljen arra, hogy a felhasználói identitást a **feladat alapértelmezett felhasználója (rendszergazda)** értékre állítsa be, amely lehetővé teszi, hogy a feladatok elindításával parancsokat tartalmazzon a paranccsal `sudo` .
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 ### <a name="create-a-job"></a>Feladat létrehozása
 
 1. Hozzon létre egy feladatot a készleten a bal oldali sávban a **feladatok** elem kiválasztásával, majd a keresési űrlap fölé a **Hozzáadás** gombra kattintva. 
     1. Válassza ki az azonosítót és a megjelenítendő nevet. `ocr-job`Ezt a példát fogjuk használni.
     1. Állítsa be a készletet `ocr-pool` , vagy bármilyen nevet, amelyet a készlethez választott.
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 
 
 ## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása

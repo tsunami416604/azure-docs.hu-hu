@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 10a07e00d451b5e23f49bbb3b0d358057c629b8c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 3d761bbad4cb2cd2cdd1c34459f25c811bb41c7e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406673"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918689"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Forrás nyelvének megadása beszédhez szövegként
 
@@ -78,7 +78,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage`és `SetEndpointId` elavult metódusok a `SpeechConfig` C++ és a Java osztályból. A módszerek használata nem ajánlott, és nem használható az a összeállításakor `SpeechRecognizer` .
+> `SetSpeechRecognitionLanguage` és `SetEndpointId` elavult metódusok a `SpeechConfig` C++ és a Java osztályból. A módszerek használata nem ajánlott, és nem használható az a összeállításakor `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -107,7 +107,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage`és `setEndpointId` elavult metódusok a `SpeechConfig` C++ és a Java osztályból. A módszerek használata nem ajánlott, és nem használható az a összeállításakor `SpeechRecognizer` .
+> `setSpeechRecognitionLanguage` és `setEndpointId` elavult metódusok a `SpeechConfig` C++ és a Java osztályból. A módszerek használata nem ajánlott, és nem használható az a összeállításakor `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -195,7 +195,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
 ```
 
 >[!Note]
-> `speechRecognitionLanguage`és `endpointId` a tulajdonságok elavultak az `SPXSpeechConfiguration` Objective-C osztályban. Ezeknek a tulajdonságoknak a használata nem ajánlott, és nem használható az a összeállításakor `SPXSpeechRecognizer` .
+> `speechRecognitionLanguage` és `endpointId` a tulajdonságok elavultak az `SPXSpeechConfiguration` Objective-C osztályban. Ezeknek a tulajdonságoknak a használata nem ajánlott, és nem használható az a összeállításakor `SPXSpeechRecognizer` .
 
 ::: zone-end
 
@@ -203,6 +203,6 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
 
 * A támogatott nyelvek és területi beállítások listájáért lásd: [nyelvi támogatás](language-support.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Speech SDK dokumentációja](speech-sdk.md)

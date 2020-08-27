@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf3e4262f4342788f343ab287fd3db53d12736c7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029841"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918111"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -38,8 +38,8 @@ Tartalom létrehozása és kezelése keresési szolgáltatásban.
 
 | Verziója&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | status | Visszamenőleges kompatibilitási probléma |
 |-------------------------|--------|------------------------------|
-| [Search 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/index)| Stable | A Search REST API-k legújabb stabil kiadása, a relevancia pontozásával és általánosan elérhető a Knowledge Store szolgáltatással.|
-| [Search 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview)| Előnézet | A stabil verzióhoz társított előzetes verzió. Több [előzetes verziójú funkciót](search-api-preview.md)is tartalmaz. |
+| [Search 2020-06-30](/rest/api/searchservice/index)| Stable | A Search REST API-k legújabb stabil kiadása, a relevancia pontozásával és általánosan elérhető a Knowledge Store szolgáltatással.|
+| [Search 2020-06-30-Preview](/rest/api/searchservice/index-preview)| Előnézet | A stabil verzióhoz társított előzetes verzió. Több [előzetes verziójú funkciót](search-api-preview.md)is tartalmaz. |
 | Search 2019-05-06 | Stable | [Összetett típusok](search-howto-complex-data-types.md)hozzáadására szolgál. |
 | Search 2019-05-06 – előzetes verzió | Előnézet | A stabil verzióhoz társított előzetes verzió. |
 | Keresés 2017-11-11 | Stable  | Szakértelmével és [AI-gazdagítás](cognitive-search-concept-intro.md)hozzáadására szolgál. |
@@ -57,8 +57,8 @@ Keresési szolgáltatás létrehozása és konfigurálása, valamint az API-kulc
 
 | Verziója&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | status | Visszamenőleges kompatibilitási probléma |
 |-------------------------|--------|------------------------------|
-| [Management 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | A felügyeleti REST API-k legújabb stabil kiadása az Endpoint Protection szolgáltatással. Privát [végpontot](service-create-private-endpoint.md) biztosít a privát kapcsolaton keresztül, valamint az új szolgáltatásokra vonatkozó [hálózati IP-szabályokat](service-configure-firewall.md) . |
-| [Management 2019-10-01-Preview](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) | Előnézet  | Verziószáma ellenére ez továbbra is a felügyeleti REST API-k aktuális előzetes verziója. Jelenleg nincsenek előzetes verziójú funkciók. Az előzetes verzió összes funkciója nemrég áttért az általános rendelkezésre állásra. |
+| [Management 2020-03-13](/rest/api/searchmanagement/) | Stable | A felügyeleti REST API-k legújabb stabil kiadása az Endpoint Protection szolgáltatással. Privát [végpontot](service-create-private-endpoint.md) biztosít a privát kapcsolaton keresztül, valamint az új szolgáltatásokra vonatkozó [hálózati IP-szabályokat](service-configure-firewall.md) . |
+| [Management 2019-10-01-Preview](/rest/api/searchmanagement/index-2019-10-01-preview) | Előnézet  | Verziószáma ellenére ez továbbra is a felügyeleti REST API-k aktuális előzetes verziója. Jelenleg nincsenek előzetes verziójú funkciók. Az előzetes verzió összes funkciója nemrég áttért az általános rendelkezésre állásra. |
 | Felügyelet 2015-08-19  | Stable | A felügyeleti REST API-k első általánosan elérhető verziója. Biztosítja a szolgáltatás üzembe helyezését, a vertikális felskálázást és az API-kulcsok kezelését. |
 | Felügyelet 2015-08-19 – előzetes verzió | Előnézet | A felügyeleti REST API-k első előzetes verziója. |
 
@@ -69,17 +69,17 @@ A csomag korábbi verziói a NuGet.org címen érhetők el. Ez a táblázat az e
 
 | SDK verziója | Állapot | Leírás |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2020-06-30 REST API célozza meg, de még nem támogatja, Geo-szűrők vagy [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). |
+| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2020-06-30 REST API célozza meg, de még nem támogatja, Geo-szűrők vagy [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). |
 | [Microsoft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Kiadás dátuma: 2019. A keresési REST API-Version = 2019-05-06 célokat célozza meg.|
 | [Microsoft. Azure. Search 8,0 – előzetes verzió](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Előnézet | megjelent április 2019. A keresési REST API-Version = 2019-05 -06-Preview célokat célozza meg.|
-| [Microsoft. Azure. Management. Search 3.0.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg.  |
+| [Microsoft. Azure. Management. Search 3.0.0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg.  |
 
 ## <a name="azure-sdk-for-java"></a>Javához készült Azure SDK
 
 | SDK verziója | Állapot | Leírás  |
 |-------------|--------|------------------------------|
 | [Java Azure – keresés – 11. dokumentum](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents/11.0.0/index.html) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
-| [Java Management-ügyfél 1.35.0](https://docs.microsoft.com/java/api/overview/azure/search/management?view=azure-java-stable) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
+| [Java Management-ügyfél 1.35.0](/java/api/overview/azure/search/management?view=azure-java-stable) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
 
@@ -93,4 +93,4 @@ A csomag korábbi verziói a NuGet.org címen érhetők el. Ez a táblázat az e
 | SDK verziója | Állapot | Leírás  |
 |-------------|--------|------------------------------|
 | [Python Azure – keresés – dokumentumok 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
-| [Python Azure-mgmt-Search 1,0](https://docs.microsoft.com/python/api/overview/azure/search?view=azure-python) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
+| [Python Azure-mgmt-Search 1,0](/python/api/overview/azure/search?view=azure-python) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |

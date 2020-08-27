@@ -10,12 +10,13 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: cf74d686a9156d6ccff1753a4f53abb5ecc6b7df
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: devx-track-csharp
+ms.openlocfilehash: af64e80137b375e6e7b7037f72240e814b4b1e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929689"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919420"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Gyors útmutató: keresési lekérdezések javaslata a Bing Autosuggest REST API és C #
 
@@ -163,7 +164,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Mi a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

@@ -2,16 +2,17 @@
 title: Az Azure Application Insights használatának és költségeinek kezelése | Microsoft Docs
 description: Telemetria-kötetek kezelése és a költségek figyelése Application Insightsban.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309681"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930485"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -79,7 +80,7 @@ Ha többet szeretne megtudni az adatkötetekről, válassza ki a Application Ins
 
 ### <a name="queries-to-understand-data-volume-details"></a>Az adatmennyiség részleteit értelmező lekérdezések
 
-A Application Insights adatköteteinek vizsgálatára két módszer áll rendelkezésre. Az első összesített információt használ a `systemEvents` táblában, a második pedig a `_BilledSize` tulajdonságot használja, amely minden betöltött eseménynél elérhető. `systemEvents`a nem rendelkezik adatméreti információkkal a [munkaterület-alapú alkalmazások](#data-volume-for-workspace-based-application-insights-resources)és az elemzések számára.
+A Application Insights adatköteteinek vizsgálatára két módszer áll rendelkezésre. Az első összesített információt használ a `systemEvents` táblában, a második pedig a `_BilledSize` tulajdonságot használja, amely minden betöltött eseménynél elérhető. `systemEvents` a nem rendelkezik adatméreti információkkal a [munkaterület-alapú alkalmazások](#data-volume-for-workspace-based-application-insights-resources)és az elemzések számára.
 
 #### <a name="using-aggregated-data-volume-information"></a>Összesített adatmennyiség-információ használata
 
@@ -187,7 +188,7 @@ A küldött adatmennyiség a következő módszerekkel kezelhető:
 
 * **Ajax-hívások korlátozása**: [korlátozhatja az összes oldal nézetben jelentett Ajax-hívások számát](./javascript.md#configuration) , vagy kikapcsolhatja az Ajax-jelentéskészítést.
 
-* **Szükségtelen modulok letiltása**: [ApplicationInsights.configszerkesztésével](./configuration-with-applicationinsights-config.md) kikapcsolhatja a nem szükséges gyűjteményi modulokat. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
+* **Szükségtelen modulok letiltása**: [ApplicationInsights.configszerkesztésével ](./configuration-with-applicationinsights-config.md) kikapcsolhatja a nem szükséges gyűjteményi modulokat. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
 
 * **Előre összevont mérőszámok**: Ha a TrackMetric-hívásokat az alkalmazásban helyezi el, csökkentheti a forgalmat a mérések egy kötegének átlagos és szórásos kiszámítását elfogadó túlterhelés használatával. Vagy használhatja az [Összesítés előtti csomagot](https://www.myget.org/gallery/applicationinsights-sdk-labs)is.
  
@@ -215,7 +216,7 @@ Tekintse át Application Insights használati és becsült költségét, és Ism
 
 ### <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
-A napi korlát módosításához a Application Insights erőforrás **Konfigurálás** szakaszában a **használat és a becsült költségek** lapon válassza a **napi korlát**lehetőséget.
+A napi korlát módosításához a Application Insights erőforrás **Konfigurálás** szakaszában a **használat és a becsült költségek** lapon válassza a  **napi korlát**lehetőséget.
 
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-003.png)
 
@@ -239,7 +240,7 @@ A mintavételnek többféle formája van.
 * Az [adaptív mintavételezés](./sampling.md) a ASP.net SDK alapértelmezett értéke. Az adaptív mintavételezés automatikusan igazodik az alkalmazás által küldött telemetria. Automatikusan működik az SDK-ban a webalkalmazásban, így csökken a telemetria-forgalom a hálózaton. 
 * A betöltési *mintavételezés* olyan alternatíva, amely arra a pontra működik, ahol az alkalmazás telemetria belép a Application Insights szolgáltatásba. A betöltési mintavételezés nem befolyásolja az alkalmazásból eljuttatott telemetria mennyiségét, de csökkenti a szolgáltatás által megőrzött kötetet. A betöltési mintavételezés használatával csökkentheti a telemetria által a böngészőkből és más SDK-k által használt kvótát.
 
-A betöltési mintavételezés beállításához lépjen a **díjszabás** panelre:
+A betöltési mintavételezés beállításához lépjen a  **díjszabás** panelre:
 
 ![A kvóta és díjszabás ablaktáblán válassza ki a minták csempét, majd válasszon ki egy mintavételi frakciót](./media/pricing/pricing-004.png)
 
@@ -279,7 +280,7 @@ Az adatok Application Insights való küldése adatsávszélességi díjat eredm
 
 ## <a name="disable-daily-cap-e-mails"></a>Napi Cap-beli e-mailek letiltása
 
-A napi mennyiségi korláttal rendelkező e-mailek letiltásához a Application Insights erőforrásának **Konfigurálás** szakaszában, a **használat és a becsült költségek** panelen válassza a **napi korlát**lehetőséget. A rendszer elküldi az e-mailek küldését, amikor eléri a korlátot, valamint ha elérte az állítható figyelmeztetési szintet. Ha le szeretné tiltani az összes napi korlátot a kötethez kapcsolódó e-maileket, törölje mindkét négyzet jelölését.
+A napi mennyiségi korláttal rendelkező e-mailek letiltásához a Application Insights erőforrásának **Konfigurálás** szakaszában, a **használat és a becsült költségek** panelen válassza a  **napi korlát**lehetőséget. A rendszer elküldi az e-mailek küldését, amikor eléri a korlátot, valamint ha elérte az állítható figyelmeztetési szintet. Ha le szeretné tiltani az összes napi korlátot a kötethez kapcsolódó e-maileket, törölje mindkét négyzet jelölését.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Örökölt nagyvállalati (node) árképzési csomag
 

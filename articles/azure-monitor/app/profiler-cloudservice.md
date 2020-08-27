@@ -2,16 +2,17 @@
 title: Profil élő Azure-Cloud Services a Application Insightskal | Microsoft Docs
 description: Az Azure Cloud Services Application Insights Profiler engedélyezése.
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8119477a69771c67db1f1e59c082d5d0d611214b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 69a9ba316a1fda14a2e85d4d981321d4b2f9f289
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305856"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930315"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services a Application Insights
 
@@ -63,7 +64,7 @@ Application Insights Profiler telepítve van a Azure Diagnostics bővítménnyel
     > * A ApplicationInsights-fogadó által használt kulcs. 
     > * A ApplicationInsightsProfiler-fogadó által használt kulcs. 
     >
-    > Megkeresheti a fogadó által a ServiceConfiguration használt tényleges kialakítási kulcs értékét `ApplicationInsights` *. \* cscfg* -fájlok. 
+    > Megkeresheti a fogadó által a ServiceConfiguration használt tényleges kialakítási kulcs értékét `ApplicationInsights`     *. \* cscfg* -fájlok. 
     > A Visual Studio 15,5 Azure SDK kiadása után csak az alkalmazás által használt rendszerállapot-kulcsok és a ApplicationInsightsProfiler kell egyezniük egymással.
 
 1. Telepítse a szolgáltatást az új diagnosztikai konfigurációval, és Application Insights Profiler konfigurálva van a szolgáltatáson való futtatásra.

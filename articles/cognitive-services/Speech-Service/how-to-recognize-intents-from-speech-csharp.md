@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
-ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402223"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918791"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>A beszédfelismerés céljainak felismerése a C Speech SDK használatával #
 
@@ -87,11 +88,11 @@ Ezután adja hozzá a projekthez egy kódot.
 
 1. A **megoldáskezelő**nyissa meg a **program.cs**fájlt.
 
-1. Cserélje le az `using` utasítások blokkját a fájl elejére a következő deklarációkkal:
+1. Cserélje le az utasítások blokkját a `using` fájl elejére a következő deklarációkkal:
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. Cserélje le a `Main()` megadott metódust a következő aszinkron egyenértékű értékkel:
+1. Cserélje le a megadott `Main()` metódust a következő aszinkron egyenértékű értékkel:
 
    ```csharp
    public static async Task Main()
@@ -102,7 +103,7 @@ Ezután adja hozzá a projekthez egy kódot.
    }
    ```
 
-1. Hozzon létre egy üres `RecognizeIntentAsync()`aszinkron metódust az itt látható módon:
+1. Hozzon létre egy üres aszinkron metódust az `RecognizeIntentAsync()` itt látható módon:
 
    ```csharp
    static async Task RecognizeIntentAsync()
@@ -128,7 +129,7 @@ A kód ismertetése a következő szakaszokban szerepel.
 
 ## <a name="create-an-intent-recognizer"></a>Szándékfelismerő létrehozása
 
-Először létre kell hoznia egy beszédfelismerési konfigurációt a LUIS Endpoint kulcsból és régióból. A beszédfelismerési konfigurációk segítségével felismerőket hozhat létre a Speech SDK különböző képességeihez. A beszédfelismerési konfiguráció több módon is megadhatja a használni kívánt előfizetést. Itt használjuk `FromSubscription`, amely az előfizetési kulcsot és régiót veszi igénybe.
+Először létre kell hoznia egy beszédfelismerési konfigurációt a LUIS Endpoint kulcsból és régióból. A beszédfelismerési konfigurációk segítségével felismerőket hozhat létre a Speech SDK különböző képességeihez. A beszédfelismerési konfiguráció több módon is megadhatja a használni kívánt előfizetést. Itt használjuk `FromSubscription` , amely az előfizetési kulcsot és régiót veszi igénybe.
 
 > [!NOTE]
 > Használja a LUIS-előfizetés kulcsát és régióját, nem pedig a Speech Service-előfizetést.
@@ -139,7 +140,7 @@ A következő lépés egy szándékfelismerő létrehozása a `new IntentRecogni
 
 Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppId()` használatával, majd adja hozzá azokat a LUIS-szándékokat, amelyeket a felismerő `AddIntent()` metódusával fel szeretne ismerni. Ezzel a két lépéssel növelheti a beszédfelismerés pontosságát, ha megadja azokat a szavakat, amelyeket a felhasználó a kérésekben nagy valószínűséggel használni fog. Nem kell hozzáadnia az összes alkalmazást, ha az alkalmazásban nem kell felismernie őket.
 
-A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak és elneveztek `model`), a szándék nevét és a szándék azonosítóját. Az azonosító és a név közötti különbség a következő.
+A leképezések hozzáadásához három argumentumot kell megadnia: a LUIS modellt (amelyet létrehoztak és elneveztek `model` ), a szándék nevét és a szándék azonosítóját. Az azonosító és a név közötti különbség a következő.
 
 | `AddIntent()`&nbsp;argumentum | Cél |
 | --------------------------- | ------- |
@@ -153,7 +154,7 @@ recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
 
-Az egyéni leképezések hozzáadása helyett a `AddAllIntents` metódus használatával is hozzáadhatja a modellben található összes leképezést a felismerőhöz.
+Az egyéni leképezések hozzáadása helyett a metódus használatával is `AddAllIntents` hozzáadhatja a modellben található összes leképezést a felismerőhöz.
 
 ## <a name="start-recognition"></a>Felismerés indítása
 
@@ -162,9 +163,9 @@ A felismerő létrehozása és a szándékok hozzáadása után elkezdődhet a f
 | Felismerési mód | Meghívandó metódusok | Eredmény |
 | ---------------- | --------------- | ------ |
 | Egyszeri | `RecognizeOnceAsync()` | Egyszer kimondott szöveg alapján visszaadja a felismert szándékot (ha van). |
-| Folyamatos | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Több hosszúságú kimondott szöveg felismerése; eseményeket bocsát ki (például) `IntermediateResultReceived`, ha az eredmények elérhetők. |
+| Folyamatos | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Több hosszúságú kimondott szöveg felismerése; eseményeket bocsát ki (például `IntermediateResultReceived` ), ha az eredmények elérhetők. |
 
-Az alkalmazás egylemezes módot használ, ezért `RecognizeOnceAsync()` a rendszer megkezdi az elismerés megkezdését. Az eredmény egy `IntentRecognitionResult` objektum, amely a felismert szándékra vonatkozó információkat tartalmaz. A LUIS JSON-választ kinyerheti a következő kifejezés használatával:
+Az alkalmazás egylemezes módot használ, ezért a rendszer `RecognizeOnceAsync()` megkezdi az elismerés megkezdését. Az eredmény egy `IntentRecognitionResult` objektum, amely a felismert szándékra vonatkozó információkat tartalmaz. A LUIS JSON-választ kinyerheti a következő kifejezés használatával:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
@@ -176,15 +177,15 @@ Az alkalmazás nem elemzi a JSON-eredményt. Csak a JSON-szöveget jeleníti meg
 
 ## <a name="specify-recognition-language"></a>Adja meg a felismerés nyelvét
 
-A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például vegyen fel `config.SpeechRecognitionLanguage = "de-de";` az alkalmazásba, mielőtt létrehozza a felismerést, hogy felismerje a leképezéseket német nyelven. További információért lásd a [Luis nyelvi támogatását](../LUIS/luis-language-support.md#languages-supported)ismertető témakört.
+A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például vegyen fel az `config.SpeechRecognitionLanguage = "de-de";` alkalmazásba, mielőtt létrehozza a felismerést, hogy felismerje a leképezéseket német nyelven. További információért lásd a [Luis nyelvi támogatását](../LUIS/luis-language-support.md#languages-supported)ismertető témakört.
 
 ## <a name="continuous-recognition-from-a-file"></a>Folyamatos felismerés fájlból
 
-Az alábbi kód szemlélteti a Speech SDK-val való szándékfelismerés két további képességét. Az első a korábban említett folyamatos felismerés, amelynek esetén a felismerő eseményeket bocsát ki, ha eredmények érhetők el. Ezeket az események aztán feldolgozhatók az Ön által megadott eseménykezelőkkel. A folyamatos felismeréssel a felismerő `StartContinuousRecognitionAsync()` metódusának meghívásával elindíthatja az elismerést a helyett. `RecognizeOnceAsync()`
+Az alábbi kód szemlélteti a Speech SDK-val való szándékfelismerés két további képességét. Az első a korábban említett folyamatos felismerés, amelynek esetén a felismerő eseményeket bocsát ki, ha eredmények érhetők el. Ezeket az események aztán feldolgozhatók az Ön által megadott eseménykezelőkkel. A folyamatos felismeréssel a felismerő metódusának meghívásával `StartContinuousRecognitionAsync()` elindíthatja az elismerést a helyett `RecognizeOnceAsync()` .
 
 A másik képesség a feldolgozandó beszédet tartalmazó hangfelvétel leolvasása egy WAV-fájlból. A megvalósítás magában foglalja egy hangkonfiguráció létrehozását, amelyet a rendszer a szándék-felismerő létrehozásakor használhat. A fájlnak egycsatornásnak (mono) kell lennie, 16 kHz-es mintavételi aránnyal.
 
-A funkciók kipróbálásához törölje vagy véleményezze a `RecognizeIntentAsync()` metódus törzsét, és adja hozzá a következő kódot a helyére.
+A funkciók kipróbálásához törölje vagy véleményezze a metódus törzsét `RecognizeIntentAsync()` , és adja hozzá a következő kódot a helyére.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

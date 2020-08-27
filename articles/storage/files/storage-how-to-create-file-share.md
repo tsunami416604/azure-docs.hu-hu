@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525649"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930672"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> A szintek a PowerShell használatával történő beállításának és módosításának lehetősége az előnézet az. Storage PowerShell-modulban található. Ezek a parancsmagok vagy a kimenetük megváltozhatnak az általánosan elérhető az az. Storage PowerShell-modulban való kiadása előtt, ezért a parancsfájlok létrehozásával vegye figyelembe.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 A fájlmegosztás adott szinten való létrehozásához vagy áthelyezéséhez szükséges funkciók az Azure CLI legújabb frissítésében érhetők el. Az Azure CLI frissítése az Ön által használt operációs rendszerre/Linux-disztribúcióra vonatkozik. Az Azure CLI a rendszeren való frissítésével kapcsolatos útmutatásért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -282,6 +285,10 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> A (z) paraméterrel rendelkező rétegek beállításának lehetősége a `--access-tier` legújabb Azure CLI-csomag előzetes verziójában érhető el. Ez a parancs vagy a kimenete változhat az általánosan elérhetőként való jelölés előtt, ezért hozzon létre parancsfájlokat ezt szem előtt tartva.
+
 ---
 
 ## <a name="next-steps"></a>További lépések
