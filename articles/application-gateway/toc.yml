@@ -1,11 +1,9 @@
-- name: Application Gateway – dokumentáció
+- name: Application Gateway-dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
     - name: Az alkalmazásátjárók ismertetése
       href: overview.md
-    - name: Újdonságok
-      href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:

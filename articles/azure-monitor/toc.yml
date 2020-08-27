@@ -210,33 +210,13 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Munkaterületek
-          items:
-            - name: Munkaterület üzembe helyezésének megtervezése
-              href: platform/design-logs-deployment.md
-            - name: Munkaterület létrehozása
-              items:
-                - name: Az Azure Portal használata
-                  href: learn/quick-create-workspace.md
-                - name: Az Azure parancssori felület használatával
-                  href: learn/quick-create-workspace-cli.md
-                - name: A PowerShell használata
-                  href: platform/powershell-workspace-configuration.md
-                - name: Resource Manager-sablon használata
-                  href: platform/template-workspace-configuration.md
-            - name: Munkaterület törlése és helyreállítása
-              href: platform/delete-workspace.md
-            - name: Munkaterület áthelyezése
-              href: platform/move-workspace.md
-            - name: A szolgáltatókat szem előtt tartó tervezés
-              href: platform/service-providers.md
-            - name: Hozzáférés kezelése
-              href: platform/manage-access.md
         - name: Naplólekérdezések áttekintése
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
         - name: Egyszerű naplózás
           href: log-query/simple-logs.md
+        - name: Auditnapló lekérdezései
+          href: log-query/query-audit.md
         - name: Oktatóanyagok
           items:
             - name: Log Analytics-oktatóanyag
@@ -315,6 +295,26 @@
               href: log-query/query-optimization.md
             - name: Szövegadatok elemzése
               href: log-query/parse-text.md
+        - name: Munkaterületek
+          items:
+            - name: Munkaterület üzembe helyezésének megtervezése
+              href: platform/design-logs-deployment.md
+            - name: Munkaterület létrehozása
+              items:
+                - name: Az Azure Portal használata
+                  href: learn/quick-create-workspace.md
+                - name: Az Azure parancssori felület használatával
+                  href: learn/quick-create-workspace-cli.md
+                - name: A PowerShell használata
+                  href: platform/powershell-workspace-configuration.md
+            - name: Munkaterület törlése és helyreállítása
+              href: platform/delete-workspace.md
+            - name: Munkaterület áthelyezése
+              href: platform/move-workspace.md
+            - name: A szolgáltatókat szem előtt tartó tervezés
+              href: platform/service-providers.md
+            - name: Hozzáférés kezelése
+              href: platform/manage-access.md
     - name: Metrikaböngésző
       items:
         - name: Bevezetés a Metrikaböngésző használatába
@@ -1132,24 +1132,28 @@
           href: platform/workbooks-visualizations.md
         - name: Adatforrások
           href: platform/workbooks-data-sources.md
-        - name: Üzembe helyezés Azure Resource Managerrel
-          href: platform/workbooks-automate.md
+        - name: Paraméterek
+          items:
+            - name: Paraméterek összegzése
+              href: platform/workbooks-parameters.md
+            - name: Legördülő lista paraméterei
+              href: platform/workbooks-dropdowns.md
+            - name: Interaktív paraméterek
+              href: platform/workbooks-interactive.md
+            - name: Időparaméterek
+              href: platform/workbooks-time.md
+            - name: Szövegparaméterek
+              href: platform/workbooks-text.md
         - name: Konfiguráció
           items:
             - name: Hozzáférés-vezérlés
               href: platform/workbooks-access-control.md
-            - name: Paraméterek
-              items:
-                - name: Paraméterek összegzése
-                  href: platform/workbooks-parameters.md
-                - name: Legördülő lista paraméterei
-                  href: platform/workbooks-dropdowns.md
-                - name: Interaktív paraméterek
-                  href: platform/workbooks-interactive.md
-                - name: Időparaméterek
-                  href: platform/workbooks-time.md
-                - name: Szövegparaméterek
-                  href: platform/workbooks-text.md
+            - name: Üzembe helyezés Azure Resource Managerrel
+              href: platform/workbooks-automate.md
+            - name: Munkafüzetek áthelyezése egy másik régióba
+              href: platform/workbooks-move-region.md
+            - name: Munkafüzetsablonok áthelyezése egy másik régióba
+              href: platform/workbook-templates-move-region.md
         - name: Nézetek átalakítása munkafüzetekké
           items:
             - name: Az átalakítás áttekintése

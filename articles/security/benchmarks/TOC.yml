@@ -59,6 +59,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Az Azure Databricks biztonsági alapkonfigurációja
       href: ../../azure-databricks/security-baseline.md
+    - name: Az Azure DNS biztonsági alapkonfigurációja
+      href: ../../dns/security-baseline.md
     - name: Az Azure Firewall biztonsági alapkonfigurációja
       href: ../../firewall/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja

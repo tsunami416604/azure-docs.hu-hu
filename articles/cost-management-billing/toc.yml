@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: További előfizetések létrehozása
               href: manage/create-subscription.md
+            - name: Előfizetések programozott létrehozása
+              href: manage/programmatically-create-subscription.md
+            - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
+              href: manage/grant-access-to-create-subscription.md
             - name: Előfizetési adatok exportálása
               href: manage/export-subscriptions.md
             - name: Hitelkártya módosítása

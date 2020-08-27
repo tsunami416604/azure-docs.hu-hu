@@ -6,6 +6,10 @@
       href: overview.md
     - name: Eltérések a korábbi kiadáshoz képest
       href: overview-differences.md
+- name: Gyorsútmutató
+  items:
+    - name: Mintaforgatókönyv felfedezése
+      href: quickstart-adt-explorer.md
 - name: Oktatóanyagok
   items:
     - name: Ügyfélalkalmazás kódolása
@@ -76,6 +80,8 @@
       items:
         - name: Telemetria betöltése az IoT Hubról
           href: how-to-ingest-iot-hub-data.md
+        - name: Integráció a Logic Apps szolgáltatással
+          href: how-to-integrate-logic-apps.md
     - name: Kimenet csatlakoztatása
       items:
         - name: Végpontok és útvonalak kezelése
@@ -88,8 +94,6 @@
           href: how-to-integrate-maps.md
         - name: Integrálás az Azure Time Series Insights szolgáltatással
           href: how-to-integrate-time-series-insights.md
-        - name: Integráció a Logic Apps szolgáltatással
-          href: how-to-integrate-logic-apps.md
     - name: Hibaelhárítás
       items:
         - name: Metrikák megtekintése az Azure Monitorban

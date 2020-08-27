@@ -34,8 +34,10 @@
       href: release-notes.md
 - name: Rövid útmutatók
   items:
-    - name: Synapse-munkaterület létrehozása
+    - name: Synapse-munkaterület létrehozása az Azure Portal használatával
       href: quickstart-create-workspace.md
+    - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure CLI-vel
+      href: quickstart-create-workspace-cli.md
     - name: A Synapse Studio használata
       href: quickstart-synapse-studio.md
     - name: Power BI-munkaterület csatolása

@@ -43,7 +43,7 @@
           href: plan-an-application-integration.md
         - name: A katalógusban nem szereplő alkalmazások megtervezése
           href: non-gallery-apps.md
-        - name: Hozzáférési panel üzembe helyezésének megtervezése
+        - name: Saját alkalmazások üzembe helyezésének megtervezése
           href: access-panel-deployment-plan.md
         - name: Útmutatás fejlesztőknek
           href: developer-guidance-for-integrating-applications.md

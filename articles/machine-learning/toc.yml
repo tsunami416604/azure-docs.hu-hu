@@ -436,6 +436,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
           href: how-to-move-data-in-out-of-pipelines.md
+        - name: ML-folyamatok üzembe helyezése (Python)
+          href: how-to-deploy-pipelines.md
         - name: Folyamat ütemezése (Python)
           href: how-to-schedule-pipelines.md
         - name: Folyamat aktiválása

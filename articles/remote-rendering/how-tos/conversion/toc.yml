@@ -8,5 +8,5 @@
   href: configure-model-conversion.md
 - name: Anyagok felülírása a modellátalakítás során
   href: override-materials.md
-- name: A konvertált modell adatainak lekérése
+- name: Átalakításokkal kapcsolatos információk lekérése
   href: get-information.md

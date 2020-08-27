@@ -739,6 +739,8 @@
               href: data-lake-storage-explorer.md
             - name: A Hadoop fájlrendszer parancssori felülete
               href: data-lake-storage-use-hdfs-data-lake-storage.md
+            - name: ACL-ek rekurzív beállítása
+              href: recursive-access-control-lists.md
         - name: Lekérdezés
           items:
             - name: Adatok szűrése lekérdezésgyorsítással

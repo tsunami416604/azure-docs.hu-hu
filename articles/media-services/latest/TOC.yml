@@ -56,6 +56,8 @@
           href: stream-files-dotnet-quickstart.md
         - name: Node.js használatával
           href: stream-files-nodejs-quickstart.md
+    - name: AMS-események tárolása az Azure Log Analyticsben
+      href: tutorial-events-log-analytics.md
     - name: Feltöltött fájl kódolása és videó streamelése
       displayName: 'encode, encoding, job, transform'
       href: stream-files-tutorial-with-api.md

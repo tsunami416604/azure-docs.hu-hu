@@ -27,13 +27,13 @@
     - name: Események küldése és fogadása
       items:
         - name: .NET (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python (azure-eventhub 5-ös verzió)
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs 5-ös verzió)
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Indítás
           href: event-hubs-go-get-started-send.md
         - name: C (csak küldés)
@@ -43,13 +43,9 @@
     - name: Események küldése és fogadása (régi verziók/csomagok)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub 1-es verzió)
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript (azure/event-hubs 2-es verzió)
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET-keretrendszer (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Események rögzítése
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: Az Event Hubs Capture engedélyezése Resource Manager-sablonnal
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: A rögzített adatok olvasása Pythonnal (azure-eventhub 5-ös verzió)
-          href: get-started-capture-python-v2.md
-        - name: A rögzített adatok olvasása Pythonnal (azure-eventhub 1-es verzió)
+        - name: A rögzített adatok olvasása Pythonnal
           href: event-hubs-capture-python.md
     - name: Streamelés az Apache Kafkához készült Event Hubsba
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md

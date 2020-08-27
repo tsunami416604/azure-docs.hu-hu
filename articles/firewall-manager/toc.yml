@@ -46,6 +46,8 @@
       href: dns-settings.md
     - name: Több nyilvános IP-cím üzembe helyezése – PowerShell
       href: multiple-public-ip-powershell.md
+    - name: Szabályhierarchia definiálása
+      href: rule-hierarchy.md
 - name: Referencia
   items:
     - name: Azure CLI

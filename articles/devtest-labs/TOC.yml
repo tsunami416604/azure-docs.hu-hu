@@ -8,7 +8,7 @@
       href: lab-services-overview.md
 - name: Első lépések
   items:
-    - name: Labor létrehozása – ARM-sablon
+    - name: Labor létrehozása – Resource Manager-sablon
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
 - name: Oktatóanyagok
@@ -75,6 +75,8 @@
       items:
         - name: Labor létrehozása
           href: devtest-lab-create-lab.md
+        - name: Izolált hálózati infrastruktúra létrehozása
+          href: network-isolation.md
         - name: Tesztkörnyezetek létrehozása és módosítása Resource Manager-sablonok használata
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: Erőforráscsoport meghatározása a labor virtuális gépeihez
