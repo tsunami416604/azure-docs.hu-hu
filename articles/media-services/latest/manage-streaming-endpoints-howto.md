@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: d8b5f79d9c9050eeb7957ddcf28021e3c8b3dd94
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010647"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Adatfolyam-végpontok kezelése Media Services v3-val
 
@@ -45,7 +45,7 @@ Tekintse át
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-További információ: 
+További információkért lásd: 
 
 * A [Start a streamvégpontok](/rest/api/media/streamingendpoints/start) Reference dokumentációja.
 * Az adatfolyam-végpont indítása aszinkron művelet. 
@@ -57,7 +57,7 @@ További információ:
  
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Nyissa meg Azure Media Services-fiókját.
-1. A bal oldali ablaktáblán válassza a **folyamatos átviteli végpontok**lehetőséget.
+1. A bal oldali ablaktáblán válassza a  **folyamatos átviteli végpontok**lehetőséget.
 1. Válassza ki az elindítani kívánt folyamatos átviteli végpontot, majd kattintson a **Start**gombra.
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
@@ -104,7 +104,7 @@ Tekintse meg a [.net-kód teljes mintáját](https://github.com/Azure-Samples/me
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Media Services v3 OpenAPI-specifikáció (hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
 * [Folyamatos átviteli végpont műveletei](/rest/api/media/streamingendpoints)

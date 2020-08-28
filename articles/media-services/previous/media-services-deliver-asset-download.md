@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61465660"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019453"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: eszköz kézbesítése letöltéssel  
 Ez a cikk a Media Servicesba feltöltött média-eszközök kézbesítésének lehetőségeit tárgyalja. Számos alkalmazási forgatókönyvben Media Services tartalmat is eljuttathat. A kódolást követően töltse le a generált adathordozó-eszközöket, vagy egy streaming Locator használatával hozzáférjen hozzájuk. A jobb teljesítmény és méretezhetőség érdekében Content Delivery Network (CDN) használatával is elvégezheti a tartalom továbbítását.

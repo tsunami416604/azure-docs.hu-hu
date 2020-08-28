@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 615815f11264578bc2a5930553c8e6f5bfed937f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121901"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019742"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -54,7 +54,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 ## <a name="add-feature-management"></a>Szolgáltatások felügyeletének hozzáadása
 
-1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg *pom.xml* az alkalmazás gyökérkönyvtárában.
+1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg  *pom.xml* az alkalmazás gyökérkönyvtárában.
 
 1. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adja hozzá a következőt a listájához `<dependencies>` :
 
@@ -97,7 +97,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     ```
 
 > [!Note]
-> A nem webes szolgáltatások felügyeleti könyvtára nem függ a Spring-web-től. A különbségekről a GitHub [dokumentációjában](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) tájékozódhat.
+> A nem webes szolgáltatások felügyeleti könyvtára nem függ a Spring-web-től. A különbségekről a GitHub [dokumentációjában](https://github.com/microsoft/spring-cloud-azure) tájékozódhat.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -107,7 +107,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon válassza `Access keys` a lehetőséget az oldalsávon. Válassza a csak olvasható kulcsok lapot. másolja az elsődleges kapcsolatok karakterláncának értékét.
+1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon válassza `Access keys` a lehetőséget az oldalsávon. Válassza a csak olvasható kulcsok lapot. Másolja ki az elsődleges kapcsolatok karakterláncának értékét.
 
 1. Adja hozzá az elsődleges kapcsolatok karakterláncát környezeti változóként a változó neve alapján `APP_CONFIGURATION_CONNECTION_STRING` .
 
@@ -290,7 +290,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
-    | Kulcs | Állam |
+    | Kulcs | Állapot |
     |---|---|
     | Beta | Be |
 
@@ -302,7 +302,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](https://go.microsoft.com/fwlink/?linkid=2074664)használatával.
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 2cf6d2c02beff93553944474138bee3a2a316aa9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 94465e44a6cc2c4fa94ec8ea4504cbed80742f0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874350"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019147"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfiguráció konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 
@@ -56,7 +56,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a>Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java v4 SDK
 
 Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, hívja meg a (z) és a (z `.multipleWriteRegionsEnabled(true)` `.preferredRegions(preferredRegions)` ) ügyfelet, ahol a egy `preferredRegions` `List` elemet tartalmaz – ez az a régió, amelyben az alkalmazás üzembe helyezése zajlik, és ahol a Cosmos db replikálódik:
 
@@ -74,7 +74,7 @@ Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásb
 
 --- 
 
-## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Aszinkron Java v2 SDK
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Aszinkron Java v2 SDK
 
 A Java v2 SDK a Maven [com. microsoft. Azure-t használta:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb). Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, állítsa be `policy.setUsingMultipleWriteLocations(true)` és állítsa be `policy.setPreferredLocations` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
 

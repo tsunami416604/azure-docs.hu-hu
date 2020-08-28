@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac0bf539cc345f326027f4707b7b50204e2b7850
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893051"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020286"
 ---
 # <a name="entities"></a>Entitások
 
@@ -137,7 +138,7 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 
 A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Összetevők](components.md)
 * [Objektumhatárok](object-bounds.md)

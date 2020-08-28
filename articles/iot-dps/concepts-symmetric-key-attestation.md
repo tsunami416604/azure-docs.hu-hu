@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286495"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020337"
 ---
 # <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
 
@@ -110,7 +111,7 @@ Az egyes eszközök identitását a gyári regisztrációs azonosító és a sz�
 
 Ha az eszköz kulcsai nincsenek telepítve a gyárban, a [hardveres biztonsági modul HSM](concepts-security.md#hardware-security-module) -et kell használnia az eszköz identitásának biztonságos tárolásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette a szimmetrikus kulcs igazolását, tekintse meg az alábbi cikkeket:
 

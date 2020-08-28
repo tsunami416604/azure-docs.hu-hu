@@ -7,12 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: b8cf0425a4a40c4692f4c0c7fcf11dbb23019b23
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132670"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019232"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 
@@ -107,7 +108,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 A *QueryMetrics* részletesen ismerteti, hogy mennyi ideig tartott a lekérdezés egyes összetevőinek végrehajtása. A hosszú ideig futó lekérdezések esetében a leggyakoribb kiváltó ok a vizsgálatok, ami azt jelenti, hogy a lekérdezés nem tudta kihasználni az indexeket. Ez a probléma jobb szűrőfeltétel használatával oldható meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most megtanulta, hogyan figyelheti és hibakeresési hibákat a Azure Portalban megadott mérőszámok használatával. Ha többet szeretne megtudni az adatbázis teljesítményének növeléséről, olvassa el a következő cikkeket:
 

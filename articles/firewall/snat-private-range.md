@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.author: victorh
-ms.openlocfilehash: be2bf0f9590a23f9def44a1800338c80f69a782c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25c2096de4c3643a4e6a3ba7bdad1e69ae93a179
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610523"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019079"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
@@ -23,6 +23,9 @@ Ez a logika jól működik, ha közvetlenül az internetre irányítja át a for
 Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. Azonban úgy is konfigurálhatja a Azure Firewallt, hogy **ne** SNAT a nyilvános IP-címtartományt.
 
 Ha úgy szeretné konfigurálni a Azure Firewallt, hogy soha ne SNAT meg a cél IP-címről, használja a **0.0.0.0/0 értéket** a magánhálózati IP-címtartomány alapján. Ezzel a konfigurációval a Azure Firewall soha nem irányíthatja át a forgalmat közvetlenül az internetre. Ha úgy szeretné beállítani a tűzfalat, hogy mindig SNAT a célhelytől függetlenül, használja a **255.255.255.255/32** protokollt magánhálózati IP-címtartományként.
+
+> [!IMPORTANT]
+> Ha saját magánhálózati IP-címtartományt szeretne megadni, és meg szeretné tartani az alapértelmezett IANA RFC 1918-címtartományt, győződjön meg arról, hogy az egyéni lista továbbra is tartalmazza az IANA RFC 1918 tartományát. 
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>SNAT magánhálózati IP-címtartományok konfigurálása – Azure PowerShell
 
@@ -73,6 +76,6 @@ A Azure Portal segítségével megadhatja a tűzfal magánhálózati IP-címtart
 1. Alapértelmezés szerint a **IANAPrivateRanges** konfigurálva van.
 2. Szerkessze a környezet magánhálózati IP-címeinek tartományát, majd válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [Azure Firewall kényszerített bújtatással](forced-tunneling.md).

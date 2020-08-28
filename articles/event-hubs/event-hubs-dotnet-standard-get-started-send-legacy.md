@@ -3,12 +3,13 @@ title: Események küldése és fogadása az Azure Event Hubs .NET (régi) haszn
 description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti, amely az Azure Event Hubs a régi Microsoft. Azure. EventHubs csomag használatával küld/fogad eseményeket.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 9aa971b3415894fc79df6faf1075184b413fefb6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d7d33ebcabb728cf2fbf43b393de5eec6cb58af3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942158"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010698"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs a .NET Core használatával (Microsoft. Azure. EventHubs)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről a **Microsoft. Azure. EventHubs** .net Core Library használatával.
@@ -358,7 +359,7 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
 4. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [Szerepköralapú hozzáférés-vezérlési (RBAC) minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 

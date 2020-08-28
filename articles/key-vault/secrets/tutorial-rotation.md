@@ -10,12 +10,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f5b03e22fee2bf1bd662c152bf1b5c2f83a4358
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541419"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019912"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
 
@@ -45,10 +46,10 @@ Az alábbi telepítési hivatkozás használható, ha nincs meglévő Key Vault 
 
 1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation**.
 1. Az **SQL**-rendszergazdai bejelentkezés területen írja be az SQL-rendszergazda bejelentkezési nevét. 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Hozzon létre egy erőforráscsoportot](../media/rotate2.png)
+    ![Erőforráscsoport létrehozása](../media/rotate2.png)
 
 Most már rendelkezik egy Key Vault és egy SQL Server-példánnyal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 

@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f4f69904954286f15d2fda13ddd26ee64c81776f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060319"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019368"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladatok értesítéseinek figyelése az Azure üzenetsor-tárolóval a .NET használatával 
 
@@ -64,7 +65,7 @@ Az ebben a szakaszban szereplő kódrészlet a következő műveleteket végzi e
 > [!NOTE]
 > A feladatok állapotának figyelésére ajánlott módszer az értesítési üzenetek figyelése, ahogy az az alábbi példában is látható:
 >
-> Azt is megteheti, hogy a **IJob. State** tulajdonság használatával a feladatok állapotát is megtekintheti.  A feladatok befejezésére vonatkozó értesítési üzenet a **IJob** állapotának **Befejezettre**állítása előtt is megérkezik. A **IJob. State** tulajdonság a pontos állapotot mutatja kis késleltetéssel.
+> Azt is megteheti, hogy a **IJob. State** tulajdonság használatával a feladatok állapotát is megtekintheti.  A feladatok befejezésére vonatkozó értesítési üzenet a **IJob** állapotának **Befejezettre**állítása előtt is megérkezik. A **IJob. State**  tulajdonság a pontos állapotot mutatja kis késleltetéssel.
 >
 >
 

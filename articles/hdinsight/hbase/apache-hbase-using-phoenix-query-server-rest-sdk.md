@@ -6,14 +6,14 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4ad6d16e4c6d91b44061d99ffa1c397fb0e0ec28
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080057"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019640"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix lekérdezési kiszolgáló – REST SDK
 
@@ -54,7 +54,7 @@ Mindegyik példa először egy hívást kezdeményez a `OpenConnectionRequestAsy
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest és az ConnectionProperties
 
-A híváshoz `ConnectionSyncRequestAsync` adjon meg egy `ConnectionProperties` objektumot.
+A híváshoz  `ConnectionSyncRequestAsync` adjon meg egy `ConnectionProperties` objektumot.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -84,7 +84,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 Az értékek a következők `TransactionIsolation` :
 
-| Elkülönítési érték | Description |
+| Elkülönítési érték | Leírás |
 | -- | -- |
 | 0 | A tranzakciók nem támogatottak. |
 | 1 | A piszkos olvasások, a nem ismételhető olvasások és a látszólagos olvasások is előfordulhatnak. |
@@ -539,7 +539,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Phoenix a HDInsightban](../hdinsight-phoenix-in-hdinsight.md)
 * [Az Apache HBase REST SDK használata](apache-hbase-rest-sdk.md)

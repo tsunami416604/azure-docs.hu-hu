@@ -13,12 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4ac0b0e0a9c372aebc51af1840491d0f53f9f8f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833028"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010290"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -214,7 +215,7 @@ Az alapszintű, a standard és a Premium kódolásra fenntartott egységeket az 
 ### <a name="azure-sdk-for-php"></a>PHP-hoz készült Azure SDK
 Az Azure SDK csapata közzétette az [Azure SDK for php](https://github.com/Azure/azure-sdk-for-php) csomag új kiadását, amely a Media Services frissítéseit és új funkcióit tartalmazza. A PHP-hez készült Media Services SDK mostantól támogatja a legújabb [tartalomvédelem](media-services-content-protection-overview.md) -funkciókat. Ezek a funkciók dinamikus titkosítást biztosítanak az AES és a DRM használatával (PlayReady és Widevine), és nem tartalmaznak jogkivonat-korlátozásokat. Emellett támogatja a [kódolási egységek](media-services-dotnet-encoding-units.md)méretezését is.
 
-További információ:
+További információkért lásd:
 
 * A következő [kódrészletek](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) segítségével gyorsan elsajátíthatja az első lépéseket:
   * **vodworkflow_aes. php**: Ez a php-fájl bemutatja, hogyan használható az aes-128 Dynamic encryption és a Key Delivery Service. A .NET-minta az [AES-128 dinamikus titkosítás és a Key Delivery szolgáltatás használata](media-services-protect-with-aes128.md)című cikkben ismertetett.
@@ -253,7 +254,7 @@ Az AssetDeliveryConfiguration Widevine használatára történő beállításáh
 További információkért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>Augusztus 2015 kiadás
-* A Java-verzió 0.8.0 kiadásának Media Services SDK-je és az új minták mostantól elérhetők. További információ:
+* A Java-verzió 0.8.0 kiadásának Media Services SDK-je és az új minták mostantól elérhetők. További információkért lásd:
     
 * A Azure Media Player multi-audio stream-támogatással lett frissítve. További információt [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)talál.
 
@@ -371,7 +372,7 @@ A Media Services REST-metaadatok már 2,7-es verzióval rendelkeznek. A legújab
 
 A .NET-hez készült Media Services SDK már verziója 3.0.0.7
 
-### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>Kompatibilitástörő változások
+### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>Változtatások megszakítása
 * A forrás átnevezve a következőre: [streamvégpontok].
 * Az alapértelmezett viselkedés változása történt, amikor a Azure Portal használatával kódolja és közzéteszi az MP4-fájlokat.
 

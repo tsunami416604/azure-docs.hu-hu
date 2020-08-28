@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
+ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe3401354d4853b875cdd001d5074ebdf0d3377b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281599"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019538"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása Data Lake Storage Gen1ba és onnan a Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -71,8 +72,8 @@ A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgy
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **típusa** | A Type tulajdonságot **AzureDataLakeStore**értékre kell beállítani. | Yes |
-| **dataLakeStoreUri** | Információ a Azure Data Lake Store fiókról. Ez az információ a következő formátumok egyikét veszi figyelembe: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/` . | Yes |
+| **típusa** | A Type tulajdonságot **AzureDataLakeStore**értékre kell beállítani. | Igen |
+| **dataLakeStoreUri** | Információ a Azure Data Lake Store fiókról. Ez az információ a következő formátumok egyikét veszi figyelembe: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/` . | Igen |
 | **subscriptionId** | Az Azure-előfizetés azonosítója, amelyhez a Data Lake Store fiók tartozik. | A fogadóhoz szükséges |
 | **resourceGroupName** | Az Azure-erőforráscsoport neve, amelyhez a Data Lake Store fiók tartozik. | A fogadóhoz szükséges |
 
@@ -92,9 +93,9 @@ Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megad�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
-| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Yes |
-| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Yes |
+| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
+| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Igen |
+| **bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
 
 **Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -119,8 +120,8 @@ Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Yes |
-| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Yes |
+| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Igen |
+| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Igen |
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy a felhasználó megfelelő jogosultságot ad a Azure Data Lake Storeban:
@@ -238,11 +239,11 @@ A **AzureDataLakeStore** típusú adatkészlet **typeProperties** szakasza a kö
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **folderPath** |Data Lake Store tárolójának és mappájának elérési útja. |Yes |
-| **fileName** |A fájl neve Azure Data Lake Storeban. A **filename** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. <br/><br/>Ha megadja a **fájlnevet**, a tevékenység (beleértve a másolást is) az adott fájlon működik.<br/><br/>Ha nincs megadva a **fájlnév** , a másolás a bemeneti adatkészletben a **folderPath** összes fájlját tartalmazza.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység-fogadóban, a generált fájl neve a következő formátumban jelenik meg: `Data._Guid_.txt` . Például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
-| **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Ezzel a beállítással megadhatja a dinamikus elérési utat és a fájlnevet az idősorozat-értékekhez. A **folderPath** például minden egyes órányi adatértékhez paraméterként lehet megadni. További részletekért és példákért tekintse meg a partitionedBy tulajdonságot. |No |
-| **formátumban** | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a **Format** értékre a következő értékek egyikére. További információ: a [szöveg formátuma](data-factory-supported-file-and-compression-formats.md#text-format), a [JSON formátuma](data-factory-supported-file-and-compression-formats.md#json-format), a [Avro formátuma](data-factory-supported-file-and-compression-formats.md#avro-format), az [ork formátuma](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta](data-factory-supported-file-and-compression-formats.md#parquet-format) formátuma [Azure Data Factory cikk által támogatott fájl-és tömörítési](data-factory-supported-file-and-compression-formats.md) formátumokban. <br><br> Ha a fájlokat a fájl alapú tárolók között (bináris másolás) szeretné másolni, ugorja át a `format` bemeneti és a kimeneti adatkészlet-definíciók szakaszát. |No |
-| **tömörítés** | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a **gzip**, a **deflate**, a **BZip2**és a **ZipDeflate**. A támogatott szintek **optimálisak** és **leggyorsabbak**. További információ: [Azure Data Factory által támogatott fájl-és Tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| **folderPath** |Data Lake Store tárolójának és mappájának elérési útja. |Igen |
+| **fileName** |A fájl neve Azure Data Lake Storeban. A **filename** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. <br/><br/>Ha megadja a **fájlnevet**, a tevékenység (beleértve a másolást is) az adott fájlon működik.<br/><br/>Ha nincs megadva a **fájlnév** , a másolás a bemeneti adatkészletben a **folderPath** összes fájlját tartalmazza.<br/><br/>Ha a **fájlnév** nincs megadva egy kimeneti adatkészlethez, és a **preserveHierarchy** nincs megadva a tevékenység-fogadóban, a generált fájl neve a következő formátumban jelenik meg: `Data._Guid_.txt` . Például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
+| **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Ezzel a beállítással megadhatja a dinamikus elérési utat és a fájlnevet az idősorozat-értékekhez. A **folderPath** például minden egyes órányi adatértékhez paraméterként lehet megadni. További részletekért és példákért tekintse meg a partitionedBy tulajdonságot. |Nem |
+| **formátumban** | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a **Format** értékre a következő értékek egyikére. További információ: a [szöveg formátuma](data-factory-supported-file-and-compression-formats.md#text-format), a [JSON formátuma](data-factory-supported-file-and-compression-formats.md#json-format), a [Avro formátuma](data-factory-supported-file-and-compression-formats.md#avro-format), az [ork formátuma](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta](data-factory-supported-file-and-compression-formats.md#parquet-format) formátuma [Azure Data Factory cikk által támogatott fájl-és tömörítési](data-factory-supported-file-and-compression-formats.md) formátumokban. <br><br> Ha a fájlokat a fájl alapú tárolók között (bináris másolás) szeretné másolni, ugorja át a `format` bemeneti és a kimeneti adatkészlet-definíciók szakaszát. |Nem |
+| **tömörítés** | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a **gzip**, a **deflate**, a **BZip2**és a **ZipDeflate**. A támogatott szintek **optimálisak** és **leggyorsabbak**. További információ: [Azure Data Factory által támogatott fájl-és Tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
 ### <a name="the-partitionedby-property"></a>A partitionedBy tulajdonság
 Megadhatja az idősoros adatok dinamikus **folderPath** és **fájlnevének** tulajdonságait a **partitionedBy** tulajdonsággal, Data Factory függvényekkel és a rendszerváltozókkal. További részletekért tekintse meg a [Azure Data Factory-functions és a rendszerváltozók](data-factory-functions-variables.md) című cikket.
@@ -282,22 +283,22 @@ A **AzureDataLakeStoreSource** a következő tulajdonságot támogatja a **typeP
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **rekurzív** |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. |True (alapértelmezett érték), hamis |No |
+| **rekurzív** |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. |True (alapértelmezett érték), hamis |Nem |
 
 A **AzureDataLakeStoreSink** a következő tulajdonságokat támogatja a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **copyBehavior** |Megadja a másolási viselkedést. |<b>PreserveHierarchy</b>: megőrzi a fájl hierarchiáját a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><br/><b>FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén jön létre. A célfájl automatikusan létrehozott névvel lett létrehozva.<br/><br/><b>MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben a fájl neve automatikusan létrejön. |No |
+| **copyBehavior** |Megadja a másolási viselkedést. |<b>PreserveHierarchy</b>: megőrzi a fájl hierarchiáját a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><br/><b>FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén jön létre. A célfájl automatikusan létrehozott névvel lett létrehozva.<br/><br/><b>MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben a fájl neve automatikusan létrejön. |Nem |
 
 ### <a name="recursive-and-copybehavior-examples"></a>rekurzív és copyBehavior példák
 Ez a szakasz a rekurzív és copyBehavior értékek különböző kombinációinak másolási műveletének eredményét írja le.
 
 | rekurzív | copyBehavior | Eredményül kapott viselkedés |
 | --- | --- | --- |
-| igaz |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| igaz |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a fájl3 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File4 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File5 automatikusan generált neve |
-| igaz |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve automatikusan generált fájlnévvel |
+| true |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 ugyanazzal a struktúrával jön létre, mint a forrás<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a fájl3 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File4 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a File5 automatikusan generált neve |
+| true |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célként megadott Mappa1 a következő szerkezettel jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 + fájl3 + File4 + file 5 tartalom egyetlen fájlba van egyesítve automatikusan generált fájlnévvel |
 | hamis |preserveHierarchy |A Mappa1 a következő szerkezettel rendelkezik: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/><br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
 | hamis |flattenHierarchy |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;a file1 automatikusan generált neve<br/>&nbsp;&nbsp;&nbsp;&nbsp;a Fájl2 automatikusan generált neve<br/><br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |
 | hamis |mergeFiles |A Mappa1 a következő szerkezettel rendelkezik:<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fájl2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>a célmappa Mappa1 a következő szerkezettel jön létre<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;A file1 + Fájl2 tartalma egyetlen fájlba van egyesítve, amely automatikusan létrehozott fájlnevet tartalmaz. a file1 automatikusan generált neve<br/><br/>A fájl3, a File4 és a File5 Subfolder1 nem vesznek fel. |

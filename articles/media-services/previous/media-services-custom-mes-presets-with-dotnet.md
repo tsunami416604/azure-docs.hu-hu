@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c0abeedb1253c2561f2d435aa3fe5a428418a50
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052935"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019470"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard-beállításkészletek testreszabása  
 
@@ -32,7 +33,7 @@ Ebből a cikkből megtudhatja, hogyan szabhatja testre a készletet a [H264 töb
 > [!NOTE]
 > Az ebben a cikkben ismertetett egyéni beállításkészletek nem használhatók [Media Services v3](../latest/index.yml) átalakításokban vagy a CLI-parancsokban. További részletekért tekintse meg a [v2 és v3 közötti áttelepítési útmutatót](../latest/migrate-from-v2-to-v3.md) .
 
-## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES-beállításkészlet testreszabása
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> MES-beállításkészlet testreszabása
 
 ### <a name="original-preset"></a>Eredeti beállításkészlet
 

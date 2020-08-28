@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 7d00801ccf67ff82dd0c00bf8aec616aa531668f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023483"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019895"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-beli adatüzemek létrehozása, figyelése és kezelése Azure Data Factory .NET SDK használatával
 > [!NOTE]
@@ -499,7 +500,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi példát követve hozhat létre egy folyamatot a .NET SDK-val, amely az Azure Blob Storage-ból másolja az Azure SQL Database: 
 
 - [Folyamat létrehozása az adatok Blob Storageról SQL Databaseba másolásához](data-factory-copy-activity-tutorial-using-dotnet-api.md)

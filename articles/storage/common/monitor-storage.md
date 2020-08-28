@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836666"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020150"
 ---
 # <a name="monitor-azure-storage"></a>Az Azure Storage figyelése
 
@@ -74,7 +74,7 @@ A tárolási szolgáltatás által kezdeményezett kérelmek (például a napló
 
 Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott adatok teljes listáját a [Storage naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és a [tárolási napló formátuma](monitor-storage-reference.md)című témakörben tekintheti meg.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, az Azure CLI vagy a PowerShell használatával történő létrehozásával kapcsolatban lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -406,7 +406,7 @@ Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
 
 Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszámait. További információ: [a felügyelt és nem felügyelt lemezek esetében a lemezre vonatkozó mérőszámok](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Storage által létrehozott naplók és mérőszámok ismertetését az [Azure Storage-figyelési adatok referenciája](monitor-storage-reference.md)című témakörben tekintheti meg.
 - Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).

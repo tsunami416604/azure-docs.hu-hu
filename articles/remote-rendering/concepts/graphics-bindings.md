@@ -9,12 +9,13 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564982"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020269"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
 
@@ -88,7 +89,7 @@ Jelenleg két grafikus API lehet kijelölni, `WmrD3D11` és `SimD3D11` . Egy har
 
 ### <a name="windows-mixed-reality"></a>Windows vegyes valóság
 
-`GraphicsApiType.WmrD3D11`az alapértelmezett kötés, amely a 2. HoloLens fut. Létrehozza majd a `GraphicsBindingWmrD3d11` kötést. Ebben az üzemmódban az Azure-alapú távoli renderelés közvetlenül a holografikus API-khoz csatlakozik.
+`GraphicsApiType.WmrD3D11` az alapértelmezett kötés, amely a 2. HoloLens fut. Létrehozza majd a `GraphicsBindingWmrD3d11` kötést. Ebben az üzemmódban az Azure-alapú távoli renderelés közvetlenül a holografikus API-khoz csatlakozik.
 
 A származtatott grafikus kötések eléréséhez az alapot el `GraphicsBinding` kell érni.
 Az WMR-kötés használatához két dolgot kell elvégezni:
@@ -136,7 +137,7 @@ wmrBinding->BlitRemoteFrame();
 
 ### <a name="simulation"></a>Szimuláció
 
-`GraphicsApiType.SimD3D11`a szimulált kötés, és ha be van jelölve, a a `GraphicsBindingSimD3d11` grafikus kötést hozza létre. Ez az interfész szimulálja a fej mozgását, például egy asztali alkalmazásban, és megjelenít egy monoscopic képet.
+`GraphicsApiType.SimD3D11` a szimulált kötés, és ha be van jelölve, a a `GraphicsBindingSimD3d11` grafikus kötést hozza létre. Ez az interfész szimulálja a fej mozgását, például egy asztali alkalmazásban, és megjelenít egy monoscopic képet.
 A telepítő egy kicsit nagyobb szerepet játszik, és a következőképpen működik:
 
 #### <a name="create-proxy-render-target"></a>Proxy megjelenítési cél létrehozása
@@ -231,6 +232,6 @@ else
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: távolról megjelenített modellek megtekintése](../tutorials/unity/view-remote-models/view-remote-models.md)

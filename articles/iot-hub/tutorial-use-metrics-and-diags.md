@@ -11,12 +11,13 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
-ms.openlocfilehash: b31fc9df5451665b79a41172286a0cc471b681fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+- devx-track-csharp
+ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500997"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019130"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
@@ -39,7 +40,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 - A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 
@@ -374,7 +375,7 @@ Az erőforráscsoport az [az group delete](https://docs.microsoft.com/cli/azure/
 az group delete --name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatók a metrikák és a diagnosztikai naplók a következő feladatok végrehajtásával:
 

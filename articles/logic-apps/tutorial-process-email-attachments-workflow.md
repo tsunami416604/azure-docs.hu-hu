@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 79ce5125283a234530435891044ead3141665433
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132330"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002776"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
 
@@ -148,7 +148,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    | **Szolgáltatási csomag** | Használatalapú csomag | Ez a beállítás határozza meg az erőforrások, például a számítási teljesítmény lefoglalásának és méretezésének módját a függvényalkalmazás futtatásához. Lásd a [szolgáltatási csomagok összehasonlítását](../azure-functions/functions-scale.md). |
    | **Hely** | USA nyugati régiója | A korábban is használt régió |
    | **Futtatókörnyezeti verem** | Elsődleges nyelv | Válasszon olyan futtatókörnyezetet, amely támogatja kedvenc funkciójának programozási nyelvét. Válassza a **.net** lehetőséget a C# és az F # függvények számára. |
-   | **Storage-fiók** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a Storage-fiók tartalmazza a Function-alkalmazásokat, és eltér a korábban létrehozott Storage-fióktól az e-mail-mellékletek számára. |
+   | **Storage** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a Storage-fiók tartalmazza a Function-alkalmazásokat, és eltér a korábban létrehozott Storage-fióktól az e-mail-mellékletek számára. |
    | **Application Insights** | Letiltás | Az alkalmazás figyelésének bekapcsolása a [Application Insightssal](../azure-monitor/app/app-insights-overview.md), de ebben az oktatóanyagban válassza az alkalmazás **letiltása**lehetőséget  >  **Apply**. |
    ||||
 
@@ -363,7 +363,7 @@ Most tesztelje le, hogy a feltétel megfelelően működik-e:
 
 1. Küldjön magának egy e-mailt, amely megfelel az alábbi feltételeknek:
 
-   * Az e-mail-cím tárgya az trigger **tulajdonos szűrőben**megadott szövege:`Business Analyst 2 #423501`
+   * Az e-mail-cím tárgya az trigger **tulajdonos szűrőben**megadott szövege: `Business Analyst 2 #423501`
 
    * Az e-mail rendelkezik egy melléklettel. Most csak hozzon létre egy üres szövegfájlt, és csatolja a fájlt az e-mailhez.
 
@@ -470,11 +470,11 @@ A következő lépés annak tesztelése, hogy a logikai alkalmazás a megadott m
 
 1. Küldjön magának egy e-mailt, amely megfelel az alábbi feltételeknek:
 
-   * Az e-mail-cím tárgya az trigger **tulajdonos szűrőben**megadott szövege:`Business Analyst 2 #423501`
+   * Az e-mail-cím tárgya az trigger **tulajdonos szűrőben**megadott szövege: `Business Analyst 2 #423501`
 
    * Az e-mail legalább egy melléklettel rendelkezik. Most hozzon létre egy üres szövegfájlt, és csatolja a fájlt az e-mailhez.
 
-   * Az e-mail-címe tartalmaz valamilyen tesztelési tartalmat a törzsben, például:`Testing my logic app`
+   * Az e-mail-címe tartalmaz valamilyen tesztelési tartalmat a törzsben, például: `Testing my logic app`
 
    Ha az eseményindító nem aktiválódott, vagy a logikai alkalmazás a sikeres aktiválás ellenére nem futott le, tekintse meg a [logikai alkalmazás hibaelhárításával foglalkozó szakaszt](../logic-apps/logic-apps-diagnosing-failures.md).
 
@@ -555,7 +555,7 @@ A következő lépés annak tesztelése, hogy a logikai alkalmazás a megadott m
 
 1. Küldjön magának egy e-mailt, amely megfelel az alábbi feltételeknek:
 
-   * Az e-mail tárgya az trigger **tulajdonos szűrő** tulajdonságában megadott szöveg:`Business Analyst 2 #423501`
+   * Az e-mail tárgya az trigger **tulajdonos szűrő** tulajdonságában megadott szöveg: `Business Analyst 2 #423501`
 
    * Az e-mail legalább két melléklettel rendelkezik. Most csak hozzon létre két üres szövegfájlt, és csatolja a fájlokat az e-mailhez.
 
@@ -601,7 +601,7 @@ Ezután adjon meg egy műveletet, hogy a logikai alkalmazás egy e-mail-üzenete
 
    | Beállítás | Érték | Jegyzetek |
    | ------- | ----- | ----- |
-   | **Hogy** | <*címzett-e-mail-cím*> | Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Művelet** | <*címzett-e-mail-cím*> | Tesztelési célokra használhatja a saját e-mail-címét. |
    | **Tárgy**  | ```ASAP - Review applicant for position:``` **Tárgy** | Az e-mail tárgya, amelyet használni kíván. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából az **Új e-mail érkezésekor** mellett válassza a **Tárgy** mezőt. |
    | **Törzs** | ```Please review new applicant:``` <p>```Applicant name:```**Innen** : <p>```Application file location:``` **Elérési út** <p>```Application email content:``` **Törzs** | Az e-mail szövegtörzsének tartalma. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából válassza az alábbi mezőket: <p>- A **Feladó** mezőt az **Új e-mail érkezésekor** alatt </br>- Az **Elérési út** mezőt a **Blob létrehozása az e-mail törzséhez** alatt </br>- A **Törzs** mezőt a **Call RemoveHTMLFunction to clean email body** (A RemoveHTMLFunction meghívása az e-mail-törzs megtisztításához) alatt |
    ||||
@@ -621,7 +621,7 @@ Következő lépésként tesztelje a logikai alkalmazást, amely most az alábbi
 
 1. Küldjön magának egy e-mailt, amely megfelel az alábbi feltételeknek:
 
-   * Az e-mail tárgya az trigger **tulajdonos szűrő** tulajdonságában megadott szöveg:`Business Analyst 2 #423501`
+   * Az e-mail tárgya az trigger **tulajdonos szűrő** tulajdonságában megadott szöveg: `Business Analyst 2 #423501`
 
    * Az e-mail egy vagy több melléklettel rendelkezik. Megint felhasználhatja az üres szövegfájlokat az előző tesztből. Ha valószerűbb forgatókönyvet szeretne, csatoljon egy önéletrajzfájlt.
 
@@ -682,7 +682,7 @@ Ha már nincs szükség erre a mintára, törölje a logikai alkalmazást és a 
 
 1. Amikor megjelenik a megerősítő ablaktábla, adja meg az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban létrehoztunk egy logikai alkalmazást e-mail mellékletek, feldolgozására és tárolására Azure-szolgáltatások, például az Azure Storage és az Azure Functions integrálásával. Most megismerkedhet a logikai alkalmazások létrehozásához használható egyéb összekötőkkel.
 

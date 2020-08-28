@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 447f999f48edb9696c74ec5decb1109eefb964d7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 605fba03e65d4200d0f1e18219e892ec6d207bc4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206966"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019317"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -174,8 +175,8 @@ Miután a build létrejött, láthatja, hogy a buildelési feladatból a Cosmos 
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="A build mentése és futtatása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az emulátor helyi fejlesztéshez és teszteléshez való használatáról: [Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
-Az Emulator TLS/SSL-tanúsítványok exportálásával kapcsolatban lásd: [a Azure Cosmos db Emulator-tanúsítványok exportálása Java, Python és Node.jshasználatával](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+Az Emulator TLS/SSL-tanúsítványok exportálásával kapcsolatban lásd: [a Azure Cosmos db Emulator-tanúsítványok exportálása Java, Python és Node.jshasználatával ](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

@@ -6,12 +6,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412549"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019188"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Dátumok használata Azure Cosmos DB
 
@@ -89,7 +90,7 @@ A lekérdezések gyakran DateTime értékekkel vannak meghatározva. A lekérdez
 
 További információ az indexelési házirendek konfigurálásáról [Azure Cosmos db indexelési házirendekben](index-policy.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [kód mintáinak letöltése és futtatása a githubon](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
 * További információ az [SQL-lekérdezésekről](sql-query-getting-started.md)

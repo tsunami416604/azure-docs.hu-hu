@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 982aa4bdb37af53999e75b7e33db990adb057938
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922752"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019759"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Példa: az Azure Cognitive Search szinonimáinak hozzáadása a C-ben #
 
@@ -171,7 +172,7 @@ A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHu
 
 Egy példa után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa a C#-kódban szereplő szinonimák funkciót mutatta be a leképezési szabályok létrehozásához és közzétételéhez, majd a szinonimák leképezésének meghívásához a lekérdezésen. További információt a [.NET SDK](/dotnet/api/microsoft.azure.search) és a [REST API](/rest/api/searchservice/) referencia-dokumentációjában találhat.
 

@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 9e8869ed75350fd4063832932f076fb6fd52d4e5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889808"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001739"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -86,7 +86,7 @@ Hibakód: AFSMaxSnapshotReached
 Hibaüzenet: elérte a fájlmegosztás Pillanatképek maximális számát. a régebbiek lejárta után még többet is elvégezhet.
 
 - Ez a hiba akkor fordulhat elő, ha több igény szerinti biztonsági mentést hoz létre egy fájlmegosztás számára.
-- A fájlmegosztás legfeljebb 200 pillanatképet tartalmaz, beleértve a Azure Backup által készített fájlokat is. A régebbi ütemezett biztonsági mentések (vagy pillanatképek) automatikusan törlődnek. Törölni kell az igény szerinti biztonsági mentést (vagy pillanatképeket), ha elérik a maximális korlátot.
+- Fájlmegosztás esetén legfeljebb 200 pillanatkép található, beleértve a Azure Backup által készített fájlokat is. A régebbi ütemezett biztonsági mentések (vagy pillanatképek) automatikusan törlődnek. Törölni kell az igény szerinti biztonsági mentést (vagy pillanatképeket), ha elérik a maximális korlátot.
 
 Törölje az igény szerinti biztonsági mentéseket (az Azure fájlmegosztási pillanatképeket) az Azure Files portálról.
 
@@ -318,7 +318,7 @@ Hibaüzenet: a biztonsági mentés nem sikerült, mert a társított Azure-fájl
 
 Ellenőrizze, hogy a mentett fájlmegosztás véglegesen törölve lett-e. Ha igen, állítsa le a fájlmegosztás biztonsági mentését, hogy elkerülje az ismételt biztonsági mentési hibákat. A védelem leállításával kapcsolatos további információkért lásd: [Az Azure-fájlmegosztás védelmének leállítása](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-fájlmegosztás biztonsági mentéséről további információt a következő témakörben talál:
 

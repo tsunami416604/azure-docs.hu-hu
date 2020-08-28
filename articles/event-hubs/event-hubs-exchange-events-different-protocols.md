@@ -3,22 +3,23 @@ title: Azure Event Hubs – különböző protokollokat használó Exchange-esem
 description: Ez a cikk bemutatja, hogy a különböző protokollokat (AMQP, Apache Kafka és HTTPS) használó felhasználók és gyártók Hogyan válthatnak be eseményeket az Azure Event Hubs használatakor.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002505"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010319"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>A különböző protokollokat használó fogyasztók és gyártók közötti Exchange-események: AMQP, Kafka és HTTPS
 Az Azure Event Hubs három protokollt támogat a felhasználók és a termelők számára: AMQP, Kafka és HTTPS. A protokollok mindegyike saját módon jelképezi az üzenetet, így természetesen a következő kérdés merül fel: Ha egy alkalmazás egy adott protokollon keresztül küld eseményeket egy Event hub-nak, és egy másik protokollal használja őket, mi az esemény különböző részeinek és értékeinek a fogyasztóhoz való érkezésekor? Ez a cikk a gyártó és a fogyasztó ajánlott eljárásait ismerteti, így biztosítva, hogy az adott eseményen belüli értékeket a fogyasztó alkalmazás helyesen értelmezze.
 
 A cikkben szereplő tanácsok kifejezetten ismertetik ezeket az ügyfeleket a kódrészletek fejlesztéséhez használt felsorolt verziókkal:
 
-* Kafka Java-ügyfél (1.1.1-es verzió:https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
-* A Java-hoz készült Event Hubs-ügyfél (1.1.0-es verzió) Microsoft Azurehttps://github.com/Azure/azure-event-hubs-java)
-* Microsoft Azure Event Hubs-ügyfél a .NET-hez (2.1.0 verziójahttps://github.com/Azure/azure-event-hubs-dotnet)
-* Microsoft Azure Service Bus (a 5.0.0 verziójahttps://www.nuget.org/packages/WindowsAzure.ServiceBus)
+* Kafka Java-ügyfél (1.1.1-es verzió: https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients)
+* A Java-hoz készült Event Hubs-ügyfél (1.1.0-es verzió) Microsoft Azure https://github.com/Azure/azure-event-hubs-java)
+* Microsoft Azure Event Hubs-ügyfél a .NET-hez (2.1.0 verziója https://github.com/Azure/azure-event-hubs-dotnet)
+* Microsoft Azure Service Bus (a 5.0.0 verziója https://www.nuget.org/packages/WindowsAzure.ServiceBus)
 * HTTPS (csak a termelők támogatásával)
 
 Más AMQP-ügyfelek némileg eltérően működhetnek. A AMQP egy jól definiált típusú rendszerrel rendelkezik, de az adott típusú rendszertől az adott típushoz tartozó nyelvspecifikus típusok a-ügyféltől függenek, ahogy azt is, hogy az ügyfél hogyan biztosít hozzáférést egy AMQP-üzenet részeihez.
@@ -328,7 +329,7 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan végezheti el a Event Hubs továbbítását a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekintse meg a következő cikkeket:  
 
 * [Ismerkedés az Event Hubs szolgáltatással](./event-hubs-about.md)

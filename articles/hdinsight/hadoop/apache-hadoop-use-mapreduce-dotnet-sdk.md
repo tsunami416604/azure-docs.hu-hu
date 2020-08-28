@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: c165663e19037bd2ebac410adb6b6d05fcc162e6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076351"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020405"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce feladatok futtatása HDInsight .NET SDK segítségével
 
@@ -167,9 +167,9 @@ A művelet ismételt futtatásához módosítania kell a feladatok kimeneti mapp
 
 Amikor a feladatok sikeresen befejeződik, az alkalmazás kinyomtatja a kimeneti fájl tartalmát `part-r-00000` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan hozhat létre HDInsight-fürtöt. További információt a következő cikkekben talál:
+Ebben a cikkben megtanulta, hogyan hozhat létre HDInsight-fürtöt. További tudnivalókért olvassa el a következő cikket:
 
 * A kaptár-feladatok elküldéséhez lásd: [Apache Hive lekérdezések futtatása a HDInsight .net SDK használatával](apache-hadoop-use-hive-dotnet-sdk.md).
 * A HDInsight-fürtök létrehozásával kapcsolatban lásd: [Linux-alapú Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md).

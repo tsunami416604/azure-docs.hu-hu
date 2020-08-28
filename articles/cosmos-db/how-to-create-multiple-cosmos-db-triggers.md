@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261596"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019980"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
 
@@ -106,7 +107,7 @@ A JavaScript esetében a konfigurációt a fájlra is alkalmazhatja a következ�
 > [!NOTE]
 > Mindig figyelje a megosztott bérletek tárolóján kiépített kérelmek egységeit. Minden olyan trigger, amely megosztja azt, növeli az átviteli sebesség átlagos felhasználását, ezért előfordulhat, hogy az azt használó Azure Functions számának növelésével növelheti a kiosztott átviteli sebességet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Cosmos DB Azure functions trigger](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) teljes konfigurációját
 * Keresse meg az összes nyelvhez tartozó [minták kiterjesztett listáját](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) .

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9c7a29ebb355a5733201ff01af9e38f371def1cf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2dff01841a97de4a7683f1bf4a0dbb3125b5dbd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962815"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019419"
 ---
 # <a name="publish-media-services-content-using-net"></a>Media Services tartalom közzététele a .NET használatával  
 > [!div class="op_single_selector"]
@@ -177,7 +178,7 @@ A következő kód meghívja a .NET SDK-bővítmények metódusait, amelyek egy 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Eszközök letöltése](media-services-deliver-asset-download.md)
 * [Objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md)
 

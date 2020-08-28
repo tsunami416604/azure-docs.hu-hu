@@ -2,13 +2,13 @@
 title: Rendszertémakörök a Azure Event Grid
 description: A Azure Event Grid rendszertémaköreinek ismertetése.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/27/2020
+ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119922"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019096"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Rendszertémakörök a Azure Event Grid
 A Event Grid rendszertémaköre egy vagy több olyan eseményt jelent, amelyet az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs tesznek közzé. Előfordulhat például, hogy egy rendszertémakör az **összes blob-eseményt** vagy csak a **blob által létrehozott** és a blob által **törölt** , **adott Storage-fiók**számára közzétett eseményeket jelöli. Ebben a példában, amikor egy blobot töltenek fel a Storage-fiókba, az Azure Storage szolgáltatás **létrehoz egy blobot létrehozott** eseményt a Event grid rendszer témakörében, amely ezután továbbítja az eseményt a témakör azon [előfizetőknek](event-handlers.md) , akik megkapják és feldolgozzák az eseményt. 
@@ -57,7 +57,7 @@ A rendszertémakör létrehozása sikertelen lesz, ha úgy állította be az Azu
 ## <a name="location-and-resource-group-for-a-system-topic"></a>Rendszerbeli témakör helye és erőforráscsoport
 Egy adott régióban/helyen található Azure-beli eseményforrás esetén a rendszertémakör ugyanazon a helyen jön létre, mint az Azure-esemény forrása. Ha például egy Azure Blob Storage-hoz hoz létre egy Event-előfizetést az USA keleti régiójában, akkor a rendszer témakör az USA keleti régiójában jön létre. A globális Azure-események, például az Azure-előfizetések, az erőforráscsoportok vagy a Azure Maps esetében a Event Grid a **globális** helyen hozza létre a rendszer témakört. 
 
-Általánosságban elmondható, hogy a rendszertémakör ugyanabban az erőforráscsoportban jön létre, amelyben az Azure-esemény forrása található. Az Azure-előfizetések hatókörében létrehozott esemény-előfizetések esetén a rendszertémakört az erőforráscsoport **alapértelmezett-EventGrid**alatt hozza létre a rendszer. Ha az erőforráscsoport nem létezik, Azure Event Grid létrehozza azt a rendszertémakör létrehozása előtt. 
+Általánosságban elmondható, hogy a rendszertémakör ugyanabban az erőforráscsoportban jön létre, amelyben az Azure-esemény forrása található. Az Azure-előfizetések hatókörében létrehozott esemény-előfizetések esetén a System témakör az **USA 2. nyugati** régiójában, az **alapértelmezett EventGrid** erőforráscsoporthoz jön létre. Ha az erőforráscsoport nem létezik, Azure Event Grid létrehozza azt a rendszertémakör létrehozása előtt. 
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 

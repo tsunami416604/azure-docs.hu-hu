@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 43a63a47b5973820bd0cc5376ec0f0e9e54a245d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000601"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010205"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamikus titkosítás: a tartalmi kulcs engedélyezési házirendjének konfigurálása  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -488,5 +489,5 @@ public enum ContentKeyDeliveryType
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy beállította a tartalmi kulcs engedélyezési házirendjét, tekintse meg az [eszköz kézbesítési házirendjének konfigurálása](media-services-rest-configure-asset-delivery-policy.md)című témakört.

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a3bd50d23f2543c6efeb6297b4dbcba8293269c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232576"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019878"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Az arc és az érzelem észlelése Azure Media Analytics
 
@@ -45,7 +46,7 @@ A **Azure Media Face Detector** Media Processor (mp) lehetővé teszi a mozgáso
 
 A **Azure Media Face Detector** mp jelenleg előzetes verzióban érhető el.
 
-Ez a cikk részletesen ismerteti a **Azure Media Face Detector** , és bemutatja, hogyan használható a Media Services SDK for .net szolgáltatással.
+Ez a cikk részletesen ismerteti a  **Azure Media Face Detector** , és bemutatja, hogyan használható a Media Services SDK for .net szolgáltatással.
 
 ## <a name="face-detector-input-files"></a>Szembenéző detektor bemeneti fájljai
 Videofájlok. Jelenleg a következő formátumok támogatottak: MP4, MOV és WMV.

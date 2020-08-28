@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004875"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019215"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Az előfizetés megadásához futtassa a következő parancsot. A következő p�
 
 A Windows PowerShell és a Azure Resource Manager használata előtt a következőkre lesz szüksége:
 
-* Windows PowerShell, 3,0-es vagy 4,0-es verzió. A Windows PowerShell verziójának megkereséséhez írja be a következőt: `$PSVersionTable` és ellenőrizze, hogy az értéke `PSVersion` 3,0 vagy 4,0. Kompatibilis verzió telepítéséhez tekintse meg a következőt: [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) vagy [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
+* Windows PowerShell, 3,0-es vagy 4,0-es verzió. A Windows PowerShell verziójának megkereséséhez írja be a következőt: `$PSVersionTable` és ellenőrizze, hogy az értéke `PSVersion` 3,0 vagy 4,0. A kompatibilis verziók telepítéséhez lásd: [Windows Management Framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595).
 
 Az oktatóanyagban látható parancsmagok részletes súgójának megjelenítéséhez használja a Get-Help parancsmagot.
 
@@ -358,7 +358,7 @@ A következő parancs frissíti az Azure cache maxmemory-házirendjét a myCache
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Azure cache méretezése Redis
-`Set-AzRedisCache`a Redis-példány Azure-gyorsítótárának méretezésére használható, ha a `Size` , `Sku` vagy a `ShardCount` Tulajdonságok módosulnak. 
+`Set-AzRedisCache` a Redis-példány Azure-gyorsítótárának méretezésére használható, ha a `Size` , `Sku` vagy a `ShardCount` Tulajdonságok módosulnak. 
 
 > [!NOTE]
 > A gyorsítótárnak a PowerShell használatával történő skálázása ugyanazokra a korlátozásokra és irányelvekre vonatkozik, mint a Azure Portal gyorsítótárának skálázása. A következő korlátozásokkal méretezheti át egy másik díjszabási szintet.
@@ -845,7 +845,7 @@ A következő parancs újraindítja a megadott gyorsítótár mindkét csomópon
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával kapcsolatban, tekintse meg a következő forrásokat:
 
 * [Az Azure cache for Redis parancsmag dokumentációja az MSDN-ben](https://docs.microsoft.com/powershell/module/az.rediscache)

@@ -10,12 +10,13 @@ ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034720"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001944"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Service SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
 
@@ -139,7 +140,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md)
 - [Szolgáltatási SAS létrehozása](/rest/api/storageservices/create-service-sas)

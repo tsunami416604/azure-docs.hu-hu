@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff746b85142714c129c04e7f8a3d20ac4b6cb53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892575"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020167"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -386,11 +386,11 @@ A generált parancsfájl a Azure Backup szolgáltatáshoz tartozó hivatalos Mic
 
 Csak egy rendszergazda futtathatja a szkriptet, és emelt szintű módban kell futnia. A parancsfájl csak előre létrehozott lépéseket hajt végre, és nem fogadja el a külső forrásból érkező adatokat.
 
-A parancsfájl futtatásához jelszó szükséges, amely csak a Azure Portal vagy a PowerShell/CLI parancsfájl generálásának időpontjában jelenik meg a felhatalmazott felhasználó számára. Ezzel biztosíthatja, hogy a parancsfájlt futtató jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
+A szkript futtatásához jelszó szükséges ahhoz, hogy a Azure Portal vagy a PowerShell/CLI parancsfájl létrehozásakor csak a jogosultsággal rendelkező felhasználó jelenjen meg. Ezzel biztosíthatja, hogy a parancsfájlt futtató jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
 
 #### <a name="browse-files-and-folders"></a>Fájlok és mappák tallózása
 
-A fájlok és mappák tallózásához a parancsfájl az iSCSI-kezdeményezőt használja a gépen, és csatlakozik ahhoz a helyreállítási ponthoz, amely iSCSI-célként van konfigurálva. Itt képzelheti el, hogy az egyik a vagy az összes összetevőt próbálja utánozni/hamisítani.
+A fájlok és mappák tallózásához a parancsfájl az iSCSI-kezdeményezőt használja a gépen, és csatlakozik az iSCSI-célként konfigurált helyreállítási ponthoz. Itt képzelheti el, hogy az egyik a vagy az összes összetevőt próbálja utánozni/hamisítani.
 
 Kölcsönös CHAP-hitelesítési mechanizmust használunk, hogy minden összetevő hitelesítse a másikat. Ez azt jelenti, hogy a hamis kezdeményezők rendkívül nehéz csatlakozni az iSCSI-tárolóhoz, és ahhoz, hogy hamis célt lehessen csatlakoztatni ahhoz a géphez, amelyen a parancsfájl fut.
 
@@ -400,7 +400,7 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban szeretné eltávolítani a hozzáférést, jelentkezzen be Azure Portal/PowerShell/parancssori felületre, és hajtson végre **leválasztott lemezeket** az adott helyreállítási ponthoz. A parancsfájl azonnal érvénytelenítve lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A fájlok visszaállítása során felmerülő problémákért tekintse meg a [hibaelhárítási](#troubleshooting) szakaszt.
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával

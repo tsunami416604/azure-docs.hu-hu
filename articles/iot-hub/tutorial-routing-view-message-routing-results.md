@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73890394"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019166"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
 
@@ -88,7 +88,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    ![A logikai alkalmazás e-mail-beállításai](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
-9. Kattintson a **Mentés** gombra. Ezután zárja be a Logic App Designert.
+9. Válassza a **Mentés** lehetőséget. Ezután zárja be a Logic App Designert.
 
 ## <a name="set-up-azure-stream-analytics"></a>Az Azure Stream Analytics beállítása
 
@@ -138,7 +138,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladathoz tartozó bemenetek beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -158,7 +158,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladatokhoz tartozó kimenetek beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -170,7 +170,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A stream Analytics-feladatokhoz tartozó lekérdezés beállítása](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. Zárja be a Lekérdezés panelt. Visszatérhet az erőforráscsoport erőforrásainak nézetéhez. Válassza ki a Stream Analytics feladatot. Ebben az oktatóanyagban a neve: **contosoJob**.
 

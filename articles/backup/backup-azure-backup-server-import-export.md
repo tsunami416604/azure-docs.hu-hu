@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 909c7cc85590005afd3b6bd32a94020937f96c32
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890076"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002011"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -192,10 +192,10 @@ Az importálási feladat állapotát a Azure Portal figyelheti az **importálás
 
 ### <a name="complete-the-workflow"></a>A munkafolyamat befejezése
 
-Az importálási feladatok befejeződése után a kezdeti biztonsági mentési adatok elérhetők a Storage-fiókban. Az Azure Backup a következő ütemezett biztonsági mentés időpontjában átmásolja az adatok tartalmát a Storage-fiókból a Recovery Services-tárolóba.
+Az importálási feladatok befejeződése után a kezdeti biztonsági mentési adatok elérhetők a Storage-fiókban. A következő ütemezett biztonsági mentés időpontjában a Azure Backup átmásolja az adatok tartalmát a Storage-fiókból a Recovery Services-tárolóba.
 
 A következő ütemezett online replika-létrehozási feladat időpontjában Data Protection Manager a kezdeti biztonsági másolaton végzi a növekményes biztonsági mentést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../storage/common/storage-import-export-service.md).

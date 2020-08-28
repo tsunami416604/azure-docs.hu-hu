@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7469d60095026c8a016fc1ecaa1a4f92361800f3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084007"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019379"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Gyors útmutató: a Azure Stack virtuális gépek előkészítése Security Center
 Az Azure-előfizetés bevezetését követően engedélyezheti Security Center a Azure Stack-on futó virtuális gépeknek a Azure Stack piactéren való hozzáadásával a **Azure monitor, a frissítés és a konfiguráció kezelése** virtuálisgép-bővítményt.
@@ -72,7 +72,7 @@ Most hozzá kell adnia a **Azure monitor, a frissítés és a konfiguráció kez
 7. Ha végzett a szükséges konfigurációs beállítások megadásával, kattintson **az OK**gombra.
 8. A bővítmény telepítésének befejezése után az állapota a **kiépítés sikeressége**után jelenik meg. Akár egy óráig is eltarthat, amíg a virtuális gép megjelenik a Security Center-portálon.
 
-A Windows-ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek összekapcsolása](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
+A Windows-ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek összekapcsolása](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
 Az ügynökkel kapcsolatos problémák Linux rendszeren történő hibaelhárításával kapcsolatban lásd: az [Azure log Analytics Linux-ügynök hibaelhárítása](../azure-monitor/platform/agent-linux-troubleshoot.md).
 
@@ -86,7 +86,7 @@ A **Számítás** panelen kétféle ikon található:
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure-beli virtuális gép (Azure Stack virtuális gépek ebben a csoportban jelennek meg)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, eltávolíthatja a bővítményt a virtuális gépről a Azure Stack-portálon keresztül.
 
 A bővítmény eltávolítása:
@@ -96,7 +96,7 @@ A bővítmény eltávolítása:
 3. Válassza a **bővítmények**lehetőséget, majd a **Microsoft. EnterpriseCloud. monitoring**kiterjesztést.
 4. Kattintson az **Eltávolítás**gombra, és erősítse meg a kijelölést az **Igen**gombra kattintva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban kiépítte a Azure Monitor, a frissítés és a konfiguráció felügyeleti bővítményt egy Azure Stack-on futó virtuális gépen. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
 
 > [!div class="nextstepaction"]
