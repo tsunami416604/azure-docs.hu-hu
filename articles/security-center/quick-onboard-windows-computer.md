@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519762"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013741"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
 Az Azure-előfizetések előkészítése után engedélyezheti Security Center az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrásokhoz az Log Analytics ügynök kiépítésével.
@@ -41,7 +41,7 @@ Ennek a rövid útmutatónak a megkezdése előtt a Security Center Standard dí
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
 4. Válassza a **Bevezetés** lapot.
 
-   ![Első lépések][3]
+   ![Bevezetés][3]
 
 5. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -74,7 +74,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 
 Ha elkészült, a **log Analytics ügynök** megjelenik a **Vezérlőpulton**. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök megfelelően csatlakozik-e.
 
-Az ügynök telepítésével és konfigurálásával kapcsolatos további információkat tekintse meg a [Windows rendszerű számítógépek csatlakoztatását](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) ismertető részt.
+Az ügynök telepítésével és konfigurálásával kapcsolatos további információkat tekintse meg a [Windows rendszerű számítógépek csatlakoztatását](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) ismertető részt.
 
 Mostantól egy helyről felügyelheti az Azure-beli virtuális gépeket és a nem Azure-beli számítógépeket. A **Számítás** területen áttekintheti az összes virtuális gépet, számítógépet és javaslatot. Minden oszlop egy javaslatcsoportot képvisel. A szín a virtuális gép vagy számítógép aktuális biztonsági állapotát jelöli az adott javaslatra vonatkozóan. A Security Center emellett a biztonsági riasztásokban megjeleníti a számítógépekhez tartozó észleléseket is.
 
@@ -86,7 +86,7 @@ A **Számítás** panelen kétféle ikon található:
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, eltávolíthatja az ügynököt a Windows rendszerű számítógépről.
 
 Az ügynök eltávolítása:

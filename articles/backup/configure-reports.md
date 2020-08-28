@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 255f0b5f0066c0a437daba85121edb2f99ba590d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826854"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022394"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -70,7 +70,7 @@ Válassza ezt a hivatkozást a biztonsági mentési jelentés munkafüzetének m
 
 A jelentés különböző lapokat tartalmaz:
 
-##### <a name="summary"></a>Összegzés
+##### <a name="summary"></a>Összefoglalás
 
 Ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
 
@@ -97,7 +97,7 @@ Ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sike
 
    ![Feladatok lap](./media/backup-azure-configure-backup-reports/jobs.png)
 
-##### <a name="policies"></a>Házirendek
+##### <a name="policies"></a>Szabályzatok
 
 Ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott házirendben biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. Válasszon ki egy olyan házirendet, amellyel megtekintheti az egyes kapcsolódó biztonsági másolati elemekkel kapcsolatos információkat.
 
@@ -109,7 +109,7 @@ Ezen a lapon betekintést nyerhet a biztonsági mentések lehetséges, költség
 
 ###### <a name="inactive-resources"></a>Inaktív erőforrások
 
-Ebben a nézetben azonosíthatja azokat a biztonsági másolati elemeket, amelyeknek a biztonsági mentése jelentős ideig nem volt sikeres. Ez azt is jelentheti, hogy a mögöttes gép, amelyről biztonsági mentés készül, már nem létezik (és így sikertelen biztonsági mentéseket eredményez), vagy ha probléma merül fel azzal a géppel, amely megakadályozza a biztonsági másolatok megbízhatóvé tételét.
+Ebben a nézetben azonosíthatja azokat a biztonsági másolati elemeket, amelyeknek a biztonsági mentése jelentős ideig nem volt sikeres. Ez azt is jelentheti, hogy a mögöttes gép, amelyről biztonsági mentés készül, már nem létezik (és így sikertelen biztonsági mentéseket eredményez), vagy valamilyen probléma van a géppel, amely megakadályozza a biztonsági mentések megbízhatóvé tételét.
 
 Az inaktív erőforrások megtekintéséhez navigáljon az **optimalizálás** lapra, és válassza az **inaktív erőforrások** csempét. Válassza ezt a csempét egy olyan rács, amely a kijelölt hatókörben található összes inaktív erőforrás részleteit tartalmazza. Alapértelmezés szerint a rács olyan elemeket jelenít meg, amelyek nem rendelkeznek helyreállítási ponttal az elmúlt hét napban. Egy másik időtartomány inaktív erőforrásainak megkereséséhez módosíthatja az **időtartomány** szűrőt a lap tetején.
 
@@ -177,6 +177,6 @@ A biztonsági mentési jelentésben szereplő widgeteket Kusto-lekérdezések m�
 
 - Emellett a diagnosztikai adatok egy Storage-fiókba vagy egy LA-munkaterületre való küldésének [v1-sémája](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) is egy elavult útvonalon található. Ez azt jelenti, hogy ha a v1 séma alapján egyéni lekérdezéseket vagy automatizálásokat írt, javasoljuk, hogy frissítse ezeket a lekérdezéseket a jelenleg támogatott v2 séma használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a Azure Backup figyeléséről és jelentéskészítéséről](./backup-azure-monitor-alert-faq.md)

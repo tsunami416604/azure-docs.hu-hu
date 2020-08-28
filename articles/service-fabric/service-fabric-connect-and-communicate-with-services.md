@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cf39fcbfbde8a81400cd93c7f99b066a99f643bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287756"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005378"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
 Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Áthelyezhető az egyik helyről a másikra, akár a szolgáltatás tulajdonosa, akár a Service Fabric automatikusan. A szolgáltatások nem statikusan vannak társítva egy adott géphez vagy címhez.
@@ -169,7 +170,7 @@ A Reliable Services-keretrendszer számos előre elkészített kommunikációs l
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használata
 A szolgáltatások bármilyen protokollt vagy keretrendszert használhatnak a kommunikációhoz, függetlenül attól, hogy ez egy egyéni bináris protokoll TCP-szoftvercsatornán keresztül, vagy az [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/)használatával folyó események. A Service Fabric kommunikációs API-kat biztosít, amelyekkel összekapcsolhatja a kommunikációt. További részletekért tekintse meg ezt a cikket a [megbízható szolgáltatásokkal kapcsolatos kommunikációs modellről](service-fabric-reliable-services-communication.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](./service-fabric-reliable-services-communication-aspnetcore.md)önkiszolgáló használatával.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

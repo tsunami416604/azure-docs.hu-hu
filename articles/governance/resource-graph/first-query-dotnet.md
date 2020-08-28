@@ -3,12 +3,13 @@ title: 'Rövid útmutató: az első .NET Core-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a .NET Core-hoz készült Resource Graph NuGet-csomagokat, és futtathatja első lekérdezését.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: b452329148f607b6a71c366c51745906247a43a1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802712"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005870"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a .NET Core használatával
 
@@ -18,7 +19,7 @@ A folyamat végén hozzáadta a csomagokat a .NET Core-telepítéshez, és futta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 - Egy Azure-szolgáltatásnév, beleértve a _clientId_ és a _clientSecret_. Ha nem rendelkezik az erőforrás-Gráfmal való használatra, vagy újat szeretne létrehozni, tekintse meg [Az Azure felügyeleti kódtárak a .net-hitelesítéshez](/dotnet/azure/sdk/authentication#mgmt-auth)című témakört.
   Ugorja át a lépést a .NET Core-csomagok telepítéséhez, ahogy azt a következő lépésekben tesszük.
 
@@ -97,9 +98,9 @@ A beépített és közzétett .NET Core Console-alkalmazás ideje, hogy kiprób�
 
 Minden egyes hívásban olyan `argQuery` változót használunk, amelyet a saját értékeivel kell helyettesíteni:
 
-- `{tenantId}`– Cserélje le a-t a bérlői AZONOSÍTÓra
-- `{clientId}`– Cserélje le a szolgáltatást a szolgáltatásnév ügyfél-azonosítójával.
-- `{clientSecret}`– Cserélje le a szolgáltatást a szolgáltatásnév ügyfél-titkos kódjára
+- `{tenantId}` – Cserélje le a-t a bérlői AZONOSÍTÓra
+- `{clientId}` – Cserélje le a szolgáltatást a szolgáltatásnév ügyfél-azonosítójával.
+- `{clientSecret}` – Cserélje le a szolgáltatást a szolgáltatásnév ügyfél-titkos kódjára
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
 1. Módosítsa a címtárakat az `{run-folder}` előző paranccsal megadott értékre `dotnet publish` .
@@ -130,7 +131,7 @@ Minden egyes hívásban olyan `argQuery` változót használunk, amelyet a sajá
 
 Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** tulajdonság szerint vannak rendezve, de továbbra is az első öt találatra korlátozódnak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha el szeretné távolítani a .NET Core Console alkalmazást és a telepített csomagokat, ezt a Project mappa törlésével teheti meg `argQuery` .
 

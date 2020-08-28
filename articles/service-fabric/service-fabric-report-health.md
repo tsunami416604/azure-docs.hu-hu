@@ -5,12 +5,13 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256305"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012653"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric állapotjelentés hozzáadása
 Az Azure Service Fabric egy olyan [egészségügyi modellt](service-fabric-health-introduction.md) vezet be, amely a nem kifogástalan állapotú fürtök és az alkalmazások bizonyos entitásokra vonatkozó feltételeit jelöli. Az állapot-modell az állapotfigyelő **jelentéseket** (rendszerösszetevők és watchdogok) használja. A cél egyszerű és gyors diagnosztizálás és javítás. A Service Writers szolgáltatásnak előre kell gondolnia az állapotról. Minden olyan feltételt, amely hatással lehet az állapotra, jelenteni kell, különösen akkor, ha segíthet a gyökérhez közeledő problémák megjelölésében. Az állapotadatok segítségével időt és fáradságot takaríthat meg a hibakeresés és a vizsgálat során. A hasznosság különösen egyértelmű, ha a szolgáltatás a felhőben (magán vagy Azure) nagy léptékben fut.

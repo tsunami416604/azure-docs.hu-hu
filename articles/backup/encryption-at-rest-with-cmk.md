@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 989b06b62f2db8df5504107eee8ed26710d13a57
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892643"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022411"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -169,7 +169,7 @@ A kulcs hozzárendeléséhez:
     ![Az állapot sikerült](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
 >[!NOTE]
-> Ez a folyamat változatlan marad, ha frissíteni vagy módosítani szeretné a titkosítási kulcsot. Ha egy másik Key Vault kulcsát szeretné frissíteni és használni (a jelenleg használttól eltérő), ügyeljen arra, hogy:
+> Ez a folyamat változatlan marad, ha frissíteni vagy módosítani szeretné a titkosítási kulcsot. Ha egy másik Key Vault (az éppen jelenleg használttól eltérő) kulcsát szeretné frissíteni és használni, ügyeljen rá, hogy:
 >
 > - A Key Vault ugyanabban a régióban található, mint a Recovery Services-tároló
 >
@@ -242,7 +242,7 @@ Nem, a CMK-titkosítás csak az új tárolók esetében engedélyezhető. Így a
 
 Nem, a tárolónak még nem volt lehetősége arra, hogy a múltban egyetlen elemet se lehessen védelemmel ellátni.
 
-### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Van egy CMK-titkosítást használó tároló. Később is visszaállíthatók a titkosítás a platform által felügyelt kulcsokkal, még akkor is, ha a biztonsági másolati elemek védettek a tárolóban?
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Van egy CMK-titkosítást használó tároló. Később is visszaállíthatók a titkosítás a platform által felügyelt kulcsokkal, még akkor is, ha a biztonsági másolati elemek védettek a tárolóban?
 
 Nem, miután engedélyezte a CMK titkosítást, nem lehet visszaállítani a platform által felügyelt kulcsok használatára. Az igényeinek megfelelően módosíthatja a kulcsok használatát.
 
@@ -258,6 +258,6 @@ Nem követi a cikkben szereplő lépéseket, és az elemek védelemének folytat
 
 A CMK titkosítás használata a biztonsági mentéshez nem jár további költségekkel. Azonban továbbra is felmerülhetnek a költségek arra, hogy a Azure Key Vault, ahol a kulcsot tárolják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

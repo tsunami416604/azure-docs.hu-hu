@@ -10,23 +10,30 @@ ms.service: virtual-machines-sql
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/06/2020
-ms.openlocfilehash: df1e1e90b35c29678151d4f9159195f829022a62
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 08/20/2020
+ms.openlocfilehash: 5f0ba27a0964f08b32e1af19d6f578b3f41ee300
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236624"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006414"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépített lemezképével végezheti el. Ez a cikk az új funkciókkal és fejlesztésekkel kapcsolatos dokumentációs módosításokat összegzi az [Azure Virtual Machines SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)legújabb kiadásaiban. 
 
+## <a name="august-2020"></a>2020. augusztus
+
+| Módosítások | Részletek |
+| --- | --- |
+| **Az AG konfigurálása a portálon** | Most már lehetséges a [rendelkezésre állási csoport konfigurálása a Azure Portal használatával](availability-group-azure-portal-configure.md). Ez a funkció jelenleg előzetes verzióban üzemel, ezért ha a kívánt régió nem érhető el, térjen vissza később. | 
+
+
 ## <a name="july-2020"></a>2020. július
 
 
-| Változások | Részletek |
+| Módosítások | Részletek |
 | --- | --- |
 | **Napló átmigrálása Ultra diskre** | Megtudhatja, hogyan [telepítheti át a naplófájlt egy ultra-lemezre](storage-migrate-to-ultradisk.md) a nagy teljesítmény és az alacsony késés érdekében. | 
 | **AG létrehozása a PowerShell használatával** | Mostantól egyszerűsítheti a rendelkezésre állási csoportok létrehozását a [PowerShell](availability-group-az-commandline-configure.md) és az Azure CLI használatával. | 
@@ -34,7 +41,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="june-2020"></a>2020. június
 
-| Változások | Részletek |
+| Módosítások | Részletek |
 | --- | --- |
 | **Elosztott hálózat neve (DNN)** | A Windows Server 2016-ban a SQL Server 2019-es verzióban mostantól megtekinthető a feladatátvételi fürt példányának (verzió) útválasztási forgalmának támogatása [, nem pedig](hadr-distributed-network-name-dnn-configure.md) Azure Load Balancer. Ez a támogatás leegyszerűsíti és egyszerűsíti a magas rendelkezésre állású (HA) megoldáshoz való csatlakozást az Azure-ban. | 
 | **És Azure-beli megosztott lemezekkel** | Most már lehetséges az [Azure megosztott lemezek](failover-cluster-instance-azure-shared-disks-manually-configure.md)használatával üzembe helyezni a [feladatátvevő fürt példányát (verzió)](failover-cluster-instance-overview.md) . |
@@ -44,21 +51,21 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="may-2020"></a>2020. május 
 
-| Változások | Részletek |
+| Módosítások | Részletek |
 | --- | --- |
 | **Azure SQL-család** | Az Azure Virtual Machines SQL Server már része az [Azure SQL termékcsaládnak](../../azure-sql-iaas-vs-paas-what-is-overview.md). Tekintse meg az [új arculatot](../index.yml)! Semmi sem változott a termékben, de a dokumentáció célja, hogy megkönnyítse az Azure SQL-termék döntését. | 
 
 
 ## <a name="january-2020"></a>2020. január
 
-| Változások | Részletek |
+| Módosítások | Részletek |
 | --- | --- |
 | **Azure Government támogatás** | Mostantól regisztrálhat SQL Server virtuális gépeket az SQL VM erőforrás-szolgáltatóval a [Azure Government](https://azure.microsoft.com/global-infrastructure/government/) felhőben üzemeltetett virtuális gépekhez. | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2019"></a>2019
 
-|Változások | Részletek |
+|Módosítások | Részletek |
  --- | --- |
 | **Ingyenes DR-replika az Azure-ban** | Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), az Azure-ban helyszíni SQL Server-példány esetén is üzemeltetheti a vész-helyreállítási [ingyenes passzív példányt](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) . | 
 | **Tömeges erőforrás-szolgáltató regisztrációja** | Mostantól [tömegesen regisztrálhat](sql-vm-resource-provider-bulk-register.md) SQL Server virtuális gépeket az erőforrás-szolgáltatóval. | 
@@ -81,7 +88,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="2018"></a>2018 
 
- Változások | Részletek |
+ Módosítások | Részletek |
 | --- | --- |
 |  **Új erőforrás-szolgáltató SQL Server-fürthöz** | Az új erőforrás-szolgáltató (Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups) a Windows feladatátvevő fürt metaadatait határozza meg. SQL Server VM csatlakoztatása a *SqlVirtualMachineGroups* a Windows Server feladatátvételi fürt (WSFC) szolgáltatáshoz csatlakozik, és csatlakoztatja a virtuális gépet a fürthöz.  |
 | **Rendelkezésre állási csoport üzembe helyezésének automatikus beállítása az Azure Gyorsindítás sablonjaival** |Most már lehetséges a Windows feladatátvevő fürt létrehozása, csatlakoztatás SQL Server virtuális gépekhez, a figyelő létrehozása és a belső terheléselosztó konfigurálása két Azure-beli rövid útmutató-sablon használatával. További információt az Azure-beli virtuális gépeken [elérhető SQL Server Azure-beli Gyorsindítás sablonokkal való konfigurálását](availability-group-quickstart-template-configure.md)ismertető témakörben talál. | 

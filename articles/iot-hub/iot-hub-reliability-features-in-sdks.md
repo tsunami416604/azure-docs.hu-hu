@@ -10,12 +10,13 @@ ms.service: iot-hub
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c7c9371b76d8bd7b4afd3f54e30dcf652b8b33d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- devx-track-csharp
+ms.openlocfilehash: 8f1b1131ab634cdc5418773b8a2e18c2195ffc18
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656798"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014557"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>A kapcsolat és a megbízható üzenetkezelés kezelése az Azure IoT Hub Device SDK-k használatával
 
@@ -134,7 +135,7 @@ Más nyelveken használható kódok esetében tekintse át a következő impleme
 
 * [PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python) (a megbízhatóság még nincs implementálva)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszköz- és szolgáltatásoldali SDK-k használata](./iot-hub-devguide-sdks.md)
 

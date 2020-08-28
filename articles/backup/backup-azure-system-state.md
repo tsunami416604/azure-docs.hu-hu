@@ -3,12 +3,12 @@ title: A Windows rendszer állapotának biztonsági mentése az Azure-ba
 description: Ismerje meg, hogyan készíthet biztonsági mentést a Windows Server rendszerű számítógépek rendszerállapotáról az Azure-ba.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824462"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013435"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
 
@@ -86,7 +86,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     ![a tároló hitelesítő adatainak letöltése](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    A tár hitelesítő adatai le vannak letöltve a **letöltések** mappájába. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Mentés** gombra. Ha véletlenül kiválasztja a **Megnyitás**lehetőséget, hagyja meg a párbeszédpanelt, amely a tár hitelesítő adatainak megnyitását kísérli meg. Nem fogja tudni megnyitni a tároló hitelesítő adatait. Folytassa a következő lépéssel. A tároló hitelesítő adatai a **letöltések** mappában találhatók.
+    A tár hitelesítő adatai le vannak letöltve a **letöltések** mappájába. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Válassza a **Mentés** lehetőséget. Ha véletlenül kiválasztja a **Megnyitás**lehetőséget, hagyja meg a párbeszédpanelt, amely a tár hitelesítő adatainak megnyitását kísérli meg. Nem fogja tudni megnyitni a tároló hitelesítő adatait. Folytassa a következő lépéssel. A tároló hitelesítő adatai a **letöltések** mappában találhatók.
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -185,7 +185,7 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 
 Ha kérdése van, [küldjön nekünk visszajelzést](https://feedback.azure.com/forums/258995-azure-backup).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-windows-with-mars-agent.md).
 * Most, hogy biztonsági másolatot készített a Windows Server rendszerállapotáról, [kezelheti a tárolókat és a kiszolgálókat](backup-azure-manage-windows-server.md).

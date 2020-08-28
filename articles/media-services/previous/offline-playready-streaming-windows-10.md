@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 4d8e637cd3691e7b1acf1988efe40fc80561a183
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 873f8bfda5dcfbc41d1bdc73bb4f0de97f775f15
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091674"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013401"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady-streamelés Windows 10-hez  
 
@@ -64,13 +65,13 @@ Az alábbi két PlayReady-licencet használja az AMS-ben, a másodikban pedig eg
 
 Eszköz #1:
 
-* Progresszív letöltési URL-cím:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (AMS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
+* Progresszív letöltési URL-cím: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (AMS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 Eszköz #2:
 
-* Progresszív letöltési URL-cím:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (helyszíni):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
+* Progresszív letöltési URL-cím: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (helyszíni): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 A lejátszás teszteléséhez egy univerzális Windows-alkalmazást használok a Windows 10 rendszeren. A [Windows 10-es univerzális példákban](https://github.com/Microsoft/Windows-universal-samples)van egy [adaptív adatfolyam-minta](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)nevű alapszintű lejátszó minta. Mindössze annyit kell tennie, hogy hozzáadjuk a kódot a letöltött videó kiválasztásához és forrásként való használatához, az adaptív adatfolyam-forrás helyett. A változtatások gombon kattintson az eseménykezelő elemre:
 
@@ -130,6 +131,6 @@ Mivel a videó a PlayReady védelme alatt áll, a képernyőkép nem fogja tudni
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibrid DRM-rendszer terve](hybrid-design-drm-sybsystem.md)

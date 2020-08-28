@@ -3,12 +3,12 @@ title: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure Virtual Machines-on futó SAP HANA adatbázisokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763286"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006312"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -250,6 +250,6 @@ Ha a **teljes & különbözetet** választotta a visszaállítási típusként, 
     > [!NOTE]
     > Több adatbázis-tárolóban (MDC) a rendszer visszaállítja a rendszeradatbázist a célként megadott példányra, az egyiknek újra kell futtatnia az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek. További információt a [Hibaelhárítás – MDC visszaállítás](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan](sap-hana-db-manage.md) kezelheti a biztonsági mentést SAP HANA-adatbázisokat a Azure Backup használatával

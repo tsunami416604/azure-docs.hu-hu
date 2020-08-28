@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244922"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012772"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Fordított proxy az Azure-ban Service Fabric
 Az Azure Service Fabric beépített fordított proxy segít felderíteni a Service Fabric-fürtökön futó és a http-végpontokat használó más szolgáltatásokkal való kommunikációt.
@@ -94,18 +95,18 @@ A szolgáltatás erőforrásai a következők:
 
 Ha a szolgáltatás az egyedi particionálási sémát használja, a *PartitionKey* és a *PartitionKind* lekérdezési karakterlánc paraméterei nem szükségesek, és a szolgáltatás az átjáró használatával érhető el:
 
-* Külsőleg`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Belső`http://localhost:19081/MyApp/MyService`
+* Külsőleg `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Belső `http://localhost:19081/MyApp/MyService`
 
 Ha a szolgáltatás az egységes Int64 particionálási sémát használja, a *PartitionKey* és a *PartitionKind* lekérdezési karakterlánc paramétereit kell használni a szolgáltatás egy partíciójának eléréséhez:
 
-* Külsőleg`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Belső`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Külsőleg `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Belső `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 A szolgáltatás által elérhetővé tenni kívánt erőforrások eléréséhez egyszerűen helyezze el az erőforrás elérési útját a szolgáltatás neve után az URL-címen:
 
-* Külsőleg`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Belső`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Külsőleg `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Belső `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 Az átjáró ezután továbbítja ezeket a kéréseket a szolgáltatás URL-címére:
 

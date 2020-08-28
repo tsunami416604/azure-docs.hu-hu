@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610727"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012449"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
@@ -173,7 +174,7 @@ A következő lépések segítségével a megoldásait rugalmasan méretezhető 
 
 10. Azure Cosmos DB fenntartott kapacitással három évig akár 65%-os kedvezményt érhet el. Azure Cosmos DB fenntartott kapacitási modell előzetes kötelezettségvállalás a kérések egysége számára az idő múlásával. A kedvezményeket úgy kell megválasztani, hogy minél több kérési egységet használjanak hosszabb időszakra, annál nagyobb a kedvezmény. Ezeket a kedvezményeket azonnal alkalmazza a rendszer. A kiépített értékek fölött használt összes RUs díja a nem fenntartott kapacitás díja alapján történik. További részletekért tekintse meg [Cosmos db fenntartott kapacitást](cosmos-db-reserved-capacity.md)). Vegye fontolóra a fenntartott kapacitás megvásárlását, hogy tovább csökkentse a kiosztott átviteli sebességet.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

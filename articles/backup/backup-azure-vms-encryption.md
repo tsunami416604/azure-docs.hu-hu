@@ -3,12 +3,12 @@ title: Titkosított Azure-beli virtuális gépek biztonsági mentése és vissza
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 6ce0068203c91d9d2031ce2f8735cccf94172dd8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611296"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014914"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 
@@ -41,7 +41,7 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását A
 ### <a name="limitations"></a>Korlátozások
 
 - A titkosított virtuális gépek biztonsági mentését és visszaállítását ugyanazon az előfizetésen és régión belül végezheti el.
-- Azure Backup a különálló kulcsokkal titkosított virtuális gépeket támogatja. A virtuális gépek titkosításához használt tanúsítvány részét képező egyik kulcs jelenleg nem támogatott.
+- Azure Backup a különálló kulcsokkal titkosított virtuális gépeket támogatja. A virtuális gépek titkosításához használt tanúsítvány részét képező kulcs jelenleg nem támogatott.
 - A titkosított virtuális gépek biztonsági mentését és visszaállítását a Recovery Services backup-tárolóval megegyező előfizetésben és régióban végezheti el.
 - A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A fájlok és mappák visszaállításához helyre kell állítania a teljes virtuális gépet.
 - Egy virtuális gép visszaállításakor nem használhatja a [meglévő virtuális gép cseréje](backup-azure-arm-restore-vms.md#restore-options) beállítást a titkosított virtuális gépekhez. Ez a beállítás csak titkosítatlan felügyelt lemezek esetén támogatott.
@@ -129,7 +129,7 @@ Engedélyek beállítása:
     - A szükséges engedélyek a **legfontosabb engedélyek** és a **titkos engedélyek**előtt vannak feltöltve.
     - Ha a virtuális gép **csak BEK**használatával van titkosítva, távolítsa el a **kulcs engedélyeinek** kijelölését, mert csak a titkokra vonatkozó engedélyekre van szüksége.
 
-    ![Az Azure Backup kiválasztása](./media/backup-azure-vms-encryption/select-backup-template.png)
+    ![Azure Backup kijelölés](./media/backup-azure-vms-encryption/select-backup-template.png)
 
 1. Válassza a **Hozzáadás** elemet. A **biztonsági mentési felügyeleti szolgáltatás** hozzá van adva a **hozzáférési házirendekhez**.
 
@@ -145,8 +145,8 @@ A titkosított virtuális gépeket a következőképpen állíthatja vissza:
 
 1. [Állítsa vissza a virtuális gép lemezét](backup-azure-arm-restore-vms.md#restore-disks).
 2. Hozza létre újból a virtuálisgép-példányt a következők egyikével:
-    1. A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [További információk](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információk](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    1. A visszaállítási művelet során létrehozott sablon segítségével testre szabhatja a virtuális gép beállításait, és aktiválhatja a virtuális gépek telepítését. [További információ](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információ](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Linux rendszerű virtuális gépek esetén telepítse újra az ADE bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek.
 
 ## <a name="next-steps"></a>Következő lépések

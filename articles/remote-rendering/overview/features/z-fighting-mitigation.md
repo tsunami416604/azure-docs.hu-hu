@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 017bda3f29f70448504650965a0f19bbaf5852bd
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dbe3af30963791891f0ceee4e18c34e078c0ac7a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892711"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013180"
 ---
 # <a name="z-fighting-mitigation"></a>Z-pufferelési hibák csökkentése
 
@@ -76,7 +77,7 @@ Az ajánlott z – küzdelem a legjobb megoldás. Nincs garancia arra, hogy az �
 * A z-harcok enyhítésének engedélyezése csekély mértékben nem jelent teljesítménybeli terhelést.
 * A z-harcok átfedésének engedélyezése emellett nem triviális teljesítménybeli terhelést is jelent, bár a jelenettől függően változhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Renderelési módok](../../concepts/rendering-modes.md)
 * [Újravetítés késői fázisban](late-stage-reprojection.md)

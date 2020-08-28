@@ -13,17 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015135"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Location-alapú leküldéses értesítések küldése a Notification Hubs és a Bing térbeli adatainak
 
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
+* **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel,  [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
 * [Visual Studio 2015 1. frissítés](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) vagy újabb ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409).
 * Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziója.
 * [Fiók a Bing Térképek fejlesztői központjához](https://www.bingmapsportal.com/) (ingyenesen létrehozható, és hozzárendelhető a Microsoft-fiókjához).
@@ -389,7 +389,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     ![Képernyőkép a TESZTÜZENET megjelenítéséről a Windows asztalról.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További lépésekre is szükség lehet, hogy a megoldás éles környezetben is használható legyen.
 

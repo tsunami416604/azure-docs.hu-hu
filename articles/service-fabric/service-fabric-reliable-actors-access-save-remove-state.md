@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e97fadb374fc45110f5071aab48da0a57eef4284
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645633"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012789"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors állapotának elérése, mentése és eltávolítása
 A [Reliable Actors](service-fabric-reliable-actors-introduction.md) olyan egyszálas objektumok, amelyek képesek a logika és az állapot beágyazására, valamint megbízható állapot fenntartására. Minden színészi példány saját [State Managerrel](service-fabric-reliable-actors-state-management.md)rendelkezik: egy olyan szótárhoz hasonló adatstruktúra, amely megbízhatóan tárolja a kulcs/érték párokat. A State Manager egy állami szolgáltató körüli burkoló. Az [adatmegőrzési beállítástól](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) függetlenül is tárolhatja az adattárolást.
@@ -315,7 +316,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 

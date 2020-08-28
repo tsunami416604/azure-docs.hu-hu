@@ -4,12 +4,12 @@ description: Az SQL-adatbázisok biztonsági mentése és visszaállítása Azur
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892422"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004986"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -321,7 +321,7 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-A fenti kimenet azt jelenti, hogy a megjelenített kezdési időpont és a befejezési időpont között bármely időpontra vissza lehet állítani. Az időpontok UTC-ben vannak. Minden olyan időpontot a PowerShellben hozhat létre, amely a fent látható tartományon belül van.
+A fenti kimenet azt jelenti, hogy a megjelenített kezdési időpont és a befejezési időpont között bármely időpontra vissza lehet állítani. Az időpontok UTC-ben vannak. Hozzon létre bármely olyan időpontot a PowerShellben, amely a fent látható tartományon belül van.
 
 > [!NOTE]
 > Ha a visszaállításhoz kiválasztott naplózási időpontot választja, nem kell megadnia a kiindulási pontot, azaz a teljes biztonsági mentést, amelyről az adatbázis vissza lesz állítva. Azure Backup szolgáltatás gondoskodik a teljes helyreállítási tervről, azaz a teljes biztonsági mentésről, a biztonsági másolatok által alkalmazandó naplókról és így tovább.
@@ -380,7 +380,7 @@ $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConf
 
 ##### <a name="restore-as-files"></a>Visszaállítás fájlként
 
-Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsági mentési adatmennyiséget, válassza a **visszaállítás fájlként** lehetőséget. A biztonsági mentés alatt álló SQL-adatbázis visszaállítható bármely olyan cél virtuális gépre, amely regisztrálva van a tárolóban.
+Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsági mentési adatmennyiséget, válassza a **visszaállítás fájlként** lehetőséget. A biztonsági mentés alatt álló SQL-adatbázis visszaállítható bármely, a tárolóban regisztrált virtuális gépre.
 
 ```powershell
 $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName "VM name" -VaultId $vaultID
@@ -582,7 +582,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Fontos megjegyezni, hogy Azure Backup csak a felhasználó által aktivált feladatokat követi nyomon az SQL Backup szolgáltatásban. Az ütemezett biztonsági mentések (beleértve a naplók biztonsági mentését) nem láthatók a portálon vagy a PowerShellben. Ha azonban bármelyik ütemezett feladat meghiúsul, [biztonsági mentési riasztás](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jön létre, és megjelenik a portálon. A [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md) nyomon követheti az összes ütemezett feladatot és egyéb releváns információt.
 
-A felhasználók nyomon követhetik az igény szerinti vagy felhasználó által aktivált műveleteket az aszinkron feladatok, például a biztonsági másolat [kimenetében](#on-demand-backup) visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PowerShell-parancsmag használatával nyomon követheti a feladatot és annak részleteit.
+A felhasználók nyomon követhetik az igény szerinti vagy a felhasználó által aktivált műveleteket az aszinkron feladatok (például biztonsági mentés) [kimenetében](#on-demand-backup) visszaadott JobID. A [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PowerShell-parancsmag használatával nyomon követheti a feladatot és annak részleteit.
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

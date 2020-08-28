@@ -3,12 +3,13 @@ title: Az Azure Service Fabric alkalmazás titkainak kezelése
 description: Megtudhatja, hogyan védheti meg a titkos értékeket egy Service Fabric alkalmazásban (platform – agnosztikus).
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248118"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012823"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Titkosított titkok kezelése Service Fabric alkalmazásokban
 Ez az útmutató végigvezeti a Service Fabric alkalmazásban található titkok kezelésének lépésein. A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni.
@@ -45,7 +46,7 @@ A szolgáltatás ServiceManifest.xml fájljában adja meg a titkosított [körny
 </CodePackage>
 ```
 
-A titkokat a Service Fabric alkalmazásban is fel kell venni egy tanúsítvány megadásával az alkalmazás jegyzékfájljában. Adjon hozzá egy **SecretsCertificate** elemet a **ApplicationManifest.xmlhoz** , és adja meg a kívánt tanúsítvány ujjlenyomatát.
+A titkokat a Service Fabric alkalmazásban is fel kell venni egy tanúsítvány megadásával az alkalmazás jegyzékfájljában. Adjon hozzá egy **SecretsCertificate** elemet a **ApplicationManifest.xmlhoz ** , és adja meg a kívánt tanúsítvány ujjlenyomatát.
 
 ```xml
 <ApplicationManifest … >

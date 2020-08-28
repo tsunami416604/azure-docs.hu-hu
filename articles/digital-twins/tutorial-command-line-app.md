@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0fc79cab5868ec7d676c956581407dce308d80ad
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891494"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022513"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -21,9 +21,10 @@ Ez az oktatóanyag egy olyan minta alkalmazást vezet be, amely egy parancssori 
 Ezt a mintát használhatja olyan alapvető Azure-beli digitális Twins-műveletek elvégzéséhez, mint például a modellek feltöltése, az ikrek létrehozása és módosítása, valamint kapcsolatok létrehozása. A minta kódját is megtekintheti az Azure Digital Twins API-k megismeréséhez, valamint a saját parancsok megvalósításának gyakorlásához, ha módosítani szeretné a minta projektet.
 
 Ebben az oktatóanyagban a következő lesz:...
-1. Azure digitális Twins-példány beállítása
-2. A minta parancssori alkalmazás konfigurálása a példánnyal való kommunikációhoz
-3. A parancssori alkalmazás használatával megismerheti az Azure digitális Twins szolgáltatásait, beleértve a **modelleket**, a **digitális ikreket**, a **kapcsolatokat**és a **lekérdezéseket**
+> [!div class="checklist"]
+> * Azure digitális Twins-példány beállítása
+> * A minta parancssori alkalmazás konfigurálása a példánnyal való kommunikációhoz
+> * A parancssori alkalmazás használatával megismerheti az Azure digitális Twins szolgáltatásait, beleértve a **modelleket**, a **digitális ikreket**, a **kapcsolatokat**és a **lekérdezéseket**
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -292,7 +293,7 @@ Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolg�
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 

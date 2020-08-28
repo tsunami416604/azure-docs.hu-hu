@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 7bcf656b1fa0a73021a92113eb5879312d100823
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: b1a361b2c1b1010c6593defa37ef92a3c36b0693
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84974500"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015611"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Oktatóanyag: C# felhasználó által definiált függvény írása Azure Stream Analytics feladathoz (előzetes verzió)
 
@@ -146,7 +146,7 @@ A lekérdezés helyi tesztelése után válassza a szkriptszerkesztő **Küldés
 ## <a name="deploy-to-iot-edge-devices"></a>Üzembe helyezés IoT Edge-eszközökön
 Ha úgy dönt, hogy létrehoz egy Stream Analytics Edge-feladatot, ez mostantól IoT Edge modulként is telepíthető. Az [IoT Edge – gyors üzembe helyezés](https://docs.microsoft.com/azure/iot-edge/quickstart) lépéseit követve létrehozhat egy IoT Hubot, regisztrálhat egy IoT Edge-eszközt, majd telepítheti és elindíthatja az IoT Edge-futtatókörnyezetet a eszközön. Ezután [A feladat üzembe helyezése](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job) oktatóanyagot követve üzembe helyezheti a Stream Analytics-feladatot IoT Edge-modulként. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy egyszerű C# felhasználó által definiált függvényt hozott létre a CodeBehind használatával, közzétette a feladatot az Azure-ban, és üzembe helyezte a feladatot az Azure-ban vagy IoT Edge eszközön. 
 

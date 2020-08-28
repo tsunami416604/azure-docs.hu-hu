@@ -3,12 +3,13 @@ title: Azure Service Bus hozzáférés-vezérlés közös hozzáférési aláír
 description: A Service Bus hozzáférés-vezérlésének áttekintése a közös hozzáférési aláírások használatával – áttekintés, a SAS-engedélyezéssel kapcsolatos részletek Azure Service Bus.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066185"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012075"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -67,9 +68,9 @@ Minden olyan ügyfél létrehozhat egy SAS-jogkivonatot, amely egy engedélyezé
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**-A jogkivonat lejárati ideje azonnali. Az egész szám, amely a `00:00:00 UTC` (z) 1970. január 1-jén (UNIX-kor), a jogkivonat lejárati idejének lejárta óta.
-* **`skn`**– Az engedélyezési szabály neve.
-* **`sr`**-Az elérni kívánt erőforrás URI-ja.
+* **`se`** -A jogkivonat lejárati ideje azonnali. Az egész szám, amely a `00:00:00 UTC` (z) 1970. január 1-jén (UNIX-kor), a jogkivonat lejárati idejének lejárta óta.
+* **`skn`** – Az engedélyezési szabály neve.
+* **`sr`** -Az elérni kívánt erőforrás URI-ja.
 * **`sig`** Aláírás.
 
 Az az `signature-string` SHA-256 kivonat, amely az erőforrás URI-ja alapján**scope** lett kiszámítva (az előző szakaszban leírtak szerint), valamint a jogkivonat lejárati időpontjának karakterláncos ábrázolása, az LF elválasztva.
@@ -298,7 +299,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
 | Szabályok számbavétele |Kezelés vagy figyelés |.. /myTopic/Subscriptions/mySubscription/Rules
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 

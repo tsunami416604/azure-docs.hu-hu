@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632934"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022445"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-lekérdezési nyelv az ikereszközökhöz - és modulokhoz, feladatokhoz, valamint az üzenetirányításhoz
 
@@ -203,7 +204,7 @@ A lekérdezési objektum több **következő** értéket tesz elérhetővé a le
 
 ### <a name="nodejs-example"></a>Node.js példa
 
-A lekérdezési funkciót az [Azure IoT Service SDK](iot-hub-devguide-sdks.md) teszi elérhetővé Node.jsszámára a **beállításjegyzék** -objektumban.
+A lekérdezési funkciót az [Azure IoT Service SDK ](iot-hub-devguide-sdks.md) teszi elérhetővé Node.jsszámára a **beállításjegyzék** -objektumban.
 
 Íme egy példa egy egyszerű lekérdezésre:
 
@@ -478,7 +479,7 @@ Az útvonalakra vonatkozó feltételekben a következő típusú ellenőrzési �
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| AS_NUMBER | A bemeneti karakterláncot számmá alakítja. `noop`Ha a bemenet egy szám; `Undefined`Ha a sztring nem egy számot jelöl.|
+| AS_NUMBER | A bemeneti karakterláncot számmá alakítja. `noop` Ha a bemenet egy szám; `Undefined` Ha a sztring nem egy számot jelöl.|
 | IS_ARRAY | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa tömb-e. |
 | IS_BOOL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott kifejezés típusa logikai. |
 | IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean, numerikus vagy `null` . A DateTime, az Objektumtípusok és a tömbök nem támogatottak. |
@@ -502,6 +503,6 @@ Az útvonalakra vonatkozó feltételekben a következő karakterlánc-függvény
 | ENDS_WITH (x, y) | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |
 | TARTALMAZZA (x, y) | Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan futtathat lekérdezéseket az alkalmazásokban az [Azure IoT SDK](iot-hub-devguide-sdks.md)-k használatával.

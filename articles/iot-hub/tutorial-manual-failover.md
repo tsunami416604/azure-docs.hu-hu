@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252572"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013945"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Oktatóanyag: manuális feladatátvétel végrehajtása egy IoT hub esetében
 
@@ -31,9 +31,11 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Feladat-visszavétel végrehajtása az IoT hub műveleteinek visszahelyezésére az elsődleges helyre. 
 > * A központ a megfelelő helyen való megfelelő működésének ellenőrzése.
 
+A manuális feladatátvételsel és a Microsoft által kezdeményezett feladatátvételsel kapcsolatos további információkért lásd: a [régiók közötti](iot-hub-ha-dr.md#cross-region-dr)vész-helyreállítás IoT hub.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -45,7 +47,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
    ![IoT hub létrehozását ábrázoló képernyőkép](./media/tutorial-manual-failover/create-hub-01.png)
 
-3. Válassza az **alapok** fület. Töltse ki a következő mezőket.
+3. Válassza az **alapok** lapot. Adja meg a következő mezőket.
 
     **Előfizetés**: Válassza ki a használni kívánt Azure-előfizetést.
 
@@ -83,7 +85,7 @@ Vegye figyelembe, hogy naponta legfeljebb két feladatátvétel és két feladat
 
    A manuális feladatátvétel végrehajtásához szükséges idő a hubhoz regisztrált eszközök számával arányos. Például 100 000 eszköz esetén a feladatátvétel 15 percig tarthat, ötmillió eszköz esetén azonban egy órát vagy többet is igénybe vehet.
 
-   ![A Manuális feladatátvétel panel képernyőképe](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![A manuális feladatátvétel megerősítő ablaktábláját ábrázoló képernyőfelvétel](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    Amíg a manuális feladatátvételi folyamat fut, megjelenik egy szalagcím, amely jelzi, hogy egy manuális feladatátvétel folyamatban van. 
 
@@ -130,7 +132,7 @@ Az oktatóanyaghoz létrehozott erőforrások eltávolításához törölje az e
 
 3. Kattintson az **Erőforráscsoport törlése** lehetőségre. Amikor a rendszer kéri, írja be az erőforráscsoport nevét, és kattintson a **Törlés** elemre a megerősítéshez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt ismertette, hogyan konfigurálhat és hajthat végre manuális feladatátvételt, és hogyan kérhet feladat-visszavételt a következő feladatok végrehajtásával:
 

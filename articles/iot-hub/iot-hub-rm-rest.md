@@ -8,12 +8,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fe143b1c172c5d89a7dba33731a378df988b4a47
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75429172"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014608"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>IoT hub létrehozása az erőforrás-szolgáltató REST API (.NET) használatával
 
@@ -25,7 +26,7 @@ Az Azure IoT-hubok programozott módon történő létrehozásához és kezelés
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Visual Studio.
+* A Visual Studióval.
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
@@ -170,7 +171,7 @@ Most már elvégezheti az alkalmazást úgy, hogy meghívja a **CreateIoTHub** m
 > [!NOTE]
 > Ez az alkalmazás egy S1 szabványú IoT Hub hoz létre, amelynek számlázása. Ha elkészült, törölheti az IoT hubot a [Azure Portalon](https://portal.azure.com/) keresztül, vagy a befejezéskor a **Remove-AzResource PowerShell-** parancsmag használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy üzembe helyezett egy IoT hubot az erőforrás-szolgáltató REST API használatával, érdemes megvizsgálnia a következőket:
 

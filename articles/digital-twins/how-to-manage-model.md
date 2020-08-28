@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661554"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013004"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -166,6 +166,30 @@ A `RetrieveModelWithDependencies` hívás nem csak a kért modellt adja vissza, 
 
 A modelleket nem feltétlenül adja vissza pontosan abban a dokumentum űrlapon, amelyet feltöltöttek. Az Azure Digital Twins csak azt garantálja, hogy a visszatérési űrlap szemantikailag egyenértékű lesz. 
 
+### <a name="update-models"></a>Modellek frissítése
+
+Miután feltöltötte a modellt a példányra, a teljes modell felülete nem változtatható meg. Ez azt jelenti, hogy nincs a modellek hagyományos "szerkesztése".
+
+Ehelyett, ha módosítani szeretné a modelleket az Azure-beli digitális Ikrekben, például a vagy a módosításával, ennek az az módja, hogy `DisplayName` `Description` az azonos modell **újabb verzióját** töltse fel. Ez felülbírálja az eredeti modellt.
+
+Ehhez kezdje az eredeti modell DTDL. Frissítse a módosítani kívánt mezőket.
+
+Ezt követően jelölje meg a modell újabb verzióját a modell mező frissítésével `id` . A modell AZONOSÍTÓjának utolsó szakasza, amely után a `;` , a modell számát jelöli. Annak jelzéséhez, hogy ez a modell most már egy frissített verziója, növelje az érték végén lévő számot az `id` aktuális verziószámnál nagyobb számra.
+
+Ha például az előző modell azonosítója így néz ki:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+a modell 2. verziója így néz ki:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+Ezután töltse fel a modell új verzióját a példányra. A régi verzió helyére kerül, és a modell használatával létrehozott új ikrek a frissített verziót fogják használni.
+
 ### <a name="remove-models"></a>Modellek eltávolítása
 
 A modelleket a szolgáltatásból is el lehet távolítani a következő két módszer egyikével:
@@ -250,7 +274,7 @@ Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen a
 
 A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

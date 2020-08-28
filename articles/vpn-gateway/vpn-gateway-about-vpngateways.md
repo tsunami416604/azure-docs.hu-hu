@@ -1,25 +1,24 @@
 ---
 title: Tudnivalók az Azure VPN Gateway
-description: Megtudhatja, mi a VPN Gateway, és hogyan használható VPN Gateway az IPsec IKE-helyek közötti, a VNet és a vnet, valamint pont – hely VPN virtuális hálózatokhoz való csatlakozáshoz.
+description: Megtudhatja, mi a VPN Gateway, és hogyan használható VPN Gateway az IPsec IKE-helyek közötti, a VNet és a VNet, valamint pont – hely VPN virtuális hálózatokhoz való csatlakozáshoz.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7fbea977904145aa2e8851f45a4b70f9ce0c560
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855607"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015390"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
 A VPN-átjáró a virtuális hálózati átjárók egy olyan típusa, amely titkosított adatforgalmat továbbít a nyilvános interneten keresztül egy Azure virtuális hálózat és egy helyszíni hely között. A VPN-átjáróval továbbá titkosított adatforgalmat továbbíthat az Azure-alapú virtuális hálózatok között a Microsoft hálózatán keresztül. Minden egyes virtuális hálózat kizárólag egy VPN-átjáróval rendelkezhet. Egy VPN-átjáróhoz azonban létrehozhat több kapcsolatot is. Amikor többhelyes csatlakozást hoz létre egyetlen VPN-átjáróhoz, az összes VPN-alagút az elérhető sávszélességen osztozkodik.
-
-A VPN-átjárók üzembe helyezhetők Azure Availability Zonesban. Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól. Tekintse [meg a Azure Availability Zones-beli virtuális hálózati átjárókkal](about-zone-redundant-vnet-gateways.md)foglalkozó témakört.
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Mi az a virtuális hálózati átjáró?
 
@@ -33,9 +32,15 @@ Egy virtuális hálózati átjáró létrehozása akár 45 percet is igénybe ve
 
 A VPN-átjárós kapcsolatok több erőforrást használnak, amelyek speciális beállításokkal konfigurálhatók. Az erőforrások többsége külön konfigurálható, néhány erőforrást azonban egy bizonyos sorrendben kell konfigurálni.
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>Tervezés: kapcsolatok topológiájának diagramjai
+### <a name="design"></a><a name="diagrams"></a>Tervezés
 
-Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Önnek kell eldöntenie, melyik konfiguráció felel meg a legjobban az igényeinek. Például pont – hely, helyek közötti, valamint egyidejű ExpressRoute-vagy helyek közötti kapcsolatok mind eltérő utasításokkal és konfigurációs követelményekkel rendelkeznek. A tervezési és a kapcsolatok topológiájának diagramjaival kapcsolatos információkért lásd: [tervezés](design.md).
+Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Önnek kell eldöntenie, melyik konfiguráció felel meg a legjobban az igényeinek. Például pont – hely, helyek közötti, valamint egyidejű ExpressRoute-vagy helyek közötti kapcsolatok mind eltérő utasításokkal és konfigurációs követelményekkel rendelkeznek. További információ a tervezési és a kapcsolódási topológiai diagramok megtekintéséhez: [tervezés](design.md).
+
+### <a name="planning-table"></a><a name="planningtable"></a>Tervezési táblázat
+
+Az alábbi táblázat segíthet eldönteni, melyik az Ön megoldásához legmegfelelőbb kapcsolat.
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>Beállítások
 
@@ -44,12 +49,6 @@ Az egyes erőforrások megfelelő beállítása kritikus fontosságú a sikeres 
 ### <a name="deployment-tools"></a><a name="tools"></a>Üzembehelyezési eszközök
 
 Az erőforrások létrehozásának és konfigurálásának megkezdéséhez használjon egy konfigurációs eszközt, például az Azure Portalt. A további erőforrások konfigurálásához, vagy adott esetekben a létező erőforrások módosításához később átválthat egy másik eszközre, például a PowerShellre. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre.
-
-### <a name="planning-table"></a><a name="planningtable"></a>Tervezési táblázat
-
-Az alábbi táblázat segíthet eldönteni, melyik az Ön megoldásához legmegfelelőbb kapcsolat.
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Átjáró-termékváltozatok
 
@@ -62,6 +61,10 @@ Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
+## <a name="availability-zones"></a><a name="availability"></a>Rendelkezésre állási zónák
+
+A VPN-átjárók üzembe helyezhetők Azure Availability Zonesban. Ez rugalmasságot, méretezhetőséget és magasabb szintű rendelkezésre állást biztosít a virtuális hálózati átjárók számára. Az átjárók Azure-beli rendelkezésre állási zónákban történő üzembe helyezésével fizikailag és logikailag is elválaszthatók a régióban található átjárók, miközben az Azure-ral létesített helyszíni hálózati kapcsolat megvédhető a zónaszintű hibáktól. Tekintse [meg a Azure Availability Zones-beli virtuális hálózati átjárókkal](about-zone-redundant-vnet-gateways.md)foglalkozó témakört.
+
 ## <a name="pricing"></a><a name="pricing"></a>Díjszabás
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
@@ -72,11 +75,11 @@ További információ a VPN Gateway átjáró-termékváltozatokról: [Gateway S
 
 A VPN Gateway-re vonatkozó gyakori kérdésekért lásd a [VPN Gateway gyakori kérdéseit](vpn-gateway-vpn-faq.md).
 
-## <a name="whats-new"></a><a name="new"></a>Mi újság?
+## <a name="whats-new"></a><a name="new"></a>Újdonságok
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb VPN Gateway szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VPN%20Gateway) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információkért tekintse meg [A VPN Gatewayjel kapcsolatos gyakori kérdések](vpn-gateway-vpn-faq.md) című szakaszt.
 - Tekintse meg az [Előfizetés- és szolgáltatáskorlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) című szakaszt.

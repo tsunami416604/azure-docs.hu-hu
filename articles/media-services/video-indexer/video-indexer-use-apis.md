@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774367"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022428"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
 Video Indexer összevonja a Microsoft által kínált különböző hang-és video mesterséges intelligencia (AI) technológiákat egy integrált szolgáltatásba, ami egyszerűbbé teszi a fejlesztést. Az API-k úgy lettek kialakítva, hogy lehetővé tegyék a fejlesztők számára a Media AI-technológiák felhasználását anélkül, hogy aggódniuk kellene a Felhőbeli platformok méretezésével, globális elérhetőségével, rendelkezésre állásával Az API-val fájlokat tölthet fel, részletes videó-elemzéseket kaphat, beolvashatja a beágyazható betekintést és a lejátszó widgetek URL-címeit.
 
-Video Indexer-fiók létrehozásakor kiválaszthat egy ingyenes próbaverziós fiókot (amely bizonyos számú ingyenes indexelési percet igénybe vehet) vagy egy fizetős lehetőséget (ha nem korlátozza a kvótát). Az ingyenes próbaverzióval a Video Indexer akár 600 perces ingyenes indexelést biztosít a webhely felhasználói számára, illetve akár 2400 perc ingyenes indexelést az API-felhasználók számára. Fizetős megoldásként létrehozhat egy Video Indexer fiókot, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki.
+A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. Fizetős megoldásként létrehozhat egy Video Indexer fiókot, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki.
 
 Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Indexer API](https://api-portal.videoindexer.ai/) előnyeit.
 
@@ -212,7 +213,7 @@ Debug.WriteLine(playerWidgetLink);
 - [A Video Indexer áttekintése](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kimeneti JSON részleteinek vizsgálata](video-indexer-output-json-v2.md)
 - Tekintse meg a videó feltöltésének és indexelésének fontos aspektusát bemutató [mintakód](https://github.com/Azure-Samples/media-services-video-indexer) használatát. Az wil kód követésével jól szemlélteti, hogyan használható az API az alapszintű funkciókhoz. Olvassa el a beágyazott megjegyzéseket, és figyelje meg az ajánlott eljárásokkal kapcsolatos tanácsokat.

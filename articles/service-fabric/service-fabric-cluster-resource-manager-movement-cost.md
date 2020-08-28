@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0fdcfb02851d56ed996ae4bf32671ab545782733
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75563343"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005343"
 ---
 # <a name="service-movement-cost"></a>Szolgáltatás-áthelyezési díj
 A Service Fabric fürterőforrás-kezelő tényezője azt vizsgálja, hogy a fürtön végrehajtott módosítások Milyen költségekkel járnak. A "Cost" fogalma ki van kapcsolva a fürt mennyiségének javítására. A költségek a szolgáltatások kiegyensúlyozásra, töredezettségmentesítésre és egyéb követelményekre való áthelyezésével kapcsolatosak. A cél az, hogy a legkevésbé zavaró vagy költséges módon teljesítse a követelményeket.
@@ -118,7 +119,7 @@ ClusterManifest.xml:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Service Fabric fürterőforrás-kezelő metrikákat használ a fürt felhasználásának és kapacitásának kezeléséhez. Ha többet szeretne megtudni a metrikákkal és azok konfigurálásával kapcsolatban, tekintse meg az [erőforrás-felhasználás és a betöltés Service Fabric a metrikákkal](service-fabric-cluster-resource-manager-metrics.md)című témakört.
 - Ha szeretné megtudni, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [Service Fabric-fürt kiegyensúlyozását](service-fabric-cluster-resource-manager-balancing.md)ismertető témakört.
 

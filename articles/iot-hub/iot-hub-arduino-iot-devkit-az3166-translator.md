@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953358"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004340"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT fejlesztői készlet-AZ3166 használata Azure Functions és Cognitive Services a nyelvi fordítók elvégzéséhez
 
@@ -29,7 +30,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 
 ## <a name="create-azure-cognitive-service"></a>Az Azure kognitív szolgáltatás létrehozása
 
-1. A Azure Portal kattintson az **erőforrás létrehozása** és a **beszéd**keresése elemre. Töltse ki az űrlapot a beszédfelismerési szolgáltatás létrehozásához.
+1. A Azure Portal kattintson az **erőforrás létrehozása** és a **beszéd**keresése elemre. Töltse ki az űrlapot a Speech Service-szolgáltatás létrehozásához.
   ![Speech szolgáltatás](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Nyissa meg az imént létrehozott beszédfelismerési szolgáltatást, kattintson a **kulcsok** szakaszra a másoláshoz, és jegyezze fel a **Key1** a fejlesztői készlet eléréséhez.
@@ -51,7 +52,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 1. Az Azure IoT Hub és Azure Functions üzembe helyezésének befejezéséhez kövesse az alábbi lépéseket.
    ![Kiépítési lépések](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   Jegyezze fel az Azure IoT Hub-eszköz létrehozott nevét.
+   Jegyezze fel a létrehozott Azuure IoT Hub-eszköz nevét.
 
 1. Nyissa meg `Functions\DevKitTranslatorFunction.cs` és frissítse a kód következő sorát a megjegyzett eszköz neve és a beszédfelismerési szolgáltatás kulcsaként.
    ```csharp
@@ -68,7 +69,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 1. Kattintson `F1` , írja be és válassza **Az Azure IoT Device Workbench: üzembe helyezés az Azure**-ban... lehetőséget. Ha a VS Code megerősítést kér az újratelepítéshez, kattintson az **Igen**gombra.
    ![Figyelmeztetés üzembe helyezése](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
-1. Győződjön meg arról, hogy az üzemelő példány sikeres.
+1. Győződjön meg arról, hogy az üzembe helyezés sikeres volt.
    ![Sikeres üzembe helyezés](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
 1. Azure Portal, lépjen a **functions-alkalmazások** szakaszra, keresse meg az imént létrehozott Azure Function alkalmazást. Kattintson `devkit_translator` a elemre, majd kattintson **</> a függvény URL-címének lekérése** elemre az URL másolásához
@@ -101,29 +102,29 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
-Az alkalmazás inicializálását követően kövesse a fejlesztői készlet képernyőn megjelenő utasításokat. Az alapértelmezett nyelv a kínai.
+Az alkalmazás inicializálását követően kövesse a DevKit képernyőjén megjelenő utasításokat. Az alapértelmezett forrásnyelv a kínai.
 
-Másik nyelv kiválasztása fordításhoz:
+Másik nyelv kiválasztása a fordításhoz:
 
 1. Nyomja le az A gombot a telepítési mód megadásához.
 
-2. A B gomb megnyomásával görgetheti az összes támogatott forrás nyelvét.
+2. Nyomja le a B gombot az összes támogatott nyelv megjelenítéséhez.
 
 3. Az A gomb megnyomásával erősítse meg a választott forrás nyelvét.
 
-4. A fordítás elindításához nyomja le a "B" gombot, és tartsa nyomva a "b" gombot.
+4. Beszéd közben nyomja le és tartsa nyomva a B gombot, majd engedje el a fordítás megkezdéséhez.
 
-5. A lefordított szöveg angol nyelven jelenik meg a képernyőn.
+5. Az angolra fordított szöveg megjelenik a képernyőn.
 
 ![Görgetés a nyelv kiválasztásához](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
 ![Fordítás eredménye](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-A fordítási eredmények képernyőn a következőket teheti:
+A fordítási eredmények képernyőjén az alábbi műveleteket végezheti:
 
-- Az A és a B gomb megnyomásával görgetheti és kiválaszthatja a forrás nyelvét.
+- Az A és a B gomb lenyomásával görgethet és kiválaszthatja a forrásnyelvet.
 
-- A beszélgetéshez kattintson a B gombra. A hang elküldéséhez és a fordítási szöveg beolvasásához szabadítsa fel a B gombot.
+- A B gombbal beszélhet. A hang elküldéséhez és a fordított szöveg lekéréséhez engedje el a B gombot.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -138,7 +139,7 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet GYIK](https
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan használhatja a IoT-fejlesztői készlet fordítóként Azure Functions és Cognitive Services használatával. Ebben a útmutatóban megtanulta, hogyan teheti meg a következőket:
 

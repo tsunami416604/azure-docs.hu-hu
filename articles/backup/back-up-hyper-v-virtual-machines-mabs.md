@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d3648bf6c980049a2e3ccfa90a777bddc1748dc9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892813"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011939"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -66,7 +66,7 @@ A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltét
 |A Hyper-V virtuális gépek előfeltételei|– A virtuális gépen futó integrációs összetevők verziójának meg kell egyeznie a Hyper-V-gazdagép verziójával. <br />–   Az egyes virtuális gépek biztonsági mentéséhez szabad területre lesz szükség azon a köteten, amelyen a virtuálismerevlemez-fájlok találhatók, hogy a Hyper-V a biztonsági mentés során elég hellyel rendelkezzen a különbséglemezek (AVHD) számára. A területnek legalább akkorának kell lennie, mint a **kezdeti lemezméret\*forgalom sebessége\*biztonsági mentési időablak** számítás eredménye. Ha egy fürtön több biztonsági mentést futtat, akkor az egyes virtuális gépek különbséglemezeinek elegendő tárolókapacitással kell rendelkezniük, hogy a fenti számítás szerint elférjenek rajtuk az egyes virtuális gépek.<br />-A Windows Server 2012 R2 rendszerű Hyper-V-gazdagépeken található virtuális gépek biztonsági mentéséhez a virtuális gépnek rendelkeznie kell egy SCSI-vezérlővel, még akkor is, ha az nem csatlakozik semmihöz. (A Windows Server 2012 R2 online biztonsági mentésében a Hyper-V-gazdagép egy új virtuális merevlemezt csatlakoztat a virtuális géphez, majd később leválasztja azt. Ezt csak az SCSI-vezérlő tudja támogatni, ezért szükséges a virtuális gép online biztonsági mentéséhez.  A beállítás nélkül a 10103-es AZONOSÍTÓJÚ esemény lesz kiadva, amikor megkísérli a virtuális gép biztonsági mentését.)|
 |A Linux előfeltételei|– A Linux rendszerű virtuális gépek biztonsági mentését a MABS használatával végezheti el. Csak a fájlkonzisztens pillanatképek támogatottak.|
 |Virtuális gépek biztonsági mentése CSV-tárolóval|–   A megosztott fürtkötetes tároláshoz telepítse a Kötet árnyékmásolata szolgáltatás (VSS) hardverszolgáltatót a Hyper-V-kiszolgálóra. A VSS hardverszolgáltatóról a tárolóhálózat (SAN) gyártójánál érdeklődhet.<br />– Ha egy csomópont váratlanul leáll egy CSV-fürtben, a MABS konzisztencia-ellenőrzést hajt végre az adott csomóponton futó virtuális gépeken.<br />–   Ha újra kell indítani a kérdéses fürt egyik olyan Hyper-V-kiszolgálóját, amelyen engedélyezve van a BitLocker meghajtótitkosítás, konzisztencia-ellenőrzést kell futtatni a Hyper-V rendszerű virtuális gépeken.|
-|Virtuális gépek biztonsági mentése SMB-tárolóval|–   Kapcsolja be az automatikus csatlakoztatást a Hyper-V-t futtató kiszolgálón a virtuális gép védelmének engedélyezéséhez.<br />   –   Tiltsa le a TCP Chimney tehermentesítést.<br />–   Ügyeljen arra, hogy minden Hyper-V machine$-fiók teljes körű engedélyekkel rendelkezzen a megfelelő távoli SMB-fájlmegosztásokon.<br />– Győződjön meg arról, hogy az összes virtuálisgép-összetevő fájljának elérési útja a másik helyre történő helyreállítás során kevesebb, mint 260 karakter. Ha nem, a helyreállítás sikeres lehet, de a Hyper-V nem fogja tudni csatlakoztatni a virtuális gépet.<br />– A következő forgatókönyvek nem támogatottak:<br />     Olyan központi telepítések, ahol a virtuális gép egyes összetevői helyi köteteken találhatók, és egyes összetevők távoli köteteken találhatók; egy IPv4-vagy IPv6-cím a tárolási hely fájlkiszolgáló számára, valamint egy virtuális gép helyreállítása olyan számítógépre, amely távoli SMB-megosztásokat használ.<br />– Engedélyeznie kell a Fájlkiszolgálói VSS-ügynök szolgáltatást minden SMB-kiszolgálón – vegye fel azt a **szerepkörök és szolgáltatások hozzáadása**  >  **elemnél válassza a kiszolgálói szerepkörök**  >  **fájl-és tárolási szolgáltatások**Fájlszolgáltatások fájl-szolgáltatás fájlkiszolgáló  >  **File Services**  >  **File Service**  >  **VSS-ügynök szolgáltatást**.|
+|Virtuális gépek biztonsági mentése SMB-tárolóval|– Kapcsolja be az automatikus csatlakoztatást a Hyper-V-t futtató kiszolgálón a virtuális gép védelmének engedélyezéséhez.<br />   –   Tiltsa le a TCP Chimney tehermentesítést.<br />–   Ügyeljen arra, hogy minden Hyper-V machine$-fiók teljes körű engedélyekkel rendelkezzen a megfelelő távoli SMB-fájlmegosztásokon.<br />– Győződjön meg arról, hogy az összes virtuálisgép-összetevő fájljának elérési útja a másik helyre történő helyreállítás során kevesebb, mint 260 karakter. Ha nem, a helyreállítás sikeres lehet, de a Hyper-V nem fogja tudni csatlakoztatni a virtuális gépet.<br />– A következő forgatókönyvek nem támogatottak:<br />     Olyan központi telepítések, ahol a virtuális gép egyes összetevői helyi köteteken találhatók, és egyes összetevők távoli köteteken találhatók; egy IPv4-vagy IPv6-cím a tárolási hely fájlkiszolgáló számára, valamint egy virtuális gép helyreállítása olyan számítógépre, amely távoli SMB-megosztásokat használ.<br />– Engedélyeznie kell a Fájlkiszolgálói VSS-ügynök szolgáltatást minden SMB-kiszolgálón – vegye fel azt a **szerepkörök és szolgáltatások hozzáadása**  >  **elemnél válassza a kiszolgálói szerepkörök**  >  **fájl-és tárolási szolgáltatások**Fájlszolgáltatások fájl-szolgáltatás fájlkiszolgáló  >  **File Services**  >  **File Service**  >  **VSS-ügynök szolgáltatást**.|
 
 ## <a name="back-up-virtual-machines"></a>Virtuális gépek biztonsági mentése
 
@@ -153,6 +153,6 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
 
 7. A helyreállítási feladatra vonatkozó információk a **Helyreállítás állapota** képernyőn jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Adatok helyreállítása az Azure Backup Serverről](./backup-azure-alternate-dpm-server.md)

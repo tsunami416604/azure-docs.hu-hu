@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd0d425f00e001071f5c9021068ca2f038371a36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212833"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016036"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Apache Hadoop alkalmazások telepítése az Azure HDInsight
 
@@ -23,13 +23,13 @@ An méretű HDInsight alkalmazás egy olyan alkalmazás, amelyet a felhasználó
 
 A közzétett alkalmazások a következő listában láthatók:
 
-|Alkalmazás |Fürt típusa (i) | Description |
+|Alkalmazás |Fürt típusa (i) | Leírás |
 |---|---|---|
 |[AtScale Intelligence platform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |A AtScale bekapcsolja a HDInsight-fürtöt egy kibővített OLAP-kiszolgálóra, amely lehetővé teszi, hogy több milliárd sornyi adatsort interaktív módon tudjon lekérdezni a már ismert BI-eszközökkel, a saját és a szeretettel – a Microsoft Excel, a Power BI, a tabló szoftver és a QlikView használatával. |
-|[CDAP a HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |A HBase |A CDAP az első olyan egységesített integrációs big data platform, amely felgyorsítja a Hadoop értékét, és lehetővé teszi az informatikai szolgáltatások számára az önkiszolgáló adattárolást. A nyílt forráskód és a bővíthető CDAP eltávolítja az innováció akadályait. Követelmények: 4 régiós csomópont, min D3 v2. |
+|[CDAP a HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |A CDAP az első olyan egységesített integrációs big data platform, amely felgyorsítja a Hadoop értékét, és lehetővé teszi az informatikai szolgáltatások számára az önkiszolgáló adattárolást. A nyílt forráskód és a bővíthető CDAP eltávolítja az innováció akadályait. Követelmények: 4 régiós csomópont, min D3 v2. |
 |[Datameer](https://azuremarketplace.microsoft.com/marketplace/apps/datameer.datameer) |Hadoop |A Datameer önkiszolgáló méretezhető platformja az adatok előkészítésére, feltárására és szabályozására, valamint az összetett többforrású adatok értékes, üzleti használatra kész információkba való bekapcsolására, gyorsabb és intelligensebb elemzéseket tesz lehetővé nagyvállalati szinten. |
 |[Dataiku DSS a HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS egy nagyvállalati adatelemzési platformon, amely lehetővé teszi az adatszakértők és az adatelemzők számára, hogy hatékonyabban tervezzék meg és futtassák az új adattermékeket és-szolgáltatásokat, a nyers adatelemzést pedig hatásos előrejelzésekként |
-|[WANdisco Fusion HDI-alkalmazás](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, Storm, Kafka |Az adatok konzisztens elosztása egy elosztott környezetben nagy mennyiségű adatműveleti kérdés. A WANdisco Fusion egy nagyvállalati szintű szoftver, amely a strukturálatlan adatkonzisztencia bármely környezetbe való bekapcsolásával oldja meg ezt a problémát. |
+|[WANdisco Fusion HDI-alkalmazás](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.wandisco-liveanalytics) |Hadoop, Spark, HBase, Storm, Kafka |Az adatok konzisztens elosztása egy elosztott környezetben nagy mennyiségű adatműveleti kérdés. A WANdisco Fusion egy nagyvállalati szintű szoftver, amely a strukturálatlan adatkonzisztencia bármely környezetbe való bekapcsolásával oldja meg ezt a problémát. |
 |[H2O SparklingWater a HDInsight-hez](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |A H2O pezsgő a következő elosztott algoritmusokat támogatja: GLM, naiv Bayes, elosztott véletlenszerű erdő, gradiens-növelő gép, mély neurális hálózatok, mély tanulás, K-means, PCA, általánosított, alacsony rangú modellek, anomáliák észlelése, autokódolók. |
 |[Striim a valós idejű adatintegrációról a HDInsight-be](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, Storm, Spark, Kafka |A Striim ("Stream") egy végpontok közötti streaming adatintegrációs és intelligencia platform, amely lehetővé teszi a különböző adatfolyamok folyamatos betöltését, feldolgozását és elemzését. |
 |[Jumbune Enterprise – gyorsuló BigData-elemzés](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |A Jumbune magas szinten segíti a vállalatok számára az 1. Felgyorsult a TEZ, a MapReduce & a Spark motoron alapuló struktúra, a Java, a Scala számítási feladatok teljesítménye. 2. Proaktív Hadoop-fürt figyelése, 3. Az adatminőség-kezelés létrehozása az elosztott fájlrendszerben. |
@@ -89,7 +89,7 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
     |status |Az alkalmazás állapota. |
     |Weblap |A peremhálózati csomóponton üzembe helyezett webalkalmazás URL-címe. A hitelesítő adatok ugyanazok, mint amelyeket a fürthöz beállított HTTP-felhasználónál használt. |
     |SSH-végpont |Az SSH használatával csatlakozhat a peremhálózati csomóponthoz. Az SSH hitelesítő adatai ugyanazok, mint amelyeket a fürthöz beállított SSH-felhasználónál használt. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Description | Az alkalmazás leírása. |
+    |Leírás | Az alkalmazás leírása. |
 
 6. Egy alkalmazás törléséhez kattintson a jobb gombbal az alkalmazásra, majd a helyi menüben kattintson a **Törlés** parancsra.
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023262"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012195"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
 
@@ -242,7 +242,7 @@ Például:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`a kért kulcs értéke. Akkor használhatja, `AlternativeMediaId` Ha a kérést a saját oldalán lévő entitáshoz szeretné hozzárendelni. Például az `AlternativeMediaId` engedélyek megkeresésének megkönnyítésére használható.
+`ContentKeyId` a kért kulcs értéke. Akkor használhatja, `AlternativeMediaId` Ha a kérést a saját oldalán lévő entitáshoz szeretné hozzárendelni. Például az `AlternativeMediaId` engedélyek megkeresésének megkönnyítésére használható.
 
 Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért lásd: streaming policys [– create](/rest/api/media/streamingpolicies/create).
 
@@ -259,7 +259,7 @@ Ha a végén hibákat kap, ügyeljen `_NOT_SPECIFIED_IN_URL` arra, hogy a titkos
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Védelem AES-titkosítással](protect-with-aes128.md)
 * [Védelem a DRM-mel](protect-with-drm.md)

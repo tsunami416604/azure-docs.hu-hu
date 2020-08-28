@@ -3,7 +3,7 @@ title: Az Azure-erőforrások felügyelt identitások használata az Azure Virtu
 description: Az Azure-erőforrások felügyelt identitásának leírása az Azure Virtual Machines szolgáltatással használható.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
@@ -13,14 +13,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5355d4c83961d87ad4b880f6b3758b212e74dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609209"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014349"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Az Azure-erőforrások felügyelt identitások használata az Azure Virtual Machines szolgáltatással
 
@@ -57,7 +57,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 4. Miután a virtuális gép már rendelkezik identitással, a szolgáltatásnév-adatok használatával biztosítson hozzáférést a virtuális gépnek az Azure-erőforrásokhoz. Az Azure Resource Manager meghívásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával rendelje hozzá a megfelelő szerepkört a virtuális gép szolgáltatásnevéhez az Azure AD-ben. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
 
-5. A virtuális gépen futó kód az Azure-példány metaadatainak szolgáltatásának végpontján igényelhet jogkivonatot, amely csak a virtuális gépről érhető el:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. A virtuális gépen futó kód az Azure-példány metaadatainak szolgáltatásának végpontján igényelhet jogkivonatot, amely csak a virtuális gépről érhető el: `http://169.254.169.254/metadata/identity/oauth2/token`
     - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Az Azure Resource Manager hitelesítéséhez használja a `resource=https://management.azure.com/` paramétert.
     - Az API version (API-verzió) paraméter adja meg az IMDS-verziót – használja az api-version=2018-02-01, vagy egy nagyobb értéket.
 
@@ -78,7 +78,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
    > [!Note]
    > Ezt a lépést a 3. lépés előtt is végrehajthatja.
 
-5. A virtuális gépen futó kód az Azure Instance Metadata Service Identity végponttól kérhet jogkivonatot, amely csak a virtuális gépről érhető el:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. A virtuális gépen futó kód az Azure Instance Metadata Service Identity végponttól kérhet jogkivonatot, amely csak a virtuális gépről érhető el: `http://169.254.169.254/metadata/identity/oauth2/token`
     - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Az Azure Resource Manager hitelesítéséhez használja a `resource=https://management.azure.com/` paramétert.
     - A client ID (ügyfél-azonosító) paraméter határozza meg azt az identitást, amely számára a hozzáférési jogkivonat kérvényezve lett. Ez az érték akkor szükséges egyértelműsítés céljából, ha egyazon virtuális gépen több felhasználó által hozzárendelt identitás is létezik.
     - Az API version (API verziója) paraméter az Azure Instance Metadata szolgáltatás verzióját adja meg. Használja a(z) `api-version=2018-02-01` vagy újabb verziót.
@@ -87,7 +87,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure-erőforrások felügyelt identitásai szolgáltatással a következő rövid útmutatók segítségével:
 

@@ -7,12 +7,13 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a4d8a919d1881f61e490f135cc8fb1659c64cbd3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871122"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014047"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Azure Cosmos DB "a kérelem fejléce túl nagy" üzenet diagnosztizálása és megoldása
 A "kérelem fejléce túl nagy" üzenetet egy 400-es HTTP-hibakód alapján dobjuk el. Ez a hiba akkor fordul elő, ha a kérelem fejlécének mérete olyan nagy, hogy meghaladja a maximálisan megengedett méretet. Javasoljuk, hogy az SDK legújabb verzióját használja. Legalább a 3. x vagy 2. x verziót használja, mert ezek a verziók a fejléc méretének nyomon követését adja hozzá a kivételt jelző üzenethez.
@@ -44,6 +45,6 @@ Az 400-es hibás kérelem olyan lekérdezési műveletekben fordul elő, ahol a 
 1. Kövesse a [.net v3](performance-tips-dotnet-sdk-v3-sql.md) vagy a [.NET v2](performance-tips.md) teljesítménnyel kapcsolatos tippek című cikk útmutatását. Alakítsa át az alkalmazást a közvetlen kapcsolati mód használatára a TCP protokollal. A TCP protokollal létesített közvetlen kapcsolati mód nem rendelkezik a fejléc méretére vonatkozó korlátozással, például a HTTP protokollal, így elkerülhető a probléma. 
 1. Ha a TCP protokollal létesített közvetlen kapcsolati mód nem választható a munkaterhelés számára, állítsa be a `ResponseContinuationTokenLimitInKb` beállítást. Ezt a lehetőséget a v2-ben `FeedOptions` vagy a v3-ben is megtalálhatja `QueryRequestOptions` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.
