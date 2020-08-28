@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 075bf78599602b1b92f3cec01fe5dfb92b5321cc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654446"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998951"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C Sharp használatával
 
 Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni a [Gen2 adatelérési API](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) -k adatait Azure Time Series Insights Gen2 környezetekben.
 
 > [!TIP]
-> A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
+> A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -71,14 +71,14 @@ Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www
 
 ## <a name="c-sample-code"></a>C# mintakód
 
-A C# mintakód eléréséhez tekintse meg az [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) -tárházat. 
+A C# mintakód eléréséhez tekintse meg az [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) -tárházat. 
 
 > [!NOTE]
 >
 > * A kód mintát az alapértelmezett környezeti változók módosítása nélkül lehet végrehajtani.
 > * A kód minta egy .NET-es végrehajtható konzol alkalmazásban lesz lefordítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis).
 

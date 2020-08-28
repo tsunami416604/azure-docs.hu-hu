@@ -3,12 +3,13 @@ title: Rendelkezésre állás és konzisztencia – Azure Event Hubs | Microsoft
 description: Hogyan biztosítható a maximális rendelkezésre állás és konzisztencia az Azure Event Hubs partíciók használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 45ca5cc5790824d6c67a47a23691c6b0cae0b9f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 774332b8f2d5c336f1a22d717516ae35a62b341f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537207"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000634"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubsban
 
@@ -142,4 +143,4 @@ Ez a példa az eseményt az Event hub egyik elérhető partíciójában küldi e
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs szolgáltatás áttekintése](./event-hubs-about.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)

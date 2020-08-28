@@ -6,16 +6,17 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 08/19/2020
-ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ece2fdf5c75decb9a2139b973ad4bbb3f0803a0b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607531"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011174"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
-Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatás fejlesztésére szolgál. Az Azure Cosmos Emulator használatával helyileg fejlesztheti és tesztelheti alkalmazását anélkül, hogy Azure-előfizetést hozna létre, vagy bármilyen költséget kellene fizetnie. Ha meggyőződött arról, hogy az alkalmazás hogyan működik az Azure Cosmos Emulatorban, átválthat egy Azure Cosmos-fiók használatára a felhőben.
+Az Azure Cosmos Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos Emulator használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével az Azure Cosmos Emulatorban, átválthat az Azure Cosmos-fiók használatára a felhőben.
 
 Az Azure Cosmos Emulator használatával az [SQL](local-emulator.md#sql-api), a [Cassandra](local-emulator.md#cassandra-api), a [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), a [Gremlin](local-emulator.md#gremlin-api)és a [Table](local-emulator.md#table-api) API-fiókokat is kifejlesztheti. Ebben az időszakban azonban az emulátor Adatkezelő nézete teljes mértékben támogatja az ügyfeleket csak az SQL API-hoz. 
 
@@ -539,7 +540,7 @@ Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatb
 
 - Ha **A szolgáltatás nem érhető el** üzenetet kap, előfordulhat, hogy az emulátor nem tudja elindítani a hálózati vermet. Ellenőrizze, hogy telepítve van-e a Pulse Secure ügyfél vagy a Juniper Networks ügyfél, mert ezek hálózatszűrő illesztőprogramjai okozhatják a problémát. A külső gyártótól származó hálózatszűrő illesztőprogramok eltávolítása általában kijavítja a problémát. Azt is megteheti, hogy elindítja az emulátort a/DisableRIO, amely átváltja az emulátor hálózati kommunikációját a normál Winsock-ra. 
 
-- Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése**. Ez a várakozási idő jelenleg a Cosmos Emulator esetében csak a TLS 1,2 protokollt fogadja el és működik. Az ajánlott megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló műveletet hajthat végre a webböngésző számára a "beállítások" lehetőség használatával.
+- Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése**. Jelenleg ez a várható működés, mert a Cosmos Emulator csak a TLS 1.2 protokollt fogadja el, és ezzel működik együtt. Az ajánlott megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló művelet hajtható végre a webböngészőre vonatkozóan a „Beállítások” lehetőség használatával.
 
 - Amennyiben az emulátor futtatása közben a számítógép alvó állapotba lép vagy frissül az operációs rendszere, a **Szolgáltatás jelenleg nem érhető el** üzenet jelenik meg. Állítsa alaphelyzetbe az emulátort, és kattintson a jobb gombbal a Windows értesítési tálcán megjelenő ikonra, és válassza az **adatvisszaállítás**lehetőséget.
 

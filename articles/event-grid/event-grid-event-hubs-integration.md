@@ -3,12 +3,13 @@ title: 'Oktatóanyag: Event Hubs-adatraktárba való küldés az adattárházba 
 description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával végezhető el az adatáttelepítés egy SQL Data Warehouse. Egy Azure-függvény használatával kéri le a rögzítési fájlt.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86117559"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007451"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
 Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs a Event Grid a blob Storage-ból rögzített Event Hubs adatok SQL Data Warehouseba való zökkenőmentes áttelepítéséhez.
@@ -248,7 +249,7 @@ A függvény közzététele után feliratkozhat az eseményre.
     1. Az **esemény-előfizetés részletei** lapon adja meg az előfizetés nevét (például: captureEventSub), majd válassza a **Létrehozás**lehetőséget. 
     2. A **témakör részletei** szakaszban hajtsa végre a következő műveleteket:
         1. Válassza ki **Event Hubs névtereket** a **témakörök típusaihoz**. 
-        2. Válassza ki az Azure-előfizetését.
+        2. Válassza ki Azure-előfizetését.
         2. Válassza ki az Azure-erőforráscsoportot.
         3. Válassza ki a Event Hubs névteret.
     3. Az **események típusai** szakaszban ellenőrizze, hogy a **létrehozott rögzítési fájl** ki van-e jelölve az **eseménytípus szűréséhez**. 
@@ -307,7 +308,7 @@ Az Event Grid elküldi az eseményadatokat az előfizetőknek. Az alábbi példa
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure üzenetkezelési szolgáltatások különbségeiről [az üzenetkézbesítő Azure-szolgáltatás kiválasztásának ismertetésében](compare-messaging-services.md) olvashat.
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546587"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló-kiszolgálóval
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Jelölje be az **SAML-hitelesítés engedélyezése a kiszolgálón**jelölőnégyzetet.
 
-    c. Tabló-kiszolgáló visszatérési URL-címe – a tabló-kiszolgáló felhasználói által elérhető URL-cím, például: <http://tableau_server> . A használata `http://localhost` nem ajánlott. A záró perjelet (például) használó URL-cím használata `http://tableau_server/` nem támogatott. A **tabló-kiszolgáló visszatérési URL-címének** másolása és beillesztése az **URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal
+    c. Tabló-kiszolgáló visszatérési URL-címe – a tabló-kiszolgáló felhasználói által elérhető URL-cím, például: `http://tableau_server` . A használata `http://localhost` nem ajánlott. A záró perjelet (például) használó URL-cím használata `http://tableau_server/` nem támogatott. A **tabló-kiszolgáló visszatérési URL-címének** másolása és beillesztése az **URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal
 
     d. SAML-entitás azonosítója – az entitás azonosítója egyedileg azonosítja a tabló-kiszolgáló telepítését a identitásszolgáltató. Itt megadhatja a tabló-kiszolgáló URL-címét, ha szeretné, de nem kell a tabló-kiszolgáló URL-címének lennie. Az **SAML-entitás azonosítójának** másolása és beillesztése az **azonosító** szövegmezőbe az **alapszintű saml-konfiguráció** szakaszának Azure Portal
 

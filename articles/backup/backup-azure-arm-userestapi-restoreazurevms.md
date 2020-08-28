@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889651"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011190"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Azure-beli virtuális gépek visszaállítása REST API használatával
 
@@ -27,7 +27,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 A `{containerName}` és a `{protectedItemName}` kiépítve [itt](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` az "Azure".
 
-A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére
+A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére.
 
 ### <a name="responses"></a>Válaszok
 
@@ -327,7 +327,7 @@ A [fentiekben](#restore-operations)leírtaknak megfelelően a következő kéré
 
 A választ ugyanúgy kell kezelni, mint a [lemezek visszaállítására szolgáló fentiekben ismertetett](#responses)módon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Backup REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 

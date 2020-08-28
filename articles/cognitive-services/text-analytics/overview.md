@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141857"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000957"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -82,26 +82,7 @@ Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdek�
 
 ## <a name="data-limits"></a>Adatkorlátok
 
-A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Az aktuális korlát az egyes dokumentumok 5 120 karaktere. Ha nagyobb dokumentumokat kell elemezni, akkor a kisebb adattömbökbe lehet bontani.
-
-| Korlát | Érték |
-|------------------------|---------------|
-| Az egyes dokumentumok maximális mérete | 5 120 karakter, a következőképpen mérve: [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
-| Teljes kérés maximális mérete | 1 MB |
-| Egy kérésbe foglalt dokumentumok maximális száma | Legfeljebb 1 000 dokumentum ([az egyes szolgáltatások esetében változó](concepts/data-limits.md)) |
-
-A díjszabási korlátja az Ön díjszabási szintjétől függ.
-
-| Szint          | Kérések száma másodpercenként | Percenkénti kérelmek |
-|---------------|---------------------|---------------------|
-| S/több szolgáltatás | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-A kérelmeket külön kell mérni az egyes Text Analytics szolgáltatásokhoz. Elküldheti például az árképzési szintjére vonatkozó kérések maximális számát az egyes szolgáltatásokhoz, egyszerre.      
+A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. További információért tekintse meg az [adatokra vonatkozó korlátozásokat](concepts/data-limits.md) ismertető cikket.
 
 ## <a name="unicode-encoding"></a>Unicode-kódolás
 

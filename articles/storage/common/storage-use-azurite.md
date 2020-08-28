@@ -7,12 +7,13 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089413"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001909"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
 
@@ -329,8 +330,8 @@ Ha az Azure SDK-kat használja, indítsa el a Azurite a `--oauth basic and --cer
 
 A Azurite ugyanazt a jól ismert fiókot és kulcsot fogadja el, amelyet a régi Azure Storage-emulátor használ.
 
-- Fiók neve:`devstoreaccount1`
-- Fiók kulcsa:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
+- Fiók neve: `devstoreaccount1`
+- Fiók kulcsa: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Egyéni Storage-fiókok és-kulcsok
 
@@ -498,7 +499,7 @@ A következő lépésekkel adhat hozzá HTTPS-Azurite a Storage Explorerhoz:
 1. **Helyi & csatolásának** kiválasztása
 1. Kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz**lehetőséget.
 1. Válassza **a kapcsolatok sztring használata** lehetőséget
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 1. Adjon meg egy értéket a **megjelenítendő név** mezőben.
 1. Adja meg a jelen dokumentum előző szakaszának [https-kapcsolati karakterláncát](#https-connection-strings) .
 1. Kattintson a **Tovább** gombra.
@@ -508,12 +509,12 @@ A következő lépésekkel adhat hozzá HTTPS-Azurite a Storage Explorerhoz:
 
 A következő fájlok és mappák hozhatók létre a munkaterület helyén a Azurite inicializálásakor.
 
-- `__blobstorage__`-A Azurite blob Service-t tartalmazó könyvtár bináris adatvédelmet tartalmaz
-- `__queuestorage__`-A Azurite üzenetsor-kezelő szolgáltatás megőrzött bináris adattartalma
-- `__azurite_db_blob__.json`-Azurite blob szolgáltatás metaadatainak fájlja
-- `__azurite_db_blob_extent__.json`-Azurite blob szolgáltatási mérték metaadat-fájlja
-- `__azurite_db_queue__.json`-Azurite üzenetsor-szolgáltatás metaadatainak fájlja
-- `__azurite_db_queue_extent__.json`-Azurite üzenetsor-szolgáltatási mérték metaadat-fájlja
+- `__blobstorage__` -A Azurite blob Service-t tartalmazó könyvtár bináris adatvédelmet tartalmaz
+- `__queuestorage__` -A Azurite üzenetsor-kezelő szolgáltatás megőrzött bináris adattartalma
+- `__azurite_db_blob__.json` -Azurite blob szolgáltatás metaadatainak fájlja
+- `__azurite_db_blob_extent__.json` -Azurite blob szolgáltatási mérték metaadat-fájlja
+- `__azurite_db_queue__.json` -Azurite üzenetsor-szolgáltatás metaadatainak fájlja
+- `__azurite_db_queue_extent__.json` -Azurite üzenetsor-szolgáltatási mérték metaadat-fájlja
 
 A Azurite törléséhez törölje a fenti fájlokat és mappákat, majd indítsa újra az emulátort.
 
@@ -559,7 +560,7 @@ A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (
 
 Szívesen fogadjuk a Azurite vonatkozó hozzájárulásokat és javaslatokat. Lépjen a Azurite [GitHub-projekt](https://github.com/Azure/Azurite/projects) oldalra, vagy [GitHub-problémák](https://github.com/Azure/Azurite/issues) a mérföldkövek és munkaelemek számára, amelyeket nyomon követünk a közelgő funkciókkal és hibajavításokkal kapcsolatban. A részletes munkaelemeket is nyomon követheti a GitHubon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Használja az Azure Storage emulatort fejlesztési és tesztelési](storage-use-emulator.md) dokumentumaihoz az örökölt Azure Storage-emulátort, amelyet a Azurite felülír.
 - Az [Azure Storage-kapcsolódási karakterláncok konfigurálása](storage-configure-connection-string.md) azt ismerteti, hogyan lehet egy érvényes Azure Storage-beli kapcsolódási karakterláncot összeállítani.

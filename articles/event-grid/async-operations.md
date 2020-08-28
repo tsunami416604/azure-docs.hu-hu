@@ -3,12 +3,13 @@ title: Event Grid aszinkron műveletek állapota
 description: Útmutatás Event Grid aszinkron műveletek nyomon követéséhez az Azure-ban. Megjeleníti a hosszan futó művelet állapotának lekéréséhez használt értékeket.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103330"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011684"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Az aszinkron Azure-műveletek nyomon követése Event Grid
 Bizonyos Azure REST-műveletek aszinkron módon futnak, mert a művelet nem hajtható végre gyorsan. Ez a cikk bemutatja, hogyan követheti nyomon az aszinkron műveletek állapotát a válaszban visszaadott értékek alapján.  
@@ -29,9 +30,9 @@ Tekintse meg az [REST API dokumentációját](/rest/api/) , hogy láthassa a vé
 ## <a name="monitor-status-of-operation"></a>A művelet állapotának figyelése
 Az aszinkron REST-műveletek adja vissza a fejléc értékeit, amelyek segítségével meghatározhatja a művelet állapotát. A megvizsgálható három fejléc-érték is lehetséges:
 
-* `Azure-AsyncOperation`-URL a művelet folyamatos állapotának ellenőrzéséhez. Ha a művelet visszaadja ezt az értéket, mindig használja (hely helyett) a művelet állapotának nyomon követéséhez.
-* `Location`-A művelet befejezését meghatározó URL-cím. Ezt az értéket csak akkor használja, ha az Azure-AsyncOperation nem ad vissza.
-* `Retry-After`– Az aszinkron művelet állapotának ellenőrzése előtt megvárni kívánt másodpercek száma.
+* `Azure-AsyncOperation` -URL a művelet folyamatos állapotának ellenőrzéséhez. Ha a művelet visszaadja ezt az értéket, mindig használja (hely helyett) a művelet állapotának nyomon követéséhez.
+* `Location` -A művelet befejezését meghatározó URL-cím. Ezt az értéket csak akkor használja, ha az Azure-AsyncOperation nem ad vissza.
+* `Retry-After` – Az aszinkron művelet állapotának ellenőrzése előtt megvárni kívánt másodpercek száma.
 
 Azonban nem minden aszinkron művelet adja vissza ezeket az értékeket. Előfordulhat például, hogy ki kell értékelnie az Azure-AsyncOperation fejléc értékét egy művelethez, és egy másik műveletnél a Location fejléc értékét. 
 

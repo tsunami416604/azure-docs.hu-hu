@@ -3,12 +3,13 @@ title: Egység-tesztek fejlesztése állapot-nyilvántartó szolgáltatásokhoz
 description: Ismerje meg az Azure-Service Fabric az állapot-nyilvántartó szolgáltatásokkal kapcsolatos egység-tesztelést, valamint a fejlesztés során figyelembe veendő speciális szempontokat.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639836"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011395"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Egységbeli tesztek létrehozása állapot-nyilvántartó szolgáltatásokhoz
 Az egység tesztelése Service Fabric állapot-nyilvántartó szolgáltatások felfedik azokat a gyakori hibákat, amelyeket a hagyományos alkalmazások vagy a tartományra vonatkozó egységek tesztelése nem feltétlenül okoz. Az állapot-nyilvántartó szolgáltatások esetében az egység-tesztek fejlesztése során néhány különleges szempontot figyelembe kell venni.
@@ -127,5 +128,5 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan tesztelheti a [szolgáltatás és a szolgáltatás közötti kommunikációt](service-fabric-testability-scenarios-service-communication.md) , és hogyan [szimulálhatja a hibákat az irányított káosz használatával](service-fabric-controlled-chaos.md).

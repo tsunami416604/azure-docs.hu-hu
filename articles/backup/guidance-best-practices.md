@@ -3,12 +3,12 @@ title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825579"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000362"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -119,7 +119,7 @@ Biztonsági mentési szabályzat létrehozásakor vegye figyelembe a következő
   * Ha a megőrzés csökken, a helyreállítási pontok a következő tisztítási feladatokban törlésre vannak megjelölve, és ezt követően törlődnek.
   * A legújabb adatmegőrzési szabályok az összes megőrzési pontra érvényesek (kivéve az igény szerinti megőrzési pontokat). Tehát ha a megőrzési időtartam kibővül (például 100 napig), akkor a biztonsági mentést követően (például 100 nap és hét nap között), az összes biztonsági mentési adat megmarad az utolsó megadott megőrzési időtartam (azaz 7 nap) alapján.
 
-* Az Azure Backup rugalmasságot biztosít a *biztonsági másolatok védelmének és kezelésének leállításához*:
+* Azure Backup rugalmasságot biztosít a *biztonsági másolatok védelmének és kezelésének leállításához*:
   * *A védelem leállítása és a biztonsági mentési adat megőrzése*. Ha kihasználja vagy leszereli az adatforrást (VM, Application), de az adatok megőrzését vagy megfelelőségét kell megtartania, akkor ezzel a lehetőséggel leállíthatja az összes jövőbeli biztonsági mentési feladatot az adatforrás védelméről, és megtarthatja a biztonsági mentés alatt álló helyreállítási pontokat. Ezután visszaállíthatja vagy folytathatja a virtuális gépek védelmét.
   * *Állítsa le a védelmet, és törölje a biztonsági másolati fájlokat*. Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladatot a virtuális gép védelmére, és törli az összes helyreállítási pontot. Nem fogja tudni visszaállítani a virtuális gépet, és nem használhatja a biztonsági mentés folytatása lehetőséget.
 
@@ -214,7 +214,7 @@ A Azure Backup szolgáltatás képességei rugalmasan kezelhetik a költségeket
 
 * Azure Backup pillanatképeket küld az Azure-beli virtuális gépekről, és azokat a lemezekkel együtt tárolja a helyreállítási pont létrehozása és a visszaállítási műveletek felgyorsításához. Ezt az azonnali visszaállításnak nevezzük. Alapértelmezés szerint az azonnali visszaállítási Pillanatképek két napig tartanak. Ez a funkció lehetővé teszi a visszaállítási műveletek elvégzését ezekről a pillanatképekről a visszaállítási idő csökkentésével. Ez csökkenti az adatok tárolóból való visszaalakításához és másolásához szükséges időt. Ennek eredményeképpen megjelennek a tárolási költségek, amelyek megfelelnek az adott időszakban készített pillanatképeknek. [További információ itt](backup-instant-restore-capability.md#configure-snapshot-retention).
 
-* Azure Backup tár tárolási replikálási típusa alapértelmezés szerint a Geo-redundáns (GRS) értékre van állítva. Ez a beállítás az elemek védelme után nem módosítható. A Geo-redundáns tárolás (GRS) magasabb szintű adattartósságot biztosít, mint a helyileg redundáns tárolás (LRS), lehetővé teszi a több régióra kiterjedő visszaállítás használatát és a költségek csökkentését. Tekintse át az alacsonyabb költségek és a magasabb adattartósság közötti kompromisszumot, amely a legmegfelelőbb a forgatókönyvhöz. [További információ](backup-create-rs-vault.md#set-storage-redundancy)
+* Azure Backup tár tárolási replikálási típusa alapértelmezés szerint a Geo-redundáns (GRS) értékre van állítva. Ez a beállítás az elemek védelme után nem módosítható. A Geo-redundáns tárolás (GRS) magasabb szintű adattartósságot biztosít, mint a helyileg redundáns tárolás (LRS), lehetővé teszi a több régióra kiterjedő visszaállítás használatát és a költségek csökkentését. Tekintse át az alacsonyabb költségek és a magasabb adattartósság közötti kompromisszumokat, és döntse el, hogy mi a legmegfelelőbb a forgatókönyvhöz. [További információ](backup-create-rs-vault.md#set-storage-redundancy)
 
 * Ha a virtuális gépen belül futó munkaterhelést is védi, és maga a virtuális gép is van, ellenőrizze, hogy van-e szükség a kettős védelemre.
 
@@ -255,7 +255,7 @@ Biztonsági mentési felhasználóként vagy rendszergazdaként képesnek kell l
 
 * Értesítéseket a beépített Recovery Services tár **tevékenység-naplókban**is kaphat. Azonban támogatja a korlátozott forgatókönyveket, és nem alkalmas olyan műveletekhez, mint az ütemezett biztonsági mentés, amely jobban igazodik az erőforrás-naplókhoz, mint a tevékenységek naplói. Ha többet szeretne megtudni ezekről a korlátozásokról, valamint arról, hogy miként használhatja a Log Analytics munkaterületet az Azure Backup által védett munkaterhelések figyelésére és riasztására, tekintse meg ezt a [cikket](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Javasoljuk, hogy olvassa el a következő cikkeket a Azure Backup használatának kiindulási pontjaiként:
 

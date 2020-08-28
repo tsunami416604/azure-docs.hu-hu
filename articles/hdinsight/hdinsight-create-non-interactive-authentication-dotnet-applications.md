@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074782"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021765"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Nem interaktív hitelesítéssel rendelkező .NET HDInsight-alkalmazás létrehozása
 
@@ -119,7 +119,7 @@ Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.m
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hozzon létre egy Azure Active Directory alkalmazást és szolgáltatásnevet a Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 * Megtudhatja, hogyan [hitelesítheti az egyszerű szolgáltatásokat Azure Resource Managerokkal](../active-directory/develop/howto-authenticate-service-principal-powershell.md).

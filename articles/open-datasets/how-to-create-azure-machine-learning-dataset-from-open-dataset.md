@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584879"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998073"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning adatkészletek létrehozása az Azure Open-adatkészletből
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan hozhatja ki a kurátori adatokat a helyi v
 
 Annak megismeréséhez, hogy az adatkészletek hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférés adatai](../machine-learning/concept-data.md#data-workflow) című cikket.
 
-Az Azure Open-adatkészletek olyan nyilvános adatkészletek, amelyeket felhasználhat a prediktív megoldások bővítésére és pontosságuk javítására használható forgatókönyv-specifikus funkciók hozzáadására. Tekintse meg a nyilvános tartományba tartozó [adatkészletek katalógusát](https://azure.microsoft.com/services/op[en-datasets/catalog/) , amely segíthet a gépi tanulási modellek képzésében, például:
+Az Azure Open-adatkészletek olyan nyilvános adatkészletek, amelyeket felhasználhat a prediktív megoldások bővítésére és pontosságuk javítására használható forgatókönyv-specifikus funkciók hozzáadására. Tekintse meg a nyilvános tartományba tartozó [adatkészletek katalógusát](https://azure.microsoft.com/en-in/services/open-datasets/catalog/) , amely segíthet a gépi tanulási modellek képzésében, például:
 
 * [Weather](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [népszámlálás](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)
@@ -126,7 +126,7 @@ Az adatkészleteket a gépi tanulási kísérletekben használhatja a ML-modelle
 
 A nyílt adatkészletek funkcióinak példái és bemutatói a [következő](samples.md)példákat mutatják be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az első ml-modell betanítása](../machine-learning/tutorial-1st-experiment-sdk-train.md).
 

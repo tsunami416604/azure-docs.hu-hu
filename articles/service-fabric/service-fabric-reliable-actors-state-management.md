@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75348922"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007791"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors állapot kezelése
 A Reliable Actors egyszálas objektumok, amelyek logika és állapot beágyazására is képesek. Mivel a szereplők Reliable Services futnak, megbízhatóan kezelhetik az állapotot ugyanazon megőrzési és replikációs mechanizmusok használatával. Így a szereplők nem veszítik el az állapotukat a meghibásodások után, az újraaktiválást követően, vagy a fürt csomópontjai között, erőforrás-kiegyensúlyozás vagy-verziófrissítés miatt.
@@ -116,7 +117,7 @@ Egyértelmű szabályzattal kell rendelkeznie az állapot méretének kezelésé
  
 Ha azt tapasztalja, hogy egy Actor szolgáltatás adatbázis-fájljának mérete meghaladja a várt méretet, ügyeljen arra, hogy a fenti irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is az adatbázis fájlméretével kapcsolatos problémák merülnek fel, akkor segítségért [Nyisson meg egy támogatási jegyet](service-fabric-support.md) a termék csapatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 

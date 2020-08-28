@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: b92d26da837cab72a4c4404a7b5b3de5d3116480
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 610006dc84abc0b8590353e1edd52582dfd6fac6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043355"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022003"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>Oktatóanyag: élő közvetítés Media Services
 
@@ -171,7 +171,7 @@ Az esemény megtekintéséhez másolja az adatfolyam-kereső létrehozása cím�
 
 Az élő esemény automatikusan átalakítja az eseményeket az igény szerinti tartalomba, ha leállt. Az esemény leállítása és törlése után a felhasználók az archivált tartalmat igény szerint videóként is továbbíthatja, feltéve, hogy nem törli az eszközt. Egy eszköz nem törölhető, ha egy esemény használja. először törölni kell az eseményt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 
@@ -188,7 +188,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Videofájlok streamelése](stream-files-tutorial-with-api.md)
  

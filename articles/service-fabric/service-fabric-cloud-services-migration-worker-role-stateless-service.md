@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463343"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002283"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a webes és feldolgozói szerepkörök Service Fabric állapot nélküli szolgáltatásokhoz való átalakításához
 Ez a cikk azt ismerteti, hogyan telepítheti át Cloud Services webes és feldolgozói szerepköreit Service Fabric állapot nélküli szolgáltatások számára. Ez a legegyszerűbb áttelepítési útvonal Cloud Servicesról Service Fabric olyan alkalmazások számára, amelyek általános architektúrája nagyjából azonos marad.
@@ -32,10 +33,10 @@ A feldolgozói szerepkörhöz hasonlóan a webes szerepkörök állapot nélkül
 
 | **Alkalmazás** | **Támogatott** | **Áttelepítési útvonal** |
 | --- | --- | --- |
-| ASP.NET Web Forms |No |Átalakítás ASP.NET Core 1 MVC-re |
+| ASP.NET Web Forms |Nem |Átalakítás ASP.NET Core 1 MVC-re |
 | ASP.NET, MVC |Áttelepítéssel |Frissítés ASP.NET Core 1 MVC-ra |
 | ASP.NET, webes API |Áttelepítéssel |Saját üzemeltetésű kiszolgáló használata vagy ASP.NET Core 1 |
-| ASP.NET Core 1 |Yes |N.A. |
+| ASP.NET Core 1 |Igen |n.a. |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Belépési pont API és életciklusa
 A feldolgozói szerepkör és a Service Fabric szolgáltatás API-jai hasonló belépési pontokat kínálnak: 
@@ -43,9 +44,9 @@ A feldolgozói szerepkör és a Service Fabric szolgáltatás API-jai hasonló b
 | **Belépési pont** | **Feldolgozói szerepkör** | **Service Fabric szolgáltatás** |
 | --- | --- | --- |
 | Feldolgozás |`Run()` |`RunAsync()` |
-| Virtuális gép indítása |`OnStart()` |N.A. |
-| Virtuális gép leállítása |`OnStop()` |N.A. |
-| Ügyfél-kérelmekhez tartozó figyelő megnyitása |N.A. |<ul><li> `CreateServiceInstanceListener()`állapot nélküli</li><li>`CreateServiceReplicaListener()`állapot-nyilvántartó</li></ul> |
+| Virtuális gép indítása |`OnStart()` |n.a. |
+| Virtuális gép leállítása |`OnStop()` |n.a. |
+| Ügyfél-kérelmekhez tartozó figyelő megnyitása |n.a. |<ul><li> `CreateServiceInstanceListener()` állapot nélküli</li><li>`CreateServiceReplicaListener()` állapot-nyilvántartó</li></ul> |
 
 ### <a name="worker-role"></a>Feldolgozói szerepkör
 ```csharp
@@ -113,9 +114,9 @@ A Cloud Services környezeti API az aktuális virtuálisgép-példányra vonatko
 | --- | --- | --- |
 | Konfigurációs beállítások és változási értesítés |`RoleEnvironment` |`CodePackageActivationContext` |
 | Helyi tárterület |`RoleEnvironment` |`CodePackageActivationContext` |
-| Végpont adatai |`RoleInstance` <ul><li>Aktuális példány:`RoleEnvironment.CurrentRoleInstance`</li><li>Egyéb szerepkörök és példányok:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`aktuális csomópont-címnek</li><li>`FabricClient`és `ServicePartitionResolver` a szolgáltatás végpontjának felderítéséhez</li> |
-| Környezeti emuláció |`RoleEnvironment.IsEmulated` |N.A. |
-| Egyidejű módosítási esemény |`RoleEnvironment` |N.A. |
+| Végpont adatai |`RoleInstance` <ul><li>Aktuális példány: `RoleEnvironment.CurrentRoleInstance`</li><li>Egyéb szerepkörök és példányok: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` aktuális csomópont-címnek</li><li>`FabricClient` és `ServicePartitionResolver` a szolgáltatás végpontjának felderítéséhez</li> |
+| Környezeti emuláció |`RoleEnvironment.IsEmulated` |n.a. |
+| Egyidejű módosítási esemény |`RoleEnvironment` |n.a. |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 A Cloud Services konfigurációs beállításai virtuálisgép-szerepkörre vannak beállítva, és az adott virtuálisgép-szerepkör összes példányára érvényesek. Ezek a beállítások a ServiceConfiguration. *. cscfg-fájlokban beállított kulcs-érték párok, amelyek közvetlenül a RoleEnvironment keresztül érhetők el. Service Fabric a beállítások a virtuális gépek helyett az egyes szolgáltatásokra és az egyes alkalmazásokra vonatkoznak, mivel egy virtuális gép több szolgáltatást és alkalmazást is képes tárolni. A szolgáltatás három csomagból áll:
@@ -243,7 +244,7 @@ Service Fabric az indítási belépési pont konfigurálása szolgáltatásként
 ## <a name="a-note-about-development-environment"></a>Megjegyzés a fejlesztési környezetről
 A Cloud Services és a Service Fabric egyaránt integrálva van a Visual Studióval és a Project sablonjaival, és támogatja a helyi és az Azure-beli hibakeresést, konfigurálást és üzembe helyezést. A Cloud Services és a Service Fabric is biztosít helyi fejlesztési futtatókörnyezetet. A különbség az, hogy míg a Cloud Service fejlesztői futtatókörnyezet emulálja az Azure-környezetet, amelyen fut, Service Fabric nem használ emulátort – a teljes Service Fabric futtatókörnyezetet használja. A helyi fejlesztési gépen futtatott Service Fabric környezet ugyanaz a környezet, amely éles környezetben fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Service Fabric Reliable Servicesről és az Cloud Services és Service Fabric alkalmazás-architektúra közötti alapvető különbségekről, hogy megtudja, hogyan használhatja ki a Service Fabric funkciók teljes készletét.
 
 * [Első lépések a Service Fabric Reliable Services](service-fabric-reliable-services-quick-start.md)

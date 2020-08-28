@@ -3,12 +3,13 @@ title: Azure Service Bus üzenetkezelési entitások automatikus továbbítása
 description: Ez a cikk egy Azure Service Bus üzenetsor vagy előfizetés egy másik várólistára vagy témakörre való láncolását ismerteti.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 28c3e8985f12163e871fa4de5fb6cc92d68110b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337731"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021714"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entitások láncolása az autoforwarding révén
 
@@ -52,7 +53,7 @@ Service Bus egy műveletet számláz az egyes továbbított üzenetekhez. Ha pé
 
 Egy másik várólistához vagy témakörhöz láncolt előfizetés létrehozásához az előfizetés létrehozójának a forrás és a cél entitáson is **kezelnie** kell a felügyeleti jogosultságokat. Az üzenetek a forrás témakörbe való küldése csak a forrás témakör **küldési** engedélyeit igényli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az autoforwarding szolgáltatással kapcsolatos részletes információkért tekintse meg a következő témaköröket:
 

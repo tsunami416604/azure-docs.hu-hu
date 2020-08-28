@@ -11,12 +11,13 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
-ms.openlocfilehash: 140bbc698db773f851cf03d80e8e51be9c2a21c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327548"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022139"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
 
@@ -556,7 +557,7 @@ Az IoT-hubok állapotának vizsgálatához kövesse az alábbi lépéseket:
 
 Az állapotadatok értelmezésével kapcsolatos további tudnivalókért tekintse meg az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [IoT Hub mérőszámok ismertetése](iot-hub-metrics.md)
 * [IoT távoli figyelés és értesítések Azure Logic Apps az IoT hub és a postaláda csatlakoztatásával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

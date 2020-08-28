@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: seodec18
-ms.openlocfilehash: b5e2dc56ad84504f0bf5ced09d865d7cb4e467fa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027805"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002176"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage tábla tervezési útmutatója: skálázható és elvégezhető táblák
 
@@ -39,7 +39,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Időbélyeg</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -152,8 +152,8 @@ A következő táblázat néhány kulcsfontosságú értéket tartalmaz, amelyek
 | Egy tábla partícióinak száma |Csak a Storage-fiók kapacitása korlátozza. |
 | Egy partícióban lévő entitások száma |Csak a Storage-fiók kapacitása korlátozza. |
 | Egyéni entitás mérete |Legfeljebb 1 MB, legfeljebb 255 tulajdonsággal (beleértve a `PartitionKey` , `RowKey` , és `Timestamp` ). |
-| A`PartitionKey` |Legfeljebb 1 KB méretű sztring. |
-| A`RowKey` |Legfeljebb 1 KB méretű sztring. |
+| A `PartitionKey` |Legfeljebb 1 KB méretű sztring. |
+| A `RowKey` |Legfeljebb 1 KB méretű sztring. |
 | Entitás-csoport tranzakciójának mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos adatnak 4 MB-nál kisebbnek kell lennie. Egy EGT csak egyszer tud frissíteni egy entitást. |
 
 További információ: [a Table Service adatmodell ismertetése](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
@@ -195,8 +195,8 @@ Az alábbi példák azt feltételezik, hogy a Table Storage az alábbi struktúr
 
 | Oszlop neve | Adattípus |
 | --- | --- |
-| `PartitionKey`(Részleg neve) |Sztring |
-| `RowKey`(Alkalmazott azonosítója) |Sztring |
+| `PartitionKey` (Részleg neve) |Sztring |
+| `RowKey` (Alkalmazott azonosítója) |Sztring |
 | `FirstName` |Sztring |
 | `LastName` |Sztring |
 | `Age` |Egész szám |
@@ -204,10 +204,10 @@ Az alábbi példák azt feltételezik, hogy a Table Storage az alábbi struktúr
 
 Íme néhány általános útmutató a Table Storage-lekérdezések tervezéséhez. A következő példákban használt szűrési szintaxis a Table Storage REST API. További információ: [lekérdezési entitások](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Példa: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* A második legjobb a *tartomány lekérdezése*. A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Példa: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* A harmadik legjobb a *partíciós vizsgálat*. A és a `PartitionKey` szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Példa: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
-* A *tábla vizsgálata* nem tartalmazza a (z) `PartitionKey` , és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a-t használja-e `RowKey` . Példa: `$filter=LastName eq 'Jones'`.  
+* Az adott *pont lekérdezése* a leghatékonyabb keresés, amelyet a legalacsonyabb késleltetést igénylő nagy mennyiségű keresésekhez vagy keresésekhez ajánlott használni. Egy ilyen lekérdezés az indexeket használva hatékonyan megkeresheti az egyes entitásokat a és az értékek megadásával `PartitionKey` `RowKey` . Például: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
+* A második legjobb a *tartomány lekérdezése*. A és a (z `PartitionKey` ) és a szűrők használatával `RowKey` több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* A harmadik legjobb a *partíciós vizsgálat*. A és a `PartitionKey` szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* A *tábla vizsgálata* nem tartalmazza a (z) `PartitionKey` , és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a-t használja-e `RowKey` . Például: `$filter=LastName eq 'Jones'`.  
 * Az Azure Table Storage-lekérdezések, amelyek több entitást adnak vissza, `PartitionKey` és sorrendbe rendezik azokat `RowKey` . Ha nem szeretné, hogy az entitások ne legyenek az ügyfélben, válassza a leggyakoribb `RowKey` rendezési sorrendet definiáló elemet. A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
 A "**vagy**" használatával egy szűrő megadásával határozhatja meg az értékek alapján egy `RowKey` partíció vizsgálatát, és nem kezelhető tartomány-lekérdezésként. Ezért Kerülje a szűrőket használó lekérdezéseket, például a következőt: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
@@ -222,7 +222,7 @@ Az ugyanabban a táblában tárolt több entitást kezelő ügyféloldali kódok
 
 * [Heterogén entitások típusának használata](#work-with-heterogeneous-entity-types)  
 
-### <a name="choose-an-appropriate-partitionkey"></a>Megfelelő kiválasztása`PartitionKey`
+### <a name="choose-an-appropriate-partitionkey"></a>Megfelelő kiválasztása `PartitionKey`
 Ön dönti el, hogy `PartitionKey` szükséges-e a EGTs használatának engedélyezése (az egységesség biztosítása érdekében) az entitások több partíción való terjesztésének követelménye között (a méretezhető megoldás biztosítása érdekében).  
 
 Egyetlen szélsőséges esetben egyetlen partícióban tárolhatja az összes entitást. Ez azonban korlátozhatja a megoldás méretezhetőségét, és megakadályozhatja, hogy a tábla tárterülete ne tudja betölteni a kérelmeket. A másik végletben partícióként egy entitást is tárolhat. Ez a rugalmasan méretezhető, és lehetővé teszi a Table Storage számára, hogy terheléselosztási kérelmeket használjon, de megakadályozza az entitás-csoportok tranzakcióinak használatát.  
@@ -1127,7 +1127,7 @@ A Table Storage *séma nélküli tábla-* tároló. Ez azt jelenti, hogy egyetle
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Időbélyeg</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1219,7 +1219,7 @@ Minden entitásnak továbbra is rendelkeznie kell, és értékeket kell tartalma
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Időbélyeg</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1236,7 +1236,7 @@ Minden entitásnak továbbra is rendelkeznie kell, és értékeket kell tartalma
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Employee (Alkalmazott)</td>
+<td>Alkalmazott</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1258,7 +1258,7 @@ Minden entitásnak továbbra is rendelkeznie kell, és értékeket kell tartalma
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Employee (Alkalmazott)</td>
+<td>Alkalmazott</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1299,7 +1299,7 @@ Minden entitásnak továbbra is rendelkeznie kell, és értékeket kell tartalma
 <th>E-mail</th>
 </tr>
 <tr>
-<td>Employee (Alkalmazott)</td>
+<td>Alkalmazott</td>
 <td></td>
 <td></td>
 <td></td>

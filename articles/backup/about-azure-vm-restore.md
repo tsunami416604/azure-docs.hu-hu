@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-beli virtuális gépek visszaállítási folyamatár
 description: Ismerje meg, hogyan állítja vissza az Azure Virtual Machines szolgáltatást a Azure Backup szolgáltatás
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5458d02e241860a98d1ab5f64df141132813f8dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761389"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011956"
 ---
 # <a name="about-azure-vm-restore"></a>Azure-beli virtuális gépek visszaállítása
 
@@ -16,7 +16,7 @@ Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) 
 
 ## <a name="concepts"></a>Alapelvek
 
-- **Helyreállítási pont** (más néven **visszaállítási pont**): a helyreállítási pont az eredeti, biztonsági mentés alatt álló adatmennyiség másolata.
+- **Helyreállítási pont** (más néven **visszaállítási pont**): a helyreállítási pont az eredeti, biztonsági mentés alatt álló adatbázis másolata.
 
 - **Szint (pillanatkép**és tár): az Azure virtuális gép biztonsági mentése két fázisban történik:
 
@@ -47,7 +47,7 @@ Ez a cikk azt ismerteti, hogyan állítja vissza az Azure Virtual Machines (VM) 
 | [Titkosított virtuális gép visszaállítása](./backup-azure-vms-encryption.md) | A portálról állítsa vissza a lemezeket, majd a PowerShell használatával hozza létre a virtuális gépet. | <li> [Titkosított virtuális gép Azure Active Directory (HRE)](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Titkosított virtuális gép HRE nélkül](../virtual-machines/windows/disk-encryption-windows.md) <li> [Titkosított virtuális gép *HRE* - *HRE nélkül* áttelepítve](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [Régiók közötti visszaállítás](./backup-azure-arm-restore-vms.md#cross-region-restore) | Új virtuális gép létrehozása vagy lemezek visszaállítása másodlagos régióba (Azure párosított régió) | <li> **Teljes leállás**: a régiók közötti visszaállítási szolgáltatással a másodlagos régióban nem lehet várni az adatok helyreállítására. A visszaállításokat a másodlagos régióban is kezdeményezheti, még az Azure előtt is. <li> **Részleges leállás**: az állásidő olyan tárolási fürtökön fordulhat elő, ahol a Azure Backup tárolja a biztonsági másolatok adatait, vagy akár hálózatban is, összekapcsolva a biztonsági másolatban szereplő adataihoz társított Azure Backup és Storage-fürtöket. A régiók közötti visszaállítással a másodlagos régióban visszaállíthat egy visszaállítást a másodlagos régióban. <li> **Nincs leállás**: az üzletmenet-folytonosságot és a vész-helyreállítási (BCDR) gyakorlatokat a másodlagos régió adataival történő auditálási és megfelelőségi célokra is elvégezheti. Ez lehetővé teszi a biztonsági másolatok adatainak visszaállítását a másodlagos régióban, még akkor is, ha az elsődleges régióban nincs teljes vagy részleges leállás az üzletmenet folytonosságának és a vész-helyreállítási gyakorlatoknak.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyakori kérdések a virtuális gépek visszaállításáról](./backup-azure-vm-backup-faq.md#restore)
 - [Támogatott visszaállítási módszerek](./backup-support-matrix-iaas.md#supported-restore-methods)

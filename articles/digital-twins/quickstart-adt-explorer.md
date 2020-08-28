@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c3230294fd9d5761433b4507ff054bcaae7a11ad
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 6b0a024dde1c96610a637ec51fd29e4a23dadc53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959813"
+ms.locfileid: "89008556"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Egy minta Azure digitális Twins-forgatókönyv megismerése a ADT Explorer használatával
 
@@ -98,7 +98,7 @@ Az ablak tetején található *Bejelentkezés* gombra kattintva állítsa be, ho
 Adja meg az [Előfeltételek](#prerequisites) szakaszban korábban összegyűjtött fontos adatokat:
 * Alkalmazás (ügyfél) azonosítója
 * Címtár (bérlő) azonosítója
-* ADT URL-címe a *https:// <instance host name> * formátumban
+* ADT URL-cím a *https://{instance Host Name}* formátumban
 
 >[!NOTE]
 > Bármikor újra felkeresheti vagy szerkesztheti ezeket az adatokat. Ehhez jelölje ki ugyanazt az ikont, ha újra fel szeretné húzni a bejelentkezési mezőt. A rendszer megtartja a beadott értékeket.
