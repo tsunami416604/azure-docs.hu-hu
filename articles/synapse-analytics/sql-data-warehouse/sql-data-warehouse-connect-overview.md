@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 31537f6cf957307aea4524d9c9421842d65979c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, devx-track-csharp
+ms.openlocfilehash: ab169f7b814dedbc63f3cb6cddbfb822bdb57ab9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213533"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016444"
 ---
 # <a name="connect-to-synapse-sql-pool"></a>Kapcsolódás a szinapszis SQL-készlethez
 
@@ -26,7 +26,7 @@ Csatlakozás az SQL-készlethez.
 
 A kiszolgáló neve a következő példában sqlpoolservername.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Kattintson az **Azure szinapszis Analytics**elemre.
 3. Kattintson arra az SQL-készletre, amelyhez csatlakozni szeretne.
 4. Keresse meg a teljes kiszolgálónevet.
@@ -77,6 +77,6 @@ Az SQL-készlet Szabványosít néhány beállítást a csatlakozás és az obje
 | [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |hné |
 | [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md). További információ a hitelesítési lehetőségekről: [Az Azure szinapszis Analytics hitelesítése](sql-data-warehouse-authentication.md).

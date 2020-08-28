@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dcec1e40e9095c27abb1470e3739f65035a96834
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75976740"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007179"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>IoT hub létrehozása Azure Resource Manager sablon használatával (.NET)
 
@@ -23,13 +24,13 @@ ms.locfileid: "75976740"
 A Azure Resource Manager használatával programozott módon hozhat létre és kezelhet Azure IoT-hubokat. Ebből az oktatóanyagból megtudhatja, hogyan használható egy Azure Resource Manager-sablon egy IoT hub C#-programból való létrehozásához.
 
 > [!NOTE]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Azure Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md).  Ez a cikk a Azure Resource Manager üzembe helyezési modell használatát ismerteti.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Azure Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md).  Ez a cikk a Azure Resource Manager üzembe helyezési modell használatát ismerteti.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Visual Studio.
+* A Visual Studióval.
 * Aktív Azure-fiók. <br/>Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial] .
 * Egy [Azure Storage-fiók][lnk-storage-account] , amely a Azure Resource Manager sablonfájlokat tárolja.
 * [Azure PowerShell 1,0][lnk-powershell-install] vagy újabb.
@@ -200,7 +201,7 @@ Most már elvégezheti az alkalmazást úgy, hogy meghívja a **CreateIoTHub** m
 > [!NOTE]
 > Ez az alkalmazás egy S1 szabványú IoT Hub hoz létre, amelynek számlázása. Az IoT hub törölhető a [Azure Portal][lnk-azure-portal] vagy a **Remove-AzResource PowerShell-** parancsmag használatával, ha elkészült.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most üzembe helyezett egy IoT hub-t egy C#-programot használó Azure Resource Manager sablonnal, érdemes megvizsgálnia a következőket:
 
 * További információ a [IoT hub erőforrás-szolgáltató REST API][lnk-rest-api]képességeiről.

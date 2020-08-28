@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 7c27c9e522964ca4f6374e83a9fb6b992f0fb2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, devx-track-csharp
+ms.openlocfilehash: 637078cf67a2880e452ff02be63f3908bd601158
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016291"
 ---
 # <a name="connection-strings-for-synapse-sql-pool"></a>A szinapszis SQL-készlethez tartozó kapcsolatok karakterláncai
 
@@ -51,6 +51,6 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > [!NOTE]
 > Ügyeljen arra, hogy a kapcsolat időtúllépését 300 másodpercre állítsa, hogy a kapcsolat megmaradjon a rövid időtartamú elérhetetlenség érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL-készlet Visual Studióval és más alkalmazásokkal való lekérdezésének megkezdéséhez lásd: [lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md).

@@ -7,12 +7,13 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: ff49e9baf83d52ba7c40d0c0a9efbd72cee66cd9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171499"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998985"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Oktatóanyag: közzététel, előfizetés a Felhőbeli eseményekre
 
@@ -194,7 +195,7 @@ A Azure Portal a függvény **figyelése** lehetőség alatt megtekintheti a les
 
 * Törölje a Azure Portal létrehozott Azure-függvényt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést és közzétett eseményeket. Most, hogy már ismeri az alapszintű lépéseket, tekintse meg a következő cikkeket:
 

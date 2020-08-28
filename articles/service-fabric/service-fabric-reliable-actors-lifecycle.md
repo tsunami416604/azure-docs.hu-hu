@@ -5,12 +5,13 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260448"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016699"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Színészi életciklus, automatikus Garbage-gyűjtés és manuális törlés
 A színész akkor aktiválódik, amikor az első alkalommal hívást kezdeményeztek valamelyik metódusára. Egy szereplő inaktiválva van (a Actors Runtime által összegyűjtött szemetet), ha nem használják konfigurálható időtartamra. Egy színész és az állapota manuálisan is törölhető bármikor.
@@ -40,7 +41,7 @@ Ha egy szereplő inaktiválva van, a Actor objektumra mutató hivatkozások jele
 Mi számít "használatnak" a Deaktiválás és a szemét gyűjtése céljából?
 
 * Hívás fogadása
-* `IRemindable.ReceiveReminderAsync`a metódus meghívása (csak akkor érvényes, ha a színész emlékeztetőket használ)
+* `IRemindable.ReceiveReminderAsync` a metódus meghívása (csak akkor érvényes, ha a színész emlékeztetőket használ)
 
 > [!NOTE]
 > Ha a színész időzítőt használ, és meghívja az időzítő visszahívását, a rendszer **nem** a "használat" értékre számít.

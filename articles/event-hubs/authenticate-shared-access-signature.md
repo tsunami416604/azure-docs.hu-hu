@@ -3,13 +3,13 @@ title: Az Azure Event Hubshoz való hozzáférés hitelesítése közös hozzáf
 description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrásokhoz való hozzáférést közös hozzáférési aláírások használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: bf1f42020237c0907ec7656735adfa46a21370f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423099"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008318"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -44,10 +44,10 @@ SendRuleNS-engedélyezési szabály használatakor az ügyfélalkalmazások a EH
 ## <a name="generate-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása 
 Minden olyan ügyfél létrehozhat egy SAS-jogkivonatot, amely egy engedélyezési szabály nevének és az egyik aláíró kulcsnak a nevéhez fér hozzá. A jogkivonat a következő formátumú sztringek létrehozásával jön létre:
 
-- `se`– A jogkivonat lejárati ideje azonnali. Egész szám, amely a (z) 00:00:00 UTC szerint 1 – 1970 (UNIX-kor) időszakon belül, a jogkivonat lejárata után.
-- `skn`– Az engedélyezési szabály neve, amely az SAS-kulcs neve.
-- `sr`– Az elérni kívánt erőforrás URI-ja.
-- `sig`Aláírás.
+- `se`  – A jogkivonat lejárati ideje azonnali. Egész szám, amely a (z) 00:00:00 UTC szerint 1 – 1970 (UNIX-kor) időszakon belül, a jogkivonat lejárata után.
+- `skn` – Az engedélyezési szabály neve, amely az SAS-kulcs neve.
+- `sr` – Az elérni kívánt erőforrás URI-ja.
+- `sig` Aláírás.
 
 Az aláírás-karakterlánc az erőforrás URI-ja alapján kiszámított SHA-256 kivonat (a hatókör az előző szakaszban leírtak szerint), valamint a jogkivonat lejárati CRLF által elválasztott karakterlánc-ábrázolása.
 

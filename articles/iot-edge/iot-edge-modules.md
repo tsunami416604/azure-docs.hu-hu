@@ -8,12 +8,13 @@ ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9feef9ec04bcc44bc09d55202b72ada4adc94cf5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76548713"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017056"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
 
@@ -70,7 +71,7 @@ Twin twin = await client.GetTwinAsync();
 
 Azure IoT Edge modulok legalább egyszer tudnak működni az IoT Hubekkel való szinkronizálás után. IoT Edge eszközök az offline képességet más IoT-eszközökre is kiterjeszthetik. További információ: [IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek ismertetése](offline-capabilities.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A IoT Edge modulok fejlesztéséhez szükséges követelmények és eszközök ismertetése](module-development.md)
 * [A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése](iot-edge-runtime.md)

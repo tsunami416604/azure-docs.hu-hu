@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-b
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 03e3f7450fd7282acde7988550df404656021961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824168"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007298"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok kezelése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -35,7 +35,7 @@ Ha az [Azure-ban SAP HANA-adatbázis biztonsági mentését](tutorial-sap-hana-b
 * a (z) *saphanadatabase; hxe; hxe* nevű biztonsági másolati adatbázis/tétel
 * a *westus2* régió erőforrásai
 
-Az Azure CLI-vel könnyedén kezelheti az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat, amelyek biztonsági mentést végeznek Azure Backup használatával. Ez az oktatóanyag részletesen ismerteti az egyes felügyeleti műveleteket.
+Az Azure CLI-vel könnyedén kezelheti az olyan Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat, amelyekről biztonsági másolat készül Azure Backup használatával. Ez az oktatóanyag részletesen ismerteti az egyes felügyeleti műveleteket.
 
 ## <a name="monitor-backup-and-restore-jobs"></a>Biztonsági mentési és visszaállítási feladatok figyelése
 
@@ -196,7 +196,7 @@ b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 
 A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-beli virtuális gépen futó SAP HANA adatbázisok biztonsági mentéséről a Azure Portal használatával a [biztonsági mentés SAP HANA-adatbázisok Azure virtuális gépeken](./backup-azure-sap-hana-database.md) című témakörben olvashat.
 

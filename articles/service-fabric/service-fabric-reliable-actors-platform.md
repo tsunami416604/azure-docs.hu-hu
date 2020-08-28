@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 621e325d0b549d2970180a5a40eb09260c1f2ee0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253473"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016614"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hogyan Reliable Actors használni a Service Fabric platformot?
 Ez a cikk azt ismerteti, hogy Reliable Actors hogyan működik az Azure Service Fabric platformon. A Reliable Actors egy olyan keretrendszerben fut, amely egy, a *Actors szolgáltatásnak*nevezett, állapot-nyilvántartó megbízható szolgáltatás implementációjában található. A Actors szolgáltatás tartalmazza az életciklus és az üzenetek a szereplőkkel való elküldésének kezeléséhez szükséges összes összetevőt:
@@ -61,7 +62,7 @@ A Actor Services particionált állapot-nyilvántartó szolgáltatásokat nyújt
 A Reliable Services különböző partíciós sémákkal és partíciós kulcs-tartományokkal hozhatók létre. A Actors szolgáltatás a Int64 particionálási sémát használja a teljes Int64, amely a szereplők partíciók közötti leképezésére szolgál.
 
 ### <a name="actor-id"></a>Színész azonosítója
-A szolgáltatásban létrehozott minden egyes szereplőhöz egyedi azonosító tartozik, amelyet az `ActorId` osztály képvisel. `ActorId`egy átlátszatlan azonosító érték, amely véletlenszerű azonosítók létrehozásával használható a szolgáltatások partícióinak egységes elosztására:
+A szolgáltatásban létrehozott minden egyes szereplőhöz egyedi azonosító tartozik, amelyet az `ActorId` osztály képvisel. `ActorId` egy átlátszatlan azonosító érték, amely véletlenszerű azonosítók létrehozásával használható a szolgáltatások partícióinak egységes elosztására:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());

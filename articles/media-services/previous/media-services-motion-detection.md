@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77913004"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016835"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Mozgások észlelése Azure Media Analytics
 
@@ -34,7 +35,7 @@ A biztonsági videós hírcsatornák megkeresése révén ez a technológia a re
 
 A **Azure Media Motion Detector** mp jelenleg előzetes verzióban érhető el.
 
-Ez a cikk részletesen ismerteti a **Azure Media Motion Detector** , és bemutatja, hogyan használható a Media Services SDK for .net
+Ez a cikk részletesen ismerteti a  **Azure Media Motion Detector** , és bemutatja, hogyan használható a Media Services SDK for .net
 
 ## <a name="motion-detector-input-files"></a>Mozgásérzékelő bemeneti fájljai
 Videofájlok. Jelenleg a következő formátumok támogatottak: MP4, MOV és WMV.
@@ -45,7 +46,7 @@ Ha **Azure Media Motion Detectorkal**rendelkező feladatot hoz létre, meg kell 
 ### <a name="parameters"></a>Paraméterek
 A következő paramétereket használhatja:
 
-| Name | Beállítások | Description | Alapértelmezett |
+| Név | Beállítások | Leírás | Alapértelmezett |
 | --- | --- | --- | --- |
 | sensitivityLevel |Karakterlánc: "Low", "medium", "High" |Meghatározza a mozgások jelentésének érzékenységi szintjét. Módosítsa a hamis pozitív számok számának módosítását. |közepes |
 | frameSamplingValue |Pozitív egész szám |Meghatározza az algoritmus futtatásának gyakoriságát. 1 egyenlő minden kerettel, 2 azt jelenti, hogy minden második keret és így tovább. |1 |
@@ -98,7 +99,7 @@ A mozgásérzékelő API-k jelzik, hogy vannak-e mozgásban lévő objektumok eg
 
 A következő táblázat a kimeneti JSON-fájl elemeit ismerteti.
 
-| Elem | Description |
+| Elem | Leírás |
 | --- | --- |
 | version |Ez a videó API verziójára vonatkozik. A jelenlegi verzió: 2. |
 | időskála |A videó másodpercenkénti száma. |

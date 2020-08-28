@@ -8,15 +8,13 @@ ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom:
-- amqp
-- mqtt
-ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, mqtt, devx-track-csharp
+ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81730910"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016954"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése
 
@@ -92,22 +90,22 @@ Az üzembe helyezési jegyzék minden eleme tartalmaz konkrét információkat e
 * **status (állapot** ) – az a állapot, amelyben a IoT Edge ügynök elhelyezi a modult. Ez az érték általában a *futtatásra* van beállítva, mivel a legtöbb felhasználó szeretné, hogy a IoT Edge ügynök azonnal elindítsa az összes modult az eszközön. Azonban megadhatja a leállítani kívánt modul kezdeti állapotát, és megvárhatja, hogy a jövőbeli idő alapján a IoT Edge ügynök elindítson egy modult.A IoT Edge ügynök az egyes modulok állapotát a felhőbe jelenti a jelentett tulajdonságok között. A kívánt tulajdonság és a jelentett tulajdonság közötti különbség egy helytelenül viselkedő eszköz jelzője. A támogatott állapotok a következők:
 
   * Letöltés
-  * Fut
+  * Futó
   * Nem kifogástalan
   * Sikertelen
   * Leállítva
 
 * **restartPolicy** – azt, hogy a IoT Edge ügynök hogyan indítja újra a modult. A lehetséges értékek a következők:
   
-  * `never`– A IoT Edge ügynök soha nem indítja újra a modult.
-  * `on-failure`-Ha a modul összeomlik, a IoT Edge ügynök újraindul. Ha a modul tiszta módon leáll, a IoT Edge ügynök nem indítja újra.
-  * `on-unhealthy`-Ha a modul összeomlik vagy nem megfelelőnek minősül, akkor a IoT Edge ügynök újraindul.
-  * `always`-Ha a modul összeomlik, nem megfelelő állapotba kerül, vagy bármilyen módon leáll, a IoT Edge ügynök újraindul.
+  * `never` – A IoT Edge ügynök soha nem indítja újra a modult.
+  * `on-failure` -Ha a modul összeomlik, a IoT Edge ügynök újraindul. Ha a modul tiszta módon leáll, a IoT Edge ügynök nem indítja újra.
+  * `on-unhealthy` -Ha a modul összeomlik vagy nem megfelelőnek minősül, akkor a IoT Edge ügynök újraindul.
+  * `always` -Ha a modul összeomlik, nem megfelelő állapotba kerül, vagy bármilyen módon leáll, a IoT Edge ügynök újraindul.
 
 * **imagePullPolicy** – azt határozza meg, hogy a IoT Edge ügynök automatikusan megpróbálja-e lekérni a modul legújabb rendszerképét. Ha nem ad meg értéket, az alapértelmezett érték a *onCreate*. A lehetséges értékek a következők:
 
-  * `on-create`– Ha egy modul indításakor vagy egy új központi telepítési jegyzék alapján frissít egy modult, akkor a IoT Edge ügynök megpróbálja lekérni a modul rendszerképét a tároló-beállításjegyzékből.
-  * `never`– A IoT Edge ügynök soha nem kísérli meg a modul rendszerképének lekérését a tároló-beállításjegyzékből. Ezzel a konfigurációval a modul lemezképének beszerzése és a lemezképek frissítéseinek kezelése felelős.
+  * `on-create` – Ha egy modul indításakor vagy egy új központi telepítési jegyzék alapján frissít egy modult, akkor a IoT Edge ügynök megpróbálja lekérni a modul rendszerképét a tároló-beállításjegyzékből.
+  * `never` – A IoT Edge ügynök soha nem kísérli meg a modul rendszerképének lekérését a tároló-beállításjegyzékből. Ezzel a konfigurációval a modul lemezképének beszerzése és a lemezképek frissítéseinek kezelése felelős.
 
 A IoT Edge ügynök futásidejű választ küld a IoT Hubnak. Itt látható a lehetséges válaszok listája:
   
@@ -126,6 +124,6 @@ A IoT Edge ügynök kritikus szerepet játszik egy IoT Edge-eszköz biztonságá
 
 A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](iot-edge-security-manager.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure IoT Edge-modulok ismertetése](iot-edge-modules.md)

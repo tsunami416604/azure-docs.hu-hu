@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/12/2020
-ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986385"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017277"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak elhárítása Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -168,7 +168,7 @@ Mivel a pagelatch egy belső vezérlési mechanizmus, automatikusan meghatározz
 
 A zárolási tartalom kezelésére szolgáló egyik módszer egy szekvenciális index-kulcs lecserélése egy nem szekvenciális kulccsal, hogy egyenletesen terjesszen be lapkákat egy index tartományon belül. Az index egyik vezető oszlopa általában a számítási feladatokat arányos módon osztja el. Egy másik módszer a tábla particionálásának megfontolására. A particionált tábla számított oszlopával létrehozott kivonatoló particionálási séma a túlzott zárolások elleni támadás mérséklésének gyakori módszere. Pagelatch IO-tartalom esetén az indexek bemutatása segít enyhíteni a teljesítménnyel kapcsolatos problémát.
 
-További információkért lásd: a SQL Server (PDF-letöltés) zárolásának [diagnosztizálása és megoldása](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) .
+További információkért lásd: a SQL Server (PDF-letöltés) zárolásának [diagnosztizálása és megoldása](http://databaser.net/moniwiki/pds/PerformanceTuning/SQLServerLatchContention.pdf) .
 
 ## <a name="missing-index"></a>Hiányzó index
 
@@ -328,7 +328,7 @@ Intelligent Insights a Azure Portal keresztül érheti el a Azure SQL Analytics.
 
 Intelligent Insights általában egy órányi időt kell igénybe vennie a teljesítménnyel kapcsolatos probléma kiváltó okának elemzéséhez. Ha nem találja a problémát Intelligent Insights és kritikus fontosságú az Ön számára, a lekérdezési tároló használatával manuálisan azonosíthatja a teljesítménnyel kapcsolatos probléma okát. (Általában ezek a problémák kevesebb, mint egy órával régebbiek.) További információ: [a teljesítmény figyelése a lekérdezési tároló használatával](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg [Intelligent Insights](intelligent-insights-overview.md) fogalmakkal.
 - Használja a [Intelligent Insights Performance Diagnostics-naplót](intelligent-insights-use-diagnostics-log.md).

@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök frissítése
 description: Ismerje meg, hogyan frissítheti a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: c822c75fa1232d2304b5bcb4a0afe4323e52287f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890207"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007366"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök frissítése
 
@@ -19,11 +19,11 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 ## <a name="identify-servers-with-earlier-versions-of-the-mars-agent"></a>A MARS-ügynök korábbi verzióit tartalmazó kiszolgálók azonosítása
 
-Azure Backup-ügynök és az Azure Backup Server telepítése esetén:
+Azure Backup ügynök és Azure Backup kiszolgáló telepítése esetén:
 
 1. Navigáljon ahhoz a Recovery Services-tárolóhoz, amelyen regisztrálta azokat a kiszolgálókat, amelyek biztonsági mentése az ügynök régebbi verzióival lehetséges. A régebbi Azure Backup ügynökökkel rendelkező tárolók listáját a Azure Backup frissítési riasztások az Azure-ban című részében találja.
 1. A Recovery Services-tároló bal oldali **Beállítások** szakaszában válassza a **kezelés** szakasz **biztonsági mentési infrastruktúra** elemét.
-1. Ha Azure Backup kiszolgáló telepítése során telepített Azure Backup-ügynököket szeretné felderíteni, ugorjon a **felügyeleti kiszolgálók**területen lévő **biztonságimásolat-kezelési kiszolgálók** elemre. Ez a lista azokat a kiszolgálókat sorolja fel, amelyeken Azure Backup Server-telepítések szerepelnek a társított Azure Backup-ügynök verziószámával együtt.
+1. A Azure Backup Server-telepítések részeként telepített Azure Backup-ügynökök felderítéséhez tekintse meg a **felügyeleti kiszolgálók**alatt lévő **biztonsági mentési felügyeleti kiszolgálókat** . Ez a lista azokat a kiszolgálókat sorolja fel, amelyeken Azure Backup Server-telepítések szerepelnek a társított Azure Backup-ügynök verziószámával együtt.
 
     ![A Azure Backup Server-telepítések részeként telepített MARS-ügynökök listája](./media/upgrade-mars-agent/backup-management-servers.png)
 
@@ -31,19 +31,19 @@ Azure Backup-ügynök és az Azure Backup Server telepítése esetén:
 
     ![Azon kiszolgálók listája, amelyeken telepítve van a MARS-ügynök](./media/upgrade-mars-agent/protected-servers.png)
 
-1. A Azure Backup ügynök verzió oszlop rendezéséhez válassza ki **a Mars** -ügynök telepítése vagy az **Azure Backup ügynök verziója** oszlopot az Azure Backup Server telepítésekor.
+1. A Azure Backup ügynök verzió oszlop rendezéséhez válassza ki **a Mars** -ügynök telepítése vagy az **Azure Backup ügynök verziója** oszlopot a Azure Backup Server telepítéséhez.
 
 1. Az előző lépéssel megadhatja azoknak a Azure Backup kiszolgálóknak a listáját, amelyeken a 2.0.9083.0-nál alacsonyabb verziójú, illetve az ügynök verziója üresként szerepel. Ezek azok a kiszolgálók, amelyeken frissíteni kell a Azure Backup ügynököket.
 
 ## <a name="update-the-mars-agent-installation-on-the-server"></a>A MARS-ügynök telepítésének frissítése a kiszolgálón
 
-Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgálókat, hajtsa végre a következő lépéseket az egyes azonosított kiszolgálókon (az Azure Backup Server vagy a MARS-ügynök használatával). Az alábbi lépéseket követve [töltse le az Azure Backup-ügynök legújabb verzióját](https://aka.ms/azurebackup_agent) .
+Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgálókat, hajtsa végre a következő lépéseket az egyes azonosított kiszolgálókon (Azure Backup kiszolgáló vagy a MARS-ügynök használatával). Az alábbi lépések végrehajtása előtt [töltse le a Azure Backup-ügynök legújabb verzióját](https://aka.ms/azurebackup_agent) .
 
 1. Olyan sort válasszon, amelynek Azure Backup ügynöke alacsonyabb, mint 2.0.9083.0 vagy üres. Ekkor megnyílik a kiszolgáló részletei képernyő.
 
     ![Elavult ügynök-verziókkal rendelkező védett kiszolgálók](./media/upgrade-mars-agent/old-agent-version.png)
 
-    ![Elavult ügynök-verziókkal rendelkező Azure Backup-kiszolgálók](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
+    ![Elavult ügynök-verziókkal rendelkező kiszolgálók Azure Backup](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
 1. Válassza a **Kapcsolódás** lehetőséget, ha egy távoli asztali kapcsolati fájlt szeretne csatlakoztatni a kiszolgálóhoz, vagy közvetlenül kapcsolódnia kell a kiszolgálóhoz távoli asztal kapcsolaton keresztül.
 
@@ -63,9 +63,9 @@ Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgá
     Azure USA-beli kormányzati felhő |   `https://login.microsoftonline.us`
     Azure German Cloud  |  `https://login.microsoftonline.de`
 
-1. Másolja az Azure Backup-ügynök frissítési telepítőjét a kiszolgálóra.
+1. Másolja a Azure Backup Agent Update telepítőjét a kiszolgálóra.
 
-    ![Az Azure Backup-ügynök frissítési telepítőjének másolása kiszolgálóra](./media/upgrade-mars-agent/copy-agent-installer.png)
+    ![Azure Backup ügynök frissítési telepítőjének másolása kiszolgálóra](./media/upgrade-mars-agent/copy-agent-installer.png)
 
 1. Indítsa el a telepítőt. Megnyílik a Microsoft Azure Recovery Services ügynök frissítése varázsló.
 
@@ -81,16 +81,16 @@ Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgá
 
 ## <a name="for-system-center-data-protection-manager-sc-dpm-customers"></a>A System Center Data Protection Manager (SC DPM) ügyfelei számára
 
-Ha telepítette az Azure Backup-ügynököket a System Center Data Protection Manager (SC DPM) kiszolgálókra, az alábbi lépéseket követve azonosíthatja, hogy a DPM-kiszolgálóknak szüksége van-e az Azure Backup-ügynök frissítésére:
+Ha Azure Backup ügynököket telepített a System Center Data Protection Manager (SC DPM) kiszolgálókra, az alábbi lépéseket követve azonosíthatja, hogy a DPM-kiszolgálóknak szüksége van-e Azure Backup ügynök frissítésére:
 
 1. Jelentkezzen be rendszergazdaként az SC DPM-kiszolgálóra.
 2. Nyissa meg a DPM-konzolt.
 3. A konzol bal alsó navigációs sávján kattintson a **felügyelet** elemre.
 4. A bal oldali navigációs sávon megjelenő információk között keresse meg a Azure Backup ügynök verziójának adatait.
-5. Ha a verzió alacsonyabb, mint a 2.0.9083.0, töltse le a legújabb Azure Backup Agent-telepítőt, és futtassa a telepítőt a DPM-kiszolgálón a Azure Backup-ügynök frissítéséhez.
+5. Ha a verzió alacsonyabb, mint a 2.0.9083.0, töltse le a legújabb Azure Backup ügynök telepítőjét, és futtassa a telepítőt a DPM-kiszolgálón a Azure Backup-ügynök frissítéséhez.
 
 Ismételje meg a fenti lépéseket a környezetben lévő összes DPM-kiszolgálón.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Windows rendszerű gépek biztonsági mentésének ismertetése a Azure Backup Mars-ügynök használatával](backup-windows-with-mars-agent.md)

@@ -3,12 +3,12 @@ title: A Linux rendszerű virtuális gépek alkalmazás-konzisztens biztonsági 
 description: A Linux rendszerű virtuális gépek alkalmazás-konzisztens biztonsági másolatait az Azure-ba hozhatja létre. Ez a cikk a parancsfájl-keretrendszer konfigurálását ismerteti az Azure-ban üzembe helyezett Linux virtuális gépek biztonsági mentéséhez. Ez a cikk hibaelhárítási információkat is tartalmaz.
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407098"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999240"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure-beli linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentése
 
@@ -58,7 +58,7 @@ A parancsfájl-előkészítők natív Application API-kat indítanak, amelyek fo
 
     - **timeoutInSeconds**: adjon meg egyedi időtúllépést a parancsfájl előtti és a parancsfájl utáni (maximális érték 1800).
 
-    - **continueBackupOnFailure**: állítsa **igaz** értékre, ha azt szeretné, hogy a Azure Backup a fájlrendszer konzisztens/összeomlásos konzisztens biztonsági mentésére térjen vissza, ha az előzetes parancsfájl vagy a parancsfájl utáni hiba meghiúsul. Ha ez a beállítás sikertelen, a biztonsági **Mentés sikertelen lesz, ha** parancsfájl-meghibásodás történik (kivéve, ha egyetlen lemezből álló virtuális gép van, amely a beállítástól függetlenül visszaesik az összeomlás-konzisztens biztonsági mentésre). Ha a **continueBackupOnFailure** értéke false (hamis) értékre van állítva, ha a biztonsági mentés sikertelen, a rendszer megkísérli a biztonsági mentési műveletet a szolgáltatásban lévő újrapróbálkozási logika alapján (a megadott számú próbálkozás esetében).
+    - **continueBackupOnFailure**: állítsa **igaz** értékre, ha azt szeretné, hogy a Azure Backup a fájlrendszer konzisztens/összeomlásos konzisztens biztonsági mentésére térjen vissza, ha az előzetes parancsfájl vagy a parancsfájl utáni hiba meghiúsul. Ha a beállítás **értéke hamis** , akkor a biztonsági mentés sikertelen lesz, ha parancsfájl-meghibásodás történik (kivéve, ha egy egylemezes virtuális gép a beállítástól függetlenül visszaesik az összeomlás-konzisztens biztonsági mentésre). Ha a **continueBackupOnFailure** értéke false (hamis) értékre van állítva, ha a biztonsági mentés sikertelen, a rendszer megkísérli a biztonsági mentési műveletet a szolgáltatásban lévő újrapróbálkozási logika alapján (a megadott számú próbálkozás esetében).
 
     - **fsFreezeEnabled**: azt határozza meg, hogy a rendszer meghívhatja-e a Linux-fsfreeze, amikor a virtuális gép pillanatképét a fájlrendszer konzisztenciájának biztosítására kéri. Azt javasoljuk, hogy ezt a beállítást állítsa **igaz** értékre, kivéve, ha az alkalmazás nem függ a fsfreeze letiltásával.
 

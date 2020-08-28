@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7552609fc4c85cdd5033e67b1bab7fb58cb6ebf1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75348926"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016563"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizmus a Reliable Actors-keretrendszerben
 A Reliable Actors-keretrendszer lehetővé teszi, hogy többek között olyan technikákat hozzon létre, amelyeket az objektum-orientált kialakításban is használ. Az egyik ilyen módszer a polimorfizmus, amely lehetővé teszi, hogy a típusok és a felületek több általánosított szülőtől örökölnek. A Reliable Actors-keretrendszer öröklése általában a .NET-modellt követi, néhány további korlátozással. Java/Linux esetén a Java-modellt követi.
@@ -85,7 +86,7 @@ public class Circle extends ShapeImpl implements Circle
 
 Jegyezze fel az `ActorService` attribútumot a színész típusán. Ez az attribútum tájékoztatja a megbízható szereplői keretrendszert arról, hogy automatikusan létre kell hoznia egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag altípusokkal való megosztásra szolgál, és soha nem lesz felhasználva konkrét szereplők létrehozásához. Ezekben az esetekben a `abstract` kulcsszó használatával jelezze, hogy soha nem fog létrehozni egy szereplőt az adott típus alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, [hogyan használja ki a Reliable Actors Framework a Service Fabric platformot](service-fabric-reliable-actors-platform.md) a megbízhatóság, a méretezhetőség és a konzisztens állapot biztosításához.
 * Ismerkedjen meg a [színészi életciklussal](service-fabric-reliable-actors-lifecycle.md).
 

@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: be20cd583be7c9c87d9f3a3cebc6609764384c9a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 027bbebaaab0694cfa0157464d47ef2c8e08fbff
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084228"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998220"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazást futtató adott eszközökre
 
@@ -246,7 +246,7 @@ Az alkalmazás ezzel elkészült. Az eszköz helyi tárolójában a kategóriák
 
 Futtassa az előző szakaszban létrehozott alkalmazást. A kijelölt kategóriák értesítései bejelentési értesítésként jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megismerhette a friss hírek kategóriák szerinti küldését. A háttérbeli alkalmazás leküldi a címkézett értesítéseket azokon az eszközökön, amelyek regisztrálva vannak a címkére vonatkozó értesítések fogadásához. Ha meg szeretné tudni, hogyan leküldéses értesítéseket küldhet az egyes felhasználóknak az általuk használt eszköztől függetlenül, folytassa a következő oktatóanyaggal:
 

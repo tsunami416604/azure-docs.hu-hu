@@ -8,13 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.custom: amqp
-ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-csharp
+ms.openlocfilehash: e990d122367581c785b411f3f6d3c39b334a14fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733395"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998577"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (.NET)
 
@@ -34,7 +34,7 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio.
+* A Visual Studióval.
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
@@ -66,7 +66,7 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
 1. Válassza a **Létrehozás** lehetőséget a projekt létrehozásához.
 
-1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
+1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**. Válassza a **Tallózás** lapot.
 
 1. Keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet, majd válassza a **telepítés**lehetőséget.
 
@@ -175,7 +175,7 @@ Most már futtathatja az alkalmazásokat.
 
 1. Az alkalmazások elindításához nyomja le az **F5** billentyűt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

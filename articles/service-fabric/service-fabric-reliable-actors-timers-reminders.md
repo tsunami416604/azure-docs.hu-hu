@@ -3,12 +3,13 @@ title: Reliable Actors időzítők és emlékeztetők
 description: Az időzítők és emlékeztetők bevezetője Service Fabric Reliable Actorshoz, beleértve az egyes eszközök használatára vonatkozó útmutatást.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016546"
 ---
 # <a name="actor-timers-and-reminders"></a>Színészi időzítők és emlékeztetők
 A szereplők rendszeres munkát ütemezhetnek az időzítők vagy emlékeztetők regisztrálásával. Ez a cikk bemutatja, hogyan használhatók az időzítők és a emlékeztetők, valamint ismertetik a köztük lévő különbségeket.
@@ -204,7 +205,7 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Emlékeztető kiváltásakor a Reliable Actors futtatókörnyezet a `ReceiveReminderAsync` (z) (C#) vagy `receiveReminderAsync` (Java) metódust hívja meg a színészen. Egy színész több emlékeztetőt is regisztrálhat, a `ReceiveReminderAsync` (C#) vagy a `receiveReminderAsync` (Java) metódust pedig akkor hívja meg, ha bármelyik emlékeztetőt elindítják. A színész használhatja a `ReceiveReminderAsync` (C#) vagy `receiveReminderAsync` (Java) metódusban átadott emlékeztető nevét, hogy kiderítse, melyik emlékeztetőt aktiválták.
+Emlékeztető kiváltásakor a Reliable Actors futtatókörnyezet a  `ReceiveReminderAsync` (z) (C#) vagy `receiveReminderAsync` (Java) metódust hívja meg a színészen. Egy színész több emlékeztetőt is regisztrálhat, a `ReceiveReminderAsync` (C#) vagy a `receiveReminderAsync` (Java) metódust pedig akkor hívja meg, ha bármelyik emlékeztetőt elindítják. A színész használhatja a `ReceiveReminderAsync` (C#) vagy `receiveReminderAsync` (Java) metódusban átadott emlékeztető nevét, hogy kiderítse, melyik emlékeztetőt aktiválták.
 
 A szereplők futtatókörnyezete a `ReceiveReminderAsync` (C#) vagy `receiveReminderAsync` (Java) hívás befejeződése után menti a szereplő állapotát. Ha az állapot mentésekor hiba történik, akkor a rendszer inaktiválja a Actor objektumot, és egy új példányt aktivál.
 
@@ -221,7 +222,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 
 Ahogy fent látható, a `UnregisterReminderAsync` (c#) vagy a `unregisterReminderAsync` (Java) metódus fogad egy `IActorReminder` (c#) vagy `ActorReminder` (Java) felületet. A Actor alaposztálya a `GetReminder` (c#) vagy `getReminder` (Java) metódust támogatja, amely a (z `IActorReminder` ) (c#) vagy (Java) felület lekérésére használható a `ActorReminder` felszólítás nevének megadásával. Ez azért hasznos, mert a szereplőnek nem kell megtartania a (c#) vagy (Java `IActorReminder` `ActorReminder` `RegisterReminder` `registerReminder` ) metódus hívásával visszaadott (c#) vagy (Java) felületet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg a megbízható Actors eseményeket és újbóli belépés:
 * [Színészi események](service-fabric-reliable-actors-events.md)
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
