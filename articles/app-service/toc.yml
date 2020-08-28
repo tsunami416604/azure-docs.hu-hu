@@ -310,7 +310,7 @@
     - name: Részletes útmutatók
       items:
         - name: Referenciaarchitektúrák
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Hibaelhárítás

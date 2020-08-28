@@ -82,7 +82,7 @@
             - name: Felügyelt lemez másolása
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
             - name: Pillanatkép létrehozása VHD-ből
@@ -124,7 +124,7 @@
             - name: Felügyelt lemez másolása
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
             - name: Pillanatkép másolása

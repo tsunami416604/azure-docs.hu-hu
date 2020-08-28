@@ -329,6 +329,28 @@
       items:
         - name: Adatgyűjtési szabályok
           href: platform/data-collection-rule-overview.md
+        - name: Ügynökök adatforrásai
+          items:
+            - name: Áttekintés
+              href: platform/agent-data-sources.md
+            - name: Windows-események
+              href: platform/data-sources-windows-events.md
+            - name: Egyéni JSON-adatok
+              href: platform/data-sources-json.md
+            - name: A CollectD teljesítményadatai
+              href: platform/data-sources-collectd.md
+            - name: Rendszernapló
+              href: platform/data-sources-syslog.md
+            - name: Teljesítményszámlálók
+              href: platform/data-sources-performance-counters.md
+            - name: Linux-alkalmazások teljesítménye
+              href: platform/data-sources-linux-applications.md
+            - name: IIS-naplók
+              href: platform/data-sources-iis-logs.md
+            - name: Egyéni naplók
+              href: platform/data-sources-custom-logs.md
+            - name: Egyéni mezők
+              href: platform/custom-fields.md
         - name: Egyéni metrikák
           items:
             - name: Egyéni metrikák
@@ -361,6 +383,24 @@
             - name: Adatgyűjtés
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Log Analytics-ügynök
+          items:
+            - name: Áttekintés
+              href: platform/log-analytics-agent.md
+            - name: Windows-ügynökök
+              href: platform/agent-windows.md
+            - name: Linux-ügynökök
+              href: platform/agent-linux.md
+            - name: Virtuálisgép-bővítmény Windowshoz
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Virtuálisgép-bővítmény Linuxhoz
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics-átjáró
+              href: platform/gateway.md
+            - name: Ügynökkezelés
+              href: platform/agent-manage.md
+            - name: Az ügynök állapota
+              href: insights/solution-agenthealth.md
         - name: Azure Diagnostics bővítmény
           items:
             - name: Áttekintés
@@ -403,46 +443,6 @@
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Metrikák gyűjtése a Telegraf használatával
                   href: platform/collect-custom-metrics-linux-telegraf.md
-        - name: Log Analytics-ügynök
-          items:
-            - name: Áttekintés
-              href: platform/log-analytics-agent.md
-            - name: Windows-ügynökök
-              href: platform/agent-windows.md
-            - name: Linux-ügynökök
-              href: platform/agent-linux.md
-            - name: Virtuálisgép-bővítmény Windowshoz
-              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-            - name: Virtuálisgép-bővítmény Linuxhoz
-              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-            - name: Log Analytics-átjáró
-              href: platform/gateway.md
-            - name: Ügynökkezelés
-              href: platform/agent-manage.md
-            - name: Az ügynök állapota
-              href: insights/solution-agenthealth.md
-            - name: Adatforrások
-              items:
-                - name: Áttekintés
-                  href: platform/agent-data-sources.md
-                - name: Windows-események
-                  href: platform/data-sources-windows-events.md
-                - name: Egyéni JSON-adatok
-                  href: platform/data-sources-json.md
-                - name: A CollectD teljesítményadatai
-                  href: platform/data-sources-collectd.md
-                - name: Rendszernapló
-                  href: platform/data-sources-syslog.md
-                - name: Teljesítményszámlálók
-                  href: platform/data-sources-performance-counters.md
-                - name: Linux-alkalmazások teljesítménye
-                  href: platform/data-sources-linux-applications.md
-                - name: IIS-naplók
-                  href: platform/data-sources-iis-logs.md
-                - name: Egyéni naplók
-                  href: platform/data-sources-custom-logs.md
-                - name: Egyéni mezők
-                  href: platform/custom-fields.md
         - name: Hibaelhárítás
           items:
             - name: A Log Analytics virtuálisgép-bővítménye

@@ -12,19 +12,19 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 03/05/2020
-  ms.openlocfilehash: 02d90dc6781fe39e92d97d64697cc2ee32b04b31
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e31651c07cc9567af0deac8311b2321ad6dee4ba
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78331492"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "89021918"
 landingContent:
 - title: A (klasszikus) Studio használatának első lépései
   linkLists:
   - linkListType: get-started
     links:
     - text: Mi az a (klasszikus) Studio?
-      url: what-is-ml-studio.md
+      url: studio-classic-overview.md
     - text: Az első gépi tanulási kísérlet létrehozása
       url: create-experiment.md
     - text: Prediktív megoldás létrehozása
@@ -47,7 +47,7 @@ landingContent:
     links:
     - text: Azure Machine Learning
       url: /azure/machine-learning/
-    - text: Adatelemzési virtuális gép
+    - text: Data Science Virtual Machine
       url: /azure/machine-learning/data-science-virtual-machine
     - text: Machine Learning-termékeink összehasonlítása
       url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

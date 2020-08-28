@@ -166,7 +166,7 @@
                 - name: A Spring Data JPA konfigurálása
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: A Spring Data R2DBC konfigurálása
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql
         - name: Replikáció
           items:
             - name: Olvasási replikák
