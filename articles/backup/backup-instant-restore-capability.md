@@ -4,18 +4,18 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892626"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000379"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
 > [!NOTE]
 > A felhasználók visszajelzései alapján átalakítottuk a **VM Backup stack v2** -et az **azonnali visszaállításra** , hogy csökkentse a Azure stack funkcióinak összekeveredését.
-> Az Azure Backup összes felhasználója most már frissítve lett az **azonnali visszaállításra**.
+> Az összes Azure Backup felhasználó már frissítve lett az **azonnali visszaállításra**.
 
 Az azonnali visszaállítás új modellje a következő funkciókat biztosítja:
 
@@ -108,9 +108,9 @@ Ha a helyreállítás típusa "Snapshot and Vault", a visszaállítás automatik
 
 Az új modell nem engedélyezi a visszaállítási pont (szint) törlését, kivéve, ha a pillanatképet (Tier1) törli. Azt javasoljuk, hogy a visszaállítási pont (szint) adatmegőrzési időszaka nagyobb legyen, mint a pillanatkép megőrzési időtartama.
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatképem még a biztonsági mentési szabályzatban megadott megőrzési időszak után is?
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatképem még a biztonsági mentési szabályzatban beállított megőrzési időtartam után is?
 
-Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, akkor a rendszer a következő sikeres biztonsági mentésig megőrzi. Ez a tervezett "Garbage Collection" (GC) szabályzatnak megfelelően, amely arra kötelezi, hogy legalább egy, a legújabb RP-re vonatkozó szabály mindig jelen legyen abban az esetben, ha a virtuális gép egyik hibája miatt az összes biztonsági mentés továbbra is sikertelen. Normál forgatókönyvekben az RPs-t a lejárat után legfeljebb 24 órával töröljük.
+Ha a helyreállítási pont rendelkezik pillanatképtel, és a legújabb helyreállítási pont érhető el, a rendszer a következő sikeres biztonsági mentésig megőrzi. Ez a kijelölt "Garbage Collection" (GC) szabályzatnak megfelelően történik. Az informatikai Hivatal azt állítja be, hogy minden további biztonsági mentés a virtuális gép hibája miatt sikertelen lesz. Normál helyzetekben a helyreállítási pontok a lejárat után legfeljebb 24 órával törlődnek.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükség azonnali visszaállítási funkcióra. Le lehet tiltani?
 

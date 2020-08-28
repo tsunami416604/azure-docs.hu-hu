@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4616f6c567b0bba13fe04aed56fd5e4ddc293f90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873042"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008386"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
 
@@ -22,7 +23,7 @@ A .NET-alapú egyéni deszerializálók lehetővé teszik, hogy az Azure Stream 
 
 A következő kódrészletek az egyéni deszerializáló és implementált felületek `StreamDeserializer<T>` .
 
-`UserDefinedOperator`az összes egyéni streaming operátor alaposztálya. Inicializálja a `StreamingContext` -t, amely magában foglalja a diagnosztika közzétételi mechanizmusát, amelynek a deszerializáló hibáit kell elhárítani.
+`UserDefinedOperator` az összes egyéni streaming operátor alaposztálya. Inicializálja a `StreamingContext` -t, amely magában foglalja a diagnosztika közzétételi mechanizmusát, amelynek a deszerializáló hibáit kell elhárítani.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -35,7 +36,7 @@ A következő kódrészlet a streaming-adatátvitelek deszerializálása.
 
 A kihagyható hibákat az `IStreamingDiagnostics` átadott inicializálási módszer használatával kell kiállítani `UserDefinedOperator` . A rendszer az összes kivételt hibákat fogja kezelni, és a deszerializáló újra létrejön. Bizonyos számú hiba után a feladatok sikertelen állapotba kerülnek.
 
-`StreamDeserializer<T>`egy adatfolyamot deszerializál egy típusú objektumba `T` . A következő feltételeknek kell teljesülniük:
+`StreamDeserializer<T>` egy adatfolyamot deszerializál egy típusú objektumba `T` . A következő feltételeknek kell teljesülniük:
 
 1. A T egy osztály vagy egy struct.
 1. A T összes nyilvános mezője a következők egyike:
@@ -45,7 +46,7 @@ A kihagyható hibákat az `IStreamingDiagnostics` átadott inicializálási mód
     1. IList, `T2` ahol a T2 ugyanazokat a szabályokat követi.
     1. Nem rendelkezik rekurzív típusokkal.
 
-A paraméter a `stream` szerializált objektumot tartalmazó adatfolyam. `Deserialize`példányok gyűjteményét adja vissza `T` .
+A paraméter a `stream` szerializált objektumot tartalmazó adatfolyam. `Deserialize` példányok gyűjteményét adja vissza `T` .
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +55,7 @@ A paraméter a `stream` szerializált objektumot tartalmazó adatfolyam. `Deseri
     }
 ```
 
-`StreamingContext`olyan kontextust biztosít, amely a felhasználói kezelő diagnosztika-közzétételi mechanizmusát tartalmazza.
+`StreamingContext` olyan kontextust biztosít, amely a felhasználói kezelő diagnosztika-közzétételi mechanizmusát tartalmazza.
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +64,13 @@ A paraméter a `stream` szerializált objektumot tartalmazó adatfolyam. `Deseri
     }
 ```
 
-`StreamingDiagnostics`a felhasználó által definiált operátorok, például a szerializáló, a deszerializáló és a felhasználó által definiált függvények diagnosztikája.
+`StreamingDiagnostics` a felhasználó által definiált operátorok, például a szerializáló, a deszerializáló és a felhasználó által definiált függvények diagnosztikája.
 
-`WriteError`hibaüzenetet ír az erőforrás-naplókba, és elküldi a hibát a diagnosztika számára.
+`WriteError` hibaüzenetet ír az erőforrás-naplókba, és elküldi a hibát a diagnosztika számára.
 
-`briefMessage`egy rövid hibaüzenet. Ez az üzenet a diagnosztika szolgáltatásban jelenik meg, és a termék csapata hibakeresési célokat szolgál. Ne tartalmazzon bizalmas adatokat, és tartsa meg a 200 karakternél rövidebb üzenetet
+`briefMessage` egy rövid hibaüzenet. Ez az üzenet a diagnosztika szolgáltatásban jelenik meg, és a termék csapata hibakeresési célokat szolgál. Ne tartalmazzon bizalmas adatokat, és tartsa meg a 200 karakternél rövidebb üzenetet
 
-`detailedMessage`a részletes hibaüzenetet kap, amely csak a tárolóban lévő erőforrás-naplókhoz van hozzáadva. Az üzenetnek 2000 karakternél rövidebbnek kell lennie.
+`detailedMessage` a részletes hibaüzenetet kap, amely csak a tárolóban lévő erőforrás-naplókhoz van hozzáadva. Az üzenetnek 2000 karakternél rövidebbnek kell lennie.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -219,7 +220,7 @@ A következő JavaScript-kód példa a .NET deszerializáló szerializálási fo
 }  
 ```
 
-`serializationClassName`a-t implementáló osztálynak kell lennie `StreamDeserializer<T>` . Ezt a következő szakaszban ismertetjük.
+`serializationClassName` a-t implementáló osztálynak kell lennie `StreamDeserializer<T>` . Ezt a következő szakaszban ismertetjük.
 
 ## <a name="region-support"></a>Régiós támogatás
 
@@ -252,6 +253,6 @@ A deszerializáló megvalósítását követően a Közösséggel megoszthatja m
 
 Ha a bemenet protopuf formátumú, és a MapField típusú sémát tartalmazza, nem fog tudni egyéni deszerializáló megvalósítani. Dolgozunk ezen típus támogatásán.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [.NET-alapú egyéni deszerializálók Azure Stream Analytics felhőalapú feladatokhoz](custom-deserializer.md)

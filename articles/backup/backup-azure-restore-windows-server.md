@@ -3,12 +3,12 @@ title: Fájlok visszaállítása Windows Serverre a MARS-ügynök használatáva
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 59e212b31d79c0d9a75369e542fee5e86f29653a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892507"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018909"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
 
@@ -89,7 +89,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
 * *Minta* -tár – az a Recovery Services tároló, amelybe a forrásszámítógép és a célszámítógép regisztrálva van.
 
 > [!NOTE]
-> A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági másolat visszaállítható Windows 7 (vagy újabb) rendszerű számítógépen. Windows 8 rendszerű számítógépről készített biztonsági másolat nem állítható vissza Windows 7 rendszerű számítógépre.
+> A biztonsági mentések nem állíthatók vissza olyan célszámítógépre, amely az operációs rendszer korábbi verzióját futtatja. Például egy Windows 7 rendszerű számítógépről készített biztonsági másolat visszaállítható Windows 7 (vagy újabb) rendszerű számítógépen. Egy Windows 10 rendszerű számítógépről készített biztonsági másolat nem állítható vissza Windows 7 rendszerű számítógépre.
 >
 >
 
@@ -141,7 +141,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
     > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban legfeljebb 24 órára van kiterjesztve egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
     >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy helyreállítja a fájlokat és mappákat, [kezelheti a biztonsági mentéseket](backup-azure-manage-windows-server.md).
 

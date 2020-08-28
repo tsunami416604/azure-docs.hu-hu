@@ -3,12 +3,12 @@ title: SQL Server munkaterhelések biztonsági mentése Azure Stack
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Microsoft Azure Backup Servert (MABS) SQL Server-adatbázisok védelmére Azure Stackon.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e56b29f886224617a9ae13d58c8b3dd8dda0dcf8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032646"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017957"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
 
@@ -101,7 +101,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Konzisztencia-ellenőrzés](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    A Azure Backup Server konzisztencia-ellenőrzést végez a biztonsági mentési pont integritásán. Azure Backup Server kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (SQL Server számítógép ebben a forgatókönyvben), valamint az adott fájl biztonsági másolatait. Ütközés esetén feltételezi, hogy a biztonsági másolatban szereplő fájl sérült Azure Backup Server. Azure Backup Server helyesbíti a biztonsági másolatban szereplő adatokat úgy, hogy elküldi az ellenőrzőösszeg-eltérésnek megfelelő blokkokat. Mivel a konzisztencia-ellenőrzések teljesítmény-igényesek, a konzisztencia-ellenőrzést ütemezhet vagy automatikusan futtathatja.
+    A Azure Backup Server konzisztencia-ellenőrzést végez a biztonsági mentési pont integritásán. Azure Backup Server kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (SQL Server számítógép ebben a forgatókönyvben), valamint az adott fájl biztonsági másolatait. Ütközés esetén feltételezhető, hogy a biztonsági másolatban szereplő fájl Azure Backup Server sérült. Azure Backup Server helyesbíti a biztonsági másolatban szereplő adatokat úgy, hogy elküldi az ellenőrzőösszeg-eltérésnek megfelelő blokkokat. Mivel a konzisztencia-ellenőrzések teljesítmény-igényesek, a konzisztencia-ellenőrzést ütemezhet vagy automatikusan futtathatja.
 
 10. Az adatforrások online védelmének megadásához válassza ki az Azure-ba védeni kívánt adatbázisokat, és kattintson a **tovább**gombra.
 
@@ -179,7 +179,7 @@ A következő lépések szükségesek egy védett entitás (SQL Server adatbázi
 
     A helyreállítás befejeződése után a visszaállított adatbázis az alkalmazás konzisztens.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [biztonsági másolat fájljait és az alkalmazásról](backup-mabs-files-applications-azure-stack.md) szóló cikket.
 Tekintse [meg a biztonsági mentés SharePoint Azure stack](backup-mabs-sharepoint-azure-stack.md) cikkben.

@@ -3,15 +3,15 @@ title: Azure-Multi-Factor Authentication beállítása a Windows rendszerű virt
 description: Az Azure Multi-Factor Authentication beállítása a fokozott biztonság érdekében a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009460"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017777"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Az Azure Multi-Factor Authentication engedélyezése Windows Virtual Desktophoz
 
@@ -47,31 +47,38 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
 6. A **Belefoglalás**területen válassza a **felhasználók és csoportok kiválasztása**  >  **felhasználók és csoportok** lehetőséget > válassza ki az [Előfeltételek](#prerequisites) szakaszban létrehozott csoportot.
 7. Válassza a **Kész** lehetőséget.
 8. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**lehetőséget.
-9. Válasszon egyet a következő alkalmazások közül, amelyek alapján a Windows rendszerű virtuális asztalnak a használt verzióját használja.
-   - Ha a Windowsos virtuális asztalt (klasszikus) használja, válassza a következő két alkalmazást:
+9. Válassza ki a következő alkalmazások egyikét, amely alapján a Windows rendszerű virtuális asztali verziót használja.
+   - Ha a Windowsos virtuális asztalt (klasszikus) használja, válassza ki ezt az alkalmazást:
        - **Windows rendszerű virtuális asztal** (alkalmazás-azonosító 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
-       - **Windows rendszerű virtuális asztali ügyfél** (alkalmazás-azonosító fa4345a4-a730-4230-84a8-7d9651b86739)
-   - Ha a Windows rendszerű virtuális asztalt használja, válassza a következő két alkalmazást:
+   - Ha a Windows rendszerű virtuális asztalt használja, válassza a következő alkalmazást:
        -  **Windows rendszerű virtuális asztal** (alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07)
-       -  **Windows rendszerű virtuális asztali ügyfél** (alkalmazás-azonosító a85cf173-4192-42f8-81fa-777a763e6e2c)
 
    >[!IMPORTANT]
-   > A Windows rendszerű virtuális asztali ügyfélalkalmazások a webes ügyfélhez használatosak. Azonban ne válassza ki a Windows rendszerű virtuális asztali Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63) nevű alkalmazást. Ez az alkalmazás csak a felhasználói hírcsatorna beolvasására szolgál, és nem rendelkezhet MFA-val.
+   > Ne válassza ki a Windows rendszerű virtuális asztali Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63) nevű alkalmazást. Ez az alkalmazás csak a felhasználói hírcsatorna beolvasására szolgál, és nem rendelkezhet MFA-val.
 
-1. Miután kiválasztotta az alkalmazást, válassza a **kiválasztás**lehetőséget, majd kattintson a **kész**gombra.
+10. Lépjen a **feltételek**  >  **ügyfélalkalmazások**elemre, majd válassza ki, hogy hová szeretné alkalmazni a szabályzatot:
+    
+    - Válassza a **böngésző** lehetőséget, ha azt szeretné, hogy a házirend a webes ügyfélre vonatkozzon.
+    - Válassza a **Mobile apps és asztali ügyfelek** lehetőséget, ha a szabályzatot más ügyfelekre szeretné alkalmazni.
+    - Jelölje be mindkét jelölőnégyzetet, ha az összes ügyfélre alkalmazni kívánja a házirendet.
+   
+    > [!div class="mx-imgBorder"]
+    > ![Az ügyfélalkalmazások oldal képernyőképe. A felhasználó bejelölte a Mobile apps és az asztali ügyfelek jelölőnégyzetet.](media/select-apply.png)
 
-   > [!div class="mx-imgBorder"]
-   > ![Képernyőkép a Cloud apps vagy a Actions lapról. A Windows rendszerű virtuális asztali és a Windows rendszerű virtuális asztali ügyfélprogramok piros színnel vannak kiemelve.](media/cloud-apps-enterprise.png)
+11. Miután kiválasztotta az alkalmazást, válassza a **kiválasztás**lehetőséget, majd kattintson a **kész**gombra.
 
-   >[!NOTE]
-   >A kijelölni kívánt alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a **vállalati alkalmazások** elemet, és válassza a **Microsoft-alkalmazások** lehetőséget az alkalmazás típusa legördülő menüből.
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a Cloud apps vagy a Actions lapról. A Windows rendszerű virtuális asztali és a Windows rendszerű virtuális asztali ügyfélprogramok piros színnel vannak kiemelve.](media/cloud-apps-enterprise.png)
 
-10. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
-11. A **hozzáférés-vezérlési**  >  **munkamenet**területen válassza a **bejelentkezési gyakoriság**elemet, állítsa az értéket **1** értékre, a mértékegységet pedig **órákra**, majd válassza a **kiválasztás**lehetőséget.
-12. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
-13. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
+    >[!NOTE]
+    >A kijelölni kívánt alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a **vállalati alkalmazások** elemet, és válassza a **Microsoft-alkalmazások** lehetőséget az alkalmazás típusa legördülő menüből.
 
-## <a name="next-steps"></a>További lépések
+12. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
+13. A **hozzáférés-vezérlési**  >  **munkamenet**területen válassza a **bejelentkezési gyakoriság**elemet, állítsa az értéket **1** értékre, a mértékegységet pedig **órákra**, majd válassza a **kiválasztás**lehetőséget.
+14. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+15. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a feltételes hozzáférési házirendekről](../active-directory/conditional-access/concept-conditional-access-policies.md)
 

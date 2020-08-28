@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449047"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018858"
 ---
 # <a name="tutorial-manipulating-models"></a>Oktatóanyag: modellek módosítása
 
@@ -110,7 +111,7 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
     > [!NOTE]
     > Ha a Visual Studio-jogcím *"X" funkciója nem érhető el a C# 6-ban, akkor hibaüzenet jelenik meg. Használja a 7,0-es vagy újabb verziójú nyelvi verziót*, így a hiba nyugodtan figyelmen kívül hagyható. Ez az egység megoldásával és a projekt létrehozásával kapcsolatos.
 
-    Ezt a szkriptet hozzá kell adni ugyanahhoz a GameObject, mint a **BaseRemoteRenderedModel**-t megvalósító szkriptet. Ebben az esetben ez azt jelenti, hogy a **RemoteRenderedModel**. Az előző szkriptekhez hasonlóan ez a kezdeti kód fogja kezelni a távoli korlátokkal kapcsolatos összes állapotot, eseményt és adatmennyiséget.
+    Ezt a szkriptet hozzá kell adni ugyanahhoz a GameObject, mint a  **BaseRemoteRenderedModel**-t megvalósító szkriptet. Ebben az esetben ez azt jelenti, hogy a **RemoteRenderedModel**. Az előző szkriptekhez hasonlóan ez a kezdeti kód fogja kezelni a távoli korlátokkal kapcsolatos összes állapotot, eseményt és adatmennyiséget.
 
     Két módszer van hátra a megvalósításhoz: **QueryBounds** és **ProcessQueryResult**. A **QueryBounds** beolvassa a határokat, és **ProcessQueryResult** a lekérdezés eredményét, és alkalmazza azt a helyi **BoxCollider**.
 
@@ -381,7 +382,7 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
 
 Egy helyi példány létrehozása és az automatikus szinkronizálás beállítása az alentitások manipulálása első lépése. Ugyanazokat a technikákat használjuk, amelyekkel a modell teljes egészében kezelhető az alentitásokon is. Például egy entitás szinkronizált helyi példányának létrehozása után lekérdezheti a határait, és felveheti a manipulációs kezelőket, hogy az a felhasználó által áthelyezhető legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már kezelhet és kezelhet távolról renderelt modelleket! A következő oktatóanyagban az anyagok módosítására, a világítás módosítására és a hatások a távolról renderelt modellekre való alkalmazására fogunk vonatkozni.
 

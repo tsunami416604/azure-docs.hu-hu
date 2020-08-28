@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565460"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018977"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>A Remote Rendering beállítása a Unityben
 
@@ -66,17 +67,17 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="session-state-events"></a>Munkamenet-állapot eseményei
 
-`RemoteManagerUnity.OnSessionUpdate`eseményeket bocsát ki a munkamenet-állapotának megváltozásakor, további részletekért tekintse meg a kód dokumentációját.
+`RemoteManagerUnity.OnSessionUpdate` eseményeket bocsát ki a munkamenet-állapotának megváltozásakor, további részletekért tekintse meg a kód dokumentációját.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`a egy opcionális összetevő a telepítés és a munkamenet-kezelés egyszerűsítéséhez. Olyan beállításokat tartalmaz, amelyekkel automatikusan leállíthatja a munkamenetet, amikor az alkalmazás kilép, vagy a lejátszás mód ki van zárva a szerkesztőben, valamint szükség esetén automatikusan megújítja a munkamenet-bérletet. Gyorsítótárazza az adatforrásokat, például a munkamenet tulajdonságait (lásd a `LastProperties` változót), és megjeleníti az eseményeket a munkamenet-állapot változásaihoz és a munkamenet-hibákhoz.
+`ARRServiceUnity` a egy opcionális összetevő a telepítés és a munkamenet-kezelés egyszerűsítéséhez. Olyan beállításokat tartalmaz, amelyekkel automatikusan leállíthatja a munkamenetet, amikor az alkalmazás kilép, vagy a lejátszás mód ki van zárva a szerkesztőben, valamint szükség esetén automatikusan megújítja a munkamenet-bérletet. Gyorsítótárazza az adatforrásokat, például a munkamenet tulajdonságait (lásd a `LastProperties` változót), és megjeleníti az eseményeket a munkamenet-állapot változásaihoz és a munkamenet-hibákhoz.
 
 Egyszerre csak egy példánya lehet `ARRServiceUnity` . Ez azt jelenti, hogy néhány gyakori funkció megvalósításával gyorsabban kezdheti meg a lépéseket. A nagyobb alkalmazások esetében érdemes lehet ezeket a dolgokat is előnyben részesíteni, mégis.
 
 Példa a beállításra és a használatról: útmutató a `ARRServiceUnity` [távolról renderelt modellek megtekintéséhez](../../tutorials/unity/view-remote-models/view-remote-models.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Unity Remote Rendering-csomagjának telepítése](install-remote-rendering-unity-package.md)
 * [Oktatóanyag: távolról megjelenített modellek megtekintése](../../tutorials/unity/view-remote-models/view-remote-models.md)

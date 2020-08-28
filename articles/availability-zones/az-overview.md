@@ -4,15 +4,15 @@ description: Ismerje meg az Azure-beli régiókat és Availability Zoneseket, ho
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018671"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -22,7 +22,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Description |
+| Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -79,7 +79,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Régió típusa | Nem regionális | Alapító | Mainstream | Specializált | Rendelkezésre állási zónák | Adattárolási hely |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
-| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N.A. | :heavy_check_mark: |
+| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | n.a. | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
@@ -92,46 +92,45 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Alapító | Mainstream | Specializált |
 > | --- | --- | --- |
 > | Fiók tárterülete | API Management | Azure API for FHIR |
-> | Application Gateway | Alkalmazás konfigurációja | Azure Blockchain Service |
-> | Azure Backup | App Service | Azure Blueprints |
-> | Azure Cosmos DB | Automation | Azure Database for MariaDB |
-> | 2. generációs Azure Data Lake Storage | Azure Active Directory tartományi szolgáltatások | Azure Dedicated HSM |
-> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
-> | Azure SQL Database | Azure Bastion | Azure Digital Twins |
-> | Cloud Services | Azure Cache for Redis | Azure Lab Services |
-> | Cloud Services: Av2 sorozat | Azure Cognitive Search | Azure NetApp Files |
-> | Cloud Services: Dv2 sorozat | Azure Data Explorer | Azure Quantum |
-> | Cloud Services: Dv3 sorozat | Azure Data Share | Azure Time Series Insights |
-> | Cloud Services: Ev3 sorozat | Azure Database for MySQL | Azure VMware Solution by CloudSimple |
-> | Cloud Services: példányok szintjének IP-címei | Azure Database for PostgreSQL | Cloud Services: A8-A11 (nagy számítási igényű) |
-> | Cloud Services: Fenntartott IP | Azure Database Migration Service | Cloud Services: G sorozat |
-> | Disk Storage | Azure Databricks | Cloud Services: H sorozat |
-> | Event Hubs | Azure DDoS Protection | Cognitive Services: anomália detektor |
-> | Key Vault | Azure DevTest Labs | Cognitive Services: Custom Vision |
+> | Application Gateway | Alkalmazás konfigurációja | Azure Analysis Services |
+> | Azure Backup | App Service | Azure Blockchain Service |
+> | Azure Cosmos DB | Automation | Azure Blueprints |
+> | 2. generációs Azure Data Lake Storage | Azure Active Directory Domain Services | Azure Database for MariaDB |
+> | Azure ExpressRoute | Azure Bastion | Azure Dedicated HSM |
+> | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
+> | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
+> | Cloud Services: Av2 sorozat | Azure Data Explorer | Azure Lab Services |
+> | Cloud Services: Dv2 sorozat | Azure Data Share | Azure NetApp Files |
+> | Cloud Services: Dv3 sorozat | Azure Database for MySQL | Azure Quantum |
+> | Cloud Services: Ev3 sorozat | Azure Database for PostgreSQL | Azure Spring Cloud szolgáltatás |
+> | Cloud Services: példányok szintjének IP-címei | Azure Database Migration Service | Azure Time Series Insights |
+> | Cloud Services: Fenntartott IP | Azure Databricks | Azure VMware Solution by CloudSimple |
+> | Disk Storage | Azure DDoS Protection | Cloud Services: G sorozat |
+> | Event Hubs | Azure DevTest Labs | Cloud Services: H sorozat |
+> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
 > | Terheléselosztó | Azure Firewall Manager | Cognitive Services: Speaker Recognition |
-> | Service Bus | Azure Firewall | Data Box Heavy |
-> | Service Fabric | Azure Functions | Data Catalog |
-> | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
-> | Virtual Machines: Av2 sorozat | Azure Kubernetes Service (AKS) | Machine Learning Studio |
-> | Virtual Machines: BS sorozat | Azure Machine Learning | Microsoft Genomics |
-> | Virtual Machines: DSv2 sorozat | Azure Private Link | Remote Rendering |
-> | Virtual Machines: DSv3 sorozat | Azure Red Hat OpenShift | Spatial Anchors |
+> | Service Bus | Azure Functions | Data Box Heavy |
+> | Service Fabric | Azure HPC Cache | Data Catalog |
+> | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
+> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | Virtual Machines: Av2 sorozat | Azure Machine Learning | Machine Learning Studio |
+> | Virtual Machines: BS sorozat | Azure Private Link | Microsoft Genomics |
+> | Virtual Machines: DSv2 sorozat | Azure Red Hat OpenShift | Remote Rendering |
+> | Virtual Machines: DSv3 sorozat | Azure SignalR szolgáltatás | Spatial Anchors |
 > | Virtual Machines: Dv2 sorozat | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3 sorozat | Azure Spring Cloud szolgáltatás | Video Indexer |
-> | Virtual Machines: ESv3 sorozat | Azure Stack Hub | Virtual Machines: A8-A11 (nagy számítási igényű) |
-> | Virtual Machines: Ev3 sorozat | Azure Stream Analytics | Virtual Machines: DASv4 sorozat |
-> | Virtual Machines: F sorozat | Azure Synapse Analytics | Virtual Machines: DAv4 sorozat |
-> | Virtual Machines: FS sorozat | Azure SignalR szolgáltatás | Virtual Machines: DCsv2 sorozat |
-> | Virtual Machines: példányok szintjének IP-címei | Batch | Virtual Machines: EASv4 sorozat |
-> | Virtual Machines: Fenntartott IP | Cloud Services: M sorozat | Virtual Machines: EAv4 sorozat |
-> | Virtual Network | Cognitive Services | Virtual Machines: G sorozat |
-> | VPN Gateway | Cognitive Services: Computer Vision | Virtual Machines: GS sorozat |
-> |  | Cognitive Services: Content Moderator | Virtual Machines: HBv1 sorozat |
-> |  | Cognitive Services: Face | Virtual Machines: HBv2 sorozat |
+> | Virtual Machines: Dv3 sorozat | Azure Stack Hub | Video Indexer |
+> | Virtual Machines: ESv3 sorozat | Azure Stream Analytics | Virtual Machines: DASv4 sorozat |
+> | Virtual Machines: Ev3 sorozat | Azure Synapse Analytics | Virtual Machines: DAv4 sorozat |
+> | Virtual Machines: F sorozat | Batch | Virtual Machines: DCsv2 sorozat |
+> | Virtual Machines: FS sorozat | Cloud Services: M sorozat | Virtual Machines: EASv4 sorozat |
+> | Virtual Machines: példányok szintjének IP-címei | Cognitive Services | Virtual Machines: EAv4 sorozat |
+> | Virtual Machines: Fenntartott IP | Cognitive Services: Computer Vision | Virtual Machines: G sorozat |
+> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS sorozat |
+> | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1 sorozat |
+> |  | Cognitive Services: űrlap-felismerő | Virtual Machines: HBv2 sorozat |
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1 sorozat |
-> |  | Cognitive Services: Speech Services | Virtual Machines: H sorozat |
-> |  | Cognitive Services: QnA Maker | Virtual Machines: LS-sorozat |
+> |  | Cognitive Services: QnA Maker | Virtual Machines: H sorozat |
+> |  | Cognitive Services: Speech Services | Virtual Machines: LS-sorozat |
 > |  | Container Instances | Virtual Machines: LSv2 sorozat |
 > |  | Container Registry | Virtual Machines: Mv2 sorozat |
 > |  | Data Factory | Virtual Machines: NC sorozat |
@@ -146,6 +145,14 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Premium Files Storage | Visual Studio App Center |
 > |  | Tárterület: Archive Storage |  |
 > |  | Ultra Disk Storage |  |
+> |  | Virtual Machines: Ddsv4 sorozat |  |
+> |  | Virtual Machines: Ddv4 sorozat |  |
+> |  | Virtual Machines: Dsv4 sorozat |  |
+> |  | Virtual Machines: DV4 sorozat |  |
+> |  | Virtual Machines: Edsv4 sorozat |  |
+> |  | Virtual Machines: Edv4 sorozat |  |
+> |  | Virtual Machines: Esv4 sorozat |  |
+> |  | Virtual Machines: Ev4 sorozat |  |
 > |  | Virtual Machines: Fsv2 sorozat |  |
 > |  | Virtual Machines: M sorozat |  |
 > |  | Virtual WAN |  |
@@ -175,7 +182,7 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Azure Active Directory Domain Services-példány létrehozása](../active-directory-domain-services/tutorial-create-instance.md)
 - [Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása](../aks/availability-zones.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-Availability Zones támogató régiók](az-region.md)
-- [Gyorsindítási sablonok](https://aka.ms/azqs)
+- [Gyorssablonok](https://aka.ms/azqs)

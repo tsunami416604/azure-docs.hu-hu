@@ -3,7 +3,7 @@ title: 'Oktatóanyag: `:` felügyelt identitás használata az Azure Storage sas
 description: Egy oktatóanyag, amely bemutatja, hogyan használható a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás az Azure Storage eléréséhez, a Storage-fiók elérési kulcsa helyett SAS hitelesítő adatok használatával.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ca5ec32e1f88572812b19cf08d4c6f9dc70af6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 92a7c9580d48f70d4bc2391e5c13c8571c38feae
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018571"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018586"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure Storage SAS-hitelesítő adatokkal való eléréséhez
 
@@ -50,7 +50,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Kihagyhatja ezt a l�
 3. Nevezze el a tárfiókot, amelyet később fog használni.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -200,7 +200,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Windows rendszerű virtuális gépekhez rendelt felügyelt identitást az Azure Storage SAS-hitelesítő adatokkal való eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
 

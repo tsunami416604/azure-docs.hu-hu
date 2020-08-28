@@ -3,7 +3,7 @@ title: A felügyelt Identity VM-bővítmény használatának leállítása – A
 description: Lépésenkénti útmutató a virtuálisgép-bővítmény használatának leállításához és az Azure Instance Metadata Service (IMDS) használatának megkezdéséhez a hitelesítéshez.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: markvi
-ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.author: barclayn
+ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848379"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018376"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>A virtuális gépi felügyelt identitások bővítmény használatának leállítása és az Azure-Instance Metadata Service használatának megkezdése
 
@@ -119,7 +119,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Elem | Description |
+| Elem | Leírás |
 | ------- | ----------- |
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy a végpontról kívánja beolvasni az adatait. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
 | `http://localhost:50342/oauth2/token` | Az Azure-erőforrások végpontjának felügyelt identitásai, ahol a 50342 az alapértelmezett port, és konfigurálható. |
@@ -145,7 +145,7 @@ Content-Type: application/json
 }
 ```
 
-| Elem | Description |
+| Elem | Leírás |
 | ------- | ----------- |
 | `access_token` | A kért hozzáférési jogkivonat. Biztonságos REST API hívásakor a jogkivonat a `Authorization` kérelem fejléc mezőjébe ágyazva "tulajdonos" tokenként van beágyazva, ami lehetővé teszi, hogy az API hitelesítse a hívót. | 
 | `refresh_token` | Az Azure-erőforrások felügyelt identitásai nem használják. |
@@ -166,9 +166,9 @@ Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a k�
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Ebben a kódban: 
-- A Windows-bővítmény neve és típusa:`ManagedIdentityExtensionForWindows`
-- A Linux-bővítmény neve és típusa:`ManagedIdentityExtensionForLinux`
+Ebben a példában: 
+- A Windows-bővítmény neve és típusa: `ManagedIdentityExtensionForWindows`
+- A Linux-bővítmény neve és típusa: `ManagedIdentityExtensionForLinux`
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Az "Automation-parancsfájl" sikertelen, amikor a séma exportálását kísérli meg az Azure-erőforrások bővítmény felügyelt identitásai számára
 
@@ -186,7 +186,7 @@ A virtuálisgép-bővítmény használatának számos jelentős korlátozása va
 
  * A legsúlyosabb korlátozás az a tény, hogy a jogkivonatok igényléséhez használt hitelesítő adatokat a virtuális gép tárolja. A virtuális gépet sikeresen sértő támadók exfiltrate a hitelesítő adatokat. 
  * Emellett a virtuálisgép-bővítményt továbbra is nem támogatja több Linux-disztribúció, és ez hatalmas fejlesztési költségeket tesz lehetővé a bővítmények módosításához, kiépítéséhez és teszteléséhez. Jelenleg csak a következő Linux-disztribúciók támogatottak: 
-    * CoreOS stabil
+    * CoreOS Stable
     * CentOS 7,1 
     * Red Hat 7,2 
     * Ubuntu 15,04 
@@ -209,7 +209,7 @@ Az Azure IMDS használatának számos előnye van a jogkivonatok igényléséhez
 Ezen okok miatt az Azure IMDS szolgáltatás a tokenek igénylésének defacto, miután a virtuálisgép-bővítmény elavulttá válik. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez](how-to-use-vm-token.md)
 * [Azure Instance Metadata szolgáltatás](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)

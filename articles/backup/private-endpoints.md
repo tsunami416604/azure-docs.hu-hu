@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 8e9fe46bf3f7528b3a6a08a7c8d90ea6f9117cdd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890892"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017668"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -551,7 +551,7 @@ A. Nem, a saját végpontok csak az új biztonsági mentési tárolók számára
 K. Megpróbáltam védelemmel ellátni egy elemet a tárolóban, de nem sikerült, és a tár továbbra sem tartalmaz védett elemeket. Létrehozhatok privát végpontokat ehhez a tárolóhoz?<br>
 A. Nem, a tár nem rendelkezhet semmilyen, a múltbeli elemek elleni védelemmel kapcsolatos kísérlettel.
 
-K. Van egy olyan tároló, amely privát végpontokat használ a biztonsági mentéshez és a visszaállításhoz. Később is Hozzáadhatok vagy eltávolíthatok privát végpontokat ehhez a tárolóhoz, még akkor is, ha a biztonsági másolati elemek védettek?<br>
+K. Olyan tárolóval rendelkezem, amely privát végpontokat használ a biztonsági mentéshez és a visszaállításhoz. Később is Hozzáadhatok vagy eltávolíthatok privát végpontokat ehhez a tárolóhoz, még akkor is, ha a biztonsági másolati elemek védettek?<br>
 A. Igen. Ha már létrehozott privát végpontokat egy tárolóhoz, és védett biztonsági másolati elemeket hoz létre, akkor később szükség szerint hozzáadhat vagy eltávolíthat privát végpontokat.
 
 K. Használható-e a Azure Backup privát végpontja a Azure Site Recoveryhoz is?<br>
@@ -566,6 +566,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

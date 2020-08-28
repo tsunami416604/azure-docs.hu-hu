@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0f4155c479151c5af64049e0cf9a6a1c4dc4a553
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: b12320213b28e6b07abe217bb509fd668a9ad997
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855906"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017512"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
 A környezetből származó élő adatok teljes körű megoldásának beállításához az Azure Digital Twins-példányát más Azure-szolgáltatásokhoz is összeállíthatja az eszközök és adatok kezeléséhez.
 
 Ebben az oktatóanyagban a következő lesz:...
-* Azure digitális Twins-példány beállítása
-* Ismerje meg a minta-építési forgatókönyvet, és hozza létre az előre megírt összetevőket
-* Szimulált telemetria átirányítása egy [Azure functions](../azure-functions/functions-overview.md) alkalmazással egy [IoT hub](../iot-hub/about-iot-hub.md) eszközről a digitális dupla tulajdonságokba
-* Változások propagálása a **Twin gráfon**keresztül, digitális kettős értesítések feldolgozásával Azure functions, végpontokkal és útvonalakkal
+> [!div class="checklist"]
+> * Azure digitális Twins-példány beállítása
+> * Ismerje meg a minta-építési forgatókönyvet, és hozza létre az előre megírt összetevőket
+> * Szimulált telemetria átirányítása egy [Azure functions](../azure-functions/functions-overview.md) alkalmazással egy [IoT hub](../iot-hub/about-iot-hub.md) eszközről a digitális dupla tulajdonságokba
+> * Változások propagálása a **Twin gráfon**keresztül, digitális kettős értesítések feldolgozásával Azure functions, végpontokkal és útvonalakkal
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -187,7 +188,7 @@ Ebben a lépésben egy szimulált termosztátos eszközt fog összekötni [IoT h
 
 Ez a végpontok közötti forgatókönyv (**B nyíl**) ezen részén történik:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a B nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a "B" nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
 
 Az eszköz kapcsolódásának beállításához a következő műveleteket kell végrehajtania:
 1. Hozzon létre egy IoT hub-t, amely a szimulált eszközt felügyeli
@@ -450,10 +451,11 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 
 Ezután tekintse meg a koncepció dokumentációját, ahol további információt talál az oktatóanyagban használt elemekről:
+
 > [!div class="nextstepaction"]
 > [*Fogalmak: egyéni modellek*](concepts-models.md)

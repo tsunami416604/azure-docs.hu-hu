@@ -15,12 +15,13 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Operations'
 - devx-track-javascript
-ms.openlocfilehash: 223ec01165922702f8f8fa17b09e530b16fa79e5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-csharp
+ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423473"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017685"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -79,7 +80,7 @@ További információ a biztonsági jogkivonatok létrehozásáról és használ
 
 Minden támogatott protokoll, például a MQTT, a AMQP és a HTTPS, különböző módokon szállítja át a jogkivonatokat.
 
-A MQTT használatakor a KAPCSOLÓDÁSi csomag rendelkezik a deviceId ClientId, a `{iothubhostname}/{deviceId}` Felhasználónév mezőben és egy sas-jogkivonattal a Password (jelszó) mezőben. `{iothubhostname}`az IoT hub teljes CName értékének kell lennie (például contoso.azure-devices.net).
+A MQTT használatakor a KAPCSOLÓDÁSi csomag rendelkezik a deviceId ClientId, a `{iothubhostname}/{deviceId}` Felhasználónév mezőben és egy sas-jogkivonattal a Password (jelszó) mezőben. `{iothubhostname}` az IoT hub teljes CName értékének kell lennie (például contoso.azure-devices.net).
 
 A [AMQP](https://www.amqp.org/)használatakor a IoT hub támogatja a [SASL Plain](https://tools.ietf.org/html/rfc4616) és a [AMQP-alapú biztonsági jogcímeket](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
@@ -87,8 +88,8 @@ Ha a AMQP-alapú biztonsági jogcímeket használja, a standard határozza meg, 
 
 SASL PLAIN a **Felhasználónév** a következő lehet:
 
-* `{policyName}@sas.root.{iothubName}`IoT hub szintű jogkivonatok használata esetén.
-* `{deviceId}@sas.{iothubname}`eszköz-hatókörű tokenek használata esetén.
+* `{policyName}@sas.root.{iothubName}` IoT hub szintű jogkivonatok használata esetén.
+* `{deviceId}@sas.{iothubname}` eszköz-hatókörű tokenek használata esetén.
 
 A jelszó mező mindkét esetben tartalmazza a jogkivonatot a [IoT hub biztonsági jogkivonatok](iot-hub-devguide-security.md#security-tokens)című cikkben leírtak szerint.
 
@@ -96,7 +97,7 @@ A HTTPS a hitelesítést az **engedélyezési** kérelem fejlécében szereplő 
 
 #### <a name="example"></a>Példa
 
-Felhasználónév (a DeviceId a kis-és nagybetűk megkülönböztetése):`iothubname.azure-devices.net/DeviceId`
+Felhasználónév (a DeviceId a kis-és nagybetűk megkülönböztetése): `iothubname.azure-devices.net/DeviceId`
 
 Password (létrehozhat egy SAS-jogkivonatot a CLI kiterjesztési paranccsal az [IOT hub létrehoz-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)vagy a [Visual Studio Code-hoz készült Azure IOT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)használatával):
 

@@ -3,12 +3,12 @@ title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826939"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017566"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -333,7 +333,7 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
    - Az ajánlott lemez-foglalások a megadott megőrzési időtartamon, a munkaterhelés típusától és a védett adatok méretén alapulnak. Végezze el a szükséges módosításokat, majd kattintson a **tovább**gombra.
    - **Adatméret:** A védelmi csoportban lévő adatméret.
-   - **Lemezterület:** A védelmi csoport számára ajánlott lemezterület. Ha módosítani kívánja ezt a beállítást, akkor az egyes adatforrások által becsült mennyiségnél valamivel nagyobb teljes területet le kell foglalni.
+   - **Lemezterület:** A védelmi csoport számára ajánlott lemezterület. Ha módosítani kívánja ezt a beállítást, akkor az egyes adatforrások által becsült mennyiségnél valamivel nagyobb teljes területet kell kiosztania.
    - **Az adatkeresés:** Ha bekapcsolja a közös elhelyezést, a védelemben több adatforrás is leképezhető egyetlen replika és egy helyreállítási pont kötetre. Az egyhelyes elhelyezés nem támogatott az összes munkaterhelésnél.
    - **Automatikus növekedés:** Ha bekapcsolja ezt a beállítást, ha a védett csoportban lévő adatmennyiség meghaladja a kezdeti foglalást, a Azure Backup Server 25 százalékkal próbálkozik a lemez méretének növelésével.
    - **Storage-készlet részletei:** Megjeleníti a tárterület állapotát, beleértve a teljes és a fennmaradó lemez méretét.
@@ -539,6 +539,6 @@ A lemez kizárásból való eltávolításához futtassa a következő parancsot
 C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

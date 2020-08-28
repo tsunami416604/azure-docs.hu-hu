@@ -9,13 +9,14 @@ ms.topic: overview
 ms.subservice: spark
 ms.date: 07/28/2020
 ms.author: euang
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 4559446c3de61c552d8fe091fbb95e8b52163472
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 655daeb0149228d78d5288b0e5d0d705a5743d28
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658512"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008641"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>A Linux Foundation Delta Lake áttekintése
 
@@ -286,7 +287,7 @@ Eredmények:
 |                            |                                                                                                             |       |
 |Részletes táblázat adatai  |                                                                                                             |       |
 |Adatbázis                    |alapértelmezett                                                                                                      |       |
-|Tábla                       |manageddeltatable                                                                                            |       |
+|Táblázat                       |manageddeltatable                                                                                            |       |
 |Tulajdonos                       |megbízható szolgáltatás – felhasználó                                                                                         |       |
 |Létrehozás ideje                |SAT Apr 25 00:35:34 UTC 2020                                                                                 |       |
 |Utolsó hozzáférés                 |Thu Jan 01 00:00:00 UTC 1970                                                                                 |       |
@@ -333,7 +334,7 @@ Eredmények:
 |                            |                                                                      |       |
 |Részletes táblázat adatai  |                                                                      |       |
 |Adatbázis                    |alapértelmezett                                                               |       |
-|Tábla                       |externaldeltatable                                                    |       |
+|Táblázat                       |externaldeltatable                                                    |       |
 |Tulajdonos                       |megbízható szolgáltatás – felhasználó                                                  |       |
 |Létrehozás ideje                |SAT Apr 25 00:35:38 UTC 2020                                          |       |
 |Utolsó hozzáférés                 |Thu Jan 01 00:00:00 UTC 1970                                          |       |
@@ -993,7 +994,7 @@ A teljes dokumentációért lásd a [Delta Lake dokumentációs oldalát](https:
 
 További információ: [Delta Lake Project](https://github.com/delta-io/delta).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

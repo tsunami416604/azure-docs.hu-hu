@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652593"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018093"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ Az CORS-támogatás szolgáltatásban való engedélyezésével kapcsolatos info
 
 ## <a name="call-the-service-c"></a>A szolgáltatás meghívása (C#)
 
-Ez a példa azt mutatja be, hogy a C# használatával hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a [notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) . példa:
+Ez a példa azt mutatja be, hogy a C# használatával hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a [notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) . példa:
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="call-the-service-go"></a>A szolgáltatás meghívása (go)
 
-Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
+Ez a példa azt szemlélteti, hogyan használhatja a Go-t a [vonattal a jegyzetfüzetből](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) létrehozott webszolgáltatás meghívásához:
 
 ```go
 package main
@@ -360,7 +360,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="call-the-service-java"></a>A szolgáltatás meghívása (Java)
 
-Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívására:
+Ebből a példából megtudhatja, hogyan használhatja a Java-t a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) létrehozott webszolgáltatás meghívására:
 
 ```java
 import java.io.IOException;
@@ -440,7 +440,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="call-the-service-python"></a>Szolgáltatás meghívása (Python)
 
-Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) létrehozott webszolgáltatás meghívásához:
+Ez a példa bemutatja, hogyan használhatja a Pythont a [vonattal a notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) létrehozott webszolgáltatás meghívásához:
 
 ```python
 import requests
@@ -653,6 +653,6 @@ Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való
 
 A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

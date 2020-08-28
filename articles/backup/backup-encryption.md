@@ -4,12 +4,12 @@ description: Ismerje meg, hogy a Azure Backup titkosítási funkciói hogyan vé
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f55deba58cd7b725bd030409296794e5de911c09
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763643"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017906"
 ---
 # <a name="encryption-in-azure-backup"></a>Titkosítás az Azure Backupban
 
@@ -23,13 +23,13 @@ A Azure Backup két szinten tartalmaz titkosítást:
   - A **platform által felügyelt kulcsok használata**: alapértelmezés szerint az összes adatait a platform által felügyelt kulcsok használatával titkosítja a rendszer. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtani a végponttól. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
   - Az **ügyfél által felügyelt kulcsok használata**: az Azure-Virtual Machines biztonsági mentése esetén úgy is dönthet, hogy az Ön által birtokolt és felügyelt titkosítási kulcsok használatával titkosítja az adatait. Azure Backup lehetővé teszi, hogy a Azure Key Vault tárolt RSA-kulcsait a biztonsági mentések titkosításához használja. A biztonsági mentések titkosításához használt titkosítási kulcs különbözhet a forráshoz használttól. Az adatait egy AES 256-alapú adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) védik, amely viszont a kulcsok használatával védett. Ez teljes körű irányítást biztosít az adat és a kulcsok felett. A titkosítás engedélyezéséhez meg kell adnia a Recovery Services tár hozzáférését a Azure Key Vault titkosítási kulcsához. Ha szükséges, letilthatja a kulcsot, vagy visszavonhatja a hozzáférést. A titkosítást azonban a kulcsok használatával kell engedélyeznie, mielőtt bármilyen elemet a tárolóhoz próbál védelemmel ellátni. [További információ itt](encryption-at-rest-with-cmk.md).
   - **Infrastruktúra-szintű titkosítás**: az adatoknak a Recovery Services-tárolóban az ügyfél által felügyelt kulcsokkal történő titkosításán kívül további titkosítási réteget is beállíthat a tárolási infrastruktúrán. Ezt az infrastruktúra-titkosítást a platform kezeli. Az ügyfél által felügyelt kulcsokkal együtt a REST titkosítással együtt lehetővé teszi a biztonsági mentési adatok kétrétegű titkosítását. Az infrastruktúra titkosítása csak akkor konfigurálható, ha először a saját kulcsait szeretné használni a titkosításhoz a nyugalmi állapotban. Az infrastruktúra titkosítása platform által felügyelt kulcsokat használ az adattitkosításhoz.
-- **A biztonsági mentés alatt álló munkaterhelésre jellemző titkosítás**  
+- **A biztonsági mentést végző munkaterhelésre jellemző titkosítás**  
   - **Azure-beli virtuális gépek biztonsági mentése**: Azure Backup támogatja a [platform által felügyelt kulcsokkal](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)titkosított lemezeket, valamint az Ön által birtokolt és felügyelt [ügyfelek által felügyelt kulcsokat](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) . Emellett olyan Azure-beli virtuális gépek biztonsági mentését is elvégezheti, amelyeken a [Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade)használatával titkosított operációs rendszer vagy adatlemez található. Az ADE a BitLockert használja a Windows rendszerű virtuális gépekhez, és a Linux rendszerű virtuális gépekhez készült DM-Crypt használatával végzi a vendég titkosítást.
 
 >[!NOTE]
 >Az infrastruktúra-titkosítás jelenleg korlátozott előzetes verzióban érhető el, és az USA keleti, USA-beli West2, az USA déli középső régiójában, US Gov Arizona és USA Ha bármelyik régióban szeretné használni a szolgáltatást, töltse ki [ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) , és küldjön e-mailt a következő címre: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 - A titkosítással kapcsolatos bármilyen kérdés [Azure Backup – gyakori](backup-azure-backup-faq.md#encryption) kérdések

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: cd9b015c292d262430d3fd845e06e38866bc6239
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757285"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018722"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -184,6 +184,8 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 ## <a name="set-up-your-environment"></a>Saját környezet beállítása
 
 * **Hiba történt a AmlCompute létrehozásakor**: ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
+
+* **Azure Container Registry jelenleg nem támogatja a Unicode-karaktereket az erőforráscsoport-nevekben**: lehetséges, hogy az ACR-kérések meghiúsulnak, mert az erőforráscsoport neve Unicode-karaktereket tartalmaz. A probléma enyhítése érdekében javasoljuk, hogy hozzon létre egy ACR-et egy eltérő névvel ellátott erőforráscsoporthoz.
 
 ## <a name="work-with-data"></a>Adatok használata
 
@@ -449,7 +451,7 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

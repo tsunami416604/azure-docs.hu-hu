@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 33515cdd943f3816328bfd77d831288c5ee0a608
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890025"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017600"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -203,7 +203,7 @@ Az Azure Data Box Disk sikeres biztonsági mentése után kövesse az alábbi l�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A DPM-kiszolgáló Microsoft Azure Backup (Mohácsi) ügynöke létrehoz egy Azure AD-alkalmazást a bérlőben. Az alkalmazáshoz tanúsítvány szükséges az offline kiindulási házirend konfigurálásakor létrehozott és feltöltött hitelesítéshez.
+A DPM-kiszolgáló Microsoft Azure Backup (Mohácsi) ügynöke létrehoz egy Azure AD-alkalmazást a bérlőben. Az alkalmazáshoz tanúsítvány szükséges a kapcsolat nélküli kitöltési házirend konfigurálásakor létrehozott és feltöltött hitelesítéshez.
 
 A Azure PowerShell a tanúsítvány Azure AD-alkalmazásba való létrehozásához és feltöltéséhez használjuk.
 
@@ -262,6 +262,6 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
 
    ![Ujjlenyomat értéke](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Offline előkészítés saját lemez használatával (az Azure import/export szolgáltatás használatával)](backup-azure-backup-server-import-export.md)

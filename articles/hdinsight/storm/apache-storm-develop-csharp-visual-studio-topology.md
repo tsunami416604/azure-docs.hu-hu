@@ -8,12 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
-ms.openlocfilehash: 3645b6752a49a0cf2544d170ac55a77cc8ae5e40
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082012"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000192"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése a Apache Stormhez a Data Lake Tools for Visual Studio használatával
 
@@ -150,9 +151,9 @@ Ezután adja hozzá a kiöntő kódját, amely egy külső forrásból származ�
 
    * `NextTuple`: Az ún. Storm, amikor a kiöntő jogosult új rekordok kibocsátására.
 
-   * `Ack`(csak tranzakciós topológia): a kiöntőből elküldett rekordok topológiájában elindított más összetevők által megkezdett visszaigazolásokat kezeli. Egy rekord nyugtázása lehetővé teszi, hogy a kiöntő tudja, hogy az alsóbb rétegbeli összetevők sikeresen feldolgozták.
+   * `Ack` (csak tranzakciós topológia): a kiöntőből elküldett rekordok topológiájában elindított más összetevők által megkezdett visszaigazolásokat kezeli. Egy rekord nyugtázása lehetővé teszi, hogy a kiöntő tudja, hogy az alsóbb rétegbeli összetevők sikeresen feldolgozták.
 
-   * `Fail`(csak tranzakciós topológia): olyan rekordok kezeli, amelyek nem képesek a topológia más összetevőinek feldolgozására. A metódus implementálása `Fail` lehetővé teszi a rekord újbóli kibocsátását, hogy újra feldolgozhatók legyenek.
+   * `Fail` (csak tranzakciós topológia): olyan rekordok kezeli, amelyek nem képesek a topológia más összetevőinek feldolgozására. A metódus implementálása `Fail` lehetővé teszi a rekord újbóli kibocsátását, hogy újra feldolgozhatók legyenek.
 
 2. Cserélje le az osztály tartalmát a `Spout` következő szövegre:
 
@@ -481,9 +482,9 @@ Hibrid topológia létrehozásakor és elküldésekor vegye figyelembe a követk
 
 A SCP.NET verziójának 0.9.4.203 egy új osztályt és metódust vezet be, amely kifejezetten az Event hub kiöntő (Event Hubs) által beolvasott Java-kiöntő használatát mutatja be. Ha olyan topológiát hoz létre, amely egy Event hub kiöntőt használ (például a **Storm EventHub Reader** sablon használatával), használja a következő API-kat:
 
-* `EventHubSpoutConfig`osztály: létrehoz egy objektumot, amely tartalmazza a kiöntő összetevő konfigurációját.
+* `EventHubSpoutConfig` osztály: létrehoz egy objektumot, amely tartalmazza a kiöntő összetevő konfigurációját.
 
-* `TopologyBuilder.SetEventHubSpout`metódus: hozzáadja az Event hub kiöntő összetevőjét a topológiához.
+* `TopologyBuilder.SetEventHubSpout` metódus: hozzáadja az Event hub kiöntő összetevőjét a topológiához.
 
 > [!NOTE]  
 > A `CustomizedInteropJSONSerializer` kiöntő által létrehozott adatszerializáláshoz továbbra is a-t kell használnia.
@@ -739,7 +740,7 @@ Ha a *hdinsight-scpwebapi. out* naplófájl tartalmaz egy fájlt `FileNotFoundEx
 * A JDK nem a fejlesztési környezet elérési útjában van. Ellenőrizze, hogy a JDK telepítve van-e a fejlesztői környezetben, és az `%JAVA_HOME%/bin` elérési úton van-e.
 * A Java-függőségek hiányoznak. Győződjön meg róla, hogy a beküldés részeként a szükséges. jar fájlokat is tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatok Event Hubsból való feldolgozására példa: [események feldolgozása az Azure Event Hubs és a Storm on HDInsight](apache-storm-develop-csharp-event-hub-topology.md).
 

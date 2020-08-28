@@ -3,12 +3,12 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892286"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001161"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -24,7 +24,7 @@ ms.locfileid: "88892286"
 Ez a cikk azt ismerteti, hogyan készítse elő a környezetet a munkaterhelések biztonsági mentésére Microsoft Azure Backup kiszolgáló (MABS) használatával. A Azure Backup Server segítségével az alkalmazások számítási feladatait, például a Hyper-V virtuális gépeket, a Microsoft SQL Server, a SharePoint Servert, a Microsoft Exchange-t és a Windows-ügyfeleket egyetlen konzolról biztosíthatja.
 
 > [!NOTE]
-> A Azure Backup Server mostantól védelmet nyújt a VMware virtuális gépek számára, és továbbfejlesztett biztonsági képességeket biztosít. Telepítse a terméket az alábbi részben leírtak szerint, valamint a legújabb Azure Backup-ügynököt. Ha többet szeretne megtudni a VMware-kiszolgálók Azure Backup Server használatával történő biztonsági mentéséről, olvassa el a következő cikket: a [VMware-kiszolgáló biztonsági mentésének Azure Backup Server használata](backup-azure-backup-server-vmware.md). A biztonsági képességekkel kapcsolatos további információkért tekintse meg az [Azure Backup biztonsági szolgáltatásainak dokumentációját](backup-azure-security-feature.md).
+> A Azure Backup Server mostantól védelmet nyújt a VMware virtuális gépek számára, és továbbfejlesztett biztonsági képességeket biztosít. Telepítse a terméket az alábbi részben leírtak szerint, valamint a legújabb Azure Backup-ügynököt. Ha többet szeretne megtudni a VMware-kiszolgálók Azure Backup Server használatával történő biztonsági mentéséről, olvassa el a következő cikket: a [VMware-kiszolgáló biztonsági mentésének Azure Backup Server használata](backup-azure-backup-server-vmware.md). A biztonsági képességekkel kapcsolatos további tudnivalókért tekintse meg [Azure Backup biztonsági szolgáltatások dokumentációját](backup-azure-security-feature.md).
 >
 >
 
@@ -66,9 +66,9 @@ A DPM-tárolót a Windows Server deduplikálása használatával lehet deduplik�
 >
 > * Tartományvezérlőként futó számítógépre
 > * Olyan számítógépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör
-> * Olyan számítógépre, amely System Center Operations Manager felügyeleti kiszolgálóként működik
+> * System Center Operations Manager felügyeleti kiszolgálót futtató számítógép
 > * Olyan számítógépre, amelyen az Exchange Server fut
-> * Olyan számítógépre, amely fürtcsomópontként működik
+> * Egy olyan számítógép, amely egy fürt csomópontja
 >
 > A Azure Backup Server telepítése nem támogatott a Windows Server Core vagy Microsoft Hyper-V Server rendszeren.
 
@@ -261,25 +261,25 @@ Az alábbi lépéseket követve kell áthelyeznie a MABS egy új kiszolgálóra,
 
   > [!IMPORTANT]
   >
-  > * Az új kiszolgálónévnek meg kell egyeznie az eredeti Azure Backup Server példány nevével. Az új Azure Backup Server példány neve nem módosítható, ha az előző tárolási készletet és a MABS-adatbázist (DPMDB) szeretné használni a helyreállítási pontok megőrzése érdekében.
-  > * Rendelkeznie kell biztonsági másolattal a MABS-adatbázisról (DPMDB). Vissza kell állítania az adatbázist.
+  > * Az új kiszolgálónév nevének meg kell egyeznie az eredeti Azure Backup Server példány nevével. Az új Azure Backup Server példány neve nem módosítható, ha az előző tárolási készletet és a MABS-adatbázist (DPMDB) szeretné használni a helyreállítási pontok megőrzése érdekében.
+  > * Rendelkeznie kell biztonsági másolattal a MABS-adatbázisról (DPMDB). Szüksége lesz rá az adatbázis visszaállításához.
 
 1. A Megjelenítés ablaktáblán válassza ki azokat az ügyfélszámítógépeket, amelyeknek frissíteni kívánja a védelmi ügynököt.
-2. Állítsa le az eredeti Azure Backup-kiszolgálót, vagy kapcsolja ki a vezetéket.
-3. A számítógépfiók alaphelyzetbe állítása az Active Directoryban.
-4. Telepítse a 2016-es kiszolgálót az új gépre, és nevezze el az eredeti Azure Backup-kiszolgálóval megegyező számítógépnévvel.
-5. Csatlakozás a tartományhoz
-6. Azure Backup Server v3 vagy újabb telepítése (a MABS Storage-lemezek áthelyezése a régi kiszolgálóról és az importálásból)
+2. Állítsa le az eredeti Azure Backup-kiszolgálót, vagy kapcsolja offline állapotba.
+3. A számítógépfiók alaphelyzetbe állítása Active Directoryban.
+4. Telepítse a 2016-es kiszolgálót egy új gépre, és adja meg ugyanazt a számítógépnevet, mint az eredeti Azure Backup-kiszolgáló.
+5. Csatlakozzon a tartományhoz.
+6. Telepítse a Azure Backup Server v3-as vagy újabb verzióját (a MABS Storage-készlet lemezeit a régi kiszolgálóról és az importálásról).
 7. Állítsa vissza az 1. lépésben végrehajtott DPMDB.
 8. Csatolja a tárolót az eredeti backup-kiszolgálóról az új kiszolgálóra.
-9. Az SQL visszaállítása a DPMDB
-10. A felügyeleti parancssorból az új kiszolgáló CD-ről Microsoft Azure Backup a telepítési hely és a bin mappa
+9. Az SQL-ből állítsa vissza a DPMDB.
+10. Futtassa a CMD-t (rendszergazdaként) az új kiszolgálón. Ugrás a Microsoft Azure Backup telepítési hely és a bin mappa
 
     Elérésiút-példa: CWindowsSystem32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
-11. Az Azure Backup szolgáltatásban futtassa a DPMSYNC-SYNC parancsot
+11. A Azure Backuphoz való kapcsolódáshoz futtassa a következőt `DPMSYNC -SYNC`
 
-    Ha a régiek áthelyezése helyett új lemezeket adott hozzá a DPM-tárolóhoz, akkor futtassa a DPMSYNC-Reallocatereplica
+    Ha a régiek áthelyezése helyett **új** lemezeket adott hozzá a DPM-tárolóhoz, futtassa a parancsot. `DPMSYNC -Reallocatereplica`
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
@@ -360,7 +360,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 Ha Microsoft Azure Backup kiszolgáló hibával leáll a telepítési fázisban (vagy biztonsági mentés vagy visszaállítás), további információért tekintse meg ezt a [hibakódot tartalmazó dokumentumot](https://support.microsoft.com/kb/3041338)  .
 [Azure Backup kapcsolódó gyakori kérdések](backup-azure-backup-faq.md) is megtekinthetők
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Részletes információkat itt talál a [környezet DPM való előkészítéséről](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019). Emellett olyan támogatott konfigurációkról is tartalmaz információkat, amelyeken Azure Backup Server telepíthető és használható. Számos különböző művelet végrehajtásához [PowerShell-parancsmagokat](/powershell/module/dataprotectionmanager/) is használhat.
 

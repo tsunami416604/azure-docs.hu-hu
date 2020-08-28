@@ -10,13 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.custom: seodec18
-ms.openlocfilehash: c2a33c701278a900e502da9e6d9520ea213ce4c3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 2d14d45a6cf7147514cf4fdfc2a3ede470c12835
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168099"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017634"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Azure Time Series Insights 1. generációs környezethez tartozó referenciák kezelése C Sharp használatával
 
@@ -308,6 +308,6 @@ namespace CsharpTsiMsalGaSample
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el az 1. generációs [referenciát adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) -dokumentációt.

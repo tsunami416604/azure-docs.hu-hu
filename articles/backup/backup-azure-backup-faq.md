@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892762"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017736"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -56,7 +56,7 @@ Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltan
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Végrehajtható elemszintű visszaállítás (Item Level Restore, ILR) olyan virtuális gépeken, amelyeknek Recovery Services-tárolóban található a biztonsági másolata?
 
 - Az ILR az olyan Azure-beli virtuális gépeknél támogatott, amelyeknek a biztonsági másolata az Azure VM Backup használatával készült. További információkért tekintse meg ezt a [cikket](backup-azure-restore-files-from-vm.md).
-- A ILR nem támogatott az Azure Backup Server vagy a System Center DPM által készített helyszíni virtuális gépek online helyreállítási pontjain.
+- A ILR nem támogatott a Azure Backup Server (MABS) vagy a System Center DPM által készített helyszíni virtuális gépek online helyreállítási pontjain.
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 
@@ -127,7 +127,7 @@ BMR/rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy ren
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Vonatkozik méretkorlátozás a Recovery Services-tárolóval biztonsági másolatokba mentett adatok mennyiségére?
 
-Recovery Services-tároló használatával nem korlátozható a biztonsági mentéshez használható teljes adatmennyiség. Az egyes adatforrások (az Azure-beli virtuális gépeken kívül) legfeljebb 54 400 GB méretűek lehetnek. A korlátokkal kapcsolatos további információkért tekintse [meg a tároló korlátai szakaszt a támogatási mátrixban](./backup-support-matrix.md#vault-support).
+A Recovery Services-tároló használatával nem korlátozható az összes olyan adatmennyiség, amelyről biztonsági másolatot készíthet. Az egyes adatforrások (az Azure-beli virtuális gépeken kívül) legfeljebb 54 400 GB méretűek lehetnek. A korlátokkal kapcsolatos további információkért tekintse [meg a tároló korlátai szakaszt a támogatási mátrixban](./backup-support-matrix.md#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Miért kisebb a Recovery Services-tárolóba átvitt adatok mérete a biztonsági mentéshez kiválasztott adatok méreténél?
 
@@ -184,7 +184,7 @@ Védett példányonként 9999 helyreállítási pontot hozhat létre. A védett 
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Hányszor állíthatom helyre az Azure-beli biztonsági másolattal rendelkező adatokat?
 
-Az Azure Backupból történő helyreállítások száma korlátlan.
+A helyreállítások száma nem korlátozható Azure Backupból.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Az adatok visszaállításakor fizetnem kell az Azure-ból kimenő forgalomért?
 
@@ -218,13 +218,13 @@ A Microsoft semmilyen időpontban nem tudja visszafejteni a biztonsági mentési
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Mekkora a biztonsági mentési adatmennyiség titkosításához használt titkosítási kulcs minimális hossza?
 
-A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosítási kulcs olyan jelszóból származik, amelynek legalább 16 karakter hosszúnak kell lennie. Az Azure-beli virtuális gépek esetében az Azure kulcstartó által használt kulcsok hossza nincs korlátozva.
+A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosítási kulcs olyan jelszóból származik, amelynek legalább 16 karakter hosszúnak kell lennie. Az Azure-beli virtuális gépek esetében nincs korlátozva az Azure kulcstartó által használt kulcsok hossza.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Mi történik, ha elveszítem a titkosítási kulcsot? Helyre tudom állítani az adatokat? A Microsoft helyre tudja állítani az adatokat?
 
 Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tart fenn másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

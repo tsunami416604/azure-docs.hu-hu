@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719308"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018960"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió)
 
@@ -216,6 +217,6 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 A megadott kezdési időpontot a legközelebbi órára kerekíti a rendszer, a befejezési időpontot pedig a legközelebbi órára kerekíti. Lehetséges, hogy a felhasználók a kezdés időpontja előtt és a Befejezés időpontja előtt bekövetkezett eseményeket láthatják. Az is lehetséges, hogy a kezdő és a záró időpont között előforduló események nem jelennek meg. Ennek az az oka, hogy az események a kezdési időpontnál korábbi órában vagy a befejezési időpont utáni órában lesznek rögzítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hírcsatorna-naplók változásáról. Lásd: [hírcsatorna módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)

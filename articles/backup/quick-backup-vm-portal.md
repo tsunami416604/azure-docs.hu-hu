@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: c41fb7426cf740b5861b0b571cf7ce5c54d681ef
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757608"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017447"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 
@@ -39,7 +39,7 @@ A Recovery Services-tároló egy logikai tároló, amely az egyes védett erőfo
 
     ![Virtuális gép biztonsági mentésének engedélyezése az Azure Portalon](./media/quick-backup-vm-portal/enable-backup.png)
 
-    A tároló alapértelmezés szerint georedundáns tárolásra van beállítva. Az adatok további védelme érdekében ez a tárhelyredundancia-szint biztosítja, hogy a rendszer egy másodlagos Azure-régióba replikálja az adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található.
+    A tároló alapértelmezés szerint georedundáns tárolásra van beállítva. Az adatok további védelme érdekében ez a tárolási redundancia biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
 
     Házirendek létrehozásával és használatával határozhatja meg, hogy a rendszer mikor futtassa a biztonsági mentési feladatokat, és meddig tárolja a helyreállítási pontokat. Az alapértelmezett védelmi házirend naponta egyszer futtat biztonsági mentési feladatot, és 30 napig őrzi meg a helyreállítási pontokat. Ezekkel az alapértelmezett értékekkel gyorsan biztosíthatja virtuális gépe védelmét.
 
@@ -85,7 +85,7 @@ Ha folytatja a biztonsági mentési oktatóanyagot, amely leírja, hogyan lehet 
 
     ![Az erőforráscsoport törlése az Azure Portal használatával](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

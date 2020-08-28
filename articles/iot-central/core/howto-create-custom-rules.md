@@ -7,14 +7,14 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 572b5328a433839dafbfe23eb7207dfaeb9ea309
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158146"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017855"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kiterjesztése egyéni szabályokkal Stream Analytics, Azure Functions és SendGrid használatával
 
@@ -34,7 +34,7 @@ Ebben a útmutatóban a következőket sajátíthatja el:
 
 A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
@@ -64,7 +64,7 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Name (Név)    | Adja meg a névtér nevét |
+| Név    | Adja meg a névtér nevét |
 | Tarifacsomag | Alapszintű |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
@@ -73,15 +73,15 @@ A [Azure Portal használatával hozzon létre egy Event Hubs névteret](https://
 
 ### <a name="stream-analytics-job"></a>Stream Analytics feladatok
 
-A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) a következő beállításokkal:
+A [Azure Portal használatával hozzon létre egy stream Analytics feladatot](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  a következő beállításokkal:
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Name (Név)    | Válassza ki a feladatokhoz tartozó nevet |
+| Név    | Válassza ki a feladatokhoz tartozó nevet |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Hely | USA keleti régiója |
-| Üzemeltetési környezet | Felhő |
+| Üzemeltetési környezet | Felhőbeli |
 | Streamelési egységek | 3 |
 
 ### <a name="function-app"></a>Függvényalkalmazás
@@ -90,7 +90,7 @@ A [Azure Portal használatával hozzon létre egy Function alkalmazást](https:/
 
 | Beállítás | Érték |
 | ------- | ----- |
-| App neve    | Válassza ki a Function alkalmazás nevét |
+| Alkalmazás neve    | Válassza ki a Function alkalmazás nevét |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
 | Operációs rendszer | Windows |
@@ -105,7 +105,7 @@ A [Azure Portal használatával hozzon létre egy SendGrid-fiókot](https://port
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Name (Név)    | Válassza ki a SendGrid-fiók nevét |
+| Név    | Válassza ki a SendGrid-fiók nevét |
 | Jelszó | Jelszó létrehozása |
 | Előfizetés | Az Ön előfizetése |
 | Erőforráscsoport | DetectStoppedDevices |
@@ -159,7 +159,7 @@ Az e-mailek SendGrid való elküldéséhez a következő módon kell konfigurál
 1. Válassza az **integráció**lehetőséget, válassza ki a kimeneti http-t **($Return)**, majd válassza a **Törlés**lehetőséget.
 1. Válassza az **+ új kimenet**, majd a **SendGrid**lehetőséget, majd a **kiválasztás**lehetőséget. A SendGrid-bővítmény telepítéséhez válassza a **telepítés** lehetőséget.
 1. Ha a telepítés befejeződött, válassza a **függvény visszatérési értékének használata**lehetőséget. Adjon meg egy érvényes **címet** az e-mail-értesítések fogadásához.  Adjon meg egy érvényes **címet** az e-mail feladóként való használathoz.
-1. Válassza a **SENDGRID API-kulcs alkalmazás**melletti **új** lehetőséget. Adja meg a **SendGridAPIKey** kulcsot, és a korábban feljegyzett SendGrid API-kulcsot értékként. Ezután kattintson a **Létrehozás** elemre.
+1. Válassza a **SENDGRID API-kulcs alkalmazás**melletti **új** lehetőséget. Adja meg a **SendGridAPIKey** kulcsot, és a korábban feljegyzett SendGrid API-kulcsot értékként. Ezután válassza a **Létrehozás** elemet.
 1. A **Save (Mentés** ) gombra kattintva mentse a függvény SendGrid-kötéseit.
 
 Az integrálási beállítások a következő képernyőképhez hasonlóan néznek ki:
@@ -302,7 +302,7 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
         RightSide.deviceid2 is NULL
     ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. A Stream Analytics-feladatok elindításához válassza az **Áttekintés**, majd a **Start** **, majd a**Start lehetőséget, majd **indítsa**el a következőt:
 
     ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
@@ -349,7 +349,7 @@ A fenti útmutató és a szükségtelen költségek elkerülése érdekében tö
 
 A IoT Central alkalmazást a **felügyeleti** lapról törölheti az alkalmazáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan végezheti el a következőket:
 

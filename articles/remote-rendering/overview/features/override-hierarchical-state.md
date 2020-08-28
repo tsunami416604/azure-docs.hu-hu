@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 6a8f956a692fd857fc864ca0132acc85d9942bbd
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891810"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009457"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
@@ -95,7 +96,7 @@ Maga egy példánya `HierarchicalStateOverrideComponent` nem ad hozzá sok futá
 
 Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor*a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerteti](../../overview/features/outlines.md)
 * [Renderelési módok](../../concepts/rendering-modes.md)

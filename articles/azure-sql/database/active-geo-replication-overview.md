@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448742"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018365"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 Annak biztosítása érdekében, hogy az alkalmazás azonnal hozzáférhessen az új elsődleges feladatátvételhez, ellenőrizze, hogy a másodlagos kiszolgáló és az adatbázis hitelesítési követelményei megfelelően vannak-e konfigurálva. Részletekért lásd: [SQL Database biztonság a katasztrófa utáni helyreállítás után](active-geo-replication-security-configure.md). A megfelelőség biztosítása érdekében a feladatátvételt követően ellenőrizze, hogy a másodlagos adatbázis biztonsági mentési adatmegőrzési szabályzata megegyezik-e az elsődleges értékkel. Ezek a beállítások nem részei az adatbázisnak, és nem replikálódnak. Alapértelmezés szerint a másodlagos beállítás a hét nap alapértelmezett PITR megőrzési időtartamával lesz konfigurálva. Részletekért lásd: [SQL Database automatikus biztonsági mentések](automated-backups-overview.md).
 
 > [!IMPORTANT]
-> Ha az adatbázis egy feladatátvételi csoport tagja, nem kezdeményezhet feladatátvételt a Geo-replikáció feladatátvételi paranccsal. Használja a feladatátvételi parancsot a csoport számára. Ha egy egyedi adatbázist kell feladatátvételt végeznie, először el kell távolítania azt a feladatátvételi csoportból. Részletekért lásd: [feladatátvételi csoportok](auto-failover-group-overview.md) .
+> Ha az adatbázis egy feladatátvételi csoport tagja, nem kezdeményezhet feladatátvételt a Geo-replikáció feladatátvételi paranccsal. Használja a feladatátvételi parancsot a csoport számára. Ha egy egyedi adatbázist kell feladatátvételt végeznie, először el kell távolítania azt a feladatátvételi csoportból. Részletekért lásd:  [feladatátvételi csoportok](auto-failover-group-overview.md) .
 
 ## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
 
@@ -178,7 +178,8 @@ A módosításokat végző ügyfélnek hálózati hozzáférésre van szüksége
 
 ### <a name="on-the-master-of-the-secondary-server"></a>A másodlagos kiszolgáló főkiszolgálójára
 
-1. Adja hozzá az IP-címet a módosításokat végző ügyfél engedélyezési listájához. Az elsődleges kiszolgáló azonos pontos IP-címének kell lennie.
+1. Adja hozzá az ügyfél IP-címét az engedélyezési listához a másodlagos kiszolgáló tűzfalszabályok alatt. Győződjön meg arról, hogy az elsődleges kiszolgálón hozzáadott azonos ügyfél IP-cím is hozzá lett adva a másodlagoshoz. Ez egy szükséges lépés ahhoz, hogy a MÓDOSÍTÁSi ADATBÁZIShoz hozzá kell adni a másodlagos parancsot a Geo-replikáció indításához.
+
 1. Hozza létre ugyanazt a bejelentkezést, mint az elsődleges kiszolgálón, ugyanazzal a felhasználónévvel és SID-lel:
 
    ```sql
@@ -287,7 +288,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A minta parancsfájlokat lásd:
   - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/setup-geodr-and-failover-database-powershell.md)

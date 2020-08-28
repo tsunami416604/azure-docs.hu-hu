@@ -3,12 +3,12 @@ title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolg
 description: Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) segítségével kezelhetők a virtuálisgép-bővítmények központi telepítése, amelyek a nem Azure-beli virtuális gépeken üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213122"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018161"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
 
@@ -89,7 +89,7 @@ A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók a 
 
     ![Log Analytics VM-bővítmény telepítése](./media/manage-vm-extensions/mma-extension-config.png)
 
-    A telepítés befejezéséhez meg kell adnia a munkaterület AZONOSÍTÓját és az elsődleges kulcsot. Ha nem ismeri ezt az információt, tekintse meg a [munkaterület-azonosító és-kulcs beszerzése](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)című témakört.
+    A telepítés befejezéséhez meg kell adnia a munkaterület AZONOSÍTÓját és az elsődleges kulcsot. Ha nem ismeri ezt az információt, tekintse meg a [munkaterület-azonosító és-kulcs beszerzése](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)című témakört.
 
 4. A szükséges információk megerősítése után válassza a **Létrehozás**lehetőséget. Megjelenik a központi telepítés összegzése, és megtekintheti a központi telepítés állapotát.
 

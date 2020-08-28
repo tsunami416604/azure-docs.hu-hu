@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése Azure Stack
 description: A Azure Backup Server használatával biztonsági mentést készíthet a SharePoint-adatairól, és visszaállíthatja azokat Azure Stackeken. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319cf064ab2bab20e4140f8a208be843df7fa71
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538785"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017970"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
 
@@ -84,7 +84,7 @@ A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét
 
     Ha kibontja a SharePoint Server MABS lekérdezi a VSS-t, hogy megtudja, milyen MABS tud védelemmel ellátni.  Ha a SharePoint-adatbázis távoli, a MABS csatlakozik hozzá. Ha a SharePoint-adatforrások nem jelennek meg, ellenőrizze, hogy a VSS-író fut-e a SharePoint-kiszolgálón és a távoli SQL Serveron, és győződjön meg arról, hogy a MABS-ügynök telepítve van a SharePoint-kiszolgálón és a távoli SQL Server is. Továbbá győződjön meg arról, hogy a SharePoint-adatbázisok nem védettek máshol SQL Server-adatbázisokként.
 
-1. Az **adatvédelmi módszer kiválasztása**lapon adja meg, hogyan szeretné kezelni a rövid és a hosszú \- távú biztonsági mentést. Rövid távú biztonsági mentéskor először mindig lemezre történik a művelet, azzal a lehetőséggel, hogy az Azure Backup segítségével a lemezről a felhőbe kerülnek az adatok \(rövid vagy hosszú távra\).
+1. Az **adatvédelmi módszer kiválasztása**lapon adja meg, hogyan szeretné kezelni a rövid és a hosszú \- távú biztonsági mentést. A rövid \- távú biztonsági mentés mindig lemezre történik, és a lemezről az Azure-felhőbe történő biztonsági mentés lehetősége \( rövid vagy hosszú \- távú Azure Backup \) .
 
 1. A **rövid \- távú célok kiválasztása**lapon adja meg, hogyan szeretné biztonsági mentést készíteni a rövid \- távú lemezes tárolásra.   A **megőrzési** időtartam beállításnál megadhatja, hogy mennyi ideig szeretné megőrizni a lemezen tárolt adatok körét. A **szinkronizálás gyakorisága**beállításnál megadhatja, milyen gyakran szeretne növekményes biztonsági másolatot készíteni lemezre. Ha nem szeretné beállítani a biztonsági mentés időközét, akkor közvetlenül egy helyreállítási pont előtt is megtekintheti, hogy a MABS expressz teljes biztonsági mentést futtasson közvetlenül az egyes helyreállítási pontok ütemezése előtt.
 
@@ -104,7 +104,7 @@ A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét
 
 1. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. Replikálhat a hálózaton keresztül, vagy offline biztonsági mentést (offline áttöltést) is végezhet. Az offline biztonsági mentés az Azure Import szolgáltatással működik. [További információk](./backup-azure-backup-import-export.md).
 
-1. Az **Összefoglalás** lapon tekintse át a beállításokat. Miután rákattintott a **csoport létrehozása**lehetőségre, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
+1. Az  **Összefoglalás** lapon tekintse át a beállításokat. Miután rákattintott a **csoport létrehozása**lehetőségre, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -169,7 +169,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 
     ![Előkészítési Location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    A MABS csatolja a SharePoint-elemeket futtató tartalom-adatbázist az ideiglenes SQL Server példányhoz. A tartalom-adatbázisból helyreállítja az elemet, és áthelyezi az átmeneti fájl helyére a MABS. Az átmeneti helyen található helyreállított elem most exportálva lesz a SharePoint-farm átmeneti helyére.
+    A MABS csatolja a SharePoint-elemeket tároló tartalom-adatbázist az ideiglenes SQL Server példányhoz. A tartalom-adatbázisból helyreállítja az elemet, és áthelyezi az átmeneti fájl helyére a MABS. Az átmeneti helyen található helyreállított elem most exportálva lesz a SharePoint-farm átmeneti helyére.
 
     ![Előkészítési Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. Válassza a **helyreállítási beállítások megadása lehetőséget**, majd alkalmazza a biztonsági beállításokat a SharePoint-farmra, vagy alkalmazza a helyreállítási pont biztonsági beállításait. Kattintson a **Tovább** gombra.

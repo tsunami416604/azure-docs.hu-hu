@@ -4,12 +4,12 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892558"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000719"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 
@@ -50,13 +50,13 @@ Ha Ön [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/
 
 ## <a name="recovery-services-vault"></a>Helyreállítási tár
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi ideig tart az Azure Backup-ügynök feladata, hogy tükrözze a portálon?
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Mennyi ideig tart a Azure Backup ügynök feladatainak állapota, hogy tükrözze a portálon?
 
-A Azure Portal akár 15 percet is igénybe vehet, hogy tükrözze az Azure Backup Agent-feladatok állapotát.
+A Azure Portal akár 15 percet is igénybe vehet, hogy tükrözze a Azure Backup Agent-feladatok állapotát.
 
 ### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>A biztonsági mentési feladat sikertelensége után mennyi időt vesz igénybe egy riasztás küldése?
 
-Az Azure Backup hibája 20 percen belül riasztást vált ki.
+A riasztást a Azure Backup meghibásodása után 20 percen belül kiemeljük.
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Van olyan eset, amikor a rendszer nem küld e-mailt, ha az értesítések konfigurálva vannak?
 
@@ -66,7 +66,7 @@ Igen. A következő helyzetekben az értesítések nem lesznek elküldve:
 * Feladat megszakításakor
 * Ha egy második biztonsági mentési művelet meghiúsul, mert az eredeti biztonsági mentési feladata folyamatban van
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

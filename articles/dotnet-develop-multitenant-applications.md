@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81481838"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017702"
 ---
 # <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazások az Azure-ban
 A több-bérlős alkalmazás olyan megosztott erőforrás, amely lehetővé teszi a "felhasználók számára a különböző bérlők számára", hogy megtekintsék az alkalmazást, mintha a tulajdonosa lenne. Egy tipikus forgatókönyv, amely egy több-bérlős alkalmazáshoz rendeli, a különböző bérlők által az alkalmazás összes felhasználója testreszabhatja a felhasználói élményt, de egyébként ugyanazok az alapvető üzleti követelmények. Többek között a nagyméretű több-bérlős alkalmazások például az Office 365, a Outlook.com és a visualstudio.com.

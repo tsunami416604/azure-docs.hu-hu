@@ -3,12 +3,12 @@ title: SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure Backup szolgáltatás használatával
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876308"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017311"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 
@@ -38,7 +38,7 @@ SQL Server-adatbázis biztonsági mentése az Azure-ba és az Azure-ból való h
   * A DPM felismeri a feladatátvételeket, és folytatja az adatbázis védelmét.
   * A DPM támogatja a többhelyes fürtkonfigurációkat az SQL Server-példányok esetében.
 * Amikor olyan adatbázist lát el védelemmel, amely használja az AlwaysOn funkciót, a DPM-re a következő korlátozások vonatkoznak:
-  * A DPM a rendelkezésre állási csoportokra vonatkozóan az SQL Serveren beállított biztonsági mentési házirendet a következőképpen szolgálja ki:
+  * A DPM tiszteletben tartja a biztonsági mentési szabályzatot a SQL Serverban beállított rendelkezésre állási csoportok számára, a következő módon:
     * Másodlagos előnyben részesítése – A biztonsági mentéseket egy másodlagos replikán kell végrehajtani, kivéve ha az elsődleges replika az egyetlen online replika. Ha több másodlagos replika érhető el, akkor a legmagasabb biztonsági mentési prioritású csomópont lesz kiválasztva a biztonsági mentéshez. Ha csak az elsődleges replika érhető el, akkor a biztonsági mentést az elsődleges replikán kell megtörténnie.
     * Csak másodlagos – Az elsődleges replikán nem hajtható végre biztonsági mentés. Ha az elsődleges replika az egyetlen online replika, a biztonsági mentés nem lesz végrehajtva.
     * Elsődleges – A biztonsági mentéseket mindig az elsődleges replikán kell végrehajtani.
@@ -91,7 +91,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
    >
    >
 
-1. Válassza a **Tovább** lehetőséget. A DPM megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
+1. Kattintson a **Tovább** gombra. A DPM megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
 
     ![Lemez kiosztásának beállítása](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -179,7 +179,7 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Adatbázis helyreállítása az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután kattintson a **Tovább** gombra.
+1. A DPM a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután kattintson a **Tovább** gombra.
 
     ![Adatbázis helyreállítása az eredeti helyükre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

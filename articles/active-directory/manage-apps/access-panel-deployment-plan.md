@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: b7ddbff2643086f1875ca190b67f521edb115c3e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930536"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017719"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
-Azure Active Directory (Azure AD) az alkalmazásaim egy webalapú portál, amely segít csökkenteni a támogatási költségeket, növelheti a hatékonyságot és a biztonságot, és csökkentheti a felhasználói frusztrációt. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik a rendszer elérését, és értesítik a rendszergazdákat a visszaélésről vagy a visszaélésről.
+Azure Active Directory (Azure AD) az alkalmazásaim egy webalapú portál, amely segít csökkenteni a támogatási költségeket, növelheti a hatékonyságot és a biztonságot, és csökkentheti a felhasználói frusztrációt. A rendszer részletes jelentéseket tartalmaz, amelyek nyomon követik a rendszer elérését, és értesítik a rendszergazdákat a visszaélésről vagy a visszaélésről. Ha szeretne többet megtudni az alkalmazások végfelhasználói perspektívából való használatáról, tekintse meg [az alkalmazások portál súgóját](../user-help/my-apps-portal-end-user-access.md).
 
 Az Azure AD saját alkalmazások használatával a következőket teheti:
 
@@ -42,7 +42,7 @@ Az Azure AD saját alkalmazásai a következő módokon nyújtják a vállalatok
 
 **Intuitív felhasználói élményt nyújt**: az alkalmazásaink egyetlen platformot biztosítanak az összes Azure-beli egyszeri bejelentkezéshez (SSO) csatlakoztatott alkalmazáshoz. A meglévő beállításokat és új képességeket (például a csoportok kezelését és az önkiszolgáló jelszó-visszaállítást) egy egységes portálon találja, ahogy hozzájuk lettek adva. Az intuitív élmény lehetővé teszi, hogy a felhasználók gyorsabban és hatékonyabban térjenek vissza a munkába, miközben csökkentik a frusztrációt.
 
-**Növeli a termelékenységet**: az alkalmazásokban lévő összes felhasználói alkalmazáshoz SSO engedélyezve van. A nagyvállalati alkalmazások egyszeri bejelentkezésének engedélyezése és a Microsoft 365 a további bejelentkezési kérések csökkentése vagy kiküszöbölése révén kiváló bejelentkezési élményt hozhat létre. Az alkalmazások önkiszolgáló és dinamikus tagságot használnak, és növelik az Ön Identity rendszerének általános biztonságát. Ezzel biztosíthatja, hogy a megfelelő személyek kezelhesse az alkalmazásokhoz való hozzáférést. A saját alkalmazások egy koherens kezdőlapként szolgálnak, amellyel gyorsan megtalálhatja az erőforrásokat, és folytathatja a munkahelyi feladatokat.
+**Növeli a termelékenységet**: az alkalmazásokban lévő összes felhasználói alkalmazáshoz SSO engedélyezve van. A nagyvállalati alkalmazások egyszeri bejelentkezésének engedélyezése és a Microsoft 365 a további bejelentkezési kérések csökkentése vagy kiküszöbölése révén kiváló bejelentkezési élményt hozhat létre. Az alkalmazások önkiszolgáló és dinamikus tagságot használnak, és növelik az Ön Identity rendszerének általános biztonságát. A saját alkalmazások biztosítják, hogy a megfelelő személyek kezeljék az alkalmazásokhoz való hozzáférést. A saját alkalmazások egy koherens kezdőlapként szolgálnak, amellyel gyorsan megtalálhatja az erőforrásokat, és folytathatja a munkahelyi feladatokat.
 
 A szolgáltatás **kezelése**: a saját alkalmazások Azure ad-vel való engedélyezése segíthet a helyszíni infrastruktúrák kiválasztásában. A támogatási költségeket csökkenti azáltal, hogy egységes portált biztosít az összes alkalmazás megkereséséhez, az erőforrásokhoz való hozzáférés kéréséhez és a fiókok kezeléséhez.
 
@@ -89,6 +89,10 @@ Az alábbi táblázat a saját alkalmazások központi telepítésének legfonto
 | Felhasználó felület| A felhasználók kezelhetik a fiókjaikat. |
 | Felhasználó felület| A felhasználók tisztában vannak a böngészők kompatibilitásával. |
 | Támogatás| A felhasználók megtalálhatják az alkalmazások problémáinak támogatását. |
+
+
+> [!TIP]
+> A saját alkalmazások a belső vállalati URL-címekkel is használhatók az alkalmazásproxy használatával. További információ: [oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az alkalmazásproxy használatával Azure Active Directoryban](application-proxy-add-on-premises-application.md).
 
 ### <a name="best-practices-for-deploying-azure-ad-my-apps"></a>Ajánlott eljárások az Azure AD-alkalmazások üzembe helyezéséhez
 
@@ -255,7 +259,7 @@ Lásd: [felhasználók és csoportok társítása egy alkalmazáshoz Active Dire
 
 Ha tesztelés vagy üzembe helyezés során szeretné felvenni a csoportokat, de még nem engedélyezi az alkalmazások használatát a saját alkalmazásokban, tekintse meg az [alkalmazás elrejtése a felhasználói felületről Azure Active Directoryban](hide-application-from-user-portal.md)című témakört.
 
-### <a name="deploy-microsoft-microsoft-365-applications-to-my-apps"></a>Microsoft Microsoft 365-alkalmazások üzembe helyezése az alkalmazásokban
+### <a name="deploy-microsoft-365-applications-to-my-apps"></a>Microsoft 365 alkalmazások üzembe helyezése az alkalmazásokban
 
 Microsoft 365 alkalmazások esetében a felhasználók az Office egy példányát kapják meg a hozzájuk rendelt licencek alapján. Az Office-alkalmazásokhoz való hozzáférés előfeltétele, hogy a felhasználók az Office-alkalmazásokhoz kötött megfelelő licenceket kapjanak. Ha hozzárendel egy licencet a felhasználóhoz, a rendszer automatikusan megtekinti a licenccel társított alkalmazásokat a saját alkalmazások lapján és a Microsoft 365 app launcherben.
 
@@ -303,7 +307,7 @@ Fontos megtervezni, hogy mi a teendő, ha a központi telepítés nem a tervezet
 
 ## <a name="manage-your-implementation"></a>A megvalósítás kezelése
 
-A legkevesebb Kiemelt szerepkört kell használnia a szükséges feladatok végrehajtásához Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](../users-groups-roles/directory-assign-admin-roles.md) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
+A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a Azure Active Directoryon belül. [Tekintse át az elérhető különböző szerepköröket](../users-groups-roles/directory-assign-admin-roles.md) , és válassza ki a megfelelőt az alkalmazáshoz tartozó egyes personák igényeinek megoldásához. Előfordulhat, hogy bizonyos szerepköröket átmenetileg kell alkalmazni, és el kell távolítani az üzembe helyezés befejeződése után.
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|
@@ -331,6 +335,6 @@ Lásd a következő hibaelhárítási útmutatókat:
 
 [A böngésző kiterjesztésével kapcsolatos problémák](manage-access-panel-browser-extension.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Multi-Factor Authentication üzembe helyezésének megtervezése](https://aka.ms/deploymentplans/mfa)

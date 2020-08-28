@@ -3,12 +3,12 @@ title: Adatmodell a Azure Backup diagnosztikai eseményeihez
 description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) történő küldésének erőforrás-specifikus módjára hivatkozik.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892524"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017583"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez
 
@@ -218,7 +218,7 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | VolumeFriendlyName             | Szöveg          | A tárolási kötet rövid neve                          |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan küldhet diagnosztikai információkat Log Analytics](./backup-azure-diagnostic-events.md)
 - [Megtudhatja, hogyan írhat lekérdezéseket az erőforrás-specifikus táblákon](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

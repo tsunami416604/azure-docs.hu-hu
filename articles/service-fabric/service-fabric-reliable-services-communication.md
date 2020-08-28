@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253184"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018637"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként teljes mértékben független a szolgáltatások közötti kommunikációtól. Minden protokoll és verem elfogadható, UDP-ről HTTP-re. A szolgáltatás fejlesztője dönti el, hogyan kommunikálnak a szolgáltatások. A Reliable Services alkalmazás-keretrendszer beépített kommunikációs veremeket és API-kat biztosít, amelyeket az egyéni kommunikációs összetevők kiépítéséhez használhat.
@@ -231,7 +232,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`az a objektum, amely az Service Fabric-fürttel való kommunikációra szolgál a fürt különböző felügyeleti műveleteihez. Ez akkor lehet hasznos, ha jobban meg szeretné határozni, hogy a szolgáltatás partíció-feloldása hogyan kommunikál a fürttel. `FabricClient`belső gyorsítótárazást végez, és általában költséges a létrehozása, ezért fontos, hogy a `FabricClient` példányokat a lehető legnagyobb mértékben újra lehessen használni.
+`FabricClient` az a objektum, amely az Service Fabric-fürttel való kommunikációra szolgál a fürt különböző felügyeleti műveleteihez. Ez akkor lehet hasznos, ha jobban meg szeretné határozni, hogy a szolgáltatás partíció-feloldása hogyan kommunikál a fürttel. `FabricClient` belső gyorsítótárazást végez, és általában költséges a létrehozása, ezért fontos, hogy a `FabricClient` példányokat a lehető legnagyobb mértékben újra lehessen használni.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -262,7 +263,7 @@ Az ügyfél kódjának általában nem kell közvetlenül a ServicePartitionReso
 ### <a name="communication-clients-and-factories"></a>Kommunikációs ügyfelek és gyárak
 A kommunikációs gyár könyvtára egy tipikus hibatűrő újrapróbálkozási mintát valósít meg, amely megkönnyíti a kapcsolatok megoldott szolgáltatási végpontokhoz való újrapróbálkozását. A gyári függvénytár biztosítja az újrapróbálkozási mechanizmust a hibák megadásakor.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`meghatározza a kommunikációs ügyfél-előállító által megvalósított alapszintű felületet, amely a Service Fabric szolgáltatással kommunikáló ügyfeleket állít elő. A CommunicationClientFactory megvalósítása a Service Fabric szolgáltatás által használt kommunikációs veremtől függ, amelyben az ügyfél kommunikálni szeretne. A Reliable Services API biztosítja a `CommunicationClientFactoryBase<TCommunicationClient>` . Ez a CommunicationClientFactory felület alapszintű megvalósítását biztosítja, és az összes kommunikációs verem esetében közös feladatokat hajt végre. (Ezek a feladatok egy ServicePartitionResolver használatával határozzák meg a szolgáltatási végpontot). Az ügyfelek általában az absztrakt CommunicationClientFactoryBase osztályt alkalmazzák a kommunikációs veremre jellemző logikák kezelésére.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` meghatározza a kommunikációs ügyfél-előállító által megvalósított alapszintű felületet, amely a Service Fabric szolgáltatással kommunikáló ügyfeleket állít elő. A CommunicationClientFactory megvalósítása a Service Fabric szolgáltatás által használt kommunikációs veremtől függ, amelyben az ügyfél kommunikálni szeretne. A Reliable Services API biztosítja a `CommunicationClientFactoryBase<TCommunicationClient>` . Ez a CommunicationClientFactory felület alapszintű megvalósítását biztosítja, és az összes kommunikációs verem esetében közös feladatokat hajt végre. (Ezek a feladatok egy ServicePartitionResolver használatával határozzák meg a szolgáltatási végpontot). Az ügyfelek általában az absztrakt CommunicationClientFactoryBase osztályt alkalmazzák a kommunikációs veremre jellemző logikák kezelésére.
 
 A kommunikációs ügyfél csak egy címeket kap, és azt használja a szolgáltatáshoz való kapcsolódáshoz. Az ügyfél bármilyen protokollt igénybe vehet.
 

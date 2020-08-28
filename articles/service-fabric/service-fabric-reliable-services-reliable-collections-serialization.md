@@ -3,12 +3,13 @@ title: Megbízható gyűjtemények objektumainak szerializálása
 description: Ismerkedjen meg az Azure Service Fabric megbízható gyűjtemények objektumainak szerializálásával, beleértve az alapértelmezett stratégiát és az egyéni szerializálás definiálásának módját.
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: f7a0dc56c181ddd6a98ab0e263180c222368dafb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245993"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018620"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Megbízható gyűjteményi objektumok szerializálása az Azure-ban Service Fabric
 A megbízható gyűjtemények replikálják és megőrzik az elemeiket, így biztosítva, hogy a számítógépek meghibásodása és az áramkimaradások között tartósak legyenek.
@@ -30,7 +31,7 @@ A megbízható State Manager a következő típusokhoz tartalmaz beépített sze
 - bájt []
 - char
 - sztring
-- decimal
+- tizedes tört
 - double
 - float
 - int

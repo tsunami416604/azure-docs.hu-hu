@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: ec79fc7c09f2bc1aeb2c07016365e831932fa1ff
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761508"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018110"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -71,7 +71,7 @@ Ha zárolja az Azure Backup szolgáltatás által létrehozott erőforráscsopor
 
 Távolítsa el a zárolást, és törölje a visszaállítási pont gyűjteményét az adott erőforráscsoporthoz, hogy a biztonsági mentések sikeresek legyenek. A visszaállítási pontok gyűjteményének eltávolításához [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) .
 
-### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Támogatja az Azure Backup a standard SSD által felügyelt lemezeket?
+### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Támogatja a Azure Backup a standard SSD által felügyelt lemezeket?
 
 Igen, Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 

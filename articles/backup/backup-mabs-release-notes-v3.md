@@ -4,12 +4,12 @@ description: Ez a cikk a Microsoft Azure Backup Server (MABS) v3 ismert problém
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 884e850255856b39ccbe52544a47a7453e975960
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826616"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017940"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
 
@@ -105,6 +105,6 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 
 1. A fájlok cseréje után indítsa újra a MABS-szolgáltatásokat, és használja a jelentési fájlokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A MABS újdonságai](backup-mabs-whats-new-mabs.md)

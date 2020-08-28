@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ff34b967e2ba42c01c904b8854ecfa04c394e17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Google Cloud (G Suite) összekötővel
 
@@ -225,15 +225,18 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     b. A Google Cloud (G Suite) összekötő **bejelentkezési oldal URL-címe** mezőjébe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
-    c. A Google Cloud (G Suite)-összekötő kijelentkezési **oldal URL-címe** mezőjébe illessze be a **KIJELENTKEZÉSI URL-cím** értékét, amelyet a Azure Portal másolt.
+    c. A Google Cloud (G Suite) összekötő kijelentkezési **oldal URL-címe** mezőjébe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
-    d. A Google Cloud (G Suite) összekötő **jelszó módosítása URL-címe** mezőjébe illessze be a **jelszó módosítása URL-cím módosítását** , amelyet a Azure Portal másolt.
+    > [!NOTE]
+    > A Google Cloud (G Suite) az SAML kijelentkezési protokollon alapul. Ezért a kijelentkezési **oldal URL-címe** mezőben az SAML kijelentkezési URL-címét, azaz a bejelentkezési URL-címet kell használnia, mint az értéket.
 
-    e. A Google Cloud (G Suite) összekötőben az **ellenőrző tanúsítványhoz**töltse fel a Azure Portalról letöltött tanúsítványt.
+    d. A Google Cloud (G Suite) összekötőben az **ellenőrző tanúsítványhoz**töltse fel a Azure Portalról letöltött tanúsítványt.   
 
-    f. Jelölje be/törölje a **tartományi specifikus kiállítói lehetőség használata** lehetőséget az Azure ad fenti **alapszintű SAML-konfiguráció** szakaszában említett Megjegyzés alapján.
+    e. Jelölje be/törölje a **tartományi specifikus kiállítói lehetőség használata** lehetőséget az Azure ad fenti **alapszintű SAML-konfiguráció** szakaszában említett Megjegyzés alapján.
 
-    : Kattintson a **Save Changes** (Módosítások mentése) gombra.
+    f. A Google Cloud (G Suite) összekötő **jelszó módosítása URL-címe** mezőjébe illessze be a **jelszó módosítása URL-cím módosítását** , amelyet a Azure Portal másolt.
+
+    : Kattintson a **Mentés** gombra.
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) összekötő tesztelési felhasználó létrehozása
 

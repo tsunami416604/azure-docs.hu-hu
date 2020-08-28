@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733472"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018399"
 ---
 # <a name="get-started-with-device-management-net"></a>Ismerkedés az eszközkezelés (.NET) szolgáltatással
 
@@ -37,7 +37,7 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio.
+* A Visual Studióval.
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
@@ -65,7 +65,7 @@ Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával,
 
 1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **Console app (.NET-keretrendszer)** projekt sablonját, majd válassza a **tovább**lehetőséget.
 
-1. Az **új projekt konfigurálása**lapon nevezze el a projekt *TriggerReboot*, majd válassza a .NET-keretrendszer 4.5.1-es vagy újabb verzióját. Válassza a **Létrehozás** lehetőséget.
+1. Az **új projekt konfigurálása**lapon nevezze el a projekt *TriggerReboot*, majd válassza a .NET-keretrendszer 4.5.1-es vagy újabb verzióját. Kattintson a **Létrehozás** gombra.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
@@ -148,13 +148,13 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
 
 1. A Visual Studióban, a már létrehozott TriggerReboot-megoldásban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **Console app (.NET-keretrendszer)** projekt sablonját, majd válassza a **tovább**lehetőséget.
 
-1. Az **új projekt konfigurálása**lapon nevezze el a projekt *SimulateManagedDevice*, és a **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget. Válassza a **Létrehozás** lehetőséget.
+1. Az **új projekt konfigurálása**lapon nevezze el a projekt *SimulateManagedDevice*, és a **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget. Kattintson a **Létrehozás** gombra.
 
     ![A projekt neve és hozzáadása a megoldáshoz](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
 1. Megoldáskezelőban kattintson a jobb gombbal az új **SimulateManagedDevice** -projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás**elemet, majd keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
+1. Válassza a **Tallózás**elemet, majd keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** lehetőséget.
 
     ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 

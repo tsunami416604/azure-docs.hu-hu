@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2d66248797d577d6894d1125188735ecf71029b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 614c8e5f76475c7e7af35db37334eb645ad553a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258894"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018603"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>EventStore API-k lekérdezése a fürt eseményeihez
 
@@ -31,17 +32,17 @@ Ezen paraméterek mellett választható paraméterek is elérhetők, például:
 * `SkipCorrelationLookup`: ne keressen a lehetséges korrelált eseményeket a fürtben. Alapértelmezés szerint a EventStore megkísérli összekapcsolni az eseményeket egy fürtön keresztül, és ha lehetséges, össze kell kapcsolni az eseményeket. 
 
 A fürt minden entitása lehet lekérdezés az eseményekhez. Az eseményeket a típus összes entitása esetében is lekérdezheti. Például lekérdezheti egy adott csomópont vagy a fürt összes csomópontja eseményeit. Azon entitások aktuális készlete, amelyekhez eseményeket lehet lekérdezni (a lekérdezés szerkezetének módjával):
-* Fürt`/EventsStore/Cluster/Events`
-* Csomópontok`/EventsStore/Nodes/Events`
-* Csomópont`/EventsStore/Nodes/<NodeName>/$/Events`
-* Alkalmazások`/EventsStore/Applications/Events`
-* Alkalmazás`/EventsStore/Applications/<AppName>/$/Events`
-* Services`/EventsStore/Services/Events`
-* Szolgáltatás`/EventsStore/Services/<ServiceName>/$/Events`
-* Partíciók`/EventsStore/Partitions/Events`
-* Partíció`/EventsStore/Partitions/<PartitionID>/$/Events`
-* Replikák`/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* Replika`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+* Fürt `/EventsStore/Cluster/Events`
+* Csomópontok `/EventsStore/Nodes/Events`
+* Csomópont `/EventsStore/Nodes/<NodeName>/$/Events`
+* Alkalmazások `/EventsStore/Applications/Events`
+* Alkalmazás `/EventsStore/Applications/<AppName>/$/Events`
+* Services `/EventsStore/Services/Events`
+* Szolgáltatás `/EventsStore/Services/<ServiceName>/$/Events`
+* Partíciók `/EventsStore/Partitions/Events`
+* Partíció `/EventsStore/Partitions/<PartitionID>/$/Events`
+* Replikák `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
+* Replika `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
 >Egy alkalmazás vagy szolgáltatás nevének hivatkozásakor a lekérdezésnek nem kell tartalmaznia a "Fabric:/"-t előtag. Emellett, ha az alkalmazás vagy a szolgáltatás neve "/" szerepel bennük, váltson a "~" értékre a lekérdezés működésének megtartásához. Ha például az alkalmazás "Fabric:/App1/FrontendApp" néven jelenik meg, az alkalmazásra vonatkozó lekérdezések strukturálva lesznek `/EventsStore/Applications/App1~FrontendApp/$/Events` .
@@ -112,7 +113,7 @@ Itt láthatjuk, hogy a `2018-04-03T18:00:00Z` és a között `2018-04-04T18:00:0
 
 A EventStore programozott módon is lekérdezheti az [Service Fabric ügyféloldali kódtár](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)használatával.
 
-Miután beállította a Service Fabric-ügyfelet, az alábbihoz hasonló EventStore érheti el az eseményeket:`sfhttpClient.EventStore.<request>`
+Miután beállította a Service Fabric-ügyfelet, az alábbihoz hasonló EventStore érheti el az eseményeket: `sfhttpClient.EventStore.<request>`
 
 Íme egy példa a és a közötti összes fürterőforrás-kérelemre `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` a `GetClusterEventListAsync` függvényen keresztül.
 
@@ -171,19 +172,19 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 *Fürt frissítései:*
 
-Ha szeretné megtekinteni, hogy a fürt Mikor volt sikeres, vagy mikor próbálta frissíteni a múlt héten, lekérdezheti az API-kat a fürthöz legutóbb befejezett frissítésekhez, ha lekérdezi a "ClusterUpgradeCompleted" eseményeit a EventStore:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Ha szeretné megtekinteni, hogy a fürt Mikor volt sikeres, vagy mikor próbálta frissíteni a múlt héten, lekérdezheti az API-kat a fürthöz legutóbb befejezett frissítésekhez, ha lekérdezi a "ClusterUpgradeCompleted" eseményeit a EventStore: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
 *Fürt frissítésével kapcsolatos problémák:*
 
-Hasonlóképpen, ha problémák léptek fel a fürt legutóbbi frissítésekor, a fürt entitás összes eseményét lekérdezheti. Számos eseményt láthat, beleértve a frissítések kezdeményezését és az egyes UD-ket, amelyeken a frissítés sikeresen áthaladt. Azt is megtekintheti, hogy az adott pontnál hol találhatók a visszaállítás megkezdésének és a megfelelő állapot eseményeinek eseményei. Itt látható a következő lekérdezés:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Hasonlóképpen, ha problémák léptek fel a fürt legutóbbi frissítésekor, a fürt entitás összes eseményét lekérdezheti. Számos eseményt láthat, beleértve a frissítések kezdeményezését és az egyes UD-ket, amelyeken a frissítés sikeresen áthaladt. Azt is megtekintheti, hogy az adott pontnál hol találhatók a visszaállítás megkezdésének és a megfelelő állapot eseményeinek eseményei. Itt látható a következő lekérdezés: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Csomópont állapotának változása:*
 
-Ha szeretné megtekinteni a csomópontok állapotának változását az elmúlt néhány napban – ha a csomópontok fel vagy le lettek állítva, vagy inaktiválták vagy inaktiválták (akár a platform, a Chaos szolgáltatás, akár a felhasználói bevitelből), használja a következő lekérdezést:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Ha szeretné megtekinteni a csomópontok állapotának változását az elmúlt néhány napban – ha a csomópontok fel vagy le lettek állítva, vagy inaktiválták vagy inaktiválták (akár a platform, a Chaos szolgáltatás, akár a felhasználói bevitelből), használja a következő lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Alkalmazás eseményei:*
 
-Nyomon követheti a legutóbbi alkalmazások központi telepítését és frissítéseit is. A fürt összes alkalmazási eseményének megtekintéséhez használja a következő lekérdezést:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Nyomon követheti a legutóbbi alkalmazások központi telepítését és frissítéseit is. A fürt összes alkalmazási eseményének megtekintéséhez használja a következő lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Alkalmazás korábbi állapota:*
 
@@ -191,12 +192,12 @@ Az alkalmazás-életciklus eseményeinek megjelenítésén kívül előfordulhat
 
 *A "SajátPr" összes szolgáltatásának korábbi állapota:*
 
-Jelenleg a szolgáltatások állapotjelentés-eseményei `DeployedServicePackageNewHealthReport` a megfelelő alkalmazás entitása szerint jelennek meg. A következő lekérdezéssel tekintheti meg, hogy a szolgáltatásai hogyan lettek kihasználva a "App1" esetében:`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Jelenleg a szolgáltatások állapotjelentés-eseményei `DeployedServicePackageNewHealthReport` a megfelelő alkalmazás entitása szerint jelennek meg. A következő lekérdezéssel tekintheti meg, hogy a szolgáltatásai hogyan lettek kihasználva a "App1" esetében: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
 *Partíció újrakonfigurálása:*
 
-A fürtben történt összes partíciós mozdulat megjelenítéséhez kérdezze le az `PartitionReconfigured` eseményt. Ez segít kideríteni, hogy mely munkaterhelések futnak a megadott időpontokban a fürtben felmerülő problémák diagnosztizálásakor. Íme egy példa a következő lekérdezésre:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+A fürtben történt összes partíciós mozdulat megjelenítéséhez kérdezze le az `PartitionReconfigured` eseményt. Ez segít kideríteni, hogy mely munkaterhelések futnak a megadott időpontokban a fürtben felmerülő problémák diagnosztizálásakor. Íme egy példa a következő lekérdezésre: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
 *Chaos szolgáltatás:*
 
-A Chaos szolgáltatás indításakor vagy leállításakor esemény történik, amely a fürt szintjén van kitéve. A Chaos szolgáltatás legutóbbi használatának megtekintéséhez használja az alábbi lekérdezést:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+A Chaos szolgáltatás indításakor vagy leállításakor esemény történik, amely a fürt szintjén van kitéve. A Chaos szolgáltatás legutóbbi használatának megtekintéséhez használja az alábbi lekérdezést: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`

@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84887461"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018246"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Szoftver telepítése és erőforrások beállítása az oktatóanyaghoz
 
@@ -30,7 +30,7 @@ Ebben a háromrészes oktatóanyagban egy gépi tanulási modellt hoz létre, am
 4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) telepítése
 5. Nyissa meg Azure Data Studio és konfigurálja a Pythont jegyzetfüzetekhez.Részletekért lásd: [a Python konfigurálása jegyzetfüzetekhez](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks). Ez a lépés több percet is igénybe vehet.
 6. Telepítse az [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)legújabb verzióját. A következő szkriptek megkövetelik, hogy az AZ PowerShell legyen a legújabb verzió (3.5.0, Feb 2020).
-7. Töltse le a [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) és az [AMD/ARM Docker-lemezképfájlokat](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files) , amelyeket az oktatóanyagban használni fog.
+7. Töltse le a [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) és az [AMD/ARM Docker-lemezképfájlokat](https://www.docker.com/blog/multi-arch-images/) , amelyeket az oktatóanyagban használni fog.
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>Azure-erőforrások üzembe helyezése PowerShell-parancsfájl használatával
 

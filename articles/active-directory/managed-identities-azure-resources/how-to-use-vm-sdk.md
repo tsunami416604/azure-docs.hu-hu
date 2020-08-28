@@ -3,7 +3,7 @@ title: Felügyelt identitások használata Azure-beli virtuális gépeken Azure 
 description: Az Azure SDK-k Azure-beli virtuális gépekkel való használatára szolgáló, Azure-erőforrásokhoz felügyelt identitásokkal rendelkező Azure SDK-k használata.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8edcf144aceb96092bd92690533e1bdd03450896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecfb2fa5f45a23d387741d4865aa9707df960e86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608432"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018416"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépeken Azure SDK-k használatával 
 
@@ -44,7 +44,7 @@ Ez a cikk az SDK-minták listáját mutatja be, amely bemutatja az Azure-erőfor
 | Python          | [Felügyelt identitások használata Azure-erőforrásokhoz egyszerűen egy virtuális gépen belülről történő hitelesítéshez](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby            | [Felügyelt identitással rendelkező virtuális gépek erőforrásainak kezelése engedélyezett Azure-erőforrások esetén](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az Azure SDK-kat az Azure SDK-erőforrások teljes listájához, beleértve a könyvtárak letöltését [, a](https://azure.microsoft.com/downloads/) dokumentációt és egyebeket.
 - Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).
