@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515658"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022462"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Fájlrendszer-műveletek Data Lake Storage Gen1 a .NET SDK használatával
 
@@ -48,8 +49,8 @@ A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-s
    1. Győződjön meg arról, hogy a **NuGet csomagkezelő** lapon a **csomag forrása** **nuget.org**értékre van állítva. Győződjön meg arról is, hogy az **előzetes verzió belefoglalása** jelölőnégyzet be van jelölve.
    1. Keresse meg és telepítse az alábbi NuGet-csomagokat:
 
-      * `Microsoft.Azure.DataLake.Store`– Ez a cikk a v 1.0.0-t használja.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`– Ez a cikk a v 2.3.1-et használja.
+      * `Microsoft.Azure.DataLake.Store` – Ez a cikk a v 1.0.0-t használja.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez a cikk a v 2.3.1-et használja.
 
       Zárja be a **NuGet-csomagkezelőt**.
 
@@ -203,6 +204,6 @@ client.DeleteRecursive("/Test");
 * [Fiókkezelés Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK-dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

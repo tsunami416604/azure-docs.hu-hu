@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135558"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013758"
 ---
 # <a name="get-started-with-device-twins-net"></a>Ismerkedés az eszközökhöz készült ikrek (.NET) használatával
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban a következő .NET-konzolos alkalmazásokat hozza létr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio.
+* A Visual Studióval.
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
@@ -65,7 +65,7 @@ Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával,
 
 1. Megoldáskezelő kattintson a jobb gombbal a **AddTagsAndQuery** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza a **Telepítés** gombot.
+1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices**elemet. Válassza a **Telepítés** lehetőséget.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
@@ -145,7 +145,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
 
 1. Megoldáskezelő kattintson a jobb gombbal a **ReportConnectivity** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
+1. Válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** lehetőséget.
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
@@ -211,7 +211,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
     }
     ```
 
-   A fenti kód frissíti a **myDeviceId** jelentett tulajdonságát a kapcsolódási információkkal.
+   A fenti kód frissíti a  **myDeviceId** jelentett tulajdonságát a kapcsolódási információkkal.
 
 1. Végül adja a következő sorokat a **Main** metódushoz:
 

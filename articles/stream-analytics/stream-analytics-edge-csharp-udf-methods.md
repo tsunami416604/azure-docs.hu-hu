@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.custom: seodec18
-ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: fff1a228e32f115c498678a654f6c8f028772161
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921851"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015679"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>.NET-es szabványos felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
 
@@ -47,7 +47,7 @@ A C# nyelvben használandó Azure Stream Analytics értékeket az egyik környez
 |**Azure Stream Analytics típusa** |**C# típus** |
 |---------|---------|
 |bigint | hosszú |
-|lebegőpontos | double |
+|float | double |
 |nvarchar (max.) | sztring |
 |dátum/idő | DateTime |
 |Rekord | Szótár\<string, object> |
@@ -58,11 +58,11 @@ Ugyanez igaz, ha az adatokat a C# rendszerből Azure Stream Analyticsre kell át
 |**C# típus**  |**Azure Stream Analytics típusa**  |
 |---------|---------|
 |hosszú  |  bigint   |
-|double  |  lebegőpontos   |
+|double  |  float   |
 |sztring  |  nvarchar (max.)   |
 |DateTime  |  dateTime   |
 |struct  |  Rekord   |
-|objektum  |  Rekord   |
+|object  |  Rekord   |
 |Objektum []  |  Tömb   |
 |Szótár\<string, object>  |  Rekord   |
 
@@ -158,7 +158,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`a rendszer az UDF metódus bemeneti paramétereként adja át, és az UDF-n belül használható az egyéni napló adatainak közzétételéhez. Az alábbi példában `MyUdfMethod` egy adatbevitelt **data** határoz meg, amelyet a lekérdezés biztosít, valamint egy **környezeti** bemenetet, amelyet a `StreamingContext` futásidejű motor biztosít. 
+`StreamingContext` a rendszer az UDF metódus bemeneti paramétereként adja át, és az UDF-n belül használható az egyéni napló adatainak közzétételéhez. Az alábbi példában `MyUdfMethod` egy adatbevitelt **data** határoz meg, amelyet a lekérdezés biztosít, valamint egy **környezeti** bemenetet, amelyet a `StreamingContext` futásidejű motor biztosít. 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)
@@ -191,7 +191,7 @@ Az UDF előzetes verziója jelenleg a következő korlátozásokkal rendelkezik:
 
 * A felhasználó egyéni kódja nem támogatja az üres mappákat. Ne adjon üres mappákat a projektben található támogató fájlokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: egy Azure Stream Analytics feladathoz tartozó C# felhasználó által definiált függvény írása (előzetes verzió)](stream-analytics-edge-csharp-udf.md)
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)

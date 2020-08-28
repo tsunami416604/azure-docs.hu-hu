@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6f2e7403d85f9132c9a5a0b76cf057834e7cc499
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1ba36c7128f72f5181f3fed53f5615ab464e3325
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534957"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013537"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel
 
@@ -103,7 +104,7 @@ public static void DownloadBlobAnonymously()
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára](anonymous-read-access-configure.md)
 - [Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása](anonymous-read-access-prevent.md)

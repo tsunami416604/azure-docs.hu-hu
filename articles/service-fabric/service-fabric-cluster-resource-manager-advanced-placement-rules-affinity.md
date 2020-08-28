@@ -7,12 +7,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7bfd261802fbf891b8f45079255783cb1e8ac7d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9c141cd96877fd140b858d0aaed9197f2de80eca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551743"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005734"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Szolgáltatás-affinitás konfigurálása és használata Service Fabric
 Az affinitás egy olyan vezérlő, amely elsősorban a nagyobb monolit alkalmazások Felhőbeli és a Services világba való átállásának megkönnyítéséhez nyújt segítséget. A szolgáltatások teljesítményének javítására szolgáló optimalizálásként is használatos, bár ennek mellékhatásai lehetnek.
@@ -73,7 +74,7 @@ Még ma is érdemes megjegyezni, hogy az affinitási kapcsolatok alapértelmezé
 ### <a name="partitioning-support"></a>Particionálás támogatása
 Az affinitással kapcsolatos utolsó dolog, hogy az affinitási kapcsolatok nem támogatottak, ahol a szülő particionálva van. A particionált szülői szolgáltatások esetlegesen támogatottak, de jelenleg nem engedélyezettek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.
 - Ha korlátozni szeretné a szolgáltatásokat a gépek kis csoportjára vagy a szolgáltatások terhelésének összesítésére, használja az [alkalmazáscsoport](service-fabric-cluster-resource-manager-application-groups.md) használatát
 

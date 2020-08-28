@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089855"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011854"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -51,9 +51,9 @@ Az ügynök különböző biztonsággal kapcsolatos konfigurációs adatokat és
 
 Győződjön meg arról, hogy a gépek az ügynök által támogatott operációs rendszerek egyikét futtatják az alábbi lapokon leírtak szerint:
 
-* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [Log Analytics ügynök a Windows által támogatott operációs rendszerekhez](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
-* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [A Linux által támogatott operációs rendszerek Log Analytics ügynöke](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
 
 További információ az [log Analytics-ügynök által gyűjtött adatokról](security-center-enable-data-collection.md).
 

@@ -3,16 +3,16 @@ title: Kereskedelmi Piactéri fiók kezelése a Microsoft partner Centerben
 description: Ismerje meg, hogyan kezelhetők a kereskedelmi piactér-fiókok a Microsoft partner Centerben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 04/27/2020
-ms.openlocfilehash: 8362019365aab002929cc3414e6ca742952fc8ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/27/2020
+ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320017"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015832"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben
 
@@ -91,16 +91,18 @@ A partner Centerben elektronikus formában is elvégezheti és elküldheti az ad
 A különböző országok és régiók esetében eltérő az adózási követelmények. Az adó összegének pontos összege attól függ, hogy milyen országokban és régiókban vásárolja meg az ajánlatait. A Microsoft bizonyos országokban/régiókban az Ön nevében elvégezte az értékesítést és a használati adót. Ezek az országok/régiók az ajánlat listázásának folyamatában lesznek azonosítva. Más országokban/régiókban, attól függően, hogy hol van regisztrálva, előfordulhat, hogy az értékesítési és használati adót közvetlenül a helyi adózási szolgáltatónak kell elvégeznie. Emellett a kapott eladások bevétele jövedelemként is adóköteles lehet. Javasoljuk, hogy lépjen kapcsolatba az országa vagy régiója megfelelő hatóságánál, amely a legjobban segít meghatározni a Microsoft értékesítési tranzakcióinak megfelelő adózási adatokat.
 
 ##### <a name="withholding-rates"></a>Visszatartási díjak
+
 Az adózási űrlapokon beküldött adatok meghatározzák a megfelelő adó-visszatartási arányt. A visszatartási arány csak az Egyesült Államokba helyezett értékesítésekre vonatkozik; a nem USA-beli helyszínekre irányuló értékesítések nem tartoznak a forrásadó alá. A visszatartási arányok eltérőek, de a legtöbb fejlesztő számára a Egyesült Államokon kívüli regisztráció esetén az alapértelmezett érték 30%. Ha az országa/régiója egyetért a jövedelemadó-szerződéssel, akkor csökkentheti ezt a mértéket, ha a Egyesült Államok.
 
 ##### <a name="tax-treaty-benefits"></a>Adózási szerződés előnyei
+
 Ha a Egyesült Államokon kívül esik, lehetősége lesz az adózási szerződés előnyeinek kihasználására. Ezek az előnyök országonként vagy régiónként eltérőek, és lehetővé tehetik a Microsoft által visszatartott adók mennyiségének csökkentését. Az adózási szerződés előnyeit a 8BEN űrlap II. részének befejezésével veheti igénybe. Javasoljuk, hogy az Ön országában vagy régiójában lévő megfelelő erőforrásokkal kommunikáljon annak megállapításához, hogy ezek az előnyök Önre vonatkoznak-e.
 
 [További információ a Windows app/Game Developers és az Azure Marketplace-közzétevők adózási adatairól](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
 #### <a name="payout-hold-status"></a>Kifizetés holdjának állapota
 
-Alapértelmezés szerint a Microsoft havi rendszerességgel küldi a kifizetéseket. Lehetősége van azonban arra is, hogy a befizetéseit megtartsa, ami megakadályozza a befizetések küldését a fiókjába. Ha úgy dönt, hogy megtartja a befizetését, továbbra is rögzítjük a beszerzett bevételt, és megadhatjuk a **nyeremények összegzésének**részleteit. Azonban addig nem küldünk fizetést a fiókjába, amíg el nem távolítja a tárolót. 
+Alapértelmezés szerint a Microsoft havi rendszerességgel küldi a kifizetéseket. Igény szerint azonban megtarthatja a befizetését, ami megakadályozza a befizetések küldését a fiókjába. Ha úgy dönt, hogy megtartja a befizetését, továbbra is rögzítjük a beszerzett bevételt, és megadhatjuk a **nyeremények összegzésének**részleteit. Azonban addig nem küldünk fizetést a fiókjába, amíg el nem távolítja a tárolót.
 
 A befizetések tárolásához lépjen a **Fiókbeállítások**menüpontra. A **pénzügyi részletek**alatt, a **kifizetési Hold állapota** szakaszban kapcsolja be a csúszkát a **be**értékre. Bármikor módosíthatja a kifizetési állapotot, de vegye figyelembe, hogy a döntés a következő havi kifizetésre is hatással van. Ha például a április végét szeretné megtartani, mindenképpen **a március vége előtt állítsa** be a kifizetési Holding állapotát.
 
@@ -123,8 +125,8 @@ Javasoljuk, hogy hozzon létre egyedi GUID azonosítót minden ajánlathoz és t
 
 Ha egy terméket sablon alapján telepít, és az Azure piactéren és a GitHubon is elérhető, két különálló GUID-t hozhat létre és regisztrálhat:
 
-*    Az A termék az Azure piactéren
-*    A termék a GitHubon
+- Az A termék az Azure piactéren
+- A termék a GitHubon
 
 A jelentéskészítést a partner értéke (Microsoft partner azonosítója) és a GUID-azonosítók végzik. A GUID-azonosítókat részletesebben is nyomon követheti az ajánlaton belüli egyes csomagokhoz igazítva.
 
@@ -138,7 +140,7 @@ A számlázási cím előre ki van töltve a jogi személyből, és később is 
 
 ## <a name="multi-user-account-management"></a>Többfelhasználós fiókok felügyelete
 
-A partner Center [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) használatát teszi lehetővé a többfelhasználós fiókok hozzáféréséhez és felügyeletéhez. A beléptetési folyamat részeként a szervezet Azure AD-fiókja automatikusan társítva lesz a partner Center-fiókjához.
+A partner Center [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure ad) szolgáltatást használ a többfelhasználós fiókok hozzáféréséhez és felügyeletéhez. A beléptetési folyamat részeként a szervezet Azure AD-fiókja automatikusan társítva lesz a partner Center-fiókjához.
 
 ## <a name="manage-users"></a>Felhasználók kezelése
 
@@ -162,13 +164,13 @@ Felhasználók hozzáadása a partner Center-fiókhoz, amely már szerepel a vá
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), és válassza a **felhasználók hozzáadása**lehetőséget.
 2. Válasszon ki egy vagy több felhasználót a megjelenő listából. A keresőmező segítségével megkeresheti az adott felhasználókat.
 * Ha egynél több felhasználót választ ki a partner Center-fiókhoz való hozzáadáshoz, akkor ugyanazt a szerepkört vagy egyéni engedélyeket kell rendelnie. Ha több felhasználót szeretne hozzáadni különböző szerepkörökhöz vagy engedélyekhez, ismételje meg ezeket a lépéseket az egyes szerepkörökhöz vagy egyéni engedélyek készletéhez.
-3. Ha végzett a felhasználók kiválasztásával, kattintson a **kijelölt hozzáadása**lehetőségre.
+3. Ha végzett a felhasználók kiválasztásával, válassza a **kijelölt hozzáadása**elemet.
 4. A **szerepkörök** szakaszban határozza meg a kiválasztott felhasználó (k) szerepkörét vagy testreszabott engedélyeit.
 5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="create-new-users"></a>Új felhasználók létrehozása
 
-Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie. 
+Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**, majd az **új felhasználók létrehozása**lehetőséget.
 1. Adja meg az összes új felhasználó utónevét, vezetéknevét és felhasználónevét. 
@@ -185,7 +187,7 @@ Ha új felhasználót hoz létre a partner Centerben, az adott felhasználóhoz 
 Ha olyan felhasználókat szeretne meghívni, akik jelenleg nem részei a munkahelyi munkahelyi fióknak (Azure AD-bérlőnek) e-mailben, [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
 
 1. Nyissa meg a **felhasználók** (a **Fiókbeállítások**szakaszban), válassza a **felhasználók hozzáadása**lehetőséget, majd válassza **a felhasználók meghívása e-mailben**lehetőséget.
-2. Írjon be egy vagy több e-mail-címet (legfeljebb tíz), vesszővel vagy pontosvesszővel elválasztva.
+2. Írjon be egy vagy több e-mail-címet (legfeljebb 10), vesszővel vagy pontosvesszővel elválasztva.
 3. A **szerepkörök** szakaszban határozza meg a felhasználó szerepkör (eke) t vagy a testreszabott engedélyeket.
 4. Válassza a **Mentés** lehetőséget.
 
@@ -202,11 +204,11 @@ Ha el szeretne távolítani egy felhasználót a munkahelyi fiókjából (Azure 
 
 ### <a name="change-a-user-password"></a>Felhasználói jelszó módosítása
 
-Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Vegye figyelembe, hogy ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
+Ha az egyik felhasználónak módosítania kell a jelszavát, akkor megteheti, ha **Jelszó-helyreállítási e-mailt** adott a felhasználói fiók létrehozásakor. A felhasználó jelszavát az alábbi lépések végrehajtásával is frissítheti. Ha módosítani szeretné egy felhasználó jelszavát a munkahelyi munkahelyi fiókjában (Azure AD-bérlő), [**globális rendszergazdai**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) jogosultságokkal rendelkező fiókba kell bejelentkeznie. Ez megváltoztatja a felhasználó jelszavát az Azure AD-bérlőben, valamint a partner Center eléréséhez használt jelszót.
 
 1. A **felhasználók** lapon ( **Fiókbeállítások**alatt) válassza ki a szerkeszteni kívánt felhasználói fiók nevét.
 2. A lap alján kattintson a **jelszó alaphelyzetbe állítása** gombra.
-3. Ekkor megjelenik egy megerősítést kérő oldal, amely a felhasználó bejelentkezési adatait tartalmazza, beleértve az ideiglenes jelszót is. Ügyeljen arra, hogy kinyomtassa vagy átmásolja ezt az információt, és megadja azt a felhasználónak, mivel az oldal elhagyása után nem fog tudni hozzáférni az ideiglenes jelszóhoz.
+3. Ekkor megjelenik egy megerősítést kérő oldal, amely megjeleníti a felhasználó bejelentkezési adatait, beleértve az ideiglenes jelszót is. Ügyeljen arra, hogy kinyomtassa vagy átmásolja ezt az információt, és megadja azt a felhasználónak, mivel az oldal elhagyása után nem fog tudni hozzáférni az ideiglenes jelszóhoz.
 
 ## <a name="manage-groups"></a>Csoportok kezelése
 
@@ -219,7 +221,7 @@ A szervezet munkahelyi fiókjában (Azure AD-bérlőben) már meglévő csoport 
 1. A **felhasználók** lap **fiókok beállításai**területén válassza a **csoportok hozzáadása**lehetőséget.
 2. Válasszon ki egy vagy több csoportot a megjelenő listából. A keresőmező segítségével megkeresheti az adott csoportokat.
 Ha egynél több csoportot választ ki a partner Center-fiókhoz való hozzáadáshoz, akkor ugyanazt a szerepkört vagy egyéni engedélyeket kell rendelnie. Ha több csoportot szeretne hozzáadni különböző szerepkörökhöz vagy engedélyekhez, ismételje meg ezeket a lépéseket az egyes szerepkörökhöz vagy egyéni engedélyek készletéhez.
-3. Ha végzett a csoportok kiválasztásával, kattintson a **kijelölt hozzáadása**lehetőségre.
+3. Ha végzett a csoportok kiválasztásával, válassza a **kijelölt hozzáadása**elemet.
 4. A **szerepkörök** szakaszban határozza meg a kijelölt csoport (ok) szerepkör (oka) t vagy a testreszabott engedélyeket. A csoport minden tagja hozzáférhet a partner Center-fiókjához a csoportra vonatkozó engedélyekkel, az egyes fiókokhoz tartozó szerepköröktől és engedélyektől függetlenül.
 5. Válassza a **Mentés** lehetőséget.
 
@@ -234,10 +236,10 @@ Ha hozzáad egy meglévő csoportot, akkor minden felhasználó, aki tagja ennek
 3. Adja meg az új csoport megjelenítendő nevét.
 4. Határozza meg a csoport szerepkör (eke) t vagy a testreszabott engedélyeket. A csoport minden tagja hozzáférhet a partner Center-fiókjához az itt megadott engedélyekkel függetlenül az egyes fiókokhoz tartozó szerepköröktől/engedélyektől.
 5. Válassza ki a felhasználó (ka) t az új csoport számára a megjelenő listából. A keresőmező segítségével megkeresheti az adott felhasználókat.
-6. Ha befejezte a felhasználók kiválasztását, kattintson a **kijelöltek hozzáadása** lehetőségre az új csoport hozzáadásához.
+6. Ha végzett a felhasználók kiválasztásával, válassza a **kijelölt hozzáadása** elemet az új csoportba való felvételhez.
 7. Válassza a **Mentés** lehetőséget.
 
-Vegye figyelembe, hogy ez az új csoport a szervezet munkahelyi fiókjában (Azure AD-bérlő) is létrejön, nem csupán a partner Center-fiókban.
+Ez az új csoport a szervezet munkahelyi fiókjában (Azure AD-bérlő) is létrejön, nem csupán a partner Center-fiókban.
 
 ### <a name="remove-a-group"></a>Csoport eltávolítása
 
@@ -253,18 +255,18 @@ A vállalat Azure Active Directory már meglévő alkalmazások hozzáadásához
 
 1. A **felhasználók** lapon (a **Fiókbeállítások**alatt) válassza az **Azure ad-alkalmazások hozzáadása**lehetőséget.
 2. Válasszon ki egy vagy több Azure AD-alkalmazást a megjelenő listából. A keresőmező segítségével megkeresheti az adott Azure AD-alkalmazásokat. Ha egynél több Azure AD-alkalmazást választ ki a partner Center-fiókhoz való hozzáadáshoz, akkor ugyanazt a szerepkört vagy egyéni engedélyeket kell rendelnie. Ha több Azure AD-alkalmazást szeretne hozzáadni különböző szerepkörökhöz vagy engedélyekhez, ismételje meg ezeket a lépéseket az egyes szerepkörökhöz vagy egyéni engedélyek készletéhez.
-3. Ha végzett az Azure AD-alkalmazások kiválasztásával, kattintson a **kijelölt hozzáadása**lehetőségre.
+3. Ha végzett az Azure AD-alkalmazások kiválasztásával, válassza a **kijelölt hozzáadása**elemet.
 4. A **szerepkörök** szakaszban határozza meg a kijelölt Azure ad-alkalmazás (ok) szerepkörét vagy testreszabott engedélyeit.
 5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-new-azure-ad-applications"></a>Új Azure AD-alkalmazások hozzáadása
 
-Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Központ számára, létrehozhat egyet a **felhasználók** szakaszban. Vegye figyelembe, hogy ez egy új fiókot hoz létre a vállalati munkahelyi fiókban (Azure AD-bérlő), nem csupán a partner Center-fiókban. Ha elsődlegesen ezt az Azure AD-alkalmazást használja a fiókpartner-hitelesítéshez, és nincs szükség arra, hogy a felhasználók közvetlenül hozzáférjenek, megadhat bármely érvényes címet a **Válasz URL** -címéhez és az **alkalmazás-azonosító URI azonosítóhoz**, feltéve, hogy ezeket az értékeket nem használja más Azure ad-alkalmazás a címtárában.
+Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Központ számára, létrehozhat egyet a **felhasználók** szakaszban. Ezzel létrehoz egy új fiókot a munkahelyi munkafiókjában (Azure AD-bérlő), nem csupán a partner Center-fiókban. Ha elsődlegesen ezt az Azure AD-alkalmazást használja a fiókpartner-hitelesítéshez, és nincs szükség arra, hogy a felhasználók közvetlenül hozzáférjenek, megadhat bármely érvényes címet a **Válasz URL** -címéhez és az **alkalmazás-azonosító URI azonosítóhoz**, feltéve, hogy ezeket az értékeket nem használja más Azure ad-alkalmazás a címtárában.
 
 1. A **felhasználók** lapon (a **Fiókbeállítások**alatt) válassza az **Azure ad-alkalmazások hozzáadása**lehetőséget.
 2. A következő lapon válassza az **új Azure ad-alkalmazás**lehetőséget.
 3. Adja meg az új Azure AD **-alkalmazás válaszának URL-címét** . Ez az URL-cím, ahol a felhasználók bejelentkezhetnek és használhatják az Azure AD-alkalmazást (más néven az alkalmazás URL-címe vagy bejelentkezési URL-címe). A **Válasz URL-címe** nem lehet hosszabb 256 karakternél, és a címtárban egyedinek kell lennie.
-4. Adja meg az új Azure AD-alkalmazáshoz tartozó **alkalmazás-azonosító URI** -t. Ez az Azure AD-alkalmazáshoz tartozó logikai azonosító, amely akkor jelenik meg, ha egy egyszeri bejelentkezésre vonatkozó kérést küld az Azure AD-nek. Vegye figyelembe, hogy az **alkalmazás-azonosító URI** -nak egyedinek kell lennie minden egyes Azure ad-alkalmazáshoz a címtárban. Ez az azonosító nem lehet hosszabb 256 karakternél. Az alkalmazás-azonosító URI-val kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorytel](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)).
+4. Adja meg az új Azure AD-alkalmazáshoz tartozó **alkalmazás-azonosító URI** -t. Ez az Azure AD-alkalmazáshoz tartozó logikai azonosító, amely akkor jelenik meg, ha egy egyszeri bejelentkezésre vonatkozó kérést küld az Azure AD-nek. Az **alkalmazás-azonosító URI** azonosítójának egyedinek kell lennie minden egyes Azure ad-alkalmazáshoz a címtárban. Ez az azonosító nem lehet hosszabb 256 karakternél. Az alkalmazás-azonosító URI-val kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorytel](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)).
 5. A **szerepkörök** szakaszban megadhatja az Azure ad-alkalmazáshoz tartozó szerepkör (eke) t vagy testreszabott engedélyeket.
 6. Válassza a **Mentés** lehetőséget.
 
@@ -278,7 +280,7 @@ Ha el szeretne távolítani egy alkalmazást a munkahelyi fiókjából (Azure AD
 
 Ha az Azure AD-alkalmazás adatokat olvas és ír a Microsoft Azure ADban, szüksége lesz egy kulcsra. Az Azure AD-alkalmazásokhoz kulcsokat hozhat létre a partner Centerben található információk szerkesztésével. A már nem szükséges kulcsok eltávolítására is lehetőség van.
 
-1. A **felhasználók** lapon (a **Fiókbeállítások**alatt) válassza ki az Azure ad-alkalmazás nevét. Megjelenik az Azure AD-alkalmazás összes aktív kulcsa, beleértve a kulcs létrehozásának dátumát és érvényességét. 
+1. A **felhasználók** lapon (a **Fiókbeállítások**alatt) válassza ki az Azure ad-alkalmazás nevét. Ekkor megjelenik az Azure AD-alkalmazás összes aktív kulcsa, beleértve a kulcs létrehozásának dátumát és a 50-os lejárati időpontot is.
 2. A már nem szükséges kulcsok eltávolításához válassza az **Eltávolítás**lehetőséget.
 3. Új kulcs hozzáadásához válassza az **új kulcs hozzáadása**lehetőséget.
 4. Ekkor megjelenik egy képernyő, amely az **ügyfél-azonosítót** és a **kulcs értékeit**mutatja. Ügyeljen arra, hogy nyomtassa ki vagy másolja ezeket az adatokat, mert a lap elhagyása után többé nem fog tudni hozzáférni.
@@ -288,10 +290,12 @@ Ha az Azure AD-alkalmazás adatokat olvas és ír a Microsoft Azure ADban, szük
 
 A vállalat felhasználóinak a következő szerepköröket és engedélyeket rendelhetik a kereskedelmi piactér programhoz a partner Centerben:
 
+- **Tulajdonos**
+  - "Ez az a személy, aki először hozta létre a fiókot, és teljes hozzáféréssel rendelkezik hozzá, beleértve az összes fiók felhasználójának létrehozását és szerkesztését, valamint az összes pénzügyi és Fiókbeállítások módosítását. Egy fióknak általában csak egy tulajdonosa van. "
 - **Manager**
   - Elérheti az összes Microsoft-fiók funkciót az adó-és kifizetési beállítások kivételével
   - Felügyelheti a felhasználókat, a szerepköröket és a munkahelyi fiókokat (bérlőket)
-- **Fejlesztői**
+- **Fejlesztő**
   - Kezelheti és közzéteheti az ajánlatokat
   - Megtekintheti a kiadói jelentéseket
 
@@ -341,6 +345,6 @@ Ha eltávolít egy bérlőt, az adott bérlőtől a partner Center-fiókba felve
 
 ## <a name="agreements"></a>Egyezmények
 
-A partner Center **szerződések** szakasza (a **Fiókbeállítások**részben) megtekintheti az Ön által jóváhagyott közzétételi szerződések listáját. Ezek a szerződések neve és verziószáma szerint vannak felsorolva, beleértve az elfogadott dátumot és a szerződést elfogadó felhasználó nevét.
+A partner központ **szerződések** szakasza (a **Fiókbeállítások**szakaszban) lehetővé teszi az Ön által jóváhagyott közzétételi szerződések listájának megtekintését. Ezek a szerződések neve és verziószáma szerint vannak felsorolva, beleértve az elfogadott dátumot és a szerződést elfogadó felhasználó nevét.
 
 A **szükséges műveletek** a lap tetején jelennek meg, ha vannak olyan szerződési frissítések, amelyek szükségesek a beavatkozáshoz. Egy frissített szerződés elfogadásához először olvassa el a csatolt szerződés verzióját, majd válassza a **Szerződés elfogadása**lehetőséget.

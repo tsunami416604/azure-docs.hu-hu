@@ -5,12 +5,13 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c5b5d413eee2528e2d5c7d04d06f1607949beaae
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253235"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012704"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-alapú kommunikációs verem a Reliable Serviceshoz
 A Reliable Services-keretrendszer lehetővé teszi, hogy a szolgáltatás szerzője kiválassza a szolgáltatáshoz használni kívánt kommunikációs veremet. A [CreateServiceReplicaListeners vagy a CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metódusok által visszaadott **ICommunicationListener** keresztül képesek a választás kommunikációs verembe való csatlakoztatására. A keretrendszer a kommunikációs verem megvalósítását biztosítja azon szolgáltatás-szerzők Windows Communication Foundation (WCF) alapján, akik WCF-alapú kommunikációt kívánnak használni.
@@ -18,7 +19,7 @@ A Reliable Services-keretrendszer lehetővé teszi, hogy a szolgáltatás szerz�
 ## <a name="wcf-communication-listener"></a>WCF kommunikációs figyelő
 A **ICOMMUNICATIONLISTENER** WCF-specifikus implementációját a **Microsoft. ServiceFabric. Services. Communication. WCF. Runtime. WcfCommunicationListener** osztály nyújtja.
 
-Tegyük fel, hogy a szolgáltatási szerződés típusa`ICalculator`
+Tegyük fel, hogy a szolgáltatási szerződés típusa `ICalculator`
 
 ```csharp
 [ServiceContract]

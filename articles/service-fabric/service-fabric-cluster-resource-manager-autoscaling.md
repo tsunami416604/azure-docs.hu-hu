@@ -5,12 +5,13 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793091"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005513"
 ---
 # <a name="introduction-to-auto-scaling"></a>Az automatikus skálázás bemutatása
 Az automatikus skálázás az Service Fabric egy további funkciója, amellyel dinamikusan méretezheti a szolgáltatásokat a szolgáltatások által jelentett terhelés vagy az erőforrások használata alapján. Az automatikus skálázás nagy rugalmasságot biztosít, és igény szerint lehetővé teszi a szolgáltatás további példányainak vagy partícióinak üzembe helyezését. A teljes automatikus skálázási folyamat automatizált és átlátható, és a szabályzatok szolgáltatáshoz való beállítása után a szolgáltatás szintjén nem szükséges manuális skálázási művelet. Az automatikus skálázás a szolgáltatás létrehozási idején vagy a szolgáltatás frissítésével bármikor bekapcsolható.
@@ -201,5 +202,5 @@ Annak lehetővé tétele, hogy az erőforrás-figyelő szolgáltatás a tényleg
 Két metrika van, amelyek tényleges fizikai erőforrásokat képviselnek. Ezek egyike servicefabric:/_CpuCores, amely a tényleges CPU-használatot jelöli (tehát a 0,5 fél mag), a másik pedig a servicefabric:/_MemoryInMB, amely az MBs-ban használt memóriát jelöli.
 A ResourceMonitorService feladata a felhasználói szolgáltatások CPU-és memória-használatának nyomon követése. Ez a szolgáltatás súlyozott mozgóátlagot alkalmaz a lehetséges rövid élettartamú tüskék kiszámításához. Az erőforrás-figyelés mind a tároló, mind a nem tároló alkalmazások esetében támogatott a Windows rendszeren, és a tárolók Linux rendszeren is. Az erőforrásokra vonatkozó automatikus skálázás csak az [exkluzív folyamatmodell](service-fabric-hosting-model.md#exclusive-process-model)által aktivált szolgáltatások esetében engedélyezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [alkalmazások méretezhetőségéről](service-fabric-concepts-scalability.md).

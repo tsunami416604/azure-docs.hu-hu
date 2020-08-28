@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75452002"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005649"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Az erőforrás-felhasználás és a terhelések kezelése a metrikákkal Service Fabric
 A *metrikák* azok az erőforrások, amelyeket a szolgáltatásai törődnek, és amelyeket a fürt csomópontjai biztosítanak. A mérőszám a szolgáltatások teljesítményének javításához vagy figyeléséhez szükséges. Megtekintheti például, hogy a szolgáltatás túlterhelt-e a memóriában. Egy másik lehetőség, hogy kiderítse, hogy a szolgáltatás máshol is mozog-e, ahol a memória kevésbé korlátozott a jobb teljesítmény érdekében.
@@ -26,14 +27,14 @@ Tegyük fel, hogy meg szeretné kezdeni a szolgáltatás írását és üzembe h
 
 | Metrika | Állapot nélküli példányok betöltése | Állapot-nyilvántartó másodlagos terhelés | Állapot-nyilvántartó elsődleges terhelés | Tömeg |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Magasság |
+| PrimaryCount |0 |0 |1 |Magas |
 | ReplicaCount |0 |1 |1 |Közepes |
 | Darabszám |1 |1 |1 |Alacsony |
 
 
 Az alapszintű számítási feladatok esetében az alapértelmezett mérőszámok biztosítják a feladatok tisztességes elosztását a fürtben. Az alábbi példában lássuk, mi történik, ha két szolgáltatást hozunk létre, és az alapértelmezett mérőszámokra támaszkodunk. Az első szolgáltatás egy állapot-nyilvántartó szolgáltatás, amely három partícióval és egy célként megadott replika három mérettel rendelkezik. A második szolgáltatás egy állapot nélküli szolgáltatás, amely egy partícióval és három példányszámmal rendelkezik.
 
-A következőkről van szó:
+A következő eredményt kapjuk:
 
 <center>
 
@@ -258,7 +259,7 @@ A legfelső példában kizárólag globális egyensúlyon alapuló, a teljes fü
 
 Az alsó példában a fürterőforrás-kezelő a globális és a szolgáltatási egyenlegen alapuló elosztotta a replikákat. A megoldás pontszámának kiszámításakor a legnagyobb súlyt adja a globális megoldásnak, és egy (konfigurálható) részét az egyes szolgáltatásoknak. A metrika globális egyenlegét az egyes szolgáltatásokból származó metrikai súlyok átlaga alapján számítjuk ki. Az egyes szolgáltatások a saját meghatározott mérőszám-súlyozása szerint vannak összefoglalva. Ez biztosítja, hogy a szolgáltatások saját igényeiknek megfelelően kiegyensúlyozottak legyenek. Ennek eredményeképpen, ha ugyanaz az első csomópont meghibásodik, a rendszer az összes szolgáltatás összes partícióján elosztja a hibát. Az egyesekre gyakorolt hatás ugyanaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálásával](service-fabric-cluster-resource-manager-configure-services.md)foglalkozó témakört (Service-Fabric-cluster-resource-Manager-configure-Services.MD).
 - A Lemeztöredezettség-mentesítő mérőszámok meghatározása az egyik módszer a csomópontok terhelésének konszolidálására a kiterjedésük helyett. A töredezettségmentesítés konfigurálásának megismeréséhez tekintse meg [ezt a cikket.](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - Ha szeretné megtudni, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [terhelés kiegyensúlyozásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.

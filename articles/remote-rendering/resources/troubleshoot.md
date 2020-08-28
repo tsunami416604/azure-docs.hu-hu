@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509280"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014591"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -34,6 +34,14 @@ Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválas
 Győződjön meg arról, hogy a GPU támogatja a hardveres videó-dekódolást. Lásd: [fejlesztői számítógép](../overview/system-requirements.md#development-pc).
 
 Ha két GPU-val rendelkező laptopon dolgozik, akkor előfordulhat, hogy az alapértelmezés szerint futó GPU nem biztosít hardveres videó-dekódolási funkciót. Ha igen, próbálja meg kényszeríteni az alkalmazást, hogy használja a többi GPU-t. Ez gyakran lehetséges a GPU illesztőprogram-beállításaiban.
+
+## <a name="retrieve-sessionconversion-status-fails"></a>A munkamenet/átalakítás állapotának lekérése sikertelen
+
+Ha túl gyakran küld REST API parancsokat, a kiszolgáló leszabályozását és a hibák visszaadását fogja eredményezni. A szabályozási esetben a http-állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+
+Vegye figyelembe, hogy ez a korlát nem csupán a REST API hívásokra van hatással, amikor a hívás közvetlenül, de C#/C + +, például,, `Session.GetPropertiesAsync` `Session.RenewAsync` vagy `Frontend.GetAssetConversionStatusAsync` .
+
+Ha kiszolgálóoldali szabályozást tapasztal, módosítsa a kódot úgy, hogy ritkábban hajtsa végre a hívásokat. A kiszolgáló percenként alaphelyzetbe állítja a szabályozási állapotot, így biztonságos a kód egy perc elteltével újra lefutni.
 
 ## <a name="h265-codec-not-available"></a>A H265-kodek nem érhető el
 
@@ -236,7 +244,7 @@ Az egymáshoz tartozó felületek számos különböző oka lehet:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)
 * [A hálózatra vonatkozó követelmények](../reference/network-requirements.md)

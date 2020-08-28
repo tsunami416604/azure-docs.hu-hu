@@ -3,12 +3,13 @@ title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus
 description: Ismerteti, hogyan optimalizálható a teljesítmény a Service Bus használatával a felügyelt üzenetek cseréjekor.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a81e6fa1c6097f46bbfa3016beb1b7780ad3c351
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2bd5a1598448722f46a91b889b0778e80ad4e140
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065301"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012058"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
 
@@ -37,8 +38,8 @@ Két támogatott .NET SDK-Azure Service Bus létezik. Az API-k nagyon hasonlóak
 
 | NuGet-csomag | Elsődleges névtér (ek) | Minimális platform (ok) | Protokoll(ok) |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET-keretrendszer 4.6.1<br>Monó 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzális Windows-platform 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus<span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET-keretrendszer 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET-keretrendszer 4.6.1<br>Monó 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Univerzális Windows-platform 10.0.16299 | AMQP<br>HTTP |
+| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET-keretrendszer 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 További információ a .NET Standard szintű platform támogatásáról: [.net-implementáció támogatása](/dotnet/standard/net-standard#net-implementation-support).
 

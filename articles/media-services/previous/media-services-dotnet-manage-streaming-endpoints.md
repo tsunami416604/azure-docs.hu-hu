@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a1ab14ab0899e94c447537d1d7eb7876cf70aab0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038732"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015713"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Streaming-végpontok kezelése a .NET SDK-val  
 
@@ -143,7 +144,7 @@ namespace AMSStreamingEndpoint
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

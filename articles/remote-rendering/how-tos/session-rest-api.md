@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509841"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012381"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
@@ -65,7 +65,7 @@ $token = $response.AccessToken;
 
 Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja vissza. Minden más parancshoz szüksége lesz a munkamenet-AZONOSÍTÓra.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/Create | POST |
 
@@ -117,14 +117,21 @@ A fenti kérelem válasza tartalmaz egy **munkamenet**-azonosítót, amely az ö
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>Munkamenet frissítése
+## <a name="modify-and-query-session-properties"></a>Munkamenet-tulajdonságok módosítása és lekérdezése
+
+Van néhány parancs a meglévő munkamenetek paramétereinek lekérdezéséhez vagy módosításához.
+
+> [!CAUTION]
+Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben az állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+
+### <a name="update-session-parameters"></a>Munkamenet paramétereinek frissítése
 
 Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet címbérleti idejét lehet kiterjeszteni.
 
 > [!IMPORTANT]
 > A címbérleti időt mindig a munkamenet kezdete óta teljes idő adja meg. Ez azt jelenti, hogy ha egy órás bérlettel rendelkező munkamenetet hozott létre, és egy másik órára szeretné kiterjeszteni a címbérleti időt, a maxLeaseTime két órára kell frissítenie.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountID*/Sessions/*munkamenet* -azonosító | JAVÍTÁS |
 
@@ -138,7 +145,7 @@ Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet 
 |-----------|:-----------|:-----------|
 | 200 | | Success |
 
-### <a name="example-script-update-a-session"></a>Példa szkriptre: munkamenet frissítése
+#### <a name="example-script-update-a-session"></a>Példa szkriptre: munkamenet frissítése
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,11 +167,11 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Aktív munkamenetek beolvasása
+### <a name="get-active-sessions"></a>Aktív munkamenetek beolvasása
 
 Ez a parancs az aktív munkamenetek listáját adja vissza.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions | GET |
 
@@ -174,7 +181,7 @@ Ez a parancs az aktív munkamenetek listáját adja vissza.
 |-----------|:-----------|:-----------|
 | 200 | -Sessions: munkamenet-tulajdonságok tömbje | a munkamenet-tulajdonságok leírását a "munkamenet-tulajdonságok beolvasása" című szakaszban tekintheti meg. |
 
-### <a name="example-script-query-active-sessions"></a>Példa szkriptre: aktív munkamenetek lekérdezése
+#### <a name="example-script-query-active-sessions"></a>Példa szkriptre: aktív munkamenetek lekérdezése
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,11 +210,11 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Munkamenetek tulajdonságainak beolvasása
+### <a name="get-sessions-properties"></a>Munkamenetek tulajdonságainak beolvasása
 
 Ez a parancs egy munkamenetre vonatkozó adatokat ad vissza, például a virtuális gép állomásnevét.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet*-/Properties | GET |
 
@@ -217,7 +224,7 @@ Ez a parancs egy munkamenetre vonatkozó adatokat ad vissza, például a virtuá
 |-----------|:-----------|:-----------|
 | 200 | -üzenet: karakterlánc<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: karakterlánc<br/>-Munkamenet-azonosító: karakterlánc<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: Enum<br/>-sessionStatus: Enum | Enum sessionStatus {Start, Ready, Leállítás, leállítva, lejárt, hiba}<br/>Ha az állapot "Error" vagy "lejárt", akkor az üzenet további információkat tartalmaz. |
 
-### <a name="example-script-get-session-properties"></a>Példa szkriptre: munkamenet-tulajdonságok beolvasása
+#### <a name="example-script-get-session-properties"></a>Példa szkriptre: munkamenet-tulajdonságok beolvasása
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -250,7 +257,7 @@ RawContentLength  : 60
 
 Ez a parancs leállítja a munkamenetet. A lefoglalt virtuális gép hamarosan visszaigénylésre kerül.
 
-| URI | Metódus |
+| URI | Módszer |
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/*munkamenet* -azonosító | DELETE |
 
@@ -281,6 +288,6 @@ Headers           : {[MS-CV, YDxR5/7+K0KstH54WG443w.0], [Date, Thu, 09 May 2019 
 RawContentLength  : 0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0c0b7b25eeecad8e8c519d37139551590a51a29e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7f7b024c30706f3823d500729b428bebdabf25ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892354"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014796"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -37,7 +37,7 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
    - További információ a [földrajzi](../storage/common/storage-redundancy.md) és [helyi](../storage/common/storage-redundancy.md) redundanciáról.
 
 >[!NOTE]
->A tár tárolási replikációs beállításai nem vonatkoznak az Azure-fájlmegosztás biztonsági mentésére, mert az aktuális megoldás a pillanatkép-alapú, és a tárolóba nem kerül át adatok. A pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás.
+>A tár tárolási replikációs beállításai nem vonatkoznak az Azure-fájlmegosztás biztonsági mentésére, mert az aktuális megoldás a pillanatkép-alapú, és a tárolóra nem kerül át adatok. A pillanatképek tárolása ugyanabban a Storage-fiókban történik, mint a mentett fájlmegosztás.
 
 ## <a name="set-cross-region-restore"></a>Régiók közötti visszaállítás beállítása
 
@@ -151,7 +151,7 @@ Ha meg kell őriznie a védett adatok védelmét a GRS-tárolóban, és egy új 
   - Szükség esetén visszaállíthatja a virtuális gépet a GRS-tárból.
   - Az új erőforrásban található virtuális gép LRS-tárolójának első biztonsági mentése kezdeti replika lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](backup-azure-recovery-services-vault-overview.md) információ Recovery Services-tárolók.
 [További](backup-azure-delete-vault.md) információ Recovery Services tárolók törlése.

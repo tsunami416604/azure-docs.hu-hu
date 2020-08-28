@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d288c8d3f521467c8d15e027e2530ff879b37af
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 203ca95368d313055d7c715a3a3becbc1061582c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642847"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015084"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -270,9 +270,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 A Azure Machine Learning különböző számítási erőforrásokon és saját számítási erőforrásokon is eltérő támogatást nyújt. A szervezete tulajdonában lévő számítási erőforrások esetében engedélyezze az Azure-Cloud Services és Virtual Machines a Microsoft antimalware-hez készült események gyűjtését.
 
-- [A Microsoft antimalware konfigurálása virtuális géphez](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [A Microsoft antimalware konfigurálása virtuális géphez](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [A Microsoft antimalware-bővítmény konfigurálása a Cloud Serviceshez](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [A Microsoft antimalware-bővítmény konfigurálása a Cloud Serviceshez](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [A Microsoft antimalware megismerése](../security/fundamentals/antimalware.md)
 

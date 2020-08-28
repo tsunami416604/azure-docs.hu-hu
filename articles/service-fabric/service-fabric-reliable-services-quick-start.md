@@ -3,13 +3,13 @@ title: 'Az első Service Fabric-alkalmazás létrehozása a C-ben #'
 description: Bevezetés az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal Microsoft Azure Service Fabric alkalmazás létrehozásához.
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: sfrev
-ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: sfrev, devx-track-csharp
+ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260482"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012738"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 
@@ -103,7 +103,7 @@ A platform meghívja ezt a módszert, ha a szolgáltatás egy példánya el van 
 
 Ezt a koordinálást a rendszer felügyeli, hogy a szolgáltatás elérhető legyen, és megfelelően kiegyensúlyozott legyen.
 
-`RunAsync()`ne tiltsa le a szinkron módon. A RunAsync implementációjának egy feladatot kell visszaadnia, vagy várnia kell a hosszan futó vagy a blokkoló műveletekre, hogy a futtatókörnyezet továbbra is folytatódjon. Vegye figyelembe, hogy az `while(true)` előző példában szereplő hurokban egy feladat-visszaküldési művelet `await Task.Delay()` van használatban. Ha a számítási feladatnak szinkronban kell lennie, egy új feladatot kell ütemeznie a `Task.Run()` `RunAsync` megvalósításában.
+`RunAsync()` ne tiltsa le a szinkron módon. A RunAsync implementációjának egy feladatot kell visszaadnia, vagy várnia kell a hosszan futó vagy a blokkoló műveletekre, hogy a futtatókörnyezet továbbra is folytatódjon. Vegye figyelembe, hogy az `while(true)` előző példában szereplő hurokban egy feladat-visszaküldési művelet `await Task.Delay()` van használatban. Ha a számítási feladatnak szinkronban kell lennie, egy új feladatot kell ütemeznie a `Task.Run()` `RunAsync` megvalósításában.
 
 A számítási feladatok megszakítása a megadott lemondási token által koordinált együttműködési erőfeszítés. A rendszer megvárja a feladat befejezését (sikeres befejezéssel, megszakítással vagy hibával), mielőtt továbblép. Fontos, hogy tiszteletben tartsák a lemondási jogkivonatot, fejezze be a munkát, és `RunAsync()` a lehető leggyorsabban lépjen ki, amikor a rendszer a lemondást kéri.
 
@@ -161,7 +161,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()`hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás előtt `RunAsync()` . Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
+`RunAsync()` hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás előtt `RunAsync()` . Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható State Manager
 

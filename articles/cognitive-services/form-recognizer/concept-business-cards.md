@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799281"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004901"
 ---
 # <a name="business-card-concepts"></a>Névjegykártyákra vonatkozó fogalmak
 
-Az Azure űrlap-felismerő szolgáltatás az előre elkészített modellek egyikével elemezheti és kinyerheti az üzleti kártyákból származó kulcs érték párokat. A Business Card API ötvözi a hatékony optikai karakterfelismerési (OCR) képességeket a Business Card Understanding modell segítségével, hogy az üzleti kártyákról angol nyelven kinyerje a legfontosabb információkat. Kigyűjti a személyes kapcsolattartási adatokat, a vállalat nevét, a munkakör címét és egyebeket. Az előre elkészített névjegykártya API nyilvánosan elérhető a Form felismerő v 2.1 előzetes verziójában. 
+Az Azure-űrlap felismerője az előre elkészített modellek egyikének használatával elemezheti és kinyerheti a kapcsolattartási adatokat az üzleti kártyáról. A Business Card API ötvözi a hatékony optikai karakterfelismerési (OCR) képességeket a Business Card Understanding modell segítségével, hogy az üzleti kártyákról angol nyelven kinyerje a legfontosabb információkat. Kigyűjti a személyes kapcsolattartási adatokat, a vállalat nevét, a munkakör címét és egyebeket. Az előre elkészített névjegykártya API nyilvánosan elérhető a Form felismerő v 2.1 előzetes verziójában. 
 
 ## <a name="what-does-the-business-card-api-do"></a>Mit tesz a Business Card API?
 
@@ -27,10 +27,11 @@ A Business Card API Kinyeri a legfontosabb mezőket az üzleti kártyákból, é
 
 ![Contoso részletezett rendszerkép a FOTT + JSON kimenetből](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>Kinyert mezők: 
+### <a name="fields-extracted"></a>Kinyert mezők:
+
 * Kapcsolattartók nevei 
-* Utónév 
-* Vezetéknév 
+  * Utónév
+  * Vezetéknév
 * Vállalati nevek 
 * Részlegek 
 * Feladatok címei 
@@ -43,7 +44,7 @@ A Business Card API Kinyeri a legfontosabb mezőket az üzleti kártyákból, é
   * Munkahelyi telefonok 
   * Egyéb telefonok 
 
-A Business Card API a névjegykártyából származó összes felismert szöveget is visszaadja. Ez az OCR-kimenet szerepel a JSON-válaszban.  
+A Business Card API az összes felismert szöveget visszaküldheti a névjegykártyából. Ez az OCR-kimenet szerepel a JSON-válaszban.  
 
 ### <a name="input-requirements"></a>Bemeneti követelmények 
 
@@ -51,7 +52,7 @@ A Business Card API a névjegykártyából származó összes felismert szövege
 
 ## <a name="the-analyze-business-card-operation"></a>A névjegykártya elemzése művelet
 
-Az [elemzés az üzleti](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) kártyán a bevitt adatokhoz tartozó képet vagy PDF-fájlt veszi fel, és Kinyeri a kamat és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+Az [elemzés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) a névjegykártyán egy, a bevitt adatokhoz tartozó képet vagy PDF-fájlt vesz fel, és Kinyeri a kamat értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
@@ -63,18 +64,15 @@ A második lépés a [Get elemezze névjegykártya-eredmény](https://westcentra
 
 |Mező| Típus | Lehetséges értékek |
 |:-----|:----:|:----|
-|status | sztring | notStarted: az elemzési művelet nem indult el. |
-| |  | fut: az elemzési művelet folyamatban van. |
-| |  | sikertelen: az elemzési művelet meghiúsult. |
-| |  | sikeres: az elemzési művelet sikeresen befejeződött. |
+|status | sztring | notStarted: az elemzési művelet nem indult el.<br /><br />fut: az elemzési művelet folyamatban van.<br /><br />sikertelen: az elemzési művelet meghiúsult.<br /><br />sikeres: az elemzési művelet sikeresen befejeződött.|
 
-Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a névjegykártya-megértést és a szöveges felismerés eredményeit. Az üzleti kártya megértésének eredménye a megnevezett mezőértékek szótára lesz, ahol minden érték a kinyert szöveget, normalizált értéket, határoló mezőt, megbízhatóságot és a hozzá tartozó elemeket tartalmazza. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
+Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a névjegykártya megértését és az opcionális szöveg-felismerési eredményeket, ha szükséges. Az üzleti kártya megértésének eredménye a megnevezett mezőértékek szótára lesz, ahol minden érték a kinyert szöveget, normalizált értéket, határoló mezőt, megbízhatóságot és a hozzá tartozó elemeket tartalmazza. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
 
 ![névjegykártya-kimenet mintája](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Példa JSON-kimenetre
 
-Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A "documentResults" csomópont a modell által felderített névjegykártya-specifikus értékeket tartalmazza. Itt talál hasznos kulcs/érték párokat, mint például az utónév, a vezetéknév, a vállalat neve és még sok más.
+Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" csomópont tartalmazza az összes felismert szöveget. A szöveget az oldal, a sor, majd az egyes szavak szerint rendezi. A "documentResults" csomópont a modell által felderített névjegykártya-specifikus értékeket tartalmazza. Itt találhat hasznos kapcsolattartási adatokat, például az utónév, a vezetéknév, a vállalat neve és egyebek.
 
 ```json
 {
@@ -394,5 +392,4 @@ A Business Card API a [AIBuilder névjegykártya-feldolgozási funkciót](https:
 - Az első lépések a [Business Cards API Python](./quickstarts/python-business-cards.md) gyors üzembe helyezésének első lépéseiben
 - Az űrlap- [felismerő ismertetése REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - További információ az [űrlap-felismerőről](overview.md)
-
 

@@ -5,12 +5,13 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75834431"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005751"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>A Service Fabric-szolgáltatások elhelyezési házirendjei
 Az elhelyezési házirendek olyan további szabályok, amelyek segítségével szabályozható a szolgáltatások elhelyezése bizonyos konkrét, kevésbé gyakori helyzetekben. Ilyen forgatókönyvek például a következők:
@@ -122,7 +123,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 Mostantól lehetséges lenne ezeket a konfigurációkat használni a fürt olyan szolgáltatásaihoz, amelyek földrajzilag nem voltak átnyúlva? Lehetséges, hogy ez nem egy nagyszerű ok. A szükséges, érvénytelen és előnyben részesített tartományi konfigurációkat el kell kerülni, ha a forgatókönyvek nem igénylik. Nincs értelme arra, hogy egy adott munkaterhelést egyetlen állványon futtasson, vagy a helyi fürt egyes szegmenseit egy másikra szeretné kipróbálni. A különböző hardveres konfigurációkat a tartalék tartományok között kell elosztani, és a normál elhelyezési korlátozásokkal és a csomópont tulajdonságaival kell kezelni őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png

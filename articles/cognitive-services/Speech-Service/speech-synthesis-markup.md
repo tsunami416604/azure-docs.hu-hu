@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 069e0f2d14dafe0de208ac69d2d652361a11ee34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934514"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012432"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -192,33 +192,38 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > A beszélő stílusok beállítása csak neurális hangokat fog működni.
 
-Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurális hangok semleges beszéd stílusa alapján szintetizálja a szöveget. Az neurális hangok segítségével úgy állíthatja be a beszéd stílusát, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy optimalizálja a hangját a különböző forgatókönyvekhez, például az egyéni szolgáltatáshoz, a beolvasás és a hangsegédekhez  `mstts:express-as`   . Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
+Alapértelmezés szerint a Text-to-speech szolgáltatás a standard és a neurális hangok semleges beszéd stílusa alapján szintetizálja a szöveget. Az neurális hangok segítségével úgy állíthatja be a beszéd stílusát, hogy a különböző érzelmeket, például a vidámságot, az empátiát és a nyugalmat, vagy optimalizálja a hangját a különböző forgatókönyvekhez, például az ügyfélszolgálathoz, a bemondáshoz és a hangsegédhez a `mstts:express-as` elem használatával. Ez egy opcionális elem, amely egyedi a beszédfelismerési szolgáltatáshoz.
 
 A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
-A módosításokat a rendszer a mondat szintjén alkalmazza, a stílus pedig hangon változik. Ha a stílus nem támogatott, a szolgáltatás az alapértelmezett semleges beszéd stílusát fogja visszaadni.
+A módosítások a mondatok szintjén lesznek alkalmazva, és a stílusok hang szerint változnak. Ha a stílus nem támogatott, a szolgáltatás az alapértelmezett semleges beszéd stílusát fogja visszaadni. A [hanglista API](rest-text-to-speech.md#get-a-list-of-voices)-n keresztül az egyes hangokon támogatott stílusokat kérdezheti le.
+
+A kínai hangalapú XiaoxiaoNeural esetében a beszélő stílus intenzitása tovább módosítható, hogy jobban illeszkedjen a használati esethez. Megadhat egy erősebb vagy lágyabb stílust, `styledegree` hogy a beszéd jobban kifejező vagy visszafogott legyen.
 
 **Syntax**
 
 ```xml
-<mstts:express-as style="string"></mstts:express-as>
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+> [!NOTE]
+> Jelenleg `styledegree` csak a XiaoxiaoNeural támogatja. 
 
 **Attribútumok**
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `style` | Megadja a beszéd stílusát. A beszélő stílusok jelenleg hangspecifikusak. | Akkor szükséges, ha a beszélő stílust módosítja egy neurális hanghoz. A használatakor `mstts:express-as` meg kell adni a stílust. Ha a megadott érték érvénytelen, akkor a rendszer figyelmen kívül hagyja ezt az elemet. |
+| `styledegree` | Megadja a beszélő stílusának intenzitását. **Elfogadott értékek**: 0,01 – 2. Az alapértelmezett érték 1, ami az előre definiált stílus intenzitását jelenti. A minimális egység 0,01, ami némileg hajlamos a cél stílusára. A 2 érték a stílus alapértelmezett intenzitásának megkettőzését eredményezi.  | Nem kötelező (jelenleg csak a `styledegree` XiaoxiaoNeural támogatja.)|
 
 Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
 
 | Hang                   | Stílus                     | Leírás                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | A hírek kézbesítésének formális, magabiztos és mérvadó hangja|
-|                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvétel az általános hírekhez       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
+|                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
 |                         | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
 |                         | `style="chat"`            | Egy alkalmi és nyugodt hangvételt ad                         |
 |                         | `style="cheerful"`        | Pozitív és boldog hangjelzést ad                         |
@@ -226,6 +231,15 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
 |                         | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
 |                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
+|                         | `style="chat"`            | Alkalmi és nyugodt hangvételt biztosít a Chit-csevegéshez           |
+|                         | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.                                |
+|                         | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
+|                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
+|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
+|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
+|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
+|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.          | |                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |     
+|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |   
 |                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  | 
 
@@ -239,6 +253,18 @@ Ez a SSML-kódrészlet azt szemlélteti, hogy az `<mstts:express-as>` elem hogya
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+Ez a SSML-kódrészlet azt szemlélteti, `styledegree` hogy az attribútum hogyan módosítható a XiaoxiaoNeural beszélő stílusának intenzitása alapján.
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
         </mstts:express-as>
     </voice>
 </speak>
@@ -690,6 +716,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 </speak>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

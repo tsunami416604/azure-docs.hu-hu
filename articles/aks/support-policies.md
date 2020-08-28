@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050683"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012347"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -20,7 +20,7 @@ Ez a cikk részletesen ismerteti az Azure Kubernetes Service (ak) technikai tám
 ## <a name="service-updates-and-releases"></a>Szolgáltatások frissítései és kiadásai
 
 * A kiadással kapcsolatos információkért lásd az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases).
-* Az előzetes verzió szolgáltatásaival kapcsolatos információkért lásd: az [AK előzetes verziójának funkciói és kapcsolódó projektjei](https://github.com/Azure/AKS/blob/master/previews.md).
+* Az előzetes verzió szolgáltatásaival kapcsolatos információkért lásd: az [AK előzetes verziójának funkciói és kapcsolódó projektjei](https://awesomeopensource.com/projects/aks?categoryPage=11).
 
 ## <a name="managed-features-in-aks"></a>Felügyelt funkciók az AK-ban
 
@@ -140,7 +140,7 @@ Bár az ügyfelek bejelentkezhetnek és módosíthatják a munkavégző csomópo
 Felügyelt szolgáltatásként az AK speciális hálózatkezelési és kapcsolódási követelményekkel rendelkezik. Ezek a követelmények kevésbé rugalmasak, mint a normál IaaS-összetevőkre vonatkozó követelmények. Az AK-ban olyan műveletek, mint például a NSG-szabályok testreszabása, egy adott port blokkolása (például a 443-as kimenő portot blokkoló tűzfalszabályok használata), és az URL-címek hozzáadása az engedélyezési listához, a fürt nem támogatott.
 
 > [!NOTE]
-> Az AK jelenleg nem teszi lehetővé, hogy teljes mértékben zárolja a kimenő forgalmat a fürtből. A fürt által a kimenő forgalomhoz használható URL-címek és portok listájának szabályozásához lásd: a kimenő [forgalom korlátozása](limit-egress-traffic.md).
+> Az AK jelenleg nem teszi lehetővé, hogy teljes mértékben zárolja a kimenő forgalmat a fürtből. A fürt által a kimenő forgalomhoz használható URL-címek és portok listájának szabályozásához lásd: a kimenő  [forgalom korlátozása](limit-egress-traffic.md).
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>Az Alpha és a Beta Kubernetes funkciói nem támogatottak
 
@@ -149,7 +149,7 @@ Az AK csak a felsőbb rétegbeli Kubernetes projektben lévő stabil funkciókat
 Előfordulhat, hogy az Alpha vagy a Beta funkcióit az általánosan elérhetővé tétel előtt két forgatókönyvben kell elvégezni:
 
 * Az ügyfelek az AK-termékekkel, támogatással vagy mérnöki csapatokkal találkoztak, és kérték az új funkciók kipróbálását.
-* Ezeket [a funkciókat a szolgáltatás jelzője engedélyezte](https://github.com/Azure/AKS/blob/master/previews.md). Az ügyfeleknek explicit módon be kell jelentkezniük a szolgáltatások használatára.
+* Ezeket [a funkciókat a szolgáltatás jelzője engedélyezte](https://awesomeopensource.com/projects/aks?categoryPage=11). Az ügyfeleknek explicit módon be kell jelentkezniük a szolgáltatások használatára.
 
 ## <a name="preview-features-or-feature-flags"></a>Előzetes verziójú funkciók vagy szolgáltatások jelzői
 

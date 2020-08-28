@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757251"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012602"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
-Az Azure Recovery Services-tárolók REST API használatával történő létrehozásának lépései a tár [létrehozása REST API](/rest/api/recoveryservices/vaults/createorupdate) dokumentációjában találhatók. Ezt a dokumentumot hivatkozásként használjuk a "testVault" nevű tár létrehozásához az "USA nyugati régiójában".
+Az Azure Recovery Services-tárolók REST API használatával történő létrehozásának lépései a tár [létrehozása REST API](/rest/api/recoveryservices/vaults/createorupdate) dokumentációjában találhatók. Ezt a dokumentumot hivatkozásként használjuk a "testVault" nevű tároló létrehozásához az "USA nyugati régiójában".
 
 Azure Recovery Services-tároló létrehozásához vagy frissítéséhez használja a következő *put* műveletet.
 
@@ -92,7 +92,7 @@ Az előző példában szereplő kérelem törzsében létrehozott, sűrített *2
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben a tárolóban](backup-azure-arm-userestapi-createorupdatepolicy.md).
 

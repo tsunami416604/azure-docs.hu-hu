@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320493"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022496"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>Mi az Azure Monitor for VMs?
 
@@ -26,10 +26,6 @@ A Azure Monitor for VMs a következő műveleteket támogatja a Windows és Linu
 - Más felhőalapú környezetben üzemeltetett virtuális gépek
   
 
-
->[!NOTE]
->A közelmúltban bejelentettük, hogy a nyilvános előzetes verzió ügyfeleinktől kapott visszajelzések alapján az állapotfigyelő funkció [bekövetkezett](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-) . A változtatások száma miatt a rendszer leállítja az új ügyfelek számára az állapotfigyelő funkciót. A meglévő ügyfelek továbbra is használhatják az állapot funkciót. További részletekért tekintse meg az [általános elérhetőséggel kapcsolatos gyakori kérdéseket](vminsights-ga-release-faq.md).  
 
 
 A Azure Monitor for VMs Azure Monitor naplókban tárolja az adatait, ami lehetővé teszi, hogy hatékony összesítést és szűrést nyújtson, és az adattrendeket az idő múlásával elemezze. Ezeket az adatokat egyetlen virtuális gépen tekintheti meg közvetlenül a virtuális gépről, vagy a Azure Monitor használatával több virtuális gép összesített nézetét is továbbíthatja.
@@ -56,7 +52,7 @@ A Azure Monitor for VMs konfigurálásának lépései a következők: Az egyes l
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A virtuális gépek figyelésének engedélyezéséhez tekintse meg az [Azure monitor for VMS telepítése](vminsights-enable-overview.md) a követelményekhez és a módszerekhez című témakört.
 

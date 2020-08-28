@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056363"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015985"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,8 @@ Ebben az oktatóanyagban a Azure Machine Learning R SDK-t (előzetes verzió) ha
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > [!div class="checklist"]
 > * Azure Machine Learning munkaterület létrehozása
-> * Egy jegyzetfüzet-mappa klónozása az oktatóanyag munkaterületen való futtatásához szükséges fájlokkal
 > * RStudio megnyitása a munkaterületről
+> * https://github.com/Azure/azureml-sdk-for-rAz oktatóanyag munkaterületre való futtatásához szükséges fájlok klónozása
 > * Adatgyűjtés és felkészülés a képzésre
 > * Adatok feltöltése adattárba, hogy elérhető legyen a távoli képzéshez
 > * Számítási erőforrás létrehozása a modell távoli betanításához
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Előrejelzési végpont üzembe helyezése
 > * A modell tesztelése az R-ből
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -53,33 +53,11 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 > Jegyezze fel a **munkaterületet** és az **előfizetést**. Ezekre azért van szükség, hogy a megfelelő helyen hozza létre a kísérletet. 
 
 
-## <a name="clone-a-notebook-folder"></a><a name="azure"></a>Jegyzetfüzet-mappa klónozása
-
-Ez a példa a Felhőbeli notebook-kiszolgálót használja a munkaterületen a telepítés ingyenes és előre konfigurált felületén. [Saját környezetét](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) használhatja, ha a környezetét, a csomagokat és a függőségeket szeretné vezérelni.
-
-A következő kísérletet a Azure Machine Learning Studióban, egy összevont felületen végezheti el, amely magában foglalja a gépi tanulási eszközöket, amelyekkel adatelemzési forgatókönyvek végezhetők el az összes képzettségi szinthez tartozó adatelemző szakemberek számára.
-
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
-
-1. Válassza ki az előfizetését és a létrehozott munkaterületet.
-
-1. Válassza a bal oldali **jegyzetfüzetek** lehetőséget.
-
-1. Nyissa meg a **Samples** mappát.
-
-1. Nyissa meg az **R** mappát.
-
-1. Nyissa meg a mappát egy verziószámmal.  Ez a szám az R SDK aktuális kiadását jelöli.
-
-1. Válassza a **"..."** lehetőséget a **vignettálások** mappa jobb oldalán, majd válassza a **klónozás**elemet.
-
-    ![Klónozási mappa](media/tutorial-1st-r-experiment/clone-folder.png)
-
-1. A mappák listája megjeleníti a munkaterülethez hozzáférő összes felhasználót.  Válassza ki a mappát, amelybe a **matricákat** tartalmazó mappát el szeretné klónozott.
-
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio megnyitása
 
-Az oktatóanyag futtatásához használja az RStudio-t egy számítási példányon vagy egy notebook virtuális gépen.  
+Ez a példa egy számítási példányt használ a munkaterületen egy install-Free és előre konfigurált felülettel. [Saját környezetét](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) használhatja, ha a saját gépén szeretné szabályozni a környezetét, a csomagokat és a függőségeket.
+
+Az oktatóanyag futtatásához használja az RStudio-t egy Azure ML számítási példányon.  
 
 1. Válassza a bal oldali **számítás** lehetőséget.
 
@@ -87,10 +65,19 @@ Az oktatóanyag futtatásához használja az RStudio-t egy számítási példán
 
 1. Ha a számítási szolgáltatás fut, a **RStudio** hivatkozásra kattintva nyissa meg a RStudio.
 
-1. A RStudio-ben a *matricák* mappája a jobb alsó sarokban lévő Files ( **fájlok** ) szakaszban lévő *felhasználóknál* néhány szint.  A *matricák*területen válassza a *vonat-és üzembe helyezés – ACI* mappát az oktatóanyagban szükséges fájlok megkereséséhez.
+
+## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>A minta matricák klónozása 
+
+A https://github.com/azure/azureml-sdk-for-r GitHub-tárház klónozása az oktatóanyagban futtatni kívánt matrica-fájlok egy példányához.
+
+1. A RStudio-ben navigáljon a "Terminal" (terminál) lapra, és a CD-t abba a könyvtárba, ahová az adattárat szeretné klónozott.
+
+1. Futtassa a "git Clone https://github.com/Azure/azureml-sdk-for-r.git " parancsot a terminálban a tárház klónozásához.
+
+1. A RStudio-ben navigáljon a klónozott *azureml-SDK-for-r* mappa *matricák* mappájába.  A *matricák*területen válassza a *vonat-és üzembe helyezés – első modell elemet. RMD* -fájl az oktatóanyagban használt matrica kereséséhez. A matricához használt további fájlok a *vonat és üzembe helyezés – első modell* almappájában találhatók. Miután megnyitotta a matricát, állítsa be a munkakönyvtárat a fájl helyére a **munkamenet > a munkakönyvtár > beállítása a forrásfájl helyére**. 
 
 > [!Important]
-> A cikk többi része ugyanazokat a tartalmakat tartalmazza, mint amit a *Train-and-Deploy-ACI-ban lát. RMD* -fájl. Ha a RMarkdown-t használja, nyugodtan használhatja az adott fájl kódját.  Vagy másolhatja vagy beillesztheti a kódrészleteket onnan, vagy ebből a cikkből egy R-parancsfájlba vagy a parancssorba.  
+> A cikk többi része ugyanazokat a tartalmakat tartalmazza, mint az  *első modellben. RMD* -fájl. Ha a RMarkdown-t használja, nyugodtan használhatja az adott fájl kódját.  Vagy másolhatja vagy beillesztheti a kódrészleteket onnan, vagy ebből a cikkből egy R-parancsfájlba vagy a parancssorba. 
 
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
@@ -197,7 +184,7 @@ Ebben az oktatóanyagban egy logisztikai regressziós modellt kell kitölteni a 
 * Feladat küldése
 
 ### <a name="prepare-the-training-script"></a>A betanítási szkript előkészítése
-Ehhez az oktatóanyaghoz egy olyan nevű képzési szkriptet is megadtak, amely `accidents.R` a jelen oktatóanyagban található. Figyelje meg a **betanítási parancsfájlban** szereplő alábbi adatokat, amelyeket a Azure Machine learning képzésének kihasználása érdekében tettünk:
+A betanítási szkriptet a `accidents.R` következő, a *betanítási és üzembe helyezés – első-modell* címtárban adták meg. Figyelje meg a **betanítási parancsfájlban** szereplő alábbi adatokat, amelyeket a Azure Machine learning képzésének kihasználása érdekében tettünk:
 
 * A betanítási parancsfájl egy argumentummal `-d` keresi meg a betanítási adatkészletet tartalmazó könyvtárat. Amikor később definiálja és elküldi a feladatot, erre az argumentumra az adattárra mutat. Az Azure ML a betanítási feladatokhoz csatlakoztatja a tárolási mappát a távoli fürthöz.
 * A betanítási szkript az Azure ML-ben a következő használatával naplózza a végső pontosságot metrikaként a futtatási rekordhoz `log_metric_to_run()` . Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()` .
@@ -216,7 +203,7 @@ A kalkulátor létrehozásához adja meg a következőt:
 * A betanításhoz szükséges környezeti függőségek. A képzéshez készült alapértelmezett Docker-rendszerkép már tartalmazza a `caret` `e1071` `optparse` betanítási parancsfájlban szükséges három csomagot (, és).  Így nem kell további adatokat megadnia. Ha olyan R-csomagokat használ, amelyek nem szerepelnek alapértelmezés szerint, használja a kalkulátor `cran_packages` paraméterét további Cran-csomagok hozzáadásához. Tekintse [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) meg a konfigurálható beállítások teljes készletére vonatkozó referenciát.
 
 ```R
-est <- estimator(source_directory = ".",
+est <- estimator(source_directory = "train-and-deploy-first-model",
                  entry_script = "accidents.R",
                  script_params = list("--data_folder" = ds$path(target_path)),
                  compute_target = compute_target
@@ -225,7 +212,7 @@ est <- estimator(source_directory = ".",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>A feladatot a távoli fürtön küldje el
 
-Végül küldje el a feladatot a fürtön való futtatáshoz. `submit_experiment()`egy futtatási objektumot ad vissza, amelyet ezután a futtatással való kapcsolódáshoz használ. Összességében az első futtatás **körülbelül 10 percet**vesz igénybe. A későbbi futtatások esetében azonban ugyanazt a Docker-rendszerképet használja a rendszer, amíg a parancsfájl függőségei nem változnak.  Ebben az esetben a rendszer gyorsítótárazza a rendszerképet, és a tároló indítási ideje sokkal gyorsabb.
+Végül küldje el a feladatot a fürtön való futtatáshoz. `submit_experiment()` egy futtatási objektumot ad vissza, amelyet ezután a futtatással való kapcsolódáshoz használ. Összességében az első futtatás **körülbelül 10 percet**vesz igénybe. A későbbi futtatások esetében azonban ugyanazt a Docker-rendszerképet használja a rendszer, amíg a parancsfájl függőségei nem változnak.  Ebben az esetben a rendszer gyorsítótárazza a rendszerképet, és a tároló indítási ideje sokkal gyorsabb.
 
 ```R
 run <- submit_experiment(exp, est)
@@ -331,6 +318,7 @@ Most már mindent megtalál, amire szüksége lehet egy **következtetési konfi
 ```R
 inference_config <- inference_config(
   entry_script = "accident_predict.R",
+  source_directory = "train-and-deploy-first-model",
   environment = r_env)
 ```
 
@@ -406,7 +394,7 @@ delete_compute(compute)
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
 

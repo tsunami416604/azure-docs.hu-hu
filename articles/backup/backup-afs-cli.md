@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése az Azure CLI-vel
 description: Ismerje meg, hogyan használhatja az Azure-fájlmegosztás biztonsági mentését az Azure CLI-vel az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 54852112591b5f5eec1ecbac34b836b4cb0f4f1f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763252"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012024"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Azure-fájlmegosztás biztonsági mentése a CLI-vel
 
@@ -100,7 +100,7 @@ Name                                  ResourceGroup
 
 A kimenet **Name** attribútuma a Backup szolgáltatás által a "igény szerinti biztonsági mentés" művelethez létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [állíthatja vissza az Azure-FÁJLMEGOSZTÁS parancssori](restore-afs-cli.md) felületét
 * Ismerje meg, hogyan [kezelheti az Azure-fájlmegosztás biztonsági másolatait a CLI-vel](manage-afs-backup-cli.md)

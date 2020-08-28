@@ -3,12 +3,13 @@ title: Service Fabric szolgáltatások particionálása
 description: Útmutató Service Fabric állapot-nyilvántartó szolgáltatások particionálásához. A partíciók lehetővé teszik az adattárolást a helyi gépeken, hogy az adatok és a számítások együtt is méretezhetők legyenek.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045416"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005428"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric Reliable Services particionálása
 Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A cikkben használt forráskód a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
@@ -224,7 +225,7 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
     }
     ```
    
-    `ProcessInternalRequest`beolvassa a partíció meghívásához használt lekérdezési karakterlánc paraméter értékeit, és meghívja a `AddUserAsync` LastName hozzáadását a megbízható szótárhoz `dictionary` .
+    `ProcessInternalRequest` beolvassa a partíció meghívásához használt lekérdezési karakterlánc paraméter értékeit, és meghívja a `AddUserAsync` LastName hozzáadását a megbízható szótárhoz `dictionary` .
 10. Hozzunk létre egy állapot nélküli szolgáltatást a projekthez, amelyből megtudhatja, hogyan hívhat meg egy adott partíciót.
     
     Ez a szolgáltatás egy egyszerű webes felület, amely a LastName lekérdezési karakterlánc paraméterként való fogadására szolgál, meghatározza a partíciós kulcsot, és elküldi az Ábécébe. feldolgozási szolgáltatás feldolgozásra.
@@ -307,7 +308,7 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
     ```
     
     Ne feledje, hogy ebben a példában 26 partíciót használunk partícióként egy partíciós kulccsal.
-    Ezt követően a kulcshoz tartozó szolgáltatás-partíciót az `partition` objektum metódusának használatával szerezjük be `ResolveAsync` `servicePartitionResolver` . `servicePartitionResolver`definiálva
+    Ezt követően a kulcshoz tartozó szolgáltatás-partíciót az `partition` objektum metódusának használatával szerezjük be `ResolveAsync` `servicePartitionResolver` . `servicePartitionResolver` definiálva
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
@@ -349,7 +350,7 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
 
 A minta teljes forráskódja elérhető a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos információkért tekintse meg a következőket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
