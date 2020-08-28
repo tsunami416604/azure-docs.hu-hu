@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869099"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051117"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -117,6 +117,7 @@ A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt 
 **Azure-követelmények** | A legfrissebb információkért tekintse át az [Azure hálózati](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [tárolási](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)és [számítási](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) követelményeit site Recovery. A Azure Migrate a VMware-Migrálás követelményeivel azonos.
 **Mobilitási szolgáltatás** | Az áttelepíteni kívánt virtuális gépeken telepíteni kell a mobilitási szolgáltatás ügynökét.
 **UEFI-rendszerindítás** | Támogatott.
+**UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.
 **Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, prémium SSD) az Azure-ban.
 **Lemezméret** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 63 lemez/virtuális gép.

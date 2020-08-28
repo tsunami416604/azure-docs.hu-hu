@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: c3a482dc1fa63b997b948cc3bc5cacefc9c2ad0a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928513"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050522"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
@@ -34,9 +34,13 @@ Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjáb
 * Telepítse a [.net Core SDK](https://www.microsoft.com/net/download/windows).
 * Töltse le vagy klónozott [AzureSignalR – minta GitHub-](https://github.com/aspnet/AzureSignalR-samples) tárházat. 
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
+
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR-erőforrás létrehozása
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -50,6 +54,7 @@ Ebben a szakaszban a [.net Core parancssori felület (CLI)](https://docs.microso
     dotnet new mvc
     ```
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-secret-manager-to-the-project"></a>A Secret Manager hozzáadása a projekthez
 
@@ -72,6 +77,8 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
     </ItemGroup>
     </Project>    
     ```
+    
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Az Azure SignalR hozzáadása a webalkalmazáshoz
 
@@ -226,6 +233,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
     }
     ```
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
@@ -255,7 +263,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
 
     ![Példa Azure-beli szignáló csoport csevegésére](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -280,13 +288,14 @@ A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg
    
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást. Ezután egy ASP.NET Core webalkalmazással használta a tartalom frissítéseinek valós idejű leküldését több csatlakoztatott ügyfélre. Ha többet szeretne megtudni az Azure Signaler szolgáltatás használatáról, folytassa az oktatóanyagot, amely bemutatja a hitelesítést.
 
 > [!div class="nextstepaction"]
 > [Azure SignalR szolgáltatás – hitelesítés](./signalr-concept-authenticate-oauth.md)
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 

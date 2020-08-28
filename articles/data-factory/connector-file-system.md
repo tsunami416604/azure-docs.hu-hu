@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 08/28/2020
 ms.author: jingwang
-ms.openlocfilehash: d0aca266290f8255bb5149d147c16c128e5f82f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6b0ed1f843b5557e472f5e71538ae32a76b70fe9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520964"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051202"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása fájlrendszerből vagy rendszerbe a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -65,7 +65,7 @@ A fájlrendszerhez társított szolgáltatás a következő tulajdonságokat tá
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Példa társított szolgáltatás és adatkészlet-definíciók
 
-| Forgatókönyv | "host" a társított szolgáltatás definíciójában | "folderPath" az adatkészlet definíciójában |
+| Használati eset | "host" a társított szolgáltatás definíciójában | "folderPath" az adatkészlet definíciójában |
 |:--- |:--- |:--- |
 | Helyi mappa Integration Runtime gépen: <br/><br/>Példák: D: \\ \* vagy D:\folder\subfolder\\* |JSON-ban: `D:\\`<br/>Felhasználói felületen: `D:\` |A JSON-ban: `.\\` vagy `folder\\subfolder`<br>Felhasználói felületen: `.\` vagy `folder\subfolder` |
 | Távoli megosztott mappa: <br/><br/>Példák: \\ \\ MyServer \\ Share \\ \* vagy \\ \\ MyServer \\ Share \\ mappa \\ almappája\\* |JSON-ban: `\\\\myserver\\share`<br/>Felhasználói felületen: `\\myserver\share` |A JSON-ban: `.\\` vagy `folder\\subfolder`<br/>Felhasználói felületen: `.\` vagy `folder\subfolder` |
@@ -151,7 +151,7 @@ A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Form
 | típus                     | A Type tulajdonságot a `storeSettings` **FileServerReadSettings**értékre kell állítani. | Yes                                           |
 | ***Keresse meg a másolandó fájlokat:*** |  |  |
 | 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott mappa vagy fájl elérési útját. Ha az összes fájlt egy mappából szeretné másolni, azt is meg kell adnia `wildcardFileName` `*` . |  |
-| 2. lehetőség: Kiszolgálóoldali szűrő<br>– fileFilter  | A fájlkiszolgáló oldalsó natív szűrője jobb teljesítményt nyújt, mint a 3 helyettesítő karakteres szűrő. `*`Nulla vagy több karakter összeegyeztetésére, valamint `?` a nulla vagy egy karakter megfeleltetésére használható. Az [ebben a szakaszban](https://docs.microsoft.com/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_)található **Megjegyzések** szintaxisáról és megjegyzéseit itt találja. | No                                                          |
+| 2. lehetőség: Kiszolgálóoldali szűrő<br>– fileFilter  | Fájlkiszolgáló oldali natív szűrő, amely jobb teljesítményt nyújt, mint a 3. lehetőség helyettesítő szűrője. `*`Nulla vagy több karakter összeegyeztetésére, valamint `?` a nulla vagy egy karakter megfeleltetésére használható. Az [ebben a szakaszban](https://docs.microsoft.com/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_)található **Megjegyzések** szintaxisáról és megjegyzéseit itt találja. | No                                                          |
 | 3. lehetőség: ügyféloldali szűrő<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. Ez a szűrő az ADF oldalon történik, az ADF a megadott elérési úton lévő mappák/fájlok enumerálása, majd a helyettesítő szűrő alkalmazása.<br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^` <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | No                                            |
 | 3. lehetőség: ügyféloldali szűrő<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. Ez a szűrő az ADF oldalon történik, az ADF a megadott elérési úton lévő fájlok enumerálása, majd a helyettesítő szűrő alkalmazása.<br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`<br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Yes |
 | 3. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |No |
@@ -160,6 +160,8 @@ A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Form
 | deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris másolási helyzetekben érvényes, ahol az adatforrás a blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, file, Azure file, SFTP vagy FTP. Az alapértelmezett érték: false. |No |
 | modifiedDatetimeStart    | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha `modifiedDatetimeStart` a dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` a dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték, ki lesz választva.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                            |
+| enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | Hamis                                            |
+| partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | Hamis                                            |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No                                            |
 
 **Példa**
@@ -429,5 +431,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

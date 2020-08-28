@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 72f6cee18664f63e36c38499e77f4c0ba7177c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386860"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050454"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
 
 Részletes oktatóanyag arról, hogyan kell egy hitelesítési és privát üzenetküldési funkciókkal rendelkező csevegőszobát felépíteni az Azure Functions, az AppService-hitelesítés és a SignalR Service segítségével.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="technologies-used"></a>A használt technológiák
 
@@ -38,9 +38,13 @@ Az oktatóanyag elvégzéséhez a következő szoftverekre van szüksége.
   * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) – az Azure Functions használatához a VS Code-ban
   * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) – weblapok helyi kiszolgálása tesztelés céljából
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
+
 ## <a name="sign-into-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Az [Azure Portalon](https://portal.azure.com/) jelentkezzen be a hitelesítő adataival.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service-példány létrehozása
 
@@ -48,7 +52,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Az új Azure-erőforrások létrehozásához kattintson az **erőforrás létrehozása** ( **+** ) gombra.
 
-1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** lehetőségre.
+1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
@@ -61,12 +65,13 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
     | Hely | Válasszon ki egy Önhöz közel eső helyet |
     | Tarifacsomag | Ingyenes |
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló*nélkülire.
 
     ![Jelző szolgáltatás üzemmódja](media/signalr-concept-azure-functions/signalr-service-mode.png)
-
+    
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
 ## <a name="initialize-the-function-app"></a>A függvényalkalmazás inicializálása
 
@@ -131,7 +136,7 @@ Az Azure Functions futtatókörnyezetének helyi futtatása és hibakeresése so
 
 1. Mentse a fájlt.
 
-    
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Függvény létrehozása a felhasználók SignalR Service-ben történő hitelesítéséhez
 
@@ -146,7 +151,7 @@ Amikor a csevegőalkalmazás először nyílik meg a böngészőben, szüksége 
 
 1. Ha a rendszer kéri, adja meg az alábbi információkat.
 
-    | Name | Érték |
+    | Név | Érték |
     |---|---|
     | Function app folder (Függvényalkalmazás mappája) | Válassza ki a projekt főmappáját |
     | Sablon | HTTP-eseményindító |
@@ -194,6 +199,8 @@ Amikor a csevegőalkalmazás először nyílik meg a böngészőben, szüksége 
     ```
 
     A függvény a bemeneti kötés SignalR kapcsolati adatait adja vissza az ügyfélnek a HTTP-válasz törzsében. A Signaler-ügyfél ezeket az információkat fogja használni a Signal Service-példányhoz való kapcsolódáshoz.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
 ## <a name="create-a-function-to-send-chat-messages"></a>Függvény létrehozása csevegőüzenetek küldéséhez
 
@@ -276,6 +283,8 @@ A webalkalmazásnak egy HTTP API-ra is szüksége lesz, hogy csevegőüzeneteket
 
 1. Mentse a fájlt.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
+
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>A csevegőügyfél webes felhasználói felületének létrehozása és futtatása
 
 A csevegőalkalmazás felhasználói felülete egy egyszerű, a VUE JavaScript-keretrendszerrel létrehozott egyoldalas alkalmazás (single page application, SPA). Üzemeltetése a függvényalkalmazástól elválasztva történik. Helyileg a webes felületet a VS Code Live Server-bővítményével fogja futtatni.
@@ -293,6 +302,8 @@ A csevegőalkalmazás felhasználói felülete egy egyszerű, a VUE JavaScript-k
 1. Nyissa meg az **index.html** fájlt a VS Code-ban, majd a parancskatalógusból (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`) válassza ki a **Live Server: Open with Live Server** (Live Server: Indítás Live Serverrel) menüpontot. Elindul a Live Server. A Live Server megnyitja az alkalmazást egy böngészőben.
 
 1. Elindul az alkalmazás. A csevegőmezőbe írja be a kívánt üzenetet, majd nyomja le az ENTER billentyűt. Frissítse az alkalmazást, ha látni szeretné az új üzeneteket. Mivel hitelesítés nem lett konfigurálva, az összes üzenet feladója névtelen lesz.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
 ## <a name="deploy-to-azure-and-enable-authentication"></a>Üzembe helyezés az Azure-ban és a hitelesítés engedélyezése
 
@@ -316,7 +327,7 @@ Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége.
 
 1. Adja meg a következő információkat:
 
-    | Név | Érték |
+    | Name | Érték |
     |---|---|
     | Előfizetés | Válassza ki a Signaler Service-példányt tartalmazó előfizetést. |
     | Erőforráscsoport | Azonos erőforráscsoport kiválasztása |
@@ -450,7 +461,7 @@ A webalkalmazást az Azure Blob Storage statikuswebhely-szolgáltatásával fogj
 
 1. Írja be a következő értékeket:
 
-    | Név | Érték |
+    | Name | Érték |
     |---|---|
     | Előfizetés | Az előfizetés kiválasztása |
     | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
@@ -490,9 +501,13 @@ Gratulálunk! Üzembe helyezett egy valós idejű, kiszolgáló nélküli cseveg
 
 ![Bemutató](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erőforrásokat, törölje az erőforráscsoportot az Azure Portalon.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -500,3 +515,6 @@ Ebből az oktatóanyagból elsajátította, hogyan használható az Azure Functi
 
 > [!div class="nextstepaction"]
 > [Valós idejű alkalmazások létrehozása Azure Functions](signalr-concept-azure-functions.md)
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
+

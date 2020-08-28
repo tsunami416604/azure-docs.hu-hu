@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Apache Spark létrehozása az Azure szinapszis Analytics notebookhoz'
-description: Ez a rövid útmutató azt ismerteti, hogyan használható a webes eszközök Apache Spark készlet (előzetes verzió) létrehozásához az Azure szinapszis Analyticsben, és hogyan futtathat egy Spark SQL-lekérdezést.
+title: 'Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával'
+description: Ez a rövid útmutató azt ismerteti, hogyan használható a webes eszközök Apache Spark készlet létrehozásához az Azure szinapszis Analyticsben, és hogyan futtathat egy Spark SQL-lekérdezést.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: d89033a8d26c5ee71d505b85a4ebbe91b86d3e50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496247"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049808"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
 
@@ -98,7 +98,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
    SHOW TABLES
    ```
 
-   Ha az Azure szinapszis Apache Spark készlettel rendelkező jegyzetfüzetet használ, olyan beállításkészletet kap, `sqlContext` amelyet a Spark SQL használatával lekérdezések futtatására használhat. `%%sql`azt jelzi, hogy a jegyzetfüzet az előre beállított használatával `sqlContext` futtatja a lekérdezést. A lekérdezés lekérdezi az első 10 sort egy olyan rendszertáblából, amely alapértelmezés szerint az összes Azure szinapszis Apache Spark készlethez tartozik.
+   Ha az Azure szinapszis Apache Spark készlettel rendelkező jegyzetfüzetet használ, olyan beállításkészletet kap, `sqlContext` amelyet a Spark SQL használatával lekérdezések futtatására használhat. `%%sql` azt jelzi, hogy a jegyzetfüzet az előre beállított használatával `sqlContext` futtatja a lekérdezést. A lekérdezés lekérdezi az első 10 sort egy olyan rendszertáblából, amely alapértelmezés szerint az összes Azure szinapszis Apache Spark készlethez tartozik.
 
 2. Futtasson egy másik lekérdezést a `demo_df` adatainak megtekintéséhez.
 
@@ -119,7 +119,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
 7. Az Y tengely oszlop mezőjében válassza a "fizetés" lehetőséget.
 8. Az **Összesítés** mezőben válassza az "AVG" lehetőséget.
-9. Kattintson az **Alkalmaz** gombra.
+9. Válassza az **Alkalmaz** lehetőséget.
 
    ![Diagram kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Diagram kimenete az Azure szinapszis Sparkban")
 
@@ -131,7 +131,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 
 11. A korábban végrehajtott cellák mindegyike lehetőséget kapott az **Előzmények kiszolgáló** és a **figyelés**megugrására. A hivatkozásokra kattintva a felhasználói élmény különböző részeire juthat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Ha nincs használatban, nyugodtan engedélyezheti a Spark-példányok leállítását. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. 
 

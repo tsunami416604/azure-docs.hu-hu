@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da68e21aa279ea2503a21ce35eee52f8e49d1434
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993745"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049094"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Feltételes hozzáférés: biztonsági adatok regisztrációjának biztonságossá tétele
 
@@ -63,10 +63,10 @@ Néhány esetben előfordulhat, hogy a fenti 6. lépésben a hely helyett az esz
 > Ha az eszköz állapotát feltételként használja a házirendben, ez hatással lehet a vendég felhasználókra a címtárban. A [csak jelentési mód](concept-conditional-access-report-only.md) segíthet meghatározni a szabályzatok döntéseinek hatását.
 > Vegye figyelembe, hogy a csak jelentési mód nem alkalmazható a "felhasználói műveletek" hatókörű HITELESÍTÉSSZOLGÁLTATÓI házirendek esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

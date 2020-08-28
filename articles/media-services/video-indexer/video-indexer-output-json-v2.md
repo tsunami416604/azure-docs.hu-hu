@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: juliako
-ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604776"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050862"
 ---
 # <a name="examine-the-video-indexer-output"></a>Vizsgálja meg a Video Indexer kimenetét
 
@@ -27,7 +27,7 @@ Az API-t úgy is használhatja, hogy meghívja a **video index beolvasása** API
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-Ez a cikk a Video Indexer kimenetét (JSON-tartalmat) vizsgálja. További információ arról, hogy milyen funkciók és információk érhetők el Önnek: [video Indexer](video-indexer-overview.md#video-insights)az információkat.
+Ez a cikk a Video Indexer kimenetét (JSON-tartalmat) vizsgálja. <br/>További információ arról, hogy milyen funkciók és információk érhetők el Önnek: [video Indexer](video-indexer-overview.md#video-insights)az információkat.
 
 > [!NOTE]
 > Video Indexer összes hozzáférési jogkivonatának lejárata egy óra.

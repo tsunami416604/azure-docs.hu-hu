@@ -7,15 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77b105fd5bbc6cc88411379e79522562ebce3677
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 587b26d821b9701df435b9ee0a1c5f9ba5602fc0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083752"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050930"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
 Az Azure Spring Cloud IntelliJ beépülő modulja támogatja az alkalmazások telepítését a IntelliJ ÖTLETből.  
+
+A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstart.md)rövid útmutatót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
@@ -44,7 +46,7 @@ Az alábbi eljárások a IntelliJ IDEA használatával telepítenek egy "Helló 
 
 ## <a name="open-gs-spring-boot-project"></a>A GS-Spring-boot projekt megnyitása
 
-1. Töltse le és csomagolja ki az oktatóanyag forrás-tárházát, vagy klónozott a git használatával: git Clonehttps://github.com/spring-guides/gs-spring-boot.git 
+1. Töltse le és csomagolja ki az oktatóanyag forrás-tárházát, vagy klónozott a git használatával: git Clone https://github.com/spring-guides/gs-spring-boot.git 
 1. CD into GS-Spring-boot\complete.
 1. Nyissa meg az IntelliJ **üdvözlő** párbeszédpanelt, és válassza a **Projekt importálása** elemet az Importálás varázsló megnyitásához.
 1. Válassza a `gs-spring-boot\complete` mappa lehetőséget.
@@ -98,6 +100,6 @@ A naplók beszerzése:
 
     ![Adatfolyam-napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Spring-alkalmazás előkészítése az Azure Spring Cloud-hoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
 * [További információ a Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

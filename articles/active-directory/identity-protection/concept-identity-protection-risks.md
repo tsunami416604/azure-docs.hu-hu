@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815052"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047105"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -36,10 +36,9 @@ A felhasználói kockázat azt jelzi, hogy egy adott identitás vagy fiók bizto
 
 Ezeket a kockázatokat a Microsoft belső és külső veszélyforrások elleni intelligenciával, például a biztonsági kutatókkal, bűnüldözési szakemberekkel, a Microsoft biztonsági csoportjaival és más megbízható forrásokkal együtt offline számítjuk ki.
 
-| Kockázati észlelés | Leírás |
+| Kockázati észlelés | Description |
 | --- | --- |
 | Kiszivárgott hitelesítő adatok | Ez a kockázati észlelési típus azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. Ha a kiberbűnözők veszélyezteti a legitim felhasználók érvényes jelszavait, gyakran megosztják ezeket a hitelesítő adatokat. Ezt a megosztást általában nyilvánosan közzétesszük a Dark web, a Sites vagy a Trading szolgáltatásban, és a hitelesítő adatokat a fekete piacon forgalmazzák. Ha a Microsoft által kiszivárgott hitelesítő adatokkal rendelkező szolgáltatás felhasználói hitelesítő adatokat kér a sötét webhelyről, illetve más forrásokból, akkor azokat a rendszer az Azure AD-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi, hogy érvényes egyezéseket keres. A kiszivárgott hitelesítő adatokkal kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](#common-questions). |
-| Jelszó spray | A jelszó-szórásos támadás olyankor történik, ahol több felhasználónevet is megtámadnak a gyakori jelszavakkal egy egységes találgatásos kényszerített módon a jogosulatlan hozzáférés megszerzéséhez. Ez a kockázati észlelés akkor aktiválódik, ha jelszó-szórásos támadást hajtottak végre. |
 | Azure AD-fenyegetések felderítése | Ez a kockázati észlelési típus azt jelzi, hogy az adott felhasználó számára szokatlan felhasználói tevékenység van, vagy konzisztens a Microsoft belső és külső veszélyforrások elleni hírszerzési forrásaira épülő ismert támadási mintákkal. |
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
@@ -48,7 +47,7 @@ A bejelentkezési kockázat azt jelzi, hogy egy adott hitelesítési kérelem ne
 
 Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyforrások elleni intelligenciával, például biztonsági kutatókkal, bűnüldöző szakemberekkel, a Microsoft biztonsági csoportjaival és más megbízható forrásokkal is kiszámíthatók.
 
-| Kockázati észlelés | Észlelés típusa | Leírás |
+| Kockázati észlelés | Észlelés típusa | Description |
 | --- | --- | --- |
 | Névtelen IP-cím | Valós idejű | Ez a kockázati észlelési típus a névtelen IP-címről (például Tor-böngésző vagy névtelen VPN) érkező bejelentkezéseket jelzi. Ezeket az IP-címeket jellemzően olyan szereplők használják, akik el szeretnék rejteni a bejelentkezési telemetria (IP-cím, hely, eszköz stb.) a potenciálisan rosszindulatú szándék érdekében. |
 | Szokatlan utazás | Offline | Ez a kockázati észlelési típus két, földrajzilag távoli helyről származó bejelentkezést azonosít, ahol a felhasználók legalább egyike atipikus lehet a felhasználó számára, a múltbeli viselkedés miatt. Ez a gépi tanulási algoritmus számos más tényezőt is figyelembe vesz, és azt, hogy a felhasználó az első helyről a másodikra utazzon, valamint azt, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja. <br><br> Az algoritmus figyelmen kívül hagyja a "hamis pozitív" állapotot, amely hozzájárul a lehetetlen utazási feltételekhez, például a VPN-hez és a szervezet más felhasználói által rendszeresen használt helyekhez. A rendszer kezdeti tanulási időszaka a legkorábbi 14 nap vagy 10 bejelentkezés, amely során egy új felhasználó bejelentkezési viselkedését tanulja meg. |
@@ -57,11 +56,12 @@ Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyfo
 | A rendszergazda által megerősített felhasználó sérült | Offline | Ez az észlelés azt jelzi, hogy egy rendszergazda a kockázatos felhasználók felhasználói felületén vagy a riskyUsers API-val jelölte meg a "felhasználói biztonság megerősítése" beállítást. Annak megtekintéséhez, hogy mely rendszergazda erősítette meg ezt a felhasználót, ellenőrizze a felhasználó kockázati előzményeit (UI vagy API használatával). |
 | Kártékony IP-cím | Offline | Ez az észlelés azt jelzi, hogy egy rosszindulatú IP-címről jelentkezik be a bejelentkezés. Az IP-címek a nagy meghibásodási arányok alapján kártékonynak minősülnek, mert az IP-címről vagy más IP-címekről származó, érvénytelen hitelesítő adatok érkeznek. |
 | Gyanús beérkezett fájlok kezelésére vonatkozó szabályok | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)észlelte. Ez az észlelési profil a környezetet, és riasztást küld, ha gyanús szabályok vannak beállítva, amelyek üzeneteket vagy mappákat törölnek vagy helyeznek át egy felhasználó postaládájába. Ez az észlelés azt jelezheti, hogy a felhasználó fiókja biztonságban van, hogy az üzenetek szándékosan rejtettek, és a postaláda a levélszemét vagy a kártevők terjesztésére szolgál a szervezetben. |
+| Jelszó spray | Offline | A jelszó-szórásos támadás olyankor történik, ahol több felhasználónevet is megtámadnak a gyakori jelszavakkal egy egységes találgatásos kényszerített módon a jogosulatlan hozzáférés megszerzéséhez. Ez a kockázati észlelés akkor aktiválódik, ha jelszó-szórásos támadást hajtottak végre. |
 | Lehetetlen utazás | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)észlelte. Ez az észlelés két felhasználói tevékenységet azonosít (egy vagy több munkamenet), amely a földrajzilag távoli helyekről származik, és a felhasználó az első helyről a másikra való utazásnál rövidebb időt vett igénybe, ami azt jelzi, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja. |
 
 ### <a name="other-risk-detections"></a>Egyéb kockázati észlelések
 
-| Kockázati észlelés | Észlelés típusa | Leírás |
+| Kockázati észlelés | Észlelés típusa | Description |
 | --- | --- | --- |
 | További kockázat észlelhető | Valós idejű vagy offline | Ez az észlelés azt jelzi, hogy a rendszer a fenti prémium észlelések egyikét észlelte. Mivel a prémium észlelések csak prémium szintű Azure AD P2-ügyfelek számára láthatók, a "további kockázat észlelhető", prémium szintű Azure AD P2 licencek nélküli ügyfelek számára. |
 
@@ -98,7 +98,7 @@ Ha még nem látott kiszivárgott hitelesítőadat-kockázati eseményt, az a k�
 
 A hitelesítő adatok feldolgozása közvetlenül a megtalálása után történik, általában naponta több kötegben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)

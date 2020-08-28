@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 989c6464e45b95a276746b6d57e0ca08a345296c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931488"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051066"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 A tinta-felismerő kognitív szolgáltatás felhőalapú REST API biztosít a digitális tinta tartalmának elemzéséhez és felismeréséhez. Az optikai karakterfelismerést (OCR) használó szolgáltatásokkal ellentétben az API a digitális tinta adatkörvonalát igényli bemenetként. A digitális tollvonások a bemeneti eszközök, például a digitális tollak vagy az ujjak mozgását jelképező, időkeretű 2D pontok (X, Y koordináták). Ezután felismeri az alakzatokat és a kézzel írott tartalmat a bemenetből, és egy JSON-választ ad vissza, amely az összes felismert entitást tartalmazza.
 
 ![Egy, az API-ba irányuló tollvonási bemenet küldését leíró folyamatábra](media/ink-recognizer-pen-graph.svg)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A kézírás-felismerő API használatával könnyedén felismerheti az alkalmazásaiban található kézzel írt tartalmakat. 
 
@@ -48,7 +49,7 @@ Regisztráció után:
 1. Küldjön egy kérelmet a tinta-felismerő API-nak az adataival.
 1. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő nyelveken kipróbálhat egy rövid útmutatót, amellyel megkezdheti a szabadkézi felismerő API hívását.
 * [C#](quickstarts/csharp.md)

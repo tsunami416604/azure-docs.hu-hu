@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 252f38e289f7b40c673d9048119823348a30a546
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015441"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051294"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
 
@@ -117,36 +117,19 @@ A Azure Cosmos DB JSON használatával helyezi át és tárolja az adattárolás
 
 ### <a name="add-views"></a><a name="add-views"></a>Nézetek hozzáadása
 
-Ezután hozza létre a következő három nézetet.
+Ezután adja hozzá a következő nézeteket.
 
-* Listaelem nézetének hozzáadása
-* Új elem nézet hozzáadása
-* Elem szerkesztési nézetének hozzáadása
+* Elemek létrehozása nézet
+* Egy elemek törlése nézet
+* Az elemek részleteit megjelenítő nézet
+* Elemek szerkesztése nézet
+* Az összes elemet listázó nézet
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>Listaelem nézetének hozzáadása
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Elemek nézet létrehozása
 
 1. A **megoldáskezelő**kattintson a jobb gombbal a **nézetek** mappára, és **Add**válassza az  >  **új mappa**hozzáadása lehetőséget. Adja meg a mappa *tétel*nevét.
 
 1. Kattintson a jobb gombbal az üres elem mappára, majd válassza a nézet **hozzáadása** **elemet**  >  **View**.
-
-1. Az **MVC-nézet hozzáadása**párbeszédpanelen adja meg a következő értékeket:
-
-   * A **nézet neve**mezőbe írja be az *index*értéket.
-   * A **sablon**területen válassza a **lista**lehetőséget.
-   * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)**.
-   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép":::
-
-1. Miután hozzáadta ezeket az értékeket, válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre.
-
-Ha elkészült, a Visual Studio megnyitja az általa létrehozott *cshtml* -fájlt. Ezt a fájlt a Visual Studióban is lezárhatja. Később ismét vissza fogunk térni.
-
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>Új elem nézet hozzáadása
-
-Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítéséhez, hozzon létre egy új nézetet az elemek létrehozásához a következő lépések segítségével:
-
-1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a **Add**  >  **nézet**hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása**párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -156,9 +139,44 @@ Hasonlóan ahhoz, ahogy létrehozott egy nézetet a listaelemek megjelenítésé
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
    * Válassza a **Hozzáadás** elemet.
 
-#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Elem szerkesztési nézetének hozzáadása
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép":::
 
-Végül pedig vegyen fel egy nézetet egy elem szerkesztéséhez a következő lépésekkel:
+1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
+
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Elemek nézetének törlése
+
+1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add**válassza a  >  **nézet**hozzáadása elemet.
+
+1. Az **MVC-nézet hozzáadása**párbeszédpanelen hajtsa végre a következő módosításokat:
+
+   * A **nézet neve** mezőbe írja be a *delete*értéket.
+   * A **sablon** mezőben válassza a **Törlés**lehetőséget.
+   * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
+   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
+   * Válassza a **Hozzáadás** elemet.
+
+1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Nézet hozzáadása egy elem részleteinek beszerzéséhez
+
+1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a **Add**  >  **nézet**hozzáadása elemet.
+
+1. Az **MVC-nézet hozzáadása**párbeszédpanelen adja meg a következő értékeket:
+
+   * A **nézet neve**mezőben adja meg a *részleteket*.
+   * A **sablon**területen válassza a **részletek**lehetőséget.
+   * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)**.
+   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
+
+1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
+
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Elem szerkesztési nézetének hozzáadása
 
 1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add**válassza a  >  **nézet**hozzáadása elemet.
 
@@ -170,7 +188,29 @@ Végül pedig vegyen fel egy nézetet egy elem szerkesztéséhez a következő l
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
    * Válassza a **Hozzáadás** elemet.
 
-Miután elvégezte ezeket a lépéseket, a Visual Studióban zárjunk be minden *cshtml* -dokumentumot, ahogy később visszatér a nézetekhez.
+1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>Nézet hozzáadása az összes elem listázásához
+
+Végül pedig vegyen fel egy nézetet az összes elem beolvasásához a következő lépésekkel:
+
+1. A **megoldáskezelő**kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add**válassza a  >  **nézet**hozzáadása elemet.
+
+1. Az **MVC-nézet hozzáadása**párbeszédpanelen hajtsa végre a következő módosításokat:
+
+   * A **View name** (Nézet neve) mezőbe írja be az *Index* nevet.
+   * A **Template** (Sablon) mezőben válassza a **List** (Lista) elemet.
+   * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
+   * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
+   * Válassza a **Hozzáadás** elemet.
+
+1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+A lépések elvégzése után zárjunk be minden *cshtml* -dokumentumot a Visual Studióban.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Szolgáltatások deklarálása és inicializálása
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: dee6b0b1635880fb50b8d35f1f91ad2bce569cff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928479"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050539"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása a ASP.NET és a Signaler szolgáltatással
 
@@ -31,15 +31,21 @@ Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti el a ASP.NET és az 
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET-jelző 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
+
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
 A ASP.NET-jelző alkalmazások nem támogatják a *kiszolgáló* nélküli üzemmódot. Mindig használja az alapértelmezett vagy a *klasszikus* *értéket* az Azure signaler szolgáltatás példányához.
 
 Az ebben a rövid útmutatóban használt Azure-erőforrásokat is létrehozhatja [a signaler Service-parancsfájl létrehozásával](scripts/signalr-cli-create-service.md).
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -52,6 +58,8 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
 
 ## <a name="configure-and-run-chat-room-web-app"></a>A chat room Web App konfigurálása és futtatása
 
@@ -97,6 +105,8 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kódd
 
 1. A projekt hibakeresési módban való futtatásához nyomja le az **F5** billentyűt. Láthatja, hogy az alkalmazás helyileg fut. A szignáló futtatókörnyezetet az alkalmazás nem üzemelteti, hanem az Azure Signaler szolgáltatáshoz csatlakozik.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 
@@ -115,9 +125,14 @@ A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. E
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforrást, és felhasználta azt egy ASP.NET-webalkalmazással. Következő lépésként megtudhatja, hogyan fejleszthet valós idejű alkalmazásokat az Azure Signaler szolgáltatással a ASP.NET Core használatával.
 
 > [!div class="nextstepaction"]
 > [Azure Signaler szolgáltatás és ASP.NET Core](./signalr-quickstart-dotnet-core.md)
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnet)
+

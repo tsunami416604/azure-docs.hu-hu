@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: b892e4c5078b50bb865a715ddf12aebc1eb05f57
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d1948ae186662c7f60f4d49c19a4d48b424a38f7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799111"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047479"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
@@ -95,7 +95,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 * Kattintson a jobb gombbal egy Azure Cosmos DB-fiókra vagy -adatbázisra, majd a **Megnyitás a portálon** lehetőség kiválasztásával kezelheti az erőforrást a böngészőben az Azure Portalon.
 
-     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Megnyitás a portálon":::
+  :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Megnyitás a portálon":::
 
 * Emellett Azure Cosmos DB-fiókot, -adatbázist és -gyűjteményt is hozzáadhat a **gyorselérési** eszköztárhoz.
 * A **Keresés innen** funkció lehetővé teszi a kulcsszavaknak a kijelölt útvonalon történő keresését.
@@ -106,25 +106,25 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 #### <a name="create-a-database"></a>Adatbázis létrehozása
 
--   Kattintson a jobb gombbal az Azure Cosmos DB-fiókra, válassza az **Adatbázis létrehozása** elemet, adja meg az adatbázis nevét, majd a befejezéshez nyomja le az **Enter** billentyűt.
+- Kattintson a jobb gombbal az Azure Cosmos DB-fiókra, válassza az **Adatbázis létrehozása** elemet, adja meg az adatbázis nevét, majd a befejezéshez nyomja le az **Enter** billentyűt.
 
-    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Adatbázis létrehozása az Azure Cosmos-fiókban":::
+  :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Adatbázis létrehozása az Azure Cosmos-fiókban":::
 
 #### <a name="delete-a-database"></a>Adatbázis törlése
 
 - Kattintson a jobb gombbal az adatbázisra, válassza az **adatbázis törlése**lehetőséget, majd az előugró ablakban válassza az **Igen** lehetőséget. A rendszer törli az adatbázis-csomópontot, és automatikusan frissíti az Azure Cosmos DB-fiókot.
 
-    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Az első adatbázis törlése":::
+  :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Az első adatbázis törlése":::
 
-    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="A második adatbázis törlése":::
+  :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="A második adatbázis törlése":::
 
 #### <a name="create-a-collection"></a>Gyűjtemény létrehozása
 
 1. Kattintson a jobb gombbal az adatbázisra, válassza a **gyűjtemény létrehozása**lehetőséget, majd adja meg a következő információkat, például a **gyűjtemény azonosítóját**, a **tárolási kapacitást**stb. A befejezéshez kattintson **az OK** gombra.
 
-    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Első gyűjtemény létrehozása az adatbázisban":::
+   :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Első gyűjtemény létrehozása az adatbázisban":::
 
-    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Második gyűjtemény létrehozása az adatbázisban":::
+   :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Második gyűjtemény létrehozása az adatbázisban":::
 
 2. A partíciós kulcs megadásához válassza a **korlátlan** lehetőséget, majd a befejezéshez kattintson **az OK gombra** .
 
@@ -146,7 +146,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 - Új dokumentum létrehozásához nyissa meg a **dokumentumok** elemet a bal oldali ablakban, válassza az **új dokumentum**lehetőséget, szerkessze a tartalmat a jobb oldali ablaktáblán, majd kattintson a **Mentés**gombra. Egy meglévő dokumentumot is frissíthet, majd a **Mentés**gombra kattinthat. A módosítások elvetéséhez kattintson az **Elvetés** gombra.
 
-    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Új dokumentum létrehozása":::
+  :::image type="content" source="./media/storage-explorer/document.png" alt-text="Új dokumentum létrehozása":::
 
 #### <a name="delete-a-document"></a>Dokumentum törlése
 
@@ -156,7 +156,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 - Szerkessze a dokumentum szűrőjét egy [SQL-lekérdezés](how-to-sql-query.md) beírásával, majd válassza az **alkalmaz**lehetőséget.
 
-    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Adott dokumentumok lekérdezése":::
+  :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Adott dokumentumok lekérdezése":::
 
 ### <a name="graph-management"></a>Gráfok kezelése
 
@@ -165,7 +165,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 1. Új csúcspont létrehozásához nyissa meg a **Graph** elemet a bal oldali ablakban, válassza az **új csúcspont**lehetőséget, szerkessze a tartalmat, majd kattintson **az OK gombra**.
 2. Egy meglévő csúcspont módosításához válassza a toll ikont a jobb oldali ablaktáblán.
 
-    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Gráf csúcspontjának módosítása":::
+   :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Gráf csúcspontjának módosítása":::
 
 #### <a name="delete-a-graph"></a>Gráf törlése
 
@@ -175,7 +175,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 - Szerkessze a Graph szűrőt egy [Gremlin-lekérdezés](gremlin-support.md) megadásával, majd válassza a **szűrő alkalmazása**lehetőséget.
 
-    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Gráf-lekérdezés futtatása":::
+   :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Gráf-lekérdezés futtatása":::
 
 ### <a name="table-management"></a>Táblakezelés
 
@@ -184,33 +184,34 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 1. Új tábla létrehozásához nyissa meg az **entitások** elemet a bal oldali ablakban, válassza a **Hozzáadás**lehetőséget, szerkessze az **entitás hozzáadása** párbeszédpanelen található tartalmat, adja hozzá a tulajdonságot a **tulajdonság hozzáadása**gombra kattintva, majd válassza a **Beszúrás**lehetőséget.
 2. Egy tábla módosításához válassza a **Szerkesztés**lehetőséget, módosítsa a tartalmat, majd válassza a **frissítés**lehetőséget.
 
-    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tábla létrehozása és módosítása":::
+   :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tábla létrehozása és módosítása":::
 
 #### <a name="import-and-export-table"></a>Táblák importálása és exportálása
 
 1. Az importáláshoz kattintson az **Importálás** gombra, és válasszon ki egy meglévő táblát.
 2. Az exportáláshoz válassza az **Exportálás** gombot, és válasszon egy célhelyet.
 
-    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tábla importálása vagy exportálása":::
+   :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tábla importálása vagy exportálása":::
 
 #### <a name="delete-entities"></a>Entitások törlése
 
 - Válassza ki az entitásokat, és kattintson a **Törlés**gombra.
 
-    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Tábla törlése":::
+  :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Tábla törlése":::
 
 #### <a name="query-table"></a>Táblák lekérdezése
 
 - Kattintson a **lekérdezés** gombra, a bemeneti lekérdezési feltételre, majd válassza a **lekérdezés végrehajtása** gombot. Zárja be a Lekérdezés panelt a **Lekérdezés bezárása** gombbal.
 
-    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Adatok lekérdezése a táblából":::
+  :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Adatok lekérdezése a táblából":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Tárolt eljárások, eseményindítók és felhasználói függvények kezelése
 
 * Tárolt eljárás létrehozásához a bal oldali fában kattintson a jobb gombbal a **tárolt eljárás**elemre, válassza a **tárolt eljárás létrehozása**elemet, adjon meg egy nevet a bal oldalon, írja be a tárolt eljárás parancsfájljait a jobb oldali ablakban, majd válassza a **Létrehozás**lehetőséget.
 * A meglévő tárolt eljárásokat úgy is szerkesztheti, ha duplán kattint, majd a frissítés után a **frissítés** gombra kattint, majd a módosítás megszakításához kiválasztja az **Elvetés** lehetőséget.
 
-    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Tárolt eljárások létrehozása és kezelése":::
+  :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Tárolt eljárások létrehozása és kezelése":::
+
 * A **Triggerekhez** és **Felhasználói függvényekhez** használható műveletek hasonlóak a **Tárolt eljárások** esetében használhatókhoz.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

@@ -4,12 +4,12 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 3212ba621f02740e9b27c28da854eef70dce64a6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006582"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050420"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -200,7 +200,7 @@ Számos gyakori forgatókönyv létezik, amelyekben szükség lehet a virtuális
 **Több tartományvezérlőt tartalmazó virtuális gép visszaállítása egyetlen tartományból** | Ha ugyanabban a tartományban más tartományvezérlők is elérhetők a hálózaton keresztül, akkor a tartományvezérlőt bármely virtuális géphez hasonlóan vissza lehet állítani. Ha a tartomány utolsó fennmaradó tartományvezérlője, vagy egy elszigetelt hálózatban lévő helyreállítást hajt végre, használjon [erdő-helyreállítást](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Több tartomány visszaállítása egy erdőben** | Az [erdő helyreállítását](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)javasoljuk.
 **Operációs rendszer nélküli helyreállítás** | Az Azure-beli virtuális gépek és a helyszíni hypervisorok közötti legnagyobb különbség az, hogy nincs elérhető virtuálisgép-konzol az Azure-ban. Bizonyos helyzetekben szükség van egy konzolra, például egy operációs rendszer nélküli helyreállítás (BMR) típusú biztonsági mentés használatával történő helyreállításra. Azonban a virtuális gépek visszaállítása a tárolóból teljes mértékben helyettesíti a BMR.
-**Virtuális gépek visszaállítása speciális hálózati konfigurációkkal** | A speciális hálózati konfigurációk belső vagy külső terheléselosztást használó virtuális gépeket tartalmaznak, több hálózati adapter vagy több fenntartott IP-cím használatával. Ezeket a virtuális gépeket a [lemez visszaállítása lehetőség](#restore-disks)használatával állíthatja vissza. Ez a beállítás lehetővé teszi a virtuális merevlemezek másolatát a megadott Storage-fiókba, és ezután létrehozhat egy [belső](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) vagy [külső](../load-balancer/quickstart-create-standard-load-balancer-powershell.md) terheléselosztó, [több hálózati adapter](../virtual-machines/windows/multiple-nics.md)vagy [több fenntartott IP-cím](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)használatával létrehozott virtuális gépet a konfigurációnak megfelelően.
+**Virtuális gépek visszaállítása speciális hálózati konfigurációkkal** | A speciális hálózati konfigurációk belső vagy külső terheléselosztást használó virtuális gépeket tartalmaznak, több hálózati adapter vagy több fenntartott IP-cím használatával. Ezeket a virtuális gépeket a [lemez visszaállítása lehetőség](#restore-disks)használatával állíthatja vissza. Ez a beállítás lehetővé teszi a virtuális merevlemezek másolatát a megadott Storage-fiókba, és ezután létrehozhat egy [belső](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) vagy [külső](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) terheléselosztó, [több hálózati adapter](../virtual-machines/windows/multiple-nics.md)vagy [több fenntartott IP-cím](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)használatával létrehozott virtuális gépet a konfigurációnak megfelelően.
 **Hálózati biztonsági csoport (NSG) hálózati ADAPTERen/alhálózaton** | Az Azure virtuális gép biztonsági mentése támogatja a NSG-adatok biztonsági mentését és visszaállítását a vnet, az alhálózat és a NIC szintjén.
 **Zónában rögzített virtuális gépek** | Ha olyan Azure-beli virtuális gépet készít biztonsági mentésre, amely egy zónához van rögzítve (Azure Backup), akkor visszaállíthatja azt ugyanabban a zónában, ahol rögzítve van. [További információ](../availability-zones/az-overview.md)
 **Virtuális gép visszaállítása bármely rendelkezésre állási csoportból** | Ha egy virtuális gépet a portálról állít helyre, nincs lehetőség a rendelkezésre állási csoport kiválasztására. A helyreállított virtuális gépek nem rendelkeznek rendelkezésre állási csoporttal. Ha a lemez visszaállítása lehetőséget használja, [megadhat egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md) , ha a megadott sablonnal vagy PowerShell-lel hozza létre a virtuális gépet a lemezről.

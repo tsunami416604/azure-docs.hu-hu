@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6eacaf2ec75c485dbdd7e66a73cdd36787da6126
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 9186cb9e8a603330d8fac6003b4b27bffbc29688
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88753022"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050296"
 ---
 <a name="HOLTop"></a>
 
@@ -204,26 +204,47 @@ A következő kód a képtípussal kapcsolatos információkat jeleníti &mdash;
 
 ## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
-A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba.
+A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Ez a szakasz egy olyan metódust határoz meg, `ReadFromFile` amely egy helyi fájl elérési útját veszi át, és kiírja a rendszerkép szövegét a konzolra.
 
 > [!NOTE]
 > Az URL-cím használatával egy távoli rendszerképben is olvashat szöveget. A távoli rendszerképeket érintő forgatókönyvek a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) találhatók.
 
-### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
+### <a name="set-up-test-image"></a>Tesztelési rendszerkép beállítása
 
-Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket a `localTextImagePath` helyi rendszerkép elérési útjára kell cserélnie. Itt töltheti le az itt használható [minta-rendszerképet](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) .
+Hozzon létre egy **erőforrást/** mappát a projekt **src/Main/** mappájából, és adjon hozzá egy képet, amelyből szöveget szeretne olvasni. Itt töltheti le az itt használható [minta-rendszerképet](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) .
+
+Ezután adja hozzá a következő metódus-definíciót a **ComputerVisionQuickstarts** osztályhoz. Ha szükséges, módosítsa a értékét a `localFilePath` képfájlnak megfelelő értékre. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_setup)]
+
+### <a name="call-the-read-api"></a>Az olvasási API meghívása
+
+Ezután adja hozzá a következő kódot a **readInStreamWithServiceResponseAsync** metódus meghívásához az adott képhez.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>Felismerési eredmények nyomtatása
 
-A következő kódrészlet dolgozza fel a visszaadott szöveget, és elemzi, hogy kinyomtassa az első szót az egyes sorokban. A kód segítségével gyorsan megismerheti egy **OcrResult** -példány struktúráját.
+A következő kódrészlet kibontja a művelet AZONOSÍTÓját az olvasási hívás válaszával. Ezt az azonosítót egy segítő metódussal használja a szöveg olvasási eredményeinek a konzolra való kinyomtatásához. 
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_response)]
 
-Végül zárjuk le a try/catch blokkot és a metódus definícióját.
+A try/catch blokk és a metódus definíciójának lezárása.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
+
+### <a name="get-read-results"></a>Olvasási eredmények beolvasása
+
+Ezután adjon hozzá egy definíciót a segítő metódushoz. Ez a metódus az előző lépés műveleti AZONOSÍTÓját használja az olvasási művelet lekérdezéséhez és az OCR eredményeinek lekéréséhez, ha elérhetők.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_call)]
+
+A metódus többi része elemezi az OCR eredményeit, és kinyomtatja őket a konzolra.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_result_helper_print)]
+
+Végül adja hozzá a fent használt másik segítő módszert, amely kibontja a műveleti azonosítót a kezdeti válaszból.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -246,7 +267,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Computer Vision Java-függvénytárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 

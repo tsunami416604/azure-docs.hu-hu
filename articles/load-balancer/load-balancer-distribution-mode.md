@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 82c203322f1a417fa006c5228d957c178a706b3a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d6995073ba7d283a30f7580456cd61573752f7cc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961013"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051389"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
 
@@ -66,7 +66,7 @@ A terjesztési mód konfigurációját módosíthatja a portál terheléseloszt�
 1. Jelentkezzen be a Azure Portalba, és keresse meg a módosítani kívánt terheléselosztó tartalmazó erőforráscsoportot az **erőforráscsoportok**lehetőségre kattintva.
 2. A terheléselosztó áttekintése képernyőn kattintson a **Beállítások**területen található **terheléselosztási szabályok** elemre.
 3. A terheléselosztási szabályok képernyőn kattintson arra a terheléselosztási szabályra, amelyre módosítani szeretné a terjesztési módot.
-4. A szabály alatt a terjesztési mód módosul a **munkamenet-megőrzés** legördülő lista módosításával.  A következő beállítások érhetők el:
+4. A szabály alatt a terjesztési mód módosul a **munkamenet-megőrzés** legördülő lista módosításával.  A következő lehetőségek érhetők el:
     
     * **Nincs (kivonat-alapú)** – azt határozza meg, hogy egy adott ügyfél egymást követő kérelmeit bármely virtuális gép kezelheti.
     * **Ügyfél IP-címe (forrás IP-affinitás 2-rekord)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
@@ -187,7 +187,7 @@ Content-Type: application/xml
 
 Az előzőekben leírtak szerint állítsa be a `LoadBalancerDistribution` sourceIP a kétrekordos affinitásra, a sourceIPProtocol a három rekordos affinitásra, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```http
 HTTP/1.1 202 Accepted
@@ -199,8 +199,8 @@ x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
 Date: Thu, 16 Oct 2014 22:49:21 GMT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure belső Load Balancer áttekintése](load-balancer-internal-overview.md)
-* [Ismerkedés az internetre irányuló terheléselosztó konfigurálásával](quickstart-create-standard-load-balancer-powershell.md)
+* [Ismerkedés az internetre irányuló terheléselosztó konfigurálásával](quickstart-load-balancer-standard-public-powershell.md)
 * [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)

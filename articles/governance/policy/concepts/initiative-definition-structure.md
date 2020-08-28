@@ -3,12 +3,12 @@ title: A kezdeményezési definíció szerkezetének részletei
 description: Leírja, hogyan használhatók a házirend-kezdeményezési definíciók a szervezeten belüli Azure-erőforrásokra történő üzembe helyezés csoportházirend-definíciói számára.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544638"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048499"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy kezdeményezés definíciós szerkezete
 
@@ -284,7 +284,7 @@ Ez az információ a következő:
 
 - Egy szabályozási megfelelőségi kezdeményezés **vezérlésének** áttekintésében Azure Portal jelenik meg.
 - Elérhető REST APIon keresztül. Tekintse meg az `Microsoft.PolicyInsights` erőforrás-szolgáltatót és a [policyMetadata műveleti csoportot](/rest/api/policy-insights/policymetadata/getresource).
-- Az Azure CLI-n keresztül érhető el. Tekintse meg az az [Policy metadata](/cli/azure/policy/metadata?view=azure-cli-latest) parancsot.
+- Az Azure CLI-n keresztül érhető el. Tekintse meg az az [Policy metadata](/cli/azure/policy/metadata) parancsot.
 
 > [!IMPORTANT]
 > A jogszabályi megfelelőséghez tartozó metaadat _-objektumok csak olvashatók_ , és az ügyfelek nem hozhatnak létre.
@@ -319,7 +319,7 @@ Alább látható egy példa a **policyMetadata** objektumra. A példában szerep
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd a [definíciós struktúrát](./definition-structure.md)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

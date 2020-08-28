@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee4c7776dbddf089d290d760d6c0689ba9c0102
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 717e81a1385b04d3152beac39105c56754c55c40
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283027"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049281"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Feltételes hozzáférés: MFA megkövetelése az Azure felügyeletéhez
 
@@ -55,10 +55,10 @@ A következő lépések segítenek létrehozni egy feltételes hozzáférési sz
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

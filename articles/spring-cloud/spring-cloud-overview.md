@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 11/4/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: a8b6535a6e1f6bf083b4a82b9f2ecacbd222cb27
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: dda95932551cdb28c5f28207c05c8e3e78e753b8
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949762"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050845"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Mi az az Azure Spring Cloud?
 
-Az Azure Spring Cloud segítségével egyszerűen üzembe helyezhetők a Spring boot-alapú Service-alkalmazások az Azure-ban nulla kód módosításával.  Az Azure Spring Cloud a Spring Cloud Applications életciklusát kezeli, így a fejlesztők a kódra is koncentrálhat.  A Spring Cloud átfogó monitorozást és diagnosztikát, a konfiguráció felügyeletét, a szolgáltatások felderítését, a CI/CD-integrációt, a kék zöld környezeteket és egyebeket is lehetővé teszi.
+Az Azure Spring Cloud segítségével egyszerűen üzembe helyezhetők a Spring boot-alapú Service-alkalmazások az Azure-ban nulla kód módosításával.  Az Azure Spring Cloud a Spring Cloud Applications infrastruktúráját kezeli, így a fejlesztők a kódra is koncentrálhat.  A Spring Cloud átfogó monitorozást és diagnosztikát, a konfiguráció felügyeletét, a szolgáltatások felderítését, a CI/CD-integrációt, a kék zöld környezeteket és egyebeket is lehetővé teszi.
 
 Az Azure-ökoszisztéma részeként az Azure Spring Cloud egyszerű kötést tesz lehetővé más Azure-szolgáltatásokhoz, többek között a tároláshoz, az adatbázisokhoz, a figyeléshez és egyebekhez.
 
@@ -28,11 +28,9 @@ Ez az oktatóanyag bemutatja az Azure Spring Cloud konfigurációs kiszolgálój
 
 Az Azure Spring Cloud config Server külső konfigurációt biztosít egy elosztott rendszeren a kiszolgáló-és ügyféloldali támogatással.  Az Azure Spring Cloud config Server egy központi hely az alkalmazások tulajdonságainak az összes környezetben való kezeléséhez. További információ: [Spring Cloud config Server Reference](https://spring.io/projects/spring-cloud-config.md). 
 
-
-
 ## <a name="enable-bluegreen-deployments"></a>Kék/zöld üzembe helyezés engedélyezése
 
-Az Azure Spring Cloud támogatja a kék/zöld üzembe helyezést a kódok éles környezetekben való kiadásához és frissítéséhez.  A változás-kezelési minta kihasználása lehetővé teszi a fejlesztők számára, hogy a funkciók és a kód módosításait az azonnali tartalék biztonságával, ha szükséges.  Az Azure lehetővé teszi a fejlesztők számára, hogy több éles környezet kezelésével, valamint az alkalmazás megszakítása nélkül megkönnyítsék a kódok módosítását.  Ha többet szeretne megtudni az átmeneti környezetekről és a kék/zöld üzembe helyezésekről, tekintse meg ezt a [témakört](spring-cloud-howto-staging-environment.md).
+Az Azure Spring Cloud támogatja a kék/zöld üzembe helyezést a kódok éles környezetekben való kiadásához és frissítéséhez.  Ez a módosítási felügyeleti minta lehetővé teszi a fejlesztők számára, hogy a funkciók és a kód módosításait az azonnali tartalék biztonságával, ha szükséges.  A fejlesztők az alkalmazás megszakítása nélkül is koncentrálhat több éles környezettel rendelkező kód írására a kód módosításának módosításához.  Ha többet szeretne megtudni az átmeneti környezetekről és a kék/zöld üzembe helyezésekről, tekintse meg ezt a [témakört](spring-cloud-howto-staging-environment.md).
 
 ## <a name="automate-cicd-pipelines"></a>CI/CD-folyamatok automatizálása
 
@@ -49,9 +47,8 @@ Az Azure Spring Cloud segítségével könnyedén méretezheti az Azure Spring C
 A Spring Cloud elosztott nyomkövetési eszközei lehetővé teszik a fejlesztők számára, hogy hibakeresést végezzenek, és figyelemmel kísérik az alkalmazásokban található szolgáltatások közötti összetett kapcsolatokat.  A [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) és az Azure [Application Insights](../azure-monitor/insights/insights-overview.md)integrálásával az Azure hatékony elosztott nyomkövetési képességet biztosít közvetlenül a Azure Portal.  További információért olvassa el ezt az [oktatóanyagot](spring-cloud-tutorial-distributed-tracing.md).
 
 ## <a name="next-steps"></a>Következő lépések
-Első lépésként fejezze be a Spring Cloud rövid útmutatót az [Azure CLI](spring-cloud-quickstart-launch-app-cli.md), a [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)vagy a [Maven](spring-cloud-quickstart-launch-app-maven.md)használatával.
-
-További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).
-
+Első lépésként fejezze be a Spring Cloud gyors útmutatóját:
 > [!div class="nextstepaction"]
 > [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)
+
+További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

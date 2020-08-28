@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 07/01/2020
+ms.date: 08/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023914"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047819"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
-A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szolgáltatás lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ezek az erőforrások az Azure AD-ben, az Azure-ban és más Microsoft Online-szolgáltatásokban, például az Office 365-ben vagy Microsoft Intuneban található erőforrások.
+ A Privileged Identity Management (PIM) Azure Active Directory (Azure AD) szolgáltatása, amely lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ezek az erőforrások az Azure AD-ben, az Azure-ban és a Microsoft egyéb online szolgáltatásaiban, például az Office 365-ban vagy Microsoft Intuneban található erőforrások.
 
 ## <a name="reasons-to-use"></a>Használat okai
 
-A szervezetek szeretnék csökkenteni azon személyek számát, akiknek hozzáférésük van az információkhoz vagy az erőforrásokhoz, mivel ez csökkenti annak az esélyét, hogy egy rosszindulatú szereplő hozzáfér az adott hozzáféréshez, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra. Azonban a felhasználóknak ettől függetlenül el kell végezniük bizonyos emelt szintű műveleteket az Azure AD-, Azure-, Office 365- vagy SaaS-alkalmazásokban. A vállalatoknak lehetőségük van arra, hogy igény szerinti (JIT) emelt szintű hozzáférést adjanak a felhasználóknak olyan Azure-erőforrásokhoz, mint az Azure AD. Szükség van arra, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat.
+A szervezetek szeretnék csökkenteni azon személyek számát, akiknek hozzáférésük van az információkhoz vagy az erőforrásokhoz, mivel ez csökkenti annak az esélyét, hogy egy rosszindulatú szereplő hozzáfér az adott hozzáféréshez, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra. Azonban a felhasználóknak ettől függetlenül el kell végezniük bizonyos emelt szintű műveleteket az Azure AD-, Azure-, Office 365- vagy SaaS-alkalmazásokban. A szervezetek az Azure-erőforrásokhoz és az Azure AD-hez is igénybe vehetik az igény szerinti jogosultságokat. Szükség van arra, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat.
 
 ## <a name="what-does-it-do"></a>Mit csinál?
 
@@ -44,7 +44,7 @@ A Privileged Identity Management időalapú és jóváhagyási alapú szerepkör
 
 ## <a name="what-can-i-do-with-it"></a>Mire használhatom?
 
-A Privileged Identity Management beállítása után a bal oldali navigációs menüben megjelennek a **feladatok**, a **kezelés**és a **tevékenységek** beállításai. Rendszergazdaként választhatja az **Azure ad-szerepkörök** és az Azure- **erőforrások** szerepköreinek kezelését. Ha kiválasztja a felügyelni kívánt szerepkörök típusát, az adott szerepkör típusához hasonló beállítások jelennek meg.
+A Privileged Identity Management beállítása után a bal oldali navigációs menüben megjelennek a **feladatok**, a **kezelés**és a **tevékenységek** beállításai. Rendszergazdaként olyan lehetőségek közül választhat, mint például az **Azure ad-szerepkörök**kezelése, az **Azure-erőforrások** szerepköreinek kezelése vagy a privilegizált hozzáférési csoportok. Ha kiválasztja, hogy mit szeretne kezelni, megjelenik az adott lehetőséghez tartozó megfelelő beállítások.
 
 ![A Azure Portal Privileged Identity Management képernyőképe](./media/pim-configure/pim-quickstart.png)
 

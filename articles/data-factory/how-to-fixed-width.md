@@ -8,16 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23b812da8c84ebf055ac4eabdc4649828c139a7f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414375"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051015"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Rögzített hosszúságú szövegfájlok feldolgozása Data Factory leképezési adatfolyamatok használatával
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített szélességű szövegfájlokból is át lehet alakítani az adatok átalakítását. A következő feladatban definiálunk egy adatkészletet egy szöveges fájlhoz, elválasztó nélkül, majd az alsztringek felosztását a sorszám alapján.
 
@@ -83,12 +83,12 @@ Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített sz�
 
     ![rögzített szélességű fogadó](media/data-flow/fwsink.png)
 
-    A kimenet így néz ki:
+    A kimenet a következőképpen fog kinézni:
 
     ![rögzített szélességű kimenet](media/data-flow/fxdoutput.png)
 
   A rögzített szélességű adat már fel van osztva, és négy karakterből áll, amelyek mindegyike Col1, Col2, Col3, Col4 és így tovább van rendelve. Az előző példa alapján az adatgyűjtés négy oszlopra oszlik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.

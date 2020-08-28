@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 34c29a6f6cab77eaa69c7f28f57a4b823dd23d08
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e35e32c92535a408c8df22d7306895150a59519
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685238"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050148"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 és Esv4 sorozat
 
-A Ev4 és a Esv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, ideális megoldás a nagy mennyiségű, nagyvállalati szintű vállalati alkalmazásokhoz és szolgáltatásokhoz akár a RAM-504GiB.
+A Ev4 és a Esv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, ideális megoldás a nagy mennyiségű, nagyvállalati szintű vállalati alkalmazásokhoz és szolgáltatásokhoz akár a RAM-504GiB. A szolgáltatás a teljes Turbo órajel 3,4 GHz-es folyamatos elérését is tartalmazza.
 
 > [!NOTE]
 > A gyakori kérdésekért tekintse meg a  [helyi Temp Disk nélküli Azure](azure-vms-no-temp-disk.md)-beli virtuálisgép-méreteket.
@@ -100,6 +100,6 @@ Memória megőrzésének frissítései: támogatott
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918944"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050182"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -24,7 +24,7 @@ A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű h
 
 A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
-|    Kötegelt átírási művelet                                             |    Módszer    |    REST API hívás                                   |
+|    Kötegelt átírási művelet                                             |    Metódus    |    REST API hívás                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
 |    Új átírást hoz létre.                                              |    POST      |    speechtotext/v 3.0/átiratok            |
 |    Lekéri a hitelesített előfizetéshez tartozó átírások listáját.    |    GET       |    speechtotext/v 3.0/átiratok            |
@@ -170,7 +170,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Opcionális URL-cím a [Service sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban tárolódik. Ha nincs megadva, a Microsoft az eredményeket a Microsoft által kezelt tároló tárolóban tárolja. Ha az átírást törli az [átírás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)meghívásával, a rendszer törli az eredményül kapott adatértéket is.
+      Opcionális URL-cím a [Service ad hoc sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóba az Azure-ban. Az eredmény ebben a tárolóban tárolódik. A tárolt hozzáférési házirenddel rendelkező SAS **nem** támogatott. Ha nincs megadva, a Microsoft az eredményeket a Microsoft által kezelt tároló tárolóban tárolja. Ha az átírást törli az [átírás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)meghívásával, a rendszer törli az eredményül kapott adatértéket is.
 :::row-end:::
 
 ### <a name="storage"></a>Tárolás
@@ -336,6 +336,6 @@ Ez a mintakód nem ad meg egyéni modellt. A szolgáltatás az alapmodellt haszn
 > [!NOTE]
 > Az alapértékek átírásakor nem kell deklarálnia az alapmodell AZONOSÍTÓját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Beszéd a Text V3 API-hoz – dokumentáció](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

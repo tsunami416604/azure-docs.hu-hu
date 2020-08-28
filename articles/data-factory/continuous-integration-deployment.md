@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: f44c3ac51bfc509df0b8f2b82c2d6259bba0aa3c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815810"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047684"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -625,6 +625,8 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 
     - A adatfeldolgozó-entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, és az adatkészletek és az egyéb folyamatok függenek egymástól. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedést és hibákat eredményezhet.
     - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások éles környezete](#hotfix-production-environment).
+
+- Az Azure Data Factory csapat nem javasolja, hogy RBAC-vezérlőket rendeljen az egyes entitásokhoz (folyamatok, adatkészletek stb.) egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy egy adatkészlethez, el kell tudnia érni az adat-előállító összes folyamatát vagy adatkészletét. Ha úgy érzi, hogy számos RBAC-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
 
 -   Privát ágakból nem lehet közzétenni.
 

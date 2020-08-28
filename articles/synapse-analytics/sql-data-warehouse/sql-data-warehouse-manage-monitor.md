@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211697"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048024"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Az Azure szinapszis Analytics SQL-készlet számítási feladatának figyelése a DMV használatával
 
@@ -102,8 +102,8 @@ Ha egy DSQL-csomag a vártnál hosszabb időt vesz igénybe, az ok lehet egy ös
 
 Egyetlen lépéssel kapcsolatos további részletek vizsgálatához a hosszan futó lekérdezési lépés *operation_type* oszlopát, és jegyezze fel a **lépés indexét**:
 
-* Folytassa a 3a. lépéssel az **SQL-műveletekhez**: OnOperation, RemoteOperation, ReturnOperation.
-* Folytassa a 3b lépéssel az **adatáthelyezési műveletekhez**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Folytassa a 3. lépéssel az **SQL-műveletekhez**: OnOperation, RemoteOperation, ReturnOperation.
+* Folytassa a 4. lépéssel az **adatáthelyezési műveletekhez**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>3. lépés: az SQL vizsgálata az elosztott adatbázisokon
 
@@ -307,6 +307,6 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a DMV: [rendszernézetek](../sql/reference-tsql-system-views.md).

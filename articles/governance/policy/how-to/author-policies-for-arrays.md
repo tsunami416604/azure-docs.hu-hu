@@ -3,12 +3,12 @@ title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3ba5179ca7acc60042d23e88d42a504d4d05f08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544587"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048482"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -95,7 +95,7 @@ A paraméter értékének formátuma eltérő az Azure CLI, Azure PowerShell vag
 
 Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következő parancsokat:
 
-- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paraméter **-paraméterekkel**
+- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment#az-policy-assignment-create) paraméter **-paraméterekkel**
 - Azure PowerShell: parancsmag [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) paraméterrel **PolicyParameter**
 - REST API: a _put_ [create](/rest/api/resources/policyassignments/create) művelet a kérelem törzsének részeként a **Tulajdonságok. Parameters** tulajdonság értékeként
 
@@ -183,7 +183,7 @@ Az alábbi példában szereplő összes feltételnél cserélje le a következő
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
-|Feltétel |Eredmény | Forgatókönyv |Magyarázat |
+|Condition (Állapot) |Eredmény | Használati eset |Magyarázat |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Semmit |Nincs egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Nincs egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
@@ -203,7 +203,7 @@ A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

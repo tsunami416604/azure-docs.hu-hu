@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: terv létrehozása a PowerShell-lel'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a PowerShell használatával.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: b881731dfdcaf9e9e016d1437e51dbd5c1a7488a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970501"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051491"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése a PowerShell-lel
 
@@ -16,7 +16,7 @@ A tervrajzok létrehozásának és hozzárendelésének megismerése lehetővé 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
 Ha még nincs telepítve, kövesse az [az. Blueprint modul hozzáadása](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) című témakör utasításait az az **. Blueprint** modul telepítéséhez és ellenőrzéséhez a PowerShell-Galéria.
 
@@ -379,7 +379,7 @@ Miután közzétett egy tervet a PowerShell használatával, hozzárendelhető e
      > [!IMPORTANT]
      > Az Azure-tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
@@ -391,7 +391,7 @@ assignMyBlueprint
 Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta, hozzárendelte és eltávolította a tervet a PowerShell-lel. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

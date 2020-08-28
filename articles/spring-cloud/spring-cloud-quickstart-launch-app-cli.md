@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 53e27e4fafaf4468c9c2f4a1ce24ace3d317dada
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 305a12de05ca934f5f8fd8b86746608d7fa32712
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503259"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046969"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával
 
-Az Azure Spring Cloud lehetővé teszi, hogy könnyedén futtasson egy Spring boot-alapú Services-alkalmazást az Azure-ban.
+Az Azure Spring Cloud lehetővé teszi, hogy könnyedén futtasson egy Spring boot-alapú Services-alkalmazást az Azure-ban.  A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstart.md)rövid útmutatót.
 
 Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy meglévő Java Spring Cloud-alkalmazást az Azure-ban. Ha elkészült, továbbra is kezelheti az alkalmazást az Azure CLI-n keresztül, vagy átválthat a Azure Portal használatára.
 
@@ -160,21 +160,21 @@ az spring-cloud app show --name gateway --query properties.url
 ```
 
 3. Navigáljon az előző parancs által megadott URL-címhez a PiggyMetrics alkalmazás futtatásához.
-    ![A PiggyMetrics-t futtató képernyőkép](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
+    ![Futó PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 Az URL-cím megkereséséhez navigáljon a Azure Portal is. 
 1. Navigáljon a szolgáltatáshoz
 2. **Alkalmazások** kiválasztása
 3. **Átjáró** kiválasztása
 
-    ![A PiggyMetrics-t futtató képernyőkép](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+    ![PiggyMetrics navigálása](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. Az URL-cím megkeresése az **átjáró áttekintő** lapján a PiggyMetrics-t ![ futtató képernyőképen](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. Az URL-cím megkeresése az **átjáró áttekintő** lapján  ![ PiggyMetrics 2. lépés](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást helyezett üzembe az Azure CLI-vel.  Ha többet szeretne megtudni az Azure Spring Cloud-ról, folytassa az alkalmazás üzembe helyezésének előkészítésével foglalkozó oktatóanyaggal.
 

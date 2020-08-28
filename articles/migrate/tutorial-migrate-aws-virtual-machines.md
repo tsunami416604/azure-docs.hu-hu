@@ -4,12 +4,12 @@ description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepít�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 386f5cbefe8ad6a375437eea7fea75b5fb5a7f65
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762419"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048533"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -20,6 +20,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel, értékelheti és
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 > [!div class="checklist"]
+>
 > * Ellenőrizze az áttelepítéshez szükséges előfeltételeket.
 > * Azure-erőforrások előkészítése Azure Migrate: kiszolgáló áttelepítése. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
 > * AWS EC2-példányok előkészítése az áttelepítéshez.
@@ -57,7 +58,7 @@ Bár javasoljuk, hogy kipróbáljon egy értékelést, és az értékelés végr
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Győződjön meg arról, hogy az áttelepíteni kívánt AWS virtuális gépek támogatott operációsrendszer-verziót futtatnak. Az AWS-alapú virtuális gépeket a Migrálás céljára szolgáló fizikai gépek kezelik. Tekintse át a fizikai kiszolgáló áttelepítési munkafolyamatának [támogatott operációs rendszereit](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) . Javasoljuk, hogy végezzen el egy teszt-áttelepítést (feladatátvételi teszt) annak ellenőrzéséhez, hogy a virtuális gép a várt módon működik-e a tényleges áttelepítés folytatása előtt.
+- Győződjön meg arról, hogy az áttelepíteni kívánt AWS virtuális gépek támogatott operációsrendszer-verziót futtatnak. Az AWS-alapú virtuális gépeket a Migrálás céljára szolgáló fizikai gépek kezelik. Tekintse át a fizikai kiszolgáló áttelepítési munkafolyamatának [támogatott operációs rendszereit és kernel-verzióit](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) . A Linux rendszerű virtuális gépek operációsrendszer-és kernel-verzióit a *hostnamectl* vagy *a uname-a* standard parancsok használatával tekintheti meg.  Javasoljuk, hogy végezzen el egy teszt-áttelepítést (feladatátvételi teszt) annak ellenőrzéséhez, hogy a virtuális gép a várt módon működik-e a tényleges áttelepítés folytatása előtt.
 - Győződjön meg arról, hogy az AWS-beli virtuális gépek megfelelnek az Azure-ba való Migrálás [támogatott konfigurációinak](./migrate-support-matrix-physical-migration.md#physical-server-requirements) .
 - Ellenőrizze, hogy az Azure-ba replikált AWS virtuális gépek megfelelnek-e az Azure-beli [virtuális gép követelményeinek.](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)
 - Az Azure-ba történő Migrálás előtt néhány módosításra van szükség a virtuális gépeken.
@@ -69,7 +70,7 @@ Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux]
 
 Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel történő áttelepítéshez.
 
-**Tevékenység** | **Részletek**
+**Feladat** | **Részletek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
@@ -252,7 +253,7 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
 4. A **Process Server**lapon válassza ki a replikációs berendezés nevét. 
 5. A **vendég hitelesítő adatai**területen válassza ki a [replikálási telepítő telepítése](#download-the-replication-appliance-installer) során korábban létrehozott dummy-fiókot a mobilitási szolgáltatás manuális telepítéséhez (a leküldéses telepítés nem támogatott). Ezután kattintson a **Tovább gombra: Virtual Machines**.   
  
-    ![Virtuális gépek replikálása](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Replikálási beállítások](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **Virtual Machines**az **áttelepítési beállítások importálása az értékelésből?** beállításnál hagyja meg az alapértelmezett **nem beállítást, az áttelepítési beállításokat manuálisan kell megadnia**.
 7. Tekintse át az áttelepíteni kívánt virtuális gépeket. Ezután kattintson a **Tovább: cél beállítások**elemre.
 
@@ -381,12 +382,24 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 **Kérdés:** A következő hibaüzenet jelenik meg: "nem sikerült beolvasni a BIOS GUID azonosítóját" az AWS-es virtuális gépek felderítésére tett kísérlet során   
 **Válasz:** A hitelesítéshez mindig használja a root logint, és ne használjon pszeudo-felhasználót. Tekintse át az AWS virtuális gépek támogatott operációs rendszereit is.  
 
-**Kérdés:** A saját replikáció állapota nem halad előre    
+**Kérdés:** A saját replikáció állapota nem halad előre   
 **Válasz:** Ellenőrizze, hogy a replikációs berendezés megfelel-e a követelményeknek. Győződjön meg arról, hogy engedélyezte a szükséges portokat a 9443-es és HTTPS 443-es TCP-porton az adatátvitelhez. Győződjön meg arról, hogy az ugyanahhoz a projekthez kapcsolódó replikációs berendezésnek nincs elavult duplikált verziója.   
 
 **Kérdés:** Nem tudom felderíteni az AWS-példányokat az Azure Migrate használatával a távoli Windows Management szolgáltatásból származó 504 HTTP-állapotkód miatt    
-**Válasz:** Győződjön meg arról, hogy az Azure migráló készülékre vonatkozó követelmények és URL-hozzáférési igényeket tekinti át. Győződjön meg arról, hogy nincs proxy-beállítás a készülék regisztrációjának blokkolására.   
+**Válasz:** Győződjön meg arról, hogy az Azure migráló készülékre vonatkozó követelmények és URL-hozzáférési igényeket tekinti át. Győződjön meg arról, hogy nincs proxy-beállítás a készülék regisztrációjának blokkolására.
 
-## <a name="next-steps"></a>További lépések
+**Kérdés:** Az AWS-beli virtuális gépek Azure-ba való migrálása előtt végre kell hajtani a módosításokat.   
+**Válasz:** Előfordulhat, hogy a EC2 virtuális gépek Azure-ba való migrálása előtt el kell végeznie ezeket a módosításokat:
+
+- Ha Cloud-init-t használ a virtuális gépek üzembe helyezéséhez, érdemes lehet letiltani a Cloud-init szolgáltatást a virtuális gépen az Azure-ba való replikálás előtt. A Cloud-init által a virtuális gépen végrehajtott kiépítési lépések talán AWS-specifikusak, és az Azure-ba való Migrálás után nem lesznek érvényesek. 
+- Ha a virtuális gép egy PV virtuális gép (nem virtualizált), és nem HVM VM, előfordulhat, hogy nem tudja futtatni az Azure-ban, mert a para-virtualizált virtuális gépek egyéni rendszerindítási sorozatot használnak az AWS-ben. Előfordulhat, hogy az Azure-ba való áttelepítés előtt a PV-illesztőprogramok eltávolításával el tudja érni ezt a problémát.  
+- Javasoljuk, hogy a végső áttelepítés előtt futtasson egy teszt-áttelepítést.  
+
+
+**Kérdés:** Áttelepíthetem az Amazon Linux operációs rendszert futtató AWS virtuális gépeket  
+**Válasz:** Az Amazon Linux rendszerű virtuális gépek nem telepíthetők át, mert az Amazon Linux operációs rendszer csak az AWS-t támogatja.
+Az Amazon Linux rendszeren futó munkaterhelések áttelepítéséhez egy CentOS/RHEL virtuális gépet is üzembe helyezhet az Azure-ban, és áttelepítheti az AWS linuxos gépen futó munkaterhelést a megfelelő munkaterhelés-áttelepítési módszer használatával. Például a munkaterheléstől függően előfordulhat, hogy a munkaterhelés-specifikus eszközök az áttelepítést segítik – például a webkiszolgálók adatbázisai vagy központi telepítési eszközei esetében.
+
+## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

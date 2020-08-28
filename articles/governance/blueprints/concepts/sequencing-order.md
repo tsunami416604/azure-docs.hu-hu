@@ -1,14 +1,14 @@
 ---
 title: Az üzembe helyezési sorrend sorrendjének megismerése
 description: Ismerje meg az alapértelmezett sorrendet, amelyet a tervrajz-összetevők üzembe helyezése a tervrajz-hozzárendelés során és a telepítési sorrend testreszabásával kapcsolatban tartalmaz.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970620"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051474"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az üzembe helyezési folyamat ismertetése az Azure-tervezetekben
 
@@ -44,7 +44,7 @@ Minden **erőforráscsoport** -összetevőn belül a következő sorrendet haszn
 
 Nagyméretű tervrajzok meghatározásakor szükség lehet arra, hogy az erőforrások egy adott sorrendben jöjjenek létre. Ennek a forgatókönyvnek a leggyakoribb felhasználási módja, ha a terv definíciója több ARM-sablont is tartalmaz. Az Azure-tervrajzok ezt a mintát úgy kezelik, hogy lehetővé teszik az előkészítési sorrend meghatározását.
 
-A rendelés a `dependsOn` JSON-ban található tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. `dependsOn`egy olyan karakterlánc-tömb, amelyben az adott összetevőt létre kell hozni a létrehozás előtt.
+A rendelés a `dependsOn` JSON-ban található tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. `dependsOn` egy olyan karakterlánc-tömb, amelyben az adott összetevőt létre kell hozni a létrehozás előtt.
 
 > [!NOTE]
 > A tervrajzi objektumok létrehozásakor minden összetevő-erőforrás megkapja a nevét a fájlnévből, ha a [PowerShellt](/powershell/module/az.blueprint/new-azblueprintartifact)használja, vagy az URL-végpontot, ha [REST API](/rest/api/blueprints/artifacts/createorupdate)használ. az összetevőkben található _resourceGroup_ -hivatkozásoknak meg kell egyezniük a terv definíciójában definiált értékekkel.
@@ -141,8 +141,8 @@ Ilyen például egy olyan erőforráscsoport, amely egy előfizetési szint ház
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](lifecycle.md).
-- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
-- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- Tudnivalók a [tervek életciklusáról](./lifecycle.md).
+- A [statikus és dinamikus paraméterek](./parameters.md) használatának elsajátítása.
+- A [tervek erőforrás-zárolásának](./resource-locking.md) alkalmazásával kapcsolatos részletek.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
 - A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

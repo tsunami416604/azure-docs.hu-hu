@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c60c0324b04bca0a8115f4ac884704012e8e1d8c
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986848"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049128"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Feltételes hozzáférés: megfelelő eszközök megkövetelése
 
@@ -57,11 +57,11 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 
 Windows 7, iOS, Android, macOS és néhány külső webböngészőben az Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja. Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhassa a böngészőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 

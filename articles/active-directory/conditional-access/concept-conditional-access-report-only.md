@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204191"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049383"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Mi a csak feltételes hozzáférés jelentési módja?
 
@@ -49,6 +49,6 @@ Ha egy adott bejelentkezésnél egy házirend csak jelentési módban van kiért
 
 A rendszergazdák több szabályzatot hozhatnak létre csak jelentési módban, ezért az egyes házirendek egyéni hatásának megértéséhez, valamint a több, együttesen értékelt házirendek együttes hatásához is szükség van. Az új feltételes hozzáférési bejelentési munkafüzet lehetővé teszi a rendszergazdák számára a feltételes hozzáférési lekérdezések megjelenítését és a házirendek hatásának figyelését egy adott időtartományra, az alkalmazások és a felhasználók körére. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Csak jelentési mód konfigurálása feltételes hozzáférési házirendben](howto-conditional-access-report-only.md)
+[Csak jelentési mód konfigurálása feltételes hozzáférési házirendben](howto-conditional-access-insights-reporting.md)

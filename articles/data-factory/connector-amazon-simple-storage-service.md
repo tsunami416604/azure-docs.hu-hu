@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 023d6734195dabefff12210c2e63a0a4f4f9ac93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/28/2020
+ms.openlocfilehash: 30d040cfc608f0d11d3d59f52cd59c1a946bcc19
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007673"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050984"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Az Amazon Simple Storage szolgáltatásból származó adatok másolása Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -115,7 +115,7 @@ Az Amazon S3 a következő tulajdonságokat támogatja a `location` Format-alap�
 | fileName   | A fájl neve az adott gyűjtő és mappa elérési útjában. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításainál válassza ki azt. | No       |
 | version | Az S3 objektum verziója, ha az S3 Verziószámozás engedélyezve van. Ha nincs megadva, a rendszer beolvassa a legújabb verziót. |No |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -166,9 +166,11 @@ A következő tulajdonságok támogatottak az Amazon S3 `storeSettings` -ban a F
 | deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris másolási helyzetekben érvényes, ahol az adatforrás a blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, file, Azure file, SFTP vagy FTP. Az alapértelmezett érték: false. |No |
 | modifiedDatetimeStart    | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null**értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null**értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                                          |
+| enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | Hamis                                            |
+| partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/>– Ha előtagot használ, a partíció gyökerének elérési útja az utolsó "/" előtti Alútvonal. <br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | Hamis                                            |
 | maxConcurrentConnections | Az adattárhoz való egyidejű kapcsolatok száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No                                                          |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -228,7 +230,7 @@ Tegyük fel, hogy rendelkezik a következő forrás-mappa struktúrával, és f�
 
 | Példa a forrás struktúrájára                                      | Tartalom FileListToCopy.txt                             | Data Factory konfiguráció                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| gyűjtő<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metaadatok<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **Az adatkészletben:**<br>Gyűjtő`bucket`<br>-Mappa elérési útja:`FolderA`<br><br>**A másolási tevékenység forrása:**<br>-Fájllista elérési útja:`bucket/Metadata/FileListToCopy.txt` <br><br>A fájllista elérési útja ugyanazon az adattárban található szövegfájlra mutat, amely tartalmazza a másolni kívánt fájlok listáját, a soronként egy fájlt, valamint az adatkészletben konfigurált útvonal relatív elérési útját. |
+| gyűjtő<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsbekapcsolva<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metaadatok<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **Az adatkészletben:**<br>Gyűjtő `bucket`<br>-Mappa elérési útja: `FolderA`<br><br>**A másolási tevékenység forrása:**<br>-Fájllista elérési útja: `bucket/Metadata/FileListToCopy.txt` <br><br>A fájllista elérési útja ugyanazon az adattárban található szövegfájlra mutat, amely tartalmazza a másolni kívánt fájlok listáját, a soronként egy fájlt, valamint az adatkészletben konfigurált útvonal relatív elérési útját. |
 
 ## <a name="preserve-metadata-during-copy"></a>Metaadatok megőrzése a másolás során
 
@@ -257,7 +259,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 |:--- |:--- |:--- |
 | típus | Az adatkészlet **Type** tulajdonságát **AmazonS3Object**értékre kell állítani. |Yes |
 | bucketName | Az S3-gyűjtő neve. A helyettesítő karakteres szűrő nem támogatott. |Igen, a másolási vagy keresési tevékenység esetében nem a GetMetadata tevékenységhez |
-| kulcs | Az S3 objektum kulcsának neve vagy helyettesítő szűrője a megadott gyűjtőben. Csak akkor érvényes, ha az **előtag** tulajdonság nincs megadva. <br/><br/>A helyettesítő karakteres szűrő a mappa részeként és a fájlnév résznél is támogatott. Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg).<br/>– 1. példa:`"key": "rootfolder/subfolder/*.csv"`<br/>– 2. példa:`"key": "rootfolder/subfolder/???20180427.txt"`<br/>További példa a [mappa-és fájlszűrő-példákban](#folder-and-file-filter-examples). A használatával `^` elkerülheti, hogy a tényleges mappája vagy fájlneve helyettesítő karakterrel vagy a menekülési karakterrel rendelkezik. |No |
+| kulcs | Az S3 objektum kulcsának neve vagy helyettesítő szűrője a megadott gyűjtőben. Csak akkor érvényes, ha az **előtag** tulajdonság nincs megadva. <br/><br/>A helyettesítő karakteres szűrő a mappa részeként és a fájlnév résznél is támogatott. Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg).<br/>– 1. példa: `"key": "rootfolder/subfolder/*.csv"`<br/>– 2. példa: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>További példa a [mappa-és fájlszűrő-példákban](#folder-and-file-filter-examples). A használatával `^` elkerülheti, hogy a tényleges mappája vagy fájlneve helyettesítő karakterrel vagy a menekülési karakterrel rendelkezik. |No |
 | előtag | Az S3-objektum kulcsának előtagja. Azok az objektumok, amelyek esetében ezzel az előtaggal kezdődnek a kulcsok. Csak akkor érvényes, ha nincs megadva a **Key** tulajdonság. |No |
 | version | Az S3 objektum verziója, ha az S3 Verziószámozás engedélyezve van. Ha nincs megadva verzió, a rendszer a legújabb verziót fogja lekérni. |No |
 | modifiedDatetimeStart | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az időpontot az UTC időzónára alkalmazza a "2018-12-01T05:00:00Z" formátumban. <br/><br/> Vegye figyelembe, hogy a beállítás engedélyezése hatással lesz az adatáthelyezés általános teljesítményére, ha nagy mennyiségű fájlt szeretne szűrni. <br/><br/> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null**értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
@@ -339,7 +341,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát.<br/>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | No |
 | maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -371,5 +373,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

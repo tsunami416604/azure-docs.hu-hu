@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel-munkaterületek kezelése nagy méretekben
 description: Ismerje meg, hogyan kezelheti hatékonyan az Azure Sentinelt a delegált felhasználói erőforrásokon.
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511252"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050811"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-munkaterületek kezelése nagy méretekben
 
@@ -29,7 +29,7 @@ Ez a központi telepítési modell a következő előnyökkel jár:
 
 - Az adattulajdonos az egyes felügyelt bérlők esetében is megmarad.
 - A támogatja a földrajzi határokon belül tárolt adattárolási követelményeket.
-- Biztosítja az adatelkülönítést, mivel a több ügyfélhez tartozó adategységek nem ugyanabban a munkaterületen vannak tárolva. 
+- Biztosítja az adatelkülönítést, mivel a több ügyfélhez tartozó adategységek nem ugyanabban a munkaterületen vannak tárolva.
 - Megakadályozza a felügyelt bérlők adatainak kiszűrése, így biztosítva az adatok megfelelőségét.
 - A kapcsolódó költségeket a bérlők kezelése helyett az egyes felügyelt bérlők terhelik.
 - Az összes adatforrásból és adatösszekötőből származó, az Azure Sentinel szolgáltatással integrált adatok (például az Azure AD-tevékenységek naplói, az Office 365-naplók vagy a Microsoft Threat Protection-riasztások) az egyes ügyfelek bérlőn belül maradnak.
@@ -71,7 +71,7 @@ A munkafüzeteket közvetlenül is üzembe helyezheti egy egyéni bérlőben, am
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Log Analytics-és vadászati lekérdezések futtatása az Azure Sentinel-munkaterületeken
 
-A fenyegetés észleléséhez központilag hozhat létre és menthet Log Analytics-lekérdezéseket a bérlő kezelése, beleértve a [vadászati lekérdezéseket](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)is. Ezeket a lekérdezéseket ezután a Union operátor és a munkaterület () kifejezés használatával lehet futtatni az összes ügyfél Azure Sentinel-munkaterületén. További információ: több [munkaterület lekérdezése](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+Hozzon létre és mentsen Log Analytics-lekérdezéseket a fenyegetés észleléséhez központilag a bérlő kezelése, beleértve a [vadászati lekérdezéseket](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Ezeket a lekérdezéseket ezután a Union operátor és a munkaterület () kifejezés használatával lehet futtatni az összes ügyfél Azure Sentinel-munkaterületén. További információ: több [munkaterület lekérdezése](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Automatizálás használata a munkaterületek közötti felügyelethez
 
@@ -79,7 +79,15 @@ Az Automation használatával több Azure Sentinel-munkaterület is kezelhető, 
 
 Vegye figyelembe, hogy egyes funkciók [jelenleg nem támogatottak több munkaterületen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces).
 
-## <a name="next-steps"></a>További lépések
+## <a name="manage-security-of-office-365-environments"></a>Office 365-környezetek biztonságának kezelése
+
+Az Azure-világítótorony és az Azure Sentinel együttes használatával felügyelheti az Office 365 környezetek biztonságát a bérlők között. Első lépésként a Box [Office 365 adatösszekötőket engedélyezni kell a felügyelt bérlőben](../../sentinel/connect-office-365.md) , hogy az Exchange-ben és a SharePointban (beleértve a OneDrive-t) használó felhasználói és rendszergazdai tevékenységekkel kapcsolatos információk betölthetők legyenek egy Azure Sentinel-munkaterületre a felügyelt bérlőn belül. Ide tartozik a fájlok letöltésével, a küldött hozzáférési kérelmekkel, az események csoportosításával és a postaláda-műveletekkel kapcsolatos részletek, valamint a műveleteket végrehajtó felhasználók információi. Az [office 365 DLP-riasztások](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) a beépített Office 365-összekötők részeként is támogatottak.
+
+A [Microsoft Cloud app Security (MCAS) összekötőt](../../sentinel/connect-cloud-app-security.md) engedélyezheti a stream-riasztásokhoz, és Cloud Discovery naplókat az Azure sentinelbe. Ez lehetővé teszi a felhőalapú alkalmazások láthatóságát, a kifinomult elemzéseket a előforduló kiberfenyegetésekkel kapcsolatban azonosítására és leküzdésére, valamint az adatmozgások szabályozására. A MCAS tartozó Tevékenységnaplók [a Common Event Format (CEF) használatával](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)használhatók fel.
+
+Az Office 365-adatösszekötők beállítása után használhatja a több-bérlős Azure Sentinel-funkciókat, például a munkafüzetek adatainak megtekintését és elemzését, a lekérdezések használatával egyéni riasztásokat hozhat létre, és konfigurálhat forgatókönyveket a fenyegetésekre való reagáláshoz.
+
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure sentinelről](../../sentinel/overview.md).
 - Tekintse át az [Azure Sentinel díjszabási oldalát](https://azure.microsoft.com/pricing/details/azure-sentinel/).

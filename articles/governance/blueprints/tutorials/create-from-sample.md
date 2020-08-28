@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: a terv mintája az új környezethez'
 description: Ebben az oktatóanyagban egy tervezet-mintát használ egy olyan tervezet-definíció létrehozásához, amely két erőforráscsoportot állít be, és minden egyes szerepkör-hozzárendelést konfigurál.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80677095"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048732"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: környezet létrehozása tervrajz mintából
 
@@ -122,7 +122,7 @@ A terv-hozzárendelés létrehozza és nyomon követi a terv definíciójában m
 
 1. Válassza ki a **kijelölt tervrajzok** lapot a bal oldalon. A szűrők segítségével keresse meg a _hozzárendelés-két-RGS-a-role-hozzárendeléseinek terv-_ hozzárendelést, majd jelölje ki.
 
-   Ezen a lapon láthatjuk a hozzárendelés sikerességét, valamint a létrehozott erőforrások listáját a terv zárolási állapotával együtt. Ha a hozzárendelés frissül, a **hozzárendelési művelet** legördülő lista az egyes definíciós verziók telepítésének részleteit jeleníti meg. Minden létrehozott felsorolt erőforrás rákattinthat, és megnyithatja az erőforrások tulajdonságlapját.
+   Ezen a lapon láthatjuk a hozzárendelés sikerességét, valamint a létrehozott erőforrások listáját a terv zárolási állapotával együtt. Ha a hozzárendelés frissül, a **hozzárendelési művelet** legördülő lista az egyes definíciós verziók telepítésének részleteit jeleníti meg. Minden létrehozott felsorolt erőforrás kiválasztható, és megnyithatja az erőforrások tulajdonságlapját.
 
 1. Válassza ki a **ProductionRG** erőforráscsoportot.
 

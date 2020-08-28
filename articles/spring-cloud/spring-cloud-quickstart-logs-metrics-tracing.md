@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9f0ba36abac045d1deb6b4179fbfb6aa32d4dc9a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f9f03c355e1e619d004c8ec8c1cc2f91932db744
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009760"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046833"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel
 
-Az Azure Spring Cloud beépített monitorozási funkciójával könnyedén képes az összetett problémák hibakeresésére és figyelésére. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból. Bemutatjuk, hogy miként használhatók a log streaming, a Log Analytics, a metrikák és az elosztott nyomkövetés a telepített PiggyMetrics-alkalmazásokkal.
+Az Azure Spring Cloud beépített figyelési funkciójával az összetett problémák hibakeresését és figyelését végezheti el. Az Azure Spring Cloud egyesíti a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Ez az integráció hatékony naplókat, metrikákat és elosztott nyomkövetési képességet biztosít a Azure Portalból. Az alábbi eljárások azt ismertetik, hogyan használhatók a naplózási adatfolyamok, a Log Analytics, a metrikák és az elosztott nyomkövetés a telepített PiggyMetrics-alkalmazásokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

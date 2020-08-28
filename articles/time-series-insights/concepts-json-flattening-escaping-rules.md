@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0cf0ef97cc1e06906a529c577e9c2578e5091ef4
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075677"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050726"
 ---
 # <a name="ingestion-rules"></a>Betöltési szabályok
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON-Összeolvasztás, Escape-és Array-kezelő
@@ -25,17 +25,17 @@ A Azure Time Series Insights Gen2-környezet dinamikusan létrehozza a meleg és
 >
 > * Tekintse át az alábbi szabályokat, mielőtt kiválasztja az [Idősorozat-azonosító tulajdonságot](time-series-insights-update-how-to-id.md) , és/vagy az eseményforrás [timestamp (IES)](concepts-streaming-ingestion-event-sources.md#event-source-timestamp). Ha a terminálszolgáltatási azonosító vagy időbélyeg egy beágyazott objektumon belül van, vagy egy vagy több speciális karakterből áll, akkor fontos, hogy az Ön által megadott tulajdonságnév megfeleljen az oszlop nevének a betöltési szabályok alkalmazása *után* . Lásd a lenti [B](concepts-json-flattening-escaping-rules.md#example-b) példát.
 
-| Szabály | Példa JSON-ra |Oszlop neve a tárolóban |
-|---|---|---|
-| A Azure Time Series Insights Gen2 adattípusa az oszlopnév végéhez lesz hozzáfűzve "_" értékként. \<dataType\> | ```"type": "Accumulated Heat"``` | type_string |
-| Az eseményforrás [timestamp tulajdonsága](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) Azure Time Series Insights Gen2 lesz mentve a tárolóban, és az UTC szerint tárolt érték. Az eseményforrás (ok) timestamp tulajdonsága testreszabható úgy, hogy megfeleljen a megoldás igényeinek, de az oszlop neve a meleg és a hideg tárolóban "Timestamp". Más datetime JSON-tulajdonságok, amelyek nem az eseményforrás időbélyege, az oszlopnév "_datetime" lesz mentve, ahogy az a fenti szabályban szerepel.  | ```"ts": "2020-03-19 14:40:38.318"``` | időbélyeg |
-| A speciális karaktereket tartalmazó JSON-tulajdonságok neve. [\ és "a (z) [" és "] használatával kerül megmenekülésre  |  ```"id.wasp": "6A3090FD337DE6B"``` | [' id. WASP '] _string |
-| A (z) ["és"] keretben további Escape-értékekkel és fordított perjelekkel rendelkezik. A rendszer egy idézőjelet (\) ír, a fordított perjelet pedig\\\ | ```"Foo's Law Value": "17.139999389648"``` | ["Foo \' s Law Value"] _double |
-| A beágyazott JSON-objektumok az elválasztó ponttal vannak lelapulva. A legfeljebb 10 szint beágyazását támogatja. |  ```"series": {"value" : 316 }``` | adatsorozat. value_long |
-| Az egyszerű típusok tömbjét dinamikus típusként tárolja a rendszer. |  ```"values": [154, 149, 147]``` | values_dynamic |
+| Szabály | Példa JSON-ra | [Idősorozat-kifejezés szintaxisa](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Tulajdonság oszlopának neve a parkettában
+|---|---|---|---|
+| A Azure Time Series Insights Gen2 adattípusa az oszlopnév végéhez lesz hozzáfűzve "_" értékként. \<dataType\> | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
+| Az eseményforrás [timestamp tulajdonsága](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) Azure Time Series Insights Gen2 lesz mentve a tárolóban, és az UTC szerint tárolt érték. Az eseményforrás (ok) timestamp tulajdonsága testreszabható úgy, hogy megfeleljen a megoldás igényeinek, de az oszlop neve a meleg és a hideg tárolóban "Timestamp". Más datetime JSON-tulajdonságok, amelyek nem az eseményforrás időbélyege, az oszlopnév "_datetime" lesz mentve, ahogy az a fenti szabályban szerepel.  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
+| A speciális karaktereket tartalmazó JSON-tulajdonságok neve. [\ és "a (z) [" és "] használatával kerül megmenekülésre  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
+| A (z) ["és"] keretben további Escape-értékekkel és fordított perjelekkel rendelkezik. A rendszer egy idézőjelet (\) ír, a fordított perjelet pedig \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
+| A beágyazott JSON-objektumok az elválasztó ponttal vannak lelapulva. A legfeljebb 10 szint beágyazását támogatja. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`, `$event['series']['value'].Long` vagy `$event.series['value'].Long` |  `series.value_long` |
+| Az egyszerű típusok tömbjét dinamikus típusként tárolja a rendszer. |  ```"values": [154, 149, 147]``` | A dinamikus típusok csak a [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API használatával lekérve | `values_dynamic` |
 | Az objektumokat tartalmazó tömbök két viselkedése függ az objektum tartalmától: Ha a TS-azonosító (k) vagy a timestamp tulajdonság (ok) egy tömb objektumain belül van, akkor a tömb úgy lesz kivezetve, hogy a kezdeti JSON-adattartalom több eseményt állít elő. Ez lehetővé teszi több esemény egy JSON-struktúrába való kötegelt feldolgozását. A rendszer minden olyan legfelső szintű tulajdonságot, amely a tömbhöz csatlakozik, a rendszer minden egyes unrolled objektummal menti. Ha a TS-azonosító (k) és az időbélyeg *nem* a tömbön belül van, akkor a rendszer az egészet dinamikus típusként menti. | Lásd [az](concepts-json-flattening-escaping-rules.md#example-a)alábbi, [B](concepts-json-flattening-escaping-rules.md#example-b) és [C](concepts-json-flattening-escaping-rules.md#example-c) példákat
-| A vegyes elemeket tartalmazó tömbök nem lapított. |  ```"values": ["foo", {"bar" : 149}, 147]``` | values_dynamic |
-| 512 karakter a JSON-tulajdonság nevének korlátja. Ha a név hossza meghaladja az 512 karaktert, a rendszer csonkolja a 512 és a "_< kivonatoló kódot tartalmazó" > "utótagot. **Vegye figyelembe** , hogy ez az objektum által összefűzött, beágyazott objektum elérési útját jelölő tulajdonságok neveire is vonatkozik. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` | adatok. Items. datapoints. Values. telemetria<... tovább 512 karakternél>_912ec803b2ce49e4a541068d495ab570_double |
+| A vegyes elemeket tartalmazó tömbök nem lapított. |  ```"values": ["foo", {"bar" : 149}, 147]``` | A dinamikus típusok csak a [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API használatával lekérve | `values_dynamic` |
+| 512 karakter a JSON-tulajdonság nevének korlátja. Ha a név hossza meghaladja az 512 karaktert, a rendszer csonkolja a 512 és a "_< kivonatoló kódot tartalmazó" > "utótagot. **Vegye figyelembe** , hogy ez az objektum által összefűzött, beágyazott objektum elérési útját jelölő tulajdonságok neveire is vonatkozik. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>A tömbök kettős viselkedésének megértése
 
@@ -97,7 +97,7 @@ A fenti konfiguráció és adattartalom három oszlopot és négy eseményt hoz 
 
 ### <a name="example-b"></a>B példa:
 Összetett idősorozat-azonosító egyetlen tulajdonsággal ágyazva<br/> 
-**Környezeti idő sorozatának azonosítója:** `"plantId"` és`"telemetry.tagId"`<br/>
+**Környezeti idő sorozatának azonosítója:** `"plantId"` és `"telemetry.tagId"`<br/>
 **Eseményforrás időbélyegzője:**`"timestamp"`<br/>
 **JSON-adattartalom:**
 
@@ -183,6 +183,6 @@ A fenti konfiguráció és hasznos adatok három oszlopot és egy eseményt ered
 | ---- | ---- | ---- | 
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A környezet [adatátviteli korlátainak](./concepts-streaming-ingress-throughput-limits.md) megismerése

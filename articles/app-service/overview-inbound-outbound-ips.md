@@ -2,28 +2,34 @@
 title: Bejövő/kimenő IP-címek
 description: Megtudhatja, hogyan használja a rendszer a bejövő és kimenő IP-címeket Azure App Serviceban, Mikor változnak, és hogyan keresheti meg az alkalmazás címét.
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537627"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050692"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek Azure App Service
 
-[Azure app Service](overview.md) egy több-bérlős szolgáltatás, a [app Service-környezetek](environment/intro.md)kivételével. Azok az alkalmazások, amelyek nem App Service-környezetben (az [elkülönített](https://azure.microsoft.com/pricing/details/app-service/)szinten nem) osztoznak a hálózati infrastruktúrában más alkalmazásokkal. Ennek eredményeképpen az alkalmazás bejövő és kimenő IP-címei eltérőek lehetnek, és bizonyos helyzetekben is változhatnak. 
+[Azure app Service](overview.md) egy több-bérlős szolgáltatás, a [app Service-környezetek](environment/intro.md)kivételével. Azok az alkalmazások, amelyek nem App Service-környezetben (az [elkülönített](https://azure.microsoft.com/pricing/details/app-service/)szinten nem) osztoznak a hálózati infrastruktúrában más alkalmazásokkal. Ennek eredményeképpen az alkalmazás bejövő és kimenő IP-címei eltérőek lehetnek, és bizonyos helyzetekben is változhatnak.
 
 [App Service környezetek](environment/intro.md) dedikált hálózati infrastruktúrát használnak, így a app Service környezetben futó alkalmazások statikus, dedikált IP-címeket kapnak mind a bejövő, mind a kimenő kapcsolatokhoz.
+
+## <a name="how-ip-addresses-work-in-app-service"></a>Az IP-címek működése App Service
+
+Egy App Service alkalmazás egy App Service-csomagban fut, és a App Service csomagok üzembe helyezése az Azure-infrastruktúra egyik üzembe helyezési egységében történik (belsőleg a webtárhelyet nevezik). Mindegyik üzembe helyezési egységhez legfeljebb öt virtuális IP-cím van hozzárendelve, amely egy nyilvános bejövő IP-címet és négy kimenő IP-címet tartalmaz. Az azonos üzembe helyezési egységben és a bennük futó alkalmazások példányain lévő összes App Service-csomag ugyanazokat a virtuális IP-címeket használja. Egy App Service Environment (az [elszigetelt](https://azure.microsoft.com/pricing/details/app-service/)szinten lévő app Service-csomag) esetében a app Service terv maga a telepítési egység, így a virtuális IP-címek ennek eredményeképpen vannak kijelölve.
+
+Mivel nem lehet áthelyezni egy App Service tervet a telepítési egységek között, az alkalmazáshoz hozzárendelt virtuális IP-címek általában változatlanok maradnak, de kivételek vannak.
 
 ## <a name="when-inbound-ip-changes"></a>Bejövő IP-változások esetén
 
 A kibővített példányok számától függetlenül minden alkalmazás egyetlen bejövő IP-címmel rendelkezik. A bejövő IP-cím a következő műveletek valamelyikének végrehajtásakor változhat:
 
-- Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz.
-- Törölje az erőforráscsoport _és_ a régió kombinációjában az utolsó alkalmazást, és hozza létre újból.
-- Töröl egy meglévő TLS-kötést, például a tanúsítvány megújítása során (lásd: [tanúsítvány megújítása](configure-ssl-certificate.md#renew-certificate)).
+- Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz (a telepítési egység változhat).
+- Törölje az erőforráscsoport _és_ a régió kombinációjában az utolsó alkalmazást, és hozza létre újból (a központi telepítési egység változhat).
+- Töröljön egy meglévő IP-alapú TLS/SSL-kötést, például a tanúsítvány megújítása során (lásd: [tanúsítvány megújítása](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>A bejövő IP-cím keresése
 
@@ -39,9 +45,13 @@ Előfordulhat, hogy az alkalmazáshoz dedikált, statikus IP-címet szeretne has
 
 ## <a name="when-outbound-ips-change"></a>A kimenő IP-címek változásakor
 
-A kibővített példányok számától függetlenül az egyes alkalmazások megadott számú kimenő IP-címmel rendelkeznek. A App Service alkalmazásból, például egy háttér-adatbázisba irányuló kimenő kapcsolatok a kimenő IP-címek egyikét használják a forrás IP-címként. Nem tudja előre, hogy egy adott alkalmazás példánya milyen IP-címet fog használni a kimenő kapcsolat létrehozásához, így a háttér-szolgáltatásnak meg kell nyitnia a tűzfalát az alkalmazás összes kimenő IP-címére.
+A kibővített példányok számától függetlenül az egyes alkalmazások megadott számú kimenő IP-címmel rendelkeznek. A App Service alkalmazásból, például egy háttér-adatbázisba irányuló kimenő kapcsolatok a kimenő IP-címek egyikét használják a forrás IP-címként. A használni kívánt IP-cím véletlenszerűen van kiválasztva futásidőben, ezért a háttér-szolgáltatásnak meg kell nyitnia a tűzfalat az alkalmazás összes kimenő IP-címéhez.
 
-Az alkalmazáshoz tartozó kimenő IP-címek készlete megváltozik, amikor az alsó**szint (Alapszintű**, **standard**és **prémium**) és a **prémium v2** szint között méretezi az alkalmazást.
+Az alkalmazás kimenő IP-címeinek készlete a következő műveletek valamelyikének végrehajtásakor változik:
+
+- Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz (a telepítési egység változhat).
+- Törölje az erőforráscsoport _és_ a régió kombinációjában az utolsó alkalmazást, és hozza létre újból (a központi telepítési egység változhat).
+- Az alkalmazás méretezése az alsó szint (**Alapszintű**, **standard**és **prémium**) és a **prémium v2** -szint között (az IP-címek a készletből adhatók hozzá vagy vonhatók ki).
 
 Az alkalmazás által használható kimenő IP-címek készletét az árképzési szintektől függetlenül, a `possibleOutboundIpAddresses` tulajdonság vagy a Azure Portal **Tulajdonságok** paneljének **további kimenő IP-címek** mezőjében találja. Lásd: [kimenő IP](#find-outbound-ips)-címek keresése.
 
@@ -71,7 +81,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan korlátozhatja a bejövő forgalmat forrás IP-címek alapján.
 

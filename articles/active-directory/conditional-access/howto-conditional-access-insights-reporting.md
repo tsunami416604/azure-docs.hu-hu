@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253273"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049417"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Feltételes hozzáférési ismeretek és jelentéskészítés
 
@@ -97,6 +97,22 @@ Megtekintheti az egyes feltételekhez tartozó felhasználók vagy bejelentkezé
 
 Egy adott felhasználó bejelentkezéseit is megvizsgálhatja az irányítópult alján található bejelentkezések keresésével. A bal oldali lekérdezés a leggyakoribb felhasználókat jeleníti meg. A felhasználó kiválasztásával a jobb oldalon szűrheti a lekérdezést.  
 
+> [!NOTE]
+> A bejelentkezési naplók letöltésekor válassza a JSON-formátum lehetőséget a feltételes hozzáférés jelentési eredményeinek befoglalásához.
+
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban
+
+Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban:
+
+1. Jelentkezzen be a **Azure Portalba** feltételes hozzáférési rendszergazdaként, biztonsági rendszergazdaként vagy globális rendszergazdaként.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
+1. Válasszon ki egy meglévő szabályzatot, vagy hozzon létre egy új szabályzatot.
+1. A **házirend engedélyezése** beállításnál állítsa be a váltás **csak jelentés** módba beállítást.
+1. Válassza a **Mentés** lehetőséget
+
+> [!TIP]
+> A meglévő szabályzatok engedélyezési **házirendjét** **a** (z) rendszerből a **jelentésbe** való szerkesztésével letilthatja a meglévő szabályzatok betartatását. 
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Miért sikertelenek a lekérdezések az engedélyek hibája miatt?
@@ -111,6 +127,10 @@ A munkafüzet eléréséhez szükség van a megfelelő Azure AD-engedélyekre, v
 ![Sikertelen lekérdezések hibáinak megoldása](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
 
 Az Azure AD bejelentkezési naplófájljainak Log Analytics munkaterületre való továbbításáról további információt az [Azure ad-naplók integrálása Azure monitor naplókkal](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)című cikkben talál.
+
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>Miért nem sikerül a lekérdezés a munkafüzetben?
+
+Az ügyfelek észrevették, hogy a lekérdezések néha meghiúsulnak, ha a hibás vagy több munkaterület van társítva a munkafüzethez. A probléma megoldásához kattintson a munkafüzet tetején található **Szerkesztés** gombra, majd a beállítások fogaskerékre. Válassza ki, majd távolítsa el a munkafüzethez nem társított munkaterületeket. Az egyes munkafüzetekhez csak egy munkaterület társítható.
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Miért üres a feltételes hozzáférési házirendek paraméter?
 
@@ -132,6 +152,10 @@ A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a **Azure A
 
 A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Csak feltételes hozzáférésű jelentés üzemmódja](concept-conditional-access-report-only.md)
+- [Csak feltételes hozzáférésű jelentés üzemmódja](concept-conditional-access-report-only.md)
+
+- További információ az Azure AD-munkafüzetekről: [Azure monitor munkafüzetek használata Azure Active Directory jelentésekhez](../reports-monitoring/howto-use-azure-monitor-workbooks.md).
+
+- [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)

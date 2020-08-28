@@ -1,14 +1,14 @@
 ---
 title: Az erőforrás-zárolás megismerése
 description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383593"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051502"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -28,7 +28,7 @@ A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforráso
 |-|-|-|-|
 |Ne legyen zárolás|*|Nincs zárolva|Az Azure-tervrajzok nem védik az erőforrásokat. Ezt az állapotot az **írásvédett** erőforráshoz hozzáadott erőforrások, vagy az erőforráscsoport-összetevő **nem törölhető** a terv-hozzárendelésen kívül is használják.|
 |Csak olvasási engedély|Erőforráscsoport|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
-|Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható – nem módosítható, és nem törölhető.|
+|Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható. Nincs változás, és nem törölhető.|
 |Törlés mellőzése|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
 
 ## <a name="overriding-locking-states"></a>Zárolási állapotok felülbírálása
@@ -179,11 +179,11 @@ Hasonlóan ahhoz, hogy kizárja a [rendszerbiztonsági tag](#exclude-a-principal
 
 Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések a `*` RBAC műveletek helyettesítő karaktereit is használhatják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
-- Tudnivalók a [tervek életciklusáról](lifecycle.md).
-- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
-- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
+- Tudnivalók a [tervek életciklusáról](./lifecycle.md).
+- A [statikus és dinamikus paraméterek](./parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](./sequencing-order.md) testreszabásának elsajátítása.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
 - A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

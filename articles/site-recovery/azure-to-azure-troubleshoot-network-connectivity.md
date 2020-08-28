@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835884"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049689"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -20,7 +20,7 @@ Ahhoz, hogy Site Recovery replikáció működjön, az adott URL-címekhez vagy 
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. A megfelelő _site Recovery IP-címet_ használhatja, ha a tűzfal proxyja támogatja az IP-címeket. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő _site Recovery figyelési IP-címet_ . |
@@ -80,11 +80,8 @@ Ez a példa bemutatja, hogyan konfigurálhatja a virtuális gépek NSG-szabálya
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="HRE – címke":::
 
-1. Hozzon létre HTTPS-portot 443 kimenő szabályok a célhelynek megfelelő Site Recovery IP-címekhez:
-
-   | Hely | Site Recovery IP-cím | Site Recovery figyelési IP-cím |
-   | --- | --- | --- |
-   | USA középső régiója | 40.69.144.231 | 52.165.34.144 |
+1. A fenti biztonsági szabályokhoz hasonlóan hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "EventHub. CentralUS" számára a NSG, amely megfelel a célhelynek. Ez lehetővé teszi Site Recovery figyeléshez való hozzáférést.
+1. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "AzureSiteRecovery" számára a NSG. Ez bármely régióban engedélyezi Site Recovery szolgáltatás elérését.
 
 #### <a name="nsg-rules---central-us"></a>NSG-szabályok – USA középső régiója
 
@@ -100,11 +97,8 @@ Ebben a példában ezek a NSG szabályok szükségesek ahhoz, hogy a replikáci�
    - **Rendeltetési szolgáltatás címkéje**: _AzureActiveDirectory_
    - **Célport tartományai**: _443_
 
-1. Hozzon létre HTTPS-portot 443 kimenő szabályok a forrás helyének megfelelő Site Recovery IP-címekhez:
-
-   | Hely | Site Recovery IP-cím | Site Recovery figyelési IP-cím |
-   | --- | --- | --- |
-   | USA keleti régiója | 13.82.88.226 | 104.45.147.24 |
+1. A fenti biztonsági szabályokhoz hasonlóan hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "EventHub. EastUS" számára a NSG, amely megfelel a forrás helyének. Ez lehetővé teszi Site Recovery figyeléshez való hozzáférést.
+1. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "AzureSiteRecovery" számára a NSG. Ez bármely régióban engedélyezi Site Recovery szolgáltatás elérését.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. probléma: Site Recovery konfiguráció nem sikerült (151197)
 
@@ -127,8 +121,8 @@ Az egyéni proxybeállítások érvénytelenek, és a Azure Site Recovery mobili
 1. A mobilitási szolgáltatás ügynöke észleli a proxybeállításokat az IE-ből a Windows és `/etc/environment` Linux rendszeren.
 1. Ha inkább a proxyt szeretné beállítani Azure Site Recovery mobilitási szolgáltatáshoz, a proxy részleteit a _ProxyInfo. conf fájlban_ találja a következő helyen:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. A _ProxyInfo. conf_ _fájlnak_ a következő ini formátumúnak kell lennie:
 
@@ -145,6 +139,6 @@ Az egyéni proxybeállítások érvénytelenek, és a Azure Site Recovery mobili
 
 [A szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-tartományok](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)engedélyezéséhez kövesse a [hálózatkezelési útmutató dokumentum](./azure-to-azure-about-networking.md)lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-beli virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)

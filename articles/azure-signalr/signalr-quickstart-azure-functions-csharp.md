@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 79bc96f9ba8347a4dc220dd2424b11e86aa9e95e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922021"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050641"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Gyors útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással C használatával\#
 
@@ -27,13 +27,21 @@ Ezt az oktatóanyagot a parancssorban (macOS, Windows vagy Linux) is futtathatja
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
+
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Az Azure-függvényalkalmazás konfigurálása és futtatása
 
@@ -67,14 +75,21 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
         ```bash
         func start
         ```
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a Visual Studióban. A következő lépésként tudjon meg többet az Azure-függvények Visual Studióval való fejlesztéséről és üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
 > [Azure-függvények fejlesztése a Visual Studióval](../azure-functions/functions-develop-vs.md)
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1fcec8b591192bba862bf91040e5d6ca1ef9bcd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037729"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046850"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -89,13 +89,13 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="error"></a>Hiba
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. error | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 
 ### <a name="performance"></a>Teljesítmény
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
 >| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
@@ -109,9 +109,9 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| JVM. GC. pause. Total. Count | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
 >| JVM. GC. pause. Total. Time | JVM. GC. pause (teljes idő) | Ezredmásodpercben | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. elküldve | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
 >| tomcat. Global. Received | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
@@ -120,7 +120,7 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="session"></a>Munkamenet
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|------------|
 >| tomcat. Sessions. Active. max | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
 >| tomcat. Sessions. Alive. max | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |
@@ -130,11 +130,13 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| tomcat. Sessions. Active. Current | tomcat. Sessions. Active. Current | Darabszám | Tomcat-munkamenet aktív száma |
 
 ## <a name="see-also"></a>Lásd még
+* [Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel](spring-cloud-quickstart-logs-metrics-tracing.md)
+
 * [Bevezetés az Azure Metrikaböngésző használatába](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Oktatóanyag: tavaszi Felhőbeli erőforrások figyelése riasztások és műveleti csoportok használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)

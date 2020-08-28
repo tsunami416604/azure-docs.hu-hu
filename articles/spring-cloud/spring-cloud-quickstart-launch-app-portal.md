@@ -7,16 +7,18 @@ ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 09820da3fcebe3614852f36180a29f35505039b8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 163940095c4a3a25123706ca47a7d059897cad20
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496848"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046867"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
 Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy meglévő Spring Cloud-alkalmazást az Azure-ban. Az Azure Spring Cloud lehetővé teszi, hogy könnyedén futtasson Spring Cloud-alapú Service-alkalmazásokat az Azure-ban. 
+
+A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstart.md)rövid útmutatót.
 
 A jelen oktatóanyagban használt minta alkalmazás kódját a GitHub-mintákat tartalmazó [tárházban](https://github.com/Azure-Samples/PiggyMetrics)találja. Ha elkészült, a megadott minta alkalmazás elérhető lesz az interneten, és készen áll a Azure Portalon keresztül történő felügyeletre.
 
@@ -53,11 +55,11 @@ Az oktatóanyag elvégzéséhez:
 
 3. Válassza az **Azure Spring Cloud** lehetőséget az eredmények közül.
 
- ![ASC ikon](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
+ ![ASC kezdete](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
 4. Az Azure Spring Cloud oldalon kattintson a **+ Hozzáadás**gombra.
 
- ![ASC ikon](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+ ![ASC Hozzáadás](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
     - **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
@@ -78,7 +80,7 @@ Az oktatóanyag elvégzéséhez:
 9. A **nyomkövetés engedélyezése** beállítást *Igen* vagy *nem* értékre állíthatja a követelmények szerint.  Ha a **nyomkövetés engedélyezése** beállítást Igen értékre állítja, válasszon ki egy meglévő alkalmazás-betekintést, vagy hozzon létre egy újat. A **Application Insights** specifikáció nélkül érvényesítési hiba történik.
 
 
-    ![Nyomkövetés](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+    ![Nyomkövetési nézet](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
 
 10. Kattintson az **Áttekintés és létrehozás** elemre.
 
@@ -98,7 +100,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 3. A módosítások mentéséhez válassza az **Alkalmaz** elemet.
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![ASC-portál](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
@@ -164,16 +166,16 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 3. Válassza a **végpont társítása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez eltarthat néhány percig.
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+    ![ASC-portál végpontja](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
 4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános végpontot (címkével ellátott **URL-címet**) a böngészőben.
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
+    ![ASC-portál minta alkalmazás](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

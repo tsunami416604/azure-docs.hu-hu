@@ -1,20 +1,21 @@
 ---
-title: Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése | Microsoft Docs
+title: Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
 description: Megismerheti a külső szolgáltatások (korábbi nevén Marketplace) számlázását és díjait az Azure-ban.
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 120f60698851bcdaf39f989b4d36c0436b716833
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8da85ec5781ff9575cf380092fea9e41d6af8786
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117865"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686122"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
 A külső szolgáltatásokat külső szoftverszállítók teszik közzé az Azure Marketplace-en. A SendGrid például egy olyan külső szolgáltatás, amelyet megvásárolhat az Azure-ban, de nem a Microsoft adta ki. Emellett azonban bizonyos Microsoft-termékek értékesítése is az Azure Marketplace-en történik.

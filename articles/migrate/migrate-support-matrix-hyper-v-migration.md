@@ -3,12 +3,12 @@ title: A Hyper-V áttelepítésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V áttelepítésének támogatásával Azure Migrateokkal.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871496"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051151"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>A Hyper-V áttelepítésének támogatási mátrixa
 
@@ -26,7 +26,10 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 | **Üzembe helyezés**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető. <br/>Azure Migrate replikációs szoftver (Hyper-V replikációs szolgáltató) telepítve van a Hyper-V-gazdagépeken.|
 | **Engedélyek**           | Rendszergazdai engedélyekkel kell rendelkeznie a Hyper-V-gazdagépen. |
 | **Gazda operációs rendszer** | Windows Server 2019, Windows Server 2016 vagy Windows Server 2012 R2 a legújabb frissítésekkel. Vegye figyelembe, hogy ezek az operációs rendszerek Server Core telepítése is támogatott. |
+| **Egyéb szoftverekre vonatkozó követelmények** | .NET-keretrendszer 4,7-es vagy újabb verzió |
 | **Port-hozzáférés** |  Kimenő kapcsolatok a 443-es HTTPS-porton a virtuális gép replikációs adatküldéséhez.
+| **Szabad lemezterület (gyorsítótár)** |  600 GB |
+| **Szabad lemezterület (adatmegőrzési lemez)** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Hyper-V virtuális gépek
@@ -39,6 +42,7 @@ Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha töb
 | **Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. A módosításokat manuálisan végezze el az áttelepítés előtt. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak. |
 | **Linux rendszerű rendszerindítás**                 | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie. |
 | **UEFI-rendszerindítás**                  | Támogatott. Győződjön meg arról, hogy az Azure 2. generációs virtuális gépe által támogatott virtuálisgép-méretet választ  |
+| **UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.|
 | **Lemezméret**                  | 2 TB az operációsrendszer-lemez, 4 TB az adatlemezek számára.|
 | **Lemez száma** | Legfeljebb 16 lemez virtuális gépenként.|
 | **Titkosított lemezek/kötetek**    | Migrálás esetén nem támogatott.|

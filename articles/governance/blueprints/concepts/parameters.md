@@ -1,14 +1,14 @@
 ---
 title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, valamint azt, hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
-ms.date: 04/15/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970637"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051559"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
@@ -55,11 +55,11 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. Kattintson egy meglévő tervre, majd kattintson a **terv szerkesztése** vagy a **+ terv létrehozása** lehetőségre, és adja meg az alapvető tudnivalókat az **alapok** lapon.
+1. Válasszon ki egy meglévő tervrajzot, majd válassza a **terv szerkesztése** vagy a **+ terv létrehozása** lehetőséget, és töltse ki az adatokat az **alapok** lapon.
 
-1. Kattintson a **Tovább gombra:** összetevők, vagy kattintson az összetevők fülre. **Artifacts**
+1. Válassza a **Next (tovább):** összetevők **Artifacts** elemet, vagy válassza ki az összetevők lapot.
 
-1. A tervhez hozzáadott összetevők, amelyekben a paraméter beállításai a **Paraméterek** oszlopban kitöltött **Y paraméterek X betűjét** jelenítik meg. Az összetevő paramétereinek szerkesztéséhez kattintson a lelet sorra.
+1. A tervhez hozzáadott összetevők, amelyekben a paraméter beállításai a **Paraméterek** oszlopban kitöltött **Y paraméterek X betűjét** jelenítik meg. Az összetevő paramétereinek szerkesztéséhez válassza ki az összetevőt tartalmazó sort.
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Tervrajz paramétereinek meghatározása" border="false":::
 
@@ -172,7 +172,7 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. Kattintson a jobb gombbal a hozzárendelni kívánt tervre. Válassza a **terv kiosztása** lehetőséget, vagy kattintson a hozzárendelni kívánt tervre, majd kattintson a **terv kiosztása** gombra.
+1. Kattintson a jobb gombbal a hozzárendelni kívánt tervre. Válassza a **terv kiosztása** lehetőséget, vagy válassza ki a hozzárendelni kívánt tervrajzot, majd használja a **terv kiosztása** gombot.
 
 1. A **terv kiosztása** lapon keresse meg az összetevő **paramétereinek** szakaszát. Minden olyan összetevő, amely legalább egy **dinamikus paraméterrel** rendelkezik, megjeleníti az összetevőt és a konfigurációs beállításokat. Adja meg a szükséges értékeket a paraméterekhez a terv kiosztása előtt. Az alábbi példában a _Name_ egy **dinamikus paraméter** , amelyet meg kell határozni a terv hozzárendelésének befejezéséhez.
 
@@ -231,11 +231,11 @@ A **dinamikus paraméterek** a hozzárendelés során történő beállítása k
   }
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [terv függvények](../reference/blueprint-functions.md)listáját.
-- Tudnivalók a [tervek életciklusáról](lifecycle.md).
-- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
-- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- Tudnivalók a [tervek életciklusáról](./lifecycle.md).
+- A [tervekkel kapcsolatos műveleti sorrend](./sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](./resource-locking.md) alkalmazásával kapcsolatos részletek.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
 - A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

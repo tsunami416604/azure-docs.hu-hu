@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131772"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047080"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>A vész-helyreállítási szolgáltatás beállítása a VMware virtuális gépek/fizikai kiszolgálók esetében
 
@@ -83,7 +83,7 @@ Ezekkel a javaslatokkal megtervezheti az Azure-erőforrásokat, a hálózati sá
 
 Azt szeretnénk, hogy a cél előfizetésben rendelkezésre álló kvóták elegendőek legyenek a feladatátvétel kezeléséhez.
 
-**Tevékenység** | **Részletek** | **Művelet**
+**Feladat** | **Részletek** | **Művelet**
 --- | --- | ---
 **Magok keresése** | Ha a rendelkezésre álló kvóta magjai nem egyeznek meg a feladatátvétel időpontjában, vagy nem lépik túl a cél teljes számát, a feladatátvétel sikertelen lesz. | VMware virtuális gépek esetén győződjön meg arról, hogy elegendő mag található a cél előfizetésben az Deployment Planner Core javaslat teljesítéséhez.<br/><br/> Fizikai kiszolgálók esetén győződjön meg arról, hogy az Azure magok megfelelnek a manuális becsléseknek.<br/><br/> A kvóták ellenőrzését a Azure Portal > **előfizetésben**kattintson a **használat + kvóták**elemre.<br/><br/> [További](../azure-portal/supportability/resource-manager-core-quotas-request.md) információ a kvóták növeléséről.
 **Feladatátvételi korlátok keresése** | A feladatátvételek száma nem haladhatja meg az Site Recovery feladatátvételi korlátot. |  Ha a feladatátvétel túllépi a korlátozásokat, előfizetéseket adhat hozzá, és több előfizetésre is felveheti a feladatokat, vagy növelheti az előfizetések kvótáját. 
@@ -95,13 +95,13 @@ A határértékek egy órán belül Site Recovery által támogatott feladatátv
 
 Mit jelent a megfelelés? Azure-beli virtuális gép indításához az Azure-nak egyes illesztőprogramoknak rendszerindítási indítási állapotban kell lennie, és az olyan szolgáltatásokat, mint a DHCP, az automatikus indítást kell beállítani.
 - Azok a gépek, amelyek megfelelnek a követelményeknek, már rendelkeznek ezekkel a beállításokkal.
-- A Windows rendszert futtató gépek esetében proaktív módon ellenőrizhető a megfelelőség, és szükség esetén megfelelővé teheti azokat. [További információk](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
+- A Windows rendszert futtató gépek esetében proaktív módon ellenőrizhető a megfelelőség, és szükség esetén megfelelővé teheti azokat. [További információ](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
 - A Linux rendszerű gépeket csak a feladatátvétel időpontjában kell megfelelni.
 
 **A gép megfelel az Azure-nak?** | **Azure-beli virtuális gépek korlátai (felügyelt lemez feladatátvétele)**
 --- | --- 
-Igen | 2000
-Nem | 1000
+Yes | 2000
+No | 1000
 
 - A korlátok azt feltételezik, hogy az előfizetéshez tartozó cél régióban minimális egyéb feladatok vannak folyamatban.
 - Egyes Azure-régiók kisebbek, és lehet, hogy valamivel kisebbek a korlátai.
@@ -127,7 +127,7 @@ Fontos, hogy elegendő konfigurációs kiszolgálóval és kibővíthető folyam
  
 A konfigurációs kiszolgáló kapacitását a replikálást végző gépek száma, és nem az adatforgalom aránya befolyásolja. Ha szeretné kideríteni, hogy szüksége van-e további konfigurációs kiszolgálókra, használja ezeket a meghatározott virtuálisgép-korlátokat.
 
-**CPU** | **Memory (Memória)** | **Lemez gyorsítótára** | **Replikált számítógép korlátja**
+**CPU** | **Memória** | **Lemez gyorsítótára** | **Replikált számítógép korlátja**
  --- | --- | --- | ---
 8 vCPU<br> 2 szoftvercsatorna * 4 mag @ 2,5 GHz | 16 GB | 600 GB | Akár 550 gép<br> Feltételezi, hogy mindegyik gépen három lemez 100 GB.
 
@@ -153,7 +153,7 @@ A feldolgozási kiszolgáló kapacitását az adatváltozások aránya befolyás
 - Javasoljuk, hogy adjon hozzá egy kiszolgálót a legmagasabb specifikációval. 
 
 
-**CPU** | **Memory (Memória)** | **Lemez gyorsítótára** | **Adatforgalom aránya**
+**CPU** | **Memória** | **Lemez gyorsítótára** | **Adatforgalom aránya**
  --- | --- | --- | --- 
 12 vCPU<br> 2 szoftvercsatorna * 6 mag @ 2,5 GHz | 24 GB | 1 GB | Akár 2 TB naponta
 
@@ -205,7 +205,7 @@ A feladatátvételt előre is előkészítheti a következőképpen:
     - Az alkalmazások végpontok közötti RTO becslése.
     - A számítási feladatok végpontok közötti RPO becslése.
     - Azonosítsa az IP-címtartomány ütközéseit.
-    - A részletezések futtatásakor javasoljuk, hogy ne használjon éles hálózatokat a működéshez, és ne használja ugyanazt az alhálózatot a termelési és tesztelési hálózatokban, és minden részletezés után törölje a feladatátvételi teszteket.
+    - A részletezések futtatásakor azt javasoljuk, hogy ne használjon éles hálózatokat a részletezéshez, és törölje a feladatátvételi teszteket minden részletezés után.
 
 Nagyméretű feladatátvétel futtatásához a következőket javasoljuk:
 

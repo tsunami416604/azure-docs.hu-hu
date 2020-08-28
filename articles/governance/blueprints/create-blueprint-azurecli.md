@@ -3,12 +3,12 @@ title: 'Rövid útmutató: terv létrehozása az Azure CLI-vel'
 description: Ebben a rövid útmutatóban Azure-tervezeteket használ az összetevők létrehozásához, definiálásához és üzembe helyezéséhez az Azure CLI használatával.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: c64723befbe3cb8d811179e7062df18606749783
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969668"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051542"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése az Azure CLI-vel
 
@@ -16,7 +16,7 @@ A tervrajzok létrehozásának és hozzárendelésének megismerése lehetővé 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -25,7 +25,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 Ha engedélyezni szeretné az Azure CLI-t a terv-definíciók és-hozzárendelések kezeléséhez, a bővítményt hozzá kell adni.
 Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleértve a [Basht Windows 10-en](/windows/wsl/install-win10), a [Cloud Shellt](https://shell.azure.com) (különállón és portálon belülin egyaránt), az [Azure CLI Docker-rendszerképet](https://hub.docker.com/r/microsoft/azure-cli/), vagy akár helyileg telepítve is.
 
-1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább **2.0.76**). Ha még nincs telepítve, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább **2.0.76**). Ha még nincs telepítve, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows).
 
 1. A választott Azure CLI környezetben importálja a bővítményt a következő paranccsal:
 
@@ -361,7 +361,7 @@ Miután közzétett egy tervet az Azure CLI-vel, hozzárendelhető egy előfizet
      > [!IMPORTANT]
      > Az Azure-tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
@@ -371,7 +371,7 @@ Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori mű
 az blueprint assignment delete --name 'assignMyBlueprint'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet az Azure CLI-vel. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 
