@@ -56,7 +56,7 @@ Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt,
 
 Válassza a *hitelesítés* lehetőséget a regisztráció menüjében, és nyomja meg *a + platform hozzáadása*elemet.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A "platform hozzáadása" gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A platform hozzáadása gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
 A következő *platformok konfigurálása* oldalon válassza a *web*lehetőséget.
 Adja meg a konfigurációs adatokat a következőképpen:
