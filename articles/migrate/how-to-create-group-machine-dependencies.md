@@ -3,12 +3,12 @@ title: Ügynök-alapú függőségi elemzés beállítása Azure Migrate Server 
 description: Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségek elemzése Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829917"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022377"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
@@ -82,9 +82,9 @@ Az ügynök telepítése Windows rendszerű gépre:
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
 Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager vagy [Intigua](https://www.intigua.com/intigua-for-azure-migration)is telepítheti.
-- [További](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
+- [További](../azure-monitor/platform/log-analytics-agent.md#installation-options) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
 - Az MMA-ügynök ezzel a [szkripttel](https://go.microsoft.com/fwlink/?linkid=2104394) is telepíthető.
-- [További](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) információ az MMA által támogatott Windows operációs rendszerekről.
+- [További](../azure-monitor/platform/agents-overview.md#supported-operating-systems) információ az MMA által támogatott Windows operációs rendszerekről.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Az MMA telepítése Linux rendszerű gépen
 
@@ -95,7 +95,7 @@ Az MMA telepítése Linux rendszerű gépre:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[További](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) információ az MMA által támogatott Linux operációs rendszerek listájáról. 
+[További](../azure-monitor/platform/agents-overview.md#supported-operating-systems) információ az MMA által támogatott Linux operációs rendszerek listájáról. 
 
 ## <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 
@@ -147,7 +147,7 @@ A csoport létrehozása után javasoljuk, hogy telepítse az ügynököket a cso
 A Azure Migrate projekthez társított Log Analytics munkaterületen Service Map által rögzített függőségi adatmennyiséget kérdezheti le. A Log Analytics Azure Monitor naplók írására és futtatására szolgál.
 
 - [Megtudhatja, hogyan](../azure-monitor/insights/service-map.md#log-analytics-records) kereshet Service Map-adatLog Analyticsokban.
-- [Tekintse](../azure-monitor/log-query/get-started-queries.md) át a [log Analytics](../azure-monitor/log-query/get-started-portal.md)naplójának lekérdezéseit.
+- [Tekintse](../azure-monitor/log-query/get-started-queries.md)  át a [log Analytics](../azure-monitor/log-query/get-started-portal.md)naplójának lekérdezéseit.
 
 Futtasson egy lekérdezést a függőségi értékekhez a következő módon:
 
@@ -205,6 +205,6 @@ VMConnection
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy értékelést](how-to-create-assessment.md) egy csoport számára.

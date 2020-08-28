@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 22a79f75fa795226e45e54947f410db4c2a57a7c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836445"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020660"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával 
 
@@ -407,7 +408,7 @@ A következő kódrészlet a Media Services .NET SDK-t használja a következő 
 
 * Hozzon létre egy kódolási feladatot.
 * A Media Encoder Standard kódolóra mutató hivatkozás beszerzése.
-* Töltse be a kódolási beállításkészletet tartalmazó előre definiált XML-vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) [-](media-services-dotnet-generate-thumbnail-with-mes.md#xml) t, valamint a miniatűrök létrehozásához szükséges információkat. Ezt az [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) -t vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) -fájlt mentheti egy fájlba, és a következő kód használatával töltheti be a fájlt.
+* Töltse be a kódolási beállításkészletet tartalmazó előre definiált XML-vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) [-](media-services-dotnet-generate-thumbnail-with-mes.md#xml) t, valamint a miniatűrök létrehozásához szükséges információkat. Ezt az  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) -t vagy [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) -fájlt mentheti egy fájlba, és a következő kód használatával töltheti be a fájlt.
 
     ```csharp
     // Load the XML (or JSON) from the local file.
@@ -564,7 +565,7 @@ A következő szempontokat kell figyelembe venni:
   * Alapértékek: Start: {Best}
 * A kimeneti formátumot explicit módon meg kell adni az egyes képformátumokhoz: jpg/PNG/BmpFormat. Ha jelen van, a MES megfelel a JpgVideo JpgFormat, és így tovább. A OutputFormat egy új rendszerkép-kodek specifikus makrót ({index}) vezet be, amely a képkimeneti formátumok esetében (egyszer és egyszer) is szerepelnie kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [folyamat előrehaladását](media-services-check-job-progress.md) a kódolási feladatok függőben állapotában tekintheti meg.
 

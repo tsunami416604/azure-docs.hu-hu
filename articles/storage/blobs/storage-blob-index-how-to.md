@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp
+ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500385"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018875"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
@@ -34,7 +35,7 @@ Mivel a blob index nyilvános előzetes verzióban érhető el, a .NET Storage-c
 
 1. Állítsa be a Visual Studio-projektet, és ismerkedjen meg az Azure Blob Storage .NET-hez készült ügyféloldali kódtáraval. További információ: [.net](storage-quickstart-blobs-dotnet.md) gyors útmutató
 
-2. A NuGet csomagkezelő eszközben keresse meg az **Azure. Storage. Blobs** csomagot, és telepítse a **12.5.0-preview. 6** vagy újabb verzióját a projekthez. A parancsot futtathatja is```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
+2. A NuGet csomagkezelő eszközben keresse meg az **Azure. Storage. Blobs** csomagot, és telepítse a **12.5.0-preview. 6** vagy újabb verzióját a projekthez. A parancsot futtathatja is ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    További információt a [csomagok keresése és telepítése](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)című témakörben talál.
 
@@ -296,7 +297,7 @@ Az [életciklus-kezelési](storage-lifecycle-management-concepts.md) szabályzat
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a blob-indexről. Lásd: az [Azure Blob Storage-beli adatkezelés és-keresés a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md )
 

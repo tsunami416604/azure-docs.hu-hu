@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 6a9ab62d5ea408a5c7683d2f06e2cd52f52da1bb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 6383505a7b6912e6fb673f711aac68136c6c7638
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83683882"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015203"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 
@@ -53,7 +54,7 @@ Azure-előfizetés vagy ingyenes Cosmos DB próbaverziós fiók
 ## <a name="database-examples"></a>Adatbázis-példák
 A minta *DatabaseManagement* -projekt [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek használata](databases-containers-items.md). 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Adatbázis létrehozása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L77) |[DocumentClient. Createdatabaseifnotexistasync metódusának](/dotnet/api/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync) |
 | [Adatbázis beolvasása azonosító alapján](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L79) |[DocumentClient.ReadDatabaseAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdatabaseasync) |
@@ -63,7 +64,7 @@ A minta *DatabaseManagement* -projekt [RunDatabaseDemo](https://github.com/Azure
 ## <a name="collection-examples"></a>Gyűjtemény-példák
 A minta *CollectionManagement* -projekt [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek használata](databases-containers-items.md). 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Gyűjtemény létrehozása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L109) |[DocumentClient. Createdocumentcollectionifnotexistsasync metódusával](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync) 
 | [Gyűjtemény konfigurált teljesítményének módosítása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L190) |[DocumentClient.ReplaceOfferAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync) |
@@ -74,7 +75,7 @@ A minta *CollectionManagement* -projekt [RunCollectionDemo](https://github.com/A
 ## <a name="document-examples"></a>Dokumentumpéldák
 A minta *DocumentManagement* -projekt [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) metódusa a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek használata](databases-containers-items.md). 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Dokumentum létrehozása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L154) |[DocumentClient.CreateDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync) |
 | [Dokumentum olvasása ID (azonosító) alapján](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L168) |[DocumentClient.ReadDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentasync) |
@@ -90,7 +91,7 @@ A minta *DocumentManagement* -projekt [RunDocumentsDemo](https://github.com/Azur
 ## <a name="indexing-examples"></a>Indexelési példák
 A minta *IndexManagement* -projekt [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) metódusa a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez tekintse meg az [index házirendek](index-policy.md), az [indexelési típusok](index-types.md)és az [index elérési útjai](index-paths.md)című témakört. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Dokumentum kizárása az indexből](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L123-L162) |[IndexingDirective.Exclude](/dotnet/api/microsoft.azure.documents.indexingdirective) |
 | [Lusta indexelés használata](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/IndexManagement/Program.cs#L174-L192) |[IndexingPolicy.IndexingMode](/dotnet/api/microsoft.azure.documents.indexingpolicy.indexingmode) |
@@ -102,7 +103,7 @@ A minta *IndexManagement* -projekt [RunIndexDemo](https://github.com/Azure/azure
 ## <a name="geospatial-examples"></a>Térinformatikai példák
 A minta *térinformatikai* projekt [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L94-L139) metódusa a következő feladatok elvégzését mutatja be.  A GeoJSON és térinformatikai adatainak a következő minták futtatása előtti megismeréséhez tekintse meg a [térinformatikai és GeoJSON-hely adatainak használata](geospatial.md)című témakört. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Térinformatikai indexelés engedélyezése új gyűjteményen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L48) |[IndexingPolicy](/dotnet/api/microsoft.azure.documents.indexingpolicy) <br> [IndexKind.Spatial](/dotnet/api/microsoft.azure.documents.indexkind) <br>[DataType.Point](/dotnet/api/microsoft.azure.documents.datatype) |
 | [Dokumentumok beszúrása GeoJSON-pontokkal](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs#L104-L114) |[DocumentClient.CreateDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync) </br> [DataType.Point](/dotnet/api/microsoft.azure.documents.datatype) |
@@ -114,7 +115,7 @@ A minta *térinformatikai* projekt [RunDemoAsync](https://github.com/Azure/azure
 ## <a name="query-examples"></a>Lekérdezéspéldák
 A [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L64-L129) metódusa azt mutatja *Queries* be, hogyan végezheti el a következő feladatokat az SQL-lekérdezési nyelvtan, a LINQ-szolgáltató lekérdezéssel és a lambda használatával. Ha többet szeretne megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról az alábbi minták futtatása előtt, tekintse meg a [Azure Cosmos db SQL-lekérdezési példákat](how-to-sql-query.md). 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Az összes dokumentum lekérdezése](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L131-L147) |[DocumentQueryable.CreateDocumentQuery](/previous-versions/azure/dn850285(v=azure.100)) |
 | [Egyenlőség lekérdezése == használatával](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs#L186-L198) |[DocumentQueryable.CreateDocumentQuery](/previous-versions/azure/dn850285(v=azure.100)) |
@@ -134,7 +135,7 @@ A [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/sa
 ## <a name="change-feed-examples"></a>Változáscsatornák példái 
 A minta *ChangeFeed* -projekt [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L54-L97) metódusa a következő feladatok elvégzését mutatja be. Ha a következő minták futtatása előtt szeretné megismerni a Azure Cosmos DB a hírcsatornát, tekintse meg az [olvasási Azure Cosmos db módosítási hírcsatorna](read-change-feed.md) és a [hírcsatorna-feldolgozó módosítása](change-feed-processor.md)című témakört. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Változáscsatorna olvasása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [Partíciókulcsok tartományainak olvasása](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
@@ -144,7 +145,7 @@ A [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tre
 ## <a name="server-side-programming-examples"></a>Kiszolgálóoldali programozási példák
 A minta *ServerSideScripts* -projekt [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) metódusa a következő feladatok elvégzését mutatja be. Ha többet szeretne megtudni a Azure Cosmos DB kiszolgálóoldali programozásáról a következő minták futtatása előtt, tekintse meg a [tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)című témakört. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Tárolt eljárás létrehozása](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L110) |[DocumentClient.CreateStoredProcedureAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createstoredprocedureasync) |
 | [Tárolt eljárás végrehajtása](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L125) |[DocumentClient.ExecuteStoredProcedureAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.executestoredprocedureasync) |
@@ -157,7 +158,7 @@ A minta *ServerSideScripts* -projekt [RunDemoAsync](https://github.com/Azure/azu
 ## <a name="user-management-examples"></a>Felhasználókezelés példái
 A minta *UserManagement* -projekt [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs#L55-L129) metódusa a következő feladatok elvégzését mutatja be:
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Felhasználó létrehozása](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L93) |[DocumentClient.CreateUserAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createuserasync) |
 | [Engedélyek beállítása gyűjteményen vagy dokumentumban](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/UserManagement/Program.cs#L97) |[DocumentClient.CreatePermissionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createpermissionasync) |

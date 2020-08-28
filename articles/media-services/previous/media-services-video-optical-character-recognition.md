@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 44d4e5b6d3e96d2bafa9a7e22f36c6544eaff151
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918334"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999546"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalmának digitális szöveggé alakításához használja a Azure Media Analytics.  
 
@@ -33,7 +34,7 @@ A keresőmotorokkal együtt használva egyszerűen indexelheti az adathordozót 
 
 Az **Azure Media OCR** adathordozó-processzor jelenleg előzetes verzióban érhető el.
 
-Ez a cikk részletesen ismerteti az **Azure Media OCR** -t, és bemutatja, hogyan használhatja azt a .net-hez készült Media Services SDK-val. További információért és példákért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+Ez a cikk részletesen ismerteti az  **Azure Media OCR** -t, és bemutatja, hogyan használhatja azt a .net-hez készült Media Services SDK-val. További információért és példákért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
 
 ## <a name="ocr-input-files"></a>OCR bemeneti fájlok
 Videofájlok. Jelenleg a következő formátumok támogatottak: MP4, MOV és WMV.
@@ -46,7 +47,7 @@ Feladat konfigurációja (előre beállított). Amikor az **Azure Media OCR**has
 >
 
 ### <a name="attribute-descriptions"></a>Attribútumok leírása
-| Attribútum neve | Description |
+| Attribútum neve | Leírás |
 | --- | --- |
 |AdvancedOutput| Ha a AdvancedOutput értéke TRUE (igaz), a JSON-kimenet minden egyes szó esetében tartalmaz pozíciós adatokat (a kifejezéseken és a régiókban is). Ha nem szeretné megtekinteni ezeket a részleteket, állítsa hamis értékre a jelzőt. Az alapértelmezett érték a hamis. További információkért tekintse meg [ezt a blogot](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Nyelv |(nem kötelező) annak a szövegnek a nyelvét írja le, amelynek meg kell keresnie. A következők egyike: automatikus észlelés (alapértelmezett), Arab, ChineseSimplified, ChineseTraditional, Cseh dán, holland, angol, finn, francia, német, görög, magyar, olasz, Japán, Koreai, norvég, lengyel, portugál, román, Orosz, SerbianCyrillic, SerbianLatin, szlovák, spanyol, svéd, Török. |
@@ -107,7 +108,7 @@ A videó OCR kimenete időben szegmentált adatokat biztosít a videóban talál
 
 A kimenet a következő attribútumokat tartalmazza:
 
-| Elem | Description |
+| Elem | Leírás |
 | --- | --- |
 | Időskála |"ketyeg" a videó másodpercenként |
 | Eltolás |időbélyeg időeltolódása. A video API-k 1,0-es verziójában ez mindig 0 lesz. |

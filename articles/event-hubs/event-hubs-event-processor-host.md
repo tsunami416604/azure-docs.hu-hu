@@ -3,12 +3,13 @@ title: Események fogadása az Event Processor Host használatával – Azure Ev
 description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, amely leegyszerűsíti az ellenőrzőpontok, a bérletek és az olvasási események ion párhuzamos kezelését.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 7c6d08c385174597ce80e3ddfd6204db6b0b14a5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 27b587e6562b5ba0c9bf28a52a00a9d8e7d9201c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949082"
+ms.locfileid: "89010460"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]

@@ -10,12 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 153540ce0bf49740d0b3387715d83c8efd7af2cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904258"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011871"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -103,7 +104,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
         |Név|Leírás|
         |---|---|
         |id|A videó azonosítója|
-        |state|A videó állapota|  
+        |állapot|A videó állapota|  
     - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = Processed
 - A videóban azonosított személy:
   - Tulajdonságok
@@ -117,7 +118,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
         
     - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>Megjegyzések
+##### <a name="notes"></a>Jegyzetek
 
 - Video Indexer az eredeti URL-címben megadott meglévő paramétereket adja vissza.
 - A megadott URL-címet kódolni kell.
@@ -127,7 +128,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
 Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
 
 - `AudioOnly` – Indexelés és elemzések kinyerése csak audiotartalmak használatával (videotartalmak figyelmen kívül hagyása)
-- `VideoOnly`-Az elemzések indexelése és kinyerése csak videó használatával (hang figyelmen kívül hagyása)
+- `VideoOnly` -Az elemzések indexelése és kinyerése csak videó használatával (hang figyelmen kívül hagyása)
 - `Default` – Indexelés és elemzések kinyerése audio- és videotartalmak használatával
 - `DefaultWithNoiseReduction` – Indexelés és elemzések kinyerése audio- és videotartalmakból, és zajcsökkentő algoritmusok alkalmazása az audiostreamen
 

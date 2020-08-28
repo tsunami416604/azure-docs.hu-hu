@@ -3,12 +3,12 @@ title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d39cb759190eef535519decccec943ab66de2c7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752124"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005054"
 ---
 # <a name="what-is-azure-vmware-solution-preview"></a>Mi az Azure VMware-megoldás előzetes verziója?
 
@@ -46,9 +46,9 @@ Az Azure VMware-megoldás saját felhő-és VMware-szoftverének rendszeres fris
 
 ## <a name="monitoring-your-private-cloud"></a>Saját felhő figyelése
 
-A [Azure monitor naplók](../azure-monitor/overview.md) segítségével gyűjthet naplókat az Azure VMware-megoldás privát felhőben futó virtuális gépeken. Az [MMA-ügynököt letöltheti és telepítheti](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) az Azure VMware-megoldás privát felhőkben futtatott Linux és Windows rendszerű virtuális gépeken, a helyszíni virtuális gépeken futtatott lekérdezések használatával. Ugyanazokat a lekérdezéseket futtathatja, amelyeket általában a virtuális gépeken is futtatnak. További információ a lekérdezések létrehozásáról: [lekérdezések írása](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+A [Azure monitor naplók](../azure-monitor/overview.md) segítségével gyűjthet naplókat az Azure VMware-megoldás privát felhőben futó virtuális gépeken. Az [MMA-ügynököt letöltheti és telepítheti](../azure-monitor/platform/log-analytics-agent.md#installation-options) az Azure VMware-megoldás privát felhőkben futtatott Linux és Windows rendszerű virtuális gépeken, a helyszíni virtuális gépeken futtatott lekérdezések használatával. Ugyanazokat a lekérdezéseket futtathatja, amelyeket általában a virtuális gépeken is futtatnak. További információ a lekérdezések létrehozásáról: [lekérdezések írása](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés a [saját felhő és a fürtök legfontosabb alapfogalmai](concepts-private-clouds-clusters.md)megismerése.
 

@@ -5,12 +5,13 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241930"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020201"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatásai problémákba ütköznek, az incidensek és az kimaradások kijavításának lehetősége a problémák gyors észlelésére is függ. Ha az Azure Service Fabric Health Managerrel kapcsolatos problémákat és hibákat jelent a szolgáltatás kódjában, a Service Fabric által biztosított szabványos állapot-figyelési eszközöket használhatja az állapot ellenőrzéséhez.
@@ -19,7 +20,7 @@ Háromféle módon jelenthet jelentést az állapotról a szolgáltatásból:
 
 * Használjon [partíciós](/dotnet/api/system.fabric.istatefulservicepartition) vagy [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) objektumokat.  
   A `Partition` és az objektumok segítségével `CodePackageActivationContext` jelentést készíthet az aktuális környezet részét képező elemek állapotáról. A replika részeként futó kód például csak az adott replikán, a hozzá tartozó partíción, valamint az alkalmazás részeként jelentheti az állapotot.
-* A `FabricClient` címet használja.   
+* Használja az `FabricClient` parancsot.   
   `FabricClient`Ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a szolgáltatás rendszergazdai jogosultságokkal fut, akkor az állapotot a szolgáltatás kódjából lehet jelenteni. A legtöbb valós forgatókönyv nem használ nem biztonságos fürtöket, vagy rendszergazdai jogosultságokat biztosít. A segítségével `FabricClient` bármilyen, a fürt részét képező entitáson jelenthet állapotot. Ideális esetben azonban a szolgáltatási kódnak csak a saját állapotával kapcsolatos jelentéseket kell elküldenie.
 * Használja a REST API-kat a fürt, az alkalmazás, a központilag telepített alkalmazás, a szolgáltatás, a szervizcsomag, a partíció, a replika vagy a csomópont szintjén. Ez felhasználható a tárolóban lévő állapot jelentésére.
 
@@ -131,7 +132,7 @@ HealthInformation healthInformation = new HealthInformation("ServiceCode", "Stat
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-A, a és a állapotának jelentéséhez használja a következőt: `Application` `DeployedApplication` `DeployedServicePackage` `CodePackageActivationContext` .
+A, a és a állapotának jelentéséhez használja a következőt: `Application` `DeployedApplication` `DeployedServicePackage`  `CodePackageActivationContext` .
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);

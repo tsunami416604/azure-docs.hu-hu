@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: laobri
 ms.date: 07/17/2020
 ms.topic: reference
-ms.openlocfilehash: ac56e2e69cf62c8afae73e0a7616e7e7f80c0493
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d5f541dec14eebc944e4eac11dbe569b38cb277e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816320"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001620"
 ---
 # <a name="reference-retirements-of-dsvm-images"></a>Hivatkozás: DSVM-lemezképek kivonása
 
@@ -50,18 +50,3 @@ Az előfizetésében meglévő DSVM kiépített lemezképek továbbra is működ
 >
 > Azok az ARM-sablonok, amelyek nem lettek frissítve az új DSVM-rendszerkép részleteivel, nem fognak települni a lejárati dátum után.
 
-## <a name="mitigating-upcoming-retirements"></a>Közelgő nyugdíjazások enyhítése
-
-Ebben a szakaszban a közelgő nyugdíjazások mérséklését tárgyaljuk.
-
-### <a name="upgrade-windows-2016-dsvm"></a>A Windows 2016 DSVM frissítése
-
-Ha a meglévő Windows 2016 DSVM adatlemezét Windows 2019 DSVM szeretné áttelepíteni, hajtsa végre a következő lépéseket:
-
-1. Hozzon létre egy új Windows 2019 DSVM az [itt](./provision-vm.md#create-your-dsvm)látható utasításokat követve.
-1. Leválaszthatja a meglévő adatlemezeket a Windows 2016-rendszerképből [ezen utasítások](../../virtual-machines/windows/detach-disk.md)alapján.
-1. Csatlakoztassa a lemezt az előző lépésben a Windows 2019-lemezképhez az [alábbi utasítások](../../virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)használatával.
-
-### <a name="upgrade-ubuntu-1604-dsvm"></a>Ubuntu 16,04 DSVM frissítése
-
-Javasoljuk, hogy a meglévő Ubuntu 16,04-Dsvm frissítse az [ubuntu 18,04 DSVM-kiadásra](./dsvm-ubuntu-intro.md).

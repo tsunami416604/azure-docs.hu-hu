@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903221"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021170"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage Analytics naplózása
 
@@ -89,7 +89,7 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
 |Attribútum|Leírás|
 |---------------|-----------------|
-|`<service-name>`|A tárolási szolgáltatás neve. Például: `blob` , `table` , vagy`queue`|
+|`<service-name>`|A tárolási szolgáltatás neve. Például: `blob` , `table` , vagy `queue`|
 |`YYYY`|A naplófájl négyjegyű éve. Például: `2011`|
 |`MM`|A napló két számjegyű hónapja. Például: `07`|
 |`DD`|A napló két számjegyből álló napja. Például: `31`|
@@ -105,7 +105,7 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
  `https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log`
 
- Tárolási kérelem naplózásakor az eredményül kapott napló neve a kért művelet befejezésének órájával összefügg. Ha például egy GetBlob-kérelem 6: a 7/31/2011-kor fejeződött be, a naplót a következő előtaggal kell megírni:`blob/2011/07/31/1800/`
+ Tárolási kérelem naplózásakor az eredményül kapott napló neve a kért művelet befejezésének órájával összefügg. Ha például egy GetBlob-kérelem 6: a 7/31/2011-kor fejeződött be, a naplót a következő előtaggal kell megírni: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Naplózási metaadatok
 
@@ -113,7 +113,7 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
 |Attribútum|Leírás|
 |---------------|-----------------|
-|`LogType`|Leírja, hogy a napló tartalmazza-e az olvasási, írási és törlési műveletekkel kapcsolatos információkat. Ez az érték egy típust vagy mindhárom kombinációt tartalmazhat, vesszővel elválasztva.<br /><br /> 1. példa:`write`<br /><br /> 2. példa:`read,write`<br /><br /> 3. példa:`read,write,delete`|
+|`LogType`|Leírja, hogy a napló tartalmazza-e az olvasási, írási és törlési műveletekkel kapcsolatos információkat. Ez az érték egy típust vagy mindhárom kombinációt tartalmazhat, vesszővel elválasztva.<br /><br /> 1. példa: `write`<br /><br /> 2. példa: `read,write`<br /><br /> 3. példa: `read,write,delete`|
 |`StartTime`|A napló bejegyzéseinek legkorábbi időpontja a ( `YYYY-MM-DDThh:mm:ssZ` ) formában. Például: `2011-07-31T18:21:46Z`|
 |`EndTime`|A naplóba való bejegyzés legkésőbbi időpontja `YYYY-MM-DDThh:mm:ssZ` . Például: `2011-07-31T18:22:09Z`|
 |`LogVersion`|A naplózási formátum verziója.|
