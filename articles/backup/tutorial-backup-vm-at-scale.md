@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Recove
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6556731ed18bd591e930ed89264cd62893fe9ac6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757506"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022054"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
@@ -53,7 +53,7 @@ A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a véde
 
     ![Recovery Services tár értékei](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-    A helyreállítási tárnak ugyanazon a helyen kell lennie, mint a virtuális gépeknek, amelyeknek védelmet biztosít. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Ebben az oktatóanyagban *Nyugat-Európában* hozzuk létre a helyreállítási tárat, mert itt jött létre a *myVM* (a rövid útmutatóban létrehozott virtuális gép).
+    A helyreállítási tárnak ugyanazon a helyen kell lennie, mint a virtuális gépeknek, amelyeknek védelmet biztosít. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Ez az oktatóanyag egy Recovery Services-tárolót hoz létre *Nyugat-Európában* , mert ott jött létre a *myVM* (a gyors üzembe helyezéssel létrehozott virtuális gép).
 
 1. Ha készen áll az Recovery Services-tároló létrehozására, válassza a **Létrehozás**lehetőséget.
 
@@ -189,7 +189,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
     A tár törlése után visszatérhet a Recovery Services-tárolók listájához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 

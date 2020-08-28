@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c7bef7fac23ab054810d7d27f99b773f6910f344
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749688"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021441"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
 
@@ -91,7 +91,7 @@ Az adatlemezek egy felügyelt lemez, amely egy virtuális géphez van csatolva a
 
 Minden virtuális gépnek van egy csatlakoztatott operációsrendszer-lemeze. Az operációsrendszer-lemezen telepítve van egy előre telepített operációs rendszer, amely a virtuális gép létrehozásakor lett kiválasztva. Ez a lemez tartalmazza a rendszerindító kötetet.
 
-A lemez maximális kapacitása 2 048 GiB.
+A lemez maximális kapacitása 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
@@ -143,7 +143,7 @@ Az Azure rangsorolt hálózati csatornát használ a lemezes forgalomhoz, ami el
 
 Tekintse meg a [nagy teljesítményű cikk kialakítását](premium-storage-performance.md) ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a felügyelt lemezekről további részleteket szeretne megtudni, tekintse meg a következőt: [Az Azure-beli virtuális gépek rugalmasságának növelése a Managed Disksokkal](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 

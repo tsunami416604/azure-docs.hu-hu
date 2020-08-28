@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztons
 description: Ez a cikk az Azure Virtual Machines szolgáltatásban futó SAP HANA adatbázisok biztonsági mentését ismerteti.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757540"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022309"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztonsági mentéséről
 
@@ -69,10 +69,10 @@ SAP HANA rendszert futtató virtuális gép visszaállításához kövesse az al
 
 * [Új virtuális gép visszaállítása az Azure virtuális gép biztonsági másolatából](backup-azure-arm-restore-vms.md) a legújabb helyreállítási pontról. Vagy hozzon létre egy új üres virtuális gépet, és csatolja a lemezeket a legújabb helyreállítási ponthoz.
 * Mivel a WA-lemezek nem rendelkeznek biztonsági mentéssel, a rendszer nem állítja vissza őket. Hozzon létre üres WA-lemezeket és naplózási területeket.
-* Miután az összes többi konfiguráció (például az IP, a rendszer neve stb.) be van állítva, a virtuális gép az Azure Backup szolgáltatásban található adatbázis-adatok fogadására van beállítva.
+* Miután az összes többi konfiguráció (például az IP, a rendszer neve stb.) be van állítva, a virtuális gép a Azure Backup adatbázis-adatok fogadására van beállítva.
 * Most állítsa vissza az adatbázist a virtuális gépre az [Azure SAP HANA db biztonsági másolatból](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) a kívánt időpontra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [állíthatja vissza egy Azure-beli virtuális gépen futó SAP HANA-adatbázist](./sap-hana-db-restore.md)
 * Megtudhatja, hogyan [kezelheti SAP HANA-adatbázisok biztonsági mentését a Azure Backup használatával](./sap-hana-db-manage.md)

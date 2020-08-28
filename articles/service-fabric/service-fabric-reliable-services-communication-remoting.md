@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253286"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022156"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérési szolgáltatása C#-ban Reliable Services
 
@@ -109,7 +110,7 @@ A felhasználó ezeket az értékeket úgy konfigurálhatja, hogy átadja a Oper
 
 A NuGet távelérési csomag 2,8-es verziójától kezdve lehetősége van a távelérési v2-verem használatára. A távelérési v2-verem jobban teljesít. Olyan szolgáltatásokat is kínál, mint például az egyéni szerializálás és a további csatlakoztatható API-k.
 A sablon kódja továbbra is a távelérési v1-verem használatát teszi lehetővé.
-A távelérési v2 nem kompatibilis a v1-rel (a korábbi távelérési veremmel). A szolgáltatás rendelkezésre állásának elkerülése érdekében kövesse a cikk a [v1 – v2](#upgrade-from-remoting-v1-to-remoting-v2) verzióra történő frissítését ismertető cikket.
+A távelérési v2 nem kompatibilis a v1-rel (a korábbi távelérési veremmel). A szolgáltatás rendelkezésre állásának elkerülése érdekében kövesse a cikk a  [v1 – v2](#upgrade-from-remoting-v1-to-remoting-v2) verzióra történő frissítését ismertető cikket.
 
 A v2-verem engedélyezéséhez a következő megközelítések érhetők el.
 
@@ -127,7 +128,7 @@ Ezek a lépések a sablon kódját úgy változtatják meg, hogy a v2-veremet eg
    </Resources>
    ```
 
-2. A `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` kiterjesztési módszer használatával távelérési figyelőket hozhat létre (a v1 és v2 esetében egyaránt egyenlő).
+2. A `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners`  kiterjesztési módszer használatával távelérési figyelőket hozhat létre (a v1 és v2 esetében egyaránt egyenlő).
 
    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()

@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fdd0cd6995a294be03640693fcca9fb814f3acbe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826823"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021697"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>Miben különbözik az új Azure Digital Twins az előző verziótól (2018)?
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Mi az új Azure digitális Twins? Miben különbözik az előző verziótól (2018)?
 
 Az Azure Digital Twins első nyilvános előzetes verziója 2018 októberében jelent meg. Habár a korábbi verzió alapfogalmai már az új szolgáltatásra kerültek a nyilvános előzetes verzióban, számos interfész és implementációs adat módosult, hogy a szolgáltatás rugalmasabb és hozzáférhető legyen. Ezeket a módosításokat az ügyfelek visszajelzései indokolták.
 
@@ -44,5 +44,4 @@ A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok list�
 
 Következő lépésként az Azure Digital Twins használatáról az első oktatóanyagban tájékozódhat:
 
-> [!div class="nextstepaction"]
-> [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)
+[*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

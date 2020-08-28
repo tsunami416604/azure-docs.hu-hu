@@ -3,7 +3,7 @@ title: Felügyelt identitások konfigurálása virtuálisgép-méretezési csopo
 description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálásához egy virtuálisgép-méretezési csoporton a PowerShell használatával.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d549d3b59eabbeab6b8a892cb6800f0088ece2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84d3142547babb780de7a442667fd3472a4ffdc0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609067"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021544"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuálisgép-méretezési csoportokban a PowerShell használatával
 
@@ -144,7 +144,7 @@ Ha a virtuálisgép-méretezési csoporthoz a rendszerhez hozzárendelt és a fe
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:

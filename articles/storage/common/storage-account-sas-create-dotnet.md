@@ -10,12 +10,13 @@ ms.date: 08/06/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 75f4a3c835a843e824c2ac0b437843cd91824bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 102248882e1ec123ee74eedd74730c12a991fb86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512722"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021187"
 ---
 # <a name="create-an-account-sas-with-net"></a>Fiók SAS létrehozása a .NET-tel
 
@@ -95,7 +96,7 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)
 - [Fiók SAS létrehozása](/rest/api/storageservices/create-account-sas)

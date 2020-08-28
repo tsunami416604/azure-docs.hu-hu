@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: be873ed122bb521ce00e2d18d55a9be8197a0048
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936758"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011579"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
@@ -245,7 +245,7 @@ public ActionResult AutoComplete(string term)
 
 Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c2dc90b84446917c4f06de707047b92e52cf7bc8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954621"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020983"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Az Axinom használata a Widevine-licencek kézbestéséhez az Azure Media Servicesbe 
 > [!div class="op_single_selector"]
@@ -199,8 +200,8 @@ A következő paraméterek szükségesek a mini-megoldás kihasználó Axinom Wi
 | --- | --- |
 | Kommunikációs kulcs azonosítója |Szerepelnie kell a (z) "com_key_id" jogcím értékének az JWT-tokenben (lásd [ezt a](media-services-axinom-integration.md#jwt-token-generation) szakaszt). |
 | Kommunikációs kulcs |Az JWT-token aláíró kulcsaként kell használni (lásd [ezt](media-services-axinom-integration.md#jwt-token-generation) a szakaszt). |
-| Kulcs magja |A tartalom kulcsának az adott tartalom-AZONOSÍTÓval való létrehozásához kell használni (lásd [ezt a](media-services-axinom-integration.md#content-protection) szakaszt). |
-| Widevine-licenc beszerzésének URL-címe |A DASH streaming eszközre vonatkozó kézbesítési szabályzatának konfigurálásához kell használni (lásd [ezt a](media-services-axinom-integration.md#content-protection) szakaszt). |
+| Kulcs magja |A tartalom kulcsának az adott tartalom-AZONOSÍTÓval való létrehozásához kell használni (lásd  [ezt a](media-services-axinom-integration.md#content-protection) szakaszt). |
+| Widevine-licenc beszerzésének URL-címe |A DASH streaming eszközre vonatkozó kézbesítési szabályzatának konfigurálásához kell használni (lásd  [ezt a](media-services-axinom-integration.md#content-protection) szakaszt). |
 | Tartalmi kulcs azonosítója |Szerepelnie kell a JWT-token jogosultsági üzenet jogcímének (lásd [Ez a](media-services-axinom-integration.md#jwt-token-generation) szakasz) értékének részeként. |
 
 ## <a name="additional-notes"></a>További megjegyzések
@@ -213,6 +214,6 @@ A következő paraméterek szükségesek a mini-megoldás kihasználó Axinom Wi
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Köszönetnyilvánítás
+### <a name="acknowledgments"></a>Elismerések
 Szeretnénk elismerni a következő személyeket, akik hozzájárultak a dokumentum létrehozásához: Ferenczi Jõgi of Axinom, Mingfei Yan, és barátságok.
 

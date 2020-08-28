@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d30949327f3025c06d4c98670494809c486631a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954706"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022207"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Az Azure Media Content Moderator használata a lehetséges felnőtt és a zamatos tartalmak észleléséhez 
 
@@ -31,7 +32,7 @@ Az **Azure media Content moderator** Media Processor (mp) lehetővé teszi, hogy
 
 Az **Azure Media Content moderator** mp jelenleg előzetes verzióban érhető el.
 
-Ez a cikk az **Azure Media Content moderator** adatait ismerteti, és bemutatja, hogyan használható a Media Services SDK for .net szolgáltatással.
+Ez a cikk az  **Azure Media Content moderator** adatait ismerteti, és bemutatja, hogyan használható a Media Services SDK for .net szolgáltatással.
 
 ## <a name="content-moderator-input-files"></a>Bemeneti fájlok Content Moderator
 Videofájlok. Jelenleg a következő formátumok támogatottak: MP4, MOV és WMV.
@@ -47,7 +48,7 @@ A kimeneti JSON a következő elemeket tartalmazza:
 
 ### <a name="root-json-elements"></a>Gyökér JSON-elemek
 
-| Elem | Description |
+| Elem | Leírás |
 | --- | --- |
 | version |A Content Moderator verziója. |
 | időskála |A videó másodpercenkénti száma. |
@@ -60,7 +61,7 @@ A kimeneti JSON a következő elemeket tartalmazza:
 
 ### <a name="fragments-json-elements"></a>Töredékek JSON-elemek
 
-|Elem|Description|
+|Elem|Leírás|
 |---|---|
 | start |Az első esemény kezdő időpontja "ketyeg". |
 | duration |A töredék hossza "ketyeg". |
@@ -69,9 +70,9 @@ A kimeneti JSON a következő elemeket tartalmazza:
 
 ### <a name="events-json-elements"></a>Események JSON-elemek
 
-|Elem|Description|
+|Elem|Leírás|
 |---|---|
-| reviewRecommended | `true`vagy attól `false` függően, hogy a **adultScore** vagy a **racyScore** túllépi-e a belső küszöbértékeket. |
+| reviewRecommended | `true` vagy attól `false` függően, hogy a **adultScore** vagy a **racyScore** túllépi-e a belső küszöbértékeket. |
 | adultScore | A lehetséges felnőtt tartalmak megbízhatósági pontszáma 0,00 és 0,99 közötti skálán. |
 | racyScore | A lehetséges, a 0,00 és 0,99 közötti skálán megjelenő, a lehetséges zamatos tartalmak megbízhatósági pontszáma. |
 | index | egy skálán lévő keret indexe az első keret indexéről az utolsó keret indexére. |
@@ -235,7 +236,7 @@ A következő példa egy Content Moderator JSON-kimenetre lett csonkítva.
 
 [Azure Media Analytics bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Content Moderator [videós moderálási és felülvizsgálati megoldásáról](../../cognitive-services/Content-Moderator/video-moderation-human-review.md).
 

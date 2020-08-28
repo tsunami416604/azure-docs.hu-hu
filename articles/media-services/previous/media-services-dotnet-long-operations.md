@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4365796a9d7f7b72687db19573c09ccfdf9ea8de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831736"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020524"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Élő közvetítés továbbítása Azure Media Services
 
@@ -32,7 +33,7 @@ A Media Services .NET SDK olyan API-kat biztosít, amelyek elküldik a kérést,
 Vannak olyan helyzetek, amikor egy alkalmazás nem várhat hosszú ideig futó HTTP-kérést, és manuálisan szeretné lekérdezni a művelet folyamatát. Egy tipikus példa egy állapot nélküli webszolgáltatást használó böngésző: Ha a böngésző a csatorna létrehozására kéri, a webszolgáltatás hosszan futó műveletet kezdeményez, és visszaadja a művelet AZONOSÍTÓját a böngészőnek. A böngésző ezután megkérheti a webszolgáltatást, hogy a művelet állapotát az azonosító alapján kapja meg. A Media Services .NET SDK olyan API-kat biztosít, amelyek ehhez a forgatókönyvhöz hasznosak. Ezeket az API-kat "nem lekérdezési módszereknek" nevezzük.
 A "nem lekérdezési módszerek" a következő elnevezési mintával rendelkeznek:*OperationName*művelet küldése (például SendCreateOperation). A*OperationName*művelet-metódusok küldése a **IOperation** objektumot visszaküldi. a visszaadott objektum a művelet nyomon követéséhez használható adatokat tartalmaz. A Send*OperationName*OperationAsync metódusok visszatérési **feladata \<IOperation> **.
 
-Jelenleg a következő osztályok támogatják a nem lekérdezési módszereket: **Channel**, **streamvégpontok**és **program**.
+Jelenleg a következő osztályok támogatják a nem lekérdezési módszereket:  **Channel**, **streamvégpontok**és **program**.
 
 A műveleti állapot lekérdezéséhez használja a **getoperation hívásnál** metódust a **OperationBaseCollection** osztályban. A művelet állapotának vizsgálatához használja a következő időközöket: **csatorna** -és **streamvégpontok** műveletek esetén, 30 másodpercet használjon; a **program** műveleteihez használjon 10 másodpercet.
 

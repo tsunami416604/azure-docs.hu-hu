@@ -3,7 +3,7 @@ title: Felügyelt identitás egyszerű szolgáltatásának megtekintése – Azu
 description: Részletes útmutató a felügyelt identitások Azure CLI használatával történő megtekintéséhez.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 82529ab954c5474345e2702840daa1c7bca2ff1d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b54f4d64810fbbb6a3a0fe0eb8083640376eecb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501184"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020558"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Felügyelt identitás egyszerű szolgáltatásának megtekintése az Azure CLI használatával
 
@@ -37,7 +37,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg egy felügyelt identitás e
 - A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
     - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).
     - A beágyazott Azure Cloud Shell az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-    - [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) , ha inkább helyi CLI-konzolt szeretne használni, és jelentkezzen be az Azure-ba a következővel:`az login`
+    - [Telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) , ha inkább helyi CLI-konzolt szeretne használni, és jelentkezzen be az Azure-ba a következővel: `az login`
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -49,7 +49,7 @@ Ez a következő parancs azt mutatja be, hogyan lehet megtekinteni a felügyelt 
 az ad sp list --display-name <VM or application name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD egyszerű szolgáltatásainak Azure CLI használatával történő kezelésével kapcsolatos további információkért lásd [az az ad SP](/cli/azure/ad/sp)-ben című témakört.
 

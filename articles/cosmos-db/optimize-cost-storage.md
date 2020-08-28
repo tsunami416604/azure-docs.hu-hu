@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dca046df68b10853752b0de65c48c2b8f83afb31
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72754943"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020898"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárolási díj optimalizálása Azure Cosmos DB
 
@@ -50,7 +51,7 @@ ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentC
 Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

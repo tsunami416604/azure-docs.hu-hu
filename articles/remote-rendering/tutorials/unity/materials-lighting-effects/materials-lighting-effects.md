@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207354"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021068"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Oktatóanyag: az anyagok, a világítás és a hatások finomítása
 
@@ -514,7 +515,7 @@ Létrehozunk egy **RemoteSky** -szkriptet, amely tartalmazza a betöltési param
 
 1. Adja hozzá a **RemoteSky** -szkriptet a **tetőablak** -GameObject.
 
-    Az ég fények közötti váltás a `SetSky` ben definiált karakterlánc-kulcsok egyikének meghívásával végezhető el `AvailableCubemaps` . A **AppMenu** beépített View vezérlő automatikusan létrehozza a gombokat, és összekapcsolja az eseményeket, hogy meghívja a `SetSky` megfelelő kulcsot.
+    Az ég fények közötti váltás a `SetSky` ben definiált karakterlánc-kulcsok egyikének meghívásával végezhető el `AvailableCubemaps` . A  **AppMenu** beépített View vezérlő automatikusan létrehozza a gombokat, és összekapcsolja az eseményeket, hogy meghívja a `SetSky` megfelelő kulcsot.
 1. Nyomja le a play gombot az Unity Editorban, és engedélyezze a kapcsolatokat.
 1. Miután csatlakoztatta a helyi futtatókörnyezetet egy távoli munkamenethez, navigáljon a **AppMenu-> munkamenet-eszközök-> távoli égbolton** a különböző Sky-beállítások megismeréséhez, és nézze meg, hogyan érintik a **TestModel**.
 

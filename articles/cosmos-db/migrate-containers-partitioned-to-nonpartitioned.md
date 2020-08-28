@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f2defeb2c417e94109721d32d8d4b611e2e46569
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263483"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003218"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
 
@@ -126,7 +127,7 @@ Ha a v2 SDK-val beszúrt elemek esetében a v3 SDK-val kérdez le, vagy a v3 SDK
 
 Ha az új elemek a partíciós kulcs különböző értékeivel vannak beszúrva, az ilyen elemek számának lekérdezése a megfelelő kulcs beadásával `FeedOptions` nem fog problémát okozni. Miután új dokumentumokat szúrt be a partíciós kulccsal, ha csak a dokumentumok darabszámát kell lekérdezni a partíciós kulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-t eredményezhet a normál particionált gyűjteményekhez hasonló módon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

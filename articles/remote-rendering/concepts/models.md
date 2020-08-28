@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7832f999de2f6f16cfe816c061925e371f90662e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758690"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021884"
 ---
 # <a name="models"></a>Modellek
 
@@ -118,7 +119,7 @@ Ezután áthaladhat az entitás-hierarchián, és módosíthatja az entitásokat
 > [!CAUTION]
 > Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A *várakozási* feltétele alatt a mintakód garantálja, hogy a (z) "loadOp" helyi változó hivatkozást tartalmaz, amíg a modell betöltése be nem fejeződik. Ha azonban a *befejezett* eseményt szeretné használni, az aszinkron műveletet egy tag változóban kell tárolnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Entitások](entities.md)
 * [Hálók](meshes.md)

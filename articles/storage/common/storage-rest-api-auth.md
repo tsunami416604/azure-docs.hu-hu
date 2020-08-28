@@ -10,12 +10,13 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724166"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010902"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API műveletek meghívása megosztott kulcsos hitelesítéssel
 
@@ -567,7 +568,7 @@ Content-Length: 1135
 
 Ebből a cikkből megtudhatta, hogyan lehet kérelmet készíteni a blob Storage-REST API. A kérelem segítségével lekérheti a tárolók listáját vagy a Blobok listáját. Megtanulta, hogyan hozhatja létre az engedélyezési aláírást a REST API híváshoz, és hogyan használhatja azt a REST-kérelemben. Végezetül megtanulta, hogyan vizsgálhatja meg a választ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Blob szolgáltatás REST API-ja](/rest/api/storageservices/blob-service-rest-api)
 - [A File szolgáltatás REST API-ja](/rest/api/storageservices/file-service-rest-api)

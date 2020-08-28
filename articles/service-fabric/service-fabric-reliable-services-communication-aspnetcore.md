@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529301"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022190"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
 
@@ -50,7 +51,7 @@ A szolgáltatási osztály a vagy a szolgáltatásból származó megbízható s
 ![A megbízható szolgáltatásban ASP.NET Core üzemeltetésének diagramja][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListeners
-A `ICommunicationListener` NuGet-csomagokban a vércse és a HTTP.sys megvalósításai `Microsoft.ServiceFabric.AspNetCore.*` hasonló használati mintákkal rendelkeznek. Azonban az egyes webkiszolgálókon némileg eltérő műveleteket hajtanak végre. 
+A `ICommunicationListener` NuGet-csomagokban a vércse és a HTTP.sys megvalósításai  `Microsoft.ServiceFabric.AspNetCore.*` hasonló használati mintákkal rendelkeznek. Azonban az egyes webkiszolgálókon némileg eltérő műveleteket hajtanak végre. 
 
 Mindkét kommunikációs figyelő olyan konstruktort biztosít, amely a következő argumentumokat veszi igénybe:
  - **`ServiceContext serviceContext`**: Ez az az `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmaz.
@@ -92,7 +93,7 @@ A vércse és a HTTP.sys `ICommunicationListener` implementációja is pontosan 
 Így a vércse és a HTTP.sys `ICommunicationListener` implementációk is szabványosítva vannak a kiterjesztési módszer által biztosított middleware-ben `UseServiceFabricIntegration` . Ezért az ügyfeleknek csak egy szolgáltatási végpontot kell végrehajtaniuk a HTTP 410-válaszokon.
 
 ## <a name="httpsys-in-reliable-services"></a>HTTP.sys a Reliable Services
-Reliable Services HTTP.sys a **Microsoft. ServiceFabric. AspNetCore. httpsys kiszolgálón** NuGet csomag importálásával is használhatja. Ez a csomag a következő `HttpSysCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `HttpSysCommunicationListener`lehetővé teszi, hogy a HTTP.sys webkiszolgálóként való használatával egy megbízható szolgáltatáson belül hozzon létre egy ASP.NET Core WebHost.
+Reliable Services HTTP.sys a **Microsoft. ServiceFabric. AspNetCore. httpsys kiszolgálón** NuGet csomag importálásával is használhatja. Ez a csomag a következő `HttpSysCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `HttpSysCommunicationListener` lehetővé teszi, hogy a HTTP.sys webkiszolgálóként való használatával egy megbízható szolgáltatáson belül hozzon létre egy ASP.NET Core WebHost.
 
 HTTP.sys a [Windows HTTP Server API](/windows/win32/http/http-api-start-page)-ra épül. Ez az API a **HTTP.sys** kernel-illesztővel dolgozza fel a http-kérelmeket, és továbbítja azokat a webalkalmazásokat futtató folyamatoknak. Ez lehetővé teszi, hogy ugyanazon a fizikai vagy virtuális gépen több folyamat is üzemelteti a webalkalmazásokat ugyanazon a porton, disambiguated egyedi URL-cím vagy állomásnév alapján. Ezek a funkciók hasznosak lehetnek Service Fabric több webhely üzemeltetéséhez ugyanabban a fürtben.
 
@@ -129,7 +130,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>HTTP.sys állapot-nyilvántartó szolgáltatásban
 
-`HttpSysCommunicationListener`jelenleg nem használható állapot-nyilvántartó szolgáltatásokban az alapul szolgáló **HTTP.sys** port megosztási funkciójával kapcsolatos szövődmények miatt. További információkért tekintse meg a következő szakaszt a dinamikus portok kiosztásáról HTTP.sys. Az állapot-nyilvántartó szolgáltatások esetében a vércse a javasolt webkiszolgáló.
+`HttpSysCommunicationListener` jelenleg nem használható állapot-nyilvántartó szolgáltatásokban az alapul szolgáló **HTTP.sys** port megosztási funkciójával kapcsolatos szövődmények miatt. További információkért tekintse meg a következő szakaszt a dinamikus portok kiosztásáról HTTP.sys. Az állapot-nyilvántartó szolgáltatások esetében a vércse a javasolt webkiszolgáló.
 
 ### <a name="endpoint-configuration"></a>Végpont konfigurációja
 
@@ -189,7 +190,7 @@ Ha egy dinamikusan hozzárendelt portot szeretne használni a HTTP.sys, hagyja `
 Egy konfiguráció által lefoglalt dinamikus port `Endpoint` csak egy portot biztosít a *gazdagépek*számára. A jelenlegi Service Fabric üzemeltetési modell lehetővé teszi, hogy több szolgáltatás példánya és/vagy replikája ugyanabban a folyamatban legyen tárolva. Ez azt jelenti, hogy mindegyik ugyanazt a portot fogja megosztani, amikor a konfiguráción keresztül lefoglalja őket `Endpoint` . Több **HTTP.sys** példány is megoszthat egy portot a mögöttes **HTTP.sys** port megosztási funkciójával. Ez azonban nem támogatott `HttpSysCommunicationListener` az ügyfélalkalmazások által bevezetett szövődmények miatt. A dinamikus port használata esetén a vércse a javasolt webkiszolgáló.
 
 ## <a name="kestrel-in-reliable-services"></a>Vércse Reliable Services
-A Reliable Services a a **Microsoft. ServiceFabric. AspNetCore. vércse** NuGet-csomag importálásával használhatja. Ez a csomag a következő `KestrelCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `KestrelCommunicationListener`lehetővé teszi, hogy egy ASP.NET Core webkiszolgálót hozzon létre egy megbízható szolgáltatáson belül a vércse használatával webkiszolgálóként.
+A Reliable Services a a **Microsoft. ServiceFabric. AspNetCore. vércse** NuGet-csomag importálásával használhatja. Ez a csomag a következő `KestrelCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `KestrelCommunicationListener` lehetővé teszi, hogy egy ASP.NET Core webkiszolgálót hozzon létre egy megbízható szolgáltatáson belül a vércse használatával webkiszolgálóként.
 
 A vércse egy platformfüggetlen webkiszolgáló a ASP.NET Corehoz. A HTTP.systól eltérően a vércse nem használ központosított Endpoint Managert. A HTTP.systól eltérően a vércse nem támogatja a portok több folyamat közötti megosztását. A vércse minden példányának egyedi portot kell használnia. A vércse szolgáltatással kapcsolatos további információkért tekintse meg a [megvalósítás részleteit](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
 
@@ -470,11 +471,11 @@ A vércse a javasolt webkiszolgáló az előtér-szolgáltatásokhoz, amelyek k�
  
 Ha az internetre van kitéve, az állapot nélküli szolgáltatásnak olyan jól ismert és stabil végpontot kell használnia, amely egy terheléselosztó használatával érhető el. Ezt az URL-címet meg kell adnia az alkalmazás felhasználói számára. A következő konfigurációt javasoljuk:
 
-| Típus | Javaslat | Jegyzetek |
+| Típus | Ajánlás | Jegyzetek |
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | A vércse az előnyben részesített webkiszolgáló, mivel a Windows és a Linux rendszeren is támogatott. |
 | Port konfigurációja | Statikus | Jól ismert statikus portot kell konfigurálni a `Endpoints` ServiceManifest.xml konfigurációjában, például: 80 http vagy 443 for HTTPS. |
-| ServiceFabricIntegrationOptions | Egyik sem | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
+| ServiceFabricIntegrationOptions | Nincsenek | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
 | Példányszám | -1 | Tipikus használati esetekben a példányszám beállításának *-1*értékűnek kell lennie. Erre azért van szükség, hogy egy példány minden olyan csomóponton elérhető legyen, amely egy terheléselosztó által forgalmazott forgalmat fogad. |
 
 Ha több külsőleg megjelenő szolgáltatás is ugyanazokat a csomópontokat használja, akkor a HTTP.syst egyedi, de állandó URL-címmel is használhatja. Ezt a IWebHost konfigurálásakor megadott URL-cím módosításával végezheti el. Vegye figyelembe, hogy ez csak HTTP.sysre vonatkozik.
@@ -495,7 +496,7 @@ Ha több külsőleg megjelenő szolgáltatás is ugyanazokat a csomópontokat ha
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Csak belső állapot nélküli ASP.NET Core szolgáltatás
 A csak a fürtön belül hívott állapot nélküli szolgáltatások egyedi URL-címeket és dinamikusan hozzárendelt portokat használnak a több szolgáltatás közötti együttműködés biztosításához. A következő konfigurációt javasoljuk:
 
-| Típus | Javaslat | Jegyzetek |
+| Típus | Ajánlás | Jegyzetek |
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | Habár a belső állapot nélküli szolgáltatások esetében HTTP.sys is használhatja, a vércse a legjobb kiszolgáló, amely lehetővé teszi, hogy több szolgáltatási példány ossza meg a gazdagépet.  |
 | Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
@@ -505,7 +506,7 @@ A csak a fürtön belül hívott állapot nélküli szolgáltatások egyedi URL-
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Csak belső állapot-nyilvántartó ASP.NET Core szolgáltatás
 A csak a fürtön belül hívott állapot-nyilvántartó szolgáltatásoknak dinamikusan hozzárendelt portokat kell használniuk a több szolgáltatás közötti együttműködés biztosításához. A következő konfigurációt javasoljuk:
 
-| Típus | Javaslat | Jegyzetek |
+| Típus | Ajánlás | Jegyzetek |
 | ---- | -------------- | ----- |
 | Webkiszolgáló | Vércse | A `HttpSysCommunicationListener` nem olyan állapot-nyilvántartó szolgáltatások általi használatra készült, amelyekben a replikák megosztják a gazdagép folyamatát. |
 | Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |

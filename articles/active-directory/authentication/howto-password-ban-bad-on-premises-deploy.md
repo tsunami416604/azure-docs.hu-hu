@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718951"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003541"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -49,6 +49,8 @@ Az is lehetséges, hogy az erősebb jelszó-érvényesítés a meglévő Active 
 * [A tartományvezérlő lefokozása nem sikerült, mert gyenge a helyi rendszergazda jelszava](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 Ha a szolgáltatás egy ésszerű időszakra vonatkozóan a vizsgálati módban fut, a konfigurációt átválthatja a *naplózásból* , hogy a *kényszerítse* a biztonságosabb jelszavak megkövetelését. Ebben az időszakban további monitorozásra is jó ötlet.
+
+Fontos megjegyezni, hogy az Azure AD jelszavas védelme csak jelszó-módosítási vagy-beállítási műveletek esetén képes érvényesíteni a jelszavakat. Az Azure AD jelszavas védelem telepítése előtt elfogadott és Active Directory tárolt jelszavakat soha nem érvényesíti a rendszer, és folytatja a munkát. Az idő múlásával az összes felhasználó és fiók végül az Azure AD jelszavas védelem-érvényesített jelszavait fogja használni, mivel a meglévő jelszavaik általában lejárnak. A "jelszó soha nem jár le" beállítással konfigurált fiókok mentesülnek ettől.
 
 ### <a name="multiple-forest-considerations"></a>Több erdőre vonatkozó megfontolások
 
@@ -88,7 +90,7 @@ A következő alapvető követelmények érvényesek:
     * Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:
 
-    |**Végpont**|**Rendeltetés**|
+    |**Végpont**|**Cél**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
     |`https://enterpriseregistration.windows.net`|Azure AD jelszavas védelem funkció|
@@ -413,6 +415,6 @@ Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárásokat használ
 
 A `Get-AzureADPasswordProtectionDCAgent` parancsmag segítségével lekérdezhető az összes jelenleg telepített Azure ad Password Protection DC-ügynök szoftveres verziója egy erdőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy telepítette az Azure AD jelszavas védelemhez szükséges szolgáltatásokat a helyszíni kiszolgálókon, [engedélyezze az Azure ad jelszavas védelmet a Azure Portal](howto-password-ban-bad-on-premises-operations.md) az üzembe helyezés befejezéséhez.

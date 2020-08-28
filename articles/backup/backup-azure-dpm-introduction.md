@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890807"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021034"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 

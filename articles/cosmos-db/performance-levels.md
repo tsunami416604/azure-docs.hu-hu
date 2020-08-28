@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556054"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020881"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Az S1, S2 és S3 teljesítményszintek kivonása
 
@@ -128,7 +129,7 @@ Az [MSDN webhelyen](https://msdn.microsoft.com/library/azure/microsoft.azure.doc
 
 Az EA-ügyfelek az aktuális szerződésük végéig érvényes áron lesznek védve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az Azure Cosmos DBekkel kapcsolatos díjszabásról és adatkezelésről, tekintse meg ezeket az erőforrásokat:
 
 1.  [Adatparticionálás Cosmos DBban](sql-api-partition-data.md). Ismerje meg az egypartíciós tároló és a particionált tárolók közötti különbséget, valamint tippeket, hogyan lehet zökkenőmentesen méretezni a particionálási stratégiát.

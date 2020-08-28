@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084313"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003626"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
 
@@ -89,7 +90,7 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
     }
     ```
 
-    c. `CreateTopic`a Service Bus témakör létrehozásához használatos.
+    c. `CreateTopic` a Service Bus témakör létrehozásához használatos.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -106,7 +107,7 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
     }
     ```
 
-    d. `SendMessage`az üzenetek küldésére szolgál a Service Bus témakörben. Ez a kód egyszerűen egy véletlenszerű üzenetet küld a témakörnek a minta céljára való rendszeres időközönként. Általában van egy háttérrendszer, amely üzeneteket küld egy esemény bekövetkeztekor.
+    d. `SendMessage` az üzenetek küldésére szolgál a Service Bus témakörben. Ez a kód egyszerűen egy véletlenszerű üzenetet küld a témakörnek a minta céljára való rendszeres időközönként. Általában van egy háttérrendszer, amely üzeneteket küld egy esemény bekövetkeztekor.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -158,7 +159,7 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
     }
     ```
 
-    c. `CreateSubscription`egy Service Bus-előfizetés létrehozásához használatos ahhoz a témakörhöz, amelyben a háttérrendszer üzeneteket küld. Az üzleti forgatókönyvtől függően ez az összetevő egy vagy több előfizetést hoz létre a kapcsolódó témakörökhöz (például bizonyos esetekben üzeneteket fogadhat a HR rendszertől, néhányat a pénzügyi rendszertől stb.)
+    c. `CreateSubscription` egy Service Bus-előfizetés létrehozásához használatos ahhoz a témakörhöz, amelyben a háttérrendszer üzeneteket küld. Az üzleti forgatókönyvtől függően ez az összetevő egy vagy több előfizetést hoz létre a kapcsolódó témakörökhöz (például bizonyos esetekben üzeneteket fogadhat a HR rendszertől, néhányat a pénzügyi rendszertől stb.)
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -174,7 +175,7 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification`a használatával olvassa be az üzenetet a témakörben az előfizetésével, és ha az olvasás sikeres, akkor az Azure Notification Hubs használatával küldheti el a mobileszköz-értesítést (a példában a Windows natív bejelentési értesítése) a Mobile alkalmazásnak.
+    d. `ReceiveMessageAndSendNotification` a használatával olvassa be az üzenetet a témakörben az előfizetésével, és ha az olvasás sikeres, akkor az Azure Notification Hubs használatával küldheti el a mobileszköz-értesítést (a példában a Windows natív bejelentési értesítése) a Mobile alkalmazásnak.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)

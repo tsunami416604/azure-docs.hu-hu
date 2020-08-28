@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5171db64f931d59d4f5b66143072cfc8153e8775
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935194"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020830"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Az egyidejűség kezelése az Azure-ban Cognitive Search
 
@@ -206,7 +207,7 @@ A kódrészlet beolvassa a "Hotels" indexet, ellenőrzi az objektum verziószám
         }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [szinonimák C# mintát](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) , amely további kontextust biztosít a meglévő indexek biztonságos frissítéséhez.
 

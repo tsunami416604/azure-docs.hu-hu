@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: d9efb1e9256bccd04a76b4f63edaaf7c2c6ac708
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 45a23f55f87f086e4f5be8058a68ada1513f8975
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955216"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021000"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics a Media Services platformon 
 
@@ -64,7 +65,7 @@ A Azure Media Redactor egy Media Analytics adathordozó-feldolgozó, amely mére
 ### <a name="content-moderation"></a>Tartalom moderálása
 Az Azure Content Moderator lehetővé teszi, hogy a videókhoz géppel támogatott moderálást használjon. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat. A videók a nemkívánatos tartalomhoz történő manuális moderálása időigényes és költséges feladat. Ezzel a szolgáltatással és a kapcsolódó felülvizsgálati eszközökkel kombinálhatja a gépi támogatással rendelkező moderálásokat a legjobb eredmények hatékony és költséghatékony megoldásával. További információkért tekintse meg a [videók Azure-Content Moderatorval való feldolgozását](media-services-content-moderation.md) ismertető cikket.
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 Media Analytics segítségével a szervezetek és a vállalatok új bepillantást nyerhetnek a videóból, és hatékonyabban kezelhetik a nagy mennyiségű videó tartalmát. Íme néhány forgatókönyv:
 
 * **Központilag hívható**. A közösségi média beköszöntével még az ügyfél-szolgáltatási tranzakciók nagy hányadát is megkönnyíti az ügyfelek hívási központjai. Az ebben a hangadatokban kódolva nagy mennyiségű ügyfél-információ elemezhető, így magasabb szintű vásárlói elégedettség érhető el. Media Indexer használatával a szervezetek szövegeket gyűjthetnek, és keresési indexeket és irányítópultokat hozhatnak létre. Ezután kinyerhetik az intelligenciát a gyakori panaszok, a panaszok forrásai és egyéb releváns adatok köré.
@@ -151,7 +152,7 @@ Lásd: [Media Services Analytics-hirdetmény](https://azure.microsoft.com/blog/i
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -9,18 +9,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 53ccd610c6f0f36d4ab04efbada2070a22975023
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5d8dca091ef5bc039538903f07f46bc5d8ea262f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650111"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021578"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
 Ebből a cikkből megAzure Machine Learning tudhatja, hogyan használhatók a felhőalapú környezetek, amelyek segítségével betaníthatja, üzembe helyezheti, automatizálhatja, kezelheti és nyomon követheti a ML-modelleket. 
 
-Azure Machine Learning bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra. Akár Python, akár R-kód, akár nulla-kód/alacsony kódú lehetőség (például a [tervező](tutorial-designer-automobile-price-train-score.md)) helyett szeretne írni, a nagyvállalati tanulási és a részletes tanulási modellek kiépítését, betanítását és nyomon követését is elvégezheti egy Azure Machine learning-munkaterület. 
+Azure Machine Learning bármilyen gépi tanuláshoz használható, klasszikus ml-ből mély tanulásra, felügyelt és nem felügyelt tanulásra. Akár Python-, akár R-kódot szeretne írni az SDK-val, vagy nem kód/alacsony kódú lehetőségekkel dolgozik [a Studióban](#build-ml-models-in-the-studio), létrehozhat, betaníthat és nyomon követheti a gépi tanulást és a mélyebb tanulási modelleket egy Azure Machine learning-munkaterület. 
 
 Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. 
 
@@ -67,23 +67,27 @@ Számos elérhető [számítási cél](how-to-set-up-training-targets.md), péld
 
 Az SDK segítségével [automatizálhatja a modell betanítását és finomhangolását](tutorial-auto-train-models.md) is.
 
-## <a name="build-ml-models-with-no-code-tools"></a>A kód nélküli eszközökkel rendelkező ML-modellek készítése
+## <a name="build-ml-models-in-the-studio"></a>ML modellek készítése a Studióban
 
-A kód nélküli vagy alacsony kódú képzés és üzembe helyezés esetén próbálkozzon a következő lépésekkel:
+A [Azure Machine learning Studio](https://www.ml.azure.com) egy webes portál, amely a modell betanításához, üzembe helyezéséhez és az eszközök kezeléséhez szükséges, az alacsony kódú és a kód nélküli lehetőségeket Azure Machine learning. A Studio zökkenőmentesen integrálható a Azure Machine Learning SDK-val. További információ: [What is Azure Machine learning Studio](overview-what-is-machine-learning-studio.md).
 
 + **Azure Machine Learning Designer (előzetes verzió)**
 
-  A Designer segítségével előkészítheti a gépi tanulási modelleket, betaníthatja, üzembe helyezheti, kezelheti és nyomon követheti, anélkül, hogy kódot kellene írnia. Nincs szükség programozásra, vizuálisan összekapcsolhatók az adatkészletek és modulok a modell létrehozásához. Próbálja ki a [tervezői oktatóanyagot](tutorial-designer-automobile-price-train-score.md).
+  [A Designer használatával a](concept-designer.md) gépi tanulási modelleket bármilyen kód írása nélkül betaníthatja és üzembe helyezheti. Próbálja ki a [tervezői oktatóanyagot](tutorial-designer-automobile-price-train-score.md) a kezdéshez. 
 
-  További információt [a Azure Machine learning Designer áttekintő cikkében](concept-designer.md)talál. 
+  ![Azure Machine Learning Designer fogd és vidd felületének animált GIF-je](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Azure Machine Learning Designer – példa](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **Kísérletek követése**
 
-+ **Automatikus gépi tanulás felhasználói felülete**
+  Megtudhatja, hogyan [követheti nyomon és jelenítheti meg az adatelemzési kísérleteket](tutorial-first-experiment-automated-ml.md) a Studióban. 
 
-  Megtudhatja, hogyan hozhat létre [AUTOMATIZÁLT ml-kísérleteket](tutorial-first-experiment-automated-ml.md) a könnyen használható felületen. 
+    ![Részletek futtatása a Azure Machine Learning Studióban](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Azure Machine Learning Studio navigációs panelje](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **És még sok más...**
+
+  Látogasson el Azure Machine Learning studióra a következő címen: [ml.Azure.com](https://www.ml.azure.com). 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & életciklus-felügyelet üzembe helyezése
 Ha rendelkezik a megfelelő modellel, egyszerűen használhatja egy webszolgáltatásban, egy IoT-eszközön vagy Power BI. További információ: a [telepítésének és helyének](how-to-deploy-and-where.md)ismertetése.
@@ -130,7 +134,7 @@ Azure Machine Learning két, a gépi tanulási igényekhez igazított kiadást k
 
 Ha többet szeretne megtudni ezekről a kiadásokról és a feloldható képességekről, olvassa el a ["Azure Machine learning Editions" című cikket](concept-editions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)

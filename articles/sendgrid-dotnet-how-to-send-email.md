@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: 82bcc61d06ac519447307c1e92784f33794d5817
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258029"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020592"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>E-mail küldése a SendGrid és az Azure használatával
 ## <a name="overview"></a>Áttekintés
@@ -276,7 +277,7 @@ A SendGrid számos API-t és webhookot kínál, amelyek segítségével további
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
 * SendGrid C \# programkönyvtár: [SendGrid-csharp][sendgrid-csharp]
-* SendGrid API-dokumentáció:<https://sendgrid.com/docs>
+* SendGrid API-dokumentáció: <https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
 [What is the SendGrid Email Service?]: #whatis

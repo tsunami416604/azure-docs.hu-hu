@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5f7a9f87c73e4c5aa5f905def18534b04688a0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7ef020298b66ce3b66f27bdd482ef7fc04a2504c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000533"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021204"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady és/vagy Widevine Dynamic Common Encryption használata
 
@@ -609,7 +610,7 @@ namespace DynamicEncryptionWithDRM
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

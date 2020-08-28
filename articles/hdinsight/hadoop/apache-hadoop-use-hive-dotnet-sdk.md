@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: f1927d44daf49d938d2c43ce9de02cb1dbfb735f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: cdb2207ab834ab84cedd2ad23e5e26186ac44039
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207750"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020473"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Apache Hive lekérdezések futtatása a HDInsight .NET SDK-val
 
@@ -140,9 +140,9 @@ Az alkalmazás kimenetének a következőhöz hasonlónak kell lennie:
 
 ![HDInsight Hadoop-struktúra kimenete](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan küldhet Apache Hive lekérdezéseket a HDInsight .NET SDK-val. További információt a következő cikkekben talál:
+Ebben a cikkben megtanulta, hogyan küldhet Apache Hive lekérdezéseket a HDInsight .NET SDK-val. További tudnivalókért olvassa el a következő cikket:
 
 * [Ismerkedés az Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)

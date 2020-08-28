@@ -10,12 +10,13 @@ ms.date: 05/15/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-csharp
+ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327718"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021238"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -37,7 +38,6 @@ Az IoT hub alapértelmezett beépített végpontja (**üzenetek/események**), a
 
 Minden üzenet az összes olyan végponthoz van irányítva, amelynek útválasztási lekérdezése megfelel. Más szóval egy üzenet több végponthoz is átirányítható.
 
-
 Ha az egyéni végpont tűzfal-konfigurációval rendelkezik, érdemes lehet a Microsoft megbízható első féltől származó kivételt használni, hogy hozzáférést biztosítson IoT Hub az [Azure Storage](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing), az [Azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) és a [Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)eléréséhez. Ez a [felügyelt szolgáltatás identitásával](./virtual-network-support.md)rendelkező IoT hubok régiókban való kiválasztása esetén érhető el.
 
 A IoT Hub jelenleg a következő végpontokat támogatja:
@@ -47,19 +47,23 @@ A IoT Hub jelenleg a következő végpontokat támogatja:
  - Service Bus várólisták és Service Bus témakörök
  - Event Hubs
 
-### <a name="built-in-endpoint"></a>Beépített végpont
+## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Beépített végpont útválasztási végpontként
 
 Az eszközről a felhőbe irányuló üzenetek fogadásához a beépített végpontról (**üzenetek/események**) a standard [Event Hubs Integration és SDK](iot-hub-devguide-messages-read-builtin.md) -k használhatók. Az útvonal létrehozása után az adatforgalom a beépített végpontra áramlik, kivéve, ha egy útvonal jön létre a végponthoz.
 
-### <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage-as-a-routing-endpoint"></a>Azure Storage útválasztási végpontként
 
 Két tárolási szolgáltatás IoT Hub képes üzeneteket átirányítani az Azure- [blob Storage](../storage/blobs/storage-blobs-introduction.md) és a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) fiókba. Azure Data Lake Storage-fiókok a blob Storage-ra épülő [hierarchikus névtereket](../storage/blobs/data-lake-storage-namespace.md)használó Storage-fiókok. Mindkét blob a tárolóhoz használható.
 
-IoT Hub támogatja az Azure Storage-ba való adatírást az [Apache Avro](https://avro.apache.org/) formátumban, valamint JSON formátumban. Az alapértelmezett érték a AVRO. A kódolás formátuma csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. Egy meglévő végpont formátuma nem szerkeszthető. JSON **-** kódolás használatakor az ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét érték megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni. A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)használatával. Az alábbi ábrán látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
+IoT Hub támogatja az Azure Storage-ba való adatírást az [Apache Avro](https://avro.apache.org/) formátumban, valamint JSON formátumban. Az alapértelmezett érték a AVRO. JSON **-** kódolás használatakor az ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét érték megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni.
+
+A kódolási formátum csak akkor állítható be, ha a blob Storage-végpont konfigurálva van. meglévő végpont esetében nem módosítható. Meglévő végpont kódolási formátumának váltásához törölnie kell, majd újra létre kell hoznia az egyéni végpontot a kívánt formátumban. Az egyik hasznos stratégia lehet egy új egyéni végpont létrehozása a kívánt kódolási formátummal, és egy párhuzamos útvonal hozzáadása a végponthoz. Így ellenőrizheti az adatait, mielőtt törölné a meglévő végpontot.
+
+A kódolási formátumot kiválaszthatja a IoT Hub létrehozás vagy frissítés REST API, konkrétan a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), a Azure Portal, az [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)használatával. Az alábbi képen látható, hogyan választható ki a kódolás formátuma a Azure Portalban.
 
 ![BLOB Storage-végpont kódolása](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub a kötegek üzeneteit, és az adatot a tárolóba írja, amikor a köteg elér egy adott méretet, vagy egy adott időtartam eltelt. IoT Hub alapértelmezett értéke a következő fájl elnevezési konvenció: 
+IoT Hub a kötegek üzeneteit, és az adatot a tárolóba írja, amikor a köteg elér egy adott méretet, vagy egy adott időtartam eltelt. IoT Hub alapértelmezett értéke a következő fájl elnevezési konvenció:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -89,12 +93,11 @@ Azure Data Lake Gen2-kompatibilis Storage-fiók létrehozásához hozzon létre 
 
 ![Azure Date Lake Gen2-tároló kiválasztása](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
-
-### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus várólisták és Service Bus témakörök
+## <a name="service-bus-queues-and-service-bus-topics-as-a-routing-endpoint"></a>Service Bus várólisták és Service Bus témakörök útválasztási végpontként
 
 Service Bus várólisták és a IoT Hub végpontként használt témakörök nem rendelkezhetnek engedélyezett **munkamenetekkel** vagy **duplikált észleléssel** . Ha bármelyik beállítás engedélyezve van, a végpont nem **érhető el** a Azure Portalban.
 
-### <a name="event-hubs"></a>Event Hubs
+## <a name="event-hubs-as-a-routing-endpoint"></a>Event Hubs útválasztási végpontként
 
 A beépített Event Hubs kompatibilis végponton kívül az adatok átirányítása Event Hubs típusú egyéni végpontokra is elvégezhető. 
 
@@ -149,7 +152,7 @@ IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztos
 
 További részletekért és az Útválasztás hibaelhárításához használja a [hibaelhárítási útmutatót](troubleshoot-message-routing.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzenetküldési útvonalak létrehozásával kapcsolatos információkért lásd: [IoT hub eszközről a felhőbe irányuló üzenetek feldolgozása útvonalak használatával](tutorial-routing.md).
 

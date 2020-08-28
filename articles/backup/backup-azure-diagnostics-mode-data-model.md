@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890263"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020949"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -472,7 +472,7 @@ A fent ismertetett [adatmodellben](#using-azure-backup-data-model) tekintse meg 
 
 Mivel a v1-séma elavult elérési úton van, ajánlott csak a v2 sémát használni a Azure Backup diagnosztikai adatain lévő összes egyéni lekérdezésben. Az alábbi példa bemutatja, hogyan frissítheti a lekérdezéseket a v1-séma függőségének eltávolítására:
 
-1. Azonosítsa, hogy a lekérdezés olyan mezőket használ-e, amelyek csak a v1 sémára alkalmazhatók. Tegyük fel, hogy van egy lekérdezése, amely felsorolja az összes biztonsági mentési elemet és a hozzájuk társított védett kiszolgálókat a következőképpen:
+1. Azonosítsa, hogy a lekérdezés olyan mezőt használ-e, amely csak a v1 sémára vonatkozik. Tegyük fel, hogy van egy lekérdezése, amely felsorolja az összes biztonsági mentési elemet és a hozzájuk társított védett kiszolgálókat a következőképpen:
 
     ````Kusto
     AzureDiagnostics
@@ -493,6 +493,6 @@ Mivel a v1-séma elavult elérési úton van, ajánlott csak a v2 sémát haszn�
     | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
     ````
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/learn/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.

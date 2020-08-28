@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853028"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011344"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -182,7 +182,7 @@ Az ellenőrzéshez használt tipikus célok a következők:
 
 * Csoporttagság [(](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) szinkronizálva az Azure ad-vel, vagy az Azure ad-ben vagy Office 365-ben létrehozott, beleértve a Microsoft Teams-t).
 
-* Olyan [hozzáférési csomag](/entitlement-management-overview.md) , amely az erőforrásokat (csoportokat, alkalmazásokat és helyeket) egyetlen csomagba csoportosítja a hozzáférés kezeléséhez.
+* Olyan [hozzáférési csomag](/azure/active-directory/governance/entitlement-management-overview) , amely az erőforrásokat (csoportokat, alkalmazásokat és helyeket) egyetlen csomagba csoportosítja a hozzáférés kezeléséhez.
 
 * [Azure ad-szerepkörök és Azure-erőforrás-szerepkörök](../privileged-identity-management/pim-resource-roles-assign-roles.md) Privileged Identity Managementban definiált módon.
 
@@ -422,7 +422,7 @@ Az elavult hozzáférés kockázatának csökkentése érdekében a rendszergazd
 | Útmutatók| Leírás |
 | - | - |
 | [Hozzáférési felülvizsgálatok létrehozása](entitlement-management-access-reviews-create.md)| Hozzáférési csomag felülvizsgálatának engedélyezése. |
-| [Hozzáférési felülvizsgálatok végrehajtása](/entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
+| [Hozzáférési felülvizsgálatok végrehajtása](entitlement-management-access-reviews-review-access.md)| Hozzáférési felülvizsgálatok végrehajtása a hozzáférési csomaghoz rendelt más felhasználók számára. |
 | [Hozzárendelt hozzáférési csomag (ok) önértékelése](entitlement-management-access-reviews-self-review.md)| Hozzárendelt hozzáférési csomag (ok) önálló felülvizsgálata |
 
 
@@ -511,7 +511,7 @@ A hozzáférési felülvizsgálatok tevékenységeit a rendszer rögzíti, és e
 
 A hozzáférési felülvizsgálatok részletesebb lekérdezése és elemzése, valamint a módosítások és a felülvizsgálatok befejezésének nyomon követése érdekében javasoljuk, hogy az Azure AD-naplókat az [azure log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) vagy az Azure Event hub szolgáltatásba exportálja. Az Azure Log Analytics-ban való tárolás során használhatja a [hatékony elemzési nyelvet](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) , és saját irányítópultokat építhet ki.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az alábbi kapcsolódó technológiákat.
 

@@ -3,12 +3,13 @@ title: Azure Event Hubs – események küldése/fogadása a .NET-keretrendszer 
 description: 'Gyors útmutató: Ez a cikk egy olyan .NET-keretrendszerbeli alkalmazás létrehozásához nyújt útmutatást, amely eseményeket küld az Azure Event Hubsnak.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 3ecbade69ee730d88bb39e700e20e65c0aa64a8d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3f8aee3480f5200a23344553268da1864f892c7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322529"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021289"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a .NET-keretrendszerrel
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -202,7 +203,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
     
 3. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket: 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

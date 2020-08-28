@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 9b08dff01ad125fb7e0a52674e25a4a973df7c16
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927051"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020796"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>A Microsoft. Azure. Search (v10) használata .NET-alkalmazásokban
 
@@ -768,7 +769,7 @@ WriteDocuments(results);
 
 Ez a lépés befejezi az oktatóanyagot, de nem áll le itt. * * A következő lépések további forrásokat biztosítanak az Azure Cognitive Search megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Nézze át a [.NET SDK](/dotnet/api/microsoft.azure.search) és a [REST API](/rest/api/searchservice/) referenciáit.
 * Tekintse át az [elnevezési konvenciókat](/rest/api/searchservice/Naming-rules) a különböző objektumok elnevezési szabályainak megismeréséhez.
 * Tekintse át az Azure Cognitive Search [támogatott adattípusait](/rest/api/searchservice/Supported-data-types) .

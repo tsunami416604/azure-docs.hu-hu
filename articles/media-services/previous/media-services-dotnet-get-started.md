@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2c79566f51647492118f307e1c9737b98b1be484
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d29c0636ef6bd01560fba3b1b5bdd227c5116b09
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543588"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020626"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával  
 
@@ -27,7 +28,7 @@ ms.locfileid: "87543588"
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Media Services .NET SDK segítségével, az Azure Media Services (AMS) alkalmazással.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
@@ -383,7 +384,7 @@ További információkért tekintse át a következők témaköröket:
 ## <a name="download-sample"></a>Minta letöltése
 Az oktatóanyagban létrehozott kódot a következő kód tartalmazza: [minta](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

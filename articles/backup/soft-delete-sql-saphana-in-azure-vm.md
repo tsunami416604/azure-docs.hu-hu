@@ -3,12 +3,12 @@ title: Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP
 description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server és az Azure-beli virtuális gépek számítási feladatainak SAP HANAa hogyan teszi biztonságosabbá a biztonsági mentéseket
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4e001ee460d9b7106d928da32b1620fb117c6b5a
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825171"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022292"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
 
@@ -129,7 +129,7 @@ A biztonsági mentési elemek **DeleteState** visszaállnak a **NotDeleted**. A 
 
 A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és a törlés és az ismételt védelem (például egy tesztkörnyezetben) esetében nem várhatja el a szükséges 14 napot, az egyetlen olyan körülmény, amelyben érdemes megfontolni a Soft delete letiltását. A Soft delete letiltásával kapcsolatos utasításokért lásd: a [Soft delete engedélyezése és letiltása](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Soft delete [gyakori kérdéseinek](backup-azure-security-feature-cloud.md#frequently-asked-questions) áttekintése
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

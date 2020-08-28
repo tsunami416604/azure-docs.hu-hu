@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494666"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020507"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
 
@@ -29,7 +29,7 @@ Azure Monitor naplók a Felhőbeli és a helyszíni eszközök figyelési lehet�
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A támogatott Windows operációs rendszerekkel kapcsolatos részletekért tekintse meg a [log Analytics ügynök áttekintését](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) ismertető cikket.
+A támogatott Windows operációs rendszerekkel kapcsolatos részletekért tekintse meg az [Azure monitor ügynökök áttekintése](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) című cikket.
 
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és virtuálisgép-bővítmény verziója
 Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verziójának és Log Analytics ügynök csomagjának leképezését tartalmazza minden egyes kiadáshoz. 
@@ -86,7 +86,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 ```
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa |
+| Név | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
@@ -95,7 +95,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 | Munkaterület azonosítója (például) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
-\*A munkaterület azonosítója neve consumerId a Log Analytics API-ban.
+\* A munkaterület azonosítója neve consumerId a Log Analytics API-ban.
 
 > [!NOTE]
 > További tulajdonságok: Azure [-beli Windows-számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/agent-windows.md).
@@ -162,7 +162,7 @@ Ha a bővítmény JSON-fájlját a sablon gyökerébe helyezi, az erőforrás ne
 }
 ```
 
-## <a name="powershell-deployment"></a>PowerShell-telepítés
+## <a name="powershell-deployment"></a>A PowerShell telepítése
 
 A `Set-AzVMExtension` parancs használatával telepítheti a log Analytics Agent virtuálisgép-bővítményt egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni. 
 

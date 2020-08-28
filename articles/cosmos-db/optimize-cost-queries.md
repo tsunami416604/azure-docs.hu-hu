@@ -6,12 +6,13 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/24/2020
-ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c6ff67e3c1588f6671173d6fa1eec3dc15883291
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318266"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020915"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben
 
@@ -101,7 +102,7 @@ Vegye figyelembe a következő ajánlott eljárásokat a lekérdezések a Cost s
 
    A kérelem fejlécében visszaadott kérelem díja jelzi az adott lekérdezés költségeit. Ha például egy lekérdezés 1000 1 – KB elemet ad vissza, a művelet díja 1000. Mint ilyen, egy másodpercen belül a kiszolgáló csak két ilyen kérést értékel ki a későbbi kérelmek korlátozása előtt. További információ: a [kérelmek egységei](request-units.md) cikk és a kérési egység kalkulátora. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

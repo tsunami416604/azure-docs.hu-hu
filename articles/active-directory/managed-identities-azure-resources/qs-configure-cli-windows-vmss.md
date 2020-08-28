@@ -3,8 +3,8 @@ title: Felügyelt identitások konfigurálása a virtuálisgép-méretezési cso
 description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálásához egy Azure-beli virtuálisgép-méretezési csoporton az Azure CLI használatával.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: MarkusVi
+author: barclayn
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969307070d23f9892105b2f620ee839356f46330
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc0a9d049a2d70b8cd12856f2a124bee41144cc5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609172"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020439"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával
 
@@ -213,7 +213,7 @@ Ha a virtuálisgép-méretezési csoporthoz a rendszerhez hozzárendelt és a fe
 az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes Azure-beli virtuálisgép-méretezési csoport létrehozásával kapcsolatos gyors útmutató: 

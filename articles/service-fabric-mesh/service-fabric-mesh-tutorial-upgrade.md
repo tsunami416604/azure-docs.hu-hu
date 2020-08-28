@@ -5,13 +5,13 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devcenter, devx-track-csharp
+ms.openlocfilehash: 876359b45daa280a1f5701f2490ce505327f309b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75351721"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011004"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Service Fabric alkalmazások frissítése a Visual Studióval
 
@@ -61,7 +61,7 @@ Frissítjük a `WebFrontEnd_cpu` paramétert a CPU-erőforrások frissítéséhe
 > Alapértelmezés szerint a profil. YAML fájlhoz tartozó, a profil. YAML fájl értékeinek megadására szolgáló fájl.
 > Például a környezetek > a Cloud > Parameters. YAML megadja a környezeti paraméterek értékét > a Cloud > Profile. YAML.
 >
-> Ezt felülbírálhatja úgy, hogy hozzáadja a következőt a profil. YAML fájlhoz: `parametersFilePath=”relative or full path to the parameters file”` például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy`parametersFilePath=”..\CommonParameters.yaml”`
+> Ezt felülbírálhatja úgy, hogy hozzáadja a következőt a profil. YAML fájlhoz: `parametersFilePath=”relative or full path to the parameters file”` például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>A modell módosítása
 
@@ -151,7 +151,7 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure-ban futó webhelyet. Ekkor egy olyan weboldalt kell látnia, amely tartalmaz egy category (kategória) oszlopot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag a következőket ismertette:
 > [!div class="checklist"]

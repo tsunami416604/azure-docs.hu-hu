@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 07/08/2020
-ms.openlocfilehash: ca1129f0ef4f341773ebb7fea89ff9ec0881ca5b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8f01d0b9ba3394d33b9bd6e9f0b3f13fff2f844
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143047"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021374"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MariaDBhoz való biztonságos csatlakozáshoz
 A Azure Database for MariaDB támogatja a Azure Database for MariaDB-kiszolgáló SSL (SSL) használatával történő ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -63,7 +64,7 @@ Futtassa a MySQL **status** parancsot annak ellenőrzéséhez, hogy az SSL haszn
 ```sql
 status
 ```
-Ellenőrizze, hogy a kapcsolat titkosítva van-e a kimenet áttekintésével, amelynek a következőnek kell megjelennie: **SSL: a használatban lévő REJTJEL AES256-SHA** 
+Ellenőrizze, hogy a kapcsolat titkosítva van-e a kimenet áttekintésével, amelynek a következőnek kell megjelennie:  **SSL: a használatban lévő REJTJEL AES256-SHA** 
 
 ## <a name="sample-code"></a>Mintakód
 Ha biztonságos kapcsolatot szeretne létesíteni az alkalmazásból az SSL-kapcsolaton keresztül Azure Database for MariaDB, tekintse meg az alábbi kódrészleteket:

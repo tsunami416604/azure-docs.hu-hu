@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749016"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003881"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -24,7 +24,7 @@ A metrikák alapértelmezés szerint engedélyezve vannak. Az Azure digitális T
 
 1. Hozzon létre egy Azure Digital Twins-példányt. Az Azure Digital Twins-példányok beállításával kapcsolatos utasításokat itt találja: a [*példányok és a hitelesítés beállítása*](how-to-set-up-instance-scripted.md).
 
-2. Keresse meg az Azure Digital Twins-példányát a [Azure Portalban](https:/portal.azure.com) (Nyissa meg a lapot, és írja be a nevét a portál keresési sávjába). 
+2. Keresse meg az Azure Digital Twins-példányát a [Azure Portalban](https://portal.azure.com) (Nyissa meg a lapot, és írja be a nevét a portál keresési sávjába). 
 
     A példány menüjében válassza a **metrikák**lehetőséget.
    
@@ -107,6 +107,6 @@ A dimenziók segítenek azonosítani a metrikák további részleteit. Az útvá
 | Állapotkód osztálya | 2xx, 4xx, 5xx stb. |
 | Állapot szövege | Belső kiszolgálóhiba, nem található, és így tovább. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure Digital Twins rögzített metrikáinak kezelésével kapcsolatban, tekintse meg a [*Hibaelhárítás: diagnosztika beállítása*](troubleshoot-diagnostics.md)című témakört.

@@ -3,12 +3,13 @@ title: Azure Service Fabric DNS-szolgáltatás
 description: Használja a Service Fabric DNS-szolgáltatását, hogy a rendszer a fürtön belül felfedezzék a szolgáltatásait.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258913"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021272"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-szolgáltatás az Azure Service Fabricben
 A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
@@ -116,7 +117,7 @@ A szolgáltatás DNS-neve feloldható a fürtben, ezért fontos, hogy biztosíts
 Erősen ajánlott a elnevezési séma használata, `<ServiceDnsName>.<AppInstanceName>` például: `service1.application1` . Ha egy alkalmazás a Docker-összeállítás használatával lett telepítve, a rendszer automatikusan hozzárendeli a szolgáltatásokat a DNS-nevekhez ezen elnevezési séma használatával.
 
 ### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Az alapértelmezett szolgáltatás DNS-nevének beállítása a ApplicationManifest.xml
-Nyissa meg a projektet a Visual Studióban vagy a kedvenc szerkesztőjében, és nyissa meg a ApplicationManifest.xml fájlt. Lépjen az alapértelmezett szolgáltatások szakaszhoz, és minden szolgáltatáshoz adja hozzá az `ServiceDnsName` attribútumot. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás DNS-nevét a következőre`service1.application1`
+Nyissa meg a projektet a Visual Studióban vagy a kedvenc szerkesztőjében, és nyissa meg a ApplicationManifest.xml fájlt. Lépjen az alapértelmezett szolgáltatások szakaszhoz, és minden szolgáltatáshoz adja hozzá az `ServiceDnsName` attribútumot. Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás DNS-nevét a következőre `service1.application1`
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -143,7 +144,7 @@ Az alábbi példa egy állapot-nyilvántartó szolgáltatás DNS-nevét állítj
 ```
 
 ### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Egy szolgáltatás DNS-nevének beállítása a PowerShell használatával
-Megadhatja a szolgáltatás DNS-nevét a PowerShell-parancs használatával történő létrehozásakor `New-ServiceFabricService` . A következő példa egy új állapot nélküli szolgáltatást hoz létre a DNS-névvel`service1.application1`
+Megadhatja a szolgáltatás DNS-nevét a PowerShell-parancs használatával történő létrehozásakor `New-ServiceFabricService` . A következő példa egy új állapot nélküli szolgáltatást hoz létre a DNS-névvel `service1.application1`
 
 ```powershell
     New-ServiceFabricService `
@@ -170,12 +171,12 @@ A partíciót tároló DNS-lekérdezések a következőképpen vannak formázva:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Ahol:
+Ebben a példában:
 
 - *Első – a particionált-Service-DNSName* az első része a szolgáltatás DNS-nevének.
-- A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "--". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "--". További információ:  [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - *Cél – a partíció* neve a partíció neve. 
-- A *PartitionSuffix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték üres karakterlánc. További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
+- A *PartitionSuffix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték üres karakterlánc. További információ:  [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
 - A *tovább particionált-Service-DNSName* a szolgáltatás DNS-neve hátralévő része.
 
 Az alábbi példák a fürtön futó particionált szolgáltatások DNS-lekérdezéseit mutatják be, amelyek alapértelmezett beállításai a következők `PartitionPrefix` `PartitionSuffix` : 

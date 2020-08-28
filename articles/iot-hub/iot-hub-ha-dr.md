@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260172"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021428"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub magas rendelkezésre állása és vészhelyreállítása
 
@@ -57,12 +57,14 @@ Mindkét feladatátvételi beállítás a következő helyreállítási pontok c
 
 <sup>1</sup> A felhőből az eszközre irányuló üzenetek és a fölérendelt feladatok nem állíthatók helyre a manuális feladatátvétel részeként.
 
-Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről és a háttérbeli alkalmazásokról érkező összes művelet manuális beavatkozás nélkül is működni fog. Ez azt jelenti, hogy az eszközről a felhőbe irányuló üzenetek továbbra is működőképesek maradnak, és a teljes eszköz beállításjegyzéke érintetlen. A Event Grid használatával kibocsátott események a korábban konfigurált előfizetéseken keresztül is felhasználhatók, feltéve, hogy a Event Grid-előfizetések továbbra is elérhetők.
+Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről és a háttérbeli alkalmazásokról érkező összes művelet manuális beavatkozás nélkül is működni fog. Ez azt jelenti, hogy az eszközről a felhőbe irányuló üzenetek továbbra is működőképesek maradnak, és a teljes eszköz beállításjegyzéke érintetlen. A Event Grid használatával kibocsátott események a korábban konfigurált előfizetéseken keresztül is felhasználhatók, feltéve, hogy a Event Grid-előfizetések továbbra is elérhetők. Az egyéni végpontok esetében nincs szükség további kezelésére.
 
 > [!CAUTION]
-> - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül az alkalmazásban, akkor a művelet folytatásához le kell [kérnie az új Event hub-kompatibilis végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a feladatátvétel után. Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített végponthoz, előfordulhat, hogy **újra kell indítania**a műveletet.
+> - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül az alkalmazásban, akkor a művelet folytatásához le kell [kérnie az új Event hub-kompatibilis végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a feladatátvétel után. 
 >
-> - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. 
+> - Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített események végponthoz, előfordulhat, hogy **újra kell indítania**a műveletet. Ennek az az oka, hogy a feladatátvétel során a korábbi eltolások már nem érvényesek.
+>
+> - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. További információ: [Azure Storage útválasztási végpontként](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft által kezdeményezett feladatátvétel
 
@@ -132,8 +134,8 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 | HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincs|Nincs|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincs|
+| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincsenek|Nincsenek|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincsenek|
 | Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magas|> 1 IoT hub díja|
 
 ## <a name="next-steps"></a>Következő lépések

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: a39871fd6e2aef2e5120030d17192bb32ba2613b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717778"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003473"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD jelszavas védelem a helyszínen – gyakori kérdések
 
@@ -47,6 +47,14 @@ A jelszó módosítása akkor történik meg, amikor egy felhasználó új jelsz
 A jelszó beállítása (más néven jelszó-visszaállítás) az, amikor egy rendszergazda új jelszóval helyettesíti egy fiók jelszavát, például a Active Directory felhasználók és számítógépek felügyeleti eszköz használatával. Ehhez a művelethez magas szintű jogosultság szükséges (általában tartományi rendszergazda), és a műveletet végző személy általában nem ismeri a régi jelszót. Az ügyfélszolgálati forgatókönyvek gyakran jelszavas készleteket végeznek, például olyan felhasználók számára, akik elfelejtették a jelszavukat. A jelszó-megadási eseményeket is látni fogja, ha új felhasználói fiókot hoz létre első alkalommal egy jelszóval.
 
 A jelszó-ellenőrzési házirend ugyanúgy viselkedik, függetlenül attól, hogy megtörtént-e a jelszó módosítása vagy beállítása. Az Azure AD Password Protection DC Agent szolgáltatás különböző eseményeket naplóz, hogy megtudja, van-e jelszó-módosítási vagy-beállítási művelet.  Lásd: [Az Azure ad jelszavas védelem figyelése és naplózása](./howto-password-ban-bad-on-premises-monitor.md).
+
+**K: az Azure AD jelszavas védelme a telepítés után érvényesíti a meglévő jelszavakat?**
+
+Nem – az Azure AD jelszavas védelme csak jelszó-módosítási vagy-beállítási művelet esetén képes a jelszavas házirendeket a titkosítatlan jelszavakon érvényesíteni. Miután a Active Directory fogadta el a jelszót, a rendszer csak a jelszó hitelesítési protokoll-specifikus kivonatait őrzi meg. A tiszta szöveges jelszó soha nem marad meg, ezért az Azure AD jelszavas védelme nem tudja érvényesíteni a meglévő jelszavakat.
+
+Az Azure AD jelszavas védelem kezdeti üzembe helyezése után az összes felhasználó és fiók végül egy Azure AD jelszavas védelem-érvényesített jelszót használ, mivel a meglévő jelszavaik általában az idő múlásával lejárnak. Ha szükséges, ezt a folyamatot a felhasználói fiókok jelszavainak egyszeri manuális lejáratával gyorsíthatja fel.
+
+A "jelszó soha nem jár le" beállítással konfigurált fiókok soha nem lesznek kényszerítve a jelszavuk módosítására, kivéve, ha a manuális lejáratra sor kerül.
 
 **K: miért történik a duplikált jelszó-elutasítási események naplózása, amikor gyenge jelszót próbál beállítani a Active Directory felhasználók és számítógépek kezelése beépülő modullal?**
 
@@ -157,7 +165,7 @@ Az alábbi hivatkozások nem részei az Azure AD jelszavas védelem alapszintű 
 
 Ha többet szeretne megtudni az Azure AD jelszavas védelméről, és üzembe helyezi azt a környezetében, kihasználhatja a Microsoft proaktív szolgáltatásának előnyeit a Premier vagy Unified támogatási szerződéssel rendelkező ügyfelek számára. A szolgáltatás neve Azure Active Directory: jelszavas védelem. További információért forduljon a technikai fiók kezelőjéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha van olyan helyszíni Azure AD-beli jelszavas védelem kérdése, amely itt nem válaszol, küldje el az alábbi visszajelzési elemeket – Köszönjük!
 

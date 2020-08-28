@@ -7,12 +7,13 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 84f89b9def3fc5d98ebb669b9f5b86523854f7a8
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cf9c34dc2dde5c41edb7991451aebf5d90104196
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185723"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003252"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v4)
 
@@ -106,7 +107,7 @@ Adja hozzá a következő irányelveket a kód elejéhez:
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A Key Vault neve a "https://. vault.azure.net" formátumban van kibontva a Key Vault URI-ra \<your-key-vault-name\> . Az alábbi kód a Key Vault hitelesítéséhez használja a ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) értéket, amely környezeti változókat olvas be a hozzáférési jogkivonat lekéréséhez. 
+A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A Key Vault neve a "https://. vault.azure.net" formátumban van kibontva a Key Vault URI-ra \<your-key-vault-name\> . Az alábbi kód a Key Vault hitelesítéséhez használja a  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) értéket, amely környezeti változókat olvas be a hozzáférési jogkivonat lekéréséhez. 
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 

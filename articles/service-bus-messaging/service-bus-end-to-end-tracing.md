@@ -3,12 +3,13 @@ title: Végpontok közötti nyomkövetés és diagnosztika Azure Service Bus | M
 description: Az Service Bus-ügyfél diagnosztika és a végpontok közötti nyomkövetés áttekintése (ügyfél a feldolgozásban részt vevő összes szolgáltatáson keresztül)
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340724"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021629"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetés és korreláció Service Bus üzenetkezelésen keresztül
 
@@ -20,7 +21,7 @@ Amikor egy gyártó üzenetet küld egy várólistán keresztül, általában eg
 Microsoft Azure Service Bus üzenetkezelés olyan adattartalom-tulajdonságokat adott meg, amelyeket a gyártóknak és a felhasználóknak az ilyen nyomkövetési környezet továbbítására kell használniuk.
 A protokoll a [http korrelációs protokollon](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)alapul.
 
-| Tulajdonság neve        | Description                                                 |
+| Tulajdonság neve        | Leírás                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnosztikai azonosító       | Egy külső hívás egyedi azonosítója a termelőről a várólistára. A logika, a szempontok és a formátum érdekében olvassa el a [HTTP protokollon keresztüli kérelem-azonosítót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
 |  Korreláció – környezet | A műveleti környezet, amelyet a rendszer a művelet-feldolgozásban részt vevő összes szolgáltatás között propagál. További információ: [korrelációs környezet a http protokollban](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -86,7 +87,7 @@ Ha a nyomkövetési rendszer nem támogatja az automatikus Service Bus a hívás
 
 Service Bus .NET-ügyfél a .NET nyomkövetési primitívek [System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) és [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)használatával lett kialakítva.
 
-`Activity`nyomkövetési kontextusként szolgál, miközben `DiagnosticSource` egy értesítési mechanizmus. 
+`Activity` nyomkövetési kontextusként szolgál, miközben `DiagnosticSource` egy értesítési mechanizmus. 
 
 Ha nincs figyelő a DiagnosticSource eseményekhez, a rendszer kikapcsolja a rendszerállapot-figyelési költségeket. A DiagnosticSource minden vezérlést biztosít a figyelőnek:
 - a figyelő vezérli, hogy mely forrásokhoz és eseményekhez kell figyelni
@@ -142,8 +143,8 @@ Minden művelethez két eseményt kell elküldeni: "Start" és "Leállítás". L
 Az esemény-adattartalom egy figyelőt biztosít a művelet kontextusában, és replikálja az API bejövő paramétereit és a visszatérési értéket. A "stop" esemény adattartalma rendelkezik a "Start" esemény hasznos adataival, így teljesen figyelmen kívül hagyhatja a "Start" eseményt.
 
 Az összes esemény "Entity" és "Endpoint" tulajdonságokkal is rendelkezik, ezeket a rendszer az alábbi táblázatban hagyja ki
-  * `string Entity`– Az entitás neve (Üzenetsor, témakör stb.)
-  * `Uri Endpoint`– Service Bus végpont URL-címe
+  * `string Entity` – Az entitás neve (Üzenetsor, témakör stb.)
+  * `Uri Endpoint` – Service Bus végpont URL-címe
 
 Minden "Leállítás" eseménynek van olyan `Status` tulajdonsága, `TaskStatus` amely aszinkron művelettel fejeződött be, és az egyszerűség kedvéért a következő táblázatban is kimarad.
 
@@ -151,33 +152,33 @@ Itt látható a műszeres műveletek teljes listája:
 
 | Művelet neve | Követett API | Adott hasznos adat tulajdonságai|
 |----------------|-------------|---------|
-| Microsoft. Azure. ServiceBus. Send | [MessageSender. SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`– Küldendő üzenetek listája |
-| Microsoft. Azure. ServiceBus. ScheduleMessage | [MessageSender. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`– Feldolgozott üzenet<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`– Ütemezett üzenet eltolása<br/>`long SequenceNumber`– Ütemezett üzenet sorszáma ("stop" esemény hasznos adat) |
-| Microsoft. Azure. ServiceBus. cancel | [MessageSender. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`– A megszakítani kívánt üzenet sorszáma | 
-| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`– A fogadott üzenetek maximális száma.<br/>`IList<Message> Messages`– Fogadott üzenetek listája ("stop" esemény hasznos adat) |
-| Microsoft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`– A kiindulási pont, amelyből a rendszer megkeresi az üzenetek kötegét.<br/>`int RequestedMessageCount`– A lekérdezni kívánt üzenetek száma.<br/>`IList<Message> Messages`– Fogadott üzenetek listája ("stop" esemény hasznos adat) |
-| Microsoft. Azure. ServiceBus. ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`– A Beérkezendő sorozatszámokat tartalmazó lista.<br/>`IList<Message> Messages`– Fogadott üzenetek listája ("stop" esemény hasznos adat) |
-| Microsoft. Azure. ServiceBus. Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`– A megfelelő üzenetek zárolási jogkivonatait tartalmazó lista.|
-| Microsoft. Azure. ServiceBus. elhagyása | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`– A felhagyni kívánt üzenet zárolási jogkivonata. |
-| Microsoft. Azure. ServiceBus. Elhalasztva | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`– Az elhalasztáshoz tartozó üzenet zárolási jogkivonata. | 
-| Microsoft. Azure. ServiceBus. kézbesítetlen levelek | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`– A megfelelő üzenet zárolási jogkivonata a kézbesítetlen levelekhez. | 
-| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`– A zárolás megújításához tartozó üzenet zárolási jogkivonata.<br/>`DateTime LockedUntilUtc`-Új zárolási token lejárati dátuma és időpontja UTC formátumban. ("Stop" esemény hasznos adat)|
-| Microsoft. Azure. ServiceBus. Process | Az [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) üzenet-kezelő lambda függvénye | `Message Message`– Az üzenet feldolgozása folyamatban van. |
-| Microsoft. Azure. ServiceBus. ProcessSession | Az [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) üzenet munkamenet-kezelője lambda-funkciója | `Message Message`– Az üzenet feldolgozása folyamatban van.<br/>`IMessageSession Session`– Feldolgozás alatt álló munkamenet |
-| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`– A szabály által felvenni kívánt szabály leírása. |
-| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`– Az eltávolítandó szabály neve. |
-| Microsoft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`– Az előfizetéshez társított összes szabály. (Csak az adattartalom leállítása) |
-| Microsoft. Azure. ServiceBus. AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`– Az üzenetekben megtalálható munkamenet-azonosító. |
-| Microsoft. Azure. ServiceBus. GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`– Az üzenetekben megtalálható munkamenet-azonosító.<br/>`byte [] State`-Munkamenet állapota ("stop" esemény hasznos adat) |
-| Microsoft. Azure. ServiceBus. SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`– Az üzenetekben megtalálható munkamenet-azonosító.<br/>`byte [] State`-Munkamenet állapota |
-| Microsoft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`– Az üzenetekben megtalálható munkamenet-azonosító. |
-| Microsoft. Azure. ServiceBus. Exception | bármilyen műszeres API| `Exception Exception`– Kivétel példánya |
+| Microsoft. Azure. ServiceBus. Send | [MessageSender. SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` – Küldendő üzenetek listája |
+| Microsoft. Azure. ServiceBus. ScheduleMessage | [MessageSender. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` – Feldolgozott üzenet<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` – Ütemezett üzenet eltolása<br/>`long SequenceNumber` – Ütemezett üzenet sorszáma ("stop" esemény hasznos adat) |
+| Microsoft. Azure. ServiceBus. cancel | [MessageSender. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` – A megszakítani kívánt üzenet sorszáma | 
+| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` – A fogadott üzenetek maximális száma.<br/>`IList<Message> Messages` – Fogadott üzenetek listája ("stop" esemény hasznos adat) |
+| Microsoft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` – A kiindulási pont, amelyből a rendszer megkeresi az üzenetek kötegét.<br/>`int RequestedMessageCount` – A lekérdezni kívánt üzenetek száma.<br/>`IList<Message> Messages` – Fogadott üzenetek listája ("stop" esemény hasznos adat) |
+| Microsoft. Azure. ServiceBus. ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` – A Beérkezendő sorozatszámokat tartalmazó lista.<br/>`IList<Message> Messages` – Fogadott üzenetek listája ("stop" esemény hasznos adat) |
+| Microsoft. Azure. ServiceBus. Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` – A megfelelő üzenetek zárolási jogkivonatait tartalmazó lista.|
+| Microsoft. Azure. ServiceBus. elhagyása | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` – A felhagyni kívánt üzenet zárolási jogkivonata. |
+| Microsoft. Azure. ServiceBus. Elhalasztva | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` – Az elhalasztáshoz tartozó üzenet zárolási jogkivonata. | 
+| Microsoft. Azure. ServiceBus. kézbesítetlen levelek | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` – A megfelelő üzenet zárolási jogkivonata a kézbesítetlen levelekhez. | 
+| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` – A zárolás megújításához tartozó üzenet zárolási jogkivonata.<br/>`DateTime LockedUntilUtc` -Új zárolási token lejárati dátuma és időpontja UTC formátumban. ("Stop" esemény hasznos adat)|
+| Microsoft. Azure. ServiceBus. Process | Az [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) üzenet-kezelő lambda függvénye | `Message Message` – Az üzenet feldolgozása folyamatban van. |
+| Microsoft. Azure. ServiceBus. ProcessSession | Az [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) üzenet munkamenet-kezelője lambda-funkciója | `Message Message` – Az üzenet feldolgozása folyamatban van.<br/>`IMessageSession Session` – Feldolgozás alatt álló munkamenet |
+| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` – A szabály által felvenni kívánt szabály leírása. |
+| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` – Az eltávolítandó szabály neve. |
+| Microsoft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` – Az előfizetéshez társított összes szabály. (Csak az adattartalom leállítása) |
+| Microsoft. Azure. ServiceBus. AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` – Az üzenetekben megtalálható munkamenet-azonosító. |
+| Microsoft. Azure. ServiceBus. GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` – Az üzenetekben megtalálható munkamenet-azonosító.<br/>`byte [] State` -Munkamenet állapota ("stop" esemény hasznos adat) |
+| Microsoft. Azure. ServiceBus. SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` – Az üzenetekben megtalálható munkamenet-azonosító.<br/>`byte [] State` -Munkamenet állapota |
+| Microsoft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` – Az üzenetekben megtalálható munkamenet-azonosító. |
+| Microsoft. Azure. ServiceBus. Exception | bármilyen műszeres API| `Exception Exception` – Kivétel példánya |
 
 Minden esetben elérheti a `Activity.Current` jelenlegi műveleti környezetet.
 
 #### <a name="logging-additional-properties"></a>További tulajdonságok naplózása
 
-`Activity.Current`részletes kontextust biztosít a jelenlegi művelet és a szülei számára. További információt a [tevékenység dokumentációjában](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) talál.
+`Activity.Current` részletes kontextust biztosít a jelenlegi művelet és a szülei számára. További információt a [tevékenység dokumentációjában](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) talál.
 Service Bus a rendszerállapot-kialakítás további információkat biztosít a `Activity.Current.Tags` -ban `MessageId` , és `SessionId` Ha elérhetővé válik.
 
 A "Receive", "Peek" és "ReceiveDeferred" eseményt nyomon követő tevékenységek címkével is rendelkezhetnek `RelatedTo` . A `Diagnostic-Id` szolgáltatás az eredményként kapott üzenetek különböző listáját tartalmazza.
@@ -201,17 +202,17 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Szűrés és mintavételezés
 
 Bizonyos esetekben érdemes az események egy részét naplózni, hogy csökkentse a teljesítmény terhelését vagy a tárterület felhasználását. A "Leállítás" eseményeket csak (az előző példában látható módon) vagy az események mintájának százalékában állíthatja be. 
-`DiagnosticSource`a predikátummal való megvalósításának módja `IsEnabled` . További információ: [környezetfüggő szűrés a DiagnosticSource-ben](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+`DiagnosticSource` a predikátummal való megvalósításának módja `IsEnabled` . További információ: [környezetfüggő szűrés a DiagnosticSource-ben](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
-`IsEnabled`a teljesítményre gyakorolt hatás csökkentése érdekében többször is meghívható egyetlen műveletre.
+`IsEnabled` a teljesítményre gyakorolt hatás csökkentése érdekében többször is meghívható egyetlen műveletre.
 
-`IsEnabled`a következő sorba van meghívva:
+`IsEnabled` a következő sorba van meghívva:
 
-1. `IsEnabled(<OperationName>, string entity, null)`például: `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Vegye figyelembe, hogy a végén nincs "Start" vagy "stop". Használatával kiszűrheti az adott műveleteket vagy várólistákat. Ha visszahívást ad vissza `false` , a rendszer nem küldi el az eseményeket a művelethez.
+1. `IsEnabled(<OperationName>, string entity, null)` például: `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Vegye figyelembe, hogy a végén nincs "Start" vagy "stop". Használatával kiszűrheti az adott műveleteket vagy várólistákat. Ha visszahívást ad vissza `false` , a rendszer nem küldi el az eseményeket a művelethez.
 
    * A "Process" és a "ProcessSession" műveletekhez `IsEnabled(<OperationName>, string entity, Activity activity)` visszahívást is kap. Használatával szűrheti az eseményeket a vagy a `activity.Id` címkék tulajdonságai alapján.
   
-2. `IsEnabled(<OperationName>.Start)`például: `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Ellenőrzi, hogy a "Start" eseményt el kell-e indítani. Az eredmény csak a "Start" eseményt érinti, azonban a további rendszerállapotok nem függenek tőle.
+2. `IsEnabled(<OperationName>.Start)` például: `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Ellenőrzi, hogy a "Start" eseményt el kell-e indítani. Az eredmény csak a "Start" eseményt érinti, azonban a további rendszerállapotok nem függenek tőle.
 
 `IsEnabled`A "stop" esemény nem érhető el.
 
@@ -221,7 +222,7 @@ Ha valamilyen művelet eredménye kivétel, `IsEnabled("Microsoft.Azure.ServiceB
 
 Több figyelő jelenléte `DiagnosticSource` ugyanazon a forrásnál elég ahhoz, hogy csak egy figyelő fogadja el az eseményt, ezért `IsEnabled` nem biztos, hogy meghívja,
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Korreláció Application Insights](../azure-monitor/app/correlation.md)
 * [Application Insights a függőségek figyelésével](../azure-monitor/app/asp-net-dependencies.md) ellenőrizheti, hogy a REST, az SQL vagy más külső erőforrások lassulnak-e.

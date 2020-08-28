@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5a4f436f6f5542db289ed219a240a68db5c2065b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072014"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021527"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services 
 
@@ -61,7 +62,7 @@ A következő táblázat összefoglalja az egyes DRM által támogatott natív p
 | **Ügyfélplatform** | **Natív DRM-támogatás** | **Böngésző/alkalmazás** | **Folyamatos átviteli formátumok** |
 | --- | --- | --- | --- |
 | **Intelligens TV-k, kezelő STBs, OTT STBs** |PlayReady elsősorban és/vagy Widevine, és/vagy egyéb |Linux, Opera, WebKit, egyéb |Különböző formátumok |
-| **Windows 10-es eszközök (Windows PC, Windows Tablet, Windows Phone-telefon, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Univerzális Windows-platform |DASH (a HLS esetében a PlayReady nem támogatott)<br/><br/>DASH, Smooth Streaming (a HLS esetében a PlayReady nem támogatott) |
+| **Windows 10-es eszközök (Windows PC, Windows Tablet, Windows Phone-telefon, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Universal Windows Platform |DASH (a HLS esetében a PlayReady nem támogatott)<br/><br/>DASH, Smooth Streaming (a HLS esetében a PlayReady nem támogatott) |
 | **Android-eszközök (telefon, Tablet, TV)** |Widevine |Chrome/EME |KÖTŐJEL, HLS |
 | **iOS (iPhone, iPad), OS X-ügyfelek és Apple TV** |FairPlay |Safari 8 +/EME |HLS |
 
@@ -470,7 +471,7 @@ Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetri
 
 Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a dokumentum a többszörös natív DRM-mel és hozzáférés-vezérléssel, a CENC, annak kialakításával és az Azure, Media Services és Media Player használatával történő megvalósításával kapcsolatban tárgyalt.
 

@@ -13,12 +13,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: be39c9390dacf6ae0fb44157f6185c5cf17a8725
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091895"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021221"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Videó kivágása Media Services-.NET-kódolással
 
@@ -89,6 +90,6 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kódolás egyéni átalakítással](customize-encoder-presets-how-to.md) 

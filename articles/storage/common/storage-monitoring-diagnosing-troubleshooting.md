@@ -8,13 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011038"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -806,7 +806,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

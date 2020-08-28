@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: eee718627f35154c878c717e02febe0ea7958fe6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df84761edf605f1dda087569f95749e5b9c5c7b6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000550"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021102"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay-streamelés iOS-hez 
 
@@ -249,7 +250,7 @@ Minta boot.xml fájl:
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelyekkel az FPS offline üzemmódot implementálhatja:
 
 * Media Services a tartalomvédelem konfigurálása a Media Services .NET API-val a dinamikus FairPlay-titkosítás és a FairPlay-licenc kézbesítése a Media Servicesban.
@@ -257,6 +258,6 @@ Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelye
 * A minta FPS-videók az offline üzemmód és az online streaming tesztelésére szolgálnak.
 * A gyakori kérdések az FPS kapcsolat nélküli üzemmódra vonatkozó kérdésekre adnak választ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

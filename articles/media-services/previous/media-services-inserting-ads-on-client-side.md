@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 93b449636282568ab614b42a46d939935f576895
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594865"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021306"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések beszúrása az ügyféloldali oldalon
 Ez a cikk azt ismerteti, hogyan szúrhat be különféle típusú hirdetéseket az ügyfél oldalán.
@@ -160,7 +161,7 @@ A nem lineáris hirdetések egy `<Creative>` elemben is meg vannak adva. Az alá
     </Creative>
 ```
 
-A <**NonLinearAds**> elem egy vagy több <nem **lineáris**> elemet tartalmazhat, amelyek mindegyike egy nem lineáris ad-t tud leírni. A <**nemlineáris**> elem a nemlineáris ad erőforrását adja meg. Az erőforrás lehet egy <**StaticResource**>, egy <**IFrameResource**> vagy egy <**HTMLResource**>. \<**StaticResource**>a nem HTML típusú erőforrásokat ismerteti, és definiál egy creativeType attribútumot, amely megadja az erőforrás megjelenését:
+A <**NonLinearAds**> elem egy vagy több <nem **lineáris**> elemet tartalmazhat, amelyek mindegyike egy nem lineáris ad-t tud leírni. A <**nemlineáris**> elem a nemlineáris ad erőforrását adja meg. Az erőforrás lehet egy <**StaticResource**>, egy <**IFrameResource**> vagy egy <**HTMLResource**>. \<**StaticResource**> a nem HTML típusú erőforrásokat ismerteti, és definiál egy creativeType attribútumot, amely megadja az erőforrás megjelenését:
 
 Rendszerkép/GIF, rendszerkép/JPEG, rendszerkép/png – az erőforrás egy HTML <**img**> címkében jelenik meg.
 
@@ -239,9 +240,9 @@ A `<AdBreak>` elemen belül egy <**AdSource**> elem lehet. A <**AdSource**> elem
 
 A <**AdSource**> elem egy beágyazott ad-választ vagy egy ad-válaszra mutató hivatkozást biztosít a lejátszónak. A következő elemek egyikét tartalmazhatja:
 
-* `<VASTAdData>`azt jelzi, hogy egy hatalmas ad-válasz van beágyazva a VMAP-fájlba
-* `<AdTagURI>`egy másik rendszer ad-válaszára hivatkozó URI
-* `<CustomAdData>`– tetszőleges karakterlánc, amely nem nagy választ jelöl
+* `<VASTAdData>` azt jelzi, hogy egy hatalmas ad-válasz van beágyazva a VMAP-fájlba
+* `<AdTagURI>` egy másik rendszer ad-válaszára hivatkozó URI
+* `<CustomAdData>` – tetszőleges karakterlánc, amely nem nagy választ jelöl
 
 Ebben a példában egy beágyazott ad-válasz van megadva egy olyan elemmel, `<VASTAdData>` amely egy hatalmas ad-választ tartalmaz. További információt a többi elemről a következő témakörben talál: [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
@@ -276,7 +277,7 @@ A következő példa egy VMAP-fájlt mutat be, amely meghatározza a követési 
     </vmap:VMAP>
 ```
 
-További információ a <**TrackingEvents**> elemről és annak gyermekeiről:http://iab.net/VMAP.pdf
+További információ a <**TrackingEvents**> elemről és annak gyermekeiről: http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Média absztrakt előkészítési sablon (MAST) fájl használata
 A MAST-fájlok lehetővé teszik olyan eseményindítók megadását, amelyek meghatározzák, hogy mikor jelenjen meg egy hirdetés. A következő példában egy olyan MAST-fájl látható, amely egy előre elküldhető ad-hoz, egy közép-és egy, a post-roll ad-hoz tartozó eseményindítókat tartalmaz.
@@ -327,7 +328,7 @@ A MAST-fájlok lehetővé teszik olyan eseményindítók megadását, amelyek me
 
 Egy MAST-fájl egy olyan **Mast** elemmel kezdődik, amely egy **eseményindító** elemet tartalmaz. Az `<triggers>` elem egy vagy több **trigger** elemet tartalmaz, amelyek meghatározzák, hogy mikor kell lejátszani egy adott hirdetést.
 
-Az **trigger** elem egy **startConditions** elemet tartalmaz, amely megadja, hogy mikor kell elkezdeni a lejátszást. A **startConditions** elem egy vagy több `<condition>` elemet tartalmaz. Ha minden `<condition>` kiértékelés igaz értéket ad meg, akkor a `<condition>` rendszer a **startConditions** vagy **endConditions** elemben található, attól függően kezdeményezi vagy visszavonja az aktiválást. Ha több `<condition>` elem van jelen, a rendszer implicit módon kezeli őket, vagy ha az igaz értékre van kiértékelve, a trigger kezdeményezhető lesz. `<condition>`az elemek egymásba ágyazhatók. Ha `<condition>` a gyermek elemek előre vannak beállítva, a rendszer implicitként kezeli őket, és minden feltételnek igaz értéket kell kiértékelnie, hogy az trigger kezdeményezzen. Az `<condition>` elem a következő attribútumokat tartalmazza, amelyek meghatározzák a feltételt:
+Az **trigger** elem egy **startConditions** elemet tartalmaz, amely megadja, hogy mikor kell elkezdeni a lejátszást. A **startConditions** elem egy vagy több `<condition>` elemet tartalmaz. Ha minden `<condition>` kiértékelés igaz értéket ad meg, akkor a `<condition>` rendszer a **startConditions** vagy **endConditions** elemben található, attól függően kezdeményezi vagy visszavonja az aktiválást. Ha több `<condition>` elem van jelen, a rendszer implicit módon kezeli őket, vagy ha az igaz értékre van kiértékelve, a trigger kezdeményezhető lesz. `<condition>` az elemek egymásba ágyazhatók. Ha `<condition>` a gyermek elemek előre vannak beállítva, a rendszer implicitként kezeli őket, és minden feltételnek igaz értéket kell kiértékelnie, hogy az trigger kezdeményezzen. Az `<condition>` elem a következő attribútumokat tartalmazza, amelyek meghatározzák a feltételt:
 
 1. **Type (típus** ) – a feltétel, az esemény vagy a tulajdonság típusát adja meg.
 2. **név** – a kiértékelés során használandó tulajdonság vagy esemény neve

@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513111"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021731"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a .NET-ben
 
@@ -144,7 +144,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
 
-Adja hozzá ezeket a sorokat, és frissítse az URI-t, hogy az tükrözze a `vaultUri` kulcstartót. Az alábbi kód az ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén.
+Adja hozzá ezeket a sorokat, és frissítse az URI-t, hogy az tükrözze a `vaultUri` kulcstartót. Az alábbi kód az  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén.
 
 ```csharp
   class Program
@@ -201,7 +201,7 @@ Adja hozzá ezeket a sorokat, és frissítse az URI-t, hogy az tükrözze a `vau
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

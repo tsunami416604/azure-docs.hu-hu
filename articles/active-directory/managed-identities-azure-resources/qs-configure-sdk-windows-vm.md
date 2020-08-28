@@ -3,7 +3,7 @@ title: SDK használata felügyelt identitások konfigurálásához egy virtuáli
 description: Részletes útmutató az Azure-beli virtuális gépeken az Azure-erőforrások felügyelt identitásának konfigurálásához és használatához az Azure SDK használatával.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9472f9fa2084a1665b4a103df359fd3b4f19d6ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b4b55fa5a21ce56d27505a724bcf08f1a893c71
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609044"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003456"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure-erőforrások felügyelt identitással rendelkező virtuális gépek konfigurálása Azure SDK használatával
 
@@ -46,6 +46,6 @@ Az Azure több programozási platformot is támogat az [Azure SDK](https://azure
 | Python | [Virtuális gép létrehozása rendszerhez rendelt felügyelt identitással](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
 | Ruby   | [Azure-beli virtuális gép létrehozása rendszer által hozzárendelt identitással](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az **Azure virtuális gép identitásának konfigurálása**című kapcsolódó cikket, amelyből megtudhatja, hogyan használhatja a Azure Portal, a PowerShell, a CLI és az erőforrás-sablonokat is.

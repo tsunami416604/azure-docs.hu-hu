@@ -7,12 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 5931311368a6389386adb689a505feeeed03b29c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289179"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011293"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a .NET-hez
 
@@ -326,7 +327,7 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket az aszinkron .NET-kód használatával. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 

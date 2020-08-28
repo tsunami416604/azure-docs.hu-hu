@@ -1,43 +1,56 @@
 ---
-title: Ügyfél által felügyelt kulcs lemezének titkosítása az Azure HDInsight
-description: Ez a cikk azt ismerteti, hogyan használható a Azure Key Vault saját titkosítási kulcsa a felügyelt lemezeken tárolt adatok titkosításához az Azure HDInsight-fürtökben.
+title: A REST-adatok kettős titkosítása
+titleSuffix: Azure HDInsight
+description: Ez a cikk az Azure HDInsight-fürtökön tárolt adatok számára elérhető két titkosítási réteget ismerteti.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/10/2020
+ms.openlocfilehash: a78b56de537cfac0da48814afe9b07d911a61af1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387846"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020760"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
+# <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
-Az Azure HDInsight támogatja az ügyfél által felügyelt kulcs titkosítását a felügyelt lemezeken és a HDInsight-fürt virtuális gépei számára csatolt erőforrás-lemezeken. Ez a funkció lehetővé teszi, hogy a Azure Key Vault segítségével kezelje a HDInsight-fürtökön tárolt adatok védelmét biztosító titkosítási kulcsokat.
+Ez a cikk az Azure HDInsight-fürtökben lévő inaktív adatok titkosításának módszereit ismerteti. Az inaktív adatok titkosítása a felügyelt lemezeken (adatlemezeken, operációsrendszer-lemezeken és ideiglenes lemezeken) a HDInsight-fürt virtuális gépekhez csatolt titkosítást jelenti. 
 
-A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) védelemmel van ellátva. Alapértelmezés szerint ezeknek a lemezeknek az adatai a Microsoft által felügyelt kulcsokkal vannak titkosítva. Ha engedélyezi az ügyfél által felügyelt kulcsokat a HDInsight, akkor a HDInsight titkosítási kulcsainak használata és a kulcsok kezelése Azure Key Vault használatával.
-
-Ez a dokumentum nem foglalkozik az Azure Storage-fiókban tárolt adataival. Az Azure Storage encryption szolgáltatással kapcsolatos további információkért lásd: [Az Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md). Előfordulhat, hogy a fürtök egy vagy több mellékelt Azure Storage-fiókkal rendelkeznek, amelyekben a titkosítási kulcsok Microsoft által felügyelt vagy felhasználó által felügyelt, de a titkosítási szolgáltatás eltérő.
+Ez a dokumentum nem foglalkozik az Azure Storage-fiókban tárolt adataival. Előfordulhat, hogy a fürtök egy vagy több mellékelt Azure Storage-fiókkal rendelkeznek, amelyekben a titkosítási kulcsok Microsoft által felügyelt vagy felhasználó által felügyelt, de a titkosítási szolgáltatás eltérő. Az Azure Storage encryption szolgáltatással kapcsolatos további információkért lásd: [Az Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
 
 ## <a name="introduction"></a>Bevezetés
 
-Az ügyfél által felügyelt kulcs titkosítása egy egylépéses folyamat, amelyet a fürt létrehozása során a további díjak nélkül kezelnek. Mindössze annyit kell tennie, hogy felügyelt identitásként regisztrálja a HDInsight-t Azure Key Vault és hozzáadja a titkosítási kulcsot a fürt létrehozásakor.
+Az Azure-ban három fő felügyelt lemez szerepkör található: az adatlemez, az operációsrendszer-lemez és az ideiglenes lemez. A felügyelt lemezek különböző típusaival kapcsolatos további információkért lásd: [Bevezetés az Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)szolgáltatásba. 
 
-A fürt minden egyes csomópontján található erőforrás-lemez és felügyelt lemez is titkosítva van egy szimmetrikus adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot). A ADATTITKOSÍTÁSI kulcsot a Key encryption Key (KEK) használatával védett a kulcstartóban. A titkosítási és a visszafejtési folyamatokat teljes mértékben az Azure HDInsight kezeli.
+A HDInsight többféle titkosítási típust támogat két különböző rétegben:
+
+- Kiszolgálóoldali titkosítás (SSE) – az SSE-t a Storage szolgáltatás végzi. A HDInsight-ben a SSE az operációsrendszer-lemezek és az adatlemezek titkosítására szolgál. Alapértelmezés szerint engedélyezve van. Az SSE 1. rétegbeli titkosítási szolgáltatás.
+- Titkosítás a gazdagépen a platform által felügyelt kulcs használatával – hasonló az SSE-hez, az ilyen típusú titkosítást a tárolási szolgáltatás végzi. Ez azonban csak ideiglenes lemezekhez szükséges, és alapértelmezés szerint nincs engedélyezve. A gazdagépen lévő titkosítás szintén 1. rétegbeli titkosítási szolgáltatás.
+- Inaktív adatok titkosítása az ügyfél által felügyelt kulcs használatával – az ilyen típusú titkosítás az adatokon és az ideiglenes lemezeken is használható. Alapértelmezés szerint nincs engedélyezve, és az ügyfélnek a saját kulcsát kell megadnia az Azure Key vaulton keresztül. A inaktív adatok titkosítása 2. rétegbeli titkosítási szolgáltatás.
+
+Ezeket a típusokat a következő táblázat foglalja össze.
+
+|Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
+|---|---|---|---|
+|Kafka, HBase gyorsított írásokkal|Layer1: az [SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) alapértelmezés szerint|Layer1: [SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) alapértelmezés szerint, Layer2: opcionális TITKOSÍTÁS a CMK-ben a REST-tel|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
+|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) alapértelmezés szerint|n.a.|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
+
+Az ügyfél által felügyelt kulcs titkosítása egy egylépéses folyamat, amelyet a fürt létrehozása során a további díjak nélkül kezelnek. Mindössze annyit kell tennie, hogy engedélyezi a felügyelt identitást Azure Key Vault és hozzáadja a titkosítási kulcsot a fürt létrehozásakor.
+
+A fürt minden egyes csomópontján lévő adatlemezek és ideiglenes lemezek a szimmetrikus adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) vannak titkosítva. A ADATTITKOSÍTÁSI kulcsot a Key encryption Key (KEK) használatával védett a kulcstartóban. A titkosítási és a visszafejtési folyamatokat teljes mértékben az Azure HDInsight kezeli.
+
+A fürt virtuális gépekhez csatolt operációsrendszer-lemezek esetében csak egy titkosítási réteg (főkulcs) érhető el. Javasoljuk, hogy az ügyfelek ne másolják a bizalmas adatokat az operációsrendszer-lemezekre, ha CMK titkosításra van szükség a forgatókönyvekhez.
 
 Ha a Key Vault-tűzfal engedélyezve van azon a kulcstartón, amelyen a lemez titkosítási kulcsa tárolva van, a HDInsight regionális erőforrás-szolgáltatói IP-címeit hozzá kell adni ahhoz a régióhoz, ahol a fürtöt telepíteni kívánja. Erre azért van szükség, mert a HDInsight nem megbízható Azure Key Vault-szolgáltatás.
 
 A Key vaultban lévő kulcsok biztonságos elforgatásához használhatja a Azure Portal vagy az Azure CLI-t is. Ha egy kulcs forog, a HDInsight-fürt perceken belül megkezdi az új kulcs használatát. A ransomware-forgatókönyvek és a véletlen törlés elleni védelem érdekében engedélyezze a kulcs nélküli [törlési](../key-vault/general/soft-delete-overview.md) funkciók védelmét. A védelmi funkciót nem támogató kulcstartók nem támogatottak.
 
-|Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
-|---|---|---|---|
-|Kafka, HBase gyorsított írásokkal|[SSE titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE titkosítás + opcionális CMK-titkosítás|Nem kötelező CMK-titkosítás|
-|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|SSE titkosítás|N.A.|Nem kötelező CMK-titkosítás|
-
-## <a name="get-started-with-customer-managed-keys"></a>Ismerkedés az ügyfél által felügyelt kulcsokkal
+### <a name="get-started-with-customer-managed-keys"></a>Ismerkedés az ügyfél által felügyelt kulcsokkal
 
 Az ügyfél által felügyelt kulcsokkal rendelkező HDInsight-fürt létrehozásához hajtsa végre a következő lépéseket:
 
@@ -48,19 +61,21 @@ Az ügyfél által felügyelt kulcsokkal rendelkező HDInsight-fürt létrehozá
 1. HDInsight-fürt létrehozása az ügyfél által felügyelt kulccsal engedélyezve
 1. A titkosítási kulcs elforgatása
 
-## <a name="create-managed-identities-for-azure-resources"></a>Felügyelt identitások létrehozása az Azure-erőforrásokhoz
+Az egyes lépéseket a következő szakaszokban ismertetjük részletesen.
+
+### <a name="create-managed-identities-for-azure-resources"></a>Felügyelt identitások létrehozása az Azure-erőforrásokhoz
 
 Felhasználó által hozzárendelt felügyelt identitás létrehozása a Key Vault való hitelesítéshez.
 
 Lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) adott lépésekhez. További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](hdinsight-managed-identities.md). Ügyeljen arra, hogy a felügyelt identitás erőforrás-AZONOSÍTÓját mentse a Key Vault hozzáférési házirendhez való hozzáadásakor.
 
-## <a name="create-azure-key-vault"></a>Azure Key Vault létrehozása
+### <a name="create-azure-key-vault"></a>Azure Key Vault létrehozása
 
 Kulcstartó létrehozása. Lásd: [Azure Key Vault létrehozása](../key-vault/secrets/quick-create-portal.md) adott lépésekhez.
 
 A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstartóval, a kulcsokat a Azure Key Vaultba importálhatja. Ne feledje, hogy a kulcstartónak engedélyezve kell lennie az **ideiglenes törlésnek** . A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../key-vault/about-keys-secrets-and-certificates.md)című témakört.
 
-## <a name="create-key"></a>Kulcs létrehozása
+### <a name="create-key"></a>Kulcs létrehozása
 
 1. Az új kulcstartóban navigáljon a **Beállítások**  >  **kulcsok**  >  **+ Létrehozás/importálás**elemre.
 
@@ -78,7 +93,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     ![kulcs azonosítójának beolvasása](./media/disk-encryption/get-key-identifier.png)
 
-## <a name="create-access-policy"></a>Hozzáférési szabályzat létrehozása
+### <a name="create-access-policy"></a>Hozzáférési szabályzat létrehozása
 
 1. Az új kulcstartóban navigáljon a **Beállítások**  >  **hozzáférési szabályzatok**  >  **+ hozzáférési házirend hozzáadása**elemre.
 
@@ -96,21 +111,21 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 1. Válassza a **Hozzáadás** elemet.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![Azure Key Vault hozzáférési szabályzat mentése](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
-## <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Fürt létrehozása az ügyfél által felügyelt kulcs lemezének titkosításával
+### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Fürt létrehozása az ügyfél által felügyelt kulcs lemezének titkosításával
 
-Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél által felügyelt kulcs csak az új fürtökön alkalmazható a fürt létrehozása során. Nem lehet eltávolítani a titkosítást az ügyfél által felügyelt kulcstartóból, és az ügyfél által felügyelt kulcs nem adható hozzá a meglévő fürtökhöz.
+Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél által felügyelt kulcsok csak a fürt létrehozása során alkalmazhatók az új fürtökre. A titkosítás nem távolítható el az ügyfél által felügyelt kulcstárolóból, és az ügyfél által felügyelt kulcsok nem vehetők fel a meglévő fürtökbe.
 
-### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+#### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 A fürt létrehozása során adja meg a teljes **kulcs azonosítóját**, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
 
 ![Új fürt létrehozása](./media/disk-encryption/create-cluster-portal.png)
 
-### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
+#### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
 Az alábbi példa bemutatja, hogyan használható az Azure CLI egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Azure CLI az hdinsight Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
 
@@ -124,7 +139,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 --assign-identity MyMSI
 ```
 
-### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
+#### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
 
 Az alábbi példa bemutatja, hogyan használható egy Azure Resource Manager sablon egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Mi az ARM-sablonok?](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
@@ -338,17 +353,17 @@ Az erőforrás-kezelési sablon tartalma `azuredeploy.json` :
 }
 ```
 
-## <a name="rotating-the-encryption-key"></a>A titkosítási kulcs elforgatása
+### <a name="rotating-the-encryption-key"></a>A titkosítási kulcs elforgatása
 
 Előfordulhat, hogy előfordulhat, hogy a HDInsight-fürt által létrehozott titkosítási kulcsokat módosítani szeretné a létrehozása után. Ez könnyen elvégezhető a portálon keresztül. Ehhez a művelethez a fürtnek hozzá kell férnie az aktuális kulcshoz és a kívánt új kulcshoz, ellenkező esetben az elforgatási kulcs művelete sikertelen lesz.
 
-### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+#### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 A kulcs elforgatásához szüksége lesz az alapkulcs tárolójának URI-ra. Ha ezt megtette, nyissa meg a HDInsight-fürt tulajdonságai szakaszt a portálon, majd kattintson a **kulcs módosítása** elemre a **lemez titkosítási kulcsának URL-címe**alatt. Adja meg az új kulcs URL-címét, és küldje el a kulcs elforgatásához.
 
 ![lemez titkosítási kulcsának elforgatása](./media/disk-encryption/change-key.png)
 
-### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
+#### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
 Az alábbi példa azt szemlélteti, hogyan lehet elforgatni a lemez titkosítási kulcsát egy meglévő HDInsight-fürthöz. További információ: [Azure CLI az hdinsight forgatás-Disk-Encryption-Key](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key).
 
@@ -385,9 +400,6 @@ Ha a fürt elveszti a kulcs elérését, a figyelmeztetések az Apache Ambari po
 
 Mivel a Key vaultban csak a "Soft Delete" engedélyezett kulcsok támogatottak, a fürtnek ismét hozzá kell férnie a kulcsokhoz. Azure Key Vault kulcs helyreállításához tekintse meg a következőt: [Visszavonás-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) vagy [az-kulcstartó-Key-Recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
 
-**Milyen típusú lemezek vannak titkosítva? Titkosítva vannak-e az operációsrendszer-lemezek és az erőforrások lemezei is?**
-
-Az erőforrás-lemezek és az adat/felügyelt lemezek titkosítva vannak. Az operációsrendszer-lemezek nincsenek titkosítva.
 
 **Ha a fürt felskálázásra kerül, az új csomópontok zökkenőmentesen támogatják az ügyfél által felügyelt kulcsokat?**
 
@@ -396,6 +408,64 @@ Igen. A felskálázás során a fürtnek hozzá kell férnie a Key vaultban lév
 **Elérhetők-e az ügyfél által felügyelt kulcsok a saját helyen?**
 
 A HDInsight ügyfél által felügyelt kulcsok az összes nyilvános felhőkben és az országos felhőkben is elérhetők.
+
+## <a name="encryption-at-host-using-platform-managed-keys"></a>Titkosítás a gazdagépen a platform által felügyelt kulcsok használatával
+
+### <a name="enable-in-the-azure-portal"></a>Engedélyezés a Azure Portal
+
+A gazdagépen lévő titkosítás a Azure Portalban engedélyezhető a fürt létrehozásakor.
+
+> [!Note]
+> Ha a gazdagépen engedélyezve van a titkosítás, a HDInsight-fürthöz nem adhat hozzá alkalmazásokat az Azure piactéren.
+
+:::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="Engedélyezze a titkosítást a gazdagépen.":::
+
+Ez a beállítás engedélyezi a [titkosítást a gazdagépen](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) a HDInsight virtuális gépek Temp adatlemezei számára a páros főkulcs használatával. A gazdagépen történő titkosítás csak [bizonyos, korlátozott régiókban lévő virtuális](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) gépeken támogatott, a HDInsight pedig a [következő csomópont-konfigurációt és SKU](./hdinsight-supported-node-configuration.md)-t támogatja.
+
+A HDInsight-fürt megfelelő virtuálisgép-méretének megismeréséhez tekintse [meg az Azure HDInsight-fürt megfelelő virtuálisgép-méretének kiválasztását](hdinsight-selecting-vm-size.md). A Zookeeper csomóponthoz tartozó alapértelmezett virtuálisgép-SKU a gazdagépen való titkosítás engedélyezése esetén DS2V2 lesz.
+
+### <a name="enable-using-powershell"></a>Engedélyezés a PowerShell használatával
+
+A következő kódrészletből megtudhatja, hogyan hozhat létre egy új Azure HDInsight-fürtöt, amely a PowerShell használatával engedélyezi a gazdagépen a titkosítást. Ezt a paramétert használja a `-EncryptionAtHost $true` funkció engedélyezéséhez.
+
+```powershell
+$storageAccountResourceGroupName = "Group"
+$storageAccountName = "yourstorageacct001"
+$storageAccountKey = Get-AzStorageAccountKey `
+    -ResourceGroupName $storageAccountResourceGroupName `
+    -Name $storageAccountName | %{ $_.Key1 }
+$storageContainer = "container002"
+# Cluster configuration info
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 4 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -HttpCredential $clusterCreds `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainer $storageContainer `
+    -SshCredential $clusterCreds `
+    -EncryptionAtHost $true `
+```
+
+### <a name="enable-using-azure-cli"></a>Engedélyezés az Azure CLI használatával
+
+A következő kódrészletből megtudhatja, hogyan hozhat létre egy új Azure HDInsight-fürtöt, amely a gazdagépen engedélyezve van a titkosítás az Azure CLI használatával. Ezt a paramétert használja a `--encryption-at-host true` funkció engedélyezéséhez.
+
+```azurecli
+az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
+-p "HttpPassword1234!" \\
+--storage-account MyStorageAccount --encryption-at-host true
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

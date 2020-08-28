@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: d789d74f79fa691a2d5b374530450d966e0c40ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047258"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020456"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Nyelvi modell testreszabása a Video Indexer webhellyel
 
@@ -133,7 +133,9 @@ A Video Indexer támogatja a nyelvi modellek automatikus testreszabását a felh
 
     ![Nyelvi modell testreszabásának módosítása – Video Indexer](./media/customize-language-model/edits.png)
 
-    Video Indexer rögzíti a videó átírásával korrigált összes sort, és automatikusan hozzáadja azokat egy "from átirat szerkesztések" nevű szövegfájlhoz. Ezek a módosítások a videó indexeléséhez használt nyelvi modell újratanítására szolgálnak.
+    Video Indexer rögzíti a videó átírásával korrigált összes sort, és automatikusan hozzáadja azokat egy "from átirat szerkesztések" nevű szövegfájlhoz. Ezek a módosítások a videó indexeléséhez használt nyelvi modell újratanítására szolgálnak. 
+    
+    A rendszer a [widget](video-indexer-embed-widgets.md) idővonalán elvégzett módosításokat is tartalmazza.
     
     Ha a videó indexelése során nem adott meg nyelvi modellt, a videó összes szerkesztését a "fiók módosítása" nevű alapértelmezett nyelvi modell fogja tárolni a videó észlelt nyelvén belül.
     
@@ -150,6 +152,6 @@ A Video Indexer támogatja a nyelvi modellek automatikus testreszabását a felh
 
     ![Az átirat szerkesztése – Video Indexer](./media/customize-language-model/from-transcript-edits.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Nyelvi modell testreszabása API-k használatával](customize-language-model-with-api.md)

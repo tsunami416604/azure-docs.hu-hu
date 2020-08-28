@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8d7d561ffa990ec00bb1bbee844dc235c97ebbd0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 099b0175b906e48034e663b575517e49bce7e753
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893093"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021850"
 ---
 # <a name="object-bounds"></a>Objektumhatárok
 
@@ -58,6 +59,6 @@ void GetBounds(ApiHandle<Entity> entity)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Térbeli lekérdezések](../overview/features/spatial-queries.md)

@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 79720655aee8be5450e02bce395ef910ad474428
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33ade2be8b75a4e63f6def2b6c5e1001dde97ff8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020490"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Azure Cosmos DB SQL API-fiókkal rendelkező Xamarin-alkalmazás létrehozása a használatával
 
@@ -196,11 +197,11 @@ A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visua
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre tárolót a Adatkezelő használatával, és hogyan építhet ki és helyezhet üzembe egy Xamarin-alkalmazást. Mostantól további adatait is importálhatja az Azure Cosmos-fiókjába.
 

@@ -5,12 +5,13 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518962"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021969"
 ---
 # <a name="configure-stateful-reliable-services"></a>Állapot-nyilvántartó megbízható szolgáltatások konfigurálása
 A megbízható szolgáltatások két konfigurációs beállítással rendelkeznek. Az egyik készlet globális a fürt összes megbízható szolgáltatásához, míg a másik készlet egy adott megbízható szolgáltatásra jellemző.
@@ -19,7 +20,7 @@ A megbízható szolgáltatások két konfigurációs beállítással rendelkezne
 A globális megbízható szolgáltatás konfigurációja a fürt jegyzékfájljában van megadva a KtlLogger szakaszban. Lehetővé teszi a megosztott napló helyének és méretének, valamint a naplózó által használt globális memória-korlátok konfigurálását. A fürt jegyzékfájlja egyetlen XML-fájl, amely a fürt összes csomópontjára és szolgáltatására vonatkozó beállításokat és konfigurációkat tartalmazza. A fájl neve általában ClusterManifest.xml. A fürthöz tartozó jegyzékfájlt a Get-ServiceFabricClusterManifest PowerShell-paranccsal tekintheti meg.
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Name | Egység | Alapértelmezett érték | Megjegyzések |
+| Név | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobájtban |8388608 |A naplózó írási puffer memória-készletéhez tartozó kernel módban foglalható KB-os minimális szám. Ez a memória-készlet az állapotadatok gyorsítótárazásához használatos a lemezre írás előtt. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobájtban |Korlátlan |Az a maximális méret, ameddig a naplózó írási puffer memória-készlete növekedni tud. |
@@ -102,7 +103,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Name | Egység | Alapértelmezett érték | Megjegyzések |
+| Név | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Másodperc |0,015 |Az az időszak, ameddig a másodlagos megvárja a műveletet a művelet fogadása után, mielőtt visszaküldi a nyugtát az elsődlegesnek. Az ezen az intervallumon belül feldolgozott műveletekhez küldendő összes más nyugtát egyetlen válaszként kell elküldeni. |
 | ReplicatorEndpoint |n.a. |Nincs alapértelmezett – kötelező paraméter |Az az IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikákkal való kommunikációhoz fog használni. Ennek a szolgáltatás jegyzékfájljában a TCP-erőforrás végpontra kell hivatkoznia. A szolgáltatási jegyzékfájlban található végponti erőforrások definiálásával kapcsolatos további információkért tekintse meg a [szolgáltatás jegyzékfájljának erőforrásai](service-fabric-service-manifest-resources.md) című témakört. |
@@ -118,7 +119,7 @@ ReplicatorConfig
 | SharedLogPath |Teljes elérési út neve |"" |Meghatározza azt a teljes elérési utat, ahol a replika megosztott naplófájlja létrejön. A szolgáltatások általában nem használhatják ezt a beállítást. Ha azonban a SharedLogPath meg van adva, akkor a SharedLogId is meg kell adni. |
 | SlowApiMonitoringDuration |Másodperc |300 |Beállítja a felügyelt API-hívások figyelési intervallumát. Példa: a felhasználó által megadott biztonsági mentési visszahívás funkció. Az intervallum letelte után a rendszer figyelmeztetési állapotjelentést küld a Health Managernek. |
 | LogTruncationIntervalSeconds |Másodperc |0 |Konfigurálható időköz, amelyen a naplózási csonkítás minden replikán megkezdődik. A naplófájlok a naplózási méret helyett az idő függvényében is használhatók. Ez a beállítás kényszeríti a törölt bejegyzések törlését is a megbízható szótárban. Ezért használható a törölt elemek időben történő törlésének biztosítására. |
-| EnableStableReads |Logikai érték |Hamis |A stabil olvasások engedélyezése korlátozza a másodlagos replikákat, hogy olyan értékeket adjanak vissza, amelyek kvórum-nyugtázva. |
+| EnableStableReads |Logikai |Hamis |A stabil olvasások engedélyezése korlátozza a másodlagos replikákat, hogy olyan értékeket adjanak vissza, amelyek kvórum-nyugtázva. |
 
 ### <a name="sample-configuration-via-code"></a>Minta konfiguráció kód használatával
 ```csharp

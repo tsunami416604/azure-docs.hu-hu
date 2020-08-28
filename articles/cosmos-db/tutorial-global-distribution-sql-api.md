@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 9498c4a0e0dc5b528066ffadd6a9638fe99b1135
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: dbfb90abcf301cb22a84ba28359c6cb0bfaacfd6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874792"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021085"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -28,7 +28,7 @@ Ez a cikk a következő feladatokat mutatja be:
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>Csatlakozás egy előnyben részesített régióhoz az SQL API használatával
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> Csatlakozás egy előnyben részesített régióhoz az SQL API használatával
 
 A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Az SQL SDK az Azure Cosmos DB-fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján fogja kiválasztani az optimális végpontot az írási és olvasási műveletek végrehajtásához.
 
@@ -159,7 +159,7 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a>Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Java v4 SDK
 
 A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Java SDK használatával:
 
@@ -179,7 +179,7 @@ A következő kód bemutatja, hogyan állíthatja be az előnyben részesített 
 
 ## <a name="rest"></a>REST
 
-Ha egy adatbázis-fiókot több régióban is elérhetővé tettek, az ügyfelek lekérhetik a rendelkezésre állást egy GET kérelem elvégzésével ezen az URI-n`https://{databaseaccount}.documents.azure.com/`
+Ha egy adatbázis-fiókot több régióban is elérhetővé tettek, az ügyfelek lekérhetik a rendelkezésre állást egy GET kérelem elvégzésével ezen az URI-n `https://{databaseaccount}.documents.azure.com/`
 
 A szolgáltatás visszaadja a régiók listáját és a replikák régiókhoz tartozó Azure Cosmos-DB végpont URI-jait. A válasz az aktuális írási régiót is tartalmazni fogja. Az ügyfél ezután a következő módon választhatja ki a megfelelő végpontot a további REST API-kérésekhez.
 

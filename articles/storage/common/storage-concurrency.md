@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030384"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021561"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Egyidejűség kezelése a Microsoft Azure Storage szolgáltatásban
 
@@ -95,7 +96,7 @@ A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek 
 | Tároló metaadatainak beolvasása |Igen |Nem |
 | Tároló metaadatainak beállítása |Igen |Igen |
 | Tároló ACL lekérése |Igen |Nem |
-| Tároló ACL beállítása |Yes |Igen (*) |
+| Tároló ACL beállítása |Igen |Igen (*) |
 | Tároló törlése |Nem |Igen |
 | Bérlet tárolója |Igen |Igen |
 | Blobok listázása |Nem |Nem |
@@ -114,7 +115,7 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 | BLOB metaadatainak beállítása |Igen |Igen |
 | Címbérleti blob (*) |Igen |Igen |
 | Snapshot Blob |Igen |Igen |
-| Copy Blob |Yes |Igen (a forrás és a cél blob esetében) |
+| Copy Blob |Igen |Igen (a forrás és a cél blob esetében) |
 | BLOB másolásának megszakítása |Nem |Nem |
 | Delete Blob |Nem |Igen |
 | Put blokk |Nem |Nem |
@@ -195,7 +196,7 @@ A következő tároló-műveletek használhatnak címbérleteket a pesszimista E
 * Tároló ACL beállítása
 * Bérlet tárolója  
 
-További információ:  
+További információkért lásd:  
 
 * [Feltételes fejlécek megadása Blob Service-műveletekhez](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Bérlet tárolója](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -256,7 +257,7 @@ Vegye figyelembe, hogy a **INSERT vagy replace entitás** és az **INSERT vagy M
 
 A táblázatokat használó általános fejlesztőknek optimista párhuzamosságot kell alkalmazniuk a méretezhető alkalmazások fejlesztésekor. Ha pesszimista zárolásra van szükség, az egyik módszer a fejlesztők számára is igénybe vehet, ha a táblákhoz való hozzáféréskor egy kijelölt blobot rendel hozzá az egyes táblákhoz, és a táblán való működés előtt megpróbál bérletet készíteni a blobon. Ehhez a megközelítéshez az alkalmazásnak meg kell győződnie arról, hogy az összes adatelérési útvonal beszerezze a bérletet a táblán való működés előtt. Azt is vegye figyelembe, hogy a minimális bérleti idő 15 másodperc, ami alapos megfontolást igényel a méretezhetőség érdekében.  
 
-További információ:  
+További információkért lásd:  
 
 * [Entitások műveletei](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,7 +267,7 @@ Egy olyan forgatókönyv, amelyben a párhuzamosság a várólista-kezelési szo
 
 A várólista-szolgáltatás nem támogatja az optimista vagy a pesszimista párhuzamosságot, és emiatt az ügyfelek várólistából beolvasott üzenetek feldolgozásával biztosítaniuk kell, hogy az üzenetek idempotens módon legyenek feldolgozva. A legutóbbi író WINS-stratégia olyan frissítési műveletekhez használható, mint például a SetQueueServiceProperties, a SetQueueMetaData, a SetQueueACL és a UpdateMessage.  
 
-További információ:  
+További információkért lásd:  
 
 * [A Queue szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Üzenetek beolvasása](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -277,11 +278,11 @@ A file Service két különböző protokoll-végponttal (SMB és REST) érhető 
 
 Amikor egy SMB-ügyfél egy fájlt nyit meg a törléshez, az a fájlt függőben lévő törlésként jelöli meg, amíg az összes többi SMB-ügyfél nem nyitja meg a fájlt. Míg a fájl függőben lévő törlésként van megjelölve, a fájl REST művelete a 409 (ütközés) állapotkódot fogja visszaadni a hibakód SMBDeletePending. Az 404-as állapotkód (nem található) nem lesz visszaadva, mert lehetséges, hogy az SMB-ügyfél el szeretné távolítani a függőben lévő törlési jelzőt a fájl bezárása előtt. Más szóval a 404 (nem található) állapotkód csak a fájl eltávolításakor várt. Vegye figyelembe, hogy amíg egy fájl egy, az SMB függőben lévő törlési állapotban van, nem fog szerepelni a fájlok listájának eredményei között. Azt is vegye figyelembe, hogy a REST delete fájl-és REST-törlési műveleteit a rendszer atomian véglegesíti, és nem eredményez függőben lévő törlési állapotot.  
 
-További információ:  
+További információkért lásd:  
 
 * [Fájlok zárolásának kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a blogban hivatkozott teljes minta alkalmazáshoz:  
 

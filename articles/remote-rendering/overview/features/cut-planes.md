@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: d0497162c8535b80b7e9d9a564b12dc6966a4120
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b92bfad99c854f75c945121d352a7122d8c6db89
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891436"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011599"
 ---
 # <a name="cut-planes"></a>Síkok kivágása
 
@@ -68,7 +69,7 @@ A következő tulajdonságok vannak kitéve egy kivágott sík összetevőn:
 
   Ha a *FadeColor* alfa értéke nem nulla, a kivágási sík közelébe mutató képpontok a FadeColor RGB-részéhez fognak elhalványulni. Az alfa-csatorna erőssége határozza meg, hogy teljes mértékben elhalványul-e az elhalványulás színe, vagy csak részben. A *FadeLength* határozza meg, hogy a Halványítás milyen távolságra legyen végrehajtva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyoldalas megjelenítés](single-sided-rendering.md)
 * [Térbeli lekérdezések](spatial-queries.md)

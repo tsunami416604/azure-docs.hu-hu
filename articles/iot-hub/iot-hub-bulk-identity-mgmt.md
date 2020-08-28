@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417939"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003864"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub-eszközidentitások tömeges importálása vagy exportálása
 
@@ -261,7 +262,7 @@ Ha az importálási fájl kettős metaadatokat tartalmaz, akkor ez a metaadatok 
 
 Az eszközök importálási folyamatának vezérléséhez használja az összes eszköz szerializálási adatkészletének opcionális **importMode** tulajdonságát. A **importMode** tulajdonság a következő beállításokkal rendelkezik:
 
-| importMode | Description |
+| importMode | Leírás |
 | --- | --- |
 | **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer felülírja a meglévő adatokat a megadott bemeneti adatokkal anélkül, hogy a **ETAG** értéket kellene megadnia. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
 | **létrehozása** |Ha egy eszköz nem létezik a megadott **azonosítóval**, az újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a rendszer hibát ír a naplófájlba. <br> A felhasználó opcionálisan megadhatja a Twin-és az eszközre vonatkozó adatkészleteket is. A Twin ETAG, ha meg van adva, az eszköz ETAG függetlenül dolgozza fel. Ha a meglévő Twin ETAG nem egyeznek, a rendszer hibát ír a naplófájlba. |
@@ -423,7 +424,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan végezheti el a tömeges műveleteket egy IoT hub azonosító-beállításjegyzékében. Számos művelet, többek között az eszközök egyik központból a másikba való áthelyezésének módja, a [IoT hub-ban regisztrált eszközökön található, a IoT hub klónozásának módja](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
 

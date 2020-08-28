@@ -3,7 +3,7 @@ title: Sablon konfigurálása felügyelt identitások használatára a virtuáli
 description: Részletes útmutató az Azure-erőforrások felügyelt identitások konfigurálásához egy virtuálisgép-méretezési csoporton Azure Resource Manager sablon használatával.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5afb11a275275ac49178b30929d7896c8a082591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3745b55a8e5705b11b090cc1241472a3cf4cbade
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609010"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021051"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépek méretezéséhez sablon használatával
 
@@ -318,6 +318,6 @@ Ha olyan virtuálisgép-méretezési csoporttal rendelkezik, amelynek már nincs
 
    Ha rendszerhez rendelt felügyelt identitással rendelkezik, tartsa meg az `type` érték alatti értékben `identity` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure-erőforrások áttekintéséhez](overview.md).

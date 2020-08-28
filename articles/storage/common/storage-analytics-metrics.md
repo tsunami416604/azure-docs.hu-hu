@@ -8,13 +8,13 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828047"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021153"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
 
@@ -146,7 +146,7 @@ A Storage-fiókja Azure Portal menüjének **figyelés (klasszikus)** szakaszáb
 
 Ha le szeretné tölteni a mérőszámokat a hosszú távú tároláshoz, vagy helyileg kívánja elemezni őket, egy eszközt kell használnia, vagy írnia kell egy kódot a táblák olvasásához. Az elemzéshez le kell töltenie a perc mérőszámait. A táblák nem jelennek meg, ha a Storage-fiókban lévő összes táblát listázza, de közvetlenül a név alapján érheti el őket. Számos Storage-szemöldök eszköz ismeri ezeket a táblázatokat, és lehetővé teszi, hogy közvetlenül megtekintse őket. Az elérhető eszközök listáját az [Azure Storage-ügyféleszközök](/azure/storage/storage-explorers)című témakörben tekintheti meg.
 
-|Mérőszámok|Táblák nevei|Megjegyzések| 
+|Mérőszámok|Táblák nevei|Jegyzetek| 
 |-|-|-|  
 |Óránkénti mérőszámok|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|A 2013. augusztus 15. előtti verziókban ezek a táblázatok a következőképpen ismertek:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> A file Service metrikái a 2015-as verziótól kezdődően érhetők el.|  
 |Perc mérőszámok|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Csak PowerShell használatával vagy programozott módon engedélyezhető.<br /><br /> A file Service metrikái a 2015-as verziótól kezdődően érhetők el.|  
@@ -157,7 +157,7 @@ A táblázatok sémáinak részletes ismertetését lásd: [Storage Analytics m�
 |PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|Rendelkezésre állás|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
 |20140522T1100|felhasználói Összes|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
-|20140522T1100|felhasználói QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7.8|100|  
+|20140522T1100|felhasználói QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
 |20140522T1100|felhasználói QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
 |20140522T1100|felhasználói UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
 
@@ -231,7 +231,7 @@ A metrikák táblái által használt kapacitás is számlázható. A következ�
 -   Ha minden órában a szolgáltatás minden API-t használ, a metrikák tranzakciós tábláiban körülbelül 12 KB adat tárolódik, ha csak egy szolgáltatási szintű összegzést engedélyez.  
 -   A Blobok kapacitási táblája két sorral bővült, amelyeket a naplókhoz választott ki. Ez a forgatókönyv azt feltételezi, hogy a táblázat mérete minden nap körülbelül 300 bájttal nő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Tárfiók figyelése](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
 * [Storage Analytics mérőszámok táblázatának sémája](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
 * [Naplózott műveletek és állapotüzenetek Storage Analytics](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
