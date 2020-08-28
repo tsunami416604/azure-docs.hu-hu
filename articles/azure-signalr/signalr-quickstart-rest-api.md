@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045004"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050505"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
 
@@ -28,11 +28,17 @@ Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -45,6 +51,7 @@ Amíg a szolgáltatás üzembe helyezése folyamatban van, térjünk át a kód 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -81,6 +88,8 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+
 ## <a name="run-the-sample-without-publishing"></a>Futtassa a mintát közzététel nélkül
 
 A következő parancsot is futtathatja kiszolgálók vagy ügyfelek elindításához
@@ -97,6 +106,8 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 A `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` futtatását a minta gyökérkönyvtárában végezheti. Ezután már nem lesz szüksége a `-c "<ConnectionString>"` lehetőségre.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+
 ## <a name="usage"></a>Használat
 
 A kiszolgáló elindítása után az parancs használatával küldjön üzenetet:
@@ -110,6 +121,8 @@ broadcast
 ```
 
 Több ügyfelet is indíthat különböző ügyfélnevekkel.
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Integráció külső szolgáltatásokkal
 
@@ -244,11 +257,17 @@ Válasz állapotkódja | Description
 `200` | A szolgáltatás jó
 `5xx` | Szolgáltatáshiba
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Signaler szolgáltatásból az ügyfeleknek küldött valós idejű üzenetek szórására. Következő lépésként tájékozódjon arról, hogyan fejlesztheti és helyezheti üzembe a Azure Functionst a Signal Service-kötéssel, amely REST APIra épül.
 
 > [!div class="nextstepaction"]
 > [Azure Functions fejlesztése az Azure Signaler szolgáltatás kötéseinek használatával](signalr-quickstart-azure-functions-csharp.md)
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)

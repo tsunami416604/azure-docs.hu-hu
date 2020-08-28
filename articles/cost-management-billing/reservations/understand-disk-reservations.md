@@ -4,20 +4,21 @@ description: Megtudhatja, hogyan érvényesül az Azure-beli fenntartott felügy
 author: roygara
 ms.author: rogarana
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cd89c3ddc3c58de02f1104109ce7f243c4d1e6fd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509465"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682450"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése
 
 Miután megvásárolta az Azure-beli fenntartott lemezkapacitást, a foglalási kedvezmény automatikusan érvényesítve lesz azokra a lemezerőforrásokra, amelyek megfelelnek a foglalás feltételeinek. A foglalási kedvezmény csak a lemez-termékváltozatokra vonatkozik. A lemezpillanatképekért használatalapú díjat kell fizetnie.
 
-Az Azure-beli lemezfoglalásokkal kapcsolatos további információért lásd a [költségmegtakarítást Azure-beli lemezfoglalásokkal](../../virtual-machines/linux/disks-reserved-capacity.md). Az Azure-beli lemezfoglalások díjszabásával kapcsolatos információért lásd [az Azure Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/).
+Az Azure-beli lemezfoglalásokkal kapcsolatos további információért lásd a [költségmegtakarítást Azure-beli lemezfoglalásokkal](../../virtual-machines/disks-reserved-capacity.md). Az Azure-beli lemezfoglalások díjszabásával kapcsolatos információért lásd [az Azure Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="how-the-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazásának menete
 
@@ -53,6 +54,5 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Költségek csökkentése Azure-beli lemezfoglalással (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
-- [Költségek csökkentése Azure-beli lemezfoglalással (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
+- [Költségek csökkentése Azure-beli lemezfoglalással](../../virtual-machines/disks-reserved-capacity.md)
 - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)

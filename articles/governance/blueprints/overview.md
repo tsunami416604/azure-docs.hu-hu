@@ -1,14 +1,14 @@
 ---
 title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530397"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050777"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -47,7 +47,7 @@ A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ e
 
 A tervek _tervelemekből_ állnak. Az Azure-tervezetek jelenleg a következő erőforrásokat támogatják összetevőkként:
 
-|Erőforrás  | Hierarchialehetőségek| Leírás  |
+|Erőforrás  | Hierarchialehetőségek| Description  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezek a helyőrző erőforráscsoportok lehetővé teszik az erőforrások rendszerezését, és a benne foglalt szabályzatok és szerepkör-hozzárendelési összetevők és ARM-sablonok hatókör-korlátozását. |
 |ARM-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
@@ -103,7 +103,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 
 A következő beépített szerepkörök érhetők el:
 
-|Azure-szerepkör | Leírás |
+|Azure-szerepkör | Description |
 |-|-|
 |[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
 |[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |
@@ -132,7 +132,7 @@ Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Terv létrehozása – portál](./create-blueprint-portal.md).
 - [Terv létrehozása – PowerShell](./create-blueprint-powershell.md).

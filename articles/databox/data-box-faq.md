@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823981"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051168"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -61,7 +61,7 @@ A. A Data Box az USA, Nyugat-Európa, Észak-Európa, Franciaország, Egyesült 
 
 Data Box támogatja az adatfeldolgozást vagy a kilépést kizárólag a rendeltetési országon/régión belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az adatmezők bármely EU-országba/régióból elhelyezhetők.
 
-Például az importálási forgatókönyvben, ha olyan Kanadában található a helyszínen tárolt, amelyet egy Azure WestUS Storage-fiókba szeretne áthelyezni, akkor a következő módon érheti el:
+Például abban az esetben, ha az importálási forgatókönyvben volt olyan forrásadatok, amelyet Kanadában szeretne áthelyezni egy Azure WestUS Storage-fiókba, akkor a következő módon érheti el:
 
 1. A Cananda-ben megjelenő Storage-fiók kiválasztásával Kanadában Data Box megrendelését. Az eszköz a kanadai Azure-adatközpontból a rendelés létrehozása során megadott szállítási lakcímbe (Kanadában) van elküldve.
 
@@ -269,7 +269,7 @@ A.  Nem. Ha a Microsoft által felügyelt szállítást választotta, az adatát
 Ha az önfelügyelt szállítást választotta, akkor a Data Box az Azure-adatközpontból is kiválaszthatja vagy letilthatja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

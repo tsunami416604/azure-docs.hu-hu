@@ -10,14 +10,21 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Spring Cloud-alkalmazás indítása – portál
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Spring Cloud-alkalmazás indítása – Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spring Cloud-alkalmazás indítása – forrás
-      href: spring-cloud-launch-from-source.md
-    - name: Spring Cloud-alkalmazás indítása – Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: Az első alkalmazás elindítása
+      href: spring-cloud-quickstart.md
+    - name: Mikroszolgáltatások létrehozása és futtatása
+      expanded: true
+      items:
+        - name: A mintaalkalmazások bemutatása
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Az Azure Spring Cloud szolgáltatás kiépítése
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: A konfigurációs kiszolgáló beállítása
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: Alkalmazások létrehozása és üzembe helyezése
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: 'Naplók, metrikák és nyomkövetés használata'
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Oktatóanyagok
   items:
     - name: Alkalmazás manuális skálázása

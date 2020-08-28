@@ -4,14 +4,17 @@ description: Ismerkedjen meg a tanúsítványfájl Service Fabric Container Serv
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 949cc642572bfbf6ebe297d3ffba16939561ac8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012721"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050743"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Tanúsítványfájl importálása Service Fabricon futó tárolóba
+
+> [!NOTE]
+> Az Azure-on futó Service Fabric-fürtök esetében ajánlott [Service Fabric alkalmazás által felügyelt identitást](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) használni, hogy kiépítse az alkalmazás tanúsítványait egy tárolóból. A felügyelt identitás biztosítja a titkok és a tanúsítványok elkülönítését a szolgáltatási szinten, és lehetővé teszi az alkalmazás-tanúsítvány kiépítését az alkalmazás munkafolyamatának részeként, nem pedig az infrastruktúra munkafolyamatát. A CertificateRef mechanizmus egy későbbi kiadásban elavulttá válik.
 
 Egy tanúsítvány megadásával biztonságossá teheti a tároló szolgáltatásokat. A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). A tanúsítványt a fürt összes csomópontján lévő LocalMachine területen lévő tanúsítványtárolóba kell telepíteni. A tanúsítványnak megfelelő titkos kulcsnak elérhetőnek, elérhetőnek és Windows-exportálható kell lennie. A tanúsítvány információit az alkalmazás jegyzékfájljában, a címke alatt, a `ContainerHostPolicies` következő kódrészlet mutatja:
 
@@ -30,6 +33,8 @@ Linux-fürtök esetében a tanúsítványok (PEM) át lesznek másolva a X509Sto
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+Vegye figyelembe, hogy mind a, mind a `PEM` `PrivateKey` fájl tartalmazza a tanúsítványt és a titkosítatlan titkos kulcsot.
 
 Ha már rendelkezik a tanúsítványokkal a szükséges űrlapon, és a tárolón belül szeretné elérni azt, létrehozhat egy adatcsomagot az alkalmazáscsomag belül, és a következőket adhatja meg az alkalmazási jegyzékfájlban:
 

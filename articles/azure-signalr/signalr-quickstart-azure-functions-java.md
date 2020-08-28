@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: b67480f2b6de37822d74162f46caa4d7e50dc193
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 544f200e749b1b125e8077ee65f20a06779fb13d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321785"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050573"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással a Java használatával
 
@@ -37,13 +37,21 @@ Az Azure Signaler szolgáltatással egyszerűen adhat hozzá valós idejű funkc
 > [!NOTE]
 > Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
+
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Az Azure-függvényalkalmazás konfigurálása és futtatása
 
@@ -79,14 +87,21 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
     ```bash
     mvn azure-functions:run
     ```
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a Maven használatával. Következő lépésként megismerheti, hogyan hozhat létre teljesen új Java-Azure Functions.
 
 > [!div class="nextstepaction"]
 > [Az első függvény létrehozása a Java és a Maven használatával](../azure-functions/functions-create-first-java-maven.md)
+
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsjava)

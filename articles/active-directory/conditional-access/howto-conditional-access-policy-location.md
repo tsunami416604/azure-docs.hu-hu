@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518419"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049146"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: hozzáférés letiltása hely szerint
 
@@ -48,7 +48,7 @@ A feltételes hozzáférés hely feltételével kapcsolatos további informáci�
    1. **Konfigurálás** beállítása **Igen** értékre
    1. A **Belefoglalás**területen válassza a **kiválasztott helyszínek** elemet.
    1. Válassza ki a szervezet számára létrehozott tiltott helyet.
-   1. Válassza a **Kiválasztás** lehetőséget.
+   1. Kattintson a **Kiválasztás** elemre.
 1. A **hozzáférés-vezérlés** > válassza a **hozzáférés letiltása**lehetőséget, majd válassza a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Feltételes hozzáférési szabályzat létrehozásához válassza a **Létrehozás** lehetőséget.
@@ -57,6 +57,6 @@ A feltételes hozzáférés hely feltételével kapcsolatos további informáci�
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 
-[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
+[A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)

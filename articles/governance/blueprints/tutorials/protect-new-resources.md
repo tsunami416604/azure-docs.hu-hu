@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: új erőforrások megvédése zárolásokkal'
 description: Ebben az oktatóanyagban az Azure-tervrajzok erőforrás-zárolási lehetőségeit csak olvasható módon használja, és nem törli az újonnan telepített erőforrások elleni védelemhez.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: tutorial
-ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85969641"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048570"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
 
@@ -153,7 +153,7 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
 
      |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Név|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Name|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
      |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA 2. nyugati régiója|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
      |StorageAccount|Resource Manager-sablon|Tárfióktípus (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték _Standard_LRS_.|
 
@@ -222,7 +222,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
 - Erőforráscsoport _TestingBPLocks_
 - Terv definíciója _zárolva – storageaccount_
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan teheti elérhetővé az Azure-tervezetekkel üzembe helyezett új erőforrásokat. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

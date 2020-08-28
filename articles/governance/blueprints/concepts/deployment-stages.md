@@ -1,14 +1,14 @@
 ---
 title: Terv üzembe helyezésének szakaszai
 description: Ismerje meg a biztonsági és az összetevőkhöz kapcsolódó lépéseket, amelyekkel az Azure tervrajz-szolgáltatásai áthaladnak a tervrajz-hozzárendelés létrehozása során.
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d3ccba6645e1b14fffc543af2a6ad40e3634e2ed
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970654"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049774"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Terv üzembe helyezésének szakaszai
 
@@ -54,10 +54,10 @@ Az üzemelő példányok hozzáférési meghibásodása gyakran a felügyelt ide
 
 Az üzembe helyezések befejezése után az Azure-tervezetek visszavonják a **rendszer által hozzárendelt** felügyelt identitás jogosultságait az előfizetésből. Ezt követően az Azure BluePrints szolgáltatás visszavonja a hozzá tartozó jogosultságokat az előfizetésből. A Rights eltávolítása megakadályozza, hogy az Azure-tervezetek állandó tulajdonosként legyenek előfizetésben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
-- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
-- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [statikus és dinamikus paraméterek](./parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](./sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](./resource-locking.md) alkalmazásával kapcsolatos részletek.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
 - A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

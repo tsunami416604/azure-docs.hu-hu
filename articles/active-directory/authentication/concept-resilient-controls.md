@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716299"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049570"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -92,7 +92,7 @@ Ez a példa a kiválasztott felhasználók számára biztosítja a **AppUsers**,
 
 ### <a name="contingencies-for-user-lockout"></a>Felhasználói zárolási szükséghelyzetek
 
-Másik lehetőségként a szervezet is létrehozhat készenléti házirendeket. A készenléti szabályzatok létrehozásához meg kell határoznia a kompromisszumok feltételeit az üzletmenet folytonossága, az üzemeltetési költségeket, a pénzügyi költségeket és a biztonsági kockázatokat illetően. Előfordulhat például, hogy a készenléti szabályzatot csak a felhasználók egy részhalmazára, az alkalmazások egy részhalmazára, az ügyfelek egy részhalmazára vagy a helyszínek egy részhalmazára aktiválja. A készenléti szabályzatok a rendszergazdák és a végfelhasználók számára hozzáférést biztosítanak az alkalmazásokhoz és az erőforrásokhoz, a fennakadás során, amikor nincs implementálva a megoldás. A Microsoft azt javasolja, hogy ha nincs használatban, a [csak jelentési módban](../conditional-access/howto-conditional-access-report-only.md) engedélyezze a készenléti szabályzatokat, így a rendszergazdáknak be kell kapcsolniuk a házirendek lehetséges hatásait.
+Másik lehetőségként a szervezet is létrehozhat készenléti házirendeket. A készenléti szabályzatok létrehozásához meg kell határoznia a kompromisszumok feltételeit az üzletmenet folytonossága, az üzemeltetési költségeket, a pénzügyi költségeket és a biztonsági kockázatokat illetően. Előfordulhat például, hogy a készenléti szabályzatot csak a felhasználók egy részhalmazára, az alkalmazások egy részhalmazára, az ügyfelek egy részhalmazára vagy a helyszínek egy részhalmazára aktiválja. A készenléti szabályzatok a rendszergazdák és a végfelhasználók számára hozzáférést biztosítanak az alkalmazásokhoz és az erőforrásokhoz, a fennakadás során, amikor nincs implementálva a megoldás. A Microsoft azt javasolja, hogy ha nincs használatban, a [csak jelentési módban](../conditional-access/howto-conditional-access-insights-reporting.md) engedélyezze a készenléti szabályzatokat, így a rendszergazdáknak be kell kapcsolniuk a házirendek lehetséges hatásait.
 
  A megszakadás során felmerülő expozíció révén csökkentheti a kockázatát, és a tervezési folyamat kritikus részét képezi. A készenléti terv létrehozásához először határozza meg a szervezet alábbi üzleti követelményeit:
 
@@ -282,7 +282,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
 >[!NOTE]
  > Az Azure MFA [megbízható IP](./howto-mfa-mfasettings.md) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](./concept-mfa-licensing.md)lehetséges.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Az Azure AD-hitelesítés dokumentációja](./howto-mfaserver-iis.md)
 * [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)

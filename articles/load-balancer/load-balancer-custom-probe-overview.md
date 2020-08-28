@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207554"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051355"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -95,7 +95,7 @@ Az elérhető protokollok a használt Load Balancer SKU-tól függnek:
 | **Standard termékváltozat** |    &#9989; |   &#9989; |   &#9989; |
 | **Alapszintű termékváltozat** |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP-mintavétel
+### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP-mintavétel
 
 A TCP-mintavételek egy kétirányú, nyitott TCP-kézfogás és a megadott port használatával kezdeményezik a csatlakozást.  A TCP-mintavételek egy négyirányú záró TCP-kézfogással szüntetik meg a kapcsolatokat.
 
@@ -223,7 +223,7 @@ Load Balancer Health [-mintavételen kívül a következő műveletek ezt az IP-
 - Lehetővé teszi a kommunikációt a DNS virtuális kiszolgálóval a szűrt névfeloldás biztosításához olyan ügyfelek számára, akik nem határoznak meg egyéni DNS-kiszolgálókat.  Ez a szűrés biztosítja, hogy az ügyfelek csak az üzembe helyezésük gazdagépeit oldják fel.
 - Lehetővé teszi, hogy a virtuális gép dinamikus IP-címet szerezzen be a DHCP szolgáltatásból az Azure-ban.
 
-## <a name="design-guidance"></a><a name="design"></a>Tervezési útmutató
+## <a name="design-guidance"></a><a name="design"></a> Tervezési útmutató
 
 A rendszer az állapot-mintavételt használja a szolgáltatás rugalmas és méretezhetővé tételéhez. A helytelen konfiguráció vagy a rossz kialakítási minta befolyásolhatja a szolgáltatás rendelkezésre állását és méretezhetőségét. Tekintse át ezt a teljes dokumentumot, és gondolja át, milyen hatással van a forgatókönyvre, ha a mintavételi válasz megjelölve vagy megjelölve van, és hogyan befolyásolja az alkalmazási forgatókönyv rendelkezésre állását.
 
@@ -249,7 +249,7 @@ Ha több csatoló is van a virtuális gépen, akkor biztosítania kell, hogy vá
 
 Ne engedélyezze a [TCP-időbélyeget](https://tools.ietf.org/html/rfc1323).  A TCP-időbélyegek engedélyezése a virtuális gép vendég operációs rendszerének TCP-verem által eldobott TCP-csomagok meghibásodása esetén az állapot-ellenőrzéseket okozhatja, ami Load Balancer megjelöli a megfelelő végpontot.  A TCP-időbélyegek alapértelmezés szerint engedélyezve vannak a biztonsági megerősített virtuális gépek rendszerképein, és le kell tiltani őket.
 
-## <a name="monitoring"></a>Monitorozás
+## <a name="monitoring"></a>Figyelés
 
 Mind a nyilvános, mind a belső [standard Load Balancer](load-balancer-standard-overview.md) a végpontok és a háttérbeli végpontok állapotának tesztelési állapota többdimenziós metrikák Azure monitoron keresztül. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
 
@@ -260,9 +260,9 @@ Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesí
 - A HTTPS-mintavételek nem támogatják az ügyféltanúsítvány-alapú kölcsönös hitelesítést.
 - Ha a TCP-időbélyegek engedélyezve vannak, az állapot-mintavételek sikertelenek lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
-- [Ismerkedés a nyilvános Load Balancer létrehozásával a Resource Managerben a PowerShell használatával](quickstart-create-standard-load-balancer-powershell.md)
+- [Ismerkedés a nyilvános Load Balancer létrehozásával a Resource Managerben a PowerShell használatával](quickstart-load-balancer-standard-public-powershell.md)
 - [REST API az állapot-mintavételhez](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - Új állapot-mintavételi képességek kérése [Load Balancer uservoice](https://aka.ms/lbuservoice)

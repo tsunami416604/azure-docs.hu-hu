@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9b3f2f8a6a8a1e4f287af45f994c0f0b1d479811
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001008"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047452"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -45,7 +45,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
 |**Számítási feladatok kezelése – portál felhasználói élmény**|A felhasználók a Azure Portal használatával konfigurálhatják és kezelhetik a munkaterhelés-kezelési beállításokat. Lehetőség van a [munkaterhelés-csoportok](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) és a számítási [feladatok besorolására](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) is.|
-|**Továbbfejlesztett tábla-hozzárendelések katalógus nézete**|Az új Catalog View [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) leképezi az állandó felhasználói táblák **object_idsét** a fizikai táblázat neveként. Ez a nézet az aktuális [sys. pdw_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-table-mappings-transact-sql?view=sqlallproducts-allversions)által optimalizált teljesítményt nyújt.|
+|**Továbbfejlesztett tábla-hozzárendelések katalógus nézete**|Az új Catalog View [sys. pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) leképezi az állandó felhasználói táblák **object_idsét** a fizikai táblázat neveként.|
 
 ## <a name="july-2020"></a>2020. július
 

@@ -246,7 +246,7 @@
               href: application-types.md
             - name: Váratlan felhasználó lett hozzárendelve
               href: ways-users-get-assigned-to-applications.md
-        - name: A Hozzáférés panellel kapcsolatos hibaelhárítás
+        - name: Saját alkalmazások hibaelhárítása
           items:
             - name: Böngészőbővítmény kezelése
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: Nem lehet bejelentkezni
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Hiba a böngészőbővítmény telepítése közben
-              href: access-panel-extension-problem-installing.md
             - name: Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben
               href: access-panel-troubleshoot-self-service-access.md
         - name: Helyszíni alkalmazások hibaelhárítása

@@ -3,21 +3,23 @@ title: Tintaadatok küldése az Ink Recognizer API-nak
 titleSuffix: Azure Cognitive Services
 description: További információ a tintapatron Analyzer API különböző alkalmazásokhoz való meghívásáról
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/24/2020
+ms.author: aahi
+ms.openlocfilehash: 8665e27b6b7c43bce7d749d9bfe0a2f815a0f46d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221105"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051100"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Tintaadatok küldése az Ink Recognizer API-nak 
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 A digitális szabadkézi műveletek olyan technológiák, amelyek lehetővé teszik a bemenetek, például a kézírás és a rajzok digitális ábrázolását. Ez általában olyan digitalizáló használatával érhető el, amely rögzíti a bemeneti eszközök, például a toll mozgását. Mivel az eszközök folyamatosan bővítik a digitális szabadkézi műveletek használati körét, a mesterséges intelligencia és a gépi tanulás bármilyen környezetben lehetővé teszi az írott alakok és szövegek felismerését. A tinta-felismerő API lehetővé teszi a szabadkézi ecsetvonások küldését, és részletes információkat kaphat róluk. 
 
@@ -84,12 +86,12 @@ Az elismerési eredmények előzetesen információt adnak a szabadkézi ecsetvo
 
 A [Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) olyan eszközöket és technológiákat biztosít, amelyekkel számos különböző eszközön engedélyezhető a digitális és a többkirályos élmény. A tinta-felismerő API-val kombinálhatja a Windows tinta platformot a digitális tollvonásokat megjelenítő és értelmező alkalmazások létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az Ink Recognizer API?](../overview.md)
 * [Kézírás-felismerő REST API referenciája](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 * Digitális tinta ecsetvonás-adatok küldésének megkezdése a használatával:
-    * [C #](../quickstarts/csharp.md)
+    * [C#](../quickstarts/csharp.md)
     * [Java](../quickstarts/java.md)
     * [JavaScript](../quickstarts/javascript.md)

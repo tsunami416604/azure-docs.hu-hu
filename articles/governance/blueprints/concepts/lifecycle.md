@@ -1,14 +1,14 @@
 ---
 title: A terv életciklusának megismerése
 description: Megtudhatja, hogy milyen életciklussal rendelkezik a tervrajzok definíciója, és részletezi az egyes szakaszokat, beleértve a terv-Hozzárendelések frissítését és eltávolítását
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864028"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049706"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure Blueprint életciklusának megismerése
 
@@ -81,14 +81,14 @@ Egy terv törlése a [Azure Portal](../create-blueprint-portal.md#delete-a-bluep
 
 Az életciklus során több pont is van, és egy terv rendelhető hozzá egy előfizetéshez. Ha **közzéteszi**a terv egy verziójának a módját, az adott verziót hozzá lehet rendelni egy előfizetéshez. Ez az életciklus lehetővé teszi, hogy egy terv egy újabb verziójának fejlesztésekor felhasználja és aktívan hozzárendelje a tervrajzok verzióját.
 
-A tervrajzok verziójának kiosztásakor fontos megérteni, hogy hol vannak hozzárendelve, és hogy milyen paramétereket rendeltek hozzájuk. A paraméterek lehetnek statikusak vagy dinamikusak. További információ: [statikus és dinamikus paraméterek](parameters.md).
+A tervrajzok verziójának kiosztásakor fontos megérteni, hogy hol vannak hozzárendelve, és hogy milyen paramétereket rendeltek hozzájuk. A paraméterek lehetnek statikusak vagy dinamikusak. További információ: [statikus és dinamikus paraméterek](./parameters.md).
 
 ### <a name="updating-assignments"></a>Hozzárendelések frissítése
 
 Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzárendelések frissítése több okból is lehetséges, többek között:
 
-- [Erőforrás-zárolás](resource-locking.md) hozzáadása vagy eltávolítása
-- [Dinamikus paraméterek](parameters.md#dynamic-parameters) értékének módosítása
+- [Erőforrás-zárolás](./resource-locking.md) hozzáadása vagy eltávolítása
+- [Dinamikus paraméterek](./parameters.md#dynamic-parameters) értékének módosítása
 - A hozzárendelés frissítése a terv újabb **közzétett** verziójára
 
 További információ: a [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md).
@@ -97,17 +97,17 @@ További információ: a [meglévő hozzárendelések frissítése](../how-to/up
 
 Ha a terv már nem szükséges, a felügyeleti csoportból vagy előfizetésből nem lehet kiosztani. A terv hozzárendelésének megszüntetése során a következők történnek:
 
-- A [terv erőforrás-zárolásának](resource-locking.md) eltávolítása
+- A [terv erőforrás-zárolásának](./resource-locking.md) eltávolítása
 - A terv-hozzárendelési objektum törlése
 - Feltételes Ha egy **rendszerhez rendelt felügyelt identitást** használt, akkor azt is törli
 
 > [!NOTE]
 > A terv-hozzárendelés által üzembe helyezett összes erőforrás továbbra is érvényben marad, de az Azure-tervezetek már nem védik őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
-- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
-- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [statikus és dinamikus paraméterek](./parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](./sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](./resource-locking.md) alkalmazásával kapcsolatos részletek.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
 - A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

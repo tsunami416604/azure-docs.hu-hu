@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e80db84789ab5c8b0f07bc6a76ae99f8db3c8b80
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923874"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051032"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -125,6 +125,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> A tároló gyökérkönyvtárának beszerzéséhez hagyja ki a `-Path` paramétert.
 
 ## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
@@ -202,7 +204,8 @@ $properties.Group
 $properties.Owner
 ```
 
-Egy tároló tartalmának listázásához hagyja `-Path` ki a paramétert a parancsból.
+> [!NOTE]
+> A tároló gyökérkönyvtárának tartalmának listázásához hagyja ki a `-Path` paramétert.
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
@@ -227,6 +230,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> Ha fel szeretne tölteni egy fájlt a tároló gyökérkönyvtárában, hagyja ki a `-Path` paramétert.
 
 ## <a name="show-file-properties"></a>Fájl tulajdonságainak megjelenítése
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab9a9785f2f995a6f8df766603e3fc3b9a894be5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814227"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049866"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -31,6 +31,7 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 | :--- | :--- |
 | ![embléma](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával
 | ![embléma](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében.|
+| ![embléma](./media/partner-gallery/hypr-logo.png) | A [HYPR](./partner-hypr.md) egy valódi, jelszóval nem rendelkező hitelesítésszolgáltató, amely a nyilvános kulcsú titkosítással rendelkező jelszavakat a csalások, az adathalászat és a hitelesítő adatok újrafelhasználásának megszüntetésével helyettesíti.|
 | ![embléma](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
 | ![embléma](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
 | ![embléma](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
@@ -41,7 +42,7 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 | ![embléma](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |
 | ![embléma](./media/partner-gallery/whoiam-logo.png) | A [WhoIAM](./partner-whoiam.md) egy márkás identitáskezelésrendszer-(BRIMS-) alkalmazás, amely lehetővé teszi, hogy a szervezetek hang-, SMS-és e-mail-cím alapján ellenőrizzék a felhasználói bázist. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Válasszon egy partnert a fenti táblázatban, hogy megtudja, hogyan integrálhatja megoldásait a Azure AD B2Cával.
 

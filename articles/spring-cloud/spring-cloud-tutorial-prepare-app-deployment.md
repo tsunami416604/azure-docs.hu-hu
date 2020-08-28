@@ -7,16 +7,18 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2ae94da3d9b2dee62bc031c4a32d17b43be00a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021273"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046731"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
 Ez a témakör bemutatja, hogyan készíthet meglévő Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Java Spring Cloud-alkalmazás monitorozásához, méretezéséhez és frissítéséhez.
+
+A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstart.md)rövid útmutatót.
 
 Más példák azt is ismertetik, hogyan helyezhet üzembe egy alkalmazást az Azure Spring-felhőben, ha a POM-fájl konfigurálva van. 
 * [Alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md)
@@ -263,7 +265,7 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

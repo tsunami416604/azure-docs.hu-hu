@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798839"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048422"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -37,19 +37,28 @@ A topológia paramétereinek értékei a topológiára hivatkozó gráf-példán
 
 ## <a name="media-graph-states"></a>Media Graph-állapotok  
 
-A Media Graph a következő állapotok egyike lehet:
+A Graph-topológiák és a Graph-példányok életciklusa a következő állapot ábrán látható.
 
-* Inaktív – azt az állapotot jelöli, amelyben egy adathordozó-gráf konfigurálva van, de nem aktív.
-* Aktiválás – az az állapot, amikor egy adathordozó-gráfot hoznak létre (azaz az inaktív és az aktív állapot közötti átmenetet).
-* Aktív – az az állapot, amikor egy adathordozó-gráf aktív. 
+![Gráf-topológia és gráf-példány életciklusa](./media/media-graph/graph-topology-lifecycle.svg)
 
-    > [!NOTE]
-    >  A Media Graph aktív adatok nélkül is aktiválható (például a bemeneti videó forrása offline állapotba kerül).
-* Inaktiválás – ez az az állapot, amikor egy adathordozó-gráf Aktívról inaktívra vált.
+Első lépésként [hozzon létre egy gráf-topológiát](direct-methods.md#graphtopologyset). Ezután minden olyan élő videó-hírcsatorna esetében, amelyet fel szeretne dolgozni ezzel a topológiával, [létrehoz egy gráf-példányt](direct-methods.md#graphinstanceset). 
 
-Az alábbi ábra szemlélteti a Media Graph állapotjelző gépet.
+A Graph-példány `Inactive` (inaktív) állapotban lesz.
 
-![A Media Graph állapotjelző gépe](./media/media-graph/media-graph-state-machine.png)
+Ha készen áll az élő videó-hírcsatornának a Graph-példányba való küldésére, [aktiválja](direct-methods.md#graphinstanceactivate) azt. A Graph-példány rövid időre átvált egy átmeneti `Activating` állapotba, és ha ez sikeres, akkor lépjen be egy `Active` állapotba. Az `Active` állapotban a rendszer feldolgozza az adathordozót (ha a Graph-példány bemeneti adatokat kap).
+
+> [!NOTE]
+>  Egy gráf-példány aktív lehet anélkül, hogy átáramlik rajta (például a kamera offline állapotba kerül).
+> Az Azure-előfizetés számlázása akkor történik meg, amikor a Graph-példány aktív állapotban van.
+
+Megismételheti a más gráf-példányok létrehozásának és aktiválásának folyamatát ugyanarra a topológiára vonatkozóan, ha más élő videó-hírcsatornákkal dolgoz fel.
+
+Ha elkészült az élő videó hírcsatornájának feldolgozásával, [inaktiválja](direct-methods.md#graphinstancedeactivate) a Graph-példányt. A Graph-példány rövid időre átvált egy átmeneti `Deactivating` állapotba, kiüríti a benne lévő összes adatsort, majd visszatér az `Inactive` állapotba.
+
+Csak akkor [törölhet](direct-methods.md#graphinstancedelete) egy gráf-példányt, ha az állapotban van `Inactive` .
+
+Miután az adott gráf-topológiára hivatkozó összes gráf-példány törölve lett, [törölheti a Graph-topológiát](direct-methods.md#graphtopologydelete).
+
 
 ## <a name="sources-processors-and-sinks"></a>Források, processzorok és mosogatók  
 

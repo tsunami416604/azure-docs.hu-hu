@@ -941,7 +941,7 @@
               href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Alapelvek
           items:
-            - name: Üzleti folytonosság
+            - name: Az üzletmenet folytonossága
               items:
                 - name: Áttekintés
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
@@ -986,9 +986,11 @@
                 - name: Licencmodell
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Kiadás
+                - name: Kiadás módosítása
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Verzió módosítása
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault-integráció
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On rendelkezésre állási csoport
                   items:
+                    - name: Azure Portal
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell vagy Az CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure-gyorssablonok

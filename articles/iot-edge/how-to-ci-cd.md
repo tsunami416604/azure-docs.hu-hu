@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398cf947f0a2d250c3cd0ed73a75bc3c091e5f7a
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561025"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047530"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge
 
@@ -101,7 +101,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. Konfigurálja úgy a fol
    * **Kimeneti változók**: a kimeneti változók közé tartozik egy hivatkozás neve, amellyel konfigurálható a fájl elérési útja, ahol a deployment.jsfájl jön létre. Adja meg a hivatkozási nevet egy olyan emlékezethez, mint a **Edge**.
 
 
-   Ezek a konfigurációk a képtárat és a fájlban definiált címkét használják a `module.json` modul rendszerképének elnevezéséhez és címkézéséhez. A **Build-modul lemezképei** is segítenek a változók a fájlban megadott pontos értékkel való lecserélésében `module.json` . A Visual Studióban vagy a Visual Studio Code-ban a tényleges értéket kell megadnia egy `.env` fájlban. Az Azure-folyamatokban az értéket a **folyamat változói** lapon állíthatja be. Válassza a **változók** fület, és konfigurálja a nevet és az értéket az alábbiak szerint:
+   Ezek a konfigurációk a képtárat és a fájlban definiált címkét használják a `module.json` modul rendszerképének elnevezéséhez és címkézéséhez. A **Build-modul lemezképei** is segítenek a változók a fájlban megadott pontos értékkel való lecserélésében `module.json` . A Visual Studióban vagy a Visual Studio Code-ban a tényleges értéket kell megadnia egy `.env` fájlban. Az Azure-folyamatokban az értéket a **folyamat változói** lapon állíthatja be. Válassza a **változók** fület, és konfigurálja a nevet és az értéket a következőképpen:
 
     * **ACR_ADDRESS**: a Azure Container Registry-címe. 
 
@@ -184,7 +184,7 @@ Ebben a szakaszban létrehoz egy kiadási folyamatot, amely úgy van beállítva
     * **Alapértelmezett platform**: válassza ki ugyanazt az értéket a modul lemezképének létrehozásakor.
     * **Kimeneti elérési út**: helyezze el az elérési utat `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Ez az elérési út a végső IoT Edge telepítési jegyzékfájl.
 
-    Ezek a konfigurációk segítenek lecserélni a modul képurl-címeit a `deployment.template.json` fájlban. Az **üzembe helyezési jegyzék létrehozása** a fájlban megadott pontos értékkel is segíti a változók cseréjét `deployment.template.json` . A VS/VS kódban a tényleges értéket kell megadnia egy `.env` fájlban. Az Azure-folyamatokban a kiadási folyamat változói lapon adja meg az értéket. Váltson át a változók lapra, és konfigurálja a nevet és az értéket az alábbiak szerint.
+    Ezek a konfigurációk segítenek lecserélni a modul képurl-címeit a `deployment.template.json` fájlban. Az **üzembe helyezési jegyzék létrehozása** a fájlban megadott pontos értékkel is segíti a változók cseréjét `deployment.template.json` . A VS/VS kódban a tényleges értéket kell megadnia egy `.env` fájlban. Az Azure-folyamatokban a kiadási folyamat változói lapon állíthatja be a értéket. Váltson a változók lapra, és konfigurálja a nevet és az értéket az alábbiak szerint.
 
     * **ACR_ADDRESS**: a Azure Container Registry-címe.
     * **ACR_PASSWORD**: a Azure Container Registry jelszava.
@@ -204,6 +204,15 @@ Ebben a szakaszban létrehoz egy kiadási folyamatot, amely úgy van beállítva
       * Ha egyetlen eszközre telepít központilag, adja meg **IoT Edge eszköz azonosítóját**.
       * Ha több eszközre telepít üzembe helyezést, az eszköz **célját**kell megadnia. A célként megadott feltétel egy szűrő, amely a IoT Hub IoT Edge-eszközeinek felel meg. Ha az eszköz címkéit feltételként szeretné használni, frissítenie kell a megfelelő eszközök címkéit IoT Hub-eszköz Twin használatával. Frissítse a **IoT Edge központi telepítési azonosítót** és a **IoT Edge központi telepítési prioritást** a speciális beállítások között. További információ a központi telepítés több eszközhöz való létrehozásáról: [IoT Edge automatikus központi telepítések ismertetése](module-deployment-monitoring.md).
     * Bontsa ki a speciális beállítások, majd a **IoT Edge központi telepítési azonosító**elemet, helyezze a változót `$(System.TeamProject)-$(Release.EnvironmentName)` . Ez a projekt és a kiadás nevét a IoT Edge telepítési azonosítójával képezi le.
+
+>[!NOTE]
+>Ha rétegzett üzemelő **példányokat** kíván használni a folyamatában, a rétegzett központi telepítések még nem támogatottak az Azure DevOps Azure IoT Edge feladataiban.
+>
+>Az [Azure DevOps-ben azonban Azure CLI-feladattal](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) is létrehozhatja az üzembe helyezést rétegzett telepítésként. A **beágyazott parancsfájl** értéke az az [IOT Edge Deployment Create paranccsal](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)végezhető el:
+>
+>   ```azurecli-interactive
+>   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true
+>   ```
 
 12. A **Mentés** gombra kattintva mentheti a módosításokat az új kiadási folyamatba. Térjen vissza a folyamat nézethez a menüből válassza a **folyamat** lehetőséget.
 
@@ -229,7 +238,7 @@ A létrehozási feladatok elindításához leküldheti a véglegesítést a forr
 
     ![Kiadási naplók](./media/how-to-ci-cd/release-logs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * IoT Edge DevOps – ajánlott eljárásokat ismertető példa az [Azure DevOps-projektben IoT Edge](how-to-devops-project.md)
 * A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)

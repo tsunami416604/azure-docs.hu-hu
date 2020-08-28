@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 82d820e676cb241198e7b412bad9602b5eb8109b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb76f7897b9647a688e21993002f9c96fe9487f8
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037338"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89046748"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
 Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CLI-ben, hogy valós idejű Application Console-naplókat kapjon a hibaelhárításhoz. [A naplók és a metrikák is elemezhetők a diagnosztikai beállítások](./diagnostic-services.md)használatával.
@@ -86,8 +86,8 @@ A támogatott naplózási beállítások megtekintéséhez:
 az spring-cloud app logs -h 
 ```
 
-## <a name="next-steps"></a>További lépések
-
+## <a name="next-steps"></a>Következő lépések
+* [Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](./diagnostic-services.md)
 
  

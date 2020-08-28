@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381afdbb57e2de41382a10c1912abac980e89cbd
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948470"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049536"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -85,7 +85,7 @@ Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először m
 
 1. Navigáljon a **Azure Portal**  >  **Azure Active Directory**a  >  **bejelentkezések**elemre.
 1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok**  >  **ügyfélalkalmazás**elemre kattint.
-1. **Szűrők hozzáadása**  >  **Ügyfélalkalmazás** > válassza ki az összes örökölt hitelesítési protokollt. Válasszon a szűrési párbeszédablakon kívül a kiválasztott beállítások alkalmazásához és a párbeszédpanel bezárásához.
+1. **Szűrők hozzáadása**  >  **Ügyfélalkalmazás** > válassza ki az összes örökölt hitelesítési protokollt. Válassza a Szűrés párbeszédpanelen kívül a kívánt beállításokat, majd a párbeszédpanel bezárásához.
 
 A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az **alapinformációk** lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
 
@@ -122,7 +122,7 @@ A **többi ügyfél** feltételéhez kiválaszthatja az összes elérhető enged
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-report-only.md)
+- [A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 - Ha még nem ismeri a feltételes hozzáférési szabályzatok konfigurálását, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáférés](../authentication/tutorial-enable-azure-mfa.md) egy példához című témakört.
 - A modern hitelesítés támogatásával kapcsolatos további információkért lásd: [Hogyan működik a modern hitelesítés az office 2013 és az office 2016 ügyfélalkalmazások számára](/office365/enterprise/modern-auth-for-office-2013-and-2016) . 
 - [Többfunkciós eszköz vagy alkalmazás beállítása e-mailek küldésére az Office 365 és Microsoft 365 használatával](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

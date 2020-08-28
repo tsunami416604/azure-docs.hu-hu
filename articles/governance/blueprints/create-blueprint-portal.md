@@ -1,22 +1,22 @@
 ---
 title: 'Rövid útmutató: terv létrehozása a portálon'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a Azure Portalon keresztül.
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045212"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051522"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
-Ha megtudhatja, hogyan hozhat létre és rendelhet hozzá tervrajzokat, meghatározhatja az újrafelhasználható és gyorsan telepíthető konfigurációk fejlesztését Azure Resource Manager sablonok (ARM-sablonok), a házirendek, a biztonság és egyebek alapján. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervezeteket a tervrajzok létrehozásához, közzétételéhez és a szervezeten belüli hozzárendeléséhez kapcsolódó gyakori feladatok elvégzéséhez. Ezek a feladatok a következők:
+Ha megtudhatja, hogyan hozhat létre és rendelhet hozzá tervrajzokat, meghatározhatja az újrafelhasználható és gyorsan telepíthető konfigurációk fejlesztését Azure Resource Manager sablonok (ARM-sablonok), a házirendek, a biztonság és egyebek alapján. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervezeteket a tervrajzok létrehozásához, közzétételéhez és a szervezeten belüli hozzárendeléséhez kapcsolódó gyakori feladatok elvégzéséhez. Ezek a feladatok többek között a következők:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
@@ -61,7 +61,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. Módosítsa a **típust** **beépítettre**. A **Search (keresés**) mezőbe írja be a **címkét**.
 
-   1. A szűrés végrehajtásához kattintson a **Keresésen** kívülre. Válassza a **Hozzáfűzés címkét és az alapértelmezett értéket az erőforráscsoportok**elemnél.
+   1. Módosítsa a szűrést úgy, hogy a **Keresés** megtörténjen. Válassza a **Hozzáfűzés címkét és az alapértelmezett értéket az erőforráscsoportok**elemnél.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
@@ -269,7 +269,7 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. A **terv-hozzárendelés** lapon ellenőrizze, hogy az összes összetevő telepítése sikeres volt-e, és hogy nem történt-e hiba a telepítés során. Ha hiba történt, tekintse meg a [tervekkel kapcsolatos hibaelhárítási](./troubleshoot/general.md) lépéseket, amelyek alapján megállapíthatja, hogy mi volt a probléma.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
@@ -291,7 +291,7 @@ Ha már nincs szüksége terv-hozzárendelésre, távolítsa el az előfizetésb
 > A terv törlése ebben a metódusban a kiválasztott terv összes közzétett verzióját is törli.
 > Egyetlen verzió törléséhez nyissa meg a tervet, válassza a **közzétett verziók** lapot, válassza ki a törölni kívánt verziót, majd válassza a **verzió törlése**lehetőséget. Emellett nem törölheti a tervet, amíg a terv definíciójának összes hozzárendelését törölni nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet Azure Portalsal. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

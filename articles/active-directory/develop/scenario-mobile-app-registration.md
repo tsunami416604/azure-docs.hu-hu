@@ -1,7 +1,7 @@
 ---
 title: Webes API-kat meghívó mobileszközök regisztrálása | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az alkalmazás kódjának konfigurációja)
+description: Ismerje meg, hogyan hozhat létre webes API-kat meghívó mobil alkalmazást (az alkalmazás regisztrációja)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652644"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047673"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Webes API-kat meghívó mobileszközök regisztrálása
 
@@ -40,7 +40,7 @@ A felhasználók olyan közösségi identitások használatával is bejelentkezh
 
 További információ: [forgatókönyvek és támogatott hitelesítési folyamatok](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) , [forgatókönyvek és támogatott platformok és nyelvek](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages).
 
-## <a name="platform-configuration-and-redirect-uris"></a>Platform konfigurálása és URI-k átirányítása  
+## <a name="platform-configuration-and-redirect-uris"></a>Platform konfigurálása és URI-k átirányítása
 
 ### <a name="interactive-authentication"></a>Interaktív hitelesítés
 
@@ -72,24 +72,24 @@ A lépések elvégzése után az átirányítási URI-t az alábbi képen látha
 
 Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás jegyzékfájlján keresztül teheti meg. A jegyzékfájl ajánlott formátuma a következő:
 
-- **iOS**:`msauth.<BUNDLE_ID>://auth` 
-  - Adja meg például a következőt:`msauth.com.yourcompany.appName://auth`
-- **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **iOS**: `msauth.<BUNDLE_ID>://auth`
+  - Adja meg például a következőt: `msauth.com.yourcompany.appName://auth`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Az Android-aláírási kivonatot a kulcstartó parancs használatával hozhatja ki a kiadási kulccsal vagy a hibakeresési kulccsal.
 
 ### <a name="username-password-authentication"></a>Felhasználónév – jelszó-hitelesítés
 
-Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy, a Microsoft Identity platform 2,0-es végpontján elvégezhető oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra. 
+Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy, a Microsoft Identity platform 2,0-es végpontján elvégezhető oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 
 Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez indítsa el az alkalmazás **hitelesítési** szakaszát. A **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** részében, az **alkalmazás nyilvános ügyfélként való kezelésére**szolgáló kérdésnél válassza az **Igen**lehetőséget.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-kat. Az alkalmazásnak delegált engedélyeket kell kérnie. Ezeket az engedélyeket hatóköröknek is nevezik. A kívánt élménytől függően a delegált engedélyeket statikusan is kérheti a Azure Portalon keresztül. Vagy a futtatáskor dinamikusan is kérheti őket. 
+A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-kat. Az alkalmazásnak delegált engedélyeket kell kérnie. Ezeket az engedélyeket hatóköröknek is nevezik. A kívánt élménytől függően a delegált engedélyeket statikusan is kérheti a Azure Portalon keresztül. Vagy a futtatáskor dinamikusan is kérheti őket.
 
 Az engedélyek statikus regisztrálásával lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást. A statikus regisztráció ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kódkonfiguráció](scenario-mobile-app-configuration.md)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan engedélyezheti és tekintheti meg a Kubernetes
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250736"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048278"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>A Kubernetes főcsomópont-naplóinak engedélyezése és áttekintése az Azure Kubernetes Service-ben (AKS)
 
@@ -30,12 +30,8 @@ Azure Monitor naplók engedélyezve vannak és kezelhetők a Azure Portal. Ha az
 1. Válassza ki az AK-fürtöt, például *myAKSCluster*, majd válassza a **diagnosztikai beállítás hozzáadását**.
 1. Adjon meg egy nevet, például *myAKSClusterLogs*, majd válassza ki a **log Analytics küldésére szolgáló**lehetőséget.
 1. Válasszon ki egy meglévő munkaterületet, vagy hozzon létre egy újat. Ha létrehoz egy munkaterületet, adja meg a munkaterület nevét, egy erőforráscsoportot és egy helyet.
-1. Az elérhető naplók listájában válassza ki az engedélyezni kívánt naplókat. A gyakori naplók közé tartozik a *Kube-apiserver*, a *Kube-Controller-Manager*és a *Kube-Scheduler*. Engedélyezheti a további naplókat, például a *Kube-audit* és a *cluster-autoskálázást*. Ha Log Analytics munkaterületek engedélyezve vannak, visszaállíthatja és módosíthatja az összegyűjtött naplókat.
+1. Az elérhető naplók listájában válassza ki az engedélyezni kívánt naplókat. Ebben a példában engedélyezze a *Kube-* naplókat. A gyakori naplók közé tartozik a *Kube-apiserver*, a *Kube-Controller-Manager*és a *Kube-Scheduler*. Ha Log Analytics munkaterületek engedélyezve vannak, visszaállíthatja és módosíthatja az összegyűjtött naplókat.
 1. Ha elkészült, válassza a **Mentés** lehetőséget a kiválasztott naplók gyűjtésének engedélyezéséhez.
-
-A következő példa-portálon a *diagnosztikai beállítások* ablak látható:
-
-![Log Analytics munkaterület engedélyezése az AK-fürt Azure Monitor naplóihoz](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Tesztelési Pod-t ütemezhet az AK-fürtön
 
@@ -71,30 +67,25 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Összegyűjtött naplók megtekintése
 
-A diagnosztikai naplók engedélyezéséhez és a Log Analytics munkaterületen való megjelenítéséhez néhány percet is igénybe vehet. A Azure Portal válassza ki a Log Analytics munkaterülethez tartozó erőforráscsoportot, például *myResourceGroup*, majd válassza ki a log Analytics-erőforrást, például *myAKSLogs*.
+A diagnosztikai naplók engedélyezéséhez és megjelenítéséhez néhány percet is igénybe vehet. A Azure Portal navigáljon az AK-fürthöz, és válassza a bal oldalon található **naplók** elemet. Ha megjelenik a *lekérdezési* ablak, akkor zárjuk be a példát.
 
-![Válassza ki az Log Analytics munkaterületet az AK-fürthöz](media/view-master-logs/select-log-analytics-workspace.png)
 
-A bal oldali oldalon válassza a **naplók**lehetőséget. A *Kube-apiserver*megtekintéséhez írja be a következő lekérdezést a szövegmezőbe:
-
-```
-AzureDiagnostics
-| where Category == "kube-apiserver"
-| project log_s
-```
-
-Az API-kiszolgáló valószínűleg sok naplót ad vissza. Ha le szeretné tekinteni a lekérdezés hatókörét az előző lépésben létrehozott NGINX Pod-naplók megtekintéséhez, adjon hozzá egy további *Where* utasítást a *hüvelyek/NGINX* kereséséhez az alábbi példában látható módon:
+A bal oldali oldalon válassza a **naplók**lehetőséget. A *Kube* naplófájlok megtekintéséhez írja be a következő lekérdezést a szövegmezőbe:
 
 ```
 AzureDiagnostics
-| where Category == "kube-apiserver"
-| where log_s contains "pods/nginx"
+| where Category == "kube-audit"
 | project log_s
 ```
 
-Az NGINX Pod-hoz tartozó naplók megjelennek az alábbi képernyőképen látható módon:
+Sok napló valószínűleg visszaadott. Ha le szeretné tekinteni a lekérdezés hatókörét az előző lépésben létrehozott NGINX Pod-naplók megtekintéséhez, adjon hozzá egy további *Where* utasítást az *Nginx* kereséséhez az alábbi példában látható módon:
 
-![A log Analytics lekérdezési eredményei a minta NGINX Pod-hoz](media/view-master-logs/log-analytics-query-results.png)
+```
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
+```
 
 További naplók megtekintéséhez frissítse a kategória nevét a *Kube-Controller-Manager* vagy a *Kube-Scheduler*értékre, attól függően, hogy az Ön által megadott további naplókra milyen további beállítások *tartoznak* . További *Where* utasítások használatával pontosíthatja a keresett eseményeket.
 
@@ -104,7 +95,7 @@ A naplózási adatok lekérdezésével és szűrésével kapcsolatos további in
 
 A naplózási adatok elemzéséhez a következő táblázat részletezi az egyes eseményekhez használt sémát:
 
-| Mező neve               | Leírás |
+| Mező neve               | Description |
 |--------------------------|-------------|
 | *resourceId*             | A naplót előkészítő Azure-erőforrás |
 | *idő*                   | A napló feltöltésének időbélyege |

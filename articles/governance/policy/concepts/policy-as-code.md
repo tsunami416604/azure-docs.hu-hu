@@ -1,14 +1,14 @@
 ---
 title: Szabályzat tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
-ms.date: 07/23/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131497"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047326"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
 
@@ -29,10 +29,10 @@ Mielőtt beolvassa a szabályzat részleteit a kód munkafolyamata során, tekin
 - [Kezdeményezési definíció](./initiative-definition-structure.md)
 
 A fájlnevek a szabályzat vagy a kezdeményezés definíciójának részeire vannak igazítva:
-- `policy(set).json`– A teljes definíció
-- `policy(set).parameters.json`– A `properties.parameters` definíció része
-- `policy.rules.json`– A `properties.policyRule` definíció része
-- `policyset.definitions.json`– A `properties.policyDefinitions` definíció része
+- `policy(set).json` – A teljes definíció
+- `policy(set).parameters.json` – A `properties.parameters` definíció része
+- `policy.rules.json` – A `properties.policyRule` definíció része
+- `policyset.definitions.json` – A `properties.policyDefinitions` definíció része
 
 Ilyen fájlformátumok például a [Azure Policy GitHub](https://github.com/Azure/azure-policy/)-tárházban érhetők el:
 
@@ -110,7 +110,8 @@ A hozzárendelésnek _letiltott_ [enforcementMode](./assignment-structure.md#enf
 > [!NOTE]
 > Míg a kényszerítési mód hasznos, nem helyettesíti a házirend-definíciók alapos tesztelését különféle feltételek mellett. A házirend-definíciót meg kell vizsgálni, `PUT` és `PATCH` REST API hívásokat, megfelelőségi és nem megfelelő erőforrásokat, valamint a peremhálózati eseteket, például az erőforrásból hiányzó tulajdonságot.
 
-A hozzárendelés üzembe helyezését követően a házirend-SDK használatával [lekérheti az új hozzárendelés megfelelőségi adatait](../how-to/get-compliance-data.md) . A házirendek és hozzárendelések teszteléséhez használt környezetnek megfelelő és nem megfelelő erőforrásokkal kell rendelkeznie. A kód helyes egységének teszteléséhez hasonlóan szeretné tesztelni, hogy az erőforrások a várt módon működnek-e, és hogy nem rendelkezik-e hamis pozitív vagy hamis negatív értékekkel. Ha csak a vártnál teszteli és érvényesíti a műveletet, előfordulhat, hogy a szabályzat váratlanul és azonosítatlan hatással van. További információ: [új Azure Policy definíció hatásának kiértékelése](./evaluate-impact.md).
+A hozzárendelés üzembe helyezését követően a házirend-SDK vagy a [Azure Policy megfelelőség-ellenőrzés GitHub művelettel](https://github.com/marketplace/actions/azure-policy-compliance-scan) szerezheti be az új hozzárendelés [megfelelőségi adatait](../how-to/get-compliance-data.md) . A házirendek és hozzárendelések teszteléséhez használt környezetnek megfelelő és nem megfelelő erőforrásokkal kell rendelkeznie.
+A kód helyes egységének teszteléséhez hasonlóan szeretné tesztelni, hogy az erőforrások a várt módon működnek-e, és hogy nem rendelkezik-e hamis pozitív vagy hamis negatív értékekkel. Ha csak a vártnál teszteli és érvényesíti a műveletet, előfordulhat, hogy a szabályzat váratlanul és azonosítatlan hatással van. További információ: [új Azure Policy definíció hatásának kiértékelése](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Szervizelési feladatok engedélyezése
 
@@ -141,7 +142,7 @@ Ezekben az esetekben az alkalmazás vagy az infrastruktúra üzembe helyezését
 
 Ez a cikk ismerteti a szabályzatok általános munkafolyamatát, valamint azt is, hogy a szabályzatok kiértékelése más üzembe helyezési munkafolyamatok része legyen. Ezt a munkafolyamatot bármely olyan környezetben felhasználhatja, amely támogatja a parancsfájlokon alapuló lépéseket és az automatizálást az eseményindítók alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.

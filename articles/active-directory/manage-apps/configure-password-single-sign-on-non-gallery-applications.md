@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640548"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049060"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Jelszó alapú egyszeri bejelentkezés konfigurálása
 
@@ -52,6 +52,9 @@ Az Azure AD használata az identitás-szolgáltatóként (identitásszolgáltat�
 ## <a name="basic-configuration"></a>Alapszintű konfiguráció
 
 A rövid útmutató [sorozatában](view-applications-portal.md)megtudhatta, hogyan adhat hozzá egy alkalmazást a bérlőhöz, ami lehetővé teszi, hogy az Azure ad tudja, hogy az alkalmazás identitás-szolgáltatója (identitásszolgáltató) használja. Egyes alkalmazások már előre konfigurálva vannak, és megjelennek az Azure AD-galériában. A többi alkalmazás nem szerepel a katalógusban, és létre kell hoznia egy általános alkalmazást, és manuálisan kell konfigurálnia. Az alkalmazástól függően előfordulhat, hogy a jelszó-alapú egyszeri bejelentkezés beállítás nem érhető el. Ha nem jelenik meg a jelszó-alapú beállítási lista az alkalmazás egyszeri bejelentkezési oldalán, akkor nem érhető el.
+
+> [!IMPORTANT]
+> A jelszó-alapú egyszeri bejelentkezéshez a saját alkalmazások böngésző bővítmény szükséges. További információt a [saját alkalmazások telepítésének megtervezése](access-panel-deployment-plan.md)című témakörben talál.
 
 A jelszó-alapú egyszeri bejelentkezés konfigurációs lapja egyszerű. Csak az alkalmazás által használt bejelentkezési oldal URL-címét tartalmazza. A karakterláncnak a Felhasználónév beviteli mezőjét tartalmazó oldalnak kell lennie.
 

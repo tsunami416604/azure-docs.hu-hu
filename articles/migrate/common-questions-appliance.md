@@ -3,12 +3,12 @@ title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530117"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050675"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -39,10 +39,14 @@ A berendezés a következőképpen telepíthető:
 - Ha nem szeretne sablont használni, vagy Ön Azure Government, akkor PowerShell-parancsfájl használatával telepítheti a készüléket a VMware vagy a Hyper-V rendszerre.
 - Fizikai kiszolgálók esetében a készüléket mindig egy parancsfájl használatával helyezheti üzembe.
 
-
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
-A készülék az interneten keresztül vagy az Azure ExpressRoute nyilvános/Microsoft-partneri kapcsolattal való használatával is csatlakozhat.
+A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat.
+
+- Ha az Azure ExpressRoute-t szeretné használni Azure Migrate replikációs forgalomhoz, a Microsoft-társításhoz vagy egy meglévő nyilvános társításhoz van szükség (az új ER-létrehozásokhoz elavult a nyilvános társrendszer).
+- Az Azure ExpressRoute-en keresztüli replikáció az (only) Private peering engedélyezése esetén nem támogatott.
+
+A replikálási forgalomhoz az ajánlott útválasztási tartomány a Microsoft társközi szolgáltatással konfigurált Azure-ExpressRoute.
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Befolyásolja a berendezések elemzése a teljesítményt?
 
@@ -53,7 +57,6 @@ A Azure Migrate készülék folyamatosan a teljesítményadatokat méri a helysz
 Ha a letöltött sablonnal hozza létre a berendezés virtuális gépet, hozzáadhat összetevőket (például víruskeresőt) a sablonhoz, ha a Azure Migrate berendezéshez szükséges kommunikációs és tűzfalszabályok nem állnak helyre.
 
 ## <a name="what-network-connectivity-is-required"></a>Milyen hálózati kapcsolat szükséges?
-
 
 A készüléknek hozzá kell férnie az Azure URL-címeihez. [Tekintse át](migrate-appliance.md#url-access) az URL-listát.
 
@@ -99,9 +102,11 @@ Ezek a lépések azt írják le, hogyan kapcsolódik a készülék a VMware vCen
 Nem. Egy [Azure Migrate berendezés](migrate-appliance.md) és vCenter Server között egy-az-egyhez típusú hozzárendelés található. Több vCenter Server példányon futó virtuális gépek felderítéséhez több berendezést kell telepítenie. 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Rendelkezhet Azure Migrate-projekttel több készülékkel?
+
 Egy projekthez több készülék is csatlakoztatható. Egy berendezés azonban csak egy projekthez társítható. 
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Csatlakozhat a Azure Migrate készülék/replikációs berendezés ugyanahhoz a vCenter?
+
 Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ügynök nélküli VMware áttelepítéshez), mind a replikációs berendezést (amely a VMware virtuális gépek ügynök-alapú áttelepítésére szolgál) ugyanarra a vCenter-kiszolgálóra.
 
 

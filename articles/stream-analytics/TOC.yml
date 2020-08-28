@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: Adatok titkosítása
           href: data-protection.md
+        - name: Georedundancia
+          href: geo-redundancy.md
     - name: Megoldások kiépítése
       items:
         - name: Twitter-hangulatelemzés

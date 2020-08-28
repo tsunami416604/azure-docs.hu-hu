@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9e9973db60f84d2eab63137a3034882bb4ded7f6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e4813f5c8c156fdf381a55ae450cf0ee35cedfa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951845"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048201"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -169,13 +169,15 @@ Az üzembe helyezés befejezése után az alkalmazás a következő címen érhe
 
 #### <a name="cli"></a>[Parancssori felület](#tab/Azure-CLI)
 
-1. A következő parancs használatával valós idejű naplókat kaphat az alkalmazásból.
+A következő parancs használatával valós idejű naplókat kaphat az alkalmazásból.
 
-    ```azurecli
-    az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
-    ```
-    
-    [![Folyamatos átviteli naplók ](media/spring-cloud-quickstart-java/streaming-logs.png)](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
+```azurecli
+az spring-cloud app logs -n hellospring -s <service instance name> -g <resource group name> --lines 100 -f
+
+```
+A naplók az eredmények között jelennek meg:
+
+[![Folyamatos átviteli naplók ](media/spring-cloud-quickstart-java/streaming-logs.png)](media/spring-cloud-quickstart-java/streaming-logs.png#lightbox)
 
 >[!TIP]
 > `az spring-cloud app logs -h`A használatával több paramétert és a log stream funkcióit is megismerheti.

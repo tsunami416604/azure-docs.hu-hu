@@ -3,17 +3,18 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560586"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718526"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -161,6 +162,10 @@ Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, 
 
 Ha a teljes, nem összesített adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén található szolgáltatáslistából válassza ki a **Költségkezelés + Számlázás** lehetőséget. Válassza ki a számlázási fiókját, ha van. Lépjen a **Felhasználás + díjak** oldalra, majd kattintson a kívánt számlázási időszak **Letöltés** ikonjára.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+- Ha korábban rögzített egy személyre szabott költségelemzési nézetet, de már nincs rá szüksége, az adott irányítópultra lépve törölheti a rögzített nézetet.
+- Ha használati adatokat tartalmazó fájlokat töltött le, de nincs már szüksége rájuk, mindenképpen törölje őket.
 
 ## <a name="next-steps"></a>További lépések
 

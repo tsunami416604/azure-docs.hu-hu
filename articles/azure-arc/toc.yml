@@ -1,0 +1,10 @@
+- name: Az Azure Arc dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az Azure Arc bemutatása
+      href: arc-overview.md
+- name: Arc-kompatibilis kiszolgálók >
+  href: ./servers/overview.md
+- name: Arc-kompatibilis Kubernetes >
+  href: ./kubernetes/overview.md

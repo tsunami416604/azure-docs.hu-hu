@@ -1,24 +1,26 @@
 ---
 title: 'Gyors útmutató: Digitális tinta felismerése a tinta felismerő REST API és C #'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató bemutatja, hogyan használható a tinta-felismerő API a digitális tollvonások felismerésének megkezdéséhez.
+description: Ez a rövid útmutató bemutatja, hogyan használható a tinta-felismerő API és a C# a digitális tollvonások felismerésének elindításához.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25360ec1b5e8cd79c21da426a293c148ac0b1932
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931454"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051593"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Gyors útmutató: Digitális tinta felismerése a tinta felismerő REST API és C #
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 Ezzel a rövid útmutatóval megkezdheti a digitális tollvonások küldését a tinta-felismerő API-nak. Ez a C#-alkalmazás egy, a JSON-formátumú szabadkézi adatokat tartalmazó API-kérést küld, és lekéri a választ.
 
@@ -94,7 +96,7 @@ Hozzon létre egy nevű függvényt `LoadJson()` a szabadkézi adat JSON-fájlj�
 Futtassa az alkalmazást. A sikeres válaszokat JSON formátumban adja vissza a rendszer. A JSON-választ is megtalálja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2089907)
