@@ -4,12 +4,13 @@ description: 'Oktatóanyag: ez az oktatóanyag bemutatja, hogyan rögzíthet az 
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b6b6466675c8fa258af8370798cadd88e3b25a83
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833725"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997829"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatSQL Data Warehousek migrálása a Event Grid és Azure Functions használatával
 
@@ -113,11 +114,11 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Függvényalkalmazás közzététele](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. Válassza az **Azure-függvényalkalmazás**, majd a **Meglévő kiválasztása** lehetőséget. Kattintson a **Publish** (Közzététel) elemre.
+1. Válassza az **Azure-függvényalkalmazás**, majd a **Meglévő kiválasztása** lehetőséget. Válassza a **Közzététel** lehetőséget.
 
    ![Cél függvényalkalmazás](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Válassza az **OK** lehetőséget.
+1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Kattintson az **OK** gombra.
 
    ![Függvényalkalmazás kiválasztása](./media/store-captured-data-data-warehouse/select-function-app.png)
 
@@ -142,7 +143,7 @@ A függvény közzététele után feliratkozhat a rögzítés eseményre az Even
 
    ![Előfizetés hozzáadása](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Adja meg az Event Grid-előfizetés nevét. Eseménytípusként használja az **Event Hubs-névterek** típust. Adja meg az értékeket az Event Hubs-névtér példányának kiválasztásához. A feliratkozó végpontjánál hagyja meg a megadott értéket. Válassza a **Létrehozás** lehetőséget.
+1. Adja meg az Event Grid-előfizetés nevét. Eseménytípusként használja az **Event Hubs-névterek** típust. Adja meg az értékeket az Event Hubs-névtér példányának kiválasztásához. A feliratkozó végpontjánál hagyja meg a megadott értéket. Kattintson a **Létrehozás** gombra.
 
    ![Előfizetés létrehozása](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 

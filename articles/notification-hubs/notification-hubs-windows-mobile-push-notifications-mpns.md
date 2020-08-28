@@ -13,17 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: fcf8eb8cd110fab4f1fc85a317f1dd491d21c091
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529947"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998339"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Windows Phone-telefon alkalmazásoknak Notification Hubs használatával
 
@@ -123,7 +123,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
     Ez a kód lekéri a csatorna URI azonosítóját az alkalmazás számára az MPNS-ből, majd regisztrálja a csatorna URI azonosítóját az értesítési központban. Emellett biztosítja azt, hogy a csatorna URI azonosítója legyen regisztrálva az értesítési központban az alkalmazás minden indításakor.
 
    > [!NOTE]
-   > Ez az oktatóanyag egy bejelentési értesítést küld az eszközre. Csempe-értesítés küldésekor Ehelyett a metódust kell meghívnia a `BindToShellTile` csatornán. A Toast és a csempe értesítések támogatásához hívja a `BindToShellTile` és a-t is `BindToShellToast` .
+   > Ez az oktatóanyag egy bejelentési értesítést küld az eszközre. Csempe-értesítés küldésekor Ehelyett a metódust kell meghívnia a `BindToShellTile` csatornán. A Toast és a csempe értesítések támogatásához hívja a `BindToShellTile` és a-t is  `BindToShellToast` .
 
 6. A Megoldáskezelőben bontsa ki a **Tulajdonságok** csomópontot, nyissa meg a `WMAppManifest.xml` fájlt, kattintson a **Képességek** fülre, és jelölje be az **ID_CAP_PUSH_NOTIFICATION** képességet. Az alkalmazás mostantól képes leküldéses értesítések fogadására.
 

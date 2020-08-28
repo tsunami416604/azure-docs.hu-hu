@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b87557b6d884068d3fb85978e8d238fc7f1047ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997710"
 ---
 # <a name="textures"></a>Textúrák
 
@@ -87,7 +88,7 @@ Attól függően, hogy mit kell használni a textúrában, a textúra típusa é
 > [!CAUTION]
 > Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A (z) "_textureLoad" tag változó feletti mintakód egy hivatkozás tárolására szolgál, amíg a *befejezett* esemény megérkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Anyagok](materials.md)
 * [Ég](../overview/features/sky.md)

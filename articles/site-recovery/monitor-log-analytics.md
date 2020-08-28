@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495063"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006941"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan figyelheti az Azure [site Recovery](site-recovery-ov
 
 Azure Monitor naplók olyan log-adatplatformot biztosítanak, amely tevékenység-és erőforrás-naplókat gyűjt, valamint egyéb megfigyelési adatokat is tartalmaz. Azure Monitor naplókon belül a rendszer Log Analytics használatával naplózza és teszteli a napló lekérdezéseit, és interaktív módon elemezheti a naplózási adatforrásokat. Megjelenítheti és lekérdezheti a napló eredményeit, és konfigurálhatja a riasztásokat, hogy műveleteket hajtson végre a figyelt adatmennyiség alapján.
 
-Site Recovery a naplók segítségével Azure Monitorheti a következő műveleteket:
+Site Recovery a következő műveleteket végezheti el a Azure Monitor naplók segítségével:
 
 - **A site Recovery állapotának és állapotának figyelése**. Megfigyelheti például a replikálás állapotát, a feladatátvételi teszt állapotát, a Site Recovery eseményeket, a helyreállítási pontok célkitűzéseit (RPO) a védett gépekhez, valamint a lemez/adatváltozások arányát.
 - **Riasztások beállítása site Recoveryhoz**. Beállíthat például riasztásokat a gép állapotára, a feladatátvételi teszt állapotára vagy Site Recovery a feladatok állapotára.
@@ -36,7 +36,7 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
@@ -62,9 +62,9 @@ Az adatváltozási arány adatait és a forrás adatfeltöltési sebességét a 
 1. Lépjen a Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre.
 2. Kattintson a **csatlakoztatott források** lapra, és válassza a **Windows-kiszolgálók**lehetőséget.
 3. Töltse le a Windows-ügynököt (64 bites) a Process Serveren. 
-4. [A munkaterület-azonosító és-kulcs beszerzése](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [A munkaterület-azonosító és-kulcs beszerzése](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [Az ügynök konfigurálása a TLS 1,2 használatára](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. Az [ügynök telepítésének befejezéséhez](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) adja meg a beszerzett munkaterület azonosítóját és kulcsát.
+6. Az [ügynök telepítésének befejezéséhez](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) adja meg a beszerzett munkaterület azonosítóját és kulcsát.
 7. A telepítés befejezése után lépjen Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre. Nyissa meg az **adat** lapot, és kattintson a **Windows-teljesítményszámlálók**elemre. 
 8. A **"+"** gombra kattintva adja hozzá a következő két számlálót a mintavételi időköz 300 másodpercben:
 
@@ -359,6 +359,6 @@ AzureDiagnostics  
 
 A riasztáshoz állítsa 1 **értékre a küszöbértéket** , az utolsó **nap során pedig** az 1440 percet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a](site-recovery-monitor-and-troubleshoot.md) beépített site Recovery figyelésről.

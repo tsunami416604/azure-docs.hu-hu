@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
-ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236386"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008675"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -97,7 +98,7 @@ Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a telje
 
 A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Átviteli sebesség
+#### <a name="throughput"></a>Teljesítmény
 
 A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
@@ -287,7 +288,7 @@ Azt is megteheti, hogy az alkalmazás minden órában a CPU-használatot külön
 
 Ha batch-beszúrásokat hajt végre, majd az entitások tartományait is beolvassa, érdemes a táblázatok helyett blobokat használni. Jó példa egy naplófájl. Több percből is készíthet naplókat, és beillesztheti őket, majd egyszerre több perces naplót is beolvashat. Ebben az esetben a teljesítmény jobb, ha táblázatok helyett blobokat használ, mivel jelentősen csökkentheti a beolvasott vagy olvasott objektumok számát, valamint az esetlegesen igényelt kérelmek számát is.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Table Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)

@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4958a5e93e27c34772c7c3285470abbc31f5b089
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826990"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004170"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -22,7 +22,7 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Hibaüzenet**      | <span style="font-weight:normal">Az Azure Backup nem rendelkezik a biztonsági másolatok végrehajtásához szükséges szerepköri jogosultságokkal</span>    |
+| **Hibaüzenet**      | <span style="font-weight:normal">A Azure Backup nem rendelkezik a biztonsági mentés végrehajtásához szükséges szerepkör-jogosultságokkal</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Lehetséges okok**    | Lehetséges, hogy a szerepkör felül lett írva.                          |
 | **Javasolt művelet** | A probléma megoldásához futtassa a szkriptet a **felderítési adatbázis** panelen, vagy töltse le [itt](https://aka.ms/scriptforpermsonhana). Azt is megteheti, hogy hozzáadja a "SAP_INTERNAL_HANA_SUPPORT" szerepkört a munkaterhelés biztonsági mentési felhasználóhoz (AZUREWLBACKUPHANAUSER). |
@@ -31,7 +31,7 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 
 | Hibaüzenet      | <span style="font-weight:normal">Nem sikerült csatlakozni a HANA rendszerhez</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Lehet, hogy a SAP HANA példány nem található.<br/>Az Azure Backup számára a HANA-adatbázissal való interakcióhoz szükséges engedélyek nincsenek beállítva. |
+| **Lehetséges okok**    | Lehet, hogy a SAP HANA példány nem található.<br/>A HANA-adatbázissal való interakcióhoz Azure Backup szükséges engedélyek nincsenek beállítva. |
 | **Javasolt művelet** | Ellenőrizze, hogy a SAP HANA-adatbázis működik-e. Ha az adatbázis működik és fut, ellenőrizze, hogy az összes szükséges engedély be van-e állítva. Ha az engedélyek bármelyike hiányzik, futtassa az [Előregisztráció parancsfájlt](https://aka.ms/scriptforpermsonhana) a hiányzó engedélyek hozzáadásához. |
 
 ### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
@@ -45,14 +45,14 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 
 | Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA művelet nem támogatott</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | A SAP HANA készült Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
+| **Lehetséges okok**    | A SAP HANA Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
 | **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
 | Hibaüzenet      | <span style="font-weight:normal">Ez a SAP HANA-adatbázis nem támogatja a kért biztonsági mentési típust</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Az Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával |
+| **Lehetséges okok**    | A Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával |
 | **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -73,7 +73,7 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 
 | Hibaüzenet      | <span style="font-weight:normal">A rendszer érvénytelen backint-konfigurációt észlelt</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek az Azure Backup szolgáltatáshoz |
+| **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek Azure Backup |
 | **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: FALSE]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
@@ -202,6 +202,6 @@ Ezek a tünetek a következő okok valamelyike miatt merülhetnek fel:
 
 Az előző forgatókönyvekben azt javasoljuk, hogy a virtuális gépen újra regisztrálja a műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentésével kapcsolatos [gyakori kérdéseket](./sap-hana-faq-backup-azure-vm.md) .

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73605619"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004068"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Avro-adatbázis lekérdezése Azure Data Lake Analytics használatával
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan lehet lekérdezni a Avro adatait az Azure-IoT Hu
 
 A kihívás az volt, hogy amikor az Azure IoT Hub az üzeneteket az Azure Blob Storage-ba irányítja, alapértelmezés szerint a IoT Hub Avro formátumban írja be a tartalmat, amely tartalmaz egy üzenettörzs-tulajdonságot és egy üzenet tulajdonságot is. A Avro formátuma nem használatos más végpontokhoz. Bár a Avro formátuma kiválóan használható az adat-és az üzenetek megőrzése érdekében, az Adatlekérdezési feladatnak kell lennie. Az összehasonlításban a JSON-vagy CSV-formátum sokkal egyszerűbb az adatlekérdezéshez. IoT Hub mostantól támogatja az adatírást a blob Storage-ba a JSON-ban, valamint a AVRO.
 
-További információ: az [Azure Storage használata útválasztási végpontként](iot-hub-devguide-messages-d2c.md#azure-storage).
+További információ: az [Azure Storage használata útválasztási végpontként](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 A nem összehasonlítható Big-adattípusok és-formátumok megoldásához, valamint a probléma megoldásához használja az Adatátalakítási és-méretezési funkciók számos Big-adatmintázatát. Az egyik minta, a "pay per Query", Azure Data Lake Analytics, amely a cikk középpontjában áll. Bár a lekérdezés egyszerűen végrehajtható a Hadoop-ben vagy más megoldásokban, Data Lake Analytics gyakran alkalmasabb ehhez a "pay per Query" megközelítéshez.
 
@@ -167,7 +167,7 @@ Ebben a szakaszban lekérdezi a Avro, és exportálja azt egy CSV-fájlba az Azu
 
     ![Az egyes elemek oszlopait ábrázoló kimenet](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kérdezheti le a Avro adatait az Azure IoT Hubról az Azure-szolgáltatásokra irányuló üzenetek hatékony továbbításához.
 

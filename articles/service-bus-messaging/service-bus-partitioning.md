@@ -3,12 +3,13 @@ title: Particionált Azure Service Bus-várólisták és-témakörök létrehoz�
 description: Ismerteti, hogyan lehet Service Bus várólistákat és témaköröket több Message Broker használatával particionálni.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c43d8d560ddede021b70b0cdc167f42052904b0b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11cc76b0dd0125c7b54438d3f991069b7c44db59
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064859"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007961"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -141,7 +142,7 @@ Jelenleg Service Bus a következő korlátozásokat szabja meg a particionált v
 * A particionált várólisták és témakörök nem támogatják a különböző munkamenetekhez tartozó üzenetek küldését egyetlen tranzakcióban.
 * A Service Bus névterenként jelenleg 100 particionált üzenetsort vagy témakört képes kezelni. Minden particionált üzenetsor vagy témakör a 10 000 entitások névterében számítja fel a kvótát (a prémium szintű csomagra nem vonatkozik).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a AMQP 1,0 üzenetküldési specifikációjának alapvető fogalmait a [AMQP 1,0 protokoll útmutatójában](service-bus-amqp-protocol-guide.md).
 

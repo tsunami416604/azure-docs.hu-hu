@@ -7,12 +7,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9ff3e12721628e244f247e174af101e71ea91191
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61447624"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998322"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
 
@@ -56,7 +57,7 @@ Most módosítsa az IOT hub Manager-szolgáltatás állapotjelző üzenetét az 
 1. Győződjön meg arról, hogy a terminál nyitva van, és váltson arra a könyvtárra, ahol a távoli figyelési megoldást klónozotta. 
 1. Módosítsa a könyvtárat "Azure-IOT-PCs-Remote-Monitoring-DotNet/Services/iothub-Manager/Services" értékre.
 1. Nyissa meg a StatusService.cs bármely olyan szövegszerkesztőben vagy IDE, amelyet szeretne. 
-1. Keresse meg a következő kódrészletet:
+1. Keresse meg a következő kódot:
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
@@ -121,7 +122,7 @@ Most frissítenie kell a helyi Docker-compose. YML, hogy lekérje az új Docker-
 
 1. Lépjen vissza a terminálra, és váltson a következő könyvtárra: "Azure-IOT-PC-Remote-Monitoring-DotNet/Services/Scripts/local".
 2. Nyissa meg a Docker-compose. YML alkalmazást bármilyen szövegszerkesztőben vagy IDE, amelyet szeretne.
-3. Keresse meg a következő kódrészletet:
+3. Keresse meg a következő kódot:
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
@@ -181,7 +182,7 @@ Ha problémákba ütközik, próbálja meg eltávolítani a Docker-lemezképeket
 
     Ha sikeresen eltávolította az összes tárolót, semmi nem jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket látta el:
 

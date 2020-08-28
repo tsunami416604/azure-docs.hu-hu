@@ -3,7 +3,7 @@ title: Felhasználó által hozzárendelt felügyelt identitások kezelése a RE
 description: Részletes útmutató a felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához és törléséhez REST API-hívások kezdeményezéséhez.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c342359b015085804b127ef8c58aca8a4b13dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8da142b9ee97d45b5f798e1b7db31228613cd37f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608466"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014268"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése REST API-hívások használatával
 
@@ -58,16 +58,16 @@ PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-**Kérések fejlécei**
+**Kérésfejlécek**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
 |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-|*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
 
 **Kérelem törzse**
 
-|Name  |Description  |
+|Név  |Leírás  |
 |---------|---------|
 |location     | Kötelező. Erőforrás helye.        |
 
@@ -86,7 +86,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
 |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-|*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás törlése
 
@@ -106,8 +106,8 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
 |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
-|*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
+|*Engedélyezés*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.        |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználó által hozzárendelt felügyelt identitás Azure-beli virtuális gépekhez/VMSS való hozzárendelésével kapcsolatos információkért tekintse meg a [felügyelt identitások konfigurálása](qs-configure-rest-vm.md#user-assigned-managed-identity) Azure-beli virtuális gépen REST API hívásokkal és felügyelt identitások konfigurálása az Azure-erőforrásokhoz a [virtuálisgép-méretezési csoportokban REST API hívások használatával](qs-configure-rest-vmss.md#user-assigned-managed-identity)című témakört.

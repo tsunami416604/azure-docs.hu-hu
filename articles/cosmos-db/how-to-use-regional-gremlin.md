@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f9d46c2f5cce397c2aa6ebbcd38d7fbb5786412
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263595"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997251"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionális végpontok Azure Cosmos DB Graph-fiókhoz
 Azure Cosmos DB Graph-adatbázis [globálisan elosztott](distribute-data-globally.md) , így az alkalmazások több olvasási végpontot is használhatnak. A több helyen írási hozzáféréssel rendelkező alkalmazásoknak engedélyezniük kell a [több főkiszolgálós](how-to-multi-master.md) funkciót.
@@ -108,7 +109,7 @@ foreach (string location in readLocations)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az [adatbázis-fiókok felügyeletének kezelése](how-to-manage-database-account.md) a Azure Cosmos DBban
 * [Magas rendelkezésre állás](high-availability.md) a Azure Cosmos DBban
 * [Globális terjesztés Azure Cosmos DBokkal – a motorháztető alatt](global-dist-under-the-hood.md)

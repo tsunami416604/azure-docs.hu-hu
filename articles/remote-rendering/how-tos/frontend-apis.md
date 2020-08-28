@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891470"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003524"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Hitelesítés az Azure előtérbeli API-k használatával
 
-Ebben a szakaszban bemutatjuk, hogyan használható a C# API a hitelesítéshez.
+Ebben a szakaszban bemutatjuk, hogyan használhatja az API-t a hitelesítéshez és a munkamenetek kezeléséhez.
+
+> [!CAUTION]
+Az ebben a fejezetben ismertetett függvények a kiszolgálón belüli REST-hívásokat adnak meg. Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben a `SessionGeneralContext.HttpResponseCode` tag értéke 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
@@ -477,7 +482,7 @@ void ConnectToArrInspector(ApiHandle<AzureSession> session, std::string hostname
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fiók létrehozása](create-an-account.md)
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

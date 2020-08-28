@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 70431ee42566d1cbba5ed239b9da55c2ff7a2afe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893017"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999223"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/tároló hitelesítő adatai hiba: 100110 <br/> <br/>**Hibaüzenet**: az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni. | **OK**: Ez a probléma akkor fordul elő, ha a fájlokat a másik kiszolgálóra szeretné visszaállítani az eredeti kiszolgálóról külső DPM-helyreállítási lehetőséggel, és ha a helyreállított kiszolgáló, illetve az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nem ugyanahhoz a Recovery Services-tárolóhoz van társítva.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
+| Visszaállítás | **Hibakód**: CBPServerRegisteredVaultDontMatchWithCurrent/tároló hitelesítő adatai hiba: 100110 <br/> <br/>**Hibaüzenet**: az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni. | **OK**: Ez a probléma akkor fordul elő, ha a fájlokat az eredeti kiszolgálóról a külső DPM helyreállítási lehetőség használatával szeretné visszaállítani a másodlagos kiszolgálóra, és ha a helyreállított kiszolgáló és az az eredeti kiszolgáló, ahonnan az adatok biztonsági mentése történik, nem ugyanahhoz a Recovery Services-tárolóhoz van társítva.<br/> <br/>**Áthidaló megoldás** A probléma megoldásához ellenőrizze, hogy az eredeti és az alternatív kiszolgáló is regisztrálva van-e ugyanahhoz a tárolóhoz.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>A VMware virtuális gép online helyreállítási pontjának létrehozási feladatai sikertelenek
 

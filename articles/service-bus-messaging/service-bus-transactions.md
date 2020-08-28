@@ -3,12 +3,13 @@ title: A tranzakciók feldolgozásának áttekintése Azure Service Bus
 description: Ez a cikk áttekintést nyújt a tranzakciók feldolgozásáról és a Azure Service Buson keresztüli küldés szolgáltatásról.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 90ee3e4f7cd6465d6297406d1d28d4ea34f88ac4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f51e570775fbce8a316d98b5198fa906173dc755
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340500"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999954"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
@@ -27,7 +28,7 @@ A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, tém
 A tranzakciók hatókörén belül elvégezhető műveletek a következők:
 
 * ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**:,,,, `Complete` `CompleteAsync` `Abandon` `AbandonAsync` `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` ,`RenewLockAsync` 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**:,,,, `Complete` `CompleteAsync` `Abandon` `AbandonAsync` `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
 
 A fogadási műveletek nem szerepelnek, mert feltételezhető, hogy az alkalmazás a [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód használatával, egy fogadási hurokban vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -visszahívással szerzi be az üzeneteket, és csak ezután nyit meg egy tranzakció-hatókört az üzenet feldolgozásához.
 
@@ -90,7 +91,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 ## <a name="timeout"></a>Időtúllépés
 Egy tranzakció időtúllépése 2 perc múlva megtörténik. A tranzakció-időzítő akkor indul el, amikor a tranzakció első művelete elindul. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

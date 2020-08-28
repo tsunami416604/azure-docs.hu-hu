@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja, kezdeménye
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: aa072cb48e12ac89af3be28a9633a82b50122275
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890331"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006295"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -445,7 +445,7 @@ Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, ma
 |202 elfogadva     |         |     Elfogadva    |
 
 > [!IMPORTANT]
-> A véletlen törlési forgatókönyvek elleni védelem érdekében a Recovery Services-tárolóhoz [elérhető egy törlési funkció](use-restapi-update-vault-properties.md#soft-delete-state) . Ha a tároló Soft-delete állapota engedélyezve értékre van állítva, akkor a törlési művelet nem fogja azonnal törölni az adatmennyiséget. A rendszer 14 napig őrzi meg, majd véglegesen törli. Ezt a 14 napos időszakot nem terheljük a tárterület. A törlési művelet visszavonásához tekintse meg a [Visszavonás-törlés szakaszt](#undo-the-deletion).
+> A véletlen törlési forgatókönyvek elleni védelem érdekében a Recovery Services-tárolóhoz rendelkezésre áll egy, a [törlést biztosító funkció](use-restapi-update-vault-properties.md#soft-delete-state) . Ha a tároló Soft-delete állapota engedélyezve értékre van állítva, akkor a törlési művelet nem fogja azonnal törölni az adatmennyiséget. A rendszer 14 napig őrzi meg, majd véglegesen törli. Ezt a 14 napos időszakot nem terheljük a tárterület. A törlési művelet visszavonásához tekintse meg a [Visszavonás-törlés szakaszt](#undo-the-deletion).
 
 ### <a name="undo-the-deletion"></a>Törlés visszavonása
 
@@ -466,7 +466,7 @@ A visszavonás törlése egy *put* művelet, amely nagyon hasonlít [a szabályz
 
 A válasz az [igény szerinti biztonsági mentés elindításához használt](#example-responses-for-on-demand-backup)formátumot fogja követni. Az eredő feladatot nyomon kell követni a [feladatok figyelése REST API dokumentum használatával](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Adatok visszaállítása egy Azure-beli virtuális gép biztonsági másolatából](backup-azure-arm-userestapi-restoreazurevms.md).
 

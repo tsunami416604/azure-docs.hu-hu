@@ -9,12 +9,13 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9a9b8b9ed3e65ae9b8500017b838dc320ecbaac
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005020"
 ---
 # <a name="connect-to-synapse-sql"></a>Kapcsolódás a szinapszis SQL-hez
 Kapcsolódjon a szinapszis SQL-képességhez az Azure szinapszis Analytics szolgáltatásban.
@@ -35,7 +36,7 @@ Az SQL igény szerinti kiszolgálójának neve a következő példában: showdem
 
 A teljes kiszolgálónév lekérdezése:
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Kattintson a **szinapszis-munkaterületek**elemre.
 3. Kattintson arra a munkaterületre, amelyhez csatlakozni szeretne.
 4. Ugrás az áttekintéshez.

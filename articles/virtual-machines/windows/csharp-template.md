@@ -8,12 +8,13 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 908c258dab5625cda7f2fa020257b08e68102a1d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 779a09532790ea272d8c95ac28f8c152216efc5a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835561"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002963"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Azure-beli virtuális gép üzembe helyezése C# használatával és Resource Manager-sablonnal
 
@@ -233,7 +234,7 @@ A sablon üzembe helyezése előtt győződjön meg arról, hogy van hozzáfér�
         .WithDefaultSubscription();
     ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az alkalmazás értékeinek megadásához adja hozzá a kódot a Main metódushoz:
 
@@ -323,7 +324,7 @@ Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes k
 
 2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha probléma merült fel az üzembe helyezés során, a következő lépés az [Azure telepítési hibáinak elhárítása a Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md)használatával.
 * Megtudhatja, hogyan helyezhet üzembe egy virtuális gépet és annak támogató erőforrásait az Azure-beli [virtuális gépek C# használatával történő üzembe helyezésének](../../azure-resource-manager/templates/deploy-rest.md)áttekintésével.

@@ -9,18 +9,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560966"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004322"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Shake, Shake for a tweet – Twitter-üzenet beolvasása Azure Functions
 
 Ebből a projektből megtudhatja, hogyan indíthat el egy eseményt a mozgásérzékelővel Azure Functions használatával. Az alkalmazás egy véletlenszerű tweetet kérdez le egy, az Arduino-vázlatban konfigurált #hashtag. A tweet a fejlesztői készlet képernyőn jelenik meg.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
 
@@ -116,7 +117,7 @@ A rendszer most a kapcsolatok karakterláncát állítja be, ellenőrzi és felt
 
    ![eszköz – feltöltés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
-2. A fejlesztői készlet újraindul, és elindítja a kód futtatását.
+2. A DevKit újraindul, és elkezdi a kód futtatását.
 
 "Hiba: AZ3166: ismeretlen csomag" hibaüzenet jelenik meg. Ez a hiba akkor fordul elő, ha a tábla csomagjának indexe nem megfelelően frissül. A probléma megoldásához olvassa el a ["ismeretlen csomag" hibát a IoT fejlesztői készlet gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)című témakörben.
 
@@ -202,7 +203,7 @@ Ha más problémákat tapasztal, tekintse meg a [IoT fejlesztői készlet GYIK](
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT-alapú távoli figyelési megoldás-gyorsító szolgáltatáshoz, és hogyan kérhet le egy tweetet, a következő lépéseket ajánljuk:
 

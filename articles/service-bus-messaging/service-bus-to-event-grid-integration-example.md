@@ -6,12 +6,13 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 0909fd95238051a6a50e582cb2543dd3bdd307bf
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067290"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000345"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions és a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
 Ebből az oktatóanyagból megtudhatja, hogyan válaszolhat a Azure Event Grid használatával fogadott Azure Service Bus eseményekre Azure Functions és Azure Logic Apps használatával. 
@@ -74,7 +75,7 @@ Az alábbi lépéseket követve összekapcsolhatók a logikai alkalmazások Azur
         ![Logic Apps Designer – Event Grid trigger kiválasztása](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
 4. Válassza a **Bejelentkezés**lehetőséget, adja meg az Azure-beli hitelesítő adatait, majd válassza a **hozzáférés engedélyezése**lehetőséget. 
 5. Az **erőforrás-esemény bekövetkeztekor** oldalon hajtsa végre a következő lépéseket:
-    1. Válassza ki az Azure-előfizetését. 
+    1. Válassza ki Azure-előfizetését. 
     2. Az **erőforrástípus**mezőben válassza a **Microsoft. ServiceBus. névterek**lehetőséget. 
     3. Az **Erőforrás neve**mezőben válassza ki a Service Bus névteret. 
     4. Válassza az **új paraméter hozzáadása**lehetőséget, majd válassza az **utótag-szűrő**elemet. 
@@ -325,7 +326,7 @@ Ez a szakasz az üzenetek fogadását és feldolgozását ismerteti az eseménye
 5. A **Közzététel**oldalon hajtsa végre a következő lépéseket: 
     1. Kattintson a **Start** gombra a **közzétételi** lapon 
     2. A **cél**mezőben válassza a **profil importálása**lehetőséget. 
-    3. Válassza a **Tovább** lehetőséget. 
+    3. Kattintson a **Tovább** gombra. 
 
         ![Visual Studio – profil importálása gomb](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
 7. Válassza ki a korábban letöltött **közzétételi profilt** , és válassza a **Befejezés**lehetőséget.
@@ -353,7 +354,7 @@ Ez a szakasz az üzenetek fogadását és feldolgozását ismerteti az eseménye
 3. Az üzenetek [küldése a Service Bus témakörbe](#send-messages-to-the-service-bus-topic) című részben található utasításokat követve üzeneteket küldhet a témakörnek, és figyelheti a függvényt. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók az [Azure Event Grid](../event-grid/index.yml) szolgáltatásról.
 * További tudnivalók az [Azure Functions](../azure-functions/index.yml) szolgáltatásról.

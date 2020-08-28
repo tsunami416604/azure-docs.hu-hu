@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 39cbfebcf34ef47ae93972a11be44ef3bcec0d66
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826058"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008931"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Médiafájlok indexelése Azure Media Indexer
 
@@ -240,7 +241,7 @@ Ha nem az összes bemeneti médiafájl indexelve lett, az indexelési feladat si
 
 Ugyanezek a kimenetek (a sikeres feladatok) jönnek létre. Tekintse át a kimeneti jegyzékfájlt, és ellenőrizze, hogy mely bemeneti fájlok sikertelenek, a hiba oszlop értékeinek megfelelően. A sikertelen bemeneti fájlok esetében az eredményül kapott TTML-, WebVTT-és kulcsszavas fájlok nem jönnek létre.
 
-### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Azure Media Indexer feladatának beállítása
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure Media Indexer feladatának beállítása
 A Azure Media Indexerból történő feldolgozás testreszabható úgy, hogy a feladattal együtt egy opcionális feladattal is rendelkezik.  Az alábbiakban a konfigurációs XML formátumát ismertetjük.
 
 | Név | Kötelező | Leírás |
@@ -252,7 +253,7 @@ A Azure Media Indexerból történő feldolgozás testreszabható úgy, hogy a f
 ### <a name="error-codes"></a><a id="error_codes"></a>Hibakódok
 Hiba esetén Azure Media Indexer a következő hibakódok egyikét kell jelentenie:
 
-| Kód | Név | Lehetséges okok |
+| Code | Név | Lehetséges okok |
 | --- | --- | --- |
 | 2000 |Érvénytelen konfiguráció |Érvénytelen konfiguráció |
 | 2001 |Érvénytelen bemeneti eszközök |Hiányzó bemeneti eszközök vagy üres eszköz. |

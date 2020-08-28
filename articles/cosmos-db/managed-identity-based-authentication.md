@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88243717"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997727"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 
@@ -90,10 +91,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Most már van egy olyan Function-alkalmazás, amely rendelkezik egy rendszerhez rendelt felügyelt identitással a **DocumentDB fiók közreműködői** szerepkörével a Azure Cosmos db engedélyekben. A következő Function app Code beolvassa a Azure Cosmos DB kulcsokat, létrehoz egy CosmosClient objektumot, beolvassa az akvárium hőmérsékletét, majd elmenti ezt a Azure Cosmos DBba.
 
-Ez a példa a [Keys API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) -t használja a Azure Cosmos db-fiók kulcsainak eléréséhez.
+Ez a példa a [Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) -t használja a Azure Cosmos db-fiók kulcsainak eléréséhez.
 
 > [!IMPORTANT] 
-> Ha [a Cosmos db fiók-olvasó](#grant-access-to-your-azure-cosmos-account) szerepkört szeretné hozzárendelni, akkor a [csak olvasási KULCSokat tartalmazó API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)-t kell használnia. Ez csak a csak olvasható kulcsokat fogja feltölteni.
+> Ha [a Cosmos db fiók-olvasó](#grant-access-to-your-azure-cosmos-account) szerepkört szeretné hozzárendelni, akkor a [csak olvasási KULCSokat tartalmazó API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys)-t kell használnia. Ez csak a csak olvasható kulcsokat fogja feltölteni.
 
 A List Keys API az objektumot adja vissza `DatabaseAccountListKeysResult` . Ez a típus nincs definiálva a C#-tárakban. A következő kód az osztály implementációját mutatja be:  
 
@@ -213,7 +214,7 @@ namespace Monitor
 
 Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/functions-create-first-function-vs-code.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tanúsítványalapú hitelesítés Azure Cosmos DB és Azure Active Directory](certificate-based-authentication.md)
 * [Azure Cosmos DB kulcsok védelme Azure Key Vault használatával](access-secrets-from-keyvault.md)

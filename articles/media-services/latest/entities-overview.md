@@ -12,13 +12,13 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 4fbd587b99875690a8c95952ce6b11d41e402726
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053245"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009882"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
@@ -45,7 +45,7 @@ Tartomány operátorai:
 - `ge`: Ellenőrizze, hogy a mező értéke *nagyobb-e, vagy egyenlő-* e az állandó értékkel.
 - `le`: Megvizsgálhatja, hogy egy mező *kisebb vagy egyenlő-e, mint* egy konstans érték.
 
-## <a name="filter"></a>Szűrő
+## <a name="filter"></a>Szűrés
 
 A használatával `$filter` OData szűrő paramétert adhat meg, amely csak azokat az objektumokat keresi meg, amelyekre kíváncsi.
 
@@ -156,7 +156,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
 
-|Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
+|Entitás neve|Tulajdonság neve|Szűrés|Rendelés|
 |---|---|---|---|
 |[Adategységek](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
 ||Properties. alternateId |`eq`||
@@ -180,7 +180,7 @@ A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rende
 || tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszközök listázása](/rest/api/media/assets/list)
 * [A tartalmi kulcs házirendjeinek listázása](/rest/api/media/contentkeypolicies/list)

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/27/2020
+ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824766"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998407"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs-áttekintés engedélyezése
 
@@ -78,86 +78,25 @@ Ha nem rendelkezik Log Analytics munkaterülettel, létrehozhat egyet az egyik e
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A következő táblázat felsorolja a Azure Monitor for VMs által támogatott Windows-és Linux-operációs rendszereket. A szakasz későbbi részében egy teljes listát talál, amely részletesen ismerteti a Linux operációs rendszer kiadásának és a támogatott kernelnek a verziószámát.
+Azure Monitor for VMs támogatja az Log Analytics ügynököt és a függőségi ügynököt támogató operációs rendszereket. Lásd: [Azure monitor-ügynökök áttekintése ](../platform/agents-overview.md#supported-operating-systems) teljes listához.
 
-|Operációs rendszer verziója |Teljesítmény |Maps |
-|-----------|------------|-----|
-|Windows Server 2019 | X | X |
-|Windows Server 2016 1803 | X | X |
-|Windows Server 2016 | X | X |
-|Windows Server 2012 R2 | X | X |
-|Windows Server 2012 | X | X |
-|Windows Server 2008 R2 | X | X|
-|Windows 10 1803 | X | X |
-|Windows 8.1 | X | X |
-|Windows 8 | X | X |
-|Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
-|Ubuntu 18,04, 16,04 | X | X |
-|CentOS Linux 7, 6 | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X |
-|Debian 9,4, 8 | X<sup>1</sup> | |
+Tekintse meg a következő, a Azure Monitor for VMst támogató függőségi ügynök Linux-támogatásával kapcsolatos szempontokat:
 
-<sup>1</sup> a Azure monitor for VMS teljesítménybeli funkciója csak Azure monitor érhető el. Nem érhető el közvetlenül az Azure-beli virtuális gép bal oldali paneljéről.
+- Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
+- A nem szabványos kernel-kiadások (például a fizikai címkiterjesztés (PAE) és a Xen) nem támogatottak a Linux-disztribúciók esetében. Például a *2.6.16.21-0,8-Xen* kiadási karakterlánccal rendelkező rendszer nem támogatott.
+- Az egyéni kernelek, beleértve a standard kernelek újrafordítását, nem támogatottak.
+- Az 9,4-es verziótól eltérő Debian-disztribúciók esetén a Map funkció nem támogatott, és a teljesítmény funkció csak a Azure Monitor menüből érhető el. Nem érhető el közvetlenül az Azure-beli virtuális gép bal oldali paneljéről.
+- A CentOSPlus kernel támogatott.
+- A Linux-kernelt a fantom biztonsági rések számára kell javítani. További részletekért tekintse meg a Linux-disztribúció gyártóját.
 
->[!NOTE]
->A Linux operációs rendszerben:
-> - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
-> - A nem szabványos kernel-kiadások (például a fizikai címkiterjesztés (PAE) és a Xen) nem támogatottak a Linux-disztribúciók esetében. Például a *2.6.16.21-0,8-Xen* kiadási karakterlánccal rendelkező rendszer nem támogatott.
-> - Az egyéni kernelek, beleértve a standard kernelek újrafordítását, nem támogatottak.
-> - A CentOSPlus kernel támogatott.
-> - A Linux-kernelt a fantom biztonsági rések számára kell javítani. További részletekért tekintse meg a Linux-disztribúció gyártóját.
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-| 7.6 | 3.10.0 – 957 |
-| 7,5 | 3.10.0 – 862 |
-| 7.4 | 3.10.0 – 693 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-| 6,10 | 2.6.32 – 754 |
-| 6.9 | 2.6.32 – 696 |
-
-#### <a name="centosplus"></a>CentOSPlus
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-| 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-
-#### <a name="ubuntu-server"></a>Ubuntu Server
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-| 18,04 | 5.3.0 – 1020<br>5,0 (tartalmazza az Azure által hangolt kernelt)<br>4,18* <br> 4,15* |
-| 16.04.3 | 4,15. * |
-| 16,04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
-
-#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-|12 SP4 CSOMAG | 4,12. * (tartalmazza az Azure által hangolt kernelt) |
-|12 SP3 | 4,4. * |
-|12 SP2 | 4,4. * |
-
-#### <a name="debian"></a>Debian 
-
-| Operációs rendszer verziója | Kernel verziója |
-|:--|:--|
-| 9 | 4,9 | 
 
 ## <a name="supported-azure-arc-machines"></a>Támogatott Azure arc-gépek
 Azure Monitor for VMs elérhető az Azure arc-kompatibilis kiszolgálókhoz olyan régiókban, amelyeken elérhető az ív-bővítmény szolgáltatás. Az ív-ügynök 0,9-es vagy újabb verzióját kell futtatnia.
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](../platform/agents-overview.md#supported-operating-systems). |
 | Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics-ügynökkel](../platform/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
 | System Center Operations Manage felügyeleti csoport | Nem | |
 
@@ -197,6 +136,6 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Teljesítményfigyelő funkció használatának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítményének megtekintése](vminsights-performance.md)című témakört. A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).

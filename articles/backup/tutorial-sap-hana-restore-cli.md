@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja vissza 
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 3887b8e7333b6c581887fcfde7e1bd99200e72ef
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762283"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007264"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -24,7 +24,7 @@ Az oktatóanyag végén a következőket teheti:
 > * Biztonsági másolattal rendelkező adatbázis visszaállítási pontjainak megtekintése
 > * Adatbázis helyreállítása
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik egy olyan Azure-beli virtuális gépen futó SAP HANA-adatbázissal, amely biztonsági mentést végez a Azure Backup használatával. Ha az [Azure-ban SAP HANA-adatbázis biztonsági mentését](tutorial-sap-hana-backup-cli.md) HASZNÁLTA a parancssori felület használatával a SAP HANA-adatbázis biztonsági mentéséhez, akkor a következő erőforrásokat fogja használni:
+Ez az oktatóanyag feltételezi, hogy rendelkezik egy olyan Azure-beli virtuális gépen futó SAP HANA-adatbázissal, amelyről biztonsági másolat készül Azure Backup használatával. Ha az [Azure-ban SAP HANA-adatbázis biztonsági mentését](tutorial-sap-hana-backup-cli.md) HASZNÁLTA a parancssori felület használatával a SAP HANA-adatbázis biztonsági mentéséhez, akkor a következő erőforrásokat fogja használni:
 
 * egy *saphanaResourceGroup* nevű erőforráscsoport
 * egy *saphanaVault* nevű tároló
@@ -344,7 +344,7 @@ Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra,
         * `<LogFilesDir>` – a napló biztonsági másolatait tartalmazó mappa
         * `<BackupIdFromJsonFile>`– a **3. lépésben** kinyert **biztonsági másolat azonosítója**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha meg szeretné tudni, hogyan kezelheti SAP HANA az Azure CLI használatával biztonsági mentést tartalmazó adatbázisokat, folytassa a [SAP HANA-adatbázis kezelése az Azure virtuális gépen a parancssori felület használatával](tutorial-sap-hana-backup-cli.md) című oktatóanyagot.
 

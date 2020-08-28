@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a7a7a6681be78c2777130ca540319eb829d8f9d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002348"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997676"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Log Analytics használata a Windows Virtual Desktop diagnosztikai szolgáltatásához (klasszikus)
 
@@ -34,7 +34,7 @@ Javasoljuk, hogy a Log Analytics használatával elemezze az Azure-ügyfél diag
 
 Mielőtt a diagnosztikai szolgáltatással Log Analytics használni, [létre kell hoznia egy munkaterületet](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
 
-Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
+Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
 
 - A munkaterület azonosítója
 - A munkaterület elsődleges kulcsa
@@ -132,6 +132,6 @@ Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnaly
 
 Ezt a parancsmagot minden olyan bérlő esetében futtatnia kell, amelyről le szeretné állítani az adatok küldését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai szolgáltatás által azonosítható gyakori hibák áttekintése: a [problémák azonosítása és diagnosztizálása](diagnostics-role-service-2019.md#common-error-scenarios).

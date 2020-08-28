@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a9564576715c32f8bcc871d10fae50f139aacdb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932151"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998526"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
 
@@ -957,7 +957,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 4. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 
 További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](/azure/search/index-add-scoring-profiles)című témakörben talál.
 
@@ -971,7 +971,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Természetes, hogy egyes eredmények növekvő sorrendben legyenek rendezve (azaz távolság egy ponttól), és néhány csökkenő sorrendben (azaz a vendég minősítése).
 * A pontozási profilok meghatározhatók, ha a numerikus összehasonlítások nem érhetők el, vagy nem elég intelligensek egy adatkészlethez. Az egyes eredmények pontozásával intelligens módon rendezheti és jelenítheti meg az eredményeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elvégezte ezt a C#-oktatóanyagokat – értékes ismereteket szerzett az Azure Cognitive Search API-król.
 

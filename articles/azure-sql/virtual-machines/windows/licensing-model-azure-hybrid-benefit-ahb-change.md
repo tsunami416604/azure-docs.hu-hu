@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668899"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010222"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure-beli, SQL-t futtató virtuális gépek licencmodelljének módosítása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,7 +55,7 @@ A SQL Server VM licencelési modelljének módosítása az alábbi követelmény
 
 ## <a name="vms-already-registered-with-the-resource-provider"></a>Az erőforrás-szolgáltatónál már regisztrált virtuális gépek 
 
-# <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[A Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -69,7 +69,7 @@ A licencelési modellt közvetlenül a portálról is módosíthatja:
 ![Azure Hybrid Benefit a portálon](./media/licensing-model-azure-hybrid-benefit-ahb-change/ahb-in-portal.png)
 
 
-# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az Azure CLI használatával módosíthatja a licenc modelljét.  
 
@@ -156,7 +156,9 @@ A licencelési modell módosítása:
 
 ## <a name="known-errors"></a>Ismert hibák
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>A (z) "" erőforráscsoport alatti "Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> " erőforrás \<resource-group> nem található.
+Tekintse át az általánosan ismert hibákat és azok megoldásait. 
+
+**A (z) "" erőforráscsoport alatti "Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \<resource-group> " erőforrás \<resource-group> nem található.**
 
 Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítani a licencet, amely még nincs regisztrálva az SQL VM erőforrás-szolgáltatónál:
 
@@ -165,7 +167,7 @@ Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítan
 Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [regisztrálnia kell a SQL Server VM az erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>A (z) "" virtuális gépnek \<vmname\> több hálózati adaptere van társítva
+**A (z) "" virtuális gépnek \<vmname\> több hálózati adaptere van társítva**
 
 Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózati adapterrel rendelkeznek. A licencelési modell módosítása előtt távolítsa el az egyik hálózati adaptert. Bár a licenc modell módosítása után a hálózati adaptert visszaállíthatja a virtuális géphez, a Azure Portal, például az automatikus biztonsági mentés és a javítások nem lesznek többé támogatottak. 
 

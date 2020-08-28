@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 7d91348b727c1c43f010ec9f60ae9abd33978ce8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0b51960418b311ed6170d6d060f3674a9a825808
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85257516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998509"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
 
@@ -555,7 +556,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * A facet Navigation egyszerűen és intuitív módon teszi lehetővé a keresés szűkítéséhez.
 * A dimenziós Navigálás a legmegfelelőbb szakaszokra oszlik (a szállodák kategóriái, a szállodai szolgáltatások, az árak, a minősítési tartományok stb.), és mindegyik szakasz egy megfelelő fejléccel rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyagban megtekintjük az eredmények sorrendjét. Ezen a ponton az eredmények egyszerűen sorrendbe rendezhetők az adatbázisban található sorrendben.
 

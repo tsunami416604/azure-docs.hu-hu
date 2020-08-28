@@ -8,12 +8,13 @@ ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456504"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997166"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -174,7 +175,7 @@ Az Azure AD hozzáférési jogkivonatot a MSAL- [könyvtár](../../active-direct
         1.  Azure Portalban navigáljon a **Azure Active Directory**, és válassza az **alkalmazás-regisztrációk** lehetőséget.
         2.  **Új alkalmazás regisztrációjának** kiválasztása
         3.  Adja meg az alkalmazás nevét, válassza a **webalkalmazás/API** lehetőséget az alkalmazás típusaként, és adja meg a szolgáltatáshoz tartozó hitelesítési URL-címet. Ezután nyomja meg a **create (létrehozás**) gombra.
-        4.  Az alkalmazásban kattintson a **Beállítások**elemre, majd válassza a **tanúsítványok és titkok** fület. hozzon létre egy új ügyfél titkot, válasszon egy időtartamot, és kattintson a **Hozzáadás gombra**. Ügyeljen arra, hogy a titkos értéket mentse, mert a webszolgáltatás kódjában szerepelnie kell a szolgáltatásnak.
+        4.  Az alkalmazásban kattintson a **Beállítások**elemre, majd válassza a **tanúsítványok és titkok** lapot. Hozzon létre egy új ügyfél titkot, válasszon ki egy időtartamot, és kattintson a **Hozzáadás gombra**. Ügyeljen arra, hogy a titkos értéket mentse, mert a webszolgáltatás kódjában szerepelnie kell a szolgáltatásnak.
     2.  Adja meg az alkalmazás és/vagy a felhasználók hozzáférését az erőforráshoz:
         1.  Navigáljon a térbeli horgonyok erőforrásához Azure Portal
         2.  Váltson a **hozzáférés-vezérlés (iam)** lapra
@@ -205,7 +206,7 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Ahol az engedélyezési fejléc a következőképpen van formázva:`Bearer <Azure_AD_token>`
+Ahol az engedélyezési fejléc a következőképpen van formázva: `Bearer <Azure_AD_token>`
 
 A válasz pedig az MR tokent tartalmazza egyszerű szövegben.
 
@@ -259,7 +260,7 @@ Az alkalmazásokhoz, szolgáltatásokhoz vagy a szolgáltatás Azure AD-felhaszn
 - **Térbeli horgonyok fiókjának közreműködői**: a szerepkörrel rendelkező alkalmazások vagy felhasználók létrehozhatnak térbeli horgonyokat, lekérdezéseket végezhetnek, de nem törölhetik azokat.
 - **Térbeli horgonyok fiókjának olvasója**: azok az alkalmazások vagy felhasználók, akik ezt a szerepkört használják, csak a térbeli horgonyok lekérdezésére képesek, de újakat nem hozhatnak létre, törölhetik a meglévőket, vagy frissíthetik a metaadatokat a térbeli horgonyokon. Ez általában olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, míg mások csak az adott környezetbe helyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első alkalmazását az Azure térbeli Horgonyokkal.
 

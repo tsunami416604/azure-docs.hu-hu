@@ -17,12 +17,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d91b7816ee05d4b5ef5266b4c2556abdc1175b87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 56eedda7f79fedce1e34ad837c92006e5cd8f191
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084262"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998271"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Útmutató: ütemezett értesítések küldése
 
@@ -46,7 +47,7 @@ await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 
 Az elküldhető ütemezett értesítések száma nincs korlátozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi oktatóanyagokat:
 

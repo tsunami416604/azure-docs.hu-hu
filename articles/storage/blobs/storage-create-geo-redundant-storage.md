@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, devx-track-python, devx-track-javascript
+ms.custom: mvc, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 25f4c0244a027a0354809080bf13923e92d295f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0e437cfb984acb71b27bc60a06929b6755e8a3ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844592"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001468"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
 
@@ -78,7 +78,7 @@ Az alábbi lépéseket követve hozzon létre egy olvasási hozzáférésű geo-
    | **Hely** | *USA keleti régiója* | Válassza ki a helyet. |
    | **Teljesítmény** | *Standard* | A standard szintű teljesítmény jó megoldás a példaként szolgáló forgatókönyvhöz. |
    | **Fiók altípusa** | *StorageV2* | Az általános célú v2 Storage-fiók használata ajánlott. További információ az Azure Storage-fiókok típusairól: a [Storage-fiók áttekintése](../common/storage-account-overview.md). |
-   | **Replikáció**| *Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)* | Az elsődleges régió a zóna redundáns, és egy másodlagos régióba replikálódik, és olvasási hozzáféréssel rendelkezik a másodlagos régióhoz. |
+   | **Replikáció**| *Írásvédett geo-zónaredundáns tárolás (RA-GZRS)* | Az elsődleges régió a zóna redundáns, és egy másodlagos régióba replikálódik, és olvasási hozzáféréssel rendelkezik a másodlagos régióhoz. |
    | **Hozzáférési szint**| *Gyakori* | A gyakran használt adatokhoz használja a gyors elérésű szintet. |
 
     ![tárfiók létrehozása](media/storage-create-geo-redundant-storage/createragrsstracct.png)

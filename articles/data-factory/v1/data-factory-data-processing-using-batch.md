@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321405"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998080"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
@@ -130,7 +131,7 @@ Hozzon létre egy batch-készletet legalább két számítási csomóponttal.
 
    ![Mappa és almappa szerkezete](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder`és a `outputfolder` legfelső szintű mappák a ben `mycontainer` . A `inputfolder` mappa almappákkal rendelkezik, és dátum-idő bélyegzőket tartalmaz (éééé-hh-nn-hh).
+   `Inputfolder` és a `outputfolder` legfelső szintű mappák a ben `mycontainer` . A `inputfolder` mappa almappákkal rendelkezik, és dátum-idő bélyegzőket tartalmaz (éééé-hh-nn-hh).
 
    Ha Storage Explorer használ, a következő lépésben feltölti a fájlokat a következő nevekkel: `inputfolder/2015-11-16-00/file.txt` , `inputfolder/2015-11-16-01/file.txt` és így tovább. Ez a lépés automatikusan létrehozza a mappákat.
 
@@ -964,7 +965,7 @@ Az adatfeldolgozást követően online eszközökkel, például Power BI haszná
 * [Power BIban lévő Adatfrissítés](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure és Power BI: alapszintű áttekintés](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [A Data Factory szolgáltatás bemutatása](data-factory-introduction.md)

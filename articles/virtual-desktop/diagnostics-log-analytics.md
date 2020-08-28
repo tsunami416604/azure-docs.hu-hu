@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005106"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006805"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -48,7 +48,7 @@ A Log Analytics használata előtt létre kell hoznia egy munkaterületet. Ehhez
 - Ha inkább a Azure Portal használatát kívánja használni, tekintse meg [a log Analytics munkaterület létrehozása a Azure Portalban](../azure-monitor/learn/quick-create-workspace.md)című témakört.
 - Ha inkább a PowerShellt szeretné megtekinteni, olvassa el [a log Analytics munkaterület létrehozása a PowerShell használatával](../azure-monitor/learn/quick-create-workspace-posh.md)című témakört.
 
-Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
+Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
 
 - A munkaterület azonosítója
 - A munkaterület elsődleges kulcsa
@@ -80,7 +80,7 @@ Log Analytics beállítása egy új objektumhoz:
 
 5. Adja meg a beállítások konfigurációjának nevét, majd kattintson a **küldés log Analytics**lehetőségre. A használt névnek nem tartalmazhat szóközt, és meg kell felelnie az [Azure elnevezési konvencióinak](../azure-resource-manager/management/resource-name-rules.md). A naplók részeként kiválaszthatja a Log Analyticsba felvenni kívánt beállításokat, például az ellenőrzőpontot, a hibát, a felügyeletet és így tovább.
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
 >Log Analytics lehetővé teszi az adatok adatfolyamként való továbbítását [Event Hubs](../event-hubs/event-hubs-about.md) vagy archiválását egy Storage-fiókba. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Azure monitoring-adatok továbbítása az Event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) -ba és az Azure-beli [erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md)című
@@ -197,6 +197,6 @@ WVDErrors
 >- A WVDErrors tábla megjeleníti a felügyeleti hibákat, a gazdagépek regisztrálásával kapcsolatos problémákat, valamint azokat a problémákat, amelyek akkor jelentkeznek, amikor a felhasználó előfizet az alkalmazások vagy az asztali számítógépek listájára.
 >- A WVDErrors segítségével azonosíthatja a rendszergazdai feladatok által feloldható problémákat. A ServiceError értéke mindig "hamis" értéket ad az ilyen típusú problémákhoz. Ha a ServiceError = "true" (igaz) értéket adja meg, a problémát a Microsoftnak kell megadnia. Győződjön meg arról, hogy megadja a CorrelationID a felmerülő hibákhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai szolgáltatás által azonosítható gyakori hibák áttekintése: a [problémák azonosítása és diagnosztizálása](diagnostics-role-service.md#common-error-scenarios).

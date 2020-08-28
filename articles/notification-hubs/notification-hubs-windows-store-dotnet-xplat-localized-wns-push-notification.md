@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 58c234df5babc02fdd0e69a9c806043465293ace
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fc29eeea7969812f0fbef17892893f7a79a048a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030283"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998186"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Oktatóanyag: honosított leküldéses értesítések küldése Windows-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -111,7 +111,7 @@ További információ a sablonokról: [leküldéses sablonok](notification-hubs-
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. A `Notifications` osztályban adjon hozzá egy területi beállítás paramétert a `StoreCategoriesAndSubscribe` és `SubscribeToCategories` metódusokhoz.
+3. A `Notifications` osztályban adjon hozzá egy területi beállítás paramétert a  `StoreCategoriesAndSubscribe` és `SubscribeToCategories` metódusokhoz.
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
@@ -264,7 +264,7 @@ Futtassa a **konzol alkalmazást** az egyes kategóriákhoz és a támogatott ny
 
 ![Értesítési üzenetek](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet honosított értesítéseket olyan adott eszközökre, amelyek a regisztrációjukhoz társított címkékkel rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet értesítéseket adott felhasználóknak, akik egynél több eszközt is használhatnak, lépjen tovább a következő oktatóanyagra:
 

@@ -3,12 +3,12 @@ title: SQL Server biztonsági mentése Azure Backup Server használatával
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról Microsoft Azure Backup Server (MABS) használatával.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: caf3d49c9b921cab97054a97ece271e484a734bd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003644"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005207"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>SQL Server biztonsági mentése az Azure-ba Azure Backup Server használatával
 
@@ -64,7 +64,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 1. A védelmi csoport típusa beállításnál válassza a **kiszolgálók**elemet.
 
     ![A kiszolgálók védelmi csoport típusának kiválasztása](./media/backup-azure-backup-sql/pg-servers.png)
-1. Bontsa ki azt a SQL Server-példányt, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Válassza a **Tovább** lehetőséget.
+1. Bontsa ki azt a SQL Server-példányt, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Kattintson a **Tovább** gombra.
 
     ![SQL Server-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
 1. Nevezze el a védelmi csoportot, majd válassza az **online védelmet szeretnék**lehetőséget.
@@ -81,7 +81,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
    >
    >
 
-1. Válassza a **Tovább** lehetőséget. A MABS megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
+1. Kattintson a **Tovább** gombra. A MABS megjeleníti a rendelkezésre álló teljes tárolóhelyet. Emellett megjeleníti a lemezterület lehetséges kihasználtságát is.
 
     ![Lemez kiosztásának beállítása a MABS-ben](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -164,7 +164,7 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Adatbázis helyreállítása az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután kattintson a **Tovább** gombra.
+1. A DPM a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután kattintson a **Tovább** gombra.
 
     ![Adatbázis helyreállítása az eredeti helyükre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
@@ -178,6 +178,6 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 
     A helyreállítás befejezésekor a visszaállított adatbázis konzisztens az alkalmazással.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Backup GYIK](backup-azure-backup-faq.md).

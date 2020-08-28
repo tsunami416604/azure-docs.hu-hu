@@ -3,13 +3,13 @@ title: Események fogadása Azure Event Gridról egy HTTP-végpontra
 description: Útmutató HTTP-végpontok érvényesítéséhez, majd az események fogadásához és deszerializálásához Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9e89c6920c76914ccab6298b1404b0cae698b532
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415108"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006074"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -360,7 +360,7 @@ Végezetül ellenőrizze, hogy a függvény mostantól képes-e kezelni az egyé
 }]
 ```
 
-Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálról,](./custom-event-quickstart-portal.md) vagy [egy egyéni témakörbe](./post-to-custom-topic.md) helyezi el egy olyan szolgáltatással vagy alkalmazással, amely egy végpontra, például [Poster](https://www.getpostman.com/)-re tehet közzé. Hozzon létre egy egyéni témakört és egy esemény-előfizetést a függvény URL-címének megfelelő végponttal.
+Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálról,](./custom-event-quickstart-portal.md) vagy [egy egyéni témakörbe](./post-to-custom-topic.md)  helyezi el egy olyan szolgáltatással vagy alkalmazással, amely egy végpontra, például [Poster](https://www.getpostman.com/)-re tehet közzé. Hozzon létre egy egyéni témakört és egy esemény-előfizetést a függvény URL-címének megfelelő végponttal.
 
 ## <a name="next-steps"></a>Következő lépések
 

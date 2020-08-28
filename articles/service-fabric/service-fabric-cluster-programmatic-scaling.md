@@ -5,12 +5,13 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bd47e5e39684bd4b684cd1e12dd9a3d420640ee2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261127"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005805"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric-fürt programozott méretezése 
 
@@ -25,9 +26,9 @@ A szolgáltatásnak a skálázás kezelésére való írásának egyik kihívás
 Egy egyszerű szolgáltatásnév a következő lépésekkel hozható létre:
 
 1. Jelentkezzen be az Azure CLI-be ( `az login` ) felhasználóként a virtuálisgép-méretezési csoport eléréséhez
-2. Egyszerű szolgáltatásnév létrehozása`az ad sp create-for-rbac`
+2. Egyszerű szolgáltatásnév létrehozása `az ad sp create-for-rbac`
     1. Jegyezze fel a appId (más néven "ügyfél-azonosító"), a nevet, a jelszót és a bérlőt későbbi használatra.
-    2. Szüksége lesz az előfizetés-AZONOSÍTÓra is, amely megtekinthető a használatával`az account list`
+    2. Szüksége lesz az előfizetés-AZONOSÍTÓra is, amely megtekinthető a használatával `az account list`
 
 A Fluent számítási függvénytár a következőképpen tud bejelentkezni ezekkel a hitelesítő adatokkal (vegye figyelembe, hogy `IAzure` a [Microsoft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomagban található alapvető Fluent típusú Azure-típusok):
 
@@ -59,7 +60,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss)lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a tulajdonságon keresztül érhető el `.sku.capacity` . Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport frissíthető a [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) paranccsal.
+Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a tulajdonságon keresztül érhető el `.sku.capacity` . Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport frissíthető a [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) paranccsal.
 
 Amikor manuálisan ad hozzá egy csomópontot, a méretezési csoport példányainak hozzáadásához minden szükséges, ami egy új Service Fabric csomópont elindításához szükséges, mivel a méretezési csoport sablonja olyan bővítményeket tartalmaz, amelyek automatikusan csatlakoznak az új példányokhoz a Service Fabric-fürthöz. 
 

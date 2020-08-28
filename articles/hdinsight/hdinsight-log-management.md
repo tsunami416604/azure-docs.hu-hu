@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 14634fac5d4501572a54f80f01a37e440d69d09b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075535"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997557"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -67,7 +67,7 @@ Fontos, hogy megismerje a HDInsight-fürt (ek) on futó számítási feladatok t
 
 * Gondolja át, hogyan gyűjthet naplókat a fürtből vagy több fürtből, és hogyan oszthatja azokat olyan célokra, mint a naplózás, a figyelés, a tervezés és a riasztás. Használhat egyéni megoldást is a naplófájlok rendszeres eléréséhez és letöltéséhez, valamint az irányítópultok megjelenítéséhez és elemzéséhez. További képességeket is hozzáadhat a riasztásokhoz a biztonság vagy a hibák észlelése céljából. Ezeket a segédprogramokat a PowerShell, a HDInsight SDK-k vagy a klasszikus Azure üzemi modellhez hozzáférő kód segítségével hozhatja létre.
 
-* Érdemes megfontolni, hogy a figyelési megoldás vagy szolgáltatás hasznos előnyt jelentene-e. A Microsoft System Center egy [HDInsight felügyeleti csomagot](https://www.microsoft.com/download/details.aspx?id=42521)biztosít. A naplók gyűjtésére és központosítására olyan külső gyártótól származó eszközöket is használhat, mint az Apache Chukwa és a ganglionok. Számos vállalat kínál szolgáltatásokat a Hadoop-alapú big data megoldások figyelésére, például: középpont, CompuWare APM, Sematext SPM és Zettaset Orchestrator.
+* Érdemes megfontolni, hogy a figyelési megoldás vagy szolgáltatás hasznos előnyt jelentene-e. A Microsoft System Center egy [HDInsight felügyeleti csomagot](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259)biztosít. A naplók gyűjtésére és központosítására olyan külső gyártótól származó eszközöket is használhat, mint az Apache Chukwa és a ganglionok. Számos vállalat kínál szolgáltatásokat a Hadoop-alapú big data megoldások figyelésére, például: középpont, CompuWare APM, Sematext SPM és Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>2. lépés: a fürtszolgáltatás verzióinak kezelése és a naplók megtekintése
 
@@ -173,8 +173,8 @@ A .NET SDK for Hadoop használatával megvizsgálhatja az Azure Storage-hoz gene
 
 A megőrzött naplófájlok méretének és számának szabályozásához állítsa be a következő tulajdonságokat `RollingFileAppender` :
 
-* `maxFileSize`annak a fájlnak a kritikus mérete, amely felett a fájl hengerelt. Az alapértelmezett érték 10 MB.
-* `maxBackupIndex`a létrehozandó biztonságimásolat-fájlok számát adja meg, alapértelmezés szerint 1.
+* `maxFileSize` annak a fájlnak a kritikus mérete, amely felett a fájl hengerelt. Az alapértelmezett érték 10 MB.
+* `maxBackupIndex` a létrehozandó biztonságimásolat-fájlok számát adja meg, alapértelmezés szerint 1.
 
 ### <a name="other-log-management-techniques"></a>Egyéb naplózási kezelési technikák
 
@@ -184,7 +184,7 @@ Azt is megtekintheti, hogy a HIBAKERESÉSi naplózás engedélyezve van-e egy va
 
 Ha a naplókat az összes csomópontról egy központi helyre szeretné gyűjteni, létrehozhat egy adatfolyamot, például az összes naplóbejegyzés betöltését a Solr-be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A HDInsight figyelési és naplózási gyakorlata](https://msdn.microsoft.com/library/dn749790.aspx)
 * [A FONALas alkalmazások naplóihoz való hozzáférés Apache Hadoop Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)

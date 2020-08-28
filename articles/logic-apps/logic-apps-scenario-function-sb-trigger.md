@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001417"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013775"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
 
@@ -148,6 +149,6 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
    A logikai alkalmazás azonnal elindul, miután a függvény megkapja az üzenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkafolyamatok hívása, elindítása vagy beágyazása HTTP-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md)

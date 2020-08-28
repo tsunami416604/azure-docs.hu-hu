@@ -3,12 +3,13 @@ title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan csoportosíthat, lépcsőzetesen, oldalszámozást és lekérdezéseket végezhet párhuzamosan, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541838"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006006"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -27,8 +28,8 @@ Az Azure Resource Graph az egyes felhasználók számára egy adott időtartomá
 
 Az Azure Resource Graph minden lekérdezési válaszban két szabályozási fejlécet hoz létre:
 
-- `x-ms-user-quota-remaining`(int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
-- `x-ms-user-quota-resets-after`(óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
+- `x-ms-user-quota-remaining` (int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- `x-ms-user-quota-resets-after` (óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
 
 Ha egy rendszerbiztonsági tag több mint 5000 előfizetéshez fér hozzá a bérlői vagy a felügyeleti csoport [lekérdezési hatókörén](./query-language.md#query-scope)belül, a válasz az első 5000-előfizetésre korlátozódik, és a `x-ms-tenant-subscription-limit-hit` fejlécet adja vissza `true` .
 
@@ -239,7 +240,7 @@ Adja meg a következő adatokat:
 - Milyen típusú erőforrások érdeklik?
 - Mi a lekérdezési minta? X lekérdezés/Y másodpercenként, és így tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

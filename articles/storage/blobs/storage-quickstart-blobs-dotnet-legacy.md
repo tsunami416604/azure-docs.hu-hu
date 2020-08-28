@@ -7,12 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp
+ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285288"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001416"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez
 
@@ -102,7 +103,7 @@ A projekt könyvtárából:
 2. Az `Console.WriteLine` utasítás eltávolítása
 3. `using`Irányelvek hozzáadása
 4. Hozzon létre egy `ProcessAsync` metódust, ahol a példában a fő kód található.
-5. A metódus aszinkron meghívása `ProcessAsync` innen:`Main`
+5. A metódus aszinkron meghívása `ProcessAsync` innen: `Main`
 
 A kód a következő:
 
@@ -391,7 +392,7 @@ Az **Enter** billentyű lenyomása után az alkalmazás törli a Storage-tárol�
 
 A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

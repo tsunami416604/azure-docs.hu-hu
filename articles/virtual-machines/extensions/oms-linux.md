@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029093"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999818"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -36,7 +36,7 @@ Azure Monitor naplók a Felhőbeli és a helyszíni eszközökön végzett figye
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A támogatott Linux-disztribúciókkal kapcsolatos részletekért tekintse meg a [log Analytics ügynök áttekintését](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) ismertető cikket.
+A támogatott Linux-disztribúciókkal kapcsolatos részletekért tekintse meg az [Azure monitor ügynökök áttekintése](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) című cikket.
 
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és virtuálisgép-bővítmény verziója
 Az alábbi táblázat a Log Analytics virtuálisgép-bővítmény és a Log Analytics Agent Bundle verziójának leképezését tartalmazza minden kiadáshoz. A Log Analytics Agent csomag verziójának kibocsátási megjegyzésekre mutató hivatkozás is szerepel. A kibocsátási megjegyzések tartalmazzák az adott ügynök kiadásával kapcsolatos hibajavítások és új funkciók részleteit.  
@@ -104,12 +104,12 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa |
+| Név | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
 | típus | OmsAgentForLinux |
-| typeHandlerVersion | 1.7 |
+| typeHandlerVersion | 1,7 |
 | Munkaterület azonosítója (például) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 

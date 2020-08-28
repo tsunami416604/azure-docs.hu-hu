@@ -1,31 +1,91 @@
 ---
-title: Linux rendszerű számítógépek összekötése Azure Monitorhoz | Microsoft Docs
+title: Log Analytics-ügynök telepítése Linux rendszerű számítógépekre
 description: Ez a cikk azt ismerteti, hogyan csatlakoztathatók a más felhőben vagy a helyszínen üzemeltetett Linux rendszerű számítógépek a Log Analytics Azure Monitor-ügynökkel a Linux rendszerhez.
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/21/2020
-ms.openlocfilehash: 965d5dd558d0da7a758db77330c9129ea0e8247c
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+author: bwren
+ms.author: bwren
+ms.date: 08/21/2020
+ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543860"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998934"
 ---
-# <a name="connect-linux-computers-to-azure-monitor"></a>Linux rendszerű számítógépek összekapcsolásának Azure Monitor
+# <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépekre
+Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
 
-A helyi adatközpontban vagy más felhőalapú környezetben lévő virtuális gépek vagy fizikai számítógépek figyeléséhez és kezeléséhez Azure Monitor használatával telepítenie kell az Log Analytics ügynököt, és úgy kell konfigurálnia, hogy egy Log Analytics munkaterületre jelentsen. Az ügynök a Azure Automation hibrid Runbook feldolgozói szerepkörét is támogatja.
-
-A Linux rendszerhez készült Log Analytics-ügynök az alábbi módszerek egyikével telepíthető. Az egyes módszerek használatával kapcsolatos részletes információkat a cikk későbbi részében találja.
-
-* [Manuálisan töltse le és telepítse](#install-the-agent-manually) az ügynököt. Erre akkor van szükség, ha a Linux rendszerű számítógép nem fér hozzá az internethez, és az [log Analytics-átjárón](gateway.md)keresztül kommunikál Azure Monitor vagy Azure Automation. 
 * [Telepítse a Linux-ügynököt](#install-the-agent-using-wrapper-script) a githubon üzemeltetett burkoló parancsfájl használatával. Ez az ajánlott módszer az ügynök telepítésére és frissítésére, ha a számítógép közvetlenül vagy egy proxykiszolgálón keresztül kapcsolódik az internethez.
+* [Manuálisan töltse le és telepítse](#install-the-agent-manually) az ügynököt. Erre akkor van szükség, ha a Linux rendszerű számítógép nem fér hozzá az internethez, és az [log Analytics-átjárón](gateway.md)keresztül kommunikál Azure Monitor vagy Azure Automation. 
 
-A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](log-analytics-agent.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](log-analytics-agent.md#network-requirements) részt.
+>[!IMPORTANT]
+> A cikkben ismertetett telepítési módszerek általában a helyszíni vagy más felhőkben található virtuális gépekhez használatosak. Az Azure Virtual Machines szolgáltatáshoz használható hatékonyabb beállításokért lásd a [telepítési beállításokat](log-analytics-agent.md#installation-options) .
+
+
+
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+
+A Log Analytics-ügynök által támogatott Linux-disztribúciók listáját [Azure monitor ügynökök áttekintése](agents-overview.md#supported-operating-systems) című témakörben tekintheti meg.
 
 >[!NOTE]
->A Linuxhoz készült Log Analytics-ügynököt nem lehet úgy konfigurálni, hogy egynél több Log Analytics-munkaterületre is jelentsen. Csak úgy konfigurálható, hogy egyszerre egy System Center Operations Manager felügyeleti csoportra és Log Analytics munkaterületre, vagy akár egyénileg is jelentsen.
+>Az OpenSSL 1.1.0 csak x86_x64 platformokon (64-bites) és 1. x-nél korábbi OpenSSL-platformon támogatott.
+>
+A 2018 augusztusa után kiadott verzióktól kezdve a következő módosításokat végezjük a támogatási modellen:  
+
+* Csak a kiszolgálói verziók támogatottak, nem az ügyfél.  
+* Koncentráljon az [Azure Linux által támogatott disztribúciók](../../virtual-machines/linux/endorsed-distros.md)bármelyikére. Vegye figyelembe, hogy az Azure Linux új disztribúciója/verziója esetében némi késéssel rendelkezik, és a Log Analytics Linux-ügynök támogatja.
+* Minden másodlagos kiadás a felsorolt főbb verziók esetében támogatott.
+* Nem támogatottak azok a verziók, amelyek átadták a gyártó támogatásának befejezési dátumát.  
+* Az AMI új verziói nem támogatottak.  
+* Az alapértelmezés szerint csak az SSL 1. x verziót futtató verziók támogatottak.
+
+>[!NOTE]
+>Ha olyan disztribúciót vagy verziót használ, amely jelenleg nem támogatott, és nem a támogatási modellhez igazodik, javasoljuk, hogy a tárházat elágazással lássa el, és tudomásul veszi, hogy a Microsoft támogatási szolgálata nem nyújt segítséget a villás ügynök verzióihoz.
+
+### <a name="python-2-requirement"></a>Python 2 követelmény
+
+ A Log Analytics ügynökhöz a Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.
+
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
+
+A python2 végrehajtható fájljának a "Python" aliashoz kell tartoznia a következő parancs használatával:
+
+```
+alternatives --set python `which python2`
+```
+
+## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
+A OMS-ügynök korlátozott testreszabási támogatást biztosít a Linux rendszerhez. 
+
+Jelenleg a következők támogatottak: 
+- FIPs
+
+A következők tervezettek, de még nem támogatottak:
+- CIS – SELINUX
+
+Más korlátozási és testreszabási módszerek nem támogatottak és nem tervezettek a OMS-ügynök számára.  
+
+## <a name="agent-prerequisites"></a>Ügynök előfeltételei
+
+A következő táblázat a [támogatott Linux-disztribúciók](#supported-operating-systems) számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
+
+|Szükséges csomag |Leírás |Minimális verzió |
+|-----------------|------------|----------------|
+|Glibc |    GNU C könyvtár | 2.5-12 
+|Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
+|Curl | cURL webes ügyfél | 7.15.5 |
+|Python | | 2.6 + vagy 3.3 +
+|Python – ctypes | | 
+|PAM | Cserélhető hitelesítési modulok | | 
+
+>[!NOTE]
+>A syslog-üzenetek összegyűjtéséhez a rsyslog vagy a syslog-ng szükséges. A syslog-események gyűjteménye nem támogatja az alapértelmezett syslog démont a Red Hat Enterprise Linux, a CentOS és a Oracle Linux verzió (sysklog) 5. verziójában. A rendszernapló-adatok ezen disztribúciók ezen verziójából való összegyűjtéséhez a rsyslog démont telepíteni és konfigurálni kell a sysklog lecserélése érdekében.
+
+## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+Lásd: [log Analytics ügynök áttekintése](log-analytics-agent.md#network-requirements) a Linux-ügynök hálózati követelményeiről.
 
 ## <a name="agent-install-package"></a>Ügynök telepítési csomagja
 
@@ -49,25 +109,47 @@ A Linux-csomagok Log Analytics ügynökének telepítése után a rendszer a kö
 * A rendszer létrehoz egy sudo *-fájlt a* alkalmazásban `/etc/sudoers.d/omsagent` . Ez engedélyezi `omsagent` a syslog és a omsagent démonok újraindítását. Ha a sudo *include* utasítások nem támogatottak a sudo telepített verziójában, a rendszer ezeket a bejegyzéseket fogja írni a következőre: `/etc/sudoers` .
 * A syslog-konfiguráció úgy módosul, hogy az események egy részhalmazát továbbítsa az ügynöknek. További információ: a [syslog-adatok gyűjtésének konfigurálása](data-sources-syslog.md).
 
-A figyelt Linux rendszerű számítógépeken az ügynök szerepel a következőben: `omsagent` . `omsconfig`a Linux-alapú konfigurációs ügynök Log Analytics ügynöke, amely 5 percenként keresi az új portál oldal konfigurációját. Az új és frissített konfiguráció a (z) helyen található ügynök konfigurációs fájljaira lesz alkalmazva `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
+A figyelt Linux rendszerű számítógépeken az ügynök szerepel a következőben: `omsagent` . `omsconfig` a Linux-alapú konfigurációs ügynök Log Analytics ügynöke, amely 5 percenként keresi az új portál oldal konfigurációját. Az új és frissített konfiguráció a (z) helyen található ügynök konfigurációs fájljaira lesz alkalmazva `/etc/opt/microsoft/omsagent/conf/omsagent.conf` .
 
-## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
+## <a name="install-the-agent-using-wrapper-script"></a>Az ügynök telepítése burkoló parancsfájl használatával
 
-A Linuxhoz készült Log Analytics-ügynök telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára. Ezek az információk szükségesek ahhoz, hogy az ügynök megfelelően konfigurálja azt, és ellenőrizze, hogy sikeresen tud-e kommunikálni Azure Monitorokkal.
+A következő lépésekkel konfigurálhatja az ügynököt az Azure-ban Log Analyticshoz, és Azure Government a felhőt a Linux rendszerű számítógépek burkoló parancsfájljának használatával, amelyek közvetlenül vagy egy proxykiszolgálón keresztül kommunikálhatnak a GitHubon üzemeltetett ügynök letöltésével és az ügynök telepítésével.  
 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
+Ha a Linux rendszerű számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics, akkor ez a konfiguráció a parancssorban is megadható `-p [protocol://][user:password@]proxyhost[:port]` . A *Protocol* tulajdonság fogadja `http` vagy a `https` , és a *ProxyHost* tulajdonság fogadja a proxykiszolgáló teljes tartománynevét vagy IP-címét. 
 
-1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be a **log Analytics**kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek**lehetőséget.
+Például: `https://proxy01.contoso.com:30443`
 
-2. Log Analytics munkaterületek listájában válassza ki a korábban létrehozott munkaterületet. (Lehet, hogy elnevezte a **DefaultLAWorkspace**.)
+Ha mindkét esetben hitelesítésre van szükség, meg kell adnia a felhasználónevet és a jelszót. Például: `https://user01:password@proxy01.contoso.com:30443`
 
-3. Válassza a **Speciális beállítások**lehetőséget:
+1. A Linux rendszerű számítógép Log Analytics munkaterülethez való kapcsolódásának konfigurálásához futtassa a következő parancsot a munkaterület-azonosító és az elsődleges kulcs megadásával. A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt.
+    
+    ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
 
-    ![A Azure Portal Log Analytics speciális beállítások menüjében](../learn/media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
- 
-4. Válassza ki a **Csatlakoztatott források**, majd a **Linuxos kiszolgálók** elemet.
+    A következő parancs tartalmazza a `-p` proxy paramétert és a példa szintaxisát, ha a proxykiszolgáló hitelesítést igényel:
 
-5. A **Munkaterület-azonosító** és az **Elsődleges kulcs** jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
+
+2. Ha úgy szeretné konfigurálni a Linux rendszerű számítógépet, hogy Azure Government felhőben Log Analytics munkaterülethez kapcsolódjon, futtassa a következő parancsot, amely a munkaterület-azonosítót és az elsődleges kulcsot a korábban másolta. A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt. 
+
+    ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
+    ``` 
+
+    A következő parancs tartalmazza a `-p` proxy paramétert és a példa szintaxisát, ha a proxykiszolgáló hitelesítést igényel:
+
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
+    ```
+2. Indítsa újra az ügynököt a következő parancs futtatásával: 
+
+    ```
+    sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
+    ``` 
+
 
 ## <a name="install-the-agent-manually"></a>Az ügynök manuális telepítése
 
@@ -117,63 +199,19 @@ Ha az ügynök csomagjait az ügynök telepítése nélkül szeretné kibontani 
 sudo sh ./omsagent-*.universal.x64.sh --extract
 ```
 
-## <a name="install-the-agent-using-wrapper-script"></a>Az ügynök telepítése burkoló parancsfájl használatával
-
-A következő lépésekkel konfigurálhatja az ügynököt az Azure-ban Log Analyticshoz, és Azure Government a felhőt a Linux rendszerű számítógépek burkoló parancsfájljának használatával, amelyek közvetlenül vagy egy proxykiszolgálón keresztül kommunikálhatnak a GitHubon üzemeltetett ügynök letöltésével és az ügynök telepítésével.  
-
-Ha a Linux rendszerű számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics, akkor ez a konfiguráció a parancssorban is megadható `-p [protocol://][user:password@]proxyhost[:port]` . A *Protocol* tulajdonság fogadja `http` vagy a `https` , és a *ProxyHost* tulajdonság fogadja a proxykiszolgáló teljes tartománynevét vagy IP-címét. 
-
-Például: `https://proxy01.contoso.com:30443`
-
-Ha mindkét esetben hitelesítésre van szükség, meg kell adnia a felhasználónevet és a jelszót. Például: `https://user01:password@proxy01.contoso.com:30443`
-
-1. A Linux rendszerű számítógép Log Analytics munkaterülethez való kapcsolódásának konfigurálásához futtassa a következő parancsot a munkaterület-azonosító és az elsődleges kulcs megadásával. A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt.
-    
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
-    ```
-
-    A következő parancs tartalmazza a `-p` proxy paramétert és a példa szintaxisát, ha a proxykiszolgáló hitelesítést igényel:
-
-   ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
-    ```
-
-2. Ha úgy szeretné konfigurálni a Linux rendszerű számítógépet, hogy Azure Government felhőben Log Analytics munkaterülethez kapcsolódjon, futtassa a következő parancsot, amely a munkaterület-azonosítót és az elsődleges kulcsot a korábban másolta. A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt. 
-
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
-    ``` 
-
-    A következő parancs tartalmazza a `-p` proxy paramétert és a példa szintaxisát, ha a proxykiszolgáló hitelesítést igényel:
-
-   ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://]<proxy user>:<proxy password>@<proxyhost>[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
-    ```
-2. Indítsa újra az ügynököt a következő parancs futtatásával: 
-
-    ```
-    sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
-    ``` 
-
-## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
-A OMS-ügynök korlátozott testreszabási támogatást biztosít a Linux rendszerhez. 
-
-Jelenleg a következők támogatottak: 
-- FIPs
-
-A következők tervezettek, de még nem támogatottak:
-- VIR
-- SELINUX
-
-Más korlátozási és testreszabási módszerek nem támogatottak és nem tervezettek a OMS-ügynök számára.  
-
-
 ## <a name="upgrade-from-a-previous-release"></a>Frissítés korábbi kiadásról
 
 A korábbi verzióról a 1.0.0-47 verziótól kezdődően minden kiadásban támogatott a frissítés. Végezze el a telepítést a `--upgrade` paraméterrel az ügynök összes összetevőjének a legújabb verzióra való frissítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="cache-information"></a>Gyorsítótár-információk
+A Linux rendszerhez készült Log Analytics-ügynöktől származó adatok gyorsítótárazása a *(z)% STATE_DIR_WS%/out_oms_common*. Buffer * helyen található helyi gépen történik, mielőtt elküldi őket a Azure monitornak. Az egyéni naplózási adatértékek a *(z)% STATE_DIR_WS%/out_oms_blob*. Buffer * pufferben vannak. Bizonyos [megoldások és adattípusok](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)esetében az elérési út eltérő lehet.
+
+Az ügynök 20 másodpercenként próbálkozik a feltöltéssel. Ha ez nem sikerül, a rendszer az idő múlásával egy exponenciálisan növekvő időtartamot vár. 30 másodpercet vár a második kísérlet előtt, 60 másodpercig a következő, 120 másodperc és így tovább, amíg az újrapróbálkozások között legfeljebb 9 percet vesz igénybe, amíg újra nem sikerül csatlakozni. Az ügynök csak 10 alkalommal próbálkozik egy adott adathalmazban, mielőtt elveti, és továbblép a következőre. Ez addig folytatódik, amíg az ügynök sikeresen fel nem tölthető. Az azt jelenti, hogy az adatvesztés előtt 8,5 óráig lehet az adatpufferelés.
+
+Az alapértelmezett gyorsítótár mérete 10 MB, de a [omsagent. conf fájlban](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf)is módosítható.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Windows és Linux rendszerhez készült log Analytics ügynök felügyeletét és karbantartását](agent-manage.md) , hogy megtudja, hogyan lehet újrakonfigurálni, frissíteni vagy eltávolítani az ügynököt a virtuális gépről.
 

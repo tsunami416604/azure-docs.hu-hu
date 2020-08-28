@@ -3,12 +3,13 @@ title: Felügyeleti könyvtárak – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs névterek és entitások .NET-beli kezeléséhez használható könyvtárról nyújt információkat.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79656d95cf925c21b0f0c5f2b3bafe6348e0b553
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 74392fbf0b2c0b81898410af8027a4f13fc52b67
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074829"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013996"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs felügyeleti könyvtárak
 
@@ -66,6 +67,6 @@ A Event Hubs-erőforrások kezelésére szolgáló minta egy közös protokollt 
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [.NET-felügyeleti minta](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Microsoft. Azure. Management. EventHub – dokumentáció](/dotnet/api/Microsoft.Azure.Management.EventHub) 

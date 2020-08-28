@@ -3,12 +3,13 @@ title: Azure Service Fabric üzembe helyezés a FabricClient
 description: A FabricClient API-kkal alkalmazásokat telepíthet és távolíthat el Service Fabricban.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 25b874d1be8ab50d8076ff8fe9423c8cc0187512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75376970"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009300"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Alkalmazások telepítése és eltávolítása a FabricClient használatával
 > [!div class="op_single_selector"]
@@ -122,7 +123,7 @@ A rendszerkép-tároló és a rendszerkép-tároló közötti kapcsolatok karakt
 
 ### <a name="deploy-large-application-package"></a>Nagyméretű alkalmazáscsomag üzembe helyezése
 Probléma: a [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API időtúllépést jelent egy nagyméretű alkalmazáscsomag esetében (GB-os sorrend).
-Próbálja
+Próbálja ki:
 - A paraméterrel nagyobb időkorlát adható meg a [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metódushoz `timeout` . Alapértelmezés szerint az időtúllépés 30 percet vesz igénybe.
 - Keresse meg a számítógép és a fürt közötti hálózati kapcsolatot. Ha a kapcsolatok lassúak, érdemes lehet olyan gépet használni, amelynek jobb hálózati kapcsolatai vannak.
 Ha az ügyfélszámítógép más régióban található, mint a fürt, érdemes lehet egy ügyfélszámítógépet használni a fürttel megegyező vagy azonos régióban.
@@ -135,7 +136,7 @@ A tömörítés csökkenti a méretet és a fájlok számát, ami viszont csökk
 
 ### <a name="deploy-application-package-with-many-files"></a>Alkalmazáscsomag központi telepítése sok fájllal
 Probléma: a [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) időtúllépést jelent a sok fájlt tartalmazó alkalmazáscsomag esetében (több ezer).
-Próbálja
+Próbálja ki:
 - [Tömörítse a csomagot](service-fabric-package-apps.md#compress-a-package) a rendszerkép-tárolóba történő másolás előtt. A tömörítés csökkenti a fájlok számát.
 - Nagyobb időtúllépést ad meg [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) a ProvisionApplicationAsync `timeout` paraméterrel.
 
@@ -320,7 +321,7 @@ static void Main(string[] args)
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
 
 [Service Fabric állapot bemutatása](service-fabric-health-introduction.md)

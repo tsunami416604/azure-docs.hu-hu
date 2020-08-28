@@ -4,18 +4,18 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890555"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006142"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
 Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ, és a [Azure Backup](backup-overview.md) szolgáltatást használja.
 
-## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Használhatom az Azure Backup szolgáltatást a IaaS virtuális géphez, valamint SQL Server ugyanazon a gépen?
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Használhatom Azure Backup a IaaS virtuális géphez, és SQL Server ugyanazon a gépen?
 
 Igen, a virtuális gép biztonsági mentését és az SQL biztonsági mentést is használhatja ugyanazon a virtuális gépen. Ebben az esetben a másolási csak a teljes biztonsági mentést a virtuális gépen, a naplók csonkítása nélkül indítjuk el.
 
@@ -102,6 +102,6 @@ Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan ada
 
   ![Újonnan hozzáadott adatbázis manuális felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

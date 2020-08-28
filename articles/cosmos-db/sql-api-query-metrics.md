@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392131"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008692"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
 
@@ -38,7 +39,7 @@ Ha Azure Cosmos DB lekérdezést ad ki, az SDK ezeket a logikai lépéseket hajt
 
 Az SDK-k különböző lehetőségeket biztosítanak a lekérdezés végrehajtásához. Például a .NET-ben ezek a beállítások a osztályban érhetők el `FeedOptions` . A következő táblázat ismerteti ezeket a beállításokat, és azt, hogy azok hogyan befolyásolják a lekérdezés végrehajtási idejét. 
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Minden olyan lekérdezés esetében igaz értékre kell állítani, amely több partíción való végrehajtást igényel. Ez egy explicit jelző, amely lehetővé teszi, hogy a fejlesztési idő során tudatos teljesítménybeli kompromisszumokat hozzon. |
 | `EnableScanInQuery` | Igaz értékre kell állítani, ha kikapcsolta az indexelést, de mindenképpen egy vizsgálaton keresztül szeretné futtatni a lekérdezést. Csak akkor alkalmazható, ha a kért szűrő elérési útjának indexelése le van tiltva. | 
@@ -124,7 +125,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 A lekérdezés által visszaadott kulcs-válasz fejlécek a következők:
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | ------ | ----------- |
 | `x-ms-item-count` | A válaszban visszaadott elemek száma. Ez a megadott értéktől függ `x-ms-max-item-count` , a maximális válasz-adattartalom méretétől, a kiosztott átviteli sebességtől és a lekérdezés végrehajtási idejétől függően elférő elemek száma. |  
 | `x-ms-continuation:` | A folytatási token a lekérdezés végrehajtásának folytatásához, ha további eredmények állnak rendelkezésre. | 
@@ -136,7 +137,7 @@ További információ a REST API kérelmek fejlécéről és lehetőségeiről: 
 ## <a name="best-practices-for-query-performance"></a>Ajánlott eljárások a lekérdezési teljesítményhez
 A következő leggyakoribb tényezők befolyásolják Azure Cosmos DB lekérdezési teljesítményt. Ebben a cikkben részletesebben ismertetjük ezeket a témákat.
 
-| Factor | Tipp | 
+| Szempont | Tipp | 
 | ------ | -----| 
 | Kiosztott átviteli sebesség | Adja meg a kérdéses RU-t, és ellenőrizze, hogy rendelkezik-e a szükséges kiosztott átviteli sebességgel a lekérdezésekhez. | 
 | Particionálás és particionálási kulcsok | Az alacsony késés érdekében a Filter záradékban lévő Partition Key értékkel rendelkező lekérdezéseket a rendszer nem támogatja. |
@@ -182,7 +183,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maximális párhuzamossági fok
-A lekérdezéseknél hangolja `MaxDegreeOfParallelism` be az alkalmazáshoz legmegfelelőbb konfigurációkat, különösen akkor, ha több partíciós lekérdezést hajt végre (szűrő nélkül a Partition-Key értéknél). `MaxDegreeOfParallelism`meghatározza a párhuzamos feladatok maximális számát, azaz a párhuzamosan meglátogatható partíciók maximális számát. 
+A lekérdezéseknél hangolja `MaxDegreeOfParallelism` be az alkalmazáshoz legmegfelelőbb konfigurációkat, különösen akkor, ha több partíciós lekérdezést hajt végre (szűrő nélkül a Partition-Key értéknél). `MaxDegreeOfParallelism`  meghatározza a párhuzamos feladatok maximális számát, azaz a párhuzamosan meglátogatható partíciók maximális számát. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -237,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Unit (Egység) | Description | 
+| Metrika | Unit (Egység) | Leírás | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje | 
 | `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási ideje  | 
@@ -259,7 +260,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 
 Íme néhány példa a lekérdezésekre, és hogyan kell értelmezni a lekérdezés-végrehajtásból visszaadott metrikákat: 
 
-| Lekérdezés | Minta metrika | Description | 
+| Lekérdezés | Minta metrika | Leírás | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | A beolvasott dokumentumok száma 100 + 1 a TOP záradéknak megfelelően. A lekérdezési időt többnyire a és a vizsgálat során kell kitölteni `WriteOutputTime` `DocumentLoadTime` . | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | A RetrievedDocumentCount mostantól magasabb (500 + 1 a TOP záradéknak megfelelően). | 
@@ -271,7 +272,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | A lekérdezés vizsgálatként történik, mivel a rendszer a-t használja `LOWER` , és 500-ből 2491 lekért dokumentumokat ad vissza. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a támogatott SQL-lekérdezési operátorokról és-kulcsszavakról: [SQL-lekérdezés](sql-query-getting-started.md). 
 * A kérelmek egységeit a [kérelmek egységei](request-units.md)című témakörben tekintheti meg.
 * Az indexelési szabályzattal kapcsolatos további tudnivalókért lásd: [indexelési házirend](index-policy.md) 

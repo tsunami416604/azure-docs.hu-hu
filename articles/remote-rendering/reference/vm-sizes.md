@@ -1,18 +1,19 @@
 ---
-title: Kiszolgáló mérete
+title: Kiszolgálóméretek
 description: A kiosztható különböző kiszolgálói méretek leírása
 author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: b9479c2ab5b63440a03bd74d2503930108a49091
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8843f24f27f8973ad99989f743d1b3fae568679e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511185"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997149"
 ---
-# <a name="server-sizes"></a>Kiszolgáló mérete
+# <a name="server-sizes"></a>Kiszolgálóméretek
 
 Az Azure távoli renderelés két kiszolgálói konfigurációban érhető el: `Standard` és `Premium` .
 
@@ -82,7 +83,7 @@ Két módon határozható meg a modell vagy jelenet sokszögének száma, amelye
 
 Az egyes konfigurációk díjszabásának részletes részletezését a [távoli renderelés díjszabását](https://azure.microsoft.com/pricing/details/remote-rendering) ismertető oldalon találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)
 * [Modell átalakítása](../how-tos/conversion/model-conversion.md)
 

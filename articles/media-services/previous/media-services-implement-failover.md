@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 91ef9d8bf75874f07c6a4a9c5763ff77b97b0180
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78939219"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008964"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Feladatátvételi továbbítás implementálása Media Services v2-vel
 
@@ -756,7 +757,7 @@ További információ a tartalomvédelem [használatáról: az AES-128 dinamikus
 
 [Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez](media-services-dotnet-check-job-progress-with-webhooks.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mostantól a Traffic Manager segítségével átirányíthatja a kérelmeket a két adatközpont között, így bármilyen kimaradás esetén feladatátvételt hajthat végre.
 
