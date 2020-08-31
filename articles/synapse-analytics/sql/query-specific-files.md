@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496219"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055566"
 ---
 # <a name="use-file-metadata-in-queries"></a>Fájl metaadatainak használata a lekérdezésekben
 
-Az SQL igény szerinti lekérdezési szolgáltatása több fájlt és mappát is képes kezelni a [lekérdezési mappák és a több fájl](query-folders-multiple-csv-files.md) című cikkben leírtak szerint. Ebből a cikkből megtudhatja, hogyan használhatja a lekérdezésekben a fájl-és mappanevek metaadat-információit.
+Az igény szerinti SQL-alkalmazás több fájlt és mappát is képes kezelni a [lekérdezési mappák és a több fájl](query-folders-multiple-csv-files.md) című cikkben leírtak szerint. Ebből a cikkből megtudhatja, hogyan használhatja a lekérdezésekben a fájl-és mappanevek metaadat-információit.
 
 Előfordulhat, hogy tudnia kell, hogy melyik fájl-vagy mappa-forrás korrelál az eredményhalmaz egy adott sorával.
 
@@ -28,7 +28,7 @@ Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fáj
 
 Első lépésként létre kell **hoznia egy adatbázist** egy olyan adatforrással, amely a Storage-fiókra hivatkozik. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 ### <a name="filename"></a>Filename
 
@@ -132,6 +132,6 @@ ORDER BY
     filepath;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkben megtudhatja, hogyan lehet [lekérdezni a parketta-fájlokat](query-parquet-files.md).

@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810116"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055328"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -183,15 +183,38 @@ Egy bemeneti kötés adattípusának megadásához használja a `dataType` tulaj
 A következő lehetőségei `dataType` : `binary` , `stream` és `string` .
 
 ## <a name="context-object"></a>környezeti objektum
-A futtatókörnyezet egy `context` objektum használatával továbbítja az adatait a függvénynek, és lehetővé teszi a kommunikációt a futtatókörnyezettel. A környezeti objektum használható a kötések adatainak olvasására és beállítására, a naplók írására és a visszahívás használatára, `context.done` Ha az exportált függvény szinkronban van.
 
-Az `context` objektum mindig a függvény első paramétere. A csomagnak szerepelnie kell, mert olyan fontos metódusokkal rendelkezik, mint a `context.done` és a `context.log` . Megadhatja az objektum nevét, amit szeretne (például `ctx` vagy `c` ).
+A futásidejű objektum használatával `context` továbbítja a függvény és a futtatókörnyezet adatait. A kötések adatainak olvasására és beállítására, valamint a naplókba való írásra használatos, az `context` objektum mindig a függvénynek átadott első paraméter.
+
+A szinkron kódot tartalmazó függvények esetében a környezeti objektum tartalmazza `done` azt a visszahívást, amelyet a függvény feldolgozásakor hív meg. `done`Ha az aszinkron kód írásakor explicit módon meghívja a hívást, a `done` visszahívás implicit módon lesz meghívva.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(ctx) {
-    // function logic goes here :)
-    ctx.done();
+module.exports = (context) => {
+
+    // function logic goes here
+
+    context.log("The function has executed.");
+
+    context.done();
+};
+```
+
+A függvénynek átadott környezet egy tulajdonságot tesz elérhetővé `executionContext` , amely egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
+
+| Tulajdonság neve  | Típus  | Leírás |
+|---------|---------|---------|
+| `invocationId` | Sztring | Egyedi azonosítót biztosít az adott függvény meghívásához. |
+| `functionName` | Sztring | A futó függvény nevét adja meg. |
+| `functionDirectory` | Sztring | Megadja a functions app könyvtárat. |
+
+Az alábbi példa bemutatja, hogyan lehet visszaadni a következőt: `invocationId` .
+
+```javascript
+module.exports = (context, req) => {
+    context.res = {
+        body: context.executionContext.invocationId
+    };
+    context.done();
 };
 ```
 
@@ -201,7 +224,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Egy elnevezett objektumot ad vissza, amely a kötési adatok olvasására vagy hozzárendelésére szolgál. A bemeneti és trigger kötési adatok a tulajdonságok beolvasásával érhetők el `context.bindings` . A kimeneti kötési adatokat hozzá lehet rendelni az adatokat a következőhöz:`context.bindings`
+Egy elnevezett objektumot ad vissza, amely a kötési adatok olvasására vagy hozzárendelésére szolgál. A bemeneti és trigger kötési adatok a tulajdonságok beolvasásával érhetők el `context.bindings` . A kimeneti kötési adatokat hozzá lehet rendelni az adatokat a következőhöz: `context.bindings`
 
 Például a function.jskövetkező kötési definíciói lehetővé teszik a várólista tartalmának elérését, `context.bindings.myInput` és a kimenetek hozzárendelését egy várólistához a használatával `context.bindings.myOutput` .
 
@@ -270,7 +293,7 @@ context.log(message)
 Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
 
 
-| Módszer                 | Leírás                                |
+| Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
@@ -395,7 +418,7 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Válasz csak]_ A hívásával `context.res.send(body?: any)` .** A rendszer egy HTTP-választ hoz létre bemenetként `body` a válasz törzsében. `context.done()`implicit módon van meghívva.
++ **_[Válasz csak]_ A hívásával `context.res.send(body?: any)` .** A rendszer egy HTTP-választ hoz létre bemenetként `body` a válasz törzsében. `context.done()` implicit módon van meghívva.
 
 + **_[Válasz csak]_ A hívásával `context.done()` .** A speciális HTTP-kötés a metódusnak átadott választ adja vissza `context.done()` . A következő HTTP kimeneti kötés meghatározza a `$return` kimeneti paramétert:
 
@@ -500,7 +523,7 @@ A `function.json` Tulajdonságok `scriptFile` és az `entryPoint` exportált fü
 
 Alapértelmezés szerint a JavaScript-függvényt `index.js` egy olyan fájl hajtja végre, amely ugyanazokat a szülő könyvtárat osztja meg, mint a megfelelő `function.json` .
 
-`scriptFile`a következő példához hasonló mappa-struktúra beszerzésére használható:
+`scriptFile` a következő példához hasonló mappa-struktúra beszerzésére használható:
 
 ```
 FunctionApp
@@ -647,7 +670,7 @@ Azure Functions a kiszolgáló nélküli üzemeltetési modellben való fejleszt
 
 Ha egy Azure Functions-alkalmazásban szolgáltatás-specifikus ügyfelet használ, ne hozzon létre új ügyfelet minden függvény meghívásával. Ehelyett hozzon létre egyetlen, statikus ügyfelet a globális hatókörben. További információ: [kapcsolatok kezelése Azure Functionsban](manage-connections.md).
 
-### <a name="use-async-and-await"></a>Használat `async` és`await`
+### <a name="use-async-and-await"></a>Használat `async` és `await`
 
 A JavaScript-Azure Functions írásakor a és a kulcsszavak használatával kell írnia a kódot `async` `await` . A kód és a visszahívások helyett a (z) és az `async` `await` `.then` `.catch` ígéretekkel való írás során két gyakori probléma elkerülhető:
  - Olyan nem kezelt kivételeket dobott le, amelyek [összeomlanak a Node.js folyamaton](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), ami hatással van más függvények végrehajtására.
@@ -697,7 +720,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

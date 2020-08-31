@@ -13,15 +13,15 @@ ms.locfileid: "80673369"
 ---
 ### <a name="retrieve-the-azure-storage-connection-string"></a>Az Azure Storage-beli kapcsolatok karakterláncának beolvasása
 
-Korábban létrehozott egy Azure Storage-fiókot, amelyet a Function alkalmazás használ. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ha a beállítást a *Local. Settings. JSON* fájlba tölti le, akkor a függvény helyileg történő futtatásakor ugyanazzal a fiókkal írja be a kapcsolódást a tárolási várólistába. 
+Korábban létrehozott egy Azure Storage-fiókot, amelyet a Function alkalmazás használ. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ha letölti a beállítást a fájl *local.settings.jsjában* , akkor a függvény helyi futtatásakor ugyanazzal a fiókkal tud írni egy tárolási várólistára. 
 
-1. A projekt gyökeréből futtassa a következő parancsot, és cserélje `<app_name>` le a függvényt az előző rövid útmutatóból származó Function alkalmazás nevére. Ez a parancs felülírja a fájlban lévő összes meglévő értéket.
+1. A projekt gyökeréből futtassa a következő parancsot, és cserélje le a `<app_name>` függvényt az előző rövid útmutatóból származó Function alkalmazás nevére. Ez a parancs felülírja a fájlban lévő összes meglévő értéket.
 
     ```
     func azure functionapp fetch-app-settings <app_name>
     ```
     
-1. Nyissa meg a *Local. Settings. JSON* fájlt `AzureWebJobsStorage`, és keresse meg a nevű értéket, amely a Storage-fiókhoz tartozó kapcsolatok karakterlánca. A jelen cikk más `AzureWebJobsStorage` részeiben a nevet és a kapcsolatok karakterláncát kell használnia.
+1. Nyissa meg a *local.settings.jst* , és keresse meg a nevű értéket `AzureWebJobsStorage` , amely a Storage-fiókhoz tartozó kapcsolatok karakterlánca. A `AzureWebJobsStorage` jelen cikk más részeiben a nevet és a kapcsolatok karakterláncát kell használnia.
 
 > [!IMPORTANT]
-> Mivel a *Local. Settings. JSON* az Azure-ból letöltött titkos kulcsokat tartalmaz, mindig zárja ki ezt a fájlt a forrás vezérlőelemből. A helyi functions projekttel létrehozott *. gitignore* fájl alapértelmezés szerint kizárja a fájlt.
+> Mivel *local.settings.jsaz* Azure-ból letöltött titkokat tartalmaz, mindig kizárják ezt a fájlt a forrás vezérlőelemből. A helyi functions projekttel létrehozott *. gitignore* fájl alapértelmezés szerint kizárja a fájlt.

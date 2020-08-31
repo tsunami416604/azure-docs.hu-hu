@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191039"
 ---
-Hozzon létre egy olyan `msg` kódot, amely a `context.bindings` kimeneti kötési objektumot használja az üzenetsor létrehozásához. Adja hozzá ezt a kódot `context.res` az utasítás előtt.
+`msg`Hozzon létre egy olyan kódot, amely a kimeneti kötési objektumot használja az üzenetsor `context.bindings` létrehozásához. Adja hozzá ezt a kódot az `context.res` utasítás előtt.
 
 :::code language="typescript" range="10" source="~/functions-docs-typescript/functions-add-output-binding-storage-queue-cli/HttpExample/index.ts":::
 

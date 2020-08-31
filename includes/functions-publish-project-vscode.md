@@ -29,7 +29,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
     + **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    + **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a lehetőséget `+ Create new Function App`. (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
+    + **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a lehetőséget `+ Create new Function App` . (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
       
     + **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen. 
     
@@ -38,7 +38,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
     ::: zone-end
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"
-    + **Válassza ki a kívánt futtatókörnyezetet**: válassza ki a helyileg futtatott Node. js-verziót. A `node --version` parancs segítségével megtekintheti a verziót.
+    + **Válasszon egy futtatókörnyezetet**: válassza ki a helyileg futtatott Node.js verzióját. A `node --version` parancs segítségével megtekintheti a verziót.
     ::: zone-end
 
     + **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . 

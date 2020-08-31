@@ -31,11 +31,11 @@ Ha bármilyen eszközzel kapcsolatos probléma merül fel, létrehozhat egy tám
 
     A használt paraméterek a következők:
 
-    - `-Path`-Válassza a hálózatot vagy a helyi elérési utat a támogatási csomag másolásához. szükséges
-    - `-Credential`-A védett útvonal eléréséhez használandó hitelesítő adatok megadása.
-    - `-Zip`-A zip-fájl létrehozásához meg kell adni.
-    - `-Include`-Adja meg a támogatási csomagban szerepeltetni kívánt összetevőket. Ha nincs megadva, `Default` a rendszer feltételezi.
-    - `-IncludeArchived`-Adja meg, hogy az archivált naplók szerepeljenek a támogatási csomagban.
-    - `-IncludePeriodicStats`-Adja meg, hogy az időszakos stat naplókat tartalmazza a támogatási csomagban.
+    - `-Path` -Válassza a hálózatot vagy a helyi elérési utat a támogatási csomag másolásához. szükséges
+    - `-Credential` -A védett útvonal eléréséhez használandó hitelesítő adatok megadása.
+    - `-Zip` -A zip-fájl létrehozásához meg kell adni.
+    - `-Include` -Adja meg a támogatási csomagban szerepeltetni kívánt összetevőket. Ha nincs megadva, `Default` a rendszer feltételezi.
+    - `-IncludeArchived` -Adja meg, hogy az archivált naplók szerepeljenek a támogatási csomagban.
+    - `-IncludePeriodicStats` -Adja meg, hogy az időszakos stat naplókat tartalmazza a támogatási csomagban.
 
     

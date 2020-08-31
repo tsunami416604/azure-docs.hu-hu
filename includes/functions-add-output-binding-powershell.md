@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191038"
 ---
-Adja hozzá a `Push-OutputBinding` parancsmagot használó kódot, amely a `msg` kimeneti kötés használatával szöveget ír a várólistára. Adja hozzá ezt a kódot, mielőtt beállítja az OK állapotot az `if` utasításban.
+Adja hozzá a parancsmagot használó kódot, amely a `Push-OutputBinding` kimeneti kötés használatával szöveget ír a várólistára `msg` . Adja hozzá ezt a kódot, mielőtt beállítja az OK állapotot az `if` utasításban.
 
 :::code language="powershell" range="18-19" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/run.ps1":::
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5334a1196ac8044c56e615cf8894b44646b48fb4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88615108"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067705"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Lekérdezési egységek az Azure Digital Twinsban 
 
@@ -20,7 +20,9 @@ Az Azure Digital Twins **lekérdezési egység (Qu)** egy igény szerinti szám�
 
 Elvonta a rendszererőforrásokat, például a PROCESSZORt, a IOPS és a memóriát, amely az Azure Digital Twins által támogatott lekérdezési műveletek elvégzéséhez szükséges, így a használat nyomon követhető a lekérdezési egységekben.
 
-A lekérdezés bonyolultsága befolyásolja, hogy hány QUs használ a lekérdezés végrehajtásához. 
+A lekérdezés végrehajtásához felhasznált lekérdezési egységek mennyiségét a következő érinti:...
+* a lekérdezés bonyolultsága 
+* az eredményhalmaz mérete (így a 10 találatokat visszaadó lekérdezés több QUs fog használni, mint a hasonló összetettségű lekérdezés, amely csak egyetlen eredményt ad vissza)
 
 Ez a cikk a lekérdezési egységek értelmezését és a lekérdezési egység felhasználásának nyomon követését ismerteti.
 

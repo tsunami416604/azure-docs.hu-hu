@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78190916"
 ---
-Adjon hozzá egy olyan kódot `msg` , amely a kimeneti kötési objektumot használja üzenetsor-üzenet létrehozásához. Adja hozzá ezt a kódot a metódus visszaadása előtt.
+Adjon hozzá egy olyan kódot, amely a `msg` kimeneti kötési objektumot használja üzenetsor-üzenet létrehozásához. Adja hozzá ezt a kódot a metódus visszaadása előtt.
 
 :::code language="csharp" range="28-32" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" :::
 

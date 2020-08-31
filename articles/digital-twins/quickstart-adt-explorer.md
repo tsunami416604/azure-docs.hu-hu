@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/12/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 6b0a024dde1c96610a637ec51fd29e4a23dadc53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbb1378419c68db07be5ca14ca6834810f2fc9f5
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008556"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055464"
 ---
 # <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Egy minta Azure digitális Twins-forgatókönyv megismerése a ADT Explorer használatával
 
@@ -26,6 +26,10 @@ A rövid útmutató a következő főbb lépéseket tartalmazza:
 1. Előre elkészített modellek és gráf-adatok feltöltése a minta létrehozásához
 1. A létrehozott forgatókönyv-gráf megismerése
 1. Módosítsa a gráfot
+
+A példában szereplő gráf két emeleten és két szobával működő épületet jelöl. A gráf így fog kinézni:
+
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A "Floor1" címkével ellátott kör egy "Room1" címkével ellátott nyíllal van összekötve. a "Floor0" címkével ellátott kör egy "Room0" címkével ellátott nyíllal van összekötve. A "Floor1" és a "Floor0" nincs csatlakoztatva.":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +60,7 @@ Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt,
 
 Válassza a *hitelesítés* lehetőséget a regisztráció menüjében, és nyomja meg *a + platform hozzáadása*elemet.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A platform hozzáadása gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A "platform hozzáadása" gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
 A következő *platformok konfigurálása* oldalon válassza a *web*lehetőséget.
 Adja meg a konfigurációs adatokat a következőképpen:
@@ -137,14 +141,14 @@ A *modell nézet* mezőben nyomja meg a *modell feltöltése* ikont.
 3. Az Azure-fiókba való bejelentkezéshez kattintson a felugró ablakra.
 
 >[!NOTE]
->Ha a következő hibaüzenet jelenik meg: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba: hiba történt a modellek beolvasásakor: ClientAuthError: hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. egy Bezárás gomb alul border="false"::: 
+>Ha a következő hibaüzenet jelenik meg: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba: hiba történt a modellek beolvasásakor: ClientAuthError: hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. "egy Bezárás gomb alul" border="false"::: 
 > Próbálja meg letiltani a felugró ablakok blokkolása vagy egy másik böngésző használatával.
 
 A ADT Explorer ekkor feltölti ezeket a modell-fájlokat az Azure Digital Twins-példányba. Meg kell jelennie a *modell nézet* mezőben, amely megjeleníti a felhasználóbarát neveket és a teljes modell azonosítóit. A *modellre* vonatkozó információk megtekintése buborékok lehetőségre kattintva megtekintheti a mögöttes DTDL-kódot.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="A Model View (modell nézet) mező nézete két, a padlón (dtmi: Floor; 1) és a Room (dtmi: példa: Room; 1) felsorolt modell-definícióval. A modell megtekintése ikon egy kör i betűjét jeleníti meg az egyes modellekhez." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="A "Model View" (modell nézet) mező nézete két, a padlón (dtmi: Floor; 1) és a Room (dtmi: példa: Room; 1) felsorolt modell-definícióval. A "modell megtekintése" ikon egy kör "i" betűjét jeleníti meg az egyes modellekhez." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -188,7 +192,7 @@ A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kap
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 49 ikrek importálva. 50 kapcsolat importálva." lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 49 ikrek importálva. 50 kapcsolat importálva. "" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -198,7 +202,7 @@ A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kap
 
 A gráf már fel lett töltve a ADT Explorerben. Ha látni szeretné a gráfot, a ADT Explorer ablakának tetején kattintson a *lekérdezés futtatása* gombra a *Graph Explorerben* . 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Az ablak felső részén található lekérdezés futtatása gomb beolvasása megnyomva jelenik meg" lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Az ablak felső részén található "lekérdezés futtatása" gomb beolvasása megnyomva jelenik meg" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Ez az alapértelmezett lekérdezést fogja futtatni az összes digitális ikrek kiválasztásához és megjelenítéséhez. A ADT Explorer lekéri az összes ikreket és kapcsolatot a szolgáltatásból, és a *gráf nézet* mezőben rajzolja meg az általuk meghatározott gráfot.
 
@@ -206,7 +210,7 @@ Ez az alapértelmezett lekérdezést fogja futtatni az összes digitális ikrek 
 
 Most láthatja a minta forgatókönyv feltöltött gráfját:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="A Graph View (gráf nézet) mező megjelenítése, amelyen belül egy dupla gráf található. A floor1 címkével ellátott kör egy room1 címkével ellátott nyíllal van összekötve. a floor0 címkével ellátott kör egy room0 címkével ellátott nyíllal van összekötve.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="A "Graph View" (gráf nézet) mező megjelenítése, amelyen belül egy dupla gráf található. A "floor1" címkével ellátott kör egy "room1" címkével ellátott nyíllal van összekötve. a "floor0" címkével ellátott kör egy "room0" címkével ellátott nyíllal van összekötve.":::
 
 A körök (gráf "csomópontok") a digitális ikreket jelölik, és a vonalak a kapcsolatokat jelképezik. Látni fogja, hogy a *Floor0* Twin *Room0*tartalmaz, és a *Floor1* Twin tartalmazza a *Room1*.
 
@@ -220,7 +224,7 @@ A *Room0*tulajdonságai:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Jelölje ki a Property Explorer (Tulajdonságok) panelt, amely a Room0 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a Room0, a 70-es hőmérsékleti mező és a 30-as páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Jelölje ki a "Property Explorer" (Tulajdonságok) panelt, amely a Room0 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a "Room0", a 70-es hőmérsékleti mező és a 30-as páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -232,7 +236,7 @@ A *Room1*tulajdonságai:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Jelölje ki a Property Explorer (Tulajdonságok) panelt, amely a Room1 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a Room1, a 80-es hőmérsékleti mező és a 60-es páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Jelölje ki a "Property Explorer" (Tulajdonságok) panelt, amely a Room1 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a "Room1", a 80-es hőmérsékleti mező és a 60-es páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -271,7 +275,7 @@ A lista tulajdonságai szerkeszthető. Az új érték beírásának engedélyez�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="A Property Explorer mező, amely a Room0 tulajdonságait mutatja. A hőmérséklet értéke egy 76-es szerkeszthető mező, amely a mentés ikon körül látható." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="A "Property Explorer" mező, amely a Room0 tulajdonságait mutatja. A hőmérséklet értéke egy 76-es szerkeszthető mező, amely a mentés ikon körül látható." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::

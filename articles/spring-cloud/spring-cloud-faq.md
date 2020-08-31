@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800370"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054988"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -42,8 +42,8 @@ USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Áz
 
 Az előzetes verzióban az Azure Spring Cloud a következő ismert korlátozásokkal rendelkezik:
 
-* `spring.application.name`a rendszer felülbírálja az egyes alkalmazások létrehozásához használt alkalmazás nevét.
-* `server.port`az alapértelmezett érték a 80/443-es port. Ha bármilyen más értéket alkalmaz, a rendszer felülbírálja a 80/443-re.
+* `spring.application.name` a rendszer felülbírálja az egyes alkalmazások létrehozásához használt alkalmazás nevét.
+* `server.port` az alapértelmezett érték a 80/443-es port. Ha bármilyen más értéket alkalmaz, a rendszer felülbírálja a 80/443-re.
 * A Azure Portal és Azure Resource Manager sablonok nem támogatják az alkalmazáscsomag feltöltését. Az alkalmazás csomagjait csak az Azure CLI-n keresztüli üzembe helyezésével töltheti fel.
 
 ### <a name="what-pricing-tiers-are-available"></a>Milyen díjszabási szintek érhetők el? 
@@ -88,6 +88,12 @@ Igen.
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Ha törölek vagy Áthelyezek egy Azure Spring Cloud Service-példányt, akkor a bővítmény erőforrásai is törlődnek vagy áthelyezhetők?
 
 A bővítmény erőforrásainak tulajdonosaként használt erőforrás-szolgáltatók logikáján múlik. Egy példány bővítmény-erőforrásai `Microsoft.AppPlatform` nem ugyanahhoz a névtérhez tartoznak, így a viselkedés az erőforrás-szolgáltatótól függ. A DELETE/Move művelet például nem fog lépcsőzetesen a **diagnosztikai beállítások** erőforrásaihoz csatlakozni. Ha egy új Azure Spring Cloud-példány ugyanazzal az erőforrás-AZONOSÍTÓval lett kiépítve, mint a törölt, vagy ha az előző Azure Spring Cloud-példányt visszahelyezik, a korábbi **diagnosztikai beállítások** erőforrásai tovább bővítik azt.
+
+A Spring Cloud diagnosztikai beállításait az Azure CLI használatával törölheti:
+
+```azurecli
+ az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
+```
 
 ## <a name="java-runtime-and-os-versions"></a>Java-futtatókörnyezet és operációsrendszer-verziók
 
@@ -134,7 +140,7 @@ A legújabb Ubuntu LTS-verziót használjuk, a jelenleg [ubuntu 20,04 LTS (gyúj
 Az Azure Spring Cloud-ra vonatkozó biztonsági javítások az éles környezetbe kerülnek.
 Az Azure Spring Cloud-ra vonatkozó kritikus biztonsági javítások (CVE-pontszám >= 9) a lehető leghamarabb bekerülnek.
 
-## <a name="deployment"></a>Telepítés
+## <a name="deployment"></a>Üzembe helyezés
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Támogatja az Azure Spring Cloud a Blue-Green üzembe helyezést?
 Igen. További információ: [átmeneti környezet beállítása](spring-cloud-howto-staging-environment.md).
@@ -177,6 +183,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

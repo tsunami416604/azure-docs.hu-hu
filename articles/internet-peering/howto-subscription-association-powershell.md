@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c0ad9ae885a458da5df8975d5d13018fd92bbdaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aed079c467139ac5819951c5895ba753ee38ae2d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710779"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067739"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Társközi ASN társítása az Azure-előfizetéshez a PowerShell használatával
 
@@ -100,13 +101,13 @@ Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ## <a name="delete-peerasn"></a>PeerAsn törlése
 A PeerASN törlése jelenleg nem támogatott. Ha törölnie kell a PeerASN, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közvetlen társviszony létesítése vagy módosítása](howto-direct-powershell.md)
 * [Örökölt közvetlen társviszony konvertálása Azure-erőforrássá](howto-legacy-direct-powershell.md)
 * [Exchange-társ létrehozása vagy módosítása](howto-exchange-powershell.md)
 * [Örökölt Exchange-társviszony konvertálása Azure-erőforrássá](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 További információért látogasson el az internetes kereséssel kapcsolatos [Gyakori kérdések](faqs.md) oldalra.

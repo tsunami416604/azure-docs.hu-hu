@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 19d94c7ec08dbf2556ae72da2f0e5645fb228569
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 501681a17603fb21e073b04e48d23f1b566f8128
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020507"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067688"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
 
@@ -36,6 +36,7 @@ Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verzi�
 
 | Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18038 | 1.0.18040.2 | 2020. augusztus   | <ul><li>Elhárít egy problémát az Azure arc-ban</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020. április   | <ul><li>Privát kapcsolaton keresztüli kapcsolat engedélyezése Azure Monitor privát hivatkozás hatókörök használatával</li><li>Betöltési szabályozást tesz elérhetővé, hogy elkerülje a munkaterületek hirtelen, véletlen beáramlását</li><li>További Azure Government felhők és régiók támogatása</li><li>Feloldja a hibát, ha HealthService.exe összeomlott</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020. március   | <ul><li>Az SHA-2 kód aláírásának támogatása</li><li>Javítja a virtuálisgép-bővítmények telepítését és felügyeletét</li><li>Elhárít egy hibát az Azure arc-kiszolgálók integrációjában</li><li>Beépített hibaelhárítási eszközt biztosít az ügyfélszolgálathoz</li><li>További Azure Government régiók támogatása</li> |
 | 10.20.18018 | 1.0.18018 | 2019. október | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li></ul> |

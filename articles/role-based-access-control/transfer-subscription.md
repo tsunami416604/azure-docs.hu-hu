@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a504285b2d79ba1386bcd13dd72fc3faec202ff
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029977"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055651"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba (előzetes verzió)
 
@@ -28,12 +28,15 @@ A szervezetek több Azure-előfizetéssel is rendelkezhetnek. Minden előfizeté
 
 Ez a cikk az előfizetés egy másik Azure AD-címtárba való átviteléhez és az átvitel után az egyes erőforrások újbóli létrehozásához szükséges alapvető lépéseket ismerteti.
 
+> [!NOTE]
+> Azure CSP-előfizetések esetén az előfizetéshez tartozó Azure AD-címtár módosítása nem támogatott.
+
 ## <a name="overview"></a>Áttekintés
 
 Az Azure-előfizetés egy másik Azure AD-címtárba való átvitele összetett folyamat, amelyet körültekintően kell megtervezni és végrehajtani. Számos Azure-szolgáltatás megköveteli a rendszerbiztonsági tag (identitások) használatát, hogy szabályosan működjenek, vagy akár más Azure-erőforrások kezeléséhez is. Ez a cikk az Azure-szolgáltatások nagy részét próbálja megtekinteni, amelyek nagy mértékben függenek a rendszerbiztonsági tagtől, de nem átfogóak.
 
 > [!IMPORTANT]
-> Az előfizetés átadásához leállás szükséges a folyamat befejezéséhez.
+> Bizonyos esetekben előfordulhat, hogy az előfizetés átadása állásidőt igényel a folyamat befejezéséhez. Alapos tervezés szükséges annak megállapításához, hogy az áttelepítéshez szükség van-e állásidőre.
 
 Az alábbi ábra azokat az alapszintű lépéseket mutatja be, amelyeket az előfizetés másik könyvtárba való átvitele során kell végrehajtania.
 
@@ -66,22 +69,23 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 
 | Szolgáltatás vagy erőforrás | Érintett | Helyreállítható | Hatással van? | Miket végezhet el? |
 | --------- | --------- | --------- | --------- | --------- |
-| Szerepkör-hozzárendelések | Igen | Yes | [Szerepkör-hozzárendelések felsorolása](#save-all-role-assignments) | Az összes szerepkör-hozzárendelés véglegesen törölve lesz. A felhasználókat, csoportokat és egyszerű szolgáltatásokat le kell képeznie a cél könyvtár megfelelő objektumaira. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Egyéni szerepkörök | Igen | Yes | [Egyéni szerepkörök listázása](#save-custom-roles) | Az összes egyéni szerepkör véglegesen törölve lesz. Újra létre kell hoznia az egyéni szerepköröket és a szerepkör-hozzárendeléseket. |
-| Rendszer által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Felhasználó által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Azure Key Vault | Igen | Yes | [Hozzáférési szabályzatok listázása Key Vault](#list-other-known-resources) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
-| Azure SQL Database-adatbázisok az Azure AD-hitelesítéssel | Yes | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-other-known-resources) |  |  |
-| Azure Storage és Azure Data Lake Storage Gen2 | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
-| Azure Data Lake Storage Gen1 | Igen |  |  | Az ACL-eket újra létre kell hoznia. |
-| Azure Files | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
-| Azure File Sync | Igen | Yes |  |  |
-| Azure Managed Disks | Yes | n.a. |  |  |
-| Azure Container Services a Kubernetes-hez | Igen | Yes |  |  |
-| Azure Active Directory tartományi szolgáltatások | Yes | Nem |  |  |
+| Szerepkör-hozzárendelések | Igen | Igen | [Szerepkör-hozzárendelések felsorolása](#save-all-role-assignments) | Az összes szerepkör-hozzárendelés véglegesen törölve lesz. A felhasználókat, csoportokat és egyszerű szolgáltatásokat le kell képeznie a cél könyvtár megfelelő objektumaira. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Egyéni szerepkörök | Igen | Igen | [Egyéni szerepkörök listázása](#save-custom-roles) | Az összes egyéni szerepkör véglegesen törölve lesz. Újra létre kell hoznia az egyéni szerepköröket és a szerepkör-hozzárendeléseket. |
+| Rendszer által hozzárendelt felügyelt identitások | Igen | Igen | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Felhasználó által hozzárendelt felügyelt identitások | Igen | Igen | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Azure Key Vault | Igen | Igen | [Hozzáférési szabályzatok listázása Key Vault](#list-other-known-resources) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
+| Azure SQL Database-adatbázisok engedélyezve az Azure AD-hitelesítés integrációja | Igen | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure Storage és Azure Data Lake Storage Gen2 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Azure Data Lake Storage Gen1 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Azure File Sync | Igen | Igen |  |  |
+| Azure Managed Disks | Igen | N/A |  |  |
+| Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
+| Azure Active Directory Domain Services | Igen | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |
 
-Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használ titkosítást, amely nem ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor az egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
+> [!IMPORTANT]
+> Ha a REST-titkosítást használja egy olyan erőforráshoz, mint például egy Storage-fiók vagy egy SQL-adatbázis, és az erőforrás egy olyan kulcstartótól függ, amely *nem* szerepel az átvitt előfizetésben, előfordulhat, hogy helyreállíthatatlan hibát észlel. Ebben az esetben használjon egy másik kulcstartót, vagy ideiglenesen tiltsa le az ügyfél által felügyelt kulcsokat a Helyreállíthatatlan hiba elkerüléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -199,9 +203,9 @@ A felügyelt identitások nem frissülnek, ha egy előfizetést egy másik köny
 
     | Feltételek | Felügyelt identitás típusa |
     | --- | --- |
-    | `alternativeNames`tulajdonság tartalma`isExplicit=False` | Rendszer által hozzárendelt |
-    | `alternativeNames`a tulajdonság nem tartalmazza`isExplicit` | Rendszer által hozzárendelt |
-    | `alternativeNames`tulajdonság tartalma`isExplicit=True` | Felhasználó által hozzárendelt |
+    | `alternativeNames` tulajdonság tartalma `isExplicit=False` | Rendszer által hozzárendelt |
+    | `alternativeNames` a tulajdonság nem tartalmazza `isExplicit` | Rendszer által hozzárendelt |
+    | `alternativeNames` tulajdonság tartalma `isExplicit=True` | Felhasználó által hozzárendelt |
 
     Az [az Identity List](https://docs.microsoft.com/cli/azure/identity#az-identity-list) használatával is egyszerűen listázhatja a felhasználó által hozzárendelt felügyelt identitásokat. További információ: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése az Azure CLI használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
@@ -217,8 +221,8 @@ A felügyelt identitások nem frissülnek, ha egy előfizetést egy másik köny
 
 Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure Active Directory bérlői AZONOSÍTÓhoz kapcsolódik ahhoz az előfizetéshez, amelyben létrehozták. A hozzáférési szabályzatok minden bejegyzése is ehhez a bérlőazonosítóhoz kapcsolódik. További információ: [Azure Key Vault áthelyezése másik előfizetésre](../key-vault/general/move-subscription.md).
 
-> [!WARNING]
-> Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használja a REST-titkosítást, amely nem ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
+> [!IMPORTANT]
+> Ha a REST-titkosítást használja egy olyan erőforráshoz, mint például egy Storage-fiók vagy egy SQL-adatbázis, és az erőforrás egy olyan kulcstartótól függ, amely *nem* szerepel az átvitt előfizetésben, előfordulhat, hogy helyreállíthatatlan hibát észlel. Ebben az esetben használjon egy másik kulcstartót, vagy ideiglenesen tiltsa le az ügyfél által felügyelt kulcsokat a Helyreállíthatatlan hiba elkerüléséhez.
 
 - Ha rendelkezik kulcstartóval, az az Key [Vault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) paranccsal listázhatja a hozzáférési házirendeket. További információ: [Key Vault hitelesítés megadása hozzáférés-vezérlési házirenddel](../key-vault/key-vault-group-permissions-for-apps.md).
 
@@ -228,7 +232,7 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL Database-adatbázisok listázása az Azure AD-hitelesítéssel
 
-- Az [az SQL Server ad-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) és az az [Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) bővítmény használatával ellenőrizze, hogy Azure SQL Database-adatbázisokat használ-e az Azure ad-hitelesítéssel. További információ: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL](../sql-database/sql-database-aad-authentication-configure.md)-sel.
+- Az [az SQL Server ad-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) és az az [Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) bővítmény használatával ellenőrizze, hogy Azure SQL Database-adatbázisokat használ-e az Azure ad-hitelesítéssel. További információ: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL](../azure-sql/database/authentication-aad-configure.md)-sel.
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -373,7 +377,7 @@ Ha szeretné eltávolítani a hozzáférést a forrás címtárban lévő felhas
 
 1. A tanúsítványokat használó erőforrások esetében frissítse a tanúsítványt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Azure-előfizetések átvitele az előfizetők és a CSP-k között](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

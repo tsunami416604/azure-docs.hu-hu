@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: Munkamenet
           href: concept-conditional-access-session.md
-    - name: Megállapítások és jelentéskészítés
-      href: howto-conditional-access-insights-reporting.md
     - name: Csak jelentési mód
       href: concept-conditional-access-report-only.md
     - name: Szolgáltatásfüggőségek
@@ -78,6 +76,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
+    - name: Csak jelentéskészítési mód konfigurálása
+      href: howto-conditional-access-insights-reporting.md
     - name: Jóváhagyott ügyfélalkalmazások megkövetelése
       href: app-based-conditional-access.md
     - name: Alkalmazásvédelmi szabályzat megkövetelése
@@ -88,12 +88,8 @@
       href: untrusted-networks.md
     - name: Használati feltételek megkövetelése
       href: terms-of-use.md
-    - name: A csak jelentési mód konfigurálása
-      href: howto-conditional-access-report-only.md
     - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
       href: howto-conditional-access-session-lifetime.md
-    - name: Klasszikus szabályzatok migrálása
-      href: policy-migration-mfa.md
     - name: Hibaelhárítás
       items:
         - name: Bejelentkezési problémák elhárítása
@@ -102,6 +98,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: GYIK
           href: faqs.md
+    - name: Klasszikus szabályzatok migrálása
+      href: policy-migration-mfa.md
 - name: Referencia
   items:
     - name: Bétaverziójú Graph API-k

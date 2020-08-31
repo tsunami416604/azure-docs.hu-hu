@@ -16,9 +16,9 @@ A megfelelő SSL-tanúsítvány biztosítja, hogy titkosított adatokat küldjö
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
 2. A `Set-HcsCertificate` tanúsítvány feltöltéséhez használja a parancsmagot. Ha a rendszer kéri, adja meg a következő paramétereket:
 
-   - `CertificateFilePath`– A tanúsítványfájl *. pfx* formátumú fájlját tartalmazó megosztás elérési útja.
-   - `CertificatePassword`– A tanúsítvány védeleméhez használt jelszó.
-   - `Credentials`-Username a tanúsítványt tartalmazó megosztás eléréséhez. Ha a rendszer kéri, adja meg a hálózati megosztás jelszavát.
+   - `CertificateFilePath` – A tanúsítványfájl *. pfx* formátumú fájlját tartalmazó megosztás elérési útja.
+   - `CertificatePassword` – A tanúsítvány védeleméhez használt jelszó.
+   - `Credentials` -Username a tanúsítványt tartalmazó megosztás eléréséhez. Ha a rendszer kéri, adja meg a hálózati megosztás jelszavát.
 
      A következő példa a parancsmag használatát mutatja be:
 

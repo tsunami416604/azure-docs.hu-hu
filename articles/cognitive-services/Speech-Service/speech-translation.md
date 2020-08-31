@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/27/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 670d7f160285283bd44371b893c63904b2685926
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cef6ff109607455881970aeb95eaf0859f6f4f05
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934497"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055532"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
 
@@ -30,25 +30,14 @@ A Microsoft jelenleg a NMT használja a legnépszerűbb nyelvekre való fordít�
 
 ## <a name="core-features"></a>Alapvető funkciók
 
-A Speech SDK és a REST API-k segítségével az alábbi funkciók érhetők el:
+* Beszéd és szöveg közötti fordítás felismerési eredményekkel.
+* Beszéd – beszéd fordítás.
+* Több célnyelv fordításának támogatása.
+* Az ideiglenes felismerés és a fordítás eredményei.
 
-| Használati eset | SDK | REST |
-|----------|-----|------|
-| Beszéd és szöveg közötti fordítás felismerési eredményekkel. | Igen | Nem |
-| Beszéd – beszéd fordítás. | Igen | Nem |
-| Az ideiglenes felismerés és a fordítás eredményei. | Igen | Nem |
+## <a name="get-started"></a>Bevezetés 
 
-## <a name="get-started-with-speech-translation"></a>Ismerkedés a beszédfelismerési fordítással
-
-Olyan gyors útmutatókat is kínálunk, amelyek kevesebb, mint 10 perc alatt futtatják a kódot. Ez a táblázat a beszéd fordítási útmutatóinak nyelv alapján rendezett listáját tartalmazza.
-
-| Gyorsútmutató | Platform | API-referencia |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET-keretrendszer](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Tallózás](https://aka.ms/csspeech/cppref)|
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Tallózás](https://aka.ms/csspeech/javaref) |
+Tekintse [meg a](get-started-speech-translation.md) rövid útmutató lépéseit a beszédfelismerési fordítás megkezdéséhez. A beszédfelismerési szolgáltatás a [SPEECH SDK](speech-sdk.md) és a [Speech CLI](spx-overview.md)használatával érhető el.
 
 ## <a name="sample-code"></a>Mintakód
 
@@ -70,7 +59,8 @@ Ha alkalmazásai, eszközei vagy termékei a [Translator Speech API](https://doc
 * [REST API: szövegről beszédre](rest-text-to-speech.md)
 * [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* A [beszéd fordításának](get-started-speech-translation.md) befejezése
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 * [A Speech SDK beszerzése](speech-sdk.md)

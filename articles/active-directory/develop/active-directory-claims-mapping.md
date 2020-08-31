@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853360"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068643"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -302,7 +302,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | streetAddress | Utca, házszám |
 | Felhasználó | Irányítószám | Irányítószám |
 | Felhasználó | preferredlanguange | Előnyben részesített nyelv |
-| Felhasználó | onpremisesuserprincipalname | Helyszíni UPN |
+| Felhasználó | onpremisesuserprincipalname | Helyszíni UPN |*
 | Felhasználó | mailnickname | Levelezési Felhasználónév |
 | Felhasználó | extensionattribute1 | 1. bővítmény-attribútum |
 | Felhasználó | extensionattribute2 | 2. bővítmény-attribútum |
@@ -340,6 +340,8 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 - A JwtClaimType tartalmaznia kell a JWTs kibocsátott jogcím nevét.
 - A SamlClaimType tartalmaznia kell az SAML-jogkivonatokban kibocsátott jogcím URI-JÁT.
+
+* **onPremisesUserPrincipalName attribútum:** Alternatív azonosító használata esetén a userPrincipalName helyszíni attribútuma szinkronizálva lesz az Azure AD attribútum onPremisesUserPrincipalName. Ez az attribútum csak akkor érhető el, ha az alternatív azonosító konfigurálva van, de az MS Graph Beta használatával is elérhető: https://graph.microsoft.com/beta/me/ .
 
 > [!NOTE]
 > A korlátozott jogcímek készletében lévő jogcímek nevei és URI-azonosítói nem használhatók a jogcím típusú elemekhez. További információt a cikk későbbi, "kivételek és korlátozások" című szakaszában talál.

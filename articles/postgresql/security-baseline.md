@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 475933bcc9219808087671d49778cc3696d8c815
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 46aae2acb1f35eb22259e1e648fb869c23f26c9c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500793"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067671"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Az Azure biztonsági alapkonfigurációja Azure Database for PostgreSQL egyetlen kiszolgálóhoz
 
@@ -34,11 +34,11 @@ Azt is megteheti, hogy Virtual Network szolgáltatás-végpontokat használ a Az
 
 A Azure Database for PostgreSQL-kiszolgáló a tűzfalszabályok használatával is biztonságossá tehető. A kiszolgáló tűzfala megakadályozza az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghatározzák az elfogadható IP-címtartományokat. A tűzfalszabályok a kiszolgáló szintjén hozhatók létre.
 
-Privát hivatkozás konfigurálása Azure Database for PostgreSQLhoz:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Privát hivatkozás konfigurálása Azure Database for PostgreSQLhoz: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-VNet-szolgáltatási végpontok és VNet szabályok létrehozása és kezelése a Azure Database for PostgreSQL-ben:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+VNet-szolgáltatási végpontok és VNet szabályok létrehozása és kezelése a Azure Database for PostgreSQL-ben: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-Azure Database for PostgreSQL tűzfalszabályok konfigurálása:https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
+Azure Database for PostgreSQL tűzfalszabályok konfigurálása: https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal
 
 **Azure Security Center figyelés**: igen
 
@@ -48,11 +48,11 @@ Azure Database for PostgreSQL tűzfalszabályok konfigurálása:https://docs.mic
 
 **Útmutató**: ha a Azure Database for PostgreSQL-példány védett egy privát végponthoz, a virtuális gépeket telepítheti ugyanabban a virtuális hálózatban. Hálózati biztonsági csoport (NSG) használatával csökkentheti az adatkiszűrése kockázatát. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-Privát hivatkozás konfigurálása Azure Database for PostgreSQLhoz:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Privát hivatkozás konfigurálása Azure Database for PostgreSQLhoz: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-A NSG folyamat naplófájljainak engedélyezése:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+A NSG folyamat naplófájljainak engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+A Traffic Analytics engedélyezése és használata: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure Security Center figyelés**: igen
 
@@ -72,9 +72,9 @@ A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/a
 
 A Azure Database for PostgreSQL-példányokhoz társított virtuális hálózatokon DDoS Protection szabványt engedélyezheti a DDoS-támadások elleni védelemhez. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-Komplex veszélyforrások elleni védelem konfigurálása Azure Database for PostgreSQL esetén:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Komplex veszélyforrások elleni védelem konfigurálása Azure Database for PostgreSQL esetén: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-A DDoS Protection konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+A DDoS Protection konfigurálása: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 **Azure Security Center figyelés**: igen
 
@@ -84,9 +84,9 @@ A DDoS Protection konfigurálása:https://docs.microsoft.com/azure/virtual-netwo
 
 **Útmutató**: ha a Azure Database for PostgreSQL-példány védett egy privát végponthoz, a virtuális gépeket telepítheti ugyanabban a virtuális hálózatban. Ezután konfigurálhat egy hálózati biztonsági csoportot (NSG) az adatkiszűrése kockázatának csökkentése érdekében. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-A NSG folyamat naplófájljainak engedélyezése:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+A NSG folyamat naplófájljainak engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+A Traffic Analytics engedélyezése és használata: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 **Azure Security Center figyelés**: igen
 
@@ -96,7 +96,7 @@ A Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/a
 
 **Útmutató**: az Azure Database for PostgreSQL komplex veszélyforrások elleni védelme. A komplex veszélyforrások elleni védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
-Komplex veszélyforrások elleni védelem konfigurálása Azure Database for PostgreSQL esetén:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+Komplex veszélyforrások elleni védelem konfigurálása Azure Database for PostgreSQL esetén: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
 **Azure Security Center figyelés**: igen
 
@@ -116,9 +116,9 @@ Komplex veszélyforrások elleni védelem konfigurálása Azure Database for Pos
 
 Megjegyzés: Azure Database for PostgreSQL a "Microsoft. SQL" szolgáltatás címkéjét használja.
 
-További információ a szolgáltatási címkék használatáról:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+További információ a szolgáltatási címkék használatáról: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-A Azure Database for PostgreSQL szolgáltatás címkézési használatának ismertetése:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
+A Azure Database for PostgreSQL szolgáltatás címkézési használatának ismertetése: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet#terminology-and-description
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -132,11 +132,11 @@ A Azure Database for PostgreSQL szolgáltatás címkézési használatának isme
 
 - A TLS-kapcsolatok betartatását engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy minták a hálózatkezeléshez:https://docs.microsoft.com/azure/governance/policy/samples/
+Azure Policy minták a hálózatkezeléshez: https://docs.microsoft.com/azure/governance/policy/samples/
 
-Azure Blueprint létrehozása:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Azure Blueprint létrehozása: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -150,7 +150,7 @@ A címkézéssel kapcsolatos beépített Azure Policy-definíciók bármelyikét
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -160,9 +160,9 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Database for PostgreSQL-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-Az Azure Activity log eseményeinek megtekintése és beolvasása:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Az Azure Activity log eseményeinek megtekintése és beolvasása: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Riasztások létrehozása a Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása a Azure Monitorban: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -185,11 +185,11 @@ Riasztások létrehozása a Azure Monitorban:https://docs.microsoft.com/azure/az
 
 **Útmutató**: a diagnosztikai beállítások és a kiszolgálói naplók engedélyezése, valamint a naplók beolvasása a Azure Database for PostgreSQL példányai által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterület (ek) használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/concepts-audit
+A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -199,11 +199,11 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: a diagnosztikai beállítások engedélyezése a Azure Database for PostgreSQL példányokon a naplózási, biztonsági és erőforrás-naplókhoz való hozzáféréshez. Győződjön meg arról, hogy kifejezetten engedélyezi a PostgreSQL-naplót. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. Engedélyezheti az Azure-műveletnapló diagnosztikai beállításait is, és elküldheti a naplókat ugyanarra a Log Analytics munkaterületre vagy Storage-fiókba.
 
-A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/concepts-audit
+A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -222,9 +222,9 @@ Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigu
 
 **Útmutató**: a Azure monitoron belül a Azure Database for PostgreSQL-naplók tárolására szolgáló log Analytics munkaterülethez a szervezet megfelelőségi szabályainak megfelelően állítsa be a megőrzési időszakot. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-Erőforrás-naplók tárolása egy Azure Storage-fiókban:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Erőforrás-naplók tárolása egy Azure Storage-fiókban: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -234,11 +234,11 @@ Erőforrás-naplók tárolása egy Azure Storage-fiókban:https://docs.microsoft
 
 **Útmutató**: az Azure Database for PostgreSQL-példányokból származó naplók elemzése és figyelése rendellenes viselkedés esetén. A naplók áttekintéséhez és a naplózási adatok lekérdezéséhez használja a Azure Monitor Log Analytics. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek.
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-További információ a Log Analyticsról:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+További információ a Log Analyticsról: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Egyéni lekérdezések végrehajtása a Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Egyéni lekérdezések végrehajtása a Azure Monitorban: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -250,15 +250,15 @@ Egyéni lekérdezések végrehajtása a Azure Monitorban:https://docs.microsoft.
 
 Emellett engedélyezheti a kiszolgáló naplófájljait és diagnosztikai beállításait a PostgreSQL-hez, és naplókat küldhet egy Log Analytics munkaterületre. A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását.
 
-A Azure Database for PostgreSQL komplex veszélyforrások elleni védelemének engedélyezése:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+A Azure Database for PostgreSQL komplex veszélyforrások elleni védelemének engedélyezése: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/concepts-audit
+A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center figyelés**: igen
 
@@ -298,11 +298,11 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 A Azure Database for PostgreSQL nem támogatja a beépített szerepköralapú hozzáférés-vezérlést, de adott erőforrás-szolgáltatói műveletek alapján egyéni szerepköröket is létrehozhat.
 
-Az Azure-előfizetés egyéni szerepköreinek megismerése:https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+Az Azure-előfizetés egyéni szerepköreinek megismerése: https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
 
-Azure Database for PostgreSQL erőforrás-szolgáltatói műveletek ismertetése:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
+Azure Database for PostgreSQL erőforrás-szolgáltatói műveletek ismertetése: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbforpostgresql 
 
-A Azure Database for PostgreSQL hozzáférés-kezelésének megismerése:https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
+A Azure Database for PostgreSQL hozzáférés-kezelésének megismerése: https://docs.microsoft.com/azure/postgresql/concepts-security#access-management
 
 **Azure Security Center figyelés**: igen
 
@@ -314,9 +314,9 @@ A Azure Database for PostgreSQL hozzáférés-kezelésének megismerése:https:/
 
 A Azure Database for PostgreSQL erőforrás létrehozásakor az Azure erős jelszóval kényszeríti a rendszergazda felhasználó létrehozását. A PostgreSQL-példány létrehozása után azonban a létrehozott első kiszolgálói rendszergazdai fiók használatával további felhasználókat hozhat létre, és rendszergazdai hozzáférést biztosíthat számukra. A fiókok létrehozásakor ügyeljen arra, hogy az egyes fiókokhoz eltérő, erős jelszót állítson be.
 
-További fiókok létrehozása Azure Database for PostgreSQLhoz:https://docs.microsoft.com/azure/postgresql/howto-create-users
+További fiókok létrehozása Azure Database for PostgreSQLhoz: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
-Rendszergazdai jelszó frissítése:https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
+Rendszergazdai jelszó frissítése: https://docs.microsoft.com/azure/postgresql/howto-create-manage-server-portal#update-admin-password
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -326,9 +326,9 @@ Rendszergazdai jelszó frissítése:https://docs.microsoft.com/azure/postgresql/
 
 **Útmutató**: szabványos üzemeltetési eljárások létrehozása a Azure Database for PostgreSQL példányokhoz hozzáféréssel rendelkező dedikált rendszergazdai fiókok használatával. A rendszergazdai fiókok számának figyeléséhez használja a Azure Security Center identitás-és hozzáférés-kezelés lehetőséget. 
 
-Azure Security Center identitás és hozzáférés ismertetése:https://docs.microsoft.com/azure/security-center/security-center-identity-access 
+Azure Security Center identitás és hozzáférés ismertetése: https://docs.microsoft.com/azure/security-center/security-center-identity-access 
 
-Ismerje meg, hogyan hozhat létre rendszergazda felhasználókat a Azure Database for PostgreSQLban:https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
+Ismerje meg, hogyan hozhat létre rendszergazda felhasználókat a Azure Database for PostgreSQLban: https://docs.microsoft.com/azure/postgresql/howto-create-users#the-server-admin-account
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -341,11 +341,11 @@ Ismerje meg, hogyan hozhat létre rendszergazda felhasználókat a Azure Databas
 
 Külön, az ellenőrző sík hozzáférése a PostgreSQL-hez REST APIon keresztül érhető el, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
 
-Azure Active Directory használata a Azure Database for PostgreSQL való hitelesítéshez:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Azure Active Directory használata a Azure Database for PostgreSQL való hitelesítéshez: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Azure Database for PostgreSQL REST API ismertetése:https://docs.microsoft.com/rest/api/postgresql/
+Azure Database for PostgreSQL REST API ismertetése: https://docs.microsoft.com/rest/api/postgresql/
 
-Az SSO megismerése az Azure AD-vel:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Az SSO megismerése az Azure AD-vel: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -355,11 +355,11 @@ Az SSO megismerése az Azure AD-vel:https://docs.microsoft.com/azure/active-dire
 
 **Útmutató**: a Azure Active Directory multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése. Ha Azure AD-jogkivonatokat használ az adatbázisba való bejelentkezéshez, ez lehetővé teszi a többtényezős hitelesítés megkövetelését az adatbázis-bejelentkezésekhez.
 
-Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Az MFA engedélyezése az Azure-ban: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Azure Active Directory használata a Azure Database for PostgreSQL való hitelesítéshez:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Azure Active Directory használata a Azure Database for PostgreSQL való hitelesítéshez: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
-Identitás és hozzáférés figyelése Azure Security Centeron belül:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identitás és hozzáférés figyelése Azure Security Centeron belül: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center figyelés**: igen
 
@@ -369,9 +369,9 @@ Identitás és hozzáférés figyelése Azure Security Centeron belül:https://d
 
 **Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált, multi-Factor Authentication (MFA) rendszerjogosultságú hozzáférési munkaállomások használata.
 
-További tudnivalók az emelt szintű hozzáférésű munkaállomásokról:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+További tudnivalók az emelt szintű hozzáférésű munkaállomásokról: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Az MFA engedélyezése az Azure-ban: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -385,11 +385,11 @@ Emellett Azure Active Directory (AD) Privileged Identity Management (PIM) is has
 
 Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg.
 
-A komplex veszélyforrások elleni védelem beállítása Azure Database for PostgreSQL esetén:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+A komplex veszélyforrások elleni védelem beállítása Azure Database for PostgreSQL esetén: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-Privileged Identity Management (PIM) üzembe helyezése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management (PIM) üzembe helyezése: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Az Azure AD kockázati észlelések ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Az Azure AD kockázati észlelések ismertetése: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center figyelés**: igen
 
@@ -399,7 +399,7 @@ Az Azure AD kockázati észlelések ismertetése:https://docs.microsoft.com/azur
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel lehetővé teheti a portál és Azure Resource Manager hozzáférését az IP-címtartományok vagy országok/régiók adott logikai csoportjaiból.
 
-Elnevezett helyszínek konfigurálása az Azure-ban:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Elnevezett helyszínek konfigurálása az Azure-ban: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -413,7 +413,7 @@ Az Azure Database for PostgreSQLba való bejelentkezéshez ajánlott az Azure AD
 
 Az Azure AD hitelesítő adatai a felügyeleti sík szintjén (például Azure Portal) is használhatók a PostgreSQL rendszergazdai fiókok vezérléséhez.
 
-Azure Active Directory használata a Azure Database for PostgreSQL való hitelesítéshez:https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
+Azure Active Directory használata a Azure Database for PostgreSQL való hitelesítéshez: https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -423,11 +423,11 @@ Azure Active Directory használata a Azure Database for PostgreSQL való hiteles
 
 **Útmutató**: Tekintse át a Azure Active Directory naplókat, hogy segítsen felderíteni az elavult fiókokat, amelyek magukban foglalhatják Azure Database for PostgreSQL rendszergazdai szerepköröket. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelhetők a csoporttagságok, hozzáférhetnek a Azure Database for PostgreSQLhoz és a szerepkör-hozzárendelésekhez használható vállalati alkalmazásokhoz. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-Az Azure AD jelentéskészítés ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Az Azure AD jelentéskészítés ismertetése: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Az Azure Identity hozzáférési felülvizsgálatok használata:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Az Azure Identity hozzáférési felülvizsgálatok használata: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-A PostgreSQL-felhasználók és a hozzárendelt szerepkörök áttekintése:https://www.postgresql.org/docs/current/database-roles.html
+A PostgreSQL-felhasználók és a hozzárendelt szerepkörök áttekintése: https://www.postgresql.org/docs/current/database-roles.html
 
 **Azure Security Center figyelés**: igen
 
@@ -437,11 +437,11 @@ A PostgreSQL-felhasználók és a hozzárendelt szerepkörök áttekintése:http
 
 **Útmutató**: a Azure Database for PostgreSQL és Azure Active Directory diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics munkaterületre. Konfigurálja a kívánt riasztásokat (például sikertelen hitelesítési kísérleteket) Log Analyticson belül.
 
-A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
+A Azure Database for PostgreSQL kiszolgáló naplófájljainak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/howto-configure-server-logs-in-portal
 
-A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése:https://docs.microsoft.com/azure/postgresql/concepts-audit
+A Azure Database for PostgreSQL naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/postgresql/concepts-audit
 
-Azure-beli tevékenység-naplók integrálása a Azure Monitorba:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-beli tevékenység-naplók integrálása a Azure Monitorba: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -455,13 +455,13 @@ A Azure Active Directory Identity Protection és kockázati észlelési funkció
 
 További vizsgálat céljából betöltheti a naplókat az Azure Sentinelbe.
 
-A komplex veszélyforrások elleni védelem beállítása Azure Database for PostgreSQL esetén:https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
+A komplex veszélyforrások elleni védelem beállítása Azure Database for PostgreSQL esetén: https://docs.microsoft.com/azure/postgresql/howto-database-threat-protection-portal
 
-A Azure AD Identity Protection áttekintése:https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+A Azure AD Identity Protection áttekintése: https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
 
-Az Azure AD kockázatos bejelentkezések megtekintése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Az Azure AD kockázatos bejelentkezések megtekintése: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center figyelés**: igen
 
@@ -471,7 +471,7 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: jelenleg nem érhető el; Azure Database for PostgreSQL esetében Ügyfélszéf még nem támogatott.
 
-Ügyfélszéf támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Ügyfélszéf támogatott szolgáltatások listája: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -485,7 +485,7 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: a címkék használatával segítheti a Azure Database for PostgreSQL példányok és a bizalmas adatokat tároló vagy feldolgozó kapcsolódó erőforrások nyomon követését.
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -495,15 +495,15 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. A magánhálózati kapcsolat, a szolgáltatási végpontok és/vagy a tűzfalszabályok együttes használatával elkülönítheti és korlátozhatja a Azure Database for PostgreSQL példányok hálózati hozzáférését.
 
-További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
+További Azure-előfizetések létrehozása: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Management Groups létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
+Management Groups létrehozása: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Privát hivatkozás konfigurálása Azure Database for PostgreSQLhoz:https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
+Privát hivatkozás konfigurálása Azure Database for PostgreSQLhoz: https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal
 
-VNet-szolgáltatási végpontok és VNet szabályok létrehozása és kezelése a Azure Database for PostgreSQL-ben:https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
+VNet-szolgáltatási végpontok és VNet szabályok létrehozása és kezelése a Azure Database for PostgreSQL-ben: https://docs.microsoft.com/azure/postgresql/howto-manage-vnet-using-portal
 
-Azure Database for PostgreSQL tűzfalszabályok konfigurálása:https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
+Azure Database for PostgreSQL tűzfalszabályok konfigurálása: https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -515,9 +515,9 @@ Azure Database for PostgreSQL tűzfalszabályok konfigurálása:https://docs.mic
 
 A Microsoft kezeli a Azure Database for PostgreSQL alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-A Azure Database for PostgreSQL adatkiszűréseának enyhítése:https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
+A Azure Database for PostgreSQL adatkiszűréseának enyhítése: https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link
 
-Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: igen
 
@@ -529,7 +529,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 Jelenleg a Azure Database for PostgreSQL által támogatott TLS-verzió a TLS 1,0, a TLS 1,1, a TLS 1,2.
 
-A titkosítás konfigurálása a Azure Database for PostgreSQL:https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
+A titkosítás konfigurálása a Azure Database for PostgreSQL: https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security
 
 **Azure Security Center figyelés**: igen
 
@@ -541,7 +541,7 @@ A titkosítás konfigurálása a Azure Database for PostgreSQL:https://docs.micr
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -549,11 +549,11 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Database for PostgreSQL vezérlési síkon való hozzáférés vezérléséhez (például Azure Portal). Az adatsíkok eléréséhez (magán az adatbázison belül) használja az SQL-lekérdezéseket a felhasználók létrehozásához és a felhasználói engedélyek konfigurálásához. A RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Database for PostgreSQL vezérlési síkon való hozzáférés vezérléséhez (például Azure Portal). Az adatsíkok eléréséhez (magán az adatbázison belül) használja az SQL-lekérdezéseket a felhasználók létrehozásához és a felhasználói engedélyek konfigurálásához. Az Azure RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
 
-A RBAC konfigurálása az Azure-ban:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Az Azure RBAC konfigurálása: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-Felhasználói hozzáférés konfigurálása az SQL Azure Database for PostgreSQLhoz:https://docs.microsoft.com/azure/postgresql/howto-create-users
+Felhasználói hozzáférés konfigurálása az SQL Azure Database for PostgreSQLhoz: https://docs.microsoft.com/azure/postgresql/howto-create-users
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -565,7 +565,7 @@ Felhasználói hozzáférés konfigurálása az SQL Azure Database for PostgreSQ
 
 A Microsoft kezeli a Azure Database for PostgreSQL alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -579,7 +579,7 @@ Az ügyfél által felügyelt kulcsokkal (CMK) Azure Database for PostgreSQL egy
 
 AskAzureDBforPostgreSQL@service.microsoft.com.
 
-A Azure Database for PostgreSQL titkosításának megismerése:https://docs.microsoft.com/azure/postgresql/concepts-security
+A Azure Database for PostgreSQL titkosításának megismerése: https://docs.microsoft.com/azure/postgresql/concepts-security
 
 Az ügyfél által felügyelt kulcsok használata Azure Database for PostgreSQL a REST titkosítás megismerése:https://docs.microsoft.com/azure/postgresql/concepts-data-encryption-postgresql
 
@@ -592,7 +592,7 @@ Az ügyfél által felügyelt kulcsok használata Azure Database for PostgreSQL 
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure Database for PostgreSQL és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
-Riasztások létrehozása az Azure Activity log-eseményekhez:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása az Azure Activity log-eseményekhez: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -606,7 +606,7 @@ Riasztások létrehozása az Azure Activity log-eseményekhez:https://docs.micro
 
 **Útmutató**: jelenleg nem érhető el; A Azure Security Center még nem támogatja az Azure Database for PostgreSQL sebezhetőségi felmérését.
 
-A Azure Security Center Azure Pásti szolgáltatásainak lefedettségi köre:https://docs.microsoft.com/azure/security-center/features-paas
+A Azure Security Center Azure Pásti szolgáltatásainak lefedettségi köre: https://docs.microsoft.com/azure/security-center/features-paas
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -652,11 +652,11 @@ A Azure Security Center Azure Pásti szolgáltatásainak lefedettségi köre:htt
 
 **Útmutató**: az Azure Resource Graph segítségével lekérdezheti és felderítheti az összes erőforrást (beleértve Azure Database for PostgreSQL példányokat is) az előfizetésében. Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
-Lekérdezések létrehozása az Azure Resource Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Resource Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Az Azure-előfizetések megtekintése:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Az Azure-előfizetések megtekintése: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Az Azure RBAC ismertetése:https://docs.microsoft.com/azure/role-based-access-control/overview
+Az Azure RBAC ismertetése: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -666,7 +666,7 @@ Az Azure RBAC ismertetése:https://docs.microsoft.com/azure/role-based-access-co
 
 **Útmutató**: címkéket alkalmazhat a Azure Database for PostgreSQL példányokra és egyéb kapcsolódó erőforrásokra, amelyek metaadatokat biztosítanak a besorolások logikai rendszerezéséhez.
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -676,11 +676,11 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és a különálló előfizetések használata, ahol szükséges, Azure Database for PostgreSQL példányok és kapcsolódó erőforrások rendszerezése és nyomon követése. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
+További Azure-előfizetések létrehozása: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Management Groups létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
+Management Groups létrehozása: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -704,9 +704,9 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Lekérdezések létrehozása az Azure Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -744,9 +744,9 @@ Lekérdezések létrehozása az Azure Graph használatával:https://docs.microso
 
 - Engedélyezett erőforrástípusok
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -764,7 +764,7 @@ Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával. Ez megakadályozhatja az erőforrások létrehozását és módosítását a magas biztonsági környezetben, például a bizalmas adatokat tartalmazó Azure Database for PostgreSQL példányain.
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -798,9 +798,9 @@ A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való ho
 
 - A naplózási kapcsolatokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
 
-Az elérhető Azure Policy aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -818,9 +818,9 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 **Útmutató**: az Azure-erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -838,9 +838,9 @@ Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance
 
 **Útmutató**: ha az Azure Database for PostgreSQL példányaihoz és a kapcsolódó erőforrásokhoz egyéni Azure Policy-definíciókat használ, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-Kód tárolása az Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Kód tárolása az Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Az Azure Repos dokumentációja:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -858,7 +858,7 @@ Az Azure Repos dokumentációja:https://docs.microsoft.com/azure/devops/repos/in
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DBforPostgreSQL" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -876,7 +876,7 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DBforPostgreSQL" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. A Azure Database for PostgreSQL-példányok és a kapcsolódó erőforrások konfigurációjának automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [üzembe helyezés ha nem létezik] lehetőséget.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -894,11 +894,11 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 **Útmutató**: az Azure Virtual Machines vagy Azure app Service rendszeren futó webalkalmazásokhoz, amelyek a Azure Database for PostgreSQL példányok elérésére szolgálnak, a Managed Service Identity a Azure Key Vaultekkel együtt egyszerűsítheti és biztonságossá teheti Azure Database for PostgreSQL titkos felügyeletét. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
-Integráció az Azure felügyelt identitásokkal:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integráció az Azure felügyelt identitásokkal: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault létrehozása:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault létrehozása: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:https://docs.microsoft.com/azure/key-vault/managed-identity
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása: https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Azure Security Center figyelés**: igen
 
@@ -912,9 +912,9 @@ A Azure Database for PostgreSQL-kiszolgáló elérésére használt Azure App Se
 
 Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
-Felügyelt identitások konfigurálása:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-Integráció az Azure felügyelt identitásokkal:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integráció az Azure felügyelt identitásokkal: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 **Azure Security Center figyelés**: igen
 
@@ -924,7 +924,7 @@ Integráció az Azure felügyelt identitásokkal:https://docs.microsoft.com/azur
 
 **Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
 
-A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+A hitelesítőadat-olvasó beállítása: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -973,9 +973,9 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 **Útmutató**: a Azure Database for PostgreSQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárterület méretétől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálót) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
 
-Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-Azure Database for PostgreSQL kezdeti konfiguráció ismertetése:https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
+Azure Database for PostgreSQL kezdeti konfiguráció ismertetése: https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -987,9 +987,9 @@ Azure Database for PostgreSQL kezdeti konfiguráció ismertetése:https://docs.m
 
 Ha a Azure Database for PostgreSQL-példányok hitelesítő adatainak tárolására Azure Key Vault használ, ügyeljen arra, hogy a kulcsok rendszeres automatikus biztonsági mentéseit tárolja.
 
-Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
-Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault kulcsok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1003,7 +1003,7 @@ A helyreállítás becsült ideje több tényezőtől függ, többek között az
 
 A Azure Database for PostgreSQL példányok visszaállításának rendszeres tesztelése.
 
-Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban:https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
+Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban: https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1013,7 +1013,7 @@ Kiszolgáló biztonsági mentése Azure Database for PostgreSQLban:https://docs.
 
 **Útmutató**: a Azure Database for PostgreSQL teljes, differenciált és tranzakciós naplóbeli biztonsági mentést készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
 
-A Azure Database for PostgreSQL biztonsági mentésének és visszaállításának megismerése:https://docs.microsoft.com/azure/postgresql/concepts-backup
+A Azure Database for PostgreSQL biztonsági mentésének és visszaállításának megismerése: https://docs.microsoft.com/azure/postgresql/concepts-backup
 
 **Azure Security Center figyelés**: igen
 
@@ -1027,13 +1027,13 @@ A Azure Database for PostgreSQL biztonsági mentésének és visszaállításán
 
 **Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
 
-Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-A Microsoft Security Response Center egy Incidensének anatómiája:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+A Microsoft Security Response Center egy Incidensének anatómiája: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1053,7 +1053,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1063,7 +1063,7 @@ Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek tes
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az ügyfél adatait egy törvénytelen vagy jogosulatlan fél is hozzáférte.  A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-A Azure Security Center biztonsági kapcsolattartó beállítása:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+A Azure Security Center biztonsági kapcsolattartó beállítása: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Security Center figyelés**: igen
 
@@ -1073,9 +1073,9 @@ A Azure Security Center biztonsági kapcsolattartó beállítása:https://docs.m
 
 **Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások Sentinel továbbításához.
 
-Folyamatos exportálás konfigurálása:https://docs.microsoft.com/azure/security-center/continuous-export
+Folyamatos exportálás konfigurálása: https://docs.microsoft.com/azure/security-center/continuous-export
 
-Riasztások továbbítása az Azure Sentinelbe:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+Riasztások továbbítása az Azure Sentinelbe: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1085,7 +1085,7 @@ Riasztások továbbítása az Azure Sentinelbe:https://docs.microsoft.com/azure/
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan aktiválhatja a válaszokat a "Logic apps" használatával a biztonsági riasztások és javaslatok esetében.
 
-A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:https://docs.microsoft.com/azure/security-center/workflow-automation
+A Munkafolyamat-automatizálás és a Logic Apps konfigurálása: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1097,15 +1097,15 @@ A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:https://docs.mi
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: rendszeres penetrációs tesztelést végez az Azure-erőforrásokon, és gondoskodik az összes kritikus biztonsági vizsgálat 60 napon belüli szervizeléséről
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

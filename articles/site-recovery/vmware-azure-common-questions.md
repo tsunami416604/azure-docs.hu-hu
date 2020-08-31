@@ -3,12 +3,12 @@ title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure 
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086149"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89054971"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
@@ -114,7 +114,7 @@ Site Recovery a helyszíni VMware virtuális gépeket és fizikai kiszolgálóka
 
 Nem. A Azure Portal március 2019-én kezdődően csak az Azure Managed Disks szolgáltatásban lehet replikálni.
 
-Az új virtuális gépek Storage-fiókba való replikálása csak a PowerShell vagy a REST API (2018-01-10-es vagy 2016-08-10-es verzió) használatával lehetséges.
+Az új virtuális gépek egy Storage-fiókba való replikálása csak a PowerShell ([az. recoveryservices szolgáltatónál modul verziója 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) vagy a REST API (2018-01-10-es vagy 2016-08-10-os verzió) használatával érhető el. [Megtudhatja, hogyan](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) telepítheti a replikációt a PowerShell-parancsok használatával.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Milyen előnyökkel jár a felügyelt lemezekre való replikálás?
 
@@ -361,7 +361,7 @@ Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhat
 
 Igen. [További információ](site-recovery-plan-capacity-vmware.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](vmware-physical-azure-support-matrix.md) a támogatási követelményeket.
 - [Beállítás](vmware-azure-tutorial.md) VMware – Azure replikálás.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717030"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055073"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication üzemelő példány megtervezése
 
@@ -110,7 +110,7 @@ Javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával defin
 A rendszergazdák kiválaszthatják a felhasználók számára elérhetővé tenni kívánt [hitelesítési módszereket](../authentication/concept-authentication-methods.md) . Fontos, hogy egynél több hitelesítési módszert engedélyezzen, hogy a felhasználók számára elérhető legyen egy biztonsági mentési módszer, ha az elsődleges metódus nem érhető el. A rendszergazdák a következő módszerekkel engedélyezhetők:
 
 > [!TIP]
-> A Microsoft a legjobb biztonsági és felhasználói élmény érdekében javasolja a Mobile App használatát az Azure-Multi-Factor Authentication elsődleges módszerként.
+> A Microsoft a Microsoft Authenticator (Mobile App) használatát javasolja elsődleges módszerként az Azure Multi-Factor Authentication számára a biztonságosabb és továbbfejlesztett felhasználói élmény érdekében. A Microsoft Authenticator alkalmazás a szabványügyi és technológiai hitelesítő szintű nemzeti intézetnek is [megfelel](https://azure.microsoft.com/resources/microsoft-nist/) . 
 
 ### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
 
@@ -250,7 +250,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
     * Kattintson a **Kiválasztás** elemre.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -365,7 +365,7 @@ Az Azure Multi-Factor Authentication jelentéseket biztosít a Azure Portalon ke
 
 Az Azure MFA-val kapcsolatos gyakori problémák megoldásait az [azure multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Multi-Factor Authentication működés közbeni megtekintéséhez hajtsa végre a következő oktatóanyagot:
 

@@ -13,12 +13,12 @@ ms.locfileid: "80673152"
 ---
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 
-+ A terminál vagy a parancssorablakban futtassa `func --version` a parancsot az Azure functions Core Tools 2.7.1846 vagy újabb verziójának megadásához.
++ A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 2.7.1846 vagy újabb verziójának megadásához.
 
-+ A `az --version` futtatásával győződjön meg arról, hogy az Azure CLI verziója 2.0.76 vagy újabb.
++ A futtatásával `az --version` Győződjön meg arról, hogy az Azure CLI verziója 2.0.76 vagy újabb.
 
-+ A `az login` futtatásával jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
++ A futtatásával `az login` Jelentkezzen be az Azure-ba, és ellenőrizze az aktív előfizetést.
 
 ::: zone pivot="programming-language-python"  
-+ Futtassa `python --version` a (Linux/MacOS) `py --version` vagy a (Windows) rendszert a Python-verziók 3,8. x, 3.7. x vagy 3.6. x verziójának vizsgálatához.
++ Futtassa `python --version` a (Linux/MacOS) vagy a `py --version` (Windows) rendszert a Python-verziók 3,8. x, 3.7. x vagy 3.6. x verziójának vizsgálatához.
 ::: zone-end

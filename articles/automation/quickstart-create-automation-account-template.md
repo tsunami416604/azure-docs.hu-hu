@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 37a619fe3279d1cb03763b14c3dfc9e315d850b9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685646"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055430"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rövid útmutató: Automation-fiók létrehozása ARM-sablon használatával
 
@@ -60,7 +60,7 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 |:---|:---|:---|
 | [Munkaterület](/azure/templates/microsoft.operationalinsights/workspaces) | munkaterületek | 2020-03-01 – előzetes verzió |
 | [Automation-fiók](/azure/templates/microsoft.automation/automationaccounts) | automatizálás | 2020-01-13 – előzetes verzió |
-| [Munkaterület-társított szolgáltatások](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | worksapces | 2020-03-01 – előzetes verzió |
+| [Munkaterület-társított szolgáltatások](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | munkaterületek | 2020-03-01 – előzetes verzió |
 
 ### <a name="before-you-use-the-template"></a>A sablon használata előtt
 
@@ -120,7 +120,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
 Ha már nincs szüksége rájuk, válassza le az Automation-fiókot a Log Analytics munkaterületről, majd törölje az Automation-fiókot és-munkaterületet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Automation-fiókot, egy Log Analytics munkaterületet, és összekapcsolta őket egymással.
 

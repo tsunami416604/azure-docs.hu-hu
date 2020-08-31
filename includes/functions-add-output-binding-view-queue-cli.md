@@ -11,9 +11,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673367"
 ---
-Az üzenetsor a [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) vagy a [Microsoft Azure Storage Explorerban](https://storageexplorer.com/)tekinthető meg. Az üzenetsor az Azure CLI-ben is megtekinthető az alábbi lépések szerint:
+Az üzenetsor a [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) vagy a  [Microsoft Azure Storage Explorerban](https://storageexplorer.com/)tekinthető meg. Az üzenetsor az Azure CLI-ben is megtekinthető az alábbi lépések szerint:
 
-1. Nyissa meg a Function projekt *Local. Setting. JSON* fájlt, és másolja a kapcsolatok karakterláncának értékét. Egy terminál-vagy parancssori ablakban futtassa a következő parancsot egy nevű `AZURE_STORAGE_CONNECTION_STRING`környezeti változó létrehozásához, és illessze be az adott kapcsolódási karakterláncot a `<MY_CONNECTION_STRING>`helyére. (Ez a környezeti változó azt jelenti, hogy nem kell megadnia a kapcsolódási karakterláncot `--connection-string` minden további parancshoz az argumentum használatával.)
+1. Nyissa meg a Function Project *local.setting.js* fájlját, és másolja a kapcsolatok karakterláncának értékét. Egy terminál-vagy parancssori ablakban futtassa a következő parancsot egy nevű környezeti változó létrehozásához, és illessze be az `AZURE_STORAGE_CONNECTION_STRING` adott kapcsolódási karakterláncot a helyére  `<MY_CONNECTION_STRING>` . (Ez a környezeti változó azt jelenti, hogy nem kell megadnia a kapcsolódási karakterláncot minden további parancshoz az `--connection-string` argumentum használatával.)
 
     # <a name="bash"></a>[bash](#tab/bash)
     
@@ -35,13 +35,13 @@ Az üzenetsor a [Azure Portal](../articles/storage/queues/storage-quickstart-que
     
     ---
     
-1. Választható A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs használatával megtekintheti a fiókban található tárolási várólistákat. A parancs kimenetének tartalmaznia kell egy nevű `outqueue`várólistát, amely akkor jött létre, amikor a függvény első üzenetét írta a várólistára.
+1. Választható A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs használatával megtekintheti a fiókban található tárolási várólistákat. A parancs kimenetének tartalmaznia kell egy nevű várólistát `outqueue` , amely akkor jött létre, amikor a függvény első üzenetét írta a várólistára.
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. A ( [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) z) parancs használatával olvassa el a várólista üzenetét, amely a függvény korábbi teszteléséhez használt keresztnév. A parancs beolvassa és eltávolítja az első üzenetet a várólistából. 
+1. A (z [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) ) parancs használatával olvassa el a várólista üzenetét, amely a függvény korábbi teszteléséhez használt keresztnév. A parancs beolvassa és eltávolítja az első üzenetet a várólistából. 
 
     # <a name="bash"></a>[bash](#tab/bash)
     
@@ -65,4 +65,4 @@ Az üzenetsor a [Azure Portal](../articles/storage/queues/storage-quickstart-que
     
     ---
     
-    Mivel az üzenettörzs tárolása [Base64 kódolású](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding), az üzenetet a Megjelenítés előtt dekódolni kell. A végrehajtás `az storage message get`után a rendszer eltávolítja az üzenetet a várólistából. Ha csak egy üzenet szerepel a- `outqueue`ben, akkor nem fog beolvasni egy üzenetet, ha a parancsot Másodszor futtatja, hanem hibaüzenetet kap.
+    Mivel az üzenettörzs tárolása [Base64 kódolású](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding), az üzenetet a Megjelenítés előtt dekódolni kell. A végrehajtás után `az storage message get` a rendszer eltávolítja az üzenetet a várólistából. Ha csak egy üzenet szerepel a-ben `outqueue` , akkor nem fog beolvasni egy üzenetet, ha a parancsot Másodszor futtatja, hanem hibaüzenetet kap.

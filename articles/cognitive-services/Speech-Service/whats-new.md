@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131854"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055311"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Beszédfelismerési szolgáltatás: a docs újdonságai
 
@@ -48,9 +48,6 @@ Ha szeretne többet megtudni a Speech Service, a Speech SDK, a Speech Devices SD
 * Gyors útmutató [: telepítési fejlesztési környezet](quickstarts/setup-platform.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * Gyors útmutató [: a beszédfelismerés hangfájlba való szintézise](quickstarts/text-to-speech-audio-file.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * Gyors útmutató [: beszéd készítése a beszélőhöz](quickstarts/text-to-speech.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
-* Gyors útmutató [: beszédfelismerési beszéd – a](quickstarts/translate-speech-to-speech.md) JavaScript-utasítások hozzáadása a dokumentációhoz.
-* Rövid útmutató [: beszéd fordítása több nyelvre](quickstarts/translate-speech-to-text-multiple-languages.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
-* Gyors útmutató [: beszéd – szöveg – a](quickstarts/translate-speech-to-text.md) JavaScript-utasítások hozzáadása a dokumentációhoz.
 * [Mi az a kulcsszó?](custom-keyword-overview.md) – Frissített első lépések tartalom és hivatkozások.
 * [Szöveg nyelvének megadása a beszédfelismeréshez](how-to-specify-source-language.md) – a JavaScript és a Objective-C utasítások a dokumentációhoz.
 
@@ -60,7 +57,7 @@ Ezek a problémák májusban lettek megnyitva. Ez a táblázat felsorolja azt a 
 
 Ez a tábla havonta frissül, és csak a májusában megnyitott problémákat tükrözi.  
 
-|ID|Felhasználó|Description|Megnyitott|Állapot|Típus|
+|ID|Felhasználó|Leírás|Megnyitott|Állapot|Típus|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|A tevékenység el lett dobva, mert hiányzik a robot végpontja|2020-05-31|Zárt|Probléma|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Helytelen közzétételi robot-lépések|2020-05-31|Nyitott|Probléma|
@@ -77,7 +74,7 @@ Ez a tábla havonta frissül, és csak a májusában megnyitott problémákat t�
 |[54743](https://github.com/MicrosoftDocs/azure-docs/issues/54743)|fifteenjoy|A Speech Service-tárolók futtatása sikertelen|2020-05-13|Nyitott|Probléma|
 |[54550](https://github.com/MicrosoftDocs/azure-docs/issues/54550)|Judit – 95|Példa a kiejtési fájlra|2020-05-11|Nyitott|Probléma|
 |[54522](https://github.com/MicrosoftDocs/azure-docs/issues/54522)|pjmlp|A Java-minta helytelen.|2020-05-10|Nyitott|Probléma|
-|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Nem lehet lekérni a írásmódja pontszámát|2020-05-08|Zárt|Probléma|
+|[54387](https://github.com/MicrosoftDocs/azure-docs/issues/54387)|ziadhassan7|Nem lehet lekérni a kiejtési pontszámot|2020-05-08|Zárt|Probléma|
 |[54382](https://github.com/MicrosoftDocs/azure-docs/issues/54382)|jgtellez1|YAML-sablonfájl|2020-05-07|Zárt|Probléma|
 |[54208](https://github.com/MicrosoftDocs/azure-docs/issues/54208)|paparush|A C# mintakód nem kéri a felhasználót, hogy beszéljen.|2020-05-06|Zárt|Probléma|
 |[54132](https://github.com/MicrosoftDocs/azure-docs/pull/54132)|anthonsu|A TTS frissítése v 1.3-ról v 1.4-re|2020-05-05|Zárt|Lekéréses kérelem|
