@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477340"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144770"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Adatelemzési Virtual Machines megosztott készletének létrehozása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre az adatelemzési Virtual Machines (Dsvm) megosztott készletét egy csapat számára. A megosztott készlet használatának előnyei közé tartozik a jobb erőforrás-használat, a könnyebb megosztás és együttműködés, valamint a DSVM erőforrások hatékonyabb kezelése.
 
-Számos módszert és technológiát használhat a Dsvm készletének létrehozásához. Ez a cikk az interaktív virtuális gépek (VM-EK) készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információ: [számítási célok beállítása](../how-to-set-up-training-targets.md#amlcompute).
+Számos módszert és technológiát használhat a Dsvm készletének létrehozásához. Ez a cikk az interaktív virtuális gépek (VM-EK) készleteit tárgyalja. Egy alternatív felügyelt számítási infrastruktúra Azure Machine Learning számítás. További információ: [számítási célok létrehozása a PYTHON SDK-val](../how-to-create-attach-compute-sdk.md).
 
 ## <a name="interactive-vm-pool"></a>Interaktív virtuálisgép-készlet
 
@@ -55,7 +55,7 @@ A [Azure Files megosztást csatlakoztató szkript](https://raw.githubusercontent
 
 A virtuálisgép-méretezési csoportok támogatják az automatikus skálázást. Szabályokat állíthat be a további példányok létrehozásához és a példányok méretezési idejéhez. Ha például a virtuális gépeket egyáltalán nem használják, a Felhőbeli hardver használati költségeire csökkentheti a példányok méretét. A virtuálisgép-méretezési csoportok dokumentációs oldalain részletes útmutatást talál az automatikus [skálázáshoz](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közös identitás beállítása](dsvm-common-identity.md)
 * [Hitelesítő adatok biztonságos tárolása a felhőalapú erőforrások eléréséhez](dsvm-secure-access-keys.md)

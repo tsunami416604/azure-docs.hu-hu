@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: Hiba a felhasználói hozzájárulással
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: Probléma egyéni portálról való bejelentkezésnél
-              href: application-sign-in-other-problem-deeplink.md
-            - name: Probléma a hozzáférési panelről való bejelentkezésnél
+            - name: Probléma a Saját alkalmazásokból való bejelentkezésnél
               href: application-sign-in-other-problem-access-panel.md
             - name: Hiba az alkalmazás bejelentkezési oldalán
               href: application-sign-in-problem-application-error.md
-            - name: Hiba az egyszeri bejelentkezési jelszóval – nem katalógusbeli alkalmazás
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: Hiba az egyszeri bejelentkezési jelszóval – katalógusbeli alkalmazás
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: Probléma egy Microsoft-alkalmazásba való bejelentkezéskor
               href: application-sign-in-problem-first-party-microsoft.md
             - name: Probléma az összevont egyszeri bejelentkezéskor – nem katalógusbeli alkalmazás
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: Egyszeri bejelentkezéssel kapcsolatos hibaelhárítás
           items:
+            - name: Jelszóalapú egyszeri bejelentkezés hibaelhárítása
+              href: troubleshoot-password-based-sso.md
             - name: Gyakori problémák az összevontak konfigurálásakor – katalógusbeli alkalmazások
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Gyakori problémák az összevontak konfigurálásakor – nem katalógusbeli alkalmazások
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: Gyakori problémák jelszó konfigurálásakor – katalógusbeli alkalmazások
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: Gyakori problémák jelszó konfigurálásakor – nem katalógusbeli alkalmazások
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Alkalmazáslistával és -hozzárendeléssel kapcsolatos hibaelhárítás
           items:
             - name: Bérlői alkalmazáslista kezelése
@@ -248,16 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: Saját alkalmazások hibaelhárítása
           items:
-            - name: Böngészőbővítmény kezelése
-              href: manage-access-panel-browser-extension.md
             - name: Az alkalmazás nem jelenik meg
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: Váratlan alkalmazás jelenik meg
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: Nem lehet bejelentkezni
-              href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben
-              href: access-panel-troubleshoot-self-service-access.md
         - name: Helyszíni alkalmazások hibaelhárítása
           items:
             - name: Alkalmazásproxy hibaelhárítása

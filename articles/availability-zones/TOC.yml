@@ -25,9 +25,9 @@
         - name: Felügyelt lemezek
           items:
             - name: Felügyelt lemez hozzáadása egy rendelkezésre állási zónában parancssori felület használatával
-              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
+              href: ../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm
             - name: Felügyelt lemez hozzáadása egy rendelkezésre állási zónában PowerShell használatával
-              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+              href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
         - name: Virtuálisgép-méretezési csoportok
           items:
             - name: Méretezési csoport létrehozása egy rendelkezésre állási zónában
@@ -58,11 +58,11 @@
                 - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között az Azure-ral (CLI)
                   href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
         - name: Nyilvános IP-cím
-          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
             - name: Rendelkezésre állási zónák és SQL Database
-              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
         - name: Storage
           items:
             - name: Zónaredundáns tárolás
@@ -70,11 +70,11 @@
         - name: Event Hubs
           items:
             - name: Event Hubs georeplikációs vészhelyreállítás
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
+              href: ../event-hubs/event-hubs-geo-dr.md#availability-zones
         - name: Service Bus
           items:
             - name: Service Bus georeplikációs vészhelyreállítás
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
+              href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones
         - name: VPN Gateway
           items:
             - name: Zónaredundáns virtuális hálózati átjáró létrehozása
@@ -83,6 +83,10 @@
           items:
             - name: Zónaredundáns virtuális hálózati átjáró létrehozása
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Application Gateway v2
+          items:
+            - name: Automatikusan skálázó és zónaredundáns Application Gateway v2
+              href: ../application-gateway/application-gateway-autoscaling-zone-redundant.md
         - name: Identitás
           items:
             - name: Azure Active Directory Domain Services-példány létrehozása

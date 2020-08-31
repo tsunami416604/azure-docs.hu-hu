@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4d4f6ff7819ef3cd0cf8e6a4c504a9b89dd5fda9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810241"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070666"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
 
@@ -179,7 +179,7 @@ Azt is megteheti, hogy több Piactéri lehetőség áll rendelkezésre, példáu
 - függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
 - A legújabb TLS-verziót kell használni a függvényalkalmazás
 
-Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például a Azure Resource Manager sablonokat, a szerepköralapú hozzáférés-vezérlést (RBAC) és a szabályzatokat egyetlen terv definíciójában. A tervet egyszerűen alkalmazhatja új előfizetésekre, környezetekre, valamint a verziószámozáson keresztül történő finomhangolásra és felügyeletre.
+Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-környezeteket a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek egyetlen terv szerinti definícióban való kicsomagolásával. A tervet egyszerűen alkalmazhatja új előfizetésekre, környezetekre, valamint a verziószámozáson keresztül történő finomhangolásra és felügyeletre.
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -595,9 +595,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Active Directory (ad) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja az Azure Function Control-síkon (a Azure Portal) való hozzáférést. 
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az Azure Function Control-síkon való hozzáférés vezérlésére (a Azure Portal). 
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -896,7 +896,7 @@ Belső beszerzési útmutató létrehozása:
 
 **Útmutató**: ARM-sablonok és egyéni Azure-szabályzat-definíciók biztonságos tárolása és kezelése a verziókövetés számára.
 
-- [Az infrastruktúra mint kód bemutatása](/azure/devops/learn/what-is-infrastructure-as-code)
+- [Mi az infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code)
 
 - [Szabályzat tervezése kód-munkafolyamatként](../governance/policy/concepts/policy-as-code.md)
 
@@ -1179,7 +1179,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

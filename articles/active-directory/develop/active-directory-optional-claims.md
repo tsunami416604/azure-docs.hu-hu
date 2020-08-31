@@ -12,12 +12,12 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853590"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068726"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -37,7 +37,7 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | N.A.         | Támogatott   |
+| Személyes Microsoft-fiók | N/A         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -58,7 +58,7 @@ Az alábbi listában a használni kívánt alkalmazások alapértelmezett válas
 | `verified_secondary_email` | A felhasználó SecondaryAuthoritativeEmail származik   | JWT        |           |        |
 | `vnet`                     | A VNET megadására vonatkozó információk. | JWT        |           |      |
 | `fwd`                      | IP-cím.| JWT    |   | Hozzáadja a kérelmező ügyfél eredeti IPv4-címe (egy VNET belül) |
-| `ctry`                     | Felhasználó országa/régiója | JWT |  | Az Azure AD visszaadja a `ctry` választható jogcímet, ha a jelen van, és a mező értéke standard kétbetűs ország-vagy régiókód, például fr, JP, sz stb. |
+| `ctry`                     | Felhasználó országa/régiója | JWT, SAML |  | Az Azure AD visszaadja a `ctry` választható jogcímet, ha a jelen van, és a mező értéke standard kétbetűs ország-vagy régiókód, például fr, JP, sz stb. |
 | `tenant_ctry`              | Erőforrás-bérlő országa | JWT | | Ugyanaz, mint `ctry` a rendszergazda által a bérlői szinten beállítottak kivételével.  Standard kétbetűs értéknek is kell lennie. |
 | `xms_pdl`             | Elsődleges adatelérési hely   | JWT | | A többszörös földrajzi bérlők esetében az előnyben részesített adatterület a felhasználó földrajzi régióját megjelenítő hárombetűs kód. További információ: [Azure ad Connect dokumentáció az előnyben részesített adatok helyéről](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Például: `APC` Ázsia és a csendes-óceáni térség. |
 | `xms_pl`                   | Felhasználó által előnyben részesített nyelv  | JWT ||A felhasználó által választott nyelv, ha be van állítva. A saját bérlőtől származik, a vendég hozzáférési forgatókönyvekben. Formázott LL-CC ("en-us"). |
@@ -136,7 +136,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 1. Válassza a **választható jogcím hozzáadása**lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 **Választható jogcímek konfigurálása az alkalmazás jegyzékfájlján keresztül:**
 
@@ -434,7 +434,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Amikor befejezte a jegyzékfájl frissítését **, a Mentés gombra kattintva** mentheti a jegyzékfájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure AD által biztosított standard jogcímekről.
 

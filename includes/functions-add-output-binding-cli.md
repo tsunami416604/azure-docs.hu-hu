@@ -16,7 +16,7 @@ ms.locfileid: "80673352"
 Bár a függvények csak egy triggerrel rendelkezhetnek, több bemeneti és kimeneti kötéssel is rendelkezhet, amelyek lehetővé teszik más Azure-szolgáltatásokhoz és-erőforrásokhoz való csatlakozást az egyéni integrációs kód írása nélkül. 
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Ezeket a kötéseket a Function *. JSON* fájlban deklarálhatja a függvény mappájában. Az előző rövid útmutatóban a *function. JSON* fájl a *HttpExample* mappában két kötést tartalmaz a `bindings` gyűjteményben:  
+Ezeket a kötéseket a Function mappában található fájl *function.js* deklarálhatja. Az előző rövid útmutatóból a *HttpExample* mappában található fájl *function.js* két kötést tartalmaz a `bindings` gyűjteményben:  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
@@ -32,33 +32,33 @@ Ezeket a kötéseket a Function *. JSON* fájlban deklarálhatja a függvény ma
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-Minden kötéshez legalább egy típus, egy irány és egy név tartozik. A fenti példában az első kötés típusa `httpTrigger` az irány. `in` Az `in` iránynál `name` adja meg egy bemeneti paraméter nevét, amelyet a rendszer az eseményindító által meghívott függvénynek továbbít.  
+Minden kötéshez legalább egy típus, egy irány és egy név tartozik. A fenti példában az első kötés típusa az `httpTrigger` irány `in` . Az `in` iránynál `name` adja meg egy bemeneti paraméter nevét, amelyet a rendszer az eseményindító által meghívott függvénynek továbbít.  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-A gyűjtemény második kötésének neve `res`. Ez `http` a kötés egy kimeneti kötés (`out`), amely a http-válasz írására szolgál. 
+A gyűjtemény második kötésének neve `res` . Ez a `http` kötés egy kimeneti kötés ( `out` ), amely a http-válasz írására szolgál. 
 
-Ha a függvényből szeretne írni egy Azure Storage-várólistába, `out` adjon hozzá egy `queue` típusú `msg`kötést a következő kódban látható módon:
+Ha a függvényből szeretne írni egy Azure Storage-várólistába, adjon hozzá egy `out` típusú kötést a következő `queue` `msg` kódban látható módon:
 
 :::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-A gyűjtemény `http` második kötése az iránysal `out`van megadva, ebben az esetben a speciális `name` érték `$return` azt jelzi, hogy ez a kötés a függvény visszatérési értékét használja, nem pedig bemeneti paramétert.
+A gyűjtemény második kötése `http` az iránysal van `out` megadva, ebben az esetben a speciális `name` `$return` érték azt jelzi, hogy ez a kötés a függvény visszatérési értékét használja, nem pedig bemeneti paramétert.
 
-Ha a függvényből szeretne írni egy Azure Storage-várólistába, `out` adjon hozzá egy `queue` típusú `msg`kötést a következő kódban látható módon:
+Ha a függvényből szeretne írni egy Azure Storage-várólistába, adjon hozzá egy `out` típusú kötést a következő `queue` `msg` kódban látható módon:
 
 :::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-powershell"  
-A gyűjtemény második kötésének neve `res`. Ez `http` a kötés egy kimeneti kötés (`out`), amely a http-válasz írására szolgál. 
+A gyűjtemény második kötésének neve `res` . Ez a `http` kötés egy kimeneti kötés ( `out` ), amely a http-válasz írására szolgál. 
 
-Ha a függvényből szeretne írni egy Azure Storage-várólistába, `out` adjon hozzá egy `queue` típusú `msg`kötést a következő kódban látható módon:
+Ha a függvényből szeretne írni egy Azure Storage-várólistába, adjon hozzá egy `out` típusú kötést a következő `queue` `msg` kódban látható módon:
 
 :::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Ebben az esetben a `msg` függvény kimeneti argumentumként van megadva. `queue` A `queueName` típushoz meg kell adnia a várólista nevét is, és meg kell adnia az Azure Storage-kapcsolatok *nevét* (a *Local. Settings. JSON*fájlból) `connection`a alkalmazásban. 
+Ebben az esetben `msg` a függvény kimeneti argumentumként van megadva. A `queue` típushoz meg kell adnia a várólista nevét is, és meg kell `queueName` adnia az Azure Storage-kapcsolatok *nevét* ( *local.settings.json*) `connection` . 
 ::: zone-end  

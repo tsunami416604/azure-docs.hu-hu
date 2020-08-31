@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719512"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068915"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
 
@@ -177,6 +178,6 @@ A következő további információk és jelentések érhetők el az MFA-esemén
 | Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | Az MFA-kiszolgálói kérelmek előzményeit jeleníti meg a felhasználók számára az MFA megkerülése érdekében. |
 | Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | Megjeleníti a fiókjához társított MFA-kiszolgálók állapotát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk áttekintést nyújt a bejelentkezési tevékenységek jelentéséről. További információ arról, hogy a jelentés mit tartalmaz és hogyan értelmezi az adatokat, lásd: [bejelentkezési tevékenységek jelentései az Azure ad-ben](../reports-monitoring/concept-sign-ins.md).

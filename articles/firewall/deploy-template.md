@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Azure Firewall létrehozása Availability Zones-Resource Manager-sablonnal'
-description: Azure Firewall üzembe helyezése sablon használatával. A virtuális hálózat egy VNet rendelkezik három alhálózattal. Két Windows Server rendszerű virtuális gép van üzembe helyezve; egy Jump Box és egy kiszolgáló.
+description: Ebben a rövid útmutatóban egy sablon használatával telepíti Azure Firewall. A virtuális hálózat egy VNet rendelkezik három alhálózattal. Két Windows Server rendszerű virtuális gép van üzembe helyezve; egy Jump Box és egy kiszolgáló.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 104e2e9f6593d95caf77c0796f8b9465eebcfcee
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: c8b4102968e4b6b633216e29d5e993a1c98fa1c6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705129"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071720"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Gyors útmutató: Azure Firewall üzembe helyezése Availability Zones ARM-sablonnal
 
@@ -88,7 +88,7 @@ Remove-AzResourceGroup -Name MyResourceGroup
 
 Ha folytatni szeretné a tűzfal-figyelési oktatóanyagot, ne távolítsa el az erőforráscsoportot és a tűzfalat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

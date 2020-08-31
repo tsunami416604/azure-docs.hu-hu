@@ -13,8 +13,8 @@ ms.locfileid: "80673295"
 ---
 ## <a name="update-the-tests"></a>A tesztek frissítése
 
-Mivel az archetípus is létrehoz egy tesztet, frissítenie kell ezeket a teszteket az új `msg` paraméter a `run` metódus aláírásában való kezeléséhez.  
+Mivel az archetípus is létrehoz egy tesztet, frissítenie kell ezeket a teszteket az új paraméter a `msg` `run` metódus aláírásában való kezeléséhez.  
 
-Keresse meg a kód helyét az _src/test/Java_területen, nyissa meg a *function. Java* projektfájlt, és cserélje le a kód `//Invoke` sorát a következő kóddal.
+Keresse meg a kód helyét az _src/test/Java_területen, nyissa meg a *function. Java* projektfájlt, és cserélje le a kód sorát a `//Invoke` következő kóddal.
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/test/java/com/function/FunctionTest.java" range="48-50":::

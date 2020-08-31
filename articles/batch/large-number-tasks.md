@@ -4,12 +4,12 @@ description: Nagyon nagy számú feladat hatékony beküldése egyetlen Azure Ba
 ms.topic: how-to
 ms.date: 08/24/2018
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0442be6f0c56aecc401ac4322c565a9ef999df63
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 26230372a04d13a8b8f59d50aa5da1362126413b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936894"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144056"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladat elküldése egy batch-feladatba
 
@@ -26,15 +26,15 @@ Az egyetlen hívásban felvehető feladat-gyűjtemény maximális mérete a hasz
 * A következő batch API-k az 100-es **feladatokra**korlátozzák a gyűjteményt. A korlát lehet kisebb a feladatok méretétől függően – például ha a feladatok nagy számú erőforrás-fájllal vagy környezeti változóval rendelkeznek.
 
     * [REST API](/rest/api/batchservice/task/addcollection)
-    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js API](/javascript/api/@azure/batch/task?view=azure-node-latest)
+    * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations)
+    * [Node.js API](/javascript/api/@azure/batch/task)
 
   Ezen API-k használatakor meg kell adnia a feladatok számának a gyűjtési korlátnak megfelelő számát, valamint a hibák és az újrapróbálkozások kezelését, ha a feladatok hozzáadása sikertelen. Ha egy feladatsor túl nagy a hozzáadáshoz, a kérelem hibát generál, és kevesebb feladattal újra próbálkozni fog.
 
 * A következő API-k sokkal nagyobb feladatokat támogatnak – csak a RAM rendelkezésre állása korlátozza a beküldő ügyfélen. Ezek az API-k transzparens módon kezelik a feladatok gyűjteményét az alsó szintű API-k számára, és újrapróbálkoznak, ha a feladatok hozzáadása sikertelen.
 
-    * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
-    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
+    * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync)
+    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync)
     * [CLI-bővítmény Azure batch](batch-cli-templates.md) batch CLI-sablonokkal
     * [Python SDK-bővítmény](https://pypi.org/project/azure-batch-extensions/)
 
@@ -44,7 +44,7 @@ Több időbe telik, amíg a feladatok nagy részét felvesszük egy feladathoz, 
 
 * **Feladat mérete** – a nagyméretű feladatok hozzáadása hosszabb időt vesz igénybe, mint a kisebbek hozzáadása. A gyűjtemények egyes feladatainak méretének csökkentéséhez egyszerűsítheti a feladat parancssorát, csökkentheti a környezeti változók számát, vagy hatékonyabban kezelheti a feladatok végrehajtásának követelményeit. Ha például nagy mennyiségű erőforrást kíván használni, telepítse a feladat függőségeit a készlet [indítási feladatával](jobs-and-tasks.md#start-task) , vagy használjon [alkalmazáscsomag](batch-application-packages.md) vagy [Docker-tárolót](batch-docker-container-workloads.md).
 
-* **Párhuzamos műveletek száma** – a Batch API-tól függően növelje az átviteli sebességet úgy, hogy növeli az egyidejű műveletek maximális számát a Batch-ügyfél számára. Konfigurálja ezt a beállítást a .NET API [BatchClientParallelOptions. maxanalyticsunits](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) tulajdonságával, vagy az `threads` olyan metódusok paraméterével, mint például a [TaskOperations. ADD_COLLECTION](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) a Batch Python SDK-bővítményben. (Ez a tulajdonság nem érhető el a natív batch Python SDK-ban.) Alapértelmezés szerint ez a tulajdonság 1 értékre van állítva, de magasabbra van állítva a műveletek átviteli sebességének növelése érdekében. A hálózati sávszélesség és a CPU-teljesítmény növelésével kihasználhatja a megnövekedett adatátvitelt. A feladat átviteli sebessége a vagy a 100-szor értékével nő `MaxDegreeOfParallelism` `threads` . A gyakorlatban a 100 alatti párhuzamos műveletek számát kell beállítania. 
+* **Párhuzamos műveletek száma** – a Batch API-tól függően növelje az átviteli sebességet úgy, hogy növeli az egyidejű műveletek maximális számát a Batch-ügyfél számára. Konfigurálja ezt a beállítást a .NET API [BatchClientParallelOptions. maxanalyticsunits](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) tulajdonságával, vagy az `threads` olyan metódusok paraméterével, mint például a [TaskOperations. ADD_COLLECTION](/python/api/azure-batch/azure.batch.operations.TaskOperations) a Batch Python SDK-bővítményben. (Ez a tulajdonság nem érhető el a natív batch Python SDK-ban.) Alapértelmezés szerint ez a tulajdonság 1 értékre van állítva, de magasabbra van állítva a műveletek átviteli sebességének növelése érdekében. A hálózati sávszélesség és a CPU-teljesítmény növelésével kihasználhatja a megnövekedett adatátvitelt. A feladat átviteli sebessége a vagy a 100-szor értékével nő `MaxDegreeOfParallelism` `threads` . A gyakorlatban a 100 alatti párhuzamos műveletek számát kell beállítania. 
  
   A Batch-sablonokkal Azure Batch CLI bővítmény az elérhető magok száma alapján automatikusan növeli az egyidejű műveletek számát, de ez a tulajdonság nem konfigurálható a CLI-ben. 
 
@@ -54,7 +54,7 @@ Több időbe telik, amíg a feladatok nagy részét felvesszük egy feladathoz, 
 
 A következő C# kódrészletek a Batch .NET API-val nagy számú feladat hozzáadásakor konfigurált beállításokat jelenítik meg.
 
-A feladatok átviteli sebességének növeléséhez növelje a BatchClient [maxanalyticsunits](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) tulajdonságának értékét [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Például:
+A feladatok átviteli sebességének növeléséhez növelje a BatchClient [maxanalyticsunits](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) tulajdonságának értékét [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient). Például:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -63,7 +63,7 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
   };
 ...
 ```
-Vegyen fel egy feladatot a feladatba a [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) vagy a [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
+Vegyen fel egy feladatot a feladatba a [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync) vagy a [AddTask](/dotnet/api/microsoft.azure.batch.cloudjob.addtask
 ) metódus megfelelő túlterhelése alapján. Például:
 
 ```csharp
@@ -144,7 +144,7 @@ tasks = list()
 ...
 ```
 
-Adja hozzá a feladat-gyűjteményt a [Task. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)használatával. Állítsa be a `threads` paramétert az egyidejű műveletek számának növeléséhez:
+Adja hozzá a feladat-gyűjteményt a [Task. add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations)használatával. Állítsa be a `threads` paramétert az egyidejű műveletek számának növeléséhez:
 
 ```python
 try:
@@ -199,7 +199,7 @@ except Exception as e:
     raise e
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure Batch CLI-bővítmény [Batch CLI-sablonokkal](batch-cli-templates.md)történő használatáról.
 * További információ a [Batch PYTHON SDK bővítményről](https://pypi.org/project/azure-batch-extensions/).

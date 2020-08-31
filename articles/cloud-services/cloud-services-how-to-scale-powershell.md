@@ -7,12 +7,13 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: memccror
-ms.openlocfilehash: a1945aad12eb34bad1b593878779e1ceb0dae686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c2cec08d86760694ec3c41a98af62c6b86e0a4c9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68359040"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071091"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>Felhőalapú szolgáltatás méretezése a PowerShellben
 
@@ -70,6 +71,6 @@ Az új példányok elindítása után a parancsmag sikeresen visszatér:
 
 A szerepköröket úgy méretezheti, hogy a példányokat ugyanúgy távolítja el. Állítsa be a **Count** paramétert a **set-AzureRole** értékre azon példányok számának megadásához, amelyeket a művelet befejezését követően szeretne használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Nem lehet konfigurálni a Cloud Services automatikus méretezését a PowerShellből. Ehhez tekintse meg [a felhőalapú szolgáltatás automatikus méretezését](cloud-services-how-to-scale-portal.md)ismertető témakört.

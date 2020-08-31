@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eaa2f2bc0ee26a4f543ea0938db6c226a9a6575
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 4c10f0ab4ff7fd8461ef81da67e50f7e5e174104
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049247"
+ms.locfileid: "89068626"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Feltételes hozzáférés: örökölt hitelesítés tiltása
 
@@ -37,7 +37,7 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 1. A **Cloud apps vagy műveletek**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
    1. Válassza a **Kész** lehetőséget.
 1. A **feltételek**  >  **ügyfélalkalmazások**területen állítsa az **Configure** **Igen**értékre.
-   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése.
+   1. Csak a dobozok **Exchange ActiveSync-ügyfelek** és **más ügyfelek**jelölőnégyzetének bejelölése. Az Exchange ActiveSync feltételes hozzáférési szabályzatának Azure-beli üzembe helyezéséhez a felhasználónak globális rendszergazdának is kell lennie.
    1. Válassza a **Kész** lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget.
    1. Válassza a **Kiválasztás** lehetőséget.

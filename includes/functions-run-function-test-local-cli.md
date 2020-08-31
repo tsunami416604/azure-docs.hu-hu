@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 06/04/2020
 ms.locfileid: "84436101"
 ---
-## <a name="run-the-function-locally"></a>Függvény helyi futtatása
+## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
 A függvény futtatásához indítsa el a helyi Azure Functions Runtime-gazdagépet a *LocalFunctionProj* mappából:
 

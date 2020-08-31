@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8e19677adf5fe0f64ad9e1c845f516f81ad89512
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166059"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068533"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
@@ -27,15 +27,19 @@ Android és iOS rendszeren a közvetítők, például a Microsoft Authenticator 
 - **Eszköz azonosítása**: a közvetítő hozzáfér az eszköz tanúsítványához. Ez a tanúsítvány a munkahelyhez való csatlakozáskor jön létre az eszközön.
 - **Alkalmazás-azonosítás ellenőrzése**: amikor egy alkalmazás meghívja a közvetítőt, átadja az átirányítási URL-címét. A közvetítő ellenőrzi az URL-címet.
 
-Ezen funkciók egyikének engedélyezéséhez használja a `WithBroker()` paramétert a metódus meghívásakor `PublicClientApplicationBuilder.CreateApplication` . `.WithBroker()`Alapértelmezés szerint a paraméter értéke TRUE (igaz). 
+Ezen funkciók egyikének engedélyezéséhez használja a `WithBroker()` paramétert a metódus meghívásakor `PublicClientApplicationBuilder.CreateApplication` . `.WithBroker()`Alapértelmezés szerint a paraméter értéke TRUE (igaz).
 
-Az alábbi részekben ismertetett útmutatást követve az [iOS](#brokered-authentication-for-ios) -alkalmazások és az [Android](#brokered-authentication-for-android) -alkalmazások felügyelt hitelesítésének beállítására is használható.
+A (z) .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltatásban a felügyelt hitelesítés telepítése a platformtól függ:
+
+* [iOS-alkalmazások](#brokered-authentication-for-ios)
+* [Android-alkalmazások](#brokered-authentication-for-android)
 
 ## <a name="brokered-authentication-for-ios"></a>Felügyelt hitelesítés iOS rendszerhez
 
-A következő lépésekkel engedélyezheti a Xamarin. iOS-alkalmazásnak, hogy beszéljen a [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) alkalmazással.
+A következő lépésekkel engedélyezheti, hogy a Xamarin. iOS-alkalmazás kommunikáljon a [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) alkalmazással. Ha az iOS 13-at célozza meg, érdemes lehet beolvasni az [Apple megszakított API-változását](./msal-net-xamarin-ios-considerations.md).
 
 ### <a name="step-1-enable-broker-support"></a>1. lépés: a közvetítő támogatásának engedélyezése
+
 Az egyes példányai esetében engedélyeznie kell a közvetítő támogatását `PublicClientApplication` . A támogatás alapértelmezés szerint le van tiltva. Amikor létrehozza `PublicClientApplication` `PublicClientApplicationBuilder` a-t, a `WithBroker()` következő példában látható módon használja a paramétert. `WithBroker()`Alapértelmezés szerint a paraméter értéke TRUE (igaz).
 
 ```csharp
@@ -53,7 +57,6 @@ A kulcstartó-hozzáférés engedélyezéséhez rendelkeznie kell egy kulcstart�
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
-      
      .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
      .Build();
 ```
@@ -61,10 +64,11 @@ var builder = PublicClientApplicationBuilder
 További információ: a [kulcstartók hozzáférésének engedélyezése](msal-net-xamarin-ios-considerations.md#enable-keychain-access).
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3. lépés: a visszahívás kezeléséhez a AppDelegate frissítése
-Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) meghívja a közvetítőt, a közvetítő az osztály metódusával hívja vissza az alkalmazást `OpenUrl` `AppDelegate` . Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Az együttműködés engedélyezéséhez frissítse a `AppDelegate.cs` fájlt a következő módszer felülbírálásához.
+
+Amikor a MSAL.NET meghívja a közvetítőt, a közvetítő az osztály metódusával visszahívja az alkalmazást `OpenUrl` `AppDelegate` . Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Az együttműködés engedélyezéséhez frissítse a *AppDelegate.cs* fájlt a következő módszer felülbírálásához.
 
 ```csharp
-public override bool OpenUrl(UIApplication app, NSUrl url, 
+public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
 {
@@ -73,35 +77,37 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
       AuthenticationContinuationHelper.SetBrokerContinuationEventArgs(url);
       return true;
     }
-    
+
     else if (!AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url))
-    {                
-         return false;                  
+    {
+         return false;
     }
-    
-    return true;     
-}            
+
+    return true;
+}
 ```
 
 Ezt a metódust az alkalmazás minden indításakor meghívja a rendszer. Lehetőség van arra, hogy feldolgozza a közvetítő válaszát, és elvégezze a MSAL.NET által elindított hitelesítési folyamatot.
 
 ### <a name="step-4-set-uiviewcontroller"></a>4. lépés: a UIViewController beállítása ()
-Továbbra is a `AppDelegate.cs` fájlban kell beállítania egy objektum ablakát. A Xamarin iOS esetében általában nincs szükség az objektum ablakának beállítására. Azonban szükség van egy objektum-ablakra, amely a közvetítőtől érkező válaszokat küld és fogad. 
 
-Az objektum ablakának beállítása: 
-1. A `AppDelegate.cs` fájlban állítsa `App.RootViewController` egy új értékre `UIViewController()` . Ez a hozzárendelés biztosítja, hogy a közvetítő hívása tartalmazza a-t `UIViewController` . Ha a beállítás helytelenül van hozzárendelve, a következő hibaüzenet jelenhet meg:
+Továbbra is a *AppDelegate.cs* -fájlban kell beállítania egy objektum ablakát. Általában nem kell beállítania az Xamarin iOS-hez készült Object (objektum) ablakot, de szüksége van egy objektumra a brókertől érkező válaszok küldéséhez és fogadásához.
+
+Az objektum ablakának beállítása:
+
+1. A *AppDelegate.cs* fájlban állítsa `App.RootViewController` egy új értékre `UIViewController()` . Ez a hozzárendelés biztosítja, hogy a közvetítő hívása tartalmazza a-t `UIViewController` . Ha a beállítás helytelenül van hozzárendelve, a következő hibaüzenet jelenhet meg:
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
 1. A `AcquireTokenInteractive` hívásnál használja a (z `.WithParentActivityOrWindow(App.RootViewController)` ), majd adja át a hivatkozást a használni kívánt objektum-ablakra.
 
-    Az `App.cs` szkriptben:
+    A *app.cs*-ben:
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    Az `AppDelegate.cs` szkriptben:
+    A *AppDelegate.cs*-ben:
 
     ```csharp
        LoadApplication(new App());
@@ -117,9 +123,10 @@ Az objektum ablakának beállítása:
     ```
 
 ### <a name="step-5-register-a-url-scheme"></a>5. lépés: URL-séma regisztrálása
-A MSAL.NET URL-címeket használ a közvetítő meghívásához, majd visszaküldi az alkalmazásnak a közvetítő válaszát. A kör alakú útvonal befejezéséhez regisztráljon egy URL-sémát az alkalmazásához a `Info.plist` fájlban.
 
-A `CFBundleURLSchemes` névnek előtagként kell szerepelnie `msauth.` . Kövesse az előtagot a következővel: `CFBundleURLName` . 
+A MSAL.NET URL-címeket használ a közvetítő meghívásához, majd visszaküldi az alkalmazásnak a közvetítő válaszát. A kör alakú útvonal befejezéséhez regisztráljon egy URL-sémát az alkalmazáshoz az *info. plist* fájlban.
+
+A `CFBundleURLSchemes` névnek előtagként kell szerepelnie `msauth.` . Kövesse az előtagot a következővel: `CFBundleURLName` .
 
 Az URL-sémában `BundleId` egyedi módon azonosítja az alkalmazást: `$"msauth.(BundleId)"` . Tehát ha `BundleId` Igen `com.yourcompany.xforms` , akkor az URL-séma `msauth.com.yourcompany.xforms` .
 
@@ -144,9 +151,9 @@ Az URL-sémában `BundleId` egyedi módon azonosítja az alkalmazást: `$"msauth
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>6. lépés: az ügynök azonosítójának hozzáadása a összes szakaszhoz
 
-A MSAL `–canOpenURL:` segítségével ellenőrizhető, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verzióban az Apple zárolta azokat a sémákat, amelyeket az alkalmazás lekérhet. 
+A MSAL `–canOpenURL:` segítségével ellenőrizhető, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verzióban az Apple zárolta azokat a sémákat, amelyeket az alkalmazás lekérhet.
 
-Adja hozzá a `msauthv2` `LSApplicationQueriesSchemes` fájlt a fájl szakaszához `Info.plist` , ahogy az alábbi példában is látható:
+Adja hozzá az `msauthv2` `LSApplicationQueriesSchemes` *info. plist* fájl szakaszához az alábbi példában látható módon:
 
 ```XML
 <key>LSApplicationQueriesSchemes</key>
@@ -156,7 +163,7 @@ Adja hozzá a `msauthv2` `LSApplicationQueriesSchemes` fájlt a fájl szakaszáh
     </array>
 ```
 
-### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>7. lépés: az átirányítási URI regisztrálása az alkalmazás-portálon
+### <a name="step-7-add-a-redirect-uri-to-your-app-registration"></a>7. lépés: átirányítási URI hozzáadása az alkalmazás regisztrálásához
 
 A közvetítő használatakor az átirányítási URI-nak külön követelménye van. Az átirányítási URI formátumának a következő formátumúnak kell _lennie_ :
 
@@ -167,59 +174,46 @@ $"msauth.{BundleId}://auth"
 Bemutatunk egy példát:
 
 ```csharp
-public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
+public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 ```
 
-Figyelje meg, hogy az átirányítási URI megegyezik a `CFBundleURLSchemes` fájlban szereplő névvel `Info.plist` .
+Figyelje meg, hogy az átirányítási URI megegyezik az `CFBundleURLSchemes` *info. plist* fájlban szereplő névvel.
 
-### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>8. lépés: Győződjön meg arról, hogy az átirányítási URI regisztrálva van az alkalmazásban
+Adja hozzá az átirányítási URI-t az alkalmazás regisztrálásához a [Azure Portalban](https://portal.azure.com). Megfelelően formázott átirányítási URI létrehozásához használja a Azure Portal **Alkalmazásregisztrációk** , hogy létrehozza a felügyelt átirányítási URI-t a köteg-azonosítóból.
 
-Az átirányítási URI-t regisztrálni kell az alkalmazás [regisztrációs portálján](https://portal.azure.com) érvényes átirányítási URI-ként. 
+**Az átirányítási URI előállítása:**
 
-Az alkalmazás-regisztrációs portál új felhasználói élményt nyújt a felügyelt válasz URI-AZONOSÍTÓjának kiszámításához. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk** a regisztrált alkalmazás >
+1. **Hitelesítés**kiválasztása  >  **Add a platform**  >  **iOS/MacOS** platform hozzáadása
+1. Adja meg a köteg AZONOSÍTÓját, majd válassza a **Konfigurálás**lehetőséget.
 
-Az átirányítási URI kiszámítása:
+    Másolja az **átirányítási URI** -szövegmezőben megjelenő generált ÁTirányítási URI-t a kódban való felvételhez:
 
-1. Az alkalmazás-regisztrációs portálon válassza **Authentication**  >  **a hitelesítés kipróbálom az új felhasználói élményt**.
-
-   ![Próbálja ki az új alkalmazás-regisztrációs élményt](media/msal-net-use-brokers-with-xamarin-apps/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
-
-1. Válassza **a platform hozzáadása**lehetőséget.
-
-   ![Platform hozzáadása](media/msal-net-use-brokers-with-xamarin-apps/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
-
-1. Ha a platformok listája támogatott, válassza az **iOS**lehetőséget.
-
-   ![Az iOS konfigurálása](media/msal-net-use-brokers-with-xamarin-apps/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
-
-1. Adja meg a köteg AZONOSÍTÓját a kérésnek megfelelően, majd válassza a **Konfigurálás**lehetőséget.
-
-   ![Adja meg a köteg AZONOSÍTÓját](media/msal-net-use-brokers-with-xamarin-apps/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
-
-Ha elkészült a lépésekkel, a rendszer az átirányítási URI-t számítja ki.
-
-![Átirányítási URI másolása](media/msal-net-use-brokers-with-xamarin-apps/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+    :::image type="content" source="media/msal-net-use-brokers-with-xamarin-apps/portal-01-ios-platform-settings.png" alt-text="iOS-platform beállításai a generált átirányítási URI-val Azure Portal":::
+1. Az átirányítási URI létrehozásának befejezéséhez válassza a **kész** lehetőséget.
 
 ## <a name="brokered-authentication-for-android"></a>Felügyelt hitelesítés Android rendszerhez
 
 ### <a name="step-1-enable-broker-support"></a>1. lépés: a közvetítő támogatásának engedélyezése
 
-A közvetítői támogatás PublicClientApplication alapon engedélyezett. Alapértelmezés szerint le van tiltva. Használja a `WithBroker()` paramétert (alapértelmezés szerint igaz értékre állítva), amikor létrehozza a-t `IPublicClientApplication` `PublicClientApplicationBuilder` .
+A közvetítői támogatás alapja az engedélyezett `PublicClientApplication` . Alapértelmezés szerint le van tiltva. Használja a `WithBroker()` paramétert (alapértelmezés szerint igaz értékre állítva), amikor létrehozza a-t `IPublicClientApplication` `PublicClientApplicationBuilder` .
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
-                .WithRedirectUri(redirectUriOnAndroid) //(see step 4 below)
+                .WithRedirectUri(redirectUriOnAndroid) // See step #4
                 .Build();
 ```
 
 ### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>2. lépés: a visszahívást kezelő AppDelegate frissítése
 
-Ha a MSAL.NET meghívja a közvetítőt, akkor a közvetítő a OnActivityResult () metódussal hívja vissza az alkalmazást. Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak az eredményt MSAL.NET kell irányítani.
-Ezt úgy érheti el, ha az alábbi módon felülbírálja az eredményt a `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` OnActivityResult () metódus felülbírálásával:
+Ha a MSAL.NET meghívja a közvetítőt, akkor a közvetítő a metódussal hívja vissza az alkalmazást `OnActivityResult()` . Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak az eredményt MSAL.NET kell irányítani.
 
-```CSharp
+A metódust az itt látható módon irányítsa át a `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` metódusnak `OnActivityResult()` :
+
+```csharp
 protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 {
    base.OnActivityResult(requestCode, resultCode, data);
@@ -231,43 +225,37 @@ Ezt a metódust a rendszer minden alkalommal meghívja a közvetítő alkalmazá
 
 ### <a name="step-3-set-an-activity"></a>3. lépés: tevékenység beállítása
 
-A felügyelt hitelesítéshez meg kell adnia egy tevékenységet, hogy a MSAL képes legyen elküldeni és fogadni a brókertől kapott választ.
+A felügyelt hitelesítés engedélyezéséhez állítson be egy tevékenységet, hogy a MSAL képes legyen elküldeni és fogadni a közvetítőtől érkező és onnan érkező választ. Ehhez adja meg a fölérendelt objektum tevékenységét (általában a `MainActivity` ) `WithParentActivityOrWindow(object parent)` .
 
-Ehhez meg kell adnia a tevékenységet (általában a MainActivity) a `WithParentActivityOrWindow(object parent)` szülő objektumként. 
+Például a következő hívásban `AcquireTokenInteractive()` :
 
-**Például:**
-
-A jogkivonat beszerzése hívásban:
-
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow((Activity)context))
              .ExecuteAsync();
 ```
 
-### <a name="step-4-register-your-redirecturi-in-the-application-portal"></a>4. lépés: a RedirectUri regisztrálása az alkalmazás-portálon
+### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>4. lépés: átirányítási URI hozzáadása az alkalmazás regisztrálásához
 
-A MSAL URL-címekkel hívja meg a közvetítőt, majd térjen vissza az alkalmazáshoz. Ennek a menetnek a befejezéséhez regisztrálnia kell egy URL-sémát az alkalmazáshoz. Ezt az átirányítási URI-t regisztrálni kell az Azure AD-alkalmazás regisztrációs portálján az alkalmazás érvényes átirányítási URI-JAként.
+A MSAL URL-címeket használ a közvetítő meghívásához, majd visszatér az alkalmazáshoz. Ennek a menetnek a befejezéséhez regisztrálnia kell egy **átirányítási URI** -t az alkalmazáshoz a [Azure Portal](https://portal.azure.com)használatával.
 
-
-Az alkalmazáshoz szükséges átirányítási URI az APK aláírásához használt tanúsítványtól függ.
+Az alkalmazás átirányítási URI formátuma az APK aláírásához használt tanúsítványtól függ. Például:
 
 ```
-Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
+msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
 ```
 
-Az URI utolsó része, a, az az `hgbUYHVBYUTvuvT&Y6tr554365466=` aláírás, amelyet az apk aláír, Base64 kódolással.
-Ha azonban az alkalmazás fejlesztési fázisában a Visual Studióval végzi a kód hibakeresését anélkül, hogy az apk-t egy adott tanúsítvánnyal aláírja, a Visual Studio a hibakeresési célból aláírja az apk-t, így az APK egyedi aláírást ad a számítógépnek, amelyre az épül. Így minden alkalommal, amikor az alkalmazást egy másik gépen hozza létre, frissítenie kell az átirányítási URI-t az alkalmazás kódjában, valamint az alkalmazás regisztrációját a Azure Portal a MSAL való hitelesítéshez. 
+Az URI utolsó része, a ( `hgbUYHVBYUTvuvT&Y6tr554365466=` ) az az aláírás Base64 kódolású verziója, amelyhez az apk van aláírva. Ha az alkalmazást a Visual Studióban fejleszti, és az APK egy adott tanúsítvánnyal való aláírása nélkül végzi a kód hibakeresését, a Visual Studio hibakeresési célból aláírja az APK-ot. Ha a Visual Studio ily módon aláírja az APK-t, a rendszer egyedi aláírást biztosít a beépített gépre. Így minden alkalommal, amikor az alkalmazást egy másik gépen hozza létre, frissítenie kell az átirányítási URI-t az alkalmazás kódjában, valamint az alkalmazás regisztrációját a Azure Portal a MSAL való hitelesítéshez.
 
-A hibakeresés során előfordulhat, hogy a MSAL-kivétel (vagy a naplófájl) helytelenül van megadva az átirányítási URI-nak. **Ez a kivétel azt az átirányítási URI-t is megadja, amelyet** a jelenleg hibakeresés alatt álló géppel kell használnia. Ezzel az átirányítási URI-val továbbra is folytathatja a fejlesztést.
+A hibakeresés során előfordulhat, hogy a MSAL-kivétel (vagy a naplófájl) helytelenül van megadva az átirányítási URI-nak. **A kivétel vagy a napló üzenet azt is jelzi, hogy milyen átirányítási URI-t kell használnia** az aktuálisan felkeresett géppel. A megadott átirányítási URI használatával folytathatja az alkalmazás fejlesztését, feltéve, hogy az átirányítási URI-t a kódban frissíti, és hozzáadja a megadott átirányítási URI-t az alkalmazás regisztrálásához a Azure Portal.
 
-Ha készen áll a kód véglegesítésére, frissítse az átirányítási URI-t a kódban és az alkalmazás regisztrációjában a Azure Portalban, hogy használja a tanúsítvány aláírását, amelyet a (z) APK-val fog aláírni.
+Ha készen áll a kód véglegesítésére, frissítse az átirányítási URI-t a kódban, és az alkalmazás regisztrációját a Azure Portalban, hogy az a tanúsítvány aláírását használja, amellyel aláírja az APK-t.
 
-A gyakorlatban ez azt jelenti, hogy regisztrálnia kell egy átirányítási URI-t a csoport minden tagjához, valamint egy átirányítási URI-t az APK éles aláírt verziójához.
+A gyakorlatban ez azt jelenti, hogy meg kell fontolnia egy átirányítási URI hozzáadását a fejlesztői csapat minden tagjához, *valamint* egy ÁTirányítási URI-t az apk éles aláírt verziójához.
 
-Saját maga is kiszámíthatja az aláírást, hasonlóan a MSAL: 
+Saját maga is kiszámíthatja az aláírást, hasonlóan ahhoz, ahogyan a MSAL:
 
-```CSharp
+```csharp
    private string GetRedirectUriForBroker()
    {
       string packageName = Application.Context.PackageName;
@@ -299,12 +287,80 @@ Saját maga is kiszámíthatja az aláírást, hasonlóan a MSAL:
    }
 ```
 
-Azt is megteheti, hogy az alábbi parancsokkal megszerezheti a csomag aláírását:
+Azt is megteheti **, hogy** az alábbi parancsokkal megszerezheti a csomag aláírását:
 
-Windows esetén: `keytool.exe -list -v -keystore "%LocalAppData%\Xamarin\Mono for Android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
+* Windows:
+    ```console
+    keytool.exe -list -v -keystore "%LocalAppData%\Xamarin\Mono for Android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+    ````
+* MacOS
+    ```console
+    keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
+    ````
 
-Mac rendszer esetén: `keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
+### <a name="step-5-optional-fall-back-to-the-system-browser"></a>5. lépés (nem kötelező): a rendszerböngészőbe való visszatérés visszaesik
 
-## <a name="next-steps"></a>További lépések
+Ha a MSAL a közvetítő használatára van konfigurálva, de a közvetítő nincs telepítve, a MSAL webes nézet (böngésző) használatával fog visszaesni. A MSAL az eszközön az alapértelmezett rendszerböngészővel kísérli meg a hitelesítést, mert az átirányítási URI konfigurálva van a közvetítőhöz, és a rendszerböngésző nem tudja, hogyan használhatja azt a MSAL való visszatéréshez. A hiba elkerüléséhez beállíthat egy *leképezési szűrőt* a 4. lépésben használt közvetítő átirányítási URI-val.
+
+Módosítsa az alkalmazás jegyzékfájlját a leképezési szűrő hozzáadásához:
+
+```xml
+<!-- NOTE the SLASH (required) that prefixes the signature value in the path attribute.
+     The signature value is the Base64-encoded signature discussed above. -->
+<intent-filter>
+      <data android:scheme="msauth"
+                    android:host="Package Name"
+                    android:path="/Package Signature"/>
+```
+
+Ha például van egy átirányítási URI `msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=` -ja, a jegyzékfájlnak a következő XML-kódrészlethez hasonlóan kell kinéznie.
+
+Az értékben lévő aláírás előtt a Forward-Slash ( `/` ) `android:path` értéket **kötelező megadni**.
+
+```xml
+<!-- NOTE the SLASH (required) that prefixes the signature value in the path attribute.
+     The signature value is the Base64-encoded signature discussed above. -->
+<intent-filter>
+      <data android:scheme="msauth"
+                    android:host="com.microsoft.xforms.testApp"
+                    android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
+```
+
+Másik lehetőségként beállíthatja, hogy a MSAL a beágyazott böngészőre térjen vissza, amely nem az átirányítási URI-ra támaszkodik:
+
+```csharp
+.WithUseEmbeddedWebUi(true)
+```
+
+## <a name="troubleshooting-tips-for-android-brokered-authentication"></a>Hibaelhárítási tippek az Android rendszerű felügyelt hitelesítéshez
+
+Íme néhány tipp a probléma elkerüléséhez, amikor felügyelt hitelesítést hajt végre az Androidon:
+
+- **Átirányítási URI** – adjon hozzá egy átirányítási URI-t az alkalmazás regisztrálásához a [Azure Portalban](https://portal.azure.com/). Egy hiányzó vagy helytelen átirányítási URI a fejlesztők által észlelt gyakori probléma.
+- **Broker verziója** – telepítse a Broker-alkalmazások minimálisan szükséges verzióját. A két alkalmazás közül bármelyik használható felügyelt hitelesítéshez Androidon.
+  - [Intune céges portál](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) (5.0.4689.0 vagy újabb verzió)
+  - [Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) (6.2001.0140 vagy újabb verzió).
+- **Közvetítői prioritás** – a MSAL az eszközön *telepített első közvetítővel* kommunikál, ha több közvetítő van telepítve.
+
+    Példa: Ha először telepíti a Microsoft Authenticatort, majd telepíti a Intune Céges portál, a felügyelt hitelesítés *csak* a Microsoft Authenticator történik.
+- **Naplók** – ha a közvetítő hitelesítéssel kapcsolatos problémába ütközik, a közvetítő naplófájljainak megtekintése segíthet az OK diagnosztizálásában.
+  - Microsoft Authenticator naplók megtekintése:
+
+    1. Kattintson a menü gombra az alkalmazás jobb felső sarkában.
+    1. Válassza a **Súgó**  >  **Küldés naplók**  >  **megtekintése naplók**lehetőséget.
+    1. Válassza az **összes másolása** elemet a közvetítő naplóinak az eszköz vágólapra másolásához.
+
+    Ezekkel a naplókkal a legjobb megoldás, ha e-mailben küldi el őket, és megtekinti őket a fejlesztői gépen. Előfordulhat, hogy könnyebben elemezni szeretné a számítógépen lévő naplókat az eszköz helyett. Az Androidon egy tesztelési szerkesztőt is használhat, amely szövegfájlként menti a naplókat, majd egy USB-kábellel másolja a fájlt a számítógépre.
+
+  - Intune Céges portál naplók megtekintése:
+
+    1. Kattintson az alkalmazás bal felső sarkában található menü gombra.
+    1. **Beállítások**  >  **diagnosztikai** adatelemének kiválasztása
+    1. Válassza a **naplók másolása** lehetőséget a Broker-naplók eszköz SD-kártyára másolásához.
+    1. Csatlakoztassa az eszközt egy számítógéphez egy USB-kábellel a fejlesztői gépen található naplók megtekintéséhez.
+
+    A naplók segítségével megkeresheti a hitelesítési kísérleteket a korrelációs AZONOSÍTÓn keresztül. A korrelációs azonosító minden hitelesítési kérelemhez csatolva van. A Microsoft Identity platform hitelesítési végpontja által visszaadott hibák kereséséhez keresse meg a következőt: `AADSTS` .
+
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [univerzális Windows-platform és a MSAL.net használatának szempontjairól](msal-net-uwp-considerations.md).

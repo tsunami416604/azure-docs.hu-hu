@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/03/2019
-ms.openlocfilehash: 0c03eb9d30d204cbfb7fcd8971dd84f2ba5a7737
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bce1f00603d9304fc544fb92d4cc5f1a429504ed
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039177"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069000"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok indítása
 
@@ -32,7 +33,7 @@ Az első lehetséges kimeneti esemény időbélyege az aktuális időpontnál na
 
 A Azure Portalban navigáljon a feladatokhoz, és válassza a **Start** lehetőséget az Áttekintés oldalon. Válassza ki a **feladatok kimenetének kezdési idejét** , majd kattintson a **Start**gombra.
 
-Válassza ki az egyik lehetőséget a **feladatok kimenetének kezdési idejére**. A beállítások *mostantól*, az *Egyéni*és a, ha a feladatot korábban futtatták, a *legutóbbi leállítás*után. A fenti beállításokkal kapcsolatos további információkért lásd a fenti lépéseket.
+Válassza ki az egyik lehetőséget a **feladatok kimenetének kezdési idejére**. A beállítások *mostantól*, az *Egyéni*és a, ha a feladatot korábban futtatták, a  *legutóbbi leállítás*után. A fenti beállításokkal kapcsolatos további információkért lásd a fenti lépéseket.
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -56,7 +57,7 @@ Három lehetőség áll rendelkezésre a **OutputStartMode**: *JobStartTime*, *C
 
 A parancsmaggal kapcsolatos további információkért `Start-AzStreamAnalyitcsJob` tekintse meg a [Start-AzStreamAnalyticsJob referenciát](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)

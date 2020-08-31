@@ -7,16 +7,20 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266299"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072298"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Windows rendszerű virtuális gép létrehozása Resource Manager-sablonból
 
 Megtudhatja, hogyan hozhat létre Windows rendszerű virtuális gépeket Azure Resource Manager sablonnal, és hogyan Azure PowerShell az Azure Cloud shellben. A cikkben használt sablon egyetlen alhálózattal rendelkező, Windows Server rendszert futtató virtuális gépet helyez üzembe egy új virtuális hálózaton. Linux rendszerű virtuális gépek létrehozásával kapcsolatban lásd: [Linux rendszerű virtuális gép létrehozása Azure Resource Manager-sablonokkal](../linux/create-ssh-secured-vm-from-template.md).
+
+Egy másik lehetőség a sablon üzembe helyezése a Azure Portal. A sablon megnyitásához a portálon válassza az **üzembe helyezés az Azure** -ban gombot.
+
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -64,7 +68,7 @@ Néhány további információforrás:
 
 Az előző parancsfájl utolsó PowerShell-parancsa megjeleníti a virtuális gép nevét. A virtuális géphez való kapcsolódáshoz lásd: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](./connect-logon.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha probléma merült fel az üzembe helyezéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítását Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
 - Megtudhatja, hogyan hozhat létre és kezelhet virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

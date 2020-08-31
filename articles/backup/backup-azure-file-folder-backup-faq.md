@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: ca2753e4d6da7e2e3079f234a3facac27fd5f098
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874622"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144464"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
@@ -80,7 +80,7 @@ Windows rendszerű gép átnevezése esetén az összes jelenleg konfigurált bi
 
 * Regisztrálnia kell az új gép nevét a Backup-tárolóban.
 * Amikor regisztrálja az új nevet a tárolóban, az első művelet egy *teljes* biztonsági mentés.
-* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [További információk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [További információ](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Mi a fájl elérési útjának maximális hossza a biztonsági mentéshez?
 
@@ -109,7 +109,7 @@ A gyorsítótár mappájának mérete határozza meg a biztonsági mentéshez ha
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Hogyan ellenőrizhető, hogy a kaparós mappa érvényes és elérhető-e?
 
-1. Alapértelmezés szerint a Scratch mappa a következő helyen található:`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+1. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Győződjön meg arról, hogy a mappa helyének elérési útja megegyezik az alább látható beállításkulcs-bejegyzések értékeivel:
 
     | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
@@ -123,7 +123,7 @@ A gyorsítótár mappájának mérete határozza meg a biztonsági mentéshez ha
 
     ```Net stop obengine```
 2. Ha beállította a rendszerállapot biztonsági mentését, nyissa meg a Lemezkezelés segédprogramot, és válassza le a (z) formátumú lemez (eke) t a következő formátumban: `"CBSSBVol_<ID>"` .
-3. Alapértelmezés szerint a Scratch mappa a következő helyen található:`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+3. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Másolja a teljes `\Scratch` mappát egy másik, elegendő lemezterülettel rendelkező meghajtóra. Győződjön meg arról, hogy a tartalom másolása megtörtént, nincs áthelyezve.
 5. Frissítse a következő beállításjegyzékbeli bejegyzéseket az újonnan áthelyezett Scratch mappa elérési útjával.
 
@@ -163,7 +163,7 @@ A gyorsítótár mappája és a metaadatok virtuális merevlemeze nem rendelkezi
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Be lehet állítani a biztonsági mentéshez használt sávszélesség mennyiségét?
 
-Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információk](backup-windows-with-mars-agent.md#enable-network-throttling).
+Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információ](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -199,7 +199,7 @@ Ha ugyanazzal a jelszóval rendelkezik (amelyet a regisztráció során megadott
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>A biztonsági mentési feladatok végrehajtása sikertelen volt, vagy hosszú ideje nem fut. Megtartom a megőrzési időszakot. Továbbra is visszaállíthatók?
 
-Biztonsági intézkedésként a Azure Backup a legutóbbi helyreállítási pontot is megőrzi, még akkor is, ha a megőrzési időszak lejárt. Ha a biztonsági mentések folytatódnak, és az új helyreállítási pontok elérhetővé válnak, a rendszer eltávolítja a régebbi helyreállítási pontot a megadott megőrzési időtartam alapján.
+Biztonsági szempontból a Azure Backup a legutóbbi helyreállítási pontot fogja megőrizni, még akkor is, ha a megőrzési időszak lejárt. Ha a biztonsági mentések folytatódnak, és az új helyreállítási pontok elérhetővé válnak, a rendszer eltávolítja a régebbi helyreállítási pontot a megadott megőrzési időtartam alapján.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Mi történik, ha megszakítok egy folyamatban lévő visszaállítási feladatot?
 

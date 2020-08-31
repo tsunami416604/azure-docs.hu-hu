@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652638"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144889"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környez
 
 | Környezet | Előnyök | Hátrányok |
 | --- | --- | --- |
-| [Felhőalapú Azure Machine Learning számítási példány (előzetes verzió)](#compute-instance) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Felhőalapú Azure Machine Learning számítási példány](#compute-instance) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
 | [Azure Databricks](#aml-databricks) | Ideális megoldás a méretezhető Apache Spark platformon nagy léptékű, intenzív gépi tanulási munkafolyamatok futtatására. | A kísérleti gépi tanulás vagy a kisebb léptékű kísérletek és munkafolyamatok meggyilkolása. További költségek Azure Databricksért. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/databricks/). |
 | [A Data Science Virtual Machine (DSVM)](#dsvm) | A felhőalapú számítási példányhoz hasonlóan (a Python és az SDK előre telepítve van), de további népszerű adatelemzési és gépi tanulási eszközökkel előre telepítve van. Egyszerűen méretezhető és kombinálható más egyéni eszközökkel és munkafolyamatokkal. | Lassabban megkezdhető a felhőalapú számítási példányhoz képest. |
@@ -55,7 +55,7 @@ A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter 
 
 ## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>Saját felhőalapú számítási példány
 
-A Azure Machine Learning [számítási példány (előzetes verzió)](concept-compute-instance.md) egy biztonságos felhőalapú Azure-munkaállomás, amely Jupyter notebook-kiszolgálóval, JupyterLab és teljes mértékben előkészített ml-környezettel biztosítja az adatszakértőket.
+A Azure Machine Learning [számítási példány](concept-compute-instance.md) egy biztonságos felhőalapú Azure-munkaállomás, amely Jupyter notebook-kiszolgálóval, JupyterLab és teljes mértékben előkészített ml-környezettel biztosítja az adatszakértőket.
 
 A számítási példányok telepítése és konfigurálása nem szükséges.  Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt az [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
 
@@ -63,7 +63,7 @@ További információ a számítási példányokról, beleértve a csomagok tele
 
 A számítási költségek kiszámításához [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
-## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Adatelemzési virtuális gép
+## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
 A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési munkához készült, amely előre konfigurálva van a következővel:
 
@@ -156,7 +156,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
     Ez a példa egy, a Python 3.7.7 használatával létrehozott környezetet hoz létre, de az egyes alverziókat is kiválaszthatja. Előfordulhat, hogy az SDK kompatibilitása bizonyos főverziók esetében nem garantált (3,5 + ajánlott), és ha hibát tapasztal, érdemes egy másik verziót/alverziót kipróbálni az anaconda-környezetben. A környezet létrehozása több percet is igénybe vehet, miközben az összetevők és csomagok letöltődnek.
 
-1. Futtassa az alábbi parancsokat az új környezetben a környezet-specifikus IPython-kernelek engedélyezéséhez. Ez biztosítja a várt kernel-és csomag-importálási viselkedést a Jupyter-jegyzetfüzetek anaconda-környezeteken belüli használata esetén:
+1. Futtassa az alábbi parancsokat az új környezetben, hogy engedélyezze a környezet-specifikus I Python-kerneleket. Ez biztosítja a várt kernel-és csomag-importálási viselkedést a Jupyter-jegyzetfüzetek anaconda-környezeteken belüli használata esetén:
 
     ```bash
     conda install notebook ipykernel
@@ -306,10 +306,10 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
    |SDK- &nbsp; csomag &nbsp; extrái|Forrás|PyPi &nbsp; neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks| Python-tojás vagy PyPI feltöltése | azureml – SDK [databricks]|
-   |Databricks esetében –<br> automatizált ML-képességek| Python-tojás vagy PyPI feltöltése | azureml – SDK [automl]|
+   |Databricks esetében –<br> automatizált ML-képességek| Python-tojás vagy PyPI feltöltése | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Más SDK-extrák nem telepíthetők. Válassza ki a fenti beállítások közül a [databricks] vagy a [automl] lehetőséget.
+   > Más SDK-extrák nem telepíthetők. Válassza ki az előző beállítások közül az egyiket [ `databricks` ] vagy [ `automl` ].
 
    * Ne válassza **az Automatikus csatolás az összes fürthöz**lehetőséget.
    * Válassza a  **csatolás** elemet a fürt neve mellett.
@@ -386,7 +386,7 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
     Ez a kód a konfigurációs fájlt a *. azureml/config.js* fájlba írja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése

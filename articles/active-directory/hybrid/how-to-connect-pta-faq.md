@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac36650e285c371457b89f7a362b51fa74d7d47c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358293"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071431"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -113,7 +113,7 @@ Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommun
 
 Amíg egy átmenő hitelesítési ügynök fut, aktív marad, és folyamatosan kezeli a felhasználói bejelentkezési kérelmeket. Ha el kívánja távolítani a hitelesítési ügynököt, lépjen a **Vezérlőpult – > programok > programok és szolgáltatások elemre** , és távolítsa el mind a **Microsoft Azure ad csatlakozási hitelesítési ügynököt** , mind a **Microsoft Azure ad összekapcsolási ügynök frissítési** programját.
 
-Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök **inaktívként**jelenik meg. Ez a _várt_érték. A hitelesítési ügynök néhány nap múlva automatikusan el lesz dobva a listából.
+Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök **inaktívként**jelenik meg. Ez a _várt_érték. A hitelesítési ügynök 10 nap elteltével automatikusan el lesz dobva a listából.
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>Már használom a AD FS az Azure AD-be való bejelentkezéshez. Hogyan váltani átmenő hitelesítésre?
 
@@ -174,7 +174,7 @@ A június 15-től 2015-ig létrehozott bérlők alapértelmezett viselkedése az
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
 - [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): megkezdheti az Azure ad átmenő hitelesítését.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.

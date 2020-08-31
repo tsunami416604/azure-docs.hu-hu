@@ -234,13 +234,23 @@
       href: custom-disaster-recovery.md
     - name: Aszinkron REST-műveletek követése
       href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Áthelyezés
+      items:
+        - name: Rendszertémakörök áthelyezése régiók között
+          href: move-system-topics-across-regions.md
+        - name: Egyéni témakörök áthelyezése régiók között
+          href: move-custom-topics-across-regions.md
+        - name: Tartományok áthelyezése régiók között
+          href: move-domains-across-regions.md
+        - name: Partnernévterek áthelyezése régiók között
+          href: move-partner-namespaces-across-regions.md
     - name: Biztonságos
       items:
         - name: Privát végpontok konfigurálása
           href: configure-private-endpoints.md
         - name: IP-tűzfal konfigurálása
           href: configure-firewall.md
-        - name: Biztonságos webhook AAD-vel
+        - name: Biztonságos webhook az Azure Active Directoryval
           href: secure-webhook-delivery.md
         - name: Esemény kézbesítése felügyelt identitással
           href: managed-service-identity.md

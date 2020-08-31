@@ -11,8 +11,8 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191037"
 ---
-Frissítse *az\\\_init\_. HttpExample-t, hogy az megfeleljen a következő kódnak, adja hozzá a paramétert a függvény definíciójában és az utasításban.\_\_* `msg` `msg.set(name)` `if name:`
+Frissítse *az \\ \_ \_ init \_ \_ . HttpExample* -t, hogy az megfeleljen a következő kódnak, adja hozzá a `msg` paramétert a függvény definíciójában és `msg.set(name)` az `if name:` utasításban.
 
 :::code language="python" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-A `msg` paraméter a (z [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest)) példánya. A `set` metódus egy karakterlánc-üzenetet ír a várólistába, ebben az esetben az URL-lekérdezési karakterláncban szereplő függvénynek átadott nevet.
+A paraméter a (z `msg` ) példánya [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) . A `set` metódus egy karakterlánc-üzenetet ír a várólistába, ebben az esetben az URL-lekérdezési karakterláncban szereplő függvénynek átadott nevet.

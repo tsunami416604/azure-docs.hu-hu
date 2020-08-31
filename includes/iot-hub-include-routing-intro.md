@@ -39,7 +39,7 @@ Az oktatóanyag 1. és 2. részének végrehajtásához hajtsa végre a követke
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az oktatóanyag 1. részében:
-  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 * Az oktatóanyag 2. részében:
   - El kell végeznie az oktatóanyag 1. részét, és az erőforrások továbbra is elérhetők maradnak.

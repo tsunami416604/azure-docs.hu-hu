@@ -11,13 +11,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78190915"
 ---
-A C# Class Library-projektekben a kötések kötési attribútumokként vannak definiálva a Function metódusban. A függvények által igényelt *function. JSON* fájl ezután automatikusan létrejön ezen attribútumok alapján.
+A C# Class Library-projektekben a kötések kötési attribútumokként vannak definiálva a Function metódusban. A függvények által igényelt fájl *function.js* automatikusan létrejön ezen attribútumok alapján.
 
-Nyissa meg a *HttpExample.cs* projektfájlt, és adja hozzá a következő `Run` paramétert a metódus-definícióhoz:
+Nyissa meg a *HttpExample.cs* projektfájlt, és adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Ebben az esetben a kimenet egy nevű `outqueue`tárolási várólista. A Storage-fiókhoz tartozó kapcsolatok karakterláncát a `StorageAccountAttribute`következő értékre állítja be:. Ez az attribútum azt a beállítást jelzi, amely a Storage-fiókhoz tartozó kapcsolatok sztringjét tartalmazza, és alkalmazható az osztály, a metódus vagy a paraméter szintjén. Ebben az esetben kihagyhatja `StorageAccountAttribute` , mert már használja az alapértelmezett Storage-fiókot.
+A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Ebben az esetben a kimenet egy nevű tárolási várólista `outqueue` . A Storage-fiókhoz tartozó kapcsolatok karakterláncát a következő értékre állítja be: `StorageAccountAttribute` . Ez az attribútum azt a beállítást jelzi, amely a Storage-fiókhoz tartozó kapcsolatok sztringjét tartalmazza, és alkalmazható az osztály, a metódus vagy a paraméter szintjén. Ebben az esetben kihagyhatja, `StorageAccountAttribute` mert már használja az alapértelmezett Storage-fiókot.
 
 A futtatási metódus definíciójának ekkor a következőhöz hasonlóan kell kinéznie:  
 

@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 1c0620875e7da4582156080c4a52fd6fbe0e573c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 59d098f1ff0f78e37601544619c603b776e0cf22
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700246"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071754"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>Exchange-társ létrehozása vagy módosítása a PowerShell használatával
 
@@ -49,12 +50,12 @@ Ha szeretné, ezt az útmutatót az Azure [Portalon](howto-exchange-portal.md)v�
 
 [!INCLUDE [peering-exchange-delete](./includes/delete.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közvetlen társrendszer létrehozása vagy módosítása a PowerShell használatával](howto-direct-powershell.md)
 * [Örökölt közvetlen társítás átalakítása Azure-erőforrásra a PowerShell használatával](howto-legacy-direct-powershell.md)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```powershell
