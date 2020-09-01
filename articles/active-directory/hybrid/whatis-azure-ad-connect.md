@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631727"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278836"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 
@@ -26,7 +26,7 @@ A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid ide
 - [Átmenő hitelesítés](how-to-connect-pta.md) – a bejelentkezési módszer, amely lehetővé teszi, hogy a felhasználók ugyanazt a jelszót használják a helyszínen és a felhőben, de nincs szükség összevont környezet további infrastruktúrájának használatára.
 - [Összevonás-integráció](how-to-connect-fed-whatis.md) – az összevonás a Azure ad Connect választható része, és a hibrid környezetek helyszíni AD FS-infrastruktúrával való konfigurálására használható. Emellett AD FS felügyeleti képességeket is biztosít, mint például a tanúsítvány megújítása és a AD FS-kiszolgáló további telepítései.
 - [Szinkronizálás](how-to-connect-sync-whatis.md) – a felhasználók, csoportok és egyéb objektumok létrehozásához felelős.  Továbbá a helyszíni felhasználók és csoportok személyazonossági információinak biztosítása a felhővel egyező.  Ez a szinkronizálás jelszó-kivonatokat is tartalmaz.
-- [Állapot-figyelés](whatis-hybrid-identity-health.md) – a Azure ad Connect Health robusztus figyelést biztosíthat, és a Azure Portal központi helyet biztosíthat a tevékenység megtekintéséhez. 
+- [Állapot-figyelés]() – a Azure ad Connect Health robusztus figyelést biztosíthat, és a Azure Portal központi helyet biztosíthat a tevékenység megtekintéséhez. 
 
 
 ![Mi az az Azure AD Connect?](./media/whatis-hybrid-identity/arch.png)
@@ -76,4 +76,4 @@ Részletes [használati metrikák](how-to-connect-health-adfs.md#usage-analytics
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
 - [Testreszabott beállítások](how-to-connect-install-custom.md)
-- [Az Azure AD Connect Health-ügynökök telepítése](how-to-connect-health-agent-install.md) 
+- [Az Azure AD Connect Health-ügynökök telepítése](how-to-connect-health-agent-install.md)

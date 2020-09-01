@@ -12,12 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a79078977d25c55edfb4ad72bbd4602a073231f6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117889"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277935"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rövid útmutató: a Azure Active Directory (Azure AD) bérlőt használó alkalmazások listájának megtekintése
 
@@ -27,7 +27,7 @@ Az Azure AD használatának első lépései a szervezet által használt alkalma
 
 Az Azure AD-bérlőben regisztrált alkalmazások megtekintéséhez a következőkre lesz szüksége:
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Egy Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 >[!IMPORTANT]
 >Az ebben a rövid útmutatóban ismertetett lépések teszteléséhez nem éles környezet használatát javasoljuk.

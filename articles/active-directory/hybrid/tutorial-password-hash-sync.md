@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66474014"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279023"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag: egyetlen AD-erdő integrálása a jelszó-kivonatolási szinkronizálással (PHS)
 
@@ -29,8 +29,8 @@ A következő oktatóanyag végigvezeti a hibrid identitási környezet létreho
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek
-- [Hyper-V-](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) t futtató számítógép.  Ezt a [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) vagy [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) rendszerű számítógépeken javasolt elvégezni.
-- Egy [külső hálózati adapter](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , amely lehetővé teszi, hogy a virtuális gép kommunikáljon az internettel.
+- [Hyper-V-](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) t futtató számítógép.  Ezt a [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) vagy [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) rendszerű számítógépeken javasolt elvégezni.
+- Egy [külső hálózati adapter](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , amely lehetővé teszi, hogy a virtuális gép kommunikáljon az internettel.
 - [Azure-előfizetés](https://azure.microsoft.com/free)
 - A Windows Server 2016 másolata
 
@@ -183,7 +183,7 @@ Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a fe
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Kattintson a **Létrehozás** gombra.</br>
+4. Válassza a **Létrehozás** lehetőséget.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/create1.png)</br>
 5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás** elemet. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
@@ -232,7 +232,7 @@ Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók sz
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 

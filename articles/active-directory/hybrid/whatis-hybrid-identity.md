@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68779853"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278649"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Mi a hibrid identitás a Azure Active Directory?
 
@@ -36,7 +36,7 @@ Ha hibrid identitást szeretne elérni az Azure AD-vel, a forgatókönyvek függ
 
 Ezek a hitelesítési módszerek [egyszeri bejelentkezési](how-to-connect-sso.md) képességeket is biztosítanak.  Az egyszeri bejelentkezés automatikusan aláírja a felhasználókat a vállalati eszközökön a vállalati hálózathoz csatlakozó felhasználók számára.
 
-További információ: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). 
+További információ: [válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](./choose-ad-authn.md). 
 
 ## <a name="common-scenarios-and-recommendations"></a>Gyakori forgatókönyvek és javaslatok 
 
@@ -60,7 +60,7 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 > 
 > <sup>3</sup> Összevont egyszeri bejelentkezés AD FS-sel.  
 >  
-> <sup>4</sup> Az AD FS a vállalati nyilvános kulcsú infrastruktúrával is integrálható, hogy tanúsítványokkal is be lehessen jelentkezni. Ezek a tanúsítványok lehetnek megbízható regisztrációs csatornákon (például MDM-en vagy csoportházirend-objektumon) keresztül kiosztott szoftveres tanúsítványok, intelligenskártya-tanúsítványok (beleértve a PIV/CAC-kártyákat) vagy Vállalati Windows Hello- (tanúsítvány-megbízhatósági) megoldások. Az intelligens kártyás hitelesítés támogatásával kapcsolatos további információkat [ebben a blogban](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/) talál. 
+> <sup>4</sup> Az AD FS a vállalati nyilvános kulcsú infrastruktúrával is integrálható, hogy tanúsítványokkal is be lehessen jelentkezni. Ezek a tanúsítványok lehetnek megbízható regisztrációs csatornákon (például MDM-en vagy csoportházirend-objektumon) keresztül kiosztott szoftveres tanúsítványok, intelligenskártya-tanúsítványok (beleértve a PIV/CAC-kártyákat) vagy Vállalati Windows Hello- (tanúsítvány-megbízhatósági) megoldások. Az intelligens kártyás hitelesítés támogatásával kapcsolatos további információkat [ebben a blogban](/archive/blogs/samueld/adfs-certauth-aad-o365) talál. 
 > 
 
 ## <a name="license-requirements-for-using-azure-ad-connect"></a>A Azure AD Connect használatára vonatkozó licencfeltételek
@@ -73,5 +73,4 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 - [Mi az a jelszó-kivonat szinkronizálása (PHS)?](whatis-phs.md) 
 - [Mi az átmenő hitelesítés (PTA)?](how-to-connect-pta.md) 
 - [Mi az összevonás?](whatis-fed.md) 
-- [Mi az az egyszeri bejelentkezés?](how-to-connect-sso.md) 
-
+- [Mi az az egyszeri bejelentkezés?](how-to-connect-sso.md)

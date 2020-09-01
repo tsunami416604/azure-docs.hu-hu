@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "64919008"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279006"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Oktatóanyag: a PHS beállítása biztonsági másolatként a AD FShoz Azure AD Connect
 
@@ -33,7 +33,7 @@ A következő oktatóanyag végigvezeti a jelszó-kivonatok szinkronizálásána
 Ez az oktatóanyag a következő [oktatóanyagra épül: egyetlen ad-erdős környezet összevonása a felhőbe](tutorial-federation.md) , és az oktatóanyag megkezdése előtt szükséges.  Ha még nem végezte el ezt az oktatóanyagot, a jelen dokumentum lépéseinek megkísérlése előtt végezze el ezt.
 
 >[!IMPORTANT]
->A PHS való váltás előtt készítsen biztonsági másolatot a AD FS-környezetről.  Ezt a [AD FS Rapid Restore Tool](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)használatával teheti meg.
+>A PHS való váltás előtt készítsen biztonsági másolatot a AD FS-környezetről.  Ezt a [AD FS Rapid Restore Tool](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool#how-to-use-the-tool)használatával teheti meg.
 
 ## <a name="enable-phs-in-azure-ad-connect"></a>PHS engedélyezése a Azure AD Connectban
 Az első lépés, hogy már van olyan Azure AD Connect környezetünk, amely összevonást használ, bekapcsolja a jelszó-kivonatolási szinkronizálást, és lehetővé teszi a Azure AD Connect számára a kivonatok szinkronizálását.
@@ -114,9 +114,9 @@ Most vissza kell állítania a AD FS és az Azure közötti megbízhatóságot.
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
-- [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)
+- [Jelszó-kivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)

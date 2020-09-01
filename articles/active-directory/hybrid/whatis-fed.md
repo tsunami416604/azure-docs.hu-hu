@@ -13,12 +13,12 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1c3bc9f89db3f4b694803a63293a5537d4b98b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049376"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278752"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Mi az az Azure AD-vel való összevonás?
 
@@ -35,7 +35,7 @@ A helyszíni környezetet az Azure AD-vel összevonása, és ezt az összevonás
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a hibrid identitás?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [Mi az a hibrid identitás?](./whatis-hybrid-identity.md)
 - [Mi az Azure AD Connect és a Connect Health?](whatis-azure-ad-connect.md)
 - [Mi az a jelszókivonat-szinkronizálás?](whatis-phs.md)
 - [Mi az összevonás?](whatis-fed.md)
