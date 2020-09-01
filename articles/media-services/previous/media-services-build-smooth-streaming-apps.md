@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a1a506e7e4c4a90ed39f4371b48e47b632918c8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021500"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264640"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása  
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 A Windows 8 rendszerhez készült Smooth Streaming ügyfél-SDK lehetővé teszi a fejlesztők számára, hogy olyan Windows áruházbeli alkalmazásokat hozzanak létre, amelyek igény szerinti és élő Smooth Streaming tartalmakat tudnak lejátszani A Smooth Streaming tartalom alapszintű lejátszásán kívül az SDK olyan gazdag funkciókat is kínál, mint például a Microsoft PlayReady-védelem, a minőségi szint korlátozása, az élő DVR, a hangadatfolyam-váltás, az állapot frissítéseinek figyelése (például a minőségi szintű változások) és a hibák. A támogatott funkciókkal kapcsolatos további információkért tekintse meg a [kibocsátási megjegyzéseket](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). További információ: [Windows 8 Player Framework](https://playerframework.codeplex.com/). 
 
@@ -67,11 +69,11 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 1. Az új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    | Név | Érték |
+    | Name | Érték |
     | --- | --- |
     | Sablon csoport |Telepített/sablonok/Visual C#/Windows Store |
     | Sablon |Üres alkalmazás (XAML) |
-    | Név |SSPlayer |
+    | Name |SSPlayer |
     | Hely |C:\SSTutorials |
     | Megoldás neve |SSPlayer |
     | Könyvtár létrehozása a megoldáshoz |kiválasztott |
@@ -83,7 +85,7 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Megoldáskezelő kattintson a jobb gombbal a **SSPlayer**elemre, majd kattintson a **hivatkozás hozzáadása**parancsra.
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-    | Név | Érték |
+    | Name | Érték |
     | --- | --- |
     | Hivatkozási csoport |Windows/bővítmények |
     | Referencia |Válassza a Microsoft Smooth Streaming ügyféloldali SDK Windows 8 és a Microsoft Visual C++ futtatókörnyezethez csomagot |

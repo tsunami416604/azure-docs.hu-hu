@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4aa523c6f2fe1e833fa7dfe99cc870bf6014eb7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bc1ac986ffb8e15df5dab14403aac5eca05c5b5d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009916"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263722"
 ---
 # <a name="download-the-results-of-a-job"></a>Feladatok eredményének letöltése
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladatok](transforms-jobs-concept.md)eredményének tárolásához. Ezután letöltheti ezeket az eredményeket egy helyi mappába a Media Service és a Storage API-k használatával. 
 
@@ -119,6 +121,6 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 
 Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre egy feladatot a HTTPS URL-címről](job-input-from-http-how-to.md).

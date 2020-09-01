@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042835"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263673"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-hibakódok
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Microsoft Azure Media Services használatakor HTTP-hibakódok jelenhetnek meg a szolgáltatástól attól függően, hogy a hitelesítési tokenek lejárnak-e a Media Services által nem támogatott műveletekhez. Az alábbi lista a Media Services által visszaadott **http-hibakódokat** és azok lehetséges okait sorolja fel.  
 
 ## <a name="400-bad-request"></a>400 Hibás kérés
@@ -51,7 +54,7 @@ A kérést nem lehetett hitelesíteni (a hitelesítés engedélyezése előtt) a
   * A jogkivonat lejárt. 
   * A jogkivonat érvénytelen aláírást tartalmaz.
 
-## <a name="403-forbidden"></a>403 – Tiltott
+## <a name="403-forbidden"></a>403 Tiltott
 A kérelem a következő okok egyike miatt nem engedélyezett:
 
 * A Media Services fiók nem található vagy törölve lett.

@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c1a9f98373ac872bb315c1ae621b3895760dc18
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a4a5f2f448cc5e954cf21f9785f788925d5a461e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013384"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263943"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés Windows Azure Media Encoderról Media Encoder Standardre
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet áttelepíteni a régi Windows Azure Media Encoder (Tamás) adathordozó-processzorról (amely kivonásra kerül) a Media Encoder Standard Media Processor szolgáltatásba. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
 
@@ -79,7 +81,7 @@ Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményű, és 
 
 A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Örökölt összetevők](legacy-components.md)
 * [Díjszabás lap](https://azure.microsoft.com/pricing/details/media-services/#encoding)

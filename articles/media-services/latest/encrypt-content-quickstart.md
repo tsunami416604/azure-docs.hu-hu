@@ -2,15 +2,17 @@
 title: Tartalom titkosítása a Azure Portal
 description: Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a tartalom titkosítását a Azure Portal Azure Media Services használatával.
 ms.topic: quickstart
-ms.date: 06/08/2020
-ms.openlocfilehash: 6ff3c14039f9199053d3d43c6ce4488c2692b336
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.date: 08/31/2020
+ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988955"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263637"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Gyors útmutató: tartalom titkosítása a portál használatával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Azure Media Services segítségével biztonságossá teheti az adathordozót, amikor a számítógépet a tárolás, a feldolgozás és a kézbesítés teljes egészében elhagyja. A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. 
  
@@ -19,7 +21,7 @@ Ha az adatfolyamban szeretné megadni a titkosítási beállításokat (ha vanna
 > [!NOTE]
 > A tartalmi kulcsra vonatkozó házirend nem szükséges a folyamatos átvitelhez vagy a letöltéshez.
 
-Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat az AES Clear Key vagy a DRM titkosítás használatával. Az adatfolyam visszafejtéséhez a Player Media Services Key Delivery Service-ből vagy a megadott Key Delivery szolgáltatásból kéri a kulcsot. Annak eldöntéséhez, hogy a felhasználó rendelkezik-e a kulcs lekéréséhez szükséges jogosultsággal, a szolgáltatás kiértékeli a kulcshoz megadott **tartalmi kulcs házirendjét** .
+Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat az AES Clear Key vagy a DRM titkosítás használatával. Az adatfolyam visszafejtéséhez a Player Media Services Key Delivery Service-ből vagy a megadott Key Delivery szolgáltatásból kéri a kulcsot. Annak eldöntéséhez, hogy a felhasználó rendelkezik-e a kulcs lekéréséhez szükséges jogosultsággal, a szolgáltatás kiértékeli a kulcshoz megadott  **tartalmi kulcs házirendjét** .
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan tartalmi kulcsokra vonatkozó házirendet, amely megadja, hogy a rendszer milyen titkosítást alkalmazzon az eszközre az adatfolyamként. A rövid útmutató azt is bemutatja, hogyan állíthatja be a konfigurált titkosítást az eszközön.
 

@@ -3,7 +3,7 @@ title: Azure Media Services LiveEvent-típusok | Microsoft Docs
 description: Azure Media Services egy élő eseményt lehet *átadni* vagy *élő kódolásra*beállítani. Ez a cikk egy részletes táblázatot mutat be, amely összehasonlítja az élő események típusait.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,18 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 41df31cde95ae7ed1d05dac572718622067194c9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090059"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265252"
 ---
 # <a name="live-event-types-comparison"></a>Élő eseménytípus összehasonlítása
 
-Azure Media Services egy [élő esemény](/rest/api/media/liveevents) lehet egy *áteresztő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Azure Media Services egy  [élő esemény](/rest/api/media/liveevents) lehet egy *áteresztő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). 
 
 Ez a cikk az élő események típusaival kapcsolatos funkciókat hasonlítja össze.
 
@@ -36,13 +38,13 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 
 | Funkció | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
 | --- | --- | --- |
-| Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |No |Yes |
+| Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Igen |
 | A hozzájárulási csatorna maximális felbontása |4K (4096x2160 at 60 Frames/mp) |1080p (1920x1088 30 keret/mp)|
 | Ajánlott maximális rétegek a hozzájárulási adatcsatornában|Legfeljebb 12|Egy hang|
 | Maximális rétegek a kimenetben| Ugyanaz, mint a bevitel|Legfeljebb 6 (lásd az alábbi rendszerbeállításokat)|
-| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|n.a.|
+| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|N/A|
 | A hozzájárulás egyetlen rétegének maximális bitrátája |20 Mbps|20 Mbps|
-| Többnyelvű hangsávok támogatása|Yes|No|
+| Többnyelvű hangsávok támogatása|Igen|Nem|
 | Támogatott bemeneti videós kodekek |H. 264/AVC és H. 265/HEVC|H. 264/AVC|
 | Támogatott kimeneti videós kodekek|Ugyanaz, mint a bevitel|H. 264/AVC|
 | Támogatott videó-bitsűrűség, bemenet és kimenet|Akár 10 bites, beleértve a HDR 10/HLG|8 bites|
@@ -58,10 +60,10 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | A beágyazások behelyezésének támogatása|Nem|Nem|
 | Az ad-jelzés támogatása API-n keresztül| Nem|Nem|
 | Az ad-jelzés támogatása SCTE-35 sávon belüli üzenetek használatával|Igen|Igen|
-| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Yes|Részleges|
-| Nem egységes bemeneti Pallagi Péter támogatása|Yes|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
-| Változó képarány bemenetének támogatása|Yes|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
-| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|No|12 óra elteltével, ha nem fut LiveOutput|
+| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Igen|Részleges|
+| Nem egységes bemeneti Pallagi Péter támogatása|Igen|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
+| Változó képarány bemenetének támogatása|Igen|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
+| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|Nem|12 óra elteltével, ha nem fut LiveOutput|
 
 ## <a name="system-presets"></a>Rendszerbeállítás
 

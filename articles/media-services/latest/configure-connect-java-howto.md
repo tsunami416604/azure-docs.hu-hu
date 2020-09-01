@@ -3,7 +3,7 @@ title: Kapcsolódás a Azure Media Services V3 API-hoz – Java
 description: Ez a cikk azt ismerteti, hogyan csatlakozhat a Javához Azure Media Services V3 API-hoz.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 08/31/2020
 ms.custom: devx-track-java
-ms.author: juliako
-ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.author: inhenkel
+ms.openlocfilehash: dc667a46d9802332d0f8c8dc673b28a9aeab96ea
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319830"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265626"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Kapcsolódás a Media Services V3 API-hoz – Java
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Java SDK-hoz az egyszerű szolgáltatás bejelentkezési metódusának használatával.
 
@@ -59,7 +61,7 @@ A parancs futtatásakor a, a `pom.xml` `App.java` és más fájlok jönnek létr
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
 1. A Visual Studio Code-ban nyissa meg azt a mappát, ahol a projekt
-1. Keresse meg és nyissa meg a`pom.xml`
+1. Keresse meg és nyissa meg a `pom.xml`
 1. A szükséges függőségek hozzáadása
 
     ```xml
@@ -120,7 +122,7 @@ A parancs futtatásakor a, a `pom.xml` `App.java` és más fájlok jönnek létr
    ```
 1. Futtassa az alkalmazást.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Media Services fogalmak](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)

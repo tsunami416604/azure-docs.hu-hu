@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Ez a cikk azt ismerteti, hogyan használhatók az időeltolásos és az élő kimenetek az élő adatfolyamok rögzítésére és igény szerinti lejátszás létrehozására.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/07/2020
-ms.author: juliako
-ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f188d959bf702a2907fe34805b41fa62cae7ee40
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000992"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265388"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Azure Media Services egy [élő kimeneti](/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom megmarad az [eszköz](/rest/api/media/assets) erőforrása által meghatározott tárolóban (a tároló a fiókjához csatolt Azure Storage-fiókban található). Az élő kimenet lehetővé teszi a kimenő élő stream bizonyos tulajdonságainak szabályozását is, például azt, hogy a stream mekkora részét tárolja az archívumban (például a felhőalapú DVR kapacitása), vagy ha a nézők megkezdhetik az élő stream megtekintését. A lemezen lévő archiválás körkörös archív "ablak", amely csak az élő kimenet **archiveWindowLength** tulajdonságában megadott tartalom mennyiségét tárolja. Az ezen az ablakon kívül eső tartalmat a rendszer automatikusan elveti a tárolóból, és nem helyreállítható. A archiveWindowLength érték egy ISO-8601 TimeSpan időtartamot jelöl (például PTHH: PP: MM), amely meghatározza a DVR kapacitását. Az érték legalább egy perctől legfeljebb 25 óráig állítható be.
 
@@ -45,7 +47,7 @@ Az esemény leállítása és törlése után a felhasználók az archivált tar
 
 Ha közzétette az élő kimenet adategységét egy streaming-lokátor használatával, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-kereső lejárata vagy törlése megkezdődik.
 
-További információ:
+További információkért lásd:
 
 - [Élő közvetítés – áttekintés](live-streaming-overview.md)
 - [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

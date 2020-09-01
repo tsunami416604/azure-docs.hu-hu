@@ -6,19 +6,21 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 03/25/2020
-ms.openlocfilehash: 459f11844f873a911b3e5702e8c768b1cd22e504
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/31/2020
+ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80984997"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265269"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Azure Media Services élő stream létrehozása
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Ez a rövid útmutató segítséget nyújt egy Azure Media Services élő stream létrehozásához a Azure Portal és a Wirecast használatával. Feltételezi, hogy rendelkezik Azure-előfizetéssel, és létrehozott egy Media Services fiókot.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -102,7 +104,7 @@ A következő eljárásban visszatérhet Azure Media Services a böngészőben a
 4. Váltson a Wirecast alkalmazásra, és illessze be a **bemeneti URL** -címet a kimeneti beállítások **cím** mezőjébe.
 
    ![Wirecast bemeneti URL-címe](media/live-events-wirecast-quickstart/input-url-wirecast.png)
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 ## <a name="set-up-outputs"></a>Kimenetek beállítása
 
@@ -121,11 +123,11 @@ Ez a rész beállítja a kimeneteket, és lehetővé teszi az élő stream rögz
    
    ![Lokátor neve mező](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. A képernyő minden más elemének kihagyása egyelőre.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="start-the-broadcast"></a>A közvetítés elindítása
 
-1. A Wirecast-ben válassza a **kimenet** > **indítása/leállítási szórás** > **indítása Azure Media Services: Azure Media Services** lehetőséget a főmenüben.
+1. A Wirecast-ben válassza a **kimenet**  >  **indítása/leállítási szórás**  >  **indítása Azure Media Services: Azure Media Services** lehetőséget a főmenüben.
 
    ![Szórási menüelemek indítása](media/live-events-wirecast-quickstart/start-broadcast.png)
 

@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74969140"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264487"
 ---
-# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
+# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 > [!div class="op_single_selector"]
 > * [Axinom](media-services-axinom-integration.md)
 > * [castLabs](media-services-castlabs-integration.md)
@@ -33,7 +36,7 @@ ms.locfileid: "74969140"
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Media Services (AMS) egy olyan stream továbbítására, amelyet az AMS dinamikusan titkosít az PlayReady és a Widevine DRMs. A PlayReady-licenc a Media Services PlayReady-licenckiszolgálóról származik, és a Widevine-licencet a **castLabs** -licenckiszolgáló továbbítja.
 
-A CENC (PlayReady és/vagy Widevine) által védett streaming tartalom lejátszásához használhatja a [Azure Media Player](https://aka.ms/azuremediaplayer). Részletekért lásd az [amp-dokumentációt](https://amp.azure.net/libs/amp/latest/docs/) .
+A CENC (PlayReady és/vagy Widevine) által védett streaming tartalom lejátszásához használhatja a  [Azure Media Player](https://aka.ms/azuremediaplayer). Részletekért lásd az [amp-dokumentációt](https://amp.azure.net/libs/amp/latest/docs/) .
 
 A következő ábra egy magas szintű Azure Media Services és castLabs integrációs architektúrát mutat be.
 
@@ -68,7 +71,7 @@ Az alábbi táblázat az AMS JWT tokenjét ismerteti.
 
 A következő táblázat a castLabs JWT tokenjét ismerteti. 
 
-| Name | Description |
+| Név | Leírás |
 | --- | --- |
 | optData |Egy JSON-karakterlánc, amely az Ön adatait tartalmazza. |
 | CRT |Egy olyan JSON-karakterlánc, amely az eszközre, a licencre és a lejátszási jogosultságokra vonatkozó információkat tartalmaz. |

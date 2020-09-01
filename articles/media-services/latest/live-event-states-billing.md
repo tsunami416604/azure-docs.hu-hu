@@ -3,7 +3,7 @@ title: LiveEvent állapotok és számlázás Azure Media Servicesban | Microsoft
 description: Ez a témakör áttekintést nyújt Azure Media Services LiveEvent állapotáról és számlázásáról.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/24/2019
-ms.author: juliako
-ms.openlocfilehash: dd63152776e0268b8f9e3e0ce116fea897cdf4e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 37098b8268d5a451935c925114fb762c574fa55c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000873"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265303"
 ---
 # <a name="live-event-states-and-billing"></a>Élő események állapotai és számlázása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services egy élő esemény azonnal megkezdi a számlázást, amint az állapota a **futásra**változik. Akkor is számítunk fel díjat, ha nincs a szolgáltatáson keresztül áramló videó. Az élő esemény számlázásának leállításához le kell állítania az élő eseményt. Az élő átiratok számlázása ugyanúgy történik, mint az élő esemény.
 

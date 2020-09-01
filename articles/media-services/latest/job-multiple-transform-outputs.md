@@ -3,23 +3,25 @@ title: Azure Media Services-feladatok létrehozása több átalakító kimenette
 description: Ez a témakör bemutatja, hogyan hozhat létre több átalakítási kimenettel rendelkező Azure Media Services feladatot.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0592af43987e89556aee57ea44e07dc2c00828
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63e6da53e542172d474f9ca5de9ab136f38f42f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006788"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265541"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Több átalakítási kimenettel rendelkező feladatok létrehozása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a témakör bemutatja, hogyan hozhat létre átalakítót két átalakítási kimenettel. Az első azt kéri, hogy a rendszer kódolja a bemenetet adaptív sávszélességű adatfolyamként egy beépített [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) -készlettel. A második egy a bemeneti videóban lévő hangjelzést hívja fel a [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets)való feldolgozásra. Az átalakítás létrehozása után elküldheti azt a feladatot, amely ennek megfelelően dolgozza fel a videót. Mivel ebben a példában két átalakítási kimenetet adunk meg, két feladatot kell megadnia. Dönthet úgy is, hogy a feladatok kimenetét ugyanarra az objektumra irányítja (az alább látható módon), vagy az eredményeket külön egységekre is kiírja.
  
@@ -134,6 +136,6 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 
 Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Media Services v3-minták .NET használatával](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

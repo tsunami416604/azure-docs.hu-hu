@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f6f59c94f8167b700208036c16cc4c948376e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019827"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263068"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -59,7 +59,7 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
 4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-a-collection"></a>Gyűjtemény létrehozása 
 
@@ -84,7 +84,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 Ez a szakasz azt mutatja be, hogyan hívható meg Azure Resource Manager a Windows VM rendszerhez rendelt felügyelt identitáshoz tartozó hozzáférési jogkivonat használatával. Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
 
-Telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verzióját a Windows rendszerű virtuális gépre.
+Telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli) legújabb verzióját a Windows rendszerű virtuális gépre.
 
 
 
@@ -199,11 +199,9 @@ Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használhatja egy Windows VM rendszer által hozzárendelt felügyelt identitásait a Cosmos DB eléréséhez.  További információ a Cosmos DB-ről:
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB áttekintése](/azure/cosmos-db/introduction)
-
-
+>[Azure Cosmos DB áttekintése](../../cosmos-db/introduction.md)

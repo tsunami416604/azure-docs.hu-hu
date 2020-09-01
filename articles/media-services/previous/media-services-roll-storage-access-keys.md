@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: d0a449a84bebcc0a296bde51234b0ceb128b2d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000125"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264130"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után 
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Új Azure Media Services-(AMS-) fiók létrehozásakor a rendszer azt is kéri, hogy válasszon ki egy Azure Storage-fiókot, amelyet a médiatartalom tárolására használ. Több Storage-fiókot is hozzáadhat a Media Services-fiókhoz. Ez a cikk a tárolási kulcsok elforgatását mutatja be. Azt is bemutatja, hogyan adhat hozzá Storage-fiókokat egy adathordozó-fiókhoz. 
 
@@ -80,5 +82,5 @@ A következő cikk bemutatja, hogyan adhat hozzá Storage-fiókokat az AMS-fiók
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Köszönetnyilvánítás
+### <a name="acknowledgments"></a>Elismerések
 Szeretnénk nyugtázni a következő személyeket, akik hozzájárultak a dokumentum létrehozásához: Cenk Dingiloglu, Milan Gottlieb, Seva Tyitov.

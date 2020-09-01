@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 698aa849a82e7c9f9a630ca7040f9d449b3765b3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765012"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264963"
 ---
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az Azure Media Service videó-, hang-és szöveges szolgáltatásokat biztosít különböző protokollokban. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML-ban továbbítja az átmásolt szöveget. A kézbesítés az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a kézbesítést HLS/TS-n keresztül használja, a szöveg kidarabolt VTT lesz kézbesítve.
 
@@ -39,7 +41,7 @@ Az élő átírás a következő régiókban érhető el:
 - USA keleti régiója
 - USA középső régiója
 - USA déli középső régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - Dél-Brazília
 
 Ez az elérhető nyelveket tartalmazó lista, az API-ban használt nyelvi kód használatával.
@@ -135,7 +137,7 @@ Az élő átírások bekapcsolásához vagy az átírási nyelv frissítéséhez
 
 Ez az élő átírások bekapcsolására szolgáló példa.
 
-JAVÍTÁS```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+JAVÍTÁS ```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
 
 ```
 {

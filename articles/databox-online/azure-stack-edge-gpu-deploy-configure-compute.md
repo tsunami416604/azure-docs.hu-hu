@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az adatok szűréséhez és elemzéséhez Azure Stack Edge-beli számításokkal | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja a számítási szerepkört Azure Stack Edge-ben, és hogyan alakíthatja át az adatokat az Azure-ba való küldés előtt.
+title: Oktatóanyag a szűréshez, az adatok elemzése Azure Stack Edge GPU-val való számítással | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja a számítási szerepkört Azure Stack Edge GPU-ra, és hogyan alakíthatja át az adatokat az Azure-ba való küldés előtt.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 8ba460168edc03b1cb491d69010acd03f4a84ae3
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: a5e0817050f8411dfc7fc64edae21f1b927e4e5c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181583"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262990"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Oktatóanyag: számítás konfigurálása Azure Stack Edge GPU-eszközön
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
-> * Kubernetes API-végpont beolvasása
+> * Kubernetes-végpontok beolvasása
 
  
 ## <a name="prerequisites"></a>Előfeltételek
@@ -59,7 +59,7 @@ A számítás Azure Stack Edge-ben való konfigurálásához IoT Hub erőforrás
     |Mező  |Érték  |
     |---------|---------|
     |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint a rendszer egy standard szintű (S1) szintet használ IoT-erőforrás létrehozásához. Az ingyenes szintű IoT erőforrás használatához hozzon létre egyet, majd válassza ki a meglévő erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
-    |Név     |Adja meg a IoT Hub erőforrás nevét.         |
+    |Name     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 

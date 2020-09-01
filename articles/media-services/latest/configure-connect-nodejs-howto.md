@@ -3,7 +3,7 @@ title: Kapcsolódás Azure Media Services V3 API-hoz – Node.js
 description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services V3 API-hoz a Node.js használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8e54fec584f8961dfc44a7c93f95772ea03e1259
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95059710ce759a1536bcaacd35c0d2cf6497269b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424426"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265592"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás Media Services V3 API-hoz – Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-hoz az egyszerű szolgáltatás bejelentkezési metódusának használatával.
 
@@ -55,7 +57,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-h
 
 A következő csomagokat kell megadni:
 
-|Csomag|Description|
+|Csomag|Leírás|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és [telepítse az Azure-ARM-Mediaservices NPM](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Storage SDK. Fájlok eszközökre való feltöltésekor használatos.|
@@ -129,6 +131,6 @@ node index.js
 - [Media Services fogalmak](concepts-overview.md)
 - [NPM-telepítés, azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a Media Services [Node.js ref](/javascript/api/overview/azure/mediaservices/management) dokumentációval, és tekintse meg a Media Services API node.js használatával történő használatát bemutató [mintákat](https://github.com/Azure-Samples/media-services-v3-node-tutorials) .

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a telepítéshez – kicsomagolás, rack, Cable Azure Stack Edge fizikai eszköz | Microsoft Docs
-description: A Azure Stack Edge telepítésével kapcsolatos második oktatóanyag a fizikai eszköz kicsomagolását, állványának és kábelének kicsomagolását, valamint csatlakoztatását ismerteti.
+title: Oktatóanyag a telepítéshez – kicsomagolás, állvány, kábel Azure Stack Edge GPU fizikai eszköz | Microsoft Docs
+description: A Azure Stack Edge GPU telepítésével kapcsolatos második oktatóanyag a fizikai eszköz kicsomagolásával, állványával és kábeles csatlakoztatásával kapcsolatos.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 401b7c7a44e2f8009baca96862817b3d14f35c94
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181816"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262855"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Oktatóanyag: Azure Stack Edge telepítése GPU-val
 

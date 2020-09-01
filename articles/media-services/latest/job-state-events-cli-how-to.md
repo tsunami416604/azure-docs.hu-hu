@@ -3,31 +3,33 @@ title: Azure Media Services események figyelése a Event Grid parancssori felü
 description: Ez a cikk bemutatja, hogyan fizethet elő Event Gridre az Azure Media Services események figyelése érdekében.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 11/09/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5292318d2e5432ec7c0a2df7306011c3dea5147
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6aac37b354275539bfc5374a170c348b8ce993b0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542127"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265524"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services események létrehozása és figyelése Event Grid az Azure CLI használatával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ez a szolgáltatás [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Media Services események tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja Media Services eseményt, mert a eventType tulajdonság a "Microsoft. Media" karakterlánccal kezdődik. További információ: [Media Services esemény sémái](media-services-event-schemas.md).
 
 Ebben a cikkben az Azure CLI használatával fizethet elő Azure Media Services-fiókjához tartozó eseményekre. Ezután aktiválhatja az eseményeket az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. Ebben a cikkben az eseményeket egy webalkalmazásba küldi, amely összegyűjti és megjeleníti az üzeneteket.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
+- Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt nekikezdene a feladatok elvégzésének.
 - A parancssori felület helyi telepítése és használata: ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
     Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) -parancs működik a Azure Cloud Shellban. Javasoljuk, hogy helyileg használja a CLI-t.

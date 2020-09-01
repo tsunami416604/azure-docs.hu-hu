@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32b3207fc86f9aab7194d63a0e57eea459fd7eac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018025"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264810"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Speciális kódolás végrehajtása a MES-beállításkészletek testreszabásával 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Speciális kódolás végrehajtása a MES-beállításkészletek testreszabásával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -51,7 +53,7 @@ Miniatűrök létrehozásakor nem kell mindig a kimeneti szélességet és a mag
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Miniatűrök létrehozása
+## <a name="generate-thumbnails"></a>Miniatűrök létrehozása
 
 Ebből a szakaszból megtudhatja, hogyan szabhatja testre a miniatűröket létrehozó beállításkészletet. Az alábbi előre definiált készlet a fájl kódolásához és a miniatűrök létrehozásához szükséges információkhoz tartalmaz információkat. A [jelen](media-services-mes-presets-overview.md) szakaszban ismertetett MES-előállítók bármelyikét elvégezheti, és hozzáadhat olyan kódot, amely miniatűröket hoz létre.  
 
@@ -64,7 +66,7 @@ A sémával kapcsolatos további információkért tekintse meg [ezt a](media-se
 
 Ügyeljen rá, hogy ellenőrizze a [szempontok](#considerations) szakaszt.
 
-### <a name="json-preset"></a><a id="json"></a>JSON-készlet
+### <a name="json-preset"></a>JSON-készlet
 
 ```json
 {
@@ -166,7 +168,7 @@ A sémával kapcsolatos további információkért tekintse meg [ezt a](media-se
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML-beállításkészlet
+### <a name="xml-preset"></a>XML-beállításkészlet
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

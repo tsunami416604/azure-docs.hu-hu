@@ -16,12 +16,12 @@ ms.date: 12/06/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb27a147211112fa1a73da37d9f0ff379ec3d63f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b0437308a0495281e364d42199cc84d9a291cb58
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177652"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263415"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Felügyelt identitás-hozzáférés kiosztása egy erőforráshoz az Azure CLI használatával
 
@@ -36,7 +36,7 @@ Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, megadh
 - A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
     - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).
     - A beágyazott Azure Cloud Shell az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-    - Ha inkább helyi CLI-konzolt szeretne használni, [telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) . 
+    - Ha inkább helyi CLI-konzolt szeretne használni, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) . 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

@@ -3,23 +3,25 @@ title: A Content-Aware kódoláshoz beállított beállításkészlet – Azure 
 description: Ez a cikk az Microsoft Azure Media Services v3 tartalommal kompatibilis kódolását ismerteti.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c29909d70b0fd55e4b680c79928cdc5d05b494fa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 853381dbccea5374806fbeadb1d29632f0525fdb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003728"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265609"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A tartalom [adaptív sávszélességű adatfolyamként](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)történő továbbításához a videót több átviteli sebességre kell kódolni (magasról alacsonyra). Ez biztosítja a minőség kedvező romlását, mivel a bitrátát csökkenti, így a videó felbontása is megtörténik. Az ilyen több átviteli sebességű kódolás egy úgynevezett kódolási létrát használ, amely a felbontások és a bitráták táblázatát tartalmazza, a Media Services [beépített kódolási előkészleteket](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
@@ -79,7 +81,7 @@ TransformOutput[] output = new TransformOutput[]
 > [!NOTE]
 > Az `ContentAwareEncoding` előre beállított kódolási feladatok számlázása a kimeneti percek alapján történik. 
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md)
 * [Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)

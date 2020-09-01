@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dba0f82ced5500dc85c3254bea6a2a0066770b1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039191"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265660"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A felső (OTT) vagy online streaming megoldáshoz tartozó digitális Rights Management (DRM) alrendszer tervezése és létrehozása összetett feladat. A kezelők/online szolgáltatók jellemzően kiszervezik ezt a feladatot a speciális DRM-szolgáltatók számára. A jelen dokumentum célja, hogy egy hivatkozási tervet és egy teljes körű DRM-alrendszer hivatkozását egy OTT vagy online streaming megoldásban.
 

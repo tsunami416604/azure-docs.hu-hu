@@ -3,7 +3,7 @@ title: Poster konfigurálása Azure Media Services v3 REST API-hívásokhoz
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a Poster-t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2019
-ms.author: juliako
-ms.openlocfilehash: e35a5fe2243c3a9880359900c63f74c6dc90e586
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1232c47040a5577731121ee0bb17eb264240e765
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654361"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264878"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Poster konfigurálása Media Services v3 REST API-hívásokhoz
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a **Poster** -t, hogy felhasználható legyen Azure Media Services (AMS) REST API-k meghívására. A cikk bemutatja, hogyan importálhatja a környezet és a gyűjtemény fájljait a **Poster**-ba. A gyűjtemény a Azure Media Services (AMS) REST API-kat meghívó HTTP-kérések csoportosított definícióit tartalmazza. A környezeti fájl azokat a változókat tartalmazza, amelyeket a gyűjtemény használ.
 

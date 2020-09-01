@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000040"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264283"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése 
+# <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -63,9 +65,9 @@ A Media Servicesban megjelenő minden egyes híváshoz meg kell adni a szükség
 | Fejléc | Típus | Érték |
 | --- | --- | --- |
 | Engedélyezés |Tulajdonos |A tulajdonos az egyetlen elfogadott engedélyezési mechanizmus. Az értéknek tartalmaznia kell a Azure Active Directory által biztosított hozzáférési jogkivonatot is. |
-| x-MS-Version |Decimal |2,17 (vagy a legújabb verzió)|
-| DataServiceVersion |Decimal |3,0 |
-| MaxDataServiceVersion |Decimal |3,0 |
+| x-MS-Version |Tizedesjegy |2,17 (vagy a legújabb verzió)|
+| DataServiceVersion |Tizedesjegy |3,0 |
+| MaxDataServiceVersion |Tizedesjegy |3,0 |
 
 > [!NOTE]
 > Mivel Media Services a OData használatával teszi elérhetővé a REST API-kat, a DataServiceVersion és a MaxDataServiceVersion fejléceket minden kérelembe bele kell foglalni; Ha azonban nem, akkor a jelenleg Media Services feltételezi, hogy a használatban lévő DataServiceVersion értéke 3,0.
