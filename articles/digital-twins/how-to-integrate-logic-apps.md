@@ -165,7 +165,7 @@ Nyomja meg az *+ új lépést*.
 
 Ekkor megnyílik a *művelet kiválasztása* jelölőnégyzet. Váltson az *Egyéni* lapra. Az egyéni összekötőt a felső mezőbe kell látni a korábbiak közül.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Folyamat létrehozása a Logic Apps Designerben a Azure Portalban. A "művelet választása" mezőben az "egyéni" lap van kiválasztva. A felhasználó egyéni összekötője a korábbi verzióban látható a dobozban, és kiemelve.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Folyamat létrehozása a Logic Apps Designerben a Azure Portalban. A művelet választása mezőben az egyéni lap van kiválasztva. A felhasználó egyéni összekötője a korábbi verzióban látható a dobozban, és kiemelve.":::
 
 Válassza ki az összekötőben található API-k listájának megjelenítéséhez. A keresősáv használatával vagy a lista görgetésével válassza ki a **DigitalTwins_Add**. (Ez a cikk az API-t használja, de más API-t is kijelölhet egy Logic Apps-kapcsolatok esetében érvényes választási lehetőségként).
 
