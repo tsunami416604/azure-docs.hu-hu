@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 18d6331c666e547c06a573dc970cf05aba8fbea1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604572"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258593"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Microsoft Azure Media Services számos médiafájl-formátum kódolására használható. A szolgáltatás különböző streaming protokollokon keresztül érhető el, tartalom védelme nélkül vagy anélkül, hogy elérje az összes jelentős eszközt (például az iOS és az Android rendszerű eszközöket). Ezek az ügyfelek megismerhetik a különböző protokollokat. Az iOS esetében például HTTP Live Streaming (HLS) formátumban kell továbbítani a streameket, és az Android-eszközök támogatják a HLS, valamint az MPEG DASH-t.
 
@@ -324,6 +326,6 @@ Tekintse meg [Azure Media Services közösségét](media-services-community.md) 
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

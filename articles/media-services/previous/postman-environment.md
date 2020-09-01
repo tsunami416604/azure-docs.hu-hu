@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccc765a3fb0063d92382edcec260808183f27a2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926715"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259251"
 ---
-# <a name="import-the-postman-environment"></a>A Poster-környezet importálása  
+# <a name="import-the-postman-environment"></a>A Poster-környezet importálása
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 Ez a cikk **a Poster-környezet azon** változóinak definícióját tartalmazza, amelyek a Media Services REST API-kat meghívó CSOPORTOSÍTott http-kérelmeket tartalmazó [Poster-gyűjteményt](postman-collection.md) használják. A környezet és a gyűjtemény fájljait a [Poster beállítása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyagához használja.
 

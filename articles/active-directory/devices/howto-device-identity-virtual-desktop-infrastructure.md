@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604396"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259353"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -48,16 +48,16 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
+| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
 |   |   | Windows jelenlegi | Nem állandó | Igen<sup>5</sup> |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
-|   |   | Windows jelenlegi | Nem állandó | No |
+|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
-|   | Felügyelt | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
+|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
 | Az Azure AD-ban regisztrálva | Összevont/felügyelt | Windows jelenlegi/Windows lefelé – szint | Állandó/nem állandó | Nem alkalmazható |
 
 <sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 és a Windows Server 2019.
@@ -68,7 +68,7 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 <sup>4</sup> A **felügyelt** identitás-infrastruktúra környezete az Azure ad-környezettel rendelkezik, mint a [jelszó-kivonatolási szinkronizálással (PHS)](../hybrid/whatis-phs.md) vagy [átmenő hitelesítéssel (PTA ESP)](../hybrid/how-to-connect-pta.md) telepített identitás-szolgáltató, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md).
 
-<sup>5</sup> nem kitartó **támogatás a Windows jelenlegi** verziójában az útmutató szakaszban leírt módon további szempontokat kell figyelembe venni.
+<sup>5</sup> nem kitartó **támogatás a Windows jelenlegi** verziójában az útmutató szakaszban leírt módon további szempontokat kell figyelembe venni. Ehhez a forgatókönyvhöz a Windows 10 1803, a Windows Server 2019 vagy a Windows Server (féléves csatorna) verziója szükséges a 1803-as verziótól kezdődően
 
 <sup>6</sup> a **Windows leállási szintjének nem** kitartó támogatásának további megfontolásra van szüksége az útmutató szakaszban leírt módon.
 
@@ -94,6 +94,6 @@ Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák 
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosításához (például a számítógép megjelenített nevének előtagjának használatával), agresszíven kell lennie ezeknek az eszközöknek a tisztításához, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
    - A Windows aktuális és alacsonyabb szintű, nem állandó VDI-telepítések esetén olyan eszközöket kell törölni, amelyeknek 15 napnál régebbi **ApproximateLastLogonTimestamp** van.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)

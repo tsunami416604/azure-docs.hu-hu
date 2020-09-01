@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180337"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259370"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 Az Azure-RBAC az Azure-előfizetési erőforrásokhoz való hozzáférés kezeléséhez való használatáról a következő cikkekben talál további információt:
 
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](/azure/role-based-access-control/role-assignments-cli)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
 
@@ -339,7 +339,7 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 
 ![A hitelesítő adatai nem működnek](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez használt Windows 10 rendszerű számítógép vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD ugyanahhoz az Azure AD-címtárhoz van csatlakoztatva, amelyben a virtuális gép csatlakoztatva van. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](/azure/active-directory/devices/overview)ismertető cikket.
+Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez használt Windows 10 rendszerű számítógép vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD ugyanahhoz az Azure AD-címtárhoz van csatlakoztatva, amelyben a virtuális gép csatlakoztatva van. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](./overview.md)ismertető cikket.
 
 > [!NOTE]
 > A Windows 10 Build 20H1 támogatja az Azure AD-ban regisztrált SZÁMÍTÓGÉPeket, hogy RDP-kapcsolatokat kezdeményezzenek a virtuális géppel. Ha egy regisztrált Azure AD-t (nem az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-csatlakoztatott) futtató számítógépet használ a virtuális géphez való kapcsolatok kezdeményezéséhez, meg kell adnia a hitelesítő adatokat a következő formátumban: AzureAD\UPn (például AzureAD\john@contoso.com ).
@@ -367,4 +367,4 @@ Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, va
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Azure Active Directoryről: [Mi az Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)
+További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../fundamentals/active-directory-whatis.md)

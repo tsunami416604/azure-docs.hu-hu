@@ -3,7 +3,7 @@ title: Videók kódolása szabványos kódolóval a Media Services-Azure-ban | M
 description: Ez a témakör bemutatja, hogyan használható a standard kódoló a Media Servicesban egy automatikusan generált bitráta-létrával rendelkező bemeneti videó kódolásához a bemeneti felbontás és a bitráta alapján.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c5fb04597ec274eaf2b4a4e7a5e2b96f1816f1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60733317"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258826"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódolás automatikusan generált bitráta-létrával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -40,7 +42,7 @@ Ez a szakasz három példát mutat be a Media Services kódoló által előáll�
 ### <a name="example-1"></a>1\. példa
 A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó réteget hoz létre:
 
-|Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
+|Réteg|Magasság|Szélesség|Bitráta (Kbit/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -52,7 +54,7 @@ A "1080" magasságú és "29,970" framerátát tartalmazó forrás 6 videó rét
 ### <a name="example-2"></a>2\. példa
 A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réteget állít elő:
 
-|Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
+|Réteg|Magasság|Szélesség|Bitráta (Kbit/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -63,7 +65,7 @@ A "720" magasságú és "23,970" framerátát tartalmazó forrás 5 videó réte
 ### <a name="example-3"></a>3\. példa
 A "360" magasságú és "29,970" framerátát tartalmazó forrás 3 videó réteget hoz létre:
 
-|Réteg|Height (Magasság)|Szélesség|Bitráta (Kbit/s)|
+|Réteg|Magasság|Szélesség|Bitráta (Kbit/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

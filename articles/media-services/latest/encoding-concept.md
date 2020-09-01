@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Ez a cikk a videó és a hang kódolását ismerteti Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e4db27f268d0d49696fd2a7dacc200942fa4477
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053338"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258979"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Media Services kódolása a digitális videót és/vagy hangot tartalmazó fájlok egyik standard formátumból egy másikba való konvertálásának folyamatára vonatkozik, amelynek célja, hogy (a) csökkentse a fájlok méretét, és/vagy (b) olyan formátumot hozzon létre, amely kompatibilis az eszközök és alkalmazások széles körével. Ezt a folyamatot a videó tömörítésének vagy az átkódolásnak is nevezzük. Tekintse meg az [adattömörítést](https://en.wikipedia.org/wiki/Data_compression) és a [Mi a kódolás és az átkódolás?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) című témakört a fogalmak további megvitatására.
 

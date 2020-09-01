@@ -3,7 +3,7 @@ title: Videó kivágása a Azure Media Services kódolásakor
 description: Ez a témakör azt ismerteti, hogyan lehet videót alklipet használni Azure Media Services a .NET SDK-val való kódoláskor
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
-ms.author: juliako
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: be39c9390dacf6ae0fb44157f6185c5cf17a8725
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 827fa21fd7f0a3179fb1ed3cd01a461a785829b5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021221"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257398"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Videó kivágása Media Services-.NET-kódolással
 
@@ -90,6 +90,6 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Kódolás egyéni átalakítással](customize-encoder-presets-how-to.md) 

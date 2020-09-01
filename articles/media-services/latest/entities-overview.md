@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Ismerje meg Azure Media Services v3 entitások szűrését, rendezését és lapozását.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4fbd587b99875690a8c95952ce6b11d41e402726
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96f08f75d0921fdf88b71c8e8dd2398a6b85ec6d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009882"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258469"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a témakör a OData-lekérdezési lehetőségeket és a tördelési támogatást ismerteti Azure Media Services v3 entitások listázásakor.
 
@@ -45,7 +47,7 @@ Tartomány operátorai:
 - `ge`: Ellenőrizze, hogy a mező értéke *nagyobb-e, vagy egyenlő-* e az állandó értékkel.
 - `le`: Megvizsgálhatja, hogy egy mező *kisebb vagy egyenlő-e, mint* egy konstans érték.
 
-## <a name="filter"></a>Szűrés
+## <a name="filter"></a>Szűrő
 
 A használatával `$filter` OData szűrő paramétert adhat meg, amely csak azokat az objektumokat keresi meg, amelyekre kíváncsi.
 
@@ -156,7 +158,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
 
-|Entitás neve|Tulajdonság neve|Szűrés|Rendelés|
+|Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
 |---|---|---|---|
 |[Adategységek](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
 ||Properties. alternateId |`eq`||
@@ -180,7 +182,7 @@ A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rende
 || tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Eszközök listázása](/rest/api/media/assets/list)
 * [A tartalmi kulcs házirendjeinek listázása](/rest/api/media/contentkeypolicies/list)

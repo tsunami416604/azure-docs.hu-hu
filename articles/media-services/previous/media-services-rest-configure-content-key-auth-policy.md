@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 43a63a47b5973820bd0cc5376ec0f0e9e54a245d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9f7910219c34c811cc49f530af145c6e1589711f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010205"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257024"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamikus titkosítás: a tartalmi kulcs engedélyezési házirendjének konfigurálása  
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dinamikus titkosítás: a tartalmi kulcs engedélyezési házirendjének konfigurálása
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+ 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -489,5 +492,5 @@ public enum ContentKeyDeliveryType
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy beállította a tartalmi kulcs engedélyezési házirendjét, tekintse meg az [eszköz kézbesítési házirendjének konfigurálása](media-services-rest-configure-asset-delivery-policy.md)című témakört.

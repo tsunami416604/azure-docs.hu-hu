@@ -5,17 +5,19 @@ services: media-services
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/02/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5af6a7fc988271fc350ecc6e8be19742ede8ecee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79298631"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258639"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Helyszíni élő adatfolyam-kódoló ellenőrzése
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services helyszíni kódoló partnerként a kódolót a nagyvállalati ügyfeleknek ajánljuk, Media Services népszerűsíti a terméket. Helyszíni kódoló partnernek való megfeleléshez ellenőriznie kell a helyszíni kódoló kompatibilitását Media Services használatával. Ehhez végezze el a következő ellenőrzéseket.
 

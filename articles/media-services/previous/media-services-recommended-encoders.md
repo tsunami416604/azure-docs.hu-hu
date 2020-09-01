@@ -9,14 +9,16 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535094"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259523"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Azure Media Services használatával folytatott élő közvetítésnél megadhatja, hogy a csatorna hogyan kapja meg a bemeneti adatfolyamot. Ha a helyszíni kódolót élő kódolási csatornával szeretné használni, a kódolónak kimenetként kell leküldenie egy kiváló minőségű, egysebességű adatfolyamot. Ha úgy dönt, hogy egy helyszíni kódolót használ egy átmenő csatornán keresztül, a kódolónak egy többszörös átviteli sebességű streamet kell leküldenie az összes kívánt kimeneti tulajdonsággal. További információ: [élő közvetítés helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 

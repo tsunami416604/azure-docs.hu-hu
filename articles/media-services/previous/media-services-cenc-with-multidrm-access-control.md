@@ -15,14 +15,16 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a4f436f6f5542db289ed219a240a68db5c2065b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021527"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258605"
 ---
-# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services 
+# <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -471,7 +473,7 @@ Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetri
 
 Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a dokumentum a többszörös natív DRM-mel és hozzáférés-vezérléssel, a CENC, annak kialakításával és az Azure, Media Services és Media Player használatával történő megvalósításával kapcsolatban tárgyalt.
 

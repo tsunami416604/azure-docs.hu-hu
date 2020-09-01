@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 69b5e8721b320e799fbdfb31ff83f2e78e513b40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13a82aaa31734e98377d9f68c59c25c83a5d5f8a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047511"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259132"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Poster-gyűjtemény importálása élő adatfolyam-műveletekkel 
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Poster-gyűjtemény importálása élő adatfolyam-műveletekkel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ez a cikk a **Poster** -gyűjtemény azon definícióját tartalmazza, amely az **élő közvetítés** Azure Media Services REST API-k meghívásával csoportosított http-kérelmeket tartalmaz. További információ a **Poster** konfigurálásáról a Media Services REST API-k meghívásához: [poster beállítása Media Services REST API hívásokhoz](media-rest-apis-with-postman.md) oktatóanyag.
 

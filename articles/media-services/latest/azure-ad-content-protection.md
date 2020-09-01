@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422096"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258843"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ebben az oktatóanyagban és a megadott Player-mintában a Azure Media Services (AMS) és a Azure Active Directory (HRE) teljes körű Media Content Protection-alrendszert állíthat be, hogy az összes AMS támogatott DRM/AES-128, Streaming Protocol, codec és Container formátummal továbbítsa a médiatartalmakat. A minta elég általános ahhoz, hogy biztonságos hozzáférést biztosítson a 2. OAuth által védett REST APIhoz a Code Exchange (PKCE) igazolási kulcsával. (Azure Media Services a licenc kézbesítési szolgáltatása csupán egyike.) Emellett Microsoft Graph API-val vagy bármely, a 2. OAuth-engedélyezési kóddal védett, egyéni fejlesztésű REST API is működik. Ez a [mintakód](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)kísérő dokumentuma.
 
@@ -64,7 +66,7 @@ Nem kötelező, de javasoljuk, hogy Ismerje meg a következő fogalmakat az okta
 * Node.js telepítése. Itt töltheti le Node.js [https://nodejs.org](https://nodejs.org) . A NPM a telepítéshez tartozik.
 * Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 * Egy Azure Media Services-(AMS-) fiók.
-* @azure/msal-browserv 2.0, a [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK termékcsalád egyik tagja a különböző ügyféloldali platformokhoz
+* @azure/msal-browser v 2.0, a [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK termékcsalád egyik tagja a különböző ügyféloldali platformokhoz
 * A [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)legújabb verziója (a minta része)
 * FPS hitelesítő adatok az Apple-től, ha a FairPlay DRM-t és az CORS-ben üzemeltetett alkalmazás-tanúsítványt is szeretné használni az ügyféloldali JavaScript használatával.
 
@@ -106,7 +108,7 @@ Az alrendszersel kapcsolatos további részletekért olvassa el a [multi-DRM tar
 A Player alkalmazás egy egyoldalas alkalmazás (SPA), amelyet a Visual Studio Code-ban fejlesztettünk ki a következő használatával:
 
 * Node.js with ES 6 JavaScript
-* @azure/msal-browser2,0 Beta
+* @azure/msal-browser 2,0 Beta
 * Azure Media Player SDK
 * OAuth 2 folyamat az Azure AD v2-végpontokon (Microsoft Identity platform)
 
@@ -261,7 +263,7 @@ A Player alkalmazás beállítása két lehetőség közül választhat:
 
 ### <a name="option-1"></a>1\. lehetőség
 
-1. Indítsa el a Visual Studio Code-ot.
+1. A Visual Studio Code elindítása.
 1. A projekt megnyitásához kattintson a fájl-> mappa megnyitása lehetőségre, > tallózással keresse meg és válassza ki a fájl *package.jsjának* szülő mappáját.
 1. Nyissa meg a JavaScript *-fájl nyilvános/JavaScript/constants.js*.
 1. Cserélje le `OAUTH2_CONST.CLIENT_ID` a `client_id` regisztrált ÜGYFÉLALKALMAZÁS a HRE-bérlőben.  A `client_id` Azure Portal található regisztrált alkalmazás Áttekintés szakaszában talál. Megjegyzés: ez az ügyfél-azonosító, nem objektumazonosító.
@@ -377,7 +379,7 @@ Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben
 > [!WARNING]
 > Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

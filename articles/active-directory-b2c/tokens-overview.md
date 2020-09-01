@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482583"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258435"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -119,7 +119,7 @@ A jogkivonat fejléce a jogkivonat aláírásához használt kulcs-és titkosít
 }
 ```
 
-A **ALG** jogcím értéke a jogkivonat aláírásához használt algoritmus. A **Kid** jogcím értéke a jogkivonat aláírásához használt nyilvános kulcs. Azure AD B2C bármikor aláírhat egy jogkivonatot egy nyilvános titkos kulcspár egyik készletének használatával. A Azure AD B2C rendszeresen elforgatja a kulcsok lehetséges készletét. Az alkalmazást úgy kell megírni, hogy ezeket a kulcsfontosságú módosításokat automatikusan kezeljék. Az Azure AD B2C által használt nyilvános kulcsok frissítéseinek ellenőrzéséhez szükséges ésszerű gyakoriság 24 óránként.
+A **ALG** jogcím értéke a jogkivonat aláírásához használt algoritmus. A **Kid** jogcím értéke a jogkivonat aláírásához használt nyilvános kulcs. Azure AD B2C bármikor aláírhat egy jogkivonatot egy nyilvános titkos kulcspár egyik készletének használatával. A Azure AD B2C rendszeresen elforgatja a kulcsok lehetséges készletét. Az alkalmazást úgy kell megírni, hogy ezeket a kulcsfontosságú módosításokat automatikusan kezeljék. Az Azure AD B2C által használt nyilvános kulcsok frissítéseinek ellenőrzéséhez szükséges ésszerű gyakoriság 24 óránként. A nem várt legfontosabb változások kezeléséhez az alkalmazást úgy kell megírni, hogy újra lekérje a nyilvános kulcsokat, ha nem várt értékű **gyerek** értéket kap.
 
 Azure AD B2C OpenID Connect metaadat-végponttal rendelkezik. Ennek a végpontnak a használatával az alkalmazások a Azure AD B2Cról kérhetnek le adatokat. Ezek az adatok a végpontokat, a jogkivonat tartalmát és a jogkivonat-aláíró kulcsokat tartalmazzák. Az Azure AD B2C-bérlő minden házirendhez tartalmaz egy JSON-metaadatokat tartalmazó dokumentumot. A metaadat-dokumentum egy JSON-objektum, amely számos hasznos információt tartalmaz. A metaadatok **jwks_uri**tartalmaznak, amely a jogkivonatok aláírásához használt nyilvános kulcsok helyét adja meg. Ez a hely itt érhető el, de érdemes dinamikusan beolvasni a helyet a metaadatokat tartalmazó dokumentum és az elemzési **jwks_uri**használatával:
 

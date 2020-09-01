@@ -1,16 +1,16 @@
 ---
 title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Java – QnA Maker'
-description: Ez a Java REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+description: Ez a Java REST-alapú rövid útmutató végigvezeti Önt a Cognitive Services API-fiók Azure-irányítópultján megjelenő példa QnA Maker tudásbázis létrehozásán.
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 2dcea06fa0cb61813330298c833be7eb21a63ae7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325950"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259795"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Java használatával
 
@@ -39,7 +39,7 @@ Hozzon létre egy `CreateKB.java` nevű fájlt.
 
 A `CreateKB.java` tetején a következő sorok hozzáadásával adja hozzá a szükséges függőségeket a projekthez:
 
-[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 A fenti szükséges függőségek után adja hozzá a QnA Maker eléréséhez szükséges konstansokat is a `CreateKB` osztályhoz.
@@ -48,18 +48,18 @@ Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-servic
 
 Állítsa be a következő értékeket:
 
-* `<your-qna-maker-subscription-key>`– A **kulcs** egy 32 karakterből álló karakterlánc, és a Azure Portal QnA Maker erőforrásban, a rövid útmutató lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
-* `<your-resource-name>`– Az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható a következő formátumban: `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
+* `<your-qna-maker-subscription-key>` – A **kulcs** egy 32 karakterből álló karakterlánc, és a Azure Portal QnA Maker erőforrásban, a rövid útmutató lapon érhető el. Ez a kulcs nem egyezik meg az előrejelzési végpont kulcsával.
+* `<your-resource-name>` – Az **Erőforrás neve** a szerzői végpont URL-címének létrehozásához használható a következő formátumban: `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . Ez az erőforrás neve nem egyezik meg az előrejelzési végpont lekérdezéséhez használt névvel.
 
 Az osztály befejezéséhez nem kell hozzáadnia a záró kerek zárójelet. Ez a rövid útmutató végén a végső kódrészletben szerepel.
 
-[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="constants":::
 
 
 ## <a name="add-the-kb-model-definition-classes"></a>A tudásbázismodell definícióosztályainak hozzáadása
 A konstansok után adja hozzá a következő osztályokat és függvényeket a `CreateKB` osztályhoz, ezzel szerializálja a modelldefiníciós objektumot a JSON-ba.
 
-[!code-java[Add the KB model definition classes](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=36-80 "Add the KB model definition classes")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="model":::
 
 ## <a name="add-supporting-functions"></a>Támogató függvények hozzáadása
 
@@ -67,24 +67,24 @@ Ezután adja hozzá a következő támogató függvényeket a `CreateKB` osztál
 
 1. A következő függvények hozzáadásával olvasható formában jelenítheti meg a JSON-fájlt:
 
-    [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="pretty":::
 
 2. A következő osztály hozzáadásával felügyelheti a HTTP-választ:
 
-    [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="response":::
 
 3. Adja hozzá a következő metódust, hogy POST-kérést küldjön a QnA Maker API-knak. Az `Ocp-Apim-Subscription-Key` QnA Maker szolgáltatás kulcsa, amely a hitelesítéshez használható.
 
-    [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="post":::
 
 4. Adja hozzá a következő metódust, hogy GET-kérést küldjön a QnA Maker API-knak.
 
-    [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get":::
 
 ## <a name="add-a-method-to-create-the-kb"></a>Metódus hozzáadása a tudásbázis létrehozásához
 Adja hozzá a következő metódust, hogy a Post metódusba indított hívással létrehozza a tudásbázist.
 
-[!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="create_kb":::
 
 Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját. A művelet azonosítója alapján megállapíthatja, hogy a tudásbázis sikeresen létrejött-e.
 
@@ -101,7 +101,7 @@ Az API egy JSON-választ ad vissza, amely tartalmazza a művelet azonosítóját
 ## <a name="add-a-method-to-get-status"></a>Metódus hozzáadása az állapot lekéréséhez
 Adja hozzá a következő metódust a létrehozási állapot lekérdezéséhez.
 
-[!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get_status":::
 
 Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 
@@ -119,17 +119,17 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 ## <a name="add-a-main-method"></a>Fő metódus hozzáadása
 A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A rendszer visszaadja a művelet AZONOSÍTÓját a POST Response **fejléc mezőjében**, majd az útvonal részeként használja a Get kérelemben. A `while` hurok újrapróbálkozik az állapottal, ha az nem fejeződött be.
 
-[!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="main":::
 
 ## <a name="compile-and-run-the-program"></a>A program létrehozása és futtatása
 
-1. Győződjön meg arról, hogy a gson kódtár a `./libs` könyvtárban található. A parancssorban fordítsa le a `CreateKB.java` fájlt:
+1. Győződjön meg arról, hogy a gson kódtár a `./libs` könyvtárban található. A parancssorban fordítsa le a fájlt `CreateKB.java` :
 
     ```bash
     javac -cp ".;libs/*" CreateKB.java
     ```
 
-2. Írja be a következő parancsot egy parancssorba a program futtatásához. A parancs egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Mindegyik válasz megjelenik a konzolablakban.
+2. A program futtatásához írja be a következő parancsot a parancssorba. A parancs egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Mindegyik válasz megjelenik a konzolablakban.
 
     ```bash
     java -cp ",;libs/*" CreateKB

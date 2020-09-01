@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082732"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257143"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>A Media Services API és a REST hozzáférése Azure AD-hitelesítéssel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -62,7 +64,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Media Services API eléréséhez a következő adatpontokat kell összegyűjtenie.
 
-|Beállítás|Példa|Description|
+|Beállítás|Példa|Leírás|
 |---|-------|-----|
 |Azure Active Directory bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-t biztonságos jogkivonat-szolgáltatás (STS) végpontja hozza létre a következő formátumban: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Az Azure AD JWT bocsát ki az erőforrásokhoz (hozzáférési token) való hozzáféréshez.|
 |REST API-végpont|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Ez az a végpont, amelyen az alkalmazás összes Media Services REST API hívása történik.|
@@ -168,7 +170,7 @@ Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster**haszn�
 
 1. A **Poster**megnyitása.
 2. Válassza a **GET** lehetőséget.
-3. Illessze be a REST API végpontot (például:https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+3. Illessze be a REST API végpontot (például: https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Válassza az **Engedélyezés** lapot. 
 5. Jelölje ki a **tulajdonosi jogkivonatot**.
 6. Illessze be az előző szakaszban létrehozott jogkivonatot.

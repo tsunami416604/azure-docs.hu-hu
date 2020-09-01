@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan elemezheti a hang-és videotartalom-tartalmakat a Azure Media Services AudioAnalyzerPreset és VideoAnalyzerPreset használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/30/2020
-ms.author: juliako
-ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78ac75566eac120db4527b2e04324e7e6d40808c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053472"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258894"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Azure Media Services v3 lehetővé teszi a videó-és hangfájlokból származó elemzések kinyerését Video Indexer segítségével. Ez a cikk az adatok kinyeréséhez használt Media Services v3 Analyzer-előállítók leírását ismerteti. Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert. Ha szeretné megismerni, hogy mikor érdemes használni a Video Indexer vs. Media Services Analyzer-készleteket, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
