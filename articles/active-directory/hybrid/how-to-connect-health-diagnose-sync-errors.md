@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d48483697970333c542f140567ca6a6d3fcf7d2
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359092"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179147"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
 
@@ -58,7 +58,7 @@ A diagnosztizálási funkció a következő duplikált attribútumokkal rendelke
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> A funkció eléréséhez **globális rendszergazdai** engedély vagy **közreműködői** engedély szükséges a RBAC-beállításokban.
+> A funkció eléréséhez **globális rendszergazdai** engedély vagy **közreműködői** engedély szükséges az Azure RBAC.
 >
 
 Kövesse a Azure Portal lépéseit, és Szűkítse le a szinkronizálási hiba részleteit, és adjon meg konkrétabb megoldásokat:
@@ -68,7 +68,7 @@ Kövesse a Azure Portal lépéseit, és Szűkítse le a szinkronizálási hiba r
 A Azure Portal hajtson végre néhány lépést az egyes javítható helyzetek azonosításához:  
 1.  Keresse meg a **Diagnosztizálás állapota** oszlopot. Az állapot azt mutatja, hogy lehetséges-e a szinkronizálási hiba kijavítása közvetlenül a Azure Active Directoryról. Ez azt jelenti, hogy létezik egy hibaelhárítási folyamat, amely leszűkítheti a hiba esetét, és esetleg javíthatja azt.
 
-| Állapot | Mit jelent? |
+| status | Mit jelent? |
 | ------------------ | -----------------|
 | Nincs elindítva | Nem látogatta meg ezt a diagnosztikai folyamatot. A diagnosztikai eredményektől függően lehetőség van arra, hogy a szinkronizálási hibát közvetlenül a portálról javítsa ki. |
 | Manuális javítás szükséges | A hiba nem felel meg a portálon elérhető javítások feltételeinek. Az ütköző objektumtípusok nem a felhasználók, vagy már elvégezte a diagnosztikai lépéseket, és a portálon nem érhető el javítás. Az utóbbi esetben a helyszíni oldalról származó javítás még mindig az egyik megoldás. [További információ a helyszíni javításokról](https://support.microsoft.com/help/2647098). | 
@@ -148,7 +148,7 @@ Az Azure AD-beli felhőalapú felhasználónak nem lehet forrás-horgonya. Ebben
 
 
 **Q.** Milyen engedélyre van szükség a felhasználónak a javítás alkalmazásához?  
-**Egy.** A RBAC beállításaiban a **globális rendszergazda**vagy a **közreműködő** jogosult a diagnosztikai és hibaelhárítási folyamat elérésére.
+**Egy.** Az Azure RBAC **globális rendszergazdája**vagy **közreműködője** jogosult a diagnosztikai és hibaelhárítási folyamat elérésére.
 
 
 **Q.** Be kell állítania Azure AD Connect vagy frissítenie kell a Azure AD Connect Health ügynököt ehhez a szolgáltatáshoz?  

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791180"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180473"
 ---
-# <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Riasztások érvényesítése (EICAR-tesztfájl) az Azure Security Centerben
+# <a name="alert-validation-in-azure-security-center"></a>Riasztások érvényesítése Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
 
 ## <a name="what-are-security-alerts"></a>Mik azok a biztonsági riasztások?
@@ -33,12 +33,12 @@ További információ: [biztonsági riasztások a Security Centerban](security-c
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## <a name="validate-alerts-on-windows-vms"></a>Riasztások ellenőrzése Windows rendszerű virtuális gépeken<a name="validate-windows"></a>
+## <a name="validate-alerts-on-windows-vms"></a>Riasztások ellenőrzése Windows rendszerű virtuális gépeken <a name="validate-windows"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 
 1. Másoljon egy végrehajtható fájlt (például **calc.exe**) a számítógép asztalára vagy más kényelmi címtárba, és nevezze át **ASC_AlertTest_662jfi039N.exeként **.
-1. Nyissa meg a parancssort, és hajtsa végre a fájlt argumentummal (csak egy hamis argumentum neve), például:```ASC_AlertTest_662jfi039N.exe -foo```
+1. Nyissa meg a parancssort, és hajtsa végre a fájlt argumentummal (csak egy hamis argumentum neve), például: ```ASC_AlertTest_662jfi039N.exe -foo```
 1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>Riasztások ellenőrzése Linux rendszerű virtuális gépeken<a name="validate-linux"></a>
+## <a name="validate-alerts-on-linux-vms"></a>Riasztások ellenőrzése Linux rendszerű virtuális gépeken <a name="validate-linux"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 1. Másolja a végrehajtható fájlt egy kényelmes helyre, és nevezze át a (z **)./asc_alerttest_662jfi039nre**, például:
@@ -60,7 +60,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
 
-## <a name="validate-alerts-on-kubernetes"></a>Riasztások ellenőrzése a Kubernetes<a name="validate-kubernetes"></a>
+## <a name="validate-alerts-on-kubernetes"></a>Riasztások ellenőrzése a Kubernetes <a name="validate-kubernetes"></a>
 
 Ha az Azure Kubernetes szolgáltatás integrálásának Security Center előzetes verzióját használja, futtassa a következő kubectl-parancsot a riasztások működésének ellenőrzéséhez:
 

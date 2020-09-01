@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 7fab15ae4e9e58af58a4490beb2d512379976d1c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263941"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181103"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Erőforrások megismerése és kezelése az eszközök leltározásával és felügyeleti eszközeivel
 
@@ -102,6 +102,9 @@ A [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explor
 1. A **biztonsági eredmények** szűrővel való használatához adja meg az érintett erőforrásokhoz szűrni kívánt biztonsági rés azonosítójának, biztonsági vizsgálatának vagy CVE-nevének a szabad szövegét:
 
     !["Biztonsági eredmények" szűrő](./media/asset-inventory/security-findings-contain-elements.png)
+
+    > [!TIP]
+    > A **biztonsági megállapítások** és a **címkék** szűrők csak egyetlen értéket fogadnak el. Ha egynél többre szeretne szűrni, használja a **szűrők hozzáadása**lehetőséget.
 
 1. Az **árképzési szint** szűrő használatához válasszon ki egy vagy több beállítást (ingyenes, részleges vagy standard):
 

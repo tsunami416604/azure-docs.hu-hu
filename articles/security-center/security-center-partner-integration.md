@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519231"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180847"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -35,10 +35,7 @@ Az integrált biztonsági megoldások jelenleg a [Qualys](https://www.qualys.com
 > [!NOTE]
 > Security Center nem telepíti a Log Analytics ügynököt a partner virtuális készülékekre, mert a legtöbb biztonsági gyártó tiltja a készülékeken futó külső ügynököket.
 
-Ha többet szeretne megtudni a sebezhetőségi vizsgálat eszközeinek integrálásáról a Qualys, beleértve a standard szintű ügyfelek számára elérhető beépített szkennert, lásd: 
-
-- [Integrált biztonsági rés a virtuális gépekhez](built-in-vulnerability-assessment.md).
-- [Partneri sebezhetőség-ellenőrzési megoldás üzembe helyezése](partner-vulnerability-assessment.md).
+Ha többet szeretne megtudni a biztonsági rések vizsgálati eszközeinek a Qualys-ből való integrálásáról, beleértve a standard szintű ügyfelek számára elérhető beépített szkennert, tekintse meg az [Azure-Virtual Machines sebezhetőségi felméréseit](deploy-vulnerability-assessment-vm.md).
 
 A Security Center a következő biztonsági rések elemzését is biztosítja:
 
@@ -104,7 +101,7 @@ Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztathat�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A kapcsolódó információk a következő cikkekben találhatók:
 

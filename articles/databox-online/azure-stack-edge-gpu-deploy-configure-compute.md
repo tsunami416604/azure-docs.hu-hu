@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 9fd940ec5cfb3eac9d0072c8554ca6bd295a50ec
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 8ba460168edc03b1cb491d69010acd03f4a84ae3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087869"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181583"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>Oktatóanyag: számítás konfigurálása Azure Stack Edge GPU-eszközön
 
@@ -63,7 +63,7 @@ A számítás Azure Stack Edge-ben való konfigurálásához IoT Hub erőforrás
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása több percet vesz igénybe. A IoT Hub erőforrás létrehozása után a számítási csempék **konfigurálása** a számítási konfiguráció megjelenítéséhez. 
+4. Válassza a **Létrehozás** lehetőséget. A IoT Hub erőforrás létrehozása több percet vesz igénybe. A IoT Hub erőforrás létrehozása után a számítási csempék **konfigurálása** a számítási konfiguráció megjelenítéséhez. 
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
@@ -80,7 +80,7 @@ A számítási műveletek végrehajtása a háttérben, a virtuális gépek és 
 
 Miután sikeresen konfigurálta a Azure Portal-beli számítást, egy Kubernetes-fürtöt és egy, az IoT-névtérhez társított alapértelmezett felhasználót (az Azure Stack Edge által vezérelt rendszernévtér) létezik. 
 
-## <a name="get-kubernetes-api-endpoint"></a>Kubernetes API-végpont beolvasása
+## <a name="get-kubernetes-endpoints"></a>Kubernetes-végpontok beolvasása
 
 Ha az ügyfelet a Kubernetes-fürt eléréséhez szeretné konfigurálni, szüksége lesz az Kubernetes-végpontra. Az alábbi lépéseket követve beolvashatja a Kubernetes API-végpontot az Azure Stack Edge-eszköz helyi felhasználói felületéről.
 
@@ -91,13 +91,21 @@ Ha az ügyfelet a Kubernetes-fürt eléréséhez szeretné konfigurálni, szüks
 
 3. Mentse a végponti karakterláncot. Ezt később fogja használni, amikor a kubectl-on keresztül konfigurálja az ügyfelet a Kubernetes-fürt eléréséhez.
 
-4. A helyi webes KEZELŐFELÜLETen válassza a **Speciális beállítások** lehetőséget, majd töltse le a konfigurációs fájlt. 
+4. A helyi webes KEZELŐFELÜLETen a következőket teheti:
 
-    ![Eszköz lap a helyi felhasználói felületen](./media/azure-stack-edge-j-series-create-kubernetes-cluster/advanced-config-1.png)
+    - Nyissa meg a Kubernetes API-t, válassza a **Speciális beállítások** lehetőséget, majd töltse le a Kubernetes speciális konfigurációs fájlját. 
 
-    Ha a Microsofttól kapott kulcsot (válassza ki a felhasználókat), akkor ezt a konfigurációs fájlt használhatja.
+        ![Eszköz lap a helyi felhasználói felületen 1](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-    ![Eszköz lap a helyi felhasználói felületen](./media/azure-stack-edge-j-series-create-kubernetes-cluster/advanced-config-2.png)
+        Ha a Microsofttól kapott kulcsot (válassza ki a felhasználókat), akkor ezt a konfigurációs fájlt használhatja.
+
+        ![Eszköz lap a helyi felhasználói felületen 2](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
+
+    - Megtekintheti a **Kubernetes irányítópult** -végpontot is, és letöltheti a `aseuser` konfigurációs fájlt. 
+    
+        ![Eszköz lap a helyi felhasználói felületen 3](./media/azure-stack-edge-gpu-deploy-configure-compute/download-aseuser-config-1.png)
+
+        A `aseuser` konfigurációs fájl lehetővé teszi a `iotedge` Kubernetes-fürt névterével kapcsolatos problémák hibakeresését. További információ: [hibakeresés Kubernetes kapcsolatos problémák](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge). 
 
 
 ## <a name="next-steps"></a>További lépések
@@ -106,7 +114,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
-> * Kubernetes API-végpont beolvasása
+> * Kubernetes-végpontok beolvasása
 
 
 Az Azure Stack Edge-eszköz felügyeletének megismeréséhez lásd:

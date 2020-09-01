@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9224888a38c86e35df9ad516c761fd7012824c15
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7274cef73bff3fb87d55ad636ff0167c8a064796
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084045"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180677"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>A Kubernetes-irányítópult használata az Azure Stack Edge GPU-eszköz figyeléséhez
 
@@ -26,6 +26,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 >
 > * A Kubernetes-irányítópult elérése az eszközön
+> * `aseuser`Konfiguráció letöltése
 > * Az eszközön üzembe helyezett modulok megtekintése
 > * Az eszközön üzembe helyezett alkalmazások IP-címének lekérése
 > * Az eszközön üzembe helyezett modulok tároló-naplófájljainak megtekintése
@@ -33,13 +34,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="about-kubernetes-dashboard"></a>Tudnivalók a Kubernetes-irányítópultról
 
-A Kubernetes irányítópult egy webalapú felhasználói felület, amellyel elháríthatja a tároló alkalmazások hibáit. A Kubernetes irányítópult a Kubernetes parancssorának felhasználói felületén alapuló alternatívája `kubectl` . 
+A Kubernetes irányítópult egy webalapú felhasználói felület, amellyel elháríthatja a tároló alkalmazások hibáit. A Kubernetes irányítópult a Kubernetes parancssorának felhasználói felületén alapuló alternatívája `kubectl` . További információ: Kubernetes- [irányítópult](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-Az Azure Stack Edge-eszközön a Kubernetes-irányítópultot csak olvasható módban használhatja, így áttekintést kaphat az Azure Stack Edge-eszközön futó alkalmazásokról, megtekintheti a Kubernetes-fürt erőforrásainak állapotát, és megtekintheti az eszközön bekövetkezett hibákat.
+Az Azure Stack Edge-eszközön a Kubernetes-irányítópultot *csak olvasható* módban használhatja, így áttekintést kaphat az Azure stack Edge-eszközön futó alkalmazásokról, megtekintheti a Kubernetes-fürt erőforrásainak állapotát, és megtekintheti az eszközön bekövetkezett hibákat.
 
 ## <a name="access-dashboard"></a>Hozzáférés az irányítópulthoz
 
-A Kubernetes irányítópult írásvédett, és az 31000-es porton futtatja a Kubernetes fő csomópontját. Az irányítópult eléréséhez kövesse az alábbi lépéseket: 
+A Kubernetes irányítópult írásvédett, és az 31000 *-* es porton futtatja a Kubernetes fő csomópontját. Az irányítópult eléréséhez kövesse az alábbi lépéseket: 
 
 1. Az eszköz helyi felhasználói felületén nyissa meg az **eszközt** , majd válassza az **eszköz végpontok**lehetőséget. A Kubernetes irányítópult URL-címére kattintva nyissa meg az irányítópultot egy böngészőben.
 
@@ -110,6 +111,6 @@ A tároló naplófájljainak megtekintéséhez kövesse az alábbi lépéseket a
     ![Tárolói naplók megtekintése 2](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-container-logs-1.png)
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Kubernetes kapcsolatos hibák elhárításáról <!--insert link-->.

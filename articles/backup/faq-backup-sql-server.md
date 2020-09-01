@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 991a00aca3b32ee743be3cdc2bc6a35de064cb25
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c1efbc44ae1e4bea96c063e4dc734f1cc53a42ac
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006142"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180099"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -52,7 +52,7 @@ A DefaultBackupTasksThreshold alapértelmezett értéke **20**.
  Habár ez a módszer segít, ha a biztonságimásolat-készítő alkalmazás nagy mennyiségű erőforrást használ fel, SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) sokkal általánosabb módszer a határértékek megadására a bejövő alkalmazások által igényelt CPU, fizikai IO és memória mennyisége tekintetében.
 
 > [!NOTE]
-> Az UX-ben továbbra is előre megtekintheti a sok biztonsági mentést, és bármikor ütemezheti azt. A fenti példának megfelelően a rendszer a következő példában szereplő 5. szövegű csúszó ablakban dolgozza fel őket.
+> Az UX-ben továbbra is előre megtekintheti a sok biztonsági mentést, és bármikor ütemezheti azt. A fenti példának megfelelően a rendszer a következő példában szereplő, 5. számú csúszó ablakban dolgozza fel őket.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Futtathatok teljes biztonsági mentést egy másodlagos replikáról?
 
@@ -102,6 +102,6 @@ Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan ada
 
   ![Újonnan hozzáadott adatbázis manuális felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

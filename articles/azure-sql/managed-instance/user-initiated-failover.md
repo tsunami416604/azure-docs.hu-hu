@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589503"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181765"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
 
@@ -36,6 +36,15 @@ A következő okok miatt érdemes lehet [manuális feladatátvételt](../databas
 > Annak biztosítása, hogy az alkalmazások az éles környezetben történő üzembe helyezés előtt rugalmasak legyenek, segít csökkenteni az alkalmazás-meghibásodások kockázatát az éles környezetben, és az ügyfelek számára elérhetővé teszi az alkalmazások rendelkezésre állását.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Manuális feladatátvétel kezdeményezése az SQL felügyelt példányán
+
+### <a name="rbac-permissions-required"></a>RBAC engedélyek szükségesek
+
+A feladatátvételt kezdeményező felhasználónak a következő RBAC szerepkörök egyikével kell rendelkeznie:
+
+- Előfizetés tulajdonosi szerepköre, vagy
+- Felügyelt példány közreműködői szerepköre, vagy
+- Egyéni szerepkör a következő engedélyekkel:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>A PowerShell használata
 

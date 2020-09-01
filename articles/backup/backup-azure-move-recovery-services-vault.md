@@ -4,12 +4,12 @@ description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827120"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181510"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -17,7 +17,7 @@ Ez a cikk azt ismerteti, hogyan helyezhet át egy Recovery Services-tárolót az
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália támogatja. Délkelet-Ausztrália, Közép-Kanada, Kelet-Kanada, Dél-Kelet-Ázsia, Kelet-Ázsia, Közép-USA, USA északi középső régiója, USA keleti régiója, USA 2. keleti régiója, USA déli középső régiója, az USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója, Közép-India, Dél-India, Kelet-Japán , Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
+A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália támogatja. Kelet-Ausztrália, Közép-Kanada, Kelet-Kanada, Dél-Kelet-Ázsia, Kelet-Ázsia, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója, USA 2. keleti régiója, Dél-Európa, Közép-India, Dél-India, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea , Észak-Európa, Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
 
 ## <a name="unsupported-regions"></a>Nem támogatott régiók
 
@@ -46,7 +46,7 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 
 > [!NOTE]
 > Az Azure-régiók Azure Backup Recovery Services-tárolóinak áthelyezése nem támogatott.<br><br>
-> Ha a **Azure site Recovery**használatával bármilyen virtuális gépet (Azure IaaS, Hyper-V, VMware) vagy fizikai gépet konfigurált, akkor az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
+> Ha olyan virtuális gépeket (Azure IaaS-t, Hyper-V-t, VMware-et) vagy fizikai gépeket állított be, amelyeken a **Azure site Recovery**-t használja, az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Recovery Services-tár másik erőforráscsoporthoz való áthelyezéséhez használja a Azure Portal
 

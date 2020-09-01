@@ -5,22 +5,26 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/31/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919675"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179351"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Újrahitelesítési kérések optimalizálása és az Azure-Multi-Factor Authentication munkamenet-élettartamának megértése
 
 Azure Active Directory (Azure AD) több beállítással rendelkezik, amelyek meghatározzák, hogy a felhasználóknak milyen gyakran kell újrahitelesíteniük magukat. Ez az újrahitelesítés olyan első tényező lehet, mint például a jelszó, a vagy a jelszóval nem rendelkező Microsoft Authenticator vagy a többtényezős hitelesítés (MFA) végrehajtása. Ezeket az újrahitelesítési beállításokat igény szerint konfigurálhatja a saját környezetéhez és a kívánt felhasználói élményhez.
+
+Az Azure AD alapértelmezett konfigurációja a felhasználói bejelentkezés gyakorisága 90 napos gördülő ablak. A felhasználók a hitelesítő adatokkal való megkérdezése gyakran úgy tűnik, mint egy értelmes dolog, de nem sül el. Ha a felhasználók úgy vannak betanítva, hogy gondolkodás nélkül megadják a hitelesítő adataikat, akaratlanul is megadhatják azokat a hitelesítő adatok megadásához.
+
+Előfordulhat, hogy a felhasználó nem kér vissza egy felhasználót, de az IT-szabályzatok megszegése visszavonja a munkamenetet. Ilyen például a jelszó módosítása, a nem megfelelő eszköz vagy a fiók letiltási művelete. Explicit módon [visszavonhatja a felhasználói munkameneteket a PowerShell használatával](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
 
 Ez a cikk részletesen ismerteti a javasolt konfigurációkat, valamint azt, hogy a különböző beállítások hogyan működnek és hogyan hatnak egymással.
 
@@ -35,6 +39,7 @@ Annak érdekében, hogy a felhasználók a megfelelő időközönként jelentkez
 * Ha rendelkezik Office 365 alkalmazás-licenccel vagy az ingyenes Azure AD-csomaggal:
     * Az egyszeri bejelentkezés (SSO) engedélyezése a [felügyelt eszközökön](../devices/overview.md) vagy a [zökkenőmentes egyszeri](../hybrid/how-to-connect-sso.md)bejelentkezésen keresztül az alkalmazások között.
     * Tartsa meg a *bejelentkezett maradás* lehetőséget, és irányítsa a felhasználókat, hogy fogadják el.
+* A mobileszközök esetében ügyeljen arra, hogy a felhasználók a Microsoft Authenticator alkalmazást használják. Ez az alkalmazás közvetítőként használható más Azure AD összevont alkalmazásokhoz, és csökkenti a hitelesítési kéréseket az eszközön.
 
 A kutatások azt mutatják, hogy ezek a beállítások a legtöbb bérlő esetében megfelelőek. Ezek a beállítások bizonyos kombinációi, például az *MFA megjegyzése* és *a megmaradt*, megadhatják, hogy a felhasználók túl gyakran hitelesítsék magukat. A rendszeres újrahitelesítési kérések helytelenek a felhasználói hatékonyság szempontjából, és sebezhetővé tehetik azokat a támadásokkal szemben.
 
@@ -71,11 +76,11 @@ További információ a felhasználók bejelentkezésének engedélyezéséről:
 
 ### <a name="remember-multi-factor-authentication"></a>Ne feledje Multi-Factor Authentication  
 
-Ezzel a beállítással megadhatja az 1-60 nap közötti értékeket, és beállíthatja a böngészőben az állandó cookie-t, ha a felhasználó a bejelentkezéskor a **ne Kérdezzen újra X napra** lehetőséget választja.
+Ezzel a beállítással megadhatja az 1-365 nap közötti értékeket, és beállíthatja a böngészőben az állandó cookie-t, ha a felhasználó a bejelentkezéskor a **ne Kérdezzen újra X napra** lehetőséget választja.
 
 ![A bejelentkezési kérés jóváhagyására figyelmeztető üzenet képernyőképe](./media/concepts-azure-multi-factor-authentication-prompts-session-lifetime/approve-sign-in-request.png)
 
-Habár ez a beállítás csökkenti a webes alkalmazások hitelesítésének számát, növeli a modern hitelesítési ügyfelek (például az Office-ügyfelek) hitelesítésének számát. Ezek az ügyfelek általában csak a jelszó alaphelyzetbe állítása vagy a 90 napos inaktivitás után kérik. Az *MFA megjegyzésének* maximális értéke azonban 60 nap. A **továbbra is bejelentkezett** vagy feltételes hozzáférési szabályzatok együttes használata esetén növelheti a hitelesítési kérések számát.
+Habár ez a beállítás csökkenti a webes alkalmazások hitelesítésének számát, növeli a modern hitelesítési ügyfelek (például az Office-ügyfelek) hitelesítésének számát. Ezek az ügyfelek általában csak a jelszó alaphelyzetbe állítása vagy a 90 napos inaktivitás után kérik. Azonban az érték 90 napnál rövidebbre állítása lerövidíti az Office-ügyfelek alapértelmezett MFA-kéréseit, és növeli az újrahitelesítés gyakoriságát. A **továbbra is bejelentkezett** vagy feltételes hozzáférési szabályzatok együttes használata esetén növelheti a hitelesítési kérések számát.
 
 Ha az *MFA* -t használja, és prémium szintű Azure ad 1 licenccel rendelkezik, érdemes lehet áttelepíteni ezeket a beállításokat a feltételes hozzáférés bejelentkezési gyakoriságára. Máskülönben érdemes lehet a *bejelentkezve maradni?* helyette.
 

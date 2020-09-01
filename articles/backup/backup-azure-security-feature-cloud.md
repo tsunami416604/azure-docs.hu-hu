@@ -3,12 +3,12 @@ title: Azure Backup helyreállítható törlés
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: a23d9d1e2ceeb767784490ba65542a5e91b6785b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004918"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179963"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup helyreállítható törlés
 
@@ -97,7 +97,7 @@ Kövesse az alábbi lépéseket:
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor a rendszer a törölt állapotot fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
+Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor azt a rendszer egy helyreállított állapotban fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
 
 Azonosítsa a helyreállított állapotban lévő elemeket.
 
@@ -134,7 +134,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="using-rest-api"></a>A REST API használata
 
-Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor a rendszer a törölt állapotot fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
+Ha törölve lettek az elemek, mielőtt a rendszer letiltotta a törlést, akkor azt a rendszer egy helyreállított állapotban fogja törölni. Ha azonnal törölni szeretné őket, a törlési műveletnek sztornírozva kell lennie, majd újra el kell végrehajtania.
 
 1. Először vonja vissza a törlési műveleteket az [itt](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)leírt lépésekkel.
 2. Ezután tiltsa le a Soft-delete funkciót a REST API használatával az [itt](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)említett lépések végrehajtásával.
@@ -178,6 +178,6 @@ Nem. Nem lehet kényszeríteni a nem törölt elemek törlését. A rendszer 14 
 
 A helyreállítható törlési műveletek a PowerShell használatával végezhetők el. A CLI jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

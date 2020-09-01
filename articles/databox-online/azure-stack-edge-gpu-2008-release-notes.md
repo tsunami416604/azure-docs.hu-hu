@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 6c29240aa3267cd93ba0c3de1f0c797ce1a1483c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: de0847beb92ebc95e1998d88cae93dbc19c3fb27
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084514"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180048"
 ---
 # <a name="azure-stack-edge-with-gpu-preview-release-notes"></a>Azure Stack Edge GPU előzetes kiadási megjegyzésekkel
 
@@ -46,9 +46,9 @@ Az alábbi táblázat összefoglalja az Azure Stack Edge-eszköz ismert problém
 |**11.**|Kubernetes |A Kubernetes jelenleg nem teszi lehetővé a többprotokollos terheléselosztó szolgáltatások használatát. Például egy DNS-szolgáltatás, amely a TCP és az UDP protokollal is figyelni fogja. |A Kubernetes és a MetalLB közötti korlátozás megkerüléséhez két szolgáltatás (az egyik a TCP, az egyik az UDP) hozható létre ugyanazon a pod választón. Ezek a szolgáltatások ugyanazt a megosztási kulcsot és spec. loadBalancerIP használják ugyanazon IP-cím megosztására. Az IP-címek akkor is megoszthatók, ha több szolgáltatással rendelkezik, mint az elérhető IP-címek. <br> További információ: [IP-címek megosztása](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**12.**|Kubernetes-fürt|A meglévő Azure IoT Edge Marketplace-modulok nem futnak a Kubernetes-fürtön az Azure Stack Edge-eszközön IoT Edge üzemeltetési platformként.|A modulokat a Azure Stack Edge-eszközön való üzembe helyezésük előtt módosítani kell. További információ: Azure IoT Edge-modulok módosítása a piactérről Azure Stack Edge-eszközön való futtatáshoz.<!-- insert link-->|
 |**13.**|Kubernetes |A fájl alapú kötési csatlakoztatások nem támogatottak az Azure Stack Edge-eszközön lévő Kubernetes Azure IoT Edge.|A IoT Edge egy fordítási réteget használ a Kubernetes-szerkezetek számára történő fordításhoz `ContainerCreate` . `Binds`Térképek létrehozása hostpath-címtárhoz vagy létrehozás, így a fájl alapú kötési csatlakoztatások nem köthetők IoT Edge tárolók elérési útjaihoz.|
+|**14.**|Kubernetes |Ha saját tanúsítványokat hoz létre a IoT Edgehoz, és hozzáadja azokat a Azure Stack Edge-eszközön, az új tanúsítványok nem lesznek felhasználva a Helm-diagramok frissítésének részeként.|A probléma megoldásához [kapcsolódjon az eszköz PowerShell-felületéhez](azure-stack-edge-gpu-connect-powershell-interface.md). Újraindítás `iotedged` és `edgehub` hüvely.|
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felkészülés Azure Stack Edge-eszköz GPU-val történő üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md)
 

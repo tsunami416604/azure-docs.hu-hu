@@ -4,12 +4,12 @@ description: Ismerje meg, hogy a törlés hogyan védhető meg az Azure-fájlmeg
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282704"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179912"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Az Azure-fájlmegosztás véletlen törlésének védelme Azure Backup használatával
 
@@ -53,7 +53,7 @@ Ha van legalább egy védett fájlmegosztás egy Storage-fiókban, az azt jelent
 >A 2. lépést kell elvégeznie, mielőtt a következő ütemezett biztonsági mentési feladatot a Storage-fiókban lévő védett fájlmegosztás esetében futtatja. Mivel a biztonsági mentési feladatok futtatásakor a rendszer újból engedélyezi a tárolási fiókban lévő összes fájlmegosztás helyreállítható törlését.
 
 >[!WARNING]
->Miután letiltotta a törlést a 2. lépésben, a fájlmegosztás során végrehajtott törlési művelet állandó törlési művelet. Ez azt jelenti, hogy ha véletlenül törli a biztonsági másolatban szereplő fájlmegosztást a Soft delete letiltása után, elveszíti az összes pillanatképet, és nem fogja tudni helyreállítani az adatokat.
+>Miután letiltotta a törlést a 2. lépésben, a fájlmegosztás során végrehajtott törlési művelet állandó törlési művelet. Így ha véletlenül törli a biztonsági mentést tartalmazó fájlmegosztást a Soft delete letiltása után, elveszíti az összes pillanatképet, és nem fogja tudni helyreállítani az adatokat.
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>Egy fájlmegosztás helyreállítható törlési beállításának kontextusában milyen módosítások Azure Backup a Storage-fiók regisztrációjának törlésekor?
 

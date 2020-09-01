@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6d95cb938a341b94a32989e82c42d37956c0a80
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792539"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179844"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT-dokumentumok kezelése UNH 2.5-es szegmensekkel Azure Logic Apps
 
@@ -56,8 +56,6 @@ A bejövő üzenet kódolásához konfigurálja a sémát a EDIFACT-szerződés 
 1. Adja hozzá a sémát az integrációs fiókhoz.
 
 1. Konfigurálja a sémát a EDIFACT-szerződés küldési beállításai között.
-
-1. Válassza ki a EDIFACT szerződést, és kattintson **a Szerkesztés JSON-ként**elemre.  UNH 2.5 érték hozzáadása a szerződés küldése **schemaReferences**
 
 1. Válassza ki a EDIFACT szerződést, és válassza a **Szerkesztés JSON-ként**lehetőséget. Adja hozzá a UNH 2.5 értéket a küldési szerződés `schemaReferences` szakaszhoz:
 

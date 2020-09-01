@@ -4,12 +4,12 @@ description: Ebben a cikkben a Azure Backup figyelési riasztással és Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ce1d65414011b1e307cc16fe886adeb007b262c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000719"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181493"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup figyelési riasztás – gyakori kérdések
 
@@ -19,7 +19,7 @@ Ez a cikk Azure Backup figyeléssel és jelentéskészítéssel kapcsolatos gyak
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Hogyan ellenőrizze, hogy megkezdődött-e a jelentéskészítési adatforgalom egy Log Analytics (LA) munkaterületen?
 
-Navigáljon a konfigurált LA munkaterületre, navigáljon a **naplók** menüponthoz, és futtassa a lekérdezési CoreAzureBackup | igény szerint 1. Ha egy visszaadott rekord jelenik meg, az azt jelenti, hogy az adatok a munkaterületre áramlanak. A kezdeti adatküldés akár 24 óráig is eltarthat.
+Navigáljon a konfigurált LA munkaterületre. Navigáljon a **naplók** menüponthoz, és futtassa a lekérdezést `CoreAzureBackup | take 1` . Ha egy visszaadott rekord jelenik meg, az azt jelenti, hogy az adatok a munkaterületre áramlanak. A kezdeti adatküldés akár 24 óráig is eltarthat.
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Milyen gyakorisággal történik az adatküldés egy LA munkaterületre?
 
@@ -66,7 +66,7 @@ Igen. A következő helyzetekben az értesítések nem lesznek elküldve:
 * Feladat megszakításakor
 * Ha egy második biztonsági mentési művelet meghiúsul, mert az eredeti biztonsági mentési feladata folyamatban van
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További gyakori kérdéseket is áttekinthet:
 

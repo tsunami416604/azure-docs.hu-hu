@@ -3,12 +3,12 @@ title: A Windows rendszer állapotának biztonsági mentése az Azure-ba
 description: Ismerje meg, hogyan készíthet biztonsági mentést a Windows Server rendszerű számítógépek rendszerállapotáról az Azure-ba.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: b3e4e5451d40d7b0e600875b73e4810d5818d168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14ca17284d48355260cdeda6ef3b20b4794a0c4f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013435"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181629"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
 
@@ -80,7 +80,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     ![A MARS-telepítő elkészült](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
-    Az ügynököt még nem kell telepíteni. A tároló hitelesítő adatainak letöltése után telepítheti az ügynököt.
+    Az ügynököt még nem kell telepíteni. Az ügynököt a tár hitelesítő adatainak letöltése után is telepítheti.
 
 6. Az **infrastruktúra előkészítése** panelen válassza a **Letöltés**lehetőséget.
 
@@ -185,7 +185,7 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 
 Ha kérdése van, [küldjön nekünk visszajelzést](https://feedback.azure.com/forums/258995-azure-backup).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-windows-with-mars-agent.md).
 * Most, hogy biztonsági másolatot készített a Windows Server rendszerállapotáról, [kezelheti a tárolókat és a kiszolgálókat](backup-azure-manage-windows-server.md).

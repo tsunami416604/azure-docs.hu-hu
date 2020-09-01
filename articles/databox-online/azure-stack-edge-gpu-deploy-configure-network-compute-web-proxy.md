@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 673bd211f3271eceacb18e7fabfcc6ace2ded42c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 36d331de3a93e04932c4bce4d14704b33f69fab6
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087855"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181544"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-with-gpu"></a>Oktatóanyag: hálózat konfigurálása Azure Stack Edge-hez GPU-val
 
@@ -84,7 +84,7 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
      >[!NOTE]
      >
      > * Azt javasoljuk, hogy ne váltson át a hálózati adapter helyi IP-címére statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ, és a DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz aktiválta a szolgáltatást, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
-     > * Ha engedélyezi a számítást, és a IoT Edge modult használja az Azure Stack Edge-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none**értékre állítsa be. Az NTLM nem támogatott.
+
 
     A hálózati beállítások konfigurálása és alkalmazása után lépjen vissza **a kezdéshez.**
 
@@ -120,7 +120,11 @@ Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálha
 
 Ez egy opcionális konfiguráció.
 
-1. Az eszköz helyi webes FELÜLETén nyissa meg az első lépések lapot.
+> [!IMPORTANT]
+> * Ha engedélyezi a számítást, és a IoT Edge modult használja az Azure Stack Edge-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none**értékre állítsa be. Az NTLM nem támogatott.
+>* A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához. Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható. Az átlátszó proxyk jellemzően Azure Stack peremhálózati környezettel működnek. Nem transzparens webes proxyk nem támogatottak.
+
+1. Az eszköz helyi webes FELÜLETén nyissa meg az **első lépések** lapot.
 2. A **hálózat** csempén konfigurálja a webproxy-kiszolgáló beállításait. Bár a webproxy konfigurálása nem kötelező, ha webproxyt használ, csak ezen a lapon konfigurálhatja.
 
    ![Helyi webes felhasználói felület "Webproxy-beállítások" lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-1.png)
@@ -140,7 +144,7 @@ Ez egy opcionális konfiguráció.
 4. A beállítások alkalmazása után lépjen vissza **a kezdéshez.**
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

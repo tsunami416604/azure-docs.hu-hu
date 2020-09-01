@@ -3,12 +3,12 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 18225fab8b4f1ebe9fd34095108492a0902ca1d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79abf55fdbaae80a84618f6944870131dcd82c89
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001161"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181697"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -275,11 +275,11 @@ Az alábbi lépéseket követve kell áthelyeznie a MABS egy új kiszolgálóra,
 9. Az SQL-ből állítsa vissza a DPMDB.
 10. Futtassa a CMD-t (rendszergazdaként) az új kiszolgálón. Ugrás a Microsoft Azure Backup telepítési hely és a bin mappa
 
-    Elérésiút-példa: CWindowsSystem32>CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Elérési út példája: `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
 11. A Azure Backuphoz való kapcsolódáshoz futtassa a következőt `DPMSYNC -SYNC`
 
-    Ha a régiek áthelyezése helyett **új** lemezeket adott hozzá a DPM-tárolóhoz, futtassa a parancsot. `DPMSYNC -Reallocatereplica`
+    Ha a régiek áthelyezése helyett **új** lemezeket adott hozzá a DPM-tárolóhoz, akkor futtassa a parancsot `DPMSYNC -Reallocatereplica` .
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
@@ -360,7 +360,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 Ha Microsoft Azure Backup kiszolgáló hibával leáll a telepítési fázisban (vagy biztonsági mentés vagy visszaállítás), további információért tekintse meg ezt a [hibakódot tartalmazó dokumentumot](https://support.microsoft.com/kb/3041338)  .
 [Azure Backup kapcsolódó gyakori kérdések](backup-azure-backup-faq.md) is megtekinthetők
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Részletes információkat itt talál a [környezet DPM való előkészítéséről](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019). Emellett olyan támogatott konfigurációkról is tartalmaz információkat, amelyeken Azure Backup Server telepíthető és használható. Számos különböző művelet végrehajtásához [PowerShell-parancsmagokat](/powershell/module/dataprotectionmanager/) is használhat.
 

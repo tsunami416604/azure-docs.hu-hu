@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 26d4476217d5a6f6abea6093f453cd52d654911e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 85e95dc4138fd638c8db9f5c98a7064153c7ef17
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084513"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181646"
 ---
 # <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Azure Stack Edge GPU-eszköz kezelése a Windows PowerShell használatával
 
@@ -184,7 +184,8 @@ Use "kubectl options" for a list of global command-line options (applies to all 
 C:\Users\myuser>
 ```
 
-A parancsok átfogó listáját itt tekintheti `kubectl` meg: [ `kubectl` súgókártya](https://kubernetes.io/docs/reference/kubectl/cheatsheet/). 
+A parancsok átfogó listáját itt tekintheti `kubectl` meg: [ `kubectl` súgókártya](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
+
 
 ### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>A Kubernetes-fürtön kívül elérhető szolgáltatás vagy modul beszerzése
 
@@ -331,6 +332,6 @@ C:\Users\myuser>
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure stack Edge](azure-stack-edge-gpu-deploy-prep.md) üzembe helyezése Azure Portalban.

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 49cfc4899379698cab78a5e22fcffacb60636052
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/18/2020
+ms.openlocfilehash: b2a356f8ee6c8e3d11548a3c7c17a868e4c057c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223635"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179181"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -36,7 +36,7 @@ Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt f
 
 ![Beágyazott adatkészlet](media/data-flow/inline-selector.png "Beágyazott adatkészlet")
 
-##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Támogatott fogadó típusok
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Támogatott fogadó típusok
 
 Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
 
@@ -48,8 +48,9 @@ Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) m
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. az információ-és adatfolyam-szkriptek példái a következő beállításokon találhatók az összekötő dokumentációjában. 
+Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók. 
 
 Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Ha az adatfolyamatból más forrásoknak is szeretne adatírást készíteni, a másolási tevékenység használatával töltse be az adatok egy támogatott fogadóból.
 

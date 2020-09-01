@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5d41a9b638ab023d045060e14488e91dca07b10f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587973"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181374"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -55,7 +55,7 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
     * A példány esetében: az *erőforráscsoport* neve. Használhat egy meglévő erőforráscsoportot, vagy megadhat egy új nevet a létrehozáshoz.
     * A példány esetében: az Azure Digital Twins-példány *neve* . Az új példány nevének a régión belül egyedinek kell lennie az előfizetéshez (ami azt jelenti, hogy ha az előfizetés egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már használja a választott nevet), a rendszer kérni fogja, hogy válasszon másik nevet.
     * Az alkalmazás regisztrálása: az *Azure ad-alkalmazás megjelenített neve* , amely a regisztrációhoz társítva van. Az alkalmazás regisztrálása az [Azure Digital Twins API](how-to-use-apis-sdks.md)-khoz való hozzáférési engedélyek konfigurálására szolgál. Később az ügyfélalkalmazás hitelesíteni fogja az alkalmazás regisztrációját, és ennek eredményeképpen a konfigurált hozzáférési engedélyek lesznek elérhetők az API-khoz.
-    * Az alkalmazás regisztrációja: *Azure ad-alkalmazás válaszának URL-címe* az Azure ad-alkalmazáshoz. Használhatja a t `http://localhost` .
+    * Az alkalmazás regisztrációja: *Azure ad-alkalmazás válaszának URL-címe* az Azure ad-alkalmazáshoz. Használja az `http://localhost` parancsot. A szkript létrehoz egy *nyilvános ügyfél/natív (mobil & asztali) URI-* t.
 
 A szkript létrehoz egy Azure Digital Twins-példányt, hozzárendeli az Azure-felhasználót az *Azure Digital Twins tulajdonos (előzetes verzió)* szerepkörrel a példányon, és beállít egy Azure ad-alkalmazás regisztrációját a használni kívánt ügyfélalkalmazás számára.
 

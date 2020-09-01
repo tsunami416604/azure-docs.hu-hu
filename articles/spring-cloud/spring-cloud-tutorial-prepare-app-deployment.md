@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1261e36c782068844712908e62a72b77d34ba5af
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046731"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179759"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -21,8 +21,8 @@ Ez a témakör bemutatja, hogyan készíthet meglévő Java Spring-alkalmazást 
 A példa futtatása előtt próbálja ki az [alapszintű](spring-cloud-quickstart.md)rövid útmutatót.
 
 Más példák azt is ismertetik, hogyan helyezhet üzembe egy alkalmazást az Azure Spring-felhőben, ha a POM-fájl konfigurálva van. 
-* [Alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md)
-* [Alkalmazás elindítása az Azure CLI használatával](spring-cloud-quickstart-launch-app-cli.md)
+* [Az első alkalmazás elindítása](spring-cloud-quickstart.md)
+* [Mikroszolgáltatások létrehozása és futtatása](spring-cloud-quickstart-sample-app-introduction.md)
 
 Ez a cikk a szükséges függőségeket és azok hozzáadását ismerteti a POM-fájlhoz.
 
@@ -265,7 +265,7 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

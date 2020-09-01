@@ -9,27 +9,27 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2018
+ms.date: 08/28/2020
 ms.author: rogardle
-ms.openlocfilehash: ca40fcb6a2e483e656058835f187dc50bf7bc9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb4403747a3681abd6023cdb9b5e62fd50af12c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074064"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179640"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
 Ez az útmutató részletesen ismerteti, hogyan helyezhet üzembe egy Azure-beli virtuális gépet az Oracle Marketplace katalógusból a [lemezképből](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) egy Oracle 12c-adatbázis létrehozásához az Azure CLI használatával. A kiszolgáló üzembe helyezését követően SSH-kapcsolaton keresztül fog csatlakozni az Oracle-adatbázis konfigurálásához. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
@@ -82,7 +82,7 @@ ssh azureuser@<publicIpAddress>
 
 Az Oracle-szoftver már telepítve van a Piactéri rendszerképre. Hozzon létre egy minta-adatbázist az alábbiak szerint. 
 
-1.  Váltson az *Oracle* -rendszeradminisztrátorra, majd inicializálja a figyelőt a naplózáshoz:
+1.  Váltson az *Oracle* -felhasználóra, majd indítsa el az Oracle-figyelőt:
 
     ```bash
     $ sudo -su oracle
@@ -116,8 +116,13 @@ Az Oracle-szoftver már telepítve van a Piactéri rendszerképre. Hozzon létre
     The listener supports no services
     The command completed successfully
     ```
+2. Adatkönyvtár létrehozása az Oracle-adatfájlokhoz
 
-2.  Hozza létre az adatbázist:
+    ```bash
+        mkdir /u01/app/oracle/oradata
+    ```
+
+3.  Hozza létre az adatbázist:
 
     ```bash
     dbca -silent \
@@ -136,28 +141,58 @@ Az Oracle-szoftver már telepítve van a Piactéri rendszerképre. Hozzon létre
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
+           -datafileDestination "/u01/app/oracle/oradata/"
            -ignorePreReqs
     ```
 
     Az adatbázis létrehozása néhány percet vesz igénybe.
 
-3. Oracle-változók beállítása
+    A következőhöz hasonló kimenet jelenik meg:
 
-A kapcsolódás előtt két környezeti változót kell beállítania: *ORACLE_HOME* és *ORACLE_SID*.
+    ```output
+        Copying database files
+        1% complete
+        2% complete
+        8% complete
+        13% complete
+        19% complete
+        27% complete
+        Creating and starting Oracle instance
+        29% complete
+        32% complete
+        33% complete
+        34% complete
+        38% complete
+        42% complete
+        43% complete
+        45% complete
+        Completing Database Creation
+        48% complete
+        51% complete
+        53% complete
+        62% complete
+        70% complete
+        72% complete
+        Creating Pluggable Databases
+        78% complete
+        100% complete
+        Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+    ```
 
-```bash
-ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
-ORACLE_SID=cdb1; export ORACLE_SID
-```
+4. Oracle-változók beállítása
 
-Emellett ORACLE_HOME és ORACLE_SID változókat is hozzáadhat a. bashrc fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Ellenőrizze, hogy az alábbi utasítások hozzá lettek-e adva a `~/.bashrc` fájlhoz az Ön által választott szerkesztőprogram használatával.
+    A kapcsolódás előtt két környezeti változót kell beállítania: *ORACLE_HOME* és *ORACLE_SID*.
 
-```bash
-# Add ORACLE_HOME. 
-export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1 
-# Add ORACLE_SID. 
-export ORACLE_SID=cdb1 
-```
+    ```bash
+        ORACLE_SID=cdb1; export ORACLE_SID
+    ```
+
+    Emellett ORACLE_HOME és ORACLE_SID változókat is hozzáadhat a. bashrc fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Győződjön meg arról, hogy a következő utasítások lettek hozzáadva a `~/.bashrc` fájlhoz az Ön által választott szerkesztőprogram használatával.
+
+    ```bash
+    # Add ORACLE_SID. 
+    export ORACLE_SID=cdb1 
+    ```
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM Express-kapcsolat
 
@@ -315,7 +350,7 @@ Jelentkezzen be a **sys** -fiók használatával, és jelölje be a **as SYSDBA*
 
 ![Az Oracle OEM Express bejelentkezési oldalának képernyőképe](./media/oracle-quick-start/oracle_oem_express_login.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuális gép már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást.
 

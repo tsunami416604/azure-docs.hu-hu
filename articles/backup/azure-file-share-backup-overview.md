@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dd8a17639c006dd1c0e8cc193776bb63cb536ceb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892252"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180014"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
@@ -50,7 +50,13 @@ Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági m
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek
 
-Jelenleg csak Pillanatképek után kell fizetnie, mivel az Azure-fájlmegosztás biztonsági másolata egy pillanatkép-alapú megoldás. A pillanatképekkel kapcsolatban felmerülő tárolási költségek számlázása Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabási adatok alapján.
+Az Azure fájlmegosztás biztonsági mentési megoldásához két költség tartozik:
+
+1. A **Pillanatképek tárolási költségei**: a pillanatképekhez felmerülő tárolási költségek számlázása Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/) említett díjszabási adatok alapján. 
+
+2. **Védett példány díja** : 2020. szeptember 1-től az ügyfeleknek az [itt](https://azure.microsoft.com/en-in/pricing/details/backup/) említett díjszabásnak megfelelően díjat számítunk fel a védett példány díját. A védett példány díja a Storage-fiókban található védett fájlmegosztás teljes méretétől függ.
+
+Az Azure-fájlmegosztás biztonsági mentésének részletes becsléséhez letöltheti a részletes [Azure Backup díjszabását](https://aka.ms/AzureBackupCostEstimates).  
 
 ## <a name="next-steps"></a>További lépések
 

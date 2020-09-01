@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496049"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180779"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
@@ -24,7 +24,7 @@ Napjainkban a vállalati elemzések nagy léptékű, bármilyen típusú, nyers,
 
 Az ehhez hasonló megoldások nehezen hozhatók létre, konfigurálhatók, biztonságosak és karbantarthatók, ami késlelteti az intelligens betekintés gyors kinyerését.
 
-Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely az adattárházak és a Big Data elemzési rendszerek teljes skálájának, valamint az adattárházak és a elemzésének időpontját is felgyorsítja. Egyesíti a nagyvállalati adattárházban használt **SQL** -technológiákat, a Big Data elemzésekben használt **Spark** -technológiákat, valamint a tevékenységek és az adatáthelyezési **folyamatokat** .
+Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely az adattárházak és a Big Data elemzési rendszerek teljes skálájának, valamint az adattárházak és a elemzésének időpontját is felgyorsítja. Egyesíti a nagyvállalati adattárházban használt **SQL** -technológiákat, a Big Data elemzésekben használt **Spark** -technológiákat, valamint az adatintegrációs és ETL/elt **folyamatokat** .
 
 Az Azure szinapszis egy webes natív **Studio** felhasználói felülettel rendelkezik, amely egyetlen élményt és modellt biztosít a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz.
 
@@ -59,13 +59,13 @@ Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQ
 * Az SQL és a Spark közvetlenül képes felderíteni és elemezni az adattóban tárolt Parquet, CSV-, TSV-és JSON-fájlokat.
 * Gyors skálázható betöltés és eltávolítás az SQL és a Spark adatbázisok közötti adattároláshoz
 
-### <a name="built-in-orchestration-via-pipelines"></a>Beépített előkészítés folyamatokon keresztül
+### <a name="built-in-data-integration-via-pipelines"></a>Beépített Adatintegráció az adatcsatornákon keresztül
 
-Az Azure szinapszis a Azure Data Factoryával azonos adatintegrációs motorral és tapasztalatokkal rendelkezik, így gazdag adatfolyamatokat hozhat létre külön hangvezérelt motor használata nélkül.
+Az Azure szinapszis beépített, ugyanazzal az adatintegrációs motorral és tapasztalatokkal rendelkezik, mint a Azure Data Factory, ami lehetővé teszi, hogy a szinapszis-elemzések elhagyása nélkül hozzon létre gazdag, méretezhető ETL-folyamatokat.
 
-* Az Azure szinapszis és a 90 + helyszíni adatforrások közötti adatáthelyezés
-* Jegyzetfüzetek, folyamatok, Spark-feladatok, SQL-parancsfájlok és tárolt eljárások összehangolása
+* Adatok beolvasása 90 és adatforrásból
 * Kód – ingyenes ETL adatáramlási tevékenységekkel
+* A notebookok, a Spark-feladatok, a tárolt eljárások, az SQL-parancsfájlok és egyebek összehangolása
 
 ### <a name="unified-management-monitoring-and-security"></a>Egységes felügyelet, figyelés és biztonság
 
@@ -86,7 +86,7 @@ A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt
 ## <a name="next-steps"></a>Következő lépések
 
 * [Munkaterület létrehozása](quickstart-create-workspace.md)
-* [A szinapszis Studio használata](quickstart-synapse-studio.md)
+* [A Synapse Studio használata](quickstart-synapse-studio.md)
 * [SQL-készlet létrehozása](quickstart-create-sql-pool-portal.md)
 * [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
 * [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)

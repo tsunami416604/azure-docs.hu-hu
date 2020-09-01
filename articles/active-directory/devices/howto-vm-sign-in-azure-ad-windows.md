@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b38d383f7dac832449e5b10e5cda6b0db859f9a0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005023"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180337"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
 A szervezetek mostantól Azure Active Directory (AD) hitelesítést használhatnak a **Windows Server 2019 Datacenter Edition** vagy **Windows 10 1809** vagy újabb rendszert futtató Azure-beli virtuális gépek (VM-EK) számára. Az Azure AD használatával a virtuális gépek hitelesítése lehetővé teszi a házirendek központi felügyeletét és betartatását. Az olyan eszközök, mint az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és az Azure AD feltételes hozzáférése lehetővé teszi, hogy ki férhet hozzá a virtuális géphez. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows Server 2019 rendszerű virtuális gépet az Azure AD-hitelesítés használatához.
 
 > [!NOTE]
-> Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Windows rendszerű virtuális gépekre való bejelentkezéshez, beleértve a következőket:
 
@@ -32,7 +32,7 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
-   - Többtényezős hitelesítés
+   - Multi-Factor Authentication
    - Bejelentkezési kockázat-ellenőrzési
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
@@ -274,7 +274,7 @@ Ez a kilépési kód DSREG_E_MSI_TENANTID_UNAVAILABLE, mert a bővítmény nem t
 
    - Az RDP-t a virtuális géphez helyi rendszergazdaként, és ellenőrizze, hogy a végpont érvényes bérlői azonosítót ad vissza, ha a parancsot egy emelt szintű parancssorból futtatja a virtuális gépen:
       
-      - Curl-H metaadatok: igazhttp://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - Curl-H metaadatok: igaz http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
 
 1. A virtuálisgép-rendszergazda megkísérli a AADLoginForWindows-bővítmény telepítését, de a rendszerhez rendelt felügyelt identitások nem engedélyezték először a virtuális gépet. Navigáljon a virtuális gép Identity (identitás) paneljére. A rendszerhez rendelt lapon ellenőrizze, hogy az állapot be van-e kapcsolva.
 
@@ -329,7 +329,7 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 
 ![A fiókja úgy van konfigurálva, hogy megakadályozza az eszköz használatát.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Ellenőrizze, hogy konfigurálta-e a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét biztosító [RBAC házirendeket](../../virtual-machines/linux/login-using-aad.md) a virtuális géphez:
+Ellenőrizze, hogy konfigurálta-e az [Azure RBAC-házirendeket](../../virtual-machines/linux/login-using-aad.md) a virtuális gép számára, amely megadja a felhasználónak a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét:
  
 #### <a name="unauthorized-client"></a>Jogosulatlan ügyfél
 

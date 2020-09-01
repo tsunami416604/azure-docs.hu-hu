@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027699"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179403"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure Multi-Factor Authentication végfelhasználói élményének testreszab
 
 A Azure Portal a következő Azure Multi-Factor Authentication beállítások érhetők el:
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | ------- | ----------- |
 | [Fiókzárolási](#account-lockout) | A fiókok ideiglenes zárolása az Azure Multi-Factor Authentication használatával, ha túl sok megtagadott hitelesítési kísérlet van egy sorban. Ez a funkció csak azokra a felhasználókra vonatkozik, akik hitelesítő PIN-kódot ad meg. (MFA-kiszolgáló) |
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Blokkolhatja, hogy bizonyos felhasználók képesek legyenek Azure Multi-Factor Authentication kérelmeket fogadni. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a blokkolt időponttól számítva 90 napig, vagy manuálisan feloldják a zárolást. |
@@ -123,7 +123,7 @@ Az eskü TOTP-tokenek általában titkos kulccsal, vagy a tokenben előre progra
 
 A feldolgozható, programozható eskü TOTP a szoftveres jogkivonat telepítési folyamatában is beállítható az Azure AD-ben.
 
-A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a  [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ![ESKÜ-tokenek feltöltése az MFA-eskü tokenek paneljére](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
@@ -220,7 +220,7 @@ A saját egyéni üzeneteinek használatához hajtsa végre a következő lépé
 
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **telefonhívási beállításait**.
 1. Válassza az **üdvözlés hozzáadása**lehetőséget.
-1. Válassza ki az üdvözlés **típusát** *(például üdvözlés (standard)* vagy *sikeres hitelesítés*).
+1. Válassza ki az üdvözlés **típusát** *(például üdvözlés (standard)* vagy  *sikeres hitelesítés*).
 1. Válassza ki a **nyelvet**, amely az [Egyéni üzenet nyelvi viselkedésének](#custom-message-language-behavior)előző szakaszán alapul.
 1. Tallózással keresse meg és válassza ki a feltölteni kívánt *. mp3* vagy *. wav* hangfájl-fájlt.
 1. Ha elkészült, válassza a **Hozzáadás**, majd a **Mentés**lehetőséget.
@@ -242,12 +242,9 @@ Az Azure Multi-Factor Authentication _megbízható IP_ -címei szolgáltatás me
 
 Ha a szervezete telepíti a hálózati házirend-kiszolgáló bővítményét, hogy az MFA-t a helyszíni alkalmazások számára biztosítsa, jegyezze fel, hogy a forrás IP-cím mindig az NPS-kiszolgáló lesz, amely a hitelesítési kísérleten átfolyik.
 
-| Azure AD-bérlő típusa | Megbízható IP-szolgáltatás beállításai |
-|:--- |:--- |
-| Felügyelt |**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. Legfeljebb 50 megbízható IP-tartományt lehet konfigurálni.|
-| Összevont |**Minden összevont felhasználó**: a szervezeten belülről bejelentkező összes összevont felhasználó elkerülheti a kétlépéses ellenőrzést. A felhasználók megkerülik az ellenőrzést Active Directory összevonási szolgáltatások (AD FS) (AD FS) által kiállított jogcímek használatával.<br/>**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. |
+| Azure AD-bérlő típusa | Megbízható IP-szolgáltatás beállításai | |:---|:---| kétlépéses | Felügyelt | **IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely elkerülheti a többtényezős hitelesítést a vállalati intranetről bejelentkező felhasználók számára. Legfeljebb 50 megbízható IP-tartományt lehet konfigurálni. | | Összevont | **Minden összevont felhasználó**: a szervezeten belülről bejelentkező összes összevont felhasználó kihagyhatja a többtényezős hitelesítést. A felhasználók megkerülik az ellenőrzést Active Directory összevonási szolgáltatások (AD FS) (AD FS) által kiállított jogcímek használatával.<br/>**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely elkerülheti a többtényezős hitelesítést a vállalati intranetről bejelentkező felhasználók számára. |
 
-A megbízható IP-megkerülés csak a vállalati intraneten belülről működik. Ha a **minden összevont felhasználó** lehetőséget választja, és a felhasználó a vállalati intraneten kívülről jelentkezik be, a felhasználónak kétlépéses ellenőrzéssel kell hitelesítenie magát. A folyamat akkor is ugyanaz, ha a felhasználó AD FS jogcímet jelent.
+A megbízható IP-megkerülés csak a vállalati intraneten belülről működik. Ha a **minden összevont felhasználó** lehetőséget választja, és a felhasználó a vállalati intraneten kívülről jelentkezik be, a felhasználónak a multi-Factor Authentication használatával kell hitelesítenie magát. A folyamat akkor is ugyanaz, ha a felhasználó AD FS jogcímet jelent.
 
 ### <a name="end-user-experience-inside-of-corpnet"></a>Végfelhasználói élmény a Corpnet-on belül
 
@@ -268,7 +265,7 @@ A következő lépések végrehajtásával feltételes hozzáférési szabályok
 1. Adja meg a hely nevét.
 1. Válassza **a megjelölés megbízható helyként**lehetőséget.
 1. Adja meg az IP-címtartományt CIDR-jelöléssel a környezethez, például *40.77.182.32/27*.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
 
@@ -278,14 +275,14 @@ A megbízható IP-címek feltételes hozzáférési házirendek használatával 
 1. Válassza az **MFA megbízható IP**-címek konfigurálása lehetőséget.
 1. A **Szolgáltatásbeállítások** oldalon, a **megbízható IP**-címek területen válasszon a következő két lehetőség közül:
 
-   * Az **intranetről származó összevont felhasználóktól érkező kérelmek esetén**: Ha ezt a beállítást szeretné választani, jelölje be a jelölőnégyzetet. Az összes olyan összevont felhasználó, aki bejelentkezik a vállalati hálózatról a kétlépéses ellenőrzés megkerülésére egy AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy AD FS rendelkezik olyan szabállyal, amely az intranetes jogcímet hozzáadja a megfelelő adatforgalomhoz. Ha a szabály nem létezik, hozza létre a következő szabályt a AD FSban:
+   * Az **intranetről származó összevont felhasználóktól érkező kérelmek esetén**: Ha ezt a beállítást szeretné választani, jelölje be a jelölőnégyzetet. Minden összevont felhasználó, aki bejelentkezik a vállalati hálózatról a többtényezős hitelesítés megkerülésével, AD FS által kiállított jogcímet használva. Győződjön meg arról, hogy AD FS rendelkezik olyan szabállyal, amely az intranetes jogcímet hozzáadja a megfelelő adatforgalomhoz. Ha a szabály nem létezik, hozza létre a következő szabályt a AD FSban:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * A **nyilvános IP-címek meghatározott tartományának kéréseire**: Ha ezt a lehetőséget választja, adja meg az IP-címeket a szövegmezőben a CIDR-jelölés használatával.
       * Az xxx. xxx. xxx. 1 és XXX. xxx. xxx. 254 tartományba tartozó IP-címek esetében használja az alábbi jelölést: **xxx. xxx. xxx. 0/24**.
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
-      * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a kétlépéses ellenőrzést.
+      * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
 1. Válassza a **Mentés** lehetőséget.
 
@@ -298,20 +295,20 @@ Ha nem kíván feltételes hozzáférési szabályzatokat használni a megbízha
 1. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
 1. A **Szolgáltatásbeállítások** oldalon, a **megbízható IP**-címek területen válasszon egyet (vagy mindkettőt) a következő két lehetőség közül:
 
-   * Az **intranetes összevont felhasználóktól érkező kérések esetén**: Ha ezt a beállítást szeretné választani, jelölje be a jelölőnégyzetet. Az összes olyan összevont felhasználó, aki bejelentkezik a vállalati hálózatról a kétlépéses ellenőrzés megkerülésére egy AD FS által kiadott jogcím használatával. Győződjön meg arról, hogy AD FS rendelkezik olyan szabállyal, amely az intranetes jogcímet hozzáadja a megfelelő adatforgalomhoz. Ha a szabály nem létezik, hozza létre a következő szabályt a AD FSban:
+   * Az **intranetes összevont felhasználóktól érkező kérések esetén**: Ha ezt a beállítást szeretné választani, jelölje be a jelölőnégyzetet. Minden összevont felhasználó, aki bejelentkezik a vállalati hálózatról a többtényezős hitelesítés megkerülésével, AD FS által kiállított jogcímet használva. Győződjön meg arról, hogy AD FS rendelkezik olyan szabállyal, amely az intranetes jogcímet hozzáadja a megfelelő adatforgalomhoz. Ha a szabály nem létezik, hozza létre a következő szabályt a AD FSban:
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
    * Az **IP-alhálózatok megadott tartományának kérései esetén**: Ha ezt a lehetőséget választja, adja meg az IP-címeket a szövegmezőben a CIDR-jelölés használatával.
       * Az xxx. xxx. xxx. 1 és XXX. xxx. xxx. 254 tartományba tartozó IP-címek esetében használja az alábbi jelölést: **xxx. xxx. xxx. 0/24**.
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
-      * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a kétlépéses ellenőrzést.
+      * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
 1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="verification-methods"></a>Ellenőrzési módszerek
 
-A Service Settings portálon megadhatja a felhasználók számára elérhető ellenőrzési módszereket. Amikor a felhasználók regisztrálják a fiókjaikat az Azure Multi-Factor Authenticationhoz, az Ön által engedélyezett beállítások alapján választják ki az előnyben részesített ellenőrzési módszert. A felhasználói beléptetési folyamatra vonatkozó útmutatást a [saját fiók beállítása a kétlépéses ellenőrzéshez című témakörben talál](../user-help/multi-factor-authentication-end-user-first-time.md).
+A Service Settings portálon megadhatja a felhasználók számára elérhető ellenőrzési módszereket. Amikor a felhasználók regisztrálják a fiókjaikat az Azure Multi-Factor Authenticationhoz, az Ön által engedélyezett beállítások alapján választják ki az előnyben részesített ellenőrzési módszert. A felhasználó beléptetési folyamatával kapcsolatos útmutatást a [saját fiók beállítása a multi-Factor Authentication szolgáltatáshoz](../user-help/multi-factor-authentication-end-user-first-time.md)című témakörben talál.
 
 A következő ellenőrzési módszerek érhetők el:
 
@@ -336,25 +333,25 @@ Az ellenőrzési módszerek engedélyezéséhez vagy letiltásához hajtsa végr
 
 ## <a name="remember-multi-factor-authentication"></a>Ne feledje Multi-Factor Authentication
 
-A _multi-Factor Authentication megjegyzése_ funkció lehetővé teszi, hogy a felhasználók a megadott számú napig is megkerüljék a további ellenőrzéseket, miután az multi-Factor Authentication használatával sikeresen bejelentkezett az eszközre. A szolgáltatás javítja a használhatóságot azáltal, hogy minimalizálja azt a számot, ahányszor egy felhasználónak az MFA-t kell végrehajtania ugyanazon az eszközön.
+A _multi-Factor Authentication megjegyzése_ funkció lehetővé teszi, hogy a felhasználók a megadott számú napig is megkerüljék a további ellenőrzéseket, miután az multi-Factor Authentication használatával sikeresen bejelentkezett az eszközre. A használhatóság növeléséhez és a felhasználók azon számának minimalizálásához, amikor egy felhasználónak az MFA-t ugyanazon az eszközön kell végrehajtania, válasszon egy 90 napos vagy annál hosszabb időtartamot.
 
 > [!IMPORTANT]
 > Ha egy fiók vagy eszköz biztonsága sérül, a megbízható eszközök Multi-Factor Authenticationának megjegyzése hatással lehet a biztonságra. Ha egy vállalati fiók biztonsága sérül, vagy egy megbízható eszköz elveszett vagy ellopták, akkor [vissza kell vonnia az MFA-munkameneteket](howto-mfa-userdevicesettings.md).
 >
-> A visszaállítási művelet visszavonja a megbízható állapotot az összes eszközről, és a felhasználónak újra kell végrehajtania a kétlépéses ellenőrzést. Azt is megteheti, hogy a felhasználók a saját eszközökön is visszaállítják Multi-Factor Authentication a [beállítások kezelése a kétlépéses ellenőrzéshez című témakörben](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)leírtak szerint.
+> A visszaállítási művelet visszavonja a megbízható állapotot az összes eszközről, és a felhasználónak újra kell végeznie a többtényezős hitelesítést. Azt is megteheti, hogy a felhasználók a saját eszközökön is visszaállítják Multi-Factor Authentication a [beállítások kezelése a többtényezős hitelesítéshez](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)című részében leírtak szerint.
 
 ### <a name="how-the-feature-works"></a>A szolgáltatás működése
 
 A ne feledje Multi-Factor Authentication szolgáltatás állandó cookie-t állít be a böngészőben, ha a felhasználó a bejelentkezéskor a **ne Kérdezzen újra X napra** lehetőséget választja. A felhasználónak nem kell ismét megadnia Multi-Factor Authentication ugyanezen böngészőből, amíg a cookie le nem jár. Ha a felhasználó egy másik böngészőt nyit meg ugyanazon az eszközön, vagy törli a cookie-kat, a rendszer ismét kérni fogja az ellenőrzésre.
 
-A **ne jelenjen meg többé az X nap** beállítás nem jelenik meg a böngészőn kívüli alkalmazásokon, függetlenül attól, hogy az alkalmazás támogatja-e a modern hitelesítést. Ezek az alkalmazások a _frissítési jogkivonatokat_ használják, amelyek óránként új hozzáférési jogkivonatokat biztosítanak. A frissítési jogkivonat ellenőrzésekor az Azure AD ellenőrzi, hogy az utolsó kétlépéses ellenőrzés a megadott számú napon belül történt-e.
+A **ne jelenjen meg többé az X nap** beállítás nem jelenik meg a böngészőn kívüli alkalmazásokon, függetlenül attól, hogy az alkalmazás támogatja-e a modern hitelesítést. Ezek az alkalmazások a _frissítési jogkivonatokat_ használják, amelyek óránként új hozzáférési jogkivonatokat biztosítanak. A frissítési jogkivonat ellenőrzésekor az Azure AD ellenőrzi, hogy a legutóbbi többtényezős hitelesítés a megadott számú napon belül történt-e.
 
-A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, ami általában minden alkalommal felgyorsul. A szolgáltatás növeli a modern hitelesítési ügyfelek hitelesítésének számát, amelyek általában 90 naponta megkérik. A feltételes hozzáférési szabályzatokkal kombinálva növelheti a hitelesítések számát is.
+A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, ami általában minden alkalommal felgyorsul. A szolgáltatás növelheti a modern hitelesítési ügyfelek hitelesítésének számát, amelyek általában 90 naponta kérik le, ha alacsonyabb időtartam van beállítva. A feltételes hozzáférési szabályzatokkal kombinálva növelheti a hitelesítések számát is.
 
 > [!IMPORTANT]
-> A **Ne feledje multi-Factor Authentication** funkció nem kompatibilis a AD FS **bejelentkezett** szolgáltatásával, amikor a felhasználók kétlépéses AD FS ellenőrzést végeznek az Azure multi-Factor Authentication-kiszolgáló vagy egy harmadik féltől származó multi-Factor Authentication megoldáson keresztül.
+> A **Ne feledje multi-Factor Authentication** funkció nem kompatibilis a AD FS **bejelentkezett** szolgáltatásával, amikor a felhasználók többtényezős AD FS hitelesítést végeznek az Azure multi-Factor Authentication-kiszolgáló vagy egy harmadik féltől származó multi-Factor Authentication megoldáson keresztül.
 >
-> Ha a felhasználók a AD FS **bejelentkezve szeretnék megtartani** az eszközt, és a multi-Factor Authentication számára is megbízhatóként jelölik meg az eszközét, a felhasználó nem lesz automatikusan ellenőrizve a **multi-Factor Authentication számának megjegyzése** lejár. Az Azure AD egy friss kétlépéses ellenőrzést kér, de AD FS visszaadja az eredeti Multi-Factor Authentication jogcím és dátum értékű jogkivonatot ahelyett, hogy a kétlépéses ellenőrzést újra elvégezze. **Ez a reakció ellenőrző hurkot állít be az Azure AD és a AD FS között.**
+> Ha a felhasználók a AD FS **bejelentkezve szeretnék megtartani** az eszközt, és a multi-Factor Authentication számára is megbízhatóként jelölik meg az eszközét, a felhasználó nem lesz automatikusan ellenőrizve a **multi-Factor Authentication számának megjegyzése** lejár. Az Azure AD új többtényezős hitelesítést kér, de AD FS visszaadja az eredeti Multi-Factor Authentication jogcím és dátum típusú tokent, nem pedig a multi-Factor Authentication ismételt elküldése helyett. **Ez a reakció ellenőrző hurkot állít be az Azure AD és a AD FS között.**
 >
 > A **megjegyzés multi-Factor Authentication** funkció nem kompatibilis a B2B-felhasználókkal, és nem lesz látható a B2B-felhasználók számára a meghívott bérlők bejelentkezésekor.
 >
@@ -366,8 +363,8 @@ A következő lépések végrehajtásával engedélyezheti és konfigurálhatja,
 1. A Azure Portal keresse meg, majd válassza a **Azure Active Directory**, majd a **felhasználók**lehetőséget.
 1. Válassza a **Multi-Factor Authentication** lehetőséget.
 1. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
-1. A **Szolgáltatásbeállítások** lapon **kezelheti a többtényezős hitelesítés megjegyzéseit**, és jelölje be a **felhasználók számára a többtényezős hitelesítés megemlékezésének engedélyezése a megbízható eszközökön** beállítást.
-1. Állítsa be a napok számát, hogy a megbízható eszközök el lehessen kerülni a kétlépéses ellenőrzést. Az alapértelmezett érték 14 nap.
+1. A **Szolgáltatásbeállítások** lapon, a **többtényezős hitelesítés megjegyzése**területen jelölje be a **többtényezős hitelesítés megadásának engedélyezése a felhasználóknak a megbízható eszközökön** jelölőnégyzetet.
+1. Állítsa be, hogy a rendszer hány napig engedélyezze a megbízható eszközök számára a többtényezős hitelesítés megkerülését. Az optimális felhasználói élmény érdekében az időtartamot *90* vagy több napra kell kiterjeszteni.
 1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="mark-a-device-as-trusted"></a>Eszköz megjelölése megbízhatóként

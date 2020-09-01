@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225374"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181442"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémák és megoldások a virtuális gépek minősítése során 
 
@@ -84,7 +84,7 @@ Ha a Visual studiót vagy bármely Office-licenccel rendelkező terméket megpr�
 
 A jóváhagyott alap kiválasztásáról további információt az Azure-beli [virtuális gépek technikai eszközeinek létrehozása](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)című témakörben talál.
 
-## <a name="tool-kit-test-case-execution-failed"></a>Az eszközkészlet tesztelési esetének végrehajtása nem sikerült
+## <a name="tool-kit-test-case-execution-failed"></a>Az eszközkészlet tesztelési esetének végrehajtása nem sikerült 
 
 A Microsoft minősítési eszközkészlet segítséget nyújt a tesztelési esetek futtatásához, és annak ellenőrzéséhez, hogy a VHD vagy a rendszerkép kompatibilis-e az Azure-környezettel.
 
@@ -113,7 +113,7 @@ A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása
  
 |Forgatókönyv|Teszteset|Hiba|Megoldás|
 |---|---|---|---|
-|1|Linux-ügynök verziója – tesztelési eset|A Linux-ügynök minimális verziója 2,241 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni.|A [kérés elküldéséhez](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)a rendszerképet a szükséges verzióval kell frissíteni.|
+|1|Linux-ügynök verziója – tesztelési eset|A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni.|Frissítse a Linux-ügynök verzióját, és 2,241-es vagy újabb verziójának kell lennie. További információt a [Linux-ügynök verziójának frissítését ismertető oldalon](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)talál.|
 |2|Bash-előzmények tesztelési esete|Hibaüzenet jelenik meg, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra van korlátozva, így biztosítható, hogy a rendszer ne rögzítse az esetlegesen bizalmas adatokat a bash-előzmények fájljában.|A probléma megoldásához csatlakoztassa a virtuális merevlemezt bármely más működő virtuális géphez, és végezze el a kívánt módosításokat (például törölje a *. bash* -előzmények fájljait), hogy csökkentse a méretet 1 KB-nál kisebb vagy egyenlő értékre.|
 |3|Szükséges kernel-paraméterek tesztelési esete|Ez a hibaüzenet akkor jelenik meg, ha a **konzol** értéke nem **ttyS0**értékre van állítva. A következő parancs futtatásával győződjön meg arról, hogy:<br>`cat /proc/cmdline`|Állítsa be a **konzol** értékét a **ttyS0**értékre, majd küldje el újra a kérelmet.|
 |4|ClientAlive intervalluma – tesztelési eset|Ha az eszközkészlet eredménye sikertelen eredményt ad a tesztelési esethez, a **ClientAliveInterval**nem megfelelő értékkel rendelkezik.|Állítsa a **ClientAliveInterval** értéket a 235 értéknél kisebbre vagy azzal egyenlőre, majd küldje el újra a kérelmet.|
@@ -213,7 +213,7 @@ Ha a rendszerkép nincs telepítve a következő kernel-verziók egyikével, fri
 |RHEL és cent operációs rendszer|6,10|2.6.32-754.15.3|
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
-||7.4|3.10.0-693.50.3|
+||7,4|3.10.0-693.50.3|
 ||7,5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7.7|3.10.0-1062.1.1|
@@ -363,7 +363,8 @@ A kiadóknak el kell érniük a támogatási szolgálatot a [Marketplace kiadó 
    4.    Verzió – annak a virtuálisgép-ajánlatnak a verziója, amelyre a kivételt kérték
    5.   Kivétel típusa – tesztek, zárolt virtuális gép, egyéni sablonok
    6.   Kérelem oka – a kivétel oka, valamint az arra vonatkozó információk, hogy milyen teszteket kell kizárni 
-   7.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
+   7. Ütemterv – a kivétel kérésének dátuma 
+   8.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
 
 
 ## <a name="next-steps"></a>További lépések

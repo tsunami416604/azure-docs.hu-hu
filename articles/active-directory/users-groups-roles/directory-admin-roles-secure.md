@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795915"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179572"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -310,11 +310,11 @@ A [Azure Security Center](../../security-center/security-center-intro.md):
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Kiemelt jogosultságú fiókok leltárba vétele az üzemeltetett Virtual Machines
 
-Általában nincs szükség arra, hogy az összes Azure-előfizetéshez vagy erőforráshoz korlátlan hozzáférést adjon a felhasználóknak. Az Azure AD rendszergazdai szerepköreivel csak azt a hozzáférést adja meg, amelyhez a felhasználóknak szükségük van. Az Azure AD rendszergazdai szerepköreivel engedélyezheti, hogy egy rendszergazda csak az előfizetésben lévő virtuális gépeket kezelhesse, míg a másik az SQL-adatbázisokat ugyanazon az előfizetésen belül tudja kezelni. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../../role-based-access-control/overview.md).
+Általában nincs szükség arra, hogy az összes Azure-előfizetéshez vagy erőforráshoz korlátlan hozzáférést adjon a felhasználóknak. Az Azure AD rendszergazdai szerepköreivel csak azt a hozzáférést adja meg, amelyhez a felhasználóknak szükségük van. Az Azure AD rendszergazdai szerepköreivel engedélyezheti, hogy egy rendszergazda csak az előfizetésben lévő virtuális gépeket kezelhesse, míg a másik az SQL-adatbázisokat ugyanazon az előfizetésen belül tudja kezelni. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>A PIM megvalósítása az Azure AD rendszergazdai szerepköreihez
 
-Az Azure AD rendszergazdai szerepköreivel felügyelheti, felügyelheti és figyelheti az Azure-erőforrásokhoz való hozzáférést. A PIM védi a jogosultságok expozíciós idejének csökkentését, és a jelentéseken és riasztásokon keresztül növeli a használat láthatóságát. További információ: az [Azure-erőforrásokhoz való RBAC-hozzáférés kezelése Privileged Identity Management használatával](../../role-based-access-control/best-practices.md).
+Az Azure AD rendszergazdai szerepköreivel felügyelheti, felügyelheti és figyelheti az Azure-erőforrásokhoz való hozzáférést. A PIM védi a jogosultságok expozíciós idejének csökkentését, és a jelentéseken és riasztásokon keresztül növeli a használat láthatóságát. További információ: [What is Azure ad Privileged Identity Management](../privileged-identity-management/pim-configure.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Az Azure log-integrációk használata a kapcsolódó Azure-naplók a SIEM-rendszerbe való küldéséhez
 
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Üzemeltetés
+* Műveletek
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások
@@ -464,7 +464,7 @@ További információ arról, hogyan kezeli a Microsoft Office 365 a biztonsági
 
 **Válasz:** A nem Kiemelt fiókok használata az összes felhasználó és a legtöbb rendszergazda számára. Kezdje azzal, hogy kifejleszti a szervezeti lábnyomot, és meghatározza, hogy mely néhány rendszergazdai fióknak kell jogosultságot biztosítania. És figyelés az újonnan létrehozott rendszergazda felhasználók számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Microsoft adatvédelmi központ a termékbiztonság számára](https://www.microsoft.com/trustcenter/security) – a Microsoft Cloud Products és Services biztonsági funkciói
 

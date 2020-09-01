@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentése
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892456"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181680"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
@@ -22,7 +22,7 @@ A biztonsági problémákkal, például a kártevővel, a ransomware és a behat
 > [!NOTE]
 > A biztonsági funkciókat nem szabad engedélyezni, ha az infrastruktúra-szolgáltatást (IaaS) használó virtuális gép biztonsági mentést használ. Ezek a funkciók még nem állnak rendelkezésre a IaaS virtuális gépek biztonsági mentéséhez, így azok nem lesznek hatással. A biztonsági funkciókat csak akkor kell engedélyezni, ha a következőket használja: <br/>
 >
-> - **Azure Backup ügynök**. Az ügynök minimális verziószáma 2.0.9052. Miután engedélyezte ezeket a szolgáltatásokat, a kritikus műveletek végrehajtásához frissítsen erre az ügynök-verzióra. <br/>
+> - **Azure Backup ügynök**. Az ügynök minimális verziószáma 2.0.9052. Miután engedélyezte ezeket a szolgáltatásokat, a kritikus műveletek elvégzéséhez frissítsen erre az ügynök-verzióra. <br/>
 > - **Azure Backup Server**. A minimális Azure Backup ügynök verziója a Azure Backup Server Update 1 2.0.9052. <br/>
 > - **System Center Data Protection Manager**. A minimális Azure Backup ügynök verziója 2.0.9052 Data Protection Manager 2012 R2 UR12 vagy Data Protection Manager 2016 UR2. <br/>
 
@@ -48,7 +48,7 @@ Ha Recovery Services-tárolót hoz létre, az összes biztonsági funkciót hasz
     ![Képernyőkép a Recovery Services tároló tulajdonságairól](./media/backup-azure-security-feature/security-settings-update.png)
 
     A frissítés hivatkozásra kattintva megnyílik a **biztonsági beállítások** ablaktábla, amely összefoglalja a szolgáltatásokat, és lehetővé teszi azok engedélyezését.
-5. A legördülő listából **konfigurálta az azure multi-Factor Authentication?** beállítást, és erősítse meg, hogy engedélyezve van-e az [Azure multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md). Ha engedélyezve van, a rendszer arra kéri, hogy végezzen hitelesítést egy másik eszközről (például egy mobiltelefonról), miközben bejelentkezik a Azure Portalba.
+5. A legördülő listából **konfigurálta az azure multi-Factor Authentication?** beállítást, és erősítse meg, hogy engedélyezte-e az [Azure multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md). Ha engedélyezve van, a rendszer arra kéri, hogy végezzen hitelesítést egy másik eszközről (például egy mobiltelefonról), miközben bejelentkezik a Azure Portalba.
 
    Ha kritikus műveleteket végez a biztonsági mentésben, meg kell adnia egy biztonsági PIN-kódot, amely elérhető a Azure Portal. Az Azure Multi-Factor Authentication engedélyezése biztonsági réteget ad. Csak az érvényes Azure-beli hitelesítő adatokkal rendelkező és egy második eszközről hitelesített jogosult felhasználók férhetnek hozzá a Azure Portalhoz.
 6. A biztonsági beállítások mentéséhez válassza az **Engedélyezés** lehetőséget, majd válassza a **Mentés**lehetőséget. Ha az előző lépésben az **Azure multi-Factor Authentication? listában beállított** értéket választotta, válassza ki az **Engedélyezés** lehetőséget.

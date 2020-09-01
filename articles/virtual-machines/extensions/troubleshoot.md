@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 2fa87e860d0f5f5117840b9e230e383cdd6aae7c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ad3197f20428ec751b4e3520af72dc5f8eb9ad28
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187557"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180355"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure-beli Windows VM-bővítményekkel kapcsolatos hibák elhárítása
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "86187557"
 ## <a name="viewing-extension-status"></a>A bővítmény állapotának megtekintése
 Azure Resource Manager-sablonok Azure PowerShellból is végrehajthatók. A sablon végrehajtása után a bővítmény állapota Azure Erőforrás-kezelőból vagy a parancssori eszközökből is megtekinthető.
 
-Például:
+Alább bemutatunk egy példát:
 
 Azure PowerShell:
 
@@ -63,6 +63,7 @@ Extensions:  {
 ```
 
 ## <a name="troubleshooting-extension-failures"></a>Bővítményekkel kapcsolatos hibák elhárítása
+
 ### <a name="rerun-the-extension-on-the-vm"></a>A bővítmény újrafuttatása a virtuális gépen
 Ha a virtuális gépen parancsfájlokat futtat egyéni szkriptek használatával, időnként előfordulhat, hogy a virtuális gép sikeres létrehozásakor hiba történt, de a parancsfájl végrehajtása sikertelen volt. Ilyen körülmények között a hiba helyreállításának ajánlott módja a bővítmény eltávolítása és újbóli újrafuttatása.
 Megjegyzés: a későbbiekben ez a funkció továbbra is kibővült, hogy eltávolítsa a bővítmény eltávolításának szükségességét.
@@ -74,3 +75,28 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 A bővítmény eltávolítását követően a sablon újra végrehajtható a parancsfájlok futtatásához a virtuális gépen.
 
+### <a name="trigger-a-new-goalstate-to-the-vm"></a>Új GoalState elindítása a virtuális gépen
+Észreveheti, hogy egy bővítmény nem lett végrehajtva, vagy egy hiányzó "Windows Azure CRP-tanúsítvány-generátor miatt nem hajtható végre" (ez a tanúsítvány a bővítmény védett beállításainak átvitelét biztosítja).
+Ezt a tanúsítványt a rendszer automatikusan újra létrehozza a Windows vendég ügynöknek a virtuális gépen való újraindításával:
+- A Feladatkezelő megnyitása
+- Ugrás a Részletek lapra
+- A WindowsAzureGuestAgent.exe folyamat megkeresése
+- Kattintson a jobb gombbal, és válassza a "feladat befejezése" lehetőséget. A rendszer automatikusan újraindítja a folyamatot
+
+
+Új GoalState is aktiválhat a virtuális gépen egy "üres frissítés" végrehajtásával:
+
+Azure PowerShell:
+
+```azurepowershell
+$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
+Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+```
+
+Azure CLI:
+
+```azurecli
+az vm update -g <rgname> -n <vmname>
+```
+
+Ha egy "üres frissítés" nem működött, hozzáadhat egy új üres adatlemezt a virtuális géphez az Azure felügyeleti portálból, majd később eltávolíthatja azt a tanúsítvány újbóli hozzáadása után.

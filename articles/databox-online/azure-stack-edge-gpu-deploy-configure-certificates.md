@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: fcaac4c1efe6507d4f69acd897e456400b1f61f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1f8e0464eb7f513149dd1cfa2ec5dcdc0f193417
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087887"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181221"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-with-gpu"></a>Oktatóanyag: tanúsítványok konfigurálása a Azure Stack Edge-hez GPU-val
 
 Ez az oktatóanyag azt ismerteti, hogyan konfigurálhatja a Azure Stack Edge-eszközhöz tartozó tanúsítványokat a helyi webes felhasználói felület használatával.
 
-Az ehhez a lépéshez szükséges idő eltérő lehet attól függően, hogy a rendszer milyen módon hozza meg a tanúsítvány folyamatát az adott környezetben. 
+Az ehhez a lépéshez szükséges idő a választott beállítástól és a tanúsítvány folyamatának a környezetében való megadásának módjától függően változhat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -36,8 +36,8 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 * A fizikai eszközt a [Azure stack Edge telepítése](azure-stack-edge-gpu-deploy-install.md)című részletesen telepítette.
 * Ha azt tervezi, hogy saját tanúsítványokat hoz:
     - A tanúsítványokat a megfelelő formátumban kell megadni, beleértve az aláíró lánc tanúsítványát.
-    - Ha az eszköz üzembe helyezése Azure Government vagy Azure Government Secret vagy Azure Government legfelső szintű titkos felhőben történik, és nem az Azure nyilvános felhőben van telepítve, akkor az eszköz aktiválása előtt regisztrálni kell egy aláíró láncot. 
-    A tanúsítvány részleteiért lépjen a [tanúsítványok kezelése](azure-stack-edge-j-series-manage-certificates.md)elemre.
+<!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
+    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Tanúsítványok konfigurálása az eszközhöz
@@ -55,9 +55,9 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 
     - Ha módosította az eszköz nevét vagy a DNS-tartományt, az eszköz sikeres aktiválásához az alábbi lehetőségek közül választhat: 
     
-        - Az összes eszköz tanúsítványának előállítása. **Az eszköz tanúsítványait csak tesztelésre kell használni, és nem használhatók éles számítási feladatokhoz.** További információért látogasson el az [eszközök tanúsítványainak Előállítása Azure stack szélén](#generate-device-certificates).
+        - **Az összes eszköz tanúsítványának előállítása**. Az eszköz tanúsítványait csak tesztelésre kell használni, éles számítási feladatokhoz nem használatos. * * További információért látogasson el az [eszközök tanúsítványainak előállítása az Azure stack szélén](#generate-device-certificates).
 
-        - Saját tanúsítványok használata. Saját aláírt végponti tanúsítványokat és a hozzájuk tartozó aláíró láncokat is használhatja. Először adja hozzá az aláíró láncot, majd töltse fel a végponti tanúsítványokat. **Javasoljuk, hogy mindig saját tanúsítványokat használjon az éles számítási feladatokhoz.** További információ: [saját tanúsítványok használata az Azure stack Edge-eszközön](#bring-your-own-certificates).
+        - **Saját tanúsítványok**használata. Saját aláírt végponti tanúsítványokat és a hozzájuk tartozó aláíró láncokat is használhatja. Először adja hozzá az aláíró láncot, majd töltse fel a végponti tanúsítványokat. **Javasoljuk, hogy mindig saját tanúsítványokat használjon az éles számítási feladatokhoz.** További információ: [saját tanúsítványok használata az Azure stack Edge-eszközön](#bring-your-own-certificates).
     
         - Saját tanúsítványokat is létrehozhat, és létrehozhat néhány eszköz tanúsítványát. A **tanúsítványok előállítása** lehetőség csak az eszköz tanúsítványait hozza újra.
 
@@ -149,7 +149,7 @@ A következő lépésekkel adhatja hozzá saját tanúsítványait, beleértve a
 Az eszköz már készen áll az aktiválásra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

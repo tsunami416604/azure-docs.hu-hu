@@ -3,12 +3,12 @@ title: Offline biztonsági mentés Azure Data Box használatával
 description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Data Box a nagyméretű kezdeti biztonsági mentési adatoknak a MARS-ügynökből egy Recovery Services-tárolóba való összevetéséhez
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761559"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180932"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
 
@@ -195,7 +195,7 @@ Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként c
 
     ![Data Box feladatok beolvasása az előfizetés-AZONOSÍTÓhoz](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Válassza ki a helyes Data Box rendelést, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezt. Kattintson a **Tovább** gombra.
+1. Válassza ki a helyes Data Box sorrendet, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezt. Kattintson a **Tovább** gombra.
 
     ![Data Box rendelések kiválasztása](./media/offline-backup-azure-data-box/select-databox-order.png)
 

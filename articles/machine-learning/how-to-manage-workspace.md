@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: e2f13cbdca9d6372677bbba24d60f4a73436cfd7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659755"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179277"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával. 
 
@@ -51,7 +51,7 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
 
     ![Munkaterület konfigurálása](./media/how-to-manage-workspace/select-edition.png)
 
-1. Ha befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Ha befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás**lehetőséget. Igény szerint a [hálózatkezelés](#networking) és a [speciális](#advanced) szakaszban is konfigurálhatja a munkaterület további beállításait.
 2. Tekintse át a beállításokat, és végezze el a további módosításokat vagy helyesbítéseket. Ha elégedett a beállításokkal, válassza a **Létrehozás**lehetőséget.
 
    > [!Warning] 
@@ -61,15 +61,65 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
  
  1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
 
-### <a name="download-a-configuration-file"></a>Konfigurációs fájl letöltése
 
-1. Ha [számítási példányt](tutorial-1st-experiment-sdk-setup.md#azure)fog létrehozni, hagyja ki ezt a lépést.
+### <a name="networking"></a>Hálózat
 
-1. Ha azt tervezi, hogy a munkaterületre hivatkozó helyi környezet programkódját használja, válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.  
+> [!IMPORTANT]
+> További információ a saját munkaterülettel rendelkező privát végpontok és virtuális hálózatok használatáról: [hálózati elkülönítés és adatvédelem](how-to-enable-virtual-network.md).
 
-   ![config.jsletöltése](./media/how-to-manage-workspace/configure.png)
-   
-   Helyezze a fájlt a címtár-struktúrába a Python-szkriptekkel vagy a Jupyter notebookokkal. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban. Számítási példány létrehozásakor a rendszer hozzáadja ezt a fájlt a virtuális gép megfelelő könyvtárába.
+1. Az alapértelmezett hálózati konfiguráció egy __nyilvános végpont__használata, amely a nyilvános interneten érhető el. Ha a munkaterülethez való hozzáférést egy Ön által létrehozott Azure-Virtual Network szeretné korlátozni, válassza a __magánhálózati végpont__ (előzetes verzió) lehetőséget a __kapcsolati módszerként__, majd a __+ Hozzáadás__ paranccsal konfigurálja a végpontot.
+
+   > [!IMPORTANT]
+   > A Azure Machine Learning munkaterülettel rendelkező privát végpontok jelenleg nyilvános előzetes verzióban érhetők el. Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Privát végpont kiválasztása":::
+
+1. A __privát végpont létrehozása__ űrlapon állítsa be a használni kívánt helyet, nevet és virtuális hálózatot. Ha saját DNS zónával szeretné használni a végpontot, válassza a __saját DNS-zóna integrálása__ lehetőséget, majd a __saját DNS zóna__ mező használatával válassza ki a zónát. A végpont létrehozásához kattintson __az OK gombra__ . 
+
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Magánhálózati végpont létrehozása":::
+
+1. Ha befejezte a hálózatkezelés konfigurálását, válassza a __felülvizsgálat + létrehozás__lehetőséget, vagy lépjen a választható __speciális__ konfigurációra.
+
+    > [!WARNING]
+    > Privát végpont létrehozásakor létrejön egy új, __privatelink.API.azureml.MS__ nevű saját DNS zóna. Ez a virtuális hálózatra mutató hivatkozást tartalmaz. Ha több munkaterületet hoz létre egy privát végponttal ugyanabban az erőforráscsoporthoz, akkor csak az első privát végpont virtuális hálózata adható hozzá a DNS-zónához. A további munkaterületek/privát végpontok által használt virtuális hálózatok bejegyzéseinek hozzáadásához kövesse az alábbi lépéseket:
+    > 
+    > 1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet tartalmazó erőforráscsoportot. Ezután válassza ki a __privatelink.API.azureml.MS__nevű saját DNS zóna erőforrást.
+    > 2. A __Beállítások__területen válassza a __virtuális hálózati kapcsolatok__elemet.
+    > 3. Válassza a __Hozzáadás__ lehetőséget. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__, majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
+    >
+    > További információ: [Azure Private Endpoint DNS-konfiguráció](/azure/private-link/private-endpoint-dns).
+
+### <a name="advanced"></a>Felsőfokú
+
+Alapértelmezés szerint a munkaterülethez tartozó metrikák és metaadatok a Microsoft által fenntartott Azure Cosmos DB-példányban vannak tárolva. Ezeket az adatfájlokat a Microsoft által felügyelt kulcsokkal titkosítjuk. 
+
+Ha korlátozni szeretné a Microsoft által a munkaterületre összegyűjtött adatokat, válassza a __magas üzleti hatás munkaterületet__.
+
+> [!IMPORTANT]
+> A magas üzleti hatás kiválasztása csak munkaterületek létrehozásakor végezhető el. Ez a beállítás a munkaterület létrehozása után nem módosítható.
+
+Ha a Azure Machine Learning __vállalati__ verzióját használja, a saját kulcsát is megadhatja. Ezzel létrehozza az Azure-előfizetésében szereplő mérőszámokat és metaadatokat tároló Azure Cosmos DB-példányt. A saját kulcsának használatához kövesse az alábbi lépéseket:
+
+> [!IMPORTANT]
+> Mielőtt végrehajtaná ezeket a lépéseket, először el kell végeznie a következő műveleteket:
+>
+> 1. Engedélyezze az előfizetéshez tartozó közreműködői engedélyekkel rendelkező __Machine learning alkalmazást__ (az identitás-és hozzáférés-kezelésben).
+> 1. Kövesse az [ügyfél által felügyelt kulcsok konfigurálása](/azure/cosmos-db/how-to-setup-cmk) a következőhöz című témakör lépéseit:
+>     * A Azure Cosmos DB-szolgáltató regisztrálása
+>     * Azure Key Vault létrehozása és konfigurálása
+>     * Kulcs létrehozása
+>
+>     Nem kell manuálisan létrehoznia a Azure Cosmos DB példányt, a rendszer létrehoz egyet a munkaterület létrehozása során. Ez a Azure Cosmos DB-példány egy külön erőforráscsoporthoz jön létre a következő minta alapján: `<your-resource-group-name>_<GUID>` .
+>
+> Ez a beállítás a munkaterület létrehozása után nem módosítható. Ha törli a munkaterület által használt Azure Cosmos DB, törölnie kell az azt használó munkaterületet is.
+
+1. Válassza az __ügyfél által felügyelt kulcsok__lehetőséget, majd __kattintson a kulcs kiválasztásához__.
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Felhasználó által kezelt kulcsok":::
+
+1. A __válasszon kulcsot Azure Key Vault__ űrlapon válassza ki a meglévő Azure Key Vault, a benne található kulcsot, valamint a kulcs verzióját. Ezzel a kulccsal titkosíthatja a Azure Cosmos DB tárolt adataikat. Végül használja a __Select (kiválasztás__ ) gombot a kulcs használatához.
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Válassza ki a kulcsot":::
 
 ## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Frissítés a Enterprise Edition verzióra
 
@@ -87,7 +137,17 @@ A munkaterületet az alapszintű kiadásról a nagyvállalati kiadásra frissít
 
 
 > [!IMPORTANT]
-> Az Enterprise Edition-munkaterületeket nem lehet alapszintű kiadási munkaterületre visszaminősíteni. 
+> Az Enterprise Edition-munkaterületeket nem lehet alapszintű kiadási munkaterületre visszaminősíteni.
+
+### <a name="download-a-configuration-file"></a>Konfigurációs fájl letöltése
+
+1. Ha [számítási példányt](tutorial-1st-experiment-sdk-setup.md#azure)fog létrehozni, hagyja ki ezt a lépést.
+
+1. Ha azt tervezi, hogy a munkaterületre hivatkozó helyi környezet programkódját használja, válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.  
+
+   ![config.jsletöltése](./media/how-to-manage-workspace/configure.png)
+   
+   Helyezze a fájlt a címtár-struktúrába a Python-szkriptekkel vagy a Jupyter notebookokkal. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban. Számítási példány létrehozásakor a rendszer hozzáadja ezt a fájlt a virtuális gép megfelelő könyvtárába.
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Munkaterület keresése
 

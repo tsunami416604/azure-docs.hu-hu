@@ -2,13 +2,13 @@
 title: Paraméterfájl létrehozása
 description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.openlocfilehash: ff5fa74f8b4b7f0ce7dfe2164a369cfd5eedb4d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082936"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89179623"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
 
@@ -184,10 +184,30 @@ A következő példában a különböző típusú paraméterek formátuma látha
 
 ## <a name="deploy-template-with-parameter-file"></a>Sablon üzembe helyezése paraméter-fájllal
 
-Lásd:
+Ha egy helyi paramétert szeretne átadni az Azure CLI-vel, használja a @ nevet és a paraméter fájljának nevét.
 
-- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](./deploy-cli.md#parameters)
-- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](./deploy-cli.md#parameters).
+
+Ha Azure PowerShell használatával szeretne átadni egy helyi paramétert, használja a `TemplateParameterFile` paramétert.
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
+
+> [!NOTE]
+> A portál egyéni sablon paneljén nem lehet paraméter-fájlt használni.
 
 ## <a name="file-name"></a>Fájlnév
 
@@ -199,7 +219,7 @@ Ha különböző környezetekben kíván üzembe helyezni, hozzon létre egynél
 
 A beágyazott paramétereket és a helyi paramétereket is használhatja ugyanabban a telepítési műveletben. Megadhat például néhány értéket a helyi paraméter fájljában, és az üzembe helyezés során további értékeket is hozzáadhat. Ha a paraméter értékét a helyi paraméter fájljában és a beágyazott mezőben is megadja, a beágyazott érték elsőbbséget élvez.
 
-Külső paramétert is használhat a fájl URI azonosítójának megadásával. Ha ezt teszi, nem adhat át más értékeket beágyazott vagy helyi fájlból. Az összes beágyazott paraméter figyelmen kívül lesz hagyva. Adja meg az összes paraméter értékét a külső fájlban.
+Külső paramétert is használhat a fájl URI azonosítójának megadásával. Ha külső paramétert használ, nem adhat át más értékeket beágyazott vagy helyi fájlból. Az összes beágyazott paraméter figyelmen kívül lesz hagyva. Adja meg az összes paraméter értékét a külső fájlban.
 
 ## <a name="parameter-name-conflicts"></a>Paraméter neve ütközés
 
