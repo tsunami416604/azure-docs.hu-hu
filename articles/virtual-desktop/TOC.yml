@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: Nyelvi csomagok telepítése
       href: language-packs.md
+    - name: Megoldási javaslatok
+      href: azure-advisor-recommendations.md
 - name: Alapelvek
   items:
     - name: Hitelesítés

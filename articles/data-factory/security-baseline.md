@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 256751e452be539084a7dc022dc56c0f60e910e6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044175"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079183"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -598,15 +598,15 @@ Az adatfelderítési és-besorolási funkciók még nem érhetők el más Azure-
 
 **Felelősség**: ügyfél
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Active Directory (ad) szerepköralapú hozzáférés-vezérlés (RBAC) használata a Azure Data Factory vezérlő síkja (a Azure Portal) elérésének vezérléséhez.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja a Azure Data Factory vezérlő síkja (a Azure Portal) elérését.
 
 Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a közreműködő vagy tulajdonos szerepkör tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
 
-Az Data Factory adatforrások, például a Azure SQL Database esetén a RBAC kapcsolatos további információkért tekintse meg az adott szolgáltatás biztonsági alaptervét.
+Az Data Factory adatforrások, például a Azure SQL Database esetében az Azure RBAC kapcsolatos további információkért tekintse meg az adott szolgáltatás biztonsági alaptervét.
 
-* [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Szerepkörök és engedélyek az Azure Data Factoryhoz](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -808,7 +808,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 Megjegyzés: a szoftver neve, verziója, közzétevője és frissítési ideje elérhető a Azure Portal. A telepítés dátumának és egyéb információinak eléréséhez az ügyfélnek a vendég szintű diagnosztika engedélyezéséhez és a Windows-eseménynaplók Log Analytics munkaterületre való bekapcsolásához van szükség.
 
-* [Az Azure Automation bemutatása](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Bevezetés az Azure Automationbe](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [Az Azure-beli virtuális gépek leltározásának engedélyezése](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
 
@@ -820,7 +820,7 @@ Megjegyzés: a szoftver neve, verziója, közzétevője és frissítési ideje e
 
 **Útmutató**: ha a Integration Runtime egy Azure-beli virtuális gépen futtatja, a Azure Automation teljes körű ellenőrzést biztosít az üzembe helyezés, a műveletek és a számítási feladatok és erőforrások leszerelése során. Change Tracking használatával azonosíthatja a Virtual Machines telepített összes szoftvert. A jogosulatlan szoftverek eltávolításához saját folyamatot alkalmazhat, vagy használhatja Azure Automation állapot konfigurációját.
 
-* [Az Azure Automation bemutatása](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Bevezetés az Azure Automationbe](https://docs.microsoft.com/azure/automation/automation-intro)
 
 * [A környezet változásainak követése a Change Tracking megoldással](https://docs.microsoft.com/azure/automation/change-tracking)
 
@@ -898,7 +898,7 @@ Vegye figyelembe, hogy ez csak akkor érvényes, ha a Integration Runtime Azure-
 
 * [Mi az az Azure Web Application Firewall?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
-* [Network security groups (Hálózati biztonsági csoportok)](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
 * [Mi az Azure Virtual Network?](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
 
@@ -984,15 +984,15 @@ A legtöbb esetben a Microsoft Base VM-sablonok a Azure Automation kívánt áll
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: Ha egyéni lemezképeket használ, használja a szerepköralapú hozzáférés-vezérlést (RBAC) annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez. A Container images esetében tárolja azokat Azure Container Registry és használja ki a RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató**: Ha egyéni lemezképeket használ, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez. A tárolói lemezképek esetében tárolja azokat Azure Container Registryban, és használja ki az Azure RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
 A Data Factory közreműködő szerepkör az adat-előállítók létrehozásához és kezeléséhez, valamint a bennük található alárendelt erőforrásokhoz használható.
 
-* [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [A Container Registry RBAC ismertetése](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Az Azure-RBAC megismerése Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Szerepkörök és engedélyek az Azure Data Factoryhoz](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -1268,7 +1268,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

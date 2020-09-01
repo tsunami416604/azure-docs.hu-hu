@@ -3,12 +3,12 @@ title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 83566cc638c4db1b00dbe40a48064a7c94250d8c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958762"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079659"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -205,7 +205,7 @@ Példa: kiértékeli a Virtual Machines annak megállapítására, hogy a kárte
 }
 ```
 
-## <a name="deny"></a>Deny (Megtagadás)
+## <a name="deny"></a>Megtagadás
 
 A Megtagadás megakadályozza egy olyan erőforrás-kérelem használatát, amely nem felel meg a meghatározott szabványoknak egy házirend-definíción keresztül, és a kérést nem teljesíti.
 
@@ -488,7 +488,7 @@ A módosítás a következő műveleteket támogatja:
 - Adja hozzá vagy cserélje le a `identity.type` virtuális gépek és a virtuálisgép-méretezési csoportok felügyelt identitási típusának értékét.
 - Adja hozzá vagy cserélje le az egyes aliasok értékeit (előzetes verzió).
   - A `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` használata
-    Azure PowerShell a módosítással használható aliasok listájának lekéréséhez.
+    Azure PowerShell **4.6.0** vagy újabb verzióban a módosítással használható aliasok listájának lekéréséhez.
 
 > [!IMPORTANT]
 > Ha címkéket kezel, javasolt a hozzáfűzés helyett a módosítás használata, amely további műveleti típusokat és a meglévő erőforrások javítását is lehetővé teszi. A Hozzáfűzés azonban ajánlott, ha nem tud felügyelt identitást létrehozni, vagy a módosítás még nem támogatja az erőforrás-tulajdonság aliasát.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7dc0913ab206c6b9152d7d6155642c28b430d6f2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836326"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079642"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
 
@@ -182,7 +182,7 @@ A Logic Apps lévő diagnosztikai naplókat engedélyezni kell
 
 DDoS Protection a standardot engedélyezni kell
 
-Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek központi telepítését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, szerepköralapú hozzáférés-vezérlés (RBAC) és szabályzatok használatával egyetlen tervezet-definícióban. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek kiépítését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek alapján, egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -641,7 +641,7 @@ A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, é
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
 **Útmutató**: csak meghatározott felhasználók vagy csoportok számára engedélyezheti adott feladatok futtatását, például a Logic apps felügyeletét, szerkesztését és megtekintését. Az engedélyeik szabályozásához használja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), hogy testreszabott vagy beépített szerepköröket rendeljen az Azure-előfizetés tagjaihoz:
 - Logic app közreműködő: lehetővé teszi a logikai alkalmazások kezelését, de nem tudja módosítani őket.
@@ -877,7 +877,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az üzleti műveletekhez szükséges Logic Appsekhez kapcsolódó erőforrások, de a szervezet számára nagyobb kockázatot jelenthetnek, a saját virtuális gépén és/vagy virtuális hálózatán belül, és megfelelő védelemmel kell ellátni egy Azure Firewall-vagy hálózati biztonsági csoporttal.
 
-Az üzleti műveletekhez szükséges Logic Apps azonban nagyobb kockázatot jelenthetnek a szervezet számára, ha lehetséges, külön erőforrás-csoportok és RBAC-határok használatával kell elkülöníteni.
+Az üzleti műveletekhez szükséges Logic Apps azonban nagyobb kockázatot jelenthetnek a szervezet számára, ha lehetséges, külön erőforrás-csoportokkal és az Azure RBAC határokkal kell elkülöníteni.
 
 * [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -885,7 +885,7 @@ Az üzleti műveletekhez szükséges Logic Apps azonban nagyobb kockázatot jele
 
 * [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Logic Apps-hozzáférés biztonságossá tétele a RBAC-on keresztül](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Logic Apps-hozzáférés biztonságossá tétele az Azure RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1285,7 +1285,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

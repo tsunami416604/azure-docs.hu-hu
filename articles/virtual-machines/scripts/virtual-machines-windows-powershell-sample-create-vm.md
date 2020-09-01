@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 9d2c930e36ce3ea171b9ca4530e462abca8f3dbb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 4f7e638a307a4b76e0bf448160356971cc0e608b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082290"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078794"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Teljes konfigurációjú virtuális gép létrehozása a PowerShell segítségével
 
@@ -61,7 +61,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

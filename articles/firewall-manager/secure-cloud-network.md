@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420821"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079115"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Oktatóanyag: virtuális központ biztonságossá tétele a Azure Firewall Managerrel
 
@@ -33,6 +33,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Tűzfal-házirend létrehozása és a központ biztonságossá tétele
 > * A tűzfal tesztelése
 
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
 ## <a name="create-a-hub-and-spoke-architecture"></a>Sugaras architektúra létrehozása
 
 Először is hozzon létre küllős virtuális hálózatokat, ahol elhelyezheti a kiszolgálókat.
@@ -52,7 +56,7 @@ A két virtuális hálózat mindegyike rendelkezik egy munkaterhelés-kiszolgál
 3. Válassza az **alhálózat hozzáadása**lehetőséget.
 4. Írja be a **munkaterhelés-01-SN**értéket.
 5. **Alhálózati címtartomány**esetében írja be a következőt: **10.1.1.0/24**.
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 2. Válassza a **Létrehozás** lehetőséget.
 
@@ -80,7 +84,7 @@ Hozza létre a biztonságos virtuális hubot a Firewall Manager használatával.
 5. Válassza a Next (tovább) lehetőséget **: Azure Firewall**.
 6. Fogadja el az alapértelmezett **Azure Firewall** **engedélyezve** beállítást, majd válassza a **Tovább: megbízható biztonsági partner**lehetőséget.
 7. Fogadja el az alapértelmezett **megbízható biztonsági partner** **letiltott** beállítást, majd kattintson a **Tovább gombra: felülvizsgálat + létrehozás**.
-8. Válassza a **Létrehozás** lehetőséget. A telepítés körülbelül 30 percet vesz igénybe.
+8. Kattintson a **Létrehozás** gombra. A telepítés körülbelül 30 percet vesz igénybe.
 
 Most már lekérheti a tűzfal nyilvános IP-címét.
 
@@ -102,7 +106,7 @@ Most már elvégezheti a hub és a küllős virtuális hálózatok összevonás�
 5. **Hubok**esetében válassza a **hub-01**elemet.
 6. Az **erőforráscsoport**területen válassza az **FW-Manager**lehetőséget.
 7. **Virtuális hálózat**esetén válassza a **küllő-01**elemet.
-8. Válassza a **Létrehozás** lehetőséget.
+8. Kattintson a **Létrehozás** gombra.
 
 Ismételje meg a **küllő-02** virtuális hálózat csatlakoztatását: kapcsolat neve- **hub-küllő-02**
 
@@ -140,7 +144,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
    |---------|---------|
    |Erőforráscsoport     |**FW – kezelő**|
    |Virtuális gép neve     |**SRV-munkaterhelés-01**|
-   |Régió     |**USA USA keleti régiója)**|
+   |Region     |**USA USA keleti régiója)**|
    |Rendszergazda felhasználóneve     |adja meg a felhasználónevet|
    |Jelszó     |írjon be egy jelszót|
 
@@ -182,7 +186,7 @@ A tűzfalszabályok olyan szabályok gyűjteményeit határozzák meg, amelyek e
 10. A **protokoll**mezőben írja be a következőt: **http, HTTPS**.
 11. Győződjön meg arról, hogy a **célként megadott típus** **FQDN**.
 12. A **cél**mezőbe írja be a következőt: ** \* . microsoft.com**.
-13. Válassza a **Hozzáadás** elemet.
+13. Válassza a **Hozzáadás** lehetőséget.
 
 Adjon hozzá egy DNAT-szabályt, hogy távoli asztalt csatlakoztasson az **SRV-munkaterhelés-01** virtuális géphez.
 
@@ -199,7 +203,7 @@ Adjon hozzá egy DNAT-szabályt, hogy távoli asztalt csatlakoztasson az **SRV-m
 11. A **cél**mezőbe írja be a korábban feljegyzett tűzfal nyilvános IP-címét.
 12. A **lefordított cím**mezőbe írja be a korábban feljegyzett **SRV-munkaterhelés-01** magánhálózati IP-címet.
 13. A **Lefordított port** mezőben adja meg a **3389** értéket.
-14. Válassza a **Hozzáadás** elemet.
+14. Válassza a **Hozzáadás** lehetőséget.
 
 Adjon hozzá egy hálózati szabályt, hogy a Távoli asztalt a **SRV-munkaterhelés-01** -ről **SRV-munkaterhelés-02-** re lehessen kapcsolni.
 
@@ -214,7 +218,7 @@ Adjon hozzá egy hálózati szabályt, hogy a Távoli asztalt a **SRV-munkaterhe
 9. A **célport**mezőbe írja be a következőt: **3389**.
 9. A **cél típusa**beállításnál válassza az **IP-cím**lehetőséget.
 10. A **cél**mezőbe írja be a korábban feljegyzett **SRV-munkaterhelés-02** magánhálózati IP-címet.
-11. Válassza a **Hozzáadás** elemet.
+11. Válassza a **Hozzáadás** lehetőséget.
 1. Válassza a **Tovább: fenyegetés intelligencia**lehetőséget.
 2. Válassza a **Next (tovább): hubok**lehetőséget.
 3. A **hubok** lapon válassza a **virtuális hubok hozzárendelése**lehetőséget.
@@ -234,7 +238,7 @@ Most meg kell győződnie arról, hogy a hálózati forgalom a tűzfalon kereszt
 4. Az **internetes forgalom**területen válassza a **Azure Firewall**lehetőséget.
 5. A **privát forgalom**területen válassza a **Küldés Azure Firewall használatával**lehetőséget.
 10. Győződjön meg arról, hogy a **sugaras** kapcsolatok **biztonságosként**jeleníti meg az **internetes forgalmat** .
-11. Válassza a **Mentés** lehetőséget.
+11. Kattintson a **Mentés** gombra.
 
 
 ## <a name="test-your-firewall"></a>A tűzfal tesztelése
@@ -270,6 +274,10 @@ Most tesztelje a hálózati szabályt.
 
 Most ellenőrizte, hogy a tűzfal hálózati szabálya működik-e:
 * A távoli asztal egy másik virtuális hálózatban található kiszolgálóhoz is csatlakoztatható.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha végzett a tűzfal erőforrásainak tesztelésével, törölje a **FW-Manager** erőforráscsoportot az összes tűzfalhoz kapcsolódó erőforrás törléséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

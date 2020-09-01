@@ -7,13 +7,13 @@ ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: e17a7ffeb9d9f58e3acfdf4569554637baaaa4c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 8d41d491edd5fc6acf0b3b93d92771d0a99ece90
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004914"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079965"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>Webalkalmazás biztonsági mentése a PowerShell használatával
 
@@ -50,7 +50,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Új – AzWebAppBackup](/powershell/module/az.websites/new-azwebappbackup) | Biztonsági másolatot készít egy webalkalmazásról. |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

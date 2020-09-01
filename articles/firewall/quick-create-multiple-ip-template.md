@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – Resource Manager-sablon'
-description: Megtudhatja, hogyan használhat egy Azure Resource Manager sablont (ARM-sablon) több nyilvános IP-címmel rendelkező Azure Firewall létrehozásához.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhat egy Azure Resource Manager sablont (ARM-sablon) több nyilvános IP-címmel rendelkező Azure Firewall létrehozásához.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/14/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705435"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079081"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – ARM-sablon
 
@@ -83,7 +83,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)

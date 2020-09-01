@@ -1,20 +1,20 @@
 ---
 title: Inaktív adatok Translator-titkosítása
 titleSuffix: Azure Cognitive Services
-description: Inaktív adatok Translator-titkosítása.
+description: A Microsoft lehetővé teszi, hogy az ügyfelek által felügyelt kulcsok (CMK) segítségével kezelje Cognitive Services előfizetéseit saját kulcsaival. Ez a cikk az inaktív adatok titkosítását ismerteti a fordítók számára, valamint a CMK engedélyezésének és kezelésének módját.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310835"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079200"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Inaktív adatok Translator-titkosítása
 
@@ -22,7 +22,7 @@ A Translator automatikusan titkosítja az adatait, amelyeket feltölt az egyéni
 
 ## <a name="about-cognitive-services-encryption"></a>Tudnivalók a Cognitive Services titkosításról
 
-Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Alapértelmezés szerint az adatai biztonságban vannak, és nem kell módosítania a kódot vagy az alkalmazásokat a titkosítás kihasználása érdekében.
+Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Az adatok alapértelmezés szerint védettek, a titkosítás használatához pedig sem a kódot, sem az alkalmazást nem kell módosítania.
 
 ## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
 
@@ -34,7 +34,7 @@ Olyan előfizetésekhez, amelyek csak a Microsoft által felügyelt titkosítás
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Felhasználó által kezelt kulcsok az Azure Key Vaulttal
 
-Lehetősége van arra is, hogy az előfizetését a saját kulcsaival kezelje. Az ügyfél által felügyelt kulcsok (CMK) – más néven saját kulcs használata (BYOK) – nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
+Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Az előfizetést az ügyfél által felügyelt kulcsok (CMK) nevű saját kulcsokkal is kezelheti. A CMK nagyobb rugalmasságot biztosít a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van. Ha az előfizetéshez CMK van konfigurálva, a rendszer dupla titkosítást biztosít, amely második védelmi réteget kínál, miközben lehetővé teszi a titkosítási kulcs vezérlését a Azure Key Vaulton keresztül.
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok a Translator szolgáltatás összes díjszabási szintjéhez elérhetők. Ha az ügyfél által felügyelt kulcsok használatát szeretné igénybe venni, töltse ki és küldje el a [fordító ügyfél által felügyelt kulcs kérése űrlapot](https://aka.ms/cogsvc-cmk) , amely körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK és a Translator Service használatát, létre kell hoznia egy új Translator-erőforrást. A fordítói erőforrás létrehozása után a Azure Key Vault használatával beállíthatja a felügyelt identitást.
@@ -44,8 +44,6 @@ Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt ku
 1. Hozza létre új regionális fordítóját vagy regionális Cognitive Services erőforrását. Ez nem fog működni globális erőforrással.
 2. Felügyelt identitás engedélyezése a Azure Portalban, és az ügyfél által felügyelt legfontosabb információk hozzáadása.
 3. Hozzon létre egy új munkaterületet az egyéni fordítóban, és rendelje hozzá az előfizetési adatokat.
-
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 
@@ -79,6 +77,6 @@ Csak a 2048 méretű RSA-kulcsok támogatottak Cognitive Services titkosítássa
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) vagy [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Cognitive Services erőforrásban lévő összes adattal való hozzáférést, és a modelleket a rendszer nem telepíti, mivel a titkosítási kulcs nem érhető el Cognitive Services. Az összes feltöltött adatok törlődnek az egyéni fordítóból is.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

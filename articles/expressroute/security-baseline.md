@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f84c73f3fbefddd2972f077826fe1e2a8738ad5a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079043"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079149"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure biztonsági alapkonfiguráció a ExpressRoute-hez
 
@@ -240,13 +240,13 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure ExpressRoute erőforrásaihoz tartozó vezérlési síkon (például Azure Portal) rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása.
 
-A szerepköralapú hozzáférés-vezérlés (RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (IAM) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal identitás és hozzáférés-vezérlés (IAM) paneljét az előfizetéséhez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban.
 
 Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szerepköralapú Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
-* [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [A RBAC kihasználása a ExpressRoute-partner Resource Manager API-ban](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Az Azure RBAC kihasználása a ExpressRoute-partner Resource Manager API-ban](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure Security Center figyelés**: igen
 
@@ -437,7 +437,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 * [Helyek közötti IPSEC konfigurálása a ExpressRoute-en keresztül](https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering)
 
-Helyek közötti IPSEC konfigurálása a ExpressRoute-en keresztül:https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
+Helyek közötti IPSEC konfigurálása a ExpressRoute-en keresztül: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -453,17 +453,17 @@ Helyek közötti IPSEC konfigurálása a ExpressRoute-en keresztül:https://docs
 
 **Felelősség**: nem alkalmazható
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az előfizetéshez tartozó Azure Portal identitás és hozzáférés-vezérlés (iam) ablaktáblájának használatával konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC). A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (iam) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
 
 Az Azure ExpressRoute rendelkezik egy áramköri tulajdonossal és egy áramköri felhasználói szerepkörrel is. Az áramköri felhasználók olyan virtuális hálózati átjárók tulajdonosai, amelyek nem a ExpressRoute áramkörhöz tartozó előfizetésben találhatók. Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedélyeket. Az engedély visszavonása az összes olyan kapcsolati kapcsolat törlését eredményezi, amelynek a hozzáférését visszavonták. Az áramköri felhasználók beválthatják az engedélyeket (egy-egy hitelesítés virtuális hálózatonként).
 
 Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szerepköralapú Access Control alkalmazhatnak a expressRouteCrossConnection-erőforráshoz. Ezek a vezérlőelemek meghatározhatják, hogy mely felhasználói fiókok módosíthatják a expressRouteCrossConnection-erőforrást, és hogyan lehet hozzáadni/frissíteni vagy törölni a társ-konfigurálási konfigurációkat.
 
-* [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [A RBAC kihasználása a ExpressRoute-partner Resource Manager API-ban](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
+* [Az Azure RBAC kihasználása a ExpressRoute-partner Resource Manager API-ban](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 * [Az ExpressRoute felügyeleti szerepköreinek megismerése](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager#connect-a-vnet-to-a-circuit---different-subscription)
 
@@ -985,7 +985,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

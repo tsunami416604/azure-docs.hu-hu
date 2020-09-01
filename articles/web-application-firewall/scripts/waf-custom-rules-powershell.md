@@ -7,12 +7,13 @@ services: web-application-firewall
 ms.topic: sample
 ms.date: 09/30/2019
 ms.author: victorh
-ms.openlocfilehash: b73b15e7f174868fa4c0a9518725a4585cf3dffe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8d800e77ed0e609091d31d9b3177af447ac06f5b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035574"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079506"
 ---
 # <a name="create-waf-custom-rules-with-azure-powershell"></a>Egyéni WAF-szabályok létrehozása a Azure PowerShell
 
@@ -68,7 +69,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 |[Új – AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/New-AzApplicationGatewayFirewallPolicy)|Létrehoz egy Application gateway-tűzfal házirendet.|
 |[Új – AzApplicationGatewayWebApplicationFirewallConfiguration](/powershell/module/az.network/New-AzApplicationGatewayWebApplicationFirewallConfiguration)|Létrehoz egy WAF-konfigurációt az Application Gateway számára.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az egyéni WAF-szabályokról: [webalkalmazási tűzfal egyéni szabályai](../ag/custom-waf-rules-overview.md)
 - Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).

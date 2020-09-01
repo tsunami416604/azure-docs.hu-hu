@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: avverma, devx-track-azurepowershell
+ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080522"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079591"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokon
 
@@ -35,7 +35,7 @@ Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
-- [Azure Resource Manager-sablon](tutorial-install-apps-template.md)
+- [Azure Resource Manager sablon](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Alkalmazások telepítése Windows rendszerű virtuális gépre PowerShell DSC-vel
@@ -43,8 +43,8 @@ A [PowerShell desired State Configuration (DSC)](/powershell/scripting/dsc/overv
 
 A PowerShell DSC bővítmény lehetővé teszi a virtuálisgép-példányok testreszabását a méretezési csoportokban a PowerShell használatával. A következő példa:
 
-- Arra utasítja a virtuálisgép-példányokat, hogy töltsön le egy DSC-csomagot a GitHubról*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
-- Beállítja a bővítményt a telepítési parancsfájl futtatásához.`configure-http.ps1`
+- Arra utasítja a virtuálisgép-példányokat, hogy töltsön le egy DSC-csomagot a GitHubról *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Beállítja a bővítményt a telepítési parancsfájl futtatásához. `configure-http.ps1`
 - Lekéri a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) rendelkező méretezési csoport adatait
 - Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) használatával alkalmazza a bővítményt a virtuálisgép-példányokra.
 
@@ -112,5 +112,5 @@ Ha új operációsrendszer-kiadás érhető el, használhatja vagy felépítheti
 Ha egy egyéni virtuálisgép-rendszerképet használ előre telepített alkalmazással, az alkalmazás frissítéseit egy központi telepítési folyamattal integrálhatja az új lemezképek létrehozásához és az operációs rendszer frissítéseinek üzembe helyezéséhez a méretezési csoporton belül. Ez a megközelítés lehetővé teszi, hogy a folyamat felvegye a legújabb alkalmazás-buildeket, hozzon létre és érvényesítse a virtuálisgép-lemezképeket, majd frissítse a méretezési csoport virtuálisgép-példányait. Ha olyan központi telepítési folyamatot szeretne futtatni, amely az alkalmazások egyéni virtuálisgép-rendszerképeken való üzembe helyezését és központi telepítését végzi, [létrehozhat egy csomagoló rendszerképet, és üzembe helyezheti az Azure DevOps Services szolgáltatást](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), vagy használhat más platformot, például a [Spinnaker](https://www.spinnaker.io/) vagy a [Jenkinst](https://jenkins.io/).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Amikor alkalmazásokat hoz létre és telepít a méretezési csoportokban, tekintse át a [méretezési csoport kialakításának áttekintését](virtual-machine-scale-sets-design-overview.md). A méretezési csoport kezelésével kapcsolatos további információkért lásd: [a méretezési csoport kezelése a PowerShell használatával](./virtual-machine-scale-sets-manage-powershell.md).

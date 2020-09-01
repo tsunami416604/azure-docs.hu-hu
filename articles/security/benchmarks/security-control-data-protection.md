@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045535"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078996"
 ---
 # <a name="security-control-data-protection"></a>Biztonság-ellenőrzés: Adatvédelem
 
@@ -84,15 +84,15 @@ Az Azure SQL Information Protection használatával segítheti a Azure SQL Datab
 
 - [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+## <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 4.6 | 14,6 | Ügyfél |
+| 4,6 | 14,6 | Ügyfél |
 
-Az Azure AD RBAC használatával szabályozhatja az adatelérést és az erőforrásokat, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszereket is használhatja.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja az adat-és erőforrásokhoz való hozzáférést, máskülönben a szolgáltatás-specifikus hozzáférés-vezérlési módszereket is használhatja.
 
-- [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: a gazdagép-alapú adatvesztés-megelőzés használata a hozzáférés-vezérlés kikényszeríthető
 
@@ -122,13 +122,13 @@ Az összes Azure-erőforráson használja a titkosítást. A Microsoft azt javas
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 4,9 | 14,9 | Ügyfél |
+| 4.9 | 14,9 | Ügyfél |
 
 A Azure Monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amikor a módosítások a kritikus Azure-erőforrásokra vonatkoznak.
 
 - [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a következő biztonsági szabályozást: [sebezhetőségek kezelése](security-control-vulnerability-management.md)
+- Tekintse meg a következő biztonsági szabályozást:  [sebezhetőségek kezelése](security-control-vulnerability-management.md)

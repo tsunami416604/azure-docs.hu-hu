@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339722"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079795"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Az Azure Stack Edge hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
 
@@ -95,7 +95,7 @@ Azure Stack Edge-eszköz esetében `Microsoft.DataBoxEdge` regisztrálni kell. A
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: [hibák elhárítása az erőforrás-szolgáltató regisztrálásához](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Az erőforrás-szolgáltatók regisztrálásával kapcsolatos további információkért lásd: [hibák elhárítása az erőforrás-szolgáltató regisztrálásához](../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="manage-connectivity-mode"></a>Kapcsolati mód kezelése
 
@@ -120,7 +120,7 @@ Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
  
 ## <a name="manage-power"></a>A Power kezelése
 
-Leállíthatja vagy újraindíthatja a fizikai eszközt a helyi webes felhasználói felület használatával. Javasoljuk, hogy az újraindítást megelőzően állítsa offline állapotba a megosztásokat az adatkiszolgálón, majd az eszközön. Ez a művelet lekicsinyíti az adatsérülés lehetőségét.
+A fizikai eszköz a helyi webes felhasználói felülettel állítható le vagy indítható újra. Az újraindítás előtt ajánlott offline állapotba állítani az adatkiszolgálón található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
 1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások**elemre.
 2. A kívánt művelettől függően válassza a **Leállítás** vagy az **Újraindítás** lehetőséget.
@@ -132,6 +132,6 @@ Leállíthatja vagy újraindíthatja a fizikai eszközt a helyi webes felhaszná
 > [!NOTE]
 > Ha leállítja a fizikai eszközt, a bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-manage-shares.md).

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/16/2019
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 65c3e3df9fe62614eff15585373360ebcaa158cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fa4e91a087c7dcfce247cacc2dff83458bc87f64
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543329"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079982"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>Oktatóanyag: a sansan és a Azure Active Directory integrálása
 
@@ -37,7 +37,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A sansan támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+* A sansan támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+* A sansan konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-sansan-from-the-gallery"></a>Sansan hozzáadása a gyűjteményből
 
@@ -50,20 +52,20 @@ A sansan Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **sansan** kifejezést a keresőmezőbe.
 1. Válassza ki a **sansan** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
 Konfigurálja és tesztelje az Azure AD SSO-t a sansan a **Britta Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a sansan-ben.
 
 Az Azure AD SSO és a sansan konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
-2. **[Konfigurálja a sansan](#configure-sansan)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
-5. **[Hozzon létre sansan-tesztelési felhasználót](#create-sansan-test-user)** , hogy a Britta Simon a sansan egy, a felhasználó Azure ad-képviseletéhez kapcsolódó partnere legyen.
-6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+   * **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+   * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
+1. **[Konfigurálja a sansan](#configure-sansan)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+   * **[Hozzon létre sansan-tesztelési felhasználót](#create-sansan-test-user)** , hogy a Britta Simon a sansan egy, a felhasználó Azure ad-képviseletéhez kapcsolódó partnere legyen.
+1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -75,18 +77,22 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
-    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-cím bármelyikét a következő minta használatával:
-    
-    | Környezet | URL-cím |
-    |:--- |:--- |
-    | PC web |`https://ap.sansan.com/v/saml2/<company name>/acs` |
-    | Natív Mobile-alkalmazás |`https://internal.api.sansan.com/saml2/<company name>/acs` |
-    | A mobil böngésző beállításai |`https://ap.sansan.com/s/saml2/<company name>/acs` |
+    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet: `https://ap.sansan.com/`
 
-    2. Az **azonosító (Entity ID)** szövegmezőben több azonosító értéket is beállíthat, és a környezetek közül bármelyiket kiválaszthatja.
+   1. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:  
+   `https://ap.sansan.com/saml2/<company name>`
+
+   1. A **Válasz URL-címe** szövegmezőbe írja be az egyik URL-címet a következő minta használatával:
+
+    
+       | Környezet | URL-cím |
+      |:--- |:--- |
+      | PC |`https://ap.sansan.com/v/saml2/<company name>/acs` |
+      | Okostelefon-alkalmazás |`https://internal.api.sansan.com/<company name>/acs` |
+      | Webes okostelefon |`https://ap.sansan.com/s/saml2/<company name>/acs` |
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a sansan ügyfélszolgálati [csapatához](https://www.sansan.com/form/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Keresse meg a tényleges értékeket a **sansan rendszergazdai beállításainál**.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -95,10 +101,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. A **sansan beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-### <a name="configure-sansan"></a>Sansan konfigurálása
-
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **sansan** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [sansan ügyfél-támogatási csapatnak](https://www.sansan.com/form/contact). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -110,7 +112,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -130,14 +132,20 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
+## <a name="configure-sansan"></a>Sansan konfigurálása
+
+Az **egyszeri bejelentkezés beállításainak** a **sansan** oldalán való végrehajtásához kövesse az alábbi lépéseket a követelménynek megfelelően.
+
+   * [Japán](https://jp-help.sansan.com/hc/ja/articles/900001551383 ) verzió.
+
+   * [Angol](https://jp-help.sansan.com/hc/en-us/articles/900001551383 ) verzió.
+
+
 ### <a name="create-sansan-test-user"></a>Sansan-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a sansan-ben. Az sansan alkalmazásnak be kell építenie a felhasználót az alkalmazásba az egyszeri bejelentkezés előtt.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a sansan-ben. A felhasználók létrehozásával kapcsolatos további információkért tekintse meg [ezeket](https://jp-help.sansan.com/hc/en-us/articles/206508997-Adding-users) a lépéseket.
 
-> [!NOTE]
-> Ha manuálisan vagy felhasználói kötegben kell létrehoznia egy felhasználót, lépjen kapcsolatba a [sansan támogatási csoportjával](https://www.sansan.com/form/contact).
-
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Amikor kiválasztja a sansan csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a sansan, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

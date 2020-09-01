@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117055"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89094230"
 ---
 [Durable functions](../articles/azure-functions/durable-functions-overview.md)konfigurációs beállításai.
 
@@ -59,6 +59,7 @@ ms.locfileid: "80117055"
       "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
       "trackingStoreNamePrefix": "DurableTask",
+      "useLegacyPartitionManagement": true,
       "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
@@ -83,16 +84,17 @@ ms.locfileid: "80117055"
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
     "extendedSessionIdleTimeoutInSeconds": 30,
+    "useAppLease": true,
     "useGracefulShutdown": false
   }
-  }
+ }
 }
 
 ```
 
 A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a functions-alkalmazás alapértelmezett neve **DurableFunctionsHub**. További információ: [Task hubok](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Az alternatív [feladatok központi](../articles/azure-functions/durable-functions-task-hubs.md) neve felhasználható több Durable functions-alkalmazás elkülönítésére, még akkor is, ha ugyanazt a tárolási hátteret használják.|
 |controlQueueBatchSize|32|A vezérlési sorból egyszerre lekérdezett üzenetek száma.|
@@ -104,7 +106,7 @@ A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számok
 |maxConcurrentOrchestratorFunctions |a processzorok száma az aktuális gépen (10X)|Azon Orchestrator-függvények maximális száma, amelyek egyszerre dolgozhatók fel egyetlen gazdagép-példányon.|
 |maxQueuePollingInterval|30 másodperc|A maximális vezérlési és a munkaelem-várólista lekérdezési időköze a *hh: PP: mm* formátumban. A magasabb értékek az üzenetek feldolgozási késleltetését eredményezik. Az alacsonyabb értékek nagyobb tárolási költségekhez vezethetnek a megnövekedett tárolási tranzakciók miatt.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Annak az alkalmazás-beállításnak a neve, amely a mögöttes Azure Storage-erőforrások kezeléséhez használt Azure Storage-beli kapcsolódási karakterláncot tartalmaz.|
-|trackingStoreConnectionStringName||Az előzmények és a példányok tábláihoz használandó kapcsolódási karakterlánc neve. Ha nincs megadva, a `azureStorageConnectionStringName` rendszer a kapcsolatokat használja.|
+|trackingStoreConnectionStringName||Az előzmények és a példányok tábláihoz használandó kapcsolódási karakterlánc neve. Ha nincs megadva, a `connectionStringName` rendszer a (tartós 2. x) vagy a `azureStorageConnectionStringName` (tartós 1. x) kapcsolatokat használja.|
 |trackingStoreNamePrefix||Az előzmények és a példányok tábláihoz használandó előtag, ha meg `trackingStoreConnectionStringName` van adva. Ha nincs beállítva, az alapértelmezett előtag érték lesz `DurableTask` . Ha nincs `trackingStoreConnectionStringName` megadva, az előzmények és a példányok táblázata az `hubName` értéket előtagként fogja használni, és a rendszer `trackingStoreNamePrefix` figyelmen kívül hagyja a beállítást.|
 |traceInputsAndOutputs |hamis|Egy érték, amely azt jelzi, hogy nyomon kell-e követni a függvények bemeneteit és kimeneteit. Az alapértelmezett viselkedés, ha a nyomkövetési függvény végrehajtásának eseményei között szerepel a bájtok száma a szerializált bemenetekben és a függvények hívásainak kimenetében. Ez a viselkedés minimális információt nyújt arról, hogy a bemenetek és a kimenetek hogyan néznek ki a naplók közelítése vagy a bizalmas adatok szándékos kitéve nélkül. Ha ezt a tulajdonságot True értékre állítja, az alapértelmezett függvény naplózza a függvény bemeneteit és kimeneteit teljes tartalmának naplózására.|
 |logReplayEvents|hamis|Egy érték, amely azt jelzi, hogy a rendszer megírja-e a hangelőkészítési eseményeket Application Insightsba.|
@@ -113,6 +115,8 @@ A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számok
 |eventGridPublishRetryCount|0|Az újrapróbálkozások száma, ha a Event Grid témakörben való közzététel meghiúsul.|
 |eventGridPublishRetryInterval|5 perc|A Event Grid az újrapróbálkozási időközt a *óó: PP: SS* formátumban teszi közzé.|
 |eventGridPublishEventTypes||Az Event Grid közzétenni kívánt eseménytípus listája. Ha nincs megadva, az összes eseménytípus közzé lesz téve. Az engedélyezett értékek a következők:,, `Started` `Completed` `Failed` , `Terminated` .|
+|useAppLease|true|Ha a értékre `true` van állítva, az alkalmazásoknak egy alkalmazás szintű blob bérlet beszerzését kell megadniuk a Task hub-üzenetek feldolgozása előtt. További információt a vész [-helyreállítási és a Geo-terjesztési](../articles/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution.md) dokumentációban talál. A szolgáltatás a v 2.3.0 kezdődően érhető el.
+|useLegacyPartitionManagement|true|Ha a értékre `false` van állítva, a egy particionálási algoritmust használ, amely csökkenti az ismétlődő függvények végrehajtásának lehetőségét a horizontális felskálázáskor.  A szolgáltatás a v 2.3.0 kezdődően érhető el. Az alapértelmezett érték `false` egy későbbi kiadásban lesz módosítva.|
 |useGracefulShutdown|hamis|Előnézet A zökkenőmentes leállítás lehetővé teszi, hogy a gazdagépek leállításának esélyét a folyamaton kívüli függvények végrehajtása okozza.|
 
 Ezeknek a beállításoknak a nagy része a teljesítmény optimalizálása. További információ: [teljesítmény és skálázás](../articles/azure-functions/durable-functions-perf-and-scale.md).

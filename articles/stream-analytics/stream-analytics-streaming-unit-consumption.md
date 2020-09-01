@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 08/28/2020
+ms.openlocfilehash: e568051bfd5ac58f283eac7f9dc8a72be5c9dbbb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903561"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079676"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A streamelési egységek ismertetése és módosítása
 
@@ -20,7 +20,7 @@ A streaming Units (SUs) a Stream Analytics feladatok végrehajtásához lefoglal
 
 A kis késésű streamfeldolgozás érdekében az Azure Stream Analytics-feladatok minden feldolgozást a memóriában hajtanak végre. A memória elfogyása esetén a folyamatos átviteli feladatok sikertelenek. Ennek eredményeképpen éles feladatokhoz fontos figyelni a folyamatos átviteli feladatok erőforrás-felhasználását, és gondoskodni kell arról, hogy elegendő erőforrás legyen kiosztva a 24/7-ot futtató feladatok megtartásához.
 
-A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, a számítási feladatok memória-felhasználását írja le. Minimális helyigényű folyamatos átviteli feladatoknál ez a metrika általában 10% és 20% között van. Ha a SU% kihasználtsága alacsony, és a bemeneti események várakozó kapnak, valószínűleg több számítási erőforrásra van szükség, amelyhez az SUs számának növelésére van szükség. Érdemes megtartani a SU metrika 80% alatti értékét az alkalmi tüskék beszámításához. A Microsoft azt javasolja, hogy a riasztást a 80% SU kihasználtsági metrikán állítsa be az erőforrás-kimerültség megelőzése érdekében. További információ: [oktatóanyag: riasztások beállítása Azure stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md).
+A (z)% kihasználtsági metrika, amely 0% és 100% közötti tartományba esik, a számítási feladatok memória-felhasználását írja le. Minimális helyigényű folyamatos átviteli feladatoknál ez a metrika általában 10% és 20% között van. Ha a SU%-kihasználtság magas (meghaladja a 80%-ot), vagy ha a bemeneti események várakozó kapnak (akár alacsony SU%-os kihasználtsággal is, mivel nem jeleníti meg a CPU-használatot), valószínűleg több számítási erőforrásra van szükség, amelyhez az SUs számának növelésére van szükség. Érdemes megtartani a SU metrika 80% alatti értékét az alkalmi tüskék beszámításához. A Microsoft azt javasolja, hogy a riasztást a 80% SU kihasználtsági metrikán állítsa be az erőforrás-kimerültség megelőzése érdekében. További információ: [oktatóanyag: riasztások beállítása Azure stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics streaming Units (SUs) konfigurálása
 1. Bejelentkezés [Azure Portal](https://portal.azure.com/)
@@ -111,7 +111,7 @@ Az illesztésben szereplő nem egyező események száma befolyásolja a lekérd
 
 Ebben a példában lehetséges, hogy sok hirdetés látható, és kevés ember kattint rá, és meg kell őriznie az összes eseményt az időablakban. A felhasznált memória arányos az ablak méretével és az események gyakoriságával. 
 
-Ennek megoldásához küldje el az eseményeket az Event hub által particionált, az illesztési kulcsok (ebben az esetben azonosító) alapján, és bővítse a lekérdezést úgy, hogy lehetővé teszi, hogy a rendszeren az egyes bemeneti partíciókat külön lehessen feldolgozni a **Partition by** paranccsal, az alábbiak szerint:
+Ennek megoldásához küldje el az eseményeket az Event hub által particionált, az illesztési kulcsok (ebben az esetben azonosító) alapján, és bővítse a lekérdezést úgy, hogy lehetővé teszi, hogy a rendszeren az egyes bemeneti partíciókat külön lehessen feldolgozni a  **Partition by** paranccsal, az alábbiak szerint:
 
    ```sql
    SELECT clicks.id

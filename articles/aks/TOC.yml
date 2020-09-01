@@ -129,6 +129,8 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service – Diagnosztikai áttekintés
       href: concepts-diagnostics.md
+    - name: Fenntarthatóság a szoftvermérnöki területen
+      href: concepts-sustainable-software-engineering.md
 - name: Útmutatók
   items:
     - name: Fürtműveletek

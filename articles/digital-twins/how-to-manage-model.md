@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 85056710c8072c55e2661021795d9aedb407b629
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2b3bfa8553e7c350c08fa7e1a7376ca08d9644
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013004"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079776"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -170,9 +170,9 @@ A modelleket nem feltétlenül adja vissza pontosan abban a dokumentum űrlapon,
 
 Miután feltöltötte a modellt a példányra, a teljes modell felülete nem változtatható meg. Ez azt jelenti, hogy nincs a modellek hagyományos "szerkesztése".
 
-Ehelyett, ha módosítani szeretné a modelleket az Azure-beli digitális Ikrekben, például a vagy a módosításával, ennek az az módja, hogy `DisplayName` `Description` az azonos modell **újabb verzióját** töltse fel. Ez felülbírálja az eredeti modellt.
+Ehelyett, ha az Azure Digital Twins-modellben szeretne módosítani egy modellt, ennek az az módja, hogy az azonos modell **újabb verzióját** töltse fel. Az előzetes verzióban a modell verziófrissítése csak a mezők eltávolítását teszi lehetővé, nem újak hozzáadásával (új mezők hozzáadásához csak új modellt kell [létrehoznia](#create-models)).
 
-Ehhez kezdje az eredeti modell DTDL. Frissítse a módosítani kívánt mezőket.
+Meglévő modell új verziójának létrehozásához kezdje az eredeti modell DTDL. Frissítse a módosítani kívánt mezőket.
 
 Ezt követően jelölje meg a modell újabb verzióját a modell mező frissítésével `id` . A modell AZONOSÍTÓjának utolsó szakasza, amely után a `;` , a modell számát jelöli. Annak jelzéséhez, hogy ez a modell most már egy frissített verziója, növelje az érték végén lévő számot az `id` aktuális verziószámnál nagyobb számra.
 
