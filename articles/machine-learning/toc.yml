@@ -216,6 +216,13 @@
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: Számítási erőforrások létrehozása
+      items:
+        - name: A Studio használata
+          href: how-to-create-attach-compute-studio.md
+        - name: A Python SDK használata
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-create-attach-compute-sdk.md
     - name: A környezet kialakítása
       items:
         - name: Fejlesztési környezetek beállítása
@@ -265,7 +272,7 @@
         - name: Adatok elérése
           items:
             - name: Csatlakozás az Azure Storage-hoz
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: Adatok lekérése adattárból
               displayName: 'data, data set, register, access data'
@@ -286,7 +293,7 @@
               href: how-to-differential-privacy.md
     - name: Modellek betanítása
       items:
-        - name: Betanítási környezetek beállítása
+        - name: Betanítási futtatás elküldése
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Becslők használata gépi tanuláshoz
