@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271263"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226207"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
@@ -41,15 +41,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ismerkedjen meg a következő cikkekkel:
 
-- [Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [A tevékenységek naplóinak integrálása a Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [A tevékenységek naplóinak integrálása a Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Vészhelyzeti hozzáférési fiók kezelése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Vészhelyzeti hozzáférési fiók kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
 
-- [KQL– rövid áttekintés](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [KQL– rövid áttekintés](/azure/data-explorer/kql-quick-reference)
 
-- [Munkafüzetek Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Munkafüzetek Azure Monitor](../../azure-monitor/platform/workbooks-overview.md)
 
 
 
@@ -268,7 +268,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     3. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
-    4. Kattintson a **Create** (Létrehozás) gombra.
+    4. Kattintson a **Létrehozás** lehetőségre.
 
 
 15. A **művelet testreszabása**területen hajtsa végre a következő lépéseket:
@@ -392,7 +392,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

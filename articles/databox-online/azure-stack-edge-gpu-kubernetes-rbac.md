@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 310fde15a850214aa1741c9cb587c0edcf570a37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 703e67b4829413776dc8d98843888fbd67906baa
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084094"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182190"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-device"></a>Szerepköralapú Access Control Kubernetes az Azure Stack Edge-eszközön
 
@@ -26,9 +26,43 @@ Ez a cikk áttekintést nyújt a Kubernetes által biztosított RBAC rendszerrő
 
 A Kubernetes RBAC lehetővé teszi felhasználók vagy felhasználói csoportok hozzárendelését, valamint az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás számítási feladatainak futtatásához. Ezek az engedélyek egyetlen névtérre vagy a teljes fürtre is érvényesek. 
 
-A Kubernetes-fürt beállításakor a rendszer egyetlen felhasználót hoz létre a fürtnek megfelelően, és neve a fürt rendszergazdai felhasználója.  Egy `kubeconfig` fájl társítva van a fürt rendszergazdai felhasználója számára. A `kubeconfig` fájl egy szövegfájl, amely tartalmazza a fürthöz való kapcsolódáshoz szükséges összes konfigurációs információt a felhasználó hitelesítéséhez. 
+A Kubernetes-fürt beállításakor a rendszer egyetlen felhasználót hoz létre a fürtnek megfelelően, és neve a fürt rendszergazdai felhasználója.  Egy `kubeconfig` fájl társítva van a fürt rendszergazdai felhasználója számára. A `kubeconfig` fájl egy szövegfájl, amely tartalmazza a fürthöz való kapcsolódáshoz szükséges összes konfigurációs információt a felhasználó hitelesítéséhez.
 
-### <a name="namespaces-and-users"></a>Névterek és felhasználók
+## <a name="namespaces-types"></a>Névterek típusai
+
+A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések logikailag vannak csoportosítva egy névtérbe. Ezek a csoportok lehetővé teszik a Kubernetes-fürtök logikai felosztását, valamint az erőforrások létrehozásához, megtekintéséhez vagy kezeléséhez való hozzáférés korlátozását. A felhasználók csak a hozzájuk rendelt névterekben lévő erőforrásokkal tudnak kommunikálni.
+
+A névterek olyan környezetekben használhatók, amelyekben számos felhasználó több csapat vagy projekt között oszlik meg. A több tízezer felhasználót tartalmazó fürtök esetében egyáltalán nem kell létrehoznia vagy gondolnia a névtereket. A névterek használatának megkezdése, ha szüksége van az általuk nyújtott szolgáltatásokra.
+
+További információ: Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
+
+
+Az Azure Stack Edge-eszköz a következő névterekkel rendelkezik:
+
+- **Rendszernévtér** – ez a névtér az alapvető erőforrások, például a DNS és a proxy, illetve a Kubernetes irányítópult. Általában nem telepítheti saját alkalmazásait ebbe a névtérbe. Használja ezt a névteret a Kubernetes-fürtökkel kapcsolatos problémák hibakereséséhez. 
+
+    Az eszközön több rendszernévtér található, és az ezekhez a rendszernévtérekhez tartozó nevek vannak fenntartva. Itt látható a fenntartott rendszernévtérek listája: 
+    - Kube – rendszerek
+    - metallb – rendszerek
+    - dbe – névtér
+    - alapértelmezett
+    - kubernetes – irányítópult
+    - alapértelmezett
+    - Kube – csomópont-bérlet
+    - Kube – nyilvános
+    - iotedge
+    - Azure – ív
+
+    Ügyeljen arra, hogy ne használjon fenntartott neveket a létrehozott felhasználói névterekhez. 
+<!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
+
+- **Felhasználói névtér** – ezek azok a névterek, amelyeket a **kubectl** segítségével hozhat létre helyileg, alkalmazások helyi telepítéséhez.
+ 
+- **IoT Edge névtér** – ehhez a névtérhez kapcsolódhat az `iotedge` alkalmazások IoT Edge használatával történő telepítéséhez.
+
+- **Azure arc-névtér** – ehhez a névtérhez kapcsolódhat az `azure-arc` Azure arc használatával történő alkalmazások telepítéséhez. 
+
+## <a name="namespaces-and-users"></a>Névterek és felhasználók
 
 A valós világban fontos a fürtöt több névtérre osztani. 
 
@@ -43,7 +77,6 @@ A Kubernetes a szerepkör és a szerepkör-kötés fogalmával rendelkezik, amel
 - **RoleBindings**: Miután definiálta a szerepköröket, a **RoleBindings** használatával rendelhet hozzá szerepköröket egy adott névtérhez. 
 
 Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen Kubernetes-fürtöt, és a felhasználók csak a hozzájuk rendelt névtérben tudják elérni az alkalmazás erőforrásait. 
-
 
 ## <a name="rbac-on-azure-stack-edge"></a>RBAC Azure Stack Edge-ben
 
@@ -92,16 +125,8 @@ Ha névtereket és felhasználókat használ a Azure Stack Edge-eszközökön, a
 - Nem hozhat létre olyan felhasználói névtereket, amelyek más felhasználói névterek által már használt névvel rendelkeznek. Ha például Ön létrehozta a t `test-ns` , nem hozhat létre újabb `test-ns` névteret.
 - A már fenntartott névvel rendelkező felhasználókat nem lehet létrehozni. Például `aseuser` egy fenntartott fürt rendszergazdája, és nem használható.
 
-Azure Stack peremhálózati névterekkel kapcsolatos további információkért lásd: [névterek típusai](azure-stack-edge-gpu-kubernetes-workload-management.md#namespaces-types).
 
-
-<!--To deploy applications on an Azure Stack Edge device, use the following :
- 
-- First, you will use the PowerShell runspace to create a user, create a namespace, and grant user access to that namespace.
-- Next, you will use the Azure Stack Edge resource in the Azure portal to create persistent volumes using either static or dynamic provisioning for the stateful applications that you will deploy.
-- Finally, you will use the services to expose applications externally and within the Kubernetes cluster.-->
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan hozhat létre egy felhasználót, hozzon létre egy névteret, és engedélyezze a hozzáférést a névtérhez, tekintse meg a [Kubernetes-fürt elérése a kubectl keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakört.
 

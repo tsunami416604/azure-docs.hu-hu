@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 21845b51fdd108221d5e1bce50e953b79084d17d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084082"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182054"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes munkaterhelés-kezelés az Azure Stack Edge-eszközön
 
@@ -33,40 +33,13 @@ Az Azure Stack Edge-eszközön üzembe helyezhető munkaterhelések két gyakori
 
     Az állapot-nyilvántartó alkalmazások üzembe helyezéséhez létrehozhat egy Kubernetes-telepítést. 
 
-## <a name="namespaces-types"></a>Névterek típusai
+## <a name="deployment-flow"></a>Üzembe helyezési folyamat
 
-A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések logikailag vannak csoportosítva egy névtérbe. Ezek a csoportok lehetővé teszik a Kubernetes-fürtök logikai felosztását, valamint az erőforrások létrehozásához, megtekintéséhez vagy kezeléséhez való hozzáférés korlátozását. A felhasználók csak a hozzájuk rendelt névterekben lévő erőforrásokkal tudnak kommunikálni.
-
-A névterek olyan környezetekben használhatók, amelyekben számos felhasználó több csapat vagy projekt között oszlik meg. A több tízezer felhasználót tartalmazó fürtök esetében egyáltalán nem kell létrehoznia vagy gondolnia a névtereket. A névterek használatának megkezdése, ha szüksége van az általuk nyújtott szolgáltatásokra.
-
-További információ: Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
-
-
-Az Azure Stack Edge-eszköz a következő névterekkel rendelkezik:
-
-- **Rendszernévtér** – ez a névtér az alapvető erőforrások, például a DNS és a proxy, illetve a Kubernetes irányítópult. Általában nem telepítheti saját alkalmazásait ebbe a névtérbe. Használja ezt a névteret a Kubernetes-fürtökkel kapcsolatos problémák hibakereséséhez. 
-
-    Az eszközön több rendszernévtér található, és az ezekhez a rendszernévtérekhez tartozó nevek vannak fenntartva. Itt látható a fenntartott rendszernévtérek listája: 
-    - Kube – rendszerek
-    - metallb – rendszerek
-    - dbe – névtér
-    - alapértelmezett
-    - kubernetes – irányítópult
-    - alapértelmezett
-    - Kube – csomópont-bérlet
-    - Kube – nyilvános
-    - iotedge
-    - Azure – ív
-
-    Ügyeljen arra, hogy ne használjon fenntartott neveket a létrehozott felhasználói névterekhez. 
-<!--- **default namespace** - This namespace is where pods and deployments are created by default when none is provided and you have admin access to this namespace. When you interact with the Kubernetes API, such as with `kubectl get pods`, the default namespace is used when none is specified.-->
-
-- **Felhasználói névtér** – ezek azok a névterek, amelyeket a **kubectl** segítségével hozhat létre helyileg, alkalmazások helyi telepítéséhez.
+Az alkalmazások Azure Stack peremhálózati eszközön való üzembe helyezéséhez kövesse az alábbi lépéseket: 
  
-- **IoT Edge névtér** – ehhez a névtérhez kapcsolódhat az `iotedge` alkalmazások IoT Edge használatával történő telepítéséhez.
-
-- **Azure arc-névtér** – ehhez a névtérhez kapcsolódhat az `azure-arc` Azure arc használatával történő alkalmazások telepítéséhez.
-
+1. **Hozzáférés konfigurálása**: először a PowerShell-RunSpace használatával hozzon létre egy felhasználót, hozzon létre egy névteret, és adja meg a felhasználói hozzáférést a névtérhez.
+2. **Tároló konfigurálása**: ezután a Azure Portal Azure stack Edge erőforrását fogja használni az állandó kötetek létrehozásához, statikus vagy dinamikus kiépítés használatával a telepítendő állapot-nyilvántartó alkalmazások számára.
+3. **Hálózatkezelés konfigurálása**: Végezetül a szolgáltatásokkal külső és a Kubernetes-fürtön is elérhetővé teheti az alkalmazásokat.
  
 ## <a name="deployment-types"></a>Központi telepítési típusok
 
@@ -78,7 +51,7 @@ A munkaterhelések üzembe helyezésének három fő módja van. Az üzembe hely
 
 - **IoT Edge**üzemelő példány: ez a IoT Edgeon keresztül történik, amely az Azure IoT hubhoz csatlakozik. Az Azure Stack Edge-eszközön a névtéren keresztül csatlakozik a K8-fürthöz `iotedge` . Az ebben a névtérben üzembe helyezett IoT Edge ügynökök felelősek az Azure-hoz való csatlakozásért. A `IoT Edge deployment.json` konfigurációt az Azure DEVOPS CI/CD használatával alkalmazhatja. A névtér és a IoT Edge kezelése a Cloud Operator használatával történik.
 
-- **Azure/arc üzembe helyezése**: az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a K8-fürtökön. A K8-fürtöt a Azure Stack peremhálózati eszközén kell összekapcsolni a használatával `azure-arc namespace` .  Az ügynökök üzembe helyezése ebben a névtérben történik, amely felelős az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el az [Azure-arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre.
+- **Azure/arc üzembe helyezése**: az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a K8-fürtökön. A K8-fürtöt a Azure Stack peremhálózati eszközén kell összekapcsolni a használatával `azure-arc namespace` . Az ügynökök üzembe helyezése ebben a névtérben történik, amely felelős az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el az [Azure-arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre.
 
 ## <a name="choose-the-deployment-type"></a>A központi telepítés típusának kiválasztása
 
@@ -91,7 +64,7 @@ Az alkalmazások központi telepítése során vegye figyelembe a következő in
 - **IoT vs Azure arc**: az üzembe helyezés megválasztása a termék forgatókönyvének szándékával is függ. Ha olyan alkalmazásokat vagy tárolókat helyez üzembe, amelyek mélyebb integrációt végeznek a IoT vagy a IoT ökoszisztémával, akkor ki kell választania az alkalmazások központi telepítésének IoT Edge módját. Ha már rendelkezik Kubernetes üzemelő példányokkal, az Azure arc az előnyben részesített választás lenne.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha helyileg szeretné telepíteni az alkalmazást a kubectl-on keresztül, olvassa el a következőt:
 

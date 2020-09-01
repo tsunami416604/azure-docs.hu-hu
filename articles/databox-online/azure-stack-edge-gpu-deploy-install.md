@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 905229cde0d2b3dde7f0f2192860c33fc69e5fb2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 401b7c7a44e2f8009baca96862817b3d14f35c94
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087840"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181816"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Oktatóanyag: Azure Stack Edge telepítése GPU-val
 
@@ -37,7 +37,7 @@ A fizikai eszközök telepítésének előfeltételei a következők:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* Végrehajtotta az [Azure stack Edge üzembe helyezésének előkészítése](azure-stack-edge-gpu-deploy-prep.md)című témakör összes lépését.
+* Elvégezte a [felkészülés a Azure stack Edge üzembe helyezése a GPU-val](azure-stack-edge-gpu-deploy-prep.md)című témakör összes lépését.
     * Létrehozott egy Azure Stack Edge-erőforrást az eszköz üzembe helyezéséhez.
     * Létrehozta az aktiválási kulcsot az eszköz Azure Stack Edge-erőforrással való aktiválásához.
 
@@ -48,11 +48,11 @@ Az eszköz üzembe helyezése előtt:
 
 - Győződjön meg róla, hogy az eszköz biztonságosan működik-e egy sima, stabil és szintű munkafelületen.
 - Győződjön meg arról, hogy az eszköz beállításához kijelölt helyen van:
-    - Standard AC-áramellátás független forrásból
+    - Standard AC-áramellátás független forrásból.
 
         -VAGY-
-    - Szünetmentes áramforrást (UPS) tartalmazó rack Power Distribution Unit (PDU)
-    - Azon állványon elérhető 1U-tárolóhely, amelyhez csatlakoztatni kívánja az eszközt
+    - egy kiszolgálószekrényhez való áramelosztó egység (PDU) szünetmentes tápegységgel (UPS).
+    - Azon állványon elérhető 1U-tárolóhely, amelyhez csatlakoztatni kívánja az eszközt.
 
 ### <a name="for-the-network-in-the-datacenter"></a>Az adatközpont hálózata esetén
 
@@ -75,7 +75,7 @@ Az eszköz egyetlen dobozban érkezik. Az eszköz kibontásához hajtsa végre a
     - Egy vasúti készlet szerelvény
     - Biztonsági, környezeti és szabályozási tájékoztató füzet
 
-Ha nem kapta meg az itt felsorolt összes elemet, forduljon Azure Stack Edge ügyfélszolgálatához. A következő lépés az eszköz csatlakoztatása.
+Ha nem kapta meg az összes itt felsorolt elemet, [forduljon a Microsoft ügyfélszolgálatahoz](azure-stack-edge-contact-microsoft-support.md). A következő lépés az eszköz csatlakoztatása.
 
 
 ## <a name="rack-the-device"></a>Az eszköz állványra szerelése
@@ -166,7 +166,7 @@ Az eszköz kábelezésének megkezdése előtt a következőkre lesz szüksége:
 - Legalább egy 1-GbE RJ-45 hálózati kábel a felügyeleti felülethez való csatlakozáshoz. Az eszközön két 1-GbE hálózati adapter (egy felügyeleti és egy adathálózati) található.
 - Egy 25-GbE SFP+ rézkábel minden konfigurálni kívánt adathálózati adapterhez. Legalább egy adathálózati adaptert a 2. port, a 3. port, az 5. port vagy a 6-os port közül kell csatlakoztatni az internethez (az Azure-hoz való csatlakozással).  
 - Hozzáférés két energiaellátási egységhez (ajánlott).
-- Legalább egy GbE hálózati kapcsolóval egy 1 GbE hálózati adapter csatlakozik az internethez az adatkapcsolathoz. Ha 25/10 GbE felületet használ az adataihoz, akkor 25 GbE vagy 10 GbE kapcsolóra van szüksége. 
+- Legalább egy GbE hálózati kapcsolóval egy 1 GbE hálózati adapter csatlakozik az internethez az adatkapcsolathoz. A helyi webes felhasználói felület nem lesz elérhető, ha a csatlakoztatott kapcsoló nem legalább 1 GbE. Ha 25/10 GbE felületet használ az adataihoz, akkor 25 GbE vagy 10 GbE kapcsolóra van szüksége. 
 
 > [!NOTE]
 > - Ha csak egy adathálózati adaptert csatlakoztat, javasoljuk, hogy használjon 25/10 GbE hálózati adaptert, például a 3. portot, a 4-es portot, az 5. portot vagy a 6-os PORTOT az Azure-ba való adatküldéshez. 
@@ -226,7 +226,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
     - Ha a 2-es PORTOT csatlakoztatja, használja az 1-GbE RJ-45 hálózati kábelt.
     - A 10/25 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, például a következőket:
 

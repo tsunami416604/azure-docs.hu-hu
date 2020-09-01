@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c98d6644dba0b3ca51f07f01ec27fee697369f2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 90f9fcc7bbac3164b4e620674bd64d026c11badb
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087851"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181833"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Oktatóanyag: Kapcsolódás Azure Stack Edge-hez GPU használatával
 
@@ -45,9 +45,11 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 
     ![Egy bekábelezett eszköz hátlapja](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
+    Az eszköz hátlapja némileg eltérő lehet a kapott modelltől függően.
+
 
 3. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes FELÜLETét a következő címen: `https://192.168.100.10` .  
-    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt. 
+    Ez a művelet néhány percet is igénybe vehet, miután bekapcsolta az eszközt.
 
     Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával. 
    
@@ -66,7 +68,7 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 Most már **megtekintheti** az eszköz áttekintés lapját. A következő lépés az eszköz hálózati beállításainak konfigurálása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

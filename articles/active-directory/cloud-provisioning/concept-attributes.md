@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78299329"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226930"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Az Azure AD-séma ismertetése
 A Azure Active Directory (Azure AD) egyik objektuma, például bármely címtár, egy programozott, magas szintű adatszerkezet, amely felhasználók, csoportok és névjegyek számára is jelent. Amikor új felhasználót vagy kapcsolatot hoz létre az Azure AD-ben, az adott objektum új példányát hozza létre. Ezek a példányok a tulajdonságaik alapján különböztethetők meg.
@@ -51,7 +51,7 @@ Ha például a "" e-mail-attribútummal rendelkezik, john.smith@contoso.com és 
 * **Bemenet** (e-mail): " john.smith@contoso.com "
 * **Kimenet**: "John. Smith"
 
-Az egyéni kifejezések és a szintaxis megírásával kapcsolatos további információkért lásd: [kifejezések írása az attribútumok megfeleltetéséhez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Az egyéni kifejezések és a szintaxis megírásával kapcsolatos további információkért lásd: [kifejezések írása az attribútumok megfeleltetéséhez Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 
 Az alábbi táblázat a gyakori attribútumokat és az Azure AD-vel való szinkronizálást ismerteti.
 
@@ -251,7 +251,7 @@ A séma megtekintéséhez és ellenőrzéséhez kövesse az alábbi lépéseket.
 
    ![Visszaadott séma](media/concept-attributes/schema1.png)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

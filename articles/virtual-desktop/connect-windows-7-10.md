@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85e0c1b146cfba0cb95a6612f33e42a465bfd20b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008746"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226709"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
@@ -61,13 +61,14 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 1. Az ügyfél főoldalán válassza az **előfizetés URL-lel**lehetőséget.
 2. Adja meg a munkaterület URL-címét vagy e-mail-címét:
    - Ha a **munkaterület URL-címét**használja, használja a rendszergazda által megadott címet. Ha a Windows virtuális asztalról fér hozzá az erőforrásokhoz, a következő URL-címek egyikét használhatja:
-     - Windowsos virtuális asztal (klasszikus):`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows rendszerű virtuális asztal:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windowsos virtuális asztal (klasszikus): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows rendszerű virtuális asztal: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windows rendszerű virtuális asztal (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
    - Ha ehelyett az **e-mail** mezőt használja, adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda beállította az [e-mail felderítését](/windows-server/remote/remote-desktop-services/rds-email-discovery).
-3. Válassza a **Tovább** lehetőséget.
+3. Kattintson a **Tovább** gombra.
 4. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 5. Az erőforrásoknak a kapcsolatok központjában kell megjelenniük, munkaterület szerint csoportosítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Windows asztali ügyfél használatáról, tekintse meg [a Windows asztali ügyfélprogram használatának első lépéseivel foglalkozó](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)témakört.

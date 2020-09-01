@@ -6,13 +6,13 @@ ms.service: dns
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: ea4f3072df7ef6d25736ca3abdeb72abaf2971a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860836"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225666"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS Azure biztonsági alapterve
 
@@ -558,7 +558,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256866"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226947"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Felhőalapú kiépítés – hibaelhárítás
 
@@ -120,7 +120,7 @@ A felhőalapú kiépítési ügynök telepítésekor hibaüzenet jelenhet meg.
 
 Ezt a problémát általában az okozza, hogy az ügynök nem tudja végrehajtani a PowerShell regisztrációs parancsfájlokat a helyi PowerShell-végrehajtási házirendek miatt.
 
-A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatait a kiszolgálón. A számítógép-és felhasználói házirendeket nem *definiált* vagy *RemoteSigned*kell beállítani. Ha nem *korlátozottként*vannak beállítva, akkor ez a hibaüzenet jelenik meg. További információ: [PowerShell végrehajtási szabályzatok](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatait a kiszolgálón. A számítógép-és felhasználói házirendeket nem *definiált* vagy *RemoteSigned*kell beállítani. Ha nem *korlátozottként*vannak beállítva, akkor ez a hibaüzenet jelenik meg. További információ: [PowerShell végrehajtási szabályzatok](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
 ### <a name="log-files"></a>Naplófájlok
 
@@ -195,7 +195,7 @@ Az állapot kiválasztásával további információkat tekinthet meg a karanté
 
   ![Kiépítés újraindítása](media/how-to-troubleshoot/quarantine3.png)
 
-- [A kiépítési feladatok újraindításához használja a](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. A következőket törölheti:
+- [A kiépítési feladatok újraindításához használja a](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. A következőket törölheti:
   - A rendszer a karanténba helyezési állapot felé felmerülő letéti számláló újraindítására.
   - Karanténba helyezheti az alkalmazást a karanténba.
   - Vízjelek. 
@@ -208,6 +208,3 @@ Az állapot kiválasztásával további információkat tekinthet meg a karanté
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
-
-
-

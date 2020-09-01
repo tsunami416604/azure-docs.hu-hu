@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5c5326310887cd5756ae264a35aafe7e771a7863
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146759"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226794"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -80,10 +80,10 @@ A Python-csomagok mind a **python 3,6-AzureML** környezetben települnek.
 
 ### <a name="installing-packages"></a>Csomagok telepítése
 
-A csomagokat közvetlenül Jupyter jegyzetfüzetbe vagy Rstudio is telepítheti:
+A csomagokat közvetlenül Jupyter Notebook vagy RStudio is telepítheti:
 
 * A RStudio a jobb alsó sarokban található **csomagok** fület vagy a bal felső sarokban található **konzol** fület használják.  
-* Python: telepítési kód hozzáadása és végrehajtás Jupyter jegyzetfüzet-cellában.
+* Python: telepítési kód hozzáadása és végrehajtása Jupyter Notebook cellában.
 
 Vagy a következő módokon érheti el a terminál-ablakokat:
 

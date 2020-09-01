@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21dba3c9beeefa2b25b8038f6cbd0ec77f947774
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659483"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226726"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Azure Portal
 
@@ -31,6 +31,8 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a Azure Portal vagy a PowerShell használatával, az alábbi eljárással adhat hozzá alkalmazás-csoportokat a Azure Portalból:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+   
+   >! Megjegyzés Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
 
 2.  Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
 
@@ -87,7 +89,7 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
       - Adja meg az alkalmazás adatait az **alkalmazás neve**, a **megjelenítendő név**, az **ikon elérési útja**és az **ikon index** mezőiben.
 
-      - Kattintson a **Mentés** gombra.
+      - Válassza a **Mentés** lehetőséget.
 
      > [!div class="mx-imgBorder"]
      > ![Az alkalmazás hozzáadása oldal képernyőképe a kijelölt fájl elérési útjával.](media/add-app-file.png)
@@ -120,7 +122,7 @@ Az üzembe helyezési folyamat a következő műveleteket végzi el:
 - Ha ezt a lehetőséget választja, regisztrálja az alkalmazás csoportját.
 - Hozzon létre egy Azure Resource Manager-sablonra mutató hivatkozást, amely a később letölthető és menthető konfiguráció alapján érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alkalmazáscsoport, hogyan tölthető be a RemoteApp-programokkal, és hogyan rendelhet hozzá felhasználókat az alkalmazás-csoporthoz. Az érvényesítési gazdagépek létrehozásáról a következő oktatóanyagban olvashat bővebben. Az ellenőrzési gazdagépek segítségével figyelheti a szolgáltatás frissítéseit, mielőtt az éles környezetbe helyezné őket.
 

@@ -3,12 +3,12 @@ title: SQL Server biztonsági mentése Azure Backup Server használatával
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról Microsoft Azure Backup Server (MABS) használatával.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: caf3d49c9b921cab97054a97ece271e484a734bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b47cb74c6e5dbb868c03f8f7b79c00b0c4ce7886
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005207"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182309"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>SQL Server biztonsági mentése az Azure-ba Azure Backup Server használatával
 
@@ -178,6 +178,6 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 
     A helyreállítás befejezésekor a visszaállított adatbázis konzisztens az alkalmazással.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 További információ: [Azure Backup GYIK](backup-azure-backup-faq.md).

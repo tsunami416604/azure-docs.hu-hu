@@ -5,28 +5,32 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286631"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226427"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-trigger vagy művelet használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek http-vagy https-kapcsolaton keresztül küldenek kéréseket a szolgáltatási végpontoknak. Megfigyelheti például a webhely szolgáltatási végpontját, ha ellenőrzi, hogy a végpont egy adott időpontban van-e. Ha a megadott esemény a végponton történik, például a webhely leállásakor, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja az adott munkafolyamat műveleteit. Ha ehelyett a bejövő HTTPS-hívásokat szeretné fogadni és válaszolni, használja a beépített [kérelem-triggert vagy a válasz műveletet](../connectors/connectors-native-reqres.md).
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-trigger vagy művelet használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a kimenő kérelmeket más szolgáltatásokban és rendszerekben, HTTP-n vagy HTTPS-en keresztül küldhetik a végpontoknak. Ha ehelyett a bejövő HTTPS-hívásokat szeretné fogadni és válaszolni, használja a beépített [kérelem-triggert és a válasz műveletet](../connectors/connectors-native-reqres.md).
+
+Például figyelheti a webhelyhez tartozó szolgáltatási végpontot, ha ellenőrzi, hogy a végpont egy adott időpontban van-e. Ha a megadott esemény a végponton történik, például a webhely leállásakor, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja az adott munkafolyamat műveleteit.
 
 * Ha ismétlődő ütemterv alapján szeretné megtekinteni vagy *lekérdezni* egy végpontot, [adja hozzá a http-triggert](#http-trigger) a munkafolyamat első lépéseként. Minden alkalommal, amikor a trigger ellenőrzi a végpontot, az trigger meghívja vagy elküld egy *kérést* a végpontnak. A végpont válasza határozza meg, hogy a logikai alkalmazás munkafolyamata fut-e. Az trigger bármilyen tartalmat továbbít a végpont válaszában a logikai alkalmazás műveleteire.
 
 * Ha egy végpontot szeretne meghívni a munkafolyamatban bárhol máshol, [adja hozzá a http-műveletet](#http-action). A végpont válasza határozza meg, hogyan futnak a munkafolyamat hátralévő műveletei.
 
-Ez a cikk bemutatja, hogyan adhat hozzá HTTP-triggert vagy műveletet a logikai alkalmazás munkafolyamataihoz.
+Ez a cikk bemutatja, hogyan használhatja a HTTP-triggert és a HTTP-műveletet úgy, hogy a logikai alkalmazás kimenő hívásokat küldjön más szolgáltatásoknak és rendszereknek.
+
+További információ a logikai alkalmazásból kimenő hívások titkosításáról, biztonságáról és engedélyezéséről, például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL), önaláírt tanúsítvány vagy [Azure Active Directory nyílt hitelesítés (Azure ad OAuth)](../active-directory/develop/index.yml): [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * A hívni kívánt cél végpont URL-címe
 
@@ -96,21 +100,27 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-<a name="tls-support"></a>
+## <a name="trigger-and-action-outputs"></a>Trigger-és műveleti kimenetek
 
-## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-A célként megadott végponti képesség alapján a kimenő hívások támogatják Transport Layer Security (TLS), amely korábban SSL (SSL), 1,0, 1,1 és 1,2 verziójú. Logic Apps a lehető legmagasabb támogatott verzió használatával egyeztet a végponttal.
+| Tulajdonság | Típus | Leírás |
+|----------|------|-------------|
+| `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
+| `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| `status code` | Egész szám | A kérelemben szereplő állapotkód |
+|||
 
-Ha például a végpont támogatja a 1,2-et, a HTTP-összekötő először a 1,2-et használja. Ellenkező esetben az összekötő a következő legmagasabb támogatott verziót használja.
-
-<a name="self-signed"></a>
-
-## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
-
-* A globális, több-bérlős Azure-környezetben található Logic apps esetében a HTTP-összekötő nem engedélyezi az önaláírt TLS/SSL-tanúsítványokat. Ha a logikai alkalmazás HTTP-hívást kezdeményez egy kiszolgálónak, és egy TLS/SSL önaláírt tanúsítványt jelenít meg, akkor a HTTP-hívás `TrustFailure` hibával meghiúsul.
-
-* Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében a http-összekötő engedélyezi az önaláírt tanúsítványokat a TLS/SSL-kézfogásokhoz. Először is engedélyeznie kell az [önaláírt tanúsítvány-támogatást](../logic-apps/create-integration-service-environment-rest-api.md#request-body) egy meglévő ISE vagy új ISE számára a Logic apps REST API használatával, és a nyilvános tanúsítványt a helyen kell telepíteni `TrustedRoot` .
+| Állapotkód | Description |
+|-------------|-------------|
+| 200 | OK |
+| 202 | Elfogadva |
+| 400 | Hibás kérelem |
+| 401 | Nem engedélyezett |
+| 403 | Forbidden |
+| 404 | Nem található |
+| 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
+|||
 
 ## <a name="content-with-multipartform-data-type"></a>Tartalom multipart/form-adattípus
 
@@ -231,7 +241,7 @@ Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps e
 
 * `Accept-*`
 * `Allow`
-* `Content-*`a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és`Content-Type`
+* `Content-*` a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és `Content-Type`
 * `Cookie`
 * `Expires`
 * `Host`
@@ -249,29 +259,8 @@ Az trigger-és műveleti paraméterekkel kapcsolatos további információkért 
 * [HTTP-trigger paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [HTTP-műveleti paraméterek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
-### <a name="output-details"></a>Kimenet részletei
+## <a name="next-steps"></a>Következő lépések
 
-Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
-
-| Tulajdonság | Típus | Leírás |
-|----------|------|-------------|
-| `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
-| `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
-| `status code` | Egész szám | A kérelemben szereplő állapotkód |
-|||
-
-| Állapotkód | Leírás |
-|-------------|-------------|
-| 200 | OK |
-| 202 | Elfogadva |
-| 400 | Hibás kérelem |
-| 401 | Nem engedélyezett |
-| 403 | Forbidden |
-| 404 | Nem található |
-| 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
-|||
-
-## <a name="next-steps"></a>További lépések
-
-* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+* [Biztonságos hozzáférés és adathozzáférés a kimenő hívások más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
+* [Összekötők a Logic Apps számára](../connectors/apis-list.md)
 

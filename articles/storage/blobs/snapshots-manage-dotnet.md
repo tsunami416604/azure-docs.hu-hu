@@ -1,27 +1,27 @@
 ---
 title: BLOB-pillanatkép létrehozása és kezelése a .NET-ben
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre egy blob írásvédett pillanatképét egy adott időpontban a blob-adatok biztonsági mentésére.
+description: Ebből a cikkből megtudhatja, hogyan használhatja a .NET ügyféloldali függvénytárat egy blob írásvédett pillanatképének létrehozásához egy adott pillanatban a blob-adatok biztonsági mentéséhez.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d50357a648d63984ae70a32e0fdd7260a86d6a6a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fb57e7260a056afe023455149f610ff492c98c12
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020813"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226131"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>BLOB-pillanatkép létrehozása és kezelése a .NET-ben
 
 A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet blob-pillanatképeket a [.net-hez készült Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)használatával.
 
-További információ az Azure Storage-beli blob-pillanatképekről: [blob-pillanatkép létrehozása és kezelése a .net-ben](snapshots-overview.md).
+További információ az Azure Storage-beli blob-pillanatképekről: [blob-Pillanatképek](snapshots-overview.md).
 
 ## <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
@@ -162,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>Következő lépések
 
 - [BLOB-Pillanatképek](snapshots-overview.md)
-- [BLOB-verziók (előzetes verzió)](versioning-overview.md)
+- [BLOB-verziók](versioning-overview.md)
 - [Blobok helyreállítható törlése](storage-blob-soft-delete.md)

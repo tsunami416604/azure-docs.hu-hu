@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: b58316cf5a56eae46c81056a78446dc6c3d10764
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271991"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226760"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -24,7 +24,7 @@ Ez a cikk az Azure beépített szerepköreit sorolja fel, amelyek folyamatosan f
 
 Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. Az egyes szerepkörök listájának megtekintéséhez kattintson a szerepkör `Actions` nevére `NotActions` `DataActions` `NotDataActions` . További információ ezekről a műveletekről és azokról a kezelési és adatsíkokról: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
 
-## <a name="all"></a>Mind
+## <a name="all"></a>Összes
 
 > [!div class="mx-tableFixed"]
 > | Beépített szerepkör | Leírás | ID |
@@ -153,7 +153,15 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Azure Sentinel Contributor](#azure-sentinel-contributor) | Azure Sentinel Contributor | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel Reader](#azure-sentinel-reader) | Azure Sentinel Reader | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel Responder](#azure-sentinel-responder) | Azure Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Key Vault közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de azokhoz való hozzáférés nélkül. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Key Vault rendszergazda (előzetes verzió)](#key-vault-administrator-preview) | Minden adatsík művelet végrehajtása a kulcstartón és az abban található összes objektumon, beleértve a tanúsítványokat, a kulcsokat és a titkos kulcsokat is. A Key Vault-erőforrások nem kezelhetők, illetve nem kezelhetők a szerepkör-hozzárendelések. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault Certificates Officer (előzetes verzió)](#key-vault-certificates-officer-preview) | Hajtson végre bármilyen műveletet a Key Vault tanúsítványán, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault közreműködő](#key-vault-contributor) | A kulcstartók kezelése, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC, és nem teszi lehetővé a titkok, kulcsok és tanúsítványok elérését. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Key Vault titkosítási tisztviselő (előzetes verzió)](#key-vault-crypto-officer-preview) | Hajtson végre bármilyen műveletet a kulcstartó kulcsain, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)](#key-vault-crypto-service-encryption-preview) | A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műveletek végrehajtása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault kriptográfiai felhasználó (előzetes verzió)](#key-vault-crypto-user-preview) | Titkosítási műveletek végrehajtása kulcsok használatával. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault olvasó (előzetes verzió)](#key-vault-reader-preview) | A kulcstartók és a hozzá tartozó tanúsítványok, kulcsok és titkos kódok metaadatainak olvasása. Nem lehet olvasni a bizalmas értékeket, például a titkos tartalmat vagy a kulcs anyagát. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault Secrets Officer (előzetes verzió)](#key-vault-secrets-officer-preview) | Hajtson végre bármilyen műveletet a Key Vault titkos kulcsain, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault Secrets User (előzetes verzió)](#key-vault-secrets-user-preview) | Titkos tartalom olvasása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Biztonsági rendszergazda](#security-admin) | Security Center engedélyeinek megtekintése és frissítése. Ugyanazok az engedélyek, mint a biztonsági olvasó szerepkör, és a biztonsági szabályzatot is frissíthetik, és elérhetik a riasztásokat és a javaslatokat. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Biztonsági értékelő közreműködő](#security-assessment-contributor) | Lehetővé teszi az értékelések leküldését Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Security Manager (örökölt)](#security-manager-legacy) | Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -1144,7 +1152,7 @@ Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé
 }
 ```
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 
 ### <a name="avere-contributor"></a>Avere közreműködője
@@ -6276,9 +6284,129 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
 }
 ```
 
+### <a name="key-vault-administrator-preview"></a>Key Vault rendszergazda (előzetes verzió)
+
+Minden adatsík művelet végrehajtása a kulcstartón és az abban található összes objektumon, beleértve a tanúsítványokat, a kulcsokat és a titkos kulcsokat is. A Key Vault-erőforrások nem kezelhetők, illetve nem kezelhetők a szerepkör-hozzárendelések. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/checkNameAvailability/READ | Ellenőrzi, hogy a kulcstároló neve érvényes-e, és nincs-e használatban |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/deletedVaults/READ | A Soft Deleted Key vaultok tulajdonságainak megtekintése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Locations/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Operations/READ | A Microsoft. kulcstartó erőforrás-szolgáltatóján elérhető műveletek listája |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on certificates, keys and secrets of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00482a5a-887f-4fb3-b363-3b7fe8e74483",
+  "name": "00482a5a-887f-4fb3-b363-3b7fe8e74483",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Administrator (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-certificates-officer-preview"></a>Key Vault Certificates Officer (előzetes verzió)
+
+Hajtson végre bármilyen műveletet a Key Vault tanúsítványán, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/checkNameAvailability/READ | Ellenőrzi, hogy a kulcstároló neve érvényes-e, és nincs-e használatban |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/deletedVaults/READ | A Soft Deleted Key vaultok tulajdonságainak megtekintése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Locations/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Operations/READ | A Microsoft. kulcstartó erőforrás-szolgáltatóján elérhető műveletek listája |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/certificatecas/* |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Certificates/* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the certificates of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a4417e6f-fecd-4de8-b567-7b0420556985",
+  "name": "a4417e6f-fecd-4de8-b567-7b0420556985",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/certificatecas/*",
+        "Microsoft.KeyVault/vaults/certificates/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="key-vault-contributor"></a>Key Vault közreműködő
 
-Lehetővé teszi a kulcstartók kezelését, de azokhoz való hozzáférés nélkül. [További információ](../key-vault/general/secure-your-key-vault.md)
+A kulcstartók kezelése, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC, és nem teszi lehetővé a titkok, kulcsok és tanúsítványok elérését. [További információ](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -6324,6 +6452,324 @@ Lehetővé teszi a kulcstartók kezelését, de azokhoz való hozzáférés nél
     }
   ],
   "roleName": "Key Vault Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-officer-preview"></a>Key Vault titkosítási tisztviselő (előzetes verzió)
+
+Hajtson végre bármilyen műveletet a kulcstartó kulcsain, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/checkNameAvailability/READ | Ellenőrzi, hogy a kulcstároló neve érvényes-e, és nincs-e használatban |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/deletedVaults/READ | A Soft Deleted Key vaultok tulajdonságainak megtekintése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Locations/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Operations/READ | A Microsoft. kulcstartó erőforrás-szolgáltatóján elérhető műveletek listája |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the keys of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
+  "name": "14b46e9e-c2b7-41b4-b07b-48a6ebf60603",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-service-encryption-preview"></a>Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)
+
+A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műveletek végrehajtása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/READ | A megadott tárolóban található kulcsok listázása, illetve a kulcsok beolvasása és a kulcs nyilvános anyaga. Az aszimmetrikus kulcsok esetében ez a művelet közzéteszi a nyilvános kulcsot, és olyan nyilvános kulcsú algoritmusokat is képes végrehajtani, mint például a titkosítás és az aláírás ellenőrzése. A titkos kulcsok és a szimmetrikus kulcsok soha nem érhetők el. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/wrap/Action | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, a művelet olvasási hozzáféréssel is elvégezhető. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/unwrap/Action | Szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read metadata of keys and perform wrap/unwrap operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e147488a-f6f5-4113-8e2d-b22465e65bf6",
+  "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/read",
+        "Microsoft.KeyVault/vaults/keys/wrap/action",
+        "Microsoft.KeyVault/vaults/keys/unwrap/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-crypto-user-preview"></a>Key Vault kriptográfiai felhasználó (előzetes verzió)
+
+Titkosítási műveletek végrehajtása kulcsok használatával. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/READ | A megadott tárolóban található kulcsok listázása, illetve a kulcsok beolvasása és a kulcs nyilvános anyaga. Az aszimmetrikus kulcsok esetében ez a művelet közzéteszi a nyilvános kulcsot, és olyan nyilvános kulcsú algoritmusokat is képes végrehajtani, mint például a titkosítás és az aláírás ellenőrzése. A titkos kulcsok és a szimmetrikus kulcsok soha nem érhetők el. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Update/Action | Az adott kulcshoz társított megadott attribútumok frissítése. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Backup/Action | Hozzon létre egy kulcs biztonságimásolat-fájlját. A fájl a kulcs visszaállítására használható ugyanazon előfizetés Key Vaultében. A korlátozások vonatkozhatnak. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/encrypt/Action | Titkosítsa az egyszerű szöveges kulcsot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/decrypt/Action | Rejtjelezett visszafejtése kulccsal. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/wrap/Action | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, a művelet olvasási hozzáféréssel is elvégezhető. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/unwrap/Action | Szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Sign/Action | A kivonatot egy kulccsal írja alá. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Verify/Action | Ellenőrizze a kivonatot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform cryptographic operations on keys and certificates.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/12338af0-0e69-4776-bea7-57ae8d297424",
+  "name": "12338af0-0e69-4776-bea7-57ae8d297424",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/keys/read",
+        "Microsoft.KeyVault/vaults/keys/update/action",
+        "Microsoft.KeyVault/vaults/keys/backup/action",
+        "Microsoft.KeyVault/vaults/keys/encrypt/action",
+        "Microsoft.KeyVault/vaults/keys/decrypt/action",
+        "Microsoft.KeyVault/vaults/keys/wrap/action",
+        "Microsoft.KeyVault/vaults/keys/unwrap/action",
+        "Microsoft.KeyVault/vaults/keys/sign/action",
+        "Microsoft.KeyVault/vaults/keys/verify/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Crypto User (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-reader-preview"></a>Key Vault olvasó (előzetes verzió)
+
+A kulcstartók és a hozzá tartozó tanúsítványok, kulcsok és titkos kódok metaadatainak olvasása. Nem lehet olvasni a bizalmas értékeket, például a titkos tartalmat vagy a kulcs anyagát. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/checkNameAvailability/READ | Ellenőrzi, hogy a kulcstároló neve érvényes-e, és nincs-e használatban |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/deletedVaults/READ | A Soft Deleted Key vaultok tulajdonságainak megtekintése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Locations/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Operations/READ | A Microsoft. kulcstartó erőforrás-szolgáltatóján elérhető műveletek listája |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Secrets/readMetadata/Action | Egy titkos kulcs tulajdonságainak listázása vagy megtekintése, az értéke nem. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read metadata of key vaults and its certificates, keys and secrets. Cannot read sensitive values such as secret contents or key material.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/21090545-7ca7-4776-b22c-e363652d74d2",
+  "name": "21090545-7ca7-4776-b22c-e363652d74d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Reader (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-secrets-officer-preview"></a>Key Vault Secrets Officer (előzetes verzió)
+
+Hajtson végre bármilyen műveletet a Key Vault titkos kulcsain, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/checkNameAvailability/READ | Ellenőrzi, hogy a kulcstároló neve érvényes-e, és nincs-e használatban |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/deletedVaults/READ | A Soft Deleted Key vaultok tulajdonságainak megtekintése |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Locations/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/*/READ |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Operations/READ | A Microsoft. kulcstartó erőforrás-szolgáltatóján elérhető műveletek listája |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Secrets/* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform any action on the secrets of a key vault, except manage permissions.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "name": "b86a8fe4-44ce-4948-aee5-eccb2c155cd7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.KeyVault/checkNameAvailability/read",
+        "Microsoft.KeyVault/deletedVaults/read",
+        "Microsoft.KeyVault/locations/*/read",
+        "Microsoft.KeyVault/vaults/*/read",
+        "Microsoft.KeyVault/operations/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/secrets/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="key-vault-secrets-user-preview"></a>Key Vault Secrets User (előzetes verzió)
+
+Titkos tartalom olvasása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | *nincs* |  |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Secrets/getSecret/Action | Egy titkos kulcs értékének beolvasása. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Secrets/readMetadata/Action | Egy titkos kulcs tulajdonságainak listázása vagy megtekintése, az értéke nem. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can read secret contents.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+  "name": "4633458b-17de-408a-b874-0445c86b69e6",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+        "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Key Vault Secrets User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8709,7 +9155,7 @@ Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

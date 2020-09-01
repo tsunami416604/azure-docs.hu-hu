@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cfafb47e6d5fcde2858e7329b5b8ef3a0e0b241e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c0581a79bda4ae4e311390f5b2d929073e0833d9
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087835"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182020"
 ---
 # <a name="tutorial-configure-device-settings-for-azure-stack-edge-with-gpu"></a>Oktatóanyag: Azure Stack Edge eszköz beállításainak konfigurálása GPU-val
 
@@ -59,16 +59,17 @@ Az eszközökhöz kapcsolódó beállítások konfigurálásához kövesse az al
 
         ![Helyi webes felhasználói felület "eszköz" lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-2.png)
 
-        Ha módosította az eszköz nevét és a DNS-tartományt, az eszközön automatikusan létrehozott önaláírt tanúsítványok nem fognak működni. Válasszon egyet a következő lehetőségek közül: 
+        Ha módosította az eszköz nevét és a DNS-tartományt, az eszközön automatikusan létrehozott önaláírt tanúsítványok nem fognak működni. A tanúsítványok konfigurálásakor a következő lehetőségek közül kell választania: 
         
         - Az eszköz tanúsítványainak előállítása és letöltése. 
         - Hozza saját tanúsítványait az eszközhöz, beleértve az aláírási láncot is.
+    
 
         ![Helyi webes felhasználói felület "eszköz" lapja](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-3.png)
 
-    4. Amikor az eszköz neve és a DNS-tartomány módosul, létrejön az SMB-és NFS-végpontok. 
+    4. Amikor az eszköz neve és a DNS-tartomány módosul, létrejön az SMB-és NFS-végpontok.  
 
-    4. A beállítások alkalmazása után lépjen vissza **a kezdéshez.**
+    5. A beállítások alkalmazása után lépjen vissza **a kezdéshez.**
 
 ## <a name="configure-update"></a>Frissítés konfigurálása
 
@@ -122,7 +123,7 @@ Az alábbi lépéseket követve konfigurálhatja az eszközön az időbeállít�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e95f635cfb354487298b340f8f25b15c3ca146a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 004702d52245893f4746ce8e4b4a2cc36aad6a67
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087845"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181850"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Oktatóanyag: Felkészülés a Azure Stack Edge üzembe helyezésére  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Oktatóanyag: a Azure Stack Edge üzembe helyezésének előkészítése GPU-val 
 
-Ez az első oktatóanyag az üzembe helyezési oktatóanyagok sorozatában, amelyek a Azure Stack Edge teljes telepítéséhez szükségesek. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Azure Stack Edge-erőforrás üzembe helyezéséhez.
+Ez az első oktatóanyag az üzembe helyezési oktatóanyagok sorozatában, amelyek az Azure Stack Edge GPU-val történő teljes üzembe helyezéséhez szükségesek. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Azure Stack Edge-erőforrás üzembe helyezéséhez.
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
@@ -46,8 +46,9 @@ Az Azure Stack Edge üzembe helyezéséhez először elő kell készítenie a k�
 |**[5. az eszközbeállítások konfigurálása Azure Stack Edge-hez](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |Rendeljen hozzá egy eszköznév és egy DNS-tartományt, konfigurálja a frissítési kiszolgálót és az eszköz idejét. |
 |**[6. Azure Stack Edge biztonsági beállításainak konfigurálása](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Konfigurálja az eszköz tanúsítványait. Használja az eszköz által generált tanúsítványokat, vagy hozza létre saját tanúsítványait.   |
 |**[7. Azure Stack Edge aktiválása](azure-stack-edge-gpu-deploy-activate.md)** |Az eszköz aktiválásához használja az aktiválási kulcsot a szolgáltatásból. Az eszköz készen áll az SMB-vagy NFS-megosztások beállítására, vagy a REST-en keresztüli kapcsolódásra. |
-|**[8a. Adatok átvitele peremhálózati megosztásokkal](azure-stack-edge-j-series-deploy-add-shares.md)** |Vegyen fel megosztásokat, és csatlakozzon a megosztásokhoz SMB vagy NFS használatával. |
-|**[8b. Adatok átvitele peremhálózati Storage-fiókokkal](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Adja hozzá a Storage-fiókokat, és kapcsolódjon a blob Storage-hoz REST API-kon keresztül. |
+|**[8. a számítás konfigurálása](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurálja a számítási szerepkört az eszközön. Ez egy Kubernetes-fürtöt is létrehoz. |
+|**[9a. Adatok átvitele peremhálózati megosztásokkal](azure-stack-edge-j-series-deploy-add-shares.md)** |Vegyen fel megosztásokat, és csatlakozzon a megosztásokhoz SMB vagy NFS használatával. |
+|**[9b. Adatok átvitele peremhálózati Storage-fiókokkal](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Adja hozzá a Storage-fiókokat, és kapcsolódjon a blob Storage-hoz REST API-kon keresztül. |
 
 
 Most már megkezdheti az Azure Stack Edge-eszközhöz tartozó szoftver-konfigurációval kapcsolatos információk összegyűjtését.
@@ -104,7 +105,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
 1. A Microsoft Azure hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása**lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra.
+2. A bal oldali panelen válassza az **+ erőforrás létrehozása**lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget. Ha bármilyen problémát tapasztal, lépjen a [rendelési problémák elhárítása](azure-stack-edge-troubleshoot-ordering.md)című témakörre.
 
 3. Válassza ki az Azure Stack Edge-eszközhöz használni kívánt előfizetést. Válassza ki azt az országot, ahová a fizikai eszközt el szeretné szállítani. Válassza az **eszközök megjelenítése**lehetőséget.
 
@@ -118,7 +119,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     ![3. erőforrás létrehozása](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
 
-5. Az előfizetés engedélyezése után képesnek kell lennie az erőforrás-létrehozás folytatására. Az **eszköz típusának kiválasztása** panelen válassza a **kiválasztás**lehetőséget. 
+5. Az előfizetés engedélyezése után képesnek kell lennie az erőforrás-létrehozás folytatására. Az **eszköz típusának kiválasztása** panelen válassza a **kiválasztás**lehetőséget.
 
     ![4. erőforrás létrehozása](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
 
@@ -156,7 +157,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     ![8. erőforrás létrehozása](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
 
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza az **Erőforrás megnyitása** lehetőséget.
 
@@ -165,6 +166,8 @@ Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás siker
 A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
 
 ![Értesítés az Azure Stack Edge-sorrend felülvizsgálatához](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+Ha a rendelési folyamat során problémákba ütközik, tekintse meg a [rendelési problémák elhárítása](azure-stack-edge-troubleshoot-ordering.md)című témakört.
 
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 
@@ -182,7 +185,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > - Az aktiválási kulcs három nappal a létrehozása után lejár.
 > - Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Stack Edge-témaköröket, például a következőket:
 

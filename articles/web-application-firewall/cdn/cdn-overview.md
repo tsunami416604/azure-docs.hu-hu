@@ -4,15 +4,15 @@ description: Ismerje meg, hogy az Azure webalkalmazás-tűzfal Hogyan védi a Az
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.topic: overview
-ms.date: 03/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87278624"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225152"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure webalkalmazási tűzfal az Azure Content Delivery Network
 
@@ -25,7 +25,7 @@ A WAF on Azure CDN globális és központosított megoldás. Üzembe helyezése 
 
 A WAF szabályzat egyszerűen hivatkozik az előfizetésében található bármely CDN-végpontra. Az új szabályok percek alatt üzembe helyezhetők, így gyorsan reagálhat a veszélyforrások változására.
 
-![Azure webalkalmazási tűzfal](../media/cdn-overview/waf-cdn-overview.png)
+![Azure-beli webalkalmazási tűzfal](../media/cdn-overview/waf-cdn-overview.png)
 
 ## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 
@@ -112,6 +112,6 @@ Az összes WAF konfigurálhatja és telepítheti a Azure Portal, a REST API-k, a
 
 A CDN-vel való WAF figyelése integrálva van Azure Monitor a riasztások nyomon követésére és a forgalmi trendek egyszerű figyelésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: WAF szabályzat létrehozása Azure CDN a Azure Portal használatával](waf-cdn-create-portal.md)

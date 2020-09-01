@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 927908fa708e7e687bf82400c10e08fbcccdef19
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 66649bff609e59f0de04bc56b434a2c3d0eedc8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145025"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181918"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -28,7 +28,8 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 
 * [B sorozat](../sizes-b-series-burstable.md)
 * [DCsv2 sorozat](../dcv2-series.md)
-* [DSv2](../dv2-dsv2-series.md) és [Dsv3 sorozat](../dv3-dsv3-series.md)
+* [Dsv2 sorozat](../dv2-dsv2-series.md) 
+* [Dsv3-sorozat](../dv3-dsv3-series.md)
 * [Dsv4 sorozat](../dv4-dsv4-series.md)
 * [Ddsv4 sorozat](../ddv4-ddsv4-series.md)
 * [Dasv4 sorozat](../dav4-dasv4-series.md)
@@ -38,10 +39,12 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [GS sorozat](../sizes-previous-gen.md#gs-series)
 * [HB-sorozat](../hb-series.md)
 * [HC-sorozat](../hc-series.md)
-* Az [ls-sorozat](../sizes-previous-gen.md#ls-series) és a [Lsv2 sorozat](../lsv2-series.md)
+* [Ls-sorozat](../sizes-previous-gen.md#ls-series) 
+* [Lsv2 sorozat](../lsv2-series.md)
 * [M sorozat](../m-series.md)
 * [Mv2 –](../mv2-series.md)<sup>1</sup> . sorozat
-* [NCv2](../ncv2-series.md) és [NCv3 sorozat](../ncv3-series.md)
+* [NCv2 sorozat](../ncv2-series.md)
+* [NCv3 sorozat](../ncv3-series.md)
 * [ND sorozat](../nd-series.md)
 * [NVv3 sorozat](../nvv3-series.md)
 
@@ -80,7 +83,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 |---------|--------------|--------------|
 | Indítás             | PCAT         | UEFI |
 | Lemezvezérlő-vezérlők | IDE          | SCSI |
-| A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
+| A virtuális gépek mérete         | Minden VM-méret | [Elérhető méretek](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1. generációs, 2. generációs képességek
 
@@ -206,6 +209,6 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
     1. A **speciális** lapon ellenőrizze, hogy a virtuálisgép- **létrehozási** tulajdonság a **Gen 2** értékre van-e beállítva.
     1. Győződjön meg arról, hogy olyan virtuálisgép- [méretet keres, amely támogatja a Gen2 virtuális gépeket](#generation-2-vm-sizes).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

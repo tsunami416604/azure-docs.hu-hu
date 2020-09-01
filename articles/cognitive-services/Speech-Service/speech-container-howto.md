@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80b7d5ca67751cf7ece775331cc13cfbac10395b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518322"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182394"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása (előzetes verzió)
 
@@ -26,14 +26,14 @@ A Speech-tárolókkal az ügyfelek beszédalapú alkalmazások architektúrájá
 > [!IMPORTANT]
 > Az összes beszédfelismerési tároló jelenleg egy [nyilvános "GateD" előzetes](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)verzió részeként érhető el. Bejelentést kell készíteni, amikor a beszédfelismerési tárolók az általánosan elérhetővé vált (GA).
 
-| Függvény | Funkciók | Legújabb |
+| Függvény | Szolgáltatások | Legutóbbi |
 |--|--|--|
-| Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.3.1 |
-| Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.3.1 |
-| Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.5.0 |
-| Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.5.0 |
+| Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.4.0 |
+| Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.4.0 |
+| Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.6.0 |
+| Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.6.0 |
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,25 +76,25 @@ Az alábbi táblázat az egyes beszédfelismerési tárolók minimális és ajá
 
 # <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
-| Tároló | Minimális | Ajánlott |
+| Tároló | Minimum | Ajánlott |
 |-----------|---------|-------------|
 | Diktálás | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech – szöveg](#tab/cstt)
 
-| Tároló | Minimális | Ajánlott |
+| Tároló | Minimum | Ajánlott |
 |-----------|---------|-------------|
 | Custom Speech – szöveg | 2 mag, 2 GB memória | 4 mag, 4 GB memória |
 
 # <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
-| Tároló | Minimális | Ajánlott |
+| Tároló | Minimum | Ajánlott |
 |-----------|---------|-------------|
 | Szövegfelolvasás | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
 # <a name="custom-text-to-speech"></a>[Egyéni szöveg – beszéd](#tab/ctts)
 
-| Tároló | Minimális | Ajánlott |
+| Tároló | Minimum | Ajánlott |
 |-----------|---------|-------------|
 | Egyéni szöveg – beszéd | 1 mag, 2 GB memória | 2 mag, 3 GB memória |
 
@@ -165,7 +165,7 @@ A (z) kivételével az összes címke `latest` a következő formátumban van, �
 A következő címke egy példa a formátumra:
 
 ```
-2.3.1-amd64-en-us-preview
+2.4.0-amd64-en-us-preview
 ```
 
 A **beszéd-szöveg** típusú tároló összes támogatott területi beállítását lásd: [beszéd – szöveg képcímkék](../containers/container-image-tags.md#speech-to-text).
@@ -207,7 +207,7 @@ A (z) kivételével az összes címke `latest` a következő formátumban van, �
 A következő címke egy példa a formátumra:
 
 ```
-1.5.0-amd64-en-us-ariarus-preview
+1.6.0-amd64-en-us-ariarus-preview
 ```
 
 A **szöveg-beszéd** típusú tároló összes támogatott területi beállítása és a hozzájuk tartozó hangok esetében lásd: [szöveg – beszéd képcímkék](../containers/container-image-tags.md#text-to-speech).
@@ -423,6 +423,8 @@ A WSS és a HTTPS protokollok használatával kapcsolatos további információk
 #### <a name="analyze-sentiment"></a>Vélemények elemzése
 
 Ha megadták a Text Analytics API hitelesítő adatait [a tárolóhoz](#analyze-sentiment-on-the-speech-to-text-output), a Speech SDK használatával elküldheti a beszédfelismerési kérelmeket az érzelmek elemzésével. Az API-válaszokat beállíthatja *egyszerű* vagy *részletes* formátum használatára.
+> [!NOTE]
+> a beszédfelismerési szolgáltatás Python SDK-hoz készült v 1.13-as verziójának észlelési problémája van. A beszédfelismerési szolgáltatás Python SDK-ban használja a v 1.12. x vagy korábbi verzióját.
 
 # <a name="simple-format"></a>[Egyszerű formátum](#tab/simple-format)
 
@@ -569,7 +571,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

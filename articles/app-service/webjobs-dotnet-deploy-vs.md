@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ed473568fbad5bad380001cd2e2faccd90994099
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959901"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226029"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studióval
 
@@ -184,9 +184,9 @@ Webjobs-telepítési információk:
 
 A Webjobs típusa lehet *trigger* vagy *folyamatos*:
 
-- Aktiválva (alapértelmezett): egy aktivált Webjobs egy kötési esemény, egy [Ütemezés](#scheduling-a-triggered-webjob)alapján, vagy manuálisan (igény szerint) aktiválódik. Minden olyan példányon fut, amelyen a webalkalmazás fut, de lehetősége van arra is, hogy a Webjobs egyetlen példányra korlátozza.
+- Aktiválva (alapértelmezett): egy aktivált Webjobs egy kötési esemény, egy [Ütemezés](#scheduling-a-triggered-webjob)alapján, vagy manuálisan (igény szerint) aktiválódik. Egyetlen példányon fut, amelyen a webalkalmazás fut.
 
-- Folyamatos: a [folyamatos](#continuous-execution) webjobs azonnal elindul a webjobs létrehozásakor. Ez a Webjobs a legalkalmasabb a nem kötött és a hosszan futó feladatok számára. Ha a feladattípus véget ért, újraindíthatja.  
+- Folyamatos: a [folyamatos](#continuous-execution) webjobs azonnal elindul a webjobs létrehozásakor. Alapértelmezés szerint az összes webalkalmazásra méretezett példányon fut, de úgy is konfigurálható, hogy a *Settings. job*fájlon keresztül egyetlen példányként fusson.
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 
@@ -218,10 +218,10 @@ A webjobs a következő beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Mind | Lehetővé teszi a Webjobs futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Összes | Lehetővé teszi a Webjobs futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A Webjobs csak egy példányon futtatja, ha a méretezés ki van kapcsolva. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egyszeriként. |
 | `schedule` | Kiváltott | Futtassa a Webjobs egy CRON-alapú ütemterven. További információ: NCRONTAB- [kifejezések](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Mind | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ### <a name="continuous-execution"></a>Folyamatos végrehajtás
 

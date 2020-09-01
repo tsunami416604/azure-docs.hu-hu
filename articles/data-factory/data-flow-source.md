@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/16/2020
-ms.openlocfilehash: adbe3ceb72d88c2a6441c04d876d92ac2ab85930
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/18/2020
+ms.openlocfilehash: 0f6b1789a5148af37ddd2d0895cec348c27f663a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522771"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182496"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
 
@@ -37,7 +37,7 @@ Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt f
 
 ![Beágyazott adatkészlet](media/data-flow/inline-selector.png "Beágyazott adatkészlet")
 
-##  <a name="supported-source-types"></a><a name="supported-sources"></a>Támogatott források típusai
+##  <a name="supported-source-types"></a><a name="supported-sources"></a> Támogatott források típusai
 
 Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
 
@@ -49,8 +49,9 @@ Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) m
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Az ezekhez az összekötőhöz tartozó beállítások a **forrás beállításai** lapon találhatók. az információ-és adatfolyam-parancsfájlok példái a beállításokban az összekötő dokumentációjában találhatók. 
+Az ezekhez az összekötőhöz tartozó beállítások a **forrás beállításai** lapon találhatók. A beállításokkal kapcsolatos információ-és adatfolyam-parancsfájlok példák az összekötő dokumentációjában találhatók. 
 
 Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenységet az adatok betöltéséhez az egyik támogatott átmeneti területre.
 
@@ -115,6 +116,6 @@ Ha Azure SQL Database forrásból olvassa be az olvasást, az egyéni **forrás*
 
 További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-overview.md#optimize).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megkezdheti az adatforgalom kiépítése egy [származtatott oszlopos átalakítással](data-flow-derived-column.md) és egy [kiválasztott átalakítással](data-flow-select.md).

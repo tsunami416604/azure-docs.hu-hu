@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc691148723e610f0885f7c20fd8684f11a81dc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763091"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182326"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal
 
@@ -45,7 +45,7 @@ Az alkalmazások az Azure AD-vel való integrálása előtt fontos tudni, hogy h
   * Azure AD
   * Egy külön saját alkalmazás-adatbázison belül
   * A nem engedélyezett alkalmazásokban
-  * A fentiek közül az összes
+  * A fentiek mindegyike
 * Milyen engedélyek és szerepkör-hozzárendelések vannak jelenleg az egyes felhasználók számára? Ellenőriznie kell a hozzáférését, vagy biztos lehet benne, hogy a felhasználói hozzáférés és a szerepkör-hozzárendelések megfelelőek?
 * A csoportok már a helyszíni Active Directoryban vannak kialakítva?
   * Hogyan vannak rendszerezve a csoportok?
@@ -54,7 +54,7 @@ Az alkalmazások az Azure AD-vel való integrálása előtt fontos tudni, hogy h
 * Az integrálás előtt törölnie kell a felhasználó/csoport adatbázisait?  (Ez egy nagyon fontos kérdés. Bekerülés a szemétbe.)
 
 ### <a name="access-management-inventory"></a>Hozzáférés-kezelési leltár
-* Hogyan kezelheti jelenleg az alkalmazásokhoz való felhasználói hozzáférést? Ezt módosítani kell?  Más módszerekkel kezelheti a hozzáférést, például a [RBAC](../../role-based-access-control/role-assignments-portal.md) -mel?
+* Hogyan kezelheti jelenleg az alkalmazásokhoz való felhasználói hozzáférést? Ezt módosítani kell?  Más módszerekkel kezelheti a hozzáférést, például az [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) például?
 * Kinek van hozzáférése a következőhöz?
 
 Lehet, hogy nem rendelkezik a válaszokkal az összes kérdésre előre, de ez rendben van.  Ez az útmutató segítséget nyújt néhány kérdés megválaszolásához, és megalapozott döntéseket hozhat.

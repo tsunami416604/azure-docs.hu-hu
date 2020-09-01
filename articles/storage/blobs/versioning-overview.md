@@ -1,25 +1,25 @@
 ---
-title: BLOB verziószámozása (előzetes verzió)
+title: BLOB verziószámozása
 titleSuffix: Azure Storage
-description: A blob Storage verziószámozása (előzetes verzió) automatikusan fenntartja az objektumok korábbi verzióit, és az időbélyegekkel azonosítja azokat. A Blobok korábbi verzióit visszaállíthatja az adatok helyreállításához, ha az hibásan módosul vagy törölve lett.
+description: A blob Storage verziószámozása automatikusan fenntartja az objektumok korábbi verzióit, és az időbélyegekkel azonosítja azokat. A Blobok korábbi verzióit visszaállíthatja az adatok helyreállításához, ha az hibásan módosul vagy törölve lett.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 72597d445be41ede47d043d11653df139bc52d0d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074534"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226263"
 ---
-# <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
+# <a name="blob-versioning"></a>BLOB verziószámozása
 
-Engedélyezheti a blob Storage verziószámozását (előzetes verzió) az objektumok korábbi verzióinak automatikus karbantartásához.  Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
+A blob Storage verziószámozásának engedélyezésével automatikusan megtarthatja az objektumok korábbi verzióit.  Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
 
 A blob verziószámozása engedélyezve van a Storage-fiókban, és a Storage-fiókban lévő összes blobra érvényes. Miután engedélyezte a blob verziószámozását egy Storage-fiókhoz, az Azure Storage automatikusan megőrzi a Storage-fiókban lévő összes blob verzióját.
 
@@ -41,6 +41,10 @@ Ha olyan blobot hoz létre, amelyen engedélyezve van a verziószámozás, az ú
 Ha olyan blobot töröl, amelyen engedélyezve van a verziószámozás, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a törlés előtt. Ezután törli a blob aktuális verzióját, de a blob verziója továbbra is fennmarad, így szükség esetén újra létrehozható. 
 
 A blob-verziók nem változtathatók meg. Egy meglévő blob-verzió tartalmát vagy metaadatait nem módosíthatja.
+
+A blob verziószámozása az általános célú v2, a blob és a blob Storage-fiókok esetében érhető el. A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok jelenleg nem támogatottak.
+
+Az Azure Storage REST API 2019-10-10-es és újabb verziója támogatja a blob verziószámozását.
 
 ### <a name="version-id"></a>Verzióazonosító
 
@@ -108,7 +112,7 @@ A blokkos Blobok megfelelő szintjére való áthelyezésének automatizálásá
 
 ## <a name="enable-or-disable-blob-versioning"></a>BLOB verziószámozásának engedélyezése vagy letiltása
 
-A blob verziószámozásának engedélyezéséről és letiltásáról a [blob verziószámozásának engedélyezése vagy letiltása](versioning-enable.md)című cikkből tájékozódhat.
+A blob verziószámozásának engedélyezéséről és letiltásáról a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 
 A blob verziószámozásának letiltása nem törli a meglévő blobokat, verziókat vagy pillanatképeket. Ha kikapcsolja a blob verziószámozását, a meglévő verziók továbbra is elérhetők maradnak a Storage-fiókban. A későbbiekben nem jönnek létre új verziók.
 
@@ -196,134 +200,95 @@ A következő táblázat a blob-verziók törléséhez szükséges engedélyeket
 |----------------|----------------|------------------------|
 | Törlés         | x              | BLOB verziójának törlése. |
 
-## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
-
-A blob verziószámozása a következő régiókban érhető el előzetes verzióban:
-
-- USA 2. keleti régiója
-- USA középső régiója
-- Észak-Európa
-- West Europe
-- Közép-Franciaország
-- Kelet-Kanada
-- Közép-Kanada
-
-> [!IMPORTANT]
-> A blob verziószámozási előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
-
-Az Azure Storage REST API 2019-10-10-es és újabb verziója támogatja a blob verziószámozását.
-
-### <a name="storage-account-support"></a>A Storage-fiók támogatása
-
-A blob verziószámozása a következő típusú Storage-fiókok esetében érhető el:
-
-- Általános célú v2 Storage-fiókok
-- BLOB Storage-fiókok letiltása
-- Blob Storage-fiókok
-
-Ha a Storage-fiók egy általános célú v1-fiók, a Azure Portal használatával frissítsen egy általános célú v2-fiókra. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
-
-A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok jelenleg nem támogatottak.
-
-### <a name="register-for-the-preview"></a>Regisztráljon az előzetes verzióra
-
-A blob verziószámozási előzetes verziójának regisztrálásához a PowerShell vagy az Azure CLI használatával küldjön be egy kérelmet a szolgáltatás regisztrálásához az előfizetésében. A kérés jóváhagyása után engedélyezheti a Blobok verziószámozását bármely új vagy meglévő általános célú v2-, blob Storage-vagy prémium szintű blokk blob Storage-fiókkal.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-A PowerShell-lel való regisztráláshoz hívja meg a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsot.
-
-```powershell
-# Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Az Azure CLI-vel való regisztrációhoz hívja meg az az [Feature Register](/cli/azure/feature#az-feature-register) parancsot.
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-the-status-of-your-registration"></a>A regisztráció állapotának ellenõrzése
-
-A regisztráció állapotának vizsgálatához használja a PowerShell vagy az Azure CLI-t.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Ha ellenőriznie szeretné a regisztráció állapotát a PowerShell-lel, hívja meg a [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) parancsot.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Az Azure CLI-vel való regisztráció állapotának megtekintéséhez hívja meg az az [Feature](/cli/azure/feature#az-feature-show) parancsot.
-
-```azurecli
-az feature show --namespace Microsoft.Storage --name Versioning
-```
-
----
-
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
 A blob verziószámozásának engedélyezése további adattárolási díjat eredményezhet a fiókhoz. Az alkalmazás tervezésekor fontos tisztában lennie azzal, hogy ezek a díjak hogyan merülhetnek fel, így csökkentheti a költségeket.
 
-A blob-verziók (például a blob-Pillanatképek) számlázása az aktív adatforgalommal megegyező sebességgel történik. Ha egy verzió megosztja az alap blobtal rendelkező blokkokat vagy lapokat, akkor csak a verzió és az alap blob között nem megosztott további blokkokat vagy lapokat kell fizetnie.
+A blob-verziók (például a blob-Pillanatképek) számlázása az aktív adatforgalommal megegyező sebességgel történik. A verziók számlázásának módja attól függ, hogy explicit módon beállította-e a szintet az alap blobhoz vagy valamelyik verzióhoz (vagy pillanatképekhez). A blob-rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md).
+
+Ha nem módosította a blobot vagy a verzióhoz tartozó szintet, akkor a blob, annak verziói és az esetlegesen elérhető Pillanatképek egyedi adattömbökért kell fizetnie. További információ: számlázás, [Ha a blob-szintet nem adta meg explicit módon](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Ha módosította a blob vagy a verzió szintjét, akkor a teljes objektumért díjat számítunk fel, függetlenül attól, hogy a blob és a verziószáma is ugyanabban a szinten van-e. További információ: számlázás, [Ha a blob szintjét explicit módon állították be](#billing-when-the-blob-tier-has-been-explicitly-set).
 
 > [!NOTE]
 > A gyakran felülírt adatok verziószámozásának engedélyezése nagyobb tárolási kapacitást eredményezhet, és nagyobb késéssel jár a listázási műveletek során. A probléma enyhítése érdekében a gyakran felülírt, különálló Storage-fiókban tárolja a letiltott verziókat.
 
-### <a name="important-billing-considerations"></a>Fontos számlázási szempontok
+A blob-Pillanatképek számlázási adataival kapcsolatos további információkért lásd: [blob-Pillanatképek](snapshots-overview.md).
 
-Ügyeljen arra, hogy a blob verziószámozásának engedélyezésekor vegye figyelembe a következő szempontokat:
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>Számlázás, ha a blob szintje nincs explicit módon beállítva
 
-- A Storage-fiók a blobban vagy a blob egy korábbi verziójában is megterheli az egyedi blokkokat vagy lapokat. A fiókja nem számít fel további díjat a blobokhoz társított verziókhoz, amíg nem frissíti azt a blobot, amelyen alapulnak. A blob frissítése után az a korábbi verzióktól eltér. Ebben az esetben az egyes Blobok vagy verziók egyedi blokkait vagy lapjait kell fizetnie.
-- Ha egy blokkon belüli blokkot cserél le, a rendszer ezt a blokkot egy egyedi blokkként számítja fel. Ez akkor is igaz, ha a blokk ugyanazzal az AZONOSÍTÓval és ugyanazzal az adattal rendelkezik, mint a verzióban. Miután a blokk újra véglegesítve lett, az a többi verziótól eltér, és az adatokért kell fizetnie. Ugyanez a helyzet igaz egy olyan oldal blobján, amely azonos adattal frissült.
-- A blob Storage nem rendelkezik annak megállapításához, hogy két blokk tartalmaz-e azonos adathalmazt. Minden feltöltött és véglegesített blokk egyediként lesz kezelve, még akkor is, ha ugyanazokat az adatblokkokat és AZONOSÍTÓkat is tartalmazta. Mivel a díjak az egyedi blokkok esetében merülnek fel, fontos figyelembe venni, hogy ha a Verziószámozás engedélyezve van, további egyedi blokkok és további költségek is megmaradnak.
-- Ha engedélyezve van a blob verziószámozása, a frissítési műveleteket megtervezheti a blokkos blobokon, hogy azok a lehető legkevesebb blokkot frissítik. Az írási műveletek, amelyek lehetővé teszik a részletes szabályozást a blokkoknál, a [blokk](/rest/api/storageservices/put-block) és a [put blokkot](/rest/api/storageservices/put-block-list)is fel kell venni. A [put blob](/rest/api/storageservices/put-blob) művelet ugyanakkor lecseréli egy blob teljes tartalmát, ezért további díjakat eredményezhet.
+Ha nem állította be explicit módon a blob rétegét egy alapblobhoz vagy annak bármelyik verziójához, akkor a blobban, annak verzióiban, valamint az esetlegesen megjelenő pillanatképekben szereplő egyedi blokkokért vagy lapokért kell fizetnie. A blobokban megosztott és a hozzájuk tartozó verziókra csak egyszer kerül sor. Ha egy blob frissül, akkor az alap blobban lévő adatok eltérnek a verziójában tárolt adatoktól, és az egyedi adatok egy blokkon vagy oldalon vannak felszámítva.
 
-### <a name="versioning-billing-scenarios"></a>Számlázási forgatókönyvek verziószámozása
+Ha egy blokkon belüli blokkot cserél le, a rendszer ezt a blokkot egy egyedi blokkként számítja fel. Ez akkor is igaz, ha a blokk ugyanazzal az AZONOSÍTÓval és ugyanazzal az adattal rendelkezik, mint az előző verzióban. Miután a blokk újra véglegesítve lett, az a korábbi verzióban lévőtől eltér, és az adatokért kell fizetnie. Ugyanez a helyzet igaz egy olyan oldal blobján, amely azonos adattal frissült.
 
-A következő forgatókönyvek azt mutatják be, hogyan merülhetnek fel a díjak a blokkos blobok és azok verziói esetében.
+A blob Storage nem rendelkezik annak megállapításához, hogy két blokk tartalmaz-e azonos adathalmazt. Minden feltöltött és véglegesített blokk egyediként lesz kezelve, még akkor is, ha ugyanazokat az adatblokkokat és AZONOSÍTÓkat is tartalmazta. Mivel a díjak az egyedi blokkok esetében merülnek fel, fontos szem előtt tartani, hogy ha a Verziószámozás engedélyezve van, további egyedi blokkok és további költségek is megmaradnak.
+
+Ha engedélyezve van a blob verziószámozása, hívja meg a frissítési műveleteket a blokk blobokon, hogy a lehető legkevesebb blokkot frissítse. Az írási műveletek, amelyek lehetővé teszik a részletes szabályozást a blokkoknál, a [blokk](/rest/api/storageservices/put-block) és a [put blokkot](/rest/api/storageservices/put-block-list)is fel kell venni. A [put blob](/rest/api/storageservices/put-blob) művelet ugyanakkor lecseréli egy blob teljes tartalmát, ezért további díjakat eredményezhet.
+
+A következő forgatókönyvek azt mutatják be, hogyan merülhetnek fel a letiltási blobok és azok verziói, amikor a blob szintje nincs explicit módon beállítva.
 
 #### <a name="scenario-1"></a>1\. példa
 
 Az 1. forgatókönyvben a blobnak van egy korábbi verziója. A blob frissítése a verzió létrehozása óta nem történt meg, ezért csak az 1., 2. és 3. egyedi blokkokra számítunk fel díjakat.
 
-![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-1.png)
+![1. ábra: az alap blobban és a korábbi verzióban található egyedi blokkok számlázása](./media/versioning-overview/versions-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>2\. példa
 
 A 2. forgatókönyvben a blob egy blokkját (a diagram 3. blokkját) frissítették. Annak ellenére, hogy a frissített blokk ugyanazokat az adatazonosítókat és ugyanazokat az azonosítót tartalmazza, nem ugyanaz, mint a 3. blokk az előző verzióban. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
-![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-2.png)
+![2. ábra – az alap blobban és a korábbi verzióban található egyedi blokkok számlázásának megjelenítése](./media/versioning-overview/versions-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>3\. példa
 
 A 3. forgatókönyvben a blob frissült, de a verzió nem. A 3. blokk lecserélve a 4-es blokkra az alap blobban, de a korábbi verzió továbbra is a 3. blokkot tükrözi. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
-![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-3.png)
+![3. ábra: az alap blobban és a korábbi verzióban található egyedi blokkok számlázása](./media/versioning-overview/versions-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>4\. példa
 
-A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók az alap blobban szereplő összes nyolc egyedi blokk után &mdash; , az előző verzióban pedig négyre lesz felszámítva. Ez a forgatókönyv akkor fordulhat elő, ha egy blobba helyezi a Put blob műveletet, mert az az alap blob teljes tartalmát lecseréli.
+A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók az alap blobban szereplő összes nyolc egyedi blokk után &mdash; , az előző verzióban pedig négyre lesz felszámítva. Ez a forgatókönyv akkor fordulhat elő, ha egy blobba [helyezi a Put blob](/rest/api/storageservices/put-blob) műveletet, mert az az alap blob teljes tartalmát lecseréli.
 
-![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-4.png)
+![4. ábra: az alap blobban és a korábbi verzióban található egyedi blokkok számlázása](./media/versioning-overview/versions-billing-scenario-4.png)
+
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>Számlázás, ha a blob szintje explicit módon be van állítva
+
+Ha explicit módon beállította a blob-szintet egy blobhoz vagy verzióhoz (vagy pillanatképhez), akkor a rendszer az új szinten lévő objektum teljes tartalomra vonatkozó díját számítja fel, függetlenül attól, hogy az eredeti szinten található objektummal osztozik-e. Az eredeti szinten a legrégebbi verzió tartalmának teljes hosszát is felszámítjuk. Az eredeti szinten maradó korábbi verziók vagy Pillanatképek a megosztható egyedi blokkokért lesznek felszámítva, ahogy azt a [számlázás nem adta meg explicit](#billing-when-the-blob-tier-has-not-been-explicitly-set)módon.
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>BLOB áthelyezése egy új szintjére
+
+A következő táblázat ismerteti a Blobok vagy verziók számlázási viselkedését, ha az új szintjére kerül.
+
+| Ha a blob-szintet explicit módon beállította... | Ezután számlázunk... |
+|-|-|
+| Egy korábbi verziójú alapszintű blob | Az alapszintű blob az új szinten és az eredeti szinten lévő legrégebbi verzió, valamint a többi verzióban található egyedi blokkok. <sup>1</sup> |
+| Egy korábbi verziót és egy pillanatképet tartalmazó alap blob | Az alap blob az új szinten, az eredeti szint legrégebbi verziója, valamint az eredeti szinten lévő legrégebbi pillanatkép, valamint a többi verzióban<sup>vagy pillanatképekben</sup>szereplő egyedi blokkok. |
+| Egy korábbi verzió | A verzió az új szinten és az alap blob az eredeti szinten, valamint a többi verzió egyedi blokkja. <sup>1</sup> |
+
+<sup>1</sup> Ha vannak olyan korábbi verziók vagy Pillanatképek, amelyek nem lettek áthelyezve az eredeti szintjéről, akkor ezek a verziók vagy Pillanatképek az általuk tartalmazott egyedi blokkok száma alapján lesznek felszámítva, a [számlázás, ha a blob szintjét nem adta meg explicit módon](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+A blob, a verzió vagy a pillanatkép szintje explicit módon történő beállítása nem vonható vissza. Ha egy blobot egy új szintre helyez át, majd visszahelyezi az eredeti szintjére, akkor akkor is a teljes tartalomért kell fizetnie, ha az objektum más objektumokkal is megosztja az eredeti szintet.
+
+A Blobok, verziók vagy Pillanatképek szintjét explicit módon beállító műveletek a következők:
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
+- A [blobot](/rest/api/storageservices/put-blob) a megadott szintűvé tegye
+- [Letiltási lista](/rest/api/storageservices/put-block-list) megadása a megadott szintű szinten
+- [Blob másolása](/rest/api/storageservices/copy-blob) megadott szintű példánnyal
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>BLOB törlése, ha a Soft delete engedélyezve van
+
+Ha a blob-törlés engedélyezve van, ha olyan alapszintű blobot töröl vagy felülír, amelynek a szintje explicit módon be lett állítva, akkor a Soft-Deleted blob összes korábbi verzióját teljes tartalommal számlázjuk. További információ a Blobok verziószámozásáról és a helyreállítható törlésről: a [blob verziószámozása és a Soft delete](#blob-versioning-and-soft-delete)használata.
+
+A következő táblázat ismerteti a nem megfelelően törölt Blobok számlázási viselkedését attól függően, hogy a verziószámozás engedélyezett vagy le van tiltva. Ha a Verziószámozás engedélyezve van, akkor a rendszer egy verziót hoz létre, amikor egy blobot törölnek. Ha a verziószámozás le van tiltva, a Blobok törlésével egy törlési pillanatkép jön létre.
+
+| Ha egy alapszintű blobot felülír a réteg explicit módon beállított szintjével... | Ezután számlázunk... |
+|-|-|
+| Ha a blob-alapú törlés és verziószámozás egyaránt engedélyezve van | A teljes tartalom hosszúságú összes meglévő verzió a szintjétől függetlenül. |
+| Ha a blob-törlés engedélyezve van, de a verziószámozás le van tiltva | Az összes létező, teljes tartalommal rendelkező törlési pillanatkép a rétegtől függetlenül. |
 
 ## <a name="see-also"></a>Lásd még
 
-- [Blob verziószámozásának engedélyezése](versioning-enable.md)
+- [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 - [Az Azure Storage-Blobok Soft delete](storage-blob-soft-delete.md)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 466180535b3fe7c7d0155c8b19ac287930341ee7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755483"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226097"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -47,6 +47,8 @@ Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https
 Az új címkészlet létrehozásának megkezdéséhez:
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com/) webhelyen.
+   
+   >! Megjegyzés Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
 
 2. Adja meg a **Windows rendszerű virtuális asztalt** a keresőmezőbe, majd keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet.
 
@@ -72,7 +74,7 @@ Az új címkészlet létrehozásának megkezdéséhez:
       > [!div class="mx-imgBorder"]
       > ![A hozzárendelés típusa mező legördülő menüjének képernyőképe. A felhasználó automatikus beállítást adott meg.](media/assignment-type-field.png)
 
-9. Ha a **készletezett**lehetőséget választja, adja meg a következő adatokat:
+9.  Ha a **készletezett**lehetőséget választja, adja meg a következő adatokat:
 
      - A **munkamenetek**maximális száma lehetőségnél adja meg, hogy legfeljebb hány felhasználót szeretne terheléselosztással elválasztani egyetlen munkamenet-gazdagépre.
      - **Terheléselosztási algoritmus**esetén a használati minta alapján válassza a szélesség – első vagy a mélység – első lehetőséget.
@@ -183,7 +185,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
 Ezt követően már készen is van!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elvégezte a gazdagép készletét, feltöltheti azt a RemoteApp-programok használatával. Ha többet szeretne megtudni a Windows rendszerű virtuális asztali alkalmazások kezeléséről, tekintse meg a következő oktatóanyagot:
 

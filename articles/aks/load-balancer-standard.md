@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056810"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182122"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -267,16 +267,15 @@ Ha várhatóan több rövid életű kapcsolatra van szüksége, és nem áll ren
 *outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Ha például 3 *nodeVMs*van, és 50 000 *desiredAllocatedOutboundPorts*, legalább 3 *outboundIPs*kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
- 
+
 - Ha a *IdleTimeoutInMinutes* eltérő értékre állítja be, mint az alapértelmezett 30 perc, akkor vegye figyelembe, hogy a számítási feladatoknak mennyi ideig kell kiadniuk a kimenő kapcsolatokat. Azt is vegye figyelembe, hogy egy *standard* SKU-Load Balancer alapértelmezett időtúllépési értéke 4 perc. Egy olyan *IdleTimeoutInMinutes* -érték, amely pontosabban tükrözi az adott AK-beli munkaterhelést, csökkentheti a SNAT okozta kimerültséget, mivel a kapcsolatok már nincsenek használatban.
 
 > [!WARNING]
 > Ha módosítja a *AllocatedOutboundPorts* és a *IdleTimeoutInMinutes* értékeit, jelentősen megváltoztathatja a terheléselosztó kimenő szabályának viselkedését, és a kompromisszumok és az alkalmazás kapcsolati mintáinak megismerése nélkül nem kell megtörténnie, a [SNAT hibaelhárítási szakaszában][troubleshoot-snat] ellenőrizze az alábbi lépéseket, és tekintse át a [Load Balancer kimenő][azure-lb-outbound-rules-overview] és [kimenő kapcsolatokat az Azure-ban][azure-lb-outbound-connections] , mielőtt frissíti ezeket az értékeket a módosítások hatásának teljes megértéséhez
 
-
 ## <a name="restrict-inbound-traffic-to-specific-ip-ranges"></a>A bejövő forgalom korlátozása adott IP-tartományokra
 
-A terheléselosztó virtuális hálózatához társított hálózati biztonsági csoport (NSG) alapértelmezés szerint rendelkezik egy olyan szabállyal, amely engedélyezi az összes bejövő külső forgalmat. Ezt a szabályt úgy frissítheti, hogy csak adott IP-tartományokat engedélyezzen a bejövő forgalom számára. A következő jegyzékfájl a *loadBalancerSourceRanges* -t használja a bejövő külső forgalomhoz tartozó új IP-címtartomány megadásához:
+A következő jegyzékfájl a *loadBalancerSourceRanges* -t használja a bejövő külső forgalomhoz tartozó új IP-címtartomány megadásához:
 
 ```yaml
 apiVersion: v1
@@ -292,6 +291,9 @@ spec:
   loadBalancerSourceRanges:
   - MY_EXTERNAL_IP_RANGE
 ```
+
+> [!NOTE]
+> Bejövő, külső forgalom a terheléselosztó és az AK-fürt virtuális hálózata között áramlik. A virtuális hálózat egy hálózati biztonsági csoporttal (NSG) rendelkezik, amely lehetővé teszi a terheléselosztó összes bejövő forgalmát. Ez a NSG a *terheléselosztó* típusú [szolgáltatási címkét][service-tags] használja, hogy engedélyezze a forgalmat a terheléselosztó számára.
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Az ügyfél IP-címének karbantartása bejövő kapcsolatokon
 
@@ -322,7 +324,7 @@ Az alábbi lista a Kubernetes-szolgáltatások típussal támogatott megjegyzés
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | A nyilvános IP-címeken lévő DNS-címke neve   | Adja meg a **nyilvános** szolgáltatás DNS-címkéjének nevét. Ha üres karakterláncra van beállítva, a rendszer nem használja a nyilvános IP-címen található DNS-bejegyzést.
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` vagy `false`                     | Annak megadása, hogy a szolgáltatás elérhető legyen egy másik szolgáltatással megosztható Azure biztonsági szabály használatával, a szabályok kereskedelmi sajátossága, amely az elérhető szolgáltatások számának növekedését eredményezi. Ez a jegyzet a hálózati biztonsági csoportok Azure [kibővített biztonsági szabályok](../virtual-network/security-overview.md#augmented-security-rules) funkcióját veszi alapul. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Az erőforráscsoport neve            | Itt adhatja meg a terheléselosztó nyilvános IP-címeinek azon erőforrásait, amelyek nem ugyanabban az erőforráscsoporthoz vannak, mint a fürt-infrastruktúra (csomópont-erőforráscsoport).
-| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Engedélyezett szolgáltatási címkék listája          | Itt adhatja meg az engedélyezett [szolgáltatási címkék](../virtual-network/security-overview.md#service-tags) vesszővel elválasztott listáját.
+| `service.beta.kubernetes.io/azure-allowed-service-tags`           | Engedélyezett szolgáltatási címkék listája          | Itt adhatja meg az engedélyezett [szolgáltatási címkék][service-tags] vesszővel elválasztott listáját.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP Üresjárati időkorlát (perc)          | Itt adhatja meg, hogy hány perc múlva történjen a TCP-kapcsolat üresjárati időtúllépése a terheléselosztó esetében. Az alapértelmezett és a minimális érték 4. A maximális érték 30. Egész számnak kell lennie.
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | `enableTcpReset`SLB letiltása
 
@@ -424,3 +426,4 @@ További információk a belső Load Balancer a bejövő forgalomhoz való haszn
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
+[service-tags]: ../virtual-network/security-overview.md#service-tags

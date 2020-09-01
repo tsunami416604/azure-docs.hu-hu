@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4b1f7aed6a188c491e6f4961442fa85744b6b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 9a725831efe6b92ba522900fac67b317e42bc959
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718543"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182377"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
 Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
@@ -70,10 +70,10 @@ A Azure AD Connect Health a németországi felhőben nem támogatott, kivéve a 
 
 | Szerepkörök | Szolgáltatások | Támogatott a német felhőben |
 | ------ | --------------- | --- |
-| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | No |
-|  | Szinkronizálási hibajelentés | Yes |
-| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | No |
-| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | No |
+| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | Nem |
+|  | Szinkronizálási hibajelentés | Igen |
+| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | Nem |
+| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | Nem |
 
 Annak érdekében, hogy az ügynök kapcsolatba lépjen a csatlakozás állapota szinkronizáláshoz, a [telepítési követelményt](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően konfigurálja.
 
@@ -137,7 +137,7 @@ Az állapotfigyelő ügynök a következő lehetséges okok miatt nem tud regisz
 
 * Az ügynök nem tud kommunikálni a szükséges végpontokkal, mert a tűzfal blokkolja a forgalmat. Ez különösen gyakori a webalkalmazás-proxy kiszolgálókon. Győződjön meg arról, hogy engedélyezett-e a kimenő kommunikáció a szükséges végpontokkal és portokkal. Részletekért tekintse meg a [követelmények szakaszt](how-to-connect-health-agent-install.md#requirements) .
 * A kimenő kommunikációra a hálózati réteg TLS-ellenőrzése vonatkozik. Ez azt eredményezi, hogy az ügynök által használt tanúsítvány lecserélhető az ellenőrzési kiszolgáló/entitás számára, és az ügynök regisztrációjának befejezéséhez szükséges lépések sikertelenek lesznek.
-* A felhasználónak nincs hozzáférése az ügynök regisztrációjának elvégzéséhez. A globális rendszergazdák alapértelmezés szerint rendelkeznek hozzáféréssel. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) használatával delegálhatja a hozzáférést más felhasználóknak.
+* A felhasználónak nincs hozzáférése az ügynök regisztrációjának elvégzéséhez. A globális rendszergazdák alapértelmezés szerint rendelkeznek hozzáféréssel. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) használatával delegálhatja a hozzáférést más felhasználóknak.
 
 **K: értesítést kapok arról, hogy "Állapotfigyelő szolgáltatás adatok nem naprakészek." Hogyan a probléma megoldásához?**
 

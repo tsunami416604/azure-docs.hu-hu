@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201847"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226573"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Kifejezések írása a Azure Active Directory attribútum-hozzárendelésekhez
 A felhő-kiépítés konfigurálásakor a megadható attribútumok egyik típusa egy kifejezés-hozzárendelés. 
@@ -41,7 +41,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 ## <a name="list-of-functions"></a>Függvények listája
 | Függvények listája | Leírás |
 |-----|----|
-|[Append (Hozzáfűzés)](#append)|A forrás sztring értéket veszi fel, és hozzáfűzi az utótagot a végéhez.|
+|[Append](#append)|A forrás sztring értéket veszi fel, és hozzáfűzi az utótagot a végéhez.|
 |[BitAnd](#bitand)|A BitAnd függvény a megadott biteket egy értékre állítja be.|
 |[CBool](#cbool)|A CBool függvény egy logikai értéket ad vissza a kiértékelt kifejezés alapján.|
 |[ConvertFromBase64](#convertfrombase64)|A ConvertFromBase64 függvény a megadott Base64 kódolású értéket egy normál karakterlánccá alakítja át.|
@@ -60,7 +60,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 |[IsNullOrEmpty](#isnullorempty)|Ha a kifejezés null értékű vagy üres karakterlánc, akkor a IsNullOrEmpty függvény Igaz értéket ad vissza.|         
 |[IsPresent](#ispresent)|Ha a kifejezés olyan karakterláncot ad vissza, amely nem null értékű, és nem üres, akkor a IsPresent függvény Igaz értéket ad vissza.|    
 |[IsString](#isstring)|Ha a kifejezés kiértékelhető karakterlánc típusúra, akkor a IsString függvény Igaz értéket ad vissza.|
-|[Elem](#item)|Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.|
+|[Item](#item)|Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.|
 |[Csatlakozás](#join) |A JOIN () hasonló a hozzáfűzéshez (), azzal a kivétellel, hogy több **forrás** sztringet is egyesít egyetlen karakterláncban, és az egyes értékeket **elválasztó sztring választja** el egymástól.| 
 |[Bal](#left)|A Left függvény egy karakterlánctól balra megadott számú karaktert ad vissza.|
 |[Közepes](#mid) |A forrás értékének egy alsztringjét adja vissza. Az alsztringek olyan karakterláncok, amelyek csak néhány karaktert tartalmaznak a forrás sztringből.|
@@ -73,7 +73,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 |[Felosztása](#split)|A karakterláncot egy többértékű tömbre osztja fel a megadott elválasztó karakter használatával.|
 |[StringFromSID](#stringfromsid)|A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonsági azonosítót tartalmaz egy karakterláncra.| 
 |[StripSpaces](#stripspaces) |Eltávolítja az összes szóköz ("") karaktert a forrás sztringből.| 
-|[Kapcsoló](#switch)|Ha a **forrás** értéke megegyezik egy **kulccsal**, az adott **kulcs** **értékét** adja vissza. | 
+|[Kapcsoló (switch)](#switch)|Ha a **forrás** értéke megegyezik egy **kulccsal**, az adott **kulcs** **értékét** adja vissza. | 
 |[ToLower](#tolower)|Egy *forrás* sztring értéket vesz igénybe, és a megadott kulturális szabályok alapján átalakítja a kisbetűsre.| 
 |[ToUpper](#toupper)|Egy *forrás* sztring értékét veszi át, és a megadott kulturális szabályok alapján átalakítja a nagybetűre.|
 |[Trim](#trim)|A Trim függvény eltávolítja a kezdő és záró szóközöket egy karakterláncból.|
@@ -110,7 +110,7 @@ Ez a függvény mindkét paramétert a bináris ábrázolásra konvertálja, és
 
 Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét paraméternek megfelelő bitek értéke 1.
 
-**Például**  
+**Példa**  
  
  `BitAnd(&HF, &HF7)`</br>
  A 7 értéket adja vissza, mert a hexadecimális "F" és "F7" kifejezés kiértékelése erre az értékre történik.
@@ -127,7 +127,7 @@ A CBool függvény egy logikai értéket ad vissza a kiértékelt kifejezés ala
 **Megjegyzéseket tartalmazó**  
 Ha a kifejezés kiértékelése nem nulla értékű, akkor a CBool igaz értéket ad vissza, máskülönben hamis értéket ad vissza.
 
-**Például**  
+**Példa**  
 `CBool([attrib1] = [attrib2])`  
 
 Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rendelkezik.
@@ -138,7 +138,7 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 A ConvertFromBase64 függvény a megadott Base64 kódolású értéket egy normál karakterlánccá alakítja át.
 
 **Szintaxis**  
-`str ConvertFromBase64(str source)`-Unicode kódolást feltételez  
+`str ConvertFromBase64(str source)` -Unicode kódolást feltételez  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Forrás: Base64 kódolású karakterlánc  
@@ -159,7 +159,7 @@ Egész számokból álló tömb értékét konvertálja az egyenértékű karakt
 **Szintaxis**  
 `str ConvertToBase64(str source)`
 
-**Például**  
+**Példa**  
 `ConvertToBase64("Hello world!")`  
 A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
@@ -174,7 +174,7 @@ A ConvertToUTF8Hex függvény egy karakterláncot UTF8 hexadecimális kódolás�
 **Megjegyzéseket tartalmazó**  
 A függvény kimeneti formátumát a Azure Active Directory használja DN-attribútum formátumként.
 
-**Például**  
+**Példa**  
 `ConvertToUTF8Hex("Hello world!")`  
 48656C6C6F20776F726C6421 visszaadása
 
@@ -198,7 +198,7 @@ A CStr függvény karakterlánc típusú adattípusra konvertál.
 
 * Value: numerikus érték, hivatkozási attribútum vagy logikai érték lehet.
 
-**Például**  
+**Példa**  
 `CStr([dn])`  
 Visszatérhet a "CN = Joe, DC = contoso, DC = com" értékre.
 
@@ -210,7 +210,7 @@ A DateFromNum függvény egy értéket AD meg az AD dátumformátum dátum és i
 **Szintaxis**  
 `dt DateFromNum(num value)`
 
-**Például**  
+**Példa**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
@@ -226,7 +226,7 @@ A DNComponent függvény a megadott DN-összetevő értékét adja vissza balró
 * DN: az értelmezni kívánt hivatkozási attribútum
 * ComponentNumber: a DN által visszaadott összetevő
 
-**Például**  
+**Példa**  
 `DNComponent(CRef([dn]),1)`  
 Ha a DN a következő: "CN = Joe, ou =...", visszaadja a következőt: Joe
 
@@ -238,7 +238,7 @@ A Error függvény egyéni hiba visszaküldésére szolgál.
 **Szintaxis**  
 `void Error(str ErrorMessage)`
 
-**Például**  
+**Példa**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Ha a accountName attribútum nem található, hibát jelez az objektumon.
 
@@ -253,7 +253,7 @@ Ha a accountName attribútum nem található, hibát jelez az objektumon.
    | Név | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
-   | **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
+   | **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [/DotNet/standard/Base-types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
    | **outputFormat** |Kötelező |Sztring |A kimeneti dátum formátuma. |
 
 ---
@@ -276,7 +276,7 @@ Az IIF függvény a lehetséges értékek egy halmazát adja vissza egy megadott
 * valueIfTrue: Ha a feltétel igaz értéket ad vissza, a visszaadott érték.
 * valueIfFalse: Ha a feltétel hamis értéket ad vissza, a visszaadott érték.
 
-**Például**  
+**Példa**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Ha a felhasználó egy gyakornok, a a "t-" értékkel rendelkező felhasználó aliasát adja vissza, a másik pedig a felhasználó aliasát adja vissza.
 
@@ -299,7 +299,7 @@ A beosztási függvény megkeresi egy karakterláncban szereplő alsztring első
 **Megjegyzéseket tartalmazó**  
 Azt a pozíciót adja vissza, ahol az alkarakterlánc található vagy 0, ha nem található.
 
-**Például**  
+**Példa**  
 `InStr("The quick brown fox","quick")`  
 Evalues – 5
 
@@ -317,7 +317,7 @@ Ha a kifejezés értéke null, akkor a IsNull függvény Igaz értéket ad vissz
 **Megjegyzéseket tartalmazó**  
 Attribútum esetén a null értéket az attribútum hiánya fejezi ki.
 
-**Például**  
+**Példa**  
 `IsNull([displayName])`  
 Igaz értéket ad vissza, ha az attribútum nem szerepel a CS vagy az MV-ban.
 
@@ -333,7 +333,7 @@ Ha a kifejezés null értékű vagy üres karakterlánc, akkor a IsNullOrEmpty f
 Egy attribútum esetében ez igaz értékre értékeli, ha az attribútum hiányzik vagy létezik, de egy üres karakterlánc.  
 A függvény inverzének neve IsPresent.
 
-**Például**  
+**Példa**  
 `IsNullOrEmpty([displayName])`  
 Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc a CS vagy az MV.
 
@@ -348,11 +348,11 @@ Ha a kifejezés olyan karakterláncot ad vissza, amely nem null értékű, és n
 **Megjegyzéseket tartalmazó**  
 A függvény inverzének neve IsNullOrEmpty.
 
-**Például**  
+**Példa**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Elem
+### <a name="item"></a>Item
 **Leírás:**  
 Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
 
@@ -367,7 +367,7 @@ Az Item függvény a tartalmaz függvénnyel együtt használható, mivel az ut�
 
 Hibát jelez, ha az index tartományon kívül esik.
 
-**Például**  
+**Példa**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Az elsődleges e-mail-címet adja vissza.
 
@@ -417,7 +417,7 @@ A karakterlánc első numChars karaktert tartalmazó karakterlánc:
 
 Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a rendszer a karakterlánctal megegyező karakterláncot (azaz az 1. paraméterben szereplő összes karaktert tartalmazza) adja vissza.
 
-**Például**  
+**Példa**  
 `Left("John Doe", 3)`  
 Visszatérési érték `Joh` .
 
@@ -467,7 +467,7 @@ A RemoveDuplicates függvény többértékű karakterláncot használ, és minde
 **Szintaxis**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Például**  
+**Példa**  
 `RemoveDuplicates([proxyAddresses])`  
 Egy megtisztított proxyAddress attribútumot ad vissza, amelyben az összes duplikált érték el lett távolítva.
 
@@ -573,7 +573,7 @@ A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonság
    | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 
 ---
-### <a name="switch"></a>Kapcsoló
+### <a name="switch"></a>Kapcsoló (switch)
 **Függvény**<br> Kapcsoló (forrás, defaultValue, key1, érték1, key2, érték2,...)
 
 **Leírás:**<br> Ha a **forrás** értéke megegyezik egy **kulccsal**, az adott **kulcs** **értékét** adja vissza. Ha a **forrás** értéke nem felel meg a kulcsoknak, a a **defaultValue**értéket adja vissza.  A **kulcsok** és **értékek** paramétereit mindig párokban kell megadni. A függvény mindig páros számú paramétert vár.
@@ -623,7 +623,7 @@ A Trim függvény eltávolítja a kezdő és záró szóközöket egy karakterl�
 **Szintaxis**  
 `str Trim(str value)`  
 
-**Például**  
+**Példa**  
 `Trim(" Test ")`  
 A "test" értéket adja vissza.
 
@@ -650,7 +650,7 @@ A rendszer az elválasztó karakterek egyikével elválasztott karakterláncban 
 
 Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tartalmaz határolójelekkel azonosított szavakat, akkor a rendszer üres karakterláncot ad vissza.
 
-**Például**  
+**Példa**  
 `Word("The quick brown fox",3," ")`  
 A "barna" értéket adja vissza.
 
@@ -786,7 +786,7 @@ A felhasználó utóneve, középső neve és vezetékneve alapján értéket ke
 * **Kimenet**: " Jo.Smith@contoso.com ", ha a fenti két UPN-érték már létezik a címtárban
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

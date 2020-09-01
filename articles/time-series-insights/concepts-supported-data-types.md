@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 254732630dcf28b90413a1269a34d3aa388cb06c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997863"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226743"
 ---
 # <a name="supported-data-types"></a>Támogatott adattípusok
 
@@ -23,7 +23,7 @@ A következő táblázat felsorolja a Azure Time Series Insights Gen2 által tá
 | Adattípus | Leírás | Példa | [Idősorozat-kifejezés szintaxisa](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Tulajdonság oszlopának neve a parkettában
 |---|---|---|---|---|
 | **logikai** | Olyan adattípus, amely két állapot egyikét adja meg: `true` vagy `false` . | `"isQuestionable" : true` | `$event.isQuestionable.Bool` vagy `$event['isQuestionable'].Bool` | `isQuestionable_bool`
-| **datetime** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. A DateTime tulajdonságokat a rendszer mindig UTC formátumban tárolja. Az időzóna-eltolások, ha megfelelően vannak formázva, a rendszer alkalmazza, majd az UTC szerint tárolt értéket fogja alkalmazni. Tekintse meg [ezt](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) a szakaszt a környezet timestamp tulajdonságával és a DateTime típusú eltolásokkal kapcsolatban. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Ha a "eventProcessedLocalTime" az eseményforrás időbélyegzője: `$event.$ts` . Ha ez egy másik JSON-tulajdonság: `$event.eventProcessedLocalTime.DateTime` vagy `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
+| **dátum/idő** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. A DateTime tulajdonságokat a rendszer mindig UTC formátumban tárolja. Az időzóna-eltolások, ha megfelelően vannak formázva, a rendszer alkalmazza, majd az UTC szerint tárolt értéket fogja alkalmazni. Tekintse meg [ezt](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) a szakaszt a környezet timestamp tulajdonságával és a DateTime típusú eltolásokkal kapcsolatban. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Ha a "eventProcessedLocalTime" az eseményforrás időbélyegzője: `$event.$ts` . Ha ez egy másik JSON-tulajdonság: `$event.eventProcessedLocalTime.DateTime` vagy `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Kétszeres pontosságú 64 bites szám  | `"value": 31.0482941` | `$event.value.Double` vagy `$event['value'].Double` |  `value_double`
 | **long** | Aláírt 64 bites egész szám  | `"value" : 31` | `$event.value.Long` vagy `$event['value'].Long` |  `value_long`
 | **karakterlánc** | A szöveges értékeknek érvényes UTF-8 típusúnak kell lenniük. A null értékű és az üres karakterláncok azonosak. |  `"site": "DIM_MLGGG"`| `$event.site.String` vagy `$event['site'].String`| `site_string`
@@ -34,9 +34,10 @@ A következő táblázat felsorolja a Azure Time Series Insights Gen2 által tá
 
 > [!NOTE]
 > A **sztring** típusa nem üres:
->   * Egy idősorozat- [lekérdezésben](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) kifejezett [idősorozat-kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) , amely egy üres karakterlánc (**""**) **Null** értékkel való összevetésével hasonlítja össze az értéket, ugyanúgy viselkedik, mint a következő: `$event.siteid.String = NULL` `$event.siteid.String = ''` .
->   * Előfordulhat, hogy az API **Null** értékeket ad vissza, még akkor is, ha az eredeti események üres karakterláncokat tartalmaznak.
->   * A **karakterlánc** -oszlopokban lévő **Null** értékektől való függőséget ne használja összehasonlítások vagy értékelések elvégzéséhez, ugyanúgy kezelje őket, mint az üres karakterláncokat.
+>
+> * Egy idősorozat- [lekérdezésben](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis) kifejezett [idősorozat-kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) , amely egy üres karakterlánc (**""**) **Null** értékkel való összevetésével hasonlítja össze az értéket, ugyanúgy viselkedik, mint a következő: `$event.siteid.String = NULL` `$event.siteid.String = ''` .
+> * Előfordulhat, hogy az API **Null** értékeket ad vissza, még akkor is, ha az eredeti események üres karakterláncokat tartalmaznak.
+> * A **karakterlánc** -oszlopokban lévő **Null** értékektől való függőséget ne használja összehasonlítások vagy értékelések elvégzéséhez, ugyanúgy kezelje őket, mint az üres karakterláncokat.
 
 ## <a name="sending-mixed-data-types"></a>Vegyes adattípusok küldése
 

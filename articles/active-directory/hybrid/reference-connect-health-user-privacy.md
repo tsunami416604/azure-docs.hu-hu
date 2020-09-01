@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690693"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182360"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Felhasználói adatvédelem és Azure AD Connect Health 
 
@@ -41,7 +41,7 @@ Az aktív állapotfigyelő **szolgáltatás adataival** rendelkező kiszolgáló
 Azure AD Connect Health lehetővé teszi az adatgyűjtés leállítását minden egyes megfigyelt kiszolgáló vagy egy figyelt szolgáltatás egy példánya számára. Például leállíthatja az adatgyűjtést a Azure AD Connect Health használatával figyelt egyes ADFS-(Active Directory összevonási szolgáltatások (AD FS)-) kiszolgálókon. Az adatgyűjtés a Azure AD Connect Health használatával figyelt teljes ADFS-példányon is leállítható. Ha ezt választja, a rendszer törli a megfelelő kiszolgálókat a Azure AD Connect Health-portálról az adatgyűjtés leállítása után. 
 
 >[!IMPORTANT]
-> A figyelt kiszolgálók Azure AD Connect Healthról való törléséhez Azure AD globális rendszergazdai jogosultságokkal vagy a RBAC közreműködői szerepkörrel kell rendelkeznie.
+> A figyelt kiszolgálók Azure AD Connect Healthról való törléséhez Azure AD globális rendszergazdai jogosultságokkal vagy az Azure RBAC közreműködői szerepkörrel kell rendelkeznie.
 >
 > Kiszolgáló vagy szolgáltatás példányának Azure AD Connect Healthból való eltávolítása nem visszafordítható művelet. 
 

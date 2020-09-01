@@ -17,18 +17,18 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608262"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226964"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
-Az [Azure Active Directory (Azure AD) Reporting API-k](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Ezeket az API-kat programozási nyelvekből és eszközökből hívhatja.
+Az [Azure Active Directory (Azure AD) Reporting API-k](./concept-reporting-api.md) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Ezeket az API-kat programozási nyelvekből és eszközökből hívhatja.
 
-A jelentéskészítési API a [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) használatával engedélyezi a hozzáférést a webes API-khoz.
+A jelentéskészítési API a [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) használatával engedélyezi a hozzáférést a webes API-khoz.
 
 A jelentéskészítési API-hoz való hozzáférés előkészítéséhez a következőket kell tennie:
 
@@ -53,7 +53,7 @@ Ha a jelentéskészítési adathoz az API-n keresztül szeretne hozzáférni, a 
 A bérlőhöz tartozó bejelentkezési jelentések eléréséhez az Azure AD-bérlőnek hozzá kell rendelnie prémium szintű Azure AD-licencet. Prémium szintű Azure AD P1 (vagy újabb) licencre van szükség az Azure AD-bérlők bejelentkezési jelentéseinek eléréséhez. Ha a könyvtár típusa Azure AD B2C, a bejelentkezési jelentések az API-n keresztül érhetők el, további licencfeltételek nélkül. 
 
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 A regisztrációra akkor is szükség van, ha parancsfájl használatával éri el a jelentéskészítési API-t. A regisztráció egy alkalmazás- **azonosítót**ad meg, amely az engedélyezési hívásokhoz szükséges, és lehetővé teszi a kód számára a jogkivonatok fogadását.
 
@@ -85,9 +85,9 @@ Ha úgy szeretné konfigurálni a címtárat, hogy hozzáférhessen az Azure AD 
 
     b. A **támogatott fiókok típusa**beállításnál válassza a **fiókok csak ebben a szervezetiben**lehetőséget.
 
-    c. Az **átirányítási URL-cím** kijelölése **webes** szövegmezőbe írja be a következőt: `https://localhost` .
+    c. Az **átirányítási URL-cím**  kijelölése **webes** szövegmezőbe írja be a következőt: `https://localhost` .
 
-    d. Kattintson a **Register** (Regisztrálás) elemre. 
+    d. Válassza a **Regisztráció** lehetőséget. 
 
 
 ## <a name="grant-permissions"></a>Engedélyek megadása 
@@ -188,7 +188,7 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
     b. Ahogy **lejár**, válassza **a 2 év**lehetőséget.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
     d. Másolja a kulcs értékét.
 
@@ -222,8 +222,8 @@ A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1
 
 Az előfeltételekben ismertetett lépéseket követve [férhet hozzá a Azure Active Directory jelentési API](howto-configure-prerequisites-for-reporting-api.md) -hoz annak biztosításához, hogy az alkalmazás a megfelelő engedélyekkel fusson. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
-* [Naplózási API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [A bejelentkezési tevékenység jelentésének API-referenciája](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Naplózási API-referenciák](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [A bejelentkezési tevékenység jelentésének API-referenciája](/graph/api/resources/signin?view=graph-rest-beta)

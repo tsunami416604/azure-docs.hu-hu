@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bef7de68084ac3084c0b0179a7bbf6b1c9ca951
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67109369"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182445"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adatvédelmi stratégia definiálása a hibrid személyazonossági megoldáshoz
 Ebben a feladatban megadhatja a hibrid identitási megoldás adatvédelmi stratégiáját, hogy megfeleljen az Ön által meghatározott üzleti követelményeknek:
@@ -121,7 +121,7 @@ Az ábrán látható összes interakció az X. ábrán egy, az Azure AD által l
 
 1. A helyszínen üzemeltetett alkalmazásokhoz való feltételes hozzáférés: a Windows Server 2012 R2-vel való AD FS használatára konfigurált alkalmazásokhoz hozzáférési házirendekkel rendelkező regisztrált eszközöket használhat.
 
-2. Access Control a Azure Portal: az Azure szerepköralapú hozzáférés-vezérléssel (RBAC) is lehetővé teszi a portálhoz való hozzáférés szabályozását. Ez a módszer lehetővé teszi a vállalat számára, hogy korlátozza azon műveletek számát, amelyeket egy adott személy elvégezhet a Azure Portalban. Ha a RBAC használatával szabályozza a portálhoz való hozzáférést, a rendszergazdák a következő hozzáférés-kezelési megközelítések segítségével delegálják a hozzáférést:
+2. Access Control a Azure Portal: az Azure lehetővé teszi, hogy a portálhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával is szabályozhatja. Ez a módszer lehetővé teszi a vállalat számára, hogy korlátozza azon műveletek számát, amelyeket egy adott személy elvégezhet a Azure Portalban. Ha az Azure RBAC használatával szabályozza a portálhoz való hozzáférést, a rendszergazdák a következő hozzáférés-kezelési megközelítések segítségével delegálhatja a hozzáférést:
 
    - Csoport alapú szerepkör-hozzárendelés: a helyi Active Directoryról szinkronizálható Azure AD-csoportokhoz is hozzárendelhet hozzáférést. Így kihasználhatja a szervezete által a csoportok kezelésére szolgáló eszközök és folyamatok által létrehozott meglévő befektetéseket. Használhatja a prémium szintű Azure AD meghatalmazott csoportjának felügyeleti szolgáltatását is.
    - Beépített szerepkörök használata az Azure-ban: három szerepkör – tulajdonos, közreműködő és olvasó – használatával biztosíthatja, hogy a felhasználók és a csoportok csak a feladataik elvégzéséhez szükséges feladatokat tudják elvégezni.

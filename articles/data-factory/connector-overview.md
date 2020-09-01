@@ -6,15 +6,15 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/31/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 334d5b5113dba17c5abc2b4f2520bde0d16e4c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a729d470cccd4121523c767ada9077a51361c061
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007443"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181976"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő áttekintése
 
@@ -25,6 +25,17 @@ A Azure Data Factory a következő adattárakat és formátumokat támogatja a m
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
 [!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+
+## <a name="integrate-with-more-data-stores"></a>Integráció több adattárral
+
+Azure Data Factory az adattárak szélesebb körét érheti el, mint a fent említett lista. Ha olyan adattárból/adattárba kell áthelyeznie az adattárat, amely nem szerepel a Azure Data Factory beépített összekötő listáján, az alábbiakban néhány bővíthető lehetőség közül választhat:
+- Az adatbázis és az adatraktár esetében általában talál egy megfelelő ODBC-illesztőt, amellyel az [általános ODBC-összekötőt](connector-odbc.md)használhatja.
+- SaaS-alkalmazások esetén:
+    - Ha REST API-kat biztosít, használhatja az [általános Rest-összekötőt](connector-rest.md).
+    - Ha rendelkezik OData-adatcsatornával, használhatja az [általános OData-összekötőt](connector-odata.md).
+    - Ha SOAP API-kat biztosít, használhatja az [általános http-összekötőt](connector-http.md).
+    - Ha ODBC-illesztővel rendelkezik, használhatja az [általános ODBC-összekötőt](connector-odbc.md).
+- Mások számára ellenőrizze, hogy tud-e adatokkal betölteni vagy közzétenni minden olyan adatforrást, mint az ADF által támogatott adattárak, például az Azure Blob/file/FTP/SFTP/etc, majd hagyja, hogy az ADF legyen elérhető. Az egyéni betöltési mechanizmust az [Azure Function](control-flow-azure-function-activity.md), az [egyéni tevékenység](transform-data-using-dotnet-custom-activity.md), a [Databricks](transform-data-databricks-notebook.md) / [HDInsight](transform-data-using-hadoop-hive.md), a [webes tevékenységek](control-flow-web-activity.md)stb. használatával hívhatja meg.
 
 ## <a name="supported-file-formats"></a>Támogatott fájlformátumok
 

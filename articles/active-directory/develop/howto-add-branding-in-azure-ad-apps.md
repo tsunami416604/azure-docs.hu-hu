@@ -1,7 +1,7 @@
 ---
 title: Az alkalmazás arculatával kapcsolatos irányelvek | Azure
 titleSuffix: Microsoft identity platform
-description: Átfogó útmutató az Azure Active Directory fejlesztőknek készített erőforrásairól
+description: Ismerje meg a Microsoft Identity platform alkalmazás-védjegyezési irányelveit.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,25 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/31/2020
 ms.author: ryanwi
-ms.reviewer: arielgo
+ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117294"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226641"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
-Ha az Azure Active Directoryval (Azure AD) fejleszt alkalmazásokat, segítenie kell az ügyfeleknek eligazodni, ha a munkahelyi vagy iskolai fiókjukkal (amelyek felügyelete az Azure AD-ben történik), illetve személyes fiókjukkal szeretnének regisztrálni vagy bejelentkezni az Ön által fejlesztett alkalmazásba.
+Ha az alkalmazásokat a Microsoft Identity platformmal fejleszti, akkor az ügyfelet arra kell irányítani, hogy a saját munkahelyi vagy iskolai fiókját (az Azure AD-ben felügyelt) vagy személyes fiókját használja az alkalmazásba való bejelentkezéshez és bejelentkezéshez.
 
 Ebben a cikkben:
 
 - Megismerheti a Microsoft által felügyelt felhasználói fiók két fajtáját, illetve hogy miként hivatkozhat az Azure AD-fiókokra az alkalmazásában.
-- Megtudhatja, hogy mit kell tennie a Microsoft embléma az alkalmazásban való használatához történő hozzáadásához.
+- Megtudhatja, mit kell tennie, hogy hozzáadja a Microsoft logóját az alkalmazásban való használathoz
 - Letölti a hivatalos **Bejelentkezés** és **Bejelentkezés Microsoft-fiókkal** képet az alkalmazásban való használathoz.
 - Megismerheti a védjegyzéssel és navigálással kapcsolatban ajánlott és kerülendő műveleteket.
 
@@ -38,7 +38,7 @@ A Microsoft kétféle felhasználói fiókot kezel:
 - **Személyes fiókok** (korábban Windows Live ID). Ezek az *egyes* felhasználók és a Microsoft közötti kapcsolatot képviselik, és a Microsoft fogyasztói eszközökhöz és szolgáltatásokhoz való hozzáférését biztosítják. Ezek a fiókok személyes használatra vannak szánva.
 - **Munkahelyi vagy iskolai fiókok.** A fiókokat a Microsoft felügyeli az Azure Active Directory-t használó vállalatok nevében. A fiókok az Office 365-be és a Microsoft egyéb üzleti szolgáltatásaiba való bejelentkezésre szolgálnak.
 
-A Microsoft munkahelyi vagy iskolai fiókokat a szervezetek (vállalatok, iskolák, kormányhivatalok) jellemzően a végfelhasználókhoz (alkalmazottak, diákok, köztisztviselők) rendelik. Ezeket a fiókokat közvetlenül a felhőben (az Azure AD platformon) vagy Azure AD-val szinkronizálva kezelik egy helyszíni címtárból, például a Windows Server Active Directoryból. A Microsoft a munkahelyi vagy iskolai fiókok *felügyelője*, de azok a szervezetek tulajdonában állnak, és a szervezetek felügyelik őket.
+A Microsoft munkahelyi vagy iskolai fiókokat a szervezetek (vállalatok, iskolák, kormányhivatalok) jellemzően a végfelhasználókhoz (alkalmazottak, diákok, köztisztviselők) rendelik. Ezek a fiókok közvetlenül a felhőben (az Azure AD platformon) vannak elsajátítva, vagy egy helyszíni címtárból, például a Windows Server Active Directoryról szinkronizálva az Azure AD-be. A Microsoft a munkahelyi vagy iskolai fiókok *felügyelője*, de azok a szervezetek tulajdonában állnak, és a szervezetek felügyelik őket.
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>Azure AD-fiókok hivatkozása az alkalmazásban
 

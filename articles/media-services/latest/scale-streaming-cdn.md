@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan közvetítheti a tartalmat a CDN-integrációval, valamint a beolvasást és a forrás-assziszt CDN-kiküldést.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: inhenkel
+ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799349"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226148"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
 
@@ -29,14 +29,19 @@ A népszerű tartalmat a rendszer közvetlenül a CDN-gyorsítótárból fogja k
 
 Azt is meg kell fontolnia, hogyan működik az adaptív adatfolyam. Minden egyes videó-töredék saját entitásként van gyorsítótárazva. Képzelje el például, hogy az első alkalommal figyel egy bizonyos videót. Ha a megjelenítő kihagyja a körülbelül néhány másodpercet, és ott van, csak a videó töredékek vannak társítva a CDN-ben a megfigyelt személyhez. Az adaptív streaming esetében általában 5 – 7 különböző videó-bitrátát használhat. Ha egy személy figyeli az egyik bitrátát, és egy másik személy más bitrátát figyel, akkor a CDN-ben külön-külön vannak gyorsítótárazva. Még akkor is, ha két személy nézi ugyanazt a sávszélességet, különböző protokollokon keresztül lehet adatfolyamként szolgálni. Az egyes protokollokat (HLS, MPEG-DASH, Smooth Streaming) külön gyorsítótárazza a rendszer. Így az egyes bitráták és protokollok külön vannak gyorsítótárazva, és csak a kért videó-töredékek vannak gyorsítótárazva.
 
-Annak eldöntése során, hogy engedélyezi-e a CDN-t a Media Services [streaming végponton](streaming-endpoint-concept.md), vegye figyelembe a várt megjelenítők számát. A CDN csak akkor segít, ha sok megtekintőt vár a tartalomra. Ha a nézők maximális párhuzamossága 500-nál kisebb, javasoljuk, hogy tiltsa le a CDN-t, mivel a CDN a legjobbat a párhuzamosságtal méretezi.
+A tesztkörnyezet kivételével javasoljuk, hogy a CDN legyen engedélyezve mind a standard, mind a prémium szintű streaming végpontokhoz. A streaming-végpontok minden típusa eltérő támogatott átviteli korláttal rendelkezik.
+Az adatfolyam-végpont által támogatott egyidejű adatfolyamok maximális számának pontos kiszámítása nehéz feladat, mivel számos tényezőt figyelembe kell venni. Ezek a következők:
+
+- A folyamatos átvitelhez használt maximális átviteli sebesség
+- A lejátszó előpuffere és a váltás viselkedése. A játékosok megpróbálnak kiváltani szegmenseket a forrásokból, és a terhelési sebességet használják az adaptív sávszélesség-váltás kiszámításához. Ha egy folyamatos átviteli végpont a telítettséghez közeledik, a válaszidő változhat, és a játékosok alacsonyabb minőségi értékre válthatnak. Mivel ez csökkenti a streaming Endpoint Player-lejátszók terhelését, a magasabb színvonalú, nem kívánt váltási eseményindítók létrehozásával.
+Összességében biztonságos az egyidejű adatfolyamok maximális sebességének becslése a maximális átviteli végpont teljesítményének megadásával, és ezt a maximális sávszélesség (feltéve, hogy minden játékos a legmagasabb sávszélességet használja). Rendelkezhet például egy standard folyamatos átviteli végponttal, amely 600 Mbps-ra és a 3Mbp legmagasabb sebességére van korlátozva. Ebben az esetben a felső bitrátánál körülbelül 200 egyidejű adatfolyam támogatott. Ne felejtse el figyelembe venni a hangsávszélességre vonatkozó követelményeket is. Bár a hangadatfolyamok csak a 128 KPS-on keresztül továbbíthatók, a teljes adatfolyam gyorsan felgyorsul, ha az egyidejű adatfolyamok száma megszorozza azt.
 
 Ez a témakör a [CDN-integráció](#enable-azure-cdn-integration)engedélyezését ismerteti. Ismerteti továbbá az előzetes beolvasást (az aktív gyorsítótárazást) és az [Origin-Assist CDN-prefektusi](#origin-assist-cdn-prefetch) koncepciót.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* A [folyamatos átviteli végpont](streaming-endpoint-concept.md) `hostname` és a folyamatos átviteli URL-cím változatlan marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
-* Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, hozzon létre egy másik, CDN-t nem támogató streaming-végpontot.
+- A [folyamatos átviteli végpont](streaming-endpoint-concept.md) `hostname` és a folyamatos átviteli URL-cím változatlan marad, függetlenül attól, hogy engedélyezi-e a CDN-t.
+- Ha a tartalmat CDN használatával vagy anélkül szeretné tesztelni, hozzon létre egy másik, CDN-t nem támogató streaming-végpontot.
 
 ## <a name="enable-azure-cdn-integration"></a>Azure CDN integráció engedélyezése
 
@@ -86,7 +91,7 @@ A *forrás – támogatás CDN-kiindulási* funkció előnyei a következők:
 
 A `Origin-Assist CDN-Prefetch` Akamai CDN-vel közvetlen szerződéssel rendelkező ügyfelek számára a CDN támogatja a fejléceket (az élő és a video igény szerinti streaming esetében egyaránt). A szolgáltatás a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Rendeltetés|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
 |`CDN-Origin-Assist-Prefetch-Enabled` | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e.|
 |`CDN-Origin-Assist-Prefetch-Path`| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|Megadhatja a CDN elérési útját.|

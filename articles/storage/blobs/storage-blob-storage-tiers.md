@@ -3,17 +3,17 @@ title: Gyakori, ritka elérésű és archív hozzáférési szintek Blobok szám
 description: További információ az Azure Blob Storage-hoz készült gyakori, ritka elérésű és archív hozzáférési szintekről. Tekintse át a rétegek használatát támogató Storage-fiókokat. A blob tárolási beállításainak összehasonlítása.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/23/2019
+ms.date: 08/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: df81a383dc84ebc70beedded03e9fd1d6bccabdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009610"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226182"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek
 
@@ -121,7 +121,7 @@ Az alábbi táblázat a prémium szintű, a blob Storage és a gyakori, ritka el
 |                                           | **Prémium szintű teljesítmény**   | **Gyors elérési szint** | **Hűvös szint**       | **Archiválási szint**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Rendelkezésre állás**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
-| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | n.a.                       | 99,99%       | 99.9%               | Offline           |
+| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | N/A                       | 99,99%       | 99.9%               | Offline           |
 | **Használati díjak**                         | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Alacsonyabb tárolási költségek, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási költségek, legmagasabb hozzáférési és tranzakciós költségek |
 | **Minimális objektumméret**                   | N.A.                       | N.A.          | N.A.                 | N.A.               |
 | **Minimális tárolási időtartam**              | N.A.                       | N.A.          | 30 nap<sup>1</sup> | 180 nap
@@ -156,7 +156,7 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be a Azure Portal �
 
 1. Kattintson a felső **Mentés** gombra.
 
-![Storage-fiók szintjeinek módosítása](media/storage-tiers/account-tier.png)
+![Az alapértelmezett fiók szintjeinek módosítása Azure Portal](media/storage-tiers/account-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Az alábbi PowerShell-parancsfájl használatával módosíthatja a fiók szintjét. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. Kattintson a **Save (Mentés** ) gombra a lap alján.
 
-![Storage-fiók szintjeinek módosítása](media/storage-tiers/blob-access-tier.png)
+![BLOB-rétegek módosítása Azure Portal](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 A blob-rétegek módosításához a következő PowerShell-parancsfájl használható. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$containerName` változót a tároló nevével kell inicializálni. A `$blobName` változót inicializálni kell a blob nevével. 
@@ -219,6 +219,8 @@ Az összes Storage-fiók díjszabási modellt használ az egyes Blobok szintjét
 - **Georeplikációs adatátviteli költségek**: Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
 - **Kimenő adatátviteli költségek**: A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
 - **A hozzáférési réteg módosítása**: a fiók hozzáférési rétegének módosítása azt eredményezi, hogy a hozzáférési rétegben lévő _késleltetett_ Blobok a fiókban tárolt, explicit szintű készlettel nem rendelkező Blobok esetében változnak. Az egyetlen blob hozzáférési szintjének módosításával kapcsolatos információkért tekintse meg a [blob szintű](#blob-level-tiering-billing)szinteken alapuló számlázást ismertető témakört.
+
+    A blob hozzáférési rétegének módosítása a verziószámozás engedélyezésekor, vagy ha a blob rendelkezik pillanatképekkel, további díjakat eredményezhet. Ha többet szeretne megtudni arról, hogyan történik a számlázás, amikor a blob verziószámozása engedélyezve van, és Ön kifejezetten módosítja a blob szintjét, tekintse meg a [díjszabást és a számlázást](versioning-overview.md#pricing-and-billing) a blob verziószámozási dokumentációjában. Ha további információra van szüksége arról, hogyan történik a számlázás, amikor egy blob pillanatképekkel rendelkezik, és Ön kifejezetten módosítja a blob szintjét, tekintse meg a [díjszabást és a számlázást](snapshots-overview.md#pricing-and-billing) a blob-Pillanatképek dokumentációjában.
 
 > [!NOTE]
 > A blokkos Blobok díjszabásával kapcsolatos további információkért lásd az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/blobs/) ismertető oldalt. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
