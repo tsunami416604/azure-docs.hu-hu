@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cda22c63a70c5121e6a6972c66bdc0a4bb5158fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089464"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260356"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz
 
@@ -27,9 +27,6 @@ Memória | 2 GB/szolgáltatási példány | 8 GB/szolgáltatási példány
 Azure Spring Cloud Service instances régiónként/előfizetés | 10 | 10
 Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 25 | 500
 Tartós kötetek | 1 GB/app x 10 alkalmazás | 50 GB/app x 10 alkalmazás
-
-
-Az előzetes verzió ideje alatt az Azure Spring Cloud csak egy szolgáltatási szintet kínál. Ha eléri a korlátot, egy 400-as hibaüzenet jelenik meg: "a kvóta meghaladja az *előfizetésre* vonatkozó előfizetési korlátot a régió *régiójában, ahol az Azure Spring Cloud Service létrejött*.
 
 ## <a name="next-steps"></a>További lépések
 

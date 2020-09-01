@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 706e4762fa81ad4f290ded89387fc3ea9ab5bb1c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020575"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262090"
 ---
-# <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel 
+# <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -134,7 +136,7 @@ class Program
     }
  ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már [csatlakozhat az AMS API-hoz](media-services-use-aad-auth-to-access-ams-api.md) , és megkezdheti a [fejlesztést](media-services-dotnet-get-started.md).
 

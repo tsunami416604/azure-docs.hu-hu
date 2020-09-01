@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1fcb935a7a07629ba3d7424a39f6c8542628a842
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df28078363162496672232ecdebe02fc99ce50f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084619"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261051"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady-sablon áttekintése
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Azure Media Services mostantól biztosít egy szolgáltatást a PlayReady-licencek kézbesítéséhez. Ha a lejátszó (például a Silverlight) megpróbálja lejátszani a PlayReady-védelemmel ellátott tartalmat, a rendszer egy kérelmet küld a licenc kézbesítési szolgáltatásnak a licenc beszerzéséhez. Ha a licencelési szolgáltatás jóváhagyja a kérelmet, az az ügyfélnek eljuttatott licencet adja ki, és a megadott tartalom visszafejtésére és lejátszására szolgál.
 
 A Media Services olyan API-kat is biztosít, amelyek segítségével konfigurálhatja a PlayReady-licenceket. A licencek tartalmazzák azokat a jogokat és korlátozásokat, amelyeket a PlayReady Digital Rights Management (DRM) futtatókörnyezete kényszerít, ha a felhasználó a védett tartalom lejátszását kísérli meg.

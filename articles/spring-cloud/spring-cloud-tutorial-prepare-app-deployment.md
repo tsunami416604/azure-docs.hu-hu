@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ff797f8b6fd375a940f77b4e0400bcb7a74450c4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179759"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260323"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -41,8 +41,8 @@ Az Azure Spring Cloud csak Spring boot-alkalmazásokat támogat, vagy a Spring b
 Spring boot-verzió | Tavaszi felhő verziója
 ---|---
 2.1 | Greenwich. RELEASE
-2,2 | Hoxton. RELEASE
-2.3 | Hoxton. SR5
+2,2 | Hoxton. SR8
+2.3 | Hoxton. SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>A Spring boot 2,1-es verziójának függőségei
 
@@ -62,7 +62,7 @@ A Spring boot 2,1-es verziójában adja hozzá a következő függőségeket az 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -88,7 +88,7 @@ A Spring boot 2,2-es verziójában adja hozzá a következő függőségeket az 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -113,7 +113,7 @@ A Spring boot 2,3-es verziójában adja hozzá a következő függőségeket az 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -122,49 +122,23 @@ A Spring boot 2,3-es verziójában adja hozzá a következő függőségeket az 
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud ügyfél-függőség
 
-Az Azure Spring Cloud üzemelteti és kezeli a Spring Cloud-összetevőket. Az összetevők közé tartoznak a Spring Cloud Service Registry és a Spring Cloud config Server. Vegye fel az Azure Spring Cloud ügyféloldali kódtárat a függőségeibe, hogy lehetővé váljon a kommunikáció az Azure Spring Cloud Service-példánnyal.
+Az Azure Spring Cloud üzemelteti és kezeli a Spring Cloud-összetevőket. Az összetevők közé tartoznak a Spring Cloud Service Registry és a Spring Cloud config Server. A Spring boot 2,2 vagy a 2,3 használatát javasoljuk. A Spring boot 2,1 esetében az Azure Spring Cloud ügyféloldali kódtárat is meg kell adnia a függőségekben, hogy lehetővé váljon a kommunikáció az Azure Spring Cloud Service-példánnyal.
 
 A következő táblázat felsorolja a Spring boot és Spring Cloud-t használó alkalmazás megfelelő Azure Spring Cloud-verzióit.
 
-Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-verzió
+Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-ügyfél kezdő verziója
 ---|---|---
-2.1 | Greenwich. RELEASE | 2.1
-2,2 | Hoxton. RELEASE | 2,2
-2.3 | Hoxton. SR5 | 2.3
+2.1 | Greenwich. RELEASE | 2.1.2
+2,2 | Hoxton. SR8 | Nem szükséges
+2.3 | Hoxton. SR8 | Nem szükséges
 
-Adja meg a következő függőségek egyikét a pom.xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Az Azure Spring Cloud 2,1-es verziójának függősége
-
-A Spring boot 2,1-es verziójában adja hozzá a következő függőséget az alkalmazás POM-fájljához.
+Ha a Spring boot 2,1-et használja, vegye fel a következő dependenciy a pom.xml-fájlba.
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Az Azure Spring Cloud 2,2-es verziójának függősége
-
-A Spring boot 2,2-es verziójában adja hozzá a következő függőséget az alkalmazás POM-fájljához.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-A Spring boot 2,3-es verziójában adja hozzá a következő függőséget az alkalmazás POM-fájljához.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

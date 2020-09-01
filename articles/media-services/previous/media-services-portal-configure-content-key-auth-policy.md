@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0218c24637b9b49972e93b8dd53e5970c9ab89d5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084585"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260900"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +36,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a tartalom-kulcs engedélyezési h�
 
 Ha egy lejátszó egy dinamikusan titkosított adatfolyamot kér, Media Services a konfigurált kulccsal titkosítja a tartalmat AES vagy DRM titkosítás használatával. A stream visszafejtéséhez a lejátszó lekéri a kulcsot a kulcstovábbító szolgáltatástól. Annak megállapításához, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
-Ha több tartalmi kulcsot szeretne használni, vagy egy kulcs/licenc kézbesítési szolgáltatás URL-címét szeretné megadni a Media Services Key Delivery Service-ben kívül, használja a Media Services .NET SDK-t vagy a REST API-kat. További információ:
+Ha több tartalmi kulcsot szeretne használni, vagy egy kulcs/licenc kézbesítési szolgáltatás URL-címét szeretné megadni a Media Services Key Delivery Service-ben kívül, használja a Media Services .NET SDK-t vagy a REST API-kat. További információkért lásd:
 
 * [A tartalmi kulcs engedélyezési házirendjének konfigurálása a Media Services .NET SDK használatával](media-services-dotnet-configure-content-key-auth-policy.md)
 * [A tartalmi kulcs engedélyezési házirendjének konfigurálása a Media Services használatával REST API](media-services-rest-configure-content-key-auth-policy.md)

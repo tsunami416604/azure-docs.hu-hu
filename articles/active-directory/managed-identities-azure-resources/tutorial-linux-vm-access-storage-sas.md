@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ed1ff7f620b45bfc4e7ca4065bce014a28994b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 04e265ea0128411eb483c84b1317051089a0550a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005071"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260237"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage elérése SAS-hitelesítő adatok használatával Linux VM-beli rendszer által hozzárendelt identitással
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan használható egy rendszer által hozzárendelt felügyelt identitás Linux rendszerű virtuális gépen (VM) a közös hozzáférésű jogosultságkódú (SAS-) hitelesítő adatok lekérésére. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
+Ez az oktatóanyag bemutatja, hogyan használható egy rendszer által hozzárendelt felügyelt identitás Linux rendszerű virtuális gépen (VM) a közös hozzáférésű jogosultságkódú (SAS-) hitelesítő adatok lekérésére. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
 
 > [!NOTE]
 > Az oktatóanyagban létrehozott SAS-kulcs nem lesz korlátozva/kötve a virtuális géphez.  
@@ -53,7 +53,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt
 3. Adjon meg egy nevet a tárfiók számára a **Név** mezőben, amelyet később használ majd.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -86,7 +86,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A VM 
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
-A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/install_guide) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
+A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](/windows/wsl/install-win10) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
 
 1. Az Azure Portalon lépjen a **Virtuális gépek** felületre, keresse meg a Linux virtuális gépet, majd az **Áttekintés** lap tetején kattintson a **Csatlakozás** gombra. Másolja ki sztringet a virtuális géphez való csatlakozáshoz. 
 2. Csatlakozzon a virtuális géphez az SSH-ügyfél használatával.  
@@ -152,7 +152,7 @@ Hozzon létre egy példablobfájlt, amelyet feltölthet a Blob Storage-tárolób
 echo "This is a test file." > test.txt
 ```
 
-Ezután hitelesítsen az `az storage` CLI-paranccsal a SAS-hitelesítő adatok használatával, és töltse fel a fájlt a blobtárolóba. Ehhez a lépéshez [telepítenie kell az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) a virtuális gépen, ha eddig még nem tette volna meg.
+Ezután hitelesítsen az `az storage` CLI-paranccsal a SAS-hitelesítő adatok használatával, és töltse fel a fájlt a blobtárolóba. Ehhez a lépéshez [telepítenie kell az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) a virtuális gépen, ha eddig még nem tette volna meg.
 
 ```azurecli-interactive
  az storage blob upload --container-name 
@@ -226,9 +226,9 @@ Válasz:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használhat Linux VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Storage SAS-hitelesítő adatok használatával való eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
 
 > [!div class="nextstepaction"]
->[Közös hozzáférésű jogosultságkódok (SAS) használata](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+>[Közös hozzáférésű jogosultságkódok (SAS) használata](../../storage/common/storage-sas-overview.md)

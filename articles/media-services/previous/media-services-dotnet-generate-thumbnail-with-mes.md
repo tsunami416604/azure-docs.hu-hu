@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22a79f75fa795226e45e54947f410db4c2a57a7c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3988bbb46782f6dbc703823135f5bda4e2539bd8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020660"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262260"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával 
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 A Media Encoder Standard használatával létrehozhat egy vagy több miniatűrt a bemeneti videóból [JPEG](https://en.wikipedia.org/wiki/JPEG), [png](https://en.wikipedia.org/wiki/Portable_Network_Graphics)vagy [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formátumú képfájlformátumban. Küldhet olyan feladatokat, amelyek csak képeket hoznak létre, vagy kombinálhatja a miniatűrt a kódolással. Ebből a cikkből megtudhatja, hogyan használhatók az ilyen forgatókönyvekhez tartozó XML-és JSON-alapú miniatűr-készletek. A cikk végén található egy [mintakód](#code_sample) , amely bemutatja, hogyan használhatja a Media Services .net SDK-t a kódolási feladat végrehajtásához.
 
@@ -565,7 +567,7 @@ A következő szempontokat kell figyelembe venni:
   * Alapértékek: Start: {Best}
 * A kimeneti formátumot explicit módon meg kell adni az egyes képformátumokhoz: jpg/PNG/BmpFormat. Ha jelen van, a MES megfelel a JpgVideo JpgFormat, és így tovább. A OutputFormat egy új rendszerkép-kodek specifikus makrót ({index}) vezet be, amely a képkimeneti formátumok esetében (egyszer és egyszer) is szerepelnie kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [folyamat előrehaladását](media-services-check-job-progress.md) a kódolási feladatok függőben állapotában tekintheti meg.
 

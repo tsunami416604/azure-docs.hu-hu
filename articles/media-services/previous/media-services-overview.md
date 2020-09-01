@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 78fa6b343a01e96c000b6c64a55d5fdf1f0284f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084653"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261155"
 ---
-# <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
+# <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [3\. verzió](../latest/media-services-overview.md)
@@ -78,7 +80,7 @@ A Media Services-megoldások létrehozásához a következőket használhatja:
 
 Az **Azure-kódminták** katalógusban számos kódmintát talál: [Azure Media Services-kódminták](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concepts.md)
 

@@ -3,7 +3,7 @@ title: Azure Media Services v3 Közösség áttekintése
 description: Ez a Azure Media Services közösségi oldal a különböző módszereket tárgyalja, amelyekkel kérdéseket tehet fel, visszajelzést adhat, és frissítéseket kaphat a Media Servicesról.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/22/2020
-ms.author: juliako
-ms.openlocfilehash: 9c47488915997f054487d8343c7c3c032135dcdb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 5c54c3702dabf254e50068aadeac0992e3a20cb2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833079"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262464"
 ---
-# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 Közösség  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 Közösség
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]  
 
 Ez a Azure Media Services közösségi oldal a különböző módszereket tárgyalja, amelyekkel kérdéseket tehet fel, visszajelzést adhat, és frissítéseket kaphat a Media Servicesról.
 

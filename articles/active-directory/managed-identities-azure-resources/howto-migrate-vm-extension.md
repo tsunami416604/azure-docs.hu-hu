@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 67e7f8890923dec2dca369b6a57399232c0198cc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018376"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260186"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>A virtuális gépi felügyelt identitások bővítmény használatának leállítása és az Azure-Instance Metadata Service használatának megkezdése
 
@@ -35,7 +35,7 @@ A következő szakaszban ismertetett számos korlátozás miatt a felügyelt ide
 
 ### <a name="provision-the-extension"></a>A bővítmény kiépítése 
 
-Ha a virtuális gépet vagy virtuálisgép-méretezési csoportját felügyelt identitásra konfigurálja, dönthet úgy, hogy kiépíti az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásait a `-Type` [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmag paraméterének használatával. A (z) vagy a (z) vagy a (z `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` ) paramétert a virtuális gép típusától függően adhatja át, és a paraméter használatával nevezheti el `-Name` . A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
+Ha a virtuális gépet vagy virtuálisgép-méretezési csoportját felügyelt identitásra konfigurálja, dönthet úgy, hogy kiépíti az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásait a `-Type` [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmag paraméterének használatával. A (z) vagy a (z) vagy a (z `ManagedIdentityExtensionForWindows` `ManagedIdentityExtensionForLinux` ) paramétert a virtuális gép típusától függően adhatja át, és a paraméter használatával nevezheti el `-Name` . A `-Settings` paraméter határozza meg az OAuth jogkivonat-végpont által a jogkivonat-beszerzéshez használt portot:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ A virtuálisgép-méretezési csoport kiterjesztésének Azure Resource Manager 
 A virtuálisgép-bővítmény kiépítés sikertelen lehet a DNS-keresési hibák miatt. Ha ez történik, indítsa újra a virtuális gépet, és próbálkozzon újra. 
 
 ### <a name="remove-the-extension"></a>A bővítmény eltávolítása 
-A bővítmény eltávolításához használja a `-n ManagedIdentityExtensionForWindows` (z) vagy a `-n ManagedIdentityExtensionForLinux` kapcsolót (a virtuális gép típusától függően) az [az VM Extension delete](https://docs.microsoft.com/cli/azure/vm/)vagy az [vmss Extension delete](https://docs.microsoft.com/cli/azure/vmss) paranccsal a virtuálisgép-méretezési csoportokhoz az Azure CLI vagy `Remove-AzVMExtension` a PowerShell használatával:
+A bővítmény eltávolításához használja a `-n ManagedIdentityExtensionForWindows` (z) vagy a `-n ManagedIdentityExtensionForLinux` kapcsolót (a virtuális gép típusától függően) az [az VM Extension delete](/cli/azure/vm/)vagy az [vmss Extension delete](/cli/azure/vmss) paranccsal a virtuálisgép-méretezési csoportokhoz az Azure CLI vagy `Remove-AzVMExtension` a PowerShell használatával:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ A virtuálisgép-bővítmény használatának számos jelentős korlátozása va
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás
 
-Az [Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) egy Rest-végpont, amely információt nyújt a virtuális gépek kezeléséhez és konfigurálásához használható virtuálisgép-példányok futtatásáról. A végpont egy jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` , amelyet csak a virtuális gépről lehet elérni.
+Az [Azure instance metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) egy Rest-végpont, amely információt nyújt a virtuális gépek kezeléséhez és konfigurálásához használható virtuálisgép-példányok futtatásáról. A végpont egy jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` , amelyet csak a virtuális gépről lehet elérni.
 
 Az Azure IMDS használatának számos előnye van a jogkivonatok igényléséhez. 
 
@@ -212,4 +212,4 @@ Ezen okok miatt az Azure IMDS szolgáltatás a tokenek igénylésének defacto, 
 ## <a name="next-steps"></a>További lépések
 
 * [Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez](how-to-use-vm-token.md)
-* [Azure Instance Metadata szolgáltatás](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure Instance Metadata szolgáltatás](../../virtual-machines/windows/instance-metadata-service.md)

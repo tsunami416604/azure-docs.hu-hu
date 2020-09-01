@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag a Azure Portal GPU-val való kapcsolódáshoz, konfiguráláshoz, aktiváláshoz Azure Stack Edge-eszközhöz | Microsoft Docs
-description: Az Azure Stack Edge üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
+description: Az Azure Stack Edge GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz csatlakoztatását, beállítását és aktiválását.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 90f9fcc7bbac3164b4e620674bd64d026c11badb
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181833"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262719"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>Oktatóanyag: Kapcsolódás Azure Stack Edge-hez GPU használatával
 

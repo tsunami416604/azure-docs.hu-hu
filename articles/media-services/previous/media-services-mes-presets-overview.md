@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038442"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261475"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Minta-előállítók a Media Encoder Standardhoz (MES)
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **Media Encoder standard** a kódolási feladatok létrehozásakor használható előre definiált rendszerkódolási beállításkészletek készletét határozza meg. Javasoljuk, hogy az "adaptív streaming" készletet használja, ha egy videót kíván kódolni Media Services használatával történő folyamatos átvitelhez. Ha megadja ezt az előre beállított értéket, Media Encoder Standard automatikusan [létrehoz egy bitráta-létrát](media-services-autogen-bitrate-ladder-with-mes.md). 
 

@@ -1,18 +1,18 @@
 ---
 title: Gyorsútmutató – Az első Azure Spring Cloud-alkalmazás üzembe helyezése
-description: Ebben a rövid útmutatóban egy Spring Cloud Hello-alkalmazást helyezünk üzembe az Azure Spring Cloud-on.
+description: Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást helyezünk üzembe az Azure Spring Cloud-on.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6a7a489367aa7348a3449a72de6889476e5d38db
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 245516e0a54865d3a6097c4bb566b850cb738ad6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177599"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260550"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -37,7 +37,7 @@ Az oktatóanyag elvégzéséhez:
 * Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , és az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
 * Választható [A Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és a [Bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) telepítése
 
-## <a name="generate-a-spring-cloud-hello-project"></a>Spring Cloud Hello-projekt létrehozása
+## <a name="generate-a-spring-cloud-project"></a>Spring Cloud-projekt létrehozása
 
 Kezdje a [Spring inicializáló](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) használatával egy olyan minta projekt létrehozásához, amely az Azure Spring Cloud ajánlott függőségeivel rendelkezik. Az alábbi képen a projekt inicializálási beállítása látható.
 ```url
@@ -125,7 +125,7 @@ Az alábbi eljárás az Azure CLI használatával hozza létre és telepíti az 
 
 Az alábbi eljárás az Azure Spring Cloud IntelliJ beépülő moduljának használatával helyezi üzembe a minta alkalmazást a IntelliJ-ÖTLETben.  
 
-### <a name="import-hello-project"></a>Hello-projekt importálása
+### <a name="import-project"></a>Projekt importálása
 
 1. Nyissa meg az IntelliJ **üdvözlő** párbeszédpanelt, és válassza a **Projekt importálása** elemet az Importálás varázsló megnyitásához.
 1. Válassza a `hellospring` mappa lehetőséget.

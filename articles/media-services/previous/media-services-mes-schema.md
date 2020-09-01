@@ -13,39 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901435"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261512"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-séma
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Ez a cikk az XML-séma azon elemeit és típusait ismerteti, amelyeken a [Media Encoder standard-készletek](media-services-mes-presets-overview.md) alapulnak. A cikk magyarázatot ad az elemekről és azok érvényes értékeiről.  
 
-## <a name="preset-root-element"></a><a name="Preset"></a>Beállításkészlet (gyökérelem)
+## <a name="preset-root-element"></a><a name="Preset"></a> Beállításkészlet (gyökérelem)
 Definiál egy kódolási beállításkészletet.  
 
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Encoding** |[Encoding](media-services-mes-schema.md#Encoding) |A gyökérelem azt jelzi, hogy a bemeneti forrásokat kódolni kell. |
+| **Kódolás** |[Kódolás](media-services-mes-schema.md#Encoding) |A gyökérelem azt jelzi, hogy a bemeneti forrásokat kódolni kell. |
 | **Kimenetek** |[Kimenetek](media-services-mes-schema.md#Output) |A kívánt kimeneti fájlok gyűjteménye. |
 | **StretchMode**<br/>minOccurs = "0"<br/>alapértelmezett = "AutoSize|xs: karakterlánc|A kimeneti képkeret méretének, kitöltésének, képpontjának vagy megjelenítési méretarányának szabályozása. A **StretchMode** az alábbi értékek egyike lehet: **none**, **AutoSize** (alapértelmezett) vagy **Automatikus méretezés**.<br/><br/>**Nincs**: szigorúan kövesse a kimeneti felbontást (például az előre beállított **szélességet** és **magasságot** ) anélkül, hogy figyelembe kellene venni a bemeneti videó képpont méretarányát vagy megjelenítési méretarányát. Ajánlott olyan forgatókönyvekben, mint például a [növénytermesztés](media-services-crop-video.md), ahol a kimeneti videó más oldalarányú, mint a bemenet. <br/><br/>Automatikus **méret**: a kimenet felbontása az előre megadott ablakban (szélesség * magasság) belül elfér. A kódoló azonban a szögletes (1:1) képpont oldalarányú kimeneti videót hoz létre. Ezért a kimeneti szélesség vagy a kimeneti magasság felülbírálható annak érdekében, hogy megfeleljen a bemenet megjelenítési méretarányának, kitöltés nélkül. Ha például a bemenet 1920 × 1080, és a kódolási beállításkészlet 1280x1280 kér, akkor a rendszer felülbírálja az előre beállított magasságot, a kimenet pedig a 1280x720-on, amely a 16:9-as bemeneti méretarányt tartja fenn. <br/><br/>**Automatikus méretezés**: ha szükséges, a kimeneti videót (vagy a levélszekrény vagy a pillarbox) adja meg a kívánt kimeneti felbontás tiszteletben tartásához, miközben a kimenetben lévő aktív videó régiójának a bemenettel megegyező oldalaránya van. Tegyük fel például, hogy a bemenet 1920 × 1080, és a kódolási beállításkészlet kéri a 1280x1280. Ezt követően a kimeneti videó a következő helyen lesz: 1280x1280, de tartalmaz egy "aktív videó" belső 1280x720 téglalapot, amelynek oldalaránya 16:9, és a levélszekrény-régiók 280 képpont magas a tetején és az alján. Egy másik példa, ha a bemenet 1440x1080, és a kódolási beállításkészlet kéri a 1280x720, akkor a kimenet a következő helyen található: 1280x720, amely a 960x720 belső téglalapját tartalmazza a 4:3 160-as oldalaránynál 
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **Verzió**<br/><br/> Kötelező |**xs: decimális** |Az előre definiált verzió. A következő korlátozások érvényesek: XS: fractionDigits Value = "1" és XS: minInclusive Value = "1", például **version = "1.0"**. |
 
-## <a name="encoding"></a><a name="Encoding"></a>Kódolási
+## <a name="encoding"></a><a name="Encoding"></a> Kódolási
 A következő elemek sorát tartalmazza:  
 
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |A videó H. 264 kódolásának beállításai. |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |A hang AAC-kódolásának beállításai. |
@@ -53,10 +56,10 @@ A következő elemek sorát tartalmazza:
 | **PngImage** |[PngImage](media-services-mes-schema.md#PngImage) |A PNG-rendszerkép beállításai. |
 | **JpgImage** |[JpgImage](media-services-mes-schema.md#JpgImage) |A jpg-rendszerkép beállításai. |
 
-## <a name="h264video"></a><a name="H264Video"></a>H264Video
+## <a name="h264video"></a><a name="H264Video"></a> H264Video
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs = "0" |**xs: logikai** |Jelenleg csak egymenetes kódolás támogatott. |
 | **KeyFrameInterval**<br/><br/> minOccurs = "0"<br/><br/> **default = "00:00:02"** |**xs: idő** |Meghatározza a rögzített térközt a IDR-keretek között másodpercben. Más néven a GOP időtartama. Tekintse meg a **SceneChangeDetection** , amely azt szabályozza, hogy a kódoló el tudja-e térni ettől az értéktől. |
@@ -67,21 +70,21 @@ A következő elemek sorát tartalmazza:
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Állapot** |**xs: karakterlánc** | Ha a bemenet nem tartalmaz videót, érdemes lehet kényszeríteni a kódolót, hogy beillesszen egy monokróm videó követését. Ehhez használja a Condition = "InsertBlackIfNoVideoBottomLayerOnly" (a videó csak a legkisebb bitrátával való beszúrásához) vagy a Condition = "InsertBlackIfNoVideo" (videó beszúrásához az összes kimeneti bitrátánál) lehetőséget. További információkért tekintse meg [ezt](media-services-advanced-encoding-with-mes.md#no_video) a cikket.|
+| **Feltétel** |**xs: karakterlánc** | Ha a bemenet nem tartalmaz videót, érdemes lehet kényszeríteni a kódolót, hogy beillesszen egy monokróm videó követését. Ehhez használja a Condition = "InsertBlackIfNoVideoBottomLayerOnly" (a videó csak a legkisebb bitrátával való beszúrásához) vagy a Condition = "InsertBlackIfNoVideo" (videó beszúrásához az összes kimeneti bitrátánál) lehetőséget. További információkért tekintse meg [ezt](media-services-advanced-encoding-with-mes.md#no_video) a cikket.|
 
-## <a name="h264layers"></a><a name="H264Layers"></a>H264Layers
+## <a name="h264layers"></a><a name="H264Layers"></a> H264Layers
 
 Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak hangot tartalmaz, és nincs videó, a kimeneti eszköz csak hangadatokkal rendelkező fájlokat tartalmaz. Előfordulhat, hogy egyes játékosok nem tudják kezelni az ilyen kimeneti adatfolyamokat. A H264Video's **InsertBlackIfNoVideo** attribútum beállításával kényszerítheti a kódolót, hogy adjon hozzá egy video tracket az adott forgatókönyv kimenetéhez. További információkért tekintse meg [ezt](media-services-advanced-encoding-with-mes.md#no_video) a cikket.
               
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs = "0" maxOccurs = "nem kötött" |[H264Layer](media-services-mes-schema.md#H264Layer) |H264-rétegek gyűjteménye. |
 
-## <a name="h264layer"></a><a name="H264Layer"></a>H264Layer
+## <a name="h264layer"></a><a name="H264Layer"></a> H264Layer
 > [!NOTE]
 > A videó korlátai a [H264-szintek](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC#Levels) táblázatban leírt értékek alapján érhetők el.  
 > 
@@ -89,15 +92,15 @@ Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak han
 
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "automatikus" |**xs: karakterlánc** |A következő **XS: string** értékek egyike lehet: **automatikus**, **Alapterv**, **fő**, **magas**. |
 | **Szintű**<br/><br/> minOccurs = "0"<br/><br/> default = "automatikus" |**xs: karakterlánc** | |
 | **Sávszélességű**<br/><br/> minOccurs = "0" |**xs: int** |A videó réteghez használt, kbps-ben megadott bitrátát adja meg. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**xs: int** |A videó réteghez használt maximális sebesség kbps-ben megadva. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> default = "00:00:05" |**xs: idő** |A videó pufferének hossza |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének szélessége képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie. |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének magassága képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie.|
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének szélessége képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie. |
+| **Magasság**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének magassága képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie.|
 | **BFrames**<br/><br/> minOccurs = "0" |**xs: int** |A (B) keretek száma a hivatkozási keretek között. |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> alapértelmezett = "3" |**xs: int** |A GOP-ban található hivatkozási keretek száma. |
 | **EntropyMode**<br/><br/> minOccurs = "0"<br/><br/> default = "CABAC" |**xs: karakterlánc** |A következő értékek egyike lehet: **CABAC** és **Cavlc**. |
@@ -105,35 +108,35 @@ Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak han
 | **AdaptiveBFrame**<br/><br/> minOccurs = "0" |**xs: logikai** |Másolás az Azure Media Encoderből |
 | **Szeletek**<br/><br/> minOccurs = "0"<br/><br/> alapértelmezett = "0" |**xs: int** |Meghatározza, hogy egy keret hány szeletre van osztva. Ajánlott az alapértelmezett használata. |
 
-## <a name="aacaudio"></a><a name="AACAudio"></a>AACAudio
+## <a name="aacaudio"></a><a name="AACAudio"></a> AACAudio
  A következő elemek és csoportok sorozatot tartalmazza.  
 
  Az AAC-vel kapcsolatos további információkért lásd: [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding).  
 
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: karakterlánc** |A következő értékek egyike lehet: **AACLC**, **HEAACV1**vagy **HEAACV2**. |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Állapot** |**xs: karakterlánc** |Ha úgy szeretné kényszeríteni a kódolót, hogy olyan objektumot hozzon létre, amely csendes hangsávot tartalmaz, ha a bemenet nem rendelkezik hanggal, adja meg a "InsertSilenceIfNoAudio" értéket.<br/><br/> Alapértelmezés szerint ha olyan bemenetet küld a kódolónak, amely csak videót tartalmaz, és nincs hang, akkor a kimeneti eszköz csak videó adatokat tartalmazó fájlokat tartalmaz. Előfordulhat, hogy egyes játékosok nem tudják kezelni az ilyen kimeneti adatfolyamokat. Ezzel a beállítással kényszerítheti a kódolót, hogy egy csendes hangsávot adjon hozzá a forgatókönyv kimenetéhez. |
+| **Feltétel** |**xs: karakterlánc** |Ha úgy szeretné kényszeríteni a kódolót, hogy olyan objektumot hozzon létre, amely csendes hangsávot tartalmaz, ha a bemenet nem rendelkezik hanggal, adja meg a "InsertSilenceIfNoAudio" értéket.<br/><br/> Alapértelmezés szerint ha olyan bemenetet küld a kódolónak, amely csak videót tartalmaz, és nincs hang, akkor a kimeneti eszköz csak videó adatokat tartalmazó fájlokat tartalmaz. Előfordulhat, hogy egyes játékosok nem tudják kezelni az ilyen kimeneti adatfolyamokat. Ezzel a beállítással kényszerítheti a kódolót, hogy egy csendes hangsávot adjon hozzá a forgatókönyv kimenetéhez. |
 
 ### <a name="groups"></a>Csoportok
 
-| Hivatkozás | Description |
+| Referencia | Leírás |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs = "0" |Tekintse meg a [AudioGroup](media-services-mes-schema.md#AudioGroup) leírását, amelyből megtudhatja, hogy a megfelelő számú csatornát, mintavételi sebességet és átviteli sebességet szeretné-e beállítani az egyes profilokhoz. |
 
-## <a name="audiogroup"></a><a name="AudioGroup"></a>AudioGroup
+## <a name="audiogroup"></a><a name="AudioGroup"></a> AudioGroup
 Az egyes profilokban érvényes értékekkel kapcsolatos részletekért tekintse meg az alábbi "hangkodek részletei" című táblázatot.  
 
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **Csatornák**<br/><br/> minOccurs = "0" |**xs: int** |A kódolt Hangcsatornák száma. A következő érvényes beállítások érhetők el: 1, 2, 5, 6, 8.<br/><br/> Alapértelmezett: 2. |
 | **SamplingRate**<br/><br/> minOccurs = "0" |**xs: int** |A hangmintavételezési sebesség (Hz) megadva. |
@@ -147,24 +150,24 @@ Hangkodek|Részletek
 **HEAACV1** |1:<br/><br/> -22050: bitráta = 8<br/><br/> -24000:8 &lt; = bitráta &lt; = 10<br/><br/> -32000:12 &lt; = bitráta &lt; = 64<br/><br/> -44100:20 &lt; = bitráta &lt; = 64<br/><br/> -48000:20 &lt; = bitráta &lt; = 64<br/><br/> -88200: bitráta = 64<br/><br/> 2:<br/><br/> -32000:16 &lt; = bitráta &lt; = 128<br/><br/> -44100:16 &lt; = bitráta &lt; = 128<br/><br/> -48000:16 &lt; = bitráta &lt; = 128<br/><br/> -88200:96 &lt; = bitráta &lt; = 128<br/><br/> -96000:96 &lt; = bitráta &lt; = 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt; = bitráta &lt; = 320<br/><br/> -44100:64 &lt; = bitráta &lt; = 320<br/><br/> -48000:64 &lt; = bitráta &lt; = 320<br/><br/> -88200:256 &lt; = bitráta &lt; = 320<br/><br/> -96000:256 &lt; = bitráta &lt; = 320<br/><br/> 8:<br/><br/> -32000:96 &lt; = bitráta &lt; = 448<br/><br/> -44100:96 &lt; = bitráta &lt; = 448<br/><br/> -48000:96 &lt; = bitráta &lt; = 448<br/><br/> -88200:384 &lt; = bitráta &lt; = 448<br/><br/> -96000:384 &lt; = bitráta &lt; = 448  
 **HEAACV2** |2:<br/><br/> -22050:8 &lt; = bitráta &lt; = 10<br/><br/> -24000:8 &lt; = bitráta &lt; = 10<br/><br/> -32000:12 &lt; = bitráta &lt; = 64<br/><br/> -44100:20 &lt; = bitráta &lt; = 64<br/><br/> -48000:20 &lt; = bitráta &lt; = 64<br/><br/> -88200:64 &lt; = bitráta &lt; = 64  
   
-## <a name="clip"></a><a name="Clip"></a>Klip
+## <a name="clip"></a><a name="Clip"></a> Klip
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **StartTime** |**xs: időtartam** |Megadja a bemutató kezdő időpontját. A kezdő időpont értékének meg kell egyeznie a bemeneti videó abszolút időbélyegzővel. Ha például a bemeneti videó első képkockája 12:00:10.000, akkor a kezdő időpontnak legalább 12:00:10.000 vagy nagyobbnak kell lennie. |
 | **Időtartam** |**xs: időtartam** |Meghatározza a bemutató időtartamát (például egy átfedés megjelenését a videóban). |
 
-## <a name="output"></a><a name="Output"></a>Kimeneti
+## <a name="output"></a><a name="Output"></a> Kimeneti
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **FileName** |**xs: karakterlánc** |A kimeneti fájl neve.<br/><br/> A következő táblázatban ismertetett makrókat használhatja a kimeneti fájlnevek létrehozásához. Például:<br/><br/> **"Outputs": [{"FileName": "{basename}*{felbontás}*{bitráta}. mp4", "Format": {"type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makrók
 
-| Makró | Description |
+| Makró | Leírás |
 | --- | --- |
 | **{Basename}** |Ha a VoD-kódolást végzi, a {basename} a bemeneti eszköz elsődleges fájljának AssetFile.Name tulajdonságának első 32 karaktere.<br/><br/> Ha a bemeneti eszköz egy élő Archívum, akkor a {basename} a kiszolgálói jegyzékfájl trackName attribútumaiból származik. Ha a TopBitrate használatával küld el egy alklip feladatot, a következő módon: "<VideoStream \> TopBitrate</videostream \> ", és a kimeneti fájl tartalmaz videót, akkor a {basename} a trackName első 32 karaktere a legmagasabb sávszélességgel.<br/><br/> Ha ehelyett beküld egy alklip feladatot az összes bemeneti bitráta használatával (például "<VideoStream \> * </videostream \> "), és a kimeneti fájl tartalmazza a videót, akkor a {basename} a megfelelő videó réteg trackName első 32 karaktere. |
 | **Codec** |Leképezi a "H264"-t a videóhoz és az "AAC" hanghoz. |
@@ -175,17 +178,17 @@ Hangkodek|Részletek
 | **Kiterjesztés** |Örökli a kimeneti fájl "type" tulajdonságát. A kimeneti fájl nevének kiterjesztése a következő lehet: "MP4", "TS", "jpg", "png" vagy "BMP". |
 | **Index** |A miniatűr megadása kötelező. Csak egyszer kell jelen lennie. |
 
-## <a name="video-complex-type-inherits-from-codec"></a><a name="Video"></a>Videó (az összetett típus örökli a kodeket)
+## <a name="video-complex-type-inherits-from-codec"></a><a name="Video"></a> Videó (az összetett típus örökli a kodeket)
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **Kezdés** |**xs: karakterlánc** | |
 | **Lépés** |**xs: karakterlánc** | |
 | **Tartomány** |**xs: karakterlánc** | |
 | **PreserveResolutionAfterRotation** |**xs: logikai** |Részletes magyarázatot a következő szakaszban talál: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
-### <a name="preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a>PreserveResolutionAfterRotation
+### <a name="preserveresolutionafterrotation"></a><a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
 Azt javasoljuk, hogy a **PreserveResolutionAfterRotation** jelzőt a (z) százalékban kifejezett feloldási értékekkel együtt használja (width = "100%", height = "100%").  
 
 Alapértelmezés szerint a kódolási feloldási beállítások (szélesség, magasság) a Media Encoder Standard (MES) előkészletekben a 0 fokos rotációs videókat célozzák meg. Ha például a bemeneti videó nulla fokos rotációs 1280x720, akkor az alapértelmezett alapbeállítások biztosítják, hogy a kimenet ugyanazzal a megoldással legyen.  
@@ -200,97 +203,97 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
-## <a name="formatgroup-group"></a><a name="FormatGroup"></a>FormatGroup (csoport)
+## <a name="formatgroup-group"></a><a name="FormatGroup"></a> FormatGroup (csoport)
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
 | **JpgFormat** |**JpgFormat** | |
 
-## <a name="bmplayer"></a><a name="BmpLayer"></a>BmpLayer
+## <a name="bmplayer"></a><a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>Elem
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Állapot** |**xs: karakterlánc** | |
+| **Feltétel** |**xs: karakterlánc** | |
 
-## <a name="pnglayer"></a><a name="PngLayer"></a>PngLayer
+## <a name="pnglayer"></a><a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>Elem
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Állapot** |**xs: karakterlánc** | |
+| **Feltétel** |**xs: karakterlánc** | |
 
-## <a name="jpglayer"></a><a name="JpgLayer"></a>JpgLayer
+## <a name="jpglayer"></a><a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>Elem
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Width**<br/><br/> minOccurs = "0" |**xs: int** | |
-| **Height**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Minőség**<br/><br/> minOccurs = "0" |**xs: int** |Érvényes értékek: 1 (legrosszabb) – 100 (legjobb) |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
-| **Állapot** |**xs: karakterlánc** | |
+| **Feltétel** |**xs: karakterlánc** | |
 
-## <a name="pnglayers"></a><a name="PngLayers"></a>PngLayers
+## <a name="pnglayers"></a><a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs = "0" maxOccurs = "nem kötött" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
-## <a name="bmplayers"></a><a name="BmpLayers"></a>BmpLayers
+## <a name="bmplayers"></a><a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs = "0" maxOccurs = "nem kötött" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
-## <a name="jpglayers"></a><a name="JpgLayers"></a>JpgLayers
+## <a name="jpglayers"></a><a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs = "0" maxOccurs = "nem kötött" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
-## <a name="bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a>BmpImage (az összetett típus örökli a videóból)
+## <a name="bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a> BmpImage (az összetett típus örökli a videóból)
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png-rétegek |
 
-## <a name="jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a>JpgImage (az összetett típus örökli a videóból)
+## <a name="jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a> JpgImage (az összetett típus örökli a videóból)
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png-rétegek |
 
-## <a name="pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a>PngImage (az összetett típus örökli a videóból)
+## <a name="pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a> PngImage (az összetett típus örökli a videóból)
 ### <a name="elements"></a>Elemek
 
-| Name | Típus | Description |
+| Név | Típus | Leírás |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png-rétegek |
 

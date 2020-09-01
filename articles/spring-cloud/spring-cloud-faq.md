@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 73c0eeb718bb6ede8215ed3a87e246185a248ffd
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: fcd9f0759ae885199347cc23d93e8f1c00251387
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89054988"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260526"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -40,10 +40,10 @@ USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Áz
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Mik az Azure Spring Cloud ismert korlátai?
 
-Az előzetes verzióban az Azure Spring Cloud a következő ismert korlátozásokkal rendelkezik:
-
+Az Azure Spring Cloud a következő ismert korlátozásokkal rendelkezik:
+    
 * `spring.application.name` a rendszer felülbírálja az egyes alkalmazások létrehozásához használt alkalmazás nevét.
-* `server.port` az alapértelmezett érték a 80/443-es port. Ha bármilyen más értéket alkalmaz, a rendszer felülbírálja a 80/443-re.
+* `server.port` az alapértelmezett érték a 1025-es port. Ha bármilyen más értéket alkalmaz, a rendszer felülbírálja a 1025-re.
 * A Azure Portal és Azure Resource Manager sablonok nem támogatják az alkalmazáscsomag feltöltését. Az alkalmazás csomagjait csak az Azure CLI-n keresztüli üzembe helyezésével töltheti fel.
 
 ### <a name="what-pricing-tiers-are-available"></a>Milyen díjszabási szintek érhetők el? 
@@ -183,6 +183,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

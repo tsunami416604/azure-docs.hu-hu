@@ -15,14 +15,16 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17b325ab15f55a8fc02729c6f5ed0cb0330ecca2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5e9a978cd96da47e91434c7146eb3e258d77d8ee
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016835"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261342"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Mozgások észlelése Azure Media Analytics
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A **Azure Media Motion Detector** adathordozó-processzor ki lesz vonva. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
@@ -46,7 +48,7 @@ Ha **Azure Media Motion Detectorkal**rendelkező feladatot hoz létre, meg kell 
 ### <a name="parameters"></a>Paraméterek
 A következő paramétereket használhatja:
 
-| Név | Beállítások | Leírás | Alapértelmezett |
+| Name | Beállítások | Leírás | Alapértelmezett |
 | --- | --- | --- | --- |
 | sensitivityLevel |Karakterlánc: "Low", "medium", "High" |Meghatározza a mozgások jelentésének érzékenységi szintjét. Módosítsa a hamis pozitív számok számának módosítását. |közepes |
 | frameSamplingValue |Pozitív egész szám |Meghatározza az algoritmus futtatásának gyakoriságát. 1 egyenlő minden kerettel, 2 azt jelenti, hogy minden második keret és így tovább. |1 |

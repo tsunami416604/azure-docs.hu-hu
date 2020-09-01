@@ -16,14 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ead605462eeb92b31181ce9bba3100df521b471b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004418"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262403"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása Media Encoder Standard a .NET használatával  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása Media Encoder Standard a .NET használatával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 A kódolási feladatok a Media Services leggyakoribb feldolgozási műveleteinek egyike. Kódolási feladatokat hozhat létre a médiafájlok egyik kódolásból a másikba való konvertálásához. A kódolás során a Media Services beépített adathordozó-kódolót használhatja. Használhat egy Media Services Partner által biztosított kódolót is; a külső gyártótól származó kódolók az Azure Piactéren keresztül érhetők el. 
 
@@ -210,7 +212,7 @@ namespace MediaEncoderStandardSample
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Miniatűr készítése a .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
  -Media Encoder standard használatával [Media Services kódolás áttekintése](media-services-encode-asset.md)
 

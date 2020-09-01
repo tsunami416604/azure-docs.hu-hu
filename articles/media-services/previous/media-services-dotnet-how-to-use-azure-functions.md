@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b9b234f0d701ae2ef269b53c3b3c0276ca31f7f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020609"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262114"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions fejlesztése Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ez a cikk bemutatja, hogyan kezdheti meg a Media Servicest használó Azure Functions létrehozását. A cikkben meghatározott Azure-függvény egy **input** nevű Storage-fiók tárolóját figyeli az új MP4-fájlokhoz. Miután a rendszer eldobott egy fájlt a tárolóba, a blob-trigger végrehajtja a függvényt. Az Azure functions áttekintését lásd: az **Azure functions** című témakör [áttekintése](../../azure-functions/functions-overview.md) és egyéb témakörei.
 
@@ -71,7 +73,7 @@ Miután telepítette a Function alkalmazást, a **App Services** Azure functions
 
     ![fájlok](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Kattintson a **Create** (Létrehozás) gombra. 
+4. Kattintson a **Létrehozás** lehetőségre. 
 
 ## <a name="files"></a>Files
 
@@ -341,7 +343,7 @@ A függvény teszteléséhez fel kell töltenie egy MP4-fájlt a kapcsolódási 
 >[!NOTE]
 > Ha egy használati tervben blob-triggert használ, az új Blobok feldolgozására akár 10 percet is igénybe vehet, miután egy Function alkalmazás üresjáratba került. A Function app futtatása után a Blobok feldolgozása azonnal megtörténik. További információ: [blob Storage-eseményindítók és-kötések](../../azure-functions/functions-bindings-storage-blob.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen a ponton készen áll egy Media Services alkalmazás fejlesztésének megkezdésére. 
  
