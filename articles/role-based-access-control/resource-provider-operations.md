@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/16/2020
+ms.date: 08/31/2020
 ms.custom: generated
-ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 685fdf8180f54c87fe6677268bd289ee00912c96
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272043"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227763"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -22,7 +22,7 @@ Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgál
 
 A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgáltató nevére a következő táblázatban.
 
-## <a name="all"></a>Mind
+## <a name="all"></a>Összes
 
 | Általános kérdések |
 | --- |
@@ -797,6 +797,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/READ | Application Gateway PrivateEndpoint-kapcsolatok beolvasása |
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/Write | Application Gateway PrivateEndpoint-kapcsolatok frissítései |
 > | Microsoft. Network/applicationGateways/privateEndpointConnections/delete | Application Gateway PrivateEndpoint-kapcsolatok törlése |
+> | Microsoft. Network/applicationGateways/privateLinkConfigurations/READ | Beolvas Application Gateway privát kapcsolati konfigurációkat |
 > | Microsoft. Network/applicationGateways/privateLinkResources/READ | Lekéri a ApplicationGateway PrivateLink-erőforrásait |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/READ | Application Gateway WAF szabályzat beolvasása |
 > | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Write | Létrehoz egy Application Gateway WAF szabályzatot, vagy frissít egy Application Gateway WAF szabályzatot |
@@ -880,6 +881,9 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/dnszones/TXT/READ | Hozzon létre egy "TXT" típusú rekordot JSON formátumban. A rekordhalmaz a rekordok listáját, valamint az ÉLETTARTAMot, a címkéket és a ETAG tartalmazza. |
 > | Microsoft. Network/dnszones/TXT/Write | Hozzon létre vagy frissítsen egy "TXT" típusú rekordhalmazt egy DNS-zónán belül. A megadott rekordok lecserélik az aktuális rekordokat a rekordhalmazban. |
 > | Microsoft. Network/dnszones/TXT/delete | Távolítsa el egy adott név bejegyzéstípusát, és írja be a "TXT" típust egy DNS-zónából. |
+> | Microsoft. Network/dscpConfiguration/Write | A DSCP-konfigurációt tartalmazó művelet |
+> | Microsoft. Network/dscpConfiguration/READ | A DSCP-konfigurációt tartalmazó művelet |
+> | Microsoft. Network/dscpConfiguration/csatlakozás/művelet | A DSCP-konfiguráció illesztése |
 > | Microsoft. Network/expressRouteCircuits/READ | ExpressRouteCircuit beszerzése |
 > | Microsoft. Network/expressRouteCircuits/Write | Meglévő ExpressRouteCircuit létrehozása vagy frissítése |
 > | Microsoft. Network/expressRouteCircuits/csatlakozás/művelet | Egy Express Route-áramkörhöz csatlakozik. Nem riasztásos. |
@@ -916,6 +920,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/expressRoutePorts/Write | ExpressRoutePorts létrehozása vagy frissítése |
 > | Microsoft. Network/expressRoutePorts/csatlakozás/művelet | Az Express Route-portok illesztése. Nem riasztásos. |
 > | Microsoft. Network/expressRoutePorts/delete | ExpressRoutePorts törlése |
+> | Microsoft. Network/expressRoutePorts/generateloa/Action | LOA létrehozása a ExpressRoutePorts-hoz |
 > | Microsoft. Network/expressRoutePorts/hivatkozások/olvasás | ExpressRouteLink beolvasása |
 > | Microsoft. Network/expressRoutePortsLocations/READ | Express Route-portok helyeinek beolvasása |
 > | Microsoft. Network/expressRouteServiceProviders/READ | Expressz Route Service szolgáltatók beolvasása |
@@ -1308,7 +1313,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/vpnsites/delete | Törli a VPN-hely erőforrását. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/READ | VPN-hely hivatkozásának beolvasása |
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -2041,6 +2046,10 @@ Azure-szolgáltatás: [Azure Search](../search/index.yml)
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/Write | Létrehoz egy privát végponti ügyfélkapcsolati proxyt a megadott paraméterekkel, vagy frissíti a megadott privát végponti ügyfélkapcsolati proxy tulajdonságait vagy címkéit. |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/READ | A privát végponti kapcsolatok proxyinak listáját adja vissza, vagy beolvassa a megadott privát végponti ügyfélkapcsolati proxy tulajdonságait |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/delete | Meglévő privát végponti kapcsolatkezelő törlése |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/Write | Létrehoz egy új megosztott magánhálózati kapcsolati erőforrást a megadott paraméterekkel, vagy frissíti a megadott megosztott magánhálózati kapcsolati erőforrás tulajdonságait |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/READ | A megosztott privát kapcsolatok erőforrásainak listáját adja vissza, vagy beolvassa a megadott megosztott magánhálózati kapcsolati erőforrás tulajdonságait |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/delete | Meglévő megosztott magánhálózati kapcsolati erőforrás törlése |
+> | Microsoft. Search/searchServices/sharedPrivateLinkResources/operationStatuses/READ | A hosszú ideig futó megosztott privát kapcsolati erőforrás-művelet részleteinek beolvasása |
 
 ### <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
@@ -2075,9 +2084,18 @@ Azure-szolgáltatás: [Azure signaler szolgáltatás](../azure-signalr/index.yml
 > | Microsoft. SignalRService/jelző/privateEndpointConnections/READ | Privát végponti kapcsolatok olvasása |
 > | Microsoft. SignalRService/jelző/privateLinkResources/READ | Az összes Signal Private link-erőforrás listázása |
 > | **DataAction** | **Leírás** |
-> | Microsoft. SignalRService/szignáló/serverConnection/írás | Indítsa el a kiszolgálói kapcsolatokat. |
+> | Microsoft. SignalRService/szignáló/serverConnection/művelet | Indítsa el a kiszolgálói kapcsolatokat. |
+> | Microsoft. SignalRService/szignáló/clientConnection/művelet | Ügyfélkapcsolatok hozzáadása vagy eltávolítása a csoportokból vagy a kapcsolatok lezárása. |
+> | Microsoft. SignalRService/jelző/felhasználó/művelet | Felhasználók hozzáadása vagy eltávolítása csoportokból. |
+> | Microsoft. SignalRService/jelző/clientConnection/READ | A kapcsolatok létezésének ellenőrzéséhez. |
+> | Microsoft. SignalRService/szignáló/clientConnection/írás | Üzenetek küldése közvetlenül az ügyfél-kapcsolatok számára. |
+> | Microsoft. SignalRService/szignáló/csoport/olvasás | A csoport létezésének ellenőrzéséhez. |
+> | Microsoft. SignalRService/szignáló/csoport/írás | Üzenetek küldése egy csoport vagy egyes csoportok ügyfélkapcsolatai számára. |
+> | Microsoft. SignalRService/szignáló/központ/írás | Üzenetek küldése az adott hubhoz csatlakozó összes ügyfélkapcsolatnak. |
 > | Microsoft. SignalRService/szignáló/szolgáltatás/accessKey/művelet | Ideiglenes AccessKey beszerzése a ClientTokens aláírásához. |
 > | Microsoft. SignalRService/szignáló/szolgáltatás/clientToken/művelet | ClientToken beszerzése az Ügyfélkapcsolat indításához. |
+> | Microsoft. SignalRService/jelző/felhasználó/olvasás | Ellenőrizze, hogy a felhasználó létezik-e, és hogy a csoport tagja-e. |
+> | Microsoft. SignalRService/jelző/felhasználó/írás | Üzenetek küldése egy felhasználónak, akinek több ügyfélkapcsolata is lehet. |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -4386,6 +4404,12 @@ Azure-szolgáltatás: [Event Hubs](../event-hubs/index.yml)
 > | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/olvasás | Privát végponti kapcsolatok proxyjának beolvasása |
 > | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása |
 > | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
+> | Microsoft. EventHub/névterek/privateEndpointConnectionProxies/operationstatus/READ | Aszinkron magánhálózati Végponti művelet állapotának beolvasása |
+> | Microsoft. EventHub/névterek/privateEndpointConnections/olvasás | Privát végponti kapcsolatok beszerzése |
+> | Microsoft. EventHub/névterek/privateEndpointConnections/írás | Privát végponti kapcsolatok létrehozása vagy frissítése |
+> | Microsoft. EventHub/névterek/privateEndpointConnections/delete | Privát végponti kapcsolatok eltávolítása |
+> | Microsoft. EventHub/névterek/privateEndpointConnections/operationstatus/READ | Aszinkron magánhálózati Végponti művelet állapotának beolvasása |
+> | Microsoft. EventHub/névterek/privateLinkResources/olvasás | A privát végponti kapcsolatokat támogató erőforrástípusok beolvasása |
 > | Microsoft. EventHub/névterek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Microsoft. EventHub/névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Microsoft. EventHub/névterek/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | Névtér-naplók erőforrás-leírások listájának beolvasása |
@@ -5082,6 +5106,15 @@ Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/inde
 > | Microsoft. MachineLearningServices/munkaterületek/kísérletek/futtatások/olvasás | Machine Learning Services munkaterületen fut |
 > | Microsoft. MachineLearningServices/munkaterületek/kísérletek/Futtatás/írás | A (z) Machine Learning Services munkaterületen lévő futtatások létrehozása vagy frissítése |
 > | Microsoft. MachineLearningServices/munkaterületek/funkciók/olvasás | Egy Machine Learning Services munkaterület összes engedélyezett funkciójának beolvasása |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/olvasás | Következtetések beolvasása Machine Learning Services munkaterületen (ek) |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/írás | Következtetési végpont létrehozása vagy frissítése Machine Learning Services munkaterület (ok) ban |
+> | Microsoft. MachineLearningServices/munkaterület/inferenceEndpoints/delete | Következtetési végpont törlése Machine Learning Services munkaterület (ek) ben |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/checkNameAvailability/olvasás | A Machine Learning Services munkaterület (ek) ben ellenőrzi a következtetési végpont nevét |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/központi telepítések/olvasás | Központi telepítések beolvasása a Machine Learning Services munkaterület (ek) ben található következtetési végponton |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/központi telepítések/írás | Központi telepítés létrehozása vagy frissítése a Machine Learning Services munkaterület (ek) ben a következtetési végponton |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/központi telepítések/törlés | Központi telepítés törlése a következtetési végpontban Machine Learning Services munkaterület (ok) ban |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/üzembe helyezések/checkNameAvailability/olvasás | Ellenőrzi, hogy a központi telepítés neve Machine Learning Services munkaterület (ek) ben |
+> | Microsoft. MachineLearningServices/munkaterületek/inferenceEndpoints/üzembe helyezés/SKU/READ | A (z) Machine Learning Services munkaterület (ek) ben a központi telepítéshez szükséges méretezési SKU-beállítások beolvasása |
 > | Microsoft. MachineLearningServices/munkaterületek/címkézés/exportálás/művelet | Címkéző projektek címkéjének exportálása Machine Learning Services munkaterületen |
 > | Microsoft. MachineLearningServices/munkaterületek/címkézés/címkék/olvasás | Lekérdezi a Machine Learning Services munkaterületen található címkéző projektek címkéit |
 > | Microsoft. MachineLearningServices/munkaterületek/címkézés/címkék/írás | Címkéző projektek címkéit hozza létre Machine Learning Services munkaterületen |
@@ -5307,6 +5340,9 @@ Azure-szolgáltatás: [Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/delete | Névtér-engedélyezési szabály törlése. Az alapértelmezett névtér-engedélyezési szabály nem törölhető.  |
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/listkeys műveletének beolvasása/művelet | A névtérhez tartozó kapcsolódási karakterlánc beolvasása |
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/regenerateKeys/művelet | A névtér-engedélyezési szabály újragenerálta az elsődleges/Értesítésiközpont, megadhatja azt a kulcsot, amelyet újra kell generált |
+> | Microsoft. NotificationHubs/névterek/diagnosticSettings/olvasás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
+> | Microsoft. NotificationHubs/névterek/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
+> | Microsoft. NotificationHubs/névterek/logDefinitions/olvasás | Névtér-naplók erőforrás-leírások listájának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/írás | Hozzon létre egy értesítési központot, és frissítse a tulajdonságait. A tulajdonságai főleg PNS hitelesítő adatokkal rendelkeznek. Engedélyezési szabályok és TTL |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/olvasás | Értesítési központ erőforrás-leírásának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/delete | Értesítési központ erőforrásának törlése |
@@ -6006,6 +6042,12 @@ Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 > | Microsoft. Relay/névtér/privateEndpointConnectionProxies/olvasás | Privát végponti kapcsolatok proxyjának beolvasása |
 > | Microsoft. Relay/névterek/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása |
 > | Microsoft. Relay/névterek/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
+> | Microsoft. Relay/névterek/privateEndpointConnectionProxies/operationstatus/READ | Aszinkron magánhálózati Végponti művelet állapotának beolvasása |
+> | Microsoft. Relay/névtér/privateEndpointConnections/olvasás | Privát végponti kapcsolatok beszerzése |
+> | Microsoft. Relay/névterek/privateEndpointConnections/írás | Privát végponti kapcsolatok létrehozása vagy frissítése |
+> | Microsoft. Relay/névterek/privateEndpointConnections/delete | Privát végponti kapcsolatok eltávolítása |
+> | Microsoft. Relay/névterek/privateEndpointConnections/operationstatus/READ | Aszinkron magánhálózati Végponti művelet állapotának beolvasása |
+> | Microsoft. Relay/névtér/privateLinkResources/olvasás | A privát végponti kapcsolatokat támogató erőforrástípusok beolvasása |
 > | Microsoft. Relay/névterek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Microsoft. Relay/névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Microsoft. Relay/névterek/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | Névtér-naplók erőforrás-leírások listájának beolvasása |
@@ -6077,6 +6119,12 @@ Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/olvasás | Privát végponti kapcsolatok proxyjának beolvasása |
 > | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/írás | Privát végponti kapcsolatok proxyjának létrehozása |
 > | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése |
+> | Microsoft. ServiceBus/névterek/privateEndpointConnectionProxies/operationstatus/READ | Aszinkron magánhálózati Végponti művelet állapotának beolvasása |
+> | Microsoft. ServiceBus/névterek/privateEndpointConnections/olvasás | Privát végponti kapcsolatok beszerzése |
+> | Microsoft. ServiceBus/névterek/privateEndpointConnections/írás | Privát végponti kapcsolatok létrehozása vagy frissítése |
+> | Microsoft. ServiceBus/névterek/privateEndpointConnections/delete | Privát végponti kapcsolatok eltávolítása |
+> | Microsoft. ServiceBus/névterek/privateEndpointConnections/operationstatus/READ | Aszinkron magánhálózati Végponti művelet állapotának beolvasása |
+> | Microsoft. ServiceBus/névterek/privateLinkResources/olvasás | A privát végponti kapcsolatokat támogató erőforrástípusok beolvasása |
 > | Microsoft. ServiceBus/névterek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Microsoft. ServiceBus/névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
 > | Microsoft. ServiceBus/névterek/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | Névtér-naplók erőforrás-leírások listájának beolvasása |
@@ -6511,6 +6559,9 @@ Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/threatintelligence/mérőszámok/művelet | Veszélyforrások felderítésére vonatkozó mérőszámok gyűjtése |
 > | Microsoft. SecurityInsights/threatintelligence/bulkDelete/művelet | Fenyegetési intelligencia tömeges törlése |
 > | Microsoft. SecurityInsights/threatintelligence/bulkTag/művelet | Tömeges címkék veszélyforrások felderítése |
+> | Microsoft. SecurityInsights/listák/olvasás | Lekéri a listák |
+> | Microsoft. SecurityInsights/listák/írás | Listák létrehozása |
+> | Microsoft. SecurityInsights/listák/delete | Listák törlése |
 
 ## <a name="devops"></a>DevOps
 
@@ -7213,14 +7264,85 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantást/LogProfiles/delete | Műveletnapló-profil törlése |
 > | Microsoft. bepillantások/LogProfiles/olvasás | Tevékenységi napló naplójának profiljának olvasása |
 > | Microsoft. elemzések/naplók/olvasás | Adatok olvasása az összes naplóból |
+> | Microsoft. bepillantások/naplók/AADDomainServicesAccountLogon/olvasás | Adatok beolvasása a AADDomainServicesAccountLogon táblából |
+> | Microsoft. bepillantások/naplók/AADDomainServicesAccountManagement/olvasás | Adatok beolvasása a AADDomainServicesAccountManagement táblából |
+> | Microsoft. bepillantások/naplók/AADDomainServicesDirectoryServiceAccess/olvasás | Adatok beolvasása a AADDomainServicesDirectoryServiceAccess táblából |
+> | Microsoft. bepillantások/naplók/AADDomainServicesLogonLogoff/olvasás | Adatok beolvasása a AADDomainServicesLogonLogoff táblából |
+> | Microsoft. bepillantások/naplók/AADDomainServicesPolicyChange/olvasás | Adatok beolvasása a AADDomainServicesPolicyChange táblából |
+> | Microsoft. bepillantások/naplók/AADDomainServicesPrivilegeUse/olvasás | Adatok beolvasása a AADDomainServicesPrivilegeUse táblából |
+> | Microsoft. bepillantások/naplók/AADDomainServicesSystemSecurity/olvasás | Adatok beolvasása a AADDomainServicesSystemSecurity táblából |
+> | Microsoft. bepillantások/naplók/AADManagedIdentitySignInLogs/olvasás | Adatok beolvasása a AADManagedIdentitySignInLogs táblából |
+> | Microsoft. bepillantások/naplók/AADNonInteractiveUserSignInLogs/olvasás | Adatok beolvasása a AADNonInteractiveUserSignInLogs táblából |
+> | Microsoft. bepillantások/naplók/AADServicePrincipalSignInLogs/olvasás | Adatok beolvasása a AADServicePrincipalSignInLogs táblából |
 > | Microsoft. bepillantások/naplók/ADAssessmentRecommendation/olvasás | Adatok beolvasása a ADAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/AddonAzureBackupAlerts/olvasás | Adatok beolvasása a AddonAzureBackupAlerts táblából |
+> | Microsoft. bepillantások/naplók/AddonAzureBackupJobs/olvasás | Adatok beolvasása a AddonAzureBackupJobs táblából |
+> | Microsoft. bepillantások/naplók/AddonAzureBackupPolicy/olvasás | Adatok beolvasása a AddonAzureBackupPolicy táblából |
+> | Microsoft. bepillantások/naplók/AddonAzureBackupProtectedInstance/olvasás | Adatok beolvasása a AddonAzureBackupProtectedInstance táblából |
+> | Microsoft. bepillantások/naplók/AddonAzureBackupStorage/olvasás | Adatok beolvasása a AddonAzureBackupStorage táblából |
+> | Microsoft. bepillantások/naplók/ADFActivityRun/olvasás | Adatok beolvasása a ADFActivityRun táblából |
+> | Microsoft. bepillantások/naplók/ADFPipelineRun/olvasás | Adatok beolvasása a ADFPipelineRun táblából |
+> | Microsoft. bepillantások/naplók/ADFSSISIntegrationRuntimeLogs/olvasás | Adatok beolvasása a ADFSSISIntegrationRuntimeLogs táblából |
+> | Microsoft. bepillantások/naplók/ADFSSISPackageEventMessageContext/olvasás | Adatok beolvasása a ADFSSISPackageEventMessageContext táblából |
+> | Microsoft. bepillantások/naplók/ADFSSISPackageEventMessages/olvasás | Adatok beolvasása a ADFSSISPackageEventMessages táblából |
+> | Microsoft. bepillantások/naplók/ADFSSISPackageExecutableStatistics/olvasás | Adatok beolvasása a ADFSSISPackageExecutableStatistics táblából |
+> | Microsoft. bepillantások/naplók/ADFSSISPackageExecutionComponentPhases/olvasás | Adatok beolvasása a ADFSSISPackageExecutionComponentPhases táblából |
+> | Microsoft. bepillantások/naplók/ADFSSISPackageExecutionDataStatistics/olvasás | Adatok beolvasása a ADFSSISPackageExecutionDataStatistics táblából |
+> | Microsoft. bepillantások/naplók/ADFTriggerRun/olvasás | Adatok beolvasása a ADFTriggerRun táblából |
 > | Microsoft. bepillantások/naplók/ADReplicationResult/olvasás | Adatok beolvasása a ADReplicationResult táblából |
 > | Microsoft. bepillantások/naplók/ADSecurityAssessmentRecommendation/olvasás | Adatok beolvasása a ADSecurityAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/ADTDigitalTwinsOperation/olvasás | Adatok beolvasása a ADTDigitalTwinsOperation táblából |
+> | Microsoft. bepillantások/naplók/ADTEventRoutesOperation/olvasás | Adatok beolvasása a ADTEventRoutesOperation táblából |
+> | Microsoft. bepillantások/naplók/ADTModelsOperation/olvasás | Adatok beolvasása a ADTModelsOperation táblából |
+> | Microsoft. bepillantások/naplók/ADTQueryOperation/olvasás | Adatok beolvasása a ADTQueryOperation táblából |
+> | Microsoft. bepillantások/naplók/AegDeliveryFailureLogs/olvasás | Adatok beolvasása a AegDeliveryFailureLogs táblából |
+> | Microsoft. bepillantások/naplók/AegPublishFailureLogs/olvasás | Adatok beolvasása a AegPublishFailureLogs táblából |
 > | Microsoft. bepillantások/naplók/riasztás/olvasás | Adatok beolvasása a riasztási táblából |
 > | Microsoft. bepillantások/naplók/AlertHistory/olvasás | Adatok beolvasása a AlertHistory táblából |
+> | Microsoft. bepillantások/naplók/AmlComputeClusterEvent/olvasás | Adatok beolvasása a AmlComputeClusterEvent táblából |
+> | Microsoft. bepillantások/naplók/AmlComputeClusterNodeEvent/olvasás | Adatok beolvasása a AmlComputeClusterNodeEvent táblából |
+> | Microsoft. bepillantások/naplók/AmlComputeCpuGpuUtilization/olvasás | Adatok beolvasása a AmlComputeCpuGpuUtilization táblából |
+> | Microsoft. bepillantások/naplók/AmlComputeJobEvent/olvasás | Adatok beolvasása a AmlComputeJobEvent táblából |
+> | Microsoft. bepillantások/naplók/AmlRunStatusChangedEvent/olvasás | Adatok beolvasása a AmlRunStatusChangedEvent táblából |
+> | Microsoft. bepillantások/naplók/ApiManagementGatewayLogs/olvasás | Adatok beolvasása a ApiManagementGatewayLogs táblából |
+> | Microsoft. bepillantások/naplók/AppAvailabilityResults/olvasás | Adatok beolvasása a AppAvailabilityResults táblából |
+> | Microsoft. bepillantások/naplók/AppBrowserTimings/olvasás | Adatok beolvasása a AppBrowserTimings táblából |
+> | Microsoft. bepillantások/naplók/AppCenterError/olvasás | Adatok beolvasása a AppCenterError táblából |
+> | Microsoft. bepillantások/naplók/AppDependencies/olvasás | Adatok beolvasása a AppDependencies táblából |
+> | Microsoft. bepillantások/naplók/AppEvents/olvasás | Adatok beolvasása a AppEvents táblából |
+> | Microsoft. bepillantások/naplók/AppExceptions/olvasás | Adatok beolvasása a AppExceptions táblából |
 > | Microsoft. bepillantások/naplók/ApplicationInsights/olvasás | Adatok beolvasása a ApplicationInsights táblából |
+> | Microsoft. bepillantások/naplók/AppMetrics/olvasás | Adatok beolvasása a AppMetrics táblából |
+> | Microsoft. bepillantások/naplók/AppPageViews/olvasás | Adatok beolvasása a AppPageViews táblából |
+> | Microsoft. bepillantások/naplók/AppPerformanceCounters/olvasás | Adatok beolvasása a AppPerformanceCounters táblából |
+> | Microsoft. bepillantások/naplók/AppPlatformLogsforSpring/olvasás | Adatok beolvasása a AppPlatformLogsforSpring táblából |
+> | Microsoft. bepillantások/naplók/AppPlatformSystemLogs/olvasás | Adatok beolvasása a AppPlatformSystemLogs táblából |
+> | Microsoft. bepillantások/naplók/AppRequests/olvasás | Adatok beolvasása a AppRequests táblából |
+> | Microsoft. bepillantások/naplók/AppServiceAntivirusScanLogs/olvasás | Adatok beolvasása a AppServiceAntivirusScanLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServiceAppLogs/olvasás | Adatok beolvasása a AppServiceAppLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServiceAuditLogs/olvasás | Adatok beolvasása a AppServiceAuditLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServiceConsoleLogs/olvasás | Adatok beolvasása a AppServiceConsoleLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServiceEnvironmentPlatformLogs/olvasás | Adatok beolvasása a AppServiceEnvironmentPlatformLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServiceFileAuditLogs/olvasás | Adatok beolvasása a AppServiceFileAuditLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServiceHTTPLogs/olvasás | Adatok beolvasása a AppServiceHTTPLogs táblából |
+> | Microsoft. bepillantások/naplók/AppServicePlatformLogs/olvasás | Adatok beolvasása a AppServicePlatformLogs táblából |
+> | Microsoft. bepillantások/naplók/AppSystemEvents/olvasás | Adatok beolvasása a AppSystemEvents táblából |
+> | Microsoft. bepillantások/naplók/AppTraces/olvasás | Adatok beolvasása a AppTraces táblából |
+> | Microsoft. bepillantások/naplók/AuditLogs/olvasás | Adatok beolvasása a AuditLogs táblából |
+> | Microsoft. bepillantások/naplók/AutoscaleEvaluationsLog/olvasás | Adatok beolvasása a AutoscaleEvaluationsLog táblából |
+> | Microsoft. bepillantások/naplók/AutoscaleScaleActionsLog/olvasás | Adatok beolvasása a AutoscaleScaleActionsLog táblából |
+> | Microsoft. bepillantások/naplók/AWSCloudTrail/olvasás | Adatok beolvasása a AWSCloudTrail táblából |
 > | Microsoft. bepillantások/naplók/AzureActivity/olvasás | Adatok beolvasása a AzureActivity táblából |
+> | Microsoft. bepillantások/naplók/AzureAssessmentRecommendation/olvasás | Adatok beolvasása a AzureAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/AzureDevOpsAuditing/olvasás | Adatok beolvasása a AzureDevOpsAuditing táblából |
+> | Microsoft. bepillantások/naplók/AzureDiagnostics/olvasás | Adatok beolvasása a AzureDiagnostics táblából |
 > | Microsoft. bepillantások/naplók/AzureMetrics/olvasás | Adatok beolvasása a AzureMetrics táblából |
+> | Microsoft. bepillantások/naplók/BaiClusterEvent/olvasás | Adatok beolvasása a BaiClusterEvent táblából |
+> | Microsoft. bepillantások/naplók/BaiClusterNodeEvent/olvasás | Adatok beolvasása a BaiClusterNodeEvent táblából |
+> | Microsoft. bepillantások/naplók/BaiJobEvent/olvasás | Adatok beolvasása a BaiJobEvent táblából |
+> | Microsoft. bepillantások/naplók/BehaviorAnalytics/olvasás | Adatok beolvasása a BehaviorAnalytics táblából |
+> | Microsoft. bepillantások/naplók/BlockchainApplicationLog/olvasás | Adatok beolvasása a BlockchainApplicationLog táblából |
+> | Microsoft. bepillantások/naplók/BlockchainProxyLog/olvasás | Adatok beolvasása a BlockchainProxyLog táblából |
 > | Microsoft. bepillantások/naplók/BoundPort/olvasás | Adatok beolvasása a BoundPort táblából |
 > | Microsoft. bepillantások/naplók/CommonSecurityLog/olvasás | Adatok beolvasása a CommonSecurityLog táblából |
 > | Microsoft. bepillantások/naplók/ComputerGroup/olvasás | Adatok beolvasása a ComputerGroup táblából |
@@ -7229,7 +7351,22 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/ContainerImageInventory/olvasás | Adatok beolvasása a ContainerImageInventory táblából |
 > | Microsoft. bepillantások/naplók/ContainerInventory/olvasás | Adatok beolvasása a ContainerInventory táblából |
 > | Microsoft. bepillantások/naplók/ContainerLog/olvasás | Adatok beolvasása a ContainerLog táblából |
+> | Microsoft. bepillantások/naplók/ContainerNodeInventory/olvasás | Adatok beolvasása a ContainerNodeInventory táblából |
+> | Microsoft. bepillantások/naplók/ContainerRegistryLoginEvents/olvasás | Adatok beolvasása a ContainerRegistryLoginEvents táblából |
+> | Microsoft. bepillantások/naplók/ContainerRegistryRepositoryEvents/olvasás | Adatok beolvasása a ContainerRegistryRepositoryEvents táblából |
 > | Microsoft. bepillantások/naplók/ContainerServiceLog/olvasás | Adatok beolvasása a ContainerServiceLog táblából |
+> | Microsoft. bepillantások/naplók/CoreAzureBackup/olvasás | Adatok beolvasása a CoreAzureBackup táblából |
+> | Microsoft. bepillantások/naplók/DatabricksAccounts/olvasás | Adatok beolvasása a DatabricksAccounts táblából |
+> | Microsoft. bepillantások/naplók/DatabricksClusters/olvasás | Adatok beolvasása a DatabricksClusters táblából |
+> | Microsoft. bepillantások/naplók/DatabricksDBFS/olvasás | Adatok beolvasása a DatabricksDBFS táblából |
+> | Microsoft. bepillantások/naplók/DatabricksInstancePools/olvasás | Adatok beolvasása a DatabricksInstancePools táblából |
+> | Microsoft. bepillantások/naplók/DatabricksJobs/olvasás | Adatok beolvasása a DatabricksJobs táblából |
+> | Microsoft. bepillantások/naplók/DatabricksNotebook/olvasás | Adatok beolvasása a DatabricksNotebook táblából |
+> | Microsoft. bepillantások/naplók/DatabricksSecrets/olvasás | Adatok beolvasása a DatabricksSecrets táblából |
+> | Microsoft. bepillantások/naplók/DatabricksSQLPermissions/olvasás | Adatok beolvasása a DatabricksSQLPermissions táblából |
+> | Microsoft. bepillantások/naplók/DatabricksSSH/olvasás | Adatok beolvasása a DatabricksSSH táblából |
+> | Microsoft. bepillantások/naplók/DatabricksTables/olvasás | Adatok beolvasása a DatabricksTables táblából |
+> | Microsoft. bepillantások/naplók/DatabricksWorkspace/olvasás | Adatok beolvasása a DatabricksWorkspace táblából |
 > | Microsoft. bepillantások/naplók/DeviceAppCrash/olvasás | Adatok beolvasása a DeviceAppCrash táblából |
 > | Microsoft. bepillantások/naplók/DeviceAppLaunch/olvasás | Adatok beolvasása a DeviceAppLaunch táblából |
 > | Microsoft. bepillantások/naplók/DeviceCalendar/olvasás | Adatok beolvasása a DeviceCalendar táblából |
@@ -7244,6 +7381,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/DeviceSleepState/olvasás | Adatok beolvasása a DeviceSleepState táblából |
 > | Microsoft. bepillantások/naplók/DHAppFailure/olvasás | Adatok beolvasása a DHAppFailure táblából |
 > | Microsoft. bepillantások/naplók/DHAppReliability/olvasás | Adatok beolvasása a DHAppReliability táblából |
+> | Microsoft. bepillantások/naplók/DHCPActivity/olvasás | Adatok beolvasása a DHCPActivity táblából |
 > | Microsoft. bepillantások/naplók/DHDriverReliability/olvasás | Adatok beolvasása a DHDriverReliability táblából |
 > | Microsoft. bepillantások/naplók/DHLogonFailures/olvasás | Adatok beolvasása a DHLogonFailures táblából |
 > | Microsoft. bepillantások/naplók/DHLogonMetrics/olvasás | Adatok beolvasása a DHLogonMetrics táblából |
@@ -7252,15 +7390,28 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/DHWipAppLearning/olvasás | Adatok beolvasása a DHWipAppLearning táblából |
 > | Microsoft. bepillantások/naplók/DnsEvents/olvasás | Adatok beolvasása a DnsEvents táblából |
 > | Microsoft. bepillantások/naplók/DnsInventory/olvasás | Adatok beolvasása a DnsInventory táblából |
+> | Microsoft. bepillantások/naplók/Dynamics365Activity/olvasás | Adatok beolvasása a Dynamics365Activity táblából |
 > | Microsoft. bepillantások/naplók/ETWEvent/olvasás | Adatok beolvasása a ETWEvent táblából |
 > | Microsoft. elemzések/naplók/esemény/olvasás | Adatok beolvasása az Event táblából |
 > | Microsoft. bepillantások/naplók/ExchangeAssessmentRecommendation/olvasás | Adatok beolvasása a ExchangeAssessmentRecommendation táblából |
 > | Microsoft. bepillantások/naplók/ExchangeOnlineAssessmentRecommendation/olvasás | Adatok beolvasása a ExchangeOnlineAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/FailedIngestion/olvasás | Adatok beolvasása a FailedIngestion táblából |
+> | Microsoft. bepillantások/naplók/FunctionAppLogs/olvasás | Adatok beolvasása a FunctionAppLogs táblából |
 > | Microsoft. bepillantások/naplók/szívverés/olvasás | Adatok beolvasása a szívverési táblából |
+> | Microsoft. bepillantások/naplók/HuntingBookmark/olvasás | Adatok beolvasása a HuntingBookmark táblából |
 > | Microsoft. bepillantások/naplók/IISAssessmentRecommendation/olvasás | Adatok beolvasása a IISAssessmentRecommendation táblából |
 > | Microsoft. bepillantások/naplók/InboundConnection/olvasás | Adatok beolvasása a InboundConnection táblából |
+> | Microsoft. bepillantások/naplók/InsightsMetrics/olvasás | Adatok beolvasása a InsightsMetrics táblából |
+> | Microsoft. bepillantások/naplók/IntuneAuditLogs/olvasás | Adatok beolvasása a IntuneAuditLogs táblából |
+> | Microsoft. bepillantások/naplók/IntuneDeviceComplianceOrg/olvasás | Adatok beolvasása a IntuneDeviceComplianceOrg táblából |
+> | Microsoft. bepillantások/naplók/IntuneOperationalLogs/olvasás | Adatok beolvasása a IntuneOperationalLogs táblából |
+> | Microsoft. bepillantások/naplók/IoTHubDistributedTracing/olvasás | Adatok beolvasása a IoTHubDistributedTracing táblából |
+> | Microsoft. bepillantások/naplók/KubeEvents/olvasás | Adatok beolvasása a KubeEvents táblából |
+> | Microsoft. bepillantások/naplók/KubeHealth/olvasás | Adatok beolvasása a KubeHealth táblából |
+> | Microsoft. bepillantások/naplók/KubeMonAgentEvents/olvasás | Adatok beolvasása a KubeMonAgentEvents táblából |
 > | Microsoft. bepillantások/naplók/KubeNodeInventory/olvasás | Adatok beolvasása a KubeNodeInventory táblából |
 > | Microsoft. bepillantások/naplók/KubePodInventory/olvasás | Adatok beolvasása a KubePodInventory táblából |
+> | Microsoft. bepillantások/naplók/KubeServices/olvasás | Adatok beolvasása a KubeServices táblából |
 > | Microsoft. bepillantások/naplók/LinuxAuditLog/olvasás | Adatok beolvasása a LinuxAuditLog táblából |
 > | Microsoft. bepillantások/naplók/MAApplication/olvasás | Adatok beolvasása a MAApplication táblából |
 > | Microsoft. bepillantások/naplók/MAApplicationHealth/olvasás | Adatok beolvasása a MAApplicationHealth táblából |
@@ -7271,6 +7422,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/MAApplicationReadiness/olvasás | Adatok beolvasása a MAApplicationReadiness táblából |
 > | Microsoft. bepillantások/naplók/MADeploymentPlan/olvasás | Adatok beolvasása a MADeploymentPlan táblából |
 > | Microsoft. bepillantások/naplók/MADevice/olvasás | Adatok beolvasása a MADevice táblából |
+> | Microsoft. bepillantások/naplók/MADeviceNotEnrolled/olvasás | Adatok beolvasása a MADeviceNotEnrolled táblából |
+> | Microsoft. bepillantások/naplók/MADeviceNRT/olvasás | Adatok beolvasása a MADeviceNRT táblából |
 > | Microsoft. bepillantások/naplók/MADevicePnPHealth/olvasás | Adatok beolvasása a MADevicePnPHealth táblából |
 > | Microsoft. bepillantások/naplók/MADevicePnPHealthAlternativeVersions/olvasás | Adatok beolvasása a MADevicePnPHealthAlternativeVersions táblából |
 > | Microsoft. bepillantások/naplók/MADevicePnPHealthIssues/olvasás | Adatok beolvasása a MADevicePnPHealthIssues táblából |
@@ -7278,19 +7431,27 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/MADriverInstanceReadiness/olvasás | Adatok beolvasása a MADriverInstanceReadiness táblából |
 > | Microsoft. bepillantások/naplók/MADriverReadiness/olvasás | Adatok beolvasása a MADriverReadiness táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAddin/olvasás | Adatok beolvasása a MAOfficeAddin táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeAddinEntityHealth/olvasás | Adatok beolvasása a MAOfficeAddinEntityHealth táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAddinHealth/olvasás | Adatok beolvasása a MAOfficeAddinHealth táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeAddinHealthEventNRT/olvasás | Adatok beolvasása a MAOfficeAddinHealthEventNRT táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAddinHealthIssues/olvasás | Adatok beolvasása a MAOfficeAddinHealthIssues táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAddinInstance/olvasás | Adatok beolvasása a MAOfficeAddinInstance táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAddinInstanceReadiness/olvasás | Adatok beolvasása a MAOfficeAddinInstanceReadiness táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAddinReadiness/olvasás | Adatok beolvasása a MAOfficeAddinReadiness táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeApp/olvasás | Adatok beolvasása a MAOfficeApp táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeAppCrashesNRT/olvasás | Adatok beolvasása a MAOfficeAppCrashesNRT táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAppHealth/olvasás | Adatok beolvasása a MAOfficeAppHealth táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAppInstance/olvasás | Adatok beolvasása a MAOfficeAppInstance táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeAppInstanceHealth/olvasás | Adatok beolvasása a MAOfficeAppInstanceHealth táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeAppReadiness/olvasás | Adatok beolvasása a MAOfficeAppReadiness táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeAppSessionsNRT/olvasás | Adatok beolvasása a MAOfficeAppSessionsNRT táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeBuildInfo/olvasás | Adatok beolvasása a MAOfficeBuildInfo táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeCurrencyAssessment/olvasás | Adatok beolvasása a MAOfficeCurrencyAssessment táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeCurrencyAssessmentDailyCounts/olvasás | Adatok beolvasása a MAOfficeCurrencyAssessmentDailyCounts táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeDeploymentStatus/olvasás | Adatok beolvasása a MAOfficeDeploymentStatus táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeDeploymentStatusNRT/olvasás | Adatok beolvasása a MAOfficeDeploymentStatusNRT táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeMacroErrorNRT/olvasás | Adatok beolvasása a MAOfficeMacroErrorNRT táblából |
+> | Microsoft. bepillantások/naplók/MAOfficeMacroGlobalHealth/olvasás | Adatok beolvasása a MAOfficeMacroGlobalHealth táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeMacroHealth/olvasás | Adatok beolvasása a MAOfficeMacroHealth táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeMacroHealthIssues/olvasás | Adatok beolvasása a MAOfficeMacroHealthIssues táblából |
 > | Microsoft. bepillantások/naplók/MAOfficeMacroIssueInstanceReadiness/olvasás | Adatok beolvasása a MAOfficeMacroIssueInstanceReadiness táblából |
@@ -7303,7 +7464,16 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/MAWindowsCurrencyAssessment/olvasás | Adatok beolvasása a MAWindowsCurrencyAssessment táblából |
 > | Microsoft. bepillantások/naplók/MAWindowsCurrencyAssessmentDailyCounts/olvasás | Adatok beolvasása a MAWindowsCurrencyAssessmentDailyCounts táblából |
 > | Microsoft. bepillantások/naplók/MAWindowsDeploymentStatus/olvasás | Adatok beolvasása a MAWindowsDeploymentStatus táblából |
+> | Microsoft. bepillantások/naplók/MAWindowsDeploymentStatusNRT/olvasás | Adatok beolvasása a MAWindowsDeploymentStatusNRT táblából |
 > | Microsoft. bepillantások/naplók/MAWindowsSysReqInstanceReadiness/olvasás | Adatok beolvasása a MAWindowsSysReqInstanceReadiness táblából |
+> | Microsoft. bepillantások/naplók/McasShadowItReporting/olvasás | Adatok beolvasása a McasShadowItReporting táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftAzureBastionAuditLogs/olvasás | Adatok beolvasása a MicrosoftAzureBastionAuditLogs táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftDataShareReceivedSnapshotLog/olvasás | Adatok beolvasása a MicrosoftDataShareReceivedSnapshotLog táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftDataShareSentSnapshotLog/olvasás | Adatok beolvasása a MicrosoftDataShareSentSnapshotLog táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftDataShareShareLog/olvasás | Adatok beolvasása a MicrosoftDataShareShareLog táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftDynamicsTelemetryPerformanceLogs/olvasás | Adatok beolvasása a MicrosoftDynamicsTelemetryPerformanceLogs táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftDynamicsTelemetrySystemMetricsLogs/olvasás | Adatok beolvasása a MicrosoftDynamicsTelemetrySystemMetricsLogs táblából |
+> | Microsoft. bepillantások/naplók/MicrosoftHealthcareApisAuditLogs/olvasás | Adatok beolvasása a MicrosoftHealthcareApisAuditLogs táblából |
 > | Microsoft. bepillantások/naplók/NetworkMonitoring/olvasás | Adatok beolvasása a NetworkMonitoring táblából |
 > | Microsoft. bepillantások/naplók/OfficeActivity/olvasás | Adatok beolvasása a OfficeActivity táblából |
 > | Microsoft. elemzések/naplók/művelet/olvasás | Adatok beolvasása a műveleti táblából |
@@ -7319,18 +7489,33 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/SecurityBaselineSummary/olvasás | Adatok beolvasása a SecurityBaselineSummary táblából |
 > | Microsoft. bepillantások/naplók/SecurityDetection/olvasás | Adatok beolvasása a SecurityDetection táblából |
 > | Microsoft. bepillantások/naplók/SecurityEvent/olvasás | Adatok beolvasása a SecurityEvent táblából |
+> | Microsoft. bepillantások/naplók/biztonsági incidens/olvasás | Adatok beolvasása a biztonsági incidens táblából |
+> | Microsoft. bepillantások/naplók/SecurityIoTRawEvent/olvasás | Adatok beolvasása a SecurityIoTRawEvent táblából |
+> | Microsoft. bepillantások/naplók/SecurityNestedRecommendation/olvasás | Adatok beolvasása a SecurityNestedRecommendation táblából |
+> | Microsoft. bepillantások/naplók/SecurityRecommendation/olvasás | Adatok beolvasása a SecurityRecommendation táblából |
 > | Microsoft. bepillantások/naplók/ServiceFabricOperationalEvent/olvasás | Adatok beolvasása a ServiceFabricOperationalEvent táblából |
 > | Microsoft. bepillantások/naplók/ServiceFabricReliableActorEvent/olvasás | Adatok beolvasása a ServiceFabricReliableActorEvent táblából |
 > | Microsoft. bepillantások/naplók/ServiceFabricReliableServiceEvent/olvasás | Adatok beolvasása a ServiceFabricReliableServiceEvent táblából |
 > | Microsoft. bepillantások/naplók/SfBAssessmentRecommendation/olvasás | Adatok beolvasása a SfBAssessmentRecommendation táblából |
 > | Microsoft. bepillantások/naplók/SfBOnlineAssessmentRecommendation/olvasás | Adatok beolvasása a SfBOnlineAssessmentRecommendation táblából |
 > | Microsoft. bepillantások/naplók/SharePointOnlineAssessmentRecommendation/olvasás | Adatok beolvasása a SharePointOnlineAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/SignalRServiceDiagnosticLogs/olvasás | Adatok beolvasása a SignalRServiceDiagnosticLogs táblából |
+> | Microsoft. bepillantások/naplók/SigninLogs/olvasás | Adatok beolvasása a SigninLogs táblából |
 > | Microsoft. bepillantások/naplók/SPAssessmentRecommendation/olvasás | Adatok beolvasása a SPAssessmentRecommendation táblából |
 > | Microsoft. bepillantások/naplók/SQLAssessmentRecommendation/olvasás | Adatok beolvasása a SQLAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/SqlDataClassification/olvasás | Adatok beolvasása a SqlDataClassification táblából |
 > | Microsoft. bepillantások/naplók/SQLQueryPerformance/olvasás | Adatok beolvasása a SQLQueryPerformance táblából |
+> | Microsoft. bepillantások/naplók/SqlVulnerabilityAssessmentResult/olvasás | Adatok beolvasása a SqlVulnerabilityAssessmentResult táblából |
+> | Microsoft. bepillantások/naplók/StorageBlobLogs/olvasás | Adatok beolvasása a StorageBlobLogs táblából |
+> | Microsoft. bepillantások/naplók/StorageFileLogs/olvasás | Adatok beolvasása a StorageFileLogs táblából |
+> | Microsoft. bepillantások/naplók/StorageQueueLogs/olvasás | Adatok beolvasása a StorageQueueLogs táblából |
+> | Microsoft. bepillantások/naplók/StorageTableLogs/olvasás | Adatok beolvasása a StorageTableLogs táblából |
+> | Microsoft. bepillantások/naplók/SucceededIngestion/olvasás | Adatok beolvasása a SucceededIngestion táblából |
 > | Microsoft. elemzések/naplók/syslog/READ | Adatok beolvasása a syslog-táblából |
 > | Microsoft. bepillantások/naplók/SysmonEvent/olvasás | Adatok beolvasása a SysmonEvent táblából |
 > | Microsoft. elemzések/naplók/táblák. egyéni/olvasási | Adatok olvasása bármely egyéni naplóból |
+> | Microsoft. bepillantások/naplók/ThreatIntelligenceIndicator/olvasás | Adatok beolvasása a ThreatIntelligenceIndicator táblából |
+> | Microsoft. bepillantások/naplók/TSIIngress/olvasás | Adatok beolvasása a TSIIngress táblából |
 > | Microsoft. bepillantások/naplók/UAApp/olvasás | Adatok beolvasása a UAApp táblából |
 > | Microsoft. bepillantások/naplók/UAComputer/olvasás | Adatok beolvasása a UAComputer táblából |
 > | Microsoft. bepillantások/naplók/UAComputerRank/olvasás | Adatok beolvasása a UAComputerRank táblából |
@@ -7347,6 +7532,12 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/UpdateRunProgress/olvasás | Adatok beolvasása a UpdateRunProgress táblából |
 > | Microsoft. bepillantások/naplók/updateSummary típusú/olvasás | Adatok beolvasása a updateSummary típusú táblából |
 > | Microsoft. elemzések/naplók/használat/olvasás | Adatok beolvasása a használati táblából |
+> | Microsoft. bepillantások/naplók/UserAccessAnalytics/olvasás | Adatok beolvasása a UserAccessAnalytics táblából |
+> | Microsoft. bepillantások/naplók/UserPeerAnalytics/olvasás | Adatok beolvasása a UserPeerAnalytics táblából |
+> | Microsoft. bepillantások/naplók/VMBoundPort/olvasás | Adatok beolvasása a VMBoundPort táblából |
+> | Microsoft. bepillantások/naplók/VMComputer/olvasás | Adatok beolvasása a VMComputer táblából |
+> | Microsoft. bepillantások/naplók/VMConnection/olvasás | Adatok beolvasása a VMConnection táblából |
+> | Microsoft. bepillantások/naplók/VMProcess/olvasás | Adatok beolvasása a VMProcess táblából |
 > | Microsoft. bepillantások/naplók/W3CIISLog/olvasás | Adatok beolvasása a W3CIISLog táblából |
 > | Microsoft. bepillantások/naplók/WaaSDeploymentStatus/olvasás | Adatok beolvasása a WaaSDeploymentStatus táblából |
 > | Microsoft. bepillantások/naplók/WaaSInsiderStatus/olvasás | Adatok beolvasása a WaaSInsiderStatus táblából |
@@ -7354,11 +7545,19 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. bepillantások/naplók/WDAVStatus/olvasás | Adatok beolvasása a WDAVStatus táblából |
 > | Microsoft. bepillantások/naplók/WDAVThreat/olvasás | Adatok beolvasása a WDAVThreat táblából |
 > | Microsoft. bepillantások/naplók/WindowsClientAssessmentRecommendation/olvasás | Adatok beolvasása a WindowsClientAssessmentRecommendation táblából |
+> | Microsoft. bepillantások/naplók/WindowsEvent/olvasás | Adatok beolvasása a WindowsEvent táblából |
 > | Microsoft. bepillantások/naplók/WindowsFirewall/olvasás | Adatok beolvasása a WindowsFirewall táblából |
 > | Microsoft. bepillantások/naplók/WindowsServerAssessmentRecommendation/olvasás | Adatok beolvasása a WindowsServerAssessmentRecommendation táblából |
 > | Microsoft. bepillantások/naplók/WireData/olvasás | Adatok beolvasása a WireData táblából |
+> | Microsoft. bepillantások/naplók/WorkloadMonitoringPerf/olvasás | Adatok beolvasása a WorkloadMonitoringPerf táblából |
 > | Microsoft. bepillantások/naplók/WUDOAggregatedStatus/olvasás | Adatok beolvasása a WUDOAggregatedStatus táblából |
 > | Microsoft. bepillantások/naplók/WUDOStatus/olvasás | Adatok beolvasása a WUDOStatus táblából |
+> | Microsoft. bepillantások/naplók/WVDCheckpoints/olvasás | Adatok beolvasása a WVDCheckpoints táblából |
+> | Microsoft. bepillantások/naplók/WVDConnections/olvasás | Adatok beolvasása a WVDConnections táblából |
+> | Microsoft. bepillantások/naplók/WVDErrors/olvasás | Adatok beolvasása a WVDErrors táblából |
+> | Microsoft. bepillantások/naplók/WVDFeeds/olvasás | Adatok beolvasása a WVDFeeds táblából |
+> | Microsoft. bepillantások/naplók/WVDHostRegistrations/olvasás | Adatok beolvasása a WVDHostRegistrations táblából |
+> | Microsoft. bepillantások/naplók/WVDManagement/olvasás | Adatok beolvasása a WVDManagement táblából |
 > | Microsoft. bepillantások/MetricAlerts/írás | Metrikai riasztás létrehozása vagy frissítése |
 > | Microsoft. bepillantást/MetricAlerts/delete | Metrikai riasztás törlése |
 > | Microsoft. bepillantások/MetricAlerts/olvasás | Metrika riasztásának beolvasása |
@@ -7576,9 +7775,18 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceCleanup/olvasás | Adatok beolvasása a DeviceCleanup táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceConnectSession/olvasás | Adatok beolvasása a DeviceConnectSession táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceEtw/olvasás | Adatok beolvasása a DeviceEtw táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceEvents/olvasás | Adatok beolvasása a DeviceEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceFileEvents/olvasás | Adatok beolvasása a DeviceFileEvents táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceHardwareHealth/olvasás | Adatok beolvasása a DeviceHardwareHealth táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceHealth/olvasás | Adatok beolvasása a DeviceHealth táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceHeartbeat/olvasás | Adatok beolvasása a DeviceHeartbeat táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceImageLoadEvents/olvasás | Adatok beolvasása a DeviceImageLoadEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceInfo/olvasás | Adatok beolvasása a DeviceInfo táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceLogonEvents/olvasás | Adatok beolvasása a DeviceLogonEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceNetworkEvents/olvasás | Adatok beolvasása a DeviceNetworkEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceNetworkInfo/olvasás | Adatok beolvasása a DeviceNetworkInfo táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceProcessEvents/olvasás | Adatok beolvasása a DeviceProcessEvents táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceRegistryEvents/olvasás | Adatok beolvasása a DeviceRegistryEvents táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceSkypeHeartbeat/olvasás | Adatok beolvasása a DeviceSkypeHeartbeat táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceSkypeSignIn/olvasás | Adatok beolvasása a DeviceSkypeSignIn táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/DeviceSleepState/olvasás | Adatok beolvasása a DeviceSleepState táblából |
@@ -7629,6 +7837,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightStormLogs/olvasás | Adatok beolvasása a HDInsightStormLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightStormMetrics/olvasás | Adatok beolvasása a HDInsightStormMetrics táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HDInsightStormTopologyMetrics/olvasás | Adatok beolvasása a HDInsightStormTopologyMetrics táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HealthStateChangeEvent/olvasás | Adatok beolvasása a HealthStateChangeEvent táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/szívverés/olvasás | Adatok beolvasása a szívverési táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/HuntingBookmark/olvasás | Adatok beolvasása a HuntingBookmark táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/IISAssessmentRecommendation/olvasás | Adatok beolvasása a IISAssessmentRecommendation táblából |
@@ -7712,6 +7921,8 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/művelet/olvasás | Adatok beolvasása a műveleti táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/OutboundConnection/olvasás | Adatok beolvasása a OutboundConnection táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/Perf/olvasás | Adatok beolvasása a Perf táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/PowerBIDatasetsTenantPreview/olvasás | Adatok beolvasása a PowerBIDatasetsTenantPreview táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/PowerBIDatasetsWorkspacePreview/olvasás | Adatok beolvasása a PowerBIDatasetsWorkspacePreview táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ProtectionStatus/olvasás | Adatok beolvasása a ProtectionStatus táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/kérelmek/olvasás | Adatok beolvasása a kérelmek táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/SCCMAssessmentRecommendation/olvasás | Adatok beolvasása a SCCMAssessmentRecommendation táblából |
@@ -7919,9 +8130,6 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/overview.md), [azure R
 > | Microsoft. Authorization/policyDefinitions/olvasás | Házirend-definíció adatainak beolvasása. |
 > | Microsoft. Authorization/policyDefinitions/írás | Hozzon létre egy egyéni szabályzat-definíciót. |
 > | Microsoft. Authorization/policyDefinitions/delete | Házirend-definíció törlése. |
-> | Microsoft. Authorization/policyExemptions/olvasás | Házirend-kivétel információinak beolvasása. |
-> | Microsoft. Authorization/policyExemptions/írás | Házirend-kivétel létrehozása a megadott hatókörben. |
-> | Microsoft. Authorization/policyExemptions/delete | Házirend-kivétel törlése a megadott hatókörben. |
 > | Microsoft. Authorization/policySetDefinitions/olvasás | Házirend-készlet definíciójának beolvasása. |
 > | Microsoft. Authorization/policySetDefinitions/írás | Hozzon létre egy egyéni házirend-készlet definícióját. |
 > | Microsoft. Authorization/policySetDefinitions/delete | Házirend-készlet definíciójának törlése. |
@@ -9076,12 +9284,14 @@ Azure-szolgáltatás: Core
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
 > | --- | --- |
-> | Microsoft. előfizetés/CreateSubscription/művelet | Azure-előfizetés létrehozása |
-> | Microsoft. előfizetés/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. előfizetés erőforrás-szolgáltatónál |
 > | Microsoft. előfizetés/megszakítás/művelet | Az előfizetés megszakítása |
 > | Microsoft. előfizetés/Átnevezés/művelet | Átnevezi az előfizetést |
-> | Microsoft. előfizetés/SubscriptionDefinitions/olvasás | Azure-előfizetések definíciójának beszerzése egy felügyeleti csoporton belül. |
-> | Microsoft. előfizetés/SubscriptionDefinitions/írás | Azure-előfizetés definíciójának létrehozása |
+> | Microsoft. előfizetés/engedélyezés/művelet | Engedélyezi az előfizetést |
+> | Microsoft. előfizetés/CreateSubscription/művelet | Azure-előfizetés létrehozása |
+> | Microsoft. előfizetés/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. előfizetés erőforrás-szolgáltatónál |
+> | Microsoft. előfizetés/updateTenant/művelet | Az előfizetés bérlője frissítése |
+> | Microsoft. előfizetés/aliasok/írás | Előfizetési alias létrehozása |
+> | Microsoft. előfizetés/előfizetések/írás | Előfizetés létrehozása vagy frissítése |
 
 ## <a name="intune"></a>Intune
 
@@ -9116,7 +9326,7 @@ Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/művelet | A Microsoft. BingMaps/mapApis metrikáinak listázása |
 > | Microsoft. BingMaps/Operations/READ | A Microsoft. BingMaps műveleteinek listázása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Beépített Azure-szerepkörök](built-in-roles.md)

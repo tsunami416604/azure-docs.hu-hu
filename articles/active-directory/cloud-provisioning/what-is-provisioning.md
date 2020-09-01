@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76712551"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228239"
 ---
 # <a name="what-is-identity-provisioning"></a>Mi az az identitáslétesítés?
 
@@ -50,7 +50,7 @@ A leggyakoribb forgatókönyv a következő: amikor egy új alkalmazott csatlako
 
 ![Felhőbeli kiépítés](media/what-is-provisioning/cloud3.png)
 
-Azure Active Directory (Azure AD) esetében az **[alkalmazás üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)és még sok más.
+Azure Active Directory (Azure AD) esetében az **[alkalmazás üzembe](../app-provisioning/user-provisioning.md)** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
 ## <a name="directory-provisioning"></a>Címtár kiépítés
 
@@ -62,7 +62,7 @@ A leggyakoribb forgatókönyv a következő: Ha Active Directory (AD) felhaszná
 
 Ezt a Azure AD Connect Sync, Azure AD Connect a felhőalapú kiépítés és a Microsoft Identity Manager használatával hajtották végre. 
  
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
 - [A felhő kiépítés telepítése](how-to-install.md)

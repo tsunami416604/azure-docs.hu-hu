@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 11742b00b62437b3acd6fa804a668cf83c2860f6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c99aa1bdb246d242c4c1cbd33672367b66f923ea
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007258"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229970"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>A PowerShell-modul beállítása a Windows rendszerű virtuális asztalhoz
 
@@ -40,6 +40,12 @@ Ezután futtassa a következő parancsmagot az Azure-hoz való kapcsolódáshoz:
 ```powershell
 Connect-AzAccount
 ```
+
+>! FONTOS Ha csatlakozik a US Gov-portálhoz, futtassa a következő parancsmagot:
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
 
 Az Azure-fiókba való bejelentkezéshez a kapcsolódási parancsmag futtatásakor generált kód szükséges. A bejelentkezéshez nyissa meg a következőt: <https://microsoft.com/devicelogin> , írja be a kódot, majd jelentkezzen be az Azure-beli rendszergazdai hitelesítő adataival.
 
@@ -127,7 +133,7 @@ Ha ismeri a fiókja helyét, használhatja azt egy parancsmagban. Íme például
 New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -Location “southeastasia”
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a PowerShell-modult, a parancsmagok futtatásával különféle dolgokat végezhet a Windows virtuális asztalban. Íme néhány olyan hely, amelyet használhat a modulban:
 

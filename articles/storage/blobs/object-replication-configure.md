@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c28e869bff1d0e921a1e5a952dbfcb21ee97d16b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076174"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228324"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)
 
@@ -36,7 +36,7 @@ A Storage-fiók legfeljebb két célobjektum forrásaként használható. A cél
 Mielőtt elkezdené, győződjön meg arról, hogy regisztrált a következő szolgáltatás-előnézetekhez:
 
 - [Objektum-replikáció (előzetes verzió)](object-replication-overview.md)
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [BLOB verziószámozása](versioning-overview.md)
 - [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)

@@ -1,16 +1,16 @@
 ---
 title: Azure arc-kompatibilis kiszolgálók (előzetes verzió) – áttekintés
-description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolgálókat (előzetes verzió) az Azure-on kívül üzemeltetett gépek kezelésére, mintha az Azure-erőforrás.
+description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolgálókat (előzetes verzió) az Azure-on kívül üzemeltetett kiszolgálók (például Azure-erőforrások) kezelésére.
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211317"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228087"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>Mi az Azure arc-kompatibilis kiszolgálók (előzetes verzió)?
 
@@ -51,4 +51,4 @@ A csatlakoztatott gépi ügynök egy normál szívverésű üzenetet küld a szo
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az arc-kompatibilis kiszolgálók (előzetes verzió) több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gépi ügynök áttekintő](agent-overview.md) cikkét, hogy megtudja, mi szükséges, az ügynök műszaki adatai és a telepítési módszerek.
+Az arc-kompatibilis kiszolgálók (előzetes verzió) több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények, az ügynök műszaki adatai és a telepítési módszerek megismeréséhez.

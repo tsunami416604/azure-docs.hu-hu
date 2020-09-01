@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/25/2020
+ms.date: 09/01/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826871"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229871"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -34,8 +34,8 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
     - **Naplók** kiosztása – rendszertevékenység nyújtása az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
 
 - **Biztonság** 
-    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek.
-    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek.
+    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
 Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 
@@ -94,7 +94,7 @@ A kiépítési adatait szűrheti. Egyes szűrési értékek dinamikusan vannak f
 Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
-- Date
+- Dátum
 - status
 - Művelet
 
@@ -118,7 +118,7 @@ Amikor kiválaszt egy egyéni időkeretet, beállíthatja a kezdési és a befej
 
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
-- Mind
+- Összes
 - Success
 - Hiba
 - Kimarad
@@ -204,7 +204,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 
@@ -218,7 +218,7 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 - A log Analytics jelenleg nem támogatott.
 
-- Amikor egy alkalmazás környezetében fér hozzá a kiépítési naplókhoz, nem szűri automatikusan az eseményeket az adott alkalmazáshoz a naplók módon.
+- A kihagyott eseményeket a hatókörön kívüli felhasználók számára is megtekintheti. Ez várható, különösen akkor, ha a szinkronizálási hatókör az összes felhasználóra és csoportra van beállítva. A szolgáltatás a bérlő összes objektumát kiértékeli, még a hatókörön kívül is. 
 
 ## <a name="error-codes"></a>Hibakódok
 
@@ -226,28 +226,26 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 
 |Hibakód|Leírás|
 |---|---|
-|Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban, vagy tekintse át a megfelelő attribútum-konfigurációt, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. Az egyeztetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át az alábbi [dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
+|Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban, vagy tekintse át a megfelelő attribútum-konfigurációt, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. Az egyeztetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át az alábbi [dokumentációt](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést fogad. Semmi teendő. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|
 |InternalServerError |A célalkalmazás váratlan hibát adott vissza. Előfordulhat, hogy egy szolgáltatási probléma van a célalkalmazás számára, amely megakadályozza ennek működését. Ez a kísérlet 40 percen belül automatikusan kimarad.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, jogosulatlan| Az Azure AD képes volt hitelesíteni a megcélzott alkalmazást, de nem jogosult a frissítés végrehajtására. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list).|
+|InsufficientRights, MethodNotAllowed, NotPermitted, jogosulatlan| Az Azure AD képes volt hitelesíteni a megcélzott alkalmazást, de nem jogosult a frissítés végrehajtására. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md).|
 |UnprocessableEntity|A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy a célalkalmazás konfigurációja nem megfelelő, vagy a célalkalmazás olyan szolgáltatási problémával jár, amely megakadályozza ennek működését.|
 |WebExceptionProtocolError |HTTP protokoll hiba történt a célalkalmazáshoz való csatlakozás során. Semmi teendő. Ez a kísérlet 40 percen belül automatikusan kimarad.|
-|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó újraegyezésének kényszerítéséhez az MS Graph API használatával [indítsa újra a feladatot](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Vegye figyelembe, hogy a kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. Emellett törli a kiépítési szolgáltatás által a működéshez használt gyorsítótárat is, ami azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és bizonyos kiépítési eseményeket el lehet dobni.|
-|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy előfordulhat, hogy probléma van a célalkalmazás szolgáltatással, amely megakadályozza ennek működését. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). |
-|MandatoryFieldsMissing, MissingValues |A felhasználó nem hozható létre, mert hiányoznak a szükséges értékek. Javítsa ki a hiányzó attribútum-értékeket a forrás rekordban, vagy tekintse át a megfelelő attribútumok konfigurációját, hogy a kötelező mezők ne legyenek kihagyva. [További](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) információ a megfeleltetési attribútumok konfigurálásáról.|
-|SchemaAttributeNotFound |A művelet nem hajtható végre, mert egy olyan attribútum lett megadva, amely nem létezik a célalkalmazás alkalmazásban. Tekintse meg az attribútumok testreszabásával kapcsolatos [dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) , és győződjön meg arról, hogy a konfiguráció helyes.|
+|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó újraegyezésének kényszerítéséhez az MS Graph API használatával [indítsa újra a feladatot](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Vegye figyelembe, hogy a kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. Emellett törli a kiépítési szolgáltatás által a működéshez használt gyorsítótárat is, ami azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és bizonyos kiépítési eseményeket el lehet dobni.|
+|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy előfordulhat, hogy probléma van a célalkalmazás szolgáltatással, amely megakadályozza ennek működését. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md). |
+|MandatoryFieldsMissing, MissingValues |A felhasználó nem hozható létre, mert hiányoznak a szükséges értékek. Javítsa ki a hiányzó attribútum-értékeket a forrás rekordban, vagy tekintse át a megfelelő attribútumok konfigurációját, hogy a kötelező mezők ne legyenek kihagyva. [További](../app-provisioning/customize-application-attributes.md) információ a megfeleltetési attribútumok konfigurálásáról.|
+|SchemaAttributeNotFound |A művelet nem hajtható végre, mert egy olyan attribútum lett megadva, amely nem létezik a célalkalmazás alkalmazásban. Tekintse meg az attribútumok testreszabásával kapcsolatos [dokumentációt](../app-provisioning/customize-application-attributes.md) , és győződjön meg arról, hogy a konfiguráció helyes.|
 |InternalError |Belső szolgáltatási hiba történt az Azure AD-létesítési szolgáltatásban. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
 |InvalidDomain |A műveletet nem lehetett végrehajtani, mert egy attribútumérték érvénytelen tartománynevet tartalmaz. Frissítse a tartománynevet a felhasználón, vagy adja hozzá azt a célalkalmazás engedélyezett listájához. |
 |Időtúllépés |A műveletet nem lehetett befejezni, mert a célalkalmazás túl sokáig tartott a válaszadáshoz. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
 |LicenseLimitExceeded|A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. További licenceket is megadhat a célalkalmazás számára, vagy áttekintheti a felhasználói hozzárendelések és attribútumok leképezésének konfigurációját, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.|
-|DuplicateTargetEntries  |A műveletet nem lehetett befejezni, mert a célalkalmazás több felhasználója található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)leírtak szerint.|
-|DuplicateSourceEntries | A műveletet nem lehetett befejezni, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)leírtak szerint.|
+|DuplicateTargetEntries  |A műveletet nem lehetett befejezni, mert a célalkalmazás több felhasználója található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](../app-provisioning/customize-application-attributes.md)leírtak szerint.|
+|DuplicateSourceEntries | A műveletet nem lehetett befejezni, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](../app-provisioning/customize-application-attributes.md)leírtak szerint.|
 |ImportSkipped | Az egyes felhasználók kiértékelése után a rendszer megkísérli importálni a felhasználót a forrásrendszer használatával. Ez a hiba általában akkor fordul elő, ha az importálandó felhasználó hiányzik az attribútum-hozzárendelésekben definiált megfelelő tulajdonság. A megfelelő attribútumhoz tartozó felhasználói objektumon nincs megadva érték, nem értékelhető ki a hatókör, a megfeleltetés vagy az Exportálás módosítása. Vegye figyelembe, hogy a hiba jelenléte nem jelzi, hogy a felhasználó hatókörben van, mivel még nem értékelte ki a hatókört a felhasználó számára.|
 |EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. A kihagyás oka az lehet, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már meglévő a célszámítógépen, és nincs szükség további módosításokra.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A felhasználó kiépítési állapotának megtekintése](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
-* [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-
-
+* [A felhasználó kiépítési állapotának megtekintése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](../app-provisioning/application-provisioning-config-problem.md)

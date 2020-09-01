@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5c07500ec432d176b2cf74aa95f0a1c943348f9f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85481391"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229516"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Mi az Azure Active Directory-jelentés?
 
@@ -44,9 +44,9 @@ A jelentéskészítési architektúra két alappillérre támaszkodik:
 
 A biztonsági jelentések segítenek a szervezet identitásának védelmében. A biztonsági jelentések két típusa létezik:
 
-- **Kockázatosként megjelölt felhasználók** – A [kockázatosként megjelölt felhasználók biztonsági jelentésben](concept-user-at-risk.md) azon felhasználói fiókok áttekintését találja, amelyek biztonsága esetleg sérült.
+- **Kockázatosként megjelölt felhasználók** – A [kockázatosként megjelölt felhasználók biztonsági jelentésben](../identity-protection/overview-identity-protection.md) azon felhasználói fiókok áttekintését találja, amelyek biztonsága esetleg sérült.
 
-- **Kockázatos bejelentkezések** – A [kockázatos bejelentkezés biztonsági jelentés](concept-risky-sign-ins.md) olyan bejelentkezési kísérleteket jelöl, amelyeket elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiókok jogos tulajdonosa. 
+- **Kockázatos bejelentkezések** – A [kockázatos bejelentkezés biztonsági jelentés](../identity-protection/overview-identity-protection.md) olyan bejelentkezési kísérleteket jelöl, amelyeket elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiókok jogos tulajdonosa. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Milyen Azure AD-licencre van szükség a biztonsági jelentések eléréséhez?  
 
@@ -81,7 +81,7 @@ A [naplók jelentés](concept-audit-logs.md) a rendszertevékenységek rekordjai
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Milyen Azure AD-licencre van szükség a naplójelentéshez való hozzáféréshez?  
 
-A naplójelentés olyan szolgáltatásokhoz érhető el, amelyekhez licenccel rendelkezik. Ha rendelkezik licenccel egy adott szolgáltatáshoz, annak naplóinformációihoz is hozzáfér. A [Azure Active Directory díjszabási oldalán](https://azure.microsoft.com/pricing/details/active-directory/)megtekintheti a deatiled funkcióinak összehasonlítását a [különböző típusú licencek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) esetében. További részletek: [Azure Active Directory szolgáltatások és képességek](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
+A naplójelentés olyan szolgáltatásokhoz érhető el, amelyekhez licenccel rendelkezik. Ha rendelkezik licenccel egy adott szolgáltatáshoz, annak naplóinformációihoz is hozzáfér. A [Azure Active Directory díjszabási oldalán](https://azure.microsoft.com/pricing/details/active-directory/)megtekintheti a deatiled funkcióinak összehasonlítását a [különböző típusú licencek](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses) esetében. További részletek: [Azure Active Directory szolgáltatások és képességek](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Bejelentkezések jelentés
 
@@ -99,8 +99,8 @@ A bejelentkezési tevékenységjelentés eléréséhez a bérlőnek prémium szi
 
 A felhasználói felületen kívül az Azure AD [programozott hozzáférést](concept-reporting-api.md) is biztosít a jelentések adatokhoz a REST-alapú API-k segítségével. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Kockázatos bejelentkezési jelentések](concept-risky-sign-ins.md)
+- [Kockázatos bejelentkezési jelentések](../identity-protection/overview-identity-protection.md)
 - [Naplók jelentés](concept-audit-logs.md)
 - [Bejelentkezési naplók jelentés](concept-sign-ins.md)

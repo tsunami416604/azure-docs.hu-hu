@@ -1,21 +1,21 @@
 ---
-title: Az Azure webalkalmazási tűzfal bemutatása
+title: Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 titleSuffix: Azure Web Application Firewall
 description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfalról (WAF) Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142844"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226998"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazási tűzfal az Azure Application Gateway
+# <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 
 Az Azure-Application Gateway Azure webalkalmazási tűzfala (WAF) lehetővé teszi a webalkalmazások központosított védelmét a gyakori támadásokkal és biztonsági rések ellen. A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. Az SQL-injektálás és a helyek közötti parancsfájlkezelés a leggyakoribb támadások közé tartozik.
 
@@ -46,7 +46,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * A webalkalmazások rosszindulatú robotoktól való ellátása az IP hírnévre vonatkozó szabályrendszert (előzetes verzió)
 
-### <a name="monitoring"></a>Monitorozás
+### <a name="monitoring"></a>Figyelés
 
 * Valós idejű WAF-napló használatával figyelheti a webalkalmazások elleni támadásokat. A napló integrálva van [Azure monitor](../../azure-monitor/overview.md) a WAF-riasztások nyomon követésére és a trendek egyszerű figyelésére.
 
@@ -60,7 +60,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
@@ -98,7 +98,7 @@ További információ az egyéni szabályokról: [Application Gateway egyéni sz
 
 ### <a name="bot-mitigation-preview"></a>Bot-enyhítés (előzetes verzió)
 
-A felügyelt robot védelmi szabálykészlet lehetővé teszi, hogy a WAF blokkolják vagy naplózzák az ismert kártékony IP-címekről érkező kéréseket a felügyelt szabályokkal együtt. Az IP-címek forrása a Microsoft Threat Intelligence-hírcsatorna. A Intelligens biztonsági gráf a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.
+A felügyelt robot védelmi szabálykészlet lehetővé teszi, hogy a WAF blokkolják vagy naplózzák az ismert kártékony IP-címekről érkező kéréseket a felügyelt szabályokkal együtt. Az IP-címek forrása a Microsoft fenyegetésfelderítő hírcsatornája. A Microsoft veszélyforrás-felderítését az Intelligent Security Graph működteti, és azt több szolgáltatás, például az Azure Security Center is használja.
 
 > [!NOTE]
 > A robot Protection-szabálykészlet jelenleg nyilvános előzetes verzióban érhető el, és az előzetes verziójú szolgáltatói szerződéssel van ellátva. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -158,7 +158,7 @@ A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, biztonsági inf
 A beépített Azure WAF Firewall Events munkafüzettel áttekintést kaphat a WAF lévő biztonsági eseményekről. Ilyenek például az események, a megfeleltetett és a blokkolt szabályok, valamint minden más, ami bekerül a tűzfal naplófájljaiba. További információk az alábbi naplózásban. 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Azure WAF tűzfal eseményeinek munkafüzete](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>Naplózás
 
@@ -206,10 +206,12 @@ Application Gateway WAF részletes jelentéskészítést biztosít az általa é
 
 A díjszabási modellek a WAF_v1 és az WAF_v2 SKU esetében eltérőek. További információért tekintse meg a [Application Gateway díjszabási](https://azure.microsoft.com/pricing/details/application-gateway/) oldalát. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="whats-new"></a>Újdonságok
 
-- Első lépések [WAF szabályzat létrehozásával](create-waf-policy-ag.md)
+Az Azure webalkalmazási tűzfal újdonságait az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall)című témakör ismerteti.
+
+## <a name="next-steps"></a>Következő lépések
+
 - További információ a [WAF felügyelt szabályairól](application-gateway-crs-rulegroups-rules.md)
 - További információ az [Egyéni szabályokról](custom-waf-rules-overview.md)
 - Ismerje meg [a webalkalmazási tűzfalat az Azure bejárati ajtaján](../afds/afds-overview.md)
-

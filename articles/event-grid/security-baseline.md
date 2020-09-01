@@ -6,13 +6,13 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7c331fcbb013243cbd724d0c9337ce80fa1bedbd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 132a6d9a6f5ca702b13e84402ee9bb71eca57d7c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752728"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229701"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid Azure biztonsági alapterve
 
@@ -992,7 +992,7 @@ A Event Grid jelenleg nem támogatja az ügyfél által felügyelt kulcsokat.
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

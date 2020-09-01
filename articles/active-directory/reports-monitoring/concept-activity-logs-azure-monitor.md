@@ -17,14 +17,14 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261023"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229854"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-tevékenységek naplói a Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-tevékenységnaplók az Azure Monitorban
 
 A hosszú távú adatmegőrzéshez és az adatelemzéshez Azure Active Directory (Azure AD) tevékenység naplóit több végpontra is átirányíthatja. Ez a funkció lehetővé teszi a következőket:
 
@@ -103,7 +103,7 @@ Az alábbi táblázat az USA nyugati régiójában található alapszintű Event
 | Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Naplózás | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
-| Naplózás | 1,000 | 0.1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
+| Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
 | Bejelentkezések | 100.000 | 18000 | 5 400 000 | 10,8 GB | 42188 | 364 504 320 | $23,9 |  
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
@@ -126,7 +126,7 @@ Az alábbi táblázat az USA nyugati régiójában található alapszintű Event
 
 
 
-A Azure Monitor naplók kezelésével kapcsolatos költségek áttekintését lásd: a [költségek kezelése az adatmennyiség szabályozásával és a megőrzéssel Azure monitor naplókban](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+A Azure Monitor naplók kezelésével kapcsolatos költségek áttekintését lásd: a [költségek kezelése az adatmennyiség szabályozásával és a megőrzéssel Azure monitor naplókban](../../azure-monitor/platform/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -180,13 +180,13 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 **K: Mely SIEM-eszközök támogatottak jelenleg?** 
 
-**A**: **a**jelenleg Azure monitor a [splunk](tutorial-integrate-activity-logs-with-splunk.md), az IBM QRadar, a [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), a [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight), a LogRhythm és a Logz.IO támogatja. Az összekötők működéséről [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ismertető cikkben talál további információt.
+**A**: **a**jelenleg Azure monitor a [splunk](./howto-integrate-activity-logs-with-splunk.md), az IBM QRadar, a [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), a [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), a LogRhythm és a Logz.IO támogatja. Az összekötők működéséről [az Azure monitorozási adatok egy eseményközpontba külső eszközökben való használat céljából való streamelését](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ismertető cikkben talál további információt.
 
 ---
 
 **K: Hogyan integrálhatom az Azure AD-tevékenységnaplókat a Splunk-példányommal?**
 
-**V**: Először [irányítsa át az Azure AD-tevékenységnaplókat egy eseményközpontba](quickstart-azure-monitor-stream-logs-to-event-hub.md), majd a vonatkozó lépéseket követve [integrálja a tevékenységnaplókat a Splunkkal](tutorial-integrate-activity-logs-with-splunk.md).
+**V**: Először [irányítsa át az Azure AD-tevékenységnaplókat egy eseményközpontba](./tutorial-azure-monitor-stream-logs-to-event-hub.md), majd a vonatkozó lépéseket követve [integrálja a tevékenységnaplókat a Splunkkal](./howto-integrate-activity-logs-with-splunk.md).
 
 ---
 
@@ -198,13 +198,13 @@ Ez a szakasz az Azure AD-naplók az Azure Monitorban való kezelésével kapcsol
 
 **K: Elérhetem az adatokat egy eseményközpontban külső SIEM-eszköz használata nélkül is?** 
 
-**A**: igen. Az [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
+**A**: igen. Az [Event Hubs API](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) használatával is elérheti a naplókat az egyéni alkalmazásokban. 
 
 ---
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tevékenységnaplók archiválása egy Storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md)
-* [Tevékenységnaplók irányítása egy eseményközpontba](quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Tevékenységnaplók irányítása egy eseményközpontba](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Tevékenységek naplóinak integrálása Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

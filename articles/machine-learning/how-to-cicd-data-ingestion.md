@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843708"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228885"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps adatfeldolgozási folyamathoz
 
@@ -64,7 +64,7 @@ A kód például egy Azure DevOps-, GitHub-vagy GitLab-tárházban tárolódik. 
 Az adatmérnökök a Python notebook forráskódját helyileg, egy IDE (például a [Visual Studio Code](https://code.visualstudio.com)) vagy közvetlenül a Databricks munkaterületen működnek. A kód módosításainak befejezése után a rendszer egyesíti őket a tárházba az elágazási szabályzat után.
 
 > [!TIP] 
-> Javasoljuk, hogy a kódot `.py` `.ipynb` Jupyter jegyzetfüzet formátuma helyett fájlokban tárolja. Javítja a kód olvashatóságát, és lehetővé teszi az automatikus kódok minőségének ellenőrzését a CI-folyamat során.
+> Azt javasoljuk, hogy Jupyter Notebook formátumban tárolja a kódot a `.py` fájlokban `.ipynb` . Javítja a kód olvashatóságát, és lehetővé teszi az automatikus kódok minőségének ellenőrzését a CI-folyamat során.
 
 ### <a name="azure-data-factory-source-code"></a>Forráskód Azure Data Factory
 

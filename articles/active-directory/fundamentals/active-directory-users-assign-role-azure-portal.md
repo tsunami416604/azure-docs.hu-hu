@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 08/31/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e28da81400a97216836cfd9eccf0d4859ce0762f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902354"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228222"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory
 
@@ -31,7 +31,7 @@ További információ az elérhető Azure AD-szerepkörökről: [rendszergazdai 
 Az Azure AD-szerepkörök felhasználóhoz való hozzárendelésének általános módja a **hozzárendelt szerepkörök** lap egy felhasználó számára. Azt is megteheti, hogy a felhasználói jogosultságot a Privileged Identity Management (PIM) használatával egy szerepkörre emelt szintű szintre állítja be. További információ a PIM használatáról: [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 > [!Note]
-> Ha rendelkezik egy prémium szintű Azure AD P2-licenccel, és már használja a PIM-t, az összes szerepkör-felügyeleti feladatot a rendszer a [Privileged Identity Management felhasználói felületén](../users-groups-roles/directory-manage-roles-portal.md)hajtja végre.
+> Ha rendelkezik egy prémium szintű Azure AD P2-licenccel, és már használja a PIM-t, az összes szerepkör-felügyeleti feladatot a rendszer a [Privileged Identity Management felhasználói felületén](../users-groups-roles/directory-manage-roles-portal.md)hajtja végre. Ez a funkció jelenleg csak egy szerepkör hozzárendelését hajtja végre egyszerre. Jelenleg nem választhat egyszerre több szerepkört, és nem rendelheti hozzá egyszerre a felhasználóhoz.
 >
 > ![A PIM-ben felügyelt Azure AD-szerepkörök olyan felhasználók számára, akik már használják a PIM-t, és prémium P2 licenccel rendelkeznek](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 

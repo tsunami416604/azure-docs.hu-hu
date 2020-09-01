@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy csomó
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854619"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228715"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Service Fabric-fürt elsődleges csomópont-típusának vertikális felskálázása csomópont-típus hozzáadásával
 Ez a cikk azt ismerteti, hogyan méretezhető egy Service Fabric-fürt elsődleges csomópontjának típusa egy további csomópont-típusnak a fürthöz való hozzáadásával. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni.
@@ -99,7 +99,7 @@ A következő lépések mindegyikével megtalálhatja a sablont: [Service Fabric
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. Hozzon létre egy új virtuálisgép-méretezési készletet, amely az új virtuális gép SKU-t és az operációs rendszer SKU-át szeretné méretezni. 
+4. Hozzon létre egy új virtuálisgép-méretezési készletet, amely az új virtuális gép SKU-t és az operációs rendszer SKU-át használja. 
 
 Csomópont típusa ref 
 ```json
@@ -124,6 +124,134 @@ OPERÁCIÓS RENDSZER SKU
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
+
+Az alábbi kódrészlet egy új virtuálisgép-méretezési csoport erőforrás, amely egy Service Fabric fürt új csomópont-típusának létrehozására szolgál. Győződjön meg arról, hogy a számítási feladathoz szükséges további bővítmények is elérhetők. 
+
+```json
+    {
+      "apiVersion": "[variables('vmssApiVersion')]",
+      "type": "Microsoft.Compute/virtualMachineScaleSets",
+      "name": "[variables('vmNodeType1Name')]",
+      "location": "[variables('computeLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+      ],
+      "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+          "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+          "extensionProfile": {
+            "extensions": [
+              {
+                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
+                "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": true,
+                  "protectedSettings": {
+                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                  },
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
+                    "dataPath": "D:\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "enableParallelJobs": true,
+                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
+                    "certificate": {
+                      "thumbprint": "[parameters('certificateThumbprint')]",
+                      "x509StoreName": "[parameters('certificateStoreValue')]"
+                    }
+                  },
+                  "typeHandlerVersion": "1.0"
+                }
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "[concat(variables('nicName'), '-1')]",
+                "properties": {
+                  "ipConfigurations": [
+                    {
+                      "name": "[concat(variables('nicName'),'-',1)]",
+                      "properties": {
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "[variables('lbPoolID1')]"
+                          }
+                        ],
+                        "loadBalancerInboundNatPools": [
+                          {
+                            "id": "[variables('lbNatPoolID1')]"
+                          }
+                        ],
+                        "subnet": {
+                          "id": "[variables('subnet1Ref')]"
+                        }
+                      }
+                    }
+                  ],
+                  "primary": true
+                }
+              }
+            ]
+          },
+          "osProfile": {
+            "adminPassword": "[parameters('adminPassword')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "computernamePrefix": "[variables('vmNodeType1Name')]",
+            "secrets": [
+              {
+                "sourceVault": {
+                  "id": "[parameters('sourceVaultValue')]"
+                },
+                "vaultCertificates": [
+                  {
+                    "certificateStore": "[parameters('certificateStoreValue')]",
+                    "certificateUrl": "[parameters('certificateUrlValue')]"
+                  }
+                ]
+              }
+            ]
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('vmImagePublisher1')]",
+              "offer": "[parameters('vmImageOffer1')]",
+              "sku": "[parameters('vmImageSku1')]",
+              "version": "[parameters('vmImageVersion1')]"
+            },
+            "osDisk": {
+              "caching": "ReadOnly",
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[parameters('storageAccountType')]"
+              }
+            }
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('vmNodeType1Size')]",
+        "capacity": "[parameters('nt1InstanceCount')]",
+        "tier": "Standard"
+      },
+      "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+      }
+    },
+
+```
+
 5. Adjon hozzá egy új csomópont-típust a fürthöz, amely a fent létrehozott virtuálisgép-méretezési csoportra hivatkozik. A csomópont **isPrimary** tulajdonságát True értékre kell állítani. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
@@ -339,7 +467,7 @@ Csak ezüst és magasabb tartósságú fürtök esetén frissítse a sablonban s
 ```
 10. Távolítsa el az ARM-sablon eredeti csomópont-típusához kapcsolódó összes többi erőforrást. Lásd: [Service Fabric – új csomópont típusú fürt](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) egy sablonhoz az összes ilyen eredeti erőforrás eltávolításával.
 
-11. Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService, ezért szükség van a csomópontok újraindítására. Ebben az esetben a rendszer figyelmen kívül hagyja a forceRestart. A upgradeReplicaSetCheckTimeout paraméter határozza meg azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton. A upgradeTimeout paraméter értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
+11. Telepítse a módosított Azure Resource Manager sablont. * * Ez a lépés eltarthat egy ideig, általában akár két óráig is. Ez a frissítés megváltoztatja a beállításokat a InfrastructureService; Ezért szükség van egy csomópont újraindítására. Ebben az esetben a rendszer figyelmen kívül hagyja a forceRestart. A upgradeReplicaSetCheckTimeout paraméter határozza meg azt a maximális időtartamot, ameddig Service Fabric a partíció biztonságos állapotba kerül, ha még nem biztonságos állapotban van. Miután a biztonsági ellenőrzés egy csomóponton lévő összes partícióra kiterjed, Service Fabric folytatja a frissítést a csomóponton. A upgradeTimeout paraméter értéke 6 órára csökkenthető, de a maximális biztonság érdekében 12 órát kell használni.
 Ezután ellenőrizze, hogy a portálon a Service Fabric erőforrás készként jelenik-e meg. 
 
 ```powershell
@@ -355,7 +483,7 @@ New-AzResourceGroupDeployment `
 
 A fürt elsődleges csomópontjának típusa már frissítve lett. Ellenőrizze, hogy a telepített alkalmazások megfelelően működnek-e, és hogy a fürt állapota rendben van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [adhat hozzá csomópont-típust fürthöz](virtual-machine-scale-set-scale-node-type-scale-out.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.

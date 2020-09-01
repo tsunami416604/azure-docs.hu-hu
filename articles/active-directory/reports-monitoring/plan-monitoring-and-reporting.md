@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829629"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229752"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -47,9 +47,9 @@ Az Azure AD-figyelés segítségével a naplók a következőre irányíthatók:
 * egy Azure Event hub, amely integrálható a meglévő SIEM-eszközökkel, például a splunk, a Sumologic vagy a QRadar.
 
 > [!NOTE]
-A közelmúltban kezdtük el használni a Azure Monitor naplók kifejezést Log Analytics helyett. A naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi. Frissíti a terminológiát, hogy jobban tükrözze a naplók szerepét a [Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection). A részletekért tekintse meg [Azure monitor terminológiai módosításokat](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand) .
+A közelmúltban kezdtük el használni a Azure Monitor naplók kifejezést Log Analytics helyett. A naplózási adatokat a rendszer továbbra is egy Log Analytics munkaterületen tárolja, és ugyanazokat a Log Analytics szolgáltatást gyűjti és elemzi. Frissíti a terminológiát, hogy jobban tükrözze a naplók szerepét a [Azure monitorban](../../azure-monitor/platform/data-platform.md). A részletekért tekintse meg [Azure monitor terminológiai módosításokat](../../azure-monitor/terminology.md) .
 
-[További információ a jelentések adatmegőrzési házirendjeiről](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention).
+[További információ a jelentések adatmegőrzési házirendjeiről](./reference-reports-data-retention.md).
 
 ### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Az Azure AD jelentéskészítési és figyelési licencelése és előfeltételei
 
@@ -115,25 +115,25 @@ Az Azure AD-figyelés segítségével átirányíthatja az Azure AD-tevékenysé
 
 #### <a name="archive-logs-in-a-storage-account"></a>Naplófájlok archiválása egy Storage-fiókban
 
-Egy Azure Storage-fiókba irányítja át a naplókat, így az [adatmegőrzési szabályzatokban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)megadott alapértelmezett megőrzési időtartamnál hosszabb ideig tarthat. Akkor használja ezt a módszert, ha archiválni szeretné a naplókat, de nem kell azokat egy SIEM-rendszerrel integrálni, és nem kell folyamatos lekérdezéseket és elemzéseket végeznie. Továbbra is igény szerinti kereséseket végezhet.
+Egy Azure Storage-fiókba irányítja át a naplókat, így az [adatmegőrzési szabályzatokban](./reference-reports-data-retention.md)megadott alapértelmezett megőrzési időtartamnál hosszabb ideig tarthat. Akkor használja ezt a módszert, ha archiválni szeretné a naplókat, de nem kell azokat egy SIEM-rendszerrel integrálni, és nem kell folyamatos lekérdezéseket és elemzéseket végeznie. Továbbra is igény szerinti kereséseket végezhet.
 
-További információ [az adatok a tárfiókokba való irányításáról](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account).
+További információ [az adatok a tárfiókokba való irányításáról](./quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Naplók elküldése Azure Monitor naplókba
 
-[Azure monitor naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) különböző forrásokból származó figyelési adatok összesítését végzik. Egy lekérdezési nyelvet és elemzési motort is biztosít, amely betekintést nyújt az alkalmazások működésére és az erőforrások használatára. Az Azure AD-tevékenység naplófájljainak Azure Monitor naplókba küldésével gyorsan lekérheti, figyelheti és riasztást gyűjthet az összegyűjtött adatokról. Akkor használja ezt a módszert, ha nem rendelkezik olyan meglévő SIEM-megoldással, amelyet közvetlenül szeretne elküldeni, de lekérdezéseket és elemzéseket szeretne küldeni. Miután az adatai beAzure Monitor naplókba, elküldheti azt az Event hub-ba, és onnan egy SIEM-be, ha szeretné.
+[Azure monitor naplók](../../azure-monitor/log-query/log-query-overview.md) különböző forrásokból származó figyelési adatok összesítését végzik. Egy lekérdezési nyelvet és elemzési motort is biztosít, amely betekintést nyújt az alkalmazások működésére és az erőforrások használatára. Az Azure AD-tevékenység naplófájljainak Azure Monitor naplókba küldésével gyorsan lekérheti, figyelheti és riasztást gyűjthet az összegyűjtött adatokról. Akkor használja ezt a módszert, ha nem rendelkezik olyan meglévő SIEM-megoldással, amelyet közvetlenül szeretne elküldeni, de lekérdezéseket és elemzéseket szeretne küldeni. Miután az adatai beAzure Monitor naplókba, elküldheti azt az Event hub-ba, és onnan egy SIEM-be, ha szeretné.
 
-Megtudhatja, hogyan [küldhet adatküldést Azure monitor naplókba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+Megtudhatja, hogyan [küldhet adatküldést Azure monitor naplókba](./howto-integrate-activity-logs-with-log-analytics.md).
 
 Az Azure AD-tevékenységek naplóihoz készült előre összeállított nézeteket is telepítheti a bejelentkezést és a naplózási eseményeket érintő gyakori forgatókönyvek figyeléséhez.
 
-Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket az Azure ad-tevékenységek naplóihoz](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views).
+Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket az Azure ad-tevékenységek naplóihoz](./howto-install-use-log-analytics-views.md).
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>Stream-naplók az Azure Event hub-ba
 
 Az Azure Event hub-ba történő útválasztási naplók lehetővé teszik a harmadik féltől származó SIEM-eszközökkel való integrációt. Ez az integráció lehetővé teszi, hogy az Azure AD-tevékenységek naplójának adatait kombinálja a SIEM által kezelt egyéb adatszolgáltatásokkal, így a környezet mélyebb betekintést biztosít. 
 
-További információ [a naplók eseményközpontokba való streameléséről](https://docs.microsoft.com//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+További információ [a naplók eseményközpontokba való streameléséről](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Az Azure AD jelentéskészítési és figyelési műveleteinek és biztonságának megtervezése
 
@@ -151,9 +151,9 @@ Az Azure AD-jelentések a következő szerepkörökből olvashatók be:
 
 * Jelentésolvasó
 
-További információ az [Azure ad rendszergazdai szerepköreiről](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
+További információ az [Azure ad rendszergazdai szerepköreiről](../users-groups-roles/directory-assign-admin-roles.md).
 
-*Mindig alkalmazza a legalacsonyabb jogosultsági szintű koncepciót, hogy csökkentse a fiókok biztonságának kockázatát*. A szervezet további biztonságossá tételéhez vegye fontolóra [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) megvalósítását.
+*Mindig alkalmazza a legalacsonyabb jogosultsági szintű koncepciót, hogy csökkentse a fiókok biztonságának kockázatát*. A szervezet további biztonságossá tételéhez vegye fontolóra [Privileged Identity Management](../privileged-identity-management/pim-configure.md) megvalósítását.
 
 ##  
 
@@ -163,34 +163,34 @@ A fenti tervezési útmutató alapján a korábban létrehozott döntéseknek me
 
 ### <a name="consume-and-archive-azure-ad-logs"></a>Azure AD-naplók felhasználása és archiválása
 
-[Tevékenységjelentések keresése az Azure Portalon](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
+[Tevékenységjelentések keresése az Azure Portalon](./howto-find-activity-reports.md)
 
-[Azure AD-naplók archiválása Azure Storage-fiókba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
+[Azure AD-naplók archiválása Azure Storage-fiókba](./quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 ### <a name="implement-monitoring-and-analytics"></a>A monitorozás és az elemzés megvalósítása
 
-[Naplók elküldése a Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+[Naplók elküldése a Azure Monitorba](./howto-integrate-activity-logs-with-log-analytics.md)
 
-[A log Analytics-nézetek telepítése és használata Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
+[A log Analytics-nézetek telepítése és használata Azure Active Directory](./howto-install-use-log-analytics-views.md)
 
-[Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
+[Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal](./howto-analyze-activity-logs-log-analytics.md)
 
-* [A naplózási naplók sémájának értelmezése Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
+* [A naplózási naplók sémájának értelmezése Azure Monitor](./reference-azure-monitor-audit-log-schema.md)
 
-* [A bejelentkezési naplók sémájának értelmezése Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
+* [A bejelentkezési naplók sémájának értelmezése Azure Monitor](./reference-azure-monitor-sign-ins-log-schema.md)
 
- * [Azure AD-naplók továbbítása Azure Event hub-ba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
+ * [Azure AD-naplók továbbítása Azure Event hub-ba](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 
-* [Azure AD-naplók integrálása a Splunkkal az Azure Monitor használatával](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-integrate-activity-logs-with-splunk)
+* [Azure AD-naplók integrálása a Splunkkal az Azure Monitor használatával](./howto-integrate-activity-logs-with-splunk.md)
 
-* [Azure AD-naplók integrálása a SumoLogickal az Azure Monitor használatával](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic)
-
- 
+* [Azure AD-naplók integrálása a SumoLogickal az Azure Monitor használatával](./howto-integrate-activity-logs-with-sumologic.md)
 
  
 
-## <a name="next-steps"></a>További lépések
+ 
 
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) megvalósításának megfontolása 
+## <a name="next-steps"></a>Következő lépések
 
-Vegye fontolóra az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) megvalósítását
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) megvalósításának megfontolása 
+
+Vegye fontolóra az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) megvalósítását

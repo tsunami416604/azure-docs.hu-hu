@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2e3b6845b66978b4892303549dabca4034a870b2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 263f018155aa6effada3d509c907d825b65a8d45
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079642"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228392"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
 
@@ -94,9 +94,9 @@ A NSG konfigurálásához használja a Azure Security Center igény szerinti há
 
 Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat javasolhat, amelyek a portok és a forrás IP-címeket korlátozzák a tényleges forgalom és a veszélyforrások felderítése alapján.
 
-* [Bejövő hívások biztonságossá tétele Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [Bejövő hívások biztonságossá tétele Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Bejövő IP-címek korlátozása](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Bejövő IP-címek korlátozása](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 * [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
 
@@ -368,7 +368,7 @@ A logikai alkalmazás minden kérelem végpontja közös hozzáférési aláír�
 
 * [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 **Azure Security Center figyelés**: N/A
 
@@ -382,7 +382,7 @@ Ha alapszintű hitelesítést használ, meg kell adnia egy felhasználónevet é
 
 Ha kódot használ, ne tárolja a jelszavakat a kódban, Ehelyett használja a Azure Key Vault a hitelesítő adatok tárolására és lekérésére.
 
-* [Az Logic Apps-beli adatvédelme és-hozzáférés](./logic-apps-securing-a-logic-app.md)
+* [Az Logic Apps-beli adatvédelme és-hozzáférés](logic-apps-securing-a-logic-app.md)
 
 * [Titkos kód beállítása és beolvasása Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
 
@@ -473,7 +473,7 @@ Emellett a logikai alkalmazás minden kérelem végpontja közös hozzáférési
 
 * [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Megtudhatja, hogyan korlátozhatja a bejövő IP-címeket Logic Apps](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
+* [Megtudhatja, hogyan korlátozhatja a bejövő IP-címeket Logic Apps](logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure Security Center figyelés**: N/A
 
@@ -611,11 +611,11 @@ A kérelem-trigger csak Transport Layer Security (TLS) 1,2-t támogat a bejövő
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
 
-* [Biztonságos hozzáférés és az adatAzure Logic Apps](./logic-apps-securing-a-logic-app.md)
+* [Biztonságos hozzáférés és az adatAzure Logic Apps](logic-apps-securing-a-logic-app.md)
 
-* [Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps](../connectors/connectors-native-reqres.md#tls-support)
+* [Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
-* [Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből](../connectors/connectors-native-http.md#tls-support)
+* [Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -633,7 +633,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-* [Biztonságos hozzáférés a futtatási előzményekhez](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
+* [Biztonságos hozzáférés a futtatási előzményekhez](logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
 * [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
@@ -649,7 +649,7 @@ A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, é
 
 Annak megakadályozása érdekében, hogy mások módosíthassák vagy töröljék a logikai alkalmazást, használhatja az Azure erőforrás-zárolást. Ez a funkció megakadályozza, hogy mások módosíthassák vagy töröljék a termelési erőforrásokat.
 
-* [Biztonságos hozzáférés Azure Logic Apps műveletekhez](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Biztonságos hozzáférés Azure Logic Apps műveletekhez](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center figyelés**: N/A
 
@@ -885,7 +885,7 @@ Az üzleti műveletekhez szükséges Logic Apps azonban nagyobb kockázatot jele
 
 * [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Logic Apps-hozzáférés biztonságossá tétele az Azure RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+* [Logic Apps-hozzáférés biztonságossá tétele az Azure RBAC](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center figyelés**: N/A
 
@@ -911,9 +911,9 @@ Emellett biztonságos paramétereket is használhat a bizalmas adatok és a titk
 
 * [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [A biztonságos művelet paramétereinek ismertetése](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [A biztonságos művelet paramétereinek ismertetése](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -947,11 +947,11 @@ Továbbá ügyeljen arra, hogy a futtatási előzményekben lévő adatvédelmet
 
 * [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](./logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Biztonságos hozzáférés a futtatási előzményekhez bemenetekhez és kimenetekhez](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Biztonságos hozzáférés a futtatási előzményekhez bemenetekhez és kimenetekhez](logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Biztonságos hozzáférés a paraméterek bemenetéhez](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
+* [Biztonságos hozzáférés a paraméterek bemenetéhez](logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
 * [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
@@ -1033,11 +1033,11 @@ Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Ob
 
 Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a Azure Key Vault használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ezt a képességet "Bring Your Own Key" (BYOK) néven is nevezik, és a kulcs neve "ügyfél által felügyelt kulcs".
 
-* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Biztonságos paraméterek értékének továbbítása az üzembe helyezés során Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1069,11 +1069,11 @@ Jelenleg csak az adott beépített eseményindítók és műveletek támogatják
 
 A hitelesítő adatoknak a kódban való azonosítására is lehetőség van a hitelesítőadat-olvasó bevezetésére. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
 
-* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
+* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](logic-apps-securing-a-logic-app.md#obfuscate)
 
 * [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
+* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
 * [Biztonságos paraméterek értékének továbbítása az üzembe helyezés során Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -1133,7 +1133,7 @@ Emellett ki kell bővíteni a logikai alkalmazás mögöttes munkafolyamat-defin
 
 * [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](./business-continuity-disaster-recovery-guidance.md)
 
-* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](./logic-apps-azure-resource-manager-templates-overview.md)
+* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1151,9 +1151,9 @@ A logikai alkalmazás minden kérelem végpontja közös hozzáférési aláír�
 
 * [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](./business-continuity-disaster-recovery-guidance.md)
 
-* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](./logic-apps-azure-resource-manager-templates-overview.md)
+* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](logic-apps-azure-resource-manager-templates-overview.md)
 
-* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
+* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](logic-apps-securing-a-logic-app.md#access-for-inbound-calls-to-request-based-triggers)
 
 * [Key Vault kulcsok biztonsági mentése](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 

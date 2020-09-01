@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: 73f426fdcc020320989f0d09410066b66a131cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9873bd8f94c80caccd75033e2a8a4bc2cffcde03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177278"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227032"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba (előzetes verzió)
 
@@ -42,7 +42,7 @@ Az alábbi ábra azokat az alapszintű lépéseket mutatja be, amelyeket az elő
 
 1. Felkészülés az átvitelre
 
-1. Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
+1. Az Azure-előfizetés átvitele egy másik könyvtárba
 
 1. Erőforrások újbóli létrehozása a cél címtárban, például szerepkör-hozzárendelések, egyéni szerepkörök és felügyelt identitások
 
@@ -264,12 +264,12 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 
 ## <a name="step-2-transfer-the-subscription"></a>2. lépés: az előfizetés átvitele
 
-Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél könyvtárba. A lépések eltérhetnek attól függően, hogy a számlázási tulajdonjogot is át kívánja-e vinni.
+Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél könyvtárba. A lépések eltérőek lehetnek attól függően, hogy a számlázási tulajdonjogot is át kívánja-e vinni.
 
 > [!WARNING]
 > Az előfizetés átvitele után a rendszer az összes szerepkör-hozzárendelést **véglegesen** törli, és nem állítható vissza. Az előfizetés átvitele után nem mehet vissza. Ennek a lépésnek a végrehajtása előtt győződjön meg róla, hogy elvégezte az előző lépéseket.
 
-1. Döntse el, hogy a számlázási tulajdonjogot is át kívánja-e vinni.
+1. Döntse el, hogy a számlázási tulajdonjogot is át kívánja-e vinni egy másik fiókba.
 
 1. Vigye át az előfizetést egy másik könyvtárba.
 
@@ -382,7 +382,7 @@ Ha szeretné eltávolítani a hozzáférést a forrás címtárban lévő felhas
 
 1. A tanúsítványokat használó erőforrások esetében frissítse a tanúsítványt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Azure-előfizetések átvitele az előfizetők és a CSP-k között](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

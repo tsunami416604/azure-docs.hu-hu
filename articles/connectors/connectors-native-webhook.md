@@ -3,31 +3,33 @@ title: Várjon, és válaszoljon az eseményekre
 description: Automatizálhatja, szüneteltetheti és folytathatja a munkafolyamatokat egy szolgáltatási végpont eseményei alapján a Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656284"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227899"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatizált eseményvezérelt munkafolyamatok létrehozása és futtatása HTTP-webhookok használatával Azure Logic Apps
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http webhook-összekötő segítségével automatizálhatja a várakozási és a futtatási munkafolyamatokat a logikai alkalmazások létrehozásával egy http-vagy https-végponton megjelenő események alapján. Létrehozhat például egy olyan logikai alkalmazást, amely figyeli a szolgáltatási végpontot egy adott eseményre való várakozással, mielőtt elindítja a munkafolyamatot, és futtatja a megadott műveleteket, nem pedig rendszeresen ellenőrzi vagy *lekérdezi* a végpontot.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http webhook-összekötővel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek előfizethetnek egy szolgáltatás-végpontra, megvárhatják az adott eseményeket, és ezek alapján futtathatják ezeket az eseményeket, nem pedig rendszeresen ellenőrizni vagy *lekérdezni* a végpontot.
 
-Íme néhány példa az eseményvezérelt munkafolyamatokra:
+Néhány példa webhook-alapú munkafolyamatra:
 
 * Várjon, amíg egy elem egy [Azure Event hub](https://github.com/logicappsio/EventHubAPI) -ból érkezik a logikai alkalmazás futtatásának elindítása előtt.
 * Várjon egy jóváhagyást, mielőtt folytatná a munkafolyamatot.
 
+Ez a cikk bemutatja, hogyan használható a webhook-trigger és a webhook művelet, hogy a logikai alkalmazás fogadni tudjon és reagáljon a szolgáltatás-végpont eseményeire.
+
 ## <a name="how-do-webhooks-work"></a>Hogyan működnek a webhookok?
 
-A HTTP webhook eseményindító esemény-alapú, amely nem függ az új elemek ellenőrzésével vagy lekérdezésével. Ha olyan logikai alkalmazást ment, amely egy webhook-triggerrel kezdődik, vagy ha a logikai alkalmazást Letiltottról Engedélyezettre módosítja, akkor a webhook-trigger egy adott szolgáltatásra vagy végpontra *fizet* , ha a *visszahívási URL-címet* regisztrálja az adott szolgáltatással vagy végponttal. Az trigger ezután megvárja, amíg az adott szolgáltatás vagy végpont meghívja az URL-címet, amely elindítja a logikai alkalmazás futtatását. A [kérelem eseményindítóhoz](connectors-native-reqres.md)hasonlóan a logikai alkalmazás azonnal aktiválódik, ha a megadott esemény történik. Ha eltávolítja az triggert, és menti a logikai alkalmazást, vagy ha a logikai alkalmazást letiltottra módosítja, a trigger *lemond* a szolgáltatásról vagy a végpontról.
+A webhook eseményindító esemény-alapú, amely nem függ az új elemek ellenőrzésének vagy lekérdezésének. Ha olyan logikai alkalmazást ment, amely egy webhook-triggerrel kezdődik, vagy ha a logikai alkalmazást Letiltottról Engedélyezettre módosítja, akkor a webhook-trigger *előfizet* a megadott szolgáltatási végpontra egy *visszahívási URL-cím* az adott végponttal való regisztrálásával. Az trigger ezután megvárja, amíg a szolgáltatási végpont meghívja az URL-címet, amely elindítja a logikai alkalmazás futtatását. A [kérelem eseményindítóhoz](connectors-native-reqres.md)hasonlóan a logikai alkalmazás azonnal aktiválódik, ha a megadott esemény történik. A webhook elindítja a szolgáltatás végpontjának *lemondását* , ha eltávolítja az triggert, és menti a logikai alkalmazást, vagy ha a logikai alkalmazást letiltottra módosítja.
 
-Egy HTTP-webhook művelet is esemény-alapú, és egy adott szolgáltatásra vagy végpontra is *előfizet* egy *visszahívási URL-cím* az adott szolgáltatással vagy végponttal való regisztrálásával. A webhook művelet szünetelteti a logikai alkalmazás munkafolyamatát, és megvárja, amíg a szolgáltatás vagy végpont meghívja az URL-címet, mielőtt a logikai alkalmazás folytatja a futtatást. A műveleti logikai alkalmazás *lemond* a szolgáltatásból vagy végpontból a következő esetekben:
+Egy webhook művelet is eseményvezérelt, és *előfizet* a megadott szolgáltatási végpontra egy *visszahívási URL-cím* az adott végponttal való regisztrálásával. A webhook művelet szünetelteti a logikai alkalmazás munkafolyamatát, és megvárja, amíg a szolgáltatási végpont meghívja az URL-címet, mielőtt a logikai alkalmazás folytatja a futtatást. A webhook művelet *lemond* a szolgáltatási végpontról a következő esetekben:
 
 * A webhook művelet sikeres befejeződése után
 * Ha a logikai alkalmazás futtatása megszakad a válaszra való várakozás közben.
@@ -35,27 +37,16 @@ Egy HTTP-webhook művelet is esemény-alapú, és egy adott szolgáltatásra vag
 
 Például az Office 365 Outlook Connector [**Küldés-jóváhagyási e-mail-**](connectors-create-api-office365-outlook.md) művelete egy példa a webhook műveletre, amely ezt a mintát követi. Ezt a mintát bármely szolgáltatásra kiterjesztheti a webhook művelet használatával.
 
-> [!NOTE]
-> A Logic Apps a Transport Layer Security (TLS) 1,2 kényszeríti, ha a hívást a HTTP webhook-triggerre vagy műveletre fogadja. Ha a TLS-kézfogás hibáit látja, ügyeljen arra, hogy a TLS 1,2-et használja. A bejövő hívások esetében itt láthatók a támogatott titkosítási csomagok:
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-
 További információt az alábbi témakörökben talál:
 
-* [HTTP webhook-trigger paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhookok és előfizetések](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [Webhookot támogató egyéni API-k létrehozása](../logic-apps/logic-apps-create-api-app.md)
 
+A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL) vagy [Azure Active Directory nyílt hitelesítéshez (Azure ad OAuth)](../active-directory/develop/index.yml)való bejövő hívások titkosításával, biztonságával és engedélyezésével kapcsolatos információkért lásd: [biztonságos hozzáférés és adathozzáférés a kérelmeken alapuló eseményindítók felé irányuló bejövő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Egy már üzembe helyezett végpont vagy API URL-címe, amely támogatja a [webhook](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) előfizetését és a leiratkozási mintát a Logic apps vagy [webhook műveletekben a logikai alkalmazásokban](../logic-apps/logic-apps-create-api-app.md#webhook-actions) a megfelelő módon.
 
@@ -83,12 +74,12 @@ Ez a beépített trigger meghívja az előfizetési végpontot a célkiszolgál�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Előfizetés – metódus** | Yes | A célként megadott végpontra való feliratkozáskor használandó módszer |
-   | **Előfizetés – URI** | Yes | A célként megadott végpontra való feliratkozáshoz használandó URL-cím |
-   | **Előfizetés – törzs** | No | Az előfizetési kérelembe belefoglalni kívánt üzenettörzs. Ez a példa tartalmazza azt a visszahívási URL-címet, amely egyedileg azonosítja az előfizetőt, amely a logikai alkalmazás, a kifejezés használatával a `@listCallbackUrl()` logikai alkalmazás visszahívási URL-címének lekéréséhez. |
-   | **Leiratkozás – metódus** | No | A cél végpontról való leiratkozáskor használandó módszer |
-   | **Leiratkozás – URI** | No | A cél végpontról való leiratkozáshoz használandó URL-cím |
-   | **Leiratkozás – törzs** | No | A leiratkozási kérelembe belefoglalni kívánt üzenettörzs <p><p>**Megjegyzés**: Ez a tulajdonság nem támogatja a `listCallbackUrl()` függvény használatát. Az trigger azonban automatikusan magában foglalja és elküldi a fejléceket, `x-ms-client-tracking-id` és `x-ms-workflow-operation-name` azt is, hogy a célként megadott szolgáltatás az előfizető egyedi azonosítására alkalmas legyen. |
+   | **Előfizetés – metódus** | Igen | A célként megadott végpontra való feliratkozáskor használandó módszer |
+   | **Előfizetés – URI** | Igen | A célként megadott végpontra való feliratkozáshoz használandó URL-cím |
+   | **Előfizetés – törzs** | Nem | Az előfizetési kérelembe belefoglalni kívánt üzenettörzs. Ez a példa tartalmazza azt a visszahívási URL-címet, amely egyedileg azonosítja az előfizetőt, amely a logikai alkalmazás, a kifejezés használatával a `@listCallbackUrl()` logikai alkalmazás visszahívási URL-címének lekéréséhez. |
+   | **Leiratkozás – metódus** | Nem | A cél végpontról való leiratkozáskor használandó módszer |
+   | **Leiratkozás – URI** | Nem | A cél végpontról való leiratkozáshoz használandó URL-cím |
+   | **Leiratkozás – törzs** | Nem | A leiratkozási kérelembe belefoglalni kívánt üzenettörzs <p><p>**Megjegyzés**: Ez a tulajdonság nem támogatja a `listCallbackUrl()` függvény használatát. Az trigger azonban automatikusan magában foglalja és elküldi a fejléceket, `x-ms-client-tracking-id` és `x-ms-workflow-operation-name` azt is, hogy a célként megadott szolgáltatás az előfizető egyedi azonosítására alkalmas legyen. |
    ||||
 
 1. További trigger-tulajdonságok hozzáadásához nyissa meg az **új paraméterek hozzáadása** listát.
@@ -129,12 +120,12 @@ Ez a beépített művelet meghívja az előfizetési végpontot a célhelyen, é
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Előfizetés – metódus** | Yes | A célként megadott végpontra való feliratkozáskor használandó módszer |
-   | **Előfizetés – URI** | Yes | A célként megadott végpontra való feliratkozáshoz használandó URL-cím |
-   | **Előfizetés – törzs** | No | Az előfizetési kérelembe belefoglalni kívánt üzenettörzs. Ez a példa tartalmazza azt a visszahívási URL-címet, amely egyedileg azonosítja az előfizetőt, amely a logikai alkalmazás, a kifejezés használatával a `@listCallbackUrl()` logikai alkalmazás visszahívási URL-címének lekéréséhez. |
-   | **Leiratkozás – metódus** | No | A cél végpontról való leiratkozáskor használandó módszer |
-   | **Leiratkozás – URI** | No | A cél végpontról való leiratkozáshoz használandó URL-cím |
-   | **Leiratkozás – törzs** | No | A leiratkozási kérelembe belefoglalni kívánt üzenettörzs <p><p>**Megjegyzés**: Ez a tulajdonság nem támogatja a `listCallbackUrl()` függvény használatát. A művelet azonban automatikusan belefoglalja és elküldi a fejléceket, `x-ms-client-tracking-id` és `x-ms-workflow-operation-name` azt, hogy a célként megadott szolgáltatás mely segítségével egyedileg azonosíthatja az előfizetőt. |
+   | **Előfizetés – metódus** | Igen | A célként megadott végpontra való feliratkozáskor használandó módszer |
+   | **Előfizetés – URI** | Igen | A célként megadott végpontra való feliratkozáshoz használandó URL-cím |
+   | **Előfizetés – törzs** | Nem | Az előfizetési kérelembe belefoglalni kívánt üzenettörzs. Ez a példa tartalmazza azt a visszahívási URL-címet, amely egyedileg azonosítja az előfizetőt, amely a logikai alkalmazás, a kifejezés használatával a `@listCallbackUrl()` logikai alkalmazás visszahívási URL-címének lekéréséhez. |
+   | **Leiratkozás – metódus** | Nem | A cél végpontról való leiratkozáskor használandó módszer |
+   | **Leiratkozás – URI** | Nem | A cél végpontról való leiratkozáshoz használandó URL-cím |
+   | **Leiratkozás – törzs** | Nem | A leiratkozási kérelembe belefoglalni kívánt üzenettörzs <p><p>**Megjegyzés**: Ez a tulajdonság nem támogatja a `listCallbackUrl()` függvény használatát. A művelet azonban automatikusan belefoglalja és elküldi a fejléceket, `x-ms-client-tracking-id` és `x-ms-workflow-operation-name` azt, hogy a célként megadott szolgáltatás mely segítségével egyedileg azonosíthatja az előfizetőt. |
    ||||
 
 1. További művelet-tulajdonságok hozzáadásához nyissa meg az **új paraméterek hozzáadása** listát.
@@ -147,18 +138,14 @@ Ez a beépített művelet meghívja az előfizetési végpontot a célhelyen, é
 
    A művelet futtatásakor a logikai alkalmazás meghívja az előfizetési végpontot a cél szolgáltatásban, és regisztrálja a visszahívási URL-címet. Ezután a logikai alkalmazás szünetelteti a munkafolyamatot, és megvárja, amíg a TARGET szolgáltatás elküld egy `HTTP POST` kérést a visszahívás URL-címére. Ha ez az esemény bekövetkezik, a művelet a kérelemben szereplő összes adattal együtt átadja a munkafolyamatot. Ha a művelet sikeresen befejeződik, a művelet lemond a végpontról, és a logikai alkalmazás továbbra is futtatja a hátralévő munkafolyamatot.
 
-## <a name="connector-reference"></a>Összekötő-referencia
-
-További információ az aktiválási és műveleti paraméterekről, amelyek hasonlóak egymáshoz: [http webhook paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
-
-### <a name="output-details"></a>Kimenet részletei
+## <a name="trigger-and-action-outputs"></a>Trigger-és műveleti kimenetek
 
 Itt talál további információt egy HTTP webhook-triggerből vagy-műveletből származó kimenetről, amely a következő információkat adja vissza:
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
-| fejlécek | objektum | A kérelemben szereplő fejlécek |
-| body (Törzs) | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| fejlécek | object | A kérelemben szereplő fejlécek |
+| body (Törzs) | object | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
@@ -173,6 +160,11 @@ Itt talál további információt egy HTTP webhook-triggerből vagy-műveletből
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="connector-reference"></a>Összekötő-referencia
 
-* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+További információ az aktiválási és műveleti paraméterekről, amelyek hasonlóak egymáshoz: [http webhook paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Biztonságos hozzáférés és adathozzáférés a beérkező hívások számára a kérelmeken alapuló eseményindítók számára](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Összekötők a Logic Apps számára](../connectors/apis-list.md)

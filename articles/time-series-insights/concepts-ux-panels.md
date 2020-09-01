@@ -1,6 +1,6 @@
 ---
-title: Adatmegjelenítés a Gen2 Explorerben – Azure Time Series Insights Gen2 | Microsoft Docs
-description: További információ a Azure Time Series Insights Gen2 Explorerben elérhető szolgáltatásokról és lehetőségekről.
+title: Az ÁME Explorer-Azure Time Series Insights Gen2 lévő adatmegjelenítési szolgáltatás | Microsoft Docs
+description: Ismerkedjen meg a Azure Time Series Insights Explorerben elérhető funkciókkal és lehetőségekkel.
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
@@ -8,22 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164155"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227049"
 ---
-# <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Explorer
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
 Ez a cikk a Azure Time Series Insights Gen2 [bemutató környezetében](https://insights.timeseries.azure.com/preview/demo)elérhető különböző funkciókat és lehetőségeket ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Time Series Insights Gen2 Explorer megkezdéséhez a következőket kell tennie:
+A Azure Time Series Insights Explorer megkezdéséhez a következőket kell tennie:
 
 * Azure Time Series Insights Gen2-környezet van kiépítve. További információ a példányok üzembe helyezéséről: [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) oktatóanyag.
 * Adja meg a fiókhoz létrehozott Azure Time Series Insights Gen2-környezet [adathozzáférését](./time-series-insights-data-access.md) . Mások számára is biztosíthat hozzáférést.
@@ -31,11 +31,11 @@ A Azure Time Series Insights Gen2 Explorer megkezdéséhez a következőket kell
   * További információ az [Event hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * További információ az [IoT hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
-## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Ismerkedés a Azure Time Series Insights Gen2 Explorerrel
+## <a name="explore-the-azure-time-series-insights-explorer"></a>Ismerkedés a Azure Time Series Insights Explorerrel
 
-A Azure Time Series Insights Gen2 Explorer a következő hét elemből áll:
+A Azure Time Series Insights Explorer a következő hét elemből áll:
 
-[![Azure Time Series Insights Gen2 Explorer – áttekintés](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
+[![Azure Time Series Insights Explorer – áttekintés](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
 1. [Környezeti panel](#1-environment-panel): megjeleníti az összes Azure Time Series Insights Gen2 környezetét.
 1. [Navigációs sáv](#2-navigation-bar): lehetővé teszi az **elemzés** és a **modell** oldalai közötti váltást.
@@ -193,7 +193,7 @@ Az új **megosztás** ikon kiválasztásával megoszthatja az URL-hivatkozást a
 > [!TIP]
 > A nyelv kiválasztása a profil ikonjának kiválasztásával is elérhető.
 
-Azure Time Series Insights Gen2 Explorer két témát támogat:
+Azure Time Series Insights Explorer két témát támogat:
 
 * **Világos téma**: az alapértelmezett téma jelenik meg a dokumentumban.
 * **Sötét téma**: a kezelőt az itt látható módon jeleníti meg:
@@ -204,7 +204,7 @@ Azure Time Series Insights Gen2 Explorer két témát támogat:
 
 ### <a name="gen2-terms-panel"></a>Gen2 feltételek panel
 
-Ez a szakasz csak azokra a meglévő, 1. generációs környezetekre vonatkozik, amelyek a frissített felhasználói felületen a Explorer használatát kísérlik meg. Érdemes lehet az 1. generációs termék-és Gen2 használni. Felvettünk néhány funkciót a meglévő felhasználói felületről a frissített Explorerbe, de az új Azure Time Series Insights Gen2 Explorerben megtekintheti az 1. generációs környezet teljes felhasználói felületi élményét.
+Ez a szakasz csak azokra a meglévő, 1. generációs környezetekre vonatkozik, amelyek a frissített felhasználói felületen a Explorer használatát kísérlik meg. Érdemes lehet az 1. generációs termék-és Gen2 használni. Felvettünk néhány funkciót a meglévő felhasználói felületről a frissített Explorerbe, de az új Azure Time Series Insights Explorerben megtekintheti az 1. generációs környezet teljes felhasználói felületi élményét.
 
 A hierarchia helyett megjelenik a Azure Time Series Insights Gen2 terms panel. A feltételek panel lehetővé teszi lekérdezések definiálását a környezetben. Az adathalmaz alapján is szűrheti az adatszűrést.
 
@@ -214,7 +214,7 @@ A Azure Time Series Insights Gen2 feltételek szerkesztő panelje a következő 
 
 **Hol**: a WHERE záradék használatával gyorsan szűrheti az eseményeket az alábbi táblázatban felsorolt operandusok használatával. Ha egy operandus kiválasztásával végez keresést, a rendszer automatikusan frissíti a predikátumot a keresés alapján. A támogatott operandusok típusai a következők:
 
-| Művelet    | Támogatott típusok    | Jegyzetek |
+| Művelet    | Támogatott típusok    | Megjegyzések |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double, DateTime, TimeSpan | |
 | `=`, `!=`, `<>` | Karakterlánc, bool, Double, DateTime, TimeSpan, NULL |
@@ -237,7 +237,7 @@ A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a lá
 
   [![Lekérdezett és szűrt lehetőség megszakítása](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [adatfeldolgozásról](./concepts-ingestion-overview.md) a környezetbe.
 

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146419"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229395"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
@@ -24,12 +24,12 @@ Ebben a példában létrehozunk egy létrehozási és kiadási folyamatot egy Az
 
 ![A folyamaton belüli üzembe helyezés folyamatát bemutató ábra](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Előkészületek
 
 A cikkben ismertetett lépések végrehajtásához egy Azure DevOps-szervezetre és egy Team-projektre van szükség.
 
 * [Azure DevOps-szervezet létrehozása](/azure/devops/organizations/accounts/create-organization)
-* [Projekt létrehozása az Azure DevOps](/azure/devops/organizations/projects/create-projects)
+* [Projekt létrehozása az Azure DevOps](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>A környezet verziókövetés
 
@@ -325,7 +325,7 @@ Ebben a példában a **HPC-Application** mappára fogunk összpontosítani. A **
 
     a. [A vizuális tervező használatával](/azure/devops/pipelines/get-started-designer). Ha ezt szeretné használni, kattintson a "Visual Designer használata" lehetőségre az **új folyamat** lapon.
 
-    b. [YAML-buildek használata](/azure/devops/pipelines/get-started-yamls). Az új folyamat lapon az Azure Repos vagy a GitHub lehetőségre kattintva hozhat létre új YAML-folyamatot. Azt is megteheti, hogy az alábbi példát a forrás vezérlőelemben tárolja, és egy meglévő YAML-fájlra hivatkozik, ha a Visual Designerre kattint, majd a YAML sablont használja.
+    b. [YAML-buildek használata](/azure/devops/pipelines/get-started-yaml). Az új folyamat lapon az Azure Repos vagy a GitHub lehetőségre kattintva hozhat létre új YAML-folyamatot. Azt is megteheti, hogy az alábbi példát a forrás vezérlőelemben tárolja, és egy meglévő YAML-fájlra hivatkozik, ha a Visual Designerre kattint, majd a YAML sablont használja.
 
     ```yml
     # To publish an application into Azure Batch, we need to

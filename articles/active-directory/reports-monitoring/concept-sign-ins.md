@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816082"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228766"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -32,8 +32,8 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
     - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
 - **Biztonság** 
-    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
-    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
+    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
 Ez a cikk áttekintést nyújt a bejelentkezési jelentésről.
 
@@ -149,7 +149,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 |Exchange ActiveSync| |Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az EAS-protokollt megkísérelték.|
 |Böngésző|![Jelölőnégyzet](./media/concept-sign-ins/check.png)|Az összes bejelentkezési kísérlet megjelenítése a felhasználóktól a böngészőben|
 |Exchange ActiveSync| | A felhasználók által az Exchange Online-hoz való kapcsolódáshoz használt ActiceSync használó összes bejelentkezési kísérlet megjelenítése|
-|Exchange Online PowerShell| |Az Exchange Online-hoz távoli PowerShell-lel való kapcsolódáshoz használatos. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Exchange Online PowerShell| |Az Exchange Online-hoz távoli PowerShell-lel való kapcsolódáshoz használatos. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Webes Exchange-szolgáltatások| |Az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.|
 |IMAP4| |Egy örökölt levelezési ügyfélprogram, amely az IMAP használatával kéri le az e-maileket.|
 |MAPI HTTP-n keresztül| |Az Outlook 2010 és újabb verziók használják.|
@@ -234,7 +234,7 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - Ügyfél
 - Hely
 - IP-cím
-- Date
+- Dátum
 - Az MFA megadása kötelező
 - Bejelentkezés állapota
 
@@ -271,13 +271,12 @@ A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési esem
 
 ## <a name="office-365-activity-logs"></a>Office 365-tevékenységek naplói
 
-Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központból](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)tekintheti meg. Vegye figyelembe, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói jelentős számú címtár-erőforrást osztanak meg. Csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenység naplóiról. 
+Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központból](/office365/admin/admin-overview/about-the-admin-center)tekintheti meg. Vegye figyelembe, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói jelentős számú címtár-erőforrást osztanak meg. Csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenység naplóiról. 
 
-Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
+Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
 * [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)
 * [Azure AD-jelentés késései](reference-reports-latencies.md)
-

@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0d917ea686c2003bf46b6fca872ef67fb0363107
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144073"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228903"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -56,10 +56,8 @@ Hozzon létre egy ML-folyamat futtatásához szükséges erőforrásokat:
 * Konfiguráljon egy `Dataset` objektumot úgy, hogy olyan állandó adatértékre mutasson, amely egy adattárban él vagy elérhető. Konfiguráljon egy `PipelineData` objektumot a folyamat lépései között átadott ideiglenes adatmennyiséghez. 
 
     > [!TIP]
-    > Az ideiglenes adatátviteli folyamat lépéseinek átadására szolgáló továbbfejlesztett élmény a nyilvános előzetes osztályban érhető el  `OutputFileDatasetConfig` .  Ez az osztály egy kísérleti előzetes funkció, és bármikor megváltozhat.
-    > 
-    >A kísérleti funkciókkal kapcsolatos további információkért lásd: https://aka.ms/azuremlexperimental .
-    
+    > Az ideiglenes adatátviteli folyamat lépéseinek átadására szolgáló továbbfejlesztett élmény a nyilvános előzetes osztályban érhető el  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) .  Ez az osztály egy [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) előzetes funkció, és bármikor megváltozhat.
+
 * Állítsa be azokat a [számítási célokat](concept-azure-machine-learning-architecture.md#compute-targets) , amelyeken a folyamat lépései futni fognak.
 
 ### <a name="set-up-a-datastore"></a>Adattár beállítása

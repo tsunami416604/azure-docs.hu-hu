@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 46f3ef775f3b17e0ebc93fc4145a5b8037b901e5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949354"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227916"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform és OAuth 2,0 SAML-tulajdonos állítási folyamata
 A OAuth 2,0 SAML-tulajdonos állítási folyamata lehetővé teszi, hogy egy SAML-kijelentéssel igényeljen egy OAuth hozzáférési tokent, ha az ügyfélnek meglévő megbízhatósági kapcsolatot kell használnia. Az SAML-kijelentésre alkalmazott aláírás a hitelesítő alkalmazás hitelesítését biztosítja. Az SAML-jogcímek egy, az identitás-szolgáltató által kiadott és a szolgáltató által használt XML biztonsági jogkivonat. A szolgáltató a tartalomra támaszkodva azonosítja az állítás tárgyát a biztonsággal kapcsolatos célokra.
@@ -27,7 +27,7 @@ Az SAML-tulajdonosi állítási folyamat akkor hasznos, ha Microsoft Graph API-b
 
 Olyan alkalmazások esetében, amelyek interaktív, böngészőalapú bejelentkezést biztosítanak az SAML-érvényesítéshez, majd hozzá kívánják adni a hozzáférést egy OAuth által védett API-hoz (például Microsoft Graph), létrehozhat egy OAuth kérelmet az API hozzáférési jogkivonatának beszerzéséhez. Ha a böngésző átirányítja az Azure AD-ba a felhasználó hitelesítéséhez, a böngésző az SAML-bejelentkezésből veszi fel a munkamenetet, és a felhasználónak nem kell megadnia a hitelesítő adatait.
 
-A OAuth SAML-tulajdonos állítási folyamata is támogatott az olyan identitás-szolgáltatókkal való hitelesítést végző felhasználók számára, mint a Active Directory összevonási szolgáltatások (AD FS) (ADFS) összevont Azure Active Directory.  Az Active Directory összevonási szolgáltatásból beszerzett SAML-állítás a felhasználó hitelesítéséhez használható OAuth-folyamatokban.
+A OAuth SAML-tulajdonos állítási folyamata csak olyan identitás-szolgáltatókkal történő hitelesítést támogatja, mint például a Active Directory összevonási szolgáltatások (AD FS) (ADFS) összevont Azure Active Directory.  Az Active Directory összevonási szolgáltatásból beszerzett SAML-állítás a felhasználó hitelesítéséhez használható OAuth-folyamatokban.
 
 ![OAuth folyamat](./media/v2-saml-bearer-assertion/1.png)
 

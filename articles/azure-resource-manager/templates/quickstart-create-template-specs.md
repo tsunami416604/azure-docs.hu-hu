@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 84422862cfa73c2cbb27411bf0c1a7fb3fab9b35
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 47791455c63852bfc6f8a7e3152fabe18d303ecb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962655"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227729"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -75,7 +75,7 @@ Ezek a beállítások alább láthatók.
 1. Ezután hozza létre a sablon specifikációját az erőforráscsoporthoz. Adja meg az új sablont a **storageSpec**név alapján.
 
     ```azurecli
-    az template-specs create \
+    az ts create \
       --name storageSpec \
       --version "1.0" \
       --resource-group templateSpecRG \
@@ -205,7 +205,7 @@ Ezek a beállítások alább láthatók.
 
 ## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
 
-Most már üzembe helyezheti a sablon specifikációját. a sablon specifikációjának központi telepítése ugyanúgy történik, mint a benne található sablon üzembe helyezése, kivéve, ha a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját adja meg. Ugyanazokat az üzembe helyezési parancsokat használja, és szükség esetén adja át a paraméter értékét a sablon specifikációjának.
+Most már üzembe helyezheti a sablon specifikációját. A sablon specifikációjának központi telepítése ugyanúgy történik, mint a benne található sablon üzembe helyezése, kivéve, ha a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját adja meg. Ugyanazokat az üzembe helyezési parancsokat használja, és szükség esetén adja át a paraméter értékét a sablon specifikációjának.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -253,7 +253,7 @@ Most már üzembe helyezheti a sablon specifikációját. a sablon specifikáci�
 1. Szerezze be a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját.
 
     ```azurecli
-    id = $(az template-specs show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+    id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
     ```
 
     > [!NOTE]

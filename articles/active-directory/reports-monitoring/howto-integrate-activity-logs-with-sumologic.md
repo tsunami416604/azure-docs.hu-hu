@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c3b1216d5ced766a77bb1fb63e41eaedb8220d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ccdfa99a36635e72fc97820ec6b852e36a50ec2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608976"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229786"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Active Directory-naplók integrálása a SumoLogic a Azure Monitor használatával
 
@@ -31,18 +31,18 @@ Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Active Directory-(A
 ## <a name="prerequisites"></a>Előfeltételek
 
 A szolgáltatás használatához a következőkre lesz szüksége:
-* Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * SumoLogic egyszeri bejelentkezésre alkalmas előfizetés.
 
 ## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Az Azure AD-naplók és a SumoLogic integrálásának lépései 
 
-1. Először [továbbítsa az Azure ad-naplókat egy Azure Event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md)-ba.
+1. Először [továbbítsa az Azure ad-naplókat egy Azure Event hub](./tutorial-azure-monitor-stream-logs-to-event-hub.md)-ba.
 2. Konfigurálja a SumoLogic-példányt a [Azure Active Directory naplók gyűjtésére](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory).
 3. [Telepítse az Azure ad SumoLogic alkalmazást](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) a környezet valós idejű elemzését biztosító előre konfigurált irányítópultok használatára.
 
    ![Irányítópult](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A naplózási naplók sémájának értelmezése Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)

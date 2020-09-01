@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fd49ddcb59e0d0f3a706f566cf0c011116b1501a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856814"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229225"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1ekkel a Azure Portal használatával
 
@@ -85,18 +85,11 @@ Ebben a szakaszban egy Azure Active Directory egyszerű szolgáltatásnév haszn
 A Azure Portal használhat meglévő szolgáltatásnevet, vagy létrehozhat egy újat.
 
 Egyszerű szolgáltatásnév létrehozása a Azure Portalből:
-
-1. Válassza ki **Data Lake Store hozzáférést** a tároló paneljéről.
-1. Az **Data Lake Storage Gen1-hozzáférés** panelen válassza az **új létrehozása**lehetőséget.
-1. Válassza ki az **egyszerű szolgáltatásnév**elemet, majd kövesse az utasításokat az egyszerű szolgáltatásnév létrehozásához.
-1. Töltse le a tanúsítványt, ha úgy dönt, hogy később újra használni kívánja. A tanúsítvány letöltése akkor lehet hasznos, ha a további HDInsight-fürtök létrehozásakor ugyanazt a szolgáltatásnevet szeretné használni.
-
-    ![Egyszerű szolgáltatásnév hozzáadása a HDInsight-fürthöz](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "Egyszerű szolgáltatásnév hozzáadása a HDInsight-fürthöz")
-
-1. Válassza a **hozzáférés** lehetőséget a mappa elérésének konfigurálásához.  Lásd: [fájlengedélyek konfigurálása](#configure-file-permissions).
+1. Lásd: [egyszerű szolgáltatásnév és tanúsítványok létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) Azure Active Directory használatával.
 
 Meglévő egyszerű szolgáltatásnév használata a Azure Portalből:
 
+1. Az egyszerű szolgáltatásnév tulajdonosi engedélyekkel kell rendelkeznie a Storage-fiókhoz. Lásd: [az egyszerű szolgáltatásnév engedélyeinek beállítása tulajdonosként a Storage-fiókban](#configure-serviceprincipal-permissions)
 1. Válassza **Data Lake Store a hozzáférés**lehetőséget.
 1. A **Data Lake Storage Gen1 hozzáférés** panelen válassza a **meglévő használata**lehetőséget.
 1. Válassza ki az **egyszerű szolgáltatásnév**elemet, majd válasszon ki egy szolgáltatásnevet.
@@ -105,6 +98,10 @@ Meglévő egyszerű szolgáltatásnév használata a Azure Portalből:
     ![Egyszerű szolgáltatásnév hozzáadása a HDInsight-fürthöz](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Egyszerű szolgáltatásnév hozzáadása a HDInsight-fürthöz")
 
 1. Válassza a **hozzáférés** lehetőséget a mappa elérésének konfigurálásához.  Lásd: [fájlengedélyek konfigurálása](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Engedélyek beállítása az egyszerű szolgáltatásnév számára a Storage-fiók tulajdonosaként
+1. A Storage-fiók Access Control (IAM) paneljén kattintson a szerepkör-hozzárendelés hozzáadása lehetőségre. 
+2. A szerepkör-hozzárendelés hozzáadása panelen válassza a szerepkör tulajdonosként lehetőséget, majd válassza ki az egyszerű szolgáltatásnevet, és kattintson a Mentés gombra.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Fájlengedélyek konfigurálása
 
@@ -130,7 +127,7 @@ Engedély kiosztása a Data Lake Storage Gen1 fiók gyökérszintű szintjén:
 
 1. Kattintson a lap alján található **kiválasztás** gombra.
 1. Válassza a **Futtatás** elemet az engedély kiosztásához.
-1. Válassza a **Done** (Kész) lehetőséget.
+1. Válassza a **Kész** lehetőséget.
 
 Engedély kiosztása a HDInsight-fürt gyökérszintű szintjén:
 
@@ -140,7 +137,7 @@ Engedély kiosztása a HDInsight-fürt gyökérszintű szintjén:
 1. Állítsa be a mappára vonatkozó engedélyeket.  Alapértelmezés szerint az olvasás, írás és végrehajtás elem van kiválasztva.
 1. Kattintson a lap alján található **kiválasztás** gombra.
 1. Válassza a **Futtatás** lehetőséget.
-1. Válassza a **Done** (Kész) lehetőséget.
+1. Válassza a **Kész** lehetőséget.
 
 Ha a Data Lake Storage Gen1 kiegészítő tárolóként használja, csak a HDInsight-fürtből elérni kívánt mappákhoz kell engedélyeket rendelnie. Az alábbi képernyőképen például csak a **mynewfolder** mappához biztosít hozzáférést Data Lake Storage Gen1 fiókban.
 
@@ -176,9 +173,9 @@ CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.a
 
 Leírások
 
-* `adl://hdiadlsg1storage.azuredatalakestore.net/`a Data Lake Storage Gen1 fiók gyökere.
-* `/clusters/myhdiadlcluster`a fürt létrehozásakor megadott fürtkonfiguráció gyökerét adja meg.
-* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/`a lekérdezésben használt minta fájljának helye.
+* `adl://hdiadlsg1storage.azuredatalakestore.net/` a Data Lake Storage Gen1 fiók gyökere.
+* `/clusters/myhdiadlcluster` a fürt létrehozásakor megadott fürtkonfiguráció gyökerét adja meg.
+* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` a lekérdezésben használt minta fájljának helye.
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-additional-storage"></a>Struktúra-lekérdezés futtatása egy Data Lake Storage Gen1-fiókban (további tárolóként)
 

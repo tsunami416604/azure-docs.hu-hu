@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854539"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228630"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
@@ -25,7 +25,7 @@ A blob-adatai teljes körű védelme érdekében a Microsoft a következő adatv
 
 - Tároló-helyreállítható törlés a tároló véletlen törlésével vagy felülírásával szembeni védelem érdekében. A tárolók helyreállítható törlésének engedélyezéséről a tárolók helyreállítható [törlésének engedélyezése és kezelése](soft-delete-container-enable.md)című témakörben olvashat bővebben.
 - BLOB-Törlés – az egyes Blobok véletlen törlésével vagy felülírásával szembeni védelem érdekében. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el [a](soft-delete-blob-overview.md)Blobok eltávolítását ismertető témakört.
-- BLOB verziószámozása (előzetes verzió), hogy automatikusan fenntartsa a blob korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve. A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
+- BLOB verziószámozása, hogy automatikusan fenntartsa a blob korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve. A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 
 > [!WARNING]
 > A Storage-fiók törlése nem vonható vissza. A Soft delete nem véd a Storage-fiókok törlésével szemben. Egy Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
@@ -119,8 +119,8 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 A tárolók törlésének engedélyezése nem díjköteles. A helyreállított törölt tárolókban lévő adatforgalom az aktív adatforgalommal megegyező sebességgel történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [BLOB verziószámozása](versioning-overview.md)

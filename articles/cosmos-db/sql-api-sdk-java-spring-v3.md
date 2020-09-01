@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 04a50d37606754ff4540d1056e378d46388e2592
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e67e6911eeac29036dee2b68c19395b34e1d11da
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590637"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228035"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v3 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -130,6 +130,8 @@ cosmos.queryMetricsEnabled=true
 
 ## <a name="release-history"></a>Kiadási előzmények
 
+### <a name="300-beta2-unreleased"></a>3.0.0-Beta. 2 (nem kiadott)
+
 ### <a name="300-beta1-2020-08-17"></a>3.0.0-Beta. 1 (2020-08-17)
 #### <a name="new-features"></a>Új funkciók
 * A csoport AZONOSÍTÓjának frissítése a következőre: `com.azure` .
@@ -163,7 +165,7 @@ cosmos.queryMetricsEnabled=true
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
 
 A Spring Framework szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [projekt kezdőlapját](https://spring.io/projects/spring-framework).
