@@ -1,23 +1,24 @@
 ---
 title: A Ethereum Blockchain-összekötő használata a Azure Logic Apps-Azure Blockchain szolgáltatással
 description: A Ethereum Blockchain-összekötővel a Azure Logic Apps használatával aktiválhatja az intelligens szerződési funkciókat, és reagálhat az intelligens szerződési eseményekre.
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077045"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230534"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
 
-Az Ethereum Blockchain- [Azure Logic apps](../../logic-apps/index.yml) [összekötővel](/connectors/blockchainethereum/) intelligens szerződéses műveleteket hajthat végre, és reagálhat az intelligens szerződési eseményekre. Tegyük fel például, hogy olyan REST-alapú szolgáltatást szeretne létrehozni, amely egy blockchain-főkönyvből származó információkat ad vissza. Logikai alkalmazás használatával elfogadhatja azokat a HTTP-kérelmeket, amelyek a blockchain-főkönyvben tárolt információkat kérdezik le.
+Az Ethereum Blockchain- [Azure Logic apps](../../logic-apps/index.yml) [összekötővel](/connectors/blockchainethereum/) intelligens szerződéses műveleteket hajthat végre, és reagálhat az intelligens szerződési eseményekre. Ez a cikk azt ismerteti, hogy miként lehet a Ethereum Blockchain-összekötővel Blockchain adatokat küldeni egy másik szolgáltatásnak, vagy meghívhat egy Blockchain-függvényt. Tegyük fel például, hogy olyan REST-alapú szolgáltatást szeretne létrehozni, amely egy blockchain-főkönyvből származó információkat ad vissza. Logikai alkalmazás használatával elfogadhatja azokat a HTTP-kérelmeket, amelyek a blockchain-főkönyvben tárolt információkat kérdezik le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejezze be az előfeltételként szükséges útmutatót [: a Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). A rövid útmutató végigvezeti a [Ethereum készült Azure Blockchain Development Kit](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) telepítésének és a Blockchain-fejlesztési környezet beállításának lépésein.
+- Fejezze be az előfeltételként szükséges útmutatót [: a Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). A rövid útmutató végigvezeti a [Ethereum készült Azure Blockchain Development Kit](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) telepítésének és a Blockchain-fejlesztési környezet beállításának lépésein.
+- Ha még nem Azure Logic Apps, érdemes áttekinteni a Microsoft Learn modulok [Bevezetését Azure Logic apps](/learn/modules/intro-to-logic-apps/) és egy [API-t meghívni egy Logic apps munkafolyamatból egy egyéni összekötő használatával](/learn/modules/logic-apps-and-custom-connectors/).
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
@@ -33,7 +34,7 @@ A Azure Logic Apps segítségével az üzleti folyamatok és munkafolyamatok üt
 
 Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot.
 
-A Ethereum Blockchain-összekötő egyetlen triggerrel és számos művelettel rendelkezik. A használt trigger vagy művelet a forgatókönyvtől függ.
+A Ethereum Blockchain-összekötő egyetlen triggerrel és számos művelettel rendelkezik. A használt trigger vagy művelet a forgatókönyvtől függ. Kövesse a jelen cikk című szakaszát, amely a legjobban megfelel a forgatókönyvének.
 
 Ha a munkafolyamat:
 
@@ -282,6 +283,6 @@ A szarvasgomba az intelligens szerződés üzembe helyezése után megjeleníti 
 
 ![Metaadatok a Visual Studio Code-ban található címtartomány értékével](./media/ethereum-logic-app/contract-address-metadata.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a videó gyakori forgatókönyveit a [Logic Appsával](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).

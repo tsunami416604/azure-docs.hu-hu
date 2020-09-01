@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb3ea568d35ca1ad489fea3cd910c0e1e5dc9722
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071414"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231129"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
 
 > [!NOTE] 
-> Ezek a PowerShell-parancsmagok jelenleg csak az [Azure ad Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modullal működnek. Vegye figyelembe, hogy az előzetes verziójú modul éles használatra nem ajánlott. 
+> Ezek a PowerShell-parancsmagok jelenleg csak az [Azure ad Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modullal működnek. Vegye figyelembe, hogy az előzetes verziójú modul éles használatra nem ajánlott. 
 
 A nyilvános előzetes kiadás telepítéséhez használja az alábbi parancsot. 
 
@@ -36,7 +36,7 @@ A nyilvános előzetes kiadás telepítéséhez használja az alábbi parancsot.
 Install-module AzureADPreview
 ```
 
-Ha többet szeretne megtudni arról, hogyan csatlakozhat az Azure AD-hez a PowerShell használatával, tekintse meg az [Azure ad PowerShell a graphhoz](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)című cikket.  
+Ha többet szeretne megtudni arról, hogyan csatlakozhat az Azure AD-hez a PowerShell használatával, tekintse meg az [Azure ad PowerShell a graphhoz](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)című cikket.  
 
 A Azure Active Directory-(Azure AD-) jelentésekkel részletes információkat kaphat az összes írási műveletről (napló) és a hitelesítési adatokról (bejelentkezési naplók). Bár az adatok az MS Graph API használatával érhetők el, mostantól az Azure AD PowerShell-parancsmagokkal is lekérheti ugyanezeket az adatokat a jelentéskészítéshez.
 
@@ -54,7 +54,7 @@ A naplókhoz a Get-AzureADAuditDirectoryLogs parancsmag használatával férhet 
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
 | Kategória                      | Get-AzureADAuditDirectoryLogs szűrő "Category EQ" ApplicationManagement "" |
 | Tevékenység dátumának időpontja            | Get-AzureADAuditDirectoryLogs – "activityDateTime gt 2019-04-18" szűrő |
-| A fentiek közül az összes              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "és category EQ" ApplicationManagement "és activityDateTime gt 2019-04-18"|
+| A fentiek mindegyike              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "és category EQ" ApplicationManagement "és activityDateTime gt 2019-04-18"|
 
 
 Az alábbi képen egy példa látható erre a parancsra. 
@@ -76,7 +76,7 @@ A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használat�
 | Létrehozás dátuma és időpontja              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (mindent a 4/18-as 5:30-kor) |
 | status                        | Get-AzureADAuditSignInLogs-Filter "Status/errorCode EQ 50105" |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed engedélyezve] "" |
-| A fentiek közül az összes              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "és status/errorCode ne 0 és appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
+| A fentiek mindegyike              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "és status/errorCode ne 0 és appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
 
 
 Az alábbi képen egy példa látható erre a parancsra. 

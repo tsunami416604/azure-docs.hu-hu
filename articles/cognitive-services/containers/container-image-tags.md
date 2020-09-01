@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 2a57c5244630c2328320d7d99eed98c892d49897
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722568"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230755"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services tároló képcímkék
 
@@ -29,17 +29,17 @@ Az [anomália-detektor][ad-containers] tárolójának képe a `mcr.microsoft.com
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest`                      |       |
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Számítógépes látástechnológia
 
 A [Computer Vision][cv-containers] az OCR-tároló rendszerképe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-read` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest ( (2.0.013250001-amd64-preview)` | • A memória használatának további csökkentése a tárolóban. |
 |                                          | • A többrétegű telepítéshez külső gyorsítótár szükséges. Például állítsa be a Redis a gyorsítótárazáshoz. |
@@ -62,13 +62,13 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
 
-## <a name="face"></a>Face
+## <a name="face"></a>Arcfelismerés
 
 Az [arc][fa-containers] -tároló képe megtalálható a `containerpreview.azurecr.io` tároló beállításjegyzékében. A `microsoft` tárházban található, és neve `cognitive-services-face` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-face` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -86,7 +86,7 @@ Az [űrlap-felismerő][fr-containers] tároló rendszerképe megtalálható a `c
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -99,7 +99,7 @@ A [Luis][lu-containers] -tároló képe a `mcr.microsoft.com` Container Registry
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -117,9 +117,11 @@ A tároló beállításjegyzékében a [Custom Speech – Text][sp-cstt] tárol�
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék            | Jegyzetek |
+| Képcímkék            | Megjegyzések |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.3.1-amd64-preview` |       | 
+| `2.3.0-amd64-preview` |       |
 | `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
@@ -132,20 +134,141 @@ Az [egyéni szöveg-beszéd][sp-ctts] tároló képe a `containerpreview.azurecr
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék            | Jegyzetek |
+| Képcímkék            | Megjegyzések |
 |-----------------------|:------|
 | `latest`              |       |
+| `1.6.0-amd64-preview` |       |
+| `1.5.0-amd64-preview` |       |
+| `1.4.0-amd64-preview` |       |
 | `1.3.0-amd64-preview` |       |
 
 ## <a name="speech-to-text"></a>Diktálás
 
 A [beszédfelismerési][sp-stt] tároló rendszerképe a `containerpreview.azurecr.io` tároló beállításjegyzékében található. A `microsoft` tárházban található, és neve `cognitive-services-speech-to-text` . A teljes tároló rendszerképének neve: `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` .
+A beszéd és a szöveg közötti rendszerképek az *Egyesült Államok kormányzati Virginia* -verziója támogatott a v 2.4.0, és a következő címen érhető el: `containerpreview.azurecr.io/microsoft/fairfax/cognitive-services-speech-to-text` .
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                  | Jegyzetek                                    |
+| Képcímkék                  | Megjegyzések                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Tároló képe a `en-US` területi beállítással. |
+| `2.4.0-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
+| `2.4.0-amd64-ar-eg-preview` | Tároló képe a `ar-EG` területi beállítással. |
+| `2.4.0-amd64-ar-kw-preview` | Tároló képe a `ar-KW` területi beállítással. |
+| `2.4.0-amd64-ar-qa-preview` | Tároló képe a `ar-QA` területi beállítással. |
+| `2.4.0-amd64-ar-sa-preview` | Tároló képe a `ar-SA` területi beállítással. |
+| `2.4.0-amd64-ca-es-preview` | Tároló képe a `ca-ES` területi beállítással. |
+| `2.4.0-amd64-da-dk-preview` | Tároló képe a `da-DK` területi beállítással. |
+| `2.4.0-amd64-de-de-preview` | Tároló képe a `de-DE` területi beállítással. |
+| `2.4.0-amd64-en-au-preview` | Tároló képe a `en-AU` területi beállítással. |
+| `2.4.0-amd64-en-ca-preview` | Tároló képe a `en-CA` területi beállítással. |
+| `2.4.0-amd64-en-gb-preview` | Tároló képe a `en-GB` területi beállítással. |
+| `2.4.0-amd64-en-in-preview` | Tároló képe a `en-IN` területi beállítással. |
+| `2.4.0-amd64-en-nz-preview` | Tároló képe a `en-NZ` területi beállítással. |
+| `2.4.0-amd64-en-us-preview` | Tároló képe a `en-US` területi beállítással. |
+| `2.4.0-amd64-es-es-preview` | Tároló képe a `es-ES` területi beállítással. |
+| `2.4.0-amd64-es-mx-preview` | Tároló képe a `es-MX` területi beállítással. |
+| `2.4.0-amd64-fi-fi-preview` | Tároló képe a `fi-FI` területi beállítással. |
+| `2.4.0-amd64-fr-ca-preview` | Tároló képe a `fr-CA` területi beállítással. |
+| `2.4.0-amd64-fr-fr-preview` | Tároló képe a `fr-FR` területi beállítással. |
+| `2.4.0-amd64-gu-in-preview` | Tároló képe a `gu-IN` területi beállítással. |
+| `2.4.0-amd64-hi-in-preview` | Tároló képe a `hi-IN` területi beállítással. |
+| `2.4.0-amd64-it-it-preview` | Tároló képe a `it-IT` területi beállítással. |
+| `2.4.0-amd64-ja-jp-preview` | Tároló képe a `ja-JP` területi beállítással. |
+| `2.4.0-amd64-ko-kr-preview` | Tároló képe a `ko-KR` területi beállítással. |
+| `2.4.0-amd64-mr-in-preview` | Tároló képe a `mr-IN` területi beállítással. |
+| `2.4.0-amd64-nb-no-preview` | Tároló képe a `nb-NO` területi beállítással. |
+| `2.4.0-amd64-nl-nl-preview` | Tároló képe a `nl-NL` területi beállítással. |
+| `2.4.0-amd64-pl-pl-preview` | Tároló képe a `pl-PL` területi beállítással. |
+| `2.4.0-amd64-pt-br-preview` | Tároló képe a `pt-BR` területi beállítással. |
+| `2.4.0-amd64-pt-pt-preview` | Tároló képe a `pt-PT` területi beállítással. |
+| `2.4.0-amd64-ru-ru-preview` | Tároló képe a `ru-RU` területi beállítással. |
+| `2.4.0-amd64-sv-se-preview` | Tároló képe a `sv-SE` területi beállítással. |
+| `2.4.0-amd64-ta-in-preview` | Tároló képe a `ta-IN` területi beállítással. |
+| `2.4.0-amd64-te-in-preview` | Tároló képe a `te-IN` területi beállítással. |
+| `2.4.0-amd64-th-th-preview` | Tároló képe a `th-TH` területi beállítással. |
+| `2.4.0-amd64-tr-tr-preview` | Tároló képe a `tr-TR` területi beállítással. |
+| `2.4.0-amd64-zh-cn-preview` | Tároló képe a `zh-CN` területi beállítással. |
+| `2.4.0-amd64-zh-hk-preview` | Tároló képe a `zh-HK` területi beállítással. |
+| `2.4.0-amd64-zh-tw-preview` | Tároló képe a `zh-TW` területi beállítással. |
+| `2.3.1-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
+| `2.3.1-amd64-ar-eg-preview` | Tároló képe a `ar-EG` területi beállítással. |
+| `2.3.1-amd64-ar-kw-preview` | Tároló képe a `ar-KW` területi beállítással. |
+| `2.3.1-amd64-ar-qa-preview` | Tároló képe a `ar-QA` területi beállítással. |
+| `2.3.1-amd64-ar-sa-preview` | Tároló képe a `ar-SA` területi beállítással. |
+| `2.3.1-amd64-ca-es-preview` | Tároló képe a `ca-ES` területi beállítással. |
+| `2.3.1-amd64-da-dk-preview` | Tároló képe a `da-DK` területi beállítással. |
+| `2.3.1-amd64-de-de-preview` | Tároló képe a `de-DE` területi beállítással. |
+| `2.3.1-amd64-en-au-preview` | Tároló képe a `en-AU` területi beállítással. |
+| `2.3.1-amd64-en-ca-preview` | Tároló képe a `en-CA` területi beállítással. |
+| `2.3.1-amd64-en-gb-preview` | Tároló képe a `en-GB` területi beállítással. |
+| `2.3.1-amd64-en-in-preview` | Tároló képe a `en-IN` területi beállítással. |
+| `2.3.1-amd64-en-nz-preview` | Tároló képe a `en-NZ` területi beállítással. |
+| `2.3.1-amd64-en-us-preview` | Tároló képe a `en-US` területi beállítással. |
+| `2.3.1-amd64-es-es-preview` | Tároló képe a `es-ES` területi beállítással. |
+| `2.3.1-amd64-es-mx-preview` | Tároló képe a `es-MX` területi beállítással. |
+| `2.3.1-amd64-fi-fi-preview` | Tároló képe a `fi-FI` területi beállítással. |
+| `2.3.1-amd64-fr-ca-preview` | Tároló képe a `fr-CA` területi beállítással. |
+| `2.3.1-amd64-fr-fr-preview` | Tároló képe a `fr-FR` területi beállítással. |
+| `2.3.1-amd64-gu-in-preview` | Tároló képe a `gu-IN` területi beállítással. |
+| `2.3.1-amd64-hi-in-preview` | Tároló képe a `hi-IN` területi beállítással. |
+| `2.3.1-amd64-it-it-preview` | Tároló képe a `it-IT` területi beállítással. |
+| `2.3.1-amd64-ja-jp-preview` | Tároló képe a `ja-JP` területi beállítással. |
+| `2.3.1-amd64-ko-kr-preview` | Tároló képe a `ko-KR` területi beállítással. |
+| `2.3.1-amd64-mr-in-preview` | Tároló képe a `mr-IN` területi beállítással. |
+| `2.3.1-amd64-nb-no-preview` | Tároló képe a `nb-NO` területi beállítással. |
+| `2.3.1-amd64-nl-nl-preview` | Tároló képe a `nl-NL` területi beállítással. |
+| `2.3.1-amd64-pl-pl-preview` | Tároló képe a `pl-PL` területi beállítással. |
+| `2.3.1-amd64-pt-br-preview` | Tároló képe a `pt-BR` területi beállítással. |
+| `2.3.1-amd64-pt-pt-preview` | Tároló képe a `pt-PT` területi beállítással. |
+| `2.3.1-amd64-ru-ru-preview` | Tároló képe a `ru-RU` területi beállítással. |
+| `2.3.1-amd64-sv-se-preview` | Tároló képe a `sv-SE` területi beállítással. |
+| `2.3.1-amd64-ta-in-preview` | Tároló képe a `ta-IN` területi beállítással. |
+| `2.3.1-amd64-te-in-preview` | Tároló képe a `te-IN` területi beállítással. |
+| `2.3.1-amd64-th-th-preview` | Tároló képe a `th-TH` területi beállítással. |
+| `2.3.1-amd64-tr-tr-preview` | Tároló képe a `tr-TR` területi beállítással. |
+| `2.3.1-amd64-zh-cn-preview` | Tároló képe a `zh-CN` területi beállítással. |
+| `2.3.1-amd64-zh-hk-preview` | Tároló képe a `zh-HK` területi beállítással. |
+| `2.3.1-amd64-zh-tw-preview` | Tároló képe a `zh-TW` területi beállítással. |
+| `2.3.0-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
+| `2.3.0-amd64-ar-eg-preview` | Tároló képe a `ar-EG` területi beállítással. |
+| `2.3.0-amd64-ar-kw-preview` | Tároló képe a `ar-KW` területi beállítással. |
+| `2.3.0-amd64-ar-qa-preview` | Tároló képe a `ar-QA` területi beállítással. |
+| `2.3.0-amd64-ar-sa-preview` | Tároló képe a `ar-SA` területi beállítással. |
+| `2.3.0-amd64-ca-es-preview` | Tároló képe a `ca-ES` területi beállítással. |
+| `2.3.0-amd64-da-dk-preview` | Tároló képe a `da-DK` területi beállítással. |
+| `2.3.0-amd64-de-de-preview` | Tároló képe a `de-DE` területi beállítással. |
+| `2.3.0-amd64-en-au-preview` | Tároló képe a `en-AU` területi beállítással. |
+| `2.3.0-amd64-en-ca-preview` | Tároló képe a `en-CA` területi beállítással. |
+| `2.3.0-amd64-en-gb-preview` | Tároló képe a `en-GB` területi beállítással. |
+| `2.3.0-amd64-en-in-preview` | Tároló képe a `en-IN` területi beállítással. |
+| `2.3.0-amd64-en-nz-preview` | Tároló képe a `en-NZ` területi beállítással. |
+| `2.3.0-amd64-en-us-preview` | Tároló képe a `en-US` területi beállítással. |
+| `2.3.0-amd64-es-es-preview` | Tároló képe a `es-ES` területi beállítással. |
+| `2.3.0-amd64-es-mx-preview` | Tároló képe a `es-MX` területi beállítással. |
+| `2.3.0-amd64-fi-fi-preview` | Tároló képe a `fi-FI` területi beállítással. |
+| `2.3.0-amd64-fr-ca-preview` | Tároló képe a `fr-CA` területi beállítással. |
+| `2.3.0-amd64-fr-fr-preview` | Tároló képe a `fr-FR` területi beállítással. |
+| `2.3.0-amd64-gu-in-preview` | Tároló képe a `gu-IN` területi beállítással. |
+| `2.3.0-amd64-hi-in-preview` | Tároló képe a `hi-IN` területi beállítással. |
+| `2.3.0-amd64-it-it-preview` | Tároló képe a `it-IT` területi beállítással. |
+| `2.3.0-amd64-ja-jp-preview` | Tároló képe a `ja-JP` területi beállítással. |
+| `2.3.0-amd64-ko-kr-preview` | Tároló képe a `ko-KR` területi beállítással. |
+| `2.3.0-amd64-mr-in-preview` | Tároló képe a `mr-IN` területi beállítással. |
+| `2.3.0-amd64-nb-no-preview` | Tároló képe a `nb-NO` területi beállítással. |
+| `2.3.0-amd64-nl-nl-preview` | Tároló képe a `nl-NL` területi beállítással. |
+| `2.3.0-amd64-pl-pl-preview` | Tároló képe a `pl-PL` területi beállítással. |
+| `2.3.0-amd64-pt-br-preview` | Tároló képe a `pt-BR` területi beállítással. |
+| `2.3.0-amd64-pt-pt-preview` | Tároló képe a `pt-PT` területi beállítással. |
+| `2.3.0-amd64-ru-ru-preview` | Tároló képe a `ru-RU` területi beállítással. |
+| `2.3.0-amd64-sv-se-preview` | Tároló képe a `sv-SE` területi beállítással. |
+| `2.3.0-amd64-ta-in-preview` | Tároló képe a `ta-IN` területi beállítással. |
+| `2.3.0-amd64-te-in-preview` | Tároló képe a `te-IN` területi beállítással. |
+| `2.3.0-amd64-th-th-preview` | Tároló képe a `th-TH` területi beállítással. |
+| `2.3.0-amd64-tr-tr-preview` | Tároló képe a `tr-TR` területi beállítással. |
+| `2.3.0-amd64-zh-cn-preview` | Tároló képe a `zh-CN` területi beállítással. |
+| `2.3.0-amd64-zh-hk-preview` | Tároló képe a `zh-HK` területi beállítással. |
+| `2.3.0-amd64-zh-tw-preview` | Tároló képe a `zh-TW` területi beállítással. |
 | `2.2.0-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
 | `2.2.0-amd64-ar-eg-preview` | Tároló képe a `ar-EG` területi beállítással. |
 | `2.2.0-amd64-ar-kw-preview` | Tároló képe a `ar-KW` területi beállítással. |
@@ -465,9 +588,252 @@ A [szöveg-beszéd][sp-tts] tároló képe megtalálható a `containerpreview.az
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                                  | Jegyzetek                                                                      |
+| Képcímkék                                  | Megjegyzések                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-JessaRUS` hanggal.        |
+| `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-AriaRUS` hanggal.         |
+| `1.6.0-amd64-ar-eg-hoda-preview`            | A tároló képe a `ar-EG` területi beállítással és a `ar-EG-Hoda` hanggal.            |
+| `1.6.0-amd64-ar-sa-naayf-preview`           | A tároló képe a `ar-SA` területi beállítással és a `ar-SA-Naayf` hanggal.           |
+| `1.6.0-amd64-bg-bg-ivan-preview`            | A tároló képe a `bg-BG` területi beállítással és a `bg-BG-Ivan` hanggal.            |
+| `1.6.0-amd64-ca-es-herenarus-preview`       | A tároló képe a `ca-ES` területi beállítással és a `ca-ES-HerenaRUS` hanggal.       |
+| `1.6.0-amd64-cs-cz-jakub-preview`           | A tároló képe a `cs-CZ` területi beállítással és a `cs-CZ-Jakub` hanggal.           |
+| `1.6.0-amd64-da-dk-hellerus-preview`        | A tároló képe a `da-DK` területi beállítással és a `da-DK-HelleRUS` hanggal.        |
+| `1.6.0-amd64-de-at-michael-preview`         | A tároló képe a `de-AT` területi beállítással és a `de-AT-Michael` hanggal.         |
+| `1.6.0-amd64-de-ch-karsten-preview`         | A tároló képe a `de-CH` területi beállítással és a `de-CH-Karsten` hanggal.         |
+| `1.6.0-amd64-de-de-hedda-preview`           | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.6.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.6.0-amd64-de-de-stefan-apollo-preview`   | A tároló képe a `de-DE` területi beállítással és a `de-DE-Stefan-Apollo` hanggal.   |
+| `1.6.0-amd64-el-gr-stefanos-preview`        | A tároló képe a `el-GR` területi beállítással és a `el-GR-Stefanos` hanggal.        |
+| `1.6.0-amd64-en-au-catherine-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-Catherine` hanggal.       |
+| `1.6.0-amd64-en-au-hayleyrus-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-HayleyRUS` hanggal.       |
+| `1.6.0-amd64-en-ca-heatherrus-preview`      | A tároló képe a `en-CA` területi beállítással és a `en-CA-HeatherRUS` hanggal.      |
+| `1.6.0-amd64-en-ca-linda-preview`           | A tároló képe a `en-CA` területi beállítással és a `en-CA-Linda` hanggal.           |
+| `1.6.0-amd64-en-gb-george-apollo-preview`   | A tároló képe a `en-GB` területi beállítással és a `en-GB-George-Apollo` hanggal.   |
+| `1.6.0-amd64-en-gb-hazelrus-preview`        | A tároló képe a `en-GB` területi beállítással és a `en-GB-HazelRUS` hanggal.        |
+| `1.6.0-amd64-en-gb-susan-apollo-preview`    | A tároló képe a `en-GB` területi beállítással és a `en-GB-Susan-Apollo` hanggal.    |
+| `1.6.0-amd64-en-ie-sean-preview`            | A tároló képe a `en-IE` területi beállítással és a `en-IE-Sean` hanggal.            |
+| `1.6.0-amd64-en-in-heera-apollo-preview`    | A tároló képe a `en-IN` területi beállítással és a `en-IN-Heera-Apollo` hanggal.    |
+| `1.6.0-amd64-en-in-priyarus-preview`        | A tároló képe a `en-IN` területi beállítással és a `en-IN-PriyaRUS` hanggal.        |
+| `1.6.0-amd64-en-in-ravi-apollo-preview`     | A tároló képe a `en-IN` területi beállítással és a `en-IN-Ravi-Apollo` hanggal.     |
+| `1.6.0-amd64-en-us-benjaminrus-preview`     | A tároló képe a `en-US` területi beállítással és a `en-US-BenjaminRUS` hanggal.     |
+| `1.6.0-amd64-en-us-guy24krus-preview`       | A tároló képe a `en-US` területi beállítással és a `en-US-Guy24kRUS` hanggal.       |
+| `1.6.0-amd64-en-us-aria24krus-preview`      | A tároló képe a `en-US` területi beállítással és a `en-US-Aria24kRUS` hanggal.     |
+| `1.6.0-amd64-en-us-ariarus-preview`         | A tároló képe a `en-US` területi beállítással és a `en-US-AriaRUS` hanggal.        |
+| `1.6.0-amd64-en-us-zirarus-preview`         | A tároló képe a `en-US` területi beállítással és a `en-US-ZiraRUS` hanggal.         |
+| `1.6.0-amd64-es-es-helenarus-preview`       | A tároló képe a `es-ES` területi beállítással és a `es-ES-HelenaRUS` hanggal.       |
+| `1.6.0-amd64-es-es-laura-apollo-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-Laura-Apollo` hanggal.    |
+| `1.6.0-amd64-es-es-pablo-apollo-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-Pablo-Apollo` hanggal.    |
+| `1.6.0-amd64-es-mx-hildarus-preview`        | A tároló képe a `es-MX` területi beállítással és a `es-MX-HildaRUS` hanggal.        |
+| `1.6.0-amd64-es-mx-raul-apollo-preview`     | A tároló képe a `es-MX` területi beállítással és a `es-MX-Raul-Apollo` hanggal.     |
+| `1.6.0-amd64-fi-fi-heidirus-preview`        | A tároló képe a `fi-FI` területi beállítással és a `fi-FI-HeidiRUS` hanggal.        |
+| `1.6.0-amd64-fr-ca-caroline-preview`        | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-Caroline` hanggal.        |
+| `1.6.0-amd64-fr-ca-harmonierus-preview`     | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-HarmonieRUS` hanggal.     |
+| `1.6.0-amd64-fr-ch-guillaume-preview`       | A tároló képe a `fr-CH` területi beállítással és a `fr-CH-Guillaume` hanggal.       |
+| `1.6.0-amd64-fr-fr-hortenserus-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-HortenseRUS` hanggal.     |
+| `1.6.0-amd64-fr-fr-julie-apollo-preview`    | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Julie-Apollo` hanggal.    |
+| `1.6.0-amd64-fr-fr-paul-apollo-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Paul-Apollo` hanggal.     |
+| `1.6.0-amd64-he-il-asaf-preview`            | A tároló képe a `he-IL` területi beállítással és a `he-IL-Asaf` hanggal.            |
+| `1.6.0-amd64-hi-in-hemant-preview`          | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Hemant` hanggal.          |
+| `1.6.0-amd64-hi-in-kalpana-apollo-preview`  | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana-Apollo` hanggal.  |
+| `1.6.0-amd64-hi-in-kalpana-preview`         | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana` hanggal.         |
+| `1.6.0-amd64-hr-hr-matej-preview`           | A tároló képe a `hr-HR` területi beállítással és a `hr-HR-Matej` hanggal.           |
+| `1.6.0-amd64-hu-hu-szabolcs-preview`        | A tároló képe a `hu-HU` területi beállítással és a `hu-HU-Szabolcs` hanggal.        |
+| `1.6.0-amd64-id-id-andika-preview`          | A tároló képe a `id-ID` területi beállítással és a `id-ID-Andika` hanggal.          |
+| `1.6.0-amd64-it-it-cosimo-apollo-preview`   | A tároló képe a `it-IT` területi beállítással és a `it-IT-Cosimo-Apollo` hanggal.   |
+| `1.6.0-amd64-it-it-luciarus-preview`        | A tároló képe a `it-IT` területi beállítással és a `it-IT-LuciaRUS` hanggal.        |
+| `1.6.0-amd64-ja-jp-ayumi-apollo-preview`    | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-Ayumi-Apollo` hanggal.    |
+| `1.6.0-amd64-ja-jp-harukarus-preview`       | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-HarukaRUS` hanggal.       |
+| `1.6.0-amd64-ja-jp-ichiro-apollo-preview`   | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-Ichiro-Apollo` hanggal.   |
+| `1.6.0-amd64-ko-kr-heamirus-preview`        | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-HeamiRUS` hanggal.        |
+| `1.6.0-amd64-ms-my-rizwan-preview`          | A tároló képe a `ms-MY` területi beállítással és a `ms-MY-Rizwan` hanggal.          |
+| `1.6.0-amd64-nb-no-huldarus-preview`        | A tároló képe a `nb-NO` területi beállítással és a `nb-NO-HuldaRUS` hanggal.        |
+| `1.6.0-amd64-nl-nl-hannarus-preview`        | A tároló képe a `nl-NL` területi beállítással és a `nl-NL-HannaRUS` hanggal.        |
+| `1.6.0-amd64-pl-pl-paulinarus-preview`      | A tároló képe a `pl-PL` területi beállítással és a `pl-PL-PaulinaRUS` hanggal.      |
+| `1.6.0-amd64-pt-br-daniel-apollo-preview`   | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-Daniel-Apollo` hanggal.   |
+| `1.6.0-amd64-pt-br-heloisarus-preview`      | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-HeloisaRUS` hanggal.      |
+| `1.6.0-amd64-pt-pt-heliarus-preview`        | A tároló képe a `pt-PT` területi beállítással és a `pt-PT-HeliaRUS` hanggal.        |
+| `1.6.0-amd64-ro-ro-andrei-preview`          | A tároló képe a `ro-RO` területi beállítással és a `ro-RO-Andrei` hanggal.          |
+| `1.6.0-amd64-ru-ru-ekaterinarus-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-EkaterinaRUS` hanggal.    |
+| `1.6.0-amd64-ru-ru-irina-apollo-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-Irina-Apollo` hanggal.    |
+| `1.6.0-amd64-ru-ru-pavel-apollo-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-Pavel-Apollo` hanggal.    |
+| `1.6.0-amd64-sk-sk-filip-preview`           | A tároló képe a `sk-SK` területi beállítással és a `sk-SK-Filip` hanggal.           |
+| `1.6.0-amd64-sl-si-lado-preview`            | A tároló képe a `sl-SI` területi beállítással és a `sl-SI-Lado` hanggal.            |
+| `1.6.0-amd64-sv-se-hedvigrus-preview`       | A tároló képe a `sv-SE` területi beállítással és a `sv-SE-HedvigRUS` hanggal.       |
+| `1.6.0-amd64-ta-in-valluvar-preview`        | A tároló képe a `ta-IN` területi beállítással és a `ta-IN-Valluvar` hanggal.        |
+| `1.6.0-amd64-te-in-chitra-preview`          | A tároló képe a `te-IN` területi beállítással és a `te-IN-Chitra` hanggal.          |
+| `1.6.0-amd64-th-th-pattara-preview`         | A tároló képe a `th-TH` területi beállítással és a `th-TH-Pattara` hanggal.         |
+| `1.6.0-amd64-tr-tr-sedarus-preview`         | A tároló képe a `tr-TR` területi beállítással és a `tr-TR-SedaRUS` hanggal.         |
+| `1.6.0-amd64-vi-vn-an-preview`              | A tároló képe a `vi-VN` területi beállítással és a `vi-VN-An` hanggal.              |
+| `1.6.0-amd64-zh-cn-huihuirus-preview`       | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-HuihuiRUS` hanggal.       |
+| `1.6.0-amd64-zh-cn-kangkang-apollo-preview` | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Kangkang-Apollo` hanggal. |
+| `1.6.0-amd64-zh-cn-yaoyao-apollo-preview`   | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Yaoyao-Apollo` hanggal.   |
+| `1.6.0-amd64-zh-hk-danny-apollo-preview`    | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-Danny-Apollo` hanggal.    |
+| `1.6.0-amd64-zh-hk-tracy-apollo-preview`    | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-Tracy-Apollo` hanggal.    |
+| `1.6.0-amd64-zh-hk-tracyrus-preview`        | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-TracyRUS` hanggal.        |
+| `1.6.0-amd64-zh-tw-hanhanrus-preview`       | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-HanHanRUS` hanggal.       |
+| `1.6.0-amd64-zh-tw-yating-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Yating-Apollo` hanggal.   |
+| `1.6.0-amd64-zh-tw-zhiwei-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Zhiwei-Apollo` hanggal.   |
+| `1.5.0-amd64-ar-eg-hoda-preview`            | A tároló képe a `ar-EG` területi beállítással és a `ar-EG-Hoda` hanggal.            |
+| `1.5.0-amd64-ar-sa-naayf-preview`           | A tároló képe a `ar-SA` területi beállítással és a `ar-SA-Naayf` hanggal.           |
+| `1.5.0-amd64-bg-bg-ivan-preview`            | A tároló képe a `bg-BG` területi beállítással és a `bg-BG-Ivan` hanggal.            |
+| `1.5.0-amd64-ca-es-herenarus-preview`       | A tároló képe a `ca-ES` területi beállítással és a `ca-ES-HerenaRUS` hanggal.       |
+| `1.5.0-amd64-cs-cz-jakub-preview`           | A tároló képe a `cs-CZ` területi beállítással és a `cs-CZ-Jakub` hanggal.           |
+| `1.5.0-amd64-da-dk-hellerus-preview`        | A tároló képe a `da-DK` területi beállítással és a `da-DK-HelleRUS` hanggal.        |
+| `1.5.0-amd64-de-at-michael-preview`         | A tároló képe a `de-AT` területi beállítással és a `de-AT-Michael` hanggal.         |
+| `1.5.0-amd64-de-ch-karsten-preview`         | A tároló képe a `de-CH` területi beállítással és a `de-CH-Karsten` hanggal.         |
+| `1.5.0-amd64-de-de-hedda-preview`           | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.5.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.5.0-amd64-de-de-stefan-apollo-preview`   | A tároló képe a `de-DE` területi beállítással és a `de-DE-Stefan-Apollo` hanggal.   |
+| `1.5.0-amd64-el-gr-stefanos-preview`        | A tároló képe a `el-GR` területi beállítással és a `el-GR-Stefanos` hanggal.        |
+| `1.5.0-amd64-en-au-catherine-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-Catherine` hanggal.       |
+| `1.5.0-amd64-en-au-hayleyrus-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-HayleyRUS` hanggal.       |
+| `1.5.0-amd64-en-ca-heatherrus-preview`      | A tároló képe a `en-CA` területi beállítással és a `en-CA-HeatherRUS` hanggal.      |
+| `1.5.0-amd64-en-ca-linda-preview`           | A tároló képe a `en-CA` területi beállítással és a `en-CA-Linda` hanggal.           |
+| `1.5.0-amd64-en-gb-george-apollo-preview`   | A tároló képe a `en-GB` területi beállítással és a `en-GB-George-Apollo` hanggal.   |
+| `1.5.0-amd64-en-gb-hazelrus-preview`        | A tároló képe a `en-GB` területi beállítással és a `en-GB-HazelRUS` hanggal.        |
+| `1.5.0-amd64-en-gb-susan-apollo-preview`    | A tároló képe a `en-GB` területi beállítással és a `en-GB-Susan-Apollo` hanggal.    |
+| `1.5.0-amd64-en-ie-sean-preview`            | A tároló képe a `en-IE` területi beállítással és a `en-IE-Sean` hanggal.            |
+| `1.5.0-amd64-en-in-heera-apollo-preview`    | A tároló képe a `en-IN` területi beállítással és a `en-IN-Heera-Apollo` hanggal.    |
+| `1.5.0-amd64-en-in-priyarus-preview`        | A tároló képe a `en-IN` területi beállítással és a `en-IN-PriyaRUS` hanggal.        |
+| `1.5.0-amd64-en-in-ravi-apollo-preview`     | A tároló képe a `en-IN` területi beállítással és a `en-IN-Ravi-Apollo` hanggal.     |
+| `1.5.0-amd64-en-us-benjaminrus-preview`     | A tároló képe a `en-US` területi beállítással és a `en-US-BenjaminRUS` hanggal.     |
+| `1.5.0-amd64-en-us-guy24krus-preview`       | A tároló képe a `en-US` területi beállítással és a `en-US-Guy24kRUS` hanggal.       |
+| `1.5.0-amd64-en-us-aria24krus-preview`      | A tároló képe a `en-US` területi beállítással és a `en-US-Aria24kRUS` hanggal.     |
+| `1.5.0-amd64-en-us-ariarus-preview`         | A tároló képe a `en-US` területi beállítással és a `en-US-AriaRUS` hanggal.        |
+| `1.5.0-amd64-en-us-zirarus-preview`         | A tároló képe a `en-US` területi beállítással és a `en-US-ZiraRUS` hanggal.         |
+| `1.5.0-amd64-es-es-helenarus-preview`       | A tároló képe a `es-ES` területi beállítással és a `es-ES-HelenaRUS` hanggal.       |
+| `1.5.0-amd64-es-es-laura-apollo-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-Laura-Apollo` hanggal.    |
+| `1.5.0-amd64-es-es-pablo-apollo-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-Pablo-Apollo` hanggal.    |
+| `1.5.0-amd64-es-mx-hildarus-preview`        | A tároló képe a `es-MX` területi beállítással és a `es-MX-HildaRUS` hanggal.        |
+| `1.5.0-amd64-es-mx-raul-apollo-preview`     | A tároló képe a `es-MX` területi beállítással és a `es-MX-Raul-Apollo` hanggal.     |
+| `1.5.0-amd64-fi-fi-heidirus-preview`        | A tároló képe a `fi-FI` területi beállítással és a `fi-FI-HeidiRUS` hanggal.        |
+| `1.5.0-amd64-fr-ca-caroline-preview`        | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-Caroline` hanggal.        |
+| `1.5.0-amd64-fr-ca-harmonierus-preview`     | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-HarmonieRUS` hanggal.     |
+| `1.5.0-amd64-fr-ch-guillaume-preview`       | A tároló képe a `fr-CH` területi beállítással és a `fr-CH-Guillaume` hanggal.       |
+| `1.5.0-amd64-fr-fr-hortenserus-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-HortenseRUS` hanggal.     |
+| `1.5.0-amd64-fr-fr-julie-apollo-preview`    | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Julie-Apollo` hanggal.    |
+| `1.5.0-amd64-fr-fr-paul-apollo-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Paul-Apollo` hanggal.     |
+| `1.5.0-amd64-he-il-asaf-preview`            | A tároló képe a `he-IL` területi beállítással és a `he-IL-Asaf` hanggal.            |
+| `1.5.0-amd64-hi-in-hemant-preview`          | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Hemant` hanggal.          |
+| `1.5.0-amd64-hi-in-kalpana-apollo-preview`  | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana-Apollo` hanggal.  |
+| `1.5.0-amd64-hi-in-kalpana-preview`         | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana` hanggal.         |
+| `1.5.0-amd64-hr-hr-matej-preview`           | A tároló képe a `hr-HR` területi beállítással és a `hr-HR-Matej` hanggal.           |
+| `1.5.0-amd64-hu-hu-szabolcs-preview`        | A tároló képe a `hu-HU` területi beállítással és a `hu-HU-Szabolcs` hanggal.        |
+| `1.5.0-amd64-id-id-andika-preview`          | A tároló képe a `id-ID` területi beállítással és a `id-ID-Andika` hanggal.          |
+| `1.5.0-amd64-it-it-cosimo-apollo-preview`   | A tároló képe a `it-IT` területi beállítással és a `it-IT-Cosimo-Apollo` hanggal.   |
+| `1.5.0-amd64-it-it-luciarus-preview`        | A tároló képe a `it-IT` területi beállítással és a `it-IT-LuciaRUS` hanggal.        |
+| `1.5.0-amd64-ja-jp-ayumi-apollo-preview`    | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-Ayumi-Apollo` hanggal.    |
+| `1.5.0-amd64-ja-jp-harukarus-preview`       | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-HarukaRUS` hanggal.       |
+| `1.5.0-amd64-ja-jp-ichiro-apollo-preview`   | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-Ichiro-Apollo` hanggal.   |
+| `1.5.0-amd64-ko-kr-heamirus-preview`        | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-HeamiRUS` hanggal.        |
+| `1.5.0-amd64-ms-my-rizwan-preview`          | A tároló képe a `ms-MY` területi beállítással és a `ms-MY-Rizwan` hanggal.          |
+| `1.5.0-amd64-nb-no-huldarus-preview`        | A tároló képe a `nb-NO` területi beállítással és a `nb-NO-HuldaRUS` hanggal.        |
+| `1.5.0-amd64-nl-nl-hannarus-preview`        | A tároló képe a `nl-NL` területi beállítással és a `nl-NL-HannaRUS` hanggal.        |
+| `1.5.0-amd64-pl-pl-paulinarus-preview`      | A tároló képe a `pl-PL` területi beállítással és a `pl-PL-PaulinaRUS` hanggal.      |
+| `1.5.0-amd64-pt-br-daniel-apollo-preview`   | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-Daniel-Apollo` hanggal.   |
+| `1.5.0-amd64-pt-br-heloisarus-preview`      | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-HeloisaRUS` hanggal.      |
+| `1.5.0-amd64-pt-pt-heliarus-preview`        | A tároló képe a `pt-PT` területi beállítással és a `pt-PT-HeliaRUS` hanggal.        |
+| `1.5.0-amd64-ro-ro-andrei-preview`          | A tároló képe a `ro-RO` területi beállítással és a `ro-RO-Andrei` hanggal.          |
+| `1.5.0-amd64-ru-ru-ekaterinarus-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-EkaterinaRUS` hanggal.    |
+| `1.5.0-amd64-ru-ru-irina-apollo-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-Irina-Apollo` hanggal.    |
+| `1.5.0-amd64-ru-ru-pavel-apollo-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-Pavel-Apollo` hanggal.    |
+| `1.5.0-amd64-sk-sk-filip-preview`           | A tároló képe a `sk-SK` területi beállítással és a `sk-SK-Filip` hanggal.           |
+| `1.5.0-amd64-sl-si-lado-preview`            | A tároló képe a `sl-SI` területi beállítással és a `sl-SI-Lado` hanggal.            |
+| `1.5.0-amd64-sv-se-hedvigrus-preview`       | A tároló képe a `sv-SE` területi beállítással és a `sv-SE-HedvigRUS` hanggal.       |
+| `1.5.0-amd64-ta-in-valluvar-preview`        | A tároló képe a `ta-IN` területi beállítással és a `ta-IN-Valluvar` hanggal.        |
+| `1.5.0-amd64-te-in-chitra-preview`          | A tároló képe a `te-IN` területi beállítással és a `te-IN-Chitra` hanggal.          |
+| `1.5.0-amd64-th-th-pattara-preview`         | A tároló képe a `th-TH` területi beállítással és a `th-TH-Pattara` hanggal.         |
+| `1.5.0-amd64-tr-tr-sedarus-preview`         | A tároló képe a `tr-TR` területi beállítással és a `tr-TR-SedaRUS` hanggal.         |
+| `1.5.0-amd64-vi-vn-an-preview`              | A tároló képe a `vi-VN` területi beállítással és a `vi-VN-An` hanggal.              |
+| `1.5.0-amd64-zh-cn-huihuirus-preview`       | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-HuihuiRUS` hanggal.       |
+| `1.5.0-amd64-zh-cn-kangkang-apollo-preview` | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Kangkang-Apollo` hanggal. |
+| `1.5.0-amd64-zh-cn-yaoyao-apollo-preview`   | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Yaoyao-Apollo` hanggal.   |
+| `1.5.0-amd64-zh-hk-danny-apollo-preview`    | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-Danny-Apollo` hanggal.    |
+| `1.5.0-amd64-zh-hk-tracy-apollo-preview`    | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-Tracy-Apollo` hanggal.    |
+| `1.5.0-amd64-zh-hk-tracyrus-preview`        | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-TracyRUS` hanggal.        |
+| `1.5.0-amd64-zh-tw-hanhanrus-preview`       | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-HanHanRUS` hanggal.       |
+| `1.5.0-amd64-zh-tw-yating-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Yating-Apollo` hanggal.   |
+| `1.5.0-amd64-zh-tw-zhiwei-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Zhiwei-Apollo` hanggal.   |
+| `1.4.0-amd64-ar-eg-hoda-preview`            | A tároló képe a `ar-EG` területi beállítással és a `ar-EG-Hoda` hanggal.            |
+| `1.4.0-amd64-ar-sa-naayf-preview`           | A tároló képe a `ar-SA` területi beállítással és a `ar-SA-Naayf` hanggal.           |
+| `1.4.0-amd64-bg-bg-ivan-preview`            | A tároló képe a `bg-BG` területi beállítással és a `bg-BG-Ivan` hanggal.            |
+| `1.4.0-amd64-ca-es-herenarus-preview`       | A tároló képe a `ca-ES` területi beállítással és a `ca-ES-HerenaRUS` hanggal.       |
+| `1.4.0-amd64-cs-cz-jakub-preview`           | A tároló képe a `cs-CZ` területi beállítással és a `cs-CZ-Jakub` hanggal.           |
+| `1.4.0-amd64-da-dk-hellerus-preview`        | A tároló képe a `da-DK` területi beállítással és a `da-DK-HelleRUS` hanggal.        |
+| `1.4.0-amd64-de-at-michael-preview`         | A tároló képe a `de-AT` területi beállítással és a `de-AT-Michael` hanggal.         |
+| `1.4.0-amd64-de-ch-karsten-preview`         | A tároló képe a `de-CH` területi beállítással és a `de-CH-Karsten` hanggal.         |
+| `1.4.0-amd64-de-de-hedda-preview`           | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.4.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.4.0-amd64-de-de-stefan-apollo-preview`   | A tároló képe a `de-DE` területi beállítással és a `de-DE-Stefan-Apollo` hanggal.   |
+| `1.4.0-amd64-el-gr-stefanos-preview`        | A tároló képe a `el-GR` területi beállítással és a `el-GR-Stefanos` hanggal.        |
+| `1.4.0-amd64-en-au-catherine-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-Catherine` hanggal.       |
+| `1.4.0-amd64-en-au-hayleyrus-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-HayleyRUS` hanggal.       |
+| `1.4.0-amd64-en-ca-heatherrus-preview`      | A tároló képe a `en-CA` területi beállítással és a `en-CA-HeatherRUS` hanggal.      |
+| `1.4.0-amd64-en-ca-linda-preview`           | A tároló képe a `en-CA` területi beállítással és a `en-CA-Linda` hanggal.           |
+| `1.4.0-amd64-en-gb-george-apollo-preview`   | A tároló képe a `en-GB` területi beállítással és a `en-GB-George-Apollo` hanggal.   |
+| `1.4.0-amd64-en-gb-hazelrus-preview`        | A tároló képe a `en-GB` területi beállítással és a `en-GB-HazelRUS` hanggal.        |
+| `1.4.0-amd64-en-gb-susan-apollo-preview`    | A tároló képe a `en-GB` területi beállítással és a `en-GB-Susan-Apollo` hanggal.    |
+| `1.4.0-amd64-en-ie-sean-preview`            | A tároló képe a `en-IE` területi beállítással és a `en-IE-Sean` hanggal.            |
+| `1.4.0-amd64-en-in-heera-apollo-preview`    | A tároló képe a `en-IN` területi beállítással és a `en-IN-Heera-Apollo` hanggal.    |
+| `1.4.0-amd64-en-in-priyarus-preview`        | A tároló képe a `en-IN` területi beállítással és a `en-IN-PriyaRUS` hanggal.        |
+| `1.4.0-amd64-en-in-ravi-apollo-preview`     | A tároló képe a `en-IN` területi beállítással és a `en-IN-Ravi-Apollo` hanggal.     |
+| `1.4.0-amd64-en-us-benjaminrus-preview`     | A tároló képe a `en-US` területi beállítással és a `en-US-BenjaminRUS` hanggal.     |
+| `1.4.0-amd64-en-us-guy24krus-preview`       | A tároló képe a `en-US` területi beállítással és a `en-US-Guy24kRUS` hanggal.       |
+| `1.4.0-amd64-en-us-aria24krus-preview`      | A tároló képe a `en-US` területi beállítással és a `en-US-Aria24kRUS` hanggal.     |
+| `1.4.0-amd64-en-us-ariarus-preview`         | A tároló képe a `en-US` területi beállítással és a `en-US-AriaRUS` hanggal.        |
+| `1.4.0-amd64-en-us-zirarus-preview`         | A tároló képe a `en-US` területi beállítással és a `en-US-ZiraRUS` hanggal.         |
+| `1.4.0-amd64-es-es-helenarus-preview`       | A tároló képe a `es-ES` területi beállítással és a `es-ES-HelenaRUS` hanggal.       |
+| `1.4.0-amd64-es-es-laura-apollo-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-Laura-Apollo` hanggal.    |
+| `1.4.0-amd64-es-es-pablo-apollo-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-Pablo-Apollo` hanggal.    |
+| `1.4.0-amd64-es-mx-hildarus-preview`        | A tároló képe a `es-MX` területi beállítással és a `es-MX-HildaRUS` hanggal.        |
+| `1.4.0-amd64-es-mx-raul-apollo-preview`     | A tároló képe a `es-MX` területi beállítással és a `es-MX-Raul-Apollo` hanggal.     |
+| `1.4.0-amd64-fi-fi-heidirus-preview`        | A tároló képe a `fi-FI` területi beállítással és a `fi-FI-HeidiRUS` hanggal.        |
+| `1.4.0-amd64-fr-ca-caroline-preview`        | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-Caroline` hanggal.        |
+| `1.4.0-amd64-fr-ca-harmonierus-preview`     | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-HarmonieRUS` hanggal.     |
+| `1.4.0-amd64-fr-ch-guillaume-preview`       | A tároló képe a `fr-CH` területi beállítással és a `fr-CH-Guillaume` hanggal.       |
+| `1.4.0-amd64-fr-fr-hortenserus-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-HortenseRUS` hanggal.     |
+| `1.4.0-amd64-fr-fr-julie-apollo-preview`    | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Julie-Apollo` hanggal.    |
+| `1.4.0-amd64-fr-fr-paul-apollo-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Paul-Apollo` hanggal.     |
+| `1.4.0-amd64-he-il-asaf-preview`            | A tároló képe a `he-IL` területi beállítással és a `he-IL-Asaf` hanggal.            |
+| `1.4.0-amd64-hi-in-hemant-preview`          | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Hemant` hanggal.          |
+| `1.4.0-amd64-hi-in-kalpana-apollo-preview`  | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana-Apollo` hanggal.  |
+| `1.4.0-amd64-hi-in-kalpana-preview`         | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana` hanggal.         |
+| `1.4.0-amd64-hr-hr-matej-preview`           | A tároló képe a `hr-HR` területi beállítással és a `hr-HR-Matej` hanggal.           |
+| `1.4.0-amd64-hu-hu-szabolcs-preview`        | A tároló képe a `hu-HU` területi beállítással és a `hu-HU-Szabolcs` hanggal.        |
+| `1.4.0-amd64-id-id-andika-preview`          | A tároló képe a `id-ID` területi beállítással és a `id-ID-Andika` hanggal.          |
+| `1.4.0-amd64-it-it-cosimo-apollo-preview`   | A tároló képe a `it-IT` területi beállítással és a `it-IT-Cosimo-Apollo` hanggal.   |
+| `1.4.0-amd64-it-it-luciarus-preview`        | A tároló képe a `it-IT` területi beállítással és a `it-IT-LuciaRUS` hanggal.        |
+| `1.4.0-amd64-ja-jp-ayumi-apollo-preview`    | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-Ayumi-Apollo` hanggal.    |
+| `1.4.0-amd64-ja-jp-harukarus-preview`       | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-HarukaRUS` hanggal.       |
+| `1.4.0-amd64-ja-jp-ichiro-apollo-preview`   | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-Ichiro-Apollo` hanggal.   |
+| `1.4.0-amd64-ko-kr-heamirus-preview`        | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-HeamiRUS` hanggal.        |
+| `1.4.0-amd64-ms-my-rizwan-preview`          | A tároló képe a `ms-MY` területi beállítással és a `ms-MY-Rizwan` hanggal.          |
+| `1.4.0-amd64-nb-no-huldarus-preview`        | A tároló képe a `nb-NO` területi beállítással és a `nb-NO-HuldaRUS` hanggal.        |
+| `1.4.0-amd64-nl-nl-hannarus-preview`        | A tároló képe a `nl-NL` területi beállítással és a `nl-NL-HannaRUS` hanggal.        |
+| `1.4.0-amd64-pl-pl-paulinarus-preview`      | A tároló képe a `pl-PL` területi beállítással és a `pl-PL-PaulinaRUS` hanggal.      |
+| `1.4.0-amd64-pt-br-daniel-apollo-preview`   | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-Daniel-Apollo` hanggal.   |
+| `1.4.0-amd64-pt-br-heloisarus-preview`      | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-HeloisaRUS` hanggal.      |
+| `1.4.0-amd64-pt-pt-heliarus-preview`        | A tároló képe a `pt-PT` területi beállítással és a `pt-PT-HeliaRUS` hanggal.        |
+| `1.4.0-amd64-ro-ro-andrei-preview`          | A tároló képe a `ro-RO` területi beállítással és a `ro-RO-Andrei` hanggal.          |
+| `1.4.0-amd64-ru-ru-ekaterinarus-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-EkaterinaRUS` hanggal.    |
+| `1.4.0-amd64-ru-ru-irina-apollo-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-Irina-Apollo` hanggal.    |
+| `1.4.0-amd64-ru-ru-pavel-apollo-preview`    | A tároló képe a `ru-RU` területi beállítással és a `ru-RU-Pavel-Apollo` hanggal.    |
+| `1.4.0-amd64-sk-sk-filip-preview`           | A tároló képe a `sk-SK` területi beállítással és a `sk-SK-Filip` hanggal.           |
+| `1.4.0-amd64-sl-si-lado-preview`            | A tároló képe a `sl-SI` területi beállítással és a `sl-SI-Lado` hanggal.            |
+| `1.4.0-amd64-sv-se-hedvigrus-preview`       | A tároló képe a `sv-SE` területi beállítással és a `sv-SE-HedvigRUS` hanggal.       |
+| `1.4.0-amd64-ta-in-valluvar-preview`        | A tároló képe a `ta-IN` területi beállítással és a `ta-IN-Valluvar` hanggal.        |
+| `1.4.0-amd64-te-in-chitra-preview`          | A tároló képe a `te-IN` területi beállítással és a `te-IN-Chitra` hanggal.          |
+| `1.4.0-amd64-th-th-pattara-preview`         | A tároló képe a `th-TH` területi beállítással és a `th-TH-Pattara` hanggal.         |
+| `1.4.0-amd64-tr-tr-sedarus-preview`         | A tároló képe a `tr-TR` területi beállítással és a `tr-TR-SedaRUS` hanggal.         |
+| `1.4.0-amd64-vi-vn-an-preview`              | A tároló képe a `vi-VN` területi beállítással és a `vi-VN-An` hanggal.              |
+| `1.4.0-amd64-zh-cn-huihuirus-preview`       | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-HuihuiRUS` hanggal.       |
+| `1.4.0-amd64-zh-cn-kangkang-apollo-preview` | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Kangkang-Apollo` hanggal. |
+| `1.4.0-amd64-zh-cn-yaoyao-apollo-preview`   | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Yaoyao-Apollo` hanggal.   |
+| `1.4.0-amd64-zh-hk-danny-apollo-preview`    | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-Danny-Apollo` hanggal.    |
+| `1.4.0-amd64-zh-hk-tracy-apollo-preview`    | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-Tracy-Apollo` hanggal.    |
+| `1.4.0-amd64-zh-hk-tracyrus-preview`        | A tároló képe a `zh-HK` területi beállítással és a `zh-HK-TracyRUS` hanggal.        |
+| `1.4.0-amd64-zh-tw-hanhanrus-preview`       | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-HanHanRUS` hanggal.       |
+| `1.4.0-amd64-zh-tw-yating-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Yating-Apollo` hanggal.   |
+| `1.4.0-amd64-zh-tw-zhiwei-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Zhiwei-Apollo` hanggal.   |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | A tároló képe a `ar-EG` területi beállítással és a `ar-EG-Hoda` hanggal.            |
 | `1.3.0-amd64-ar-sa-naayf-preview`           | A tároló képe a `ar-SA` területi beállítással és a `ar-SA-Naayf` hanggal.           |
 | `1.3.0-amd64-bg-bg-ivan-preview`            | A tároló képe a `bg-BG` területi beállítással és a `bg-BG-Ivan` hanggal.            |
@@ -477,7 +843,6 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.3.0-amd64-de-at-michael-preview`         | A tároló képe a `de-AT` területi beállítással és a `de-AT-Michael` hanggal.         |
 | `1.3.0-amd64-de-ch-karsten-preview`         | A tároló képe a `de-CH` területi beállítással és a `de-CH-Karsten` hanggal.         |
 | `1.3.0-amd64-de-de-hedda-preview`           | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
-| `1.3.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
 | `1.3.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-HeddaRUS` hanggal.        |
 | `1.3.0-amd64-de-de-stefan-apollo-preview`   | A tároló képe a `de-DE` területi beállítással és a `de-DE-Stefan-Apollo` hanggal.   |
 | `1.3.0-amd64-el-gr-stefanos-preview`        | A tároló képe a `el-GR` területi beállítással és a `el-GR-Stefanos` hanggal.        |
@@ -511,8 +876,7 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.3.0-amd64-fr-fr-paul-apollo-preview`     | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-Paul-Apollo` hanggal.     |
 | `1.3.0-amd64-he-il-asaf-preview`            | A tároló képe a `he-IL` területi beállítással és a `he-IL-Asaf` hanggal.            |
 | `1.3.0-amd64-hi-in-hemant-preview`          | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Hemant` hanggal.          |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana-Apollo` hanggal.  |
-| `1.3.0-amd64-hi-in-kalpana-apollo-preview`  | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana` hanggal.         |
+| `1.3.0-amd64-hi-in-kalpana-preview`         | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana` hanggal.         |
 | `1.3.0-amd64-hi-in-kalpana-preview`         | A tároló képe a `hi-IN` területi beállítással és a `hi-IN-Kalpana` hanggal.         |
 | `1.3.0-amd64-hr-hr-matej-preview`           | A tároló képe a `hr-HR` területi beállítással és a `hr-HR-Matej` hanggal.           |
 | `1.3.0-amd64-hu-hu-szabolcs-preview`        | A tároló képe a `hu-HU` területi beállítással és a `hu-HU-Szabolcs` hanggal.        |
@@ -551,7 +915,7 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.3.0-amd64-zh-tw-hanhanrus-preview`       | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-HanHanRUS` hanggal.       |
 | `1.3.0-amd64-zh-tw-yating-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Yating-Apollo` hanggal.   |
 | `1.3.0-amd64-zh-tw-zhiwei-apollo-preview`   | A tároló képe a `zh-TW` területi beállítással és a `zh-TW-Zhiwei-Apollo` hanggal.   |
-| `1.2.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
+| `1.2.0-amd64-de-de-hedda-preview`           | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
 | `1.2.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-HeddaRUS` hanggal.        |
 | `1.2.0-amd64-de-de-stefan-apollo-preview`   | A tároló képe a `de-DE` területi beállítással és a `de-DE-Stefan-Apollo` hanggal.   |
 | `1.2.0-amd64-en-au-catherine-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-Catherine` hanggal.       |
@@ -589,7 +953,6 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | `1.2.0-amd64-zh-cn-kangkang-apollo-preview` | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Kangkang-Apollo` hanggal. |
 | `1.2.0-amd64-zh-cn-yaoyao-apollo-preview`   | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-Yaoyao-Apollo` hanggal.   |
 | `1.1.0-amd64-de-de-hedda-preview`           | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
-| `1.1.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-Hedda` hanggal.           |
 | `1.1.0-amd64-de-de-heddarus-preview`        | A tároló képe a `de-DE` területi beállítással és a `de-DE-HeddaRUS` hanggal.        |
 | `1.1.0-amd64-de-de-stefan-apollo-preview`   | A tároló képe a `de-DE` területi beállítással és a `de-DE-Stefan-Apollo` hanggal.   |
 | `1.1.0-amd64-en-au-catherine-preview`       | A tároló képe a `en-AU` területi beállítással és a `en-AU-Catherine` hanggal.       |
@@ -641,7 +1004,7 @@ Az [kulcsszókeresés][ta-kp] -tároló rendszerképe megtalálható a `mcr.micr
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -656,7 +1019,7 @@ Az [nyelvfelismerés][ta-la] -tároló rendszerképe megtalálható a `mcr.micro
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék                    | Jegyzetek |
+| Képcímkék                    | Megjegyzések |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -671,7 +1034,7 @@ Az [Hangulatelemzés][ta-se] -tároló rendszerképe megtalálható a `mcr.micro
 
 Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 
-| Képcímkék | Jegyzetek                                         |
+| Képcímkék | Megjegyzések                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
 | `3.0-en`   | Hangulatelemzés v3 (angol)               |

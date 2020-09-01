@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383766"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231044"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -37,7 +37,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: jelenleg a `https://graph.windows.net/<tenant-name>/reports/` Endpoint API-kat használva lehívhatják az Azure ad biztonsági jelentéseit (az észlelések bizonyos típusai, például a kiszivárgott hitelesítő adatok vagy a névtelen IP-címekről való bejelentkezések) a jelentéskészítési rendszerbe programozott módon. Mire érdemes váltani?**
 
-**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/graph-get-started.md)   -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
+**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/howto-identity-protection-graph-api.md)   -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](/graph/api/resources/identityriskevent?view=graph-rest-beta)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
 
 ---
 
@@ -89,7 +89,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: milyen API-kat használok az Office 365-tevékenység naplóira vonatkozó információk lekéréséhez?**
 
-**A:** Az [office 365 Management API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) -k használatával érheti el az Office 365-tevékenységek naplóit egy API-n keresztül.
+**A:** Az [office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) -k használatával érheti el az Office 365-tevékenységek naplóit egy API-n keresztül.
 
 ---
 
@@ -156,10 +156,10 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 * **Nincs alkalmazva**: Ennek oka az lehet, hogy a házirend feltételei nem teljesültek.
 * **Nincs engedélyezve**: a házirend letiltott állapotban van. 
     
-**K: a minden bejelentkezési jelentésben szereplő szabályzat neve nem egyezik a CA-ban található szabályzat nevével. miért?**
+**K: a minden bejelentkezési jelentésben szereplő szabályzat neve nem egyezik meg a CA-beli szabályzat nevével. Miért?**
 
 **A:** A házirend neve az összes bejelentkezési jelentésben a bejelentkezés időpontjában a HITELESÍTÉSSZOLGÁLTATÓ házirend neve alapján történik. Ez inkonzisztens lehet a HITELESÍTÉSSZOLGÁLTATÓ házirendjének nevével, ha később frissítette a szabályzat nevét, azaz a bejelentkezést követően.
 
 **K: a bejelentkezés egy feltételes hozzáférési szabályzat miatt blokkolva lett, de a bejelentkezési tevékenység jelentés azt mutatja, hogy a bejelentkezés sikeres volt. miért?**
 
-**A:** Előfordulhat, hogy a bejelentkezési jelentés nem jeleníti meg az Exchange ActiveSync-forgatókönyvek pontos eredményeit a feltételes hozzáférés alkalmazása során. Előfordulhat, hogy a jelentés bejelentkezési eredménye sikeres bejelentkezést mutat be, de a bejelentkezés a feltételes hozzáférési szabályzat miatt nem sikerült. 
+**A:** Előfordulhat, hogy a bejelentkezési jelentés nem jeleníti meg az Exchange ActiveSync-forgatókönyvek pontos eredményeit a feltételes hozzáférés alkalmazása során. Előfordulhat, hogy a jelentés bejelentkezési eredménye sikeres bejelentkezést mutat be, de a bejelentkezés a feltételes hozzáférési szabályzat miatt nem sikerült.

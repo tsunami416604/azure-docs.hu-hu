@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608143"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244721"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Útmutató: inaktív felhasználói fiókok kezelése az Azure AD-ben
 
@@ -43,9 +43,9 @@ A legutóbbi sikeres bejelentkezés lehetővé teszi, hogy a felhasználók tov�
 
 Az inaktív fiókok észleléséhez ki kell értékelni a **Microsoft Graph** API **signInActivity** -erőforrástípus által megjelenített **lastSignInDateTime** tulajdonságot. Ennek a tulajdonságnak a használatával a következő helyzetekben hozhat létre megoldást:
 
-- **Felhasználók név szerint**: ebben az esetben név alapján keres egy adott felhasználót, amely lehetővé teszi a lastSignInDateTime kiértékelését:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Felhasználók név szerint**: ebben az esetben név alapján keres egy adott felhasználót, amely lehetővé teszi a lastSignInDateTime kiértékelését: `https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Felhasználók dátum szerint**: ebben a forgatókönyvben a megadott dátum előtt egy lastSignInDateTime rendelkező felhasználók listáját kéri le:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Felhasználók dátum szerint**: ebben a forgatókönyvben a megadott dátum előtt egy lastSignInDateTime rendelkező felhasználók listáját kéri le: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -58,7 +58,7 @@ Ez a szakasz felsorolja, hogy mit kell tudnia a lastSignInDateTime tulajdonságr
 
 ### <a name="how-can-i-access-this-property"></a>Hogyan lehet hozzáférni ehhez a tulajdonsághoz?
 
-A **lastSignInDateTime** tulajdonságot a [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signInActivity erőforrástípus](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) teszi elérhetővé.   
+A **lastSignInDateTime** tulajdonságot a [Microsoft Graph REST API](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) [signInActivity erőforrástípus](/graph/api/resources/signinactivity?view=graph-rest-beta) teszi elérhetővé.   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Elérhető a lastSignInDateTime tulajdonság a Get-AzureAdUser parancsmagon keresztül?
 
@@ -88,8 +88,8 @@ LastSignInDateTime timestamp létrehozásához sikeres bejelentkezés szüksége
 - A felhasználó utolsó sikeres bejelentkezését a szolgáltatás kiadása előtt végezték el (2019. december 1-től).
 - Az érintett felhasználói fiókot soha nem használták sikeres bejelentkezéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
-* [Naplózási API-referenciák](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [A bejelentkezési tevékenység jelentésének API-referenciája](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Naplózási API-referenciák](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [A bejelentkezési tevékenység jelentésének API-referenciája](/graph/api/resources/signin?view=graph-rest-beta)

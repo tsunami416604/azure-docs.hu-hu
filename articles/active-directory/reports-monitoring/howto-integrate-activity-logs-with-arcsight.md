@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c3c597c172c7ec21c2d46e89602abf87d750127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608177"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230517"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Active Directory-naplók integrálása a ArcSight a Azure Monitor használatával
 
@@ -33,7 +33,7 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja át az Azure AD-naplókat a
 ## <a name="prerequisites"></a>Előfeltételek
 
 A szolgáltatás használatához a következőkre lesz szüksége:
-* Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Az Azure AD-tevékenységek naplóit tartalmazó Azure Event hub. Megtudhatja, hogyan [továbbíthatja a tevékenység naplóit egy Event hubhoz](./tutorial-azure-monitor-stream-logs-to-event-hub.md). 
 * A ArcSight syslog NG Daemon SmartConnector (SmartConnector) vagy a ArcSight Load Balancer konfigurált példánya. Ha az eseményeket a ArcSight-Load Balancer küldik, a rendszer Következésképpen a Load Balancer továbbítja azokat a SmartConnector.
 
 Töltse le és nyissa meg az [Azure monitor Event hub ArcSight-SmartConnector tartozó konfigurációs útmutatót](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Ez az útmutató a Azure Monitor ArcSight-SmartConnector telepítéséhez és konfigurálásához szükséges lépéseket tartalmazza. 
@@ -57,6 +57,6 @@ Töltse le és nyissa meg az [Azure monitor Event hub ArcSight-SmartConnector ta
 
 5. A konfigurációs útmutató azt is ismerteti, hogyan szabhatja testre az összekötő tulajdonságait az Azure-ban, és hogyan frissítheti és távolíthatja el az összekötőt. A teljesítménnyel kapcsolatos fejlesztéseket is tartalmaz, beleértve az Azure-használati [tervre](https://azure.microsoft.com/pricing/details/functions) való frissítést, valamint az ArcSight Load Balancer konfigurálását is, ha az esemény terhelése nagyobb, mint amit egyetlen syslog ng démon SmartConnector tud kezelni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Konfigurációs útmutató a Azure Monitor Event hub-hoz készült ArcSight-SmartConnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

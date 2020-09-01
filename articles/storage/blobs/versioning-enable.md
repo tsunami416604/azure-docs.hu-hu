@@ -1,29 +1,27 @@
 ---
-title: BLOB verziószámozásának engedélyezése és kezelése (előzetes verzió)
+title: BLOB-verziószámozás engedélyezése és kezelése
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan engedélyezheti a Blobok verziószámozását (előzetes verzió) a Azure Portal vagy egy Azure Resource Manager sablon használatával.
+description: Megtudhatja, hogyan engedélyezheti a Blobok verziószámozását a Azure Portal vagy egy Azure Resource Manager sablon használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1df7afb5a029ff7770a64d6bf698a462c8ab9735
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074406"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230670"
 ---
-# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB verziószámozásának engedélyezése és kezelése (előzetes verzió)
+# <a name="enable-and-manage-blob-versioning"></a>BLOB-verziószámozás engedélyezése és kezelése
 
-Engedélyezheti a blob Storage verziószámozását (előzetes verzió) az objektumok korábbi verzióinak automatikus karbantartásához.  Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
+A blob Storage verziószámozásának engedélyezésével automatikusan megtarthatja az objektumok korábbi verzióit.  Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve.
 
-Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a Blobok verziószámozását a Storage-fiókhoz a Azure Portal vagy egy Azure Resource Manager sablon használatával.
-
-A blob verziószámozásának engedélyezése előtt regisztrálnia kell az előzetes verzióra. Ha többet szeretne megtudni a Blobok verziószámozásáról, beleértve az előzetes verzióra való regisztráció módját, lásd: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
+Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a Blobok verziószámozását a Storage-fiókhoz a Azure Portal vagy egy Azure Resource Manager sablon használatával. A blob verziószámozásával kapcsolatos további tudnivalókért tekintse meg a [blob verziószámozását](versioning-overview.md)ismertető témakört.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -75,7 +73,7 @@ Az erőforrások Azure Portal-sablonokkal való üzembe helyezésével kapcsolat
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>BLOB módosítása új verzió elindításához
 
-A következő mintakód bemutatja, hogyan indíthat el egy új verziót az Azure Storage ügyféloldali kódtár .NET-hez készült [12.5.0-preview. 5-ös](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) vagy újabb verziójával. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a verziószámozást a Storage-fiókhoz.
+Az alábbi mintakód bemutatja, hogyan indíthat el egy új verziót az Azure Storage ügyféloldali kódtára .NET, Version [12.5.1](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.1) vagy újabb verzióra. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a verziószámozást a Storage-fiókhoz.
 
 A példa létrehoz egy blokk blobot, majd frissíti a blob metaadatait. A blob metaadatainak frissítése elindítja egy új verzió létrehozását. A példa lekéri a kezdeti verziót és a jelenlegi verziót, és azt mutatja, hogy csak az aktuális verzió tartalmazza a metaadatokat.
 
@@ -161,5 +159,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [BLOB verziószámozása](versioning-overview.md)
 - [Az Azure Storage-blobok helyreállítható törlése](soft-delete-overview.md)

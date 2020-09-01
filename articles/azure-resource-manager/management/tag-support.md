@@ -3,12 +3,12 @@ title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855081"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231520"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/group-filter.md) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -263,6 +263,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | reportFeedback | Nem | Nem |
 > | szolgáltatás | Igen | Igen |
 > | validateServiceName | Nem | Nem |
+
+> [!NOTE]
+> Az Azure API Management csak az egyes szolgáltatásokhoz legfeljebb 15 címke név/érték párok létrehozását támogatja.
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 

@@ -3,12 +3,12 @@ title: Erőforrás-fájlok létrehozása és használata
 description: Megtudhatja, hogyan hozhat létre batch-forrásfájlokat különböző bemeneti forrásokból. Ez a cikk néhány gyakori módszert ismertet a virtuális gépek létrehozásához és elhelyezéséhez.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e1bf7520774a0f4143aadd2298f300b3ac5c75a3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146300"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230942"
 ---
 # <a name="creating-and-using-resource-files"></a>Erőforrás-fájlok létrehozása és használata
 
@@ -99,7 +99,7 @@ Ha az egyes feladatokhoz több fájl is tartozik, akkor az erőforrás-fájlok a
 
 Ha egy feladatban több száz erőforrás van megadva, akkor a Batch túl nagynak fogja utasítani a feladatot. A feladatok minimalizálása érdekében a legjobb, ha a feladatban lévő erőforrás-fájlok számát minimálisra csökkenti.
 
-Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja a különböző "Container" [metódusokat](/dotnet/api/microsoft.azure.batch.resourcefileazure-dotnet#methods) az erőforrás-fájlokhoz. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
+Ha nincs mód a feladat által igényelt fájlok számának minimalizálására, akkor optimalizálhatja a feladatot úgy, hogy létrehoz egy erőforrás-tárolót, amely az erőforrás-fájlok tárolóhelyére hivatkozik. Ehhez helyezze el az erőforrás-fájlokat egy Azure Storage-tárolóba, és használja a különböző "Container" [metódusokat](/dotnet/api/microsoft.azure.batch.resourcefile#methods) az erőforrás-fájlokhoz. A blob-előtag beállításaival megadhatja a feladatokhoz letölthető fájlok gyűjteményeit.
 
 ## <a name="next-steps"></a>Következő lépések
 

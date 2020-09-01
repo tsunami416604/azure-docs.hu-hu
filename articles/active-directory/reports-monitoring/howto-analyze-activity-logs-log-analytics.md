@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608228"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231231"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal
 
@@ -36,13 +36,13 @@ Ebből a cikkből megtudhatja, hogyan elemezheti az Azure AD-tevékenységek nap
 
 A lépések végrehajtásához a következőkre lesz szüksége:
 
-* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../../azure-monitor/learn/quick-create-workspace.md).
 * Először végezze el az [Azure ad-tevékenység naplófájljainak a log Analytics munkaterületre történő átirányításához](howto-integrate-activity-logs-with-log-analytics.md)szükséges lépéseket.
-*  [Hozzáférés](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) a log Analytics-munkaterülethez
+*  [Hozzáférés](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions) a log Analytics-munkaterülethez
 * A következő szerepkörök a Azure Active Directoryban (ha Azure Active Directory-portálon keresztül fér hozzá a Log Analyticshoz)
     - Biztonsági rendszergazda
     - Biztonsági olvasó
-    - Jelentés olvasója
+    - Jelentésolvasó
     - Globális rendszergazda
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Navigáljon a Log Analytics munkaterületre
@@ -96,7 +96,7 @@ A lekérdezésen is beállíthat riasztásokat. Ha például riasztást szeretne
 
 3. Adja meg a riasztás nevét és leírását, és válassza ki a súlyossági szintet. A példánkban megadhatjuk a **tájékoztatót**.
 
-4. Válassza ki azt a **műveleti csoportot** , amelyre a rendszer riasztást küld, amikor a jel bekövetkezik. Dönthet úgy is, hogy e-mailben vagy szöveges üzenetben értesíti a csapatot, vagy automatizálhatja a műveletet webhookok, Azure functions vagy Logic Apps használatával. További információ [a riasztási csoportok létrehozásáról és kezeléséről a Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+4. Válassza ki azt a **műveleti csoportot** , amelyre a rendszer riasztást küld, amikor a jel bekövetkezik. Dönthet úgy is, hogy e-mailben vagy szöveges üzenetben értesíti a csapatot, vagy automatizálhatja a műveletet webhookok, Azure functions vagy Logic Apps használatával. További információ [a riasztási csoportok létrehozásáról és kezeléséről a Azure Portal](../../azure-monitor/platform/action-groups.md).
 
 5. Miután konfigurálta a riasztást, válassza a **riasztás létrehozása** lehetőséget az engedélyezéséhez. 
 
@@ -111,8 +111,8 @@ Az Azure AD-tevékenységek naplóihoz tartozó előre elkészített log Analyti
 Ismerje meg, hogyan [telepítheti és használhatja a log Analytics-nézeteket az Azure ad-tevékenységek naplóihoz](howto-install-use-log-analytics-views.md). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedés a Azure Monitor-naplókban található lekérdezésekkel](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
-* [Riasztási csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
+* [Ismerkedés a Azure Monitor-naplókban található lekérdezésekkel](../../azure-monitor/log-query/get-started-queries.md)
+* [Riasztási csoportok létrehozása és kezelése a Azure Portal](../../azure-monitor/platform/action-groups.md)
 * [A log Analytics-nézetek telepítése és használata Azure Active Directory](howto-install-use-log-analytics-views.md)

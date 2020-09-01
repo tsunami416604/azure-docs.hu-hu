@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79db3db5a46700f55c1dc759443cae194660372d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007641"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230041"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz az iOS-ügyféllel
 
@@ -36,6 +36,7 @@ Előfizetés a hírcsatornára:
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
    - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-mail-cím használatához adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda konfigurálta a kiszolgálót.
+   - A US Gov-portálon keresztüli kapcsolódáshoz használja a következőt: <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. Koppintson a **tovább**gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.
    - A **Felhasználónév mezőben**adja meg a felhasználónevet, amely jogosult az erőforrások elérésére.
@@ -47,6 +48,6 @@ Ezután a Csatlakozáskezelő megjeleníti a távoli erőforrásokat.
 
 Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az iOS-ügyfél használatáról, tekintse meg az iOS-ügyfél dokumentációjának használatának [első lépéseit](/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios/) .

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 0f6a6cbc9112959a670bdb0a9cb56ea4509413a1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 132b0f095ef1767d7416aefc71dced2a15769701
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640769"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230483"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy [Apache Spark](./apache-spark-overview.md) -fürtöt az Azure HDInsight-ben. Ezután létrehozhat egy Jupyter-jegyzetfüzetet, és használhatja a Spark SQL-lekérdezések futtatásához Apache Hive táblákon. Az Azure HDInsight egy felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. A HDInsight Apache Spark keretrendszere lehetővé teszi a gyors adatelemzést és a fürtözést a memóriabeli feldolgozás használatával. A Jupyter notebook lehetővé teszi az adatkezelést, a kód és a Markdown szöveg egyesítését, valamint egyszerű vizualizációk készítését.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy [Apache Spark](./apache-spark-overview.md) -fürtöt az Azure HDInsight-ben. Ezután létrehozhat egy Jupyter Notebook fájlt, és használhatja a Spark SQL-lekérdezések futtatásához Apache Hive táblákon. Az Azure HDInsight egy felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. A HDInsight Apache Spark keretrendszere lehetővé teszi a gyors adatelemzést és a fürtözést a memóriabeli feldolgozás használatával. Jupyter Notebook lehetővé teszi az adatkezelést, a kódok Markdown szöveggel való egyesítését és egyszerű vizualizációk használatát.
 
 Ha egyszerre több fürtöt használ, létre kell hoznia egy virtuális hálózatot, és ha Spark-fürtöt használ, akkor a méhkas Warehouse-összekötőt is érdemes használnia. További információ: [virtuális hálózat megtervezése az Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) és [a Apache Spark és Apache Hive integrálása a kaptár Warehouse-összekötővel](../interactive-query/apache-hive-warehouse-connector.md).
 
@@ -71,9 +71,9 @@ Ha a HDInsight-fürtök létrehozásával kapcsolatos problémába ütközne, el
 
 A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni, amely a **Go to Resource** hivatkozást fogja tartalmazni. Az erőforráscsoport lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) -fiókkal vagy egy [Azure Data Lake Storage fióktól](../hdinsight-hadoop-use-data-lake-store.md) . Ezt az alapértelmezett Storage-fióknak nevezzük. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével nem törlődik a Storage-fiók.
 
-## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
+## <a name="create-a-jupyter-notebook-file"></a>Jupyter Notebook-fájl létrehozása
 
-A [Jupyter notebook](https://jupyter.org/) egy interaktív notebook-környezet, amely különböző programozási nyelveket támogat. A notebook lehetővé teszi az adatokkal való interakciót, a kódok Markdown való egyesítését, valamint az egyszerű vizualizációk elvégzését.
+A [Jupyter notebook](https://jupyter.org/) egy interaktív notebook-környezet, amely különböző programozási nyelveket támogat. Használhat egy Jupyter Notebook fájlt az adatokkal való kommunikációhoz, a kód Markdown-szöveggel való összekapcsolásához és egyszerű vizualizációk elvégzéséhez.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
@@ -87,7 +87,7 @@ A [Jupyter notebook](https://jupyter.org/) egy interaktív notebook-környezet, 
 
 4. **New**  >  Jegyzetfüzet létrehozásához válassza az új**PySpark** lehetőséget.
 
-   ![Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához")
+   ![Jupyter Notebook-fájl létrehozása az interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához")
 
    Az új notebook létrejött, és Untitled(Untitled.pynb) néven nyílt meg.
 
@@ -108,7 +108,7 @@ Az SQL az adatok lekérdezésére és átalakítására leggyakrabban és legsz�
     SHOW TABLES
     ```
 
-    Ha a HDInsight-fürttel Jupyter Notebook használ, egy előre definiált `spark` munkamenetet kap, amellyel a Spark SQL használatával futtathatja a kaptár-lekérdezéseket. A `%%sql` megadja a Jupyter-notebook számára, hogy az előre beállított `spark`-munkamenetet használja a Hive-lekérdezés futtatásához. A lekérdezés lekérdezi az első 10 sort egy Hive-táblából (**hivesampletable**), amely alapértelmezés szerint minden HDInsight-fürtben megtalálható. Amikor először küldi el a lekérdezést, a Jupyter létrehoz egy Spark-alkalmazást a jegyzetfüzethez. Ez körülbelül 30 másodpercet vesz igénybe. Miután a Spark-alkalmazás elkészült, a lekérdezés végrehajtása körülbelül egy másodperc alatt történik, és létrehozza az eredményeket. A kimenet a következőképpen fog kinézni:
+    Ha Jupyter Notebook fájlt használ a HDInsight-fürttel, egy előre beállított `spark` munkamenetet kap, amellyel a Spark SQL használatával futtathat kaptár-lekérdezéseket. A `%%sql` megadja a Jupyter-notebook számára, hogy az előre beállított `spark`-munkamenetet használja a Hive-lekérdezés futtatásához. A lekérdezés lekérdezi az első 10 sort egy Hive-táblából (**hivesampletable**), amely alapértelmezés szerint minden HDInsight-fürtben megtalálható. Amikor először küldi el a lekérdezést, a Jupyter létrehoz egy Spark-alkalmazást a jegyzetfüzethez. Ez körülbelül 30 másodpercet vesz igénybe. Miután a Spark-alkalmazás elkészült, a lekérdezés végrehajtása körülbelül egy másodperc alatt történik, és létrehozza az eredményeket. A kimenet a következőképpen fog kinézni:
 
     ![Apache Hive lekérdezés a HDInsight](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Struktúra-lekérdezés a HDInsight")
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873925"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230925"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Oktatóanyag: Apache Spark Machine learning-alkalmazás létrehozása az Azure HDInsight
 
@@ -41,7 +41,7 @@ Az alkalmazás alapértelmezés szerint az összes fürtön elérhető minta **H
 
 Ez az alkalmazás egy Spark [ml](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) -folyamatot használ a dokumentumok besorolásának elvégzéséhez. A ML-folyamatok a DataFrames-re épülő magas szintű API-k egységes készletét biztosítják. A DataFrames segítségével a felhasználók gyakorlati gépi tanulási folyamatokat hozhatnak létre és hangolnak be. A folyamat során a dokumentumokat szavakra osztja fel, a szavakat átalakítja egy numerikus vektorrá, majd végül a vektorok és címkék alapján létrehoz egy előrejelzési modellt. Az alkalmazás létrehozásához hajtsa végre az alábbi lépéseket.
 
-1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért tekintse meg a [Jupyter-jegyzetfüzet-fájl létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)című témakört.
 
 1. Importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
@@ -188,7 +188,7 @@ Ez az alkalmazás egy Spark [ml](https://spark.apache.org/docs/2.2.0/ml-pipeline
 
 A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Ezek közé tartozik a **scikit-learn** gépi tanulási kódtár. A kódtár különböző adathalmazokat tartalmaz, amelyek használatával példaalkalmazások hozhatók létre közvetlenül egy Jupyter notebookból. Példák a scikit-Learn függvénytár használatára: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt a következő lépésekkel:
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68987953"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231095"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Az Azure AD napló sémájának értelmezése Azure Monitor (előzetes verzió)
 
@@ -147,7 +147,7 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 
 ## <a name="field-and-property-descriptions"></a>Mező és tulajdonság leírása
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 |------------|-------------|
 | time       | A dátum és idő (UTC). |
 | operationName | A művelet neve. |
@@ -167,7 +167,7 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 
 <br>
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 |---------------|-------------|
 | AuditEventCategory | A naplózási esemény típusa. Ez lehet a *felhasználók felügyelete*, az *Alkalmazások kezelése*vagy más típusú.|
 | Identitás típusa | A típus lehet *alkalmazás* vagy *felhasználó*. |
@@ -176,8 +176,8 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) napló sémáját is
 | Cél erőforrás neve | A célként megadott erőforrás neve. Ez lehet egy alkalmazás neve, egy szerepkör neve, egy egyszerű felhasználónév vagy egy egyszerű szolgáltatásnév. |
 | additionalTargets | Az adott műveletekhez tartozó további tulajdonságok felsorolása. Egy frissítési művelet esetében például a régi értékek és az új értékek a *targetUpdatedProperties*területen jelennek meg. | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A bejelentkezési naplók sémájának értelmezése az Azure Monitorban](reference-azure-monitor-sign-ins-log-schema.md)
-* [Azure-beli diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure-beli diagnosztikai naplók](../../azure-monitor/platform/platform-logs-overview.md)
 * [Gyakori kérdések és ismert hibák](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

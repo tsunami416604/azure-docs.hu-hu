@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f70d1caacfd655c956d4fcc36e3f0d3848d8f0fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608993"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230568"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-naplók integrálása Azure Monitor naplókkal
 
@@ -58,7 +58,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nincs Azure-előfizetése, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 * Egy Azure AD-bérlő.
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
-* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="licensing-requirements"></a>Licenckövetelmények
 
@@ -84,7 +84,7 @@ A szolgáltatás használatához prémium szintű Azure AD P1 vagy P2 licenc sz�
 
 7. Körülbelül 15 perc elteltével ellenőrizze, hogy az események továbbítva vannak-e a Log Analytics-munkaterületre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal](howto-analyze-activity-logs-log-analytics.md)
 * [A log Analytics-nézetek telepítése és használata Azure Active Directory](howto-install-use-log-analytics-views.md)

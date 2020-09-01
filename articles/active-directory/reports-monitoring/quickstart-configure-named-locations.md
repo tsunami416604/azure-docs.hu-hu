@@ -16,24 +16,24 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b6deda5a9a0a2d2e2caeaac95952b0ad91eb1e03
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739719"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230551"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rövid útmutató: Nevesített helyek konfigurálása Azure Active Directory használatával
 
 A nevesített helyek segítségével megcímkézhetők a szervezeten belül a megbízható IP-címtartományok. Az Azure AD a nevesített helyeket a következő célokra használja:
-- Azonosíthatja a [kockázati észlelések](concept-risk-events.md)téves pozitív értékeit. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata.   
+- Azonosíthatja a [kockázati észlelések](../identity-protection/overview-identity-protection.md)téves pozitív értékeit. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata.   
 - Konfigurálja a [hely-alapú feltételes hozzáférést](../conditional-access/location-condition.md).
 
 Ebben a rövid útmutatóban megismerheti, hogyan lehet nevesített helyeket konfigurálni a saját környezetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
+Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Azure AD-bérlő. Regisztráljon az [ingyenes próbaverzióra](https://azure.microsoft.com/trial/get-started-active-directory/). 
 * Egy felhasználó, aki a bérlő globális rendszergazdája lesz.
@@ -55,13 +55,13 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
    * A **Név** mezőbe írja be a megnevezett hely nevét.
    * Az **IP-címtartományok** mezőbe írja be az IP-címtartományt CIDR formátumban.  
-   * Kattintson a **Létrehozás**gombra.
+   * Kattintson a **Létrehozás** lehetőségre.
     
      ![Az új panel](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd:
 
 - A [feltételes hozzáférésben feltételként megadott hely](../conditional-access/concept-conditional-access-conditions.md#locations).
-- [Kockázatos bejelentkezések jelentés](concept-risky-sign-ins.md).  
+- [Kockázatos bejelentkezések jelentés](../identity-protection/overview-identity-protection.md).

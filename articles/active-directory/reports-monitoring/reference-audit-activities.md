@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80891509"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231146"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -35,8 +35,8 @@ Az Azure AD jelentéskészítési architektúrája a következő elemekből áll
     - [Auditnaplók](concept-audit-logs.md) – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. 
     
 - **Biztonsági jelentések** 
-    - [Kockázatos bejelentkezések](concept-risky-sign-ins.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
-    - [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
+    - [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
+    - [Kockázatosként megjelölt felhasználók](../identity-protection/overview-identity-protection.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
 Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
@@ -474,7 +474,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Felhasználókezelés|Szerepkör hozzáadása sablonból|
 |Felhasználókezelés|Hatókörön belüli tag hozzáadása a szerepkörhöz|
 |Felhasználókezelés|Hozzáadva|
-|Felhasználókezelés|Hozzárendelés|
+|Felhasználókezelés|Értékadás|
 |Felhasználókezelés|Felhasználók tömeges létrehozása – elindítva|
 |Felhasználókezelés|Felhasználók tömeges létrehozása – kész|
 |Felhasználókezelés|Felhasználók tömeges törlése – elindítva|
@@ -500,7 +500,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 
 
 
-## <a name="identity-protection"></a>Identitásvédelem
+## <a name="identity-protection"></a>Identity protection
 
 |Naplózási kategória|Tevékenység|
 |---|---|
@@ -558,7 +558,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |PIM|ActivationRequested|
 |PIM|Hozzáadva|
 |PIM|AddedOutsidePIM|
-|PIM|Hozzárendelés|
+|PIM|Értékadás|
 |PIM|DismissAlert|
 |PIM|Jogosultságszint emelése|
 |PIM|ReactivateAlert|
@@ -621,7 +621,7 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Használati feltételek|Használati feltételek közzétételének visszavonása|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure ad-jelentések – áttekintés](overview-reports.md).
 - [Naplózott jelentés](concept-audit-logs.md). 

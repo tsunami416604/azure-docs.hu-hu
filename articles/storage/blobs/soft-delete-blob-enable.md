@@ -10,16 +10,16 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cba56e699afed8178f93bceddf6bf32a242ed124
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020847"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230228"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>A Blobok Soft delete engedélyezése és kezelése
 
-A blob Soft delete védelmet biztosít az adatok véletlen vagy helytelen módosításának vagy törlésének. Ha a blob-törlés engedélyezve van egy Storage-fiókhoz, a Blobok, a blob-verziók (előzetes verzió) és az abban tárolt Pillanatképek a Storage-fiókban is helyreállíthatók, a megadott megőrzési időtartamon belül.
+A blob Soft delete védelmet biztosít az adatok véletlen vagy helytelen módosításának vagy törlésének. Ha a blob-törlés engedélyezve van egy Storage-fiókhoz, a Blobok, a blob-verziók és a pillanatképek a Storage-fiókban, a megadott megőrzési időtartamon belül helyreállíthatók.
 
 Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft javasolja a blobos törlés bekapcsolását. Ez a cikk bemutatja, hogyan engedélyezhető a Blobok lágy törlése. A Blobok törlésével kapcsolatos további részletekért lásd a Blobok helyreállítható [törlését](soft-delete-blob-overview.md)ismertető témakört.
 
@@ -195,4 +195,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>Következő lépések
 
 - [A blob Storage-hoz készült Soft delete](soft-delete-overview.md)
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [BLOB verziószámozása](versioning-overview.md)

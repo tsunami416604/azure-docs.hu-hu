@@ -36,11 +36,11 @@
     - name: Használati és elemzési jelentés
       href: concept-usage-insights-report.md
     - name: Kockázatos bejelentkezések
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Kockázatészlelések
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Veszélyeztetett felhasználók
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Üzembehelyezési naplók
       href: concept-provisioning-logs.md
     - name: Reporting API-k
@@ -94,9 +94,9 @@
     - name: Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
       href: reference-powershell-reporting.md
     - name: Auditnaplók API-referenciája
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
     - name: Bejelentkezési naplók API-referenciája
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin?view=graph-rest-beta
     - name: Naplózási tevékenységek
       href: reference-audit-activities.md
     - name: Adatmegőrzési szabályzatok

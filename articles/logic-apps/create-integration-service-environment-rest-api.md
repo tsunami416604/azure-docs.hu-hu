@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656544"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231316"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps használatával REST API
 
-Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API olyan helyzetekben, ahol a logikai alkalmazások és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md). Az ISE egy dedikált környezet, amely dedikált tárterületet és egyéb, a „globális”, több-bérlős Logic Apps-szolgáltatástól elkülönített erőforrásokat használ. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Az ISE a saját statikus IP-címeivel is rendelkezik. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
+Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API olyan helyzetekben, ahol a logikai alkalmazások és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md). Az ISE egy dedikált környezet, amely dedikált tárterületet és egyéb, a „globális”, több-bérlős Logic Apps-szolgáltatástól elkülönített erőforrásokat használ. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Egy ISE saját statikus IP-címeket is biztosít. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
 
 Az ISE-t a [minta Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) gyors üzembe helyezési sablonnal vagy az [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)használatával is létrehozhatja.
 
@@ -58,7 +58,7 @@ A kérelem fejlécében adja meg a következő tulajdonságokat:
 
 ## <a name="request-body"></a>A kérés törzse
 
-Itt látható a kérelem törzsének szintaxisa, amely az ISE létrehozásakor használandó tulajdonságokat ismerteti. Egy olyan ISE létrehozásához, amely lehetővé teszi egy olyan önaláírt tanúsítvány használatát, amely a helyen van telepítve `TrustedRoot` , adja `certificates` meg az OBJEKTUMOT az ISE-definíció `properties` szakaszán belül. Egy meglévő ISE esetében csak az objektumra vonatkozó javítási kérelmet küldhet `certificates` . További információ az önaláírt tanúsítványok használatáról: [http-összekötő – önaláírt tanúsítványok](../connectors/connectors-native-http.md#self-signed).
+Itt látható a kérelem törzsének szintaxisa, amely az ISE létrehozásakor használandó tulajdonságokat ismerteti. Egy olyan ISE létrehozásához, amely lehetővé teszi egy olyan önaláírt tanúsítvány használatát, amely a helyen van telepítve `TrustedRoot` , adja `certificates` meg az OBJEKTUMOT az ISE-definíció `properties` szakaszán belül. Egy meglévő ISE esetében csak az objektumra vonatkozó javítási kérelmet küldhet `certificates` . További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
 
 ```json
 {
@@ -146,7 +146,7 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)

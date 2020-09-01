@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6aff48844f42286de1d30368288b83e5356a36bd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0daa094a6d804cd8a40c4ba76b696e3c9b580f8a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016886"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230347"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -41,9 +41,7 @@ Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használ
 
 
 > [!TIP]
-> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  `OutputFileDatasetConfig` és `OutputTabularDatasetConfig` .  Ezek az osztályok kísérleti előzetes funkciók, és bármikor változhatnak.
-> 
->A kísérleti funkciókkal kapcsolatos további információkért lásd: https://aka.ms/azuremlexperimental .
+> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) és [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
 
 A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)című cikkben talál. 
 
@@ -272,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 A fenti kódrészlet magas teljesítményt eredményez az `PipelineOutputTabularDataset` `PipelineOutputFileDataset` adatelőkészítési lépés kimenetében.
 
 > [!TIP]
-> A nyilvános előzetes verzió osztályának `OutputFileDatasetConfig` lehetősége van arra is, hogy a `OutputFileDatasetConfig` `OutputTabularDatasetConfig` AutoML-futtatásokban való felhasználásra is Konvertáljon egy-t. További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> A nyilvános előzetes verzió osztályának `OutputFileDatasetConfig` lehetősége van arra is, hogy a `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) AutoML-futtatásokban való felhasználásra is Konvertáljon egy-t. További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
 
 Egy másik lehetőség a `Dataset` munkaterületen regisztrált objektumok használata:
 

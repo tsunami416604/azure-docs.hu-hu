@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a4c68454807cb26ac62799b598f146680e37c42
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445440"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230177"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)
 
@@ -48,7 +48,7 @@ További információ a Azure PowerShell telepítéséről: [Azure PowerShell te
 
 Az időponthoz való visszaállítás engedélyezése és konfigurálása előtt engedélyezze a Storage-fiókra vonatkozó előfeltételeket: Soft DELETE, Change feed és blob Versioning. Az egyes funkciók engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [A Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
+- [Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
 - [A módosítási csatorna engedélyezése és letiltása](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)
 
@@ -179,9 +179,9 @@ $job | Wait-Job
 ## <a name="known-issues"></a>Ismert problémák
 - A restores egy részhalmaza, ahol a hozzáfűző Blobok jelennek meg, a visszaállítás sikertelen lesz. Egyelőre ne végezzen visszaállítást, ha a fiókban található hozzáfűzési Blobok szerepelnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)](point-in-time-restore-overview.md)
 - [Helyreállítható törlés](soft-delete-overview.md)
 - [Hírcsatorna módosítása (előzetes verzió)](storage-blob-change-feed.md)
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [BLOB verziószámozása](versioning-overview.md)

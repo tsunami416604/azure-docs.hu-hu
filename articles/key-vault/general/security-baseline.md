@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e9c4d70bcd0b991d90c68d310f94b21757fe2437
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: d939c03aef8d155d83d20c7d8211e04fae26c228
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830213"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230279"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
 
@@ -69,9 +69,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 **Útmutató**: a Key Vault-példányokhoz társított Azure-beli virtuális hálózatok Azure DDoS Protection szabványának engedélyezése az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
  
-Azure DDoS Protection standard kezelése a Azure Portal használatával:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+Azure DDoS Protection standard kezelése a Azure Portal használatával: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Veszélyforrások észlelése a Azure Security Center Azure szolgáltatási rétegében:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Veszélyforrások észlelése a Azure Security Center Azure szolgáltatási rétegében: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 
 **Azure Security Center figyelés**: igen
@@ -86,7 +86,7 @@ Key Vault integrálása az Azure Private-hivatkozással:
 
 https://docs.microsoft.com/azure/key-vault/private-link-service
 
-Azure Key Vault naplózás:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Azure Key Vault naplózás: https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
@@ -123,7 +123,7 @@ https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-
 
 **Útmutató**: a Azure Key Vault példányokhoz hozzáférést igénylő erőforrásokhoz használja az Azure-szolgáltatás címkéit a Azure Key Vault számára a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlés definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-Az Azure-szolgáltatás címkék áttekintése:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Az Azure-szolgáltatás címkék áttekintése: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -243,7 +243,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 **Útmutató**: a Azure monitoron belül a Azure Key Vault-naplók tárolására szolgáló log Analytics munkaterülethez a szervezet megfelelőségi szabályainak megfelelően állítsa be a megőrzési időszakot. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-Az adatok megőrzési idejének módosítása:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Az adatok megőrzési idejének módosítása: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -399,9 +399,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Útmutató**: az Azure multi-Factor Authentication (MFA) szolgáltatással konfigurált, rendszerjogosultságú hozzáférésű munkaállomás (Paw) használata Key Vault engedélyezett erőforrások bejelentkezni és konfigurálására. 
 
-Emelt szintű hozzáférésű munkaállomások:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Emelt szintű hozzáférésű munkaállomások: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-Felhőalapú Azure Multi-Factor Authentication üzembe helyezés tervezése:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Felhőalapú Azure Multi-Factor Authentication üzembe helyezés tervezése: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 
@@ -415,15 +415,15 @@ Felhőalapú Azure Multi-Factor Authentication üzembe helyezés tervezése:http
 
 A komplex veszélyforrások elleni védelem (ATP) engedélyezése a Azure Key Vault számára a gyanús tevékenységekre vonatkozó riasztások létrehozásához.
 
-Azure AD Privileged Identity Management (PIM) üzembe helyezése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Azure AD Privileged Identity Management (PIM) üzembe helyezése: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Összetett veszélyforrások elleni védelem beállítása a Azure Key Vault (előzetes verzió):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+Összetett veszélyforrások elleni védelem beállítása a Azure Key Vault (előzetes verzió): https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
-Azure Key Vault (előzetes verzió) riasztásai:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
+Azure Key Vault (előzetes verzió) riasztásai: https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Azure Active Directory kockázati észlelések:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure Active Directory kockázati észlelések: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Műveleti csoportok létrehozása és kezelése a Azure Portalban:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+Műveleti csoportok létrehozása és kezelése a Azure Portalban: https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
 
@@ -435,7 +435,7 @@ Műveleti csoportok létrehozása és kezelése a Azure Portalban:https://docs.m
 
 **Útmutató**: a feltételes hozzáférési szabályzat tárolási állapotának konfigurálása és az elnevezett helyek kezelése. Az elnevezett helyszínekkel logikai csoportosításokat hozhat létre az IP-címtartományok vagy országok és régiók számára. A konfigurált elnevezett helyekre korlátozhatja a bizalmas erőforrásokhoz, például a Key Vault titkos kódokhoz való hozzáférést.
 
-Mi a hely feltétele Azure Active Directory feltételes hozzáférésben?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Mi a hely feltétele Azure Active Directory feltételes hozzáférésben?: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 
 
@@ -479,9 +479,9 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 **Útmutató**: a Azure Key Vault és Azure Active Directory diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics munkaterületre. A kívánt riasztások (például a letiltott titkok elérésére tett kísérletek) konfigurálása Log Analyticson belül.
 
-Azure AD-naplók integrálása Azure Monitor naplókkal:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure AD-naplók integrálása Azure Monitor naplókkal: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Áttelepítés a régi Key Vault megoldásról:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
+Áttelepítés a régi Key Vault megoldásról: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 
 
@@ -493,11 +493,11 @@ Azure AD-naplók integrálása Azure Monitor naplókkal:https://docs.microsoft.c
 
 **Útmutató**: a Azure Active Directory Identity Protection és kockázati észlelési funkciói segítségével konfigurálhatja az Azure Key Vault védett erőforrásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához engedélyeznie kell az automatikus válaszokat az Azure Sentinel használatával. 
 
-Kockázatos bejelentkezési jelentések a Azure Active Directory portálon:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
+Kockázatos bejelentkezési jelentések a Azure Active Directory portálon: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
-Útmutató: kockázatkezelési házirendek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Útmutató: kockázatkezelési házirendek konfigurálása és engedélyezése: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése:  https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 **Azure Security Center figyelés**: igen
@@ -508,7 +508,7 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: nem alkalmazható; A Ügyfélszéf Azure Key Vault esetében nem támogatott.
 
-Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -524,7 +524,7 @@ Támogatott szolgáltatások és forgatókönyvek általánosan elérhetővé:ht
 
 **Útmutató**: az olyan Azure-erőforrások nyomon követéséhez, amelyek bizalmas információkat tárolnak vagy dolgoznak fel Azure Key Vault engedélyezett erőforrásokon, használja a címkéket. 
 
-Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék használata az Azure-erőforrások rendszerezéséhez: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
 
@@ -538,9 +538,9 @@ Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.micr
 
 A tűzfalszabályok érvénybe léptetése után csak akkor hajthat végre Azure Key Vault adatsík-műveleteket, ha a kérelme engedélyezett alhálózatokból vagy IP-címtartományokból származik. Ez a Azure Portal Azure Key Vault hozzáférésére is vonatkozik. Bár a Azure Portal is tallózhat a kulcstartóban, előfordulhat, hogy nem tudja listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógép nem szerepel az engedélyezett listán. Ez hatással van a Azure Key Vault választóra és az egyéb Azure-szolgáltatásokra is. Előfordulhat, hogy látni fogja a kulcstartók listáját, de nem jeleníti meg a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
 
-Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Azure Key Vault virtuális hálózati szolgáltatási végpontok:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+Azure Key Vault virtuális hálózati szolgáltatási végpontok: https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
 
 
 
@@ -552,11 +552,11 @@ Azure Key Vault virtuális hálózati szolgáltatási végpontok:https://docs.mi
 
 **Útmutató**: a Azure Key Vaulton belül tárolt összes adat bizalmasnak tekintendő. A Azure Key Vault titkokhoz való hozzáférés szabályozásához használja Azure Key Vault adatsík-hozzáférés-vezérlést. A hálózati réteg elérésének vezérléséhez Key Vault beépített tűzfallal is használhatja. A Azure Key Vaulthoz való hozzáférés figyeléséhez engedélyezze Key Vault diagnosztikai beállításokat, és küldje el a naplókat egy Azure Storage-fiókba vagy Log Analytics munkaterületre.
 
-Biztonságos hozzáférés a kulcstartóhoz:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+Biztonságos hozzáférés a kulcstartóhoz: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Azure Key Vault naplózás:https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Azure Key Vault naplózás: https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 
@@ -568,7 +568,7 @@ Azure Key Vault naplózás:https://docs.microsoft.com/azure/key-vault/key-vault-
 
 **Útmutató**: a hitelesítéshez, a felügyelethez és az adatsíkon való hozzáféréshez Azure Key Vault összes forgalom titkosítva van, és HTTPS-en keresztül megy át: 443-as port. (A CRL esetében azonban esetenként a HTTP [port 80] forgalom lesz látható.) 
 
-Hozzáférés Azure Key Vault tűzfal mögött:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+Hozzáférés Azure Key Vault tűzfal mögött: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 
 
 
@@ -709,7 +709,7 @@ Az aktuális fiók által elérhető előfizetések beolvasása.:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
+Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -741,7 +741,7 @@ Felügyeleti csoportok létrehozása az erőforrás-szervezethez és-kezeléshez
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék használata az Azure-erőforrások rendszerezéséhez: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -766,9 +766,9 @@ Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.micr
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 
@@ -811,9 +811,9 @@ Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Reso
 
 - Engedélyezett erőforrástípusok
 
-Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy minták:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Policy minták: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
@@ -1044,7 +1044,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.  
   
- A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+ A hitelesítőadat-olvasó beállítása: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1069,7 +1069,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 A nem számítási Azure-erőforrásokra, például a Azure Key Vaultra feltöltött vagy azokon továbbított tartalmak előzetes vizsgálata. A Microsoft nem fér hozzá az adataihoz ezekben a példányokban.
 
-Ismerje meg a Microsoft antimalware az Azure Cloud Services és Virtual Machines:https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Ismerje meg a Microsoft antimalware az Azure Cloud Services és Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1102,15 +1102,15 @@ Ismerje meg a Microsoft antimalware az Azure Cloud Services és Virtual Machines
 
 Szükség esetén a Key Vault biztonsági másolatait Azure Backupon belül is tárolhatja.
 
-Key Vault tanúsítványok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Key Vault tanúsítványok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault kulcsok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Key Vault felügyelt Storage-fiókok biztonsági mentése:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Key Vault felügyelt Storage-fiókok biztonsági mentése: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Key Vault titkos kódok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Key Vault titkos kódok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-A Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
+A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup
 
 
 
@@ -1132,15 +1132,15 @@ A Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
 
 Szükség esetén a Key Vault biztonsági másolatait Azure Backupon belül is tárolhatja.
 
-Key Vault tanúsítványok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Key Vault tanúsítványok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault kulcsok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Key Vault felügyelt Storage-fiókok biztonsági mentése:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Key Vault felügyelt Storage-fiókok biztonsági mentése: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Key Vault titkos kódok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Key Vault titkos kódok biztonsági mentése: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-A Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
+A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup
 
 
 
@@ -1160,13 +1160,13 @@ A Azure Backup engedélyezése:https://docs.microsoft.com/azure/backup
 
 - Visszaállítás – AzKeyVaultSecret
 
-Key Vault tanúsítványok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+Key Vault tanúsítványok visszaállítása:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 
-Key Vault kulcsok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+Key Vault kulcsok visszaállítása: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
 
-Key Vault felügyelt Storage-fiókok visszaállítása:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+Key Vault felügyelt Storage-fiókok visszaállítása: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
 
-Key Vault titkos kódok visszaállítása:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+Key Vault titkos kódok visszaállítása: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -1300,7 +1300,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

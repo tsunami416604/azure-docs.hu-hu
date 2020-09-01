@@ -2,13 +2,13 @@
 title: Azure-beli virtuális gépek áthelyezése új előfizetésre vagy erőforráscsoport-csoportba
 description: A Azure Resource Manager használatával áthelyezheti a virtuális gépeket egy új erőforráscsoporthoz vagy előfizetésbe.
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/31/2020
+ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933239"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230959"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Útmutató a virtuális gépekhez
 
@@ -48,7 +48,7 @@ Ha a helyreállítható [Törlés](../../../backup/backup-azure-security-feature
 2. Azure Backup konfigurált virtuális gépek áthelyezéséhez hajtsa végre a következő lépéseket:
 
    1. Keresse meg a virtuális gép helyét.
-   2. Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<location of your VM>_1` . Például *AzureBackupRG_westus2_1*
+   2. Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<VM location>_1` . A név például *AzureBackupRG_westus2_1*formátumú.
    3. A Azure Portalban tekintse meg a **rejtett típusok megjelenítése**részt.
    4. Keresse meg a **Microsoft. számítás/restorePointCollections** típusú erőforrást, amely az elnevezési mintával rendelkezik `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
@@ -59,21 +59,43 @@ Ha a helyreállítható [Törlés](../../../backup/backup-azure-security-feature
 
 ### <a name="powershell"></a>PowerShell
 
-* Keresse meg a virtuális gép helyét.
-* Keressen egy erőforráscsoportot a következő elnevezési mintával: például `AzureBackupRG_<location of your VM>_1` AzureBackupRG_westus2_1
-* Ha a PowerShellben használja a `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmagot
-* Keresse meg azt az erőforrást, amelynek `Microsoft.Compute/restorePointCollections` a típusa az elnevezési minta `AzureBackup_<name of your VM that you're trying to move>_###########`
-* Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
+1. Keresse meg a virtuális gép helyét.
+
+1. Keressen egy erőforráscsoportot az elnevezési mintával – `AzureBackupRG_<VM location>_1` . A név lehet például a következő: `AzureBackupRG_westus2_1` .
+
+1. Használja a következő parancsot a visszaállítási pont gyűjteményének beszerzéséhez.
+
+   ```azurepowershell
+   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+1. Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
+
+   ```azurepowershell
+   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```
 
 ### <a name="azure-cli"></a>Azure CLI
 
-* Keresse meg a virtuális gép helyét.
-* Keressen egy erőforráscsoportot a következő elnevezési mintával: például `AzureBackupRG_<location of your VM>_1` AzureBackupRG_westus2_1
-* Ha a CLI-ben használja a `az resource list -g AzureBackupRG_<location of your VM>_1`
-* Keresse meg azt az erőforrást, amelynek `Microsoft.Compute/restorePointCollections` a típusa az elnevezési minta `AzureBackup_<name of your VM that you're trying to move>_###########`
-* Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
+1. Keresse meg a virtuális gép helyét.
 
-## <a name="next-steps"></a>További lépések
+1. Keressen egy erőforráscsoportot az elnevezési mintával – `AzureBackupRG_<VM location>_1` . A név lehet például a következő: `AzureBackupRG_westus2_1` .
+
+1. A visszaállítási pont gyűjteményének beszerzéséhez használja a következő parancsot.
+
+   ```azurecli
+   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```
+
+1. Az erőforrás AZONOSÍTÓjának megkeresése az elnevezési mintával `AzureBackup_<VM name>_###########`
+
+1. Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
+
+   ```azurecli
+   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+   ```
+
+## <a name="next-steps"></a>Következő lépések
 
 * Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../move-resource-group-and-subscription.md).
 

@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74007707"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231061"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Az Azure Active Directory jelentéskészítés késése
 
@@ -43,7 +43,7 @@ A következő táblázat a tevékenységi jelentések késési információit so
 
 | Jelentés | Késés (95. percentilis) |Késés (esetek 99% percentilis)|
 | :-- | --- | --- |
-| Auditnaplók | 2 perc  | 5 perc  |
+| Naplók | 2 perc  | 5 perc  |
 | Bejelentkezések | 2 perc  | 5 perc |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Milyen hamar láthatom a tevékenységek információit a prémium szintű licenc beszerzése után?
@@ -54,12 +54,12 @@ Ha már rendelkezik a tevékenységek adataival az ingyenes licenccel, akkor azo
 
 A biztonsági jelentések két típusa létezik:
 
-- [Kockázatos bejelentkezések](concept-risky-sign-ins.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
-- [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
+- [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
+- [Kockázatosként megjelölt felhasználók](../identity-protection/overview-identity-protection.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
 
 A következő táblázat a biztonsági jelentések késési információit sorolja fel.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Veszélyeztetett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
@@ -70,7 +70,7 @@ Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteke
 
 A következő táblázat a kockázati észlelések késési információit sorolja fel.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Bejelentkezések névtelen IP-címről |5 perc |15 perc |2 óra |
 | Bejelentkezések ismeretlen helyekről |5 perc |15 perc |2 óra |
@@ -80,8 +80,8 @@ A következő táblázat a kockázati észlelések késési információit sorol
 | Bejelentkezések gyanús tevékenységeket mutató IP-címekkel |2 óra |4 óra |8 óra  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD-jelentések – áttekintés](overview-reports.md)
 * [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)
-* [Azure Active Directory kockázati észlelések](concept-risk-events.md)
+* [Azure Active Directory kockázati észlelések](../identity-protection/overview-identity-protection.md)

@@ -6,13 +6,13 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: f7da9b1779ed2cf46cb29b21215a9415cbaef494
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004481"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231282"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Security Center Azure biztonsági alapterve
 
@@ -394,7 +394,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 **Útmutató**: a Azure Security Center egy konfigurált log Analytics munkaterületet használ az általa generált adatkezelési, riasztások és javaslatok tárolásához. Konfiguráljon egy ügyfél által felügyelt kulcsot (CMK) a Security Center adatgyűjtéshez konfigurált munkaterülethez. A CMK lehetővé teszi, hogy a munkaterületre mentett vagy elküldhető összes adatfájlt egy Ön által létrehozott és birtokolt Azure Key Vault kulccsal titkosítsa. 
 
-- [Azure Monitor ügyfél által felügyelt kulcs](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor – ügyfél által kezelt kulcs](../azure-monitor/platform/customer-managed-keys.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -596,7 +596,7 @@ Az Azure Resource Graph segítségével lekérdezheti és felderítheti az előf
 
 **Útmutató**: a Azure Security Center egy konfigurált log Analytics munkaterületet használ az általa generált adatkezelési, riasztások és javaslatok tárolásához. Konfiguráljon egy ügyfél által felügyelt kulcsot (CMK) a Security Center adatgyűjtéshez konfigurált munkaterülethez. A CMK lehetővé teszi, hogy a munkaterületre mentett vagy elküldhető összes adatfájlt egy Ön által létrehozott és birtokolt Azure Key Vault kulccsal titkosítsa. 
 
-- [Azure Monitor ügyfél által felügyelt kulcs](../azure-monitor/platform/customer-managed-keys.md)
+- [Azure Monitor – ügyfél által kezelt kulcs](../azure-monitor/platform/customer-managed-keys.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -772,7 +772,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

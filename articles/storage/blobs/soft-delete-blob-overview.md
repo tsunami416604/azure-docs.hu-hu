@@ -1,5 +1,5 @@
 ---
-title: A Blobok Soft delete
+title: Blobok helyreállítható törlése
 titleSuffix: Azure Storage
 description: A Blobok Soft törlésével megvédheti adatait, így könnyebben helyreállíthatja az adatokat, amikor az alkalmazás vagy egy másik Storage-fiók felhasználója hibásan módosítja vagy törölte azokat.
 services: storage
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2e390c9d5d2fa7c6551ed661c6c25096732eefd5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057324"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230109"
 ---
-# <a name="soft-delete-for-blobs"></a>A Blobok Soft delete
+# <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
-A Blobok helyreállítható törlésével megvédheti az adatait véletlenül vagy hibásan, vagy törölheti azokat. Ha a Blobok helyreállított törlését engedélyezték a Storage-fiókhoz, a Blobok, a blob-verziók (előzetes verzió) és a pillanatképek a Storage-fiókban a törlés után helyreállíthatók, a megadott megőrzési időtartamon belül.
+A Blobok helyreállítható törlésével megvédheti az adatait véletlenül vagy hibásan, vagy törölheti azokat. Ha a Blobok helyreállított törlését engedélyezték a Storage-fiókhoz, a Blobok, a blobok és a pillanatképek a Storage-fiókban való törlése a megadott megőrzési időtartamon belül megtörténik.
 
 Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft a Soft delete bekapcsolását javasolja. További információ a Soft delete engedélyezéséről: a [Blobok Soft delete engedélyezése és kezelése](soft-delete-enable.md).
 
@@ -28,7 +28,7 @@ Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül ne
 
 Ha a Blobok helyreállított törlését engedélyezték a Storage-fiókon, akkor a törölt objektumokat a megadott adatmegőrzési időtartamon belül állíthatja helyre. Ez a védelem kiterjed minden blobra (Blobok, hozzáfűzési Blobok vagy Blobok letiltására), amelyeket a rendszer a felülírás eredményeképpen töröl.
 
-Ha egy meglévő blobban vagy pillanatképben lévő adatok törlődnek, miközben a blob-alapú törlés engedélyezve van, de a blob verziószámozása (előzetes verzió) nincs engedélyezve, akkor a rendszer egy helyreállított pillanatképet hoz létre a felülírt adatok állapotának mentéséhez. A megadott megőrzési időszak lejárta után az objektum véglegesen törölve lesz.
+Ha egy meglévő blobban vagy pillanatképben lévő adatok törlődnek, miközben a blob-alapú törlés engedélyezve van, de a blob verziószámozása nincs engedélyezve, akkor a rendszer egy helyreállított pillanatképet hoz létre a felülírt adatok állapotának mentéséhez. A megadott megőrzési időszak lejárta után az objektum véglegesen törölve lesz.
 
 Ha a blob verziószámozása és a blob Soft delete egyaránt engedélyezve van a Storage-fiókban, akkor a Blobok törlése egy új verziót hoz létre, nem pedig egy nem törölt pillanatképet. Az új verzió nem törlődik, és a rendszer nem távolítja el, ha a helyreállítható törlés megőrzési ideje lejár. A Blobok helyreállított verziói a megőrzési időn belül visszaállíthatók a [blob törlésének](/rest/api/storageservices/undelete-blob) visszavonása művelet meghívásával. A blob később visszaállítható az egyik verzióról a [blob másolása](/rest/api/storageservices/copy-blob) művelet meghívásával. További információ a Blobok verziószámozásának és a Soft delete együttes használatáról: [blob verziószámozása és a Soft delete](versioning-overview.md#blob-versioning-and-soft-delete).
 
@@ -191,7 +191,7 @@ Az Azure-beli virtuális gépek nem felügyelt lemezre való írást végeznek a
 
 A Soft delete előnyeit kihasználhatja a használt API-verziótól függetlenül. Azonban a Soft Deleted blobok és a blob-Pillanatképek listázásához és helyreállításához az [Azure Storage REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) vagy újabb 2017-07-29 verzióját kell használnia. A Microsoft azt javasolja, hogy mindig az Azure Storage API legújabb verzióját használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
+- [BLOB verziószámozása](versioning-overview.md)

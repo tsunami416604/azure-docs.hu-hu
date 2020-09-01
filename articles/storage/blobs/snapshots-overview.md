@@ -1,27 +1,27 @@
 ---
 title: BLOB-Pillanatképek
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre egy blob írásvédett pillanatképét egy adott időpontban a blob-adatok biztonsági mentésére.
+description: Megtudhatja, hogyan működnek a blob-Pillanatképek, és hogyan történik a számlázásuk.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/19/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 8a1c61b77ab799cead319bfaf6cfa7ebd6af431b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640599"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230332"
 ---
 # <a name="blob-snapshots"></a>BLOB-Pillanatképek
 
 A pillanatképek egy adott időpontban végrehajtott blob írásvédett verziója, amely egy adott időpontban történik.
 
 > [!NOTE]
-> A blob verziószámozása (előzetes verzió) egy másik módszert kínál a blob korábbi verzióinak karbantartására. További információ: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
+> A blob verziószámozása kiváló megoldást kínál a blob korábbi verzióinak karbantartására. További információ: [blob verziószámozása](versioning-overview.md).
 
 ## <a name="about-blob-snapshots"></a>Tudnivalók a blob-pillanatképekről
 
@@ -31,7 +31,6 @@ A blob pillanatképe azonos az alap blobtal, azzal a különbséggel, hogy a blo
 
 > [!NOTE]
 > Minden pillanatkép megosztja az alap blob URI-JÁT. Az alap blob és a pillanatkép közötti egyetlen különbség a hozzáfűzött **datetime** érték.
->
 
 A Blobok tetszőleges számú pillanatképet tartalmazhatnak. A pillanatképek mindaddig megmaradnak, amíg explicit módon nem törlik őket, vagy a [blob törlési](/rest/api/storageservices/delete-blob) műveletének részeként. Az alap blobhoz társított Pillanatképek enumerálásával nyomon követheti az aktuális pillanatképeket.
 
@@ -42,8 +41,6 @@ Az alap blobhoz társított bérletek nem érintik a pillanatképet. Nem lehet b
 Egy VHD-fájl tárolja a virtuálisgép-lemezek aktuális információit és állapotát. Leválaszthat egy lemezt a virtuális gépről, vagy leállíthatja a virtuális gépet, majd pillanatképet készíthet a VHD-fájlról. Ezt a pillanatkép-fájlt később is használhatja a VHD-fájl lekéréséhez az adott időpontban, és újból létrehozhatja a virtuális gépet.
 
 ## <a name="understand-how-snapshots-accrue-charges"></a>A pillanatképek felmerülési módjának ismertetése
-
-Pillanatkép létrehozása, amely egy blob írásvédett példánya, további adattárolási díjat eredményezhet a fiókjához. Az alkalmazás tervezésekor fontos tisztában lennie azzal, hogy ezek a díjak hogyan merülhetnek fel, így csökkentheti a költségeket.
 
 ### <a name="important-billing-considerations"></a>Fontos számlázási szempontok
 
@@ -65,34 +62,95 @@ Javasoljuk, hogy gondosan kezelje a pillanatképeket a további költségek elke
 
 A következő forgatókönyvek azt mutatják be, hogyan merülhetnek fel a díjak a blokkos blobok és a pillanatképek esetében.
 
+## <a name="pricing-and-billing"></a>Árak és számlázás
+
+Pillanatkép létrehozása, amely egy blob írásvédett példánya, további adattárolási díjat eredményezhet a fiókjához. Az alkalmazás tervezésekor fontos tisztában lennie azzal, hogy ezek a díjak hogyan merülhetnek fel, így csökkentheti a költségeket.
+
+A blob-Pillanatképek, például a blob-verziók számlázása az aktív adatforgalommal megegyező sebességgel történik. A pillanatképek számlázásának módja attól függ, hogy explicit módon beállította-e a szintet az alap blobhoz vagy a pillanatképekhez (vagy verziókhoz). A blob-rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md).
+
+Ha nem módosította a Blobok vagy a pillanatképek szintjét, akkor a blob, a pillanatképek és az esetlegesen használt verziók egyedi adattömbökért kell fizetnie. További információ: számlázás, [Ha a blob-szintet nem adta meg explicit módon](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+Ha módosított egy blobot vagy pillanatképet tartalmazó szintet, akkor a teljes objektumért díjat számítunk fel, függetlenül attól, hogy a blob és a pillanatkép végül ugyanabban a szinten van-e. További információ: számlázás, [Ha a blob szintjét explicit módon állították be](#billing-when-the-blob-tier-has-been-explicitly-set).
+
+A blob-verziók számlázási adataival kapcsolatos további információkért lásd: [blob verziószámozása](versioning-overview.md).
+
+### <a name="billing-when-the-blob-tier-has-not-been-explicitly-set"></a>Számlázás, ha a blob szintje nincs explicit módon beállítva
+
+Ha nem állította be explicit módon a blob rétegét egy alap blobhoz vagy annak valamelyik pillanatképéhez, akkor a blob, a pillanatképek és az esetlegesen használt verziók egyedi blokkokra vagy lapokra számítunk fel díjat. A blobok és Pillanatképek megosztása csak egyszer történik. Ha egy blob frissül, akkor az alap blobban lévő adatok eltérnek a pillanatképekben tárolt adatoktól, és az egyedi adatok egy blokk vagy lap alapján számítanak fel díjat.
+
+Ha egy blokkon belüli blokkot cserél le, a rendszer ezt a blokkot egy egyedi blokkként számítja fel. Ez akkor is igaz, ha a blokk ugyanazzal a blokk-AZONOSÍTÓval és ugyanazokkal az adatokkal rendelkezik, mint a pillanatképben. Miután a blokk újra véglegesítve lett, a pillanatképtől eltér a pillanatképből, és az adatokért kell fizetnie. Ugyanez a helyzet igaz egy olyan oldal blobján, amely azonos adattal frissült.
+
+A blob Storage nem rendelkezik annak megállapításához, hogy két blokk tartalmaz-e azonos adathalmazt. Minden feltöltött és véglegesített blokk egyediként lesz kezelve, még akkor is, ha ugyanazokat az adatblokkokat és AZONOSÍTÓkat is tartalmazta. Mivel a díjak az egyedi blokkok esetében merülnek fel, fontos szem előtt tartani, hogy ha a blob pillanatképekkel vagy verziókkal rendelkezik, további egyedi blokkok és további költségek is megmaradnak.
+
+Ha egy blob pillanatképeket tartalmaz, a frissítési műveleteket a blokk blobokon hívja meg, hogy a lehető legkevesebb blokkot frissítik. Az írási műveletek, amelyek lehetővé teszik a részletes szabályozást a blokkoknál, a [blokk](/rest/api/storageservices/put-block) és a [put blokkot](/rest/api/storageservices/put-block-list)is fel kell venni. A [put blob](/rest/api/storageservices/put-blob) művelet ugyanakkor lecseréli egy blob teljes tartalmát, ezért további díjakat eredményezhet.
+
+A következő forgatókönyvek azt mutatják be, hogyan merülhetnek fel a letiltási blobok és a pillanatképek, amikor a blob szintje nincs explicit módon beállítva.
+
 #### <a name="scenario-1"></a>1\. példa
 
 Az 1. forgatókönyvben az alap blob nem frissült a pillanatkép készítése után, ezért a díjak csak az 1., 2. és 3. egyedi blokkok esetében merülnek fel.
 
-![Azure Storage-erőforrások](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
+![1. ábra, az alap blob és a pillanatkép egyedi blokkokra vonatkozó számlázását mutatja](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-1.png)
 
 #### <a name="scenario-2"></a>2\. példa
 
 A 2. forgatókönyvben az alap blob frissült, de a pillanatkép nem. A 3. blokk frissült, annak ellenére, hogy ugyanazokat az adatokkal és ugyanazzal az AZONOSÍTÓval rendelkezik, nem ugyanaz, mint a 3. blokk a pillanatképben. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
-![Azure Storage-erőforrások](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
+![2. ábra: az alap blobban és a pillanatképben lévő egyedi blokkok számlázásának megjelenítése](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-2.png)
 
 #### <a name="scenario-3"></a>3\. példa
 
 A 3. forgatókönyvben az alap blob frissült, de a pillanatkép nem. A 3. blokk lecserélve a 4-es blokkra az alap blobban, de a pillanatkép továbbra is a 3. blokkot tükrözi. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
-![Azure Storage-erőforrások](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
+![3. ábra: az alap blobban és a pillanatképben lévő egyedi blokkok számlázásának megjelenítése](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-3.png)
 
 #### <a name="scenario-4"></a>4\. példa
 
 A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók minden nyolc egyedi blokk után díjat számít fel.
 
-![Azure Storage-erőforrások](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+![4. ábra: az alap blobban és a pillanatképben lévő egyedi blokkok számlázásának megjelenítése](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
 
 > [!TIP]
 > Ne hívjon fel olyan metódusokat, amelyek felülírják a teljes blobot, hanem az egyes blokkok frissítésével a költségek alacsonyak maradnak.
 
+### <a name="billing-when-the-blob-tier-has-been-explicitly-set"></a>Számlázás, ha a blob szintje explicit módon be van állítva
+
+Ha explicit módon beállította a blob-szintet egy blobhoz vagy pillanatképhez (vagy verzióhoz), akkor a rendszer az új szinten lévő objektum teljes tartalomra vonatkozó díját számítja fel, függetlenül attól, hogy az eredeti szinten található objektummal osztozik-e. Az eredeti szinten a legrégebbi verzió tartalmának teljes hosszát is felszámítjuk. Az eredeti szinten maradó verziók vagy Pillanatképek a megosztható egyedi blokkokért lesznek felszámítva, ahogy azt a [számlázás nem adta meg explicit](#billing-when-the-blob-tier-has-not-been-explicitly-set)módon.
+
+#### <a name="moving-a-blob-to-a-new-tier"></a>BLOB áthelyezése egy új szintjére
+
+A következő táblázat ismerteti a Blobok vagy Pillanatképek számlázási viselkedését, ha az új szintjére kerül.
+
+| Ha a blob-szintet explicit módon beállította... | Ezután számlázunk... |
+|-|-|
+| Egy pillanatképet tartalmazó alap blob | Az alapszintű blob az új szinten és az eredeti szinten lévő legrégebbi pillanatkép, valamint a többi pillanatkép egyedi blokkja. <sup>1</sup> |
+| Egy korábbi verziót és egy pillanatképet tartalmazó alap blob | Az alap blob az új szinten, az eredeti szint legrégebbi verziója, valamint az eredeti szinten lévő legrégebbi pillanatkép, valamint a többi verzióban<sup>vagy pillanatképekben</sup>szereplő egyedi blokkok. |
+| Pillanatkép | A pillanatkép az új rétegben és az alapszintű blobban az eredeti szinten, valamint a többi pillanatkép egyedi blokkja. <sup>1</sup> |
+
+<sup>1</sup> Ha vannak olyan korábbi verziók vagy Pillanatképek, amelyek nem lettek áthelyezve az eredeti szintjéről, akkor ezek a verziók vagy Pillanatképek az általuk tartalmazott egyedi blokkok száma alapján lesznek felszámítva, a [számlázás, ha a blob szintjét nem adta meg explicit módon](#billing-when-the-blob-tier-has-not-been-explicitly-set).
+
+A blob, a verzió vagy a pillanatkép szintje explicit módon történő beállítása nem vonható vissza. Ha egy blobot egy új szintre helyez át, majd visszahelyezi az eredeti szintjére, akkor akkor is a teljes tartalomért kell fizetnie, ha az objektum más objektumokkal is megosztja az eredeti szintet.
+
+A Blobok, verziók vagy Pillanatképek szintjét explicit módon beállító műveletek a következők:
+
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
+- A [blobot](/rest/api/storageservices/put-blob) a megadott szintűvé tegye
+- [Letiltási lista](/rest/api/storageservices/put-block-list) megadása a megadott szintű szinten
+- [Blob másolása](/rest/api/storageservices/copy-blob) megadott szintű példánnyal
+
+#### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>BLOB törlése, ha a Soft delete engedélyezve van
+
+Ha a blob-törlés engedélyezve van, ha olyan alapszintű blobot töröl vagy felülír, amelynek a szintje explicit módon be lett állítva, akkor a helyreállított blob összes korábbi verziója vagy pillanatképe teljes tartalommal lesz kiszámlázva. További információ a Blobok verziószámozásáról és a helyreállítható törlésről: a [blob verziószámozása és a Soft delete](versioning-overview.md#blob-versioning-and-soft-delete)használata.
+
+A következő táblázat ismerteti a nem megfelelően törölt Blobok számlázási viselkedését attól függően, hogy a verziószámozás engedélyezett vagy le van tiltva. Ha a Verziószámozás engedélyezve van, egy új verzió jön létre, amikor egy blobot törölnek. Ha a verziószámozás le van tiltva, a Blobok törlésével egy törlési pillanatkép jön létre.
+
+| Ha egy alapszintű blobot felülír a réteg explicit módon beállított szintjével... | Ezután számlázunk... |
+|-|-|
+| Ha a blob-alapú törlés és verziószámozás egyaránt engedélyezve van | A teljes tartalom hosszúságú összes meglévő verzió a szintjétől függetlenül. |
+| Ha a blob-törlés engedélyezve van, de a verziószámozás le van tiltva | Az összes létező, teljes tartalommal rendelkező törlési pillanatkép a rétegtől függetlenül. |
+
 ## <a name="next-steps"></a>Következő lépések
 
+- [BLOB verziószámozása](versioning-overview.md)
 - [BLOB-pillanatkép létrehozása és kezelése a .NET-ben](snapshots-manage-dotnet.md)
 - [Azure-beli nem felügyelt VM-lemezek biztonsági mentése növekményes pillanatképekkel](../../virtual-machines/windows/incremental-snapshots.md)

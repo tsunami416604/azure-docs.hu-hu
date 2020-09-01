@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ab996c3f3310656e7b85dded8e57a129b901660
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873806"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230415"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
 
@@ -44,7 +44,7 @@ Az alábbi lépésekben egy modellt fejleszt ki, amelyből megtudhatja, mit kell
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib Machine learning-alkalmazás létrehozása
 
-1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
+1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért tekintse meg a [Jupyter-jegyzetfüzet-fájl létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)című témakört.
 
 2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt.
 
@@ -108,7 +108,7 @@ A Spark kontextus használatával a nyers CSV-adat a memóriában strukturálatl
 
     A kimenet a bemeneti fájl sémájának egy ötletét adja meg. Tartalmazza az összes létesítmény nevét és a létesítmény típusát. Emellett a címek, a vizsgálatok adatai és a hely, többek között.
 
-3. A következő kód futtatásával hozzon létre egy dataframe (*DF*) és egy ideiglenes táblát (*CountResults*), és néhány oszlopot, amelyek hasznosak a prediktív elemzéshez. `sqlContext`a strukturált adatátalakítások végrehajtásához használatos.
+3. A következő kód futtatásával hozzon létre egy dataframe (*DF*) és egy ideiglenes táblát (*CountResults*), és néhány oszlopot, amelyek hasznosak a prediktív elemzéshez. `sqlContext` a strukturált adatátalakítások végrehajtásához használatos.
 
     ```PySpark
     schema = StructType([

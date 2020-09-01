@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608925"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231163"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
@@ -40,7 +40,7 @@ A kockázati jelentésre megjelölt felhasználók a következő műveleteket ha
 - Biztonságos jelszóváltoztatás megkövetelése a felhasználótól a következő bejelentkezéskor
 - A felhasználó kockázatos voltának figyelmen kívül hagyása szervizelési művelet nélkül.
 
-További információ: [a kockázat biztonsági jelentésére megjelölt felhasználók](concept-user-at-risk.md).
+További információ: [a kockázat biztonsági jelentésére megjelölt felhasználók](../identity-protection/overview-identity-protection.md).
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-előfizetés Office 365-ügyfelek számára
 
@@ -89,7 +89,7 @@ Ezenkívül el a következőket kell elvégeznie:
 - [A naplózási folyamat lehetővé teszi](https://aka.ms/improvesecurity) a tevékenység elemzését a bérlőben. Ha elkészült, a naplózási tároló megkezdi a tevékenységek naplóinak feltöltését. Ezen a ponton a [biztonsági és megfelelőségi központ keresési és vizsgálati erőforrásait](https://aka.ms/sccsearch)is kihasználhatja. 
 - Tekintse át az összes postafiók engedélyek delegálásával és levelek továbbításával kapcsolatos szabályait. Ezzel a [PowerShell-szkripttel](https://aka.ms/delegateforwardrules) végezheti el ezt a feladatot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [Kockázatosként megjelölt felhasználók](../identity-protection/overview-identity-protection.md)

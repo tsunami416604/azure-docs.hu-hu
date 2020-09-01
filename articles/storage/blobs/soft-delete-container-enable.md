@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066661"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230075"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Tárolók helyreállítható törlésének engedélyezése és kezelése (előzetes verzió)
 
@@ -22,7 +22,7 @@ A tároló-helyreállító törlés (előzetes verzió) védi az adatok véletle
 
 Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft javasolja a tárolók törlésének bekapcsolását. Ez a cikk bemutatja, hogyan engedélyezheti a tárolók Soft delete szolgáltatását. A tárolók helyreállítható törlésével kapcsolatos további részletekért, beleértve az előzetes verzió regisztrálásának módját, lásd: a [tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md).
 
-A végpontok közötti adatvédelem érdekében a Microsoft azt javasolja, hogy a blobok és a Blobok verziószámozása (előzetes verzió) esetében is engedélyezze a Soft delete használatát. A Blobok helyreállítható törlésének engedélyezéséről a [Blobok Soft delete engedélyezése és kezelése](soft-delete-blob-enable.md)című témakörben olvashat. A blob verziószámozásának engedélyezésével kapcsolatos további információkért lásd: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
+A végpontok közötti adatvédelem érdekében a Microsoft azt javasolja, hogy engedélyezze a blobok és a Blobok verziószámozásának helyreállítható törlését is. A Blobok helyreállítható törlésének engedélyezéséről a [Blobok Soft delete engedélyezése és kezelése](soft-delete-blob-enable.md)című témakörben olvashat. A blob verziószámozásának engedélyezésével kapcsolatos további információkért lásd: [blob verziószámozása](versioning-overview.md).
 
 ## <a name="enable-container-soft-delete"></a>Tároló törlésének engedélyezése
 
@@ -97,8 +97,8 @@ A megőrzési időtartamon belül visszaállíthatja a nem törölt tárolót é
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Képernyőfelvétel: a Azure Portal helyreállítható tárolójának visszaállítása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)
-- [A Blobok Soft delete](soft-delete-blob-overview.md)
-- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
+- [Blobok helyreállítható törlése](soft-delete-blob-overview.md)
+- [BLOB verziószámozása](versioning-overview.md)

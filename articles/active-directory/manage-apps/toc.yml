@@ -238,12 +238,6 @@
               href: application-types.md
             - name: Váratlan felhasználó lett hozzárendelve
               href: ways-users-get-assigned-to-applications.md
-        - name: Saját alkalmazások hibaelhárítása
-          items:
-            - name: Az alkalmazás nem jelenik meg
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: Váratlan alkalmazás jelenik meg
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: Helyszíni alkalmazások hibaelhárítása
           items:
             - name: Alkalmazásproxy hibaelhárítása

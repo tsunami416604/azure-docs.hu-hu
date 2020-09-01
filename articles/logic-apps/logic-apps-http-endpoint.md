@@ -1,44 +1,39 @@
 ---
-title: Logikai alkalmazások hívása, aktiválása vagy beágyazása
-description: HTTPS-végpontok beállítása a logikai alkalmazások munkafolyamatainak meghívásához, triggeréhez vagy beágyazásához Azure Logic Apps
+title: Logikai alkalmazások hívása, aktiválása vagy beágyazása kérelem-eseményindítók használatával
+description: HTTPS-végpontok beállítása a logikai alkalmazások munkafolyamatainak meghívásához, elindításához vagy beágyazásához Azure Logic Apps
 services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/27/2020
+ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078673"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230806"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
-Annak érdekében, hogy a logikai alkalmazás egy URL-címen legyen meghívható, hogy a logikai alkalmazás fogadni tudja a bejövő kéréseket más szolgáltatásokból, natív módon teheti elérhetővé egy szinkron HTTPS-végpontot a logikai alkalmazásban. Ha beállítja ezt a képességet, a logikai alkalmazás más logikai alkalmazásokban is beágyazható, ami lehetővé teszi a hívható végpontok mintázatának létrehozását.
+Ahhoz, hogy a logikai alkalmazás meghívása egy URL-címen történjen, és képes legyen bejövő kéréseket fogadni más szolgáltatásokból, natív módon elérhetővé teheti a szinkron HTTPS-végpontot egy kérelem alapú trigger használatával a logikai alkalmazásban. Ezzel a képességgel más Logic apps-ből hívhatja a logikai alkalmazást, és meghívható végpontok mintáját is létrehozhatja. A bejövő hívások kezelésére szolgáló hívható végpont beállításához a következő típusú triggerek bármelyikét használhatja:
 
-A hívható végpontok beállításához használhatja az alábbi típusú triggereket, amelyek lehetővé teszik a logikai alkalmazások számára a bejövő kérések fogadását:
-
-* [Kérelem](../connectors/connectors-native-reqres.md)
+* [Kérés](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
-* Felügyelt összekötő-eseményindítók, amelyek rendelkeznek [ApiConnectionWebhook-típussal](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) , és fogadhatnak Bejövő HTTPS-kéréseket
+* Felügyelt összekötő-eseményindítók, amelyek rendelkeznek a [ApiConnectionWebhook típussal](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) , és fogadhatnak Bejövő HTTPS-kéréseket
 
-> [!NOTE]
-> Ezek a példák a kérelem triggert használják, de az előző listában található bármilyen HTTPS-kérelem-alapú triggert használhat. Az összes elv ugyanezt a más típusú triggerekre is alkalmazza.
+Ez a cikk bemutatja, hogyan hozhat létre egy hívható végpontot a logikai alkalmazáshoz a kérelem trigger használatával, és hogyan hívhatja meg a végpontot egy másik logikai alkalmazásból. Minden alapelv azonos módon érvényesül a bejövő kérések fogadására használható egyéb trigger-típusokkal.
 
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg a [Mi az a Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakört.
+A logikai alkalmazáshoz (például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL) vagy [Azure Active Directory nyílt hitelesítéshez (Azure ad OAuth)](../active-directory/develop/index.yml)való bejövő hívások titkosításával, biztonságával és engedélyezésével kapcsolatos információkért lásd: [biztonságos hozzáférés és adathozzáférés a kérelmeken alapuló eseményindítók felé irányuló bejövő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Az a logikai alkalmazás, amelyben a triggert szeretné használni a hívható végpont létrehozásához. Elindíthat egy üres logikai alkalmazást vagy egy meglévő logikai alkalmazást, ahol az aktuális triggert le szeretné cserélni. Ez a példa egy üres logikai alkalmazással kezdődik.
+* Az a logikai alkalmazás, amelyben a triggert szeretné használni a hívható végpont létrehozásához. Elkezdheti egy üres logikai alkalmazás vagy egy meglévő logikai alkalmazás használatával, ahol lecserélheti az aktuális triggert. Ez a példa egy üres logikai alkalmazással kezdődik. Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg a [Mi az a Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakört.
 
 ## <a name="create-a-callable-endpoint"></a>Hívható végpont létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
-
-   Ez a példa a kérelem triggert használja, de bármilyen olyan triggert használhat, amely képes fogadni a bejövő HTTPS-kéréseket. Ezek az eseményindítók mindegyike azonos elveket alkalmaz. További információ a kérelem-triggerről: [fogadás és válaszadás a bejövő HTTPS-hívásokra Azure Logic Apps használatával](../connectors/connectors-native-reqres.md).
 
 1. A keresőmezőbe válassza a **beépített**lehetőséget. A keresőmezőbe írja be `request` szűrőként a kifejezést. Az eseményindítók listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
 
@@ -200,7 +195,7 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
    `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?{parameter-name=parameter-value}&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   A böngésző a következő szöveggel kapcsolatos választ ad vissza:`Postal Code: 123456`
+   A böngésző a következő szöveggel kapcsolatos választ ad vissza: `Postal Code: 123456`
 
    ![Válasz a visszahívási URL-címre küldött kérelemre](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
@@ -210,12 +205,12 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
    Ez a példa a visszahívási URL-címet mutatja a minta paraméter nevével és értékével `postalCode=123456` az URL-cím különböző helyein belül:
 
-   * 1. pozíció:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * 1. pozíció: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-   * második pozíció:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+   * második pozíció: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
 > [!NOTE]
-> Ha a kivonatot vagy a font szimbólumot () is bele kívánja foglalni **#** az URI-ba, használja inkább a következő kódolt verziót:`%25%23`
+> Ha a kivonatot vagy a font szimbólumot () is bele kívánja foglalni **#** az URI-ba, használja inkább a következő kódolt verziót: `%25%23`
 
 <a name="relative-path"></a>
 
@@ -257,12 +252,12 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 1. A hívható végpont teszteléséhez másolja át a frissített visszahívási URL-címet a kérelem-triggerből, illessze be az URL-címet egy másik böngészőablakba, majd cserélje le az URL-címet a értékre `{postalCode}` `123456` , majd nyomja le az ENTER
 
-   A böngésző a következő szöveggel kapcsolatos választ ad vissza:`Postal Code: 123456`
+   A böngésző a következő szöveggel kapcsolatos választ ad vissza: `Postal Code: 123456`
 
    ![Válasz a visszahívási URL-címre küldött kérelemre](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
 > [!NOTE]
-> Ha a kivonatot vagy a font szimbólumot () is bele kívánja foglalni **#** az URI-ba, használja inkább a következő kódolt verziót:`%25%23`
+> Ha a kivonatot vagy a font szimbólumot () is bele kívánja foglalni **#** az URI-ba, használja inkább a következő kódolt verziót: `%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Logikai alkalmazás hívása a végpont URL-címén keresztül
 
@@ -357,7 +352,7 @@ A válasz törzsében több fejlécet és bármilyen típusú tartalmat is megad
 
 A válaszok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság (megjelenítés) | Tulajdonság (JSON) | Description |
+| Tulajdonság (megjelenítés) | Tulajdonság (JSON) | Leírás |
 |--------------------|-----------------|-------------|
 | **Állapotkód** | `statusCode` | A bejövő kérelemre adott válaszban használandó HTTPS-állapotkód. Ez a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx kezdődik. A 3xx-állapotkódok azonban nem engedélyezettek. |
 | **Fejlécek** | `headers` | Egy vagy több, a válaszban szerepeltetni kívánt fejléc |
@@ -405,6 +400,7 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 * A API Management-tartományok beállítása a [Azure Portal](https://portal.azure.com/)
 * Házirend beállítása az egyszerű hitelesítés kereséséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával](../connectors/connectors-native-reqres.md)
+* [Biztonságos hozzáférés és adatAzure Logic Apps-hozzáférés – hozzáférés bejövő hívásokhoz a kérelmeken alapuló eseményindítók számára](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

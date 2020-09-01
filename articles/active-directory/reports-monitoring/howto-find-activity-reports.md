@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608211"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230619"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
 
@@ -33,7 +33,7 @@ A naplók jelentés több jelentést is egyesít az alkalmazások tevékenysége
 2. Válassza ki a címtárat a jobb felső sarokban, majd válassza ki a **Azure Active Directory** panelt a bal oldali navigációs ablaktáblán.
 3. Válassza a **naplók** lehetőséget a Azure Active Directory panel **tevékenység** szakaszában. 
 
-    ![Naplók](./media/howto-find-activity-reports/482.png "Auditnaplók")
+    ![Naplók](./media/howto-find-activity-reports/482.png "Naplók")
 
 A naplózott jelentés a következő jelentéseket összesíti:
 
@@ -52,7 +52,7 @@ A naplózási jelentésben a speciális szűrés használatával férhet hozzá 
 
 A kategóriák a következők:
 
-- Mind
+- Összes
 - AdministrativeUnit
 - ApplicationManagement
 - Hitelesítés
@@ -73,7 +73,7 @@ A **szolgáltatás** legördülő szűrővel is szűrheti egy adott szolgáltat�
 
 A szolgáltatások a következők:
 
-- Mind
+- Összes
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése 
 - Alkalmazás egyszeri bejelentkezés
@@ -114,7 +114,7 @@ A bejelentkezési jelentés használatával megtekintheti az alkalmazás haszná
 
 A rendellenes tevékenységekről szóló jelentések információt nyújtanak a biztonsággal kapcsolatos, az Azure AD által észlelhető és jelentett biztonsági kockázatokról.
 
-A következő táblázat felsorolja az Azure AD rendellenes tevékenységek biztonsági jelentéseit és a Azure Portal megfelelő kockázati észlelési típusokat. További információ: [Azure Active Directory kockázati észlelések](concept-risk-events.md).  
+A következő táblázat felsorolja az Azure AD rendellenes tevékenységek biztonsági jelentéseit és a Azure Portal megfelelő kockázati észlelési típusokat. További információ: [Azure Active Directory kockázati észlelések](../identity-protection/overview-identity-protection.md).  
 
 
 | Azure AD rendellenes tevékenységekről szóló jelentés |  Identity Protection kockázati észlelési típusa|
@@ -136,8 +136,8 @@ A következő Azure AD rendellenes tevékenység biztonsági jelentései nem sze
 
 Az észlelt kockázati észlelésekkel kapcsolatos jelentések a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **biztonsági** szakaszában érhetők el. Az észlelt kockázati észleléseket a következő jelentések követik nyomon:   
 
-- [Veszélyeztetett felhasználók](concept-user-at-risk.md)
-- [Kockázatos bejelentkezések](concept-risky-sign-ins.md)
+- [Veszélyeztetett felhasználók](../identity-protection/overview-identity-protection.md)
+- [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md)
 
     ![Biztonsági jelentések](./media/howto-find-activity-reports/04.png "Biztonsági jelentések")
 
@@ -145,7 +145,7 @@ Az észlelt kockázati észlelésekkel kapcsolatos jelentések a [Azure Portal](
 
 ### <a name="missing-data-in-the-downloaded-activity-logs"></a>Hiányzó adatnaplók a letöltött tevékenység naplóiban
 
-#### <a name="symptoms"></a>Probléma 
+#### <a name="symptoms"></a>Hibajelenségek 
 
 Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem látom a kiválasztott időre vonatkozó összes rekordot. Miért? 
 
@@ -155,13 +155,13 @@ Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem lá
 
 Amikor letölti a tevékenység naplóit a Azure Portalban, a skálázást 250000 rekordra korlátozzuk, a legutóbbiek szerint rendezve. 
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Az [Azure AD Reporting API-kkal](concept-reporting-api.md) akár egymillió rekordot is lekérdezhet.
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Hiányoznak a Azure Portal legutóbbi műveleteinek naplózási adatkészletei
 
-#### <a name="symptoms"></a>Probléma
+#### <a name="symptoms"></a>Hibajelenségek
 
 Végrehajtottam bizonyos műveleteket az Azure Portalon, és arra számítottam, hogy látom a műveletek naplóit a `Activity logs > Audit Logs` panelen, de nem találtam meg őket.
 
@@ -176,13 +176,13 @@ A műveletek nem jelennek meg azonnal a tevékenységnaplókban. Az alábbi táb
 | Címtárnaplózás | 2 perc | 5 perc |
 | Bejelentkezési tevékenység | 2 perc | 5 perc |
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam elteltével megjelennek-e a naplóban. Ha két óra elteltével sem látja a naplókat, [küldjön be egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), és kivizsgáljuk az ügyet.
 
 ### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Hiányzó naplók a legutóbbi felhasználói bejelentkezésekhez az Azure AD bejelentkezési tevékenység naplójában
 
-#### <a name="symptoms"></a>Probléma
+#### <a name="symptoms"></a>Hibajelenségek
 
 Nemrég bejelentkeztem az Azure Portalra, és arra számítottam, hogy látom ezeknek a bejelentkezéseknek a naplóit a `Activity logs > Sign-ins` panelen, de nem találom őket.
 
@@ -197,13 +197,13 @@ A műveletek nem jelennek meg azonnal a tevékenységnaplókban. Az alábbi táb
 | Címtárnaplózás | 2 perc | 5 perc |
 | Bejelentkezési tevékenység | 2 perc | 5 perc |
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Várjon, hogy a műveletek úgy 15 perc és két óra közötti időtartam elteltével megjelennek-e a naplóban. Ha két óra elteltével sem látja a naplókat, [küldjön be egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), és kivizsgáljuk az ügyet.
 
 ### <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>Nem jelenik meg 30 napnál több adat a jelentésekben az Azure Portalon
 
-#### <a name="symptoms"></a>Probléma
+#### <a name="symptoms"></a>Hibajelenségek
 
 Nem jelenik meg 30 napnál több bejelentkezési és auditadat az Azure Portalról. Miért? 
 
@@ -220,12 +220,12 @@ A licencétől függően az Azure Active Directory-műveletek az alábbi időtar
 
 További információk: [Az Azure Active Directory jelentésmegőrzési házirendje](reference-reports-data-retention.md).  
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Az adatokat kétféleképpen őrizheti meg 30 napnál hosszabban. Az [Azure AD Reporting API-kkal](concept-reporting-api.md) az adatokat programozott módon kérheti le és tárolhatja egy adatbázisban. Másik megoldásként az auditnaplókat egy külső SIEM-rendszerbe, például a Splunk vagy a SumoLogic rendszerbe integrálhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Naplófájlok áttekintése](concept-audit-logs.md)
 * [Bejelentkezések – áttekintés](concept-sign-ins.md)
-* [Kockázatos események áttekintése](concept-risk-events.md)
+* [Kockázatos események áttekintése](../identity-protection/overview-identity-protection.md)

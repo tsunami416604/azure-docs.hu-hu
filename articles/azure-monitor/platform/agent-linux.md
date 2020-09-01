@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: eb68aa1dae69134cfdab057a95de8a2393f9a32c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998934"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230466"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépekre
 Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
@@ -51,11 +51,19 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
  - Ubuntu, Debian: `apt-get install -y python2`
  - SUSE `zypper install -y python2`
 
-A python2 végrehajtható fájljának a "Python" aliashoz kell tartoznia a következő parancs használatával:
+A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*. Az alábbi két módszer használható az alias beállításához:
 
-```
-alternatives --set python `which python2`
-```
+1. Futtassa a következő parancsot a meglévő aliasok eltávolításához.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. A következő parancs futtatásával hozza létre az aliast.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
 A OMS-ügynök korlátozott testreszabási támogatást biztosít a Linux rendszerhez. 
@@ -64,7 +72,8 @@ Jelenleg a következők támogatottak:
 - FIPs
 
 A következők tervezettek, de még nem támogatottak:
-- CIS – SELINUX
+- VIR
+- SELINUX
 
 Más korlátozási és testreszabási módszerek nem támogatottak és nem tervezettek a OMS-ügynök számára.  
 

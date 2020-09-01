@@ -4,15 +4,15 @@ description: Ismerje meg, hogy az Azure-webalkalmazások tűzfala az Azure bejá
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816369"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231435"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón
 
@@ -22,7 +22,7 @@ A WAF globális és központosított megoldás. Üzembe helyezése az Azure-beli
 
 A WAF megakadályozza, hogy a rosszindulatú támadások a támadási források közelébe lépjenek, mielőtt belépnek a virtuális hálózatba. A globális védelmet a teljesítmény feláldozása nélkül érheti el. A WAF szabályzat egyszerűen az előfizetésben lévő bejárati profilokra mutató hivatkozásokat tartalmaz. Az új szabályok percek alatt üzembe helyezhetők, így gyorsan reagálhat a veszélyforrások változására.
 
-![Azure webalkalmazási tűzfal](../media/overview/wafoverview.png)
+![Azure-beli webalkalmazási tűzfal](../media/overview/wafoverview.png)
 
 ## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 
@@ -125,6 +125,6 @@ Az összes WAF konfigurálhatja és telepítheti a Azure Portal, a REST API-k, a
 
 A WAF figyelése a bejárati ajtón integrált Azure Monitor a riasztások nyomon követésére és a forgalmi trendek egyszerű figyelésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az Azure-beli [webalkalmazási tűzfalat Application Gateway](../ag/ag-overview.md)

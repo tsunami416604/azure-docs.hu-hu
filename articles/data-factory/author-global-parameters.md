@@ -7,13 +7,13 @@ ms.workload: data-services
 ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/31/2020
+ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854269"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230830"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globális paraméterek a Azure Data Factory
 
@@ -41,13 +41,28 @@ A globális paraméterek bármelyik [folyamat kifejezésében](control-flow-expr
 
 ![Globális paraméterek használata](media/author-global-parameters/expression-global-parameters.png)
 
-## <a name="global-parameters-in-cicd"></a><a name="cicd"></a>Globális paraméterek a CI/CD-ben
+## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> Globális paraméterek a CI/CD-ben
 
-A globális paraméterek egyedi CI/CD-folyamattal rendelkeznek a Azure Data Factory többi entitásához képest. Ha egy gyárat tesz közzé, vagy globális paraméterekkel exportál egy ARM-sablont, a *globalParameters* nevű mappát egyyour-factory-name_GlobalParameters.jsnevű fájllal hozza létre *a*rendszer. Ez a fájl egy JSON-objektum, amely a közzétett gyár összes globális paraméter-típusát és értékét tartalmazza.
+A globális paraméterek kétféleképpen integrálhatók a folyamatos integrációs és üzembe helyezési megoldásban:
+
+* Globális paraméterek belefoglalása az ARM-sablonba
+* Globális paraméterek üzembe helyezése PowerShell-parancsfájl használatával
+
+A legtöbb felhasználási eset esetében javasoljuk, hogy globális paramétereket tartalmazzon az ARM-sablonban. Ez natív módon integrálható a [CI/CD doc](continuous-integration-deployment.md)-ban ismertetett megoldással. Alapértelmezés szerint a globális paraméterek az ARM-sablon paraméterként lesznek hozzáadva, mivel azok gyakran változnak a környezetből a környezetbe. A felügyeleti központban engedélyezheti a globális paraméterek felvételét az ARM-sablonban.
+
+![Belefoglalás az ARM-sablonba](media/author-global-parameters/include-arm-template.png)
+
+Ha globális paramétereket ad hozzá az ARM-sablonhoz, egy olyan gyári szintű beállítást ad hozzá, amely felülbírálhatja más gyári beállítások, például az ügyfél által felügyelt kulcs vagy a git konfigurációját más környezetekben. Ha ezek a beállítások egy emelt szintű környezetben, például a ellenőrzését vagy a PRODon vannak engedélyezve, akkor jobb, ha egy PowerShell-parancsfájllal telepíti a globális paramétereket az alábbi lépésekben leírtak szerint.
+
+### <a name="deploying-using-powershell"></a>Üzembe helyezés a PowerShell használatával
+
+A következő lépések azt ismertetik, hogyan helyezhetők üzembe globális paraméterek a PowerShell használatával. Ez akkor hasznos, ha a cél-előállító gyári szintű beállítással, például az ügyfél által felügyelt kulccsal rendelkezik.
+
+Ha egy gyárat tesz közzé, vagy globális paraméterekkel exportál egy ARM-sablont, a *globalParameters* nevű mappát egyyour-factory-name_GlobalParameters.jsnevű fájllal hozza létre * a*rendszer. Ez a fájl egy JSON-objektum, amely a közzétett gyár összes globális paraméter-típusát és értékét tartalmazza.
 
 ![Globális paraméterek közzététele](media/author-global-parameters/global-parameters-adf-publish.png)
 
-Ha egy új környezetbe (például a TEST vagy a PROD) végzi az üzembe helyezést, az ajánlott a globális Parameters fájl másolatának létrehozása és a megfelelő környezet-specifikus értékek felülírása. Az eredeti globális paraméterek ismételt közzétételekor a rendszer felülírja a fájlt, de a másik környezet másolata érintetlen marad.
+Ha egy új környezetbe (például a TEST vagy a PROD) végzi az üzembe helyezést, ajánlott létrehozni a globális Parameters fájl másolatát, és felül kell írnia a megfelelő környezeti jellemző értékeket. Az eredeti globális paraméterek ismételt közzétételekor a rendszer felülírja a fájlt, de a másik környezet másolata érintetlen marad.
 
 Ha például egy "ADF-DEV" nevű gyárat és egy "Environment" nevű, karakterlánc típusú globális paramétert ad meg a "dev" értékkel, akkor a rendszer a következő nevű fájlt teszi közzé: *ADF-DEV_GlobalParameters.js* . Ha egy "ADF_TEST" nevű tesztelési gyárba helyezi üzembe, hozzon létre egy másolatot a JSON-fájlról (például: ADF-TEST_GlobalParameters.js), és cserélje le a paramétereket a környezeti specifikus értékekre. A "környezet" paraméternek lehet "test" értéke. 
 

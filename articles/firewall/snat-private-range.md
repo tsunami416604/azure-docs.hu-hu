@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 25c2096de4c3643a4e6a3ba7bdad1e69ae93a179
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 272f5b747efbc3776b1b2ba7c3546ade717c2452
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019079"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231367"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
@@ -20,7 +20,7 @@ A Azure Firewall a nyilvános IP-címekre irányuló összes kimenő forgalom au
 
 Ez a logika jól működik, ha közvetlenül az internetre irányítja át a forgalmat. Ha azonban engedélyezte a [kényszerített bújtatást](forced-tunneling.md), az internethez kötött forgalom a AzureFirewallSubnet egyik címfordítást, a forrást pedig a helyszíni tűzfalból elrejti.
 
-Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. Azonban úgy is konfigurálhatja a Azure Firewallt, hogy **ne** SNAT a nyilvános IP-címtartományt.
+Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. Azonban úgy is konfigurálhatja a Azure Firewallt, hogy **ne** SNAT a nyilvános IP-címtartományt. Például egy egyedi IP-cím megadásához megadhatja az alábbihoz hasonlót: `192.168.1.10` . IP-címtartomány megadásához a következőhöz hasonló módon adhatja meg: `192.168.1.0/24` .
 
 Ha úgy szeretné konfigurálni a Azure Firewallt, hogy soha ne SNAT meg a cél IP-címről, használja a **0.0.0.0/0 értéket** a magánhálózati IP-címtartomány alapján. Ezzel a konfigurációval a Azure Firewall soha nem irányíthatja át a forgalmat közvetlenül az internetre. Ha úgy szeretné beállítani a tűzfalat, hogy mindig SNAT a célhelytől függetlenül, használja a **255.255.255.255/32** protokollt magánhálózati IP-címtartományként.
 

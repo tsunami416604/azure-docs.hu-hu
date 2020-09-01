@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611942"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230160"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -22,6 +22,11 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Működik az API Management szolgáltatás?</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Elérhető az Azure Spring Cloud-példány?</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 |Végrehajtott ellenőrzések|
@@ -56,12 +61,17 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="microsoftcomputehostgroupshosts"></a>Microsoft. számítási/hostgroups/gazdagépek
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Fut-e a gazdagép</li><li>A gazdagép hardvere csökkent?</li><li>A gazdagép fel van foglalva?</li><li>A gazdagép hardveres szolgáltatása meggyógyult a különböző hardvereken?</li></ul>|
+|<ul><li>Működik a gazdagép?</li><li>A gazdagép hardvere csökkent?</li><li>A gazdagép fel van foglalva?</li><li>A gazdagép hardveres szolgáltatása meggyógyult a különböző hardvereken?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft. számítás/virtualmachines
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A virtuális gépet üzemeltető kiszolgáló működik?</li><li>Befejeződött a gazda operációs rendszer indítása?</li><li>A virtuális gép tárolója kiépítve és felépítve van?</li><li>Van hálózati kapcsolat a gazdagép és a Storage-fiók között?</li><li>Befejeződött a vendég operációs rendszer indítása?</li><li>Folyamatban van a tervezett karbantartás?</li><li>A gazdagép hardvere csökkent, és várhatóan sikertelen lesz?</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Működik a fürt?</li><li>Elérhetők-e az alapvető szolgáltatások a fürtön?</li><li>Készen állnak az összes fürtcsomópont?</li><li>Az egyszerű szolgáltatásnév és érvényes?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 |Végrehajtott ellenőrzések|
@@ -124,10 +134,20 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Elérhetők-e a Core Services a HDInsight-fürtön?</li><li>A HDInsight-fürt hozzáfér a kulcshoz a BYOK-titkosításhoz a nyugalmi állapotban?</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Elérhető a IoT Central alkalmazás?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Az Azure kulcstartó-platformmal kapcsolatos problémák miatt nem sikerül a Key vaultra irányuló kérés?</li><li>A Key Vault felé irányuló kérések szabályozva lettek, mivel az ügyfél túl sok kérést igényel?</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A fürt alacsony betöltési sikerességi arányt tapasztal?</li><li>A fürt nagy mennyiségű betöltési késést tapasztal?</li><li>A fürt nagy számú lekérdezési hibát tapasztal?</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft. MachineLearning/webszolgáltatások
 |Végrehajtott ellenőrzések|
@@ -164,6 +184,11 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Elérhetőek-e a terheléselosztási végpontok?</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficmanagerprofiles
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Vannak olyan problémák, amelyek hatással vannak a Traffic Manager profilra?</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 |Végrehajtott ellenőrzések|
 |---|
@@ -183,11 +208,6 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A kapacitás-erőforrás felépítése és futtatása folyamatban van?</li><li>Működik az összes számítási feladat?</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft. PowerBI/workspaceCollections
-|Végrehajtott ellenőrzések|
-|---|
-|<ul><li>A gazdagép operációs rendszere működik?</li><li>Elérhető a workspaceCollection az adatközponton kívülről?</li><li>Elérhető a Power BI erőforrás-szolgáltató?</li><li>Elérhető a Power BI szolgáltatás a megfelelő régióban?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 |Végrehajtott ellenőrzések|
@@ -234,7 +254,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Működik a gazdagép kiszolgálója?</li><li>Fut az Internet Information Server?</li><li>Fut a terheléselosztó?</li><li>Elérheti a webalkalmazást az adatközponton belülről?</li><li>Elérhető-e a webhely tartalmát üzemeltető Storage-fiók?</li></ul>|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 -  További információ: [Bevezetés a Azure Service Health irányítópultra](service-health-overview.md) és [a Azure Resource Health bevezetésére](resource-health-overview.md) . 
 -  [Gyakori kérdések a Azure Resource Health](resource-health-faq.md)
 - Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [riasztások konfigurálása a szolgáltatás állapotára vonatkozó eseményekhez](./alerts-activity-log-service-notifications-portal.md). 

@@ -6,13 +6,13 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 97b2189020beffda32cc70dc66f028bec834eee5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 8ac7bec3065299ea62daae11adeeb1363f98d450
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003262"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231197"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines Azure biztonsági alapterve
 
@@ -566,7 +566,7 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával elkülönítheti a munkatársain belüli feladatokat, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az Azure CLI vagy a Azure PowerShell használatával konfigurálhatja a Azure Portal.
 
-* [Azure-RBAC](../../role-based-access-control/overview.md)
+* [Azure RBAC-vel](../../role-based-access-control/overview.md)
 
 * [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
@@ -1190,7 +1190,7 @@ Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli vi
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../security/benchmarks/security-baselines-overview.md)

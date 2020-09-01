@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: f870f90ede4465bf9ebf5c886e1ebb7aa76acaaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997897"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230313"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -33,15 +33,14 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 - Hozzon létre új `Dataset` objektumokat, `PipelineData` amelyeket meg szeretne őrizni
 
 > [!TIP]
-> A folyamat lépései közötti ideiglenes adatátvitelt és az adattárolást követő adatmegőrzési folyamat a nyilvános előzetes osztályokban és a szolgáltatásban is elérhető  `OutputFileDatasetConfig` `OutputTabularDatasetConfig` .  Ezek az osztályok kísérleti előzetes funkciók, és bármikor változhatnak.
-> 
->A kísérleti funkciókkal kapcsolatos további információkért lásd: https://aka.ms/azuremlexperimental .
+> A folyamat lépései közötti ideiglenes adatátvitelt és az adattárolást követő adatmegőrzési folyamat a nyilvános előzetes osztályokban és a szolgáltatásban is elérhető  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 

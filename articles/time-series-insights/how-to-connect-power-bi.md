@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/26/2020
+ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046702"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230976"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Adatok megjelenítése Azure Time Series Insightsról Power BI
 
@@ -52,20 +52,20 @@ A Azure Time Series Insights-környezet Power BIhoz való összekapcsolásához 
 
 Első lépések:
 
-1. Nyissa meg az Azure Time Series Insights Gen2 Explorer alkalmazást, és adja meg az adatait.
+1. Nyissa meg az Azure Time Series Insights Explorert, és adja meg az adatait.
 1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és válassza a **Kapcsolódás Power bi**lehetőséget.
 
-    [![Azure Time Series Insights Gen2 Explorer-exportálás](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Explorer exportálás](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Állítsa be a paramétereket a lapon belül:
 
    1. A megtekinteni kívánt relatív időkeretet határozza meg. Ha elégedett a meglévő nézettel, hagyja meg ezt a **meglévő időkeretként**.
-   
-   1. Válasszon az **összesített** és a **nyers események**közül. 
-   
+
+   1. Válasszon az **összesített** és a **nyers események**közül.
+
        > [!NOTE]
-       > Az adatokat később is összesítheti Power BIban, de az Összesítés után nem lehet visszaállítani a nyers adatokat. 
-       
+       > Az adatokat később is összesítheti Power BIban, de az Összesítés után nem lehet visszaállítani a nyers adatokat.
+
        > [!NOTE]
        > A nyers események szintjének maximális száma 250 000.
 
@@ -89,7 +89,7 @@ Első lépések:
     [![Power BI összekötése a Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     Másik lehetőségként navigáljon az **Azure** lapra, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **Kapcsolódás**lehetőséget.
-    
+
 1. Az üzenet párbeszéde ablak megjeleníti a harmadik féltől származó erőforrásokhoz való kapcsolódásra vonatkozó engedélyt. Válassza a **Folytatás**lehetőséget.
 
     [![Válassza az egyéni lekérdezés létrehozása lehetőséget.](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
@@ -112,17 +112,17 @@ Most, hogy importálta az adatPower BIba, ideje, hogy készítsen egy jelentést
 
     [![Jelentés nézet kiválasztása](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  A vizualizációk oszlopban válassza ki a kívánt **vizualizációt** . Válassza például a **vonal diagram**elemet. Ez egy üres vonalas diagramot ad hozzá a vászonhoz.
+1. A vizualizációk oszlopban válassza ki a kívánt **vizualizációt** . Válassza például a **vonal diagram**elemet. Ez egy üres vonalas diagramot ad hozzá a vászonhoz.
 
-1.  A **mezők** listában válassza a **_Timestamp** lehetőséget, majd húzza a **tengely** mezőre az X tengely mentén megjelenített elemek megjelenítéséhez. Ügyeljen arra, hogy **_Timestampre** váltson a **tengely** értékeként (az alapértelmezett dátum- **hierarchia**).
+1. A **mezők** listában válassza a **_Timestamp** lehetőséget, majd húzza a **tengely** mezőre az X tengely mentén megjelenített elemek megjelenítéséhez. Ügyeljen arra, hogy **_Timestampre** váltson a **tengely** értékeként (az alapértelmezett dátum- **hierarchia**).
 
     [![Jelentés nézet kiválasztása](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1.  A **mezők** listában kattintson a **TimeSeriesId** elemre, majd húzza a **Values (értékek** ) mezőbe az Y tengely melletti elemek megjelenítéséhez.
+1. A **mezők** listában kattintson a **TimeSeriesId** elemre, majd húzza a **Values (értékek** ) mezőbe az Y tengely melletti elemek megjelenítéséhez.
 
     [![Vonaldiagram létrehozása](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Ha egy másik diagramot szeretne hozzáadni a vászonhoz, válassza a vászonon bárhol a vásznon, és ismételje meg a folyamatot.
+1. Ha egy másik diagramot szeretne hozzáadni a vászonhoz, válassza a vászonon bárhol a vásznon, és ismételje meg a folyamatot.
 
     [![További megosztható diagramok létrehozása](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -144,7 +144,7 @@ Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné 
 
 A kezelőfelület ekkor az alkalmazott kívánt módosításokat tükrözi.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a Azure Time Series Insights [Power bi-összekötővel kapcsolatos fogalmakról](https://docs.microsoft.com/power-bi/desktop-query-overview) .
 

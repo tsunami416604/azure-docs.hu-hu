@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116c0d5becaea1ca6d488bbf7c94674934d4f7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608194"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230585"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>A log Analytics-nézetek telepítése és használata Azure Active Directory
 
@@ -35,7 +35,7 @@ A Azure Active Directory log Analytics-nézetek segítségével elemezheti és k
 
 A log Analytics-nézetek használatához a következőkre lesz szüksége:
 
-* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Egy Log Analytics munkaterület az Azure-előfizetésében. Megtudhatja, hogyan [hozhat létre log Analytics munkaterületet](../../azure-monitor/learn/quick-create-workspace.md).
 * Először végezze el az [Azure ad-tevékenység naplófájljainak a log Analytics munkaterületre történő átirányításához](howto-integrate-activity-logs-with-log-analytics.md)szükséges lépéseket.
 * Töltse le a nézeteket a [GitHub-tárházból](https://aka.ms/AADLogAnalyticsviews) a helyi számítógépre.
 
@@ -67,11 +67,11 @@ A log Analytics-nézetek használatához a következőkre lesz szüksége:
 
     ![Szabály létrehozása](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Válassza ki a riasztásra felvenni kívánt műveleti csoportot. Általánosságban elmondható, hogy ez lehet egy csapat, amelyet e-mailben vagy SMS-ben szeretne értesíteni, vagy lehet egy automatizált feladat webhookok, runbookok, functions, Logic apps vagy külső ITSM-megoldások használatával. Megtudhatja, hogyan [hozhat létre és kezelhet műveleti csoportokat a Azure Portalban](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+6. Válassza ki a riasztásra felvenni kívánt műveleti csoportot. Általánosságban elmondható, hogy ez lehet egy csapat, amelyet e-mailben vagy SMS-ben szeretne értesíteni, vagy lehet egy automatizált feladat webhookok, runbookok, functions, Logic apps vagy külső ITSM-megoldások használatával. Megtudhatja, hogyan [hozhat létre és kezelhet műveleti csoportokat a Azure Portalban](../../azure-monitor/platform/action-groups.md).
 
 7. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget. Ekkor a rendszer minden alkalommal riasztást küld, amikor bejelentkezési hiba történt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Tevékenységnaplók elemzése Azure Monitor naplókkal](howto-analyze-activity-logs-log-analytics.md)
-* [Ismerkedés a Azure Monitor-naplók Azure Portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Ismerkedés a Azure Monitor-naplók Azure Portal](../../azure-monitor/log-query/get-started-portal.md)

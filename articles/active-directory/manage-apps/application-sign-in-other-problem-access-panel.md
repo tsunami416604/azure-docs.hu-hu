@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9dd407ce2727582039089c0abe31b68bfe5d0f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 472ab82e6941be5c1485773b1115d91eda701666
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070326"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231180"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
 
@@ -27,10 +27,16 @@ Ha többet szeretne megtudni az Azure AD-alkalmazás identitás-szolgáltatóké
 Ezek az alkalmazások az Azure AD-portálon a felhasználó nevében konfigurálhatók. Az alkalmazást megfelelően kell konfigurálni, és hozzá kell rendelni ahhoz a felhasználóhoz vagy csoporthoz, amelyhez a felhasználó tartozik, hogy az alkalmazás megjelenjen a saját alkalmazásokban. 
 
 A felhasználók által megjelenített alkalmazások típusa a következő kategóriákba tartozhat:
--   Office 365-alkalmazások
+-   Microsoft 365 és Office 365 alkalmazások
 -   Összevonási alapú egyszeri bejelentkezéssel konfigurált Microsoft és harmadik féltől származó alkalmazások
 -   Jelszó-alapú SSO-alkalmazások
 -   Meglévő SSO-megoldásokkal rendelkező alkalmazások
+
+Íme néhány dolog, amelyből megtudhatja, hogy megjelenjen-e az alkalmazás, vagy sem.
+- Győződjön meg arról, hogy az alkalmazás hozzá van adva az Azure AD-hoz, és ellenőrizze, hogy a felhasználó hozzá van-e rendelve. További információ: a gyors üzembe helyezési [sorozat az alkalmazások kezelésében](view-applications-portal.md).
+- Ha egy alkalmazás nemrég lett hozzáadva, a felhasználó kijelentkezik és újra visszakerül. 
+- Ha az alkalmazáshoz licenc szükséges, például az Office, akkor győződjön meg arról, hogy a felhasználó hozzá van rendelve a megfelelő licenchez.
+- A licencelési módosítások elvégzéséhez szükséges idő a csoport méretétől és összetettségtől függően változhat.
 
 ## <a name="general-issues-to-check-first"></a>Általános problémák az első kereséshez
 

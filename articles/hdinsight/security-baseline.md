@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: bbc421baddf03068ac72907aaa88a71a81d208d0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041319"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230432"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure biztonsági alapkonfiguráció a HDInsight-hez
 
@@ -32,9 +32,9 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 A kiszűrése-on keresztüli adatvesztés kockázatának csökkentése érdekében az Azure Firewall használatával korlátozza az Azure HDInsight-fürtök kimenő hálózati forgalmát.
 
-Azure-HDInsight üzembe helyezése Virtual Networkon belül és biztonságos hálózati biztonsági csoporttal:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Azure-HDInsight üzembe helyezése Virtual Networkon belül és biztonságos hálózati biztonsági csoporttal: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-Az Azure HDInsight-fürtök kimenő forgalmának korlátozása Azure Firewall használatával:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+Az Azure HDInsight-fürtök kimenő forgalmának korlátozása Azure Firewall használatával: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 **Azure Security Center figyelés**: igen
 
@@ -108,11 +108,11 @@ Az Azure-HDInsight több függősége is van, amelyek bejövő forgalmat igénye
 
 A kiszűrése-on keresztüli adatvesztés kockázatának csökkentése érdekében az Azure Firewall használatával korlátozza az Azure HDInsight-fürtök kimenő hálózati forgalmát.
 
-HDInsight üzembe helyezése Virtual Networkon belül és biztonságos hálózati biztonsági csoporttal:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+HDInsight üzembe helyezése Virtual Networkon belül és biztonságos hálózati biztonsági csoporttal: https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-A HDInsight függőségeinek és a tűzfal használatának ismertetése:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
+A HDInsight függőségeinek és a tűzfal használatának ismertetése: https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
-HDInsight-felügyeleti IP-címek:https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
+HDInsight-felügyeleti IP-címek: https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -192,7 +192,7 @@ Az Azure Activity log eseményeinek megtekintése és beolvasása:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Riasztások létrehozása a Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása a Azure Monitorban: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -526,7 +526,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 
 **Útmutató**: nem érhető el; Ügyfélszéf az Azure HDInsight még nem támogatott.
 
-Ügyfélszéf támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Ügyfélszéf támogatott szolgáltatások listája: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -840,9 +840,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Lekérdezések létrehozása az Azure Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 
@@ -887,9 +887,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 - Engedélyezett erőforrástípusok
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -909,7 +909,7 @@ Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -1290,13 +1290,13 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
-A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal és-alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal és-alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
