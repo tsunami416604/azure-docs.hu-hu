@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: f38d80f950bc27b6a53d43bdd42e7c325fddec39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 68dc040be67c7b3ba764479655e18e5878f34d67
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010342"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077521"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell-linux"></a>Virtuális gép létrehozása meglévő felügyelt operációsrendszer-lemezzel a PowerShell (Linux) használatával
 
@@ -65,7 +65,7 @@ A Piactéri rendszerképekhez a [set-AzVMPlan](/powershell/module/az.compute/set
 Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

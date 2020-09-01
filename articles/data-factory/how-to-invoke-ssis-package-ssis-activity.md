@@ -12,14 +12,14 @@ ms.author: sawinark
 author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
-ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926705"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077847"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása az SSIS-csomag végrehajtása tevékenységgel az Azure Data Factoryben
 
@@ -275,7 +275,7 @@ Hajtsa végre a következő lépéseket a SSIS-csomag végrehajtása tevékenys�
 
       A csomag- **konfigurációk szervezője**lapon jelölje be a csomag konfigurációjának **engedélyezése** jelölőnégyzetet, és a **Hozzáadás...** gombot a **csomag konfigurálása varázsló**megnyitásához. 
       
-      A **csomag konfigurációja varázslóban**válassza ki az **XML konfigurációs fájl** elemet a **konfiguráció típusa** legördülő menüből, és a **konfigurációs beállítások megadása közvetlenül** gombra, adja meg a konfigurációs fájl nevét, majd kattintson a **Next >(tovább** ) gombra. 
+      A **csomag konfigurációja varázslóban**válassza ki az **XML konfigurációs fájl** elemet a **konfiguráció típusa** legördülő menüből, és a **konfigurációs beállítások megadása közvetlenül** gombra, adja meg a konfigurációs fájl nevét, majd kattintson a **Next >(tovább ** ) gombra. 
 
       ![Csomag tulajdonságainak beolvasása a SSDT-konfigurációk szervezőjének](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
 
@@ -720,6 +720,6 @@ Az előző lépésben igény szerint futtatta a folyamatot. Létrehozhat egy üt
    select * from catalog.executions
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő blogbejegyzést:
 - [Az ETL/ELT-munkafolyamatok modernizálása és kiterjesztése a SSIS-tevékenységekkel Azure Data Factory-folyamatokban](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

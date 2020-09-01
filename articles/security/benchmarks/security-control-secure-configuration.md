@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac538d71f854643cb59390447be360bc541142ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193105"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077228"
 ---
 # <a name="security-control-secure-configuration"></a>Biztonsági ellenőrzés: biztonságos konfiguráció
 
@@ -22,7 +22,7 @@ Az Azure-erőforrások biztonsági konfigurációjának létrehozása, implement
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 7.1 | 5.1 | Ügyfél |
+| 7.1 | 5,1 | Ügyfél |
 
 Használjon Azure Policy aliasokat egyéni szabályzatok létrehozásához az Azure-erőforrások konfigurációjának naplózásához vagy érvényesítéséhez. A beépített Azure Policy-definíciókat is használhatja.
 
@@ -42,7 +42,7 @@ Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure 
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 7.2 | 5.1 | Ügyfél |
+| 7.2 | 5,1 | Ügyfél |
 
 A biztonsági konfigurációk minden számítási erőforráson való fenntartásához használjon Azure Security Center javaslatokat.  Emellett egyéni operációsrendszer-lemezképeket vagy Azure Automation állapot-konfigurációt is használhat a szervezete számára szükséges operációs rendszer biztonsági konfigurációjának létrehozásához.
 
@@ -74,7 +74,7 @@ Az Azure-erőforrások biztonságos beállításainak érvénybe léptetéséhez
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 7.4 | 5,2 | Megosztott |
+| 7,4 | 5,2 | Megosztott |
 
 Az Azure számítási erőforrásain a sebezhetőségi felmérések elvégzéséhez Azure Security Center ajánlásokat követve.  Emellett Azure Resource Manager sablonokat, egyéni operációsrendszer-lemezképeket vagy Azure Automation állapot konfigurációját is használhatja a szervezete számára szükséges operációs rendszer biztonsági beállításainak fenntartásához.   A Microsoft virtuálisgép-sablonjai a Azure Automation kívánt állapot-konfigurációval együtt segíthetnek a biztonsági követelmények teljesítésében és fenntartásában. 
 
@@ -110,13 +110,13 @@ Az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti a kódo
 |--|--|--|
 | 7.6 | 5.3 | Ügyfél |
 
-Ha egyéni lemezképeket használ, a szerepköralapú hozzáférés-vezérlés (RBAC) használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez. Megosztott képkatalógus használatával a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, egyszerű szolgáltatásokkal vagy AD-csoportokkal.  A Container images esetében tárolja azokat Azure Container Registry és használja ki a RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.  
+Ha egyéni lemezképeket használ, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez. Megosztott képkatalógus használatával a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, egyszerű szolgáltatásokkal vagy AD-csoportokkal.  A tárolói lemezképek esetében tárolja azokat Azure Container Registryban, és használja ki az Azure RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.  
 
-- [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-- [A Container Registry RBAC ismertetése](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [Az Azure-RBAC megismerése Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-- [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 - [Megosztott képgyűjtemény – áttekintés](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
@@ -136,7 +136,7 @@ Az Azure-erőforrások szabványos biztonsági konfigurációinak definiálása 
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 7.8 | 5.4 | Ügyfél |
+| 7,8 | 5.4 | Ügyfél |
 
 Azure Automation állapot-konfiguráció a kívánt állapot-konfigurációs (DSC) csomópontok egyike a felhőben vagy a helyszíni adatközpontban. Könnyedén beépítheti a gépeket, hozzárendelheti a deklaratív konfigurációkat, és megtekintheti azokat a jelentéseket, amelyek az egyes gépek megfelelőségét a megadott kívánt állapotnak megfelelően mutatják. 
 
@@ -197,6 +197,6 @@ Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításáho
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a következő biztonsági vezérlőt: [kártevők elleni védelem](security-control-malware-defense.md)
+- Tekintse meg a következő biztonsági vezérlőt:  [kártevők elleni védelem](security-control-malware-defense.md)

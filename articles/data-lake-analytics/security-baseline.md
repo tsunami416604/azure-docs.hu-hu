@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 383e135cad867ed8f345b39a6cace6fbbca8bfa0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005119"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076378"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics Azure biztonsági alapterve
 
@@ -334,7 +334,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfelek Data Lake Analytics erőforrásokhoz való hozzáférésének részletes szabályozásához.
+**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részletesen szabályozza az ügyfelek hozzáférését Data Lake Analytics erőforrásokhoz.
 
 * [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -404,7 +404,7 @@ Azure AD Privileged Identity Management és Azure Resource Manager használatáv
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató**: elkülönítés implementálása különálló előfizetések használatával, különálló biztonsági tartományok felügyeleti csoportjai, például a környezet, az adatérzékenység. A Data Lake Analytics korlátozásával szabályozhatja az alkalmazások és a vállalati környezetek igény szerinti Data Lake Analytics erőforrásaihoz való hozzáférés szintjét. A tűzfalszabályok konfigurálásakor csak a megadott hálózatokon keresztül adatokat kérő alkalmazások férhetnek hozzá a Data Lake Analytics erőforrásaihoz. Az Azure AD-RBAC keresztül szabályozhatja Azure Data Lake Analytics elérését.
+**Útmutató**: elkülönítés implementálása különálló előfizetések használatával, különálló biztonsági tartományok felügyeleti csoportjai, például a környezet, az adatérzékenység. A Data Lake Analytics korlátozásával szabályozhatja az alkalmazások és a vállalati környezetek igény szerinti Data Lake Analytics erőforrásaihoz való hozzáférés szintjét. A tűzfalszabályok konfigurálásakor csak a megadott hálózatokon keresztül adatokat kérő alkalmazások férhetnek hozzá a Data Lake Analytics erőforrásaihoz. Az Azure RBAC segítségével szabályozhatja Azure Data Lake Analytics hozzáférését.
 
 * [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -456,11 +456,11 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Felelősség**: ügyfél
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: szerepköralapú hozzáférés-vezérlés (RBAC) használata annak szabályozására, hogy a felhasználók hogyan használják a szolgáltatást.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata annak szabályozására, hogy a felhasználók hogyan használják a szolgáltatást.
 
-* [Szerepköralapú Access Control kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure-RBAC kezelése](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -983,7 +983,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

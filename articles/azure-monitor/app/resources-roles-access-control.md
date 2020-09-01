@@ -3,19 +3,20 @@ title: Erőforrások, szerepkörök és hozzáférés-vezérlés az Azure Applic
 description: A szervezet adatai tulajdonosai, közreműködői és olvasói.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926501"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076684"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés a Application Insightsban
 
 Az Azure- [beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)használatával szabályozhatja, hogy ki olvasta és frissítse az adataihoz való hozzáférést az Azure [Application Insightsban][start].
 
 > [!IMPORTANT]
-> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információk](#access).
+> Rendeljen hozzá hozzáférést az **erőforráscsoport vagy az előfizetés** azon felhasználóihoz, amelyekhez az alkalmazás-erőforrás tartozik – nem az erőforráshoz. Rendelje hozzá a **Application Insights összetevő közreműködői** szerepkört. Ez biztosítja a webes tesztekhez és riasztásokhoz való hozzáférés egységes vezérlését az alkalmazás-erőforrással együtt. [További információ](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -37,7 +38,7 @@ Először is néhány definíció:
 * [**Előfizetés**](https://portal.azure.com) – Application Insights vagy más Azure-erőforrások használatához jelentkezzen be egy Azure-előfizetésbe. Minden erőforráscsoport egy Azure-előfizetéshez tartozik, ahol kiválaszthatja a csomagot, és ha szervezeti előfizetéssel rendelkezik, válassza ki a tagokat és azok hozzáférési engedélyeit.
 * [**Microsoft-fiók**][account] – az Microsoft Azure előfizetésekre, az Xbox Live-ra, a Outlook.com és más Microsoft-szolgáltatásokba való bejelentkezéshez használt Felhasználónév és jelszó.
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Hozzáférés vezérlése az erőforráscsoporthoz
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Hozzáférés vezérlése az erőforráscsoporthoz
 
 Fontos tisztában lenni azzal, hogy az alkalmazáshoz létrehozott erőforráson kívül a riasztások és a webes tesztek is külön rejtett erőforrásokkal rendelkeznek. Ezek ugyanahhoz az [erőforráscsoporthoz](#resource-group) vannak csatolva, mint a Application Insights erőforrás. Előfordulhat, hogy más Azure-szolgáltatásokat is elhelyez, például webhelyeket vagy tárhelyet.
 
@@ -67,7 +68,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepköreivel k
 
 Adott esetben a kapcsolódó hivatalos dokumentációra hivatkozunk.
 
-| Role | Az erőforráscsoporthoz |
+| Szerepkör | Az erőforráscsoporthoz |
 | --- | --- |
 | [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) |Bármit megváltoztathat, beleértve a felhasználói hozzáférést is. |
 | [Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) |Bármit szerkeszthet, beleértve az összes erőforrást is. |

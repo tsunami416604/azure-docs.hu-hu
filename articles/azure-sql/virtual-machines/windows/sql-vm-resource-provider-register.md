@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c52275735a6558a625e2118761d7ba98509dbe1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3f1a9a2756d81765d82938651672e5a83edc48ed
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497069"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078686"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>SQL Server VM regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -291,7 +291,7 @@ A Azure Portal, az Azure CLI vagy a PowerShell használatával ellenőrizheti, h
 
 ### <a name="command-line"></a>Parancssor
 
-Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az Azure CLI vagy a PowerShell használatával. `ProvisioningState`azt mutatja, `Succeeded` hogy a regisztráció sikeres volt-e. 
+Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az Azure CLI vagy a PowerShell használatával. `ProvisioningState` azt mutatja, `Succeeded` hogy a regisztráció sikeres volt-e. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
@@ -398,9 +398,9 @@ Az SQL VM erőforrás-szolgáltatóval való regisztráláskor az alapértelmeze
 
 **Regisztrálja az SQL VM erőforrás-szolgáltatót az ügynök telepítése a virtuális gépre?**
 
-Nem. Az SQL VM erőforrás-szolgáltatóval való regisztrálás csak új metaadat-erőforrást fog létrehozni. Nem telepíti az ügynököt a virtuális gépre.
+Igen, az SQL VM erőforrás-szolgáltatóval való regisztrálás egy ügynököt telepít a virtuális gépre.
 
-A SQL Server IaaS bővítmény csak a teljes kezelhetőség engedélyezéséhez szükséges. Ha a kezelhetőségi módot könnyűről teljesre szeretné frissíteni, telepítse a SQL Server IaaS bővítményt, és újraindítja SQL Server.
+A SQL Server IaaS bővítmény az ügynökre támaszkodik a SQL Server metaadatainak lekérdezéséhez. Az ügynök telepítése csak akkor történik meg, ha az SQL-alapú virtuális gép erőforrás-szolgáltatója nem regsitered módban van.
 
 **Regisztrálja az SQL VM erőforrás-szolgáltató újraindítási SQL Server a virtuális gépen?**
 
@@ -457,8 +457,8 @@ Nincsenek. Az SQL VM erőforrás-szolgáltatóval való regisztrációhoz és a 
 A nem befolyásolható a nem- *ügynök* és a *könnyű* kezelhetőségi mód használata. Az operációs rendszerre telepített két szolgáltatás *teljes* kezelhetőségi módjának használata minimális hatással van. Ezek a Feladatkezelő segítségével figyelhetők meg, és a beépített Windows-szolgáltatások konzolon láthatók. 
 
 A két szolgáltatás neve:
-- `SqlIaaSExtensionQuery`(Megjelenítendő név – `Microsoft SQL Server IaaS Query Service` )
-- `SQLIaaSExtension`(Megjelenítendő név – `Microsoft SQL Server IaaS Agent` )
+- `SqlIaaSExtensionQuery` (Megjelenítendő név – `Microsoft SQL Server IaaS Query Service` )
+- `SQLIaaSExtension` (Megjelenítendő név – `Microsoft SQL Server IaaS Agent` )
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -466,6 +466,6 @@ A két szolgáltatás neve:
 További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)
+* [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)  
 * [A Windows rendszerű virtuális gépek SQL Server díjszabási útmutatója](pricing-guidance.md)
 * [Windows rendszerű virtuális gépen SQL Server kibocsátási megjegyzései](../../database/doc-changes-updates-release-notes.md)

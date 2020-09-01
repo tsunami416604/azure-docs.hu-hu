@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli
+ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 531bbf40df4636ae62203d639deeeb9468c7bfe0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9781369e862c74afe5a8a94cafafff7ef35e68e1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498191"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078350"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
@@ -153,12 +153,12 @@ Az Azure monitor támogatja a fürt csomópontjaihoz tartozó teljesítmény-mé
 
 A HDInsight a következő típusú naplók importálásával támogatja a fürt naplózását Azure Monitor naplókkal:
 
-* `log_gateway_audit_CL`– Ez a táblázat a fürt átjárójának csomópontjairól nyújt naplókat, amelyek sikeres és sikertelen bejelentkezési kísérleteket mutatnak.
-* `log_auth_CL`– Ez a táblázat a sikeres és sikertelen bejelentkezési kísérletekkel rendelkező SSH-naplókat tartalmaz.
-* `log_ambari_audit_CL`– Ez a tábla naplókat biztosít a Ambari.
-* `log_ranger_audti_CL`– Ez a táblázat az Apache Ranger és az ESP-fürtök naplóit tartalmazza.
+* `log_gateway_audit_CL` – Ez a táblázat a fürt átjárójának csomópontjairól nyújt naplókat, amelyek sikeres és sikertelen bejelentkezési kísérleteket mutatnak.
+* `log_auth_CL` – Ez a táblázat a sikeres és sikertelen bejelentkezési kísérletekkel rendelkező SSH-naplókat tartalmaz.
+* `log_ambari_audit_CL` – Ez a tábla naplókat biztosít a Ambari.
+* `log_ranger_audti_CL` – Ez a táblázat az Apache Ranger és az ESP-fürtök naplóit tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez](hdinsight-hadoop-oms-log-analytics-use-queries.md)
 * [A fürt rendelkezésre állásának figyelése az Apache Ambari és a Azure Monitor naplók használatával](./hdinsight-cluster-availability.md)

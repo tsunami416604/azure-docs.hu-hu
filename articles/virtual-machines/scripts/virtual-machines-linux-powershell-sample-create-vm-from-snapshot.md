@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: d6bf74b9040ec3f677c23c84f8ece22befb35d56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 42c9903b783df4b3392b6aab3a69bbb66da90a75
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010291"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078163"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-linux"></a>Virtuális gép létrehozása pillanatképből a PowerShell használatával (Linux)
 
@@ -58,7 +58,7 @@ Ez a szkript a következő parancsokat használja a pillanatkép-tulajdonságok 
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Létrehoz egy virtuális gépet. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

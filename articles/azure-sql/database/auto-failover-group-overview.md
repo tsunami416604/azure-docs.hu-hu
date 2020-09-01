@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/28/2020
-ms.openlocfilehash: 68fa972d45ab0db6e5274142f550c2bd829e7917
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055583"
+ms.locfileid: "89076514"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Feladatátvételi csoport írási-olvasási figyelője**
 
-  DNS-CNAME rekord, amely az aktuális elsődleges URL-címre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi, hogy az olvasási és írási feladat transzparens módon újrakapcsolódjon az elsődleges adatbázishoz, amikor az elsődleges módosítások a feladatátvételt követően változnak. Ha a feladatátvételi csoport egy kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.database.windows.net` . Ha a feladatátvételi csoportot egy SQL felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.zone_id.database.windows.net` .
+  DNS-CNAME rekord, amely az aktuális elsődleges URL-címre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi, hogy az olvasási és írási feladat transzparens módon újrakapcsolódjon az elsődleges adatbázishoz, amikor az elsődleges módosítások a feladatátvételt követően változnak. Ha a feladatátvételi csoport egy kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.database.windows.net` . Ha a feladatátvételi csoportot egy SQL felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.<zone_id>.database.windows.net` .
 
 - **Feladatátvételi csoport írásvédett figyelője**
 
-  Egy olyan DNS-CNAME rekord, amely a másodlagos URL-címére mutató írásvédett figyelőre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi, hogy a csak olvasási jogosultsággal rendelkező SQL-munkaterhelés transzparens módon kapcsolódjon a másodlagoshoz a megadott terheléselosztási szabályok használatával. Ha a feladatátvételi csoport egy kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.secondary.database.windows.net` . Ha a feladatátvételi csoportot egy SQL felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.zone_id.secondary.database.windows.net` .
+  Egy olyan DNS-CNAME rekord, amely a másodlagos URL-címére mutató írásvédett figyelőre mutat. A rendszer automatikusan létrehozza a feladatátvételi csoport létrehozásakor, és lehetővé teszi, hogy a csak olvasási jogosultsággal rendelkező SQL-munkaterhelés transzparens módon kapcsolódjon a másodlagoshoz a megadott terheléselosztási szabályok használatával. Ha a feladatátvételi csoport egy kiszolgálón jön létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.secondary.database.windows.net` . Ha a feladatátvételi csoportot egy SQL felügyelt példányon hozza létre, a figyelő URL-címéhez tartozó DNS CNAME rekord a következő lesz: `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 - **Automatikus feladatátvételi szabályzat**
 
@@ -257,13 +257,13 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.zone_id.database.window
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>A csak olvasási figyelő használata a másodlagos példányhoz való kapcsolódáshoz
 
-Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Ha közvetlenül a földrajzilag replikált másodlagoshoz szeretne csatlakozni, használja `<fog-name>.zone_id.secondary.database.windows.net` a kiszolgáló URL-címét, és a kapcsolat közvetlenül a földrajzilag replikált másodlagosra történik.
+Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Ha közvetlenül a földrajzilag replikált másodlagoshoz szeretne csatlakozni, használja `<fog-name>.secondary.<zone_id>.database.windows.net` a kiszolgáló URL-címét, és a kapcsolat közvetlenül a földrajzilag replikált másodlagosra történik.
 
 > [!NOTE]
 > Bizonyos szolgáltatási rétegekben a SQL Database támogatja a csak olvasható [replikák](read-scale-out.md) használatát, hogy csak egy írásvédett replikát és a `ApplicationIntent=ReadOnly` paramétert használja a kapcsolódási karakterláncban. Ha egy földrajzilag replikált másodlagos beállítást konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a földrajzilag replikált helyen.
 >
-> - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.zone_id.database.windows.net` .
-> - A másodlagos helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.secondary.zone_id.database.windows.net` .
+> - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.<zone_id>.database.windows.net` .
+> - A másodlagos helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.secondary.<zone_id>.database.windows.net` .
 
 ### <a name="preparing-for-performance-degradation"></a>A teljesítmény romlásának előkészítése
 

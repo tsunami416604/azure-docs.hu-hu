@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 69930342a69613c3863443c993d80e02e1981a98
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366833"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077245"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB Azure biztonsági alapterve
 
@@ -34,11 +34,11 @@ Azt is megteheti, hogy Virtual Network szolgáltatás-végpontokat használ a Az
 
 A Azure Database for MariaDB is biztonságossá teheti a tűzfalszabályok használatával. A kiszolgáló tűzfala megakadályozza az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal konfigurálásakor olyan tűzfalszabályokat adhat meg, amelyek meghatározzák az elfogadható IP-címtartományokat. A tűzfalszabályok a kiszolgáló szintjén hozhatók létre.
 
-Privát hivatkozás konfigurálása Azure Database for MariaDBhoz:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+Privát hivatkozás konfigurálása Azure Database for MariaDBhoz: https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése Azure Database for MariaDB-kiszolgálón:https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése Azure Database for MariaDB-kiszolgálón: https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-Azure Database for MariaDB tűzfalszabályok konfigurálása:https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+Azure Database for MariaDB tűzfalszabályok konfigurálása: https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Azure Security Center figyelés**: igen
 
@@ -48,9 +48,9 @@ Azure Database for MariaDB tűzfalszabályok konfigurálása:https://docs.micros
 
 **Útmutató**: ha a Azure Database for MariaDB-kiszolgáló titkos végponthoz van csatlakoztatva, a virtuális gépeket ugyanabban a virtuális hálózatban helyezheti üzembe. Hálózati biztonsági csoport (NSG) használatával csökkentheti az adatkiszűrése kockázatát. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-Privát hivatkozás konfigurálása Azure Database for MariaDBhoz:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
+Privát hivatkozás konfigurálása Azure Database for MariaDBhoz: https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics engedélyezése és használata: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -72,9 +72,9 @@ NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watch
 
 A Azure Database for MariaDB-példányokhoz társított virtuális hálózatokon DDoS Protection szabványt engedélyezheti a DDoS-támadások elleni védelemhez. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-Komplex veszélyforrások elleni védelem konfigurálása Azure Database for MariaDB esetén:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Komplex veszélyforrások elleni védelem konfigurálása Azure Database for MariaDB esetén: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-A DDoS Protection konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+A DDoS Protection konfigurálása: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 
 
@@ -86,7 +86,7 @@ A DDoS Protection konfigurálása:https://docs.microsoft.com/azure/virtual-netwo
 
 **Útmutató**: ha a Azure Database for MariaDB-kiszolgáló titkos végponthoz van csatlakoztatva, a virtuális gépeket ugyanabban a virtuális hálózatban helyezheti üzembe. Ezután konfigurálhat egy hálózati biztonsági csoportot (NSG) az adatkiszűrése kockázatának csökkentése érdekében. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics engedélyezése és használata:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Traffic Analytics engedélyezése és használata: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -97,7 +97,7 @@ NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watch
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
 **Útmutató**: az Azure Database for MariaDB komplex veszélyforrások elleni védelme. A komplex veszélyforrások elleni védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
-Komplex veszélyforrások elleni védelem konfigurálása Azure Database for MariaDB esetén:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Komplex veszélyforrások elleni védelem konfigurálása Azure Database for MariaDB esetén: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
 
 **Azure Security Center figyelés**: igen
@@ -118,7 +118,7 @@ Komplex veszélyforrások elleni védelem konfigurálása Azure Database for Mar
 **Útmutató**: a Azure Database for MariaDB példányokhoz hozzáférést igénylő erőforrásokhoz használjon virtuális hálózati szolgáltatás címkéit a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlés definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatási címke nevének (például: SQL) megadásával. WestUs) a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 Megjegyzés: Azure Database for MariaDB a "Microsoft. SQL" szolgáltatás címkéjét használja.
 
-A szolgáltatás-címkék használatával kapcsolatos további információkért tekintse meg a https://docs.microsoft.com/azure/virtual-network/service-tags-overview Azure Database for MariaDB szolgáltatás használati címkéjének használatát ismertető témakört:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+A szolgáltatás-címkék használatával kapcsolatos további információkért tekintse meg a https://docs.microsoft.com/azure/virtual-network/service-tags-overview Azure Database for MariaDB szolgáltatás használati címkéjének használatát ismertető témakört: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -136,11 +136,11 @@ A szolgáltatás-címkék használatával kapcsolatos további információkért
 
 - A MariaDB-kiszolgálónak virtuális hálózati szolgáltatási végpontot kell használnia
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy minták a hálózatkezeléshez:https://docs.microsoft.com/azure/governance/policy/samples/
+Azure Policy minták a hálózatkezeléshez: https://docs.microsoft.com/azure/governance/policy/samples/
 
-Azure Blueprint létrehozása:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Azure Blueprint létrehozása: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -155,7 +155,7 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -164,7 +164,7 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure Database for MariaDB-példányokhoz kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
-Az Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view riasztások létrehozása a Azure monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Az Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view riasztások létrehozása a Azure monitorban: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
@@ -188,9 +188,9 @@ Az Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása: https
 ### <a name="22-configure-central-security-log-management"></a>2,2: a központi biztonsági naplók felügyeletének konfigurálása
 
 **Útmutató**: a diagnosztikai beállítások és a kiszolgálói naplók engedélyezése, valamint a naplók beolvasása a Azure Database for MariaDB példányai által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterület (ek) használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
-A Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+A Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Naplózási naplók konfigurálása és elérése Azure Database for MariaDB: az https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Naplózási naplók konfigurálása és elérése Azure Database for MariaDB: az https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -202,7 +202,7 @@ Naplózási naplók konfigurálása és elérése Azure Database for MariaDB: az
 
 **Útmutató**: a diagnosztikai beállítások engedélyezése a Azure Database for MariaDB példányokon a naplózási, biztonsági és diagnosztikai naplókhoz való hozzáféréshez. Győződjön meg arról, hogy kifejezetten engedélyezi a MariaDB-naplót. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. Engedélyezheti az Azure-műveletnapló diagnosztikai beállításait is, és elküldheti a naplókat ugyanarra a Log Analytics munkaterületre vagy Storage-fiókba.
 
-Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése: a https://docs.microsoft.com/azure/mariadb/concepts-server-logs Azure Database for MariaDB naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése: a https://docs.microsoft.com/azure/mariadb/concepts-server-logs Azure Database for MariaDB naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -222,7 +222,7 @@ Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és el
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: a Azure monitoron belül a Azure Database for MariaDB-naplók tárolására szolgáló log Analytics munkaterülethez a szervezet megfelelőségi szabályainak megfelelően állítsa be a megőrzési időszakot. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
-Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period erőforrás-naplók tárolása Azure Storage-fiókban:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period erőforrás-naplók tárolása Azure Storage-fiókban: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 
 
@@ -234,11 +234,11 @@ Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállít�
 
 **Útmutató**: az MariaDB-példányok naplóinak elemzése és figyelése rendellenes működéshez. Az Azure Monitor Log Analytics munkaterülete segítségével tekintheti át a naplókat, és lekérdezéseket végezhet a naplózási adatokon. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik fél SIEM-nek.
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-További információ a Log Analytics munkaterületről:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+További információ a Log Analytics munkaterületről: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Egyéni lekérdezések végrehajtása a Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Egyéni lekérdezések végrehajtása a Azure Monitorban: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -250,13 +250,13 @@ Egyéni lekérdezések végrehajtása a Azure Monitorban:https://docs.microsoft.
 
 Emellett engedélyezheti a kiszolgálói naplókat és a diagnosztikai beállításokat a MariaDB, és naplókat küldhet egy Log Analytics munkaterületre. A Log Analytics-munkaterületet az Azure Sentinelbe irányíthatja, mivel ez egy biztonsági előkészítési automatizált választ (felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását.
 
-A MariaDB komplex veszélyforrások elleni védelemének engedélyezése:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+A MariaDB komplex veszélyforrások elleni védelemének engedélyezése: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-A MariDB konfigurálása és elérése a kiszolgálók naplófájljaiban:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+A MariDB konfigurálása és elérése a kiszolgálók naplófájljaiban: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-A MariaDB naplózási naplóinak konfigurálása és elérése:https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+A MariaDB naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center figyelés**: igen
 
@@ -294,9 +294,9 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: a MariaDB-példányok felügyeleti síkjával (Azure Portal/Azure Resource Manager) rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. Emellett a MariaDB-példányok adatsíkja számára elérhető rendszergazdai fiókok leltárát is megtarthatja. (A MariaDB-kiszolgáló létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a használatával további MariaDB-felhasználók hozhatók létre.)
 
-A MariaDB hozzáférés-kezelésének megismerése:https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
+A MariaDB hozzáférés-kezelésének megismerése: https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Ismerje meg az Azure-előfizetések Azure-beli beépített szerepköreit:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Ismerje meg az Azure-előfizetések Azure-beli beépített szerepköreit: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Azure Security Center figyelés**: igen
@@ -309,7 +309,7 @@ Ismerje meg az Azure-előfizetések Azure-beli beépített szerepköreit:https:/
 
 A MariaDB-erőforrás létrehozása után az Azure erős jelszóval kényszeríti a rendszergazda felhasználó létrehozását. A MariaDB-példány létrehozása után azonban a létrehozott első kiszolgálói rendszergazdai fiók használatával további felhasználókat hozhat létre, és rendszergazdai hozzáférést biztosíthat számukra. A fiókok létrehozásakor ügyeljen arra, hogy az egyes fiókokhoz eltérő, erős jelszót állítson be.
 
-További fiókok létrehozása a MariaDB:https://docs.microsoft.com/azure/mariadb/howto-create-users
+További fiókok létrehozása a MariaDB: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -320,7 +320,7 @@ További fiókok létrehozása a MariaDB:https://docs.microsoft.com/azure/mariad
 
 **Útmutató**: szabványos működési eljárások létrehozása a MariaDB-példányokhoz hozzáféréssel rendelkező dedikált rendszergazdai fiókok használatával. A rendszergazdai fiókok számának figyeléséhez használja a Azure Security Center identitás-és hozzáférés-kezelés lehetőséget.
 
-Azure Security Center identitás és hozzáférés ismertetése:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Azure Security Center identitás és hozzáférés ismertetése: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -330,7 +330,7 @@ Azure Security Center identitás és hozzáférés ismertetése:https://docs.mic
 
 **Útmutató**: az MariaDB-hez való adatsíkokat az adatbázisban tárolt identitások vezérlik, és nem támogatja az egyszeri bejelentkezést. A MariaDB-hozzáférés vezérlése REST APIon keresztül érhető el, és támogatja az egyszeri bejelentkezést. A hitelesítéshez állítsa be a kérések engedélyezési fejlécét egy Azure Active Directoryból beszerzett JSON Web Tokenra.
 
-Azure Database for MariaDB REST API ismertetése:https://docs.microsoft.com/rest/api/mariadb/
+Azure Database for MariaDB REST API ismertetése: https://docs.microsoft.com/rest/api/mariadb/
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -340,9 +340,9 @@ Azure Database for MariaDB REST API ismertetése:https://docs.microsoft.com/rest
 
 **Útmutató**: az Azure ad MFA engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatok követése.
 
-Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Az MFA engedélyezése az Azure-ban: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Identitás és hozzáférés figyelése Azure Security Centeron belül:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Identitás és hozzáférés figyelése Azure Security Centeron belül: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Security Center figyelés**: igen
 
@@ -352,9 +352,9 @@ Identitás és hozzáférés figyelése Azure Security Centeron belül:https://d
 
 **Útmutató**: az Azure-erőforrások bejelentkezésére és konfigurálására szolgáló, az MFA használatára konfigurált, a mancsok (emelt szintű hozzáférési munkaállomások) használata.
 
-További tudnivalók az emelt szintű hozzáférésű munkaállomásokról:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+További tudnivalók az emelt szintű hozzáférésű munkaállomásokról: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Az MFA engedélyezése az Azure-ban: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -366,11 +366,11 @@ Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-dire
 
 Emellett a naplók és a riasztások generálásához Azure AD Privileged Identity Management (PIM) is használható, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. Az Azure AD-kockázati észlelések használatával a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket tekinthet meg.
 
-Komplex veszélyforrások elleni védelem beállítása a MariaDB:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+Komplex veszélyforrások elleni védelem beállítása a MariaDB: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Privileged Identity Management (PIM) üzembe helyezése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Privileged Identity Management (PIM) üzembe helyezése: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Az Azure AD kockázati észlelések ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Az Azure AD kockázati észlelések ismertetése: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center figyelés**: igen
 
@@ -380,7 +380,7 @@ Az Azure AD kockázati észlelések ismertetése:https://docs.microsoft.com/azur
 
 **Útmutató**: a feltételes hozzáférés elnevezett helyeivel engedélyezheti a hozzáférést az IP-címtartományok vagy országok/régiók meghatározott logikai csoportjaiból, hogy korlátozza az Azure-erőforrásokhoz, például a MariaDB való hozzáférést.
 
-Elnevezett helyszínek konfigurálása az Azure-ban:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Elnevezett helyszínek konfigurálása az Azure-ban: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -392,7 +392,7 @@ Elnevezett helyszínek konfigurálása az Azure-ban:https://docs.microsoft.com/a
 
 Az Azure AD-hitelesítés nem használható közvetlen hozzáféréshez a MariaDB adatsíkon, azonban az Azure AD-hitelesítő adatok a felügyeleti sík szintjén (például a Azure Portal) használhatók a MariaDB rendszergazdai fiókok vezérléséhez.
 
-A MariaDB rendszergazdai jelszavának frissítése:https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
+A MariaDB rendszergazdai jelszavának frissítése: https://docs.microsoft.com/azure/mariadb/howto-create-manage-server-portal#update-admin-password
 
 **Azure Security Center figyelés**: igen
 
@@ -402,9 +402,9 @@ A MariaDB rendszergazdai jelszavának frissítése:https://docs.microsoft.com/az
 
 **Útmutató**: Tekintse át a Azure Active Directory naplókat, hogy segítsen felderíteni az elavult fiókokat, amelyek magukban foglalhatják a MariaDB rendszergazdai szerepköröket. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelhetők a csoporttagságok, hozzáférhetnek a vállalati alkalmazásokhoz, amelyek a MariaDB és a szerepkör-hozzárendelések elérésére használhatók. A felhasználók hozzáférését rendszeresen felül kell vizsgálni, például 90 naponta, hogy csak a megfelelő felhasználók férhessenek hozzájuk.
 
-Az Azure AD jelentéskészítés ismertetése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Az Azure AD jelentéskészítés ismertetése: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-Az Azure Identity hozzáférési felülvizsgálatok használata:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Az Azure Identity hozzáférési felülvizsgálatok használata: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure Security Center figyelés**: igen
 
@@ -414,11 +414,11 @@ Az Azure Identity hozzáférési felülvizsgálatok használata:https://docs.mic
 
 **Útmutató**: a MariaDB és a Azure Active Directory diagnosztikai beállításainak engedélyezése, az összes napló küldése egy log Analytics-munkaterületre. Konfigurálja a kívánt riasztásokat (például sikertelen hitelesítési kísérleteket) Log Analytics munkaterületen belül.
 
-A MariaDB konfigurálása és elérése a kiszolgálók naplófájljaiban:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
+A MariaDB konfigurálása és elérése a kiszolgálók naplófájljaiban: https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-A MariaDB naplózási naplóinak konfigurálása és elérése:https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
+A MariaDB naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal
 
-Azure-beli tevékenység-naplók integrálása a Azure Monitorba:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure-beli tevékenység-naplók integrálása a Azure Monitorba: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -430,13 +430,13 @@ Azure-beli tevékenység-naplók integrálása a Azure Monitorba:https://docs.mi
 
 A Azure Active Directory Identity Protection és kockázati észlelési funkciói segítségével konfigurálhatja az észlelt gyanús műveletekre vonatkozó automatizált válaszokat. A szervezet biztonsági válaszainak megvalósításához az Azure Sentinel használatával engedélyezheti az automatikus válaszokat.
 
-A MariaDB komplex veszélyforrások elleni védelemének engedélyezése:https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
+A MariaDB komplex veszélyforrások elleni védelemének engedélyezése: https://docs.microsoft.com/azure/mariadb/howto-database-threat-protection-portal
 
-Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Az Azure AD kockázatos bejelentkezések megtekintése:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+Az Azure AD kockázatos bejelentkezések megtekintése: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Az Azure Sentinel előkészítése: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -446,7 +446,7 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: nem alkalmazható; Azure Database for MariaDB Ügyfélszéf még nem támogatott.
 
-Ügyfélszéf támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Ügyfélszéf támogatott szolgáltatások listája: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -460,7 +460,7 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 **Útmutató**: a címkék használatával segítheti a Azure Database for MariaDB példányok és a bizalmas adatokat tároló vagy feldolgozó kapcsolódó erőforrások nyomon követését.
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -470,15 +470,15 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. A MariaDB-példányok hálózati hozzáférésének elkülönítéséhez és korlátozásához használja a magánhálózati kapcsolat, a szolgáltatási végpontok és/vagy a MariaDB kombinációját.
 
-További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
+További Azure-előfizetések létrehozása: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Management Groups létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
+Management Groups létrehozása: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Privát hivatkozás konfigurálása Azure Database for MariaDBhoz:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+Privát hivatkozás konfigurálása Azure Database for MariaDBhoz: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-Szolgáltatási végpontok konfigurálása Azure Database for MariaDBhoz:https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
+Szolgáltatási végpontok konfigurálása Azure Database for MariaDBhoz: https://docs.microsoft.com/azure/mariadb/howto-manage-vnet-portal
 
-Tűzfalszabályok konfigurálása Azure Database for MariaDB esetén:https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
+Tűzfalszabályok konfigurálása Azure Database for MariaDB esetén: https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -490,9 +490,9 @@ Tűzfalszabályok konfigurálása Azure Database for MariaDB esetén:https://doc
 
 A Microsoft kezeli a MariaDB alapul szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-A Azure Database for MariaDB adatkiszűréseának enyhítése:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
+A Azure Database for MariaDB adatkiszűréseának enyhítése: https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link
 
-Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -502,7 +502,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 **Útmutató**: a Azure Database for MariaDB támogatja a Azure Database for MariaDB-kiszolgáló TRANSPORT Layer Security (TLS), korábbi nevén SSL (SSL) használatával történő csatlakoztatását az ügyfélalkalmazások számára. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti TLS-kapcsolatok érvényesítése segít megvédeni a "férfit a középső" támadásokkal szemben azáltal, hogy titkosítja az adatfolyamot a kiszolgáló és az alkalmazás között. Az Azure Portalban győződjön meg arról, hogy az összes MariaDB-példány esetében engedélyezve van az "SSL-kapcsolat kikényszerítve" beállítás.
 
-Titkosítás konfigurálása a MariaDB-ben:https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
+Titkosítás konfigurálása a MariaDB-ben: https://docs.microsoft.com/azure/mariadb/howto-configure-ssl
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -514,7 +514,7 @@ Titkosítás konfigurálása a MariaDB-ben:https://docs.microsoft.com/azure/mari
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -522,11 +522,11 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure ad RBAC segítségével szabályozhatja az Azure-adatbázishoz való hozzáférést a MariaDB felügyeleti síkon (Azure Portal/Azure Resource Manager). Az adatsíkok eléréséhez (magán az adatbázison belül) használja az SQL-lekérdezéseket a felhasználók létrehozásához és a felhasználói engedélyek konfigurálásához.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az Azure-adatbázishoz való hozzáférés vezérléséhez a MariaDB felügyeleti síkon (Azure Portal/Azure Resource Manager). Az adatsíkok eléréséhez (magán az adatbázison belül) használja az SQL-lekérdezéseket a felhasználók létrehozásához és a felhasználói engedélyek konfigurálásához.
 
-A RBAC konfigurálása az Azure-ban:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+Az Azure RBAC konfigurálása: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-A felhasználói hozzáférés konfigurálása az SQL for MariaDB használatával:https://docs.microsoft.com/azure/mariadb/howto-create-users
+A felhasználói hozzáférés konfigurálása az SQL for MariaDB használatával: https://docs.microsoft.com/azure/mariadb/howto-create-users
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -538,7 +538,7 @@ A felhasználói hozzáférés konfigurálása az SQL for MariaDB használatáva
 
 A Microsoft kezeli a MariaDB alapul szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Az ügyfelek adatvédelem az Azure-ban: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -548,7 +548,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 **Útmutató**: a Azure Database for MariaDB szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
-A MariaDB titkosításának megismerése:https://docs.microsoft.com/azure/mariadb/concepts-security
+A MariaDB titkosításának megismerése: https://docs.microsoft.com/azure/mariadb/concepts-security
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -558,7 +558,7 @@ A MariaDB titkosításának megismerése:https://docs.microsoft.com/azure/mariad
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a Azure Database for MariaDB és más kritikus vagy kapcsolódó erőforrások éles példányain lépnek életbe.
 
-Riasztások létrehozása az Azure Activity log-eseményekhez:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása az Azure Activity log-eseményekhez: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -620,11 +620,11 @@ Riasztások létrehozása az Azure Activity log-eseményekhez:https://docs.micro
 
 **Útmutató**: az Azure Resource Graph segítségével lekérdezheti és felderítheti az összes erőforrást (beleértve az Azure Database for MariaDB-kiszolgálót) az előfizetése (ke) n belül. Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik a bérlőben, és képes felsorolni az összes Azure-előfizetést, valamint az előfizetésében lévő erőforrásokat.
 
-Lekérdezések létrehozása az Azure Resource Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Resource Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Az Azure-előfizetések megtekintése:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Az Azure-előfizetések megtekintése: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Az Azure RBAC ismertetése:https://docs.microsoft.com/azure/role-based-access-control/overview
+Az Azure RBAC ismertetése: https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -634,7 +634,7 @@ Az Azure RBAC ismertetése:https://docs.microsoft.com/azure/role-based-access-co
 
 **Útmutató**: címkéket alkalmazhat a Azure Database for MariaDB kiszolgálóra és más kapcsolódó erőforrásokra, amelyekkel a metaadatok logikailag rendezhetők a besorolásba.
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -644,11 +644,11 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 **Útmutató**: a címkézés, a felügyeleti csoportok és a különálló előfizetések használata, ahol szükséges, Azure Database for MariaDB-kiszolgáló és a kapcsolódó erőforrások rendszerezése és nyomon követése. Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-További Azure-előfizetések létrehozása:https://docs.microsoft.com/azure/billing/billing-create-subscription
+További Azure-előfizetések létrehozása: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Management Groups létrehozása:https://docs.microsoft.com/azure/governance/management-groups/create
+Management Groups létrehozása: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Címkék létrehozása és használata: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -672,9 +672,9 @@ Címkék létrehozása és használata:https://docs.microsoft.com/azure/azure-re
 
 Emellett az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésben (k) belüli erőforrásokat.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Lekérdezések létrehozása az Azure Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -716,9 +716,9 @@ Lekérdezések létrehozása az Azure Graph használatával:https://docs.microso
 
 - Engedélyezett erőforrástípusok
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
@@ -739,7 +739,7 @@ Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhasználók képesek legyenek a Azure Resource Manager interakcióra az "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával. Ez megakadályozhatja, hogy a magas biztonsági környezetben, például a bizalmas adatokat tartalmazó Azure Database for MariaDB kiszolgálón belül hozzanak létre és módosítsanak erőforrásokat.
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 
@@ -774,9 +774,9 @@ A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való ho
 
 - A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MariaDB
 
-Az elérhető Azure Policy aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -796,9 +796,9 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 **Útmutató**: az Azure-erőforrások biztonságos beállításainak betartatásához használja a Azure Policy [deny] és a [telepítés ha nem létezik] lehetőséget.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 
@@ -818,9 +818,9 @@ Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance
 
 **Útmutató**: ha a Azure Database for MariaDB-kiszolgálókhoz és a kapcsolódó erőforrásokhoz egyéni Azure Policy-definíciókat használ, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-Kód tárolása az Azure DevOps:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Kód tárolása az Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Az Azure Repos dokumentációja:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -838,7 +838,7 @@ Az Azure Repos dokumentációja:https://docs.microsoft.com/azure/devops/repos/in
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DBforMariaDB" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -858,7 +858,7 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 **Útmutató**: Azure Policy aliasok használata a "Microsoft. DBforMariaDB" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. A Azure Database for MariaDB-példányok és a kapcsolódó erőforrások konfigurációjának automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [üzembe helyezés ha nem létezik] lehetőséget.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -878,11 +878,11 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 **Útmutató**: a Azure Database for MariaDB-kiszolgálók elérésére használt Azure app Service-on futó Azure-Virtual Machines vagy webalkalmazások esetében a Managed Service Identity használata Azure Key Vault a kiszolgáló titkos felügyeletének egyszerűsítése és biztonságossá tétele érdekében. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
-Integráció az Azure felügyelt identitásokkal:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integráció az Azure felügyelt identitásokkal: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault létrehozása:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault létrehozása: https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:https://docs.microsoft.com/azure/key-vault/managed-identity 
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása: https://docs.microsoft.com/azure/key-vault/managed-identity 
 
 
 
@@ -908,7 +908,7 @@ Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások
 
 **Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze. 
 
-A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+A hitelesítőadat-olvasó beállítása: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -958,9 +958,9 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 **Útmutató**: a Azure Database for MariaDB teljes, differenciált és tranzakciós naplóbeli biztonsági mentést készít.  Azure Database for MariaDB automatikusan létrehozza a kiszolgáló biztonsági másolatait, és a helyileg redundáns vagy földrajzilag redundáns tárolóban tárolja azokat. A biztonsági másolatokkal a kiszolgáló adott időpontnak megfelelő állapotra állítható vissza. A biztonsági mentés és a visszaállítás fontos részét képezi az üzletmenet folytonossági stratégiájának, mivel ezek az adatok a véletlen sérüléstől vagy törléstől védve vannak.  Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
 
-A MariaDB biztonsági mentések ismertetése:https://docs.microsoft.com/azure/mariadb/concepts-backup
+A MariaDB biztonsági mentések ismertetése:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-A MariaDB kezdeti konfigurációjának ismertetése:https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
+A MariaDB kezdeti konfigurációjának ismertetése: https://docs.microsoft.com/azure/mariadb/tutorial-design-database-using-portal
 
 
 
@@ -974,9 +974,9 @@ A MariaDB kezdeti konfigurációjának ismertetése:https://docs.microsoft.com/a
 
 Ha a MariaDB-kiszolgálón tárolt adathoz Key Vault használ az ügyféloldali adattitkosításhoz, győződjön meg arról, hogy a kulcsok rendszeres automatizált biztonsági mentései vannak.
 
-A MariaDB biztonsági mentések ismertetése:https://docs.microsoft.com/azure/mariadb/concepts-backup
+A MariaDB biztonsági mentések ismertetése:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
-Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Key Vault kulcsok biztonsági mentése:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 
 **Azure Security Center figyelés**: igen
@@ -989,7 +989,7 @@ Key Vault kulcsok biztonsági mentése:https://docs.microsoft.com/powershell/mod
 
 A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.
 
-A Azure Database for MariaDB biztonsági mentésének és visszaállításának megismerése:https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
+A Azure Database for MariaDB biztonsági mentésének és visszaállításának megismerése:  https://docs.microsoft.com/azure/mariadb/concepts-backup#restore
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -1000,7 +1000,7 @@ A Azure Database for MariaDB biztonsági mentésének és visszaállításának 
 
 **Útmutató**: a Azure Database for MariaDB teljes, differenciált és tranzakciós naplóbeli biztonsági mentést készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
 
-A Azure Database for MariaDB biztonsági mentésének és visszaállításának megismerése:https://docs.microsoft.com/azure/mariadb/concepts-backup
+A Azure Database for MariaDB biztonsági mentésének és visszaállításának megismerése:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
 
 **Azure Security Center figyelés**: igen
@@ -1015,9 +1015,9 @@ A Azure Database for MariaDB biztonsági mentésének és visszaállításának 
 
 **Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
 
-- Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
-- A Microsoft Security Response Center egy Incidensének anatómiája:https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
-- Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához:https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
+- Útmutató a saját biztonsági incidensek megoldási folyamatának létrehozásához: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- A Microsoft Security Response Center egy Incidensének anatómiája: https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
+- Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásához: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1029,9 +1029,9 @@ A Azure Database for MariaDB biztonsági mentésének és visszaállításának 
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához.  Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-- Biztonsági riasztások a Azure Security Centerban:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
+- Biztonsági riasztások a Azure Security Centerban: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
-- Címkék használata az Azure-erőforrások rendszerezéséhez:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- Címkék használata az Azure-erőforrások rendszerezéséhez: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center figyelés**: igen
 
@@ -1041,7 +1041,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-- Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+- Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1051,7 +1051,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-- A Azure Security Center biztonsági kapcsolattartó beállítása:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+- A Azure Security Center biztonsági kapcsolattartó beállítása: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Security Center figyelés**: igen
 
@@ -1061,8 +1061,8 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-- Folyamatos exportálás konfigurálása:https://docs.microsoft.com/azure/security-center/continuous-export
-- Riasztások továbbítása az Azure Sentinelbe:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+- Folyamatos exportálás konfigurálása: https://docs.microsoft.com/azure/security-center/continuous-export
+- Riasztások továbbítása az Azure Sentinelbe: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1073,7 +1073,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
     
 
-A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:https://docs.microsoft.com/azure/security-center/workflow-automation
+A Munkafolyamat-automatizálás és a Logic Apps konfigurálása: https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1089,14 +1089,14 @@ A Munkafolyamat-automatizálás és a Logic Apps konfigurálása:https://docs.mi
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő témakört:  https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 **Azure Security Center figyelés**: nem alkalmazható
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

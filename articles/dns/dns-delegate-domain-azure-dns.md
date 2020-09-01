@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84710133"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077993"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben
 
 Az Azure DNS használatával saját DNS-tartományt üzemeltethet, és kezelheti a tartomány DNS-rekordjait. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
-Tegyük fel, hogy megvette a „contoso.net” tartományt egy tartományregisztrálótól, majd létrehozott egy „contoso.net” nevű zónát az Azure DNS-ben. Mivel Ön a tartomány tulajdonosa, a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálói rekordjait. A regisztráló ezeket a névkiszolgálói rekordokat a „.net” szülőzónában tárolja. Az internetes felhasználók ezután a Azure DNS zónában lesznek átirányítva a tartományba, amikor megpróbálják feloldani a DNS-rekordokat a contoso.net-ben.
+Tegyük fel, hogy megvette a „contoso.net” tartományt egy tartományregisztrálótól, majd létrehozott egy „contoso.net” nevű zónát az Azure DNS-ben. Mivel Ön a tartomány tulajdonosa, a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálói rekordjait. A regisztrátor a .NET szülő zónában tárolja az NS-rekordokat. Az internetes felhasználók ezután a Azure DNS zónában lesznek átirányítva a tartományba, amikor megpróbálják feloldani a DNS-rekordokat a contoso.net-ben.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Meg kell adnia egy tartománynevet, hogy tesztelni tudja, hogy Azure DNS üzemeltethető-e. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 
-Az oktatóanyaghoz használt contoso.net, de a saját tartománynevét használja.
+Ebben a példában a **contoso.net** fogja hivatkozni a szülőtartomány tartományára.
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
@@ -45,14 +45,19 @@ Az oktatóanyaghoz használt contoso.net, de a saját tartománynevét használj
    ![DNS-zóna](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. Válassza a **DNS-zóna létrehozása**lehetőséget.
-1. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd kattintson a **Létrehozás** parancsra:
+1. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd válassza a **Létrehozás**lehetőséget: például **contoso.net**
+      > [!NOTE] 
+      > Ha a létrehozandó új zóna egy alárendelt zóna (például: Parent Zone = contoso.net Child Zone = child.contoso.net), tekintse meg az [új gyermek DNS-zóna létrehozásával foglalkozó oktatóanyagot](./tutorial-public-dns-zones-child.md) .
 
-   | **Beállítás** | **Érték** | **Részletek** |
-   |---|---|---|
-   |**Név**|[az Ön tartományneve] |Az Ön által megvásárolt tartománynév. Ez az oktatóanyag a „contoso.net” tartománynevet használja példaként.|
-   |**Előfizetés**|[Az Ön előfizetése]|Válassza ki azt az előfizetést, amelyben létre fogja hozni a zónát.|
-   |**Erőforráscsoport**|**Új létrehozása:** contosoRG|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül.<br>Az erőforráscsoport helye nincs hatással a DNS-zónára. A DNS-zóna helye mindig "globális", és nem jelenik meg.|
-   |**Hely**|USA keleti régiója||
+    | **Beállítás** | **Érték** | **Részletek** |
+    |--|--|--|
+    | **Projekt részletei:**  |  |  |
+    | **Erőforráscsoport**    | ContosoRG | Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül. Az erőforráscsoport helye nincs hatással a DNS-zónára. A DNS-zóna helye mindig "globális", és nem jelenik meg. |
+    | **Példány részletei:** |  |  |
+    | **Zóna gyermeke**        | ne legyen bejelölve | Mivel ez a zóna **nem** [alárendelt zóna](./tutorial-public-dns-zones-child.md) , hagyja meg ezt a jelölést |
+    | **Név**              | contoso.net | A szülő zóna nevének mezője      |
+    | **Hely**          | USA keleti régiója | Ez a mező az erőforráscsoport létrehozásának részeként kiválasztott helyen alapul.  |
+    
 
 ## <a name="retrieve-name-servers"></a>Névkiszolgálók lekérdezése
 
@@ -85,7 +90,7 @@ A delegálás befejezése után ellenőrizheti, hogy működik-e egy eszköz, p�
 
 Nem kell megadnia a Azure DNS névkiszolgálók nevét. Ha a delegálást helyesen végezte el, a hagyományos DNS-feloldási folyamat automatikusan megtalálja a névkiszolgálókat.
 
-1. A parancssorban adjon meg egy, az alábbi példához hasonló nslookup-parancsot:
+1. A parancssorban adjon meg egy, az alábbi példához hasonló nslookup parancsot:
 
    ```
    nslookup -type=SOA contoso.net
@@ -113,7 +118,7 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja a **c
 
 - Válassza ki a **contosoRG** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy DNS-zónát a tartományhoz, és delegálta azt Azure DNSra. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

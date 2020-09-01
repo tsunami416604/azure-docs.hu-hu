@@ -1,6 +1,6 @@
 ---
 title: A parketta beágyazott típusai lekérdezése az SQL on-demand (előzetes verzió) használatával
-description: Ebből a cikkből megtudhatja, hogyan lehet lekérdezni a parketta beágyazott típusait.
+description: Ebből a cikkből megtudhatja, hogyan kérdezheti le a parketta beágyazott típusait az SQL on-demand (előzetes verzió) használatával.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f58adf124634ce1b4326f0026718688f0eb1dc7b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489690"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076735"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban SQL igény szerinti (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. Ez a lekérdezés a parketta beágyazott típusait olvassa be.
+Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés a parketta beágyazott típusait fogja olvasni.
 A beágyazott típusok olyan összetett struktúrák, amelyek objektumokat vagy tömböket jelképeznek. A beágyazott típusok a ben tárolhatók: 
-- A [parketta](query-parquet-files.md) , ahol több összetett oszlop is tartalmaz tömböket és objektumokat.
-- Hierarchikus [JSON-fájlok](query-json-files.md) , ahol az összetett JSON-dokumentumok egyetlen oszlopként is olvashatók.
-- CosmosDB-gyűjtemény, amelyben minden dokumentum összetett beágyazott tulajdonságokat tartalmazhat (jelenleg a lezárt nyilvános előzetes verzióban érhető el).
+- [Parketta](query-parquet-files.md), ahol több, tömböket és objektumokat tartalmazó összetett oszlop is lehet.
+- Hierarchikus [JSON-fájlok](query-json-files.md), ahol egy összetett JSON-dokumentumot egyetlen oszlopként lehet beolvasni.
+- Azure Cosmos DB gyűjtemények (jelenleg a nyilvános előzetes verzió alatt), ahol minden dokumentum összetett beágyazott tulajdonságokat tartalmazhat.
 
-A szinapszis SQL on-demand formátuma minden beágyazott típus JSON-objektumként és tömbökként, így az összetett objektumokat a JSON függvények használatával vagy [a JSON-adatok elemzésével openjson utasítással függvénnyel](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)is [kinyerheti vagy módosíthatja](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) . 
+Az Azure szinapszis SQL igény szerinti formátuma minden beágyazott típus JSON-objektumként és tömbökként. Így [összetett objektumokat is kinyerhet vagy MÓDOSÍTHAT JSON-függvények használatával](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) vagy [a JSON-adatok elemzésével a openjson utasítással függvény használatával](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
-Alább látható egy példa arra a lekérdezésre, amely a [COVID-19 nyílt kutatási adatkészlet JSON-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) fájljában a skaláris és objektumok értékeit Kinyeri a beágyazott objektumokkal. 
+Az alábbi példa egy olyan lekérdezést mutat be, amely a [COVID-19 nyílt kutatási adatkészlet JSON-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) fájljából Kinyeri a skaláris és az objektum értékeit, amelyek beágyazott objektumokat tartalmaznak: 
 
 ```sql
 SELECT
@@ -42,18 +42,18 @@ FROM
     WITH ( doc varchar(MAX) ) AS docs;
 ```
 
-`JSON_VALUE`a függvény egy skaláris értéket ad vissza a megadott elérési úton lévő mezőből. `JSON_QUERY`a függvény a megadott elérési úton található mezőből JSON-ként formázott objektumot ad vissza.
+A `JSON_VALUE` függvény egy skaláris értéket ad vissza a megadott elérési úton lévő mezőből. A `JSON_QUERY` függvény a megadott elérési úton található mezőből JSON-ként formázott objektumot ad vissza.
 
 > [!IMPORTANT]
-> Ez a példa egy fájlt használ a [COVID-19 nyílt kutatási adatkészletből](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/). Lásd: THS-licenc és az adatstruktúra ezen a lapon.
+> Ez a példa egy fájlt használ a COVID-19 nyílt kutatási adatkészletből. [Tekintse meg a licencet és az adat szerkezetét itt](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként létre kell **hoznia** egy olyan adatbázist, amely hivatkozik az adatforrásra. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
+Első lépésként létre kell hoznia egy adatbázist, amely az adatforrás létrehozását fogja létrehozni. Ezután inicializálja az objektumokat egy [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) futtatásával az adatbázison. A telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörű hitelesítő adatokat és a mintákban használt külső fájlformátumokat.
 
 ## <a name="project-nested-or-repeated-data"></a>Beágyazott vagy ismétlődő projekt
 
-A parketta-fájl több, összetett típusú oszloppal is rendelkezhet. Az ezekből az oszlopokból származó értékek JSON-szövegként vannak formázva, és VARCHAR-oszlopként lesznek visszaadva. A következő lekérdezés beolvassa a *structExample. Parque* fájlt, és bemutatja, hogyan olvashatja el a beágyazott oszlopok értékeit: 
+A parketta-fájlokhoz több, összetett típusú oszlop is tartozhat. Az ezekből az oszlopokból származó értékek JSON-szövegként vannak formázva, és VARCHAR-oszlopként lesznek visszaadva. A következő lekérdezés beolvassa a structExample. Parque fájlt, és bemutatja, hogyan olvashatja el a beágyazott oszlopok értékeit: 
 
 ```sql
 SELECT
@@ -73,14 +73,14 @@ FROM
     ) AS [r];
 ```
 
-Ez a lekérdezés a következő eredményt adja vissza, ahol a beágyazott objektumok tartalma JSON-szövegként lesz visszaadva:
+Ez a lekérdezés a következő eredményt adja vissza. A rendszer minden beágyazott objektum tartalmát JSON-szövegként adja vissza.
 
 | DateStruct    | TimeStruct    | TimestampStruct   | DecimalStruct | FloatStruct |
 | --- | --- | --- | --- | --- |
 |{"Date": "2009-04-25"}| {"Time": "20:51:54.3598000"}|    {"Időbélyeg": "5501-04-08 12:13:57.4821000"}|    {"Decimális": 11143412.25350}| {"Float": 0,5}|
 |{"Date": "1916-04-29"}| {"Time": "00:16:04.6778000"}|    {"Időbélyeg": "1990-06-30 20:50:52.6828000"}|    {"Decimális": 1963545.62800}|  {"Float":-2,125}|
 
-A következő lekérdezés beolvassa a *justSimpleArray. Parque* fájlt. A program a Parquet fájl összes oszlopát a beágyazott vagy ismétlődő adatokkal együtt feltervezi.
+A következő lekérdezés beolvassa a justSimpleArray. Parque fájlt. A program a Parquet fájl összes oszlopát feltervezi, beleértve a beágyazott és az ismétlődő adatok listáját is.
 
 ```sql
 SELECT
@@ -102,7 +102,7 @@ A lekérdezés a következő eredményt fogja visszaadni:
 
 ## <a name="read-properties-from-nested-object-columns"></a>Tulajdonságok beolvasása a beágyazott objektumok oszlopaiból
 
-`JSON_VALUE`a függvény lehetővé teszi, hogy a rendszer JSON-szövegként formázott oszlop értékeit állítsa vissza:
+A `JSON_VALUE` függvény lehetővé teszi, hogy a rendszer JSON-szövegként formázott oszlopokból származó értékeket ad vissza:
 
 ```sql
 SELECT
@@ -121,11 +121,11 @@ Az eredmény az alábbi táblázatban látható:
 | --- | --- | --- | --- |
 | Kiegészítő információk öko-epidemiolo... | Julien   | – S1: törzsfejlődés... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-A legtöbb esetben a JSON-fájlokkal ellentétben egy összetett JSON-objektumot tartalmazó oszlopot ad vissza. A PARQUEt-fájlok több összetett fájllal rendelkezhetnek. A beágyazott oszlop tulajdonságait az `JSON_VALUE` egyes oszlopokban található függvény használatával olvashatja. `OPENROWSET`lehetővé teszi a beágyazott tulajdonságok elérési útjának közvetlen megadását a `WITH` záradékban. Az elérési utak az oszlop neveként állíthatók be, vagy az oszlop típusa után [JSON-elérésiút-kifejezést](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) adhat hozzá.
+A JSON-fájlokkal ellentétben, amelyek a legtöbb esetben egy összetett JSON-objektumot tartalmazó egyetlen oszlopot adnak vissza, a Parquet-fájlok több összetett oszloppal is rendelkezhetnek. A beágyazott oszlopok tulajdonságait az `JSON_VALUE` egyes oszlopokban található függvény használatával olvashatja. `OPENROWSET` lehetővé teszi egy záradékban lévő beágyazott tulajdonságok elérési útjának közvetlen megadását `WITH` . Megadhatja az elérési utakat egy oszlop neveként, vagy hozzáadhat egy [JSON Path kifejezést](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) az oszlop típusa után.
 
-A következő lekérdezés beolvassa a *structExample. Parque* fájlt, és bemutatja, hogyan lehet egy beágyazott oszlop felületi elemeit beolvasni. A beágyazott értékekre kétféleképpen hivatkozhat:
-- A beágyazott érték elérési útjának kifejezésének megadása a típus megadása után.
-- Az oszlopnév formázása beágyazott elérési úttal a do "." paranccsal a mezőkre való hivatkozáshoz.
+A következő lekérdezés beolvassa a structExample. Parque fájlt, és bemutatja, hogyan lehet egy beágyazott oszlop felületi elemeit beolvasni. Két módon hivatkozhat egy beágyazott értékre:
+- A beágyazott érték elérési útjának kifejezésének megadásával a típus meghatározása után.
+- Az oszlop nevének beágyazott elérési úttal való formázásához használja a do "." kifejezést a mezőkre való hivatkozáshoz.
 
 ```sql
 SELECT
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Elemek elérése ismétlődő oszlopokból
 
-A következő lekérdezés beolvassa a *justSimpleArray. Parque* fájlt, és a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával beolvas egy **skaláris** elemet egy ismétlődő oszlopból, például egy tömbből vagy egy térképből:
+A következő lekérdezés beolvassa a justSimpleArray. Parque fájlt, és a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával beolvas egy skaláris elemet egy ismétlődő oszlopból, például egy tömbből vagy térképből:
 
 ```sql
 SELECT
@@ -163,7 +163,7 @@ FROM
     ) AS [r];
 ```
 
-Az eredmény az alábbi táblázatban látható:
+Az eredmény a következő:
 
 |SimpleArray    | FirstElement  | SecondElement | ThirdElement |
 | --- | --- | --- | --- |
@@ -172,7 +172,7 @@ Az eredmény az alábbi táblázatban látható:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Az alárendelt objektumok elérése összetett oszlopokból
 
-A következő lekérdezés beolvassa a *mapExample. Parque* fájlt, és a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával lekéri a **nem skaláris** elemet egy ismétlődő oszlopból, például tömbből vagy térképből:
+A következő lekérdezés beolvassa a mapExample. Parque fájlt, és a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával lekéri a nem skaláris elemet egy ismétlődő oszlopból, például egy tömbből vagy térképből:
 
 ```sql
 SELECT
@@ -201,7 +201,7 @@ FROM
     WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
 ```
 
-A struktúra `MapOfPersons` oszlopként lesz visszaadva, `VARCHAR` és JSON-sztringként van formázva.
+A struktúra `MapOfPersons` varchar-oszlopként lesz visszaadva, és JSON-sztringként van formázva.
 
 ## <a name="project-values-from-repeated-columns"></a>Projekt értékei ismétlődő oszlopokból
 
@@ -219,6 +219,6 @@ FROM
     CROSS APPLY OPENJSON (SimpleArray) WITH (Element int '$') as array_values
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikk bemutatja, hogyan lehet [lekérdezni a JSON-fájlokat](query-json-files.md).

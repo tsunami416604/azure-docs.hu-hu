@@ -6,13 +6,13 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: f0aaa82db61b5f40e42d6dad641bc09d5add9d0f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065114"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078333"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -32,7 +32,7 @@ A funkció engedélyezéséhez a következőkre van szüksége:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Győződjön meg arról, hogy rendelkezik közreműködői hozzáféréssel
-Lépjen a Service Bus névtérhez, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget, és válassza a **szerepkör-hozzárendelések** lapot. Ellenőrizze, hogy rendelkezik-e a közreműködői hozzáféréssel a névtérhez. 
+Lépjen a Service Bus névtérhez, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget, és válassza a **szerepkör-hozzárendelések** lapot. Győződjön meg arról, hogy a közreműködői hozzáférése van a névtérhez. 
 
 ### <a name="events-and-event-schemas"></a>Események és eseménysémák
 
@@ -168,7 +168,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 
 Innen felfedezheti a többi beállítási lehetőséget, vagy tesztelheti az események áramlását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
 * További tudnivalók az [Event Grid](../event-grid/index.yml) szolgáltatásról.

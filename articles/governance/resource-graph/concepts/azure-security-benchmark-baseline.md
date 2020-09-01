@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b67397db3cc6de2a0e6658795ddf87ad355ad422
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009001"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078367"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Az Azure Resource Graph biztonsági alapterve az Azure biztonsági teljesítményteszthez
 
@@ -41,13 +41,13 @@ Ez a biztonsági alapkonfiguráció az Azure-beli [biztonsági teljesítménytes
 
 *További információkért lásd [: biztonsági ellenőrzés:](../../../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: szerepköralapú hozzáférés-vezérlés (RBAC) használata az adat-és erőforrásokhoz való hozzáférés szabályozásához. Az Azure Resource Graph használatához megfelelő hozzáféréssel kell rendelkeznie a lekérdezni kívánt erőforrásokhoz is. Ennek a hozzáférésnek csak olvashatónak kell lennie, és csak a szükséges személyzet számára adható meg.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az adat-és erőforrásokhoz való hozzáférés szabályozásához. Az Azure Resource Graph használatához megfelelő hozzáféréssel kell rendelkeznie a lekérdezni kívánt erőforrásokhoz is. Ennek a hozzáférésnek csak olvashatónak kell lennie, és csak a szükséges személyzet számára adható meg.
 
 * [Engedélyek az Azure Resource Graphban](../overview.md#permissions-in-azure-resource-graph)
 
-* [A RBAC konfigurálása az Azure-ban](../../../role-based-access-control/role-assignments-rest.md)
+* [Az Azure RBAC konfigurálása](../../../role-based-access-control/role-assignments-rest.md)
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -97,7 +97,7 @@ Ez a biztonsági alapkonfiguráció az Azure-beli [biztonsági teljesítménytes
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../../security/benchmarks/security-baselines-overview.md)

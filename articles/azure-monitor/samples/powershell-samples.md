@@ -6,12 +6,13 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055257"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078401"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -96,10 +97,10 @@ A következő parancs lekéri az utolsó 1000 eseményt a tevékenység naplój�
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog`számos más paramétert is támogat. `Get-AzLog`További információért tekintse meg a referenciát.
+`Get-AzLog` számos más paramétert is támogat. `Get-AzLog`További információért tekintse meg a referenciát.
 
 > [!NOTE]
-> `Get-AzLog`csak 15 napos előzményt biztosít. A **-MaxRecords** paraméter használata lehetővé teszi az utolsó N esemény lekérdezését 15 nap után. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-t (C#-minta az SDK használatával). Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
+> `Get-AzLog` csak 15 napos előzményt biztosít. A **-MaxRecords** paraméter használata lehetővé teszi az utolsó N esemény lekérdezését 15 nap után. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-t (C#-minta az SDK használatával). Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
 > 
 > 
 
@@ -139,18 +140,18 @@ A célként megadott erőforráshoz beállított összes riasztási szabály beo
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`más paramétereket is támogat. További információ: [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
+`Get-AzAlertRule` más paramétereket is támogat. További információ: [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
 
 ## <a name="create-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások létrehozása
 A `Add-AlertRule` parancsmag használatával riasztási szabályt hozhat létre, frissíthet vagy tilthatja le.
 
-E-mailek és webhook-tulajdonságok a és a használatával is létrehozhatók `New-AzAlertRuleEmail` `New-AzAlertRuleWebhook` . A riasztási szabály parancsmagban ezeket a tulajdonságokat adja hozzá műveletként a riasztási szabály **műveletek** tulajdonságához.
+E-mailek és webhook-tulajdonságok a és a használatával is létrehozhatók  `New-AzAlertRuleEmail` `New-AzAlertRuleWebhook` . A riasztási szabály parancsmagban ezeket a tulajdonságokat adja hozzá műveletként a riasztási szabály **műveletek** tulajdonságához.
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| parameter | Érték |
+| parameter | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Név |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |legtöbbször |
 | Targetresourceid azonosítója |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -158,7 +159,7 @@ A következő táblázat a riasztások metrika használatával történő létre
 | operátor |GreaterThan |
 | Küszöbérték (darabszám/mp a metrika esetében) |1 |
 | WindowSize (óó: PP: SS formátum) |00:05:00 |
-| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Átlag |
+| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Average |
 | Egyéni e-mailek (karakterlánc-tömb) |'foo@example.com','bar@example.com' |
 | e-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak |-SendToServiceOwners |
 

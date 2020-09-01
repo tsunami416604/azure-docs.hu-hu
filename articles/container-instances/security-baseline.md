@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b43635c637f10b6ace8a744ceb3046c4ce3b9bd4
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259156"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078078"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances Azure biztonsági alapterve
 
@@ -97,7 +97,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](../securi
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-**Útmutató**: válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az azonosítók/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal. Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+**Útmutató**: válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az azonosítók/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal. Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
 Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
@@ -155,7 +155,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató**: az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, a RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el. 
+**Útmutató**: az Azure-tervrajzok használatával egyszerűsítheti a nagyméretű Azure-alapú üzembe helyezéseket, például az Azure Resources Manager-sablonokat, az Azure RBAC-vezérlőket és a szabályzatokat egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el. 
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -557,9 +557,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure ad-RBAC használatával szabályozhatja a Azure Container instances-adatforrásokhoz és-erőforrásokhoz való hozzáférést. 
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Container instances-adatokhoz és erőforrásokhoz való hozzáférés szabályozásához. 
 
-* [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+* [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -923,13 +923,13 @@ Egyéni vagy harmadik féltől származó megoldás használata a tároló lemez
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: tároló lemezképek tárolása Azure Container Registryban és a RBAC kihasználása annak biztosítása érdekében, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató**: tároló rendszerképeinek tárolása Azure Container Registry és az Azure RBAC használatával biztosítható, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
-* [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Az Azure RBAC ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [A Container Registry RBAC ismertetése](../container-registry/container-registry-roles.md)
+* [Az Azure-RBAC megismerése Container Registry](../container-registry/container-registry-roles.md)
 
-* [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Az Azure RBAC konfigurálása](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -1109,7 +1109,7 @@ A tároló lemezképeit a beállításjegyzékből egy másikba importálva is i
 
 **Felelősség**: ügyfél
 
-## <a name="incident-response"></a>Incidenskezelés
+## <a name="incident-response"></a>Incidensmegoldás
 
 *További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 

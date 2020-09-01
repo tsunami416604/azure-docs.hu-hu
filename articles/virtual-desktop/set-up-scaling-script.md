@@ -6,22 +6,18 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ac01d71316fe4ccf44aa422d88dc31b1fd0ca4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009443"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078554"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
 A virtuális gépek (VM-EK) skálázásával csökkentheti a Windows rendszerű virtuális asztali környezet teljes üzembe helyezési költségeit. Ez azt jelenti, hogy leállítja és felszabadítja a munkamenet-gazda virtuális gépeket a használaton kívüli órákban, majd visszakapcsolja őket a csúcsidőben, majd újra kiosztja őket.
 
 Ebből a cikkből megtudhatja, hogyan épül fel a Azure Automation fiókkal és az Azure Logic apps szolgáltatással létrehozott skálázási eszköz, amely automatikusan méretezi a munkamenet-gazdagép virtuális gépeket a Windows rendszerű virtuális asztali környezetben. Ha szeretné megtudni, hogyan használhatja a skálázási eszközt, ugorjon előre az [Előfeltételek](#prerequisites)elemre.
-
-## <a name="report-issues"></a>Problémák bejelentése
-
-A skálázási eszközre vonatkozó jelentések kiadása jelenleg a GitHubon történik a Microsoft ügyfélszolgálata helyett. Ha bármilyen probléma merül fel a skálázási eszközzel kapcsolatban, szerezze be a szükséges információkat a [jelentéskészítési problémák](#reporting-issues) szakaszban leírtak szerint, és nyisson meg egy GitHub-problémát a "4a-WVD-skálázás-logicapps" címkével az [RDS GitHub oldalon](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).
 
 ## <a name="how-the-scaling-tool-works"></a>A skálázási eszköz működése
 
@@ -327,3 +323,7 @@ Ha úgy döntött, hogy Log Analytics használ, a Log Analytics munkaterület **
     | where logmessage_s contains "ERROR:" or logmessage_s contains "WARN:"
     | project TimeStampUTC = TimeGenerated, TimeStampLocal = TimeStamp_s, HostPool = hostpoolName_s, LineNumAndMessage = logmessage_s, AADTenantId = TenantId
     ```
+
+## <a name="report-issues"></a>Problémák bejelentése
+
+A skálázási eszközre vonatkozó jelentéseket jelenleg Microsoft ügyfélszolgálata kezeli. Amikor jelentést készít, mindenképp kövesse a [jelentéskészítéssel kapcsolatos problémák](#reporting-issues)című témakör utasításait. Ha visszajelzést kér az eszközről, vagy új szolgáltatásokat szeretne kérni, nyisson meg egy "4-WVD-skálázás – eszköz" címkével ellátott GitHub-problémát az [RDS GitHub oldalán](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool).

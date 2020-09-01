@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7e8e2f3f9dd49693faa26eaaab309fcad58f6f9f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687069"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076157"
 ---
 # <a name="get-service-access-tokens"></a>Szolgáltatás-hozzáférési jogkivonatok lekérése
 
@@ -42,9 +43,9 @@ Cserélje le a *accountId* és a *accountKey* a megfelelő adataira.
 
 | Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken: karakterlánc | Sikeres |
+| 200 | AccessToken: karakterlánc | Success |
 
-| Fejléc | Szerep |
+| Fejléc | Cél |
 |--------|:------|
 | MS-CV | Ezzel az értékkel lehet nyomon követni a hívást a szolgáltatáson belül |
 
@@ -65,7 +66,7 @@ Write-Output "Token: $($response.AccessToken)"
 
 A szkript egyszerűen kinyomtatja a tokent a kimenetre, ahonnan másolhatja & beillesztheti. Valós projekt esetén automatizálja ezt a folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)
 * [Azure frontend API-k](../how-tos/frontend-apis.md)

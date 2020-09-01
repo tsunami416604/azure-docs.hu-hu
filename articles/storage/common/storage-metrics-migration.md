@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8eae70b88aa454e5d712b3c5b7930b12d169912
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422062"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078248"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Váltás a mérőszámokra Azure Monitor
 
-Az Azure Storage mostantól integrálja a metrikákat a Azure Monitor platformba. Ez a cikk segít az áttérésben.
+Az **2023-as augusztus 31-** én Storage Analytics metrikákat, más néven a *klasszikus metrikákat* is kivezetjük. Ha klasszikus metrikákat használ, ügyeljen arra, hogy az adott dátum előtt Azure Monitor metrikára térjen át. Ez a cikk segít az áttérésben.
 
 ## <a name="steps-to-complete-the-transition"></a>Az áttérés befejezésének lépései
 
@@ -63,8 +63,8 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 
 | Klasszikus metrika | Metrika Azure Monitor |
 | ------------------- | ----------------- |
-| `Capacity`            | `BlobCapacity`a dimenzióval `BlobType` egyenlő `BlockBlob` vagy`PageBlob` |
-| `ObjectCount`        | `BlobCount`a dimenzióval `BlobType` egyenlő `BlockBlob` vagy`PageBlob` |
+| `Capacity`            | `BlobCapacity` a dimenzióval `BlobType` egyenlő `BlockBlob` vagy `PageBlob` |
+| `ObjectCount`        | `BlobCount` a dimenzióval `BlobType` egyenlő `BlockBlob` vagy `PageBlob` |
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
@@ -94,8 +94,8 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 | `PercentNetworkError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``NetworkError` |
 | `PercentServerOtherError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ServerOtherError` |
 | `PercentSuccess` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``Success` |
-| `PercentThrottlingError` | A dimenzióval `ResponseType` egyenlő `ClientThrottlingError` vagy`ServerBusyError` |
-| `PercentTimeoutError` | A dimenzióval `ResponseType` egyenlő `ServerTimeoutError` vagy `ResponseType` azzal egyenlő értékű tranzakciók`ClientTimeoutError` |
+| `PercentThrottlingError` | A dimenzióval `ResponseType` egyenlő `ClientThrottlingError` vagy `ServerBusyError` |
+| `PercentTimeoutError` | A dimenzióval `ResponseType` egyenlő `ServerTimeoutError` vagy `ResponseType` azzal egyenlő értékű tranzakciók `ClientTimeoutError` |
 | `SASAuthorizationError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `AuthorizationError` `Authentication``SAS` |
 | `SASClientOtherError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ClientOtherError` `Authentication``SAS` |
 | `SASClientTimeoutError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ClientTimeoutError` `Authentication``SAS` |
@@ -107,7 +107,7 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 | `ServerOtherError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ServerOtherError` |
 | `ServerTimeoutError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ServerTimeoutError` |
 | `Success` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``Success` |
-| `ThrottlingError` | `Transactions`a dimenzióval `ResponseType` egyenlő `ClientThrottlingError` vagy`ServerBusyError`|
+| `ThrottlingError` | `Transactions` a dimenzióval `ResponseType` egyenlő `ClientThrottlingError` vagy `ServerBusyError`|
 | `TotalBillableRequests` | `Transactions` |
 | `TotalEgress` | `Egress` |
 | `TotalIngress` | `Ingress` |

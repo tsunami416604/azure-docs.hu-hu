@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6e5c7bbc850a71cd71d8f826c6a975f552374b7a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562684"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077721"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -146,7 +146,7 @@ Ha az Azure Virtual Machines szolgáltatásban üzemeltetett hibrid Runbook-feld
 
 **Útmutató**: a Azure Automation által használt hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával.
 
-Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek kiépítését a főbb környezeti összetevők, például az Azure Resources Manager-sablonok, a RBAC-vezérlőelemek és a házirendek egyetlen tervezet-definícióban történő csomagolásával. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
+Az Azure-tervrajzok segítségével a nagy léptékű Azure-környezeteket is leegyszerűsítheti a főbb környezeti összetevők (például az Azure Resources Manager-sablonok, az Azure RBAC-vezérlők és a házirendek) egyetlen tervezet-definícióban való csomagolásával. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
 * [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -570,11 +570,11 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 **Felelősség**: ügyfél
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure ad-RBAC használatával szabályozhatja a Azure Automation erőforrásokhoz való hozzáférést a beépített szerepkör-definíciók használatával, így az Automation-erőforrásokhoz hozzáférő felhasználók számára a legkevésbé privilegizált vagy "Just-elég" hozzáférési modellt követően férhet hozzá. Hibrid Runbook-feldolgozók használata esetén a több-bérlős vagy hibrid Runbook-feldolgozók használata esetén a virtuális gépek felügyelt identitásait kell kihasználnia, ha a több-bérlős vagy a hibrid-feldolgozót egyaránt használja, ügyeljen arra, hogy megfelelően hatókörrel rendelkező RBAC-engedélyeket alkalmazzon a Runbook
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja a Azure Automation erőforrásokhoz való hozzáférést a beépített szerepkör-definíciók használatával, az Automation-erőforrásokhoz hozzáférő felhasználók számára a legkevésbé privilegizált vagy "elég" hozzáférési modellt követően. Hibrid Runbook-feldolgozók használata esetén a több-bérlős vagy hibrid Runbook-feldolgozók használata esetén a virtuális gépek felügyelt identitásait kell kihasználnia, ha a több-bérlős vagy a hibrid-feldolgozót egyaránt használja, ügyeljen arra, hogy megfelelően hatókörrel rendelkező Azure RBAC-engedélyeket alkalmazzon a Runbook
 
-* [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+* [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 * [Runbook engedélyek a hibrid Runbook-feldolgozók számára](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -968,9 +968,9 @@ A legtöbb esetben a Azure Automation állapot-konfigurációval kombinált Micr
 
 A hibrid Runbook Worker szolgáltatás használatakor győződjön meg arról, hogy megfelelően korlátozza a hozzáférést a Storage-fiókban található egyéni operációsrendszer-rendszerképhez, így csak a jogosult felhasználók férhetnek hozzá a képhez.
 
-* [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Az Azure RBAC ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Az Azure RBAC konfigurálása](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

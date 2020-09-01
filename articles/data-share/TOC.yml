@@ -1,6 +1,7 @@
 - name: Azure Data Share-dokumentáció
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Mi az az Azure Data Share?
       href: overview.md
@@ -36,6 +37,11 @@
       href: samples-powershell.md
 - name: Útmutatók
   items:
+    - name: Adatok megosztása és fogadása forrás szerint
+      items:
+        - name: Megosztás az Azure Data Explorerből
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: Figyelés
       href: how-to-monitor.md
     - name: Hibaelhárítás
@@ -54,9 +60,6 @@
       href: security.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
-    - name: Azure Data Explorer-adatok megosztása
-      href: /azure/data-explorer/data-share
-      maintainContext: true
 - name: Referencia
   items:
     - name: .NET

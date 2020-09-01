@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dc53eacf456d1e7c1926c6d7f20e343b3a84340d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212312"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078044"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -159,7 +159,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 **Útmutató:** A DevTest Labs az Azure AD szolgáltatást használja az Identitáskezelés kezelésére. Vegye figyelembe ezt a két fontos szempontot, amikor a felhasználók számára hozzáférést biztosít a DevTest Labs-alapú környezetekhez:
 
-- **Erőforrás-kezelés:** Hozzáférést biztosít a Azure Portal az erőforrások kezeléséhez (virtuális gépek létrehozásához, környezetek létrehozásához, elindításához, leállításához, újraindításához, törléséhez és az összetevők alkalmazásához stb.). Az erőforrás-kezelés szerepköralapú hozzáférés-vezérlés (RBAC) használatával történik az Azure-ban. Szerepköröket rendelhet a felhasználókhoz, és beállíthatja az erőforrás-és hozzáférési szintű engedélyeket.
+- **Erőforrás-kezelés:** Hozzáférést biztosít a Azure Portal az erőforrások kezeléséhez (virtuális gépek létrehozásához, környezetek létrehozásához, elindításához, leállításához, újraindításához, törléséhez és az összetevők alkalmazásához stb.). Az erőforrás-kezelés az Azure-ban az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával végezhető el. Szerepköröket rendelhet a felhasználókhoz, és beállíthatja az erőforrás-és hozzáférési szintű engedélyeket.
 - **Virtual Machines (hálózati szintű)**: az alapértelmezett konfigurációban a virtuális gépek helyi rendszergazdai fiókot használnak. Ha van elérhető tartomány (Azure AD Domain Services, egy helyszíni tartomány vagy egy felhőalapú tartomány), a gépek csatlakoztathatók a tartományhoz. A felhasználók ezután használhatják a tartományon alapuló identitásokat a tartományhoz való csatlakozás használatával a gépekhez való csatlakozáshoz. 
 
 - [A DevTest Labs hivatkozási architektúrája](devtest-lab-reference-architecture.md#architecture)
@@ -315,9 +315,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 **Felelősség:** Ügyfél
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
-**Útmutató:** A Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja a Azure DevTest Labshoz való hozzáférést a laborokhoz.
+**Útmutató:** Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja a Azure DevTest Labs-ban található laborokhoz való hozzáférést.
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 - [A DevTest Labs szerepköreinek megismerése](devtest-lab-add-devtest-user.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -638,12 +638,12 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 **Felelősség:** Ügyfél
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
-**Útmutató:** Ha egyéni lemezképeket használ, a szerepköralapú hozzáférés-vezérlés (RBAC) használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez. A megosztott képkatalógus használatával megoszthatja a lemezképeket olyan meghatározott laborokkal, amelyeknek szükségük van rá. A tárolói lemezképek esetében tárolja őket a Azure Container Registryban, és a RBAC használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez.
+**Útmutató:** Ha egyéni lemezképeket használ, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez. A megosztott képkatalógus használatával megoszthatja a lemezképeket olyan meghatározott laborokkal, amelyeknek szükségük van rá. A tárolói lemezképek esetében tárolhatja azokat Azure Container Registry és az Azure RBAC használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
-- [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Az Azure RBAC ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [Megosztott képgyűjtemény konfigurálása DevTest Labs számára](configure-shared-image-gallery.md)
-- [A Container Registry RBAC ismertetése](../container-registry/container-registry-roles.md)
+- [Az Azure-RBAC megismerése Container Registry](../container-registry/container-registry-roles.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 

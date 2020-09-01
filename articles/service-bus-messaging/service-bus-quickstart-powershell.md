@@ -6,12 +6,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 085eedf3a3ce09689a5a7b7d4c69d1aade42ffb3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185441"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077687"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Service Bus névtér és üzenetsor létrehozása Azure PowerShell használatával
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Service Bus névteret és üzenetsor-kezelést a Azure PowerShell használatával. Azt is bemutatjuk, hogyan kérheti le az olyan engedélyezési hitelesítő adatokat, amelyeket az ügyfélalkalmazás használhat a várólistára irányuló üzenetek küldéséhez/fogadásához. 
@@ -39,7 +40,7 @@ Ebben a rövid útmutatóban Azure Cloud Shelleket fog használni, amelyeket a A
     ```azurepowershell-interactive
     New-AzResourceGroup –Name ContosoRG –Location eastus
     ```
-5. A következő parancs futtatásával hozzon létre egy Service Bus üzenetküldési névteret. Ebben a példában az az `ContosoRG` erőforráscsoport, amelyet az előző lépésben hozott létre. `ContosoSBusNS`az adott erőforráscsoporthoz létrehozott Service Bus névtér neve. 
+5. A következő parancs futtatásával hozzon létre egy Service Bus üzenetküldési névteret. Ebben a példában az az `ContosoRG` erőforráscsoport, amelyet az előző lépésben hozott létre. `ContosoSBusNS` az adott erőforráscsoporthoz létrehozott Service Bus névtér neve. 
 
     ```azurepowershell-interactive
     New-AzServiceBusNamespace -ResourceGroupName ContosoRG -Name ContosoSBusNS -Location eastus

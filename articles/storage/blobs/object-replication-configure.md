@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9964a10b85d9f388a4498766c6e81ee52498aa37
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566063"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076174"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)
 
@@ -24,6 +24,8 @@ Az objektum-replikáció (előzetes verzió) aszinkron módon másolja a blokk b
 Az objektumok replikálásának konfigurálásakor létre kell hoznia egy replikációs házirendet, amely megadja a forrás Storage-fiókot és a célként megadott fiókot. A replikációs házirend egy vagy több olyan szabályt tartalmaz, amely a forrás tárolót és a célhelyet adja meg, és jelzi, hogy a rendszer melyik blokk blobokat replikálja a forrás tárolóban.
 
 Ez a cikk azt ismerteti, hogyan konfigurálható az objektum replikálása a Storage-fiókhoz a Azure Portal, a PowerShell vagy az Azure CLI használatával. Az objektumok replikálásának konfigurálásához használhatja az Azure Storage erőforrás-szolgáltató ügyfél-kódtárainak egyikét is.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-a-replication-policy-and-rules"></a>Replikációs házirend és szabályok létrehozása
 
@@ -296,6 +298,6 @@ az storage account or-policy delete \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Objektum-replikáció áttekintése (előzetes verzió)](object-replication-overview.md)

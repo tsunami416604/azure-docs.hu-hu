@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: daff4d1e43f5cc27e52e8bf26f48f30147800ae8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 63c476e7ad8c7bab38ad4adfb6197b845106458c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839885"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077976"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Az Azure biztonsági alapterve Azure DDoS Protection standard szintű
 
@@ -262,11 +262,11 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Felelősség**: ügyfél
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
 **Útmutató**: a Azure DDoS Protection-csomagok használatához a fiókját hozzá kell rendelni a hálózati közreműködő szerepkörhöz vagy egy adott műveletekhez rendelt egyéni szerepkörhöz.
 
-- [Szerepköralapú hozzáférés-vezérlés kezelése a Azure DDoS Protectionban](../../virtual-network/manage-ddos-protection.md)
+- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) kezelése Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -560,7 +560,7 @@ Válassza ki a rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét, 
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
