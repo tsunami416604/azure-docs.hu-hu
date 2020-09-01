@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: rohink
-ms.openlocfilehash: d46e2d31c8d6c5a175239c76795359ad64b1abd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 347fde86b2a37aa0f82c09c94d6aa2f9e405da9d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686205"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075596"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>DNS-zónák kezelése a PowerShell használatával
 
@@ -166,7 +167,7 @@ A jelenlegi `$ConfirmPreference` beállítás a `-Confirm` paraméter használat
 
 A `-Confirm` és `$ConfirmPreference` értékekkel kapcsolatos további információt [a preferenciaváltozók bemutatását](/powershell/module/microsoft.powershell.core/about/about_preference_variables) tartalmazó részben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kezelheti a rekordhalmazokat [és rekordokat](dns-operations-recordsets.md) a DNS-zónában.
 <br>

@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e8d712a3477fe7dd9b963f203b3374dd5fa2a2e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b34664d36be2f18bc6821d5b13ca8bd403f2b6fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001059"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074406"
 ---
 # <a name="enable-and-manage-blob-versioning-preview"></a>BLOB verziószámozásának engedélyezése és kezelése (előzetes verzió)
 
@@ -24,6 +24,8 @@ Engedélyezheti a blob Storage verziószámozását (előzetes verzió) az objek
 Ez a cikk bemutatja, hogyan engedélyezheti vagy tilthatja le a Blobok verziószámozását a Storage-fiókhoz a Azure Portal vagy egy Azure Resource Manager sablon használatával.
 
 A blob verziószámozásának engedélyezése előtt regisztrálnia kell az előzetes verzióra. Ha többet szeretne megtudni a Blobok verziószámozásáról, beleértve az előzetes verzióra való regisztráció módját, lásd: [blob verziószámozása (előzetes verzió)](versioning-overview.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>Blob verziószámozásának engedélyezése
 

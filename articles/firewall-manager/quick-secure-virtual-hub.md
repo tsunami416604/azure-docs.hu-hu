@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: virtuális központ biztonságossá tétele a Azure Firewall Managerrel – Resource Manager-sablon'
-description: Ismerje meg, hogyan védheti a virtuális hubot a Azure Firewall Manager használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan védheti meg virtuális központját a Azure Firewall Manager használatával.
 services: firewall-manager
 author: vhorne
-ms.service: firewall
+ms.service: firewall-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: bfa957d8fb0eeb8020472026e18c41dc6e65fdc3
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705758"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075341"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rövid útmutató: a virtuális központ biztonságossá tétele Azure Firewall Manager-ARM sablon használatával
 
@@ -100,7 +100,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a biztonsági partner-szolgáltatókról](trusted-security-partners.md)

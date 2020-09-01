@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080830"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073216"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
@@ -37,7 +37,7 @@ Az API-kat üzemeltetheti [Azure app Serviceon](../app-service/overview.md), egy
 > * [Python](../app-service/quickstart-python.md)
 > * [Ruby](../app-service/quickstart-ruby.md)
 >
-> A Logic apps-hoz készült API-alkalmazások mintáinak megtekintéséhez látogasson el a [Azure Logic apps GitHub-adattárba](https://github.com/logicappsio) vagy [blogba](https://aka.ms/logicappsblog).
+> A Logic apps-hoz készült API-alkalmazások mintáinak megtekintéséhez látogasson el a [Azure Logic apps GitHub-tárházba](https://github.com/logicappsio).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Miben különböznek az egyéni API-k az egyéni összekötők?
 
@@ -72,7 +72,7 @@ Szabványos művelet esetén HTTP-kérési módszert írhat az API-ban, és leí
 
 ![Szabványos műveleti minta](./media/logic-apps-create-api-app/standard-action.png)
 
-<a name="pattern-overview"></a>Ahhoz, hogy egy logikai alkalmazás várjon, amíg az API befejezi a már futó feladatokat, az API követheti az [aszinkron lekérdezési mintát](#async-pattern) vagy a jelen témakörben ismertetett [aszinkron webhook-mintát](#webhook-actions) . Az olyan analógia esetében, amely segít a minták különböző viselkedésének megjelenítésében, Képzelje el, hogy az egyéni süteményeket egy pékségből rendeli el. A lekérdezési minta tükrözi azt a viselkedést, amelyben 20 percenként meghívja a pékséget, hogy meggyőződjön arról, hogy a torta készen áll-e. A webhook-minta tükrözi azt a viselkedést, amelyben a pékség megkéri a telefonszámát, hogy meghívja Önt, amikor elkészült a torta.
+<a name="pattern-overview"></a> Ahhoz, hogy egy logikai alkalmazás várjon, amíg az API befejezi a már futó feladatokat, az API követheti az [aszinkron lekérdezési mintát](#async-pattern) vagy a jelen témakörben ismertetett [aszinkron webhook-mintát](#webhook-actions) . Az olyan analógia esetében, amely segít a minták különböző viselkedésének megjelenítésében, Képzelje el, hogy az egyéni süteményeket egy pékségből rendeli el. A lekérdezési minta tükrözi azt a viselkedést, amelyben 20 percenként meghívja a pékséget, hogy meggyőződjön arról, hogy a torta készen áll-e. A webhook-minta tükrözi azt a viselkedést, amelyben a pékség megkéri a telefonszámát, hogy meghívja Önt, amikor elkészült a torta.
 
 Példákért látogasson el a [Logic apps GitHub-tárházba](https://github.com/logicappsio). Emellett további információ a [műveletek használati méréséről](logic-apps-pricing.md).
 
@@ -88,7 +88,7 @@ Az általános minta:
 2. Ha a motor a feladat állapotára vonatkozó további kérelmeket tesz elérhetővé, akkor a motornak tudnia kell, hogy az API befejezi-e a feladatot.
 3. A megfelelő adatokat visszaküldi a motornak, hogy a logikai alkalmazás munkafolyamata továbbra is folytatódjon.
 
-<a name="bakery-polling-action"></a>Most alkalmazza az előző pékség analógjét a lekérdezési mintára, és Képzelje el, hogy meghívja a pékséget, és rendeljen hozzá egy egyéni tortát a szállításhoz. A Cake elkészítésének folyamata időt vesz igénybe, és nem szeretné megvárni a telefont, miközben a pékség a tortán dolgozik. A pékség megerősíti a rendelését, és 20 percenként hívja meg a Cake állapotát. 20 perc elteltével meghívja a pékséget, de arról tájékoztat, hogy a Cake nem lett elvégezve, és egy másik 20 percen belül meg kell hívnia. Ez a folyamat addig folytatódik, amíg meg nem hívja a hívást, és a pékség azt jelzi, hogy a megrendelés készen áll, és elküldi a tortát. 
+<a name="bakery-polling-action"></a> Most alkalmazza az előző pékség analógjét a lekérdezési mintára, és Képzelje el, hogy meghívja a pékséget, és rendeljen hozzá egy egyéni tortát a szállításhoz. A Cake elkészítésének folyamata időt vesz igénybe, és nem szeretné megvárni a telefont, miközben a pékség a tortán dolgozik. A pékség megerősíti a rendelését, és 20 percenként hívja meg a Cake állapotát. 20 perc elteltével meghívja a pékséget, de arról tájékoztat, hogy a Cake nem lett elvégezve, és egy másik 20 percen belül meg kell hívnia. Ez a folyamat addig folytatódik, amíg meg nem hívja a hívást, és a pékség azt jelzi, hogy a megrendelés készen áll, és elküldi a tortát. 
 
 Tehát a lekérdezési mintát vissza kell képeznie. A pékség az egyéni API-t jelöli, a Cake-ügyfél pedig a Logic Apps motort képviseli. Amikor a motor meghívja az API-t egy kéréssel, az API megerősíti a kérést, és az időintervallummal válaszol, amikor a motor ellenőrzi a feladatok állapotát. A motor továbbra is ellenőrzi a feladatok állapotát, amíg az API nem válaszol a feladatokra, és visszaadja az adatait a logikai alkalmazásnak, amely ezután folytatja a munkafolyamatot. 
 
@@ -123,16 +123,16 @@ Ha az API ezt a mintát követi, semmit nem kell tennie a logikai alkalmazás mu
 
 Alternatív megoldásként használhatja a webhook mintát a hosszan futó feladatokhoz és az aszinkron feldolgozáshoz. Ennek a mintának a logikai alkalmazás szüneteltetése, és várnia kell a "visszahívás" lehetőséget az API-ról a munkafolyamat folytatásához a feldolgozás befejezéséhez. Ez a visszahívás egy olyan HTTP-bejegyzés, amely egy adott esemény bekövetkezésekor küld üzenetet egy URL-címre. 
 
-<a name="bakery-webhook-action"></a>Most alkalmazza az előző sütőipari-típust a webhook-mintára, és Képzelje el, hogy meghívja a pékséget, és rendeljen hozzá egy egyéni tortát a szállításhoz. A Cake elkészítésének folyamata időt vesz igénybe, és nem szeretné megvárni a telefont, miközben a pékség a tortán dolgozik. A pékség megerősíti a rendelését, de ezúttal megadja a telefonszámát, hogy meghívja Önt, amikor elkészült a torta. Ezúttal a pékség azt jelzi, hogy mikor áll készen a megrendelés, és elküldi a tortáját.
+<a name="bakery-webhook-action"></a> Most alkalmazza az előző sütőipari-típust a webhook-mintára, és Képzelje el, hogy meghívja a pékséget, és rendeljen hozzá egy egyéni tortát a szállításhoz. A Cake elkészítésének folyamata időt vesz igénybe, és nem szeretné megvárni a telefont, miközben a pékség a tortán dolgozik. A pékség megerősíti a rendelését, de ezúttal megadja a telefonszámát, hogy meghívja Önt, amikor elkészült a torta. Ezúttal a pékség azt jelzi, hogy mikor áll készen a megrendelés, és elküldi a tortáját.
 
 Ha ezt a webhook-mintázatot visszaképezi, a pékség az egyéni API-t jelöli, a Cake-ügyfél pedig a Logic Apps motort jelképezi. A motor meghívja az API-t egy kéréssel, és tartalmazza a "visszahívás" URL-címet.
 A feladatok elvégzése után az API az URL-cím használatával értesíti a motort, és visszaadja az adatait a logikai alkalmazásnak, amely ezután folytatja a munkafolyamatot. 
 
-Ehhez a mintához állítson be két végpontot a vezérlőn: `subscribe` és`unsubscribe`
+Ehhez a mintához állítson be két végpontot a vezérlőn: `subscribe` és `unsubscribe`
 
-*  `subscribe`végpont: Ha a végrehajtás eléri az API műveletét a munkafolyamatban, a Logic Apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol, majd megvárja, amíg az API visszahívást végez a munka befejezésekor. Az API ezután visszahívja a HTTP-BEJEGYZÉST az URL-címre, és továbbítja a visszaadott tartalmat és fejléceket a logikai alkalmazás bemenetének.
+*  `subscribe` végpont: Ha a végrehajtás eléri az API műveletét a munkafolyamatban, a Logic Apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol, majd megvárja, amíg az API visszahívást végez a munka befejezésekor. Az API ezután visszahívja a HTTP-BEJEGYZÉST az URL-címre, és továbbítja a visszaadott tartalmat és fejléceket a logikai alkalmazás bemenetének.
 
-* `unsubscribe`végpont: Ha a logikai alkalmazás futása meg lett szakítva, a Logic Apps motor meghívja a `unsubscribe` végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
+* `unsubscribe` végpont: Ha a logikai alkalmazás futása meg lett szakítva, a Logic Apps motor meghívja a `unsubscribe` végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
 
 ![Webhook műveleti minta](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -194,9 +194,9 @@ Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlo
 A webhook-trigger egy *leküldéses trigger* , amely a szolgáltatás végpontján megvárja és figyeli az új adatait vagy eseményeit. Ha az új adatok vagy az események megfelelnek a megadott feltételnek, az eseményindító elindít egy Logic app-példányt, majd bemenetként dolgozza fel az adatokat.
 A webhook-eseményindítók ugyanúgy működnek, mint az ebben a témakörben korábban ismertetett [webhook-műveletek](#webhook-actions) , és a `subscribe` és a `unsubscribe` végpontokkal vannak beállítva. 
 
-* `subscribe`végpont: amikor webhook-triggert ad hozzá és ment a logikai alkalmazásban, a Logic Apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol. Új vagy a megadott feltételnek megfelelő esemény esetén az API a HTTP-POSTával hívja vissza az URL-címet. A tartalom és a fejléc a logikai alkalmazás bemenetként adja át a tartalmat.
+* `subscribe` végpont: amikor webhook-triggert ad hozzá és ment a logikai alkalmazásban, a Logic Apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol. Új vagy a megadott feltételnek megfelelő esemény esetén az API a HTTP-POSTával hívja vissza az URL-címet. A tartalom és a fejléc a logikai alkalmazás bemenetként adja át a tartalmat.
 
-* `unsubscribe`végpont: Ha a webhook-trigger vagy a teljes logikai alkalmazás törölve lett, a Logic Apps motor meghívja a `unsubscribe` végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
+* `unsubscribe` végpont: Ha a webhook-trigger vagy a teljes logikai alkalmazás törölve lett, a Logic Apps motor meghívja a `unsubscribe` végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
 
 ![Webhook-trigger mintája](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

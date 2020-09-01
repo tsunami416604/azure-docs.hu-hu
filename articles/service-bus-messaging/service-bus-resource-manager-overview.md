@@ -7,12 +7,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336608"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075256"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -226,7 +227,7 @@ A [teljes](../azure-resource-manager/templates/deployment-modes.md) telepítés 
 New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+### <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 Ha az erőforrások központi telepítése sikeresen megtörtént, a központi telepítés összegzése megjelenik a PowerShell-ablakban:
 
 ```powershell
@@ -245,7 +246,7 @@ Parameters        :
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ekkor megtekintette az alapszintű munkafolyamatot és parancsokat Azure Resource Manager sablon üzembe helyezéséhez. Részletesebb információkért tekintse meg az alábbi hivatkozásokat:
 
 * [Az Azure Resource Manager áttekintése][Azure Resource Manager overview]

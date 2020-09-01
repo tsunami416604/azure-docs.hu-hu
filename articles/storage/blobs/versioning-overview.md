@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 999f7bb14f87d883fa399b1168e887e935651e47
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056533"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89074534"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -29,6 +29,8 @@ A blob verziószámozásának engedélyezéséről a [blob verziószámozásána
 
 > [!IMPORTANT]
 > A blob verziószámozása nem segít helyreállítani egy Storage-fiók vagy-tároló véletlen törlését. A Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-versioning-works"></a>A blob-verziószámozás működése
 
@@ -163,7 +165,7 @@ Amikor pillanatképet készít egy verzióval ellátott blobról, a pillanatkép
 
 Az alábbi ábrán látható, hogy mi történik, amikor pillanatképet készít egy verzióval ellátott blobról. A diagramon a blob-verziók és-Pillanatképek a 2-es és 3-as AZONOSÍTÓJÚ változattal azonos adathalmazt tartalmaznak.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Egy verzióval ellátott blob pillanatképeit bemutató ábra":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Egy verzióval ellátott blob pillanatképeit bemutató ábra ":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Műveletek engedélyezése blob-verziókon
 

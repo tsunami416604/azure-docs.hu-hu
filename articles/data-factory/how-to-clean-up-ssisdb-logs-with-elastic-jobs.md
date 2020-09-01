@@ -10,12 +10,13 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: c7a4a1a839282618e9723e5fc916770a789fc32b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187616"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073556"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal
 
@@ -262,7 +263,7 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure-SSIS Integration Runtime kapcsolatos felügyeleti és figyelési feladatokhoz tekintse meg a következő cikkeket. A Azure-SSIS IR a Azure SQL Database SSISDB tárolt SSIS-csomagok futásidejű motorja.
 

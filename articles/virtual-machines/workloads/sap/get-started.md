@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 08/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871377"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075953"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -88,6 +88,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 08/28/2020: a SLES-ben lévő Azure-beli [virtuális gépeken az SAP NW](./high-availability-guide-suse-netapp-files.md) megváltozása a ANF-mel a hibák elhárítása érdekében
 - 08/25/2020: változás a [Ha az SAP ASCS/SCS és a WSFC és a megosztott lemez](./sap-high-availability-guide-wsfc-shared-disk.md)között, [készítse elő az Azure-infrastruktúrát az SAP ASCS/SCS és a WSFC](./sap-high-availability-infrastructure-wsfc-shared-disk.md) , valamint a megosztott lemezzel, és [telepítse az SAP NW ha WSFC és a megosztott lemezzel](./sap-high-availability-guide-wsfc-shared-disk.md) lehetőséget, hogy bemutassa az Azure Shared Disk és a Document SAP ERS2 architektúrájának használatát.
 - 08/25/2020: [több SID-t tartalmazó útmutató kiadása az SAP ASCS/SCS-hez a WSFC és az Azure megosztott lemezzel](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
 - 08/25/2020: változás a [Ha-útmutatóban az SAP ASCS/SCS és a WSFC és a Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md)esetében [készítse elő az Azure-infrastruktúrát az SAP ASCS/SCS-hez a WSFC és a fájlmegosztás](./sap-high-availability-infrastructure-wsfc-file-share.md), valamint a [multi-SID-vel kapcsolatos útmutató az SAP ASCS/SCS-hez a WSFC és a megosztott lemezzel](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) , valamint a multi-SID if útmutatót az SAP ASCS/SCS-hez [WSFC és SOFS fájlmegosztás](./sap-ascs-ha-multi-sid-wsfc-file-share.md) eredményeként a ASCS és a megosztott lemezzel rendelkező SAP WFC/SCS esetében 

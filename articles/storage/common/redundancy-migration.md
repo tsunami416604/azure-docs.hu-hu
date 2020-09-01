@@ -10,13 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50745c96f73f4e2d666a82746549ed361502e381
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501389"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072995"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>A Storage-fiók replikálási módjának módosítása
 
@@ -123,14 +123,14 @@ Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_A
 
 1. **Új támogatási kérelem** kiválasztása
 2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat. A **szolgáltatás** szakaszban válassza a **Storage-fiókok kezelése** elemet, majd a ZRS konvertálni kívánt erőforrást.
-3. Válassza a **Tovább** lehetőséget.
+3. Kattintson a **Tovább** gombra.
 4. A **probléma** szakasz a következő értékeket határozza meg:
     - **Súlyosság**: hagyja meg az alapértelmezett értéket.
     - **Probléma típusa**: válassza **Az adatáttelepítés**lehetőséget.
     - **Kategória**: válassza **az áttelepítés a ZRS**lehetőséget.
     - **Title**: adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
     - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például a (z) [LRS, GRS] \_ régióból a ZRS-be kíván migrálni \_ .
-5. Válassza a **Tovább** lehetőséget.
+5. Kattintson a **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Kattintson a **Létrehozás** gombra.
 
@@ -193,7 +193,7 @@ Ha a Storage-fiókot a GRS-ből a LRS-be telepíti át, akkor nem jár további 
 > [!IMPORTANT]
 > Ha a Storage-fiókját az RA-GRS-ről a GRS vagy a LRS-re telepíti át, akkor ez a fiók az RA-GRS-ként lesz kiszámlázva az RA-tól számított további 30 nap után.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Azure Storage-redundancia](storage-redundancy.md)
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)

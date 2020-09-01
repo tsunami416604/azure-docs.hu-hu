@@ -3,12 +3,13 @@ title: Az alkalmazás frissítése Service Fabric a PowerShell használatával
 description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helyezésének és a kód módosításának, valamint a PowerShell használatával történő frissítésének folyamatán.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064587"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075188"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric alkalmazás frissítése a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -68,7 +69,7 @@ A módosítások elvégzése után a jegyzékfájlnak a következőhöz hasonló
 <CodePackageName="Code" Version="2.0">
 ```
 
-Most a **VisualObjects** -megoldás alatt található **VisualObjects** -projekt alatt található *ApplicationManifest.xml* fájl frissítve lett a **VisualObjects. ActorService** projekt 2,0-es verziójára. Emellett az alkalmazás verziószáma a 1.0.0.0 2.0.0.0 frissül. A *ApplicationManifest.xmlnak* a következő kódrészlethez hasonlóan kell kinéznie:
+Most a **VisualObjects** -megoldás alatt található **VisualObjects** -projekt alatt található *ApplicationManifest.xml* fájl frissítve lett a **VisualObjects. ActorService** projekt 2,0-es verziójára. Emellett az alkalmazás verziószáma a 1.0.0.0 2.0.0.0 frissül. A *ApplicationManifest.xmlnak * a következő kódrészlethez hasonlóan kell kinéznie:
 
 ```xml
 <ApplicationManifestxmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -138,7 +139,7 @@ Néhány percen belül az előző PowerShell-paranccsal kapott állapotnak meg k
 
 A 2. verzióról a 3-as verzióra vagy a 2. verzióra való frissítést gyakorlatként is kipróbálhatja. A 2. verzióról az 1-es verzióra való áttérés is frissítésnek tekintendő. Az időkorláttal és az állapottal foglalkozó szabályzatokkal megismerheti őket. Az Azure-fürtön történő üzembe helyezéskor a paramétereket megfelelően be kell állítani. A konzervatív időkorlátot érdemes beállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: ff7cb3c03edf9b421347815311796896caaffd70
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ef76f3dafc02e89008ae164e3d868c628291766
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086602"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075307"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez
 
@@ -98,15 +98,23 @@ Az azonosító-átvitelszervező engedélyezése után az Azure AD DSban tárolt
 
 Az SSH-hitelesítéshez szükséges, hogy a kivonat elérhető legyen az Azure AD DSban. Ha csak rendszergazdai forgatókönyvekhez kíván SSH-t használni, létrehozhat egy csak felhőalapú fiókot, és az SSH-t a fürthöz is használhatja. Más felhasználók továbbra is használhatják az Ambari-vagy HDInsight-eszközöket (például a IntelliJ beépülő modult) anélkül, hogy az Azure AD DSban elérhetővé tennék a jelszó kivonatát.
 
+A hitelesítési problémák elhárításához tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+
 ## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>A OAuth-t használó ügyfelek a HDInsight-átjáróhoz csatlakoznak az ID Broker beállításával
 
 Az azonosító-átvitelszervező beállításakor a rendszer frissítheti az átjáróhoz csatlakozó egyéni alkalmazásokat és ügyfeleket, hogy először megszerezze a szükséges OAuth tokent. A jelen [dokumentumban](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ismertetett lépéseket követve szerezze be a jogkivonatot a következő információkkal:
 
-*   OAuth erőforrás URI-ja:`https://hib.azurehdinsight.net` 
+*   OAuth erőforrás URI-ja: `https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Engedély: (név: cluster. ReadWrite, azonosító: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
-## <a name="next-steps"></a>További lépések
+Az OAuth-jogkivonat megszerzését követően ezt a HTTP-kérelem engedélyezési fejlécében használhatja a fürt átjárójának (például <clustername> int.azurehdinsight.net). Például a Livy API-hoz hasonló minta curl-parancs a következőképpen nézhet ki:
+    
+```bash
+curl -k -v -H "Authorization: TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By: UPN"
+``` 
+
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)
