@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 802df45e7434fd0cb425137964880a281f885ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611186"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069408"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
 Ha a helyszíni hálózatot egy Azure-beli virtuális hálózathoz kapcsolja egy hibrid hálózat létrehozásához, az Azure hálózati erőforrásaihoz való hozzáférés szabályozása egy átfogó biztonsági csomag fontos részét képezi.
 
-A Azure Firewall használatával vezérelheti a hálózati hozzáférést egy hibrid hálózatban az engedélyezett és a letiltott hálózati forgalmat meghatározó szabályok használatával.
+Az Azure Firewallal az engedélyezett és letiltott forgalmat meghatározó szabályok segítségével szabályozhatja egy hibrid hálózat hálózati elérését.
 
 Ebben a cikkben három virtuális hálózatot fog létrehozni:
 
@@ -31,17 +31,16 @@ Ebben a cikkben három virtuális hálózatot fog létrehozni:
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Változók deklarálása
-> * A tűzfal hub virtuális hálózatának létrehozása
-> * A küllős virtuális hálózat létrehozása
-> * Helyszíni virtuális hálózat létrehozása
-> * A tűzfal konfigurálása és üzembe helyezése
-> * A VPN-átjárók létrehozása és csatlakoztatása
-> * A hub és a küllős virtuális hálózatok egyenrangúak
-> * Az útvonalak létrehozása
-> * A virtuális gépek létrehozása
-> * A tűzfal tesztelése
+* Változók deklarálása
+* A tűzfal hub virtuális hálózatának létrehozása
+* A küllős virtuális hálózat létrehozása
+* Helyszíni virtuális hálózat létrehozása
+* A tűzfal konfigurálása és üzembe helyezése
+* A VPN-átjárók létrehozása és csatlakoztatása
+* A hub és a küllős virtuális hálózatok egyenrangúak
+* Az útvonalak létrehozása
+* A virtuális gépek létrehozása
+* A tűzfal tesztelése
 
 Ha az oktatóanyag elvégzése helyett a Azure Portalt szeretné használni, tekintse meg a következőt [: oktatóanyag: Azure Firewall telepítése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md).
 
@@ -62,7 +61,7 @@ Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv me
 Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című szakaszát, amelyből megtudhatja, hogyan jönnek létre ezek az útvonalak.
 
 >[!NOTE]
->Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
+>Az Azure Firewallnak közvetlen internetkapcsolatra van szüksége. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 >
 >A Azure Firewall konfigurálható úgy, hogy támogassa a kényszerített bújtatást. További információ: [Azure Firewall kényszerített bújtatás](forced-tunneling.md).
 
@@ -71,7 +70,7 @@ Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című 
 
 A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell-referenciát](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
 
@@ -489,11 +488,11 @@ Set-AzFirewall -AzureFirewall $azfw
 
 Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kell lennie. A módosított szabályok ellenőrzése előtt zárja be a meglévő távoli asztalokat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 869c6590146561f6f2f50694c5cc3f79530dad25
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9b5cc1cdae31039fe3f94bc49fadf848032cfd86
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854294"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069289"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure Firewall Azure biztonsági alapterve
 
@@ -74,7 +74,7 @@ Vegye figyelembe, hogy nem hozhat létre saját szolgáltatási címkét, és ne
 
 **Útmutató**: az Azure-szabályzatok még nem teljes mértékben támogatottak Azure Firewall számára. A Azure Firewall Manager használatával a biztonsági konfigurációk szabványosítása is elérhető.
 
-Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek kiépítését a főbb környezeti összetevők, például az Azure Resources Manager-sablonok, a RBAC-vezérlőelemek és a házirendek egyetlen tervezet-definícióban történő csomagolásával. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
+Az Azure-tervrajzok segítségével a nagy léptékű Azure-környezeteket is leegyszerűsítheti a főbb környezeti összetevők (például az Azure Resources Manager-sablonok, az Azure RBAC-vezérlők és a házirendek) egyetlen tervezet-definícióban való csomagolásával. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -132,7 +132,7 @@ Megjegyzés: mindkét napló menthető egy Storage-fiókba, adatfolyamként tov�
 
 A tevékenységi naplókban található erőforrás-műveletek listája: Azure Resource Manager erőforrás-szolgáltatói műveletek
 
-- [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Platform-naplók és-metrikák összegyűjtése Azure Monitor ](../azure-monitor/platform/diagnostic-settings.md)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -416,11 +416,11 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: Azure Active Directory szerepköralapú hozzáférés-vezérlés (RBAC) használata a Azure Firewall és a kapcsolódó erőforrásokhoz való hozzáférés szabályozásához.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Firewall és a kapcsolódó erőforrásokhoz való hozzáférés szabályozásához.
 
-- [A RBAC konfigurálása az Azure-ban](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 

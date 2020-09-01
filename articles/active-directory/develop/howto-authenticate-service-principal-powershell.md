@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 423ec19d249d183f8888bf9e1eb837e2c860b1ed
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63d3bd0ec321dbcba8e50aed68b972a2e1987bfc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117141"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068738"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
@@ -220,7 +220,7 @@ A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 
 * A (z) "nincs engedélye a (z **)" Microsoft. Authorization/roleAssignments/Write "művelet végrehajtására a (z)"/Subscriptions/{GUID} "hatókörben."** – ezt a hibaüzenetet akkor látja, ha a fiók nem rendelkezik megfelelő engedélyekkel ahhoz, hogy egy szerepkört társítson az identitáshoz. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
 * Az alkalmazásokról és a szolgáltatásnevekről bővebben az [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md) című cikkben olvashat.

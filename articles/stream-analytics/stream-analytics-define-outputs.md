@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 92cc742fce101b67bfb359381b4eabf9cf2a404e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869575"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068983"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a 
 
 | Kimenet típusa | Particionálás | Biztonság | 
 |-------------|--------------|----------|
-|[1. generációs Azure Data Lake Storage](azure-data-lake-storage-gen1-output.md)|Azure Active Directory felhasználó </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|Igen, engedélyezni kell.|SQL-felhasználó hitelesítése </br> MSI (előzetes verzió)|
 |[Azure szinapszis Analytics (előzetes verzió)](azure-synapse-analytics-output.md)|Nem|SQL-felhasználó hitelesítése|
 |[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Igen|MSI </br> Hozzáférési kulcs|

@@ -10,14 +10,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517320"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070717"
 ---
-# <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL felügyelt példányok kapcsolatainak típusai
+# <a name="azure-sql-managed-instance-connection-types"></a>Felügyelt Azure SQL-példány kapcsolattípusai
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ez a cikk azt ismerteti, hogyan csatlakozhatnak az ügyfelek az Azure SQL felügyelt példányaihoz a kapcsolat típusától függően. A kapcsolati típusok módosítására szolgáló parancsfájl-mintákat alább találja, valamint az alapértelmezett kapcsolati beállítások módosításával kapcsolatos szempontokat.
@@ -69,7 +70,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatbázis visszaállítása SQL felügyelt példányra](restore-sample-database-quickstart.md)
 - Megtudhatja, hogyan [konfigurálhat nyilvános végpontot az SQL felügyelt példányain](public-endpoint-configure.md)

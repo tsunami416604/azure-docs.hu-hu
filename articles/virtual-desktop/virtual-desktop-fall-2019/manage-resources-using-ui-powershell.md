@@ -5,13 +5,14 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: lizross
-ms.openlocfilehash: 08366735308e8b3c6fb79efd1adca469272dd053
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005771"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069017"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz üzembe helyezése a PowerShell-lel
 
@@ -170,6 +171,6 @@ Most, hogy bármikor beállította a felügyeleti eszközt, bármikor elindítha
 
 Ha a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatos problémákba ütközik, kövesse az [Azure Resource Manager-távoli asztali szolgáltatások sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja a Azure Service Healtht a szolgáltatási problémák és az állapot-útmutatók figyelésére. További információ: [set up Service riasztások oktatóanyaga](set-up-service-alerts-2019.md).

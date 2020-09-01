@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 05d4bc8d249d5ac45fd36ce1ae58ca56870e3be6
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722772"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068966"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
 
@@ -245,7 +246,7 @@ Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe
     * A hálózati biztonsági csoport és a szükséges szabályok létrehozásához először telepítse a `New-AzureAddsNetworkSecurityGroup` parancsfájlt a `Install-Script -Name New-AaddsNetworkSecurityGroup` parancs használatával, majd futtassa a parancsot `New-AaddsNetworkSecurityGroup` . A felügyelt tartományhoz szükséges szabályokat a rendszer létrehozza.
 * [Engedélyezze a jelszó-szinkronizálást az Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) így a végfelhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakoztathat egy Windows rendszerű virtuális gépet][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatok szinkronizálását][tutorial-phs].
 

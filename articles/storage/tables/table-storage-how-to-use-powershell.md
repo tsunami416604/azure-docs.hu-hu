@@ -7,12 +7,13 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
-ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80545953"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070411"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-műveletek végrehajtása a Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -138,7 +139,7 @@ Remove-AzStorageTable –Name $tableName –Context $ctx
 Get-AzStorageTable –Context $Ctx | select Name
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha létrehozta az új erőforráscsoportot és a Storage-fiókot a jelen útmutató elején, eltávolíthatja az ebben a gyakorlatban létrehozott összes eszközt az erőforráscsoport eltávolításával. Ez a parancs törli a csoporton belül található összes erőforrást, valamint magát az erőforráscsoportot is.
 
@@ -146,7 +147,7 @@ Ha létrehozta az új erőforráscsoportot és a Storage-fiókot a jelen útmuta
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megismertük a közös Azure Table Storage-műveleteket a PowerShell-lel, beleértve a következőket: 
 

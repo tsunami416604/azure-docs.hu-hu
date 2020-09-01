@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 1d405aff5233f38aee2031220fd119693da64abb
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b1c257c206c58f62c1ea82eb3b04ff5830cfbd8d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892864"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071652"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -540,7 +540,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
+1. Válassza a __Felülvizsgálat és létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -670,7 +670,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

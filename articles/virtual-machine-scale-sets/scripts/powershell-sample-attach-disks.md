@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 06/25/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: f67df4fa654c8b78e66f008d67ac8386f427b343
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 2a2c93578d8cb4b40e504dd83e3f603bffcccaf6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046228"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069646"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Adatlemezek csatolása és használata virtuálisgép-méretezési csoportokkal PowerShell használatával
 Ez a szkript egy virtuálisgép-méretezési csoportot hoz létre, illetve adatlemezeket csatol és készít elő.
@@ -45,5 +45,5 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Frissítés – AzVmss](/powershell/module/az.compute/update-azvmss) | Frissíti a virtuálisgép-méretezési csoport modelljét a virtuálisgép-bővítmény alkalmazására. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).

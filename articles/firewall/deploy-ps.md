@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan telepítheti és konfigurálh
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 08/28/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 50d870590fa6b8351838af9cb91b7be39b8d30db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610659"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071703"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure Firewall üzembe helyezése és konfigurálása Azure PowerShell használatával
 
@@ -35,17 +35,17 @@ Ebben a cikkben egy egyszerűsített egyszeri VNet hoz létre három alhálózat
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-> [!div class="checklist"]
-> * Tesztelési hálózati környezet beállítása
-> * Tűzfal üzembe helyezése
-> * Alapértelmezett útvonal létrehozása
-> * Alkalmazás-szabály konfigurálása a www.google.com való hozzáférés engedélyezéséhez
-> * Hálózatszabály konfigurálása külső DNS-kiszolgálókhoz való hozzáférés engedélyezéséhez
-> * A tűzfal tesztelése
+
+* Tesztelési hálózati környezet beállítása
+* Tűzfal üzembe helyezése
+* Alapértelmezett útvonal létrehozása
+* Alkalmazás-szabály konfigurálása a www.google.com való hozzáférés engedélyezéséhez
+* Hálózatszabály konfigurálása külső DNS-kiszolgálókhoz való hozzáférés engedélyezéséhez
+* A tűzfal tesztelése
 
 Ha szeretné, ezt az eljárást a [Azure Portal](tutorial-firewall-deploy-portal.md)használatával végezheti el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -248,7 +248,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 * Fel tudja oldani a DNS-neveket a konfigurált külső DNS-kiszolgálóval.
 * Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A következő oktatóanyagban megtarthatja a tűzfal erőforrásait, vagy ha már nincs rá szükség, törölje a **test-FW-RG** erőforráscsoportot az összes tűzfalhoz kapcsolódó erőforrás törléséhez:
 
@@ -256,6 +256,6 @@ A következő oktatóanyagban megtarthatja a tűzfal erőforrásait, vagy ha má
 Remove-AzResourceGroup -Name Test-FW-RG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

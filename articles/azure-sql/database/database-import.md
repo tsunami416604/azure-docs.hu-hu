@@ -4,19 +4,19 @@ description: Hozzon létre egy új adatbázist Azure SQL Database vagy Azure SQL
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: migrate
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: a1e349d284d8f2c0c9c5194ac9f52534cd1ab973
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503242"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070044"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -155,7 +155,7 @@ Ezeket a varázslókat is használhatja.
 - [Adatrétegbeli alkalmazás importálása varázsló SQL Server Management Studioban](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
 - [SQL Server Importálás és exportálás varázsló](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha meg szeretné tudni, hogyan csatlakozhat az adatbázishoz, és hogyan lehet lekérdezéseket Azure SQL Databaseban, tekintse meg a gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használatával csatlakozhat az adatlekérdezéshez](connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).

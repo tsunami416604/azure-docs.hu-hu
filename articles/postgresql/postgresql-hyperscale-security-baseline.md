@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: debbc47204aca2fbea1307bd4b692921725e5fd0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: a7014e6721cb6985ddff5ddaf773de4e85a048e0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563908"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071499"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure biztonsági alapkonfiguráció a Azure Database for PostgreSQL-nagy kapacitású
 
@@ -347,13 +347,13 @@ Bizonyos esetekben a harmadik féltől származó alkalmazásoknak egy megbízha
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használata a nagy kapacitású (Citus) vezérlési síkja elérésének vezérléséhez (például Azure Portal). A RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a nagy kapacitású (Citus) vezérlő síkja elérésének vezérléséhez (például Azure Portal). Az Azure RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
 
 Ha az adatbázis szintjén szeretné módosítani a felhasználói jogosultságokat, használja a standard PostgreSQL-parancsokat egy olyan eszköz használatával, mint például a PgAdmin vagy a psql.
 
-- [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 - [A felhasználói hozzáférés konfigurálása az SQL-sel Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
@@ -742,7 +742,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
-**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
+**Útmutató**: kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 
 
 - [További információt a Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos, a Microsoft által felügyelt felhő-infrastruktúra,-szolgáltatások és-alkalmazások fejlesztésére vonatkozó stratégiáról és végrehajtásáról itt talál.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

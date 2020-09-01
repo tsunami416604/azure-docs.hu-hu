@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841b12b27447c4d32d25b8eb0d5bcf51ff8e2932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 02937c22cbc16defb0b7672ac7ebc56c2ae2beb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550277"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068779"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
 
@@ -235,7 +236,7 @@ A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvé
 
 A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem**nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
 
-|Teljesítményszámláló neve | Description|
+|Teljesítményszámláló neve | Leírás|
 | --- | --- |
 |Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy visszautasított) jelszavak teljes számát jeleníti meg.|
 |Elfogadott jelszavak |Ez a számláló a legutóbbi újraindítás óta elfogadott jelszavak teljes számát jeleníti meg.|
@@ -382,7 +383,7 @@ A fenti esemény nem határozza meg az újabb szoftver verzióját. Az adott inf
 
 Ezt az eseményt akkor is kibocsátja a rendszer, ha a proxykiszolgáló engedélyezve van az automatikus frissítés beállítással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibaelhárítás az Azure AD jelszavas védelméhez](howto-password-ban-bad-on-premises-troubleshoot.md)
 

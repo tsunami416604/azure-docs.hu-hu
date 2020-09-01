@@ -10,12 +10,13 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d532782847ec09d2a480951ecd77ae7746b000c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d8585b5d05012ab2aff2580d41fecf6423b509c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089370"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070428"
 ---
 # <a name="rotate-storage-account-access-keys-with-powershell"></a>Storage-fiók hozzáférési kulcsainak elforgatása a PowerShell-lel
 
@@ -49,7 +50,7 @@ Ez a szkript a következő parancsokat használja a Storage-fiók létrehozásá
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Beszerzi egy Azure Storage-fiók hozzáférési kulcsait. |
 | [Új – AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Egy Azure Storage-fiókhoz tartozó hozzáférési kulcs újralétrehozása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

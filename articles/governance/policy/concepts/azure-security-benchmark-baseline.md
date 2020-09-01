@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 909d423b31bb76d8d6aaed994d1c9f7372cbc01f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937511"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069782"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Azure Policy biztonsági alapterve
 
@@ -72,13 +72,13 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 
 *További információkért lásd [: biztonsági ellenőrzés:](../../../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: Azure Active Directory szerepköralapú hozzáférés-vezérlés (RBAC) használata a Azure Policyhoz való hozzáférés szabályozásához.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Policyhoz való hozzáférés szabályozásához.
 
-* [RBAC-engedélyek az Azure Policyban](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure RBAC engedélyek a Azure Policyban](../overview.md#rbac-permissions-in-azure-policy)
 
-* [A RBAC konfigurálása az Azure-ban](../../../role-based-access-control/role-assignments-portal.md)
+* [Az Azure RBAC konfigurálása](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -132,7 +132,7 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../../security/benchmarks/security-baselines-overview.md)

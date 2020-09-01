@@ -7,13 +7,13 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e38e9ee301d080110e8019e3fe407e7d5cdc026
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: ac087a7ba241534c08c4e5737973861727ab01ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499194"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069578"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azure monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
@@ -133,7 +133,7 @@ A nyilvános beállítások a konfigurációs séma [nyilvános elemében](diagn
 
 
 
-## <a name="powershell-deployment"></a>PowerShell-telepítés
+## <a name="powershell-deployment"></a>A PowerShell telepítése
 A PowerShell segítségével az alábbi példában látható módon telepítheti az Azure Diagnostics-bővítményt egy meglévő virtuális gépre a [set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) használatával. 
 
 ```powershell
@@ -194,11 +194,11 @@ A következő táblázat felsorolja a diagnosztikai bővítményből összegyűj
 
 | Adatok | Tárolási típus | Leírás |
 |:---|:---|:---|
-| WADDiagnosticInfrastructureLogsTable | Tábla | A diagnosztikai figyelő és a konfiguráció módosításai. |
-| WADDirectoriesTable | Tábla | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
-| WadLogsTable | Tábla | A nyomkövetési figyelő használatával kódban írt naplók. |
-| WADPerformanceCountersTable | Tábla | Teljesítményszámlálók. |
-| WADWindowsEventLogsTable | Tábla | Windows-eseménynaplók. |
+| WADDiagnosticInfrastructureLogsTable | Táblázat | A diagnosztikai figyelő és a konfiguráció módosításai. |
+| WADDirectoriesTable | Táblázat | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
+| WadLogsTable | Táblázat | A nyomkövetési figyelő használatával kódban írt naplók. |
+| WADPerformanceCountersTable | Táblázat | Teljesítményszámlálók. |
+| WADWindowsEventLogsTable | Táblázat | Windows-eseménynaplók. |
 | wad-IIS-failedreqlogfiles | Blob | Az IIS sikertelen kérelmek naplóiból származó információkat tartalmaz. |
 | wad-IIS-LogFiles | Blob | AZ IIS-naplókkal kapcsolatos információkat tartalmaz. |
 | Egyéni | Blob | Egyéni tároló, amely a diagnosztikai figyelő által figyelt könyvtárak konfigurálásán alapul.  A blob-tároló neve a WADDirectoriesTable-ben lesz meghatározva. |
@@ -210,5 +210,5 @@ Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való 
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.
 * Az [azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) tartalmaz Azure Diagnostics kezelőt, amely lehetővé teszi az Azure-on futó alkalmazások által gyűjtött diagnosztikai adatok megtekintését, letöltését és kezelését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A monitorozási adatok Azure-Event Hubs való továbbításával kapcsolatos részletekért tekintse meg az [adatok küldése a Windows Azure diagnostics Event Hubs bővítményből](diagnostics-extension-stream-event-hubs.md) című témakört.

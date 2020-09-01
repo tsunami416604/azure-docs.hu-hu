@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: 3a9ae1b847d3f31a2cd4c01f9ecb61e39e950ffe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92a5ce539cdd61feb57722756ec8722916f346de
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688132"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072383"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása a PowerShell használatával
 
@@ -37,7 +37,7 @@ Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózat
 * Erőforráshoz való alhálózati hozzáférés ellenőrzése
 * Erőforráshoz való alhálózati és internetes hozzáférés letiltásának ellenőrzése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -297,7 +297,7 @@ A következő parancsban cserélje le a `<publicIpAddress>` értékét az előz�
 mstsc /v:<publicIpAddress>
 ```
 
-A rendszer létrehoz és letölt a számítógépre egy Remote Desktop Protocol (.rdp) fájlt. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. Válassza az **OK** lehetőséget. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
+A rendszer létrehoz és letölt a számítógépre egy Remote Desktop Protocol (.rdp) fájlt. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. Kattintson az **OK** gombra. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 
 A *myVmPrivate* virtuális gépen a PowerShell-lel képezze le az Azure-fájlmegosztást a Z meghajtóra. Az alábbi parancsok futtatása előtt cserélje le a `<storage-account-key>` és `<storage-account-name>` a értéket a megadott értékekre, vagy olvassa be a következőt: [Storage-fiók létrehozása](#create-a-storage-account).
 
@@ -366,7 +366,7 @@ Get-AzStorageFile `
 
 A hozzáférés megtagadva, és *kap egy Get-AzStorageFile: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. HTTP-állapotkód: 403-HTTP-hibaüzenet: Ez a kérelem nem jogosult a művelet hibájának elvégzésére* , mert a számítógép nem a *MyVirtualNetwork* virtuális hálózat *privát* alhálózatán található.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 
@@ -374,7 +374,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy virtuális hálózati alhálózat szolgáltatási végpontját engedélyezte. Megismerte, hogy az Azure-szolgáltatásokkal üzembe helyezett erőforrásokhoz szolgáltatásvégpontok engedélyezhetők. Létrehozott egy Azure Storage-fiókot, és egy adott virtuális hálózati alhálózat erőforrásaira korlátozta a fiók felé irányuló hálózati hozzáférést. További információkat a szolgáltatásvégpontokról a [szolgáltatásvégpontok áttekintését](virtual-network-service-endpoints-overview.md) és az [alhálózatok kezelését](virtual-network-manage-subnet.md) ismertető cikkekben olvashat.
 

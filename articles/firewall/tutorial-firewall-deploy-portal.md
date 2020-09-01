@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536925"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069323"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -48,13 +48,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Igény szerint az oktatóanyag az [Azure PowerShell](deploy-ps.md) használatával is elvégezhető.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="set-up-the-network"></a>A hálózat beállítása
 
 Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe helyezéséhez szükséges erőforrásokat tartalmazza. Ezután hozzon létre egy VNet, alhálózatot és egy teszt kiszolgálót.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport tartalmazza az oktatóanyag összes erőforrását.
 
@@ -83,7 +85,7 @@ A VNet három alhálózatot fog tartalmazni.
 8. Az **alhálózat**területen válassza az **alapértelmezett**lehetőséget.
 9. Az **alhálózat neveként** írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
 10. A **címtartomány**mezőbe írja be a következőt: **10.0.1.0/26**.
-11. Válassza a **Mentés** lehetőséget.
+11. Kattintson a **Mentés** gombra.
 
    Ezután hozzon létre egy alhálózatot a munkaterhelés-kiszolgálóhoz.
 
@@ -107,7 +109,7 @@ Most hozza létre a munkaterhelés virtuális gépet, és helyezze a **munkaterh
    |---------|---------|
    |Erőforráscsoport     |**Teszt – FW-RG**|
    |Virtuális gép neve     |**SRV-Work**|
-   |Régió     |Ugyanaz, mint az előző|
+   |Region     |Ugyanaz, mint az előző|
    |Kép|Windows Server 2019 Datacenter|
    |Rendszergazda felhasználóneve     |Adja meg a felhasználónevet|
    |Jelszó     |Írjon be egy jelszót|
@@ -134,12 +136,12 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
    |---------|---------|
    |Előfizetés     |\<your subscription\>|
    |Erőforráscsoport     |**Teszt – FW-RG** |
-   |Name     |**Test-FW01**|
+   |Név     |**Test-FW01**|
    |Hely     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **test-FW-vn**|
-   |Nyilvános IP-cím     |**Új hozzáadása**<br>**Név**: **FW-pip**|
+   |Nyilvános IP-cím     |**Új hozzáadása**<br>**Név**:  **FW-pip**|
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 6. Tekintse át az összegzést, majd válassza a **Létrehozás** lehetőséget a tűzfal létrehozásához.
 
    Az üzembe helyezés néhány percet vesz igénybe.
@@ -241,7 +243,7 @@ Az oktatóanyag tesztelési célokra konfigurálja a kiszolgáló elsődleges é
 3. A **Beállítások**területen válassza a **DNS-kiszolgálók**elemet.
 4. A **DNS-kiszolgálók**területen válassza az **Egyéni**lehetőséget.
 5. Írja be a **209.244.0.3** a címet a **DNS-kiszolgáló hozzáadása** szövegmezőbe, és **209.244.0.4** címet a következő szövegmezőbe.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 7. Indítsa újra az **Srv-Work** virtuális gépet.
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
@@ -263,7 +265,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 * Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 * Fel tudja oldani a DNS-neveket a konfigurált külső DNS-kiszolgálóval.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 

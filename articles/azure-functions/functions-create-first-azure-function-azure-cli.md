@@ -3,14 +3,14 @@ title: HTTP-kérésekre válaszoló függvény létrehozása az Azure-ban
 description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
 ms.date: 03/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d63ae61dbaf969c021b0f1744e716068de88e4f8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 203baa4650c3a0a5aa87971dca87d751a070cd05
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547375"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071346"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -422,7 +422,7 @@ az group delete --name java-functions-group
 A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate` .
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)

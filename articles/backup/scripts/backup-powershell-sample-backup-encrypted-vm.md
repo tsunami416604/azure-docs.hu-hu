@@ -3,13 +3,13 @@ title: PowerShell-parancsfájl minta – Azure-beli virtuális gép biztonsági 
 description: Ebből a cikkből megtudhatja, hogyan használhat Azure PowerShell parancsfájl-mintát egy Azure-beli virtuális gép biztonsági mentésére.
 ms.topic: sample
 ms.date: 03/05/2019
-ms.custom: mvc
-ms.openlocfilehash: 755c4dbfffbd4e083c591d64c0f156e15f6e3780
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6e3af44284acdc96f6f0197c4153c6f7538570d2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826582"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069484"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Titkosított Azure-beli virtuális gép biztonsági mentése a PowerShell-lel
 
@@ -50,6 +50,6 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Várakozás – AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Egy Azure Backup-feladatokra vár. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/new-azureps-module-az).

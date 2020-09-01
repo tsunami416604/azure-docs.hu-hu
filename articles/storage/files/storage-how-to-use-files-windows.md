@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905754"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071074"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -64,7 +65,7 @@ A szkript beszerzése:
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="például":::
 
-1. Kattintson a **Csatlakozás** gombra.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Képernyőfelvétel a fájlmegosztás összekapcsolási ikonjáról.":::
 
@@ -87,7 +88,7 @@ Ezzel csatlakoztatta az Azure-fájlmegosztást.
     
     ![A Hálózati meghajtó csatlakoztatása legördülő menü képernyőképe](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, az UNC elérési út formátuma `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Példa: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
+1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, az UNC elérési út formátuma `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Például: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![A Hálózati meghajtó csatlakoztatása párbeszédpanel képernyőképe](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

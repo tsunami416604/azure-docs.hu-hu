@@ -17,12 +17,13 @@ ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a198a63d633573ad683a3f8e8215b2975721bc9
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bb3ea568d35ca1ad489fea3cd910c0e1e5dc9722
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794931"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071414"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
 
@@ -53,7 +54,7 @@ A naplókhoz a Get-AzureADAuditDirectoryLogs parancsmag használatával férhet 
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
 | Kategória                      | Get-AzureADAuditDirectoryLogs szűrő "Category EQ" ApplicationManagement "" |
 | Tevékenység dátumának időpontja            | Get-AzureADAuditDirectoryLogs – "activityDateTime gt 2019-04-18" szűrő |
-| A fentiek mindegyike              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "és category EQ" ApplicationManagement "és activityDateTime gt 2019-04-18"|
+| A fentiek közül az összes              | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "és category EQ" ApplicationManagement "és activityDateTime gt 2019-04-18"|
 
 
 Az alábbi képen egy példa látható erre a parancsra. 
@@ -75,7 +76,7 @@ A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használat�
 | Létrehozás dátuma és időpontja              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (mindent a 4/18-as 5:30-kor) |
 | status                        | Get-AzureADAuditSignInLogs-Filter "Status/errorCode EQ 50105" |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed engedélyezve] "" |
-| A fentiek mindegyike              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "és status/errorCode ne 0 és appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
+| A fentiek közül az összes              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Timothy Perkins "és status/errorCode ne 0 és appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
 
 
 Az alábbi képen egy példa látható erre a parancsra. 

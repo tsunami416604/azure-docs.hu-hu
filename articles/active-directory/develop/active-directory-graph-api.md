@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: da99468b1582c4acab192ad3b96761172aa69580
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115798"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068660"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy az Azure AD Graph API helyett az [Microsoft Graph](https://developer.microsoft.com/graph) használja az Azure Active Directory (Azure ad) erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott számú forgatókönyv áll rendelkezésre, amelyek esetében az Azure AD Graph API továbbra is megfelelő lehet; További információkért tekintse meg az [Microsoft Graph vagy az Azure ad Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blogbejegyzését, és [telepítse át az Azure ad Graph-alkalmazásokat a Microsoft Graphra](/graph/migrate-azure-ad-graph-overview).
+> Azt javasoljuk, hogy az Azure AD Graph API helyett az [Microsoft Graph](https://developer.microsoft.com/graph) használja az Azure Active Directory (Azure ad) erőforrásainak eléréséhez. A fejlesztési energiáinkat mostantól a Microsoft Graph-ra koncentráljuk, az Azure AD Graph API-hoz nem tervezünk további fejlesztéseket. Nagyon korlátozott számú forgatókönyv áll rendelkezésre, amelyek esetében az Azure AD Graph API továbbra is megfelelő lehet; További információkért tekintse meg az [Microsoft Graph vagy az Azure ad Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blogbejegyzését, és [telepítse át az Azure ad Graph-alkalmazásokat a Microsoft Graphra](/graph/migrate-azure-ad-graph-planning-checklist).
 
 Ez a cikk az Azure AD Graph APIre vonatkozik. A Microsoft Graph API-val kapcsolatos hasonló információk: [a Microsoft Graph API használata](/graph/use-the-api).
 
@@ -61,7 +61,7 @@ Az Azure AD Graph API számos alkalmazási forgatókönyvet tesz lehetővé. A l
 * Üzletági **(Egybérlős) alkalmazás**: ebben a forgatókönyvben a vállalati fejlesztő egy Office 365-előfizetéssel rendelkező szervezet számára működik. A fejlesztő olyan webalkalmazást épít ki, amely együttműködik az Azure AD-vel olyan feladatok elvégzéséhez, mint például a licencek felhasználóhoz rendelése. Ehhez a feladathoz hozzáférést kell adni az Azure AD-Graph APIhoz, így a fejlesztő regisztrálja az egybérlős alkalmazást az Azure AD-ben, és az olvasási és írási engedélyeket konfigurálja az Azure AD Graph APIhoz. Ezután az alkalmazás úgy van konfigurálva, hogy a saját hitelesítő adatait használja, vagy a jelenleg bejelentkezett felhasználó számára, hogy jogkivonatot szerezzen be az Azure AD Graph API meghívásához.
 * **Szoftveres szolgáltatásalkalmazás (több-bérlős)**: ebben a forgatókönyvben egy független SZOFTVERGYÁRTÓ (ISV) olyan üzemeltetett több-bérlős webalkalmazást fejleszt, amely az Azure ad-t használó más szervezeteknek biztosít felhasználói felügyeleti funkciókat. Ezeknek a szolgáltatásoknak hozzáférésre van szükségük a címtár objektumaihoz, így az alkalmazásnak meg kell hívnia az Azure AD Graph API. A fejlesztő regisztrálja az alkalmazást az Azure AD-ben, úgy konfigurálja, hogy írási és olvasási jogosultságot kér az Azure AD Graph APIhoz, majd engedélyezi a külső hozzáférést, hogy más szervezetek is beleférjenek az alkalmazáshoz a címtárában. Ha egy másik szervezet felhasználója először hitelesíti az alkalmazást, az alkalmazás által kért engedélyekkel rendelkező belefoglalási párbeszédablak jelenik meg. A beleegyezés megadása után az alkalmazás a felhasználó címtárában adja meg a kért engedélyeket az Azure AD-Graph APInak. További információ az engedélyezési keretrendszerről: [az engedélyezési keretrendszer áttekintése](consent-framework.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Active Directory Graph API használatának megkezdéséhez tekintse meg a következő témaköröket:
 

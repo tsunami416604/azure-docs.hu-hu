@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fda0384dacaf1183458e90688b1f6b63cc63a35
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501338"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069659"
 ---
 # <a name="manage-storage-account-access-keys"></a>A Storage-fiók hozzáférési kulcsainak kezelése
 
@@ -135,7 +135,7 @@ A Storage-fiók hozzáférési kulcsainak elforgatása az Azure CLI-vel:
 
 A fiók hozzáférési kulcsainak elforgatásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy olyan Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/regeneratekey/műveletet**. Néhány Azure-beli beépített szerepkör, amely tartalmazza ezt a műveletet, a **tulajdonos**, a **közreműködő**és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepköre** . A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage-hoz készült Azure beépített szerepköreivel kapcsolatos részletes információkért tekintse meg az Azure [-beli beépített Azure RBAC-szerepkörök](../../role-based-access-control/built-in-roles.md#storage) **tárolási** szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Storage-fiók áttekintése](storage-account-overview.md)
 - [Tárfiók létrehozása](storage-account-create.md)

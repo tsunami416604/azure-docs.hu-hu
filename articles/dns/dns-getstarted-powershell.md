@@ -8,12 +8,13 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: e33f6fdba1a15032d76b94804d610e292f663d59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 120cb86e1bacfefdd9242d8fa766b391983e9c81
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76937162"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069483"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rövid útmutató: Azure DNS-zóna és -rekord létrehozása az Azure PowerShell használatával
 
@@ -27,7 +28,7 @@ Az Azure DNS saját tartományok létrehozását is támogatja. Ha részletes ú
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -91,7 +92,7 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-A **www\.contoso. xyz** nevű állomásnév a **10.10.10.10**hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
+A **www \. contoso. xyz** nevű állomásnév a **10.10.10.10**hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
@@ -101,7 +102,7 @@ Ha már nincs rájuk szükség, a rövid útmutatóban létrehozott erőforráso
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozta első DNS-zónáját és -rekordját az Azure PowerShell használatával, létrehozhat webalkalmazás-rekordokat is egyéni tartományokban.
 

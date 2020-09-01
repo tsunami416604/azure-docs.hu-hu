@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: iainfou
-ms.openlocfilehash: 97c561b2ae919799343abe844b57239d04c26d90
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe373b9aa08d6999a9c57dd0008a207071e1dddd
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283129"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068898"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből Azure Active Directory Domain Services a Azure Portal használatával
 
@@ -86,7 +87,7 @@ A csoport alapú hatókörű szinkronizálás egy felügyelt tartományon való 
 
 A szinkronizálás hatókörének módosítása azt eredményezi, hogy a felügyelt tartomány újraszinkronizálja az összes adatot. A felügyelt tartományban már nem szükséges objektumok törlődnek, és az újraszinkronizálás hosszabb ideig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a szinkronizálási folyamatról: a [Azure ad Domain Services szinkronizálásának megismerése][concepts-sync].
 

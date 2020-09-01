@@ -6,12 +6,13 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506298"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071261"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rövid útmutató: az első függvény létrehozása a Kotlin és a Maven használatával
 
@@ -238,7 +239,7 @@ A [függvények eseményindítóinak és](functions-triggers-bindings.md) a http
 
 Egy egyszerű HTTP-triggerrel létrehozott egy Kotlin-függvény alkalmazást, és üzembe helyezte azt a Azure Functions.
 
-- A Java és a Kotlin függvények fejlesztésével kapcsolatos további információkért tekintse át a [Java functions fejlesztői útmutatóját](functions-reference-java.md) .
+- A Java és a Kotlin függvények fejlesztésével kapcsolatos további információkért tekintse át a  [Java functions fejlesztői útmutatóját](functions-reference-java.md) .
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.
 - Helyileg írjon függvényeket, és végezze el azok hibakeresését a [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), az [IntelliJ](functions-create-maven-intellij.md) és az [Eclipse](functions-create-maven-eclipse.md) használatával. 
 - Végezze el az Azure-ban üzembe helyezett függvények hibakeresését a Visual Studio Code-dal. Utasításokért tekintse meg a Visual Studio Code [kiszolgáló nélküli Java-alkalmazásokat](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) ismertető dokumentációját.

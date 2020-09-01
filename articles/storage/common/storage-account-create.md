@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501355"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069833"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
@@ -154,7 +154,7 @@ Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storag
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
 |Geo-zónaredundáns tárolás (GZRS)    |Standard_GZRS         |
-|Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)    |Standard_RAGZRS         |
+|Írásvédett geo-zónaredundáns tárolás (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -197,7 +197,7 @@ Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storag
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
 |Geo-zónaredundáns tárolás (GZRS)    |Standard_GZRS         |
-|Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)    |Standard_RAGZRS         |
+|Írásvédett geo-zónaredundáns tárolás (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Sablon](#tab/template)
 
@@ -240,7 +240,7 @@ A Storage-fiók törlése törli a teljes fiókot, beleértve a fiókban lévő 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)Storage-fiókjához.
-1. Kattintson a **Törlés** gombra.
+1. Kattintson a **Delete** (Törlés) gombra.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -285,7 +285,7 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 >
 > Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításához a Storage- [fiókok törlésekor a hibák elhárítása](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)című témakörben talál segítséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban egy általános célú v2 standard Storage-fiókot hozott létre. Ha meg szeretné tudni, hogyan tölthet fel és tölthet le blobokat a Storage-fiókjába, folytassa a blob Storage egyik rövid útmutatójának használatával.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 59b795462ff6e033e299c15f4099b7bfd3874451
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963869"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069393"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
 
@@ -98,7 +98,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-loggin
 
 **Útmutató**: Ha megfelelőségi célokra van szükség, válasszon ki egy hálózati virtuális berendezést az Azure piactéren, amely támogatja a betöltési észlelési rendszerek (azonosítók) és a behatolás-megelőzési rendszerek (IP-címek) funkcióit.
 
-Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
 Azure Firewall üzembe helyezése egy nyilvános IP-címmel, ugyanabban a virtuális hálózatban, mint a Azure Batch Pool-csomópontok. Konfigurálja a hálózati címfordítási (NAT-) szabályokat az interneten található megbízható helyek és az egyes készlet-csomópontok magánhálózati IP-címei között. A Azure Firewall a veszélyforrások felderítése területen állítsa be a "riasztás és megtagadás" beállítást, hogy megakadályozza a riasztást, és blokkolja az ismert kártékony IP-címekre és tartományokra irányuló forgalmat. Az IP-címek és tartományok a Microsoft Threat Intelligence-hírcsatornából származnak, és csak a legmagasabb szintű megbízhatósági rekordok tartoznak ide. 
 
@@ -178,9 +178,9 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a Azure batch-készletekhez kapcsolódó hálózati erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-Az Azure Activity log eseményeinek megtekintése és beolvasása:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
+Az Azure Activity log eseményeinek megtekintése és beolvasása: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view 
 
-Riasztások létrehozása a Azure Monitorban:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Riasztások létrehozása a Azure Monitorban: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Azure Security Center figyelés**: igen
 
@@ -500,7 +500,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Útmutató**: nem érhető el; Azure Batch Ügyfélszéf még nem támogatott.
  
-Ügyfélszéf támogatott szolgáltatások listája:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Ügyfélszéf támogatott szolgáltatások listája: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
@@ -596,13 +596,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Active Directory (HRE) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja az Azure-erőforrások felügyeleti síkjával, például a Batch-fiókkal, a Batch-készlettel és a Storage-fiókokkal való hozzáférést.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja az Azure-erőforrások felügyeleti síkjával, például a Batch-fiókkal, a Batch-készlettel és a Storage-fiókokkal való hozzáférést.
 
 Az Azure RBAC ismertetése:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-A RBAC konfigurálása az Azure-ban:
+Az Azure RBAC konfigurálása:
 
 https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -778,9 +778,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Lekérdezések létrehozása az Azure Graph használatával:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -821,9 +821,9 @@ Lekérdezések létrehozása az Azure Graph használatával:https://docs.microso
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Adott erőforrástípus megtagadása a következővel: Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -843,7 +843,7 @@ Adott erőforrástípus megtagadása a következővel: Azure Policy:https://docs
 
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 
-A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
@@ -907,9 +907,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - Microsoft.Network
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy effektusok ismertetése:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 **Azure Security Center figyelés**: nem alkalmazható
@@ -942,13 +942,13 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: Ha egyéni rendszerképeket használ a Azure batch készletekhez, használja a szerepköralapú hozzáférés-vezérlést (RBAC) annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató**: Ha egyéni rendszerképeket használ a Azure batch készletekhez, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
-A RBAC megismerése az Azure-ban:
+Az Azure RBAC ismertetése:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
 
-A RBAC konfigurálása az Azure-ban:
+Az Azure RBAC konfigurálása:
 
 https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
@@ -987,9 +987,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell
 
-Az elérhető Azure Policy aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
 
@@ -1039,7 +1039,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze. 
 
-A hitelesítőadat-olvasó beállítása:https://secdevtools.azurewebsites.net/helpcredscan.html
+A hitelesítőadat-olvasó beállítása: https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1169,7 +1169,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Útmutató**: a rendszerek incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatok végrehajtása. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
 
-Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+Tekintse meg a NIST kiadványát: útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és gyakorlatának megtervezéséhez: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1233,7 +1233,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági Alaptervekről](../security/benchmarks/security-baselines-overview.md)

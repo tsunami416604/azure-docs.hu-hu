@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/30/2020
-ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d78e9c11ef0c70730fedc0ea9ef4b5a61f7d29c6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511973"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072162"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Oktatóanyag: adatmegosztás az Azure-adatmegosztás használatával  
 
@@ -73,7 +73,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz.
 
-1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
+1. Kattintson a portál bal felső sarkában található menü gombra, majd válassza az **erőforrás létrehozása** (+) lehetőséget.
 
 1. Keresse meg az *adatmegosztást*.
 
@@ -83,13 +83,13 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | Name | *datashareacount* | Adja meg az adatmegosztási fiók nevét. |
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
+    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
-1. Válassza a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
+1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
 
 1. Ha a telepítés befejeződött, válassza az **Ugrás erőforráshoz**lehetőséget.
 
@@ -101,13 +101,13 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza **az adatmegosztás megkezdése**lehetőséget.
 
-1. Válassza a **Létrehozás** lehetőséget.   
+1. Kattintson a **Létrehozás** gombra.   
 
 1. Adja meg az adatmegosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
 
     ![EnterShareDetails](./media/enter-share-details.png "Adja meg a megosztás részleteit") 
 
-1. Válassza a **Folytatás** lehetőséget.
+1. Válassza a **Folytatás**lehetőséget.
 
 1. Az adatkészletek adatmegosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása**elemet. 
 
@@ -125,7 +125,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![AddRecipients](./media/add-recipient.png "Címzettek hozzáadása") 
 
-1. Válassza a **Folytatás** lehetőséget.
+1. Válassza a **Folytatás**lehetőséget.
 
 1. Ha kiválasztotta a pillanatkép-megosztás típusát, beállíthatja a pillanatkép-ütemtervet, hogy az adatokra vonatkozó frissítéseket biztosítson az adatfogyasztónak. 
 
@@ -133,12 +133,12 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza ki a kezdési időt és az ismétlődési időközt. 
 
-1. Válassza a **Folytatás** lehetőséget.
+1. Válassza a **Folytatás**lehetőséget.
 
-1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** elemre.
+1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** gombra.
 
 Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Azure-beli adatmegosztást, és hogyan hívhat meg címzetteket. Ha szeretne többet megtudni arról, hogy az adatfogyasztó hogyan fogadhat és fogadhat adatmegosztást, folytassa az [elfogadás és fogadás](subscribe-to-data-share.md) adatgyűjtéssel foglalkozó oktatóanyagot. 

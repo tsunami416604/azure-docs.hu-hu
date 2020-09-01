@@ -9,13 +9,15 @@
     - name: Nyilvános terheléselosztó létrehozása – Portal
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Nyilvános terheléselosztó létrehozása – PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
+      href: quickstart-load-balancer-standard-public-powershell.md
     - name: Nyilvános terheléselosztó létrehozása – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Nyilvános terheléselosztó létrehozása – ARM-sablon
       href: quickstart-load-balancer-standard-public-template.md
     - name: Belső terheléselosztó létrehozása – Portal
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: Belső terheléselosztó létrehozása – PowerShell
+      href: quickstart-load-balancer-standard-internal-powershell.md
     - name: Belső terheléselosztó létrehozása – Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true

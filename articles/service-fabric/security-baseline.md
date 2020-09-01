@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6e620502deb67c7fe79341bc1a45cb1ce33fa52f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836717"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071465"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric Azure biztonsági alapterve
 
@@ -546,7 +546,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
 **Útmutató**: nem alkalmazható; Ez a javaslat az adatok tárolására szolgáló, nem számítási erőforrásokra szolgál.
 
@@ -868,13 +868,13 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: az egyéni operációsrendszer-lemezképek biztonságos tárolása
 
-**Útmutató**: Ha egyéni lemezképeket használ, akkor a RBAC használatával győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez. A Container images esetében tárolja azokat Azure Container Registry és használja ki a RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
+**Útmutató**: Ha egyéni lemezképeket használ, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosíthatja, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez. A tárolói lemezképek esetében tárolja azokat Azure Container Registryban, és használja ki az Azure RBAC annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez.
 
-* [A RBAC megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Az Azure RBAC ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [A Container Registry RBAC ismertetése](../container-registry/container-registry-roles.md)
+* [Az Azure-RBAC megismerése Container Registry](../container-registry/container-registry-roles.md)
 
-* [A RBAC konfigurálása az Azure-ban](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Az Azure RBAC konfigurálása](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1138,7 +1138,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

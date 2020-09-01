@@ -10,13 +10,13 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: d60a6f9032a39ab4889ce0db154739c5cb3b540b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056720"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070496"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Olyan fiók létrehozása, amely támogatja az ügyfél által felügyelt kulcsokat a táblákhoz és a várólistákhoz
 
@@ -217,7 +217,7 @@ A következő JSON-példa egy általános célú v2-es Storage-fiókot hoz létr
 
 Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsára támaszkodik, tekintse meg az alábbi cikkek egyikét az ügyfél által felügyelt kulcsok Azure Key Vault való konfigurálásához:
 
-- [Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a Azure Portal használatával](storage-encryption-keys-portal.md)
+- [Ügyfél által kezelt kulcsok konfigurálása az Azure Key Vaulttal az Azure Portalon](storage-encryption-keys-portal.md)
 - [Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával](storage-encryption-keys-powershell.md)
 - [Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault az Azure CLI használatával](storage-encryption-keys-cli.md)
 
@@ -252,7 +252,7 @@ N/A
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md) 
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

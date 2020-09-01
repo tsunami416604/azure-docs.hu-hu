@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 12/19/2019
+ms.date: 08/28/2020
 ms.author: nitinme
-ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 1ab075d882f073098e015f8b0726743803edc2ca
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223754"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069986"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
@@ -27,11 +27,11 @@ Szeretné megtekinteni az új és frissített Cognitive Services dokumentációj
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Számítógépes látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Számítógépes látástechnológia")|A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz.|
+|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|A Custom Vision Service segítségével egyéni rendszerkép-osztályozók hozhatók létre.|
-|[Arcfelismerés](https://docs.microsoft.com/azure/cognitive-services/face/ "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
+|[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
 |[Űrlap-felismerő](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (előzetes verzió)|Az űrlap-felismerő azonosítja és kigyűjti a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután a a strukturált adatokat is megjeleníti, beleértve az eredeti fájlban lévő kapcsolatokat is.|
-|[Kézírás-felismerő](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (előzetes verzió)|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
+|[Kézírás-felismerő](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (kivonás)|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
 
 ## <a name="speech-apis"></a>Beszédfelismerési API-k
@@ -51,7 +51,7 @@ Szeretné megtekinteni az új és frissített Cognitive Services dokumentációj
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|A Language Understanding Service (LUIS) lehetővé teszi az alkalmazás számára, hogy megtudja, mit szeretne a saját szavaiban.|
+|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Nyelvi elemzés")|A Language Understanding Service (LUIS) lehetővé teszi az alkalmazás számára, hogy megtudja, mit szeretne a saját szavaiban.|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker lehetővé teszi, hogy a félig strukturált tartalomból hozzon létre egy kérdés-válasz szolgáltatást.|
 |[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Szövegelemzés")|A Text Analytics természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a fő kifejezés kinyerése és a nyelvfelismerés terén.|
 |[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Fordító")|A Translator gépi alapú szöveges fordítást biztosít közel valós időben.|
@@ -63,8 +63,8 @@ Szeretné megtekinteni az új és frissített Cognitive Services dokumentációj
 |:-----------|:------------------|
 |[Bing – Hírkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing – Hírkeresés")|Bing News Search a felhasználó lekérdezéséhez kapcsolódó Hírek listáját adja vissza.|
 |[Bing – Videokeresés](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing – Videokeresés")|Bing Video Search a felhasználó lekérdezéséhez tartozó videók listáját adja vissza.|
-|[Bing – Internetes keresés](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing – Internetes keresés")|Bing Web Search a felhasználó lekérdezéséhez szükséges keresési eredmények listáját adja vissza.|
-|[Bing – Automatikus kiegészítés](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing – Automatikus kiegészítés")|Bing Autosuggest lehetővé teszi részleges keresési lekérdezési kifejezés küldését a Bing számára, és a javasolt lekérdezések listájának visszaadása.|
+|[Bing Web Search](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Web Search")|Bing Web Search a felhasználó lekérdezéséhez szükséges keresési eredmények listáját adja vissza.|
+|[Bing Autosuggest](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing Autosuggest")|Bing Autosuggest lehetővé teszi részleges keresési lekérdezési kifejezés küldését a Bing számára, és a javasolt lekérdezések listájának visszaadása.|
 |[Bing – Egyéni keresés](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing – Egyéni keresés")|Bing Custom Search lehetővé teszi, hogy testreszabott keresési funkciókat hozzon létre az Ön számára fontos témakörökhöz.|
 |[Bing – Entitáskeresés](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing – Entitáskeresés")|Bing Entity Search a Bing által megadott entitásokra vonatkozó információkat ad vissza a felhasználó lekérdezéséhez.|
 |[Bing – Képkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing – Képkeresés")|Bing Image Search visszaadja a felhasználó lekérdezéséhez szükséges képek megjelenítését.|
@@ -77,7 +77,7 @@ Szeretné megtekinteni az új és frissített Cognitive Services dokumentációj
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Anomália detektor](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomáliadetektor") (előzetes verzió)|Az anomáliák detektorral figyelheti és azonosíthatja a rendellenességeket az idősorozat-adataiban.|
-|[Tartalommoderátor](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Tartalommoderátor")|Content Moderator a lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|
+|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Tartalommoderátor")|Content Moderator a lehetséges sértő, nemkívánatos és kockázatos tartalmak figyelését teszi lehetővé.|
 |[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|A személyre szabás lehetővé teszi, hogy kiválassza a legjobb élményt, amelyet a felhasználók láthatnak, valós idejű viselkedésük alapján.|
 
 ## <a name="subscription-management"></a>Előfizetés-kezelés
@@ -118,6 +118,6 @@ Az adatvédelem és az adatkezelés megismeréséhez nyissa meg a [megbízhatós
 
 Cognitive Services több [támogatási lehetőség](cognitive-services-support-options.md)is rendelkezésre áll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md)

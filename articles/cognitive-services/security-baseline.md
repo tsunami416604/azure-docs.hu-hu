@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7c6f115597b5b95cd1004f67adec53727736c377
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498344"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072026"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services Azure biztonsági alapterve
 
@@ -151,7 +151,7 @@ Az alkalmazás biztonsági csoportjai (ASG-EK) is használhatók az összetett b
 
 **Útmutató**: szabványos biztonsági konfigurációk definiálása és implementálása az Azure Cognitive Services-tárolóhoz kapcsolódó hálózati erőforrásokhoz Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. CognitiveServices" és a "Microsoft. Network" névterekben egyéni szabályzatok létrehozásához az Azure cache Redis-példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
-Az Azure tervrajzai segítségével leegyszerűsítheti a nagy léptékű Azure-környezeteket, például a Azure Resource Manager sablonokat, a szerepköralapú hozzáférés-vezérlést (RBAC) és a szabályzatokat egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezeteket a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek alapján, egyetlen tervezet-definícióban. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
 * [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -532,9 +532,9 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Felelősség**: megosztott
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Active Directory (Azure ad) szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozhatja az Azure Cognitive Services-vezérlési síkon való hozzáférést (például Azure Portal).
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az Azure Cognitive Services vezérlési síkon való hozzáférés vezérlésére (például Azure Portal).
 
 * [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
@@ -1088,7 +1088,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

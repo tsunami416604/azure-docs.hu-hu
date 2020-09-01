@@ -1,73 +1,181 @@
 - name: Az Azure Stack Edge és a Data Box Gateway dokumentációja
   href: /azure/databox-online/
   expanded: true
-- name: Data Box Gateway
+- name: GPU-val rendelkező Azure Stack Edge (előzetes verzió)
   items:
     - name: Áttekintés
       items:
-        - name: Mi a Data Box Gateway?
-          href: data-box-gateway-overview.md
+        - name: Mi az a GPU-val rendelkező Azure Stack Edge?
+          href: azure-stack-edge-gpu-overview.md
     - name: Oktatóanyagok
       items:
-        - name: 1 – Előkészítés
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A – Kiépítés Hyper-V-ben
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B – Kiépítés VMware-ben
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: '3 – Csatlakoztatás, konfigurálás és aktiválás'
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: '4 – Hozzáadás, csatlakozás a megosztáshoz'
-          href: data-box-gateway-deploy-add-shares.md
+        - name: 0 – Ellenőrzőlista lekérése
+          href: azure-stack-edge-gpu-deploy-checklist.md
+        - name: '1 – Rendelés, előkészítés'
+          href: azure-stack-edge-gpu-deploy-prep.md
+        - name: 2 – Telepítés
+          href: azure-stack-edge-gpu-deploy-install.md
+        - name: 3 – Csatlakozás
+          href: azure-stack-edge-gpu-deploy-connect.md
+        - name: 4 – Hálózat beállítása
+          href: azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md
+        - name: 5 – Eszköz konfigurálása
+          href: azure-stack-edge-gpu-deploy-set-up-device-update-time.md
+        - name: 6 – Tanúsítványok konfigurálása
+          href: azure-stack-edge-gpu-deploy-configure-certificates.md
+        - name: 7 – Aktiválás
+          href: azure-stack-edge-gpu-deploy-activate.md
+        - name: 8 – Számítás konfigurálása
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+        - name: '9A – Hozzáadás, csatlakozás a megosztáshoz'
+          href: azure-stack-edge-j-series-deploy-add-shares.md
+        - name: '9B – Hozzáadás, csatlakozás a tárfiókokhoz'
+          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Alapelvek
       items:
         - name: Követelmények áttekintése
-          href: data-box-gateway-system-requirements.md
+          href: azure-stack-edge-gpu-system-requirements.md
         - name: A korlátozások ismertetése
-          href: data-box-gateway-limits.md
+          href: azure-stack-edge-limits.md
         - name: Biztonsági áttekintés
-          href: data-box-gateway-security.md
-        - name: Használati esetek megtekintése
-          href: data-box-gateway-use-cases.md
+          href: azure-stack-edge-security.md
+        - name: Specifikációk áttekintése
+          items:
+            - name: Eszközspecifikációk
+              href: azure-stack-edge-gpu-technical-specifications-compliance.md
+            - name: Tápkábel-specifikációk
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
+        - name: A Kubernetes ismertetése
+          items:
+            - name: Mi az a Kubernetes?
+              href: azure-stack-edge-gpu-kubernetes-overview.md
+            - name: Kubernetes-tár
+              href: azure-stack-edge-gpu-kubernetes-storage.md
+            - name: Kubernetes-hálózatkezelés
+              href: azure-stack-edge-gpu-kubernetes-networking.md
+            - name: A Kubernetes szerepköralapú hozzáférés-vezérlése (RBAC)
+              href: azure-stack-edge-gpu-kubernetes-rbac.md
+            - name: A Kubernetes számítási feladatai
+              href: azure-stack-edge-gpu-kubernetes-workload-management.md
     - name: Útmutató
       items:
-        - name: Frissítés
-          href: data-box-gateway-apply-updates.md
-        - name: Kezelés
+        - name: IoT Edge-minták üzembe helyezése
+          items:
+            - name: Modul az Nvidia-katalógusból
+              href: azure-stack-edge-j-series-configure-gpu-modules.md
+            - name: GPU-modul a GIT-adattárból
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: GPU-modul a piactéren keresztül
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+        - name: A Kubernetes számítási feladatainak üzembe helyezése
+          items:
+            - name: Kubectl használata
+              items:
+                - name: Kubernetes-fürt elérése
+                  href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: Állapotmentes alkalmazás közzététele
+                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                - name: Állapotalapú alkalmazás üzembe helyezése (statikusan kiépített)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
+                - name: Állapotalapú alkalmazás üzembe helyezése (dinamikusan kiépített)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+            - name: IoT Edge használatával
+              items:
+                - name: Állapotmentes alkalmazás közzététele
+                  href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+            - name: Azure Arc használatával
+              items:
+                - name: Az Arc engedélyezése a Kubernetes-fürtön
+                  href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
+                - name: Állapotmentes alkalmazás üzembe helyezése a GitOps használatával
+                  href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+        - name: Az Azure Resource Manager konfigurálása
+          items:
+            - name: Csatlakozás az Azure PowerShell használatával
+              href: azure-stack-edge-j-series-connect-resource-manager.md
+            - name: Azure Resource Manager-jelszó beállítása
+              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+            - name: Ügyfél TLS-beállításainak konfigurálása
+              href: azure-stack-edge-j-series-configure-tls-settings.md
+        - name: Virtuális gépek üzembe helyezése
+          items:
+            - name: Virtuális gépek üzembe helyezése – sablonok
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: Virtuális gépek üzembe helyezése – Azure PowerShell-parancsmagok
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+            - name: Virtuális gépek üzembe helyezése – Azure PowerShell-szkript
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+            - name: Virtuális gépek üzembe helyezése – Azure CLI/Python
+              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: Virtuálisgép-rendszerkép létrehozása
+              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+        - name: Tanúsítványok kezelése
+          items:
+            - name: Követelmények
+              href: azure-stack-edge-j-series-certificate-requirements.md
+            - name: Saját eszközök használata
+              href: azure-stack-edge-j-series-manage-certificates.md
+            - name: Létrehozás az Azure Stack készenlét-ellenőrzési eszközével
+              href: azure-stack-edge-j-series-create-certificates-tool.md
+            - name: Tanúsítványhibák elhárítása
+              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+            - name: C#-modul fejlesztése
+              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: Peremhálózati számítás felügyelete
+          href: azure-stack-edge-j-series-manage-compute.md
+        - name: Tárhelyátjáró felügyelete
           items:
             - name: Megosztások
-              href: data-box-gateway-manage-shares.md
+              href: azure-stack-edge-j-series-manage-shares.md
             - name: Felhasználók
-              href: data-box-gateway-manage-users.md
+              href: azure-stack-edge-j-series-manage-users.md
+            - name: Tárfiókok
+              href: azure-stack-edge-j-series-manage-storage-accounts.md
             - name: Sávszélesség-ütemezések
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 'Hozzáférés, teljesítmény és kapcsolati lehetőségek'
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+        - name: Eszköz felügyelete
+          items:
+            - name: 'Teljesítmény, hozzáférés és kapcsolatok'
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: A PowerShell-lel
-              href: data-box-gateway-connect-powershell-interface.md
+              href: azure-stack-edge-gpu-connect-powershell-interface.md
+            - name: Frissítések alkalmazása
+              href: azure-stack-edge-gpu-install-update.md
+            - name: Eszköz visszaadása
+              href: azure-stack-edge-return-device.md
+            - name: Eszköz cseréje
+              href: azure-stack-edge-replace-device.md
         - name: Figyelés
-          href: data-box-gateway-monitor.md
+          items:
+            - name: Metrikadiagramok használata
+              href: azure-stack-edge-monitor.md
+            - name: Kubernetes-irányítópult használata
+              href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
         - name: Hibaelhárítás
-          href: data-box-gateway-troubleshoot.md
-        - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
-          href: azure-stack-edge-contact-microsoft-support.md
+          items:
+            - name: Eszközzel kapcsolatos problémák
+              href: azure-stack-edge-troubleshoot.md
+            - name: Rendelési problémák
+              href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+              href: azure-stack-edge-contact-microsoft-support.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: 2007 – Aktuális
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: Általános rendelkezésre állás (GA)
-          href: data-box-gateway-release-notes.md
-- name: Azure Stack Edge
+        - name: 2008 – Kibocsátási megjegyzések
+          href: azure-stack-edge-gpu-2008-release-notes.md
+    - name: Referencia
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: FPGA-val rendelkező Azure Stack Edge
   items:
     - name: Áttekintés
       items:
-        - name: Mi az Azure Stack Edge?
+        - name: Mi az az FPGA-val rendelkező Azure Stack Edge?
           href: azure-stack-edge-overview.md
     - name: Oktatóanyagok
       items:
@@ -151,6 +259,68 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Data Box Gateway
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi a Data Box Gateway?
+          href: data-box-gateway-overview.md
+    - name: Oktatóanyagok
+      items:
+        - name: 1 – Előkészítés
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A – Kiépítés Hyper-V-ben
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B – Kiépítés VMware-ben
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: '3 – Csatlakoztatás, konfigurálás és aktiválás'
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: '4 – Hozzáadás, csatlakozás a megosztáshoz'
+          href: data-box-gateway-deploy-add-shares.md
+    - name: Alapelvek
+      items:
+        - name: Követelmények áttekintése
+          href: data-box-gateway-system-requirements.md
+        - name: A korlátozások ismertetése
+          href: data-box-gateway-limits.md
+        - name: Biztonsági áttekintés
+          href: data-box-gateway-security.md
+        - name: Használati esetek megtekintése
+          href: data-box-gateway-use-cases.md
+    - name: Útmutató
+      items:
+        - name: Frissítés
+          href: data-box-gateway-apply-updates.md
+        - name: Kezelés
+          items:
+            - name: Megosztások
+              href: data-box-gateway-manage-shares.md
+            - name: Felhasználók
+              href: data-box-gateway-manage-users.md
+            - name: Sávszélesség-ütemezések
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 'Hozzáférés, teljesítmény és kapcsolati lehetőségek'
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: A PowerShell-lel
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: Figyelés
+          href: data-box-gateway-monitor.md
+        - name: Hibaelhárítás
+          href: data-box-gateway-troubleshoot.md
+        - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+          href: azure-stack-edge-contact-microsoft-support.md
+    - name: Kibocsátási megjegyzések
+      items:
+        - name: 2007 – Aktuális
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: Általános rendelkezésre állás (GA)
+          href: data-box-gateway-release-notes.md
 - name: További források
   items:
     - name: Azure Stack Edge C#-mintamodulok (.NET)

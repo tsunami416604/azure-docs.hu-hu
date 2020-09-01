@@ -5,13 +5,13 @@ tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: ff686c4ffeaefe58a277e486f0960491f6401ef8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 1024aa360202b11d0cb1317db359f9c2e661ebb9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068053"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070377"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Webalkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben
 
@@ -47,7 +47,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Módosít egy erőforrást egy erőforráscsoportban. |
 | [Kapcsoló – AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Egy webalkalmazás üzembehelyezési pontját éles környezetbe helyezi át. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: af1ba6bdf8edc3ce8653c9ecf196a599fb984ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805928"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071448"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Application Gateway létrehozása TLS-megszakítással Azure PowerShell használatával
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 > * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -289,7 +289,7 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-ssl-powershell/application-gateway-iistest.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 
@@ -297,6 +297,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Több webhelyet üzemeltető alkalmazásátjáró létrehozása](./tutorial-multiple-sites-powershell.md)

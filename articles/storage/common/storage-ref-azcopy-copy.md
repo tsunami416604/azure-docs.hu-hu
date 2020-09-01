@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 883d0afac5623838e9dde068964b36cfe3b44380
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281990"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070394"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -254,7 +254,7 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 
 **--from-to** karakterlánc opcionálisan megadja a forrás céljának kombinációját. Például: `LocalBlob` , `BlobLocal` , `LocalBlobFS` .
 
-**– Súgó** a másoláshoz.
+**– Súgó**  a másoláshoz.
 
 **--include-After** karakterlánc csak azokat a fájlokat tartalmazza, amelyek a megadott dátum/idő után vagy után módosultak. Az értéknek ISO8601 formátumúnak kell lennie. Ha nincs megadva timezone, az érték a AzCopy-t futtató gép helyi időzónájában lesz feltételezve. például UTC- `2020-08-19T15:04:00Z` időre vagy `2020-08-19` éjfélre (00:00) a helyi időzónában. A AzCopy 10,5-as verzióban ez a jelző csak a fájlokra, a mappákra vonatkozik, így a mappa tulajdonságai nem lesznek átmásolva, ha ezzel a jelzővel a vagy a kapcsolót használja `--preserve-smb-info` `--preserve-smb-permissions`
 
@@ -263,6 +263,8 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési utakat. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját (például: `myFolder;myFolder/subDirName/file.pdf` ).
 
 **--include-Pattern** sztring csak a másoláskor tartalmazza ezeket a fájlokat. Ez a beállítás támogatja a helyettesítő karaktereket (*). Külön fájlok a használatával `;` .
+
+a **--Versions** karakterlánc egy olyan fájlt ad meg, amelyben minden verzióazonosító külön sorban szerepel. Győződjön meg arról, hogy a forrásnak egyetlen blobra kell mutatnia, és a fájlban megadott összes verzióazonosító csak a forrás blobhoz tartozhat. A AzCopy letölti a megadott verziókat a megadott célmappában. További információ: [a blob korábbi verzióinak letöltése](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
 
 **--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett `INFO` ). 
 
@@ -302,6 +304,6 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 
 **--a megbízható-Microsoft-utótagok** karakterlánca további tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  A mező alapértelmezett értéke: `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

@@ -1,19 +1,19 @@
 ---
-title: Bejövő internetes forgalom szűrése Azure Firewall DNAT a portál használatával
+title: 'Oktatóanyag: a bejövő internetes forgalom szűrése Azure Firewall DNAT a portál használatával'
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és konfigurálhatja az Azure Firewall DNAT-ot az Azure Portalon.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 03/02/2020
+ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78251486"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069272"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: a bejövő internetes forgalom szűrése Azure Firewall DNAT a Azure Portal használatával
 
@@ -28,12 +28,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * DNAT-szabály konfigurálása
 > * A tűzfal tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban két társított virtuális hálózatot hozunk létre:
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-- **VN-Hub** (központi virtuális hálózat) – ezen a virtuális hálózaton található a tűzfal.
-- **VN-Spoke** (küllő virtuális hálózat) – ezen a virtuális hálózaton található a számítási feladat kiszolgálója.
+
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -46,13 +45,18 @@ Ebben az oktatóanyagban két társított virtuális hálózatot hozunk létre:
 
 ## <a name="set-up-the-network-environment"></a>A hálózati környezet beállítása
 
+Ebben az oktatóanyagban két társított virtuális hálózatot hozunk létre:
+
+- **VN-Hub** (központi virtuális hálózat) – ezen a virtuális hálózaton található a tűzfal.
+- **VN-Spoke** (küllő virtuális hálózat) – ezen a virtuális hálózaton található a számítási feladat kiszolgálója.
+
 Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
 ### <a name="create-the-hub-vnet"></a>A központi virtuális hálózat létrehozása
 
 1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
 2. A **hálózat**területen válassza a **virtuális hálózatok**lehetőséget.
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A **Név** mezőbe írja be a következőt: **VN-Hub**.
 5. A **Címtér** mezőbe írja be a következőt: **10.0.0.0/16**.
 6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -71,7 +75,7 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
 1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
 2. A **hálózat**területen válassza a **virtuális hálózatok**lehetőséget.
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A **Név** mezőbe írja be a következőt: **VN-Spoke**.
 5. A **Címtér** mezőbe írja be a következőt: **192.168.0.0/16**.
 6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -89,7 +93,7 @@ Most társítsa a két virtuális hálózatot.
 
 1. Válassza ki a **vn-hub** virtuális hálózatot.
 2. A **Beállítások** **területen válassza a**társítások lehetőséget.
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. Írja be a következőt: **társ-HubSpoke** a **vn-hub és a vn-küllő közötti társítás neve**számára.
 5. A virtuális hálózatnál válassza a **VN-Spoke** lehetőséget.
 6. Írja be a következőt: **peer-SpokeHub** a **vn – küllő – vn-hub névre**.
@@ -150,7 +154,7 @@ Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálóza
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: VN-Hub|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 6. Tekintse át az összegzést, majd válassza a **Létrehozás** lehetőséget a tűzfal létrehozásához.
 
    Az üzembe helyezés néhány percet vesz igénybe.
@@ -163,7 +167,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 
 1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
 2. A **hálózat**területen válassza az **útválasztási táblák**elemet.
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A **Név** mezőbe írja be a következőt: **RT-FWroute**.
 5. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd az **RG-DNAT-Test** lehetőséget.
@@ -197,7 +201,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 10. A **Célportok** mezőbe írja be a következőt: **3389**. 
 11. A **Lefordított cím** mezőbe írja be az Srv-Workload virtuális gép magánhálózati IP-címét. 
 12. A **Lefordított port** mezőben adja meg a **3389** értéket. 
-13. Válassza a **Hozzáadás** elemet. 
+13. Válassza a **Hozzáadás** lehetőséget. 
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 

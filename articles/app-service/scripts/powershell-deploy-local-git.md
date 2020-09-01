@@ -5,13 +5,13 @@ tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: be2f066f5150c0d3a9f1cfce639c26db853e0cb4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 03d2f2d3928393f8a251640a03d82b5963140141
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084891"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070292"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Webalkalmazás létrehozása és kód üzembe helyezése helyi Git-adattárból
 
@@ -41,7 +41,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [Új – AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy webalkalmazást a szükséges erőforráscsoporttal és App Service-csoporttal. Ha az aktuális könyvtár tartalmaz egy Git-adattárat, egy távoli `azure`-mappát is adjon hozzá. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

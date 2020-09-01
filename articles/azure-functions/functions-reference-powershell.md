@@ -3,14 +3,14 @@ title: PowerShell fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell használatával.
 author: eamonoreilly
 ms.topic: conceptual
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 8af1e52477cf047bbbec46884717166ec014fc6c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933501"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071159"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -655,7 +655,7 @@ Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-sc
 
 A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

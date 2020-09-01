@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f50310b8494b65ff8e9170d333d7c3e70c82ded
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255952"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071516"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Network Watcher Azure biztonsági alapterve
 
@@ -234,9 +234,9 @@ Network Watcher engedélyezni kell
 
 **Útmutató**: az Azure Network Watcher felügyeleti síkjával (például Azure Portal) rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. Network Watcher képességek használatához az Azure-ba bejelentkezett fiókot hozzá kell rendelni a tulajdonoshoz, a Közreműködőhöz vagy a hálózati közreműködő beépített szerepköreihez, vagy hozzá kell rendelni egy egyéni szerepkörhöz, amely az adott Network Watcher képességekhez felsorolt műveletekhez van rendelve.
 
-A szerepköralapú hozzáférés-vezérlés (RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (IAM) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal identitás és hozzáférés-vezérlés (IAM) paneljét az előfizetéséhez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban.
 
-* [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [A Network Watcher képességek használatához szükséges szerepköralapú hozzáférés-vezérlési engedélyek](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
@@ -443,15 +443,15 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Felelősség**: nem alkalmazható
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az előfizetéshez tartozó Azure Portal identitás és hozzáférés-vezérlés (iam) ablaktáblájának használatával konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC). A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (iam) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
 
 Network Watcher képességek használatához az Azure-ba bejelentkezett fiókot hozzá kell rendelni a tulajdonoshoz, a Közreműködőhöz vagy a hálózati közreműködő beépített szerepköreihez, vagy hozzá kell rendelni egy egyéni szerepkörhöz, amely az adott Network Watcher képességekhez felsorolt műveletekhez van rendelve.
 
-* [A RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Az Azure RBAC konfigurálása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-* [A Network Watcher RBAC engedélyeinek megismerése](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Az Azure RBAC engedélyeinek megismerése Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -957,7 +957,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

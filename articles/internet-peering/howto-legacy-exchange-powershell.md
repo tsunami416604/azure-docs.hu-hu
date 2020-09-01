@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2abd05243f30a32d8fe49f12bf4ee2ad09855002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 769522238939fe8ee786ae51a1b3b6051604451e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699991"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071669"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Örökölt Exchange-társ konvertálása Azure-erőforrásra a PowerShell használatával
 
@@ -91,7 +92,7 @@ Ez a példa a végpontok közötti kiépítés sikeres befejezését mutatja be:
     MaxPrefixesAdvertisedV6  : 2000
     ConnectionState          : Active
 ```
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```powershell
@@ -99,6 +100,6 @@ Get-Help Get-AzPeering -detailed
 ```
 További információ: [internetes peering GYIK](faqs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Exchange-társ létrehozása vagy módosítása a PowerShell használatával](howto-exchange-powershell.md)
