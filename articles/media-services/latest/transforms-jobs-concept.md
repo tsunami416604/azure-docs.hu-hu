@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Megtudhatja, hogyan hozhat létre átalakítókat a videók Azure Media Servicesban történő feldolgozásához szükséges szabályok leírásához.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: inhenkel
+ms.openlocfilehash: 103509de90d8819b19c46ebba7ae2dcc6071ac33
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543061"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256069"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
 
@@ -114,7 +114,7 @@ Részletekért lásd: [a médiafájlok feldolgozásának skálázása a CLI-vel]
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Hibakódok](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)

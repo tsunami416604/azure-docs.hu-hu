@@ -1,22 +1,22 @@
 ---
 title: Oktatóanyag az adatok Storage-fiókba Azure Stack Edge GPU-val történő átviteléhez | Microsoft Docs
-description: Megtudhatja, hogyan adhat hozzá és csatlakozhat a Storage-fiókokhoz Azure Stack Edge GPU-eszközön.
+description: Megtudhatja, hogyan vehet fel és csatlakozhat helyi és Edge Storage-fiókokhoz Azure Stack Edge GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7289498516664228e569d821032eeefeb6c65be4
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146249"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256396"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge"></a>Oktatóanyag: adatok átvitele a Storage-fiókokkal Azure Stack Edge használatával 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>Oktatóanyag: adatok átvitele a Storage-fiókok használatával Azure Stack Edge GPU-val 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -165,7 +165,7 @@ A következő lépésekkel importálhatja a tanúsítványokat a Azure Storage E
 
 A HTTP protokollon [keresztüli kapcsolódás során használt kapcsolat konfigurálásához és ellenőrzéséhez *http*](#verify-connection)kövesse az alábbi lépéseket. Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte az alábbi Azure Stack Edge-témaköröket:
 

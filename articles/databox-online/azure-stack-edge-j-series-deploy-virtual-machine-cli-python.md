@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: overview
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 77251148bed76f672adc2fffe2db688b33786022
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147116"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255528"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge-eszközön az Azure CLI és a Python használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge GPU-eszközön az Azure CLI és a Python használatával
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -426,6 +426,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

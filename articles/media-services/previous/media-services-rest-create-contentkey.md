@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 76717c580136d23030565c5476f8b282897784a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000414"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256973"
 ---
 # <a name="create-content-keys-with-rest"></a>Tartalom-kulcsok létrehozása REST használatával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -187,7 +190,7 @@ public enum ContentKeyType
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy **ContentKey** egy **ContentKeyType** készlettel ("1") és a **ProtectionKeyType** "0" értékre állítva, hogy JELEZZE, hogy a védelmi kulcs azonosítója az X. 509 tanúsítvány ujjlenyomata.  
 
-Kérelem
+Kérés
 
 ```console
 POST https://media.windows.net/api/ContentKeys HTTP/1.1

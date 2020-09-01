@@ -4,20 +4,20 @@ titleSuffix: Azure Media Services
 description: Ismerje meg az adatfolyam-végpontokat (forrás), a dinamikus csomagolást és a streaming szolgáltatást, amely közvetlenül az ügyfél vagy egy Content Delivery Network (CDN) számára biztosít tartalmat.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.author: inhenkel
+ms.openlocfilehash: aa54bc6b8b0912158a5dcd369b12801d51ca7141
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446214"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256497"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -54,7 +54,7 @@ A táblázat a típusokat írja le:
 |Típus|Skálázási egységek|Leírás|
 |--------|--------|--------|  
 |**Standard**|0|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely módosítható a prémium típusra `scaleUnits` .|
-|**Prémium szintű**|>0|**Prémium** szintű A streaming-végpontok speciális számítási feladatokhoz és dedikált és skálázható sávszélesség-kapacitás biztosításához alkalmasak. A **prémium** típusra a `scaleUnits` (folyamatos átviteli egységek) beállításával léphet be. `scaleUnits`dedikált kimenő kapacitást kínál, amely 200 Mbps-os növekményekben vásárolható meg. A **prémium** típus használata esetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
+|**Prémium**|>0|**Prémium** szintű A streaming-végpontok speciális számítási feladatokhoz és dedikált és skálázható sávszélesség-kapacitás biztosításához alkalmasak. A **prémium** típusra a `scaleUnits` (folyamatos átviteli egységek) beállításával léphet be. `scaleUnits` dedikált kimenő kapacitást kínál, amely 200 Mbps-os növekményekben vásárolható meg. A **prémium** típus használata esetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
 
 > [!NOTE]
 > Azon ügyfelek számára, akik nagy internetes célközönségeknek szánt tartalmat szeretnének kézbesíteni, javasoljuk, hogy engedélyezze a CDN használatát a streaming végponton.
@@ -65,7 +65,7 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 Funkció|Standard|Prémium
 ---|---|---
-Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
@@ -92,8 +92,8 @@ Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdons�
 
     Ha ezt a hibaüzenetet kapja, az adatközpont nem támogatja azt. Próbálkozzon egy másik adatközpontgal.
 
-- `cdnProfile`: Ha a `cdnEnabled` értéke TRUE (igaz), akkor értékeket is megadhat `cdnProfile` . `cdnProfile`annak a CDN-profilnak a neve, amelybe a CDN-végpontot létrehozza a rendszer. Megadhat egy meglévő cdnProfile, vagy használhat egy újat. Ha az érték NULL `cdnEnabled` , és igaz, a rendszer az alapértelmezett "AzureMediaStreamingPlatformCdnProfile" értéket használja. Ha a megadott `cdnProfile` érték már létezik, a rendszer létrehoz egy végpontot. Ha a profil nem létezik, a rendszer automatikusan létrehoz egy új profilt.
-- `cdnProvider`: Ha a CDN engedélyezve van, értékeket is megadhat `cdnProvider` . `cdnProvider`meghatározza, hogy melyik szolgáltatót fogja használni. Jelenleg három érték támogatott: "StandardVerizon", "PremiumVerizon" és "StandardAkamai". Ha nincs megadva érték, és `cdnEnabled` igaz, a rendszer a "StandardVerizon" értéket használja (ez az alapértelmezett érték).
+- `cdnProfile`: Ha a `cdnEnabled` értéke TRUE (igaz), akkor értékeket is megadhat `cdnProfile` . `cdnProfile` annak a CDN-profilnak a neve, amelybe a CDN-végpontot létrehozza a rendszer. Megadhat egy meglévő cdnProfile, vagy használhat egy újat. Ha az érték NULL `cdnEnabled` , és igaz, a rendszer az alapértelmezett "AzureMediaStreamingPlatformCdnProfile" értéket használja. Ha a megadott `cdnProfile` érték már létezik, a rendszer létrehoz egy végpontot. Ha a profil nem létezik, a rendszer automatikusan létrehoz egy új profilt.
+- `cdnProvider`: Ha a CDN engedélyezve van, értékeket is megadhat `cdnProvider` . `cdnProvider` meghatározza, hogy melyik szolgáltatót fogja használni. Jelenleg három érték támogatott: "StandardVerizon", "PremiumVerizon" és "StandardAkamai". Ha nincs megadva érték, és `cdnEnabled` igaz, a rendszer a "StandardVerizon" értéket használja (ez az alapértelmezett érték).
 - `crossSiteAccessPolicies`: A különböző ügyfelekhez tartozó helyek közötti hozzáférési házirendek megadására használatos. További információkért lásd: tartományok [közötti házirend fájljának specifikációja](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [egy szolgáltatás elérhetővé tétele a tartomány határain belül](/previous-versions/azure/azure-services/gg185950(v=azure.100)). A beállítások csak Smooth Streamingra vonatkoznak.
 - `customHostNames`: Egy adatfolyam-végpont konfigurálására szolgál az egyéni állomásnévre irányuló forgalom fogadásához. Ez a tulajdonság a standard és a prémium szintű streaming végpontok esetében érvényes, és a következő esetekben állítható be `cdnEnabled` : false.
 
@@ -122,7 +122,7 @@ Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdons�
 
     A Media Services jelenleg nem támogatja a TLS-t egyéni tartományokkal.
 
-- `maxCacheAge`– Felülbírálja a streaming végpont által a média töredékeken és az igény szerinti jegyzékeken beállított alapértelmezett Max-Age HTTP-gyorsítótár-vezérlő fejlécet. Az érték másodpercben van megadva.
+- `maxCacheAge` – Felülbírálja a streaming végpont által a média töredékeken és az igény szerinti jegyzékeken beállított alapértelmezett Max-Age HTTP-gyorsítótár-vezérlő fejlécet. Az érték másodpercben van megadva.
 - `resourceState` -
 
     - Leállítva: egy adatfolyam-végpont kezdeti állapota a létrehozás után
@@ -165,7 +165,7 @@ Lásd az alábbi cikkeket:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Dinamikus csomagolás](dynamic-packaging-overview.md)
 

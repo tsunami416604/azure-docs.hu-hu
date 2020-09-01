@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92a7c9580d48f70d4bc2391e5c13c8571c38feae
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018586"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255817"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure Storage SAS-hitelesítő adatokkal való eléréséhez
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a rendszerhez rendelt identitást egy Windowsos virtuális géphez (VM) a Storage Shared Access Signature (SAS) hitelesítő adatainak beszerzéséhez. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a rendszerhez rendelt identitást egy Windowsos virtuális géphez (VM) a Storage Shared Access Signature (SAS) hitelesítő adatainak beszerzéséhez. Kifejezetten [szolgáltatási SAS-hitelesítő adatok](../../storage/common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures) lekérésére. 
 
 A Service SAS lehetővé teszi, hogy a fiók hozzáférési kulcsa nélkül korlátozott ideig és egy adott szolgáltatásban (a mi esetünkben a blob szolgáltatásban) engedélyezze a hozzáférést a Storage-fiók objektumaihoz. A SAS-hitelesítő adatokat a szokásos módon használhatja a tárolási műveletek során, például a Storage SDK használata esetén. Ebben az oktatóanyagban egy blob feltöltését és letöltését mutatjuk be az Azure Storage PowerShell használatával. Az alábbiakat fogja elsajátítani:
 
@@ -50,7 +50,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet. Kihagyhatja ezt a l�
 3. Nevezze el a tárfiókot, amelyet később fog használni.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -83,7 +83,7 @@ Az Azure Storage nem támogatja natív módon az Azure AD-hitelesítést.  A fel
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
-Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell használnia.  Ha nincs telepítve, a folytatás előtt [töltse le a legújabb verziót](https://docs.microsoft.com/powershell/azure/).
+Ebben a részben az Azure Resource Manager PowerShell-parancsmagokat kell használnia.  Ha nincs telepítve, a folytatás előtt [töltse le a legújabb verziót](/powershell/azure/).
 
 1. Az Azure Portalon lépjen a **Virtuális gépek** lapra, keresse meg a Windows rendszerű virtuális gépet, majd kattintson az **Áttekintés** lap tetején található **Csatlakozás** gombra.
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
@@ -200,11 +200,9 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Windows rendszerű virtuális gépekhez rendelt felügyelt identitást az Azure Storage SAS-hitelesítő adatokkal való eléréséhez.  További információ az Azure Storage SAS-hitelesítéséről:
 
 > [!div class="nextstepaction"]
->[Közös hozzáférésű jogosultságkódok (SAS) használata](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-
-
+>[Közös hozzáférésű jogosultságkódok (SAS) használata](../../storage/common/storage-sas-overview.md)

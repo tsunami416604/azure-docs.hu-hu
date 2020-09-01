@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 883250bbf4bc745c1c2a0e8f442cab4d73c4479b
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 8400f134c7a2b9da32c04e15e42a54f697b9cea6
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147167"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254185"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge"></a>A Azure Portal használata a felhasználók Azure Stack Edge-beli kezeléséhez
 
@@ -80,6 +80,6 @@ A törlés végrehajtása után annak megfelelően frissül a felhasználók lis
 
 ![A felhasználók frissített listája](media/azure-stack-edge-j-series-manage-users/delete-user-4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-j-series-manage-bandwidth-schedules.md) talál.

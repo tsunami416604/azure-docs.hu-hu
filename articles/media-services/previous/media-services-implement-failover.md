@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 91ef9d8bf75874f07c6a4a9c5763ff77b97b0180
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008964"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256531"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Feladatátvételi továbbítás implementálása Media Services v2-vel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ez az útmutató bemutatja, hogyan másolhat tartalmat (blobokat) az egyik adategységből egy másikba az igény szerinti folyamatos átvitel érdekében. Ez a forgatókönyv akkor lehet hasznos, ha az Azure Content Delivery Network-t úgy szeretné beállítani, hogy a feladatátvételt egy adatközpontban, ha egy adatközpontban áramkimaradás történik. Ez az útmutató a Azure Media Services SDK, a Azure Media Services REST API és az Azure Storage SDK használatával mutatja be a következő feladatokat:
 
@@ -757,7 +759,7 @@ További információ a tartalomvédelem [használatáról: az AES-128 dinamikus
 
 [Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez](media-services-dotnet-check-job-progress-with-webhooks.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Mostantól a Traffic Manager segítségével átirányíthatja a kérelmeket a két adatközpont között, így bármilyen kimaradás esetén feladatátvételt hajthat végre.
 

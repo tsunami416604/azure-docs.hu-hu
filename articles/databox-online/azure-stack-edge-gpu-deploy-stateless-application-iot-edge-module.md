@@ -1,6 +1,6 @@
 ---
-title: Számítási hálózat kezelése Azure Stack Edge-ben a modulok eléréséhez | Microsoft Docs
-description: Ismerteti, hogyan lehet kibővíteni a számítási hálózatot a Azure Stack Edge-ben a modulok külső IP-n keresztüli eléréséhez.
+title: Kubernetes állapot nélküli alkalmazás üzembe helyezése a Azure Stack Edge GPU-n keresztül IoT Edge modul használatával | Microsoft Docs
+description: Ismerteti, hogyan helyezhet üzembe egy Kubernetes állapot nélküli alkalmazást a Azure Stack Edge GPU-eszközön egy olyan IoT Edge modul használatával, amely külső IP-n keresztül érhető el.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 8de3dbd754cd0cbef947d2cde44542f9f3f77a08
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084231"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254168"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>IoT Edge modul használata Kubernetes állapot nélküli alkalmazások futtatásához az Azure Stack Edge-eszközön
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>IoT Edge modul használata Kubernetes állapot nélküli alkalmazások futtatásához az Azure Stack Edge GPU-eszközön
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy állapot nélküli alkalmazást az Azure Stack Edge-eszközön egy IoT Edge modul használatával.
 
@@ -97,6 +97,6 @@ A következő lépésekkel adhat hozzá egy webkiszolgáló-alkalmazás-modult a
 
     ![A modulhoz való kapcsolódás ellenőrzése a megadott porton keresztül](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-webserver-app-1.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan teheti elérhetővé az állapot-nyilvántartó alkalmazást IoT Edge modulon keresztül<!--insert link-->.

@@ -1,6 +1,6 @@
 ---
-title: A kubectl használata a Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezéséhez dinamikusan kiosztott megosztáson keresztül Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan hozható létre és kezelhető egy Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezése egy Microsoft Azure Stack Edge-eszközön a kubectl használatával dinamikusan kiosztott megosztáson keresztül.
+title: A kubectl használata a Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezéséhez dinamikusan kiosztott megosztáson keresztül Azure Stack Edge GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan hozható létre és kezelhető egy Kubernetes állapot-nyilvántartó alkalmazás központi telepítése egy Microsoft Azure Stack Edge GPU-eszközön a kubectl használatával dinamikusan kiosztott megosztáson keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: e83b2b1cb7013b9d72bd2c2de8c7636d5c9d8773
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084256"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254321"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával az Azure Stack Edge-eszközön futó StorageClass
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>A kubectl használata Kubernetes állapot-nyilvántartó alkalmazások futtatásához a StorageClass-mel a Azure Stack Edge GPU-eszközön
 
 Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy egypéldányos állapotú alkalmazást a Kubernetes-ben egy StorageClass használatával a tárolók és a központi telepítés dinamikus kiépítéséhez. A központi telepítés `kubectl` egy meglévő Kubernetes-fürtön lévő parancsokat használ, és üzembe helyezi a MySQL-alkalmazást. 
 
@@ -324,6 +324,6 @@ C:\Users\user>
 ```                                                                                         
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hálózatkezelés kubectl-n keresztüli konfigurálásával kapcsolatban lásd: [állapot nélküli alkalmazás üzembe helyezése Azure stack peremhálózati eszközön](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)

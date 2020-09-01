@@ -1,6 +1,6 @@
 ---
 title: A kubectl használata a Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezéséhez statikusan kiosztott megosztáson keresztül Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan hozható létre és kezelhető egy Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezése egy Microsoft Azure Stack Edge-eszközön a kubectl használatával statikusan kiosztott megosztáson keresztül.
+description: Ismerteti, hogyan hozható létre és kezelhető egy Kubernetes állapot-nyilvántartó alkalmazás üzembe helyezése egy Azure Stack Edge GPU-eszközön a kubectl használatával statikusan kiosztott megosztáson keresztül.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: cabd27849445c0eab93a6649d228a172b66bd1a4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084304"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254372"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával az Azure Stack Edge-eszközön lévő PersistentVolume
 
@@ -350,6 +350,6 @@ A PV már nem kötődik a PVC-hez, mert a PVC törölve lett. Mivel a rendszer a
     ![Helyi megosztás törlése a PV-hez](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tárolók dinamikus kiépítésének megismeréséhez lásd: [állapot-nyilvántartó alkalmazás üzembe helyezése dinamikus kiépítés Azure stack peremhálózati eszközön](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)

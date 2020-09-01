@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/14/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce980d232c6b493bab817d3319d984015270ac7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d29edec6145ebc03218264532cae07b6afc9654c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018555"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254202"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Oktatóanyag: Hozzáférés az Azure Data Lake Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -46,7 +46,7 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt fel�
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Most hozzáférést adhat a virtuális gépnek az Azure Data Lake Store-on lévő fájlokhoz és mappákhoz.  Ehhez a lépéshez meglévő Data Lake Store-t is használhat, de újat is létrehozhat.  Ha új Data Lake Store-t szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure Data Lake Store rövid útmutatónak](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) a lépéseit. Az [Azure Data Lake Store dokumentációjában](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
+Most hozzáférést adhat a virtuális gépnek az Azure Data Lake Store-on lévő fájlokhoz és mappákhoz.  Ehhez a lépéshez meglévő Data Lake Store-t is használhat, de újat is létrehozhat.  Ha új Data Lake Store-t szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure Data Lake Store rövid útmutatónak](../../data-lake-store/data-lake-store-get-started-portal.md) a lépéseit. Az [Azure Data Lake Store dokumentációjában](../../data-lake-store/data-lake-store-overview.md) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
 
 A Data Lake Storage-ban hozzon létre egy új mappát, és adjon engedélyt a VM rendszer által hozzárendelt identitásának a mappában lévő fájlok olvasásához, írásához és futtatásához:
 
@@ -62,11 +62,11 @@ A Data Lake Storage-ban hozzon létre egy új mappát, és adjon engedélyt a VM
 10. Az 5. lépéshez hasonlóan kattintson a **Hozzáadás** lehetőségre, a **Kiválasztás** mezőbe írja be a virtuális gép nevét, válassza ki, és kattintson a **Kiválasztás** elemre.
 11. A 6. lépéshez hasonlóan kattintson az **Engedélyek kiválasztása** lehetőségre, válassza az **Olvasás**, **Írás** és **Végrehajtás** elemet, adja hozzá **ehhez a mappához**, és adja hozzá **hozzáférési és alapértelmezett engedély bejegyzéseként**.  Kattintson az **OK** gombra.  Ezzel elvileg sikeresen hozzáadta az engedélyt.
 
-A VM rendszer által hozzárendelt felügyelt identitása mostantól az összes műveletet el tudja végezni a létrehozott mappában lévő fájlokon.  További információkat a Data Lake Store hozzáférésének kezeléséről [a hozzáférés-vezérlés Data Lake Store-ban való használatával kapcsolatos](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control) cikkben talál.
+A VM rendszer által hozzárendelt felügyelt identitása mostantól az összes műveletet el tudja végezni a létrehozott mappában lévő fájlokon.  További információkat a Data Lake Store hozzáférésének kezeléséről [a hozzáférés-vezérlés Data Lake Store-ban való használatával kapcsolatos](../../data-lake-store/data-lake-store-access-control.md) cikkben talál.
 
 ## <a name="access-data"></a>Adatok elérése
 
-Az Azure Data Lake Storage natív támogatást nyújt az Azure AD-hitelesítésnek, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásai használatával beszerzett hozzáférési jogkivonatokat.  A Data Lake Store-fájlrendszer hitelesítéséhez az Azure AD által kiadott hozzáférési jogkivonatot kell küldenie a Data Lake Store-fájlrendszer végpontjának egy engedélyeztetési fejlécben, „Bearer <HOZZÁFÉRÉSI_JOGKIVONAT_ÉRTÉKE>” formátumban.  Az Azure AD-hitelesítés Data Lake Store általi támogatásáról további információt a [Data Lake Store-ral és az Azure Active Directoryval való hitelesítést](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory) ismertető cikkben talál.
+Az Azure Data Lake Storage natív támogatást nyújt az Azure AD-hitelesítésnek, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásai használatával beszerzett hozzáférési jogkivonatokat.  A Data Lake Store-fájlrendszer hitelesítéséhez az Azure AD által kiadott hozzáférési jogkivonatot kell küldenie a Data Lake Store-fájlrendszer végpontjának egy engedélyeztetési fejlécben, „Bearer <HOZZÁFÉRÉSI_JOGKIVONAT_ÉRTÉKE>” formátumban.  Az Azure AD-hitelesítés Data Lake Store általi támogatásáról további információt a [Data Lake Store-ral és az Azure Active Directoryval való hitelesítést](../../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md) ismertető cikkben talál.
 
 > [!NOTE]
 > A Data Lake Storage-fájlrendszer ügyféloldali SDK-i még nem támogatják az Azure-erőforrások felügyelt identitásait.  Ez az oktatóanyag frissülni fog, mihelyt az SDK általi támogatás kibővül.
@@ -188,9 +188,9 @@ A Data Lake Store-fájlrendszer más API-jaival fájlokhoz végezhet hozzáfűz�
 [!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használhat rendszer által hozzárendelt felügyelt identitást egy Windows rendszerű virtuális gépen egy Azure Data Lake Storage eléréséhez. További információ az Azure Data Lake Store-ról:
 
 > [!div class="nextstepaction"]
->[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)
+>[Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)

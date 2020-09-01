@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05278213e30aa6d31873e93025b5a4f1bc36a5a1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018535"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255749"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
@@ -44,7 +44,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a rendszerszintű i
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Ahhoz, hogy a virtuális gép hozzáférhessen a Azure SQL Database lévő adatbázishoz, használhat meglévő [logikai SQL Servert](../../azure-sql/database/logical-servers.md) , vagy létrehozhat egy újat. Ha új kiszolgálót és adatbázist szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure SQL rövid útmutatónak](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) a lépéseit. Az [Azure SQL dokumentációjában](https://docs.microsoft.com/azure/sql-database/) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
+Ahhoz, hogy a virtuális gép hozzáférhessen a Azure SQL Database lévő adatbázishoz, használhat meglévő [logikai SQL Servert](../../azure-sql/database/logical-servers.md) , vagy létrehozhat egy újat. Ha új kiszolgálót és adatbázist szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure SQL rövid útmutatónak](../../azure-sql/database/single-database-create-quickstart.md) a lépéseit. Az [Azure SQL dokumentációjában](/azure/sql-database/) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
 
 Két lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
 
@@ -53,7 +53,7 @@ Két lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
 
 ### <a name="enable-azure-ad-authentication"></a>Azure AD-hitelesítés engedélyezése
 
-**Az [Azure ad-hitelesítés konfigurálása](/azure/sql-database/sql-database-aad-authentication-configure):**
+**Az [Azure ad-hitelesítés konfigurálása](../../azure-sql/database/authentication-aad-configure.md):**
 
 1. Az Azure Portal bal oldali navigációs sávjában válassza az **SQL-kiszolgálók** elemet.
 2. Kattintson az Azure AD-hitelesítéshez engedélyezni kívánt SQL-kiszolgálóra.
@@ -64,10 +64,10 @@ Két lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
 
 ### <a name="create-contained-user"></a>Foglalt felhasználó létrehozása
 
-Ez a szakasz bemutatja, hogyan hozhat létre egy tárolt felhasználót a virtuális gép rendszerhez rendelt identitását képviselő adatbázisban. Ehhez a lépéshez [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) szükséges. Mielőtt hozzálátna, hasznos lehet áttekinteni az Azure AD-integráció hátterével foglalkozó következő cikkeket:
+Ez a szakasz bemutatja, hogyan hozhat létre egy tárolt felhasználót a virtuális gép rendszerhez rendelt identitását képviselő adatbázisban. Ehhez a lépéshez [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) szükséges. Mielőtt hozzálátna, hasznos lehet áttekinteni az Azure AD-integráció hátterével foglalkozó következő cikkeket:
 
-- [Univerzális hitelesítés a SQL Database és az Azure szinapszis Analytics szolgáltatással (SSMS-támogatás az MFA-hoz)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis Analytics használatával](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Univerzális hitelesítés a SQL Database és az Azure szinapszis Analytics szolgáltatással (SSMS-támogatás az MFA-hoz)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis Analytics használatával](../../azure-sql/database/authentication-aad-configure.md)
 
 Az SQL-ADATBÁZIShoz egyedi HRE megjelenítendő nevek szükségesek. Ezzel a HRE-fiókoknak, például a felhasználóknak, csoportoknak és egyszerű szolgáltatásoknak (alkalmazásoknak), valamint a felügyelt identitás számára engedélyezett virtuális gépek nevének egyedileg definiálva kell lennie a HRE a megjelenítendő nevükkel kapcsolatban. Az SQL DB ellenőrzi a HRE megjelenítendő nevét az ilyen felhasználók T-SQL-létrehozása során, és ha az nem egyedi, a parancs sikertelenül kéri az adott fiók egyedi HRE-megjelenítési nevének megadását.
 
@@ -203,9 +203,9 @@ Vizsgálja meg a `$DataSet.Tables[0]` értékét, hogy áttekinthesse a lekérde
 
 [!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan használhat egy rendszerhez rendelt felügyelt identitást a Azure SQL Database eléréséhez. Ha többet szeretne megtudni Azure SQL Database lásd:
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)

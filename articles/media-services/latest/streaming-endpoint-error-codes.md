@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services csomagolási és származási hibák | Microsoft Docs
 description: Ez a témakör a Azure Media Services streaming Endpoint (orgin) szolgáltatástól kapott hibákat ismerteti.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: 8f4e0d9a6781e35c1ed6197dd32181511506d145
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091980"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256480"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Streamvégpont (forrás) hibái 
 
@@ -34,7 +34,7 @@ A kérelem érvénytelen információkat tartalmaz, és a rendszer elutasítja e
 |MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|A kérelem nem tartalmaz titkosítási címkét az URL-címben. A CMAF-kérelmekhez titkosítási címke szükséges az URL-címben. Az egynél több titkosítási típussal konfigurált egyéb protokollokhoz is szükség van a titkosítási címkére. |
 |MPE_STORAGE_BAD_URL_SYNTAX |0x808900E9|A kérelemnek a kérés teljesítésére irányuló kérése hibás kérelemmel kapcsolatos hibát jelzett. |
 
-## <a name="403-forbidden"></a>403 – Tiltott
+## <a name="403-forbidden"></a>403 Tiltott
 
 A kérelem a következő okok egyike miatt nem engedélyezett:
 

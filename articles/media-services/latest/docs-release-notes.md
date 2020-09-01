@@ -3,22 +3,24 @@ title: A Azure Media Services v3 dokumentációjának frissítései
 description: Naprakészen tarthatja a legfrissebb Media Services v3 dokumentációs frissítéseit.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
-ms.author: juliako
-ms.openlocfilehash: 56c6b3732d0a77580c27f6cc8720b414e8e49d23
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 78879733a35395ae2dc486ab8eb08da544925a8a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038987"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255154"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>A Azure Media Services v3 dokumentációjának frissítései
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+documentation+updates%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 

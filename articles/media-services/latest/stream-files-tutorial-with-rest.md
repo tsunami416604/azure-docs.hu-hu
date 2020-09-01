@@ -3,23 +3,25 @@ title: Távoli fájl és stream kódolása Azure Media Services v3 használatáv
 description: Kövesse ennek az oktatóanyagnak a lépéseit egy fájl URL-cím alapján történő kódolásához és a tartalom továbbításához Azure Media Services a REST használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2020
-ms.author: juliako
-ms.openlocfilehash: f12771e55ced3b8783b6c7497b83e6b041c66b75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 350584984bff82c7dc80aff38044d887f981424c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074470"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256752"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services lehetővé teszi a médiafájlok kódolását olyan formátumokba, amelyek számos böngészőben és eszközön játszhatók le. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket.
 
@@ -36,7 +38,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Postman konfigurálása
 > * Kérések küldése a Postman használatával
 > * A streamelési URL-cím tesztelése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -384,7 +386,7 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 Egy erőforrás törléséhez válassza a „Delete ...” (Törlés) műveletet a törölni kívánt erőforrás alatt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.  
 

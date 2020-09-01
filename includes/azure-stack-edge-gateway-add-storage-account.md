@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/31/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 509f141939001e672112c9ff32124402174c70d2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 30ca4d330d9b16214396ac81e5ab5722ca0e7569
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083881"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254294"
 ---
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés**elemre. Az eszköznek online állapotban kell lennie.
 

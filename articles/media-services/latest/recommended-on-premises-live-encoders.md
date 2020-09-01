@@ -6,17 +6,19 @@ keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 04/16/2020
+ms.date: 08/31/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b246833b5a6ea38c70afe49f8b2d0421943a3a02
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030665"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256786"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ellenőrzött helyszíni élő adatfolyam-kódolók
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services egy [élő esemény](/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 

@@ -12,17 +12,19 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/18/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 65b0b276dcda58810f44494c14f06dd412d633f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: aa5c9178bc84983b7e577cd63cf5b8d9fb9a8436
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719291"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254661"
 ---
 # <a name="create-an-asset"></a>Adategység létrehozása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk bemutatja, hogyan hozhat létre Media Services adategységet.  Egy adategységet fog használni a médiatartalom kódolásához és adatfolyamként való tárolásához.  Ha többet szeretne megtudni Media Services eszközökről, olvassa el az adategységeket [Azure Media Services v3](assets-concept.md)
 

@@ -1,23 +1,23 @@
 ---
-title: GPU-modul üzembe helyezése az Microsoft Azure Stack Edge-eszközön | Microsoft Docs
+title: GPU-modul üzembe helyezése az Azure Stack Edge GPU-eszközön | Microsoft Docs
 description: Ismerteti, hogyan engedélyezhető a számítási funkció, és hogyan végezhető el a Azure Stack Edge-eszköz számítási felkészültsége a helyi felhasználói felületen keresztül.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 68badb1524c869309a0e2d96eaf6c9e490111bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084309"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254559"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-device"></a>GPU-kompatibilis IoT-modul üzembe helyezése Azure Stack peremhálózati eszközön
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>GPU-t támogató IoT-modul üzembe helyezése Azure Stack Edge GPU-eszközön
 
-Ez a cikk azt ismerteti, hogyan helyezhet üzembe GPU-kompatibilis IoT Edge modult az Azure Stack Edge-eszközön. 
+Ez a cikk azt ismerteti, hogyan helyezhet üzembe GPU-kompatibilis IoT Edge modult az Azure Stack Edge GPU-eszközön. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
   - Készítse elő Azure Stack Edge-t egy GPU-modul futtatásához.

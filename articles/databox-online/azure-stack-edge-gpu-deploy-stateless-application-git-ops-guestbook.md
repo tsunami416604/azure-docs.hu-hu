@@ -1,5 +1,5 @@
 ---
-title: A PHP Vendégkönyv alkalmazás üzembe helyezése az arc-kompatibilis Kubernetes Azure Stack Edge-eszközön | Microsoft Docs
+title: A PHP Vendégkönyv alkalmazás üzembe helyezése az arc-kompatibilis Kubernetes Azure Stack Edge GPU-eszközön | Microsoft Docs
 description: Ismerteti, hogyan helyezhet üzembe egy PHP-beli Vendégkönyv állapot nélküli alkalmazást a Redis használatával az Azure Stack Edge-alapú Kubernetes-fürtön lévő GitOps segítségével.
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 46cef291a447a7c243ee9ef66ee64e9c6264ad23
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 83ac012c861a0d066bdc47d8e15cbe7ac398aa23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084286"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254219"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge"></a>Az állapot nélküli PHP Vendégkönyv üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge-ben
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge GPU-ban
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy egyszerű, többrétegű webes alkalmazást a Kubernetes és az Azure arc használatával. Ez a példa a következő összetevőkből áll:
 
@@ -174,6 +174,6 @@ C:\Users\user>
 ```-->
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [figyelheti a Kubernetes irányítópultot a Azure stack Edge-eszközön üzemelő példányok figyelésére](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

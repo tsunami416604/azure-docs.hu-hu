@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Oktatóanyag, amely bemutatja, hogyan tölthet fel egy fájlt, hogyan kódolhatja és továbbíthatja a tartalmat a Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 2c2d55b15fb69fe4c1aea21bb2183f0e40c3586c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136490"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256769"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Bár ez az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használ, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
@@ -208,7 +210,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

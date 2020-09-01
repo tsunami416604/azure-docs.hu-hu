@@ -1,7 +1,7 @@
 ---
 title: A kísérletek nyomon követése és üzembe helyezése
 titleSuffix: Azure Data Science Virtual Machine
-description: Megtudhatja, hogyan követheti nyomon és naplózhatja a DSVM származó kísérleteket Azure Machine Learning és/vagy MLFlow.
+description: Megtudhatja, hogyan követheti nyomon és naplózhatja a Data Science Virtual Machinei kísérleteket Azure Machine Learning és/vagy MLFlow.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 943e8bd9f272f3dc8cefbfbccd326cf520497bb2
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146895"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254800"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Kísérletek követése és modellek üzembe helyezése Azure Machine Learning
 
@@ -40,7 +40,7 @@ Lépjen a [Azure Portalra](https://portal.azure.com) , és válassza ki az előf
 
 ![Konfigurációs fájl beolvasása](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-A konfiguráció olyan adatokat tartalmaz, mint például a munkaterület neve, az előfizetés stb., és ez azt jelenti, hogy a paramétereket nem kell megadnia.
+A konfiguráció olyan adatokat tartalmaz, mint például a munkaterület neve, az előfizetés stb., és ez azt jelenti, hogy nem kell ezeket a paramétereket megadnia.
 
 ## <a name="track-dsvm-runs"></a>DSVM-futtatások nyomon követése
 
@@ -123,7 +123,7 @@ Ekkor meg kell jelennie a naplózott Meaned error (MSE):
 
 ![MSE](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-Ha a Futtatás elemre kattint, a rendszer további részleteket és a __kimenet + naplókban__ található, pácolt modellt is tartalmazza.
+Ha a Futtatás gombra kattint, a __kimenetek és a naplókban__ a többi részlet és a pácolt modell is megjelenik.
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>Modell üzembe helyezése Azure Machine Learning
 
@@ -131,7 +131,7 @@ Ebben a szakaszban felvázoljuk, hogyan helyezhetők üzembe a DSVM betanított 
 
 ### <a name="step-1-create-inference-compute"></a>1. lépés: következtetés létrehozása a számításhoz
 
-A [AzureML Studio](https://ml.azure.com) bal oldali menüjében kattintson a __számítás__ , majd a megjelenő __fürtök__ fülre. Ezután kattintson az __+ új__ elemre az alábbi módon:
+A [AzureML Studio](https://ml.azure.com) bal oldali menüjében kattintson a __számítás__ , majd a megjelenő __fürtök__ fülre. Ezután kattintson az __+ új__ elemre az alább leírtak szerint:
 
 ![Következtetési számítás létrehozása](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
@@ -151,7 +151,7 @@ Ezután kattintson a __Létrehozás__gombra.
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>2. lépés: a nem Code következtetési szolgáltatás üzembe helyezése
 
-Ha a kódot regisztráltuk a kódban `register_model` , akkor a keretrendszer sklearn-ként lett megadva. A Azure Machine Learning a következő keretrendszerek esetében nem támogatja a kód központi telepítését:
+Amikor regisztrálta a modellt a kódban a használatával `register_model` , a keretrendszert sklearn-ként adtunk meg. A Azure Machine Learning a következő keretrendszerek esetében nem támogatja a kód központi telepítését:
 
 * scikit-learn
 * Tensorflow SaveModel formátuma
@@ -167,19 +167,19 @@ Ezután kattintson a __telepítés__ gombra a modell részletei ablaktáblán:
 
 ![Üzembe helyezés](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-A modellt az 1. lépésben létrehozott következtetési fürt (Azure Kubernetes szolgáltatás) számára fogjuk üzembe helyezni. Adja meg az alábbi adatokat a szolgáltatás nevének megadásával, valamint az AK számítási fürt nevét (az 1. lépésben létrehozva). Azt is javasoljuk, hogy növelje a __CPU-foglalási kapacitást__ 1 (0,1) értékre, és a __memória tartalék kapacitása__ legyen 1 (0,5). ehhez kattintson a __speciális__ elemre, és töltse ki a részleteket. Ezután kattintson a __telepítés__elemre.
+A modellt az 1. lépésben létrehozott következtetési fürt (Azure Kubernetes szolgáltatás) számára fogjuk üzembe helyezni. Adja meg az alábbi adatokat a szolgáltatás nevének megadásával, valamint az AK számítási fürt nevét (az 1. lépésben létrehozva). Azt is javasoljuk, hogy növelje a __CPU-foglalási kapacitást__ 1 (0,1) értékre, és a __memória tartalék kapacitása__ 1 (0,5) értékre, ha a __speciális__ gombra kattint, és kitölti a részleteket. Ezután kattintson a __telepítés__elemre.
 
 ![központi telepítés részletei](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
 ### <a name="step-3-consume"></a>3. lépés: felhasználás
 
-Ha a modell üzembe helyezése sikeres volt, a következőnek kell megjelennie (az oldal eléréséhez kattintson a bal oldali menüben található végpontok elemre > majd kattintson a telepített szolgáltatás nevére):
+Ha a modell üzembe helyezése sikeresen megtörtént, akkor a következőnek kell megjelennie (az oldal eléréséhez kattintson a bal oldali menüben található végpontok elemre > majd kattintson a telepített szolgáltatás nevére):
 
 ![Modell felhasználása](./media/how-to-track-experiments/mlflow-experiments-8.png)
 
-Figyelje meg, hogy az üzembe helyezés állapota az __áttéréstől__ a __kifogástalan__állapotba kerül. Ezen felül a részletek szakasz a REST-végpontot és a hencegő URL-címeket is tartalmazza, amelyeket az alkalmazás fejlesztője használhat a ML-modell integrálására az alkalmazásokba.
+Látnia kell, hogy az üzemelő példány állapota nem változik __kifogástalan__ __állapotba__ . Ezen felül a részletek szakasz a REST-végpontot és a hencegő URL-címeket is tartalmazza, amelyeket az alkalmazás fejlesztője használhat a ML-modell integrálására az alkalmazásokba.
 
-A végpontot a [Poster](https://www.postman.com/)használatával tesztelheti, másik lehetőségként használhatja a AzureML SDK-t is:
+A végpontot a [Poster](https://www.postman.com/)használatával tesztelheti, vagy használhatja a AzureML SDK-t is:
 
 ```python
 from azureml.core import Webservice
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>4. lépés: karbantartás
 
-Törölje az 1. lépésben létrehozott következtetési számítást, hogy ne legyenek folyamatos számítási költségek. A Azure Machine Learning Studio bal oldali menüjében kattintson a számítás >-fürtökre > válassza ki a számítási > Törlés lehetőséget.
+Törölje az 1. lépésben létrehozott következtetési számítást, hogy ne legyenek folyamatos számítási költségek. A Azure Machine Learning Studio bal oldali menüjében kattintson a számítás >-fürtökre > a számítási > Törlés elemre.
 
 ## <a name="next-steps"></a>További lépések
 

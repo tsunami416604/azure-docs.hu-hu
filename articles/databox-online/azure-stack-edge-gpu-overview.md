@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge – áttekintés | Microsoft Docs
-description: Leírja Azure Stack Edge, egy fizikai eszközt használó tárolási megoldás az Azure-ba való hálózati átvitelhez.
+title: Microsoft Azure Stack Edge GPU-val – áttekintés | Microsoft Docs
+description: Leírja, hogy Azure Stack Edge GPU-val, olyan tárolási megoldással, amely fizikai eszközt használ az Azure-ba irányuló hálózati átvitelhez.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: e3caf4e0e60b8ef9fb0b30b599b22e0f07d8998c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a8e1c83573de53962b3646304389023d91ab6dd3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088397"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256242"
 ---
 # <a name="what-is-azure-stack-edge-with-gpu-preview"></a>Mi az Azure Stack Edge a GPU-val (előzetes verzió)?
 
@@ -79,7 +79,7 @@ Azure Stack Edge fizikai eszköz, az Azure-erőforrás és a célként megadott 
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok tárolásához Azure Stack peremhálózati adatnak közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
 - Az [Azure stack Edge korlátainak](azure-stack-edge-limits.md)megismerése.

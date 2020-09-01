@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag a Azure Portal, adatközpont-környezet előkészítéséhez Azure Stack Edge üzembe helyezéséhez | Microsoft Docs
-description: Az Azure Stack Edge üzembe helyezésének első oktatóanyaga a Azure Portal előkészítését foglalja magában.
+title: Oktatóanyag a Azure Portal, Datacenter-környezet előkészítéséhez Azure Stack Edge GPU üzembe helyezéséhez | Microsoft Docs
+description: Az Azure Stack Edge GPU üzembe helyezésének első oktatóanyaga a Azure Portal előkészítését foglalja magában.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 004702d52245893f4746ce8e4b4a2cc36aad6a67
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c02af8983489651d8b5b83d5d3107a534c51f067
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181850"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254678"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-with-gpu"></a>Oktatóanyag: a Azure Stack Edge üzembe helyezésének előkészítése GPU-val 
 

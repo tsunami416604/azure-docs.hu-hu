@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e487d5b22a15ff87a107cf3e02fb0755f96078c1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: cdaff3dd8c1397ea2a0f70a5b84c0e42e9692412
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178654"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255424"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépen lévő Azure-erőforrásokhoz az Azure CLI használatával
 
@@ -40,10 +40,10 @@ Ebben a cikkben az Azure CLI használatával megtudhatja, hogyan hajthatja végr
 - A CLI-szkriptek futtatásához a következő három lehetőség közül választhat:
     - Használja a Azure Portal [Azure Cloud shellt](../../cloud-shell/overview.md) (lásd a következő szakaszt).
     - A beágyazott Azure Cloud Shell az egyes kódrészletek jobb felső sarkában található "kipróbálás" gomb segítségével érheti el.
-    - Ha inkább helyi CLI-konzolt szeretne használni, [telepítse az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) . 
+    - Ha inkább helyi CLI-konzolt szeretne használni, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) . 
       
       > [!NOTE]
-      > A parancsok frissítve lettek, hogy tükrözzék az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)legújabb kiadását.     
+      > A parancsok frissítve lettek, hogy tükrözzék az [Azure CLI](/cli/azure/install-azure-cli)legújabb kiadását.     
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -53,7 +53,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti és tilthatja le a rend
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>A rendszer által hozzárendelt felügyelt identitás engedélyezése egy Azure-beli virtuális gép létrehozásakor
 
-Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van a rendszerhez rendelt felügyelt identitás, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van a rendszerhez rendelt felügyelt identitás, a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. A használni kívánt fiók azon Azure-előfizetéshez legyen hozzárendelve, amely alatt üzembe fogja helyezni a virtuális gépet:
 
@@ -75,7 +75,7 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Rendszerhez rendelt felügyelt identitás engedélyezése meglévő Azure-beli virtuális gépen
 
-Ha engedélyezni szeretné a rendszer által hozzárendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha engedélyezni szeretné a rendszer által hozzárendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Ha az Azure CLI-t helyi konzolban használja, akkor először az [az login](/cli/azure/reference-index#az-login) paranccsal jelentkezzen be az Azure-ba. Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
@@ -91,7 +91,7 @@ Ha engedélyezni szeretné a rendszer által hozzárendelt felügyelt identitás
 
 ### <a name="disable-system-assigned-identity-from-an-azure-vm"></a>Rendszer által hozzárendelt identitás letiltása egy Azure-beli virtuális gépről
 
-Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 Ha olyan virtuális géppel rendelkezik, amelynek már nincs szüksége a rendszer által hozzárendelt identitásra, de továbbra is felhasználó által hozzárendelt identitásokra van szüksége, használja a következő parancsot:
 
@@ -116,7 +116,7 @@ például--identitások "/Subscriptions/ <SUBID> /Resourcegroups/ <RESROURCEGROU
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy Azure-beli virtuális gép létrehozásakor
 
-Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális GÉPHEZ a létrehozása során, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális GÉPHEZ a létrehozása során, a fióknak szüksége van a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) és [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoport-csoporttal. Hozzon létre egy [erőforráscsoportot](~/articles/azure-resource-manager/management/overview.md#terminology) a felhasználó által hozzárendelt felügyelt identitás tárolásához és üzembe helyezéséhez az [az Group Create](/cli/azure/group/#az-group-create)paranccsal. Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
 
@@ -156,7 +156,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése meglévő Azure-beli virtuális géphez
 
-Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) és [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Hozzon létre egy felhasználóhoz rendelt identitást az [az identity create](/cli/azure/identity#az-identity-create) paranccsal.  A `-g` paraméter határozza meg azt az erőforráscsoportot, amelyben a felhasználó által hozzárendelt identitás létrejött, és a `-n` paraméter a nevét adja meg. Ne felejtse el a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterek értékeit a saját értékeire cserélni:
 
@@ -191,7 +191,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása Azure-beli virtuális gépről
 
-A felhasználó által hozzárendelt identitás egy virtuális géphez való eltávolításához a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre. 
+A felhasználó által hozzárendelt identitás egy virtuális géphez való eltávolításához a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre. 
 
 Ha ez az egyetlen, a virtuális géphez hozzárendelt, felhasználó által hozzárendelt felügyelt identitás, a `UserAssigned` rendszer eltávolítja az azonosító típusú értékből.  Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A a `<USER ASSIGNED IDENTITY>` felhasználó által hozzárendelt identitás `name` tulajdonsága lesz, amely a virtuális gép identitás szakaszában található a következő használatával `az vm identity show` :
 
@@ -218,21 +218,4 @@ az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' ide
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt: 
   - [Windows rendszerű virtuális gép létrehozása a parancssori felülettel](../../virtual-machines/windows/quick-create-cli.md)  
-  - [Linux rendszerű virtuális gép létrehozása a parancssori felülettel](../../virtual-machines/linux/quick-create-cli.md) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - [Linux rendszerű virtuális gép létrehozása a parancssori felülettel](../../virtual-machines/linux/quick-create-cli.md)

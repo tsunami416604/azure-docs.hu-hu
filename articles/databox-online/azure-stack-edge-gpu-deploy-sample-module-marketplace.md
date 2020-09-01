@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 1532283be8521ad5c6cd5a9e2252e5ba839a4aa3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ac9ff084476f37348b72bdb42b9b74660132b762
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084334"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254627"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-device"></a>GPU-t támogató IoT-modul üzembe helyezése az Azure Marketplace-en Azure Stack Edge-eszközön
+# <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-gpu-device"></a>GPU-t támogató IoT-modul üzembe helyezése az Azure Marketplace-en Azure Stack Edge GPU-eszközön
 
 Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy grafikus processzorral (GPU) IoT Edge modult az Azure Marketplace-en az Azure Stack Edge-eszközön. 
 

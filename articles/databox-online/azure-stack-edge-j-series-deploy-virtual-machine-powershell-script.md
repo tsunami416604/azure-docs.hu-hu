@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6e776b6dfc233ffb12d3597a0e6bc203f1674abd
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147065"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256123"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack peremhálózati eszközön Azure PowerShell parancsfájl használatával
+# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack Edge GPU-eszközön Azure PowerShell parancsfájl használatával
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -116,6 +116,6 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
     ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gépek üzembe helyezése Azure PowerShell-parancsmagok használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)
