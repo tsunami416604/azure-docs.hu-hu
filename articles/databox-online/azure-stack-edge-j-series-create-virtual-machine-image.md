@@ -1,19 +1,19 @@
 ---
-title: Virtuálisgép-rendszerképek létrehozása az Azure Stack Edge-eszközhöz
-description: Ismerteti, hogyan hozhat létre Linux vagy Windows rendszerű virtuálisgép-rendszerképeket az Azure Stack Edge-eszközzel való használatra.
+title: Virtuálisgép-rendszerképek létrehozása az Azure Stack Edge GPU-eszközhöz
+description: Ismerteti, hogyan hozhat létre Linux vagy Windows rendszerű virtuálisgép-rendszerképeket az Azure Stack Edge GPU-eszköz használatával.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 08/21/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 41f94b8f500656f75831970baa4437607fe911f7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c7730b776ef1d7e1d5e372049395492641b839ff
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89088383"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146011"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge-eszközhöz
 

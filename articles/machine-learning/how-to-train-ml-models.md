@@ -11,17 +11,17 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650315"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146589"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-A Azure Machine Learning segítségével könnyedén elküldheti a betanítási szkriptet [különféle számítási célokba](how-to-set-up-training-targets.md#compute-targets-for-training)egy [RunConfiguration-objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és egy [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális szabályozást biztosít.
+A Azure Machine Learning segítségével könnyedén elküldheti a betanítási szkriptet [különféle számítási célokba](how-to-set-up-training-targets.md)egy [RunConfiguration-objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és egy [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális szabályozást biztosít.
 
 
 A kalkulátorok osztály megkönnyíti a modellek betanítását a mély tanulással és a megerősítő tanulással. Magas szintű absztrakciót biztosít, amely lehetővé teszi a futtatási konfiguráció egyszerű összeállítását. Létrehozhat és használhat egy általános számítást, amellyel betaníthatja [az oktatási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) szkriptet bármely kiválasztott képzési keretrendszer (például a scikit-Learn) bármely kiválasztott számítási célra, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban vagy egy Azure-beli GPU-fürt. A PyTorch, a TensorFlow, a láncolás és a megerősítő tanulási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [láncolást](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)és a [megerősítő tanulási](how-to-use-reinforcement-learning.md) becslések is biztosít, hogy egyszerűbbé váljon ezek a keretrendszerek.
@@ -29,7 +29,7 @@ A kalkulátorok osztály megkönnyíti a modellek betanítását a mély tanulá
 ## <a name="train-with-an-estimator"></a>Betanítás kalkulátorral
 
 Miután létrehozta a [munkaterületet](concept-workspace.md) , és beállította a [fejlesztési környezetet](how-to-configure-environment.md), a modell betanítása Azure Machine learning a következő lépésekkel jár:  
-1. Hozzon létre egy [távoli számítási célt](how-to-set-up-training-targets.md) (vegye figyelembe, hogy a helyi számítógépet számítási célként is használhatja)
+1. Hozzon létre egy [távoli számítási célt](how-to-create-attach-compute-sdk.md) (vagy helyi számítógépet is használhat számítási célként)
 2. [Betanítási adatok](how-to-access-data.md) feltöltése az adattárba (opcionális)
 3. A [betanítási parancsfájl](tutorial-train-models-with-aml.md#create-a-training-script) létrehozása
 4. Egy `Estimator`-objektum létrehozása
@@ -39,7 +39,7 @@ Ez a cikk az 4-5. lépésre koncentrál. Az 1-3-as lépéseknél tekintse meg a 
 
 ### <a name="single-node-training"></a>Egy csomópontos képzés
 
-Az `Estimator` Azure-ban a scikit-Learn modell esetében egy egycsomópontos betanítást használhat a távoli számítási feladatokhoz. A [számítási cél](how-to-set-up-training-targets.md#amlcompute) objektumot `compute_target` és a [FileDataset](how-to-create-register-datasets.md) objektumot már létrehozta `ds` .
+Az `Estimator` Azure-ban a scikit-Learn modell esetében egy egycsomópontos betanítást használhat a távoli számítási feladatokhoz. A [számítási cél](how-to-create-attach-compute-sdk.md#amlcompute) objektumot `compute_target` és a [FileDataset](how-to-create-register-datasets.md) objektumot már létrehozta `ds` .
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -63,7 +63,7 @@ Paraméter | Leírás
 --|--
 `source_directory`| A betanítási feladatokhoz szükséges összes kódot tartalmazó helyi könyvtár. Ezt a mappát a rendszer átmásolja a helyi gépről a távoli számításba.
 `script_params`| A szótárban adja meg azokat a parancssori argumentumokat, amelyeket át kell adni a betanítási parancsfájlnak `entry_script` `<command-line argument, value>` párok formájában. Ha részletes jelölőt szeretne megadni a alkalmazásban, használja a következőt: `script_params` `<command-line argument, "">` .
-`compute_target`| Távoli számítási cél, amelyet a képzési parancsfájl fog futni, ebben az esetben egy Azure Machine Learning számítási ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)-) fürt. (Vegye figyelembe, hogy bár a AmlCompute-fürt a leggyakrabban használt cél, más számítási célpontok is kiválaszthatók, például az Azure-beli virtuális gépek vagy akár a helyi számítógép is.)
+`compute_target`| Távoli számítási cél, amelyet a képzési parancsfájl fog futni, ebben az esetben egy Azure Machine Learning számítási ([AmlCompute](how-to-create-attach-compute-sdk.md#amlcompute)-) fürt. (Vegye figyelembe, hogy bár a AmlCompute-fürt a leggyakrabban használt cél, más számítási célpontok is kiválaszthatók, például az Azure-beli virtuális gépek vagy akár a helyi számítógép is.)
 `entry_script`| A `source_directory` távoli számításon futtatandó betanítási szkript filepath (a-hez képest). Ez a fájl és az attól függő további fájlok a mappában találhatók.
 `conda_packages`| Azoknak a Python-csomagoknak a listája, amelyeket a betanítási szkriptnek szüksége van a Conda-on keresztül.  
 
@@ -93,7 +93,7 @@ Két további tanítási forgatókönyv is elvégezhető a következőkkel `Esti
 
 A következő kód bemutatja, hogyan hajthat végre elosztott képzést egy kerasz-modellhez. Emellett az alapértelmezett Azure Machine Learning rendszerképek használata helyett a Docker hub egyéni Docker-rendszerképét adja meg `continuumio/miniconda` a betanításhoz.
 
-Ehhez már létre kell hoznia a [számítási cél](how-to-set-up-training-targets.md#amlcompute) objektumot `compute_target` . A következő módon hozhatja létre a kalkulátort:
+Ehhez már létre kell hoznia a [számítási cél](how-to-create-attach-compute-sdk.md#amlcompute) objektumot `compute_target` . A következő módon hozhatja létre a kalkulátort:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -150,7 +150,7 @@ A betanítási modellekhez tartozó jegyzetfüzetek mélyreható tanulási keret
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A futtatási metrikák nyomon követése a betanítás során](how-to-track-experiments.md)
 * [PyTorch-modellek betanítása](how-to-train-pytorch.md)

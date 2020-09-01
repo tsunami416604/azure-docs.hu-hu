@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e5b7211ffc72c4752008f36ebb266373c919025b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076021"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146861"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
@@ -81,17 +81,19 @@ Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven 
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 ```cmd
-mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-DjavaVersion=8" "-Ddocker"
 ```
 ---
+
+A `-DjavaVersion` paraméter közli a functions futtatókörnyezettel, hogy a Java melyik verzióját használja. `-DjavaVersion=11`Ha szeretné, hogy a függvények a Java 11 rendszeren fussanak, az előzetes verzióban érhető el. Ha nem ad meg értéket `-DjavaVersion` , a Maven alapértelmezett értéke a Java 8. További információ: Java- [verziók](functions-reference-java.md#java-versions).
 
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
 Ha a rendszer kéri, adja meg a következő értékeket:
@@ -106,8 +108,6 @@ Ha a rendszer kéri, adja meg a következő értékeket:
 `Y`A megerősítéshez írja be vagy nyomja le az ENTER billentyűt.
 
 A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
-
-Ahhoz, hogy a Java 11-es verzióban fusson az Azure-ban, módosítania kell az értékeket a pom.xml fájlban. További információ: Java- [verziók](functions-reference-java.md#java-versions).
 ::: zone-end
 A `--docker` beállítás létrehoz egy `Dockerfile` projektet a projekthez, amely egy megfelelő egyéni tárolót határoz meg a Azure functions és a kiválasztott futtatókörnyezettel való használatra.
 
@@ -159,14 +159,6 @@ Ha a `HttpExample` végpont megjelenik a kimenetben, keresse meg a következőt:
 ## <a name="build-the-container-image-and-test-locally"></a>A tároló rendszerképének létrehozása és helyi tesztelése
 
 Választható Vizsgálja meg a *Docker* gyökerében. A Docker leírja a szükséges környezetet a Function alkalmazás Linux rendszeren való futtatásához.  A Azure Functions által támogatott alaplemezképek teljes listája megtalálható a [Azure functions alap lemezképe lapon](https://hub.docker.com/_/microsoft-azure-functions-base).
-
-::: zone pivot="programming-language-java"  
-Ha Java 11 (előzetes) verziót használ, módosítsa a `JAVA_VERSION` Build argumentumot a generált Docker a következőre: 
-
-```docker
-ARG JAVA_VERSION=11
-```
-::: zone-end
     
 A legfelső szintű projekt mappában futtassa a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet, `azurefunctionsimage` és egy címkét `v1.0.0` . A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
@@ -311,17 +303,17 @@ Az Azure-beli Function alkalmazásban üzembe helyezett képpel a függvényt HT
 
     1. A bal oldali navigációs panelen válassza a **függvények**lehetőséget, majd válassza ki az ellenőrizni kívánt függvényt.
 
-        ![A funkció URL-címének beolvasása parancs a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+        ![Válassza ki a függvényt a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
     1. Válassza a **függvény URL-címének beolvasása**elemet.
 
-        ![A funkció URL-címének beolvasása parancs a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
+        ![A függvény URL-címének beolvasása a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
     
     1. Az előugró ablakban válassza az **alapértelmezett (Function Key)** elemet, majd másolja az URL-címet a vágólapra. A kulcs a következő karakterből álló karakterlánc `?code=` .
 
-        ![A funkció URL-címének beolvasása parancs a Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+        ![Válassza ki az alapértelmezett függvény-hozzáférési kulcsot](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
 
 
     > [!NOTE]  

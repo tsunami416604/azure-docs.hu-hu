@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651760"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144838"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -55,7 +55,7 @@ A futtatási konfigurációt a helyi számítógép esetében is elindíthatja, 
 * [Mi az a futtatási konfiguráció?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Oktatóanyag: az első ML-modell betanítása](tutorial-1st-experiment-sdk-train.md)
 * [Példák: Jupyter Notebook betanítási modellekre vonatkozó példák](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [Útmutató: számítási célok beállítása és használata a modell betanításához](how-to-set-up-training-targets.md)
+* [Útmutató: számítási célok használata a modell betanításához](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
@@ -158,6 +158,6 @@ A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platf
 
 A VS Code bővítmény használatával futtathatja és kezelheti a betanítási feladatokat. További információt a [vs Code erőforrás-kezelési útmutatója](how-to-manage-resources-vscode.md#experiments) című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [állíthat be képzési környezeteket](how-to-set-up-training-targets.md).
+Megtudhatja, hogyan [használhatja a számítási célokat a modellek betanításához](how-to-set-up-training-targets.md).

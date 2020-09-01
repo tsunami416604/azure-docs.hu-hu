@@ -1,19 +1,19 @@
 ---
-title: C# IoT Edge modul Azure Stack Edge-hez | Microsoft Docs
-description: Ismerje meg, hogyan fejleszthet egy C# IoT Edge modult, amely az Azure Stack Edge-ben telepíthető.
+title: C# IoT Edge modul Azure Stack Edge-hez GPU-val | Microsoft Docs
+description: Megtudhatja, hogyan fejleszthet C# IoT Edge modult, amelyet az Azure Stack Edge GPU-eszközön telepíthet.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: a6fb02033d7f242649907eaed8bf01aa23b3cbbe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: cef6524bd228d5fed342cabfb2959e5d8ab8954e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083897"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146232"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge-ben való áthelyezéséhez
 

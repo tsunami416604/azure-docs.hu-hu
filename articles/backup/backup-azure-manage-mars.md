@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893068"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145569"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -173,7 +173,7 @@ A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helys
 
 Ez a szakasz egy olyan forgatókönyvet tárgyal, amelyben a MARStal védett forrásoldali gép már nem érhető el, mert törölték, megsérült, kártevő szoftverrel/ransomware vagy leszerelt.
 
-Ezekhez a gépekhez a Azure Backup szolgáltatás biztosítja, hogy az utolsó helyreállítási pont nem jár le (azaz ne legyen metszve) a biztonsági mentési szabályzatban megadott megőrzési szabályoknak megfelelően. Ezért biztonságosan visszaállíthatja a gépet.  Vegye figyelembe a következő forgatókönyveket a biztonsági másolatban szereplő adatokon:
+Ezen gépek esetében a Azure Backup szolgáltatás biztosítja, hogy a legutóbbi helyreállítási pont ne járjon le (azaz ne legyen metszve) a biztonsági mentési szabályzatban megadott megőrzési szabályoknak megfelelően. Ezért biztonságosan visszaállíthatja a gépet.  Vegye figyelembe a következő forgatókönyveket a biztonsági másolatban szereplő adatokon:
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>1. forgatókönyv: a forrásszámítógép nem érhető el, és már nem kell megőriznie a biztonsági mentési adatait
 
@@ -190,7 +190,7 @@ A MARS biztonsági mentési szabályzatának kezelése a MARS-konzolon, és nem 
   1. Indítsa el a MARS-ügyfelet, hogy az igényeinek megfelelően kiterjessze a megőrzési időtartamot
 - Az újonnan visszaállított, a MARStal védett gép továbbra is készít biztonsági mentést.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars-ügynök támogatási mátrixát](./backup-support-matrix-mars-agent.md).
 - További információ az [igény szerinti biztonsági mentési szabályzat megőrzési viselkedéséről](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).

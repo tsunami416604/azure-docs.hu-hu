@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 146a257a9b8f31e79283d71ede1e1c5c0355765c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334784"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147782"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
@@ -24,16 +24,18 @@ ms.locfileid: "80334784"
 | Az Azure-beli privát társak által a VNet ExpressRoute-kapcsolatok esetében hirdetett útvonalak maximális száma |200 |
 | A Microsoft-partnerek számára a ExpressRoute standard használatával hirdetett útvonalak maximális száma |200 |
 | A Microsoft-partnerek számára a ExpressRoute Premium bővítménysel hirdetett útvonalak maximális száma |200 |
-| Ugyanahhoz a virtuális hálózathoz ugyanahhoz a társi helyhez kapcsolódó ExpressRoute-áramkörök maximális száma |4 |
-| Ugyanahhoz a virtuális hálózathoz kapcsolódó ExpressRoute-áramkörök maximális száma különböző egymásra vonatkozó helyen |4 |
+| A standard teljesítmény-/ErGw1AZ-átjáróhoz kapcsolódó ExpressRoute-áramkörök elérte száma |4 | 
+| Nagy teljesítményű/ErGw2AZ átjáróhoz kapcsolódó ExpressRoute-áramkörök elérte száma |8 | 
+| Ultra Performance/ErGw3AZ-átjáróhoz kapcsolódó ExpressRoute-áramkörök elérte száma |16 | 
+| Ugyanahhoz a virtuális hálózathoz csatolt ExpressRoute-áramkörök maximális száma különböző egyenrangú helyen (az összes SKU-ban) |4 |
 | A ExpressRoute áramkörben engedélyezett virtuális hálózati kapcsolatok száma |Tekintse meg a [virtuális hálózatok száma ExpressRoute áramköri](#vnetpercircuit) táblában.  |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>Virtuális hálózatok száma ExpressRoute áramkörben
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a> Virtuális hálózatok száma ExpressRoute áramkörben
 | **Áramkör mérete** | **A standard szintű virtuális hálózati kapcsolatok száma** | **A prémium szintű bővítménysel rendelkező virtuális hálózati kapcsolatok száma** |
 | --- | --- | --- |
-| 50 Mbps |10 |20 |
+| 50 Mbit/s |10 |20 |
 | 100 Mbps |10 |25 |
-| 200 Mbps |10 |25 |
+| 200 Mbit/s |10 |25 |
 | 500 Mbps |10 |40 |
 | 1 Gbps |10 |50 |
 | 2 Gbps |10 |60 |

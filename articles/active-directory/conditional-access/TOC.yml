@@ -41,6 +41,8 @@
       href: location-condition.md
     - name: Lehetőségelemzési eszköz
       href: what-if-tool.md
+    - name: Folyamatos hozzáférés-kiértékelés
+      href: concept-continuous-access-evaluation.md
     - name: Egyéni vezérlők
       href: controls.md
     - name: Klasszikus szabályzatok migrálása

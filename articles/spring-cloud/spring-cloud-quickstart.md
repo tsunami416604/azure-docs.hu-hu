@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: e4813f5c8c156fdf381a55ae450cf0ee35cedfa7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 067195cfef35863a7bcc314a55b4bf1ff8a3ccd7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048201"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146957"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -147,23 +147,24 @@ Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával
 
 1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure**-  ->  **üzembe helyezés az Azure Spring Cloud**-ban lehetőséget.
 
-    ![Üzembe helyezés az Azure 1-ben](media/spring-cloud-quickstart-java/intellij-deploy-azure.png)
+    [![Üzembe helyezés az Azure ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png) 1-ben](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
 1. Fogadja el az alkalmazás nevét a **név** mezőben. A **név** a konfigurációra hivatkozik, nem az alkalmazás nevére. A felhasználóknak általában nem kell módosítaniuk.
 1. Az összetevő **szövegmezőben** válassza a *hellospring-0.0.1-Snapshot. jar*elemet.
 1. Az **előfizetés** szövegmezőben ellenőrizze az előfizetését.
 1. A **Spring Cloud** szövegmezőben válassza ki azt az Azure Spring Cloud-példányt, amelyet az [Azure Spring Cloud-példány kiépítése](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)című részben hozott létre.
+1. Az *engedélyezéshez*állítsa be a **nyilvános végpontot** .
 1. Az **alkalmazás:** szövegmezőben válassza az **alkalmazás létrehozása...** lehetőséget.
 1. Adja meg a *hellospring*, majd kattintson **az OK**gombra.
 
-    ![Üzembe helyezés az Azure-ban OK](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)
+    [![Üzembe helyezés az Azure-ban ok ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
 1. A telepítés elindításához kattintson a **Futtatás** gombra az **Azure Spring Cloud app üzembe helyezése** párbeszédpanel alján. A beépülő modul futtatja a parancsot `mvn package` az `hellospring` alkalmazáson, és telepíti a parancs által generált jar-t `package` .
 ---
 
 Az üzembe helyezés befejezése után az alkalmazás a következő címen érhető el: `https://<service instance name>-hellospring.azuremicroservices.io/` .
 
-  ![Alkalmazás elérése böngészőből](media/spring-cloud-quickstart-java/access-app-browser.png)
+  [![Alkalmazás elérése böngészőből ](media/spring-cloud-quickstart-java/access-app-browser.png)](media/spring-cloud-quickstart-java/access-app-browser.png#lightbox)
 
 ## <a name="streaming-logs-in-real-time"></a>Valós idejű folyamatos átviteli naplók
 
@@ -187,16 +188,13 @@ A naplók az eredmények között jelennek meg:
 1. Válassza az **Azure Explorer**, majd a **Spring Cloud**elemet.
 1. Kattintson a jobb gombbal a futó alkalmazásra.
 1. Válassza a **folyamatos átviteli naplók** lehetőséget a legördülő listából.
-
-    ![Adatfolyam-naplók kiválasztása](media/spring-cloud-intellij-howto/streaming-logs.png)
-
 1. Válassza a példány lehetőséget.
 
-    ![Példány kiválasztása](media/spring-cloud-intellij-howto/select-instance.png)
+    [![Adatfolyam-naplók ](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png) kiválasztása](media/spring-cloud-quickstart-java/intellij-get-streaming-logs.png)
 
 1. A folyamatos átviteli napló a kimeneti ablakban jelenik meg.
 
-    ![Adatfolyam-napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
+    [![Adatfolyam-napló kimenete ](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)](media/spring-cloud-quickstart-java/intellij-streaming-logs-output.png)
 ---
 
 A speciális naplók elemzési szolgáltatásaihoz látogasson el a **naplók** lapra a [Azure Portal](https://portal.azure.com/)menüjében. A naplók itt néhány perc késéssel rendelkeznek.

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ed85678cefe45bbe27595488211173d4fa5418bd
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145268"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146419"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
@@ -28,8 +28,8 @@ Ebben a példában létrehozunk egy létrehozási és kiadási folyamatot egy Az
 
 A cikkben ismertetett lépések végrehajtásához egy Azure DevOps-szervezetre és egy Team-projektre van szükség.
 
-* [Azure DevOps-szervezet létrehozása](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Projekt létrehozása az Azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Azure DevOps-szervezet létrehozása](/azure/devops/organizations/accounts/create-organization)
+* [Projekt létrehozása az Azure DevOps](/azure/devops/organizations/projects/create-projects)
 
 ### <a name="source-control-for-your-environment"></a>A környezet verziókövetés
 
@@ -48,7 +48,7 @@ Az ebben a példában használt kód szerkezet a következőhöz hasonló:
 
 Ez a szakasz feltételezi, hogy már ismeri a verziókövetés és a Resource Manager-sablonok tervezését. Ha nem ismeri ezeket a fogalmakat, további információért tekintse meg a következő lapokat.
 
-* [Mi az a verziókövetés?](/azure/devops/user-guide/source-control?view=azure-devops)
+* [Mi az a verziókövetés?](/azure/devops/user-guide/source-control)
 * [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
@@ -309,7 +309,7 @@ Most, hogy beállította a forráskódot, megkezdheti az első felépítést.
 
 ## <a name="continuous-integration"></a>Folyamatos integráció
 
-Az Azure DevOps Services szolgáltatáson belüli [Azure-folyamatok](/azure/devops/pipelines/get-started/?view=azure-devops)segítenek a létrehozási, tesztelési és üzembe helyezési folyamat megvalósításában az alkalmazásaihoz.
+Az Azure DevOps Services szolgáltatáson belüli [Azure-folyamatok](/azure/devops/pipelines/get-started/)segítenek a létrehozási, tesztelési és üzembe helyezési folyamat megvalósításában az alkalmazásaihoz.
 
 A folyamat ezen szakaszában a tesztek általában a kód érvényesítésére és a szoftver megfelelő részeinek összeállítására futnak. A tesztek száma és típusai, valamint az Ön által futtatott további feladatok a szélesebb körű Build-és kiadási stratégiától függenek.
 
@@ -323,9 +323,9 @@ Ebben a példában a **HPC-Application** mappára fogunk összpontosítani. A **
 
 1. A build folyamat létrehozásához két lehetőség közül választhat:
 
-    a. [A vizuális tervező használatával](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Ha ezt szeretné használni, kattintson a "Visual Designer használata" lehetőségre az **új folyamat** lapon.
+    a. [A vizuális tervező használatával](/azure/devops/pipelines/get-started-designer). Ha ezt szeretné használni, kattintson a "Visual Designer használata" lehetőségre az **új folyamat** lapon.
 
-    b. [YAML-buildek használata](/azure/devops/pipelines/get-started-yaml?view=azure-devops). Az új folyamat lapon az Azure Repos vagy a GitHub lehetőségre kattintva hozhat létre új YAML-folyamatot. Azt is megteheti, hogy az alábbi példát a forrás vezérlőelemben tárolja, és egy meglévő YAML-fájlra hivatkozik, ha a Visual Designerre kattint, majd a YAML sablont használja.
+    b. [YAML-buildek használata](/azure/devops/pipelines/get-started-yamls). Az új folyamat lapon az Azure Repos vagy a GitHub lehetőségre kattintva hozhat létre új YAML-folyamatot. Azt is megteheti, hogy az alábbi példát a forrás vezérlőelemben tárolja, és egy meglévő YAML-fájlra hivatkozik, ha a Visual Designerre kattint, majd a YAML sablont használja.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,7 +357,7 @@ Ebben a példában a **HPC-Application** mappára fogunk összpontosítani. A **
     ![Élő kimenetek megtekintése a buildből](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Ha egy ügyfélalkalmazás használatával hajtja végre a HPC batch-alkalmazást, létre kell hoznia egy külön Build-definíciót az alkalmazáshoz. Az [Azure-folyamatok](/azure/devops/pipelines/get-started/index?view=azure-devops) dokumentációjában számos útmutatók találhatók.
+> Ha egy ügyfélalkalmazás használatával hajtja végre a HPC batch-alkalmazást, létre kell hoznia egy külön Build-definíciót az alkalmazáshoz. Az [Azure-folyamatok](/azure/devops/pipelines/get-started/index) dokumentációjában számos útmutatók találhatók.
 
 ## <a name="continuous-deployment"></a>Folyamatos üzembe helyezés
 
@@ -450,7 +450,7 @@ Gyakori eljárás a Azure Key Vault feladatok használata. Ha az egyszerű szolg
     * **Megjelenítendő név:** Alkalmazás létrehozása Azure Batch fiókban
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
     * **Parancsfájl helye**: beágyazott parancsfájl
-    * **Beágyazott parancsfájl**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Beágyazott parancsfájl**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. A második lépés a társított csomagok alkalmazásba való feltöltésére szolgál. Ebben az esetben az FFmpeg-fájlokat.
 
@@ -458,7 +458,7 @@ Gyakori eljárás a Azure Key Vault feladatok használata. Ha az egyszerű szolg
     * **Megjelenítendő név:** Csomag feltöltése Azure Batch fiókba
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
     * **Parancsfájl helye**: beágyazott parancsfájl
-    * **Beágyazott parancsfájl**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Beágyazott parancsfájl**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Az alkalmazáscsomag verziószáma változóra van állítva. Ez akkor lehet hasznos, ha a csomag korábbi verzióinak felülírásával Ön is működik, és ha manuálisan szeretné vezérelni a csomag verziószámát, amelyet leküldett a Azure Batch.
@@ -476,7 +476,7 @@ A környezet beállítása után ellenőrizze, hogy a következő tesztek sikere
 Kapcsolódjon az új Azure Batch-fiókhoz az Azure CLI használatával egy PowerShell-parancssorból.
 
 * Jelentkezzen be az Azure-fiókjába, `az login` és kövesse az utasításokat a hitelesítéshez.
-* Most hitelesítse a Batch-fiókot:`az batch account login -g <resourceGroup> -n <batchAccount>`
+* Most hitelesítse a Batch-fiókot: `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Az elérhető alkalmazások listázása
 
@@ -500,7 +500,7 @@ Méretezze át a készletet úgy, hogy elérhetők legyenek a feladatok és a te
 az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelen cikk mellett két olyan oktatóanyag is létezik, amely az FFmpeg-t használja a .NET és a Python használatával. A Batch-fiók egyszerű alkalmazáson keresztül történő kezelésével kapcsolatos további információkért tekintse meg ezeket az oktatóanyagokat.
 

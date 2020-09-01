@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3173f81f84463cde488dcbf0242f8d65c5b9c9fe
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012688"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144991"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -39,7 +39,7 @@ A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott 
 
 További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../cost-management-billing/costs/assign-access-acm-data.md).
 
-## <a name="estimate-costs"></a>Becsült költségek
+## <a name="estimate-costs"></a>A költségek megbecslése
 
 Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a költségeket, mielőtt létrehozza az erőforrásokat egy Azure Machine learning-fiókban. A bal oldalon válassza az **AI + Machine learning**lehetőséget, majd a kezdéshez válassza a **Azure Machine learning** lehetőséget.  
 
@@ -69,7 +69,7 @@ A folyamatosan változó adatváltozások esetén gyors és gördülékeny model
 
 Azure Machine Learning felhasználók használhatják a felügyelt Azure Machine Learning számítási fürtöt, más néven AmlCompute. A AmlCompute számos GPU-és CPU-beállítást támogat. A AmlCompute az előfizetése nevében, Azure Machine Learning alapján üzemelteti. Ugyanezt a vállalati szintű biztonsági, megfelelőségi és irányítási funkciókat biztosítja az Azure IaaS Cloud Scale-ben.
 
-Mivel ezek a számítási készletek az Azure IaaS-infrastruktúráján belül vannak, a képzést az infrastruktúra többi részével megegyező biztonsági és megfelelőségi követelményekkel helyezheti üzembe, méretezheti és kezelheti.  Ezek az üzembe helyezések az előfizetésében történnek, és engedelmeskednek az irányítás szabályainak. További információ a [Azure Machine learning számítási](how-to-set-up-training-targets.md#amlcompute)feladatokról.
+Mivel ezek a számítási készletek az Azure IaaS-infrastruktúráján belül vannak, a képzést az infrastruktúra többi részével megegyező biztonsági és megfelelőségi követelményekkel helyezheti üzembe, méretezheti és kezelheti.  Ezek az üzembe helyezések az előfizetésében történnek, és engedelmeskednek az irányítás szabályainak. További információ a [Azure Machine learning számítási](how-to-create-attach-compute-sdk.md#amlcompute)feladatokról.
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Betanítási fürtök konfigurálása automatikus skálázáshoz
 
@@ -105,9 +105,9 @@ Bizonyos esetekben konfigurálnia kell a betanítási időszakokat, hogy azok az
 Íme néhány lehetőség:
 * Definiáljon egy nevű paramétert a `max_run_duration_seconds` RunConfiguration annak a maximális időtartamnak a szabályozására, ameddig a Futtatás kiterjeszthető a kiválasztott számítási lehetőségre (helyi vagy távoli Felhőbeli számítás).
 * A [hiperparaméter-hangoláshoz](how-to-tune-hyperparameters.md#early-termination)adjon meg egy korai megszakítási szabályzatot egy bandita-házirendből, egy középértékes leállítási házirendből vagy egy csonkolt kiválasztási szabályzatból. A hiperparaméter-lóversenyfogadások további szabályozásához használja a következő paramétereket: `max_total_runs` vagy `max_duration_minutes` .
-* Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)állítson be hasonló megszakítási házirendeket a `enable_early_stopping` jelző használatával. Olyan tulajdonságokat is használhat, mint a és a a `iteration_timeout_minutes` `experiment_timeout_minutes` Futtatás maximális időtartamának szabályozására, vagy a teljes kísérletre.
+* Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)állítson be hasonló megszakítási házirendeket a  `enable_early_stopping` jelző használatával. Olyan tulajdonságokat is használhat, mint a és a a `iteration_timeout_minutes` `experiment_timeout_minutes` Futtatás maximális időtartamának szabályozására, vagy a teljes kísérletre.
 
-## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Alacsony prioritású virtuális gépek használata
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Alacsony prioritású virtuális gépek használata
 
 Az Azure-ban a virtuálisgép-méretezési csoportok, a Batch és a Machine Learning szolgáltatás által biztosított alacsony prioritású virtuális gépek nem használhatnak feleslegesen kihasználatlan kapacitást. Ezek a foglalások előre emptible, de kedvezményes áron érhetők el a dedikált virtuális gépekhez képest. Általánosságban ajánlott alacsony prioritású virtuális gépeket használni a Batch-munkaterhelésekhez. Azokat is érdemes használni, ahol a megszakítások az Újraküldés (a Batch-következtetések esetében) vagy az újraindítások (az ellenőrzőpontokkal folytatott mély tanulási képzések esetén) helyreállítására használhatók.
 
@@ -122,9 +122,9 @@ A számítási erőforrások pénzének megtakarításának egy másik módja az
 Azure Machine Learning a számítás a fenntartott példányokat is támogatja. Ha egy vagy három éves fenntartott példányt vásárol, a rendszer automatikusan kedvezményt alkalmaz a Azure Machine Learning felügyelt számítási feladatokra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk:
 * [Erőforrás-kvóták kezelése és növelése](how-to-manage-quotas.md)
 * [Költségek kezelése a Cost Analysis szolgáltatással](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* [Azure Machine learning a számítást](how-to-set-up-training-targets.md#amlcompute).
+* Hozzon létre Azure Machine Learning számítást az [SDK](how-to-create-attach-compute-sdk.md#amlcompute) -val vagy a [Studio](how-to-create-attach-compute-studio.md#amlcompute)-ban.

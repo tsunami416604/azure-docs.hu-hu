@@ -1,6 +1,6 @@
 ---
 title: A felhasználói hozzáférés visszavonása vészhelyzetben Azure Active Directoryban | Microsoft Docs
-description: Felhasználók tömeges hozzáadása az Azure AD felügyeleti központban Azure Active Directory
+description: Felhasználók összes hozzáférésének visszavonása Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798414"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89147133"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Felhasználói hozzáférés visszavonása Azure Active Directory
 
@@ -38,7 +38,7 @@ A hozzáférési jogkivonatok és a frissítési tokenek gyakran használatosak 
 
 Az Azure AD ezután újraértékeli az engedélyezési házirendeket. Ha a felhasználó továbbra is engedélyezve van, az Azure AD új hozzáférési jogkivonatot és frissítési jogkivonatot bocsát ki.
 
-A hozzáférési tokenek biztonsági szempontból fontosak lehetnek, ha a hozzáférést a jogkivonat élettartama alatt rövidebb idő alatt kell visszavonni, ami általában egy óra körüli. Ezért a Microsoft aktívan dolgozik az Office 365-alkalmazások [folyamatos hozzáférésének kiértékelésében](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) , így biztosítva, hogy a hozzáférési tokenek közel valós időben legyenek érvényben.  
+A hozzáférési tokenek biztonsági szempontból fontosak lehetnek, ha a hozzáférést a jogkivonat élettartama alatt rövidebb idő alatt kell visszavonni, ami általában egy óra körüli. Ezért a Microsoft aktívan dolgozik az Office 365-alkalmazások [folyamatos hozzáférésének kiértékelésében](../conditional-access/concept-continuous-access-evaluation.md) , így biztosítva, hogy a hozzáférési tokenek közel valós időben legyenek érvényben.  
 
 ## <a name="session-tokens-cookies"></a>Munkamenet-tokenek (cookie-k)
 

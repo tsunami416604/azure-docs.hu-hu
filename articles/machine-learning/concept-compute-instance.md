@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ab316d7b101a05dd9b6bba2e11bfe77239619126
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651915"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146759"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -24,7 +24,7 @@ A számítási példányok megkönnyítik a Azure Machine Learning fejlesztésé
 
 Számítási példányt használhat a felhőben a gépi tanuláshoz teljes mértékben konfigurált és felügyelt fejlesztési környezetként. Emellett számítási célokként is használhatók a fejlesztési és tesztelési célú képzéshez és következtetésekhez.  
 
-Az üzemi szintű modell képzéséhez használjon [Azure Machine learning számítási fürtöt](how-to-set-up-training-targets.md#amlcompute) több csomópontos skálázási képességekkel. Az üzemi szintű modell üzembe helyezéséhez használja az [Azure Kubernetes Service-fürtöt](how-to-deploy-azure-kubernetes-service.md).
+Az üzemi szintű modell képzéséhez használjon [Azure Machine learning számítási fürtöt](how-to-create-attach-compute-sdk.md#amlcompute) több csomópontos skálázási képességekkel. Az üzemi szintű modell üzembe helyezéséhez használja az [Azure Kubernetes Service-fürtöt](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="why-use-a-compute-instance"></a>Miért érdemes számítási példányt használni?
 
@@ -138,18 +138,7 @@ Ezeket a műveleteket a RBAC is vezérelheti:
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>Számítási példány létrehozása
 
-A Azure Machine Learning Studio munkaterületén hozzon létre egy új számítási példányt a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására.
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Új számítási példány létrehozása":::
-
-
-|Mező  |Leírás  |
-|---------|---------|
-|Számítási név     |  <li>A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.</li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek  **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-**  a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
-|Virtuális gép típusa |  Válassza a CPU vagy a GPU lehetőséget. Ez a típus nem módosítható a létrehozás után     |
-|Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
-|SSH-hozzáférés engedélyezése/letiltása     |   Az SSH-hozzáférés alapértelmezés szerint le van tiltva.  Az SSH-hozzáférés nem lehet. a létrehozás után módosult. Győződjön meg arról, hogy engedélyezi a hozzáférést, ha interaktívan szeretne hibakeresést végezni a [vs Code Remote](how-to-set-up-vs-code-remote.md) használatával   |
-|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot**és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](how-to-enable-virtual-network.md#compute-instance) .        |
+A Azure Machine Learning Studio munkaterületén [hozzon létre egy új számítási példányt](how-to-create-attach-compute-studio.md#compute-instance) a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására. 
 
 Létrehozhat egy példányt is
 * Közvetlenül az [integrált jegyzetfüzetek felületéről](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -158,7 +147,7 @@ Létrehozhat egy példányt is
 * Azure Machine Learning SDK-val
 * A [CLI-bővítményből Azure Machine learning](reference-azure-machine-learning-cli.md#computeinstance)
 
-A dedikált magok régiónként/virtuálisgép-család kvótája és a teljes regionális kvóta, amely a számítási példányok létrehozására vonatkozik. egységesített és közös Azure Machine Learning képzés számítási fürt kvótája. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt.
+A számítási példányok létrehozásakor a dedikált magok régiónként, a virtuálisgép-család kvótája és a teljes regionális kvóta alapján, valamint az Azure Machine Learning betanítása számítási fürt kvótáját egyesítjük és megosztva. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt.
 
 ## <a name="compute-target"></a>Számítási cél
 
@@ -181,6 +170,6 @@ A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok
 Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * [Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

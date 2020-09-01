@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ddf4336015ad172cdf13e224b10ca2536e8f6a25
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3c7bb19f93bc5b6d345930eb1928ca620e391bb0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018076"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144073"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -30,7 +30,7 @@ A létrehozott ML-folyamatok a Azure Machine Learning [munkaterület](how-to-man
 
 A (z) ML-folyamatok számítási célokon futnak (lásd: [Mik a számítási célok a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)). A folyamatok a támogatott [Azure Storage](https://docs.microsoft.com/azure/storage/) -helyekről származó és onnan származó adatok olvasására és írására használhatók.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,7 +111,8 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-a-compute-target"></a>Számítási cél beállítása
 
-Azure Machine Learning a __számítási__ (vagy __számítási cél__) kifejezés a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Lásd: [számítási célok beállítása és használata a modell betanításához](how-to-set-up-training-targets.md) a számítási célok teljes listájához, valamint a munkaterülethez való létrehozásához és csatolásához. A számítási cél létrehozásához és csatolásához szükséges folyamat ugyanaz, mint a modell betanítása vagy egy folyamat lépésének futtatása. A számítási cél létrehozása és csatolása után használja az objektumot a `ComputeTarget` [folyamat lépéseiben](#steps).
+
+Azure Machine Learning a __számítási__ (vagy __számítási cél__) kifejezés a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik.   A számítási célok teljes listájáért tekintse meg a [modell betanításához szükséges számítási célokat](concept-compute-target.md#train) , és [hozzon létre számítási célokat](how-to-create-attach-compute-sdk.md) a munkaterülethez való létrehozásához és csatolásához.   A számítási cél létrehozásához és csatolásához szükséges folyamat ugyanaz, mint a modell betanítása vagy egy folyamat lépésének futtatása. A számítási cél létrehozása és csatolása után használja az objektumot a `ComputeTarget` [folyamat lépéseiben](#steps).
 
 > [!IMPORTANT]
 > A számítási célokat szolgáló felügyeleti műveletek végrehajtása távoli feladatokon belül nem támogatott. Mivel a gépi tanulási folyamatokat távoli feladatokként küldi el a rendszer, ne használja a számítási célok felügyeleti műveleteit a folyamaton belül.

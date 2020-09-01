@@ -1,19 +1,19 @@
 ---
-title: Tanúsítványok hibaelhárítása Az Azure Stack Edge-vel | Microsoft Docs
-description: A Azure Stack peremhálózati eszközzel kapcsolatos hibák elhárítását ismerteti.
-services: Azure Stack Edge
+title: Tanúsítványok hibaelhárítása Azure Stack Edge GPU-val | Microsoft Docs
+description: A Azure Stack Edge GPU-eszközzel kapcsolatos hibák elhárítását ismerteti.
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 2614928985070e47fa8c4b77a3068d480d362093
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e16121005a34f67ba4ce940e08cb632c1206ad6a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083951"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146215"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Tanúsítványokkal kapcsolatos hibák elhárítása
 

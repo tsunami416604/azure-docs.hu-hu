@@ -8,22 +8,18 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513060"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145926"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Virtuális központ útválasztásának konfigurálása
 
 A virtuális központ több átjárót is tartalmazhat, például a helyek közötti VPN-átjárót, a ExpressRoute átjárót, a pont – hely átjárót és a Azure Firewall. A virtuális központ útválasztási funkcióit egy olyan útválasztó biztosítja, amely az összes útválasztást, beleértve az átirányítási útválasztást is, az átjárók közötti Border Gateway Protocol (BGP) használatával felügyeli. Ez az útválasztó a virtuális hubhoz csatlakozó virtuális hálózatok közötti átviteli kapcsolatot is biztosít, amely akár 50 GB/s-os összesített átviteli sebességet is képes támogatni. Ezek az útválasztási képességek a szabványos virtuális WAN-ügyfelekre vonatkoznak.
 
 További információ: [a virtuális központ útválasztása](about-virtual-hub-routing.md).
-
-> [!NOTE]
-> Ezen funkciók némelyike továbbra is kivezethető. Ez várhatóan augusztus 17-én fejeződik be.
->
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Útválasztási táblázat létrehozása
 
@@ -88,7 +84,7 @@ A Azure Portal keresse meg a virtuális központ útválasztási táblázatát. 
 
 :::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Útválasztási konfiguráció beállítása" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.

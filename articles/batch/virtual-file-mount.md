@@ -4,23 +4,23 @@ description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert e
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921630"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145484"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
 Azure Batch mostantól támogatja a Mount Cloud Storage vagy egy külső fájlrendszer használatát a Batch-készletekben lévő Windows-vagy Linux-alapú számítási csomópontokon. Ha egy számítási csomópont egy készlethez csatlakozik, a rendszer csatlakoztatja a virtuális fájlrendszert, és az adott csomóponton helyi meghajtóként kezeli őket. Olyan fájlrendszerek csatlakoztatására van lehetőség, mint például a Azure Files, az Azure Blob Storage, a hálózati fájlrendszer (NFS), beleértve a [avere vFXT cache](../avere-vfxt/avere-vfxt-overview.md)-t vagy a Common Internet File System (CIFS) rendszert.
 
-Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert a számítási csomópontok készletéhez a [.net-hez készült batch Management Library](/dotnet/api/overview/azure/batch?view=azure-dotnet)használatával.
+Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert a számítási csomópontok készletéhez a [.net-hez készült batch Management Library](/dotnet/api/overview/azure/batch)használatával.
 
 > [!NOTE]
 > A virtuális fájlrendszer csatlakoztatása támogatott a 2019-08-19-on vagy azt követően létrehozott batch-készleteken. A 2019-08-19-et megelőzően létrehozott batch-készletek nem támogatják ezt a funkciót.
 > 
-> A számítási csomópontokon a fájlrendszerek csatlakoztatására szolgáló API-k a [Batch .net](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) -könyvtár részét képezik.
+> A számítási csomópontokon a fájlrendszerek csatlakoztatására szolgáló API-k a [Batch .net](/dotnet/api/microsoft.azure.batch) -könyvtár részét képezik.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>A készlethez való csatlakoztatás előnyei
 
@@ -176,7 +176,7 @@ A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles]
 | Oracle | Oracle – Linux | 7.6 | x | x | x | x |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | x | x | x |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Files-megosztás Windows vagy Linux [rendszeren](../storage/files/storage-how-to-use-files-windows.md) való [Linux](../storage/files/storage-how-to-use-files-linux.md)csatlakoztatásáról.
 - Tudnivalók a [blobfuse](https://github.com/Azure/azure-storage-fuse) virtuális fájlrendszerek használatáról és csatlakoztatásáról.

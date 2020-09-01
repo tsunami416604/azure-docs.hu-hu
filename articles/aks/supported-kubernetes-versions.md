@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475192"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144617"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -135,12 +135,12 @@ A korábbi kiadási előzményekért lásd [itt](https://en.wikipedia.org/wiki/K
 
 |  K8s verziója | Felsőbb rétegbeli kiadás  | AK – előzetes verzió  | AK-GA  | Elhasználódott |
 |--------------|-------------------|--------------|---------|-------------|
-| 1,17  | Dec-09-19  | Január 19.   | 20. július  | 1,20 GA | 
-| 1,18  | Mar-23-20  | Május 20   | Augusztus 20  | 1,21 GA | 
-| 1,19  | Aug-04-20  | Augusztus 20   | Nov. 20.  | 1,22 GA | 
-| 1,20  | * November 20    | * Dec. 20   | * Jan 21  | 1,23 GA | 
+| 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
+| 1,18  | Mar-23-20  | 2020. május   | Augusztus 2020  | 1,21 GA | 
+| 1,19  | Aug-04-20  | Augusztus 2020   | November 2020  | 1,22 GA | 
+| 1,20  | * November 2020    | * Dec 2020   | * Jan 2021  | 1,23 GA | 
 
-\*A felsőbb rétegbeli kiadási dátum megerősítése folyamatban van.
+\* A felsőbb rétegbeli kiadási dátum megerősítése folyamatban van.
 
 ## <a name="faq"></a>GYIK
 
@@ -177,7 +177,7 @@ A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x*1.13. x verz
 
 Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürt frissítésével kapcsolatos további információkért lásd: [Azure Kubernetes Service (ak) fürt frissítése][aks-upgrade].
 

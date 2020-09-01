@@ -4,12 +4,12 @@ description: A Azure Batch alkalmazáscsomag funkciójának használatával egys
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8d0ab6227e232728818afbbc58ca6521d9a417df
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d847dd926d157e455a6ef4e0c58c9dd204a1ecc7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922004"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146470"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -330,12 +330,12 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Becsomagolás
 Az alkalmazáscsomag segítségével az ügyfelek számára kiválaszthatja a feladataikat, és megadhatja a pontos verziót, amelyet a feladatok a Batch-kompatibilis szolgáltatással végzett feldolgozásakor kell használni. Lehetősége van arra is, hogy az ügyfelek feltöltsék és nyomon kövessék saját alkalmazásaikat a szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A [Batch REST API][api_rest] Emellett támogatást biztosít az alkalmazáscsomag működéséhez. Például tekintse meg a [készlet hozzáadása egy fiókhoz][rest_add_pool] című témakör [applicationPackageReferences][rest_add_pool_with_packages] elemét, amely arról nyújt tájékoztatást, hogyan kell megadnia a telepítendő csomagokat a REST API használatával. Az alkalmazás adatainak a Batch REST API használatával történő beszerzésével kapcsolatos további információkért lásd: [alkalmazások][rest_applications] .
 * Ismerje meg, hogyan [felügyelheti Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net][api_net_mgmt] -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.
 
-[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_net]: /dotnet/api/overview/azure/batch/client
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management
 [api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples

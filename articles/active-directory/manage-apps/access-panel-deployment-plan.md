@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 009818c9b208f5f464949f5e3ffe1404e509ac4b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017719"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146623"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
@@ -55,11 +55,8 @@ A **robusztus naplózás és használat nyomon követését teszi lehetővé**: 
 Az alkalmazások ingyenesek, és nem igényelnek alapszintű licencet. A címtárban lévő objektumok száma és a telepíteni kívánt további funkciók azonban további licenceket igényelhetnek. A licencelési követelményekkel rendelkező gyakori Azure AD-forgatókönyvek a következő biztonsági funkciókat tartalmazzák:
 
 * [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
-
 * [Csoport alapú tagság](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-
 * [Új jelszó önkiszolgáló kérése](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
-
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 Tekintse [meg az Azure ad teljes licencelési útmutatóját](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -69,7 +66,6 @@ Tekintse [meg az Azure ad teljes licencelési útmutatóját](https://azure.micr
 A projekt megkezdése előtt végezze el a következő előfeltételeket:
 
 * [Alkalmazás egyszeri bejelentkezésének integrálása](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
-
 * [Azure AD-felhasználó és-csoport infrastruktúrájának kezelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 ## <a name="plan-azure-ad-my-apps-deployment"></a>Az Azure AD saját alkalmazások üzembe helyezésének megtervezése
@@ -139,7 +135,6 @@ A felhasználóknak vagy a rendszergazdáknak hozzá kell járulniuk bármely al
 A rendszergazdai engedély használatához a szervezet globális rendszergazdájának kell lennie, és az alkalmazásoknak a következőknek kell lenniük:
 
 * Regisztrálva van a szervezetben
-
 * Regisztrálva van egy másik Azure AD-szervezetben, és korábban legalább egy felhasználó beleegyezett
 
 További információkért lásd: [a végfelhasználók beleegyezett az alkalmazásba Azure Active Directory](configure-user-consent.md).
@@ -180,9 +175,7 @@ Amikor a felhasználók bejelentkeznek a jelszó-alapú SSO-alkalmazásokba, tel
 Ha a jelszó-alapú SSO-alkalmazásokat integrálni kell, meg kell határoznia azt a mechanizmust, amellyel a bővítményt a [támogatott böngészőkkel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)nagy méretben helyezheti üzembe. A lehetőségek a következők:
 
 * [Csoportházirend az Internet Explorerben](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-
 * [Configuration Manager az Internet Explorerben](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-
 * [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Azok a felhasználók, akik nem használnak jelszó-alapú SSO-alkalmazásokat, a bővítmény előnyeit is kihasználhatják. Ezek az előnyök többek között lehetővé teszi bármely alkalmazás indítását a keresősáv használatával, a legutóbb használt alkalmazások elérésének megkeresését, valamint a saját alkalmazások lapra mutató hivatkozást.
@@ -294,7 +287,6 @@ A következő teszteket a vállalati tulajdonú eszközökkel és a személyes e
 
 #### <a name="application-self-service-capabilities-test-case-examples"></a>Alkalmazások önkiszolgáló képességei – tesztelési példák
 
-
 | Üzleti eset| Várt eredmény |
 | - | - |
 | A felhasználó kezelheti a tagságot az alkalmazásban| A felhasználó hozzáadhat vagy eltávolíthat olyan tagokat, akik hozzáféréssel rendelkeznek az alkalmazáshoz |
@@ -311,30 +303,13 @@ A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a A
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|
-| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincsenek |
+| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincs |
 | Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincsenek |
+| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
 | Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincsenek |
+| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
 
 A [Privileged Identity Management](../privileged-identity-management/pim-configure.md) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 
-### <a name="troubleshoot-my-apps-issues"></a>Alkalmazások hibáinak elhárítása
-
-Hozzon létre hibaelhárítási útmutatót a támogatási szervezete számára a gyakori forgatókönyvekkel, amelyek a Microsoft-dokumentációra mutatnak a felbontásban. Előfordulhat, hogy olyan segédvonalakat szeretne létrehozni, amelyek a szervezet által használt rétegekbe bontják a támogatást.
-
-Lásd a következő hibaelhárítási útmutatókat:
-
-[Nem megjelenő alkalmazások](access-panel-troubleshoot-application-not-appearing.md)
-
-[Váratlan alkalmazások jelennek meg](access-panel-troubleshoot-unexpected-application.md)
-
-[A felhasználó nem tud bejelentkezni az alkalmazásokba](access-panel-troubleshoot-web-sign-in-problem.md)
-
-[Az önkiszolgáló alkalmazás-hozzáférés használatával kapcsolatos problémák](access-panel-troubleshoot-self-service-access.md)
-
-[A böngésző kiterjesztésével kapcsolatos problémák](manage-access-panel-browser-extension.md)
-
 ## <a name="next-steps"></a>Következő lépések
-
 [Az Azure Multi-Factor Authentication üzembe helyezésének megtervezése](https://aka.ms/deploymentplans/mfa)

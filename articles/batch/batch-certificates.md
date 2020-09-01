@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5f7d547ad549b2747ae41182ee4058b001d9e78a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960826"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146385"
 ---
 # <a name="using-certificates-with-batch"></a>Tanúsítványok használata a Batch szolgáltatással
 
@@ -37,8 +37,8 @@ A feltöltés után a tanúsítvány hozzá lesz adva a tanúsítványok listáj
 
 Miután létrehoz egy batch-készletet, megnyithatja a készletben lévő tanúsítványokat, és hozzárendelheti a készlethez feltöltött tanúsítványt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Batch tanúsítvány-API-val rendelkezik, [az batch Certificate Create](/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create)
+A Batch tanúsítvány-API-val rendelkezik, [az batch Certificate Create](/cli/azure/batch/certificate)
 
 További információ a Key Vault használatáról: [biztonságos hozzáférés Key Vault a Batch](credential-access-key-vault.md)szolgáltatással.

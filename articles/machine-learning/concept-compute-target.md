@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141925"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146732"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -27,13 +27,13 @@ Egy tipikus modell-fejlesztési életciklus esetén a következőket teheti:
 
 A számítási célokhoz használt számítási erőforrások egy [munkaterülethez](concept-workspace.md)vannak csatolva. A helyi gépen kívüli számítási erőforrásokat a munkaterület felhasználói osztják meg.
 
-## <a name="training-compute-targets"></a><a name="train"></a>Számítási célok betanítása
+## <a name="training-compute-targets"></a><a name="train"></a> Számítási célok betanítása
 
 A Azure Machine Learning különböző számítási erőforrásokon keresztül eltérő támogatást nyújt.  Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása eltérő lehet.
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-További információ [a számítási cél beállításáról és használatáról a modell betanításához](how-to-set-up-training-targets.md).
+További információ [a számítási cél használatáról a modell betanításához](how-to-set-up-training-targets.md).
 
 ## <a name="deployment-targets"></a><a name="deploy"></a>Üzembehelyezési célhelyek
 
@@ -46,10 +46,10 @@ Megtudhatja, [hol és hogyan helyezheti üzembe a modellt egy számítási célr
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning számítás (felügyelt)
 
-A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning számítási fürtök és [számítási példányok](concept-compute-instance.md) az egyetlen felügyelt számítások. A későbbiekben további felügyelt számítási erőforrások is hozzáadhatók.
+A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning számítási fürtök és [számítási példányok](concept-compute-instance.md) az egyetlen felügyelt számítások. 
 
 A következő esetekben hozhat létre Azure Machine Learning számítási példányokat vagy számítási fürtöket:
-* Azure Machine Learning Studio
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) osztályok
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (előzetes verzió)
@@ -68,7 +68,7 @@ Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkate
 
 
 > [!NOTE]
-> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) a többletköltség elkerülése érdekében.
+> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) a többletköltség elkerülése érdekében. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
 
@@ -82,19 +82,19 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| D | Nincsenek |
-| Dv2 | Nincsenek |  
-| DSv2 | Nincsenek |  
-| FSv2 | Nincsenek | 
+| T | Nincs |
+| Dv2 | Nincs |  
+| DSv2 | Nincs |  
+| FSv2 | Nincs | 
 | HBv2 | Jóváhagyást igényel |  
 | HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel |  
 | M | Jóváhagyást igényel |
-| NC | Nincsenek |    
+| NC | Nincs |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | Nincsenek |
+| NV | Nincs |
 | NVv3 | Jóváhagyást igényel | 
 
 
@@ -107,5 +107,5 @@ A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. E
 ## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
-* [Számítási cél beállítása a modell betanításához](how-to-set-up-training-targets.md)
+* [Számítási cél használata a modell betanításához](how-to-set-up-training-targets.md)
 * [Modell üzembe helyezése számítási célra](how-to-deploy-and-where.md)

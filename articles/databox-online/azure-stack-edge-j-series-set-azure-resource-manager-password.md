@@ -1,23 +1,23 @@
 ---
-title: Azure Resource Manager jelszavának beállítása az Azure Stack Edge-eszközön
-description: Ismerteti, hogyan csatlakozhat a Azure Stack Edge-ben futó Azure Resource Managerhoz Azure PowerShell használatával.
+title: Azure Resource Manager jelszavának beállítása az Azure Stack Edge GPU-eszközön
+description: Ismerteti, hogyan lehet csatlakozni az Azure Stack Edge GPU-ban futó Azure Resource Managerhoz Azure PowerShell használatával.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d56f12c746383576a32e2c0ade542bc8aedff22d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d64db4ab8da1f5f0f4c2dc69b2bc6d4da66c8e91
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89086615"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146283"
 ---
 # <a name="set-azure-resource-manager-password"></a>Azure Resource Manager jelszavának beállítása
 
-[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]
+<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 Ez a cikk a Azure Resource Manager jelszavának beállítását ismerteti. Ezt a jelszót kell megadnia, amikor a Azure Resource Manager használatával csatlakozik az eszköz helyi API-khoz.
 

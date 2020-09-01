@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810088"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144923"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -17,7 +17,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Ha a Azure Functions új, Java-fejlesztőként, vegye figyelembe a következő cikkek egyikét:
 
-| Első lépések | Alapelvek| 
+| Első lépések | Fogalmak| 
 | -- | -- |  
 | <ul><li>[Java-függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java/Maven függvény a Terminal/parancssor használatával](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-függvény a Gradle használatával](functions-create-first-java-gradle.md)</li><li>[Java-függvény az Eclipse használatával](functions-create-maven-eclipse.md)</li><li>[Java-függvény a IntelliJ IDEA használatával](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> |
 
@@ -25,7 +25,7 @@ Ha a Azure Functions új, Java-fejlesztőként, vegye figyelembe a következő c
 
 A Java-függvények a `public` jegyzetekkel díszített metódusok `@FunctionName` . Ez a metódus definiálja a Java-függvények bejegyzését, és egyedinek kell lennie egy adott csomagban. A csomag több olyan osztállyal is rendelkezhet, amelyekhez több nyilvános metódus is tartozik `@FunctionName` . Egyetlen csomag van üzembe helyezve egy Azure-beli Function alkalmazásban. Az Azure-ban való futtatáskor a Function app biztosítja az egyes Java-függvények üzembe helyezési, végrehajtási és felügyeleti környezetét.
 
-## <a name="programming-model"></a>A programozási modell 
+## <a name="programming-model"></a>Programozási modell 
 
 Az [Eseményindítók és kötések](functions-triggers-bindings.md) fogalmai alapvető fontosságúak a Azure functions. Elindítja a kód végrehajtását. A kötések lehetővé teszik a függvények adatainak átadását és az adatok visszaküldését anélkül, hogy egyéni adatelérési kódot kellene írnia.
 
@@ -144,14 +144,16 @@ Az alábbi táblázat a functions futtatókörnyezet minden egyes főverziójáh
 
 | Függvények verziója | Java-verziók (Windows) | Java-verziók (Linux) |
 | ----- | ----- | --- |
-| 3. x | 11 (előzetes verzió)<br/>8<sup>\*</sup> | 11 (előzetes verzió)<br/>8 |
+| 3. x | 11 (előzetes verzió)<br/>8 | 11 (előzetes verzió)<br/>8 |
 | 2. x | 8 | n.a. |
 
-<sup>\*</sup>Ez a Maven archetípus által generált pom.xml aktuális alapértelmezett értéke.
+Ha nem ad meg Java-verziót az üzemelő példányhoz, a Maven archetípus alapértelmezett értéke a Java 8 az Azure-ba való üzembe helyezés során.
 
 ### <a name="specify-the-deployment-version"></a>A központi telepítés verziójának meghatározása
 
-Jelenleg a Maven archetípusa létrehoz egy pom.xml, amely a Java 8-at célozza meg. A következő elemeket kell frissíteni a Java 11-et futtató Function alkalmazás létrehozásához pom.xml.
+A (z) paraméter használatával szabályozhatja a Maven archetípus által megcélozott Java-verziót `-DjavaVersion` . Ennek a paraméternek az értéke lehet éter `8` vagy `11` . A Java 11-támogatás jelenleg előzetes verzióban érhető el. 
+
+A Maven archetípus egy pom.xml hoz létre, amely a megadott Java-verziót célozza meg. A pom.xml következő elemei a használni kívánt Java-verziót jelölik:
 
 | Elem |  Java 8 érték | Java 11 érték | Leírás |
 | ---- | ---- | ---- | --- |
@@ -320,7 +322,7 @@ Bemeneti kötegek fogadásához a következőhöz köthető:, `String[]` , `POJO
 
 ```
 
-Ez a függvény akkor aktiválódik, amikor új adat van a konfigurált Event hub-ban. Mivel a értéke `cardinality` `MANY` , a függvény egy köteg üzenetet fogad az Event hub-ból. `EventData`az Event hub-ból a `TestEventData` függvény végrehajtásához konvertálva lesz.
+Ez a függvény akkor aktiválódik, amikor új adat van a konfigurált Event hub-ban. Mivel a értéke `cardinality` `MANY` , a függvény egy köteg üzenetet fogad az Event hub-ból. `EventData` az Event hub-ból a `TestEventData` függvény végrehajtásához konvertálva lesz.
 
 ### <a name="output-binding-example"></a>Kimeneti kötési példa
 
@@ -429,7 +431,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 > [!NOTE]
 > A jegyzetben megadott névnek egyeznie kell a metadata tulajdonsággal.
 
-## <a name="execution-context"></a>Végrehajtás környezete
+## <a name="execution-context"></a>Végrehajtási környezet
 
 `ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 
@@ -499,7 +501,7 @@ public class Function {
 > [!NOTE]
 > A Alkalmazásbeállítás FUNCTIONS_EXTENSION_VERSION értékének a következőnek kell lennie: ~ 2 vagy ~ 3 az optimalizált, hideg indítási élményhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Functions Java-fejlesztéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

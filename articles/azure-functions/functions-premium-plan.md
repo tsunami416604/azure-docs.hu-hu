@@ -3,15 +3,15 @@ title: Prémium csomag Azure Functions
 description: Részletek és konfigurációs beállítások (VNet, nem hideg indítás, korlátlan végrehajtási időtartam) a Azure Functions Premium csomaghoz.
 author: jeffhollan
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506196"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145749"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -32,25 +32,46 @@ Ebben a példában cserélje le az `<RESOURCE_GROUP>` erőforráscsoportot és a
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
-### <a name="pre-warmed-instances"></a>Előre bemelegítő példányok
+### <a name="always-ready-instances"></a>Mindig kész példányok
 
 Ha a használati tervben jelenleg nem fordulnak elő események és végrehajtások, az alkalmazás a nulla példányra is méretezhető. Új események beolvasásakor egy új példányra van szükség a rajta futó alkalmazáshoz.  Az új példányok specializálása az alkalmazástól függően hosszabb időt is igénybe vehet.  Ezt a további késleltetést az első hívásnál gyakran az App Cold Start metódusnak nevezik.
 
-A prémium csomaggal előre bemelegítheti az alkalmazást egy adott számú példányra, a minimálisan szükséges méretig.  Az előre bemelegített példányok lehetővé teszik az alkalmazások előre méretezését a nagy terhelés előtt. Az alkalmazás kiskálázásakor először az előre bemelegítő példányokra méretezi a folyamatokat. A további példányok továbbra is kiállnak a pufferbe, és azonnal melegen vesznek részt a következő skálázási művelet előkészítésében. Az előre bemelegített példányok pufferével hatékonyan elkerülheti a hideg indítási késéseket.  Az előre bemelegített példányok a Prémium csomag egyik funkciója, és legalább egy példányon futnia kell, és a csomag aktív állapotban kell lennie.
+A prémium csomaggal az alkalmazás mindig egy adott számú példányon áll készen.  A mindig kész példányok maximális száma 20.  Amikor az események elkezdik elindítani az alkalmazást, először a mindig kész példányokra irányítják őket.  Ahogy a függvény aktívvá válik, a további példányok pufferként lesznek bemelegítve.  Ez a puffer megakadályozza, hogy a méretezés során új példányok ne legyenek hidegen.  Ezeket a pufferelt példányokat [előre bemelegítő példányoknak](#pre-warmed-instances)nevezzük.  Az Always Ready-példányok és az előre bemelegítő puffer együttes használatával az alkalmazás hatékonyan kiszűrheti a hidegindító-használatot.
 
-A Azure Portal előre bemelegítő példányok számát úgy is beállíthatja, hogy kiválasztja a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, és kiválasztja a **kibővíthető** lehetőségeket. Az alkalmazás szerkesztése ablakban az előre felmelegedett példányok az adott alkalmazásra vonatkoznak, de a minimális és a maximális példányszám a teljes tervre vonatkozik.
+> [!NOTE]
+> Minden prémium csomagnak legalább egy aktív és számlázott példánya lesz.
+
+A Azure Portal mindig kész példányok számát beállíthatja úgy, hogy kijelöli a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, majd kiválasztja a **kiskálázási** lehetőségeket. Az alkalmazás szerkesztése ablakban a mindig kész példányok az adott alkalmazásra vonatkoznak.
 
 ![Rugalmas méretezési beállítások](./media/functions-premium-plan/scale-out.png)
 
-Az Azure CLI-vel is konfigurálhat előre bemelegített példányokat az alkalmazáshoz.
+Az Azure CLI-vel is konfigurálhatja az alkalmazások mindig kész példányait.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
 ```
+
+#### <a name="pre-warmed-instances"></a>Előre bemelegítő példányok
+
+Az előre bemelegítő példányok a méretezési és aktiválási események során pufferként beérkező példányok száma.  Az előre bemelegített példányok továbbra is a pufferig maradnak, amíg el nem éri a maximális kibővíthető korlátot.  Az alapértelmezett előre bemelegítő példányok száma 1, a legtöbb esetben pedig 1.  Ha egy alkalmazás hosszú bemelegítőt használ (például egy egyéni tároló képét), akkor érdemes lehet ezt a puffert emelni.  Egy előre bemelegített példány csak akkor válik aktívvá, ha az összes aktív példány megfelelően ki lett használva.
+
+Gondolja át ezt a példát arra, hogy a kész példányok és az előre bemelegítő példányok hogyan működnek együtt.  A prémium szintű Function alkalmazáshoz öt mindig kész példány van konfigurálva, és az alapértelmezett egy előre bemelegítő példány.  Ha az alkalmazás üresjáratban van, és nincs aktiválva esemény, az alkalmazás üzembe helyezése és futtatása öt példányban történik.  
+
+Amint az első trigger bekövetkezik, az öt mindig kész példány aktív lesz, és egy további előre bemelegítő példány van lefoglalva.  Az alkalmazás már hat kiosztott példányon fut: az öt most aktív, mindig kész példány, valamint a hatodik előre bemelegítő és inaktív puffer.  Ha a végrehajtások aránya továbbra is növekszik, az öt aktív példány végül fel lesz használva.  Amikor a platform úgy dönt, hogy öt példányon túli méretezést tesz elérhetővé, az előre bemelegített példányra lesz méretezve.  Ebben az esetben hat aktív példány lesz, és a rendszer azonnal kiépíti a hetedik példányt, és kitölti az előre bemelegítő puffert.  Ez a skálázási és előmelegítési folyamat folytatódni fog, amíg el nem éri az alkalmazáshoz tartozó példányok maximális számát.  Egyetlen példány sem lesz előre bemelegítve vagy aktiválva a maximumon túl.
+
+Az Azure CLI használatával módosíthatja az alkalmazások előre bemelegítő példányainak számát.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+```
+
+#### <a name="maximum-instances-for-an-app"></a>Alkalmazások maximális példányai
+
+A [Példányszám maximális száma](#plan-and-sku-settings)mellett az alkalmazások maximális számát is beállíthatja.  Az alkalmazás maximálisan konfigurálható az [alkalmazás méretezési korlátja](./functions-scale.md#limit-scale-out)alapján.
 
 ### <a name="private-network-connectivity"></a>Magánhálózati kapcsolat
 
@@ -68,16 +89,13 @@ Ha többet szeretne megtudni a skálázás működéséről, tekintse meg a [fü
 
 ### <a name="longer-run-duration"></a>Hosszabb Futtatás időtartama
 
-A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. Azonban [módosíthatja a konfiguráció host.jsét](./functions-host-json.md#functiontimeout) , hogy ez a prémium szintű csomag alkalmazásai számára is elérhető legyen (garantált 60 perc).
+A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre van korlátozva.  A Prémium csomag esetében a futtatási időtartam alapértelmezett értéke 30 perc, hogy megakadályozza a Runaway végrehajtást. Azonban [módosíthatja a host.jsa konfigurációban](./functions-host-json.md#functiontimeout) , hogy a prémium szintű csomag alkalmazásaihoz (garantált 60 perc) az időtartam fel legyen kötve.
 
 ## <a name="plan-and-sku-settings"></a>Csomag-és SKU-beállítások
 
-A terv létrehozásakor két beállítást kell beállítania: a példányok minimális száma (vagy a csomag mérete) és a maximális burst korlát.  A minimális példányok le vannak foglalva, és mindig futnak.
+A terv létrehozásakor kétféle séma-beállítás létezik: a példányok minimális száma (vagy a csomag mérete) és a maximális burst korlát.
 
-> [!IMPORTANT]
-> A rendszer minden egyes, a példányok minimális száma alatt lefoglalt példány díját terheli, függetlenül attól, hogy a függvények végrehajtása történik-e.
-
-Ha az alkalmazás a csomag méretétől meghaladó példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás az, ha az alkalmazást a meghatározott maximális korlátig méretezni, míg a minimálisan szükséges csomag példányai garantáltak az alkalmazás számára.
+Ha az alkalmazás a mindig kész példányokon túli példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás, ha az alkalmazást a megadott maximális korlátra szeretné méretezni.
 
 A csomag méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővítő** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
@@ -85,6 +103,19 @@ Az Azure CLI maximális burst korlátját is megnövelheti:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+```
+
+Minden csomag minimuma legalább egy példány lesz.  A példányok tényleges minimális száma automatikusan konfigurálva lesz az Ön számára a csomagban lévő alkalmazások által kért mindig kész példányok alapján.  Például ha az alkalmazás egy öt mindig kész példányt kér, és a B alkalmazás két mindig kész példányt kér ugyanabban a csomagban, a minimális terv mérete öt lesz.  Az A alkalmazás mind az 5-öt futtatja, a B alkalmazás pedig csak 2 lesz.
+
+> [!IMPORTANT]
+> A rendszer minden egyes, a példányok minimális száma alatt lefoglalt példány díját terheli, függetlenül attól, hogy a függvények végrehajtása történik-e.
+
+A legtöbb esetben ez az autoszámított minimális értéknek elegendőnek kell lennie.  A minimálisan szükséges skálázás azonban a lehető leghatékonyabban történik.  Ez azonban nem valószínű, hogy egy adott időkorláton késleltethető, ha további példányok nem érhetők el.  Ha a minimumnál magasabb értéket állít be, akkor a Kibővítés előtt le kell foglalni a példányokat.
+
+Az Azure CLI használatával megnövelhető egy csomag kiszámított minimuma.
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
 ```
 
 ### <a name="available-instance-skus"></a>Rendelkezésre álló példányok SKU-ban
@@ -104,11 +135,11 @@ A JavaScript-függvények alkalmazásait például a Node.js alapértelmezett me
 
 ## <a name="region-max-scale-out"></a>Régió maximális felskálázása
 
-Az alábbiakban láthatók az egyes régiók és operációs rendszerek konfigurációjának egyetlen csomagjának jelenleg támogatott maximális méretezési értékei. Ha növekményt szeretne kérni, nyisson meg egy támogatási jegyet.
+Az alábbiakban láthatók az egyes régiók és operációs rendszerek konfigurációjának egyetlen csomagjának jelenleg támogatott maximális Felskálázási értékei. A növekedés igényléséhez nyisson meg egy támogatási jegyet.
 
 Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Régió| Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
 |Ausztrália középső régiója| 20 | Nem érhető el |
 |Ausztrália 2. középső régiója| 20 | Nem érhető el |
@@ -116,7 +147,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 |Délkelet-Ausztrália | 100 | 20 |
 |Dél-Brazília| 60 | 20 |
 |Közép-Kanada| 100 | 20 |
-|Central US| 100 | 20 |
+|USA középső régiója| 100 | 20 |
 |Kelet-Ázsia| 100 | 20 |
 |USA keleti régiója | 100 | 20 |
 |USA 2. keleti régiója| 100 | 20 |
@@ -133,7 +164,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 |Délkelet-Ázsia| 100 | 20 |
 |Az Egyesült Királyság déli régiója| 100 | 20 |
 |Az Egyesült Királyság nyugati régiója| 100 | 20 |
-|West Europe| 100 | 20 |
+|Nyugat-Európa| 100 | 20 |
 |Nyugat-India| 100 | 20 |
 |USA nyugati középső régiója| 20 | 20 |
 |USA nyugati régiója| 100 | 20 |

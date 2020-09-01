@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b5f3a6b8b8a04cca9543a5343d4496524a166c39
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: db5b28ae0bffa16b17cb63471b8d5ba6b5ac94ed
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919607"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146572"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: Függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -121,6 +121,8 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
     ::: zone pivot="programming-language-java"  
     + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Java` .
 
+    + **Válassza ki a Java-verziót**: válassza a `Java 8` vagy elemet `Java 11 (preview)` , amelyen a függvények futnak az Azure-ban. Válassza ki a helyileg ellenőrzött Java-verziót.
+
     + **Adja meg a csoport azonosítóját**: válassza a lehetőséget `com.function` .
 
     + **Adja meg az összetevő azonosítóját**: válassza a lehetőséget `myFunction` .
@@ -190,7 +192,7 @@ Ellenkező esetben a következő lépésekkel törölheti a Function alkalmazás
 
 A functions-költségekkel kapcsolatos további tudnivalókért lásd: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 
