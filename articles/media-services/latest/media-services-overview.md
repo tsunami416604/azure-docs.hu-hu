@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: A Azure Media Services v3 magas szintű áttekintése, amely rövid útmutatókra, oktatóanyagokra és kódokra mutató hivatkozásokat tartalmaz.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,17 +14,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000941"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267603"
 ---
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások hozhatók létre, amelyek lehetővé teszik többek között a médiaszínvonalú videostreamelést, a hozzáférhetőség és terjesztés javítását vagy tartalmak elemzését. Akár egy app Developer, egy Call Center, egy kormányzati szerv vagy egy szórakoztató cég, Media Services segítségével olyan alkalmazásokat hozhat létre, amelyek kiváló minőségű multimédiás élményt biztosítanak a nagy közönségnek a mai legnépszerűbb mobileszközök és böngészők számára.
 

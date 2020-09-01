@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896c1909c8cc920e53fc2f43fbc4dbca41ad7db4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014234"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266357"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure Resource Manager használatával
 
@@ -44,12 +44,12 @@ A Azure Portal és a parancsfájlok futtatásához hasonlóan Azure Resource Man
 
 - [Egyéni sablon használata az Azure piactéren](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi, hogy teljesen új sablont hozzon létre, vagy egy meglévő gyakori vagy gyors üzembe helyezési [sablonon](https://azure.microsoft.com/documentation/templates/)alapuljon.
 - Egy meglévő erőforráscsoporthoz származtatva, az [eredeti telepítésből](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)vagy az üzemelő példány [aktuális állapotától](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)származó sablon exportálásával.
-- Helyi JSON- [szerkesztő (például vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md)használata, majd a PowerShell vagy a parancssori felület használatával történő feltöltés és üzembe helyezés.
+- Helyi JSON- [szerkesztő (például vs Code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)használata, majd a PowerShell vagy a parancssori felület használatával történő feltöltés és üzembe helyezés.
 - A Visual Studio [Azure erőforráscsoport-projekt](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) használatával hozzon létre és helyezzen üzembe egy sablont. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása 
 
-Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör-hozzárendelésével.
+Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör-hozzárendelésével.
 
 Felhasználó által hozzárendelt felügyelt identitás létrehozásához használja a következő sablont. Cserélje le az `<USER ASSIGNED IDENTITY NAME>` értéket a saját értékeire:
 
@@ -83,9 +83,8 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához haszn
   }
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználó által hozzárendelt felügyelt identitások Azure-beli virtuális gépekhez Azure Resource Manager sablon használatával történő hozzárendelésével kapcsolatos információkért lásd: [felügyelt identitások konfigurálása](qs-configure-template-windows-vm.md)Azure-beli virtuális gépeken sablonok használatával.
 
 
- 

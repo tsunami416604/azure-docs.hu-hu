@@ -10,23 +10,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5882b79232e858bbc8ad7e0da94ad4b04f5165ca
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5988a3ca2d44df161a27144d7bfb47ecab1e236e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422980"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267309"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>A Azure Media Services használatával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
 
 A videotár-lejátszó egy nyílt forráskódú JavaScript-kódtár az adaptív adathordozók számára. Az adaptív adathordozó-formátumokat (például KÖTŐJELet és HLS) egy böngészőben, beépülő modulok vagy flash használata nélkül játssza le. Ehelyett a következő a nyílt webes szabványok Media Source Extensions and encrypted Media Extensions használatával működik.
 
-Javasoljuk, hogy a [Mux.jst](https://github.com/videojs/mux.js/) , anélkül, hogy ez lenne, a HLS CMAF-formátumot kellene használni, de nem HLS TS-t.
+Javasoljuk, hogy a [Mux.jst ](https://github.com/videojs/mux.js/) , anélkül, hogy ez lenne, a HLS CMAF-formátumot kellene használni, de nem HLS TS-t.
 
 A hivatalos dokumentációja a következő címen érhető [el: a](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html)(z).
 
@@ -146,7 +148,7 @@ player.configure('drm.advanced.com\\.apple\\.fps\\.1_0.serverCertificate', new U
 
 További információkért lásd a a következő témakört: a a a a [Windows Media Player DRM Protection dokumentációja](https://shaka-player-demo.appspot.com/docs/api/tutorial-drm-config.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Media Player használata](../azure-media-player/azure-media-player-overview.md)
 * [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

@@ -3,23 +3,25 @@ title: Egyéni átalakítás kódolása Media Services v3 REST-Azure használat�
 description: Ez a témakör azt mutatja be, hogyan használható a Azure Media Services v3 egy egyéni átalakítás a REST használatával történő kódolásához.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9bdea0998b5d6b4c10a96d2ef593f46d6b7c02bf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053314"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267003"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Kódolás egyéni átalakítással – REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ha Azure Media Services kódolást használ, gyorsan megkezdheti az egyik javasolt beépített beállításkészletet az iparági ajánlott eljárások alapján, ahogyan azt a [streaming Files](stream-files-tutorial-with-rest.md#create-a-transform) oktatóanyag mutatja. Létrehozhat egy egyéni beállításkészletet is, amely az adott forgatókönyv vagy eszköz követelményeit célozza meg.
 
@@ -145,7 +147,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 Válassza a **törzs** fület, és cserélje le a törzset a [korábban megadott](#define-a-custom-preset)JSON-kódra. Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt.
 
-Válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra. 
 
 Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt. Ha egy teljes példát mutat be, amely bemutatja, hogyan küldhet el egy feladatot egy átalakítás alatt, tekintse meg az [oktatóanyag: Stream video Files – Rest](stream-files-tutorial-with-rest.md)című témakört.
 

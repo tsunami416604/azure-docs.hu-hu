@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag a Azure Stack Edge-eszköz tanúsítványainak konfigurálásához a GPU-val Azure Portalban | Microsoft Docs
-description: Az Azure Stack Edge üzembe helyezésére vonatkozó oktatóanyag arra utasítja Önt, hogy konfigurálja a tanúsítványokat a fizikai eszközön.
+description: Az Azure Stack Edge GPU-val való üzembe helyezésére vonatkozó oktatóanyag arra utasítja a tanúsítványt, hogy konfigurálja a fizikai eszközön lévő tanúsítványokat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f8e0464eb7f513149dd1cfa2ec5dcdc0f193417
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 80a857f80fd2c164637e591fbab43123659cd2f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181221"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268176"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-with-gpu"></a>Oktatóanyag: tanúsítványok konfigurálása a Azure Stack Edge-hez GPU-val
 

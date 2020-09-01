@@ -1,21 +1,21 @@
 ---
 title: Tanúsítványok használata Azure Stack Edge GPU-val | Microsoft Docs
 description: Ismerteti a tanúsítványok használatát Azure Stack Edge GPU-eszközzel, beleértve a használatának okát, valamint a tanúsítványok az eszközön való feltöltésének módját.
-services: Azure Stack Edge
+services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7742d036857525ce6be64a53234f7aa717d4bdca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147082"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268876"
 ---
-# <a name="use-certificates-with-azure-stack-edge-series"></a>Tanúsítványok használata Azure Stack Edge-adatsorozattal 
+# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Tanúsítványok használata Azure Stack Edge GPU-eszközzel
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -370,7 +370,7 @@ A következő lépésekkel exportálhat egy titkos kulccsal rendelkező SSL-tan�
 
     ![8. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
-9. Az Exportálás sikerességét jelző üzenet jelenik meg. Kattintson az **OK** gombra.
+9. Az Exportálás sikerességét jelző üzenet jelenik meg. Válassza az **OK** lehetőséget.
 
     ![9. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
 
@@ -416,6 +416,6 @@ A tanúsítványok forgása ebben a kiadásban nincs implementálva. A tanúsít
 
 Tekintse meg a tanúsítvány lejárati dátumát a **tanúsítványok** lapon az eszköz helyi webes felületén. Ha a tanúsítvány lejárata közeledik, hozzon létre és töltsön fel új tanúsítványokat a [tanúsítványok létrehozása és feltöltése](azure-stack-edge-j-series-manage-certificates.md)párbeszédpanelen található részletes utasítások szerint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Stack Edge-eszköz üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)

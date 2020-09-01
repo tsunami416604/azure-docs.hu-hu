@@ -3,22 +3,24 @@ title: Azure Media Services v3 – gyakori kérdések | Microsoft Docs
 description: Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/07/2020
-ms.author: juliako
-ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011685"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268485"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -119,7 +121,7 @@ A helyes módszer a biztonságos jogkivonat-szolgáltatás használata. Az STS-b
 
 Azure Media Services API-k használatával konfigurálhatja a licencek/kulcsok küldését és titkosíthatja az adategységeket (ahogy az [ebben a mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)is látható).
 
-További információ:
+További információkért lásd:
 
 - [Tartalomvédelem – áttekintés](content-protection-overview.md)
 - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)

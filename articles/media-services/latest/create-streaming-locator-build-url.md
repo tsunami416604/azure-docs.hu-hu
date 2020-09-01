@@ -3,23 +3,25 @@ title: Adatfolyam-kereső létrehozása és URL-címek összeállítása – Azu
 description: Ez a cikk bemutatja, hogyan hozhat létre adatfolyam-keresőt, és hogyan készíthet URL-címeket.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/04/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9eae2b0d8b5bebc027dd46afd17a37b8a19b422
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c00729e236cb314f47df8f622db2e19438af61ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012160"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267904"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Streamelési lokátor létrehozása és URL-címek összeállítása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services a streaming URL-cím létrehozásához először létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md). Ezután összefűzi a [streaming Endpoint](/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, ez az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot a streaming megkezdéséhez.
 
@@ -167,6 +169,6 @@ Tekintse meg a kód teljes mintáját: [EncodingWithMESPredefinedPreset](https:/
 * [Szűrők létrehozása REST használatával](filters-dynamic-manifest-rest-howto.md)
 * [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A DRM-védelemmel ellátott tartalmakat](protect-with-drm.md).

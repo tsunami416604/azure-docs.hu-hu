@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 2e2a41f797c6c58597e90ef6bd6e373ab7408a7b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 38c46bdcce64f726b3a7ddf74e0cfd10a14ba663
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182054"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268030"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-device"></a>Kubernetes munkaterhelés-kezelés az Azure Stack Edge-eszközön
 
@@ -47,11 +47,11 @@ A munkaterhelések üzembe helyezésének három fő módja van. Az üzembe hely
 
 ![Kubernetes munkaterhelés üzembe helyezése](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **Helyi telepítés**: ez egy parancssori hozzáférési eszközön keresztül történik, `kubectl` amely lehetővé teszi a K8 üzembe helyezését `yamls` . A K8-fürthöz a fájllal létrehozott Azure Stack szélén csatlakozhat `kubeconfig` . További információért látogasson el a [Kubernetes-fürt eléréséhez a kubectl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- **Helyi telepítés**: ez egy parancssori hozzáférési eszközön keresztül történik, `kubectl` amely lehetővé teszi a Kubernetes üzembe helyezését `yamls` . A Kubernetes-fürthöz a fájllal létrehozott Azure Stack szélén csatlakozhat `kubeconfig` . További információért látogasson el a [Kubernetes-fürt eléréséhez a kubectl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
-- **IoT Edge**üzemelő példány: ez a IoT Edgeon keresztül történik, amely az Azure IoT hubhoz csatlakozik. Az Azure Stack Edge-eszközön a névtéren keresztül csatlakozik a K8-fürthöz `iotedge` . Az ebben a névtérben üzembe helyezett IoT Edge ügynökök felelősek az Azure-hoz való csatlakozásért. A `IoT Edge deployment.json` konfigurációt az Azure DEVOPS CI/CD használatával alkalmazhatja. A névtér és a IoT Edge kezelése a Cloud Operator használatával történik.
+- **IoT Edge**üzemelő példány: ez a IoT Edgeon keresztül történik, amely az Azure IoT hubhoz csatlakozik. Az Azure Stack Edge-eszközön a névtéren keresztül csatlakozik a Kubernetes-fürthöz `iotedge` . Az ebben a névtérben üzembe helyezett IoT Edge ügynökök felelősek az Azure-hoz való csatlakozásért. A `IoT Edge deployment.json` konfigurációt az Azure DEVOPS CI/CD használatával alkalmazhatja. A névtér és a IoT Edge kezelése a Cloud Operator használatával történik.
 
-- **Azure/arc üzembe helyezése**: az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a K8-fürtökön. A K8-fürtöt a Azure Stack peremhálózati eszközén kell összekapcsolni a használatával `azure-arc namespace` . Az ügynökök üzembe helyezése ebben a névtérben történik, amely felelős az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el az [Azure-arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre.
+- **Azure/arc üzembe helyezése**: az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. A Kubernetes-fürtöt a Azure Stack peremhálózati eszközén kell összekapcsolni a használatával `azure-arc namespace` . Az ügynökök üzembe helyezése ebben a névtérben történik, amely felelős az Azure-hoz való csatlakozásért. A központi telepítési konfigurációt a GitOps-alapú konfiguráció-kezelés használatával alkalmazhatja. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el az [Azure-arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre.
 
 ## <a name="choose-the-deployment-type"></a>A központi telepítés típusának kiválasztása
 

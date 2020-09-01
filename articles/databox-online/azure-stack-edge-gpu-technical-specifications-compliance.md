@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 87c96ef6487895d3230541f0ae5fe15c5a645368
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084051"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266663"
 ---
-# <a name="azure-stack-edge-technical-specifications-and-compliance"></a>A Azure Stack Edge műszaki specifikációi és megfelelőségi adatai
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>Technikai specifikációk és megfelelőség Azure Stack Edge GPU-val 
 
 Az Azure Stack Edge-hez tartozó hardveres összetevők, amelyek egy beépített grafikus processzorral (GPU) rendelkeznek, megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozásoknak. A műszaki specifikációk a hardverek, az áramellátási egységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le.
 
@@ -170,6 +170,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Stack Edge üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)

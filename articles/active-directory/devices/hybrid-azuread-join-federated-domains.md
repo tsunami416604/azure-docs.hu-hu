@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428588"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268434"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -32,7 +32,7 @@ Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltató
 
 - **WIAORMULTIAUTHN jogcím:** Ez a jogcím szükséges a hibrid Azure AD-csatlakozáshoz a Windows rendszerű eszközökön.
 - **Ws-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez.
-  AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/windowstransport`
+  AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat: `/adfs/services/trust/2005/windowstransport`
    `/adfs/services/trust/13/windowstransport`
    `/adfs/services/trust/2005/usernamemixed`
    `/adfs/services/trust/13/usernamemixed`
@@ -79,7 +79,7 @@ A hibrid Azure AD-csatlakozáshoz az eszközöknek a szervezet hálózatán bel�
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - Szervezete biztonsági jogkivonat-szolgáltatása (STS) (összevont tartományokhoz)
-- `https://autologon.microsoftazuread-sso.com`(Ha a vagy a-t használja, és nem szeretné használni a zökkenőmentes SSO-t)
+- `https://autologon.microsoftazuread-sso.com` (Ha a vagy a-t használja, és nem szeretné használni a zökkenőmentes SSO-t)
 
 > [!WARNING]
 > Ha a szervezet olyan proxykiszolgálót használ, amelyek az SSL-forgalmat az adatveszteség-megelőzési vagy az Azure AD-bérlői korlátozások miatt észlelik, ügyeljen arra, hogy a (z) "" forgalom ne legyen https://device.login.microsoftonline.com kizárva a TLS-megszakítás és-vizsgálat alól. A (z) "" kizárása az https://device.login.microsoftonline.com ügyféltanúsítvány-alapú hitelesítés zavarásával járhat, ami problémákat okoz az eszközök regisztrációja és az eszközön alapuló feltételes hozzáférés miatt.
@@ -88,7 +88,7 @@ A Windows 10 1803-es verziójától kezdve, ha a AD FS sikertelen használatáva
 
 Ha a szervezete egy kimenő proxyn keresztül fér hozzá az internethez, a Microsoft a [webproxy automatikus felderítésének (WPAD) megvalósítását](/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) javasolja a Windows 10-es számítógépek Azure ad-vel való regisztrációjának engedélyezéséhez. Ha a WPAD konfigurálásával és kezelésével kapcsolatos problémákat tapasztal, tekintse meg az [automatikus észlelés hibaelhárítása](/previous-versions/tn-archive/cc302643(v=technet.10))című témakört. 
 
-Ha nem használ WPAD-t, és szeretné konfigurálni a proxybeállításokat a számítógépen, a Windows 10 1709-es verziójától kezdve is megteheti. További információ: [a WinHTTP-beállítások konfigurálása csoportházirend-objektummal (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Ha nem használ WPAD-t, és szeretné konfigurálni a proxybeállításokat a számítógépen, a Windows 10 1709-es verziójától kezdve is megteheti. További információ: [a WinHTTP-beállítások konfigurálása csoportházirend-objektummal (GPO)](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo).
 
 > [!NOTE]
 > Ha a proxybeállításokat a WinHTTP-beállítások használatával konfigurálja a számítógépen, a konfigurált proxyhoz nem csatlakoztatható számítógépek nem fognak csatlakozni az internethez.
@@ -167,7 +167,7 @@ A Windows régebbi verziójú eszközök hibrid Azure AD-csatlakozásának siker
 
 - `https://device.login.microsoftonline.com`
 - Szervezete STS (összevont tartományok esetében)
-- `https://autologon.microsoftazuread-sso.com`(Zökkenőmentes SSO esetén)
+- `https://autologon.microsoftazuread-sso.com` (Zökkenőmentes SSO esetén)
 
 Emellett engedélyeznie kell a **frissítések állapotát az állapotsoron** a felhasználó helyi intranet zónájában lévő parancsfájl használatával.
 
@@ -186,14 +186,14 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 ### <a name="locally-on-the-device"></a>Helyileg az eszközön
 
 1. Nyissa meg a Windows PowerShellt.
-2. Írja be a következő szöveget: `dsregcmd /status`
+2. Írja be a következő szöveget: `dsregcmd /status`.
 3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
 4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 1. Nyissa meg az eszközök lapot a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)használatával.
-2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)című témakörben talál információt.
+2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](./device-management-azure-portal.md)című témakörben talál információt.
 3. Ha a **regisztrált** oszlop **függőben**van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha a regisztráció sikertelen volt, és a HRE-kapcsolat az eszközök szinkronizálására van konfigurálva.
 4. Ha a **regisztrált** oszlop egy **dátumot és időpontot**tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
 
@@ -243,11 +243,11 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának befejezésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
-- [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Eszközök hibaelhárítása a dsregcmd paranccsal](./troubleshoot-device-dsregcmd.md)
 - [Hibrid Azure AD-csatlakozás a Windows aktuális eszközeihez – problémamegoldás](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure AD JOIN használata a Windows régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [kezelheti az eszközök identitásait a Azure Portal használatával](device-management-azure-portal.md).
 

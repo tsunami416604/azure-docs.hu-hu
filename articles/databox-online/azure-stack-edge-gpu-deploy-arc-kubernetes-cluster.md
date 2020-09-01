@@ -1,6 +1,6 @@
 ---
-title: Az Azure arc engedélyezése a Kubernetes-on Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan engedélyezhető az Azure arc egy meglévő Kubernetes-fürtön az Azure Stack Edge-eszközön.
+title: Az Azure arc engedélyezése a Kubernetes-on Azure Stack Edge GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan engedélyezhető az Azure arc egy meglévő Kubernetes-fürtön az Azure Stack Edge GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 03bf2a01ad4c1d5d017d881bf171806fa33e8799
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5cd163b4c7514507d2a0563f1254c83dd22a3af2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084484"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268193"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge-eszközön
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge GPU-eszközön
 
 Ez a cikk bemutatja, hogyan engedélyezheti az Azure arc szolgáltatást egy meglévő Kubernetes-fürtön az Azure Stack Edge-eszközön. 
 
@@ -132,7 +132,7 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
     Az egyszerű szolgáltatásnév létrehozásával és a szerepkör-hozzárendelés végrehajtásával kapcsolatos további információkért tekintse meg az [Azure arc-kompatibilis](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal)bevezetési szolgáltatás létrehozása című témakör lépéseit.
 
 
-## <a name="enable-arc-on-kubernetes-cluster"></a>Ív engedélyezése a Kubernetes-fürtön
+## <a name="enable-arc-on-kubernetes-cluster"></a>Az Arc engedélyezése a Kubernetes-fürtön
 
 Az alábbi lépéseket követve konfigurálhatja a Kubernetes-fürtöt az Azure arc felügyeletéhez:
 
@@ -222,6 +222,6 @@ Az Azure arc-felügyelet eltávolításához kövesse az alábbi lépéseket:
     `Remove-HcsKubernetesAzureArcAgent` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure arc üzembe helyezésének megismeréséhez lásd: [állapot nélküli php Vendégkönyv alkalmazás üzembe helyezése az Redis-n keresztül az Azure stack Edge-eszközön](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)

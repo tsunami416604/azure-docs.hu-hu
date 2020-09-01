@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: b85586a431a20102035e253537fc45c8a8a54796
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: be7e01644d7d1f232c50b1efbadf100671a262fe
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084105"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268108"
 ---
-# <a name="kubernetes-on-your-azure-stack-edge-device"></a>Kubernetes az Azure Stack Edge-eszközön
+# <a name="kubernetes-on-your-azure-stack-edge-gpu-device"></a>Kubernetes az Azure Stack Edge GPU-eszközön
 
 A Kubernetes egy népszerű, nyílt forráskódú platform a tároló alkalmazások előkészítéséhez. Ez a cikk áttekintést nyújt a Kubernetes, majd leírja, hogy a Kubernetes hogyan működik az Azure Stack Edge-eszközön. 
 
@@ -57,7 +57,7 @@ Az alkalmazások számítási feladatainak támogatásához csatlakoztathatja az
 
 További információ: Storage-létesítési beállítások az [Azure stack Edge-eszköz Kubernetes-tárolójában](azure-stack-edge-gpu-kubernetes-storage.md)lévő alkalmazásokhoz.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A Kubernetes hálózatkezelés lehetővé teszi a Kubernetes-hálózaton belüli kommunikáció konfigurálását, többek között a tárolók közötti hálózatkezelést, a pod-Pod hálózatkezelést, a pod-szolgáltatást és az internetről a szolgáltatásba történő hálózatkezelést. További információ: hálózati modell a [Kubernetes hálózatkezelésben az Azure stack Edge-eszközhöz](azure-stack-edge-gpu-kubernetes-networking.md).
 
@@ -109,7 +109,7 @@ Az alkalmazások Kubernetes-fürtön IoT Edge használatával történő közpon
 Az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el az [Azure-arc-kompatibilis Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörre. Az Azure arc díjszabásával kapcsolatos információkért látogasson el az [Azure arc díjszabására](https://azure.microsoft.com/services/azure-arc/#pricing).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Kubernetes Storage [Azure stack Edge-eszközön](azure-stack-edge-gpu-kubernetes-storage.md).
 - A Kubernetes hálózati modell megismerése [Azure stack peremhálózati eszközön](azure-stack-edge-gpu-kubernetes-networking.md).

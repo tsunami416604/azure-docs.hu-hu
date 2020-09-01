@@ -3,23 +3,25 @@ title: Jel leíró hangsávok a Azure Media Services v3-vel | Microsoft Docs
 description: Kövesse az oktatóanyag lépéseit egy fájl feltöltéséhez, a videó kódolásához, a leíró hangsávok hozzáadásához és a tartalom továbbításához a Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 09/25/2019
-ms.author: juliako
-ms.openlocfilehash: cce2dfe943519f39fbe0660338babf782fee4336
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1a8986dcba9dc64eb77d8bc8c6e77704fa212abb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006652"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267428"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Jel leíró hangsávok
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Kísérőszöveget adhat hozzá a videóhoz, hogy a kísérőszöveggel Hallgassa meg a vizuálisan korlátozott ügyfeleket a videó rögzítésének követéséhez. A Media Services v3-as verzióban a leíró hangsávokat a manifest-fájlban szereplő hangfelvételi jelekkel jelezheti.
 
@@ -241,6 +243,6 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Videók elemzése](analyze-videos-tutorial-with-api.md)

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: fdd88a902e812c89270a175aef4bf0de197c6e9b
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146130"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268502"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>A TLS 1,2 konfigurálása Azure Stack Edge-eszközt elérő Windows-ügyfeleken
 
@@ -72,6 +72,6 @@ Ha a környezethez az egész rendszerre kiterjedő TLS 1,2-et kívánja beállí
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Kapcsolódás Azure Resource Managerhoz](azure-stack-edge-j-series-connect-resource-manager.md)

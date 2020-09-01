@@ -3,22 +3,24 @@ title: A Azure Media Services v3 kibocsátási megjegyzései | Microsoft Docs
 description: Ha naprakészen szeretne maradni a legújabb fejleményekkel, ez a cikk az Azure Media Services v3 legújabb frissítéseit tartalmazza.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2e637392328c7a09fb23adeca61a352707f05e0e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072136"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267502"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 
@@ -141,7 +143,7 @@ Media Services v3 bejelenti az élő események élő lineáris kódolásának 2
 
 #### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó témakört. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az  [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó témakört. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
 
 További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -270,31 +272,31 @@ A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](/cli/azure/ams?vi
 
 #### <a name="asset-commands"></a>Eszköz parancsai
 
-- ```--storage-account```és ```--container``` argumentumok hozzáadva.
+- ```--storage-account``` és ```--container``` argumentumok hozzáadva.
 - A parancs hozzáadta a lejárati idő (most + 23H) és az engedélyek (olvasás) alapértelmezett értékeit ```az ams asset get-sas-url``` .
 
 #### <a name="job-commands"></a>Feladatok parancsai
 
-- ```--correlation-data```és ```--label``` argumentumok hozzáadva
-- ```--output-asset-names```átnevezve: ```--output-assets``` . Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
+- ```--correlation-data``` és ```--label``` argumentumok hozzáadva
+- ```--output-asset-names``` átnevezve: ```--output-assets``` . Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
 
 #### <a name="streaming-locator-commands"></a>Adatfolyam-kereső parancsai
 
-- ```az ams streaming locator```az alapparancs le lett cserélve ```az ams streaming-locator``` .
-- ```--streaming-locator-id```és ```--alternative-media-id support``` argumentumok hozzáadva.
-- ```--content-keys argument```az argumentum frissítve.
-- ```--content-policy-name```átnevezve: ```--content-key-policy-name``` .
+- ```az ams streaming locator``` az alapparancs le lett cserélve ```az ams streaming-locator``` .
+- ```--streaming-locator-id``` és ```--alternative-media-id support``` argumentumok hozzáadva.
+- ```--content-keys argument``` az argumentum frissítve.
+- ```--content-policy-name``` átnevezve: ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Streaming Policy parancsok
 
-- ```az ams streaming policy```az alapparancs le lett cserélve ```az ams streaming-policy``` .
+- ```az ams streaming policy``` az alapparancs le lett cserélve ```az ams streaming-policy``` .
 - A titkosítási paraméterek támogatják a ```az ams streaming-policy create``` hozzáadását.
 
 #### <a name="transform-commands"></a>Átalakítási parancsok
 
-- ```--preset-names```argumentum lecserélve ```--preset``` . Mostantól egyszerre csak 1 kimenetet vagy beállításkészletet állíthat be (további futtatáshoz ```az ams transform output add``` ). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
-- ```az ams transform output remove```a kimeneti index eltávolításának átadásával végezhető el.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumentumok hozzáadva a ```az ams transform create``` és ```az ams transform output add``` parancsokhoz.
+- ```--preset-names``` argumentum lecserélve ```--preset``` . Mostantól egyszerre csak 1 kimenetet vagy beállításkészletet állíthat be (további futtatáshoz ```az ams transform output add``` ). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
+- ```az ams transform output remove``` a kimeneti index eltávolításának átadásával végezhető el.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumentumok hozzáadva a ```az ams transform create``` és ```az ams transform output add``` parancsokhoz.
 
 ## <a name="october-2018---ga"></a>Október 2018 – GA
 

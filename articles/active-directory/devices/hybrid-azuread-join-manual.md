@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428385"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268553"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -39,7 +39,7 @@ Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni sze
 
 Ez az oktatóanyag feltételezi, hogy már ismeri a következőket:
 
-* [Az Azure Active Directory eszközkezelésének alapjai](../device-management-introduction.md)
+* [Az Azure Active Directory eszközkezelésének alapjai](./overview.md)
 * [A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése](hybrid-azuread-join-plan.md)
 * [Az eszközök hibrid Azure AD-csatlakozásának vezérlése](hybrid-azuread-join-control.md)
 
@@ -94,7 +94,7 @@ Az alábbi táblázatban áttekintheti a forgatókönyvéhez szükséges lépés
 
 Az eszközök a regisztráció során szolgáltatáskapcsolódási pont (SCP) objektumot használnak az Azure AD-bérlői információk felderítéséhez. A helyszíni Active Directory-példányban a hibrid Azure AD-hez csatlakoztatott eszközök SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának léteznie kell a számítógép erdőjának konfigurációs névhasználati környezet partíciójában. Erdőnként egy konfigurációs névhasználati környezet létezik. A többerdős Active Directory konfigurációjában a szolgáltatás kapcsolódási pontjának minden olyan erdőben léteznie kell, amely tartományhoz csatlakoztatott számítógépeket tartalmaz.
 
-Használja a [**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) parancsmagot az erdő konfigurációs névhasználati környezetének lekéréséhez.  
+Használja a [**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) parancsmagot az erdő konfigurációs névhasználati környezetének lekéréséhez.  
 
 A *fabrikam.com* Active Directory-tartománynevű erdő konfigurációs névhasználati környezete a következő:
 
@@ -115,7 +115,7 @@ A következő Windows PowerShell-parancsfájllal ellenőrizheti az objektum lét
    $scp.Keywords;
    ```
 
-A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Íme egy példa:
+A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Bemutatunk egy példát:
 
    ```
    azureADName:microsoft.com
@@ -167,7 +167,7 @@ A Windows Server 2008-es vagy korábbi verzióit futtató tartományvezérlők e
 
 Az előző szkriptben `$verifiedDomain = "contoso.com"` helyőrző. Cserélje le az egyik ellenőrzött tartománynevet az Azure AD-ben. Ahhoz, hogy használni tudja a tartományt, rendelkeznie kell a tartományhoz.
 
-További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../active-directory-domains-add-azure-portal.md).
+További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).
 
 Az ellenőrzött vállalati tartományok listáját a [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) parancsmaggal kaphatja meg.
 
@@ -326,7 +326,7 @@ A `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` jogcímnek 
 
 Az előző jogcímben `<verified-domain-name>` helyőrző. Cserélje le az egyik ellenőrzött tartománynevet az Azure AD-ben. Használja például a következőt: `Value = "http://contoso.com/adfs/services/trust/"` .
 
-További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../active-directory-domains-add-azure-portal.md).  
+További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../fundamentals/add-custom-domain.md).  
 
 Az ellenőrzött vállalati tartományok listáját a [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) parancsmaggal kaphatja meg.
 
@@ -530,7 +530,7 @@ AD FSban hozzá kell adnia egy kiállítási átalakítási szabályt, amely át
 1. Kattintson a jobb gombbal a Microsoft Office 365 Identity Platform megbízható függő entitás elemre, és válassza a **Jogcímszabályok szerkesztése** lehetőséget.
 1. A **Kiállítási átalakítószabályok** lapon válassza a **Szabály hozzáadása** lehetőséget.
 1. A **Jogcímszabály** sablonlistában válassza a **Jogcímek küldése egyéni szabállyal** lehetőséget.
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 1. A **jogcím-szabály neve** mezőbe írja be az **Auth Method jogcím szabályt**.
 1. A **jogcím szabály** mezőjébe írja be a következő szabályt:
 
@@ -557,7 +557,7 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 ### <a name="locally-on-the-device"></a>Helyileg az eszközön
 
 1. Nyissa meg a Windows PowerShellt.
-2. Írja be a következő szöveget: `dsregcmd /status`
+2. Írja be a következő szöveget: `dsregcmd /status`.
 3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
 4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
 
@@ -614,11 +614,11 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának kitöltésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
-- [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Eszközök hibaelhárítása a dsregcmd paranccsal](./troubleshoot-device-dsregcmd.md)
 - [Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

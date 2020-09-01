@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4efd26502c20a33cb61ab1c9d58f2757bbd70
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 59f83d232874a7702598b6ea5fdd458c101e7e79
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948300"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266578"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
 Az egyéni vezérlők a Azure Active Directory előzetes verziójú képességei. Egyéni vezérlők használatakor a rendszer átirányítja a felhasználókat egy kompatibilis szolgáltatáshoz, hogy megfeleljenek a Azure Active Directoryon kívüli hitelesítési követelményeknek. Ennek a vezérlőnek a kielégítéséhez a rendszer átirányítja a felhasználó böngészőjét a külső szolgáltatáshoz, végrehajtja a szükséges hitelesítést, majd átirányítja a Azure Active Directoryre. Azure Active Directory ellenőrzi a választ, és ha a felhasználó hitelesítése vagy ellenőrzése sikeres volt, a felhasználó folytatja a feltételes hozzáférés folyamatát.
 
 > [!NOTE]
-> További információ az egyéni vezérlési képességre tervezett változásokról: [február 2020](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)Újdonságok.
+> További információ az egyéni vezérlési képességet megtervező változásokról: február 2020 Archívum, [Újdonságok](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls).
 
 ## <a name="creating-custom-controls"></a>Egyéni vezérlők létrehozása
 
@@ -55,7 +55,7 @@ Egyéni vezérlő szerkesztéséhez törölnie kell a jelenlegi vezérlőt, és 
 
 Egyéni vezérlők nem használhatók az Identity Protection automatizálásához, amely megköveteli az Azure Multi-Factor Authentication, az Azure AD önkiszolgáló jelszó-visszaállítását (SSPR), a többtényezős hitelesítési jogcím követelményeit, a szerepköröket a Privileged Identity Managerben (PIM), az Intune-eszközök regisztrálásának részeként, illetve az eszközök Azure AD-be való csatlakoztatásakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

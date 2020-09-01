@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 873f8bfda5dcfbc41d1bdc73bb4f0de97f775f15
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a26be590d5f7b467f57e8e18eac54ce57be24094
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013401"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266595"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady-streamelés Windows 10-hez  
+# <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady-streamelés Windows 10-hez
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [3\. verzió](../latest/offline-plaready-streaming-for-windows-10.md)
@@ -131,6 +133,6 @@ Mivel a videó a PlayReady védelme alatt áll, a képernyőkép nem fogja tudni
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibrid DRM-rendszer terve](hybrid-design-drm-sybsystem.md)

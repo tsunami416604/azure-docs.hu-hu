@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce09bd2a3f5f474ad5c6e6eb73865e2b2dc9fe3a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4f12b4e1d64db097730494da746b44479a791f9d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541954"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268638"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
@@ -32,7 +32,7 @@ A **minden eszköz** oldal a következőket teszi lehetővé:
 - Eszközök azonosítása, beleértve a következőket:
    - Az Azure AD-ben csatlakozott vagy regisztrált eszközök.
    - A [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)használatával üzembe helyezett eszközök.
-   - [Univerzális nyomtatást](https://docs.microsoft.com/universal-print/fundamentals/universal-print-getting-started) használó nyomtatók
+   - [Univerzális nyomtatást](/universal-print/fundamentals/universal-print-getting-started) használó nyomtatók
 - Az eszköz identitás-felügyeleti feladatait (például engedélyezés, letiltás, törlés vagy kezelés) hajthatja végre.
    - A [nyomtatók](/universal-print/fundamentals/) és a [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) -eszközök korlátozott felügyeleti lehetőségekkel rendelkeznek az Azure ad-ben. A rendszergazdákat a megfelelő felügyeleti felületéről kell felügyelni.
 - Adja meg az eszköz identitásának beállításait.
@@ -156,7 +156,7 @@ Az eszköz identitásának az Azure AD portálon való kezeléséhez az eszköz�
 
 - **További helyi rendszergazdák az Azure ad-hez csatlakoztatott eszközökön** : kiválaszthatja azokat a felhasználókat, akik helyi rendszergazdai jogosultságokat kapnak az eszközön. Ezeket a felhasználókat a rendszer az Azure AD-ben adja hozzá az *eszköz-rendszergazdák* szerepkörhöz. A globális rendszergazdák az Azure AD-ben és az eszközök tulajdonosai alapértelmezés szerint helyi rendszergazdai jogosultságokat kapnak. Ez a lehetőség egy prémium kiadású funkció, amely olyan termékeken keresztül érhető el, mint a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS).
 - A **felhasználók regisztrálhatják eszközeiket az Azure ad** -ben – ezt a beállítást úgy kell konfigurálni, hogy engedélyezze a Windows 10 személyes, iOS-, Android-és MacOS-eszközök regisztrálását az Azure ad-ben. Ha a **nincs**lehetőséget választja, az eszközök nem regisztrálhatnak az Azure ad-ben. Az Office 365-hez készült Microsoft Intune vagy mobileszköz-felügyelettel (MDM) való regisztrációhoz regisztráció szükséges. Ha ezen szolgáltatások valamelyikét konfigurálta, akkor az **összes** kiválasztva, a **none** érték nem érhető el.
-- **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak további hitelesítési tényezőt kell-e biztosítaniuk az eszközük Azure ad-hez való csatlakoztatásához. Az alapértelmezett érték a **nem**. Az eszközök regisztrálásakor javasoljuk a többtényezős hitelesítés megkövetelését. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. A különböző Azure multi-Factor Authentication-szolgáltatásokkal kapcsolatos további információkért lásd: [Az Azure multi-Factor Authentication első lépései](../authentication/concept-mfa-whichversion.md). 
+- **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak további hitelesítési tényezőt kell-e biztosítaniuk az eszközük Azure ad-hez való csatlakoztatásához. Az alapértelmezett érték a **nem**. Az eszközök regisztrálásakor javasoljuk a többtényezős hitelesítés megkövetelését. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. A különböző Azure multi-Factor Authentication-szolgáltatásokkal kapcsolatos további információkért lásd: [Az Azure multi-Factor Authentication első lépései](../authentication/concept-mfa-howitworks.md). 
 
 > [!NOTE]
 > A **többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.

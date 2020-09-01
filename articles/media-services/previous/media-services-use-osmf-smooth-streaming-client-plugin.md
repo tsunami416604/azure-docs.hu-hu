@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0a2f5fbc2139a8340ee763efc51c36a01dd24d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b71a2064887cc2b6099ead2e59f9fa3113d2f0b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999581"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269012"
 ---
-# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe nyílt forráskódú adathordozó-keretrendszerhez  
+# <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe nyílt forráskódú adathordozó-keretrendszerhez
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Áttekintés
 A nyílt forráskódú adathordozó-keretrendszer 2,0-es (OSMF)-es Microsoft Smooth Streaming beépülő modulja kibővíti a OSMF alapértelmezett képességeit, és hozzáadja a Microsoft Smooth Streaming a tartalom lejátszását az új és a meglévő OSMF-játékosokhoz. A beépülő modul emellett Smooth Streaming lejátszási képességeket is biztosít a Strobe Media lejátszásához (SMP).
 

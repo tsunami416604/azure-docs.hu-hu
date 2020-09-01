@@ -1,21 +1,21 @@
 ---
-title: Előtelepítési ellenőrzőlista Azure Stack Edge-eszköz üzembe helyezéséhez | Microsoft Docs
-description: Ez a cikk az Azure Stack Edge-eszköz üzembe helyezése előtt összegyűjthető információkat ismerteti.
+title: Előtelepítési ellenőrzőlista Azure Stack Edge GPU-eszköz üzembe helyezéséhez | Microsoft Docs
+description: Ez a cikk azokat az információkat ismerteti, amelyeket az Azure Stack Edge GPU-eszköz üzembe helyezése előtt össze lehet gyűjteni.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/29/2020
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: e1233e17dfe2a56e6ea995190b243ed9c64b8945
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d7b3388b7e3a31c23b34b21017f012d40e9f849
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181357"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268142"
 ---
-# <a name="deployment-checklist-for-your-azure-stack-edge-device"></a>Üzembe helyezési ellenőrzőlista az Azure Stack Edge-eszközhöz  
+# <a name="deployment-checklist-for-your-azure-stack-edge-gpu-device"></a>Üzembe helyezési ellenőrzőlista az Azure Stack Edge GPU-eszközhöz  
 
 Ez a cikk azokat az információkat ismerteti, amelyeket az Azure Stack Edge-eszköz tényleges üzembe helyezése előtt össze lehet gyűjteni. 
 

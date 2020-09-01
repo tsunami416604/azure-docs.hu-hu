@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541889"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268604"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 
@@ -32,11 +32,11 @@ A Enterprise State Roaming engedélyezésekor a szervezet automatikusan ingyenes
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/).
 1. Válassza ki **Azure Active Directory**  >  **eszközök**  >  **Enterprise State roaming**.
-1. Válassza ki **, hogy a felhasználók szinkronizálják a beállításokat és az alkalmazásadatok az eszközök között**. További információ: [az eszközbeállítások konfigurálása](/azure/active-directory/device-management-azure-portal).
+1. Válassza ki **, hogy a felhasználók szinkronizálják a beállításokat és az alkalmazásadatok az eszközök között**. További információ: [az eszközbeállítások konfigurálása](./device-management-azure-portal.md).
   
    ![a felhasználók által címkézett eszközbeállítások képe szinkronizálhatja a beállításokat és az alkalmazásadatok az eszközök között](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Ahhoz, hogy egy Windows 10-es eszköz használhassa a Enterprise State Roaming szolgáltatást, az eszköznek az Azure AD-identitás használatával kell hitelesítenie magát. Az Azure AD-hez csatlakozó eszközök esetében a felhasználó elsődleges bejelentkezési identitása az Azure AD-identitás, így nincs szükség további konfigurálásra. A helyszíni Active Directoryt használó eszközökön a rendszergazdának [be kell állítania a hibrid Azure Active Directory csatlakoztatott eszközöket](hybrid-azuread-join-manual-steps.md). 
+Ahhoz, hogy egy Windows 10-es eszköz használhassa a Enterprise State Roaming szolgáltatást, az eszköznek az Azure AD-identitás használatával kell hitelesítenie magát. Az Azure AD-hez csatlakozó eszközök esetében a felhasználó elsődleges bejelentkezési identitása az Azure AD-identitás, így nincs szükség további konfigurálásra. A helyszíni Active Directoryt használó eszközökön a rendszergazdának [be kell állítania a hibrid Azure Active Directory csatlakoztatott eszközöket](./hybrid-azuread-join-plan.md). 
 
 ## <a name="data-storage"></a>Adattárolás
 

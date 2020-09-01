@@ -1,5 +1,5 @@
 ---
-title: Adathordozó feltöltése
+title: Adathordozók feltöltése
 titleSuffix: Azure Media Services
 description: Megtudhatja, hogyan tölthet fel médiatartalmakat adatfolyamként vagy kódolásra.
 services: media-services
@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a046a3caba9a0909d873356bda8d1fa6cf1f9860
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 334eebe9680ba0e381bf82ac2e474a47a3b8875e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719257"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267292"
 ---
 # <a name="upload-media-for-streaming-or-encoding"></a>Média feltöltése adatfolyamként vagy kódolásra
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services a digitális fájlokat (adathordozókat) feltölti egy eszközhöz társított blob-tárolóba. Az [eszköz](/rest/api/media/operations/asset) entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is). A fájlok az objektum tárolóba való feltöltése után a tartalom biztonságosan tárolódik a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 

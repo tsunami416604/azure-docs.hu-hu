@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 6de1144237366806bb06c28a0777f62d69004e8b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40761415042cc619893ab3a712a763d4fb046e38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006565"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267479"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -65,6 +65,8 @@ A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az ig
 2. A **biztonsági másolati elemek**területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd kattintson a **biztonsági mentés**elemre.
 3. A **biztonsági mentés**területen válassza ki a végrehajtani kívánt biztonsági mentés típusát. Ezután kattintson az **OK** gombra. Ezt a biztonsági mentést a biztonsági másolathoz tartozó szabályzatnak megfelelően megőrzi a rendszer.
 4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
+
+Alapértelmezés szerint az igény szerinti biztonsági mentések megőrzése 45 nap.
 
 ### <a name="hana-native-client-integration"></a>HANA natív ügyfél-integráció
 
@@ -240,6 +242,6 @@ Előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény az egyik o
 
 Ezt a beállítást körültekintően használhatja: Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ennek hatására előfordulhat, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet elindítása előtt keressen egy vagy több [tünetet](backup-azure-sap-hana-database-troubleshoot.md#re-registration-failures) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogy miként lehet [elhárítani a SAP HANA adatbázisok biztonsági mentése során felmerülő gyakori problémákat.](./backup-azure-sap-hana-database-troubleshoot.md)

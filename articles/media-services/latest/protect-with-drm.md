@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan használható a DRM Dynamic encryption és a License Delivery Service a Microsoft PlayReady, a Google Widevine vagy az Apple FairPlay-licenccel titkosított adatfolyamok továbbítására.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97011222593d249461719e3492dd5b54fb63baff
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060613"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267139"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Oktatóanyag: a DRM dinamikus titkosításának és a licenc-kézbesítési szolgáltatásnak a használata
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Bár ez az oktatóanyag a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
@@ -168,7 +170,7 @@ Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-t, ame
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

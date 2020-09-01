@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services v3 Microsoft PlayReady-licenc sablonnal
 description: Ez a témakör áttekintést nyújt a PlayReady-licencek konfigurálásához használt PlayReady-licencekről.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 302c938aa3a778f4e1b0ca7884f82943edf43ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b4131ff0cb2169660b231cdf136f52c3f26a02dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998968"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267156"
 ---
-# <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 és PlayReady-licenc sablonnal 
+# <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 és PlayReady-licenc sablonnal
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Azure Media Services lehetővé teszi a tartalom titkosítását a **Microsoft PlayReady**. A Media Services egy szolgáltatást is biztosít a PlayReady-licencek kézbesítéséhez. A PlayReady-licencek konfigurálásához Media Services API-kat használhat. Amikor egy játékos megpróbál lejátszani a PlayReady-védelemmel ellátott tartalmat, a rendszer egy kérelmet küld a licenc kézbesítési szolgáltatásnak a licenc beszerzéséhez. Ha a licencelési szolgáltatás jóváhagyja a kérelmet, az az ügyfélnek eljuttatott licencet adja ki, és a megadott tartalom visszafejtésére és lejátszására szolgál.
 
@@ -314,6 +316,6 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 </xs:schema>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További [információ a DRM elleni védelemről](protect-with-drm.md)

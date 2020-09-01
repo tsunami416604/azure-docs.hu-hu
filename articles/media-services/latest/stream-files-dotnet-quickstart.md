@@ -3,7 +3,7 @@ title: Videofájlok streamelése az Azure Media Services használatával – .NE
 description: Az oktatóanyag lépéseit követve hozzon létre egy új Azure Media Services fiókot, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, stream
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0ba272d76cade53529b198876f0ad06c4ae79649
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074517"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267088"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ebből az oktatóanyagból megtudhatja, hogy milyen egyszerűen kódolhatja és indíthatja el a streaming-videókat számos különböző böngészőn és eszközön a Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
@@ -87,7 +89,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoport egyik erőforrására sem, beleértve az oktatóanyaghoz létrehozott Media Services-és Storage-fiókokat, törölje az erőforráscsoportot.
 

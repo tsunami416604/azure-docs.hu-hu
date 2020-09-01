@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99651bb449268aa830babcedc18cc33d5870aa23
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4c00c723c23e2f0d962009d33a6abe1008c734a5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016376"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266272"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Linux VM-beli, rendszer által hozzárendelt felügyelt identitás használata az Azure Storage eléréséhez hozzáférési kulccsal
 
@@ -45,7 +45,7 @@ Ha még nem rendelkezik tárfiókkal, most létrehoz egyet.  Ki is hagyhatja ezt
 3. Adjon meg egy nevet a tárfiók számára a **Név** mezőben, amelyet később használ majd.  
 4. Az **Üzemi modell** mezőben a „Resource Manager”, a **Fióktípus** mezőben az „Általános célú” értéket kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -78,7 +78,7 @@ Ebben a lépésben hozzáférést biztosít a VM rendszer által hozzárendelt f
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
-A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/install_guide) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
+A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](/windows/wsl/install-win10) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
 
 1. Az Azure Portalon lépjen a **Virtuális gépek** felületre, keresse meg a Linux virtuális gépet, majd az **Áttekintés** lap tetején kattintson a **Csatlakozás** gombra. Másolja ki sztringet a virtuális géphez való csatlakozáshoz. 
 2. Csatlakozzon a virtuális géphez az SSH-ügyfél használatával.  
@@ -127,7 +127,7 @@ Hozzon létre egy példablobfájlt, amelyet feltölthet a Blob Storage-tárolób
 echo "This is a test file." > test.txt
 ```
 
-Ezután hitelesítsen az `az storage` CLI-paranccsal a tárelérési kulcs használatával, és töltse fel a fájlt a blobtárolóba. Ehhez a lépéshez [telepítenie kell az Azure CLI legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) a virtuális gépen, ha eddig még nem tette volna meg.
+Ezután hitelesítsen az `az storage` CLI-paranccsal a tárelérési kulcs használatával, és töltse fel a fájlt a blobtárolóba. Ehhez a lépéshez [telepítenie kell az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) a virtuális gépen, ha eddig még nem tette volna meg.
  
 
 ```azurecli-interactive
@@ -194,9 +194,9 @@ Válasz:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használhat Linux VM-beli, rendszer által hozzárendelt felügyelt identitást az Azure Storage hozzáférési kulcsokkal való eléréséhez.  További információ az Azure Storage tárelérési kulcsairól:
 
 > [!div class="nextstepaction"]
->[A tárelérési kulcsok kezelése](/azure/storage/common/storage-create-storage-account)
+>[A tárelérési kulcsok kezelése](../../storage/common/storage-account-create.md)

@@ -1,21 +1,21 @@
 ---
-title: Kubernetes-fürt létrehozása és kezelése Microsoft Azure Stack Edge-eszközön | Microsoft Docs
-description: Ismerteti, hogyan lehet Kubernetes-fürtöt létrehozni és felügyelni Microsoft Azure Stack peremhálózati eszközön a Windows PowerShell felületén keresztül.
+title: Kubernetes-fürt létrehozása és kezelése Azure Stack Edge GPU-eszközön | Microsoft Docs
+description: Ismerteti, hogyan lehet Kubernetes-fürtöt létrehozni és felügyelni Azure Stack Edge GPU-eszközön a Windows PowerShell felületén keresztül.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 74f86ed48f363031fcab5d9d89046c349a1c3667
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181392"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267958"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge-eszközön a kubectl használatával
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge GPU-eszközön a kubectl használatával
 
 A Azure Stack Edge-eszközön létrejön egy Kubernetes-fürt a számítási szerepkör konfigurálásakor. A Kubernetes-fürt létrehozása után a fürt helyileg is csatlakoztatható egy ügyfélszámítógépről egy natív eszköz, például a *kubectl*használatával.
 

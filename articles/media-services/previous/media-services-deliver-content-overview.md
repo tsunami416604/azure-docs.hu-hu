@@ -10,14 +10,17 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060367"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266034"
 ---
 # <a name="deliver-content-to-customers"></a>Tartalom továbbítása az ügyfeleknek
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Ha streaming-vagy igény szerinti tartalmat továbbít az ügyfeleknek, a cél az, hogy magas színvonalú videót nyújtson különféle eszközökhöz különböző hálózati körülmények között.
 
 A cél elérése érdekében a következőket teheti:

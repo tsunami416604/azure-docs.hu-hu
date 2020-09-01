@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: f2bd0b8c222b9f9643d53da33619af438c121a2f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145960"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268859"
 ---
-# <a name="run-and-manage-a-kubernetes-stateless-application-on-your-azure-stack-edge-device"></a>Kubernetes állapot nélküli alkalmazás futtatása és kezelése az Azure Stack Edge-eszközön
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Kubernetes állapot nélküli alkalmazás üzembe helyezése az Azure Stack Edge GPU-eszközön a kubectl használatával
 
 Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy állapot nélküli alkalmazást egy meglévő Kubernetes-fürtön lévő kubectl-parancsokkal. Ez a cikk végigvezeti a hüvelyek állapot nélküli alkalmazásokban való létrehozásának és beállításának folyamatán is.
 
@@ -361,6 +361,6 @@ PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
 deployment.extensions "nginx-deployment" deleted
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Kubernetes áttekintése](azure-stack-edge-gpu-kubernetes-overview.md)

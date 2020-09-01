@@ -1,35 +1,33 @@
 ---
-title: Lemezes titkosítást használó készlet létrehozása
+title: Készlet létrehozása a lemeztitkosítás engedélyezése mellett
 description: Megtudhatja, hogyan titkosíthatja a csomópontokat egy platform által felügyelt kulccsal a lemez titkosítási konfigurációjának használatával.
 author: pkshultz
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 5210ead0a85cff27c38d9ff9fb0d387e3799428c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89038537"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267044"
 ---
-# <a name="create-a-pool-with-disk-encryption-enabled"></a>Lemezes titkosítást használó készlet létrehozása
+# <a name="create-a-pool-with-disk-encryption-enabled"></a>Készlet létrehozása a lemeztitkosítás engedélyezése mellett
 
-Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációja segítségével, a készletben lévő számítási csomópontokat a platform által felügyelt kulccsal titkosíthatja a lemez titkosítási konfigurációjának megadásával. 
+Ha Azure Batch-készletet hoz létre a virtuális gép konfigurációja segítségével, a készletben lévő számítási csomópontokat a platform által felügyelt kulccsal titkosíthatja a lemez titkosítási konfigurációjának megadásával.
 
-Ez a cikk azt ismerteti, hogyan lehet létrehozni egy batch-készletet, amelyen engedélyezve van a lemezes titkosítás. 
+Ez a cikk azt ismerteti, hogyan lehet létrehozni egy batch-készletet, amelyen engedélyezve van a lemezes titkosítás.
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Miért érdemes egy készletet használni a lemezes titkosítási konfigurációval?
 
 A Batch-készlettel a számítási csomópont operációs rendszerén és ideiglenes lemezén tárolt adatok érhetők el és tárolhatók. A kiszolgálóoldali lemeznek a platform által felügyelt kulccsal történő titkosításával az adatokat alacsony terheléssel és kényelemmel fogja védeni.  
 
-A Batch ezeket a lemezes titkosítási technológiákat alkalmazza a számítási csomópontokon a készlet konfigurációja és a regionális támogatás alapján. 
+A Batch ezeket a lemezes titkosítási technológiákat alkalmazza a számítási csomópontokon a készlet konfigurációja és a regionális támogatás alapján.
 
-* [Felügyelt lemezes titkosítás a platform által felügyelt kulcsokkal](../virtual-machines/windows/disk-encryption.md#platform-managed-keys) 
-
-* [Titkosítás a gazdagépen a platform által felügyelt kulcs használatával](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) 
-
-* [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) 
+- [Felügyelt lemezes titkosítás a platform által felügyelt kulcsokkal](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
+- [Titkosítás a gazdagépen a platform által felügyelt kulcs használatával](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
 > A gazdagépeken a platform által felügyelt kulcs használatával történő titkosítás támogatása Azure Batch jelenleg nyilvános előzetes verzióban érhető el az USA keleti régiója, az USA 2. nyugati régiója, az USA déli középső régiója, az US Gov Virginia és a US Gov Arizona régiók számára.
@@ -42,17 +40,17 @@ Nem fogja tudni megadni, hogy melyik titkosítási módszert alkalmazza a rendsz
 
 Ha batch-készletet hoz létre a Azure Portalban, válassza a **TemporaryDisk** vagy a **OsAndTemporaryDisk** lehetőséget a **lemez titkosítása beállítás**alatt.
 
-![Képernyőfelvétel a lemez titkosításának konfigurációs beállításáról a Azure Portal.](./media/disk-encryption/portal-view.png)
+:::image type="content" source="media/disk-encryption/portal-view.png" alt-text="Képernyőfelvétel a lemez titkosításának konfigurációs beállításáról a Azure Portal.":::
 
 A készlet létrehozása után a lemez titkosítási konfigurációs céljait a készlet **Tulajdonságok** szakaszában tekintheti meg.
 
-![Képernyőfelvétel: a Azure Portal a lemez titkosítási konfigurációs céljait jeleníti meg.](./media/disk-encryption/disk-encryption-configuration-target.png)
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Képernyőfelvétel: a Azure Portal a lemez titkosítási konfigurációs céljait jeleníti meg.":::
 
 ## <a name="examples"></a>Példák
 
 Az alábbi példák bemutatják, hogyan titkosíthatja a Batch-készlet operációs rendszerét és ideiglenes lemezeit a Batch .NET SDK, a Batch REST API és az Azure CLI használatával.
 
-### <a name="batch-net-sdk"></a>Batch .NET SDK 
+### <a name="batch-net-sdk"></a>Batch .NET SDK
 
 ```csharp
 pool.VirtualMachineConfiguration.DiskEncryptionConfiguration = new DiskEncryptionConfiguration(
@@ -61,7 +59,6 @@ pool.VirtualMachineConfiguration.DiskEncryptionConfiguration = new DiskEncryptio
 ```
 
 ### <a name="batch-rest-api"></a>Batch REST API
-
 
 REST API URL-CÍM:
 ```
@@ -107,3 +104,8 @@ az batch pool create \
     --node-agent-sku-id "batch.node.ubuntu 18.04" \
     --disk-encryption-targets OsDisk TemporaryDisk
 ```
+
+## <a name="next-steps"></a>További lépések
+
+- További információ a [Azure Disk Storage kiszolgálóoldali titkosításáról](../virtual-machines/windows/disk-encryption.md).
+- A Batch részletes áttekintését lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).

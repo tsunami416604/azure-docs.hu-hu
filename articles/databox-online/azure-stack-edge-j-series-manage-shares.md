@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e0bbcc6f3e8b02c6f8191114253d3ccb2d1b739a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6448ac002482751052310532989278e3b88b5915
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147099"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268842"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>A Azure Portal használata az Azure Stack Edge-megosztások kezeléséhez
 
@@ -82,7 +82,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 6. A **minden jogosultság helyi felhasználó** mezőben válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**.
 
-7. Kattintson a **Létrehozás** gombra. 
+7. Válassza a **Létrehozás** lehetőséget. 
 
     ![Helyi megosztás létrehozása](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -239,6 +239,6 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 > Ezt a műveletet csak egyszer kell elvégezni az egyes tárfiókok esetében, nem kell megismételni minden egyes, ugyanazon tárfiókhoz tartozó megosztásnál.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](azure-stack-edge-j-series-manage-users.md).

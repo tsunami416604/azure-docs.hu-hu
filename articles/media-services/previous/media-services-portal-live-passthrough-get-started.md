@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 51d3d859bbd176a6e1fac92b75c6120301a5066f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15b876104dfa1a35077a34aa178d650e2d68855e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084517"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266731"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal Azure Portal használatával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -139,7 +142,7 @@ Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (M
 
 Leállítása után az élő esemény automatikusan átalakul igény szerinti tartalommá.
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Az átmenő csatornákról az [élő stream többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal történő továbbítását](media-services-live-streaming-with-onprem-encoders.md) ismertető cikk nyújt részletes tájékoztatást.
 
 * Egy csatornát csak akkor lehet  leállítani, ha már leállítottak minden, a csatornán közvetített eseményt/programot.  A csatorna leállítását követően nem számítunk fel további díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.

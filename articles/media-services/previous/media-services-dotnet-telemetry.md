@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b6a02118aabce7a2f80c016584af1e9808a2df5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 263bf1cd2a7e2a37a1c4fae172ce4f66b1e59b5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021501"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265983"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>Azure Media Services telemetria konfigurálása a .NET-tel 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Azure Media Services telemetria konfigurálása a .NET-tel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ez a cikk azokat az általános lépéseket ismerteti, amelyeket a Azure Media Services (AMS) telemetria .NET SDK-val való konfigurálásakor is végrehajthat. 
 
@@ -227,7 +229,7 @@ namespace AMSMetrics
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

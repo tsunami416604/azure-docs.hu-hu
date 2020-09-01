@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Megtudhatja, hogyan figyelheti Azure Media Services metrikáit és a diagnosztikai naplókat Azure Monitor használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 49a237a122b97fc44df4525ca02dbb478be104ab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011651"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267606"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése Azure Monitor használatával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure monitor](../../azure-monitor/overview.md) segítségével figyelheti a mérőszámokat és a diagnosztikai naplókat, amelyek segítenek megérteni az alkalmazások teljesítményét. Az Azure Monitor által összegyűjtött összes adat két alapvető típus egyikéhez illeszkedik: metrikák és naplók. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. A metrikák adatait a [metrikák Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)jelenítheti meg és elemezheti. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokat is használhat.
 
@@ -42,7 +44,7 @@ Media Services támogatja a következő erőforrások figyelési metrikáit:
 
 A következő fiók metrikáit figyelheti.
 
-|Metrika neve|Megjelenített név|Description|
+|Metrika neve|Megjelenített név|Leírás|
 |---|---|---|
 |AssetCount|Eszközök száma|A fiókban lévő eszközök.|
 |AssetQuota|Eszköz kvótája|A fiókban lévő eszköz kvótája.|
@@ -60,7 +62,7 @@ Tekintse át [a fiók kvótáit és korlátozásait](limits-quotas-constraints.m
 
 A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) metrikáit támogatja:
 
-|Metrika neve|Megjelenített név|Description|
+|Metrika neve|Megjelenített név|Leírás|
 |---|---|---|
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|

@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Megtudhatja, hogyan titkosíthatja a videót AES 128 bites titkosítással, és hogyan használhatja a Key Delivery szolgáltatást a Azure Media Servicesban.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2020
-ms.author: juliako
-ms.openlocfilehash: 45bb8637d37c9c3789a962c9f5ac42227d547637
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d8bc270549f702f9ba277b3514a3332d16b52d8d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022820"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267173"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Oktatóanyag: videó titkosítása AES-128-mel és a Key Delivery Service használata
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Annak ellenére, hogy az oktatóanyag a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések ugyanazok a [REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetén.
@@ -153,7 +155,7 @@ Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streami
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

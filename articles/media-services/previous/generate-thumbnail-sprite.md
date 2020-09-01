@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61229050"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268570"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Miniatűr sprite létrehozása  
+# <a name="generate-a-thumbnail-sprite"></a>Miniatűr sprite létrehozása
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 A Media Encoder Standard használatával létrehozhat egy miniatűr sprite-t, amely egy JPEG-fájl, amely több kis felbontású miniatűrt tartalmaz, és egyetlen (nagy) képként összefűzve, egy VTT-fájllal együtt. Ez a VTT-fájl megadja az időtartományt az egyes bélyegképek által reprezentált bemeneti videóban, valamint a miniatűr méretét és koordinátáit a nagyméretű JPEG-fájlon belül. A videolejátszó a VTT fájlt és a sprite-rendszerképet használja a "vizualizáció" seekbar megjelenítéséhez, és vizuális visszajelzést nyújtó megjelenítőt biztosít, amikor visszakerül a videó idővonalára, és továbbítja azokat.
 
@@ -33,7 +35,7 @@ Ahhoz, hogy a Media Encoder Standardt a miniatűr sprite létrehozásához haszn
 
     1. Ha a SpriteColumn értéke M >= 1, a kimeneti rendszerkép egy M oszlopot tartalmazó négyszög. Ha a #2on keresztül generált bélyegképek száma nem az M pontos többszöröse, akkor az utolsó sor hiányos lesz, és fekete képponttal marad.  
 
-Például:
+Alább bemutatunk egy példát:
 
 ```json
 {

@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042869"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269029"
 ---
 # <a name="encoding-error-codes"></a>Kódolási hibakódok
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 A következő táblázat felsorolja azokat a hibakódokat, amelyeket a rendszer a kódolási feladat végrehajtása során felmerülő hiba esetén visszaadhat.  Ha a .NET-kódban hibát szeretne kapni, használja a [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) osztályt. Ha részletes adatokat szeretne kapni a REST-kódban, használja a [ErrorDetail](/rest/api/media/operations/errordetail) REST API.
 

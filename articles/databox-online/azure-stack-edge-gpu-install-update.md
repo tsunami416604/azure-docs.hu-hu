@@ -1,22 +1,23 @@
 ---
 title: Frissítés telepítése Azure Stack Edge GPU-eszközön | Microsoft Docs
-description: Útmutató a frissítések alkalmazásához a Azure Portal és helyi webes felhasználói felülettel Azure Stack Edge GPU-eszközhöz
+description: Útmutató a frissítések alkalmazásához a Azure Portal és helyi webes felhasználói felülettel Azure Stack Edge GPU-eszközhöz és a Kubernetes-fürthöz az eszközön
 services: databox
 author: alkohli
 ms.service: databox
-ms.topic: article
-ms.date: 06/12/2020
+ms.subservice: edge
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e973e41493b8e84f31a82d5379a01a0e851a48d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084118"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268244"
 ---
 # <a name="update-your-azure-stack-edge-with-gpu"></a>Azure Stack Edge frissítése a GPU-val 
 
-Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a frissítés telepítéséhez a Azure Stack Edge-ben a GPU-n keresztül a helyi webes felületen és a Azure Portal keresztül. A szoftverfrissítések vagy gyorsjavítások alkalmazásával megőrizheti Azure Stack peremhálózati eszközének naprakészen tartását. 
+Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a frissítés telepítéséhez a Azure Stack Edge-ben a GPU-n keresztül a helyi webes felületen és a Azure Portal keresztül. A szoftverfrissítések vagy gyorsjavítások alkalmazásával megőrizheti Azure Stack Edge-eszközét és a kapcsolódó Kubernetes-cluaster az eszközön. 
 
 > [!IMPORTANT]
 > - Az **2008** -es frissítés megfelel az eszközön **2.1.1328.1904** szoftver verziójának. A frissítéssel kapcsolatos további információkért nyissa meg a [kibocsátási megjegyzéseket](azure-stack-edge-gpu-2008-release-notes.md).
@@ -212,6 +213,6 @@ Az eljárás végrehajtása körülbelül 20 percet vesz igénybe. A frissítés
 10. A Kubernetes frissítésének sikeres telepítése után a rendszer nem módosítja a megjelenő szoftvereket a **karbantartási**  >  **szoftverfrissítés**során. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [az Azure stack Edge felügyeletéről](azure-stack-edge-manage-access-power-connectivity-mode.md).

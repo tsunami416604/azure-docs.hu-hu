@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245587"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266425"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k Node.js
 
@@ -76,11 +76,15 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-Hozzon létre egy nevű fájlt `rest-apis.js` , és adja hozzá a következő _szükséges_ utasítást a HTTP-kérések elvégzéséhez.
+Hozzon létre egy nevű fájlt `rest-apis.js` , és adja hozzá az alábbi függőségeket.
 
-```javascript
-const request = require("requestretry");
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="dependencies":::
+
+## <a name="add-utility-functions"></a>Segédprogram-függvények hozzáadása
+
+Adja hozzá a következő segédprogram-függvényeket.
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="utility":::
 
 ## <a name="add-azure-resource-information"></a>Azure-erőforrás adatainak hozzáadása
 
@@ -91,7 +95,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 * `QNAMAKER_RESOURCE_KEY` – A **kulcs** egy 32 karakterből álló karakterlánc, amely a Azure Portal QnA Maker erőforrásban, a **gyors üzembe helyezés** lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
 * `QNAMAKER_AUTHORING_ENDPOINT` – A szerzői végpont a formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
 ## <a name="create-a-knowledge-base"></a>Tudásbázis létrehozása
 
@@ -103,13 +107,13 @@ A Tudásbázis a következő JSON-objektumból létrehozott kérdés-válasz pá
 
 [Hozzon létre egy tudásbázist a REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>Tudásbázis cseréje
 
 A [Tudásbázis cseréjéhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)használja a REST API.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
 ## <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
@@ -117,14 +121,13 @@ Tegye közzé a tudásbázist. Ez a folyamat teszi elérhetővé a tudásbázist
 
 A [Tudásbázis közzétételéhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)használja a REST API.
 
-
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>A Tudásbázis letöltése
 
 A [Tudásbázis letöltéséhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)használja a REST API.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
@@ -132,7 +135,7 @@ Ha elkészült a Tudásbázis használatával, törölje azt.
 
 A [Tudásbázis törléséhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)használja a REST API.
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
 ## <a name="get-status-of-an-operation"></a>Művelet állapotának beolvasása
 
@@ -140,9 +143,13 @@ A hosszú ideig futó folyamatok, például a létrehozási folyamat visszaad eg
 
 A [REST API használatával figyelheti a műveleteket a Tudásbázisban](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
-[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
+## <a name="add-main-method"></a>Main metódus hozzáadása
 
+Adja hozzá a következő `main` metódust.
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="main":::
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 

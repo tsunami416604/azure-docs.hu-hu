@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cef6524bd228d5fed342cabfb2959e5d8ab8954e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: c981208438529ec7c23ab3c3089f4d57d77c2714
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146232"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268961"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge-ben való áthelyezéséhez
 
@@ -77,7 +77,7 @@ Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék 
 
       ![Tárolóregisztrációs adatbázis létrehozása](./media/azure-stack-edge-j-series-create-iot-edge-module/create-container-registry-1.png)
  
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 5. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet.
 
     ![Hozzáférési kulcsok beolvasása](./media/azure-stack-edge-j-series-create-iot-edge-module/get-access-keys-1.png)
@@ -276,6 +276,6 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a rendszer a module.jsfájl formátumát tartalmazó információból épül fel `<repository>:<version>-<platform>` . Ehhez a cikkhez hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A modul Azure Stack Edge-ben való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)című témakör lépéseit.

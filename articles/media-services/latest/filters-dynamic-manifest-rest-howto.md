@@ -3,7 +3,7 @@ title: Szűrők létrehozása Azure Media Services v3 REST API
 description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, hogy az ügyfél egy stream adott szakaszait továbbítsa. A Media Services dinamikus jegyzékfájlokat hoz létre a szelektív streaming eléréséhez.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a98a56bf27f76de706d02691d5dfbb54b5466c49
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023109"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268519"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása Media Services REST API
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ha a tartalmat az ügyfeleknek (élő vagy igény szerinti közvetítéssel közvetíti), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
 
@@ -93,7 +95,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
-Válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra. 
 
 A szűrő létrejött.
 
@@ -111,7 +113,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
-Válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra. 
 
 Az eszköz szűrője létrejött.
 

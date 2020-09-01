@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 3b193473ea20880c4efcf8747a129680008e3c9f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4d42bcf3a30b95f82ec34094afc4b6cb0842906f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325933"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267224"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Gyors útmutató: válaszok egy tudásbázisbeli kérdésre Java használatával
 
@@ -51,19 +51,19 @@ public class GetAnswer {
 
 Ez a rövid útmutató a HTTP-kérelmek Apache-osztályait használja. A GetAnswer osztály felett a `GetAnswer.java` fájl tetején adja hozzá a szükséges függőségeket a projekthez:
 
-[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=5-13 "Add the required dependencies")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/QueryKB.java" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
 Az `GetAnswer.java` osztály tetején adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.
 
-[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=26-42 "Add the required constants")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/QueryKB.java" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question"></a>Kérdés küldésére szolgáló POST-kérelem hozzáadása
 
 A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a kérdést a Tudásbázisnak, és fogadja a választ:
 
-[!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/QueryKB.java" id="post":::
 
 A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey` .
 

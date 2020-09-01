@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274085"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268536"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 
@@ -37,7 +37,7 @@ Ez a cikk bizonyos kérdésekre ad választ, amelyekkel a rendszergazdák a beá
 > [!NOTE]
 > Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
-**Alkalmazásadatok**: az univerzális Windows-alkalmazások a beállításokat egy barangoló mappába írhatják, és a mappába írt összes adattal automatikusan szinkronizálva lesznek. Az egyes alkalmazás-fejlesztőknek köszönhetően az alkalmazások kihasználhatják ezt a képességet. A barangolást használó univerzális Windows-alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg az [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [Windows 8 AppData barangolás fejlesztői blogját](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
+**Alkalmazásadatok**: az univerzális Windows-alkalmazások a beállításokat egy barangoló mappába írhatják, és a mappába írt összes adattal automatikusan szinkronizálva lesznek. Az egyes alkalmazás-fejlesztőknek köszönhetően az alkalmazások kihasználhatják ezt a képességet. A barangolást használó univerzális Windows-alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg az [AppData Storage API](/windows/uwp/design/app-settings/store-and-retrieve-app-data) és a [Windows 8 AppData barangolás fejlesztői blogját](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Milyen fiókot használ a beállítások szinkronizálásához?
 
@@ -86,9 +86,9 @@ Ha a különböző Azure AD-bérlők több Azure AD-fiókja ugyanazon az eszköz
 A roaming csak univerzális Windows-alkalmazásokhoz használható. Két lehetőség áll rendelkezésre a barangolás engedélyezésére egy meglévő Windows asztali alkalmazásban:
 
 * Az [asztali híd](https://aka.ms/desktopbridge) segítséget nyújt a meglévő Windows asztali alkalmazások univerzális Windows-platform való bekapcsolásához. Innen az Azure AD-alkalmazások adatroamingjának kihasználásához minimális programkód-módosításra lesz szükség. Az asztali híd alkalmazás-identitással biztosítja az alkalmazásait, ami szükséges ahhoz, hogy az alkalmazások adatbarangolása elérhető legyen a meglévő asztali alkalmazások számára.
-* A [felhasználói élmény virtualizálása (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) segítségével egyéni beállítási sablont hozhat létre a meglévő Windows asztali alkalmazásokhoz, és engedélyezheti a roaming használatát a Win32-alkalmazások számára. Ehhez a beállításhoz nincs szükség az alkalmazás fejlesztői számára az alkalmazás kódjának megváltoztatására. Az UE-V a Microsoft asztali optimalizációs csomag megvásárlása esetén a helyszíni Active Directory barangolásra korlátozódik.
+* A [felhasználói élmény virtualizálása (UE-V)](/previous-versions//dn458947(v=vs.85)) segítségével egyéni beállítási sablont hozhat létre a meglévő Windows asztali alkalmazásokhoz, és engedélyezheti a roaming használatát a Win32-alkalmazások számára. Ehhez a beállításhoz nincs szükség az alkalmazás fejlesztői számára az alkalmazás kódjának megváltoztatására. Az UE-V a Microsoft asztali optimalizációs csomag megvásárlása esetén a helyszíni Active Directory barangolásra korlátozódik.
 
-A rendszergazdák úgy konfigurálhatják az UE-V-t, hogy a Windows asztali alkalmazáshoz tartozó adatátvitelt a Windows operációs rendszer beállításainak és az univerzális alkalmazásadatok az [UE-v csoportházirendekkel](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)való megváltoztatásával, beleértve a következőket:
+A rendszergazdák úgy konfigurálhatják az UE-V-t, hogy a Windows asztali alkalmazáshoz tartozó adatátvitelt a Windows operációs rendszer beállításainak és az univerzális alkalmazásadatok az [UE-v csoportházirendekkel](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)való megváltoztatásával, beleértve a következőket:
 
 * Központi Windows-beállítások csoportházirendje
 * Ne szinkronizálja a Windows-alkalmazások csoportházirendjét

@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/13/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: abf4b8dffc69cfee9332d18e59d0a2852fa7617e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: cd2b9848ef1358c1aeaaed43e55d9914ac701564
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226148"
+ms.locfileid: "89267105"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az Azure tartalomkézbesítési hálózat CDN a tartalmakat világszerte, stratégiai alapon elhelyezett fizikai csomópontokon gyorsítótárazva globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű gyors kézbesítéséhez a felhasználók felé.  
 
@@ -159,7 +161,7 @@ A `Origin-Assist CDN-Prefetch` szolgáltatás a következő folyamatos átviteli
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Győződjön meg arról, hogy az [adatfolyam-végpont (forrás)](streaming-endpoint-concept.md) dokumentumot tekinti át.
 * Az [ebben a tárházban található](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) minta bemutatja, hogyan indíthatja el az alapértelmezett adatfolyam-végpontot a .net-tel.

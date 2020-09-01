@@ -3,23 +3,25 @@ title: Egyéni átalakítás kódolása a Media Services v3 .NET-Azure használa
 description: Ez a témakör bemutatja, hogyan kódolhat egyéni átalakításokat a .NET használatával a Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/03/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8557a11a4768b547096fb56371f0f358c890f883
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001145"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266986"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Kódolás egyéni átalakítással – .NET
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ha Azure Media Services kódolást használ, gyorsan megkezdheti az egyik javasolt beépített beállításkészletet az iparág ajánlott eljárásai alapján, ahogyan azt a [streaming Files](stream-files-tutorial-with-api.md) oktatóanyag mutatja. Létrehozhat egy egyéni beállításkészletet is, amely az adott forgatókönyv vagy eszköz követelményeit célozza meg.
 

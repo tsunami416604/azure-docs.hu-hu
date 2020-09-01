@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Az entitásokra és API-kra vonatkozó szabályok megismerése Media Services v3-es verzióval való fejlesztéskor.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6cb771b8df4ab81ff9c538a38b084856b1dfbc39
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719189"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267275"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-kkal
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Fejlesztőként Media Services [REST API](/rest/api/media/) vagy ügyféloldali kódtárakat használhat, amelyek lehetővé teszik az REST API használatát az egyéni adathordozó-munkafolyamatok egyszerű létrehozásához, kezeléséhez és karbantartásához. Az [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API a OpenAPI-specifikáción alapul (korábbi nevén a hencegés).
 
@@ -60,7 +62,7 @@ A következő ábrán a számok kronológiai sorrendben jelenítik meg a kérelm
 4. A középső szintű kérelem küldése az Azure Media REST API az Azure AD-jogkivonattal.
 5. A középső szinten a Media Services származó adatok kerülnek vissza.
 
-### <a name="samples"></a>Minták
+### <a name="samples"></a>Példák
 
 Tekintse meg a következő mintákat, amelyek bemutatják, hogyan csatlakozhat az Azure AD egyszerű szolgáltatásához:
 

@@ -14,18 +14,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d86cca609f0a494bb012d3393facc14ec23dbbe2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054695"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266918"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [2-es verzió](media-services-dynamic-manifest-overview.md)
-> * [3-as verzió](../latest/filters-dynamic-manifest-overview.md)
+> * [3\. verzió](../latest/filters-dynamic-manifest-overview.md)
 
 A 2,17-es verziótól kezdődően a Media Services lehetővé teszi az eszközökhöz tartozó szűrők megadását. Ezek a szűrők olyan kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára a következő műveleteket: csak a videó egy szakaszának lejátszása (a teljes videó lejátszása helyett), vagy csak az adott eszköz által kezelhető hang-és videó-átadások egy részhalmazát kell megadnia (az objektumhoz társított összes kiadatás helyett). Az eszközök szűrése az ügyfél által a megadott szűrő (k) alapján a videó streamre való továbbítására szolgáló **dinamikus jegyzékfájlon**keresztül érhető el.
 
@@ -108,7 +110,7 @@ Az eszközök két típusa létezik:
 
 A globális és a helyi szűrési típusok pontosan ugyanazok a tulajdonságok. A kettő között a fő különbség, hogy mely forgatókönyvek esetében alkalmasabb a Filer-típus. A globális szűrők általában az eszközök profiljaihoz (kiadatási szűréshez) alkalmasak, ahol helyi szűrők használhatók egy adott eszköz kivágására.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a><a id="scenarios"></a>Gyakori forgatókönyvek
 Ahogy korábban is említettük, a tartalomnak az ügyfeleknek való továbbításakor (élő események vagy igény szerinti videó közvetítése) a cél az, hogy magas színvonalú videót nyújtson be különböző hálózati körülmények között különböző eszközökre. Emellett előfordulhat, hogy egyéb követelmények is vannak, amelyek az eszközök szűrését és a **dinamikus jegyzékfájlok**használatát igénylik. A következő részekben rövid áttekintést talál a különböző szűrési forgatókönyvekről.
 
 * Csak a hang-és videó-továbbítások egy részhalmazát adhatja meg, amelyeket bizonyos eszközök kezelhetnek (az objektumhoz társított összes kiadatás helyett). 

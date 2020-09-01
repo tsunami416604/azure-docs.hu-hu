@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0bcf6d99511f744b321a7a47913b44dc376143f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016138"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266289"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával
 
-A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyelt identitásával való együttműködés legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication dokumentációjában](/azure/key-vault/service-to-service-authentication)talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
+A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyelt identitásával való együttműködés legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](/cli/azure?view=azure-cli-latest)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication dokumentációjában](../../key-vault/general/service-to-service-authentication.md)talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
 
 1. Adjon hozzá hivatkozásokat a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó NuGet-csomagjaihoz az alkalmazáshoz.
 
@@ -141,7 +141,7 @@ A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyel
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Ha többet szeretne megtudni a Microsoft. Azure. Services. AppAuthentication és az általa közzétett műveletekről, tekintse meg a [Microsoft. Azure. Services. AppAuthentication referenciáját](/azure/key-vault/service-to-service-authentication) , valamint a [felügyelt identitásokkal rendelkező app Service és kulcstartót az Azure-erőforrások .net-mintában](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Ha többet szeretne megtudni a Microsoft. Azure. Services. AppAuthentication és az általa közzétett műveletekről, tekintse meg a [Microsoft. Azure. Services. AppAuthentication referenciáját](../../key-vault/general/service-to-service-authentication.md) , valamint a [felügyelt identitásokkal rendelkező app Service és kulcstartót az Azure-erőforrások .net-mintában](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Token beszerzése a C használatával #
 
@@ -381,7 +381,7 @@ Ez a szakasz a lehetséges hibákra adott válaszokat dokumentálja. A "200 OK" 
 |           | access_denied | Az erőforrás-tulajdonos vagy az engedélyezési kiszolgáló megtagadta a kérelmet. |  |
 |           | unsupported_response_type | Az engedélyezési kiszolgáló nem támogatja hozzáférési jogkivonat beszerzését ezzel a módszerrel. |  |
 |           | invalid_scope | A kért hatókör érvénytelen, ismeretlen vagy helytelen formátumú. |  |
-| 500 Belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a tokent az Active Directoryból. Részletekért lásd: naplók *\<file path\>* | Ellenőrizze, hogy az Azure-erőforrásokhoz tartozó felügyelt identitások engedélyezve lettek-e a virtuális gépen. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.<br><br>Ellenőrizze azt is, hogy a HTTP GET kérelem URI-ja helyesen van-e formázva, különösen a lekérdezési karakterláncban megadott erőforrás-URI-t. Tekintse meg a "minta kérést" az előző REST szakaszban, vagy az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](services-support-msi.md) a szolgáltatások és a hozzájuk tartozó erőforrás-azonosítók listájához.
+| 500 Belső kiszolgálóhiba | ismeretlen | Nem sikerült beolvasni a tokent az Active Directoryból. Részletekért lásd: naplók *\<file path\>* | Ellenőrizze, hogy az Azure-erőforrásokhoz tartozó felügyelt identitások engedélyezve lettek-e a virtuális gépen. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.<br><br>Ellenőrizze azt is, hogy a HTTP GET kérelem URI-ja helyesen van-e formázva, különösen a lekérdezési karakterláncban megadott erőforrás-URI-t. Tekintse meg a "minta kérést" az előző REST szakaszban, vagy az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](./services-support-managed-identities.md) a szolgáltatások és a hozzájuk tartozó erőforrás-azonosítók listájához.
 
 ## <a name="retry-guidance"></a>Újrapróbálkozási útmutató 
 
@@ -397,17 +397,9 @@ Az újrapróbálkozáshoz a következő stratégiát javasoljuk:
 
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 
-Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](services-support-msi.md) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
+Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](./services-support-managed-identities.md) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).
-
-
-
-
-
-
-
-

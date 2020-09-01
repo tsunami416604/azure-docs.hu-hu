@@ -3,23 +3,25 @@ title: Egyéni átalakítás kódolása a Media Services v3 Azure CLI használat
 description: Ebből a témakörből megtudhatja, hogyan kódolhat egyéni átalakításokat az Azure CLI használatával a Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: devx-track-azurecli
-ms.date: 05/14/2019
-ms.author: juliako
-ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f7b1f7a858c465629e075bcdb6d32bec29863f0a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503888"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267887"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Kódolás egyéni átalakítással – Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ha Azure Media Services kódolást használ, gyorsan megkezdheti az egyik javasolt beépített beállításkészletet az iparági ajánlott eljárások alapján, ahogyan azt a [streaming Files](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) rövid útmutatója mutatja. Létrehozhat egy egyéni beállításkészletet is, amely az adott forgatókönyv vagy eszköz követelményeit célozza meg.
 
@@ -140,6 +142,6 @@ az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName
 
 Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt. Ha egy teljes példát mutat be, amely bemutatja, hogyan küldhet el egy feladatot egy átalakítás alatt, tekintse meg a gyors útmutató [: Stream video Files – Azure CLI](stream-files-cli-quickstart.md)című témakört.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Azure CLI](/cli/azure/ams)

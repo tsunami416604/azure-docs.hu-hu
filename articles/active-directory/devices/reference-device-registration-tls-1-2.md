@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfbad53fd2361752824292e0ade82f3ac231916
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096856"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268757"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>A TLS 1,2 alkalmazása az Azure AD regisztrációs szolgáltatáshoz
 
@@ -52,7 +52,7 @@ Minden olyan gépen, amely az eszközök és az Azure AD-eszköz regisztrációs
 
 ## <a name="update-ad-fs-servers"></a>AD FS-kiszolgálók frissítése
 
-Az Azure AD-eszközök regisztrálási szolgáltatásával folytatott kommunikációhoz használt AD FS-kiszolgálókon biztosítania kell, hogy a TLS 1,2 engedélyezve legyen. A konfiguráció engedélyezésével/ellenőrzésével kapcsolatos információkért lásd: [SSL/TLS protokollok és titkosító csomagok kezelése AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) .
+Az Azure AD-eszközök regisztrálási szolgáltatásával folytatott kommunikációhoz használt AD FS-kiszolgálókon biztosítania kell, hogy a TLS 1,2 engedélyezve legyen. A konfiguráció engedélyezésével/ellenőrzésével kapcsolatos információkért lásd: [SSL/TLS protokollok és titkosító csomagok kezelése AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) .
 
 ## <a name="client-updates"></a>Ügyfelek frissítései
 
@@ -68,4 +68,4 @@ A következő ügyfelek ismertek, hogy nem tudják támogatni a TLS 1,2-et. Fris
 
 ## <a name="next-steps"></a>További lépések
 
-[TLS/SSL – áttekintés (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/tls-ssl-schannel-ssp-overview)
+[TLS/SSL – áttekintés (Schannel SSP)](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)

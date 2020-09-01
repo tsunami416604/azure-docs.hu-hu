@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services kimeneti metaadatok sémája | Microsoft Docs
 description: Ez a cikk áttekintést nyújt Azure Media Services kimeneti metaadat-sémáról.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 79bf6c50c1b0b1c8454999cbefa8c933a73eae8e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080924"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267207"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) vannak társítva, amelyeken bizonyos kódolási feladatokat kíván végrehajtani. Például kódoljon egy MP4-fájlt H. 264 MP4 adaptív sávszélességű készletbe; miniatűr létrehozása; hozzon létre átfedéseket. Egy feladat befejezése után a rendszer kimeneti eszközt állít elő.  A kimeneti eszköz videó-, hang-, miniatűr-és egyéb fájlokat tartalmaz. A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok JSON-fájljának neve a következő formátumú: `<source_file_name>_manifest.json` (például `BigBuckBunny_manifest.json` ). A forrás fájlnév (csonkítás nélkül) megkereséséhez ellenőrizze, hogy a * _metadata.jsbe van-e kapcsolva, és lekérdezi-e a filepath karakterláncot.
 

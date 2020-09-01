@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag Azure Stack Edge-eszköz aktiválásához Azure Portal GPU-val | Microsoft Docs
-description: Az Azure Stack Edge üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz aktiválását.
+description: Az Azure Stack Edge GPU üzembe helyezésére vonatkozó oktatóanyag arra utasítja a fizikai eszköz aktiválását.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: be3e7c7f9a5a8c48d8644eefef42b7020e2b37f4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 88be4d9753e48f70dae5666e800a54209ed6ba3f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89087890"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267938"
 ---
 # <a name="tutorial-activate-azure-stack-edge-with-gpu"></a>Oktatóanyag: Azure Stack Edge aktiválása GPU-val
 
@@ -91,7 +91,7 @@ Az Azure Stack Edge-eszköz GPU-val való konfigurálása és beállítása elő
 Az eszköz aktiválása befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

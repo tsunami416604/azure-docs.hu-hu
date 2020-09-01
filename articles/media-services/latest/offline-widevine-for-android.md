@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b603b800dfdfb96e9b6b1074dc1e39d31b994c06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a1e85f37a0dfdbb7ff10db13e53b1998ef391caa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997778"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267190"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming az Androidhoz Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az online streaming-tartalmak védelme mellett a Media Content előfizetés és a Rental Services olyan letölthető tartalmakat is kínál, amelyek akkor működnek, ha nem csatlakozik az internethez. Előfordulhat, hogy a hálózati kapcsolat megszakadása esetén a tartalmat le kell töltenie a telefonra vagy a Tablet-ra. További forgatókönyvek, amelyekben előfordulhat, hogy le szeretné tölteni a tartalmat:
 
@@ -162,6 +164,6 @@ További információ: [Widevine gyakori kérdések](frequently-asked-questions.
 
 A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani.  Emellett a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is válaszolt.

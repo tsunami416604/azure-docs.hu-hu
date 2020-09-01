@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: overview
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c7730b776ef1d7e1d5e372049395492641b839ff
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146011"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268910"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge-eszközhöz
 
@@ -64,6 +64,6 @@ Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a
 Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gépek üzembe helyezése Azure stack peremhálózati eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

@@ -1,19 +1,19 @@
 ---
 title: Az Azure Stack Edge és a GPU használatával történő hibakeresés Azure Portal használata | Microsoft Docs
-description: Útmutatás Azure Stack Edge-problémák elhárításához.
+description: Útmutatás Azure Stack Edge GPU-problémák elhárításához.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: b92d590756ddd98d145d1728c89ea4cf98662d0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 22f0c63c2b60b6c72ad297492045df17e10dd06c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89083968"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268322"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Az Azure Stack Edge GPU-eszköz hibáinak elhárítása 
 
@@ -200,6 +200,6 @@ Itt láthatók a blob Storage szolgáltatással kapcsolatos hibák Azure Stack E
 |A kapcsolatok időtúllépést mutatnak.|Jelentkezzen be az Azure Stack Edge-be, majd győződjön meg arról, hogy a zárolása fel van oldva. Az eszköz minden újraindításakor zárolva marad, amíg valaki bejelentkezik.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk a [jelen kiadás ismert problémáiról](azure-stack-edge-gpu-2008-release-notes.md).

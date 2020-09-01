@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae177f2cbfa1b6ecef2ef6326b2d8b5008504933
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019402"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267734"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez a .NET-tel 
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez a .NET-tel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -62,7 +64,7 @@ Media Services függvények fejlesztésekor hasznos lehet olyan környezeti vál
 
 Az [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakasz azokat a paramétereket határozza meg, amelyek a jelen cikkben definiált webhookban használatosak. Adja hozzá a következő paramétereket az alkalmazás beállításaihoz is. 
 
-|Név|Definíció|Példa| 
+|Name|Definíció|Példa| 
 |---|---|---|
 |SigningKey |Egy aláíró kulcs.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Egy webhook végpontjának címe. Ha létrehozta a webhook-függvényt, az URL-címet a **Get függvény URL-címe** hivatkozás használatával másolhatja. | https: \/ /juliakofuncapp.azurewebsites.NET/API/Notification_Webhook_Function?Code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|
@@ -519,7 +521,7 @@ Ebben a szakaszban a webhook-értesítés feladathoz való hozzáadását ismert
             }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

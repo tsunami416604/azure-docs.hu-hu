@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14067ee1719c178e6942f159944385814537654a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2006c44d68d9570af0bfa410cc7fe908502d2ba5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007417"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267989"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -44,7 +44,7 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Cosmos DB-hez egy L
 A jelen oktatóanyagban a parancssori példaszkriptek futtatása kétféleképpen végezhető el:
 
 - Az [Azure Cloud Shell](~/articles/cloud-shell/overview.md) használatával az Azure Portalon vagy a minden egyes kódblokk jobb felső sarkában megtalálható **Kipróbálom** gombbal.
-- Ha inkább a helyi parancssori konzolt kívánja használni, [telepítse a CLI 2.0 legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb).
+- Ha inkább a helyi parancssori konzolt kívánja használni, [telepítse a CLI 2.0 legújabb verzióját](/cli/azure/install-azure-cli) (2.0.23 vagy újabb).
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása 
 
@@ -55,7 +55,7 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
 4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
-6. Kattintson a **Create** (Létrehozás) gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Gyűjtemény létrehozása Cosmos DB-fiókban
 
@@ -114,7 +114,7 @@ A válasz tartalmazza a létrehozott szerepkör-hozzárendelés részleteit:
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk majd.
 
-A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/install_guide) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
+A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](/windows/wsl/install-win10) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
 
 1. Az Azure Portalon lépjen a **Virtuális gépek** felületre, keresse meg a Linux virtuális gépet, majd az **Áttekintés** lap tetején kattintson a **Csatlakozás** gombra. Másolja ki sztringet a virtuális géphez való csatlakozáshoz. 
 2. Csatlakozzon a virtuális géphez az SSH-ügyfél használatával.  
@@ -223,10 +223,9 @@ Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag bemutatta, hogyan használhat rendszer által hozzárendelt felügyelt identitást Linux virtuális gépeken a Cosmos DB eléréséhez.  További információ a Cosmos DB-ről:
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB áttekintése](/azure/cosmos-db/introduction)
-
+>[Azure Cosmos DB áttekintése](../../cosmos-db/introduction.md)

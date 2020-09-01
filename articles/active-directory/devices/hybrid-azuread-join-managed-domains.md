@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428460"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268417"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -68,14 +68,14 @@ A hibrid Azure AD-csatlakozáshoz az eszközöknek a szervezet hálózatán bel�
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- `https://autologon.microsoftazuread-sso.com`(Ha a vagy a-t használja, és nem szeretné használni a zökkenőmentes SSO-t)
+- `https://autologon.microsoftazuread-sso.com` (Ha a vagy a-t használja, és nem szeretné használni a zökkenőmentes SSO-t)
 
 > [!WARNING]
 > Ha a szervezet olyan proxykiszolgálót használ, amelyek az SSL-forgalmat az adatveszteség-megelőzési vagy az Azure AD-bérlői korlátozások miatt észlelik, ügyeljen arra, hogy a (z) "" forgalom ne legyen https://device.login.microsoftonline.com kizárva a TLS-megszakítás és-vizsgálat alól. A (z) "" kizárása az https://device.login.microsoftonline.com ügyféltanúsítvány-alapú hitelesítés zavarásával járhat, ami problémákat okoz az eszközök regisztrációja és az eszközön alapuló feltételes hozzáférés miatt.
 
-Ha a szervezete egy kimenő proxyn keresztül fér hozzá az internethez, a [webproxy automatikus felderítésének (WPAD) megvalósításával](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) engedélyezheti a Windows 10-es számítógépek számára az Azure ad-vel való regisztrációt. A WPAD konfigurálásával és kezelésével kapcsolatos problémák megoldásához tekintse meg az [automatikus észlelés hibaelhárítása](/previous-versions/tn-archive/cc302643(v=technet.10))című témakört. A Windows 10 rendszerű eszközökön a 1709-es frissítés előtt a WPAD az egyetlen elérhető lehetőség a proxyk hibrid Azure AD-csatlakozással való működésének konfigurálására. 
+Ha a szervezete egy kimenő proxyn keresztül fér hozzá az internethez, a [webproxy automatikus felderítésének (WPAD) megvalósításával](/previous-versions/tn-archive/cc995261(v=technet.10)) engedélyezheti a Windows 10-es számítógépek számára az Azure ad-vel való regisztrációt. A WPAD konfigurálásával és kezelésével kapcsolatos problémák megoldásához tekintse meg az [automatikus észlelés hibaelhárítása](/previous-versions/tn-archive/cc302643(v=technet.10))című témakört. A Windows 10 rendszerű eszközökön a 1709-es frissítés előtt a WPAD az egyetlen elérhető lehetőség a proxyk hibrid Azure AD-csatlakozással való működésének konfigurálására. 
 
-Ha nem használ WPAD-t, a Windows 10 1709 rendszertől kezdődően konfigurálhatja a WinHTTP-proxybeállításokat a számítógépen. További információ: [a GPO által központilag telepített WinHTTP-proxybeállítások](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Ha nem használ WPAD-t, a Windows 10 1709 rendszertől kezdődően konfigurálhatja a WinHTTP-proxybeállításokat a számítógépen. További információ: [a GPO által központilag telepített WinHTTP-proxybeállítások](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo).
 
 > [!NOTE]
 > Ha a proxybeállításokat a WinHTTP-beállítások használatával konfigurálja a számítógépen, a konfigurált proxyhoz nem csatlakoztatható számítógépek nem fognak csatlakozni az internethez.
@@ -167,14 +167,14 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 ### <a name="locally-on-the-device"></a>Helyileg az eszközön
 
 1. Nyissa meg a Windows PowerShellt.
-2. Írja be a következő szöveget: `dsregcmd /status`
+2. Írja be a következő szöveget: `dsregcmd /status`.
 3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
 4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 1. Nyissa meg az eszközök lapot a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)használatával.
-2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)című témakörben talál információt.
+2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](./device-management-azure-portal.md)című témakörben talál információt.
 3. Ha a **regisztrált** oszlop **függőben**van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be.
 4. Ha a **regisztrált** oszlop egy **dátumot és időpontot**tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
 
@@ -224,11 +224,11 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának kitöltésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
-- [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Eszközök hibaelhárítása a dsregcmd paranccsal](./troubleshoot-device-dsregcmd.md)
 - [Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

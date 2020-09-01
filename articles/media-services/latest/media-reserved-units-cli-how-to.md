@@ -3,7 +3,7 @@ title: Media szolgáltatás számára fenntartott egységek méretezése a CLI-v
 description: Ez a témakör bemutatja, hogyan méretezheti a CLI-t a médiafájlok feldolgozásának méretezésére Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e681b1f82086480541d08ae9f8ef9e5cf07b4df
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053222"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268468"
 ---
 # <a name="scaling-media-processing"></a>Médiafeldolgozás skálázása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az Azure Media Services a fenntartott médiaegységek (MRU-k) kezelésével lehetővé teszi a médiafeldolgozás skálázását a fiókjában. A MRUs határozzák meg, hogy milyen sebességgel dolgozza fel a rendszer a média feldolgozási feladatait. A következő fenntartott egység típusok közül választhat: **S1**, **S2**vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. 
 

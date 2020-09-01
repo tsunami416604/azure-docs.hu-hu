@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060217"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268383"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -91,7 +93,7 @@ Kódolás a Media Encoder Standard használatával az Azure Portalon:
    Az erőforrások egyszerűbb kezelése érdekében lehetősége van módosítani a kimeneti objektum nevét, illetve a feladat nevét.
    
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="monitor-encoding-job-progress"></a>Kódolási feladatok előrehaladásának figyelése
 A kódolási feladat előrehaladásának nyomon követéséhez válassza az oldal tetején található **Beállítások**, majd pedig a **Feladatok** elemet.
@@ -135,7 +137,7 @@ A lokátor lejárati idejének módosításához használjon [REST API](/rest/ap
 2. Válassza a **Beállítások**  >  **eszközök**elemet. Válassza ki a közzétenni kívánt objektumot.
 3. Válassza ki a **Közzététel** gombot.
 4. Válassza ki a lokátor típusát.
-5. Válassza a **Hozzáadás** elemet.
+5. Válassza a **Hozzáadás** lehetőséget.
    
     ![A videó közzététele](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

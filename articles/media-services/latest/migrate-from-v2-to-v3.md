@@ -3,7 +3,7 @@ title: Áttelepítés Azure Media Services v2-ről v3-re | Microsoft Docs
 description: Ez a cikk a Azure Media Services v3 verzióban bevezetett változásokat ismerteti, és két verzió közötti különbségeket mutatja. A cikk áttelepítési útmutatót is biztosít a Media Services v2-ről a v3-re való áthelyezéshez.
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -13,16 +13,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
-ms.openlocfilehash: c9ec677e356f5d4e70a49c9de10f0fdb2039917d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: e692eef45f8a0b4a8918e7255fa1ac85d4ad064c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078052"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265830"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 >Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 

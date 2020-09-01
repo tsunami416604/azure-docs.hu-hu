@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6bf82e85bfe36466010ce1cc8914bbd1221fe51a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837040"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267853"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -128,7 +128,7 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 # If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
@@ -173,7 +173,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Név | Érték
+Name | Érték
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő `https://core.windows.net` . Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
@@ -233,8 +233,8 @@ A Linux diagnosztikai bővítmény 3,0-es verziója két fogadó típust támoga
 
 A "sas URL" bejegyzés tartalmazza a teljes URL-címet, beleértve az SAS-tokent is, az Event hub számára, amelyre közzé kell tenni az adott adat. A LAD-nek szüksége van egy olyan házirendre, amely engedélyezi a küldési jogcímet. Példa:
 
-* Hozzon létre egy nevű Event Hubs névteret`contosohub`
-* Hozzon létre egy Event hubot a nevű névtérben.`syslogmsgs`
+* Hozzon létre egy nevű Event Hubs névteret `contosohub`
+* Hozzon létre egy Event hubot a nevű névtérben. `syslogmsgs`
 * Hozzon létre egy megosztott hozzáférési szabályzatot az nevű esemény-hubhoz `writer` , amely engedélyezi a jogcím küldését.
 
 Ha a SAS-t a 2018-as éjféli UTC szerint hozta létre, akkor a sas URL értéke a következő lehet:
@@ -367,9 +367,9 @@ displayName | A címkét (a társított területi beállítás által megadott n
 
 A counterSpecifier tetszőleges azonosító. A metrikák felhasználói, például az Azure Portal ábrázolási és riasztási funkció, a counterSpecifier használja "kulcsként", amely egy metrika vagy egy metrika egy példányát azonosítja. A `builtin` metrikák esetében ajánlott olyan counterSpecifier-értékeket használni, amelyek a következővel kezdődnek: `/builtin/` . Ha egy metrika egy adott példányát gyűjti be, javasoljuk, hogy a példány azonosítóját csatolja a counterSpecifier értékhez. Néhány példa:
 
-* `/builtin/Processor/PercentIdleTime`– Az összes vCPU átlagos üresjárati idő
-* `/builtin/Disk/FreeSpace(/mnt)`– Szabad terület a/mnt fájlrendszer számára
-* `/builtin/Disk/FreeSpace`– Az összes csatlakoztatott fájlrendszer esetében átlagosan szabad terület
+* `/builtin/Processor/PercentIdleTime` – Az összes vCPU átlagos üresjárati idő
+* `/builtin/Disk/FreeSpace(/mnt)` – Szabad terület a/mnt fájlrendszer számára
+* `/builtin/Disk/FreeSpace` – Az összes csatlakoztatott fájlrendszer esetében átlagosan szabad terület
 
 Sem a LAD, sem a Azure Portal a counterSpecifier értéket várja a mintázatnak megfelelően. Konzisztensnek kell lennie a counterSpecifier értékeinek összeállításában.
 

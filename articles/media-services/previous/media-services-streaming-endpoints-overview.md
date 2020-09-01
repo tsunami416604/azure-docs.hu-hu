@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a541e1b068ec3667120bbb31e65ca7bc35febadb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052515"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265915"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -39,9 +41,9 @@ Ez a témakör áttekintést nyújt a folyamatos átviteli végpontok által biz
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
-Az alapértelmezett végpont esetében:`{AccountName}.streaming.mediaservices.windows.net`
+Az alapértelmezett végpont esetében: `{AccountName}.streaming.mediaservices.windows.net`
 
-További végpontok esetén:`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
+További végpontok esetén: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Folyamatos átviteli típusok és verziók
 
@@ -50,10 +52,10 @@ További végpontok esetén:`{EndpointName}-{AccountName}.streaming.mediaservice
 Media Services január 2017-os kiadásával kezdődően két folyamatos átviteli típus érhető el: **standard** (előzetes verzió) és **prémium**. Ezek a típusok az "2,0" streaming Endpoint verzió részét képezik.
 
 
-|Típus|Description|
+|Típus|Leírás|
 |--------|--------|  
 |**Standard**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
-|**Prémium szintű** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
+|**Prémium** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
 
 Azon ügyfelek számára, akik nagy internetes célközönségeknek szánt tartalmat szeretnének kézbesíteni, javasoljuk, hogy engedélyezze a CDN használatát a streaming végponton.
 
@@ -78,15 +80,15 @@ Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a pr
 |Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klasszikus|1,0|0|NA|Ingyenes|
-|Standard streaming Endpoint (előzetes verzió)|2,0|0|Yes|Fizetős|
-|prémium streamelési egység|1,0|>0|Yes|Fizetős|
-|prémium streamelési egység|2,0|>0|Yes|Fizetős|
+|Standard streaming Endpoint (előzetes verzió)|2,0|0|Igen|Fizetős|
+|prémium streamelési egység|1,0|>0|Igen|Fizetős|
+|prémium streamelési egység|2,0|>0|Igen|Fizetős|
 
 ### <a name="features"></a>Funkciók
 
 Funkció|Standard|Prémium
 ---|---|---
-Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
@@ -102,7 +104,7 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="migration-between-types"></a>Áttelepítés típusok között
 
-Forrás | Művelet | Műveletek
+Forrás | Művelet | Művelet
 ---|---|---
 Klasszikus|Standard|Be kell jelentkeznie
 Klasszikus|Prémium| Skála (további folyamatos átviteli egységek)

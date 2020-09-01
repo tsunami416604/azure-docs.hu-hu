@@ -14,14 +14,16 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4ac0b0e0a9c372aebc51af1840491d0f53f9f8f9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010290"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268655"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ezek a kibocsátási megjegyzések Azure Media Services a korábbi kiadásokból és ismert problémákról származó változásokat összegzik.
 
@@ -372,7 +374,7 @@ A Media Services REST-metaadatok már 2,7-es verzióval rendelkeznek. A legújab
 
 A .NET-hez készült Media Services SDK már verziója 3.0.0.7
 
-### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>Változtatások megszakítása
+### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>Kompatibilitástörő változások
 * A forrás átnevezve a következőre: [streamvégpontok].
 * Az alapértelmezett viselkedés változása történt, amikor a Azure Portal használatával kódolja és közzéteszi az MP4-fájlokat.
 

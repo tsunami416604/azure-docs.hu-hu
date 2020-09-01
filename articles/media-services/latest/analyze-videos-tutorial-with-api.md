@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan elemezheti a videókat Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 07/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: e5c74f6356c8b07cfef923dfb5e12547aa4693ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053557"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265864"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
 > Bár ez az oktatóanyag a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
@@ -162,7 +164,7 @@ A program futtatásakor a feladat külön miniatűrt hoz létre a videóban tal�
 
 A videók elemzésekor keletkező kimeneti fájl neve insights.json. Ez a fájl tartalmazza a videó elemzésének eredményeit. A [médiaintelligenciával](./analyzing-video-audio-files-concept.md) kapcsolatos cikk részletesen leírja a json-fájl elemeit.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

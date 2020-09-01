@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 4f724297f216267dadda31be4bd548eb241b9845
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387030"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266969"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -23,7 +23,7 @@ Ha VMware virtuális gépeket szeretne áttelepíteni az Azure-ba, tekintse át 
 **Támogatás** | **Részletek**
 --- | ---
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat.<br/><br/> Egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 VMWare virtuális gépet is felderítheti és felbecsülheti. Egy projekt tartalmazhatja a fizikai kiszolgálókat és a Hyper-V virtuális gépeket is, az egyes rendszerekhez tartozó értékelési korlátokig.
-**Felderítés** | A Azure Migrate készülék legfeljebb 10 000 VMware virtuális gépet képes felderíteni egy vCenter Server.
+**Felfedezés** | A Azure Migrate készülék legfeljebb 10 000 VMware virtuális gépet képes felderíteni egy vCenter Server.
 **Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
@@ -40,6 +40,7 @@ Ha VMware virtuális gépeket szeretne áttelepíteni az Azure-ba, tekintse át 
 **VMware** | **Részletek**
 --- | ---
 **VMware virtuális gépek** | Az összes operációs rendszer kiértékelése áttelepítésre végezhető. 
+**Storage** | A SCSI-, IDE-és SATA-alapú vezérlőkhöz csatolt lemezek támogatottak.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei
@@ -55,7 +56,7 @@ A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja 
 
 **Eszköz** | **Kapcsolat**
 --- | ---
-**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:```https://<appliance-ip-or-name>:44368``` <br/><br/>Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
+**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
 **vCenter-kiszolgáló** | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
 **ESXi-gazdagépek** | Ha az alkalmazások [felderítését](how-to-discover-applications.md)vagy az ügynök nélküli [függőségek elemzését](concepts-dependency-visualization.md#agentless-analysis)szeretné elvégezni, akkor a készülék a 443-as TCP-porton keresztül csatlakozik az ESXi-gazdagépekhez, és felderíti az alkalmazásokat, és futtatja az ügynök nélküli függőségi vizualizációt a virtuális gépeken.
 
@@ -66,7 +67,7 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott gépek** | Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott.
-**Felderítés** | Az alkalmazás felderítése ügynök nélkül történik. A számítógép vendég hitelesítő adatait használja, és távolról fér hozzá a gépekhez a WMI-és SSH-hívásokkal.
+**Felfedezés** | Az alkalmazás felderítése ügynök nélkül történik. A számítógép vendég hitelesítő adatait használja, és távolról fér hozzá a gépekhez a WMI-és SSH-hívásokkal.
 **VM-támogatás** | Az App-Discovery az összes Windows-és Linux-verziót futtató virtuális gépek esetében támogatott.
 **vCenter** | Az értékeléshez használt vCenter Server írásvédett fióknak **Virtual Machines**vendég műveletekhez szükséges jogosultságokat kell biztosítania  >  **Guest Operations**, hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
 **VM-hozzáférés** | Az alkalmazás-felderítésnek helyi felhasználói fiókra van szüksége a virtuális gépen az alkalmazások felderítéséhez.<br/><br/> Azure Migrate jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, és egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
@@ -114,7 +115,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat.
 - [Felkészülés a VMware](tutorial-prepare-vmware.md) -értékelésre.

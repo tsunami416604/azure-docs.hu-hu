@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44d4e5b6d3e96d2bafa9a7e22f36c6544eaff151
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4f89215525232f9722cd95cc4dd85a4bd19118de
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999546"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268991"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalmának digitális szöveggé alakításához használja a Azure Media Analytics.  
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>A videofájlok szöveges tartalmának digitális szöveggé alakításához használja a Azure Media Analytics. 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
 > Az **Azure Media OCR** adathordozó-processzor ki lesz vonva. A lejárati dátumért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.

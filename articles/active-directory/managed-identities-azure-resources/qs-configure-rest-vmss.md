@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f244a8bee9f5fe7222fb80793f200b92852d6aac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 09a66f45fe3e20bedf5ff99ee924ac267b4fd869
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021799"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266799"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások konfigurálása virtuálisgép-méretezési csoportba tartozó Azure-erőforrásokhoz REST API-hívások használatával
 
@@ -42,11 +42,11 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő felügyelt 
     > [!NOTE]
     > Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-    - Virtuálisgép-méretezési csoport létrehozásához, illetve a virtuálisgép-méretezési csoportból származó rendszer-és/vagy felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához a [virtuális gépek közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
-    - [Felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör felhasználó által hozzárendelt felügyelt identitás létrehozásához.
-    - [Felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör egy felhasználó által hozzárendelt identitás hozzárendeléséhez és eltávolításához egy virtuálisgép-méretezési csoportba.
-- Ha Windows rendszert használ, telepítse a [Linux Windows alrendszerét](https://msdn.microsoft.com/commandline/wsl/about) , vagy használja a Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) .
-- [Telepítse az Azure CLI helyi konzolját](/cli/azure/install-azure-cli), ha a [Windows alrendszert](https://msdn.microsoft.com/commandline/wsl/about) használja a Linux vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+    - Virtuálisgép-méretezési csoport létrehozásához, illetve a virtuálisgép-méretezési csoportból származó rendszer-és/vagy felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához a [virtuális gépek közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) .
+    - [Felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör felhasználó által hozzárendelt felügyelt identitás létrehozásához.
+    - [Felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör egy felhasználó által hozzárendelt identitás hozzárendeléséhez és eltávolításához egy virtuálisgép-méretezési csoportba.
+- Ha Windows rendszert használ, telepítse a [Linux Windows alrendszerét](/windows/wsl/about) , vagy használja a Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) .
+- [Telepítse az Azure CLI helyi konzolját](/cli/azure/install-azure-cli), ha a [Windows alrendszert](/windows/wsl/about) használja a Linux vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
 - Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure-ba `az login` egy olyan fiókkal, amely a rendszer vagy a felhasználó által hozzárendelt felügyelt identitások kezeléséhez használni kívánt Azure-előfizetéshez van társítva.
 
 
@@ -828,7 +828,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználó által hozzárendelt felügyelt identitások REST használatával történő létrehozásával, listázásával vagy törlésével kapcsolatos információkért lásd:
 

@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/12/2020
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4d629351ae7b6154b332a1b1f99374de1187518
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744604"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267870"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Mi az az Azure Media Services Video Indexer?
 
 A Video Indexer (VI) a Azure Media Services AI-megoldás, amely az Azure Cognitive Services Brand részét képezi. A Video Indexer lehetővé teszi a részletes elemzések kinyerését (az adatok elemzése és a kódolási képességek nélkül) a gépi tanulási modellek használatával több csatornán (hang, vokál, vizualizáció). Tovább testreszabhatja és betaníthatja a modelleket. A szolgáltatás lehetővé teszi a mélyreható keresést, csökkenti a működési költségeket, lehetővé teszi az új bevételi lehetőségeket, és új felhasználói élményeket hoz létre a videók nagy archívumában (alacsony belépési korlátokkal).
 
 Az Video Indexerekkel való kinyerésének megkezdéséhez létre kell hoznia egy fiókot, és fel kell töltenie a videókat. A videók Video Indexer való feltöltésekor a vizualizációkat és a hanganyagokat különböző AI-modellek futtatásával elemezze. Ahogy Video Indexer elemzi a videót, az AI-modellek által kinyert elemzéseket.
+
+Amikor létrehoz egy Video Indexer fiókot, és összekapcsolja Media Services, az adathordozó-és metaadat-fájlokat a rendszer az adott Media Services fiókhoz társított Azure Storage-fiókban tárolja. További információ: az [Azure-hoz csatlakoztatott video Indexer-fiók létrehozása](connect-to-azure.md).
 
 A következő ábra egy illusztráció, nem pedig technikai magyarázat arról, hogy a Video Indexer hogyan működik a háttérben.
 
@@ -47,7 +49,7 @@ Video Indexer az adatok számos forgatókönyvre alkalmazhatók, többek közöt
 * *Tartalom moderálása*: a szöveges és a vizuális tartalom moderálási modelljeinek használatával a felhasználók biztonságban maradhatnak a nem megfelelő tartalomtól, és ellenőrizhetik, hogy a közzétett tartalom megfelel-e a szervezet értékeinek. Automatikusan blokkolhat bizonyos videókat, vagy riasztást kaphat a felhasználóknak a tartalomról.
 * *Javaslatok*: a videó-bepillantást a felhasználók bevonásával növelheti. Ha az egyes videókat további metaadatokkal címkézi, ajánlhatja a felhasználók számára a legfontosabb videókat, és kiemelheti a videó azon részeit, amelyek megfelelnek az igényeinek.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a videókat Video Indexer videó-és hangmodellek használatával:
 
@@ -70,9 +72,9 @@ A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a v
 
 ### <a name="audio-insights"></a>Audio-elemzések
 
-* **Hang átirata**: átalakítja a beszédet 12 nyelven, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, Arab, Orosz, portugál, hindi és koreai.
-* **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, orosz és portugál. Ha a nyelv nem azonosítható bizalommal, Video Indexer feltételezi, hogy a beszélt nyelv angol. További információ: [Language Identification Model](language-identification-model.md).
-* **Többnyelvű beszéd azonosítása és átírása** (előzetes verzió): automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból. Elküldi a médiafájl egyes szegmenseit, majd az átírást egy egységes átírással ötvözi. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
+* **Hang átirata**: átalakítja a beszédet 12 nyelven, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek: angol, spanyol, francia, német, olasz, mandarin kínai, japán, arab, orosz, portugál, hindi és koreai.
+* **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek: angol, spanyol, francia, német, olasz, mandarin kínai, japán, orosz és portugál. Ha a nyelv nem azonosítható egyértelműen, a Video Indexer azt feltételezi, hogy a beszélt nyelv az angol. További információért tekintse meg a [nyelvazonosítási modellel](language-identification-model.md) foglalkozó cikket.
+* **Többnyelvű beszéd azonosítása és átírása** (előzetes verzió): automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból. A szolgáltatás elküldi a médiafájl egyes szegmenseit átírásra, majd egyesíti az átiratokat egyetlen összevont átírássá. További információért tekintse meg a [többnyelvű tartalom automatikus azonosításával és átírásával](multi-language-identification-transcription.md) foglalkozó cikket.
 * **Hangfeliratok**: Hangfeliratokat hoz létre három formátumban: VTT, TTML, SRT.
 * **Kétcsatornás feldolgozás**: automatikusan észleli a különálló átiratokat, és egyesíti az adott idővonalat.
 * **Zajcsökkentés**: a telefonos hang-vagy zajos (skype-szűrők alapján) felvételek törlése.
@@ -114,7 +116,7 @@ Ha a webhelyet használja, az adatok metaadatokként lesznek hozzáadva, és meg
 
 ## <a name="next-steps"></a>További lépések
 
-Készen áll a Video Indexer használatának megkezdésére. További információért tekintse át a következő cikkeket:
+Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a video Indexer webhellyel](video-indexer-get-started.md).
 - [Tartalom feldolgozása Video Indexer Rest APIsal](video-indexer-use-apis.md).

@@ -1,18 +1,18 @@
 ---
-title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, Node. js – QnA Maker'
-description: Ez a Node. js REST-alapú rövid útmutató végigvezeti Önt a tudásalapú válasz beszerzésén, programozott módon.
+title: 'Gyors útmutató: Válasz kérése a Tudásbázisból – REST, Node.js – QnA Maker'
+description: Ez a Node.js REST-alapú rövid útmutató végigvezeti egy adott Tudásbázisból származó válasz beszerzésének lépésein.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa5a6395b537daa750a2e9b97bde4df320193c1e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342782"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268057"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Gyors útmutató: válaszok a Tudásbázisban a Node. js-vel kapcsolatos kérdésekre
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Gyors útmutató: a Tudásbázis kérdéseire kaphat választ Node.js
 
 Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../Concepts/knowledge-base.md) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
 
@@ -29,7 +29,7 @@ Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból sz�
 
     ![Publish settings (Közzétételi beállítások)](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-## <a name="create-a-nodejs-file"></a>Node. js-fájl létrehozása
+## <a name="create-a-nodejs-file"></a>Node.js-fájl létrehozása
 
 Nyissa meg a VSCode, és hozzon létre egy nevű új fájlt `get-answer.js` .
 
@@ -37,29 +37,19 @@ Nyissa meg a VSCode, és hozzon létre egy nevű új fájlt `get-answer.js` .
 
 A `get-answer.js` fájl tetején adja hozzá a szükséges függőségeket a projekthez:
 
-[!code-nodejs[Add the required dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=1-4 "Add the required dependencies")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>A szükséges konstansok hozzáadása
 
 Ezután adja hozzá a szükséges állandókat a QnA Maker eléréséhez. Ezek az értékek a **közzétételi** lapon jelennek meg, miután közzétette a tudásbázist.
 
-[!code-nodejs[Add the required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=6-22 "Add the required constants")]
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="constants":::
 
 ## <a name="add-a-post-request-to-send-question-and-get-an-answer"></a>POST-kérelem hozzáadása a kérdés elküldéséhez és a válasz beszerzéséhez
 
 A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a kérdést a Tudásbázisnak, és fogadja a választ:
 
-[!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
-
-A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey` .
-
-## <a name="install-the-dependencies"></a>A függőségek telepítése
-
-A függőségek telepítése a parancssorból:
-
-```bash
-npm install request request-promise
-```
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="query":::
 
 ## <a name="run-the-program"></a>A program futtatása
 
@@ -77,7 +67,7 @@ További információ a [kérelemről](../how-to/metadata-generateanswer-usage.m
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

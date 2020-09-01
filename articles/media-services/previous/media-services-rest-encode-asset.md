@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d2e7be89b3319445a69d5b91990e9888cccd484a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837329"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268621"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Eszköz kódolása Media Encoder Standard használatával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -292,5 +295,5 @@ HTTP/1.1 201 Created
 ## <a name="next-steps"></a>További lépések
 Most, hogy már tudja, hogyan hozhat létre egy adategység kódolására szolgáló feladatot, tekintse meg a következő témakört: [a feladatok előrehaladásának ellenőrzéséhez Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 [Adathordozó-processzorok beolvasása](media-services-rest-get-media-processor.md)

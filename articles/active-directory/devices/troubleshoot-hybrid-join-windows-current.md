@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611313"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268774"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
 
@@ -28,8 +28,8 @@ Más Windows-ügyfelek esetén tekintse meg a következő cikket: a [hibrid Azur
 Ez a cikk azt feltételezi, hogy a [hibrid Azure Active Directory csatlakoztatott eszközöket úgy konfigurálta](hybrid-azuread-join-plan.md) , hogy támogassa a következő forgatókönyveket:
 
 - Eszköz alapú feltételes hozzáférés
-- [A beállítások vállalati barangolása](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Vállalati Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
+- [A beállítások vállalati barangolása](./enterprise-state-roaming-overview.md)
+- [Vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 Ez a dokumentum a lehetséges problémák megoldásához nyújt hibaelhárítási útmutatót.
 
@@ -170,7 +170,7 @@ A hiba lehetséges okai:
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
    - Ok: általános felderítési hiba. Nem sikerült lekérni a felderítési metaadatokat a DRS-ből.
    - Megoldás: keresse meg az alábbi alhibát a további vizsgálathoz.
-- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
+- **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT**  (0x801c001f/-2145648609)
    - Ok: a művelet időtúllépést észlelt a felderítés végrehajtása során.
    - Megoldás: Győződjön meg arról, hogy `https://enterpriseregistration.windows.net` a rendszer elérhető a rendszerkörnyezetben. További információt a [hálózati kapcsolatra vonatkozó követelmények](hybrid-azuread-join-managed-domains.md#prerequisites)című szakaszban talál.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
@@ -373,13 +373,13 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 ##### <a name="federated-join-server-errors"></a>Összevont kapcsolódási kiszolgáló hibái
 
-| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Feloldás |
 | --- | --- | --- | --- |
 | Címtárhiba | A kérést átmenetileg szabályozzák. Próbálkozzon 300 másodperc elteltével. | Várt hiba. Valószínűleg azért, mert a gyors öröklés több regisztrációs kérelmet tesz elérhetővé. | Csatlakozzon újra a hűtési időszak után |
 
 ##### <a name="sync-join-server-errors"></a>Csatlakozási kiszolgáló hibáinak szinkronizálása
 
-| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Megoldás: |
+| Kiszolgáló hibakódja | Kiszolgálóhiba üzenet | Lehetséges okok | Feloldás |
 | --- | --- | --- | --- |
 | Címtárhiba | AADSTS90002: a bérlő <UUID> nem található. Ez a hiba akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések. Egyeztessen az előfizetés rendszergazdájával. | A SZOLGÁLTATÁSKAPCSOLÓDÁSI pont objektumának bérlői azonosítója helytelen | Győződjön meg arról, hogy az SCP-objektum a megfelelő Azure AD-bérlői AZONOSÍTÓval és aktív előfizetésekkel van konfigurálva, és szerepel a bérlőn. |
 | Címtárhiba | Nem található az eszköz objektuma a megadott azonosító alapján. | A szinkronizáláshoz való csatlakozás várható hiba. Az eszköz objektuma nem lett szinkronizálva az AD-ből az Azure AD-be | Várjon, amíg a Azure AD Connect szinkronizálás befejeződik, és a szinkronizálás befejezését követően a következő csatlakozási kísérlet megoldja a problémát |
@@ -387,7 +387,7 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. lépés: naplók összegyűjtése és kapcsolatfelvétel Microsoft ügyfélszolgálata
 
-Töltse le a Auth.zip fájlt a következőből:[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Töltse le a Auth.zip fájlt a következőből: [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
 1. Bontsa ki a fájlokat, és nevezze át a tartalmazott fájlokat **start-auth.txt** és **stop-auth.txt** a **Start-auth. cmd** és a **stop-auth. cmd**fájlba.
 1. Rendszergazda jogú parancssorból futtassa a **Start-auth. cmd**fájlt.

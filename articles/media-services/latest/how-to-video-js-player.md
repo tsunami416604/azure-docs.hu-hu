@@ -10,17 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 39c790ea3c7799c59d4b49e3ce3284fb96b8b254
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2730c6ce523e618110cd29b13ba2f37115e2cbd0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422963"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267683"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Az Video.js-lejátszó használata a Azure Media Services
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -74,9 +76,9 @@ A cikk mintakód a következő helyen érhető el: [Azure-Samples/Media-Services
 Futtassa a `addRemoteTextTrack` metódust, és cserélje le:
 
 - `subtitleKind``"captions"` `"subtitles"` `"descriptions"` vagy`"metadata"`  
-- `caption`a. VTT fájl elérési útjának (a VTT-fájlnak ugyanabban a gazdagépen kell lennie, hogy elkerülje a CORS-hibát)
-- `subtitleLang`a BCP 47 kóddal, például `"eng"` angol vagy `"es"` spanyol nyelven
-- `subtitleLabel`a felirat kívánt megjelenítendő nevével
+- `caption` a. VTT fájl elérési útjának (a VTT-fájlnak ugyanabban a gazdagépen kell lennie, hogy elkerülje a CORS-hibát)
+- `subtitleLang` a BCP 47 kóddal, például `"eng"` angol vagy `"es"` spanyol nyelven
+- `subtitleLabel` a felirat kívánt megjelenítendő nevével
 
 ```javascript
 videojs.players.video.addRemoteTextTrack({
@@ -159,7 +161,7 @@ emeHeaders: {'Authorization': "Bearer=" + "YOUR TOKEN"},
 keySystems: {...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Azure Media Player használata](../azure-media-player/azure-media-player-overview.md)  
 - [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

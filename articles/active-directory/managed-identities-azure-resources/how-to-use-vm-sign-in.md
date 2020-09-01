@@ -16,12 +16,12 @@ ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 02815003bf5167a73c1e2362d9270deb867c84b7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999410"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266323"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépen a bejelentkezéshez 
 
@@ -34,7 +34,7 @@ Ez a cikk PowerShell-és CLI-parancsfájl-példákat tartalmaz a bejelentkezésh
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Ha a cikkben a Azure PowerShell vagy az Azure CLI-példákat is használni szeretné, telepítse az [Azure PowerShell](/powershell/azure/install-az-ps) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)legújabb verzióját. 
+Ha a cikkben a Azure PowerShell vagy az Azure CLI-példákat is használni szeretné, telepítse az [Azure PowerShell](/powershell/azure/install-az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)legújabb verzióját. 
 
 > [!IMPORTANT]
 > - A cikkben szereplő összes minta parancsfájl azt feltételezi, hogy a parancssori ügyfél olyan virtuális gépen fut, amelyen engedélyezve van az Azure-erőforrások felügyelt identitása. Használja a Azure Portal virtuális gép "kapcsolódás" szolgáltatását a virtuális géphez való távoli kapcsolódáshoz. A virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezésével kapcsolatos részletekért lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrások számára a Azure Portal](qs-configure-portal-windows-vm.md)vagy az egyik varianting article (POWERSHELL, CLI, sablon vagy Azure SDK használatával). 
@@ -97,12 +97,6 @@ Ha ezen hibák valamelyikét megkapja, térjen vissza az Azure-beli virtuális g
 
 Ha valamelyik helytelen, lehetséges, hogy újra telepítenie kell az Azure-erőforrásokhoz tartozó felügyelt identitásokat az erőforráson, vagy hibaelhárítást kell végeznie az üzembe helyezési hiba miatt. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure-beli virtuális gépen lévő Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása](qs-configure-powershell-windows-vm.md)Azure-beli virtuális gépen Azure-beli virtuális gépeken a PowerShell használatával, illetve felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure [CLI használatával](qs-configure-cli-windows-vm.md)
-
-
-
-
-
-

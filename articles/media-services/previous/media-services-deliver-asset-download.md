@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f22d2022ae095ea7178859b1c036f78e39c10152
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019453"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266527"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: eszköz kézbesítése letöltéssel  
+# <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: eszköz kézbesítése letöltéssel
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 Ez a cikk a Media Servicesba feltöltött média-eszközök kézbesítésének lehetőségeit tárgyalja. Számos alkalmazási forgatókönyvben Media Services tartalmat is eljuttathat. A kódolást követően töltse le a generált adathordozó-eszközöket, vagy egy streaming Locator használatával hozzáférjen hozzájuk. A jobb teljesítmény és méretezhetőség érdekében Content Delivery Network (CDN) használatával is elvégezheti a tartalom továbbítását.
 
 Ez a példa azt mutatja be, hogyan tölthetők le a média eszközei Media Servicesről a helyi számítógépre. A kód lekérdezi a Media Services-fiókhoz társított feladatokat a feladat azonosítója alapján, és hozzáfér a **OutputMediaAssets** -gyűjteményhez (amely egy vagy több kimeneti adathordozó-eszköz készlete, amely egy feladat futtatását eredményezi). Ebből a példából megtudhatja, hogyan töltheti le a kimeneti adathordozó-eszközöket a feladatokból, de ugyanezt a módszert alkalmazhatja más eszközök letöltésére is.

@@ -3,7 +3,7 @@ title: Azure Media Services diagnosztikai naplók sémái – Azure
 description: Ez a cikk a Azure Media Services diagnosztikai naplók sémáit mutatja be.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6f09a0ab88273aa10bb5f3cb55f89d014897df12
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092014"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268451"
 ---
 # <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. Nyomon követheti Media Services diagnosztikai naplóit, és riasztásokat és értesítéseket hozhat létre az összegyűjtött metrikák és naplók számára. Naplókat küldhet az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket [log Analyticsba](https://azure.microsoft.com/services/log-analytics/), vagy külső szolgáltatásokhoz is használhatja őket.
 

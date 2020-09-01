@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042821"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268305"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A 2018. május 12. után az élő csatornák már nem támogatják az RTP/MPEG-2 Transport stream betöltési protokollt. Telepítse át a következőt: RTP/MPEG-2 – RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollok.
@@ -73,7 +75,7 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Indítás |Indítás |Nem (átmeneti állapot) |
 | Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
-| Leállítva |Leállítva |No |
+| Leállítva |Leállítva |Nem |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Nem használt csatornák automatikus kikapcsolása
 A 2016. január 25-én kezdődően Media Services egy olyan frissítést, amely automatikusan leállítja a csatornát (ha az élő kódolás engedélyezve van), miután egy hosszú ideig nem használt állapotban fut. Ez olyan csatornákra vonatkozik, amelyek nincsenek aktív programok, és amelyek hosszabb ideig nem kaptak meg a bemeneti hozzájárulási hírcsatornát.
@@ -313,9 +315,9 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
 | Indítás |Indítás |Nem (átmeneti állapot) |
-| Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |Yes |
+| Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |Igen |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
-| Leállítva |Leállítva |No |
+| Leállítva |Leállítva |Nem |
 
 > [!NOTE]
 > Jelenleg a csatorna indítási átlaga körülbelül 2 percet vesz igénybe, de időnként akár 20 percig is eltarthat. A csatornák alaphelyzetbe állítása akár 5 percet is igénybe vehet.

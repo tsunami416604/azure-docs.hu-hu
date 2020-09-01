@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258655"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268893"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Oktatóanyag: az Azure-adatmegosztás használatával fogadja el és fogadja az adatfogadást  
 
@@ -38,7 +38,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 * A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a közreműködő szerepkörben található. 
 * Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély létezik a tulajdonosi szerepkörben.  
 
-### <a name="receive-data-into-a-sql-based-source"></a>Adatfogadás SQL-alapú forrásba:
+### <a name="receive-data-into-a-sql-based-target"></a>Adatfogadás SQL-alapú célhelyre:
 
 * A *Microsoft. SQL/Servers/Databases/Write*adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a közreműködő szerepkörben található. 
 * Az adatmegosztási erőforrás felügyelt identitására vonatkozó engedély a Azure SQL Database vagy Azure SQL Data Warehouse eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
@@ -78,7 +78,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
    Ha közvetlenül Azure Portal szeretné megnyitni a meghívót, keresse meg az **adatmegosztási meghívásokat** a Azure Portalban. Ekkor megjelenik az adatmegosztási meghívások listája.
 
-   ![Meghívók](./media/invitations.png "Meghívások listája") 
+   ![Meghívások listája](./media/invitations.png "Meghívások listája") 
 
 1. Válassza ki a megtekinteni kívánt megosztást. 
 
@@ -104,7 +104,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 ## <a name="configure-received-share"></a>Fogadott megosztás konfigurálása
 Az alábbi lépésekkel konfigurálhatja, hogy hová kívánja fogadni az adatgyűjtést.
 
-1. Válassza az **adatkészletek** fület. jelölje be azon adatkészlet melletti jelölőnégyzetet, amelynek a célhelyét hozzá szeretné rendelni. A cél adattár kiválasztásához válassza a **+ Térkép** lehetőséget. 
+1. Válassza az **adatkészletek** lapot. Jelölje be azon adatkészlet melletti jelölőnégyzetet, amelyhez hozzá szeretné rendelni a célhelyet. A cél adattár kiválasztásához válassza a **+ Térkép** lehetőséget. 
 
    ![Leképezés célhelyre](./media/dataset-map-target.png "Leképezés célhelyre") 
 
@@ -114,7 +114,7 @@ Az alábbi lépésekkel konfigurálhatja, hogy hová kívánja fogadni az adatgy
 
    ![Cél Storage-fiók](./media/dataset-map-target-sql.png "Cél tárterülete") 
 
-1. Pillanatkép-alapú megosztás esetén, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez **, a pillanatkép** -ütemterv kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés**lehetőséget.
+1. A pillanatkép-alapú megosztáshoz, ha az adatszolgáltató pillanatkép-ütemtervet hozott létre az adatok rendszeres frissítéséhez, **akkor a pillanatkép-ütemterv** kiválasztásával is engedélyezheti a pillanatkép-ütemtervet. Jelölje be a pillanatkép-ütemterv melletti jelölőnégyzetet, majd válassza a **+ Engedélyezés**lehetőséget.
 
    ![Pillanatkép-ütemterv engedélyezése](./media/enable-snapshot-schedule.png "Pillanatkép-ütemterv engedélyezése")
 

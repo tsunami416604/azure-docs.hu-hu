@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan hozhat létre szűrőket dinamikus csomagoló használatával a jegyzékfájlok szűréséhez és szelektív továbbításához.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,16 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4a2464cbb47291f35cd4d7e20b555356e3e9aa8b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705202"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266459"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>A jegyzékfájlok szűrése dinamikus csomagoló használatával
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ha adaptív sávszélességű adatfolyam-továbbítási tartalmat továbbít az eszközökhöz, előfordulhat, hogy egy jegyzékfájl több verzióját kell közzétennie az adott eszköz képességeinek vagy a rendelkezésre álló hálózati sávszélességnek a megcélzásához. A [dinamikus](dynamic-packaging-overview.md) csomagolás lehetővé teszi olyan szűrők megadását, amelyek meghatározott kodekeket, felbontásokat, bitrátákat és hangsávok kombinációkat végezhetnek el menet közben. Ez a szűrés nem szükséges több másolat létrehozásához. Egyszerűen közzé kell tennie egy új URL-címet a célként megadott eszközökhöz konfigurált szűrők (iOS, Android, Okostelevízió üzletága vagy böngészők) és a hálózati képességek (nagy sávszélességű, mobil vagy alacsony sávszélességű forgatókönyvek) számára. Ebben az esetben az ügyfelek a lekérdezési karakterláncon keresztül kezelhetik a tartalom folyamatos átvitelét (az elérhető [eszközcsoport-szűrők vagy-szűrők](filters-concept.md)megadásával), és szűrők használatával továbbítják a stream adott részeit.
 

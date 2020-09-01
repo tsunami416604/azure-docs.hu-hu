@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541872"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268808"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -48,13 +48,13 @@ Az eszközök Azure AD-identitásként való megadásának legfőbb előnyei:
 
 * A felhasználói élmény javítása – az eszközök identitásával az Azure AD-ben a felhasználók könnyedén hozzáférhetnek a szervezet felhőalapú erőforrásaihoz mind a személyes, mind a vállalati eszközökről. A rendszergazdák az összes Windows-eszközön lehetővé teszik a [Enterprise State roaming](enterprise-state-roaming-overview.md) egységes felhasználói élményét.
 
-* Egyszerűsítse az üzembe helyezést és a felügyeletet – az eszközök identitásának kezelése leegyszerűsíti az eszközök Azure AD-be való bevezetésének folyamatát a [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot), a [tömeges kiépítés](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)és az önkiszolgáló [szolgáltatás: kezdőélmény (OOBE)](../user-help/user-help-join-device-on-network.md)használatával. Ezeket az eszközöket a mobileszköz-kezelési (MDM) eszközök, például a [Microsoft Intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune)és az [Azure Portalokban](https://portal.azure.com/)lévő identitások kezelésére használhatja.
+* Egyszerűsítse az üzembe helyezést és a felügyeletet – az eszközök identitásának kezelése leegyszerűsíti az eszközök Azure AD-be való bevezetésének folyamatát a [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot), a [tömeges kiépítés](/mem/intune/enrollment/windows-bulk-enroll)és az önkiszolgáló [szolgáltatás: kezdőélmény (OOBE)](../user-help/user-help-join-device-on-network.md)használatával. Ezeket az eszközöket a mobileszköz-kezelési (MDM) eszközök, például a [Microsoft Intune](/mem/intune/fundamentals/what-is-intune)és az [Azure Portalokban](https://portal.azure.com/)lévő identitások kezelésére használhatja.
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-Videó: [feltételes hozzáférés eszköz-vezérlőkkel](https://youtu.be/NcONUf-jeS4)
+Videó:  [feltételes hozzáférés eszköz-vezérlőkkel](https://youtu.be/NcONUf-jeS4)
 
-Gyakori kérdések: [Azure ad-eszközkezelés – gyakori kérdések](faq.md) és [beállítások és adatroaming – gyakori kérdések](enterprise-state-roaming-faqs.md) 
+Gyakori kérdések: [Azure ad-eszközkezelés – gyakori kérdések](faq.md)  és [beállítások és adatroaming – gyakori kérdések](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Az üzembe helyezési projekt megtervezése
 
@@ -127,21 +127,21 @@ Feltételes hozzáférés <br>(Hibrid Azure AD-hez csatlakoztatott eszközök me
 
 ## <a name="azure-ad-registration"></a>Azure AD-regisztráció 
 
-A regisztrált eszközöket gyakran [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment)kezelik. Az eszközöket az operációs rendszertől függően számos módon regisztrálják az Intune-ban. 
+A regisztrált eszközöket gyakran [Microsoft Intune](/mem/intune/enrollment/device-enrollment)kezelik. Az eszközöket az operációs rendszertől függően számos módon regisztrálják az Intune-ban. 
 
 Az Azure AD-ban regisztrált eszközök támogatást nyújtanak a saját eszközök (BYOD) és a vállalati tulajdonú eszközök számára az egyszeri bejelentkezéshez a Felhőbeli erőforrásokhoz. Az erőforrásokhoz való hozzáférés az eszközre és a felhasználóra alkalmazott Azure AD [hitelesítésszolgáltatói házirendek](../conditional-access/require-managed-devices.md) alapján történik.
 
 ### <a name="registering-devices"></a>Eszközök regisztrálása
 
-A regisztrált eszközöket gyakran [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment)kezelik. Az eszközöket az operációs rendszertől függően számos módon regisztrálják az Intune-ban. 
+A regisztrált eszközöket gyakran [Microsoft Intune](/mem/intune/enrollment/device-enrollment)kezelik. Az eszközöket az operációs rendszertől függően számos módon regisztrálják az Intune-ban. 
 
 A BYOD és a vállalati tulajdonú mobileszköz a vállalati portál alkalmazást telepítő felhasználók által regisztrálva van.
 
-* [iOS](https://docs.microsoft.com/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
+* [iOS](/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
 
-* [Android](https://docs.microsoft.com/mem/intune/user-help/enroll-device-android-company-portal)
+* [Android](/mem/intune/user-help/enroll-device-android-company-portal)
 
-* [Windows 10](https://docs.microsoft.com/mem/intune/user-help/enroll-windows-10-device)
+* [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
 
 Ha az eszközök regisztrálása a legjobb megoldás a szervezet számára, tekintse meg a következő forrásokat:
 
@@ -171,9 +171,9 @@ Ha egy eszközön a Windows 10 Professional vagy a Windows 10 Enterprise rendsze
 
 * [A Windows beépített felhasználói felülete (OOBE) vagy a Windows beállításai](../user-help/user-help-join-device-on-network.md)
 
-* [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)
+* [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)
 
-* [Tömeges beléptetés](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)
+* [Tömeges beléptetés](/mem/intune/enrollment/windows-bulk-enroll)
 
 A [módszerek körültekintő összehasonlítása](azureadjoin-plan.md)után válassza ki az üzembe helyezési eljárást.
 
@@ -216,7 +216,7 @@ Előfordulhat, hogy a hibrid Azure AD JOIN a legjobb megoldás az eszközhöz, �
 | Aktuális eszköz állapota| Kívánt eszköz állapota| Használati útmutató |
 | - | - | - |
 | Helyszíni tartományhoz való csatlakozás| Hibrid Azure AD-csatlakozás| Az Azure AD-csatlakozás vagy a AD FS használata az Azure-ba való csatlakozáshoz |
-| Helyszíni munkacsoport csatlakoztatva vagy új| Hibrid Azure AD-csatlakozás| A [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)támogatja. Ellenkező esetben az eszköznek a hibrid Azure AD-csatlakozás előtt csatlakoznia kell a helyszíni tartományhoz |
+| Helyszíni munkacsoport csatlakoztatva vagy új| Hibrid Azure AD-csatlakozás| A [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)támogatja. Ellenkező esetben az eszköznek a hibrid Azure AD-csatlakozás előtt csatlakoznia kell a helyszíni tartományhoz |
 | Azure AD-hez csatlakoztatva| Hibrid Azure AD-csatlakozás| Csatlakozzon az Azure AD-ből, amely a helyszíni munkacsoportba vagy új állapotba helyezi. |
 | Azure AD-regisztráció| Hibrid Azure AD-csatlakozás| A Windows-verziótól függ. [Tekintse meg ezeket a szempontokat](hybrid-azuread-join-plan.md). |
 
@@ -239,13 +239,13 @@ A támogatott és nem támogatott platformok áttekintése integrált eszközök
 
 | Eszközfelügyeleti eszközök| Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás|
 | - | - | - | - |
-| [Mobileszköz-felügyelet (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
-| [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
-| [Csoportházirend](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Csak Windows)| | | ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
+| [Mobileszköz-felügyelet (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
+| [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
+| [Csoportházirend](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Csak Windows)| | | ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
 
 
 
- Javasoljuk, hogy vegye fontolóra [Microsoft Intune Mobile Application Management (MAM)](https://docs.microsoft.com/mem/intune/apps/app-management) használatát a regisztrált iOS-vagy Android-eszközökön vagy anélkül.
+ Javasoljuk, hogy vegye fontolóra [Microsoft Intune Mobile Application Management (MAM)](/mem/intune/apps/app-management) használatát a regisztrált iOS-vagy Android-eszközökön vagy anélkül.
 
  A rendszergazdák a szervezet Windows operációs rendszereit üzemeltető [virtuális asztali infrastruktúra-(VDI-) platformokon is üzembe](howto-device-identity-virtual-desktop-infrastructure.md) helyezhetik a felügyeletet, és csökkenthetik a költségeket az erőforrások konszolidálásával és központosításával. 
 

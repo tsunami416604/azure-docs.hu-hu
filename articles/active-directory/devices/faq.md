@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689044"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266782"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -62,7 +62,7 @@ Csak a következő eszközök szerepelnek a **felhasználói eszközök**terüle
 - A felhasználó letiltja az eszközt a saját alkalmazások portálján. 
 - A rendszergazda (vagy felhasználó) törli vagy letiltja az eszközt a Azure Portal vagy a PowerShell használatával
 - Csak hibrid Azure AD-csatlakozás: a rendszergazda eltávolítja az eszközöket az Azure AD-ből törölni kívánt eszközökről a szinkronizálási hatókörből
-- Az Azure AD-kapcsolódás frissítése az 1.4. xx. x verzióra. [Az Azure ad Connect 1.4. xx. x és az eszközön való megjelenés ismertetése](/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Az Azure AD-kapcsolódás frissítése az 1.4. xx. x verzióra. [Az Azure ad Connect 1.4. xx. x és az eszközön való megjelenés ismertetése](../hybrid/reference-connect-device-disappearance.md).
 
 
 A műveletek kijavításának menetét alább találja.
@@ -82,14 +82,14 @@ A műveletek kijavításának menetét alább találja.
       A hibrid Azure AD-hez csatlakoztatott Windows 10-és Windows Server 2016/2019-eszközök újbóli regisztrálásához hajtsa végre a következő lépéseket:
 
       1. Nyissa meg a parancssort rendszergazdaként.
-      1. Írja be a `dsregcmd.exe /debug /leave` (igen) kifejezést.
+      1. Írja be a következő szöveget: `dsregcmd.exe /debug /leave`.
       1. Jelentkezzen ki, majd jelentkezzen be az eszközt az Azure AD-vel újra regisztráló ütemezett feladat elindításához. 
 
       Az Azure AD-hez csatlakoztatott, régebbi verziójú Windows operációsrendszer-verziók esetén hajtsa végre a következő lépéseket:
 
       1. Nyissa meg a parancssort rendszergazdaként.
-      1. Írja be a `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` (igen) kifejezést.
-      1. Írja be a `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` (igen) kifejezést.
+      1. Írja be a következő szöveget: `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
+      1. Írja be a következő szöveget: `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
       Az Azure AD-hez csatlakoztatott eszközök Windows 10-es eszközeihez hajtsa végre a következő lépéseket:
 
@@ -312,7 +312,7 @@ Az UPN-módosítások a Windows 10 2004 Update szolgáltatással támogatottak. 
 **A:** Hajtsa végre a következő lépéseket:
 
 1.    [Megfelelőségi házirend létrehozása](/intune/compliance-policy-create-mac-os)
-1.    [Feltételes hozzáférési szabályzat definiálása macOS-eszközökhöz](../active-directory-conditional-access-azure-portal.md) 
+1.    [Feltételes hozzáférési szabályzat definiálása macOS-eszközökhöz](../conditional-access/overview.md) 
 
 **Megjegyzéseket tartalmazó**
 

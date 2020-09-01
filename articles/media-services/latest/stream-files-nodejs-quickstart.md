@@ -3,7 +3,7 @@ title: Videofájlok továbbítása Azure Media Services-Node.jssal | Microsoft D
 description: Az oktatóanyag lépéseit követve hozzon létre egy új Azure Media Services fiókot, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: azure media services, stream
@@ -11,16 +11,18 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc, devx-track-javascript
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 1c96c538826de696de531aff79ce601bc01a239d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414071"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267394"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videón – Node.js
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ebből az oktatóanyagból megtudhatja, hogy milyen egyszerűen kódolhatja és indíthatja el a streaming-videókat számos különböző böngészőn és eszközön a Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 
@@ -99,11 +101,11 @@ Hajtsa végre a következő CLI-parancsot:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Feladattípus](/rest/api/media/jobs/get#joberrorcode)-hibakódok.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Media Services fogalmak](concepts-overview.md)

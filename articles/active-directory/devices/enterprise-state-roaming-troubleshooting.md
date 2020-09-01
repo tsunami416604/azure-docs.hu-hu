@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5043873b18f2d2115fd23e8b52959290393bfb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604539"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267241"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A Azure Active Directory Enterprise State Roaming beállításainak hibaelhárítása
 
@@ -108,7 +108,7 @@ Győződjön meg arról, hogy a Windows 10 v1511-ügyfél rendelkezik a júliusi
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>A téma nem szinkronizálható, és a Windows Information Protection védettek. 
 
-Az adatszivárgás megakadályozása érdekében a [windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) védelemmel ellátott adatai a Windows 10 évfordulós frissítését használó eszközökön nem szinkronizálhatók Enterprise State roaming használatával.
+Az adatszivárgás megakadályozása érdekében a [windows Information Protection](/windows/security/information-protection/windows-information-protection/protect-enterprise-data-using-wip) védelemmel ellátott adatai a Windows 10 évfordulós frissítését használó eszközökön nem szinkronizálhatók Enterprise State roaming használatával.
 
 **Javasolt művelet**  
 Nincsenek. Előfordulhat, hogy a Windows jövőbeli frissítései megoldják ezt a problémát.
@@ -159,8 +159,8 @@ Ha a felhasználó kevert kis-és nagybetűket (például Felhasználónév hely
 A felhasználónak meg kell adnia a csatlakozást, és újra csatlakoztatnia kell az eszközt a felhőhöz. Ehhez jelentkezzen be a helyi rendszergazda felhasználóként, és szüntesse meg az eszköz csatlakoztatását a **Beállítások**  >  **rendszer**  >  **névjegyével** , és válassza a "kezelés vagy a Leválasztás a munkahelyről vagy az iskoláról" lehetőséget. Törölje az alábbi fájlokat, majd az Azure ad ismét csatlakozzon az eszközhöz a **Beállítások**  >  **rendszer**  >  **névjegye** területen, és válassza a "csatlakozás munkahelyi vagy iskolai rendszerhez" lehetőséget. Folytassa az eszköz csatlakoztatását Azure Active Directory és fejezze be a folyamatot.
 
 A karbantartás lépésben törölje a következő fájlokat:
-- Settings. dat a`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- A mappában található összes fájl`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- Settings. dat a `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- A mappában található összes fájl `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

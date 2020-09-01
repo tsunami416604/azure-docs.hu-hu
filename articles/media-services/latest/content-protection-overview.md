@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: További információ a dinamikus titkosítással, a folyamatos átviteli protokollokkal és a titkosítási típusokkal kapcsolatos tartalomvédelem Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e21aba7b06e6c692337344477bfb52e7f7acb27c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 81ec96d244c36c0328134b415465d632ef6c1dd5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012195"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267921"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Azure Media Services segítségével biztonságossá teheti az adathordozót, amikor a számítógépet a tárolás, a feldolgozás és a kézbesítés teljes egészében elhagyja. A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. Ha a tartalom titkosítása AES Clear kulccsal történik, és HTTPS-kapcsolaton keresztül történik, nem egyértelmű, amíg el nem éri az ügyfelet. 
 
@@ -259,7 +261,7 @@ Ha a végén hibákat kap, ügyeljen `_NOT_SPECIFIED_IN_URL` arra, hogy a titkos
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Védelem AES-titkosítással](protect-with-aes128.md)
 * [Védelem a DRM-mel](protect-with-drm.md)

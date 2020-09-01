@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: db3bfddd3376a013cc8921f9e0b94bd30bfe041f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b18218515e4fbd9886317e116c76186b8372392c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181527"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267547"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -29,7 +29,7 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 
 * [B sorozat](../sizes-b-series-burstable.md)
 * [DCsv2 sorozat](../dcv2-series.md)
-* [DSv2-sorozat](../dv2-dsv2-series.md) 
+* [Dsv2 sorozat](../dv2-dsv2-series.md) 
 * [Dsv3-sorozat](../dv3-dsv3-series.md)
 * [Dsv4 sorozat](../dv4-dsv4-series.md)
 * [Ddsv4 sorozat](../ddv4-ddsv4-series.md)
@@ -83,7 +83,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. generációs, 2. generációs funkciók
 
-| Szolgáltatás | 1. generációs | 2. generációs |
+| Funkció | 1. generációs | 2. generációs |
 |---------|--------------|--------------|
 | Indítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |

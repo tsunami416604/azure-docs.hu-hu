@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 8394ddbc4247eb992532fb11d06d8f5432edd1c7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89084112"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268125"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-device"></a>Kubernetes hálózatkezelés az Azure Stack Edge-eszközön
+# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Kubernetes hálózatkezelés a Azure Stack Edge GPU-eszközön
 
 A Azure Stack Edge-eszközön létrejön egy Kubernetes-fürt a számítási szerepkör konfigurálásakor. A Kubernetes-fürt létrehozása után a tároló alkalmazások a Kubernetes-fürtön helyezhetők üzembe a hüvelyben. A Kubernetes-fürtben a hüvelyek esetében különböző módokat használhat a hálózatkezeléshez. 
 
@@ -78,7 +78,7 @@ Az IP-cím hozzárendelése a következőhöz:
 - **Kubernetes külső szolgáltatás IP**-címei: ez az IP-címtartomány a Kubernetes-fürtön kívül elérhető külső szolgáltatásokhoz (más néven a Load Balancer szolgáltatásokhoz) használatos.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Kubernetes hálózatkezelésének konfigurálása az Azure Stack Edge-ben:
 

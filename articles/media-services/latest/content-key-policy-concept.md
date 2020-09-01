@@ -3,23 +3,25 @@ title: A tartalmi kulcs házirendjei a Media Services-ban – Azure | Microsoft 
 description: Ez a cikk magyarázatot nyújt a tartalmi kulcsokra vonatkozó házirendekről, valamint arról, hogy a Azure Media Services hogyan használják őket.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/26/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 49226ba703e8ade963b368616102db035b3c07ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6d907e987cb57836997cab43e9bfa9e919bf67d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092065"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268288"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. 
 

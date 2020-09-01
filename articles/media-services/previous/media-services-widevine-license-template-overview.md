@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9f583e7956cba0de06e5b3277bfea13c463019d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171975"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266493"
 ---
-# <a name="widevine-license-template-overview"></a>A Widevine-licenc sablonjának áttekintése 
+# <a name="widevine-license-template-overview"></a>A Widevine-licenc sablonjának áttekintése
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 A Azure Media Services használatával konfigurálhatja és kérheti a Google Widevine-licenceket. Ha a lejátszó megpróbálja lejátszani a Widevine-védelemmel ellátott tartalmat, a rendszer egy kérelmet küld a licenc kézbesítési szolgáltatásnak a licenc beszerzéséhez. Ha a licencelési szolgáltatás jóváhagyja a kérelmet, a szolgáltatás kiadja a licencet. A rendszer elküldi az ügyfélnek, és a megadott tartalom visszafejtésére és lejátszására szolgál.
 
 A Widevine-licencszerződés JSON-üzenetként van formázva.  
@@ -61,7 +64,7 @@ A Widevine-licencszerződés JSON-üzenetként van formázva.
 ```
 
 ## <a name="json-message"></a>JSON-üzenet
-| Név | Érték | Leírás |
+| Name | Érték | Leírás |
 | --- | --- | --- |
 | payload |Base64 kódolású karakterlánc |Az ügyfél által eljuttatott licencelési kérelem. |
 | content_id |Base64 kódolású karakterlánc |Az egyes content_key_specshoz tartozó kulcs-azonosító és a tartalmi kulcs származtatása céljából használt azonosító. track_type. |
@@ -79,7 +82,7 @@ Ha már létezik egy meglévő házirend, nem kell megadnia a tartalmi kulcs spe
 
 Minden content_key_specs értéket meg kell adni az összes pályán, a use_policy_overrides_exclusively lehetőségtől függetlenül. 
 
-| Név | Érték | Leírás |
+| Name | Érték | Leírás |
 | --- | --- | --- |
 | content_key_specs. track_type |sztring |A követési típus neve. Ha content_key_specs van megadva a licencelési kérelemben, ügyeljen arra, hogy explicit módon adja meg az összes nyomkövetési típust. Ennek elmulasztása miatt nem sikerült lejátszani az elmúlt 10 másodpercet. |
 | content_key_specs  <br/> security_level |UInt32 |Meghatározza a lejátszáshoz szükséges ügyfél-megbízhatósági követelményeket. <br/> – A szoftveres alapú, fehér dobozos titkosítás szükséges. <br/> – A szoftveres titkosítás és a megzavarodott dekóder szükséges. <br/> – A kulcsfontosságú anyagokat és titkosítási műveleteket egy hardveres megbízható végrehajtási környezetben kell végrehajtani. <br/> – A tartalom titkosítását és visszafejtését hardveres megbízható végrehajtási környezetben kell végrehajtani.  <br/> – A titkosítást, a dekódolást és az adathordozó összes kezelését (tömörített és tömörítetlen) a hardveres megbízhatóságú végrehajtási környezetben kell kezelni. |
@@ -88,7 +91,7 @@ Minden content_key_specs értéket meg kell adni az összes pályán, a use_poli
 | content_key_specs. key_id |Base64 kódolású karakterlánc, bináris, 16 bájt |A kulcs egyedi azonosítója. |
 
 ## <a name="policy-overrides"></a>Szabályzat felülbírálásai
-| Név | Érték | Leírás |
+| Name | Érték | Leírás |
 | --- | --- | --- |
 | policy_overrides. can_play |Boolean, True vagy FALSE |Azt jelzi, hogy a tartalom lejátszása engedélyezett. Az alapértelmezett érték a false (hamis). |
 | policy_overrides. can_persist |Boolean, True vagy FALSE |Azt jelzi, hogy a licenc az offline használat érdekében nem felejtő tárolóban maradhat. Az alapértelmezett érték a false (hamis). |
@@ -103,7 +106,7 @@ Minden content_key_specs értéket meg kell adni az összes pályán, a use_poli
 | policy_overrides. renew_with_usage |Boolean, True vagy FALSE |Azt jelzi, hogy a rendszer a használat megkezdése után elküldi a licencet a megújításhoz. Ez a mező csak akkor használható, ha a can_renew értéke igaz. |
 
 ## <a name="session-initialization"></a>Munkamenet inicializálása
-| Név | Érték | Leírás |
+| Name | Érték | Leírás |
 | --- | --- | --- |
 | provider_session_token |Base64 kódolású karakterlánc |Ezt a munkamenet-jogkivonatot visszaadja a licenc, és a későbbi megújításokban van. A munkamenet-jogkivonat nem marad meg a munkameneteken kívül. |
 | provider_client_token |Base64 kódolású karakterlánc |Az ügyfél jogkivonata, amelyet vissza kell küldenie a licencelési válaszban. Ha a licencszerződés tartalmaz egy ügyfél-jogkivonatot, a rendszer figyelmen kívül hagyja ezt az értéket. Az ügyfél-jogkivonat a licencelési munkameneteken kívül is fennáll. |

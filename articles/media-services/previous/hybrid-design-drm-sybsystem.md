@@ -12,17 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: ce2fbe8c706870250973974c7a73a3964dedd04a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831889"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266901"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése 
+# <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Ez a témakör a DRM-alrendszer (k) hibrid kialakítását ismerteti Azure Media Services használatával.
 
@@ -107,35 +109,35 @@ A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében
 
 ### <a name="sample-1"></a>1. példa
 
-* Forrás (alap) URL-címe:`https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
-* PlayReady-LA_URL (kötőjel & Smooth):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
-* Widevine LA_URL (kötőjel):`https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
-* FairPlay LA_URL (HLS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
+* Forrás (alap) URL-címe: `https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady-LA_URL (kötőjel & Smooth): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Widevine LA_URL (kötőjel): `https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay LA_URL (HLS): `https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>2. példa
 
-* Forrás (alap) URL-címe:https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady-LA_URL (kötőjel & Smooth):`http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
+* Forrás (alap) URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* PlayReady-LA_URL (kötőjel & Smooth): `http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>3. példa
 
-* Forrás URL-címe:https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady-LA_URL (kötőjel & Smooth):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Forrás URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
+* PlayReady-LA_URL (kötőjel & Smooth): `https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>4. példa
 
-* Forrás URL-címe:https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady-LA_URL (kötőjel & Smooth):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
+* Forrás URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
+* PlayReady-LA_URL (kötőjel & Smooth): `https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
 
 ## <a name="additional-notes"></a>További megjegyzések
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Összefoglalva, Azure Media Services DRM-összetevők rugalmasak, a jelen témakörben leírtaknak megfelelően a tartalom és az eszköz kézbesítési szabályzatának megfelelő konfigurálásával hibrid forgatókönyvekben is használhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtekintheti Media Services képzési útvonalakat.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

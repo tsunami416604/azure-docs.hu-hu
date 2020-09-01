@@ -3,22 +3,24 @@ title: Media Services eseményekhez Azure Event Grid sémák
 description: A Media Services eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f7c9f3b000973868c003477e58de14634b139cae
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393732"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267666"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services eseményekhez Azure Event Grid sémák
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk a Media Services események sémáit és tulajdonságait ismerteti.
 
@@ -137,7 +139,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | previousState | sztring | A feladattípus állapota az esemény előtt. |
-| state | sztring | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
+| állapot | sztring | Az eseményben szereplő feladatok új állapota. Például "ütemezett: a művelet készen áll a kezdésre" vagy "kész: a művelet befejeződött".|
 
 Ahol a feladat állapota lehet a következő értékek egyike: *várólista*, *ütemezett*, *feldolgozás*, *befejezett*, *hiba*, *megszakított*, *megszakítás*
 
@@ -609,7 +611,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | discontinuityCount | egész szám | Az elmúlt 20 másodpercben megfigyelt megszakítások száma. |
 | nonIncreasingCount | egész szám | A múltban az időbélyegzővel rendelkező adattömbök száma az elmúlt 20 másodpercben érkezett. |
 | unexpectedBitrate | logikai | Ha a várt érték és a tényleges bitsebességek az elmúlt 20 másodpercben több mint megengedett korláttal térnek el egymástól. Igaz, ha és csak akkor, ha incomingBitrate >= 2 * bitráta vagy incomingBitrate <= bitráta/2 vagy IncomingBitrate = 0. |
-| state | sztring | Az élő esemény állapota. |
+| állapot | sztring | Az élő esemény állapota. |
 | kifogástalan | logikai | Azt jelzi, hogy a betöltés kifogástalan állapotú-e a számok és a jelzők alapján. Az kifogástalan állapot akkor igaz, ha overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -662,7 +664,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. Például: "Microsoft. Media. JobStateChange". |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | Media Services az eseményekre vonatkozó adatgyűjtést. |
+| adatok | object | Media Services az eseményekre vonatkozó adatgyűjtést. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -670,7 +672,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 [Regisztrálja a feladatok állapotának változási eseményeit](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
