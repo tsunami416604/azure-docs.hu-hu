@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252780"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269556"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése
 
@@ -29,20 +29,20 @@ A megoldás üzembe helyezése előtt válasszon ki egy profilt. Egyszerre több
 > [!NOTE]
 > Igény szerint alkalmazza a profilok bármelyikét. A másik profilba való áthelyezéshez rendeljen hozzá Microsoft Intune.
 
-| Profil | Alacsony | Továbbfejlesztett | Magasság | Specializált | Biztosított | Elkülönített |
+| Profil | Alacsony | Továbbfejlesztett | Magas | Specializált | Biztosított | Izolált |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Felhasználó az Azure AD-ben | Igen | Igen | Igen | Igen | Igen | Igen |
 | Intune által felügyelt | Igen | Igen | Igen | Igen | Igen | Igen |
-| Eszköz – Azure AD regisztrálva | Yes |  |  |  |  | |   |
+| Eszköz – Azure AD regisztrálva | Igen |  |  |  |  | |   |
 | Eszköz – Azure AD-hez csatlakoztatott |   | Igen | Igen | Igen | Igen | Igen |
-| Az Intune biztonsági alapterve alkalmazva |   | Yes <br> Bővített | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Biztosított | NA |
+| Az Intune biztonsági alapterve alkalmazva |   | Igen <br> Bővített | Igen <br> (HighSecurity) | Igen <br> (NCSC) | Igen <br> Biztosított | NA |
 | A hardver megfelel a biztonságos Windows 10-es szabványoknak |   | Igen | Igen | Igen | Igen | Igen |
 | Microsoft Defender ATP engedélyezve |   | Igen  | Igen | Igen | Igen | Igen |
 | Rendszergazdai jogosultságok eltávolítása |   |   | Igen  | Igen | Igen | Igen |
 | Üzembe helyezés a Microsoft Autopilot használatával |   |   | Igen  | Igen | Igen | Igen |
 | Csak az Intune által telepített alkalmazások |   |   |   | Igen | Igen |Igen |
 | Jóváhagyott listára korlátozott URL-címek |   |   |   | Igen | Igen |Igen |
-| Internet Letiltva (bejövő/kimenő) |   |   |   |  |  |Yes |
+| Internet Letiltva (bejövő/kimenő) |   |   |   |  |  |Igen |
 
 > [!NOTE]
 > A Secure Workstation Orientációs **eszközei** a profilokhoz és a házirendekhez lesznek hozzárendelve. A felhasználók nem alkalmazhatják közvetlenül rájuk a szabályzatokat, így az eszközök megosztása (megosztott eszközök) érvénybe lép. Ha egy biztonságos munkaállomás nincs megosztva az üzemelő példányban, vagy egyéni felhasználói házirendekre van szükség, a felhasználói házirend-profilok hozzárendelése a felhasználóhoz és az eszközhöz is hozzárendelhető. 
@@ -84,7 +84,7 @@ A Azure Portal keresse meg **Azure Active Directory**  >  **csoportok**  >  **ú
    * **Csoportnév** – biztonságos munkaállomás-felhasználók
    * **Tagság típusa** – hozzárendelve
 
-1. Adja hozzá a biztonságos munkaállomás rendszergazda felhasználóját:`secure-ws-admin@identityitpro.com`
+1. Adja hozzá a biztonságos munkaállomás rendszergazda felhasználóját: `secure-ws-admin@identityitpro.com`
 1. Hozzáadhat más felhasználókat is, akik a biztonságos munkaállomásokat kezelik.
 1. Válassza a **Létrehozás** lehetőséget.
 1. A munkaállomás-eszközök csoportban adja meg a következőt:
@@ -101,21 +101,21 @@ A Azure Portal keresse meg **Azure Active Directory**  >  **csoportok**  >  **ú
 
 Konfigurálja úgy a Active Directory eszközök beállítását, hogy a rendszergazdai biztonsági csoport az eszközök tartományhoz való csatlakoztatását engedélyezze. A beállítás konfigurálása a Azure Portal:
 
-1. Lépjen **Azure Active Directory**  >  **eszközök**  >  **eszközbeállítások menüpontra**.
+1. Nyissa meg az **Azure Active Directory** > **Eszközök** > **Eszközbeállítások** panelt.
 1. Ha a felhasználók lehetőségre van **kiválasztva** , **csatlakozhatnak az eszközökhöz az Azure ad**-ben, majd a "biztonságos munkaállomás-felhasználók" csoportot.
 
 #### <a name="removal-of-local-admin-rights"></a>Helyi rendszergazdai jogosultságok eltávolítása
 
 Ehhez a módszerhez az szükséges, hogy a VIP-, DevOps-és biztonságos munkaállomások felhasználói ne rendelkezzenek rendszergazdai jogokkal a gépen. A beállítás konfigurálása a Azure Portal:
 
-1. Lépjen **Azure Active Directory**  >  **eszközök**  >  **eszközbeállítások menüpontra**.
+1. Nyissa meg az **Azure Active Directory** > **Eszközök** > **Eszközbeállítások** panelt.
 1. Válassza a **nincs** lehetőséget **a további helyi rendszergazdák területen az Azure ad-hez csatlakoztatott eszközökön**.
 
 #### <a name="require-multi-factor-authentication-to-join-devices"></a>Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához
 
 Az eszközök Azure AD-hez való csatlakoztatásának további megerősítése:
 
-1. Lépjen **Azure Active Directory**  >  **eszközök**  >  **eszközbeállítások menüpontra**.
+1. Nyissa meg az **Azure Active Directory** > **Eszközök** > **Eszközbeállítások** panelt.
 1. Válassza az **Igen** lehetőséget a **többtényezős hitelesítés megkövetelése az eszközökhöz való csatlakozáshoz**.
 1. Kattintson a **Mentés** gombra.
 
@@ -160,19 +160,19 @@ Az Intune-ban a Azure Portalban:
    * Leírás – **biztonságos munkaállomások üzembe helyezése**.
    * Állítsa a **Minden megcélzott eszköz átalakítása az Autopilotra** beállítást **Igen** értékre. Ez a beállítás biztosítja, hogy a listában lévő összes eszköz regisztrálva legyen az Autopilot üzembehelyezési szolgáltatásban. A regisztráció feldolgozása 48 órát is igénybe vehet.
 
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 
    * Az **üzembe helyezési mód**beállításnál válassza a **saját üzembe helyezés (előzetes verzió)** lehetőséget. Az ezzel a profillal rendelkező eszközök az eszközt regisztráló felhasználóhoz vannak társítva. Az eszköz regisztrálásához felhasználói hitelesítő adatokra van szükség. Fontos megjegyezni, hogy az eszközök **Öntelepítési** módban való üzembe helyezése lehetővé teszi a laptopok közös modellben való üzembe helyezését. A felhasználói hozzárendelés addig nem történik meg, amíg az eszköz első alkalommal nem lesz hozzárendelve a felhasználóhoz. Ennek eredményeképpen minden olyan felhasználói házirend, például a BitLocker nem lesz engedélyezve, amíg a felhasználó-hozzárendelés be nem fejeződik. A biztonságos eszközökre való bejelentkezéssel kapcsolatos további információkért lásd a [kiválasztott profilok](/intune/device-profile-assign)című témakört.
    * Az Azure AD-hez való **csatlakozáshoz** a box-ban be kell mutatni az **Azure ad** -t, és szürkén kell kinéznie.
    * Válassza ki a nyelvet (régió), a felhasználói fiók típusát **standard**értéket. 
 
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 
    * Válassza ki a hatókör címkét, ha előre konfigurált egyet.
 
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 1. Válassza **Assignments**ki  >  a kijelölt csoportokhoz**hozzárendelni kívánt**hozzárendeléseket  >  **Selected Groups**. A **felvenni kívánt csoportok kiválasztása**területen válassza a **biztonságos munkaállomások**lehetőséget.
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 1. Válassza a **Létrehozás** gombot a profil létrehozásához. Az AutoPilot üzembehelyezési profil most már hozzárendelhető az eszközökhöz.
 
 Az Autopilot eszköz regisztrálása egy másik felhasználói élményt nyújt az eszköz típusától és szerepköreitől függően. Az üzembe helyezési példában egy olyan modellt mutatunk be, amelyben a biztonságos eszközök tömeges üzembe helyezhetők, és megoszthatók, de ha első alkalommal használják, az eszköz hozzá van rendelve egy felhasználóhoz. További információ: az [Intune Autopilot-eszközök regisztrációja](/intune/device-enrollment).
@@ -238,7 +238,7 @@ A megoldás megerősítésének sikeres befejezéséhez töltse le és hajtsa v�
 | Speciális megfelelőség * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
 | Biztosított | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
 
-\*A speciális megfelelőség egy olyan parancsfájl, amely kikényszeríti a NCSC Windows10 SecurityBaseline megadott speciális konfigurációt.
+\* A speciális megfelelőség egy olyan parancsfájl, amely kikényszeríti a NCSC Windows10 SecurityBaseline megadott speciális konfigurációt.
 
 A szkript sikeres végrehajtása után frissítheti a profilokat és a szabályzatokat az Intune-ban. A továbbfejlesztett és biztonságos profilok parancsfájljai szabályzatokat és profilokat hoznak létre Önnek, de hozzá kell rendelnie a szabályzatot a **biztonságos munkaállomások** csoportjához.
 
@@ -291,7 +291,7 @@ Bizonyos helyzetekben a biztonságos munkaállomáson olyan alkalmazások szüks
 1. Az **alkalmazás típusa** **területen válassza az üzletági lehetőséget**.
 1. Az **alkalmazáscsomag fájl**területen válassza ki a `GoogleChromeStandaloneEnterprise64.msi` fájlt a kibontott helyről, és kattintson az **OK gombra**.
 1. Az **alkalmazásadatok területen adja**meg a leírást és a közzétevőt. Válassza az **OK** lehetőséget.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A **hozzárendelések** lapon válassza a **rendelkezésre álló lehetőséget a regisztrált eszközökhöz** a **hozzárendelés típusa**alatt.
 1. A **befoglalt csoportok**területen adja hozzá a **biztonságos munkaállomások** csoportot.
 1. Válassza **az OK**, majd a **Mentés**lehetőséget.
@@ -393,7 +393,7 @@ A Sentinel monitorozásához az szükséges, hogy az összekötők az adatforrá
    * **Erőforráscsoport** – válassza az * * új * * > biztonságos munkaállomás RG > **OK**
    * **Hely** – válassza ki az üzemelő példányhoz legjobban illeszkedő helyet
    * **Egységár** – válasszon **GB-onként (2018)**
-1. Kattintson **az OK gombra**.
+1. Kattintson az **OK** gombra.
 
 Ezután az elérhető biztonságos munkaállomás-adatforrásokat a figyeléshez fogjuk kapcsolni.
 
@@ -443,15 +443,15 @@ Ezután be kell állítania Log Analytics az új naplók fogadásához
    * "Microsoft-Windows-AppLocker/MSI és script" > a **tájékoztató** kijelölésének kiválasztása
    * "Microsoft-Windows-AppLocker/csomagolt alkalmazás – központi telepítés" **> kijelölésének** kikapcsolása
    * "Microsoft-Windows-AppLocker/csomagolt alkalmazás – végrehajtás" **> kijelölésének** kikapcsolása
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Mentés** lehetőséget
 
 Az alkalmazás naplózása a kiválasztott Log Analytics munkaterületen lesz elérhető.
 
 ## <a name="monitoring"></a>Figyelés
 
-* Ismerje meg, hogyan [derítheti fel a fenyegetéseket az Azure Sentinel](/azure/sentinel/tutorial-detect-threats) használatával
-* [Incidensek vizsgálata az Azure Sentineltel](/azure/sentinel/tutorial-investigate-cases)
-* [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](/azure/sentinel/tutorial-respond-threats-playbook)
+* Ismerje meg, hogyan [derítheti fel a fenyegetéseket az Azure Sentinel](../../sentinel/tutorial-detect-threats-built-in.md) használatával
+* [Incidensek vizsgálata az Azure Sentineltel](../../sentinel/tutorial-investigate-cases.md)
+* [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](../../sentinel/tutorial-respond-threats-playbook.md)
 * Az [expozíciós pontszám](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) áttekintésének ismertetése
 * [Biztonsági javaslat](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation) áttekintése
 * Biztonsági [szervizelések](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) kezelése
@@ -463,4 +463,4 @@ Az alkalmazás naplózása a kiválasztott Log Analytics munkaterületen lesz el
 * További információ a [Microsoft Intuneról](/intune/index).
 * Az [Azure ad](../index.yml)megismerése.
 * A [Microsoft Defender komplex veszélyforrások elleni védelem](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) használata
-* Az [Azure Sentinel](/azure/sentinel/) felderítése
+* Az [Azure Sentinel](../../sentinel/index.yml) felderítése

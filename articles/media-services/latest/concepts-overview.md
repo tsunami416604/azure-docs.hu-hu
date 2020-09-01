@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Ismerkedjen meg a Azure Media Services terminológiával és fogalmakkal.
 services: media-servicesgit
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/18/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5f0436394d6d45e8a8e112cc59bc7be50356ce10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 895e29608a9f0d80b8e03c3bc95c3c74005f7c4c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092099"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269709"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminológia és fogalmak
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a témakör rövid áttekintést nyújt Azure Media Services terminológiáról és fogalmakról. A cikk a cikkekre mutató hivatkozásokat is tartalmaz, amelyek részletesen ismertetik a Media Services v3 fogalmakat és funkciókat.
 
@@ -34,14 +36,14 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 terminológia
 
-|Kifejezés|Leírás|
+|Időszak|Leírás|
 |---|---|
 |Élő esemény|Egy **élő esemény** a betöltéshez, az átkódoláshoz (opcionálisan) és a videó-, hang-és valós idejű metaadatokból álló élő streamek csomagolásához szükséges folyamatokat jelöli.<br/><br/>Media Services v2 API-kból áttelepítést igénylő ügyfelek esetében az **élő esemény** a **Channel** entitást a v2-ben váltja fel. További információ: [Migrálás v2-ről v3](migrate-from-v2-to-v3.md)-ra.|
 |Folyamatos átviteli végpont/csomagolás/forrás|A **folyamatos átviteli végpontok** egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelentenek, amely az élő és igény szerinti tartalmat közvetlenül az ügyfél-lejátszó alkalmazásnak kézbesíti. A szolgáltatás a Common Streaming Media protokollok (HLS vagy DASH) egyikét használja. Emellett az adatfolyam- **végpont** dinamikus (igény szerinti) titkosítást biztosít az iparági vezető digitális jogkezelési rendszerek (DRMs) számára.<br/><br/>A Media Streaming Industry szolgáltatásban ezt a szolgáltatást általában **csomagolónak** vagy **forrásnak**nevezzük.  Az iparág egyéb általános használati feltételei közé tartozik például a JITP (Just-in-time-becsomagolás) vagy a JITE (Just-in-time-Encryption).
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 fogalmak
 
-|Fogalmak|Description|Hivatkozások|
+|Alapelvek|Leírás|Hivatkozások|
 |---|---|---|
 |Eszközök és tartalom feltöltése|Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a digitális fájlokat az **eszközökbe**.|[Felhőbe történő feltöltés és tárolás](storage-account-concept.md)<br/><br/>[Eszközök koncepciója](assets-concept.md)|
 |Tartalom kódolása|Miután feltölti a kiváló minőségű digitális médiafájlokat az eszközökbe, kódolhatja azokat formátumokba, amelyek számos böngészőben és eszközön játszhatók le. <br/><br/>Az Media Services v3 kódoláshoz **átalakításokat** és **feladatokat**kell létrehoznia.|[Átalakítások és feladatok](transforms-jobs-concept.md)<br/><br/>[Kódolás Media Services](encoding-concept.md)|

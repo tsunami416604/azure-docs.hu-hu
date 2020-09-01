@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 7dd81afb3189055c194b8a94b4bcbdf48f85d6f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658529"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269641"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Gyors útmutató: adatmegosztás az Azure-adatmegosztás használatával a Azure Portal
 
@@ -41,13 +41,13 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
    | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
    | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
    | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-   | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+   | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe.
 
 1. Ha a telepítés befejeződött, válassza az **Ugrás erőforráshoz**lehetőséget.
 
-## <a name="create-a-data-share"></a>Adatmegosztás létrehozása
+## <a name="create-a-share"></a>Megosztás létrehozása
 
 1. Navigáljon az adatmegosztás áttekintő oldalára.
 
@@ -55,17 +55,17 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza **az adatmegosztás megkezdése**lehetőséget.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-1. Adja meg az adatmegosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
+1. Adja meg a megosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
 
    ![EnterShareDetails](./media/enter-share-details.png "Adja meg a megosztás részleteit") 
 
 1. Válassza a **Folytatás**lehetőséget.
 
-1. Az adatkészletek adatmegosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása**elemet. 
+1. Az adatkészletek megosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása**elemet. 
 
-   ![Adatkészletek](./media/datasets.png "Adathalmazok")
+   ![Adatkészletek hozzáadása a megosztáshoz](./media/datasets.png "Adathalmazok")
 
 1. Válassza ki a hozzáadni kívánt adatkészlet típusát. Az adathalmazok eltérő listáját fogja látni az előző lépésben kiválasztott megosztási típustól (pillanatkép vagy helyben) függően. Ha Azure SQL Database vagy Azure SQL Data Warehouse használatával oszt meg megosztást, a rendszer kérni fog néhány SQL-hitelesítő adatot. A hitelesítést az előfeltételek részeként létrehozott felhasználó használatával végezheti el.
 
@@ -89,7 +89,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza a **Folytatás**lehetőséget.
 
-1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** gombra.
+1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Válassza a **Létrehozás** lehetőséget.
 
 Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására.
 

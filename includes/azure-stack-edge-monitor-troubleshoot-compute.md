@@ -2,16 +2,51 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 08/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 350d41980e3128a8747a673ebea82afbe4fab49b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313225"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89272184"
 ---
-Egy olyan Azure Stack Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, a modulok figyeléséhez vagy a hibák megoldásához a Docker-parancsok egy részhalmaza érhető el. Az elérhető parancsok listájának megtekintéséhez [kapcsolódjon a PowerShell-felülethez](#connect-to-the-powershell-interface) , és használja a `dkrdbe` függvényt.
+Egy olyan Azure Stack Edge-eszközön, amelyen a számítási szerepkör konfigurálva van, két különböző parancs használatával elháríthatja vagy figyelheti az eszközt.
+
+- `iotedge`Parancsok használata. Ezek a parancsok alapszintű műveletekhez érhetők el az eszközön.
+- `dkrdbe`Parancsok használata. Ezek a parancsok az eszközhöz tartozó műveletek széles köréhez érhetők el.
+
+A fenti parancsok egyikének végrehajtásához [kapcsolódnia kell a PowerShell felületéhez](#connect-to-the-powershell-interface).
+
+### <a name="use-iotedge-commands"></a>`iotedge`Parancsok használata
+
+Az elérhető parancsok listájának megtekintéséhez [kapcsolódjon a PowerShell-felülethez](#connect-to-the-powershell-interface) , és használja a `iotedge` függvényt.
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                                                                                                 Usage: iotedge COMMAND
+
+Commands:
+   check
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `iotedge` :
+
+|command  |Leírás |
+|---------|---------|
+|`check`     | A gyakori konfigurációs és kapcsolódási problémák automatikus ellenőrzésének elvégzése       |
+|`list`     | Modulok listázása         |
+|`logs`     | Modul naplóinak beolvasása        |
+|`restart`     | Modul leállítása és újraindítása         |
+
+
+### <a name="use-dkrdbe-commands"></a>`dkrdbe`Parancsok használata
+
+Az elérhető parancsok listájának megtekintéséhez [kapcsolódjon a PowerShell-felülethez](#connect-to-the-powershell-interface) , és használja a `dkrdbe` függvényt.
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -37,9 +72,9 @@ Commands:
 ```
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `dkrdbe` :
 
-|command  |Description |
+|command  |Leírás |
 |---------|---------|
-|`image`     | Lemezképek kezelése. A nem használt képek eltávolításához használja a következőt:`dkrdbe image prune -a -f`       |
+|`image`     | Lemezképek kezelése. A nem használt képek eltávolításához használja a következőt: `dkrdbe image prune -a -f`       |
 |`images`     | Lemezképek listázása         |
 |`inspect`     | Alacsony szintű információk visszaadása a Docker-objektumokon         |
 |`login`     | Bejelentkezés Docker-beállításjegyzékbe         |
@@ -89,14 +124,14 @@ Az összes tároló (beleértve a szüneteltetett is) listájának lekéréséhe
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
 CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
 [10.100.10.10]: PS>
 ```
 
-Ha hiba történt a tároló rendszerképének létrehozásakor vagy a rendszerkép húzása közben, futtassa a parancsot `logs edgeAgent` .  `EdgeAgent`a IoT Edge futtatókörnyezet tárolója, amely más tárolók kiépítési feladata.
+Ha hiba történt a tároló rendszerképének létrehozásakor vagy a rendszerkép húzása közben, futtassa a parancsot `logs edgeAgent` .  `EdgeAgent` a IoT Edge futtatókörnyezet tárolója, amely más tárolók kiépítési feladata.
 
 Mivel a `logs edgeAgent` rendszer az összes naplót kiírja, jó módszer a legutóbbi hibák megtekintésére, ha a kapcsolót használja `--tail 20` .
 
@@ -127,10 +162,10 @@ Egy adott tároló naplóinak lekéréséhez először sorolja fel a tárolót, 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
     CONTAINER ID        IMAGE                                                COMMAND                   CREATED             STATUS              PORTS                                                                  NAMES
-    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  movefile
-    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ&euro;¦"    2 days ago          Up 2 days                                                                                  filemove
-    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
-    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â&euro;¦"   2 days ago          Up 2 days                                                                                  edgeAgent
+    d99e2f91d9a8        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  movefile
+    0a06f6d605e9        edgecompute.azurecr.io/filemovemodule2:0.0.1-amd64   "dotnet FileMoveModuâ€¦"    2 days ago          Up 2 days                                                                                  filemove
+    2f8a36e629db        mcr.microsoft.com/azureiotedge-hub:1.0               "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days           0.0.0.0:443->443/tcp, 0.0.0.0:5671->5671/tcp, 0.0.0.0:8883->8883/tcp   edgeHub
+    acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
 3. Jegyezze fel annak a tárolónak az AZONOSÍTÓját, amelyhez a naplók szükségesek.

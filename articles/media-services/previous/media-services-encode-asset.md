@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: ef558b9339fe1d4525156cf58efe5056862de0a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052744"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269080"
 ---
-# <a name="overview-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak áttekintése 
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak áttekintése
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
@@ -60,7 +62,7 @@ A kódolók bemeneti metaadatait [itt](media-services-input-metadata-schema.md)m
 A kódoló kimeneti metaadatait [itt](media-services-output-metadata-schema.md)mutatjuk be.
 
 ### <a name="generate-thumbnails"></a>Miniatűrök létrehozása
-További információ: [miniatűrök készítése a Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#thumbnails).
+További információ: [miniatűrök készítése a Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md).
 
 ### <a name="trim-videos-clipping"></a>Videók körülvágása (vágás)
 További információ: [videók körülvágása Media Encoder standard használatával](media-services-advanced-encoding-with-mes.md#trim_video).

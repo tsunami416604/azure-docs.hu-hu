@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/19/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bbdfaea30ab9aa221a0e70eb32e8d040a0fed54
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cbbe4dbb7c7db0ca17a9ddddf5016bdc52b9e93d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019173"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269352"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken az Azure-erőforrásokhoz a PowerShell használatával
 
@@ -44,7 +44,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti és tilthatja le a rend
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>A rendszer által hozzárendelt felügyelt identitás engedélyezése egy Azure-beli virtuális gép létrehozásakor
 
-Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van a rendszerhez rendelt felügyelt identitás, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van a rendszerhez rendelt felügyelt identitás, a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Tekintse át a következő Azure-beli VM-gyors útmutatókat, csak a szükséges részeket ("Bejelentkezés az Azure-ba", "erőforráscsoport létrehozása", "hálózatkezelési csoport létrehozása", "Create The VM").
 
@@ -61,7 +61,7 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Rendszerhez rendelt felügyelt identitás engedélyezése meglévő Azure-beli virtuális gépen
 
-Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárendelt felügyelt identitást, amelyet eredetileg anélkül osztott ki, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkörének hozzárendelésére.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárendelt felügyelt identitást, amelyet eredetileg anélkül osztott ki, a fióknak szüksége van a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkörének hozzárendelésére.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
@@ -108,7 +108,7 @@ Miután engedélyezte a rendszerhez rendelt identitást egy virtuális gépen, f
 
 ## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Rendszer által hozzárendelt felügyelt identitás letiltása egy Azure-beli virtuális gépről
 
-Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuális gépen, a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 Ha olyan virtuális géppel rendelkezik, amelyhez már nincs szükség a rendszerhez rendelt felügyelt identitásra, de továbbra is felhasználó által hozzárendelt felügyelt identitásokra van szükség, használja a következő parancsmagot:
 
@@ -140,7 +140,7 @@ Ebből a szakaszból megtudhatja, hogyan adhat hozzá és távolíthat el egy fe
 
 ### <a name="assign-a-user-assigned-managed-identity-to-a-vm-during-creation"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése virtuális géphez a létrehozás során
 
-Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) és [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Tekintse át a következő Azure-beli VM-gyors útmutatókat, csak a szükséges részeket ("Bejelentkezés az Azure-ba", "erőforráscsoport létrehozása", "hálózatkezelési csoport létrehozása", "Create The VM").
 
@@ -157,7 +157,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése meglévő Azure-beli virtuális géphez
 
-Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
+Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) és [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` . Használjon olyan fiókot, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
@@ -187,7 +187,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása Azure-beli virtuális gépről
 
-A felhasználó által hozzárendelt identitás egy virtuális géphez való eltávolításához a fióknak szüksége van a [virtuálisgép-közreműködő](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelésre.
+A felhasználó által hozzárendelt identitás egy virtuális géphez való eltávolításához a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.
 
 Ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van, az alábbi parancsokkal távolíthatja el az összeset, de az utolsót is. Ne felejtse el a `<RESOURCE GROUP>` és `<VM NAME>` paraméterek értékeit a saját értékeire cserélni. A a `<USER ASSIGNED IDENTITY NAME>` felhasználó által hozzárendelt felügyelt identitás Name tulajdonsága, amely a virtuális gépen marad. Ez az információ a virtuálisgép-objektum tulajdonságának lekérdezésével érhető el `Identity` .  Például `$vm.Identity` :
 
@@ -208,7 +208,7 @@ $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:

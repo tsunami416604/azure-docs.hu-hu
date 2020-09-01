@@ -14,14 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bb94703a78cd2c025efc1f3c6c16e296fece206e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559999"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269624"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>A helyszíni kódolók többszörös átviteli sebességű streamjét fogadó csatornák használata
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > A 2018. május 12. után az élő csatornák már nem támogatják az RTP/MPEG-2 Transport stream betöltési protokollt. Telepítse át a következőt: RTP/MPEG-2 – RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollok.
@@ -141,7 +143,7 @@ Megadhatja azokat az IP-címeket, amelyek számára engedélyezett a videó köz
 Ha nincs megadva IP-cím, és nincs szabály definíciója, akkor nem engedélyezett az IP-cím. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 
 ### <a name="channel-preview"></a>Csatorna előnézete
-#### <a name="preview-urls"></a>Előzetes verziójú URL-címek
+#### <a name="preview-urls"></a>Előnézeti URL-címek
 A csatornák olyan előzetes verziójú végpontot (előzetes verziójú URL-címet) biztosítanak, amelyet a további feldolgozás és a továbbítás előtt a stream előzetes verziójának megtekintéséhez és ellenőrzéséhez használ.
 
 A csatorna létrehozásakor az előnézeti URL-címet is beolvashatja. Az URL-cím lekéréséhez a csatornának nem kell **futó** állapotban lennie. Miután a csatorna elkezdi az adatfeldolgozást, megtekintheti az adatfolyamot.
@@ -187,9 +189,9 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
 | **Indítás** |**Indítás** |Nem (átmeneti állapot) |
-| **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Yes |
+| **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |
 | **Leállítás** |**Leállítás** |Nem (átmeneti állapot) |
-| **Leállítva** |**Leállítva** |No |
+| **Leállítva** |**Leállítva** |Nem |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Kódolt feliratok és ad-Beszúrás
 Az alábbi táblázat a kódolt feliratozás és az ad-Beszúrás támogatott szabványait mutatja be.

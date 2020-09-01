@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d3142547babb780de7a442667fd3472a4ffdc0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 70296dce5b9dcac738c17a4f2388a7eb37abd66f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021544"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269335"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuálisgép-méretezési csoportokban a PowerShell használatával
 
@@ -43,9 +43,9 @@ Ebben a cikkben a PowerShell használatával megtudhatja, hogyan hajthatja végr
     > [!NOTE]
     > Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-    - Virtuálisgép-méretezési csoport létrehozásához és a rendszer által hozzárendelt felügyelt és/vagy felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához egy [virtuálisgép-](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) méretezési csoportból.
-    - [Felügyelt identitás közreműködői](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) szerepkör felhasználó által hozzárendelt felügyelt identitás létrehozásához.
-    - [Felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör a felhasználó által hozzárendelt felügyelt identitás hozzárendeléséhez és eltávolításához egy virtuálisgép-méretezési csoportba.
+    - Virtuálisgép-méretezési csoport létrehozásához és a rendszer által hozzárendelt felügyelt és/vagy felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez és eltávolításához egy [virtuálisgép-](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) méretezési csoportból.
+    - [Felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör felhasználó által hozzárendelt felügyelt identitás létrehozásához.
+    - [Felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör a felhasználó által hozzárendelt felügyelt identitás hozzárendeléséhez és eltávolításához egy virtuálisgép-méretezési csoportba.
 - Ha még nem tette meg [, telepítse a Azure PowerShell legújabb verzióját](/powershell/azure/install-az-ps) . 
 
 ## <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
@@ -144,27 +144,10 @@ Ha a virtuálisgép-méretezési csoporthoz a rendszerhez hozzárendelt és a fe
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:
   
   - [Windows rendszerű virtuális gép létrehozása PowerShell használatával](../../virtual-machines/windows/quick-create-powershell.md) 
-  - [Linux rendszerű virtuális gép létrehozása PowerShell segítségével](../../virtual-machines/linux/quick-create-powershell.md) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - [Linux rendszerű virtuális gép létrehozása PowerShell segítségével](../../virtual-machines/linux/quick-create-powershell.md)

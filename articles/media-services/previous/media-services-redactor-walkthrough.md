@@ -15,20 +15,22 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df35b48a4da05d068760f0b04394ea53d788000e
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69997681"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269692"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Arcok kivonása Azure Media Analytics bemutatóval
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
 
 A **Azure Media redactor** egy [Azure Media Analytics](media-services-analytics-overview.md) Media Processor (mp), amely méretezhető arc-kivonást biztosít a felhőben. Az Arcfelismerés lehetővé teszi a videó módosítását, hogy a kijelölt személyek ne legyenek elmosódottak. Érdemes lehet a Face kivonási szolgáltatást használni a közbiztonság és a hírek adathordozóján. Néhány perces felvétel, amely több arcot tartalmaz, manuálisan is eltarthat, de ezzel a szolgáltatással az arc-kivonási folyamat csak néhány egyszerű lépést igényelhet. További információkért tekintse meg [ezt a](https://azure.microsoft.com/blog/azure-media-redactor/) blogot.
 
-A **Azure Media redactor**kapcsolatos részletekért tekintse meg a [Face kivonások áttekintése](media-services-face-redaction.md) című témakört.
+A  **Azure Media redactor**kapcsolatos részletekért tekintse meg a [Face kivonások áttekintése](media-services-face-redaction.md) című témakört.
 
 Ez a témakör részletesen bemutatja, hogyan futtathat teljes kivonási munkafolyamatot a Azure Media Services Explorer (AMSE) és a Azure Media Redactor megjelenítő (nyílt forráskódú eszköz) használatával.
 

@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065497"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269590"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Offline Widevine-streamelés Androidhoz  
+# <a name="offline-widevine-streaming-for-android"></a>Offline Widevine-streamelés Androidhoz
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [3\. verzió](../latest/offline-widevine-for-android.md)
@@ -71,7 +73,7 @@ Ha egy eszköz Widevine-védelmét konfigurálja Media Servicesban, létre kell 
 
 A Widevine-licencek **Offline** módjának engedélyezéséhez konfigurálnia kell a [Widevine-licenc sablonját](media-services-widevine-license-template-overview.md). A **policy_overrides** objektumban állítsa **igaz** értékre a **can_persist** tulajdonságot (az alapértelmezett érték a False). 
 
-A következő mintakód a .NET-et használja a Widevine-licencek **Offline** üzemmódjának engedélyezéséhez. A kód az [PlayReady és/vagy Widevine dinamikus Common encryption .net-mintával való használatával](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) történik. 
+A következő mintakód a .NET-et használja a Widevine-licencek **Offline** üzemmódjának engedélyezéséhez. A kód az [ PlayReady és/vagy Widevine dinamikus Common encryption .net-mintával való használatával](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) történik. 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)
@@ -131,7 +133,7 @@ Az alkalmazások fejlesztése során a fejlesztőknek hivatkoznia kell a [ExoPla
 
 Egyes régebbi Android-eszközök esetén a következő **policy_overrides** tulajdonságok értékeit kell megadnia ( [Widevine-licenc sablonban](media-services-widevine-license-template-overview.md)definiálva: **rental_duration_seconds**, **playback_duration_seconds**és **license_duration_seconds**. Azt is megteheti, hogy nullára állítja őket, ami végtelen/korlátlan időtartamot jelent.  
 
-Az értékeket úgy kell beállítani, hogy elkerülje az egész túlcsordulási hibát. A probléma részletes ismertetését lásd: https://github.com/google/ExoPlayer/issues/3150 és https://github.com/google/ExoPlayer/issues/3112 . <br/>Ha nem adja meg explicit módon az értékeket, a **PlaybackDurationRemaining** és a **LicenseDurationRemaining** nagyon nagy érték lesz hozzárendelve (például 9223372036854775807, amely a 64 bites egész szám maximális pozitív értéke). Ennek eredményeképpen a Widevine-licenc lejárt, ezért a visszafejtés nem fog történni. 
+Az értékeket úgy kell beállítani, hogy elkerülje az egész túlcsordulási hibát. A probléma részletes ismertetését lásd: https://github.com/google/ExoPlayer/issues/3150 és https://github.com/google/ExoPlayer/issues/3112 . <br/>Ha nem adja meg explicit módon az értékeket, a  **PlaybackDurationRemaining** és a **LicenseDurationRemaining** nagyon nagy érték lesz hozzárendelve (például 9223372036854775807, amely a 64 bites egész szám maximális pozitív értéke). Ennek eredményeképpen a Widevine-licenc lejárt, ezért a visszafejtés nem fog történni. 
 
 Ez a probléma az Android 5,0-es vagy újabb verziójában nem fordul elő, mivel az Android 5,0 az első Android-verzió, amelyet a ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) és a 64 bites platform teljes körű támogatására terveztek, míg az Android 4,4 KitKat eredetileg a ARMv7 és a 32-bites platformok támogatásához lett tervezve, más régebbi Android-verziókhoz hasonlóan.
 
@@ -157,7 +159,7 @@ Ha Android-telefonon frissíti a Mobile Chrome böngészőt a v62 (vagy újabb v
 
 A fenti nyílt forráskódú PWA alkalmazás szerzője Node.js. Ha Ubuntu-kiszolgálón szeretné üzemeltetni a saját verzióját, vegye figyelembe a következő gyakori problémákat, amelyek megakadályozhatják a lejátszást:
 
-1. CORS probléma: a minta alkalmazásban található minta videó a (z https://storage.googleapis.com/biograf-video-files/videos/ ) rendszerben található. A Google CORS állított be a Google Cloud Storage-gyűjtőben üzemeltetett összes tesztelési mintához. Ezek a CORS-fejlécekkel együtt, explicit módon határozzák meg a CORS bejegyzést: `https://biograf-155113.appspot.com` (a tartomány, amelyben a Google a mintát tárolja) megakadályozza a hozzáférést bármely más hely számára. Ha próbálkozik, a következő HTTP-hiba jelenik meg:`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. CORS probléma: a minta alkalmazásban található minta videó a (z https://storage.googleapis.com/biograf-video-files/videos/ ) rendszerben található. A Google CORS állított be a Google Cloud Storage-gyűjtőben üzemeltetett összes tesztelési mintához. Ezek a CORS-fejlécekkel együtt, explicit módon határozzák meg a CORS bejegyzést: `https://biograf-155113.appspot.com` (a tartomány, amelyben a Google a mintát tárolja) megakadályozza a hozzáférést bármely más hely számára. Ha próbálkozik, a következő HTTP-hiba jelenik meg: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Tanúsítványra vonatkozó probléma: a Chrome v 58-től kezdődően a Widevine-hez szükséges, HTTPS-t igényel. Ezért a minta alkalmazást HTTPS-en keresztül kell üzemeltetni egy X509-tanúsítvánnyal. A szokásos tesztelési tanúsítvány a következő követelmények miatt nem működik: be kell szereznie egy tanúsítványt, amely megfelel a következő minimális követelményeknek:
     - A Chrome és a Firefox megköveteli, hogy a tanúsítványban létezik a SAN-tulajdonos alternatív neve beállítás
     - A tanúsítványnak megbízható HITELESÍTÉSSZOLGÁLTATÓval kell rendelkeznie, és az önaláírt fejlesztési tanúsítvány nem működik.

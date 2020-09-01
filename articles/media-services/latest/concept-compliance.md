@@ -10,16 +10,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: af9f1f745f58e9d51ff7c5755d24b819ed9443f7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147463"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269726"
 ---
 # <a name="media-services-regulatory-compliance"></a>Media Services szabályozási megfelelőség
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services megfelel az USA-beli szövetségi & kockázatkezelési program (FedRAMP) és az USA védelmi Minisztériuma által támasztott követelményeknek, az Information Impact 2 – 5 értékével. A védett szolgáltatások (például az Azure Government, az Office 365 USA kormánya, valamint a Dynamics 365 kormányzati, a szövetségi és a védelmi ügynökségek) üzembe helyezésével a megfelelő szolgáltatások gazdag választékát veheti igénybe.
 
@@ -39,6 +41,6 @@ Ha a szervezetnek meg kell felelnie a globális, az Egyesült Államok kormánya
 
 Emellett további megfelelőségi erőforrásokat is talál, mint például a naplózási jelentések, az adatvédelem és a Általános adatvédelmi rendelet (GDPR), a megfelelőségi tervezetek, az országos és regionális irányelvek, a megvalósítás és a leképezések, valamint a tanulmányi és elemzői jelentések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [Az Azure Media Services áttekintése](media-services-overview.md)

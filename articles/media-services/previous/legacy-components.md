@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
-ms.openlocfilehash: d8d961ab58e900a6d619ec64297c783abdb7b6ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c3e50fd64c113aafd2d70cc76c7f789e080ad23
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091691"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269522"
 ---
 # <a name="azure-media-services-legacy-components"></a>Örökölt összetevők Azure Media Services
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 Az idő múlásával a Media Service-összetevők folyamatos fejlesztéseket és fejlesztéseket eredményeztek. Ennek eredményeképpen egyes örökölt összetevők kivonultak. A következő cikkekben talál útmutatást arról, hogyan migrálhatja az alkalmazást az örökölt összetevőből egy aktuális összetevőbe.
  

@@ -3,7 +3,7 @@ title: Media Services diagnosztikai naplók figyelése Azure Monitor használat�
 description: Ez a cikk bemutatja, hogyan irányíthatja át és tekintheti meg a diagnosztikai naplókat Azure Monitor használatával.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 15c8cd3eff7b0eb64e1a512282de129f606a33ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 837113c11f24eda91a62cc68fdc68180951eee16
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501235"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269454"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
 
@@ -30,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
-- Tekintse át [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
+- Tekintse át  [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
 
@@ -179,7 +181,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
 * [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

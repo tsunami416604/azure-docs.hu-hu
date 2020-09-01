@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 55d9d9191dc62d7397c5de944985d5653eff4e13
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057466"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269828"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Speciális oktatóanyagok a Media Encoder Premium-munkafolyamathoz
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>Áttekintés
 Ez a dokumentum olyan forgatókönyveket tartalmaz, amelyek bemutatják, hogyan lehet testreszabni a munkafolyamatokat a **Munkafolyamat-tervezővel** [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)megtalálhatja az aktuális munkafolyamat-fájlokat.  
 
@@ -462,7 +465,7 @@ Az MP4-videóktól eltérően a JPG kódoló összetevő több fájlt is kiküld
 
 *A jelenet keresési JPG-fájljának írója*
 
-Konfigurálja a kimeneti mappa elérési útja tulajdonságát a kifejezéssel:`${ROOT_outputWriteDirectory}`
+Konfigurálja a kimeneti mappa elérési útja tulajdonságát a kifejezéssel: `${ROOT_outputWriteDirectory}`
 
 és a fájlnév előtag tulajdonsága a alábbiakkal:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925345"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269573"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -26,13 +26,13 @@ A felhasználóhoz hasonló módon az eszköz egy másik alapvető identitás, a
 - Hibrid Azure AD-csatlakozás
 - Azure AD-regisztráció
 
-Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Ugyanakkor a felhőben és a helyszíni erőforrásokhoz is biztonságossá teheti a hozzáférést a [feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md).
+Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Ugyanakkor a felhőben és a helyszíni erőforrásokhoz is biztonságossá teheti a hozzáférést a [feltételes hozzáféréssel](../conditional-access/overview.md).
 
 Ha helyszíni Active Directory (AD) környezettel rendelkezik, és az AD-tartományhoz csatlakoztatott számítógépeket az Azure AD-hez szeretné csatlakoztatni, ezt a hibrid Azure AD JOIN használatával végezheti el. Ez a cikk a hibrid Azure AD-csatlakozás környezetbe való bevezetéséhez kapcsolódó lépéseket ismerteti. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének bevezetését](../device-management-introduction.md).
+Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének bevezetését](./overview.md).
 
 > [!NOTE]
 > A Windows 10 hibrid Azure AD JOIN minimálisan szükséges tartományvezérlői verziója a Windows Server 2008 R2.
@@ -100,7 +100,7 @@ Ha a Windows 10 tartományhoz csatlakoztatott eszközök az Azure AD-t a bérlő
 > Annak ellenére, hogy a Windows 10 automatikusan eltávolítja az Azure AD-beli regisztrált állapotot, az Azure AD-beli eszköz-objektum nem törlődik azonnal, ha az Intune felügyeli. A dsregcmd/status futtatásával ellenőrizheti az Azure AD regisztrált állapotának eltávolítását, és azt is megvizsgálhatja, hogy az eszköz ne legyen regisztrálva az Azure AD-ben.
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
-- Ha a környezete virtuális asztali infrastruktúrát (VDI) használ, tekintse meg az [eszköz identitása és az asztali virtualizálási](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)témakört.
+- Ha a környezete virtuális asztali infrastruktúrát (VDI) használ, tekintse meg az [eszköz identitása és az asztali virtualizálási](./howto-device-identity-virtual-desktop-infrastructure.md)témakört.
 
 - A hibrid Azure AD JOIN a FIPS-kompatibilis TPM 2,0 és a TPM 1,2 esetében nem támogatott. Ha az eszközei rendelkeznek FIPS-kompatibilis TPM 1,2-mel, a hibrid Azure AD-csatlakozás előtt le kell tiltania azokat. A Microsoft nem biztosít olyan eszközöket, amelyekkel letiltható a TPM FIPS üzemmódja, mert a TPM-gyártótól függ. Támogatásért forduljon a hardver OEM-hez. 
 
@@ -118,19 +118,19 @@ A hibrid Azure AD JOIN mindkét, felügyelt és összevont környezettel működ
 
 ### <a name="managed-environment"></a>Felügyelt környezet
 
-A felügyelt környezetek a [jelszó kivonatos szinkronizálásával (PHS)](/azure/active-directory/hybrid/whatis-phs) vagy a [hitelesítés (PTA ESP)](/azure/active-directory/hybrid/how-to-connect-pta) használatával is üzembe helyezhetők, [zökkenőmentes egyszeri bejelentkezéssel](/azure/active-directory/hybrid/how-to-connect-sso).
+A felügyelt környezetek a [jelszó kivonatos szinkronizálásával (PHS)](../hybrid/whatis-phs.md) vagy a [hitelesítés (PTA ESP)](../hybrid/how-to-connect-pta.md) használatával is üzembe helyezhetők, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md).
 
 Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
 > [!NOTE]
-> A lépcsőzetes bevezetést [használó felhőalapú hitelesítés](/azure/active-directory/hybrid/how-to-connect-staged-rollout) csak a Windows 10 1903 frissítésének megkezdése után támogatott
+> A lépcsőzetes bevezetést [használó felhőalapú hitelesítés](../hybrid/how-to-connect-staged-rollout.md) csak a Windows 10 1903 frissítésének megkezdése után támogatott
 
 ### <a name="federated-environment"></a>Összevont környezet
 
 Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja. Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, az alábbi követelmények már támogatottak.
 
 - **WIAORMULTIAUTHN jogcím:** Ez a jogcím szükséges a hibrid Azure AD-csatlakozáshoz a Windows rendszerű eszközökön.
-- **Ws-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez. AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/windowstransport`  
+- **Ws-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez. AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat: `/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -152,9 +152,9 @@ Az identitás-infrastruktúrának megfelelő forgatókönyv alapján lásd:
 
 ## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>A helyszíni AD felhasználói UPN-támogatásának áttekintése hibrid Azure AD-csatlakozáshoz
 
-Előfordulhat, hogy a helyszíni AD-felhasználók UPN-felhasználónevei eltérőek lehetnek az Azure AD UPN-ben. Ilyen esetekben a Windows 10 Hybrid Azure AD JOIN korlátozott támogatást biztosít a helyszíni AD UPN-hez a [hitelesítési módszer](/azure/security/fundamentals/choose-ad-authn), a tartomány típusa és a Windows 10 verziója alapján. A környezetben két típusú helyszíni AD UPN létezik:
+Előfordulhat, hogy a helyszíni AD-felhasználók UPN-felhasználónevei eltérőek lehetnek az Azure AD UPN-ben. Ilyen esetekben a Windows 10 Hybrid Azure AD JOIN korlátozott támogatást biztosít a helyszíni AD UPN-hez a [hitelesítési módszer](../hybrid/choose-ad-authn.md), a tartomány típusa és a Windows 10 verziója alapján. A környezetben két típusú helyszíni AD UPN létezik:
 
-- Irányítható felhasználói UPN: az átirányítható UPN egy érvényes ellenőrzött tartománnyal rendelkezik, amelyet egy tartományregisztráló regisztrál. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso.org az elsődleges tartomány a contoso által birtokolt és az [Azure ad-ben ellenőrzött](/azure/active-directory/fundamentals/add-custom-domain) helyszíni ad-ben.
+- Irányítható felhasználói UPN: az átirányítható UPN egy érvényes ellenőrzött tartománnyal rendelkezik, amelyet egy tartományregisztráló regisztrál. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso.org az elsődleges tartomány a contoso által birtokolt és az [Azure ad-ben ellenőrzött](../fundamentals/add-custom-domain.md) helyszíni ad-ben.
 - Nem átirányítható felhasználók UPN: egy nem átirányítható UPN nem rendelkezik ellenőrzött tartománnyal. Csak a szervezet magánhálózaton belül alkalmazható. Ha például az contoso.com az elsődleges tartomány az Azure AD-ben, a contoso. local az elsődleges tartomány a helyszíni AD-ben, de nem ellenőrizhető tartomány az interneten, és csak a contoso hálózatán belül használatos.
 
 > [!NOTE]

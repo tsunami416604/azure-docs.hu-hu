@@ -3,22 +3,24 @@ title: Azure Media Services v3-fiókok kezelése | Microsoft Docs
 description: Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot. Ez a cikk a Azure Media Services v3-fiókok kezelését ismerteti.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: 46f5644fb47b840f273ccab37da4f4743ad335f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 91e64ab524121faf6d4e363bfbfdea2d5db01941
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053125"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269658"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3-fiókok kezelése
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. További információ: Storage- [fiókok](storage-account-concept.md).
 

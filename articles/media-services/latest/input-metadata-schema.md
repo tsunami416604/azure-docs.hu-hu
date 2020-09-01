@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services v3 bemenet metaadat-sémája
 description: Ez a cikk áttekintést nyújt Azure Media Services v3 bemeneti metaadat-sémáról.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: a9b8fec7e69b6ede15f99cae01e89c962996e280
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095587"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269148"
 ---
-# <a name="input-metadata"></a>Bemeneti metaadatok 
+# <a name="input-metadata"></a>Bemeneti metaadatok
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) vannak társítva, amelyeken bizonyos kódolási feladatokat kíván végrehajtani.  Egy feladat befejezése után a rendszer kimeneti eszközt állít elő. A kimeneti eszköz videó-, hang-, miniatűr-, jegyzékfájl-és egyéb fájlokat tartalmaz. 
 
@@ -41,17 +43,17 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 > 
 > 
 
-| Name  | Description |
+| Név  | Leírás |
 | --- | --- | 
 | **VideoTracks**|Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videókat. További információ: [VideoTracks](#videotracks). |
 | **AudioTracks**|Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható hangsávot. További információ: [AudioTracks](#audiotracks) |
-| **Metaadatok**  |Az adatfájl metaadatai key\value karakterláncként jelennek meg. <br />Például:`<Metadata key="language" value="eng" />` |
+| **Metaadatok**  |Az adatfájl metaadatai key\value karakterláncként jelennek meg. <br />Például: `<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>Egyéb alárendelt elemek
 
-| Name | Leírás |
+| Név | Leírás |
 | --- | --- |
-| **Name (Név)**<br />Kötelező |Az eszköz fájljának neve. <br /><br />Például: `"Name": "Ignite-short.mp4"` |
+| **Név**<br />Kötelező |Az eszköz fájljának neve. <br /><br />Például: `"Name": "Ignite-short.mp4"` |
 | **URI**<br />Kötelező |Az URL-cím, ahol a bemeneti eszköz található. A kimeneti eszközhöz tartozó bemeneti eszköz azonosításához használja az `Uri` azonosító helyett a mezőt.|
 | **Méret**<br />Kötelező |Az adategység fájljának mérete bájtban megadva.  <br /><br />Például: `"Size": 75739259`|
 | **Időtartam**<br />Kötelező |Tartalom lejátszási ideje – időtartam. <br /><br />Példa: `"Duration": "PT1M10.304S"`. |
@@ -63,14 +65,14 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 ## <a name="videotracks"></a>VideoTracks
 
-| Name |  | Description |
+| Név |  | Leírás |
 | --- | --- |
 | **FourCC**<br />Kötelező |Az FFmpeg által jelentett video codec FourCC-kód.<br /><br />Például: `"FourCC": "avc1"` |
 | **Profil** |A Video Track profilja. <br /><br />Például: `"Profile": "Main"`|
 | **Szintű** |A videó követési szintje. <br /><br />Például: `"Level": "3.2"`|
 | **PixelFormat** |A Video Track képpontjának formátuma <br /><br />Például: `"PixelFormat": "yuv420p"`|
-| **Width**<br />Kötelező |Kódolt videó szélessége képpontban megadva <br /><br />Például: `"Width": "1280"`|
-| **Height**<br />Kötelező |Kódolt videó magassága képpontban megadva.<br /><br />Például: `"Height": "720"` |
+| **Szélesség**<br />Kötelező |Kódolt videó szélessége képpontban megadva <br /><br />Például: `"Width": "1280"`|
+| **Magasság**<br />Kötelező |Kódolt videó magassága képpontban megadva.<br /><br />Például: `"Height": "720"` |
 | **DisplayAspectRatioNumerator**<br />Kötelező |Videó megjelenítési oldalarányának számlálója<br /><br />Például: `"DisplayAspectRatioNumerator": 16.0` |
 | **DisplayAspectRatioDenominator**<br />Kötelező |Videó megjelenítési méretarányának nevezője <br /><br />Például: `"DisplayAspectRatioDenominator": 9.0`|
 | **SampleAspectRatioNumerator** |Videó minta oldalarányának számlálója <br /><br />Például: `"SampleAspectRatioNumerator": 1.0`|
@@ -90,7 +92,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 ## <a name="audiotracks"></a>AudioTracks
 
-| Name  | Description |
+| Név  | Leírás |
 | --- | --- | 
 | **SampleFormat** |Minta formátuma <br /><br />Például: `"SampleFormat": "fltp"`|
 | **ChannelLayout** |Csatorna elrendezése <br /><br />Például: `"ChannelLayout": "stereo"`|
@@ -108,7 +110,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 ## <a name="metadata"></a>Metaadatok
 
-| Name | Description |
+| Név | Leírás |
 | --- | --- |
 | **kulcs**<br />Kötelező |A kulcs/érték párokban található kulcs. |
 | **érték**<br /> Kötelező |A kulcs/érték párokban szereplő érték. |

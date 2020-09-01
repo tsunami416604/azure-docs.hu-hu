@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e16121005a34f67ba4ce940e08cb632c1206ad6a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146215"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269437"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Tanúsítványokkal kapcsolatos hibák elhárítása
 
@@ -56,6 +56,6 @@ Az alábbi táblázat a hibákkal és a lehetséges megoldásokkal kapcsolatos g
 | CertificateManagement_UnreadableCertificate | A típusú tanúsítvány {0} nem olvasható. Ez a hiba akkor fordul elő, ha a tanúsítvány nem olvasható vagy sérült. Új tanúsítvány létrehozása.|
 | CertificateSubjectNotFound | Nem található a tulajdonos nevű tanúsítvány {0} . Új tanúsítvány létrehozása.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tanúsítványkövetelmények](azure-stack-edge-j-series-certificate-requirements.md)

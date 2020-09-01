@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8c7f571489a9e565fac8c23db4c08321be6f551d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269811"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Azure Resource Manager csatlakoztatása az Azure Stack Edge-eszközön
 
@@ -458,6 +458,6 @@ ExtendedProperties : {}
 ```
 Ezzel átváltotta a kívánt környezetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gépek üzembe helyezése Azure stack peremhálózati eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

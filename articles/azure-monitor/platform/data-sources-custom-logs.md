@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269488"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure Monitorban
 
@@ -85,7 +85,7 @@ A következő táblázat példákat tartalmaz a különböző naplófájlok mega
 2. Írja be az elérési utat, majd kattintson a **+** gombra.
 3. Ismételje meg a folyamatot bármilyen további elérési útra.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés Adja meg a napló nevét és leírását
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés: Adja meg a napló nevét és leírását
 A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig _CL, hogy egyéni naplóként megkülönböztesse azt.
 
 1. Írja be a napló nevét.  A ** \_ CL** -utótagot a rendszer automatikusan megadja.
@@ -158,7 +158,7 @@ Az összegyűjtött naplóból származó összes rekord visszaküldéséhez a *
 
 
 ## <a name="alternatives-to-custom-logs"></a>Egyéni naplók alternatívái
-Míg az egyéni naplók akkor hasznosak, ha az adatai megfelelnek a felsorolt feltételeknek, de vannak olyan esetek, mint például a következő, amikor szüksége van egy másik stratégiára:
+Az egyéni naplók akkor hasznosak, ha az adatai megfelelnek a fent felsorolt feltételeknek, például a következő esetekben, amikor szüksége van egy másik stratégiára:
 
 - Az adat nem felel meg a szükséges szerkezetnek, például az időbélyeg eltérő formátumú.
 - A naplófájl nem felel meg a követelményeknek, például a fájlok kódolásának vagy a nem támogatott mappák struktúrájának.
@@ -169,6 +169,6 @@ A következő alternatív stratégiákat kell figyelembe venni abban az esetben,
 - Egyéni parancsfájl vagy más módszer használatával adatokat írhat a Windows- [eseményekre](data-sources-windows-events.md) vagy a [syslog](data-sources-syslog.md) -re, amelyeket a Azure monitor gyűjt. 
 - Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](data-collector-api.md)használatával. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .

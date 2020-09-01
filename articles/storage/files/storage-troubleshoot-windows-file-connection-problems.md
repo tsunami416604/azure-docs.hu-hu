@@ -4,15 +4,15 @@ description: Hibaelhárítás Azure Files problémák a Windows rendszerben. A W
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 05/31/2019
+ms.date: 08/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797785"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269369"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -344,14 +344,13 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 A parancsmag az alábbi ellenőrzéseket hajtja végre egymás után, és útmutatást nyújt a hibákhoz:
-1. CheckPort445Connectivity: a 445-es port SMB-kapcsolatok számára való megnyitásának ellenőrzését.
-2. CheckDomainJoined: ellenőrzi, hogy az ügyfélszámítógép tartományhoz van-e csatlakoztatva az AD-hez
-3. CheckADObject: Ellenőrizze, hogy van-e olyan objektum a Active Directoryban, amely a Storage-fiókot jelöli, és rendelkezik a megfelelő SPN-vel (egyszerű szolgáltatásnév).
-4. CheckGetKerberosTicket: kísérlet a Storage-fiókhoz való kapcsolódáshoz szükséges Kerberos-jegy beszerzésére 
-5. CheckADObjectPasswordIsCorrect: Győződjön meg arról, hogy a Storage-fiókot jelképező AD-identitáson konfigurált jelszó megegyezik a kerb1 vagy a kerb2 kulcsával.
-6. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben.
-7. CheckAadUserHasSid: Ellenőrizze, hogy az Azure AD-felhasználó rendelkezik-e SID-vel az AD-ben, ez az érték megköveteli, hogy a felhasználó az Azure AD-felhasználóhoz tartozó Object ID-t írja be a-ObjectId 
-8. CheckStorageAccountDomainJoined: a Storage-fiók tulajdonságainál ellenőrizze, hogy az AD-hitelesítés engedélyezve van-e, és hogy a fiók AD-tulajdonságainak feltöltése megtörtént-e.
+1. CheckADObjectPasswordIsCorrect: Győződjön meg arról, hogy a Storage-fiókot jelképező AD-identitáson konfigurált jelszó megegyezik a kerb1 vagy a kerb2 kulcsával. Ha a jelszó helytelen, az [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) futtatásával állíthatja alaphelyzetbe a jelszót. 
+2. CheckADObject: Ellenőrizze, hogy van-e olyan objektum a Active Directoryban, amely a Storage-fiókot jelöli, és rendelkezik a megfelelő SPN-vel (egyszerű szolgáltatásnév). Ha az egyszerű szolgáltatásnév nem megfelelően van beállítva, futtassa a Debug parancsmagban visszaadott set-AD parancsmagot az egyszerű szolgáltatásnév konfigurálásához.
+3. CheckDomainJoined: ellenőrzi, hogy az ügyfélszámítógép tartományhoz van-e csatlakoztatva az AD-hez. Ha a számítógép nincs tartományhoz csatlakoztatva az AD-hez, tekintse meg ezt a [cikket](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) a tartományhoz való csatlakozással kapcsolatos útmutatásért.
+4. CheckPort445Connectivity: Győződjön meg arról, hogy a 445-es port az SMB-kapcsolatok számára meg van nyitva. Ha a szükséges port nincs megnyitva, tekintse meg a hibaelhárítási eszközt [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) a Azure Files kapcsolódási problémáinak elhárításához.
+5. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben. 
+6. CheckGetKerberosTicket: a Storage-fiókhoz való kapcsolódásra irányuló Kerberos-jegy beszerzésére tett kísérlet. Ha nincs érvényes Kerberos-jogkivonat, futtassa a klist Get CIFS/Storage-Account-Name. file. Core. Windows. net parancsmagot, és vizsgálja meg a hibakódot a fő – a jegy lekérési hibája miatt.
+7. CheckStorageAccountDomainJoined: Ellenőrizze, hogy az AD-hitelesítés engedélyezve van-e, és hogy a fiók AD-tulajdonságainak feltöltése megtörtént-e. Ha nem, tekintse meg a AD DS hitelesítés engedélyezése Azure Fileson című [témakör utasításait](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) . 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nem lehet konfigurálni a címtár/fájl szintű engedélyeket (Windows ACL) a Windows fájlkezelővel
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services feladatok (kódolás és elemzés) hibakódok | Microsoft Docs
 description: Ez a cikk a feladathoz tartozó hibakódokra mutató hivatkozásokat tartalmaz, és hasznos hivatkozásokat biztosít a kapcsolódó témakörökhöz.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
-ms.author: juliako
-ms.openlocfilehash: ec057d86ea39afb7eabd4e8227646eaec11c5655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 6d5268e0a0c7e6606ac28aa9b62e81bb4c4bc460
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023007"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269131"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services feladattípus-hibakódok
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a témakör egy REST-alapú hivatkozási dokumentumra hivatkozik a [feladatokhoz](transforms-jobs-concept.md) tartozó hibakódok és üzenetek részletes leírásához.
 

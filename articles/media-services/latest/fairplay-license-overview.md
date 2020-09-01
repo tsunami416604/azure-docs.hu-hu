@@ -1,7 +1,7 @@
 ---
 title: A Media Services és az Apple FairPlay licencének támogatása – Azure | Microsoft Docs
 description: Ez a témakör áttekintést nyújt az Apple FairPlay-licencekre vonatkozó követelményekről és konfigurációról.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0c2a699a57ce43b4d0b6f02c850dbda8082fbaea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cded51fa1cc1a1411f59915382f3c310660f8b19
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009729"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269301"
 ---
-# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása 
+# <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 A Azure Media Services lehetővé teszi a HLS-tartalmak titkosítását az **Apple Fairplay** (AES-128 CBC) használatával. A Media Services egy szolgáltatást is biztosít a FairPlay-licencek kézbesítéséhez. Amikor egy játékos megpróbál lejátszani a FairPlay-védelemmel ellátott tartalmat, a rendszer egy kérelmet küld a licenc kézbesítési szolgáltatásnak a licenc beszerzéséhez. Ha a licencelési szolgáltatás jóváhagyja a kérelmet, az az ügyfélnek eljuttatott licencet adja ki, és a megadott tartalom visszafejtésére és lejátszására szolgál.
 
@@ -118,6 +120,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További [információ a DRM elleni védelemről](protect-with-drm.md)

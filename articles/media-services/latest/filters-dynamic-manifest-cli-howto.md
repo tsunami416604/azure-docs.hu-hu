@@ -3,7 +3,7 @@ title: Szűrők létrehozása a parancssori felülettel Azure Media Services has
 description: Ez a cikk bemutatja, hogyan hozhatók létre szűrők a parancssori felülettel Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,17 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 024136ab6f660ecc5b6c5c7c0ecae62c83238659
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023211"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269539"
 ---
-# <a name="creating-filters-with-cli"></a>Szűrők létrehozása a parancssori felülettel 
+# <a name="creating-filters-with-cli"></a>Szűrők létrehozása a parancssori felülettel
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ha az ügyfelek számára továbbít tartalmat (élő vagy igény szerinti közvetítést), az ügyfélnek nagyobb rugalmasságra lehet szüksége, mint amit az alapértelmezett eszköz jegyzékfájljában ismertetünk. A Azure Media Services segítségével meghatározhatja a tartalomhoz tartozó fiókok szűrőit és a hozzájuk tartozó szűrőket. 
 
