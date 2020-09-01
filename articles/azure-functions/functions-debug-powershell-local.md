@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799366"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177091"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell-Azure Functions helyi hibakeresése
 
@@ -65,6 +65,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 ## <a name="set-the-attach-point"></a>A csatolási pont beállítása
 
 A PowerShell-függvények hibakereséséhez a funkciónak le kell állnia a hibakereső csatolásához. A `Wait-Debugger` parancsmag leállítja a végrehajtást, és megvárja a hibakeresőt.
+
+>[!NOTE]
+>A PowerShell 7 használatakor nem kell hozzáadnia a `Wait-Debugger` hívást a kódban.
 
 Mindössze annyit kell tennie, hogy az utasítás fölött egy hívást ad hozzá a `Wait-Debugger` parancsmaghoz `if` , az alábbiak szerint:
 
@@ -247,12 +250,12 @@ Ha ez a szünet történik, futtassa a `continue` vagy a `c` parancsot a Törés
 
 Ha a hibakeresés során nehézségekbe ütközik, ellenőrizze a következőket:
 
-| Jelölőnégyzet | Műveletek |
+| Jelölőnégyzet | Művelet |
 |------|------|
 | Futtatás `func --version` a terminálról. Ha olyan hibaüzenetet kap `func` , amely nem található, az alapvető eszközök (func.exe) hiányozhatnak a helyi `path` változóból.| [Telepítse újra az alapvető eszközöket](functions-run-local.md#v2).|  
 | A Visual Studio Code-ban az alapértelmezett terminálnak hozzá kell férnie func.exehoz. Győződjön meg arról, hogy nem használ olyan alapértelmezett terminált, amely nem rendelkezik telepített alapeszközökkel, például a Linux Windows alrendszerét (WSL).  | Állítsa be az alapértelmezett rendszerhéjt a Visual Studio Code-ban a PowerShell 7 (ajánlott) vagy a Windows PowerShell 5,1-es verzióra.|
   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a függvények a PowerShell használatával történő fejlesztéséről: [Azure functions PowerShell fejlesztői útmutató](functions-reference-powershell.md).

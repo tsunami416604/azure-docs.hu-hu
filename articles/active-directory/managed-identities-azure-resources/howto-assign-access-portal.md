@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8126f6314044fc2ee816e9150e9595719d63eff
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee28addd5f6ac0faaf03d29d712c4e750ed6e293
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009202"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177482"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Felügyelt identitás-hozzáférés kiosztása erőforráshoz a Azure Portal használatával
 
@@ -33,7 +33,7 @@ Miután konfigurált egy Azure-erőforrást egy felügyelt identitással, megadh
 - Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Felügyelt identitás-hozzáférés társítása egy másik erőforráshoz a RBAC használatával
+## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Felügyelt identitás-hozzáférés kiosztása az Azure RBAC használatával egy másik erőforráshoz
 
 Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, például egy [Azure](qs-configure-portal-windows-vm.md) -beli virtuális gépen vagy egy Azure-beli [virtuálisgép-méretezési csoporton](qs-configure-portal-windows-vmss.md):
 
@@ -45,7 +45,7 @@ Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, példáu
 
    ![Hozzáférés-vezérlés (IAM) képernyőkép](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felügyelt identitás az Azure-erőforrásokhoz – áttekintés](overview.md)
 - Az Azure-beli virtuális gépek felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).

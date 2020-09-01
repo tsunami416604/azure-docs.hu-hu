@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117226"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178943"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -87,7 +87,7 @@ Létrehozott egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet.
 
 ## <a name="assign-a-role-to-the-application"></a>Szerepkör társítása az alkalmazáshoz
 
-Az előfizetéshez tartozó erőforrások eléréséhez hozzá kell rendelnie egy szerepkört az alkalmazáshoz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben olvashat bővebben.
+Az előfizetéshez tartozó erőforrások eléréséhez hozzá kell rendelnie egy szerepkört az alkalmazáshoz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről az [Azure beépített szerepköreivel](../../role-based-access-control/built-in-roles.md)foglalkozó témakörben olvashat bővebben.
 
 Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein vannak örökölve. Ha például hozzáad egy alkalmazást az erőforráscsoport *olvasó* szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -163,7 +163,7 @@ A tanúsítvány feltöltése:
 
 Miután regisztrálta a tanúsítványt az alkalmazással az alkalmazás regisztrációs portálján, engedélyeznie kell az ügyfélalkalmazás kódját a tanúsítvány használatához.
 
-### <a name="create-a-new-application-secret"></a>Új alkalmazás-titok létrehozása
+### <a name="create-a-new-application-secret"></a>Új titkos alkalmazáskulcs létrehozása
 
 Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmazás-titkot.
 

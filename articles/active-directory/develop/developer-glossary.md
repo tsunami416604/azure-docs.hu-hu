@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 781aa48442d80e55128314dd1e271532162df32c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117243"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178824"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
@@ -164,7 +164,7 @@ A [hatókörökhöz](#scopes)hasonlóan a szerepkörök lehetővé teszik az [er
 
 A szerepkörök erőforrás-definiált karakterláncok (például "költségek jóváhagyója", "csak olvasható", "könyvtár. ReadWrite. all"), a [Azure Portal][AZURE-portal] az erőforrás [alkalmazási jegyzékfájlján](#application-manifest)keresztül kezelhetők, és az erőforrás [appRoles tulajdonságában][Graph-Sp-Resource]vannak tárolva. A Azure Portal a felhasználók "felhasználói" szerepkörökhöz való hozzárendelésére, valamint az "alkalmazás" szerepkör elérésére vonatkozó ügyfélalkalmazás- [engedélyek](#permissions) konfigurálására is használható.
 
-A Microsoft Graph API által elérhetővé tett alkalmazási szerepkörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Lépésenkénti megvalósítási példát a következő témakörben talál: [hozzáférés kezelése a RBAC és a Azure Portal használatával][AAD-RBAC].
+A Microsoft Graph API által elérhetővé tett alkalmazási szerepkörök részletes ismertetését lásd: [Graph API jogosultsági hatókörök][Graph-Perm-Scopes]. Lépésenkénti megvalósítási példa: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával][AAD-RBAC].
 
 ## <a name="scopes"></a>hatókörök
 

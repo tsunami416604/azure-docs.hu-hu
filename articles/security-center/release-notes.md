@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723962"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177244"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -98,7 +98,7 @@ Ha olyan parancsfájlokkal, lekérdezésekkel vagy automatizálással rendelkezi
 
 ##### <a name="before-august-2020"></a>Augusztus 2020 előtt
 
-|Javaslat|Hatókör|
+|Ajánlás|Hatókör|
 |----|:----|
 |**A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)**<br>Kulcs: 550e890b-e652-4d22-8274-60b3bdb24c63|Beépített|
 |**A virtuális gépeken található biztonsági rések szervizelése (Qualys-alapú)**<br>Kulcs: 1195afff-c881-495e-9bc5-1486211ae03f|Beépített|
@@ -116,7 +116,7 @@ Ha olyan parancsfájlokkal, lekérdezésekkel vagy automatizálással rendelkezi
 
 ##### <a name="from-august-2020"></a>Augusztus 1-től 2020
 
-|Javaslat|Hatókör|
+|Ajánlás|Hatókör|
 |----|:----|
 |**A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken**<br>Kulcs: ffff0522-1e88-47fc-8382-2a80ba848f5d|Beépített + BYOL|
 |**A virtuális gépek biztonsági réseit szervizelni kell**<br>Kulcs: 1195afff-c881-495e-9bc5-1486211ae03f|Beépített + BYOL|
@@ -159,11 +159,11 @@ Sebezhetőség-felmérési megoldás telepítésekor Security Center korábban e
 
 Ebből a frissítésből az ellenőrzés el lett távolítva, és most már telepítheti a sebezhetőség-felmérési eszközöket az "egyéni" Windows és Linux rendszerű gépekre. Az egyéni lemezképek olyanok, amelyeket a piactér alapértelmezett értékeivel módosított.
 
-Bár mostantól több gépen is telepítheti az integrált sebezhetőségi felmérési bővítményt (Qualys), a támogatás csak akkor érhető el, ha a [Qualys beépített sebezhetőségi ellenőrzőeszköz üzembe helyezése](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)című részben felsorolt operációs rendszert használja.
+Bár mostantól több gépen is üzembe helyezheti az integrált sebezhetőségi felmérési bővítményt (Qualys), a támogatás csak akkor érhető el, ha az [integrált sebezhetőségi képolvasó telepítése standard szintű virtuális](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-standard-tier-vms) gépekre című részben felsorolt operációs rendszert használja.
 
-További információ a [virtuális gépekhez készült integrált sebezhetőségi képolvasóról (csak standard szintű](built-in-vulnerability-assessment.md)csomag esetén).
+További információ a [virtuális gépekhez készült integrált sebezhetőségi képolvasóról (csak standard szintű](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)csomag esetén).
 
-További információ a Qualys vagy a Rapid7 saját, saját maga által licencelt sebezhetőségi felmérési megoldásának használatáról a [partneri sebezhetőségi vizsgálat megoldásának üzembe helyezése című](partner-vulnerability-assessment.md)témakörben.
+További információ a Qualys vagy a Rapid7 saját, saját maga által licencelt sebezhetőségi felmérési megoldásának használatáról a [partneri sebezhetőségi vizsgálat megoldásának üzembe helyezése című](deploy-vulnerability-assessment-vm.md)témakörben.
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Az Azure Storage veszélyforrások elleni védelme kibővült Azure Files és Azure Data Lake Storage Gen2 (előzetes verzió)
@@ -236,7 +236,7 @@ Az adaptív alkalmazás-vezérlők funkció két jelentős frissítést kapott:
 
     * Az elérési út végén található helyettesítő karakter használata a mappában és az almappákban található összes végrehajtható fájl engedélyezéséhez
 
-    * Egy elérési út közepén lévő helyettesítő karakter használatával engedélyezheti egy ismert végrehajtható név módosítását a mappanév (például személyes felhasználói mappák ismert végrehajtható fájlokkal, automatikusan létrehozott mappanevek stb.).
+    * Egy elérési út közepén található helyettesítő karakter használatával engedélyezhető egy ismert végrehajtható név (például személyes felhasználói mappák ismert végrehajtható fájlokkal, automatikusan létrehozott mappák nevei stb.).
 
 
 [További információ az adaptív alkalmazások vezérlőinek használatáról](security-center-adaptive-application.md).
@@ -415,7 +415,7 @@ A megoldás üzembe helyezéséhez használja az új biztonsági javaslatot:
 
 "A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)"
 
-További információ a [Security Center a virtuális gépek integrált sebezhetőségi felméréséről](built-in-vulnerability-assessment.md).
+További információ a [Security Center a virtuális gépek integrált sebezhetőségi felméréséről](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 
 
 

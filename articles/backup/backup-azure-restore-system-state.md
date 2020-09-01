@@ -3,12 +3,12 @@ title: Rendszerállapot visszaállítása Windows Serverre
 description: Részletes útmutató a Windows Server rendszerállapotának az Azure-beli biztonsági másolatból történő visszaállításához.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d3fb88ddbb02327db4388de18d2645519e13d2ec
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892541"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178586"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -46,7 +46,7 @@ A következő lépések bemutatják, hogyan állíthatja vissza a Windows Server
 
     ![Kötet és dátum](./media/backup-azure-restore-system-state/select-date.png)
 
-6. Miután kiválasztotta a visszaállítani kívánt helyreállítási pontot, válassza a **tovább**lehetőséget.
+6. Miután kiválasztotta a helyreállítási pontot a visszaállításhoz, válassza a **tovább**lehetőséget.
 
     Azure Backup csatlakoztatja a helyi helyreállítási pontot, és helyreállítási kötetként használja.
 
@@ -94,7 +94,7 @@ A következő lépésekben használt terminológiák a következők:
 
     ![Elemek keresése](./media/backup-azure-restore-system-state/select-date.png)
 
-9. Miután kiválasztotta a visszaállítani kívánt helyreállítási pontot, válassza a **tovább**lehetőséget.
+9. Miután kiválasztotta a helyreállítási pontot a visszaállításhoz, válassza a **tovább**lehetőséget.
 
 10. A **rendszerállapot-helyreállítási mód kiválasztása** panelen adja meg azt a célhelyet, ahol a rendszerállapot-fájlokat helyre szeretné állítani, majd kattintson a **tovább**gombra.
 
@@ -112,7 +112,7 @@ A következő lépésekben használt terminológiák a következők:
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>Visszaállított rendszerállapot alkalmazása Windows Serveren
 
-Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerállapotot, az Windows Server biztonsági másolat segédprogrammal alkalmazza a helyreállított rendszerállapotot a Windows Serverre. A Windows Server biztonsági másolat segédprogram már elérhető a kiszolgálón. A következő lépések azt ismertetik, hogyan alkalmazhatja a helyreállított rendszerállapotot.
+Miután az Azure Recovery Services Agent használatával helyreállítta a rendszerállapotot, az Windows Server biztonsági másolat segédprogrammal alkalmazza a helyreállított rendszerállapotot a Windows Serverre. A Windows Server biztonsági másolat segédprogram már elérhető a kiszolgálón. A következő lépések azt ismertetik, hogyan alkalmazhatja a helyreállított rendszerállapotot.
 
 1. Nyissa meg a Windows Server biztonsági másolat beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Windows Server biztonsági másolat**a számítógépet vagy a kiszolgálót.
 

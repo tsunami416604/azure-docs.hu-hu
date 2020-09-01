@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 5a8fbf3869794b6a5ef78e78177f130e4e009795
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017600"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177686"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -73,7 +73,7 @@ Az offline biztonsági mentés elindítása előtt győződjön meg arról, hogy
 
 ## <a name="setup-azure-data-box-devices"></a>Azure Data Box eszközök beállítása
 
-Miután megkapta a Azure Data Box eszközt, attól függően, hogy milyen Azure Data Box SKU-t rendelt el, végezze el az alábbi, a DPM/MABS-kiszolgáló Data Box eszközeinek beállításához és előkészítéséhez szükséges lépéseket a kezdeti biztonsági mentési adatok azonosításához és átviteléhez.
+Miután megkapta a Azure Data Box eszközt a megrendelt Azure Data Box SKU alapján, hajtsa végre az alábbi lépéseket az DPM/MABS-kiszolgáló Data Box eszközeinek beállításához és előkészítéséhez a kezdeti biztonsági mentési adatok azonosításához és átviteléhez.
 
 ### <a name="setup-azure-data-box-disk"></a>Azure Data Box lemez beállítása
 
@@ -149,7 +149,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
           – Azure. Storage       *4.6.1*<br>
      >  - Az Azure AD-alkalmazás *AzureOfflineBackup_ként \<object GUID of the user> *van regisztrálva.
 
-13. Válassza ki a megfelelő adatmező-sorrendet, amelyhez kicsomagolta, csatlakoztatta és zárolta a Data Box lemezét. Kattintson a **Tovább** gombra.
+13. Válassza ki a megfelelő adatmező-sorrendet, amelyhez kicsomagolta, csatlakoztatta és zárolta Data Box lemezét. Kattintson a **Tovább** gombra.
 
     ![Válassza ki a databox](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -262,6 +262,6 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
 
    ![Ujjlenyomat értéke](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Offline előkészítés saját lemez használatával (az Azure import/export szolgáltatás használatával)](backup-azure-backup-server-import-export.md)

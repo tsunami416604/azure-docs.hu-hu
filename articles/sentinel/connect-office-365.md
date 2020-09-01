@@ -1,6 +1,6 @@
 ---
 title: Az Office 365-naplók összekapcsolhatók az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Office 365 log Connectort az Exchange-és SharePoint-alapú folyamatos felhasználói és rendszergazdai tevékenységekkel kapcsolatos információkra, beleértve a OneDrive is.
+description: Ismerje meg, hogyan használhatja az Office 365 log Connectort az Exchange-, a Team-és a SharePoint-alapú folyamatos felhasználói és rendszergazdai tevékenységekkel kapcsolatos információkra, beleértve a OneDrive is.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,18 +12,22 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559348"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178926"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Az Office 365-naplók összekapcsolhatók az Azure Sentinel-vel
 
-Az [Office 365](https://docs.microsoft.com/office/) log Connector az **Exchange** -ben és a **SharePointban** folytatott folyamatos felhasználói és rendszergazdai tevékenységekről nyújt Azure Sentinel-információkat (beleértve a **OneDrive**is). Ez az információ részletesen ismerteti az olyan műveleteket, mint a fájlok letöltése, a hozzáférési kérelmek elküldése, a csoport eseményeinek módosítása és a postaláda műveletei, valamint a műveleteket végrehajtó felhasználó adatai. Ha az Office 365-naplókat az Azure Sentinelhez csatlakoztatja, lehetővé teszi az adatok megtekintését és elemzését a munkafüzetekben, lekérdezheti az egyéni riasztásokat, és beépítheti azt a vizsgálati folyamat javítására, így jobban betekintést nyerhet az Office 365-biztonságba.
+Az [Office 365](https://docs.microsoft.com/office/) log Connector Azure Sentinel-információkat biztosít az **Exchange** -ben és a **SharePointban** (beleértve a **OneDrive**-t is) és most a **Teams** szolgáltatásban zajló folyamatos felhasználói és rendszergazdai tevékenységekről. Ezek az információk többek között olyan műveletek részleteit foglalják magukban, mint a fájlok letöltése, a hozzáférési kérelmek, az események csoportosításának módosításai, a postaláda-műveletek, a csapat eseményei (például csevegés, csapat, tag és csatorna eseményei), valamint a műveleteket végrehajtó felhasználó adatai. Ha az Office 365-naplókat az Azure Sentinelhez csatlakoztatja, lehetővé teszi az adatok megtekintését és elemzését a munkafüzetekben, lekérdezheti az egyéni riasztásokat, és beépítheti azt a vizsgálati folyamat javítására, így jobban betekintést nyerhet az Office 365-biztonságba.
+
+> [!IMPORTANT]
+> Az Office 365 log Connector **Microsoft Teams-naplókhoz készült bővítménye** jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,20 +44,27 @@ Az [Office 365](https://docs.microsoft.com/office/) log Connector az **Exchange*
 
 
    > [!NOTE]
-   > Ahogy az a fentiekben is látható, és amint az **adattípusok**alatt megjelenik az összekötő lapon, az Azure Sentinel Office 365-összekötő jelenleg csak a Microsoft Exchange és a SharePoint (beleértve a OneDrive) naplóinak betöltését támogatja. Vannak azonban olyan külső megoldások, amelyek érdeklik az [adatok csapatokból](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761) vagy [más Office-adatokból](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888) való bevezetését az Azure Sentinel szolgáltatásba. 
+   > Amint azt a fentiekben említettük, és ahogy az **adattípusok**alatt az összekötő oldalon látható, az Azure Sentinel Office 365-összekötő jelenleg csak a Microsoft Exchange és a SharePoint (beleértve a OneDrive) és a **Teams**szolgáltatásban is támogatja a naplók betöltését. Vannak azonban olyan külső megoldások is, amelyek érdeklik a [más Office-adatforrások](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888) Azure sentinelbe való bevezetését. 
 
 ## <a name="enable-the-office-365-log-connector"></a>Az Office 365 log Connector engedélyezése
 
+### <a name="instructions-tab"></a>Utasítások lap
+
 1. Az Azure Sentinel navigációs menüjében válassza az **adatösszekötők**lehetőséget.
 
-1. Az **adatösszekötők** listájában kattintson az **Office 365**elemre, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra.
+1. Az **adatösszekötők katalógusában** válassza az **Office 365**lehetőséget, majd az előnézet ablaktáblán válassza az **összekötő megnyitása lapot** .
 
 1. A **konfiguráció**feliratú szakaszban jelölje be azon Office 365-tevékenységek naplófájljainak jelölőnégyzetét, amelyekhez csatlakozni szeretne az Azure sentinelhez, majd kattintson a **módosítások alkalmazása**lehetőségre. 
 
    > [!NOTE]
    > Ha korábban több bérlőt csatlakoztatott az Azure Sentinelhez, az Office 365-összekötő egy régebbi verziójával, amely ezt támogatta, megtekintheti és módosíthatja az egyes bérlők által gyűjtött naplókat. Nem adhat hozzá további bérlőket, de a korábban hozzáadott bérlőket is eltávolíthatja.
 
-1. Ha Log Analytics szeretné lekérdezni az Office 365-naplóját, írja be a `OfficeActivity` következőt a lekérdezési ablak első sorába:.
+### <a name="next-steps-tab"></a>Következő lépések lap
+
+- Tekintse meg a SharePoint, a OneDrive, az Exchange és **365** a Teams naplózási adatait tartalmazó ajánlott munkafüzetek, lekérdezési minták és elemzési szabályok sablonjait.
+
+- Ha manuálisan szeretné lekérdezni az Office 365 naplófájljait a **naplókban**, adja meg a `OfficeActivity` lekérdezési ablak első sorát.
+   - Egy adott naplózási típus lekérdezésének szűréséhez írja be a `| where OfficeWorkload == "<logtype>"` következőt a lekérdezés második sorába: where *\<logtype\>* is,,, `SharePoint` `OneDrive` `Exchange` vagy `MicrosoftTeams` .
 
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az Office 365 az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:

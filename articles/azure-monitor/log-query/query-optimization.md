@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565723"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177743"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -52,6 +52,8 @@ A következő lekérdezési teljesítménymutatók érhetők el minden végrehaj
 
 ## <a name="total-cpu"></a>Teljes CPU
 A tényleges számítási CPU, amely a lekérdezés feldolgozására lett befektetve az összes lekérdezés-feldolgozó csomóponton. Mivel a legtöbb lekérdezés nagy számú csomóponton fut, ez általában sokkal nagyobb, mint a lekérdezés tényleges végrehajtásának időtartama. 
+
+A több mint 100 másodperces CPU-t használó lekérdezés olyan lekérdezésnek minősül, amely túlzott erőforrásokat használ fel. A több mint 1 000 másodperces CPU-t használó lekérdezések visszaélésszerű lekérdezésnek minősülnek, és lehetséges, hogy szabályozva vannak.
 
 A lekérdezés feldolgozási idejének elköltése:
 - Adatok beolvasása – a régi adatok lekérése több időt vesz igénybe, mint a legutóbbi adatok beolvasása.
@@ -177,6 +179,8 @@ SecurityEvent
 
 A lekérdezés feldolgozásának kritikus tényezője a lekérdezett és a lekérdezések feldolgozásához használt adatmennyiség. Az Azure Adatkezelő agresszív optimalizációt használ, amely jelentősen csökkenti az adatmennyiséget más adatplatformokhoz képest. A lekérdezésben kritikus tényezők is vannak, amelyek befolyásolhatják a használt adatmennyiséget.
 
+A kettőnél több 000KB feldolgozó lekérdezés olyan lekérdezésnek minősül, amely túlzott erőforrást használ. A 20-nál több 000KB feldolgozás alatt álló lekérdezések visszaélésszerű lekérdezésnek minősülnek, és lehetséges, hogy szabályozva vannak.
+
 Azure Monitor naplókban a **TimeGenerated** oszlop használható az adatindexeléshez. Ha a **TimeGenerated** értékeket úgy korlátozzák, hogy a lehető legkeskenyebbek legyenek, jelentős javulást eredményez a lekérdezési teljesítmény, mivel jelentősen korlátozza a feldolgozandó adatok mennyiségét.
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>A keresési és a Union operátorok szükségtelen használatának elkerülése
@@ -300,6 +304,8 @@ SecurityEvent
 
 Azure Monitor naplókban lévő összes napló particionálva van a **TimeGenerated** oszlop szerint. Az elérni kívánt partíciók száma közvetlenül kapcsolódik az időtartományhoz. Az időtartomány csökkentése a leghatékonyabb megoldás a gyors lekérdezés-végrehajtás biztosításához.
 
+A 15 napnál hosszabb időtartamú lekérdezések olyan lekérdezések, amelyek túlzott erőforrást használnak. A 90 napnál hosszabb időtartamú lekérdezések visszaélésszerű lekérdezésnek minősülnek, és lehetséges, hogy szabályozva vannak.
+
 Az időtartomány beállítható az időtartomány-választóval a Log Analytics képernyőn a [lekérdezési hatókör és az időtartomány Azure Monitor log Analyticsban](scope.md#time-range)leírt módon. Ez az ajánlott módszer, mivel a kiválasztott időtartomány átadása a háttérnek a lekérdezés metaadatainak használatával történik. 
 
 Egy másik módszer, ha explicit módon belefoglalja a lekérdezés **TimeGenerated** a [Where](/azure/kusto/query/whereoperator) feltételt. Ezt a módszert kell használnia, mivel biztosítja, hogy az időtartam rögzített, még akkor is, ha a lekérdezés más felületről van használatban.
@@ -389,6 +395,9 @@ Több eset is létezik, ha a rendszer nem tud pontos mérési értéket biztosí
 ## <a name="age-of-processed-data"></a>Feldolgozott adatmennyiség kora
 Az Azure Adatkezelő számos tárolási szintet használ: memóriabeli, helyi SSD-lemezeket és sokkal lassabb Azure-blobokat. Minél újabb adatról van szó, annál nagyobb a valószínűsége, hogy egy nagyobb teljesítményű, kisebb késéssel rendelkező, a lekérdezés időtartamát és a PROCESSZORt is csökkenti. Az adatoktól eltérő esetben a rendszer gyorsítótárat is tartalmaz a metaadatokhoz. Minél régebbiek az adatok, annál kisebb a metaadatok a gyorsítótárban.
 
+A 14 napnál hosszabb ideig feldolgozó lekérdezések olyan lekérdezésnek minősülnek, amely túlzott erőforrást használ.
+
+
 Míg egyes lekérdezések a régi adatok használatát igénylik, vannak olyan esetek, amikor a régi adatokat tévesen használják. Ez akkor fordul elő, ha a lekérdezések végrehajtása nem biztosít időtartományt a meta-adatokban, és nem minden táblázat hivatkozása tartalmazza a **TimeGenerated** oszlop szűrőjét. Ezekben az esetekben a rendszer megvizsgálja az adott táblázatban tárolt összes adattípust. Ha az adatok megőrzése hosszú, akkor a hosszú időtartományokra, így az adatmegőrzési időszakot megelőzően lévő adatokra is vonatkozhat.
 
 Ilyen eset például a következő lehet:
@@ -408,6 +417,8 @@ Több olyan helyzet is előfordulhat, amikor egyetlen lekérdezést hajthat vég
 A régiók közötti lekérdezés végrehajtása megköveteli, hogy a rendszer szerializálást és átvitelt hajtson végre a közbenső adatok háttérbeli nagy adattömbökben, amelyek általában jóval nagyobbak a lekérdezés végső eredményeinél. Emellett korlátozza a rendszerek optimalizálási, heurisztikus és használati lehetőségeit is.
 Ha nincs valós ok az összes ilyen régió vizsgálatára, állítsa be úgy a hatókört, hogy kevesebb régióra kiterjedjen. Ha az erőforrás hatóköre kisebb, de még sok régiót használ, előfordulhat, hogy helytelen a konfiguráció. A naplókat és a diagnosztikai beállításokat például különböző régiókban lévő különböző munkaterületekre küldik, vagy több diagnosztikai beállítási konfiguráció is van. 
 
+A több mint 3 régiót átölelő lekérdezés olyan lekérdezésnek minősül, amely túlzott erőforrást használ. A több mint 6 régióra kiterjedő lekérdezések visszaélésszerű lekérdezésnek minősülnek, és lehetséges, hogy szabályozva vannak.
+
 > [!IMPORTANT]
 > Ha egy lekérdezés több régióban fut, a processzor és az adatmérések nem lesznek pontosak, és csak az egyik régióban jelennek meg a mérések.
 
@@ -420,6 +431,8 @@ Több munkaterület használata a következő eredményekből járhat:
 - Ha egy erőforrás-hatókörű lekérdezés beolvassa az adatgyűjtést, és az adattárolás több munkaterületen történik.
  
 A lekérdezések régiók közötti és több fürtre kiterjedő végrehajtása megköveteli, hogy a rendszer szerializálja és átvigye a háttérbeli adatok nagy részét, amely általában jóval nagyobb a lekérdezés végső eredményeinél. Emellett korlátozza az optimalizálások, a heurisztikus műveletek és a gyorsítótárak kihasználásának rendszerképességét is.
+
+A több mint 5 munkaterületre kiterjedő lekérdezés olyan lekérdezésnek minősül, amely túlzott erőforrást használ. A lekérdezések legfeljebb 100 munkaterületre terjedhetnek ki.
 
 > [!IMPORTANT]
 > Egyes többmunkaterületos helyzetekben a processzor-és adatmérések nem pontosak, és a mérések csak néhány munkaterületnek felelnek meg.

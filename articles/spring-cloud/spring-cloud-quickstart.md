@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – az első Azure Spring Cloud-alkalmazás üzembe helyezése
+title: Gyorsútmutató – Az első Azure Spring Cloud-alkalmazás üzembe helyezése
 description: Ebben a rövid útmutatóban egy Spring Cloud Hello-alkalmazást helyezünk üzembe az Azure Spring Cloud-on.
 author: bmitchell287
 ms.service: spring-cloud
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 067195cfef35863a7bcc314a55b4bf1ff8a3ccd7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 6a7a489367aa7348a3449a72de6889476e5d38db
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146957"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177599"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -46,17 +46,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
   ![Inicializálás lap](media/spring-cloud-quickstart-java/initializr-page.png)
 
-1. Kattintson a **generált** elemre, ha az összes függőség be van állítva. Töltse le és csomagolja ki a csomagot, majd adja hozzá a következő függőséget az alkalmazás `pom.xml` fájljához.
-
-    ```xml
-        <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-    ```
-
-1. Hozzon létre egy webes vezérlőt egy egyszerű webalkalmazáshoz a következő módon való hozzáadásával `src/main/java/com/example/hellospring/HelloController.java` :
+1. Kattintson a **generált** elemre, ha az összes függőség be van állítva. Töltse le és csomagolja ki a csomagot, majd hozzon létre egy webes vezérlőt egy egyszerű webalkalmazáshoz a `src/main/java/com/example/hellospring/HelloController.java` következőképpen:
 
     ```java
     package com.example.hellospring;
@@ -214,7 +204,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > * Szolgáltatási példány kiépítése
 > * Az alkalmazás létrehozása és üzembe helyezése nyilvános végponttal
 > * Valós idejű folyamatos átviteli naplók
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [A szolgáltatás létrehozása és futtatása](spring-cloud-quickstart-sample-app-introduction.md)
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2b68c4857d3d688c42779be9b5f5fa6e43e0403e
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: c960a4aeaeea41f23c7f29351b9205c4bbf21454
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116898"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177227"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure Spring Cloud-alkalmazáshoz való összekapcsolásához
 
@@ -26,7 +26,7 @@ Azure Key Vault a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz 
 * [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key Vault és a Spring Cloud karaktert is tartalmazza az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create): paranccsal.
 
 ```azurecli-interactive
@@ -114,13 +114,13 @@ Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Has
 
     @SpringBootApplication
     @RestController
-    public class SecretsApplication implements CommandLineRunner {
+    public class DemoApplication implements CommandLineRunner {
 
         @Value("${connectionString}")
         private String connectionString;
 
         public static void main(String[] args) {
-          SpringApplication.run(SecretsApplication.class, args);
+          SpringApplication.run(DemoApplication.class, args);
         }
 
         @GetMapping("get")
@@ -149,7 +149,7 @@ Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Has
     mvn clean package
     ```
 
-5. Most már üzembe helyezheti az alkalmazást az Azure-ban az Azure CLI paranccsal `az spring-cloud app deploy` . 
+5. Most már üzembe helyezheti az alkalmazást az Azure-ban az Azure CLI paranccsal  `az spring-cloud app deploy` . 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/demo-0.0.1-SNAPSHOT.jar
@@ -201,7 +201,7 @@ A Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a tokenekhez, 
     mvn clean package
     ```
 
-5. Most telepítse az alkalmazást az Azure-ba az Azure CLI paranccsal `az spring-cloud app deploy` . 
+5. Most telepítse az alkalmazást az Azure-ba az Azure CLI paranccsal  `az spring-cloud app deploy` . 
 
     ```azurecli
     az spring-cloud app deploy -n "springapp" -s "myspringcloud" -g "myResourceGroup" --jar-path target/asc-managed-identity-keyvault-sample-0.1.0.jar

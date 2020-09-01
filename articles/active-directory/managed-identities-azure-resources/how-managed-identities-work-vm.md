@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb5355d4c83961d87ad4b880f6b3758b212e74dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014349"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178671"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Az Azure-erőforrások felügyelt identitások használata az Azure Virtual Machines szolgáltatással
 
@@ -55,7 +55,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 3. Azure Resource Manager úgy konfigurálja az identitást a virtuális gépen, hogy az Azure Instance Metadata Service Identity végpontot az egyszerű szolgáltatás ügyfél-azonosítójával és tanúsítvánnyal frissíti.
 
-4. Miután a virtuális gép már rendelkezik identitással, a szolgáltatásnév-adatok használatával biztosítson hozzáférést a virtuális gépnek az Azure-erőforrásokhoz. Az Azure Resource Manager meghívásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával rendelje hozzá a megfelelő szerepkört a virtuális gép szolgáltatásnevéhez az Azure AD-ben. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
+4. Miután a virtuális gép már rendelkezik identitással, a szolgáltatásnév-adatok használatával biztosítson hozzáférést a virtuális gépnek az Azure-erőforrásokhoz. Azure Resource Manager meghívásához az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával rendelje hozzá a megfelelő szerepkört a virtuálisgép-szolgáltatáshoz. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
 
 5. A virtuális gépen futó kód az Azure-példány metaadatainak szolgáltatásának végpontján igényelhet jogkivonatot, amely csak a virtuális gépről érhető el: `http://169.254.169.254/metadata/identity/oauth2/token`
     - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Az Azure Resource Manager hitelesítéséhez használja a `resource=https://management.azure.com/` paramétert.
@@ -73,7 +73,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 
 3. A Azure Resource Manager kérést kap a felhasználó által hozzárendelt felügyelt identitás konfigurálására egy virtuális gépen, és frissíti az Azure Instance Metadata Service Identity végpontot a felhasználó által hozzárendelt felügyelt identitási szolgáltatás egyszerű ügyfelének azonosítójával és tanúsítványával.
 
-4. Miután a felhasználó által hozzárendelt felügyelt identitás létrejött, a szolgáltatásnév-adatok használatával biztosítson hozzáférést az identitásnak az Azure-erőforrásokhoz. Az Azure Resource Manager meghívásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával rendelje hozzá a megfelelő szerepkört a felhasználó által hozzárendelt identitás szolgáltatásnevéhez az Azure AD-ben. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
+4. Miután a felhasználó által hozzárendelt felügyelt identitás létrejött, a szolgáltatásnév-adatok használatával biztosítson hozzáférést az identitásnak az Azure-erőforrásokhoz. Azure Resource Manager meghívásához az Azure RBAC használatával rendelje hozzá a megfelelő szerepkört a felhasználó által hozzárendelt identitás egyszerű szolgáltatásához. A Key Vault meghívásához adjon hozzáférést a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
 
    > [!Note]
    > Ezt a lépést a 3. lépés előtt is végrehajthatja.
@@ -87,7 +87,7 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az Azure-erőforrások felügyelt identitásai szolgáltatással a következő rövid útmutatók segítségével:
 

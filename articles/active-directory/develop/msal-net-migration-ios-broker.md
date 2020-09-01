@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed29752e0b5f2ee9acf0382ef96e1b685f9cc886
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068507"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177431"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.NET-ből a MSAL.NET-be
 
@@ -240,6 +240,19 @@ Példa:
 
 További információ arról, hogyan regisztrálhatók az átirányítási URI a Azure Portalban: [7. lépés: átirányítási URI hozzáadása az alkalmazás regisztrálásához](msal-net-use-brokers-with-xamarin-apps.md#step-7-add-a-redirect-uri-to-your-app-registration).
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="step-7-set-the-entitlementsplist"></a>**7. lépés: a jogosultságok beállítása. plist**
+
+A kulcstartó hozzáférésének engedélyezése a *jogosultságok. plist* fájlban:
+
+```xml
+ <key>keychain-access-groups</key>
+    <array>
+      <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
+    </array>
+```
+
+További információ a kulcstartók hozzáférésének engedélyezéséről: a [kulcstartók hozzáférésének engedélyezése](msal-net-xamarin-ios-considerations.md#enable-keychain-access).
+
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg [, hogyan Xamarin az iOS-specifikus szempontokat a MSAL.net](msal-net-xamarin-ios-considerations.md).

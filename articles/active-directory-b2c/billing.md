@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f9adf6ce4559234eec74c92f09aa752eb1f9ab51
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386062"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177329"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
 
@@ -132,11 +133,24 @@ A szerepköralapú hozzáférés-vezérlést használó Azure AD B2C felügyelet
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C bérlő számlázási előfizetésének módosítása
 
-Azure AD B2C bérlők áthelyezhetők egy másik előfizetésbe, ha a forrás-és a cél-előfizetések ugyanabban a Azure Active Directory-bérlőn belül vannak.
+### <a name="move-using-azure-resource-manager"></a>Áthelyezés a Azure Resource Manager használatával
+
+Azure AD B2C bérlők áthelyezhetők egy másik előfizetésbe Azure Resource Manager ha a forrás-és a cél-előfizetések ugyanabban a Azure Active Directory bérlőn belül vannak.
 
 Ha szeretné megismerni, hogyan helyezhetők át az Azure-erőforrások, például a Azure AD B2C bérlője egy másik előfizetésbe, tekintse meg az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 Mielőtt elkezdené az áthelyezést, olvassa el a teljes cikket, amely részletesen ismerteti az ilyen áthelyezésre vonatkozó korlátozásokat és követelményeket. Az erőforrások áthelyezésére vonatkozó utasítások mellett olyan kritikus információkat is tartalmaz, mint például az áthelyezés előtti ellenőrzőlista, valamint a mozgatási művelet ellenőrzése.
+
+### <a name="move-by-un-linking-and-re-linking"></a>Áthelyezés a kapcsolat megszüntetése és újbóli csatolása között
+
+Ha a forrás-és a cél-előfizetések különböző Azure Active Directory bérlőhöz vannak társítva, akkor a fentiekben leírtak szerint nem hajtható végre az áthelyezés Azure Resource Manager. Ugyanakkor továbbra is elérheti ugyanezt a végeredményt, ha a Azure AD B2C bérlőt a forrás-előfizetésből kapcsolja össze, és újra összekapcsolja azt a cél előfizetéssel. Ez a módszer biztonságos, mert az egyetlen törölt objektum a *Számlázási hivatkozás*, nem pedig a Azure ad B2C bérlő. A felhasználók, alkalmazások, felhasználói folyamatok és egyéb eszközök egyikét sem érinti a rendszer.
+
+1. Magát a Azure AD B2C címtárban hívja meg a [vendég felhasználót](user-overview.md#guest-user) a cél Azure ad-bérlőtől (az a cél, amelyhez az Azure-előfizetés kapcsolódik), és győződjön meg arról, hogy a felhasználó rendelkezik a **globális rendszergazdai** szerepkörrel a Azure ad B2C.
+1. Navigáljon a forrás Azure-előfizetés Azure AD B2Cét képviselő *Azure-erőforráshoz* , amelyet a fenti [Azure ad B2C bérlői erőforrások kezelése](#manage-your-azure-ad-b2c-tenant-resources) című szakaszban ismertetett. Ne váltson a tényleges Azure AD B2C bérlőre.
+1. Kattintson a **Törlés** gombra az **Áttekintés** oldalon. Ez *nem* törli a kapcsolódó Azure ad B2C bérlő felhasználóit vagy alkalmazásait. Csupán eltávolítja a számlázási hivatkozást a forrás-előfizetésből.
+1. Jelentkezzen be a Azure Portalba az 1. lépésben Azure AD B2C rendszergazdaként hozzáadott felhasználói fiókkal. Ezután navigáljon a cél Azure Active Directory bérlőhöz kapcsolódó Azure-előfizetéshez. 
+1. Hozza létre újra a számlázási hivatkozást a cél előfizetésben a fenti [hivatkozás létrehozása](#create-the-link) eljárás követésével.
+1. A Azure AD B2C-erőforrás már át lett helyezve a cél Azure-előfizetésre (a célként megadott Azure Active Directoryhoz csatolva), és ezt az előfizetést fogja használni.
 
 ## <a name="next-steps"></a>További lépések
 

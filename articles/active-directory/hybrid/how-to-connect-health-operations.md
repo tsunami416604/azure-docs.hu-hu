@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bdcf5ded2f2cf49048b70dedb11f25e67766e938
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828795"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177618"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
 Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
@@ -74,7 +74,7 @@ Azure AD Connect Health a Active Directory összevonási szolgáltatások (AD FS
 2. A **kiszolgáló** paneljén, a műveleti sávon kattintson a **Törlés**elemre.
 ![Képernyőkép a Azure AD Connect Health delete Serverről](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Erősítse meg a kiszolgáló nevének beírásával a megerősítő mezőben.
-4. Kattintson a **Törlés** gombra.
+4. Kattintson a **Delete** (Törlés) gombra.
 
 Azure Active Directory Domain Services Azure AD Connect Health:
 
@@ -82,7 +82,7 @@ Azure Active Directory Domain Services Azure AD Connect Health:
 2. Válassza ki az eltávolítandó tartományvezérlőt.
 3. A műveleti sávon kattintson a **Kijelöltek törlése**elemre.
 4. Erősítse meg a kiszolgáló törlésére irányuló műveletet.
-5. Kattintson a **Törlés** gombra.
+5. Kattintson a **Delete** (Törlés) gombra.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Szolgáltatási példány törlése Azure AD Connect Health szolgáltatásból
 Bizonyos esetekben érdemes lehet eltávolítani egy szolgáltatási példányt. A következő lépésekkel tudnia kell, hogyan távolíthat el egy szolgáltatási példányt a Azure AD Connect Health szolgáltatásból.
@@ -99,17 +99,17 @@ A szolgáltatási példányok törlésekor vegye figyelembe a következőket:
 2. A **szolgáltatás** panelen, a műveleti sávon kattintson a **Törlés**elemre. 
 ![Képernyőkép a Azure AD Connect Health delete szolgáltatásról](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Erősítse meg a szolgáltatás nevének beírásával a megerősítő mezőben (például: sts.contoso.com).
-4. Kattintson a **Törlés** gombra.
+4. Kattintson a **Delete** (Törlés) gombra.
    <br><br>
 
 [//]: # (A RBAC szakasz kezdete)
-## <a name="manage-access-with-role-based-access-control"></a>Hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel
-A Azure AD Connect Health [Azure szerepköralapú hozzáférés-vezérlése (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) hozzáférést biztosít a felhasználók és csoportok számára a globális rendszergazdáktól eltérő csoportokhoz. A RBAC szerepköröket rendel hozzá a kívánt felhasználókhoz és csoportokhoz, és lehetővé teszi a címtárban lévő globális rendszergazdák korlátozását.
+## <a name="manage-access-with-azure-rbac"></a>Hozzáférés kezelése az Azure RBAC
+A Azure AD Connect Health [Azure szerepköralapú hozzáférés-vezérlése (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) hozzáférést biztosít a felhasználók és csoportok számára a globális rendszergazdáktól eltérő csoportokhoz. Az Azure RBAC szerepköröket rendel hozzá a kívánt felhasználókhoz és csoportokhoz, és lehetővé teszi a címtárban lévő globális rendszergazdák korlátozását.
 
 ### <a name="roles"></a>Szerepkörök
 Azure AD Connect Health a következő beépített szerepköröket támogatja:
 
-| Role | Engedélyek |
+| Szerepkör | Engedélyek |
 | --- | --- |
 | Tulajdonos |A tulajdonosok *kezelhetik a hozzáférést* (például hozzárendelhet egy szerepkört egy felhasználóhoz vagy csoportjához), *megtekintheti az összes információt* (például a riasztások megtekintése) a portálról, és *módosíthatja a beállításokat* (például az e-mailes értesítéseket) a Azure ad Connect Healthon belül. <br>Alapértelmezés szerint az Azure AD globális rendszergazdái ehhez a szerepkörhöz vannak rendelve, és ez nem módosítható. |
 | Közreműködő |A közreműködők megtekinthetik az *összes információt* (például a riasztások megtekintése) a portálról, és *módosíthatják a beállításokat* (például az e-mailes értesítéseket) a Azure ad Connect Healthon belül. |
@@ -135,12 +135,12 @@ Ha engedélyezni szeretné, hogy a felhasználói hozzáférés a Azure AD Conne
    ![Képernyőkép a Azure AD Connect Health Resource Sidebarról](./media/how-to-connect-health-operations/startRBAC.png)
 2. Válassza a **Hozzáadás** lehetőséget.
 3. A **szerepkör kiválasztása** panelen válasszon ki egy szerepkört (például **tulajdonos**).<br>
-   ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_add.png)
+   ![Képernyőkép a Azure AD Connect Health és az Azure RBAC konfigurálási menüjéről](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** elemre.
-   ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. Válassza az **OK** lehetőséget.<br>
+   ![A Azure AD Connect Health és az Azure RBAC szerepkör-listájának képernyőképe](./media/how-to-connect-health-operations/RBAC_select_users.png)
+5. Kattintson az **OK** gombra.<br>
 6. A szerepkör-hozzárendelés befejezése után a felhasználók és csoportok megjelennek a listában.<br>
-   ![Képernyőkép Azure AD Connect Health RBAC-felhasználók ablakról, új felhasználók kiemelésével](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Képernyőkép a Azure AD Connect Health és az Azure RBAC és az új Kiemelt felhasználókról](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 Most a felsorolt felhasználók és csoportok hozzáférnek a hozzájuk rendelt szerepköröknek megfelelően.
 
@@ -153,7 +153,7 @@ Most a felsorolt felhasználók és csoportok hozzáférnek a hozzájuk rendelt 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: a panel helyének megosztása felhasználókkal vagy csoportokkal
 1. Az engedélyek kiosztása után a felhasználó a következő lépésekkel [here](https://aka.ms/aadconnecthealth)férhet hozzá Azure ad Connect Healthhoz.
 2. A panelen a felhasználó rögzítheti a panelt vagy annak különböző részeit az irányítópulton. Egyszerűen kattintson a **rögzítés az irányítópulton** ikonra.<br>
-   ![Képernyőkép a Azure AD Connect Health RBAC PIN-kódjáról, a PIN ikon kiemelésével](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![Képernyőkép a Azure AD Connect Health és az Azure RBAC PIN-kódjáról, a PIN ikon kiemelésével](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > A hozzárendelt olvasó szerepkörrel rendelkező felhasználók nem tudnak Azure AD Connect Health bővítményt beolvasni az Azure piactéren. A felhasználó nem tudja végrehajtani a szükséges "létrehozás" műveletet. A felhasználó továbbra is elérheti a panelt az előző hivatkozásra kattintva. A későbbi használat érdekében a felhasználó rögzítheti a panelt az irányítópulton.
@@ -161,8 +161,8 @@ Most a felsorolt felhasználók és csoportok hozzáférnek a hozzájuk rendelt 
 >
 
 ### <a name="remove-users-or-groups"></a>Felhasználók vagy csoportok eltávolítása
-Azure AD Connect Health RBAC felvett felhasználót vagy csoportot is eltávolíthat. Egyszerűen kattintson a jobb gombbal a felhasználóra vagy csoportra, majd válassza az **Eltávolítás**lehetőséget.<br>
-![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról, a Kiemelt eltávolítással](./media/how-to-connect-health-operations/RBAC_remove.png)
+Eltávolíthatja a Azure AD Connect Health és az Azure RBAC felvett felhasználókat vagy csoportokat. Egyszerűen kattintson a jobb gombbal a felhasználóra vagy csoportra, majd válassza az **Eltávolítás**lehetőséget.<br>
+![Képernyőkép a Azure AD Connect Healthről és az Azure RBAC a Kiemelt eltávolítással](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (RBAC szakasz vége)
 

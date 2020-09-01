@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: A távoli dolgozók védelme
           href: concept-secure-remote-workers.md
-        - name: Folyamatos hozzáférés-kiértékelés
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Csoportok és felhasználók
       items:
         - name: Csoport- és hozzáférés-kezelés
