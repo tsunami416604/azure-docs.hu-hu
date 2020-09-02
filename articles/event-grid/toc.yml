@@ -94,8 +94,6 @@
       href: template-samples.md
     - name: Kódminták
       href: /samples/browse/?term=Event+Grid
-    - name: Az Azure Policy beépített elemei
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Event Grid-terminológia
@@ -296,6 +294,9 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: SDK-k
       href: sdk-overview.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

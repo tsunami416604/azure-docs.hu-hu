@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 – Fürt frissítése
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Fürtök és számítási feladatok
@@ -60,7 +55,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Storage
+    - name: Tárolás
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -388,6 +383,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

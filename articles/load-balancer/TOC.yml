@@ -47,8 +47,6 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Újdonságok
-      href: whats-new.md
     - name: Összetevők
       href: components.md
     - name: Alapelvek

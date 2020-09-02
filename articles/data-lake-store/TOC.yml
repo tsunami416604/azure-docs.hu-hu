@@ -22,11 +22,6 @@
       href: data-lake-store-get-started-powershell.md
     - name: Az Azure parancssori felület használata
       href: data-lake-store-get-started-cli-2.0.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Útmutató
   items:
     - name: Adatok betöltése és áthelyezése
@@ -177,6 +172,9 @@
       href: /azure/templates/microsoft.datalakestore/allversions
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dls'
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Azure-ütemterv

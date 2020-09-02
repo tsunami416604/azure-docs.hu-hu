@@ -27,9 +27,6 @@
   items:
     - name: Key Vault-kódminták
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Referencia
   items:
     - name: Azure PowerShell
@@ -51,6 +48,9 @@
       displayName: ARM
     - name: Saját kulcs használatának specifikációja
       href: byok-specification.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

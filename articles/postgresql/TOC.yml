@@ -73,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Egyetlen kiszolgáló
@@ -393,6 +390,9 @@
           href: reference-hyperscale-parameters.md
         - name: Rendszertáblák
           href: reference-hyperscale-metadata.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

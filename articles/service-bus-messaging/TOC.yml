@@ -72,9 +72,6 @@
   items:
     - name: Service Bus-példák
       href: service-bus-samples.md
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Prémium szintű üzenettovábbítás
@@ -272,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: SQLRuleAction-szintaxis
       href: service-bus-messaging-sql-rule-action.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: GYIK

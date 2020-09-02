@@ -26,10 +26,6 @@
       href: resource-manager-template.md
     - name: Diagnosztikai naplózás
       href: diagnostic-logging.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      href: ./policy-samples.md
 - name: Biztonság
   items:
     - name: Cognitive Services – biztonság
@@ -86,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'Recept: Art Explorer'
           href: ./big-data/recipes/art-explorer.md
+- name: Referencia
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Azure-ütemterv

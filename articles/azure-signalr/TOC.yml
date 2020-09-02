@@ -31,8 +31,6 @@
       href: 'https://github.com/aspnet/AzureSignalR-samples'
     - name: Azure CLI
       href: signalr-reference-cli.md
-    - name: Az Azure Policy beépített elemei
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Az Azure SignalR szolgáltatás belső elemei
@@ -103,6 +101,9 @@
       href: 'https://docs.microsoft.com/aspnet/core/signalr'
     - name: Azure SignalR Service-protokoll
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Megoldások

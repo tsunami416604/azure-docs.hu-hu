@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST-minták
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Teljes szöveges keresés
@@ -496,6 +493,9 @@
           items:
             - name: Megnevezett entitások felismerése
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Azure közösségi támogatás

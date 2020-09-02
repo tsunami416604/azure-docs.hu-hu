@@ -161,7 +161,8 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.cache/allversions
     - name: Az Azure Policy beépített elemei
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Redis parancsok
       href: 'https://redis.io/commands#'
 - name: További források

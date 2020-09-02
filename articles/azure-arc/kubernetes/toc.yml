@@ -4,12 +4,6 @@
   items:
     - name: Az Arc-kompatibilis Kubernetes ismertetése
       href: overview.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      items:
-        - name: Arc-kompatibilis Kubernetes
-          href: policy-samples.md
 - name: Útmutatók
   items:
     - name: Csatlakozás az Azure Archoz
@@ -34,3 +28,8 @@
           href: deploy-azure-iot-edge-workloads.md
     - name: Hibaelhárítás
       href: Troubleshooting.md
+- name: Referencia
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

@@ -633,9 +633,6 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
-        - name: Az Azure Policy beépített elemei
-          displayName: 'samples, policies, definitions'
-          href: ./database/policy-samples.md
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Felügyelt SQL-példány (SQL MI)
@@ -911,9 +908,6 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
-        - name: Az Azure Policy beépített elemei
-          displayName: 'samples, policies, definitions'
-          href: ./database/policy-samples.md
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure virtuális gépen futó SQL Server
@@ -1080,6 +1074,9 @@
               href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
             - name: REST
               href: /rest/api/
+            - name: Az Azure Policy beépített elemei
+              displayName: 'samples, policies, definitions'
+              href: ./database/policy-reference.md
         - name: További források
           items:
             - name: GYIK
@@ -1180,6 +1177,9 @@
           href: /sql/connect/python/python-driver-for-sql-server
         - name: Ruby
           href: /sql/connect/ruby/ruby-driver-for-sql-server
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./database/policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

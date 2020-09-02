@@ -75,9 +75,6 @@
   items:
     - name: Kódminták
       href: event-hubs-samples.md
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Event Hubs-terminológia
@@ -290,6 +287,9 @@
       href: event-hubs-quotas.md
     - name: Apache Kafka-konfigurációk
       href: apache-kafka-configurations.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése – parancssori felület
           href: tutorial-sap-hana-manage-cli.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Támogatási mátrixok
@@ -428,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Megfelelőség

@@ -74,9 +74,6 @@
       href: sample-scripts-azure-cli.md
     - name: Java-kapcsolatkészletezés
       href: sample-scripts-java-connection-pooling.md
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Adatbázis és kiszolgálók
@@ -332,6 +329,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Felügyelet – Tárolt eljárások
       href: reference-stored-procedures.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Üzembehelyezési sablonok

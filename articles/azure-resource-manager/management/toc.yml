@@ -4,11 +4,6 @@
   items:
     - name: Mi az a Resource Manager?
       href: overview.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Előfizetés- és szolgáltatáskorlátok
@@ -17,8 +12,6 @@
       href: resource-name-rules.md
     - name: A Resource Manager-alapú és a klasszikus üzemi modell
       href: deployment-models.md
-    - name: Gyakori Azure-beli biztonsági attribútumok
-      href: azure-resource-manager-security-controls.md
     - name: Erőforrás-szolgáltatók szolgáltatás alapján
       href: azure-services-resource-providers.md
     - name: Bővítményerőforrás-típusok
@@ -30,6 +23,8 @@
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Gyakori Azure-beli biztonsági attribútumok
+          href: azure-resource-manager-security-controls.md
 - name: Útmutató
   items:
     - name: Áthelyezés – erőforráscsoportok/előfizetések
@@ -172,6 +167,9 @@
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
       href: /python/api/overview/azure/resources?view=azure-python
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Azure-ütemterv

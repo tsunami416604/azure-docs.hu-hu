@@ -47,11 +47,6 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Az Azure Spring Cloud üzembe helyezése virtuális hálózaton
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Az alkalmazások és az üzembe helyezés bemutatása
@@ -126,3 +121,6 @@
       href: spring-cloud-faq.md
     - name: REST API-referencia
       href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
