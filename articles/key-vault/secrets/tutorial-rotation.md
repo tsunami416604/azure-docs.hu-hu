@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5b03e22fee2bf1bd662c152bf1b5c2f83a4358
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019912"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378015"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
 
-Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt identitás](../general/managed-identity.md)használata, de vannak olyan helyzetek, amikor ez nem lehetséges. Ezekben az esetekben a rendszer hozzáférési kulcsokat vagy titkos kódokat használ. Rendszeresen forgatni kell a hozzáférési kulcsokat vagy a titkokat.
+Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt identitás](../general/authentication.md)használata, de vannak olyan helyzetek, amikor ez nem lehetséges. Ezekben az esetekben a rendszer hozzáférési kulcsokat vagy titkos kódokat használ. Rendszeresen forgatni kell a hozzáférési kulcsokat vagy a titkokat.
 
 Ez az oktatóanyag bemutatja, hogyan automatizálható a titkok rendszeres elforgatása olyan adatbázisokhoz és szolgáltatásokhoz, amelyek a hitelesítő adatok egy készletét használják. Pontosabban, ez az oktatóanyag a Azure Key Vaultokban tárolt jelszavakat SQL Server Azure Event Grid értesítés által aktivált függvény használatával forgatja el:
 
@@ -46,7 +46,7 @@ Az alábbi telepítési hivatkozás használható, ha nincs meglévő Key Vault 
 
 1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation**.
 1. Az **SQL**-rendszergazdai bejelentkezés területen írja be az SQL-rendszergazda bejelentkezési nevét. 
-1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
     ![Erőforráscsoport létrehozása](../media/rotate2.png)
@@ -113,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-A functions-alkalmazások létrehozásáról és a felügyelt identitásnak a Key Vault eléréséhez való hozzáféréséről további információért lásd: [Function App-alkalmazás létrehozása a Azure Portal](../../azure-functions/functions-create-function-app-portal.md) és a [Key Vault hitelesítés felügyelt identitással](../general/managed-identity.md).
+A Function alkalmazás létrehozásával és a felügyelt identitások Key Vault való elérésével kapcsolatos információkért tekintse meg a [Function-alkalmazás létrehozása a Azure Portal](/azure/azure-functions/functions-create-function-app-portal), a [felügyelt identitás használata a App Service és a Azure functions](/azure/app-service/overview-managed-identity)számára című témakört, és [rendeljen hozzá egy Key Vault hozzáférési szabályzatot a Azure Portal használatával](../general/assign-access-policy-portal.md).
 
 ### <a name="rotation-function"></a>Rotációs függvény
 Az előző lépésben üzembe helyezett esemény egy olyan eseményt használ, amely a Key Vault és az SQL-adatbázis frissítésével elindítja a titkos kód elforgatását. 
@@ -242,7 +242,7 @@ https://akvrotation-app.azurewebsites.net/
 
 Amikor az alkalmazás megnyílik a böngészőben, látni fogja a **generált titkos értéket** , és egy **adatbázishoz kapcsolódó** , *igaz*értéket.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 - Oktatóanyag: [az erőforrások rotációja két hitelesítő adatokkal](tutorial-rotation-dual.md)
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](../general/event-grid-overview.md)

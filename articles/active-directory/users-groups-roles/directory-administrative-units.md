@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795898"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376383"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Felügyeleti egységek felügyelete Azure Active Directoryban (előzetes verzió)
 
@@ -27,7 +27,7 @@ Ez a cikk a Azure Active Directory (Azure AD) felügyeleti egységeit ismerteti.
 
 A felügyeleti egységek lehetővé teszik olyan rendszergazdai engedélyek megadását, amelyek az Ön által meghatározott szervezeti egységre, régióra vagy más szegmensre korlátozódnak. A felügyeleti egységekkel engedélyeket delegálhat a regionális rendszergazdáknak, vagy megadhatja a szabályzatot egy részletességi szinten. A felhasználói fiók rendszergazdája például frissítheti a profil adatait, alaphelyzetbe állíthatja a jelszavakat, és hozzárendelheti a licenceket a felhasználók számára a felügyeleti egységben.
 
- A regionális támogatási szakemberek számára való delegálás például az [ügyfélszolgálati rendszergazda](directory-assign-admin-roles.md#helpdesk-administrator) szerepkör, amely csak az általuk támogatott régióban lévő felhasználók kezelésére korlátozódik.
+A regionális támogatási szakemberek számára való delegálás például az [ügyfélszolgálati rendszergazda](directory-assign-admin-roles.md#helpdesk-administrator) szerepkör, amely csak az általuk támogatott régióban lévő felhasználók kezelésére korlátozódik.
 
 ## <a name="deployment-scenario"></a>Központi telepítési forgatókönyv
 
@@ -54,7 +54,7 @@ Ebben az előzetes kiadásban a felügyeleti egységeket a Azure Portal, a Power
 
 A felügyeleti egységek az Azure AD-erőforrások logikai csoportosítására használhatók. Egy olyan szervezet esetében például, amelynek az IT-részlege globálisan elszórtan van, érdemes lehet olyan felügyeleti egységeket létrehozni, amelyek meghatározzák ezeket a földrajzi határokat. Egy másik forgatókönyvben, amelyben a többnemzetiségű szervezetek különböző "alszervezetekkel" rendelkeznek, amelyek a műveletek részben autonómok, minden egyes alszervezetet egy felügyeleti egység képvisel.
 
-A felügyeleti egységek létrehozási feltételeit a szervezet egyedi követelményei vezérlik. A felügyeleti egységek közösen határozzák meg a szerkezetet a M365-szolgáltatások között. Javasoljuk, hogy a felügyeleti egységeket a M365-szolgáltatásokban való használatuk szem előtt tartásával készítse elő. A felügyeleti egységek maximális értékét lekérheti, ha közös erőforrásokat szeretne hozzárendelni a M365 a felügyeleti egység alatt.
+A felügyeleti egységek létrehozási feltételeit a szervezet egyedi követelményei vezérlik. A felügyeleti egységek közösen határozzák meg a szerkezetet Microsoft 365 szolgáltatások között. Javasoljuk, hogy a felügyeleti egységeket a használatuk Microsoft 365-szolgáltatásokban való használatának szem előtt tartásával készítse elő. Ha általános erőforrásokat szeretne hozzárendelni egy felügyeleti egység alatt Microsoft 365, akkor a felügyeleti egységek maximális értékét is elérheti.
 
 A szervezeten belüli felügyeleti egységek létrehozását várhatóan a következő szakaszokon keresztül érheti el:
 
@@ -64,7 +64,7 @@ A szervezeten belüli felügyeleti egységek létrehozását várhatóan a köve
 
 ## <a name="currently-supported-scenarios"></a>Jelenleg támogatott forgatókönyvek
 
-A globális rendszergazdák vagy a Kiemelt szerepkörű rendszergazdák az Azure AD-portál használatával felügyeleti egységeket hozhatnak létre, felhasználókat adhatnak hozzá a felügyeleti egységekhez, majd az informatikai munkatársakat a felügyeleti egység hatókörű rendszergazdai szerepköreihez rendelheti hozzá. A felügyeleti egység – a hatókörrel rendelkező rendszergazdák ezt követően az Office 365 portál használatával kezelhetik a felügyeleti egységekben lévő felhasználók alapszintű felügyeletét.
+A globális rendszergazdák vagy a Kiemelt szerepkörű rendszergazdák az Azure AD-portál használatával felügyeleti egységeket hozhatnak létre, felhasználókat adhatnak hozzá a felügyeleti egységekhez, majd az informatikai munkatársakat a felügyeleti egység hatókörű rendszergazdai szerepköreihez rendelheti hozzá. A felügyeleti egység – a hatókörrel rendelkező rendszergazdák ezt követően a felügyeleti egységben lévő felhasználók alapszintű felügyeletére használhatják a Microsoft 365 felügyeleti központot.
 
 Emellett a csoportok a felügyeleti egység tagjaiként is hozzáadhatók, és a felügyeleti egység hatókörű csoport rendszergazdája a PowerShell, a Microsoft Graph és az Azure AD-portál használatával is kezelheti őket.
 
@@ -99,7 +99,7 @@ felügyeleti egység – a csoportos licencelés hatókörön belüli kezelése 
 >
 > A felügyeleti egység hatókörrel rendelkező rendszergazdák nem kezelhetik a dinamikus csoporttagság szabályait.
 
-A felügyeleti egységek hatóköre csak a felügyeleti engedélyekre vonatkozik. Nem akadályozzák meg, hogy a tagok vagy a rendszergazdák az [alapértelmezett felhasználói engedélyeiket](../fundamentals/users-default-permissions.md) használják a felügyeleti egységen kívüli más felhasználók, csoportok vagy erőforrások tallózására. Az Office 365-portálon a hatókörön kívüli rendszergazda felügyeleti egységeken kívüli felhasználók is kiszűrve vannak, de az Azure AD-portálon, a PowerShellben és más Microsoft-szolgáltatásokban is böngészhet más felhasználók között.
+A felügyeleti egységek hatóköre csak a felügyeleti engedélyekre vonatkozik. Nem akadályozzák meg, hogy a tagok vagy a rendszergazdák az [alapértelmezett felhasználói engedélyeiket](../fundamentals/users-default-permissions.md) használják a felügyeleti egységen kívüli más felhasználók, csoportok vagy erőforrások tallózására. A Microsoft 365 felügyeleti központban a rendszer kiszűri a hatókörön kívüli rendszergazda felügyeleti egységén kívüli felhasználókat, de az Azure AD-portálon, a PowerShellben és más Microsoft-szolgáltatásokban is böngészhet más felhasználókkal.
 
 ## <a name="next-steps"></a>Következő lépések
 
