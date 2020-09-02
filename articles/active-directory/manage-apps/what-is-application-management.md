@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafd3d7805924d92354c3de6ded50f17598f80f6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078070"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299881"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
@@ -93,6 +93,6 @@ Az emberi erőforrások célzott alkalmazásai, illetve a felhasználók nagy k�
 
 ## <a name="next-steps"></a>További lépések
 
-- [A gyors üzembe helyezési sorozat az alkalmazások kezelésében az Azure AD-ben](view-applications-portal.md)
+- [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 - [Ismerkedés az alkalmazások integrálásával](plan-an-application-integration.md)
 - [Útmutató a kiépítés automatizálásához](../app-provisioning/user-provisioning.md)

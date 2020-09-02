@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 251dbf6897f7efe56d968122c2ccad7093d39e44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405534"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300051"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
 
@@ -443,7 +443,7 @@ Az olyan böngészőbiztonsági-szabályzatok, mint az Eltérő eredetű erőfor
 > [!NOTE]
 > Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API előfizetési kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokból egy CORS-proxyn keresztül is küldhet kérést. Az ilyen típusú proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
+Fejlesztési célokból egy CORS-proxyn keresztül is küldhet kérést. Az ilyen típusú proxytól kapott válasz `Access-Control-Expose-Headers` fejléce a válaszok fejléceit szűri, és elérhetővé teszi őket a JavaScript számára.
 
 CORS-proxyt könnyedén telepíthet annak érdekében, hogy mintaalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Futtassa ezt a parancsot:
 
@@ -465,7 +465,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az mintaalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatti, kibontható HTTP-fejlécek szakaszban meg kell jelennie az `X-MSEdge-ClientID` fejlécnek. Fontos, hogy ez minden kéréshez ugyanaz legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API 7-es verzió – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: edbb3c1b2ed3e696c304f72c7b40fa926cae2c54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021188"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289817"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban
 
@@ -26,8 +26,8 @@ A befejezést követően tudni fogja, hogyan végezheti el a gyors manuális mó
 
 Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-* Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](spring-cloud-quickstart-launch-app-cli.md) foglalkozó rövid útmutatót.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének. 
+* Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](spring-cloud-quickstart.md) foglalkozó rövid útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Navigáljon a méretezés lapra a Azure Portal
@@ -58,7 +58,7 @@ A skálázási beállítások alkalmazásához válassza a **Mentés** lehetős�
 
 ![A Azure Portal méretezési szolgáltatása](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
-Néhány másodperc elteltével megjelenik az **áttekintő** oldal az Áttekintés oldalon, és további részleteket tartalmaz az **alkalmazás példányai** lapon. a skálázás nem igényli a kód módosítását vagy az újratelepítést.
+Néhány másodperc elteltével megjelenik az **áttekintő** lap az Áttekintés oldalon, és további részleteket tartalmaz az **alkalmazás példányai** lapon. A skálázáshoz nincs szükség kód módosítására vagy újratelepítésre.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
 Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen [korláttal](spring-cloud-quotas.md)van korlátozva, a standard szintre válthat. Ehhez nyissa meg az árképzési szint menüt úgy, hogy először kiválasztja a standard szint oszlopot, és a **frissítés** gombra kattint.

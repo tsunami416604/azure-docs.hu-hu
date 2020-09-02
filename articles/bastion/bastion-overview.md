@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 01/31/2020
+ms.date: 09/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270342"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291874"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
@@ -26,7 +26,7 @@ Az Azure Bastion üzembe helyezése virtuális hálózatonként történik, nem 
 
 Az RDP és az SSH egy olyan alapvető eszköz, amellyel az Azure-ban futó számítási feladatokhoz kapcsolódhat. Az RDP/SSH-portok az interneten keresztül nem kívánatosak, és jelentős veszélyforrásnak tekinthetők. Ez gyakran a protokollok biztonsági rései miatt fordul elő. Ennek a veszélyforrásnak a felszínének a megtalálása érdekében a peremhálózaton nyilvános oldalán a megerősített gazdagépeket (más néven ugrás-kiszolgálókat) is üzembe helyezheti. A megerősített gazdagép-kiszolgálók úgy lettek kialakítva és konfigurálva, hogy ellenálljanak a támadásoknak. A megerősített kiszolgálók RDP-és SSH-kapcsolatot is biztosítanak a megerősített munkaterhelésekhez, valamint a hálózaton belül.
 
-![architektúra](./media/bastion-overview/architecture.png)
+![Azure Bastion-architektúra](./media/bastion-overview/architecture.png)
 
 Ez az ábra egy Azure-alapú központi telepítés architektúráját mutatja be. Ebben a diagramban:
 
@@ -46,6 +46,10 @@ A következő szolgáltatások érhetők el:
 * **Nem kell bajlódnia a NSG kezeléséhez:** Az Azure Bastion egy teljes körűen felügyelt Azure-szolgáltatás, amelyet belsőleg erősítenek, hogy biztonságos RDP/SSH-kapcsolatot biztosítson. Nem kell NSG alkalmaznia az Azure megerősített alhálózaton. Mivel az Azure Bastion magánhálózati IP-címekkel csatlakozik a virtuális gépekhez, a NSG úgy is beállíthatja, hogy csak az Azure-megerősített szolgáltatásból engedélyezze az RDP/SSH-t. Ezzel a megoldással a virtuális gépekhez való biztonságos kapcsolódáshoz szükséges minden alkalommal eltávolítja a NSG kezelését.
 * A **portok vizsgálatával szembeni védelem:** Mivel a virtuális gépeket nem kell nyilvános internetre kiadnia, a virtuális gépek a virtuális hálózatán kívüli rosszindulatú felhasználók által a portok vizsgálatával védve vannak.
 * **Védelem a nulla napi kihasználat ellen. Csak egy helyen kell megerősíteni:** az Azure Bastion egy teljes körűen felügyelt Pásti-szolgáltatás. Mivel a virtuális hálózat peremén helyezkedik el, nem kell aggódnia a virtuális hálózatban lévő virtuális gépek megerősítésével kapcsolatban. Az Azure-platform az Azure-ban megerősített és mindig naprakészen tartja a napi zéró kihasználást.
+
+## <a name="whats-new"></a><a name="new"></a>Újdonságok
+
+Fizessen elő az RSS-hírcsatornára, és tekintse meg az Azure-szolgáltatások legújabb frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion) oldalon.
 
 ## <a name="faq"></a>GYIK
 

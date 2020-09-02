@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82203267"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295262"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
 
@@ -40,12 +40,12 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 3. Válassza az **Üres API** elemet a listából.  
     ![Üres API](media/add-api-manually/blank-api.png)  
 4. Adja meg az API beállításait. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
 Ezen a ponton nincsenek olyan API Management műveletek, amelyek a háttér-API műveleteire mutatnak. Ha olyan műveletet hív meg, amely a háttérön keresztül érhető el, de nem a API Managementon keresztül, akkor a rendszer **404**-as számot kap.
 
 >[!NOTE] 
-> Alapértelmezés szerint az API hozzáadásakor az APIM nem tesz közzé semmilyen műveletet, amíg fel nem veszi az engedélyezési listára (akkor sem, ha az API kapcsolódik valamilyen háttérszolgáltatáshoz). A háttérszolgáltatás engedélyezési listára való felvételéhez hozzon létre egy APIM-műveletet, amely leképezi a háttérműveletet.
+> Alapértelmezés szerint, amikor hozzáad egy API-t, még akkor is, ha egy adott háttér-szolgáltatáshoz csatlakozik, a APIM nem tesz elérhetővé semmilyen műveletet, amíg nem engedélyezi őket. A háttér-szolgáltatás működésének engedélyezéséhez hozzon létre egy APIM műveletet, amely leképezi a háttérben futó műveletet.
 
 ## <a name="add-and-test-an-operation"></a>Művelet hozzáadása és tesztelése
 
@@ -95,7 +95,7 @@ Tesztelje a műveletet az Azure Portalon.  Másik megoldásként a **Fejlesztői
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

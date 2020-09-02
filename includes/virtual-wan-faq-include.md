@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604674"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89303985"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -249,9 +249,12 @@ Ha egy ExpressRoute áramkör csatlakozik a virtuális központhoz, a Microsoft 
 
 A jelenlegi viselkedés az, hogy a ExpressRoute áramköri útvonalat a VNet és a VNet közötti kapcsolathoz részesíti előnyben. Ez azonban nem javasolt a virtuális WAN-telepítésben. A virtuális WAN-csapat olyan javításon dolgozik, amely lehetővé teszi a hub – hub elérését a ExpressRoute útvonalon. A javaslat több ExpressRoute-áramkörre (különböző szolgáltatóra) vonatkozik az egyik hubhoz való csatlakozáshoz, és a virtuális WAN által a régiók közötti adatforgalomhoz biztosított, a központ és a központ közötti kapcsolat használatát.
 
+### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Létrehozhatók-e a virtuális WAN különböző erőforráscsoporthoz tartozó hubok?
+Igen. Ez a beállítás jelenleg csak a powershellen keresztül érhető el. A virtuális WAN-portál a virtuális WAN-erőforrással azonos erőforráscsoporthoz tartozó hubokat bízza meg.
+
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
 
-A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNet rendelkezik, amely IPv6-támogatással rendelkezik, és szeretné a VNet a virtuális WAN-hoz csatlakozni, ez a forgatókönyv jelenleg nem támogatott.
+A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNet rendelkezik, amely IPv4-és IPv6-támogatással rendelkezik, és szeretné, hogy a VNet a virtuális WAN-hoz kapcsolódjon, ez a forgatókönyv jelenleg nem támogatott. 
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Mi a javasolt API-verzió, amelyet a parancsfájlok a különböző virtuális WAN-funkciók automatizálására használnak?
 

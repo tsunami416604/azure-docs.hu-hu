@@ -1,19 +1,19 @@
 ---
-title: Traffic Manager létrehozása Azure Resource Manager sablon használatával (ARM-sablon)
-description: Ismerje meg, hogyan hozhat létre Azure Traffic Manager-profilt Azure Resource Manager sablon (ARM-sablon) használatával.
+title: 'Rövid útmutató: Traffic Manager létrehozása Azure Resource Manager sablon használatával (ARM-sablon)'
+description: Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Azure Traffic Manager-profilt Azure Resource Manager sablon (ARM-sablon) használatával.
 services: traffic-manager
 author: duongau
 ms.service: traffic-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
-ms.date: 08/24/2020
-ms.openlocfilehash: bc7cc3220f228a4c8f15370b7b0fcde56db8186d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/01/2020
+ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237260"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299150"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Rövid útmutató: Traffic Manager profil létrehozása ARM-sablonnal
 
@@ -105,15 +105,15 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
+Ha már nincs szüksége a Traffic Manager profilra, törölje az erőforráscsoportot. Ezzel eltávolítja a Traffic Manager profilt és az összes kapcsolódó erőforrást.
+
+Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-Remove-AzResourceGroup -Name $resourceGroupName
-Write-Host "Press [ENTER] to continue..."
+Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 * Traffic Manager-profil

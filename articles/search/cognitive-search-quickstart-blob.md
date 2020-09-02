@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 9bbe06cbdc5ad349995d93d01cc325ed8d7951a0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935398"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300034"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
@@ -76,7 +76,7 @@ Ezután konfigurálja az AI-bővítést az OCR, a képelemzés és a természete
 
 1. Ebben a rövid útmutatóban az **ingyenes** Cognitive Services erőforrást használjuk. A mintaadatok 14 fájlból állnak, így az Cognitive Services 20 tranzakció ingyenes kiosztása elegendő ehhez a rövid útmutatóhoz. 
 
-   ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Csatolás Cognitive Services csatolása alapszolgáltatáshoz](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 1. Bontsa ki a bővítések **hozzáadása** lehetőséget, és adjon meg négy választ. 
 
@@ -86,7 +86,7 @@ Ezután konfigurálja az AI-bővítést az OCR, a képelemzés és a természete
 
    Válassza az entitások felismerése (személyek, szervezetek, helyszínek) és a képelemzési képességek elemet.
 
-   ![A Cognitive Services csatolása](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Csatolás Cognitive Services készségkészlet-szolgáltatások kiválasztása](media/cognitive-search-quickstart-blob/skillset.png)
 
    Folytassa a következő oldallal.
 

@@ -2,13 +2,14 @@
 title: Az Azure Resource Manager áttekintése
 description: Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon.
 ms.topic: overview
-ms.date: 04/21/2020
-ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/01/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087027"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293948"
 ---
 # <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
@@ -31,7 +32,7 @@ A portálon elérhető összes funkció a PowerShell, az Azure CLI, a REST API-k
 Ha új felhasználója az Azure Resource Managernek, találkozhat néhány olyan kifejezéssel, amelyet még nem ismer.
 
 * **erőforrás** – Egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. A virtuális gépek, a Storage-fiókok, a webalkalmazások, az adatbázisok és a virtuális hálózatok példák az erőforrásokra. Az erőforráscsoportok, előfizetések, felügyeleti csoportok és címkék is példák az erőforrásokra.
-* **erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport a csoportként kezelni kívánt erőforrásokat tartalmazza. A cég szempontjai alapján Ön döntheti el, hogy mely erőforrások tartozzanak ugyanahhoz az erőforráscsoporthoz. Lásd: [erőforráscsoportok](#resource-groups).
+* **erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazza azokat az erőforrásokat, amelyeket csoportként szeretne kezelni. A cég szempontjai alapján Ön döntheti el, hogy mely erőforrások tartozzanak ugyanahhoz az erőforráscsoporthoz. Lásd: [erőforráscsoportok](#resource-groups).
 * **erőforrás-szolgáltató** – az Azure-erőforrásokat ellátó szolgáltatás. Egy általános erőforrás-szolgáltató például a Microsoft. számítás, amely a virtuális gép erőforrását adja meg. A Microsoft. Storage egy másik gyakori erőforrás-szolgáltató. Lásd: [erőforrás-szolgáltatók és-típusok](resource-providers-and-types.md).
 * **Resource Manager-sablon** – egy JavaScript Object Notation (JSON) fájl, amely egy vagy több erőforrást határoz meg egy erőforráscsoport, előfizetés, felügyeleti csoport vagy bérlő számára történő üzembe helyezéshez. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó. Lásd: [template Deployment áttekintése](../templates/overview.md).
 * **deklaratív szintaxis** – Egy olyan szintaxis, amellyel anélkül határozhatja meg, mit szeretne létrehozni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablon a deklaratív szintaxis egy példája. A fájlban meghatározhatja az Azure-ra telepíteni kívánt infrastruktúra tulajdonságait.  Lásd: [template Deployment áttekintése](../templates/overview.md).
@@ -68,25 +69,33 @@ Sablonokat a bérlők, a felügyeleti csoportok, az előfizetések és az erőfo
 
 Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport meghatározásakor:
 
-* A csoportban lévő összes erőforrásnak azonos életciklussal kell rendelkeznie. Egyszerre fogja őket telepíteni, frissíteni és törölni. Ha egy erőforrásnak, például egy kiszolgálónak eltérő üzemi ciklusban kell lennie, egy másik erőforráscsoporthoz kell tartoznia.
+* Az erőforráscsoport összes erőforrásának ugyanazzal az életciklussal kell rendelkeznie. Egyszerre fogja őket telepíteni, frissíteni és törölni. Ha egy erőforrásnak, például egy kiszolgálónak eltérő üzemi ciklusban kell lennie, egy másik erőforráscsoporthoz kell tartoznia.
 
 * Az egyes erőforrások csak egy erőforráscsoportban létezhetnek.
-
-* Bizonyos erőforrások létezhetnek egy erőforráscsoporton kívül is. Ezeket az erőforrásokat az [előfizetés](../templates/deploy-to-subscription.md), a [felügyeleti csoport](../templates/deploy-to-management-group.md)vagy a [bérlő](../templates/deploy-to-tenant.md)telepíti. Ezen hatókörök esetében csak bizonyos erőforrástípusok támogatottak.
 
 * Az erőforráscsoporthoz bármikor hozzáadhat, vagy onnan eltávolíthat egy erőforrást.
 
 * Az erőforrásokat áthelyezheti az egyik erőforráscsoportból a másikba. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](move-resource-group-and-subscription.md).
 
-* Az erőforráscsoportok különböző régiókban található erőforrásokat is tartalmazhatnak.
+* Az erőforráscsoport erőforrásai különböző régiókban találhatók, mint az erőforráscsoport.
 
-* Az erőforráscsoport segítségével meghatározhatja a hozzáférés-vezérlési hatókört felügyeleti műveletekhez.
+* Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megad egy helyet az erőforráscsoporthoz, meg kell adnia, hogy hol tárolja a metaadatokat. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
-* Egy erőforrás más erőforráscsoportok erőforrásaival is interakcióba tud lépni. Ez az interakció gyakori, amikor a két erőforrás kapcsolódik, de nem ugyanaz az életciklusuk (például amikor egy webalkalmazás csatlakozik egy adatbázishoz).
+   Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/checklist/resiliency-per-service).
 
-Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megad egy helyet az erőforráscsoporthoz, meg kell adnia, hogy hol tárolja a metaadatokat. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
+* Az erőforráscsoport segítségével meghatározhatja a hozzáférés-vezérlési hatókört felügyeleti műveletekhez. Az erőforráscsoportok kezeléséhez [Azure-szabályzatokat](../../governance/policy/overview.md), [RBAC-szerepköröket](../../role-based-access-control/role-assignments-portal.md)vagy erőforrás- [zárolásokat](lock-resources.md)rendelhet hozzá.
 
-Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/checklist/resiliency-per-service).
+* Címkéket is [alkalmazhat](tag-resources.md) egy erőforráscsoporthoz. Az erőforráscsoport erőforrásai nem öröklik ezeket a címkéket.
+
+* Egy erőforrás más erőforráscsoportok erőforrásaihoz is csatlakozhat. Ez a forgatókönyv gyakori, ha a két erőforrás kapcsolódik, de nem ugyanaz az életciklus. Használhat például egy olyan webalkalmazást, amely egy másik erőforráscsoporthoz tartozó adatbázishoz kapcsolódik.
+
+* Egy erőforráscsoport törlésekor a rendszer az erőforráscsoport összes erőforrását is törli. További információ arról, hogy a Azure Resource Manager hogyan hangolja össze ezeket a törléseket: [Azure Resource Manager erőforráscsoport és erőforrás törlése](delete-resource-group.md).
+
+* Minden erőforráscsoport esetében akár 800 példányt is üzembe helyezhet. Bizonyos erőforrástípusok [mentesülnek az 800-es példány korlátján](resources-without-resource-group-limit.md).
+
+* Bizonyos erőforrások létezhetnek egy erőforráscsoporton kívül is. Ezeket az erőforrásokat az [előfizetés](../templates/deploy-to-subscription.md), a [felügyeleti csoport](../templates/deploy-to-management-group.md)vagy a [bérlő](../templates/deploy-to-tenant.md)telepíti. Ezen hatókörök esetében csak bizonyos erőforrástípusok támogatottak.
+
+* Erőforráscsoport létrehozásához használhatja a [portál](manage-resource-groups-portal.md#create-resource-groups), a [PowerShell](manage-resource-groups-powershell.md#create-resource-groups), az [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)vagy egy [Azure Resource Manager (ARM) sablont](../templates/deploy-to-subscription.md#resource-groups).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager rugalmassága
 
@@ -102,7 +111,7 @@ A Azure Resource Manager szolgáltatás a rugalmasság és a folyamatos rendelke
 
 Ez a rugalmasság olyan szolgáltatásokra vonatkozik, amelyek a Resource Manageren keresztül kapják meg a kérelmeket. Például Key Vault a rugalmasság előnyeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

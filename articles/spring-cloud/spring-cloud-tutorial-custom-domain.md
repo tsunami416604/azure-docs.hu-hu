@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374201"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290327"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 A tartománynév-szolgáltatás (DNS) a hálózati csomópontok nevének hálózaton belüli tárolására szolgáló módszer. Ez az oktatóanyag egy tartományt, például a www.contoso.com-t egy CNAME-rekord használatával képezi le. Az egyéni tartományt egy tanúsítvánnyal védi, és bemutatja, hogyan lehet kényszeríteni a Transport Layer Security (TLS), más néven SSL (SSL) használatát. 
@@ -20,7 +20,7 @@ A tartománynév-szolgáltatás (DNS) a hálózati csomópontok nevének hálóz
 A tanúsítványok titkosítják a webes forgalmat. Ezek a TLS/SSL-tanúsítványok a Azure Key Vault tárolhatók. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure Spring Cloud üzembe helyezett alkalmazás (lásd: gyors útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart-launch-app-portal.md), vagy meglévő alkalmazás használata).
+* Azure Spring Cloud üzembe helyezett alkalmazás (lásd: gyors útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](spring-cloud-quickstart.md), vagy meglévő alkalmazás használata).
 * Egy tartománynév, amely hozzáféréssel rendelkezik a tartományi szolgáltató DNS-beállításjegyzékéhez, például a GoDaddyhez.
 * Privát tanúsítvány (azaz önaláírt tanúsítvány) egy harmadik féltől származó szolgáltatótól. A tanúsítványnak meg kell egyeznie a tartománnyal.
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) üzembe helyezett példánya
@@ -145,7 +145,7 @@ Az egyéni tartomány táblában válassza az **SSL-kötés hozzáadása** lehet
 1. Válassza ki a **tanúsítványt** , vagy importálja.
 1. Kattintson a **Mentés** gombra.
 
-    ![SSL-kötés hozzáadása](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![SSL-kötés hozzáadása 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 Vagy az Azure CLI használatával **SSL-kötést is hozzáadhat**:
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 Az SSL-kötés sikeres hozzáadása után a tartomány állapota biztonságos lesz: **kifogástalan**. 
 
-![SSL-kötés hozzáadása](./media/custom-dns-tutorial/secured-domain-state.png)
+![SSL-kötés hozzáadása 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>HTTPS kényszerítése
 Alapértelmezés szerint bárki megtekintheti az alkalmazást HTTP-n keresztül, de az összes HTTP-kérelmet átirányíthatja a HTTPS-portra.
 
 Az alkalmazás lapjának bal oldali navigációs sávján válassza az **egyéni tartomány**lehetőséget. Ezt követően **csak a https**-t állítsa *igaz*értékre.
 
-![SSL-kötés hozzáadása](./media/custom-dns-tutorial/enforce-http.png)
+![3. SSL-kötés hozzáadása](./media/custom-dns-tutorial/enforce-http.png)
 
 Vagy az Azure CLI-vel kényszerítheti a HTTPS használatát:
 ```

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071175"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299227"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: a Spring Cloud-erőforrások figyelése riasztások és műveleti csoportok használatával
 
@@ -24,7 +24,7 @@ A riasztási folyamat beállítása két lépésből áll:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Spring követelményei mellett az oktatóanyagban szereplő eljárások egy üzembe helyezett Azure Spring Cloud-példánnyal is működnek.  [A kezdéshez kövesse az első](spring-cloud-quickstart-launch-app-cli.md) lépéseket.
+Az Azure Spring követelményei mellett az oktatóanyagban szereplő eljárások egy üzembe helyezett Azure Spring Cloud-példánnyal is működnek.  [A kezdéshez kövesse az első](spring-cloud-quickstart.md) lépéseket.
 
 A következő eljárások inicializálják mindkét **műveleti csoportot** és a **riasztást** a Spring Cloud-példány bal oldali navigációs paneljének **riasztások** lehetőségével. (Az eljárás a Azure Portal **figyelő áttekintés** lapján is elindítható.) 
 
@@ -76,11 +76,11 @@ A **riasztások**konfigurálásához térjen vissza a **riasztások** lapra, maj
 
 1. Válasszon ki egy feltételt. Ez a példa a **rendszer CPU-kihasználtságának százalékos arányát**használja.
 
-   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-1.png)
+   ![Képernyőkép-portál – új riasztási szabály 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. Görgessen le a **jelzőlámpa konfigurálása** panelre, és állítsa be a figyelni kívánt **küszöbértéket** .
 
-   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-2.png)
+   ![Képernyőkép-portál új riasztási szabály 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. Kattintson a **Kész** gombra.
 
@@ -88,7 +88,7 @@ A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhaszn
 
  A **műveletek**területen kattintson a **műveleti csoport kiválasztása**elemre. A **műveletek** ablaktáblán válassza ki a korábban definiált **műveleti csoportot**.
 
-   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-3.png) 
+   ![Képernyőkép-portál új riasztási szabály 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. Görgessen le, és a **riasztás részletei**területen nevezze el a riasztási szabályt.
 
@@ -96,22 +96,22 @@ A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhaszn
 
 1. Kattintson a **Riasztási szabály létrehozása** lehetőségre.
 
-   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-4.png)
+   ![Képernyőkép-portál új riasztási szabály 5](media/alerts-action-groups/alerts-3-4.png)
 
 Ellenőrizze, hogy az új riasztási szabály engedélyezve van-e.
 
-   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-4.png)
+   ![Képernyőkép-portál új riasztási szabálya 6](media/alerts-action-groups/alerts-4.png)
 
 A **metrikák** lapról is létrehozhat egy szabályt:
 
-   ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-5.png)
+   ![Képernyőkép-portál új riasztási szabálya 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan állíthat be riasztásokat és műveleti csoportokat egy Azure Spring Cloud-alkalmazáshoz. A műveleti csoportokról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Műveletcsoportok létrehozása és felügyelete az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Műveletcsoportok létrehozása és kezelése az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
 > [!div class="nextstepaction"]
 > [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

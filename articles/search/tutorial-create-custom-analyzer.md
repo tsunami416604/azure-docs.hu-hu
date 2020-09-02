@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: 667ee4b362d62cd4b7bd1b6c5a8ecf762adb0730
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936622"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290310"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Oktatóanyag: egyéni analizátor létrehozása telefonszámokhoz
 
@@ -239,7 +239,7 @@ Az elemzők három összetevőből állnak:
 
 Az alábbi ábrán láthatja, hogy a három összetevő hogyan működik együtt, hogy tokenize egy mondatot:
 
-  ![Elemzői folyamat ábrája](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![Elemzői folyamat diagramja tokenize](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 Ezeket a jogkivonatokat egy fordított index tárolja, amely lehetővé teszi a gyors, teljes szöveges kereséseket.  Egy fordított index lehetővé teszi a teljes szöveges keresést a lexikális analízis során kinyert összes egyedi kifejezés hozzárendelésével azokon a dokumentumokon, amelyekben azok bekövetkeznek. Az alábbi ábrán egy példa látható:
 
@@ -251,7 +251,7 @@ Az összes keresés megkeresi az invertált indexben tárolt feltételeket. Amik
 1. Ekkor a rendszer megkeresi a fordított indexet, és a megfelelő feltételekkel rendelkező dokumentumokat vizsgálja.
 1. Végül a lekért dokumentumokat a [hasonlósági algoritmus](index-ranking-similarity.md)rangsorolja.
 
-  ![Elemzői folyamat ábrája](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![Elemzői folyamat rangsorolási hasonlóságának ábrája](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 Ha a lekérdezési feltételek nem egyeznek meg a fordított index feltételeivel, az eredmények nem lesznek visszaadva. Ha többet szeretne megtudni a lekérdezések működéséről, tekintse meg a [teljes szöveges keresésről](search-lucene-query-architecture.md)szóló cikket.
 

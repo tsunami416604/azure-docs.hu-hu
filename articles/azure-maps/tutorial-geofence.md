@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121238"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299303"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
 
@@ -56,7 +56,7 @@ Ebben az oktatóanyagban feltöltjük a Geokerítések GeoJSON-adatok listáját
 
     Az URL-cím _geojson_ paramétere a feltöltött adatformátumot jelöli.
 
-4. Kattintson a **törzs** lapra. Válassza a **RAW**, majd a **JSON** lehetőséget a bemeneti formátumként. Másolja ki és illessze be az alábbi GeoJSON-beállításokat a **szövegtörzs** területére:
+4. Kattintson a **törzs** fülre. Válassza a **RAW**lehetőséget, majd a **JSON** -t bemeneti formátumként. Másolja ki és illessze be az alábbi GeoJSON-beállításokat a **szövegtörzs** területére:
 
    ```JSON
    {
@@ -254,19 +254,19 @@ Az alábbi lépéseket követve hozzon létre egy esemény-előfizetést a geoke
 
     :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps események előfizetés részletei":::
 
-4. Kattintson a **Create** (Létrehozás) gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 5. Ismételje meg a 1-4. lépést az előző szakaszban létrehozott Logic app kilépő végponthoz. A 3. lépésnél ügyeljen arra, hogy válassza ki `Geofence Exited` az esemény típusát.
 
-## <a name="use-search-geofence-get-api"></a>A Search Geokerítésen Get API használata
+## <a name="use-spatial-geofence-get-api"></a>Térbeli Geokerítésen Get API használata
 
-Most a [Search Geokerítésen Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) -t fogjuk használni e-mail-értesítések küldéséhez a Operations Managerba, amikor egy berendezés belép vagy kilép a geofences.
+Most a [térbeli Geokerítésen Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) -t fogjuk használni e-mail-értesítések küldéséhez a Operations Managerba, amikor egy berendezés belép vagy kilép a geofences.
 
 Minden berendezéshez tartozik egy `deviceId` . Ebben az oktatóanyagban egy olyan berendezést fogunk nyomon követni, amelynek egyedi azonosítója a következő: `device_1` .
 
 Az érthetőség érdekében a következő ábrán a berendezés öt helye látható a *kezdő* helyétől kezdve, ami valahol a geofences kívül esik. Ebben az oktatóanyagban a *kezdő* hely nem definiált, mert az adott helyen nem kérdezi le az eszközt.
 
-Amikor lekérdezi a [Keresés geokerítésen az API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) -t egy olyan berendezési hellyel, amely a kezdeti geokerítésen-bevitelt vagy-kilépést jelzi, a Event Grid meghívja a megfelelő logikai alkalmazás-végpontot, hogy e-mail értesítést küldjön a Operations Managernak.
+Amikor lekérdezi a [térbeli Geokerítésen Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) -t egy olyan berendezési hellyel, amely a kezdeti geokerítésen-bevitelt vagy-kilépést jelzi, a Event Grid meghívja a megfelelő logikai alkalmazás-végpontot, hogy e-mail értesítést küldjön a Operations Managernak.
 
 A következő részekben a HTTP GET Geokerítések API-kérelmek a berendezés öt különböző helyének koordinátáit használják.
 
@@ -399,7 +399,7 @@ A következő részekben a HTTP GET Geokerítések API-kérelmek a berendezés �
 
 1. A Poster alkalmazás teteje közelében válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget.  Adja meg a kérelem **nevét** . A nevet, a 4. *helyet*fogjuk használni. Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés**lehetőséget.
 
-2. Jelölje be a http **lekérése** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet, és ügyeljen rá, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal és `{udid}` a `udid` [geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentett értékre cserélje.
+2. Jelölje be a http **lekérése** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet, és ügyeljen rá, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal és `{udid}`  a `udid` [geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentett értékre cserélje.
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit

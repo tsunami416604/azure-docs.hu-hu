@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420328"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299201"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -48,7 +48,7 @@ A standard Load Balancer használatával végrehajtható főbb forgatókönyvek 
 
 - Növelje a rendelkezésre állást az erőforrások zónán **[belüli](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** és **[közötti](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** elosztásával.
 
-- Az Azure-beli virtuális gépek **[kimenő kapcsolatának](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** konfigurálása.
+- Az Azure-beli virtuális gépek **[kimenő kapcsolatának ](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** konfigurálása.
 
 - Az **[állapot](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** -mintavétel segítségével figyelheti a terheléselosztási erőforrásokat.
 
@@ -75,7 +75,11 @@ Standard Load Balancer díjszabási információkért lásd: [Load Balancer díj
 Az Alapszintű Load Balancer használata ingyenes.
 Lásd: [Load Balancer SLA](https://aka.ms/lbsla)-ja. Az alapszintű Load Balancer nem biztosít SLA-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="whats-new"></a>Újdonságok
+
+Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb Azure Load Balancer szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) oldalon.
+
+## <a name="next-steps"></a>További lépések
 Lásd: [Alapszintű Load Balancer frissítése](upgrade-basic-standard.md) az alapszintű Load Balancer frissítéséhez standard Load Balancerre.
 
 A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.

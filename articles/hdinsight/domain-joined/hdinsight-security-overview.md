@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 08/24/2020
+ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367104"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292979"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -59,7 +59,7 @@ Az Apache Ranger és a Ambari-naplók eléréséhez, valamint az SSH-hozzáfér�
 
 Az adatok védelme fontos a szervezeti biztonsági és megfelelőségi követelmények teljesítéséhez. A jogosulatlan alkalmazottaktól származó adatokhoz való hozzáférés korlátozásával együtt érdemes titkosítani.
 
-Az Azure Storage és a Data Lake Storage Gen1/Gen2 támogatja az inaktív [adatok átlátható kiszolgálóoldali titkosítását](../../storage/common/storage-service-encryption.md) . A biztonságos HDInsight-fürtök zökkenőmentesen fognak működni a REST-alapú adatok kiszolgálóoldali titkosításával.
+A HDInsight támogatja az inaktív adatok titkosítását a platform által felügyelt és az [ügyfél által felügyelt kulcsokkal](../disk-encryption.md)együtt. A forgalomban lévő adattitkosítás a TLS és az IPSec protokollal is kezelhető. További információkért lásd: az [Azure HDInsight történő átvitel titkosítása](encryption-in-transit.md) .
 
 ### <a name="compliance"></a>Megfelelőség
 
@@ -79,7 +79,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 |  | Engedélyezze a ["biztonságos átvitel szükséges"](../../storage/common/storage-require-secure-transfer.md) tulajdonságot a Storage-fiókokon. | Ügyfél |
 |  | [Azure Storage-tűzfalak](../../storage/common/storage-network-security.md) és virtuális hálózatok konfigurálása | Ügyfél |
 |  | [Azure Virtual Network szolgáltatásbeli végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) konfigurálása a Cosmos db és az [Azure SQL db](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) -hez | Ügyfél |
-|  | Győződjön meg arról, hogy a [TLS-titkosítás](../../storage/common/storage-security-tls.md) engedélyezve van az átvitt adatforgalomban. | Ügyfél |
+|  | Győződjön meg arról, hogy a [titkosítás az átvitelben](./encryption-in-transit.md) funkció engedélyezve van a TLS és az IPSec használatára a fürtön belüli kommunikációhoz. | Ügyfél |
 |  | [Ügyfél által felügyelt kulcsok](../../storage/common/storage-encryption-keys-portal.md) konfigurálása az Azure Storage encryption szolgáltatáshoz | Ügyfél |
 |  | Az Azure-támogatás által az adataihoz való hozzáférés vezérlése az [ügyfél kulcstárolójának](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) használatával | Ügyfél |
 | Alkalmazás-és middleware-biztonság | Integráció a HRE-DS szolgáltatással és a [hitelesítés konfigurálása](apache-domain-joined-configure-using-azure-adds.md) | Ügyfél |
@@ -93,7 +93,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
 | Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az ESP-vel rendelkező HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md)

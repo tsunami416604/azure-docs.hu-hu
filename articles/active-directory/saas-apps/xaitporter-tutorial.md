@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546304"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Oktatóanyag: Azure Active Directory integráció a XaitPorter
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-6. Adja meg az **IP-címet** vagy az **alkalmazás-összevonási metaadatok URL** -címét a [SmartRecruiters támogatási csapatának](https://www.smartrecruiters.com/about-us/contact-us/), hogy a XaitPorter biztosítsa, hogy az IP-cím elérhető legyen a saját XaitPorter-példánya engedélyezési listájának beállításával. 
+6. Adja meg az **IP-címet** vagy az **alkalmazás-összevonási metaadatok URL** -címét a [SmartRecruiters támogatási csapatának](https://www.smartrecruiters.com/about-us/contact-us/), hogy a XaitPorter biztosítani tudja, hogy az IP-cím elérhető legyen a XaitPorter-példányon a jóváhagyott lista konfigurálásával. 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>XaitPorter egyszeri bejelentkezés konfigurálása
 
@@ -168,7 +168,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -213,4 +213,3 @@ Ha a hozzáférési panelen a XaitPorter csempére kattint, automatikusan be kel
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

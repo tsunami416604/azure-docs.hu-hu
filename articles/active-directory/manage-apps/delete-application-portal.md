@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808235"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300119"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás törlése a Azure Active Directory (Azure AD) bérlőből
 
@@ -30,10 +30,11 @@ Ha törölni szeretne egy alkalmazást az Azure AD-bérlőből, a következőkre
 - Nem kötelező: az [alkalmazások megtekintésének](view-applications-portal.md)befejezése.
 - Nem kötelező: az [alkalmazás hozzáadásának](add-application-portal.md)befejezése.
 - Nem kötelező: [alkalmazás konfigurálásának](add-application-portal-configure.md)befejezése.
+- Nem kötelező: a [felhasználók hozzárendelésének befejezése egy alkalmazáshoz](add-application-portal-assign-users.md).
 - Nem kötelező: az [egyszeri bejelentkezés beállításának](add-application-portal-setup-sso.md)befejezése.
 
 >[!IMPORTANT]
->Az ebben a rövid útmutatóban ismertetett lépések teszteléséhez használjon nem termékrendszer-környezetet.
+>A rövid útmutató lépéseinek teszteléséhez használjon nem éles környezetet.
 
 ## <a name="delete-an-application-from-your-azure-ad-tenant"></a>Alkalmazás törlése az Azure AD-bérlőből
 
