@@ -84,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: Eszközkapcsolatok tesztelése
       href: tutorial-connectivity.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: TLS-támogatás
@@ -461,6 +456,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Szolgáltatás és API kivezetése
       items:
         - name: Műveletek figyelése
