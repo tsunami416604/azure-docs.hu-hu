@@ -166,6 +166,8 @@
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
     - name: Azure-példaforgatókönyvek
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: E-mail felderítése
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: További források
   items:
     - name: PowerShell

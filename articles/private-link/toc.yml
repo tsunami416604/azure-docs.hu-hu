@@ -46,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: Privát végpontok kezelése
       href: manage-private-endpoint.md
+    - name: Hálózati forgalom vizsgálata az Azure Firewall-lal
+      href: inspect-traffic-with-azure-firewall.md
     - name: Hibaelhárítás
       items:
         - name: Privátvégpont-kapcsolati problémák hibaelhárítása

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815300"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319542"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -46,7 +46,7 @@ Az Azure két fő képtípust kínál, általánosítva és specializálva. Az �
 
 ### <a name="generalized-images"></a>Általánosított rendszerképek
 
-Az általánosított rendszerkép olyan rendszerkép, amely az első rendszerindításkor a telepítés befejezését igényli. Az első rendszerindításkor például az állomásnév, a rendszergazda felhasználó és más virtuálisgép-specifikus konfigurációk állíthatók be. Ez akkor hasznos, ha azt szeretné, hogy a rendszer többször is felhasználja a képet, és ha a létrehozás során paramétereket szeretne megadni a paraméterekben. Ha az általánosított rendszerkép tartalmazza az Azure-ügynököt, akkor az ügynök feldolgozza a paramétereket, és visszaküldi azt a platformra, amelyen a kezdeti konfiguráció befejeződött. Ezt a folyamatot **üzembe**helyezésnek nevezzük. 
+Az általánosított rendszerkép olyan rendszerkép, amely az első rendszerindításkor a telepítés befejezését igényli. Az első rendszerindításkor például az állomásnév, a rendszergazda felhasználó és más virtuálisgép-specifikus konfigurációk állíthatók be. Ez akkor hasznos, ha azt szeretné, hogy a rendszer többször is felhasználja a képet, és ha a létrehozás során paramétereket szeretne megadni a paraméterekben. Ha az általánosított rendszerkép tartalmazza az Azure-ügynököt, akkor az ügynök feldolgozza a paramétereket, és visszaküldi azt a platformra, amelyen a kezdeti konfiguráció befejeződött. Ezt a folyamatot [üzembe](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)helyezésnek nevezzük. 
 
 A kiépítés megköveteli, hogy a rendszerkép tartalmazza a kiépítés részét. Két kiépítés létezik:
 - [Azure Linux-ügynök](../extensions/agent-linux.md)
@@ -108,6 +108,6 @@ Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg a
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 93ea0ffc94b78e014b30ab1d45d589eba50fe524
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: d8da5fcffa6ff02bed76973021b8a69c6c250821
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607778"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321638"
 ---
 [Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -22,15 +22,9 @@ ms.locfileid: "88607778"
 * Érvényes Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
 
-## <a name="create-an-azure-service-principal"></a>Azure egyszerű szolgáltatás létrehozása
+[!INCLUDE [Create a service principal](./create-service-principal.md)]
 
-Ahhoz, hogy az alkalmazás működjön az Azure-fiókkal, szüksége lesz egy Azure-szolgáltatásra az engedélyek kezeléséhez. Kövesse az [Azure egyszerű szolgáltatás létrehozása](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.4.0&viewFallbackFrom=azps-3.3.0)című témakör utasításait.
-
-Egyszerű szolgáltatás létrehozásakor látni fogja, hogy rendelkezik egy titkos értékkel, egy AZONOSÍTÓval és egy alkalmazás-AZONOSÍTÓval. Mentse az alkalmazás AZONOSÍTÓját és a titkos kulcsot egy ideiglenes helyre a későbbi lépések végrehajtásához.
-
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-
-Cognitive Services erőforrás létrehozása előtt a fióknak rendelkeznie kell egy Azure-erőforráscsoporthoz, amely tartalmazza az erőforrást. Ha még nem rendelkezik erőforráscsoporthoz, a folytatás előtt hozzon létre egyet a [Azure Portal](https://ms.portal.azure.com/) .
+[!INCLUDE [Create a resource group](./create-resource-group.md)]
 
 ## <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
@@ -100,71 +94,7 @@ Adja hozzá a következő kódot a **Main** metódushoz a rendelkezésre álló 
 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
-Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat. 
-
-#### <a name="multi-service"></a>Több szolgáltatás
-
-| Szolgáltatás                    | Altípus                      |
-|----------------------------|---------------------------|
-| Több szolgáltatás. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/) oldalt.            | `CognitiveServices`     |
-
-
-#### <a name="vision"></a>Látás
-
-| Szolgáltatás                    | Altípus                      |
-|----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
-| Custom Vision – előrejelzés | `CustomVision.Prediction` |
-| Custom Vision – képzés   | `CustomVision.Training`   |
-| Arcfelismerés                       | `Face`                    |
-| Form Recognizer            | `FormRecognizer`          |
-| Ink Recognizer             | `InkRecognizer`           |
-
-#### <a name="search"></a>Keresés
-
-| Szolgáltatás            | Altípus                  |
-|--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing – Egyéni keresés | `Bing.CustomSearch`   |
-| Bing – Entitáskeresés | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
-
-#### <a name="speech"></a>Speech
-
-| Szolgáltatás            | Altípus                 |
-|--------------------|----------------------|
-| Beszédszolgáltatások    | `SpeechServices`     |
-| Beszédfelismerés | `SpeakerRecognition` |
-
-#### <a name="language"></a>Nyelv
-
-| Szolgáltatás            | Altípus                |
-|--------------------|---------------------|
-| Űrlap megértése | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| Szövegelemzés     | `TextAnalytics`     |
-| Szövegfordítás   | `TextTranslation`   |
-
-#### <a name="decision"></a>Döntés
-
-| Szolgáltatás           | Altípus               |
-|-------------------|--------------------|
-| Anomáliadetektor  | `AnomalyDetector`  |
-| Tartalommoderátor | `ContentModerator` |
-| Personalizer      | `Personalizer`     |
-
-
-#### <a name="pricing-tiers-and-billing"></a>Árképzési szintek és számlázás
-
-A díjszabási szintek (és a felszámított összeg) a hitelesítési adatok használatával elküldött tranzakciók számától függenek. Az egyes díjszabási szintek a következőket határozzák meg:
-* a másodpercenként engedélyezett tranzakciók maximális száma (TPS).
-* a szolgáltatási funkciók a díjszabási szinten engedélyezve vannak.
-* előre meghatározott számú tranzakció díja. Ennek a számnak a meghaladása esetén a szolgáltatás [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) alapján külön díjat számítunk fel.
-
-> [!NOTE]
-> Számos Cognitive Services rendelkezik egy ingyenes szintű lehetőséggel, amellyel kipróbálhatja a szolgáltatást. Az ingyenes szintet az `F0` erőforráshoz tartozó SKU-ként használhatja.
+[!INCLUDE [SKUs and pricing](./sku-pricing.md)]
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
 

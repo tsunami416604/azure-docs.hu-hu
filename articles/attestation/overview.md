@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: bc6f52ed175e55b283e3c41408c15b818a85d6b7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237343"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320596"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure igazolás (előzetes verzió)
+# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (előzetes verzió)
 
 Microsoft Azure igazolás (előzetes verzió) a megbízható végrehajtási környezetek (pólók) igazolására szolgáló megoldás, mint például az [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX enklávéhoz) enklávék és a [virtualizálás-alapú biztonsági](/windows-hardware/design/device-experiences/oem-vbs) (vbs) enklávék. Az enklávé igazolása olyan folyamat, amely ellenőrzi, hogy az enklávé biztonságos és megbízható-e.
 
@@ -65,10 +65,11 @@ Az Azure igazolási ügyfelei kifejezték azt a követelményt, hogy a Microsoft
 
 Az Azure-igazolás a legjobb választás a pólók igazolására, mivel az a következő előnyöket kínálja: 
 
-- Ingyenes Azure-szolgáltatás magas rendelkezésre állással
-- Kihasználja Azure Active Directory az ügyfelek kéréseinek hitelesítéséhez. Ez lehetővé teszi, hogy az Azure igazolása az identitás és a tulajdonjog alapján végezzen igazolást
-- Olyan házirendeket támogat, amelyek lehetővé teszik a bérlők számára a jogkivonat-generálás korlátozását
-- Biztosítja az adatvédelmet, miközben használatban van egy SGX ENKLÁVÉHOZ enklávé megvalósításával
+- Egységes keretrendszer több pólók, például a SGX ENKLÁVÉHOZ enklávék és a VBS enklávék igazolásához
+- Több-bérlős szolgáltatás, amely lehetővé teszi az egyéni igazolási szolgáltatók és házirendek konfigurálását a jogkivonat-generálás korlátozására
+- Olyan alapértelmezett szolgáltatót kínál, amely a felhasználóktól való konfiguráció nélkül képes tanúsítani
+- A SGX ENKLÁVÉHOZ enklávéban való használat közben védi az adatvédelmet
+- Olyan, magasan elérhető szolgáltatás, amely szolgáltatói szerződés kínál (SLA)
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR) támogatás
 

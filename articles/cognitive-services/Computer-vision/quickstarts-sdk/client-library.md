@@ -1,27 +1,32 @@
 ---
-title: 'Gyors útmutató: Computer Vision ügyféloldali kódtár | Microsoft Docs'
+title: 'Gyors útmutató: Computer Vision ügyféloldali kódtár'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval összekapcsolhatók az alkalmazások az Azure Cognitive Services Computer Vision API.
+description: Ismerje meg, hogyan használhatja az Azure Computer Visiont az alkalmazásban natív ügyféloldali kódtár használatával a választott nyelven.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 08/31/2020
 ms.author: pafarley
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom:
+- devx-track-python
+- devx-track-javascript
+- devx-track-csharp
+- cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: bc5b0d05dc1e9e7c09781dba63c2031c72da73ff
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+keywords: Computer vízió, Computer vízió szolgáltatás
+ms.openlocfilehash: 87ff6a03f45fe61b44712166966a1fe3851ffb41
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050295"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321856"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Gyors útmutató: az Computer Vision ügyféloldali kódtár használata
 
-Ismerkedjen meg az Computer Vision ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Computer Vision a képek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz.
+Ismerkedjen meg az Computer Vision ügyféloldali kódtár használatába. A Computer Vision szolgáltatás AI-algoritmusokat biztosít a rendszerképek feldolgozásához és a vizualizációs funkciókkal kapcsolatos információk visszaküldéséhez. Az alábbi lépéseket követve telepíthet csomagot az alkalmazásba, és kipróbálhatja az alapszintű feladatokhoz tartozó kódot.
 
 Az Computer Vision ügyféloldali kódtár használata a következőhöz:
 

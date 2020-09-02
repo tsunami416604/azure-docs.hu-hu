@@ -3,16 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/07/2020
+ms.date: 09/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: references_regions
+ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003529"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319814"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -24,6 +25,31 @@ A Windows rendszerű virtuális asztali frissítések rendszeres időközönkén
 - Hibajavítások
 
 Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+
+## <a name="august-2020"></a>2020. augusztus
+
+A következőképpen módosult a 2020 augusztusában:
+
+- Továbbfejlesztettük a teljesítményt a kapcsolódási késés csökkentése érdekében a következő Azure-régiókban: 
+
+    - Egyesült Királyság
+    - Franciaország
+    - Norvégia
+    - Dél-Korea
+
+   Az [Experience kalkulátor](https://azure.microsoft.com/services/virtual-desktop/assessment/) használatával általános képet kaphat arról, hogy ezek a változások milyen hatással lesznek a felhasználókra.
+
+- A Microsoft Store Távoli asztal ügyfél (v 10.2.1522 +) mostantól általánosan elérhető! A Microsoft Store Távoli asztal ügyfél ezen verziója kompatibilis a Windows Virtual Desktop szolgáltatással. A felhasználói élmény fokozása céljából a frissített felhasználói FELÜLETi folyamatokat is bevezetjük. Ez a frissítés magában foglalja a folyékony kialakítást, a világos és a sötét üzemmódot, valamint számos más izgalmas változást. A-ügyfelet az iOS-, macOS-és Android-ügyfelekhez is ugyanezen alapul szolgáló Remote Desktop Protocol (RDP) motor használatára is átírta. Ez lehetővé teszi, hogy az összes platformon gyorsabban elérhetővé tegyük az új funkciókat. [Töltse le az ügyfelet](https://www.microsoft.com/p/microsoft-remote-desktop/9wzdncrfj3ps?rtc=1&activetab=pivot:overviewtab) , és próbálja ki!
+
+- Kijavítottunk egy problémát a csapatok asztali ügyfelének (1.3.00.21759-verzió), ahol az ügyfél csak az UTC időzónát mutatta a csevegésben, a csatornákban és a naptárban. A frissített ügyfél most már megjeleníti a távoli munkamenet időzónáját.
+
+- Azure Advisor mostantól a Windows rendszerű virtuális asztal része. Ha a Azure Portalon keresztül fér hozzá a Windows rendszerű virtuális asztalhoz, a Windows rendszerű virtuális asztali környezet optimalizálására vonatkozó javaslatok láthatók. További információ: [Azure Advisor](azure-advisor.md).
+
+- Az Azure CLI mostantól támogatja a Windows rendszerű virtuális asztal () használatát a `az desktopvirtualization` Windows rendszerű virtuális asztali környezetek automatizálásának elősegítése érdekében. Tekintse meg a [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest) listáját a kiterjesztési parancsok listájához.
+
+- Frissítettük a központi telepítési sablonokat, hogy teljes mértékben kompatibilisek legyenek a Windows rendszerű virtuális asztali Azure Resource Manager felületekkel. A sablonok a [githubon](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)találhatók.
+
+- A Windows rendszerű virtuális asztali US Gov portál már nyilvános előzetes verzióban érhető el. További információkért tekintse meg [a bejelentést](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/).
 
 ## <a name="july-2020"></a>2020. július  
 
@@ -105,9 +131,7 @@ Javítottunk a Microsoft Teams for Windows Virtual Desktop szolgáltatásban. Am
 
 További információt [a blogbejegyzésben](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)talál.
 
-## <a name="next-steps"></a>További lépések
-
-Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+## <a name="client-updates"></a>Ügyfelek frissítései
 
 Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távoli asztali szolgáltatások-ügyfelek frissítéseinek megismeréséhez:
 
@@ -116,3 +140,8 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="next-steps"></a>Következő lépések
+
+Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
+

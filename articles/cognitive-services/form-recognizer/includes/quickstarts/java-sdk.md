@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: f5f2678078850ad17fa72439df9c963b60ad7a9d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237878"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89326823"
 ---
 > [!IMPORTANT]
 > * Az űrlap-felismerő SDK jelenleg a from felismerő szolgáltatás v 2.0-s verzióját célozza meg.
@@ -61,7 +61,7 @@ mkdir -p src/main/java
 
 Ez a rövid útmutató a Gradle függőség-kezelőt használja. Megtalálhatja az ügyféloldali függvénytárat és az egyéb függőségi kezelők információit a [Maven központi adattárában](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer).
 
-Ügyeljen arra, hogy a projekt *Build. gradle. KTS* fájljában szerepeljen az ügyféloldali kódtár `implementation` utasításként, valamint a szükséges beépülő modulok és beállítások.
+A projekt *Build. gradle. KTS* fájljában adja meg az ügyféloldali függvénytárat `implementation` utasításként, valamint a szükséges beépülő modulokat és beállításokat.
 
 ```kotlin
 plugins {
@@ -79,7 +79,7 @@ dependencies {
 }
 ```
 
-Navigáljon az új **src/Main/Java** mappára, és hozzon létre egy *FormRecognizer. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
+Navigáljon az új **src/Main/Java** mappára, és hozzon létre egy *Management. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
 
 ```java
 import com.azure.ai.formrecognizer.*;

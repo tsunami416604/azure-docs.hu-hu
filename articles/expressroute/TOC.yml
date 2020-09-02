@@ -4,6 +4,10 @@
   items:
     - name: Mi az az ExpressRoute?
       href: expressroute-introduction.md
+- name: Első lépések
+  items:
+    - name: ExpressRoute-kapcsolatcsoport létrehozása – ARM-sablon
+      href: quickstart-create-expressroute-vnet-template.md
 - name: Oktatóanyagok
   items:
     - name: Kapcsolatcsoport létrehozása és módosítása

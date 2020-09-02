@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: SSO-munkamenetek
       href: session-overview.md
+    - name: Identity Protection és feltételes hozzáférés
+      href: conditional-access-identity-protection-overview.md
 - name: Útmutatók
   items:
     - name: Alkalmazásintegráció
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: Új jelszó önkiszolgáló kérésének beállítása
               href: user-flow-self-service-password-reset.md
+        - name: Feltételes hozzáférés hozzáadása
+          href: conditional-access-user-flow.md
         - name: Felhasználói felület testreszabása
           items:
             - name: A felhasználói felület testreszabása
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: Külső identitásszolgáltatói jogkivonat átadása
           href: idp-pass-through-user-flow.md
+    - name: Identity Protection és feltételes hozzáférés
+      href: conditional-access-identity-protection-setup.md
     - name: Egyéni szabályzat
       items:
         - name: Szabályzat létrehozása
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: Jogcím-átalakítás
                       href: claims-transformation-technical-profile.md
+                    - name: Feltételes hozzáférés technikai profilja
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: JWT-jogkivonatkiállító
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5925d80f23052324e5512908241ed573c681d835
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 57202752a965ad0405a04b2eba4cdf42070c94bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590251"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319491"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -44,7 +44,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 1. Hozzon létre egy új mappát a projekthez.
 
-2. Az új mappában a következő parancs futtatásával hozzon létre egy új ASP.NET Core Console alkalmazás-projektet:
+2. Az új mappában futtassa az alábbi parancsot egy új .NET Core Console-alkalmazás projekt létrehozásához:
 
     ```dotnetcli
     dotnet new console
@@ -122,7 +122,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a .NET Core-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

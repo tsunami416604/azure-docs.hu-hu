@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 985060d1acb9e3bf0babc8303b997ceddfff8f05
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931947"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322330"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: képmetaadatok előállítása a Computer Vision használatával az Azure Storage-ban
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure Computer Vision szolgáltatást egy webalkalmazásba a feltöltött lemezképek metaadatainak létrehozásához. Ez a [digitális eszközkezelés (Dam)](../Home.md#computer-vision-for-digital-asset-management) forgatókönyvek esetében hasznos, például ha egy vállalat gyorsan szeretne leíró feliratokat vagy kereshető kulcsszavakat létrehozni az összes képhez.
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure Computer Vision szolgáltatást egy webalkalmazásba a feltöltött lemezképek metaadatainak létrehozásához. Ez a [digitális eszközkezelés (Dam)](../overview.md#computer-vision-for-digital-asset-management) forgatókönyvek esetében hasznos, például ha egy vállalat gyorsan szeretne leíró feliratokat vagy kereshető kulcsszavakat létrehozni az összes képhez.
 
 Az Azure Storage-ban és a GitHubon [Cognitive Services laborban](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) teljes körű útmutatót talál, és ez az oktatóanyag alapvetően a labor 5. gyakorlatát fedi le. Érdemes lehet a teljes alkalmazást minden lépés után létrehozni, de ha csak szeretné megismerni, hogyan integrálhatja a Computer Visiont egy meglévő webalkalmazásba, olvassa el itt.
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Metaadatok csatolása az Azure Storage-lemezképekhez
 > * Képmetaadatok keresése Azure Storage Explorer használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd. 
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt nekikezdene a feladatok elvégzésének. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -144,7 +144,7 @@ Ha továbbra is szeretne dolgozni a webalkalmazáson, tekintse meg a [következ�
 
 Az erőforráscsoport törléséhez nyissa meg az **erőforráscsoportok** fület a portálon, navigáljon a projekthez használt erőforráscsoporthoz, és kattintson a nézet tetején található **erőforráscsoport törlése** elemre. A rendszer megkéri, hogy írja be az erőforráscsoport nevét annak megerősítéséhez, hogy törölni kívánja, mert a törlés után egy erőforráscsoport nem állítható helyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban beállítja az Azure Computer Vision szolgáltatását egy meglévő webalkalmazásban, hogy automatikusan hozzon létre feliratokat és kulcsszavakat a blob-képekhez a feltöltésük során. Ezután tekintse meg az Azure Storage Lab, 6. gyakorlatát, hogy megtudja, hogyan adhat hozzá keresési funkciókat a webalkalmazáshoz. Ez kihasználja a Computer Vision szolgáltatás által generált keresési kulcsszavakat.
 

@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c6e94cb4d55fdc8a204af0017eb1a8b37d44f087
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 744ef58b54dc3718c4693ce2aad69024e2d6e2fe
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035477"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321858"
 ---
 <a name="HOLTop"></a>
 
@@ -59,7 +59,7 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 A következő osztályok és felületek a Computer Vision Python SDK főbb funkcióit kezelik.
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Ez az osztály közvetlenül kezeli az összes képműveletet, például a képek elemzését, a szöveg észlelését és a miniatűr létrehozását.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. Ez megvalósítja a **ComputerVisionClientOperationsMixin**.|
@@ -170,7 +170,7 @@ Ezután kérje le az **olvasási** hívás által visszaadott művelet azonosít
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
 
@@ -178,7 +178,7 @@ Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban találhat�
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
@@ -194,5 +194,5 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz kész�
 > [!div class="nextstepaction"]
 >[Computer Vision API-hivatkozás (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-* [Mi a Computer Vision?](../../Home.md)
+* [Mi a Computer Vision?](../../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py)található.

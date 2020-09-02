@@ -1,0 +1,48 @@
+- name: Microsoft Azure Attestation (előzetes verzió)
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: A Microsoft Azure Attestation ismertetése
+      href: overview.md
+- name: Rövid útmutatók
+  items:
+    - name: ARM-sablon
+      href: quickstart-template.md
+    - name: PowerShell
+      href: quickstart-powershell.md
+- name: Oktatóanyagok
+  items:
+    - name: Igazolási szabályzat készítése és aláírása
+      href: author-sign-policy.md
+    - name: SGX-igazolási kódminták
+      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+- name: Példák
+  items:
+    - name: Igazolási szabályzat
+      href: policy-examples.md
+    - name: Szabályzat-aláíró tanúsítvány
+      href: policy-signer-examples.md
+- name: Alapelvek
+  items:
+    - name: Alapfogalmak
+      href: basic-concepts.md
+    - name: Igazolási szabályzat jogcímei
+      items:
+        - name: Jogcímszabályok szintaxisa
+          href: claim-rule-grammar.md
+        - name: Jogcímkészletek
+          href: claim-sets.md
+    - name: Munkafolyamat
+      href: workflow.md
+- name: Referencia
+  items:
+    - name: GYIK
+      href: faq.md
+    - name: REST
+      href: /rest/api/attestation/
+    - name: Azure PowerShell
+      href: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+    - name: A Windows Azure DCAP-kódtára
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
+    - name: A Linux Azure DCAP-kódtára
+      href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'

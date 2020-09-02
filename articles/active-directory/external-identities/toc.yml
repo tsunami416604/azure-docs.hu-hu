@@ -30,10 +30,10 @@
     - name: Alapelvek
       expanded: false
       items:
+        - name: Az External Identities díjszabása
+          href: external-identities-pricing.md
         - name: Ajánlott eljárások a B2B használatához
           href: b2b-fundamentals.md
-        - name: B2B-licencelés
-          href: licensing-guidance.md
         - name: Külső B2B- és Office 365-megosztás
           href: o365-external-user.md
         - name: Meghívás érvényesítése

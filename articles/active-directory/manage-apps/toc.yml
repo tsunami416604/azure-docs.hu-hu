@@ -16,6 +16,8 @@
       href: add-application-portal.md
     - name: Alkalmazás konfigurálása
       href: add-application-portal-configure.md
+    - name: Felhasználók hozzárendelése egy alkalmazáshoz
+      href: add-application-portal-assign-users.md
     - name: Egyszeri bejelentkezés beállítása
       href: add-application-portal-setup-sso.md
     - name: Alkalmazás törlése

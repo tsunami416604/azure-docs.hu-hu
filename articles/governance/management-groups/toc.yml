@@ -7,12 +7,25 @@
       href: ../azure-management.md
     - name: Felügyeleti csoportok
       href: ./overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Felügyeleti csoport létrehozása – Portal
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: Felügyeleti csoport létrehozása – Azure CLI
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: Felügyeleti csoport létrehozása – Azure PowerShell
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: Felügyeleti csoport létrehozása – REST
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
 - name: Útmutatók
   expanded: true
   items:
-    - name: Felügyeleti csoportok létrehozása
-      href: ./create.md
-    - name: Az erőforrások kezelése
+    - name: Az erőforrás-hierarchia kezelése
       href: ./manage.md
     - name: Az erőforrás-hierarchia védelme
       href: ./how-to/protect-resource-hierarchy.md

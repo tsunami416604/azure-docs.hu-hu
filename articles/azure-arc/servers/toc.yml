@@ -4,6 +4,8 @@
   items:
     - name: Az Azure Arc-kompatibilis kiszolgálók ismertetése
       href: overview.md
+    - name: A csatlakoztatott gépi ügynök újdonságai
+      href: agent-release-notes.md
 - name: Rövid útmutatók
   items:
     - name: Az Arc-kompatibilis kiszolgálói ügynök engedélyezése
@@ -14,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: Gép monitorozása
       href: ./learn/tutorial-enable-vm-insights.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      items:
-        - name: Arc-kompatibilis kiszolgálók
-          href: policy-samples.md
 - name: Alapelvek
   items:
     - name: Biztonság
@@ -55,3 +51,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

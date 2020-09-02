@@ -949,6 +949,8 @@
           href: ./disk-encryption.md
         - name: LDAP-szinkronizálás a Ranger és az Apache Ambari szolgáltatásban
           href: ./domain-joined/ldap-sync.md
+        - name: Dupla titkosítás az átvitel során
+          href: ./domain-joined/encryption-in-transit.md
     - name: Útmutatók
       items:
         - name: Identitásközvetítő használata a hitelesítő adatok kezeléséhez

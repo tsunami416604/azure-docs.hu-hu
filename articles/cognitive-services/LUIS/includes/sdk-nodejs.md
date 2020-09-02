@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
+ms.custom: include file, devx-track-javascript, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: e52aba2fe6189c8964fd6525581b0bd6ee6def48
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: b961bb0598a1f6e9cdc7b4df27af50e7af1d9d81
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246568"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323235"
 ---
 A Node.jshoz használja a Language Understanding (LUIS) ügyféloldali kódtárait:
 
@@ -43,13 +43,13 @@ A Node.jshoz használja a Language Understanding (LUIS) ügyféloldali kódtára
     mkdir quickstart-sdk && cd quickstart-sdk
     ```
 
-1. Inicializálja a könyvtárat JavaScript-alkalmazásként egy fájl létrehozásával `package.json` . 
+1. Inicializálja a könyvtárat JavaScript-alkalmazásként egy fájl létrehozásával `package.json` .
 
     ```console
     npm init -y
     ```
 
-1. Hozzon létre egy nevű fájlt `index.js` a JavaScript-kódjához. 
+1. Hozzon létre egy nevű fájlt `index.js` a JavaScript-kódjához.
 
     ```console
     touch index.js
@@ -61,7 +61,7 @@ Az alkalmazás könyvtárában telepítse a függőségeket az alábbi parancsok
 
 ```console
 npm install @azure/ms-rest-js
-npm install @azure/cognitiveservices-luis-authoring 
+npm install @azure/cognitiveservices-luis-authoring
 npm install @azure/cognitiveservices-luis-runtime
 ```
 
@@ -91,6 +91,8 @@ A következőhöz `package.json` hasonlóan kell kinéznie:
 
 A Language Understanding (LUIS) authoring Client egy [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) objektum, amely a szerzői kulcsot tartalmazó Azure-ba hitelesíti.
 
+## <a name="code-examples-for-authoring"></a>Példák a szerzői műveletekre
+
 Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő funkciók eléréséhez, többek között:
 
 * Alkalmazások – [Hozzáadás](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#add-applicationcreateobject--msrest-requestoptionsbase-), [Törlés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-), [Közzététel](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-)
@@ -105,6 +107,8 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 
 A Language Understanding (LUIS) authoring Client egy [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) objektum, amely a szerzői kulcsot tartalmazó Azure-ba hitelesíti.
 
+## <a name="code-examples-for-prediction-runtime"></a>Példák az előrejelzési futtatókörnyezetre
+
 Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő funkciók eléréséhez, többek között:
 
 * [Előrejelzés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-) `staging` vagy `production` tárolóhely
@@ -118,16 +122,16 @@ Nyissa meg a `index.js` fájlt az előnyben részesített szerkesztőben vagy a 
 
 [!code-javascript[Add NPM libraries to code file](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=Dependencies)]
 
-## <a name="add-boilerplate-code"></a>Szabványos kód hozzáadása 
+## <a name="add-boilerplate-code"></a>Szabványos kód hozzáadása
 
-1. Adja hozzá a `quickstart` metódust és a hívását. Ez a metódus a fennmaradó kód legtöbbjét tartalmazza. Ezt a metódust a fájl végén kell meghívni. 
+1. Adja hozzá a `quickstart` metódust és a hívását. Ez a metódus a fennmaradó kód legtöbbjét tartalmazza. Ezt a metódust a fájl végén kell meghívni.
 
     ```javascript
     const quickstart = async () => {
-    
+
         // add calls here
-    
-    
+
+
     }
     quickstart()
         .then(result => console.log("Done"))
@@ -136,9 +140,11 @@ Nyissa meg a `index.js` fájlt az előnyben részesített szerkesztőben vagy a 
             })
     ```
 
-1. Ha másként nincs megadva, adja hozzá a további kódot a gyors üzembe helyezési metódushoz. 
+1. Ha másként nincs megadva, adja hozzá a további kódot a gyors üzembe helyezési metódushoz.
 
 ## <a name="create-variables-for-the-app"></a>Változók létrehozása az alkalmazáshoz
+
+Hozzon létre két változót: az első módosítást, a második beállított értéket, ahogy a kód mintában szerepelnek. 
 
 1. Hozzon létre változókat a szerzői kulcsok és az erőforrások neveinek tárolásához.
 
@@ -152,7 +158,7 @@ Nyissa meg a `index.js` fájlt az előnyben részesített szerkesztőben vagy a 
 
 Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) objektumot a kulccsal, és használja a végpontján egy [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) objektum létrehozásához.
 
-[!code-javascript[Create LUIS authoring client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
+[!code-javascript[Authenticate the client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>LUIS-alkalmazás létrehozása
 
@@ -160,7 +166,7 @@ A LUIS-alkalmazás a természetes nyelvi feldolgozó (NLP) modellt tartalmazza, 
 
 Hozzon létre egy [AppsOperation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) -objektum [hozzáadási](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) metódusát az alkalmazás létrehozásához. A név és a nyelvi kultúra kötelező tulajdonságai.
 
-[!code-javascript[Create LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
+[!code-javascript[Create a LUIS app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
 
 
 ## <a name="create-intent-for-the-app"></a>Szándék létrehozása az alkalmazáshoz
@@ -170,7 +176,7 @@ Használja a [Model. add_intent](https://docs.microsoft.com/javascript/api/@azur
 
 Az `intentName` érték nem módosítható az `OrderPizzaIntent` [alkalmazáshoz tartozó változók létrehozása](#create-variables-for-the-app) változóinak részeként.
 
-[!code-javascript[Create intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
+[!code-javascript[Create intent for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>Entitások létrehozása az alkalmazáshoz
 
@@ -182,7 +188,7 @@ Az entitások létrehozási módszerei a [Model](https://docs.microsoft.com/java
 
 Az entitás-létrehozási kód olyan gépi tanulási entitást hoz létre, amely alentitásokkal és az alentitásokra alkalmazott funkciókkal rendelkezik `Quantity` .
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Az entitás-létrehozási kód olyan gépi tanulási entitást hoz létre, amelynek alentitásai és funkciói a "mennyiség" alentitásokra vannak alkalmazva.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Részleges képernyőkép a portálról, amely a létrehozott entitást, az alentitásokkal és a "mennyiség" alentitásokra alkalmazott funkciókkal rendelkező gépi tanulási entitást mutatja.":::
 
 [!code-javascript[Create entities for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddEntities)]
 
@@ -196,11 +202,11 @@ Ha meg szeretné határozni a teljes szándékot, és kinyeri az entitásokat, a
 
 Adja hozzá például a hosszúságú kimondott szöveg egy [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) -objektumok listájának létrehozásával, amely minden egyes példa kiírásának egy objektumát tartalmazza. Mindegyik példa minden entitást megjelöl az entitás neve és az entitás értéke név/érték párokkal rendelkező szótárával. Az entitás értékének pontosan úgy kell lennie, ahogy a példa szövegében megjelenik.
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Az entitás értékének pontosan úgy kell lennie, ahogy a példa szövegében megjelenik.":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Részleges képernyőkép, amely a címkével ellátott példát mutatja a portálon. ":::
 
 Hívja meg a [példákat. vegye fel](https://docs.microsoft.com//javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#add-string--string--examplelabelobject--models-examplesaddoptionalparams-) az alkalmazás azonosítóját, a Version ID-t és a példát.
 
-[!code-javascript[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
+[!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
@@ -210,9 +216,9 @@ A [Train. trainVersion](https://docs.microsoft.com/javascript/api/@azure/cogniti
 
 Nagyon kis modell, például ez a rövid útmutató mutatja, nagyon gyorsan betanítja. Üzemi szintű alkalmazások esetén az alkalmazásnak be kell vonnia a [get_status](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#getstatus-string--string--msrest-requestoptionsbase-) metódus lekérdezési hívását, amely meghatározza, hogy mikor vagy ha sikeres a képzés. A válasz az egyes objektumokhoz külön állapotú [ModelTrainingInfo](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/modeltraininginfo?view=azure-node-latest) objektumok listája. Az összes objektumnak sikeresnek kell lennie ahhoz, hogy a képzés befejezze.
 
-[!code-javascript[Train the app's version](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
+[!code-javascript[Train the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>Language Understanding alkalmazás közzététele
+## <a name="publish-app-to-production-slot"></a>Alkalmazás közzététele az üzemi tárolóhelyen
 
 Tegye közzé a LUIS alkalmazást az [app. publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-) metódus használatával. Ez közzéteszi a jelenlegi betanított verziót a végponton megadott tárolóhelyre. Az ügyfélalkalmazás ezt a végpontot használja arra, hogy felhasználói hosszúságú kimondott szöveg küldjön a szándékok és az entitások kinyerésének előrejelzésére.
 
@@ -225,7 +231,7 @@ Használjon egy msRest. ApiKeyCredentials objektumot a kulccsal, és használja 
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-javascript [Create LUIS runtime client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
+[!code-javascript [Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>Előrejelzés lekérése futtatókörnyezetből
 
@@ -233,7 +239,7 @@ Adja hozzá a következő kódot az előrejelzési futtatókörnyezethez való k
 
 A **[luisRuntimeClient. Jóslás. getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** metódusnak számos paramétert kell tartalmaznia, például az alkalmazás azonosítóját, a tárolóhely nevét és az előrejelzési kérelem objektumát a kérelem teljesítéséhez. A többi lehetőség, például a részletes, az összes leképezés megjelenítése és a napló megadása nem kötelező.
 
-[!code-javascript [Get prediction based on query](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
+[!code-javascript [Get prediction from runtime](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 

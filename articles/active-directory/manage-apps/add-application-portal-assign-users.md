@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 0e31852b6cf40cec9161c6904ce99798f1ee4996
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9d396c0787798c783b44748dc2461c073334cc7e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303896"
+ms.locfileid: "89322500"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Gyors útmutató: felhasználók kiosztása az Azure AD-t használó alkalmazásokhoz identitás-szolgáltatóként
 
@@ -38,7 +38,7 @@ Ha felhasználókat szeretne hozzárendelni az Azure AD-bérlőhöz hozzáadott 
 1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
 2. A bal oldali navigációs menüben válassza a **felhasználók és csoportok**lehetőséget.
    > [!NOTE]
-   > Ha felhasználókat szeretne hozzárendelni Microsoft-alkalmazásokhoz, például az Office 365-alkalmazásokhoz, néhány ilyen alkalmazás a PowerShellt használja. 
+   > A Microsoft 365 és az Office 365-alkalmazások némelyike a PowerShell használatát igényli. 
 3. Válassza a **felhasználó hozzáadása** gombot.
 4. A **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
 5. Válassza ki azt a felhasználót vagy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz. A keresőmezőbe írja be a felhasználó vagy a csoport nevét is. Több felhasználót és csoportot is kiválaszthat, és a **kiválasztott elemek**területen megjelennek a kiválasztások.
@@ -55,12 +55,14 @@ Ha felhasználókat szeretne hozzárendelni az Azure AD-bérlőhöz hozzáadott 
     > Ha az alkalmazás nem támogatja a szerepkör kiválasztását, a rendszer az alapértelmezett hozzáférési szerepkört rendeli hozzá. Ebben az esetben az alkalmazás kezeli a felhasználók hozzáférési szintjét.
 9. A **hozzárendelés hozzáadása** panelen kattintson a **hozzárendelés** gombra a panel alján.
 
+> [!NOTE]
+> A felhasználókat és csoportokat ugyanazzal az eljárással lehet kiosztani. Válassza ki azt a felhasználót vagy csoportot, amelynek hozzárendelését törölni szeretné, majd válassza az **Eltávolítás**lehetőséget. A Microsoft 365 és az Office 365-alkalmazások némelyike a PowerShell használatát igényli. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a gyors üzembe helyezéssel, vegye fontolóra az alkalmazás törlését. Így megőrizheti a teszt bérlőjét. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan állíthatja be az egyszeri bejelentkezést az alkalmazásokhoz.
 > [!div class="nextstepaction"]

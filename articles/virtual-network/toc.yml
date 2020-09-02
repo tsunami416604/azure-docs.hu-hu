@@ -37,9 +37,6 @@
       href: powershell-samples.md
     - name: Resource Manager-sablonok
       href: template-samples.md
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Az üzletmenet folytonossága
@@ -226,6 +223,12 @@
               href: ipv6-reserve-public-ip-address-prefix.md
         - name: IP-címzés
           items:
+            - name: Nyilvános IP-címek létrehozása – Portal
+              href: create-public-ip-portal.md
+            - name: Nyilvános IP-címek létrehozása – PowerShell
+              href: create-public-ip-powershell.md
+            - name: Nyilvános IP-címek létrehozása – Azure CLI
+              href: create-public-ip-cli.md
             - name: Nyilvános IP-címek kezelése
               href: virtual-network-public-ip-address.md
             - name: Nyilvános IP-előtag kezelése
@@ -432,6 +435,9 @@
       href: /azure/templates/microsoft.network/allversions
     - name: Kódminták
       href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

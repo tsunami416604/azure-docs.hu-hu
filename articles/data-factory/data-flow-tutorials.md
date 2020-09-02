@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 08/11/2020
-ms.openlocfilehash: 507c91ee4a2c61bba0af9611325bcf01b27fc6d6
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289137"
+ms.locfileid: "89322619"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
@@ -129,7 +129,7 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 
 [Tiszta címek minta](https://youtu.be/axEYbuU3lmw)
 
-[Deduplikáció](https://www.youtube.com/watch?v=OLenvYwg__I)
+[Deduplikáció](https://youtu.be/QOi26ETtPTw)
 
 [Fájlok egyesítése](http://youtu.be/WbDTBAyYte8)
 

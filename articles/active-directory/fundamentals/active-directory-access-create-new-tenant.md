@@ -12,19 +12,19 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f658b5670c42ab03770a3082f8eca740f6869dc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797644"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318607"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: új bérlő létrehozása Azure Active Directory
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure portált és az Azure Active Directory-t, és megtudhatja, hogyan hozhat létre alapszintű bérlőt a szervezete számára.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Új bérlő létrehozása a szervezetén belül
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
@@ -65,13 +65,13 @@ Ha nem folytatja az alkalmazás használatát, a következő lépésekkel törö
 
     ![Áttekintő lap, a kijelölt könyvtár törlése gombbal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tartománynevek módosítása és továbbiak felvétele: [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md)
 
 - Felhasználók felvétele: [Új felhasználó hozzáadása és törlése](add-users-azure-active-directory.md)
 
 - Csoportok és tagok hozzáadása: [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-- Tudnivalók a [szerepköralapú hozzáférésről Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) és [feltételes hozzáférés](../../role-based-access-control/conditional-access-azure-management.md) használatával a szervezet alkalmazás-és erőforrás-hozzáférésének kezeléséhez.
+- Tudnivalók a [szerepköralapú hozzáférésről Privileged Identity Management](../../role-based-access-control/best-practices.md) és [feltételes hozzáférés](../../role-based-access-control/conditional-access-azure-management.md) használatával a szervezet alkalmazás-és erőforrás-hozzáférésének kezeléséhez.
 
 - Tudnivalók az Azure Active Directoryról, beleértve [az alapszintű licenceléssel, a terminológiával és a társított szolgáltatásokkal](active-directory-whatis.md) kapcsolatos információkat.

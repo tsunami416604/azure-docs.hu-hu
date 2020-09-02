@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 40796951fe356fcf950b83c6ac771a0ca98ffd5a
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: d0e677377037203a6a67150d985efb30e09af86e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073215"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321855"
 ---
 <a name="HOLTop"></a>
 
@@ -87,7 +87,7 @@ Ezután megkezdheti a kód hozzáadását a különböző Computer Vision művel
 
 A következő osztályok és felületek a Computer Vision go SDK főbb funkcióit kezelik.
 
-|Name|Leírás|
+|Név|Leírás|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Ez az osztály az összes Computer Vision funkcióhoz szükséges, például a képek elemzéséhez és a szöveges olvasáshoz. Ezt az előfizetési adatokkal hozza létre, és a legtöbb képművelet végrehajtásához használja.|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Ez a típus egy **AnalyzeImage** függvény hívásának eredményét tartalmazza. A kategória-specifikus függvények hasonló típusúak.|
@@ -231,7 +231,7 @@ Adja hozzá a következő kódot a beolvasott szöveges adat elemzéséhez és m
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_display)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `go run` paranccsal.
 
@@ -239,17 +239,17 @@ Futtassa az alkalmazást az alkalmazás könyvtárából a `go run` paranccsal.
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Computer Vision API referenciája (go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
 
-* [Mi a Computer Vision?](../../Home.md)
+* [Mi a Computer Vision?](../../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go)található.

@@ -46,11 +46,6 @@
       items:
         - name: Adatok fogadása az Azure IoT Hubon keresztül
           href: device-data-through-iot-hub.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Útmutatók
   expanded: false
   items:
@@ -82,6 +77,11 @@
           href: configure-cross-origin-resource-sharing.md
         - name: Exportálás konfigurálása
           href: configure-export-data.md
+    - name: Adatok exportálása
+      expanded: false
+      items:
+        - name: Azonosításra nem alkalmas exportálás
+          href: export-data.md
     - name: Identitásobjektum-azonosítók keresése
       href: find-identity-object-ids.md
     - name: Diagnosztikai naplózás engedélyezése az Azure API for FHIR®-ben
@@ -118,3 +118,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

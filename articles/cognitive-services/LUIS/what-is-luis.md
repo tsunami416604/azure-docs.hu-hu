@@ -5,12 +5,12 @@ keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozá
 ms.topic: overview
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 22fe99e1552a9612adfbc455d60852f1591a1a54
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752146"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320052"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -31,7 +31,7 @@ A LUIS alkalmazás közzététele után az ügyfélalkalmazás kimondott szöveg
 
 ![A LUIS elméleti ábrázolása a csevegő használatával a természetes nyelvi megértést (NLP) használó felhasználói szöveg előrejelzéséhez](./media/luis-overview/LUIS-chat-bot-request-response.svg "A LUIS-vel kapcsolatos elméleti képek a csevegő használatával a természetes nyelvi megértéssel (NLP")
 
-|Lépés|Műveletek|
+|Lépés|Művelet|
 |:--|:--|
 |1|Az ügyfélalkalmazás a következő felhasználói _kimondott szöveget_ (saját szavaikkal megfogalmazott szöveg) küldi el HTTP-kérésként a LUIS-végpontnak: „Fel szeretném hívni a HR képviselőmet.”|
 |2|A LUIS lehetővé teszi, hogy egyéni nyelvi modelljeit az alkalmazáshoz való intelligenciával bővítse. A gépi megtanult nyelvi modellek a felhasználó strukturálatlan bemeneti szövegét, és egy JSON-formátumú választ adnak vissza, amely a legfelső szándékot használja `HRContact` . A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöveget, valamint a legmagasabb pontszámú szándékot. Emellett olyan adatok kinyerésére is képes, mint például a _Contact Type_ entitás.|
@@ -64,7 +64,7 @@ Tervezze meg a modellt a **[felhasználói szándékok nevű](luis-concept-inten
 |`When does your store open?`|ÜzletNyitvatartásÉsHelyszín|nyitás|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ÉrtekezletÜtemezés|13 óra, Bob|
 
-Hozza létre a modellt a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-kkal vagy a [**Luis-portálral**](https://www.luis.ai), vagy mindkettővel. További információ a [portál](get-started-portal-build-app.md) és az [SDK-ügyfél kódtárainak](quickstart-sdk.md)létrehozásáról.
+Hozza létre a modellt a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-kkal vagy a [**Luis-portálral**](https://www.luis.ai), vagy mindkettővel. További információ a [portál](get-started-portal-build-app.md) és az [SDK-ügyfél kódtárainak](azure-sdk-quickstart.md)létrehozásáról.
 
 ## <a name="step-2-get-the-query-prediction"></a>2. lépés: a lekérdezés előrejelzésének beolvasása
 
@@ -126,10 +126,10 @@ A LUIS a meglévő LUIS-erőforrások részeként Text Analytics funkciókat biz
 
 ## <a name="learn-with-the-quickstarts"></a>Ismerkedjen meg a gyors útmutatókkal
 
-Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-build-app.md) és az [SDK ügyféloldali kódtárak](quickstart-sdk.md)használatával.
+Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-build-app.md) és az [SDK ügyféloldali kódtárak](azure-sdk-quickstart.md)használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szolgáltatással és a dokumentációval kapcsolatos [Újdonságok](whats-new.md)
 * [Tervezze meg alkalmazását](luis-how-plan-your-app.md) [szándékokkal](luis-concept-intent.md) és [entitásokkal](luis-concept-entity-types.md).

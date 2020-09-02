@@ -4,14 +4,17 @@
   items:
     - name: Mi az a Traffic Manager?
       href: traffic-manager-overview.md
-- name: Első lépések
+- name: Rövid útmutatók
   items:
-    - name: Traffic Manager-profil létrehozása – portál
+    - name: Traffic Manager-profil létrehozása – Portal
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager-profil létrehozása – PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: Traffic Manager-profil létrehozása – Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
+    - name: Traffic Manager-profil létrehozása – ARM-sablon
+      href: quickstart-create-traffic-manager-profile-template.md
+  expanded: true
 - name: Oktatóanyagok
   items:
     - name: Forgalom irányítása az alacsony késés érdekében
@@ -59,7 +62,7 @@
       href: traffic-manager-how-it-works.md
     - name: Gyakori kérdések
       href: traffic-manager-FAQs.md
-- name: Útmutató
+- name: Útmutatók
   items:
     - name: Teljesítmény-centrikus útválasztás konfigurálása a Traffic Managerben
       href: traffic-manager-configure-performance-routing-method.md
@@ -132,7 +135,7 @@
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Szolgáltatási korlátozások
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

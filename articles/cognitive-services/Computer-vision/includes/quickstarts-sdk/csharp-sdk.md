@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5903d6c58e080b658bbd80a5f774b441d6c91b8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3ec3e44c667d6821c4a6dc0779a760b65de5046e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936867"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321860"
 ---
 <a name="HOLTop"></a>
 
@@ -260,10 +260,10 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API-hivatkozás (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
-* [Mi a Computer Vision?](../../Home.md)
+* [Mi a Computer Vision?](../../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs)található.

@@ -9,9 +9,9 @@
       href: supported-data-stores.md
 - name: Rövid útmutatók
   items:
-    - name: Adatmegosztás létrehozása – Azure Portal
+    - name: Adatok megosztása – Azure Portal
       href: share-your-data-portal.md
-    - name: Adatmegosztás létrehozása – ARM-sablon
+    - name: Adatok megosztása – ARM-sablon
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Oktatóanyagok
@@ -39,6 +39,10 @@
   items:
     - name: Adatok megosztása és fogadása forrás szerint
       items:
+        - name: Megosztás az Azure Storage-ból
+          href: how-to-share-from-storage.md
+        - name: Megosztás az Azure SQL Database-ből vagy a Synapse Analyticsből
+          href: how-to-share-from-sql.md
         - name: Megosztás az Azure Data Explorerből
           href: /azure/data-explorer/data-share
           maintainContext: true

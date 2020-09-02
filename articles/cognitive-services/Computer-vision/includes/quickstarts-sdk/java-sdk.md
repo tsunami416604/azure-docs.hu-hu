@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 8dce26f6cfa13744c75625ea0240487f1d4f2278
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 2b305b1ffc5c72780f903c7798fbce24c630baba
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89094145"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321857"
 ---
 <a name="HOLTop"></a>
 
@@ -274,5 +274,5 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Computer Vision 
 > [!div class="nextstepaction"]
 >[Computer Vision referenciája (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
 
-* [Mi a Computer Vision?](../../Home.md)
+* [Mi a Computer Vision?](../../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)található.

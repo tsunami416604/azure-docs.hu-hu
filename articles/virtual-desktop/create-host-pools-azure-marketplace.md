@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali címkészlet Azure Portal – Azure
 description: Windows rendszerű virtuális asztali címkészlet létrehozása a Azure Portal használatával.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 09/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 466180535b3fe7c7d0155c8b19ac287930341ee7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226097"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322585"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -131,9 +131,11 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
 7. Válassza ki, hogy a virtuális gépek milyen operációsrendszer-lemezeket szeretnének használni: standard SSD, prémium SSD vagy standard HDD.
 
-8. A hálózat és biztonság területen válassza ki azt a **virtuális hálózatot** és **alhálózatot** , ahol a létrehozni kívánt virtuális gépeket el szeretné helyezni. Győződjön meg arról, hogy a virtuális hálózat tud csatlakozni a tartományvezérlőhöz, mert a virtuális hálózaton belüli virtuális gépeket a tartományhoz kell csatlakoztatnia. Ezután válassza ki, hogy szeretne-e nyilvános IP-címet használni a virtuális gépekhez. Azt javasoljuk, hogy válassza a **nem**lehetőséget, mert a magánhálózati IP-cím biztonságosabb.
+8. A hálózat és biztonság területen válassza ki azt a **virtuális hálózatot** és **alhálózatot** , ahol a létrehozni kívánt virtuális gépeket el szeretné helyezni. Győződjön meg arról, hogy a virtuális hálózat tud csatlakozni a tartományvezérlőhöz, mert a virtuális hálózaton belüli virtuális gépeket a tartományhoz kell csatlakoztatnia. A kiválasztott virtuális hálózat DNS-kiszolgálóit úgy kell konfigurálni, hogy a tartományvezérlő IP-címét használják.
 
-9. Válassza ki a kívánt biztonsági csoport típusát: **Alapszintű**, **speciális**vagy **nincs**.
+9. Ezután adja meg, hogy szeretne-e nyilvános IP-címet használni a virtuális gépekhez. Azt javasoljuk, hogy válassza a **nem** lehetőséget, mert a magánhálózati IP-cím biztonságosabb.
+
+10. Válassza ki a kívánt biztonsági csoport típusát: **Alapszintű**, **speciális**vagy **nincs**.
 
     Ha az **alapszintű**lehetőséget választja, ki kell választania, hogy meg kívánja-e nyitni a bejövő portokat. Ha az **Igen**lehetőséget választja, akkor a bejövő kapcsolatok engedélyezéséhez válasszon a szabványos portok listájából.
 
@@ -145,11 +147,13 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
     Ha a **speciális**lehetőséget választja, válasszon ki egy már konfigurált, meglévő hálózati biztonsági csoportot.
 
-10. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen**lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Opcionálisan hozzáadhat egy adott szervezeti egységet, amelyben a virtuális gépeket be szeretné állítani. Ha a **nem**lehetőséget választja, a virtuális gépek az **ad-tartományhoz való csatlakozás UPN**-utótagjának megfelelő tartományhoz fognak csatlakozni.
+11. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen**lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Opcionálisan hozzáadhat egy adott szervezeti egységet, amelyben a virtuális gépeket be szeretné állítani. Ha a **nem**lehetőséget választja, a virtuális gépek az **ad-tartományhoz való csatlakozás UPN**-utótagjának megfelelő tartományhoz fognak csatlakozni.
 
-11. A rendszergazdai fiók területen adja meg a kiválasztott virtuális hálózat Active Directory-tartomány rendszergazdájához tartozó hitelesítő adatokat.
+  - Szervezeti egység megadásakor ügyeljen arra, hogy a teljes elérési utat (megkülönböztető név) és idézőjelek nélkül használja.
 
-12. Válassza a **Tovább: munkaterület >** elemet.
+12. A rendszergazdai fiók területen adja meg a kiválasztott virtuális hálózat Active Directory-tartomány rendszergazdájához tartozó hitelesítő adatokat. Ennek a fióknak nincs engedélyezve a többtényezős hitelesítés (MFA). Azure Active Directory Domain Services (Azure AD DS) tartományhoz való csatlakozáskor a fióknak az Azure AD DC-rendszergazdák csoport tagjaként kell lennie, és a fiók jelszavának az Azure-AD DS kell működnie.
+
+13. Válassza a **Tovább: munkaterület >** elemet.
 
 Ezzel készen áll arra, hogy elindítsa a gazdagép készletének következő fázisát: az alkalmazás csoportjának regisztrálása munkaterületre.
 
