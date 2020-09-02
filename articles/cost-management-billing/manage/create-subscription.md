@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: df303801daba0509177e48565b3ddbe7674013e8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689966"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925045"
 ---
 # <a name="create-an-additional-azure-subscription"></a>További Azure-előfizetés létrehozása
 
@@ -73,7 +73,7 @@ A következő engedélyekre van szüksége az előfizetések létrehozásához:
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>További Azure-előfizetés létrehozása programozott módon
 
-További előfizetéseket programozott módon is létrehozhat. További információért tekintse meg [az Azure-előfizetések programozott módon történő létrehozását](../../azure-resource-manager/management/programmatically-create-subscription.md) ismertető cikket.
+További előfizetéseket programozott módon is létrehozhat. További információért tekintse meg [az Azure-előfizetések programozott módon történő létrehozását](programmatically-create-subscription.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 

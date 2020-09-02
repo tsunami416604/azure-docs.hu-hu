@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 91050311e5e0604af44731f7bf6e1a818ec464cc
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852732"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377812"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -81,7 +81,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
     ```
     # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
     ```
 
     --- 
@@ -302,7 +302,7 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. fott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha szeretné integrálni a címkéző eszközt a saját alkalmazásba, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 

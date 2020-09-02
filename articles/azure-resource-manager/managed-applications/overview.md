@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81391581"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377012"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -45,7 +45,7 @@ A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, ame
 
 A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban lásd a [szolgáltatáskatalógusban elérhető alkalmazások létrehozását](publish-service-catalog-app.md) ismertető témakört.
 
-### <a name="marketplace"></a>Piactér
+### <a name="marketplace"></a>Marketplace
 
 A szolgáltatásaikat értékesíteni kívánó szállítók a felügyelt alkalmazásokat elérhetővé tehetik az Azure Marketplace-en. Miután a szállító közzétesz egy alkalmazást, az elérhetővé válik a vállalaton kívüli felhasználók számára. Ezzel a módszerrel a felügyelt szolgáltatások szolgáltatói (MSP-k), a független szoftverszállítók (ISV-k) és a rendszerintegrátorok (SI-k) minden Azure-ügyfél számára felkínálhatják a megoldásaikat.
 
@@ -71,15 +71,15 @@ Az ügyfél teljes hozzáféréssel rendelkezik az erőforráscsoporthoz, így k
 
 Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz. A hozzáférés vagy állandó, vagy egy adott időre korlátozódik.
 
-Amikor közzéteszi a [felügyelt alkalmazást a piactéren](publish-marketplace-app.md), a közzétevő engedélyezheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a felhasználók újra tudják indítani a virtuális gépeket. Az olvasási műveleteken túl minden más művelet is megtagadva.
+Amikor közzéteszi a [felügyelt alkalmazást a piactéren](publish-marketplace-app.md), a közzétevő engedélyezheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a felhasználók újra tudják indítani a virtuális gépeket. Az olvasási műveleteken túl minden más művelet is megtagadva. A felügyelt erőforráscsoport erőforrásainak egy adott művelettel rendelkező fogyasztó általi változásaira a felügyelt erőforráscsoport belefoglalása a felhasználói bérlőn belüli [Azure Policy](../../governance/policy/overview.md) -hozzárendelésekre vonatkozik.
 
 Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-A felügyelt alkalmazásra [Azure-szabályzatot](../../governance/policy/overview.md) alkalmazhat. Szabályzatokat alkalmazhat annak érdekében, hogy a felügyelt alkalmazás üzembe helyezett példányai megfeleljenek a biztonsági és adatkövetelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokat használ, alkalmazzon egy szabályzatot az adattitkosítás engedélyezése érdekében.
+A felügyelt alkalmazások naplózásához [Azure Policy](../../governance/policy/overview.md) is alkalmazhat. A szabályzat-definíciók alkalmazásával gondoskodhat arról, hogy a felügyelt alkalmazás telepített példányai megfeleljenek az adat-és biztonsági követelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokkal működik együtt, alkalmazza a házirend-definíciót, hogy az adatok titkosítása engedélyezve legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 

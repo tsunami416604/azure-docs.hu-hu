@@ -3,23 +3,23 @@ title: Azure bejárati ajtó | Microsoft Docs
 description: Ez a cikk az Azure Front Doorról nyújt áttekintést. Megtudhatja, hogy a megfelelő választás-e a felhasználói forgalom terheléselosztásához az alkalmazáshoz.
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
-ms.author: sharadag
-ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 09/02/2020
+ms.author: duau
+ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322282"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378185"
 ---
-# <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
+# <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
 Az Azure bevezető ajtaja lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését azáltal, hogy optimalizálja a legjobb teljesítményt és gyors globális feladatátvételt a magas rendelkezésre állás érdekében. A bejárati ajtó révén a globális (többrégiós) fogyasztói és nagyvállalati alkalmazásokat robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokkal, API-kkal és olyan tartalommal alakíthatja át, amely az Azure-ban globális közönséget ér el.
 
 A Front Door a 7. rétegben, a HTTP/HTTPS rétegben működik, és szétválasztott TCP-alapú anycast protokollal és a Microsoft globális hálózatával javítja a globális összekapcsolhatóságot. Így minden kiválasztott útválasztási metódus esetén biztosíthatja, hogy a Front Door a lehető leggyorsabb és a legnagyobb rendelkezésre állású alkalmazás-háttérrendszerre irányítsa ügyfélkérelmeit. Az alkalmazás-háttérrendszer egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A Front Door számos különböző [forgalom-útválasztási módszert](front-door-routing-methods.md) és [háttérrendszer-állapotfigyelési lehetőséget](front-door-health-probes.md) biztosít, hogy megfeleljen a különböző alkalmazások igényeinek és az automatikus feladatátvételi modelleknek. A [Traffic Managerhez](../traffic-manager/traffic-manager-overview.md) hasonlóan, a Front Door is ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
@@ -82,7 +82,11 @@ A HTTP/2 protokoll teljes körű duplex kommunikációt tesz lehetővé egy alka
 
 Díjszabási információkért tekintse meg [A Front Door díjszabása](https://azure.microsoft.com/pricing/details/frontdoor/) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="whats-new"></a>Újdonságok
+
+Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb Azure Load Balancer szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) oldalon.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: bf4864e0c6342cbd4729d5b99479eb2ef1a2c48c
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542195"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378219"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
-Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt identitás](../general/managed-identity.md)használata, de vannak olyan helyzetek, amikor ez nem lehetséges. Ezekben az esetekben a rendszer hozzáférési kulcsokat vagy jelszavakat használ. A hozzáférési kulcsokat és jelszavakat gyakran el kell forgatni.
+Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt identitás](../general/authentication.md)használata, de vannak olyan helyzetek, amikor ez nem lehetséges. Ezekben az esetekben a rendszer hozzáférési kulcsokat vagy jelszavakat használ. A hozzáférési kulcsokat és jelszavakat gyakran el kell forgatni.
 
 Ez az oktatóanyag bemutatja, hogyan automatizálható a titkok rendszeres elforgatása olyan adatbázisokhoz és szolgáltatásokhoz, amelyek két hitelesítési hitelesítő adatot használnak. Ebben az oktatóanyagban az Azure Storage-fiók kulcsait elforgatja Azure Key Vault a titkokat Azure Event Grid értesítés által aktivált függvény használatával. :
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik meglévő Key Vault-és Storage-fiókkal, akkor az alábbi te
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Hozzon létre egy erőforráscsoportot](../media/secrets/rotation-dual/dual-rotation-1.png)
+    ![Erőforráscsoport létrehozása](../media/secrets/rotation-dual/dual-rotation-1.png)
 
 Most már rendelkezik egy kulcstartóval és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -91,7 +91,7 @@ A Function app rotációs funkciója megköveteli ezeket az összetevőket és k
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-   ![Felülvizsgálat + létrehozás](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![Az első Storage-fiók áttekintése és létrehozása](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 Az előző lépések elvégzése után egy Storage-fiók, egy kiszolgálófarm, egy Function alkalmazás és egy Application-szolgáltatás is rendelkezésre áll. Az üzembe helyezés befejezése után az alábbi képernyő jelenik meg: az ![ üzembe helyezés befejeződött](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -136,13 +136,13 @@ Az alábbi paranccsal megjelenítheti a titkos adatokat:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-Figyelje meg, hogy a frissítve lett, `CredentialId` `keyName` és `value` a rendszer újragenerálta a ![ titkos diasort](../media/secrets/rotation-dual/dual-rotation-4.png)
+Figyelje meg, hogy a `CredentialId` rendszer a másikra frissíti, és az az `keyName` `value` ![ első Storage-fiókhoz tartozó kulcstartó Secret show-kimenetét újragenerálta.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Hozzáférési kulcsok beolvasása az érték érvényesítéséhez
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Hozzáférési kulcsok listája](../media/secrets/rotation-dual/dual-rotation-5.png)
+![Az az Storage Account Keys lista kimenete az első Storage-fiókhoz](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>További Storage-fiókok hozzáadása a forgatáshoz
 
@@ -164,7 +164,7 @@ A meglévő függvények elforgatásához további Storage-fiókok kulcsainak ho
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-   ![Felülvizsgálat + létrehozás](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![A második Storage-fiók áttekintése és létrehozása](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Adjon hozzá egy másik Storage-fiókhoz való hozzáférési kulcsot Key Vault
 
@@ -190,20 +190,20 @@ Titkos adatok megjelenítése az alábbi paranccsal:
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-Figyelje meg, hogy a frissítve lett, `CredentialId` `keyName` és `value` a rendszer újragenerálta a ![ titkos diasort](../media/secrets/rotation-dual/dual-rotation-8.png)
+Figyelje meg, hogy a frissítve lett a `CredentialId` másikra, `keyName` és `value` ![ a második Storage-fiókhoz tartozó kulcstartó Secret show újragenerált kimenete](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Hozzáférési kulcsok beolvasása az érték érvényesítéséhez
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![Hozzáférési kulcsok listája](../media/secrets/rotation-dual/dual-rotation-9.png)
+![A második Storage-fiókhoz tartozó Storage Account Keys-lista kimenete](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Elérhető Key Vault kettős hitelesítő adatok elforgatási funkciói
 
 - [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)
