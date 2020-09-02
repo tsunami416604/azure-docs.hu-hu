@@ -116,6 +116,10 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: Egyszeri bejelentkezés a helyszíni erőforrásokba
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Hibrid – gyakori kérdések
+              href: howto-authentication-passwordless-faqs.md
+            - name: Hibrid – hibaelhárítás
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: Jelszó nélküli telefonos bejelentkezés
           href: howto-authentication-passwordless-phone.md
         - name: Vállalati Windows Hello
@@ -209,7 +213,7 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Hibaelhárítás
       items:
-        - name: SSPR hibaelhárítása
+        - name: SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: SSPR – GYIK
           href: active-directory-passwords-faq.md

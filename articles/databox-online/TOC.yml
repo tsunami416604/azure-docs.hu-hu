@@ -73,15 +73,15 @@
               items:
                 - name: Kubernetes-fürt elérése
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
-                - name: Állapotmentes alkalmazás közzététele
+                - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
-                - name: Állapotalapú alkalmazás üzembe helyezése (statikusan kiépített)
+                - name: Statikusan kiépített állapotalapú alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
-                - name: Állapotalapú alkalmazás üzembe helyezése (dinamikusan kiépített)
+                - name: Dinamikusan kiépített állapotalapú alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
             - name: IoT Edge használatával
               items:
-                - name: Állapotmentes alkalmazás közzététele
+                - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
             - name: Azure Arc használatával
               items:
@@ -119,8 +119,8 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Tanúsítványhibák elhárítása
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-            - name: C#-modul fejlesztése
-              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: C#-modul fejlesztése
+          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Peremhálózati számítás felügyelete
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Tárhelyátjáró felügyelete

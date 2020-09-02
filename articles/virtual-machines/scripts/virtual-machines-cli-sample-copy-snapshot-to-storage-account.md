@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 45b16687a271aa810dbab3c3eed81517c75eda82
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e59386acdf4590100e59fe49142715ea26b8d6d6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88951719"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321939"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Pillanatkép exportálása/másolása egy másik régióban lévő Storage-fiókba a CLI használatával
 
@@ -44,9 +44,9 @@ A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS U
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Felügyelt lemez létrehozása VHD-ből](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Felügyelt lemez létrehozása VHD-ből](virtual-machines-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-[Virtuális gép létrehozása felügyelt lemezből](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
+[Virtuális gép létrehozása felügyelt lemezből](virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

@@ -39,9 +39,6 @@
   items:
     - name: Key Vault-kódminták
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Alapelvek
   items:
     - name: Alapfogalmak
@@ -90,6 +87,8 @@
           href: managed-identity.md
         - name: Hozzáférés-vezérlési szabályzat használata
           href: group-permissions-for-apps.md
+        - name: Azure szerepkör-alapú hozzáférés-vezérlés használata (előzetes verzió)
+          href: rbac-guide.md
         - name: Hozzáférési problémák elhárítása
           href: troubleshooting-access-issues.md
     - name: Fejlesztés
@@ -163,6 +162,9 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

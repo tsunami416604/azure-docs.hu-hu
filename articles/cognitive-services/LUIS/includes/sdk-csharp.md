@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-dotnet
+ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: e29b3dcdaba4fde0782b0fee8c60428b5a824b28
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fff4e8c43263dfcc49be6cb6269078643118e8df
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934725"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323238"
 ---
 Használja a .NET-hez készült Language Understanding (LUIS) ügyféloldali kódtárait a következőhöz:
 * Alkalmazás létrehozása
@@ -66,7 +66,6 @@ Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesz
     ...
     ```
 
-
 ### <a name="install-the-nuget-libraries"></a>A NuGet-kódtárak telepítése
 
 Az alkalmazás könyvtárában telepítse a .NET-hez készült Language Understanding (LUIS) ügyféloldali kódtárait az alábbi parancsokkal:
@@ -79,6 +78,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 ## <a name="authoring-object-model"></a>Szerzői objektummodell
 
 A Language Understanding (LUIS) authoring Client egy [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet) objektum, amely a szerzői kulcsot tartalmazó Azure-ba hitelesíti.
+
+## <a name="code-examples-for-authoring"></a>Példák a szerzői műveletekre
 
 Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő funkciók eléréséhez, többek között:
 
@@ -94,6 +95,8 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 
 A Language Understanding (LUIS) előrejelzési futtatókörnyezet ügyfele egy [LUISRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) objektum, amely az Azure-ba hitelesíti az erőforrás kulcsát.
 
+## <a name="code-examples-for-prediction-runtime"></a>Példák az előrejelzési futtatókörnyezetre
+
 Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő funkciók eléréséhez, többek között:
 
 * Előrejelzés [átmeneti vagy üzemi tárolóhely](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet) alapján
@@ -104,9 +107,11 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-1. A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a meglévő `using` kódot a következő `using` irányelvekre:
+A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a meglévő `using` kódot a következő `using` irányelvekre:
 
-    [!code-csharp[Add NuGet libraries to code file](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=Dependencies)]
+[!code-csharp[Add NuGet libraries to code file](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=Dependencies)]
+
+## <a name="add-boilerplate-code"></a>Szabványos kód hozzáadása
 
 1. Módosítsa a metódus aláírását az `Main` aszinkron hívások engedélyezéséhez:
 
@@ -117,6 +122,8 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 1. Ha másként nincs megadva, adja hozzá a kód többi részét az `Main` osztály metódusához `Program` .
 
 ## <a name="create-variables-for-the-app"></a>Változók létrehozása az alkalmazáshoz
+
+Hozzon létre két változót: az első módosítást, a második beállított értéket, ahogy a kód mintában szerepelnek. 
 
 1. Hozzon létre változókat a szerzői kulcsok és az erőforrások neveinek tárolásához.
 
@@ -130,7 +137,7 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 
 Hozzon létre egy [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.apikeyserviceclientcredentials?view=azure-dotnet) objektumot a kulccsal, és használja a végpontján egy [LUISAuthoringClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.luisauthoringclient?view=azure-dotnet) objektum létrehozásához.
 
-[!code-csharp[Create LUIS authoring client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringCreateClient)]
+[!code-csharp[Authenticate the client](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>LUIS-alkalmazás létrehozása
 
@@ -147,7 +154,7 @@ Hozzon létre egy [ModelCreateObject](https://docs.microsoft.com/dotnet/api/micr
 
 Az `intentName` érték nem módosítható az `OrderPizzaIntent` [alkalmazáshoz tartozó változók létrehozása](#create-variables-for-the-app) változóinak részeként.
 
-[!code-csharp[Create intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AddIntent)]
+[!code-csharp[Create intent for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>Entitások létrehozása az alkalmazáshoz
 
@@ -159,11 +166,11 @@ Az entitások létrehozási módszerei a [Model](https://docs.microsoft.com/dotn
 
 Az entitás-létrehozási kód olyan gépi tanulási entitást hoz létre, amely alentitásokkal és az alentitásokra alkalmazott funkciókkal rendelkezik `Quantity` .
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Az entitás-létrehozási kód olyan gépi tanulási entitást hoz létre, amelynek alentitásai és funkciói a mennyiség alentitásokra vannak alkalmazva.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Részleges képernyőkép a portálról, amely a létrehozott entitást, az alentitásokkal és a "mennyiség" alentitásokra alkalmazott funkciókkal rendelkező gépi tanulási entitást mutatja.":::
 
-[!code-csharp[Create entities](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
+[!code-csharp[Create entities for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
 
-A következő metódussal keresheti meg a mennyiség alentitásának azonosítóját, hogy hozzárendelje az adott alentitáshoz tartozó szolgáltatásokat.
+A következő metódussal keresheti meg a mennyiség alentitásának AZONOSÍTÓját, hogy hozzárendelje az adott alentitáshoz tartozó szolgáltatásokat.
 
 [!code-csharp[Find subentity id](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringSortModelObject)]
 
@@ -173,11 +180,11 @@ Ha meg szeretné határozni a teljes szándékot, és kinyeri az entitásokat, a
 
 Adja hozzá például a hosszúságú kimondott szöveg egy [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) -objektumok listájának létrehozásával, amely minden egyes példa kiírásának egy objektumát tartalmazza. Mindegyik példa minden entitást megjelöl az entitás neve és az entitás értéke név/érték párokkal rendelkező szótárával. Az entitás értékének pontosan úgy kell lennie, ahogy a példa szövegében megjelenik.
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Az entitás értékének pontosan úgy kell lennie, ahogy a példa szövegében megjelenik.":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Részleges képernyőkép, amely a címkével ellátott példát mutatja a portálon. ":::
 
-Hívja meg a [példákat. AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) az alkalmazás azonosítóját, a verziószámot és a példát. 
+Hívja meg a [példákat. AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) az alkalmazás azonosítóját, a verziószámot és a példát.
 
-[!code-csharp[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
+[!code-csharp[Add example utterance to intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
@@ -187,9 +194,9 @@ A [Train. TrainVersionAsync](https://docs.microsoft.com/dotnet/api/microsoft.azu
 
 Nagyon kis modell, például ez a rövid útmutató mutatja, nagyon gyorsan betanítja. Üzemi szintű alkalmazások esetén az alkalmazásnak be kell vonnia a [GetStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_TrainExtensions_GetStatusAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ITrain_System_Guid_System_String_System_Threading_CancellationToken_) metódus lekérdezési hívását annak meghatározására, hogy mikor vagy mikor sikerült a képzés. A válasz az egyes objektumokhoz külön állapotú [ModelTrainingInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-dotnet) objektumok listája. Az összes objektumnak sikeresnek kell lennie ahhoz, hogy a képzés befejezze.
 
-[!code-csharp[Train the app's version](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=TrainAppVersion)]
+[!code-csharp[Train the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>Language Understanding alkalmazás közzététele
+## <a name="publish-app-to-production-slot"></a>Alkalmazás közzététele az üzemi tárolóhelyen
 
 Tegye közzé a LUIS alkalmazást a [PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet) metódus használatával. Ez közzéteszi a jelenlegi betanított verziót a végponton megadott tárolóhelyre. Az ügyfélalkalmazás ezt a végpontot használja arra, hogy felhasználói hosszúságú kimondott szöveg küldjön a szándékok és az entitások kinyerésének előrejelzésére.
 
@@ -201,7 +208,7 @@ Használjon egy [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotn
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-csharp[Create LUIS runtime client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=PredictionCreateClient)]
+[!code-csharp[Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=PredictionCreateClient)]
 
 
 ## <a name="get-prediction-from-runtime"></a>Előrejelzés lekérése futtatókörnyezetből
@@ -212,7 +219,7 @@ A felhasználó teljes értéke a [PredictionRequest](https://docs.microsoft.com
 
 A **GetSlotPredictionAsync** metódusnak több paraméterre van szüksége, például az alkalmazás azonosítója, a tárolóhely neve, az előrejelzési kérelem objektum a kérelem teljesítéséhez. A többi lehetőség, például a részletes, az összes leképezés megjelenítése és a napló megadása nem kötelező.
 
-[!code-csharp[Get prediction based on query](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=QueryPredictionEndpoint)]
+[!code-csharp[Get prediction from runtime](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 
