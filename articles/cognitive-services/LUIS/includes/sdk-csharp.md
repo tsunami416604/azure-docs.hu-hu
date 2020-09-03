@@ -166,7 +166,7 @@ Az entitások létrehozási módszerei a [Model](https://docs.microsoft.com/dotn
 
 Az entitás-létrehozási kód olyan gépi tanulási entitást hoz létre, amely alentitásokkal és az alentitásokra alkalmazott funkciókkal rendelkezik `Quantity` .
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Részleges képernyőkép a portálról, amely a létrehozott entitást, az alentitásokkal és a "mennyiség" alentitásokra alkalmazott funkciókkal rendelkező gépi tanulási entitást mutatja.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Részleges képernyőkép a portálról, amely a létrehozott entitást, az alentitásokkal és a mennyiség alentitásokra alkalmazott funkciókkal rendelkező gépi tanulási entitást mutatja.":::
 
 [!code-csharp[Create entities for the app](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddEntities)]
 
