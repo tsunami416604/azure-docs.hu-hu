@@ -1,5 +1,5 @@
 ---
-title: Mi a fordító? -Translator
+title: Mi az a Translator? -Translator
 titlesuffix: Azure Cognitive Services
 description: A fordítót integrálhatja alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba a többnyelvű felhasználói élmény biztosítása érdekében.
 services: cognitive-services
@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589451"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425959"
 ---
-# <a name="what-is-the-translator"></a>Mi a fordító?
+# <a name="what-is-translator"></a>Mi az a Translator?
 
-A fordító egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmény [több mint 70 nyelven](languages.md)való hozzáadását, és bármilyen hardveres platformon használható bármely operációs rendszerrel a szöveg és a szöveg közötti nyelvi fordításhoz.
-
-A fordító a gépi tanulási és AI-algoritmusok [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) -gyűjteményének része a felhőben, és könnyen fogyasztható a fejlesztési projektekben.
+Az Azure Cognitive Services Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások létrehozásához szükséges, az [azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) a kognitív API-család része. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmény [több mint 70 nyelven](languages.md)való hozzáadását, és bármilyen hardveres platformon használható bármely operációs rendszerrel a szöveg és a szöveg közötti nyelvi fordításhoz.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 
-A Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a fordító, amely számos Microsoft-terméket és-szolgáltatást biztosít, és világszerte több ezer vállalat használja az alkalmazásaikban és munkafolyamataiban, ami lehetővé teszi, hogy a tartalom globális közönség számára is elérhető legyen.
+Az Azure Cognitive Services Translator egy felhőalapú gépi fordítási szolgáltatás. A Translator számos Microsoft-terméket és-szolgáltatást felhasznál, és világszerte több ezer vállalat használja alkalmazásaikban és munkafolyamataiban, ami lehetővé teszi, hogy a tartalmak globális közönséget érjenek el.
 
-A fordító által működtetett beszéd fordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/)-en keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban.A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
+A fordító által működtetett beszédfelismerés a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/)-en keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban. 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -46,13 +44,13 @@ További információ [az NMT működéséről](https://www.microsoft.com/en-us/
 
 ## <a name="language-customization"></a>Nyelvi testreszabás
 
-A Microsoft Translator szolgáltatás alapszintű, egyéni fordítója a fordítóval együttműködve segíti a neurális fordítói rendszer testreszabását és az adott terminológia és stílus fordításának javítását.
+A fordítói szolgáltatás bővítménye, az egyéni fordító a fordítóval együtt használható a neurális fordítási rendszer testreszabásához és az adott terminológia és stílus fordításának javításához.
 
 A Custom Translator használatával olyan fordítási rendszereket állíthat össze, amelyek kezelik a vállalkozásában vagy az iparágban alkalmazott terminológiát. A testreszabott fordítási rendszer ezután egyszerűen integrálható a meglévő alkalmazásaiba, munkafolyamataiba és webhelyeibe, a normál fordítón keresztül, a kategória paraméter használatával.
 
 További információk [a nyelvi testreszabásról](customization.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Regisztráljon](translator-text-how-to-signup.md) egy hozzáférési kulcsra.
 - Az [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) az API-k műszaki dokumentációját biztosítják.

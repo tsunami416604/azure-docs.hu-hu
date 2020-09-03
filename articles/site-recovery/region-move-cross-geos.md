@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek áthelyezése a kormányzati és a nyilvános régiók között Azure Site Recovery
 description: Azure Site Recovery használatával Azure-beli virtuális gépeket helyezhet át az Azure Government és a nyilvános régiók között.
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927300"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425347"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government- és nyilvános régiók között 
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gé
 > [!NOTE]
 > Győződjön meg arról, hogy ismeri a forgatókönyv [architektúráját és összetevőit](physical-azure-architecture.md) . Ez az architektúra a **virtuális gépek fizikai kiszolgálóként való kezelésével az**Azure-beli virtuális gépek áthelyezésére szolgál.
 
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](vmware-physical-secondary-support-matrix.md).
+- Tekintse át az összes összetevő [támogatási követelményeit](vmware-physical-secondary-support-matrix.md) .
 - Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek az Azure-beli [virtuális gépek követelményeinek](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Készítsen elő egy fiókot a mobilitási szolgáltatás automatikus telepítéséhez minden replikálni kívánt kiszolgálón.
 
@@ -79,7 +79,7 @@ A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepít
 
 - Tartományi vagy helyi fiókot is használhat
 - Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a regisztrálás **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
-- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux esetén a fióknak a forrás Linux-kiszolgáló gyökerének kell lennie.
 
 
@@ -245,7 +245,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, folytassa a köve
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gépet egy másik Azure-régióba helyezett át. Most már beállíthatja az áthelyezett virtuális gép vész-helyreállítását.
 

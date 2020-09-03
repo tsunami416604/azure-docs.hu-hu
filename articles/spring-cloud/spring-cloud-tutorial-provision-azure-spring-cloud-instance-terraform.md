@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079192"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426350"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Oktatóanyag: Azure Spring Cloud-példány kiépítése a Terraform
 
@@ -94,7 +94,7 @@ Ebben a szakaszban számos Terraform-parancsot használ a konfiguráció futtat�
     terraform apply plan.out
     ```
 
-1. A Azure Portal belüli eredmények ellenőrzéséhez keresse meg az új erőforráscsoportot. Az új **Azure Cosmos db példány** az új erőforráscsoporthoz mutat.
+1. A Azure Portal belüli eredmények ellenőrzéséhez keresse meg az új erőforráscsoportot. Az új **Azure Spring Cloud** -példány az új erőforráscsoporthoz mutat.
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>Konfiguráció frissítése a konfigurációs naplókra és a mérőszámokra
 
@@ -165,7 +165,7 @@ Futtassa az [Terraform Destroy](https://www.terraform.io/docs/commands/destroy.h
 terraform destroy -auto-approve
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Terraform telepítése és konfigurálása Azure-erőforrások](https://docs.microsoft.com/azure/developer/terraform/getting-started-cloud-shell)kiépítéséhez.
