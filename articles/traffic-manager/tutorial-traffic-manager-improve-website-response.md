@@ -2,7 +2,7 @@
 title: Oktatóanyag – a webhely válaszának fejlesztése az Azure Traffic Manager
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Traffic Manager-profilt egy rendkívül rugalmas webhely létrehozásához.
 services: traffic-manager
-author: rohinkoul
+author: duongau
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
-ms.author: rohink
-ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: duau
+ms.openlocfilehash: e79dde0178c74965bde14956203e31e82e80d93e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77136388"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398409"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Oktatóanyag: a webhely válaszának javítása Traffic Manager használatával
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuálisgép-végpontok hozzáadása a Traffic Manager-profilhoz
 > * A Traffic Manager megtekintése működés közben
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,7 +68,7 @@ Ebben a szakaszban két virtuális gépet hoz létre *myIISVMEastUS* és *MyIISV
    - **Bejövő portok szabályai**  >  **Bejövő portok kiválasztása**: válassza az **RDP** és a **http** elemet a legördülő listából.
 
 3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
-4. Válassza az **Áttekintés + létrehozás** lehetőséget.
+4. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 6. A következő lépésekkel hozhat létre egy *myIISVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myIISVMEastUS*.
 7. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
@@ -82,7 +82,7 @@ Ebben a szakaszban telepítenie kell az IIS-kiszolgálót a két virtuális gép
 1. Válassza a **Minden erőforrás** elemet a bal oldali menüben, majd az erőforrások listájában a *myResourceGroupTM1* erőforráscsoportban található *myIISVMEastUS* elemet.
 2. Az **Áttekintés** lapon kattintson a **Csatlakozás** lehetőségre, majd a **Csatlakozás virtuális géphez** területen válassza az **RDP-fájl letöltése** elemet.
 3. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania.
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 6. A kiszolgáló asztalán navigáljon a **Windows felügyeleti eszközök** > **Kiszolgálókezelő**elemre.
 7. Indítsa el a Windows PowerShellt a VM1 gépen, majd telepítse az IIS-kiszolgálót, és frissítse az alapértelmezett htm-fájlt az alábbi parancsokkal.
@@ -127,7 +127,7 @@ Ebben a szakaszban létrehoz egy virtuális gépet (*myVMEastUS* és *myVMWestEu
    - **Bejövő portok szabályai**  >  **Bejövő portok kiválasztása**: válassza az **RDP** elemet a legördülő listából.
 
 3. Válassza a **kezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**, majd a **Tovább: kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
-4. Válassza az **Áttekintés + létrehozás** lehetőséget.
+4. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 5. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 6. A következő lépésekkel hozhat létre egy *myVMWestEurope*nevű második virtuális gépet a *myResourceGroupTM2*nevű **erőforráscsoport** -névvel, a Nyugat- *Európai* **helyével** és az összes többi beállítással, amely ugyanaz, mint a *myVMEastUS*.
 7. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
@@ -199,7 +199,7 @@ Ebben a szakaszban megtekintheti a Traffic Managert működés közben.
 1. Válassza a **Minden erőforrás** elemet a bal oldali menüben, majd az erőforrások listájában a *myResourceGroupTM1* erőforráscsoportban található *myVMEastUS* elemet.
 2. Az **Áttekintés** lapon kattintson a **Csatlakozás** lehetőségre, majd a **Csatlakozás virtuális géphez** területen válassza az **RDP-fájl letöltése** elemet.
 3. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania.
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 1. A *myVMEastUS* virtuális gépen egy webböngészőben adja meg a Traffic Manager-profil DNS-nevét a webhely megtekintéséhez. Mivel az **USA keleti**régiójában található virtuális gép a legközelebbi, az **USA keleti**régiójában lévő IIS-kiszolgáló *myIISVMEastUS* található webhelyre irányítja.
 
