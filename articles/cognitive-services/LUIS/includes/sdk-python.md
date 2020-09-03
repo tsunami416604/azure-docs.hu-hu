@@ -154,7 +154,7 @@ Az entitások létrehozási módszerei a [ModelOperations](https://docs.microsof
 
 Az entitás-létrehozási kód olyan gépi tanulási entitást hoz létre, amely alentitásokkal és az alentitásokra alkalmazott funkciókkal rendelkezik `Quantity` .
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Részleges képernyőkép a portálról, amely a létrehozott entitást, az alentitásokkal és a "mennyiség" alentitásokra alkalmazott funkciókkal rendelkező gépi tanulási entitást mutatja.":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Részleges képernyőkép a portálról, amely a létrehozott entitást, az alentitásokkal és a mennyiség alentitásokra alkalmazott funkciókkal rendelkező gépi tanulási entitást mutatja.":::
 
 [!code-python[Create entities for the app](~/cognitive-services-quickstart-code/python/LUIS/sdk-3x/authoring_and_predict.py?name=AuthoringAddEntities)]
 
