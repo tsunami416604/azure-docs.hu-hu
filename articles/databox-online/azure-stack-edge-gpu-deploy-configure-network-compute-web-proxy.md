@@ -144,7 +144,7 @@ Ez egy opcionális konfiguráció.
 4. A beállítások alkalmazása után lépjen vissza **a kezdéshez.**
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

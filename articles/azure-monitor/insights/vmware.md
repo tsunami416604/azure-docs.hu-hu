@@ -42,7 +42,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
 ### <a name="configure-syslog-collection"></a>Syslog-gyűjtemény konfigurálása
 1. Állítsa be a syslog-továbbítást a VSphere. A syslog-továbbítás beállításával kapcsolatos részletes információkért lásd: [a syslog konfigurálása ESXi 5,0 és újabb rendszereken (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás az **ESXi-gazdagép konfigurációs**  >  **szoftver**  >  **Speciális beállítások**  >  **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Példa: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
+1. A *syslog. Global. logHost* mezőben adja hozzá a Linux-kiszolgálót és a *1514*-as portszámot. Például: `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
 1. Nyissa meg az ESXi-gazdagép tűzfalát a syslog számára. **ESXi-gazdagép konfigurációja**  >  **Szoftver**  >  **Biztonsági profil**  >  **Tűzfal** és nyitott **Tulajdonságok**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
@@ -75,9 +75,7 @@ A VMware Monitoring megoldás különféle teljesítménymutatókat és adatokat
 
 Az alábbi táblázat az adatgyűjtés módszereit és az adatok gyűjtésének egyéb részleteit mutatja be.
 
-| 
-    platform
-   | Linux-Log Analytics ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
+| platform | Linux-Log Analytics ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 percenként |
 
@@ -181,24 +179,24 @@ Több oka is lehet:
 
 * Az ESXi-gazdagép nem megfelelően küldi el az adattovábbítást a omsagent-t futtató virtuális gépre. A teszteléshez hajtsa végre a következő lépéseket:
 
-  1. A megerősítéshez jelentkezzen be az ESXi-gazdagépre SSH használatával, és futtassa a következő parancsot:`nc -z ipaddressofVM 1514`
+  1. A megerősítéshez jelentkezzen be az ESXi-gazdagépre SSH használatával, és futtassa a következő parancsot: `nc -z ipaddressofVM 1514`
 
       Ha ez nem sikerül, a Speciális konfiguráció vSphere beállításai valószínűleg nem megfelelőek. A syslog-továbbítás beállításával kapcsolatos információkért lásd: a [syslog-gyűjtemény konfigurálása](#configure-syslog-collection) .
-  1. Ha a syslog-port kapcsolata sikeres, de még nem lát semmilyen adatmennyiséget, akkor az ESXi-gazdagépen töltse be a syslog-t az alábbi parancs futtatásához:`esxcli system syslog reload`
+  1. Ha a syslog-port kapcsolata sikeres, de még nem lát semmilyen adatmennyiséget, akkor az ESXi-gazdagépen töltse be a syslog-t az alábbi parancs futtatásához: `esxcli system syslog reload`
 * A Log Analytics ügynökkel rendelkező virtuális gép helytelenül van beállítva. Ennek teszteléséhez hajtsa végre a következő lépéseket:
 
-  1. Log Analytics figyeli a 1514-es portot. A megnyitásának ellenőrzéséhez futtassa a következő parancsot:`netstat -a | grep 1514`
+  1. Log Analytics figyeli a 1514-es portot. A megnyitásának ellenőrzéséhez futtassa a következő parancsot: `netstat -a | grep 1514`
   1. Ekkor meg kell jelennie a port `1514/tcp` megnyitásának. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a port információit, akkor a syslog-port nincs megnyitva a virtuális gépen.
 
-    a. Ellenőrizze, hogy a Log Analytics-ügynök fut-e a használatával `ps -ef | grep oms` . Ha nem fut, indítsa el a folyamatot a parancs futtatásával.`sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Ellenőrizze, hogy a Log Analytics-ügynök fut-e a használatával `ps -ef | grep oms` . Ha nem fut, indítsa el a folyamatot a parancs futtatásával. `sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 
-     c. Győződjön meg arról, hogy a megfelelő felhasználó és Csoport beállítás érvényes, a következőhöz hasonlóan:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Győződjön meg arról, hogy a megfelelő felhasználó és Csoport beállítás érvényes, a következőhöz hasonlóan: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
      d. Ha a fájl nem létezik, vagy a felhasználó és a csoport beállításai nem megfelelőek, végezze el a megfelelő műveletet a [Linux-kiszolgáló előkészítésével](#prepare-a-linux-server).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A részletes VMware-gazdagépek részleteinek megtekintéséhez használjon Log Analytics [naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Hozzon létre saját irányítópultokat a](../learn/tutorial-logs-dashboards.md) VMware-gazdagép adataival.
 * [Riasztások létrehozása](../platform/alerts-overview.md) , ha adott VMware-gazdagép eseményei történnek.

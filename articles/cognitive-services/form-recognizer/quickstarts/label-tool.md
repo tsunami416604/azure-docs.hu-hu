@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377812"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418959"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -225,7 +225,9 @@ A következő típusú értékek és változatok jelenleg támogatottak:
 > [!NOTE]
 > A dátum formázásához tekintse meg a következő szabályokat:
 > 
-> A következő karakterek használhatók DMY dátum határolójelként: `, - / . \` . Szóközök nem használhatók határolójelként. Például:
+> Meg kell adnia egy formátumot ( `dmy` , `mdy` , `ymd` ) a dátum formázásához.
+>
+> A következő karakterek használhatók dátum határolójelként: `, - / . \` . Szóközök nem használhatók határolójelként. Például:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ A következő típusú értékek és változatok jelenleg támogatottak:
 > * 1-1-2020
 > * 1-01-20
 >
-> Ha egy DMY nyolc számjegyet tartalmaz, a határolójel nem kötelező:
+> Ha egy dátum sztring nyolc számjegyből áll, a határolójel nem kötelező:
 > * 01012020
 > * 01 01 2020
 >
-> A hónap teljes vagy rövid neveként is megadható. Ha a név használatos, a határoló karakterek nem kötelezőek:
+> A hónap teljes vagy rövid neveként is megadható. Ha a név használatos, a határoló karakterek nem kötelezőek. Ez a formátum azonban a többinél kevésbé pontosan felismerhető.
 > * 01/Jan/2020
 > * 01Jan2020
 > * 01 Jan 2020

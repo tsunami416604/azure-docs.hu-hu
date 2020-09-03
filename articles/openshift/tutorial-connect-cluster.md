@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8ac25193bacfcce3c3062ccd92fa5cfbb5784572
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587854"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421696"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Kapcsolódás Azure Red Hat OpenShift 4 rendszerű fürthöz
 
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban, amely három részből áll, a OpenShift 4-es verziój
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagokban létrehoztak egy Azure Red Hat OpenShift-fürtöt. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag használatával – hozzon létre egy Azure Red Hat Openshift 4 fürtöt.](tutorial-create-cluster.md)
+Az előző oktatóanyagokban létrehoztak egy Azure Red Hat OpenShift-fürtöt. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag használatával – hozzon létre egy Azure Red Hat OpenShift 4 fürtöt.](tutorial-create-cluster.md)
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -37,7 +37,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `kubeadminPassword` .
+A következő példa kimenete azt mutatja be, hogy a jelszó milyen nyelven fog megjelenni `kubeadminPassword` .
 
 ```json
 {
@@ -46,7 +46,7 @@ Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `ku
 }
 ```
 
-A fürt konzoljának URL-címét a következő parancs futtatásával érheti el, amely a következőképpen fog kinézni: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+A fürt konzoljának URL-címét a következő parancs futtatásával érheti el, amely így fog kinézni: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` .
 
 ```azurecli-interactive
  az aro show \
@@ -92,7 +92,7 @@ Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs ha
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]
@@ -103,3 +103,4 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift-fürt törlése](tutorial-delete-cluster.md)
+

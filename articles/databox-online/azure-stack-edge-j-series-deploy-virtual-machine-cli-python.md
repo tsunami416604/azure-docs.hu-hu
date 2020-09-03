@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c18f48f41a537d66c637959df4fb45331fbda176
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255528"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420489"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge GPU-eszközön az Azure CLI és a Python használatával
 
@@ -32,7 +32,7 @@ Az üzembe helyezési munkafolyamat a következő ábrán látható.
 Az üzembe helyezési munkafolyamat magas szintű összefoglalása a következő:
 
 1. Kapcsolódás Azure Resource Managerhoz
-2. Erőforráscsoport létrehozása
+2. Hozzon létre egy erőforráscsoportot
 3. Tárfiók létrehozása
 4. BLOB URI hozzáadása a Hosts fájlhoz
 5. Tanúsítványok telepítése
@@ -60,13 +60,13 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
 
     2. A hálózati adapteren engedélyezze a számítást. Azure Stack Edge létrehoz és felügyel egy, az adott hálózati adapternek megfelelő virtuális kapcsolót.
 
-    Ha úgy dönt, hogy egy másik hálózati adaptert használ a számítási feladatokhoz, győződjön meg róla, hogy:
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - Törölje a Azure Resource Manager használatával telepített összes virtuális gépet.
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - Törölje az összes virtuális hálózati adaptert és a hálózati adapterhez társított virtuális hálózatot.
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - Most már engedélyezheti egy másik hálózati adaptert a számítási feladatokhoz.
+    - You can now enable another network interface for compute.-->
 
 3. Létrehozta és telepítette az összes tanúsítványt az Azure Stack Edge-eszközön és az ügyfél megbízható tárolójában. Kövesse a [2. lépés: tanúsítványok létrehozása és telepítése](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)című témakörben ismertetett eljárást.
 
@@ -426,6 +426,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

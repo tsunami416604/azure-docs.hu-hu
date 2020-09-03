@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262855"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421373"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>Oktatóanyag: Azure Stack Edge telepítése GPU-val
 
@@ -221,12 +221,16 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
 4. Csatlakoztassa a tápkábeleket a kiszolgálószekrény áramelosztó egységeihez (PDU-k). Ügyeljen arra, hogy a két tápegység külön áramforrást használjon.
 5. Nyomja meg a főkapcsolót az eszköz bekapcsolásához.
 6. Kapcsolódjon az 1 – GbE hálózati adapter 1-es PORTJÁhoz a fizikai eszköz konfigurálásához használt számítógéphez. Az 1. PORT felügyeleti felületként szolgál.
+    
+    > [!NOTE]
+    > Ha a számítógépet közvetlenül csatlakoztatja az eszközhöz (anélkül, hogy a kapcsolón keresztül halad át), használjon egy fordított kábelt vagy egy USB Ethernet-adaptert.
+
 7. A PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6 közül legalább egyet az adatközponti hálózathoz/internethez kell csatlakoztatni.
 
     - Ha a 2-es PORTOT csatlakoztatja, használja az 1-GbE RJ-45 hálózati kábelt.
     - A 10/25 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, például a következőket:
 
@@ -235,7 +239,7 @@ Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, példáu
 > * Az eszköz állványra szerelése
 > * Az eszköz bekábelezése
 
-A következő oktatóanyag az eszköz csatlakoztatását, beállítását és aktiválását mutatja be.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan csatlakozhat az eszközhöz.
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge összekötése](./azure-stack-edge-gpu-deploy-connect.md)

@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban a számítógép jövőképét fogja a
 ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: ac11ced68ab8463da26b9978a5b0b02c4cd1a402
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691792"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421525"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>Rövid útmutató: élő videó elemzése saját gRPC-modell használatával
 
@@ -56,11 +56,11 @@ Ez a rövid útmutató bemutatja, hogyan használható a Live Video Analytics a 
 ## <a name="create-and-deploy-the-media-graph"></a>A Media Graph létrehozása és üzembe helyezése
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/csharp/create-deploy-media-graph.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [create and deply the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
+[!INCLUDE [create and deploy the media graph](includes/analyze-live-video-your-grpc-model-quickstart/python/create-deploy-media-graph.md)]
 ::: zone-end
 
 ## <a name="interpret-results"></a>Eredmények értelmezése
@@ -77,6 +77,11 @@ Ez a rövid útmutató bemutatja, hogyan használható a Live Video Analytics a 
 
 Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben ezt a rövid útmutatót futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Próbálja meg különböző Media Graph-topológiákat futtatni a gRPC protokoll használatával.
+* Próbálja meg különböző Media Graph-topológiákat futtatni a gRPC protokoll használatával.
+* **Sample Live Video Analytics-(LVA-) bővítmények készítése és futtatása**
+<br/>Próbálja ki a Jupyter minta jegyzetfüzeteket, amelyek lehetővé teszik, hogy [ONNX](http://onnx.ai/) -alapú YOLO-modelleket hozzon létre és futtasson élő videó-elemzési (LVA) bővítményként.
+    * [Minta YOLOv3 modell](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/readme.md)
+    * [Minta YOLOv4 modell](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/Yolo/yolov4/yolov4-grpc-icpu-onnx/readme.md)
+

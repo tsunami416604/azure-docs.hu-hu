@@ -3,14 +3,14 @@ title: Mi az a Media Graph Extension – Azure
 description: A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy gráf kiterjesztésű csomóponton keresztül.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d7e14a0336da75e1948cf6dc4dbdb51490b70021
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716078"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420829"
 ---
-# <a name="media-graph-extension"></a>Media Graph-bővítmény
+# <a name="media-graph-extension"></a>Médiagrafikon bővítmény
 
 A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy gráf kiterjesztésű csomóponton keresztül. Az Analytics bővítmény beépülő modulja a hagyományos képfeldolgozási technikák vagy a Computer látási AI-modellek használatát teszi elérhetővé. A Graph-bővítmények engedélyezve vannak, ha a bővítmény processzor-csomópontját a Media Graph-ban engedélyezték. A bővítmény processzor-csomópontja továbbítja a képkockákat a konfigurált végponthoz, és illesztőfelületként viselkedik a bővítmény számára. A kapcsolódás helyi vagy távoli végponton végezhető el, és szükség esetén hitelesítéssel és TLS-titkosítással is biztonságossá tehető. Emellett a Graph-bővítmény processzor-csomópontja lehetővé teszi a képkockák opcionális skálázását és kódolását, mielőtt elküldik azokat az egyéni bővítménynek.
 
@@ -52,10 +52,10 @@ Az alábbi ábra a magas szintű adatfolyamot ábrázolja:
  
 ![Adatfolyam](./media/media-graph-extension/data-flow.png)
 
-## <a name="samples"></a>Minták
+## <a name="samples"></a>Példák
 
-Az élő videó elemzéséhez [Jupyter-jegyzetfüzet](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) -mintákat is megadunk. Ezek a jegyzetfüzetek részletes útmutatást nyújtanak a következő műveletekhez:
+Az élő videó elemzéséhez [Jupyter-jegyzetfüzet](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) -mintákat is megadunk. Ezek a jegyzetfüzetek részletes útmutatást nyújtanak **a Media Graph bővítményeivel** kapcsolatban:
 
 * A Docker-tároló rendszerképének létrehozása bővítmény-szolgáltatásból
 * A bővítmény szolgáltatás tárolóként való üzembe helyezése az élő video Analytics-tárolóval együtt
-* Élő video Analytics Media Graph használata kiterjesztési ügyféllel, és a bővítmény gRPC végpontjának kimutatása
+* Élő video Analytics Media Graph használata kiterjesztési ügyféllel és a bővítmény végpontjának (HTTP/gRPC) használatával

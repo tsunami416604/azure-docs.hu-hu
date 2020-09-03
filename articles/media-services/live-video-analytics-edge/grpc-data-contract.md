@@ -3,12 +3,12 @@ title: gRPC-bővítmény adategyezménye – Azure
 description: Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő videó elemzési modulja és az AI vagy a CV egyéni bővítménye között az gRPC protokoll használatával.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 0221d20245a6db69791d8bf13ba9e00de3b96ecc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f2d93fb062ab3d6963177e7ece15df6bfe5b42cb
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691780"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421492"
 ---
 # <a name="grpc-extension-data-contract"></a>gRPC-bővítmény adategyezménye
 
@@ -21,7 +21,7 @@ a gRPC egy modern, nyílt forráskódú, nagy teljesítményű RPC-keretrendszer
 
 A gRPC-munkamenetek a gRPC-ügyfél és a gRPC-kiszolgáló közötti egyetlen kapcsolat a TCP/TLS-porton keresztül. 
 
-Egyetlen munkamenetben: az ügyfél egy Media stream-leírót küld a kiszolgálónak, amelyet [protopuf](https://developers.google.com/protocol-buffers) üzenetként a gRPC stream-munkamenetben. A kiszolgáló érvényesíti az adatfolyam-leírót, elemzi a videó keretét, és visszaadja az eredményeket protopuf üzenetként.
+Egyetlen munkamenetben: az ügyfél egy Media stream-leírót küld a kiszolgálónak, amelyet [protopuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) üzenetként a gRPC stream-munkamenetben. A kiszolgáló érvényesíti az adatfolyam-leírót, elemzi a videó keretét, és visszaadja az eredményeket protopuf üzenetként.
 
 ![gRPC-kiterjesztési szerződés](./media/data-contracts/grpc.png)
 
@@ -182,6 +182,6 @@ A gRPC használt kapcsolat a TLS protokollal is biztonságossá válhat. Ez olya
 
 A gRPC nem támogatja a IgnoreHostname és a IgnoreSignature ellenőrzési lehetőségeit, ezért a kiszolgálói tanúsítványnak, amelyre a következtetést biztosító motor mutat, tartalmaznia kell egy olyan CN-t, amely pontosan megegyezik az IP-címmel/állomásnévvel a gRPC-bővítmény csomópontjának végponti URL-címében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a viszonyítási metaadatok sémáról](inference-metadata-schema.md)

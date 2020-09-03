@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401486"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420880"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
@@ -188,6 +188,13 @@ Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanús�
 
 Ha a Azure Key Vault használatával kezeli a tanúsítványokat, a PKCS12/pfx-profil-tanúsítványt Key Vaultból App Service importálhatja, feltéve, hogy [megfelel a követelményeknek](#private-certificate-requirements).
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>App Service engedélyezése a tárolóból való olvasásra
+Alapértelmezés szerint a App Service erőforrás-szolgáltató nem fér hozzá a Key Vaulthoz. Ha Key Vault szeretne használni a tanúsítvány telepítéséhez, engedélyeznie kell [az erőforrás-szolgáltatónak az olvasási hozzáférést a](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)kulcstartóhoz. 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd`  az erőforrás-szolgáltató egyszerű neve a App Servicehoz, és az összes Azure-előfizetés esetében azonos. Azure Government felhőalapú környezet esetében használja `6a02c803-dafd-4136-b4c3-5a6f318b4714` helyette az erőforrás-szolgáltatói szolgáltatás egyszerű nevét.
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>Tanúsítvány importálása a tárolóból az alkalmazásba
+
 A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **Key Vault tanúsítvány importálása**lehetőséget.
@@ -205,6 +212,9 @@ A következő táblázat segítségével választhatja ki a tanúsítványt.
 Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanúsítványainak** listájában. Ha az importálás hibát jelez, a tanúsítvány nem felel meg a [app Service követelményeinek](#private-certificate-requirements).
 
 ![A tanúsítvány importálása Key Vault befejeződött](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> Ha Key Vault új tanúsítvánnyal frissíti a tanúsítványt, a App Service 48 órán belül automatikusan szinkronizálja a tanúsítványt.
 
 > [!IMPORTANT] 
 > Ha egy egyéni tartományt ezzel a tanúsítvánnyal kíván biztonságossá tenni, akkor is létre kell hoznia egy tanúsítvány kötését. Kövesse a [kötés létrehozása](configure-ssl-bindings.md#create-binding)című témakör lépéseit.

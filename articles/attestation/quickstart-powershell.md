@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237272"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421288"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Gyors útmutató: Azure-igazolás beállítása Azure PowerShell
 
@@ -159,26 +159,27 @@ TagsTable:
 
 Az igazoló szolgáltatók a Remove-AzAttestation parancsmag használatával törölhetők.  
 
-' ' azurepowershell Remove-AzAttestation-Name $attestationProvider-ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>Szabályzatkezelés
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
-- Microsoft.Attestation/attestationProviders/attestation/read
-- Microsoft.Attestation/attestationProviders/attestation/write
-- Microsoft.Attestation/attestationProviders/attestation/delete
+A házirendek kezeléséhez az Azure AD-felhasználónak a következő engedélyekkel kell rendelkeznie a "Actions" esetében:
+- Microsoft. igazolás/attestationProviders/igazolás/olvasás
+- Microsoft. igazolás/attestationProviders/igazolás/írás
+- Microsoft. igazolás/attestationProviders/igazolás/törlés
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+Ezek az engedélyek egy AD-felhasználóhoz társíthatók, például a "tulajdonos" (helyettesítő engedélyek), a "közreműködő" (helyettesítő engedélyek) vagy az "igazolás közreműködője" (csak az Azure-hitelesítésre vonatkozó egyedi engedélyek).  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
-- Microsoft.Attestation/attestationProviders/attestation/read
+A szabályzatok olvasásához egy Azure AD-felhasználónak a következő engedélyre van szüksége a "műveletek" művelethez:
+- Microsoft. igazolás/attestationProviders/igazolás/olvasás
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+Ez az engedély hozzárendelhető egy AD-felhasználóhoz egy olyan szerepkörön keresztül, mint az "olvasó" (helyettesítő karakteres engedélyek) vagy az "igazolási olvasó" (csak az Azure-hitelesítésre vonatkozó egyedi engedélyek).
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+Az alábbi PowerShell-parancsmagok egy igazolási szolgáltató (egy póló egyszerre) házirend-kezelését biztosítják.
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+A Get-AzAttestationPolicy a megadott TEE aktuális szabályzatát adja vissza. A parancsmag a szabályzat szöveg-és JWT-formátumában jeleníti meg a szabályzatot.
 
 ```powershell
 $teeType = "<tee Type>"
