@@ -188,7 +188,7 @@ Ebben a lépésben egy szimulált termosztátos eszközt fog összekötni [IoT h
 
 Ez a végpontok közötti forgatókönyv (**B nyíl**) ezen részén történik:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a "B" nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a B nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
 
 Az eszköz kapcsolódásának beállításához a következő műveleteket kell végrehajtania:
 1. Hozzon létre egy IoT hub-t, amely a szimulált eszközt felügyeli
