@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 27d450f8e48210723570f2fe0b45be4bca89fd56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068613"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400905"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -22,9 +22,8 @@ Az egyetlen előfeltétel egy Azure Speech-előfizetés. Ha még nem rendelkezik
 
 Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telepítéséhez:
 
-1. A [.NET-keretrendszer 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471) vagy a [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) telepítése
-2. Töltse le a Speech CLI [zip-archívumát](https://aka.ms/speech/spx-zips.zip), majd bontsa ki.
-3. Nyissa meg a `spx-zips` letöltésből kinyert gyökérkönyvtárat, és bontsa ki a szükséges alkönyvtárat ( `spx-net471` a .NET-keretrendszer 4,7-es verziójához, vagy a `spx-netcore-win-x64` .net Core 3,0 x64-es processzoron).
+1. Töltse le a Speech CLI [zip-archívumát](https://aka.ms/speech/spx-zips.zip), majd bontsa ki.
+2. Nyissa meg a `spx-zips` letöltésből kinyert gyökérkönyvtárat, és bontsa ki a szükséges alkönyvtárat ( `spx-net471` a .NET-keretrendszer 4,7-es verziójához, vagy a `spx-netcore-win-x64` .net Core 3,0 x64-es processzoron).
 
 A parancssorban módosítsa a könyvtárat erre a helyre, majd írja be a parancsot a `spx` beszédfelismerési parancssori felület súgójának megjelenítéséhez.
 
@@ -53,11 +52,15 @@ A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-
 
 #### <a name="docker-install"></a>[Docker-telepítés](#tab/dockerinstall)
 
+#### <a name="prerequisites"></a>Előfeltételek
+
+> [!div class="checklist"]
+> * <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop a platformhoz <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
 A következő lépésekkel telepítheti a Speech CLI-t egy Docker-tárolóba:
 
-1. Telepítse és futtassa [a Docker Desktopot a platformhoz](https://www.docker.com/get-started).
-1. Írja be a következő parancsot egy új parancssorba vagy terminálba:`docker pull msftspeech/spx`
-1. Írja be ezt a parancsot. A Speech CLI-vel kapcsolatos súgóban talál:`docker run -it --rm msftspeech/spx help`
+1. Írja be a következő parancsot egy új parancssorba vagy terminálba:  `docker pull msftspeech/spx`
+2. Írja be ezt a parancsot. A Speech CLI-vel kapcsolatos súgóban talál: `docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>Könyvtár csatlakoztatása a tárolóhoz
 
