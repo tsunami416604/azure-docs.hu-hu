@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Mi a Computer Vision?
-      href: Home.md
+      href: overview.md
     - name: Újdonságok
       href: whats-new.md
 - name: Rövid útmutatók

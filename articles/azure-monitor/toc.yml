@@ -160,6 +160,8 @@
       href: platform/partners.md
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./platform/security-controls-policy.md

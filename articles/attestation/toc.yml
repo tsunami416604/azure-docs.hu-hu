@@ -15,7 +15,7 @@
     - name: Igazolási szabályzat készítése és aláírása
       href: author-sign-policy.md
     - name: SGX-igazolási kódminták
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?expanded=azure&terms=attestation'
+      href: /samples/browse/?expanded=azure&terms=attestation
 - name: Példák
   items:
     - name: Igazolási szabályzat

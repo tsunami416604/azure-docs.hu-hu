@@ -22,7 +22,7 @@
     - name: Böngésző használata
       href: luis-get-started-get-intent-from-browser.md
     - name: SDK használata
-      href: quickstart-sdk.md
+      href: azure-sdk-quickstart.md
     - name: REST API-k használata
       items:
         - name: Szándék lekérése

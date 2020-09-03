@@ -70,23 +70,23 @@
             - name: Virtuális gép VHD-feltöltésből
               href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
             - name: Operációsrendszer-lemez csatolása
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
             - name: Virtuális gép pillanatképből
               href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
         - name: Tárhely kezelése
           items:
             - name: Felügyelt lemez létrehozása VHD-ből
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
             - name: Felügyelt lemez létrehozása pillanatképből
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
             - name: Felügyelt lemez másolása
               href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
             - name: Pillanatkép létrehozása VHD-ből
-              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
             - name: Pillanatkép másolása
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: Biztonságos
@@ -118,15 +118,15 @@
         - name: Tárhely kezelése
           items:
             - name: Felügyelt lemez létrehozása VHD-ből
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
             - name: Felügyelt lemez létrehozása pillanatképből
-              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
             - name: Felügyelt lemez másolása
               href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Pillanatkép exportálása VHD-ként egy tárfiókba
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
             - name: Pillanatkép másolása
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
         - name: Network (Hálózat)
@@ -172,7 +172,7 @@
         - name: A virtuális gépek mérete
           href: ../sizes.md
         - name: 2. generációs virtuális gépek
-          href: generation-2.md
+          href: ../generation-2.md
         - name: Általános célú
           items:
             - name: Áttekintés
@@ -621,7 +621,7 @@
     - name: Virtuális gépek kezelése
       items:
         - name: Virtuálisgép-használat
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: Általános PowerShell-feladatok
           href: ps-common-ref.md
         - name: Virtuális gép méretének módosítása

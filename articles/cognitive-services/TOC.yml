@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Mi a Cognitive Services?
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: A Cognitive Services-dokumentumok újdonságai
       href: whats-new-docs.md
     - name: Cognitive Services és Machine Learning
