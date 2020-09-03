@@ -10,23 +10,22 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: a3067972dc42db6644006e33797fc44c2f494693
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7130ed2965e2df0d366635f6ce84c822c1359b59
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961244"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378168"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -t a [Mavenhez készült Azure Web App beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy Java Web Archive-(War-) fájl telepítéséhez.
+Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan használhatja az [Azure CLI](/cli/azure/get-started-with-azure-cli) -t a [Mavenhez készült Azure Web App beépülő modullal](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) egy. jar-fájl vagy. War-fájl üzembe helyezéséhez. A lapok használatával válthat a Java SE és a Tomcat utasítások között.
 
-> [!NOTE]
-> Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Ugyanezt a népszerű ide-ket, például a IntelliJ és az Eclipse-et is megteheti. Tekintse meg a hasonló dokumentumokat a [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) rövid útmutatóban vagy [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)gyors útmutatóban.
->
+
+
 ![Azure App Service futó minta alkalmazás](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,6 +33,22 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
+
+# <a name="java-se"></a>[Java SE](#tab/javase)
+
+A [Spring Boot első lépések](https://github.com/spring-guides/gs-spring-boot) minta projekt klónozása.
+
+```bash
+git clone https://github.com/spring-guides/gs-spring-boot
+```
+
+Váltsa a könyvtárat a befejezett projektre.
+
+```bash
+cd gs-spring-boot/complete
+```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 A következő Maven-parancs végrehajtásával hozzon létre egy nevű új alkalmazást a Cloud Shell promptban `helloworld` :
 
@@ -47,146 +62,140 @@ Ezután módosítsa a munkakönyvtárat a projekt mappájába:
 cd helloworld
 ```
 
+---
+
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-A Azure App Service üzembe helyezése az Azure CLI-ből automatikusan kiválaszthatja az Azure-beli hitelesítő adatait. A Maven beépülő modul a OAuth vagy az eszköz bejelentkezését fogja bejelentkezni, ha az Azure CLI nincs helyileg telepítve. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) részleteit.
+A Azure App Service üzembe helyezési folyamata automatikusan az Azure CLI-vel fogja használni az Azure-beli hitelesítő adatait. Ha az Azure CLI nincs helyileg telepítve, akkor a Maven beépülő modul a OAuth vagy az eszköz bejelentkezésével fog hitelesíteni. További információ: [hitelesítés a Maven beépülő](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)modulokkal.
 
-Az alábbi Maven-parancs futtatásával konfigurálhatja az üzemelő példányt
+Futtassa az alábbi Maven-parancsot az üzemelő példány konfigurálásához. Ez a parancs segítséget nyújt a App Service operációs rendszer, a Java-verzió és a Tomcat-verzió beállításához.
+
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows" 
-A rendszer felkéri, hogy válasszon 
-* **Operációs rendszer (alapértelmezett: `linux` )**
-* **Java-verzió (alapértelmezett: `1.8` )**
-* **Webes tároló (alapértelmezett: `tomcat 8.5` )** 
- 
-Ügyeljen arra, hogy a **`2`** **Windows** operációs rendszer első lépéseként válassza ki a kívánt adatokat. A többi konfiguráció az **ENTER**billentyű lenyomásával hagyható el. Végül nyomja meg **`Y`** a **Confirm (i/N)** promptot a konfigurálás befejezéséhez.
+::: zone pivot="platform-windows"
 
-Egy mintavételi folyamat A következőképpen néz ki:
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-```console
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use: 2
-Define value for javaVersion(Default: 1.8): 
-1. 1.7
-2. 1.7.0_191_ZULU
-3. 1.7.0_51
-4. 1.7.0_71
-5. 1.7.0_80
-6. 1.8 [*]
-7. 1.8.0_102
-8. 1.8.0_111
-9. 1.8.0_144
-10. 1.8.0_172
-11. 1.8.0_172_ZULU
-12. 1.8.0_181
-13. 1.8.0_181_ZULU
-14. 1.8.0_202
-15. 1.8.0_202_ZULU
-16. 1.8.0_25
-17. 1.8.0_60
-18. 1.8.0_73
-19. 1.8.0_92
-20. 11
-21. 11.0.2_ZULU
-Enter index to use:
-Define value for webContainer(Default: tomcat 8.5): 
-1. jetty 9.1
-2. jetty 9.1.0.20131115
-3. jetty 9.3
-4. jetty 9.3.13.20161014
-5. tomcat 7.0
-6. tomcat 7.0.50
-7. tomcat 7.0.62
-8. tomcat 8.0
-9. tomcat 8.0.23
-10. tomcat 8.5 [*]
-11. tomcat 8.5.20
-12. tomcat 8.5.31
-13. tomcat 8.5.34
-14. tomcat 8.5.37
-15. tomcat 8.5.6
-16. tomcat 9.0
-17. tomcat 9.0.0
-18. tomcat 9.0.12
-19. tomcat 9.0.14
-20. tomcat 9.0.8
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1590394316693
-ResourceGroup : helloworld-1590394316693-rg
-Region : westeurope
-PricingTier : PremiumV2_P1v2
-OS : Windows
-Java : 1.8
-WebContainer : tomcat 8.5
-Deploy to slot : false
-Confirm (Y/N)? :
-[INFO] Saving configuration to pom.
-```
+1. Ha a rendszer kéri, válassza a **Windows** lehetőséget a beírásával `2` .
+2. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+3. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+
+    Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
+
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007390755
+    ResourceGroup : spring-boot-1599007390755-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : java 8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 41.118 s
+    [INFO] Finished at: 2020-09-01T17:43:45-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. Ha a rendszer kéri, válassza a **Windows** lehetőséget a beírásával `2` .
+1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+1. A Tomcat 8,5 alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
+1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+
+    Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003152123
+    ResourceGroup : helloworld-1599003152123-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : tomcat 8.5
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 03:03 min
+    [INFO] Finished at: 2020-09-01T16:35:30-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
-::: zone pivot="platform-linux"  
+::: zone pivot="platform-linux"
 
-A rendszer felkéri, hogy válasszon 
-* **Operációs rendszer (alapértelmezett: `linux` )**
-* **Java-verzió (alapértelmezett: `Java 8` )**
-* **Webes tároló (alapértelmezett: `Tomcat 8.5` )** 
+### <a name="java-se"></a>[Java SE](#tab/javase)
 
-Az alapértelmezett beállítások az **ENTER billentyű**lenyomásával maradhatnak le. Végül nyomja meg **`Y`** a **Confirm (i/N)** promptot a konfigurálás befejezéséhez.
-Egy mintavételi folyamat A következőképpen néz ki:
+1. Ha a rendszer kéri, válassza a **Linux** lehetőséget az ENTER billentyű lenyomásával.
+2. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+3. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
-```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use:
-Define value for javaVersion(Default: jre8):
-1. Java 11
-2. Java 8 [*]
-Enter index to use:
-Define value for runtimeStack(Default: TOMCAT 8.5):
-1. TOMCAT 9.0
-2. TOMCAT 8.5 [*]
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1558400876966
-ResourceGroup : helloworld-1558400876966-rg
-Region : westeurope
-PricingTier : Premium_P1V2
-OS : Linux
-RuntimeStack : TOMCAT 8.5-jre8
-Deploy to slot : false
-Confirm (Y/N)? : Y
-```
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007116351
+    ResourceGroup : spring-boot-1599007116351-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : JAVA 8-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 20.925 s
+    [INFO] Finished at: 2020-09-01T17:38:51-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. Ha a rendszer kéri, válassza a **Linux** lehetőséget az ENTER billentyű lenyomásával.
+1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+1. A Tomcat 8,5 alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
+1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003744223
+    ResourceGroup : helloworld-1599003744223-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : TOMCAT 8.5-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 50.785 s
+    [INFO] Finished at: 2020-09-01T16:43:09-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
 
-Ha szükséges, a App Service konfigurációit közvetlenül is módosíthatja `pom.xml` , néhány gyakori érték alább látható:
+Szükség esetén közvetlenül is módosíthatja App Service konfigurációit `pom.xml` . Néhány gyakori lista alább látható:
 
- Tulajdonság | Kötelező | Leírás | Verzió
+Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
 `<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1` , `v2` . | 1.5.2
 `<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
@@ -203,12 +212,13 @@ Ha szükséges, a App Service konfigurációit közvetlenül is módosíthatja `
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
-A Azure App Service üzembe helyezési folyamata a fiók hitelesítő adatait használja az Azure CLI-ből. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+A Maven beépülő modul a fiók hitelesítő adatait használja az Azure CLI-ből a App Services üzembe helyezéséhez. [A folytatás előtt jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
 ```
-Ezután az alábbi paranccsal telepítheti a Java-alkalmazást az Azure-ba:
+
+Ezután az alábbi paranccsal telepítheti a Java-alkalmazást az Azure-ba.
 
 ```bash
 mvn package azure-webapp:deploy
