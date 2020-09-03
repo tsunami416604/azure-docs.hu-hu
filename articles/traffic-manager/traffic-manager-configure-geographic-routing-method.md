@@ -2,7 +2,7 @@
 title: Oktatóanyag – földrajzi forgalom útválasztásának konfigurálása az Azure Traffic Manager
 description: Ez az oktatóanyag azt ismerteti, hogyan konfigurálható a földrajzi forgalom útválasztási módszere az Azure Traffic Manager használatával
 services: traffic-manager
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: rohink
-ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: duau
+ms.openlocfilehash: 71219eea1c7cdeeefbf63e5a5715fb10fcf68682
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76938791"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401078"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Oktatóanyag: a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával
 

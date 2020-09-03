@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 57baeccc9f4644ec055de638254d4613a33ef68d
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378644"
+ms.locfileid: "89400432"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -37,13 +37,13 @@ Ha helyszíni alkalmazást hoz létre, helyi fejlesztést végez, vagy más mód
 
 ### <a name="how-can-i-give-the-ad-group-access-to-the-key-vault"></a>Hogyan biztosíthatom az AD-csoport számára a Key Vault elérését?
 
-Adja meg az AD-csoport engedélyeit a kulcstartónak az Azure CLI az Key Vault set-Policy parancs vagy a Azure PowerShell set-AzKeyVaultAccessPolicy parancsmag használatával. Lásd: [hozzáférési szabályzat társítása –](assign-access-policy-cli.md) parancssori felület és [hozzáférési szabályzat társítása – PowerShell](assign-access-policy-powershell.md).
+Az Azure CLI `az keyvault set-policy` -parancs vagy a Azure PowerShell set-AzKeyVaultAccessPolicy parancsmag segítségével adja meg az ad-csoportnak a kulcstartóhoz tartozó engedélyeket. Lásd: [hozzáférési szabályzat társítása –](assign-access-policy-cli.md) parancssori felület és [hozzáférési szabályzat társítása – PowerShell](assign-access-policy-powershell.md).
 
 Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt identitás-és hozzáférés-kezelési (IAM) szerepkörre is. Ellenkező esetben nem fog tudni bejelentkezni, és nem lesz megfelelő jogosultsága az előfizetéshez való hozzáféréshez. A felügyelt identitásokkal rendelkező Azure AD-csoportok akár nyolc óráig is megkövetelhetik a tokenek frissítését, és érvénybe lépnek.
 
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Hogyan telepíthetem újra Key Vault az ARM-sablonnal a meglévő hozzáférési szabályzatok törlése nélkül?
 
-Jelenleg Key Vault ARM-újratelepítéskor a rendszer törli a Key Vault összes hozzáférési szabályzatát, és az ARM-sablon hozzáférési szabályzatával helyettesíti azokat. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A Key Vault hozzáférési házirendjeinek megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal, hogy elkerülje a hozzáférés kimaradását.
+Jelenleg Key Vault az újratelepítéskor a rendszer törli az összes hozzáférési házirendet a Key Vault, és azokat a ARM-sablon hozzáférési házirendjével helyettesíti. Nincs növekményes beállítás Key Vault hozzáférési házirendekhez. A Key Vault hozzáférési házirendjeinek megőrzéséhez olvassa el a meglévő hozzáférési szabályzatokat a Key Vault, és töltse ki az ARM-sablont ezekkel a szabályzatokkal, hogy elkerülje a hozzáférés kimaradását.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>A következő típusú hibák ajánlott hibaelhárítási lépései
 
