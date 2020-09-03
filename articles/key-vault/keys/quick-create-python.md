@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 18ba00b39d8ffd703eb31b95d373e5b89e51c59b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 1352d3fe4a13202a296b79fe82343c50a9e281d1
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376825"
+ms.locfileid: "89400415"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Gyors útmutató: Azure Key Vault kulcsok ügyféloldali kódtára a Pythonhoz
 
@@ -27,7 +27,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API-referenciák dokumentációja](/python/api/overview/azure/keyvault-keys-readme?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault/)
+[API-referenciák dokumentációja](/python/api/overview/azure/keyvault-keys-readme?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys)  |  [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault-keys/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

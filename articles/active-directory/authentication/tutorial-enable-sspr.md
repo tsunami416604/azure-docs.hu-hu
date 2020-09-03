@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718849"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399973"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -37,7 +37,8 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy működő Azure AD-bérlő legalább egy prémium szintű Azure AD P1 vagy próbaverziós licenccel.
+* Egy működő Azure AD-bérlő legalább egy ingyenes Azure AD vagy próbaverziós licenccel. Az ingyenes szinten a SSPR csak felhőalapú felhasználók számára működik az Azure AD-ben.
+    * A sorozat későbbi oktatóanyagai esetén prémium szintű Azure AD P1 vagy próbaverziós licencre van szükség a helyszíni jelszó visszaírási.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban tesztelheti a végfelhasználói SSPR felhasználói élményét.
@@ -138,7 +139,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **nincs**lehetőséget.
 1. A SSPR módosításának alkalmazásához válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megtanulta végrehajtani az alábbi műveleteket:
 

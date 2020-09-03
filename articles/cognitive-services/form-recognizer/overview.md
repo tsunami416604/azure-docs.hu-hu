@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723561"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394397"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -48,6 +48,7 @@ Az űrlap-felismerő az [elrendezési API](#layout-api) segítségével tanulja 
 ## <a name="prebuilt-models"></a>Előre összeállított modellek
 
 Az űrlap-felismerő olyan előre elkészített modelleket is tartalmaz, amelyek egyedi formátumúak.
+
 ### <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
 Az előkészített beérkezési modell az ausztrál, Kanada, Nagy-Britannia, India, valamint Egyesült Államok az &mdash; éttermek, a benzinkutak, a kereskedelmi és egyéb szolgáltatások által használt típus angol értékesítési nyugtáinak olvasására használatos. Ez a modell Kinyeri a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adók mennyiségét, a sorok számát, az összesítéseket és egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva. 
 
@@ -74,9 +75,11 @@ Egy rövid útmutató segítségével megkezdheti az űrlapok adatainak kinyeré
     * [Vonat címkék nélkül – cURL](quickstarts/curl-train-extract.md)
     * [Betanítás címkék nélkül – Python](quickstarts/python-train-extract.md)
     * [Betanítás címkékkel – Python](quickstarts/python-labeled-data.md)
-  * Adatok kinyerése az USA értékesítési bevételeiből
+  * Adatok kinyerése az értékesítési visszaigazolásokból
     * [Bevételezési adatok kinyerése – cURL](quickstarts/curl-receipts.md)
     * [Bevételezési adatok kinyerése – Python](quickstarts/python-receipts.md)
+  * Adatok kinyerése névjegykártyákból
+    * [Névjegykártya-adatok kinyerése – Python](quickstarts/python-business-cards.md)
   * Szöveg és táblázat struktúrájának kinyerése űrlapokból
     * [Elrendezési adatok kinyerése – Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ A következő API-kat fogja használni a modellek betanításához és a struktu
 | **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. A _useLabelFile_ paramétert beállíthatja úgy, hogy a `true` manuálisan címkézett adatként legyen betanítva. |
 | **Űrlap elemzése** |Egyetlen dokumentum elemzése, amely streamként lett átadva szöveg-, kulcs/érték párok és táblák kinyeréséhez az űrlapról az egyéni modellel.  |
 | **Visszaigazolás elemzése** |Egyetlen bevételezési dokumentum elemzése a legfontosabb információk és a többi bevételezési szöveg kinyeréséhez.|
+| **Névjegykártya elemzése** |Egy névjegykártya elemzése a legfontosabb információk és szövegek kinyeréséhez.|
 | **Elrendezés elemzése** |Egy űrlap elrendezésének elemzése szöveg és tábla szerkezetének kinyeréséhez.|
 
 További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
@@ -113,6 +117,6 @@ A beérkezési modellhez tartozó bemeneti követelmények némileg eltérőek.
 
 Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.

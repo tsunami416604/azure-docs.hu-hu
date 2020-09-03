@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute – Áttekintés: privát kapcsolaton keresztüli csatlakoztatás'
 description: Az ExpressRoute technikai áttekintése ismerteti, hogyan terjeszthető ki a helyszíni hálózatát az Azure-ra egy ExpressRoute-kapcsolattal egy privát kapcsolaton keresztül.
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: overview
 ms.date: 08/25/2020
-ms.author: mialdrid
-ms.openlocfilehash: 6621a9778025d67046722b7cd60e32a62b574ee5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.author: duau
+ms.openlocfilehash: 26f27297b651da11bf6dd76236709e5bfb77d90e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852948"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395400"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure és az Office 365.
@@ -116,7 +116,7 @@ Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyak
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb ExpressRoute-frissítéseket az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az ExpressRoute kapcsolati modelljeinek](expressroute-connectivity-models.md) ismertetése.
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).

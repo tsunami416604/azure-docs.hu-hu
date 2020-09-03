@@ -3,7 +3,7 @@ title: Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
 description: Ez a cikk az Azure bejárati szabályainak motorjában elérhető különböző egyeztetési feltételek listáját tartalmazza.
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 99a590fd3adacc9a63c2ec482965ccd9ff162ac3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512163"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399242"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door szabálymotor egyezési feltételei
 
@@ -150,7 +150,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott fájlkiterjes
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Operátor | Mellék | Eset átalakítása
+Operátor | Kiterjesztés | Eset átalakítása
 ---------|-----------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Kisbetűs, nagybetűs, Trim, szóköz eltávolítása, URL-kódolás, URL-cím dekódolása
 
@@ -186,14 +186,14 @@ Operátor | Érték | Eset átalakítása
 
 Azok a szabályok, amelyek a normál operátorok listájából fogadnak értékeket, a következő operátorok érvényesek:
 
-- Bármely
+- Bármelyik
 - Egyenlő 
 - Contains 
 - Kezdete 
 - Végződik 
-- Kisebb
+- Kisebb, mint
 - Kisebb vagy egyenlő
-- Nagyobb
+- Nagyobb, mint
 - Nagyobb vagy egyenlő
 - Nem
 - Nem tartalmazza
