@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: duau
-ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378185"
+ms.locfileid: "89399412"
 ---
 # <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
 Az Azure bevezető ajtaja lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését azáltal, hogy optimalizálja a legjobb teljesítményt és gyors globális feladatátvételt a magas rendelkezésre állás érdekében. A bejárati ajtó révén a globális (többrégiós) fogyasztói és nagyvállalati alkalmazásokat robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokkal, API-kkal és olyan tartalommal alakíthatja át, amely az Azure-ban globális közönséget ér el.
@@ -84,7 +84,7 @@ Díjszabási információkért tekintse meg [A Front Door díjszabása](https://
 
 ## <a name="whats-new"></a>Újdonságok
 
-Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb Azure Load Balancer szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) oldalon.
+Fizessen elő az RSS-hírcsatornára, és tekintse meg az Azure-beli első ajtó funkciójának frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) oldalon.
 
 ## <a name="next-steps"></a>Következő lépések
 

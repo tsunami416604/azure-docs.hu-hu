@@ -3,20 +3,20 @@ title: Oktatóanyag – súlyozott Round-Robin forgalom útválasztásának konf
 description: Ez az oktatóanyag azt ismerteti, hogyan lehet terheléselosztást használni a Traffic Manager egy ciklikus multiplexelés használatával.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: rohink
-ms.openlocfilehash: b06df3814661b64f7fa46cd5e3b8f4dea9d51710
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.author: duau
+ms.openlocfilehash: dff7d4ec02c5a17b51d73b9d81f93984b95a7d22
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84711666"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401350"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a súlyozott forgalom útválasztási módszerének konfigurálása Traffic Manager
 
@@ -44,7 +44,7 @@ A közös forgalom-útválasztási módszer minta az azonos végpontok készlet�
 
 ![Súlyozott forgalom-útválasztási módszer konfigurálása Traffic Manager használatával][1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [prioritási forgalom útválasztási módszerét](traffic-manager-configure-priority-routing-method.md).
 - A [teljesítmény-forgalom útválasztási módszerének](traffic-manager-configure-performance-routing-method.md)megismerése.
