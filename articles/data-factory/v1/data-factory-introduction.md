@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321090"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436256"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -35,7 +35,7 @@ Például egy játékokkal foglalkozó vállalat a játékok által készített 
 
 A naplók elemzéséhez a vállalatnak a helyszíni adattárban tárolt referenciaadatokat kell felhasználnia, például az ügyféladatokat, a játékadatokat és a reklámkampány-adatokat. Ennélfogva a vállalat szeretne hozzáférni a felhőbeli adattárban található naplóadatokhoz és a helyszíni adattárban található referenciaadatokhoz. 
 
-Ezután fel szeretné dolgozni az adatokat a Hadoop használatával a felhőben (Azure HDInsight). Az eredményeket közzé szeretné tenni egy felhőbeli adattárházban, például egy Azure SQL Data Warehouse-ban, vagy egy helyszíni adattárolóban, például egy SQL Server-kiszolgálón. A vállalat ezt a munkafolyamatot hetente egyszer szeretné futtatni. 
+Ezután fel szeretné dolgozni az adatokat a Hadoop használatával a felhőben (Azure HDInsight). Egy Felhőbeli adattárházban szeretnék közzétenni az eredményeket, például az Azure szinapszis Analytics (korábban SQL Data Warehouse) vagy egy helyszíni adattár (például SQL Server) számára. A vállalat ezt a munkafolyamatot hetente egyszer szeretné futtatni. 
 
 A vállalatnak egy olyan platformra van szüksége, amellyel létrehozhat egy munkafolyamatot, amely képes kiolvasni az adatokat a helyszíni és a felhőbeli adattárolókból. A vállalatnak ezenkívül képesnek kell lennie arra, hogy átalakítsa és feldolgozza az adatokat létező számítási szolgáltatások, például a Hadoop használatával, és közzétegye az eredményeket helyszíni vagy felhőbeli adattárolókon a BI-alkalmazások általi felhasználáshoz. 
 
@@ -47,7 +47,7 @@ Az Azure Data Factory az ilyen helyzetekben használható platform. Ez egy *felh
 
 - Adatokat dolgozhat fel és alakíthat át különböző számítási szolgáltatások (például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics vagy Azure Machine Learning) használatával.
 
--  A kimeneti adatokat olyan adattárakban teheti közzé, mint az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket.  
+-  A kimeneti adatokat olyan adattárakba teheti közzé, mint például az Azure szinapszis Analytics for Business Intelligence-(BI-) alkalmazások.  
 
 Ez inkább egy kinyerési és betöltési (EL) és egy átalakítási és betöltési (TL) platform, mintsem egy hagyományos kinyerési, átalakítási és betöltési (ETL) platform. Az átalakítások számítási szolgáltatásokkal dolgoznak fel adatokat származtatott oszlopok hozzáadása, sorok megszámlálása vagy adatok rendezése és egyéb műveletek helyett. 
 

@@ -1,6 +1,6 @@
 ---
 title: Az Adatmásolás ömlesztve a PowerShell használatával
-description: Megismerheti, hogyan másolhat tömegesen adatokat egy forrásadattárból a céladattárba az Azure Data Factory és a másolási tevékenység használatával.
+description: A másolási tevékenységgel rendelkező Azure Data Factory a forrás adattárban lévő adatok tömeges másolására használható.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,25 +11,25 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 3bdfe243301a2439178e0dd1f016a804e3f40fd7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85251510"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442768"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
+Ez az oktatóanyag azt mutatja be, hogyan **másolhat több táblát Azure SQL Databaseról az Azure szinapszis analyticsbe (korábban SQL Data Warehouse)**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
 
 Az oktatóanyag a következő főbb lépésekből áll:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Azure SQL Database, Azure SQL Data Warehouse és Azure Storage-beli társított szolgáltatások létrehozása
-> * Azure SQL Database- és Azure SQL Data Warehouse-adatkészletek létrehozása.
+> * Hozzon létre Azure SQL Database, az Azure szinapszis Analytics és az Azure Storage társított szolgáltatásait.
+> * Hozzon létre Azure SQL Database és az Azure szinapszis Analytics-adatkészleteket.
 > * Egy folyamat létrehozása a másolni kívánt táblák megkeresésére, és egy másik folyamat létrehozása a tényleges másolási művelet elvégzésére 
 > * Folyamat futásának indítása
 > * A folyamat és a tevékenységek futásának monitorozása
@@ -37,12 +37,12 @@ Az oktatóanyag a következő főbb lépésekből áll:
 Az oktatóanyag az Azure PowerShellt használja. Az adat-előállítók egyéb eszközökkel/SDK-kkal való létrehozásával kapcsolatban lásd [rövid útmutatóinkat](quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="end-to-end-workflow"></a>Teljes körű munkafolyamat
-Ebben a forgatókönyvben az Azure SQL Database-ben lévő egyes táblákat át szeretnénk másolni az SQL Data Warehouse-ba. A következők a folyamatokban végbemenő munkafolyamat lépései logikai sorrendben:
+Ebben a forgatókönyvben számos táblázat található Azure SQL Databaseban, amelyeket az Azure szinapszis Analytics szolgáltatásba szeretne másolni. A következők a folyamatokban végbemenő munkafolyamat lépései logikai sorrendben:
 
 ![Munkafolyamat](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
 
 * Az első folyamat megkeresi azoknak a tábláknak a listáját, amelyeket át kell másolni a fogadó adattárakba.  Másik megoldásként fenntarthat egy metaadattáblát, amely felsorolja az összes, a fogadó adattárba másolandó táblát. A folyamat ezután elindít egy másik folyamatot, amely végigiterál az adatbázis összes tábláján, és elvégzi az adatmásolási műveletet.
-* A második folyamat hajtja végre a tényleges másolást. A táblák listáját használja paraméterként. A legjobb teljesítmény érdekében a lista minden egyes Azure SQL Database-tábláját másolja át az SQL Data Warehouse megfelelő táblájába [szakaszos másolással a Blob Storage és a PolyBase segítségével](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Ebben a példában az első folyamat a táblák listáját adja át a paraméter értékeként. 
+* A második folyamat hajtja végre a tényleges másolást. A táblák listáját használja paraméterként. A listában szereplő minden táblázat esetében másolja az adott táblázatot Azure SQL Database az Azure szinapszis Analytics megfelelő táblájába a [szakaszos másolással a blob Storage-on keresztül,](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) a legjobb teljesítmény érdekében. Ebben a példában az első folyamat a táblák listáját adja át a paraméter értékeként. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -53,23 +53,23 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 * **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 * **Azure Storage-fiók**. Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
 * **Azure SQL Database**. Ez az adatbázis tartalmazza a forrásadatokat. 
-* **Azure SQL Data Warehouse**. Ez az adattárház tárolja az SQL Database-ből átmásolt adatokat. 
+* Az **Azure szinapszis Analytics**. Ez az adattárház tárolja az SQL Database-ből átmásolt adatokat. 
 
-### <a name="prepare-sql-database-and-sql-data-warehouse"></a>Az SQL Database és az SQL Data Warehouse előkészítése
+### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>Az SQL Database és az Azure szinapszis Analytics előkészítése
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy adatbázist az Adventure Works LT mintaadatok használatával SQL Database az [adatbázis létrehozása Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
+Hozzon létre egy adatbázist az Adventure Works LT mintaadatok használatával SQL Database az [adatbázis létrehozása Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag a mintaadatbázis összes tábláját átmásolja az Azure szinapszis Analyticsbe.
 
-**A fogadó Azure SQL Data Warehouse előkészítése**:
+**A fogadó Azure szinapszis Analytics előkészítése**:
 
-1. Ha még nem rendelkezik Azure SQL Data Warehouse-zal, a létrehozás folyamatáért lásd az [SQL Data Warehouse létrehozásával](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) kapcsolatos cikket.
+1. Ha nem rendelkezik Azure szinapszis Analytics-munkaterülettel, tekintse meg az első [lépések az Azure szinapszis Analytics](..\synapse-analytics\get-started.md) használatával című cikket a létrehozás lépéseihez.
 
-2. Hozzon létre megfelelő táblasémákat az SQL Data Warehouse-ban. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
+2. Hozza létre a megfelelő Table-sémákat az Azure szinapszis Analyticsben. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
 
 ## <a name="azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
 
-Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Győződjön **meg** arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be van kapcsolva a kiszolgálóhoz. Ez a beállítás lehetővé teszi a Data Factory szolgáltatás számára, hogy adatokat olvasson be az Azure SQL Database-ből, és adatokat írjon az Azure SQL Data Warehouse-ba. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
+A SQL Database és az Azure szinapszis Analytics esetében is lehetővé teszi az Azure-szolgáltatások számára az SQL Server elérését. Győződjön **meg** arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be van kapcsolva a kiszolgálóhoz. Ez a beállítás lehetővé teszi, hogy az Data Factory szolgáltatás beolvassa az adatait a Azure SQL Databaseból, és adatokba írjon az Azure szinapszis Analytics szolgáltatásba. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
 1. Kattintson a **Minden szolgáltatás** elemre a bal oldalon, majd az **SQL-kiszolgálók** elemre.
 2. Válassza ki a kiszolgálót, és kattintson a **BEÁLLÍTÁSOK** területen a **Tűzfal** elemre.
@@ -153,7 +153,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlDatabaseLinkedService
     ```
 
-### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>A fogadó Azure SQL Data Warehouse-beli társított szolgáltatás létrehozása
+### <a name="create-the-sink-azure-synapse-analytics-linked-service"></a>A fogadó Azure szinapszis Analytics társított szolgáltatás létrehozása
 
 1. Hozzon létre egy **AzureSqlDWLinkedService.json** nevű JSON-fájlt a **C:\ADFv2TutorialBulkCopy** mappában a következő tartalommal:
 
@@ -263,7 +263,7 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Adatkészlet létrehozása a fogadó SQL Data Warehouse-hoz
+### <a name="create-a-dataset-for-sink-synapse-analytics"></a>Adatkészlet létrehozása a fogadó szinapszis Analyticshez
 
 1. Hozzon létre egy **AzureSqlDWDataset.json** nevű JSON-fájlt a **C:\ADFv2TutorialBulkCopy** mappában a következő tartalommal: A „tableName” paraméterként van beállítva. A másolási tevékenység, amely erre az adatkészletre hivatkozik, később át fogja adni a tényleges értéket az adatkészletnek.
 
@@ -313,7 +313,7 @@ Ebben az oktatóanyagban két folyamatot hoz létre:
 
 ### <a name="create-the-pipeline-iterateandcopysqltables"></a>Az „IterateAndCopySQLTables” folyamat létrehozása
 
-Ez a folyamat a táblák listáját használja paraméterként. A lista minden egyes Azure SQL Database-táblájának adatait átmásolja az Azure SQL Data Warehouse-ba a szakaszos másolás és a PolyBase segítségével.
+Ez a folyamat a táblák listáját használja paraméterként. A lista minden táblázatában az adatok átmásolása az Azure SQL Database lévő táblából az Azure szinapszis Analytics szakaszos másolás és a kiinduló használatával.
 
 1. Hozzon létre egy **IterateAndCopySQLTables.json** nevű JSON-fájlt a **C:\ADFv2TutorialBulkCopy** mappában a következő tartalommal:
 
@@ -573,15 +573,15 @@ Ez a folyamat két lépést hajt végre:
     $result2
     ```
 
-3. Csatlakozzon a fogadó Azure SQL Data Warehouse-hoz, és ellenőrizze, hogy az adatok megfelelően át lettek-e másolva az Azure SQL Database-ből.
+3. Kapcsolódjon a fogadó Azure szinapszis Analytics szolgáltatáshoz, és győződjön meg róla, hogy az adatok Azure SQL Database megfelelően lettek átmásolva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
-> * Azure SQL Database, Azure SQL Data Warehouse és Azure Storage-beli társított szolgáltatások létrehozása
-> * Azure SQL Database- és Azure SQL Data Warehouse-adatkészletek létrehozása.
+> * Hozzon létre Azure SQL Database, az Azure szinapszis Analytics és az Azure Storage társított szolgáltatásait.
+> * Hozzon létre Azure SQL Database és az Azure szinapszis Analytics-adatkészleteket.
 > * Egy folyamat létrehozása a másolni kívánt táblák megkeresésére, és egy másik folyamat létrehozása a tényleges másolási művelet elvégzésére 
 > * Folyamat futásának indítása
 > * A folyamat és a tevékenységek futásának monitorozása

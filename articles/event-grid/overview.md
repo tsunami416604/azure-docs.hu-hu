@@ -3,18 +3,18 @@ title: Mi az Azure Event Grid?
 description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116131"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436867"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
 Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával rendelkező alkalmazásokat. Először válassza ki azt az Azure-erőforrást, amelyhez elő szeretne fizetni, majd adja meg az eseménykezelőt vagy a webhook-végpontot az esemény elküldéséhez. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokból, például a tárolóblobokból és erőforráscsoportokból érkező eseményekhez. Az Event Grid egyéni témakörök használatával a saját események használatát is támogatja. 
 
-Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek.
+Szűrők használatával a meghatározott eseményeket különböző végpontokra, csoportos küldéssel több végpontra is irányíthatja, és ellenőrizheti az események megbízható kézbesítését.
 
 Azure Event Grid üzembe helyezése a rendelkezésre állás maximalizálása érdekében a több tartalék tartomány minden régiójában, valamint a rendelkezésre állási zónák között (az azokat támogató régiókban) való natív elosztással. A Event Grid által támogatott régiók listáját itt tekintheti meg: [régiókban elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
@@ -56,7 +56,7 @@ Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részlet
 * [Queue Storage](handler-storage-queues.md)
 * [Webhookok](handler-webhooks.md)
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 Az Azure Event Grid öt fontos alapfogalma:
 
@@ -68,7 +68,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az Azure Event Grid néhány főbb jellemzője:
 
@@ -118,6 +118,6 @@ Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fi
 * [A Logic Apps használata eseménykezelőként](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Ez az oktatóanyag bemutatja egy olyan alkalmazás létrehozását a Logic Appsszel, amely az Event Grid által leküldött eseményekre reagál.
 * [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)  
-  Ez az oktatóanyag az Azure Functions használatával streameli az adatokat az Event Hubsból az SQL Data Warehouse-ba.
+  Egy oktatóanyag, amely az adatok Event Hubsból az Azure szinapszis Analyticsbe való továbbításához Azure Functions használ.
 * [Event Grid REST API-referencia](/rest/api/eventgrid)  
   Az esemény-előfizetések, az Útválasztás és a szűrés kezelésére szolgáló hivatkozási tartalmat tartalmaz.

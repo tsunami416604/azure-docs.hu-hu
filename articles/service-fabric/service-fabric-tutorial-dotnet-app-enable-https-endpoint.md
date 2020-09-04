@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpon
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6b8587982a8cbe496427960495055adbd68a07a7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997285"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441527"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
@@ -238,7 +238,7 @@ A Megoldáskezelőben nyissa meg a következőt: *VotingWeb/PackageRoot/ServiceM
 
 A PowerShell a **SetupEntryPoint** pontból való futtatásához futtathatja a PowerShell.exe fájlt egy kötegfájlban, amely egy PowerShell-fájlra mutat. Először adja hozzá a kötegfájlt a szolgáltatásprojekthez.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** pontra, és válassza az **Add**->**New Item** (Hozzáadás, Új elem) pontot, majd adjon hozzá egy új fájlt Setup.bat névvel.  Szerkessze a *Setup.bat* fájlt, és adja hozzá az alábbi parancsot:
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 

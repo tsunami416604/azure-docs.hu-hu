@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 140365abad266617443d58b7ed59f05a27009f59
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 60321363a7506d03ebf4aeffebac56305e231eb6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433060"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436221"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -84,9 +84,9 @@ Kövesse az alábbiakban ismertetett további lépéseket az alkalmazáshoz hasz
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- A Java Spring boot és a Spring Cloud alapú alkalmazások üzembe helyezéséhez hozzon létre egy Linux virtuális gépet az Azure-ban [a sablon használatával](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) , amely teljes körűen támogatott OpenJDK-alapú futtatókörnyezetet biztosít.
-- Java servletek a Tomcat-kiszolgálón való üzembe helyezéséhez hozzon létre egy Linux virtuális gépet a Java 8 használatával [Az Azure-](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) sablonnal, és [konfigurálja a Tomcat 9. x-et szolgáltatásként](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- A Java EE-alapú alkalmazások üzembe helyezéséhez Azure-sablonnal hozzon létre egy [linuxos virtuális gépet + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) vagy Linux rendszerű [virtuális gépet + Java + Weblogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) vagy Linux rendszerű virtuális [gép + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
+- A Java Spring boot és a Spring Cloud alapú alkalmazások üzembe helyezéséhez hozzon létre egy Linux virtuális gépet az Azure-ban [a sablon használatával](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) , amely teljes körűen támogatott OpenJDK-alapú futtatókörnyezetet biztosít.
+- Java servletek a Tomcat-kiszolgálón való üzembe helyezéséhez hozzon létre egy Linux virtuális gépet a Java 8 használatával [Az Azure-](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) sablonnal, és [konfigurálja a Tomcat 9. x-et szolgáltatásként](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- A Java EE-alapú alkalmazások üzembe helyezéséhez Azure-sablonnal hozzon létre egy [linuxos virtuális gépet + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) vagy Linux rendszerű [virtuális gépet + Java + Weblogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) vagy Linux rendszerű virtuális [gép + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) + WildFly/JBoss 14 
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
@@ -225,7 +225,7 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
 
 3. Eithor `runOnce` vagy telepítési stratégiát is megadhat `rolling` . 
 
-   `runOnce`a legegyszerűbb üzembe helyezési stratégia, amelyben minden életciklus-Hook, azaz a `preDeploy` `deploy` `routeTraffic` és a `postRouteTraffic` , egyszerre kerül végrehajtásra. Ezt követően a `on:` `success` vagy `on:` `failure` a végrehajtása történik.
+   `runOnce` a legegyszerűbb üzembe helyezési stratégia, amelyben minden életciklus-Hook, azaz a `preDeploy` `deploy` `routeTraffic` és a `postRouteTraffic` , egyszerre kerül végrehajtásra. Ezt követően a `on:` `success` vagy `on:` `failure` a végrehajtása történik.
 
    Alább látható a következő példában szereplő YAML-kódrészlet `runOnce` :
    ```YAML
@@ -244,7 +244,7 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
              - script: echo my first deployment
    ```
 
-4. Alább látható egy példa arra a YAML-kódrészletre, amelyet a virtuális gépekre vonatkozó gördülő stratégia definiálására használhat, és az egyes iterációkban 5 célt kell megadnia. `maxParallel`meghatározza, hogy a rendszer mely célokhoz helyezhető üzembe, párhuzamosan. A kiválasztási fiókokat az abszolút szám vagy a célok azon hányada alapján kell megtartani, amelynek a központi telepítése folyamatban van. A telepítés során a sikeres és a sikertelenség feltételeinek meghatározására is használható.
+4. Alább látható egy példa arra a YAML-kódrészletre, amelyet a virtuális gépekre vonatkozó gördülő stratégia definiálására használhat, és az egyes iterációkban 5 célt kell megadnia. `maxParallel` meghatározza, hogy a rendszer mely célokhoz helyezhető üzembe, párhuzamosan. A kiválasztási fiókokat az abszolút szám vagy a célok azon hányada alapján kell megtartani, amelynek a központi telepítése folyamatban van. A telepítés során a sikeres és a sikertelenség feltételeinek meghatározására is használható.
 
    ```YAML
    jobs: 

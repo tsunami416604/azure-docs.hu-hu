@@ -11,22 +11,22 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984648"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436782"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Transact-SQL (T-SQL) lekérdezések futtatásához és a karbantartási feladatok végrehajtásához olyan feladatokat hozhat létre és ütemezhet, amelyek egy vagy több adatbázisra vonatkozóan rendszeres időközönként végrehajthatók.
 
-Megadhatja a célként megadott adatbázist vagy adatbázis-csoportokat, ahol a feladatot végrehajtja, valamint ütemezi a feladatok futtatását is.
-A feladatok kezelik a megcélzott adatbázisba való bejelentkezés feladatát. Megadhatja, karbantarthatja és megtarthatja a Transact-SQL-parancsfájlokat, amelyeket az adatbázisok egy csoportjára is végrehajthat.
+Meghatározhat céladatbázist vagy adatbáziscsoportokat, ahol a feladatokat végre szeretné hajtani, és ütemezést is megadhat a feladatok futtatásához.
+Egy feladat kezeli a céladatbázisba irányuló bejelentkezéseket. Emellett Transact-SQL-szkripteket is meghatározhat, fenntarthat és megőrizhet, amelyeket adatbázisok egy csoportján futtat.
 
-Minden tevékenység naplózza a végrehajtás állapotát, és ha bármilyen hiba történik, automatikusan újrapróbálkozik a művelettel.
+Minden feladat naplózza a végrehajtás állapotát, és ha bármilyen hiba történik, automatikusan újrapróbálkozik a művelettel.
 
 ## <a name="when-to-use-automated-jobs"></a>Mikor kell automatikus feladatokat használni
 
@@ -51,7 +51,7 @@ A következő feladatütemezés-technológiák érhetők el:
 - Az **SQL Agent-feladatok** a klasszikus és a harci tesztelésen átesett SQL Server feladatütemezés összetevő, amely az Azure SQL felügyelt példányában érhető el. Az SQL-ügynök feladatai nem érhetők el Azure SQL Databaseban.
 - **Elastic Database feladatok (előzetes verzió)** olyan feladatütemezés-szolgáltatások, amelyek a Azure SQL Database egy vagy több adatbázisában egyéni feladatokat hajtanak végre.
 
-Érdemes megjegyezni, hogy az SQL-ügynök (a helyszínen és az SQL felügyelt példányának részeként elérhető) és az adatbázis rugalmas feladatainak (a Azure SQL Database és a SQL Data Warehouse-ban található önálló adatbázisok számára elérhető) közötti különbségeket is figyelembe kell venni.
+Érdemes megjegyezni, hogy az SQL-ügynök (a helyszínen és az SQL felügyelt példányának részeként elérhető) és az adatbázis rugalmas feladatainak (az Azure szinapszis Analytics-ben Azure SQL Database és adatbázisaiban található önálló adatbázisokhoz elérhető) közötti különbségeket is figyelembe kell venni.
 
 | |Rugalmas feladatok |SQL-ügynök |
 |---------|---------|---------|
@@ -218,7 +218,7 @@ Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű s
 
 |Szerepkörnév |'jobs' sémaengedélyek |'jobs_internal' sémaengedélyek |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | None |
+|**jobs_reader** | SELECT | Nincsenek |
 
 > [!IMPORTANT]
 > Mielőtt adatbázis-rendszergazdaként hozzáférést biztosítana a *feladat-adatbázishoz*, fontolja meg a lehetséges biztonsági következményeket. A feladatok létrehozásához és szerkesztéséhez szükséges engedélyekkel rendelkező rosszindulatú felhasználó létrehozhat vagy szerkeszthet egy olyan feladatot, amely tárolt hitelesítő adattal csatlakozik a rosszindulatú felhasználó által vezérelt adatbázishoz, ezáltal a felhasználó meghatározhatja a hitelesítő adathoz tartozó jelszót.
@@ -286,7 +286,7 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az SQL Server Agent?](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
 - [Rugalmas feladatok létrehozása és kezelése](elastic-jobs-overview.md)

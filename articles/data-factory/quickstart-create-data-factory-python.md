@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Azure Data Factory létrehozása a Python használatával'
-description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
+description: Az adatok előállítójának használatával az Azure Blob Storage egyik helyéről egy másik helyre másolhatja az adatait.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,14 +13,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873296"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439112"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Gyors útmutató: adatfeldolgozó és-folyamat létrehozása a Python használatával
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban egy adatelőállítót hoz létre a Python használ
 
 A Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi adatvezérelt munkafolyamatok létrehozását az adatáthelyezés és az adatátalakítások előkészítéséhez és automatizálásához. A Azure Data Factory használatával adatvezérelt munkafolyamatokat hozhat létre és ütemezhet, folyamatok néven.
 
-A folyamatok különböző adattárakból származó adatok betöltésére képesek. A folyamatok számítási szolgáltatások, például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning használatával dolgozzák fel vagy alakítják át az adatfeldolgozást. A folyamatok kimeneti adatokat tesznek közzé az adattárakban, például a Azure SQL Data Warehouse for Business Intelligence (BI) alkalmazásaiban.
+A folyamatok különböző adattárakból származó adatok betöltésére képesek. A folyamatok számítási szolgáltatások, például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning használatával dolgozzák fel vagy alakítják át az adatfeldolgozást. A folyamatok olyan adattárakba teszik közzé a kimeneti adatokat, mint például az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) az üzleti intelligenciát (BI) használó alkalmazásokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -451,7 +451,7 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az adat-előállító törléséhez adja hozzá az alábbi kódot a programhoz:
 

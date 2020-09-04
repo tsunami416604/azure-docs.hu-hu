@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e5123fbf038205befb207d1ecaf64e27ce42d887
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191108"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440966"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -28,11 +28,11 @@ Képzeljünk el például egy játékokkal foglalkozó vállalatot, amely több 
 
 A naplók elemzéséhez a vállalatnak a helyszíni adattárban tárolt referenciaadatokat kell felhasználnia, mint például az ügyféladatokat, a játékadatokat és a reklámkampány-adatokat. A vállalat úgy kívánja hasznosítani ezeket a helyszíni adattárakból származó adatokat, hogy azokat további, a felhőalapú adattárban lévő naplóadatokkal kombinálja. 
 
-Az elemzések előállításához a vállalat egy felhőalapú Spark-fürt (Azure HDInsight) használatával szeretné feldolgozni az egyesített adatokat, majd pedig egy felhőbeli adattárházban (például az Azure SQL Data Warehouse-ban) kívánja közzétenni az átalakított adatokat a jelentéskészítés megkönnyítése érdekében. A vállalat automatizálni, illetve napi rendszerességgel monitorozni és kezelni kívánja ezt a munkafolyamatot. Ezen kívül végre is kívánja hajtani azt, ha fájlok kerülnek egy blobtárolóba.
+Az elemzések kinyeréséhez a Felhőbeli Spark-fürt (Azure HDInsight) használatával szeretné feldolgozni az egyesített adatok feldolgozását, és az átalakított adatok közzétételét egy Felhőbeli adattárházba, például az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse), hogy egyszerűen létrejöjjön egy jelentés. A vállalat automatizálni, illetve napi rendszerességgel monitorozni és kezelni kívánja ezt a munkafolyamatot. Ezen kívül végre is kívánja hajtani azt, ha fájlok kerülnek egy blobtárolóba.
 
 Az Azure Data Factory az a platform, amely az ilyen adatforgatókönyvek esetében sikeresen használható. Ez a *FELHŐALAPÚ ETL-és adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés előkészítéséhez és a nagy léptékű adatátalakításhoz*. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, Összetett ETL-folyamatokat hozhat létre, amelyek az adatok vizuálisan alakíthatók át adatfolyamatokkal vagy számítási szolgáltatások, például Azure HDInsight Hadoop, Azure Databricks és Azure SQL Database használatával. 
 
-Emellett közzéteheti az átalakított adatait olyan adattárakban, mint például a Azure SQL Data Warehouse üzleti intelligencia (BI) alkalmazások számára. Végső soron az Azure Data Factory segítségével a nyers adatokat használható adattárakba rendezhetjük, így jobb üzleti döntéseket hozhatunk.
+Emellett közzéteheti az átalakított adatait olyan adattárakban is, mint például az Azure szinapszis Analytics for Business Intelligence-(BI-) alkalmazások. Végső soron az Azure Data Factory segítségével a nyers adatokat használható adattárakba rendezhetjük, így jobb üzleti döntéseket hozhatunk.
 
 ![A Data Factory felső szintű nézete](media/data-flow/overview.png)
 
@@ -106,7 +106,7 @@ A társított szolgáltatások szintén adattárak vagy számítási környezete
 ### <a name="variables"></a>Változók
 A változókat a folyamatokon belül lehet használni az ideiglenes értékek tárolására, és a paraméterekkel együtt használhatók a folyamatok, az adatfolyamatok és az egyéb tevékenységek közötti értékek átadásának engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő, fontos dokumentumok a következők:
 
 - [Adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md)
@@ -119,5 +119,5 @@ A következő, fontos dokumentumok a következők:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager sablon](quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager-sablon](quickstart-create-data-factory-resource-manager-template.md)
  

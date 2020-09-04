@@ -11,18 +11,18 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 05173790d8efe05851d39121ecfa15186ccb6d3c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 65a77dfaab0bf99207fd27a35d67a12532056476
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212955"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442939"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: számítási feladatok besorolásának létrehozása T-SQL használatával
 
 Ebben a rövid útmutatóban gyorsan létre fog hozni egy számítási feladatokat, amely nagy fontossággal bír a szervezet VEZÉRIGAZGATÓJA számára. Ez a számítási feladatok besorolása lehetővé teszi, hogy az adatkezelési lekérdezések elsőbbséget élvezzenek más lekérdezésekkel szemben, amelyek kisebb jelentőséggel bírnak a várólistá
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!NOTE]
 > Ha egy szinapszis SQL Pool-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Data Warehouse, és rendelkezik az adatbázis-VEZÉRLÉSi engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató feltételezi, hogy már kiépített egy szinapszis SQL-készletet az Azure szinapszis Analyticsben, és hogy rendelkezik az ADATBÁZISra vonatkozó engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -79,7 +79,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
 SELECT * FROM sys.workload_management_workload_classifiers
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO]
@@ -96,7 +96,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
-    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 
@@ -106,7 +106,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ezzel létrehozta a számítási feladatok besorolását. Futtasson néhány lekérdezést a TheCEO, hogy láthassa, hogyan végzik el. A lekérdezések és a hozzárendelt fontosság megtekintéséhez lásd: [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 - További információ a szinapszis SQL-alapú számítási feladatok kezeléséről: a számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md) és a számítási [feladatok besorolása](sql-data-warehouse-workload-classification.md).

@@ -1,142 +1,115 @@
 ---
-title: 'Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez | Azure'
+title: 'Gyors útmutató: webes API regisztrálása és közzététele | Azure'
 titleSuffix: Microsoft identity platform
-description: Ebből a rövid útmutatóból megtudhatja, hogyan konfigurálhat egy alkalmazást úgy, hogy az alkalmazás elérhetővé tegye az ügyfélalkalmazások számára az új jogosultságot, hatókört és szerepkört.
+description: Ebben a rövid útmutatóban a webes API-t regisztrálja a Microsoft Identity platformmal, és konfigurálja annak hatóköreit, és kiteszi az ügyfelek számára az API erőforrásaihoz való engedélyek-alapú hozzáférést.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: ryanwi
-ms.custom: aaddev
+ms.date: 09/03/2020
+ms.author: marsma
+ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830291"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442143"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
 
-Fejleszthet saját webes API-kat,és [engedélyek/hatókörök](developer-glossary.md#scopes) és [szerepkörök](developer-glossary.md#roles) közzétételével elérhetővé teheti azokat az ügyfélalkalmazások számára. A megfelelően konfigurált webes API-k a Microsoft többi webes API-jához hasonlóan érhetők el, mint például a Graph API vagy az Office 365 API-k.
-
-Ebből a rövid útmutatóból megtudhatja, hogyan konfigurálhat egy alkalmazást egy új hatókör megjelenítéséhez, hogy elérhető legyen az ügyfélalkalmazások számára.
+Ebben a rövid útmutatóban egy webes API-t regisztrál a Microsoft Identity platformmal, és elérhetővé teheti azt az ügyfélalkalmazások számára egy példa hatókör hozzáadásával. Ha regisztrálja a webes API-t, és a hatókörökön keresztül teszi közzé azt, az API-hoz hozzáférő jogosult felhasználók és ügyfélalkalmazások számára engedélyezheti az engedélyek alapján történő hozzáférést az erőforrásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* A rövid útmutató befejezése [: az alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md).
+* Aktív előfizetéssel rendelkező Azure-fiók – [ingyenes fiók létrehozása](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* A rövid útmutató befejezése [: bérlő beállítása](quickstart-create-new-tenant.md)
 
-## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
+## <a name="register-the-web-api"></a>A webes API regisztrálása
 
-Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
+A webes API erőforrásaihoz való hatókörön belüli hozzáférés biztosításához először regisztrálnia kell az API-t a Microsoft Identity platformon.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
-1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
-1. Válassza ki az új hatókör közzétételéhez használni kívánt módszert (felhasználói felület vagy alkalmazásjegyzék):
-    * [Új hatókör közzététele a felhasználói felületen](#expose-a-new-scope-through-the-ui)
-    * [Új hatókör vagy szerepkör közzététele az alkalmazásjegyzékben](#expose-a-new-scope-or-role-through-the-application-manifest)
+1. Hajtsa végre a következő témakörben ismertetett lépéseket: **alkalmazás** regisztrálása szakasz, rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md).
+1. Ugorja **át az átirányítási URI hozzáadása** és a **platform beállításainak konfigurálása** szakaszt. Nem kell konfigurálnia egy átirányítási URI-t a webes API-hoz, mivel a felhasználó nem jelentkezett be interaktív módon.
+1. A **hitelesítő adatok hozzáadása** szakasz kihagyása most. Csak abban az esetben, ha az API hozzáfér egy alsóbb rétegbeli API-hoz, a saját hitelesítő adataira van szüksége, a jelen cikkben nem szereplő forgatókönyvre.
 
-## <a name="expose-a-new-scope-through-the-ui"></a>Új hatókör közzététele a felhasználói felületen
+A webes API-val regisztrálva felveheti azokat a hatóköröket, amelyekkel az API-kód lehetővé teszi, hogy részletes engedélyeket nyújtson az API felhasználói számára.
 
-[![Bemutatja, hogyan tehet elérhetővé egy API-t a felhasználói felületen](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+## <a name="add-a-scope"></a>Hatókör hozzáadása
 
-Ha a felhasználói felületen kíván közzétenni új hatókört:
+Az ügyfélalkalmazás kódja engedélyt kér a webes API által meghatározott műveletek elvégzésére azáltal, hogy hozzáférési jogkivonatot továbbít a védett erőforráshoz (a webes API-hoz) tartozó kérésekkel együtt. A webes API ezt követően csak akkor hajtja végre a kért műveletet, ha a kapott hozzáférési jogkivonat tartalmazza a művelethez szükséges hatóköröket.
 
-1. Az alkalmazás **Áttekintés** lapján válassza az **API közzététele** szakaszt.
+Először hajtsa végre az alábbi lépéseket egy nevű példa hatókör létrehozásához `Employees.Read.All` :
 
-1. Válassza a **Hatókör hozzáadása** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
+1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az API-alkalmazás regisztrációját.
+1. Válassza ki **az API**  >  **hozzáadása hatókört**.
 
-1. Ha nem állított be **Alkalmazásazonosító URI-t**, erre vonatkozó kérés jelenik meg. Adja meg alkalmazásazonosító URI-ját, vagy használja a megadottat, majd válassza a **Mentés és folytatás** lehetőséget.
+    :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="Az alkalmazás regisztrációja elérhetővé teszi az API-panelt a Azure Portal":::
 
-1. A megjelenő **Hatókör hozzáadása** lapon az alábbiak szerint adja meg a hatókör adatait:
+1. Ha még nincs konfigurálva, a rendszer kéri, hogy állítson be egy **alkalmazás-azonosító URI** -t.
 
-    | Mező | Leírás |
-    |-------|-------------|
-    | **Hatókör neve** | Adjon kifejező nevet a hatókörnek.<br><br>Például: `Employees.Read.All`. |
-    | **Ki adhat hozzájárulást?** | Válassza ki, hogy ehhez a hatókörhöz hozzájárulhatnak a felhasználók, vagy rendszergazdai jóváhagyásra van szükség. Magasabb jogosultsági szintű engedélyeknél válassza a **Csak rendszergazdák** lehetőséget. |
-    | **Rendszergazdai hozzájárulás megjelenítendő neve** | Adjon meg kifejező leírást a hatókörhöz a rendszergazdák számára.<br><br>Például: `Read-only access to Employee records` |
-    | **Rendszergazdai jóváhagyás leírása** | Adjon meg kifejező leírást a hatókörhöz a rendszergazdák számára.<br><br>Például: `Allow the application to have read-only access to all Employee data.` |
+   Az alkalmazás-azonosító URI az API kódjában hivatkozott hatókörök előtagjaként működik, és globálisan egyedinek kell lennie. Használhatja a megadott alapértelmezett értéket, amely az űrlapon van `api://<application-client-id>` , vagy megadhat egy OLVASHATÓBB URI-t, például: `https://contoso.com/api` .
 
-    Ha a felhasználók jóváhagyhatják a hatókört, akkor az alábbi mezőket is töltse ki:
+1. Ezután adja meg a hatókör attribútumait a **hatókör hozzáadása** panelen. Ebben az útmutatóban használhatja a példa értékeket, vagy megadhatja a sajátját.
 
-    | Mező | Leírás |
-    |-------|-------------|
-    | **Felhasználói jóváhagyás megjelenítendő neve** | Adjon kifejező nevet a hatókörnek a felhasználók számára.<br><br>Például: `Read-only access to your Employee records` |
-    | **Felhasználói jóváhagyás leírása** | Adjon meg kifejező leírást a hatókörhöz a felhasználók számára.<br><br>Például: `Allow the application to have read-only access to your Employee data.` |
+    | Mező | Leírás | Példa |
+    |-------|-------------|---------|
+    | **Hatókör neve** | A hatókör neve. Általános hatókör-elnevezési konvenció `resource.operation.constraint` . | `Employees.Read.All` |
+    | **Ki adhat hozzájárulást?** | Azt határozza meg, hogy a hatókört engedélyezheti-e a felhasználók, vagy ha rendszergazdai hozzájárulásra van szükség. Magasabb jogosultsági szintű engedélyeknél válassza a **Csak rendszergazdák** lehetőséget. | **Rendszergazdák és felhasználók** |
+    | **Rendszergazdai hozzájárulás megjelenítendő neve** | A hatókör azon céljának rövid leírása, amely csak a rendszergazdák számára jelenik meg. | `Read-only access to Employee records` |
+    | **Rendszergazdai jóváhagyás leírása** | A hatókör által megadott engedély részletesebb leírása, amelyet csak a rendszergazdák látnak. | `Allow the application to have read-only access to all Employee data.` |
+    | **Felhasználói jóváhagyás megjelenítendő neve** | A hatókör céljának rövid leírása. Csak akkor jelenik meg a felhasználók számára, ha beállítja, hogy **ki férhet** hozzá a **rendszergazdákhoz és a felhasználókhoz**. | `Read-only access to your Employee records` |
+    | **Felhasználói jóváhagyás leírása** | A hatókör által biztosított engedély részletesebb leírása. Csak akkor jelenik meg a felhasználók számára, ha beállítja, hogy **ki férhet** hozzá a **rendszergazdákhoz és a felhasználókhoz**. | `Allow the application to have read-only access to your Employee data.` |
 
-1. Állítsa be az **Állapotot**, és ha kész, válassza a **Hatókör hozzáadása** lehetőséget.
+1. Állítsa az **állapotot** **engedélyezve**értékre, majd válassza a **hatókör hozzáadása**elemet.
 
-1. Választható Ha szeretné letiltani, hogy az alkalmazás felhasználói beleférjenek a megadott hatókörökbe, az ügyfélalkalmazás számára engedélyezheti a webes API-hoz való hozzáférést. Előzetesen engedélyeznie kell *csak* azokat az ügyfélalkalmazások, amelyeket megbízhatónak tart, mivel a felhasználók nem fogják tudni visszautasítani a hozzájárulásukat.
+1. Választható Ha nem szeretné, hogy az alkalmazás felhasználói beleférjenek az Ön által meghatározott hatókörökbe, az ügyfélalkalmazás *előzetes engedélyezésével* elérheti a webes API-t. Előzetes engedélyezés *csak* a megbízható ügyfélalkalmazások számára, mivel a felhasználók nem fogják tudni visszautasítani a hozzájárulásukat.
     1. Az **engedélyes ügyfélalkalmazások**területen válassza **az ügyfélalkalmazás hozzáadása** elemet.
     1. Adja meg az előre engedélyezni kívánt ügyfélalkalmazás **alkalmazás-(ügyfél-) azonosítóját** . Például egy korábban regisztrált webalkalmazáshoz.
     1. Az **engedéllyel rendelkező hatókörök**területen válassza ki azokat a hatóköröket, amelyekhez meg kívánja szüntetni az engedély megadását, majd válassza az **alkalmazás hozzáadása**lehetőséget.
 
-    Az ügyfélalkalmazás mostantól egy előre felhatalmazott ügyfélalkalmazás (PEM), és a felhasználóknak nem kell beleegyezniük a bejelentkezéshez.
+    Ha követte ezt a választható lépést, az ügyfélalkalmazás mostantól egy előre megadott ügyfélalkalmazás (PEM), és a felhasználóknak nem kell megadniuk a hozzájárulásukat a bejelentkezéshez.
 
-1. A megadott lépéseket követve [ellenőrizze, hogy a webes API közzététele sikerült-e a többi alkalmazás számára](#verify-the-web-api-is-exposed-to-other-applications).
+## <a name="add-a-scope-requiring-admin-consent"></a>Rendszergazdai jogosultságot igénylő hatókör hozzáadása
 
-## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Új hatókör vagy szerepkör közzététele az alkalmazásjegyzékben
+Ezután adjon hozzá egy másik példa nevű hatókört, `Employees.Write.All` amely szerint csak a rendszergazdák vehetnek fel engedélyt. A rendszergazdai jogosultságot igénylő hatóköröket jellemzően a magasabb szintű jogosultságú műveletekhez való hozzáférés biztosítására használják, és gyakran olyan ügyfélalkalmazások, amelyek háttér-szolgáltatásként vagy démonként futnak, amelyek nem tudnak interaktív módon bejelentkezni.
 
-Az alkalmazás jegyzékfájlja az alkalmazás entitásának frissítésére szolgál, amely meghatározza az Azure AD-alkalmazások regisztrációjának attribútumait.
+A példában szereplő `Employees.Write.All` hatókör hozzáadásához kövesse a [hatókör hozzáadása](#add-a-scope) szakasz lépéseit, és adja meg ezeket az értékeket a **hatókör hozzáadása** panelen:
 
-[![Új hatókör közzététele a oauth2Permissions-gyűjtemény használatával a jegyzékfájlban](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
+| Mező                          | Példaérték                                                      |
+|--------------------------------|--------------------------------------------------------------------|
+| **Hatókör neve**                 | `Employees.Write.All`                                              |
+| **Ki adhat hozzájárulást?**            | **Csak rendszergazdák**                                                    |
+| **Rendszergazdai hozzájárulás megjelenítendő neve** | `Write access to Employee records`                                 |
+| **Rendszergazdai jóváhagyás leírása**  | `Allow the application to have write access to all Employee data.` |
+| **Felhasználói jóváhagyás megjelenítendő neve**  | *Nincs (hagyja üresen)*                                               |
+| **Felhasználói jóváhagyás leírása**   | *Nincs (hagyja üresen)*                                               |
 
-Új hatókör közzététele az alkalmazás jegyzékfájljának szerkesztésével:
+## <a name="verify-the-exposed-scopes"></a>A feltehetően elérhető hatókörök ellenőrzése
 
-1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú jegyzékfájlszerkesztő, amellyel a portálon **szerkesztheti** a jegyzékfájlt. Másik lehetőségként a **Letöltés** lehetőséget választva a helyi gépen is szerkesztheti az alkalmazásjegyzéket, majd a **Feltöltés** gombra kattintva alkalmazhatja a módosításokat az alkalmazásra.
+Ha sikeresen felvette az előző szakaszokban ismertetett, példaként megadott hatóköröket, akkor az ehhez a képhez hasonlóan a webes API-alkalmazás regisztrációjának **elérhetővé tétele API** -paneljén fog megjelenni:
 
-    Ebben a példában bemutatjuk, hogyan teheti közzé az `Employees.Read.All` nevű új hatókört az erőforrásban/API-ban az alábbi JSON-elem `oauth2Permissions` gyűjteménybe való felvételével.
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Képernyőfelvétel: az API-panel közzététele két elérhető hatókörrel.":::
 
-    Az `id` értéket programozott módon vagy GUID generálási eszközzel (például [Guidgen](https://www.microsoft.com/download/details.aspx?id=55984)) generálhatja.
-
-      ```json
-      {
-        "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
-        "adminConsentDisplayName": "Read-only access to Employee records",
-        "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
-        "isEnabled": true,
-        "type": "User",
-        "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
-        "userConsentDisplayName": "Read-only access to your Employee records",
-        "value": "Employees.Read.All"
-      }
-      ```
-
-1. Amikor végzett, kattintson a **Mentés** gombra. A webes API most konfigurálva lett a könyvtárban lévő egyéb alkalmazások általi használatra.
-1. A megadott lépéseket követve [ellenőrizze, hogy a webes API közzététele sikerült-e a többi alkalmazás számára](#verify-the-web-api-is-exposed-to-other-applications).
-
-Az alkalmazás entitásával és sémájával kapcsolatos további információkért tekintse meg Microsoft Graph [alkalmazási][ms-graph-application] erőforrástípus referenciájának dokumentációját.
-
-További információ az alkalmazás-jegyzékfájlról, beleértve a séma-referenciáját: [Az Azure ad-alkalmazás jegyzékfájljának ismertetése](reference-app-manifest.md).
-
-## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>A webes API többi alkalmazás számára való közzétételének ellenőrzése
-
-1. Térjen vissza az Azure AD-bérlőhöz, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg és válassza ki a konfigurálni kívánt ügyfélalkalmazás.
-1. Hajtsa végre ismét az [Ügyfélalkalmazás konfigurálása webes API-k elérésére](quickstart-configure-app-access-web-apis.md) című cikkben leírt lépéseket.
-1. Ha [egy API kiválasztásának](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)lépését választja, válassza ki az erőforrást (a webes API-alkalmazás regisztrációja).
-    * Ha a Azure Portal használatával hozta létre a webes API-alkalmazás regisztrációját, az API-erőforrás a **saját API** -k lapon jelenik meg.
-    * Ha lehetővé tette, hogy a Visual Studio létrehozza a webes API-alkalmazás regisztrációját a projekt létrehozása során, az API-erőforrás megjelenik a **saját szervezet által használt API** -k lapon.
-
-Miután kiválasztotta a webes API-erőforrást, az ügyfél-hozzáférési kérelmekhez elérhető új hatókört kell látnia.
-
-## <a name="using-the-exposed-scopes"></a>A feltehetően elérhető hatókörök használata
-
-Miután az ügyfél megfelelően konfigurálva van a webes API eléréséhez szükséges engedélyekkel, OAuth 2,0 hozzáférési jogkivonatot adhat ki az Azure AD-ben. Amikor az ügyfél meghívja a webes API-t, megjeleníti azt a hozzáférési jogkivonatot, amelynek a hatóköre ( `scp` ) jogcím az alkalmazás regisztrálásakor kért engedélyekre van beállítva.
-
-A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több hatókört is közzétehet, amelyek különféle függvényekkel vannak társítva. Az erőforrás a futásidőben a kapott OAuth 2.0 hozzáférési jogkivonatban lévő hatókör (`scp`) jogcímének vagy jogcímeinek értékelésével szabályozhatja a hozzáférést a webes API-hoz.
-
-Az alkalmazásokban a teljes hatókör érték a webes API **ALKALMAZÁSSPECIFIKUS azonosítójának URI-ja** (az erőforrás) és a **hatókör neve**összefűzése.
+Ahogy az ábrán is látható, a hatókör teljes karakterlánca a webes API **alkalmazás-azonosító URI-ja** és a hatókör **hatókörének neve**.
 
 Ha például a webes API alkalmazásspecifikus AZONOSÍTÓjának URI-ja, `https://contoso.com/api` és a hatókör neve `Employees.Read.All` , a teljes hatókör a következő:
 
 `https://contoso.com/api/Employees.Read.All`
+
+## <a name="using-the-exposed-scopes"></a>A feltehetően elérhető hatókörök használata
+
+Az adatsorozat következő cikkében az ügyfélalkalmazás regisztrációját konfigurálja a webes API-hoz, valamint a jelen cikk lépéseinek követésével meghatározott hatóköröket.
+
+Miután az ügyfélalkalmazás regisztrálva van a webes API-hoz való hozzáféréshez, az ügyfél OAuth 2,0 hozzáférési jogkivonatot adhat ki a Microsoft Identity platform használatával. Amikor az ügyfél meghívja a webes API-t, egy hozzáférési jogkivonatot jelenít meg, amelynek hatóköre ( `scp` ) jogcíme az ügyfél alkalmazás-regisztrációjában megadott engedélyekre van állítva.
+
+A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több művelethez társított több hatókört is ki tud tenni. Az erőforrás a (z) `scp` OAuth 2,0 hozzáférési jogkivonatban található hatókör () jogcímek kiértékelésével képes a webes API-hoz való hozzáférés szabályozására.
 
 ## <a name="next-steps"></a>Következő lépések
 

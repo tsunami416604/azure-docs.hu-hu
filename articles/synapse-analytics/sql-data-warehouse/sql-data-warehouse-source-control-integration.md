@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205118"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441321"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Verziókövetés integrálása az SQL-készletbe
 
@@ -29,31 +29,39 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Az Azure DevOps beállítása és kapcsolódás
 
-1. Az Azure DevOps-szervezetben hozzon létre egy projektet, amely a SSDT adatbázis-projektet egy Azure-tárház adattárán keresztül fogja tárolni
+1. Az Azure DevOps-szervezetben hozzon létre egy projektet, amely a SSDT adatbázis-projektet egy Azure-tárházon keresztül fogja üzemeltetni.
 
    ![Projekt létrehozása](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Projekt létrehozása")
 
-2. Nyissa meg a Visual studiót, és kapcsolódjon az 1. lépésben az Azure DevOps-szervezethez és-projekthez a kapcsolatok kezelése lehetőség kiválasztásával
+2. Nyissa meg a Visual studiót, és kapcsolódjon az Azure DevOps-szervezethez és-projekthez az első lépésben a **kapcsolat kezelése**lehetőség kiválasztásával
 
    ![Kapcsolatok kezelése](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
-   ![Kapcsolódás](./media/sql-data-warehouse-source-control-integration/3-connect.png "Kapcsolódás")
+3. Kapcsolódjon a projekthez a **kapcsolatok kezelése**, majd **a projekthez való csatlakozás**lehetőség kiválasztásával.
+ ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Kapcsolódás")
 
-3. Az Azure-tárház klónozása a projektből a helyi gépre
+
+4. Keresse meg az első lépésben létrehozott projektet, majd válassza a **kapcsolat**lehetőséget.
+![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Kapcsolódás")
+
+
+3. Az Azure DevOps-tárház klónozása a projektből a helyi gépre.
 
    ![Klónozási tárház](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klónozási tárház")
 
+A projektek Visual Studióval való összekapcsolásával kapcsolatos további információkért tekintse meg a Kapcsolódás a következőhöz: [Team Explorer](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019). A tárház Visual Studióval történő klónozásával kapcsolatos útmutatásért tekintse át a klónozott a git-tárház [kilépését](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio) ismertető cikket. 
+
 ## <a name="create-and-connect-your-project"></a>Projekt létrehozása és összekapcsolása
 
-1. A Visual Studióban hozzon létre egy új SQL Server adatbázis-projektet a **helyi klónozott tárházban** a címtárral és a helyi git-tárházmal
+1. A Visual Studióban hozzon létre egy új SQL Server adatbázis-projektet a **helyi klónozott tárház**címtár-és helyi git-tárházával.
 
    ![Új projekt létrehozása](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Új projekt létrehozása")  
 
-2. Kattintson a jobb gombbal az üres sqlproject, és importálja az adattárházat az adatbázis-projektbe
+2. Kattintson a jobb gombbal az üres sqlproject, és importálja az adattárházat az adatbázis-projektbe.
 
    ![Projekt importálása](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Projekt importálása")  
 
-3. A Visual Studióban a Team Explorerben véglegesítse az összes módosítást a helyi git-tárházban
+3. A Visual Studióban Team Explorer véglegesítse a módosításokat a helyi git-tárházban.
 
    ![Véglegesítés](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Véglegesítés")  
 
@@ -63,22 +71,22 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
    ![Szinkronizálás és leküldés](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Szinkronizálás és leküldés")  
 
-## <a name="validation"></a>Ellenőrzés
+## <a name="validation"></a>Érvényesítés
 
-1. Ellenőrizze, hogy a módosítások az Azure-tárházba lettek-e küldve az adatbázis-projektben lévő Table oszlop frissítésével a Visual Studio SQL Server Data Tools (SSDT) használatával
+1. Ellenőrizze, hogy az Azure-tárházban történtek-e a módosítások, ha a Visual Studio SQL Server Data Tools (SSDT) segítségével frissíti az adatbázis-projektben lévő Table (tábla) oszlopot.
 
    ![Frissítési oszlop érvényesítése](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Frissítési oszlop érvényesítése")
 
-2. Véglegesítse és küldje le a változást a helyi adattárból az Azure-tárházba
+2. Véglegesítse és küldje el a változást a helyi adattárból az Azure-tárházba.
 
    ![Módosítások leküldése](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Módosítások leküldése")
 
-3. Ellenőrizze, hogy a változást leküldte-e az Azure-tárház adattárában
+3. Ellenőrizze, hogy a változást leküldte-e az Azure-tárház adattárában.
 
    ![Ellenőrzés](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
 
-4. (Nem**kötelező**) Séma összevetése és a cél adattárház változásainak frissítése a SSDT használatával annak biztosítása érdekében, hogy az Azure-tárházban és a helyi adattárban lévő objektumok definíciói az adattárházat tükrözzék
+4. (Nem**kötelező**) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL-készlet fejlesztése](sql-data-warehouse-overview-develop.md)

@@ -1,18 +1,18 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce2ce146b8a8ba06729c5e9428bccb8a60e14c39
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501958"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89449607"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
 
@@ -36,7 +36,7 @@ A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 | **Rendszerkép forrása** | Ez egy olyan erőforrás, amellyel rendszerkép- **verziót** hozhat létre egy Képtárban. A rendszerkép forrása lehet egy meglévő Azure-beli virtuális gép, amely [általánosított vagy specializált](#generalized-and-specialized-images), felügyelt rendszerkép, pillanatkép, virtuális merevlemez vagy rendszerkép verziója egy másik Képtárban. |
 | **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus **is a lemezképek** kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
 | **Rendszerkép definíciója** | A képdefiníciók egy gyűjteményen belül jönnek létre, és a rendszerképekkel és a belső használat követelményeivel kapcsolatos információkat hordozzák. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. |
-| **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
+| **Rendszerképverzió** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
 
 <br>
 
@@ -83,7 +83,7 @@ A speciális virtuális gépek nem a gép specifikus információinak és fiókj
 
 ## <a name="regional-support"></a>Regionális támogatás
 
-Az összes nyilvános régió lehet célcsoport, de az Ausztrália középső és Ausztrália középső régiójában való replikáláshoz a 2. előfizetést hozzá kell adni az engedélyezési listához. Ha egy előfizetést szeretne kérni az engedélyezési listához, lépjen a következőre:https://azure.microsoft.com/global-infrastructure/australia/contact/
+Az összes nyilvános régió lehet célcsoport, de az Ausztrália középső és Ausztrália középső régiójában való replikáláshoz a 2. előfizetést hozzá kell adni az engedélyezési listához. Ha egy előfizetést szeretne kérni az engedélyezési listához, lépjen a következőre: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Korlátok 
 
@@ -196,7 +196,7 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 * [Milyen díjak vonatkoznak a megosztott képtárat használó szolgáltatásokra?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Milyen API-verziót érdemes használni a megosztott rendszerkép-katalógus és a rendszerkép-definíció és a rendszerkép-verzió létrehozásához?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Milyen API-verziót használhatok a rendszerkép verziójának használatával létrehozott megosztott virtuális gépek vagy virtuálisgép-méretezések létrehozásához?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [Frissíthetem a felügyelt lemezkép használatával létrehozott virtuálisgép-méretezési csoportját a megosztott képgyűjteményi rendszerképek használatára?]
+* [Frissíthetem a felügyelt lemezkép használatával létrehozott virtuálisgép-méretezési csoportját a megosztott képgyűjteményi rendszerképek használatára?] (#can-i-Update-saját-virtuális gép-méretezési csoport-létrehozott-a-Managed-Image-to-use-Shared-Image-Gallery-images)
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Hogyan lehet listázni az összes megosztott képgyűjtemény erőforrását az előfizetések között?
 

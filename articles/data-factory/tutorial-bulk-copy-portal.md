@@ -1,6 +1,6 @@
 ---
 title: Nagy mennyiségű Adatmásolás a Azure Portal használatával
-description: Megismerheti, hogyan másolhat tömegesen adatokat egy forrásadattárból a céladattárba az Azure Data Factory és a másolási tevékenység használatával.
+description: A Azure Data Factory és a másolási tevékenységgel az adatok tömegesen másolhatók a forrás adattárolóból a cél adattárakba.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081638"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442854"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a Azure Portal
 
@@ -45,9 +45,9 @@ Ebben az esetben az Azure szinapszis Analyticsbe (korábbi nevén SQL DW) másol
 ![Munkafolyamat](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * Az első folyamat megkeresi azoknak a tábláknak a listáját, amelyeket át kell másolni a fogadó adattárakba.  Másik megoldásként fenntarthat egy metaadattáblát, amely felsorolja az összes, a fogadó adattárba másolandó táblát. A folyamat ezután elindít egy másik folyamatot, amely végigiterál az adatbázis összes tábláján, és elvégzi az adatmásolási műveletet.
-* A második folyamat hajtja végre a tényleges másolást. A táblák listáját használja paraméterként. A listában szereplő minden táblázat esetében másolja az adott táblázatot Azure SQL Database az Azure szinapszis Analytics (korábbi nevén SQL DW) megfelelő táblájába a [szakaszos másolással a blob Storage-on keresztül,](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) a legjobb teljesítmény érdekében. Ebben a példában az első folyamat a táblák listáját adja át a paraméter értékeként. 
+* A második folyamat hajtja végre a tényleges másolást. A táblák listáját használja paraméterként. A listában szereplő minden táblázat esetében másolja az adott táblázatot Azure SQL Database az Azure szinapszis Analytics (korábbi nevén SQL DW) megfelelő táblájába a [szakaszos másolással a blob Storage-on keresztül,](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics) a legjobb teljesítmény érdekében. Ebben a példában az első folyamat a táblák listáját adja át a paraméter értékeként. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt nekikezdene a feladatok elvégzésének.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure Storage-fiók**. Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
@@ -62,7 +62,7 @@ Hozzon létre egy adatbázist SQL Database az Adventure Works LT mintaadatok ala
 
 **A fogadó Azure szinapszis Analytics (korábban SQL DW) előkészítése**:
 
-1. Ha még nem rendelkezik Azure-beli szinapszis-elemzéssel (korábban SQL DW), tekintse meg az [SQL Data Warehouse létrehozása](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md) című cikket a létrehozás lépéseihez.
+1. Ha nem rendelkezik Azure szinapszis Analytics (korábban SQL DW) munkaterülettel, tekintse meg az első [lépések az Azure szinapszis Analytics](..\synapse-analytics\get-started.md) használatával című cikket a létrehozás lépéseihez.
 
 1. Hozza létre a megfelelő Table-sémákat az Azure szinapszis Analyticsben (korábban SQL DW). A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
 
@@ -94,7 +94,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgáló
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
    
 1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
@@ -151,7 +151,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, amely összekapcso
      
     f. Ha tesztelni szeretné az adatbázishoz való kapcsolódást a megadott információval, kattintson a **Kapcsolódás tesztelése**gombra.
      
-    : Kattintson a **Create** (Létrehozás) gombra.
+    : Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Az átmeneti Azure Storage-beli társított szolgáltatás létrehozása
 Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure Blob Storage-ot átmeneti területként használja a PolyBase engedélyezéséhez.
@@ -163,7 +163,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     a. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.                                                 
     b. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
     
-    c. Kattintson a **Create** (Létrehozás) gombra.
+    c. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben az oktatóanyagban létrehozza a forrás- és fogadó-adatkészletet, amelyek meghatározzák az adatok tárolásának helyét. 
@@ -331,7 +331,7 @@ Ez a folyamat két műveletet végez:
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1. Váltson a **figyelés** lapra. kattintson a **frissítés** gombra, amíg meg nem jelenik a Futtatás a megoldásban lévő folyamatokhoz. Folytassa mindaddig a lista frissítését, amíg meg nem jelenik a **Sikeres** állapot. 
+1. Váltson a **figyelés** lapra. Kattintson a **frissítés** gombra, amíg meg nem jelenik a Futtatás a megoldásban lévő folyamatokhoz. Folytassa mindaddig a lista frissítését, amíg meg nem jelenik a **Sikeres** állapot. 
 
 1. A **GetTableListAndTriggerCopyData** folyamathoz társított tevékenység-futtatások megtekintéséhez kattintson a folyamat neve hivatkozásra. Ehhez a folyamatfuttatáshoz két tevékenységfuttatást kell látnia. 
     ![Folyamat futtatásának figyelése](./media/tutorial-bulk-copy-portal/monitor-pipeline.png)
@@ -394,7 +394,7 @@ Ez a folyamat két műveletet végez:
 
 1. Győződjön meg róla, hogy az adatgyűjtés az oktatóanyagban használt Azure szinapszis Analytics (korábban SQL DW) célra lett másolva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

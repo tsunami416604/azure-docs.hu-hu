@@ -5,18 +5,18 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: e0b78c5e053c5668fbebd8ebaac91a90aa2b364f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752903"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434781"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rövid útmutató: az első statikus webalkalmazás felépítése a Azure Portal
 
-Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure statikus Web Apps szolgáltatásban a portál használatával.
+Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure static Web Apps szolgáltatásban a Azure Portal használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free).
 
@@ -56,42 +56,43 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
 1. Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
-1. A Build konfigurációjának szerkesztéséhez válassza a **következő: >létrehozása ** gombot
-
-:::image type="content" source="media/getting-started-portal/next-build-button.png" alt-text="Következő Build gomb":::
 
 > [!NOTE]
 > Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve**lehetőségre, válassza az **Azure statikus Web Apps**lehetőséget, majd válassza a **támogatás**lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
 
-1. A _Build_ (fejlesztés) lapon adja hozzá az előnyben részesített kezelőfelületi keretrendszerhez tartozó konfigurációs adatokat.
+1. A _Build Details (részletek összeállítása_ ) szakaszban adja meg az előnyben részesített kezelőfelületi keretrendszerhez tartozó konfigurációs adatokat.
 
     # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
-    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
-    - Az alapértelmezett érték törlése az _API helye_ mezőben
-    - Az alapértelmezett érték törlése az _alkalmazás_ -összetevő hely mezőjéből
+    1. Válassza az **Egyéni** lehetőséget a _Build-előállítók_ legördülő listából
+    1. Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
+    1. Az alapértelmezett érték törlése az _API helye_ mezőben
+    1. Hagyja üresen az alkalmazás-összetevő _helye_ mezőt
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
-    - Az alapértelmezett érték törlése az _API helye_ mezőben
-    - Az alkalmazás-összetevő _helye_ mezőben adja meg a **dist/szögletes-Basic** értéket
+    1. Válassza ki a _kiépítési készletek_ legördülő menü **szögletes** elemét
+    1. Az alapértelmezett érték megtartása az _alkalmazás helye_ mezőben
+    1. Az alapértelmezett érték törlése az _API helye_ mezőben
+    1. Az alkalmazás-összetevő _helye_ mezőben adja meg a **dist/szögletes-Basic** értéket
 
     # <a name="react"></a>[React](#tab/react)
 
-    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
-    - Az alapértelmezett érték törlése az _API helye_ mezőben
-    - Írja be a **Build** értéket az alkalmazás-összetevő _helye_ mezőbe
+    1. Válassza a **reagálás** lehetőséget a _Build-előállítók_ legördülő menüből
+    1. Az alapértelmezett érték megtartása az _alkalmazás helye_ mezőben
+    1. Az alapértelmezett érték törlése az _API helye_ mezőben
+    1. Írja be a **Build** értéket az alkalmazás-összetevő _helye_ mezőbe
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    - Az alapértelmezett érték törlése az _alkalmazás helye_ mezőben
-    - Az alapértelmezett érték törlése az _API helye_ mezőben
-    - Írja be a **dist** értéket az alkalmazás-összetevő _helye_ mezőbe
+    1. **Vue.js** kiválasztása a _Build-előállítók_ legördülő menüből
+    1. Az alapértelmezett érték megtartása az _alkalmazás helye_ mezőben
+    1. Az alapértelmezett érték törlése az _API helye_ mezőben
+    1. Az alapértelmezett érték megtartása az alkalmazás-összetevő _helye_ mezőben
 
     ---
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
     :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
@@ -118,7 +119,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: Event Hubs-adatraktárba való küldés az adattárházba – Event Grid'
-description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával végezhető el az adatáttelepítés egy SQL Data Warehouse. Egy Azure-függvény használatával kéri le a rögzítési fájlt.'
+description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával végezheti el az adatáttelepítést az Azure szinapszis Analytics szolgáltatásba. Egy Azure-függvény használatával kéri le a rögzítési fájlt.'
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007451"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435031"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
-Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs a Event Grid a blob Storage-ból rögzített Event Hubs adatok SQL Data Warehouseba való zökkenőmentes áttelepítéséhez.
+Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs és a Event Grid a blob Storage-ból származó rögzített Event Hubs adatok zökkenőmentes áttelepítésére az Azure szinapszis analyticsbe (korábban SQL Data Warehouse).
 
 ![Az alkalmazás áttekintése](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ Ez az ábra az oktatóanyagban felépített megoldás munkafolyamatát ábrázol
 2. Az adatrögzítés befejezése után létrejön egy esemény, amely egy Azure Event gridre lesz küldve. 
 3. Az Event Grid továbbítja ezt az eseményt az Azure Function alkalmazásnak.
 4. A Function alkalmazás az esemény adatainak blob URL-címét használja a blobnak a tárolóból való lekéréséhez. 
-5. A Function alkalmazás áttelepíti a blobot az Azure SQL-adattárházba. 
+5. A Function alkalmazás áttelepíti a blobot az Azure szinapszis Analytics szolgáltatásba. 
 
 Ebben a cikkben a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Az infrastruktúra üzembe helyezéséhez használjon Azure Resource Manager sablont: egy Event hub, egy Storage-fiók, egy Function alkalmazás, egy SQL-adattárház.
+> * Az infrastruktúra üzembe helyezéséhez használjon Azure Resource Manager sablont: egy Event hub, egy Storage-fiók, egy Function alkalmazás, egy szinapszis Analytics.
 > * Hozzon létre egy táblát az adattárházban.
 > * Kód hozzáadása a Function alkalmazáshoz.
 > * Előfizetés az eseményre. 
@@ -40,7 +40,7 @@ Ebben a cikkben a következő lépéseket hajtja végre:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt nekikezdene a feladatok elvégzésének.
 * A [Visual studio 2019](https://www.visualstudio.com/vs/) a következő számítási feladatokkal rendelkezik: .net Desktop-fejlesztés, Azure-fejlesztés, ASP.net és webfejlesztés, Node.js fejlesztés és Python-fejlesztés.
 * Töltse le a [EventHubsCaptureEventGridDemo minta projektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
 
@@ -52,7 +52,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
 * App Service-csomag a Function app üzemeltetéséhez
 * Függvényalkalmazás az esemény feldolgozásához
 * SQL Server az adattárház üzemeltetéséhez
-* SQL Data Warehouse a migrált adatok tárolásához
+* Azure szinapszis Analytics az áttelepített adattárolók tárolásához
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure Cloud Shell elindítása Azure Portal
 
@@ -97,7 +97,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
           "tags": null
         }
         ```
-2. Az alábbi CLI-parancs futtatásával telepítse az előző szakaszban említett összes erőforrást (Event hub, Storage-fiók, functions-alkalmazás, SQL-adattárház): 
+2. Telepítse az előző szakaszban említett összes erőforrást (Event hub, Storage-fiók, functions alkalmazás, Azure szinapszis Analytics) az alábbi CLI-parancs futtatásával: 
     1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti, hogy az Ön által választott szerkesztőbe szeretne másolni/beilleszteni, értékeket állít be, majd a parancsot a Cloud Shellba másolja. 
 
         ```azurecli
@@ -112,7 +112,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
         3. Az Event hub neve. Az értéket (hubdatamigration) is meghagyhatja.
         4. Az SQL Server neve.
         5. Az SQL-felhasználó és a jelszó neve. 
-        6. Az SQL-adatraktár neve
+        6. Az Azure szinapszis Analytics neve
         7. A Storage-fiók neve. 
         8. A Function alkalmazás neve. 
     3.  A parancs futtatásához nyomja le az **ENTER** billentyűt a Cloud Shell ablakban. Ez a folyamat hosszabb időt is igénybe vehet, hiszen egy csomó erőforrást hoz létre. A parancs eredményében ellenőrizze, hogy nincsenek-e hibák. 
@@ -131,7 +131,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
         ```
     2. Adja meg az **erőforráscsoport**nevét.
     3. Nyomja le az Enter billentyűt. 
-3. Telepítse az előző szakaszban említett összes erőforrást (Event hub, Storage-fiók, functions alkalmazás, SQL-adattárház) a következő parancs futtatásával:
+3. A következő parancs futtatásával telepítse az előző szakaszban említett összes erőforrást (Event hub, Storage-fiók, functions alkalmazás, Azure szinapszis Analytics). Ehhez futtassa az alábbi parancsot:
     1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti, hogy az Ön által választott szerkesztőbe szeretne másolni/beilleszteni, értékeket állít be, majd a parancsot a Cloud Shellba másolja. 
 
         ```powershell
@@ -143,7 +143,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
         3. Az Event hub neve. Az értéket (hubdatamigration) is meghagyhatja.
         4. Az SQL Server neve.
         5. Az SQL-felhasználó és a jelszó neve. 
-        6. Az SQL-adatraktár neve
+        6. Az Azure szinapszis Analytics neve
         7. A Storage-fiók neve. 
         8. A Function alkalmazás neve. 
     3.  A parancs futtatásához nyomja le az **ENTER** billentyűt a Cloud Shell ablakban. Ez a folyamat hosszabb időt is igénybe vehet, hiszen egy csomó erőforrást hoz létre. A parancs eredményében ellenőrizze, hogy nincsenek-e hibák. 
@@ -162,13 +162,13 @@ A Cloud Shell ablak jobb felső sarkában, a portál (vagy) **X** gombján a **C
 
     ![Az erőforráscsoporthoz tartozó erőforrások](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Tábla létrehozása az SQL Data Warehouse-ban
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Tábla létrehozása az Azure szinapszis Analytics szolgáltatásban
 Hozzon létre egy táblázatot az adattárházban a [CreateDataWarehouseTable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) parancsfájl futtatásával. A szkript futtatásához használhatja a Visual studiót vagy a lekérdezés-szerkesztőt a portálon. A következő lépések bemutatják, hogyan használhatja a lekérdezés-szerkesztőt: 
 
 1. Az erőforráscsoport erőforrásainak listájában válassza ki a **SZINAPSZIS SQL-készletét (adattárház)**. 
-2. Az SQL-adattárház lapon a bal oldali menüben válassza a **Lekérdezés-szerkesztő (előzetes verzió)** lehetőséget. 
+2. Az Azure szinapszis Analytics lapján a bal oldali menüben válassza a **Lekérdezés-szerkesztő (előzetes verzió)** lehetőséget. 
 
-    ![SQL-adattárház lapja](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Az Azure szinapszis Analytics lapja](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. Adja meg az SQL Server **felhasználójának** és **jelszavának** nevét, majd kattintson **az OK gombra**. Előfordulhat, hogy az ügyfél IP-címét hozzá kell adnia a tűzfalhoz, hogy sikeresen bejelentkezzen az SQL Server rendszerbe. 
 
     ![SQL Server-hitelesítés](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -249,7 +249,7 @@ A függvény közzététele után feliratkozhat az eseményre.
     1. Az **esemény-előfizetés részletei** lapon adja meg az előfizetés nevét (például: captureEventSub), majd válassza a **Létrehozás**lehetőséget. 
     2. A **témakör részletei** szakaszban hajtsa végre a következő műveleteket:
         1. Válassza ki **Event Hubs névtereket** a **témakörök típusaihoz**. 
-        2. Válassza ki Azure-előfizetését.
+        2. Válassza ki az Azure-előfizetését.
         2. Válassza ki az Azure-erőforráscsoportot.
         3. Válassza ki a Event Hubs névteret.
     3. Az **események típusai** szakaszban ellenőrizze, hogy a **létrehozott rögzítési fájl** ki van-e jelölve az **eseménytípus szűréséhez**. 
@@ -258,7 +258,7 @@ A függvény közzététele után feliratkozhat az eseményre.
         ![Event Grid előfizetés létrehozása](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Az alkalmazás futtatása az adatok létrehozásához
-Végeztünk az eseményközpont, az SQL-adattárház, az Azure-függvényalkalmazás és az esemény-előfizetés beállításával. Mielőtt futtatna egy alkalmazást, amely adatokat állít elő az eseményközpont számára, konfigurálnia kell néhány értéket.
+Elkészült az Event hub, az Azure szinapszis Analytics, az Azure Function app és az Event előfizetés beállításával. Mielőtt futtatna egy alkalmazást, amely adatokat állít elő az eseményközpont számára, konfigurálnia kell néhány értéket.
 
 1. A Azure Portalban navigáljon az erőforráscsoporthoz, mint korábban. 
 2. Válassza ki a Event Hubs névteret.

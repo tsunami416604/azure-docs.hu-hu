@@ -13,17 +13,17 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267358"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441776"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Rövid útmutató: a Azure Portal lekérdezési szerkesztőjének használata Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A lekérdezés-szerkesztő egy eszköz a Azure Portalban, amellyel SQL-lekérdezéseket futtathat az adatbázisán Azure SQL Database vagy adattárházban Azure SQL Data Warehouseban. 
+A lekérdezés-szerkesztő egy eszköz a Azure Portalban, amellyel SQL-lekérdezéseket futtathat az adatbázisában az Azure szinapszis Analyticsben Azure SQL Database vagy adattárházban. 
 
 Ebben a rövid útmutatóban a lekérdezéstervező segítségével futtatja a Transact-SQL (T-SQL) lekérdezéseket egy adatbázison.
 
@@ -139,7 +139,7 @@ Az alábbi [Insert](/sql/t-sql/statements/insert-transact-sql/) T-SQL-utasítás
    ```
 
 
-2. Válassza a **Futtatás** elemet egy új sor táblázatba való beszúrásához `Product` . Az **üzenetek** ablaktábla a **lekérdezés sikerességét jeleníti meg: érintett sorok: 1**.
+2. Válassza a **Futtatás**  elemet egy új sor táblázatba való beszúrásához `Product` . Az **üzenetek** ablaktábla a **lekérdezés sikerességét jeleníti meg: érintett sorok: 1**.
 
 
 ### <a name="run-an-update-query"></a>FRISSÍTÉSI lekérdezés futtatása
@@ -191,6 +191,6 @@ A lekérdezés-szerkesztő használatakor néhány tudnivalót is megtudhat.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure SQL Database által támogatott Transact-SQL (T-SQL) szolgáltatásról, tekintse meg a [Transact-SQL-különbségek feloldása az áttelepítés során SQL Databasere](transact-sql-tsql-differences-sql-server.md)című témakört.

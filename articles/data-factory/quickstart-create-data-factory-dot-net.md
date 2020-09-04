@@ -13,14 +13,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85504865"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433979"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Gyors útmutató: adatfeldolgozó és-folyamat létrehozása a .NET SDK használatával
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a .NET SDK használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -56,7 +56,7 @@ A How to: című részből megtudhatja, *hogyan hozhat létre az erőforrásokho
 
 Következő lépésként hozzon létre egy C# .NET-konzol alkalmazást a Visual Studióban:
 
-1. Indítsa el a **Visual Studiót**.
+1. Indítsa el a **Visual studiót**.
 2. A Start ablakban válassza az **új Project**  >  **Console-alkalmazás létrehozása (.NET-keretrendszer)** lehetőséget. A lépések elvégzéséhez a .NET 4.5.2-es vagy újabb verziója szükséges.
 3. A **Project Name (projekt neve**) mezőben adja meg a **ADFv2QuickStart**.
 4. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
@@ -128,7 +128,7 @@ Következő lépésként hozzon létre egy C# .NET-konzol alkalmazást a Visual 
        SubscriptionId = subscriptionId };
    ```
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehozza az **adat-előállítót**. 
 
@@ -175,7 +175,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
     storageLinkedService, client.SerializationSettings));
 ```
 
-## <a name="create-a-dataset"></a>Adatkészlet létrehozása
+## <a name="create-a-dataset"></a>Adathalmaz létrehozása
 
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **Azure Blob-adatkészletet**.
 
@@ -318,9 +318,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Állítsa össze és indítsa el az alkalmazást, majd ellenőrizze a folyamat-végrehajtást.
 
-A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozási állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelenik a másolási tevékenység futtatási adatai az olvasási/írási adatok méretével. Ezt követően az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával tekintse meg a blob (ok) t a "InputBlobPath" outputBlobPath a változók között megadott módon.
+A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozási állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelenik a másolási tevékenység futtatási adatai az olvasási/írási adatok méretével. Ezután a (z) [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) segítségével tekintse át a blob (ok) t a "InputBlobPath" outputBlobPath a változók között megadott módon.
 
-### <a name="sample-output"></a>Példa kimenet
+### <a name="sample-output"></a>Példakimenet
 
 ```json
 Creating data factory SPv2Factory0907...

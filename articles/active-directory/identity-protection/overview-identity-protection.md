@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815181"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437700"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -102,17 +102,17 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Képesség | Részletek | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Ingyenes Azure AD/Office 365 alkalmazások |
+| Képesség | Részletek  | Ingyenes Azure AD/Office 365 alkalmazások | Prémium szintű Azure AD P1|Prémium szintű Azure AD P2 |
 | --- | --- | --- | --- | --- |
-| Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával) | Igen | Nem | Nem |
-| Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával) | Igen | Nem | Nem |
-| Biztonsági jelentések | Áttekintés | Igen | Nem | Nem |
-| Biztonsági jelentések | Kockázatos felhasználók | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
-| Biztonsági jelentések | Kockázatos bejelentkezések | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
-| Biztonsági jelentések | Kockázatészlelések | Teljes hozzáférés | Korlátozott információ | Nem |
-| Értesítések | Veszélyeztetett felhasználók észlelt riasztásai | Igen | Nem | Nem |
-| Értesítések | Heti kivonat | Igen | Nem | Nem |
-| | MFA-regisztrációs szabályzat | Igen | Nem | Nem |
+| Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával)  | Nem | Nem |Igen | 
+| Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával)  | Nem |  Nem |Igen |
+| Biztonsági jelentések | Áttekintés |  Nem | Nem |Igen |
+| Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatészlelések   | Nem | Korlátozott információ| Teljes hozzáférés|
+| Értesítések | Veszélyeztetett felhasználók észlelt riasztásai  | Nem | Nem |Igen |
+| Értesítések | Heti kivonat| Nem | Nem | Igen | 
+| | MFA-regisztrációs szabályzat | Nem | Nem | Igen |
 
 ## <a name="next-steps"></a>Következő lépések
 

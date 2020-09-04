@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja be a System Center VMM-felhőkben 
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130237"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442820"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM-felhőkben található, Hyper-V rendszerű helyszíni virtuális gépek Azure-ba történő vészhelyreállításának beállítása
 
@@ -83,7 +83,11 @@ Telepítse az ügynököt minden olyan Hyper-V-gazdagépre, amely a replikálni 
 A Microsoft Azure Recovery Services ügynök telepítése varázslóban konfigurálja ezeket a beállításokat:
 
 1. **Előfeltételek ellenőrzése**. Kattintson a **Tovább** gombra. A hiányzó Előfeltételek telepítése automatikusan megtörténik.
-1. **Telepítési beállítások**. Fogadja el a telepítési helyet és a gyorsítótár helyét. A gyorsítótár meghajtójának legalább 5 GB tárhellyel kell rendelkeznie. Legalább 600 GB szabad területtel rendelkező meghajtót ajánlunk. Ezt követően válassza az **Install** (Telepítés) parancsot.
+1. **Telepítési beállítások**. Fogadja el a telepítési helyet. Ezt követően válassza az **Install** (Telepítés) parancsot.
+
+    >[!NOTE]
+    >Azure Site Recovery esetén a **gyorsítótár helye** nem kötelező.
+
 1. **Telepítés**. A telepítés befejezésekor kattintson a **Bezárás** gombra a varázsló befejezéséhez.
 
    ![Ügynök telepítése](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
@@ -128,7 +132,7 @@ Site Recovery ellenőrzi, hogy van-e egy vagy több kompatibilis Azure Storage-f
 
    A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **védelem véglegesítése** művelet befejezése után a kezdeti replikálás befejeződött, és a virtuális gép készen áll a feladatátvételre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-azure.md)

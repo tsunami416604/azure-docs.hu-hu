@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ed94b44972ffc8c53ce96c0240f11ad44535531b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120524"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434605"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -151,7 +151,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 A projekt futtatása webkiszolgálóval [Node.js](https://nodejs.org/en/download/)használatával:
 
 1. A kiszolgáló elindításához futtassa a következő parancsot a projekt könyvtárából:
-    ```batch
+    ```cmd
     npm install
     npm start
     ```
@@ -179,7 +179,7 @@ A MSAL-könyvtár bejelentkezik a felhasználók számára, és a Microsoft Iden
 
 Ha Node.js telepítve van, az Node.js csomagkezelő (NPM) használatával letöltheti a legújabb verziót:
 
-```batch
+```cmd
 npm install msal
 ```
 
@@ -241,7 +241,7 @@ myMSALObj.loginPopup(loginRequest)
 
 ### <a name="request-tokens"></a>Kérelmek jogkivonatai
 
-A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect` , `acquireTokenPopup` és`acquireTokenSilent`
+A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect` , `acquireTokenPopup` és `acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
@@ -295,7 +295,7 @@ myMSALObj.acquireTokenPopup(requestObj)
 > [!NOTE]
 > Ez a rövid útmutató a `loginRedirect` és a `acquireTokenRedirect` metódusokat használja a Microsoft Internet Explorerrel, mert az Internet Explorer felugró ablakok kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutatóhoz tartozó alkalmazás létrehozásával kapcsolatos részletes útmutatót a következő témakörben talál:
 
