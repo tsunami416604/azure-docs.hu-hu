@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 96954d0ebf56251a66d4b9c8bdcce07153f64068
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300170"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469966"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -22,9 +22,9 @@ Ebben az oktatóanyagban, amely három részből áll, előkészíti a környeze
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Az Azure Red Hat OpenShift legalább 40 mag szükséges a OpenShift-fürt létrehozásához és futtatásához. Egy új Azure-előfizetéshez tartozó alapértelmezett Azure-erőforrás-kvóta nem felel meg ennek a követelménynek. Az erőforrás-korlát növeléséhez tekintse meg a [standard kvóta: a határértékek](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)csökkentése virtuálisgép-sorozat szerint című témakört.
+Az Azure Red Hat OpenShift legalább 40 mag szükséges a OpenShift-fürt létrehozásához és futtatásához. Egy új Azure-előfizetéshez tartozó alapértelmezett Azure-erőforrás-kvóta nem felel meg ennek a követelménynek. Az erőforrás-korlát növeléséhez tekintse meg a [standard kvóta: a határértékek](../azure-portal/supportability/per-vm-quota-requests.md)csökkentése virtuálisgép-sorozat szerint című témakört.
 
 ### <a name="verify-your-permissions"></a>Engedélyek ellenőrzése
 
@@ -88,7 +88,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 1. **Hozzon létre egy erőforráscsoportot.**
 
-    Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal.
+    Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal.
     
 > [!NOTE]
 > Az Azure Red Hat OpenShift nem érhető el minden olyan régióban, ahol létre lehet hozni egy Azure-erőforráscsoportot. Tekintse meg az [elérhető régiók](https://docs.openshift.com/aro/4/welcome/index.html#available-regions) című témakört az Azure Red Hat OpenShift támogatásával kapcsolatban.
@@ -167,7 +167,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **[Tiltsa le az alhálózat magánhálózati végpontjának házirendjeit](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) a fő alhálózaton.** Ez szükséges ahhoz, hogy csatlakozni tudjon és kezelhesse a fürtöt.
+5. **[Tiltsa le az alhálózat magánhálózati végpontjának házirendjeit](../private-link/disable-private-link-service-network-policy.md) a fő alhálózaton.** Ez szükséges ahhoz, hogy csatlakozni tudjon és kezelhesse a fürtöt.
 
     ```azurecli-interactive
     az network vnet subnet update \

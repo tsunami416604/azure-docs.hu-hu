@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 8ac25193bacfcce3c3062ccd92fa5cfbb5784572
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 24990087507dee09bc38418f40c72911386e5efb
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421696"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469116"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Kapcsolódás Azure Red Hat OpenShift 4 rendszerű fürthöz
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban, amely három részből áll, a OpenShift 4-es verziój
 
 Az előző oktatóanyagokban létrehoztak egy Azure Red Hat OpenShift-fürtöt. Ha még nem tette meg ezeket a lépéseket, és követni szeretné a lépéseket, kezdje az [1. oktatóanyag használatával – hozzon létre egy Azure Red Hat OpenShift 4 fürtöt.](tutorial-create-cluster.md)
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
@@ -92,7 +92,7 @@ Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs ha
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]
@@ -103,4 +103,3 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift-fürt törlése](tutorial-delete-cluster.md)
-

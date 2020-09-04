@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229378"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469184"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Oktatóanyag: stream Azure Active Directory naplók az Azure Event hub-ba
 
@@ -60,8 +60,8 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 7. Az **OK** gombra kattintva lépjen ki az eseményközpont konfigurációs felületéről.
 
 8. A következő lehetőségek egyikét vagy mindkettőt választhatja:
-    * Jelölje be az **AuditLogs** (Naplófájlok) jelölőnégyzetet, ha az auditnaplókat szeretné továbbítani a tárfiókba. 
-    * Jelölje be a **SignInLogs** (Bejelentkezési naplók) jelölőnégyzetet, ha a bejelentkezési naplókat szeretné továbbítani a tárfiókba.
+    * Ha naplókat szeretne küldeni az Event hubhoz, jelölje be a **AuditLogs** jelölőnégyzetet. 
+    * Ha bejelentkezési naplókat szeretne küldeni az Event hub-ba, jelölje be a **SignInLogs** jelölőnégyzetet.
 
 9. A beállítás mentéséhez kattintson a **Mentés** gombra.
 
@@ -88,7 +88,7 @@ Miután az adatok megjelentek az eseményközpontban, kétféleképpen érheti e
 * **Egyéni eszközök konfigurálásával**. Ha az Ön által használt SIEM-et az Azure Monitor-diagnosztika jelenleg még nem támogatja, az egyéni eszközök használatát az Event Hubs API használatával állíthatja be. További részletekért lásd [az eseményközpontból való üzenetfogadás első lépéseit](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) ismertető cikket.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Active Directory-naplók integrálása a ArcSight a Azure Monitor használatával](howto-integrate-activity-logs-with-arcsight.md)
 * [Azure AD-naplók integrálása a Splunkkal az Azure Monitor használatával](./howto-integrate-activity-logs-with-splunk.md)

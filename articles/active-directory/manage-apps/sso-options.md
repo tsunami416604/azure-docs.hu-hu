@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: c380642cd4297a753b113bdbfdfb46060656269e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642095"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469813"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Egyszeri bejelentkezési lehetőségek az Azure AD-ben
 
@@ -55,7 +55,7 @@ Az alábbi táblázat összefoglalja az egyszeri bejelentkezés módszereit, és
 
 Új alkalmazások fejlesztésekor a modern protokollok, például az OpenID Connect és a OAuth segítségével érheti el a legjobb egyszeri bejelentkezési élményt az alkalmazáshoz több eszköz platformján. A OAuth lehetővé teszi [, hogy a](configure-user-consent.md) felhasználók vagy a rendszergazdák beleegyeznek a védett erőforrások, például a [Microsoft Graph](/graph/overview)számára. Egyszerűen bevezetheti az [SDK](../develop/reference-v2-libraries.md) -kat az alkalmazásához, és emellett az alkalmazás készen áll a [Microsoft Graph](/graph/overview)használatára.
 
-További információ:
+További információkért lásd:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -198,6 +198,6 @@ Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti partneri kapcso
 
 További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Egyszeri bejelentkezés üzembe helyezésének tervezése](plan-sso-deployment.md)
