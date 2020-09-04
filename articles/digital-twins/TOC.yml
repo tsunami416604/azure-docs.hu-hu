@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: Útmutatók
   items:
-    - name: Fejlesztés
-      items:
-        - name: Az API-k és SDK-k használata
-          href: how-to-use-apis-sdks.md
-        - name: Egyéni SDK-k létrehozása az AutoRest használatával
-          href: how-to-create-custom-sdks.md
     - name: Üzembe helyezés
       items:
         - name: Az Azure Digital Twins CLI használata
@@ -78,6 +72,14 @@
           href: how-to-create-azure-function.md
         - name: Az ikergráf lekérdezése
           href: how-to-query-graph.md
+    - name: Ügyfélalkalmazások fejlesztése
+      items:
+        - name: Az API-k és SDK-k használata
+          href: how-to-use-apis-sdks.md
+        - name: Egyéni SDK-k létrehozása az AutoRest használatával
+          href: how-to-create-custom-sdks.md
+        - name: Integrálás az Azure SignalR szolgáltatással
+          href: how-to-integrate-azure-signalr.md
     - name: Bemenet csatlakoztatása
       items:
         - name: Telemetria betöltése az IoT Hubról
@@ -188,6 +190,8 @@
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
         - name: Az Azure Digital Twins egyéni swaggerei
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: A SignalR integrációs mintája
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Azure-eszközök
       items:
         - name: Azure Cloud Shell

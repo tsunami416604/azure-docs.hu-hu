@@ -59,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: Felhőszolgáltatók
               href: ./cloud-solution-providers.md
+            - name: A Connect program regisztrálási útmutatója
+              href: ./cloud-partner-portal/business-applications-isv-program.md
         - name: A Marketplace-ből származó előnyei
           href: ./gtm-your-marketplace-benefits.md
           items:
