@@ -93,6 +93,9 @@
     - name: Új szabályzat hatásának értékelése
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Ajánlott szabályzatok
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: Előírásoknak való megfelelőség
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md

@@ -130,6 +130,7 @@
         - name: Riasztásokra adott válaszok automatizálása
           href: workflow-automation.md
         - name: Riasztások exportálása
+          displayName: continuous
           href: continuous-export.md
     - name: Biztonsági javaslatok használata a biztonság javításához
       items:
@@ -150,6 +151,7 @@
         - name: Javaslatokra adott válaszok automatizálása
           href: workflow-automation.md
         - name: Javaslatok exportálása
+          displayName: continuous
           href: continuous-export.md
     - name: Az erőforrások kezelése eszközleltárral
       href: asset-inventory.md

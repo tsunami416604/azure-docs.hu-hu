@@ -173,6 +173,8 @@
           href: iot-hub-devguide-glossary.md
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Javaslatok
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: Biztonság az alapoktól

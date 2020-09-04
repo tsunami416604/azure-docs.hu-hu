@@ -23,6 +23,8 @@
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: Biztonsági áttekintés
+          href: security-overview.md
 - name: Útmutatók
   items:
     - name: Csatlakozás az Azure Archoz

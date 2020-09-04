@@ -28,8 +28,6 @@
       href: oracle-reference-architecture.md
     - name: Oracle-adatbázis tervezése
       href: oracle-design.md
-    - name: Biztonsági mentési stratégia Oracle-adatbázisokhoz
-      href: oracle-backup-recovery.md
     - name: Vészhelyreállítási lehetőségek az Oracle-ben
       href: oracle-disaster-recovery.md
 - name: Útmutatók
