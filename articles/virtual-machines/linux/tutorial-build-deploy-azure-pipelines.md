@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: 60321363a7506d03ebf4aeffebac56305e231eb6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436221"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462173"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -84,9 +84,10 @@ Kövesse az alábbiakban ismertetett további lépéseket az alkalmazáshoz hasz
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- A Java Spring boot és a Spring Cloud alapú alkalmazások üzembe helyezéséhez hozzon létre egy Linux virtuális gépet az Azure-ban [a sablon használatával](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) , amely teljes körűen támogatott OpenJDK-alapú futtatókörnyezetet biztosít.
-- Java servletek a Tomcat-kiszolgálón való üzembe helyezéséhez hozzon létre egy Linux virtuális gépet a Java 8 használatával [Az Azure-](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) sablonnal, és [konfigurálja a Tomcat 9. x-et szolgáltatásként](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
-- A Java EE-alapú alkalmazások üzembe helyezéséhez Azure-sablonnal hozzon létre egy [linuxos virtuális gépet + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) vagy Linux rendszerű [virtuális gépet + Java + Weblogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) vagy Linux rendszerű virtuális [gép + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-2004) + WildFly/JBoss 14 
+- A Java Spring boot és a Spring Cloud alapú alkalmazások üzembe helyezéséhez hozzon létre egy Linux virtuális gépet az Azure-ban [a sablon használatával](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) , amely teljes körűen támogatott OpenJDK-alapú futtatókörnyezetet biztosít.
+- Java servletek a Tomcat-kiszolgálón való üzembe helyezéséhez hozzon létre egy Linux virtuális gépet a Java 8 használatával [Az Azure-](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) sablonnal, és [konfigurálja a Tomcat 9. x-et szolgáltatásként](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- A Java EE-alapú alkalmazások üzembe helyezéséhez Azure-sablonnal hozzon létre egy [linuxos virtuális gépet + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) vagy Linux rendszerű [virtuális gépet + Java + Weblogic 12. x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) vagy Linux rendszerű virtuális [gép + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) + WildFly/JBoss 14 
+
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
@@ -294,7 +295,7 @@ A környezet üzembe helyezési nézete biztosítja a véglegesítés és a munk
   
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Folytathatja az imént létrehozott [folyamat testreszabását](/azure/devops/pipelines/customize-pipeline) .
 - Ha szeretné megtudni, hogy mit tehet a YAML-folyamatokban, tekintse meg a [YAML-séma referenciáját](/azure/devops/pipelines/yaml-schema).
 - Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.

@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145892"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462462"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -69,7 +69,7 @@ Az SDK segítségével [automatizálhatja a modell betanítását és finomhango
 
 ## <a name="build-ml-models-in-the-studio"></a>ML modellek készítése a Studióban
 
-A [Azure Machine learning Studio](https://www.ml.azure.com) egy webes portál, amely a modell betanításához, üzembe helyezéséhez és az eszközök kezeléséhez szükséges, az alacsony kódú és a kód nélküli lehetőségeket Azure Machine learning. A Studio zökkenőmentesen integrálható a Azure Machine Learning SDK-val. További információ: [What is Azure Machine learning Studio](overview-what-is-machine-learning-studio.md).
+A [Azure Machine learning Studio](https://studio.azureml.net) egy webes portál, amely a modell betanításához, üzembe helyezéséhez és az eszközök kezeléséhez szükséges, az alacsony kódú és a kód nélküli lehetőségeket Azure Machine learning. A Studio zökkenőmentesen integrálható a Azure Machine Learning SDK-val. További információ: [What is Azure Machine learning Studio](overview-what-is-machine-learning-studio.md).
 
 + **Azure Machine Learning Designer (előzetes verzió)**
 
@@ -86,7 +86,7 @@ A [Azure Machine learning Studio](https://www.ml.azure.com) egy webes portál, a
 
 + **És még sok más...**
 
-  Látogasson el Azure Machine Learning studióra a következő címen: [ml.Azure.com](https://www.ml.azure.com). 
+  Látogasson el Azure Machine Learning studióra a következő címen: [ml.Azure.com](https://studio.azureml.net). 
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps: & életciklus-felügyelet üzembe helyezése
@@ -134,7 +134,7 @@ Azure Machine Learning két, a gépi tanulási igényekhez igazított kiadást k
 
 Ha többet szeretne megtudni ezekről a kiadásokról és a feloldható képességekről, olvassa el a ["Azure Machine learning Editions" című cikket](concept-editions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)

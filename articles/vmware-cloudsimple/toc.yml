@@ -7,7 +7,7 @@
           href: cloudsimple-vmware-solutions-overview.md
         - name: A legfontosabb felügyeleti alapelvek
           href: key-concepts.md
-    - name: Első lépések
+    - name: Gyorsútmutató
       expanded: true
       items:
         - name: Hálózattervezés
@@ -54,7 +54,7 @@
           href: cloudsimple-maintenance-updates.md
         - name: GYIK
           href: cloudsimple-faq.md
-    - name: oktatóanyagokat
+    - name: Oktatóanyagok
       items:
         - name: A CloudSimple-szolgáltatás létrehozása
           href: create-cloudsimple-service.md
@@ -178,3 +178,7 @@
               href: on-premises-connection.md
             - name: Azure virtuális hálózati kapcsolat ExpressRoute-tal
               href: azure-expressroute-connection.md
+    - name: Kibocsátási megjegyzések
+      items:
+        - name: CloudSimple – 2020. szeptemberi frissítés
+          href: update-plan-sept-2020.md

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: fd2742744ef4f2f616e772c8f387887e113b132a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88862514"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462666"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Gyors útmutató: Azure IoT Hub és Storage-fiók üzembe helyezése ARM-sablon használatával
 
@@ -32,8 +32,8 @@ Az ebben a rövid útmutatóban használt sablont `101-iothub-auto-route-message
 :::code language="json" source="~/quickstart-templates/101-iothub-auto-route-messages/azuredeploy.json":::
 
 Két Azure-erőforrás van definiálva a sablonban: 
-* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.iothubs)
-* [Microsoft. Storage/](/azure/templates/microsoft.storage)
+* [Microsoft. Devices/Iothubs](/azure/templates/microsoft.devices/iothubs)
+* [Microsoft. Storage/](/azure/templates/microsoft.storage/allversions)
 
 ## <a name="deploy-the-template-and-run-the-sample-app"></a>A sablon üzembe helyezése és a minta alkalmazás futtatása
 
@@ -46,7 +46,7 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
 
     [![Üzembe helyezés az Azure-ban](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Töltse le és csomagolja ki a [IoT C#-mintákat](https://Azure-Samples/azure-iot-samples-csharp).
+1. Töltse le és csomagolja ki a [IoT C#-mintákat](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/).
 
 1. Nyisson meg egy parancssorablakot, és keresse meg azt a mappát, ahová a IoT C#-mintákat kibonthatja. Keresse meg az ARM-Read-Write. csproj fájlt tartalmazó mappát. Ebben a parancsablakban hozza létre a környezeti változókat. A kulcsok lekéréséhez jelentkezzen be a [Azure Portal] ( https://portal.azure.com ]-ba. Válassza az **erőforráscsoportok** lehetőséget, majd válassza ki az ehhez a rövid útmutatóhoz használt erőforráscsoportot.
 

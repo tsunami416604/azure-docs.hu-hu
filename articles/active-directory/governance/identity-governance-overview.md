@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783297"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460814"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
 
@@ -68,7 +68,7 @@ A rendszerjogosultságú hozzáférést a többi szállító a személyazonossá
 
 ![Emelt szintű hozzáférés életciklusa](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-A [Azure ad Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) további vezérlőket biztosít a hozzáférési jogosultságok biztosításához az erőforrásokhoz, az Azure ad-ben, az Azure-ban és más Microsoft Online-szolgáltatásokban.  A többtényezős hitelesítés és a feltételes hozzáférés mellett az Azure AD PIM által biztosított igény szerinti hozzáférés-és szerepkör-változási riasztási képességek széles körű irányítási vezérlőket biztosítanak a vállalati erőforrások biztonságossá tételéhez (címtár, Office 365 és Azure Resource roles). A más hozzáférési formákhoz hasonlóan a szervezetek hozzáférési felülvizsgálatokat is használhatnak a rendszergazdai szerepkörökben lévő összes felhasználóra vonatkozó ismétlődő hozzáférés-visszaigazolások konfigurálásához.
+A [Azure ad Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) további vezérlőket biztosít a hozzáférési jogosultságok biztosításához az erőforrásokhoz, az Azure ad-ben, az Azure-ban és más Microsoft Online-szolgáltatásokban.  A többtényezős hitelesítés és a feltételes hozzáférés mellett az Azure AD PIM által biztosított igény szerinti hozzáférés-és szerepkör-változási riasztási képességek széles körű irányítási vezérlőket biztosítanak a vállalati erőforrások biztonságossá tételéhez (címtár, Microsoft 365 és Azure erőforrás-szerepkörök). A más hozzáférési formákhoz hasonlóan a szervezetek hozzáférési felülvizsgálatokat is használhatnak a rendszergazdai szerepkörökben lévő összes felhasználóra vonatkozó ismétlődő hozzáférés-visszaigazolások konfigurálásához.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -88,14 +88,14 @@ Habár nincs tökéletes megoldás vagy javaslat minden ügyfélhez, a következ
 
 Ajánlott eljárás a legkevésbé Kiemelt szerepkör használata a rendszergazdai feladatok elvégzéséhez az Identitáskezelés irányításában. Javasoljuk, hogy az Azure AD PIM használatával aktiválja a szerepköröket a feladatok elvégzéséhez szükséges módon. Az identitás-irányítási funkciók konfigurálásához az alábbi legkevesebb jogosultsággal rendelkező címtár-szerepkört kell megadni:
 
-| Szolgáltatás | Legkevésbé Kiemelt szerepkör |
+| Funkció | Legkevésbé Kiemelt szerepkör |
 | ------- | --------------------- |
 | Jogosultságkezelés | Felhasználói rendszergazda (a SharePoint Online-helyek katalógusba való felvételének kivételével, amely globális rendszergazdai jogosultságot igényel) |
 | Hozzáférési felülvizsgálatok | Felhasználói rendszergazda (az Azure-beli vagy az Azure AD-szerepkörök hozzáférési felülvizsgálatának kivételével, amelyhez Kiemelt szerepkörű rendszergazda szükséges) |
 |Privileged Identity Management | Kiemelt szerepkörű rendszergazda |
 | Használati feltételek | Biztonsági rendszergazda vagy feltételes hozzáférésű rendszergazda |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD-jogosultságkezelés?](entitlement-management-overview.md)
 - [Mik azok az Azure AD-hozzáférési felülvizsgálatok?](access-reviews-overview.md)

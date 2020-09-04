@@ -65,6 +65,8 @@
       href: ../../firewall/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja
       href: ../../azure-functions/security-baseline.md
+    - name: Az Azure Monitor biztonsági alapkonfigurációja
+      href: ../../azure-monitor/security-baseline.md
     - name: Az Azure Machine Learning biztonsági alapkonfigurációja
       href: ../../machine-learning/security-baseline.md
     - name: Az Azure Policy biztonsági alapkonfigurációja

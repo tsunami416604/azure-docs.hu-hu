@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070113"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459539"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Szinapszis felügyelt privát végpontok (előzetes verzió)
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti a felügyelt privát végpontokat az Azure szinapszis Analyt
 
 A felügyelt privát végpontok a felügyelt munkaterületen létrehozott privát végpontok, Microsoft Azure Virtual Network az Azure-erőforrásokra mutató privát hivatkozás létrehozása. Az Azure szinapszis ezeket a privát végpontokat az Ön nevében kezeli.
 
-Az Azure szinapszis támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a Azure SQL Data Warehouse) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését az Azure-Virtual Network biztonságos módon.
+Az Azure szinapszis támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure-szolgáltatások (például az Azure Storage és a Azure Cosmos DB) és az Azure-beli üzemeltetett ügyfél/partner szolgáltatások elérését az Azure-Virtual Network biztonságosan.
 
 Privát hivatkozás használata esetén a Virtual Network és a munkaterület közötti forgalom teljes mértékben áthalad a Microsoft gerinc hálózatán. A privát hivatkozás védi az adatkiszűrése kockázatait. Privát végpont létrehozásával létrehozhat egy erőforrásra mutató privát hivatkozást.
 

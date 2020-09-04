@@ -93,10 +93,10 @@
       href: troubleshoot-how-to.md
 - name: Referencia
   items:
-    - name: HTTP-adategyezmény
-      href: http-data-contract.md
-    - name: gRPC-adategyezmény
-      href: grpc-data-contract.md
+    - name: HTTP-bővítmény-protokoll
+      href: http-extension-protocol.md
+    - name: gRPC-bővítmény-protokoll
+      href: grpc-extension-protocol.md
     - name: Következtetéses metaadatok sémája
       href: inference-metadata-schema.md
     - name: Közvetlen metódusok

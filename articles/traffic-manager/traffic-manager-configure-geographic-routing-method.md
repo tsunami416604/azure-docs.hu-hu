@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
-ms.openlocfilehash: 71219eea1c7cdeeefbf63e5a5715fb10fcf68682
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 53773d7c616edec067e1ed1778b7ce6b500ee936
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401078"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462615"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Oktatóanyag: a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával
 
@@ -39,8 +39,7 @@ A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott 
 
 1. Keresse meg a portál keresési sávjában létrehozott Traffic Manager profil nevét, és kattintson az eredményre, amikor megjelenik.
 2. Navigáljon a Traffic Manager **Beállítások**  ->  **végpontokhoz** .
-3. A Hozzáadás **végpont**megjelenítéséhez kattintson a **Hozzáadás** gombra.
-3. Kattintson a **Hozzáadás** gombra, és a megjelenő **végpont hozzáadása** lapon fejezze be a következőt:
+3. Kattintson a **Hozzáadás** gombra, és a **végpont hozzáadása** panelen megjelenik a következő:
 4. Válassza a **típus** lehetőséget a hozzáadni kívánt végpont típusától függően. Az éles környezetben használt földrajzi útválasztási profilok esetében javasoljuk, hogy használjon olyan beágyazott végpontokat, amelyek egynél több végponttal rendelkező alárendelt profilt tartalmaznak. További részletekért tekintse meg a [földrajzi forgalom útválasztási módszereivel kapcsolatos gyakori kérdések](traffic-manager-FAQs.md)című témakört.
 5. Adjon meg egy **Nevet**, amelyről felismeri majd a végpontot.
 6. Ezen a lapon bizonyos mezők a hozzáadott végpont típusától függenek:
@@ -57,7 +56,7 @@ A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott 
 2. Kattintson az **Áttekintés** elemre.
 3. A **Traffic Manager-profil** mezőben megjelenik az újonnan létrehozott Traffic Manager-profil DNS-neve. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján.  Földrajzi útválasztás esetén Traffic Manager a bejövő kérelem forrás IP-címét vizsgálja, és meghatározza azt a régiót, ahonnan származik. Ha az adott régió egy végpontra van leképezve, a rendszer átirányítja a forgalmat oda. Ha ez a régió nincs leképezve végpontra, akkor Traffic Manager egy Adatlekérdezési választ ad vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [földrajzi forgalom útválasztási módszeréről](traffic-manager-routing-methods.md#geographic).
 - Ismerje meg, hogyan [tesztelheti Traffic Manager beállításait](traffic-manager-testing-settings.md).

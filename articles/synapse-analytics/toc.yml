@@ -222,6 +222,8 @@
                   href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio-jegyzetfüzetek
               href: ./spark/apache-spark-development-using-notebooks.md
+            - name: Hitelesítő adatok biztonságossá tétele a TokenLibrary használatával
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
             - name: .NET az Apache Sparkhoz
               href: ./spark/spark-dotnet.md
             - name: Gépi tanulás az Apache Sparkban
@@ -248,7 +250,7 @@
               href: sql/best-practices-sql-on-demand.md
             - name: Az SQL-készletek használatára vonatkozó ajánlott eljárások
               href: sql/best-practices-sql-pool.md
-        - name: Az adatok betöltése
+        - name: Adatfeldolgozás és -előkészítés
           items:
             - name: Áttekintés
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -416,7 +418,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Frissítés 2. generációs verzióra
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Adatok betöltése
+    - name: Adatfeldolgozás és -előkészítés
       items:
         - name: Az adattárházba
           items:

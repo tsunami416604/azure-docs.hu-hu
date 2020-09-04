@@ -39,6 +39,10 @@
       href: application-management-fundamentals.md
     - name: Alkalmazáskezelések gyakori forgatókönyvei
       href: common-scenarios.md
+    - name: Alkalmazások megtekintése a bérlőben
+      href: application-types.md
+    - name: Felhasználók hozzárendelése az alkalmazásokhoz
+      href: ways-users-get-assigned-to-applications.md
     - name: Felhőalkalmazás-integráció megtervezése
       items:
         - name: Az alkalmazásintegráció első lépései
@@ -114,7 +118,7 @@
           href: grant-admin-consent.md
         - name: Rendszergazdai beleegyezés konfigurálásának munkafolyamata (előzetes verzió)
           href: configure-admin-consent-workflow.md
-        - name: Felhasználó vagy csoport hozzárendelése egy alkalmazáshoz
+        - name: Alkalmazás felhasználó-hozzárendelésének kezelése
           href: assign-user-or-group-access-portal.md
         - name: Az alkalmazásoknak megadott engedélyek áttekintése
           href: manage-application-permissions.md
@@ -124,8 +128,6 @@
           href: access-panel-manage-self-service-access.md
         - name: Módszerek egy felhasználó alkalmazás-hozzáférésének eltávolítására
           href: methods-for-removing-user-access.md
-        - name: Felhasználó vagy csoport hozzáférésének eltávolítása
-          href: remove-user-or-group-access-portal.md
         - name: Alkalmazás elrejtése egy felhasználó elől
           href: hide-application-from-user-portal.md
         - name: Felhasználói bejelentkezések letiltása
@@ -203,11 +205,7 @@
     - name: Hibaelhárítás
       items:
         - name: Alkalmazások hozzáadásával kapcsolatos hibaelhárítás
-          items:
-            - name: Gyakori problémák – katalógusbeli alkalmazások
-              href: adding-gallery-app-common-problems.md
-            - name: Gyakori problémák – nem katalógusbeli alkalmazások
-              href: adding-non-gallery-app-common-problems.md
+          href: troubleshoot-adding-apps.md
         - name: Felhasználói bejelentkezés hibaelhárítása
           items:
             - name: Váratlan hozzájárulási kérés
@@ -234,12 +232,6 @@
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: Gyakori problémák az összevontak konfigurálásakor – nem katalógusbeli alkalmazások
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Alkalmazáslistával és -hozzárendeléssel kapcsolatos hibaelhárítás
-          items:
-            - name: Bérlői alkalmazáslista kezelése
-              href: application-types.md
-            - name: Váratlan felhasználó lett hozzárendelve
-              href: ways-users-get-assigned-to-applications.md
         - name: Helyszíni alkalmazások hibaelhárítása
           items:
             - name: Alkalmazásproxy hibaelhárítása

@@ -187,6 +187,14 @@
           href: azure-netapp-files.md
         - name: Azure-ultralemezek használata (előzetes verzió)
           href: use-ultra-disks.md
+        - name: CSI-tárolóillesztők
+          items:
+            - name: CSI-tárolóillesztők engedélyezése (előzetes verzió)
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI-illesztők (előzetes verzió)
+              href: azure-disk-csi.md
+            - name: Azure Files CSI-illesztők (előzetes verzió)
+              href: azure-files-csi.md
     - name: Hálózatkezelés konfigurálása
       items:
         - name: Meglévő virtuális hálózat létrehozása vagy használata
@@ -252,9 +260,9 @@
           href: update-credentials.md
         - name: Azure Active Directory-integráció engedélyezése
           items:
-            - name: AKS által felügyelt AAD
+            - name: AKS által felügyelt Azure AD
               href: managed-aad.md
-            - name: AAD integrálása (régi)
+            - name: Azure AD-integráció (örökölt)
               href: azure-ad-integration-cli.md
         - name: Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
           href: manage-azure-rbac.md

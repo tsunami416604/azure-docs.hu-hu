@@ -125,8 +125,12 @@
       maintainContext: true
 - name: Útmutatók
   items:
-    - name: Áthelyezés régiók között
-      href: move-across-regions.md
+    - name: Áthelyezés
+      items:
+        - name: Névtér áthelyezése egy másik régióba
+          href: move-across-regions.md
+        - name: Dedikált fürt áthelyezése egy másik régióba
+          href: move-cluster-across-regions.md
     - name: Partíciók dinamikus hozzáadása
       href: dynamically-add-partitions.md
     - name: A Blob Storage használata ellenőrzőpont-tárolóként az Azure Stack Hubon

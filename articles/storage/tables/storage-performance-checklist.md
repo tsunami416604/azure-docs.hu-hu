@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008675"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458332"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -197,7 +197,7 @@ Ez a szakasz több olyan gyors konfigurációs beállítást sorol fel, amelyek 
 
 A Storage Service 2013-08-15-es verziójától kezdve a Table service támogatja a JSON használatát az XML-alapú AtomPub formátum helyett a tábla adatai átviteléhez. A JSON használatával csökkentheti a hasznos adatok méretét a 75%-kal, és jelentősen növelheti az alkalmazás teljesítményét.
 
-További információ [: post Microsoft Azure Tables](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) (a Table [Service műveleteinek](https://msdn.microsoft.com/library/azure/dn535600.aspx)JSON-és hasznos adatokkal kapcsolatos formátumának bemutatása).
+További információ [: post Microsoft Azure Tables](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) (a Table [Service műveleteinek](https://msdn.microsoft.com/library/azure/dn535600.aspx)JSON-és hasznos adatokkal kapcsolatos formátumának bemutatása).
 
 ### <a name="disable-nagle"></a>A nyár letiltása
 
@@ -288,7 +288,7 @@ Azt is megteheti, hogy az alkalmazás minden órában a CPU-használatot külön
 
 Ha batch-beszúrásokat hajt végre, majd az entitások tartományait is beolvassa, érdemes a táblázatok helyett blobokat használni. Jó példa egy naplófájl. Több percből is készíthet naplókat, és beillesztheti őket, majd egyszerre több perces naplót is beolvashat. Ebben az esetben a teljesítmény jobb, ha táblázatok helyett blobokat használ, mivel jelentősen csökkentheti a beolvasott vagy olvasott objektumok számát, valamint az esetlegesen igényelt kérelmek számát is.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Table Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)

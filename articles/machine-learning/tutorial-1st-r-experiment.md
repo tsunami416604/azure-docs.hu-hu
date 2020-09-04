@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 887b2da46fdcd6ad275f18913fd7ba675700ad3b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d5a8555b2bd57dc024318464e38f042469beb4b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015985"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458671"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Előrejelzési végpont üzembe helyezése
 > * A modell tesztelése az R-ből
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -72,7 +72,7 @@ A https://github.com/azure/azureml-sdk-for-r GitHub-tárház klónozása az okta
 
 1. A RStudio-ben navigáljon a "Terminal" (terminál) lapra, és a CD-t abba a könyvtárba, ahová az adattárat szeretné klónozott.
 
-1. Futtassa a "git Clone https://github.com/Azure/azureml-sdk-for-r.git " parancsot a terminálban a tárház klónozásához.
+1. Futtassa a "git Clone https://github.com/Azure/azureml-sdk-for-r " parancsot a terminálban a tárház klónozásához.
 
 1. A RStudio-ben navigáljon a klónozott *azureml-SDK-for-r* mappa *matricák* mappájába.  A *matricák*területen válassza a *vonat-és üzembe helyezés – első modell elemet. RMD* -fájl az oktatóanyagban használt matrica kereséséhez. A matricához használt további fájlok a *vonat és üzembe helyezés – első modell* almappájában találhatók. Miután megnyitotta a matricát, állítsa be a munkakönyvtárat a fájl helyére a **munkamenet > a munkakönyvtár > beállítása a forrásfájl helyére**. 
 
@@ -394,7 +394,7 @@ delete_compute(compute)
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
 

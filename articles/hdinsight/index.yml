@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 02/27/2020
-  ms.openlocfilehash: c32ca826eb7ebbc773d86a8cfae65cdd4984bcd0
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: fdda3f72c9ed70130a5f5d3877e677ee625a024d
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78192727"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89393530"
 landingContent:
 - title: A HDInsight bemutatása
   linkLists:
@@ -24,209 +24,143 @@ landingContent:
     links:
     - text: Mi az az Azure HDInsight?
       url: ./hdinsight-overview.md
-  - linkListType: learn
+    - text: A HDInsight OSS összetevői és verziói
+      url: ./hdinsight-component-versioning.md
+  - linkListType: get-started
     links:
     - text: Elemzési megoldások létrehozása az Azure HDInsight segítségével
       url: https://docs.microsoft.com/learn/paths/build-oss-analytical-solutions-az-hdinsight/
+    - text: HDInsight-fürtök létrehozása
+      url: ./hdinsight-hadoop-provision-linux-clusters.md
+    - text: Monitorozás a HDInsighttal
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Fürtök méretezése költségcsökkentés céljából
+      url: ./hdinsight-scaling-best-practices.md
+    - text: A HDInsight biztonsági áttekintése
+      url: ./domain-joined/hdinsight-security-overview.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Mi az az Apache Spark?
+      url: ./spark/apache-spark-overview.md
+    - text: Spark-fürtök létrehozása és a Spark futtatása a Jupyterben
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+    - text: Adatok betöltése és Spark-lekérdezések futtatása
+      url: ./spark/apache-spark-load-data-run-query.md
+  - linkListType: how-to-guide
+    links:
+    - text: Spark-függőségek kezelése
+      url: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+    - text: Spark-feladatok optimalizálása
+      url: ./spark/apache-spark-perf.md
+- title: Apache Hadoop
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Mi az az Apache Hadoop?
+      url: ./hadoop/apache-hadoop-introduction.md
+    - text: Hadoop-fürtök létrehozása és Hive-lekérdezések futtatása
+      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+    - text: Map Reduce-minták futtatása
+      url: ./hadoop/apache-hadoop-run-samples-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hadoop-fürtök monitorozása és kezelése
+      url: ./hdinsight-hadoop-manage-ambari.md
+    - text: JDBC-/ODBC-illesztő használata
+      url: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+- title: Integráció
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Spark/Hive – A Spark és a Hive csatlakoztatása a Hive Warehouse összekötővel
+      url: ./interactive-query/apache-hive-warehouse-connector.md
+    - text: Spark/Kafka – Apache Spark strukturált streamelés az Apache Kafkával
+      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - text: Spark/HBase – Az Apache HBase lekérdezése az Apache Sparkkal
+      url: ./hdinsight-using-spark-query-hbase.md
+    - text: Igény szerinti fürtök létrehozása az ADF használatával
+      url: ./hdinsight-hadoop-create-linux-clusters-adf.md
   - linkListType: concept
     links:
-    - text: A HDInsight összetevői és verziói
-      url: ./hdinsight-component-versioning.md
     - text: A megfelelő virtuálisgép-méret kiválasztása
       url: ./hdinsight-selecting-vm-size.md
     - text: A HDInsight által támogatott virtuálisgép-típusok
       url: ./hdinsight-supported-node-configuration.md
     - text: Tárolási lehetőségek összehasonlítása
       url: ./hdinsight-hadoop-compare-storage-options.md
-  - linkListType: tutorial
-    links:
-    - text: HDInsight-fürtök beállítása
-      url: ./hdinsight-hadoop-provision-linux-clusters.md
-    - text: Fürtök létrehozása a Data Lake Store Gen2 használatával
-      url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
-  - linkListType: whats-new
-    links:
-    - text: Egyéni Ambari-adatbázis
-      url: ./hdinsight-custom-ambari-db.md
-    - text: 'Automatikus skálázás: Hadoop-fürtök automatikus skálázása'
-      url: ./hdinsight-autoscale-clusters.md
-    - text: Monitorozás a HDInsighttal
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Apache Hive-táblák migrálása HDInsight 4.0-ra
-      url: ./interactive-query/apache-hive-migrate-workloads.md
-- title: Apache Spark
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Mi az az Apache Spark?
-      url: ./spark/apache-spark-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Spark-fürtök létrehozása az Azure Portalon
-      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-  - linkListType: concept
-    links:
-    - text: Spark-feladatok optimalizálása
-      url: ./spark/apache-spark-perf.md
-  - linkListType: tutorial
-    links:
-    - text: Scala Maven-alkalmazás létrehozása a Sparkhoz
-      url: ./spark/apache-spark-create-standalone-application.md
-    - text: Adatok betöltése és Apache Spark-lekérdezések futtatása
-      url: ./spark/apache-spark-load-data-run-query.md
-    - text: Az Apache HBase lekérdezése az Apache Sparkkal
-      url: ./hdinsight-using-spark-query-hbase.md
-    - text: Spark-adatok elemzése a Power BI használatával
-      url: ./spark/apache-spark-use-bi-tools.md
-- title: Apache Hadoop
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Mi az az Apache Hadoop?
-      url: ./hadoop/apache-hadoop-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Hadoop-fürtök létrehozása az Azure Portalon
-      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-  - linkListType: concept
-    links:
-    - text: Nagy léptékű Hadoop ETL
-      url: ./hadoop/apache-hadoop-etl-at-scale.md
-    - text: Hadoop migrálása a felhőbe
-      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-    - text: Hadoop-fürtök kapacitástervezése
-      url: ./hdinsight-capacity-planning.md
-  - linkListType: tutorial
-    links:
-    - text: Az Excel csatlakoztatása az Apache Hadoophoz
-      url: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-    - text: Hadoop monitorozása az Azure Monitor naplóival
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Hadoop-fürtök monitorozása és kezelése az Ambari UI használatával
-      url: ./hdinsight-hadoop-manage-ambari.md
 - title: Apache Kafka
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Mi az az Apache Kafka?
       url: ./kafka/apache-kafka-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Kafka-fürtök létrehozása az Azure Portalon
+    - text: Kafka-fürtök létrehozása és Kafka-témakörök kezelése
       url: ./kafka/apache-kafka-get-started.md
-  - linkListType: concept
-    links:
-    - text: Kafka REST proxy
-      url: ./kafka/rest-proxy.md
-    - text: Migrálás 3.6-os verzióból 4.0-s verzióba
-      url: ./kafka/migrate-versions.md
-    - text: Kafka-teljesítmény optimalizálása
-      url: ./kafka/apache-kafka-performance-tuning.md
-    - text: A Kafka méretezhetősége
-      url: ./kafka/apache-kafka-scalability.md
-    - text: A Kafka magas rendelkezésre állása
-      url: ./kafka/apache-kafka-high-availability.md
-  - linkListType: tutorial
-    links:
-    - text: A Kafka Producer és Consumer API használata
+    - text: Előállítói és fogyasztói API-k használata
       url: ./kafka/apache-kafka-producer-consumer-api.md
-    - text: Apache Spark strukturált streamelés az Apache Kafkával
-      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
-    - text: A Kafka tükrözése vészhelyreállítás esetére
-      url: ./kafka/apache-kafka-mirroring.md
-    - text: A Kafka SSL-beállítása hitelesítéshez
+  - linkListType: how-to-guide
+    links:
+    - text: A Kafka REST proxy használata
+      url: ./kafka/rest-proxy.md
+    - text: Kafka TLS-titkosítás és -hitelesítés
       url: ./kafka/apache-kafka-ssl-encryption-authentication.md
-- title: Apache HBase
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Mi az az Apache HBase?
-      url: ./hbase/apache-hbase-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Az HBase lekérdezése az Apache Phoenix használatával
-      url: ./hbase/apache-hbase-query-with-phoenix.md
-  - linkListType: concept
-    links:
-    - text: Gyorsított írási műveletek Apache HBase-hez
-      url: ./hbase/apache-hbase-accelerated-writes.md
-    - text: Az Apache Phoenix ajánlott eljárásai
-      url: ./hbase/apache-hbase-phoenix-performance.md
-  - linkListType: tutorial
-    links:
-    - text: Az Apache HBase használata az Azure HDInsightban
-      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - text: HBase migrálása egy új verzióba
-      url: ./hbase/apache-hbase-migrate-new-version.md
 - title: Interaktív lekérdezés
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Mi az az interaktív lekérdezés?
       url: ./interactive-query/apache-interactive-query-get-started.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Hive-lekérdezések végrehajtása Apache Zeppelin használatával
-      url: ./interactive-query/hdinsight-connect-hive-zeppelin.md
-  - linkListType: concept
-    links:
-    - text: Hive-lekérdezések optimalizálása
-      url: ./hdinsight-hadoop-optimize-hive-query.md
-    - text: A Hive használata ETL-eszközként
-      url: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-  - linkListType: tutorial
-    links:
     - text: Repülőjárat-adatok elemzése az Apache Hive-val
       url: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
-    - text: A Spark és a Hive csatlakoztatása a Hive Warehouse összekötővel
-      url: ./interactive-query/apache-hive-warehouse-connector.md
-    - text: A Hive csatlakoztatása a Power BI-hoz a DirectQuery használatával
+  - linkListType: how-to-guide
+    links:
+    - text: Fürtméretezési útmutató
+      url: ./interactive-query/hive-llap-sizing-guide.md
+    - text: Hive-csatlakozás Power BI-jal
       url: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
 - title: Alkalmasság vállalati használatra
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: A HDInsight biztonsági áttekintése
       url: ./domain-joined/hdinsight-security-overview.md
-  - linkListType: concept
-    links:
     - text: Virtuális hálózat megtervezése
       url: ./hdinsight-plan-virtual-network-deployment.md
     - text: 'Hadoop az Active Directoryn: Enterprise Security Package'
       url: ./domain-joined/apache-domain-joined-architecture.md
-    - text: Hadoop-fürtök automatikus méretezése
-      url: ./hdinsight-autoscale-clusters.md
     - text: Helyszíni fürtök migrálása a felhőbe
       url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-  - linkListType: tutorial
+- title: Apache HBase
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: Vállalati biztonság beállítása az Azure ADDS-sel
-      url: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+    - text: Mi az az Apache HBase?
+      url: ./hbase/apache-hbase-overview.md
+    - text: A HBase használata az Azure HDInsightban
+      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - text: Az HBase lekérdezése az Apache Phoenix használatával
+      url: ./hbase/apache-hbase-query-with-phoenix.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gyorsított írási műveletek engedélyezése a HBase-hez
+      url: ./hbase/apache-hbase-accelerated-writes.md
+    - text: Az Apache Phoenix ajánlott eljárásai
+      url: ./hbase/apache-hbase-phoenix-performance.md
 - title: ML-szolgáltatások
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Mik azok az ML-szolgáltatások a HDInsighton?
       url: ./r-server/r-server-overview.md
-  - linkListType: quickstart
-    links:
     - text: R-szkript végrehajtása ML-szolgáltatási fürtön
       url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
-  - linkListType: tutorial
-    links:
-    - text: Az R használata Spark-számítási környezetben
-      url: ./r-server/ml-services-tutorial-spark-compute.md
 - title: Apache Storm
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Mi az Apache Storm?
       url: ./storm/apache-storm-overview.md
-  - linkListType: quickstart
-    links:
     - text: Apache Storm-topológia létrehozása
       url: ./storm/apache-storm-quickstart.md
-  - linkListType: tutorial
-    links:
-    - text: Írás HDFS-be az Apache Stormmal
-      url: ./storm/apache-storm-write-data-lake-store.md

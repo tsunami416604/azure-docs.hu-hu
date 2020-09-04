@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: Tranzakciók a kereskedelmi piactéren
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: Csomagok és díjszabás
+              href: plans-pricing.md
             - name: Személyes ajánlatok
               href: ./private-offers.md
             - name: Standard szerződés
               href: ./standard-contract.md
             - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
               href: ./azure-partner-customer-usage-attribution.md
+            - name: Támogatott országok és régiók
+              href: ./sell-from-countries.md
         - name: Közzétételi útmutatók ajánlattípusok szerint
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,8 +36,6 @@
               href: ./marketplace-solution-templates.md
             - name: 'Azure-alkalmazások: felügyelt alkalmazások'
               href: ./marketplace-managed-apps.md
-            - name: SaaS-alkalmazások
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: Containers
               href: ./marketplace-containers.md
             - name: IoT Edge-modulok
@@ -165,10 +167,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS-ajánlatok
           items:
-            - name: SaaS-ajánlatlétrehozási ellenőrzőlista
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: SaaS-ajánlat létrehozása
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS-ajánlat tervezése
+              href: plan-saas-offer.md
             - name: Azure AD-hitelesítés SaaS-hez
               items:
                 - name: Az Azure AD és az SaaS áttekintése
@@ -177,6 +177,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: Ingyenes vagy próbaverziós ajánlatok kezdőlapja
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: SaaS forgalmi díjas számlázás
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: SaaS-ajánlat létrehozása és közzététele
+              items:
+                - name: SaaS-ajánlat létrehozása
+                  href: create-new-saas-offer.md
+                - name: SaaS-ajánlat tulajdonságainak konfigurálása
+                  href: create-new-saas-offer-properties.md
+                - name: SaaS-ajánlatlista konfigurálása
+                  href: create-new-saas-offer-listing.md
+                - name: Előzetes verzió célközönségének hozzáadása
+                  href: create-new-saas-offer-preview.md
+                - name: Technikai részletek hozzáadása
+                  href: create-new-saas-offer-technical.md
+                - name: Csomagok létrehozása
+                  href: create-new-saas-offer-plans.md
+                - name: SaaS-ajánlat tesztelése és közzététele
+                  href: test-publish-saas-offer.md
+            - name: SaaS-ajánlat értékesítése
+              href: create-new-saas-offer-marketing.md
             - name: SaaS Fulfillment API-k
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +208,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS Fulfillment API-k – GYIK
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS forgalmi díjas számlázás
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: Érdeklődők kezelése – áttekintés
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +225,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Marketplace metering service
           items:
-            - name: Rendellenesség-észlelő szolgáltatás
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: Hitelesítési stratégiák
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Marketplace metering service API-k
@@ -234,7 +250,7 @@
       href: review-publish-offer.md
     - name: Létező ajánlatok frissítése
       href: ./partner-center-portal/update-existing-offer.md
-    - name: Kedvezmények aktiválása
+    - name: A Marketplace Rewards aktiválása
       href: ./partner-center-portal/marketplace-rewards.md
     - name: Partnerközpont – elemzések
       items:
@@ -304,3 +320,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Támogatási lehetőségek
       href: ./partner-center-portal/support.md
+    - name: További források
+      items:
+        - name: Támogatott HTML-címkék
+          href: supported-html-tags.md

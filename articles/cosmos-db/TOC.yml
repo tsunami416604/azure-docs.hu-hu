@@ -661,6 +661,14 @@
               href: cassandra-secondary-index.md
         - name: Útmutatók
           items:
+            - name: Migrálás a Cassandra API-ba
+              items:
+                - name: Migrálás – Az Oracle DB-ről a Cassandra API-ba a Striim használatával
+                  href: cosmosdb-cassandra-api-migrate-data-striim.md
+                - name: Migrálás – Az Oracle DB-ről a Cassandra API-ba a Blitzz használatával
+                  href: oracle-migrate-cosmos-db-blitzz.md
+                - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Blitzz használatával
+                  href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Csatorna módosítása
               href: cassandra-change-feed.md
             - name: A Spring Data tárolása és kezelése
@@ -736,12 +744,9 @@
                       href: tutorial-develop-mongodb-nodejs-part6.md
                 - name: A Node.js és a React alkalmazás
                   href: tutorial-develop-mongodb-react.md
-            - name: 2 – Adatok migrálása
-              displayName: import
-              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-            - name: 3 – Adatok lekérdezése
+            - name: 2 – Adatok lekérdezése
               href: tutorial-query-mongodb.md
-            - name: 4 – Adatok globális elosztása
+            - name: 3 – Adatok globális elosztása
               href: tutorial-global-distribution-mongodb.md
         - name: Alapelvek
           items:
@@ -753,10 +758,16 @@
               href: mongodb-api-faq.md
         - name: Útmutatók
           items:
-            - name: Útmutató a migrálást megelőző folyamatokhoz
-              href: mongodb-pre-migration.md
-            - name: Útmutató a migrálást követő folyamatokhoz
-              href: mongodb-post-migration.md
+            - name: Migrálás a MongoDB API-ba
+              items:
+                - name: Útmutató a migrálást megelőző folyamatokhoz
+                  href: mongodb-pre-migration.md
+                - name: Database Migration Service (online)
+                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Database Migration Service (offline)
+                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Útmutató a migrálást követő folyamatokhoz
+                  href: mongodb-post-migration.md
             - name: A kapcsolati sztring lekérése
               href: connect-mongodb-account.md
             - name: Csatlakozás a Studio 3T használatával
@@ -1235,12 +1246,6 @@
           href: cosmosdb-migrationchoices.md
         - name: Migrálás az SQL API-ba a Striim használatával
           href: cosmosdb-sql-api-migrate-data-striim.md
-        - name: Adatok migrálása a Cassandra API-ba a Striim használatával
-          href: cosmosdb-cassandra-api-migrate-data-striim.md
-        - name: Migrálás – Az Oracle DB-ről a Cassandra API-ba a Blitzz használatával
-          href: oracle-migrate-cosmos-db-blitzz.md
-        - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Blitzz használatával
-          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be
           href: migrate-cosmosdb-data.md
         - name: „One-to-few” típusú relációs adatok migrálása

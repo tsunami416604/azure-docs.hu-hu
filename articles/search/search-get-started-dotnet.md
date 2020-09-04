@@ -10,18 +10,18 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020864"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462071"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
 
 Az új [Azure.Search.Documents (11-es verzió) ügyféloldali kódtár](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) használatával létrehozhat egy .net Core Console-alkalmazást a C#-ban, amely egy keresési indexet hoz létre, tölt be és kérdez le.
 
-[Töltse le a forráskódot](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11) , hogy a kész projekttel kezdődjön, vagy kövesse a cikk lépéseit saját létrehozásához.
+[Töltse le a forráskódot](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) , hogy a kész projekttel kezdődjön, vagy kövesse a cikk lépéseit saját létrehozásához.
 
 > [!NOTE]
 > Korábbi verziót keres? Lásd: [keresési index létrehozása a Microsoft. Azure. Search v10 használatával](search-get-started-dotnet-v10.md) .
@@ -288,7 +288,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a C# rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Az olvashatóság és a megértés érdekében a kód leegyszerűsítése különböző fázisokban volt. Ha Ön az alapvető fogalmakkal is rendelkezik, javasoljuk, hogy a következő cikkből megtudhatja, milyen alternatív megközelítésekre és fogalmakra van szükség, amelyek elmélyítik az Ön ismereteit. 
 

@@ -4,8 +4,6 @@
   items:
     - name: Mi az az Azure Front Door?
       href: front-door-overview.md
-    - name: Az Azure Front Door újdonságai
-      href: front-door-whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:

@@ -241,11 +241,8 @@
   items:
     - name: A Szándékfelismerés dokumentációja
       href: index-intent-recognition.yml
-    - name: Első lépések
-      items:
-        - name: 'Beszéd, szándékok és entitások felismerése'
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-          href: quickstarts/intent-recognition.md
+    - name: Szándékfelismerés gyorsútmutatója
+      href: quickstarts/intent-recognition.md
     - name: Útmutatók
       items:
         - name: 'A beszélő szándékának felismerése a LUIS szolgáltatással, C#'
@@ -466,18 +463,14 @@
           href: custom-keyword-basics.md
 - name: Beszélőfelismerés
   items:
-    - name: Áttekintés
-      items:
-        - name: Mi a Speaker Recognition?
-          href: speaker-recognition-overview.md
-        - name: A Speaker Recognition alapjai
-          href: speaker-recognition-basics.md
+    - name: A Speaker Recognition áttekintése
+      href: speaker-recognition-overview.md
+    - name: A Speaker Recognition gyorsútmutatója
+      href: get-started-speaker-recognition.md
     - name: Referencia
       items:
-        - name: REST API-k
-          items:
-            - name: Speaker Recognition REST API
-              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+        - name: Speaker Recognition REST API
+          href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Az üzemeltetés dokumentációja

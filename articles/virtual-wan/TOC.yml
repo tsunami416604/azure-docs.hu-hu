@@ -4,16 +4,6 @@
   items:
     - name: Mi az a Virtual WAN?
       href: virtual-wan-about.md
-    - name: Architektúra
-      items:
-        - name: Migrálás virtuális WAN-ba
-          href: migrate-from-hub-spoke-topology.md
-        - name: Globális átviteli hálózati architektúra
-          href: virtual-wan-global-transit-network-architecture.md
-        - name: SD-WAN kapcsolati architektúra
-          href: sd-wan-connectivity-architecture.md
-        - name: Kapcsolat Kínával
-          href: interconnect-china.md
 - name: Oktatóanyagok
   items:
     - name: Helyek közötti kapcsolat létrehozása
@@ -36,11 +26,21 @@
           href: virtual-wan-locations-partners.md
         - name: Automation-irányelvek partnerek számára
           href: virtual-wan-configure-automation-providers.md
+    - name: Architektúra
+      items:
+        - name: Migrálás virtuális WAN-ba
+          href: migrate-from-hub-spoke-topology.md
+        - name: Globális átviteli hálózati architektúra
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN kapcsolati architektúra
+          href: sd-wan-connectivity-architecture.md
+        - name: Kapcsolat Kínával
+          href: interconnect-china.md
     - name: Útválasztás
       items:
         - name: Információ a virtuális központ útválasztásáról
           href: about-virtual-hub-routing.md
-        - name: Forgatókönyvek
+        - name: Útválasztási forgatókönyvek
           items:
             - name: Bármely elemek között
               href: scenario-any-to-any.md
@@ -154,8 +154,6 @@
   items:
     - name: GYIK
       href: virtual-wan-faq.md
-    - name: Közlemények frissítése
-      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Előfizetés- és szolgáltatáskorlátok
