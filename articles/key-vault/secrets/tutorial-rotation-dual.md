@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: bf4864e0c6342cbd4729d5b99479eb2ef1a2c48c
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378219"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482782"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik meglévő Key Vault-és Storage-fiókkal, akkor az alábbi te
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Erőforráscsoport létrehozása](../media/secrets/rotation-dual/dual-rotation-1.png)
+    ![Hozzon létre egy erőforráscsoportot](../media/secrets/rotation-dual/dual-rotation-1.png)
 
 Most már rendelkezik egy kulcstartóval és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -182,7 +182,7 @@ az storage account keys list -n akvrotationstorage2
 A **key2Value** és a **storageAccountResourceId** lekért értékeinek feltöltése
 
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
+tomorrowDate=`date -d tomorrow -Iseconds -u | awk -F'+' '{print $1"Z"}'`
 az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
@@ -203,7 +203,7 @@ az storage account keys list -n akvrotationstorage
 - [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)

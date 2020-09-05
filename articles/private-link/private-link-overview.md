@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/18/2020
+ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 425290f44fc5f8bc761dc80b72aa2421e5c6d194
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 94d4a035c95b8eb2a567c71ec2172f55881e8099
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460660"
+ms.locfileid: "89488422"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -43,8 +43,11 @@ Az Azure Private link a következő előnyöket biztosítja:
 |Támogatott szolgáltatások  |Elérhető régiók | Néhány fontos megjegyzés | status  |
 |:-------------------|:-----------------|:----------------|:--------|
 |A standard Azure Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió<br/> Minden kormányzati régió  | standard Load Balancer támogatott | FE <br/> [További információ](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure Storage       |  Összes nyilvános régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
-| 2. generációs Azure Data Lake Storage        |  Összes nyilvános régió      |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
+| Azure Blob Storage (beleértve a Data Lake Storage Gen2)       |  Összes nyilvános régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
+| Azure Files | Összes nyilvános régió      | |   FE <br/> [További információ](/azure/storage/files/storage-files-networking-endpoints)   |
+| Azure File Sync | Összes nyilvános régió      | |   FE <br/> [További információ](/azure/storage/files/storage-sync-files-networking-endpoints)   |
+| Azure Queue Storage       |  Összes nyilvános régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
+| Azure Table Storage       |  Összes nyilvános régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | Összes nyilvános régió <br/> Minden kormányzati régió      |  Proxy- [kapcsolatok házirendjében](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) támogatott | FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure Synapse Analytics (korábban SQL Data Warehouse)| Összes nyilvános régió <br/> Minden kormányzati régió |  Proxy- [kapcsolatok házirendjében](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) támogatott |FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  Összes nyilvános régió<br/> Minden kormányzati régió | |FE <br/> [További információ](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
@@ -67,7 +70,6 @@ Az Azure Private link a következő előnyöket biztosítja:
 | Azure IoT Hub | Összes nyilvános régió    |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | USA KELETI RÉGIÓJA, USA 2. NYUGATI RÉGIÓJA, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |  | Előnézet   <br/> [További információ](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Összes nyilvános régió      |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure File Sync | Összes nyilvános régió      | |   FE   <br/> [További információ](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
 | Azure Batch | USA KELETI RÉGIÓJA, USA 2. NYUGATI RÉGIÓJA, AZ USA DÉLI KÖZÉPSŐ RÉGIÓJA, AZ USA NYUGATI KÖZÉPSŐ RÉGIÓJA, KÖZÉP-NÉMETORSZÁG, KELET-ÁZSIA, EGYESÜLT KIRÁLYSÁG DÉLI RÉGIÓJA, USA  | | FE <br/> [További információ](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 A legfrissebb értesítésekért keresse fel az [Azure Private link frissítései lapot](https://azure.microsoft.com/updates/?product=private-link).

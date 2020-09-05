@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378974"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481375"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés Azure Key Vault
 
 Azure Key Vault lehetővé teszi a titkok tárolását és a terjesztésük irányítását egy központi, biztonságos Felhőbeli tárházban, amely szükségtelenné teszi a hitelesítő adatok tárolását az alkalmazásokban. Az alkalmazásoknak csak a Key Vault futtatásával kell hitelesíteniük a titkok eléréséhez.
 
-## <a name="app-identity-and-service-principals"></a>Alkalmazás-identitás és egyszerű szolgáltatások
+## <a name="app-identity-and-security-principals"></a>Alkalmazás-identitás és rendszerbiztonsági tag
 
 A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](/azure/active-directory/fundamentals/active-directory-whatis)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag**identitásának hitelesítéséhez felelős.
 
@@ -40,7 +40,7 @@ Alkalmazások esetében kétféleképpen szerezhet be egyszerű szolgáltatást:
 
 * Ha nem tudja használni a felügyelt identitást, az alkalmazást az Azure AD-Bérlővel **regisztrálja** , a gyors útmutató [: alkalmazás regisztrálása az Azure Identity platformon](/azure/active-directory/develop/quickstart-register-app)című témakörben leírtak szerint. A regisztráció egy második alkalmazásobjektum-objektumot is létrehoz, amely az alkalmazást az összes bérlőn azonosítja.
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>Egyszerű szolgáltatásnév engedélyezése Key Vault eléréséhez
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>Rendszerbiztonsági tag engedélyezése Key Vaulthoz való hozzáféréshez
 
 Key Vault két külön engedélyezési szinttel működik:
 
@@ -120,7 +120,7 @@ Az alábbi táblázat különböző cikkekre mutat, amelyek bemutatják, hogyan 
 | [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
 | [ARM-sablon](/azure/key-vault/secrets/quick-create-net) | -- | -- |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Key Vault hozzáférési szabályzat hibaelhárítása](troubleshooting-access-issues.md)
 - [Key Vault REST API hibakódok](rest-error-codes.md)

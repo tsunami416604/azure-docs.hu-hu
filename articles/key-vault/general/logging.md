@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9507525dc2c52f584bd7883a12da401b5999f50
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585916"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485455"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával. Hozz
 > Ez a cikk Azure PowerShell útmutatást nyújt a diagnosztikai naplózás frissítéséhez. A diagnosztikai naplózást a Azure Portal **diagnosztikai naplók** szakaszának Azure monitor használatával is frissítheti. 
 >
 
-További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md)). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/).
+További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md)). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/). További információ a [Key Vault Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)használatáról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -103,7 +103,7 @@ A Key Vault naplózásának engedélyezéséhez a **set-AzDiagnosticSetting** pa
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-A kimenet így néz ki:
+A kimenet a következőképpen fog kinézni:
 
 ```output
 StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
@@ -265,7 +265,7 @@ Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük me
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | **idő** |Dátum és idő (UTC). |
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
@@ -319,7 +319,7 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Az Azure Monitor-naplók használata
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor naplók használata
 
 A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key Vault megoldását `AuditEvent` . Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 

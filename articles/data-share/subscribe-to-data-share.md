@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268893"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489918"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Oktatóanyag: az Azure-adatmegosztás használatával fogadja el és fogadja az adatfogadást  
 
@@ -41,7 +41,7 @@ Az adatmegosztási Meghívások elfogadása előtt győződjön meg arról, hogy
 ### <a name="receive-data-into-a-sql-based-target"></a>Adatfogadás SQL-alapú célhelyre:
 
 * A *Microsoft. SQL/Servers/Databases/Write*adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a közreműködő szerepkörben található. 
-* Az adatmegosztási erőforrás felügyelt identitására vonatkozó engedély a Azure SQL Database vagy Azure SQL Data Warehouse eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
+* Az adatmegosztási erőforrás felügyelt identitására vonatkozó engedély a Azure SQL Database vagy az Azure szinapszis Analytics eléréséhez. Ezt a következő lépések végrehajtásával teheti meg: 
     1. Állítsa be saját magát az SQL Server Azure Active Directory-rendszergazdájaként.
     1. Kapcsolódjon a Azure SQL Database/adattárházhoz Azure Active Directory használatával.
     1. A lekérdezés-szerkesztő (előzetes verzió) használatával hajtsa végre a következő parancsfájlt, hogy az adatmegosztás felügyelt identitását "db_datareader, db_datawriter, db_ddladmin" értékkel adja hozzá. Active Directory használatával kell kapcsolódnia, nem SQL Server a hitelesítéshez. 

@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84343761"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485801"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Elkészült [oktatóanyag: a rendelkezésre állási csoportok konfigurálása a
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>A terheléselosztó létrehozása a Azure Portal
 
-Az alábbi utasítások végigvezetik az 1 – 4. lépésen a Load Balancer [létrehozása és konfigurálása](../windows/availability-group-load-balancer-portal-configure.md#create-and-configure-the-load-balancer-in-the-azure-portal) a terheléselosztó Azure Portal szakaszában, a terheléselosztó [-Azure Portal](../windows/availability-group-load-balancer-portal-configure.md) cikkben.
+Az alábbi utasítások végigvezetik az 1 – 4. lépésen a Load Balancer [létrehozása és konfigurálása](../windows/availability-group-load-balancer-portal-configure.md#create--configure-load-balancer) a terheléselosztó Azure Portal szakaszában, a terheléselosztó [-Azure Portal](../windows/availability-group-load-balancer-portal-configure.md) cikkben.
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 3bdfe243301a2439178e0dd1f016a804e3f40fd7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442768"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490258"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a PowerShell használatával
 
@@ -334,7 +334,7 @@ Ez a folyamat a táblák listáját használja paraméterként. A lista minden t
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from Azure SQL Database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to Azure Synapse Analytics",
                                 "type": "Copy",
                                 "inputs": [
                                     {
@@ -575,7 +575,7 @@ Ez a folyamat két lépést hajt végre:
 
 3. Kapcsolódjon a fogadó Azure szinapszis Analytics szolgáltatáshoz, és győződjön meg róla, hogy az adatok Azure SQL Database megfelelően lettek átmásolva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]
