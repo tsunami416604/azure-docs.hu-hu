@@ -94,6 +94,6 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'

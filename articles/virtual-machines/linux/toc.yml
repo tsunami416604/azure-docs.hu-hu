@@ -307,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU-kvóták
           href: quotas.md
-        - name: Fenntartott példányok
-          items:
-            - name: Előre fizetés virtuális gépekért
-              href: prepay-reserved-vm-instances.md
-            - name: Mi az az Azure Reservations?
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: Virtuálisgép-példányok méretrugalmassága
-              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Teljesítményteszt pontszámai
           href: compute-benchmark-scores.md
     - name: Támogatott disztribúciók

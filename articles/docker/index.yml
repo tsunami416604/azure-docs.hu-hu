@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 94d5dd74aad11e2271de52dd082cfb9287eb10c1
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+  ms.openlocfilehash: 700c5b1e113de32b80b3d716db915836049128ec
+  ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88224577"
+  ms.lasthandoff: 09/04/2020
+  ms.locfileid: "89470119"
 landingContent:
 - title: A Docker on Azure üzembe helyezése
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: Python- (Django-) webalkalmazás futtatása PostgreSQL-lel az Azure App Service-ben
       url: ../app-service/tutorial-python-postgresql-app.md
     - text: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
-      url: ../jenkins/tutorial-jenkins-github-docker-cicd.md
+      url: /azure/developer/jenkins/pipeline-with-github-and-docker
 - title: További források
   linkLists:
   - linkListType: reference

@@ -109,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Tanúsítványok használata a Batch szolgáltatással
           href: batch-certificates.md
-    - name: Alkalmazáscsomagok használata
-      href: batch-application-packages.md
     - name: Fájlok és alkalmazások másolása készletcsomópontokba
       items:
         - name: Alkalmazások és adatok másolása készletcsomópontokba

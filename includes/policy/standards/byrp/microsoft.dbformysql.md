@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf56786656d830d2fea4c9e916f350fc392f5cf0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 583b7e685abfeb831787ca8d4066a29bdd9bb9f3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379217"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489330"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
@@ -33,4 +33,21 @@ További információ erről a megfelelőségi szabványról: [CIS Microsoft Azu
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
 |Adatbázis-szolgáltatások |4,11 |Győződjön meg arról, hogy az "SSL-kapcsolat érvényesítése" beállítás értéke "ENABLED" a MySQL adatbázis-kiszolgáló számára |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9,2
+
+Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz rendelkezésre álló Azure Policy hogyan jelennek meg a megfelelőségi szabványhoz, tekintse meg a [Azure Policy szabályozási megfelelőség – HIPAA HITRUST 9,2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md)című témakört.
+További információ erről a megfelelőségi szabványról: [HIPAA HITRUST 9,2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+
+|Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Hálózati kapcsolatok vezérlése |0809.01 n2Organizational. 1234 – 01. n |A hálózati forgalmat a szervezetek hozzáférés-vezérlési szabályzatának megfelelően, a hálózati hozzáférési pontokhoz vagy a külső távközlési szolgáltatás felügyelt felületéhez kapcsolódó egyéb korlátozásokkal összhangban kell szabályozni. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Hálózati kapcsolatok vezérlése |0810.01 n2Organizational. 5 – 01. n |Az átvitt adatok biztonságban vannak, és minimálisan titkosítva vannak nyitott, nyilvános hálózatokon. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Hálózati kapcsolatok vezérlése |0811.01 n2Organizational. 6-01. n |A forgalomra vonatkozó házirend alóli kivételek dokumentálva vannak egy támogató feladat/üzleti igény, a kivétel időtartama, és legalább évente felülvizsgálva; a rendszer eltávolítja a forgalmi forgalomra vonatkozó házirend-kivételeket, ha a továbbiakban nem támogatja kifejezett üzleti igényeket. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Hálózati kapcsolatok vezérlése |0812.01 n2Organizational. 8 – 01. n |A nem távoli kapcsolatot létrehozó távoli eszközök nem jogosultak külső (távoli) erőforrásokkal való kommunikációra. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Hálózati kapcsolatok vezérlése |0814.01 n1Organizational. 12-01. n |A felhasználók a belső hálózathoz való kapcsolódás lehetőségét a hozzáférés-vezérlési házirend, valamint a klinikai és üzleti alkalmazások követelményeinek megfelelően a felügyelt felületeken a megtagadási és a megengedett kivételek alapján korlátozzák. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Külső felekkel kapcsolatos kockázatok azonosítása |1418.05 i1Organizational. 8 – 05. i |A külső felek hozzáférésével kapcsolatos kockázatok azonosítása figyelembe veszi a konkrétan meghatározott problémák minimális készletét. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|Biztonsági mentés |1617.09 l1Organizational. 23-09. l |Az egyes rendszerekhez szükséges biztonsági mentési szint formális definícióját a rendszer definiálja és dokumentálja, beleértve az egyes rendszerek visszaállításának módját, a lemezképek hatókörét, a képfeldolgozás gyakoriságát és a megőrzés időtartamát a vonatkozó szerződéses, jogi, szabályozási és üzleti követelmények alapján. |[A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
+|Biztonsági mentés |1622.09 l2Organizational. 23-09. l |A biztonsági másolatok integritásának és biztonságának fenntartása a jövőbeli rendelkezésre állás biztosítása érdekében, valamint a biztonsági másolatokkal kapcsolatos esetleges kisegítő problémák észlelése és enyhítése az egész területre kiterjedő katasztrófa esetén. |[A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
+|Online tranzakciók |0948.09 y2Organizational. 3-09. y |Ha megbízható szolgáltatót használnak (például digitális aláírások és/vagy digitális tanúsítványok kiállítása és karbantartása céljából), a biztonság integrálva van és beágyazva van a teljes körű tanúsítvány-és aláírás-kezelési folyamat során. |[Az SSL-kapcsolat kényszerített engedélyezése a MySQL adatbázis-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
 

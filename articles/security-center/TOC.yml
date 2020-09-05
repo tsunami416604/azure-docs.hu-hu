@@ -229,7 +229,7 @@
     - name: Készültségi ütemterv
       href: security-center-readiness-roadmap.md
     - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Az Azure Security Center a Stack Overflow-n
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Videók
