@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c18f48f41a537d66c637959df4fb45331fbda176
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420489"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500232"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge GPU-eszközön az Azure CLI és a Python használatával
 
@@ -342,7 +342,8 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   Jegyezze fel a és az `id` `tenantId` értékeket, mivel ezek megfelelnek a Azure Resource Manager előfizetés-azonosítójának és a Azure Resource Manager BÉRLŐi azonosítónak, és a későbbi lépésben lesz használva.
+       
    A következő környezeti változókat kell beállítani az *egyszerű szolgáltatásnév*működéséhez:
 
    ```
@@ -352,7 +353,7 @@ Mielőtt megkezdené egy virtuális gép létrehozását és felügyeletét az A
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   A Azure Resource Manager bérlő azonosítója, Azure Resource Manager ügyfél-azonosító és Azure Resource Manager előfizetés-azonosító mind rögzített, és ugyanazokkal az értékekkel rendelkezik az összes Azure Stack Edge-eszközön. A Azure Resource Manager-ügyfél titkos kulcsa a beállított Azure Resource Manager jelszó.
+   A Azure Resource Manager Ügyfél-azonosítója nem rögzített. Az Azure Resource Manager-bérlő azonosítója és Azure Resource Manager előfizetés-azonosítója egyaránt megtalálható a `az login` korábban futtatott parancs kimenetében. A Azure Resource Manager-ügyfél titkos kulcsa a beállított Azure Resource Manager jelszó.
 
    További információ: [Azure Resource Manager Password](azure-stack-edge-j-series-set-azure-resource-manager-password.md).
 
@@ -426,6 +427,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

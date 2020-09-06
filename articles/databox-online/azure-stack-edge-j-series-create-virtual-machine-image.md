@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268910"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500283"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge-eszközhöz
 
@@ -52,7 +52,22 @@ Hozzon létre egy linuxos virtuálisgép-rendszerképet a következő lépésekk
 
 1. Hozzon létre egy Linux rendszerű virtuális gépet. További információért látogasson el az [oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel](../virtual-machines/linux/tutorial-manage-vm.md)című témakörben.
 
-2. [Meglévő operációsrendszer-lemez letöltése](../virtual-machines/linux/download-vhd.md).
+1. Szüntesse meg a virtuális gépet. Az Azure virtuálisgép-ügynök használatával törölje a számítógép-specifikus fájlokat és az adatfájlokat. Használja a `waagent` parancsot a `-deprovision+user` forrás linuxos virtuális gépen található paraméterrel. További információ: az [Azure Linux Agent megismerése és használata](../virtual-machines/extensions/agent-linux.md).
+
+    1. Kapcsolódjon Linux rendszerű virtuális géphez egy SSH-ügyféllel.
+    2. Az SSH ablakban adja meg a következő parancsot:
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > Csak olyan virtuális gépen futtassa ezt a parancsot, amelyet lemezképként fog rögzíteni. Ez a parancs nem garantálja, hogy a rendszer törli a képet az összes bizalmas adatról, vagy újraelosztásra alkalmas. A `+user` paraméter emellett eltávolítja az utolsó kiosztott felhasználói fiókot is. Ha a felhasználói fiók hitelesítő adatait szeretné megőrizni a virtuális gépen, csak a következőt használja: `-deprovision` .
+     
+    3. A folytatáshoz adja meg az **y** értéket. A paraméter hozzáadásával `-force` elkerülheti ezt a megerősítő lépést.
+    4. A parancs befejezése után a **Kilépés** gombra kattintva zárja be az SSH-ügyfelet.  Ezen a ponton továbbra is fut a virtuális gép.
+
+
+1. [Meglévő operációsrendszer-lemez letöltése](../virtual-machines/linux/download-vhd.md).
 
 Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet az Azure Stack Edge-eszközön. A következő két Azure Marketplace-rendszerkép használatával hozhat létre linuxos egyéni rendszerképeket:
 
