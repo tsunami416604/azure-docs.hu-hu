@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ffb72b4b06b8925cae57989a171d7efbd88c3866
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686605"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997574"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure-előfizetések átvitele az előfizetők és a CSP-k között
 
@@ -24,6 +24,9 @@ Ez a cikk magas szintű lépéseket mutat be az Azure-előfizetések felhőszolg
 A felhőszolgáltató [Azure-beli szakértői felügyelt szolgáltató (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) tanúsítvánnyal rendelkező, közvetlen számlázási partnerei kérvényezhetik az Azure-előfizetések átvitelét olyan ügyfeleik számára, akik közvetlen Nagyvállalati Szerződéssel (EA) rendelkeznek. Az előfizetések átvitele csak olyan ügyfelek esetében lehetséges, akik elfogadták a Microsoft-ügyfélszerződést, és rendelkeznek Azure-csomaggal.
 
 A kérelem jóváhagyása után a felhőszolgáltató egyesített számlát biztosíthat az ügyfeleknek. A felhőszolgáltatói előfizetések átvitelével kapcsolatos részleteket lásd: [Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához](mpa-request-ownership.md).
+
+>[!IMPORTANT]
+> Miután egy EA-előfizetés átkerül egy CSP-partnerhez, az EA-előfizetésre előzőleg vonatkozó valamennyi kvótanövelés az alapértelmezett értékre áll vissza. Ha további kvótára lenne szükség az előfizetés átvitelét követően, kérje meg CSP-szolgáltatóját, hogy küldjön be egy [kvótanövelési](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests) kérelmet. 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>Egyéb előfizetés-átvitelek CSP-partnerek részére
 

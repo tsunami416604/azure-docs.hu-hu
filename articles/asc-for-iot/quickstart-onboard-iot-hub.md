@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1538143c33991c5dc91a096c7df4297bc18e5af5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310756"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504043"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Gyors útmutató: Azure Security Center a IoT Service-ben IoT Hub
 
@@ -52,8 +52,8 @@ A IoT-megoldás biztonságossá tételéhez a IoT-eszközökről, IoT Edge és I
 
 Az IP-címek adatgyűjtésének engedélyezése vagy letiltása:
 
-1. Nyissa meg a IoT Hub, majd válassza az **Áttekintés** lehetőséget a **Biztonság** menüben.
-1. Válassza a **Beállítások** képernyőt, és módosítsa a térinformatikai és/vagy IP-kezelési beállításokat, ahogy szeretné.
+1. Nyissa meg a IoT Hub, majd válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
+1. Válassza ki az **adatgyűjtési** képernyőt, és módosítsa a térinformatikai és/vagy IP-kezelési beállításokat, ahogy szeretné.
 
 ### <a name="log-analytics-creation"></a>Log Analytics létrehozása
 
@@ -61,8 +61,8 @@ Ha a IoT Azure Security Center be van kapcsolva, a rendszer létrehoz egy alapé
 
 Log Analytics munkaterület-konfigurációjának módosítása:
 
-1. Nyissa meg a IoT Hub, majd válassza az **Áttekintés** lehetőséget a **Biztonság** menüben.
-1. Válassza a **Beállítások** képernyőt, és módosítsa a log Analytics beállítások munkaterület-konfigurációját, ahogy szeretné.
+1. Nyissa meg a IoT Hub, majd válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
+1. Válassza ki az **adatgyűjtés** képernyőt, és módosítsa a log Analytics beállítások munkaterület-konfigurációját igény szerint.
 
 ### <a name="customize-your-iot-security-solution"></a>A IoT biztonsági megoldás testreszabása
 
@@ -70,10 +70,10 @@ Alapértelmezés szerint a IoT-megoldás Azure Security Center bekapcsolása aut
 
 A IoT szolgáltatás Azure Security Centerának bekapcsolása adott IoT Hub be-vagy kikapcsolva:
 
-1. Nyissa meg a IoT Hub, majd válassza az **Áttekintés** lehetőséget a **Biztonság** menüben.
-1. Válassza a **Beállítások** képernyőt, és módosítsa az Azure-előfizetésében található bármely IoT hub biztonsági beállításait.
+1. Nyissa meg a IoT Hub, majd válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
+1. Válassza ki az **adatgyűjtés** képernyőt, és módosítsa az Azure-előfizetésében lévő bármelyik IoT hub biztonsági beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásához...
 

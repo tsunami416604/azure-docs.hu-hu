@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d3199eb67e5672cd6f4a6d99219f184e7fbbdf6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687399"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294407"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
 
@@ -32,7 +32,7 @@ Az Azure EA Portalon hozzáférést biztosíthat a különböző hitelesítési 
 - Munkahelyi vagy iskolai fiókok több bérlőn – olyan szervezetek számára, amelyek felhőbeli összevonással telepítették az Active Directoryt, és a fiókjaik több bérlőn találhatók.
 - Vegyes fiók – lehetővé teszi, hogy hozzáadjon Microsoft-fiókkal és/vagy munkahelyi vagy iskolai fiókkal rendelkező felhasználókat.
 
-A regisztrációhoz elsőként hozzáadott munkahelyi vagy iskolai fiók határozza meg az _alapértelmezett_ vagy _elsődleges_ tartományt. Amennyiben egy másik bérlővel rendelkező munkahelyi vagy iskolai fiókot kíván hozzáadni, több-bérlős hitelesítésre kell módosítania a hitelesítési szintet a regisztrációban.
+A regisztrációhoz elsőként hozzáadott munkahelyi vagy iskolai fiók határozza meg az _alapértelmezett_ tartományt. Amennyiben egy másik bérlővel rendelkező munkahelyi vagy iskolai fiókot kíván hozzáadni, több-bérlős hitelesítésre kell módosítania a hitelesítési szintet a regisztrációban.
 
 A hitelesítési szint frissítése:
 

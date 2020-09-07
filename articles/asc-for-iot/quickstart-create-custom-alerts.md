@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7638ad070e8ac8bd99cbfb49b99bbb347a243a21
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310836"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505437"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Gyors útmutató: egyéni riasztások létrehozása
 
@@ -67,8 +67,8 @@ Biztonsági csoportok használatával csoportosíthatja az eszközöket logikai 
 
 ## <a name="customize-an-alert"></a>Riasztás testreszabása
 
-1. Nyissa meg a IoT Hub.
-1. Kattintson az **egyéni riasztások** elemre a **Biztonság** szakaszban.
+1. Nyissa meg a IoT Hub, és válassza a **Beállítások** lehetőséget a **Biztonság** menüben. 
+1. Kattintson az **egyéni riasztások**elemre.
 1. Válassza ki azt a biztonsági csoportot, amelyre alkalmazni kívánja a testreszabást.
 1. Kattintson **az egyéni riasztás hozzáadása**lehetőségre.
 1. Válasszon ki egy egyéni riasztást a legördülő listából.
@@ -79,7 +79,7 @@ Biztonsági csoportok használatával csoportosíthatja az eszközöket logikai 
 
 A IoT-hez készült Azure Security Center nagy számú riasztást biztosít, amelyek az adott igényeknek megfelelően testreszabhatók. Tekintse át a riasztás súlyosságát, az adatforrást, a leírást és a javasolt szervizelési lépéseket, ha az egyes riasztások fogadásakor és időpontjában a [testre szabható riasztási táblázat](concept-customizable-security-alerts.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan telepíthet biztonsági ügynököt...
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 96954d0ebf56251a66d4b9c8bdcce07153f64068
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469966"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503788"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -35,13 +35,31 @@ Azure Red Hat OpenShift-fürt létrehozásához ellenőrizze az alábbi engedél
 |**Felhasználói hozzáférés adminisztrátora**|X|X| |
 |**Közreműködő**|X|X|X|
 
-### <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
+### <a name="register-the-resource-providers"></a>Az erőforrás-szolgáltatók regisztrálása
 
-Ezután regisztrálnia kell az `Microsoft.RedHatOpenShift` erőforrás-szolgáltatót az előfizetésében.
+1. Ha több Azure-előfizetéssel rendelkezik, akkor a megfelelő előfizetés-azonosítót kell megadnia:
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. Az erőforrás-szolgáltató regisztrálása `Microsoft.RedHatOpenShift` :
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+    
+1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Compute` :
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+    
+1. Az erőforrás-szolgáltató regisztrálása `Microsoft.Storage` :
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beolvasása (nem kötelező)
 
@@ -197,7 +215,7 @@ az aro create \
 
 A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

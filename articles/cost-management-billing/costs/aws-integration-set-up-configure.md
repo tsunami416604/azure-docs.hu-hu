@@ -3,17 +3,17 @@ title: Az AWS és az Azure Cost Management integrációjának beállítása
 description: Ez a cikk végigvezeti az AWS költség- és használati jelentésnek az Azure Cost Managementbe való integrálásának beállításán és konfigurálásán.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 08/28/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 639d63df060a680e8c135a9be054ac412d1ca8dd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8bf3df25d4702b4a0cc6361f20ad08e618e7d62b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266088"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Az AWS költség- és használati jelentés integrálásának beállítása és konfigurálása
 
@@ -71,7 +71,6 @@ Használja az új szerepkör létrehozására szolgáló varázslót:
 5. Az **Account ID** (Fiókazonosító) mezőben adja meg a következőt: **432263259397**.
 6. Az **Options** (Beállítások) között válassza a következő lehetőséget: **Require external ID (Best practice when a third party will assume this role)** (Külső azonosító megkövetelése (Ajánlott eljárás, ha a szerepkört egy harmadik fél használja)).
 7. Az **External ID** (Külső azonosító) mezőben adja meg a külső azonosítót, amely egy jelszó, melyet az AWS-szerepkör és az Azure Cost Management közösen használ. Ugyanezt a külső azonosítót kell megadni a Cost Managementben az **Új összekötő** lapon is. A Microsoft egy erős jelszószabályzat használatát javasolja a külső azonosító megadásakor.
-
     > [!NOTE]
     > Ne módosítsa a **Require MFA** (Többtényezős hitelesítés megkövetelése) részt. Ez a lehetőség maradjon bejelöletlen.
 8. Válassza a **Next: Permissions** (Tovább: Engedélyek) lehetőséget.
@@ -148,23 +147,23 @@ A szabályzat JSON-jának a következő példához hasonlóan kell kinéznie. Cs
 }
 ```
 
-## <a name="set-up-a-new-aws-connector-in-azure"></a>Új AWS-összekötő beállítása az Azure-ban
+## <a name="set-up-a-new-connector-for-aws-in-azure"></a>Új AWS-összekötő beállítása az Azure-ban
 
 Az alábbiak alapján adhat hozzá egy új AWS-összekötőt, és kezdheti meg a saját AWS-költségei monitorozását:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Lépjen a **Költségkezelés + számlázás** > **Cost Management** elemre.
-3. A **Beállítások** alatt válassza a **Felhőbeli összekötők (előzetes verzió)** elemet.  
-    ![A Felhőbeli összekötők (előzetes verzió) beállítást bemutató példa](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).
-4. A lap tetején válassza a **+Hozzáadás** lehetőséget az összekötő létrehozásához.
-5. Az **AWS-összekötő létrehozása** lapon, a **Megjelenítendő név** mezőben adjon egy nevet az összekötőnek.  
-    ![Példa az AWS-összekötő létrehozására szolgáló lapra](./media/aws-integration-setup-configure/create-aws-connector01.png)
-6. Igény szerint válassza ki az alapértelmezett felügyeleti csoportot. Ez fogja tárolni az összes felderített összekapcsolt fiókot. Ezt később is beállíthatja.
-7. A **számlázási** szakaszban válassza az **1% automatikus terhelése általános rendelkezésre állás esetén** lehetőséget, ha biztosítani szeretné a folyamatos működést az előzetes verzió lejárta után. Ha az automatikus beállítást választja, ki kell választania egy előfizetést a számlázáshoz.
-8. A **Szerepkör ARN-je** mezőben adja meg ugyanazt az értéket, amelyet a szerepkör beállításához használt az AWS-ben.
-9. A **Külső azonosító** mezőben adja meg ugyanazt az értéket, amelyet a szerepkör beállításához használt az AWS-ben.
-10. A **Jelentés neve** mezőben adja meg az AWS-ben létrehozott nevet.
-11. Válassza a **Tovább**, majd a **Létrehozás** parancsot.
+3. A **Beállítások** területen válassza az **AWS-összekötők** elemet.  
+4. A lap tetején válassza a **+Hozzáadás** lehetőséget az összekötő létrehozásához.  
+    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="Az AWS-összekötők beállítását bemutató példa" :::
+1. Az **Összekötő létrehozása** lapon, a **Megjelenítendő név** mezőben adjon egy nevet az összekötőnek.  
+    :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="Példa az AWS-összekötő létrehozására szolgáló lapra" :::
+1. Igény szerint válassza ki az alapértelmezett felügyeleti csoportot. Ez fogja tárolni az összes felderített összekapcsolt fiókot. Ezt később is beállíthatja.
+1. A **számlázási** szakaszban állítsa az **Automatikus megújítás** beállítást **Be** értékre, ha biztosítani szeretné a folyamatos működést. Ha az automatikus beállítást választja, ki kell választania egy előfizetést a számlázáshoz.
+1. A **Szerepkör ARN-je** mezőben adja meg ugyanazt az értéket, amelyet a szerepkör beállításához használt az AWS-ben.
+1. A **Külső azonosító** mezőben adja meg ugyanazt az értéket, amelyet a szerepkör beállításához használt az AWS-ben.
+1. A **Jelentés neve** mezőben adja meg az AWS-ben létrehozott nevet.
+1. Válassza a **Tovább**, majd a **Létrehozás** parancsot.
 
 Beletelhet néhány órába, mire az új AWS-hatókörök, az összesített AWS-fiók, az összekapcsolt AWS-fiókok és az ezekre vonatkozó költségadatok megjelennek.
 
@@ -178,16 +177,19 @@ Ha a felderítés után a felhasználókhoz összekötő-engedélyeket rendel, e
 - Ellenőrizze, hogy az új hatókörök hozzáadódnak-e a hatókörválasztóhoz. Kattintson a **Frissítés** parancsra a legújabb adatok megtekintéséhez.
 - A **Felhőbeli összekötők** lapon válassza ki az összekötőt, és kattintson az **Ugrás a számlázási fiókra** lehetőségre az összekapcsolt fiók felügyeleti csoportokhoz való társításához.
 
-## <a name="manage-cloud-connectors"></a>Felhőbeli összekötők felügyelete
+> [!NOTE]
+> A felügyeleti csoportok a Microsoft Ügyfélszerződéssel (MCA) rendelkező ügyfelek esetében jelenleg nem támogatottak. Az MCA-ügyfelek létrehozhatják az összekötőt és megtekinthetik AWS-adataikat. Az MCA-ügyfelek azonban nem tekinthetik meg egyszerre az Azure- és az AWS-költségeiket egy felügyeleti csoport esetében.
 
-Amikor kiválaszt egy összekötőt a **Felhőbeli összekötők** lapon, a következőket teheti:
+## <a name="manage-aws-connectors"></a>AWS-összekötők felügyelete
+
+Amikor kiválaszt egy összekötőt a **AWS-összekötők** lapon, a következőket teheti:
 
 - Kiválasztja az **Ugrás a számlázási fiók** lehetőséget a konszolidált AWS-fiók adatainak megtekintéséhez.
 - Kiválasztja a **Hozzáférés-vezérlés** lehetőséget az összekötő szerepkör-hozzárendeléseinek kezeléséhez.
 - Kiválasztja a **Szerkesztés** lehetőséget az összekötő frissítéséhez. Az AWS-fiók száma nem módosítható, mert az szerepel a szerepkör ARN-jében. De létrehozhat egy új összekötőt.
 - Válassza az **Ellenőrzés** lehetőséget az ellenőrzési teszt újrafuttatásához, ami megvizsgálja, hogy a Cost Management képes-e az adatok gyűjtésére az összekötő beállításaival.
 
-![Példa a létrehozott AWS-összekötők listájára](./media/aws-integration-setup-configure/list-aws-connectors.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-connector-details.png" alt-text="Példa AWS-összekötőre – részletek" :::
 
 ## <a name="set-up-azure-management-groups"></a>Azure-beli felügyeleti csoportok beállítása
 
@@ -197,9 +199,9 @@ Ha el szeretné különíteni a költségeket, létrehozhat egy olyan felügyele
 
 ## <a name="set-up-an-aws-consolidated-account"></a>Összesített AWS-fiók beállítása
 
-Az összesített AWS-fiók magában egyesíti több AWS-fiók számlázását és fizetését. Emellett összekapcsolt AWS-fiókként is funkcionál.
+Az összesített AWS-fiók magában egyesíti több AWS-fiók számlázását és fizetését. Emellett összekapcsolt AWS-fiókként is funkcionál. Az összesített AWS-fiók részleteit az AWS-összekötő oldalán található hivatkozásra kattintva tekintheti meg. 
 
-![Példa egy összesített AWS-fiók részleteire](./media/aws-integration-setup-configure/aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-consolidated-account01.png" alt-text="Példa egy összesített AWS-fiók részleteire" :::
 
 Az oldalon a következőket teheti:
 
@@ -221,7 +223,7 @@ Ezen az oldalon a következőket teheti:
 - Kiválasztja a **Frissítés** lehetőséget, amellyel frissítheti egy összekapcsolt AWS-fiók társítását egy felügyeleti csoporthoz.
 - Kiválasztja a **Hozzáférés-vezérlés** lehetőséget a hatókörhöz tartozó szerepkör-hozzárendelések beállításához.
 
-![Példa egy összekapcsolt AWS-fiók lapjára](./media/aws-integration-setup-configure/aws-linked-account01.png)
+:::image type="content" source="./media/aws-integration-setup-configure/aws-linked-account01.png" alt-text="Példa egy összekapcsolt AWS-fiók lapjára" :::
 
 ### <a name="permissions-for-an-aws-linked-account"></a>Egy összekapcsolt AWS-fiók engedélyei
 

@@ -36,6 +36,8 @@
   items:
     - name: Synapse-munkaterület létrehozása az Azure Portal használatával
       href: quickstart-create-workspace.md
+    - name: Üzembe helyezés sablon használatával
+      href: quickstart-deployment-template-workspaces.md
     - name: Az Azure parancssori felület használata. Synapse-munkaterület létrehozása az Azure CLI-vel
       href: quickstart-create-workspace-cli.md
     - name: A Synapse Studio használata
@@ -210,6 +212,8 @@
               href: ./spark/apache-spark-delta-lake-overview.md
             - name: Az Apache Spark teljesítménye
               href: ./spark/apache-spark-performance.md
+            - name: Apache Spark teljesítményoptimalizálása Hyperspace-indexekkel
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Az Apache Spark automatikus skálázási viselkedése
               href: ./spark/apache-spark-autoscale.md
         - name: Fejlesztés

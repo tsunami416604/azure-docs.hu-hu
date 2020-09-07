@@ -3,18 +3,18 @@ title: Az olvasói gyors ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy új iOS-alkalmazást hoz létre, és hozzáadja a magával ragadó olvasó API-funkciót.
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
-ms.author: pasta
-ms.openlocfilehash: 212aa3613335fe60bab2fa3d4f632577418a7d41
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.author: nitinme
+ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602315"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505390"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
@@ -571,6 +571,6 @@ Ha a **magától** megjelenő olvasó gombra kattint, megjelenik az alkalmazásb
 
 ![Modern olvasó](../../media/ios/immersive-reader-ipad.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)
