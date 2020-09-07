@@ -42,7 +42,7 @@
               href: ./iot-edge-module.md
             - name: Tanácsadói szolgáltatások
               href: ./consulting-services.md
-            - name: 'Office 365, Dynamics 365 és Power BI'
+            - name: 'Microsoft 365, Dynamics 365 és Power BI'
               href: ./appsource-offer-publishing-guide.md
             - name: Ajánlat hitelesítésének engedélyezése az Azure AD-vel
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -60,7 +60,7 @@
             - name: Felhőszolgáltatók
               href: ./cloud-solution-providers.md
             - name: A Connect program regisztrálási útmutatója
-              href: ./cloud-partner-portal/business-applications-isv-program.md
+              href: ./business-applications-isv-program.md
         - name: A Marketplace-ből származó előnyei
           href: ./gtm-your-marketplace-benefits.md
           items:

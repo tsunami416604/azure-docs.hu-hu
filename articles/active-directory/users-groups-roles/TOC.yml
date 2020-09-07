@@ -52,6 +52,8 @@
           href: users-sharing-accounts.md
         - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
           href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: A felhasználókezelés fejlesztései
+          href: users-search-enhanced.md
         - name: Felhasználók tömeges törlése
           href: users-bulk-delete.md
         - name: Törölt felhasználó visszaállítása

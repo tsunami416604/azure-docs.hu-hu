@@ -206,6 +206,10 @@
       items:
         - name: Alkalmazások hozzáadásával kapcsolatos hibaelhárítás
           href: troubleshoot-adding-apps.md
+        - name: Jelszóalapú egyszeri bejelentkezés hibaelhárítása
+          href: troubleshoot-password-based-sso.md
+        - name: Az SAML-alapú egyszeri bejelentkezés hibaelhárítása
+          href: troubleshoot-saml-based-sso.md
         - name: Felhasználói bejelentkezés hibaelhárítása
           items:
             - name: Váratlan hozzájárulási kérés
@@ -224,14 +228,6 @@
               href: application-sign-in-problem-federated-sso-gallery.md
             - name: Probléma egy egyénileg fejlesztett alkalmazásban
               href: application-sign-in-problem-custom-dev.md
-        - name: Egyszeri bejelentkezéssel kapcsolatos hibaelhárítás
-          items:
-            - name: Jelszóalapú egyszeri bejelentkezés hibaelhárítása
-              href: troubleshoot-password-based-sso.md
-            - name: Gyakori problémák az összevontak konfigurálásakor – katalógusbeli alkalmazások
-              href: configure-federated-single-sign-on-gallery-applications-problems.md
-            - name: Gyakori problémák az összevontak konfigurálásakor – nem katalógusbeli alkalmazások
-              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
         - name: Helyszíni alkalmazások hibaelhárítása
           items:
             - name: Alkalmazásproxy hibaelhárítása

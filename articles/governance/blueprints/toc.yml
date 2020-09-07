@@ -102,17 +102,9 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, fedramp, high'
           href: ./samples/fedramp-h/deploy.md
-    - name: HIPAA HITRUST
-      items:
-        - name: Áttekintés
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/index.md
-        - name: Vezérlőelem-leképezés
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/control-mapping.md
-        - name: Az üzembe helyezés lépései
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/deploy.md
+    - name: HIPAA HITRUST 9.2
+      displayName: 'standards, HIPAA HITRUST'
+      href: ./samples/hipaa-hitrust-9-2.md
     - name: IRS 1075
       items:
         - name: Áttekintés

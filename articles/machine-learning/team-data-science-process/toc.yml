@@ -62,7 +62,7 @@
       href: walkthroughs-azure-data-lake.md
     - name: 'R, Python és T-SQL az SQL Serverrel'
       href: walkthroughs-sql-server.md
-    - name: T-SQL és Python az SQL DW-vel
+    - name: T-SQL és Python az Azure Synapse Analyticsszel
       href: walkthroughs-sql-data-warehouse.md
 - name: Segédprogramok és eszközök
   items:
