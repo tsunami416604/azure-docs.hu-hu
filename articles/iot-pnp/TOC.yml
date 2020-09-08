@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: Oktatóanyagok
   items:
+    - name: Több összetevőből álló eszköz csatlakoztatása (C)
+      href: tutorial-multiple-components-c.md
     - name: Több összetevőből álló eszköz csatlakoztatása (C#)
       href: tutorial-multiple-components-csharp.md
     - name: Több összetevőből álló eszköz csatlakoztatása (Java)
