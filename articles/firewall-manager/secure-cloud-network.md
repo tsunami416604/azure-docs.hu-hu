@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: victorh
-ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9d1e2d257074555e7a2e78930e1f9be6cd4d90fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079115"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536002"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Oktatóanyag: virtuális központ biztonságossá tétele a Azure Firewall Managerrel
 
@@ -110,30 +110,6 @@ Most már elvégezheti a hub és a küllős virtuális hálózatok összevonás�
 
 Ismételje meg a **küllő-02** virtuális hálózat csatlakoztatását: kapcsolat neve- **hub-küllő-02**
 
-### <a name="configure-the-hub-and-spoke-routing"></a>A hub és a küllős útválasztás konfigurálása
-
-A Azure Portal nyisson meg egy Cloud Shell, és futtassa a következő Azure PowerShell a szükséges hub és küllős útválasztás konfigurálásához. A társ küllő/ág kapcsolatainak **nincs**értékre kell állítani a propagálást. Ez megakadályozza a küllők közötti kommunikációt, és ehelyett az alapértelmezett útvonal használatával irányítja a forgalmat a tűzfalra.
-
-```azurepowershell
-$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
-                  -HubName hub-01 -Name noneRouteTable
-$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-             -ParentResourceName hub-01
-
-$vnetConn = $vnetConns[0]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name `
-   -RoutingConfiguration $vnetConn.RoutingConfiguration
-
-$vnetConn = $vnetConns[1]
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
-$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
-Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
-   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
-```
-
 ## <a name="deploy-the-servers"></a>A kiszolgálók üzembe helyezése
 
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
@@ -144,7 +120,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
    |---------|---------|
    |Erőforráscsoport     |**FW – kezelő**|
    |Virtuális gép neve     |**SRV-munkaterhelés-01**|
-   |Region     |**USA USA keleti régiója)**|
+   |Régió     |**USA USA keleti régiója)**|
    |Rendszergazda felhasználóneve     |adja meg a felhasználónevet|
    |Jelszó     |írjon be egy jelszót|
 
@@ -238,7 +214,7 @@ Most meg kell győződnie arról, hogy a hálózati forgalom a tűzfalon kereszt
 4. Az **internetes forgalom**területen válassza a **Azure Firewall**lehetőséget.
 5. A **privát forgalom**területen válassza a **Küldés Azure Firewall használatával**lehetőséget.
 10. Győződjön meg arról, hogy a **sugaras** kapcsolatok **biztonságosként**jeleníti meg az **internetes forgalmat** .
-11. Kattintson a **Mentés** gombra.
+11. Válassza a **Mentés** lehetőséget.
 
 
 ## <a name="test-your-firewall"></a>A tűzfal tesztelése
@@ -279,7 +255,7 @@ Most ellenőrizte, hogy a tűzfal hálózati szabálya működik-e:
 
 Ha végzett a tűzfal erőforrásainak tesztelésével, törölje a **FW-Manager** erőforráscsoportot az összes tűzfalhoz kapcsolódó erőforrás törléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ a megbízható biztonsági partnerekről](trusted-security-partners.md)

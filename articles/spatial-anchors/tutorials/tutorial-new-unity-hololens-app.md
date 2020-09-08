@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 06/22/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee8b8c2931d006dbb3d472b545030d3aff79c56a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85297987"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535878"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -34,7 +34,7 @@ Először be kell állítania a projekt és az egység jelenetét:
 2. Válassza az **Új** lehetőséget.
 4. Győződjön meg arról, hogy a **3D** ki van választva.
 5. Nevezze el a projektet, és adjon meg egy mentési **helyet**.
-6. Kattintson a **projekt létrehozása**gombra.
+6. Válassza a **Create project** (Projekt létrehozása) lehetőséget.
 7. Mentse az üres alapértelmezett jelenetet egy új fájlba a következő paranccsal: **file**  >  **Save as (Mentés másként**).
 8. Nevezze el az új jelenet **főoldalát** , és kattintson a **Save (Mentés** ) gombra.
 
@@ -42,20 +42,19 @@ Először be kell állítania a projekt és az egység jelenetét:
 
 Most olyan Unity Project-beállításokat fogunk beállítani, amelyek segítenek a Windows holografikus SDK fejlesztésében.
 
-Először is lehetővé teszi az alkalmazás minőségi beállításainak megadását.
+Először állítsa be az alkalmazás minőségi beállításait.
 1. Válassza **Edit**a  >  **projekt beállításainak**  >  **Quality** szerkesztése lehetőséget
 2. A **Windows áruház** emblémájának oszlopában kattintson a nyílra az alapértelmezett sorban, és válassza a **nagyon alacsony** **értéket** . A beállítás helyesen lesz alkalmazva, ha a **Windows áruház** oszlopában található mező és a **nagyon alacsony** sor zöld.
 
-Az egységnek tisztában kell lennie azzal, hogy az exportálni próbált alkalmazásnak hozzon létre egy részletes nézetet 2D-nézet helyett. Hozzunk létre egy részletes nézetet a virtuális valóság támogatásának engedélyezésével a Windows 10-es SDK-t célzó Unity-on.
-
+Az Unity-alkalmazást a 2D-nézet helyett magával a nézettel kell konfigurálni. Hozzon létre egy részletes nézetet a virtuális valóság támogatásának engedélyezésével a Windows 10-es SDK-t célzó Unity-on.
 1. Lépjen a **Edit**  >  **Project Settings**  >  **Player**szerkesztése menüpontra.
-2. A **Player-beállítások** **ellenőr paneljén** válassza a **Windows áruház** ikont.
+2. A **Player-beállítások** **ellenőr paneljén** válassza a **Windows** ikont.
 3. Bontsa ki az **XR-beállítások** csoportot.
-4. A **renderelés** szakaszban jelölje be a **virtuális valóság támogatott** jelölőnégyzetet egy új **Virtual Reality SDK** -lista hozzáadásához.
+4. A **renderelés** szakaszban jelölje be a **virtuális valóság támogatott** jelölőnégyzetet új **virtuális valóság SDK** -k listájának hozzáadásához.
 5. Ellenőrizze, hogy a **Windows vegyes valóság** megjelenik-e a listában. Ha nem, válassza a **+** lista alján található gombot, és válassza a **Windows vegyes valóság**lehetőséget.
 
 > [!NOTE]
-> Ha nem látja a Windows áruház ikonját, ellenőrizze, hogy a telepítés előtt a Windows áruház .NET-parancsfájlok futtatásának hátteret választotta-e. Ha nem, lehetséges, hogy újra kell telepítenie az egységet a megfelelő Windows-telepítéssel.
+> Ha nem látja a Windows-ikont, ellenőrizze, hogy a telepítés előtt a Windows .NET parancsfájlkezelési hátteret választotta-e. Ha nem, lehetséges, hogy újra kell telepítenie az egységet a megfelelő Windows-telepítéssel.
 
 **Parancsfájl-háttér konfigurációjának ellenőrzése**
 1. Nyissa meg **a**  >  **Project Settings (projekt beállítása**  >  )**lejátszót** (lehetséges, hogy az előző lépésben megnyitotta a **lejátszót** ).
@@ -109,7 +108,7 @@ A folytatás előtt be kell állítania a spherePrefab-tag változón létrehozo
 
 Ekkor meg kell **jelennie a** panelnek a parancsfájlban. Hozza létre az **egységet** , majd nyissa meg újra az eredményül kapott **Visual Studio** -megoldást, ahogy azt a [kipróbálás](#trying-it-out)során is tette.
 
-A **Visual Studióban**nyissa meg `AzureSpatialAnchorsScript.cs` újra. Adja hozzá a következő kódot a `Start()` metódushoz. Ez a kód összekapcsol `GestureRecognizer` , ami akkor észlelhető, ha van egy levegő koppintás és hívás `HandleTap` .
+A **Visual Studióban**nyissa meg `AzureSpatialAnchorsScript.cs` újra. Adja hozzá a következő kódot a `Start()` metódushoz. Ez a kód összekapcsol `GestureRecognizer` , amely akkor fog megjelenni, `HandleTap` Amikor egy levegő koppintást észlel.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-95,98&highlight=4-10)]
 
@@ -125,9 +124,9 @@ Az alkalmazást a **Visual studióból** futtatva ellenőrizheti még egyszer. E
 
 ## <a name="set-up-the-dispatcher-pattern"></a>A diszpécser minta beállítása
 
-Az Unity, az összes Unity API-k, például a felhasználói felület frissítéseinek elvégzéséhez használt API-k esetében a fő szálon kell történnie. A kódban a visszahívások más szálon is elérhetők. Ezeket a visszahívásokat szeretnénk frissíteni a felhasználói felületen, ezért a főszálra való ugráshoz is szükség van egy oldalról. Ha kódot szeretne végrehajtani a fő szálon egy oldalból álló szálból, a diszpécser mintát fogjuk használni.
+Az Unity használatakor az összes Unity API-t (például a felhasználói felületi frissítések elvégzéséhez használt API-kat) a fő szálon kell megtörténnie. A kódban a visszahívások más szálon is elérhetők. Ezeket a visszahívásokat szeretnénk frissíteni a felhasználói felületen, ezért a főszálra való ugráshoz is szükség van egy oldalról. Ha kódot szeretne végrehajtani a fő szálon egy oldalból álló szálból, a diszpécser mintát fogjuk használni.
 
-Vegyünk fel egy tag változót, a dispatchQueue, amely a műveletek várólistája. A rendszer leküldi a műveleteket a várólistára, majd elvégezte a műveletet, majd a fő szálon futtatja a műveleteket.
+Vegyünk fel egy tag változót, `dispatchQueue` amely a műveletek várólistája. A rendszer leküldi a műveleteket a várólistára, majd elvégezte a műveletet, majd a fő szálon futtatja a műveleteket.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-56&highlight=6-9)]
 
@@ -135,27 +134,39 @@ Következő lépésként adjon hozzá egy műveletet a várólistához. Hozzáad
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=112-122)]
 
-Most az Update () ciklus használatával ellenőrizze, hogy van-e várólistán egy művelet. Ha igen, a műveletet a rendszer a művelet elküldésével és futtatásával elvégezheti.
+Az Update () ciklus segítségével ellenőrizze, hogy van-e várólistán lévő művelet. Ha igen, a műveletet a rendszer a művelet elküldésével és futtatásával elvégezheti.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=100-110&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure térbeli horgonyok SDK beszerzése
 
-## <a name="via-unity-package"></a>[Unity-csomagon keresztül](#tab/UnityPackage)
+## <a name="via-unity-package-manager-upm-package"></a>[Unity Package Manager-(UPM-) csomagon keresztül](#tab/UPMPackage)
 
-Most letöltjük az Azure térbeli horgonyok SDK-t. Lépjen az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az eszközök alatt töltse le a **AzureSpatialAnchors. unitypackage**. Az egység területen válassza az **eszközök**, majd az egyéni csomag **importálása**  >  **...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget.
+Ez a módszer kompatibilis az Unity 2019.1 + verziójával.
 
-Az új **importálási egység csomag** ablakban válassza ki a **plugins** elemet, majd kattintson az **Importálás** elemre a jobb alsó sarokban.
+### <a name="add-the-registry-to-your-unity-project"></a>Adja hozzá a beállításjegyzéket az Unity-projekthez
 
-Most vissza kell állítania a Nuget-csomagokat az Azure térbeli horgonyok SDK beszerzéséhez. Hozzon létre egy **egységet** , majd nyissa meg és hozza létre újra az eredményül kapott **Visual Studio** -megoldást, ahogy [azt a kipróbálás](#trying-it-out)során is részletezi.
+1. A Fájlkezelőben navigáljon a Unity Project `Packages` mappájához. Nyissa meg a Project manifest-fájlt `manifest.json` egy szövegszerkesztőben.
+2. A fájl tetején, a szakasztal megegyező szinten `dependencies` adja hozzá a következő bejegyzést, hogy tartalmazza az Azure térbeli horgonyok beállításjegyzékét a projekthez. A `scopedRegistries` bejegyzés közli az egységgel, hogy hol keresi az Azure térbeli horgonyok SDK-csomagjait.
 
-## <a name="via-nugetforunity"></a>[NuGetForUnity-n keresztül](#tab/NuGetForUnity)
+    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
 
-Először telepítenie kell a NuGetForUnity. Lépjen a [NuGetForUnity GitHub-kiadások oldalára](https://github.com/GlitchEnzo/NuGetForUnity/releases). Az eszközök alatt töltse le a legújabb **NuGetForUnity. unitypackage**. Az egység területen válassza az **eszközök**, majd az egyéni csomag **importálása**  >  **...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget. Az Unity most telepíti a NugetForUnity-t. Ha nem lát új **NuGet** legördülő listát az egységben, előfordulhat, hogy a jobb gombbal kell kattintania a **projektek**  >  **eszközei**területen. Ezután válassza **az összes újraimportálása**elemet.
+### <a name="add-the-sdk-package-to-your-unity-project"></a>Az SDK-csomag hozzáadása az Unity projekthez
 
-Miután telepítette a NuGetForUnity, válassza a **NuGet**  >  **NuGet-csomagok kezelése**lehetőséget. Ezután keressen rá a Microsoft. Azure. SpatialAnchors. Unity kifejezésre, és válassza a **telepítés**lehetőséget.
+1. Vegyen fel egy bejegyzést az Azure térbeli Horgonyokkal Windows SDK a csomag nevét ( `com.microsoft.azure.spatial-anchors-sdk.windows` ) és a csomag verzióját a `dependencies` projekt jegyzékfájljának szakaszára. Erre alább látható példa.
 
-Most létre kell hozni a tényleges Azure térbeli horgonyok SDK-t, mivel a letöltött NuGet-csomag csak segítő parancsfájlokat tartalmaz. Hozzon létre egy **egységet** , majd nyissa meg és hozza létre újra az eredményül kapott **Visual Studio** -megoldást, ahogy [azt a kipróbálás](#trying-it-out)során is részletezi.
+    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
+
+2. Mentse és zárjuk be a `manifest.json` fájlt. Ha az egységbe tér vissza, az egység automatikusan felismeri a projekt jegyzékfájljának változását, és beolvassa a megadott csomagokat. A Project nézetben kibonthatja a `Packages` mappát, hogy ellenőrizze, hogy a megfelelő csomagok importálása megtörtént-e.
+
+## <a name="via-unity-asset-package"></a>[Unity Asset-csomagon keresztül](#tab/UnityAssetPackage)
+
+> [!WARNING]
+> Az Azure térbeli horgonyok SDK Unity Asset csomagjának eloszlása elavulttá válik az SDK 2.5.0-es verziójának használata után.
+
+Töltse le az Azure térbeli horgonyok SDK-t. Lépjen az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az **eszközök**alatt töltse le a **AzureSpatialAnchors. unitypackage**. Az egységben válassza az **eszközök**, majd az egyéni csomag **importálása**  >  **...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget.
+
+Az új **importálási egység csomag** ablakban válassza ki a **plugins** elemet, majd válassza az **Importálás** lehetőséget a jobb alsó sarokban.
 
 ---
 
@@ -185,7 +196,7 @@ Végül adja hozzá a következő kódot a `CreateAndSaveSphere()` metódushoz. 
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-344,396&highlight=14-25)]
 
-Mielőtt továbblépne, létre kell hoznia egy Azure térbeli horgonyt a fiók azonosítójának, kulcsának és tartományának beszerzéséhez, ha még nem tette meg. A beszerzéséhez kövesse az alábbi szakaszt.
+Mielőtt továbblépne, létre kell hoznia egy Azure térbeli horgonyt a fiók azonosítójának, kulcsának és tartományának beszerzéséhez. Ha még nem rendelkezik ezekkel az értékekkel, kövesse a következő szakaszt a beszerzéséhez.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -193,11 +204,11 @@ Mielőtt továbblépne, létre kell hoznia egy Azure térbeli horgonyt a fiók a
 
 Ha már rendelkezik az Azure térbeli azonosítójának azonosítójával, kulcsával és tartományával, lépjen be és illessze be a `Account Id` into `SpatialAnchorsAccountId` , a into és a into rendszerbe `Account Key` `SpatialAnchorsAccountKey` `Account Domain` `SpatialAnchorsAccountDomain` .
 
-Végül Ismerkedjen meg egymással. A `SpawnNewAnchoredObject()` metódusban adja hozzá a következő kódot. A `CreateAnchorAsync()` metódust a gömb létrehozása után azonnal meghívja. A metódus visszatérése után az alábbi kód egy végső frissítést hajt végre a szférában, és a színét kékre változtatja.
+Végül Ismerkedjen meg egymással. A `SpawnNewAnchoredObject()` metódusban adja hozzá a következő kódot. A `CreateAnchorAsync()` metódust a gömb létrehozása után azonnal meghívja. A metódus visszatérése után az alábbi kód egy utolsó alkalommal frissíti a gömbet, és a színét kékre változtatja.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a **Visual Studióban** található output (kimenet) ablakban is megfigyelheti az alkalmazás által küldött naplóüzenetek figyelését. Megtekintheti a létrehozási folyamat ajánlott állapotát, valamint azt a horgony-azonosítót, amelyet a felhő a feltöltés befejeződése után visszaad.
+Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a **Visual Studióban** található output (kimenet) ablakban is megfigyelheti az alkalmazás által küldött naplóüzenetek figyelését. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
 
 > [!NOTE]
 > Ha "DllNotFoundException: nem tölthető be a DLL-fájl" AzureSpatialAnchors ": a megadott modul nem található.", **törölje** , majd hozza **létre** újra a megoldást.
@@ -225,6 +236,6 @@ Most pedig lehetővé teszi a létrehozandó kód hozzáadását, & egy zöld g�
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=234-271)]
 
-Ennyi az egész! Futtassa az alkalmazást a **Visual studióból** egy utolsó alkalommal, hogy kipróbálja a teljes forgatókönyv végét. Helyezze át az eszközt, és helyezze a fehér gömbbe. Ezután folytassa a fej áthelyezésével, hogy rögzítse a környezeti adatait, amíg a gömb sárgára nem változik. A rendszer feltölti a helyi horgonyt, és a gömb kék színűre vált. Végül koppintson még egyszer a képernyőre, hogy a helyi horgony el legyen távolítva, majd lekérdezjük a Felhőbeli megfelelőjét. Folytassa az eszköz áthelyezését, amíg a Felhőbeli térbeli horgony nem található. Egy zöld gömbnek a megfelelő helyen kell megjelennie, és kiöblítheti & ismételje meg a teljes forgatókönyvet.
+Ennyi az egész! Futtassa az alkalmazást a **Visual studióból** egy utolsó alkalommal, hogy kipróbálja a teljes forgatókönyv végét. Helyezze át az eszközt, és helyezze a fehér gömbbe. Ezután folytassa a fej áthelyezésével, hogy rögzítse a környezeti adatait, amíg a gömb sárgára nem változik. A rendszer feltölti a helyi horgonyt, és a gömb kék színűre vált. Végül koppintson a képernyőre még egyszer a helyi horgony eltávolításához, és kezdjen hozzá egy lekérdezést a Felhőbeli munkatársaihoz. Folytassa az eszköz áthelyezését, amíg a Felhőbeli térbeli horgony nem található. Egy zöld gömbnek a megfelelő helyen kell megjelennie, és újra megismételheti a teljes forgatókönyvet.
 
 [!INCLUDE [AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md)]

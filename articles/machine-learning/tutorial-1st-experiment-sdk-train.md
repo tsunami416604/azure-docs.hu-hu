@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854930"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536227"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
 
@@ -56,11 +56,14 @@ Ne **hozzon** létre *új* jegyzetfüzetet a Jupyter felületen! A notebook *okt
 Importálja az `Workspace` osztályt, és töltse be az előfizetési adatokat a fájlból az `config.json` `from_config().` aktuális könyvtárban található JSON-fájlhoz tartozó függvény használatával, de megadhat egy elérésiút-paramétert is, amellyel a fájlra mutathat `from_config(path="your/file/path")` . Ha ezt a jegyzetfüzetet a munkaterületen lévő felhőalapú jegyzetfüzet-kiszolgálón futtatja, a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
 Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot. Ha a felhasználóhoz több bérlő is kapcsolódik, akkor a következő sorokat kell felvennie:
-```
+
+```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
 ```
+
+A hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés Azure Machine learning](https://aka.ms/aml-notebook-auth)
+
 
 ```python
 from azureml.core import Workspace
@@ -136,7 +139,7 @@ A képzés befejezését követően hívja meg a `experiment` változót, hogy b
 experiment
 ```
 
-<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Azure Machine Learning Studio-ra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Azure Machine Learning Studio-ra mutató hivatkozás</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Képzés eredményeinek megtekintése a Studióban
 

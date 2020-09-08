@@ -2,21 +2,19 @@
 author: craigktreasure
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/2/2019
+ms.date: 8/13/2020
 ms.author: crtreasu
-ms.openlocfilehash: 43e64dadc5e339d174d08788cc7a98506841ee88
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 89c804c038e2b23c9d61225a07f92f70bf1157fe
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810170"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536258"
 ---
 ## <a name="configure-the-account-information"></a>Fiókadatok konfigurálása
-
-A **projekt** ablaktáblán válassza a lehetőséget, `Assets/AzureSpatialAnchors.Examples/Scenes` és nyissa meg a `AzureSpatialAnchorsBasicDemo.unity` jelenet fájlt.
 
 A következő lépés az alkalmazás konfigurálása a fiókadatok használatára. [A térbeli horgonyok erőforrásának beállításakor](#create-a-spatial-anchors-resource)egy szövegszerkesztőbe másolta őket.
 
 A **projekt** ablaktáblán navigáljon a következőhöz: `Assets\AzureSpatialAnchors.SDK\Resources` . Válassza a(z) `SpatialAnchorConfig` lehetőséget. Ezt követően a **felügyelő** ablaktáblán adja meg a értéket a értékként, a értékként pedig az értéket a következőhöz: `Account Key` `Spatial Anchors Account Key` `Account ID` `Spatial Anchors Account Id` `Account Domain` `Spatial Anchors Account Domain` .
 
-Mentse a jelenetet a **fájl**mentése lehetőség kiválasztásával  >  **Save**.
+Mentse a módosításokat a **fájl**mentése lehetőség kiválasztásával  >  **Save**.

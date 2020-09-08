@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 4c501368dfbeb95be1c5d2af9ff7aae3850257b3
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761144"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536174"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök
 
@@ -42,9 +42,9 @@ A következő ábra a klasszikus előfizetés-rendszergazdai szerepkörök, az A
 
 Az Azure három hagyományos előfizetés-rendszergazdai szerepköre a fiókadminisztrátor, a szolgáltatás-rendszergazda és a társadminisztrátor. A hagyományos előfizetés-rendszergazdák teljes körű hozzáféréssel rendelkeznek az Azure-előfizetéshez. Az Azure Portal, Azure Resource Manager API-k és a klasszikus üzemi modell segítségével végzik az erőforrások felügyeletét. Az Azure-beli regisztrációhoz használt fiók lesz automatikusan a fiókadminisztrátor és a szolgáltatás-rendszergazda. Ezután további társadminisztrátorok is hozzáadhatók. A szolgáltatás-rendszergazda és a társ-rendszergazdák egyenértékű hozzáféréssel rendelkeznek azon felhasználókhoz, akik a tulajdonosi szerepkörhöz (Azure-szerepkör) vannak rendelve az előfizetés hatókörében. Az alábbi tábla a három hagyományos előfizetés-rendszergazdai szerepkör közötti különbségeket ismerteti.
 
-| Hagyományos előfizetés-adminisztrátor | Korlát | Engedélyek | Megjegyzések |
+| Hagyományos előfizetés-adminisztrátor | Korlát | Engedélyek | Jegyzetek |
 | --- | --- | --- | --- |
-| Fiókadminisztrátor | Azure-fiókonként 1 | <ul><li>Hozzáfér az [Azure Fiókközponthoz](https://account.azure.com/Subscriptions).</li><li>Az összes előfizetést egyetlen fiókból kezelheti.</li><li>Új előfizetéseket hozhat létre.</li><li>Megszüntetheti az előfizetéseket.</li><li>Módosíthatja az előfizetés számlázási lehetőségeit.</li><li>Megváltoztathatja a szolgáltatás-rendszergazdát.</li></ul> | Elméleti szinten az előfizetés számlázási tulajdonosa.<br>A fiókadminisztrátor nem fér hozzá az Azure Portalhoz. |
+| Fiókadminisztrátor | Azure-fiókonként 1 | <ul><li>A [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) számlázásának kezelése</li><li>Az összes előfizetést egyetlen fiókból kezelheti.</li><li>Új előfizetéseket hozhat létre.</li><li>Megszüntetheti az előfizetéseket.</li><li>Módosíthatja az előfizetés számlázási lehetőségeit.</li><li>Megváltoztathatja a szolgáltatás-rendszergazdát.</li></ul> | Elméleti szinten az előfizetés számlázási tulajdonosa.<br>A fiókadminisztrátor nem fér hozzá az Azure Portalhoz. |
 | Szolgáltatás-rendszergazda | Azure-előfizetésenként 1 | <ul><li>Kezelheti a szolgáltatásokat az [Azure Portalon](https://portal.azure.com).</li><li>Előfizetés megszakítása</li><li>Felhasználókat rendelhet hozzá a társadminisztrátor szerepkörhöz.</li></ul> | Alapértelmezés szerint új előfizetések esetén a fiókadminisztrátor a szolgáltatás-rendszergazda is egyben.<br>A szolgáltatás-rendszergazda ugyanolyan szintű hozzáféréssel rendelkezik az előfizetés hatókörében, mint a Tulajdonos szerepkörrel rendelkező felhasználók.<br>A szolgáltatásadminisztrátor teljes hozzáféréssel rendelkezik az Azure Portalhoz. |
 | Társadminisztrátor | Előfizetésenként 200 | <ul><li>Ugyanazokkal a hozzáférési jogosultságokkal rendelkezik, mint a szolgáltatás-rendszergazda, de nem módosíthatja az előfizetések és az Azure-címtárak közötti társítást.</li><li>Felhasználókat rendelhet hozzá a társadminisztrátori szerepkörhöz, de nem változathatja meg a szolgáltatás-rendszergazda személyét.</li></ul> | A társadminisztrátor ugyanolyan szintű hozzáféréssel rendelkezik az előfizetés hatókörében, mint a Tulajdonos szerepkörrel rendelkező felhasználók. |
 
@@ -66,13 +66,13 @@ Az Azure-előfizetés segít az Azure-erőforrásokhoz való hozzáférés rende
 
 Minden előfizetés egy Azure AD-címtárhoz van társítva. Az előfizetés társított könyvtárának megkereséséhez nyissa meg az **előfizetéseket** a Azure Portal, majd válasszon egy előfizetést a könyvtár megtekintéséhez.
 
-A fiókok és az előfizetések kezelése az [Azure Fiókközpontban](https://account.azure.com/Subscriptions) történik.
+A fiókok és előfizetések kezelése a [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)történik.
 
 ## <a name="azure-roles"></a>Azure-szerepkörök
 
 Az Azure RBAC az [Azure Resource Managerre](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt például a számítási és a tárolási Azure-erőforrásokhoz. Az Azure RBAC több mint 70 beépített szerepkört tartalmaz. Négy alapvető Azure-szerepkör létezik. Az első három minden erőforrástípusra vonatkozik:
 
-| Azure-szerepkör | Engedélyek | Megjegyzések |
+| Azure-szerepkör | Engedélyek | Jegyzetek |
 | --- | --- | --- |
 | [Tulajdonos](built-in-roles.md#owner) | <ul><li>Teljes hozzáféréssel rendelkezik az összes erőforráshoz.</li><li>Hozzáférést delegálhat mások számára.</li></ul> | A szolgáltatás-rendszergazda és társadminisztrátor Tulajdonos szerepkört kap az előfizetés hatókörében.<br>Minden erőforrástípusra alkalmazható. |
 | [Közreműködő](built-in-roles.md#contributor) | <ul><li>Bármilyen típusú Azure-erőforrást létrehozhat és kezelhet.</li><li>Új bérlő létrehozása Azure Active Directory</li><li>Nem adhat hozzáférést mások számára.</li></ul> | Minden erőforrástípusra alkalmazható. |
@@ -97,7 +97,7 @@ További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy elt
 
 Az Azure AD-szerepkörök használatával kezelhetők az Azure AD-erőforrások egy olyan címtárban, mint például a felhasználók létrehozása vagy szerkesztése, a rendszergazdai szerepkörök kiosztása, a felhasználói jelszavak alaphelyzetbe állítása, a felhasználói licencek kezelése és a tartományok kezelése. Az alábbi táblázat a fontosabb Azure AD-szerepköröket ismerteti.
 
-| Azure AD-szerepkör | Engedélyek | Megjegyzések |
+| Azure AD-szerepkör | Engedélyek | Jegyzetek |
 | --- | --- | --- |
 | [Globális rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
 | [Felhasználói rendszergazda](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>A felhasználók és csoportok minden összetevőjét létrehozhatja és kezelheti.</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li><li>Módosíthatja a felhasználók, az ügyfélszolgálati rendszergazdák és egyéb felhasználói rendszergazdák jelszavát.</li></ul> |  |
