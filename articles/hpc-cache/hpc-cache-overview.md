@@ -4,15 +4,15 @@ description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyors�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 07/16/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c898b0d5a58654547cb6205ee0c845c9cfa4aa9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053681"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611743"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -65,13 +65,13 @@ Az [ügyfél által felügyelt kulcsok funkció](customer-keys.md) csak az aláb
 * USA-beli államigazgatás – Arizona
 * USA-beli államigazgatás – Virginia
 
-## <a name="service-availability"></a>Szolgáltatás rendelkezésre állása
+<!-- ## Service availability
 
-Az Azure HPC cache használatával használni kívánt előfizetésekhez hozzáférést kell kérnie. Ez a korlátozás segít a szolgáltatás minőségének biztosításában.
+You must request access for each subscription you will use with Azure HPC Cache. This restriction helps ensure service quality.
 
-Hozzáférés kérése az [űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután hozzáadta az előfizetést a hozzáférési listához, létrehozhat gyorsítótárat is.
+Request access by filling out [this form](https://aka.ms/onboard-hpc-cache). After your subscription is added to the access list, you can create caches. -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A képességeivel kapcsolatos további információkért olvassa el az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache)
 * További tudnivalók a termékek [előfeltételeiről](hpc-cache-prerequisites.md)

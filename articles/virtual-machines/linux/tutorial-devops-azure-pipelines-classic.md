@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510174"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612787"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépek működés közbeni üzembe helyezési stratégiájának konfigurálása
 
-Az Azure DevOps egy beépített Azure-szolgáltatás, amely minden Azure-erőforráshoz automatizálja a DevOps folyamat egyes részeit. Akár virtuális gépeket, webalkalmazásokat, Kubernetes vagy bármilyen más erőforrást használ, az infrastruktúrát kódként (IaaC), folyamatos integrációval, folyamatos teszteléssel, folyamatos szállítással és folyamatos monitorozással valósítja meg az Azure és az Azure DevOps használatával.
+Az Azure DevOps egy beépített Azure-szolgáltatás, amely minden Azure-erőforráshoz automatizálja a DevOps folyamat egyes részeit. Akár virtuális gépeket, webalkalmazásokat, Kubernetes vagy bármilyen más erőforrást használ, az infrastruktúrát kódként (IaC), folyamatos integrációt, folyamatos tesztelést, folyamatos szállítást és folyamatos monitorozást hajthat végre az Azure és az Azure DevOps használatával.
 
 ![A szolgáltatások területen kiválasztott Azure DevOps Azure Portal](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
@@ -91,7 +91,7 @@ Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a köv
  
 [További információ](https://azure.microsoft.com/features/devops-projects/).
  
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 - [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](../../devops-project/azure-devops-project-vms.md)
 - [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
