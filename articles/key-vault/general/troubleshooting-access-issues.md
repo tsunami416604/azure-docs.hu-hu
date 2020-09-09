@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400432"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595988"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -25,6 +25,14 @@ Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Hogyan figyelhető meg a tár rendelkezésre állása, a szolgáltatási késési időszakok vagy más teljesítménymutatók a Key Vault esetében?
 
 A szolgáltatás skálázásának megkezdése után a Key vaultba küldött kérések száma megemelkedik. Az ilyen igénynek lehetősége van arra, hogy növelje a kérések késését és a szélsőséges esetekben, hogy a kérések szabályozása megtörténjen, ami hatással lesz a szolgáltatás teljesítményére. Nyomon követheti a Key Vault teljesítmény-metrikáit, és riasztást kaphat a meghatározott küszöbértékekről, a figyelés konfigurálásának lépésenkénti útmutatójában bővebben [olvashat](https://docs.microsoft.com/azure/key-vault/general/alert).
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Nem tudom módosítani a hozzáférési szabályzatot, hogyan lehet engedélyezni?
+A felhasználónak elegendő HRE engedéllyel kell rendelkeznie a hozzáférési szabályzat módosításához. Ebben az esetben a felhasználónak magasabb közreműködő szerepkörrel kell rendelkeznie.
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>"Unkwown szabályzat" hibaüzenet jelenik meg. Ez mit jelent?
+Az ismeretlen szakaszban két különböző lehetőség van a hozzáférési szabályzat megtekintésére:
+* Előfordulhat, hogy egy korábbi felhasználónak van hozzáférése, és valamilyen okból kifolyólag a felhasználó nem létezik.
+* Ha a hozzáférési szabályzatot a PowerShell használatával adja hozzá, és a hozzáférési szabályzatot hozzáadja az alkalmazás ObjectId a szolgáltatás sajátosságaikkal elvének helyett.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Hogyan lehet hozzáférés-vezérlést rendelni Key Vault-objektumhoz? 
 

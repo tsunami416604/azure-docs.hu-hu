@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan használhatja az Azure CLI-t az új, Applicatio
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 4634421829cf71c0c5b9476f8ff3d08b9caa7dbd
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117339"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595920"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Helyezzen üzembe egy minta alkalmazást a AGIC használatával az AK-fürtön történő bejövő forgalomhoz.
 > * Győződjön meg arról, hogy az alkalmazás elérhető Application Gatewayon keresztül.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -125,7 +125,7 @@ Győződjön meg arról, hogy a létrehozott minta alkalmazás a következők va
 
 A frissítés beszerzéséhez Application Gateway egy percet is igénybe vehet. Ha a Application Gateway még mindig **frissítési** állapotban van a portálon, hagyja befejezni az IP-cím elérését. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, távolítsa el az erőforráscsoportot, a Application Gateway példányt és az összes kapcsolódó erőforrást:
 
@@ -133,7 +133,7 @@ Ha már nincs szüksége rájuk, távolítsa el az erőforráscsoportot, a Appli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
 * [A AGIC által támogatott megjegyzések ismertetése](./ingress-controller-annotations.md)
 * [AGIC kapcsolatos hibák elhárítása](./ingress-controller-troubleshoot.md)
