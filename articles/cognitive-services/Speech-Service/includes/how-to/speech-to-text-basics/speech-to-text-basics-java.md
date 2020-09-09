@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 314617554abf8fee430e47eb4b0a0ca5db5bc75f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: db2f1a685e3413814878ee1a6a367bd790739d4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375214"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564982"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -20,8 +20,8 @@ Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-e
 
 Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t. A platformtól függően kövesse az alábbi utasításokat:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java-futtatókörnyezet<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java-futtatókörnyezet <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
@@ -45,34 +45,30 @@ SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "Your
 
 ## <a name="initialize-a-recognizer"></a>Felismerő inicializálása
 
-Miután létrehozta a [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) -t, a következő lépés a inicializálása [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) . A inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) át kell adnia a következőt: `config` . Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
-
-Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a következőképpen [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) kell kinéznie:
+Miután létrehozta a [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) -t, a következő lépés a inicializálása [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) . A inicializálásakor a rendszer [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) átadja a t `SpeechConfig` . Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
 
 ```java
 SpeechRecognizer recognizer = new SpeechRecognizer(config);
 ```
 
-Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy-t, és meg kell [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) adnia a `audioConfig` paramétert a inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) .
+## <a name="recognize-from-microphone-or-file"></a>Felismerés mikrofonból vagy fájlból
 
-> [!TIP]
-> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
+Ha meg szeretné adni a hangbeviteli eszközt, létre kell hoznia egy paramétert, és el kell végeznie az [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) .
 
-Először adja hozzá a következő `import` utasításokat.
+Ha az eszköz mikrofonjának használatával szeretné felismerni a beszédfelismerést, hozzon létre egy `AudioConfig` használatot `fromDefaultMicrophoneInput()` , majd adja át a hang konfigurációját az objektum létrehozásakor `SpeechRecognizer` .
 
 ```java
 import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
-```
 
-Ezután az alábbi módon hivatkozhat az `AudioConfig` objektumra:
-
-```java
 AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 ```
 
-Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia a következőt: `audioConfig` . Ha azonban a létrehozása helyett a (z) metódust hozza létre [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) `fromDefaultMicrophoneInput` , hívja meg `fromWavFileOutput` és adja át a `filename` paramétert.
+> [!TIP]
+> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
+
+Ha mikrofon használata helyett hangfájlból szeretné felismerni a beszédet, akkor továbbra is létre kell hoznia egy elemet `AudioConfig` . A [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) hívása helyett azonban a `fromDefaultMicrophoneInput()` paramétert kell meghívnia `fromWavFileInput()` és átadnia `filename` .
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -100,9 +96,9 @@ SpeechRecognitionResult result = task.get();
 
 Az eredmény kezeléséhez meg kell írnia egy kódot. Ez a példa a következőket értékeli ki [`result.getReason()`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable) :
 
-* Kinyomtatja az eredmények felismerésének eredményét:`ResultReason.RecognizedSpeech`
-* Ha nincs felismerési egyezés, tájékoztassa a felhasználót:`ResultReason.NoMatch`
-* Ha hiba történt, nyomtassa ki a hibaüzenetet:`ResultReason.Canceled`
+* Kinyomtatja az eredmények felismerésének eredményét: `ResultReason.RecognizedSpeech`
+* Ha nincs felismerési egyezés, tájékoztassa a felhasználót: `ResultReason.NoMatch`
+* Ha hiba történt, nyomtassa ki a hibaüzenetet: `ResultReason.Canceled`
 
 ```java
 switch (result.getReason()) {
@@ -217,7 +213,7 @@ A beszédfelismerés általános feladata, hogy megadja a bemeneti (vagy a forr�
 config.setSpeechRecognitionLanguage("fr-FR");
 ```
 
-[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable)egy paraméter, amely argumentumként karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
+[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable) egy paraméter, amely argumentumként karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
 
 ## <a name="improve-recognition-accuracy"></a>Az elismerés pontosságának javítása
 

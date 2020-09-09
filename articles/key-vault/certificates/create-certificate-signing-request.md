@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 44d77c36b9aacb8a2f06fd7a0f167cffa06ae4eb
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716112"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569373"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
@@ -69,7 +69,7 @@ A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltató
     - **Tanúsítvány neve:** ContosoManualCSRCertificate.
     - **A hitelesítésszolgáltató típusa (CA):** Nem integrált HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítvány
     - **Tárgy:**`"CN=www.contosoHRApp.com"`
-    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Create** (Létrehozás) gombra.
+    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Létrehozás** gombra.
 
     ![Tanúsítvány tulajdonságai](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Látni fogja, hogy a tanúsítvány már hozzá lett adva a tanúsítványok listájában. Válassza ki az imént létrehozott új tanúsítványt. A tanúsítvány aktuális állapota "Letiltva" lesz, mivel még nem állította ki a HITELESÍTÉSSZOLGÁLTATÓ.
@@ -100,8 +100,11 @@ Példa
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-- **Hiba típusa: "a megadott X. 509 tanúsítvány tartalmában található végfelhasználói tanúsítvány nyilvános kulcsa nem egyezik a megadott titkos kulcs nyilvános részével. Ellenőrizze, hogy érvényes** -e a tanúsítvány. Ez a hiba akkor fordulhat elő, ha nem egyesíti a CSR-t ugyanazzal a CSR-kéréssel. A CSR minden egyes létrehozásakor létrehoz egy titkos kulcsot, amelyet az aláírt kérelem összevonásakor meg kell egyeznie.
+- **Hiba típusa: "a megadott X. 509 tanúsítvány tartalmában található végfelhasználói tanúsítvány nyilvános kulcsa nem egyezik a megadott titkos kulcs nyilvános részével. Ellenőrizze, hogy érvényes** -e a tanúsítvány. Ez a hiba akkor fordulhat elő, ha nem egyesíti a CSR-t ugyanazzal a CSR-kéréssel. CSR létrehozásakor mindig létrejön egy titkos kulcs, amelynek az aláírt kérelem egyesítésekor egyeznie kell.
     
+- Ha a CSR egyesítve lett, a teljes láncot egyesíteni fogja?
+    Igen, a teljes lánc egyesítése történik, ha a felhasználó visszaállította a p7b-fájlt az egyesítéshez.
+
 - Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, folytassa a **tanúsítvány művelet** megtekintésével, hogy áttekintse a tanúsítványhoz tartozó hibaüzenetet.
 
 További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).

@@ -1,25 +1,25 @@
 ---
-title: 'Gyors útmutató: a blob Storage-ban tárolt beszéd felismerése'
+title: Blobtárolóban tárolt beszéd felismerése
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Batch átíró REST API használatával aszinkron módon ismeri fel a SAS-blobokban tárolt beszédet.
+description: Ebben az útmutatóban a Batch átíró REST API használatával aszinkron módon ismeri fel a SAS-blobban tárolt beszédet.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 3c6ae5a7635222b48ce097c6c517cebb60f961aa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 28da97cb54c0147edc3d1609596b56db81546f18
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926141"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569414"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Gyors útmutató: a blob Storage-ban tárolt beszéd felismerése
+# <a name="recognize-speech-stored-in-blob-storage"></a>Blobtárolóban tárolt beszéd felismerése
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

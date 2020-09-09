@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303985"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570020"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -83,7 +83,7 @@ A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására. Az 
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Felhasználói VPN (pont – hely) esetén – hány ügyfél támogatott?
 
-Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat és a Scale Unit 13-20 támogatja a legfeljebb 10 000 kapcsolatot 
+Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat és a Scale Unit 13-18 támogatja a legfeljebb 10 000 kapcsolatot 
 
 Tegyük fel például, hogy a felhasználó 1 méretezési egységet választ. Mindegyik skálázási egység egy aktív-aktív átjáró üzembe helyezését jelentené, és a példányok mindegyike (ebben az esetben 2) legfeljebb 500 kapcsolatot támogat. Mivel az 500-os kapcsolatok * 2 átjárón keresztül, nem jelenti azt, hogy az 500 helyett 1000-et tervez ehhez a skálázási egységhez. Előfordulhat, hogy olyan példányokat kell kiszolgálni, amelyekben az extra 500-kapcsolat megszakad, ha túllépi az ajánlott kapcsolatok számát. Ügyeljen arra is, hogy az állásidőt úgy tervezze meg, hogy a méretezési egység vertikális fel-vagy leskálázását választja, vagy ha módosítani szeretné a pont – hely konfigurációt a VPN-átjárón.
 

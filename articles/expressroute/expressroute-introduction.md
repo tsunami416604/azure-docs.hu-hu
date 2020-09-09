@@ -7,15 +7,15 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: 26f27297b651da11bf6dd76236709e5bfb77d90e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 40d84a4196a3cc104a29b4b9511bd627f3f8d40e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395400"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566874"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
-Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure és az Office 365.
+Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services szolgáltatással, például a Microsoft Azure és a Microsoft 365sal.
 
 A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Ez lehetővé teszi a ExpressRoute-kapcsolatok számára, hogy megbízhatóbb, gyorsabb sebességet, konzisztens késést és nagyobb biztonságot nyújtsanak, mint az interneten keresztüli szokásos kapcsolatok. További információk a hálózat a Microsofthoz való csatlakoztatásáról az ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
 
@@ -44,7 +44,7 @@ Minden [ExpressRoute-áramkör](https://docs.microsoft.com/azure/expressroute/ex
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Kapcsolódás a Microsoft-felhőszolgáltatásokhoz
 Az ExpressRoute-kapcsolatok a következő szolgáltatásokhoz biztosítanak hozzáférést:
 * Microsoft Azure-szolgáltatások
-* Microsoft Office 365-szolgáltatások
+* Microsoft 365 szolgáltatások
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -116,7 +116,7 @@ Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyak
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb ExpressRoute-frissítéseket az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) oldalon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az ExpressRoute kapcsolati modelljeinek](expressroute-connectivity-models.md) ismertetése.
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-partnerek és társviszony-létesítési helyszínek](expressroute-locations.md).

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 04/23/2020
 ms.author: lbosq
-ms.openlocfilehash: ba3b20f263f37d85389bb11c0674584408a0c223
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 75a796a860acbd4279938b315fafccb9333906bd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161639"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567265"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
 Azure Cosmos DB támogatja az [Apache Tinkerpop](https://tinkerpop.apache.org) Graph bejárási nyelvét, amely [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)néven ismert. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
@@ -25,7 +25,7 @@ Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-ille
 
 | Letöltés | Forrás | Első lépések | Támogatott összekötő-verzió |
 | --- | --- | --- | --- |
-| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Gráf létrehozása a .NET használatával](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [.NET](https://tinkerpop.apache.org/docs/3.4.6/reference/#gremlin-DotNet) | [Gremlin.NET on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Gráf létrehozása a .NET használatával](create-graph-dotnet.md) | 3.4.6 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Gráf létrehozása a Java használatával](create-graph-java.md) | 3.2.0+ |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Gráf létrehozása a Node.js használatával](create-graph-nodejs.md) | 3.3.4 + |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Gráf létrehozása a Python használatával](create-graph-python.md) | 3.2.7 |
@@ -37,7 +37,7 @@ A TinkerPop egy olyan szabvány, amely számos különböző gráftechnológiár
 
 Az alábbi táblázat a TinkerPop azon funkcióit sorolja fel, amelyeket az Azure Cosmos DB megvalósít: 
 
-| Kategória | Azure Cosmos DB-megvalósítás |  Megjegyzések | 
+| Kategória | Azure Cosmos DB-megvalósítás |  Jegyzetek | 
 | --- | --- | --- |
 | Gráffunkciók | Állandóságot és egyidejű hozzáférést biztosít. A tranzakciók támogatására lett tervezve. | A számítógépes módszerek a Spark-összekötőn keresztül valósíthatók meg. |
 | Változófunkciók | A logikai, egész számú, bájt-, dupla, lebegőpontos, hosszú és sztringértékeket támogatja. | Támogatja az egyszerű típusokat, és kompatibilis az összetett típusokkal adatmodellek révén. |
@@ -91,7 +91,7 @@ A csúcsok JSON-formátuma által használt tulajdonságok ismertetését alább
 
 | Tulajdonság | Leírás | 
 | --- | --- | --- |
-| `id` | A csúcspont azonosítója. Egyedinek kell lennie (a megfelelő értékkel `_partition` együtt). Ha nincs megadva érték, a rendszer automatikusan GUID azonosítóval fogja ellátni | 
+| `id` | A csúcspont azonosítója. Egyedinek kell lennie (a megfelelő értékkel együtt `_partition` ). Ha nincs megadva érték, a rendszer automatikusan GUID azonosítóval fogja ellátni | 
 | `label` | A csúcspont címkéje. Ez a tulajdonság az entitás típusának leírására szolgál. |
 | `type` | A használatával megkülönböztethetők a csúcspontok a nem gráfdokumentumoktól. |
 | `properties` | A csúcsponthoz tartozó, felhasználó által megadott tulajdonságok összessége. Minden tulajdonságnak több értéke is lehet. |
@@ -102,7 +102,7 @@ Az él pedig a következő információkat tartalmazza, ezzel segítve a gráf t
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| `id` | Az él azonosítója. Egyedinek kell lennie (a megfelelő értékkel `_partition` együtt) |
+| `id` | Az él azonosítója. Egyedinek kell lennie (a megfelelő értékkel együtt `_partition` ) |
 | `label` | Az él címkéje. Ezt a tulajdonságot nem kötelező megadni, és a kapcsolat típusának leírására használható. |
 | `inV` | Ez a tulajdonság egy Edge-csúcsok listáját tartalmazza. Az élek szomszédsági adatainak tárolása lehetővé teszi a bejárások gyors végrehajtását. A csúcspontok a címkéik alapján vannak csoportosítva. |
 | `properties` | Az élhez tartozó, felhasználó által megadott tulajdonságok összessége. Minden tulajdonságnak több értéke is lehet. |
@@ -148,12 +148,12 @@ Most pedig tekintsük át az Azure Cosmos DB által támogatott Gremlin-lépése
 | `sample` | Mintát vesz a bejárás eredményeiből. | [sample lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Megjeleníti a bejárás eredményeit. |  [select lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Nem blokkoló összesítéseket hajt végre a bejárásból. | [store lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a `has()` lépéshez, amely megfelel egy adott sztring kezdetét megadó tulajdonságnak. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a `has()` lépéshez, amely egy adott sztring végén található tulajdonságnak felel meg. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a `has()` lépéshez, amely egy adott sztring tartalmával egyező tulajdonságot tartalmaz. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a lépéshez, amely megfelel `has()` egy adott sztring kezdetét megadó tulajdonságnak. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a lépéshez, amely egy `has()` adott sztring végén található tulajdonságnak felel meg. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a lépéshez, amely egy `has()` adott sztring tartalmával egyező tulajdonságot tartalmaz. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.notStartingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, hogy megfeleljen egy olyan tulajdonságnak, amely nem egy adott karakterlánccal kezdődik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.notEndingWith(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál ahhoz a `has()` lépéshez, amely nem egy adott karakterlánccal végződik. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a `has()` lépéshez, amely nem tartalmaz megadott karakterláncot. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Karakterlánc-szűrési függvény Ez a függvény predikátumként szolgál a lépéshez, `has()` amely nem tartalmaz megadott karakterláncot. | [TextP predikátumok](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Egy fában összesíti a csúcspontból induló útvonalakat. | [tree lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Visszaalakít egy iterátort egy lépésként.| [unfold lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Egyesíti több bejárás eredményeit.| [union lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

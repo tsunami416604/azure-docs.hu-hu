@@ -3,12 +3,12 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011770"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568564"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -54,7 +54,7 @@ Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőfo
 * Azure Media Services fiók
 * Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md)
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 Az Event-alapú videofelvétel arra utal, hogy az esemény által aktivált videók rögzítése folyamatban van. Ez az esemény a következőből hozható létre:
 - Maga a videojel feldolgozása, például amikor egy mozgó objektumot észlel a videóban.
@@ -62,7 +62,8 @@ Az Event-alapú videofelvétel arra utal, hogy az esemény által aktivált vide
 
 Azt is megteheti, hogy csak akkor aktiválja a rögzítést, ha egy következtetési szolgáltatás észleli, hogy egy adott esemény történt. Ebben az oktatóanyagban egy autópályán mozgó és videós klipeket tartalmazó videót fog használni, amikor egy teherautót észlelnek.
 
-![Médiagrafikon](./media/event-based-video-recording-tutorial/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="Médiagrafikon":::
 
 A diagram a [Media Graph](media-graph-concept.md) képi ábrázolása és a kívánt forgatókönyvet megvalósító további modulok. Négy IoT Edge modult érint:
 
@@ -80,7 +81,8 @@ Ahogy az ábrán látható, egy RTSP- [forrás](media-graph-concept.md#rtsp-sour
 
 Mielőtt elkezdené, győződjön meg róla, hogy végrehajtotta a harmadik felsorolásjelet az [Előfeltételekben](#prerequisites). Az erőforrás-telepítési parancsfájl befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A ~/clouddrive/LVA-Sample könyvtár alatt létrehozott néhány fájl megjelenik.
 
-![Alkalmazásbeállítások](./media/quickstarts/clouddrive.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="Alkalmazásbeállítások":::
 
 Ebben az oktatóanyagban a következő fájlok szerepelnek:
 
@@ -152,7 +154,8 @@ Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe
 
 A Visual Studio Code használatával a Docker-be való bejelentkezéshez kövesse az [alábbi utasításokat](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) . Ezután válassza **a létrehozás és Leküldés IoT Edge megoldást**. Ehhez a lépéshez használja az src/Edge/deployment.objectCounter.template.js-t.
 
-![IoT Edge-megoldás létrehozása és leküldése](./media/event-based-video-recording-tutorial/build-push.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge-megoldás létrehozása és leküldése":::
 
 Ez a művelet létrehozza a objectCounter modult az objektumok számlálásához, és leküldi a rendszerképet a Azure Container Registry.
 
@@ -160,7 +163,8 @@ Ez a művelet létrehozza a objectCounter modult az objektumok számlálásához
 
 Ez a lépés létrehozza a IoT Edge üzembe helyezési jegyzéket az src/Edge/config/deployment.objectCounter.amd64.json címen. Kattintson a jobb gombbal a fájlra, és válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
 
-![Központi telepítés létrehozása egyetlen eszközhöz](./media/quickstarts/create-deployment-single-device.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Üzemelő példány létrehozása egyetlen eszközhöz":::
 
 Ha ez az első oktatóanyag a IoT Edge Live Video Analytics szolgáltatással, a Visual Studio Code felszólítja, hogy adja meg a IoT Hub kapcsolódási karakterláncot. A fájlt átmásolhatja a appsettings.jsfájlból.
 
@@ -169,7 +173,8 @@ Ezután a Visual Studio Code egy IoT Hub eszköz kiválasztását kéri. Válass
 Ebben a szakaszban az Edge-modulok üzembe helyezése a IoT Edge eszközön megkezdődött.
 Körülbelül 30 másodperc alatt frissítse az Azure IoT Hubt a Visual Studio Code bal alsó részén. Látnia kell, hogy a lvaEdge, a rtspsim, a yolov3 és a objectCounter nevű négy modul van üzembe helyezve.
 
-![Négy modul üzembe helyezése](./media/event-based-video-recording-tutorial/iot-hub.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="Négy modul üzembe helyezése":::
 
 ## <a name="prepare-for-monitoring-events"></a>Felkészülés a figyelési eseményekre
 
@@ -179,9 +184,10 @@ A objectCounter modul eseményeinek és az élő videó Analytics IoT Edge modul
 1. Bontsa ki az **eszközök** csomópontot.
 1. Kattintson a jobb gombbal a LVA-Sample-Device fájlra, és válassza a **figyelés beépített esemény végpontja**lehetőséget.
 
-   ![A beépített esemény-végpont figyelésének megkezdése](./media/quickstarts/start-monitoring-iothub-events.png)
-
-## <a name="run-the-program"></a>A program futtatása
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="A beépített esemény-végpont figyelésének megkezdése":::
+    
+    ## <a name="run-the-program"></a>A program futtatása
 
 1. A Visual Studio Code-ban lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
 
@@ -390,13 +396,14 @@ Megvizsgálhatja a gráf által létrehozott Media Services adategységet, ha be
 1. Keresse meg Media Services-fiókját az előfizetésében található erőforrások között. Nyissa meg a fiók ablaktáblát.
 1. Válassza az **eszközök** lehetőséget a **Media Services** listában.
 
-    ![Objektumok](./media/continuous-video-recording-tutorial/assets.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="Folyamatos videófelvétel":::
 1. Itt található egy sampleAssetFromEVR-LVAEdge-{DateTime} nevű eszköz. Ez a RecordingStarted esemény outputLocation tulajdonságában megadott név. A topológia assetNamePattern határozza meg a név létrejöttének módját.
 1. Válassza ki az objektumot.
 1. Az eszköz adatai lapon válassza az **új létrehozása** lehetőséget a **streaming URL-cím** szövegmezőben.
 
-    ![Új eszköz](./media/continuous-video-recording-tutorial/new-asset.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Új eszköz":::
 1. A megnyíló varázslóban fogadja el az alapértelmezett beállításokat, majd válassza a **Hozzáadás**lehetőséget. [További információ: videolejátszás](video-playback-concept.md).
 
     > [!TIP]
@@ -406,7 +413,7 @@ Megvizsgálhatja a gráf által létrehozott Media Services adategységet, ha be
 > [!NOTE]
 > Mivel a videó forrása egy kamera-hírcsatornát szimuláló tároló volt, a videóban szereplő időbélyegek a Graph-példány aktiválásakor és az inaktiválásakor kapcsolódnak. Ha a [Többnapos felvételek lejátszásához](playback-multi-day-recordings-tutorial.md) beépített lejátszási vezérlőket használja, láthatja a képernyőn megjelenő videó időbélyegeit.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a8647e7f19b55547bbb7eff6f1f3bc1f5282c89
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3d9e21c317240d27c8b32bd3daec0fcc66013e54
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934538"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564984"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,34 +48,29 @@ var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourSer
 
 ## <a name="initialize-a-recognizer"></a>Felismerő inicializálása
 
-Miután létrehozta a [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) -t, a következő lépés a inicializálása [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) . A inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) át kell adnia a következőt: `speechConfig` . Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
-
-Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a következőképpen [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) kell kinéznie:
+Miután létrehozta a [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) -t, a következő lépés a inicializálása [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) . A inicializálásakor a rendszer [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) átadja a t `speechConfig` . Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
 
 ```csharp
 using var recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy-t, és meg kell [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) adnia a `audioConfig` paramétert a inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) .
+## <a name="recognize-from-microphone-or-file"></a>Felismerés mikrofonból vagy fájlból
 
-> [!TIP]
-> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
+Ha meg szeretné adni a hangbeviteli eszközt, létre kell hoznia egy paramétert, és el kell végeznie az [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) .
 
-Először adja hozzá a következő `using` utasítást.
+Ha az eszköz mikrofonjának használatával szeretné felismerni a beszédfelismerést, hozzon létre egy `AudioConfig` használatot `FromDefaultMicrophoneInput()` , majd adja át a hang konfigurációját az objektum létrehozásakor `SpeechRecognizer` .
 
 ```csharp
 using Microsoft.CognitiveServices.Speech.Audio;
-```
 
-Ezután az alábbi módon hivatkozhat az `AudioConfig` objektumra:
-
-```csharp
 using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia a következőt: `audioConfig` . Ha azonban a létrehozása helyett a (z) metódust hozza létre [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) `FromDefaultMicrophoneInput` , hívja meg `FromWavFileOutput` és adja át a `filename` paramétert.
+> [!TIP]
+> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
 
+Ha mikrofon helyett hangfájlból szeretné felismerni a beszédet, továbbra is létre kell hoznia egy elemet `AudioConfig` . A [`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) hívása helyett azonban a `FromDefaultMicrophoneInput()` paramétert kell meghívnia `FromWavFileInput()` és átadnia `filename` .
 
 ```csharp
 using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");

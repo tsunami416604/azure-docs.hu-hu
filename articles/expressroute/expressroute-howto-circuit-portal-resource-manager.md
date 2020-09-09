@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: duau
-ms.openlocfilehash: 58c35b094d21dc562e61b4819c0d8e063908392d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322141"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566262"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Oktatóanyag: ExpressRoute-kör létrehozása és módosítása
 
@@ -20,7 +20,7 @@ ms.locfileid: "89322141"
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -75,7 +75,10 @@ ExpressRoute-áramkör létrehozásához válassza az új erőforrás létrehoz�
     > [!IMPORTANT]
     > A társítási hely azt a [fizikai helyet](expressroute-locations.md) jelzi, ahol a Microsofttal való együttműködésre van szükség. Ez **nem** a "location" tulajdonsághoz van csatolva, amely arra a földrajzi helyre hivatkozik, ahol az Azure hálózati erőforrás-szolgáltató található. Noha nem kapcsolódnak egymáshoz, célszerű kiválasztania a hálózati erőforrás-szolgáltatót földrajzilag közel az áramkör egyenrangú helyéhez.
 
-    * Az **SKU** meghatározza, hogy engedélyezve van-e egy ExpressRoute helyi, ExpressRoute vagy ExpressRoute prémium szintű bővítmény. Megadhatja a **helyi** SKU beolvasását, a **standard** szintű, a prémium bővítmény standard SKU-jának vagy **premiumjának** beszerzéséhez.
+    * Az **SKU** meghatározza, hogy engedélyezve van-e egy ExpressRoute helyi, ExpressRoute vagy ExpressRoute prémium szintű bővítmény. Megadhatja a **helyi** **SKU-t, amely** a prémium szintű bővítmény standard SKU-jának vagy **premiumjának** beszerzésére szolgál. Vegye figyelembe, hogy a prémium szintű bővítmény engedélyezéséhez módosíthatja az SKU-t.
+    > [!IMPORTANT]
+    > A SKU nem módosítható a **standard/prémium** szintről a **helyi**értékre.
+    
     * A számlázási **modell** meghatározza a számlázási típust. Megadhatja **a mért adatcsomag díjait** , és **korlátlan** számú adatcsomagot. Vegye figyelembe, hogy a számlázási típus a **mért** értékről **korlátlanra**módosítható.
 
     > [!IMPORTANT]
@@ -150,6 +153,10 @@ Egy ExpressRoute-kör bizonyos tulajdonságait módosíthatja a kapcsolat befoly
 A következő feladatok elvégzése leállás nélkül is elvégezhető:
 
 * Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt.
+
+> [!IMPORTANT]
+  > Az SKU **szabványos/prémiumról** **helyire** történő módosítása nem támogatott.
+
 * Növelje a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll kapacitás a porton.
 
   > [!IMPORTANT]
@@ -184,7 +191,7 @@ A **Törlés** ikonra kattintva törölheti a ExpressRoute áramkörét.
 
 :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Áramkör törlése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az áramkör létrehozása után folytassa a következő lépésekkel:
 

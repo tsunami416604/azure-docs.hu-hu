@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067686"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568047"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -16,7 +16,8 @@ Ez a rövid útmutató végigvezeti azon lépéseken, amelyekkel megkezdheti az 
 
 A telepítés lépéseinek elvégzése után egy szimulált élő videó streamet futtathat egy olyan adathordozó-gráfon keresztül, amely az adott stream bármely mozgását észleli és jelenti. Az alábbi ábrán látható ábra az adott adathordozó-gráfot ábrázolja.
 
-![Élő videó-elemzés a mozgásészlelés alapján](./media/analyze-live-video/motion-detection.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 

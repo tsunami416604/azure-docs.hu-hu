@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: duau
-ms.openlocfilehash: ab59de49b7cf625220f8a803aab9d2b9a2ae5937
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16ebfe7ae39d63f455e39c677acc61b31d40bb5a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398767"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569237"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazásokhoz
 
@@ -160,10 +160,8 @@ Miután elkészült, eltávolíthatja az összes létrehozott elemet. Egy erőfo
 
 Ismételje meg a másik két csoport eljárását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan adhat hozzá egyéni tartományt az előtérben.
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](front-door-custom-domain.md)
-
-További információ az útválasztási forgalomról: a [bejárati ajtó útválasztási módszerei](front-door-routing-methods.md).

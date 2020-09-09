@@ -1,0 +1,46 @@
+---
+author: trevorbye
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/08/2020
+ms.author: trbye
+ms.openlocfilehash: 9c2c46040dd741253e9a68855c4dca89c1dc9a9a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570600"
+---
+[!INCLUDE [SPX Setup](../../spx-setup.md)]
+
+## <a name="speech-to-text-from-microphone"></a>Beszéd – szöveg a mikrofonból
+
+Csatlakoztassa a számítógépet, és kapcsolja be a PC-mikrofont, és kapcsolja ki a mikrofont is használó alkalmazásokat. Egyes számítógépek beépített mikrofonnal rendelkeznek, míg mások a Bluetooth-eszközök konfigurációját igénylik.
+
+Most már készen áll a Speech CLI futtatására, hogy felismerje a beszédet a mikrofonból. A parancssorban váltson arra a könyvtárra, amely tartalmazza a parancssori felület bináris fájlját, és futtassa a következő parancsot.
+
+```bash
+spx recognize --microphone
+```
+
+> [!NOTE]
+> A Speech CLI alapértelmezett értéke az angol. [A beszéd-szöveg táblázatból](../../../../language-support.md)más nyelvet is választhat.
+> Adja meg például a következőt: `--source de-DE` a német beszéd felismerése.
+
+Beszéljen a mikrofonba, és valós időben megtekintheti a szavainak szövegbe való átírását. A Speech CLI egy adott időszak után leáll, vagy a CTRL-C billentyűkombináció lenyomása után.
+
+## <a name="speech-to-text-from-audio-file"></a>Beszéd és szöveg közötti hangfájlból
+
+A Speech CLI számos fájlformátumban és természetes nyelven képes felismerni a beszédet. Ebben a példában bármilyen WAV-fájlt használhat (16kHz vagy 8kHz, 16 bites és monó PCM), amely angol nyelvű beszédet tartalmaz. Ha szeretne egy gyors mintát, töltse le a <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. wav <span class="docon docon-download x-hidden-focus"></span> </a> fájlt, és másolja a Speech CLI bináris fájllal megegyező könyvtárba.
+
+Most már készen áll arra, hogy az alábbi parancs futtatásával felismerje a hangfájlban talált beszédet.
+
+```bash
+spx recognize --file whatstheweatherlike.wav
+```
+
+> [!NOTE]
+> A Speech CLI alapértelmezett értéke az angol. [A beszéd-szöveg táblázatból](../../../../language-support.md)más nyelvet is választhat.
+> Adja meg például a következőt: `--source de-DE` a német beszéd felismerése.
+
+A Speech CLI a képernyőn megjelenő beszéd szövegének átírását jeleníti meg.

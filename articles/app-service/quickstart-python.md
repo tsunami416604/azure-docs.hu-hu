@@ -2,20 +2,21 @@
 title: 'Gyors útmutató: Python-alkalmazás létrehozása'
 description: Ismerkedjen meg Azure App Service az első Python-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 3bfe927b2c9dc16de8712f6c1793e850df92c201
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078452"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568914"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
 Ebben a rövid útmutatóban egy Python-webalkalmazást helyez üzembe a [Linuxon](overview.md#app-service-on-linux), az Azure rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatásának app Service. A helyi [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) a Mac, Linux vagy Windows rendszerű számítógépeken használható. Az Ön által konfigurált webalkalmazás ingyenes App Service szintet használ, így a cikk során nem jár költségekkel.
 
-Ha egy IDE-n keresztül szeretné telepíteni az alkalmazásokat, tekintse [meg a Python-alkalmazások üzembe helyezése a Visual Studio Code-ból való app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)című témakört.
+> [!NOTE]
+> Ha egy IDE-n keresztül szeretné telepíteni az alkalmazásokat, tekintse **[meg a Python-alkalmazások üzembe helyezése a Visual Studio Code-ból való app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** című témakört.
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
 
@@ -67,15 +68,10 @@ Miután bejelentkezett, futtathatja az Azure-parancsokat az Azure CLI-vel, hogy 
 
 ## <a name="clone-the-sample"></a>A minta klónozása
 
-A minta tárház klónozása a következő paranccsal. ([Telepítse a git](https://git-scm.com/downloads) -t, ha még nem rendelkezik a git-vel.)
+Klónozott a minta tárházat a következő paranccsal, majd navigáljon a mappába. ([Telepítse a git](https://git-scm.com/downloads) -t, ha még nem rendelkezik a git-vel.)
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
-```
-
-Ezután nyissa meg a mappát:
-
-```terminal
 cd python-docs-hello-world
 ```
 
@@ -157,7 +153,7 @@ az webapp up --sku F1 -n <app-name>
 - Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van [a kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
 - Cserélje le a `<app_name>` karaktert az összes Azure-beli egyedi névre (*érvényes karakterek: `a-z` , `0-9` és `-` *). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
 - Az `--sku F1` argumentum a webalkalmazást az ingyenes díjszabási szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.
-- Igény szerint megadhatja az argumentumot, ahol egy olyan Azure-régió, mint például a `-l <location-name>` `<location_name>` **CentralUS**, a **eastasia**, a **westeurope**, a **koreasouth**, a **brazilsouth**, a **centralindia**stb. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) .
+- Igény szerint megadhatja az argumentumot, ahol egy olyan Azure-régió, mint például a `-l <location-name>` `<location_name>` **CentralUS**, a **eastasia**, a **westeurope**, a **koreasouth**, a **brazilsouth**, a **centralindia**stb. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - Ha a következő hibaüzenet jelenik meg: "nem sikerült automatikusan észlelni az alkalmazás futásidejű veremét", győződjön meg arról, hogy a parancsot a *Python-docs-Hello-World* mappában futtatja, amely tartalmazza a *requirements.txt* fájlt. (Lásd: [az WebApp up (GitHub) szolgáltatással kapcsolatos automatikus észlelési hibák elhárítása](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
 
 A parancs végrehajtása több percet is igénybe vehet. A futtatása közben üzeneteket biztosít az erőforráscsoport létrehozásához, a App Service terv és az üzemeltetési alkalmazáshoz, a naplózás konfigurálásához, majd a ZIP-telepítés elindításához. Ezután a következő üzenet jelenik meg: "az alkalmazás elindítható a http:// &lt; app-name &gt; . azurewebsites.net" néven, amely az alkalmazás URL-címe az Azure-ban.
@@ -261,7 +257,7 @@ A parancs végrehajtása egy percet is igénybe vehet.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

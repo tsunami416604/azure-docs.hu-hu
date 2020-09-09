@@ -2,18 +2,17 @@
 title: Gyors útmutató – Docker-tároló üzembe helyezése tároló példányon – PowerShell
 description: Ebben a rövid útmutatóban a Azure PowerShell használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
 services: container-instances
-author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7002d8a83e58a9089ee3c3840b0397d63e2f198
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533607"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565582"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban Azure PowerShell használatával
 
@@ -23,7 +22,7 @@ Ebben a rövid útmutatóban a Azure PowerShell használatával telepít egy elk
 
 ![Az Azure Container Instances szolgáltatáshoz üzembe helyezett alkalmazás képe a böngészőben][qs-powershell-01]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -31,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz a Azure PowerShell modulra van szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
@@ -47,7 +46,7 @@ Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azu
 
 Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy az IIS nyilvánosan elérhető legyen.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan `-DnsNameLabel` értéket állítson be, amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan értéket állítson be `-DnsNameLabel` , amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

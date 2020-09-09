@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 768e79c6a2471715b336f90748ad97ecfcc4bbc2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9c1b521a0f10da77295fd2457793566d787cb2cd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682160"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570069"
 ---
-
-![Áttekintés](../../../media/quickstarts/overview-qs4.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="../../../media/quickstarts/overview-qs4.svg" alt-text="A jelek folyamata":::
 
 Az előző ábrán látható, hogyan áramlik a jelek a rövid útmutatóban. [Az Edge-modulok](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) egy valós idejű Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát szimulálnak. Az [RTSP-forrás](../../../media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a video-képkockákat a [mozgásérzékelő processzor](../../../media-graph-concept.md#motion-detection-processor) -csomópontjára küldi. Az RTSP-forrás ugyanazt a képkockákat küldi el egy [Signal Gate processzor](../../../media-graph-concept.md#signal-gate-processor) -csomópontnak, amely mindaddig be van zárva, amíg egy esemény nem indít el.
 

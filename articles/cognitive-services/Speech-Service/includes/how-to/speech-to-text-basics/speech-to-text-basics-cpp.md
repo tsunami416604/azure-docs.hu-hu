@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 3d67361ecd4e06fdf006e836011d2cab59e340b6
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ff171dfce0bcbb04ec017a8d5e3310cf3162e8e2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587816"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564981"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -19,9 +19,9 @@ Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-e
 
 Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t. A platformtól függően kövesse az alábbi utasításokat:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">Linux<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">macOS<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp" target="_blank">Windows<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">Linux <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">macOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp" target="_blank">Windows <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
@@ -47,31 +47,27 @@ auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourService
 
 Miután létrehozta a [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) -t, a következő lépés a inicializálása [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) . A inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) át kell adnia a következőt: `speech_config` . Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
 
-Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a következőképpen [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) kell kinéznie:
-
 ```cpp
 auto recognizer = SpeechRecognizer::FromConfig(config);
 ```
 
-Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy-t, és meg kell [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) adnia a `audioConfig` paramétert a inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) .
+## <a name="recognize-from-microphone-or-file"></a>Felismerés mikrofonból vagy fájlból
 
-> [!TIP]
-> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
+Ha meg szeretné adni a hangbeviteli eszközt, létre kell hoznia egy paramétert, és el kell végeznie az [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) inicializálásakor [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) .
 
-Először adja hozzá a következő `using namespace` utasítást a `#include` definíciók után.
+Ha az eszköz mikrofonjának használatával szeretné felismerni a beszédfelismerést, hozzon létre egy `AudioConfig` használatot `FromDefaultMicrophoneInput()` , majd adja át a hang konfigurációját az objektum létrehozásakor `SpeechRecognizer` .
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
-```
 
-Ezután az alábbi módon hivatkozhat az `AudioConfig` objektumra:
-
-```cpp
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
 ```
 
-Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia a következőt: `audioConfig` . Ha azonban a létrehozása helyett a (z) metódust hozza létre [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) `FromDefaultMicrophoneInput` , hívja meg `FromWavFileOutput` és adja át a `filename` paramétert.
+> [!TIP]
+> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
+
+Ha mikrofon használata helyett hangfájlból szeretné felismerni a beszédet, akkor továbbra is létre kell hoznia egy elemet `AudioConfig` . A [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) hívása helyett azonban a `FromDefaultMicrophoneInput()` paramétert kell meghívnia `FromWavFileInput()` és átadnia `filename` .
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
@@ -98,9 +94,9 @@ auto result = recognizer->RecognizeOnceAsync().get();
 
 Az eredmény kezeléséhez meg kell írnia egy kódot. Ez a példa a következőket értékeli ki [`result->Reason`](https://docs.microsoft.com/cpp/cognitive-services/speech/recognitionresult#reason) :
 
-* Kinyomtatja az eredmények felismerésének eredményét:`ResultReason::RecognizedSpeech`
-* Ha nincs felismerési egyezés, tájékoztassa a felhasználót:`ResultReason::NoMatch`
-* Ha hiba történt, nyomtassa ki a hibaüzenetet:`ResultReason::Canceled`
+* Kinyomtatja az eredmények felismerésének eredményét: `ResultReason::RecognizedSpeech`
+* Ha nincs felismerési egyezés, tájékoztassa a felhasználót: `ResultReason::NoMatch`
+* Ha hiba történt, nyomtassa ki a hibaüzenetet: `ResultReason::Canceled`
 
 ```cpp
 switch (result->Reason)
@@ -222,7 +218,7 @@ A beszédfelismerés általános feladata, hogy megadja a bemeneti (vagy a forr�
 config->SetSpeechRecognitionLanguage("de-DE");
 ```
 
-[`SetSpeechRecognitionLanguage`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage)egy paraméter, amely argumentumként karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
+[`SetSpeechRecognitionLanguage`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechrecognitionlanguage) egy paraméter, amely argumentumként karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
 
 ## <a name="improve-recognition-accuracy"></a>Az elismerés pontosságának javítása
 

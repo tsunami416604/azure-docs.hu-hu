@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067660"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569006"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -33,7 +33,8 @@ Használhat egy alkalmazást, például a [VLC Playert](https://www.videolan.org
 
 Az alábbi lépések elvégzése után élő videó-elemzéseket használt IoT Edgeon az autó mozgásának észleléséhez és az 5 másodperces megjelölés körüli videoklip rögzítéséhez. Az alábbi ábra a teljes folyamat vizuális ábrázolását mutatja be.
 
-![Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján](./media/quickstarts/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/topology.svg" alt-text="Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján":::
 
 ## <a name="use-direct-method-calls"></a>Közvetlen metódusú hívások használata
 

@@ -2,14 +2,14 @@
 title: Élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával
 description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kiszolgálót fogja használni az élő videó hírcsatornájának (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950255"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567579"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -30,6 +30,7 @@ Ez az oktatóanyag egy Azure-beli virtuális gépet használ IoT Edge eszközké
 > Az Azure IoT-eszközök telepítésekor előfordulhat, hogy a rendszer a Docker telepítésére kéri. A promptot figyelmen kívül hagyhatja.
 
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
+
 Az Azure-erőforrások beállításakor a rendszer az Azure-beli linuxos virtuális gépre másol egy rövid videót, amelyet IoT Edge eszközként használ. Ez a rövid útmutató egy élő stream szimulálására használja a videofájl használatával.
 
 Nyisson meg egy alkalmazást, például a [VLC Media Playert](https://www.videolan.org/vlc/). Válassza a CTRL + N billentyűkombinációt, majd illessze be a [videóra](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) mutató hivatkozást a lejátszás elindításához. Megtekintheti a járművek felvételeit egy parkolóban, a legtöbbjük parkolt, és egy mozgó.
@@ -38,7 +39,8 @@ Ebben a rövid útmutatóban élő videó-elemzéseket fog használni a IoT Edge
 
 ## <a name="overview"></a>Áttekintés
 
-![Áttekintés](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="Áttekintés":::
 
 Ez az ábra azt mutatja be, hogyan áramlik be a gyors útmutatóban szereplő jelek. Az [Edge-modulok](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) egy valós idejű Streaming Protocol-(RTSP-) kiszolgálót üzemeltető IP-kamerát szimulálnak. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontját elérő video stream képkockasebességét. 
 
@@ -46,7 +48,7 @@ A HTTP-bővítmény csomópont egy proxy szerepét játssza le. A képkockákat 
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
-1. A Media Graph létrehozása és üzembe helyezése, módosítása 
+1. Hozza létre és telepítse a Media Graphot, és módosítsa azt.
 1. Az eredmények értelmezése.
 1. Az erőforrások eltávolítása.
 
@@ -372,7 +374,7 @@ Most megismételheti a fenti lépéseket a minta program újbóli futtatásához
 
 Ha más rövid útmutatókat vagy oktatóanyagokat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

@@ -3,12 +3,12 @@ title: Mi az a Media Graph Extension – Azure
 description: A IoT Edge élő videó-elemzések lehetővé teszik a Media Graph feldolgozási képességeinek kiterjesztését egy gráf kiterjesztésű csomóponton keresztül.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: d7e14a0336da75e1948cf6dc4dbdb51490b70021
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420829"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569329"
 ---
 # <a name="media-graph-extension"></a>Médiagrafikon bővítmény
 
@@ -49,8 +49,9 @@ Tehát a gRPC-bővítmény processzor-csomópontjának használatakor:
 A Media Graph-bővítmények lehetővé teszik, hogy tetszőleges következtetési modelleket futtasson bármely elérhető következtetési futtatókörnyezetben (például ONNX, TensorFlow, PyTorch vagy mások saját Docker-tárolóban). A legjobb teljesítmény érdekében az élő videó Analytics Edge-modul mellett kell központilag telepíteni az egyéni bővítményt, amelyet a rendszer a HTTP-bővítmény processzorán vagy a Graph-topológiában található gRPC-bővítményi processzoron keresztül hív meg. Emellett az egyéni bővítményre irányuló hívások gyakorisága szabályozható úgy, hogy opcionálisan hozzáad egy [mozgásérzékelő processzort](media-graph-concept.md#motion-detection-processor) és egy [frame rate szűrő processzort](media-graph-concept.md#frame-rate-filter-processor) a Media Extension processzorhoz.
 
 Az alábbi ábra a magas szintű adatfolyamot ábrázolja:
- 
-![Adatfolyam](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="AI-következtetési szolgáltatás":::
 
 ## <a name="samples"></a>Példák
 

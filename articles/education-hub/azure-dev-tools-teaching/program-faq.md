@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102035"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567809"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>Gyakori kérdések az Azure fejlesztői eszközökről az oktatási célokra
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Gyakran ismételt kérdések a Education-központ
 
 Ez a cikk az Azure diákoknak, az Azure diákoknak kezdőknek és az Azure fejlesztői eszközöknek az oktatási célokra való gyakori kérdéseit tárgyalja.
 
@@ -42,7 +42,7 @@ A fennmaradó kreditet az [Azure szponzorálási portálon](https://www.microsof
 
 ### <a name="how-do-i-download-the-software-developer-tools"></a>Hogyan letölti a szoftverfejlesztői eszközöket?
 
-Az Azure for Students-előfizetés hozzáférést biztosít bizonyos szoftverfejlesztői eszközökhöz. A szoftverfejlesztői eszközök eléréséhez és letöltéséhez aktuális, aktív Azure diákoknak szóló előfizetésre van szükség. Nyissa meg a [Education-központt](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) , és töltse le a szoftverfejlesztői eszközöket az Azure diákoknak szóló előfizetés használatával.
+Az Azure for Students-előfizetés hozzáférést biztosít bizonyos szoftverfejlesztői eszközökhöz. A szoftverfejlesztői eszközök eléréséhez és letöltéséhez aktuális, aktív Azure diákoknak szóló előfizetésre van szükség. Nyissa meg a  [Education-központt](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software) , és töltse le a szoftverfejlesztői eszközöket az Azure diákoknak szóló előfizetés használatával.
 
 ### <a name="what-is-microsoft-learn"></a>Mi a Microsoft Learn?
 
@@ -103,7 +103,7 @@ A [Microsoft Learn](https://docs.microsoft.com/learn/) egy ingyenes, online tanu
 
 ### <a name="how-do-i-start-using-my-azure-course-credits"></a>Hogyan megkezdeni az Azure-beli tanfolyam-kreditek használatát?
 
-Az Azure-tanfolyamhoz tartozó kreditek új Microsoft Azure Academic Grant-előfizetés létrehozásával érhetők el. Kattintson az **aktiválás** gombra a szponzorálási jóváhagyási e-mailben.
+Az Azure-tanfolyamhoz tartozó kreditek új Microsoft Azure Academic Grant-előfizetés létrehozásával érhetők el. Kattintson az  **aktiválás** gombra a szponzorálási jóváhagyási e-mailben.
 
 Lehetősége van arra is, hogy egy meglévő előfizetést a Microsoft Azure szponzorálás ajánlatra Konvertáljon a kreditek eléréséhez. Az előfizetés konvertálásának részleteit a következő kérdésben találhatja meg.
 
@@ -152,6 +152,11 @@ Az Azure-tanfolyami kreditek csak a Azure Sponsorship ajánlat aktiválásának 
 Ha megtekint egy adott előfizetést a Azure Portal előfizetések paneljén, akkor az **ajánlat nevét** fogja látni a tulajdonságok egyike. Az ajánlat neve **Azure Sponsorship** , ha csatlakozik a tanfolyami kreditekhez. Ha **Azure Sponsorship** nem jelenik meg, forduljon az ügyfélszolgálathoz, és kérje át.
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>Ki jogosult az oktatási célokra Microsoft Azure fejlesztői eszközök megvásárlására?
+
+Csak azok az oktatási intézmények regisztrálhatnak az Azure fejlesztői eszközökre, akik mennyiségi licencelési (VL) szerződést kötöttek a Microsofttal.  Ha jelenleg egy olyan fejlesztői eszközt használ, amely egy VL-szerződés nélkül tanítja az ügyfelet, továbbra is megújíthatja az előfizetését. További információk a következő címen: VL-szerződések az oktatási intézmények számára https://aka.ms/ees 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Milyen termékeket tartalmaz az Azure dev Tools for Teaching-előfizetés?
 

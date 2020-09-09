@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc29eb959876a0c9c6f8c8e5dee2d18aaa5443ac
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825355"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569305"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
@@ -26,7 +26,7 @@ A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg és a beszéd 
 
 A következő funkciók a Speech Service részét képezik. A táblázatban található hivatkozásokat követve további információkat tudhat meg az egyes szolgáltatásokhoz tartozó általános használati esetekről, vagy böngészhet az API-referenciában.
 
-| Szolgáltatás | Szolgáltatás | Leírás | SDK | REST |
+| Szolgáltatás | Funkció | Leírás | SDK | REST |
 |---------|---------|-------------|-----|------|
 | [Beszéd – szöveg](speech-to-text.md) | Valós idejű beszéd – szöveg | A beszéd-szöveg szöveggé alakítja át vagy lefordítja a hangadatfolyamokat vagy helyi fájlokat valós időben, hogy az alkalmazások, eszközök vagy eszközök képesek legyenek a felhasználásra vagy a megjelenítésre. A beszéd-szöveg és a [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Batch – beszéd – szöveg](batch-transcription.md) | A Batch-beszédfelismerés lehetővé teszi, hogy az Azure Blob Storageban tárolt nagy mennyiségű hangalapú beszéd-szöveg átírása aszinkron módon történjen. A beszédfelismerési hang szövegre való konvertálása mellett a Batch beszéd-szöveg is lehetővé teszi a diarization és a hangulat-elemzést. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
@@ -90,10 +90,10 @@ Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz i
 
 A legnépszerűbb programozási nyelveken olyan gyors útmutatókat találunk, amelyek az alapszintű tervezési mintákat tanítják, és kevesebb, mint 10 perc alatt futtatják a kódot. Az egyes szolgáltatásokra vonatkozó rövid útmutató az alábbi listában található.
 
-* [Beszéd – szöveg – gyors útmutató](speech-to-text-basics.md)
+* [Beszéd – szöveg – gyors útmutató](get-started-speech-to-text.md)
 * [Szövegfelolvasás – gyorsútmutató](get-started-text-to-speech.md)
-* [Beszéd fordítási útmutató](speech-translation-basics.md)
-* [Szándék-felismerés – rövid útmutató](quickstarts/intent-recognition.md)
+* [Beszédfordítási gyorsútmutató](speech-translation-basics.md)
+* [Szándékfelismerés gyorsútmutatója](quickstarts/intent-recognition.md)
 * [A hangszórók felismerésének rövid útmutatója](speaker-recognition-basics.md)
 
 A beszédfelismerési szolgáltatás használatának megkezdése után próbálja ki az oktatóanyagokat, amelyek bemutatják, Hogyan oldhatók meg a különböző forgatókönyvek.

@@ -3,12 +3,12 @@ title: Folyamatos videofelvétel a felhőbe és a lejátszás a Felhőbeli oktat
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást Azure IoT Edgeon, hogy folyamatosan rögzítsen videókat a felhőbe, és a videó bármely részét továbbítsa a Azure Media Services használatával.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043480"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566796"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -51,7 +51,7 @@ Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőfo
 * Azure Media Services fiók
 * Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md)
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 Ahogy az a [Media Graph koncepciójában](media-graph-concept.md) is látható, a Media Graph segítségével meghatározhatja a következőket:
 
@@ -61,7 +61,8 @@ Ahogy az a [Media Graph koncepciójában](media-graph-concept.md) is látható, 
  
  A CVR elvégzéséhez egy RTSP-kompatibilis kameráról kell rögzítenie a videót, és folyamatosan rögzítenie kell egy [Azure Media Services eszközön](terminology.md#asset). Ez az ábra az adott adathordozó-gráf grafikus ábrázolását mutatja be.
 
-![Médiagrafikon](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Médiagrafikon":::
 
 Ebben az oktatóanyagban egy, a [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) használatával létrehozott Edge-modult fog használni az RTSP-kamera szimulálásához. A Media Graph-ban egy [RTSP-forrás](media-graph-concept.md#rtsp-source) csomóponttal érheti el az élő hírcsatornát, és elküldheti a videót az [eszköz fogadó csomópontjára](media-graph-concept.md#asset-sink), amely rögzíti a videót az adott eszközre.
 
@@ -130,7 +131,7 @@ Ezután keresse meg a src/Cloud-to-Device-Console-app mappát. Itt láthatja a a
 
 Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe helyezve egy peremhálózati eszközön és a modulok konfigurációs beállításaiban. Kövesse az alábbi lépéseket egy jegyzékfájl létrehozásához a sablonból, majd telepítse azt a peremhálózati eszközre.
 
-1. Indítsa el a Visual Studio Code-ot.
+1. A Visual Studio Code elindítása.
 1. Állítsa be a IoT Hub a kapcsolódási karakterláncot a bal alsó sarokban található **Azure IOT hub** panel melletti **További műveletek** ikonra kattintva. Másolja a karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból. 
 
     ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/quickstarts/set-iotconnection-string.png)
@@ -352,7 +353,7 @@ Megvizsgálhatja a Media Graph által létrehozott Media Services adategységet,
 1. Keresse meg Media Services-fiókját az előfizetésében található erőforrások között, és nyissa meg a fiók ablaktáblát.
 1. Válassza az **eszközök** lehetőséget a **Media Services** listában.
 
-    ![Objektumok](./media/continuous-video-recording-tutorial/assets.png)
+    ![Eszközök Media Services](./media/continuous-video-recording-tutorial/assets.png)
 1. Itt található egy sampleAsset-CVRToAMSAsset-Sample-Graph-1 nevű eszköz. Ez a Graph-topológiai fájlban kiválasztott elnevezési minta.
 1. Válassza ki az objektumot.
 1. Az eszköz adatai lapon válassza az **új létrehozása** lehetőséget a **streaming URL-cím** szövegmezőben.
@@ -368,7 +369,7 @@ Megvizsgálhatja a Media Graph által létrehozott Media Services adategységet,
 > [!NOTE]
 > Mivel a videó forrása egy kamera-hírcsatornát szimuláló tároló volt, a videóban szereplő időbélyegek a Graph-példány aktiválásakor és az inaktiválásakor kapcsolódnak. Ha szeretné megtudni, hogyan böngészhet a multiday, és hogyan tekintheti meg az Archívum egyes részeit, tekintse meg a [Többnapos felvételek lejátszását](playback-multi-day-recordings-tutorial.md) ismertető oktatóanyagot. Ebben az oktatóanyagban a képernyőn megjelenő videó időbélyegeit is láthatja.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 

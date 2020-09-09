@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dce42f1b8bfe58e4d147ba1c982cb770590dfa92
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1a9dc47888110836239c59f6a7542f71f753dd3a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845119"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568183"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Python V12 SDK-val
 
@@ -82,10 +82,10 @@ A projekt könyvtárából:
 
     ```python
     import os, uuid
-    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
     try:
-        print("Azure Blob storage v12 - Python quickstart sample")
+        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
         # Quick start code goes here
     except Exception as ex:
         print('Exception:')
@@ -283,7 +283,7 @@ A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappá
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Python használatával.
 
@@ -292,5 +292,5 @@ A blob Storage-beli minták alkalmazásainak megtekintéséhez folytassa a köve
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK V12 Python-minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* További információ: az [Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v12).
+* További információ: az [Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview).
 * Az oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk az Azure-ban, [Python-fejlesztőknek](/azure/python/)című oldalon találhatók meg.

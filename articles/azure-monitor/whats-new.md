@@ -6,16 +6,22 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827741"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569526"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
 Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített cikkeket. A rendszer minden hónap első hetében frissíti az előző hónapból származó cikkek frissítéseinek befoglalásával.
+
+## <a name="august-2020"></a>2020. augusztus
+
+### <a name="containers"></a>Tárolók
+
+- [Üzembe helyezés & hPa-metrikák Azure monitor for containers](insights/container-insights-deployment-hpa-metrics.md) – új cikk.
 
 ## <a name="july-2020"></a>2020. július
 
@@ -114,7 +120,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – az adatméret számításával kapcsolatos további részletek. Frissült az adatmennyiség-riasztások konfigurálása. Az Azure Sentinel által összegyűjtött biztonsági adatok részletei. Az adatsapka pontosítása.
 - [Azure monitor naplók használata a Azure Logic apps és a Power automatizáló](platform/logicapp-flow-connector.md) által hozzáadott összekötő-korlátokkal.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 - [Azure monitor támogatott mérőszámok erőforrástípus szerint](platform/metrics-supported.md) – frissített SQL Server metrikák.
 
 
@@ -138,7 +144,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](platform/diagnostic-settings.md)
 - [Az Azure-tevékenység naplójának exportálása](./platform/activity-log.md#legacy-collection-methods)
-- [Az Azure platform naplófájljainak áttekintése](platform/platform-logs-overview.md)
+- [Az Azure-platform naplóinak áttekintése](platform/platform-logs-overview.md)
 - [Azure platform-naplók továbbítása egy Event hubhoz](./platform/resource-logs.md#send-to-azure-event-hubs)
 - [Azure-Tevékenységnaplók eseményeinek megtekintése Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
@@ -227,7 +233,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [A PowerShell használatával hozzon létre és konfiguráljon egy log Analytics munkaterület](platform/powershell-workspace-configuration.md) által hozzáadott hibaelhárítás szakaszt.
 
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 - [Azure monitor támogatott mérőszámok erőforrástípus szerint](platform/metrics-supported.md) – egyértelmű vendég metrikák és metrikák útválasztása. 
 
 ### <a name="solutions"></a>Megoldások
@@ -286,7 +292,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure monitor szolgáltatás korlátai](service-limits.md) – a felhasználói lekérdezések szabályozása.
 - [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – a naplókhoz hozzáadott számlázás. Kusto-lekérdezés hozzáadva, amely lehetővé teszi az ügyfelek számára a csomópontok közötti örökölt díjszabási szintet annak megállapítására, hogy a felhasználóknak GB vagy Capacity foglalási szinten kell áttérniük.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 - [Az Azure Metrikaböngésző](platform/metrics-charts.md) által hozzáadott összesítési szakasz speciális funkciói.
 
@@ -332,7 +338,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Az Azure log Analytics munkaterület törlése és helyreállítása](platform/delete-workspace.md) – hibaelhárítás.
 - [Azure monitor naplók használata Azure Logic apps és energiagazdálkodási automatizálással](platform/logicapp-flow-connector.md) – frissítve az új Azure monitor-összekötőhöz.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 - [A lemez metrikáinak elavulása a Azure Portal](platform/portal-disk-metrics-deprecation.md) új cikkben.
 - [Oktatóanyag – mérőszámok diagramjának létrehozása Azure monitor](learn/tutorial-metrics-explorer.md) által hozzáadott videóban.
@@ -401,7 +407,7 @@ Több frissítés a diagnosztikai bővítmény tartalmának újraírása részek
 - Azure Monitor-új cikkben [található naplók optimalizálása](log-query/query-optimization.md) .
 - [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – továbbfejlesztett minta-lekérdezések, amelyek segítenek a használat megértésében.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 - [Azure monitor a platform metrikái exportálhatók a diagnosztikai beállítások](platform/metrics-supported-export-diagnostic-settings.md) – hozzáadott szakasz a nullák és a nulla értékek viselkedésének változása esetén.
 
@@ -525,7 +531,7 @@ Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
 - [Az Azure log Analytics munkaterület törlése és helyreállítása](platform/delete-workspace.md) – PowerShell-metódus hozzáadva.
 - [Megtervezheti a Azure monitor naplók üzembe helyezését](platform/design-logs-deployment.md) – a munkaterületek terhelési arányának növelését.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 - [Azure monitor a platform metrikái exportálhatók a diagnosztikai beállítások használatával](platform/metrics-supported-export-diagnostic-settings.md) – új cikk.
 
@@ -543,7 +549,7 @@ Több cikk is frissült a tartalom átszervezésének részeként a platform nap
 - [Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával](platform/diagnostic-settings-template.md)
 - [Diagnosztikai beállítás létrehozása naplók és metrikák gyűjtéséhez az Azure-ban](platform/diagnostic-settings.md)
 - [Az Azure-tevékenység naplójának exportálása](./platform/activity-log.md#legacy-collection-methods)
-- [Az Azure platform naplófájljainak áttekintése](platform/platform-logs-overview.md)
+- [Az Azure-platform naplóinak áttekintése](platform/platform-logs-overview.md)
 - [Azure monitoring-adatstreamek továbbítása az Event hub szolgáltatásba](platform/stream-monitoring-data-event-hubs.md)
 - [Azure platform-naplók továbbítása egy Event hubhoz](./platform/resource-logs.md#send-to-azure-event-hubs)
 
@@ -553,6 +559,6 @@ Több cikk is frissült a tartalom átszervezésének részeként a platform nap
 - [Erőforrás-naplók összegyűjtése Azure-erőforrásokból és Azure monitor](learn/tutorial-resource-logs.md) -új cikk elemzése.
 - [Azure-erőforrás figyelése Azure monitor](learn/quick-monitor-azure-resource.md) -új cikkel.
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha szeretne hozzájárulni Azure Monitor dokumentációhoz, tekintse meg a [docs közreműködői útmutatóját](/contribute/).
