@@ -102,6 +102,7 @@
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Régiók
+      displayName: location
       href: regions.md
     - name: Gyakori kérdések
       href: faq.md
