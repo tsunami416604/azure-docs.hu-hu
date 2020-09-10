@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 3dc534d1cbb195cd93ede091503222b297b17059
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1a372fad6d5b6f3f6906c07062f07971e7882b70
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523740"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669558"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 
@@ -124,7 +124,7 @@ Az entitások közötti kapcsolatokat a következő *Edge* -típusok szerint jel
 * A következőt **használja**: egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
 * **Helye: annak**a helynek a jelölése, amelyről az eszközök hozzáférnek
 
-A Gremlin-konzol egy interaktív terminál, amelyet az Apache TinkerPop kínál, és ez a terminál használható a Graph-adatbázissal való kommunikációra. További információért tekintse meg a rövid útmutató dokumentációját a [Gremlin-konzol használatáról](create-graph-gremlin-console.md). Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával. Az alábbi példák bemutatják, hogyan futtathat lekérdezéseket a gráf adatain a Gremlin-konzol használatával.
+A Gremlin-konzol egy interaktív terminál, amelyet az Apache TinkerPop kínál, és ez a terminál a Graph-adatkezeléshez használatos. További információért tekintse meg a rövid útmutató dokumentációját a [Gremlin-konzol használatáról](create-graph-gremlin-console.md). Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával. Az alábbi példák bemutatják, hogyan futtathat lekérdezéseket a gráf adatain a Gremlin-konzol használatával.
 
 Először is lássuk a CRUD-feladatokat. A következő Gremlin-utasítás beszúrja a „Thomas” csúcspontot a gráfba:
 
@@ -150,7 +150,7 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 

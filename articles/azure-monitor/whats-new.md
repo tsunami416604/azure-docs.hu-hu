@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0809894964ff99c468f8bf3876bfdb44995656f7
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569526"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667471"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
@@ -19,9 +19,67 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="august-2020"></a>2020. augusztus
 
-### <a name="containers"></a>Tárolók
+### <a name="general"></a>Általános kérdések
 
+- A [Azure monitor által figyelt](monitor-reference.md) frissítések Azure monitor ügynök belefoglalásával.
+
+
+### <a name="agents"></a>Ügynökök
+- [Azure monitor ügynök áttekintése](platform/azure-monitor-agent-overview.md) – új cikk.
+- [Azure monitor engedélyezése hibrid környezethez](insights/vminsights-enable-hybrid.md) – frissített függőségi ügynök verziója.
+- [Az Azure monitoring-ügynökök áttekintése](platform/agents-overview.md) – Azure monitor ügynök és összevont operációs rendszer támogatási táblázata.
+
+
+#### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>Új és frissített cikkek az ügynök tartalmának újrastrukturálása esetén
+- [Azure Monitor for VMs-áttekintés engedélyezése](insights/vminsights-enable-overview.md)
+- [Log Analytics-ügynök telepítése Linux rendszerű számítógépekre](platform/agent-linux.md)
+- [Log Analytics ügynök telepítése Windows rendszerű számítógépekre](platform/agent-windows.md)
+- [Log Analytics-ügynök áttekintése](platform/log-analytics-agent.md)
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights a JavaScript-webalkalmazásokhoz](app/javascript.md) – hozzáadott szakasz az ügyfél-kiszolgáló korrelációjának és konfigurációjának pontosítása a CORS korreláció érdekében.
+- [Hozzon létre egy új Azure Monitor Application Insights munkaterület-alapú erőforrások](app/create-workspace-resource.md) által biztosított képességek a munkaterület-alapú alkalmazások számára.
+- A [Application Insights és log Analytics által használt IP-címek](app/ip-addresses.md) az élő metrikák adatfolyamának frissített IP-címei.
+- [Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor Application Insights](app/java-in-process-agent.md) – a támogatott egyéni telemetria tartozó táblázat hozzáadva.
+- [Natív reagáló beépülő modul a Application Insights JavaScript SDK](app/javascript-react-native-plugin.md) -hoz – új cikk.
+- [A beépülő modul Application Insights JavaScript SDK](app/javascript-react-plugin.md) -hoz – új cikk.
+- [Resource Manager-sablon minta Azure Function-alkalmazások létrehozásához Application Insights monitoring](samples/resource-manager-function-app.md) – új cikk.
+- [Resource Manager-sablonok az Azure app Services Web Apps és a Application Insights monitoring](samples/resource-manager-web-app.md) – új cikk létrehozásához.
+- [Használat elemzése az Azure Application Insights](app/usage-overview.md) – videó hozzáadva.
+
+### <a name="autoscale"></a>Automatikus méretezés
+- [Ismerkedjen meg az Azure-beli autoskálázással](platform/autoscale-get-started.md) a app Service healty-példányainak útválasztása című témakörben.
+
+### <a name="data-collection"></a>Adatgyűjtés
+- [Az adatgyűjtési szolgáltatás konfigurálása a Azure monitor-ügynökhöz (előzetes verzió)](platform/data-collection-rule-azure-monitor-agent.md) – új cikk.
+- Adatgyűjtés [szabályai a Azure monitor (előzetes verzió)](platform/data-collection-rule-overview.md) – új cikk.
+
+
+### <a name="containers"></a>Containers
 - [Üzembe helyezés & hPa-metrikák Azure monitor for containers](insights/container-insights-deployment-hpa-metrics.md) – új cikk.
+
+### <a name="insights"></a>Insights
+- [Azure monitor figyelési megoldásai](insights/solutions.md) – új felhasználói felület frissítése.
+- [Network Performance monitor megoldás az Azure-ban](insights/network-performance-monitor.md) – támogatott munkaterület-régiók.
+
+
+### <a name="logs"></a>Naplók
+- [Azure monitor GYIK](faq.md) – az adatok munkaterületről való törléséhez hozzáadott bejegyzés. Bejegyzés hozzáadva a 502-es és a 503-es válaszokhoz.
+  - [A Azure monitor naplók üzembe helyezésének megtervezése – a](platform/design-logs-deployment.md) betöltési mennyiségre vonatkozó frissítési korlát szakasz.
+- [Azure monitor naplók használatának és költségeinek kezelése – a](platform/manage-cost-storage.md) frissített használati lekérdezések hatékonyabbá teszi a lekérdezési formátumot.
+- [A Azure monitor](log-query/query-optimization.md) -specifikus értékek a teljesítménymutatók számára történő optimalizálása.
+- [Resource Manager-sablonok – minták a diagnosztikai beállításokhoz](samples/resource-manager-diagnostic-settings.md) – a napló lekérdezési naplóihoz hozzáadott minta.
+
+
+### <a name="platform-logs"></a>Platformnaplók
+- [Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre való küldéséhez](platform/diagnostic-settings.md) – a diagnosztikai beállításokhoz hozzáadott regionális követelmény.
+
+### <a name="visualizations"></a>Vizualizációk
+- [Azure monitor munkafüzetek áttekintése](platform/workbooks-overview.md) – videó hozzáadva.
+- [Azure-munkafüzet sablonjának áthelyezése egy másik régióba](platform/workbook-templates-move-region.md) – új cikk.
+- [Azure-munkafüzetek áthelyezése egy másik régióba](platform/workbooks-move-region.md) – új cikk.
+
+
 
 ## <a name="july-2020"></a>2020. július
 
@@ -42,7 +100,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Resource Manager-sablonok – minták Application Insights erőforrásokhoz](samples/resource-manager-app-resource.md) – új cikk.
 - Az [Azure Application Insights Profiler-vel kapcsolatos problémák elhárítása](app/profiler-troubleshooting.md) – megjegyzés a ASP.net Core-alkalmazások Azure app Service-on futó hiba a Profilerben. 
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - A [Azure monitor for containers – új cikk értesítéseinek naplózása](insights/container-insights-log-alerts.md) .
 - [Metrikai riasztások Azure monitor a tárolók számára](insights/container-insights-metric-alerts.md) – új cikk.
 
@@ -105,7 +163,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Alkalmazások figyelése programkód módosítása nélkül – automatikus rendszerállapot-Azure Monitor Application Insights](app/codeless-overview.md) – új cikk.
 - [Az SDK-Betöltési hiba elhárítása JavaScript-webalkalmazások esetén](app/javascript-sdk-load-failure.md) – új cikk.
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - [A hibrid Kubernetes-fürthöz tartozó új szakasz figyelésének leállítása](insights/container-insights-optout-hybrid.md) az ív-kompatibilis Kubernetes.
 - [Azure arc-kompatibilis Kubernetes-fürt konfigurálása Azure monitor for containers](insights/container-insights-enable-arc-enabled-clusters.md) – új cikk.
 - Az [Azure Red Hat OpenShift v4. x konfigurálása Azure monitor for containers esetében](insights/container-insights-azure-redhat4-setup.md) – frissített előfeltételek.
@@ -120,7 +178,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – az adatméret számításával kapcsolatos további részletek. Frissült az adatmennyiség-riasztások konfigurálása. Az Azure Sentinel által összegyűjtött biztonsági adatok részletei. Az adatsapka pontosítása.
 - [Azure monitor naplók használata a Azure Logic apps és a Power automatizáló](platform/logicapp-flow-connector.md) által hozzáadott összekötő-korlátokkal.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 - [Azure monitor támogatott mérőszámok erőforrástípus szerint](platform/metrics-supported.md) – frissített SQL Server metrikák.
 
 
@@ -212,7 +270,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - A [tárolók Azure monitorának engedélyezése](insights/container-insights-onboard.md) – frissített tűzfal-konfigurációs tábla.
 - A [tárolók Azure monitorának frissítése a metrikák](insights/container-insights-update-metrics.md) számára – frissítés a felügyelt identitások használatához a metrikák összegyűjtéséhez.
 - [A tárolók Azure monitor figyelési díja](insights/container-insights-cost.md) – új cikk.
@@ -233,7 +291,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [A PowerShell használatával hozzon létre és konfiguráljon egy log Analytics munkaterület](platform/powershell-workspace-configuration.md) által hozzáadott hibaelhárítás szakaszt.
 
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 - [Azure monitor támogatott mérőszámok erőforrástípus szerint](platform/metrics-supported.md) – egyértelmű vendég metrikák és metrikák útválasztása. 
 
 ### <a name="solutions"></a>Megoldások
@@ -275,7 +333,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Application Insights eltávolítása a Visual Studióban](app/remove-application-insights.md) – új cikk.
 - [Telemetria-mintavételezés az Azure Application Insightsban](app/sampling.md) – javítás a Pythonban rögzített sebességű mintában.
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
 - Az [Azure Red Hat OpenShift v4. x konfigurálása Azure monitor for containers szolgáltatással](insights/container-insights-azure-redhat4-setup.md) – új cikk.
 - [ServiceNow-szinkronizálási problémák manuális javítása](platform/itsmc-resync-servicenow.md) – új cikk.
@@ -292,7 +350,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure monitor szolgáltatás korlátai](service-limits.md) – a felhasználói lekérdezések szabályozása.
 - [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – a naplókhoz hozzáadott számlázás. Kusto-lekérdezés hozzáadva, amely lehetővé teszi az ügyfelek számára a csomópontok közötti örökölt díjszabási szintet annak megállapítására, hogy a felhasználóknak GB vagy Capacity foglalási szinten kell áttérniük.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 - [Az Azure Metrikaböngésző](platform/metrics-charts.md) által hozzáadott összesítési szakasz speciális funkciói.
 
@@ -323,7 +381,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Python-alkalmazások figyelése Azure monitor (előzetes verzió)](app/opencensus-python.md) – szabványos metrikák hozzáadása.
 - [Forrás-hozzárendelési támogatás JavaScript-alkalmazásokhoz – Azure Monitor Application Insights](app/source-map-support.md) – új cikk.
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
 - [Azure monitor GYIK](faq.md) – Azure monitor tárolók frissítése.
 - [GPU-figyelés konfigurálása a Azure monitor for containers](insights/container-insights-gpu-monitoring.md) – új cikk.
@@ -338,7 +396,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Az Azure log Analytics munkaterület törlése és helyreállítása](platform/delete-workspace.md) – hibaelhárítás.
 - [Azure monitor naplók használata Azure Logic apps és energiagazdálkodási automatizálással](platform/logicapp-flow-connector.md) – frissítve az új Azure monitor-összekötőhöz.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 - [A lemez metrikáinak elavulása a Azure Portal](platform/portal-disk-metrics-deprecation.md) új cikkben.
 - [Oktatóanyag – mérőszámok diagramjának létrehozása Azure monitor](learn/tutorial-metrics-explorer.md) által hozzáadott videóban.
@@ -407,7 +465,7 @@ Több frissítés a diagnosztikai bővítmény tartalmának újraírása részek
 - Azure Monitor-új cikkben [található naplók optimalizálása](log-query/query-optimization.md) .
 - [Azure monitor naplók használatának és költségeinek kezelése](platform/manage-cost-storage.md) – továbbfejlesztett minta-lekérdezések, amelyek segítenek a használat megértésében.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 - [Azure monitor a platform metrikái exportálhatók a diagnosztikai beállítások](platform/metrics-supported-export-diagnostic-settings.md) – hozzáadott szakasz a nullák és a nulla értékek viselkedésének változása esetén.
 
@@ -531,7 +589,7 @@ Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
 - [Az Azure log Analytics munkaterület törlése és helyreállítása](platform/delete-workspace.md) – PowerShell-metódus hozzáadva.
 - [Megtervezheti a Azure monitor naplók üzembe helyezését](platform/design-logs-deployment.md) – a munkaterületek terhelési arányának növelését.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 - [Azure monitor a platform metrikái exportálhatók a diagnosztikai beállítások használatával](platform/metrics-supported-export-diagnostic-settings.md) – új cikk.
 

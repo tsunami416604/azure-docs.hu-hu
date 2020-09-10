@@ -2,17 +2,16 @@
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 08/05/2020
 ms.author: jrasnick
-ms.openlocfilehash: d5056d5ca44701af57e7d278899c011e3a440a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6518b30b60d78609f17728e1614d82d6e4b8f4d
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83587874"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669700"
 ---
 > [!IMPORTANT]
-> Az Azure szinapszis Analytics (munkaterületek) jelenleg előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure szinapszis Analytics (munkaterületek előzetes verziója) szolgáltatói szerződés nélkül van megadva. Éles munkaterhelések esetén nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 

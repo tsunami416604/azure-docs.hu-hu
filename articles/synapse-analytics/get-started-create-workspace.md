@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 949afc00b12b1238973f832270d57fff3c2db5f9
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255018"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669543"
 ---
 # <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
 
@@ -35,7 +35,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szinapszis-munk
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
     1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
     1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználók**nevet.
-1. 2. lehetőség: a **Storage-fiók előkészítési** utasításai a dokumentum alján találhatók.
+1. 2. lehetőség meglévő ADLSGEN2-fiók használatával. Tekintse meg a jelen dokumentum alján található **ADLSGEN2-fiók előkészítésével** kapcsolatos utasításokat.
 1. Az Azure szinapszis-munkaterülete ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók és a munkaterület-adattárolási tároló számára. A munkaterület Apache Spark táblákban tárolja az adattárakat. Egy **/Synapse/workspacename**nevű mappában tárolja a Spark-alkalmazás naplóit.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
@@ -94,29 +94,23 @@ A más típusú készletektől eltérően az SQL igény szerinti számlázása a
 * Az SQL on-demand saját SQL igény szerinti adatbázisokat tartalmaz, amelyek egymástól függetlenül léteznek bármely SQL igény szerinti készletből.
 * A munkaterületnek mindig van egy SQL igény szerinti, **igény**szerinti SQL on-demand nevű készlete.
 
-## <a name="prepare-a-storage-account"></a>Storage-fiók előkészítése
+## <a name="preparing-a-adlsgen2-storage-account"></a>ADLSGEN2 Storage-fiók előkészítése
+
+### <a name="perform-the-following-steps-before-you-create-your-workspace"></a>A munkaterület létrehozása előtt hajtsa végre a következő lépéseket
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. Hozzon létre egy új Storage-fiókot, amely a következő beállításokkal rendelkezik:
-
-    |Tab|Beállítás | Ajánlott érték | Leírás |
-    |---|---|---|---|
-    |Alapvető beállítások|**Tárfiók neve**| Válassza ki a kívánt nevet.| Ebben a dokumentumban a **contosolake**nevet fogjuk használni.|
-    |Alapvető beállítások|**Fiók altípusa**| **StorageV2** ||
-    |Alapvető beállítások|**Hely**|Válassza ki a kívánt helyet.| Javasoljuk, hogy az Azure szinapszis Analytics-munkaterülete és Azure Data Lake Storage Gen2 fiókja ugyanabban a régióban legyen.|
-    |Felsőfokú|**Data Lake Storage Gen2**|**Engedélyezve**| Az Azure szinapszis csak olyan Storage-fiókokkal működik, amelyeken engedélyezve van ez a beállítás.|
-    |||||
-
-1. A Storage-fiók létrehozása után a bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Ezután rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy már hozzá van rendelve:
+1. Navigáljon a meglévő Storage-fiókjához
+1. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
+1. Rendelje hozzá a következő szerepköröket, vagy győződjön meg róla, hogy már hozzá van rendelve:
     * Rendelje hozzá magát a **tulajdonosi** szerepkörhöz.
     * Rendeljen hozzá saját magát a **Storage blob-adat tulajdonosi** szerepköréhez.
 1. A bal oldali ablaktáblán válassza a **tárolók** lehetőséget, és hozzon létre egy tárolót.
-1. Megadhatja a tároló nevét. Ebben a dokumentumban a Container **Users**nevet fogjuk megkeresni.
+1. Megadhatja a tároló nevét. Ebben a dokumentumban a  **felhasználók**nevet használjuk.
 1. Fogadja el az alapértelmezett **nyilvános hozzáférési szint**beállítást, majd válassza a **Létrehozás**lehetőséget.
 
-### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>A Storage-fiókhoz való hozzáférés konfigurálása a munkaterületről
+### <a name="perform-the-following-steps-after-you-create-your-workspace"></a>A munkaterület létrehozása után végezze el a következő lépéseket
 
-Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt identitások már hozzáférnek a Storage-fiókhoz. Az alábbi lépéseket követve győződjön meg arról, hogy:
+Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt identitások már hozzáférnek a Storage-fiókhoz. Az alábbi lépéseket követve győződjön meg arról, hogy:
 
 1. Nyissa meg a munkaterülethez kiválasztott [Azure Portal](https://portal.azure.com) és elsődleges Storage-fiókot.
 1. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget.

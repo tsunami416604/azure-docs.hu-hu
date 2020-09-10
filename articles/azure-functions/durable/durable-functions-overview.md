@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660682"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669247"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -23,7 +23,7 @@ A Durable Functions jelenleg a következő nyelveket támogatja:
 
 * **C#**: mindkét előre [lefordított osztály kódtára](../functions-dotnet-class-library.md) és [C# parancsfájl](../functions-reference-csharp.md).
 * **JavaScript**: csak az Azure functions futtatókörnyezet 2. x verziójára támogatott. A Durable Functions-bővítmény vagy újabb verzió 1.7.0 szükséges. 
-* **Python**: az Durable functions-bővítmény vagy egy újabb verzió 1.8.5 szükséges. 
+* **Python**: az Durable functions-bővítmény vagy egy újabb verzió 1.8.5 szükséges. A Durable Functions támogatása jelenleg nyilvános előzetes verzióban érhető el.
 * **F #**: előre lefordított osztály kódtárak és F # szkript. Az F # parancsfájl csak az Azure Functions futtatókörnyezet 1. x verziójában támogatott.
 * **PowerShell**: a Durable functions támogatása jelenleg nyilvános előzetes verzióban érhető el. Csak a Azure Functions futtatókörnyezet 3. x verziójára és a PowerShell 7 verzióra támogatott. A Durable Functions-bővítmény, illetve egy újabb verzió 2.2.2-es verziójának megadását igényli. Jelenleg csak a következő minták támogatottak: [függvények láncolása](#chaining), [ventilátor-kijelentkezés/ventilátor](#fan-in-out), [aszinkron http API](#async-http)-k.
 
@@ -708,7 +708,7 @@ A következő, a nyelvfüggő gyors útmutatók egyikének elvégzésével megke
 
 Ezekben a gyors útmutatókban helyileg létrehozhatja és tesztelheti a "Hello World" tartós funkciót. Ezután közzéteheti a függvénykódot az Azure-ban. Az Ön által létrehozott függvény összehangolja és láncokba rendezi a más függvények hívásait.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információ
 
 Az alábbi videó a Durable Functions előnyeit mutatja be:
 

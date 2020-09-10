@@ -2,20 +2,20 @@
 title: Oktatóanyag – sablon üzembe helyezése a paraméter használatával
 description: Használjon olyan paramétereket, amelyek tartalmazzák a Azure Resource Manager-sablon üzembe helyezéséhez használandó értékeket.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff3ba6bdf93fd51b3b78fce2bc82404423c427ba
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502800"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667439"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Oktatóanyag: paraméterek használata az ARM-sablon üzembe helyezéséhez
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatók a [paraméter-fájlok](parameter-files.md) az üzembe helyezés során beadott értékek tárolására. Az előző oktatóanyagokban beágyazott paramétereket használt a telepítési paranccsal. Ez a megközelítés a Azure Resource Manager-(ARM-) sablon tesztelésére szolgál, de a központi telepítések automatizálásakor könnyebb lehet átadni a környezete értékeit. A paraméter-fájlok megkönnyítik egy adott környezet paramétereinek értékének becsomagolását. Ebben az oktatóanyagban paramétereket hozhat létre fejlesztési és éles környezetekhez. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatók a [paraméter-fájlok](parameter-files.md) az üzembe helyezés során beadott értékek tárolására. Az előző oktatóanyagokban beágyazott paramétereket használt a telepítési paranccsal. Ez a megközelítés a Azure Resource Manager-sablon (ARM-sablon) tesztelésére szolgál, de a központi telepítések automatizálása során könnyebben lehet átadni az adott környezethez tartozó értékek halmazát. A paraméter-fájlok megkönnyítik egy adott környezet paramétereinek értékének becsomagolását. Ebben az oktatóanyagban paramétereket hozhat létre fejlesztési és éles környezetekhez. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,6 +34,12 @@ Ez a sablon jól működik, de most egyszerűen kezelheti a sablonhoz megadott p
 ## <a name="add-parameter-files"></a>Paraméter-fájlok hozzáadása
 
 A paraméter fájljai a sablonhoz hasonló struktúrával rendelkező JSON-fájlok. A fájlban adja meg az üzembe helyezés során átadni kívánt paramétereket.
+
+A paraméter fájljában megadja a sablon paramétereinek értékeit. A paramétert tartalmazó fájlban szereplő paraméterek nevének meg kell egyeznie a sablonban található paraméterek nevével. A név megkülönbözteti a kis-és nagybetűket, de a megfelelő értékeket egyszerűen megtekintheti, ezért azt javasoljuk, hogy a sablon alapján egyeztesse a burkolatot.
+
+Minden paraméterhez nem kell értéket megadnia. Ha egy meghatározatlan paraméter alapértelmezett értékkel rendelkezik, akkor az üzembe helyezés során a rendszer ezt az értéket használja. Ha egy paraméter nem rendelkezik alapértelmezett értékkel, és nincs megadva a paraméter fájljában, a rendszer felszólítja, hogy adjon meg egy értéket az üzembe helyezés során.
+
+Nem adhat meg olyan paraméter-nevet a paraméter-fájlban, amely nem egyezik meg a sablonban szereplő paraméterek nevével. Hibaüzenet jelenik meg, ha ismeretlen paraméterek vannak megadva.
 
 A VS Code-ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt **azuredeploy.parameters.dev.jsa**következő néven:.
 
