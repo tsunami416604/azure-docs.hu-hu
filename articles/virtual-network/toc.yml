@@ -96,7 +96,7 @@
         - name: Network security groups (Hálózati biztonsági csoportok)
           items:
             - name: Áttekintés
-              href: security-overview.md
+              href: network-security-groups-overview.md
             - name: Működés
               href: network-security-group-how-it-works.md
         - name: Alkalmazásbiztonsági csoportok

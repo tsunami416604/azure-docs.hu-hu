@@ -32,6 +32,10 @@
       href: private-link-service-overview.md
     - name: Privát végpont DNS-integrációja
       href: private-endpoint-dns.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutató
   items:
     - name: Privát csatlakozás tárfiókokhoz

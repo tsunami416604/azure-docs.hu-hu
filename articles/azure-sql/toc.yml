@@ -924,8 +924,6 @@
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Rövid útmutatók
           items:
-            - name: SQL-alapú virtuális gép létrehozása
-              items: null
             - name: Portál
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
             - name: PowerShell

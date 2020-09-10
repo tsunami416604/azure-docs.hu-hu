@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: Útmutató
   items:
+    - name: Portálbeállítások
+      href: manage.md
     - name: Virtuálisgép-méretezési csoportok
       items:
         - name: Használat meglévő Azure Load Balancerrel – portál

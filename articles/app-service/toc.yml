@@ -27,6 +27,8 @@
       href: quickstart-ruby.md
     - name: Statikus HTML-webhely
       href: quickstart-html.md
+    - name: ARM-sablon
+      href: quickstart-arm-template.md
     - name: Egyéni tároló
       href: quickstart-custom-container.md
     - name: Többtárolós alkalmazás
