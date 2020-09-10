@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4150464b5c59b631afea0c788b1e351dee5185f9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 86ae186d3d8b131955be7d9fa2c305316dea9f00
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299418"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658464"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -176,7 +176,7 @@ Egy függvény egy adott esemény által "aktiválva". A forgatókönyvben egy E
 
 Most beállítjuk az Azure-függvényt.
 
-1. Az Azure Portal irányítópulton kattintson az **erőforrás létrehozása**elemre. A keresés szövegmezőbe írja be a **függvényalkalmazás** kifejezést. Kattintson **függvényalkalmazás**. Kattintson a **Létrehozás** lehetőségre.
+1. Az Azure Portal irányítópulton kattintson az **erőforrás létrehozása**elemre. A keresés szövegmezőbe írja be a **függvényalkalmazás** kifejezést. Kattintson **függvényalkalmazás**. Kattintson a **Létrehozás** gombra.
 
 2. A **függvényalkalmazás** létrehozás lapon nevezze el a Function alkalmazást. Az **erőforráscsoport**területen válassza a *ContosoRental* lehetőséget a legördülő listából.  Válassza ki a *.net Core* -t **futtatókörnyezeti veremként**. A lap alján kattintson a **Tovább gombra: >üzemeltetése ** lehetőségre.
 
@@ -204,7 +204,7 @@ Most beállítjuk az Azure-függvényt.
     * Cserélje le a **UDID** -t a `udid` [geokerítésen feltöltésével](#upload-a-geofence)feltöltött geokerítésen.
     * A szkriptben a **CreateBlobAsync** függvény egy blobot hoz létre eseményként az adattároló-fiókban. Cserélje le a **ACCESS_KEY**, **ACCOUNT_NAME**és **STORAGE_CONTAINER_NAME** a Storage-fiók hozzáférési kulcsára, a fiók nevére és az adattároló-tárolóra. Ezek az értékek akkor jöttek létre, amikor létrehozta a Storage-fiókot az [Azure Storage-fiók létrehozásakor](#create-an-azure-storage-account).
 
-9. Kattintson az **integráció** panelre a bal oldali menüben. Kattintson **Event Grid triggerre** a diagramon. Írja be az trigger nevét, például *eventCarTelemetry*, majd kattintson **Event Grid előfizetés létrehozása**lehetőségre.
+9. Kattintson az **integráció** panelre a bal oldali menüben. Kattintson **Event Grid triggerre** a diagramon. Írja be az trigger nevét, a *eventGridEvent*, majd kattintson a **Event Grid-előfizetés létrehozása**elemre.
 
      :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Esemény-előfizetés hozzáadása":::
 
@@ -212,7 +212,7 @@ Most beállítjuk az Azure-függvényt.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Esemény-előfizetés létrehozása":::
 
-11. Tekintse át a beállításokat. Győződjön meg arról, hogy a végpont a szakasz elején létrehozott függvényt adja meg. Kattintson a **Létrehozás** lehetőségre.
+11. Tekintse át a beállításokat. Győződjön meg arról, hogy a végpont a szakasz elején létrehozott függvényt adja meg. Kattintson a **Létrehozás** gombra.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Esemény-előfizetés megerősítésének létrehozása":::
 

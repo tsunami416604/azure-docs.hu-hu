@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 304f80dcb2da4ed60bd94e9fb4d71d985da87cc2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496213"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662002"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyors útmutató: az Azure Sentinel használatának első lépései
 
@@ -34,7 +34,7 @@ A környezettel kapcsolatos események megjelenítéséhez és elemzéséhez el�
 
 - A felső eszköztáron látható, hogy hány esemény van kiválasztva a kiválasztott időszakban, és összehasonlítja azt az előző 24 órában. Az eszköztár tájékoztat ezekről az eseményekről, az aktivált riasztásokról (a kis szám az elmúlt 24 órában változik), majd elmondja Önnek, hogy hányan nyitott, folyamatban és lezárult. Ellenőrizze, hogy az események száma nem drámai növekedést vagy csökkenést eredményez-e. Ha van eldobás, lehetséges, hogy a kapcsolatok leállították a jelentést az Azure Sentinelnek. Ha nő a növekedés, előfordulhat, hogy gyanús esemény történt. Ellenőrizze, hogy vannak-e új riasztások.
 
-   ![Azure Sentinel tölcsér](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel-számlálók](./media/qs-get-visibility/funnel.png)
 
 Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági állapotáról:
 
@@ -42,14 +42,14 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
 - **Lehetséges kártékony események**: Ha a rendszer forgalmat észlel a kártékonyként ismert forrásokból, az Azure Sentinel riasztást küld a térképen. Ha a narancssárga látható, akkor bejövő forgalom: valaki megpróbál hozzáférni a szervezethez egy ismert kártékony IP-címről. Ha a kimenő (vörös) tevékenységet látja, az azt jelenti, hogy a hálózatról származó adatok a szervezetből egy ismert kártékony IP-címről áramlanak.
 
-   ![Azure Sentinel-Térkép](./media/qs-get-visibility/map.png)
+   ![Rosszindulatú forgalom térképe](./media/qs-get-visibility/map.png)
 
 
-- **Legutóbbi incidensek**: a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsát látja, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például hirtelen 20 Pass-The-hash típusú eseményt használ az Azure ATP-ből, lehetséges, hogy valaki megpróbálja megtámadni Önt.
+- **Legutóbbi incidensek**: a legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintése. Ha egy adott típusú riasztás hirtelen csúcsát látja, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például egy hirtelen 20 Pass-The-hash típusú eseményt használ a Microsoft Defender for Identity (korábbi nevén Azure ATP) számára, akkor lehetséges, hogy valaki jelenleg próbálkozik a támadással.
 
 - **Adatforrások rendellenességei**: a Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatokkal kapcsolatos rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A **diagramra** kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
 
-   ![Azure Sentinel-Térkép](./media/qs-get-visibility/anomolies.png)
+   ![Rendellenes adatforrások](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>Beépített munkafüzetek használata<a name="dashboards"></a>
 
@@ -64,10 +64,10 @@ A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott a
 
    - Adjon hozzá egy munkafüzetet a tűzfalhoz. Adja meg például a Palo Alto-munkafüzetet. A munkafüzet elemzi a tűzfal forgalmát, és összekapcsolja a tűzfal adatai és a veszélyforrás események közötti összefüggéseket, és kiemeli a gyanús eseményeket az entitások között. A munkafüzetek adatokat biztosítanak a forgalom trendjeiről, és lehetővé teszik az eredmények részletezését és szűrését. 
 
-      ![Pal Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
+      ![Palo Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-A munkafüzeteket testreszabhatja a fő lekérdezési gomb szerkesztésével ![ ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja ![ ](./media/qs-get-visibility/go-to-la-button.png) [a log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), majd kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a Főidő szűrő szerkesztését, vagy a munkafüzetből való eltávolítását.
+A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezési ![ lekérdezés szerkesztése gombot ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja a ![ ](./media/qs-get-visibility/go-to-la-button.png) log Analytics a [lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a fő Időszűrő szerkesztését, vagy eltávolíthatja a munkafüzetből az adott csempéket.
 
 További információ a lekérdezések használatáról [: oktatóanyag: vizualizációs adatok log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -126,7 +126,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

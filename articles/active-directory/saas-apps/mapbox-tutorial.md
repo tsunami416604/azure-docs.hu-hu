@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554770"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661912"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Mapbox
 
@@ -41,6 +41,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Mapbox támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 * A Mapbox konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="adding-mapbox-from-the-gallery"></a>Mapbox hozzáadása a gyűjteményből
 
@@ -110,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -136,15 +139,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **Beállítások** fülre.
 
-    ![Mapbox-konfiguráció](./media/mapbox-tutorial/configure1.png)
+    ![Mapbox-beállítások lap](./media/mapbox-tutorial/configure1.png)
 
 1. Kattintson a bal oldali navigációs ablaktábla **Biztonság** fülére.
 
-    ![Mapbox-konfiguráció](./media/mapbox-tutorial/configure2.png)
+    ![Mapbox Biztonság lap](./media/mapbox-tutorial/configure2.png)
 
 1. Kattintson az **egyszeri bejelentkezés szerkesztése**elemre.
 
-    ![Mapbox-konfiguráció](./media/mapbox-tutorial/configure3.png)
+    ![Mapbox egyszeri bejelentkezés szerkesztése](./media/mapbox-tutorial/configure3.png)
 
 1. Görgessen le a **3. lépés: SAML egyszeri bejelentkezés beállítása a Mapbox** , és hajtsa végre a következő lépéseket:
 

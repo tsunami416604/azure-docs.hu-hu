@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d75dbfc1acd3ffee1b641a3110717eb11ab4e623
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f85430aea183cca977e3cb648cb43779f25c61a0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228239"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657825"
 ---
 # <a name="what-is-identity-provisioning"></a>Mi az az identitáslétesítés?
 
@@ -40,10 +40,10 @@ A HR-ből a felhőbe való kiépítés magában foglalja az adott HR-rendszeren 
 
 A leggyakoribb forgatókönyv a következő: amikor egy új alkalmazott csatlakozik a vállalathoz, azok bekerülnek a HR-rendszerbe.  Ha ez bekövetkezik, a rendszer kiépíti a felhőbe.  Ebben az esetben az Azure AD-t.  A HR-ből való kiépítés a következő helyzetekben lehetséges. 
 
-- **Új alkalmazottak felvétele** – ha új alkalmazottat ad hozzá a Cloud HR-hez, a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és az Azure ad által támogatott egyéb SaaS-alkalmazásokban, az e-mail-cím a Cloud HR-re való visszaírásával.
-- **Alkalmazotti attribútumok és a profil frissítései** – ha egy alkalmazotti rekord frissül a Felhőbeli HR-ben (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory és opcionálisan az Office 365-ben és az Azure ad által támogatott egyéb SaaS-alkalmazásokban is.
+- **Új alkalmazottak felvétele** – ha új alkalmazottat ad hozzá a Cloud HR szolgáltatáshoz, a rendszer automatikusan létrehoz egy felhasználói fiókot Active Directory, Azure Active Directory és opcionálisan Microsoft 365 és más SaaS-alkalmazásokban, amelyeket az Azure ad támogat, és az e-mail-címet a Cloud HR-re írja vissza.
+- **Alkalmazotti attribútumok és a profil frissítései** – ha egy alkalmazotti rekord frissül a Felhőbeli HR-ben (például a nevük, a cím vagy a felettes), a felhasználói fiókja automatikusan frissül Active Directory, Azure Active Directory és opcionálisan Microsoft 365 és más, az Azure ad által támogatott SaaS-alkalmazásokban is.
 - **Alkalmazotti megszakítások** – ha egy alkalmazott leáll a Cloud HR-ben, a felhasználói fiókja automatikusan le van tiltva Active Directory, Azure Active Directory és opcionálisan az Office 365 és az Azure ad által támogatott egyéb SaaS-alkalmazások esetében.
-- **Alkalmazottak** újratelepítése – ha egy alkalmazottat a Felhőbeli HR-ben helyeztek üzembe, a régi fiók automatikusan újraaktiválható vagy újraépíthető (a beállítástól függően), hogy Active Directory, Azure Active Directory, és opcionálisan az Office 365 és az Azure ad által támogatott egyéb SaaS-alkalmazásokat.
+- **Alkalmazottak** újratelepítése – ha egy alkalmazottat a Felhőbeli HR-ben helyeztek üzembe, a régi fiók automatikusan újraaktiválható vagy újra kiépíthető (az Ön igényeitől függően), hogy Active Directory, Azure Active Directory, és opcionálisan Microsoft 365 és más, az Azure ad által támogatott SaaS-alkalmazásokat.
 
 
 ## <a name="app-provisioning"></a>Alkalmazás kiépítés
@@ -62,7 +62,7 @@ A leggyakoribb forgatókönyv a következő: Ha Active Directory (AD) felhaszná
 
 Ezt a Azure AD Connect Sync, Azure AD Connect a felhőalapú kiépítés és a Microsoft Identity Manager használatával hajtották végre. 
  
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
 - [A felhő kiépítés telepítése](how-to-install.md)

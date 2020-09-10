@@ -3,12 +3,12 @@ title: 'Gyors útmutató: felügyeleti csoport létrehozása a portálon'
 description: Ebben a rövid útmutatóban a Azure Portal használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
 ms.date: 08/31/2020
 ms.topic: quickstart
-ms.openlocfilehash: 28b530e1da6b75dcc20e4a5dfebc494a959040b3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237265"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661736"
 ---
 # <a name="quickstart-create-a-management-group"></a>Gyors útmutató: felügyeleti csoport létrehozása
 
@@ -32,16 +32,16 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 
 1. Válassza a **+ felügyeleti csoport hozzáadása**lehetőséget.
 
-   :::image type="content" source="./media/main.png" alt-text="A felügyeleti csoportok használatáról szóló oldal" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Képernyőfelvétel a felügyeleti csoportok lapról alárendelt felügyeleti csoportok és előfizetések." border="false":::
 
 1. Hagyja meg az **új kijelölt létrehozása** elemet, és töltse ki a felügyeleti csoport azonosítója mezőt.
 
    - A **felügyeleti csoport azonosítója** a címtár egyedi azonosítója, amely a parancsok ezen a felügyeleti csoporton való elküldésére szolgál. Ez az azonosító nem szerkeszthető a létrehozás után, mivel az egész Azure-rendszeren a csoport azonosítására szolgál. A rendszer automatikusan létrehozza a [gyökérszintű felügyeleti csoportot](./overview.md#root-management-group-for-each-directory) a Azure Active Directory azonosítójaként megadott azonosítóval. Az összes többi felügyeleti csoport esetében rendeljen hozzá egy egyedi azonosítót.
    - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Beállítások ablaktábla új felügyeleti csoport létrehozásához":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Képernyőkép a felügyeleti csoport hozzáadása lehetőségről az új felügyeleti csoport létrehozásához.":::
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -54,7 +54,7 @@ A létrehozott felügyeleti csoport eltávolításához kövesse az alábbi lép
 1. Keresse meg a fent létrehozott felügyeleti csoportot, jelölje ki, majd válassza a név melletti **részletek** lehetőséget.
    Ezután válassza a **Törlés** lehetőséget, és erősítse meg a kérdést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
 

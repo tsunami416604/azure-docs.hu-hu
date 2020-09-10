@@ -3,12 +3,12 @@ title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányí
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d259f44b8424afa9fcfc94b3f1812a0485ab2993
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920160"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659245"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
@@ -21,7 +21,9 @@ Alkalmazhat például olyan szabályzatokat egy felügyeleti csoportra, amelyek 
 
 A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozásával hierarchiába rendezheti erőforrásait az egységes szabályzat- és hozzáféréskezeléshez. Az alábbi ábrán egy példa látható szabályozási hierarchia létrehozására felügyeleti csoportok használatával.
 
-:::image type="content" source="./media/tree.png" alt-text="Példa egy felügyeleti csoport hierarchiafájára" border="false":::
+:::image type="complex" source="./media/tree.png" alt-text="Egy példaként szolgáló felügyeleti csoport hierarchiájának ábrája." border="false":::
+   A felügyeleti csoportokat és előfizetéseket tároló legfelső szintű felügyeleti csoport ábrája. Egyes alárendelt felügyeleti csoportok felügyeleti csoportokat tartanak fenn, néhányat tartanak előfizetések, és némelyikük is megtartható. A minta-hierarchia egyik példája 4 olyan felügyeleti csoport, amelynek a gyermek szintje minden előfizetés.
+:::image-end:::
 
 Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ez a szabályzat minden olyan Nagyvállalati Szerződés (EA) előfizetésre vonatkozik, amely az adott felügyeleti csoport leszármazottait képezi, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
@@ -147,7 +149,9 @@ A szerepkör-definíciók a felügyeleti csoport hierarchiáján belül bárhol 
 
 Vegyük például a vizualizációk hierarchiájának egy kis szakaszát.
 
-:::image type="content" source="./media/subtree.png" alt-text="részfa" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="A minta felügyeleti csoport hierarchiájának egy részhalmazát ábrázoló diagram." border="false":::
+   A diagram a legfelső szintű felügyeleti csoportra összpontosít a gyermek I T és a marketing-felügyeleti csoportokkal. Az I T felügyeleti csoport egyetlen alárendelt felügyeleti csoporttal rendelkezik, és a marketing-felügyeleti csoportnak két ingyenes próbaverziós gyermek előfizetése van.
+:::image-end:::
 
 Tegyük fel, hogy egy egyéni szerepkör van definiálva a marketing felügyeleti csoportban. Ezt az egyéni szerepkört ezután a két ingyenes próbaverziós előfizetéshez rendeli hozzá.  
 
@@ -189,7 +193,7 @@ Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól
 
 A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/platform-logs-overview.md). A felügyeleti csoportokkal kapcsolatos minden eseményre ugyanarról a központi helyről kereshet rá, mint más Azure-erőforrások esetében. Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Tevékenységnaplók felügyeleti csoportokkal" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Képernyőkép a kiválasztott felügyeleti csoporttal kapcsolatos tevékenységi naplókról és műveletekről." border="false":::
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 

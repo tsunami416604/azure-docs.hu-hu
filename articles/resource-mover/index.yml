@@ -1,0 +1,48 @@
+### YamlMime:Landing
+title: Az Azure Resource Mover dokumentációja
+summary: Azure-erőforrások Azure-régiók közötti áthelyezése az Azure Resource Mover-hubban.
+metadata:
+  title: Azure Resource Manager – dokumentáció
+  description: Oktatóanyagok és információk az erőforrások Azure-régiók közötti áthelyezéséről.
+  ms.service: resource-move
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 09/09/2020
+  keywords: azure resource mover, azure regions, move across regions
+  ms.openlocfilehash: 4dec18e3000373953c93ee99a6b5500ffb515807
+  ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89652132"
+landingContent:
+- title: Tudnivalók az Azure Resource Mover használatáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az a Resource Mover?
+      url: ./overview.md
+    - text: Válasszon ki egy eszközt az erőforrások áthelyezéséhez
+      url: ./select-move-tool.md
+    - text: Gyakori kérdések
+      url: ./common-questions.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure-beli virtuális gépek áthelyezése egy másik régióba
+      url: ./tutorial-move-region-virtual-machines.md
+    - text: Azure SQL-adatbázisok és rugalmas készletek áthelyezése egy másik régióba
+      url: ./tutorial-move-region-sql.md
+- title: További információ
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Tudnivalók az áthelyezési folyamatról
+      url: ./about-move-process.md
+    - text: Azure-beli virtuális gépek áthelyezési támogatási mátrixának áttekintése
+      url: ./support-matrix-move-region-azure-vm.md
+    - text: Azure-beli SQL erőforrások áthelyezési támogatási mátrixának áttekintése
+      url: ./support-matrix-move-region-sql.md

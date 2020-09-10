@@ -136,7 +136,11 @@
       items:
         - name: Szervizelési javaslatok
           href: security-center-remediate-recommendations.md
+        - name: Helytelen konfigurációk megelőzése Kényszerítéssel/Megtagadással
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: Biztonsági helyzet megerősítése
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: Javaslatok hivatkozási listája
           href: recommendations-reference.md

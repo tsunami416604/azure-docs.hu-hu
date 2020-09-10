@@ -6,80 +6,70 @@ author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 09/03/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99f4471a3b64990fb71341dc8210bf7f8e5b0d5a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052461"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661936"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
-
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
+## <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
 
-## <a name="prerequisites"></a>Előfeltételek
+1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
+1. A keresési eredmények között, a **szolgáltatások**területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget a munkaterület létrehozásához a következő beállítások használatával:
 
-- [Azure Data Lake Storage Gen2 Storage-fiók](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+    |Tab|Beállítás | Ajánlott érték | Leírás |
+    |---|---|---|---|
+    |Alapvető beállítások|**Munkaterület neve**|Bármilyen nevet megadhat.| Ebben a dokumentumban a **sajátmunkaterület**-t fogjuk használni.|
+    |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése.|
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
+1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
+    1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
+    1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználók**nevet.
+1. 2. lehetőség: a **Storage-fiók előkészítési** utasításai a dokumentum alján találhatók.
+1. Az Azure szinapszis-munkaterülete ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók és a munkaterület-adattárolási tároló számára. A munkaterület Apache Spark táblákban tárolja az adattárakat. Egy **/Synapse/workspacename**nevű mappában tárolja a Spark-alkalmazás naplóit.
+1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
+## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Azure szinapszis-munkaterület létrehozása a Azure Portal használatával
+Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja meg a szinapszis Studio alkalmazást:
 
-1. A Microsoft Azure keresési ablaktáblán adja meg a **szinapszis munkaterületet** , majd válassza ki ezt a szolgáltatást.
-![Azure Portal keresési sáv az Azure szinapszis-munkaterületek beírásával.](media/quickstart-create-synapse-workspace/workspace-search.png)
-2. A **szinapszis munkaterületek** lapon kattintson a **+ Hozzáadás**gombra.
-![Parancs az új Azure szinapszis-munkaterület kiemeléséhez.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
-3. Töltse ki az **Azure szinapszis-munkaterület** űrlapot a következő információkkal:
+* Nyissa meg a szinapszis munkaterületet a [Azure Portal](https://portal.azure.com). Az **Áttekintés** szakasz tetején válassza a **szinapszis Studio elindítása**lehetőséget.
+* Lépjen a `https://web.azuresynapse.net` munkaterületre, és jelentkezzen be.
 
-    | Beállítás | Ajánlott érték | Leírás |
-    | :------ | :-------------- | :---------- |
-    | **Előfizetés** | *Az előfizetése* | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-    | **Erőforráscsoport** | *Bármely erőforráscsoport* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
-    | **Munkaterület neve** | mysampleworkspace | Megadja a munkaterület nevét, amelyet a rendszer a kapcsolatok végpontjai esetében is használni fog.|
-    | **Régió** | USA 2. keleti régiója | Meghatározza a munkaterület helyét.|
-    | **Data Lake Storage Gen2** | Fiók`storage account name` </br> Fájlrendszer:`root file system to use` | Megadja az elsődleges tárolóként használandó ADLS Gen2 Storage-fiók nevét és a használni kívánt fájlrendszert.|
-    ||||
+## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>Meglévő Storage-fiók előkészítése a szinapszis Analytics szolgáltatással való használatra
 
-    ![Munkaterület-kiépítési folyamat – alapismeretek lap.](media/quickstart-create-synapse-workspace/create-workspace-03.png)
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyisson meg egy meglévő ADLSGEN2 Storage-fiókot
+1. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Ezután rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy már hozzá van rendelve:
+    * Rendelje hozzá magát a **tulajdonosi** szerepkörhöz.
+    * Rendeljen hozzá saját magát a **Storage blob-adat tulajdonosi** szerepköréhez.
+1. A bal oldali ablaktáblán válassza a **tárolók** lehetőséget, és hozzon létre egy tárolót.
+1. Megadhatja a tároló nevét. Ebben a dokumentumban a Container **Users**nevet fogjuk megkeresni.
+1. Fogadja el az alapértelmezett **nyilvános hozzáférési szint**beállítást, majd válassza a **Létrehozás**lehetőséget.
 
-    A Storage-fiók az alábbiak közül választható ki:
-    - Az előfizetésben elérhető ADLS Gen2 fiókok listája
-    - Manuálisan lett megadva a fiók neve alapján
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>A Storage-fiókhoz való hozzáférés konfigurálása a munkaterületről
 
-    > [!IMPORTANT]
-    > Az Azure szinapszis-munkaterületnek képesnek kell lennie olvasni és írni a kiválasztott ADLS Gen2 fiókot. Továbbá minden olyan Storage-fiókhoz, amelyet elsődleges Storage-fiókként csatol, engedélyezni kell a **hierarchikus névteret** a Storage-fiók létrehozásakor.
-    >
-    > A ADLS Gen2 kiválasztási mezők alatt látható, hogy a munkaterület felügyelt identitása hozzá lesz rendelve a **Storage blob adatközreműködői** szerepkörhöz a kiválasztott Data Lake Storage Gen2-fájlrendszerben, amely teljes hozzáférést biztosít.
+Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt identitások már hozzáférnek a Storage-fiókhoz. Az alábbi lépéseket követve győződjön meg arról, hogy:
 
-4. Választható Módosítsa a **Biztonság + hálózatkezelés alapértelmezett beállítások** lapját:
-5. Választható Adjon hozzá címkéket a **címkék** lapon.
-6. Az **Összefoglalás** lapon a szükséges érvényesítések futnak, hogy a munkaterület sikeresen létrehozható legyen. Ha az ellenőrzés sikeres, nyomja meg **Create** a ![ munkaterület kiépítési folyamatának létrehozása – megerősítés lapot.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. Miután az erőforrás-létesítési folyamat sikeresen befejeződik, megjelenik egy bejegyzés a létrehozott munkaterülethez a szinapszis-munkaterületek listájában. ![Az újonnan kiosztott munkaterületet megjelenítő szinapszis-munkaterületek listázása.](media/quickstart-create-synapse-workspace/create-workspace-07.png)
+1. Nyissa meg a munkaterülethez kiválasztott [Azure Portal](https://portal.azure.com) és elsődleges Storage-fiókot.
+1. A bal oldali panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy már hozzá van rendelve. Ugyanazt a nevet használjuk a munkaterület-identitáshoz és a munkaterület nevéhez.
+    * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
+    * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
-
-Az Azure szinapszis-munkaterület törléséhez kövesse az alábbi lépéseket.
-> [!WARNING]
-> Az Azure szinapszis-munkaterület törlésével a rendszer eltávolítja az elemzési motorokat és a tárolt SQL-készletek és munkaterület-metaadatok adatbázisában tárolt adatokat. Többé nem lehet csatlakozni az SQL-végpontokhoz, Apache Spark-végpontokhoz. Minden kódrészlet törölve lesz (lekérdezések, jegyzetfüzetek, feladatdefiníciók és folyamatok).
->
-> A munkaterület törlése **nem** befolyásolja a munkaterülethez csatolt Data Lake Store Gen2 lévő adatműveleteket.
-
-Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a következő lépéseket:
-
-1. Navigáljon a törölni kívánt Azure szinapszis-munkaterületre.
-1. Nyomja le a **delete** billentyűt a parancssorban.
- ![Az Azure szinapszis munkaterület áttekintése – a parancs kiemelése kiemelve.](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. Erősítse meg a törlést, majd kattintson a **Törlés** gombra.
- ![Az Azure szinapszis munkaterületének áttekintése – munkaterület megerősítő párbeszédpanelének törlése.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. Ha a folyamat sikeresen befejeződik, az Azure szinapszis munkaterület többé nem jelenik meg a munkaterületek listájában.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.
+* [SQL-készlet létrehozása](quickstart-create-sql-pool-studio.md) 
+* [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)
+* [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)

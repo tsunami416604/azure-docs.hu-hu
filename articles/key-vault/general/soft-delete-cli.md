@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 247f37a69cd8524339a3f5414230cca0f42fa22d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585661"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662041"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -33,7 +33,7 @@ A CLI-vel kapcsolatos Key Vault-specifikus információk: [Azure cli Key Vault-r
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Description | Felhasználói engedély |
+| Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
@@ -58,7 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Új kulcstartó
 
-Alapértelmezés szerint minden kulcstartón automatikusan engedélyezve van a Soft delete szolgáltatás. December 31-ig az 2020-as számú új kulcstartó nem hozható létre, ha nincs engedélyezve a helyreállítható törlés.
+Alapértelmezés szerint minden kulcstartón automatikusan engedélyezve van a Soft delete szolgáltatás. December 2020 31-ig a továbbiakban nem lehet új kulcstartót létrehozni, ha nem engedélyezett a helyreállítható törlés.
 
 ### <a name="verify-soft-delete-enablement"></a>Helyreállítható törlési engedélyezés ellenőrzése
 

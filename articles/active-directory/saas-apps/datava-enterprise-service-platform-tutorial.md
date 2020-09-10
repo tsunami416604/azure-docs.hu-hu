@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536716"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Datava Enterprise Service platformmal
 
@@ -35,16 +35,16 @@ Első lépésként a következő elemeket kell megadnia:
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * A Datava Enterprise Service platform egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
-> [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
-
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Datava Enterprise Service platform támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 * A Datava Enterprise Service platform **csak időben támogatja a** felhasználók üzembe helyezését
-* A Datava Enterprise Service platform konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Datava Enterprise Service platform konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>A Datava Enterprise Service platform hozzáadása a katalógusból
 
@@ -57,7 +57,7 @@ A Datava Enterprise Service platform Azure AD-integrációjának konfigurálás�
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Datava Enterprise Service platform** kifejezést a keresőmezőbe.
 1. Válassza ki a **Datava Enterprise Service platform** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Datava Enterprise Service platformhoz
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>Az Azure AD SSO konfigurálása és tesztelése a Datava Enterprise Service platformhoz
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Datava Enterprise Service platformmal egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Datava Enterprise Service platformon.
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -148,5 +148,3 @@ Ha a hozzáférési panelen a Datava Enterprise Service platform csempére katti
 - [Próbálja ki a Datava Enterprise Service platformot az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [A Datava Enterprise Service platform speciális láthatóságának és ellenőrzésének biztosítása](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

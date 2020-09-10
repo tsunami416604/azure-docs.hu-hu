@@ -1,14 +1,14 @@
 ---
 title: Az Azure Management áttekintése – Azure-irányítás
 description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
-ms.date: 07/06/2020
+ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041914"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662139"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
 
@@ -18,13 +18,15 @@ Felügyelet alatt azokat a feladatokat és folyamatokat értjük, amelyekre szü
 
 A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van szükség az alkalmazások és erőforrások kezeléséhez. Ezek a különböző területek életciklusként is megtekinthetők. Minden területnek folyamatos egymásutánban kell lennie egy erőforrás élettartama alatt. Ez az erőforrás-életciklus a kezdeti üzembe helyezéssel, a folyamatos művelettel, végül pedig a kivonással kezdődik.
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Az Azure-beli felügyeleti szabályok" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Az Azure-beli felügyeleti szabályok diagramja." border="false":::
+   Diagram, amely bemutatja az Azure-ban a felügyeletet és a szabályozást támogató szolgáltatások kerékének áttelepíteni, biztonságossá tételét, védelmét, figyelését, konfigurálását és irányítását. A biztonságos biztonsági felügyelet és veszélyforrások elleni védelem alárendelt elemekként szolgál. A védelem a biztonsági mentéssel és a vész-helyreállítással is rendelkezik alárendelt elemként. A figyelő az alkalmazással, az infra-és a hálózati figyeléssel, valamint a Log Analytics és a diagnosztika elemmel is rendelkezik. A konfigurálással a konfiguráció, az Update Management, az Automation és a parancsfájlok alárendelt elemekként jelennek meg. És az irányítás a szabályzatok kezelésével és a költséghatékonysággal rendelkezik alárendelt elemekként.
+:::image-end:::
 
 Egyetlen Azure-szolgáltatás sem tölti ki teljesen az adott felügyeleti terület követelményeit. Ehelyett több szolgáltatás is működik együtt. Egyes szolgáltatások, például a Application Insights, a webalkalmazások számára biztosítanak célként szolgáló figyelési funkciókat. Mások, például Azure Monitor naplók, más szolgáltatásokhoz tartozó felügyeleti adattárakat tárolnak. Ez a funkció lehetővé teszi a különböző szolgáltatások által gyűjtött különböző típusú adatok elemzését.
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 A monitorozás az adatok összegyűjtésére és elemzésére szolgál az erőforrások teljesítményének, állapotának és rendelkezésre állásának naplózása érdekében. Egy hatékony figyelési stratégia segíti az összetevők működésének megértését és az értesítésekkel való üzemidő növelését. A monitoring áttekintése, amely az [Azure-alkalmazások és-erőforrások figyeléséhez](../azure-monitor/overview.md)használt különböző szolgáltatásokat fedi le.
 
@@ -48,7 +50,7 @@ Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában
 
 A védelem arra utal, hogy az alkalmazások és az adatszolgáltatások elérhetők maradnak, még a szabályozáson kívüli kimaradások esetén is. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-overview.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. A [Azure site Recovery](../site-recovery/site-recovery-overview.md) az üzletmenet folytonosságát és az azonnali helyreállítást biztosítja a katasztrófák során.
 
-## <a name="migrate"></a>Migrate (Áttelepítés)
+## <a name="migrate"></a>Migrate
 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.
 A [Azure Migrate](../migrate/migrate-services-overview.md) egy olyan szolgáltatás, amely segít a helyszíni virtuális gépek Azure-ba való áttelepítésének értékelésében. [A Azure site Recovery a](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépeket a helyszíni rendszerből vagy [Amazon Web Servicesból](../site-recovery/migrate-tutorial-aws-azure.md)telepíti át. Az [Azure Database Migration](../dms/dms-overview.md) segítséget nyújt az adatbázis-források Azure-beli adatplatformokra való áttelepítésében.

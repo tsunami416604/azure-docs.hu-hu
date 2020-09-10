@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 40dd81b9eb7ff2b20abb1bf3ea4337b63fb2a831
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ff7e423063859a6cdc1a4362fb030c0deb75eb32
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447083"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658694"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Kiszolgálók felmérése importált adatai alapján
 
@@ -73,7 +73,7 @@ Az Azure-fióknak engedélyre van szüksége Azure Migrate projekt létrehozás�
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/migrate-project.png)
 
-7. Válassza a **Tovább** lehetőséget.
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment Next (kiszolgáló értékelése**  >  **Next**) elemet.
 
     ![Azure Migrate Értékelés létrehozása](./media/tutorial-assess-import/assessment-tool.png)
@@ -105,7 +105,7 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket:
 
 **Mezőnév** | **Kötelező** | **Részletek**
 --- | --- | ---
-**Kiszolgálónév** | Igen | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
+**Kiszolgáló neve** | Igen | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
 **IP-cím** | Nem | Kiszolgáló címe.
 **Cores** | Igen | A kiszolgáló számára lefoglalt processzor-magok száma.
 **Memória** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
@@ -120,10 +120,10 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket:
 **1. lemez írási átviteli sebessége** | Nem | A másodpercenként lemezre írt adatmennyiség MB-onként.
 **CPU-kihasználtság százalékos aránya** | Nem | A felhasznált CPU százalékos aránya.
 **Memória kihasználtsága (%)** | Nem | A felhasznált memória százalékos aránya.
-**Összes lemez olvasási művelete** | Nem | Lemezes olvasási műveletek másodpercenként.
-**Összes lemez írási Ops** | Nem | Lemezes írási műveletek másodpercenként.
-**Összes lemez olvasási sebessége** | Nem | A lemezről beolvasott adatok (MB/s).
-**Összes lemez írási sebessége** | Nem | Lemezre írt, másodpercenként MB-ban tárolt adatmennyiség.
+**Összes lemez olvasási művelete** | Nem | Olvasási műveletek másodpercenként az összes lemezhez együtt. <br/> Akkor használja ezt a mezőt, ha nem tud lemez szintű adatátvitelt biztosítani. 
+**Összes lemez írási Ops** | Nem | Írási műveletek másodpercenként az összes lemezhez együtt. <br/> Akkor használja ezt a mezőt, ha nem tud lemez szintű adatátvitelt biztosítani.
+**Összes lemez olvasási sebessége** | Nem | Az összes lemezről beolvasott adatok (MB/s). <br/> Akkor használja ezt a mezőt, ha nem tud lemez szintű adatátvitelt biztosítani. 
+**Összes lemez írási sebessége** | Nem | Az összes lemezre írt, másodpercenként MB-ban tárolt adatmennyiség. <br/> Akkor használja ezt a mezőt, ha nem tud lemez szintű adatátvitelt biztosítani.
 **Átviteli sebességű hálózat** | Nem | A kiszolgáló által fogadott, MEGABÁJT/másodpercben tárolt adatmennyiség.
 **Hálózati kimenő átviteli sebesség** | Nem | A kiszolgáló által továbbított adatok (MB/s).
 **Belső vezérlőprogram típusa** | Nem | Kiszolgáló belső vezérlőprogram. Az értékek "BIOS" vagy "UEFI" lehet.
@@ -146,6 +146,11 @@ Ha például egy második lemez összes mezőjét meg szeretné adni, adja hozz�
 - 2. lemez olvasási sebesség
 - 2. lemez írási átviteli sebessége
 
+Ha nem tudja megadni a lemez szintű adatmennyiséget, a következő mezők használatával biztosíthatja a lemez teljesítményadatait. Az egyes mezőkkel kapcsolatos részletekért tekintse meg [ezt](#add-server-information) a szakaszt.
+- Összes lemez olvasási művelete
+- Összes lemez írási Ops
+- Összes lemez olvasási sebessége
+- Összes lemez írási sebessége
 
 ## <a name="import-the-server-information"></a>A kiszolgáló adatainak importálása
 
@@ -200,7 +205,7 @@ A kiszolgáló értékelése két méretezési feltétel beállítását biztos�
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén válassza az **értékelés**lehetőséget.
 
-    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
+    ![Értékelés](./media/tutorial-assess-physical/assess.png)
 
 3. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét, és válassza ki az **értékelés** típusát *Azure VM* -ként, ha az Azure-beli virtuális gépek értékelését vagy az *Azure VMware-megoldást (AVS)* kívánja végrehajtani, ha AVS-értékelést szeretne végezni.
 

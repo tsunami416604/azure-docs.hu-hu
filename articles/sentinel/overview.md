@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1bd61341683148cfc6431d7ca4b1f9293e19e760
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564630"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662035"
 ---
 # <a name="what-is-azure-sentinel"></a>Mi az Azure Sentinel?
 
@@ -43,7 +43,7 @@ A meglévő Azure-szolgáltatások teljes skáláját kiépítve az Azure Sentin
 
 ## <a name="connect-to-all-your-data"></a>Kapcsolódás az összes adattal
 
-Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](connect-data-sources.md). Az Azure Sentinel számos, a Microsoft-megoldások számára elérhető összekötővel rendelkezik, és valós idejű integrációt biztosít, beleértve a Microsoft veszélyforrások elleni védelmi megoldásait és Microsoft 365 forrásait, például az Office 365, az Azure AD, az Azure ATP és a Microsoft Cloud App Security stb. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is.  
+Az Azure Sentinelhez először a [biztonsági forrásokhoz kell csatlakoznia](connect-data-sources.md). Az Azure Sentinel számos összekötőt tartalmaz a Microsoft-megoldások számára, és lehetővé teszi a valós idejű integrációt, beleértve a Microsoft 365 Defender (korábban Microsoft Threat Protection) megoldásokat, valamint Microsoft 365 forrásokat, beleértve az Office 365, az Azure AD, a Microsoft Defender for Identity (korábban Azure ATP) és a Microsoft Cloud App Securityt. Emellett beépített összekötők találhatók a nem Microsoft-megoldások szélesebb körű biztonsági ökoszisztémájában. Az adatforrások az Azure Sentinel szolgáltatással való összekapcsolásához használhatja a Common Event Format, a syslog vagy a REST-API-t is.  
 
 ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
 
@@ -82,13 +82,13 @@ A jelenleg előzetes verzióban elérhető Azure Sentinel [Deep vizsgálati](tut
 
 Az Azure Sentinel [hatékony vadászati keresési és lekérdezési eszközeit](hunting.md)használja a Mitre Framework alapján, amely lehetővé teszi, hogy a riasztás elindítása előtt proaktív módon vadászjon a biztonsági fenyegetésekre a szervezet adatforrásaiban. Miután felfedezte, hogy melyik vadászati lekérdezés nagy értékű betekintést nyújt a lehetséges támadásokra, létrehozhat egyéni észlelési szabályokat is a lekérdezés alapján, és felhasználhatja ezeket az elemzéseket riasztásként a biztonsági incidensek válaszadói számára. A vadászat közben könyvjelzőket hozhat létre az érdekes eseményekhez, így később visszatérhet hozzájuk, megoszthatja őket másokkal, és csoportosíthatja azokat más korrelációs eseményekkel, hogy egy kényszerítő incidenst hozzon létre a vizsgálathoz.
 
-![Veszélyforrás-keresés](./media/overview/hunting.png)
+![A vadászati funkció áttekintése](./media/overview/hunting.png)
 
 ## <a name="community"></a>Közösség
 
 Az Azure Sentinel-Közösség hatékony erőforrás a fenyegetések észleléséhez és automatizálásához. A Microsoft biztonsági elemzői folyamatosan új munkafüzeteket, forgatókönyveket, vadászati lekérdezéseket és egyebeket hoznak létre és vesznek fel, és a saját környezetében való használatra közzétesszük a Közösségbe. A Private Community GitHub- [adattárból](https://aka.ms/asicommunity) letölthető mintát hozhat létre egyéni munkafüzetek, vadászati lekérdezések, jegyzetfüzetek és forgatókönyvek létrehozásához az Azure Sentinel számára. 
 
-![Közösség](./media/overview/community.png)
+![A felhasználói Közösség megismerése](./media/overview/community.png)
 
 ## <a name="next-steps"></a>További lépések
 

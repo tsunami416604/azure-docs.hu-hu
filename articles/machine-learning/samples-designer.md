@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: cbeb37599d28241dac3829af3891b2810cca4dce
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812937"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662117"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára (előzetes verzió)
 
@@ -67,8 +67,8 @@ Ismerkedjen meg ezekkel a beépített regressziós mintákkal.
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [1. példa: regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
-| [2. minta: regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
+| [Regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
+| [Regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
 
 ## <a name="classification"></a>Osztályozás
 
@@ -76,11 +76,19 @@ Ismerkedjen meg ezekkel a beépített besorolási mintákkal. A mintákról a mi
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [3. minta: bináris besorolás a funkciók kiválasztásával – bevétel előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | A bevételt magas vagy alacsony értékűre becsülheti, kétosztályos kibővített döntési fában. A Pearson korreláció használatával válassza ki a funkciókat.
-| [4. minta: bináris besorolás egyéni Python-parancsfájllal – hitelkockázat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Magas vagy alacsony kockázatú kredit alkalmazások besorolása. Az adatai súlyozásához használja a Python-szkript végrehajtása modult.
-| [5. példa: bináris besorolás – ügyfélkapcsolatok előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | A kétosztályos, megnövelt döntési fák használatával megjósolhatja az ügyfelek adatforgalmát. A ARCUL ütötte használata az elfogult adatértékek megkóstolására.
-| [7. minta: szöveges besorolás – wikipedia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Vállalati típusok besorolása a wikipedia-cikkekből többosztályos logisztikai regresszióval. |
-| 12. példa: többosztályos besorolás – levél-felismerés | Hozzon létre a bináris osztályozók együttesét írásos betűk besorolásához. |
+| [Bináris besorolás a szolgáltatás kiválasztásával – bevétel előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | A bevételt magas vagy alacsony értékűre becsülheti, kétosztályos kibővített döntési fában. A Pearson korreláció használatával válassza ki a funkciókat.
+| [Bináris besorolás egyéni Python-parancsfájllal – hitelkockázat-előrejelzés](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Magas vagy alacsony kockázatú kredit alkalmazások besorolása. Az adatai súlyozásához használja a Python-szkript végrehajtása modult.
+| [Bináris besorolás – ügyfélkapcsolatok előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | A kétosztályos, megnövelt döntési fák használatával megjósolhatja az ügyfelek adatforgalmát. A ARCUL ütötte használata az elfogult adatértékek megkóstolására.
+| [Szöveg besorolása – wikipedia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Vállalati típusok besorolása a wikipedia-cikkekből többosztályos logisztikai regresszióval. |
+| Többosztályos besorolás – levél felismerése | Hozzon létre a bináris osztályozók együttesét írásos betűk besorolásához. |
+
+## <a name="computer-vision"></a>Számítógépes látástechnológia
+
+Ismerkedjen meg ezekkel a beépített számítógépes jövőkép mintákkal. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
+
+| Mintacím | Leírás | 
+| --- | --- |
+| Széles & részletes ajánlás – éttermi értékelés előrejelzése | Hozzon létre egy étterem ajánló motort az étterem/felhasználó funkciók és értékelések közül.|
 
 ## <a name="recommender"></a>Ajánló
 
@@ -88,7 +96,7 @@ Ismerkedjen meg ezekkel a beépített Ajánlói mintákkal. A mintákról a mint
 
 | Mintacím | Leírás | 
 | --- | --- |
-| 10. minta: javaslat – film minősítési tweetek | Hozzon létre egy Movie ajánló motort a film címei és minősítése alapján. |
+| Képbesorolás a DenseNet használatával | A Computer látási modulok használatával PyTorch-DenseNet alapuló képbesorolási modellt hozhat létre.| 
 
 ## <a name="utility"></a>Segédprogram
 
@@ -96,10 +104,11 @@ További információ a Machine learning segédprogramokat és szolgáltatásoka
 
 | Mintacím | Leírás | 
 | --- | --- |
-| [6. példa: egyéni R-szkript használata – repülési késleltetés előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| 8. példa: a bináris besorolások átellenőrzése – felnőtt bevétel előrejelzése | Használjon kereszt-érvényesítést a felnőtt jövedelmek bináris besorolásának kiépítéséhez.
-| 9. példa: a permutáció funkció fontossága | Az adatkészlethez tartozó számítási fontossági pontszámok kiszámításához használja a permutáció funkció fontosságát. 
-| 11. minta: a bináris besorolás paramétereinek hangolása – felnőtt jövedelem előrejelzése | A Hiperparaméterek beállítása hangolása segítségével optimális hiperparaméterek beállítása találhat a bináris osztályozók létrehozásához. |
+| Bináris besorolás a Vowpal Wabbit Model használatával – felnőtt jövedelmek előrejelzése | A Vowpal Wabbit egy gépi tanulási rendszer, amely leküldi a gépi tanulás határát olyan technikákkal, mint az online, a kivonatolás, a allreduce, a csökkenés, a learning2search, az aktív és az interaktív tanulás. Ez a minta bemutatja, hogyan használható a Vowpal Wabbit-modell bináris besorolási modell létrehozásához. 
+| [Egyéni R-szkript használata – repülési késleltetés előrejelzése](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | A testreszabott R-szkripttel előre jelezheti, hogy egy ütemezett utasszállító járat 15 percnél hosszabb ideig késleltetve lesz-e.
+| Több ellenőrzés a bináris besorolásnál – felnőtt bevétel előrejelzése | Használjon kereszt-érvényesítést a felnőtt jövedelmek bináris besorolásának kiépítéséhez.
+| A permutáció funkció fontossága | Az adatkészlethez tartozó számítási fontossági pontszámok kiszámításához használja a permutáció funkció fontosságát. 
+| Paraméterek hangolása bináris besoroláshoz – felnőtt bevétel előrejelzése | A Hiperparaméterek beállítása hangolása segítségével optimális hiperparaméterek beállítása találhat a bináris osztályozók létrehozásához. |
 
 ## <a name="datasets"></a>Adathalmazok
 

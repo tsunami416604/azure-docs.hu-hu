@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549429"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662290"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a askSpoke
 
@@ -35,16 +35,16 @@ Első lépésként a következő elemeket kell megadnia:
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * askSpoke egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
-> [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
-
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * a askSpoke támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 * a askSpoke **csak időben támogatja a** felhasználók kiépítési folyamatát
-* A askSpoke konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A askSpoke konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="adding-askspoke-from-the-gallery"></a>AskSpoke hozzáadása a gyűjteményből
 
@@ -57,7 +57,7 @@ A askSpoke Azure AD-be való integrálásának konfigurálásához hozzá kell a
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **askSpoke** kifejezést a keresőmezőbe.
 1. Válassza ki a **askSpoke** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a askSpoke
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>Azure AD SSO konfigurálása és tesztelése a askSpoke-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a askSpoke a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a askSpoke-ben.
 
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://askspoke.com/login`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://askspoke.com/login`
 
 1. a askSpoke alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -120,7 +120,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -146,15 +146,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **Beállítások** fülre a bal oldali navigációs ablaktáblán.
 
-    ![askSpoke-konfiguráció](./media/askspoke-tutorial/configure1.png)
+    ![askSpoke-beállítások lap](./media/askspoke-tutorial/configure1.png)
 
 1. Görgessen le az **egyszeri bejelentkezéshez** , és kattintson a **Kapcsolódás**lehetőségre.
 
-    ![askSpoke-konfiguráció](./media/askspoke-tutorial/configure2.png)
+    ![askSpoke-kapcsolat](./media/askspoke-tutorial/configure2.png)
 
 1. A **SAML & scim engedélyezése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![askSpoke-konfiguráció](./media/askspoke-tutorial/configure3.png)
+    ![askSpoke engedélyezése SAML & SCIM szakasz](./media/askspoke-tutorial/configure3.png)
 
     1. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portal másolt.
 
@@ -187,6 +187,3 @@ Ha a hozzáférési panelen a askSpoke csempére kattint, automatikusan be kell 
 - [A askSpoke kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [A askSpoke és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

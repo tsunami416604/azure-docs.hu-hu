@@ -24,6 +24,8 @@
   items:
     - name: Power Virtual Agent-integráció
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: GYIK-robot létrehozása az Azure Bot Service-szel
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
     - name: Tesztelés kötegfájllal
       href: Quickstarts/batch-testing.md
 - name: Alapelvek
@@ -91,7 +93,7 @@
         - name: Migrálás új tudásbázisra
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Tesztelés
+        - name: Tudásbázis tesztelése
           href: How-To/test-knowledge-base.md
     - name: QnA-párok kezelése
       items:

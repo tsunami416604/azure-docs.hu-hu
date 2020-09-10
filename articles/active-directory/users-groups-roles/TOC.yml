@@ -9,8 +9,8 @@
     - name: Felhasználók hozzáadása az Azure AD-hez
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: Licencek hozzárendelése felhasználókhoz
-      href: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-    - name: Korlátlan számú alkalmazásregisztráció engedélyezése
+      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Korlátlan számú alkalmazásregisztráció létrehozása
       href: roles-quickstart-app-registration-limits.md
     - name: Csoportok lejáratának beállítása
       href: groups-quickstart-expiration.md
@@ -175,6 +175,8 @@
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Egyéni szerepkörök hozzárendelése a PowerShellben
               href: roles-assign-powershell.md
+            - name: Egyéni szerepkörök vállalati alkalmazásokhoz
+              href: custom-enterprise-apps.md
             - name: Egyéni szerepkörengedélyek
               href: roles-custom-available-permissions.md
             - name: Alkalmazás rendszergazdai engedélyeinek delegálása

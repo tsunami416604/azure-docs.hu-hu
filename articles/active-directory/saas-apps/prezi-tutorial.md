@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 994d427fb91f04ea0d2002a2c95e12366f4c6420
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553564"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Prezi
 
@@ -42,6 +42,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A Prezi az SP és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést is támogatja.
 * A Prezi támogatja az igény szerinti felhasználói üzembe helyezést.
 * A Prezi konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 ## <a name="add-prezi-from-the-gallery"></a>Prezi hozzáadása a gyűjteményből
 
@@ -81,9 +84,9 @@ Az Azure AD SSO engedélyezése a Azure Portalban:
 
 1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP**-kezdeményezésű módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** mezőbe írja be az URL-címet `https://prezi.com/login/sso/` .
+    A **bejelentkezési URL-cím** mezőbe írja be a következő URL-címet: `https://prezi.com/login/sso/` .
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A Prezi alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -156,7 +159,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure SSO használatát 
 
     1. Nyissa meg a letöltött **tanúsítványt (Base64)** a Azure Portal a Jegyzettömbben. Másolja a tanúsítvány tartalmát, és illessze be a tartalmat a **tanúsítványba (X. 509)** .
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-prezi-test-user"></a>Prezi-teszt felhasználó létrehozása
 

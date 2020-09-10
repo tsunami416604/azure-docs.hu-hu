@@ -154,6 +154,8 @@
               href: openvpn-azure-ad-client.md
             - name: Tudnivalók az ügyféloldali VPN-profil letöltési fájljáról
               href: about-vpn-profile-download.md
+            - name: Intune – VPN-ügyfélprofil üzembe helyezése
+              href: vpn-profile-intune.md
         - name: OpenVPN
           items:
             - name: Az OpenVPN konfigurálása pont–hely kapcsolatokhoz

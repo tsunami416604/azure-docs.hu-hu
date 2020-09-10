@@ -7,94 +7,121 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1ff8ca7d7c5972869de4c0d394129c591c7f4a7c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: acbcbc8e5dcebcb894ab8f78b2ed4a71bbc87689
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399072"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662222"
 ---
-# <a name="configure-your-rules-engine"></a>A szabályok motor konfigurálása
+# <a name="tutorial-configure-your-rules-engine"></a>Oktatóanyag: a szabályok motorjának konfigurálása
 
-Ez a cikk a szabályok motor konfigurációjának és az első szabálynak a Azure Portal és a CLI-ben való létrehozásának lépéseit ismerteti. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre a szabályok motorjának konfigurációját és az első szabályt a Azure Portal és a parancssori felületen egyaránt. 
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+> [!div class="checklist"]
+> - Konfigurálja a szabályok motort a portál használatával.
+> - Szabályok motor konfigurálása az Azure CLI-vel
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy Front Doort. További információkért lásd a [Rövid útmutató: Front Door létrehozása](quickstart-create-front-door.md) szakaszt.
 
 ## <a name="configure-rules-engine-in-azure-portal"></a>Szabályok konfigurálása motor a Azure Portal
-1. A szabályok motorja konfigurációjának létrehozása előtt [hozzon létre egy bejárati ajtót](quickstart-create-front-door.md).
+1. A bejárati ajtó erőforrásában lépjen a **Beállítások** elemre, és válassza a **szabály motor konfigurálása**lehetőséget. Kattintson a **Hozzáadás**gombra, adja meg a konfiguráció nevét, és kezdje el létrehozni az első szabályok motor konfigurációját.
 
-2. A bejárati ajtó erőforrásában lépjen a **Beállítások** elemre, és válassza a **szabály motor konfigurálása**lehetőséget. Kattintson a **Hozzáadás**gombra, adja meg a konfiguráció nevét, és kezdje el létrehozni az első szabályok motor konfigurációját.
+    ![A bejárati ajtó beállításai menü](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-    ![szabályok keresése motor](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
-
-3. Az első szabály létrehozásához kattintson a **szabály hozzáadása** elemre. Ezután a **feltétel hozzáadása** vagy a **művelet hozzáadása** lehetőségre kattintva megadhatja a szabályt.
+1. Az első szabály létrehozásához kattintson a **szabály hozzáadása** elemre. Ezután a **feltétel hozzáadása** vagy a **művelet hozzáadása** lehetőségre kattintva megadhatja a szabályt.
     
     > [!NOTE]
     >- Ha törölni szeretne egy feltételt vagy műveletet a szabályból, használja a szemetet az adott feltétel vagy művelet jobb oldalán.
     > - Egy olyan szabály létrehozásához, amely az összes bejövő forgalomra vonatkozik, ne határozzon meg feltételeket.
     > - Ha meg szeretné szüntetni a szabályok kiértékelését az első egyeztetési feltétel teljesülése után, akkor a **hátralévő szabály kiértékelésének leállítása**gombra kell bejelentkeznie. Ha be van jelölve, és egy adott szabály összes egyeztetési feltétele teljesül, a konfigurációban maradó többi szabály nem lesz végrehajtva.  
 
-    ![szabályok keresése motor](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
+    ![Szabályok motorjának konfigurációja](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
-4. Határozza meg a konfiguráción belüli szabályok prioritását a feljebb, a lejjebb, és a felülre lépés gombokkal. A prioritás növekvő sorrendben van megadva, ami azt jelenti, hogy az elsőként felsorolt szabály a legfontosabb szabály.
+1. Határozza meg a konfiguráción belüli szabályok prioritását a feljebb, a lejjebb, és a felülre lépés gombokkal. A prioritás növekvő sorrendben van megadva, ami azt jelenti, hogy az elsőként felsorolt szabály a legfontosabb szabály.
 
-5. Miután létrehozott egy vagy több szabályt, nyomja meg a **Mentés**gombot. Ez a művelet létrehozza a szabályok motorjának konfigurációját.
+1. Miután létrehozott egy vagy több szabályt, nyomja meg a **Mentés**gombot. Ez a művelet létrehozza a szabályok motorjának konfigurációját.
 
-6. Miután létrehozott egy vagy több konfigurációt, társítsa a szabályok motorjának konfigurációját egy útválasztási szabállyal. Habár egy konfiguráció számos útválasztási szabályra alkalmazható, az útválasztási szabályok csak egy szabály-végrehajtó konfigurációt tartalmazhatnak. A társítás létrehozásához nyissa meg a bevezető **ajtó tervezői**  >  **útvonalának szabályait**. Válassza ki azt az útválasztási szabályt, amelyhez hozzá szeretné adni a szabályok motorjának konfigurációját, lépjen a **Route details**  >  **Rules Engine Configuration**elemre, és válassza ki a hozzárendelni kívánt konfigurációt.
+1. Miután létrehozott egy vagy több konfigurációt, társítsa a szabályok motorjának konfigurációját egy útválasztási szabállyal. Habár egy konfiguráció számos útválasztási szabályra alkalmazható, az útválasztási szabályok csak egy szabály-végrehajtó konfigurációt tartalmazhatnak. A társítás létrehozásához nyissa meg a bevezető **ajtó tervezői**  >  **útvonalának szabályait**. Válassza ki azt az útválasztási szabályt, amelyhez hozzá szeretné adni a szabályok motorjának konfigurációját, lépjen a **Route details**  >  **Rules Engine Configuration**elemre, és válassza ki a hozzárendelni kívánt konfigurációt.
 
-    ![szabályok keresése motor](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
+    ![Konfigurálás útválasztási szabályhoz](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Szabályok konfigurálása motor az Azure CLI-ben
 
-1. Ha még nem tette meg, telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Adja hozzá az "előtérben" kiterjesztést: az Extension Add--Name bejárati ajtót. Ezután jelentkezzen be, és váltson az előfizetésre az az Account set--előfizetés <name_or_Id>.
+1. Ha még nem tette meg, telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t. Adja hozzá az "előtérben" kiterjesztést: az Extension Add--Name bejárati ajtót. Ezután jelentkezzen be, és váltson az előfizetésre az az Account set--előfizetés <name_or_Id>.
 
-2. Első lépésként hozzon létre egy szabályt motort – ez a példa egy, a fejléc-alapú művelettel és egy egyeztetési feltétellel rendelkező szabályt mutat be. 
+1. Első lépésként hozzon létre egy szabályt motort – ez a példa egy, a fejléc-alapú művelettel és egy egyeztetési feltétellel rendelkező szabályt mutat be. 
 
-```azurecli-interactive
-az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
+    ```
 
-3. Sorolja fel az összes szabályt. 
+1. Sorolja fel az összes szabályt. 
 
-```azurecli-interactive
-az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
+    ```
 
-4. Adja meg a továbbítási útvonal felülbírálási műveletét. 
+1. Adja meg a továbbítási útvonal felülbírálási műveletét. 
 
-```azurecli-interactive
-az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
+    ```
 
-5. Egy szabály összes műveletének listázása. 
+1. Egy szabály összes műveletének listázása. 
 
-```azurecli-interactive
-az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
+    ```
 
-6. Szabály-végrehajtói konfiguráció csatolása útválasztási szabályhoz.  
+1. Szabály-végrehajtói konfiguráció csatolása útválasztási szabályhoz.  
 
-```azurecli-interactive
-az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
-```
+    ```azurecli-interactive
+    az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
+    ```
 
-7. Szabályok leválasztása motor. 
+1. Szabályok leválasztása motor. 
 
-```azurecli-interactive
-az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
-```
+    ```azurecli-interactive
+    az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
+    ```
 
-További információkért tekintse meg az AFD Rules Engine parancsainak teljes listáját [itt](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest).   
+További információkért tekintse meg az AFD Rules Engine parancsainak teljes listáját [itt](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest&preserve-view=true).   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-- További információ a [AFD-szabályok motorról](front-door-rules-engine.md). 
-- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
-- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
-- További részletekért tekintse meg a AFD-szabályok motor [CLI-referenciáját](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest). 
-- További részletekért tekintse meg a AFD-szabályok motor [PowerShell-referenciáját](https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.8.0). 
+Az előző lépésekben konfigurálta és társította a szabályok motorjának beállításait az útválasztási szabályokhoz. Ha már nem szeretné, hogy a szabályok Engine-konfiguráció a bejárati ajtóhoz legyen társítva, a következő lépések végrehajtásával távolíthatja el a konfigurációt:
+
+1. Ha a szabály motorjának neve melletti három pontra kattint, szüntesse meg a szabály-végrehajtó konfigurációjának útválasztási szabályait.
+
+    :::image type="content" source="./media/front-door-rules-engine/front-door-rule-engine-routing-association.png" alt-text="Útválasztási szabályok hozzárendelése":::
+
+1. Törölje az összes útválasztási szabályt, amelyhez ez a szabályrendszer-konfiguráció hozzá van rendelve, majd kattintson a Mentés gombra.
+
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Útválasztási szabály társítása":::
+
+1. Most törölheti a szabály motorjának konfigurációját a bejárati ajtóról.
+
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Szabály-végrehajtó konfigurációjának törlése":::
+
+## <a name="next-steps"></a>További lépések
+
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+* Szabály-végrehajtó konfiguráció létrehozása
+* A konfigurációt a bejárati ajtó útválasztási szabályaihoz kell rendelni.
+
+Ha meg szeretné tudni, hogyan adhat hozzá biztonsági fejléceket a szabály-végrehajtóval, folytassa a következő oktatóanyaggal.
+
+> [!div class="nextstepaction"]
+> [Biztonsági fejlécek szabályok motorral](front-door-security-headers.md)

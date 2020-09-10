@@ -1,0 +1,36 @@
+- name: Az Azure Resource Mover dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók az Azure Resource Mover használatáról
+      href: overview.md
+    - name: Válasszon ki egy eszközt az erőforrások áthelyezéséhez
+      href: select-move-tool.md
+    - name: Gyakori kérdések
+      href: common-questions.md
+- name: Oktatóanyagok
+  items:
+    - name: Azure-beli virtuális gépek áthelyezése egy másik régióba
+      href: tutorial-move-region-virtual-machines.md
+    - name: SQL-erőforrások áthelyezése egy másik régióba
+      href: tutorial-move-region-sql.md
+- name: Fogalmak
+  items:
+    - name: Az áthelyezés áttekintése
+      href: about-move-process.md
+    - name: Azure-beli virtuális gépek régiók közötti áthelyezésének támogatási mátrixa
+      href: support-matrix-move-region-azure-vm.md
+    - name: Azure SQL régiók közötti áthelyezésének támogatási mátrixa
+      href: support-matrix-move-region-sql.md
+- name: Útmutatók
+  items:
+    - name: Erőforrások törlése egy áthelyezési gyűjteményből
+      href: remove-move-resources.md
+- name: További források
+  items:
+    - name: Migrálás a felhőbevezetési keretrendszerbe
+      href: /azure/cloud-adoption-framework/migrate/
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

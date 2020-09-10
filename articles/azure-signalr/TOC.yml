@@ -35,6 +35,8 @@
   items:
     - name: Az Azure SignalR szolgáltatás belső elemei
       href: signalr-concept-internals.md
+    - name: Szolgáltatásmód
+      href: concept-service-mode.md
     - name: Az ASP.NET Core SignalR skálázása
       href: signalr-concept-scale-aspnet-core.md
     - name: Kiszolgáló nélküli

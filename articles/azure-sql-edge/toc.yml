@@ -77,3 +77,11 @@
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: Adatmegőrzés és -törlés
+          items:
+            - name: Adatmegőrzés áttekintése
+              href: data-retention-overview.md
+            - name: Adatmegőrzés engedélyezése vagy letiltása
+              href: data-retention-enable-disable.md
+            - name: 'Adatmegőrzés, törlés'
+              href: data-retention-cleanup.md

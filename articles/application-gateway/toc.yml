@@ -52,8 +52,20 @@
           href: how-application-gateway-works.md
         - name: Az Application Gateway összetevői
           href: application-gateway-components.md
-        - name: Konfiguráció áttekintése
-          href: configuration-overview.md
+        - name: Konfiguráció
+          items:
+            - name: Áttekintés
+              href: configuration-overview.md
+            - name: Infrastruktúra
+              href: configuration-infrastructure.md
+            - name: Előtérbeli IP-címek
+              href: configuration-front-end-ip.md
+            - name: Figyelők
+              href: configuration-listeners.md
+            - name: Kérelemirányítási szabályok
+              href: configuration-request-routing-rules.md
+            - name: HTTP-beállítások
+              href: configuration-http-settings.md
     - name: Nagy mennyiségű forgalom támogatása
       href: high-traffic-support.md
     - name: Automatikus skálázású (v2) termékváltozat

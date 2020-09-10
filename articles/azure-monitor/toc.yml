@@ -566,6 +566,8 @@
               href: platform/itsmc-overview.md
             - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
               href: platform/itsmc-connections.md
+            - name: Biztonságos exportálás integrálása
+              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager-webalkalmazás létrehozása
               href: platform/itsmc-service-manager-script.md
             - name: A ServiceNow ITSM-szinkronizálási problémáinak javítása
@@ -720,6 +722,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
+        - name: OpenTelemetry
+          items:
+            - name: GYIK
+              href: faq.md#opentelemetry
         - name: Erőforrás létrehozása (klasszikus)
           href: app/create-new-resource.md
         - name: Erőforrás létrehozása (munkaterület-alapú)
@@ -1010,6 +1016,8 @@
           href: insights/container-insights-health.md
         - name: GPU-teljesítmény monitorozása
           href: insights/container-insights-gpu-monitoring.md
+        - name: Üzemelő példányok és HPA-k monitorozása
+          href: insights/container-insights-deployment-hpa-metrics.md
         - name: Élő adatok megtekintése
           items:
             - name: Élő adatok (előzetes verzió) áttekintése

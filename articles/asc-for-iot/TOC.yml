@@ -5,7 +5,7 @@
   items:
     - name: Megoldásarchitektúra
       href: architecture.md
-    - name: Biztonsági megoldás az Azure RTOS-hez
+    - name: Az Azure RTOS biztonsági moduljai
       href: iot-security-azure-rtos.md
     - name: Biztonsági ügynökök
       href: security-agent-architecture.md
@@ -23,6 +23,8 @@
 - name: Rövid útmutatók
   expanded: true
   items:
+    - name: Az Azure RTOS biztonsági moduljának konfigurálása
+      href: quickstart-azure-rtos-security-module.md
     - name: Az Azure Security Center for IoT előkészítése az IoT Hubban
       href: quickstart-onboard-iot-hub.md
     - name: A megoldás konfigurálása
@@ -37,6 +39,12 @@
       href: quickstart-investigate-security-alerts.md
 - name: Alapelvek
   items:
+    - name: Az Azure RTOS biztonsági moduljai
+      items:
+        - name: Az Azure RTOS biztonsági moduljának bemutatása
+          href: concept-rtos-security-module.md
+        - name: Az Azure RTOS biztonsági moduljával kapcsolatosa riasztások és javaslatok
+          href: concept-rtos-security-alerts-recommendations.md
     - name: Biztonsági ügynök hitelesítése
       href: concept-security-agent-authentication-methods.md
     - name: Biztonsági modul
@@ -55,6 +63,8 @@
       href: concept-pricing.md
 - name: Útmutatók
   items:
+    - name: Az Azure RTOS biztonsági moduljának használata
+      href: how-to-azure-rtos-security-module.md
     - name: Melyik ügynököt telepítsem?
       items:
         - name: Üzembe helyezendő ügynök kiválasztása
@@ -87,13 +97,29 @@
       href: how-to-configure-with-sentinel.md
     - name: A megoldás testreszabása
       href: how-to-customize-solution.md
-- name: További források
+- name: Hivatkozások
   items:
+    - name: Az Azure RTOS biztonsági moduljának API-ja
+      href: azure-rtos-security-module-api.md
     - name: Gyakori kérdések
       href: resources-frequently-asked-questions.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
-    - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+- name: További források
+  items:
+    - name: Fejlessze a biztonsági készségeit a Microsoft Learnnel
+      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+    - name: Az Azure Security Center dokumentációja
+      href: 'https://docs.microsoft.com/azure/security-center/'
+    - name: Az Azure biztonsági dokumentációja
+      href: 'https://docs.microsoft.com/azure/security/'
+    - name: Azure RTOS biztonsági modul a Stack Overflow-n
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+    - name: 'Azure IoT biztonsági, adatvédelmi és megfelelőségi blog'
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

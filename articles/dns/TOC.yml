@@ -1,4 +1,4 @@
-- name: DNS – dokumentáció
+- name: A DNS dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -17,6 +17,8 @@
           href: dns-getstarted-powershell.md
         - name: Nyilvános zóna létrehozása – parancssori felület
           href: dns-getstarted-cli.md
+        - name: Nyilvános zóna létrehozása – ARM-sablon
+          href: dns-get-started-template.md
     - name: Private DNS
       items:
         - name: Magánzóna létrehozása – portál

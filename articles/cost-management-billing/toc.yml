@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: A Microsoft Partnerszerződés számlázási fiókjai
           href: understand/mpa-overview.md
+        - name: Előfizetések átadása partnerek között (előzetes verzió)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: Útmutatók
   items:
     - name: Azure Cost Management + Billing konfigurálása
