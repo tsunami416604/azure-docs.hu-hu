@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399820"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648869"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
@@ -114,7 +114,7 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
 
 4. A **tanúsítvány engedélyei**területen válassza a **beolvasás** lehetőséget, hogy a bejárati ajtó beolvassa a tanúsítványt.
 
-5. Válassza az **OK** lehetőséget. 
+5. Kattintson az **OK** gombra. 
 
     Az Azure bejárati ajtaja mostantól elérheti ezt a Key Vault és a Key Vault tárolt tanúsítványokat.
  
@@ -219,7 +219,27 @@ Ha a kérelem elküldése előtt hiba történik, a következő hibaüzenet jele
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
+1. *Ki a tanúsítványszolgáltató és milyen típusú tanúsítvány van használatban?*
+
+    A rendszer egy Digicert által biztosított dedikált/egyetlen tanúsítványt használ az egyéni tartományhoz. 
+
+2. *IP-címalapú vagy SNI TLS/SSL-t használ?*
+
+    Az Azure bejárati ajtaja a SNI TLS/SSL protokollt használja.
+
+3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
+
+    Ha van olyan CNAME-bejegyzése az egyéni tartomány esetében, amely közvetlenül a gazdanév végpontjára mutat (és nem használja az afdverify altartománynevet), nem fog a tartomány visszaigazolására vonatkozó e-mailt kapni. A hitelesítés automatikusan történik. Máskülönben, ha nem rendelkezik CNAME-bejegyzéssel, és 24 órán belül nem kapott e-mailt, forduljon a Microsoft támogatási szolgálatához.
+
+4. *A SAN tanúsítvány használata kevésbé biztonságos, mint egy dedikált tanúsítvány használata?*
+    
+    A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Az összes kiállított TLS/SSL-tanúsítvány SHA-256-t használ a fokozott kiszolgálói biztonsághoz.
+
+5. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
+
+    Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
 
 ## <a name="clean-up-resources---disable-https"></a>Az erőforrások eltávolítása – HTTPS letiltása
 
@@ -247,30 +267,15 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 | 2. Tanúsítvány megszüntetése | Tanúsítvány törlése |
 | 3. Befejezve | Tanúsítvány törölve |
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
+## <a name="next-steps"></a>További lépések
 
-1. *Ki a tanúsítványszolgáltató és milyen típusú tanúsítvány van használatban?*
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-    A rendszer egy Digicert által biztosított dedikált/egyetlen tanúsítványt használ az egyéni tartományhoz. 
+* Töltse fel a tanúsítványt a Key Vaultba.
+* Tartomány érvényesítése.
+* Engedélyezze a HTTPS-t az egyéni tartományhoz.
 
-2. *IP-címalapú vagy SNI TLS/SSL-t használ?*
+Ha meg szeretné tudni, hogyan állíthatja be a Geo-szűrési szabályzatot a bejárati ajtóhoz, folytassa a következő oktatóanyaggal.
 
-    Az Azure bejárati ajtaja a SNI TLS/SSL protokollt használja.
-
-3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
-
-    Ha van olyan CNAME-bejegyzése az egyéni tartomány esetében, amely közvetlenül a gazdanév végpontjára mutat (és nem használja az afdverify altartománynevet), nem fog a tartomány visszaigazolására vonatkozó e-mailt kapni. A hitelesítés automatikusan történik. Máskülönben, ha nem rendelkezik CNAME-bejegyzéssel, és 24 órán belül nem kapott e-mailt, forduljon a Microsoft támogatási szolgálatához.
-
-4. *A SAN tanúsítvány használata kevésbé biztonságos, mint egy dedikált tanúsítvány használata?*
-    
-    A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Az összes kiállított TLS/SSL-tanúsítvány SHA-256-t használ a fokozott kiszolgálói biztonsághoz.
-
-5. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
-
-    Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
-
-
-## <a name="next-steps"></a>Következő lépések
-
-- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
-- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
+> [!div class="nextstepaction"]
+> [Geo-szűrési szabályzat beállítása](front-door-geo-filtering.md)

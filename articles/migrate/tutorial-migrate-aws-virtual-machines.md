@@ -4,12 +4,12 @@ description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepít�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419010"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651838"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -32,7 +32,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson teljes áttelepítést az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="discover-and-assess"></a>Felderítés és Értékelés
 
@@ -43,12 +43,17 @@ Az értékelést a következőképpen állíthatja be:
 1. Az [oktatóanyag](./tutorial-prepare-physical.md) alapján állítsa be az Azure-t, és készítse elő az AWS virtuális gépeket egy értékeléshez. Vegye figyelembe:
 
     - A Azure Migrate a jelszó-hitelesítést használja az AWS-példányok felfedése során. Az AWS-példányok alapértelmezés szerint nem támogatják a jelszó-hitelesítést. A példány felderítése előtt engedélyeznie kell a jelszó-hitelesítést.
-        - Windows rendszerű gépek esetén engedélyezze a 5986-es (HTTPS) és a 5985-es (HTTP) WinRM-portot. Ez lehetővé teszi a távoli WMI-hívásokat. Ha beállítja a 
+        - Windows rendszerű gépek esetén engedélyezze a WinRM 5985-es portját (HTTP). Ez lehetővé teszi a távoli WMI-hívásokat.
         - Linux rendszerű gépek esetén:
             1. Jelentkezzen be az egyes Linux-gépekre.
             2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
             3. A fájlban keresse meg a **PasswordAuthentication** sort, és módosítsa az értéket **Igen**értékre.
             4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
+    - Ha a Linux rendszerű virtuális gépek felderítéséhez root felhasználót használ, győződjön meg arról, hogy a virtuális gépeken engedélyezve van a rendszergazdai bejelentkezés.
+        1. Bejelentkezés az egyes Linux rendszerű gépekre
+        2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
+        3. A fájlban keresse meg a **PermitRootLogin** sort, és módosítsa az értéket **Igen**értékre.
+        4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
 
 2. Ezt az [oktatóanyagot](./tutorial-assess-physical.md) követve beállíthat egy Azure Migrate projektet és berendezést az AWS virtuális gépek felderítéséhez és értékeléséhez.
 

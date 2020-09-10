@@ -3,12 +3,12 @@ title: Azure-biztonsági teljesítményteszt tervmintájának áttekintése
 description: Az Azure-biztonsági teljesítményteszt tervmintájának áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
 ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 780d16cd52ef9ea8b5edd654d6c80b9db593ab6d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84740378"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651897"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Az Azure Security benchmark tervének mintája
 
@@ -37,7 +37,7 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg az **Azure Security teljesítményteszt** tervezetét _más minták_ területen, majd kattintson a név gombra a minta kiválasztásához.
+1. Keresse meg az **Azure Security teljesítményteszt** tervezetét _más minták_ alatt, és válassza ki a nevet a minta kiválasztásához.
 
 1. Adja meg a tervezet mintájának _alapjait_ :
 
@@ -114,7 +114,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Azure Security teljesítményteszt-javaslatok naplózása és konkrét támogató virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Legújabb Windows Python-verzió|A App Services legújabb támogatott Python-verziója|
 |Azure Security teljesítményteszt-javaslatok naplózása és konkrét támogató virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Legújabb Linux Python-verzió|A App Services legújabb támogatott Python-verziója|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További cikkek a tervekről és a használatukról:
 

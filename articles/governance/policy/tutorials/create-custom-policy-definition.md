@@ -3,12 +3,12 @@ title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
 description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86044617"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649836"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
@@ -73,7 +73,7 @@ A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resourc
 A tulajdonságok megkeresésének legegyszerűbb módja egy azonos típusú meglévő erőforrás megkeresése. A kényszeríteni kívánt beállítással már konfigurált erőforrások is megadják az összehasonlításhoz használandó értéket.
 Tekintse meg a **sablon exportálása** lapot (a **Beállítások**alatt) az adott erőforráshoz tartozó Azure Portalban.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Sablon exportálása lap a meglévő erőforráson" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="A Azure Portal meglévő erőforrásának sablon exportálása oldalának képernyőképe." border="false":::
 
 A Storage-fiók esetében a következőhöz hasonló sablon látható:
 
@@ -476,7 +476,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - A használandó effektus meghatározása
 > - A szabályzat definíciójának tagjai
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 

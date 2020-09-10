@@ -3,12 +3,12 @@ title: 'Rövid útmutató: terv létrehozása a portálon'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a Azure Portalon keresztül.
 ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051522"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648648"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
@@ -28,7 +28,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    Vagy válassza a **Létrehozás** lehetőséget a **kezdeti lépések** oldalon a terv létrehozásához.
 
-   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Terv létrehozása a terv-definíciók lapról" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Képernyőkép a "Create Blueprint" (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
 
 1. Válassza a **kezdés üres tervezettel** elemet a beépített tervrajzok listájának tetején található kártyán.
 
@@ -48,7 +48,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Szerepkör-hozzárendelés tervezet-összetevőhöz" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Képernyőkép a szerepkör-hozzárendelési összetevőről a terv meghatározásához való hozzáadáshoz." border="false":::
 
    > [!NOTE]
    > Az összetevők többsége paramétereket is támogat. A terv létrehozásakor egy értékhez rendelt paraméter _statikus paraméter_. Ha a paramétert a terv hozzárendelése során rendeli hozzá, akkor ez egy _dinamikus paraméter_. További információ: [terv paramétereinek](./concepts/parameters.md).
@@ -143,11 +143,11 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Resource Manager-sablon a tervrajz-összetevőhöz" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Képernyőkép: a Resource Manager-sablon összetevő-beállításai a terv meghatározásához való hozzáadáshoz." border="false":::
 
 1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy minden összetevő ** _x_ paraméterrel _y_ ** rendelkezik, amely a **Parameters (paraméterek** ) oszlopban van kitöltve. A dinamikus paraméterek beállítása a terv egyes hozzárendeléseikor történik.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Befejezett terv definíciója" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Képernyőkép egy befejezett terv-definícióról az egyes összetevők típusával." border="false":::
 
 1. Most, hogy minden tervezett összetevő hozzá lett adva, válassza a lap alján található **Piszkozat mentése** elemet.
 
@@ -175,11 +175,11 @@ A [terv létrehozása](#create-a-blueprint)során nem adta meg a leírást, vagy
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Második szerepkör-hozzárendelés a tervrajz-összetevőhöz" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Képernyőkép – a második szerepkör-hozzárendelési összetevő lehetőségei a terv meghatározásához való hozzáadáshoz." border="false":::
 
 1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy az újonnan hozzáadott szerepkör-hozzárendelés **1 – 1 paraméterrel van feltöltve**. Ez azt jelenti, hogy ez egy statikus paraméter.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="A befejezett terv második definíciója" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="A második befejezett terv definíciójának képernyőképe a további szerepkör-hozzárendelési összetevővel." border="false":::
 
 1. Válassza a **Piszkozat mentése** most, hogy frissítve lett.
 
@@ -218,7 +218,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
 
    1. A lap alján kattintson a **Létrehozás** gombra.
 
-      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Előfizetés létrehozása tervezet-hozzárendelési előfizetéshez" border="false":::
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Képernyőkép az előfizetés létrehozása ablakról és az új előfizetés lehetőségeiről." border="false":::
 
       > [!IMPORTANT]
       > Az új előfizetés létrehozása közvetlenül a **Létrehozás**gombra kattintva történik.
@@ -234,7 +234,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
 
 1. A **Hozzárendelés zárolása** mezőben hagyja meg az alapértelmezett **Nem zárolandó** értéket. További információ: [tervrajzok erőforrás-zárolása](./concepts/resource-locking.md).
 
-   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="A hozzárendelés zárolása és felügyelt identitásai" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Képernyőkép a tervrajz-hozzárendelés zárolási hozzárendeléséről és a felügyelt identitási lehetőségekről." border="false":::
 
 1. A **felügyelt identitás**területen hagyja meg a **hozzárendelt rendszer**alapértelmezett beállítását.
 
@@ -265,7 +265,7 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. A tervrajzok listájában kattintson a jobb gombbal a korábban hozzárendelt elemre, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Hozzárendelés részleteinek megtekintése a hozzárendelt tervezetek lapról" border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Képernyőfelvétel a terv-hozzárendelés helyi menüjéről a "hozzárendelés részleteinek megtekintése" lehetőség kiválasztásával." border="false":::
 
 1. A **terv-hozzárendelés** lapon ellenőrizze, hogy az összes összetevő telepítése sikeres volt-e, és hogy nem történt-e hiba a telepítés során. Ha hiba történt, tekintse meg a [tervekkel kapcsolatos hibaelhárítási](./troubleshoot/general.md) lépéseket, amelyek alapján megállapíthatja, hogy mi volt a probléma.
 

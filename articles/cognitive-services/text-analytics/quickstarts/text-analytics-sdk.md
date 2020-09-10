@@ -1,27 +1,28 @@
 ---
-title: 'Rövid útmutató: Text Analytics ügyféloldali kódtára | Microsoft Docs'
+title: 'Gyors útmutató: a Text Analytics ügyféloldali függvénytárat használó szöveges adatbányászat'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval összekapcsolhatók az alkalmazások az Azure Cognitive Services Text Analytics API.
+description: Ezzel a rövid útmutatóval az Azure-Cognitive Services Text Analytics API használatával elvégezheti a hangulati elemzést és egyebeket.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 104ae91b59bc04fc3227585a55a744d500d6db29
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931182"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648992"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
-Ismerkedjen meg az Text Analytics ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
+Ebből a cikkből megtudhatja, hogyan kezdheti el az Text Analytics ügyféloldali kódtár használatát. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az adatbányászati szöveghez tartozó példa kódját.
 
 A következő műveletek végrehajtásához használja a Text Analytics ügyféloldali függvénytárat:
 
@@ -83,7 +84,7 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 | Nyelv | Elérhető verzió | 
 |----------|------------------------|
 | Ruby     | [2,1-es verzió](ruby-sdk.md) | 
-| Indítás       | [2,1-es verzió](go-sdk.md) | 
+| Go       | [2,1-es verzió](go-sdk.md) | 
 
 ::: zone-end
 
@@ -94,7 +95,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)

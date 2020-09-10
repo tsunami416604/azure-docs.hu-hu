@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 0fb46f4b9fd29c47e9cd38920665b2791f678847
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651199"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647226"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-compute-target"></a>Számítási cél létrehozása
 
-Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Futtassa a következő kódot egy CPU-alapú [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) -cél létrehozásához.
+Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Futtassa a következő kódot egy CPU-alapú [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) -cél létrehozásához.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
@@ -134,9 +134,9 @@ def_data_store = ws.get_default_datastore()
 
 ### <a name="create-the-data-inputs"></a>Adatbemenetek létrehozása
 
-A Batch-következtetés bemenetei azok az adatok, amelyeket párhuzamos feldolgozásra kíván particionálni. Egy batch-következtetési folyamat fogadja az adatbemeneteket [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
+A Batch-következtetés bemenetei azok az adatok, amelyeket párhuzamos feldolgozásra kíván particionálni. Egy batch-következtetési folyamat fogadja az adatbemeneteket [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) .
 
-`Dataset` Az Azure Machine Learning-ban lévő adatelemzési,-átalakítási és-kezelési szolgáltatás. Két típus létezik: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) és [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . Ebben a példában bemenetként fog használni `FileDataset` . `FileDataset` lehetőséget biztosít a fájlok letöltésére vagy csatlakoztatására a számítási feladatokhoz. Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást hozhat létre. Ha az adatkészlethez bármilyen albeállítási átalakítást alkalmazott, akkor a rendszer az adatkészletben tárolja azokat is. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek.
+`Dataset` Az Azure Machine Learning-ban lévő adatelemzési,-átalakítási és-kezelési szolgáltatás. Két típus létezik: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) és [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) . Ebben a példában bemenetként fog használni `FileDataset` . `FileDataset` lehetőséget biztosít a fájlok letöltésére vagy csatlakoztatására a számítási feladatokhoz. Adatkészlet létrehozásával az adatforrás helyére mutató hivatkozást hozhat létre. Ha az adatkészlethez bármilyen albeállítási átalakítást alkalmazott, akkor a rendszer az adatkészletben tárolja azokat is. Az adattárolók a meglévő helyükön maradnak, így nem merülnek fel extra tárolási költségek.
 
 További információ a Azure Machine Learning adatkészletekről: [adatkészletek létrehozása és elérése (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -147,7 +147,7 @@ path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
 ```
 
-Ha dinamikus adatbevitelt szeretne használni a Batch következtetési folyamatának futtatásakor, megadhatja a bemeneteket a következőként: `Dataset` [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) . Megadhatja a bemeneti adatkészletet minden alkalommal, amikor újra elküld egy batch-következtetési folyamat futtatását.
+Ha dinamikus adatbevitelt szeretne használni a Batch következtetési folyamatának futtatásakor, megadhatja a bemeneteket a következőként: `Dataset` [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) . Megadhatja a bemeneti adatkészletet minden alkalommal, amikor újra elküld egy batch-következtetési folyamat futtatását.
 
 ```python
 from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
@@ -159,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>A kimenet létrehozása
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) az objektumok a köztes adatátviteli folyamat lépései között használatosak. Ebben a példában a következtetést a kimenetre használja.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) az objektumok a köztes adatátviteli folyamat lépései között használatosak. Ebben a példában a következtetést a kimenetre használja.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -353,7 +353,7 @@ parallelrun_step = ParallelRunStep(
 ```
 ### <a name="create-and-run-the-pipeline"></a>A folyamat létrehozása és futtatása
 
-Most futtassa a folyamatot. Először hozzon létre egy [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch-következtetések csak egyetlen lépésből állnak. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
+Most futtassa a folyamatot. Először hozzon létre egy [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py&preserve-view=true) objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch-következtetések csak egyetlen lépésből állnak. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
 
 Ezután a függvény használatával `Experiment.submit()` küldje el a folyamatot végrehajtásra.
 
@@ -371,7 +371,7 @@ pipeline_run = experiment.submit(pipeline)
 A Batch-következtetési feladatok végrehajtása hosszú időt is igénybe vehet. Ez a példa egy Jupyter Widget használatával figyeli a folyamat előrehaladását. A feladatok előrehaladását a használatával is figyelheti:
 
 * Azure Machine Learning Studio. 
-* Konzol kimenete az [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) objektumból.
+* Konzol kimenete az [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py&preserve-view=true) objektumból.
 
 ```python
 from azureml.widgets import RunDetails
@@ -419,7 +419,7 @@ print("Prediction has ", df.shape[0], " rows")
 df.head(10) 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run). 
 

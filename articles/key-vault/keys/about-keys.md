@@ -10,14 +10,14 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 76e9c342f87a3aa1d04a8f4be4065af73e6ba9f2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413723"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651309"
 ---
-# <a name="about-azure-key-vault-keys"></a>Azure Key Vault kulcsok ismertetése
+# <a name="about-azure-key-vault-keys"></a>Információk az Azure Key Vaultban tárolt kulcsokról
 
 Azure Key Vault támogatja több kulcs típusát és algoritmusát, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz.
 
@@ -175,7 +175,7 @@ A következő engedélyek adhatók meg felhasználónkénti vagy egyszerű szolg
 
 A kulcsok használatával kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciával](/rest/api/keyvault)foglalkozó témakörben található főbb műveleteket. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tudnivalók a Key Vaultról](../general/overview.md)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399769"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648815"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
 Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartományt a Front Doorhoz. Ha az Azure bejárati ajtót használja az alkalmazások kézbesítéséhez, egyéni tartományra van szükség, ha szeretné, hogy a saját tartományneve megjelenjen a végfelhasználói kérelemben. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is.
@@ -37,11 +37,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy Front Doort. További információkért lásd a [Rövid útmutató: Front Door létrehozása](quickstart-create-front-door.md) szakaszt.
+* Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy Front Doort. További információkért lásd a [Rövid útmutató: Front Door létrehozása](quickstart-create-front-door.md) szakaszt.
 
-Ha nem rendelkezik egyéni tartománnyal, először vásároljon egyet egy tartományszolgáltatótól. Példákért lásd az [egyéni tartománynév vásárlásáról](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain) szóló részt.
+* Ha nem rendelkezik egyéni tartománnyal, először vásároljon egyet egy tartományszolgáltatótól. Példákért lásd az [egyéni tartománynév vásárlásáról](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain) szóló részt.
 
-Ha az Azure-t használja a [DNS-tartományai](https://docs.microsoft.com/azure/dns/dns-overview) üzemeltetésére, delegálnia kell a tartományszolgáltató tartománynévrendszerét (DNS-ét) egy Azure DNS-re. További információ: [tartomány delegálása Azure DNSra](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Egyéb esetben, ha tartományszolgáltatót használ a DNS-tartománya kezeléséhez, lépjen tovább a [CNAME DNS-rekord létrehozása](#create-a-cname-dns-record) szakaszra.
+* Ha az Azure-t használja a [DNS-tartományai](https://docs.microsoft.com/azure/dns/dns-overview) üzemeltetésére, delegálnia kell a tartományszolgáltató tartománynévrendszerét (DNS-ét) egy Azure DNS-re. További információ: [tartomány delegálása Azure DNSra](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Egyéb esetben, ha tartományszolgáltatót használ a DNS-tartománya kezeléséhez, lépjen tovább a [CNAME DNS-rekord létrehozása](#create-a-cname-dns-record) szakaszra.
 
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS-rekord létrehozása
@@ -97,7 +97,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - TTL: hagyjon *egy órát* .
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
  
     A CNAME bejegyzést a rendszer a DNS-rekordok táblázatához adja.
 
@@ -178,7 +178,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - TTL: hagyjon *egy órát* .
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
  
     A CNAME bejegyzést a rendszer a DNS-rekordok táblázatához adja.
 
@@ -202,7 +202,11 @@ Az előző lépésekben hozzáadott egy egyéni tartományt egy Front Doorhoz. H
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-> [!div class="checklist"]
-> - CNAME DNS-rekord létrehozása.
-> - Az egyéni tartomány társítása a Front Doorral.
-> - Az egyéni tartomány ellenőrzése.
+* CNAME DNS-rekord létrehozása.
+* Az egyéni tartomány társítása a Front Doorral.
+* Az egyéni tartomány ellenőrzése.
+
+Ha szeretné megtudni, hogyan engedélyezheti a HTTPS-t az egyéni tartományhoz, folytassa a következő oktatóanyaggal.
+
+> [!div class="nextstepaction"]
+> [A HTTPS engedélyezése egyéni tartományhoz](front-door-custom-domain.md)

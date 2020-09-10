@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: bdf2bf4102795d35df7eae658e3a24028da79b33
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2500a22d4d3775f7cfea7afbf4e8d106ec2da139
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551302"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647983"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Oktatóanyag: a Cisco WebEx konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -97,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Cisco WebEx kiépítés](./media/cisco-webex-provisioning-tutorial/secrettoken1.png)
 
-6.  A **bérlői URL-cím** mezőben adjon meg egy értéket a formájában `https://api.ciscoweb.com/v1/scim/[OrgId]` . A beszerzéshez `[OrgId]` Jelentkezzen be a [Cisco WebEx Control hub](https://admin.webex.com/login)webhelyre. Kattintson a szervezet nevére a bal alsó sarokban, és másolja az értéket a **szervezet azonosítójában**. 
+6.  A **bérlői URL-cím** mezőben adjon meg egy értéket a formájában `https://api.ciscospark.com/v1/scim/[OrgId]` . A beszerzéshez `[OrgId]` Jelentkezzen be a [Cisco WebEx Control hub](https://admin.webex.com/login)webhelyre. Kattintson a szervezet nevére a bal alsó sarokban, és másolja az értéket a **szervezet azonosítójában**. 
 
     * A **titkos jogkivonat**értékének beszerzéséhez navigáljon erre az [URL-címre](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). A megjelenő WebEx bejelentkezési oldalon jelentkezzen be a szervezete teljes Cisco WebEx-rendszergazdai fiókjával. Megjelenik egy hibaüzenet, amely azt jelzi, hogy a hely nem érhető el, de ez normális.
 
@@ -148,11 +148,11 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Cisco WebEx jelenleg a Cisco korai helyszíni tesztelési (EFT) fázisában található. További információért forduljon a [Cisco ügyfélszolgálatához](https://www.webex.co.in/support/support-overview.html). 
 * A Cisco WebEx konfigurálásával kapcsolatos további információkért tekintse meg a Cisco dokumentációját [itt](https://help.webex.com/en-us/aumpbz/Synchronize-Azure-Active-Directory-Users-into-cisco-webex-Control-Hub).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)

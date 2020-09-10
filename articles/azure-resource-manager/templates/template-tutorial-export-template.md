@@ -2,16 +2,16 @@
 title: Oktatóanyag – sablon exportálása a Azure Portalból
 description: Megtudhatja, hogyan használhatja az exportált sablont a sablon fejlesztésének befejezéséhez.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497154"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650060"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -36,7 +36,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. Adja meg a következőt:
 
     - **Előfizetés**: válassza ki az Azure-előfizetését.
@@ -48,7 +48,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
     ![Resource Manager-sablon exportálása sablon portál](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
-1. Válassza a **Létrehozás** lehetőséget. Az erőforrás létrehozása néhány percet vesz igénybe.
+1. Kattintson a **Létrehozás** gombra. Az erőforrás létrehozása néhány percet vesz igénybe.
 
 ## <a name="export-template"></a>Sablon exportálása
 
@@ -62,7 +62,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
    A sablon exportálása funkció egy erőforrás aktuális állapotát veszi alapul, és létrehoz egy sablont az üzembe helyezéséhez. A sablon exportálása hasznos lehet a JSON gyors beszerzéséhez, amely az erőforrások üzembe helyezéséhez szükséges.
 
-1. Másolja a **Microsoft. Web/kiszolgálófarmok** definícióját és a paraméter definícióját a sablonba.
+1. Tekintse meg a **Microsoft. Web/kiszolgálófarmok** definícióját és a paraméter definícióját az exportált sablonban. Ezeket a szakaszt nem kell átmásolnia. Ezt az exportált sablont használhatja példaként arra, hogyan szeretné hozzáadni ezt az erőforrást a sablonhoz.
 
     ![Resource Manager-sablon exportálása sablon exportált sablon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
@@ -73,7 +73,7 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
 Az exportált sablon lehetővé teszi a legtöbb szükséges JSON-t, de testre kell szabnia azt a sablonhoz. Fordítson különös figyelmet a sablon és az exportált sablon közötti paraméterek és változók különbségére. Az exportálási folyamat természetesen nem ismeri a sablonban már definiált paramétereket és változókat.
 
-Az alábbi példa kiemeli a sablon kiegészítéseit. Az exportált kódot és néhány módosítást is tartalmaz. Először is megváltoztatja a paraméter nevét, hogy az megfeleljen az elnevezési konvenciónak. Másodszor, a Location paramétert használja az App Service-csomag helyéhez. Harmadszor, eltávolítja a **nevet** a **Properties** objektumon belül, mert ez az érték redundáns a **Name** tulajdonsággal az erőforrás szintjén.
+Az alábbi példa kiemeli a sablon kiegészítéseit. Az exportált kódot és néhány módosítást is tartalmaz. Először is megváltoztatja a paraméter nevét, hogy az megfeleljen az elnevezési konvenciónak. Másodszor, a Location paramétert használja az App Service-csomag helyéhez. Harmadszor, eltávolítja azokat a tulajdonságokat, amelyekben az alapértelmezett érték rendben van.
 
 Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
@@ -133,7 +133,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan exportálhat sablont a Azure Portalból, és hogyan használhatja az exportált sablont a sablon fejlesztéséhez. Az Azure rövid útmutató sablonjait is használhatja a sablonok fejlesztésének egyszerűbbé tételéhez.
 

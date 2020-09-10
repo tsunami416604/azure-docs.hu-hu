@@ -1,47 +1,53 @@
 ---
-title: Mi a Text Analytics API? Képességek
+title: Adatbányászat és-elemzés a Text Analytics API-Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Használja az Azure Cognitive Services Text Analytics API az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez, a nyelvfelismerés és az entitások felismeréséhez.
+description: Ismerkedjen meg a Text Analytics APIával. Használhatja az érzelmek elemzéséhez, a nyelvfelismerés és a természetes nyelvi feldolgozás más formáihoz.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000957"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647460"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
-A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást tesz lehetővé nyers szövegként, és négy fő funkciót tartalmaz: az érzelmek elemzését, a kulcsfontosságú kifejezés kinyerését, a nyelvfelismerés és az elnevezett entitások felismerését.
+A Text Analytics API egy felhőalapú szolgáltatás, amely természetes nyelvi feldolgozási (NLP) funkciókat biztosít a szöveg-és szöveges elemzésekhez, például a következőkhöz: érzelmek elemzése, közvélemény-kutatás, kulcsfontosságú kifejezés kinyerése, nyelvfelismerés és elnevezett entitások felismerése.
 
-Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez.
+Az API az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)része, amely a felhőben a gépi tanulási és AI-algoritmusok gyűjteménye a fejlesztési projektekhez. Ezeket a szolgáltatásokat a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)vagy az [ügyféloldali kódtár](quickstarts/text-analytics-sdk.md)használatával is használhatja.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-A szöveg elemzése különböző dolgokat jelenthet, de a Cognitive Servicesban a Text Analytics API négyféle elemzési típust biztosít az alább leírtak szerint. Ezeket a szolgáltatásokat a [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)vagy az [ügyféloldali kódtár](quickstarts/text-analytics-sdk.md)használatával is használhatja.
-
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
-Az [érzelmek elemzésével](how-tos/text-analytics-how-to-sentiment-analysis.md) megtudhatja, hogy az ügyfelek mit gondolnak a márka vagy a téma alapján, ha a nyers szöveget a pozitív vagy negatív hangulatú nyomokra elemzi. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak.
+
+Használja ki a [hangulat elemzését](how-tos/text-analytics-how-to-sentiment-analysis.md) , és Ismerje meg, hogy az emberek mit gondolnak a márka vagy a téma alapján, hogy kibányászják a pozitív vagy negatív gondolkodással kapcsolatos nyomokat. Ez az API-szolgáltatás az egyes dokumentumokhoz tartozó, 0 és 1 közötti hangulati pontszámot ad vissza, ahol az 1 a legpozitív.
+
+A 3.1-es verziótól kezdődően a vélemény bányászati funkciója Hangulatelemzés. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
-A fő pontok gyors azonosításához automatikusan [Kinyeri a legfontosabb kifejezéseket](how-tos/text-analytics-how-to-keyword-extraction.md) . Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”.
+
+A [Key kifejezés kinyerésével](how-tos/text-analytics-how-to-keyword-extraction.md) gyorsan azonosíthatja a szövegben szereplő főbb fogalmakat. Például "az élelmiszer finom volt, és csodálatos volt a személyzet", Kulcsszókeresés a fő beszélő pontokat fogja visszaadni: "Food" és "csodálatos személyzet".
 
 ## <a name="language-detection"></a>Nyelvfelismerés
-Meghatározhatja, hogy [a bemeneti szöveg milyen nyelven legyen beírva](how-tos/text-analytics-how-to-language-detection.md) , és egyetlen nyelvi kódot jelentsen a kérelemben elküldött összes dokumentumhoz számos nyelven, változatban, dialektusban és egyes regionális/kulturális nyelveken. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét.
 
-## <a name="named-entity-recognition"></a>Megnevezett entitások felismerése
-[Azonosíthatja és kategorizálhatja](how-tos/text-analytics-how-to-entity-linking.md) a szövegben lévő entitásokat személyként, helyként, szervezetként, dátum/idő, mennyiség, százalék, pénznem stb. A rendszer felismeri a közismert entitásokat, amelyeket összekapcsol az interneten található további információkkal.
+A nyelvfelismerés képes [észlelni, hogy egy szövegbeviteli szöveg beírásra kerül](how-tos/text-analytics-how-to-language-detection.md) , és egyetlen nyelvi kódot jelentsen a kérelemben elküldött minden dokumentumhoz a különböző nyelvek, változatok, dialektusok és egyes regionális/kulturális nyelvek esetében. A nyelvi kód egy megbízhatósági pontszámmal van párosítva.
+
+## <a name="named-entity-recognition"></a>Nevesített entitások felismerése
+
+Az elnevezett entitások felismerése képes [azonosítani és kategorizálni az entitásokat](how-tos/text-analytics-how-to-entity-linking.md) a szövegben, mivel a felhasználók, a helyek, a szervezetek, a mennyiségek és a jól ismert entitások is felismerhetők, és a weben található további információkhoz kapcsolódnak.
 
 ## <a name="use-containers"></a>Tárolók használata
 
-[A Text Analytics tárolók használatával](how-tos/text-analytics-how-to-install-containers.md) kinyerheti a kulcsfontosságú kifejezéseket, azonosíthatja a nyelveket és elemezheti a hangulatokat helyileg, ha a szabványosított Docker-tárolókat az adatokhoz közelebb telepíti.
+[A Text Analytics tárolókat](how-tos/text-analytics-how-to-install-containers.md) helyszíni megoldásként használhatja a bányászati szövegekhez és az API-hoz. Ezek a Docker-tárolók lehetővé teszik a legfontosabb kifejezések kinyerését, a nyelv felismerését, valamint az adatokhoz való alaposabb elemzést.
 
 ## <a name="typical-workflow"></a>Jellemző munkafolyamat
 

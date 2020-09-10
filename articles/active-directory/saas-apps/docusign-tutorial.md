@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 6736edd615f99ed987e7d1618c449ff7a819c497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536070"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650196"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a DocuSign
 
@@ -47,7 +47,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A DocuSign támogatja **az igény** szerinti felhasználói üzembe helyezést.
 
 * A DocuSign támogatja az [automatikus felhasználó-kiépítés](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)használatát.
-* A DocuSign konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A DocuSign konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>DocuSign hozzáadása a gyűjteményből
 
@@ -61,7 +61,7 @@ A DocuSign Azure AD-be való integrálásának konfigurálásához hozzá kell a
 1. Válassza az **DocuSign** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a DocuSign
+## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>Azure AD SSO konfigurálása és tesztelése a DocuSign-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a DocuSign-mel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a megfelelő felhasználó között a DocuSign-ben.
 
@@ -94,9 +94,12 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, köv
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    c. A **Válasz URL-címe** szövegmezőbe írja be az alábbi URL-minták bármelyikét:
     
-    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
+    | Válasz URL-cím |
+    |-------------|
+    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
+    |`https://<subdomain>.docusign.net/SAML/`|
 
     > [!NOTE]
     > Ezek a zárójeles értékek helyőrzők. Cserélje le őket a tényleges bejelentkezési URL-cím, az azonosító és a válasz URL-cím értékeire. Ezeket az adatokat az oktatóanyag későbbi részében, az "SAML 2,0-végpontok megtekintése" című szakaszban ismertetjük.
@@ -237,7 +240,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a DocuSign csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a DocuSign-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 - [Oktatóanyagok az SaaS-alkalmazások Azure AD-vel való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
