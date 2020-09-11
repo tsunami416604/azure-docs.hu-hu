@@ -24,8 +24,22 @@
       href: support-matrix-move-region-sql.md
 - name: Útmutatók
   items:
-    - name: Erőforrások törlése egy áthelyezési gyűjteményből
-      href: remove-move-resources.md
+    - name: Áthelyezés régiók között
+      items:
+        - name: Áthelyezés régiók között a PowerShell-lel
+          href: move-region-powershell.md
+        - name: Azure-beli virtuális gépek áthelyezése rendelkezésreállási zónákba
+          href: move-region-availability-zone.md
+        - name: Áthelyezés régiók között (erőforráscsoportból)
+          href: move-region-within-resource-group.md
+    - name: Régiók közötti áthelyezések felügyelete
+      items:
+        - name: Célbeállítások módosítása régiók közötti áthelyezéshez
+          href: modify-target-settings.md
+        - name: Erőforrások törlése egy régiók közötti áthelyezési gyűjteményből
+          href: remove-move-resources.md
+        - name: A régiók közötti áthelyezési művelet által létrehozott erőforrások kezelése
+          href: manage-resources-created-move-process.md
 - name: További források
   items:
     - name: Migrálás a felhőbevezetési keretrendszerbe

@@ -130,6 +130,8 @@
           href: luis-concept-devops-automation.md
 - name: Útmutatók
   items:
+    - name: Bejelentkezés a LUIS portálra
+      href: sign-in-luis-portal.md
     - name: Új alkalmazás indítása
       href: luis-how-to-start-new-app.md
       displayName: 'import, export, container'

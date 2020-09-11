@@ -172,6 +172,8 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Egyéni útvonalak hirdetése P2S-ügyfelek számára
           href: vpn-gateway-p2s-advertise-custom-routes.md
+        - name: Egyéni IPsec-szabályzatok létrehozása P2S-hez
+          href: create-custom-policies-p2s-ps.md
     - name: 'Útválasztás, BGP és virtuális hálózatok közötti társviszony'
       items:
         - name: BGP konfigurálása egy VPN-átjáró számára

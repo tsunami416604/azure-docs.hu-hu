@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: az első lépések elemzése a Sparktal'
-description: Ebből az oktatóanyagból megismerheti az Azure szinapszis Analytics beállításának és használatának alapvető lépéseit.
+description: Ebből az oktatóanyagból megismerheti, hogyan elemezheti az adatApache Spark
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,16 +9,30 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5c6b35c1d9f00cae8fc688569e3a491679900995
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101544"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017914"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
+## <a name="analyze-nyc-taxi-data-in-blob-storage--using-spark"></a>NYC-taxi-adatelemzés a blob Storage-ban a Spark használatával
+
 Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését az Azure szinapszis Apache Sparkával.
+
+1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow** elemre **, és**válassza az **új jegyzetfüzet kiválasztása** lehetőséget.
+1. Ekkor létrejön egy új jegyzetfüzet a következő kóddal:
+    ```
+    from azureml.opendatasets import NycTlcYellow
+
+    data = NycTlcYellow()
+    data_df = data.to_spark_dataframe()
+    display(data_df.limit(10))
+    ```
+1. A jegyzetfüzetben válasszon egy Spark-készletet a **csatolás** menüben
+1. Kattintson a cella **Futtatás** parancsára
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>A New York-i taxi-szolgáltatás betöltése a Spark nyctaxi-adatbázisba
 
@@ -102,7 +116,7 @@ val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatelemzés a Storage szolgáltatásban](get-started-analyze-storage.md)

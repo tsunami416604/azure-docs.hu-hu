@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: Vizualizációk
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Szöveg
+              href: platform/workbooks-text-visualizations.md
+            - name: Diagram
+              href: platform/workbooks-chart-visualizations.md
+            - name: Rács
+              href: platform/workbooks-grid-visualizations.md
+            - name: Csempe
+              href: platform/workbooks-tile-visualizations.md
+            - name: Fa
+              href: platform/workbooks-tree-visualizations.md
+            - name: Graph
+              href: platform/workbooks-graph-visualizations.md
+            - name: Összetett sáv
+              href: platform/workbooks-composite-bar.md
         - name: Adatforrások
           href: platform/workbooks-data-sources.md
         - name: Paraméterek

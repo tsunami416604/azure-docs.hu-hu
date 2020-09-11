@@ -3,7 +3,7 @@ title: Hibrid identitáskezelési dokumentáció
 summary: A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőalapú képességekre is, így egyetlen felhasználói identitás jön létre hitelesítés és engedélyezés céljából az összes erőforráshoz, helytől függetlenül. Ezt hibrid identitásnak nevezzük.
 metadata:
   author: billmath
-  description: Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz.
+  description: Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Microsoft 365-, Azure- és SaaS-alkalmazásokhoz.
   manager: daveba
   ms.author: billmath
   ms.collection: na
@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 5c2b9168ad2dcd25e0d99997f17a8ea4cc891eea
-  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+  ms.openlocfilehash: b23c57561a866318a6dbf38dc2d669f0e9d13d32
+  ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89278513"
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89661109"
 landingContent:
 - title: A hibrid identitás bemutatása
   linkLists:

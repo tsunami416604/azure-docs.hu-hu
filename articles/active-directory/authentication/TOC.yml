@@ -213,8 +213,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Hibaelhárítás
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: 'Új jelszó önkiszolgáló kérése (self-service password reset, SSPR)'
+          href: troubleshoot-sspr.md
+        - name: SSPR-visszaíró
+          href: troubleshoot-sspr-writeback.md
         - name: SSPR – GYIK
           href: active-directory-passwords-faq.md
         - name: MFA – GYIK

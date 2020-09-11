@@ -166,9 +166,21 @@
               href: how-to-use-azure-ad-identity.md
         - name: Hálózati biztonság
           items:
-            - name: Virtuális hálózatok használata
+            - name: A virtuális hálózat áttekintése
               displayName: 'vnet, blob'
-              href: how-to-enable-virtual-network.md
+              href: how-to-network-security-overview.md
+            - name: Biztonságos munkaterületi erőforrások
+              displayName: 'vnet, workspace, container instance, container registry'
+              href: how-to-secure-workspace-vnet.md
+            - name: Biztonságos betanítási környezet
+              displayName: vnet
+              href: how-to-secure-training-vnet.md
+            - name: Biztonságos dedukciós környezet
+              displayName: vnet
+              href: how-to-secure-inferencing-vnet.md
+            - name: A Studio használata virtuális hálózaton
+              displayName: vnet
+              href: how-to-enable-studio-virtual-network.md
             - name: Privát kapcsolat használata
               displayName: private endpoint
               href: how-to-configure-private-link.md
@@ -307,6 +319,9 @@
             - name: Hiperparaméterek hangolása
               displayName: parameter
               href: how-to-tune-hyperparameters.md
+        - name: Az MLflow használata
+          displayName: 'log, monitor, deploy, metrics, Databricks, model registry, register'
+          href: how-to-use-mlflow.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -328,9 +343,6 @@
             - name: Naplók megtekintése
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-monitor-view-training-logs.md
-            - name: Kísérletek nyomon követése az MLflow használatával
-              displayName: 'log, monitor, metrics, Databricks'
-              href: how-to-use-mlflow.md
             - name: Futtatások megjelenítése a TensorBoard használatával
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md

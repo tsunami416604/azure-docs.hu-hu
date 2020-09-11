@@ -7,13 +7,15 @@ ms.date: 05/05/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom:
+- mvc
+- device-developer
+ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417021"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017523"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central az eszközök fejlesztésének áttekintése
 
@@ -87,7 +89,7 @@ Az eszköz működésének megvalósításához használja az [Azure IoT Device 
 
 További információ az eszközök sablonjainak szerepköréről: Mik az [eszközök sablonjai?](./concepts-device-templates.md).
 
-Néhány mintakód esetében lásd: [Node. js-ügyfélalkalmazás létrehozása és összekötése](./tutorial-connect-device-nodejs.md) , illetve [Python-ügyfélalkalmazás létrehozása és összekapcsolása](./tutorial-connect-device-python.md).
+Néhány mintakód: [Node.js ügyfélalkalmazás létrehozása és összekötése](./tutorial-connect-device-nodejs.md) , illetve Python- [ügyfélalkalmazás létrehozása és összekapcsolása](./tutorial-connect-device-python.md).
 
 ### <a name="languages-and-sdks"></a>Nyelvek és SDK-k
 

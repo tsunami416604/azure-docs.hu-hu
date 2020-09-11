@@ -151,6 +151,8 @@
           href: cloud-services-disaster-recovery-guidance.md
         - name: Klasszikus virtuálisgép-architektúra munkafolyamata
           href: cloud-services-workflow-process.md
+        - name: Erőforrás-állapotok támogatása a Cloud Serviceshez
+          href: resource-health-for-cloud-services.md
         - name: Cloud Services – gyakori kérdések
           items:
             - name: Az alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos gyakori kérdések

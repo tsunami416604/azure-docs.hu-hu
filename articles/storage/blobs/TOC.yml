@@ -310,7 +310,7 @@
               href: storage-blobs-list.md
             - name: Blobtulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-properties-metadata.md
-            - name: Blob másolása (.NET)
+            - name: Blob másolása (SDK)
               href: storage-blob-copy.md
         - name: Blobadatok hozzáférésének engedélyezése
           items:

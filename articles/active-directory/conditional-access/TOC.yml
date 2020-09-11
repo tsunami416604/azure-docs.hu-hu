@@ -52,8 +52,8 @@
   items:
     - name: A feltételes hozzáférés üzembe helyezésének megtervezése
       href: plan-conditional-access.md
-    - name: Ajánlott eljárások
-      href: best-practices.md
+    - name: Feltételes hozzáférési API-k
+      href: howto-conditional-access-apis.md
     - name: Gyakori feltételes hozzáférési szabályzatok
       items:
         - name: Régi hitelesítési folyamat letiltása
@@ -92,6 +92,8 @@
       href: terms-of-use.md
     - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
       href: howto-conditional-access-session-lifetime.md
+    - name: Ajánlott eljárások
+      href: best-practices.md
     - name: Hibaelhárítás
       items:
         - name: Bejelentkezési problémák elhárítása

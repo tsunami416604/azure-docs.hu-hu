@@ -30,6 +30,8 @@
         - name: Közzétételi útmutatók ajánlattípusok szerint
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: SaaS-ajánlat tervezése
+              href: ./plan-saas-offer.md
             - name: Virtual machines (Virtuális gépek)
               href: ./marketplace-virtual-machines.md
             - name: 'Azure-alkalmazások: megoldássablonok'

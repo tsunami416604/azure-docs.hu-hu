@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure AD Connect és a kapcsolat állapota. | Microsoft Docs
-description: Ismerteti a helyszíni környezet Azure AD-vel való szinkronizálásához és figyeléséhez használt eszközöket.
+description: Ismerje meg a helyszíni környezet Azure AD-vel való szinkronizálásához és figyeléséhez használt eszközöket.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278836"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018611"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 
@@ -35,7 +35,7 @@ A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid ide
 
 ## <a name="what-is-azure-ad-connect-health"></a>Mi az Azure AD Connect Health?
 
-A Azure Active Directory (Azure AD) csatlakozási állapota biztosítja a helyszíni identitás-infrastruktúra hatékony monitorozását. Lehetővé teszi az Office 365 és a Microsoft Online Services megbízható kapcsolatának fenntartását.  Ezt a megbízhatóságot úgy érheti el, ha a legfontosabb identitás-összetevők számára biztosít figyelési képességeket. Emellett a kulcsfontosságú adatpontokat is könnyen elérhetővé teszi az összetevőkről.
+A Azure Active Directory (Azure AD) csatlakozási állapota biztosítja a helyszíni identitás-infrastruktúra hatékony monitorozását. Lehetővé teszi a megbízható kapcsolat fenntartását a Microsoft 365 és a Microsoft Online Services szolgáltatással.  Ezt a megbízhatóságot úgy érheti el, ha a legfontosabb identitás-összetevők számára biztosít figyelési képességeket. Emellett a kulcsfontosságú adatpontokat is könnyen elérhetővé teszi az összetevőkről.
 
 Ez az információ az [Azure AD Connect Health portálon](https://aka.ms/aadconnecthealth) található meg. A Azure AD Connect Health portálon megtekintheti a riasztásokat, a Teljesítményfigyelőt, a használati elemzéseket és az egyéb információkat. Az Azure AD Connect Health egyetlen helyre gyűjti a legfontosabb identitás-összetevők állapotadatait.
 
@@ -44,7 +44,7 @@ Ez az információ az [Azure AD Connect Health portálon](https://aka.ms/aadconn
 ## <a name="why-use-azure-ad-connect"></a>Miért érdemes az Azure AD Connect megoldást használni?
 A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások hozzáféréséhez közös identitás áll a rendelkezésükre. A felhasználók és a szervezetek a következőket vehetik igénybe:
 
-* A felhasználók egyetlen identitással férhetnek hozzá olyan helyszíni alkalmazásokhoz és felhőszolgáltatásokhoz, mint például az Office 365.
+* A felhasználók egyetlen identitással férhetnek hozzá a helyszíni alkalmazásokhoz és a felhőalapú szolgáltatásokhoz, például a Microsoft 365hoz.
 * Mivel egyetlen eszközről van szó, a szinkronizáláshoz és bejelentkezéshez használt rendszer üzembe helyezése egyszerűen végrehajtható.
 * Többféle alkalmazási helyzethez is biztosítja az elérhető legújabb képességeket. A Azure AD Connect az Identity Integration Tools (például az rSync és a Azure AD-szinkronizáló) régebbi verzióit váltja fel. További információ: [hibrid identitás címtár-integrációs eszközök összehasonlítása](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
@@ -71,7 +71,7 @@ Részletes [használati metrikák](how-to-connect-health-adfs.md#usage-analytics
 ## <a name="license-requirements-for-using-azure-ad-connect-health"></a>A Azure AD Connect Health használatára vonatkozó licencfeltételek
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
