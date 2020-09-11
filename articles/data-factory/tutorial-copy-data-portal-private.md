@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079455"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024417"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Adatok biztonságos másolása az Azure Blob Storage-ból egy SQL-adatbázisba privát végpontok használatával
 
@@ -57,7 +57,7 @@ Most készítse elő a blob Storage-t és az SQL Database-t az oktatóanyaghoz a
 
 #### <a name="create-a-sink-sql-table"></a>Fogadó SQL-tábla létrehozása
 
-1. A következő SQL-szkripttel hozza létre a **dbo.emp** táblát az SQL Database-ben.
+A következő SQL-szkripttel hozza létre a **dbo.emp** táblát az SQL Database-ben.
 
     ```sql
     CREATE TABLE dbo.emp
@@ -70,8 +70,6 @@ Most készítse elő a blob Storage-t és az SQL Database-t az oktatóanyaghoz a
 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
-
-1. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Győződjön **meg** arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés** engedélyezve van az SQL Server rendszerhez, hogy Data Factory képes legyen az SQL Server-adatbázisba írni. A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg az **Azure SQL Server**a  >  **Overview**  >  **kiszolgáló tűzfalának beállítása**című témakört. Állítsa **be az** **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőséget.
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
@@ -172,7 +170,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
 1. Nyissa meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
-1. Kattintson az **OK** gombra. Automatikusan a folyamat lapra kerül. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+1. Válassza az **OK** lehetőséget. Automatikusan a folyamat lapra kerül. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![A forrás adatkészletet megjelenítő képernyőkép.](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
 
@@ -241,7 +239,7 @@ Ha a kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse 
     1. A privát hivatkozás jóváhagyásához kövesse az [ebben a szakaszban](#approval-of-a-private-link-in-sql-server) található utasításokat.
     1. Lépjen vissza a párbeszédpanelre. Válassza a kapcsolat újbóli **tesztelése** lehetőséget, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
-1. Automatikusan a **set Properties (tulajdonságok beállítása** ) párbeszédpanelre kerül. A **Tábla** területen válassza a **[dbo].[emp]** elemet. Ez után válassza az **OK** gombot.
+1. Automatikusan a **set Properties (tulajdonságok beállítása** ) párbeszédpanelre kerül. A **Tábla** területen válassza a **[dbo].[emp]** elemet. Ezután válassza az **OK** gombot.
 
 1. Lépjen a folyamat lapra, és a fogadó **adatkészletben**ellenőrizze, hogy a **outputsqldataset érték** van-e kiválasztva.
 
