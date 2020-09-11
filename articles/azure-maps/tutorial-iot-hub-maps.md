@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 86ae186d3d8b131955be7d9fa2c305316dea9f00
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 648feedfb82ad43af8f350bd25c9deb5d6ceec03
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658464"
+ms.locfileid: "90007281"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 4. [Hozzon létre egy erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups). Ebben az oktatóanyagban az erőforráscsoport- *ContosoRental*nevezjük el, de tetszőleges nevet választhat.
 
-5. Töltse le a [RentalCarSimulation C# projektet ](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
+5. Töltse le a [RentalCarSimulation C# projektet](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
 
 Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja, de más API-fejlesztési környezetet is választhat.
 

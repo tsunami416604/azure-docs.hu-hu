@@ -1,6 +1,6 @@
 ---
-title: Azure IaaS virtuális gépek áthelyezése egy másik régióba Azure Site Recovery
-description: Az Azure IaaS virtuális gépek egyik Azure-régióból a másikba való áthelyezéséhez használja a Azure Site Recovery.
+title: Azure-beli virtuális gépek áthelyezése másik Azure-régióba Azure Site Recovery
+description: A Azure Site Recovery használatával Azure-beli virtuális gépeket helyezhet át egyik Azure-régióból a másikba.
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425925"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006414"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
+# <a name="move-vms-to-another-azure-region"></a>Virtuális gépek áthelyezése másik Azure-régióba
 
-Különböző helyzetekben érdemes áthelyezni a meglévő Azure IaaS virtuális gépeket (VM-EK) az egyik régióból a másikba. Tegyük fel például, hogy javítani szeretné a meglévő virtuális gépek megbízhatóságát és rendelkezésre állását, hogy javítsa a kezelhetőséget, vagy átlépjen az irányítási okokból. További információt az [Azure virtuális gépek áthelyezésének áttekintése](azure-to-azure-move-overview.md)című témakörben talál. 
+Vannak olyan helyzetek, amikor át szeretné helyezni a meglévő Azure IaaS-beli virtuális gépeket az egyik régióból a másikba. Tegyük fel például, hogy javítani szeretné a meglévő virtuális gépek megbízhatóságát és rendelkezésre állását, hogy javítsa a kezelhetőséget, vagy átlépjen az irányítási okokból. További információt az [Azure virtuális gépek áthelyezésének áttekintése](azure-to-azure-move-overview.md)című témakörben talál. 
 
-A [Azure site Recovery](site-recovery-overview.md) szolgáltatással kezelheti és koordinálhatja a helyszíni gépek és az Azure-beli virtuális gépek vész-helyreállítását az üzletmenet folytonossága és a vész-helyreállítás (BCDR) érdekében. Site Recovery az Azure-beli virtuális gépek másodlagos régióba való áthelyezésének kezelésére is használható.
+Az Azure-beli virtuális gépeket egy másodlagos régióba helyezheti át [Azure site Recovery](site-recovery-overview.md) szolgáltatással.
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > 
@@ -30,7 +30,19 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Az Adatmásolás és a replikáció engedélyezése
 > * A konfiguráció tesztelése és az áthelyezés végrehajtása
 > * A forrás régió erőforrásainak törlése
-> 
+
+
+> [!IMPORTANT]
+> Az Azure-beli virtuális gépek másik régióba való áthelyezéséhez az [Azure-erőforrás-mozgató](../resource-mover/tutorial-move-region-virtual-machines.md)használatát javasoljuk. Az erőforrás-mozgató nyilvános előzetes verzióban érhető el, és a következőket biztosítja:
+> - Egyetlen központ az erőforrások régiók közötti áthelyezéséhez.
+> - Csökkentheti a mozgatási időt és a bonyolultságot. Minden, amire szüksége van, egyetlen helyen kell lennie.
+> - Egyszerű és egységes felület a különböző típusú Azure-erőforrások áthelyezéséhez.
+> - Egyszerű módszer az áthelyezni kívánt erőforrások függőségeinek azonosítására. Ezzel a művelettel a kapcsolódó erőforrásokat együtt helyezheti át, így minden a várt módon működik a megcélzott régióban, az áthelyezést követően.
+> - A forrás régió erőforrásainak automatikus törlése, ha az áthelyezés után törölni szeretné őket.
+> - Tesztelés: Kipróbálhatja a mozgatást, majd elvetheti, ha nem szeretne teljes áthelyezést végezni.
+
+
+
 > [!NOTE]
 > Ebből az oktatóanyagból megtudhatja, hogyan helyezheti át az Azure-beli virtuális gépeket az egyik régióból a másikba. Ha javítani szeretné a rendelkezésre állást, ha a virtuális gépeket egy rendelkezésre állási csoportba helyezi egy másik régióban található rögzített virtuális gépekre, tekintse meg az Azure-beli [virtuális gépek áthelyezése Availability Zones oktatóanyagba](move-azure-vms-avset-azone.md).
 
@@ -125,7 +137,7 @@ Ha bejelölte az áthelyezett virtuális gépet, és módosítania kell a felada
 
 Miután bejelölte az áthelyezett virtuális gépet, és készen áll a módosítás elvégzésére, a **replikált elemek**területen kattintson a jobb gombbal a virtuális gép > **véglegesítve**elemre. Ez a lépés befejezi az áthelyezési folyamatot a célként megadott régióba. Várjon, amíg a véglegesítési feladatok befejeződik.
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A következő lépések végigvezetik a forrás-és az áthelyezéshez használt kapcsolódó erőforrások tisztításának lépésein.
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 653ad7e9b41e1c8a4708f2ab951676c144316192
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180779"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005854"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
@@ -38,7 +38,7 @@ Az Azure szinapszis emellett a **AzureML**beépített támogatásával lehetőv�
 
 * A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer, amely lehetővé teszi, hogy a vállalatok adattárház-és adatvirtualizációs forgatókönyveket alkalmazzanak az adatmérnökök számára ismerős standard T-SQL-élmények használatával. Emellett kibővíti az SQL képességeit a streaming és a gépi tanulási forgatókönyvek kezeléséhez.
 
-* A szinapszis SQL **kiszolgáló** nélküli és **kiépített** erőforrás-modelleket is kínál, és az igényeinek megfelelő használati és számlázási lehetőségeket kínál. A kiszámítható teljesítmény és a költséghatékonyság érdekében kiépítheti a készleteket az SQL-táblákban tárolt adatfeldolgozási teljesítmény fenntartásához. Nem tervezett vagy feltört számítási feladatok esetén használja a kiszolgáló nélküli, mindig elérhető SQL-végpontot.
+* A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is kínál, amelyek az igényeinek megfelelő felhasználási és számlázási lehetőségeket kínálnak. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatfeldolgozási teljesítmény fenntartásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
 * A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
 * A AI és az SQL integrálása **gépi tanulási** modellek használatával a [T-SQL előrejelzési függvény](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
 

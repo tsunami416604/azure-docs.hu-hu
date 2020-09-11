@@ -1,5 +1,6 @@
 ---
 title: Virtuális gépek áthelyezése egy Azure-régióba a rendelkezésre állási zónák használatával Azure Site Recovery
+description: Megtudhatja, hogyan helyezhet át virtuális gépeket egy másik régióban lévő rendelkezésre állási zónába Site Recovery
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 7957c6a3fdc8cb798292d03092ee1442b2c0a6bc
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425472"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004510"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése Availability Zonesba
+
+Ez a cikk azt ismerteti, hogyan helyezhet át Azure-beli virtuális gépeket egy rendelkezésre állási zónába egy másik régióban. Ha egy másik zónába szeretne áttérni ugyanabban a régióban, [tekintse át ezt a cikket](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+
+
 Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Az egyes rendelkezésre állási zónák egy vagy több, önálló áramellátással, hűtéssel, és hálózattal rendelkező adatközpontból állnak. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogyan az a [Availability Zones támogató régiókban](../availability-zones/az-region.md)szerepel.
 
 Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üzembe helyezve egy adott régióban, és szeretné javítani a rendelkezésre állást azáltal, hogy ezeket a virtuális gépeket egy rendelkezésre állási zónába helyezi, ezt Azure site Recovery használatával teheti meg. Ez a művelet a következő kategóriákba rendezhető:
@@ -23,7 +28,15 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 - Virtuális gépek áthelyezése egy rendelkezésre állási csoportba egy adott régióban lévő Availability Zonesba
 
 > [!IMPORTANT]
-> Jelenleg Azure Site Recovery támogatja a virtuális gépek áthelyezését az egyik régióból a másikba. Csak néhány régión belül támogatja a zónák közötti áthelyezést. [További információ](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+> Ha az Azure-beli virtuális gépeket egy másik régió régiójában lévő rendelkezésre állási zónába szeretné áthelyezni, az [Azure-erőforrás-mozgató](../resource-mover/move-region-availability-zone.md)használatát javasoljuk. Az erőforrás-mozgató nyilvános előzetes verzióban érhető el, és a következőket biztosítja:
+> - Egyetlen központ az erőforrások régiók közötti áthelyezéséhez.
+> - Csökkentheti a mozgatási időt és a bonyolultságot. Minden, amire szüksége van, egyetlen helyen kell lennie.
+> - Egyszerű és egységes felület a különböző típusú Azure-erőforrások áthelyezéséhez.
+> - Egyszerű módszer az áthelyezni kívánt erőforrások függőségeinek azonosítására. Ezzel a művelettel a kapcsolódó erőforrásokat együtt helyezheti át, így minden a várt módon működik a megcélzott régióban, az áthelyezést követően.
+> - A forrás régió erőforrásainak automatikus törlése, ha az áthelyezés után törölni szeretné őket.
+> - Tesztelés: Kipróbálhatja a mozgatást, majd elvetheti, ha nem szeretne teljes áthelyezést végezni.
+
+
 
 ## <a name="check-prerequisites"></a>Előfeltételek ellenőrzése
 

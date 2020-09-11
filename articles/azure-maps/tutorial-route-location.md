@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 992640424f6fdb632327866e132fdbb1c6244492
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: b6ae93c108481d4f46694fd1658ba7b27a13c188
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400330"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007400"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Oktatóanyag: útvonal-utasítások megjelenítése a Azure Maps Route Service és a Map Control használatával
 
@@ -106,7 +106,7 @@ A következő lépések bemutatják, hogyan hozhatja létre és jelenítheti meg
 
 ## <a name="define-route-display-rendering"></a>Útvonal megjelenítési megjelenítésének meghatározása
 
-Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni. A kezdő-és végpontok egy szimbólum réteg használatával lesznek megjelenítve. A sorok hozzáadásával kapcsolatos további információkért lásd: [vonal réteg hozzáadása térképhez](map-add-line-layer.md). További információ a szimbólumok rétegeiről: [szimbólum hozzáadása egy térképhez](map-add-pin.md).
+Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni. A kezdő és a végpontok szimbólum réteggel lesznek megjelenítve. A sorok hozzáadásával kapcsolatos további információkért lásd: [vonal réteg hozzáadása térképhez](map-add-line-layer.md). További információ a szimbólumok rétegeiről: [szimbólum hozzáadása egy térképhez](map-add-pin.md).
 
 1. Fűzze hozzá a következő JavaScript-kódot a `GetMap` függvényhez. Ez a kód implementálja a Térkép vezérlőelem `ready` eseménykezelőjét. Az oktatóanyagban szereplő kód további része az `ready` eseménykezelőbe kerül.
 
@@ -143,7 +143,7 @@ Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni
 
     A Map Control `ready` eseménykezelőben létrejön egy adatforrás, amely az útvonalat az elejétől a végpontig tárolja. Ha meg szeretné határozni, hogyan legyenek megjelenítve az útválasztási vonal, egy sor réteget hoz létre és csatol az adatforráshoz.  Annak biztosítása érdekében, hogy az útválasztási vonal ne fedje fel a közúti címkéket, egy második paramétert adtunk át a következő értékkel: `'labels'` .
 
-    Ezután létrejön egy szimbólum-réteg, amely az adatforráshoz van csatolva. Ez a réteg határozza meg a kezdő és a záró pontok megjelenítésének módját. Ebben az esetben a kifejezések hozzá lettek adva, hogy beolvassák az ikon képének és a szöveg feliratának adatait az egyes pontok objektumainak tulajdonságaiból.
+    Ezután létrejön egy szimbólum-réteg, amely az adatforráshoz van csatolva. Ez a réteg határozza meg a kezdő és a záró pontok megjelenítésének módját. A kifejezések hozzá lettek adva, hogy beolvassák az ikon képének és a szöveg feliratának adatait az egyes pontok objektumainak tulajdonságaiban. A kifejezésekkel kapcsolatos további információkért lásd: [adatvezérelt stílusú kifejezések](data-driven-style-expressions-web-sdk.md).
 
 2. Állítsa be a kezdőpontot a Microsoft számára, és a végpontot a Seattle-ben lévő benzinkútnál.  A Map Control `ready` eseménykezelőben fűzze hozzá a következő kódot.
 
@@ -168,7 +168,9 @@ Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni
     });
     ```
 
-    Ez a kód két [GeoJSON pontot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre a kezdő és a végpontok jelölésére, amelyek ezután hozzáadódnak az adatforráshoz. A kód utolsó blokkja beállítja a kamera nézetét a kezdő és a végpont szélességi és hosszúsági értékének használatával. A Map Control setCamera tulajdonságával kapcsolatos további információkért lásd: [setCamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonság.
+    Ez a kód két [GeoJSON pontot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre a kezdő és a végpontok jelölésére, amelyek ezután hozzáadódnak az adatforráshoz. 
+
+    A kód utolsó blokkja beállítja a kamera nézetét a kezdő és a végpont szélességi és hosszúsági értékének használatával. Az indulási és célpontokat a rendszer hozzáadja az adatforráshoz. Az indulási és célpontokhoz tartozó határolókeret kiszámítása az `atlas.data.BoundingBox.fromData` függvénnyel történik. Ezzel a határolókeret használatával állíthatja be a térképes kamerák nézetét a teljes útvonalon a `map.setCamera` függvénnyel. A kitöltés bekerül a szimbólum ikonjainak pixel dimenzióinak kompenzálására. A Map Control setCamera tulajdonságával kapcsolatos további információkért lásd: [setCamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) tulajdonság.
 
 3. Mentse **MapRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
 
@@ -178,7 +180,10 @@ Ebben az oktatóanyagban az útvonalat egy vonal réteggel fogjuk megjeleníteni
 
 ## <a name="get-route-directions"></a>Útvonal irányának beolvasása
 
-Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Service API-t az irányok egyik pontjáról a másikra való lekéréséhez. Ezen a szolgáltatáson belül vannak más API-k, amelyek lehetővé teszik a *leggyorsabb*, *legrövidebb*, *Eco*vagy *izgalmas* útvonalak megtervezését két helyszín között. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Directions API-t az útvonal irányának lekérésére és az egyik pontról a másikra való érkezés várható időpontjára.
+
+>[!TIP]
+>A Azure Maps Route Services API-kat kínál az útvonalak megtervezéséhez különböző útvonal-típusok alapján, például a *leggyorsabb*, *legrövidebb*, *Eco*vagy *izgalmas* útvonalakon a távolság, a forgalmi feltételek és a felhasznált átviteli mód alapján. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
 
 1. A `GetMap` függvényben a vezérlő `ready` eseménykezelőján belül adja hozzá a következőt a JavaScript-kódhoz.
 
@@ -193,7 +198,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Servic
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) -példányt. A a `routeURL` Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest&preserve-view=false) -példányt. A a `routeURL` Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
 
 2. A hitelesítő adatok és az URL-cím beállítása után fűzze hozzá a következő kódot a vezérlő `ready` eseménykezelőjában. Ez a kód létrehozza az útvonalat a kezdőponttól a végpontig. A a `routeURL` Azure Maps Route Service API-t kéri az útvonal irányának kiszámításához. Ezután a válaszból Kinyer egy GeoJSON-gyűjteményt, `geojson.getFeatures()` és hozzáadja az adatforráshoz.
 

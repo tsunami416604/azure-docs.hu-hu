@@ -9,24 +9,26 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: e2e1d0479b8edacaae8816d74db061eeedb805a7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 363f2934bbeec266c16711572620e03e69785f94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325219"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007196"
 ---
 # <a name="analyze-data-with-sql-pools"></a>Az SQL-készletekkel rendelkező adatelemzés
 
 Az Azure szinapszis Analytics lehetővé teszi az SQL-készlettel való adatelemzés lehetőségét. Ebben az oktatóanyagban a New York-i taxi-mintaadatok segítségével megismerheti az SQL-készlet analitikus funkcióit.
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>A New York-i taxi-mintaadatok betöltése a SQLDB1-adatbázisba
+## <a name="link-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>A New York-i taxi-mintaadatok összekapcsolása a SQLDB1-adatbázissal
 
-1. A szinapszis Studióban a legfelső kék menüben válassza a kérdőjel (**?**) ikont.
-1. Válassza az **első**lépéseket az első  >  **lépések központban**.
+1. A szinapszis Studióban navigáljon a **bal oldali adatközponthoz** .
+1. Kattintson **+** a, majd a **Tallózás minták**elemre. Ekkor megnyílik a **minta központ** , és megnyílik az **adatkészletek** lap.
+1. Válassza a **New York-i taxi & Limousine Commission – Yellow taxi Trip Records**elemet. Ez az adatkészlet több mint 1 500 000 000 sort tartalmaz.
+1. Kattintson az **adatkészlet hozzáadása** elemre.
+1. Az **adatközpontban** a **kapcsolt** területen egy új adatkészlet jelenik meg az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow**   
 1. A **lekérdezési mintaadatok**feliratú kártyán válassza ki a **SQLDB1**nevű SQL-készletet.
-1. Válassza ki a **lekérdezési adatelemet**. A "mintaadatok betöltése" értesítés röviden megjelenik. A szinapszis Studio teteje közelében lévő világoskék állapotsor azt jelzi, hogy a rendszer az SQLDB1-be tölti be az adatmennyiséget.
-1. Az állapotsor zöldre váltása után zárja be a következőt:.
+
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Ismerkedjen meg az SQL-készletben található New York-i taxi-szolgáltatással
 
@@ -52,7 +54,7 @@ Az Azure szinapszis Analytics lehetővé teszi az SQL-készlettel való adatelem
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)

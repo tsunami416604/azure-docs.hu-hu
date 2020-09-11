@@ -1,40 +1,46 @@
 ---
-title: 'Oktatóanyag: több útvonal megkeresése utazási mód alapján | Microsoft Azure térképek'
-description: 'Megtudhatja, hogyan használhatja a Azure Maps-t az adott utazási módokhoz tartozó útvonalak megkereséséhez a hasznos pontokra. Lásd: több útvonal megjelenítése a Maps-ben.'
+title: 'Oktatóanyag: adott utazási módokhoz tartozó útvonalak keresése és megjelenítése Microsoft Azure térképekkel'
+description: Megtudhatja, hogyan használhatja a Azure Maps az útvonalak megkereséséhez és megjelenítéséhez az adott utazási módokon.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a7b6b658590d0c764435bc28baa6d21197984e10
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037592"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007162"
 ---
-# <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Oktatóanyag: útvonalak keresése különböző utazási módokhoz Azure Maps használatával
+# <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Oktatóanyag: útvonalak keresése és megjelenítése különböző utazási módokhoz Azure Maps használatával
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a Azure Maps-fiókját és a Route szolgáltatást. Az útvonal-szolgáltatás megkeresi az adott pontra mutató útvonalat, amelyet az utazási mód rangsorol. Két különböző útvonalat jeleníthet meg a térképen, egyet az autók és egy a teherautók számára. Az útválasztási szolgáltatás figyelembe veszi a korlátozásokat a jármű magassága és súlya miatt, vagy ha a jármű veszélyes árut hordoz. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) -t és a [Térkép vezérlőelemet](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) a személygépkocsik és a kereskedelmi gépjárművek (kamionok) útvonali irányának megjelenítésére a `USHazmatClass2` rakomány típusával. Emellett végigvezeti Önt a valós idejű adatforgalmi adatok térképeken való megjelenítésének módján. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Új weblap létrehozása a térképkezelési API használatával
-> * A forgalom megjelenítése a térképen
-> * Utazási módot deklaráló útvonal-lekérdezések létrehozása
-> * Több útvonal megjelenítése a térképen
+> * A Térkép vezérlőelem létrehozása és megjelenítése egy weblapon
+> * Valós idejű adatforgalmi adatok leképezése
+> * Privát és kereskedelmi jármű útvonalának kérése és megjelenítése térképeken
 
 ## <a name="prerequisites"></a>Előfeltételek
-A folytatás előtt kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) és az S1 árképzési csomag utasításait. A fiók elsődleges kulcsának lekéréséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
-## <a name="create-a-new-map"></a>Új térkép létrehozása
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt, amelybe be van ágyazva a térképkezelési API.
+2. [Hozzon létre egy Azure Maps fiókot](quick-demo-map-app.md#create-an-azure-maps-account).
+
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+
+A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)találhat egy élő mintát.
+
+## <a name="create-a-new-web-page-using-the-map-control-api"></a>Új weblap létrehozása a térképkezelési API használatával
+
+A következő lépések bemutatják, hogyan hozhatja létre és jelenítheti meg a Térkép vezérlőelemet egy weblapon.
 
 1. A helyi gépén hozzon létre egy új fájlt **MapTruckRoute.html** néven.
-2. Adja a következő HTML-összetevőket a fájlhoz:
+2. Másolja/illessze be a következő HTML-kódot a fájlba.
 
     ```HTML
     <!DOCTYPE html>
@@ -79,7 +85,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
     </html>
     ```
 
-    Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Tekintse meg a laptörzs `onload` eseményét, amely a laptörzs betöltését követően meghívja a `GetMap` függvényt. Ez a függvény tartalmazza az Azure Maps API-k elérésére szolgáló beágyazott JavaScript-kódot.
+     A HTML-fejléc tartalmazza az Azure térképkezelés Library által üzemeltetett CSS-és JavaScript-forrásfájlokat. A törzs `onload` eseménye meghívja a `GetMap` függvényt. A következő lépésben hozzáadjuk a Térkép vezérlőelem inicializálási kódját.
 
 3. Adja hozzá az alábbi JavaScript-kódot a `GetMap` függvényhez. Cserélje le a karakterláncot `<Your Azure Maps Key>` arra az elsődleges kulcsra, amelyet a Maps-fiókból másolt.
 
@@ -94,15 +100,13 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
     });
     ```
 
-    Az `atlas.Map` osztály a vizuális és interaktív webes Térkép vezérlőelemét biztosítja, és az Azure TÉRKÉPKEZELÉS API egyik összetevője.
+4. Mentse a fájlt, és nyissa meg a böngészőben. Egy egyszerű üzenet jelenik meg.
 
-4. Mentse a fájlt, és nyissa meg a böngészőben. Ekkor már rendelkezik egy egyszerű, fejleszthető térképpel.
+    :::image type="content" source="./media/tutorial-prioritized-routes/basic-map.png" alt-text="Térkép vezérlőelem alapszintű leképezése":::
 
-   ![Egyszerű térkép megtekintése](./media/tutorial-prioritized-routes/basic-map.png)
+## <a name="render-real-time-traffic-data-on-a-map"></a>Valós idejű adatforgalmi adatok leképezése
 
-## <a name="visualize-traffic-flow"></a>A forgalom megjelenítése
-
-1. Adja hozzá a térképhez a forgalom megjelenítését. A Maps `ready` esemény addig várakozik, amíg a Maps-erőforrások betöltődik, és készen áll a biztonságos interakcióra.
+1. Fűzze hozzá a következő JavaScript-kódot a `GetMap` függvényhez. Ez a kód implementálja a Térkép vezérlőelem `ready` eseménykezelőjét. Az oktatóanyagban szereplő kód további része az `ready` eseménykezelőbe kerül.
 
     ```javascript
     map.events.add("ready", function() {
@@ -113,54 +117,54 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
     });
     ```
 
-    A térképi eseménykezelőben a térképen a forgalmi folyamat beállítása a (z) értékre `ready` van állítva `relative` , amely az út sebessége a szabad folyamathoz képest. Az út `absolute` sebességére is állíthatja ezt, vagy a `relative-delay` sebességre, amely a relatív sebességet jeleníti meg, ha eltér az üres úton elérhető sebességtől.
+    A térképi eseménykezelőben a térképen a forgalmi folyamat beállítása a (z) értékre `ready` van állítva `relative` , amely az út sebessége a szabad folyamathoz képest. További forgalmi lehetőségekért lásd: [TrafficOptions Interface](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions?view=azure-maps-typescript-latest&preserve-view=false).
 
-2. Mentse a **MapTruckRoute.html** fájlt, és frissítse a lapot a böngészőben. Ha együttműködik a térképpel, és megközelíti a Los Angelesbe, a jelenlegi forgalmi adatokat tartalmazó utcákat kell látnia.
+2. Mentse a **MapTruckRoute.html** fájlt, és frissítse a lapot a böngészőben. Ha bármely városba, például a Los Angeles-be nagyítja, látni fogja, hogy az utcák a jelenlegi forgalmi flow-adatokkal jelennek meg.
 
-   ![Térkép forgalmának megtekintése](./media/tutorial-prioritized-routes/traffic-map.png)
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Térkép forgalmának megtekintése":::
 
 <a id="queryroutes"></a>
 
-## <a name="define-how-the-route-will-be-rendered"></a>Az útvonal megjelenítésének meghatározása
+## <a name="define-route-display-rendering"></a>Útvonal megjelenítési megjelenítésének meghatározása
 
-Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a térképen. Az egyik alapjául a személyautók, a másik alapjául a teherautók által használható utak szolgálnak. Megjelenítéskor a rendszer megjelenít egy szimbólum ikont az útvonal elejéhez és végéhez, valamint az egyes útvonalak elérési útjainak különböző színes sorait.
+Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a térképen. A rendszer az első útvonalat fogja kiszámítani egy saját jármű (autó) számára. A második útvonal a kereskedelmi jármű (tehergépkocsi) számára lesz kiszámítva, hogy megjelenjen az eredmények közötti különbség. A leképezés során a Térkép egy szimbólum ikont jelenít meg az útvonal kezdő-és végpontja számára, és az egyes útvonalak elérési útjához különböző színekkel rendelkező vonalvezetési vonalakat mutat. A sorok hozzáadásával kapcsolatos további információkért lásd: [vonal réteg hozzáadása térképhez](map-add-line-layer.md). További információ a szimbólumok rétegeiről: [szimbólum hozzáadása egy térképhez](map-add-pin.md).
 
-1. A Térkép inicializálását követően adja hozzá a következő JavaScript-kódot a Maps-eseménykezelőben `ready` .
+1. A Map Control `ready` eseménykezelőben fűzze hozzá a következő kódot.
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('ready', function () {
 
-        //Create a data source and add it to the map.
-        datasource = new atlas.source.DataSource();
-        map.sources.add(datasource);
+    //Create a data source and add it to the map.
+    datasource = new atlas.source.DataSource();
+    map.sources.add(datasource);
 
-        //Add a layer for rendering the route lines and have it render under the map labels.
-        map.layers.add(new atlas.layer.LineLayer(datasource, null, {
-            strokeColor: ['get', 'strokeColor'],
-            strokeWidth: ['get', 'strokeWidth'],
-            lineJoin: 'round',
-            lineCap: 'round'
-        }), 'labels');
+    //Add a layer for rendering the route lines and have it render under the map labels.
+    map.layers.add(new atlas.layer.LineLayer(datasource, null, {
+        strokeColor: ['get', 'strokeColor'],
+        strokeWidth: ['get', 'strokeWidth'],
+        lineJoin: 'round',
+        lineCap: 'round'
+    }), 'labels');
 
-        //Add a layer for rendering point data.
-        map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
-            iconOptions: {
-                image: ['get', 'icon'],
-                allowOverlap: true
-            },
-            textOptions: {
-                textField: ['get', 'title'],
-                offset: [0, 1.2]
-            },
-            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
-        }));
-    });
+    //Add a layer for rendering point data.
+    map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+        iconOptions: {
+            image: ['get', 'icon'],
+            allowOverlap: true
+        },
+        textOptions: {
+            textField: ['get', 'title'],
+            offset: [0, 1.2]
+        },
+        filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
+    }));
+
     ```
-    
-    A Maps- `ready` eseménykezelőben létrejön egy adatforrás az útválasztási sorok és a kezdő és záró pontok tárolására. A rendszer egy vonalréteget hoz létre, majd csatol az adatforráshoz az útvonal megjelenítési módjának meghatározásához. A vonalvastagságok és a színek kifejezésekkel kérhetők le az útvonal tulajdonságaiból. A réteg térképhez való hozzáadásakor a rendszer átad egy `'labels'` értékű második paramétert is, amely azt határozza meg, hogy ez a réteg a térképfeliratok alatt jelenjen meg. Ezzel biztosíthatja, hogy az útválasztási sor ne fedje fel az utak címkéit. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg a kezdő és a záró pontok megjelenítésének módját. Ebben az esetben a kifejezések hozzá lettek adva, hogy beolvassák az ikon képének és a szöveg feliratának adatait az egyes pontok objektumainak tulajdonságaiból. 
-    
-2. A jelen oktatóanyag esetében állítson be indulási pontnak egy Fabrikam nevű fiktív vállalatot Seattle-ben, célpontnak pedig a Microsoft irodáját. A Maps- `ready` eseménykezelőben adja hozzá a következő kódot.
+
+    A Map Control `ready` eseménykezelőben létrejön egy adatforrás, amely az útvonalat az elejétől a végéig tárolja. A [kifejezések](data-driven-style-expressions-web-sdk.md) használatával lehet beolvasni a vonal szélességét és színét az útválasztási sor funkciójának tulajdonságaiban. Annak biztosítása érdekében, hogy az útválasztási vonal ne fedje fel a közúti címkéket, egy második paramétert adtunk át a következő értékkel: `'labels'` .
+
+    Ezután létrejön egy szimbólum-réteg, amely az adatforráshoz van csatolva. Ez a réteg határozza meg a kezdő és a záró pontok megjelenítésének módját. A kifejezések hozzá lettek adva, hogy beolvassák az ikon képének és a szöveg feliratának adatait az egyes pontok objektumainak tulajdonságaiban. A kifejezésekkel kapcsolatos további információkért lásd: [adatvezérelt stílusú kifejezések](data-driven-style-expressions-web-sdk.md).
+
+2. Állítsa be a kezdőpontot fiktív vállalatként, melynek neve: fabrikam, a végpont pedig Microsoft Office.  A Map Control `ready` eseménykezelőben fűzze hozzá a következő kódot.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -173,13 +177,7 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
         title: 'Microsoft - Lincoln Square',
         icon: 'pin-round-blue'
     });
-    ```
 
-    Ez a kód két [GeoJSON-objektumot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre, amelyek az útvonal indulási és célpontját jelzik. A rendszer minden ponthoz hozzáad egy-egy `title` és `icon` tulajdonságot.
-
-3. Ezután adja hozzá a következő JavaScript-kódot, amellyel hozzáadja az indulási és célpontokat jelölő gombostűket a térképhez:
-
-    ```JavaScript
     //Add the data to the data source.
     datasource.add([startPoint, endPoint]);
 
@@ -188,25 +186,27 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
         bounds: atlas.data.BoundingBox.fromData([startPoint, endPoint]),
         padding: 100
     });
+
     ```
 
-    Az indulási és célpontokat a rendszer hozzáadja az adatforráshoz. Az indulási és célpontokhoz tartozó határolókeret kiszámítása az `atlas.data.BoundingBox.fromData` függvénnyel történik. Ezzel a határolókeret használatával állíthatja be a térképes kamerák nézetét a teljes útvonalon a `map.setCamera` függvénnyel. A rendszer kitöltést is hozzáad a szimbólumikonok képpontban kifejezett méreteinek kompenzálásához.
+    Ez a kód két [GeoJSON pontot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre a kezdő és a végpontok jelölésére, amelyek ezután hozzáadódnak az adatforráshoz.
 
-4. Mentse a fájlt, majd frissítse a böngészőt, hogy a gombostűk megjelenjenek a térképen. A Térkép középpontba került a Seattle-ben. A kiindulási pontot és a kék PIN-kódot jelölő kék PIN-kód megadásával megtekintheti a befejezési pontot.
+    A kód utolsó blokkja beállítja a kamera nézetét a kezdő és a végpont szélességi és hosszúsági értékének használatával. Az indulási és célpontokat a rendszer hozzáadja az adatforráshoz. Az indulási és célpontokhoz tartozó határolókeret kiszámítása az `atlas.data.BoundingBox.fromData` függvénnyel történik. Ezzel a határolókeret használatával állíthatja be a térképes kamerák nézetét a teljes útvonalon a `map.setCamera` függvénnyel. A kitöltés bekerül a szimbólum ikonjainak pixel dimenzióinak kompenzálására. A Map Control setCamera tulajdonságával kapcsolatos további információkért lásd: [setCamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) tulajdonság.
 
-   ![Az indulási és célpontokat jelölő térkép megtekintése](./media/tutorial-prioritized-routes/pins-map.png)
+3. Mentse **TruckRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
+
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Az indulási és célpontokat jelölő térkép megtekintése":::
 
 <a id="multipleroutes"></a>
 
-## <a name="render-routes-prioritized-by-mode-of-travel"></a>útvonalak megjelenítése utazási mód alapján rendezve.
+## <a name="request-and-display-private-and-commercial-vehicle-routes-on-a-map"></a>Privát és kereskedelmi jármű útvonalának kérése és megjelenítése térképeken
 
-Ez a szakasz bemutatja, hogyan használhatja a Maps Route Service API-t. Az útvonal API a szállítási mód alapján több útvonal megkeresésére szolgál egy adott kezdőponttól a végpontig. Az útválasztási szolgáltatás API-kat biztosít a *leggyorsabb*, *legrövidebb*, *Eco*vagy *izgalmas* útvonalak tervezéséhez. Az API-k nem csupán két helyszín közötti útvonalakat terveznek, hanem az aktuális forgalmi feltételeket is figyelembe veszik. 
+Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Service-t az egyik pontról a másikra, a szállítási mód alapján. Kétféle átviteli módot fogunk használni: kamion és autó.
 
-A Route API lehetővé teszi, hogy a felhasználók a jövőben tervezzék meg az útvonalakat az Azure kiterjedt történelmi forgalmú adatbázisának használatával. Az API előre jelezheti az útvonal időtartamait egy adott napra és időpontra vonatkozóan. További információért lásd a [getRouteDirections API-t](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) ismertető témakört. 
+>[!TIP]
+>Az útválasztási szolgáltatás API-kat biztosít a *leggyorsabb*, *legrövidebb*, *Eco*vagy *izgalmas* útvonalak tervezéséhez a távolság, a forgalmi feltételek és a felhasznált átviteli mód alapján. A szolgáltatás azt is lehetővé teszi, hogy a felhasználók a korábbi forgalmi feltételek alapján tervezzék meg a jövőbeli útvonalakat. A felhasználók megtekinthetik az útvonal időtartamának előrejelzését egy adott időpontra vonatkozóan. További információkért lásd: [Route Directions API beszerzése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
 
-Az alábbi kódrészleteket fel kell venni **a Térkép betöltési eventListener** , hogy a Térkép teljes terhelése után is betölthető legyen.
-
-1. A GetMap függvényben adja hozzá a következőt a JavaScript-kódhoz.
+1. A `GetMap` függvényben a vezérlő `ready` eseménykezelőján belül adja hozzá a következőt a JavaScript-kódhoz.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -219,9 +219,9 @@ Az alábbi kódrészleteket fel kell venni **a Térkép betöltési eventListene
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) -példányt. A a `routeURL` Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` -t az előfizetési kulccsal Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` szabályzatot, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest&preserve-view=false) -példányt. A a `routeURL` Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) műveletekhez tartozó URL-címet jelöli.
 
-2. A hitelesítő adatok és az URL-cím beállítása után adja hozzá a következő JavaScript-kódot egy olyan útvonal létrehozásához az elejétől a végéig, amely egy USHazmatClass2 osztályozott rakományt szállít, és megjeleníti az eredményeket.
+2. A hitelesítő adatok és az URL-cím beállítása után adja hozzá a következő JavaScript-kódot egy teherautó útvonal-útvonal létrehozásához az elejétől a végéig. Ez az útvonal létrejön, és megjelenik egy olyan teherautónál, amely `USHazmatClass2` osztályozott rakományt végez.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -248,9 +248,12 @@ Az alábbi kódrészleteket fel kell venni **a Térkép betöltési eventListene
     });
     ```
 
-    Ez a kódrészlet a Azure Maps útválasztási szolgáltatást a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metódussal kérdezi le. Ezután a rendszer kinyeri az GeoJSON a metódus használatával kinyert válaszból `geojson.getFeatures()` . Ekkor a rendszer hozzáadja az útválasztási sort az adatforráshoz. A 0 index biztosítja, hogy az adatforrásban lévő többi sor előtt megjelenítve legyen. Ez azért történik, mert a tehergépkocsi-útvonal kiszámítása gyakran lassabb lesz, mint az autó útvonalának kiszámítása. Ha az autó útvonala után hozzáadja az adatforráshoz a Truck Route sort, akkor azt a rendszer megjeleníti. A rendszer két tulajdonságot ad hozzá a Truck Route-sorhoz, amely a kék árnyalatú körvonal színe, valamint a 9 képpont vastagsága.
+    A fenti kód a Azure Maps Route szolgáltatást a [Azure Maps Route Directions API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-&preserve-view=false)-n keresztül kérdezi le. Ezután a rendszer kinyeri az GeoJSON a metódus használatával kinyert válaszból `geojson.getFeatures()` . Végül az útválasztási sor hozzá lesz adva az adatforráshoz. A 0 indexnél hozzáadjuk azt annak érdekében, hogy a teherautó útvonala az adatforrás bármely más sora előtt legyen megjelenítve, mert a tehergépkocsi-útvonal kiszámítása gyakran lassabb lesz, mint az autó útvonalának kiszámítása. Ha az autó útvonala után hozzáadja az adatforráshoz a Truck Route sort, akkor azt a rendszer megjeleníti. A rendszer két tulajdonságot ad hozzá a Truck Route-sorhoz: egy kék körvonal színét és egy kilenc képpont vastagságát.
 
-3. Adja hozzá a következő JavaScript-kódot egy útvonal létrehozásához az autóhoz, és jelenítse meg az eredményeket.
+    >[!TIP]
+    > A Azure Maps Route Directions API összes lehetséges beállításának és értékének megjelenítéséhez lásd: az [útválasztási utasítások URI-paraméterei](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#uri-parameters).
+
+3. Most fűzze hozzá a következő JavaScript-kódot az autóhoz tartozó útvonal létrehozásához.
 
     ```JavaScript
     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
@@ -263,39 +266,24 @@ Az alábbi kódrészleteket fel kell venni **a Térkép betöltési eventListene
         routeLine.properties.strokeColor = '#B76DAB';
         routeLine.properties.strokeWidth = 5;
 
-        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
+        //Add the route line to the data source. This will add the car route after the truck route.  
         datasource.add(routeLine);
     });
     ```
 
-    Ez a kódrészlet a Azure Maps útválasztási szolgáltatást a [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metódussal kérdezi le. Ezután a rendszer kinyeri az GeoJSON a metódus használatával kinyert válaszból `geojson.getFeatures()` . Ekkor a rendszer hozzáadja az útválasztási sort az adatforráshoz. A rendszer két tulajdonságot ad hozzá az autós útvonalak sorához, amely a lila árnyalatú körvonal színe, valamint az öt képpont vastagsága.  
+    A fenti kód a Azure Maps Routing szolgáltatást a  [Azure Maps Route Directions API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-&preserve-view=false) metódussal kérdezi le. Ezután a rendszer kinyeri az GeoJSON a metódus használatával kinyert válaszból `geojson.getFeatures()` . Végül az útválasztási sor hozzá lesz adva az adatforráshoz. A rendszer két tulajdonságot ad hozzá a Truck Route-sorhoz: egy lila ecsetvonás színét és egy öt képpont vastagságú ecsetvonást.
 
-4. Mentse a **MapTruckRoute.html** fájlt, és frissítse a böngészőt az eredmény megtekintéséhez. A Maps API-jaival való sikeres kapcsolat esetén a következőhöz hasonló térkép jelenik meg.
+4. Mentse a **TruckRoute.html** fájlt, és frissítse a böngészőt. A térképnek ekkor a teherautó-és autós útvonalakat kell megjelenítenie.
 
-    ![Prioritás szerint rendezett útvonalak az Azure Route Service-szel](./media/tutorial-prioritized-routes/prioritized-routes.png)
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Magán-és haszongépjármű-útvonalak egy térképen az Azure Route Service":::
 
-    A teherautó útvonala sűrű kék, az autó útvonala pedig vékony lila. Az autó útvonala az I-90-n keresztül halad végig Washington államban, amely a lakossági területeken található alagutakon halad át. Mivel az alagutak megközelítik a lakossági területeket, a veszélyes hulladékok mennyisége korlátozott. A tehergépkocsi-útvonal, amely egy USHazmatClass2-típusú rakományt határoz meg, egy másik autópálya használatára van irányítva.
+    A teherautó útvonala sűrű kék vonal használatával jelenik meg. Az autó útvonala egy vékony lila vonal használatával jelenik meg. Az autó útvonala az I-90-n keresztül halad végig Washington államon keresztül, és a lakossági területeken lévő alagutakon keresztül halad. Mivel az alagutak megközelítik a lakossági területeket, a veszélyes hulladékok mennyisége korlátozott. A tehergépkocsi útvonala, amely megadja a `USHazmatClass2` rakomány típusát, egy másik autópálya használatára van irányítva.
 
-## <a name="next-steps"></a>További lépések
+    A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)találhat egy élő mintát.
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Új weblap létrehozása a térképkezelési API használatával
-> * A forgalom megjelenítése a térképen
-> * Utazási módot deklaráló útvonal-lekérdezések létrehozása
-> * Több útvonal megjelenítése a térképen
-
-> [!div class="nextstepaction"]
-> [Teljes forráskód megtekintése](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
-
-> [!div class="nextstepaction"]
-> [Élő minta megtekintése](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyag azt mutatja be, hogyan hozható létre egy egyszerű tároló-lokátor a Azure Maps használatával.
 
 > [!div class="nextstepaction"]
 > [Tároló-lokátor létrehozása Azure Maps használatával](./tutorial-create-store-locator.md)
-
-> [!div class="nextstepaction"]
-> [Adatvezérelt stíluskifejezések használata](data-driven-style-expressions-web-sdk.md)

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/04/2020
+ms.date: 09/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a7c2e2f0ee29c6132ee29fcb71c4df9fa1896994
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: ef083a4fb82d02b9635ab8148c3eeda59519dac0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487796"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005565"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A Kubernetes szolgáltatás (ak) Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |A (z) Azure Policy bővítmény a Kubernetes szolgáltatáshoz (ak) kibővíti a forgalomirányító v3-t, egy, az Open Policy Agent (OPA) beléptetési vezérlőt, amely központosított, konzisztens módon alkalmazható a fürtökön. |Naplózás, letiltva |[1.0.1 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[GitOps üzembe helyezése a Kubernetes-fürtön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Ez a szabályzat egy "sourceControlConfiguration" nevű Kubernetes-fürtöket helyez üzembe, így biztosítva, hogy a fürtök a definiált git-tárházból kapják meg az igazság forrását. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |

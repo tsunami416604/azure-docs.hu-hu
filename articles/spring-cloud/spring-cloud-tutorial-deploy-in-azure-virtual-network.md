@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f7817a596a38c6bb259a048e3dfea11abfd14d82
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688453"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006431"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
 
@@ -38,7 +38,7 @@ Az Azure Spring Cloud Service-példány üzembe helyezéséhez használt virtuá
 * **Alhálózatok**: a virtuális hálózatnak két, Azure Spring Cloud Service-példányhoz dedikált alhálózatot kell tartalmaznia: 
     * Egy a Service Runtime számára
     * Az egyik a Spring boot Service-alkalmazásaihoz. 
-    * Az alhálózatok és az Azure Spring Cloud Service-példányok között egy-az-egyhez kapcsolat áll fenn. Egyetlen alhálózaton belül nem oszthat meg több szolgáltatási példányt. Minden egyes telepített szolgáltatási példányhoz új alhálózatokat kell használnia.
+    * Az alhálózatok és az Azure Spring Cloud Service-példányok között egy-az-egyhez kapcsolat áll fenn. Minden egyes telepített szolgáltatási példányhoz új alhálózatot kell használnia, és mindegyik alhálózat csak egyetlen szolgáltatási példányt tartalmazhat.
 * **Címterület**: egy CIDR legfeljebb/28 a szolgáltatás futásidejű alhálózata számára, valamint egy másik CIDR-blokk legfeljebb/24 a Spring boot Service-alhálózati alkalmazások alhálózata számára.
 * **Útválasztási táblázat**: az alhálózatok nem rendelkezhetnek meglévő útválasztási táblázattal.
 
@@ -55,7 +55,7 @@ Ha már rendelkezik virtuális hálózattal az Azure Spring Cloud Service-péld�
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Név             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
+    |Name             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
     |Hely         |Válassza ki az **USA keleti** régióját                                |
 
 1. Kattintson a **Tovább gombra: IP-címek >**. 
@@ -148,7 +148,7 @@ Ezek a hálózati erőforrások a fent létrehozott virtuális hálózathoz csat
    > [!Important]
    > Az erőforráscsoportok teljes mértékben az Azure Spring Cloud Service szolgáltatással kezelhetők. Ne törölje kézzel az erőforrást, vagy ne módosítsa a-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 

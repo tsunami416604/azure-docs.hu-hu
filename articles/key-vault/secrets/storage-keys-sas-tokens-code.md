@@ -1,6 +1,6 @@
 ---
 title: Közös hozzáférésű aláírási tokenek beolvasása a kódban | Azure Key Vault
-description: A felügyelt tár fiók funkciója zökkenőmentes integrációt biztosít Azure Key Vault és egy Azure Storage-fiók között.
+description: A felügyelt tár fiók funkciója zökkenőmentes integrációt biztosít Azure Key Vault és egy Azure Storage-fiók között. Ez a példa a .NET-hez készült Azure SDK-t használja az SAS-tokenek kezeléséhez.
 ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,55 +9,41 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ca89d06ea0d5e2396c820b25490b30e25c99f10
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afe7d5ce3dd1756ddb9e33fe402fb2eb699ce8f7
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002929"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007417"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Közös hozzáférésű jogosultságkód lexikális elemeinek beolvasása kódból
 
 A Storage-fiókját a kulcstartóban tárolt közös hozzáférésű aláírás (SAS) jogkivonatokkal kezelheti. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz sas használatával](../../storage/common/storage-sas-overview.md).
 
-Ez a cikk olyan .NET-kóddal kapcsolatos példákat tartalmaz, amely egy SAS-tokent olvas be, és műveleteket végez vele. Az SAS-tokenek létrehozásával és tárolásával kapcsolatos információkért lásd: a [Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI](overview-storage-keys.md) -vel, illetve a [Storage-fiókok kulcsainak kezelése Key Vault és Azure PowerShell](overview-storage-keys-powershell.md).
+> [!NOTE]
+> Azt javasoljuk, hogy [szerepköralapú Access Control (RBAC)](../../storage/common/storage-auth-aad.md) használatával biztonságossá tegye a Storage-fiókját a kiváló biztonság és a könnyű használat érdekében a megosztott kulcs engedélyezésével.
+
+Ez a cikk olyan .NET-kód mintáit tartalmazza, amely létrehoz egy SAS-definíciót, és SAS-jogkivonatokat olvas be. Tekintse meg a [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) -mintát a teljes részletekért, beleértve a generált ügyfelet Key Vault által felügyelt Storage-fiókokhoz. Az SAS-tokenek létrehozásával és tárolásával kapcsolatos információkért lásd: a [Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI](overview-storage-keys.md) -vel, illetve a [Storage-fiókok kulcsainak kezelése Key Vault és Azure PowerShell](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Kódminták
 
-Ebben a példában a kód beolvas egy SAS-jogkivonatot a kulcstartóból, ezzel új Storage-fiókot hoz létre, és létrehoz egy új Blob service ügyfelet.
+A következő példában létrehozunk egy SAS-sablont:
 
-```cs
-// The shared access signature is stored as a secret in keyvault. 
-// After you get a security token, create a new SecretClient with vault credentials and the key vault URI.
-// The format for the key vault URI (kvuri) is https://<YourKeyVaultName>.vault.azure.net
+:::code language="csharp" source="~/azure-sdk-for-net/sdk/keyvault/samples/sharelink/Program.cs" range="91-97":::
 
-var kv = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+A sablon használatával létrehozhatunk egy SAS-definíciót a következő használatával 
 
-// Now retrive your storage SAS token from Key Vault using the name of the secret (secretName).
+:::code language="csharp" source="~/azure-sdk-for-net/sdk/keyvault/samples/sharelink/Program.cs" range="137-156":::
 
-KeyVaultSecret secret = client.GetSecret(secretName);
-var sasToken = secret.Value;
+Miután létrejött az SAS-definíció, lekérheti az a-t használó SAS-tokeneket, például a titkokat `SecretClient` . A titkos nevet a Storage-fiók nevével kell megadnia, majd egy kötőjelet:
 
-// Create new storage credentials using the SAS token.
-StorageCredentials accountSAS = new StorageCredentials(sasToken);
+:::code language="csharp" source="~/azure-sdk-for-net/sdk/keyvault/samples/sharelink/Program.cs" range="52-58":::
 
-// Use these credentials and your storage account name to create a Blob service client.
-CloudStorageAccount accountWithSAS = new CloudStorageAccount(accountSAS, "<storage-account>", endpointSuffix: null, useHttps: true);
-CloudBlobClient blobClientWithSAS = accountWithSAS.CreateCloudBlobClient();
-```
-
-Ha a megosztott hozzáférési aláírási token hamarosan lejár, a közös hozzáférésű aláírási tokent a kulcstartóból kérheti le, és frissítheti a kódot.
-
-```cs
-// If your shared access signature token is about to expire,
-// get the shared access signature token again from Key Vault and update it.
-KeyVaultSecret secret = client.GetSecret(secretName);
-var sasToken = secret.Value;
-accountSAS.UpdateSASToken(sasToken);
-```
-
+Ha a közös hozzáférésű aláírási jogkivonat hamarosan lejár, akkor újra lekérheti ugyanezt a titkot egy új létrehozásához.
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [biztosíthat korlátozott hozzáférést az Azure Storage-erőforrásokhoz sas használatával](../../storage/common/storage-sas-overview.md).
 - Ismerje meg, hogyan [kezelheti a Storage-fiókok kulcsait Key Vault és az Azure CLI](overview-storage-keys.md) vagy [Azure PowerShell](overview-storage-keys-powershell.md)használatával.
+- Tekintse meg a teljes [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) mintát.
+- További [Key Vault minták](https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault)
 - Lásd: [felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

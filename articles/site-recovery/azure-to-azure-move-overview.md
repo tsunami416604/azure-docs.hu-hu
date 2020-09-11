@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130629"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007366"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
 
@@ -26,9 +26,21 @@ A virtuális gépeket a következő okokból lehet áthelyezni:
 - Egy régióban már üzembe helyezte a szolgáltatást, és egy új régió támogatása lett hozzáadva, amely közelebb áll az alkalmazás vagy szolgáltatás végfelhasználói számára. Ebben az esetben érdemes áthelyeznie a virtuális gépeket az új régióba, hogy csökkentse a késést. Használja ugyanazt a megközelítést, ha szeretné összevonni az előfizetéseket, vagy ha vannak olyan irányítási vagy szervezeti szabályok, amelyek szükségesek az áthelyezéshez.
 - A virtuális gép egy egypéldányos virtuális gép vagy egy rendelkezésre állási csoport részeként lett üzembe helyezve. Ha szeretné bővíteni a rendelkezésre állási SLA-kat, áthelyezheti a virtuális gépeket egy rendelkezésre állási zónába.
 
-## <a name="steps-to-move-azure-vms"></a>Az Azure-beli virtuális gépek áthelyezésének lépései
+## <a name="move-vms-with-resource-mover"></a>Virtuális gépek áthelyezése az erőforrás-mozgatóval
 
-A virtuális gépek áthelyezése a következő lépésekkel jár:
+Mostantól áthelyezheti a virtuális gépeket egy másik régióba az [Azure-erőforrás-mozgató](../resource-mover/tutorial-move-region-virtual-machines.md)használatával. Az erőforrás-mozgató nyilvános előzetes verzióban érhető el, és a következőket biztosítja:
+- Egyetlen központ az erőforrások régiók közötti áthelyezéséhez.
+- Csökkentheti a mozgatási időt és a bonyolultságot. Minden, amire szüksége van, egyetlen helyen kell lennie.
+- Egyszerű és egységes felület a különböző típusú Azure-erőforrások áthelyezéséhez.
+- Egyszerű módszer az áthelyezni kívánt erőforrások függőségeinek azonosítására. Ezzel a művelettel a kapcsolódó erőforrásokat együtt helyezheti át, így minden a várt módon működik a megcélzott régióban, az áthelyezést követően.
+- A forrás régió erőforrásainak automatikus törlése, ha az áthelyezés után törölni szeretné őket.
+- Tesztelés: Kipróbálhatja a mozgatást, majd elvetheti, ha nem szeretne teljes áthelyezést végezni.
+
+
+
+## <a name="move-vms-with-site-recovery"></a>Virtuális gépek áthelyezése Site Recovery
+
+Site Recovery a virtuális gépek áthelyezése a következő lépésekkel történhet:
 
 1. Ellenőrizze az előfeltételeket.
 2. Készítse elő a forrás virtuális gépeket.
@@ -49,7 +61,7 @@ Ez a szakasz az Azure-beli többrétegű alkalmazások leggyakoribb telepítési
 
 * **Különböző rétegekben üzembe helyezett egypéldányos virtuális gépek**: a rétegben lévő minden virtuális gép egypéldányos virtuális gépként van konfigurálva, és a terheléselosztó a többi réteghez csatlakozik. Ez a konfiguráció a legegyszerűbben alkalmazható.
 
-     ![Egypéldányos virtuális gép üzembe helyezése rétegek között](media/move-vm-overview/regular-deployment.png)
+     ![Az Egypéldányos virtuálisgép-telepítés rétegek közötti áthelyezésének kiválasztása](media/move-vm-overview/regular-deployment.png)
 
 * **Virtuális gépek a rendelkezésre állási csoportokban üzembe helyezett egyes szinteken**: egy adott szinten lévő minden virtuális gép egy rendelkezésre állási csoportban van konfigurálva. A [rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md) csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek a fürt több elkülönített hardveres csomópontján keresztül legyenek elosztva. Ez biztosítja, hogy ha az Azure-ban hardveres vagy szoftveres hiba történik, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes megoldás továbbra is elérhető és működőképes marad.
 
@@ -64,16 +76,8 @@ Ez a szakasz az Azure-beli többrétegű alkalmazások leggyakoribb telepítési
 A korábban említett [architektúrák](#typical-architectures-for-a-multi-tier-deployment) alapján az üzemelő példányok a cél régióba való áthelyezést követően jelennek meg.
 
 * **Különböző szinteken üzembe helyezett egypéldányos virtuális gépek**
-
-     ![Egypéldányos virtuális gép üzembe helyezése rétegek között](media/move-vm-overview/single-zone.png)
-
 * **A rendelkezésre állási csoportokon belül üzembe helyezett virtuális gépek**
-
-     ![Régiók közötti rendelkezésre állási csoportok](media/move-vm-overview/crossregionaset.png)
-
 * **Az egyes szinteken üzembe helyezett virtuális gépek Availability Zones**
-
-     ![VIRTUÁLIS gépek üzembe helyezése Availability Zones között](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>Virtuális gépek áthelyezése a rendelkezésre állás növeléséhez
 
@@ -85,7 +89,7 @@ A korábban említett [architektúrák](#typical-architectures-for-a-multi-tier-
 
      ![VIRTUÁLIS gépek üzembe helyezése rendelkezésre állási csoportokban és Availability Zones](media/move-vm-overview/aset-azone.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > 
