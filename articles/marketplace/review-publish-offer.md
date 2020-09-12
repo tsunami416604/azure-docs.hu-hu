@@ -8,60 +8,51 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: 53e5331ab36d5466bd5cdb495ac505dae29e57bf
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142298"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375880"
 ---
-# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
+# <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
-Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánlat előzetes verzióra való beküldésére, az ajánlat előzetes megtekintésére, majd közzétételére a Microsoft kereskedelmi piactéren. Azt is bemutatjuk, hogyan ellenőrizheti a közzétételi állapotot a közzétételi lépések végrehajtásával. Már létre kell hoznia egy ajánlatot, amelyet közzé szeretne tenni.
+Ebből a cikkből megtudhatja, hogyan használhatja a partner centert az ajánlat közzétételre való benyújtására, az ajánlat előzetes megtekintésére, majd a kereskedelmi piactéren való közzétételre. Azt is bemutatjuk, hogyan ellenőrizheti a közzétételi állapotot a közzétételi lépések végrehajtásával. Már létre kell hoznia egy ajánlatot, amelyet közzé szeretne tenni.
 
-## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Látogasson el az ajánlatra a kereskedelmi piactéren
+## <a name="offer-status"></a>Ajánlat állapota
 
-1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
-3. Az **Áttekintés** lap **ajánlatok**területén az alábbi állapotjelzők egyike jelenik meg az egyes ajánlatok **állapot** oszlopában.
+Az ajánlat állapotát a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)kereskedelmi piactér irányítópultjának **Áttekintés** lapján tekintheti át. Az egyes ajánlatok **állapot** oszlopában az alábbi állapotjelzők egyike jelenik meg.
 
-    | Állapot | Leírás |
-    | ------------ | ------------- |
-    | Draft | Az ajánlat létre lett hozva, de nincs közzétéve. |
-    | Közzététel folyamatban | Az ajánlat a közzétételi folyamaton keresztül működik. |
-    | Figyelem szükséges | Egy kritikus problémát észlelt a minősítés vagy egy másik közzétételi fázis során. |
-    | Előnézet | Igazoljuk az ajánlatot, amely most már a közzétevő általi végleges ellenőrzést várja. Válassza az **élő** indítás lehetőséget az ajánlat élő közzétételéhez. |
-    | Élő | Az ajánlat a piactéren érhető el, és az ügyfelek megtekinthetik és megszerezhetik azokat. |
-    | Leállításra váró eladás | A kiadó "értékesítés leállítása" lehetőséget adott egy ajánlaton vagy terven, de a művelet még nem fejeződött be. |
-    | Nem érhető el a piactéren | A piactéren korábban közzétett ajánlat el lett távolítva. |
-    |||
+| Állapot | Leírás |
+| ------------ | ------------- |
+| Draft | Az ajánlat létre lett hozva, de nincs közzétéve. |
+| Közzététel folyamatban | Az ajánlat a közzétételi folyamaton keresztül működik. |
+| Figyelem szükséges | Egy kritikus problémát észlelt a minősítés vagy egy másik közzétételi fázis során. |
+| Előnézet | Igazoljuk az ajánlatot, amely most már a közzétevő általi végleges ellenőrzést várja. Válassza az **élő** indítás lehetőséget az ajánlat élő közzétételéhez. |
+| Élő | Az ajánlat a piactéren érhető el, és az ügyfelek megtekinthetik és megszerezhetik azokat. |
+| Leállításra váró eladás | A kiadó "értékesítés leállítása" lehetőséget adott egy ajánlaton vagy terven, de a művelet még nem fejeződött be. |
+| Nem érhető el a piactéren | A piactéren korábban közzétett ajánlat el lett távolítva. |
+|||
 
-4. Az **ajánlat-alias** oszlopban válassza ki az előnézetet és a közzétenni kívánt ajánlatot.
+## <a name="validation-and-publishing-steps"></a>Érvényesítési és közzétételi lépések
 
-## <a name="submit-your-offer-to-preview"></a>Ajánlat beküldése az előzetes verzióra
-
-1. Ha szeretné elküldeni az ajánlatát az előzetes verzióra, válassza a **felülvizsgálat és közzététel** lehetőséget a portál jobb felső sarkában. Megjelenik a **felülvizsgálat és közzététel** oldal.
-1. Győződjön meg arról, hogy az egyes lapok **állapot** oszlopa **befejeződött**. A három lehetséges állapot a következő:
+Ha készen áll egy ajánlat közzétételre való elküldésére, válassza a **felülvizsgálat és közzététel** lehetőséget a portál jobb felső sarkában. A **felülvizsgálat és közzététel** oldalon az ajánlat egyes lapjainak állapota látható, amely a következők egyike lehet:
 
    - **Nincs elindítva** – a lap hiányos.
    - **Hiányos** – a lap nem tartalmaz szükséges információkat, vagy hibákat kell rögzítenie. Vissza kell lépnie az oldalra, és frissítenie kell.
    - **Befejezés** – a lap elkészült. Minden szükséges információ meg lett adta, és nincsenek hibák.
 
-1. Ha bármelyik oldal állapota nem **fejeződött**be, az **oldal** oszlopban válassza ki az oldal nevét, javítsa ki a problémát, mentse a lapot, majd válassza a **felülvizsgálat és közzététel** újra lehetőséget, hogy visszatérjen ehhez a laphoz.
-1. Az összes oldal befejezése után a **tanúsítványok megjegyzései** mezőben adja meg a minősítési csapat tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve. Az alkalmazás megértéséhez hasznos kiegészítő megjegyzéseket is megadhat.
-1. Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**lehetőséget. Megjelenik az **ajánlat áttekintése** lap, és megjeleníti a közzétételi állapotot.
+Ha bármelyik oldalon a **befejezéstől**eltérő állapot van, javítsa ki a problémát az oldalon, majd térjen vissza a **felülvizsgálat és közzététel** lapra, és ellenőrizze, hogy az állapot most **készként**jelenik-e meg. Egyes ajánlati típusok tesztelést igényelnek. Ha igen, megjelenik a **minősítési mezőhöz tartozó megjegyzések** , ahol tesztelési utasításokat kell megadnia a minősítési csapatnak, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzéseket.
 
-## <a name="validation-and-publishing-steps"></a>Érvényesítési és közzétételi lépések
-
-Miután kiválasztotta a **Közzététel**lehetőséget, az érvényesítési és a közzétételi folyamatok sorrendben jelennek meg. A leggyakoribb közzétételi folyamat a következő táblázatban látható:
+Miután az összes lap elkészült, és megadta a megfelelő tesztelési megjegyzéseket, válassza a **Közzététel** lehetőséget az érvényesítési és közzétételi folyamatok elindításához. A fázisok és a teljes szakasz a közzétett ajánlat típusától függően változhat. Az alábbi táblázat egy lehetséges közzétételi folyamatot mutat be. A következő szakaszok részletesebben ismertetik az egyes fázisokat.
 
 | Fázis | Mi történik |
 | ------------ | ------------- | ------------- |
-| Automatikus ellenőrzés | Az automatizált érvényesítések egy készletét dolgozzák fel. |
-| Tanúsítvány | Manuális érvényesítést végezünk. |
-| Előnézet létrehozása | Az ajánlat előzetes verziójának listázási lapja mindenki számára elérhető, aki rendelkezik az előzetes verziójú hivatkozással. Ha az ajánlatát a Microsoft (transactd) alapján értékesíti, akkor csak az ajánlat **előnézeti célközönsége** oldalon megadott célközönség vásárolhat és érheti el az ajánlatot tesztelésre. |
-| Közzétevő kijelentkezése | Egy e-mailt küldünk Önnek, amely az ajánlat előzetes megtekintését és jóváhagyását kéri. |
-| Közzététel | Egy sor lépést futtatunk annak ellenőrzéséhez, hogy az előzetes ajánlat közzé van-e téve élőben a kereskedelmi piactéren. |
+| [Automatikus ellenőrzés](#automated-validation-phase) | Az automatizált érvényesítések egy készletét dolgozzák fel. |
+| [Tanúsítvány](#certification-phase) | Manuális érvényesítést végezünk. |
+| [Előnézet létrehozása](#preview-creation-phase) | Az ajánlat előzetes verziójának listázási lapja mindenki számára elérhető, aki rendelkezik az előzetes verziójú hivatkozással. Ha az ajánlatát a Microsoft (transactd) alapján értékesíti, akkor csak az ajánlat **előnézeti célközönsége** oldalon megadott célközönség vásárolhat és érheti el az ajánlatot tesztelésre. |
+| [Közzétevő kijelentkezése](#publisher-sign-off-phase) | Egy e-mailt küldünk Önnek, amely az ajánlat előzetes megtekintését és jóváhagyását kéri. |
+| [Közzététel](#publish-phase) | Egy sor lépést futtatunk annak ellenőrzéséhez, hogy az előzetes ajánlat közzé van-e téve élőben a kereskedelmi piactéren. |
 |||
 
 ## <a name="automated-validation-phase"></a>Automatizált ellenőrzési fázis
@@ -102,7 +93,7 @@ Minden ajánlat típusa a szükséges alap jogosultsági feltételek készletét
 
 #### <a name="content-validation"></a>Tartalom érvényesítése
 
-Az ajánlat létrehozásakor megadott adatokat a minőség és a relevancia alapján ellenőrzi a rendszer. Ezek az ellenőrzések áttekintik a piactér-lista részleteit, a díjszabást, a rendelkezésre állást, a társított csomagokat és így tovább. Az Azure Marketplace és a Microsoft AppSource listázási feltételeinek teljesítése érdekében a következőket érvényesítjük:
+Az ajánlat létrehozásakor megadott adatokat a minőség és a relevancia alapján ellenőrzi a rendszer. Ezek az ellenőrzések áttekintik a piactér-lista részleteit, a díjszabást, a rendelkezésre állást, a társított csomagokat és így tovább. A Microsoft AppSource és az Azure Marketplace tőzsdei feltételeinek teljesítése érdekében a következőket érvényesítjük:
 
 - Az ajánlatot pontosan leíró cím
 - Jól megírt leírások, amelyek átfogó áttekintést és értéket biztosítanak
@@ -128,7 +119,7 @@ Ha az ajánlata nem felel meg a tőzsdei, műszaki vagy házirend-ellenőrzések
 
 Ez a jelentés a sikertelen házirendek leírásait tartalmazza, valamint a felülvizsgálati megjegyzéseket. Tekintse át az e-mail-jelentést, a problémák megoldását, az ajánlat frissítését, ahol szükséges, majd küldje el újra az ajánlatot a partner Center [kereskedelmi piactér portálján](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) . A minősítés átadása előtt többször is elküldheti az ajánlatot.
 
-## <a name="preview-creation-phase"></a>Előnézet létrehozási fázisa
+## <a name="preview-creation-phase"></a>Előnézet-létrehozási fázis
 
 Az előzetes verziójú létrehozási fázisban az ajánlat egy olyan verzióját hozunk létre, amely csak az ajánlat **előnézeti közönség** lapján megadott célközönség számára érhető el, ha van ilyen. Az ajánlat előzetes verziója nem érhető el mindenki számára az előnézeti közönségen kívül, amíg nem teszi közzé az ajánlatot élőben.
 
@@ -141,21 +132,18 @@ Ha az ajánlat készen áll arra, hogy áttekintse és kijelentkezzen, küldjön
 
 Az alábbi képernyőképen egy SaaS-ajánlat **ajánlat áttekintése** lapja látható. Az ezen az oldalon látható ellenőrzési lépések az ajánlat típusától és az ajánlat létrehozásakor létrehozott beállításoktól függően változnak.
 
-![A partneri központban elérhető ajánlat áttekintés lapját mutatja be. Megjelenik a Go Live gomb és az előzetes verzió hivatkozásai.](./partner-center-portal/media/publish-status-publisher-signoff.png)
+![A partneri központban elérhető ajánlat áttekintés lapját mutatja be. Megjelenik a Go Live gomb és az előzetes verzió hivatkozásai.](./media/publish-status-publisher-signoff.png)
 
-### <a name="to-preview-your-offer-and-sign-off"></a>Az ajánlat előnézetének megtekintése és a kijelentkezés
+### <a name="previewing-and-approving-your-offer"></a>Az ajánlat előzetes megtekintése és jóváhagyása
 
-1. Az ajánlat **áttekintése** lapon az ajánlat előnézetének megtekintéséhez válassza a **Go Live (ugrás** ) gomb alatt található hivatkozást.
+> [!IMPORTANT]
+> A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat.
 
-   > [!NOTE]
-   > A AppSource előzetes verziójához, az Azure Marketplace előzetes verziójához vagy mindkettőhöz az ajánlat létrehozásakor választott beállításoktól függően lesz hivatkozás. Ha úgy dönt, hogy az ajánlatot a Microsofton keresztül értékesíti, akkor bárki, aki hozzá lett adva az előzetes verzió célközönségéhez, tesztelheti az ajánlat beszerzését és üzembe helyezését, hogy az megfeleljen a jelen szakaszban foglalt követelményeknek.
+Az **ajánlat áttekintése** lapon a **Go Live** gomb alatt láthatók az előzetes verziójú hivatkozások. A AppSource előzetes verziójához, az Azure Marketplace előzetes verziójához vagy mindkettőhöz az ajánlat létrehozásakor választott beállításoktól függően lesz hivatkozás. Ha úgy dönt, hogy az ajánlatot a Microsofton keresztül értékesíti, akkor bárki, aki hozzá lett adva az előzetes verzió célközönségéhez, tesztelheti az ajánlat beszerzését és üzembe helyezését, hogy az megfeleljen a jelen szakaszban foglalt követelményeknek.
 
-1. Ha módosítani kívánja az ajánlat előnézetét, szerkesztheti és újraküldheti az új előzetes verzió közzétételét. További információ: [meglévő ajánlat frissítése a kereskedelmi piactéren](./partner-center-portal/update-existing-offer.md).
+Az előzetes verzió jóváhagyása után válassza az élő adás lehetőséget, hogy az ajánlat élőben **elérhető** legyen a kereskedelmi piactéren. 
 
-1. Miután jóváhagyta az előnézetét, az ajánlat élőben is elérhetővé tehető a kereskedelmi piactéren. Válassza az **élő indítás**lehetőséget.
-
-   > [!TIP]
-   > Ha az ajánlata már él és elérhető a piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go Live**lehetőséget választja.
+Ha módosítani kívánja az ajánlat előzetes megtekintését követően, szerkesztheti és újra elküldheti a közzétételi kérelmet. Ha az ajánlata már él és elérhető a piactéren, az Ön által végzett frissítések csak akkor lépnek életbe, ha a **Go Live*lehetőséget választja. További információ: [meglévő ajánlat frissítése a kereskedelmi piactéren](./partner-center-portal/update-existing-offer.md)
 
 ## <a name="publish-phase"></a>Közzétételi fázis
 
@@ -183,10 +171,6 @@ Most, hogy úgy döntött, hogy az ajánlatával él, ami elérhetővé teszi a 
 
 Az ellenőrzés befejezése után az ajánlat a piactéren lesz elérhető.
 
-### <a name="reporting-usage-of-preview-and-other-internal-usage"></a>Az előzetes verzió és egyéb belső használat jelentéskészítésének jelentése
+## <a name="next-steps"></a>Következő lépések
 
-A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat.
-
-## <a name="next-step"></a>Következő lépés
-
-[A partner Center kereskedelmi piactérről származó analitikai jelentések elérése](./partner-center-portal/analytics.md)
+[A partner Center kereskedelmi piactérről származó analitikai jelentések elérése](partner-center-portal/analytics.md)

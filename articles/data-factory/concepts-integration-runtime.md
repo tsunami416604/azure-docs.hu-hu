@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407693"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485719"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -143,7 +143,7 @@ Ha úgy dönt, hogy az automatikus feloldás Azure IR a nyilvános hálózaton, 
   - Ha olyan Salesforce másol, amelyből a régió nem észlelhető, a másolási tevékenységet az USA keleti régiójában hajtja végre az IR-ben.
 
   >[!TIP] 
-  >Ha adatmegfelelőségi követelmények szigorúak, és biztosítania kell, hogy az adatok nem hagynak el egy adott földrajzi helyet, az adott régióban létrehozhat egy Azure-beli integrációs modult, és a ConnectVia tulajdonság használatával ehhez irányíthatja a társított szolgáltatást. Ha például adatokat szeretne másolni az Egyesült Királyság déli régióján belüli blobból az Egyesült Királyság déli régióján belüli SQL DW-be, és biztos szeretne lenni abban, hogy az adatok nem hagyják el az Egyesült Királyságot, hozzon létre egy Azure-beli integrációs modult az Egyesült Királyság déli régiójában, és társítson minden társított szolgáltatást ehhez a modulhoz.
+  >Ha adatmegfelelőségi követelmények szigorúak, és biztosítania kell, hogy az adatok nem hagynak el egy adott földrajzi helyet, az adott régióban létrehozhat egy Azure-beli integrációs modult, és a ConnectVia tulajdonság használatával ehhez irányíthatja a társított szolgáltatást. Ha például át szeretné másolni a Blobból Egyesült Királyság déli régiója az Azure szinapszis Analytics-be Egyesült Királyság déli régiója, és biztosítani szeretné, hogy az adatok ne legyenek az Egyesült Királyságból, hozzon létre egy Azure IR a Egyesült Királyság déli régiója, és csatolja mindkét társított szolgáltatást ehhez az IR-hez.
 
 - A keresési/GetMetadata/törlési tevékenység végrehajtásához (más néven folyamat tevékenységekhez), az átalakítási tevékenység elküldéséhez (más néven külső tevékenységekhez) és a szerzői műveletekhez (a kapcsolat teszteléséhez, a mappák listájának megtekintéséhez és a táblázatok listájához, az előzetes verzióhoz tartozó adatokhoz) Az ADF a következőt használja: az IR
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 0fb50e01e86c00ac863352118eb36f7470251435
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855151"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489153"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérdezése Azure Time Series Insights Gen2
 
@@ -70,7 +70,7 @@ Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (mele
 
   A válaszban visszaadott időbélyegek a bal oldali intervallumok, nem pedig az intervallumban szereplő események.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [idősorozat-modellben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)definiálható különböző változókról.
-* További információ az [Azure Time Series INSIGHTS ÁME Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)adatainak lekérdezéséről.
+* További információ az adatok lekérdezéséről a [Azure Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

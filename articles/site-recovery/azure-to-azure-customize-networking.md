@@ -2,18 +2,18 @@
 title: Feladatátvevő virtuális gép hálózati konfigurációinak testreszabása | Microsoft Docs
 description: Áttekintést nyújt a feladatátvételi virtuális gép hálózati konfigurációinak testreszabásáról az Azure-beli virtuális gépek Azure Site Recovery használatával történő replikálásával.
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: rajanaki
-ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sideeksh
+ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135821"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426367"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
@@ -77,7 +77,7 @@ Nyilvános IP-cím:
 - A nyilvános IP-cím és a célként megadott virtuális gép előfizetésének és régiójának azonosnak kell lennie.
 - A célként megadott virtuális gép nyilvános IP-címe és a belső terheléselosztó SKU-jának azonosnak kell lennie.
 
-Network security group (Hálózati biztonsági csoport):
+Hálózati biztonsági csoport:
 - A hálózati biztonsági csoport és a célként megadott virtuális gép előfizetésének és régiójának azonosnak kell lennie.
 
 

@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262083"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442981"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: a New York taxik-adatkészlet betöltése
 
@@ -69,7 +69,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
     | Beállítás                | Ajánlott érték          | Leírás                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
-    | **Kiszolgálónév**        | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
+    | **Kiszolgáló neve**        | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
     | **Kiszolgáló rendszergazdájának felhasználóneve** | Bármely érvényes név           | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
     | **Jelszó**           | Bármely érvényes jelszó       | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
     | **Hely**           | Bármely érvényes hely       | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 10. Most, hogy elvégezte az űrlapot, válassza a **Létrehozás** lehetőséget az adatbázis kiépítéséhez. A kiépítés eltarthat néhány percig.
 
-11. Az eszköztáron válassza az **értesítések** lehetőséget a telepítési folyamat figyeléséhez.
+11. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat monitorozásához.
   
      ![értesítés](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
@@ -98,7 +98,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 A kiszolgáló szintjén található tűzfal, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
 
 > [!NOTE]
-> Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, kivéve, ha az informatikai részleg megnyitja a 1433-es portot.
+> Az Azure szinapszis Analytics a 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, kivéve, ha az informatikai részleg megnyitja a 1433-es portot.
 
 1. Az üzembe helyezés befejezése után válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd válassza a **MySampleDatabase** lehetőséget az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes kiszolgálónevet (például **mynewserver-20180430.database.Windows.net**), és további konfigurálási lehetőségeket biztosít.
 
@@ -116,7 +116,7 @@ A kiszolgáló szintjén található tűzfal, amely megakadályozza, hogy a kül
 
 5. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
-6. Válassza a **Mentés** lehetőséget. A rendszer létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt az aktuális IP-címhez, amely megnyitja az 1433-es portot a kiszolgálón.
+6. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt az aktuális IP-címhez, amely megnyitja az 1433-es portot a kiszolgálón.
 
 7. Kattintson **az OK gombra** , majd a **tűzfalbeállítások** oldal bezárásához.
 
@@ -145,7 +145,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
 
     | Beállítás        | Ajánlott érték                            | Leírás                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
-    | Kiszolgáló típusa    | Adatbázismotor                            | Kötelezően megadandó érték                                       |
+    | Server type (Kiszolgáló típusa)    | Adatbázismotor                            | Kötelezően megadandó érték                                       |
     | Kiszolgálónév    | A teljes kiszolgálónév            | A névnek a következőhöz hasonlónak kell lennie: **mynewserver-20180430.database.Windows.net**. |
     | Hitelesítés | SQL Server-hitelesítés                  | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés          | A kiszolgálói rendszergazdafiók                   | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |

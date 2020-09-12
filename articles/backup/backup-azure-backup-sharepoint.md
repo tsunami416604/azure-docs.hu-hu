@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való DPM/Azure Backup kiszolgáló védelméről
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a667626fb53920150a4b5a16759228aacbfae75d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032884"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375244"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 
@@ -53,7 +53,7 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
    > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a DPM-kiszolgálón nem érhető el katalógus-információ (metaadatok). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
    >
    >
-3. Kattintson az **újrakatalogizálás**elemre.
+3. Válassza az **újrakatalogizálás**lehetőséget.
 
     ![DPM SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -61,10 +61,10 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
 
     ![DPM SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    A katalogizálás befejezése után az állapot *sikeresre*változik. Kattintson a **Bezárás** gombra.
+    A katalogizálás befejezése után az állapot *sikeresre*változik. Válassza a **Bezárás** lehetőséget.
 
     ![DPM SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Kattintson a DPM- **helyreállítás** lapon látható SharePoint-objektumra a tartalom-adatbázis struktúrájának lekéréséhez. Kattintson a jobb gombbal az elemre, majd kattintson a **helyreállítás**elemre.
+4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a DPM- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás**lehetőséget.
 
     ![DPM SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
@@ -73,7 +73,7 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
 
 Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [előtér-webkiszolgáló váltásának](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Backup Server és DPM – gyakori kérdések](backup-azure-dpm-azure-server-faq.md)
 * [A System Center Data Protection Manager hibaelhárítása](backup-azure-scdpm-troubleshooting.md)

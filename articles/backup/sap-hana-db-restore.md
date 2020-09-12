@@ -3,12 +3,12 @@ title: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure Virtual Machines-on futó SAP HANA adatbázisokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 7cb521b4034ef225d3af6d397bb6cd83b28e1b8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006312"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375312"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -28,29 +28,29 @@ A Azure Backup az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat a
 
 Az adatbázis visszaállítása előtt vegye figyelembe a következőket:
 
-* Az adatbázist csak olyan SAP HANA-példányra állíthatja vissza, amely ugyanabban a régióban található
+* Az adatbázist csak olyan SAP HANA-példányra állíthatja vissza, amely ugyanabban a régióban található.
 
-* A cél példányt regisztrálni kell ugyanazzal a tárolóval, mint a forrás
+* A cél példányt regisztrálni kell ugyanazzal a tárolóval, mint a forrás.
 
 * Azure Backup nem képes két különböző SAP HANA példány azonosítására ugyanazon a virtuális gépen. Így az adatok egyik példányról a másikra való visszaállítása nem lehetséges.
 
 * Annak érdekében, hogy a cél SAP HANA-példány készen álljon a visszaállításra, ellenőrizze a **biztonsági mentés készültségi** állapotát:
 
-  1. Nyissa meg a tárolót, amelyben a cél SAP HANA példány regisztrálva van
+  1. Nyissa meg azt a tárolót, amelyben a cél SAP HANA példány regisztrálva van.
 
-  1. A tároló irányítópultjának **első lépések**területén válassza a **biztonsági mentés** lehetőséget.
+  1. A tároló irányítópultjának **első lépések**területén válassza a **biztonsági mentés**lehetőséget.
 
       ![Biztonsági mentés a tároló irányítópultján](media/sap-hana-db-restore/getting-started-backup.png)
 
-  1. A **biztonsági**mentés alatt a **mit szeretne biztonsági másolatot készíteni?** területen válassza **a SAP HANA lehetőséget az Azure-beli virtuális gépen**
+  1. A **biztonsági**Mentés területen válassza a **mit szeretne biztonsági másolatot készíteni?** **Az Azure-beli virtuális gépen válasszon SAP HANA**.
 
       ![SAP HANA kiválasztása az Azure-beli virtuális gépen](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. A **virtuális gépek felderítése az adatbázisok**területen kattintson a **részletek megtekintése** elemre.
+  1. **A virtuális gépek felderítése az adatbázisok**között területen válassza a **részletek megtekintése**lehetőséget.
 
       ![Részletek megtekintése](media/sap-hana-db-restore/view-details.png)
 
-  1. A cél virtuális gép **biztonsági mentési készültségének** áttekintése
+  1. Tekintse át a cél virtuális gép **biztonsági mentési készültségét** .
 
       ![Védett kiszolgálók](media/sap-hana-db-restore/protected-servers.png)
 
@@ -112,7 +112,7 @@ A visszaállításhoz a következő engedélyek szükségesek:
     > Önálló adatbázis tároló (SDC) visszaállításának az alábbi [ellenőrzéseknek](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore)kell megfelelnie.
 
 1. Ha van ilyen, válassza **a felülírás lehetőséget, ha a kiválasztott HANA-példányon már van ilyen nevű adatbázis**.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Konfiguráció visszaállítása – végső képernyő](media/sap-hana-db-restore/restore-configuration-last.png)
 

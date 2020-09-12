@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 72706a67e1798662ea0f40fa7843c32d8267e0d0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320187"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646071"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
 
@@ -67,11 +67,11 @@ A blob kimeneti adatelérési útja a következő szintaxist követi:
 
 - Szüksége van egy AK-fürtre. További információ a létrehozásáról és telepítéséről: a [telepítés és a hol](how-to-deploy-and-where.md).
 
-- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
+- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.
 
 ## <a name="enable-data-collection"></a>Az adatgyűjtés engedélyezése
 
-Az [adatgyűjtést](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py) a Azure Machine learning vagy más eszközökön keresztül üzembe helyezett modelltől függetlenül is engedélyezheti.
+Az [adatgyűjtést](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) a Azure Machine learning vagy más eszközökön keresztül üzembe helyezett modelltől függetlenül is engedélyezheti.
 
 Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
 
@@ -149,7 +149,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>A modell adatai elemzése Power BI használatával
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a> A modell adatai elemzése Power BI használatával
 
 1. Töltse le és nyissa meg [Power bi Desktop](https://www.powerbi.com).
 
@@ -185,7 +185,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Megkezdheti az egyéni jelentések összeállítását a modell adatain.
 
-### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>A modell adatai elemzése Azure Databricks használatával
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> A modell adatai elemzése Azure Databricks használatával
 
 1. Hozzon létre egy [Azure Databricks munkaterületet](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 
@@ -210,6 +210,6 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Az adatai megtekintéséhez és elemzéséhez kövesse a sablon lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gyűjtött adatokra vonatkozó [adateltolódás észlelése](how-to-monitor-datasets.md) .

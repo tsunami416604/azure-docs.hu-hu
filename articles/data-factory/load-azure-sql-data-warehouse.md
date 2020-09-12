@@ -1,5 +1,5 @@
 ---
-title: Betöltés az Azure szinapszis Analyticsbe
+title: Adatok betöltése az Azure Synapse Analyticsbe
 description: Az Adatmásolás az Azure szinapszis Analytics szolgáltatásba Azure Data Factory használatával
 services: data-factory
 ms.author: jingwang
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c90590ac4c47f6ac8d51273fecfb653dfe056b1d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251998"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485770"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az [Azure szinapszis Analytics (korábbi nevén SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővített adatbázis, amely képes a nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére. Az Azure szinapszis Analytics a nagymértékben párhuzamos feldolgozási (MPP) architektúrára épül, amelyet a vállalati adattárház számítási feladataihoz optimalizáltak. A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
+Az [Azure szinapszis Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely képes a nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére. Az Azure szinapszis Analytics a nagymértékben párhuzamos feldolgozási (MPP) architektúrára épül, amelyet a vállalati adattárház számítási feladataihoz optimalizáltak. A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
 
 Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben használhatók Azure Data Factory használatakor. A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás. A szolgáltatás segítségével feltöltheti az Azure szinapszis Analytics szolgáltatást a meglévő rendszerből származó adatokkal, és időt takaríthat meg az elemzési megoldások létrehozásakor.
 
@@ -45,7 +45,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 * Azure SQL Database: az oktatóanyag az Adventure Works LT minta adatkészletből másolja az adatokat Azure SQL Database. A mintaadatbázis létrehozásához SQL Database a [mintaadatbázis létrehozása a Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md)című témakör útmutatását követve.
 * Azure Storage-fiók: az Azure Storage a tömeges másolási művelet során _átmeneti_ blobként szolgál. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-account-create.md) ismertető cikkben találja.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
 
@@ -54,17 +54,17 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
     * **Név**: írja be a *LoadSQLDWDemo* nevet. Az adatelőállító nevének * globálisan egyedinek kell lennie. Ha a "LoadSQLDWDemo" nevű "nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
     * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: válassza a **v2**elemet.
+    * **Verzió**: Válassza a **V2** lehetőséget.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
 
    Az Adatintegráció alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
 
-## <a name="load-data-into-azure-synapse-analytics"></a>Betöltés az Azure szinapszis Analyticsbe
+## <a name="load-data-into-azure-synapse-analytics"></a>Adatok betöltése az Azure Synapse Analyticsbe
 
 1. Az Adatok másolása eszköz elindításához az **Első lépések** oldalon kattintson az **Adatok másolása** csempére.
 
@@ -102,13 +102,13 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
 
-    b. Válassza ki az **Azure szinapszis Analytics (korábban SQL DW)** elemet a katalógusból, és válassza a **Folytatás**lehetőséget. Az összekötők szűréséhez a keresőmezőbe írja be az "SQL" kifejezést.
+    b. Válassza ki az **Azure szinapszis Analytics (korábban SQL Data Warehouse)** elemet a katalógusból, és válassza a **Folytatás**lehetőséget. Az összekötők szűréséhez a keresőmezőbe írja be az "SQL" kifejezést.
 
-    ![Azure SQL DW kiválasztása](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+    ![Az Azure szinapszis Analytics kiválasztása](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. Az **új társított szolgáltatás** oldalon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót. Kattintson a **Kapcsolódás tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Létrehozás**lehetőséget.
 
-    ![Az Azure SQL DW konfigurálása](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+    ![Az Azure szinapszis Analytics konfigurálása](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Válassza ki fogadóként az újonnan létrehozott társított szolgáltatást, majd kattintson a **Tovább** gombra.
 
@@ -152,7 +152,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     ![Tevékenység-futtatási részletek figyelése](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti az Azure szinapszis Analytics támogatását:
 

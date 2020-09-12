@@ -3,12 +3,12 @@ title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aa15a3451b990d3c3cec3535fdc14315ff149aef
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050675"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514543"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre ad v�
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Mi a Azure Migrate készülék?
 
-A Azure Migrate berendezés egy könnyű berendezés, amelyet a Azure Migrate: a kiszolgáló-értékelési eszköz a helyszíni kiszolgálók felderítésére és értékelésére használ. A Azure Migrate: a kiszolgáló áttelepítési eszköze a berendezést is használja a helyszíni VMware virtuális gépek ügynök nélküli áttelepítéséhez.
+Az Azure Migrate készülék egy könnyű berendezés, amelyet a Azure Migrate: a kiszolgáló-értékelési eszköz a fizikai vagy virtuális kiszolgálók felderítésére és vizsgálatára használja a helyszíni vagy bármely felhőből. A Azure Migrate: a kiszolgáló áttelepítési eszköze a berendezést is használja a helyszíni VMware virtuális gépek ügynök nélküli áttelepítéséhez.
 
 További információ az Azure Migrate készülékről:
 
@@ -35,13 +35,14 @@ További információ az Azure Migrate készülékről:
 
 A berendezés a következőképpen telepíthető:
 
-- Sablon használata VMware virtuális gépekhez és Hyper-V virtuális gépekhez (a VMware-hez vagy a virtuális merevlemezhez tartozó PETESEJT-sablon a Hyper-V-hez).
-- Ha nem szeretne sablont használni, vagy Ön Azure Government, akkor PowerShell-parancsfájl használatával telepítheti a készüléket a VMware vagy a Hyper-V rendszerre.
-- Fizikai kiszolgálók esetében a készüléket mindig egy parancsfájl használatával helyezheti üzembe.
+- Sablon használata a VMware virtuális gépek felderítéséhez (. PETESEJT-fájl) és Hyper-V virtuális gépek (. VHD-fájl) a készüléket futtató új virtuális gép létrehozásához.
+- Ha nem szeretne sablont használni, telepítheti a készüléket egy meglévő fizikai vagy virtuális gépen a VMware virtuális gépek vagy a Hyper-V virtuális gépek PowerShell-telepítő parancsfájl használatával történő felderítéséhez, amely letölthető egy zip-fájlban a portálról.
+- A helyszíni vagy bármely felhőből származó fizikai vagy virtuális kiszolgálók esetében mindig egy meglévő kiszolgálón lévő parancsfájl használatával telepítse a készüléket.
+- Azure Government esetében mindhárom készülék csak a PowerShell telepítő parancsfájl használatával telepíthető.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
-A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat.
+A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. Győződjön meg arról, hogy ezek az [URL-címek](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) engedélyezve vannak a berendezés számára az Azure-hoz való kapcsolódáshoz.
 
 - Ha az Azure ExpressRoute-t szeretné használni Azure Migrate replikációs forgalomhoz, a Microsoft-társításhoz vagy egy meglévő nyilvános társításhoz van szükség (az új ER-létrehozásokhoz elavult a nyilvános társrendszer).
 - Az Azure ExpressRoute-en keresztüli replikáció az (only) Private peering engedélyezése esetén nem támogatott.
@@ -66,6 +67,7 @@ A következő cikkekben talál információt arról, hogy az Azure Migrate kész
 
 - **VMWare virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---vmware) az összegyűjtött adatokat.
 - **Hyper-V virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---hyper-v) az összegyűjtött adatokat.
+- **Fizikai vagy virtuális kiszolgálók**: az összegyűjtött adatok[áttekintése](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Hogyan történik az adatok tárolása?
 
@@ -107,8 +109,7 @@ Egy projekthez több készülék is csatlakoztatható. Egy berendezés azonban c
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Csatlakozhat a Azure Migrate készülék/replikációs berendezés ugyanahhoz a vCenter?
 
-Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ügynök nélküli VMware áttelepítéshez), mind a replikációs berendezést (amely a VMware virtuális gépek ügynök-alapú áttelepítésére szolgál) ugyanarra a vCenter-kiszolgálóra.
-
+Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ügynök nélküli VMware áttelepítéshez), mind a replikációs berendezést (amely a VMware virtuális gépek ügynök-alapú áttelepítésére szolgál) ugyanarra a vCenter-kiszolgálóra. Azonban ügyeljen arra, hogy ne állítson be mindkét készüléket ugyanazon a virtuális gépen, és amely jelenleg nem támogatott.
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hány virtuális gépet vagy kiszolgálót tud felderíteni egy berendezéssel?
 
@@ -124,7 +125,9 @@ Az erőforráscsoport törlése azonban törli az egyéb regisztrált berendezé
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Használhatom a készüléket egy másik előfizetéssel vagy projekttel?
 
-Miután a berendezés használatával kezdeményezte a felderítést, nem konfigurálhatja újra a készüléket egy másik Azure-előfizetéssel való használatra, és nem használhatja azt egy másik Azure Migrate projektben. Nem derítheti fel a virtuális gépeket a vCenter Server egy másik példányán is. Hozzon létre egy új készüléket ezekhez a feladatokhoz.
+Ha másik előfizetéssel vagy projekttel kívánja használni a készüléket, újra kell konfigurálnia a meglévő készüléket úgy, hogy futtatja a PowerShell-telepítő parancsfájlt az adott forgatókönyvhöz (VMware/Hyper-V/fizikai) a készülék számítógépén. A szkript törli a meglévő berendezés összetevőit és beállításait egy új berendezés üzembe helyezéséhez. Győződjön meg arról, hogy az újonnan telepített készülék Configuration Manager használatának megkezdése előtt törölni kell a böngésző gyorsítótárát.
+
+Egy meglévő Azure Migrate-projekt kulcsát nem használhatja újra konfigurált berendezésen. Győződjön meg arról, hogy létrehoz egy új kulcsot a kívánt előfizetésből/projektből a készülék regisztrációjának befejezéséhez.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Be lehet állítani a készüléket egy Azure-beli virtuális gépen?
 

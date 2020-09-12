@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705741"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489578"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,13 +53,13 @@ A SQL Database és az Azure szinapszis-kiszolgálók a következő három lehet�
 
 A kapcsolati szabályzatot a `Redirect` `Proxy` legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében javasoljuk. Azonban meg kell felelnie a fentiekben ismertetett hálózati forgalom engedélyezésének további követelményeinek. Ha az ügyfél egy Azure-beli virtuális gép, ezt a hálózati biztonsági csoportok (NSG) és a [szolgáltatás-címkék](../../virtual-network/security-overview.md#service-tags)használatával végezheti el. Ha az ügyfél helyszíni munkaállomásról csatlakozik, akkor előfordulhat, hogy a hálózati rendszergazdával kell dolgoznia a vállalati tűzfalon keresztüli hálózati forgalom engedélyezéséhez.
 
-## <a name="connectivity-from-within-azure"></a>Kapcsolat az Azure-on belül
+## <a name="connectivity-from-within-azure"></a>Csatlakozás az Azure-ból
 
 Ha az Azure-on belülről csatlakozik, a kapcsolatokhoz alapértelmezés szerint csatlakozási házirend tartozik `Redirect` . A szabályzat `Redirect` azt jelenti, hogy a TCP-munkamenetnek a Azure SQL Databasehoz való létrehozása után az ügyfél-munkamenetet a rendszer átirányítja a megfelelő adatbázis-fürtre, és a célként megadott virtuális IP-címet a fürt adott Azure SQL Database átjárójának a helyére módosítja. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
 ![architektúra – áttekintés](./media/connectivity-architecture/connectivity-azure.png)
 
-## <a name="connectivity-from-outside-of-azure"></a>Kapcsolódás az Azure-on kívülről
+## <a name="connectivity-from-outside-of-azure"></a>Csatlakozás az Azure-on kívülről
 
 Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés szerint csatlakozási házirendtel rendelkeznek `Proxy` . A szabályzat `Proxy` azt jelenti, hogy a TCP-munkamenet a Azure SQL Database átjárón és az összes további, az átjárón keresztüli adatcsomagon keresztül jön. A következő ábra szemlélteti ezt a forgalmat.
 
@@ -94,6 +94,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Közép-Franciaország       | 40.79.137.0, 40.79.129.1 |
 | Közép-Németország      | 51.4.144.100       |
 | Kelet-Észak-Németország   | 51.5.144.179       |
+| Középnyugat-Németország | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
 | Közép-India        | 104.211.96.159     |
 | Dél-India          | 104.211.224.146    |
 | Nyugat-India           | 104.211.160.80     |
@@ -121,7 +122,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | USA 2. nyugati régiója            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)című témakörben talál.
 - A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md)-ban.
