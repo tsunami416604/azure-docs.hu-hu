@@ -1,22 +1,22 @@
 ---
 title: Webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure Web Application Firewall (WAF) használatával | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan használható a webalkalmazási tűzfal a Azure bejárati ajtó szolgáltatással
+description: Ebből a cikkből megtudhatja, hogyan használhatja a webalkalmazási tűzfalat az Azure bejárati ajtó szolgáltatásával
 services: frontdoor
 documentationcenter: ''
-author: tremansdoerfer
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/06/2020
-ms.author: rimansdo
-ms.openlocfilehash: 6f91a98372aa85a52a6013a121235ca354004a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: a0252004b01e64b195b372d72682f6b777012258
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743541"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535431"
 ---
 # <a name="quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Webalkalmazások gyors méretezése és biztosítása az Azure-előtérben és az Azure webalkalmazási tűzfal (WAF) használatával
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban az Azure CLI használatával állíthatja be a WAF, de 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
 Az ebben a blogban található utasítások az Azure parancssori felületét (CLI) használják. Tekintse meg ezt az útmutatót az [Azure CLI megkezdéséhez](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
@@ -119,7 +119,7 @@ Kezdetben a webalkalmazás egyéni tartományneve (amelyet az ügyfelek az alkal
 
 A DNS-rekordok frissítésének konkrét lépései a DNS-szolgáltatótól függenek, de ha Azure DNSt használ a DNS-név üzemeltetéséhez, tekintse meg a [DNS-rekord frissítésére](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) és a AFD Állomásnévre mutató lépéseket a dokumentációban. 
 
-Itt az egyik legfontosabb dolog, hogy ha szüksége van a felhasználók számára, hogy a zóna csúcsán keresztül navigáljon a webhelyhez, akkor a példában, a contoso.com Azure DNS és az [alias bejegyzéstípust](https://docs.microsoft.com/azure/dns/dns-alias) kell használnia a DNS-név üzemeltetéséhez. 
+Itt az egyik legfontosabb dolog, hogy ha szüksége van a felhasználók számára, hogy a zóna csúcsán keresztül navigáljon a webhelyhez, akkor például a contoso.com-t kell használnia, Azure DNS és az [alias bejegyzéstípust](https://docs.microsoft.com/azure/dns/dns-alias) kell használni a DNS-név tárolásához. 
 
 Emellett frissítenie kell a AFD-konfigurációt az [egyéni tartomány hozzáadásához](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) , hogy a AFD megértse ezt a leképezést.
 

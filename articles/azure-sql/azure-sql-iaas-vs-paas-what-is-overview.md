@@ -1,6 +1,5 @@
 ---
 title: Mi az az Azure SQL?
-titleSuffix: " "
 description: 'Ismerje meg az Azure SQL-termékcsalád szolgáltatásainak különböző lehetőségeit: Azure SQL Database, az Azure SQL felügyelt példányát, valamint az Azure-beli virtuális gépen SQL Server.'
 services: sql-database
 ms.service: sql-database
@@ -13,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280851"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611838"
 ---
 # <a name="what-is-azure-sql"></a>Mi az az Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Az Azure SQL olyan felügyelt, biztonságos és intelligens termékekből álló
 Az Azure SQL a jól ismert SQL Server motorra épül, így könnyedén áttelepítheti az alkalmazásokat, és tovább használhatja azokat az eszközöket, nyelveket és erőforrásokat, amelyeket már ismer. Tudását és tapasztalatait a felhőbe helyezheti át, így még többet is megtudhat a már meglévő képességeiről. 
 
 Ismerje meg, hogy az egyes termékek hogyan illeszkednek a Microsoft Azure SQL-adatplatformhoz, hogy megfeleljenek az üzleti igényeinek megfelelő lehetőségnek. Akár a költségmegtakarítást, akár a minimális adminisztrációt rangsorolja, ez a cikk segít eldönteni, hogy melyik megközelítés nyújt segítséget a leginkább fontos üzleti követelmények teljesítéséhez.
+
+
+Ha még nem ismeri az Azure SQL-t, tekintse meg a *Mi az* az Azure SQL-videó a részletes [Azure SQL-videó sorozat](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>Áttekintés
@@ -85,7 +89,7 @@ Azure SQL Database a következő üzembe helyezési lehetőségeket kínálja:
   - [*Önálló adatbázis*](database/single-database-overview.md) , amely egy [logikai SQL Serveren](database/logical-servers.md)keresztül felügyelt erőforrás-készlettel rendelkezik. Az önálló adatbázisok a SQL Serverban [lévő tárolt adatbázisokhoz](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) hasonlítanak. Ez a beállítás az új felhőalapú alkalmazások modern alkalmazás-fejlesztésére van optimalizálva. [Nagy kapacitású](database/service-tier-hyperscale.md) és [kiszolgáló](database/serverless-tier-overview.md) nélküli beállítások érhetők el.
   - [*Rugalmas készlet*](database/elastic-pool-overview.md), amely egy [logikai SQL Serveren](database/logical-servers.md)keresztül felügyelt erőforrások megosztott készletével rendelkező adatbázisok gyűjteménye. Az önálló adatbázisok egy rugalmas készletbe helyezhetők és kivehetők. Ez a beállítás a több-bérlős SaaS-alkalmazás mintáját használó új felhőalapú alkalmazások modern alkalmazás-fejlesztésére van optimalizálva. A rugalmas készletek költséghatékony megoldást biztosítanak több, változó használati mintákkal rendelkező adatbázis teljesítményének kezelésére.
 
-### <a name="azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány
+### <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
 
 Az [Azure SQL felügyelt példánya](managed-instance/sql-managed-instance-paas-overview.md) a platform- *szolgáltatás (*"a") iparági kategóriába tartozik, és a leginkább a felhőbe való Migrálás terén ajánlott. A felügyelt SQL-példányok olyan rendszer-és felhasználói adatbázisok gyűjteményei, amelyek egy közös erőforrás-készlettel rendelkeznek.  
 - A legjobb új alkalmazásokhoz vagy meglévő helyszíni alkalmazásokhoz, amelyek a legújabb stabil SQL Server szolgáltatásokat szeretnék használni, és amelyeket a felhőbe migrálnak, minimális változtatásokkal. A felügyelt SQL-példányok egy példánya hasonló a [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview) egy példányához, amely megosztott erőforrásokat kínál az adatbázisokhoz és a további példányokra vonatkozó hatókörű funkciókhoz. 
@@ -115,7 +119,7 @@ A következő táblázatban további különbségek vannak felsorolva, de a *SQL
 | A helyszíni alkalmazások hozzáférhetnek Azure SQL Databasehoz. | [Natív virtuális hálózat megvalósítása](managed-instance/vnet-existing-add-subnet.md) és a helyszíni környezethez való kapcsolódás az Azure Express Route vagy a VPN Gateway használatával. | Az SQL Virtual Machines szolgáltatásban a felhőben és részben helyileg futó alkalmazások is lehetnek. Például az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) segítségével kiterjesztheti helyszíni hálózatát és Active Directory-tartományát a felhőre. A hibrid felhőalapú megoldásokkal kapcsolatos további információkért lásd: helyszíni [Adatmegoldások kiterjesztése a felhőre](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Cost
 
 Legyen szó akár egy olyan indításról, amely készpénzre van kialakítva, vagy egy vállalat, amely szűk költségvetési megkötések keretében működik, a korlátozott finanszírozás gyakran az elsődleges illesztőprogram az adatbázisok üzemeltetésének eldöntése során. Ebben a szakaszban megismerheti az Azure SQL Family of Services szolgáltatáshoz kapcsolódó számlázási és licencelési alapismereteket.  Megismerheti az alkalmazás összköltségének kiszámításának módját is.
 
@@ -167,7 +171,7 @@ Az SQL az Azure-beli **virtuális gépen** tökéletes megoldás, ha meglévő v
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg [az első Azure SQL-adatbázissal](database/single-database-create-quickstart.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 - Az SQL felügyelt példányának megismeréséhez tekintse [meg az első Azure SQL-beli felügyelt példányát](managed-instance/instance-create-quickstart.md) . 

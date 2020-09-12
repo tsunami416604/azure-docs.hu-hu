@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f0bba2f2d200ffc84855ff8fc7f634bd8b71ceb6
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927507"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514356"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -121,7 +121,7 @@ download.microsoft.com/download | Letöltés engedélyezése a Microsoft letölt
 graph.windows.net | Jelentkezzen be az Azure-előfizetésbe.
 login.microsoftonline.us  | Hozzon létre Azure Active Directory-(AD-) alkalmazásokat a berendezés számára a Azure Migratesal való kommunikációhoz.
 management.usgovcloudapi.net | Azure AD-alkalmazások létrehozása a berendezés számára a Azure Migrate szolgáltatással való kommunikációhoz.
-dc.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
+*.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
 *. vault.usgovcloudapi.net | A Azure Key Vault titkainak kezelése.
 aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz. Azure Migrate berendezés frissítéseihez használatos.
 download.microsoft.com/download | Letöltés engedélyezése a Microsoft letöltéséről.
@@ -180,7 +180,7 @@ IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Name (Név) | tároló. GetType (). név
+Name | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
@@ -227,7 +227,7 @@ Itt találja azokat a funkciókat, amelyeket a készülék az alkalmazások feld
 
 **Adatok**  | **PowerShell-parancsmag** | **Tulajdonság**
 --- | --- | ---
-Name (Név)  | Get-WindowsFeature  | Name (Név)
+Name  | Get-WindowsFeature  | Name
 Szolgáltatás típusa | Get-WindowsFeature  | FeatureType
 Szülő  | Get-WindowsFeature  | Szülő
 
@@ -237,7 +237,7 @@ Itt találja azokat az SQL Server-metaadatokat, amelyeket a készülék a Micros
 
 **Adatok**  | **Beállításjegyzékbeli hely**  | **Kulcs**
 --- | --- | ---
-Name (Név)  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
 Kiadás  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Kiadás 
 Szervizcsomag  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verzió  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verzió 
@@ -248,7 +248,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 Adatok  | WMI-osztály  | WMI-osztály tulajdonsága
 --- | --- | ---
-Name (Név)  | Win32_operatingsystem  | Képaláírás
+Name  | Win32_operatingsystem  | Képaláírás
 Verzió  | Win32_operatingsystem  | Verzió
 Architektúra  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Itt láthatók a telepített alkalmazásadatok, amelyeket a készülék az alkal
 
 Adatok  | Parancs
 --- | --- 
-Name (Név) | RPM, dpkg-Query, Snap
+Name | RPM, dpkg-Query, Snap
 Verzió | RPM, dpkg-Query, Snap
 Szolgáltató | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 **Adatok**  | **Parancs** 
 --- | --- | ---
-Name (Név) <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektúra | uname
 
 
@@ -522,7 +522,7 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a készüléket a VMware rendszerhez.
 - [Ismerje meg, hogyan](how-to-set-up-appliance-hyper-v.md) állíthatja be a készüléket a Hyper-V-hez.

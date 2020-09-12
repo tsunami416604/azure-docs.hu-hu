@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650468"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440694"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -88,7 +88,7 @@ Az alábbi Azure Premium-lemezekre vonatkozó gyorsítótárazási javaslatok fe
 **Javaslat: a megfigyelt I/O-mintákat SAP HANA alapján a különböző kötetek gyorsítótárazását az Azure Premium Storage használatával kell beállítani, például:**
 
 - **/Hana/Data** – nincs gyorsítótárazás vagy olvasási gyorsítótárazás
-- **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2 sorozat esetében, ahol a írásgyorsító az olvasási gyorsítótárazás nélkül kell engedélyezni. 
+- **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2 sorozatú virtuális gépek esetében, amelyeknél engedélyezni kell az Azure írásgyorsító 
 - **/Hana/Shared** – olvasási gyorsítótárazás
 - **Operációsrendszer-lemez** – ne módosítsa az Azure által a virtuális gép létrehozási idején beállított alapértelmezett gyorsítótárazást
 
@@ -236,6 +236,10 @@ Ebben a konfigurációban a **/Hana/Data** és a **/Hana/log** kötetek külön 
 
 A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
 
+> [!NOTE]
+> Az Azure Ultra Disk egy lemez IOPS legalább 2 GB-os kapacitásának kikényszerítése
+
+
 | Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E20ds_v4 | 160 GiB | 480 MB/s | 200 GB | 400 MBps | 2500 | 80 GB | 250 MB | 1800 |
@@ -249,11 +253,11 @@ A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben k
 | M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MBps | 5000 | 512 GB | 250 MBps  | 2500 |
 | M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MBps | 5000 | 512 GB | 250 MBps  | 2500 |
 | M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 750 MBps | 7 000 | 512 GB | 250 MBps  | 2500 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 750 MBps |7 000 | 512 GB | 250 MBps  | 2500 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 750 MBps |9600 | 512 GB | 250 MBps  | 2500 | 
 | M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 750 MBps | 7 000 | 512 GB | 250 MBps  | 2500 | 
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 750 MBps | 7 000 | 512 GB | 250 MBps  | 2500 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 000 MBps | 9000 | 512 GB | 400 MBps  | 4,000 | 
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MBps | 9000 | 512 GB | 400 MBps  | 4,000 |   
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 750 MBps | 14 400 | 512 GB | 250 MBps  | 2500 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 000 MBps | 14 400 | 512 GB | 400 MBps  | 4,000 | 
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MBps | 28 800 | 512 GB | 400 MBps  | 4,000 |   
 
 **A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket.** Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.   
 
@@ -361,7 +365,7 @@ Ha a SAP HANA adatmennyiségét és a naplózási kötetet egyesíti, a csíkozo
 Vannak felsorolva olyan virtuálisgép-típusok, amelyek nem rendelkeznek SAP-tanúsítvánnyal, és amelyek nem szerepelnek az ún. [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Az ügyfelek visszajelzései voltak, hogy ezek a nem felsorolt virtuálisgép-típusok sikeresen használatba kerültek néhány nem üzemi feladathoz.
 
 
-## <a name="next-steps"></a>További lépések
-További információ:
+## <a name="next-steps"></a>Következő lépések
+További információkért lásd:
 
 - [SAP HANA magas rendelkezésre állású útmutató Azure-beli virtuális gépekhez](./sap-hana-availability-overview.md).

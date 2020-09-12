@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794539"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651718"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -119,11 +119,15 @@ Ha több példányra bővíti a méretezést, App Service végezhet állapot-ell
 
 ### <a name="health-check-path"></a>Állapot-ellenőrzési útvonal
 
-Az elérési útnak két percen belül válaszolnia kell, 200 és 299 közötti állapotkódot (beleértve a-t). Ha az elérési út két percen belül nem válaszol, vagy a tartományon kívüli állapotkódot ad vissza, akkor a példány "nem megfelelő" állapotúnak minősül. Az állapot-ellenőrzési funkció a App Service hitelesítési és engedélyezési funkcióival integrálódik, a rendszer akkor is eléri a végpontot, ha ezek a Secuity funkciók engedélyezve vannak. Ha saját hitelesítési rendszerét használja, az állapot-ellenőrzési útvonalnak engedélyeznie kell a névtelen hozzáférést. Ha a helyen engedélyezve van a HTTP**s** , akkor a HEALTHCHECK a http **-t fogja** kiszolgálni, és az adott protokollt használva elküldi a kérést.
+Az elérési útnak két percen belül válaszolnia kell, 200 és 299 közötti állapotkódot (beleértve a-t). Ha az elérési út két percen belül nem válaszol, vagy a tartományon kívüli állapotkódot ad vissza, akkor a példány "nem megfelelő" állapotúnak minősül. Az állapot-ellenőrzési funkció a App Service hitelesítési és engedélyezési funkcióival integrálódik, a rendszer akkor is eléri a végpontot, ha ezek a Secuity funkciók engedélyezve vannak. Ha saját hitelesítési rendszerét használja, az állapot-ellenőrzési útvonalnak engedélyeznie kell a névtelen hozzáférést. Ha a helyen engedélyezve van a HTTP**S** , a Healthcheck először a http-végpontot fogja érinteni, majd a 307 http-átirányítást a https-végpontra.
 
 Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
 
-### <a name="behavior"></a>Működés
+#### <a name="security"></a>Biztonság 
+
+A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett API-k biztonsági követelményeinek. Az Healthcheck végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), az [ügyféltanúsítványok](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)vagy egy Virtual Network az alkalmazáshoz való hozzáférés korlátozásához. A Healthcheck végpontot úgy is biztonságossá teheti, hogy a `User-Agent` bejövő kérelemnek megfelel `ReadyForRequest/1.0` . A felhasználó-ügynök nem hamisítható, mert a kérést már biztosították az előző biztonsági funkciók.
+
+### <a name="behavior"></a>Viselkedés
 
 Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre.
 

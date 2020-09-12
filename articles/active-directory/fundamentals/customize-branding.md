@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796794"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565854"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
-A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet web-alapú alkalmazásaiba, például az Office 365-be, amely az Azure AD-t használja az identitás-szolgáltatóként.
+A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet webalapú alkalmazásaiba, például a Microsoft 365ba, amely az Azure AD-t használja az identitás-szolgáltatóként.
 
 >[!NOTE]
->Az egyéni védjegyezés hozzáadásához prémium szintű Azure Active Directory 1, prémium 2 vagy alapszintű kiadást kell használnia, vagy Office 365-licencre van szüksége. További információ a licencelésről és a kiadásokról: [regisztráció a prémium szintű Azure ADra](active-directory-get-started-premium.md).<br><br>Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
+>Az egyéni védjegyezés hozzáadásához prémium szintű Azure Active Directory 1, prémium 2 vagy alapszintű kiadást kell használnia, vagy Microsoft 365 licenccel kell rendelkeznie. További információ a licencelésről és a kiadásokról: [regisztráció a prémium szintű Azure ADra](active-directory-get-started-premium.md).<br><br>Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Az Azure AD bejelentkezési oldalának testreszabása
 Testreszabhatja az Azure AD bejelentkezési lapjait, amelyek akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet bérlői-specifikus alkalmazásaiba, például `https://outlook.com/contoso.com` vagy egy tartományi változó átadásakor, például: `https://passwordreset.microsoftonline.com/?whr=contoso.com` .
@@ -32,7 +32,7 @@ Testreszabhatja az Azure AD bejelentkezési lapjait, amelyek akkor jelennek meg,
 Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhelyekre látogatnak, mint a www- \. Office.com. Ehelyett a felhasználónak be kell jelentkeznie a testreszabott arculat megjelenése előtt. Miután a felhasználó bejelentkezett, a márkaépítés 15 percet vagy hosszabb időt is igénybe vehet. 
 
 > [!NOTE]
-> Az összes védjegyezési elem nem kötelező. Ha például egy háttérkép nélküli szalagcím-emblémát ad meg, a bejelentkezési oldal a célhelyen lévő alapértelmezett háttérképként jeleníti meg az emblémát (például Office 365).<br><br>Emellett a bejelentkezési oldal arculata nem veszi át a személyes Microsoft-fiókokat. Ha a felhasználók vagy az üzleti vendégek személyes Microsoft-fiók bejelentkeznek, a bejelentkezési oldal nem tükrözi a szervezet arculatát.
+> Az összes védjegyezési elem nem kötelező. Ha például egy háttérkép nélküli szalagcím-emblémát ad meg, a bejelentkezési oldal a célhelyen lévő alapértelmezett háttérképként jeleníti meg a logót (például Microsoft 365).<br><br>Emellett a bejelentkezési oldal arculata nem veszi át a személyes Microsoft-fiókokat. Ha a felhasználók vagy az üzleti vendégek személyes Microsoft-fiók bejelentkeznek, a bejelentkezési oldal nem tükrözi a szervezet arculatát.
 
 ### <a name="to-customize-your-branding"></a>A branding testreszabása
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
@@ -66,13 +66,13 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 
            Testreszabhatja a beírt bejelentkezési oldal szövegét. Új bekezdés megkezdéséhez használja kétszer az ENTER billentyűt. A szövegformázást úgy is megváltoztathatja, hogy félkövér, dőlt, aláhúzás vagy kattintható hivatkozást tartalmazzon. A szöveg formázásának hozzáadásához használja a következő szintaxist: 
 
-          > Hivatkozás```[text](link)``` 
+          > Hivatkozás ```[text](link)``` 
           
-          > Félkövér: ``` **text** ``` vagy``` __text__ ``` 
+          > Félkövér: ``` **text** ``` vagy ``` __text__ ``` 
           
-          > Dőlt betű: ``` *text* ``` vagy``` _text_ ``` 
+          > Dőlt betű: ``` *text* ``` vagy ``` _text_ ``` 
           
-          > Aláhúzása``` ++text++ ``` 
+          > Aláhúzása ``` ++text++ ``` 
 
     - **Speciális beállítások**
             
@@ -80,7 +80,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 
         - **A bejelentkezési oldal háttérszíne** Adja meg a hexadecimális színeket (például a fehér #FFFFFF), amely a háttérkép helyett az alacsony sávszélességű kapcsolat helyzetekben fog megjelenni. Javasoljuk, hogy a szalagcím emblémájának vagy a szervezet színének elsődleges színét használja.
 
-        - **Szögletes embléma képe** Válassza ki a szervezete emblémájának. png (preferált) vagy. jpg képét, amely a felhasználók számára az új Windows 10 Enterprise-eszközök telepítési folyamata során jelenik meg. Ez a rendszerkép csak Windows-hitelesítéshez használatos, és csak olyan bérlők esetében jelenik meg, amelyek a [Windows]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) Autopilot szolgáltatást használják a központi telepítéshez, vagy a jelszó-beviteli lapokat más Windows 10-es környezetekben. Bizonyos esetekben előfordulhat, hogy a beleegyező párbeszédpanelen is megjelenik.
+        - **Szögletes embléma képe** Válassza ki a szervezete emblémájának. png (preferált) vagy. jpg képét, amely a felhasználók számára az új Windows 10 Enterprise-eszközök telepítési folyamata során jelenik meg. Ez a rendszerkép csak Windows-hitelesítéshez használatos, és csak olyan bérlők esetében jelenik meg, amelyek a [Windows]( /windows/deployment/windows-autopilot/windows-10-autopilot) Autopilot szolgáltatást használják a központi telepítéshez, vagy a jelszó-beviteli lapokat más Windows 10-es környezetekben. Bizonyos esetekben előfordulhat, hogy a beleegyező párbeszédpanelen is megjelenik.
         
             A rendszerkép mérete nem lehet nagyobb, mint 240x240 képpont, és a fájlméretnek 10 KB-nál kisebbnek kell lennie. Javasoljuk, hogy transzparens képet használjon, mivel előfordulhat, hogy a háttér nem felel meg az embléma hátterének. Azt javasoljuk továbbá, hogy ne adja meg a kitöltés körét a képen, vagy hogy az embléma kicsi legyen.
     
@@ -88,7 +88,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
         
         - **A bejelentkezve maradó beállítás megjelenítése.** Dönthet úgy, hogy a felhasználók továbbra is bejelentkeznek az Azure AD-be, amíg explicit módon ki nem jelentkezik. Ha a **nem**lehetőséget választja, akkor ez a beállítás rejtett, és a felhasználóknak minden alkalommal be kell jelentkezniük, amikor a böngésző be van zárva és újra meg lett nyitva.
 
-            Ha többet szeretne megtudni arról, hogyan konfigurálhatja és elháríthatja a bejelentkezést, tekintse meg [Az Azure ad-fiókokra vonatkozó "Stay bejelentkezve?"](keep-me-signed-in.md) című témakört.
+            Ez a funkció csak az alapértelmezett branding objektumon érhető el, és nem az adott nyelvspecifikus objektumon. Ha többet szeretne megtudni arról, hogyan konfigurálhatja és elháríthatja a bejelentkezést, tekintse meg [Az Azure ad-fiókokra vonatkozó "Stay bejelentkezve?"](keep-me-signed-in.md) című témakört.
         
             >[!NOTE]
             >A SharePoint Online és az Office 2010 egyes funkciói attól függenek, hogy a felhasználók bejelentkezve tudnak-e maradni. Ha ennél a lehetőségnél a **Nem** értéket adja meg, a felhasználóinak további váratlan bejelentkezési felszólítások jelenhetnek meg.
@@ -113,7 +113,7 @@ Az egyéni védjegyezés létrehozása után visszaléphet, és módosíthatja a
 
 3. A **vállalati védjegyezés konfigurálása** lapon a jelen cikk az [Azure ad bejelentkezési oldalának testreszabása](#customize-your-azure-ad-sign-in-page) lapján található leírások alapján adja hozzá, távolítsa el vagy módosítsa a szükséges információkat.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
    A bejelentkezési oldal arculatán alkalmazott módosítások megjelenítése akár egy órát is igénybe vehet.
 
@@ -130,11 +130,11 @@ Az eredeti konfiguráció nyelvét nem módosíthatja az alapértelmezett nyelvr
 
 3. A **vállalati védjegyezés konfigurálása** lapon válassza ki a nyelvet (például francia), majd adja hozzá a lefordított adatokat a jelen cikk [Azure ad bejelentkezési oldalának testreszabása lapján](#customize-your-azure-ad-sign-in-page) található leírások alapján.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
     A **contoso – vállalati védjegyezési** oldal frissítései az új francia konfiguráció megjelenítéséhez.
 
-    ![Contoso – vállalati védjegyezési oldal, alapértelmezett konfigurációval megjelenítve](media/customize-branding/company-branding-french-config.png)
+    ![Contoso – vállalati védjegyezési oldal, az új nyelvi konfiguráció látható](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>Egyéni arculat hozzáadása lapokhoz
 Adja hozzá az egyéni arculatot a lapokhoz az URL-cím végének szöveggel való módosításával `?whr=yourdomainname` . Ez a módosítás több oldalon is működik, beleértve a Multi-Factor Authentication (MFA) telepítési oldalát, az önkiszolgáló jelszó-visszaállítás (SSPR) telepítési lapját és a bejelentkezési lapot.

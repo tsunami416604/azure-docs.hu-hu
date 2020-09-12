@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 0dcb8f1f484f9c24a6376aef8836b6dc50d5278a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58fedfe794f86a4a453614b09fcce6e803eb887f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321560"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651522"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellek betanítása automatizált gépi tanulással a felhőben
 
@@ -43,7 +43,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Erőforrás létrehozása
 
-[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)Ha még nem létezik, hozza létre a célt a munkaterületen ( `ws` ).
+[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true)Ha még nem létezik, hozza létre a célt a munkaterületen ( `ws` ).
 
 **Becsült idő**: a AmlCompute cél létrehozása körülbelül 5 percet vesz igénybe.
 
@@ -90,7 +90,7 @@ A fürt nevének korlátozásai a következők:
 
 ## <a name="access-data-using-tabulardataset-function"></a>Hozzáférés az TabularDataset függvénnyel
 
-Definiált training_data a [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) és a címke alapján, amelyek a következő AUTOMATIZÁLT ml-re lesznek átadva: [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) . Alapértelmezés szerint a `TabularDataset` metódus a `from_delimited_files` `infer_column_types` igaz értéket állítja be, amely automatikusan kikövetkezteti az oszlopok típusát. 
+Definiált training_data a [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) és a címke alapján, amelyek a következő AUTOMATIZÁLT ml-re lesznek átadva: [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) . Alapértelmezés szerint a `TabularDataset` metódus a `from_delimited_files` `infer_column_types` igaz értéket állítja be, amely automatikusan kikövetkezteti az oszlopok típusát. 
 
 Ha manuálisan szeretné beállítani az oszlopok típusát, beállíthatja az `set_column_types` argumentumot úgy, hogy manuálisan állítsa be az egyes oszlopok típusát. Az alábbi mintakód az adatok a sklearn-csomagból származnak.
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>Eredmények feltárása
 
-Használhatja ugyanazt a [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , ahogy az [oktatóanyagban](tutorial-auto-train-models.md#explore-the-results) is látható, és megtekintheti az eredmények gráfját és táblázatát.
+Használhatja ugyanazt a [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) , ahogy az [oktatóanyagban](tutorial-auto-train-models.md#explore-the-results) is látható, és megtekintheti az eredmények gráfját és táblázatát.
 
 ```python
 from azureml.widgets import RunDetails
@@ -228,7 +228,7 @@ A következő [Jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan konfigurálhatja az automatikus betanítás beállításait](how-to-configure-auto-train.md).
 * Lásd: [útmutató](how-to-machine-learning-interpretability-automl.md) a modell-értelmező funkcióinak engedélyezéséhez az automatikus ml-kísérleteknél.

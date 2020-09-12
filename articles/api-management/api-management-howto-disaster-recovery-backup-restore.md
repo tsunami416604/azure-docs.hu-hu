@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c0af87dc8e38c6d5184cec4614b47d2ae4a24ca
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830257"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458280"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -68,7 +68,7 @@ A Azure Resource Manager használó erőforrásokon végrehajtott összes felada
 4. Adjon nevet az alkalmazásnak.
 5. Az alkalmazás típusa mezőben válassza a **natív**lehetőséget.
 6. Adjon meg egy helyőrző URL-címet `http://resources` , például az **átirányítási URI**esetében, mivel ez egy kötelező mező, de az értéket nem használja később. Az alkalmazás mentéséhez kattintson a jelölőnégyzetre.
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Létrehozás** gombra.
 
 ### <a name="add-an-application"></a>Alkalmazás hozzáadása
 
@@ -149,10 +149,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ahol:
 
--   `subscriptionId`-Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, amelyről biztonsági másolatot szeretne készíteni
--   `resourceGroupName`-Az Azure API Management szolgáltatás erőforráscsoport neve
--   `serviceName`– annak a API Management-szolgáltatásnak a neve, amelyről biztonsági másolatot készít a létrehozás időpontjában.
--   `api-version`-csere a`2018-06-01-preview`
+-   `subscriptionId` -Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, amelyről biztonsági másolatot szeretne készíteni
+-   `resourceGroupName` -Az Azure API Management szolgáltatás erőforráscsoport neve
+-   `serviceName` – annak a API Management-szolgáltatásnak a neve, amelyről biztonsági másolatot készít a létrehozás időpontjában.
+-   `api-version` -csere a `2018-06-01-preview`
 
 A kérelem törzsében adja meg a cél Azure Storage-fiók nevét, a hozzáférési kulcsot, a blob-tároló nevét és a biztonsági másolat nevét:
 
@@ -198,10 +198,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ahol:
 
--   `subscriptionId`-Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, és amelyről biztonsági másolatot kíván visszaállítani
--   `resourceGroupName`-Az Azure API Management szolgáltatást tároló erőforráscsoport neve, amelyről biztonsági másolatot kíván visszaállítani
--   `serviceName`– annak a API Management-szolgáltatásnak a neve, amelyet a rendszer a létrehozáskor adott vissza.
--   `api-version`-csere a`2018-06-01-preview`
+-   `subscriptionId` -Annak az előfizetésnek az azonosítója, amely a API Management szolgáltatást tárolja, és amelyről biztonsági másolatot kíván visszaállítani
+-   `resourceGroupName` -Az Azure API Management szolgáltatást tároló erőforráscsoport neve, amelyről biztonsági másolatot kíván visszaállítani
+-   `serviceName` – annak a API Management-szolgáltatásnak a neve, amelyet a rendszer a létrehozáskor adott vissza.
+-   `api-version` -csere a `2018-06-01-preview`
 
 A kérelem törzsében határozza meg a biztonságimásolat-fájl helyét. Adja hozzá az Azure Storage-fiók nevét, a hozzáférési kulcsot, a blob-tároló nevét és a biztonsági másolat nevét:
 
@@ -228,13 +228,13 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 > [!NOTE]
 > A biztonsági mentési és visszaállítási műveletek a PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) és a [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) parancsokkal is elvégezhetők.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási folyamat különböző lépéseihez.
 
 -   [Azure API Management-fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Az API Management biztonsági mentésének és helyreállításának automatizálása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management: konfiguráció](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx) 
+-   [Azure API Management: konfiguráció](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration) 
      biztonsági mentése és visszaállítása _A Stuart által részletezett megközelítés nem felel meg a hivatalos útmutatásnak, de érdekes._
 
 [backup an api management service]: #step1

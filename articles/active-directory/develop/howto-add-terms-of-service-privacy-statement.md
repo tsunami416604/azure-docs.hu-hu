@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478008"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535772"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: alkalmazások használati feltételeinek és adatvédelmi nyilatkozatának konfigurálása
 
@@ -45,7 +45,7 @@ Mielőtt felveszi a hivatkozásokat az alkalmazás használati feltételeihez é
 | Érvényes sémák | HTTP és HTTPS<br/>Javasoljuk, hogy HTTPS |
 | Maximális hossz    | 2048 karakter                       |
 
-Példák: `https://myapp.com/terms-of-service` és`https://myapp.com/privacy-statement`
+Példák: `https://myapp.com/terms-of-service` és `https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>A szolgáltatási feltételekre és az adatvédelmi nyilatkozatra mutató hivatkozások hozzáadása
 
@@ -58,7 +58,7 @@ Ha a szolgáltatási feltételek és az adatvédelmi nyilatkozat elkészült, a 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Az Azure Portal használata
 Kövesse az alábbi lépéseket a Azure Portal.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza ki a megfelelő AzureAD-bérlőt (nem B2C).
 2. Navigáljon az **alkalmazás regisztrációi** részéhez, és válassza ki az alkalmazást.
 3. Nyissa meg a **márkaépítés** ablaktáblát.
 4. Adja meg a szolgáltatási URL-cím és az **adatvédelmi nyilatkozat URL-** mezőinek **feltételeit** .
@@ -69,6 +69,11 @@ Kövesse az alábbi lépéseket a Azure Portal.
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>Az alkalmazás-objektum JSON használata
 
 Ha közvetlenül az alkalmazás-objektum JSON-fájlját szeretné módosítani, használja a Azure Portal vagy az alkalmazás regisztrációs portáljának jegyzékfájl-szerkesztőjét, hogy tartalmazza az alkalmazás használati feltételeire és az adatvédelmi nyilatkozatra mutató hivatkozásokat is.
+
+1. Navigáljon az **alkalmazás regisztrációi** szakaszára, és válassza ki az alkalmazást.
+2. Nyissa meg a **jegyzék** ablaktáblát.
+3. CTRL + F, keressen rá a "informationalUrls" kifejezésre. Adja meg az adatokat.
+4. Mentse a módosításokat.
 
 ```json
     "informationalUrls": { 
@@ -96,5 +101,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Ügyeljen arra, hogy ne írja felül a következő mezőkhöz hozzárendelt előre megadott értékeket: `supportUrl` , `marketingUrl` és`logoUrl`
+> * Ügyeljen arra, hogy ne írja felül a következő mezőkhöz hozzárendelt előre megadott értékeket: `supportUrl` , `marketingUrl` és `logoUrl`
 > * A Microsoft Graph API csak akkor működik, ha Azure AD-fiókkal jelentkezik be. A személyes Microsoft-fiókok nem támogatottak.

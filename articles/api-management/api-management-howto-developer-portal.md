@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852157"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614053"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -31,9 +31,9 @@ Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felüg
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>Az új fejlesztői portál nem kompatibilis a régi fejlesztői portálral, és az automatikus áttelepítés nem lehetséges. Manuálisan újra létre kell hoznia a tartalmat (lapok, szöveg, médiafájlok), és testre kell szabnia az új portál megjelenését. Útmutatásért tekintse meg [a fejlesztői portál oktatóanyagát](api-management-howto-developer-portal-customize.md) .
+> <a name="migrate-from-legacy"></a> Az új fejlesztői portál nem kompatibilis a régi fejlesztői portálral, és az automatikus áttelepítés nem lehetséges. Manuálisan újra létre kell hoznia a tartalmat (lapok, szöveg, médiafájlok), és testre kell szabnia az új portál megjelenését. Útmutatásért tekintse meg [a fejlesztői portál oktatóanyagát](api-management-howto-developer-portal-customize.md) .
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Felügyelt és saját üzemeltetésű verziók
+## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Felügyelt és saját üzemeltetésű verziók
 
 A fejlesztői portált kétféleképpen is létrehozhatja:
 
@@ -67,27 +67,27 @@ A *portál tartalma*, a média kivételével, JSON-dokumentumként van megadva.
 
 A portál a [Paperbits-keretrendszer](https://paperbits.io/)adaptált villáján alapul. Az eredeti Paperbits funkció ki lett bővítve API Management-specifikus widgetek (például az API-k listája, a termékek listája) és egy összekötő API Management szolgáltatás számára a tartalom mentéséhez és lekéréséhez.
 
-## <a name="frequently-asked-questions"></a><a name="faq"></a>Gyakori kérdések
+## <a name="frequently-asked-questions"></a><a name="faq"></a> Gyakori kérdések
 
 Ebben a szakaszban a fejlesztői portál általános jellegű kérdéseit választjuk. A saját üzemeltetésű verzióra vonatkozó kérdésekért tekintse meg a [GitHub-adattár wiki szakaszát](https://github.com/Azure/api-management-developer-portal/wiki).
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a>Hogyan lehet áttérni a portál előzetes verziójáról?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> Hogyan lehet áttérni a portál előzetes verziójáról?
 
-A fejlesztői portál előzetes verziójának használatával kiépített egy előnézeti tartalmat a API Management szolgáltatásban. Az alapértelmezett tartalom jelentősen módosult az általánosan elérhető verzióban a jobb felhasználói élmény érdekében. Emellett új widgeteket is tartalmaz.
+Amikor először indította el a fejlesztői portál előzetes verzióját, kiépítte az alapértelmezett tartalom előzetes verzióját a API Management szolgáltatásban. Az általánosan elérhető verzióban az alapértelmezett tartalom jelentősen módosult. Az alapértelmezett tartalom előzetes verziója például nem tartalmazza a OAuth gombokat a bejelentkezési lapokon, az API-k megjelenítéséhez különböző widgeteket használ, és a fejlesztői portál oldalai strukturálása terén korlátozott képességekre támaszkodik. Annak ellenére, hogy a tartalomban különbségek vannak, a portál motorja (beleértve az alapul szolgáló widgeteket is) automatikusan frissül minden alkalommal, amikor közzéteszi a fejlesztői portált.
 
-Ha felügyelt verziót használ, állítsa alaphelyzetbe a portál tartalmát az **Operations** ( **tartalom visszaállítása** ) lehetőségre kattintva. A művelet megerősítése eltávolítja a portál összes tartalmát, és kiépíti az új alapértelmezett tartalmat. A portál motorja automatikusan frissült a API Management szolgáltatásban.
+Ha a portál előzetes verzióján alapuló, nagy mértékben testre szabott, továbbra is használhatja azt, és az új widgeteket manuálisan helyezheti el a portál oldalain. Ellenkező esetben javasoljuk, hogy cserélje le a portál tartalmát az új alapértelmezett tartalomra.
+
+A felügyelt portál tartalmának alaphelyzetbe állításához kattintson a **tartalom alaphelyzetbe állítása** lehetőségre az **operatív** menü szakaszban. Ez a művelet eltávolítja a portál összes tartalmát, és új alapértelmezett tartalmat fog kiépíteni. A fejlesztői portál minden testreszabását és módosítását elveszítjük. **Ez a művelet nem vonható vissza**.
 
 ![Portál tartalmának visszaállítása](media/api-management-howto-developer-portal/reset-content.png)
 
-Ha a saját üzemeltetésű verziót használja, a `scripts/cleanup.bat` és a GitHub- `scripts/generate.bat` tárházból távolítsa el a meglévő tartalmakat, és hozzon létre új tartalmat. Győződjön meg róla, hogy a legújabb kiadásra frissíti a portál kódját a GitHub-adattárból.
+Ha a saját üzemeltetésű verziót használja, `scripts.v2/cleanup.bat` a GitHub-adattárból futtassa a és a `scripts.v2/generate.bat` szkripteket, és távolítsa el a meglévő tartalmakat, és hozzon létre új tartalmat. Győződjön meg róla, hogy a legújabb kiadásra frissíti a portál kódját a GitHub-adattárból.
 
-Ha nem szeretné alaphelyzetbe állítani a portál tartalmát, érdemes lehet az újonnan elérhető widgeteket használni az összes oldalon. A meglévő widgetek automatikusan frissültek a legújabb verzióra.
-
-Ha a portál az általános elérhetőségi bejelentés után lett kiépítve, akkor már az új alapértelmezett tartalmat is be kell építenie. Az oldaláról nincs szükség beavatkozásra.
+Ha először a 2019-es általános elérhetőségi bejelentés után fér hozzá a portálhoz, akkor az új alapértelmezett tartalmat már be kell állítani, és nincs szükség további műveletre.
 
 ### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>A portál rendelkezik az örökölt portál összes szolgáltatásával?
 
-A fejlesztői portál már nem támogatja az *alkalmazásokat* és a *problémákat*.
+A fejlesztői portál már nem támogatja az *alkalmazások*, *problémák*és közvetlen integrációt a Facebook, a Microsoft, a Twitter és a Google identitás-szolgáltatóként (Azure ad B2C helyette használhatja).
 
 ### <a name="has-the-legacy-portal-been-deprecated"></a>Elavult a régi portál?
 
@@ -145,7 +145,7 @@ A delegálás beállítása után újra közzé kell tennie [a portált](api-man
 
 A legtöbb konfigurációs módosítás (például a VNet, a bejelentkezés és a termék kifejezés) [a portál újbóli közzétételét](api-management-howto-developer-portal-customize.md#publish)igényli.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>CORS hibaüzenetet kapok az interaktív konzol használatakor
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> CORS hibaüzenetet kapok az interaktív konzol használatakor
 
 Az interaktív konzol ügyféloldali API-kérést tesz elérhetővé a böngészőből. Javítsa ki a CORS-problémát úgy, hogy hozzáad [egy CORS-szabályzatot](api-management-cross-domain-policies.md#CORS) az API (ok) hoz.
 
@@ -217,7 +217,7 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 | Apple Safari                | Igen<sup>1</sup> |
 | Google Chrome               | Igen<sup>1</sup> |
 | Microsoft Edge              | Igen<sup>1</sup> |
-| Microsoft Internet Explorer | Nem              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Igen<sup>1</sup> |
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>

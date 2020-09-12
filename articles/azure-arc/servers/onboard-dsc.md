@@ -3,12 +3,12 @@ title: Csatlakoztatott számítógép ügynökének telepítése a Windows Power
 description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek az Azure-hoz az Azure arc-kompatibilis kiszolgálókon (előzetes verzió) a Windows PowerShell DSC használatával.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 675258ff95829c2dc9922571db5014b2ba93d336
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213088"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565820"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>A csatlakoztatott gép ügynökének telepítése a Windows PowerShell DSC használatával
 
@@ -82,7 +82,7 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 Ezt az erőforrást hozzá lehet adni a meglévő DSC-konfigurációkhoz a gép végpontok közötti konfigurációjának ábrázolásához. Előfordulhat például, hogy hozzá szeretné adni ezt az erőforrást egy olyan konfigurációhoz, amely az operációs rendszer biztonságos beállításait állítja be.
 
-A PowerShell-galéria [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
+A PowerShell-galéria [CompositeResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) modulja a konfiguráció [összetett erőforrásának](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) létrehozásához használható a konfigurációk összekapcsolásának további egyszerűsítése érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20de83e190a419b95c99c1c1238eb931910feb82
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020286"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613917"
 ---
 # <a name="entities"></a>Entitások
 
@@ -21,7 +21,7 @@ Az *entitások* a térben lévő ingó objektumokat jelölik, és a távolról r
 
 Az entitások a pozíció, a rotáció és a skála alapján definiált átalakítóval rendelkeznek. Önmagában az entitások nem rendelkeznek megfigyelhető funkciókkal. Ehelyett a rendszer a viselkedést az entitásokhoz csatolt összetevőkön keresztül adja hozzá. Egy [CutPlaneComponent](../overview/features/cut-planes.md)  csatolása például létrehoz egy kivágási síkot az entitás pozíciójában.
 
-Maga az entitás legfontosabb aspektusa a hierarchia és a létrejövő hierarchikus transzformáció. Ha például több entitás gyermekként van csatolva egy megosztott szülő entitáshoz, akkor az összes ilyen entitás áthelyezhető, elforgatható, és méretezhető úgy, hogy megváltoztatja a szülő entitás átalakítását.
+Maga az entitás legfontosabb aspektusa a hierarchia és a létrejövő hierarchikus transzformáció. Ha például több entitás gyermekként van csatolva egy megosztott szülő entitáshoz, akkor az összes ilyen entitás áthelyezhető, elforgatható, és méretezhető úgy, hogy megváltoztatja a szülő entitás átalakítását. Emellett az entitás `enabled` állapotával kikapcsolhatja a megtekinthető és a kikapcsolási válaszokat a-hierarchiában lévő teljes algráfra.
 
 Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a `Entity.Destroy()` -t, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja a `Destroy` modellt, amelyet a vagy az SAS- `AzureSession.Actions.LoadModelAsync()` variánsa ad vissza `AzureSession.Actions.LoadModelFromSASAsync()` .
 
@@ -95,7 +95,6 @@ Double3 translation = entity->GetPosition();
 Quaternion rotation = entity->GetRotation();
 ```
 
-
 ### <a name="querying-spatial-bounds"></a>Térbeli korlátok lekérdezése
 
 A kötött lekérdezések olyan aszinkron hívások, amelyek teljes objektum-hierarchián működnek, és egy entitást használnak gyökérként. Tekintse meg a dedikált fejezetet az [objektumok határaival](object-bounds.md)kapcsolatban.
@@ -137,6 +136,13 @@ metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
 ```
 
 A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokkal.
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# entitás osztálya](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager. CreateEntity ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C++ entitás osztálya](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager:: CreateEntity ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Következő lépések
 

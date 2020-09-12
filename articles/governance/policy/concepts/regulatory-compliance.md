@@ -3,12 +3,12 @@ title: Szabályozási megfelelőség a kezdeményezési definíciókban
 description: Ismerteti, hogyan használhatók a házirendek a szabályzatok szabályozási tartományon, például a Access Control, a konfiguráció felügyeletében és másokon történő csoportosításához.
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544621"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645520"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Jogszabályoknak való megfelelés Azure Policy
 
@@ -33,18 +33,18 @@ Ha egy kezdeményezési definíciót [csoportokkal](./initiative-definition-stru
 
 Új lapon a **vezérlők** hozzáadódnak a laphoz. A szűrést a **megfelelőségi tartomány** és a házirend-definíciók a `title` **policyMetadata** objektum mezői szerint csoportosítják. Minden sor egy olyan **vezérlőt** jelöl, amely megjeleníti a megfelelőségi állapotot, a **megfelelőségi tartományt** , a felelősségi adatokat, valamint azt, hogy hány nem megfelelő és megfelelő szabályzat-definíció alkotja ezt a **vezérlőt**.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="A NIST SP 800-53 R4 beépített definíciójának megfelelőségi áttekintését bemutató minta.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Képernyőkép a megfelelőségi és nem megfelelő vezérlőket megjelenítő, a NIST SP 800-53 R4 beépített definíciójának szabályozásáról.":::
 
 A **vezérlő** kiválasztásával megnyílik egy oldal, amely a vezérlő részleteit ismerteti. Az **Áttekintés** a és a adatait `description` tartalmazza `requirements` . A **szabályzatok** lapon az összes olyan házirend-definíció szerepel a kezdeményezésben, amely hozzájárul ehhez a **vezérlőhöz**. Az **erőforrás-megfelelőség** lapon részletesen áttekintheti az összes olyan erőforrást, amelyet a jelenleg megtekintett **vezérlő**egyik tagja értékel ki.
 
 > [!NOTE]
 > A **Microsoft által felügyelt** kiértékelés típusa [statikus](./definition-structure.md#type) házirend-definíció `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="A jogszabályi megfelelőségi szabályzat definíciói a NIST SP 800-53 R4 beépített definíciójának rendszer-és kommunikációs védelmi tartományának határos védelmi szabályozásában.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Képernyőfelvétel: a NIST SP 800-53 R4 beépített definíciójának határos védelmi szabályozásának szabályozási megfelelőségi részletei.":::
 
 Ugyanabból a **vezérlőből** az **erőforrás-megfelelőség** lapra való váltáskor az összes olyan erőforrás látható, amely a **vezérlő**házirend-definíciói közé tartozik. A szűrők a név vagy az azonosító, a megfelelőségi állapot, az erőforrás típusa és a hely számára érhetők el.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="A szabályzat-definíciók által érintett megfelelőségi erőforrások mintája a NIST SP 800-53 R4 beépített definíciójának rendszer-és kommunikációs védelmi tartományának határos védelmi szabályozásában található.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Képernyőkép az erőforrás-megfelelőségről a NIST SP 800-53 R4 beépített definíciójának határos védelmi vezérlőjével.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Szabályozási megfelelőség az SDK-ban
 
@@ -64,7 +64,7 @@ A következő kód példa a hívás eredményeinek hozzáadására `summarize` :
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [kezdeményezési definíció szerkezetét](./initiative-definition-structure.md)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

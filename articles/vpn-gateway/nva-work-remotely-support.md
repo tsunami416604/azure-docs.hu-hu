@@ -5,14 +5,14 @@ services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/21/2020
+ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 8a22e8f0bde2d13b4055566d96680fadc2db6e11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80337096"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595359"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Távoli munka: hálózati virtuális berendezés (NVA) – megfontolások távoli munkához
 
@@ -52,6 +52,8 @@ Minden NVA-megoldás saját eszközökkel és erőforrásokkal rendelkezik a NVA
 A legtöbb jelentős NVA-partner a COVID-19 során hirtelen, váratlan növekedéssel kapcsolatban tett útmutatást a skálázáshoz. Íme néhány hasznos hivatkozás a partneri erőforrásokhoz.
 
 [A Barracuda lehetővé teszi a munkavégzést otthonról, miközben az adatok védelmét COVID-19 alatt](https://www.barracuda.com/covid-19/work-from-home "Otthoni munka engedélyezése az adatok COVID-19-ben való biztonságossá tétele közben")
+
+[A biztonságos távoli munkaerő engedélyezése a Coronavirus során](https://www.checkpoint.com/solutions/secure-remote-workforce-during-coronavirus/ "Biztonságos távoli munkaerő a Coronavirus során")
 
 [A Cisco AnyConnect implementációja és teljesítménye/méretezési referenciája a COVID-19 előkészítéshez](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "A Cisco AnyConnect implementációja és teljesítménye/méretezési referenciája a COVID-19 előkészítéshez")
 

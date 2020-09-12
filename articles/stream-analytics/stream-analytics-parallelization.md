@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aed0c83bfa61f6afdbdcca3c10dbd5fac3f823d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296321"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458178"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>A lekérdezési párhuzamos kihasználása Azure Stream Analytics
 Ez a cikk bemutatja, hogyan veheti igénybe a párhuzamos előnyeit a Azure Stream Analyticsban. Megtudhatja, hogyan méretezheti Stream Analytics feladatokat a bemeneti partíciók konfigurálásával és az elemzési lekérdezés definíciójának finomhangolásával.
@@ -41,7 +41,7 @@ Stream Analytics használata esetén kihasználhatja a particionálást a kimene
 -   Event Hubs (explicit módon be kell állítania a partíció kulcsát)
 -   IoT Hub (explicit módon be kell állítania a partíció kulcsát)
 -   Service Bus
-- SQL és SQL Data Warehouse választható particionálással: További információ a [kimenetről Azure SQL Database lapra](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
+- SQL-és Azure szinapszis-elemzés választható particionálással: További információ a [kimenetről Azure SQL Database lapra](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
 A Power BI nem támogatja a particionálást. A bemenet azonban továbbra is particionálható a [jelen szakaszban](#multi-step-query-with-different-partition-by-values) leírtak szerint. 
 
@@ -317,7 +317,7 @@ A Azure Stream Analytics feladatok mérőszámok paneljén azonosíthatja a foly
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

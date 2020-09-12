@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047452"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457991"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -35,7 +35,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (Formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -51,7 +51,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
-|**Oszlop szintű titkosítás (nyilvános előzetes verzió)**|Bizalmas adatok védelme a szinapszis SQL-adattárházban a Transact-SQL használatával szimmetrikus titkosítást alkalmazhat egy adatoszlopra. Az oszlop szintű titkosítás beépített függvényekkel titkosíthatja az adatok titkosítását a tanúsítványokkal, jelszóval, szimmetrikus kulccsal vagy aszimmetrikus kulccsal védett szimmetrikus kulcsokkal. További információkért tekintse meg az [adatoszlopok titkosítása](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)című témakört.|
+|**Oszlop szintű titkosítás (nyilvános előzetes verzió)**|A bizalmas adatok védelme az Azure szinapszis-elemzésekben a Transact-SQL használatával szimmetrikus titkosítást alkalmazhat az adatoszlopokra. Az oszlop szintű titkosítás beépített függvényekkel titkosíthatja az adatok titkosítását a tanúsítványokkal, jelszóval, szimmetrikus kulccsal vagy aszimmetrikus kulccsal védett szimmetrikus kulcsokkal. További információkért tekintse meg az [adatoszlopok titkosítása](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)című témakört.|
 |**Kompatibilitási szint támogatása (GA)**|Ezzel a kiadással a felhasználók mostantól megadhatják az adatbázis kompatibilitási szintjét, hogy lekérjek a Transact-SQL nyelvét és a lekérdezés-feldolgozási viselkedést a szinapszis SQL-motor egy adott verziójára vonatkozóan. További információ: [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [adatbázis-hatókörű konfiguráció módosítása](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sor szintű biztonság**|Ez a kiadás az RLS által kényszerített sorokon végzett frissítési és törlési műveletek fejlesztését is tartalmazza. Ezzel a kiadással az olyan belső funkciókat tartalmazó frissítési és törlési műveletek, mint a "is_rolemember", sikeresek lesznek, ha a belső nem hivatkozik a DML-céltábla egyik oszlopára sem. A fejlesztés előtt ezek a műveletek a mögöttes DML-műveletek korlátozása miatt nem sikerültek.|
 |**DBCC SHRINKDATABASE (GA)**|Most már csökkentheti az adatfájlok és a naplófájlok méretét a megadott adatbázisban. További információ: [dokumentáció](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15).|

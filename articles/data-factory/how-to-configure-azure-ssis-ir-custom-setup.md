@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/11/2020
-ms.openlocfilehash: 3bc8458aa009920f183b076d12185295ef294e07
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 18e1ff05d76937f8809408da0ed25f55120e456a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186080"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440575"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -40,7 +40,7 @@ Az ingyenes (licenc nélküli) és a fizetős (licencelt) összetevőket is tele
 
 A következő korlátozások érvényesek kizárólag a szabványos egyéni telepítésekre:
 
-- Ha a szkriptben lévő *gacutil.exet* kívánja használni a globális szerelvény-gyorsítótárban (GAC) lévő szerelvények telepítéséhez, meg kell adnia *gacutil.exe* az egyéni telepítés részeként. Vagy használhatja a *nyilvános előzetes* tárolóban megadott másolatot, amelyet később az "utasítások" szakaszban ismertetünk.
+- Ha a szkriptben lévő *gacutil.exet * kívánja használni a globális szerelvény-gyorsítótárban (GAC) lévő szerelvények telepítéséhez, meg kell adnia *gacutil.exe* az egyéni telepítés részeként. Vagy használhatja a *nyilvános előzetes* tárolóban megadott másolatot, amelyet később az "utasítások" szakaszban ismertetünk.
 
 - Ha a parancsfájl egyik almappájára szeretne hivatkozni, a *msiexec.exe* nem támogatja a `.\` gyökérkönyvtárra hivatkozó jelölést. Használjon olyan parancsot, mint a `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
@@ -147,9 +147,9 @@ Ha bejelöli a **licencelt összetevő** típusának telepítése az expressz eg
 
    * Ha a **oh22's SQLPhonetics.net** összetevőt választja, telepítheti a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét a oh22 a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **1.0.45**.
 
-   * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, akkor a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing Cloud stb. számára a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2019,2**.
+   * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, akkor a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing Cloud stb. számára a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **2020,1**.
 
-   * Ha a **KINGSWAYSOFT SSIS hatékonyságnövelő csomag** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagjának](https://www.kingswaysoft.com/products/ssis-productivity-pack) összetevőit telepítheti a KingswaySoft a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **10,0**.
+   * Ha a **KINGSWAYSOFT SSIS hatékonyságnövelő csomag** összetevőjét választja, akkor a [SSIS hatékonyságnövelő csomagjának](https://www.kingswaysoft.com/products/ssis-productivity-pack) összetevőit telepítheti a KingswaySoft a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **20,1**.
 
    * Ha kijelöli a **Theobald szoftver xtract** összetevőt, a [xtract az](https://theobald-software.com/en/xtract-is/) SAP-rendszerek (ERP, s/4HANA, BW) összekötői is telepíthetők a Theobald szoftverből a Azure-SSIS IR. Ehhez húzza a & eldobás/Feltöltés lehetőségre a **licencet** , amelyet korábban megvásárolt a licencfájl beviteli mezőjébe. Az aktuálisan integrált verzió a **6.1.1.3**.
 
@@ -325,7 +325,7 @@ A standard egyéni telepítések egyes mintáinak megtekintéséhez és újrafel
 
       * Egy *TERADATA* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*), a hozzá tartozó fájlt (*install. cmd*) és a telepítő csomagokat (*. msi*) tartalmaz. Ezek a fájlok telepítik a Teradata-összekötőket, a Teradata párhuzamos Transporter (TPT) API-t és az ODBC-illesztőt a Azure-SSIS IR Enterprise Edition minden egyes csomópontján. Ez a beállítás lehetővé teszi, hogy a Teradata Csatlakozáskezelő, forrás és cél használatával kapcsolódjon a Teradata-kiszolgálóhoz. 
       
-        Először [töltse le a Teradata-eszközök és-segédprogramok 15. x zip-fájlját](http://partnerintelligence.teradata.com) (például *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*), majd töltse fel a korábban említett *. cmd* és *. msi* fájlokkal együtt a tárolóba.
+        Először [töltse le a Teradata-eszközök és-segédprogramok 15. x zip-fájlját](http://partnerintelligence.teradata.com) (például  *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*), majd töltse fel a korábban említett *. cmd* és *. msi* fájlokkal együtt a tárolóba.
 
       * Egy *tls 1,2* mappa, amely egy egyéni telepítési parancsfájlt (*Main. cmd*) tartalmaz, hogy erős titkosítást és biztonságosabb hálózati protokollt (TLS 1,2) használjon a Azure-SSIS IR mindegyik csomópontján. A parancsfájl letiltja a régebbi SSL/TLS-verziókat is.
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483829"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565756"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -30,9 +30,13 @@ A Microsoft Azure Data Box megoldást négy, egymással együttműködő fő ös
 - **Az eszközhöz csatlakoztatott ügyfelek/gazdagépek** – az infrastruktúra védeni kívánt adatokat tartalmazó, a Data Box-eszközhöz csatlakozó ügyfelei.
 - **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik. Ez általában a létrehozott Azure Data Box-erőforráshoz csatolt tárfiók.
 
-A következő ábra az adatok áramlását mutatja az Azure Data Box megoldásban a helyszíni rendszerekről az Azure-ba. Ez a folyamat a Data Box importálási sorrendje.
+A következő ábra az adatok folyamatát mutatja a helyszíni és az Azure közötti Azure Data Box megoldáson keresztül, valamint a különböző biztonsági funkciókat, amelyeket az adatok a megoldáson keresztül áramlanak. Ez a folyamat a Data Box importálási sorrendje.
 
-![A Data Box biztonsága](media/data-box-security/data-box-security-2.png)
+![Data Box importálás biztonsága](media/data-box-security/data-box-security-2.png)
+
+A következő diagram a Data Box exportálási sorrendjét mutatja.
+
+![Data Box biztonsági exportálás](media/data-box-security/data-box-security-3.png)
 
 Mivel az adatforgalom ezen a megoldáson keresztül zajlik, a rendszer naplózza az eseményeket, és létrehozza a naplókat. További információért keresse fel a következőt:
 
@@ -84,7 +88,7 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
   - Telefonszám
   - E-mail
   - Utca, házszám
-  - Település
+  - City
   - Irányítószám
   - Állapot
   - Ország/tartomány/régió
@@ -102,7 +106,7 @@ További információkért lásd a Microsoft szabályzatát a [biztonsági és a
 
 A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak: 
 
-|Irányelv   |Leírás   |
+|Irányelv   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Víz és por elleni védelem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Ellenállás a kedvezőtlen szállítási körülményeknek          |
@@ -110,7 +114,7 @@ A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak:
 |[2. szintű FIPS 140-2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Adatvédelem         |
 |A függelék, ATA-meghajtók esetében a [NIST SP 800 – 88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Adattisztítás         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box használatára vonatkozó előfeltételek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

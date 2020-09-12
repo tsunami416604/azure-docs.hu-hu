@@ -1,17 +1,17 @@
 ---
-title: Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
+title: A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 description: Hyperledger Fabric Consortium-hálózat üzembe helyezése és konfigurálása az Azure Kubernetes Service-ben
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d23a0120aafb4dc3e6952b40959a20f9a3456614
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226870"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651556"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
+# <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 
 A Hyperledger Fabric az Azure Kubernetes Service (ak) sablon használatával üzembe helyezheti és konfigurálhatja a Hyperledger Fabric Consortium Network szolgáltatást az Azure-ban.
 

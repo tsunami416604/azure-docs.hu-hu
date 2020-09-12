@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fc8e8de817c1b311e3252c7399a09ed1c9eb7031
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144787"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651512"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)-ban, az automatikus gépi tanulás, a AutoML használatával. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)-ban, az automatikus gépi tanulás, a AutoML használatával. 
 
 Az alacsony kódú felhasználói élményért tekintse meg a következő [oktatóanyagot:](tutorial-automated-ml-forecast.md) az automatikus gépi tanulással kapcsolatos előrejelzési igények az automatikus gépi tanulással a [Azure Machine learning Studióban](https://ml.azure.com/).
 
@@ -93,7 +93,7 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!IMPORTANT]
-> A jövőbeli értékek előrejelzésére szolgáló modell betanításakor győződjön meg arról, hogy a képzésben használt összes funkció használható a kívánt horizonthoz tartozó előrejelzések futtatásakor. Például, ha egy igény-előrejelzést hoz létre, beleértve a jelenlegi tőzsdei árfolyam szolgáltatását is, jelentősen növelheti a képzés pontosságát. Ha azonban hosszú horizontot szeretne előre jelezni, akkor előfordulhat, hogy nem tudja pontosan megjósolni a jövőbeli idősorozat-pontoknak megfelelő készletek értékeit, és a modell pontossága romolhat.
+> A jövőbeli értékek előrejelzésére szolgáló modell betanításakor győződjön meg arról, hogy a képzésben használt összes funkció használható a kívánt horizonthoz tartozó előrejelzések futtatásakor. <br> <br>Például, ha egy igény-előrejelzést hoz létre, beleértve a jelenlegi tőzsdei árfolyam szolgáltatását is, jelentősen növelheti a képzés pontosságát. Ha azonban hosszú horizontot szeretne előre jelezni, akkor előfordulhat, hogy nem tudja pontosan megjósolni a jövőbeli idősorozat-pontoknak megfelelő készletek értékeit, és a modell pontossága romolhat.
 
 <a name="config"></a>
 
@@ -101,11 +101,11 @@ test_labels = test_data.pop(label).values
 
 Az objektumban külön betanítási és érvényesítési készletek is megadhatók `AutoMLConfig` .   További információ a [AutoMLConfig](#configure-experiment).
 
-Az idősorozat-előrejelzés esetében a rendszer automatikusan felhasználja a **gördülő eredetű kereszt-ellenőrzést (ROCV)** , amikor a betanítási és érvényesítési adatait együtt adja meg, és beállítja, hogy a kereszt-ellenőrzés hány a `n_cross_validations` paraméterével `AutoMLConfig` . A ROCV a sorozatot az oktatási és érvényesítési adatpontok alapján osztja el. A forrás időbeli kidobása a kereszt-érvényesítési betöltést eredményezi. Ez a stratégia megőrzi az idősorozat-adatok integritását, és kiküszöböli az adatok szivárgásának kockázatát
+Az idősorozat-előrejelzés esetében a rendszer alapértelmezés szerint csak a **Rolling Origin Cross Validation (ROCV)** használatát használja az érvényesítéshez. Adja át a betanítási és érvényesítési adatait, és állítsa be, hogy a többszörös ellenőrzés hány a `n_cross_validations` paraméterrel együtt `AutoMLConfig` . A ROCV a sorozatot az oktatási és érvényesítési adatpontok alapján osztja el. A forrás időbeli kidobása a kereszt-érvényesítési betöltést eredményezi. Ez a stratégia megőrzi az idősorozat-adatok integritását, és kiküszöböli az adatok szivárgásának kockázatát
 
-![helyettesítő szöveg](./media/how-to-auto-train-forecast/ROCV.svg)
+![gördülő forrás – több ellenőrzés](./media/how-to-auto-train-forecast/ROCV.svg)
 
-További több ellenőrzési és adatfelosztási lehetőségért lásd: az [adatfelosztások és a több érvényesítés konfigurálása a AutoML-ben](how-to-configure-cross-validation-data-splits.md).
+Saját ellenőrzési adatait is elvégezheti, ha további információra van szüksége az [adatfelosztások és a AutoML-hitelesítés konfigurálásáról](how-to-configure-cross-validation-data-splits.md#provide-validation-data).
 
 
 ```python
@@ -118,7 +118,7 @@ automl_config = AutoMLConfig(task='forecasting',
 További információ arról, hogy a AutoML hogyan alkalmazza a határokon átnyúló ellenőrzéseket a [túlzottan illeszkedő modellek megelőzése](concept-manage-ml-pitfalls.md#prevent-over-fitting)érdekében.
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
-Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos featurization lépések és konfigurációs beállítások kifejezetten az idősorozat-adatsorokhoz szükségesek. 
+Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos featurization lépések és konfigurációs beállítások kifejezetten az idősorozat-adatsorokhoz szükségesek. 
 
 ### <a name="featurization-steps"></a>Featurization lépések
 
@@ -163,13 +163,13 @@ featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
 
-Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg a [útmutató cikket](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg [a featurization testreszabása a Studióban](how-to-use-automated-ml-for-ml-models.md#customize-featurization)című témakört.
 
 ### <a name="configuration-settings"></a>Konfigurációs beállítások
 
 A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. 
 
-A következő táblázat összefoglalja ezeket a további paramétereket. Tekintse meg a szintaxis kialakítási mintáit ismertető [dokumentációt](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) .
+A következő táblázat összefoglalja ezeket a további paramétereket. Tekintse meg a szintaxis kialakítási mintáit ismertető [dokumentációt](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) .
 
 | Paraméter &nbsp; neve | Leírás | Kötelező |
 |-------|-------|-------|
@@ -245,16 +245,19 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
+> [!Warning]
+> Ha az SDK-val létrehozott kísérletek DNN engedélyezi, a [legjobb modell magyarázata](how-to-machine-learning-interpretability-automl.md) le van tiltva.
+
 Ha engedélyezni szeretné a DNN a Azure Machine Learning Studióban létrehozott AutoML-kísérlethez, tekintse meg a következő témakörben található feladattípus [-beállításokat: a Studio útmutatója](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+
 
 Az automatikus ML lehetővé teszi, hogy a felhasználók natív idősorozatú és mély tanulási modelleket is biztosítanak a javaslatrendszer részeként. 
 
-Modellek| Leírás | Előnyök
+Modellek| Description | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek beszerzésének valószínűsége 50%, függetlenül attól, hogy a mai, a holnapi vagy a jövő évi tükrözést szeretné-e megtekinteni.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
 ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati modell, amely a legigényesebb előrejelzési feladatok kezelésére, a nem lineáris helyi és globális trendek rögzítésére szolgál az adatokban, valamint az idősorozatok közötti kapcsolatokat.|Képes az adathalmazok összetett trendjeinek kihasználása és a nagy adatkészletek rugalmas méretezésére.
-
 
 Tekintse meg az [üzemi előrejelzést tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) , amely egy részletes kód, például a DNN kihasználása.
 
@@ -266,8 +269,7 @@ Tegyük fel például, hogy meg szeretné jósolni az energia iránti keresletet
 
 A táblázat megjeleníti a funkciók mérnöki felépítésének eredményét, amely az ablak összesítésének alkalmazása után következik be. A **minimális, a maximális** és az **összeg** oszlopok a megadott beállítások alapján három ablakból jönnek létre. Az egyes sorok új számított funkcióval rendelkeznek, amely az időbélyegzőnél szeptember 8-án 2017 4: a maximális, a minimum és az összeg értékének kiszámításához az **igény értékeit** kell kiszámítani. szeptember 8., 2017 1:20:00 – 3:20:00. Ez az ablak három műszakban jelenik meg, hogy feltöltse a fennmaradó sorokhoz tartozó adatokat.
 
-![helyettesítő szöveg](./media/how-to-auto-train-forecast/target-roll.svg)
-
+![cél gördülő ablak](./media/how-to-auto-train-forecast/target-roll.svg)
 
 Tekintse meg a [cél gördülő ablak összesítési funkcióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)kihasználó Python-kód példáját.
 
@@ -336,5 +338,8 @@ Tekintse meg az [előrejelzési minta jegyzetfüzeteket](https://github.com/Azur
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , amelyből megtudhatja, hogyan hozhat létre kísérleteket automatizált gépi tanulással.
-* Tekintse meg a [Azure Machine learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) dokumentációját.
+* További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
+* Ismerje meg az [értelmezést: modell-magyarázatok az automatikus gépi tanulásban (előzetes verzió)](how-to-machine-learning-interpretability-automl.md). 
+* Ismerje meg, hogyan taníthat több modellt a AutoML [számos modell megoldás-gyorsító](https://aka.ms/many-models)használatával.
+* A kísérletek automatikus gépi tanulással történő létrehozásához kövesse az [oktatóanyagot](tutorial-auto-train-models.md) a teljes körű példához.
+

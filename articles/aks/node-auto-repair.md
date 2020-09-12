@@ -3,21 +3,17 @@ title: Az Azure Kubernetes Service (ak)-csomópontok automatikus javítása
 description: Ismerje meg a csomópontok automatikus javításának funkcióit, valamint azt, hogy az AK Hogyan javítja a törött munkavégző csomópontokat.
 services: container-service
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 7fcb7b380f3694aaf34328019c3e09f5157c9e64
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/24/2020
+ms.openlocfilehash: 781a1ffebb40b0cce9f18699d308db90633e8626
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542042"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490105"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes szolgáltatás (ak) csomópontjának automatikus javítása
 
-Az AK folyamatosan ellenőrzi a munkavégző csomópontok állapotát, és a csomópontok automatikus javítását hajtja végre, ha azok nem megfelelő állapotba kerülnek. Ez a dokumentum a csomópontok automatikus javítási funkcióinak működéséről tájékoztatja a kezelőket. Az AK-s javításokon kívül az Azure-beli virtuálisgép-platform [karbantartási feladatokat hajt végre Virtual Machineson][vm-updates] is. Az AK-ban és az Azure-beli virtuális gépeken a fürtök szolgáltatásbeli fennakadások minimalizálására is használható.
-
-## <a name="limitations"></a>Korlátozások
-
-* A Windows-csomópontok készletei jelenleg nem támogatottak.
+Az AK folyamatosan ellenőrzi a munkavégző csomópontok állapotát, és a csomópontok automatikus javítását hajtja végre, ha azok nem megfelelő állapotba kerülnek. Ez a dokumentum tájékoztatja a kezelőket arról, hogy az automatikus csomópont-javítási funkció hogyan viselkedik a Windows-és Linux-csomópontokon. Az AK-s javításokon kívül az Azure-beli virtuálisgép-platform [karbantartási feladatokat hajt végre Virtual Machineson][vm-updates] is. Az AK-ban és az Azure-beli virtuális gépeken a fürtök szolgáltatásbeli fennakadások minimalizálására is használható.
 
 ## <a name="how-aks-checks-for-unhealthy-nodes"></a>A nem megfelelő állapotú csomópontok ellenőrzése az AK-ban
 
@@ -37,11 +33,15 @@ kubectl get nodes
 > [!Note]
 > Az AK a javítási műveleteket kezdeményezi a felhasználói fiókhoz tartozó **AK-remediátortal**.
 
-Ha egy csomópont nem Kifogástalan állapotra van meghatározva a fenti szabályok alapján, és 10 egymást követő percen belül sérült marad, az AK újraindul a csomóponton. Ha a csomópontok állapota nem kifogástalan a kezdeti javítási művelet után, a további szervizeléseket az AK-mérnökök vizsgálják meg.
-  
-Ha egy állapot-ellenőrzés során több csomópont nem kifogástalan állapotú, akkor minden egyes csomópontot külön kell kijavítani, mielőtt egy másik javítás megkezdődik.
+Ha egy csomópont nem kifogástalan állapotú a fenti szabályok alapján, és 10 egymást követő percen belül sérült marad, a következő műveleteket végzi el a rendszer.
 
-## <a name="next-steps"></a>További lépések
+1. A csomópont újraindítása
+1. Ha az újraindítás sikertelen, a csomópont rendszerképének alaphelyzetbe állítása
+1. Ha az Alaphelyzetbe állítás sikertelen, új csomópont létrehozása és alaphelyzetbe állítása
+
+Ha egyik művelet sem sikeres, a további szervizeléseket az AK-mérnökök vizsgálják meg. Ha egy állapot-ellenőrzés során több csomópont nem kifogástalan állapotú, akkor minden egyes csomópontot külön kell kijavítani, mielőtt egy másik javítás megkezdődik.
+
+## <a name="next-steps"></a>Következő lépések
 
 A [Availability Zones][availability-zones] használatával növelheti a magas rendelkezésre állást az AK-fürt számítási feladataival.
 

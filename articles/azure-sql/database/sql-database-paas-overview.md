@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee4070562e44d4f560230fa2fd069eb1fd57932
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343251"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612085"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,9 @@ A Azure SQL Database segítségével magas rendelkezésre állású és nagy tel
 A Azure SQL Database az [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)legújabb stabil verziójára épül. Használhatja a speciális lekérdezés-feldolgozási funkciókat, például [a nagy teljesítményű memóriában lévő technológiákat és az](../in-memory-oltp-overview.md) [intelligens lekérdezések feldolgozását](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Valójában a SQL Server legújabb képességei SQL Database, majd SQL Server önmagára. A legújabb SQL Server képességek javítása és frissítése nélkül, több millió adatbázison keresztül tesztelve. 
 
 A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és méretezését két különböző beszerzési modellen belül: egy [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md) és egy [DTU-alapú vásárlási modellt](service-tiers-dtu.md). A SQL Database egy teljes körűen felügyelt szolgáltatás, amely beépített magas rendelkezésre állást, biztonsági másolatokat és egyéb gyakori karbantartási műveleteket tartalmaz. A Microsoft az SQL és az operációs rendszer kódjának összes javítását és frissítését kezeli. Nem kell kezelnie a mögöttes infrastruktúrát.
+
+Ha még nem ismeri a Azure SQL Database, tekintse meg a részletes [Azure SQL-videó sorozatának](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure SQL Database áttekintő* videóját:
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
 ## <a name="deployment-models"></a>Üzembe helyezési modellek
 
@@ -172,15 +175,15 @@ A speciális adatbiztonság a speciális SQL-alapú biztonsági képességek egy
   A szolgáltatás felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
 - [Veszélyforrások észlelése](threat-detection-configure.md):
 
-  Ez a funkció olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázis eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A veszélyforrások észlelésével kapcsolatos riasztások a gyanús tevékenység részleteit tartalmazzák, és a fenyegetések kivizsgálásával és enyhítésével kapcsolatos teendőket javasolnak.
+  Ez a funkció olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázis eléréséhez vagy kiaknázásához. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. A veszélyforrás-észlelési riasztások tartalmazzák a gyanús tevékenység részleteit, és intézkedéseket javasolnak a fenyegetés kivizsgálására és mérséklésére.
 
 ### <a name="auditing-for-compliance-and-security"></a>Naplózás a megfelelőség és biztonság szolgálatában
 
-A [naplózás](../../azure-sql/database/auditing-overview.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat. A naplózás segíthet a jogszabályi megfelelőség fenntartásában, az adatbázis-tevékenység megértésében, valamint az üzleti problémákat vagy a biztonsági szabálysértések gyanúját jelző eltérések és rendellenességek megismerésében.
+A [naplózás](../../azure-sql/database/auditing-overview.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat. A naplózás elősegíti a jogszabályi megfelelőség fenntartását és az adatbázison végzett tevékenység megértését, valamint az esetleg üzleti veszélyeket vagy biztonsági problémákat jelző rendellenesség feltárását.
 
 ### <a name="data-encryption"></a>Adattitkosítás
 
-A SQL Database titkosítás biztosításával segít az adatai védelmében. A mozgásban lévő adatforgalom a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatást használja. A nyugalmi állapotban lévő adatok esetében [transzparens adattitkosítást](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használ. A használatban lévő adatkezeléshez [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)használ.
+Az SQL Database titkosítás biztosításával segíti az adatok védelmét. A mozgásban lévő adatforgalom a [Transport Layer Security](https://support.microsoft.com/kb/3135244)szolgáltatást használja. A nyugalmi állapotban lévő adatok esetében [transzparens adattitkosítást](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használ. A használatban lévő adatkezeléshez [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)használ.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
@@ -190,13 +193,13 @@ Az SQL Database az [Azure Active Directory-integráció](authentication-aad-over
 
 Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létrehozását és karbantartását. Az SQL Database lehetővé teszi, hogy arra koncentrálhasson, amit legjobban tud: kiváló alkalmazások készítésére. SQL Database a már meglévő eszközök és szaktudás használatával kezelheti és fejlesztheti.
 
-|Eszköz|Description|
+|Eszköz|Leírás|
 |:---|:---|
-|[Az Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
+|[A Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
 |[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, MacOS és Linux rendszeren fut.|
-|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
+|[Az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
 |[SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server a kapcsolódó adatbázisok, adatbázisok Azure SQL Database, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és az Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) lekérdezéséhez.|
 
 A SQL Database támogatja a Python, a Java, a Node.js, a PHP, a Ruby és a .NET alkalmazások létrehozását macOS, Linux és Windows rendszeren. Az SQL Database az SQL Serverrel azonos [adatkapcsolattárakat](connect-query-content-reference-guide.md#libraries) támogat.
 
@@ -218,7 +221,7 @@ Nem. A javítások hatása általában nem észlelhető, ha az alkalmazásban [�
 - [Visszajelzés](https://aka.ms/sqlfeedback): hibák jelentése és funkciók kérése.
 - [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/sql-database/) , amely az önálló adatbázisokra és a rugalmas készletekre vonatkozó költség-összehasonlításokat és számológépeket tartalmazza.
 - Az első lépésekhez tekintse meg ezeket a rövid útmutatókat:

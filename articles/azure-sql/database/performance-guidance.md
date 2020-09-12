@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: carlrab; jrasnick
+author: stevestein
+ms.author: sstein
+ms.reviewer: jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 793010ba9eaea32256796f5fcd42d1c469eb7917
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981983"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645785"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Alkalmazások és adatbázisok hangolása a Azure SQL Database és az Azure SQL felügyelt példányának teljesítményéhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -265,7 +265,7 @@ Egyes alkalmazások írási Igényűek. Előfordulhat, hogy az adatbázis teljes
 
 Egyes adatbázis-alkalmazások olvasási és nagy terheléssel rendelkeznek. A gyorsítótárazási rétegek csökkenthetik az adatbázis terhelését, és esetleg csökkenthetik az adatbázisok támogatásához szükséges számítási méretet Azure SQL Database és az Azure SQL felügyelt példányának használatával. Ha a [Redis-hez Azure cache](https://azure.microsoft.com/services/cache/)-t használ, akkor az adatok beolvasása nagy terheléssel elvégezhető egyszer (vagy akár egyszer az alkalmazási rétegbeli gépen, attól függően, hogy hogyan van konfigurálva), majd az adatbázison kívül tárolja azokat. Ez az adatbázis terhelésének (CPU és olvasási IO) csökkentése, de hatással van a tranzakciós konzisztenciare, mert előfordulhat, hogy a gyorsítótárból beolvasott adatok nem szinkronizálhatók az adatbázisban lévő adatokkal. Bár számos alkalmazásban elfogadható bizonyos fokú inkonzisztencia, ez nem igaz az összes számítási feladathoz. Az alkalmazásokra vonatkozó követelmények teljes mértékben tisztában kell lennie az alkalmazási szintű gyorsítótárazási stratégia megvalósítása előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A DTU-alapú szolgáltatási rétegekkel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](service-tiers-dtu.md).
 - A virtuális mag-alapú szolgáltatási rétegekkel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](service-tiers-vcore.md).

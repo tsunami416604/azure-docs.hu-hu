@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 8b20a0815ab16a3713d640a25171e440a8330dd1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6744bbf2e77fa0ec275350678e75ff094eec82e0
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230313"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650381"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -33,16 +33,16 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 - Hozzon létre új `Dataset` objektumokat, `PipelineData` amelyeket meg szeretne őrizni
 
 > [!TIP]
-> A folyamat lépései közötti ideiglenes adatátvitelt és az adattárolást követő adatmegőrzési folyamat a nyilvános előzetes osztályokban és a szolgáltatásban is elérhető  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
+> A folyamat lépései közötti ideiglenes adatátvitelt és az adattárolást követő adatmegőrzési folyamat a nyilvános előzetes osztályokban és a szolgáltatásban is elérhető  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Ezek az osztályok [kísérleti](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-- A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
+- A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 
 - Egy Azure Machine Learning-munkaterület.
   
@@ -61,7 +61,7 @@ A következők szükségesek:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Objektumok használata már meglévő adatértékekhez 
 
-Az adatfolyamatok adatfeldolgozásának előnyben részesített módja egy [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) -objektum használata. `Dataset` az objektumok az egész munkaterületen elérhető állandó adatértékeket jelölik.
+Az adatfolyamatok adatfeldolgozásának előnyben részesített módja egy [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py&preserve-view=true) -objektum használata. `Dataset` az objektumok az egész munkaterületen elérhető állandó adatértékeket jelölik.
 
 Számos módon hozhatók létre és regisztrálhatók `Dataset` objektumok. A táblázatos adatkészletek egy vagy több fájlban elérhető tagolt adatokat foglalnak magukban. A fájl adatkészletei bináris adatokat (például képeket) vagy az elemezni kívánt adatokat használják. Az objektumok létrehozásának legegyszerűbb programozási módjai a `Dataset` meglévő Blobok használata a munkaterület-tárolóban vagy a nyilvános URL-címekben:
 
@@ -152,7 +152,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>`PipelineData`A köztes adatkezeléshez használatos
 
-Míg `Dataset` az objektumok állandó adatokat képviselnek, a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektumok a folyamat lépéseiből származó ideiglenes adatokhoz használatosak. Mivel egy objektum élettartama `PipelineData` hosszabb, mint egyetlen folyamat, a folyamat definíciós parancsfájljában definiálja őket. Objektum létrehozásakor meg `PipelineData` kell adnia egy nevet és egy adattárolót, amelyen az adat található. Adja át az `PipelineData` objektum (oka) t a (z) `PythonScriptStep` _both_ `arguments` és az `outputs` argumentumok használatával:
+Míg `Dataset` az objektumok állandó adatokat képviselnek, a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) objektumok a folyamat lépéseiből származó ideiglenes adatokhoz használatosak. Mivel egy objektum élettartama `PipelineData` hosszabb, mint egyetlen folyamat, a folyamat definíciós parancsfájljában definiálja őket. Objektum létrehozásakor meg `PipelineData` kell adnia egy nevet és egy adattárolót, amelyen az adat található. Adja át az `PipelineData` objektum (oka) t a (z) `PythonScriptStep` _both_ `arguments` és az `outputs` argumentumok használatával:
 
 ```python
 
@@ -177,7 +177,8 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 ```
 
 > [!TIP]
-> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el `OutputFileDatasetConfig` . További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Példa a használatával történő használatra `OutputFileDatasetConfig` : [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása.
+
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Használat `PipelineData` egy képzési lépés kimenete
 A folyamaton belül a `PythonScriptStep` program argumentumai segítségével kérheti le a rendelkezésre álló kimeneti útvonalakat. Ha ez a lépés az első, és inicializálja a kimeneti adatokat, létre kell hoznia a könyvtárat a megadott elérési úton. Ezután megírhatja, hogy milyen fájlokat szeretne foglalni a alkalmazásban `PipelineData` .
@@ -192,7 +193,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-Ha létrehozta `PipelineData` az `is_directory` argumentumot a értékre `True` , akkor elég lenne ahhoz, hogy csak a hívást hajtsa végre, `os.makedirs()` és az elérési út minden fájlját meg kellene írnia. További részletekért tekintse meg a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) dokumentációját.
+Ha létrehozta `PipelineData` az `is_directory` argumentumot a értékre `True` , akkor elég lenne ahhoz, hogy csak a hívást hajtsa végre, `os.makedirs()` és az elérési út minden fájlját meg kellene írnia. További részletekért tekintse meg a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) dokumentációját.
 
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Olvasási `PipelineData` bemenetként a nem kezdeti lépésekhez
@@ -227,7 +228,7 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 A `PipelineData` bemenetek értéke az előző kimenet elérési útja. 
 
 > [!TIP]
-> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el `OutputFileDatasetConfig` . További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Példa a használatával történő használatra `OutputFileDatasetConfig` : [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása.
 
 Ha az előzőekben leírtak szerint az első lépés egyetlen fájlt írt, a következőhöz hasonló lehet: 
 
@@ -249,7 +250,7 @@ step1_output_ds.register(name="processed_data", create_new_version=True)
 
 ```
 > [!TIP]
-> A köztes adatátviteli folyamatokon kívüli adatmegőrzési élmény a nyilvános előzetes verzióban érhető el `OutputFileDatasetConfig` . További információ `OutputFileDatasetConfig` a tervezési mintákról és módszerekről [az SDK dokumentációjában](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py).
+> A köztes adatátviteli folyamatokon kívüli adatmegőrzési élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Példa a használatával történő használatra `OutputFileDatasetConfig` : [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása.
 
 ## <a name="next-steps"></a>Következő lépések
 

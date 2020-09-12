@@ -4,14 +4,14 @@ description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098452"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613993"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -36,9 +36,9 @@ A cikk további részében találhat konkrét javaslatokat.
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
 Díjköteles előfizetés ajánlott.
-
+<!-- 
 > [!NOTE]
-> Az Azure HPC gyorsítótár-csapatának hozzá kell adnia az előfizetését a hozzáférési listához, mielőtt felhasználható lenne a gyorsítótár-példány létrehozásához. Ez az eljárás segít biztosítani, hogy minden ügyfél magas színvonalú válaszadást biztosítson a gyorsítótárból. A hozzáférés kéréséhez töltse ki [ezt az űrlapot](https://aka.ms/onboard-hpc-cache) .
+> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>Hálózati infrastruktúra
 
@@ -164,6 +164,6 @@ További információt a [NAS-konfiguráció és az NFS-tárolási cél problém
 
 Ha Azure HPC-gyorsítótárat szeretne létrehozni vagy kezelni az Azure parancssori felületéről (Azure CLI), telepítenie kell a CLI-szoftvert és a HPC-cache kiterjesztést. Kövesse az Azure [parancssori felület beállítása az Azure HPC cache-hez](az-cli-prerequisites.md)című témakör utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HPC cache-példány létrehozása](hpc-cache-create.md) a Azure Portal

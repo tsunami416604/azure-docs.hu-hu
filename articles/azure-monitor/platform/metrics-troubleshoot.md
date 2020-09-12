@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829594"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440677"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
@@ -110,9 +110,9 @@ Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az 
 
 1. Győződjön meg arról, hogy a tárfiókot nem védi a tűzfal. Az Azure Portalnak hozzá kell férnie a tárfiókhoz, hogy lekérhesse a metrikai adatokat és összeállíthassa a diagramokat.
 
-1. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ellenőrizze, hogy a metrikák a tárfiókba kerülnek-e. Ha a metrikák gyűjtése nem történik meg, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatóját](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
+1. A [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ellenőrizheti, hogy a metrikák beáramlanak-e a Storage-fiókba. Ha a metrikák gyűjtése nem történik meg, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatóját](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a metrikus Explorer használatába](metrics-getting-started.md)
 * [A metrika Explorer speciális funkcióinak megismerése](metrics-charts.md)

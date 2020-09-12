@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 0c0e286ac9f94768541bb40b9ccca01e0469e0c8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: f3aeccd30a9c89c2a43dfb85d4a57274037ec05f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177244"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569254"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -28,6 +28,104 @@ Az Azure Security aktív fejlesztés alatt áll, és folyamatosan fejleszti a fe
 - Elavult funkciók
 
 Ez az oldal rendszeresen frissül, ezért gyakran újra felkeresik. Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
+
+
+## <a name="september-2020"></a>2020. szeptember
+
+A szeptemberben elérhető frissítések a következők:
+
+- [A sebezhetőségi felmérés eredményei mostantól folyamatos exportálással érhetők el](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [Biztonsági konfigurációs problémák megakadályozása az új erőforrások létrehozásakor feltett javaslatok végrehajtásakor](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [A hálózati biztonsági csoport javaslatai javultak](#network-security-group-recommendations-improved)
+- [Elavult előnézeti AK-javaslat: "Pod biztonsági szabályzatokat kell meghatározni a Kubernetes-szolgáltatásokban"](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [Azure Security Center továbbfejlesztett e-mail-értesítések](#email-notifications-from-azure-security-center-improved)
+- [A biztonságos pontszám nem tartalmazza az előzetes verzióra vonatkozó javaslatokat](#secure-score-doesnt-include-preview-recommendations)
+- [A javaslatok mostantól a súlyossági mutatót és a frissességi időközt is tartalmazzák](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>A sebezhetőségi felmérés eredményei mostantól folyamatos exportálással érhetők el
+
+A folyamatos exportálással valós időben továbbíthatja a riasztásokat és a javaslatokat az Azure Event Hubsba, Log Analytics munkaterületekre vagy Azure Monitorokra. Innen az adatok integrálása SIEM-ekkel (például Azure Sentinel, Power BI, Azure Adatkezelő stb.) végezhető el.
+
+Security Center integrált sebezhetőségi felmérési eszközei a "szülő" javaslaton belül, például "a virtuális gépek biztonsági rései" javításával kapcsolatos ajánlott ajánlásokat adnak vissza az erőforrásokra vonatkozóan. 
+
+A biztonsági megállapítások mostantól a folyamatos exportálással is elérhetők, amikor kiválasztja az ajánlások lehetőséget, és engedélyezi a **biztonsági megállapítások belefoglalása** lehetőséget.
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
+
+Kapcsolódó lapok:
+
+- [Security Center az Azure Virtual Machines szolgáltatáshoz készült integrált sebezhetőségi felmérési megoldás](deploy-vulnerability-assessment-vm.md)
+- [Security Center integrált sebezhetőségi felmérési megoldás Azure Container Registry rendszerképekhez](monitor-container-security.md)
+- [Folyamatos exportálás](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Biztonsági konfigurációs problémák megakadályozása az új erőforrások létrehozásakor feltett javaslatok végrehajtásakor
+
+A biztonsági incidensek jelentős oka a biztonság. A Security Center mostantól lehetővé teszi az új erőforrások helytelen konfigurációjának *megelőzését* az adott javaslatok tekintetében. 
+
+Ez a funkció segít megőrizni a számítási feladatokat, és stabilizálni tudja a biztonságos pontszámot.
+
+A biztonságos konfiguráció egy adott javaslat alapján történő érvényesítése két üzemmódban érhető el:
+
+- A Azure Policy **megtagadásának** hatására leállíthatja a nem megfelelő állapotú erőforrásokat
+
+- A **kikényszerítés** lehetőség használatával kihasználhatja az Azure-szabályzat **DeployIfNotExist** hatását, és a létrehozáskor automatikusan elháríthatja a nem megfelelő erőforrásokat.
+ 
+Ez a kiválasztott biztonsági javaslatok esetében elérhető, és az erőforrás részletei lap tetején található.
+
+További információ a [helytelen konfigurációkkal kapcsolatos kényszerítő/megtagadási javaslatok megelőzéséről](prevent-misconfigurations.md).
+
+###  <a name="network-security-group-recommendations-improved"></a>A hálózati biztonsági csoport javaslatai javultak
+
+A hálózati biztonsági csoportokkal kapcsolatos következő biztonsági javaslatok javultak a téves pozitív események egyes példányainak csökkentése érdekében.
+
+- Az összes hálózati portot korlátozni kell a virtuális géphez társított NSG
+- A felügyeleti portokat be kell zárni a virtuális gépeken
+- Az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni
+- Az alhálózatokat hálózati biztonsági csoporttal kell társítani
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Elavult előnézeti AK-javaslat: "Pod biztonsági szabályzatokat kell meghatározni a Kubernetes-szolgáltatásokban"
+
+A "Pod biztonsági házirendek meghatározása a Kubernetes-szolgáltatásokban" előzetes javaslat az [Azure Kubernetes szolgáltatás](https://docs.microsoft.com/azure/aks/use-pod-security-policies) dokumentációjában leírtaknak megfelelően elavult.
+
+A pod biztonsági házirend (előzetes verzió) funkció az elavult, és a továbbiakban nem lesz elérhető 2020. október 15-én, Azure Policy az AK-hoz.
+
+Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>Azure Security Center továbbfejlesztett e-mail-értesítések
+
+A biztonsági riasztásokkal kapcsolatos e-mailek következő területei javultak: 
+
+- Lehetőség van a riasztásokról értesítő e-mailek küldésére az összes súlyossági szinthez.
+- Lehetővé tette, hogy a felhasználók értesítése különböző RBAC-szerepkörökkel az előfizetésben
+- Alapértelmezés szerint az előfizetések tulajdonosait proaktívan értesítjük a nagy súlyosságú riasztásokról (amelyek nagy valószínűséggel valódi behatolást okoznak)
+- Eltávolította a telefonszám mezőt az e-mail értesítések konfigurációs oldaláról.
+
+További információt a [biztonsági riasztások e-mail értesítéseinek beállítása](security-center-provide-security-contact-details.md)című témakörben olvashat.
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>A biztonságos pontszám nem tartalmazza az előzetes verzióra vonatkozó javaslatokat 
+
+Security Center folyamatosan felméri az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákra. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint.
+
+Mivel új fenyegetések észlelhetők, új biztonsági tanácsokat Security Center új javaslatok keretében elérhetővé tesznek. Ha el szeretné kerülni, hogy a meglepetések ne legyenek a biztonságos pontszámban, és adjon meg egy türelmi időszakot, amelyben az új ajánlásokat még a pontszámok befolyásolása előtt megtekintheti, az **előzetes** verzióként megjelölt javaslatok már nem szerepelnek a biztonságos pontszám kiszámítása során. Ha lehetséges, még mindig szervizelni kell őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul.
+
+Emellett az **előzetes** verzióra vonatkozó javaslatok nem teszik lehetővé a "nem megfelelő" erőforrás megjelenítését.
+
+Példa az előzetes verziójú javaslatra:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
+
+[További információ a biztonságos pontszámról](secure-score-security-controls.md).
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>A javaslatok mostantól a súlyossági mutatót és a frissességi időközt is tartalmazzák
+
+A javaslatok részleteit tartalmazó oldal mostantól tartalmazza a frissességi intervallum jelzőjét (ha van ilyen), valamint a javaslat súlyosságának egyértelmű megjelenítését.
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="A frissességet és súlyosságot mutató javaslat oldal":::
+
 
 
 ## <a name="august-2020"></a>2020. augusztus
@@ -489,7 +587,7 @@ Hozzon létre egy egyéni kezdeményezést az Azure Policy-ben, adja hozzá a sz
 
 Most hozzáadjuk az egyéni ajánlási metaadatok szerkesztésének lehetőségét is. A metaadat-beállítások közé tartozik a súlyosság, a Szervizelési lépések, a fenyegetésekkel kapcsolatos információk és egyebek.  
 
-További információk az [Egyéni javaslatok részletes információkkal történő növeléséről](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+További információk az [Egyéni javaslatok részletes információkkal történő növeléséről](custom-security-policies.md#enhance-your-custom-recommendations-with-detailed-information).
 
 
 
@@ -550,79 +648,3 @@ Ha előfizetése van az ingyenes díjszabási szinten, a biztonsági pontszámok
 További információ az [identitással és a hozzáférési javaslatokkal](recommendations-reference.md#recs-identity)kapcsolatban.
 
 További információ az [identitás és a hozzáférés figyeléséről](security-center-identity-access.md).
-
-
-## <a name="march-2020"></a>2020. március
-
-A márciusi frissítések a következők:
-- [A Munkafolyamat-automatizálás mostantól általánosan elérhető](#workflow-automation-is-now-generally-available)
-- [Azure Security Center integrációja a Windows felügyeleti központtal](#integration-of-azure-security-center-with-windows-admin-center)
-- [Az Azure Kubernetes szolgáltatás védelme](#protection-for-azure-kubernetes-service)
-- [Továbbfejlesztett, igény szerinti élmény](#improved-just-in-time-experience)
-- [Két biztonsági javaslat elavult webalkalmazásokhoz](#two-security-recommendations-for-web-applications-deprecated)
-
-
-### <a name="workflow-automation-is-now-generally-available"></a>A Munkafolyamat-automatizálás mostantól általánosan elérhető
-
-A Azure Security Center munkafolyamat-automatizálási funkciója már általánosan elérhető. Ezzel a megoldással automatikusan aktiválhatja Logic Apps biztonsági riasztásokra és javaslatokra. Emellett manuális eseményindítók is elérhetők a riasztásokhoz és az összes olyan javaslathoz, amelynél elérhető a gyors javítás lehetőség.
-
-Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megválaszolásához. Ezek a folyamatok magukban foglalhatják az érintett érintett felek értesítését, a módosítási felügyeleti folyamat indítását és az adott szervizelési lépések alkalmazását. A biztonsági szakértők azt ajánlják, hogy az eljárások több lépésének automatizálására legyen lehetőség. Az Automation csökkenti a terhelést, és javíthatja a biztonságot azáltal, hogy a folyamat lépéseinek gyors, konzisztens és az előre meghatározott követelmények szerint kell történnie.
-
-A munkafolyamatok futtatásának automatikus és manuális Security Center funkcióival kapcsolatos további információkért lásd: [munkafolyamat-automatizálás](workflow-automation.md).
-
-További információ a [Logic apps létrehozásáról](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
-
-
-### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure Security Center integrációja a Windows felügyeleti központtal
-
-Mostantól közvetlenül a Azure Security Center helyezheti át a helyszíni Windows-kiszolgálókat a Windows felügyeleti központból. A Security Center ezután az egyetlen üvegtábla lesz a Windows felügyeleti központ összes erőforrásának (beleértve a helyszíni kiszolgálókat, a virtuális gépeket és a további Pásti munkaterheléseket) biztonsági információinak megtekintésére.
-
-Miután áthelyezett egy kiszolgálót a Windows felügyeleti központból a Azure Security Centerba, a következőket teheti:
-
-- Tekintse meg a biztonsági riasztásokat és javaslatokat a Windows felügyeleti központ Security Center bővítményében.
-- Tekintse meg a biztonsági állapotot, és kérje le a Windows felügyeleti központ felügyelt kiszolgálóinak további részletes információit a Azure Portalon (vagy egy API-n keresztül) található Security Centerban.
-
-További információ a [Azure Security Center integrálásáról a Windows felügyeleti központba](windows-admin-center-integration.md).
-
-
-### <a name="protection-for-azure-kubernetes-service"></a>Az Azure Kubernetes szolgáltatás védelme
-
-Azure Security Center kibővíti a tárolók biztonsági funkcióit az Azure Kubernetes szolgáltatás (ak) védelmére.
-
-A népszerű, nyílt forráskódú platform Kubernetes olyan széles körben vezették be, hogy most már iparági szabványnak számít a tárolók összehangolása. Ez a széleskörű megvalósítás ellenére még mindig hiányzik a Kubernetes-környezet biztonságossá tételével kapcsolatos megértés. Egy tároló alkalmazás támadási felületének védelme szaktudást igényel annak biztosításához, hogy az infrastruktúra biztonságosan legyen konfigurálva, és folyamatosan figyelje a potenciális fenyegetéseket.
-
-A Security Center védelmi szolgáltatás a következőket tartalmazza:
-
-- **Felderítés és láthatóság** – a felügyelt AK-példányok folyamatos felderítése a Security Center regisztrált előfizetéseken belül.
-- **Biztonsági javaslatok** – gyakorlati ajánlások az AK-ra vonatkozó biztonsági eljárások betartása érdekében. Ezek a javaslatok a biztonságos pontszám részét képezik, így biztosítva, hogy a szervezete biztonsági helyzete része legyen. Egy példa arra, hogy a "szerepköralapú hozzáférés-vezérlést kell használni a Kubernetes Service-fürthöz való hozzáférés korlátozásához".
-- **Veszélyforrások elleni védelem** – az AK üzembe helyezésének folyamatos elemzése révén Security Center riasztást küld, amely a gazdagép és az AK-fürt szintjén észlelt fenyegetésekkel és rosszindulatú tevékenységgel kapcsolatos.
-
-További információ az [Azure Kubernetes Services és a Security Center integrálásáról](azure-kubernetes-service-integration.md).
-
-További információ [a Security Center tároló biztonsági funkcióival](container-security.md)kapcsolatban.
-
-
-### <a name="improved-just-in-time-experience"></a>Továbbfejlesztett, igény szerinti élmény
-
-A felügyeleti portok védelmét biztosító, a Azure Security Center funkcióit, műveleteit és felhasználói felületét a következőképpen fejlesztettük ki: 
-
-- **Indoklási mező** – ha egy virtuális GÉPHEZ (VM) való hozzáférést kér a Azure Portal igény szerinti oldalán, egy új opcionális mező is elérhető, amely a kérelem indoklását adja meg. A mezőben megadott információ nyomon követhető a tevékenység naplójában. 
-- A **redundáns igény szerinti (JIT) szabályok automatikus karbantartása** – amikor egy JIT-házirendet frissít, a rendszer automatikusan futtat egy karbantartó eszközt a teljes szabályrendszert érvényességének ellenőrzéséhez. Az eszköz eltéréseket keres a szabályzat szabályai és a NSG lévő szabályok között. Ha a tisztítási eszköz nem megfelelőnek találja, akkor meghatározza az okot, és ha ez biztonságos, eltávolítja a már nem szükséges beépített szabályokat. A tisztább soha nem törli a létrehozott szabályokat. 
-
-További információ [az JIT-hozzáférési szolgáltatásról](security-center-just-in-time.md).
-
-
-### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Két biztonsági javaslat elavult webalkalmazásokhoz
-
-A webalkalmazásokkal kapcsolatos két biztonsági javaslat elavult: 
-
-- A IaaS-NSG lévő webalkalmazások szabályait meg kell erősíteni.
-    (Kapcsolódó szabályzat: a IaaS webalkalmazásaihoz tartozó NSG-szabályokat meg kell erősíteni)
-
-- A App Serviceshoz való hozzáférést korlátozni kell.
-    (Kapcsolódó házirend: a App Services elérését korlátozni kell [előzetes verzió])
-
-Ezek a javaslatok többé nem jelennek meg a javaslatok Security Center listájában. A kapcsolódó házirendeket a rendszer nem fogja tartalmazni a "Security Center default" nevű kezdeményezésben.
-
-További információ a [biztonsági javaslatokról](recommendations-reference.md).
-

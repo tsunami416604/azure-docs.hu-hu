@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 69987210d69855b0fcaa676e406ec6a1c02a4d85
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146589"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650615"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása Azure Machine Learning a kalkulátor használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "89146589"
 A Azure Machine Learning segítségével könnyedén elküldheti a betanítási szkriptet [különféle számítási célokba](how-to-set-up-training-targets.md)egy [RunConfiguration-objektum](how-to-set-up-training-targets.md#whats-a-run-configuration) és egy [ScriptRunConfig objektum](how-to-set-up-training-targets.md#submit)használatával. Ez a minta sok rugalmasságot és maximális szabályozást biztosít.
 
 
-A kalkulátorok osztály megkönnyíti a modellek betanítását a mély tanulással és a megerősítő tanulással. Magas szintű absztrakciót biztosít, amely lehetővé teszi a futtatási konfiguráció egyszerű összeállítását. Létrehozhat és használhat egy általános számítást, amellyel betaníthatja [az oktatási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) szkriptet bármely kiválasztott képzési keretrendszer (például a scikit-Learn) bármely kiválasztott számítási célra, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban vagy egy Azure-beli GPU-fürt. A PyTorch, a TensorFlow, a láncolás és a megerősítő tanulási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [láncolást](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)és a [megerősítő tanulási](how-to-use-reinforcement-learning.md) becslések is biztosít, hogy egyszerűbbé váljon ezek a keretrendszerek.
+A kalkulátorok osztály megkönnyíti a modellek betanítását a mély tanulással és a megerősítő tanulással. Magas szintű absztrakciót biztosít, amely lehetővé teszi a futtatási konfiguráció egyszerű összeállítását. Létrehozhat és használhat egy általános számítást, amellyel betaníthatja [az oktatási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) szkriptet bármely kiválasztott képzési keretrendszer (például a scikit-Learn) bármely kiválasztott számítási célra, legyen az a helyi gép, egyetlen virtuális gép az Azure-ban vagy egy Azure-beli GPU-fürt. A PyTorch, a TensorFlow, a láncolás és a megerősítő tanulási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true), [láncolást](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true)és a [megerősítő tanulási](how-to-use-reinforcement-learning.md) becslések is biztosít, hogy egyszerűbbé váljon ezek a keretrendszerek.
 
 ## <a name="train-with-an-estimator"></a>Betanítás kalkulátorral
 
@@ -116,7 +116,7 @@ Paraméter | Leírás | Alapértelmezett
 `custom_docker_image`| A használni kívánt rendszerkép neve. Csak nyilvános Docker-adattárakban (ebben az esetben a Docker hub-ban) elérhető lemezképek megadása. Ha privát Docker-tárházból szeretne képet használni, használja helyette a konstruktor `environment_definition` paraméterét.| `None`
 `node_count`| A betanítási feladatokhoz használni kívánt csomópontok száma. | `1`
 `process_count_per_node`| Az egyes csomópontokon futtatandó folyamatok (vagy "feldolgozók") száma. Ebben az esetben az `2` egyes csomópontokon elérhető GPU-k használhatók.| `1`
-`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objektum az elosztott KÉPZÉSek MPI-háttér használatával történő elindításához.  | `None`
+`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) objektum az elosztott KÉPZÉSek MPI-háttér használatával történő elindításához.  | `None`
 
 
 Végül küldje el a betanítási feladatot:
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 A modell kiképzése után mentheti és regisztrálhatja azt a munkaterületen. A modell regisztrálása lehetővé teszi a modellek tárolását és verzióját a munkaterületen a [modell kezelésének és üzembe helyezésének](concept-model-management-and-deployment.md)egyszerűsítése érdekében.
 
-A következő kód futtatásával regisztrálja a modellt a munkaterületre, és elérhetővé teszi a név alapján a távoli számítási környezetekben vagy az üzembe helyezési parancsfájlokban való hivatkozáshoz. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)További információkat és további paramétereket a dokumentációban talál.
+A következő kód futtatásával regisztrálja a modellt a munkaterületre, és elérhetővé teszi a név alapján a távoli számítási környezetekben vagy az üzembe helyezési parancsfájlokban való hivatkozáshoz. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)További információkat és további paramétereket a dokumentációban talál.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

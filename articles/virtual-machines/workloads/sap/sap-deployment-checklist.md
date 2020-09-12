@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651726"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650699"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -213,7 +213,7 @@ Ebben a fázisban általában fejlesztési rendszereket, egység-tesztelési ren
 12. A számítási feladatok alkalmazása esetén jegyezze fel a rendszerek erőforrás-felhasználását az Azure-ban. Hasonlítsa össze ezt a felhasználást a régi platform rekordjaival. A jövőbeli központi telepítések VM-méretezésének módosítása, ha úgy látja, hogy nagy különbségek vannak. Ne feledje, hogy ha a virtuális gépek számának csökkentése, tárolása és hálózati sávszélessége is csökken.
     - [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Linuxos virtuális gépek méretei az Azure-ban](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. Kísérletezzen a rendszermásolási funkciókkal és folyamatokkal. A cél az, hogy megkönnyítse egy fejlesztési rendszer vagy egy tesztelési rendszer másolását, így a Project csapatok gyorsan új rendszerekhez juthatnak. Ezeket a feladatokat az [SAP láma](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) használatával érdemes használni.
+13. Kísérletezzen a rendszermásolási funkciókkal és folyamatokkal. A cél az, hogy megkönnyítse egy fejlesztési rendszer vagy egy tesztelési rendszer másolását, így a Project csapatok gyorsan új rendszerekhez juthatnak. 
 14. Optimalizálja és élesítse a csapat Azure szerepköralapú hozzáférését, engedélyeit és folyamatait, hogy megbizonyosodjon róla, hogy a feladatok elkülönítése megtörtént. Ugyanakkor győződjön meg arról, hogy az összes csapat el tudja végezni a feladatait az Azure-infrastruktúrában.
 15. Magas rendelkezésre állású és vész-helyreállítási eljárások gyakorlása, tesztelése és dokumentálása, amelyek lehetővé teszik, hogy a munkatársak végrehajtsák ezeket a feladatokat. Azonosítsa a hiányosságokat, és alkalmazkodjon az új Azure-funkciókhoz, amelyeket integrál az üzembe helyezésbe.
 
@@ -298,7 +298,7 @@ Ez a fázis a rendszer figyelésére, üzemeltetésére és felügyeletére szol
 3. Optimalizálja a rendszerek leállításának időpontját.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](./planning-guide.md)

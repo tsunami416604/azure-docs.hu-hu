@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930043"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614011"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -34,7 +34,7 @@ A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a k�
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Hitelesítés és ügyfél-létrehozás: .NET (C#) SDK
 
 Először is vegye fel a következő csomagokat a projektbe a .NET SDK és a hitelesítési eszközök használatához ehhez a útmutatóhoz:
-* `Azure.DigitalTwins.Core` (verzió `1.0.0-preview.2` )
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 
 A választott eszközöktől függően a Visual Studio Package Managerrel vagy a parancssori eszközzel is megadhatja a csomagokat `dotnet` . 
@@ -197,7 +197,7 @@ Ne feledje, hogy ha a fenti kód megkeresi az ügyfél-azonosítót, a bérlői 
 
 A MSAL számos további lehetőség közül választhat, amelyek olyan dolgok megvalósítására használhatók, mint a gyorsítótárazás és más hitelesítési folyamatok. Erről további információt a [*Microsoft Authentication Library (MSAL) áttekintése*](../active-directory/develop/msal-overview.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

@@ -7,16 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 8ace82147f17e6ee7e888553c58f32ec6e5ba271
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782940"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569203"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
-A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája.
+A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](https://docs.microsoft.com/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
+
 
 ## <a name="general"></a>Általános kérdések
 
@@ -98,7 +99,7 @@ A **lekérdezési tallózó**, a **Mentés** és az **új riasztási szabály** 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Miért kapok hibaüzenetet: "az erőforrás-szolgáltató regisztrálása a Microsoft. reinsights" ehhez az előfizetéshez, hogy engedélyezze ezt a lekérdezést a virtuális gép Log Analytics megnyitásakor? 
 Számos erőforrás-szolgáltató automatikusan regisztrálva van, de előfordulhat, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. A regisztráció hatóköre mindig az előfizetés. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Miért nem kapok hibaüzenetet a Log Analytics virtuális gépről való megnyitásakor? 
+### <a name="why-am-i-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Miért nem kapok hibaüzenetet a Log Analytics virtuális gépről való megnyitásakor? 
 A virtuális gépek naplófájljainak megtekintéséhez olvasási engedéllyel kell rendelkeznie a virtuálisgép-naplókat tároló munkaterületekhez. Ezekben az esetekben a rendszergazdának Önnek kell megadnia Önnek az Azure-beli engedélyeket.
 
 ## <a name="metrics"></a>Mérőszámok
@@ -523,9 +524,54 @@ Azonban még mindig vannak olyan esetek, amikor a kiszolgálóoldali figyelés e
 
 Ebben a forgatókönyvben egy 502-es vagy 503-os választ lehet visszaadni az ügyfélnek egy fordított proxys rétegbeli probléma miatt, és ezt a Application Insights nem rögzíti. Ennek a rétegnek a problémáinak észlelése érdekében előfordulhat, hogy a fordított proxyról át kell küldenie a naplókat Log Analytics és létre kell hoznia egy egyéni szabályt a 502/503-válaszok ellenőrzéséhez. Ha többet szeretne megtudni a 502-es és a 503-es hibák gyakori okairól, tekintse meg a ["502 Bad Gateway" és a "503 szolgáltatás nem érhető el" című Azure app Service hibaelhárítási cikkét](../app-service/troubleshoot-http-502-http-503.md).     
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 
-Ez a Microsoft gyakori kérdések listája a Azure Monitor for containers szolgáltatással kapcsolatos gyakori kérdésekre mutat. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
+## <a name="opentelemetry"></a>OpenTelemetry
+
+### <a name="what-is-opentelemetry"></a>Mi az a OpenTelemetry?
+
+Új, nyílt forráskódú szabvány a Megfigyelhetőség terén. További információ: [https://opentelemetry.io/](https://opentelemetry.io/) .
+
+### <a name="why-is-microsoft--azure-monitor-investing-in-opentelemetry"></a>Miért van a Microsoft/Azure Monitor befektetés a OpenTelemetry-ben?
+
+Úgy véljük, hogy az ügyfeleket három okból ajánljuk fel:
+   1. Több ügyfél-forgatókönyv támogatásának engedélyezése.
+   2. Nem kell megvárnia a szállítói zárolást.
+   3. Növelje ügyfelei átláthatóságát és elkötelezettségét.
+
+Emellett a Microsoft stratégiáját is összehangolja a [nyílt forráskód felkarolása](https://opensource.microsoft.com/)érdekében.
+
+### <a name="what-additional-value-does-opentelemetry-give-me"></a>Milyen további értéket ad a OpenTelemetry?
+
+A fenti okok mellett a OpenTelemetry hatékonyabban méretezhető, és konzisztens tervezési/konfigurációs lehetőségeket biztosít a különböző nyelveken.
+
+### <a name="how-can-i-test-out-opentelemetry"></a>Hogyan lehet kipróbálni a OpenTelemetry?
+
+Regisztráljon, és csatlakozzon a Azure Monitor Application Insights korai bevezetési közösséghez [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) .
+
+### <a name="what-does-ga-mean-in-the-context-of-opentelemetry"></a>Mit jelent a GA a OpenTelemetry kontextusában?
+
+A [OpenTelemetry-Közösség](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)általánosan elérhetővé (GA) határoz meg. A "GA" OpenTelemetry azonban nem azt jelenti, hogy a meglévő Application Insights SDK-k esetében a szolgáltatás paritása szerepel. A Azure Monitor továbbra is javasolja a jelenlegi Application Insights SDK-kat azon ügyfeleinknek, akik olyan szolgáltatásokat igényelnek, mint például az [előre aggregált mérőszámok](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics), az [élő metrikák](app/live-stream.md), az [adaptív mintavételezés](app/sampling.md#adaptive-sampling), a [Profiler](app/profiler-overview.md)és a [Snapshot Debugger](app/snapshot-debugger.md) , amíg a OpenTelemetry SDK-k elérnék a szolgáltatás lejáratát
+
+### <a name="can-i-use-preview-builds-in-production-environments"></a>Használhatom az előzetes verziójú buildeket éles környezetekben?
+
+Nem ajánlott. További információért lásd a [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+
+### <a name="whats-the-difference-between-opentelemetry-sdk-and-auto-instrumentation"></a>Mi a különbség a OpenTelemetry SDK és az automatikus Instrumentation között?
+
+Az OpenTelemetry specifikációja az [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk)-t határozza meg. Röviden, az "SDK" egy nyelvfüggő csomag, amely összegyűjti az telemetria adatokat az alkalmazás különböző összetevői között, és elküldi az adatokat Azure Monitor egy exportőr használatával.
+
+Az automatikus kiépítés fogalma (más néven bytecode-befecskendezés, kód nélküli vagy ügynök-alapú) arra a képességre utal, hogy az alkalmazást a kód módosítása nélkül lehessen felvenni. További információért tekintse meg például a [OpenTelemetry Java automatikus](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) rendszerállapot-dokumentációját.
+
+### <a name="whats-the-opentelemetry-collector"></a>Mi a OpenTelemetry-gyűjtő?
+
+A OpenTelemetry-gyűjtőt a [GitHub információs fájlja](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector)írja le. Jelenleg a Microsoft nem használja a OpenTelemetry-gyűjtőt, és a Azure Monitor Application Insights küldött közvetlen exportőröktől függ.
+
+### <a name="whats-the-difference-between-opencensus-and-opentelemetry"></a>Mi a különbség a OpenCensus és a OpenTelemetry között?
+
+A [OpenCensus](https://opencensus.io/) az [OpenTelemetry](https://opentelemetry.io/)előfutára. A Microsoft segített összekapcsolni a [OpenTracing](https://opentracing.io/) és a OpenCensus-t, hogy OpenTelemetry hozzon létre, amely a világ egyetlen megfigyelhető szabványa. Azure Monitor jelenlegi [éles környezetben – az ajánlott PYTHON SDK](app/opencensus-python.md) a OpenCensus-on alapul, de végül az összes Azure monitor SDK-k a OpenTelemetry-on alapulnak.
+
+
+## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 
 ### <a name="health-feature-is-in-private-preview"></a>A Health funkció privát előzetes verzióban érhető el
 
@@ -660,12 +706,12 @@ A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cí
 
 Ha egy AK-fürthöz engedélyezte a Azure Monitort a tárolók számára, akkor törölje azt a Log Analytics-munkaterületet, amelyhez a fürt az adatokat küldi, amikor a fürt frissítésére tett kísérlet során sikertelen lesz. Ennek megkerüléséhez le kell tiltania a figyelést, majd újra engedélyeznie kell, hogy az előfizetés egy másik érvényes munkaterületre hivatkozik. Ha újra megpróbálja végrehajtani a fürt frissítését, akkor a folyamatnak sikeresen fel kell dolgoznia és el kell végeznie a műveletet.  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Mely portokra és tartományokra van szükségem az ügynök megnyitásához/engedélyezési listához?
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Mely portokra és tartományokra van szükségem az ügynök megnyitásához/engedélyezéséhez?
 
 Tekintse meg a [hálózati tűzfalra vonatkozó követelményeket](insights/container-insights-onboard.md#network-firewall-requirements) a proxyra és a tűzfalra vonatkozó konfigurációs információkhoz, amelyek a tároló ügynökhöz szükségesek az Azure, az Azure US government és az Azure China 21Vianet-felhők esetében.
 
+
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
-A Microsoft gyakori kérdései a Azure Monitor for VMskal kapcsolatos gyakori kérdések listája. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Bejelentkezhetek egy meglévő munkaterületre?
 Ha a virtuális gépek már csatlakoznak egy Log Analytics-munkaterülethez, akkor továbbra is használhatja ezt a munkaterületet, ha Azure Monitor for VMsbe bevezetésre kerül, amennyiben az a [támogatott régiók](insights/vminsights-configure-workspace.md#supported-regions)egyikében található.

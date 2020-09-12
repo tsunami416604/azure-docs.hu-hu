@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194467"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490088"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Az adatkezelési átjáró kibocsátási megjegyzései
 > [!NOTE]
@@ -26,7 +26,7 @@ A modern Adatintegráció egyik kihívása a helyszíni és a felhőbe irányul�
 
 A adatkezelés-átjáróval és annak használatával kapcsolatos részletes információkért tekintse meg a következő cikkeket:
 
-*  [Átjáró adatkezelés](data-factory-data-management-gateway.md)
+*  [Adatkezelési átjáró](data-factory-data-management-gateway.md)
 *  [Az adatáthelyezés a helyszíni és a felhő között Azure Data Factory használatával](data-factory-move-data-between-onprem-and-cloud.md)
 
 
@@ -39,14 +39,14 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
 ## <a name="earlier-versions"></a>Korábbi verziók
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Fejlesztések
-- Hozzáadhat DNS-bejegyzéseket a whitelist Service Bus szolgáltatáshoz, nem pedig az összes Azure-beli IP-címet a tűzfalról (ha szükséges). Megtalálhatja a megfelelő DNS-bejegyzést Azure Portal (Data Factory-> "author and Deploy"-> "átjárók"-> "serviceUrls" (JSON-ban)
+- Hozzáadhat DNS-bejegyzéseket a Service Bus engedélyezéséhez ahelyett, hogy az összes Azure-beli IP-címet engedélyezi a tűzfalról (ha szükséges). Megtalálhatja a megfelelő DNS-bejegyzést Azure Portal (Data Factory-> "author and Deploy"-> "átjárók"-> "serviceUrls" (JSON-ban)
 - A HDFS Connector mostantól támogatja az önaláírt nyilvános tanúsítványokat a TLS-érvényesítés kihagyása mellett.
 - Kijavítva: hiba történt az átjáróval a frissítés során (az óra torzítása miatt)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Fejlesztések
--   DNS-bejegyzéseket adhat hozzá a engedélyezési listához Service Bus ahelyett, hogy az összes Azure-beli IP-címet a tűzfalról (ha szükséges) engedélyezte. További részleteket itt talál.
+-   Hozzáadhat olyan DNS-bejegyzéseket, amelyek lehetővé teszik Service Bus használatát, és nem engedélyezi az összes Azure-beli IP-címet a tűzfalról (ha szükséges). További részletek.
 -   Mostantól akár 4,75 TB-ig is másolhatja az adatait egy blokkos blobba, amely a blokkolt Blobok maximálisan támogatott mérete. (korábbi korlát: 195 GB).
 -   Kijavítva: kevés a memória-probléma, miközben a másolási tevékenység során több kis fájlt is kicsomagolta.
 -   Kijavítva: az index tartományon kívüli probléma a Document DB-ről SQL Server a idempotencia szolgáltatással való másoláskor.
@@ -198,7 +198,7 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
 
 *  A Configuration Manager diagnosztikai eszközeinek támogatása
 *  Az Azure Data Factory táblázatos adatforrásaihoz tartozó táblázat oszlopainak támogatása
-*  Az SQL DW Azure Data Factory támogatása
+*  Az Azure szinapszis Analytics támogatása Azure Data Factory
 *  Támogatás kivonulása a BlobSource-ben és a FileSource-ben Azure Data Factory
 *  CopyBehavior támogatása – MergeFiles, PreserveHierarchy és FlattenHierarchy a BlobSink és a FileSink bináris példánnyal Azure Data Factory
 *  A másolási tevékenység jelentéskészítési folyamatának támogatása Azure Data Factory

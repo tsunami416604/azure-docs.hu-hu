@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c72ff14246f3f96980fe1de2fdef16794bf23e4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006485"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399990"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Forgatókönyv: útvonal a megosztott szolgáltatások virtuális hálózatok
 
@@ -24,7 +24,7 @@ További információ a virtuális központ útválasztásáról: [Tudnivalók a
 
 ## <a name="design"></a><a name="design"></a>Tervezés
 
-A forgatókönyv követelményeinek összefoglalásához használhatunk egy kapcsolati mátrixot. A mátrixban minden cella azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "from" oldaláról, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejléceit) egy adott forgalmi folyamat esetében.
+A forgatókönyv követelményeinek összefoglalásához használhatunk egy kapcsolati mátrixot. A mátrixban minden cella azt írja le, hogy egy virtuális WAN-kapcsolat (a folyamat "from" oldaláról, a tábla sorainak fejléce) megtanulja-e a cél előtagját (a folyamat "to" oldalát, a táblázat oszlopainak fejléceit) egy adott forgalmi folyamat esetében. Az "X" azt jelenti, hogy a kapcsolatot a virtuális WAN biztosítja:
 
 **Kapcsolati mátrix**
 
@@ -73,7 +73,7 @@ Ez az alábbi ábrán látható útválasztási konfigurációt eredményezi:
 
    :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Megosztott szolgáltatások VNet" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

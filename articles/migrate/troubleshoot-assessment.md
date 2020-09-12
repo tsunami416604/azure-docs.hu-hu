@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020354"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645653"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -147,7 +147,8 @@ Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-
 
 ## <a name="dependency-visualization-in-azure-government"></a>Függőségi vizualizáció a Azure Government
 
-Azure Migrate a függőségi vizualizáció funkciójának Service Map függ. Mivel a Service Map jelenleg nem érhető el a Azure Governmentban, ez a funkció nem érhető el a Azure Governmentban.
+Azure Government nem támogatja az ügynök-alapú függőségek elemzését. Használjon ügynök nélküli függőségi elemzést.
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>A függőségek nem jelennek meg az ügynök telepítése után
 
@@ -160,7 +161,7 @@ Windows rendszerű virtuális gépek esetén:
 
     ![MMA-állapot](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA és a függőségi ügynök telepítési parancsai sikeresek voltak.
+Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA és a függőségi ügynök telepítési parancsai sikeresek voltak. További hibaelhárítási útmutatót [itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)találhat.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -181,7 +182,6 @@ Azure Migrate Server Assessment esetében az ügynök-alapú függőségi elemz�
 ## <a name="machines-show-install-agent"></a>Gépek "telepítési ügynök"
 
 Miután az Azure-ba engedélyezte a függőségi vizualizációval rendelkező gépek áttelepítését, az alábbi viselkedés miatt előfordulhat, hogy a gépek "ügynök telepítése" műveletet mutatnak a "függőségek megtekintése" helyett.
-
 
 - Az Azure-ba való Migrálás után a helyszíni gépek ki vannak kapcsolva, és az egyenértékű virtuális gépek az Azure-ban vannak. Ezek a gépek eltérő MAC-címeket vásárolnak.
 - A gépek más IP-címmel is rendelkezhetnek, attól függően, hogy megtartotta-e a helyszíni IP-címet.

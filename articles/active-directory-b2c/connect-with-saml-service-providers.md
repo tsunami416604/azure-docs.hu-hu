@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 09/09/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520209"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611606"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -354,7 +354,8 @@ Az oktatóanyag elvégzéséhez az [SAML-teszt alkalmazás][samltest]használat�
 
 Válassza a **Bejelentkezés** lehetőséget, és a felhasználói bejelentkezési képernyőn kell megjelennie. Bejelentkezéskor az SAML-jogcímet vissza kell adni a minta alkalmazásnak.
 
-## <a name="enable-encypted-assertions"></a>Nevű fiók titkosítva-érvényesítések engedélyezése
+## <a name="enable-encrypted-assertions-optional"></a>Titkosított kijelentések engedélyezése (nem kötelező)
+
 A szolgáltatónak visszaadott SAML-kijelentések titkosításához Azure AD B2C a szolgáltató nyilvánoskulcs-tanúsítványát fogja használni. A nyilvános kulcsnak léteznie kell a fenti ["samlMetadataUrl"](#samlmetadataurl) elemben leírt SAML-metaadatokban a "Encryption" használatával.
 
 A következőkben egy példa látható az SAML metaadat-leíróra, amelynek a használata titkosítást tartalmaz:
@@ -369,35 +370,50 @@ A következőkben egy példa látható az SAML metaadat-leíróra, amelynek a ha
 </KeyDescriptor>
 ```
 
-Ha engedélyezni szeretné, hogy a Azure AD B2C titkosított állításokat küldjön, a **WantsEncryptedAssertion** metaadat-eleme igaz értékre van állítva a függő entitás technikai profiljában az alábbi ábrán látható módon.
+Ha engedélyezni szeretné a Azure AD B2C számára a titkosított kijelentések küldését, állítsa a **WantsEncryptedAssertion** metaadat-elemét a `true` [függő entitás technikai profiljába](relyingparty.md#technicalprofile). Beállíthatja az SAML-állítás titkosításához használt algoritmust is. További információ: [függő entitások technikai profiljának metaadatai](relyingparty.md#metadata). 
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="contoso.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin_saml"
-  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
- ..
- ..
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="SAML2"/>
-      <Metadata>
-          <Item Key="WantsEncryptedAssertions">true</Item>
-      </Metadata>
-     ..
-     ..
-     ..
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
 ```
+
+## <a name="enable-identity-provider-initiated-flow-optional"></a>Identitás-szolgáltató által kezdeményezett folyamat engedélyezése (nem kötelező)
+
+Az identitás-szolgáltató által kezdeményezett folyamat során a bejelentkezési folyamatot az Identitáskezelő (Azure AD B2C) kezdeményezi, amely egy kéretlen SAML-választ küld a szolgáltatónak (a függő entitás alkalmazásának). Az identitás-szolgáltató által kezdeményezett folyamat engedélyezéséhez állítsa a **IdpInitiatedProfileEnabled** metaadat-elemét a `true` [függő entitás technikai profiljába](relyingparty.md#technicalprofile).
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="IdpInitiatedProfileEnabled">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+A következő URL-cím használatával jelentkezhet be vagy regisztrálhat egy felhasználót a személyazonosság-szolgáltató által kezdeményezett folyamaton keresztül:
+
+```
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+```
+
+Cserélje le a következő értékeket:
+
+* **bérlő** neve a bérlő nevével
+* a **Házirend neve** az SAML függő entitás házirendjének nevével
 
 ## <a name="sample-policy"></a>Minta szabályzat
 
@@ -419,7 +435,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 Jelenleg nem támogatottak a következő SAML-függő entitások (RP):
 * Az identitás-szolgáltató kezdeményezte a bejelentkezést, ahol az identitás szolgáltatója külső identitás-szolgáltató, például ADFS.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 - Szerezze be az SAML-teszt webalkalmazást [Azure ad B2C GitHub közösségi](https://github.com/azure-ad-b2c/saml-sp-tester)adattárból.

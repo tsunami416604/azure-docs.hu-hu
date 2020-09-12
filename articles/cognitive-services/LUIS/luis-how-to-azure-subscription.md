@@ -3,14 +3,14 @@ title: Szerzői és futtatókörnyezeti kulcsok használata – LUIS
 description: Ha először használja a Language Understanding (LUIS), nem kell létrehoznia authoring-kulcsot. Ha közzé szeretné tenni az alkalmazást, majd használja a futásidejű végpontját, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496899"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565905"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -25,14 +25,18 @@ A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hit
 
 A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehetővé tesz:
 
-|Kulcs|Cél|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
+|Erőforrás|Cél|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
 |--|--|--|--|
-|Szerzői kulcs|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A kulcs célja, `LUIS.Authoring` hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
-|Lekérdezés-előrejelzési kulcs| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
+|Erőforrás létrehozása|Lehetővé teszi az alkalmazások létrehozását, kezelését, betanítását, tesztelését és közzétételét. [Hozzon létre egy Luis authoring-erőforrást](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal) , ha Luis alkalmazásokat programtically vagy a Luis portálról szeretne készíteni. Először [át kell telepítenie a Luis-fiókját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) , hogy az Azure authroring-erőforrásokat az alkalmazáshoz lehessen kapcsolni. A szerzői erőforrás engedélyeinek szabályozásához rendeljen személyeket [a közreműködő szerepkörhöz](#contributions-from-other-authors). <br><br> A LUIS authoring Resource egy rétegbeli avialable rendelkezik:<br> * **F0 authoring Resource** , amely 1 millió ingyenes authoring tranzakciót és 1000 ingyenes előrejelzési végpontot biztosít havonta. |`LUIS.Authoring`|`Cognitive Services`|
+|Előrejelzési erőforrás| A LUIS-alkalmazás közzététele után az előrejelzési erőforrás/kulcs használatával kérdezheti le az előrejelzési végpontok kéréseit. Hozzon létre egy LUIS-előrejelzési erőforrást, mielőtt az ügyfélalkalmazás a szerzői vagy a kezdő erőforrás által biztosított 1 000-kérelmekre vonatkozó előrejelzéseket kér. <br><br> Az előrejelzési erőforráshoz két réteg avialble:<br> * **F0 előrejelzési erőforrás** , amely 10 000 ingyenes előrejelzési végpontot biztosít havonta<br> * **S0 előrejelzési erőforrás** , amely a fizetős szintet képezi. [További információ a díjszabásról](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Kezdő/próbaverziós erőforrás|Lehetővé teszi az alkalmazások létrehozását, kezelését, betanítását, tesztelését és közzétételét. Ezt a alapértelmezett hozza létre, ha a Starter Resource (kezdő erőforrás) lehetőséget választja, amikor először regisztrálja a TP LUIS-t. Az alapszintű kulcs azonban végül elavult lesz, és az összes LUIS felhasználónak át kell [telepítenie a fiókját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) , és a Luis-alkalmazásait egy authoring-erőforráshoz kell kapcsolnia. Ez az erőforrás nem ad Önnek jogosultságot a szerepköralapú hozzáférés-vezérléshez, például a szerzői erőforráshoz. <br><br> A szerzői erőforráshoz hasonlóan a kezdő erőforrás 1 millió ingyenes szerzői tranzakciót és 1000 ingyenes előrejelző végponti kéréseket biztosít.|-|Nem Azure-erőforrás|
 |[Kognitív szolgáltatás – több szolgáltatásból álló erőforrás kulcsa](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|A lekérdezés-előrejelzési végpontok megosztva a LUIS és más támogatott Cognitive Servicesokkal.|`CognitiveServices`|`Cognitive Services`|
-|Kezdő|Ingyenes szerzői műveletek (szerepköralapú hozzáférés-vezérlés nélkül) a LUIS-portálon vagy API-kon keresztül (beleértve az SDK-kat), az ingyenes 1 000 előrejelzési végponti kérések havonta egy böngészőben, API-n vagy SDK-n keresztül|-|Nem Azure-erőforrás|
 
-Ha az Azure-Erőforrás-létrehozási folyamat elkészült, [rendelje hozzá a kulcsot](#assign-a-resource-to-an-app) az alkalmazáshoz a Luis portálon.
+
+> [!Note]
+> A LUIS által biztosított F0-(ingyenes szint) erőforrások két típusa létezik. Egy a tranzakciók és egy az előrejelzési tranzakciók létrehozásához. Ha az előrejelzési tranzakciók számára ingyenes kvótát használ, győződjön meg arról, hogy valóban a F0 előrejelzési erőforrást használja, amely havi 10 000 ingyenes tranzakciót biztosít, nem pedig a 1000-es előrejelzési tranzakciókat biztosító szerzői erőforrást.
+
+Ha az Azure-Erőforrás-létrehozási folyamat elkészült, [rendelje hozzá az erőforrást](#assign-a-resource-to-an-app) az alkalmazáshoz a Luis portálon.
 
 Fontos, hogy LUIS-alkalmazásokat hozzon létre azokon a [régiókban](luis-reference-regions.md#publishing-regions) , amelyeken közzé és lekérdezéseket szeretne közzétenni.
 
@@ -173,8 +177,8 @@ Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure
 
 Erőforrás `kind` :
 
-* Authoring`LUIS.Authoring`
-* Jóslás`LUIS`
+* Authoring `LUIS.Authoring`
+* Jóslás `LUIS`
 
 1. Jelentkezzen be az Azure CLI-be:
 
@@ -211,15 +215,19 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 
 ## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
 
-A következő eljárással rendelhet hozzá egy alkalmazást.
+Vegye figyelembe, hogy ha nem rendelkezik Azure-előfizetéssel, nem fog tudni új erőforrást hozzárendelni vagy létrehozni. Először létre kell hoznia egy [ingyenes Azure-próbaidőszakot](https://azure.microsoft.com/en-us/free/) , majd vissza kell térnie a Luis-re, hogy létrehozzon egy új erőforrást a portálon.
+
+A következő eljárással rendelhet hozzá vagy hozhat létre szerzői vagy előrejelzési erőforrást egy alkalmazáshoz:
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Navigáljon a **Manage-> Azure-erőforrások** lapra.
+1. Navigáljon a **Manage-> Azure-erőforrások** lapra
 
     ![A LUIS-portálon kattintson a Manage-> Azure-erőforrások elemre, és rendeljen hozzá egy erőforrást az alkalmazáshoz.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd jelölje be az **előrejelzési erőforrás hozzáadása** vagy a **szerzői erőforrás hozzáadása** gomb.
-1. A megfelelő erőforrás megkereséséhez válassza ki a mezőket az űrlapon, majd válassza a **Mentés**lehetőséget.
+1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd jelölje be az **előrejelzési erőforrás hozzáadása** vagy a **szerzői erőforrás hozzáadása** gomb
+1. A megfelelő erőforrás megkereséséhez válassza ki a mezőket az űrlapon, majd válassza a **Mentés** lehetőséget.
+1. Ha nem rendelkezik meglévő-erőforrással, létrehozhat egyet az "új LUIS-erőforrás létrehozása?" lehetőség kiválasztásával. az ablak alján
+
 
 ### <a name="assign-query-prediction-runtime-resource-without-using-luis-portal"></a>Lekérdezés-előrejelzési futtatókörnyezet erőforrásának kiosztása a LUIS-portál használata nélkül
 
@@ -302,7 +310,7 @@ Ha szeretné tudni, hogy mikor ért el egy bizonyos tranzakciós küszöbérték
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akinek meg kell kapnia a riasztást. Webhookok hozzáadása a riasztást fogadó összes rendszerhez. Egy logikai alkalmazást is futtathat a riasztás elindítása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md)

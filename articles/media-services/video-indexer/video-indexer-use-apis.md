@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022428"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458297"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -36,7 +36,6 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
    > * Használja ugyanazt a szolgáltatót, amelyet a Video Indexerre való regisztráláskor használt.
    > * A személyes Google-és Microsoft-(Outlook-/élő) fiókokat csak próbaverziós fiókokhoz lehet használni. Az Azure-hoz kapcsolódó fiókokhoz Azure AD-ra van szükség.
    > * E-mailben csak egy aktív fiók lehet. Ha a felhasználó a Google-hoz tartozó user@gmail.com LinkedIn-hez vagy újabbhoz próbál bejelentkezni user@gmail.com , akkor az utóbbi egy hibaüzenetet jelenít meg, amely azt jelzi, hogy a felhasználó már létezik.
-
 2. Iratkozzon fel.
 
     Válassza a [termékek](https://api-portal.videoindexer.ai/products) lapot. Ezután válassza az engedélyezés és előfizetés lehetőséget.
@@ -46,7 +45,7 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
     > [!NOTE]
     > Az új felhasználók automatikusan feliratkoznak az Engedélyezési API-ra.
     
-    Az előfizetés után megtekintheti az előfizetését és az elsődleges és másodlagos kulcsait. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Nem lesznek elérhetők az ügyféloldali oldalon (. js,. html stb.).
+    Az előfizetés után megtalálhatja az előfizetését a **termékek**  ->  **engedélyezése**lehetőség alatt. Az előfizetés lapon megtalálhatja az elsődleges és a másodlagos kulcsot. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Nem lesznek elérhetők az ügyféloldali oldalon (. js,. html stb.).
 
     ![Előfizetés és kulcsok a Video Indexer fejlesztői portálon](./media/video-indexer-use-apis/video-indexer-api03.png)
 

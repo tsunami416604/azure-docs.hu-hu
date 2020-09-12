@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 03/24/2020
-ms.author: kumud
-ms.openlocfilehash: 54b839170d95918889d1295eb20308688fbfb2a7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 09/03/2020
+ms.author: cherylmc
+ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032373"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440813"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Tudnivalók a pont–hely VPN-útválasztásról
 
@@ -249,6 +249,6 @@ A Windowst használó ügyfelek hozzáférhetnek a helyek közötti VPN-kapcsola
 
 * A nem Windows rendszerű ügyfelek hozzáférhetnek a VNet1, a Vnet2, a VNet3 és a hely1.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A P2S VPN létrehozásának megkezdéséhez tekintse meg [a P2S VPN létrehozása a Azure Portal használatával](vpn-gateway-howto-point-to-site-resource-manager-portal.md) című témakört.

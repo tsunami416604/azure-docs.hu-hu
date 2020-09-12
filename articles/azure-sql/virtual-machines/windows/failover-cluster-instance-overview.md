@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653273"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611629"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,8 +48,8 @@ Az Azure-beli virtuális gépeken SQL Server különböző lehetőségeket kín�
 
 ||[Azure megosztott lemezek](../../../virtual-machines/windows/disks-shared.md)|[Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Operációs rendszer minimális verziója**| Az összes |Windows Server 2012|Windows Server 2016|
-|**Minimális SQL Server-verzió**|Az összes|SQL Server 2012|SQL Server 2016|
+|**Operációs rendszer minimális verziója**| Mind |Windows Server 2012|Windows Server 2016|
+|**Minimális SQL Server-verzió**|Mind|SQL Server 2012|SQL Server 2016|
 |**Támogatott virtuális gépek rendelkezésre állása** |Rendelkezésre állási csoportok Proximity elhelyezési csoportokkal |Rendelkezésre állási készletek és rendelkezésre állási zónák|Rendelkezésre állási csoportok |
 |**A FileStream támogatása**|Igen|Nem|Igen |
 |**Azure BLOB-gyorsítótár**|Nem|Nem|Igen|
@@ -66,7 +66,7 @@ Az [Azure Shared Disks](../../../virtual-machines/windows/disks-shared.md) az [A
 **Előnyök**: 
 - Hasznos az Azure-ba migrálni kívánt alkalmazások számára, miközben a magas rendelkezésre állást és a vész-helyreállítási (HADR) architektúrát is megtartja. 
 - Fürtözött alkalmazásokat telepíthet át az Azure-ba a SCSI-állandó lefoglalások (SCSI PR) támogatása miatt. 
-- Támogatja a közös Azure-prémium SSD a SQL Server összes verziójának és a megosztott Azure Ultra Disk Storage SQL Server 2019-es verziójával. 
+- Támogatja a közös Azure prémium SSD és az Azure Ultra Disk Storage használatát.
 - Egyetlen megosztott lemezt vagy több megosztott lemezt is használhat egy megosztott tároló létrehozásához. 
 - Támogatja a FileStream.
 
@@ -153,20 +153,21 @@ Jelenleg SQL Server az Azure-beli virtuális gépeken futó feladatátvevő für
 
 A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni SQL Server virtuális gépeken, miután az ügynök újratelepítése egyszerűsített felügyeleti módban történik.
 
-### <a name="msdtc"></a>MSDTC   
-Az Azure Virtual Machines támogatja az MSDTC szolgáltatást a Windows Server 2019-ben a fürtözött megosztott kötetek (CSV) és az [Azure standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)tárolóval.
+### <a name="msdtc"></a>MSDTC 
 
-Az Azure Virtual Machines-on az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban, mert:
+Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
+
+Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban fürtözött megosztott kötetekkel, mert:
 
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [fürt konfigurációjának ajánlott eljárásait](hadr-cluster-best-practices.md), majd [készítse elő a SQL Server VMt a következőre:](failover-cluster-instance-prepare-vm.md). 
 
-További információ: 
+További információkért lásd: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -2,18 +2,18 @@
 title: 'Hálózati kapcsolat teljesítményének megoldása: Azure'
 description: Ez az oldal egy szabványosított módszert biztosít az Azure hálózati kapcsolatok teljesítményének tesztelésére.
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521666"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566075"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -121,7 +121,7 @@ Ha nem biztos abban, hogy a felhő széle valóban az, az Azure-összetevők elk
 ![2][2]
 
 >[!NOTE]
-> Figyelje meg, hogy a MSEE nem az Azure-felhőben található. A ExpressRoute valójában a Microsoft-hálózat peremén van, valójában nem az Azure-ban. Miután kapcsolódott a ExpressRoute-hez egy MSEE, a Microsoft hálózatához csatlakozik, innen bármelyik felhőalapú szolgáltatáshoz, például az Office 365-hoz (Microsoft-partneri kapcsolattal) vagy az Azure-hoz (magán-és/vagy Microsoft-partneri kapcsolattal) csatlakozhat.
+> Figyelje meg, hogy a MSEE nem az Azure-felhőben található. A ExpressRoute valójában a Microsoft-hálózat peremén van, valójában nem az Azure-ban. Miután kapcsolódott a ExpressRoute-hez egy MSEE, a Microsoft hálózatához csatlakozik, innen bármelyik felhőalapú szolgáltatáshoz, például a Microsoft 365hoz (Microsoft-partneri kapcsolattal) vagy az Azure-hoz (személyes és/vagy Microsoft-partneri kapcsolattal) is csatlakozhat.
 >
 >
 
@@ -177,27 +177,27 @@ Teszt beállítása:
 >
 >
 
-| ExpressRoute<br/>Hely|Azure<br/>Régió | Becsült<br/>Távolság (km) | Késés|1 munkamenet<br/>Sávszélesség | Maximum<br/>Sávszélesség |
+| ExpressRoute<br/>Hely|Azure<br/>Region | Becsült<br/>Távolság (km) | Késés|1 munkamenet<br/>Sávszélesség | Maximum<br/>Sávszélesség |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | USA 2. nyugati régiója        |    191 km |   5 MS | 262,0 MB/s |  3,74 Gbits/s |
 | Seattle | USA nyugati régiója          |  1 094 km |  18 MS |  82,3 MB/s |  3,70 Gbits/s |
-| Seattle | Central US       |  2 357 km |  40 MS |  38,8 MB/s |  2,55 Gbits/s |
+| Seattle | USA középső régiója       |  2 357 km |  40 MS |  38,8 MB/s |  2,55 Gbits/s |
 | Seattle | USA déli középső régiója |  2 877 km |  51 MS |  30,6 MB/s |  2,49 Gbits/s |
 | Seattle | USA északi középső régiója |  2 792 km |  55 MS |  27,7 MB/s |  2,19 Gbits/s |
 | Seattle | USA 2. keleti régiója        |  3 769 km |  73 MS |  21,3 MB/s |  1,79 Gbits/s |
 | Seattle | USA keleti régiója          |  3 699 km |  74 MS |  21,1 MB/s |  1,78 Gbits/s |
 | Seattle | Kelet-Japán       |  7 705 km | 106 MS |  14,6 MB/s |  1,22 Gbits/s |
 | Seattle | Az Egyesült Királyság déli régiója         |  7 708 km | 146 MS |  10,6 MB/s |   896 MB/s |
-| Seattle | West Europe      |  7 834 km | 153 MS |  10,2 MB/s |   761 MB/s |
+| Seattle | Nyugat-Európa      |  7 834 km | 153 MS |  10,2 MB/s |   761 MB/s |
 | Seattle | Kelet-Ausztrália   | 12 484 km | 165 MS |   9,4 MB/s |   794 MB/s |
 | Seattle | Délkelet-Ázsia   | 12 989 km | 170 MS |   9,2 MB/s |   756 MB/s |
 | Seattle | Dél-Brazília *   | 10 930 km | 189 MS |   8,2 MB/s |   699 MB/s |
 | Seattle | Dél-India      | 12 918 km | 202 MS |   7,7 MB/s |   634 MB/s |
 
-\*A Brazília-re vonatkozó késés jó példa arra, hogy az egyenes vonal távolsága jelentősen eltér a szál futási helyétől. Elvárom, hogy a késés a 160 MS környékén lenne, de valójában 189 MS. Ez a különbség a vártnál is jelezheti a hálózati problémát, de a nagy valószínűséggel, hogy a szál futása nem egy egyenes vonalban található Brazíliában, és egy további 1 000 km, vagy a Seattle-ből érkező Brazíliába utazik.
+\* A Brazília-re vonatkozó késés jó példa arra, hogy az egyenes vonal távolsága jelentősen eltér a szál futási helyétől. Elvárom, hogy a késés a 160 MS környékén lenne, de valójában 189 MS. Ez a különbség a vártnál is jelezheti a hálózati problémát, de a nagy valószínűséggel, hogy a szál futása nem egy egyenes vonalban található Brazíliában, és egy további 1 000 km, vagy a Seattle-ből érkező Brazíliába utazik.
 
 ## <a name="next-steps"></a>Következő lépések
-1. Töltse le az Azure-kapcsolati eszközkészletet a GitHubról[https://aka.ms/AzCT][ACT]
+1. Töltse le az Azure-kapcsolati eszközkészletet a GitHubról [https://aka.ms/AzCT][ACT]
 2. Kövesse a [kapcsolati teljesítmény tesztelésének][Performance Doc] utasításait
 
 <!--Image References-->

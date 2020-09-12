@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029314"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611924"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
 
@@ -22,13 +22,17 @@ A virtuálisgép-méretezési csoportok adatközpont-szintű meghibásodások el
 
 ## <a name="availability-considerations"></a>Rendelkezésre állási szempontok
 
-Ha egy méretezési csoport üzembe helyezését egy vagy több, a *2017-12-01*-es API-verzióval ellátott zónába telepíti, lehetősége van az üzembe helyezésre a "Max spread" vagy a "statikus 5 tartalék tartomány terjesztése" lehetőséggel. A maximális terjesztéssel a méretezési csoport a lehető legtöbb tartalék tartományba terjeszti a virtuális gépeket az egyes zónákon belül. Ez a terjesztés több vagy kevesebb, mint öt tartalék tartományba kerülhet. A "statikus 5 tartalék tartomány elterjedése" esetén a méretezési csoport minden zónájában pontosan öt tartalék tartományba helyezi át a virtuális gépeket. Ha a méretezési csoport nem talál öt különálló tartalék tartományt egy zónában a foglalási kérelem kielégítése érdekében, a kérelem meghiúsul.
+Ha regionális (nem zónákból álló) méretezési készletet telepít egy vagy több zónába az API *2017-12-01*-es verziójával, a következő rendelkezésre állási lehetőségek érhetők el:
+- Maximális terjesztés (platformFaultDomainCount = 1)
+- Statikus rögzített terjesztés (platformFaultDomainCount = 5)
+- A tárolási lemezek tartalék tartományával igazított elosztás (platforFaultDomainCount = 2 vagy 3)
+
+A maximális terjesztéssel a méretezési csoport a lehető legtöbb tartalék tartományba terjeszti a virtuális gépeket az egyes zónákon belül. Ez a terjesztés több vagy kevesebb, mint öt tartalék tartományba kerülhet. A statikus rögzített terjesztéssel a méretezési csoport minden zónájában pontosan öt tartalék tartományba helyezi át a virtuális gépeket. Ha a méretezési csoport nem talál öt különálló tartalék tartományt egy zónában a foglalási kérelem kielégítése érdekében, a kérelem meghiúsul.
 
 Javasoljuk, hogy a legtöbb számítási feladathoz a **maximális terjesztéssel végezze el a telepítést**, mivel ez a módszer a lehető legjobb terjesztést biztosítja a legtöbb esetben. Ha a replikák különböző hardveres elkülönítési egységekben való elosztására van szükség, javasoljuk, hogy az egész Availability Zones, és az egyes zónákon belüli maximális eloszlást használja.
 
-A maximális terjesztéssel csak egy tartalék tartomány jelenik meg a méretezési csoport virtuálisgép-példányának nézetében és a példány metaadataiban, függetlenül attól, hogy a virtuális gépek hány tartalék tartomány között oszlanak meg. Az egyes zónákon belüli terjesztés implicit.
-
-A maximális terjesztés használatához állítsa a *platformFaultDomainCount* *1*értékre. A statikus öt tartalék tartomány kiterjedésének használatához állítsa a *platformFaultDomainCount* *5*értékre. Az API *2017-12-01*-es verziójában az *platformFaultDomainCount* alapértelmezett értéke *1* az egyzónás és a több zónás méretezési csoport esetében. Jelenleg csak a statikus öt tartalék tartomány-elosztás támogatott a regionális (nem zóna) méretezési csoportok esetében.
+> [!NOTE]
+> A maximális terjesztéssel csak egy tartalék tartomány jelenik meg a méretezési csoport virtuálisgép-példányának nézetében és a példány metaadataiban, függetlenül attól, hogy a virtuális gépek hány tartalék tartomány között oszlanak meg. Az egyes zónákon belüli terjesztés implicit.
 
 ### <a name="placement-groups"></a>Elhelyezési csoportok
 
@@ -213,6 +217,6 @@ Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja meg a *
 
 A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példája: [Ez a példa Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozta a méretezési csoportot egy rendelkezésre állási zónában, megtudhatja, hogyan [telepíthet alkalmazásokat virtuálisgép-méretezési](tutorial-install-apps-cli.md) csoportokon, illetve hogyan [használhatja az autoscalet a virtuálisgép-méretezési csoportokkal](tutorial-autoscale-cli.md).

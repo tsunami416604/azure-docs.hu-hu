@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020303"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613937"
 ---
 # <a name="components"></a>Összetevők
 
@@ -53,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 Az összetevők létrehozáskor egy entitáshoz vannak csatolva. Ezt követően nem helyezhető át másik entitásba. Az összetevők explicit módon törlődnek a `Component.Destroy()` vagy automatikusan, ha az összetevő tulajdonosi entitása megsemmisül.
 
 Egyszerre csak egy példány adható hozzá egy entitáshoz.
@@ -61,6 +60,15 @@ Egyszerre csak egy példány adható hozzá egy entitáshoz.
 ## <a name="unity-specific"></a>Unity-specifikus
 
 Az Unity Integration további bővítmény-funkciókat biztosít az összetevőkkel való interakcióhoz. Lásd: [Unity game Objects és Components](../how-tos/unity/objects-components.md).
+
+## <a name="api-documentation"></a>API-dokumentáció
+
+* [C# ComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C# RemoteManager. CreateComponent ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [C# entitás. FindComponentOfType ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C++ ComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
+* [C++ RemoteManager:: CreateComponent ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [C++ entitás:: FindComponentOfType ()](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>Következő lépések
 

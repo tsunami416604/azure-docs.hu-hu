@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b9d5a9e071cc1b2ac81e8cacea8c974181fbb3b6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070394"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645481"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -292,7 +292,7 @@ a **--Versions** karakterlánc egy olyan fájlt ad meg, amelyben minden verzióa
 
 **--S2S-Handle-érvénytelen – a metaadatok** karakterlánca megadja, hogy a rendszer hogyan kezelje az érvénytelen metaadat-kulcsokat. Elérhető lehetőségek: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (alapértelmezett `ExcludeIfInvalid` ). (alapértelmezett "ExcludeIfInvalid")
 
-**--S2S-megőrzés – hozzáférési réteg**   A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, a s2sPreserveAccessTier = FALSE értéket kell használni a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezés szerint igaz).  (alapértelmezett true)
+**--S2S-megőrzés – hozzáférési réteg**   A hozzáférési szintek megőrzése a szolgáltatás és a szolgáltatás közötti másolás során. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési rétegeket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , hogy a cél Storage-fiók támogassa a hozzáférési szint beállítását. Abban az esetben, ha a hozzáférési szintet nem támogatja, a s2sPreserveAccessTier = FALSE értéket kell használni a hozzáférési szintek másolásának mellőzéséhez. (alapértelmezett `true` ).  (alapértelmezett érték: "true")
 
 **--S2S-megőrzése-Properties**   A szolgáltatás és a szolgáltatás közötti másolás során megőrzi a teljes tulajdonságokat. Az AWS S3 és az Azure file nem single file Source esetében a List művelet nem ad vissza objektumok és fájlok teljes tulajdonságait. A teljes tulajdonságok megőrzése érdekében a AzCopy egy további kérelmet kell küldenie egy objektumra vagy fájlra vonatkozóan. (alapértelmezett true)
 

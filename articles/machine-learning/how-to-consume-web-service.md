@@ -11,19 +11,19 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3e6b5e2e06e6cd87295b2faf2a426b75b5f6bf10
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018093"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650761"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning modell webszolgáltatásként való üzembe helyezése REST API végpontot hoz létre. Az erre a végpontra irányuló adatküldés és a modell által visszaadott előrejelzések fogadása. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a go, a Java és a Python használatával.
 
-Webszolgáltatást akkor hozhat létre, ha a helyi környezetbe, Azure Container Instancesba, Azure Kubernetes szolgáltatásba vagy mezőre programozható Gate tömbökbe (FPGA) helyezi üzembe a modellt. A webszolgáltatáshoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
+Webszolgáltatást akkor hozhat létre, ha a helyi környezetbe, Azure Container Instancesba, Azure Kubernetes szolgáltatásba vagy mezőre programozható Gate tömbökbe (FPGA) helyezi üzembe a modellt. A webszolgáltatáshoz való hozzáféréshez használt URI-t a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-val kéri le. Ha a hitelesítés engedélyezve van, az SDK használatával is beolvashatja a hitelesítési kulcsokat vagy jogkivonatokat.
 
 A Machine learning-webszolgáltatást használó ügyfelek létrehozásának általános munkafolyamata a következő:
 
@@ -39,7 +39,7 @@ A Machine learning-webszolgáltatást használó ügyfelek létrehozásának ál
 > [!NOTE]
 > A webszolgáltatási információk beszerzéséhez használja a Azure Machine Learning SDK-t. Ez egy Python SDK. A szolgáltatáshoz bármilyen nyelven létrehozhat egy ügyfelet.
 
-A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az `Webservice` ügyfélalkalmazások létrehozásához a következő tulajdonságok hasznosak:
+A [azureml. Core. webszolgáltatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) osztály a-ügyfél létrehozásához szükséges információkat tartalmazza. Az `Webservice` ügyfélalkalmazások létrehozásához a következő tulajdonságok hasznosak:
 
 * `auth_enabled` – Ha a kulcsos hitelesítés engedélyezve van, `True` egyéb esetben `False` .
 * `token_auth_enabled` – Ha engedélyezve van a jogkivonat-hitelesítés, `True` más esetben `False` .
@@ -57,7 +57,7 @@ Az alábbi három módon kérheti le ezeket az információkat az üzembe helyez
     print(service.swagger_uri)
     ```
 
-* A paranccsal `Webservice.list` lekérheti az üzembe helyezett webszolgáltatások listáját a munkaterületen. Szűrőket adhat hozzá a visszaadott információk listájának szűkítéséhez. További információ arról, hogy mit lehet szűrni [. a webszolgáltatások listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) ismertető dokumentációban talál további információt.
+* A paranccsal `Webservice.list` lekérheti az üzembe helyezett webszolgáltatások listáját a munkaterületen. Szűrőket adhat hozzá a visszaadott információk listájának szűkítéséhez. További információ arról, hogy mit lehet szűrni [. a webszolgáltatások listáját](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py&preserve-view=true) ismertető dokumentációban talál további információt.
 
     ```python
     services = Webservice.list(ws)
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha újra kell létrehoznia egy kulcsot, használja a következőt: [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) .
+> Ha újra kell létrehoznia egy kulcsot, használja a következőt: [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) .
 
 #### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
 
@@ -501,7 +501,7 @@ A visszaadott eredmények a következő JSON-dokumentumhoz hasonlóak:
 
 ## <a name="web-service-schema-openapi-specification"></a>Webszolgáltatás sémája (OpenAPI-specifikáció)
 
-Ha a központi telepítéshez automatikus sémát használ, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. (Például: `print(service.swagger_uri)` .) Használja a GET kérelmet, vagy nyissa meg az URI-t egy böngészőben a specifikáció lekéréséhez.
+Ha a központi telepítéshez automatikus sémát használ, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. (Például: `print(service.swagger_uri)` .) Használja a GET kérelmet, vagy nyissa meg az URI-t egy böngészőben a specifikáció lekéréséhez.
 
 A következő JSON-dokumentum egy példa egy központi telepítéshez létrehozott sémára (OpenAPI-specifikáció):
 
@@ -643,7 +643,7 @@ Egy olyan segédprogram esetében, amely a specifikációból tud ügyféloldali
 
 
 > [!TIP]
-> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a központilag telepített webszolgáltatás [swagger_uri tulajdonságát](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (például) a `service.swagger_uri` helyi webszolgáltatás hencegő fájljához tartozó URI-azonosító lekéréséhez.
+> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a központilag telepített webszolgáltatás [swagger_uri tulajdonságát](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri) (például) a `service.swagger_uri` helyi webszolgáltatás hencegő fájljához tartozó URI-azonosító lekéréséhez.
 
 ## <a name="consume-the-service-from-power-bi"></a>Szolgáltatás felhasználása a Power BI-ból
 

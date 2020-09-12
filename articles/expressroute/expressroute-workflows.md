@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: áramkör-konfigurációs munkafolyamat'
 description: Ezen a lapon látható a ExpressRoute-áramkörök és-társítások konfigurálásának munkafolyamata
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.author: cherylmc
+ms.author: duau
 ms.custom: contperfq1
-ms.openlocfilehash: 229b7c145fa38443d2bc5f99005078ffa7f77065
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814076"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565923"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
 
@@ -86,7 +86,7 @@ Az Azure Virtual Networkben üzembe helyezett virtuális gépekhez és felhőala
 
 #### <a name="for-microsoft-peering"></a>Microsoft-partnerek számára
 
-A Microsoft online szolgáltatások, például az Office 365 elérésének engedélyezése. Emellett az összes Azure Pásti-szolgáltatás a Microsoft-partnereken keresztül is elérhető. Gondoskodnia kell arról, hogy a Microsofthoz való csatlakozáshoz külön proxyt vagy Edge-t használjon, mint amelyet az internethez használ. Ha a ExpressRoute és az internet között ugyanazt a szegélyt használja, az aszimmetrikus útválasztást okoz, és a hálózati kapcsolat kimaradást okoz.
+A Microsoft online szolgáltatások, például a Microsoft 365 elérésének engedélyezése. Emellett az összes Azure Pásti-szolgáltatás a Microsoft-partnereken keresztül is elérhető. Gondoskodnia kell arról, hogy a Microsofthoz való csatlakozáshoz külön proxyt vagy Edge-t használjon, mint amelyet az internethez használ. Ha a ExpressRoute és az internet között ugyanazt a szegélyt használja, az aszimmetrikus útválasztást okoz, és a hálózati kapcsolat kimaradást okoz.
 
 * Az 1. elérési út (/30) társítási alhálózatának nyilvános IP-nek kell lennie
 * A 2. elérési út (/30) társítási alhálózata nyilvános IP-címmel kell rendelkeznie
@@ -171,7 +171,7 @@ Ha a meghirdetett nyilvános előtag állapota *érvényesítés szükséges* á
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az ExpressRoute-kapcsolat konfigurálása.
   

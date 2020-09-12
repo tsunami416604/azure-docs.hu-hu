@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04ae1788dfd3050fdd2042f88a8e1829e9063ad3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 73769a5f8a677f5e08610560db1e5d90dd5b7c3a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851358"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645610"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,9 +46,9 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
     > [!IMPORTANT]
     > A cikkben szereplő kódrészletek azt feltételezik, hogy a következő változókat állította be:
     >
-    > * `ws`– Azure Machine Learning munkaterület.
-    > * `model`– A rendszerbe állított regisztrált modell.
-    > * `inference_config`– A modellre vonatkozó következtetési konfiguráció.
+    > * `ws` – Azure Machine Learning munkaterület.
+    > * `model` – A rendszerbe állított regisztrált modell.
+    > * `inference_config` – A modellre vonatkozó következtetési konfiguráció.
     >
     > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
@@ -75,7 +75,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
 Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ További információ a konfigurációval kapcsolatban: [modellek üzembe helyez
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
+A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).

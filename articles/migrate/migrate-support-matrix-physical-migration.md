@@ -4,12 +4,12 @@ description: Ismerkedjen meg a fizikai kiszolgálók áttelepítésének támoga
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051134"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535448"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>A fizikai kiszolgáló áttelepítésének támogatási mátrixa
 
@@ -45,7 +45,7 @@ A tábla az áttelepíteni kívánt fizikai kiszolgálók támogatását összeg
 **Mobilitási szolgáltatás** | Minden áttelepíteni kívánt gépre telepíteni kell a mobilitási szolgáltatás ügynökét.
 **UEFI-rendszerindítás** | Az Azure-ban áttelepített gép automatikusan egy BIOS-rendszerindító Azure-beli virtuális gépre lesz konvertálva. Csak a Windows Server 2012-es és újabb verzióit futtató kiszolgálók támogatottak.<br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
 **UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.
-**Céllemez** | A gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, prémium SSD) az Azure-ban.
+**Céllemez** | A gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
 **Lemezméret** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Legfeljebb 63 lemez/gép.
 **Titkosított lemezek/kötetek** |  A titkosított lemezekkel/kötetekkel rendelkező gépek migrálása nem támogatott.

@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653307"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651574"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -63,6 +63,8 @@ Az Advisor olyan táblákat azonosít, amelyek nem rendelkeznek naprakész [táb
 
 Az Advisor Analysis azt jelezheti, hogy az alkalmazás MySQL-kiszolgálóhoz való csatlakozása nem hatékony a kapcsolatok kezeléséhez. Ez az állapot szükségtelen erőforrás-felhasználást és általános, magasabb alkalmazások késését eredményezheti. A kapcsolatkezelés javítása érdekében javasoljuk, hogy csökkentse a rövid élettartamú kapcsolatok számát, valamint szüntesse meg a felesleges tétlen kapcsolatokat. Ezeket a funkciókat kiszolgálóoldali kapcsolatok Pooler, például a ProxySQL konfigurálásával végezheti el.
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Frissítse a Compute Management jelenlegi SDK-verzióját a legújabb verzióra.
+Az Advisor olyan előfizetéseket azonosít, amelyek elavult számítási felügyeleti SDK-verziókkal rendelkeznek. Ez hatással lehet a számítási feladatok biztonságára és teljesítményére, így az Advisor azt javasolja, hogy váltson a számítási felügyeleti SDK legújabb verziójára. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Vertikális felskálázás a gyorsítótár kihasználtságának optimalizálásához az Azure szinapszis Analytics-táblázatokban a lekérdezési teljesítmény növeléséhez
 
@@ -165,7 +167,7 @@ Ez az ajánlás megmutatja azokat az Azure Data Explorer-táblákat, amelyekben 
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>A teljesítmény javítása a MySQL ideiglenestábla-méretének optimalizálásával
 Az Advisor Analysis azt jelzi, hogy a MySQL-kiszolgáló szükségtelen I/O-terhelést okozhat az alacsony tábla-paraméter beállításai miatt. Ez felesleges lemezalapú tranzakciókat és alacsonyabb teljesítményt eredményezhet. Javasoljuk, hogy növelje a tmp_table_size és a max_heap_table_size paraméter értékét, ezzel csökkentve a lemezalapú tranzakciók számát. [További információ](https://aka.ms/azure_mysql_tmp_table)
 
-## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Adatok terjesztése a kiszolgálócsoport számára a számítási feladatok elosztása a csomópontok között
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Kiszolgálócsoportban tárolt adatok kiosztása a számítási feladat csomópontok közötti elosztásához
 Az Advisor azon kiszolgálócsoportok azonosítására szolgál, amelyekben az adat nem lett elosztva, de a koordinátoron marad. Ennek alapján az Advisor azt javasolja, hogy a teljes nagy kapacitású (Citus) előnyök a kiszolgálói csoportok munkavégző csomópontjain legyenek kiterjesztve. Ez javítja a lekérdezési teljesítményt úgy, hogy kihasználja a kiszolgálócsoport egyes csomópontjainak erőforrásait. [További információ](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban
@@ -174,7 +176,7 @@ Az Advisor azon kiszolgálócsoportok azonosítására szolgál, amelyekben az a
 
 2.  Az Advisor Irányítópultján kattintson a **teljesítmény** fülre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 

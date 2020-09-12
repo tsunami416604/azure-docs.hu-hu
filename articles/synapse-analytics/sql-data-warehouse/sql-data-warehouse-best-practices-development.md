@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206699"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457906"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-készlethez
 
@@ -116,12 +116,12 @@ Ha a tábla nem rendelkezik 6 milliárd sorral, akkor csökkentse a partíciók 
 
 Lásd még: [Table indexek](sql-data-warehouse-tables-index.md), [oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és [oszlopcentrikus indexek újjáépítése](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem találja, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  
 
 A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra.  Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
-Ha inkább a Stack Overflow-ra vonatkozó kérdéseket szeretne feltenni, van egy [Azure SQL Data Warehouse Stack Overflow fórumunk](https://stackoverflow.com/questions/tagged/azure-sqldw) is.
+Ha szeretne kérdéseket feltenni a Stack Overflowra, egy Azure-beli [szinapszis Analytics-stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezésre áll.
 
 A szolgáltatással kapcsolatos kérések létrehozásához használja az [Azure szinapszis visszajelzési](https://feedback.azure.com/forums/307516-sql-data-warehouse) oldalát.  Ha kéréseket tesz közzé vagy más kérésekre szavaz, sokat segíthet a szolgáltatások fontossági sorrendjének megállapításában.

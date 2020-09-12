@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419903"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440779"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Aktív-aktív S2S VPN-kapcsolatok konfigurálása Azure VPN Gateway-átjárókkal
 
@@ -411,7 +411,7 @@ Ebben a lépésben engedélyezi az aktív-aktív üzemmódot, és frissíti az �
 
 * Ezzel a lépéssel nem módosítható örökölt SKU az egyik új SKU-ra. Egy örökölt SKU-t csak egy másik támogatott örökölt SKU-ra lehet átméretezni. Például az SKU-t nem lehet standardról VpnGw1-re módosítani (bár a VpnGw1 aktív-aktív), mert a standard egy örökölt SKU, és a VpnGw1 egy aktuális SKU. Az SKU-ra való átméretezéssel és áttelepítéssel kapcsolatos további információkért lásd: [átjáró SKU](vpn-gateway-about-vpngateways.md#gwsku)-i.
 
-* Ha egy aktuális SKU-t szeretne átméretezni, például a VpnGw3 VpnGw1, ezt a lépést megteheti, mert a SKU-ban ugyanabban az SKU-család található. Ehhez a következő értéket kell használnia:```-GatewaySku VpnGw3```
+* Ha egy aktuális SKU-t szeretne átméretezni, például a VpnGw3 VpnGw1, ezt a lépést megteheti, mert a SKU-ban ugyanabban az SKU-család található. Ehhez a következő értéket kell használnia: ```-GatewaySku VpnGw3```
 
 Ha ezt használja a környezetben, ha nem kell átméreteznie az átjárót, nem kell megadnia a-Gatewaysku paraméterben. Figyelje meg, hogy ebben a lépésben az átjáró objektumot a PowerShellben kell beállítani a tényleges frissítés elindításához. Ez a frissítés 30 – 45 percet is igénybe vehet, még akkor is, ha nem lakik az átjáró.
 

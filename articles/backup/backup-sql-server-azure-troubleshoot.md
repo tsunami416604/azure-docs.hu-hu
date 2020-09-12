@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: b462ebd25a7dac4f215d599aa0dfa8665965fb2f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180949"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513966"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -44,14 +44,14 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 1. A következő mappák kizárása a víruskeresésből:
 
-    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
     Cserélje le a `C:\` betűt a *rendszermeghajtó*betűjelére.
 
 1. Zárja ki a virtuális gépen belül futó következő három folyamatot víruskereső vizsgálatból:
 
     - IaasWLPluginSvc.exe
-    - IaasWorkloadCoordinaorService.exe
+    - IaaSWorkloadCoordinatorService.exe
     - TriggerExtensionJob.exe
 
 1. Az SQL Emellett néhány útmutatót is biztosít a víruskereső programokkal való együttműködéshez. További részletekért tekintse meg [ezt a cikket](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
@@ -272,6 +272,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 Ezt a fájlt a visszaállítási művelet elindítása előtt kell elhelyezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Server virtuális gépek (nyilvános előzetes verzió) Azure Backupával kapcsolatos további információkért lásd: [Azure Backup SQL virtuális gépekhez](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

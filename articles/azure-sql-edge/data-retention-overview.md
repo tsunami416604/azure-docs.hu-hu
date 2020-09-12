@@ -1,0 +1,48 @@
+---
+title: Adatmegőrzési szabályzat – áttekintés – Azure SQL Edge (előzetes verzió)
+description: Tudnivalók az Azure SQL Edge adatmegőrzési szabályzatáról (előzetes verzió)
+keywords: SQL Edge, adatmegőrzés
+services: sql-edge
+ms.service: sql-edge
+ms.topic: conceptual
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: sstein
+ms.date: 09/04/2020
+ms.openlocfilehash: 3649d4f77e5b57ab14accacd87fbaa867ba2742f
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89550658"
+---
+# <a name="data-retention-policy-overview"></a>Adatmegőrzési szabályzat – áttekintés
+
+A csatlakoztatott IoT-eszközökről származó adatok gyűjtése és tárolása fontos szerepet játszik a működési és üzleti információk megszerzésében. Az ezekből az eszközökről származó adatok mennyisége miatt azonban fontos, hogy a szervezetek alaposan tervezzék meg a megőrizni kívánt adatok mennyiségét, és hogy milyen részletességgel rendelkeznek. Miközben minden részletességi adat megtartása szükséges, nem mindig praktikus. Emellett a megőrzött adatmennyiséget a IoT vagy a peremhálózati eszközökön elérhető tárterület mérete korlátozza. 
+
+Az Azure SQL Edge (előzetes verzió) CTP 2.3 egy új képességet ad hozzá, amely lehetővé teszi az adatbázis-rendszergazdák számára az adatmegőrzési szabályzatok megadását az SQL Edge-adatbázis és a mögöttes táblák Az adatmegőrzési házirend meghatározása után a háttérben futó rendszerfeladat a felhasználói táblákból származó elavult (régi) adatok törlését fogja futtatni. 
+
+> [!Note]
+> Az adatok a táblából való kitisztítása után nem helyreállítható. A törölt adatok helyreállításának egyetlen lehetséges módja, ha egy régebbi biztonsági másolatból állítja vissza az adatbázist.
+
+Gyorsútmutatók:
+
+- [Adatmegőrzési szabályzatok engedélyezése és letiltása](data-retention-enable-disable.md)
+- [Korábbi adatok kezelése adatmegőrzési házirenddel](data-retention-cleanup.md)
+
+## <a name="how-data-retention-works"></a>Az adatmegőrzés működése
+
+Az adatmegőrzés konfigurálásához DDL-utasításokat használhat. További információért [engedélyezze és tiltsa le az adatmegőrzési házirendeket](data-retention-enable-disable.md). Az elavult rekordok automatikus törléséhez először engedélyeznie kell az adatmegőrzést mind az adatbázison, mind pedig az adatbázisban, amelyet törölni szeretne. 
+
+Ha az adatmegőrzést egy táblához konfigurálta, a háttérben futó feladat egy tábla elavult rekordjainak azonosítására és a rekordok törlésére szolgál. Ha valamilyen okból kifolyólag a feladatok automatikus karbantartása nem fut, vagy nem tud lépést tartani a törléssel, akkor a manuális törlési művelet elvégezhető ezeken a táblákon. Az automatikus és a manuális karbantartással kapcsolatos további információkért tekintse meg az [automatikus és a manuális karbantartást](data-retention-cleanup.md).
+
+## <a name="limitations-and-restrictions"></a>Korlátozások és korlátozások
+
+- Ha engedélyezve van az adatok megőrzése, a automatikusan le lesz tiltva, ha az adatbázist egy teljes biztonsági másolatból állítja vissza, vagy újra csatolja. 
+- Az adatmegőrzés nem engedélyezhető egy ideiglenes előzmény tábla esetében
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Machine learning és mesterséges intelligencia a ONNX az SQL Edge-ben](onnx-overview.md).
+- [Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge segítségével](tutorial-deploy-azure-resources.md).
+- [Adatfolyamok az Azure SQL Edge-ben](stream-data.md)

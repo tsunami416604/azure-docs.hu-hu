@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 76eed22052b8c9fe2cc849e68dd926ef2c85208a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2164f6d6b346eda185e8a38720677ad50f2e8c89
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843215"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650685"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Ez a dokumentum két részre oszlik:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning munkacsoport. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
-* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
+* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
 * Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.
@@ -124,26 +124,35 @@ Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rend
     ```text
     FROM ubuntu:16.04
 
-    ARG CONDA_VERSION=4.5.12
-    ARG PYTHON_VERSION=3.6
+    ARG CONDA_VERSION=4.7.12
+    ARG PYTHON_VERSION=3.7
+    ARG AZUREML_SDK_VERSION=1.13.0
+    ARG INFERENCE_SCHEMA_VERSION=1.1.0
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
+        apt-get install -y fuse \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/*
 
+    RUN useradd --create-home dockeruser
+    WORKDIR /home/dockeruser
+    USER dockeruser
+
     RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
-        /bin/bash ~/miniconda.sh -b -p /opt/miniconda && \
+        /bin/bash ~/miniconda.sh -b -p ~/miniconda && \
         rm ~/miniconda.sh && \
-        /opt/miniconda/bin/conda clean -tipsy
+        ~/miniconda/bin/conda clean -tipsy
+    ENV PATH="/home/dockeruser/miniconda/bin/:${PATH}"
 
     RUN conda install -y conda=${CONDA_VERSION} python=${PYTHON_VERSION} && \
+        pip install azureml-defaults==${AZUREML_SDK_VERSION} inference-schema==${INFERENCE_SCHEMA_VERSION} &&\
         conda clean -aqy && \
-        rm -rf /opt/miniconda/pkgs && \
-        find / -type d -name __pycache__ -prune -exec rm -rf {} \;
+        rm -rf ~/miniconda/pkgs && \
+        find ~/miniconda/ -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
 2. Egy rendszerhéjból vagy parancssorból a következő paranccsal hitelesítheti magát a Azure Container Registry. A helyére írja be annak a `<registry_name>` tároló-beállításjegyzéknek a nevét, amelyben a rendszerképet tárolni szeretné:
@@ -191,7 +200,7 @@ Egyéni rendszerkép használatához a következő információk szükségesek:
 
 A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető adattáron, amely az ebben a szakaszban ismertetett lépésekkel használható:
 
-| Kép | Leírás |
+| Kép | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Alapszintű rendszerkép a Azure Machine Learning számára |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | A CPU-következtetések ONNX-futtatókörnyezetét tartalmazza |
@@ -209,7 +218,7 @@ További információ: [Azure Machine learning containers](https://github.com/Az
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Rendszerkép használata az Azure Machine Learning SDK-val
 
-Ha a **munkaterülethez Azure Container Registry**tárolt képet vagy egy **nyilvánosan elérhető tároló-beállításjegyzéket**szeretne használni, állítsa be a következő [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) attribútumokat:
+Ha a **munkaterülethez Azure Container Registry**tárolt képet vagy egy **nyilvánosan elérhető tároló-beállításjegyzéket**szeretne használni, állítsa be a következő [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) attribútumokat:
 
 + `docker.enabled=True`
 + `docker.base_image`: Állítsa a beállításjegyzékre és a rendszerkép elérési útjára.
@@ -243,7 +252,7 @@ myenv.python.conda_dependencies=conda_dep
 
 Pip-függőségként hozzá kell adnia a azureml (>= 1.0.45) alapértelmezett verzióját. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. A környezet inferencing_stack_version tulajdonságát a "legújabb" értékre kell állítania, ez a webszolgáltatás által igényelt speciális apt-csomagokat fogja telepíteni. 
 
-A környezet meghatározása után használja azt egy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) objektummal annak a következtetési környezetnek a meghatározásához, amelyben a modell és a webszolgáltatás futni fog.
+A környezet meghatározása után használja azt egy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) objektummal annak a következtetési környezetnek a meghatározásához, amelyben a modell és a webszolgáltatás futni fog.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -272,7 +281,7 @@ A Python-környezet testreszabásával kapcsolatos további információkért l�
 > [!IMPORTANT]
 > A Machine Learning CLI jelenleg a munkaterülethez vagy a nyilvánosan elérhető adattárakhoz tartozó Azure Container Registry képeket is használhat. Önálló privát beállításjegyzékből származó lemezképeket nem használhat.
 
-Mielőtt a Machine Learning parancssori felület használatával telepítené a modellt, hozzon létre egy [környezetet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , amely az egyéni rendszerképet használja. Ezután hozzon létre egy következtetési konfigurációs fájlt, amely hivatkozik a környezetre. A környezetet közvetlenül is megadhatja a következtetési konfigurációs fájlban. A következő JSON-dokumentum bemutatja, hogyan hivatkozhat egy rendszerképre egy nyilvános tároló beállításjegyzékében. Ebben a példában a környezet beágyazottként van definiálva:
+Mielőtt a Machine Learning parancssori felület használatával telepítené a modellt, hozzon létre egy [környezetet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) , amely az egyéni rendszerképet használja. Ezután hozzon létre egy következtetési konfigurációs fájlt, amely hivatkozik a környezetre. A környezetet közvetlenül is megadhatja a következtetési konfigurációs fájlban. A következő JSON-dokumentum bemutatja, hogyan hivatkozhat egy rendszerképre egy nyilvános tároló beállításjegyzékében. Ebben a példában a környezet beágyazottként van definiálva:
 
 ```json
 {

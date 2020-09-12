@@ -4,12 +4,12 @@ description: Riasztást küld a webalkalmazásnak küldött sikertelen kérelmek
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420209"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565837"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
 [Application Insights](./app-insights-overview.md) automatikusan riasztást küld a közel valós időben, ha a webalkalmazása rendellenes növekedést tapasztal a sikertelen kérések arányában. Ez a művelet szokatlanul megnövekszik a HTTP-kérelmek vagy a sikertelenként jelentett függőségi hívások gyakorisága. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb szintű hibakódokkal rendelkeznek. A probléma osztályozásának és diagnosztizálásának elősegítése érdekében a riasztás részleteiben a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése szerepel. További diagnosztizálásra a Application Insights portálra mutató hivatkozások is rendelkezésre állnak. A szolgáltatásnak nincs szüksége beállításra és konfigurációra, mivel gépi tanulási algoritmusokat használ a normál meghibásodási arány előrejelzéséhez.
@@ -58,6 +58,7 @@ A riasztásokat a szabadalmaztatott gépi tanulási algoritmus váltja ki, így 
 * Az elmúlt 20 perc hibájának az elmúlt 40 percben és az elmúlt hét napban való összehasonlítása, valamint olyan jelentős eltérések keresése, amelyek meghaladják a szórást.
 * A minimális meghibásodási arányra vonatkozó adaptív korlát használata, amely az alkalmazás kérelmek/függőségek mennyisége alapján változik.
 * Létezik olyan logika, amely képes automatikusan feloldani a kilőtt riasztások figyelő feltételét, ha a probléma már nem észlelhető 8-24 órán keresztül.
+  Megjegyzés: az aktuális tervben. egy értesítés vagy művelet nem lesz elküldve egy intelligens észlelési riasztás feloldásakor. Megtekintheti, hogy az intelligens észlelési riasztás megoldódott-e a Azure Portalban.
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 

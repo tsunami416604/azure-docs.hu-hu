@@ -1,5 +1,5 @@
 ---
-title: Üzembe helyezési beállítások
+title: Üzembe helyezési lehetőségek
 description: Ismerkedjen meg a IoT funkcióinak és szolgáltatásainak Azure Security Center alapvető munkafolyamatának megismerésével.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,18 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 452372f187e97a95b9eee88936b15a0409dd4fe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99936161039b05e5e6c00c129e81a35befaae961
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311377"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514458"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Az Azure Security Center for IoT használatának első lépései
 
 Ez a cikk a IoT szolgáltatás Azure Security Center különböző összetevőit ismerteti, és bemutatja, hogyan kezdheti meg a szolgáltatást két lehetséges üzembe helyezési lehetőség használatával.
 
-## <a name="deployment-options"></a>Üzembe helyezési beállítások
+Megkeresi az Azure RTOS biztonsági moduljának első lépéseit? Nyissa meg az [Azure RTOS biztonsági moduljának](quickstart-azure-rtos-security-module.md) gyors üzembe helyezését ismertető szakaszt. 
+
+## <a name="deployment-options"></a>Üzembe helyezési lehetőségek
 
 Válassza ki azt a szolgáltatási forgatókönyvet, amely a legjobban megfelel a IoT eszköz és a környezet követelményeinek.
 
@@ -43,7 +45,7 @@ A fokozott biztonsági képességekhez Azure Security Center IoT-ügynökök sz�
 
 Megkezdheti az ügynök-alapú átfogó veszélyforrások elleni védelem és a biztonsági helyzetek kezelésére szolgáló felügyeleti megoldás [kibővített üzembe helyezését](security-agents.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A IoT Azure Security Center](quickstart-onboard-iot-hub.md) engedélyezése
 - A [megoldás](quickstart-configure-your-solution.md) konfigurálása

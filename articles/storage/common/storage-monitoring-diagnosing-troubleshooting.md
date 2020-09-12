@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1b438dd9370e0f0d76e5c596176d9bd08cc76d5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011038"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462003"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -134,7 +134,7 @@ A tárolási metrikák csak a blob szolgáltatás kapacitás-metrikáit tárolj�
 >
 >
 
-A különböző tárolási objektumok, például a Blobok méretének becsléséhez tekintse meg az [Azure Storage számlázási szolgáltatás – sávszélesség, tranzakciók és kapacitás – ismertetését](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)ismertető blogbejegyzést.
+A különböző tárolási objektumok, például a Blobok méretének becsléséhez tekintse meg az [Azure Storage számlázási szolgáltatás – sávszélesség, tranzakciók és kapacitás – ismertetését](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)ismertető blogbejegyzést.
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>A rendelkezésre állás monitorozása
 Figyelje meg a Storage-fiók tárolási szolgáltatásainak rendelkezésre állását úgy, hogy a **rendelkezésre állási** oszlopban lévő értéket figyeli az óránkénti vagy perc mérőszámok táblázatában: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. A **rendelkezésre állási** oszlop olyan százalékos értéket tartalmaz, amely jelzi a szolgáltatás rendelkezésre állását vagy a sor által jelzett API-műveletet (a **RowKey** azt jelzi, hogy a sor tartalmaz-e metrikákat a szolgáltatás egészére vagy egy adott API-műveletre vonatkozóan).
@@ -559,7 +559,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Név | Érték |
+| Name | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |

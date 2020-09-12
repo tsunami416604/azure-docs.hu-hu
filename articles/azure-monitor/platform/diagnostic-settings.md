@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135436"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614046"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
@@ -43,7 +43,7 @@ Az alábbi videó végigvezeti az útválasztási platform naplófájljainak a d
 ## <a name="destinations"></a>Célhelyek
 A platform naplói és metrikái a következő táblázatban található célhelyekre küldhetők. 
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
 | [Log Analytics munkaterület](design-logs-deployment.md) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
 | [Event Hubs](/azure/event-hubs/) | A naplók és metrikák küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.  |
@@ -100,7 +100,7 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
      - A **AllMetrics** az erőforrás platformjának mérőszámait az Azure naplók tárolójába irányítja, de a napló formájában. Ezeket a mérőszámokat általában csak a Azure Monitor metrikák idősorozat-adatbázisába küldik. Küldje el őket a Azure Monitor logs Store-ba (amely Log Analytics használatával kereshető), hogy integrálja azokat olyan lekérdezésekben, amelyek más naplókon keresztül keresnek. Lehetséges, hogy ez a beállítás nem érhető el az összes erőforrástípus esetében. Ha ez támogatott, [Azure monitor támogatott mérőszámok](metrics-supported.md) felsorolják, hogy milyen mérőszámokat gyűjt a rendszer a milyen típusú erőforrásokhoz.
 
        > [!NOTE]
-       > A jelen cikk korábbi részében található naplók Azure Monitoréhez tekintse meg az útválasztási mérőszámok limitatation.  
+       > Tekintse meg a jelen cikk korábbi részében Azure Monitor naplókra vonatkozó útválasztási mérőszámok korlátozását.  
 
 
      - A **naplók** az erőforrástípus típusától függően az elérhető különböző kategóriákat listázza. Tekintse át a célhelyre átirányítani kívánt kategóriákat.

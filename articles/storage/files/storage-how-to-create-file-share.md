@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930672"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645570"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
@@ -231,7 +231,7 @@ Ez a parancs sikertelen lesz, ha a Storage-fiók egy virtuális hálózaton bel�
 > A fájlmegosztás nevében csak kisbetű szerepelhet. A fájlmegosztás és a fájlok elnevezésével kapcsolatos részletes információkért lásd: [megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dn167011.aspx).
 
 ### <a name="create-a-hot-or-cool-file-share"></a>Gyors vagy ritka elérésű fájlmegosztás létrehozása
-Az **általános célú v2-(GPv2-) tárolási fiókban** található fájlmegosztás tartalmazhat tranzakciós optimalizált, gyors vagy ritka fájlmegosztást (vagy annak egy keverékét). A tranzakciós optimalizált megosztások minden Azure-régióban elérhetők, de a gyakori és ritka elérésű fájlmegosztás csak a [régiók egy részhalmazában](storage-files-planning.md#storage-tiers)érhető el. A Azure PowerShell előzetes verziójának vagy az Azure CLI-nek a használatával gyors vagy lassú fájlmegosztást hozhat létre. 
+Az **általános célú v2-(GPv2-) tárolási fiókok** tartalmazhatják a tranzakciós optimalizált, a gyors vagy a lassú fájlmegosztást (vagy annak egy keverékét). A tranzakciós optimalizált megosztások minden Azure-régióban elérhetők, de a gyakori és ritka elérésű fájlmegosztás csak a [régiók egy részhalmazában](storage-files-planning.md#storage-tiers)érhető el. A Azure PowerShell előzetes verziójának vagy az Azure CLI-nek a használatával gyors vagy lassú fájlmegosztást hozhat létre. 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 A Azure Portal még nem támogatja a gyakori és ritka fájlmegosztás létrehozását, illetve a meglévő tranzakciós optimalizált fájlmegosztás gyors vagy lassú elérését. Tekintse meg a fájlmegosztás PowerShell-lel vagy az Azure CLI-vel való létrehozásának utasításait.
@@ -291,7 +291,7 @@ az storage share-rm create \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Tervezze meg Azure Files telepítését,](storage-files-planning.md) vagy [tervezze meg Azure file Sync központi telepítését](storage-sync-files-planning.md). 
 - [Hálózatkezelés – áttekintés](storage-files-networking-overview.md).
 - Windows, [MacOS](storage-how-to-use-files-mac.md)és [Linux](storage-how-to-use-files-linux.md) [rendszerű](storage-how-to-use-files-windows.md)fájlmegosztás csatlakoztatása és csatlakoztatása.
